@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6f0cf663b42c8487495602e4cdbf1a88427f9daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310930"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895711"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Vyžádání dat veřejného přenosu v reálném čase pomocí služby Azure Maps mobility
 
-V tomto článku se dozvíte, jak používat [službu Azure Maps mobility](https://aka.ms/AzureMapsMobilityService) k vyžádání dat veřejného přenosu v reálném čase.
+V tomto článku se dozvíte, jak používat [službu Azure Maps mobility](/rest/api/maps/mobility) k vyžádání dat veřejného přenosu v reálném čase.
 
 V tomto článku se dozvíte, jak požádat o další doručení v reálném čase pro všechny řádky přicházející v daném zastavení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Nejprve musíte mít účet Azure Maps a klíč předplatného, aby bylo možné volat rozhraní API pro veřejné průjezdy Azure Maps. Informace najdete v pokynech v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) pro vytvoření účtu Azure Maps. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
@@ -30,13 +30,13 @@ V tomto článku se k sestavení volání REST používá [aplikace pro publikov
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Vyžádat doručení v reálném čase o zastavení
 
-Aby bylo možné vyžádat data o doručení konkrétního zastavení veřejného přenosu v reálném čase, budete muset požádat o [rozhraní API doručení](https://aka.ms/AzureMapsMobilityRealTimeArrivals) Azure Maps [služby mobility](https://aka.ms/AzureMapsMobilityService)v reálném čase. K dokončení žádosti budete potřebovat **metroID** a **stopID** . Další informace o tom, jak si vyžádat tyto parametry, najdete v naší příručce o tom, jak [vyžádat trasy veřejného přenosu](https://aka.ms/AMapsHowToGuidePublicTransitRouting).
+Aby bylo možné vyžádat data o doručení konkrétního zastavení veřejného přenosu v reálném čase, budete muset požádat o [rozhraní API doručení](/rest/api/maps/mobility/getrealtimearrivalspreview) Azure Maps [služby mobility](/rest/api/maps/mobility)v reálném čase. K dokončení žádosti budete potřebovat **metroID** a **stopID** . Další informace o tom, jak si vyžádat tyto parametry, najdete v naší příručce o tom, jak [vyžádat trasy veřejného přenosu](./how-to-request-transit-data.md).
 
 Pojďme použít "522" jako naše ID Metro, což je ID Metro pro oblast "Praha – Tacoma – Bellevue, WA". Jako ID zastavení použijte "522---2060603", tato Sběrnicová zastávka je "ne 24 července St & 162nd Ave No Bellevue WA". Pokud chcete požádat o dalších pět dat o doručení v reálném čase, pro všechna další živá přijetí v tomto zastavení proveďte následující kroky:
 
-1. Otevřete aplikaci pro odesílání a pojďme vytvořit kolekci pro uložení požadavků. V horní části okna po aplikaci vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**.  Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
+1. Otevřete aplikaci pro odesílání a pojďme vytvořit kolekci pro uložení požadavků. V horní části okna po aplikaci vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** .  Pojmenujte kolekci a vyberte tlačítko **vytvořit** .
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam se má žádost Uložit. Pak vyberte **Uložit**.
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam se má žádost Uložit. Pak vyberte **Uložit** .
 
     ![Vytvoření žádosti v post](./media/how-to-request-transit-data/postman-new.png)
 
@@ -121,4 +121,4 @@ Informace o tom, jak požadovat přenosová data pomocí služby mobility:
 Prozkoumejte dokumentaci k rozhraní API služby Azure Maps mobility:
 
 > [!div class="nextstepaction"]
-> [Dokumentace k rozhraní API služby mobility](https://aka.ms/AzureMapsMobilityService)
+> [Dokumentace k rozhraní API služby mobility](/rest/api/maps/mobility)

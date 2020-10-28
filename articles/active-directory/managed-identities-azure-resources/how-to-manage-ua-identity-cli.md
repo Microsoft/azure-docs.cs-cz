@@ -16,12 +16,12 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb326c889a76eedd82c8918c705bdb5bbe5d195
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969472"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893604"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí Azure CLI
 
@@ -30,15 +30,15 @@ Spravované identity pro prostředky Azure poskytují služby Azure se spravovan
 
 V tomto článku se dozvíte, jak pomocí Azure CLI vytvořit, zobrazit a odstranit spravovanou identitu přiřazenou uživatelem.
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Chcete-li spustit ukázkové skripty, máte dvě možnosti:
-    - Použijte [Azure Cloud Shell](../../cloud-shell/overview.md), který můžete otevřít pomocí tlačítka **vyzkoušet** v pravém horním rohu bloků kódu.
-    - Spusťte skripty místně pomocí instalace nejnovější verze rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login). Použijte účet přidružený k předplatnému Azure, ve kterém byste chtěli vytvářet prostředky.   
+## <a name="prerequisites"></a>Předpoklady
 
-> [!NOTE]
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+> [!NOTE]   
 > Pokud chcete změnit uživatelská oprávnění při používání instančního objektu App Service pomocí rozhraní příkazového řádku, musíte v Azure Graph API AD zadat další oprávnění instančního objektu, protože části CLI provádějí požadavky GET na Graph API. V opačném případě může dodržet zprávu "nedostatečná oprávnění k dokončení operace". Pokud to chcete provést, budete muset přejít do registrace aplikace v Azure Active Directory, vybrat aplikaci, kliknout na oprávnění rozhraní API, přejít dolů a vybrat Azure Active Directory Graph. Z výběru oprávnění aplikace a pak přidejte příslušná oprávnění. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem 

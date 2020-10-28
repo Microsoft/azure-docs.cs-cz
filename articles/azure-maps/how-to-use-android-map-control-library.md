@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330923"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895490"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Začínáme s Azure Maps Android SDK
 
 Azure Maps Android SDK je knihovna vektorových map pro Android. Tento článek vás provede procesy instalace Azure Maps Android SDK a načtení mapy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
@@ -36,10 +36,10 @@ Před instalací Android SDK Azure Maps si stáhněte Android Studio a vytvořte
 
 Nejprve vytvořte nový projekt s prázdnou aktivitou. Chcete-li vytvořit projekt Android Studio, proveďte tyto kroky:
 
-1. V části **zvolit projekt**vyberte **telefon a tablet**. Vaše aplikace se spustí v tomto faktoru formuláře.
-2. Na kartě **telefon a tablet** vyberte **prázdná aktivita**a pak vyberte **Další**.
-3. V části **Konfigurovat projekt**vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je nejstarší verze, kterou podporuje Azure Maps Android SDK.
-4. Přijměte výchozí nastavení `Activity Name` a `Layout Name` klikněte na **Dokončit**.
+1. V části **zvolit projekt** vyberte **telefon a tablet** . Vaše aplikace se spustí v tomto faktoru formuláře.
+2. Na kartě **telefon a tablet** vyberte **prázdná aktivita** a pak vyberte **Další** .
+3. V části **Konfigurovat projekt** vyberte `API 21: Android 5.0.0 (Lollipop)` jako minimální sadu SDK. Toto je nejstarší verze, kterou podporuje Azure Maps Android SDK.
+4. Přijměte výchozí nastavení `Activity Name` a `Layout Name` klikněte na **Dokončit** .
 
 Další nápovědu k instalaci Android Studio a vytvoření nového projektu najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/intro/) .
 
@@ -47,7 +47,7 @@ Další nápovědu k instalaci Android Studio a vytvoření nového projektu naj
 
 ## <a name="set-up-a-virtual-device"></a>Nastavení virtuálního zařízení
 
-Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení**. Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje**pro  >  **Android**  >  **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné**a pak vyberte **Další**.
+Android Studio umožňuje na počítači nastavit virtuální zařízení s Androidem. To vám může pomáhat při testování aplikace během vývoje. Pokud chcete nastavit virtuální zařízení, vyberte ikonu správce virtuálního zařízení (AVD) Android v pravém horním rohu obrazovky projektu a pak vyberte **vytvořit virtuální zařízení** . Do AVD Manageru se můžete dostat taky tak, že na panelu nástrojů vyberete **nástroje** pro  >  **Android**  >  **AVD Manager** . V kategorii **telefony** vyberte **Nexus pětinásobné** a pak vyberte **Další** .
 
 Další informace o nastavení AVD najdete v [dokumentaci k Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -57,7 +57,7 @@ Další informace o nastavení AVD najdete v [dokumentaci k Android Studio](http
 
 Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps. Provedením těchto kroků nainstalujete sadu SDK:
 
-1. Otevřete soubor **Build. Gradle** nejvyšší úrovně a přidejte následující kód do části **všechny projekty**, blok **úložišť** :
+1. Otevřete soubor **Build. Gradle** nejvyšší úrovně a přidejte následující kód do části **všechny projekty** , blok **úložišť** :
 
     ```
     maven {
@@ -83,7 +83,7 @@ Dalším krokem při sestavování aplikace je instalace Android SDK Azure Maps.
         implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
-    4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle**.
+    4. Přejděte na **soubor** na panelu nástrojů a pak klikněte na **synchronizovat projekt se soubory Gradle** .
 3. Přidejte do hlavní aktivity fragment mapy ( \> aktivita rozložení res \> \_main.xml):
     
     ```XML
@@ -299,7 +299,7 @@ Přečtěte si, jak přidat překryvná data na mapu:
 > [Přidání vrstvy symbolů na mapu pro Android](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Přidání obrazců na mapu pro Android](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Přidání obrazců na mapu pro Android](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Změna stylů mapy v doplňkech Android Maps](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Změna stylů mapy v doplňkech Android Maps](./set-android-map-styles.md)

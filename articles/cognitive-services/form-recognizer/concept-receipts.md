@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761443"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893682"
 ---
 # <a name="receipt-concepts"></a>Principy účtenek
 
@@ -437,7 +437,7 @@ Data extrahovaná pomocí rozhraní API pro příjem lze použít k provádění
 
 Pracovní výdaje se často dodávají do doby trvání útraty ručním zadáváním dat z imagí příjmů. Pomocí rozhraní API pro příjem můžete použít extrahovaná pole pro částečně automatizaci tohoto procesu a rychle analyzovat vaše účtenky.  
 
-Vzhledem k tomu, že rozhraní API pro příjem má jednoduchý výstup JSON, můžete hodnoty extrahovaných polí použít několika způsoby. Integrujte s interními výdajovými aplikacemi a předem naplnit sestavy výdajů. Další informace o tomto scénáři najdete v článku o tom, jak Acumatica využívá rozhraní API pro příjem, aby [vykazují náklady s méně bolestivý procesy](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure).  
+Vzhledem k tomu, že rozhraní API pro příjem má jednoduchý výstup JSON, můžete hodnoty extrahovaných polí použít několika způsoby. Integrujte s interními výdajovými aplikacemi a předem naplnit sestavy výdajů. Další informace o tomto scénáři najdete v článku o tom, jak Acumatica využívá rozhraní API pro příjem, aby [vykazují náklady s méně bolestivý procesy](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure).  
 
 ### <a name="auditing-and-accounting"></a>Auditování a monitorování účtů 
 

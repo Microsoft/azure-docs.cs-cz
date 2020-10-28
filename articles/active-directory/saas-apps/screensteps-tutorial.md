@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: cf43875be0088f9f9c8c8f209f97c8443bd305bb
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676607"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895151"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Kurz: Azure Active Directory integrace s ScreenSteps
 
@@ -130,7 +130,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ScreenSt
 
 1. Klikněte na **jednotné přihlašování** .
 
-    ![Vzdálené ověřování](./media/screensteps-tutorial/ic778524.png "Vzdálené ověřování")
+    ![Snímek obrazovky, který zobrazuje vybrané jednotné přihlašování](./media/screensteps-tutorial/ic778524.png "Vzdálené ověřování")
 
 1. Klikněte na **vytvořit koncový bod jednotného přihlašování** .
 

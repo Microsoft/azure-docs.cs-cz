@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355852"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895643"
 ---
 # <a name="secure-a-daemon-application"></a>Zabezpečení aplikace démona
 
@@ -27,11 +27,11 @@ Následující příručka je určena pro procesy na pozadí, časovače a úloh
 
 ## <a name="scenario-shared-key-authentication"></a>Scénář: ověřování sdíleného klíče
 
-Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Pokud [ke volání Azure Maps použijete ověřování pomocí sdíleného klíče](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication), doporučujeme použít primární klíč jako klíč předplatného. Sekundární klíč můžete použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování v Azure Maps](https://aka.ms/amauth).
+Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Pokud [ke volání Azure Maps použijete ověřování pomocí sdíleného klíče](./azure-maps-authentication.md#shared-key-authentication), doporučujeme použít primární klíč jako klíč předplatného. Sekundární klíč můžete použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování v Azure Maps](./azure-maps-authentication.md).
 
 ### <a name="securely-store-shared-key"></a>Bezpečně uložit sdílený klíč
 
-Primární a sekundární klíč umožňují autorizaci všem rozhraním API pro účet Maps. Aplikace by měly ukládat klíče v zabezpečeném úložišti, jako je například Azure Key Vault. Aplikace musí načíst sdílený klíč jako Azure Key Vault tajný klíč, aby se zabránilo ukládání sdíleného klíče do konfigurace aplikace ve formátu prostého textu. Informace o tom, jak nakonfigurovat Azure Key Vault, najdete v tématu [Příručka pro vývojáře Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/developers-guide).
+Primární a sekundární klíč umožňují autorizaci všem rozhraním API pro účet Maps. Aplikace by měly ukládat klíče v zabezpečeném úložišti, jako je například Azure Key Vault. Aplikace musí načíst sdílený klíč jako Azure Key Vault tajný klíč, aby se zabránilo ukládání sdíleného klíče do konfigurace aplikace ve formátu prostého textu. Informace o tom, jak nakonfigurovat Azure Key Vault, najdete v tématu [Příručka pro vývojáře Azure Key Vault](../key-vault/general/developers-guide.md).
 
 Následující kroky popisují tento proces:
 
@@ -44,7 +44,7 @@ Následující kroky popisují tento proces:
 7. Vytvoří Azure Maps REST API žádosti se sdíleným klíčem.
 
 > [!Tip]
-> Pokud je aplikace hostovaná v prostředí Azure, měli byste implementovat spravovanou identitu, abyste snížili náklady a složitost správy tajného kódu pro ověřování Azure Key Vault. Pokud [se chcete připojit prostřednictvím spravované identity](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app), Projděte si následující kurz Azure Key Vault.
+> Pokud je aplikace hostovaná v prostředí Azure, měli byste implementovat spravovanou identitu, abyste snížili náklady a složitost správy tajného kódu pro ověřování Azure Key Vault. Pokud [se chcete připojit prostřednictvím spravované identity](../key-vault/general/tutorial-net-create-vault-azure-web-app.md), Projděte si následující kurz Azure Key Vault.
 
 Aplikace démona zodpovídá za načtení sdíleného klíče ze zabezpečeného úložiště. Implementace s Azure Key Vault vyžaduje ověření prostřednictvím služby Azure AD pro přístup ke tajnému kódu. Místo toho doporučujeme přímé ověřování Azure AD pro Azure Maps v důsledku dalších složitosti a provozních požadavků použití ověřování pomocí sdíleného klíče.
 
@@ -62,7 +62,7 @@ Po vytvoření účtu Azure Maps se hodnota Azure Maps nachází na `x-ms-client
 
 Při spuštění v prostředcích Azure nakonfigurujte spravované identity Azure tak, aby umožňovaly nízké náklady, úsilí správy minimálních přihlašovacích údajů. 
 
-V tématu [Přehled spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) můžete aplikaci povolit přístup ke spravované identitě.
+V tématu [Přehled spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md) můžete aplikaci povolit přístup ke spravované identitě.
 
 Výhody spravované identity:
 
@@ -75,46 +75,46 @@ Výhody spravované identity:
 
 V případě, že nejsou k dispozici spravované identity prostředí mimo Azure, nejsou k dispozici. Proto je nutné nakonfigurovat instanční objekt pomocí registrace aplikace služby Azure AD pro aplikaci démon.
 
-1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace**.  
+1. V Azure Portal v seznamu služeb Azure vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **Nová registrace** .  
 
     > [!div class="mx-imgBorder"]
     > ![Registrace aplikace](./media/how-to-manage-authentication/app-registration.png)
 
-2. Pokud jste svou aplikaci už zaregistrovali, přejděte k dalšímu kroku. Pokud jste svoji aplikaci nezaregistrovali, zadejte **název**, vyberte **typ účtu podpory**a pak vyberte **zaregistrovat**.  
+2. Pokud jste svou aplikaci už zaregistrovali, přejděte k dalšímu kroku. Pokud jste svoji aplikaci nezaregistrovali, zadejte **název** , vyberte **typ účtu podpory** a pak vyberte **zaregistrovat** .  
 
     > [!div class="mx-imgBorder"]
     > ![Podrobnosti registrace aplikace](./media/how-to-manage-authentication/app-create.png)
 
-3. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak v části **Registrace aplikací**vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění**. V části **rozhraní API moje organizace používá**, vyhledejte a vyberte **Azure Maps**.
+3. Pokud chcete přiřadit Azure Maps oprávnění k delegovanému rozhraní API, Projděte si aplikaci. Pak v části **Registrace aplikací** vyberte **oprávnění rozhraní API**  >  **Přidat oprávnění** . V části **rozhraní API moje organizace používá** , vyhledejte a vyberte **Azure Maps** .
 
     > [!div class="mx-imgBorder"]
     > ![Přidat oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/app-permissions.png)
 
-4. Zaškrtněte políčko vedle pole přístup k **Azure Maps**a pak vyberte **Přidat oprávnění**.
+4. Zaškrtněte políčko vedle pole přístup k **Azure Maps** a pak vyberte **Přidat oprávnění** .
 
     > [!div class="mx-imgBorder"]
     > ![Výběr oprávnění rozhraní API pro aplikace](./media/how-to-manage-authentication/select-app-permissions.png)
 
 5. Provedením následujících kroků vytvořte tajný klíč klienta nebo nakonfigurujte certifikát.
 
-    * Pokud vaše aplikace používá ověřování serveru nebo aplikace, přejít na registrační stránku aplikace na **certifikáty & tajných**kódů. Pak buď Nahrajte certifikát veřejného klíče, nebo vytvořte heslo tak, že vyberete **nový tajný klíč klienta**.
+    * Pokud vaše aplikace používá ověřování serveru nebo aplikace, přejít na registrační stránku aplikace na **certifikáty & tajných** kódů. Pak buď Nahrajte certifikát veřejného klíče, nebo vytvořte heslo tak, že vyberete **nový tajný klíč klienta** .
 
         > [!div class="mx-imgBorder"]
         > ![Vytvoření tajného klíče klienta](./media/how-to-manage-authentication/app-keys.png)
 
-    * Po výběru **Přidat**Zkopírujte tajný klíč a bezpečně ho uložte do služby, jako je Azure Key Vault. Přečtěte si [Azure Key Vault příručka pro vývojáře](https://docs.microsoft.com/azure/key-vault/general/developers-guide) a bezpečně uložte certifikát nebo tajný kód. Tento tajný klíč použijete k získání tokenů z Azure AD.
+    * Po výběru **Přidat** Zkopírujte tajný klíč a bezpečně ho uložte do služby, jako je Azure Key Vault. Přečtěte si [Azure Key Vault příručka pro vývojáře](../key-vault/general/developers-guide.md) a bezpečně uložte certifikát nebo tajný kód. Tento tajný klíč použijete k získání tokenů z Azure AD.
 
         > [!div class="mx-imgBorder"]
         > ![Přidat tajný klíč klienta](./media/how-to-manage-authentication/add-key.png)
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Udělení přístupu na základě role pro aplikaci démona k Azure Maps
 
-*Řízení přístupu na základě role Azure (Azure RBAC)* udělíte tak, že do jedné nebo víc Azure Maps definic rolí přiřadíte vytvořenou spravovanou identitu nebo instanční objekt. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
+*Řízení přístupu na základě role Azure (Azure RBAC)* udělíte tak, že do jedné nebo víc Azure Maps definic rolí přiřadíte vytvořenou spravovanou identitu nebo instanční objekt. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** . Vyberte **role** a potom vyhledejte role, které začínají na *Azure Maps* . Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit dostupné role](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Přejít na **účet Azure Maps**. Vyberte **Řízení přístupu (IAM)** > **Přiřazení rolí**.
+1. Přejít na **účet Azure Maps** . Vyberte **Řízení přístupu (IAM)** > **Přiřazení rolí** .
 
     > [!div class="mx-imgBorder"]
     > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vybraným doplňkem zobrazí změny přiřazení.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Vyberte předdefinované definice role Azure Maps, například **Azure Maps data Reader** nebo **Přispěvatel dat Azure Maps**. V části **přiřadit přístup k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** s přiřazenou **User assigned managed identity**  /  **spravovanou identitou**přiřazenou uživatelem spravované identity. Vyberte objekt zabezpečení. Pak vyberte **Uložit**.
+3. Vyberte předdefinované definice role Azure Maps, například **Azure Maps data Reader** nebo **Přispěvatel dat Azure Maps** . V části **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD** s přiřazenou **User assigned managed identity**  /  **spravovanou identitou** přiřazenou uživatelem spravované identity. Vyberte objekt zabezpečení. Pak vyberte **Uložit** .
 
     > [!div class="mx-imgBorder"]
     > ![Postup přidání přiřazení role](./media/how-to-manage-authentication/how-to-add-role-assignment.png)
@@ -133,7 +133,7 @@ V případě, že nejsou k dispozici spravované identity prostředí mimo Azure
 
 ## <a name="request-token-with-managed-identity"></a>Požádat o token se spravovanou identitou
 
-Po nakonfigurování spravované identity pro hostující prostředek použijte sadu Azure SDK nebo REST API k získání tokenu pro Azure Maps, další informace najdete v tématu [získání přístupového tokenu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token). Po této příručce se očekává, že se vrátí přístupový token, který se dá použít u REST APIch požadavků.
+Po nakonfigurování spravované identity pro hostující prostředek použijte sadu Azure SDK nebo REST API k získání tokenu pro Azure Maps, další informace najdete v tématu [získání přístupového tokenu](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md). Po této příručce se očekává, že se vrátí přístupový token, který se dá použít u REST APIch požadavků.
 
 ## <a name="request-token-with-application-registration"></a>Požádat o token s registrací aplikace
 
@@ -168,7 +168,7 @@ Odpověď:
 }
 ```
 
-Podrobnější příklady najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+Podrobnější příklady najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/develop/authentication-vs-authorization.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,21 +5,21 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Popisuje proces migrace z Azure Dev Spaces na přemostění do Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, most na Kubernetes
-ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329794"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895252"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrace na Bridge to Kubernetes
 
 > [!IMPORTANT]
-> Azure Dev Spaces bude vyřazen 31. října 2023. Vývojáři by se měli přesunout na použití mostu na Kubernetes, nástroje pro vývojáře klienta.
+> Azure Dev Spaces bude vyřazen 31. října 2023. Zákazníci by se měli přesunout na použití mostu na Kubernetes, nástroje pro vývojáře klienta.
 >
-> Účelem Azure Dev Spaces bylo o usnadnění vývoje na Kubernetes vývojářům. Významnými kompromisy při přístupu k Azure Dev Spaces byla větší režie vývojářů, aby lépe pochopila konfigurace Docker a Kubernetes a koncepty nasazení Kubernetes. V průběhu času se také stala jasné, že přístup Azure Dev Spaces neefektivně nesnížil rychlost vývoje vnitřních smyček na Kubernetes. Most na Kubernetes účinně snižuje rychlost vývoje vnitřních smyček a brání vývojářům v nepotřebném zatížení.
+> Účelem Azure Dev Spaces bylo převíjení uživatelů při vývoji na Kubernetes. Významnými kompromisy při přístupu k Azure Dev Spaces byla větší režie na uživatele, aby pochopili konfigurace Docker a Kubernetes a koncepty nasazení Kubernetes. V průběhu času se také stala jasné, že přístup Azure Dev Spaces neefektivně nesnížil rychlost vývoje vnitřních smyček na Kubernetes. Most na Kubernetes účinně snižuje rychlost vývoje vnitřních smyček a brání uživatelům v nepotřebných zátěžích.
 >
-> Základní mise zůstává beze změny: Sestavte si nejlepší vývojářské prostředí pro vývoj, testování a ladění kódu mikroslužeb v kontextu větší aplikace.
+> Základní mise zůstává beze změny: Sestavte si nejlepší prostředí pro vývoj, testování a ladění kódu mikroslužeb v kontextu větší aplikace.
 
 Most na Kubernetes poskytuje světlejší důležitou alternativu k mnoha vývojářským scénářům, které pracují s Azure Dev Spaces. Most na Kubernetes je prostředí jenom na straně klienta využívající rozšíření v [aplikaci Visual Studio][vs]   a [Visual Studio Code][vsc].  
 
@@ -46,7 +46,7 @@ Azure Dev Spaces a most pro Kubernetes mají podobné funkce, liší se i v něk
 | Azure Kubernetes Service | V 15 oblastech Azure | Libovolný region služby AKS    |
 | **Zabezpečení** |
 | V clusteru je vyžadován přístup k zabezpečení.  | Přispěvatel clusteru AKS  | Kubernetes RBAC – aktualizace nasazení   |
-| Na vašem vývojovém počítači je vyžadován přístup zabezpečení.  | –  | Místní správce/sudo   |
+| Na vašem vývojovém počítači je vyžadován přístup zabezpečení.  | Není k dispozici  | Místní správce/sudo   |
 | **Použitelnost** |
 | Nezávisle na artefaktech Kubernetes a Docker  | Ne  | Ano   |
 | Automatické vrácení změn provedených po ladění  | Ne  | Ano   |
@@ -85,7 +85,7 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 1. Pokud používáte aplikaci Visual Studio, aktualizujte integrované vývojové prostředí (IDE) sady Visual Studio na verzi 16,7 nebo vyšší a nainstalujte most do rozšíření Kubernetes z [Visual Studio Marketplace][vs-marketplace]. Pokud používáte Visual Studio Code, nainstalujte [most do rozšíření Kubernetes][vsc-marketplace].
 1. Vypněte kontroler Azure Dev Spaces pomocí Azure Portal nebo [Azure dev Spaces CLI][azds-delete].
 1. Použijte [Azure Cloud Shell](https://shell.azure.com). Nebo na Macu, Linux nebo Windows s nainstalovaným bash otevřete příkazový řádek prostředí bash. Ujistěte se, že v prostředí příkazového řádku jsou k dispozici následující nástroje: Azure CLI, Docker, kubectl, kudrlinkou, tar a gunzip.
-1. Vytvořte registr kontejnerů nebo použijte existující. Registr kontejnerů můžete v Azure vytvořit pomocí [Azure Container Registry](../container-registry/index.yml) nebo pomocí [Docker Hub](https://hub.docker.com/).
+1. Vytvořte registr kontejnerů nebo použijte existující. Registr kontejnerů můžete v Azure vytvořit pomocí [Azure Container Registry](../container-registry/index.yml) nebo pomocí [Docker Hub](https://hub.docker.com/). Při použití Azure Cloud Shell je k dispozici pouze Azure Container Registry pro hostování imagí Docker.
 1. Spusťte skript migrace a převeďte Azure Dev Spaces assety na přemostění na prostředky Kubernetes. Skript vytvoří nový Image kompatibilní s mostem na Kubernetes, nahraje ho do určeného registru a pak pomocí [Helm](https://helm.sh) aktualizuje cluster s imagí. Musíte zadat skupinu prostředků, název clusteru AKS a registr kontejneru. Existují další možnosti příkazového řádku, jak je znázorněno zde:
 
    ```azure-cli
@@ -102,6 +102,7 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
     -r Path to root of the project that needs to be migrated (default = current working directory)
     -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
     -i Enable a public endpoint to access your service over internet. (default is false)
+    -c Docker build context path. (default = project root path passed to '-r' option)
     -y Doesn't prompt for non-tty terminals
     -d Helm Debug switch
    ```
@@ -116,7 +117,7 @@ Most na Kubernetes má flexibilitu pro práci s aplikacemi spuštěnými v Kuber
 
 Můžete také použít směrování specifické pro vývojáře s přemostěním na Kubernetes. Scénář vývoje Azure Dev Spaces týmu používá několik oborů názvů Kubernetes k izolaci služby od zbytku aplikace s využitím konceptu nadřazených a podřízených oborů názvů. Most na Kubernetes nabízí stejnou schopnost, ale s vylepšenými charakteristikami výkonu a v rámci stejného oboru názvů aplikace.
 
-Oba mosty Kubernetes i Azure Dev Spaces vyžadují, aby byly v celé aplikaci přítomné a šířené hlavičky protokolu HTTP. Pokud jste již aplikaci nakonfigurovali pro zpracování šíření hlaviček pro Azure Dev Spaces, je nutné aktualizovat hlavičku. Pokud chcete přejít na most Kubernetes z Azure Dev Spaces, aktualizujte nakonfigurovanou hlavičku z *azds-Route-as* na *Kubernetes-Route-as*.
+Oba mosty Kubernetes i Azure Dev Spaces vyžadují, aby byly v celé aplikaci přítomné a šířené hlavičky protokolu HTTP. Pokud jste již aplikaci nakonfigurovali pro zpracování šíření hlaviček pro Azure Dev Spaces, je nutné aktualizovat hlavičku. Pokud chcete přejít na most Kubernetes z Azure Dev Spaces, aktualizujte nakonfigurovanou hlavičku z *azds-Route-as* na *Kubernetes-Route-as* .
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>Vyhodnotit most na Kubernetes
 
@@ -146,9 +147,9 @@ Přečtěte si další informace o tom, jak most Kubernetes funguje.
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli
 [kubernetes-extension]: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
-[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#install-the-sample-application
+[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes#install-the-sample-application
 [how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
-[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#connect-to-your-cluster-and-debug-a-service
+[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes#connect-to-your-cluster-and-debug-a-service
 [use-btk-vsc]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
 [vs]: https://visualstudio.microsoft.com/
 [vsc-marketplace]: https://marketplace.visualstudio.com/items?itemName=mindaro.mindaro

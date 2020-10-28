@@ -10,22 +10,18 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: mbullwin
-ms.openlocfilehash: 6b5292ca7e1220b60b1b2a2501b3150550da8db9
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131679"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893573"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Nejčastější dotazy k metrickým nástrojům
 
 ### <a name="what-is-the-cost-of-my-instance"></a>Jaké jsou náklady na moji instanci?
 
 V současné době není za použití vaší instance ve verzi Preview žádné náklady.
-
-### <a name="why-is-the-demo-website-readonly"></a>Proč je ukázkový web jen pro čtení?
-
-[Ukázkový web](https://anomaly-detector.azurewebsites.net/) je veřejně dostupný. Tato instance je určená jen pro čtení, aby nedocházelo k nechtěnému nahrávání dat.
 
 ### <a name="why-cant-i-create-the-resource-the-pricing-tier-is-unavailable-and-it-says-you-have-already-created-1-s0-for-this-subscription"></a>Proč nemůžu vytvořit prostředek? Cenová úroveň není k dispozici a uvádí "Už jste vytvořili 1 S0 pro toto předplatné"?
 
@@ -145,5 +141,4 @@ Například při výskytu anomálie se `Service = S2 | Data Center = DC2 | Machi
 
 ## <a name="next-steps"></a>Další kroky
 - [Přehled Poradce pro metriky](overview.md)
-- [Vyzkoušet ukázkový web](quickstarts/explore-demo.md)
 - [Použití webového portálu](quickstarts/web-portal.md)

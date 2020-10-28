@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d8bf94bf0048efee05864b951429239de2def87a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2065286581b6e7de61e4d1a29382b98563cdbb8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669397"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu ScaleX Enterprise
 
@@ -148,11 +148,11 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
     > [!NOTE]
     > Contoso je pouze příklad. Mělo by se jednat o skutečný název vaší společnosti.
 
-    ![Konfigurace jednotného přihlašování](./media/scalex-enterprise-tutorial/Test_Admin.png)
+    ![Snímek obrazovky, který zobrazuje ukázkový název společnosti vybraný v nabídce vpravo nahoře.](./media/scalex-enterprise-tutorial/Test_Admin.png)
 
 1. V horní nabídce vyberte **integrace** a vyberte **jednotné přihlašování** .
 
-    ![Konfigurace jednotného přihlašování](./media/scalex-enterprise-tutorial/admin_sso.png) 
+    ![Snímek obrazovky s vybraným integrací a jediným přihlašováním z rozevírací nabídky](./media/scalex-enterprise-tutorial/admin_sso.png) 
 
 1. Vyplňte formulář následujícím způsobem:
 
@@ -184,7 +184,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici ScaleX Enterprise, měli byste být automaticky přihlášeni k organizaci ScaleX, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

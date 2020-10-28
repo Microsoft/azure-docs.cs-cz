@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409472"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892617"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -22,19 +22,19 @@ Pokud již nechcete pro vaši nabídku zadat testovací jednotku, vraťte se na 
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
-Toto je jediná možnost testovacího disku pro virtuální počítač nebo nabídky aplikací Azure a také vyžaduje poměrně podrobné nastavení. Přečtěte si níže uvedené části, kde [najdete podrobnosti předplatného nasazení](#deployment-subscription-details) a [seznam testovacích jednotek](#test-drive-listings), a pak pokračujte podle samostatného tématu [konfigurace Azure Resource Manager testovacích jednotek](azure-resource-manager-test-drive.md).
+Toto je jediná možnost testovacího disku pro virtuální počítač nebo nabídky aplikací Azure a vyžaduje poměrně podrobné nastavení. Přečtěte si níže uvedené části, kde [najdete podrobnosti předplatného nasazení](#deployment-subscription-details) a [seznam testovacích jednotek](#test-drive-listings), a pak pokračujte podle samostatného tématu [konfigurace Azure Resource Manager testovacích jednotek](azure-resource-manager-test-drive.md).
 
 ## <a name="hosted-test-drive"></a>Hostovaný testovací disk
 
-Společnost Microsoft může odebrat složitost nastavení testovacích jednotek hostováním a údržbou zřizování a nasazení služby pomocí tohoto typu testovacích jednotek. Konfigurace pro tento typ hostovaného testovacího disku je stejná bez ohledu na to, jestli je testovací jednotka cílená na Dynamics 365 Business Central, Dynamics 365 Customer Engagement nebo Dynamics 365 Operations Target.
+Společnost Microsoft může odebrat složitost nastavení testovacích jednotek hostováním a údržbou zřizování a rušení zřizování služby. Konfigurace pro tento typ testovacích jednotek je stejná bez ohledu na to, jestli je testovací jednotka cílena na zákaznickou zapojení Dynamics 365 nebo cílovou skupinu operací Dynamics 365.
 
 - **Maximální počet souběžných testovacích jednotek** (požadováno) – nastaví maximální počet zákazníků, kteří můžou použít testovací jednotku najednou. Každý souběžný uživatel bude používat licenci Dynamics 365, zatímco je testovací jednotka aktivní, takže je nutné mít k dispozici dostatek licencí, aby podporovaly maximální nastavený limit. Doporučená hodnota je 3-5.
 
-- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní (nejméně jedna hodina). Po uplynutí této doby bude relace končit a už nebude spotřebovávat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé hodiny (například "2" hodiny jsou platné; "1,5" není). Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
+- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní pro každého zákazníka. Po uplynutí této doby bude relace končit a už nebude využívat jednu z vašich licencí. V závislosti na složitosti vaší nabídky doporučujeme hodnotu 2-24 hodin. Tato doba může být nastavena pouze na celé hodiny (například "2 hodiny" je platná; "1,5 hodin" není). Uživatel může požádat o novou relaci, pokud dojde k nedostatku času a chcete znovu získat přístup k testovací jednotce.
 
 - **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
-- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)**, zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)** , zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365, která se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 
@@ -48,7 +48,7 @@ Tento typ testovacích jednotek není hostitelem společnosti Microsoft. Použij
 
 - **Maximální počet souběžných testovacích jednotek** (požadováno) – nastaví maximální počet zákazníků, kteří můžou použít testovací jednotku najednou. Tyto testovací jednotky jsou už nasazené a umožňují zákazníkům okamžitý přístup k nim bez čekání na nasazení.
 
-- **Doba trvání testovacích jednotek** (požadováno) – zadejte počet hodin, po který bude testovací jednotka aktivní (nejméně jedna hodina). Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
+- **Doba trvání testovacího disku** (požadováno) – zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
 
 - **Název skupiny prostředků Azure** (požadováno) – zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md#resource-groups), kde se vaše testovací jednotka aplikace logiky uloží.
 
@@ -68,13 +68,13 @@ Abyste Microsoftu umožnili nasazení testovacích jednotek vaším jménem, vyt
 
 - **ID předplatného Azure** (vyžadované pro Azure Resource Manager a Logic Apps) – zadejte ID předplatného, které vám umožní udělit přístup ke službám účtů Azure za účelem vytváření sestav a fakturace využívání prostředků. Doporučujeme zvážit [vytvoření samostatného předplatného Azure](../cost-management-billing/manage/create-subscription.md) , které se použije pro testovací jednotky, pokud ho ještě nemáte. ID vašeho předplatného Azure můžete najít tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/) a přejdete na kartu **předplatná** v nabídce na levé straně. Výběrem karty se zobrazí vaše ID předplatného (například "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti**a vyhledejte číslo **ID adresáře** v seznamu (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy vašeho názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
+- **ID tenanta Azure AD** (povinné) – zadejte [ID TENANTA](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **vlastnosti** a vyhledejte číslo **ID adresáře** v seznamu (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta vaší organizace můžete také vyhledat pomocí adresy vašeho názvu domény na adrese [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 - **Název tenanta Azure AD** (vyžadováno pro dynamickou 365) – zadejte název Azure Active Directory (AD). Pokud chcete najít tento název, přihlaste se k [Azure Portal](https://portal.azure.com/)v pravém horním rohu bude název vašeho tenanta uvedený pod názvem vašeho účtu.
 
-- **ID aplikace Azure AD** (požadováno) – zadejte [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací**a vyhledejte uvedené číslo **ID aplikace** (například `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **ID aplikace Azure AD** (požadováno) – zadejte [ID aplikace](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)Azure Active Directory (AD). Chcete-li zjistit toto ID, přihlaste se k [Azure Portal](https://portal.azure.com/), v levé nabídce vyberte kartu Active Directory, vyberte možnost **Registrace aplikací** a vyhledejte uvedené číslo **ID aplikace** (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
-- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací**a pak vyberte svoji aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče**, vyberte **nový tajný klíč klienta**, zadejte popis, v části **platnost**vyberte **nikdy** a pak zvolte **Přidat**. Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
+- **Tajný kód klienta aplikace Azure AD** (povinné) – zadejte svůj [tajný kód klienta](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)aplikace Azure AD. Tuto hodnotu najdete tak, že se přihlásíte k [Azure Portal](https://portal.azure.com/). V nabídce vlevo vyberte kartu **Azure Active Directory** , vyberte **Registrace aplikací** a vyberte svou aplikaci Test Drive. V dalším kroku vyberte **certifikáty a tajné klíče** , vyberte **nový tajný klíč klienta** , zadejte popis, v části **vypršení platnosti** vyberte **nikdy** a pak zvolte **Přidat** . Nezapomeňte hodnotu zkopírovat. Před zkopírováním hodnoty nedělejte odejít ze stránky.
 
 ## <a name="test-drive-listings"></a>Výpisy testovacích jednotek
 
@@ -93,6 +93,14 @@ Možnost **výpisy testovacích jednotek** , která se nachází na kartě **tes
 
 Pokud momentálně vytváříte testovací jednotku v partnerském centru, vyberte před pokračováním **Uložit koncept** .
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
+- [Osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)(PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 - [Aktualizace stávající nabídky na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md)
+
+## <a name="additional-resources"></a>Další zdroje
+
+## <a name="feedback"></a>Váš názor
+
+Odeslat a zobrazit názor na [Tento produkt](https://feedback.azure.com/forums/216369-azure-marketplace)

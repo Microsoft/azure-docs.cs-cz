@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 61ea102d0e020f7890da1ae86cdfbb5c3db8f51b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335292"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895388"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Azure Maps prostorového vstupu/výstupu
 
-Sada Azure Maps Web SDK poskytuje **modul pro prostorové vstupně-výstupní operace**, který integruje prostorová data do Azure Maps Web SDK pomocí JavaScriptu nebo TypeScript. Robustní funkce v tomto modulu umožňují vývojářům:
+Sada Azure Maps Web SDK poskytuje **modul pro prostorové vstupně-výstupní operace** , který integruje prostorová data do Azure Maps Web SDK pomocí JavaScriptu nebo TypeScript. Robustní funkce v tomto modulu umožňují vývojářům:
 
 - [Čtení a zápis běžných souborů prostorových dat](spatial-io-read-write-spatial-data.md). Mezi podporované formáty souborů patří: KML, KMZ, GPX, GeoRSS, GML, soubory. JSON a CSV, které obsahují sloupce s prostorovými informacemi. Podporuje také Well-Known text (Well).
 - [Připojte se ke službám Open Geospatial Consortium (OGC) a integrujte je se sadou Azure Maps Web SDK. Překrývá služby webového mapování (WMS) a WMTS (Web Map) jako vrstvy na mapě](spatial-io-add-ogc-map-layer.md).
@@ -38,9 +38,9 @@ Toto video poskytuje přehled modulu pro prostorové vstupně-výstupní operace
 > [!WARNING]
 > Používejte jenom data a služby, které jsou ze zdroje, kterému důvěřujete, zejména v případě, že se na něj odkazuje z jiné domény. Modul pro prostorové vstupně-výstupní operace provede kroky pro minimalizaci rizika, ale nejbezpečnější přístup je příliš, takže danagerous data do vaší aplikace neumožňují začít. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moct použít modul pro vytváření prostorových dat, budete muset [vytvořit účet Azure Maps](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) a [získat pro svůj účet primární klíč předplatného](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+Než budete moct použít modul pro vytváření prostorových dat, budete muset [vytvořit účet Azure Maps](./quick-demo-map-app.md#create-an-azure-maps-account) a [získat pro svůj účet primární klíč předplatného](./quick-demo-map-app.md#get-the-primary-key-for-your-account).
 
 ## <a name="installing-the-spatial-io-module"></a>Instalace modulu pro prostorové vstupně-výstupní operace
 
@@ -68,7 +68,7 @@ Modul Azure Maps prostorového vstupu a výstupu můžete načíst pomocí jedn�
 
 1. Vytvořte nový soubor HTML.
 
-2. Načtěte Azure Maps Web SDK a inicializujte mapový ovládací prvek. Podrobnosti najdete v příručce k [ovládacímu prvku mapa Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Až budete s tímto krokem hotovi, váš soubor HTML by měl vypadat takto:
+2. Načtěte Azure Maps Web SDK a inicializujte mapový ovládací prvek. Podrobnosti najdete v příručce k [ovládacímu prvku mapa Azure Maps](./how-to-use-map-control.md) . Až budete s tímto krokem hotovi, váš soubor HTML by měl vypadat takto:
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +256,4 @@ Funkce, kterou jsme tady ukázali, je jenom jedna z mnoha funkcí dostupných v 
 Přečtěte si dokumentaci Azure Maps prostor v/v:
 
 > [!div class="nextstepaction"]
-> [Balení Azure Maps prostorového vstupu/výstupu](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Balení Azure Maps prostorového vstupu/výstupu](/javascript/api/azure-maps-spatial-io/)

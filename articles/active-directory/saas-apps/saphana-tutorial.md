@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d3a3a068a4efb2dea7d7df4bc2b88e2c33dc18b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672126"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Kurz: Azure Active Directory integrace s SAP HANA
 
@@ -121,13 +121,13 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP HANA
 
 5. SAP HANA aplikace očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML kliknutím na tlačítko **Upravit** otevřete dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "atributy uživatele" se zvolenou ikonou "Upravit".](common/edit-attribute.png)
 
 6. V části **atributy uživatele** v dialogovém okně **atributy uživatele & deklarací** proveďte následující kroky:
  
     a. Kliknutím na **ikonu Upravit** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![Snímek obrazovky, který zobrazuje dialog "atributy uživatele & deklarace identity" s vybranou ikonou "Upravit".](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -154,7 +154,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP HANA
 
     a. V podokně **Přidat informace o zprostředkovateli identity** vložte obsah XML metadat (který jste stáhli z Azure Portal) do pole **metadata** .
 
-    ![Přidat nastavení zprostředkovatele identity](./media/saphana-tutorial/sap2.png)
+    ![Snímek obrazovky, který zobrazuje podokno přidat informace o zprostředkovateli identity se zvýrazněnými poli metadata a název](./media/saphana-tutorial/sap2.png)
 
     b. Pokud je obsah dokumentu XML platný, proces analýzy extrahuje informace požadované pro pole **předmět, ID entity a vystavitele** v oblasti obrazovka **Obecné data** . Také extrahuje informace, které jsou nezbytné pro pole adresy URL v **cílové** oblasti obrazovky, například jako **základní adresu URL a pole SingleSignon URL (*)** .
 

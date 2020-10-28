@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 46f93dffe0a998f29ff7157a2866b52d13482834
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc5e0270c4533eaae1310dc84b616d675a79c8ea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676519"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895082"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s ověřováním identity Cloud platformou SAP
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. V části **základní konfigurační oddíl SAML** , pokud chcete nakonfigurovat v režimu iniciované **IDP** proveďte následující kroky:
 
-    ![Informace o jednotném přihlašování k doméně a adresám URL ověřování identity cloudové platformy SAP](common/idp-intiated.png)
+    ![Snímek obrazovky s oddílem konfigurace "základní S a M L" se zvýrazněnými textovými poli "identifikátor" a "odpovědět U R L" a vybraným tlačítkem Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `<IAS-tenant-id>.accounts.ondemand.com`
 
@@ -203,7 +203,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici ověřování identity cloudové platformy SAP na přístupovém panelu byste měli být automaticky přihlášeni k ověřování identity cloudové platformy SAP, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

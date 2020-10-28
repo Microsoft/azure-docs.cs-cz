@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272952"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895524"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Zobrazit data o přenosech na mapě pomocí Azure Maps Android SDK
 
 Data toku a data incidentů jsou dva typy dat přenosů, které lze zobrazit na mapě. V této příručce se dozvíte, jak zobrazit oba typy dat přenosů. Data incidentů se skládají z bodových a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody. Data toku zobrazují metriky týkající se toku provozu na cestách.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](quick-demo-map-app.md#create-an-azure-maps-account)a [získat klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Pak je nutné nainstalovat [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) a načíst mapu.
+Než budete moci zobrazit provoz na mapě, je třeba [vytvořit účet Azure](quick-demo-map-app.md#create-an-azure-maps-account)a [získat klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account). Pak je nutné nainstalovat [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) a načíst mapu.
 
 ## <a name="incidents-traffic-data"></a>Data o provozu incidentů
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Pomocí následujícího fragmentu kódu nastavte data toku provozu. Podobně jako u kódu v předchozí části předáte vrácenou hodnotu `flow` metody metodě `setTraffic` . Existují čtyři hodnoty, které lze předat do `flow` , přičemž každá hodnota by mohla triggerem `flow` vracet příslušnou hodnotu. Návratová hodnota `flow` se pak předává jako argument do `setTraffic` . Tyto čtyři hodnoty najdete v následující tabulce:
 
-|Hodnota toku | Description|
+|Hodnota toku | Popis|
 | :-- | :-- |
 | TrafficFlow. NONE | Nezobrazuje data o přenosech na mapě. |
 | TrafficFlow. relativní | Zobrazuje přenosová data, která se vztahují k rychlosti volného toku provozu. |
@@ -73,7 +73,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Chcete-li získat incidenty pro konkrétní funkci, můžete použít následující kód. Při kliknutí na funkci logika kódu zkontroluje incidenty a vytvoří zprávu o incidentu. V dolní části obrazovky se zobrazí zpráva s podrobnostmi.
 
-1. Nejprve je třeba upravit **> rozložení res > activity_main.xml**, aby vypadala níže. Můžete nahradit `mapcontrol_centerLat` , `mapcontrol_centerLng` a `mapcontrol_zoom` s požadovanými hodnotami. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
+1. Nejprve je třeba upravit **> rozložení res > activity_main.xml** , aby vypadala níže. Můžete nahradit `mapcontrol_centerLat` , `mapcontrol_centerLng` a `mapcontrol_zoom` s požadovanými hodnotami. Odvolání, úroveň přiblížení je hodnota mezi 0 a 22. Na úrovni přiblížení 0 se celý svět vejde na jednu dlaždici.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>

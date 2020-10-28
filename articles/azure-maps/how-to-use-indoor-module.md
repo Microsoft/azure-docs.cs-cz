@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d006ec692a2345f6b79c4be29446340cf4af6095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895456"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
 Sada Azure Maps Web SDK obsahuje modul *Azure Maps interiéru* . Modul  *vnitřních Azure Maps* umožňuje vykreslit vnitřní mapy vytvořené v programu Azure Maps Creator.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Vytvoření prostředku autora](how-to-manage-creator.md)
@@ -56,7 +56,7 @@ Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure
 
 ## <a name="instantiate-the-map-object"></a>Vytvoření instance objektu map
 
-Nejprve vytvořte *objekt mapy*. *Objekt map* se použije v dalším kroku pro vytvoření instance objektu *správce vnitřních* objektů.  Následující kód ukazuje, jak vytvořit instanci *objektu mapy*:
+Nejprve vytvořte *objekt mapy* . *Objekt map* se použije v dalším kroku pro vytvoření instance objektu *správce vnitřních* objektů.  Následující kód ukazuje, jak vytvořit instanci *objektu mapy* :
 
 ```javascript
 const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
@@ -77,7 +77,7 @@ const map = new atlas.Map("map-id", {
 
 ## <a name="instantiate-the-indoor-manager"></a>Vytvoření instance Správce vnitřních
 
-Chcete-li načíst vnitřní tilesets a styl mapy dlaždic, je nutné vytvořit instanci *správce vnitřních*verzí. Vytvořte instanci *správce vnitřních* objektů tak, že poskytnete *objekt map* a odpovídající `tilesetId` . Pokud chcete podporovat [styl dynamické mapy](indoor-map-dynamic-styling.md), musíte předat `statesetId` . V `statesetId` názvu proměnné se rozlišují malá a velká písmena. Váš kód by měl vypadat jako JavaScript níže.
+Chcete-li načíst vnitřní tilesets a styl mapy dlaždic, je nutné vytvořit instanci *správce vnitřních* verzí. Vytvořte instanci *správce vnitřních* objektů tak, že poskytnete *objekt map* a odpovídající `tilesetId` . Pokud chcete podporovat [styl dynamické mapy](indoor-map-dynamic-styling.md), musíte předat `statesetId` . V `statesetId` názvu proměnné se rozlišují malá a velká písmena. Váš kód by měl vypadat jako JavaScript níže.
 
 ```javascript
 const tilesetId = "";
@@ -89,7 +89,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Chcete-li povolit cyklické dotazování na data stavu, je nutné zadat `statesetId` volání a `indoorManager.setDynamicStyling(true)` . Data o stavu cyklického dotazování umožňují dynamicky aktualizovat stav dynamických vlastností nebo *stavů*. Například funkce, jako je například místnost, může mít zavolanou dynamickou vlastnost (*stav*) `occupancy` . Vaše aplikace se může chtít dotázat na všechny změny *stavu* , aby odrážely změnu ve vizuální mapě. Následující kód ukazuje, jak povolit cyklické dotazování stavu:
+Chcete-li povolit cyklické dotazování na data stavu, je nutné zadat `statesetId` volání a `indoorManager.setDynamicStyling(true)` . Data o stavu cyklického dotazování umožňují dynamicky aktualizovat stav dynamických vlastností nebo *stavů* . Například funkce, jako je například místnost, může mít zavolanou dynamickou vlastnost ( *stav* ) `occupancy` . Vaše aplikace se může chtít dotázat na všechny změny *stavu* , aby odrážely změnu ve vizuální mapě. Následující kód ukazuje, jak povolit cyklické dotazování stavu:
 
 ```javascript
 const tilesetId = "";
@@ -107,7 +107,7 @@ if (statesetId.length > 0) {
 
 ## <a name="indoor-level-picker-control"></a>Ovládací prvek Výběr úrovně vnitřníchy
 
- Ovládací prvek *pro výběr na úrovni interiéru* umožňuje změnit úroveň vykreslené mapy. Volitelnou inicializaci ovládacího prvku *pro výběr na úrovni interiéru* můžete provést pomocí *správce vnitřních*verzí. Zde je kód pro inicializaci výběru ovládacího prvku úrovně:
+ Ovládací prvek *pro výběr na úrovni interiéru* umožňuje změnit úroveň vykreslené mapy. Volitelnou inicializaci ovládacího prvku *pro výběr na úrovni interiéru* můžete provést pomocí *správce vnitřních* verzí. Zde je kód pro inicializaci výběru ovládacího prvku úrovně:
 
 ```javascript
 const levelControl = new atlas.control.LevelControl({ position: "top-right" });
@@ -116,7 +116,7 @@ indoorManager.setOptions({ levelControl });
 
 ## <a name="indoor-events"></a>Vnitřní události
 
- Modul *vnitřních Azure Maps* podporuje události *objektu map* . Naslouchací procesy událostí *objektu mapy* jsou vyvolány, když došlo ke změně úrovně nebo zařízení. Pokud chcete spustit kód po změně úrovně nebo zařízení, umístěte kód do naslouchacího procesu události. Následující kód ukazuje, jak lze do *objektu map*přidat naslouchací procesy událostí.
+ Modul *vnitřních Azure Maps* podporuje události *objektu map* . Naslouchací procesy událostí *objektu mapy* jsou vyvolány, když došlo ke změně úrovně nebo zařízení. Pokud chcete spustit kód po změně úrovně nebo zařízení, umístěte kód do naslouchacího procesu události. Následující kód ukazuje, jak lze do *objektu map* přidat naslouchací procesy událostí.
 
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
@@ -144,10 +144,10 @@ V tomto příkladu se dozvíte, jak ve webové aplikaci použít modul *vnitřn�
 
 3. V záhlaví HTML, odkazujte na Azure Maps a styly šablon stylů v modulu *interiéru* .
 
-4. Inicializuje *objekt mapy*. *Objekt map* podporuje následující možnosti:
+4. Inicializuje *objekt mapy* . *Objekt map* podporuje následující možnosti:
     - `Subscription key` je váš Azure Maps primární klíč předplatného.
     - `center` definuje zeměpisnou šířku a délku pro umístění vašeho centra mapy na vnitřních místech. Zadejte hodnotu pro, `center` Pokud nechcete zadat hodnotu pro `bounds` . Formát by měl vypadat takto `center` : [-122,13315, 47,63637].
-    - `bounds` je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](https://docs.microsoft.com/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [# západ, # jih, # východ, # sever].
+    - `bounds` je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [# západ, # jih, # východ, # sever].
     - `style` umožňuje nastavit barvu pozadí. Chcete-li zobrazit bílé pozadí, definujte `style` hodnotu "prázdné".
     - `zoom` umožňuje zadat minimální a maximální úroveň přiblížení pro mapu.
 
@@ -257,4 +257,4 @@ Další informace o tom, jak přidat další data do mapy:
 > [Dynamické stylování map v interiéru](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327495"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895197"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure Portal
 
@@ -39,18 +39,18 @@ V této části vytvoříte virtuální síť, podsíť a hostitele bastionu.
 
 Hostitel bastionu se bude používat k zabezpečenému připojení k virtuálnímu počítači za účelem testování privátního koncového bodu.
 
-1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť** .
 
-2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
     | **Nastavení**          | **Hodnota**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group (Skupina prostředků)   | Vybrat **CreatePrivateEndpointQS-RG** |
+    | Skupina prostředků   | Vybrat **CreatePrivateEndpointQS-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
-    | Oblast           | Vyberte **\<your-web-app-region>**. </br> Vyberte oblast, ve které je nasazená webová aplikace.|
+    | Oblast           | Vyberte **Západní Evropa** .|
 
 3. Vyberte kartu **IP adresy** nebo v dolní části stránky vyberte tlačítko **Další: IP adresy** .
 
@@ -60,31 +60,31 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     |--------------------|----------------------------|
     | Adresní prostor protokolu IPv4 | Zadejte **10.1.0.0/16** |
 
-5. V části **název podsítě**vyberte slovo **výchozí**.
+5. V části **název podsítě** vyberte slovo **výchozí** .
 
-6. V **Upravit podsíť**zadejte tyto informace:
+6. V **Upravit podsíť** zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název podsítě | Zadejte **mySubnet** |
     | Rozsah adres podsítě | Zadejte **10.1.0.0/24** |
 
-7. Vyberte **Uložit**.
+7. Vyberte **Uložit** .
 
 8. Vyberte kartu **zabezpečení** .
 
-9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+9. V části **BastionHost** vyberte **Povolit** . Zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název bastionu | Zadejte **myBastionHost** |
     | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myBastionIP** . </br> Vyberte **OK** . |
 
 
 8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
 
-9. Vyberte **Vytvořit**.
+9. Vyberte **Vytvořit** .
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -92,16 +92,16 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
-2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group (Skupina prostředků) | Vybrat **CreatePrivateEndpointQS-RG** |
+    | Skupina prostředků | Vybrat **CreatePrivateEndpointQS-RG** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
-    | Oblast | Vyberte **\<your-web-app-region>**. </br> Vyberte oblast, ve které je nasazená webová aplikace. |
+    | Oblast | Vyberte **Západní Evropa** . |
     | Možnosti dostupnosti | Vyberte možnost **nepožaduje se žádná redundance infrastruktury** . |
     | Image | Vyberte **Windows Server 2019 Datacenter – Gen1** |
     | Instance Azure Spot | Vybrat **ne** |
@@ -111,7 +111,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Heslo | Zadat heslo |
     | Potvrzení hesla | Znovu zadejte heslo. |
 
-3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+3. Vyberte kartu **síť** nebo vyberte **Další: disky** a **Další: síť** .
   
 4. Na kartě sítě vyberte nebo zadejte:
 
@@ -120,67 +120,67 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | **Síťové rozhraní** |  |
     | Virtuální síť | **myVNet** |
     | Podsíť | **mySubnet** |
-    | Veřejná IP adresa | Vyberte **Žádná**. |
+    | Veřejná IP adresa | Vyberte **Žádná** . |
     | Skupina zabezpečení sítě NIC | **Basic**|
-    | Veřejné příchozí porty | Vyberte **Žádná**. |
+    | Veřejné příchozí porty | Vyberte **Žádná** . |
    
-5. Vyberte **Zkontrolovat a vytvořit**. 
+5. Vyberte **Zkontrolovat a vytvořit** . 
   
-6. Zkontrolujte nastavení a pak vyberte **vytvořit**.
+6. Zkontrolujte nastavení a pak vyberte **vytvořit** .
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
 V této části vytvoříte privátní koncový bod pro webovou aplikaci, kterou jste vytvořili v části požadavky.
 
-1. V levé horní části obrazovky na portálu vyberte vytvořit privátní síťové připojení **k prostředkům**  >  **Networking**  >  **Private Link**nebo zadejte do vyhledávacího pole **privátní odkaz**.
+1. V levé horní části obrazovky na portálu vyberte vytvořit privátní síťové připojení **k prostředkům**  >  **Networking**  >  **Private Link** nebo zadejte do vyhledávacího pole **privátní odkaz** .
 
-2. Vyberte **Vytvořit**.
+2. Vyberte **Vytvořit** .
 
-3. V **centru privátních odkazů**vyberte v nabídce vlevo možnost **privátní koncové body** .
+3. V **centru privátních odkazů** vyberte v nabídce vlevo možnost **privátní koncové body** .
 
-4. V **privátních koncových bodech**vyberte **+ Přidat**.
+4. V **privátních koncových bodech** vyberte **+ Přidat** .
 
-5. Na kartě **základy** pro **Vytvoření privátního koncového bodu**zadejte nebo vyberte tyto informace:
+5. Na kartě **základy** pro **Vytvoření privátního koncového bodu** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **CreatePrivateEndpointQS-RG**. Tuto skupinu prostředků jste vytvořili v předchozí části.|
+    | Skupina prostředků | Vyberte **CreatePrivateEndpointQS-RG** . Tuto skupinu prostředků jste vytvořili v předchozí části.|
     | **Podrobnosti o instancích** |  |
-    | Name  | Zadejte **myPrivateEndpoint**. |
-    | Oblast | Vyberte **\<your-web-app-region>**. </br> Vyberte oblast, ve které je nasazená webová aplikace. |
+    | Name  | Zadejte **myPrivateEndpoint** . |
+    | Oblast | Vyberte **Západní Evropa** . |
 
 6. Vyberte kartu **prostředek** nebo tlačítko **Další: prostředek** ve spodní části stránky.
     
-7. V **prostředku**zadejte nebo vyberte tyto informace:
+7. V **prostředku** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Způsob připojení | **V adresáři vyberte připojit k prostředku Azure**. |
+    | Způsob připojení | **V adresáři vyberte připojit k prostředku Azure** . |
     | Předplatné | Vyberte své předplatné. |
-    | Typ prostředku | Vyberte **Microsoft. Web/weby**. |
-    | Prostředek | Vyberte **\<your-web-app-name>**. </br> Vyberte název webové aplikace, kterou jste vytvořili v části požadavky. |
-    | Cílový dílčí prostředek | Vyberte **weby**. |
+    | Typ prostředku | Vyberte **Microsoft. Web/weby** . |
+    | Prostředek | Vyberte **\<your-web-app-name>** . </br> Vyberte název webové aplikace, kterou jste vytvořili v části požadavky. |
+    | Cílový dílčí prostředek | Vyberte **weby** . |
 
 8. V dolní části obrazovky vyberte kartu **Konfigurace** nebo tlačítko **Další: Konfigurace** .
 
-9. V **konfiguraci**zadejte nebo vyberte tyto informace:
+9. V **konfiguraci** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Sítě** |  |
-    | Virtuální síť | Vyberte **myVNet**. |
-    | Podsíť | Vyberte **mySubnet**. |
+    | Virtuální síť | Vyberte **myVNet** . |
+    | Podsíť | Vyberte **mySubnet** . |
     | **Integrace Privátní DNS** |  |
-    | Integrovat s privátní zónou DNS | Ponechte výchozí **hodnotu Ano**. |
+    | Integrovat s privátní zónou DNS | Ponechte výchozí **hodnotu Ano** . |
     | Předplatné | Vyberte své předplatné. |
-    | Privátní zóny DNS | Ponechte výchozí hodnotu **(New) privatelink.azurewebsites.NET**.
+    | Privátní zóny DNS | Ponechte výchozí hodnotu **(New) privatelink.azurewebsites.NET** .
     
 
-13. Vyberte **Zkontrolovat a vytvořit**.
+13. Vyberte **Zkontrolovat a vytvořit** .
 
-14. Vyberte **Vytvořit**.
+14. Vyberte **Vytvořit** .
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Test připojení k privátnímu koncovému bodu
 
@@ -188,11 +188,11 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 1. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-2. Vyberte **CreatePrivateEndpointQS-RG**.
+2. Vyberte **CreatePrivateEndpointQS-RG** .
 
-3. Vyberte **myVM**.
+3. Vyberte **myVM** .
 
-4. Na stránce Přehled pro **myVM**vyberte **připojit** a pak **bastionu**.
+4. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu** .
 
 5. Vyberte tlačítko modrého **použití bastionu** .
 
@@ -214,29 +214,29 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
     Pro název webové aplikace se vrátí privátní IP adresa **10.1.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
-11. V připojení bastionu k **myVM**otevřete Internet Explorer.
+11. V připojení bastionu k **myVM** otevřete Internet Explorer.
 
-12. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET**.
+12. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET** .
 
 13. Pokud vaše aplikace nebyla nasazena, obdržíte výchozí stránku webové aplikace:
 
     :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Výchozí stránka webové aplikace" border="true":::
 
-18. Ukončete připojení k **myVM**.
+18. Ukončete připojení k **myVM** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte virtuální síť, virtuální počítač a webovou aplikaci pomocí následujících kroků:
 
-1. V nabídce na levé straně vyberte **skupiny prostředků**.
+1. V nabídce na levé straně vyberte **skupiny prostředků** .
 
-2. Vyberte **CreatePrivateEndpointQS-RG**.
+2. Vyberte **CreatePrivateEndpointQS-RG** .
 
-3. Vyberte **Odstranit skupinu prostředků**.
+3. Vyberte **Odstranit skupinu prostředků** .
 
-4. Do **pole zadejte název skupiny prostředků**zadejte **CreatePrivateEndpointQS-RG** .
+4. Do **pole zadejte název skupiny prostředků** zadejte **CreatePrivateEndpointQS-RG** .
 
-5. Vyberte **Odstranit**.
+5. Vyberte **Odstranit** .
 
 
 ## <a name="next-steps"></a>Další kroky

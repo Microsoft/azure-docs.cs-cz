@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 4442d7cb83ef28b1483c5156e2655deb793b3b16
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678423"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s elementy SD
 
@@ -143,7 +143,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V nabídce v horní části klikněte na **systém** a pak na **jednotné přihlašování** .
 
-    ![Konfigurace jednoho Sign-On](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![Snímek obrazovky s vybraným možnostem "System" a "jednotné přihlašování" v rozevíracím seznamu.](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. V dialogovém okně **Nastavení jednoho Sign-On** proveďte následující kroky:
 
@@ -167,11 +167,11 @@ Cílem této části je vytvořit uživatele s názvem B. Simon v prvcích SD. V
 
 1. V nabídce v horní části klikněte na **Správa uživatelů** a pak na **Uživatelé** .
 
-    ![Vytvoření testovacího uživatele pro elementy SD](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![Snímek obrazovky, který zobrazuje uživatele vybrané v rozevíracím seznamu Správa uživatelů](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. Klikněte na tlačítko **Přidat nového uživatele** .
 
-    ![Vytvoření testovacího uživatele pro elementy SD](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![Snímek obrazovky, který zobrazuje vybrané tlačítko Přidat nového uživatele.](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. V dialogovém okně **Přidat nového uživatele** proveďte následující kroky:
 
@@ -193,7 +193,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici prvky SD na přístupovém panelu byste měli být automaticky přihlášeni k prvkům SD, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

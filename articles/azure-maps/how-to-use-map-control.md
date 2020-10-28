@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335326"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895439"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
 
 Ovládací prvek Mapa knihovna JavaScriptu na straně klienta umožňuje vykreslovat mapy a vložené Azure Maps funkce do vaší webové nebo mobilní aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li použít Ovládací prvek Mapa na webové stránce, musíte mít jeden z následujících požadavků:
 
 * [Vytvořte účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account) a [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 
-* Získejte přihlašovací údaje pro Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+* Získejte přihlašovací údaje pro Azure Active Directory (AAD) s [možnostmi ověřování](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
@@ -75,7 +75,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </style>
    ```
 
-4. V těle stránky přidejte `<div>` prvek a poskytněte mu `id` **myMap**.
+4. V těle stránky přidejte `<div>` prvek a poskytněte mu `id` **myMap** .
 
    ```HTML
     <body onload="InitMap()">
@@ -83,7 +83,7 @@ Mapu můžete vložit do webové stránky pomocí Ovládací prvek Mapa knihovny
     </body>
    ```
 
-5. Nyní inicializujeme mapový ovládací prvek. Aby bylo možné ovládací prvek ověřit, budete muset vlastnit Azure Maps klíč předplatného nebo použít přihlašovací údaje Azure Active Directory (AAD) s [možnostmi ověřování](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
+5. Nyní inicializujeme mapový ovládací prvek. Aby bylo možné ovládací prvek ověřit, budete muset vlastnit Azure Maps klíč předplatného nebo použít přihlašovací údaje Azure Active Directory (AAD) s [možnostmi ověřování](/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
     Pokud používáte klíč předplatného pro ověřování, zkopírujte a vložte následující prvek skriptu do `<head>` prvku a pod první `<script>` prvek. Nahraďte `<Your Azure Maps Key>` klíčem primárního předplatného Azure Maps.
 
@@ -279,7 +279,7 @@ Přidání dalších dat do mapy:
 > [Vytvoření mapy](map-create.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)
 
 Seznam ukázek, které ukazují, jak integrovat Azure Active Directory (AAD) s Azure Maps, najdete v těchto tématech:
 

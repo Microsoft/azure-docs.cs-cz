@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517293"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895371"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementace dynamického stylu pro tvůrci vnitřních komap
 
-[Služba stavu funkcí](https://docs.microsoft.com/rest/api/maps/featurestate) Azure Maps Creator umožňuje aplikovat styly založené na dynamických vlastnostech funkcí dat mapy vnitřního prvku.  Například můžete vykreslit místnosti pro schůzky zařízení s určitou barvou, která odráží stav obsazení. V tomto článku vám ukážeme, jak dynamicky vykreslovat funkce pro vnitřní mapu pomocí [služby stavu funkcí](https://docs.microsoft.com/rest/api/maps/featurestate) a [vnitřního webového modulu](how-to-use-indoor-module.md).
+[Služba stavu funkcí](/rest/api/maps/featurestate) Azure Maps Creator umožňuje aplikovat styly založené na dynamických vlastnostech funkcí dat mapy vnitřního prvku.  Například můžete vykreslit místnosti pro schůzky zařízení s určitou barvou, která odráží stav obsazení. V tomto článku vám ukážeme, jak dynamicky vykreslovat funkce pro vnitřní mapu pomocí [služby stavu funkcí](/rest/api/maps/featurestate) a [vnitřního webového modulu](how-to-use-indoor-module.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvoření účtu Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -66,9 +66,9 @@ V další části nastavíme *stav* obsazení Office `UNIT26` na `true` . i kdy�
 
  Teď aktualizujeme stav obou poboček `UNIT26` a `UNIT27` :
 
-1. V aplikaci post vyberte možnost **Nový**. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit**.
+1. V aplikaci post vyberte možnost **Nový** . V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** a vyberte kolekci. Klikněte na **Uložit** .
 
-2. K aktualizaci stavu použijte [rozhraní API pro stavy aktualizací funkcí](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) . Předejte ID stateset a `UNIT26` jednu z obou jednotek. Přidejte svůj klíč předplatného Azure Maps. Tady je adresa URL požadavku **post** , který aktualizuje stav:
+2. K aktualizaci stavu použijte [rozhraní API pro stavy aktualizací funkcí](/rest/api/maps/featurestate/updatestatespreview) . Předejte ID stateset a `UNIT26` jednu z obou jednotek. Přidejte svůj klíč předplatného Azure Maps. Tady je adresa URL požadavku **post** , který aktualizuje stav:
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -124,7 +124,7 @@ Viz odkazy na rozhraní API uvedená v tomto článku:
 > [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Datová sada](creator-indoor-maps.md#datasets)
+> [Integrován](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)
@@ -134,4 +134,3 @@ Viz odkazy na rozhraní API uvedená v tomto článku:
 
 > [!div class="nextstepaction"]
 > [Služba WFS](creator-indoor-maps.md#web-feature-service-api)
-

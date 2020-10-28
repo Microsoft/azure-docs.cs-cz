@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: be3634ea051c99acf7b706da266179c93a1be861
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676675"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Kurz: Azure Active Directory integrace s cloudovou platformou SAP
 
@@ -150,7 +150,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
 
 3. V části Správa důvěryhodnosti v části **místní poskytovatel služeb** proveďte následující kroky:
 
-    ![Správa důvěryhodnosti](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Správa důvěryhodnosti")
+    ![Snímek obrazovky, který zobrazuje oddíl "Správa důvěryhodnosti" se zvolenou kartou "místní poskytovatel služeb" a všemi zvýrazněnými textovými poli.](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Správa důvěryhodnosti")
    
     a. Klikněte na **Upravit** .
 
@@ -178,7 +178,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí cloudov�
 
 5. Klikněte na kartu **důvěryhodný poskytovatel identity** a pak klikněte na **Přidat důvěryhodného zprostředkovatele identity** .
    
-    ![Správa důvěryhodnosti](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Správa důvěryhodnosti")
+    ![Snímek obrazovky zobrazující stránku správy důvěryhodnosti se zvolenou kartou důvěryhodný zprostředkovatel identity](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Správa důvěryhodnosti")
    
     >[!NOTE]
     >Pokud chcete spravovat seznam důvěryhodných zprostředkovatelů identity, musíte zvolit typ vlastní konfigurace v části místní poskytovatel služeb. Pro výchozí typ konfigurace máte neupravitelný a implicitně důvěryhodný vztah ke službě SAP ID. V případě žádného není nastavení vztahu důvěryhodnosti k dispozici.

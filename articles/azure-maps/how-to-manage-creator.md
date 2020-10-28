@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677940"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895796"
 ---
 # <a name="manage-azure-maps-creator"></a>Spravovat tvůrce Azure Maps
 
@@ -25,19 +25,19 @@ Tento článek vás provede kroky k vytvoření a odstranění prostředku Creat
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
-2. Vyberte účet Azure Maps. Pokud nevidíte účet Azure Maps v části **Poslední prostředky**, přejděte do nabídky Azure Portal. Vyberte **Všechny prostředky**. Vyhledejte a vyberte svůj účet Azure Maps.
+2. Vyberte účet Azure Maps. Pokud nevidíte účet Azure Maps v části **Poslední prostředky** , přejděte do nabídky Azure Portal. Vyberte **Všechny prostředky** . Vyhledejte a vyberte svůj účet Azure Maps.
 
     ![Domovská stránka portálu Azure Maps](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Až budete na stránce Azure Maps účet, přejděte na možnost **Přehled** v části **Autor**. Kliknutím na  **vytvořit**  vytvořte prostředek Azure Maps Creator.
+3. Až budete na stránce Azure Maps účet, přejděte na možnost **Přehled** v části **Autor** . Kliknutím na  **vytvořit**  vytvořte prostředek Azure Maps Creator.
 
     ![Stránka pro vytvoření Azure Mapsho Tvůrce](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Zadejte název a umístění prostředku autora. V současné době je tvůrce podporován pouze v USA. Klikněte na **Zkontrolovat a vytvořit**.
+4. Zadejte název a umístění prostředku autora. V současné době je tvůrce podporován pouze v USA. Klikněte na **Zkontrolovat a vytvořit** .
 
    ![Stránka zadání informací o účtu Tvůrce](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. Zkontrolujte nastavení a klikněte na **vytvořit**.
+5. Zkontrolujte nastavení a klikněte na **vytvořit** .
 
     ![Stránka pro potvrzení autora nastavení účtu](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -45,7 +45,7 @@ Tento článek vás provede kroky k vytvoření a odstranění prostředku Creat
 
    ![Stránka stavu nasazení prostředků](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. Klikněte na **Přejít k prostředku**. Stránka pro zobrazení prostředků autora zobrazuje stav zdroje autora a zvolené demografické oblasti.
+7. Klikněte na **Přejít k prostředku** . Stránka pro zobrazení prostředků autora zobrazuje stav zdroje autora a zvolené demografické oblasti.
 
     ![Stránka stavu Tvůrce](./media/how-to-manage-creator/creator-resource-view.png)
 
@@ -54,7 +54,7 @@ Tento článek vás provede kroky k vytvoření a odstranění prostředku Creat
 
 ## <a name="delete-creator-resource"></a>Odstranit prostředek autora
 
-Pokud chcete odstranit prostředek tvůrce, přejděte na účet Azure Maps. V části **Tvůrce**vyberte **Přehled** . Klikněte na tlačítko **Odstranit**.
+Pokud chcete odstranit prostředek tvůrce, přejděte na účet Azure Maps. V části **Tvůrce** vyberte **Přehled** . Klikněte na tlačítko **Odstranit** .
 
 >[!WARNING]
 >Když odstraníte prostředek autora účtu Azure Maps, odstraní se také datové sady, tilesets a funkce statesets vytvořené pomocí služby Creator Services.
@@ -69,7 +69,7 @@ Kliknutím na tlačítko **Odstranit** a zadáním jména autora potvrďte odstr
 
 Tvůrce zdědí nastavení Azure Maps Access Control (IAM). Všechna volání rozhraní API pro přístup k datům se musí odesílat pomocí ověřovacích a autorizačních pravidel.
 
-Data o využití tvůrce jsou začleněná do vašich Azure Mapsch grafů využití a protokolu aktivit.  Další informace najdete v tématu [Správa ověřování v Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+Data o využití tvůrce jsou začleněná do vašich Azure Mapsch grafů využití a protokolu aktivit.  Další informace najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 ## <a name="access-to-creator-services"></a>Přístup ke službám Tvůrce
 
@@ -88,7 +88,7 @@ Seznámení s autorem pro mapování vnitřních umístění:
 > [Převod dat](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Datová sada](creator-indoor-maps.md#datasets)
+> [Integrován](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

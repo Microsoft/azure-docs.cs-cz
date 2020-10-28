@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3f5dfcafe1c7b08a2c8320f807bf809107197d40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9b732bd25e7ef8aa084c98d5b059d422f86a4b0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335275"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895405"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Zobrazení metrik využití rozhraní API služby Azure Maps
 
@@ -21,7 +21,7 @@ V tomto článku se dozvíte, jak zobrazit metriky využití rozhraní API pro �
 
 ## <a name="view-metric-snapshot"></a>Zobrazit snímek metriky
 
-Některé běžné metriky si můžete prohlédnout na stránce **Přehled** v účtu Maps. V současné době zobrazuje *Celkový počet požadavků*, *Celkový počet chyb*a *dostupnost* v rámci selektivního časového intervalu.
+Některé běžné metriky si můžete prohlédnout na stránce **Přehled** v účtu Maps. V současné době zobrazuje *Celkový počet požadavků* , *Celkový počet chyb* a *dostupnost* v rámci selektivního časového intervalu.
 
 ![Přehled Azure Maps metriky využití](media/how-to-view-api-usage/portal-overview.png)
 
@@ -31,7 +31,7 @@ Pokud potřebujete přizpůsobit tyto grafy pro konkrétní analýzu, přejděte
 
 1. Přihlaste se k předplatnému Azure na [portálu](https://portal.azure.com).
 
-2. Klikněte na položku nabídky **všechny prostředky** na levé straně a přejděte na svůj *účet Azure Maps*.
+2. Klikněte na položku nabídky **všechny prostředky** na levé straně a přejděte na svůj *účet Azure Maps* .
 
 3. Po otevření účtu Maps klikněte na nabídku **metrik** na levé straně.
 
@@ -42,7 +42,7 @@ Pokud potřebujete přizpůsobit tyto grafy pro konkrétní analýzu, přejděte
 
       ![Podokno metriky využití Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
-5. V dalším kroku můžete vybrat *časový rozsah* kliknutím na **posledních 24 hodin (automaticky)**. Ve výchozím nastavení je časový rozsah nastavený na 24 hodin. Po kliknutí se zobrazí všechny vybrané časové rozsahy. Můžete vybrat *časové rozlišení* a zvolit, že se má v jednom rozevíracím seznamu zobrazit čas jako *místní* nebo *GMT* . Klikněte na **Použít**.
+5. V dalším kroku můžete vybrat *časový rozsah* kliknutím na **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je časový rozsah nastavený na 24 hodin. Po kliknutí se zobrazí všechny vybrané časové rozsahy. Můžete vybrat *časové rozlišení* a zvolit, že se má v jednom rozevíracím seznamu zobrazit čas jako *místní* nebo *GMT* . Klikněte na **Použít** .
 
     ![Časový rozsah Azure Mapsch metrik](media/how-to-view-api-usage/time-range.png)
 
@@ -66,4 +66,4 @@ Další informace o rozhraních API Azure Maps, pro která chcete sledovat využ
 > [Azure Maps Android SDK postupy](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Dokumentace k Azure Maps REST API](https://docs.microsoft.com/rest/api/maps)
+> [Dokumentace k Azure Maps REST API](/rest/api/maps)

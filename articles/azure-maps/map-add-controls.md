@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 08a3b72bb137713721345ecb52cf4e1bb7afcdc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a225d4ea19cccea114e47cc61a8055d28e8cd99
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310760"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895286"
 ---
 # <a name="add-controls-to-a-map"></a>Přidání ovládacích prvků do mapy
 
-V tomto článku se dozvíte, jak přidat ovládací prvky do mapy. Naučíte se také, jak vytvořit mapu se všemi ovládacími prvky a [Výběr stylu](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
+V tomto článku se dozvíte, jak přidat ovládací prvky do mapy. Naučíte se také, jak vytvořit mapu se všemi ovládacími prvky a [Výběr stylu](./choose-map-style.md).
 
 ## <a name="add-zoom-control"></a>Přidat ovládací prvek Lupa
 
@@ -142,4 +142,3 @@ Další informace o třídách a metodách, které se používají v tomto člá
 
 > [!div class="nextstepaction"]
 > [Přidání vrstvy bublin](map-add-bubble-layer.md)
-

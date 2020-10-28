@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 85428f682b5a5e179b5c501982749611131c6aed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674431"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893824"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s segmentem
 
@@ -136,19 +136,19 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Klikněte na **ikonu nastavení** , přejděte dolů k možnosti **ověřování** a klikněte na **připojení** .
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment1.PNG)
+    ![Snímek obrazovky zobrazující vybranou ikonu nastavení a možnost připojení v nabídce ověřování.](./media/segment-tutorial/segment1.PNG)
 
 1. Klikněte na **Přidat nové připojení** .
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment2.PNG)
+    ![Snímek obrazovky s vybraným tlačítkem přidat nové připojení, které zobrazuje oddíl připojení](./media/segment-tutorial/segment2.PNG)
 
 1. Vyberte **SAML 2,0** jako připojení, které chcete konfigurovat, a klikněte na tlačítko **Vybrat připojení** .
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment3.PNG)
+    ![Snímek obrazovky, který zobrazuje oddíl "Zvolte připojení" s "S A M L 2,0" a vybraným tlačítkem vybrat připojení.](./media/segment-tutorial/segment3.PNG)
 
 1. Na následující stránce proveďte následující kroky:
 
-    ![Konfigurace segmentu](./media/segment-tutorial/segment4.PNG)
+    ![Snímek obrazovky se zvýrazněnou stránkou "Konfigurovat zprostředkovatele identity" se zvýrazněnými textovými poli "Single Sign-On U R L" a "cílová U R L", kde je vybrané tlačítko Další.](./media/segment-tutorial/segment4.PNG)
 
     a. Zkopírujte hodnotu **adresy URL jednoho Sign-On** a vložte ji do pole **Adresa URL odpovědi** v DIALOGOVÉM okně **základní konfigurace SAML** v Azure Portal.
 
@@ -174,7 +174,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když kliknete na dlaždici segment na přístupovém panelu, měli byste se automaticky přihlásit k segmentu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

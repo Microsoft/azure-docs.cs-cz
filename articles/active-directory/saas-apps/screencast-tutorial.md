@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/15/2019
 ms.author: jeedes
-ms.openlocfilehash: eae60ba9aabe417e986c7637ce700302bfe6c7bf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2b0c42046df716c8ae65046e5f3314817da0a17e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893773"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-screencast-o-matic"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí programu záznamového připojení (SSO) k matic
 
@@ -139,13 +139,13 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. V části **přístupová stránka** klikněte na **Nastavení** .
 
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_setup.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "Access Page" s vybraným tlačítkem "nastavení".](./media/screencast-tutorial/tutorial_screencast_setup.png)
 
 1. Na **stránce přístup pro instalaci** proveďte následující kroky.
 
-1. V části **Adresa URL pro přístup** do zadaného textového pole zadejte jeho instanci.
+1. V části **Adresa URL přístupu** zadejte do zadaného textového pole svoji instanci.
 
-    ![Přístup](./media/screencast-tutorial/tutorial_screencast_access.png)
+    ![Snímek obrazovky, který zobrazuje oddíl "Access U R L" s zvýrazněným textovým polem název instance](./media/screencast-tutorial/tutorial_screencast_access.png)
 
 1. V části **omezení uživatele v SAML (volitelné)** vyberte **vyžadovat uživatele domény** .
 
@@ -165,7 +165,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici záznam dění na Maticu na přístupovém panelu byste měli být automaticky přihlášeni k pracovním postupům pro záznam dění na matic, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 

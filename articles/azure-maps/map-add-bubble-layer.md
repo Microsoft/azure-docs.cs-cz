@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 446a70a4399b7ec0e16fed2d33c9ec711acfe200
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310828"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895324"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bubl
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
+Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](/javascript/api/azure-maps-control/atlas.layer.bubblelayer). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
 
 ```javascript
 //Add point locations.
@@ -83,10 +83,10 @@ Bublinová vrstva má pouze několik možností stylu. Tady je nástroj pro jeji
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
+> [BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
@@ -100,4 +100,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Použití výrazů pro styly založené na datech](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

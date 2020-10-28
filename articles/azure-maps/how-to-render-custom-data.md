@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ec62461e5a12f0c566becdfc7d9a1464433ee656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311015"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895745"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
-V tomto článku se dozvíte, jak používat [službu statického obrazu](https://docs.microsoft.com/rest/api/maps/render/getmapimage)s funkcí kompozice obrázků k umožnění překryvů nad rastrovou mapou. Složení obrázku zahrnuje možnost získat rastrovou dlaždici s dalšími daty, jako jsou vlastní špendlíky, popisky a překryvy geometrie.
+V tomto článku se dozvíte, jak používat [službu statického obrazu](/rest/api/maps/render/getmapimage)s funkcí kompozice obrázků k umožnění překryvů nad rastrovou mapou. Složení obrázku zahrnuje možnost získat rastrovou dlaždici s dalšími daty, jako jsou vlastní špendlíky, popisky a překryvy geometrie.
 
-Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžete použít aplikaci post. [Rozhraní API služby Azure Maps data Service](https://docs.microsoft.com/rest/api/maps/data) můžete použít k ukládání a vykreslování překryvů.
+Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžete použít aplikaci post. [Rozhraní API služby Azure Maps data Service](/rest/api/maps/data) můžete použít k ukládání a vykreslování překryvů.
 
 > [!Tip]
 > Použití Azure Maps webové sady SDK je často mnohem výhodnější k zobrazení jednoduché mapy na webové stránce, než aby používala službu statických imagí. Webová sada SDK používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje pouze zlomek transakce na zatížení mapy. Všimněte si, že Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc poskytuje bohatší sadu možností vizualizace dat než webová služba statické mapy.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
@@ -41,9 +41,9 @@ Pokud chcete dokončit postupy v tomto článku, musíte nejdřív vytvořit ú�
 
 Chcete-li vykreslit špendlíky s popisky a vlastní image, proveďte tyto kroky:
 
-1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
+1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový** . V okně **vytvořit nové** vyberte **kolekce** . Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění pro uložení žádosti. Pak vyberte **Uložit**.
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění pro uložení žádosti. Pak vyberte **Uložit** .
     
     ![Vytvoření žádosti v post](./media/how-to-render-custom-data/postman-new.png)
 
@@ -62,7 +62,7 @@ Chcete-li vykreslit špendlíky s popisky a vlastní image, proveďte tyto kroky
 > [!Note]
 > Postup v této části vyžaduje účet Azure Maps v cenové úrovni S1.
 
-Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní API pro nahrání dat](https://docs.microsoft.com/rest/api/maps/data/uploadpreview). Pomocí následujících kroků nahrajte cestu a data PIN.
+Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní API pro nahrání dat](/rest/api/maps/data/uploadpreview). Pomocí následujících kroků nahrajte cestu a data PIN.
 
 1. V aplikaci pro odesílání otevřete novou kartu v kolekci, kterou jste vytvořili v předchozí části. Na kartě tvůrce vyberte metodu POST HTTP a zadejte následující adresu URL, která provede požadavek POST:
 
@@ -172,7 +172,7 @@ Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní AP
 > Postup v této části vyžaduje účet Azure Maps v cenové úrovni S1.
 
 
-Vzhled mnohoúhelníku lze upravit pomocí modifikátorů stylu s [parametrem cesty](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Vzhled mnohoúhelníku lze upravit pomocí modifikátorů stylu s [parametrem cesty](/rest/api/maps/render/getmapimage#uri-parameters).
 
 1. V aplikaci pro odesílání otevřete novou kartu v kolekci, kterou jste vytvořili dříve. Na kartě tvůrce vyberte metodu GET HTTP a zadejte následující adresu URL, abyste nakonfigurovali požadavek GET na vykreslení mnohoúhelníku s barvou a neprůhledností:
     
@@ -192,7 +192,7 @@ Vzhled mnohoúhelníku lze upravit pomocí modifikátorů stylu s [parametrem ce
 > Postup v této části vyžaduje účet Azure Maps v cenové úrovni S1.
 
 
-Můžete upravit vzhled PIN kódů přidáním modifikátorů stylu. Chcete-li například vytvořit špendlíky a jejich popisky větší nebo menší, použijte `sc` Modifikátor "měřítko stylu". Tento modifikátor přebírá hodnotu, která je větší než nula. Hodnota 1 je standardní stupnice. Hodnoty větší než 1 zajistí větší velikost PIN kódů a hodnoty menší než 1 budou menší. Další informace o modifikátorech stylu najdete v tématu [parametry cesty ke službě statických imagí](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Můžete upravit vzhled PIN kódů přidáním modifikátorů stylu. Chcete-li například vytvořit špendlíky a jejich popisky větší nebo menší, použijte `sc` Modifikátor "měřítko stylu". Tento modifikátor přebírá hodnotu, která je větší než nula. Hodnota 1 je standardní stupnice. Hodnoty větší než 1 zajistí větší velikost PIN kódů a hodnoty menší než 1 budou menší. Další informace o modifikátorech stylu najdete v tématu [parametry cesty ke službě statických imagí](/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 Pomocí těchto kroků můžete vykreslit kružnici a špendlíky s vlastními popisky:
@@ -222,6 +222,5 @@ Podobně můžete změnit, přidat a odebrat ostatní modifikátory stylu.
 ## <a name="next-steps"></a>Další kroky
 
 
-* Prozkoumejte dokumentaci k [rozhraní API pro Image mapy Azure Maps získat](https://docs.microsoft.com/rest/api/maps/render/getmapimage) .
-* Další informace o službě Azure Maps data Service najdete v [dokumentaci ke službě](https://docs.microsoft.com/rest/api/maps/data).
-
+* Prozkoumejte dokumentaci k [rozhraní API pro Image mapy Azure Maps získat](/rest/api/maps/render/getmapimage) .
+* Další informace o službě Azure Maps data Service najdete v [dokumentaci ke službě](/rest/api/maps/data).

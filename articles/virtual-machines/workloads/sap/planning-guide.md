@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: a0347e76a39be8bada9ec59eb8accef17e784951
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738129"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894096"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -695,7 +695,7 @@ Pokud se komponenty aplikační vrstvy DBMS a SAP dají spustit ve virtuálních
 
 ## <a name="managing-azure-assets"></a>Správa prostředků Azure
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 Azure Portal je jedno ze tří rozhraní pro správu nasazení virtuálních počítačů Azure. Základní úlohy správy, jako je nasazení virtuálních počítačů z imagí, je možné provádět prostřednictvím Azure Portal. Kromě toho vytváření účtů úložiště, virtuálních sítí a dalších komponent Azure také provádí úlohy, které mohou Azure Portal dobře zvládnout. Nicméně funkce, jako je nahrání virtuálních pevných disků z místního prostředí do Azure nebo kopírování VHD v rámci Azure, jsou úkoly, které vyžadují nástroje nebo správu třetích stran prostřednictvím PowerShellu nebo rozhraní příkazového řádku.
 
@@ -1425,7 +1425,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>CLI
+##### <a name="cli"></a>Rozhraní příkazového řádku
 
 V systému Linux lze použít následující vzorový kód. V případě systému Windows buď použijte prostředí PowerShell, jak je popsáno výše, nebo tento příklad Přizpůsobte, aby místo $rgName používal% rgName%, a nastavte proměnnou prostředí pomocí *sady* příkazů systému Windows.
 
@@ -1832,7 +1832,7 @@ Služby Azure Managed disks se automaticky umístí do domény selhání virtuá
 
 Ukázková architektura systému SAP NetWeaver, který využívá infrastrukturu Azure HA a účty úložiště, může vypadat takto:
 
-![Využití infrastruktury Azure HA k dosažení vyšší dostupnosti aplikace SAP][planning-guide-figure-2900]
+![Diagram znázorňující systém SAP NetWeaver, který využívá Azure Infrastructure HA a účty úložiště.][planning-guide-figure-2900]
 
 Ukázková architektura systému SAP NetWeaver, který používá infrastrukturu Azure HA a Managed Disks, může vypadat takto:
 
@@ -1892,7 +1892,7 @@ Jenom nespravované disky: Pokud nasazujete mnoho systémů SAP a počet nasazen
 
 ##### <a name="windows-logologo_windows-ha-on-windows"></a>![Logo Windows][Logo_Windows] HA ve Windows
 
-![Architektura HA aplikace SAP NetWeaver s SQL Server v Azure IaaS][planning-guide-figure-3200]
+![Diagram znázorňující architekturu HA aplikace SAP NetWeaver s SQL Server v Azure IaaS.][planning-guide-figure-3200]
 
 Následující konstrukce Azure se používají pro systém SAP NetWeaver, aby se minimalizoval dopad na problémy infrastruktury a opravy hostitele:
 

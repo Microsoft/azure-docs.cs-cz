@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6fb4d1459584e8dd2b230a424f043ad086f2570d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895762"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Správa ověřování v Azure Maps
 
@@ -22,16 +22,16 @@ Po vytvoření účtu Azure Maps se vytvoří ID klienta a klíče pro podporu o
 
 ## <a name="view-authentication-details"></a>Zobrazit podrobnosti o ověřování
 
-Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Pokud [ke volání Azure Maps použijete ověřování pomocí sdíleného klíče](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication), doporučujeme použít primární klíč jako klíč předplatného. Sekundární klíč můžete použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování v Azure Maps](https://aka.ms/amauth).
+Po vytvoření účtu Azure Maps se vygenerují primární a sekundární klíče. Pokud [ke volání Azure Maps použijete ověřování pomocí sdíleného klíče](./azure-maps-authentication.md#shared-key-authentication), doporučujeme použít primární klíč jako klíč předplatného. Sekundární klíč můžete použít ve scénářích, jako je například vracení klíčových změn. Další informace najdete v tématu [ověřování v Azure Maps](./azure-maps-authentication.md).
 
-Podrobnosti o ověřování můžete zobrazit v Azure Portal. Ve svém účtu v nabídce **Nastavení** vyberte **ověřování**.
+Podrobnosti o ověřování můžete zobrazit v Azure Portal. Ve svém účtu v nabídce **Nastavení** vyberte **ověřování** .
 
 > [!div class="mx-imgBorder"]
 > ![Podrobnosti ověřování](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 ## <a name="discover-category-and-scenario"></a>Vyhledat kategorii a scénář
 
-V závislosti na potřebách aplikací existují konkrétní cesty k zabezpečení aplikace. Azure AD definuje kategorie pro podporu široké škály ověřovacích toků. Podívejte se na kategorie [aplikací](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios#application-categories) a zjistěte, kterou kategorii aplikace vyhovuje.
+V závislosti na potřebách aplikací existují konkrétní cesty k zabezpečení aplikace. Azure AD definuje kategorie pro podporu široké škály ověřovacích toků. Podívejte se na kategorie [aplikací](../active-directory/develop/authentication-flows-app-scenarios.md#application-categories) a zjistěte, kterou kategorii aplikace vyhovuje.
 
 > [!NOTE]
 > I když používáte ověřování pomocí sdíleného klíče, porozumět kategoriím a scénářům, které vám pomůžou zajistit zabezpečení aplikace.
@@ -56,14 +56,14 @@ Odkazy v tabulce odkazují na podrobné informace o konfiguraci jednotlivých sc
 
 ## <a name="view-role-definitions"></a>Zobrazit definice rolí
 
-Pokud chcete zobrazit role Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*. Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
+Pokud chcete zobrazit role Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** . Vyberte **role** a potom vyhledejte role, které začínají na *Azure Maps* . Tyto role Azure Maps jsou role, kterým můžete udělit přístup.
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit dostupné role](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
-Chcete-li zobrazit uživatele a aplikace, kterým byl udělen přístup pro Azure Maps, přejděte na **Access Control (IAM)**. Vyberte možnost **přiřazení rolí**a potom filtrovat podle **Azure Maps**.
+Chcete-li zobrazit uživatele a aplikace, kterým byl udělen přístup pro Azure Maps, přejděte na **Access Control (IAM)** . Vyberte možnost **přiřazení rolí** a potom filtrovat podle **Azure Maps** .
 
 > [!div class="mx-imgBorder"]
 > ![Zobrazit uživatele a aplikace, kterým byl udělen přístup](./media/how-to-manage-authentication/how-to-view-amrbac.png)
@@ -77,11 +77,11 @@ Požádat o token z koncového bodu tokenu služby Azure AD. V žádosti o Azure
 | Veřejný cloud Azure     | `https://login.microsoftonline.com` | `https://atlas.microsoft.com/` |
 | Cloud Azure Government | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
-Další informace o vyžádání přístupových tokenů z Azure AD pro uživatele a instanční objekty najdete v tématu [scénáře ověřování pro Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios) a zobrazení konkrétních scénářů v tabulce [scénářů](./how-to-manage-authentication.md#determine-authentication-and-authorization).
+Další informace o vyžádání přístupových tokenů z Azure AD pro uživatele a instanční objekty najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/develop/authentication-vs-authorization.md) a zobrazení konkrétních scénářů v tabulce [scénářů](./how-to-manage-authentication.md#determine-authentication-and-authorization).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Azure AD a Azure Maps Web SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Další informace najdete v tématu [Azure AD a Azure Maps Web SDK](./how-to-use-map-control.md).
 
 Najděte metriky využití API pro váš účet Azure Maps:
 > [!div class="nextstepaction"]

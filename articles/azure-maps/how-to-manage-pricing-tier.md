@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8e62734e039d0f6ceff836947519ef71ee9b8497
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9934a2660d18fdcbada1cda86f957345b2d1a8c8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311049"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895728"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Správa cenové úrovně účtu Azure Maps
 
 Cenovou úroveň účtu Azure Maps můžete spravovat prostřednictvím Azure Portal. Cenovou úroveň vašeho účtu můžete zobrazit nebo změnit i po vytvoření [účtu](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Získejte další informace o [výběru správné cenové úrovně v Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier).
+Získejte další informace o [výběru správné cenové úrovně v Azure Maps](./choose-pricing-tier.md).
 
 ## <a name="view-your-pricing-tier"></a>Zobrazení cenové úrovně
 

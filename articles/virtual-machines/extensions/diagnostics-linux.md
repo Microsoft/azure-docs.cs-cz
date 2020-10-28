@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448197"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893399"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -39,6 +39,9 @@ Toto rozšíření funguje v obou modelech nasazení Azure.
 ## <a name="installing-the-extension-in-your-vm"></a>Instalace rozšíření na virtuálním počítači
 
 Toto rozšíření můžete povolit pomocí rutin Azure PowerShell, skriptů Azure CLI, šablon ARM nebo Azure Portal. Další informace najdete v tématu [funkce rozšíření](features-linux.md).
+
+>[!NOTE]
+>Některé komponenty rozšíření virtuálního počítače diagnostiky se také dodávají v [rozšíření Log Analytics VM](./oms-linux.md). Z důvodu této architektury mohou konflikty nastat, pokud jsou obě rozšíření vytvořena ve stejné šabloně ARM. Aby se tyto konflikty při instalaci nezobrazovaly, použijte [ `dependsOn` direktivu](../../azure-resource-manager/templates/define-resource-dependency.md#dependson) , abyste zajistili, že se rozšíření nainstalují sekvenčně. Rozšíření lze instalovat v libovolném pořadí.
 
 Tyto pokyny k instalaci a [Ukázková konfigurace ke stažení](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) nakonfigurují lad 3,0 na:
 
@@ -65,9 +68,9 @@ Podporované distribuce a verze:
 - Debian 9, 8, 7
 - RHEL 7, 6.7 +
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
+* **Agent Azure Linux verze 2.2.0 nebo novější** . Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
 * Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
 * Příkaz wget, pokud ho ještě nemáte: Spusťte `sudo apt-get install wget` .
 * Existující předplatné Azure a existující účet úložiště pro obecné účely, ve kterém se budou ukládat data.  Účty úložiště pro obecné účely podporují úložiště tabulek, které je povinné.  Účet Blob Storage nebude fungovat.
@@ -172,7 +175,7 @@ Po změně chráněných nebo veřejných nastavení je můžete nasadit do virt
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Migrace z předchozích verzí rozšíření
 
-Nejnovější verze rozšíření je **3,0**. **Všechny staré verze (2. x) jsou zastaralé a mohou být publikovány od 31. července 2018 nebo po ní**.
+Nejnovější verze rozšíření je **3,0** . **Všechny staré verze (2. x) jsou zastaralé a mohou být publikovány od 31. července 2018 nebo po ní** .
 
 > [!IMPORTANT]
 > Toto rozšíření přináší zásadní změny v konfiguraci rozšíření. Tato změna byla provedena za účelem zlepšení zabezpečení rozšíření. v důsledku toho nelze zachovat zpětnou kompatibilitu s 2. x. Také Vydavatel rozšíření pro toto rozšíření je jiný než Vydavatel pro verze 2. x.
@@ -202,7 +205,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Name | Hodnota
+Název | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -578,7 +581,7 @@ TransfersPerSecond | Operace čtení nebo zápisu za sekundu
 
 Agregované hodnoty napříč všemi systémy souborů lze získat nastavením `"condition": "IsAggregate=True"` . Hodnoty pro konkrétní připojený systém souborů, jako je například "/mnt", lze získat nastavením `"condition": 'Name="/mnt"'` . 
 
-**Poznámka**: Pokud místo JSON použijete portál Azure Portal, bude správným formulářem pole podmínka název = '/mnt '.
+**Poznámka** : Pokud místo JSON použijete portál Azure Portal, bude správným formulářem pole podmínka název = '/mnt '.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>předdefinované metriky pro třídu disku
 
@@ -786,7 +789,7 @@ Data odesílaná do jímky JsonBlob se ukládají v objektech blob v účtu úlo
 Kromě toho můžete použít tyto nástroje uživatelského rozhraní pro přístup k datům v Azure Storage:
 
 * Průzkumník serveru sady Visual Studio.
-* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
+* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Průzkumník služby Azure Storage").
 
 Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#an-example-lad-30-configuration).
 

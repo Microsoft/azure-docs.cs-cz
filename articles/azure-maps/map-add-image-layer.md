@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 4116028cc8c4668c897d7de7bbffb607b5e5daba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310539"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892940"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak překrýt obrázek do pevné sady souřadnic. 
 * Obrázky paprsků s počasí
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) je jednoduchý způsob, jak překrýt obrázek na mapě. Všimněte si, že prohlížeče mohou mít potíže při načítání velkého obrázku. V takovém případě zvažte rozdělení obrázku do dlaždic a jejich načtení do mapy jako [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer).
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) je jednoduchý způsob, jak překrýt obrázek na mapě. Všimněte si, že prohlížeče mohou mít potíže při načítání velkého obrázku. V takovém případě zvažte rozdělení obrázku do dlaždic a jejich načtení do mapy jako [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer).
 
 Vrstva image podporuje následující formáty obrázků:
 
@@ -38,7 +38,7 @@ Vrstva image podporuje následující formáty obrázků:
 
 ## <a name="add-an-image-layer"></a>Přidání vrstvy obrázků
 
-Následující kód překrývá obrázek [mapy newyorském, New Jersey, z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě. [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) se vytvoří PŘEDÁNÍM adresy URL obrázku a souřadnicemi pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` .
+Následující kód překrývá obrázek [mapy newyorském, New Jersey, z 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) na mapě. [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) se vytvoří PŘEDÁNÍM adresy URL obrázku a souřadnicemi pro čtyři rohy ve formátu `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` .
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -64,7 +64,7 @@ Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 Tento příklad ukazuje, jak přidat informace o překrytí základní desky KML jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice sever, jih, východní a západní délky a rotace po směru hodinových ručiček. Ale vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je pro Cathedral Chartres a je nasource z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-Kód používá statickou `getCoordinatesFromEdges` funkci ze třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) . Vypočítá čtyři rohy obrázku s použitím informací o Severní, Jižní, východní, západní a rotační překrytí základní desky (KML).
+Kód používá statickou `getCoordinatesFromEdges` funkci ze třídy [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) . Vypočítá čtyři rohy obrázku s použitím informací o Severní, Jižní, východní, západní a rotační překrytí základní desky (KML).
 
 <br/>
 
@@ -85,10 +85,10 @@ Vrstva obrázku má mnoho možností stylů. Tady je nástroj pro jejich vyzkou�
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions)
+> [ImageLayerOptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 

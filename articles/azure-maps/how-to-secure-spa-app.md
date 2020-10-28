@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090246"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895592"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Jak zabezpečit jednostránkové aplikaci pomocí neinteraktivního přihlašování
 
@@ -30,15 +30,15 @@ Následující příručka se týká aplikace, která používá Azure Active Di
 
 Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ověřování do služby Azure AD. 
 
-1. Vytvořte funkci v Azure Portal. Další informace najdete v tématu [Vytvoření funkce Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function).
+1. Vytvořte funkci v Azure Portal. Další informace najdete v tématu [Vytvoření funkce Azure Functions](../azure-functions/functions-create-first-azure-function.md).
 
-2. Nakonfigurujte zásady CORS pro funkci Azure, aby byly přístupné pro webovou aplikaci s jednou stránkou. Tím se zabezpečí klienti prohlížeče na povolených zdrojích vaší webové aplikace. Viz [Přidání funkce CORS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality).
+2. Nakonfigurujte zásady CORS pro funkci Azure, aby byly přístupné pro webovou aplikaci s jednou stránkou. Tím se zabezpečí klienti prohlížeče na povolených zdrojích vaší webové aplikace. Viz [Přidání funkce CORS](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
-3. [Přidejte identitu přiřazenou systémem](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) do funkce Azure, která umožňuje vytvoření instančního objektu pro ověření ve službě Azure AD.  
+3. [Přidejte identitu přiřazenou systémem](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) do funkce Azure, která umožňuje vytvoření instančního objektu pro ověření ve službě Azure AD.  
 
 4. Udělte účtu Azure Maps přístup na základě rolí pro identitu přiřazenou systémem. Podrobnosti najdete v tématu [udělení přístupu na základě role](#grant-role-based-access) .
 
-5. Napíšete kód pro funkci Azure Functions, který získá Azure Maps přístupové tokeny pomocí identity přiřazené systémem s jedním z podporovaných mechanismů nebo protokolu REST. Viz [získání tokenů pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) .
+5. Napíšete kód pro funkci Azure Functions, který získá Azure Maps přístupové tokeny pomocí identity přiřazené systémem s jedním z podporovaných mechanismů nebo protokolu REST. Viz [získání tokenů pro prostředky Azure](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) .
 
     Příklad ukázkového protokolu REST:
 
@@ -64,8 +64,8 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
 
 6. Konfigurace zabezpečení pro Azure Function HttpTrigger
 
-   * [Vytvoření přístupového klíče funkce](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * [Zabezpečený koncový bod HTTP](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production) pro funkci Azure v produkčním prostředí.
+   * [Vytvoření přístupového klíče funkce](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * [Zabezpečený koncový bod HTTP](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) pro funkci Azure v produkčním prostředí.
    
 7. Konfigurace webové aplikace Azure Maps webové sady SDK. 
 
@@ -102,25 +102,25 @@ Vytvořte zabezpečenou aplikaci webové služby, která je zodpovědná za ově
 
 ## <a name="grant-role-based-access"></a>Udělení přístupu na základě role
 
-Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC)* tím, že přiřadíte identitu přiřazenou systémem k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)**. Vyberte **role**a potom vyhledejte role, které začínají na *Azure Maps*.
+Přístup k *řízení přístupu na základě role Azure udělujete (Azure RBAC)* tím, že přiřadíte identitu přiřazenou systémem k jedné nebo více definicím rolí Azure. Pokud chcete zobrazit definice rolí Azure, které jsou k dispozici pro Azure Maps, přejděte na **řízení přístupu (IAM)** . Vyberte **role** a potom vyhledejte role, které začínají na *Azure Maps* .
 
-1. Přejít na **účet Azure Maps**. Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment**.
+1. Přejít na **účet Azure Maps** . Vyberte přiřazení role **řízení přístupu (IAM)**  >  **Role assignment** .
 
     > [!div class="mx-imgBorder"]
     > ![Udělení přístupu pomocí Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Na kartě **přiřazení rolí** v části **Role**vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat**. V části **přiřadit přístup k**vyberte **Function App**. Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit**.
+2. Na kartě **přiřazení rolí** v části **Role** vyberte předdefinované Azure Maps definice role, jako je **Azure Maps data Reader** nebo **Azure Maps Přispěvatel dat** . V části **přiřadit přístup k** vyberte **Function App** . Vyberte objekt zabezpečení podle názvu. Pak vyberte **Uložit** .
 
-   * Podívejte se na podrobnosti o [Přidání nebo odebrání přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+   * Podívejte se na podrobnosti o [Přidání nebo odebrání přiřazení rolí](../role-based-access-control/role-assignments-portal.md).
 
 > [!WARNING]
-> Azure Maps předdefinované definice rolí poskytují velmi velký přístup k mnoha Azure Mapsám rozhraní REST API. Pokud chcete omezení přístupu k rozhraním API omezit na minimum, přečtěte si téma [Vytvoření vlastní definice role a přiřazení identity přiřazené systému](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) k definici vlastní role. Tím umožníte, aby aplikace měla k disAzure Maps nejnižší oprávnění, která jsou nezbytná pro přístup k.
+> Azure Maps předdefinované definice rolí poskytují velmi velký přístup k mnoha Azure Mapsám rozhraní REST API. Pokud chcete omezení přístupu k rozhraním API omezit na minimum, přečtěte si téma [Vytvoření vlastní definice role a přiřazení identity přiřazené systému](../role-based-access-control/custom-roles.md) k definici vlastní role. Tím umožníte, aby aplikace měla k disAzure Maps nejnižší oprávnění, která jsou nezbytná pro přístup k.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další porozumění scénáři jedné stránky aplikace:
 > [!div class="nextstepaction"]
-> [Jednostránková aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [Jednostránková aplikace](../active-directory/develop/scenario-spa-overview.md)
 
 Najděte metriky využití API pro váš účet Azure Maps:
 > [!div class="nextstepaction"]

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 91c0eaf5b1e614e185747cd9ae2c32e7f4f7a707
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6d04601cb11e57f50c82680077793aef1b816bfa
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672069"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895116"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Kurz: Integrace Azure Active Directory se službou SAP Business ByDesign
 
@@ -110,11 +110,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 5. Aplikace SAP Business ByDesign očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jeden Sign-On se** stránkou SAML kliknutím na tlačítko **Upravit** otevřete dialogové okno **atributy uživatele** .
 
-    ![image](common/edit-attribute.png)
+    ![Snímek obrazovky, který zobrazuje dialogové okno atributy uživatele s vybraným tlačítkem Upravit.](common/edit-attribute.png)
 
 6. Kliknutím na ikonu **Upravit** upravíte **hodnotu identifikátoru názvu** .
 
-    ![image](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
+    ![Snímek obrazovky zobrazující stránku atributy uživatele & deklarace identity se zvolenou ikonou "Upravit".](media/sapbusinessbydesign-tutorial/mail-prefix1.png)
 
 7. V části **Spravovat deklarace identity uživatelů** proveďte následující kroky:  ![ Obrázek](media/sapbusinessbydesign-tutorial/mail-prefix2.png)
 
@@ -148,7 +148,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 3. Klikněte na **Nový zprostředkovatel identity** a vyberte soubor XML s metadaty, který jste stáhli z Azure Portal. Po importu metadat systém automaticky odešle požadovaný podpisový certifikát a šifrovací certifikát.
 
-    ![Konfigurace jednoho Sign-On](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
+    ![Snímek obrazovky se stránkou konfigurace jednotného přihlašování se zvolenou kartou poskytovatel identity a vybranou akcí "Nový zprostředkovatel identity".](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
 
 4. Pokud chcete do žádosti SAML zahrnout **adresu URL služby pro příjemce kontrolního výrazu** , vyberte **zahrnout adresu URL služby pro příjemce kontrolního výrazu** .
 
@@ -158,7 +158,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí SAP Busi
 
 7. Klikněte na kartu **můj systém** .
 
-    ![Konfigurace jednoho Sign-On](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
+    ![Snímek obrazovky se stránkou konfigurace jednotného přihlašování se zvolenou kartou můj systém.](./media/sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
 
 8. V poli **přihlašovací adresa URL pro přihlášení k Azure AD** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 

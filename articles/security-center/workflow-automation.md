@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792289"
+ms.locfileid: "92895218"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Automatizace odpovědí na triggery Security Center
 
@@ -107,7 +107,7 @@ Postup při implementaci těchto zásad:
 
 1. V následující tabulce vyberte zásadu, kterou chcete použít:
 
-    |Cíl  |Zásady  |ID zásady  |
+    |Cíl  |Zásada  |ID zásady  |
     |---------|---------|---------|
     |Automatizace pracovního postupu pro výstrahy zabezpečení|[Nasazení automatizace pracovních postupů pro upozornění služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
     |Automatizace pracovního postupu pro doporučení zabezpečení|[Nasazení automatizace pracovních postupů pro doporučení služby Azure Security Center](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
@@ -161,5 +161,5 @@ Související materiály najdete v tématech:
 - [Doporučení zabezpečení v Azure Security Center](security-center-recommendations.md)
 - [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 - [Informace o Azure Logic Apps](../logic-apps/logic-apps-overview.md)
-- [Konektory Logic Apps](/connectors/)
+- [Konektory pro Azure Logic Apps](../connectors/apis-list.md)
 - [Schémata datových typů v rámci automatizace pracovních postupů](https://aka.ms/ASCAutomationSchemas)

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874590"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895541"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
-Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) lze použít k výpočtu předpokládaných časů doručení (ETAs) pro každou požadovanou trasu. Rozhraní API pro směrování uvažují o faktorech, jako jsou informace o přenosech v reálném čase a historické údaje o provozu, jako je obvyklá rychlost provozu v požadovaném dni v týdnu a denní doba. Rozhraní API vrací nejkratší nebo nejrychlejší trasy, které jsou k dispozici více cílům v čase v pořadí nebo v optimalizovaném pořadí, na základě času nebo vzdálenosti. Uživatelé si také můžou vyžádat specializované trasy a podrobnosti pro cyklisty a komerční vozidla, jako je nákladní automobily. V tomto článku budeme sdílet osvědčené postupy pro volání Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route)a naučíte se, jak:
+Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](/rest/api/maps/route) lze použít k výpočtu předpokládaných časů doručení (ETAs) pro každou požadovanou trasu. Rozhraní API pro směrování uvažují o faktorech, jako jsou informace o přenosech v reálném čase a historické údaje o provozu, jako je obvyklá rychlost provozu v požadovaném dni v týdnu a denní doba. Rozhraní API vrací nejkratší nebo nejrychlejší trasy, které jsou k dispozici více cílům v čase v pořadí nebo v optimalizovaném pořadí, na základě času nebo vzdálenosti. Uživatelé si také můžou vyžádat specializované trasy a podrobnosti pro cyklisty a komerční vozidla, jako je nákladní automobily. V tomto článku budeme sdílet osvědčené postupy pro volání Azure Maps [Route Service](/rest/api/maps/route)a naučíte se, jak:
 
  * Volba mezi rozhraními API pro trasy tras a směrovacím rozhraním API pro matici
  * Vyžádat si historické a predikované dojezdové časy na základě aktuálních i historických dat o provozu
@@ -27,9 +27,9 @@ Rozhraní API pro trasy tras a směrovací matice v Azure Maps [Route Service](h
  * Vyžádat trasu, která se skládá z jedné nebo více zarážek (Waypoints)
  * Optimalizace trasy jednoho nebo více zastavení za účelem získání nejlepšího příkazu k návštěvě každého zastavení (bod na trase)
  * Optimalizujte alternativní trasy pomocí pomocných bodů. Můžete například nabídnout alternativní trasy, které předají elektricky zpoplatněné trakční vozidlo.
- * Použití [Route Service](https://docs.microsoft.com/rest/api/maps/route) s Azure Maps Web SDK
+ * Použití [Route Service](/rest/api/maps/route) s Azure Maps Web SDK
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. [Vytvořit účet Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
@@ -113,7 +113,7 @@ V druhém příkladu níže máme požadavek na směrování v reálném čase, 
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Odpověď obsahuje souhrn, jak je znázorněno níže. Z důvodu zahlcení je hodnota **trafficDelaysInSeconds** větší než nula. Je také větší než **historicTrafficTravelTimeInSeconds**.
+Odpověď obsahuje souhrn, jak je znázorněno níže. Z důvodu zahlcení je hodnota **trafficDelaysInSeconds** větší než nula. Je také větší než **historicTrafficTravelTimeInSeconds** .
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Rozbalením `point` prvku zobrazíte seznam souřadnic pro cestu:
 
 ![Element Expanded Points](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Rozhraní API pro itinerář trasy podporují různé formáty instrukcí, které lze použít zadáním parametru **instructionsType** . Chcete-li naformátovat pokyny pro snadné zpracování počítačů, použijte **instructionsType = Code**. Použijte **instructionsType = Tagged** k zobrazení instrukcí jako textu pro uživatele. Pokyny je také možné formátovat jako text, kde jsou označeny některé prvky instrukcí a instrukce se zobrazí se speciálním formátováním. Další informace najdete v [seznamu podporovaných typů instrukcí](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
+Rozhraní API pro itinerář trasy podporují různé formáty instrukcí, které lze použít zadáním parametru **instructionsType** . Chcete-li naformátovat pokyny pro snadné zpracování počítačů, použijte **instructionsType = Code** . Použijte **instructionsType = Tagged** k zobrazení instrukcí jako textu pro uživatele. Pokyny je také možné formátovat jako text, kde jsou označeny některé prvky instrukcí a instrukce se zobrazí se speciálním formátováním. Další informace najdete v [seznamu podporovaných typů instrukcí](/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Po vyžádání pokynů vrátí odpověď nový element s názvem `guidance` . `guidance`Element obsahuje dvě informace: pokyny pro zapnutí a shrnutí.
 
@@ -186,7 +186,7 @@ Níže uvedená odpověď je určena pro nákladní automobil, který přecház�
 
 ## <a name="request-traffic-information-along-a-route"></a>Vyžádat informace o přenosech podél trasy
 
-S rozhraními API směr Azure Mapsho směrování můžou vývojáři požádat o podrobnosti pro každý typ oddílu zahrnutím `sectionType` parametru do žádosti. Můžete například požadovat informace o rychlosti pro každý segment zaseknutí provozu. Informace o různých podrobnostech, které si můžete vyžádat, najdete v [seznamu hodnot pro klíč sectionType](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) .
+S rozhraními API směr Azure Mapsho směrování můžou vývojáři požádat o podrobnosti pro každý typ oddílu zahrnutím `sectionType` parametru do žádosti. Můžete například požadovat informace o rychlosti pro každý segment zaseknutí provozu. Informace o různých podrobnostech, které si můžete vyžádat, najdete v [seznamu hodnot pro klíč sectionType](/rest/api/maps/route/getroutedirections#sectiontype) .
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
@@ -208,13 +208,13 @@ Tuto možnost lze použít k obarvení oddílů při vykreslování mapy, jako n
 
 Azure Maps v současné době poskytuje dvě formy optimalizace tras:
 
-* Optimalizace na základě požadovaného typu trasy beze změny pořadí Waypoints. [Podporované typy tras](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype) můžete najít tady.
+* Optimalizace na základě požadovaného typu trasy beze změny pořadí Waypoints. [Podporované typy tras](/rest/api/maps/route/postroutedirections#routetype) můžete najít tady.
 
 * Optimalizace pro prodejny, která mění pořadí waypoints, aby se získalo co nejlepší pro návštěvě každého zastavení
 
 V případě vícenásobného zastavení směrování může být v rámci jedné žádosti o trase zadán až 150 Waypoints. Spouštěcí a koncová umístění souřadnic můžou být stejná, jako by to byl případ s kulatou cestou. K provedení výpočtu trasy ale musíte zadat alespoň jeden další bod na trase. Waypoints lze přidat do dotazu v rámci souřadnic počátek a cíl.
 
-Pokud chcete optimalizovat nejlepší pořadí pro návštěvě daného waypoints, musíte zadat **computeBestOrder = true**. Tento scénář je taky známý jako problém optimalizace na cestování – prodej.
+Pokud chcete optimalizovat nejlepší pořadí pro návštěvě daného waypoints, musíte zadat **computeBestOrder = true** . Tento scénář je taky známý jako problém optimalizace na cestování – prodej.
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
@@ -262,11 +262,11 @@ Optimální trasa má následující bod na trase pořadí: 0, 5, 1, 2, 4, 3 a 6
 Může se stát, že budete chtít vytvořit novou situaci, abyste mohli vypočítat nula nebo více alternativních tras pro referenční trasu. Například můžete chtít zobrazit alternativní trasy zákazníků, které předají vaše maloobchodní úložiště. V takovém případě je třeba vymezit umístění pomocí pomocných bodů. Tady je postup pro posunutí umístění:
 
 1. Vypočítat trasu jako a získat cestu z odpovědi na trase
-2. Použijte cestu trasy k vyhledání požadovaných umístění podél nebo blízko cesty k trase. Můžete například použít Azure Maps [Point rozhraní API pro důležité](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) dotazy nebo dotazovat vlastní data v databázi.  
+2. Použijte cestu trasy k vyhledání požadovaných umístění podél nebo blízko cesty k trase. Můžete například použít Azure Maps [Point rozhraní API pro důležité](/rest/api/maps/search/getsearchpoi) dotazy nebo dotazovat vlastní data v databázi.  
 3. Pořadí umístění na základě vzdálenosti od začátku trasy
-4. Přidejte tato umístění jako doprovodné body do nové žádosti o trasu do [rozhraní API pro přesměrování tras](https://docs.microsoft.com/rest/api/maps/route/postroutedirections). Další informace o pomocných bodech najdete v [dokumentaci k rozhraní API pro pokyny pro post Route](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints). 
+4. Přidejte tato umístění jako doprovodné body do nové žádosti o trasu do [rozhraní API pro přesměrování tras](/rest/api/maps/route/postroutedirections). Další informace o pomocných bodech najdete v [dokumentaci k rozhraní API pro pokyny pro post Route](/rest/api/maps/route/postroutedirections#supportingpoints). 
 
-Při volání [rozhraní API pro směrování po trasách](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)můžete nastavit minimální čas odchylky nebo omezení vzdálenosti spolu s podpůrnými body. Tyto parametry použijte, pokud chcete nabízet alternativní trasy, ale také chcete omezit dobu trvání cesty. Když se použijí tato omezení, alternativní trasy budou postupovat podle trasy odkazů z počátečního bodu pro daný čas nebo vzdálenost. Jinými slovy se ostatní trasy odchýlit od referenční trasy za dané omezení.
+Při volání [rozhraní API pro směrování po trasách](/rest/api/maps/route/postroutedirections)můžete nastavit minimální čas odchylky nebo omezení vzdálenosti spolu s podpůrnými body. Tyto parametry použijte, pokud chcete nabízet alternativní trasy, ale také chcete omezit dobu trvání cesty. Když se použijí tato omezení, alternativní trasy budou postupovat podle trasy odkazů z počátečního bodu pro daný čas nebo vzdálenost. Jinými slovy se ostatní trasy odchýlit od referenční trasy za dané omezení.
 
 Obrázek níže je příklad vykreslování alternativních tras se zadanými limity odchylek pro čas a vzdálenost.
 
@@ -274,20 +274,20 @@ Obrázek níže je příklad vykreslování alternativních tras se zadanými li
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>Použití směrovací služby ve webové aplikaci
 
-Sada Azure Maps Web SDK poskytuje [modul služby](https://docs.microsoft.com/javascript/api/azure-maps-rest/). Tento modul je pomocná knihovna usnadňující použití Azure Maps rozhraní REST API ve webových nebo Node.jsch aplikacích pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
+Sada Azure Maps Web SDK poskytuje [modul služby](/javascript/api/azure-maps-rest/). Tento modul je pomocná knihovna usnadňující použití Azure Maps rozhraní REST API ve webových nebo Node.jsch aplikacích pomocí JavaScriptu nebo TypeScript. Modul služby lze použít k vykreslení vrácených tras na mapě. Modul automaticky určuje, které rozhraní API se má použít s požadavky GET a POST.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud se chcete dozvědět víc, přečtěte si:
 
 > [!div class="nextstepaction"]
-> [Služba Azure Maps Route](https://docs.microsoft.com/rest/api/maps/route)
+> [Služba Azure Maps Route](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [Jak používat modul služby](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [Jak používat modul služby](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [Zobrazit trasu na mapě](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [Zobrazit trasu na mapě](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Balíček NPM Azure Maps](https://www.npmjs.com/package/azure-maps-rest  )

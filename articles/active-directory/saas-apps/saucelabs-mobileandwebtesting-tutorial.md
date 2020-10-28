@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 3128bc587a555b3766e1fad289edc8c11c195001
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672046"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>Kurz: Azure Active Directory integrace s Omáčk Labs – mobilní a webové testování
 
@@ -122,15 +122,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí programu
 
 2. Klikněte na **ikonu uživatele** a vyberte kartu **Správa týmu** .
 
-    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![Snímek obrazovky, který zobrazuje ikonu "uživatel" a "Správa týmu" vybrané rozevírací nabídky.](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. Do textového pole zadejte **název domény** .
 
-    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![Snímek obrazovky, který zobrazuje příklad názvu domény v textovém poli](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. Klikněte na tlačítko **Konfigurovat** kartu.
 
-    ![Konfigurace jednoho Sign-On](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![Snímek obrazovky zobrazující kartu konfigurovat vybraná v části jednotné přihlašování je povolené.](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. V části **Konfigurace jednotného přihlašování** proveďte následující kroky.
 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322291"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893977"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Ukázky šablon pro pravidla upozornění metrik v Azure Monitor Správce prostředků
 
@@ -712,10 +712,10 @@ V této ukázce pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenzí
 2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
 Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
-- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
-- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
-- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
-- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
+- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *getblob*
+- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *PutBlob*
+- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *getblob*
+- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Soubor šablony
 
@@ -903,10 +903,10 @@ V této ukázce pravidlo výstrahy monitoruje kombinace hodnot dimenzí dimenzí
 2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
 Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
-- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *getblob*
-- Metrika = *transakce*, ResponseType = *úspěch*, ApiName = *PutBlob*
-- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *getblob*
-- Metrika = *transakce*, ResponseType = *časový limit serveru*, ApiName = *PutBlob*
+- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *getblob*
+- Metrika = *transakce* , ResponseType = *úspěch* , ApiName = *PutBlob*
+- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *getblob*
+- Metrika = *transakce* , ResponseType = *časový limit serveru* , ApiName = *PutBlob*
 
 >[!NOTE]
 > Pro pravidla upozornění metrik, která používají dynamické prahové hodnoty, se aktuálně nepodporují více kritérií.
@@ -3132,7 +3132,7 @@ Tato ukázka vytvoří pravidlo upozornění na metriku dynamických prahových 
 > [!NOTE]
 > `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem " `&amp` ;".
 
-### <a name="parameter-file"></a>Soubor parametrů
+### <a name="template-file"></a>Soubor šablony
 
 ```json
 {
@@ -3234,8 +3234,6 @@ Tato ukázka vytvoří pravidlo upozornění na metriku dynamických prahových 
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>Soubor parametrů
 
 ```json
@@ -3254,12 +3252,53 @@ Tato ukázka vytvoří pravidlo upozornění na metriku dynamických prahových 
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+Další konfigurace parametru shody obsahu `pingText` je ovládána v `Configuration/Webtest` části souboru šablony. Konkrétně níže uvedený oddíl:
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>Testovací umístění
+
+|Id                  | Oblast           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | West Europe      |
+| `us-ca-sjc-azr`    | USA – západ          |
+| `emea-ru-msa-edge` | Spojené království – jih         |
+| `emea-se-sto-edge` | Spojené království – západ          |
+| `apac-sg-sin-azr`  | Southeast Asia   |
+| `us-tx-sn1-azr`    | Středojižní USA |
+| `us-il-ch1-azr`    | USA – středosever |
+| `emea-gb-db3-azr`  | Severní Evropa     |
+| `apac-jp-kaw-edge` | Japan East       |
+| `emea-fr-pra-edge` | Francie – střed   |
+| `emea-ch-zrh-edge` | Francie – jih     |
+| `us-va-ash-azr`    | East US          |
+| `apac-hk-hkn-azr`  | Východní Asie        |
+| `us-fl-mia-edge`   | Střední USA       |
+| `latam-br-gru-edge`| Brazil South      |
+| `emea-au-syd-edge` | Austrálie – východ   |
+
+### <a name="us-government-test-locations"></a>Umístění testů pro státní správu USA
+
+|Id                    | Oblast           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>Další kroky
 

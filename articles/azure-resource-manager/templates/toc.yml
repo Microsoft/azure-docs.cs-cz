@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Stream Analytics
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Synapse Analytics – fond SQL
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blockchain
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Content Delivery Network
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Brána firewall – zóny dostupnosti
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Brána firewall – skupiny IP adres
@@ -166,21 +170,27 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Firewall Manager
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Load Balancer
+            - name: Load Balancer – veřejný
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT Gateway
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Privátní koncový bod
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Služba Private Link
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Traffic Manager
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web Application Firewall (Brána firewall webových aplikací)
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Zabezpečení
           items:
             - name: Attestation
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: Key Vault – tajný kód
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Storage
+            - name: Security Center
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
+        - name: Úložiště
           items:
             - name: Data Share
               href: ../../data-share/share-your-data-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -188,6 +198,8 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
+            - name: API Management
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: App Service
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Notification Hubs
@@ -343,36 +355,42 @@
             - name: Výstupy
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Zjištění vlastností šablon
-      items:
-        - name: Export šablony
-          href: export-template-portal.md
-        - name: Zjišťování prostředků
-          href: view-resources.md
-    - name: Ověřování šablon
-      items:
-        - name: Nasazení What-If
-          href: template-deploy-what-if.md
-        - name: Testovací sada nástrojů
-          href: test-toolkit.md
-        - name: Testovací případy
-          href: test-cases.md
     - name: Nasazení šablon
       items:
-        - name: Nasazení – portál
-          displayName: deployment
-          href: deploy-portal.md
-        - name: Nasazení – rozhraní příkazového řádku
-          displayName: deployment
-          href: deploy-cli.md
-        - name: Nasazení – PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: Nasazení – REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: Nasazení z GitHubu
-          href: deploy-to-azure-button.md
+        - name: Operace nasazení
+          items:
+            - name: Nasazení – portál
+              displayName: deployment
+              href: deploy-portal.md
+            - name: Nasazení – rozhraní příkazového řádku
+              displayName: deployment
+              href: deploy-cli.md
+            - name: Nasazení – PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: Nasazení – REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: Nasazení – GitHub
+              href: deploy-to-azure-button.md
+            - name: Nasazení – Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: Obory
+          items:
+            - name: Skupina prostředků
+              href: deploy-to-resource-group.md
+            - name: Předplatné
+              href: deploy-to-subscription.md
+            - name: Skupina pro správu
+              href: deploy-to-management-group.md
+            - name: Tenant
+              href: deploy-to-tenant.md
+            - name: Prostředky rozšíření
+              href: scope-extension-resources.md
+            - name: Funkce napříč obory
+              href: scope-functions.md
+        - name: Nasazení What-If
+          href: template-deploy-what-if.md
         - name: Opětovné nasazení při chybě
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: Zobrazení historie nasazení
           href: deployment-history.md
-    - name: Nasazení s vymezeným oborem
-      items:
-        - name: Předplatné
-          href: deploy-to-subscription.md
-        - name: Skupina pro správu
-          href: deploy-to-management-group.md
-        - name: Tenant
-          href: deploy-to-tenant.md
-        - name: Nasazení napříč obory
-          href: cross-scope-deployment.md
     - name: Zadání parametrů
       items:
         - name: Vytvoření souboru parametrů
@@ -397,12 +405,24 @@
         - name: Předávání citlivých hodnot
           displayname: key vault
           href: key-vault-parameter.md
+    - name: Testování šablon
+      items:
+        - name: Testovací sada nástrojů
+          href: test-toolkit.md
+        - name: Testovací případy
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: Šablony ARM s kanály
           href: add-template-to-azure-pipelines.md
         - name: Nasazení – GitHub Actions
           href: deploy-github-actions.md
+    - name: Zjištění vlastností šablon
+      items:
+        - name: Export šablony
+          href: export-template-portal.md
+        - name: Zjišťování prostředků
+          href: view-resources.md
     - name: Použití nástrojů pro vytváření
       items:
         - name: Visual Studio

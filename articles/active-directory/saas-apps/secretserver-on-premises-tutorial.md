@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9540922619864b0c239a22422bab5f6bf178e5fe
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a87bf24c3555f2e6a259064b56b1b630f4abfe27
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678404"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894989"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Kurz: integrace Secret Server (On-Premises) s Azure Active Directory
 
@@ -98,7 +98,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jeden Sign-On se** stránkou SAML klikněte na ikonu **Upravit** pro otevření dialogového okna **podpisový certifikát SAML** .
 
-    ![Možnosti podepisování](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
+    ![Snímek obrazovky s oddílem "S A M L Signing Certificate" se zvolenou akcí "certifikát (Base64" "stažení".)](./media/secretserver-on-premises-tutorial/edit-saml-signon.png)
 
 1. Vyberte **možnost podepisování** jako **podepsat odpověď SAML a kontrolní výraz** .
 
@@ -152,7 +152,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici Secret Server (On-Premises) na přístupovém panelu byste měli být automaticky přihlášení do Secret Server (On-Premises), pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [ Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory ](./tutorial-list.md)
 
