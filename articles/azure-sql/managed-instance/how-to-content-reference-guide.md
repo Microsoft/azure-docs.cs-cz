@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779760"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Referenční dokumentace obsahu spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 - [Ruční ladění](../database/performance-guidance.md)
 - [Monitorování výkonu pomocí zobrazení dynamické správy](../database/monitoring-with-dmvs.md)
-- [Monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [Monitorování výkonu pomocí úložiště dotazů](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Řešení potíží s výkonem s využitím služby Intelligent Insights](../database/intelligent-insights-troubleshoot-performance.md)
 - [Použití diagnostického protokolu Intelligent Insights](../database/intelligent-insights-use-diagnostics-log.md)
 - [Monitorovat In-Memory OLTP místo](../in-memory-oltp-monitor-space.md)

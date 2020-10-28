@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 9fdd61c5799724ab3ab098584f85ce52cdd6ccf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 017698975706aa8501cd059351cf9a9d88594f77
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283254"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779896"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Konfigurace vlastního DNS pro spravovanou instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Spravovaná instance Azure SQL musí být nasazená v rámci [virtuální sítě
 Vzhledem k tomu, že spravovaná instance SQL používá pro vnitřní práci stejnou službu DNS, nakonfigurujte vlastní server DNS tak, aby mohl přeložit názvy veřejných domén.
 
 > [!IMPORTANT]
-> Vždy používejte plně kvalifikovaný název domény (FQDN) pro poštovní server, pro instanci SQL Server a pro další služby, a to i v případě, že se nachází v privátní zóně DNS. Použijte třeba `smtp.contoso.com` pro svůj poštovní server, protože se `smtp` nebude správně vyřešit. Vytvoření propojeného serveru nebo replikace odkazující na SQL Server virtuální počítače ve stejné virtuální síti taky vyžaduje plně kvalifikovaný název domény a výchozí příponu DNS. Například, `SQLVM.internal.cloudapp.net`. Další informace najdete v tématu [překlad názvů, který používá vlastní server DNS](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
+> Vždy používejte plně kvalifikovaný název domény (FQDN) pro poštovní server, pro instanci SQL Server a pro další služby, a to i v případě, že se nachází v privátní zóně DNS. Použijte třeba `smtp.contoso.com` pro svůj poštovní server, protože se `smtp` nebude správně vyřešit. Vytvoření propojeného serveru nebo replikace odkazující na SQL Server virtuální počítače ve stejné virtuální síti taky vyžaduje plně kvalifikovaný název domény a výchozí příponu DNS. Například, `SQLVM.internal.cloudapp.net`. Další informace najdete v tématu [překlad názvů, který používá vlastní server DNS](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 > [!IMPORTANT]
 > Aktualizace serverů DNS virtuální sítě neovlivní okamžitě spravovanou instanci SQL. Konfigurace DNS spravované instance SQL se aktualizuje po vypršení platnosti zapůjčení DHCP nebo po upgradu platformy, podle toho, co nastane dřív. **Před vytvořením první spravované instance doporučujeme uživatelům, aby si nastavili konfiguraci DNS virtuální sítě.**

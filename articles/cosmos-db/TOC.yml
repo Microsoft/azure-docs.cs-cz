@@ -59,13 +59,13 @@
         - name: Řízení přístupu na základě role
           displayName: rbac
           href: role-based-access-control.md
+        - name: Podpora služby Azure Policy
+          href: policy.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Standardní hodnoty zabezpečení
           href: security-baseline.md
-        - name: Podpora služby Azure Policy
-          href: policy.md
     - name: Analýzy s využitím Azure Synapse Linku
       items:
         - name: Azure Synapse Link pro Cosmos DB
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: Koncepty
       items:
-        - name: Modelování dat dokumentů
-          displayName: document
-          href: modeling-data.md
-        - name: Dělení
+        - name: Modelování a dělení
           items:
+            - name: Modelování dat dokumentů
+              displayName: document
+              href: modeling-data.md
+            - name: Modelování a dělení – ukázka z reálného světa
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: Syntetický klíč oddílu
               href: synthetic-partition-keys.md
         - name: Dotaz SQL
@@ -631,13 +634,13 @@
           items:
             - name: Zřízená propustnost
               items:
-                - name: Zřízení standardní (ruční) propustnosti v kontejneru
+                - name: Zřízení standardní (ruční) propustnosti – kontejner
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: Zřízení standardní (ruční) propustnosti v databázi
+                - name: Zřízení standardní (ruční) propustnosti – databáze
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
-                - name: Zřízení propustnosti s automatickým škálováním v databázi nebo kontejneru
+                - name: Zřízení propustnosti s automatickým škálováním – databáze nebo kontejner
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
                 - name: Odhad RU/s s využitím nástroje pro plánování kapacity Cosmos
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: Dotazování na kontejner
               href: how-to-query-container.md
-            - name: Vytváření a dělení dat – ukázka z reálného světa
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: Migrace na dělené kontejnery
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: Konfigurace hodnoty TTL (Time to Live)
@@ -1179,8 +1179,6 @@
       items:
         - name: Hlavičky odpovědi
           href: gremlin-headers.md
-        - name: Omezení
-          href: gremlin-limits.md
         - name: Poskytovatel prostředků REST
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Šablona Resource Manageru

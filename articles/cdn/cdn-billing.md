@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191165"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779165"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
@@ -38,7 +38,7 @@ Oblast fakturace je geografická oblast sloužící k určení, jakou sazbou se 
 
 - Zóna 5: Indie
 
-Informace o oblastech bodu přítomnosti (POP) najdete v tématu [Azure CDN umístění pop podle oblasti](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Například bod POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnutý v zóně 1. 
+Informace o oblastech bodu přítomnosti (POP) najdete v tématu [Azure CDN umístění pop podle oblasti](./cdn-pop-locations.md). Například bod POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnutý v zóně 1. 
 
 Informace o cenách Azure CDN najdete v článku [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
@@ -48,7 +48,7 @@ Oblast fakturace Azure CDN je založena na umístění zdrojového serveru, kter
 Pokud například uživatel umístěný v Mexiku vydá požadavek a tato žádost je obsluhovaná serverem umístěným v USA POP kvůli podmínkám partnerských vztahů nebo přenosů, bude USA oblastí pro fakturaci.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co je fakturovatelná Azure CDN transakce?
-Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly*), ale z důvodu datové části s malou odezvou se účtují malé náklady.
+Každá žádost HTTP (S), která končí v CDN, je fakturovatelná událost, která zahrnuje všechny typy odpovědí: úspěch, selhání nebo jiné. Různé odezvy ale můžou vygenerovat různé objemy provozu. Například *304 Nezměněno* a jiné odpovědi pouze hlavičky generují malý provoz, protože se jedná o malou odpověď hlavičky; Podobně se neúčtují odpovědi na chyby (například *404, které se nenašly* ), ale z důvodu datové části s malou odezvou se účtují malé náklady.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jaké další náklady na Azure jsou spojené s Azure CDN používání?
 Při použití Azure CDN se také vyskytnou poplatky za využití služeb, které se používají jako původ vašich objektů. Tyto náklady obvykle představují malou část celkových nákladů na využití CDN.
@@ -66,7 +66,7 @@ Pokud jako zdroj obsahu používáte službu Azure Blob Storage, účtují se ta
 
 Další informace o fakturaci Azure Storage najdete v tématu [porozumění Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-Pokud používáte *doručování hostované služby*, účtují se vám poplatky následujícím způsobem:
+Pokud používáte *doručování hostované služby* , účtují se vám poplatky následujícím způsobem:
 
 - Výpočetní čas Azure: výpočetní instance, které fungují jako původ.
 
@@ -119,4 +119,4 @@ Pokud jako zdroj CDN použijete jednu z následujících služeb Azure, nebudete
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Návody spravovat mé náklady efektivněji?
-Nastavte nejdelší možnou hodnotu TTL u vašeho obsahu. 
+Nastavte nejdelší možnou hodnotu TTL u vašeho obsahu.

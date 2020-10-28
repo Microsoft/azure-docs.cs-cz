@@ -3,20 +3,20 @@ title: Dokončení zotavení po havárii virtuálních počítačů
 description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3608243600eb5d00dcfe10db5bc6b907ecb9aee8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508430"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779607"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
+# <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
 
 Tento článek obsahuje proces dokončení zotavení po havárii virtuálních počítačů pomocí řešení VMware HCX a použití privátního cloudu řešení Azure VMware jako lokality pro obnovení nebo cílovou lokalitu.
 
 VMware HCX poskytuje různé operace, které poskytují přesné řízení a členitost zásad replikace. K dispozici jsou tyto operace:
 
-- **Reverse** – po havárii došlo k chybě. Reverse umožňuje vytvořit lokalitu B zdrojový web a lokalitu, kde je nyní chráněný virtuální počítač.
+- **Reverse** – po havárii došlo k chybě. Reverse pomáhá zpřístupnit lokalitu B zdrojové lokalitě a lokalitě a, kde je nyní chráněný virtuální počítač.
 
 - **Pozastavit** – pozastaví aktuální zásadu replikace přidruženou k VYBRANÉmu virtuálnímu počítači.
 
@@ -26,7 +26,7 @@ VMware HCX poskytuje různé operace, které poskytují přesné řízení a čl
 
 - **Synchronizovat hned** – z vázaného virtuálního počítače se zdrojem synchronizace s CHRÁNĚNým virtuálním počítačem.
 
-V této příručce jsou pokryty tyto scénáře replikace:
+Tato příručka se zabývá následujícími scénáři replikace:
 
 - Chraňte virtuální počítač nebo skupinu virtuálních počítačů.
 
@@ -38,11 +38,11 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
 ## <a name="protect-vms"></a>Ochrana virtuálních počítačů
 
-1. Přihlaste se ke **klientovi vSphere** ve zdrojové lokalitě a přístup k **modulu plug-in HCX**.
+1. Přihlaste se ke **klientovi vSphere** ve zdrojové lokalitě a přístup k **modulu plug-in HCX** .
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="Možnost HCX v vSphere" border="true":::
 
-1. Zadejte oblast **zotavení po havárii** a vyberte **chránit virtuální počítače**.
+1. Zadejte oblast **zotavení po havárii** a vyberte **chránit virtuální počítače** .
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
@@ -56,13 +56,13 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
    - **Povolit Quiescence:** Pozastaví virtuální počítač, aby se zajistila synchronizace konzistentní kopie na vzdálené lokalitě.
 
-   - **Cílové úložiště:** Vzdálené úložiště dat pro chráněné virtuální počítače a v privátním cloudu řešení VMware Azure by mělo být úložiště dat síti vSAN.
+   - **Cílové úložiště:** Vzdálené úložiště dat pro chráněné virtuální počítače a v privátním cloudu řešení VMware Azure, které by mělo být úložiště dat síti vSAN.
 
    - **Kontejner Compute:** Vzdálený cluster vSphere nebo fond zdrojů.
 
-   - **Cílová složka:** Složka pro vzdálenou cílovou složku, která je volitelná a pokud není vybrána žádná složka, virtuální počítače budou umístěny přímo pod vybraným clusterem.
+   - **Cílová složka:** Složka pro vzdálenou cílovou složku, která je volitelná a pokud není vybraná žádná složka, virtuální počítače se umístí přímo pod vybraný cluster.
 
-   - **Cíl** bodu obnovení: Interval synchronizace mezi zdrojovým virtuálním počítačem a chráněným virtuálním počítačem a může být odkudkoli od 5 minut do 24 hodin.
+   - **Cíl** bodu obnovení: Interval synchronizace mezi zdrojovým a chráněným VIRTUÁLNÍm počítačem. Může to být kdekoli od 5 do 24 hodin.
 
    - **Interval snímku:** Interval mezi snímky
 
@@ -84,14 +84,14 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="Možnost HCX v vSphere" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
-   Žlutý trojúhelník znamená, že se snímky a virtuální testy netestovaly v operaci obnovení testu.
+   Žlutý trojúhelník znamená, že se snímky a virtuální počítače v operaci obnovení testu neotestovaly.
 
-   Existují klíčové rozdíly mezi virtuálním počítačem, který je vypnutý, a jedním z nich. Na obrázku je znázorněn proces synchronizace pro virtuální počítač s výkonem. Proces synchronizace se spustí, dokud dokončí první snímek, což je úplná kopie virtuálního počítače a pak dokončí další v nakonfigurovaném intervalu. Pro vypnutý virtuální počítač synchronizuje kopii a pak se virtuální počítač zobrazí jako neaktivní a operace ochrany se zobrazí jako dokončené.  Když je virtuální počítač zapnutý, spustí synchronizaci procesu se vzdáleným webem.
+   Existují klíčové rozdíly mezi virtuálním počítačem, který je vypnutý, a jedním zapnutým. Obrázek ukazuje proces synchronizace pro virtuální počítač s výkonem. Proces synchronizace se spustí, dokud dokončí první snímek, což je úplná kopie virtuálního počítače a pak dokončí další v nakonfigurovaném intervalu. Synchronizuje kopii pro vypínáný virtuální počítač a potom se virtuální počítač zobrazí jako neaktivní a operace ochrany se zobrazí jako dokončené.  Když je virtuální počítač zapnutý, spustí synchronizaci procesu se vzdáleným webem.
 
 ## <a name="complete-a-test-recover-of-vms"></a>Dokončit test obnovení virtuálních počítačů
 
 1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, což je privátní cloud řešení Azure VMware. 
-1. V rámci **modulu plug-in HCX**v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace, a pak vyberte **test obnovení virtuálního počítače**.
+1. V rámci **modulu plug-in HCX** v oblasti zotavení po havárii vyberte svislé tři tečky na libovolném virtuálním počítači, aby se zobrazila nabídka operace, a pak vyberte **test obnovení virtuálního počítače** .
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="Možnost HCX v vSphere" border="true":::
 
@@ -99,7 +99,7 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="Možnost HCX v vSphere" border="true":::
 
-1. Po výběru **testu**začíná operace obnovení.
+1. Po výběru **testu** začíná operace obnovení.
 
 1. Po dokončení můžete nový virtuální počítač vyzkoušet v rámci úložiště Azure VMware privátního cloudu vCenter.
 
@@ -111,11 +111,11 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
 ## <a name="recover-vms"></a>Obnovení virtuálních počítačů
 
-1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
+1. Přihlaste se ke **klientovi vSphere** ve vzdálené lokalitě, která je privátním cloudem řešení Azure VMware a získejte přístup k **modulu plug-in HCX** .
 
    Pro scénář obnovení se jedná o skupinu virtuálních počítačů použitých v tomto příkladu.
 
-1. Vyberte virtuální počítač, který se má obnovit ze seznamu, otevřete nabídku **Akce** a vyberte **obnovení virtuálních počítačů**.
+1. Vyberte virtuální počítač, který se má obnovit ze seznamu, otevřete nabídku **Akce** a vyberte **obnovení virtuálních počítačů** .
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="Možnost HCX v vSphere" border="true":::
 
@@ -127,12 +127,12 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>Dokončení zpětné replikace na virtuálních počítačích
 
-1. Přihlaste se ke **klientovi vSphere** v privátním cloudu řešení Azure VMware a získejte přístup k **modulu plug-in HCX**.
+1. Přihlaste se ke **klientovi vSphere** v privátním cloudu řešení Azure VMware a získejte přístup k **modulu plug-in HCX** .
    
    >[!NOTE]
-   >Než začnete zpětnou replikaci, ujistěte se, že původní virtuální počítače ve zdrojové lokalitě jsou vypnuté. Operace se nezdařila, pokud virtuální počítače nejsou vypnuté.
+   > Před zahájením zpětné replikace zajistěte, aby byly původní virtuální počítače ve zdrojové lokalitě vypnuté. Operace se nezdařila, pokud virtuální počítače nejsou vypnuté.
 
-1. V seznamu vyberte virtuální počítače, které chcete replikovat zpět do zdrojové lokality, otevřete nabídku **Akce** a vyberte možnost **obrátit**. 
+1. V seznamu vyberte virtuální počítače, které chcete replikovat zpět do zdrojové lokality, otevřete nabídku **Akce** a vyberte možnost **obrátit** . 
 1. Kliknutím na tlačítko **zpět** spusťte replikaci.
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="Možnost HCX v vSphere" border="true":::
@@ -145,7 +145,7 @@ V této příručce jsou pokryty tyto scénáře replikace:
 
 VMware HCX aktuálně nemá integrovaný mechanizmus pro vytvoření a automatizaci plánu zotavení po havárii. VMware HCX však poskytuje sadu rozhraní REST API, včetně rozhraní API pro operaci zotavení po havárii. Specifikace rozhraní API je k dispozici v rámci VMware HCX Manageru v adrese URL.
 
-Tato rozhraní API jsou popsaná v následujících činnostech v oblasti zotavení po havárii.
+Tato rozhraní API se týkají následujících operací při zotavení po havárii.
 
 - Ochrana
 
@@ -241,4 +241,4 @@ Příklad datové části operace obnovení ve formátu JSON je uveden níže.
 ]
 ```
 
-Pomocí těchto rozhraní API může zákazník vytvořit vlastní mechanismus pro automatizaci vytváření a provádění plánu zotavení po havárii.
+Pomocí těchto rozhraní API můžete vytvořit vlastní mechanismus pro automatizaci vytváření a provádění plánu zotavení po havárii.

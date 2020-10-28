@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86201804"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778623"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -65,7 +65,7 @@ K definování aktuálnosti mezipaměti lze použít dvě hlavičky: `Cache-Cont
 ## <a name="cache-directive-headers"></a>Hlavičky cache-direktivy
 
 > [!IMPORTANT]
-> Ve výchozím nastavení je Azure CDN koncový bod optimalizovaný pro DSA ignorovat hlavičky cache-direktiv a obejít ukládání do mezipaměti. Pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** můžete upravit způsob, jakým Azure CDN koncový bod zpracovává tyto hlavičky pomocí [pravidel ukládání do mezipaměti CDN](cdn-caching-rules.md) pro povolení ukládání do mezipaměti. Pro **Azure CDN Premium jenom ze profilů Verizon** použijte [modul pravidel](cdn-rules-engine.md) k povolení ukládání do mezipaměti.
+> Ve výchozím nastavení je Azure CDN koncový bod optimalizovaný pro DSA ignorovat hlavičky cache-direktiv a obejít ukládání do mezipaměti. Pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** můžete upravit způsob, jakým Azure CDN koncový bod zpracovává tyto hlavičky pomocí [pravidel ukládání do mezipaměti CDN](cdn-caching-rules.md) pro povolení ukládání do mezipaměti. Pro **Azure CDN Premium jenom ze profilů Verizon** použijte [modul pravidel](./cdn-verizon-premium-rules-engine.md) k povolení ukládání do mezipaměti.
 
 Azure CDN podporuje následující hlavičky HTTP cache-direktivy, které definují dobu trvání mezipaměti a sdílení mezipaměti.
 
@@ -126,17 +126,14 @@ Následující tabulka popisuje výchozí chování při ukládání do mezipam�
 
 |    | Microsoft: obecné webové doručování | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: stahování velkých souborů | Akamai: General nebo VOD Streaming Media |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Dodržovat původ**       | Yes    | Yes   | No   | Yes    | No   | Yes   | Yes    |
+| **Dodržovat původ**       | Ano    | Ano   | Ne   | Ano    | Ne   | Ano   | Ano    |
 | **Doba uložení mezipaměti CDN** | 2 dny |7 dní | Žádné | 7 dní | Žádné | 1 den | 1 rok |
 
-**Dodržovat původ**: Určuje, jestli se mají přijmout podporované hlavičky cache-direktivy, pokud existují v odpovědi HTTP ze zdrojového serveru.
+**Dodržovat původ** : Určuje, jestli se mají přijmout podporované hlavičky cache-direktivy, pokud existují v odpovědi HTTP ze zdrojového serveru.
 
-**Doba uložení mezipaměti CDN**: Určuje dobu, po kterou je prostředek uložen v mezipaměti Azure CDN. Pokud je ale možnost **akceptovat původ** nastavená na Ano a odpověď HTTP ze zdrojového serveru zahrnuje hlavičku cache-a `Expires` `Cache-Control: max-age` Azure CDN použije hodnotu trvání určenou hlavičkou. 
+**Doba uložení mezipaměti CDN** : Určuje dobu, po kterou je prostředek uložen v mezipaměti Azure CDN. Pokud je ale možnost **akceptovat původ** nastavená na Ano a odpověď HTTP ze zdrojového serveru zahrnuje hlavičku cache-a `Expires` `Cache-Control: max-age` Azure CDN použije hodnotu trvání určenou hlavičkou. 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak přizpůsobit a přepsat výchozí chování ukládání do mezipaměti v CDN prostřednictvím pravidel ukládání do mezipaměti, najdete v tématu [řízení Azure CDN chování při ukládání do mezipaměti s pravidly ukládání do](cdn-caching-rules.md)mezipaměti. 
 - Informace o tom, jak používat řetězce dotazů k řízení chování ukládání do mezipaměti, najdete v tématu [řízení Azure CDN chování při ukládání do mezipaměti pomocí řetězců dotazu](cdn-query-string.md).
-
-
-

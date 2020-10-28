@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887706"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778663"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analýza výkonu hraničního uzlu v Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -55,7 +55,7 @@ Tento řídicí panel se skládá z těchto:
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **řídicí panel**.
+2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **řídicí panel** .
    
     Zobrazí se řídicí panel analýzy hraničního uzlu.
 
@@ -84,7 +84,7 @@ Tento řídicí panel se skládá z těchto:
   * Snížené provozní náklady.
 * Vylepšená akcelerace doručování dat, protože další požadavky budou obsluhovány přímo ze sítě CDN.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Efektivita mezipaměti |Určuje procento přenesených dat, která byla obsluhována z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadatelům (například ve webovém prohlížeči). |
 | Rychlost volání |Označuje procento požadavků, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
@@ -102,7 +102,7 @@ Tento řídicí panel se skládá z těchto:
 > 
 > 
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Ave bajty z |Označuje průměrný počet přenesených bajtů pro každý požadavek, který je poskytován od sítě CDN (hraniční servery) žadateli (například webový prohlížeč). |
 | Žádná četnost bajtů konfigurace mezipaměti |Označuje procento provozu poskytovaného ze sítě CDN (hraniční servery) žadateli (například webový prohlížeč), který nebude uložen do mezipaměti z důvodu funkce vynechat mezipaměť. |
@@ -114,7 +114,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="performance-metrics"></a>Metriky výkonu
 Účelem těchto metrik je sledovat celkový výkon sítě CDN pro váš provoz.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Přenosová rychlost |Určuje průměrnou rychlost přenosu obsahu z CDN do žadatele. |
 | Doba trvání |Označuje průměrný čas (v milisekundách), který trvalo doručení assetu žadateli (například webový prohlížeč). |
@@ -126,7 +126,7 @@ Tento řídicí panel se skládá z těchto:
 #### <a name="secure-traffic-metrics"></a>Metriky zabezpečeného provozu
 Účelem těchto metrik je sledovat výkon sítě CDN pro přenosy přes protokol HTTPS.
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | Efektivita zabezpečené mezipaměti |Označuje procento přenesených dat pro požadavky HTTPS, které byly obsluhovány z mezipaměti. Tato metrika měří, když byla verze požadovaného obsahu v mezipaměti doručována přímo z sítě CDN (hraniční servery) do žadatelů (například webový prohlížeč) prostřednictvím protokolu HTTPS. |
 | Rychlost zabezpečeného přenosu |Určuje průměrnou rychlost, s jakou byl obsah přenesen ze sítě CDN (hraniční servery) na žadatele (např. webové servery) prostřednictvím protokolu HTTPS. |
@@ -143,7 +143,7 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **large object http**.
+2. Najeďte myší na kartu **Analytics** a pak najeďte myší na informační rámeček **analýzy výkonu Edge** .  Klikněte na **large object http** .
    
     Zobrazí se obrazovka sestavy analýzy hraničního uzlu.
 
@@ -186,6 +186,5 @@ Každá sestava v tomto modulu obsahuje graf a statistiku využití šířky pá
 ## <a name="see-also"></a>Viz také
 * [CDN Azure – Přehled](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Přepsání výchozího chování HTTP pomocí modulu pravidel](cdn-rules-engine.md)
+* [Přepsání výchozího chování HTTP pomocí modulu pravidel](./cdn-verizon-premium-rules-engine.md)
 * [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)
-

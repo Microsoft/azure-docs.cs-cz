@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488860"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780185"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database Nejčastější dotazy k škálování
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -136,7 +136,7 @@ Ne.
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>Kolik replik pro čtení na více instancí se podporuje
 
-Databáze s škálovatelným škálováním jsou ve výchozím nastavení vytvářeny s jednou replikou s možností čtení na více instancí (dvě repliky včetně primárních). Počet replik, které jsou jen pro čtení, můžete škálovat mezi 0 a 4 pomocí [Azure Portal](https://portal.azure.com) nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Databáze s škálovatelným škálováním jsou ve výchozím nastavení vytvářeny s jednou replikou s možností čtení na více instancí (dvě repliky včetně primárních). Počet replik, které jsou jen pro čtení, můžete škálovat mezi 0 a 4 pomocí [Azure Portal](https://portal.azure.com) nebo [REST API](/rest/api/sql/databases/createorupdate).
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>Pro zajištění vysoké dostupnosti potřebuji zřídit další výpočetní repliky.
 
@@ -198,7 +198,7 @@ Ano, včetně řádků, stránky a komprese columnstore.
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>Pokud mám obrovský stůl, data z tabulky se rozšíří do několika datových souborů.
 
-Ano. Datové stránky přidružené k dané tabulce mohou končit více datovými soubory, které jsou součástí stejné skupiny souborů. SQL Server používá [strategii proporcionálního plnění](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) k distribuci dat nad datovými soubory.
+Ano. Datové stránky přidružené k dané tabulce mohou končit více datovými soubory, které jsou součástí stejné skupiny souborů. SQL Server používá [strategii proporcionálního plnění](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) k distribuci dat nad datovými soubory.
 
 ## <a name="data-migration-questions"></a>Otázky k migraci dat
 
@@ -231,9 +231,9 @@ Výpadek migrace do škálování na velká je stejný jako výpadek při migrac
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>Můžu číst data z úložiště objektů BLOB a rychle je načíst (jako je základem ve službě Azure synapse Analytics).
 
-Klientská aplikace může číst data z Azure Storage a načíst data do databáze v rámci škálování (stejně jako u jakékoli jiné databáze v Azure SQL Database). V Azure SQL Database se v tuto chvíli nepodporuje základ. Jako alternativu k zajištění rychlého načtení můžete použít [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)nebo v Azure Databricks použít úlohu Sparku v [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) s [konektorem Spark pro SQL](spark-connector.md). Konektor Spark pro SQL podporuje hromadné vložení.
+Klientská aplikace může číst data z Azure Storage a načíst data do databáze v rámci škálování (stejně jako u jakékoli jiné databáze v Azure SQL Database). V Azure SQL Database se v tuto chvíli nepodporuje základ. Jako alternativu k zajištění rychlého načtení můžete použít [Azure Data Factory](../../data-factory/index.yml)nebo v Azure Databricks použít úlohu Sparku v [Azure Databricks](/azure/azure-databricks/) s [konektorem Spark pro SQL](spark-connector.md). Konektor Spark pro SQL podporuje hromadné vložení.
 
-Je také možné hromadně číst data z úložiště objektů BLOB v Azure pomocí BULK INSERT nebo OPENROWSET: [Příklady hromadného přístupu k datům v azure BLOB Storage](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+Je také možné hromadně číst data z úložiště objektů BLOB v Azure pomocí BULK INSERT nebo OPENROWSET: [Příklady hromadného přístupu k datům v azure BLOB Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Jednoduché obnovení nebo model hromadného protokolování není v měřítku podporován. Pro zajištění vysoké dostupnosti a obnovení k určitému bodu v čase je vyžadován úplný model obnovení. Architektura protokolu s škálovatelným škálováním ale nabízí lepší rychlost přijímání dat v porovnání s jinými Azure SQL Database úrovněmi služeb.
 
@@ -277,7 +277,7 @@ Ne. Zálohy spravuje subsystém úložiště a využívají snímky úložiště
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Je možné provést geografickou obnovu s databází s měřítkem
 
-Ano. Geografické obnovení je plně podporované. Na rozdíl od obnovení k určitému bodu v čase vyžaduje geografické obnovení operaci s velikostí dat. Datové soubory jsou kopírovány paralelně, takže doba trvání této operace závisí primárně na velikosti největšího souboru v databázi, nikoli na celkové velikosti databáze. Pokud se databáze obnoví v oblasti Azure, která se [spáruje](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) s oblastí zdrojové databáze, bude čas geografické obnovy výrazně kratší.
+Ano. Geografické obnovení je plně podporované. Na rozdíl od obnovení k určitému bodu v čase vyžaduje geografické obnovení operaci s velikostí dat. Datové soubory jsou kopírovány paralelně, takže doba trvání této operace závisí primárně na velikosti největšího souboru v databázi, nikoli na celkové velikosti databáze. Pokud se databáze obnoví v oblasti Azure, která se [spáruje](../../best-practices-availability-paired-regions.md) s oblastí zdrojové databáze, bude čas geografické obnovy výrazně kratší.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Můžu nastavit geografickou replikaci s databází s měřítkem
 
@@ -357,7 +357,7 @@ Ne. Pouze primární replika COMPUTE přijímá požadavky na čtení a zápis. 
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>Kolik sekundárních výpočetních replik se dá zřídit
 
-Ve výchozím nastavení vytvoříme jednu sekundární repliku pro databáze s škálovatelnými škálováními. Pokud chcete upravit počet replik, můžete to udělat pomocí [Azure Portal](https://portal.azure.com) nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).
+Ve výchozím nastavení vytvoříme jednu sekundární repliku pro databáze s škálovatelnými škálováními. Pokud chcete upravit počet replik, můžete to udělat pomocí [Azure Portal](https://portal.azure.com) nebo [REST API](/rest/api/sql/databases/createorupdate).
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>Návody se připojit k těmto sekundárním výpočetním replikám
 

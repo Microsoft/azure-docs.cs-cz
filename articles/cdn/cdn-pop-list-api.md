@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192559"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778325"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres POP pro Azure CDN.
 
 ## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres POP Verizon pro Azure CDN.
 
-Pomocí REST API můžete načíst sadu IP adres pro servery POP (Point of Presence) Verizon. Tyto servery POP vytvářejí požadavky na zdrojové servery, které jsou přidružené k koncovým bodům služby Azure Content Delivery Network (CDN) v profilu Verizon (**Azure CDN Standard Verizon** nebo **Azure CDN Premium z Verizon**). Všimněte si, že tato sada IP adres se liší od IP adres, které klient uvidí při přijímání požadavků na body POP. 
+Pomocí REST API můžete načíst sadu IP adres pro servery POP (Point of Presence) Verizon. Tyto servery POP vytvářejí požadavky na zdrojové servery, které jsou přidružené k koncovým bodům služby Azure Content Delivery Network (CDN) v profilu Verizon ( **Azure CDN Standard Verizon** nebo **Azure CDN Premium z Verizon** ). Všimněte si, že tato sada IP adres se liší od IP adres, které klient uvidí při přijímání požadavků na body POP. 
 
-Syntaxi operace REST API pro načtení seznamu POP naleznete v tématu [Edge Nodes-list](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
+Syntaxi operace REST API pro načtení seznamu POP naleznete v tématu [Edge Nodes-list](/rest/api/cdn/edgenodes/list).
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres Microsoft POP pro Azure CDN.
 
@@ -48,4 +48,4 @@ Z bezpečnostních důvodů můžete pomocí tohoto seznamu IP adres vymezit, ab
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o REST API najdete v tématu [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).
+Informace o REST API najdete v tématu [Azure CDN REST API](/rest/api/cdn/).

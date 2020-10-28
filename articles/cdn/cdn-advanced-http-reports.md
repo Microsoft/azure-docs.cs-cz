@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84886060"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779318"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Analýza statistik využití pomocí pokročilých sestav HTTP služby Azure CDN
 ## <a name="overview"></a>Přehled
@@ -33,7 +33,7 @@ Tento dokument vysvětluje rozšířené vytváření sestav protokolu HTTP v Mi
     ![Tlačítko Spravovat okno profilu CDN](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     Otevře se portál pro správu CDN.
-2. Najeďte myší na kartu **Analýza** a potom najeďte myší na rozšířený informační rámeček **sestav http** .  Klikněte na **Rozsáhlá platforma http**.
+2. Najeďte myší na kartu **Analýza** a potom najeďte myší na rozšířený informační rámeček **sestav http** .  Klikněte na **Rozsáhlá platforma http** .
    
     ![Portál pro správu CDN – nabídka pokročilých sestav](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -48,7 +48,7 @@ Podrobné informace o provozu a šířce pásma pro jednotlivé oblasti jsou k d
 
 Pro každý typ geografické sestavy založené na mapě je níže uveden stručný popis.
 
-| Report Name | Description |
+| Report Name | Popis |
 | --- | --- |
 | Mapa světa |Tato sestava vám umožní zobrazit celosvětovou poptávku pro obsah CDN. Každá země nebo oblast je Barevně odlišená na mapě světa, aby označovala procento přístupů, které pocházejí z dané oblasti. |
 | Mapa USA |Tato sestava vám umožní zobrazit v USA požadavek na obsah CDN. Každý stav je na této mapě barevně odlišený, aby označoval procento přístupů, které pocházejí z dané oblasti. |
@@ -71,7 +71,7 @@ Data, která byla použita k vygenerování pruhového grafu, lze zobrazit pod n
 
 Stručný popis je k dispozici pro oba typy sestav níže.
 
-| Report Name | Description |
+| Report Name | Popis |
 | --- | --- |
 | Hlavní města |Tato sestava řadí města podle počtu přístupů, které pocházejí z dané oblasti. |
 | Hlavní země |Tato sestava řadí země nebo oblasti podle počtu přístupů, které pocházejí z dané země nebo oblasti. |
@@ -202,6 +202,5 @@ Přímo pod pruhovým grafem se zobrazí následující informace o horních 250
 ## <a name="see-also"></a>Viz také
 * [CDN Azure – Přehled](cdn-overview.md)
 * [Statistiky v reálném čase v Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Přepsání výchozího chování HTTP pomocí modulu pravidel](cdn-rules-engine.md)
+* [Přepsání výchozího chování HTTP pomocí modulu pravidel](./cdn-verizon-premium-rules-engine.md)
 * [Analýza výkonu Edge](cdn-edge-performance.md)
-

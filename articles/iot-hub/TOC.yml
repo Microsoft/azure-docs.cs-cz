@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: Použití Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: Metriky na platformě Azure Monitor
-          href: iot-hub-metrics.md
-        - name: Nastavení diagnostických protokolů
-          href: iot-hub-monitor-resource-health.md
         - name: Zabezpečení vašeho centra s využitím certifikátu X.509
           href: iot-hub-security-x509-get-started.md
         - name: Upgrade IoT Hubu
           href: iot-hub-upgrade.md
-        - name: Povolení trasování zpráv
-          href: iot-hub-distributed-tracing.md
         - name: Konfigurace filtrování IP
           href: iot-hub-ip-filtering.md
         - name: Správa přístupu k veřejné síti
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: Hromadný import a export zařízení IoT
           href: iot-hub-bulk-identity-mgmt.md
+    - name: Monitorování
+      items:
+        - name: Monitorování IoT Hubu
+          href: monitor-iot-hub.md
+        - name: Referenční informace k monitorování dat
+          href: monitor-iot-hub-reference.md
+        - name: Povolení trasování zpráv
+          href: iot-hub-distributed-tracing.md
+        - name: Stav prostředků a služeb IoT Hub
+          href: iot-hub-azure-service-health-integration.md
     - name: Použití skutečných zařízení
       items:
         - name: Použití online simulátoru

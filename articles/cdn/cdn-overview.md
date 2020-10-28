@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 44ab6822039ef2a26ffafc2824bed249825e2daa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0c8170947b59b3d40a388642dac3df772238197
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88783804"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778332"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co je síť pro doručování obsahu v Azure?
 Síť pro doručování obsahu je distribuovaná síť serverů umožňující efektivní doručování webového obsahu uživatelům. Sítě CDN ' ukládání obsahu v mezipaměti na hraničních serverech v umístěních POP (Point-of-prezence), která se blíží koncovým uživatelům, aby se minimalizovala latence. 
@@ -38,7 +38,7 @@ Aktuální seznam umístění uzlů CDN najdete v tématu [Lokality POP v Azure 
 ## <a name="how-it-works"></a>Jak to funguje
 ![Přehled CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Uživatel (Alice) požaduje soubor (také se mu říká Asset) pomocí adresy URL se speciálním názvem domény, jako je například _ &lt; název &gt; koncového bodu_. azureedge.NET. Tímto názvem může být název hostitele koncového bodu nebo vlastní doména. DNS přesměruje požadavek do nejvýkonnější lokality POP, což je obvykle lokalita POP, která je geograficky nejblíže uživateli.
+1. Uživatel (Alice) požaduje soubor (také se mu říká Asset) pomocí adresy URL se speciálním názvem domény, jako je například _&lt; název &gt; koncového bodu_ . azureedge.NET. Tímto názvem může být název hostitele koncového bodu nebo vlastní doména. DNS přesměruje požadavek do nejvýkonnější lokality POP, což je obvykle lokalita POP, která je geograficky nejblíže uživateli.
     
 2. Pokud žádné hraniční servery v lokalitě POP nemají soubor v mezipaměti, lokalita POP si soubor vyžádá ze zdrojového serveru. Zdrojovým serverem může být webová aplikace Azure, cloudová služba Azure, účet Azure Storage nebo jakýkoli veřejně přístupný webový server.
    
@@ -59,7 +59,7 @@ Každé předplatné Azure má výchozí omezení pro následující prostředky
  - Počet koncových bodů, které je možné vytvořit v profilu CDN. 
  - Počet vlastních domén, které je možné namapovat na koncový bod.
 
-Další informace o omezeních předplatného CDN najdete v tématu věnovaném [omezením CDN](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Další informace o omezeních předplatného CDN najdete v tématu věnovaném [omezením CDN](../azure-resource-manager/management/azure-subscription-service-limits.md).
     
 ## <a name="azure-cdn-features"></a>Funkce Azure CDN
 Azure CDN nabízí následující klíčové funkce:

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627614"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779862"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ Nové funkce a verze Preview najdete v [poznámkách k verzi](../database/doc-ch
 
 **Jak můžu zřídit spravovanou instanci SQL?**
 
-Instanci můžete zřídit z [Azure Portal](instance-create-quickstart.md), [PowerShellu](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) a [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
+Instanci můžete zřídit z [Azure Portal](instance-create-quickstart.md), [PowerShellu](scripts/create-configure-managed-instance-powershell.md), [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) a [šablon ARM](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates).
 
 **Je možné zřídit spravované instance v existujícím předplatném?**
 
@@ -94,7 +94,7 @@ Toto je aktuální omezení základní součásti, která ověřuje název pods�
 
 **Jak můžu škálovat spravovanou instanci?**
 
-Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) nebo [šablon ARM](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
+Spravovanou instanci můžete škálovat z [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), [PowerShellu](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) nebo [šablon ARM](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates).
 
 **Můžu svoje spravované instance přesunout z jedné oblasti do druhé?**
 
@@ -102,7 +102,7 @@ Ano, můžete. Pokyny najdete v tématu [Přesunutí prostředků do různých o
 
 **Jak můžu odstranit spravovanou instanci?**
 
-Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true), rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) nebo [Správce prostředků REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete).
+Spravované instance můžete odstranit prostřednictvím Azure Portal, [PowerShellu](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0), rozhraní příkazového [řádku Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) nebo [Správce prostředků REST API](/rest/api/sql/managedinstances/delete).
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 
@@ -118,7 +118,7 @@ Změna názvu spravované instance není podporována.
 
 Ano, výchozí zóna DNS služby Managed instance *. Database.Windows.NET* lze změnit. 
 
-Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.com*: 
+Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.com* : 
 - Použijte CliConfig k definování aliasu. Nástroj je jenom Obálka nastavení registru, takže se dá dělat taky pomocí zásad skupiny nebo skriptu.
 - Použijte *CNAME* s možností *TrustServerCertificate = true* .
 
@@ -137,7 +137,7 @@ Jednou z možností je [exportovat databázi do BacPac](../database/database-exp
 
 [Transakční replikaci](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true) je možné použít, pokud všechny tabulky v databázi mají *primární* klíče a v databázi nejsou žádné objekty OLTP v paměti.
 
-Nativní COPY_ONLY zálohy pořízené ze spravované instance nelze obnovit do SQL Server, protože spravovaná instance má vyšší verzi databáze v porovnání s SQL Server. Další podrobnosti najdete v tématu [zálohování pouze pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true).
+Nativní COPY_ONLY zálohy pořízené ze spravované instance nelze obnovit do SQL Server, protože spravovaná instance má vyšší verzi databáze v porovnání s SQL Server. Další podrobnosti najdete v tématu [zálohování pouze pro kopírování](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15).
 
 **Jak můžu migrovat instanci SQL Server do spravované instance SQL?**
 
@@ -180,15 +180,15 @@ Pokud se vaše zatížení skládá z velkého množství malých transakcí, zv
 
 **Jaké jsou možnosti monitorování a upozorňování na moji spravovanou instanci?**
 
-Všechny možné možnosti monitorování a upozorňování na využití a výkon spravované instance SQL najdete v [příspěvku na blogu možnosti monitorování spravované instance Azure SQL](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). Sledování výkonu pro SQL MI v reálném čase najdete v tématu [monitorování výkonu v reálném čase pro spravovanou instanci Azure SQL DB](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
+Všechny možné možnosti monitorování a upozorňování na využití a výkon spravované instance SQL najdete v [příspěvku na blogu možnosti monitorování spravované instance Azure SQL](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416). Sledování výkonu pro SQL MI v reálném čase najdete v tématu [monitorování výkonu v reálném čase pro spravovanou instanci Azure SQL DB](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance).
 
 **Můžu použít Profiler SQL pro sledování výkonu?**
 
-Ano, podporuje se SQL Profiler nebo spravovaná instance SQL. Další podrobnosti najdete v tématu [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true).
+Ano, podporuje se SQL Profiler nebo spravovaná instance SQL. Další podrobnosti najdete v tématu [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15).
 
 **Jsou Database Advisor a Query Performance Insight podporovány pro databáze spravované instance?**
 
-Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-with-dmvs.md) a [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) můžete použít společně s [SQL profilerem](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) a [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) pro monitorování vašich databází.
+Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-with-dmvs.md) a [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15) můžete použít společně s [SQL profilerem](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) a [XEvents](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) pro monitorování vašich databází.
 
 **Můžu vytvořit upozornění metriky na spravované instanci SQL?**
 
@@ -228,11 +228,11 @@ Pokud chcete sledovat, kdy se na spravované instanci provádělo automatizovan�
 
 **Je podporováno zálohování na vyžádání?**
 
-Ano, v Blob Storage Azure můžete vytvořit úplnou zálohu, která je jen pro kopírování, ale bude obnovitelné jenom ve spravované instanci. Podrobnosti najdete v tématu [zálohování jen pro kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true). Zálohování jen pro kopírování ale není možné, pokud je databáze zašifrovaná službou TDE spravované službou, protože certifikát použitý k šifrování je nepřístupný. V takovém případě použijte funkci obnovení k bodu v čase k přesunu databáze na jinou spravovanou instanci SQL nebo přepněte na klíč spravovaný zákazníkem.
+Ano, v Blob Storage Azure můžete vytvořit úplnou zálohu, která je jen pro kopírování, ale bude obnovitelné jenom ve spravované instanci. Podrobnosti najdete v tématu [zálohování jen pro kopírování](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15). Zálohování jen pro kopírování ale není možné, pokud je databáze zašifrovaná službou TDE spravované službou, protože certifikát použitý k šifrování je nepřístupný. V takovém případě použijte funkci obnovení k bodu v čase k přesunu databáze na jinou spravovanou instanci SQL nebo přepněte na klíč spravovaný zákazníkem.
 
 **Je nativní obnovení (ze souborů. bak) do podporované spravované instance?**
 
-Ano, podporuje se a je k dispozici pro SQL Server 2005 a verze.  Pokud chcete použít nativní obnovení, nahrajte soubor. bak do Azure Blob Storage a spusťte příkazy T-SQL. Další podrobnosti najdete v tématu [nativní obnovení z adresy URL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url).
+Ano, podporuje se a je k dispozici pro SQL Server 2005 a verze.  Pokud chcete použít nativní obnovení, nahrajte soubor. bak do Azure Blob Storage a spusťte příkazy T-SQL. Další podrobnosti najdete v tématu [nativní obnovení z adresy URL](./migrate-to-instance-from-sql-server.md#native-restore-from-url).
 
 ## <a name="business-continuity"></a>Kontinuita podnikových procesů
 
@@ -254,7 +254,7 @@ K tomu je potřeba zajistit nepřerušovaný tok provozu správy za účelem spl
 
 **Můžu získat zdrojové rozsahy IP adres, které se používají pro příchozí provoz správy?**
 
-Ano. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
+Ano. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](../../network-watcher/network-watcher-monitoring-overview.md#analyze-traffic-to-or-from-a-network-security-group).
 
 **Můžu nastavit NSG pro řízení přístupu ke koncovému bodu dat (port 1433)?**
 
@@ -273,7 +273,7 @@ Ano. Nejjednodušší způsob, jak toho dosáhnout, je přidání pravidla 0/0 d
  
 **Kolik IP adres potřebuji pro spravovanou instanci?**
 
-Podsíť musí mít dostatečný počet dostupných [IP adres](connectivity-architecture-overview.md#network-requirements). Informace o určení velikosti podsítě virtuální sítě pro spravovanou instanci SQL najdete v tématu [Určení požadované velikosti podsítě a rozsahu pro spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-determine-size-vnet-subnet). 
+Podsíť musí mít dostatečný počet dostupných [IP adres](connectivity-architecture-overview.md#network-requirements). Informace o určení velikosti podsítě virtuální sítě pro spravovanou instanci SQL najdete v tématu [Určení požadované velikosti podsítě a rozsahu pro spravovanou instanci](./vnet-subnet-determine-size.md). 
 
 **Co dělat, pokud pro provádění operace aktualizace instance není k dispozici dostatek IP adres?**
 
@@ -285,7 +285,7 @@ Ne. Můžete použít buď prázdnou podsíť, nebo podsíť, která již obsahu
 
 **Můžu změnit rozsah adres podsítě?**
 
-Není v případě, že jsou k dispozici spravované instance. Toto je omezení síťové infrastruktury Azure. Do prázdné podsítě je povoleno [přidávat pouze další adresní prostory](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet#change-subnet-settings). 
+Není v případě, že jsou k dispozici spravované instance. Toto je omezení síťové infrastruktury Azure. Do prázdné podsítě je povoleno [přidávat pouze další adresní prostory](../../virtual-network/virtual-network-manage-subnet.md#change-subnet-settings). 
 
 **Můžu svoje spravované instance přesunout do jiné podsítě?**
 
@@ -293,13 +293,13 @@ Ne. Toto je aktuální omezení návrhu spravované instance. Můžete ale zří
 
 **Potřebuji k vytvoření spravované instance prázdnou virtuální síť?**
 
-Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravovanou instanci Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-vnet-subnet) , nebo [nakonfigurovat stávající virtuální síť pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vnet-subnet).
+Tento krok není povinný. Můžete buď [vytvořit virtuální síť pro spravovanou instanci Azure SQL](./virtual-network-subnet-create-arm-template.md) , nebo [nakonfigurovat stávající virtuální síť pro spravovanou instanci SQL Azure](./vnet-existing-add-subnet.md).
 
 **Můžu v podsíti umístit spravovanou instanci na jiné služby?**
 
 Ne. V současné době nepodporujeme umístění spravované instance v podsíti, která už obsahuje jiné typy prostředků.
 
-## <a name="connectivity"></a>Připojení 
+## <a name="connectivity"></a>Možnosti připojení 
 
 **Můžu se k spravované instanci připojit pomocí IP adresy?**
 
@@ -316,13 +316,13 @@ Z tohoto důvodu se důrazně nedoporučuje spoléhat na neměnnosti IP adresy, 
 
 **Má spravovaná instance veřejný koncový bod?**
 
-Ano. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
+Ano. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](./public-endpoint-overview.md). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
 
 **Jak řízení spravované instance přistupuje k veřejnému koncovému bodu?**
 
 Spravovaná instance řídí přístup k veřejnému koncovému bodu na úrovni sítě i aplikace.
 
-Služba správy a nasazení se připojí ke spravované instanci pomocí [koncového bodu správy](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) , který se mapuje na externí nástroj pro vyrovnávání zatížení. Provoz se směruje na uzly pouze v případě, že se obdrží na předdefinované sadě portů, které používají pouze součásti správy spravované instance. Integrovaná brána firewall na uzlech je nastavená tak, aby povolovala přenosy jenom z rozsahů IP adres Microsoftu. Certifikáty vzájemně ověřují veškerou komunikaci mezi součástmi pro správu a rovinou správy. Další podrobnosti najdete v tématu [Architektura připojení pro spravovanou instanci SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture).
+Služba správy a nasazení se připojí ke spravované instanci pomocí [koncového bodu správy](./connectivity-architecture-overview.md#management-endpoint) , který se mapuje na externí nástroj pro vyrovnávání zatížení. Provoz se směruje na uzly pouze v případě, že se obdrží na předdefinované sadě portů, které používají pouze součásti správy spravované instance. Integrovaná brána firewall na uzlech je nastavená tak, aby povolovala přenosy jenom z rozsahů IP adres Microsoftu. Certifikáty vzájemně ověřují veškerou komunikaci mezi součástmi pro správu a rovinou správy. Další podrobnosti najdete v tématu [Architektura připojení pro spravovanou instanci SQL](./connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
 
 **Můžu použít veřejný koncový bod pro přístup k datům v databázích spravované instance?**
 
@@ -337,9 +337,9 @@ Ne, tato možnost není k dispozici.  Pro koncový bod privátních dat použív
 Způsob, jak to provést, je partnerský vztah okruhu Express Route. Podpora globálního partnerského vztahu virtuálních sítí se podporuje s omezením popsaným v níže uvedené poznámce.  
 
 > [!IMPORTANT]
-> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
-Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)a [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
+Pokud není možné partnerské vztahy okruhu Express Route a globální partnerské vztahy virtuálních sítí, stačí, když vytvoříte připojení VPN typu Site-to-Site ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [POWERSHELL](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)a [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Zmírnění rizik exfiltrace dat  
 
@@ -347,19 +347,19 @@ Pokud není možné partnerské vztahy okruhu Express Route a globální partner
 
 Zákazníkům se doporučuje použít sadu nastavení zabezpečení a ovládací prvky, aby se zmírnily veškerá rizika exfiltracea dat:
 
-- Zapněte [transparentní šifrování dat (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) na všech databázích.
+- Zapněte [transparentní šifrování dat (TDE)](../database/transparent-data-encryption-tde-overview.md) na všech databázích.
 - Vypnout modul CLR (Common Language Runtime). To se doporučuje i v místním prostředí.
 - Použijte pouze ověřování Azure Active Directory (Azure AD).
 - Přístup k instanci s nízkým oprávněním pomocí účtu DBA.
 - Nakonfigurujte přístup JIT JumpBox pro účet sysadmin.
-- Zapněte [auditování SQL](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)a integrujte je pomocí mechanismů upozorňování.
-- Zapněte [detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) z [Azure Defenderu pro SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite.
+- Zapněte [auditování SQL](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)a integrujte je pomocí mechanismů upozorňování.
+- Zapněte [detekci hrozeb](../database/threat-detection-configure.md) z [Azure Defenderu pro SQL](../database/azure-defender-for-sql.md) Suite.
 
 ## <a name="dns"></a>DNS
 
 **Můžu nakonfigurovat vlastní DNS pro spravovanou instanci SQL?**
 
-Ano. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
+Ano. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](./custom-dns-configure.md).
 
 **Můžu aktualizovat DNS?**
 
@@ -378,22 +378,22 @@ Jako alternativní řešení můžete downgradovat SQL Managed instance na 4 vir
 
 Konfiguraci časového pásma lze nastavit při prvním zřízení spravované instance. Změna časového pásma existující spravované instance se nepodporuje. Podrobnosti najdete v tématu [omezení časového pásma](timezones-overview.md#limitations).
 
-Alternativní řešení zahrnují vytvoření nové spravované instance se správným časovým pásmem a následné ruční zálohování a obnovení, nebo to, co doporučujeme, aby bylo možné provést [obnovení mezi instancemi v čase](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
+Alternativní řešení zahrnují vytvoření nové spravované instance se správným časovým pásmem a následné ruční zálohování a obnovení, nebo to, co doporučujeme, aby bylo možné provést [obnovení mezi instancemi v čase](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance).
 
 
 ## <a name="security-and-database-encryption"></a>Zabezpečení a šifrování databáze
 
 **Je role serveru sysadmin k dispozici pro spravovanou instanci SQL?**
 
-Ano, zákazníci můžou vytvářet přihlašovací jména, která jsou členem role sysadmin.  Zákazníci, kteří předpokládají oprávnění sysadmin, také předpokládají zodpovědnost za provoz instance, což může mít negativní dopad na závazek smlouvy SLA. Pokud chcete přidat přihlášení do role serveru sysadmin, přečtěte si téma [ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication).
+Ano, zákazníci můžou vytvářet přihlašovací jména, která jsou členem role sysadmin.  Zákazníci, kteří předpokládají oprávnění sysadmin, také předpokládají zodpovědnost za provoz instance, což může mít negativní dopad na závazek smlouvy SLA. Pokud chcete přidat přihlášení do role serveru sysadmin, přečtěte si téma [ověřování Azure AD](./aad-security-configure-tutorial.md#azure-ad-authentication).
 
 **Je pro spravovanou instanci SQL podporovaná transparentní šifrování dat?**
 
-Ano, transparentní šifrování dat je podporována pro spravovanou instanci SQL. Podrobnosti najdete v tématu [transparentní šifrování dat pro spravovanou instanci SQL](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal).
+Ano, transparentní šifrování dat je podporována pro spravovanou instanci SQL. Podrobnosti najdete v tématu [transparentní šifrování dat pro spravovanou instanci SQL](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal).
 
 **Můžu využít model "Přineste si vlastní klíč" pro TDE?**
 
-Ano, Azure Key Vault pro scénář BYOK je k dispozici pro spravovanou instanci Azure SQL. Podrobnosti najdete v tématu [transparentní šifrování dat s klíčem spravovaným zákazníkem](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true).
+Ano, Azure Key Vault pro scénář BYOK je k dispozici pro spravovanou instanci Azure SQL. Podrobnosti najdete v tématu [transparentní šifrování dat s klíčem spravovaným zákazníkem](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
 
 **Můžu migrovat šifrovanou databázi SQL Server?**
 
@@ -409,8 +409,8 @@ TDE Protector pro spravovanou instanci můžete otáčet pomocí Azure Cloud She
 
 Ano, databázi nemusíte dešifrovat, aby ji bylo možné obnovit ve spravované instanci SQL. Aby bylo možné číst data z šifrovaného záložního souboru, je třeba zadat certifikát nebo klíč, který se používá jako ochrana šifrovacího klíče ve zdrojovém systému do spravované instance SQL. Existují dva možné způsoby, jak to provést:
 
-- *Nahrání certifikátu – ochrana spravované instance SQL* Můžete to udělat jenom pomocí PowerShellu. [Vzorový skript](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) popisuje celý proces.
-- *Nahrání asymetrického klíče-ochrany pro Azure Key Vault a nasměrování spravované instance SQL na ni*. Tento přístup připomíná BYOK případ použití TDE, který také používá integraci Key Vault k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka **nastavit vybraný klíč jako výchozí ochranu TDE**.
+- *Nahrání certifikátu – ochrana spravované instance SQL* Můžete to udělat jenom pomocí PowerShellu. [Vzorový skript](./tde-certificate-migrate.md) popisuje celý proces.
+- *Nahrání asymetrického klíče-ochrany pro Azure Key Vault a nasměrování spravované instance SQL na ni* . Tento přístup připomíná BYOK případ použití TDE, který také používá integraci Key Vault k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka **nastavit vybraný klíč jako výchozí ochranu TDE** .
 
 Po zpřístupnění ochrany šifrování pro spravovanou instanci SQL můžete postupovat podle standardního postupu obnovení databáze.
 
@@ -423,17 +423,17 @@ Spravovaná instance SQL nabízí [nákupní model založený na Vcore](sql-mana
 **Jaké cenové výhody jsou k dispozici pro spravovanou instanci SQL?**
 
 Náklady můžete s výhodami Azure SQL ušetřit následujícími způsoby:
--   Maximalizujte stávající investice do místních licencí a pomocí [zvýhodněné hybridní využití Azure](https://docs.microsoft.com/azure/azure-sql/azure-hybrid-benefit?tabs=azure-powershell)ušetřete až 55 procent. 
--   Potvrďte rezervaci za výpočetní prostředky a Ušetřete až 33 procent s [výhodou rezervované instance](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity). V kombinaci s zvýhodněným hybridním využitím Azure získáte úsporu až 82 procent. 
+-   Maximalizujte stávající investice do místních licencí a pomocí [zvýhodněné hybridní využití Azure](../azure-hybrid-benefit.md?tabs=azure-powershell)ušetřete až 55 procent. 
+-   Potvrďte rezervaci za výpočetní prostředky a Ušetřete až 33 procent s [výhodou rezervované instance](../database/reserved-capacity-overview.md). V kombinaci s zvýhodněným hybridním využitím Azure získáte úsporu až 82 procent. 
 -   Díky [zvýhodnění](https://azure.microsoft.com/pricing/dev-test/) ceny za vývoj a testování pro Azure můžete ušetřit až 55 procent oproti ceníkům, které nabízí zvýhodněné sazby za vaše průběžné vývojové a testovací úlohy.
 
 **Kdo má nárok na zvýhodnění rezervované instance?**
 
-Aby bylo možné využít výhod rezervované instance, váš typ předplatného musí být smlouva Enterprise (čísla nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Další informace o rezervacích najdete v tématu [výhoda rezervované instance](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity). 
+Aby bylo možné využít výhod rezervované instance, váš typ předplatného musí být smlouva Enterprise (čísla nabídky: MS-AZR-0017P nebo MS-AZR-0148P) nebo samostatná smlouva s cenami průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P). Další informace o rezervacích najdete v tématu [výhoda rezervované instance](../database/reserved-capacity-overview.md). 
 
 **Je možné zrušit, vyměňovat nebo vrátit rezervace?**
 
-Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations).
+Rezervace můžete zrušit, vyměnit nebo vrátit refundaci s určitými omezeními. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="billing-for-managed-instance-and-backup-storage"></a>Fakturace za spravovanou instanci a úložiště záloh
 
@@ -443,7 +443,7 @@ Pokud chcete prozkoumat cenové možnosti spravované instance, podívejte se na
 
 **Jak můžu sledovat náklady na vyúčtování spravované instance?**
 
-Můžete to udělat pomocí [řešení Azure cost management](https://docs.microsoft.com/azure/cost-management-billing/). V [Azure Portal](https://portal.azure.com) přejděte na **předplatná** a vyberte **Analýza nákladů**. 
+Můžete to udělat pomocí [řešení Azure cost management](../../cost-management-billing/index.yml). V [Azure Portal](https://portal.azure.com) přejděte na **předplatná** a vyberte **Analýza nákladů** . 
 
 Použijte možnost **akumulované náklady** a pak filtrujte podle **typu prostředku** jako `microsoft.sql/managedinstances` .
 
@@ -453,7 +453,7 @@ Získáte stejnou velikost volného prostoru úložiště pro zálohování jako
 
 **Jak můžu monitorovat náklady na vyúčtování spotřeby úložiště záloh?**
 
-Náklady na úložiště zálohování můžete monitorovat prostřednictvím Azure Portal. Pokyny najdete v tématu [monitorování nákladů na automatizované zálohování](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs). 
+Náklady na úložiště zálohování můžete monitorovat prostřednictvím Azure Portal. Pokyny najdete v tématu [monitorování nákladů na automatizované zálohování](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs). 
 
 **Jak můžu optimalizovat náklady na úložiště zálohování na spravované instanci?**
 
@@ -515,11 +515,11 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 **Jakou změnu má kořenová CA pro Azure SQL Database & SQL Managed instance?**
 
-Přečtěte si téma [otočení certifikátu pro Azure SQL Database & spravované instance SQL](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring). 
+Přečtěte si téma [otočení certifikátu pro Azure SQL Database & spravované instance SQL](../updates/ssl-root-certificate-expiring.md). 
 
 **Jaká je plánovaná událost údržby pro spravovanou instanci SQL?**
 
-Viz [plánování událostí údržby Azure ve spravované instanci SQL](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance). 
+Viz [plánování událostí údržby Azure ve spravované instanci SQL](../database/planned-maintenance.md). 
 
 
 ## <a name="azure-feedback-and-support"></a>Názory a podpora Azure
@@ -530,5 +530,4 @@ Můžete hlasovat o nové funkci spravované instance nebo na fóru na základě
 
 **Jak můžu vytvořit žádost o podporu Azure?**
 
-Informace o tom, jak vytvořit žádost o podporu Azure, najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
-
+Informace o tom, jak vytvořit žádost o podporu Azure, najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md).

@@ -1,18 +1,18 @@
 ---
 title: Otevření portů k virtuálnímu počítači pomocí Azure Portal
-description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač s Windows pomocí Azure Portal
+description: Přečtěte si, jak otevřít port/vytvořit koncový bod pro virtuální počítač pomocí Azure Portal
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973984"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777754"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Postup otevření portů na virtuálním počítači s Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -23,9 +23,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
-1. Vyhledejte a vyberte skupinu prostředků pro virtuální počítač, zvolte **Přidat**, vyhledejte a vyberte **skupinu zabezpečení sítě**.
+1. Vyhledejte a vyberte skupinu prostředků pro virtuální počítač, zvolte **Přidat** , vyhledejte a vyberte **skupinu zabezpečení sítě** .
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
     Otevře se okno **vytvořit skupinu zabezpečení sítě** .
 
@@ -41,15 +41,15 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 1. Vyberte novou skupinu zabezpečení sítě. 
 
-1. V nabídce vlevo vyberte **příchozí pravidla zabezpečení** a pak vyberte **Přidat**.
+1. V nabídce vlevo vyberte **příchozí pravidla zabezpečení** a pak vyberte **Přidat** .
 
     ![Přepnout na stránku Upřesnit](./media/nsg-quickstart-portal/advanced.png)
 
 1. Na stránce **Přidat pravidlo zabezpečení příchozího** přenosu přepněte na **Upřesnit** ze **základního** umístění v horní části stránky. 
 
-1. Z rozevírací nabídky, jako je **http**, vyberte běžnou **službu** . Můžete také vybrat možnost **vlastní** , pokud chcete zadat konkrétní port, který chcete použít. 
+1. Z rozevírací nabídky, jako je **http** , vyberte běžnou **službu** . Můžete také vybrat možnost **vlastní** , pokud chcete zadat konkrétní port, který chcete použít. 
 
-1. Volitelně můžete změnit **prioritu** nebo **název**. Priorita má vliv na pořadí, ve kterém jsou použita pravidla: čím nižší je číselná hodnota, použije se předchozí pravidlo.
+1. Volitelně můžete změnit **prioritu** nebo **název** . Priorita má vliv na pořadí, ve kterém jsou použita pravidla: čím nižší je číselná hodnota, použije se předchozí pravidlo.
 
 1. Vyberte **Přidat** a vytvořte pravidlo.
 
@@ -57,13 +57,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 Posledním krokem je přidružení skupiny zabezpečení sítě k podsíti nebo konkrétnímu síťovému rozhraní. V tomto příkladu přidružíme skupinu zabezpečení sítě k podsíti. 
 
-1. V nabídce vlevo vyberte **podsítě** a pak vyberte **přidružit**.
+1. V nabídce vlevo vyberte **podsítě** a pak vyberte **přidružit** .
 
 1. Vyberte virtuální síť a pak vyberte vhodnou podsíť.
 
     ![Přidružení skupiny zabezpečení sítě k virtuální síti](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-1. Jakmile budete hotovi, vyberte **OK**.
+1. Jakmile budete hotovi, vyberte **OK** .
 
 ## <a name="additional-information"></a>Další informace
 

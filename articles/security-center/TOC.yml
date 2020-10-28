@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Pokrytí funkcí pro prostředky Azure PaaS
           href: features-paas.md
-    - name: Co je nového ve službě Security Center?
-      displayName: release notes
-      href: release-notes.md
+    - name: Co je nového?
+      items:
+        - name: "Poznámky k\_verzi"
+          displayName: changelog
+          href: release-notes.md
+        - name: Důležité chystané změny
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: Archivované poznámky k verzi (starší než šest měsíců)
+          displayName: changelog
+          href: release-notes-archive.md
     - name: Základy služby Security Center
       items:
         - name: Stránka s přehledem služby Security Center
@@ -217,8 +225,13 @@
         - name: Přizpůsobení zásad Information Protection
           href: security-center-info-protection-policy.md
     - name: Použití Azure Defenderu pro registry kontejnerů
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: Kontrola ohrožení zabezpečení v imagích registrů
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: Zákaz konkrétních zjištěných ohrožení zabezpečení v imagích
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: Export upozornění a doporučení
       items:
         - name: 'Export do SIEM, SOAR nebo ITSM'
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Stávající uživatelé Azure Log Analytics
           href: faq-azure-monitor-logs.md
-    - name: Archiv novinek ve službě Security Center
-      href: release-notes-archive.md
     - name: Blog s plány nasazení produktů Azure
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyhodnocení ochrany koncových bodů a doporučení

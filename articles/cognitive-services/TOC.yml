@@ -9,6 +9,8 @@
       href: whats-new-docs.md
     - name: Cognitive Services a strojové učení
       href: cognitive-services-and-machine-learning.md
+    - name: Možnosti vývoje služby Cognitive Services
+      href: cognitive-services-development-options.md
     - name: Vlastní podřízené domény pro Cognitive Services
       href: cognitive-services-custom-subdomains.md
     - name: Podpora jazyků

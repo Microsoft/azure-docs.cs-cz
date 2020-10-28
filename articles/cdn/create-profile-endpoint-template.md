@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: ca74c5f54cfb513f4611fafc40d34378707ff949
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0612445d0a1bfa10182eb8ce827001d0856f4d9b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746498"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777904"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Rychlý Start: vytvoření profilu Azure CDN a šablony koncového bodu – ARM
 
@@ -46,7 +46,7 @@ Tato šablona je nakonfigurovaná tak, aby vytvořila:
 
 V této šabloně je definovaný jeden prostředek Azure:
 
-* **[Microsoft. CDN/profily](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft. CDN/profily](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -107,7 +107,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN

@@ -5,19 +5,19 @@ description: Naučte se konfigurovat Azure SQL Database a Azure synapse Analytic
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619113"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779964"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro
 - Klíč musí mít následující atributy, které se mají použít pro TDE:
   - Žádné datum vypršení platnosti
   - Nezakázáno
-  - Může provádět operace *Get*, *Wrap Key*, *rozbalení klíčových* operací.
+  - Může provádět operace *Get* , *Wrap Key* , *rozbalení klíčových* operací.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
 Konkrétní informace o Key Vault najdete v tématu [pokyny pro PowerShell z Key Vault](../../key-vault/secrets/quick-create-powershell.md) a [Jak používat Key Vault obnovitelného odstranění pomocí PowerShellu](../../key-vault/general/soft-delete-powershell.md).
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nainstalovat požadovanou verzi rozhraní příkazového řádku Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure pro více platforem Command-Line rozhraní 2,0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete nainstalovat požadovanou verzi rozhraní příkazového řádku Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace Azure pro více platforem Command-Line rozhraní 2,0](/cli/azure/install-azure-cli).
 
 Konkrétní informace o Key Vault najdete v tématech [správa Key Vault pomocí rozhraní příkazového řádku (cli 2,0](../../key-vault/general/manage-with-cli2.md) ) a [Jak používat Key Vault obnovitelného odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)příkazového řádku.
 
@@ -239,7 +239,7 @@ Pokud dojde k problému, podívejte se na následující:
 
 - Pokud nový klíč nelze přidat na server nebo nový klíč nelze aktualizovat jako ochranu TDE, podívejte se na následující:
    - Klíč by neměl mít datum vypršení platnosti.
-   - Klíč musí mít povolené operace *Get*, *Wrap Key*a *Unwrap Key* .
+   - Klíč musí mít povolené operace *Get* , *Wrap Key* a *Unwrap Key* .
 
 ## <a name="next-steps"></a>Další kroky
 

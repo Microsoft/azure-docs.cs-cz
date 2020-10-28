@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 0710f2f31510ae299fafe89dc1798f40e325e8b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c7e4ff05307452da67c37b23bf492db8855e2ef
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192596"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778376"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimalizuje Azure CDN pro typ doručování obsahu.
 
@@ -39,7 +39,7 @@ Tento článek obsahuje přehled různých funkcí optimalizace a jejich použit
 * [Obecné doručování webu](#general-web-delivery). Tato optimalizace se používá také pro streamování médií a stahování velkých souborů.
 
 > [!NOTE]
-> Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+> Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](../frontdoor/front-door-overview.md).
 
 **Azure CDN Standard od Verizon** a **Azure CDN Premium od profilů Verizon** podporuje následující optimalizace:
 
@@ -70,7 +70,7 @@ Při vytváření koncového bodu CDN vyberte typ optimalizace, který nejlépe 
 
     ![Výběr koncového bodu](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. V části nastavení vyberte **optimalizace**. Pak vyberte typ z rozevíracího seznamu **optimalizované pro** .
+2. V části nastavení vyberte **optimalizace** . Pak vyberte typ z rozevíracího seznamu **optimalizované pro** .
 
     ![Výběr optimalizace a typu](./media/cdn-optimization-overview/02_Select.png)
 
@@ -95,7 +95,7 @@ Datové proudy médií jsou citlivé na čas, protože pakety, které dorazí na
 
 Tento scénář je běžně pro zákazníky Azure Media Service. Když použijete Azure Media Services, získáte jeden koncový bod streamování, který se dá použít pro živé streamování i pro streamování na vyžádání. V tomto scénáři se zákazníkům při změně z živého streamování na na vyžádání nemusejí přepnout na jiný koncový bod. Obecná optimalizace datových proudů médií podporuje tento typ scénáře.
 
-Pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**a **Azure CDN Premium od Verizon**, použijte k doručování obecného mediálního obsahu pro streamování běžný typ optimalizace webového doručování.
+Pro **Azure CDN Standard od Microsoftu** , **Azure CDN Standard od Verizon** a **Azure CDN Premium od Verizon** , použijte k doručování obecného mediálního obsahu pro streamování běžný typ optimalizace webového doručování.
 
 Další informace o optimalizaci streamování médií najdete v tématu [Optimalizace streamování médií](cdn-media-streaming-optimization.md).
 
@@ -103,7 +103,7 @@ Další informace o optimalizaci streamování médií najdete v tématu [Optima
 
 Optimalizace streamování médií na vyžádání vylepšuje obsah streamování videa na vyžádání. Pokud používáte koncový bod pro streamování videa na vyžádání, použijte tuto možnost.
 
-Pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**a **Azure CDN Premium ze profilů Verizon** , použijte k doručování multimediálního obsahu streamování videa na vyžádání základní typ optimalizace webového doručování.
+Pro **Azure CDN Standard od Microsoftu** , **Azure CDN Standard od Verizon** a **Azure CDN Premium ze profilů Verizon** , použijte k doručování multimediálního obsahu streamování videa na vyžádání základní typ optimalizace webového doručování.
 
 Další informace o optimalizaci streamování médií najdete v tématu [Optimalizace streamování médií](cdn-media-streaming-optimization.md).
 
@@ -115,22 +115,19 @@ Další informace o optimalizaci streamování médií najdete v tématu [Optima
 
 U **Azure CDN Standard od profilů Akamai** jsou velké stahování souborů optimalizované pro obsah větší než 10 MB. Pokud je průměrná velikost souboru menší než 10 MB, použijte obecné doručování webu. Pokud jsou průměrné velikosti souborů konzistentně větší než 10 MB, může být efektivnější vytvořit samostatný koncový bod pro velké soubory. Například firmware nebo aktualizace softwaru jsou obvykle velkými soubory. Aby bylo možné doručovat soubory větší než 1,8 GB, je nutná optimalizace stahování velkých souborů.
 
-Pro **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**a **Azure CDN Premium ze profilů Verizon** , použijte k doručování velkého obsahu souborů pro stahování velký soubor pomocí obecného typu optimalizace webového doručování. Velikost souboru ke stažení není nijak omezené.
+Pro **Azure CDN Standard od Microsoftu** , **Azure CDN Standard od Verizon** a **Azure CDN Premium ze profilů Verizon** , použijte k doručování velkého obsahu souborů pro stahování velký soubor pomocí obecného typu optimalizace webového doručování. Velikost souboru ke stažení není nijak omezené.
 
 Další informace o optimalizaci velkých souborů najdete v tématu [optimalizace velkých souborů](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Akcelerace dynamických webů
 
- Akcelerace dynamického webu (DSA) je k dispozici pro **Azure CDN Standard od Akamai**, **Azure CDN Standard od Verizon**a **Azure CDN Premium z profilů Verizon** . Tato optimalizace zahrnuje další poplatek za použití; Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
+ Akcelerace dynamického webu (DSA) je k dispozici pro **Azure CDN Standard od Akamai** , **Azure CDN Standard od Verizon** a **Azure CDN Premium z profilů Verizon** . Tato optimalizace zahrnuje další poplatek za použití; Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
 > [!NOTE]
-> Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-overview) , což je globální služba [libovolného vysílání](https://en.wikipedia.org/wiki/Anycast) , která využívá privátní globální síť Microsoftu k doručování úloh vaší aplikace.
+> Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](../frontdoor/front-door-overview.md) , což je globální služba [libovolného vysílání](https://en.wikipedia.org/wiki/Anycast) , která využívá privátní globální síť Microsoftu k doručování úloh vaší aplikace.
 
 DSA obsahuje různé techniky, které využívají latenci a výkon dynamického obsahu. Mezi techniky patří optimalizace směrování a sítě, optimalizace protokolu TCP a další. 
 
 Tuto optimalizaci můžete použít k urychlení webové aplikace, která obsahuje nejrůznější odpovědi, které nejsou možné ukládat do mezipaměti. Příklady jsou výsledky hledání, transakce rezervace nebo data v reálném čase. V případě statických dat můžete nadále používat základní Azure CDN možnosti ukládání do mezipaměti. 
 
 Další informace o akceleraci dynamického webu najdete v tématu [akcelerace dynamického webu](cdn-dynamic-site-acceleration.md).
-
-
-

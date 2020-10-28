@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883709"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779131"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Správa zásad ukládání do mezipaměti Azure CDN v Azure Media Services
 Azure Media Services poskytuje adaptivní streamování a progresivní stahování založené na protokolu HTTP. Streamování založené na protokolu HTTP je vysoce škálovatelné s výhodami ukládání do mezipaměti ve vrstvách proxy a CDN i do ukládání do mezipaměti na straně klienta. Koncové body streamování poskytuje obecné možnosti streamování a také konfiguraci pro hlavičky mezipaměti protokolu HTTP. Koncové body streamování nastavuje mezipaměť HTTP – řízení cache: maximální stáří a hlavičky vypršení platnosti. Další informace o hlavičkách mezipaměti HTTP najdete v [w3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
@@ -40,10 +40,9 @@ K nakonfigurování hodnot hlaviček mezipaměti můžete použít rozhraní API
 
 1. Pokud chcete konfigurovat hlavičky mezipaměti pomocí Azure Portal, přečtěte si téma [Správa koncových bodů streamování](../media-services/previous/media-services-portal-manage-streaming-endpoints.md) s konfigurací koncového bodu streamování.
 2. Azure Media Services REST API, [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl).
-3. Azure Media Services .NET SDK, [vlastnosti StreamingEndpointCacheControl](https://go.microsoft.com/fwlink/?LinkId=615302).
+3. Azure Media Services .NET SDK, [vlastnosti StreamingEndpointCacheControl](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol).
 
 ## <a name="cache-configuration-precedence-order"></a>Pořadí priority konfigurace mezipaměti
 1. Azure Media Services konfigurovaná hodnota mezipaměti přepisuje výchozí hodnotu.
 2. Pokud není k dispozici žádná ruční konfigurace, použijí se výchozí hodnoty.
 3. Ve výchozím nastavení se do 2 sekund použijí hlavičky mezipaměti pro živý streamování (Playlist) bez ohledu na média Azure nebo konfiguraci Azure Storage a přepsání této hodnoty není k dispozici.
-

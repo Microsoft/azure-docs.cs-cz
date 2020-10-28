@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461647"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779437"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -19,7 +19,7 @@ Odpovědi na nejčastější dotazy týkající se řešení Azure VMware.
 
 #### <a name="what-is-azure-vmware-solution"></a>Co je Azure VMware Solution?
 
-Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylepšili flexibilitu, snížili náklady a urychlili inovace, hybridní cloudové platformy se vypracovaly jako klíčové aktivátory digitální transformace zákazníků. Řešení Azure VMware spojuje software definovaného datového centra (SDDC) společnosti VMware s Microsoft Azureým ekosystémem globálních cloudových služeb. Řešení Azure VMware je spravované tak, aby splňovalo požadavky na výkon, dostupnost, zabezpečení a dodržování předpisů.
+Vzhledem k tomu, že podniky sledují strategie pro moderní účely, aby vylepšili flexibilitu, snížili náklady a urychlili inovace, hybridní cloudové platformy se vypracovaly jako klíčové aktivátory digitální transformace zákazníků. Řešení Azure VMware spojuje software Software-Defined datacentra (SDDC) VMware s Microsoft Azure globálním ekosystémem cloudové služby. Řešení Azure VMware je spravované tak, aby splňovalo požadavky na výkon, dostupnost, zabezpečení a dodržování předpisů.
 
 ## <a name="azure-vmware-solution-service"></a>Služba řešení Azure VMware
 
@@ -49,7 +49,7 @@ Ano. Migrace virtuálních počítačů a vMotion se dají použít k přesunu v
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>Vyžaduje se v místních prostředích konkrétní verze vSphere?
 
-Vzhledem k tomu, že všechna cloudová prostředí přichází s VMware HCX, vSphere 5,5 nebo novějším v místních prostředích pro vMotion.
+Všechna cloudová prostředí se dodávají s VMware HCX, vSphere 5,5 nebo novějším v místních prostředích pro vMotion.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Jak proces řízení změn vypadá jako?
 
@@ -68,7 +68,7 @@ Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory,
 VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Protože řešení VMware HCX EE pro Azure VMware je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Službu můžete odpínat nebo odhlásit.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Můžou se virtuální počítače řešení Azure VMware spravovat pomocí VMRC?
-Ano, pokud je systém, na kterém je nainstalovaný, má přístup k privátnímu cloudu vCenter a používá veřejnou službu DNS (aby mohl přeložit názvy hostitelů ESXi).
+Ano, pokud je systém, na kterém je nainstalován, má přístup k privátnímu cloudu vCenter a používá veřejnou službu DNS k překladu názvů ESXi.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Existují zvláštní pokyny k instalaci a používání VMRC s virtuálními počítači řešení Azure VMware?
 Ne, použijte [pokyny poskytované VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) a splní požadavky virtuálních počítačů uvedené v těchto pokynech. 
@@ -102,7 +102,7 @@ Každý hostitel ESXi má dvě síti vSAN diskgroups s úrovní kapacity 15,2 TB
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>Kolik šířky pásma sítě je k dispozici na každém hostiteli ESXi?
 
-U každého hostitele ESXi je řešení Azure VMware nakonfigurované se síťovými kartami 4 25 – 2 GB a se dvěma síťovými kartami zřízenými pro přenos dat systému ESXi a pro přenosy úloh se zřídí dvě síťové karty. 
+Každý hostitel ESXi v řešení Azure VMware je nakonfigurovaný pomocí síťových adaptérů 4 25 – 2 GB/s, které jsou zřízené pro přenos systému ESXi, a pro přenosy úloh se zřídí dvě síťové karty. 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>Jsou data uložená v úložišti datasíti vsans zašifrovaná v klidovém stavu?
 
@@ -116,9 +116,9 @@ V takovém případě je potřeba, aby jakékoli řešení zálohování, které
 
 Jak jsou tato řešení pro zálohování nainstalovaná a spravovaná zákazníky, se můžou obrátit na příslušného nezávislého výrobce softwaru pro podporu. 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>Jaké jsou správné zásady úložiště pro nastavení odstraňování duplicitních dat?
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Jaké jsou správné zásady úložiště pro instalaci odstranění duplicit?
 
-Použijte zásady úložiště *thin_provision* pro šablonu virtuálního počítače.  Výchozí hodnota je *thick_provision*.
+Použijte zásady úložiště *thin_provision* pro šablonu virtuálního počítače.  Výchozí hodnota je *thick_provision* .
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Jsou protokoly infrastruktury SNMP sdílené?
 
@@ -130,7 +130,7 @@ Ne.
 
 Ne, hostitelé a clustery privátního cloudu jsou vyhrazené a bezpečně se vymažou před a po použití.
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>Jaký je minimální a maximální počet hostitelů na cluster?
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Jaké jsou minimální a maximální počet hostitelů na cluster?
 
 Clustery se můžou škálovat mezi 3 a 16 hostiteli ESXi. Clustery zkušební verze jsou omezené na tři hostitele.
 
@@ -140,7 +140,7 @@ Ano, clustery se škálují mezi minimálním a maximálním počtem hostitelů 
 
 #### <a name="what-are-trial-clusters"></a>Co jsou zkušební clustery?
 
-Zkušební clustery jsou tři hostitelské clustery, které se používají k měsíčnímu hodnocení privátních cloudů řešení Azure VMware.
+Clustery zkušební verze jsou tři hostitelské clustery, které se používají při měsíčních hodnoceních privátních cloudů řešení Azure VMware.
 
 #### <a name="can-i-use-high-end-hosts-for-trial-clusters"></a>Můžu pro zkušební clustery použít špičkové hostitele?
 
@@ -166,24 +166,24 @@ Ne, nemusíte používat NSX místně.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Jaký je plán upgradu a aktualizace softwaru VMware v privátním cloudu?
 
-Upgrady sady prostředků privátního cloudu jsou hotové, aby software zůstal v rámci jedné verze nejnovější verze softwarové sady od VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
+Upgrade sady prostředků privátního cloudu se provádí za účelem zachování softwaru v rámci jedné verze nejnovější verze softwarové sady z VMware. Verze privátního cloudového softwaru se mohou lišit od nejaktuálnější verze jednotlivých softwarových komponent (ESXi, NSX-T, vCenter, síti vSAN).
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Jak často bude balíček softwaru pro privátní cloud aktualizovaný?
 
 Software privátního cloudu se upgraduje podle plánu, který sleduje vydání softwarového balíčku od VMware. Váš privátní cloud nevyžaduje pro upgrady výpadky.
 
-## <a name="connectivity"></a>Připojení
+## <a name="connectivity"></a>Možnosti připojení
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Jaké plánování síťových IP adres je potřeba k začleňování privátních cloudů do místních prostředí?
 
-K nasazení privátního cloudu řešení Azure VMware je nutný adresní prostor privátní sítě/22. Tento privátní adresní prostor by se neměl překrývat s ostatními virtuálními sítěmi v rámci předplatného nebo s místními sítěmi.
+K nasazení privátního cloudu řešení Azure VMware je nutný adresní prostor privátní sítě/22. Tento privátní adresní prostor by se neměl překrývat s ostatními virtuálními sítěmi v předplatném nebo v místních sítích.
  
 #### <a name="how-do-i-connect-from-on-premises-environments-to-an-azure-vmware-solution-private-cloud"></a>Návody se připojit z místních prostředí k privátnímu cloudu řešení Azure VMware?
 
 Ke službě se můžete připojit jedním ze dvou způsobů: 
 
 - S virtuálním počítačem nebo aplikační bránou nasazenou ve službě Azure Virtual Network, která je peered přes ExpressRoute, do privátního cloudu.
-- Prostřednictvím ExpressRoute Global Reach z místního datacentra do okruhu Azure ExpressRoute.
+- Prostřednictvím ExpressRoute Global Reach z místního datového centra do okruhu Azure ExpressRoute.
 
 #### <a name="how-do-i-connect-a-workload-vm-to-the-internet-or-an-azure-service-endpoint"></a>Návody připojit virtuální počítač úlohy k Internetu nebo koncovému bodu služby Azure?
 
@@ -228,7 +228,7 @@ Obecné otázky týkající se cen najdete na stránce s [cenami](https://azure.
 
 #### <a name="who-supports-azure-vmware-solution"></a>Kdo podporuje řešení Azure VMware?
 
-Podpora řešení Azure VMware je poskytována společností Microsoft. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat.
+Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)můžete odeslat.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?
 
@@ -239,10 +239,10 @@ Budete potřebovat účet Azure v předplatném Azure.
 * Budete potřebovat [Azure smlouva Enterprise (EA)](../cost-management-billing/manage/ea-portal-agreements.md) s Microsoftem.
 * Budete potřebovat účet Azure v předplatném Azure.
 
-Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek podpory, aby byly vaše uzly přiděleny. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
+Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek podpory pro přidělení uzlů. Ověření žádosti a přidělení uzlů trvá až pět pracovních dnů. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup.
 
 
-1. V Azure Portal v části **pomoc a podpora**vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
+1. V Azure Portal v části **pomoc a podpora** vytvořte **[novou žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support)** a zadejte pro lístek následující informace:
    - **Typ problému:** Odbornou
    - **Předplatné:** Vyberte své předplatné.
    - **Služba:** Všechny služby > řešení Azure VMware
@@ -272,9 +272,9 @@ Před vytvořením prostředku řešení Azure VMware je nutné odeslat lístek 
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

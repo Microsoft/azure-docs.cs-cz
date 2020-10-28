@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: dc7af555bcaf8654ecdb27d804cbef0c2cedb284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: befd0658c79ac6b395b82b65b935a7bc4c735c2d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81253811"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778681"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
 
@@ -27,7 +27,7 @@ Content Delivery Network poskytuje ochranu DDoS, která je navržená. Kromě gl
 
 ## <a name="azure-cdn-from-microsoft"></a>Azure CDN od Microsoftu
 
-Azure CDN od Microsoftu je chráněná pomocí [Azure Basic DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview). Ve výchozím nastavení je integrovaná do Azure CDN z platformy Microsoft a bez dalších poplatků. Úplný rozsah a kapacita Azure CDN z globálně nasazené sítě Microsoftu zajišťuje ochranu před běžnými útoky na síťové vrstvy díky nepřetržitému monitorování provozu a zmírnění rizik v reálném čase. Základní ochrana DDoS chrání také před nejběžnějšími, často se vyskytujícími potřebami převodními dotazy vrstvy 7 a 4 objemy, které cílí na koncové body CDN. Tato služba má také prověřený záznam sledování v rámci ochrany podnikových a zákaznických služeb od Microsoftu po rozsáhlé útoky.
+Azure CDN od Microsoftu je chráněná pomocí [Azure Basic DDoS](../virtual-network/ddos-protection-overview.md). Ve výchozím nastavení je integrovaná do Azure CDN z platformy Microsoft a bez dalších poplatků. Úplný rozsah a kapacita Azure CDN z globálně nasazené sítě Microsoftu zajišťuje ochranu před běžnými útoky na síťové vrstvy díky nepřetržitému monitorování provozu a zmírnění rizik v reálném čase. Základní ochrana DDoS chrání také před nejběžnějšími, často se vyskytujícími potřebami převodními dotazy vrstvy 7 a 4 objemy, které cílí na koncové body CDN. Tato služba má také prověřený záznam sledování v rámci ochrany podnikových a zákaznických služeb od Microsoftu po rozsáhlé útoky.
 
 ## <a name="azure-cdn-from-verizon"></a>Azure CDN z Verizon
 
@@ -39,4 +39,4 @@ Azure CDN z Akamai je chráněná DDoS platformou pro zmírnění rizik Akamai. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [Azure DDoS](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview). 
+Přečtěte si další informace o [Azure DDoS](../virtual-network/ddos-protection-overview.md).

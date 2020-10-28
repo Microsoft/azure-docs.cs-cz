@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 599ec041837460c30b4655531b822eab5f0eafa3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254100"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778910"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Čínské doručování obsahu s Azure CDN
 
@@ -40,7 +40,7 @@ Azure CDN globální a Azure CDN Čína mají následující funkce:
 
      - Čtyři cenové úrovně: Microsoft Standard, Verizon Standard, Verizon Premium a Akamai Standard
 
-     - [Dokumentace](https://docs.microsoft.com/azure/cdn/)
+     - [Dokumentace](./index.yml)
 
 - Azure CDN Čína:
 
@@ -63,7 +63,4 @@ Další informace o Azure CDN Číně najdete v těchto tématech:
 
 - [Použití Content Delivery Network Azure](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Dostupnost služby Azure v Číně](https://docs.microsoft.com/azure/china/concepts-service-availability)
-
-
-
+- [Dostupnost služby Azure v Číně](/azure/china/concepts-service-availability)

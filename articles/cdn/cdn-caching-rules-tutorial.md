@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779233"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
 
 > [!NOTE] 
-> Pravidla ukládání do mezipaměti jsou k dispozici pouze pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** . Pro **Azure CDN z profilů Microsoftu** musíte použít modul [Standard rules](cdn-standard-rules-engine-reference.md) pro **Azure CDN Premium ze profilů Verizon** , musíte použít [modul pravidel Verizon Premium](cdn-rules-engine.md) na portálu pro **správu** pro podobné funkce.
+> Pravidla ukládání do mezipaměti jsou k dispozici pouze pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** . Pro **Azure CDN z profilů Microsoftu** musíte použít modul [Standard rules](cdn-standard-rules-engine-reference.md) pro **Azure CDN Premium ze profilů Verizon** , musíte použít [modul pravidel Verizon Premium](./cdn-verizon-premium-rules-engine.md) na portálu pro **správu** pro podobné funkce.
  
 
 Tento kurz popisuje, jak můžete použít pravidla ukládání do mezipaměti v Azure Content Delivery Network (CDN) k nastavení nebo úpravě výchozího chování při vypršení platnosti mezipaměti, a to jak u globálních, tak i u vlastních podmínek, jako je například cesta adresy URL nebo přípona souboru. Azure CDN nabízí dva typy pravidel ukládání do mezipaměti:
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
 
@@ -48,11 +48,11 @@ Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a a
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte profil CDN a potom vyberte koncový bod.
 
-2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti**.
+2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti** .
 
    ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-   Zobrazí se stránka **Pravidla ukládání do mezipaměti**.
+   Zobrazí se stránka **Pravidla ukládání do mezipaměti** .
 
    ![Stránka CDN Pravidla ukládání do mezipaměti](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
@@ -61,11 +61,11 @@ Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a a
 
 Následujícím způsobem vytvořte globální pravidlo ukládání do mezipaměti:
 
-1. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování při ukládání řetězců dotazů do mezipaměti** na **Ignorovat řetězce dotazů**.
+1. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování při ukládání řetězců dotazů do mezipaměti** na **Ignorovat řetězce dotazů** .
 
-2. **Chování ukládání do mezipaměti** nastavte na **Nastavit, pokud chybí**.
+2. **Chování ukládání do mezipaměti** nastavte na **Nastavit, pokud chybí** .
        
-3. U **Doba vypršení platnosti mezipaměti ** zadejte do pole **Dny** číslo 10.
+3. U **Doba vypršení platnosti mezipaměti** zadejte do pole **Dny** číslo 10.
 
     Globální pravidlo ukládání do mezipaměti se vztahuje na všechny požadavky na koncový bod. Pokud existuje původní umístění hlaviček direktiv mezipaměti (`Cache-Control` nebo `Expires`), toto pravidlo ho bude respektovat. Pokud není uvedené, nastaví pravidlo mezipaměť na 10 dní. 
 
@@ -90,15 +90,15 @@ V předchozích krocích jste vytvořili pravidla ukládání do mezipaměti. Po
  
 1. Vyberte profil CDN a potom vyberte koncový bod s pravidly ukládání do mezipaměti, které chcete odebrat.
 
-2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti**.
+2. V levém podokně v části Nastavení vyberte **Pravidla ukládání do mezipaměti** .
 
-3. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování ukládání do mezipaměti** na **Nenastaveno**.
+3. V části **Globální pravidla ukládání do mezipaměti** nastavte **Chování ukládání do mezipaměti** na **Nenastaveno** .
  
 4. V části **Vlastní pravidla ukládání do mezipaměti** vyberte zaškrtávací políčko vedle pravidla, které chcete odstranit.
 
-5. Vyberte **Odstranit**.
+5. Vyberte **Odstranit** .
 
-6. V horní části stránky vyberte **Uložit**.
+6. V horní části stránky vyberte **Uložit** .
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -114,6 +114,3 @@ Pokud se chcete naučit, jak nakonfigurovat další nastavení pravidel ukládá
 
 > [!div class="nextstepaction"]
 > [Řízení chování při ukládání do mezipaměti v Azure CDN s využitím pravidel ukládání do mezipaměti](cdn-caching-rules.md)
-
-
-

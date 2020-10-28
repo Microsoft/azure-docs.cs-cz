@@ -12,23 +12,23 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676148"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780355"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Přehled možností zabezpečení Azure SQL Database a SQL Managed instance
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Tento článek popisuje základy zabezpečení datové vrstvy aplikace pomocí [Azure SQL Database](sql-database-paas-overview.md) a [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md). Strategie zabezpečení popsaná níže v rámci podrobného přístupu s více vrstvami, jak je znázorněno na obrázku níže, a přesouvá se z vnější části:
+Tento článek popisuje základy zabezpečení datové vrstvy aplikace pomocí [Azure SQL Database](sql-database-paas-overview.md), [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md)a [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Strategie zabezpečení popsaná níže v rámci podrobného přístupu s více vrstvami, jak je znázorněno na obrázku níže, a přesouvá se z vnější části:
 
 ![Diagram vícevrstvé obrany s hloubkou. Zákaznická data jsou encaseda v úrovních zabezpečení sítě, správy přístupu a ochrany informací.](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-Microsoft Azure SQL Database a spravovaná instance SQL poskytují službu relačních databází pro cloudové a podnikové aplikace. Kvůli lepší ochraně zákaznických dat brání brány firewall síťovému přístupu k serveru, dokud nebude přístup explicitně udělen na základě IP adresy nebo původu provozu virtuální sítě Azure.
+Microsoft Azure SQL Database, spravovaná instance SQL a Azure synapse Analytics poskytují službu relačních databází pro cloudové a podnikové aplikace. Kvůli lepší ochraně zákaznických dat brání brány firewall síťovému přístupu k serveru, dokud nebude přístup explicitně udělen na základě IP adresy nebo původu provozu virtuální sítě Azure.
 
 ### <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
@@ -36,7 +36,7 @@ Pravidla brány firewall protokolu IP udělují přístup k databázím na zákl
 
 ### <a name="virtual-network-firewall-rules"></a>Pravidla brány firewall virtuální sítě
 
-[Koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) prodlužují připojení k virtuální síti přes páteřní síť Azure a umožňují Azure SQL Database identifikaci podsítě virtuální sítě, ze které provoz pochází. Aby bylo možné provozovat Azure SQL Database, pomocí [značek služby](../../virtual-network/security-overview.md) SQL povolte odchozí přenosy přes skupiny zabezpečení sítě.
+[Koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) prodlužují připojení k virtuální síti přes páteřní síť Azure a umožňují Azure SQL Database identifikaci podsítě virtuální sítě, ze které provoz pochází. Aby bylo možné provozovat Azure SQL Database, pomocí [značek služby](../../virtual-network/network-security-groups-overview.md) SQL povolte odchozí přenosy přes skupiny zabezpečení sítě.
 
 [Pravidla virtuální sítě](vnet-service-endpoint-rule-overview.md) umožňují Azure SQL Database přijímat jenom komunikace, které se odesílají z vybraných podsítí v rámci virtuální sítě.
 
@@ -99,7 +99,7 @@ Rozšířená ochrana před internetovými útoky analyzuje protokoly a detekuje
 
 SQL Database, Managed instance SQL a služba Azure synapse Analytics zabezpečují zákaznická data tím, že šifrují data v pohybu pomocí [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Database, Managed instance SQL a Azure synapse vynutila šifrování (SSL/TLS) pro všechna připojení neustále. Tím se zajistí, že všechna data budou zašifrovaná mezi klientem a serverem, a to bez ohledu na nastavení **šifrování** nebo **TrustServerCertificate** v připojovacím řetězci.
+SQL Database, Managed instance SQL a Azure synapse Analytics vynutila šifrování (SSL/TLS) pro všechna připojení. Tím se zajistí, že všechna data budou zašifrovaná mezi klientem a serverem, a to bez ohledu na nastavení **šifrování** nebo **TrustServerCertificate** v připojovacím řetězci.
 
 V rámci osvědčeného postupu doporučujeme, abyste v připojovacím řetězci, který používá aplikaci, zadali šifrované _**připojení a**_ nedůvěřujete certifikátu serveru. Tím se aplikace vynutí ověřit certifikát serveru, a tím zabrání v ohrožení vaší aplikace muž při útokech středního typu.
 

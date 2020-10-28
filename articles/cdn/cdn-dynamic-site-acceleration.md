@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84888543"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778859"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamického webu prostřednictvím Azure CDN
 
@@ -27,7 +27,7 @@ S rozpadem sociálních médií, elektronického obchodu a webu přizpůsobenéh
 
 Funkce Standard Content Delivery Network (CDN) zahrnuje možnost ukládání souborů do mezipaměti blíž k koncovým uživatelům urychlující doručování statických souborů. Nicméně s dynamickými webovými aplikacemi není ukládání obsahu do mezipaměti na hraničních místech možné, protože server vygeneruje obsah v reakci na chování uživatele. Urychlení doručení takového obsahu je složitější než ukládání tradičních hran do mezipaměti a vyžaduje ucelené řešení, které přesně vyladí každý prvek podél celé cesty dat od zahájení do doručení. Díky optimalizaci Azure CDN Dynamic Page Acceleration (DSA) je výkon webových stránek s dynamickým obsahem měřitelnější.
 
-**Azure CDN z Akamai** a **Azure CDN z Verizon** nabízí optimalizaci DSA během vytváření koncového bodu v nabídce **optimalizované pro** . Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-overview).
+**Azure CDN z Akamai** a **Azure CDN z Verizon** nabízí optimalizaci DSA během vytváření koncového bodu v nabídce **optimalizované pro** . Akcelerace dynamického webu od Microsoftu se nabízí prostřednictvím [služby Azure front-dveří](../frontdoor/front-door-overview.md).
 
 > [!Important]
 > Pro **Azure CDN z profilů Akamai** je povoleno změnit optimalizaci koncového bodu CDN po jeho vytvoření.
@@ -40,21 +40,21 @@ Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamic
 
 **Konfigurace koncového bodu CDN pro optimalizaci DSA pomocí Azure Portal:**
 
-1. Na stránce **profil CDN** vyberte **koncový bod**.
+1. Na stránce **profil CDN** vyberte **koncový bod** .
 
    ![Přidání nového koncového bodu CDN](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
-   Otevře se podokno **Přidat koncový bod**.
+   Otevře se podokno **Přidat koncový bod** .
 
-2. V části **optimalizované pro**vyberte možnost **akcelerace dynamického webu**.
+2. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu** .
 
     ![Vytvoření nového koncového bodu CDN pomocí DSA](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. V případě **cesty testu**zadejte platnou cestu k souboru.
+3. V případě **cesty testu** zadejte platnou cestu k souboru.
 
     Cesta testu je funkce specifická pro DSA a pro vytvoření je nutná platná cesta. DSA používá pro optimalizaci konfigurace síťového směrování pro CDN na zdrojovém serveru malý soubor *cesty testu* . V případě souboru cesty testu můžete stáhnout a nahrát ukázkový soubor na web nebo použít stávající Asset o velikosti přibližně 10 KB.
 
-4. Zadejte další požadované možnosti koncového bodu (Další informace najdete v tématu [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a pak vyberte **Přidat**.
+4. Zadejte další požadované možnosti koncového bodu (Další informace najdete v tématu [Vytvoření nového koncového bodu CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) a pak vyberte **Přidat** .
 
    Po vytvoření koncového bodu CDN se aplikují optimalizace DSA pro všechny soubory, které splňují určitá kritéria. 
 
@@ -63,11 +63,11 @@ Chcete-li nakonfigurovat koncový bod CDN pro optimalizaci doručování dynamic
 
 1. Na stránce **profil CDN** vyberte koncový bod, který chcete upravit.
 
-2. V levém podokně vyberte možnost **optimalizace**. 
+2. V levém podokně vyberte možnost **optimalizace** . 
 
    Zobrazí se stránka **optimalizace** .
 
-3. V části **optimalizované pro**vyberte možnost **akcelerace dynamického webu**a pak vyberte **Uložit**.
+3. V části **optimalizované pro** vyberte možnost **akcelerace dynamického webu** a pak vyberte **Uložit** .
 
 > [!Note]
 > DSA další poplatky. Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
@@ -109,9 +109,9 @@ Protokol TCP (Transmission Control Protocol) je standardem sady protokolů sít�
 
 1. Monitorování stavu a šířky pásma slouží k měření šířky pásma připojení mezi servery PoP hraniční sítě.
     
-2. Metriky se sdílí mezi hraničními servery PoP, aby každý server měl informace o stavech sítě a stavu serveru ostatních bodů POP kolem nich.  
+2. Metriky se sdílí mezi hraničními servery PoP, aby každý server měl informace o stavech sítě a stavu serveru ostatních bodů POP kolem nich.  
     
-3. Hraniční servery CDN dávají předpoklady o některých parametrech přenosu, například o tom, co má optimální velikost okna při komunikaci s dalšími hraničními servery CDN v blízkosti. Tento krok znamená, že počáteční velikost okna zahlcení se dá zvýšit, pokud je stav připojení mezi hraničními servery CDN schopný přenos dat paketů s vyššími nároky.  
+3. Hraniční servery CDN dávají předpoklady o některých parametrech přenosu, například o tom, co má optimální velikost okna při komunikaci s dalšími hraničními servery CDN v blízkosti. Tento krok znamená, že počáteční velikost okna zahlcení se dá zvýšit, pokud je stav připojení mezi hraničními servery CDN schopný přenos dat paketů s vyššími nároky.  
 
 #### <a name="leveraging-persistent-connections"></a>Využití trvalých připojení
 
@@ -157,7 +157,7 @@ Pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai*
 
 Přístup k pravidlům pro ukládání do mezipaměti:
 
-1. Na stránce **profil CDN** v části nastavení vyberte **pravidla ukládání do mezipaměti**.  
+1. Na stránce **profil CDN** v části nastavení vyberte **pravidla ukládání do mezipaměti** .  
     
     ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -165,17 +165,17 @@ Přístup k pravidlům pro ukládání do mezipaměti:
 
 2. Vytvořte globální nebo vlastní pravidlo ukládání do mezipaměti, abyste mohli zapnout ukládání do mezipaměti pro koncový bod DSA. 
 
-Pro **Azure CDN Premium jenom v** profilech Verizon můžete zapnout ukládání do mezipaměti pro konkrétní koncové body DSA pomocí [modulu pravidel](cdn-rules-engine.md). Všechna vytvořená pravidla ovlivňují jenom ty koncové body vašeho profilu, které jsou optimalizované pro DSA. 
+Pro **Azure CDN Premium jenom v** profilech Verizon můžete zapnout ukládání do mezipaměti pro konkrétní koncové body DSA pomocí [modulu pravidel](./cdn-verizon-premium-rules-engine.md). Všechna vytvořená pravidla ovlivňují jenom ty koncové body vašeho profilu, které jsou optimalizované pro DSA. 
 
 Přístup ke stroji pravidel:
     
-1. Na stránce **profil CDN** vyberte **Spravovat**.  
+1. Na stránce **profil CDN** vyberte **Spravovat** .  
     
     ![Tlačítko Spravovat profil CDN](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     Otevře se portál pro správu CDN.
 
-2. Na portálu pro správu CDN vyberte **a**a pak vyberte **modul pravidel**. 
+2. Na portálu pro správu CDN vyberte **a** a pak vyberte **modul pravidel** . 
 
     ![Modul pravidel pro DSA](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
@@ -183,7 +183,4 @@ Přístup ke stroji pravidel:
 
 Alternativně můžete použít dva koncové body CDN: jeden koncový bod optimalizovaný s agentem DSA k dodávání dynamických prostředků a dalšího koncového bodu optimalizovaného pomocí statického typu optimalizace, jako je například obecné doručování webu, pro doručování prostředků do mezipaměti. Upravte adresy URL webových stránek tak, aby se přímo na prostředek naplánovaly na koncovém bodu CDN, který chcete použít. 
 
-Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtena z koncového bodu DSA.Stránka HTML odkazuje na několik statických prostředků, jako jsou knihovny JavaScriptu nebo obrázky načtené z statického koncového bodu CDN, například `mystatic.azureedge.net/banner.jpg` a `mystatic.azureedge.net/scripts.js` . 
-
-
-
+Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtena z koncového bodu DSA.  Stránka HTML odkazuje na několik statických prostředků, jako jsou knihovny JavaScriptu nebo obrázky načtené z statického koncového bodu CDN, například `mystatic.azureedge.net/banner.jpg` a `mystatic.azureedge.net/scripts.js` .
