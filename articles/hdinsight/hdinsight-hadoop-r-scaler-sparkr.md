@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546037"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628690"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinování škály a Sparku v HDInsight
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Bodování jinde
 
-Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je například MIcrosoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím `rxCreateColInfo()` funkce škálování a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu ušetříme několik řádků testovací datové sady a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
+Model pro vyhodnocování dat můžete použít také na jiné platformě. Uložením do souboru RDS a následným převodem a importem této služby RDS do cílového prostředí bodování, jako je Microsoft SQL Server R Services. Je důležité zajistit, aby úrovně faktoru dat, které mají být hodnoceny, odpovídaly hodnotám, na kterých byl model sestaven. Tuto shodu je možné dosáhnout extrakcí a uložením informací o sloupcích přidružených k datům modelování prostřednictvím `rxCreateColInfo()` funkce škálování a následným použitím informací o tomto sloupci na vstupní zdroj dat pro předpověď. V následujícím příkladu kódu ukládáme několik řádků testovací sady dat a extrahujete a použijeme informace o sloupci z této ukázky ve skriptu předpovědi:
 
 ```
 # save the model and a sample of the test dataset 

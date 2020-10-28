@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: ab7bb96c6b367b3520676a36c3d52b49ba90eb26
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7685c2075b371ce22930b14187c27bcb0879c962
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368940"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632018"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce v Azure Data Factory
 
@@ -65,11 +65,11 @@ Podrobnosti o spouštění skriptů pro vepřové zobrazení a podregistr v clus
 | Vlastnost          | Popis                              | Povinné |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Název aktivity                     | Ano      |
-| Popis       | Text popisující, k čemu se aktivita používá | Ne       |
+| description       | Text popisující, k čemu se aktivita používá | Ne       |
 | typ              | Pro aktivitu MapReduce je typ aktivity HDinsightMapReduce. | Ano      |
 | linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
 | NázevTřídy         | Název třídy, která se má provést         | Ano      |
-| jarLinkedService  | Odkaz na propojenou službu Azure Storage, která se používá k ukládání souborů JAR Tady se podporují jenom propojené služby **[Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** a **[adls Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | Ne       |
+| jarLinkedService  | Odkaz na propojenou službu Azure Storage, která se používá k ukládání souborů JAR Tady se podporují jenom propojené služby **[Azure Blob Storage](./connector-azure-blob-storage.md)** a **[adls Gen2](./connector-azure-data-lake-storage.md)** . Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | Ne       |
 | jarFilePath       | Zadejte cestu k souborům jar uloženým v Azure Storage, na kterou odkazuje jarLinkedService. V názvu souboru se rozlišují malá a velká písmena. | Ano      |
 | jarlibs           | Pole řetězce cesty pro soubory knihovny jar, na které odkazuje úloha uložená v Azure Storage definované v jarLinkedService. V názvu souboru se rozlišují malá a velká písmena. | Ne       |
 | GetDebugInfo –      | Určuje, kdy se soubory protokolu zkopírují do Azure Storage používaného clusterem HDInsight (nebo) zadaným pomocí jarLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | Ne       |

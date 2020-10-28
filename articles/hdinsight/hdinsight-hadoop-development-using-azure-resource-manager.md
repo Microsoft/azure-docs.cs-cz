@@ -3,17 +3,17 @@ title: Migrace na Azure Resource Manager nástroje pro HDInsight
 description: Postup migrace na Azure Resource Manager vývojové nástroje pro clustery HDInsight
 ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: deaf98077e0652dac8bb327839ffa2bf34007c9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546207"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629472"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace na vývojové nástroje založené na Azure Resource Manager pro clustery HDInsight
 
@@ -83,7 +83,7 @@ Informace o dalších způsobech, jak spustit Apache Hadoop MapReduce, Apache Hi
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Migrace Azure PowerShell do Azure Resource Manager
 Obecné informace o Azure PowerShell v režimu Azure Resource Manager najdete v části [použití Azure PowerShell s Azure Resource Manager](../azure-resource-manager/management/manage-resources-powershell.md).
 
-Rutiny Azure PowerShell Správce prostředků lze nainstalovat souběžně s rutinami ASM. Rutiny ze dvou režimů lze odlišit podle jejich názvů.  V režimu Správce prostředků se v názvech rutin *AzHDInsight* porovnání s *AZUREHDINSIGHT* v režimu ASM.  Například *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametry a přepínače mohou mít názvy zpráv a k dispozici je mnoho nových parametrů při použití Správce prostředků.  Například několik rutin vyžaduje nový přepínač *s názvem-ResourceGroupName* . 
+Rutiny Azure PowerShell Správce prostředků lze nainstalovat souběžně s rutinami ASM. Rutiny ze dvou režimů lze odlišit podle jejich názvů.  Režim Správce prostředků *AzHDInsight* v názvech rutin v porovnání s *AzureHDInsight* ve starším režimu správy služby Azure.  Například *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster* . Parametry a přepínače mohou mít názvy zpráv a k dispozici je mnoho nových parametrů při použití Správce prostředků.  Například několik rutin vyžaduje nový přepínač *s názvem-ResourceGroupName* .
 
 Než budete moct použít rutiny HDInsight, musíte se připojit k účtu Azure a vytvořit novou skupinu prostředků:
 

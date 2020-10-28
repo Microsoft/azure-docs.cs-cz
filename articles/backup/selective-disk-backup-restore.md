@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte o selektivním zálohování a obnoven
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1052e7e531f6762de660ba89e22c7fbb0d01f808
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628758"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektivní zálohování a obnovení disku pro virtuální počítače Azure
 
@@ -46,7 +46,7 @@ az account set -s {subscriptionID}
 
 ### <a name="configure-backup-with-azure-cli"></a>Konfigurace zálohování pomocí Azure CLI
 
-Během operace konfigurace ochrany je třeba zadat nastavení seznamu disků s **inclusion**  /  parametrem**vyloučení** zahrnutí a zadat tak čísla logických jednotek disků, které mají být zahrnuty nebo vyloučeny v záloze.
+Během operace konfigurace ochrany je třeba zadat nastavení seznamu disků s **inclusion**  /  parametrem **vyloučení** zahrnutí a zadat tak čísla logických jednotek disků, které mají být zahrnuty nebo vyloučeny v záloze.
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -192,7 +192,11 @@ Ujistěte se, že používáte Azure PowerShell verze 3.7.0 nebo novější.
 ### <a name="enable-backup-with-powershell"></a>Povolení zálohování pomocí PowerShellu
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>Zálohovat jenom disk s operačním systémem během konfigurace zálohování pomocí PowerShellu
@@ -212,7 +216,11 @@ Výše uvedený získaný objekt **$Item** musíte předat parametru **– Item*
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>Úprava ochrany pro už zálohované virtuální počítače pomocí PowerShellu
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>Zálohovat jenom disk s operačním systémem během změny ochrany pomocí PowerShellu
@@ -224,7 +232,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>Resetovat nastavení vyloučení disku pomocí PowerShellu
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>Obnovení selektivních disků pomocí PowerShellu

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 293fc1bca47f7c58f89a8dac50cc636be8231d4f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220743"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633497"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Postup vytvoření sdílené složky systému souborů NFS
 
@@ -86,17 +86,17 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť, můžete vytvořit sdílenou složku NFS. Proces se podobá vytvoření sdílené složky SMB a při vytváření sdílené složky se místo **protokolu SMB** vybere **systém souborů NFS** .
 
-1. Přejděte do svého účtu úložiště a vyberte **sdílené složky**.
+1. Přejděte do svého účtu úložiště a vyberte **sdílené složky** .
 1. Pokud chcete vytvořit novou sdílenou složku, vyberte **+ Shared File** .
 1. Zadejte název sdílené složky a vyberte zřízenou kapacitu.
-1. V případě **protokolu** vyberte **systém souborů NFS (Preview)**.
+1. V případě **protokolu** vyberte **systém souborů NFS (Preview)** .
 1. Pro **kořenový "squash** udělejte výběr.
 
     - Root "squash (výchozí) – přístup pro vzdáleného uživatele (root) je namapován na UID (65534) a GID (65534).
     - Žádná kořenová "squash – vzdálený uživatel (root) obdrží přístup jako kořen.
     - Všechny "squash – přístup všech uživatelů je namapován na UID (65534) a GID (65534).
     
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Snímek obrazovky okna pro vytvoření sdílené složky":::
 
@@ -120,7 +120,7 @@ Teď, když jste vytvořili účet úložiště souborů a nakonfigurovali síť
 
 1. Zavřete a znovu otevřete konzolu PowerShellu.
 
-1. Nainstalujte modul **AZ. Storage** Preview verze **2.5.2-Preview**.
+1. Nainstalujte modul **AZ. Storage** Preview verze **2.5.2-Preview** .
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
@@ -152,10 +152,9 @@ Pokud chcete vytvořit sdílenou složku Premium pomocí Azure CLI, použijte p�
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

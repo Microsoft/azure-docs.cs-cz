@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221416"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628673"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -32,7 +32,7 @@ Podívejte se, jak můžete:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://aka.ms/AMLFree), ještě než začnete.
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Vytvoření poznámkových bloků
@@ -42,7 +42,7 @@ V pracovním prostoru Azure Machine Learning vytvořte nový Poznámkový blok J
 Vytvoření nového poznámkového bloku: 
 
 1. Otevřete pracovní prostor v [Azure Machine Learning Studiu](https://ml.azure.com).
-1. Na levé straně vyberte **poznámkové bloky**. 
+1. Na levé straně vyberte **poznámkové bloky** . 
 1. Vyberte ikonu  **vytvořit nový soubor** nad seznamem **uživatelských souborů** v části **Moje soubory** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Create new file":::
@@ -50,7 +50,7 @@ Vytvoření nového poznámkového bloku:
 1. Pojmenujte soubor. 
 1. Pro Jupyter Notebook soubory vyberte jako typ souboru **Poznámkový blok** .
 1. Vyberte adresář souborů.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 Můžete také vytvořit textové soubory.  Jako typ souboru vyberte **text** a rozšíření přidejte k názvu (například myfile.py nebo myfile.txt).  
 
@@ -75,14 +75,14 @@ Ke všem operacím Git můžete přistupovat pomocí okna terminálu. Všechny s
 Přístup k terminálu:
 
 1. Otevřete pracovní prostor v [Azure Machine Learning Studiu](https://ml.azure.com).
-1. Na levé straně vyberte **poznámkové bloky**.
+1. Na levé straně vyberte **poznámkové bloky** .
 1. Vyberte libovolný Poznámkový blok umístěný v části **soubory uživatelů** na levé straně.  Pokud tam nemáte žádné poznámkové bloky, [vytvořte nejdřív Poznámkový blok](#create) .
 1. Vyberte **výpočetní** cíl nebo vytvořte nový a počkejte, než se spustí.
 1. Vyberte ikonu **otevřeného terminálu** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Create new file":::
 
-1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál**.
+1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Create new file":::
 
@@ -113,8 +113,8 @@ Na panelu nástrojů poznámkového bloku můžete také spustit Jupyter nebo Ju
 
 Pomocí detailního režimu můžete rozšířit aktuální zobrazení, abyste se mohli soustředit na aktivní karty. Detailní režim skryje Průzkumníka souborů poznámkových bloků.
 
-1. Na panelu nástrojů okna terminálu vyberte **detailní režim**   pro zapnutí detailního režimu. V závislosti na šířce okna se to může nacházet pod položkou nabídky **...** na panelu nástrojů.
-1. V detailním režimu se po výběru **standardního zobrazení**vraťte do standardního zobrazení.
+1. Na panelu nástrojů okna terminálu vyberte **detailní režim** pro zapnutí detailního režimu. V závislosti na šířce okna se to může nacházet pod položkou nabídky **...** na panelu nástrojů.
+1. V detailním režimu se po výběru **standardního zobrazení** vraťte do standardního zobrazení.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Create new file":::
 
@@ -143,13 +143,13 @@ Nový Poznámkový blok obsahuje jenom buňky kódu se všemi buňkami, které j
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Uložení a vytvoření kontrolního bodu poznámkového bloku
 
-Azure Machine Learning vytvoří soubor kontrolního bodu při vytváření souboru *ipynb*   .
+Azure Machine Learning vytvoří soubor kontrolního bodu při vytváření souboru *ipynb* .
 
 Na panelu nástrojů poznámkového bloku vyberte nabídku a pak **soubor &gt; uložte a kontrolní bod** , abyste ručně uložili Poznámkový blok a přidali do něj soubor kontrolního bodu, který je přidružený k poznámkovému bloku.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Create new file":::
 
-Každý Poznámkový blok se automaticky uloží každých 30 sekund.Automatické ukládání aktualizuje pouze počáteční soubor *ipynb*   , nikoli soubor kontrolního bodu.
+Každý Poznámkový blok se automaticky uloží každých 30 sekund. Automatické ukládání aktualizuje pouze počáteční soubor *ipynb* , nikoli soubor kontrolního bodu.
  
 Výběrem **kontrolního bodu** v nabídce Poznámkový blok vytvořte pojmenovaný kontrolní bod a obnovte Poznámkový blok na uložený kontrolní bod.
 
@@ -180,8 +180,8 @@ Poznámkové bloky **uživatelských souborů** *můžete* odstranit některým 
 Chcete-li spustit experiment z poznámkového bloku, nejprve se připojíte ke spuštěné [výpočetní instanci](concept-compute-instance.md). Pokud nemáte výpočetní instanci, vytvořte ji pomocí těchto kroků: 
 
 1. Vyberte **+** na panelu nástrojů Poznámkový blok. 
-2. Pojmenujte výpočetní prostředky a vyberte **Velikost virtuálního počítače**. 
-3. Vyberte **Vytvořit**.
+2. Pojmenujte výpočetní prostředky a vyberte **Velikost virtuálního počítače** . 
+3. Vyberte **Vytvořit** .
 4. Instance služby COMPUTE se automaticky připojí k poznámkovému bloku a vy teď můžete spouštět své buňky.
 
 Pouze můžete zobrazit a použít výpočetní instance, které vytvoříte.  Vaše **uživatelské soubory** jsou uložené odděleně od virtuálního počítače a sdílí se mezi všemi výpočetními instancemi v pracovním prostoru.
@@ -218,7 +218,7 @@ Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na
 1. Na panelu nástrojů poznámkového bloku vyberte [**otevřít terminál**](#terminal) .
 1. Pomocí okna terminálu vytvořte nové prostředí.  Například kód uvedený níže vytvoří `newenv` :
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. Aktivujte prostředí.  Například po vytvoření `newenv` :
 
@@ -228,13 +228,13 @@ Poznámkový blok automaticky vyhledá všechny jádra Jupyter nainstalované na
 1. Instalace balíčku PIP a ipykernel do nového prostředí a vytvoření jádra pro tento conda ENV
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
 > [!NOTE]
-> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra**, ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
+> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra** , ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
 
 Můžete nainstalovat kterýkoli z [dostupných jader Jupyter](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) .
 

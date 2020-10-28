@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195716"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635282"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration runtime pomocí SQL Database geografické replikace a převzetí služeb při selhání
 
@@ -25,15 +25,15 @@ ms.locfileid: "84195716"
 
 Tento článek popisuje, jak nakonfigurovat prostředí Azure-SSIS Integration runtime (IR) s Azure SQL Database geografickou replikaci pro databázi SSISDB. Když dojde k převzetí služeb při selhání, můžete zajistit, aby Azure-SSIS IR dál pracoval se sekundární databází.
 
-Další informace o geografické replikaci a převzetí služeb při selhání pro SQL Database najdete v tématu [Přehled: Aktivní geografická replikace a skupiny automatického převzetí služeb při selhání](../sql-database/sql-database-geo-replication-overview.md).
+Další informace o geografické replikaci a převzetí služeb při selhání pro SQL Database najdete v tématu [Přehled: Aktivní geografická replikace a skupiny automatického převzetí služeb při selhání](../azure-sql/database/auto-failover-group-overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance SQL
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-Spravovaná instance Azure SQL používá k zabezpečení dat, přihlašovacích údajů a informací o připojení uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)*. 
+Spravovaná instance Azure SQL používá k zabezpečení dat, přihlašovacích údajů a informací o připojení uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)* . 
 
 SMK není replikována ve skupině převzetí služeb při selhání. Po převzetí služeb při selhání musíte do primární i sekundární instance přidat heslo pro dešifrování DMK.
 

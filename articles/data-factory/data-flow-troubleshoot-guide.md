@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05c7710b79f276886da8158ae5c8ce39cb44dc
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316150"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634721"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Řešení potíží s mapováním toků dat v Azure Data Factory
 
@@ -24,99 +24,99 @@ Tento článek popisuje běžné metody řešení potíží pro mapování toků
 ## <a name="common-errors-and-messages"></a>Běžné chyby a zprávy
 
 ### <a name="error-code-df-executor-sourceinvalidpayload"></a>Kód chyby: DF-exekutor-SourceInvalidPayload
-- **Zpráva**: spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
-- **Příčiny**: když datová sada obsahuje kontejner, který v úložišti neexistuje.
-- **Doporučení**: Ujistěte se, že kontejner odkazovaný ve vaší datové sadě existuje nebo je přístupný.
+- **Zpráva** : spuštění toku dat ve verzi Preview, ladění a kanálu se nezdařilo, protože kontejner neexistuje.
+- **Příčiny** : když datová sada obsahuje kontejner, který v úložišti neexistuje.
+- **Doporučení** : Ujistěte se, že kontejner odkazovaný ve vaší datové sadě existuje nebo je přístupný.
 
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>Kód chyby: DF-exekutor-SystemImplicitCartesian
 
-- **Zpráva**: implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
-- **Příčiny**: implicitní kartézském produkt pro vnitřní spojení mezi logickými plány není podporován. Pokud se ve sloupcích použitých při spojování vytvoří jedinečný klíč, vyžaduje se aspoň jeden sloupec z obou stran relace.
-- **Doporučení**: u spojení, která nejsou založená na rovnosti, musíte vyjádřit souhlas s vlastním VZÁJEMNÝm spojením.
+- **Zpráva** : implicitní kartézském produkt pro vnitřní spojení není podporován, místo toho použijte vzájemné spojení. Sloupce používané ve spojení by měly vytvořit jedinečný klíč pro řádky.
+- **Příčiny** : implicitní kartézském produkt pro vnitřní spojení mezi logickými plány není podporován. Pokud se ve sloupcích použitých při spojování vytvoří jedinečný klíč, vyžaduje se aspoň jeden sloupec z obou stran relace.
+- **Doporučení** : u spojení, která nejsou založená na rovnosti, musíte vyjádřit souhlas s vlastním VZÁJEMNÝm spojením.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Kód chyby: DF-exekutor-SystemInvalidJson
 
-- **Zpráva**: Chyba analýzy JSON, nepodporované kódování nebo víceřádkové
-- **Příčiny**: možné problémy se souborem JSON: nepodporované kódování, poškozené bajty nebo použití zdroje JSON jako jednoho dokumentu na mnoha vnořených řádcích
-- **Doporučení**: Ověřte, že se podporuje kódování souboru JSON. Ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte ' nastavení JSON ' a zapněte ' jednotlivý dokument '.
+- **Zpráva** : Chyba analýzy JSON, nepodporované kódování nebo víceřádkové
+- **Příčiny** : možné problémy se souborem JSON: nepodporované kódování, poškozené bajty nebo použití zdroje JSON jako jednoho dokumentu na mnoha vnořených řádcích
+- **Doporučení** : Ověřte, že se podporuje kódování souboru JSON. Ve zdrojové transformaci, která používá datovou sadu JSON, rozbalte ' nastavení JSON ' a zapněte ' jednotlivý dokument '.
  
 ### <a name="error-code-df-executor-broadcasttimeout"></a>Kód chyby: DF-exekutor-BroadcastTimeout
 
-- **Zpráva**: Chyba vypršení časového limitu spojení všesměrového vysílání, ujistěte se, že Stream všesměrového vysílání generuje data během 60 sekund v ladění běhu a 300 s ve spuštění úlohy
-- **Příčiny**: všesměrové vysílání má výchozí časový limit 60 sekund v ladicích běhů a 300 sekund ve spuštění úlohy. Stream vybraný pro vysílání je moc velký pro vytváření dat v rámci tohoto limitu.
-- **Doporučení**: Podívejte se na kartu optimalizace v části transformace toku dat pro spojení, EXISTS a vyhledávání. Výchozí možnost pro vysílání je "auto". Pokud je nastavená možnost automaticky, nebo pokud ručně nastavujete levou nebo pravou stranu na všesměrové vysílání v části "pevná", můžete buď nastavit větší konfiguraci Azure Integration Runtime, nebo vypnout všesměrové vysílání. Doporučený postup pro nejlepší výkon v datových tocích je, aby Spark mohl vysílat pomocí příkazu "auto" a používat paměťově optimalizovanou Azure IR.
+- **Zpráva** : Chyba vypršení časového limitu spojení všesměrového vysílání, ujistěte se, že Stream všesměrového vysílání generuje data během 60 sekund v ladění běhu a 300 s ve spuštění úlohy
+- **Příčiny** : všesměrové vysílání má výchozí časový limit 60 sekund v ladicích běhů a 300 sekund ve spuštění úlohy. Stream vybraný pro vysílání je moc velký pro vytváření dat v rámci tohoto limitu.
+- **Doporučení** : Podívejte se na kartu optimalizace v části transformace toku dat pro spojení, EXISTS a vyhledávání. Výchozí možnost pro vysílání je "auto". Pokud je nastavená možnost automaticky, nebo pokud ručně nastavujete levou nebo pravou stranu na všesměrové vysílání v části "pevná", můžete buď nastavit větší konfiguraci Azure Integration Runtime, nebo vypnout všesměrové vysílání. Doporučený postup pro nejlepší výkon v datových tocích je, aby Spark mohl vysílat pomocí příkazu "auto" a používat paměťově optimalizovanou Azure IR.
 
 Spouštíte-li tok dat při spuštění testu ladění z běhu ladicího kanálu, můžete se do této podmínky spouštět častěji. Důvodem je to, že ADF omezuje časový limit všesměrového vysílání na 60 sekund, aby bylo možné udržet rychlejší ladicí prostředí. Pokud byste chtěli tento časový limit 300 sekund od aktivovaného spuštění napřed zadat, můžete použít možnost ladění > použít aktivitu použít k využití Azure IR definovaného v aktivitě kanálu vykonání toku dat.
 
 ### <a name="error-code-df-executor-conversion"></a>Kód chyby: DF-prováděcí-převod
 
-- **Zpráva**: převod na datum nebo čas se nezdařil z důvodu neplatného znaku.
-- **Příčiny**: data nejsou v očekávaném formátu.
-- **Doporučení**: Použijte správný datový typ
+- **Zpráva** : převod na datum nebo čas se nezdařil z důvodu neplatného znaku.
+- **Příčiny** : data nejsou v očekávaném formátu.
+- **Doporučení** : Použijte správný datový typ
 
 ### <a name="error-code-df-executor-invalidcolumn"></a>Kód chyby: DF-exekutor-InvalidColumn
 
-- **Zpráva**: v dotazu je nutné zadat název sloupce, nastavit alias, pokud se používá funkce SQL.
-- **Příčiny**: nebyl zadán žádný název sloupce.
-- **Doporučení**: Pokud používáte funkci SQL, jako je například min ()/Max (), nastavte alias ().
+- **Zpráva** : v dotazu je nutné zadat název sloupce, nastavit alias, pokud se používá funkce SQL.
+- **Příčiny** : nebyl zadán žádný název sloupce.
+- **Doporučení** : Pokud používáte funkci SQL, jako je například min ()/Max (), nastavte alias ().
 
  ### <a name="error-code-df-executor-drivererror"></a>Kód chyby: DF-exekutor-DriverError
-- **Zpráva**: INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte prosím možnost upgradovat typ sloupce na nejnovější typy.
-- **Příčiny**: Chyba ovladače
-- **Doporučení**: INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte možnost upgradovat typ sloupce na nejnovější typy.
+- **Zpráva** : INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte prosím možnost upgradovat typ sloupce na nejnovější typy.
+- **Příčiny** : Chyba ovladače
+- **Doporučení** : INT96 je starší typ časového razítka, který není podporován TOKEM dat ADF. Zvažte možnost upgradovat typ sloupce na nejnovější typy.
 
  ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Kód chyby: DF-exekutor-BlockCountExceedsLimitError
-- **Zpráva**: počet nepotvrzených bloků nemůže překročit maximální limit 100 000 bloků. Ověřte konfiguraci objektu BLOB.
-- **Příčiny**: v objektu BLOB může být maximálně 100 000 nepotvrzených bloků.
-- **Doporučení**: Další podrobnosti vám poskytne tým produktů Microsoftu týkající se tohoto problému.
+- **Zpráva** : počet nepotvrzených bloků nemůže překročit maximální limit 100 000 bloků. Ověřte konfiguraci objektu BLOB.
+- **Příčiny** : v objektu BLOB může být maximálně 100 000 nepotvrzených bloků.
+- **Doporučení** : Další podrobnosti vám poskytne tým produktů Microsoftu týkající se tohoto problému.
 
  ### <a name="error-code-df-executor-partitiondirectoryerror"></a>Kód chyby: DF-exekutor-PartitionDirectoryError
-- **Zpráva**: Zadaná cesta ke zdroji má buď více adresářů s oddíly (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /<kořenového adresáře oddílu 2>/c = 10/d = 30) nebo adresář s oddíly s jiným souborem nebo nerozděleným adresářem (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /Directory 2/Soubor1), odeberte kořenový adresář oddílu ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
-- **Příčiny**: zdrojová cesta má buď více oddílů v děleném oddílu, nebo oddíl s oddíly s jiným souborem nebo adresářem bez oddílů.
-- **Doporučení**: Odeberte kořenový adresář rozdělený na oddíly ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
+- **Zpráva** : Zadaná cesta ke zdroji má buď více adresářů s oddíly (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /<kořenového adresáře oddílu 2>/c = 10/d = 30) nebo adresář s oddíly s jiným souborem nebo nerozděleným adresářem (například <Source Path> /<kořenový adresář 1>/a = 10/b = 20, <Source Path> /Directory 2/Soubor1), odeberte kořenový adresář oddílu ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
+- **Příčiny** : zdrojová cesta má buď více oddílů v děleném oddílu, nebo oddíl s oddíly s jiným souborem nebo adresářem bez oddílů.
+- **Doporučení** : Odeberte kořenový adresář rozdělený na oddíly ze zdrojové cesty a přečtěte ho pomocí samostatné transformace zdroje.
 
  ### <a name="error-code-df-executor-outofmemoryerror"></a>Kód chyby: DF-exekutor-OutOfMemoryError
-- **Zpráva**: během provádění došlo k chybě clusteru z důvodu nedostatku paměti, zkuste to prosím znovu s prostředím Integration runtime s větším počtem jader nebo s paměťově optimalizovaným výpočetním typem.
-- **Příčiny**: v clusteru dochází paměť
-- **Doporučení**: clustery ladění jsou určeny pro účely vývoje. Využijte vzorkování dat, vhodný výpočetní typ a velikost pro spuštění datové části. Chcete-li dosáhnout nejlepšího výkonu, přečtěte si [Průvodce výkonem toku dat mapování](concepts-data-flow-performance.md) pro ladění.
+- **Zpráva** : během provádění došlo k chybě clusteru z důvodu nedostatku paměti, zkuste to prosím znovu s prostředím Integration runtime s větším počtem jader nebo s paměťově optimalizovaným výpočetním typem.
+- **Příčiny** : v clusteru dochází paměť
+- **Doporučení** : clustery ladění jsou určeny pro účely vývoje. Využijte vzorkování dat, vhodný výpočetní typ a velikost pro spuštění datové části. Chcete-li dosáhnout nejlepšího výkonu, přečtěte si [Průvodce výkonem toku dat mapování](concepts-data-flow-performance.md) pro ladění.
 
  ### <a name="error-code-df-executor-illegalargument"></a>Kód chyby: DF-exekutor-illegalArgument
-- **Zpráva**: Ujistěte se prosím, že přístupový klíč v propojené službě je správný.
-- **Příčiny**: nesprávný název účtu nebo přístupový klíč
-- **Doporučení**: Ujistěte se, že název účtu nebo přístupový klíč zadaný v propojené službě jsou správné. 
+- **Zpráva** : Ujistěte se prosím, že přístupový klíč v propojené službě je správný.
+- **Příčiny** : nesprávný název účtu nebo přístupový klíč
+- **Doporučení** : Ujistěte se, že název účtu nebo přístupový klíč zadaný v propojené službě jsou správné. 
 
  ### <a name="error-code-df-executor-invalidtype"></a>Kód chyby: DF-exekutor-InvalidType
-- **Zpráva**: Ujistěte se prosím, že typ parametrů odpovídá typu předané hodnoty. Předávání parametrů float z kanálů není aktuálně podporováno.
-- **Příčiny**: nekompatibilní datové typy mezi deklarovaným typem a skutečnou hodnotou parametru
-- **Doporučení**: Ověřte, že hodnoty parametrů předané do toku dat odpovídají deklarovanému typu.
+- **Zpráva** : Ujistěte se prosím, že typ parametrů odpovídá typu předané hodnoty. Předávání parametrů float z kanálů není aktuálně podporováno.
+- **Příčiny** : nekompatibilní datové typy mezi deklarovaným typem a skutečnou hodnotou parametru
+- **Doporučení** : Ověřte, že hodnoty parametrů předané do toku dat odpovídají deklarovanému typu.
 
  ### <a name="error-code-df-executor-columnunavailable"></a>Kód chyby: DF-exekutor-ColumnUnavailable
-- **Zpráva**: název sloupce použitý ve výrazu není k dispozici nebo je neplatný.
-- **Příčiny**: neplatný nebo nedostupný název sloupce použitý ve výrazech
-- **Doporučení**: ve výrazech ověřte názvy sloupců, které se používají.
+- **Zpráva** : název sloupce použitý ve výrazu není k dispozici nebo je neplatný.
+- **Příčiny** : neplatný nebo nedostupný název sloupce použitý ve výrazech
+- **Doporučení** : ve výrazech ověřte názvy sloupců, které se používají.
 
  ### <a name="error-code-df-executor-parseerror"></a>Kód chyby: DF-exekutor-ParseError
-- **Zpráva**: výraz nejde analyzovat.
-- **Příčiny**: výraz obsahuje chyby při analýze z důvodu formátování
-- **Doporučení**: Podívejte se na formátování ve výrazu
+- **Zpráva** : výraz nejde analyzovat.
+- **Příčiny** : výraz obsahuje chyby při analýze z důvodu formátování
+- **Doporučení** : Podívejte se na formátování ve výrazu
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Kód chyby: GetCommand OutputAsync se nezdařilo.
 
-- **Zpráva**: během ladění a náhledu dat toku dat došlo k chybě příkazu GetCommand OutputAsync...
-- **Příčiny**: Jedná se o chybu back-endové služby. Můžete to zkusit znovu a taky znovu spustit relaci ladění.
-- **Doporučení**: Pokud akci opakovat a restartovat neodstraníte, obraťte se na zákaznickou podporu.
+- **Zpráva** : během ladění a náhledu dat toku dat došlo k chybě příkazu GetCommand OutputAsync...
+- **Příčiny** : Jedná se o chybu back-endové služby. Můžete to zkusit znovu a taky znovu spustit relaci ladění.
+- **Doporučení** : Pokud akci opakovat a restartovat neodstraníte, obraťte se na zákaznickou podporu.
 
 ### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Kód chyby: došlo k neočekávané výjimce a spuštění selhalo.
 
-- **Zpráva**: během provádění aktivity toku dat došlo k neočekávané výjimce a spuštění se nezdařilo.
-- **Příčiny**: Jedná se o chybu back-endové služby. Můžete to zkusit znovu a taky znovu spustit relaci ladění.
-- **Doporučení**: Pokud akci opakovat a restartovat neodstraníte, obraťte se na zákaznickou podporu.
+- **Zpráva** : během provádění aktivity toku dat došlo k neočekávané výjimce a spuštění se nezdařilo.
+- **Příčiny** : Jedná se o chybu back-endové služby. Můžete to zkusit znovu a taky znovu spustit relaci ladění.
+- **Doporučení** : Pokud akci opakovat a restartovat neodstraníte, obraťte se na zákaznickou podporu.
 
 ### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Kód chyby: náhled dat ladění při spojení neobsahují výstupní data.
 
-- **Zpráva**: existuje velký počet hodnot null nebo chybějící hodnoty, které mohou být způsobeny příliš malým počtem řádků vzorků. Zkuste aktualizovat limit řádků ladění a aktualizovat data.
-- **Příčiny**: podmínka spojení se neshoduje s žádnými řádky nebo způsobila vysoký počet hodnot null během období náhledu dat.
-- **Doporučení**: Přejít na nastavení ladění a zvýšit počet řádků v limitu zdrojového řádku. Ujistěte se, že jste vybrali Azure IR s velkým dostatečným clusterem toku dat pro zpracování více dat.
+- **Zpráva** : existuje velký počet hodnot null nebo chybějící hodnoty, které mohou být způsobeny příliš malým počtem řádků vzorků. Zkuste aktualizovat limit řádků ladění a aktualizovat data.
+- **Příčiny** : podmínka spojení se neshoduje s žádnými řádky nebo způsobila vysoký počet hodnot null během období náhledu dat.
+- **Doporučení** : Přejít na nastavení ladění a zvýšit počet řádků v limitu zdrojového řádku. Ujistěte se, že jste vybrali Azure IR s velkým dostatečným clusterem toku dat pro zpracování více dat.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Obecné pokyny k odstraňování potíží
@@ -130,8 +130,8 @@ Spouštíte-li tok dat při spuštění testu ladění z běhu ladicího kanálu
 Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 *  [Blog Data Factory](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
-*  [Videa Azure](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
-*  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Videa k Azure](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
+*  [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Průvodce výkonem datových toků mapování ADF](concepts-data-flow-performance.md)

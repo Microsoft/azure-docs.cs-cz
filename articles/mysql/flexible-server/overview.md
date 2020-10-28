@@ -131,7 +131,7 @@ Jednou z výhod spouštění úloh v Azure je globální dosah. Flexibilní Serv
 - Střední Kanada
 - Southeast Asia
 - Jižní Korea – střed
-- Japonsko – východ
+- Japan East
 - Austrálie – východ
 
 Pracujeme na přidávání nových serverů brzy.

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537391"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634279"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Použití tajných kódů služby Azure Key Vault v aktivitách kanálu
 
@@ -23,9 +23,9 @@ ms.locfileid: "91537391"
 
 Přihlašovací údaje nebo tajné hodnoty můžete ukládat do Azure Key Vault a použít je během provádění kanálu, aby je bylo možné předat k vašim aktivitám.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) a ujistěte se, že je k datové továrně přidružená jedna.
+Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zjistěte, jak funguje ze [spravované identity pro Data Factory](./data-factory-service-identity.md) a ujistěte se, že je k datové továrně přidružená jedna.
 
 ## <a name="steps"></a>Postup
 
@@ -39,7 +39,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     ![Zásady přístupu Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    Klikněte na **Přidat**a pak na **Uložit**.
+    Klikněte na **Přidat** a pak na **Uložit** .
 
 3. Přejděte do Key Vault tajného klíče a zkopírujte tajný identifikátor.
 
@@ -51,7 +51,7 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
 
     |Vlastnost  |Hodnota  |
     |---------|---------|
-    |Zabezpečený výstup     |Ano         |
+    |Zabezpečený výstup     |Pravda         |
     |URL     |[Vaše tajná hodnota identifikátoru URI]? API-Version = 7.0         |
     |Metoda     |GET         |
     |Authentication     |MSI         |
@@ -65,10 +65,10 @@ Tato funkce závisí na spravované identitě objektu pro vytváření dat.  Zji
     > [!CAUTION]
     > Nastavte možnost zabezpečený výstup na hodnotu true, pokud chcete zabránit tomu, aby se tajná hodnota přihlásila do prostého textu.  Všechny další aktivity, které tuto hodnotu využívají, by měly mít možnost zabezpečeného vstupu nastavenou na hodnotu true.
 
-5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu ** @activity (' WEB1 '). Output. Value**.
+5. Chcete-li použít hodnotu v jiné aktivitě, použijte následující výraz kódu **@activity (' WEB1 '). Output. Value** .
 
     ![Výraz kódu](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak používat Azure Key Vault k ukládání přihlašovacích údajů pro úložiště a výpočetní prostředky, najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
+Informace o tom, jak používat Azure Key Vault k ukládání přihlašovacích údajů pro úložiště a výpočetní prostředky, najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md)

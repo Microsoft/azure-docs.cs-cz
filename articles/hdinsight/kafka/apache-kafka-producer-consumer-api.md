@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: ca796b09f10127c68c5a22ff58f95c89cbda2610
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534392"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629302"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer API](https://kafka.apache.org/documentation/#producerapi) a [Consumer API](https://kafka.apache.org/documentation/#consumerapi) na webu Apache.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 * [Java Developer Kit (JDK) verze 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) nebo ekvivalent, jako je například OpenJDK.
@@ -217,9 +217,9 @@ Záznamy uložené v Kafka jsou uloženy v pořadí, v jakém jsou přijímány 
 
 ## <a name="common-issues-faced"></a>Běžné problémy
 
-1. Nepovedlo se **vytvořit téma** Pokud je váš cluster povolený v sadě Enterprise Security Pack, používejte [předem připravené soubory JAR pro producenta a příjemce](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Sklenice ESP může být sestavena z kódu v [ `DomainJoined-Producer-Consumer` podadresáři](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Všimněte si, že vlastnosti producent a příjemce mají k dispozici dodatečnou vlastnost `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` pro clustery s podporou protokolu ESP.
+1. Nepovedlo se **vytvořit téma** Pokud je váš cluster povolený v sadě Enterprise Security Pack, používejte [předem připravené soubory JAR pro producenta a příjemce](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Sklenice ESP může být sestavena z kódu v [ `DomainJoined-Producer-Consumer` podadresáři](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Vlastnosti producent a příjemce mají dodatečnou vlastnost `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` pro clustery s podporou protokolu ESP.
 
-2. **Vystavené potíže s clustery s povolenou podporou ESP** Pokud dojde k selhání operací a pokud používáte cluster s povoleným protokolem ESP, ověřte, že se uživatel `kafka` nachází ve všech zásadách Ranger. Pokud není k dispozici, přidejte ji do všech zásad Ranger.
+2. **Selhání v clusterech s povoleným** protokolem ESP: Pokud dojde k selhání operací a používání clusteru s povoleným protokolem ESP, ověřte, jestli `kafka` se uživatel nachází ve všech zásadách Ranger. Pokud není k dispozici, přidejte ji do všech zásad Ranger.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

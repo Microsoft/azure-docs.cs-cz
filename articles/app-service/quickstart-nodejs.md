@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985230"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633718"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
@@ -22,6 +22,7 @@ Začněte s Azure App Service vytvořením aplikace Node.js/Express místně pom
 ## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension).
+- <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
 - [Node.js a npm](https://nodejs.org) Spusťte příkaz `node --version` a ověřte, zda je nainstalován Node.js.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Azure App Service rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice) pro Visual Studio Code.
@@ -67,7 +68,7 @@ V této části nasadíte Node.js aplikaci do Azure pomocí VS Code a rozšíře
 
     ![Přihlášení k Azure](media/quickstart-nodejs/sign-in.png)
 
-1. V VS Code Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure. (Můžete také vyvolat stejný příkaz z **palety příkazů** (**CTRL** + **SHIFT** + **+**) zadáním příkazu "nasadit do webové aplikace" a volbou **Azure App Service: nasadit do webové aplikace**).
+1. V VS Code Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure. (Můžete také vyvolat stejný příkaz z **palety příkazů** ( **CTRL** + **SHIFT** + **+** ) zadáním příkazu "nasadit do webové aplikace" a volbou **Azure App Service: nasadit do webové aplikace** ).
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="Snímek obrazovky služby Azure App Service v VS Code zobrazující vybranou modrou ikonu šipky&quot;:::
         
@@ -78,14 +79,14 @@ V této části nasadíte Node.js aplikaci do Azure pomocí VS Code a rozšíře
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
@@ -95,13 +96,13 @@ V této části nasadíte Node.js aplikaci do Azure pomocí VS Code a rozšíře
 
     ![Výzva k aktualizaci konfigurace na cílovém serveru se systémem Linux](media/quickstart-nodejs/server-build.png)
 
-1. Po zobrazení výzvy vyberte **Ano** , pokud **Chcete vždycky nasadit pracovní prostor &quot;NodeJS-docs-Hello-World" do (App Name) "**. Když vyberete **Ano** , vs Code se automaticky cílit na stejnou App Service webovou aplikaci s následnými nasazeními.
+1. Po zobrazení výzvy vyberte **Ano** , pokud **Chcete vždycky nasadit pracovní prostor &quot;NodeJS-docs-Hello-World" do (App Name) "** . Když vyberete **Ano** , vs Code se automaticky cílit na stejnou App Service webovou aplikaci s následnými nasazeními.
 
 1. Pokud nasazujete na Linux, vyberte **Procházet web** v příkazovém řádku a po dokončení nasazení si můžete hned nasazenou webovou aplikaci zobrazit. V prohlížeči by se měl zobrazit Hello World!
 
 1. Pokud nasazujete do systému Windows, musíte nejdřív nastavit Node.js číslo verze webové aplikace:
 
-    1. V VS Code rozbalte uzel pro novou službu App Service, klikněte pravým tlačítkem myši na **nastavení aplikace**a vyberte **Přidat nové nastavení...**:
+    1. V VS Code rozbalte uzel pro novou službu App Service, klikněte pravým tlačítkem myši na **nastavení aplikace** a vyberte **Přidat nové nastavení...** :
 
         ![Přidat nastavení aplikace – příkaz](media/quickstart-nodejs/add-setting.png)
 
@@ -111,7 +112,7 @@ V této části nasadíte Node.js aplikaci do Azure pomocí VS Code a rozšíře
 
         ![Příkaz restartovat službu App Service](media/quickstart-nodejs/restart.png)
 
-    1. Klikněte pravým tlačítkem na uzel pro službu App Service a vyberte **Procházet web**.
+    1. Klikněte pravým tlačítkem na uzel pro službu App Service a vyberte **Procházet web** .
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
@@ -135,7 +136,7 @@ Změny v této aplikaci můžete nasadit provedením úprav v VS Code, uložení
 
 Můžete zobrazit výstup protokolu (volání `console.log` ) z aplikace přímo v okně výstup vs Code.
 
-1. V Průzkumníku **služby Azure App Service** klikněte pravým tlačítkem myši na uzel aplikace a vyberte **Spustit protokoly streamování**.
+1. V Průzkumníku **služby Azure App Service** klikněte pravým tlačítkem myši na uzel aplikace a vyberte **Spustit protokoly streamování** .
 
     ![Spustit streamování protokolů](media/quickstart-nodejs/view-logs.png)
 
@@ -150,14 +151,14 @@ Můžete zobrazit výstup protokolu (volání `console.log` ) z aplikace přímo
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
@@ -218,7 +219,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"**, může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. `HTTP_PROXY` `HTTPS_PROXY` Pomocí použijte konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu `export` .
+Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. `HTTP_PROXY` `HTTPS_PROXY` Pomocí použijte konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu `export` .
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -298,14 +299,14 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
@@ -317,7 +318,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 
 1. Po zobrazení výzvy vyberte **Ano** , pokud **Chcete vždycky nasadit pracovní prostor &quot;NodeJS-docs-Hello-World" a "-".
 
-1. Vyberte **Node.js verzi**, doporučujeme LTS.
+1. Vyberte **Node.js verzi** , doporučujeme LTS.
 
     Kanál oznámení zobrazuje prostředky Azure, které se vytvářejí pro vaši aplikaci.
 
@@ -332,14 +333,14 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
@@ -362,14 +363,14 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
@@ -390,7 +391,7 @@ Až se nasazení dokončí, vyberte **Procházet web** v příkazovém řádku a
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."**, aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
+Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."** , aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
@@ -403,7 +404,7 @@ Změny v této aplikaci můžete nasadit pomocí stejného procesu a volbou exis
 
 V této části se dozvíte, jak zobrazit (neboli "koncová") protokoly z běžící aplikace App Service. Všechna volání `console.log` aplikace v aplikaci se zobrazí v okně výstup v Visual Studio Code.
 
-Najděte aplikaci v Průzkumníkovi **služby Azure App Service** , klikněte pravým tlačítkem na aplikaci a vyberte **Zobrazit protokoly streamování**.
+Najděte aplikaci v Průzkumníkovi **služby Azure App Service** , klikněte pravým tlačítkem na aplikaci a vyberte **Zobrazit protokoly streamování** .
 
 Otevře se okno VS Code výstup s připojením k datovému proudu protokolu.
 
@@ -418,14 +419,14 @@ Otevře se okno VS Code výstup s připojením k datovému proudu protokolu.
     - Linux: vyberte **vytvořit novou webovou aplikaci** .
     - Windows: vyberte **vytvořit novou webovou aplikaci... Rozšířené možnosti**
 
-1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER**. Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
+1. Zadejte globálně jedinečný název vaší webové aplikace a stiskněte klávesu **ENTER** . Název musí být jedinečný ve všech Azure a používat pouze alfanumerické znaky (A-Z, a-z a ' 0-9 ') a spojovníky (-).
 
 1. Pokud cílíte na Linux, po zobrazení výzvy vyberte verzi Node.js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
+    1. Vyberte **vytvořit novou skupinu prostředků** a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán** , zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 

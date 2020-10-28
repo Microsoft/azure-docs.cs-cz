@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604406"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629455"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Pro Azure Machine Learning použít pracovní prostor za bránou firewall
 
@@ -63,6 +63,8 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | **mcr.microsoft.com** | Microsoft Container Registry pro základní image Docker |
 | **your-acr-server-name.azurecr.io** | Vyžaduje se jenom v případě, že je vaše Azure Container Registry za virtuální sítí. V této konfiguraci se privátní odkaz vytvoří z prostředí Microsoftu do instance ACR v rámci vašeho předplatného. Pro Azure Machine Learning pracovní prostor použijte název serveru ACR. |
 | **\*. notebooks.azure.net** | Vyžaduje poznámkové bloky v Azure Machine Learning Studiu. |
+| **\*. file.core.windows.net** | Vyžadováno průzkumníkem souborů v aplikaci Azure Machine Learning Studio. |
+| **\*. dfs.core.windows.net** | Vyžadováno průzkumníkem souborů v aplikaci Azure Machine Learning Studio. |
 | **graph.windows.net** | Vyžadováno pro poznámkové bloky |
 
 > [!TIP]
@@ -76,7 +78,7 @@ Hostitelé v této části se používají k instalaci balíčků Pythonu. Jsou 
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Používá se k instalaci výchozích balíčků. |
 | **\*. anaconda.org** | Slouží k získání dat úložiště. |
-| **pypi.org** | Slouží k vypsání závislostí z výchozího indexu, pokud existují, a index není přepsán uživatelským nastavením. Pokud je index přepsán, je nutné také povolte ** \* . pythonhosted.org**. |
+| **pypi.org** | Slouží k vypsání závislostí z výchozího indexu, pokud existují, a index není přepsán uživatelským nastavením. Pokud je index přepsán, je nutné také povolte **\* . pythonhosted.org** . |
 
 ## <a name="r-hosts"></a>Hostitelé R
 

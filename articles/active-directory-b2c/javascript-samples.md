@@ -9,15 +9,15 @@ ms.custom: devx-track-js
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9faca55f8440a28a845e892ee38df2de3489f97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b4fff4a58685873e99332b00864ee95f569416
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259488"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628588"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky JavaScriptu pro použití v Azure Active Directory B2C
 
@@ -36,20 +36,20 @@ Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spoušt
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
 * Vyberte [rozložení stránky](contentdefinitions.md#select-a-page-layout) pro prvky uživatelského rozhraní vaší aplikace.
 
-    Pokud máte v úmyslu použít JavaScript, je nutné [definovat verzi rozložení stránky](contentdefinitions.md#migrating-to-page-layout) s verzí stránky `contract` pro *všechny* definice obsahu ve vlastních zásadách.
+    Pokud máte v úmyslu použít JavaScript, je nutné [definovat verzi rozložení stránky](contentdefinitions.md#migrating-to-page-layout) s verzí stránky `contract` pro *všechny* definice obsahu ve vlastních zásadách. Naučte se [migrovat na rozložení stránky](contentdefinitions.md#migrating-to-page-layout) pomocí verze stránky. 
 
 ## <a name="add-the-scriptexecution-element"></a>Přidat element ScriptExecution
 
 Spuštění skriptu můžete povolit přidáním elementu **ScriptExecution** do elementu [RelyingParty](relyingparty.md) .
 
-1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin.xml*.
-2. Přidejte element **ScriptExecution** do **UserJourneyBehaviors** elementu **RelyingParty**:
+1. Otevřete vlastní soubor zásad. Například *SignUpOrSignin.xml* .
+2. Přidejte element **ScriptExecution** do **UserJourneyBehaviors** elementu **RelyingParty** :
 
     ```xml
     <RelyingParty>

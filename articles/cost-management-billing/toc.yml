@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: Cost Management pro partnery
           href: costs/get-started-partners.md
-        - name: Volba mezi Cost Managementem a Cloudynem
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Reservations
       items:
         - name: Co jsou rezervace Azure?
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: Rychlé starty
       items:
-        - name: Zobrazení informací o nákladech
-          href: cloudyn/quick-register-azure-sub.md
-        - name: Zobrazení informací o nákladech – EA
-          href: cloudyn/quick-register-ea.md
         - name: Zobrazení informací o nákladech – CSP
           href: cloudyn/quick-register-csp.md
     - name: Kurzy
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: Přidání rozšířené metriky pro virtuální počítače
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: Připojení účtu Google
-          href: cloudyn/connect-google-account.md
         - name: Připojení účtu AWS
           href: cloudyn/connect-aws-account.md
         - name: Konfigurace účtů úložiště
