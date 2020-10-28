@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687582"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745371"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Rychlý start: Vytvoření rozpočtu s využitím šablony ARM
 
@@ -22,7 +22,7 @@ Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnos
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
@@ -85,8 +85,8 @@ V této šabloně je definovaný jeden prostředek Azure:
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Šablona Resource Manageru, vytvoření rozpočtu, portál pro nasazení" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
     * **Předplatné:** Vyberte předplatné Azure.
-    * **Skupina prostředků:** V případě potřeby vyberte existující skupinu prostředků nebo **vytvořte novou**.
-    * **Oblast:** Vyberte oblast Azure. Například **USA – střed**.
+    * **Skupina prostředků:** V případě potřeby vyberte existující skupinu prostředků nebo **vytvořte novou** .
+    * **Oblast:** Vyberte oblast Azure. Například **USA – střed** .
     * **Název rozpočtu:** Zadejte název pro váš rozpočet. Měl by být v rámci skupiny prostředků jedinečný. Povolují se jen alfanumerické znaky, podtržítka a spojovníky.
     * **Částka:** Zadejte celkovou výši nákladů, které se mají pomocí rozpočtu sledovat.
     * **Agregační interval:** Zadejte dobu, pro kterou je rozpočet určený. Povolené hodnoty jsou Měsíčně, Čtvrtletně nebo Ročně. Rozpočet se na konci agregačního intervalu resetuje.
@@ -101,10 +101,10 @@ V této šabloně je definovaný jeden prostředek Azure:
     * **Hodnoty filtru kategorií měřičů:** Zadejte seznam enter kategorií měřičů služeb Azure. Očekávaný formát je `["Meter Category1","Meter Category2"]`. Pokud nechcete použít filtr, zadejte `[]`.
    
 3. V závislosti na typu předplatného Azure proveďte jednu z následujících akcí:
-   - Vyberte **Zkontrolovat a vytvořit**.
-   - Přečtěte si Podmínky a ujednání, vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a potom vyberte **Koupit**.
+   - Vyberte **Zkontrolovat a vytvořit** .
+   - Přečtěte si Podmínky a ujednání, vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře** a potom vyberte **Koupit** .
 
-4. Pokud jste vybrali **Zkontrolovat a vytvořit**, vaše šablona se ověří. Vyberte **Vytvořit**.  
+4. Pokud jste vybrali **Zkontrolovat a vytvořit** , vaše šablona se ověří. Vyberte **Vytvořit** .  
 
    ![Šablona Resource Manageru, vytvoření rozpočtu, oznámení portálu nasazení](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 
@@ -112,7 +112,7 @@ K nasazení šablony se použije Azure Portal. Kromě webu Azure Portal můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-K ověření, že se rozpočet vytvořil, můžete použít Azure Portal. Přejděte na **Správa nákladů a fakturace** > vyberte rozsah > **Rozpočty**. Případně můžete ke kontrole rozpočtu použít následující skripty Azure PowerShellu nebo Azure CLI.
+K ověření, že se rozpočet vytvořil, můžete použít Azure Portal. Přejděte na **Správa nákladů a fakturace** > vyberte rozsah > **Rozpočty** . Případně můžete ke kontrole rozpočtu použít následující skripty Azure PowerShellu nebo Azure CLI.
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
@@ -134,7 +134,7 @@ Pokud už rozpočet nepotřebujete, odstraňte ho pomocí jedné z následujíc�
 
 ### <a name="azure-portal"></a>portál Azure
 
-Přejděte do části **Správa nákladů a fakturace** > vyberte rozsah fakturace > **Rozpočty** > vyberte rozpočet > potom vyberte **Odstranit rozpočet**.
+Přejděte do části **Správa nákladů a fakturace** > vyberte rozsah fakturace > **Rozpočty** > vyberte rozpočet > potom vyberte **Odstranit rozpočet** .
 
 ### <a name="command-line"></a>Příkazový řádek
 

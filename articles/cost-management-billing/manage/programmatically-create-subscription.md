@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014524"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748176"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>Programové vytváření předplatných Azure pomocí nejnovějších rozhraní API
 
@@ -183,7 +183,7 @@ Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningStat
 
 Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
-Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
@@ -281,7 +281,7 @@ V odpovědi rozhraní API se zobrazí všechny fakturační účty, ke kterým m
 }
 ```
 
-Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement*. Zkopírujte `name` tohoto účtu.  Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement* . Zkopírujte `name` tohoto účtu.  Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts)
@@ -400,7 +400,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Vytvoření předplatného pro oddíl faktury
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development*. Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development* . Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development* . Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
 ### <a name="rest"></a>[REST](#tab/rest-MCA)
 
@@ -463,7 +463,7 @@ Probíhající stav se vrátí jako stav `Accepted` u položky `provisioningStat
 
 Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
-Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
@@ -553,7 +553,7 @@ V odpovědi rozhraní API se zobrazí seznam fakturačních účtů.
 }
 ```
 
-Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftPartnerAgreement*. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftPartnerAgreement* . Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts-MPA)
@@ -678,7 +678,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-for-a-customer"></a>Vytvoření předplatného pro zákazníka
 
-Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro *Fabrikam toys* a přidruží k tomuto předplatnému prodejce *Wingtip*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
+Následující příklad vytvoří předplatné s názvem *Dev Team Subscription* pro *Fabrikam toys* a přidruží k tomuto předplatnému prodejce *Wingtip* . Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
 ### <a name="rest"></a>[REST](#tab/rest-MPA)
 
@@ -742,7 +742,7 @@ V textu požadavku pro rozhraní API zadejte volitelnou hodnotu *resellerId* zko
 
 Chcete-li nainstalovat nejnovější verzi modulu, který obsahuje rutinu `New-AzSubscriptionAlias`, spusťte `Install-Module Az.Subscription`. Pokud chcete nainstalovat novější modulu PowerShellGet, projděte si téma [Získání modulu PowerShellGet](/powershell/scripting/gallery/installing-psget).
 
-Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
+Spusťte následující příkaz [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) a použijte v něm rozsah fakturace `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`. 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
@@ -838,7 +838,7 @@ V odpovědi rozhraní API se zobrazí všechny fakturační účty, ke kterým m
 }
 ```
 
-Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement*. Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
+Pomocí vlastnosti `displayName` identifikujte fakturační účet, pro který chcete vytvářet předplatná. Zkontrolujte, jestli má agreementType tohoto účtu hodnotu *MicrosoftCustomerAgreement* . Zkopírujte `name` tohoto účtu. Pokud například chcete vytvořit předplatné pro fakturační účet `Contoso`, zkopírujte `5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx`. Tuto hodnotu někam vložte, abyste ji mohli použít v dalším kroku.
 
 <!--
 ### [PowerShell](#tab/azure-powershell-getBillingAccounts)
@@ -958,7 +958,7 @@ we're still working on enabling CLI SDK for billing APIs. Check back soon.
 
 ### <a name="create-a-subscription-and-resource-group-with-a-template"></a>Vytvoření předplatného a skupiny prostředků pomocí šablony
 
-Následující šablona ARM vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development*. Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development*. Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
+Následující šablona ARM vytvoří předplatné s názvem *Dev Team Subscription* pro oddíl faktury *Development* . Toto předplatné se účtuje do fakturačního profilu *Contoso Billing Profile* a v příslušné faktuře bude uvedené v oddílu *Development* . Použijete rozsah fakturace zkopírovaný v předchozím kroku: `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx`. 
 
 #### <a name="request"></a>Žádost
 
