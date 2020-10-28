@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425544"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791133"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
 
-Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použije **eastus**. Uložte ho do **umístění** proměnné pro budoucí použití.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použije **eastus** . Uložte ho do **umístění** proměnné pro budoucí použití.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-Informace o zásadách vytváření názvů pro službu Azure Queue najdete v tématu [pojmenování front a metadat](https://msdn.microsoft.com/library/azure/dd179349.aspx).
+Informace o zásadách vytváření názvů pro službu Azure Queue najdete v tématu [pojmenování front a metadat](/rest/api/storageservices/Naming-Queues-and-Metadata).
 
 ## <a name="retrieve-a-queue"></a>Načtení fronty
 
@@ -133,7 +133,7 @@ Tento **časový limit neviditelnosti** definuje, jak dlouho zpráva zůstane ne
 
 Kód přečte zprávu z fronty ve dvou krocích. Když zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) , dostanete další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) .
 
-V následujícím příkladu si přečtete tři zprávy fronty a pak počkáte 10 sekund (časový limit neviditelnosti). Pak znovu přečtete tři zprávy a po jejich přečtení je zavoláte pomocí **DeleteMessage**. Pokud se po odstranění zpráv pokusíte tuto frontu přečíst, $queueMessage bude vrácena jako NULL.
+V následujícím příkladu si přečtete tři zprávy fronty a pak počkáte 10 sekund (časový limit neviditelnosti). Pak znovu přečtete tři zprávy a po jejich přečtení je zavoláte pomocí **DeleteMessage** . Pokud se po odstranění zpráv pokusíte tuto frontu přečíst, $queueMessage bude vrácena jako NULL.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue

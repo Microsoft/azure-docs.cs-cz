@@ -1,5 +1,5 @@
 ---
-title: Skupina důvěryhodných serverů
+title: Skupina důvěryhodnosti serverů
 titleSuffix: Azure SQL Managed Instance
 description: Přečtěte si o skupině důvěryhodných serverů a o tom, jak spravovat vztahy důvěryhodnosti mezi spravovanými instancemi Azure SQL.
 services: sql-database
@@ -12,18 +12,18 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
-ms.openlocfilehash: 6154625f1e943007d0ed4c3341dc1265657f3bfc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046328"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790725"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Nastavení a Správa důvěryhodnosti mezi spravovanými instancemi SQL pomocí skupin důvěryhodných serverů
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Skupina důvěryhodných serverů je koncept, který se používá ke správě vztahů důvěryhodnosti mezi spravovanými instancemi Azure SQL. Vytvořením skupiny se mezi jejími členy vytvoří vztah důvěryhodnosti založený na certifikátu. Tento vztah důvěryhodnosti lze použít pro různé scénáře různých instancí. Odebráním serverů ze skupiny nebo odstraněním skupiny odeberete vztah důvěryhodnosti mezi servery. Aby uživatel mohl vytvořit nebo odstranit skupinu důvěryhodných serverů, musí mít oprávnění k zápisu do spravované instance.
-[Skupina důvěryhodných serverů](https://aka.ms/mi-server-trust-group-arm) je objekt Azure Resource Manager, který byl označen jako **Skupina důvěryhodnosti SQL** v Azure Portal.
+[Skupina důvěryhodných serverů](/azure/templates/microsoft.sql/allversions) je objekt Azure Resource Manager, který byl označen jako **Skupina důvěryhodnosti SQL** v Azure Portal.
 
 > [!NOTE]
 > Skupina důvěryhodných serverů je zavedená ve verzi Public Preview distribuovaných transakcí mezi spravovanými instancemi Azure SQL a v současné době má určitá omezení, která budou popsána dále v tomto článku.
@@ -44,11 +44,11 @@ Následující část popisuje nastavení skupiny důvěryhodných serverů.
 
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-new-group.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
 
-5. V okně vytvořit **skupinu důvěryhodných certifikátů SQL** nastavte **název skupiny**. Musí být jedinečný ve všech oblastech, kde se nacházejí členové skupiny. **Obor důvěryhodnosti** definuje typ scénáře mezi instancemi, který je povolený pro skupinu důvěryhodných serverů. Ve verzi Preview je jediným platným oborem důvěryhodnosti **distribuované transakce**, takže je předvybráno a nelze je změnit. Všichni **Členové skupiny** musí patřit do stejného **předplatného** , ale můžou být v různých skupinách prostředků. Vyberte **skupinu prostředků** a **SQL Server/instanci** pro výběr spravované instance Azure SQL, která bude členem skupiny.
+5. V okně vytvořit **skupinu důvěryhodných certifikátů SQL** nastavte **název skupiny** . Musí být jedinečný ve všech oblastech, kde se nacházejí členové skupiny. **Obor důvěryhodnosti** definuje typ scénáře mezi instancemi, který je povolený pro skupinu důvěryhodných serverů. Ve verzi Preview je jediným platným oborem důvěryhodnosti **distribuované transakce** , takže je předvybráno a nelze je změnit. Všichni **Členové skupiny** musí patřit do stejného **předplatného** , ale můžou být v různých skupinách prostředků. Vyberte **skupinu prostředků** a **SQL Server/instanci** pro výběr spravované instance Azure SQL, která bude členem skupiny.
 
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-create-blade.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
 
-6. Po vyplnění všech povinných polí klikněte na **Uložit**.
+6. Po vyplnění všech povinných polí klikněte na **Uložit** .
 
 ## <a name="server-trust-group-maintenance-and-deletion"></a>Údržba a odstraňování skupiny důvěryhodnosti serveru
 
@@ -60,13 +60,13 @@ Následující část popisuje proces odstranění skupiny důvěryhodnosti serv
 3. Na stránce nastavení **zabezpečení** vyberte kartu **skupiny důvěryhodných certifikátů SQL** .
 4. Vyberte skupinu důvěryhodnosti, kterou chcete odstranit.
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-select.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
-5. Klikněte na **Odstranit skupinu**.
+5. Klikněte na **Odstranit skupinu** .
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
-6. Zadáním názvu skupiny důvěryhodných serverů potvrďte odstranění a klikněte na **Odstranit**.
+6. Zadáním názvu skupiny důvěryhodných serverů potvrďte odstranění a klikněte na **Odstranit** .
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Skupiny vztahů důvěryhodnosti serveru":::
 
 > [!NOTE]
-> Odstraněním skupiny důvěryhodných serverů se nemusí okamžitě odstranit vztah důvěryhodnosti mezi těmito dvěma spravovanými instancemi. Odstranění vztahu důvěryhodnosti se dá vyhovět vyvoláním [převzetí služeb](https://docs.microsoft.com/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) spravovaných instancí při selhání. Další informace najdete v části [známé problémy](https://docs.microsoft.com/azure/azure-sql/database/doc-changes-updates-release-notes?tabs=managed-instance#known-issues) s nejnovějšími aktualizacemi.
+> Odstraněním skupiny důvěryhodných serverů se nemusí okamžitě odstranit vztah důvěryhodnosti mezi těmito dvěma spravovanými instancemi. Odstranění vztahu důvěryhodnosti se dá vyhovět vyvoláním [převzetí služeb](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) spravovaných instancí při selhání. Další informace najdete v části [známé problémy](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues) s nejnovějšími aktualizacemi.
 
 ## <a name="limitations"></a>Omezení
 
@@ -77,7 +77,7 @@ Během veřejné verze Preview platí následující omezení pro skupiny důvě
  * Pro skupiny důvěryhodných serverů jsou distribuované transakce jediným platným oborem.
  * Skupinu důvěryhodných serverů lze spravovat pouze z Azure Portal. Podpora PowerShellu a rozhraní příkazového řádku se bude nacházet později.
  * Na Azure Portal nelze upravovat skupinu důvěryhodných serverů. Dá se vytvořit nebo vyřadit jenom.
- * Další omezení distribuovaných transakcí můžou souviset s vaším scénářem. Nejdůležitější je, že mezi spravovanými instancemi přes soukromé koncové body, prostřednictvím sítě VNET nebo VNET peering, musí existovat spojení. Ujistěte se, že jste si vědomi aktuálních [omezení distribuovaných transakcí pro spravovanou instanci](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview#limitations).
+ * Další omezení distribuovaných transakcí můžou souviset s vaším scénářem. Nejdůležitější je, že mezi spravovanými instancemi přes soukromé koncové body, prostřednictvím sítě VNET nebo VNET peering, musí existovat spojení. Ujistěte se, že jste si vědomi aktuálních [omezení distribuovaných transakcí pro spravovanou instanci](../database/elastic-transactions-overview.md#limitations).
 
 ## <a name="next-steps"></a>Další kroky
 

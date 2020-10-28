@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168235"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789756"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Nasaďte spravovaný SSD úrovně Premium disk s povolenou funkcí sdíleného d
 Pomocí následujícího postupu přidejte sdílený disk Azure: 
 
 
-1. Následující skript uložte jako *SharedDiskConfig.jsna*: 
+1. Následující skript uložte jako *SharedDiskConfig.jsna* : 
 
    ```JSON
    { 
@@ -151,17 +151,17 @@ Ověřte cluster v uživatelském rozhraní nebo pomocí PowerShellu.
 
 Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na jednom z těchto virtuálních počítačů následující:
 
-1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
-1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Další**.
-1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. 
-1. Vyberte **Další**.
-1. V části **Výběr testu**vyberte všechny testy *s výjimkou* **úložiště** .
+1. V části **Správce serveru** vyberte **nástroje** a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání** .
+1. V části **Správce clusteru s podporou převzetí služeb při selhání** vyberte **Akce** a pak vyberte **ověřit konfiguraci** .
+1. Vyberte **Další** .
+1. V části **Vybrat servery nebo cluster** zadejte názvy obou virtuálních počítačů.
+1. V části **Možnosti testování** vyberte **Spustit pouze vybrané testy** . 
+1. Vyberte **Další** .
+1. V části **Výběr testu** vyberte všechny testy *s výjimkou* **úložiště** .
 
 ## <a name="test-cluster-failover"></a>Testovací převzetí služeb při selhání clusteru
 
-Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel**a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
+Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání** klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel** a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Testování převzetí služeb při selhání clusteru přesunutím základního prostředku do ostatních uzlů":::
 
@@ -171,15 +171,15 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 
 1. Připojte se k prvnímu virtuálnímu počítači pomocí protokol RDP (Remote Desktop Protocol) (RDP).
 
-1. V **Správce clusteru s podporou převzetí služeb při selhání**zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
+1. V **Správce clusteru s podporou převzetí služeb při selhání** zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
 
 1. Vyhledejte instalační médium. Pokud virtuální počítač používá jednu z Azure Marketplace imagí, médium se nachází na adrese `C:\SQLServer_<version number>_Full` . 
 
-1. Vyberte **Nastavení**.
+1. Vyberte **Nastavení** .
 
-1. V **SQL Server centra instalace**vyberte možnost **instalace**.
+1. V **SQL Server centra instalace** vyberte možnost **instalace** .
 
-1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server FCI.
+1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání** . Podle pokynů v průvodci nainstalujte SQL Server FCI.
 
 Datové adresáře FCI musí být na sdílených discích Azure. 
 
@@ -187,12 +187,12 @@ Datové adresáře FCI musí být na sdílených discích Azure.
 
 1. Až instalační program nainstaluje FCI na první uzel, připojte se k druhému uzlu pomocí protokolu RDP.
 
-1. Otevřete **Centrum instalace SQL Server**a pak vyberte možnost **instalace**.
+1. Otevřete **Centrum instalace SQL Server** a pak vyberte možnost **instalace** .
 
-1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
+1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání** . Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
 
    >[!NOTE]
-   >Pokud jste použili Azure Marketplace image galerie, která obsahuje SQL Server, SQL Server nástroje byly součástí bitové kopie. Pokud jste některou z těchto imagí nepoužili, nainstalujte nástroje SQL Server samostatně. Další informace najdete v tématu [stažení SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Pokud jste použili Azure Marketplace image galerie, která obsahuje SQL Server, SQL Server nástroje byly součástí bitové kopie. Pokud jste některou z těchto imagí nepoužili, nainstalujte nástroje SQL Server samostatně. Další informace najdete v tématu [stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
    >
 
 ## <a name="register-with-the-sql-vm-rp"></a>Zaregistrujte se pomocí SQL VM RP.

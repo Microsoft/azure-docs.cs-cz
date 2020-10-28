@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166535"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789909"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,12 +37,12 @@ Následující diagram znázorňuje skupinu dostupnosti pro SQL Server na virtu�
 
 ## <a name="vm-redundancy"></a>Redundance virtuálního počítače 
 
-Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](/azure/availability-zones/az-overview).
+Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuální počítače s SQL Server buď ve stejné [skupině dostupnosti](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview), nebo v různých [zónách dostupnosti](../../../availability-zones/az-overview.md).
 
 Skupina dostupnosti je seskupení prostředků, které jsou nakonfigurované tak, aby ve stejné zóně dostupnosti nebyla žádná dvě půda. To brání vlivu na více prostředků ve skupině během zavádění nasazení. 
 
 
-## <a name="connectivity"></a>Připojení 
+## <a name="connectivity"></a>Možnosti připojení 
 
 V tradičním místním nasazení se klienti připojují k naslouchacího procesu skupiny dostupnosti pomocí názvu virtuální sítě (VNN) a naslouchací proces směruje provoz do příslušné repliky SQL Server ve skupině dostupnosti. Pro směrování provozu v síti Azure ale existuje dodatečný požadavek. 
 
@@ -74,7 +74,7 @@ Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Ser
 
 Následující tabulka poskytuje porovnání dostupných možností: 
 
-| |**[portál Azure](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
@@ -83,7 +83,7 @@ Následující tabulka poskytuje porovnání dostupných možností:
 |**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
 |**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
 |**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
-|**Konfigurace kvora služby WSFC**n|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
+|**Konfigurace kvora služby WSFC** n|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
 |**DR s více oblastmi** |Ne|Ne|Ne|Ano|
 |**Podpora více podsítí** |Ano|Ano|Ano|Ano|
 |**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
@@ -94,12 +94,12 @@ Následující tabulka poskytuje porovnání dostupných možností:
 
 
 
-## <a name="considerations"></a>Požadavky 
+## <a name="considerations"></a>Co je potřeba vzít v úvahu 
 
 Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si [osvědčené postupy hadr](hadr-cluster-best-practices.md) a pak začněte s nasazením skupiny dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](availability-group-az-cli-configure.md), [šablon rychlý Start](availability-group-quickstart-template-configure.md) nebo [ručně](availability-group-manually-configure-prerequisites-tutorial.md).
+Projděte si [osvědčené postupy hadr](hadr-cluster-best-practices.md) a pak začněte s nasazením skupiny dostupnosti pomocí [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [šablon rychlý Start](availability-group-quickstart-template-configure.md) nebo [ručně](availability-group-manually-configure-prerequisites-tutorial.md).
 
-Případně můžete nasadit [skupinu dostupnosti bez clusteru](availability-group-clusterless-workgroup-configure.md) nebo skupinu dostupnosti ve [více oblastech](availability-group-manually-configure-multiple-regions.md). 
+Případně můžete nasadit [skupinu dostupnosti bez clusteru](availability-group-clusterless-workgroup-configure.md) nebo skupinu dostupnosti ve [více oblastech](availability-group-manually-configure-multiple-regions.md).

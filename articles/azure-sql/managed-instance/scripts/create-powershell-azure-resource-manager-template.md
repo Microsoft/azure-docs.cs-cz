@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c364fe7fa0ac4dd70a01a75478289ea861dee7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079553"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790827"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance
 
@@ -41,12 +41,12 @@ Azure PowerShell příkazy mohou spustit nasazení pomocí předdefinované Azur
 
 Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a kolaci nelze později změnit. Vlastnosti jiných instancí lze změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../virtual-network-subnet-create-arm-template.md) nebo [upravili stávající virtuální síť](../vnet-existing-add-subnet.md) pro spravovanou instanci. V případě potřeby můžete v případě potřeby připravit síťové prostředí pomocí samostatné [šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
 
 
-Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork), takže se ujistěte, že máte nainstalované následující moduly PowerShellu:
+Ukázka používá rutiny [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork), takže se ujistěte, že máte nainstalované následující moduly PowerShellu:
 
 ```powershell
 Install-Module Az.Network

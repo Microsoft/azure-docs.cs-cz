@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4ac76387f32b333d6d17d8d6f71ab0bc7de07ec0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8150375eff98374e21d200d98c04158b07f1c243
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474746"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789688"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -30,7 +30,7 @@ Pokud chcete vytvořit účet úložiště, který spoléhá na šifrovací klí
 
 Můžete vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu pro frontu a úložiště tabulek v následujících oblastech:
 
-- USA – východ
+- East US
 - Středojižní USA
 - Západní USA 2  
 
@@ -62,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -94,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -120,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -244,7 +244,7 @@ az storage account show /
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-–
+Není k dispozici
 
 ---
 
@@ -252,4 +252,4 @@ az storage account show /
 
 - [Šifrování služby Azure Storage pro neaktivní uložená data](storage-service-encryption.md)
 - [Klíče spravované zákazníkem pro šifrování Azure Storage](customer-managed-keys-overview.md)
-- [Co je Azure Key Vault](/azure/key-vault/key-vault-overview)?
+- [Co je Azure Key Vault](../../key-vault/general/overview.md)?

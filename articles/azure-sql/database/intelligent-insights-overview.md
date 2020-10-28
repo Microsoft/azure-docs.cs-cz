@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317051"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790436"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -73,10 +73,10 @@ Dostupné možnosti Intelligent Insights jsou:
 
 | Možnost Intelligent Insights | Podpora Azure SQL Database | Podpora spravované instance Azure SQL |
 | :----------------------------- | ----- | ----- |
-| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Yes | Yes |
-| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Yes | Yes |
-| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Yes | Yes |
-| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Yes | Yes |
+| **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Ano | Ano |
+| **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Ano | Ano |
+| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Ano | Ano |
+| **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Ano | Ano |
 
 > [!NOTE]
 > Inteligentní přehledy jsou funkce ve verzi Preview, která není dostupná v následujících oblastech: Západní Evropa, Severní Evropa, Západní USA 1 a Východní USA 1.
@@ -85,7 +85,7 @@ Dostupné možnosti Intelligent Insights jsou:
 
 Výstup Intelligent Insights může být streamování do jednoho z několika cílů pro účely analýzy:
 
-- Výstup streamování do Log Analyticsho pracovního prostoru se dá použít s [Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) k zobrazení přehledů prostřednictvím uživatelského rozhraní Azure Portal. Toto je integrované řešení Azure a nejběžnější způsob, jak zobrazit přehledy.
+- Výstup streamování do Log Analyticsho pracovního prostoru se dá použít s [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) k zobrazení přehledů prostřednictvím uživatelského rozhraní Azure Portal. Toto je integrované řešení Azure a nejběžnější způsob, jak zobrazit přehledy.
 - Výstup streamování do Azure Event Hubs se dá použít pro vývoj vlastních scénářů monitorování a upozorňování.
 - Výstup streamování do Azure Storage lze použít pro vlastní vývoj aplikací, například pro vlastní vytváření sestav, dlouhodobé archivaci dat a tak dále.
 
@@ -107,7 +107,7 @@ Následující příklad ukazuje Intelligent Insights zobrazení prostřednictv�
 
 ### <a name="set-up-with-event-hubs"></a>Nastavení pomocí Event Hubs
 
-Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs, viz [metriky a protokolování diagnostiky](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) a [streamování protokolů Azure diagnostics na Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Pokud chcete použít Intelligent Insights s Event Hubs, nakonfigurujte Intelligent Insights data protokolu pro streamování do Event Hubs, viz [metriky a protokolování diagnostiky](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) a [streamování protokolů Azure diagnostics na Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 Pokud chcete použít Event Hubs k nastavení vlastního monitorování a upozorňování, přečtěte si téma [co dělat s protokoly metrik a diagnostikami v Event Hubs](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
 

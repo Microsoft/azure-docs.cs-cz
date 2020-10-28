@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168320"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789739"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,9 +56,9 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 
 | Změny | Podrobnosti |
 | --- | --- |
-| **Název distribuované sítě (DNN)** | SQL Server 2019 v systému Windows Server 2016 + nyní používá náhled pro směrování provozu do instance clusteru s podporou převzetí služeb při selhání (FCI) pomocí [názvu distribuované sítě](hadr-distributed-network-name-dnn-configure.md) namísto použití Azure Load Balancer. Tato podpora zjednodušuje a zjednodušuje připojení k řešení vysoké dostupnosti (HA) v Azure. | 
+| **Název distribuované sítě (DNN)** | SQL Server 2019 v systému Windows Server 2016 + nyní používá náhled pro směrování provozu do instance clusteru s podporou převzetí služeb při selhání (FCI) pomocí [názvu distribuované sítě](./failover-cluster-instance-distributed-network-name-dnn-configure.md) namísto použití Azure Load Balancer. Tato podpora zjednodušuje a zjednodušuje připojení k řešení vysoké dostupnosti (HA) v Azure. | 
 | **FCI se sdílenými disky Azure** | Je teď možné nasadit [instanci clusteru s podporou převzetí služeb při selhání (FCI)](failover-cluster-instance-overview.md) pomocí [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md). |
-| **Znovu uspořádané dokumenty FCI** | Dokumentace k [instancím clusteru s podporou převzetí služeb při selhání se SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) se přepsala a reorganizovat pro přehlednost. Rozdělili jsme část konfiguračního obsahu, jako jsou [Doporučené postupy konfigurace clusteru](hadr-cluster-best-practices.md), jak připravit [virtuální počítač na SQL Server FCI](failover-cluster-instance-prepare-vm.md)a jak nakonfigurovat [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md). | 
+| **Znovu uspořádané dokumenty FCI** | Dokumentace k [instancím clusteru s podporou převzetí služeb při selhání se SQL Server na virtuálních počítačích Azure](failover-cluster-instance-overview.md) se přepsala a reorganizovat pro přehlednost. Rozdělili jsme část konfiguračního obsahu, jako jsou [Doporučené postupy konfigurace clusteru](hadr-cluster-best-practices.md), jak připravit [virtuální počítač na SQL Server FCI](failover-cluster-instance-prepare-vm.md)a jak nakonfigurovat [Azure Load Balancer](./availability-group-vnn-azure-load-balancer-configure.md). | 
 | &nbsp; | &nbsp; |
 
 
@@ -84,7 +84,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | **Registrace zprostředkovatele hromadného prostředku** | Nyní můžete [hromadně zaregistrovat](sql-vm-resource-provider-bulk-register.md) SQL Server virtuálních počítačů s poskytovatelem prostředků. | 
 |**Konfigurace úložiště optimalizované pro výkon** | Při vytváření nového virtuálního počítače SQL Server teď můžete [svoji konfiguraci úložiště plně přizpůsobit](storage-configuration.md#new-vms) . |
 |**Premium – sdílení souborů pro FCI** | Nyní můžete vytvořit instanci clusteru s podporou převzetí služeb při selhání pomocí [sdílené složky Premium](failover-cluster-instance-premium-file-share-manually-configure.md) místo původní metody [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md). 
-| **Vyhrazený hostitel Azure** | Virtuální počítač SQL Server můžete spustit na [vyhrazeném hostiteli Azure](dedicated-host.md). | 
+| **Azure Dedicated Host** | Virtuální počítač SQL Server můžete spustit na [vyhrazeném hostiteli Azure](dedicated-host.md). | 
 | **Migrace virtuálního počítače SQL Server do jiné oblasti** | Pomocí Azure Site Recovery [migrujte virtuální počítač s SQL Server z jedné oblasti do druhé](move-sql-vm-different-region.md). |
 |  **Nové režimy instalace SQL IaaS** | Nyní je možné nainstalovat rozšíření SQL Server IaaS v [režimu prostého režimu](sql-server-iaas-agent-extension-automate-management.md) , abyste se vyhnuli restartování služby SQL Server.  |
 | **Úpravy edice SQL Server** | Nyní můžete změnit [vlastnost edice](change-sql-server-edition.md) pro váš virtuální počítač s SQL Server. |
@@ -96,7 +96,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | **Podpora pojmenovaných instancí** | Nyní můžete použít [rozšíření SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md#installation) s pojmenovanou instancí, pokud byla výchozí instance správně odinstalována. | 
 | **Vylepšení portálu** | Prostředí Azure Portal pro nasazení SQL Server virtuálního počítače bylo přepracované ke zvýšení použitelnosti. Další informace najdete v tématu Stručný [rychlý Start](sql-vm-create-portal-quickstart.md) a podrobnější [návod](create-sql-vm-portal.md) k nasazení SQL Server virtuálního počítače.|
 | **Vylepšení portálu** | Je teď možné změnit licenční model pro SQL Server virtuální počítač z průběžných plateb na vlastní licenci pomocí [Azure Portalu](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider).|
-| **Zjednodušení nasazení skupiny dostupnosti u virtuálního počítače s SQL Server prostřednictvím rozhraní příkazového řádku Azure** | Nasazení skupiny dostupnosti do virtuálního počítače s SQL Server v Azure je teď snazší než dřív. Pomocí [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) můžete vytvořit cluster s podporou převzetí služeb při selhání systému Windows, interní nástroj pro vyrovnávání zatížení a skupiny dostupnosti, a to vše z příkazového řádku. Další informace najdete v tématu věnovaném [konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure pomocí Azure CLI](availability-group-az-cli-configure.md). | 
+| **Zjednodušení nasazení skupiny dostupnosti u virtuálního počítače s SQL Server prostřednictvím rozhraní příkazového řádku Azure** | Nasazení skupiny dostupnosti do virtuálního počítače s SQL Server v Azure je teď snazší než dřív. Pomocí [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) můžete vytvořit cluster s podporou převzetí služeb při selhání systému Windows, interní nástroj pro vyrovnávání zatížení a skupiny dostupnosti, a to vše z příkazového řádku. Další informace najdete v tématu věnovaném [konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure pomocí Azure CLI](./availability-group-az-commandline-configure.md). | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -110,9 +110,9 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 |**Přepnutí modelu licencování** | Pomocí Azure CLI nebo PowerShellu se teď můžete přepínat mezi modely s platbami za využití a vlastní licence pro váš SQL Server virtuální počítač. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač v Azure](licensing-model-azure-hybrid-benefit-ahb-change.md). | 
 | &nbsp; | &nbsp; |
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-**Virtuální počítače s Windows**:
+**Virtuální počítače s Windows** :
 
 * [Přehled SQL Server na virtuálním počítači s Windows](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Zřízení SQL Server na virtuálním počítači s Windows](create-sql-vm-portal.md)
@@ -121,9 +121,9 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 * [Osvědčené postupy výkonu pro SQL Server v Azure Virtual Machines](performance-guidelines-best-practices.md)
 * [Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines](application-patterns-development-strategies.md)
 
-**Virtuální počítače se systémem Linux**:
+**Virtuální počítače se systémem Linux** :
 
 * [Přehled SQL Server na virtuálním počítači se systémem Linux](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Zřízení SQL Server na virtuálním počítači se systémem Linux](../linux/sql-vm-create-portal-quickstart.md)
 * [Nejčastější dotazy (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Dokumentace k SQL Server on Linux](/sql/linux/sql-server-linux-overview)

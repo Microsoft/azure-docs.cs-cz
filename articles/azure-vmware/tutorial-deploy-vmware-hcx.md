@@ -3,12 +3,12 @@ title: Kurz – nasazení a konfigurace nástroje VMware HCX
 description: Přečtěte si, jak nasadit a nakonfigurovat řešení VMware HCX pro privátní cloud řešení Azure VMware.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 424abeef567d88f7de37f7a7a4ab7a7a8b6ef3bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367767"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791405"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Nasazení a konfigurace VMware HCX
 
@@ -17,7 +17,7 @@ V tomto článku Vás provedeme postupy nasazení a konfigurace místního konek
 VMware HCX Advanced Connector je předem nasazený v řešení Azure VMware. Podporuje až tři připojení lokality (z místního prostředí do cloudu nebo Cloud do cloudu). Pokud potřebujete více než tři připojení k webu, odešlete [žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support) , která povolí doplněk [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) . Doplněk je aktuálně ve verzi Preview. 
 
 >[!NOTE]
->VMware HCX Enterprise Edition (EE) je k dispozici v řešení Azure VMware jako služba ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je služba VMware HCX EE všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu.
+>VMware HCX Enterprise Edition (EE) je k dispozici v řešení Azure VMware jako služba ve verzi Preview. Je zdarma a podléhá podmínkám a ujednáním pro službu verze Preview. Jakmile je služba VMware HCX EE všeobecně dostupná, dostanete 30denní oznámení o tom, že účtování bude přepínat. Také budete mít možnost vypnout nebo odhlásit službu. Pease Poznámka: v současné době není k dispozici žádná jednoduchá cesta ke downgradu od HCX Enterprise až po HCX pokročilé a zákazníky, kteří se rozhodnou downgrade nasazovat.
 
 Nejdříve si důkladně přečtěte [výše uvedené](#before-you-begin)požadavky na [verzi softwaru a požadavky](#software-version-requirements)v [Prerequisites](#prerequisites) tomto článku. 
 
@@ -78,7 +78,7 @@ Další informace najdete v [dokumentaci k VMware HCX](https://docs.vmware.com/e
 > [!NOTE]
 > Než virtuální zařízení nasadíte do místního serveru vCenter, musíte si stáhnout VAJÍČKu konektoru VMware HCX. 
 
-1. Otevřete okno prohlížeče, přihlaste se ke Správci Azure VMware HCX Manager na `https://x.x.x.9` portu 443 s přihlašovacími údaji uživatele **cloudadmin** a pak pokračujte na **podporu**.
+1. Otevřete okno prohlížeče, přihlaste se ke Správci Azure VMware HCX Manager na `https://x.x.x.9` portu 443 s přihlašovacími údaji uživatele **cloudadmin** a pak pokračujte na **podporu** .
 
    > [!TIP]
    > Poznamenejte si IP adresu HCX Cloud Manageru v řešení Azure VMware. IP adresu zjistíte tak, že v podokně řešení Azure VMware přejdete na **Spravovat**  >  **připojení** a pak vyberete kartu **HCX** . 
@@ -96,13 +96,13 @@ Další informace najdete v [dokumentaci k VMware HCX](https://docs.vmware.com/e
 
    :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
-1. Přečtěte si licenční smlouvy. Pokud souhlasíte, vyberte požadované úložiště a síť a pak vyberte **Další**.
+1. Přečtěte si licenční smlouvy. Pokud souhlasíte, vyberte požadované úložiště a síť a pak vyberte **Další** .
 
-1. Do **vlastní šablony**zadejte všechny požadované informace. 
+1. Do **vlastní šablony** zadejte všechny požadované informace. 
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Vyberte **Další**, ověřte konfiguraci a pak vyberte **Dokončit** pro nasazení HCX konektoru konektoru.
+1. Vyberte **Další** , ověřte konfiguraci a pak vyberte **Dokončit** pro nasazení HCX konektoru konektoru.
      
    > [!NOTE]
    > Obecně platí, že konektor VMware HCX, který nasazujete, je nasazený do sítě pro správu clusteru.  
@@ -117,32 +117,32 @@ Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware: v
 
 Po nasazení vajíček konektoru VMware HCX do místního prostředí a spuštění zařízení jste připraveni aktivovat. Nejdřív je potřeba získat licenční klíč z portálu řešení Azure VMware.
 
-1. Na portálu řešení Azure VMware klikněte na **Spravovat**  >  **připojení**, vyberte kartu **HCX** a pak vyberte **Přidat**.
+1. Na portálu řešení Azure VMware klikněte na **Spravovat**  >  **připojení** , vyberte kartu **HCX** a pak vyberte **Přidat** .
 
 1. Pomocí přihlašovacích údajů **správce** se přihlaste k místnímu správci VMware HCX na adrese `https://HCXManagerIP:9443` . 
 
    > [!IMPORTANT]
    > Nezapomeňte zahrnout `9443` číslo portu s IP adresou VMware HCX Manageru.
 
-1. V nástroji **licencování**zadejte klíč pro **HCX Advanced Key**.  
+1. V nástroji **licencování** zadejte klíč pro **HCX Advanced Key** .  
    
     > [!NOTE]
     > Nástroj VMware HCX Manager musí mít otevřený přístup k Internetu, nebo je nakonfigurován proxy server.
 
-1. V **umístění datacentra**zadejte nejbližší místo pro instalaci programu VMware HCX Manager do místního prostředí.
+1. V **umístění datacentra** zadejte nejbližší místo pro instalaci programu VMware HCX Manager do místního prostředí.
 
-1. V části **název systému**upravte název nebo přijměte výchozí nastavení.
+1. V části **název systému** upravte název nebo přijměte výchozí nastavení.
    
-1. Vyberte **Ano, pokračovat**.
+1. Vyberte **Ano, pokračovat** .
     
-1. V části **připojit Server vCenter**zadejte plně kvalifikovaný název domény nebo IP adresu vašeho serveru vCenter a příslušné přihlašovací údaje a potom vyberte **pokračovat**.
+1. V části **připojit Server vCenter** zadejte plně kvalifikovaný název domény nebo IP adresu vašeho serveru vCenter a příslušné přihlašovací údaje a potom vyberte **pokračovat** .
    
-1. V části **Konfigurace jednotného přihlašování/PSC**zadejte plně kvalifikovaný název domény nebo IP adresu vašeho kontroleru služeb platformy a pak vyberte **pokračovat**.
+1. V části **Konfigurace jednotného přihlašování/PSC** zadejte plně kvalifikovaný název domény nebo IP adresu vašeho kontroleru služeb platformy a pak vyberte **pokračovat** .
    
    >[!NOTE]
    >Obvykle je tato položka stejná jako plně kvalifikovaný název domény nebo IP adresa serveru vCenter.
 
-1. Ověřte, zda jsou všechny vstupy správné, a vyberte **restartovat**.
+1. Ověřte, zda jsou všechny vstupy správné, a vyberte **restartovat** .
     
    > [!NOTE]
    > Po restartu se budete muset setkat po restartování, než se zobrazí výzva k dalšímu kroku.
@@ -162,15 +162,15 @@ Nyní jste připraveni přidat párování webu, vytvořit síťový a výpočet
 
 Můžete se připojit (spárovat) správce cloudu VMware HCX v řešení Azure VMware pomocí konektoru VMware HCX ve vašem datovém centru. 
 
-1. Přihlaste se k místnímu serveru vCenter a v části **Domů**vyberte **HCX**.
+1. Přihlaste se k místnímu serveru vCenter a v části **Domů** vyberte **HCX** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
 
-1. V části **infrastruktura**vyberte **párování lokalit**a potom vyberte možnost **připojit ke vzdálené lokalitě** (uprostřed obrazovky). 
+1. V části **infrastruktura** vyberte **párování lokalit** a potom vyberte možnost **připojit ke vzdálené lokalitě** (uprostřed obrazovky). 
 
    :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
-1. Zadejte adresu URL nebo IP adresu vzdáleného HCXu, kterou jste si poznamenali dříve, uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit**.
+1. Zadejte adresu URL nebo IP adresu vzdáleného HCXu, kterou jste si poznamenali dříve, uživatelské jméno řešení Azure VMware cloudadmin@vsphere.local a heslo. Potom vyberte **Připojit** .
 
    > [!NOTE]
    > Aby bylo možné dvojici lokalit úspěšně vytvořit, musí být váš konektor HCX schopný směrovat na HCX IP adresu cloudového správce přes port 443.
@@ -196,11 +196,11 @@ Vytvoříte čtyři síťové profily:
    - Replikace
    - Pro odesílání
 
-1. V části **infrastruktura**vyberte **propojit**  >  **službu Multi-Site**  >  **Network profily sítě**  >  **vytvořit profil sítě**.
+1. V části **infrastruktura** vyberte **propojit**  >  **službu Multi-Site**  >  **Network profily sítě**  >  **vytvořit profil sítě** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
 
-1. Pro každý profil sítě vyberte síť a skupinu portů, zadejte název a vytvořte fond IP adres pro tento segment. Potom vyberte **Vytvořit**. 
+1. Pro každý profil sítě vyberte síť a skupinu portů, zadejte název a vytvořte fond IP adres pro tento segment. Potom vyberte **Vytvořit** . 
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF":::
 
@@ -209,57 +209,57 @@ Ucelený přehled tohoto postupu najdete v článku [Řešení Azure VMware: vid
 
 ### <a name="create-a-compute-profile"></a>Vytvořit výpočetní profil
 
-1. Vyberte **výpočetní profily**  >  **vytvořit výpočetní profil**.
+1. Vyberte **výpočetní profily**  >  **vytvořit výpočetní profil** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
-1. Zadejte název profilu a vyberte **pokračovat**.  
+1. Zadejte název profilu a vyberte **pokračovat** .  
 
    :::image type="content" source="media/tutorial-vmware-hcx/name-compute-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/name-compute-profile.png":::
 
-1. Vyberte služby, které chcete povolit, například migraci, síťové rozšíření nebo zotavení po havárii, a pak vyberte **pokračovat**.
+1. Vyberte služby, které chcete povolit, například migraci, síťové rozšíření nebo zotavení po havárii, a pak vyberte **pokračovat** .
   
    > [!NOTE]
    > Obecně se tady nic nemění.
 
-1. V části **vybrat prostředky služby**vyberte jeden nebo více prostředků služby (clustery) a povolte tak vybrané služby VMware HCX Services.  
+1. V části **vybrat prostředky služby** vyberte jeden nebo více prostředků služby (clustery) a povolte tak vybrané služby VMware HCX Services.  
 
-1. Po zobrazení clusterů v místním datovém centru vyberte **pokračovat**.
+1. Po zobrazení clusterů v místním datovém centru vyberte **pokračovat** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-service-resource.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-service-resource.png":::
 
-1. V části **vybrat úložiště dat**vyberte prostředek úložiště úložiště dat pro nasazení zařízení s modulem VMware HCX Interconnect. Potom vyberte **Pokračovat**.
+1. V části **vybrat úložiště dat** vyberte prostředek úložiště úložiště dat pro nasazení zařízení s modulem VMware HCX Interconnect. Potom vyberte **Pokračovat** .
 
    Pokud je vybráno více prostředků, VMware HCX použije první vybraný prostředek, dokud nebude jeho kapacita vyčerpána.   
 
    :::image type="content" source="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png":::  
 
-1. V části **Vybrat síťový profil pro správu**vyberte profil sítě pro správu, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat**.  
+1. V části **Vybrat síťový profil pro správu** vyberte profil sítě pro správu, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat** .  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-management-network-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-management-network-profile.png":::
 
    > [!NOTE]
    > Profil sítě pro správu umožňuje, aby zařízení VMware HCX komunikovala s vCenter. Prostřednictvím tohoto profilu lze dosáhnout hostitelů ESXi.
 
-1. V části **Vybrat profil sítě pro odesílání**vyberte profil sítě pro odesílání, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat**.
+1. V části **Vybrat profil sítě pro odesílání** vyberte profil sítě pro odesílání, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-uplink-network-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-uplink-network-profile.png":::
 
-1. V části **Vybrat profil sítě vMotion**vyberte profil sítě vMotion, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat**.
+1. V části **Vybrat profil sítě vMotion** vyberte profil sítě vMotion, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-vmotion-network-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-vmotion-network-profile.png":::
 
-1. V části **Vybrat profil sítě pro replikaci vSphere**vyberte profil sítě replikace, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat**.
+1. V části **Vybrat profil sítě pro replikaci vSphere** vyberte profil sítě replikace, který jste vytvořili v předchozích krocích. Potom vyberte **Pokračovat** .
 
    Ve většině případů je profil sítě replikace stejný jako síťový profil pro správu.  
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-replication-network-profile.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-replication-network-profile.png":::
 
-1. V části **Vybrat distribuované přepínače pro síťová rozšíření**vyberte distribuované virtuální přepínače, které obsahují virtuální počítače, které se mají migrovat do řešení Azure VMware na rozšířené síti vrstvy 2. Potom vyberte **Pokračovat**.
+1. V části **Vybrat distribuované přepínače pro síťová rozšíření** vyberte distribuované virtuální přepínače, které obsahují virtuální počítače, které se mají migrovat do řešení Azure VMware na rozšířené síti vrstvy 2. Potom vyberte **Pokračovat** .
 
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
-1. Zkontrolujte pravidla připojení a vyberte **pokračovat**.  
+1. Zkontrolujte pravidla připojení a vyberte **pokračovat** .  
 
    :::image type="content" source="media/tutorial-vmware-hcx/review-connection-rules.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/review-connection-rules.png":::
 
@@ -281,16 +281,16 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
    >
    > Nezapomeňte zkontrolovat [HCX požadované porty](https://ports.vmware.com/home/VMware-HCX).
 
-1. V části **infrastruktura**vyberte **Interconnect**  >  **Service mřížka**  >  **vytvořit síť služby**.    
+1. V části **infrastruktura** vyberte **Interconnect**  >  **Service mřížka**  >  **vytvořit síť služby** .    
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
 
-1. Zkontrolujte weby, které jsou předem vyplněné, a pak vyberte **pokračovat**. 
+1. Zkontrolujte weby, které jsou předem vyplněné, a pak vyberte **pokračovat** . 
 
    >[!NOTE]
    >Pokud je to vaše první konfigurace sítě pro služby, nebudete muset tuto obrazovku upravovat.  
 
-1. V rozevíracích seznamech vyberte zdrojové a vzdálené výpočetní profily a pak vyberte **pokračovat**.  
+1. V rozevíracích seznamech vyberte zdrojové a vzdálené výpočetní profily a pak vyberte **pokračovat** .  
 
    Výběry definují prostředky, ve kterých můžou virtuální počítače využívat služby VMware HCX.  
 
@@ -298,17 +298,17 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-remote.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/select-compute-profile-remote.png":::
 
-1. Zkontrolujte služby, které budou povoleny, a pak vyberte **pokračovat**.  
+1. Zkontrolujte služby, které budou povoleny, a pak vyberte **pokračovat** .  
 
-1. V **Možnosti Pokročilá konfigurace – přepsat síťové profily pro odesílání**vyberte **pokračovat**.  
+1. V **Možnosti Pokročilá konfigurace – přepsat síťové profily pro odesílání** vyberte **pokračovat** .  
 
    Profily sítě pro odesílání se připojují k síti, přes kterou jsou dosažitelná zařízení s propojením vzdálené lokality.  
   
-1. V **rozšířené konfiguraci – zařízení rozšíření sítě škálovat**, zkontrolujte a vyberte **pokračovat**. 
+1. V **rozšířené konfiguraci – zařízení rozšíření sítě škálovat** , zkontrolujte a vyberte **pokračovat** . 
 
-1. V **pokročilých technikách konfigurace a provozu**zkontrolujte a proveďte jakékoli změny, které máte pocit, a pak vyberte **pokračovat**.
+1. V **pokročilých technikách konfigurace a provozu** zkontrolujte a proveďte jakékoli změny, které máte pocit, a pak vyberte **pokračovat** .
 
-1. Přečtěte si náhled topologie a vyberte **pokračovat**.
+1. Přečtěte si náhled topologie a vyberte **pokračovat** .
 
 1. Zadejte uživatelsky přívětivý název pro tuto síť a vyberte **Dokončit** .  
 
@@ -321,7 +321,7 @@ Teď je čas nakonfigurovat síť mezi místními a SDDC řešení Azure VMware.
    :::image type="content" source="media/tutorial-vmware-hcx/service-mesh-green.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/service-mesh-green.png":::
 
 1. Zkontrolujte stav zařízení pomocí kontroly stavu sítě. 
-1. Vyberte **Interconnect**  >  **zařízení**Interconnect.
+1. Vyberte **Interconnect**  >  **zařízení** Interconnect.
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
@@ -333,19 +333,19 @@ Kompletní přehled tohoto postupu najdete v článku [Řešení Azure VMware:](
 
 Pokud chcete z místního prostředí do řešení Azure VMware Rozmístit všechny sítě, postupujte takto:
 
-1. V části **služby**vyberte **rozšíření sítě**a potom vyberte **vytvořit rozšíření sítě**.
+1. V části **služby** vyberte **rozšíření sítě** a potom vyberte **vytvořit rozšíření sítě** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 
-1. Vyberte všechny sítě, které chcete pro řešení Azure VMware využívat, a pak vyberte **Další**.
+1. Vyberte všechny sítě, které chcete pro řešení Azure VMware využívat, a pak vyberte **Další** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF":::
 
-1. Pro každou síť, kterou rozšiřujete, zadejte IP adresu místní brány a pak vyberte **Odeslat**. 
+1. Pro každou síť, kterou rozšiřujete, zadejte IP adresu místní brány a pak vyberte **Odeslat** . 
 
    :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF":::
 
-   Dokončení rozšíření sítě trvá několik minut. V takovém případě uvidíte změnu stavu na **rozšíření dokončeno**.
+   Dokončení rozšíření sítě trvá několik minut. V takovém případě uvidíte změnu stavu na **rozšíření dokončeno** .
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="Snímek obrazovky s přechodem na šablonu OVF" lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 

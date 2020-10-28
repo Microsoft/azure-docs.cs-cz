@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789212"
 ---
 # <a name="security-alerts-schemas"></a>Schémata výstrah zabezpečení
 
@@ -25,7 +25,7 @@ Pokud je ve vašem předplatném Azure Defender povolený, obdržíte výstrahy 
 Tyto výstrahy zabezpečení můžete zobrazit na stránkách **ochrany před internetovými útoky** v Azure Security Center nebo prostřednictvím externích nástrojů, jako jsou:
 
 - [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu Konektor Sentinel získá výstrahy od Azure Security Center a pošle je do [pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md) pro Sentinel Azure.
-- Systémů Siem třetí strany – slouží k posílání dat do [Azure Event Hubs](../event-hubs/index.yml)pomocí nástrojů [průběžného exportu](continuous-export.md) Security Center. Potom Integrujte data centra událostí s SIEM třetí strany.
+- Systémů Siem třetích stran – odesílá data do [Azure Event Hubs](../event-hubs/index.yml). Potom Integrujte data centra událostí s SIEM třetí strany. Další informace o [výstrahách služby streamování pro Siem, společnosti nebo řešení správy služeb](export-to-siem.md)v oddělení IT.
 - [REST API](/rest/api/securitycenter/) – pokud používáte REST API k přístupu k výstrahám, přečtěte si [dokumentaci k rozhraní API pro online výstrahy](/rest/api/securitycenter/alerts).
 
 Pokud používáte nějaké programové metody pro využívání výstrah, budete potřebovat správné schéma, abyste našli pole, která jsou pro vás důležitá. Pokud exportujete do centra událostí nebo se pokoušíte aktivovat automatizaci pracovního postupu pomocí obecných konektorů HTTP, použijte schémata k správné analýze objektů JSON.
@@ -46,8 +46,9 @@ Níže najdete schéma událostí výstrah předaných do:
 - Instance aplikace logiky Azure, které byly nakonfigurovány v automatizaci pracovního postupu Security Center
 - Azure Event hub s využitím funkce průběžného exportu Security Center
 
-Další informace o funkci automatizace pracovních postupů najdete v tématu [automatizace odpovědí na výstrahy a doporučení](workflow-automation.md).
-Další informace o průběžném exportu najdete v tématu [Export výstrah a doporučení](continuous-export.md).
+Další informace o funkci automatizace pracovních postupů najdete v tématu [automatizace odpovědí na Security Center triggery](workflow-automation.md).
+
+Další informace o průběžném exportu najdete v tématu [průběžné exportování dat Security Center](continuous-export.md).
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -185,5 +186,5 @@ Další informace o způsobech přístupu k výstrahám zabezpečení z vnějš�
 
 - [Azure Sentinel](../sentinel/index.yml) – cloudová nativní Siem Microsoftu
 - [Azure Event Hubs](../event-hubs/index.yml) – plně spravovaná služba pro přijímání dat v reálném čase od Microsoftu
-- [Funkce průběžného exportu](continuous-export.md) Security Center
+- [Průběžný export Security Center dat](continuous-export.md)
 - [Log Analytics pracovní prostory](../azure-monitor/learn/quick-create-workspace.md) – Azure monitor ukládá data protokolu v pracovním prostoru Log Analytics, kontejneru, který obsahuje informace o datech a konfiguraci.

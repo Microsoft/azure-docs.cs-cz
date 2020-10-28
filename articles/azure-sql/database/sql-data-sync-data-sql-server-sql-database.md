@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503330"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791422"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
 
@@ -44,9 +44,9 @@ Synchronizace dat používá k synchronizaci dat topologii hvězdicové a Paprsk
 Skupina synchronizace má následující vlastnosti:
 
 - **Schéma synchronizace** popisuje, která data se synchronizují.
-- **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena*nebo z *člena do středu nebo do*obou.
+- **Směr synchronizace** může být obousměrný nebo může tok pouze v jednom směru. To znamená, že směr synchronizace může být z *rozbočovače na člena* nebo z *člena do středu nebo do* obou.
 - **Interval synchronizace** popisuje, jak často dochází k synchronizaci.
-- **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS*.
+- **Zásada řešení konfliktů** je zásada na úrovni skupiny, kterou je možné vytvořit jako *rozbočovač WINS* nebo *Členové služby WINS* .
 
 ## <a name="when-to-use"></a>Kdy je použít
 
@@ -62,7 +62,7 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 |----------|----------------------------|
 | Zotavení po havárii | [Geograficky redundantní zálohy Azure](automated-backups-overview.md) |
 | Čtení stupnice | [Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení (Preview)](read-scale-out.md) |
-| ETL (OLTP až OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
+| ETL (OLTP až OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [služba SSIS (SQL Server Integration Services)](/sql/integration-services/sql-server-integration-services) |
 | Migrace z SQL Server do Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
@@ -72,9 +72,9 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 
 - **Sledování změn dat:** Synchronizace dat sleduje změny pomocí aktivačních událostí vložení, aktualizace a odstranění. Změny jsou zaznamenány v tabulce na straně uživatele v uživatelské databázi. Všimněte si, že BULK INSERT ve výchozím nastavení neaktivují triggery. Pokud není zadaný FIRE_TRIGGERS, nespustí se žádné triggery vložení. Přidejte možnost FIRE_TRIGGERS, aby synchronizace dat mohla sledovat tato vložení. 
 - **Synchronizují se data:** Synchronizace dat je navržena v modelu hvězdicového a paprskového modelu. Centrum se synchronizuje s každým členem zvlášť. Změny z centra se stáhnou do člena a změny od tohoto člena se nahrají do centra.
-- **Řeší se konflikty:** Synchronizace dat poskytuje dvě možnosti pro řešení konfliktů, *centrum WINS* nebo *člena služby WINS*.
-  - Pokud vyberete možnost *centrum služby WINS*, změny v centru budou vždy přepisovat změny v členu.
-  - Pokud vyberete možnost *Členové serveru WINS*, změny ve členovi přepíšou změny v centru. Pokud existuje více než jeden člen, bude konečná hodnota záviset na tom, který člen se nejprve synchronizuje.
+- **Řeší se konflikty:** Synchronizace dat poskytuje dvě možnosti pro řešení konfliktů, *centrum WINS* nebo *člena služby WINS* .
+  - Pokud vyberete možnost *centrum služby WINS* , změny v centru budou vždy přepisovat změny v členu.
+  - Pokud vyberete možnost *Členové serveru WINS* , změny ve členovi přepíšou změny v centru. Pokud existuje více než jeden člen, bude konečná hodnota záviset na tom, který člen se nejprve synchronizuje.
 
 ## <a name="compare-with-transactional-replication"></a>Porovnání s transakční replikací
 
@@ -101,7 +101,7 @@ Synchronizace dat není preferovaným řešením pro následující scénáře:
 
 ### <a name="did-something-go-wrong"></a>Došlo k chybě.
 
-- [Řešení potíží se Synchronizací dat SQL Azure](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Řešení potíží se Synchronizací dat SQL Azure](./sql-data-sync-troubleshoot.md)
 
 ## <a name="consistency-and-performance"></a>Konzistence a výkon
 
@@ -126,7 +126,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 > - Data mezi centrem a členy mohou být ztracena, i když synchronizace neoznamuje žádné potíže.
 > - Synchronizace může selhat, protože tabulka sledování má neexistující řádek ze zdroje z důvodu změny primárního klíče.
 
-- Pro členy synchronizace i pro centrum musí být povolena izolace snímku. Další informace najdete v tématu [Izolace snímku na SQL Serveru](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Pro členy synchronizace i pro centrum musí být povolena izolace snímku. Další informace najdete v tématu [Izolace snímku na SQL Serveru](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Obecná omezení
 
@@ -150,7 +150,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.
@@ -175,8 +175,8 @@ Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení an
 
 Po navázání skupiny synchronizace se musí služba synchronizace dat připojit k databázi centra. V době, kdy vytváříte skupinu synchronizace, musí mít server SQL Azure ve svém nastavení následující konfiguraci `Firewalls and virtual networks` :
 
- * *Odepření přístupu k veřejné síti* musí být nastavené na *vypnuto*.
- * *Povolte službám a prostředkům Azure přístup k tomuto serveru* musí být nastavené na *Ano*, nebo musíte vytvořit pravidla protokolu IP pro [IP adresy používané službou synchronizace dat](network-access-controls-overview.md#data-sync).
+ * *Odepření přístupu k veřejné síti* musí být nastavené na *vypnuto* .
+ * *Povolte službám a prostředkům Azure přístup k tomuto serveru* musí být nastavené na *Ano* , nebo musíte vytvořit pravidla protokolu IP pro [IP adresy používané službou synchronizace dat](network-access-controls-overview.md#data-sync).
 
 Jakmile skupinu synchronizace vytvoříte a zřídíte, můžete tato nastavení zakázat. Agent synchronizace se připojí přímo k databázi centra a pomocí [pravidel IP adres brány firewall](firewall-configure.md) serveru nebo [privátních koncových bodů](private-endpoint-overview.md) můžete agentům přístup k serveru centrálního přístupu dovolit.
 
@@ -240,7 +240,7 @@ Kořenová databáze federace se dá ve službě Synchronizace dat SQL použít 
 
 ### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>Můžu použít synchronizaci dat pro synchronizaci dat exportovaných z Dynamics 365 pomocí funkce Přineste si vlastní databázi (BYOD)?
 
-Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům exportovat datové entity z aplikace do své vlastní Microsoft Azure SQL Database. Synchronizaci dat lze použít k synchronizaci těchto dat do jiných databází, pokud jsou exportována data pomocí **přírůstkového nabízeného oznámení** (úplné nabízené oznámení není podporováno) a **možnost aktivační události v cílové databázi** je nastavena na **hodnotu Ano**.
+Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům exportovat datové entity z aplikace do své vlastní Microsoft Azure SQL Database. Synchronizaci dat lze použít k synchronizaci těchto dat do jiných databází, pokud jsou exportována data pomocí **přírůstkového nabízeného oznámení** (úplné nabízené oznámení není podporováno) a **možnost aktivační události v cílové databázi** je nastavena na **hodnotu Ano** .
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -248,20 +248,19 @@ Funkce Dynamics 365 Přineste si vlastní databázi umožňuje správcům export
 
 Je nutné aktualizovat schéma databáze ve skupině synchronizace? Změny schématu se nereplikují automaticky. Některá řešení najdete v následujících článcích:
 
-- [Automatizace replikace změn schématu pomocí Synchronizace dat SQL v Azure](../../sql-database/sql-database-update-sync-schema.md)
+- [Automatizace replikace změn schématu pomocí Synchronizace dat SQL v Azure](./sql-data-sync-update-sync-schema.md)
 - [Aktualizace schématu synchronizace ve stávající skupině synchronizace pomocí PowerShellu](scripts/update-sync-schema-in-sync-group.md)
 
 ### <a name="monitor-and-troubleshoot"></a>Monitorování a odstraňování potíží
 
 Je Synchronizace dat SQL podle očekávání? Pokud chcete monitorovat činnost a řešit problémy, přečtěte si následující články:
 
-- [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](../../sql-database/sql-database-sync-monitor-oms.md)
-- [Řešení potíží se Synchronizací dat SQL Azure](../../sql-database/sql-database-troubleshoot-data-sync.md)
+- [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](./monitor-tune-overview.md)
+- [Řešení potíží se Synchronizací dat SQL Azure](./sql-data-sync-troubleshoot.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Další informace o Azure SQL Database
 
 Další informace o Azure SQL Database najdete v následujících článcích:
 
 - [Přehled služby SQL Database](sql-database-paas-overview.md)
-- [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
- 
+- [Správa životního cyklu databáze](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

@@ -5,19 +5,19 @@ description: Přečtěte si, jak reagovat na potenciálně ohroženou ochranu TD
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617396"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791371"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,18 +26,18 @@ ms.locfileid: "91617396"
 Toto téma popisuje, jak reagovat na potenciálně ohroženou TDE ochranu pro Azure SQL Database nebo Azure synapse Analytics, která používá TDE s klíči spravovanými zákazníky v podpoře Azure Key Vault-Bring Your Own Key (BYOK). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-overview.md).
 
 > [!CAUTION]
-> Postupy popsané v tomto článku by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si pečlivě tyto kroky, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí, že **databáze nebude k dispozici**.
+> Postupy popsané v tomto článku by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si pečlivě tyto kroky, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí, že **databáze nebude k dispozici** .
 
 Pokud dojde k ohrožení bezpečnosti nějakého klíče, aby služba nebo uživatel měli k klíči neoprávněný přístup, je nejlepší klíč odstranit.
 
-Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 minut, začnou všechny šifrované databáze zamítnout všechna připojení k příslušné chybové zprávě a změnit její stav na [nepřístupný](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector).
+Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 minut, začnou všechny šifrované databáze zamítnout všechna připojení k příslušné chybové zprávě a změnit její stav na [nepřístupný](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector).
 
 Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po napadené reakci na incidenty:
 
-- Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
-- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné**.
+- Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné** .
+- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.
@@ -45,7 +45,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
+ Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) se pořád podporuje, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).

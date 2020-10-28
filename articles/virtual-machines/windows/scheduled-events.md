@@ -9,12 +9,12 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 823013de0462d830f065993b1c7c9dbe4256991d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8a0dd7f020c9a8e720aacf34b1719ee2094fa223
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788804"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -49,7 +49,7 @@ Scheduled Events poskytuje události v následujících případech použití:
 
   Metadata Service zpřístupňuje informace o spuštěných virtuálních počítačích pomocí koncového bodu REST, který je přístupný z virtuálního počítače. Tyto informace jsou k dispozici prostřednictvím nonroutable IP adresy, aby se nezobrazovaly mimo virtuální počítač.
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 Naplánované události jsou doručovány do:
 
 - Samostatné Virtual Machines.
@@ -153,6 +153,10 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 
 > [!NOTE] 
 > V některých případech může Azure předpovědět selhání hostitele kvůli zhoršenému hardwaru a při plánování migrace se pokusí zmírnit přerušení služby. Ovlivněné virtuální počítače dostanou plánovanou událost `NotBefore` , která je obvykle několik dní v budoucnu. Skutečný čas se liší v závislosti na předpokládaném vyhodnocení rizik při selhání. Pokud je to možné, Azure se pokusí poskytnout oznámení v předstihu 7 dní, ale skutečná doba se změní a může být menší, pokud je předpověď taková, že dojde k bezprostřednímu výpadku hardwaru. Abyste minimalizovali riziko pro vaši službu pro případ, že se hardware před migrací iniciované systémem nezdařil, doporučujeme, abyste virtuální počítač co nejdříve znovu nasadili.
+
+### <a name="polling-frequency"></a>Frekvence cyklického dotazování
+
+Koncový bod můžete podle potřeby dotazovat na aktualizace, jak často nebo často. Doba mezi požadavky však bude trvat déle, než budete chtít reagovat na nadcházející událost. Většina událostí má 5 až 15 minut oznámení předem, i když v některých případech může předběžné oznámení trvat až 30 sekund. Aby bylo zajištěno, že budete mít k dispozici co nejvíce času pro zmírňování akcí, doporučujeme, abyste službu provedli jednou za sekundu.
 
 ### <a name="start-an-event"></a>Spustit událost 
 

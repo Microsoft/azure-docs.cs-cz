@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335054"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789620"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,12 +31,12 @@ Nakonfigurujte databázi v SQL Database a klientské aplikace pro převzetí slu
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 K dokončení tohoto kurzu se ujistěte, že máte nainstalované následující položky:
 
@@ -120,7 +120,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi a pak **Nastavení**  >  **geografická replikace**.
+Nastavení geografické replikace můžete v Azure Portal změnit také tak, že vyberete databázi a pak **Nastavení**  >  **geografická replikace** .
 
 ![Nastavení geografické replikace](./media/geo-distributed-application-configure-tutorial/geo-replication.png)
 
@@ -132,7 +132,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Zadejte **Y** a stiskněte **ENTER**.
+1. Zadejte **Y** a stiskněte **ENTER** .
 
 1. Změňte adresáře na nový projekt.
 
@@ -182,7 +182,7 @@ Nastavení geografické replikace můžete v Azure Portal změnit také tak, že
    </build>
    ```
 
-1. Uložte a zavřete soubor *pom.xml*.
+1. Uložte a zavřete soubor *pom.xml* .
 
 1. Otevřete soubor *App. Java* umístěný v souboru.. \SqlDbSample\src\main\java\com\sqldbsamples a nahraďte obsah následujícím kódem:
 

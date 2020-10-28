@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448903"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790402"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Postup migrace databáze SQLite na Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure SQL Database bez serveru je výpočetní vrstva pro izolované databáze, 
 
 Až budete postupovat podle následujících kroků, vaše databáze se migruje na Azure SQL Database bez serveru a umožní vám zpřístupnit databázi ostatním uživatelům nebo aplikacím v cloudu a platit jenom za to, co používáte, s minimálními změnami kódu aplikace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure
 - Databáze SQLite2 nebo SQLite3, kterou chcete migrovat
@@ -53,13 +53,13 @@ Až budete postupovat podle následujících kroků, vaše databáze se migruje 
     - Spouští se ADF (vytváření a monitorování ze služby v Azure Portal).
     - Klikněte na kartu Autor (modrá tužka) vlevo.
     - Klikněte na připojení (vlevo dole) a potom na modul runtime integrace.
-    - Přidejte novou Self-Hosted Integration Runtime, zadejte název, vyberte *možnost 2*.
+    - Přidejte novou Self-Hosted Integration Runtime, zadejte název, vyberte *možnost 2* .
 
 5. Vytvořte novou propojenou službu pro zdrojovou databázi SQLite ve vašem Data Factory.
 
     ![Snímek obrazovky znázorňující okno prázdné propojené služby v Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. V části **připojení**klikněte v části **propojená služba**na **Nový**.
+6. V části **připojení** klikněte v části **propojená služba** na **Nový** .
 
 7. Vyhledejte a vyberte konektor "ODBC".
 
@@ -109,4 +109,4 @@ Až budete postupovat podle následujících kroků, vaše databáze se migruje 
 ## <a name="next-steps"></a>Další kroky
 
 - Informace o tom, jak začít, najdete v tématu [rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](single-database-create-quickstart.md).
-- Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
+- Omezení prostředků najdete v tématu [omezení prostředků výpočetní vrstvy bez serveru](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5).

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790606"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ Spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů 
 
 Viz [Vytvoření certifikátu](/sql/t-sql/statements/create-certificate-transact-sql) a [záložního certifikátu](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Alternativní řešení**: místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Alternativní řešení** : místo vytváření zálohy certifikátu a obnovení zálohy [Získejte binární obsah certifikátu a privátní klíč, uložte ho jako soubor. SQL a vytvořte ho z binárního souboru](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
 - Nastavení přihlašovacích údajů Azure AD namapované na skupinu Azure AD, protože vlastník databáze není podporovaný.
 - Je podporováno zosobnění objektů zabezpečení na úrovni serveru Azure AD pomocí jiných objektů zabezpečení Azure AD, jako je například klauzule [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . Spustit jako omezení jsou:
 
-  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, že uživatel je vytvořen pomocí syntaxe CREATE USER [myAadUser] FROM LOGIN [ john@contoso.com ] a při pokusu o zosobnění se provádí pomocí příkazu EXEC jako uživatel = _myAadUser_. Když vytváříte **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení), zadejte user_name jako stejný Login_name od **přihlášení**.
+  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, že uživatel je vytvořen pomocí syntaxe CREATE USER [myAadUser] FROM LOGIN [ john@contoso.com ] a při pokusu o zosobnění se provádí pomocí příkazu EXEC jako uživatel = _myAadUser_ . Když vytváříte **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení), zadejte user_name jako stejný Login_name od **přihlášení** .
   - Jenom objekty zabezpečení na úrovni SQL Server (přihlášení), které jsou součástí `sysadmin` role, můžou spouštět následující operace, které cílí na objekty zabezpečení Azure AD:
 
     - SPUSTIT JAKO UŽIVATEL
@@ -220,7 +220,7 @@ Další informace najdete v tématu věnovaném [příkazu ALTER DATABASE set pa
 
 - Více souborů protokolu není podporováno.
 - Objekty v paměti nejsou podporovány v Pro obecné účely úrovni služby. 
-- Počet 280 souborů na instanci Pro obecné účely, což implikuje maximálně 280 souborů na databázi. Do tohoto limitu se počítají data i soubory protokolů v Pro obecné účely vrstvě. [Úroveň pro důležité obchodní informace podporuje 32 767 souborů na databázi](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+- Počet 280 souborů na instanci Pro obecné účely, což implikuje maximálně 280 souborů na databázi. Do tohoto limitu se počítají data i soubory protokolů v Pro obecné účely vrstvě. [Úroveň pro důležité obchodní informace podporuje 32 767 souborů na databázi](./resource-limits.md#service-tier-characteristics).
 - Databáze nemůže obsahovat skupiny souborů, které obsahují data FILESTREAM. Obnovení se nezdařilo, pokud. bak obsahuje `FILESTREAM` data. 
 - Každý soubor je umístěný v úložišti objektů BLOB v Azure. Vstupně-výstupní operace a propustnost na soubor závisí na velikosti každého jednotlivého souboru.
 
@@ -354,17 +354,17 @@ Nedokumentované příkazy DBCC povolené v SQL Server nejsou ve spravované ins
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
 Částečná podpora [distribuovaných transakcí](../database/elastic-transactions-overview.md) je v současnosti ve verzi Public Preview. Podporované scénáře:
-* Transakce, kde se účastní jenom spravované instance Azure SQL, které jsou součástí [skupiny důvěryhodných serverů](https://aka.ms/mitrusted-groups).
+* Transakce, kde se účastní jenom spravované instance Azure SQL, které jsou součástí [skupiny důvěryhodných serverů](./server-trust-group-overview.md).
 * Transakce iniciované z rozhraní .NET (třída TransactionScope) a jazyka Transact-SQL.
 
 Azure SQL Managed instance v současné době nepodporuje další scénáře, které jsou pravidelně podporované službou MSDTC místně nebo v Azure Virtual Machines.
 
 ### <a name="extended-events"></a>Rozšířené události
 
-Některé cíle specifické pro systém Windows pro rozšířené události (XEvents) nejsou podporovány:
+Rozšířené události (XEvents) nepodporují některé cíle specifické pro Windows:
 
-- `etw_classic_sync`Cíl není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [etw_classic_sync Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- `event_file`Cíl není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [event_file Target](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- `etw_classic_sync`Cíl není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl etw_classic_sync](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- `event_file`Cíl není podporován. Ukládejte `.xel` soubory v úložišti objektů BLOB v Azure. Viz [cíl event_file](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externí knihovny
 
@@ -482,7 +482,7 @@ Služba Service Broker mezi instancemi není podporována:
   - `remote proc trans`
 - `sp_execute_external_scripts` není podporováno. Viz [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
 - `xp_cmdshell` není podporováno. Viz [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures`nepodporuje se, což zahrnuje `sp_addextendedproc`   a `sp_dropextendedproc` . Viz [rozšířené uložené procedury](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `Extended stored procedures` nepodporuje se, což zahrnuje `sp_addextendedproc` a `sp_dropextendedproc` . Viz [rozšířené uložené procedury](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
 - `sp_attach_db`, `sp_attach_single_file_db` a `sp_detach_db` nejsou podporovány. Viz [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)a [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Systémové funkce a proměnné
@@ -527,13 +527,13 @@ Následující schémata MSDB ve spravované instanci SQL musí vlastnit jejich 
 
 - Obecné role
   - TargetServersRole
-- [Pevné databázové role](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [Pevné databázové role](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - Role uživatele agenta SQL
   - Role čtenáře agenta SQL
   - Role operátora agenta SQL
-- [DatabaseMail role](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail role](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
   - DatabaseMailUserRole
-- [Role integračních služeb](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [Role integračních služeb](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator
@@ -543,7 +543,7 @@ Následující schémata MSDB ve spravované instanci SQL musí vlastnit jejich 
 
 ### <a name="error-logs"></a>Protokoly chyb
 
-Spravovaná instance SQL umístí podrobné informace do protokolů chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance SQL – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) nebo [rozšíření spravované instance SQL (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
+Spravovaná instance SQL umístí podrobné informace do protokolů chyb. K dispozici je mnoho interních systémových událostí, které jsou zaznamenány v protokolu chyb. Pomocí vlastního postupu si můžete přečíst protokoly chyb, které odfiltrují některé nedůležité položky. Další informace najdete v tématu [spravovaná instance SQL – sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) nebo [rozšíření spravované instance SQL (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) pro Azure Data Studio.
 
 ## <a name="next-steps"></a>Další kroky
 

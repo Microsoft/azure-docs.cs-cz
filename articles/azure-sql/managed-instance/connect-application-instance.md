@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628362"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791252"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Připojení aplikace ke službě Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Pro připojení virtuálních sítí existují dvě možnosti:
 Partnerský vztah je vhodnější, protože používá páteřní síť Microsoftu, takže z perspektivy připojení nedochází k znatelnému rozdílu mezi virtuálními počítači v partnerské virtuální síti a ve stejné virtuální síti. Partnerský vztah virtuálních sítí se podporuje mezi sítěmi ve stejné oblasti. Podpora globálního partnerského vztahu virtuálních sítí se podporuje i s omezením popsaným v níže uvedené poznámce.  
 
 > [!IMPORTANT]
-> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
+> [V 9/22/2020 jsme oznámili globální partnerské vztahy virtuálních sítí pro nově vytvořené virtuální clustery](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). To znamená, že globální partnerský vztah virtuálních sítí je podporován pro spravované instance SQL vytvořené v prázdných podsítích po datu oznámení a také pro všechny následné spravované instance vytvořené v těchto podsítích. Pro všechny ostatní podpory partnerského vztahu spravované instance SQL je omezená na sítě ve stejné oblasti v důsledku [omezení globálního partnerského vztahu virtuálních sítí](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Další podrobnosti najdete v článku o nejčastějších dotazech v příslušné části [Azure Virtual Networks](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . 
 
 ## <a name="connect-from-on-premises"></a>Připojení z místního prostředí 
 
@@ -71,10 +71,10 @@ Dalším scénářem implementovaným zákazníky je, že je Brána VPN nainstal
 
 ![Partnerský vztah virtuální sítě](./media/connect-application-instance/vnet-peering.png)
 
-Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu**provedete následující velmi specifické změny.
+Jakmile máte nastavenou základní infrastrukturu, budete muset změnit některá nastavení tak, aby brána VPN mohla zobrazit IP adresy ve virtuální síti, která je hostitelem spravované instance SQL. Provedete to tak, že v **Nastavení partnerského vztahu** provedete následující velmi specifické změny.
 
-1. Ve virtuální síti, která hostuje bránu VPN, přejděte do **partnerských vztahů**, přejděte k partnerským připojením virtuální sítě pro SPRAVOVANOU instanci SQL a pak klikněte na možnost **povolení přenosu brány**.
-2. Ve virtuální síti, která je hostitelem spravované instance SQL, přejděte na **partnerské vztahy**, přejděte na připojení s partnerskými virtuálními sítěmi pro bránu VPN a pak klikněte na **použít vzdálené brány**.
+1. Ve virtuální síti, která hostuje bránu VPN, přejděte do **partnerských vztahů** , přejděte k partnerským připojením virtuální sítě pro SPRAVOVANOU instanci SQL a pak klikněte na možnost **povolení přenosu brány** .
+2. Ve virtuální síti, která je hostitelem spravované instance SQL, přejděte na **partnerské vztahy** , přejděte na připojení s partnerskými virtuálními sítěmi pro bránu VPN a pak klikněte na **použít vzdálené brány** .
 
 ## <a name="connect-azure-app-service"></a>Připojit Azure App Service 
 
@@ -151,8 +151,8 @@ Pokud se chcete připojit ke spravované instanci SQL, doporučuje se používat
 |Ovladač JDBC| 6.4.0 |
 |Ovladač Node.js| 2.1.1 |
 |Ovladač OLEDB| 18.0.2.0 |
-|SSMS| 18,0 nebo [vyšší](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) nebo vyšší |
+|SSMS| 18,0 nebo [vyšší](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) nebo vyšší |
 
 ## <a name="next-steps"></a>Další kroky
 

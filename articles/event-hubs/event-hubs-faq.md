@@ -2,13 +2,13 @@
 title: Nejčastější dotazy – Azure Event Hubs | Microsoft Docs
 description: Tento článek obsahuje seznam nejčastějších dotazů pro Azure Event Hubs a jejich odpovědí.
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/27/2020
+ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518020"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789365"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs nejčastějších dotazech
 
@@ -184,8 +184,19 @@ Pokud celková propustnost **odchozích** dat nebo celková přenosová rychlost
 
 Kvóty příchozího a odchozího přenosu dat se uplatňují samostatně, takže žádný odesilatel nemůže způsobit zpomalení události, ani nemůže přijímač zabránit v posílání událostí do centra událostí.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Existuje limit počtu jednotek propustnosti (počet propustnosti), které je možné rezervovat/vybrat?
-V nabídce pro více tenantů můžou jednotky propustnosti růst až 40 počet propustnosti (na portálu můžete vybrat až 20 počet propustnosti a vyvolat lístek podpory, který ho zvýší na 40 počet propustnosti ve stejném oboru názvů). Kromě 40 počet propustnosti Event Hubs nabízí model založený na prostředku nebo kapacitě, který se označuje jako **clustery Event Hubs úrovně Dedicated**. Vyhrazené clustery se prodávají v jednotkách kapacity (kapacitní jednotky).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>Existuje limit počtu jednotek propustnosti, které je možné rezervovat/vybrat?
+
+Při vytváření oboru názvů Basic nebo Standard úrovně v Azure Portal můžete pro obor názvů vybrat až 20 počet propustnosti. Pokud ho chcete zvýšit na **přesně** 40 počet propustnosti, odešlete  [žádost o podporu](../azure-portal/supportability/how-to-create-azure-support-request.md).  
+
+1. Na stránce **obor názvů sběrnice událostí** vyberte v nabídce vlevo možnost **Nová žádost o podporu** . 
+1. Na stránce **Nová žádost o podporu** proveďte tyto kroky:
+    1. Pro **Shrnutí** Popište problém několika slovy. 
+    1. Jako **typ problému** vyberte **kvóta** . 
+    1. V případě **podtypu problému** vyberte **požadavek na zvýšení nebo snížení jednotky propustnosti** . 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="Stránka Support request":::
+
+Kromě 40 počet propustnosti Event Hubs nabízí model založený na prostředku nebo kapacitě, který se označuje jako clustery Event Hubs úrovně Dedicated. Vyhrazené clustery se prodávají v jednotkách kapacity (kapacitní jednotky). Další informace najdete v tématu [Event Hubs úrovně Dedicated-Overview](event-hubs-dedicated-overview.md).
 
 ## <a name="dedicated-clusters"></a>Vyhrazené clustery
 
@@ -199,7 +210,7 @@ Podrobné pokyny a další informace o nastavení Event Hubs vyhrazeného cluste
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 
-## <a name="best-practices"></a>Osvědčené postupy
+## <a name="partitions"></a>Oddíly
 
 ### <a name="how-many-partitions-do-i-need"></a>Kolik oddílů potřebuji?
 Počet oddílů se zadává při vytváření a musí být v rozmezí od 1 do 32. Počet oddílů se nedá měnit, takže při nastavování počtu oddílů byste měli uvažovat o dlouhodobém škálování. Oddíly slouží jako mechanismus pro organizaci dat a souvisí se stupněm paralelismu příjmu dat, který vyžadují přijímací aplikace. Počet oddílů v centru událostí přímo souvisí s počtem souběžných čtenářů, které plánujete mít. Další informace o oddílech najdete v tématu [oddíly](event-hubs-features.md#partitions).
@@ -209,6 +220,21 @@ Možná budete chtít nastavit, aby byla nejvyšší možná hodnota, která je 
 Event Hubs je navržena tak, aby umožňovala jedno čtecí zařízení pro jednu skupinu příjemců. Ve většině případů použití je výchozí nastavení čtyř oddílů dostatečné. Pokud chcete škálovat zpracování událostí, možná budete chtít zvážit přidání dalších oddílů. Pro oddíl není k dispozici žádný konkrétní limit propustnosti, ale agregovaná propustnost ve vašem oboru názvů je omezená počtem jednotek propustnosti. Když zvýšíte počet jednotek propustnosti ve vašem oboru názvů, můžete chtít, aby měly další oddíly, které umožní souběžným čtenářům dosáhnout své vlastní maximální propustnosti.
 
 Pokud však máte model, ve kterém má aplikace spřažení pro určitý oddíl, zvýšení počtu oddílů nemusí být pro vás výhodou. Další informace najdete v tématu [dostupnost a konzistence](event-hubs-availability-and-consistency.md).
+
+### <a name="increase-partitions"></a>Zvětšit oddíly
+Můžete požádat o zvýšení počtu oddílů na 40 (přesně) tím, že odešlete žádost o podporu. 
+
+1. Na stránce **obor názvů sběrnice událostí** vyberte v nabídce vlevo možnost **Nová žádost o podporu** . 
+1. Na stránce **Nová žádost o podporu** proveďte tyto kroky:
+    1. Pro **Shrnutí** Popište problém několika slovy. 
+    1. Jako **typ problému** vyberte **kvóta** . 
+    1. Pro **podtyp problému** vyberte **požadavek na změnu oddílu** . 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="Stránka Support request":::
+
+Počet oddílů se dá zvýšit přesně na 40. V takovém případě je potřeba zvýšit počet počet propustnosti také na 40. Pokud se později rozhodnete snížit limit hodnoty v hodnotě <= 20, limit maximálního počtu oddílů se také sníží na 32. 
+
+Zmenšení oddílů neovlivní existující centra událostí, protože oddíly se aplikují na úrovni centra událostí a po vytvoření centra nejsou proměnlivé. 
 
 ## <a name="pricing"></a>Ceny
 

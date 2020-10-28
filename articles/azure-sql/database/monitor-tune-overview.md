@@ -11,23 +11,23 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 09/30/2020
-ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e5ab1f07473a2572f7fb228139da8670fd6269c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596971"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790351"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorování a ladění výkonu ve službách Azure SQL Database a Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Pokud chcete monitorovat výkon databáze v Azure SQL Database a spravované instanci Azure SQL, Začněte monitorováním prostředků CPU a IO používaných úlohami relativně k úrovni výkonu databáze, kterou jste zvolili při výběru konkrétní úrovně služby a úrovně výkonu. K tomuto účelu Azure SQL Database a Azure SQL Managed instance generuje metriky prostředků, které se dají zobrazit v Azure Portal nebo pomocí některého z těchto nástrojů pro správu SQL Server: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) nebo [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+Pokud chcete monitorovat výkon databáze v Azure SQL Database a spravované instanci Azure SQL, Začněte monitorováním prostředků CPU a IO používaných úlohami relativně k úrovni výkonu databáze, kterou jste zvolili při výběru konkrétní úrovně služby a úrovně výkonu. K tomuto účelu Azure SQL Database a Azure SQL Managed instance generuje metriky prostředků, které se dají zobrazit v Azure Portal nebo pomocí některého z těchto nástrojů pro správu SQL Server: [Azure Data Studio](/sql/azure-data-studio/what-is) nebo [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
 Azure SQL Database poskytuje řadu poradců databází, které poskytují doporučení inteligentního ladění výkonu a možnosti automatického ladění pro zlepšení výkonu. Kromě toho Query Performance Insight zobrazí podrobnosti o dotazech zodpovědných za největší využití procesoru a vstupně-výstupních operací pro databáze s jednou a ve fondu.
 
 Azure SQL Database a Azure SQL Managed instance poskytují pokročilé možnosti monitorování a ladění, které jsou zajištěné umělou logikou, což vám pomůže při řešení potíží a maximalizaci výkonu databází a řešení. Můžete zvolit konfiguraci [exportu](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) těchto [Intelligent Insights](intelligent-insights-overview.md) a dalších protokolů prostředků databáze a metriky do jednoho z několika míst pro účely využití a analýzy, zejména pomocí [SQL Analytics](../../azure-monitor/insights/azure-sql.md). Azure SQL Analytics je pokročilé řešení monitorování cloudu pro monitorování výkonu všech databází ve velkém měřítku a napříč několika předplatnými v jednom zobrazení. Seznam protokolů a metrik, které můžete exportovat, najdete v tématu [diagnostická telemetrie pro export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export) .
 
-SQL Server má své vlastní monitorovací a diagnostické možnosti, které SQL Database a využití spravované instance SQL, jako je například [úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) a [zobrazení dynamické správy (zobrazení dynamické správy)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Pokud chcete sledovat nejrůznější problémy s výkonem, podívejte se na téma [monitorování pomocí zobrazení dynamické správy](monitoring-with-dmvs.md) .
+SQL Server má své vlastní monitorovací a diagnostické možnosti, které SQL Database a využití spravované instance SQL, jako je například [úložiště dotazů](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) a [zobrazení dynamické správy (zobrazení dynamické správy)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Pokud chcete sledovat nejrůznější problémy s výkonem, podívejte se na téma [monitorování pomocí zobrazení dynamické správy](monitoring-with-dmvs.md) .
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Monitorování a ladění schopností Azure Portal
 
@@ -44,7 +44,7 @@ V zobrazení **metriky** můžete rychle monitorovat různé metriky prostředk�
 
 ### <a name="database-advisors-in-azure-sql-database"></a>Databázové Poradce pro databáze v Azure SQL Database
 
-Azure SQL Database zahrnuje služby pro [databáze](database-advisor-implement-performance-recommendations.md) , které poskytují doporučení pro ladění výkonu pro databáze s jednou a ve fondu. Tato doporučení jsou k dispozici v Azure Portal a také pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor). Můžete také povolit [Automatické ladění](automatic-tuning-overview.md) , aby Azure SQL Database mohl automaticky implementovat tato doporučení pro ladění.
+Azure SQL Database zahrnuje služby pro [databáze](database-advisor-implement-performance-recommendations.md) , které poskytují doporučení pro ladění výkonu pro databáze s jednou a ve fondu. Tato doporučení jsou k dispozici v Azure Portal a také pomocí [prostředí PowerShell](/powershell/module/az.sql/get-azsqldatabaseadvisor). Můžete také povolit [Automatické ladění](automatic-tuning-overview.md) , aby Azure SQL Database mohl automaticky implementovat tato doporučení pro ladění.
 
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Query Performance Insight v Azure SQL Database
 
@@ -99,29 +99,29 @@ Nastavení diagnostiky nakonfigurujete pro streamování kategorií metrik a pro
 
 ### <a name="log-analytics-workspace-in-azure-monitor"></a>Pracovní prostor Log Analytics v Azure Monitor
 
-Metriky a protokoly prostředků můžete streamovat do [Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/platform/resource-logs-collect-workspace.md). Data streamovaná tady můžou využívat [SQL Analytics](../../azure-monitor/insights/azure-sql.md), což je jenom cloudové řešení monitorování, které poskytuje inteligentní monitorování vašich databází, které obsahuje sestavy výkonu, výstrahy a doporučení pro zmírnění rizik. Data streamovaná do pracovního prostoru Log Analytics lze analyzovat pomocí dalších shromažďovaných dat monitorování a také vám umožní využít jiné funkce Azure Monitor, jako jsou výstrahy a vizualizace.
+Metriky a protokoly prostředků můžete streamovat do [Log Analytics pracovního prostoru v Azure monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Data streamovaná tady můžou využívat [SQL Analytics](../../azure-monitor/insights/azure-sql.md), což je jenom cloudové řešení monitorování, které poskytuje inteligentní monitorování vašich databází, které obsahuje sestavy výkonu, výstrahy a doporučení pro zmírnění rizik. Data streamovaná do pracovního prostoru Log Analytics lze analyzovat pomocí dalších shromažďovaných dat monitorování a také vám umožní využít jiné funkce Azure Monitor, jako jsou výstrahy a vizualizace.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-Do [Azure Event Hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)můžete streamovat metriky a protokoly prostředků. Streamování diagnostiky diagnostiky do centra událostí, které poskytuje následující funkce:
+Do [Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)můžete streamovat metriky a protokoly prostředků. Streamování diagnostiky diagnostiky do centra událostí, které poskytuje následující funkce:
 
-- **Streamování protokolů na systémy protokolování a telemetrie třetích stran**
+- **Streamování protokolů do systémů protokolování a telemetrie třetích stran**
 
   Streamujte všechny metriky a protokoly prostředků do jednoho centra událostí, abyste data protokolu kanálu SIEM nebo nástroj Log Analytics od jiného výrobce.
-- **Sestavení vlastní telemetrie a protokolovací platformy**
+- **Vytvoření vlastní platformy protokolování a telemetrie**
 
   Vysoce škálovatelná možnost publikování a odběru centra událostí umožňuje flexibilní přijímání metrik a protokolů prostředků do vlastní platformy telemetrie. Podrobnosti najdete v tématu [navrhování a změna velikosti platformy telemetrie s globálním škálováním na platformě Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) .
-- **Zobrazení stavu služby podle streamování dat do Power BI**
+- **Zobrazení stavu služby díky streamování dat do Power BI**
 
-  Pomocí Event Hubs, Stream Analytics a Power BI můžete transformovat diagnostická data na vaše služby Azure téměř v reálném čase. Podrobnosti o tomto řešení najdete v tématu [Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) .
+  Pomocí Event Hubs, Stream Analytics a Power BI můžete transformovat diagnostická data na vaše služby Azure téměř v reálném čase. Podrobnosti o tomto řešení najdete v tématu [Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data](../../stream-analytics/stream-analytics-power-bi-dashboard.md) .
 
 ### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](../../azure-monitor/platform/resource-logs-collect-storage.md)metriky proudu a protokoly prostředků. Využijte Azure Storage k archivaci obrovského množství diagnostické telemetrie za zlomek nákladů na předchozí dvě možnosti streamování.
+[Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)metriky proudu a protokoly prostředků. Využijte Azure Storage k archivaci obrovského množství diagnostické telemetrie za zlomek nákladů na předchozí dvě možnosti streamování.
 
 ## <a name="use-extended-events"></a>Použití rozšířených událostí 
 
-Kromě toho můžete v SQL Server použít [Rozšířené události](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) pro pokročilé monitorování a řešení potíží. Architektura rozšířených událostí umožňuje uživatelům shromažďovat co nejvíc nebo jen malá data, která jsou nutná k řešení potíží nebo určení problému s výkonem. Informace o použití rozšířených událostí v Azure SQL Database najdete v tématu [Rozšířené události v Azure SQL Database](xevent-db-diff-from-svr.md).
+Kromě toho můžete v SQL Server použít [Rozšířené události](/sql/relational-databases/extended-events/extended-events) pro pokročilé monitorování a řešení potíží. Architektura rozšířených událostí umožňuje uživatelům shromažďovat co nejvíc nebo jen malá data, která jsou nutná k řešení potíží nebo určení problému s výkonem. Informace o použití rozšířených událostí v Azure SQL Database najdete v tématu [Rozšířené události v Azure SQL Database](xevent-db-diff-from-svr.md).
 
 ## <a name="next-steps"></a>Další kroky
 

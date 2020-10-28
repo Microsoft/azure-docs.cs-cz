@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86145650"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790487"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Alias DNS pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -60,7 +60,7 @@ Následující vlastnosti se vztahují na všechny aliasy DNS vašeho serveru:
 - *Vyžaduje se server:* Alias DNS nelze vytvořit, pokud neodkazuje přesně na jeden server a server již musí existovat. Aktualizovaný alias musí vždy odkazovat přesně na jeden existující server.
   - Když vyřadíte Server, systém Azure také zruší všechny aliasy DNS, které na server odkazují.
 - *Není svázána s žádnou oblastí:* Aliasy DNS nejsou svázané s oblastí. Všechny aliasy DNS je možné aktualizovat tak, aby odkazovaly na server, který se nachází v libovolné geografické oblasti.
-  - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném *předplatném*Azure.
+  - Když ale aktualizujete alias tak, aby odkazoval na jiný server, musí oba servery existovat ve stejném *předplatném* Azure.
 - *Oprávnění:* Aby uživatel mohl spravovat alias DNS, musí mít oprávnění *přispěvatele serveru* nebo vyšší. Další informace najdete v tématu [Začínáme s Role-Based Access Control v Azure Portal](../../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Správa aliasů DNS
@@ -71,7 +71,7 @@ K dispozici jsou jak rozhraní REST API, tak rutiny PowerShellu, které vám umo
 
 Dokumentace k rozhraním REST API je k dispozici v blízkosti následujícího webového umístění:
 
-- [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/)
+- [Azure SQL Database REST API](/rest/api/sql/)
 
 Rozhraní REST API můžete také vidět v GitHubu na adrese:
 
@@ -83,7 +83,7 @@ Rozhraní REST API můžete také vidět v GitHubu na adrese:
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> PowerShell Azure Resource Manager modul je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 K dispozici jsou rutiny PowerShellu, které volají rozhraní REST API.
 
@@ -93,10 +93,10 @@ Příklad kódu rutin PowerShellu, který se používá ke správě aliasů DNS,
 
 Rutiny používané v tomto příkladu kódu jsou následující:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získejte a vypíše všechny aliasy DNS, které jsou přiřazené k serveru 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, pro který je nakonfigurován odkaz na, ze serveru 1 na server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias DNS ze serveru 2 pomocí názvu aliasu.
+- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias): vytvoří nový alias DNS v systému služby Azure SQL Database. Alias odkazuje na server 1.
+- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Získejte a vypíše všechny aliasy DNS, které jsou přiřazené k serveru 1.
+- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): upraví název serveru, pro který je nakonfigurován odkaz na, ze serveru 1 na server 2.
+- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Odeberte alias DNS ze serveru 2 pomocí názvu aliasu.
 
 ## <a name="limitations-during-preview"></a>Omezení ve verzi Preview
 
@@ -104,7 +104,7 @@ V současné době má alias DNS tato omezení:
 
 - *Zpoždění až do 2 minut:* Aktualizace nebo odebrání aliasu DNS trvá až 2 minuty.
   - Bez ohledu na krátké zpoždění přestane alias okamžitě přesměrovat odkazy na připojení klientů na starší verzi serveru.
-- *Vyhledání DNS:* V současné době je jediným autoritativním způsobem, jak zkontrolovat, na který server daný alias DNS odkazuje, způsob provádění [vyhledávání DNS](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup).
+- *Vyhledání DNS:* V současné době je jediným autoritativním způsobem, jak zkontrolovat, na který server daný alias DNS odkazuje, způsob provádění [vyhledávání DNS](/windows-server/administration/windows-commands/nslookup).
 - _Auditování tabulek není podporováno:_ Alias DNS nelze použít na serveru, který má povoleno *auditování tabulky* v databázi.
   - Auditování tabulek je zastaralé.
   - Doporučujeme přejít na [auditování objektů BLOB](../../azure-sql/database/auditing-overview.md).
@@ -112,8 +112,8 @@ V současné době má alias DNS tato omezení:
 ## <a name="related-resources"></a>Související prostředky
 
 - [Přehled provozní kontinuity s Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md), včetně zotavení po havárii.
-- [Referenční informace k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/azure/)
-- [Rozhraní API pro aliasy serveru DNS](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
+- [Referenční informace k rozhraní Azure REST API](/rest/api/azure/)
+- [Rozhraní API pro aliasy serveru DNS](/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660203"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789773"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rychlý Start: Vytvoření virtuálního počítače s SQL Server pomocí šablony ARM
 
@@ -20,7 +20,7 @@ Pomocí této šablony Azure Resource Manager (šablony ARM) můžete nasadit SQ
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -58,26 +58,26 @@ Další SQL Server v šablonách virtuálních počítačů Azure najdete v [gal
 
 2. Vyberte nebo zadejte následující hodnoty.
 
-    * **Předplatné**: vyberte předplatné Azure.
-    * **Skupina prostředků**: Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
-    * **Oblast**: Vyberte oblast.  Například **USA – střed**.
-    * **Název virtuálního počítače**: zadejte název pro SQL Server virtuální počítač. 
-    * **Velikost virtuálního počítače**: v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
-    * **Existující Virtual Network název**: zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
-    * **Existující skupina prostředků virtuální**sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
-    * **Název existující podsítě**: název připravené podsítě. 
-    * **Nabídka Image**: vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
-    * **SKU SQL**: vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
-    * **Uživatelské jméno správce**: uživatelské jméno pro správce virtuálního počítače. 
-    * **Heslo správce**: heslo používané účtem správce virtuálních počítačů. 
-    * **Typ úlohy úložiště**: typ úložiště pro zatížení, které nejlépe odpovídá vašemu podniku. 
-    * **Počet datových disků SQL**: počet disků, které SQL Server používá pro datové soubory.  
-    * **Cesta k datům**: cesta k datovým souborům SQL Server. 
-    * **Počet disků protokolu SQL**: počet disků, které SQL Server používá pro soubory protokolu. 
-    * **Cesta protokolu**: cesta pro soubory protokolu SQL Server. 
-    * **Umístění**: umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
+    * **Předplatné** : vyberte předplatné Azure.
+    * **Skupina prostředků** : Skupina prostředků připravená pro váš virtuální počítač SQL Server. 
+    * **Oblast** : Vyberte oblast.  Například **USA – střed** .
+    * **Název virtuálního počítače** : zadejte název pro SQL Server virtuální počítač. 
+    * **Velikost virtuálního počítače** : v rozevíracím seznamu vyberte odpovídající velikost pro virtuální počítač.
+    * **Existující Virtual Network název** : zadejte název připravené virtuální sítě pro váš virtuální počítač s SQL Server. 
+    * **Existující skupina prostředků virtuální** sítě: zadejte skupinu prostředků, ve které byla vaše virtuální síť připravena. 
+    * **Název existující podsítě** : název připravené podsítě. 
+    * **Nabídka Image** : vyberte SQL Server a image Windows serveru, které nejlépe vyhovují vašim obchodním potřebám. 
+    * **SKU SQL** : vyberte edici SQL Server SKU, která nejlépe vyhovuje vašim obchodním potřebám. 
+    * **Uživatelské jméno správce** : uživatelské jméno pro správce virtuálního počítače. 
+    * **Heslo správce** : heslo používané účtem správce virtuálních počítačů. 
+    * **Typ úlohy úložiště** : typ úložiště pro zatížení, které nejlépe odpovídá vašemu podniku. 
+    * **Počet datových disků SQL** : počet disků, které SQL Server používá pro datové soubory.  
+    * **Cesta k datům** : cesta k datovým souborům SQL Server. 
+    * **Počet disků protokolu SQL** : počet disků, které SQL Server používá pro soubory protokolu. 
+    * **Cesta protokolu** : cesta pro soubory protokolu SQL Server. 
+    * **Umístění** : umístění všech prostředků, tato hodnota by měla zůstat ve výchozím nastavení `[resourceGroup().location]` . 
 
-3. Vyberte **Zkontrolovat a vytvořit**. Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
+3. Vyberte **Zkontrolovat a vytvořit** . Po úspěšném nasazení SQL Server virtuálního počítače se zobrazí oznámení.
 
 K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít také Azure PowerShell, rozhraní příkazového řádku Azure a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -120,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [ Kurz: vytvoření a nasazení první šablony ARM](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ Kurz: vytvoření a nasazení první šablony ARM](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 Další způsoby nasazení SQL Server virtuálního počítače najdete v těchto tématech: 
 - [Azure Portal](create-sql-vm-portal.md)

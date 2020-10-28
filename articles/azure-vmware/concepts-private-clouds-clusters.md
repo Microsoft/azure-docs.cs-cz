@@ -1,46 +1,50 @@
 ---
 title: Koncepty – privátní cloudy a clustery
-description: Seznamte se s klíčovými možnostmi pro služby Azure VMware Software-Defined data Centers a vSphere v řešení VMware v Azure pomocí VMware.
+description: Seznamte se s klíčovými možnostmi pro datové centra a vSphere clustery definovaná na základě softwaru řešení Azure VMware.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 715293d9951876ff0f794f8f6b580093f89571b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316864"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791014"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
-Řešení Azure VMware poskytuje privátní cloudy založené na VMware v Azure. Privátní cloudy jsou sestavené z clusterů vyhrazených hostitelů holých počítačů a nasazují a spravují prostřednictvím Azure Portal. Clustery v privátních cloudech se zřídí pomocí softwaru VMware vSphere, vCenter, síti vSAN a NSX. Nasazení hardwaru a softwaru privátního cloudu řešení Azure VMware jsou v Azure plně integrovaná a automatizovaná.
+Řešení Azure VMware poskytuje privátní cloudy založené na VMware v Azure. Privátní cloudy obsahují clustery vytvořené pomocí vyhrazených a holých hostitelů Azure. Nasazují a spravují prostřednictvím Azure Portal, CLI nebo PowerShellu.  Clustery zřízené v privátních cloudech zahrnují VMware vSphere, vCenter, síti vSAN a NSX software. Nasazení hardwaru a softwaru privátního cloudu řešení Azure VMware jsou v Azure plně integrovaná a automatizovaná.
 
-Mezi předplatnými Azure, privátními cloudy Azure VMware, clustery síti vSAN a hostiteli jsou logické vztahy. V diagramu se zobrazí dva privátní cloudy v jednom předplatném Azure. Privátní cloudy reprezentují vývojové a produkční prostředí, z nichž každý má vlastní privátní cloud. V každém z těchto privátních cloudů existují dva clustery. Pro zobrazení nižších možných potřeb vývojového prostředí se používají menší clustery s nižšími hostiteli kapacity. Všechny tyto koncepce jsou popsány v následujících částech.
+Mezi předplatnými Azure, privátními cloudy Azure VMware, clustery síti vSAN a hostiteli jsou logické vztahy. Diagram zobrazuje jedno předplatné Azure se dvěma privátními cloudy, které reprezentují vývojové a produkční prostředí.  V každém z těchto privátních cloudů jsou dva clustery. 
+
+Tento článek popisuje všechny tyto koncepce.
 
 ![Obrázek dvou privátních cloudů v rámci zákaznického předplatného](./media/hosts-clusters-private-clouds-final.png)
 
+>[!NOTE]
+>Z důvodu nižších možných potřeb vývojového prostředí používejte menší clustery s menšími hostiteli kapacity. 
+
 ## <a name="private-clouds"></a>Privátní cloudy
 
-Privátní cloudy obsahují síti vSAN clustery, které jsou vytvořené pomocí vyhrazených a holéch hostitelů Azure. Každý privátní cloud může mít několik clusterů, které spravuje stejný server vCenter a správce NSX-T. Privátní cloudy můžete nasadit a spravovat v portálu, rozhraní příkazového řádku nebo PowerShellu. Stejně jako u jiných prostředků jsou privátní cloudy nainstalované a spravované v rámci předplatného Azure.
+Privátní cloudy obsahují clustery síti vSAN vytvořené pomocí vyhrazených a holých hostitelů Azure. Každý privátní cloud může mít několik clusterů spravovaných stejným serverem vCenter a správcem NSX-T. Privátní cloudy můžete nasadit a spravovat v portálu, rozhraní příkazového řádku nebo PowerShellu. 
 
-Počet privátních cloudů v rámci předplatného je škálovatelný. Zpočátku existuje omezení jednoho privátního cloudu na jedno předplatné.
+Stejně jako u jiných prostředků jsou privátní cloudy nainstalované a spravované v rámci předplatného Azure. Počet privátních cloudů v rámci předplatného je škálovatelný. Zpočátku existuje omezení jednoho privátního cloudu na jedno předplatné.
 
 ## <a name="clusters"></a>Clustery
+U každého vytvořeného privátního cloudu je ve výchozím nastavení k dispozici jeden cluster síti vSAN. Clustery můžete přidávat, odstraňovat a škálovat pomocí Azure Portal nebo přes rozhraní API.  Všechny clustery mají výchozí velikost 3 hostitelů a můžou škálovat až 16 hostitelů.  Hostitelé, kteří se používají v clusteru, musí být stejný typ hostitele.
 
-V každém privátním cloudu vytvoříte aspoň jeden cluster síti vSAN. Při vytváření privátního cloudu je ve výchozím nastavení k dispozici jeden cluster. Do privátního cloudu můžete přidat další clustery pomocí Azure Portal nebo přes rozhraní API. Všechny clustery mají výchozí velikost tří hostitelů a je možné je škálovat od 3 do 16 hostitelů. Typ hostitelů používaných v clusteru musí být stejného typu. Typy hostitelů jsou popsány v následující části.
+Zkušební clustery jsou k dispozici pro vyhodnocení a omezená na tři hostitele. Existuje jeden zkušební cluster na jeden privátní cloud. Během zkušebního období můžete škálovat zkušební cluster jediným hostitelem.
 
-Zkušební clustery jsou k dispozici pro vyhodnocení a jsou omezeny na tři hostitele a jeden zkušební cluster na jeden privátní cloud. Během zkušebního období můžete škálovat zkušební cluster jediným hostitelem.
-
-Clustery můžete vytvářet, odstraňovat a škálovat prostřednictvím portálu nebo rozhraní API. Ke správě většiny dalších aspektů konfigurace nebo operace clusteru stále používáte Správce vSphere a NSX-T. Všechna místní úložiště každého hostitele v clusteru se řídí síti vSAN.
+Správce vSphere a NSX-T můžete použít ke správě většiny dalších aspektů konfigurace clusteru nebo operace. Všechna místní úložiště každého hostitele v clusteru jsou pod kontrolou síti vSAN.
 
 ## <a name="hosts"></a>Hostitelé
 
-V clusterech v rámci řešení Azure VMware pro privátní cloudy se používají holé uzly neholých počítačů s využitím technologie Hyper-v. Kapacita paměti RAM, procesoru a disku hostitele je uvedena v následující tabulce. 
+Clustery privátního cloudu řešení Azure VMware používají uzly nenáročné infrastruktury založené na technologii Hyper-v holé. V následující tabulce jsou uvedeny kapacity paměti RAM, procesoru a disku hostitele. 
 
 | Typ hostitele              |             Procesor             |   RAM (GB)   |  Síti vSAN NVMe cache úrovně (TB, RAW)  |  úroveň kapacity síti vSAN SSD (TB, RAW)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
 | High-End (HE)          |  Dual Intel 18 Core 2,3 GHz  |     576      |                3.2               |                15,20               |
 
-Hostitelé, kteří se používají k sestavení nebo škálování clusterů, se získávají z izolovaného fondu hostitelů. Tito hostitelé prošli hardwarovými testy a museli jste bezpečně odstranit všechna data z disků Flash. Když odeberete hostitele z clusteru, interní disky se bezpečně vymažou a hostitelé se umístí do izolovaného fondu hostitelů. Když přidáte hostitele do clusteru, použije se upravený hostitel z izolovaného fondu.
+Hostitelé, kteří používají k sestavení nebo škálování clusterů, pocházejí z izolovaného fondu hostitelů. Tito hostitelé prošli hardwarovými testy a bezpečně odstranili všechna data. 
 
 ## <a name="vmware-software-versions"></a>Verze softwaru VMware
 
@@ -51,28 +55,28 @@ Aktuální verze softwaru softwaru VMware používané v clusterech privátního
 | VCSA/vSphere/ESXi |    6,7 U2    | 
 | ESXi                  |    6,7 U2    | 
 | Síti vSAN                  |    6,7 U2    |
-| NSX-T                 |      2,5     |
+| NSX-T                 |      2.5     |
 
-U všech nových clusterů v privátním cloudu bude verze softwaru odpovídat obsahu, který aktuálně běží v privátním cloudu. Pro všechny nové privátní cloudy v rámci zákaznického předplatného je nainstalovaná nejnovější verze softwarového zásobníku.
+Pro všechny nové clustery v privátním cloudu odpovídá verze softwaru, co je aktuálně spuštěná. Pro všechny nové privátní cloudy v rámci předplatného se nainstaluje nejnovější verze softwarového zásobníku.
 
-Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware jsou popsány v dokumentu koncepty upgrady.
+Obecné zásady a procesy upgradu pro software platformy řešení Azure VMware najdete v článku [Koncepty upgradu](concepts-upgrades.md) .
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Údržba hostitelů a správa životního cyklu
 
-Údržba hostitelů a správa životního cyklu se provádí bez dopadu na kapacitu nebo výkon clusterů privátního cloudu. Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
+Údržba hostitelů a správa životního cyklu nemají žádný vliv na kapacitu a výkon clusterů privátního cloudu.  Mezi příklady automatizované údržby hostitele patří upgrady firmwaru a oprava hardwaru nebo náhrada.
 
-Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Společnost Microsoft je také zodpovědná za zavedení konfigurace sítě, například vytvoření brány vrstvy 0 a povolení směrování North-South. Jako správce privátního cloudu vašeho řešení VMware Azure zodpovídáte za konfiguraci NSX-T SDN. Například segmenty sítě, pravidla pro distribuované brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
+Společnost Microsoft zodpovídá za správu životního cyklu zařízení NSX-T, jako je NSX-T Manager a NSX-T Edge. Zodpovídá taky za zavádění konfigurace sítě, jako je vytvoření brány vrstvy 0 a povolení směrování North-South. Zodpovídáte za konfiguraci NSX-T SDN. Například segmenty sítě, pravidla pro distribuované brány firewall, brány 1 a nástroje pro vyrovnávání zatížení.
 
 > [!IMPORTANT]
-> Správce řešení Azure VMware nesmí měnit konfiguraci brány NSX-T Edge nebo vrstvy 0. To může mít za následek ztrátu služby.
+> Neměňte konfiguraci brány NSX-T Edge nebo vrstvy 0, protože to může způsobit ztrátu služby.
 
 ## <a name="backup-and-restoration"></a>Zálohování a obnovení
 
-Konfigurace privátních cloudů vCenter a NSX-T se zálohuje každou hodinu. Zálohování se uchovává po dobu tří dní. Obnovení ze zálohy je požadováno prostřednictvím žádosti o služby v Azure Portal.
+Konfigurace privátního cloudu vCenter a NSX-T jsou v plánu hodinového zálohování.  Zálohování se uchovává po dobu tří dní. Pokud potřebujete obnovení ze zálohy, otevřete [žádost o podporu](https://rc.portal.azure.com/#create/Microsoft.Support) v Azure Portal pro vyžádání obnovení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Dalším krokem je seznámit se s [Koncepty sítí a mezi připojeními](concepts-networking.md).
+V dalším kroku se dozvíte o [sítích a vzájemné propojení konceptech](concepts-networking.md).
 
 <!-- LINKS - internal -->
 

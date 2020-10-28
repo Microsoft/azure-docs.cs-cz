@@ -9,20 +9,20 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789518"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz Azure pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../../virtual-network/virtual-networks-overview.md) síti a podsíti.
+Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu** . Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../../virtual-network/virtual-networks-overview.md) síti a podsíti.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.
+> Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure** .
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Jak nastavit privátní odkaz pro Azure SQL Database 
 
@@ -75,7 +75,7 @@ V tomto scénáři Předpokládejme, že jste vytvořili virtuální počítač 
 
 ### <a name="check-connectivity-using-telnet"></a>Zjištění připojení pomocí Telnet
 
-[Klient služby Telnet](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) je funkce systému Windows, kterou lze použít k otestování připojení. V závislosti na verzi operačního systému Windows možná budete muset tuto funkci povolit explicitně. 
+[Klient služby Telnet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) je funkce systému Windows, kterou lze použít k otestování připojení. V závislosti na verzi operačního systému Windows možná budete muset tuto funkci povolit explicitně. 
 
 Po instalaci Telnet otevřete okno příkazového řádku. Spusťte příkaz Telnet a zadejte IP adresu a soukromý koncový bod databáze v SQL Database.
 
@@ -145,11 +145,11 @@ Exfiltrace dat v Azure SQL Database je v případě, že ověřený uživatel, j
 
 Vezměte v úvahu scénář s uživatelem běžícím SQL Server Management Studio (SSMS) ve virtuálním počítači Azure, který se připojuje k databázi v SQL Database. Tato databáze je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na SQL Database pomocí řízení přístupu k síti.
 
-1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a Azure synapse Analytics Network Access Controls](network-access-controls-overview.md).
+1. Nastavením povolit službám Azure na **off** zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a Azure synapse Analytics Network Access Controls](network-access-controls-overview.md).
 1. Povolí provoz do databáze v SQL Database jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall](firewall-configure.md)pro [službu Endpoint Service](vnet-service-endpoint-rule-overview.md) a virtuální sítě.
 1. Na virtuálním počítači Azure upřesněte rozsah odchozího připojení pomocí [skupin zabezpečení sítě (skupin zabezpečení sítě)](../../virtual-network/manage-network-security-group.md) a značek služeb následujícím způsobem.
     - Zadejte pravidlo NSG, které povolí provoz pro tag Service = SQL. WestUs – umožňuje připojení k SQL Database jenom v Západní USA
-    - Zadejte pravidlo NSG (s **vyšší prioritou**) pro odepření provozu pro značku služby = SQL – odepření připojení k SQL Database ve všech oblastech.
+    - Zadejte pravidlo NSG (s **vyšší prioritou** ) pro odepření provozu pro značku služby = SQL – odepření připojení k SQL Database ve všech oblastech.
 
 Na konci této instalace se virtuální počítač Azure může připojit pouze k databázi v SQL Database v oblasti Západní USA. Připojení ale není omezené na izolovanou databázi v SQL Database. Virtuální počítač se stále může připojit k libovolné databázi v Západní USA oblasti, včetně databází, které nejsou součástí předplatného. I když jsme snížili rozsah exfiltrace dat ve výše uvedeném scénáři na konkrétní oblast, neodstraníme ji úplně.
 

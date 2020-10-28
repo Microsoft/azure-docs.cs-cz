@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325228"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788702"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Rychlý Start: vytvoření spravované instance spravované instance SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,10 +34,10 @@ Chcete-li vytvořit spravovanou instanci, postupujte podle těchto kroků:
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-1. V levé nabídce Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a pak do vyhledávacího pole zadejte **Azure SQL** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. V levé nabídce Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby** a pak do vyhledávacího pole zadejte **Azure SQL** .
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o spravované instanci Azure SQL získáte tak, že na dlaždici **spravované instance SQL** vyberete **Zobrazit podrobnosti** .
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
    ![Vytvoření spravované instance](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -64,7 +64,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
 
    ![Formulář spravované instance](./media/instance-create-quickstart/mi-create-tab-configure-performance.png)
 
-- Chcete-li zkontrolovat volby před vytvořením spravované instance SQL, můžete vybrat možnost **zkontrolovat + vytvořit**. Případně nakonfigurujte možnosti sítě výběrem možnosti **Další: sítě**.
+- Chcete-li zkontrolovat volby před vytvořením spravované instance SQL, můžete vybrat možnost **zkontrolovat + vytvořit** . Případně nakonfigurujte možnosti sítě výběrem možnosti **Další: sítě** .
 
 ### <a name="networking-tab"></a>Karta sítě
 
@@ -77,11 +77,11 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
    | Nastavení| Navrhovaná hodnota | Popis |
    | ------ | --------------- | ----------- |
    | **Virtuální síť** | Vyberte buď možnost **vytvořit novou virtuální síť** , nebo platnou virtuální síť a podsíť.| Pokud síť nebo podsíť není k dispozici, je nutné ji [upravit tak, aby splňovala požadavky na síť](vnet-existing-add-subnet.md) předtím, než ji vyberete jako cíl pro novou spravovanou instanci. Informace o požadavcích na konfiguraci prostředí sítě pro spravovanou instanci SQL najdete v tématu [Konfigurace virtuální sítě pro spravovanou instanci SQL](connectivity-architecture-overview.md). |
-   | **Typ připojení**: | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Typ připojení spravované instance SQL Azure](../database/connectivity-architecture.md#connection-policy).|
-   | **Veřejný koncový bod**  | Vyberte **Povolit**. | Aby bylo možné získat přístup ke spravované instanci prostřednictvím koncového bodu veřejné dat, je nutné povolit tuto možnost. | 
-   | **Povolit přístup z** (Pokud je povolený **veřejný koncový bod** ) | Vyberte jednu z možností.   |Prostředí portálu umožňuje konfigurovat skupinu zabezpečení s veřejným koncovým bodem. </br> </br> V závislosti na vašem scénáři vyberte jednu z následujících možností: </br> <ul> <li>**Služby Azure**: tuto možnost doporučujeme, když se připojujete z Power BI nebo jiné víceklientské služby. </li> <li> **Internet**: použijte pro účely testování, pokud chcete rychle aktivovat spravovanou instanci. Nedoporučujeme ho pro produkční prostředí. </li> <li> **Bez přístupu**: Tato možnost vytvoří pravidlo zabezpečení **Odepřít** . Změnou tohoto pravidla zpřístupníte spravovanou instanci prostřednictvím veřejného koncového bodu. </li> </ul> </br> Další informace o veřejném koncovém bodu zabezpečení najdete v tématu [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md).|
+   | **Typ připojení** : | Vyberte mezi proxy serverem a typem připojení přesměrování.|Další informace o typech připojení najdete v tématu [Typ připojení spravované instance SQL Azure](../database/connectivity-architecture.md#connection-policy).|
+   | **Veřejný koncový bod**  | Vyberte **Povolit** . | Aby bylo možné získat přístup ke spravované instanci prostřednictvím koncového bodu veřejné dat, je nutné povolit tuto možnost. | 
+   | **Povolit přístup z** (Pokud je povolený **veřejný koncový bod** ) | Vyberte jednu z možností.   |Prostředí portálu umožňuje konfigurovat skupinu zabezpečení s veřejným koncovým bodem. </br> </br> V závislosti na vašem scénáři vyberte jednu z následujících možností: </br> <ul> <li>**Služby Azure** : tuto možnost doporučujeme, když se připojujete z Power BI nebo jiné víceklientské služby. </li> <li> **Internet** : použijte pro účely testování, pokud chcete rychle aktivovat spravovanou instanci. Nedoporučujeme ho pro produkční prostředí. </li> <li> **Bez přístupu** : Tato možnost vytvoří pravidlo zabezpečení **Odepřít** . Změnou tohoto pravidla zpřístupníte spravovanou instanci prostřednictvím veřejného koncového bodu. </li> </ul> </br> Další informace o veřejném koncovém bodu zabezpečení najdete v tématu [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md).|
 
-- Vyberte **zkontrolovat + vytvořit** a před vytvořením spravované instance si prohlédněte své volby. Případně nakonfigurujte více vlastních nastavení výběrem možnosti **Další: Další nastavení**.
+- Vyberte **zkontrolovat + vytvořit** a před vytvořením spravované instance si prohlédněte své volby. Případně nakonfigurujte více vlastních nastavení výběrem možnosti **Další: Další nastavení** .
 
 ### <a name="additional-settings"></a>Další nastavení
 
@@ -93,10 +93,10 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
 
    | Nastavení| Navrhovaná hodnota | Popis |
    | ------ | --------------- | ----------- |
-   | **Kolace** | Vyberte kolaci, kterou chcete použít pro spravovanou instanci. Pokud migrujete databáze z SQL Server, Projděte si zdrojovou kolaci pomocí `SELECT SERVERPROPERTY(N'Collation')` a použijte tuto hodnotu.| Informace o kolacích najdete v tématu [nastavení nebo změna kolace serveru](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Kolace** | Vyberte kolaci, kterou chcete použít pro spravovanou instanci. Pokud migrujete databáze z SQL Server, Projděte si zdrojovou kolaci pomocí `SELECT SERVERPROPERTY(N'Collation')` a použijte tuto hodnotu.| Informace o kolacích najdete v tématu [nastavení nebo změna kolace serveru](/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Časové pásmo** | Vyberte časové pásmo, které bude spravovaná instance sledovat.|Další informace najdete v tématu [Časová pásma](timezones-overview.md).|
-   | **Použít jako sekundární převzetí služeb při selhání** | Vyberte **Ano**. | Tuto možnost povolte, pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání.|
-   | **Primární spravovaná instance SQL** (Pokud se **používá jako sekundární převzetí služeb při selhání,** je nastavená na **Ano**). | Vyberte existující primární spravovanou instanci, která bude připojena ke stejné zóně DNS se spravovanou instancí, kterou vytváříte. | Tento krok umožní konfiguraci po vytvoření skupiny převzetí služeb při selhání. Další informace najdete v tématu [kurz: Přidání spravované instance do skupiny převzetí služeb při selhání](failover-group-add-instance-tutorial.md).|
+   | **Použít jako sekundární převzetí služeb při selhání** | Vyberte **Ano** . | Tuto možnost povolte, pokud chcete použít spravovanou instanci jako sekundární skupinu převzetí služeb při selhání.|
+   | **Primární spravovaná instance SQL** (Pokud se **používá jako sekundární převzetí služeb při selhání,** je nastavená na **Ano** ). | Vyberte existující primární spravovanou instanci, která bude připojena ke stejné zóně DNS se spravovanou instancí, kterou vytváříte. | Tento krok umožní konfiguraci po vytvoření skupiny převzetí služeb při selhání. Další informace najdete v tématu [kurz: Přidání spravované instance do skupiny převzetí služeb při selhání](failover-group-add-instance-tutorial.md).|
 
 ## <a name="review--create"></a>Kontrola a vytvoření
 
@@ -120,7 +120,7 @@ Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure
 > [!TIP]
 > Pokud jste webový prohlížeč zavřeli nebo jste ho přesunuli z obrazovky průběh nasazení, postupujte podle těchto kroků a najděte obrazovku průběh nasazení:
 > 1. V Azure Portal otevřete skupinu prostředků (na kartě **základy** ), na kterou nasazujete SPRAVOVANOU instanci SQL.
-> 2. Vyberte **nasazení**.
+> 2. Vyberte **nasazení** .
 > 3. Vyberte probíhající operaci nasazení spravované instance SQL.
 
 > [!IMPORTANT]
@@ -173,7 +173,7 @@ Pokud se chcete připojit ke spravované instanci SQL, postupujte podle těchto 
 
    ![Název hostitele](./media/instance-create-quickstart/host-name.png)
 
-   Zkopírovaná hodnota představuje plně kvalifikovaný název domény (FQDN), který se dá použít pro připojení k spravované instanci SQL. Je podobný následujícímu příkladu adresy: *your_host_name. a1b2c3d4e5f6. Database. Windows. NET*.
+   Zkopírovaná hodnota představuje plně kvalifikovaný název domény (FQDN), který se dá použít pro připojení k spravované instanci SQL. Je podobný následujícímu příkladu adresy: *your_host_name. a1b2c3d4e5f6. Database. Windows. NET* .
 
 ## <a name="next-steps"></a>Další kroky
 

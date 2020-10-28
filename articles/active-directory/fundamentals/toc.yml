@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: Synchronizace SCIM
               href: sync-scim.md
+        - name: Certifikační autority použité v Azure
+          href: certificate-authorities.md
     - name: Průvodce nasazením
       items:
         - name: 'Nasazení 30, 90 a dál'

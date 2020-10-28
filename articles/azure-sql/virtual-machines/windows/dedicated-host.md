@@ -13,20 +13,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677668"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789790"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Spuštění SQL Server virtuálního počítače na vyhrazeném hostiteli Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho virtuálního počítače s [vyhrazeným hostitelem Azure](/azure/virtual-machines/windows/dedicated-hosts). Další informace o vyhrazeném hostiteli Azure najdete v blogovém příspěvku, který [zavádí vyhrazeného hostitele Azure](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
+Tento článek podrobně popisuje konkrétní informace o použití SQL Serverho virtuálního počítače s [vyhrazeným hostitelem Azure](../../../virtual-machines/dedicated-hosts.md). Další informace o vyhrazeném hostiteli Azure najdete v blogovém příspěvku, který [zavádí vyhrazeného hostitele Azure](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
 
 ## <a name="overview"></a>Přehled
-[Vyhrazený hostitel Azure](/azure/virtual-machines/windows/dedicated-hosts) je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v datových centrech Microsoftu, které se poskytují jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
+[Vyhrazený hostitel Azure](../../../virtual-machines/dedicated-hosts.md) je služba, která poskytuje fyzické servery – schopné hostovat jeden nebo víc virtuálních počítačů, které jsou vyhrazené pro jedno předplatné Azure. Vyhrazení hostitelé jsou stejné fyzické servery, které se používají v datových centrech Microsoftu, které se poskytují jako prostředek. Můžete zřídit vyhrazené hostitele v rámci oblasti, zóny dostupnosti a domény selhání. Pak můžete virtuální počítače umístit přímo do zřízených hostitelů, v libovolné konfiguraci nejlépe vyhovuje vašim potřebám.
 
 ## <a name="limitations"></a>Omezení
 
@@ -54,7 +54,7 @@ Možnosti na úrovni hostitele pro používání stávajících licencí SQL Ser
 
 
 ## <a name="provisioning"></a>Zřizování  
-Zřizování virtuálního počítače s SQL Server pro vyhrazeného hostitele se neliší od žádných jiných virtuálních počítačů Azure. Můžete tak učinit pomocí [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)a [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md).
+Zřizování virtuálního počítače s SQL Server pro vyhrazeného hostitele se neliší od žádných jiných virtuálních počítačů Azure. Můžete tak učinit pomocí [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), [Azure Portal](../../../virtual-machines/dedicated-hosts-portal.md)a [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md).
 
 Proces přidání stávajícího SQL Server virtuálního počítače do vyhrazeného hostitele vyžaduje výpadky, ale nebude mít vliv na data a nebude mít za následek ztrátu dat. Nicméně všechny databáze, včetně systémových databází, by se měly zálohovat před přesunem.
 
@@ -78,5 +78,3 @@ Další informace najdete v následujících článcích:
 * [Nejčastější dotazy k SQL Server na virtuálním počítači s Windows](frequently-asked-questions-faq.md)
 * [Doprovodné materiály k cenách pro SQL Server na virtuálním počítači s Windows](pricing-guidance.md)
 * [Poznámky k verzi pro SQL Server na virtuálním počítači s Windows](doc-changes-updates-release-notes.md)
-
-

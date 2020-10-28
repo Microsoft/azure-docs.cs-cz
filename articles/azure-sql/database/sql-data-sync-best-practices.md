@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332980"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791439"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Osvědčené postupy pro Synchronizaci dat SQL Azure 
 
@@ -41,11 +41,11 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 
 ### <a name="database-accounts-with-least-required-privileges"></a>Účty databáze s minimálními požadovanými oprávněními
 
--   **Pro nastavení synchronizace**. Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvoří User-Defined typ.
+-   **Pro nastavení synchronizace** . Vytvořit nebo změnit tabulku; ALTER DATABASE; Vytvořit proceduru; Vybrat/změnit schéma; Vytvoří User-Defined typ.
 
--   **Pro průběžnou synchronizaci**. Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
+-   **Pro průběžnou synchronizaci** . Výběr/vložení/aktualizace/odstranění u tabulek, které jsou vybrány pro synchronizaci a pro synchronizaci metadat a sledovacích tabulek; Oprávnění EXECUTE pro uložené procedury vytvořené službou; Oprávnění EXECUTE pro uživatelsky definované typy tabulek.
 
--   **Pro zrušení zřízení**. Upravit v tabulkách, které jsou součástí synchronizace; Vybrat/odstranit při synchronizaci tabulek metadat; Řízení pro tabulky sledování synchronizace, uložené procedury a uživatelsky definované typy.
+-   **Pro zrušení zřízení** . Upravit v tabulkách, které jsou součástí synchronizace; Vybrat/odstranit při synchronizaci tabulek metadat; Řízení pro tabulky sledování synchronizace, uložené procedury a uživatelsky definované typy.
 
 Azure SQL Database podporuje pouze jednu sadu přihlašovacích údajů. K provedení těchto úloh v rámci tohoto omezení Vezměte v úvahu následující možnosti:
 
@@ -168,7 +168,7 @@ Pravidelně monitorujte skupinu synchronizace a stav databáze prostřednictvím
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Vyhněte se neaktuálním databázím a skupinám synchronizace
 
-Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace **neaktuální**, přestane fungovat. Je-li stav databáze **zastaralá**, může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
+Skupina synchronizace nebo databáze ve skupině synchronizace může být zastaralá. Když je stav skupiny synchronizace **neaktuální** , přestane fungovat. Je-li stav databáze **zastaralá** , může dojít ke ztrátě dat. Doporučujeme vyhnout se tomuto scénáři místo toho, abyste se museli pokoušet o zotavení z něj.
 
 #### <a name="avoid-out-of-date-databases"></a>Vyhněte se zastaralým databázím
 
@@ -238,7 +238,7 @@ Další informace o Synchronizace dat SQL najdete v tématech:
         -  [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi databází v SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Agent synchronizace dat – [Agent synchronizace dat pro Azure synchronizace dat SQL](sql-data-sync-agent-overview.md)
--   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](sql-data-sync-monitor-sync.md)
+-   Monitorování – [monitorování synchronizace dat SQL pomocí protokolů Azure monitor](./monitor-tune-overview.md)
 -   Řešení potíží – [řešení potíží s Azure synchronizace dat SQL](sql-data-sync-troubleshoot.md)
 -   Aktualizace schématu synchronizace
     -   Pomocí jazyka Transact-SQL – [Automatizace replikace změn schématu v Azure synchronizace dat SQL](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ Další informace o Synchronizace dat SQL najdete v tématech:
 Další informace o SQL Database najdete v tématech:
 
 -   [Přehled SQL Database](sql-database-paas-overview.md)
--   [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [Správa životního cyklu databáze](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

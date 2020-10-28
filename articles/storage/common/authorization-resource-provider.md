@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822273"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789671"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Použití poskytovatele prostředků Azure Storage k přístupu k prostředkům správy
 
-Azure Resource Manager je služba nasazování a správy pro Azure. Poskytovatel prostředků Azure Storage je služba založená na Azure Resource Manager a, která poskytuje přístup k prostředkům správy Azure Storage. Poskytovatele prostředků Azure Storage můžete použít k vytváření, aktualizaci, správě a odstraňování prostředků, jako jsou účty úložiště, privátní koncové body a klíče pro přístup k účtu. Další informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview).
+Azure Resource Manager je služba nasazování a správy pro Azure. Poskytovatel prostředků Azure Storage je služba založená na Azure Resource Manager a, která poskytuje přístup k prostředkům správy Azure Storage. Poskytovatele prostředků Azure Storage můžete použít k vytváření, aktualizaci, správě a odstraňování prostředků, jako jsou účty úložiště, privátní koncové body a klíče pro přístup k účtu. Další informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).
 
 Poskytovatele prostředků Azure Storage můžete použít k provádění akcí, jako je vytvoření nebo odstranění účtu úložiště nebo získání seznamu účtů úložiště v rámci předplatného. Pokud chcete autorizovat žádosti u poskytovatele prostředků Azure Storage, použijte Azure Active Directory (Azure AD). Tento článek popisuje, jak přiřadit oprávnění k prostředkům správy a odkazuje na příklady, které ukazují, jak provádět požadavky na poskytovatele prostředků Azure Storage.
 
@@ -32,9 +32,9 @@ Azure Storage podporuje použití Azure AD k autorizaci požadavků na úložiš
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>Přiřazení oprávnění pro správu k řízení přístupu na základě role v Azure (Azure RBAC)
 
-Každé předplatné Azure má přidruženou Azure Active Directory, která spravuje uživatele, skupiny a aplikace. Uživatel, skupina nebo aplikace se také označuje jako instanční objekt zabezpečení v kontextu [platformy Microsoft Identity](/azure/active-directory/develop/). Přístup k prostředkům v předplatném můžete udělit objektu zabezpečení, který je definovaný ve službě Active Directory pomocí řízení přístupu založeného na rolích Azure (Azure RBAC).
+Každé předplatné Azure má přidruženou Azure Active Directory, která spravuje uživatele, skupiny a aplikace. Uživatel, skupina nebo aplikace se také označuje jako instanční objekt zabezpečení v kontextu [platformy Microsoft Identity](../../active-directory/develop/index.yml). Přístup k prostředkům v předplatném můžete udělit objektu zabezpečení, který je definovaný ve službě Active Directory pomocí řízení přístupu založeného na rolích Azure (Azure RBAC).
 
-Když přiřadíte roli Azure k objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli Azure můžete přiřadit k objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](../../cli-install-nodejs.md), [powershellu](/powershell/azure/)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
+Když přiřadíte roli Azure k objektu zabezpečení, také určíte rozsah, ve kterém budou oprávnění udělená rolí platná. Pro operace správy můžete přiřadit roli na úrovni předplatného, skupiny prostředků nebo účtu úložiště. Roli Azure můžete přiřadit k objektu zabezpečení pomocí [Azure Portal](https://portal.azure.com/), [nástrojů Azure CLI](/cli/azure/install-classic-cli), [powershellu](/powershell/azure/)nebo [poskytovatele prostředků Azure Storage REST API](/rest/api/storagerp).
 
 Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?](../../role-based-access-control/overview.md) a [klasické role správců předplatného, role Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -44,7 +44,7 @@ Azure poskytuje předdefinované role, které udělují oprávnění k volání 
 
 Předdefinované role, které udělují oprávnění k volání operací správy úložiště, zahrnují role popsané v následující tabulce:
 
-|    Role Azure    |    Description    |    Zahrnuje přístup k klíčům účtu?    |
+|    Role Azure    |    Popis    |    Zahrnuje přístup k klíčům účtu?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Vlastník** | Může spravovat všechny prostředky úložiště a přistupovat k prostředkům.  | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 | **Přispěvatel**  | Může spravovat všechny prostředky úložiště, ale nemůže spravovat přístup k prostředkům. | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
@@ -53,7 +53,7 @@ Předdefinované role, které udělují oprávnění k volání operací správy
 | **Správce uživatelského přístupu** | Může spravovat přístup k účtu úložiště.   | Ano, umožňuje objektu zabezpečení přiřazovat jakákoli oprávnění sami a ostatním. |
 | **Přispěvatel virtuálních počítačů** | Může spravovat virtuální počítače, ale ne účet úložiště, ke kterému jsou připojené.   | Ano, poskytuje oprávnění k zobrazení a obnovení klíčů účtu úložiště. |
 
-Třetí sloupec v tabulce uvádí, zda integrovaná role podporuje **Microsoft. Storage/storageAccounts/klíče listkey/Action**. Tato akce udělí oprávnění ke čtení a obnovení klíčů účtu úložiště. Oprávnění pro přístup k prostředkům správy Azure Storage nezahrnují také oprávnění k přístupu k datům. Pokud ale uživatel má přístup k klíčům účtu, pak může použít klíče účtu pro přístup k Azure Storage dat prostřednictvím autorizace pomocí sdíleného klíče.
+Třetí sloupec v tabulce uvádí, zda integrovaná role podporuje **Microsoft. Storage/storageAccounts/klíče listkey/Action** . Tato akce udělí oprávnění ke čtení a obnovení klíčů účtu úložiště. Oprávnění pro přístup k prostředkům správy Azure Storage nezahrnují také oprávnění k přístupu k datům. Pokud ale uživatel má přístup k klíčům účtu, pak může použít klíče účtu pro přístup k Azure Storage dat prostřednictvím autorizace pomocí sdíleného klíče.
 
 ### <a name="custom-roles-for-management-operations"></a>Vlastní role pro operace správy
 
@@ -76,6 +76,6 @@ Další informace o modelech nasazení Azure najdete v tématu [Správce prostř
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přehled Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+- [Přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 - [Co je řízení přístupu na základě role v Azure (Azure RBAC)?](../../role-based-access-control/overview.md)
 - [Cíle škálovatelnosti pro poskytovatele prostředků Azure Storage](scalability-targets-resource-provider.md)

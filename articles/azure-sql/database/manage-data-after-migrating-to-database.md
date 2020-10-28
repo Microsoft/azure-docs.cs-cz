@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439771"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789569"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Tento článek popisuje některé základní charakteristiky Azure SQL Database 
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorování databází na portálu Azure
 
-V [Azure Portal](https://portal.azure.com/)můžete monitorovat využití jednotlivých databází tak, že vyberete databázi a kliknete na graf **monitorování** . Zobrazí se okno **Metrika**, které můžete upravit kliknutím na **Upravit graf**. Přidejte následující metriky:
+V [Azure Portal](https://portal.azure.com/)můžete monitorovat využití jednotlivých databází tak, že vyberete databázi a kliknete na graf **monitorování** . Zobrazí se okno **Metrika** , které můžete upravit kliknutím na **Upravit graf** . Přidejte následující metriky:
 
 - Procento CPU
 - Procento DTU
@@ -49,7 +49,7 @@ Až tyto metriky přidáte, můžete je dál zobrazit v grafu **monitorování**
 
 ![Monitorování výkonu databáze v rámci úrovně služeb](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika**. Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
+Můžete také nastavit upozornění na výkonové metriky. Klikněte na tlačítko **Přidat upozornění** v okně **Metrika** . Nastavte upozornění podle pokynů průvodce. Můžete určit, zda chcete být upozorněni na překročení zadané prahové hodnoty, nebo naopak když metrika poklesne pod zadanou mez.
 
 Například pokud očekáváte nárůst zatížení databáze, můžete nastavit e-mailové upozornění pro případ, že databáze překročí 80 % kterékoli výkonové metriky. Můžete ji použít jako počáteční upozornění, pokud budete muset přejít na další nejvyšší výpočetní velikost.
 
@@ -66,7 +66,7 @@ Nevytváříte zálohy na Azure SQL Database a je to proto, že je nemusíte mí
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
 |Základní|7|
-|Standard|35|
+|Standardní|35|
 |Premium|35|
 |||
 
@@ -102,7 +102,7 @@ SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpeč
 V SQL Database jsou k dispozici dvě metody ověřování:
 
 - [Ověřování Azure Active Directory](authentication-aad-overview.md)
-- [Ověřování SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Ověřování SQL](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. 
 
@@ -113,7 +113,7 @@ Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-o
 |Raději nepoužívejte Azure Active Directory (Azure AD) v Azure.|Použít [ověřování SQL](security-overview.md)|
 |Služba AD se používá v místní SQL Server.|[FEDEROVAT AD s Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)a používejte ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
 |Je potřeba vyhovět Multi-Factor Authentication|Vyžadovat Multi-Factor Authentication jako zásadu prostřednictvím [podmíněného přístupu Microsoft](conditional-access-configure.md)a použít [univerzální ověřování Azure AD s podporou Multi-Factor Authentication](authentication-mfa-ssms-overview.md).|
-|Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/b2b/what-is-b2b.md).|
+|Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/external-identities/what-is-b2b.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů Azure AD ze federované domény|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů z domény, která není federované s Azure|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |Musí mít služby střední vrstvy, které se musí připojit k SQL Database nebo Azure synapse Analytics.|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
@@ -172,7 +172,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Vlastnosti**|**Funkce Always Encrypted**|**Transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
-|**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
+|**Server má přístup k citlivým datům**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
 |**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|úrovni databáze|
@@ -261,7 +261,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -305,7 +305,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na ka�
 |---|---|
 |**Basic**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
 |**Standard**|Aplikace se značnými požadavky na souběžnost, škálování a výkon, které jsou v případě požadavků s nízkým až středním vstupem/výstupem. |
-|**Premium**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
+|**Nárok**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
 |||
 
 Aby se zajistila správná velikost výpočetní kapacity, můžete monitorovat spotřebu prostředků dotazu a databáze jedním z výše uvedených způsobů v tématu "Návody monitorovat výkon a využití prostředků v SQL Database". Pokud zjistíte, že dotazy nebo databáze jsou konzistentně spuštěné na procesoru nebo paměti atd. můžete zvážit horizontální navýšení kapacity až na vyšší výpočetní velikost. Podobně platí, že pokud si všimněte, že i během špičky, nebudete pravděpodobně prostředky používat, a to podobně. Zvažte snížení kapacity z aktuální výpočetní velikosti.
@@ -320,11 +320,11 @@ SQL Database používá některé inteligentní techniky, které jim umožňují
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Návody exportovat a importovat data jako soubory BACPAC z SQL Database pomocí Azure Portal
 
-- **Export**: databázi můžete exportovat v Azure SQL Database jako soubor BACPAC z Azure Portal
+- **Export** : databázi můžete exportovat v Azure SQL Database jako soubor BACPAC z Azure Portal
 
    ![Export databáze](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import**: můžete také importovat data jako soubor BacPac do databáze v Azure SQL Database pomocí Azure Portal.
+- **Import** : můžete také importovat data jako soubor BacPac do databáze v Azure SQL Database pomocí Azure Portal.
 
    ![Import databáze](./media/manage-data-after-migrating-to-database/import1.png)
 

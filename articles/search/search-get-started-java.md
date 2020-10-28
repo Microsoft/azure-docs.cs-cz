@@ -10,16 +10,16 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91540349"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791218"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v jazyce Java pomocí rozhraní REST API
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
+> * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Azure Portal](search-get-started-portal.md)
@@ -29,7 +29,7 @@ ms.locfileid: "91540349"
 
 Vytvořte konzolovou aplikaci Java, která vytvoří, načte a dotazuje index vyhledávání pomocí [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/)a [REST API Azure kognitivní hledání](/rest/api/searchservice/). Tento článek poskytuje podrobné pokyny k vytvoření aplikace. Případně můžete [Stáhnout a spustit kompletní aplikaci](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -49,11 +49,11 @@ Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro ka
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-2. V části **Nastavení**  >  **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+2. V části **Nastavení**  >  **klíče** Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
    Vytvořte také klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
+:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
 Každý požadavek odeslaný do vaší služby vyžaduje klíč rozhraní API. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
@@ -63,19 +63,19 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-1. Otevřete nápad IntelliJ a vyberte **vytvořit nový projekt**.
-1. Vyberte **Maven**.
+1. Otevřete nápad IntelliJ a vyberte **vytvořit nový projekt** .
+1. Vyberte **Maven** .
 1. V seznamu **SDK projektu** vyberte sadu SDK Java 11.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
 
-1. Pro ID **skupiny** a **ArtifactId**zadejte `AzureSearchQuickstart` .
+1. Pro ID **skupiny** a **ArtifactId** zadejte `AzureSearchQuickstart` .
 1. Přijměte zbývající výchozí hodnoty pro otevření projektu.
 
 ### <a name="specify-maven-dependencies"></a>Zadat závislosti Maven
 
-1. Vyberte **File**  >  **Nastavení**souboru.
-1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení**nasazení  >  **Maven**  >  **Import**.
+1. Vyberte **File**  >  **Nastavení** souboru.
+1. V okně **Nastavení** vyberte **sestavení, spouštění,**  >  **Nástroje sestavení** nasazení  >  **Maven**  >  **Import** .
 1. Zaškrtněte políčko  **importovat projekty Maven automaticky** a kliknutím na tlačítko **OK** okno zavřete. Moduly plug-in Maven a další závislosti se teď automaticky synchronizují při aktualizaci souboru pom.xml v dalším kroku.
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="Získání názvu služby a klíčů pro správu a dotazy" border="false":::
@@ -133,8 +133,8 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="set-up-the-project-structure"></a>Nastavení struktury projektu
 
-1. Vyberte **Souborová**  >  **struktura projektu**.
-1. Vyberte **moduly**a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
+1. Vyberte **Souborová**  >  **struktura projektu** .
+1. Vyberte **moduly** a rozbalte zdrojový strom pro přístup k obsahu `src`  >   `main` složky.
 1. Ve `src`  >   `main`  >  `java` složce přidejte `app` `service` složky a. Provedete to tak, že vyberete `java` složku, stisknete ALT + INSERT a pak zadáte název složky.
 1. Ve `src`  >   `main`  > `resources` složce přidejte `app` `service` složky a.
 
@@ -146,7 +146,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-azure-cognitive-search-service-information"></a>Přidání informací o službě Azure Kognitivní hledání
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `app` složce a přidejte `config.properties` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor** a pak zadáte název souboru.
 
 1. Zkopírujte následující nastavení do nového souboru a nahraďte `<YOUR-SEARCH-SERVICE-NAME>` je, `<YOUR-ADMIN-KEY>` a `<YOUR-QUERY-KEY>` pomocí názvu služby a klíčů. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl `"mydemo"` .
 
@@ -160,7 +160,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-main-method"></a>Přidat metodu Main
 
-1. Ve `src`  >   `main`  >  `java`  >  `app` složce přidejte `App` třídu. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `app` složce přidejte `App` třídu. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **třídu Java** a pak zadáte název třídy.
 1. Otevřete `App` třídu a nahraďte obsah následujícím kódem. Tento kód obsahuje `main` metodu. 
 
     Nekomentovaný kód přečte parametry vyhledávací služby a použije je k vytvoření instance klienta služby Search Service. Kód klienta služby Search se přidá do další části.
@@ -259,7 +259,7 @@ Začněte otevřením NÁPADu IntelliJ a nastavením nového projektu.
 
 ### <a name="add-the-http-operations"></a>Přidat operace HTTP
 
-1. Ve `src`  >   `main`  >  `java`  >  `service` složce přidejte `SearchServiceClient` třídu. Provedete to tak, že vyberete `service` složku, stisknete ALT + INSERT, vyberete **třídu Java**a pak zadáte název třídy.
+1. Ve `src`  >   `main`  >  `java`  >  `service` složce přidejte `SearchServiceClient` třídu. Provedete to tak, že vyberete `service` složku, stisknete ALT + INSERT, vyberete **třídu Java** a pak zadáte název třídy.
 1. Otevřete `SearchServiceClient` třídu a nahraďte obsah následujícím kódem. Tento kód poskytuje operace HTTP vyžadované k použití REST API Azure Kognitivní hledání. Další metody pro vytvoření indexu, nahrání dokumentů a dotazování indexu budou přidány v pozdější části.
 
     ```java
@@ -384,7 +384,7 @@ Po dokončení zpracování vyhledejte zprávu o úspěchu sestavení následova
 
 Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Příkladem jednoduchého pole jsou "hotely" nebo "Description". Pole adresa je komplexní pole, protože obsahuje podpole, jako je například ulice a město. V tomto rychlém startu je definice indexu určena pomocí formátu JSON.
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `index.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `index.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete **soubor** a pak zadáte název souboru.
 
 1. Otevřete `index.json` soubor a vložte následující definici indexu.
 
@@ -571,7 +571,7 @@ Definice indexu hotelů obsahuje jednoduchá pole a jedno komplexní pole. Pří
     
 ## <a name="2---load-documents"></a>2. načtení dokumentů
 
-1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete  **soubor**a pak zadáte název souboru.
+1. V okně **projektu** rozbalte zdrojový strom pro přístup ke `src`  >   `main`  > `resources`  >  `service` složce a přidejte `hotels.json` soubor. Provedete to tak, že vyberete `app` složku, stisknete ALT + INSERT, vyberete  **soubor** a pak zadáte název souboru.
 1. Do souboru vložte následující hotelové dokumenty.
 
     ```json
@@ -820,7 +820,7 @@ Teď, když jste načetli dokumenty hotelů, můžete vytvořit vyhledávací do
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

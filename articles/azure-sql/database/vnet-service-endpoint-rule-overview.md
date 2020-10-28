@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616699"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791320"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -89,7 +89,7 @@ Pro Azure SQL Database funkce pravidla virtuální sítě má následující ome
 
 Při použití koncových bodů služby pro Azure SQL Database se podívejte na následující skutečnosti:
 
-- **Odchozí IP adresa pro Azure SQL Database veřejné IP adresy se vyžadují**: aby se Azure SQL Database IP adres umožňovalo připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí [značek služby](../../virtual-network/security-overview.md#service-tags) NSG pro Azure SQL Database.
+- **Odchozí IP adresa pro Azure SQL Database veřejné IP adresy se vyžadují** : aby se Azure SQL Database IP adres umožňovalo připojení, musí se otevřít skupiny zabezpečení sítě (skupin zabezpečení sítě). To můžete provést pomocí [značek služby](../../virtual-network/network-security-groups-overview.md#service-tags) NSG pro Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -110,11 +110,11 @@ Ve službě Azure Storage je implementovaná stejná funkce, která umožňuje o
 
 Základ a příkaz COPY se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage pro příjem dat s vysokou propustností. Pokud účet Azure Storage, ze kterého načítáte data, přistupuje jenom k sadě virtuálních sítí VNet, připojení při použití základny a příkazu COPY pro účet úložiště dojde k přerušení. Pokud chcete povolit scénáře importu a exportu pomocí kopírování a základu s připojením služby Azure synapse Analytics k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle následujících kroků:
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
-- Pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
-- Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) upgradovat na účet úložiště pro obecné účely verze 2.
-- Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Povolením této konfigurace umožníte, aby se příkaz Base a COPY připojil k účtu úložiště pomocí silného ověřování, kde síťový provoz zůstane v páteřní síti Azure. Další informace najdete v tomto [průvodci](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+- Pomocí tohoto [průvodce](/powershell/azure/install-az-ps) nainstalujte Azure PowerShell.
+- Pokud máte účet úložiště pro obecné účely verze 1 nebo účet úložiště objektů blob, musíte nejprve pomocí tohoto [průvodce](../../storage/common/storage-account-upgrade.md) upgradovat na účet úložiště pro obecné účely verze 2.
+- Abyste měli přístup k tomuto účtu úložiště zapnutý, musíte mít **povolené důvěryhodné služby Microsoftu** v nabídce Azure Storage **brány firewall účtů a nastavení virtuálních sítí** . Povolením této konfigurace umožníte, aby se příkaz Base a COPY připojil k účtu úložiště pomocí silného ověřování, kde síťový provoz zůstane v páteřní síti Azure. Další informace najdete v tomto [průvodci](../../storage/common/storage-network-security.md#exceptions).
 
 > [!IMPORTANT]
 > Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
@@ -129,27 +129,27 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. Pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)vytvořte **účet úložiště pro obecné účely v2** .
+1. Pomocí této [příručky](../../storage/common/storage-account-create.md)vytvořte **účet úložiště pro obecné účely v2** .
 
    > [!NOTE]
    >
-   > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-   > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+   > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md).
+   > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem služby Azure synapse Analytics, kterou jste zaregistrovali v Azure Active Directory (AAD) jako v kroku #1.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role** . Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem služby Azure synapse Analytics, kterou jste zaregistrovali v Azure Active Directory (AAD) jako v kroku #1.
 
    > [!NOTE]
-   > Tento krok můžou provést jenom členové s oprávněním vlastníka v účtu úložiště. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Tento krok můžou provést jenom členové s oprávněním vlastníka v účtu úložiště. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md).
   
 1. **Základní připojení k účtu Azure Storage:**
 
-   1. Pokud jste ještě nevytvořili **[hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** databáze, vytvořte ho:
+   1. Pokud jste ještě nevytvořili **[hlavní klíč](/sql/t-sql/statements/create-master-key-transact-sql)** databáze, vytvořte ho:
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
 
-   1. Vytvořit databázi s rozsahem pověření s **identitou = ' identita spravované služby '**:
+   1. Vytvořit databázi s rozsahem pověření s **identitou = ' identita spravované služby '** :
 
        ```sql
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
@@ -157,7 +157,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 
        > [!NOTE]
        >
-       > - Není nutné zadávat tajný klíč pomocí Azure Storage přístupového klíče, protože tento mechanismus používá [spravovanou identitu](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) v rámci pokrývání.
+       > - Není nutné zadávat tajný klíč pomocí Azure Storage přístupového klíče, protože tento mechanismus používá [spravovanou identitu](../../active-directory/managed-identities-azure-resources/overview.md) v rámci pokrývání.
        > - Název IDENTITY by měl být **Identita spravované služby** , aby připojení k síti s Azure Storagem účtem zabezpečeném pro virtuální síť fungovalo.
 
    1. Vytvořte externí zdroj dat se `abfss://` schématem pro připojení k účtu úložiště pro obecné účely v2 pomocí základu:
@@ -168,11 +168,11 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
 
        > [!NOTE]
        >
-       > - Pokud už máte externí tabulky přidružené k účtu úložiště pro obecné účely v1 nebo blob, měli byste tyto externí tabulky nejdřív vyřadit a pak vyřadit odpovídající externí zdroj dat. Pak vytvořte externí zdroj dat se `abfss://` schématem připojujícím se k účtu úložiště pro obecné účely v2 a znovu vytvořte všechny externí tabulky pomocí tohoto nového externího zdroje dat. Pomocí [Průvodce Generovat a publikovat skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) můžete snadno vytvořit vytváření skriptů pro všechny externí tabulky.
-       > - Další informace o schématu najdete v `abfss://` tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
-       > - Další informace o vytvoření externího zdroje dat najdete v tomto [Průvodci](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+       > - Pokud už máte externí tabulky přidružené k účtu úložiště pro obecné účely v1 nebo blob, měli byste tyto externí tabulky nejdřív vyřadit a pak vyřadit odpovídající externí zdroj dat. Pak vytvořte externí zdroj dat se `abfss://` schématem připojujícím se k účtu úložiště pro obecné účely v2 a znovu vytvořte všechny externí tabulky pomocí tohoto nového externího zdroje dat. Pomocí [Průvodce Generovat a publikovat skripty](/sql/ssms/scripting/generate-and-publish-scripts-wizard) můžete snadno vytvořit vytváření skriptů pro všechny externí tabulky.
+       > - Další informace o schématu najdete v `abfss://` tomto [Průvodci](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md).
+       > - Další informace o vytvoření externího zdroje dat najdete v tomto [Průvodci](/sql/t-sql/statements/create-external-data-source-transact-sql).
 
-   1. Dotazování jako normální pomocí [externích tabulek](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)
+   1. Dotazování jako normální pomocí [externích tabulek](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ### <a name="azure-sql-database-blob-auditing"></a>Auditování Azure SQL Database objektů BLOB
 
@@ -188,11 +188,11 @@ Příznak **IgnoreMissingVNetServiceEndpoint** můžete nastavit pomocí prostř
 
 ## <a name="errors-40914-and-40615"></a>Chyby 40914 a 40615
 
-Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě*, jak je uvedeno v podokně Brána Firewall v Azure Portal. Chyba 40615 je podobná, s tím rozdílem, že se vztahují na *pravidla IP adres* v bráně firewall.
+Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě* , jak je uvedeno v podokně Brána Firewall v Azure Portal. Chyba 40615 je podobná, s tím rozdílem, že se vztahují na *pravidla IP adres* v bráně firewall.
 
 ### <a name="error-40914"></a>Chyba 40914
 
-*Text zprávy:* Nejde otevřít server *[název serveru]*, který požádal o přihlášení. Klient nemá povolený přístup k serveru.
+*Text zprávy:* Nejde otevřít server *[název serveru]* , který požádal o přihlášení. Klient nemá povolený přístup k serveru.
 
 *Popis chyby:* Klient se nachází v podsíti, která má koncové body virtuálního síťového serveru. Server ale nemá žádné pravidlo virtuální sítě, které by dané podsíti získalo právo komunikovat s databází.
 
@@ -210,7 +210,7 @@ Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě*, jak je uv
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portál může vytvořit pravidlo virtuální sítě
 
-Tato část ukazuje, jak můžete pomocí [Azure Portal][http-azure-portal-link-ref-477t] vytvořit *pravidlo virtuální sítě* v databázi nástroje v Azure SQL Database. Pravidlo instruuje vaši databázi, aby přijímala komunikaci z konkrétní podsítě, která byla označena jako *koncový bod služby Virtual Network*.
+Tato část ukazuje, jak můžete pomocí [Azure Portal][http-azure-portal-link-ref-477t] vytvořit *pravidlo virtuální sítě* v databázi nástroje v Azure SQL Database. Pravidlo instruuje vaši databázi, aby přijímala komunikaci z konkrétní podsítě, která byla označena jako *koncový bod služby Virtual Network* .
 
 > [!NOTE]
 > Pokud máte v úmyslu přidat koncový bod služby pro pravidla brány firewall virtuální sítě vašeho serveru, zajistěte, aby byla pro podsíť zapnutá koncová bodu služby.
@@ -227,20 +227,20 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 - [Pravidla Virtual Network: operace][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
-- Odpovídajícím názvem typu koncového bodu je **Microsoft. SQL**.
+- Odpovídajícím názvem typu koncového bodu je **Microsoft. SQL** .
 - Pokud vaše podsíť nemusí být označená názvem typu, přečtěte si téma [ověření, že je podsíť koncovým bodem][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Vyhledejte a vyberte **SQL servery**a pak vyberte svůj server. V části **zabezpečení**vyberte možnost **brány firewall a virtuální sítě**.
+2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě** .
 
 3. Nastavte řízení **Povolení přístupu ke službám Azure** na vypnuto.
 
@@ -255,7 +255,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
     > [!TIP]
     > Je nutné zadat správnou **předponu adresy** pro vaši podsíť. Tuto hodnotu můžete najít na portálu.
-    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuálních sítí**. Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě**. Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
+    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuálních sítí** . Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě** . Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
 
     ![Vyplňte pole pro nové pravidlo.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -298,12 +298,12 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]:scripts/vnet-service-endpoint-rule-powershell-create.md
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]:scripts/vnet-service-endpoint-rule-powershell-create.md#a-verify-subnet-is-endpoint-ps-100
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
+[rest-api-virtual-network-rules-operations-862r]: /rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles

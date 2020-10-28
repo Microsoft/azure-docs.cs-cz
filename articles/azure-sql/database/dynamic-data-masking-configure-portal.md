@@ -11,17 +11,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1d4c29cdb9cf24f87df4acc3556b318a1079810a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f8c296860fc36772a85039e27c86a72614c2a50
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443609"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791048"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Začínáme s SQL Database dynamické maskování dat s využitím Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dynamic-data-masking-overview.md) pomocí Azure Portal. Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [REST API](https://docs.microsoft.com/rest/api/sql/).
+V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dynamic-data-masking-overview.md) pomocí Azure Portal. Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](/powershell/module/az.sql/) nebo [REST API](/rest/api/sql/).
 
 > [!NOTE]
 > Tuto funkci nejde nastavit pomocí portálu pro Azure synapse (použijte PowerShell nebo REST API) nebo spravovanou instanci SQL. Další informace najdete v tématu [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking).
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dyn
 
     ![Snímek obrazovky zobrazující stránku konfigurace pravidla maskování](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
-6. Vyberte **schéma**, **tabulku** a **sloupec** pro definování určeného pole pro maskování.
+6. Vyberte **schéma** , **tabulku** a **sloupec** pro definování určeného pole pro maskování.
 7. **Vyberte, jak se má maskovat** ze seznamu kategorií pro maskování citlivých dat.
 
     ![Snímek obrazovky zobrazující kategorie citlivých dat v části Výběr způsobu maskování](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
@@ -60,4 +60,4 @@ V tomto článku se dozvíte, jak implementovat [dynamické maskování dat](dyn
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled dynamického maskování dat najdete v tématu [dynamické maskování dat](dynamic-data-masking-overview.md).
-- Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](https://docs.microsoft.com/powershell/module/az.sql/) nebo [REST API](https://docs.microsoft.com/rest/api/sql/).
+- Dynamické maskování dat můžete také implementovat pomocí [rutin Azure SQL Database](/powershell/module/az.sql/) nebo [REST API](/rest/api/sql/).

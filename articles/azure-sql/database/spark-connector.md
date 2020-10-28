@@ -11,18 +11,18 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 09/02/2020
-ms.openlocfilehash: 36010ff0206ddf9dae08391eb6e4c3dd7762cc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319329"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790198"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
-> Od SEP 2020 není tento konektor aktivně udržován. [Apache Spark konektor pro SQL Server a Azure SQL](https://docs.microsoft.com/sql/connect/spark/connector) je teď k dispozici, ale podporuje vazby Pythonu a R, jednodušší použití rozhraní k hromadnému vkládání dat a mnoho dalších vylepšení. Důrazně doporučujeme, abyste tento nový konektor vyhodnotili a použili místo něj. Informace o starém konektoru (této stránce) jsou uchovávány pouze pro účely archivace.
+> Od SEP 2020 není tento konektor aktivně udržován. [Apache Spark konektor pro SQL Server a Azure SQL](/sql/connect/spark/connector) je teď k dispozici, ale podporuje vazby Pythonu a R, jednodušší použití rozhraní k hromadnému vkládání dat a mnoho dalších vylepšení. Důrazně doporučujeme, abyste tento nový konektor vyhodnotili a použili místo něj. Informace o starém konektoru (této stránce) jsou uchovávány pouze pro účely archivace.
 
 Konektor Spark umožňuje používat databáze v Azure SQL Database, Azure SQL Managed instance a SQL Server fungovat jako vstupní zdroj dat nebo jímka výstupních dat pro úlohy Spark. Umožňuje využívat transakční data v reálném čase s analýzou velkých objemů dat a uchovávat výsledky pro dotazy nebo generování sestav ad hoc. V porovnání s integrovaným konektorem JDBC poskytuje tento konektor možnost hromadného vkládání dat do databáze. Může překoná vkládání po řádcích s 10x, aby 20krát rychlejší výkon. Konektor Spark podporuje ověřování Azure Active Directory (Azure AD) pro připojení k Azure SQL Database a spravované instanci SQL Azure, což vám umožní připojit vaši databázi od Azure Databricks pomocí svého účtu Azure AD. Poskytuje podobná rozhraní s integrovaným konektorem JDBC. K použití tohoto nového konektoru je snadné migrovat stávající úlohy Sparku.
 
@@ -38,7 +38,7 @@ Konektor Spark umožňuje používat databáze v Azure SQL Database, Azure SQL M
 | Scala                                 | 2,10 nebo novější            |
 | Ovladač Microsoft JDBC pro SQL Server  | 6,2 nebo novější             |
 | Microsoft SQL Server                  | SQL Server 2008 nebo novější |
-| Azure SQL Database                    | Podporováno                |
+| Databáze Azure SQL                    | Podporováno                |
 | Spravovaná instance Azure SQL            | Podporováno                |
 
 Konektor Spark využívá ovladač Microsoft JDBC pro SQL Server k přesouvání dat mezi uzly Spark Worker a databázemi:
@@ -238,4 +238,4 @@ Pokud jste to ještě neudělali, Stáhněte si konektor Spark z [úložiště G
 - [Ukázka Azure Databricks poznámkových blocích](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Ukázkové skripty (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-Můžete také zkontrolovat [Apache Spark SQL, datové rámce a příručky datových sad](https://spark.apache.org/docs/latest/sql-programming-guide.html) a [dokumentaci k Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
+Můžete také zkontrolovat [Apache Spark SQL, datové rámce a příručky datových sad](https://spark.apache.org/docs/latest/sql-programming-guide.html) a [dokumentaci k Azure Databricks](/azure/azure-databricks/).

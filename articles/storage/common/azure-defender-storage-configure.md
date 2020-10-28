@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474848"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789008"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Konfigurace Azure Defenderu pro úložiště
 
@@ -37,7 +37,7 @@ Následující seznam shrnuje dostupnost služby Azure Defender pro úložiště
 
 - Stav vydaných verzí:
   - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
-  - [Soubory Azure](/azure/storage/files/storage-files-introduction) (všeobecně dostupné)
+  - [Soubory Azure](../files/storage-files-introduction.md) (všeobecně dostupné)
   - Azure Data Lake Storage Gen2 (Obecná dostupnost)
 - Cloud<br>
     ✔ Komerční cloudy<br>
@@ -53,10 +53,10 @@ Službu Azure Defender pro úložiště můžete nakonfigurovat libovolným z n�
 Když se přihlásíte k odběru úrovně Standard v Azure Security Center, Azure Defender se automaticky nastaví na všechny vaše účty úložiště. Můžete povolit nebo zakázat Azure Defender pro účty úložiště v rámci určitého předplatného následujícím způsobem:
 
 1. Spusťte **Azure Security Center** v [Azure Portal](https://portal.azure.com).
-1. V hlavní nabídce vyberte v části **Správa**možnost **cenové & nastavení**.
+1. V hlavní nabídce vyberte v části **Správa** možnost **cenové & nastavení** .
 1. Vyberte předplatné, pro které chcete povolit nebo zakázat Azure Defender.
 1. Pokud chcete povolit Azure Defender pro předplatné, vyberte **Azure Defender zapnuto** .
-1. V části **Vybrat plán v programu Azure Defender podle typu prostředku**vyhledejte řádek **úložiště** a vyberte ve sloupci **plán** možnost **povoleno** .
+1. V části **Vybrat plán v programu Azure Defender podle typu prostředku** vyhledejte řádek **úložiště** a vyberte ve sloupci **plán** možnost **povoleno** .
 1. Uložte provedené změny.
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
@@ -66,8 +66,8 @@ V tomto předplatném je teď povolený Azure Defender pro všechny účty úlo�
 ### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Spusťte [Azure Portal](https://portal.azure.com/).
-1. Přejděte na svůj účet úložiště. V části **Nastavení**vyberte **Rozšířené zabezpečení**.
-1. Vyberte **Povolit Azure Defender pro úložiště**.
+1. Přejděte na svůj účet úložiště. V části **Nastavení** vyberte **Rozšířené zabezpečení** .
+1. Vyberte **Povolit Azure Defender pro úložiště** .
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="Snímek obrazovky, který ukazuje, jak povolit Azure Defender pro úložiště v Security Center":::
 
@@ -138,4 +138,4 @@ Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o p�
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o [protokolech v Azure Storage účtech](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- Další informace o [Azure Security Center](../../security-center/security-center-intro.md)
+- Další informace o [Azure Security Center](../../security-center/security-center-introduction.md)

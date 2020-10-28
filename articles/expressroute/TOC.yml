@@ -13,6 +13,7 @@
     - name: Vytvoření okruhu ExpressRoute – CLI
       href: howto-circuit-cli.md
     - name: Vytvoření okruhu ExpressRoute – šablona ARM
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: Kurzy

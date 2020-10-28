@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317068"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789807"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Jak pomocí Azure PowerShell zřídit SQL Server v Azure Virtual Machines
 
@@ -28,7 +28,7 @@ ms.locfileid: "91317068"
 
 Tato příručka popisuje možnosti použití prostředí PowerShell ke zřízení SQL Server v Azure Virtual Machines (VM). Zjednodušený Azure PowerShell příklad, který závisí na výchozích hodnotách, najdete v článku [rychlý Start k SQL VM Azure PowerShell](sql-vm-create-powershell-quickstart.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -135,7 +135,7 @@ Pomocí následujících proměnných definujte SQL Server Image, která se má 
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. Pro tento kurz použijte edici SQL Server 2017 Developer Edition (**SQLDEV**). Edice Developer Edition je zdarma licencovaná pro testování a vývoj a platíte jenom za náklady na provozování virtuálního počítače.
+1. Pro tento kurz použijte edici SQL Server 2017 Developer Edition ( **SQLDEV** ). Edice Developer Edition je zdarma licencovaná pro testování a vývoj a platíte jenom za náklady na provozování virtuálního počítače.
 
    ```powershell
    $Sku = "SQLDEV"
@@ -143,7 +143,7 @@ Pomocí následujících proměnných definujte SQL Server Image, která se má 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pomocí modelu nasazení Správce prostředků první objekt, který vytvoříte, je skupina prostředků. Pomocí rutiny [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) vytvořte skupinu prostředků Azure a její prostředky. Zadejte proměnné, které jste předtím inicializoval pro název a umístění skupiny prostředků.
+Pomocí modelu nasazení Správce prostředků první objekt, který vytvoříte, je skupina prostředků. Pomocí rutiny [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) vytvořte skupinu prostředků Azure a její prostředky. Zadejte proměnné, které jste předtím inicializoval pro název a umístění skupiny prostředků.
 
 Spuštěním této rutiny vytvořte novou skupinu prostředků.
 
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Virtuální počítač vyžaduje prostředky úložiště pro disk operačního systému a SQL Server data a soubory protokolů. Pro zjednodušení vytvoříte pro obojí jeden disk. Další disky můžete připojit později pomocí rutiny [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) k umístění SQL serverch dat a souborů protokolu na vyhrazené disky. Pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) vytvořte v nové skupině prostředků účet úložiště úrovně Standard. Zadejte proměnné, které jste předtím inicializoval pro název účtu úložiště, název SKU úložiště a umístění.
+Virtuální počítač vyžaduje prostředky úložiště pro disk operačního systému a SQL Server data a soubory protokolů. Pro zjednodušení vytvoříte pro obojí jeden disk. Další disky můžete připojit později pomocí rutiny [Add-Azure disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) k umístění SQL serverch dat a souborů protokolu na vyhrazené disky. Pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) vytvořte v nové skupině prostředků účet úložiště úrovně Standard. Zadejte proměnné, které jste předtím inicializoval pro název účtu úložiště, název SKU úložiště a umístění.
 
 Spuštěním této rutiny vytvoříte nový účet úložiště.
 
@@ -176,7 +176,7 @@ Virtuální počítač vyžaduje pro připojení k síti několik síťových pr
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>Vytvoření konfigurace podsítě virtuální sítě
 
-Začněte vytvořením konfigurace podsítě pro virtuální síť. Pro tento kurz Vytvořte výchozí podsíť pomocí rutiny [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) . Zadejte proměnné, které jste předtím inicializoval pro název podsítě a předponu adresy.
+Začněte vytvořením konfigurace podsítě pro virtuální síť. Pro tento kurz Vytvořte výchozí podsíť pomocí rutiny [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) . Zadejte proměnné, které jste předtím inicializoval pro název podsítě a předponu adresy.
 
 > [!NOTE]
 > Pomocí této rutiny můžete definovat další vlastnosti konfigurace podsítě virtuální sítě, ale to je nad rámec tohoto kurzu.
@@ -189,7 +189,7 @@ $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefi
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Potom vytvořte virtuální síť v nové skupině prostředků pomocí rutiny [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) . Zadejte proměnné, které jste předtím inicializoval pro název, umístění a předponu adresy. Použijte konfiguraci podsítě, kterou jste definovali v předchozím kroku.
+Potom vytvořte virtuální síť v nové skupině prostředků pomocí rutiny [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) . Zadejte proměnné, které jste předtím inicializoval pro název, umístění a předponu adresy. Použijte konfiguraci podsítě, kterou jste definovali v předchozím kroku.
 
 Spuštěním této rutiny vytvoříte virtuální síť.
 
@@ -201,7 +201,7 @@ $VNet = New-AzVirtualNetwork -Name $VNetName `
 
 ### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-Teď, když je vaše virtuální síť definovaná, musíte nakonfigurovat IP adresu pro připojení k virtuálnímu počítači. Pro účely tohoto kurzu Vytvořte veřejnou IP adresu pomocí dynamického přidělování IP adres pro podporu připojení k Internetu. Pomocí rutiny [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) Vytvořte veřejnou IP adresu v nové skupině prostředků. Zadejte proměnné, které jste předtím inicializoval pro název, umístění, metodu přidělení a popisek názvu domény DNS.
+Teď, když je vaše virtuální síť definovaná, musíte nakonfigurovat IP adresu pro připojení k virtuálnímu počítači. Pro účely tohoto kurzu Vytvořte veřejnou IP adresu pomocí dynamického přidělování IP adres pro podporu připojení k Internetu. Pomocí rutiny [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) Vytvořte veřejnou IP adresu v nové skupině prostředků. Zadejte proměnné, které jste předtím inicializoval pro název, umístění, metodu přidělení a popisek názvu domény DNS.
 
 > [!NOTE]
 > Pomocí této rutiny můžete definovat další vlastnosti veřejné IP adresy, ale to je nad rámec tohoto úvodního kurzu. Můžete také vytvořit soukromou adresu nebo adresu se statickou adresou, ale kromě rozsahu tohoto kurzu.
@@ -243,7 +243,7 @@ K zabezpečení virtuálního počítače a SQL Server provozu vytvořte skupinu
 
 ### <a name="create-the-network-interface"></a>Vytvoření síťového rozhraní
 
-Teď jste připraveni vytvořit síťové rozhraní pro virtuální počítač. Pomocí rutiny [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) vytvořte síťové rozhraní ve vaší nové skupině prostředků. Zadejte název, umístění, podsíť a veřejnou IP adresu, kterou jste definovali dříve.
+Teď jste připraveni vytvořit síťové rozhraní pro virtuální počítač. Pomocí rutiny [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) vytvořte síťové rozhraní ve vaší nové skupině prostředků. Zadejte název, umístění, podsíť a veřejnou IP adresu, kterou jste definovali dříve.
 
 Spuštěním této rutiny vytvoříte síťové rozhraní.
 
@@ -265,7 +265,7 @@ Teď, když jsou prostředky úložiště a sítě definované, jste připraveni
 
 ### <a name="create-the-vm-object"></a>Vytvoření objektu virtuálního počítače
 
-Začněte zadáním velikosti virtuálního počítače. Pro tento kurz zadejte DS13. Pomocí rutiny [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) vytvořte konfigurovatelný objekt virtuálního počítače. Určete proměnné, které jste dříve inicializoval pro název a velikost.
+Začněte zadáním velikosti virtuálního počítače. Pro tento kurz zadejte DS13. Pomocí rutiny [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) vytvořte konfigurovatelný objekt virtuálního počítače. Určete proměnné, které jste dříve inicializoval pro název a velikost.
 
 Spuštěním této rutiny vytvoříte objekt virtuálního počítače.
 
@@ -275,7 +275,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>Vytvořte objekt přihlašovacích údajů, který bude obsahovat jméno a heslo pro přihlašovací údaje místního správce.
 
-Než budete moct nastavit vlastnosti operačního systému pro virtuální počítač, musíte zadat přihlašovací údaje pro účet místního správce jako zabezpečený řetězec. K tomu použijte rutinu [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) .
+Než budete moct nastavit vlastnosti operačního systému pro virtuální počítač, musíte zadat přihlašovací údaje pro účet místního správce jako zabezpečený řetězec. K tomu použijte rutinu [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) .
 
 Spusťte následující rutinu. Do okna žádosti o přihlašovací údaje PowerShellu musíte zadat jméno a heslo místního správce virtuálního počítače.
 
@@ -285,7 +285,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Nastavit vlastnosti operačního systému pro virtuální počítač
 
-Nyní jste připraveni nastavit vlastnosti operačního systému virtuálního počítače pomocí rutiny [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) .
+Nyní jste připraveni nastavit vlastnosti operačního systému virtuálního počítače pomocí rutiny [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) .
 
 - Nastavte typ operačního systému jako Windows.
 - Vyžaduje instalaci [agenta virtuálního počítače](../../../virtual-machines/extensions/agent-windows.md) .
@@ -302,7 +302,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>Přidat síťové rozhraní k virtuálnímu počítači
 
-Dále pomocí rutiny [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) přidejte síťové rozhraní pomocí proměnné, kterou jste definovali dříve.
+Dále pomocí rutiny [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) přidejte síťové rozhraní pomocí proměnné, kterou jste definovali dříve.
 
 Spuštěním této rutiny nastavte síťové rozhraní pro virtuální počítač.
 
@@ -322,7 +322,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>Nastavit vlastnosti disku operačního systému pro virtuální počítač
 
-Dále nastavte vlastnosti disku operačního systému pro virtuální počítač pomocí rutiny [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) . 
+Dále nastavte vlastnosti disku operačního systému pro virtuální počítač pomocí rutiny [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) . 
 
 - Určete, že operační systém pro virtuální počítač bude pocházet z image.
 - Nastavte ukládání do mezipaměti pouze pro čtení (protože SQL Server probíhá instalace na stejný disk).
@@ -337,7 +337,7 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>Zadejte image platformy pro virtuální počítač.
 
-Posledním krokem konfigurace je zadání image platformy pro váš virtuální počítač. Pro tento kurz použijte nejnovější bitovou kopii SQL Server 2016 CTP. Pomocí rutiny [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) použijte tuto image s proměnnými, které jste definovali dříve.
+Posledním krokem konfigurace je zadání image platformy pro váš virtuální počítač. Pro tento kurz použijte nejnovější bitovou kopii SQL Server 2016 CTP. Pomocí rutiny [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) použijte tuto image s proměnnými, které jste definovali dříve.
 
 Spuštěním této rutiny určíte image platformy pro váš virtuální počítač.
 
@@ -349,7 +349,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 
 ## <a name="create-the-sql-vm"></a>Vytvoření virtuálního počítače pro SQL
 
-Teď, když jste dokončili kroky konfigurace, jste připraveni vytvořit virtuální počítač. Pomocí rutiny [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vytvořte virtuální počítač s použitím proměnných, které jste definovali.
+Teď, když jste dokončili kroky konfigurace, jste připraveni vytvořit virtuální počítač. Pomocí rutiny [New-AzVM](/powershell/module/az.compute/new-azvm) vytvořte virtuální počítač s použitím proměnných, které jste definovali.
 
 > [!TIP]
 > Vytvoření virtuálního počítače může trvat několik minut.

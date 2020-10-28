@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620184"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791303"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód souboru události pro rozšířené události v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620184"
 
 Potřebujete kompletní ukázku kódu pro robustní způsob, jak zachytit a ohlásit informace pro rozšířenou událost.
 
-V Microsoft SQL Server se [cíl souboru události](https://msdn.microsoft.com/library/ff878115.aspx) používá k ukládání výstupů událostí do souboru místního pevného disku. Tyto soubory ale nejsou k dispozici pro Azure SQL Database. Místo toho používáme službu Azure Storage k podpoře cíle souboru události.
+V Microsoft SQL Server se [cíl souboru události](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) používá k ukládání výstupů událostí do souboru místního pevného disku. Tyto soubory ale nejsou k dispozici pro Azure SQL Database. Místo toho používáme službu Azure Storage k podpoře cíle souboru události.
 
 V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
 
@@ -34,27 +34,27 @@ V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
   - Chcete-li přiřadit kontejner Azure Storage k cíli souboru události.
   - Chcete-li vytvořit a spustit relaci události a tak dále.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
 
 - Účet a předplatné Azure. Můžete si zaregistrovat i [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 - Všechny databáze, na kterých můžete vytvořit tabulku.
   
-  - Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT** ](single-database-create-quickstart.md) během několika minut.
+  - Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT**](single-database-create-quickstart.md) během několika minut.
 
 - SQL Server Management Studio (ssms.exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
   Nejnovější ssms.exe si můžete stáhnout z těchto:
   
-  - Téma s názvem [stažení SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  - Téma s názvem [stažení SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms).
   - [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - Musíte mít nainstalované [Azure PowerShell moduly](https://go.microsoft.com/?linkid=9811175) .
 
-  - Moduly poskytují příkazy, jako je například- **New-AzStorageAccount**.
+  - Moduly poskytují příkazy, jako je například- **New-AzStorageAccount** .
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Fáze 1: kód PowerShellu pro kontejner Azure Storage
 
@@ -62,7 +62,7 @@ Toto prostředí PowerShell je fáze 1 ukázky kódu ve dvou fázích.
 
 Skript začíná příkazy pro vyčištění po možném předchozím spuštění a je rerunnable.
 
-1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, jako je například Notepad.exe, a tento skript uložte jako soubor s příponou **. ps1**.
+1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, jako je například Notepad.exe, a tento skript uložte jako soubor s příponou **. ps1** .
 2. Spusťte PowerShell ISE jako správce.
 3. Na příkazovém řádku zadejte<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>a potom stiskněte klávesu ENTER.
 4. V prostředí PowerShell ISE otevřete soubor **. ps1** . Spusťte skript.
@@ -258,7 +258,7 @@ Skript prostředí PowerShell vytiskl po ukončení několik pojmenovaných hodn
 6. Uložte a spusťte skript.
 
 > [!WARNING]
-> Hodnota klíče SAS generovaná předchozím skriptem PowerShellu může začínat znakem "?". (otazník). Při použití klíče SAS v následujícím skriptu T-SQL je nutné *Odebrat úvodní znak "?"*. V opačném případě může být vaše úsilí blokováno zabezpečením.
+> Hodnota klíče SAS generovaná předchozím skriptem PowerShellu může začínat znakem "?". (otazník). Při použití klíče SAS v následujícím skriptu T-SQL je nutné *Odebrat úvodní znak "?"* . V opačném případě může být vaše úsilí blokováno zabezpečením.
 
 ### <a name="transact-sql-code"></a>Kód Transact-SQL
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Předchozí skript Transact-SQL použil následující systémovou funkci ke čtení event_file:
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 Vysvětlení pokročilých možností zobrazení dat z rozšířených událostí je k dispozici na adrese:
 
-- [Rozšířené zobrazení cílových dat z rozšířených událostí](https://msdn.microsoft.com/library/mt752502.aspx)
+- [Rozšířené zobrazení cílových dat z rozšířených událostí](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Převod ukázky kódu pro spuštění v SQL Server
 
 Předpokládejme, že jste chtěli spustit předchozí ukázku jazyka Transact-SQL v Microsoft SQL Server.
 
-- Pro jednoduchost byste chtěli zcela nahradit použití kontejneru Azure Storage jednoduchým souborem, jako je například *C:\myeventdata.XEL*. Soubor se zapíše na místní pevný disk počítače, který je hostitelem SQL Server.
-- Pro **Vytvoření hlavního klíče** a **Vytvoření přihlašovacích údajů**nepotřebujete žádný druh příkazů jazyka Transact-SQL.
-- V příkazu **vytvořit relaci události** v klauzuli **Add Target** byste nahradili hodnotu http přiřazenou **souboru filename =** řetězcem s úplnými cestami, jako je *C:\myfile.XEL*.
+- Pro jednoduchost byste chtěli zcela nahradit použití kontejneru Azure Storage jednoduchým souborem, jako je například *C:\myeventdata.XEL* . Soubor se zapíše na místní pevný disk počítače, který je hostitelem SQL Server.
+- Pro **Vytvoření hlavního klíče** a **Vytvoření přihlašovacích údajů** nepotřebujete žádný druh příkazů jazyka Transact-SQL.
+- V příkazu **vytvořit relaci události** v klauzuli **Add Target** byste nahradili hodnotu http přiřazenou **souboru filename =** řetězcem s úplnými cestami, jako je *C:\myfile.XEL* .
   
   - Nemusíte mít žádný účet Azure Storage.
 
@@ -517,8 +517,8 @@ Předpokládejme, že jste chtěli spustit předchozí ukázku jazyka Transact-S
 Další informace o účtech a kontejnerech ve službě Azure Storage najdete v tématech:
 
 - [Jak používat úložiště objektů BLOB z .NET](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [Pojmenování kontejnerů, objektů BLOB a metadat a odkazování na ně](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [Práce s kořenovým kontejnerem](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [Lekce 1: Vytvoření zásad uloženého přístupu a sdíleného přístupového podpisu na kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [Lekce 2: vytvoření přihlašovacích údajů pro SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [Pojmenování kontejnerů, objektů BLOB a metadat a odkazování na ně](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [Práce s kořenovým kontejnerem](/rest/api/storageservices/Working-with-the-Root-Container)
+- [Lekce 1: Vytvoření zásad uloženého přístupu a sdíleného přístupového podpisu na kontejneru Azure](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [Lekce 2: vytvoření přihlašovacích údajů pro SQL Server pomocí sdíleného přístupového podpisu](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Rozšířené události pro Microsoft SQL Server](/sql/relational-databases/extended-events/extended-events)

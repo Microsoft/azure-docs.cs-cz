@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b1d25ae127d9a732225859a09622bb057c348e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ce6398f63149a7f5dd3102d75c8db324f526c419
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488482"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791150"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -37,7 +37,7 @@ Nejdřív Stáhněte spustitelný soubor AzCopy v10 za účelem do libovolného 
 Tyto soubory se komprimují jako soubor zip (Windows a Mac) nebo jako soubor s tar (Linux). Chcete-li stáhnout a dekomprimovat soubor tar v systému Linux, přečtěte si dokumentaci k distribuci systému Linux.
 
 > [!NOTE]
-> Pokud chcete kopírovat data do služby [Azure Table Storage](/azure/storage/tables/table-storage-overview) a z ní, nainstalujte [AzCopy verze 7,3](https://aka.ms/downloadazcopynet).
+> Pokud chcete kopírovat data do služby [Azure Table Storage](../tables/table-storage-overview.md) a z ní, nainstalujte [AzCopy verze 7,3](https://aka.ms/downloadazcopynet).
 
 
 ## <a name="run-azcopy"></a>Spuštění nástroje AzCopy
@@ -80,14 +80,14 @@ Pomocí Azure Active Directory můžete zadat přihlašovací údaje místo toho
 
 Úroveň autorizace, kterou potřebujete, je založená na tom, jestli plánujete odeslat soubory, nebo je stačí stáhnout.
 
-Pokud chcete jenom stahovat soubory, ověřte, že je [čtečka dat objektů BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) přiřazená identitě uživatele, spravované identitě nebo instančnímu objektu.
+Pokud chcete jenom stahovat soubory, ověřte, že je [čtečka dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) přiřazená identitě uživatele, spravované identitě nebo instančnímu objektu.
 
-> Identity uživatelů, spravované identity a instanční objekty jsou typu *objektu zabezpečení*, takže budeme používat pojem *zabezpečení* pro zbývající část tohoto článku.
+> Identity uživatelů, spravované identity a instanční objekty jsou typu *objektu zabezpečení* , takže budeme používat pojem *zabezpečení* pro zbývající část tohoto článku.
 
 Chcete-li odeslat soubory, ověřte, zda byla k objektu zabezpečení přiřazena jedna z těchto rolí:
 
-- [Přispěvatel dat v objektech blob služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [Vlastník dat v objektech blob služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [Přispěvatel dat v objektech blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Vlastník dat v objektech blob služby Storage](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 
 Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto oborů:
 
@@ -96,14 +96,14 @@ Tyto role se dají přiřadit k objektu zabezpečení v libovolném z těchto ob
 - Skupina prostředků
 - Předplatné
 
-Informace o tom, jak ověřit a přiřadit role, najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informace o tom, jak ověřit a přiřadit role, najdete v tématu [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
 
 > [!NOTE]
 > Mějte na paměti, že rozšíření přiřazení rolí Azure může trvat až pět minut.
 
 Pokud je do seznamu řízení přístupu (ACL) cílového kontejneru nebo adresáře přidaný objekt zabezpečení, nemusíte mít přiřazenou žádnou z těchto rolí. V seznamu ACL vyžaduje váš instanční objekt oprávnění k zápisu do cílového adresáře a oprávnění ke spuštění na kontejneru a v jednotlivých nadřazených adresářích.
 
-Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-access-control).
+Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md).
 
 #### <a name="authenticate-a-user-identity"></a>Ověření identity uživatele
 
@@ -137,9 +137,9 @@ Před spuštěním skriptu se musíte interaktivně přihlašovat aspoň jednou,
 
 K účtu se můžete přihlásit pomocí tajného klíče klienta nebo pomocí hesla certifikátu, který je přidružený k registraci aplikace vašeho objektu služby.
 
-Další informace o vytváření instančního objektu najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](/azure/active-directory/develop/howto-create-service-principal-portal).
+Další informace o vytváření instančního objektu najdete v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-Další informace o hlavních instančních objektech naleznete v tématu [Application and Service Principal Objects in Azure Active Directory](/azure/active-directory/develop/app-objects-and-service-principals)
+Další informace o hlavních instančních objektech naleznete v tématu [Application and Service Principal Objects in Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 
 ##### <a name="using-a-client-secret"></a>Použití tajného klíče klienta
 
@@ -205,7 +205,7 @@ Další informace o tom, jak povolit spravovanou identitu v rámci systému nebo
 
 ##### <a name="using-a-system-wide-managed-identity"></a>Použití spravované identity v rámci systému
 
-Nejdřív se ujistěte, že máte na svém VIRTUÁLNÍm počítači povolenou spravovanou identitu na úrovni systému. Viz [spravovaná identita přiřazená systémem](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity).
+Nejdřív se ujistěte, že máte na svém VIRTUÁLNÍm počítači povolenou spravovanou identitu na úrovni systému. Viz [spravovaná identita přiřazená systémem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
 
 Pak v konzole příkazů zadejte následující příkaz a stiskněte klávesu ENTER.
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>Použití spravované identity přiřazené uživatelem
 
-Nejdřív se ujistěte, že jste na svém VIRTUÁLNÍm počítači povolili spravovanou identitu přiřazenou uživatelem. Podívejte se [na spravovanou identitu přiřazenou uživatelem](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity).
+Nejdřív se ujistěte, že jste na svém VIRTUÁLNÍm počítači povolili spravovanou identitu přiřazenou uživatelem. Podívejte se [na spravovanou identitu přiřazenou uživatelem](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
 
 Pak v konzole příkazů zadejte libovolný z následujících příkazů a potom stiskněte klávesu ENTER.
 
@@ -247,7 +247,7 @@ Tento ukázkový příkaz rekurzivně kopíruje data z místního adresáře do 
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-Další informace o tokenech SAS a o tom, jak je získat, najdete v tématu [použití sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-sas-overview).
+Další informace o tokenech SAS a o tom, jak je získat, najdete v tématu [použití sdílených přístupových podpisů (SAS)](./storage-sas-overview.md).
 
 ## <a name="transfer-files"></a>Přenos souborů
 

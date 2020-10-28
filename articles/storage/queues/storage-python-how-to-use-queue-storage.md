@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 79334db46b6f035aabffcca133ed4f5cb8df3637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855550"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790504"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Jak používat Azure Queue Storage z Pythonu
 
@@ -299,7 +299,7 @@ Teď, když jste se naučili základy ukládání do fronty, můžete získat da
 
 * [Reference k rozhraní API Pythonu pro fronty Azure](/python/api/azure-storage-queue)
 * [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
-* [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355)
+* [REST API služby Azure Storage](/rest/api/storageservices/)
 
 [Klientská knihovna pro Azure Queue Storage pro Python]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [Azure SDK pro Python]: https://github.com/azure/azure-sdk-for-python

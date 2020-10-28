@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533542"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790912"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Vytvoření clusteru selhalo s InvalidNetworkConfigurationErrorCode ve službě Azure HDInsight
 
@@ -68,6 +68,19 @@ Azure Storage a SQL nemají pevné IP adresy, proto musíme Povolit odchozí př
 
     Pokud jsou definované trasy, ujistěte se, že existují trasy pro IP adresy v oblasti, ve které byl cluster nasazený, a **typem** pro každou trasu je **Internet** . Pro každou požadovanou IP adresu popsanou ve výše uvedeném článku by měla být definována trasa.
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Nepovedlo se navázat odchozí připojení z clusteru pro komunikaci se zprostředkovatelem prostředků HDInsight. Ujistěte se prosím, že je povolené odchozí připojení.
+
+### <a name="issue"></a>Problém
+
+Popis chyby obsahuje "selhalo navázání odchozího připojení z clusteru pro komunikaci se zprostředkovatelem prostředků HDInsight. Ujistěte se prosím, že je povolené odchozí připojení.
+
+### <a name="cause"></a>Příčina
+
+Při použití privátních propojených clusterů HDInsight musí být odchozí přístup z clusteru nakonfigurovaný tak, aby umožňoval připojení k poskytovateli prostředků HDInsight.
+
+### <a name="resolution"></a>Řešení
+
+* Pokud chcete tento problém vyřešit, přečtěte si postup nastavení privátního odkazu HDInsight při [instalaci privátního odkazu](../hdinsight-private-link.md) .
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>"Konfigurace virtuální sítě není kompatibilní s požadavkem HDInsight".

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc3abd30fad3e86544430e5a4ecb8510e77c9e5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293454"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789926"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Provozní kontinuita a HADR pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ Technologie můžete kombinovat pro implementaci SQL Server řešení, které m�
 
 | Technologie | Ukázkové architektury |
 | --- | --- |
-| **Skupiny dostupnosti** |Repliky dostupnosti běžící na virtuálních počítačích Azure ve stejné oblasti poskytují vysokou dostupnost. Musíte nakonfigurovat virtuální počítač řadiče domény, protože Clustering s podporou převzetí služeb při selhání systému Windows vyžaduje doménu služby Active Directory.<br/><br/> Pro zajištění vyšší redundance a dostupnosti můžete virtuální počítače Azure nasadit v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) , jak je popsáno v [přehledu skupiny dostupnosti](availability-group-overview.md). Pokud jsou virtuální počítače s SQL Server ve skupině dostupnosti nasazené v zónách dostupnosti, pak použijte [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) pro naslouchací proces, jak je popsáno v článcích Azure [SQL VM CLI](availability-group-az-cli-configure.md) a [šablony rychlý Start pro Azure](availability-group-quickstart-template-configure.md) .<br/> ![Skupiny dostupnosti](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Další informace najdete v tématu [Konfigurace skupin dostupnosti v Azure (GUI)](availability-group-azure-marketplace-template-configure.md). |
+| **Skupiny dostupnosti** |Repliky dostupnosti běžící na virtuálních počítačích Azure ve stejné oblasti poskytují vysokou dostupnost. Musíte nakonfigurovat virtuální počítač řadiče domény, protože Clustering s podporou převzetí služeb při selhání systému Windows vyžaduje doménu služby Active Directory.<br/><br/> Pro zajištění vyšší redundance a dostupnosti můžete virtuální počítače Azure nasadit v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) , jak je popsáno v [přehledu skupiny dostupnosti](availability-group-overview.md). Pokud jsou virtuální počítače s SQL Server ve skupině dostupnosti nasazené v zónách dostupnosti, pak použijte [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) pro naslouchací proces, jak je popsáno v článcích Azure [SQL VM CLI](./availability-group-az-commandline-configure.md) a [šablony rychlý Start pro Azure](availability-group-quickstart-template-configure.md) .<br/> ![Skupiny dostupnosti](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>Další informace najdete v tématu [Konfigurace skupin dostupnosti v Azure (GUI)](./availability-group-quickstart-template-configure.md). |
 | **Instance clusteru převzetí služeb při selhání** |Instance clusteru s podporou převzetí služeb při selhání se podporují na SQL Server virtuálních počítačích. Vzhledem k tomu, že funkce FCI vyžaduje sdílené úložiště, pět řešení bude fungovat s SQL Server na virtuálních počítačích Azure: <br/><br/> – Používání [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) pro Windows Server 2019. Sdílené spravované disky představují produkt Azure, který umožňuje připojení spravovaného disku k několika virtuálním počítačům současně. Virtuální počítače v clusteru můžou číst nebo zapisovat na připojený disk na základě rezervace zvolené clusterovou aplikací prostřednictvím trvalých rezervací SCSI (SCSI PR). SCSI PR je standardní řešení úložiště používané aplikacemi, které běží v místní síti SAN (Storage Area Network). Povolení SCSI PR na spravovaném disku umožňuje migrovat tyto aplikace do Azure tak, jak jsou. <br/><br/>– Pomocí [prostory úložiště s přímým přístupem \( s2d \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md) můžete poskytovat softwarovou virtuální síť SAN pro Windows Server 2016 a novější.<br/><br/>– Použití [prémiové sdílené složky](failover-cluster-instance-premium-file-share-manually-configure.md) pro Windows Server 2012 a novější Soubory úrovně Premium jsou zálohované ve formátu SSD, mají konzistentně nízkou latenci a jsou plně podporované pro použití s FCI.<br/><br/>– Používání úložiště podporovaného partnerským řešením pro clusteringu. Konkrétní příklad, který používá s DataKeeper, najdete v blogu věnovaném [clusteringu s podporou převzetí služeb při selhání a s Datakeeping](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/).<br/><br/>– Použití sdíleného blokového úložiště pro vzdálený cíl iSCSI prostřednictvím Azure ExpressRoute. Například NetApp Private Storage (NPS) zveřejňuje cíl iSCSI prostřednictvím ExpressRoute s Equinix do virtuálních počítačů Azure.<br/><br/>Pro řešení sdíleného úložiště a replikace dat od partnerů Microsoftu se obraťte na dodavatele s případnými problémy souvisejícími s přístupem k datům při převzetí služeb při selhání.<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>Jenom Azure: řešení zotavení po havárii
@@ -90,7 +90,7 @@ Na následujícím obrázku instalační program používá SQL Server běžíc�
 
 Další informace najdete v [licenčních podmínkách k produktu](https://www.microsoft.com/licensing/product-licensing/products). 
 
-Pokud chcete tuto výhodu povolit, otevřete [prostředek virtuálního počítače SQL Server](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). V části **Nastavení**vyberte **Konfigurovat** a potom v části **SQL Server licence**zvolte možnost **zotavení po havárii** . Zaškrtnutím políčka potvrďte, že se tento virtuální počítač SQL Server použije jako pasivní replika, a pak vyberte **použít** a uložte nastavení. 
+Pokud chcete tuto výhodu povolit, otevřete [prostředek virtuálního počítače SQL Server](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource). V části **Nastavení** vyberte **Konfigurovat** a potom v části **SQL Server licence** zvolte možnost **zotavení po havárii** . Zaškrtnutím políčka potvrďte, že se tento virtuální počítač SQL Server použije jako pasivní replika, a pak vyberte **použít** a uložte nastavení. 
 
 ![Konfigurace repliky zotavení po havárii v Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,12 +101,12 @@ Virtuální počítače Azure, úložiště a sítě mají různé provozní cha
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Uzly s vysokou dostupností ve skupině dostupnosti
 Skupiny dostupnosti v Azure umožňují umístit uzly s vysokou dostupností do samostatných domén selhání a aktualizačních domén. Platforma Azure přiřadí aktualizační doménu a doménu selhání každému virtuálnímu počítači v sadě dostupnosti. Tato konfigurace v rámci datového centra zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje smlouvu SLA Azure 99,95%. 
 
-Chcete-li nakonfigurovat nastavení s vysokou dostupností, umístěte všechny účastnící SQL Server virtuální počítače do stejné skupiny dostupnosti, aby nedošlo ke ztrátě aplikace nebo dat během události údržby. Ve stejné skupině dostupnosti se můžou zúčastnit jenom uzly ve stejné cloudové službě. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Chcete-li nakonfigurovat nastavení s vysokou dostupností, umístěte všechny účastnící SQL Server virtuální počítače do stejné skupiny dostupnosti, aby nedošlo ke ztrátě aplikace nebo dat během události údržby. Ve stejné skupině dostupnosti se můžou zúčastnit jenom uzly ve stejné cloudové službě. Další informace najdete v tématu [Správa dostupnosti virtuálních počítačů](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Uzly s vysokou dostupností v zóně dostupnosti
 Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítí. Fyzické oddělení zón dostupnosti v rámci oblasti pomáhá chránit aplikace a data před selháními datových center tím, že zajišťuje, že je k dispozici aspoň jeden virtuální počítač a že splňuje smlouvu SLA Azure o 99,99 procent. 
 
-Pokud chcete nakonfigurovat vysokou dostupnost, umístěte mezi zóny dostupnosti v oblasti zahrnuté SQL Server virtuální počítače. Mezi zónami dostupnosti se účtují další poplatky za přenosy mezi sítěmi. Další informace najdete v tématu [zóny dostupnosti](/azure/availability-zones/az-overview). 
+Pokud chcete nakonfigurovat vysokou dostupnost, umístěte mezi zóny dostupnosti v oblasti zahrnuté SQL Server virtuální počítače. Mezi zónami dostupnosti se účtují další poplatky za přenosy mezi sítěmi. Další informace najdete v tématu [zóny dostupnosti](../../../availability-zones/az-overview.md). 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Chování clusteru s podporou převzetí služeb při selhání v sítích Azure
@@ -123,7 +123,7 @@ Vezměte v úvahu scénář, kdy se vytvoří cluster se dvěma uzly a přejde d
 
 Tomuto scénáři se můžete vyhnout tak, že k názvu sítě clusteru přiřadíte nepoužitou statickou IP adresu, aby se název sítě clusteru mohl převést do online režimu. Můžete například použít místní IP adresu propojení, jako je 169.254.1.1. Pro zjednodušení tohoto procesu najdete informace v tématu [Konfigurace clusteru Windows s podporou převzetí služeb při selhání v Azure pro skupiny dostupnosti](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx).
 
-Další informace najdete v tématu [Konfigurace skupin dostupnosti v Azure (GUI)](availability-group-azure-marketplace-template-configure.md).
+Další informace najdete v tématu [Konfigurace skupin dostupnosti v Azure (GUI)](./availability-group-quickstart-template-configure.md).
 
 ### <a name="support-for-availability-group-listeners"></a>Podpora pro naslouchací procesy skupiny dostupnosti
 Naslouchací procesy skupiny dostupnosti se podporují na virtuálních počítačích Azure se systémem Windows Server 2012 a novějším. Tato podpora je umožněna použitím koncových bodů s vyrovnáváním zatížení povolených na virtuálních počítačích Azure, které jsou uzly skupiny dostupnosti. Aby naslouchací procesy fungovaly pro klientské aplikace běžící v Azure i v místním prostředí, je nutné postupovat podle zvláštních kroků konfigurace.
@@ -136,7 +136,7 @@ Pokud skupina dostupnosti zahrnuje několik podsítí Azure (například nasazen
 Ke každé replice dostupnosti se můžete připojit samostatně tak, že se připojíte přímo k instanci služby. Vzhledem k tomu, že skupiny dostupnosti jsou zpětně kompatibilní s klienty zrcadlení databáze, můžete se připojit k replikám dostupnosti, jako jsou partneři zrcadlení databáze, pokud jsou repliky nakonfigurované podobně jako zrcadlení databáze:
 
 * Existuje jedna primární replika a jedna sekundární replika.
-* Sekundární replika je nakonfigurovaná jako nečitelná (**čitelná sekundární** sada možností nastavená na **ne**).
+* Sekundární replika je nakonfigurovaná jako nečitelná ( **čitelná sekundární** sada možností nastavená na **ne** ).
 
 Tady je příklad připojovacího řetězce klienta, který odpovídá konfiguraci zrcadlení databáze jako v ADO.NET nebo SQL Server Native Client:
 
@@ -146,11 +146,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 Další informace o připojení klientů najdete v těchto tématech:
 
-* [Použití klíčových slov připojovacího řetězce s SQL Server Native Client](https://msdn.microsoft.com/library/ms130822.aspx)
-* [Připojení klientů k relaci zrcadlení databáze (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [Připojování k naslouchacího procesu skupiny dostupnosti v hybridním IT](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [Naslouchací procesy skupin dostupnosti, připojení klientů a převzetí služeb při selhání aplikací (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Použití připojovacích řetězců Database-Mirroring se skupinami dostupnosti](https://technet.microsoft.com/library/hh213417.aspx)
+* [Použití klíčových slov připojovacího řetězce s SQL Server Native Client](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [Připojení klientů k relaci zrcadlení databáze (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [Připojování k naslouchacího procesu skupiny dostupnosti v hybridním IT](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [Naslouchací procesy skupin dostupnosti, připojení klientů a převzetí služeb při selhání aplikací (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [Použití připojovacích řetězců Database-Mirroring se skupinami dostupnosti](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>Latence sítě v hybridním IT
 Nasaďte řešení HADR s předpokladem, že mezi vaší místní sítí a Azure může nastat doba vysoké latence sítě. Při nasazování replik do Azure použijte asynchronní potvrzení místo synchronního potvrzení pro režim synchronizace. Pokud nasazujete servery zrcadlení databáze místně i v Azure, použijte vysoce výkonný režim, nikoli režim vysoké bezpečnosti.
@@ -162,8 +162,4 @@ Pokud nemáte možnost zakázat geografickou replikaci v účtu úložiště, po
 
 ## <a name="next-steps"></a>Další kroky
 
-Rozhodněte, jestli je [Skupina dostupnosti](availability-group-overview.md) nebo [instance clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-overview.md) nejlepší řešení provozní kontinuity pro vaši firmu. Pak si přečtěte [osvědčené postupy](hadr-cluster-best-practices.md) pro konfiguraci prostředí pro zajištění vysoké dostupnosti a zotavení po havárii. 
-
-
-
-
+Rozhodněte, jestli je [Skupina dostupnosti](availability-group-overview.md) nebo [instance clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-overview.md) nejlepší řešení provozní kontinuity pro vaši firmu. Pak si přečtěte [osvědčené postupy](hadr-cluster-best-practices.md) pro konfiguraci prostředí pro zajištění vysoké dostupnosti a zotavení po havárii.

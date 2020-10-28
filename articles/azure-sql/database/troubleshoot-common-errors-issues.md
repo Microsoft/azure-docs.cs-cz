@@ -10,12 +10,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: aa4bcee7a2eaf5e6ec11b9066ed6eca6b33bdba1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284117"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791337"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením a dalších chyb pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,19 +24,19 @@ Pokud dojde k chybě připojení k Azure SQL Database nebo spravované instanci 
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Chybové zprávy přechodného selhání (40197, 40613 a další)
 
-Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azure dokáže dynamicky rekonfigurovat servery.  Toto dynamické chování může způsobit ztrátu připojení klientského programu k databázi nebo instanci. Tento druh chybové podmínky se nazývá *přechodná chyba*. Události opětovné konfigurace databáze nastávají z důvodu plánované události (například upgrade softwaru) nebo neplánované události (například selhání procesu nebo vyrovnávání zatížení). Většina událostí opětovné konfigurace je obecně krátkodobá a měla by být dokončena během méně než 60 sekund. Tyto události mohou nicméně občas trvat déle, například když velká transakce způsobí dlouhotrvající obnovení. Následující tabulka uvádí různé přechodné chyby, které aplikace může obdržet při připojování k SQL Database
+Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azure dokáže dynamicky rekonfigurovat servery.  Toto dynamické chování může způsobit ztrátu připojení klientského programu k databázi nebo instanci. Tento druh chybové podmínky se nazývá *přechodná chyba* . Události opětovné konfigurace databáze nastávají z důvodu plánované události (například upgrade softwaru) nebo neplánované události (například selhání procesu nebo vyrovnávání zatížení). Většina událostí opětovné konfigurace je obecně krátkodobá a měla by být dokončena během méně než 60 sekund. Tyto události mohou nicméně občas trvat déle, například když velká transakce způsobí dlouhotrvající obnovení. Následující tabulka uvádí různé přechodné chyby, které aplikace může obdržet při připojování k SQL Database
 
 ### <a name="list-of-transient-fault-error-codes"></a>Seznam chybových kódů přechodných chyb
 
 | Kód chyby | Závažnost | Popis |
 | ---:| ---:|:--- |
-| 4060 |16 |Nelze otevřít databázi "%. &#x2a;ls" požadovanou pro přihlášení. Přihlášení se nezdařilo. Další informace najdete v tématu [chyby 4000 až 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) .|
+| 4060 |16 |Nelze otevřít databázi "%. &#x2a;ls" požadovanou pro přihlášení. Přihlášení se nezdařilo. Další informace najdete v tématu [chyby 4000 až 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) .|
 | 40197 |17 |Služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby:% d.<br/><br/>Tato chyba se zobrazí, když dojde k výpadku služby kvůli softwarovým nebo hardwarovým upgradům, selháním hardwaru nebo jakýmkoli jiným problémům s podporou převzetí služeb při selhání. Kód chyby (% d) vložený v rámci zprávy chyby 40197 poskytuje další informace o druhu selhání nebo převzetí služeb při selhání. Některé příklady kódů chyb jsou vložené v rámci zprávy chyby 40197 jsou 40020, 40143, 40166 a 40540.<br/><br/>Po opětovném připojení se automaticky připojí k kopii databáze, která je v pořádku. Vaše aplikace musí zachytit chybu 40197, zaprotokolovat vložený kód chyby (% d) ve zprávě pro řešení potíží a zkusit se znovu připojit k SQL Database, dokud nebudou k dispozici prostředky a připojení se znovu naváže. Další informace najdete v tématu [přechodné chyby](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Služba je aktuálně zaneprázdněna. Požadavek opakujte po 10 sekundách. ID incidentu:% ls. Kód:% d. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md)|
 | 40613 |17 |Databáze%. &#x2a;ls na serveru%. &#x2a;ls není aktuálně k dispozici. Zkuste prosím připojení znovu později. Pokud se problém opakuje, obraťte se na zákaznickou podporu a poskytněte mu ID trasování relace%. &#x2a;ls.<br/><br/> K této chybě může dojít, pokud již existuje existující vyhrazené připojení správce (DAC) pro databázi. Další informace najdete v tématu [přechodné chyby](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |Požadavek nejde zpracovat. Pro zpracování požadavku není dostatek prostředků.<br/><br/>Služba je aktuálně zaneprázdněna. Opakujte prosím požadavek později. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
-| 49919 |16 |Nelze zpracovat žádost o vytvoření nebo aktualizaci. Pro předplatné% ld probíhá příliš mnoho probíhajících operací vytvoření nebo aktualizace.<br/><br/>Služba je zaneprázdněná zpracováním více žádostí o vytvoření nebo aktualizaci vašeho předplatného nebo serveru. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) na operace, které čekají na zpracování. Počkejte, dokud nebudou dokončeny žádosti o vytvoření nebo aktualizaci, nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
-| 49920 |16 |Požadavek nejde zpracovat. U předplatného% ld probíhá příliš mnoho operací.<br/><br/>Služba je zaneprázdněná zpracováním více požadavků pro toto předplatné. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) pro stav operace Počkejte na dokončení čekajících žádostí nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
+| 49919 |16 |Nelze zpracovat žádost o vytvoření nebo aktualizaci. Pro předplatné% ld probíhá příliš mnoho probíhajících operací vytvoření nebo aktualizace.<br/><br/>Služba je zaneprázdněná zpracováním více žádostí o vytvoření nebo aktualizaci vašeho předplatného nebo serveru. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) na operace, které čekají na zpracování. Počkejte, dokud nebudou dokončeny žádosti o vytvoření nebo aktualizaci, nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
+| 49920 |16 |Požadavek nejde zpracovat. U předplatného% ld probíhá příliš mnoho operací.<br/><br/>Služba je zaneprázdněná zpracováním více požadavků pro toto předplatné. Požadavky jsou aktuálně blokovány pro optimalizaci prostředků. Dotaz [Sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) pro stav operace Počkejte na dokončení čekajících žádostí nebo odstraňte jednu z vašich čekajících žádostí a opakujte požadavek později. Další informace naleznete v tématech: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
 | 4221 |16 |Přihlášení k sekundárnímu pro čtení se nezdařilo z důvodu dlouhého čekání na ' HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING '. Replika není k dispozici pro přihlášení, protože pro transakce, které byly v letadle při recyklování repliky, chybí verze řádků. Problém se dá vyřešit vrácením zpět nebo potvrzením aktivních transakcí na primární replice. Výskyty tohoto stavu lze minimalizovat tím, že se vyhnete dlouhým transakcím zápisu na primárním. |
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>Postup řešení potíží s přechodným připojením
@@ -52,12 +52,12 @@ Důrazně doporučujeme, aby váš klientský program měl logiku opakování, a
 
 Příklady kódu logiky opakování naleznete zde:
 
-- [Odolné připojení k SQL pomocí ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
-- [Odolné připojení k SQL pomocí PHP](https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Odolné připojení k SQL pomocí ADO.NET](/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net)
+- [Odolné připojení k SQL pomocí PHP](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
 
 Další informace o zpracování přechodných chyb ve vaší aplikaci najdete v [řešení potíží s přechodnými chybami připojení SQL Database](troubleshoot-common-connectivity-issues.md)
 
-K dispozici je diskuze o *době blokování* pro klienty, kteří používají ADO.NET, v části [sdružování připojení (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
+K dispozici je diskuze o *době blokování* pro klienty, kteří používají ADO.NET, v části [sdružování připojení (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-your-server"></a>Při navazování připojení k serveru došlo k chybě související se sítí nebo ke konkrétní instanci.
 
@@ -119,7 +119,7 @@ Správce služby obvykle může pomocí následujících kroků přidat přihla�
 4. Pokud uživatelské jméno přihlášení SQL neexistuje, vytvořte ho pomocí následujících kroků:
 
    1. V SSMS dvakrát klikněte na **zabezpečení** a rozbalte ho.
-   2. Klikněte pravým tlačítkem na **přihlašovací údaje**a potom vyberte **nové přihlášení**.
+   2. Klikněte pravým tlačítkem na **přihlašovací údaje** a potom vyberte **nové přihlášení** .
    3. Ve vygenerovaném skriptu pomocí zástupných symbolů upravte a spusťte následující dotaz SQL:
 
    ```sql
@@ -128,10 +128,10 @@ Správce služby obvykle může pomocí následujících kroků přidat přihla�
    GO
    ```
 
-5. Dvakrát klikněte na **databáze**.
+5. Dvakrát klikněte na **databáze** .
 6. Vyberte databázi, ke které chcete udělit oprávnění uživatele.
-7. Dvakrát klikněte na **zabezpečení**.
-8. Klikněte pravým tlačítkem na **Uživatelé**a pak vyberte **Nový uživatel**.
+7. Dvakrát klikněte na **zabezpečení** .
+8. Klikněte pravým tlačítkem na **Uživatelé** a pak vyberte **Nový uživatel** .
 9. Ve vygenerovaném skriptu pomocí zástupných symbolů upravte a spusťte následující dotaz SQL:
 
    ```sql
@@ -148,7 +148,7 @@ Správce služby obvykle může pomocí následujících kroků přidat přihla�
    > [!NOTE]
    > `sp_addrolemember`K mapování konkrétních uživatelů na konkrétní databázové role můžete také použít.
 
-Další informace najdete v tématu [Správa databází a přihlášení v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
+Další informace najdete v tématu [Správa databází a přihlášení v Azure SQL Database](./logins-create-manage.md).
 
 ## <a name="connection-timeout-expired-errors"></a>Vypršení časového limitu připojení – chyby
 
@@ -185,7 +185,7 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
   > [!NOTE]
   > Jedná se o minimalist přístup, který nemusí problém vyřešit.
 
-1. Spusťte následující dotaz SQL, který zkontroluje [Sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) zobrazení a zobrazí všechny blokující požadavky:
+1. Spusťte následující dotaz SQL, který zkontroluje [Sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) zobrazení a zobrazí všechny blokující požadavky:
 
    ```sql
    SELECT * FROM dm_exec_requests
@@ -194,13 +194,13 @@ Pokud chcete tento problém obejít, zkuste jednu z následujících metod:
 2. Určete **vstupní vyrovnávací paměť** pro blokování Headers.
 3. Nalaďte dotaz na blokování hlav.
 
-   Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+   Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 Pokud databáze konzistentně dosáhne svého limitu bez ohledu na blokující a dlouhotrvající dotazy, zvažte upgrade na edici s více zdroji [verzí](https://azure.microsoft.com/pricing/details/sql-database/).
 
-Další informace o zobrazeních dynamické správy najdete v tématu [zobrazení dynamické správy systému](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
+Další informace o zobrazeních dynamické správy najdete v tématu [zobrazení dynamické správy systému](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views).
 
-Další informace o omezeních databáze najdete v tématu  [SQL Database omezení prostředků pro servery](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Další informace o omezeních databáze najdete v tématu  [SQL Database omezení prostředků pro servery](./resource-limits-logical-server.md).
 
 ### <a name="error-10929-resource-id-1"></a>Chyba 10929: ID prostředku: 1
 
@@ -212,7 +212,7 @@ Další informace o omezeních databáze najdete v tématu  [SQL Database omezen
 
 Toto je chyba omezování modulu, což znamená, že se překročila omezení prostředků.
 
-Další informace o omezeních prostředků najdete v tématu [omezení prostředků logického SQL serveru](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server).
+Další informace o omezeních prostředků najdete v tématu [omezení prostředků logického SQL serveru](./resource-limits-logical-server.md).
 
 ### <a name="error-40544-the-database-has-reached-its-size-quota"></a>Chyba 40544: databáze dosáhla kvóty velikosti
 
@@ -242,7 +242,7 @@ Následující kroky vám pomůžou vyřešit problém nebo vám poskytnou dalš
 
    - Provádějte normální aktivity čištění databáze. Například vyčistěte nechtěné údaje pomocí zkrácení, odstranění nebo přesunutím dat pomocí služba SSIS (SQL Server Integration Services) (SSIS) nebo programu hromadného kopírování (BCP).
    - Můžete rozdělit nebo odstranit data, vyřadit indexy nebo si v dokumentaci vyhledat možná řešení.
-   - Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale) a [škálování prostředků elastického fondu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale).
+   - Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](./single-database-scale.md) a [škálování prostředků elastického fondu](./elastic-pool-scale.md).
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>Chyba 40549: relace je ukončena, protože máte dlouhotrvající transakci.
 
@@ -259,9 +259,9 @@ Při opakovaném výskytu této chyby zkuste problém vyřešit pomocí následu
 2. Určete vstupní vyrovnávací paměť pro dlouho běžící dotaz.
 3. Nalaďte dotaz.
 
-Zvažte také dávkování dotazů. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
+Zvažte také dávkování dotazů. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).
 
-Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Chyba 40551: relace byla ukončena z důvodu nadměrného využití databáze TEMPDB
 
@@ -292,7 +292,7 @@ Pokuste se snížit počet řádků, které jsou okamžitě provozovány impleme
 
 Pokud chcete tento problém obejít, zkuste optimalizovat dotaz.
 
-Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běží v cloudu dobře?](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabulka dalších chybových zpráv zásad správného řízení prostředků
 
@@ -303,7 +303,7 @@ Podrobný postup pro řešení potíží najdete v tématu [je můj dotaz běž�
 | 40544 |20 |Databáze dosáhla kvóty velikosti. Můžete rozdělit nebo odstranit data, vyřadit indexy nebo si v dokumentaci vyhledat možná řešení. Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).|
 | 40549 |16 |Relace je ukončena, protože máte dlouhotrvající transakci. Zkuste zkrátit transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).|
 | 40550 |16 |Relace byla ukončena, protože získala příliš mnoho zámků. Zkuste číst nebo upravit méně řádků v jedné transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).|
-| 40551 |16 |Relace byla ukončena z důvodu nadměrného `TEMPDB` využití. Zkuste upravit dotaz, aby se snížilo využití místa na dočasné tabulce.<br/><br/>Pokud používáte dočasné objekty, můžete ušetřit místo v `TEMPDB` databázi tak, že vyřadíte dočasné objekty, které už relace nepotřebují. Další informace o využití databáze tempdb v SQL Database najdete v tématu [databáze tempdb v SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
+| 40551 |16 |Relace byla ukončena z důvodu nadměrného `TEMPDB` využití. Zkuste upravit dotaz, aby se snížilo využití místa na dočasné tabulce.<br/><br/>Pokud používáte dočasné objekty, můžete ušetřit místo v `TEMPDB` databázi tak, že vyřadíte dočasné objekty, které už relace nepotřebují. Další informace o využití databáze tempdb v SQL Database najdete v tématu [databáze tempdb v SQL Database](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
 | 40552 |16 |Relace byla ukončena z důvodu nadměrného využití místa v protokolu transakcí. Zkuste upravit menší počet řádků v jedné transakci. Informace o dávkovém zpracování najdete v tématu [použití dávkového zpracování ke zlepšení výkonu aplikace SQL Database](../performance-improve-use-batching.md).<br/><br/>Pokud provedete hromadné vložení pomocí `bcp.exe` nástroje nebo `System.Data.SqlClient.SqlBulkCopy` třídy, zkuste použít `-b batchsize` `BatchSize` Možnosti nebo a omezit tak počet zkopírovaných řádků na server v každé transakci. Při opakovaném sestavování indexu pomocí `ALTER INDEX` příkazu zkuste použít `REBUILD WITH ONLINE = ON` možnost. Informace o velikostech protokolů transakcí pro model nákupu vCore naleznete v tématu: <br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md)|
 | 40553 |16 |Relace byla ukončena z důvodu nadměrného využití paměti. Zkuste upravit dotaz pro zpracování méně řádků.<br/><br/>Snížení počtu `ORDER BY` `GROUP BY` operací a operací v kódu Transact-SQL snižuje požadavky na paměť v dotazu. Informace o škálování databáze najdete v tématu [škálování prostředků jedné databáze](single-database-scale.md) a [škálování prostředků elastického fondu](elastic-pool-scale.md).|
 
@@ -340,8 +340,8 @@ K tomuto problému dochází, protože účet nemá oprávnění pro přístup k
 
 Pokud chcete tento problém vyřešit, postupujte následovně:
 
-1. Na přihlašovací obrazovce SSMS vyberte **Možnosti**a pak vyberte **Vlastnosti připojení**.
-2. V poli **připojit k databázi** zadejte výchozí název databáze uživatele jako výchozí přihlašovací databázi a pak vyberte **připojit**.
+1. Na přihlašovací obrazovce SSMS vyberte **Možnosti** a pak vyberte **Vlastnosti připojení** .
+2. V poli **připojit k databázi** zadejte výchozí název databáze uživatele jako výchozí přihlašovací databázi a pak vyberte **připojit** .
 
    ![Vlastnosti připojení](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 
@@ -356,7 +356,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Pokud je výjimka aktivována při potížích s dotazem, všimnete si zásobníku volání, který je podobný následujícímu (Poznamenejte si odkaz na třídu **SqlCommand** ). V této situaci [budete ladit dotazy](https://docs.microsoft.com/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
+Pokud je výjimka aktivována při potížích s dotazem, všimnete si zásobníku volání, který je podobný následujícímu (Poznamenejte si odkaz na třídu **SqlCommand** ). V této situaci [budete ladit dotazy](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -367,28 +367,28 @@ Pokud je výjimka aktivována při potížích s dotazem, všimnete si zásobní
 Další pokyny k vyladění výkonu najdete v následujících zdrojích informací:
 
 - [Jak spravovat indexy a statistiky Azure SQL](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/How-to-maintain-Azure-SQL-Indexes-and-Statistics/ba-p/368787)
-- [Ruční ladění výkonu dotazů v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
-- [Provozování úložiště dotazů v Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
+- [Ruční ladění výkonu dotazů v Azure SQL Database](./performance-guidance.md)
+- [Monitorování Azure SQL Database výkonu pomocí zobrazení dynamické správy](./monitoring-with-dmvs.md)
+- [Provozování úložiště dotazů v Azure SQL Database](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 
 ## <a name="steps-to-fix-common-connection-issues"></a>Postup řešení běžných potíží s připojením
 
-1. Zajistěte, aby byl na aplikačním serveru povolený protokol TCP/IP jako klientský protokol. Další informace najdete v tématu [Konfigurace klientských protokolů](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols). Na aplikačních serverech, na kterých nemáte nainstalované nástroje SQL Tools, ověřte, že je povolený protokol TCP/IP, a to spuštěním **cliconfg.exe** (SQL Server nástroj klientské sítě).
+1. Zajistěte, aby byl na aplikačním serveru povolený protokol TCP/IP jako klientský protokol. Další informace najdete v tématu [Konfigurace klientských protokolů](/sql/database-engine/configure-windows/configure-client-protocols). Na aplikačních serverech, na kterých nemáte nainstalované nástroje SQL Tools, ověřte, že je povolený protokol TCP/IP, a to spuštěním **cliconfg.exe** (SQL Server nástroj klientské sítě).
 2. Zkontrolujte připojovací řetězec aplikace, abyste se ujistili, že je správně nakonfigurovaný. Ujistěte se například, že připojovací řetězec Určuje správný port (1433) a plně kvalifikovaný název serveru.
-Viz [získat informace o připojení](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms#get-sql-server-connection-information).
+Viz [získat informace o připojení](./connect-query-ssms.md#get-server-connection-information).
 3. Zkuste zvýšit hodnotu časového limitu připojení. Doporučujeme použít časový limit připojení aspoň 30 sekund.
-4. Otestujte připojení mezi aplikačním serverem a Azure SQL Database pomocí [nástroje SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms), souboru UDL, příkazem testu a protokolu Telnet. Další informace najdete v tématu [Poradce při potížích s připojením](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) a [diagnostiku](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues#diagnostics)problémů s připojením.
+4. Otestujte připojení mezi aplikačním serverem a Azure SQL Database pomocí [nástroje SQL Server Management Studio (SSMS)](./connect-query-ssms.md), souboru UDL, příkazem testu a protokolu Telnet. Další informace najdete v tématu [Poradce při potížích s připojením](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server) a [diagnostiku](./troubleshoot-common-connectivity-issues.md#diagnostics)problémů s připojením.
 
    > [!NOTE]
    > V rámci kroků pro řešení potíží můžete také otestovat připojení na jiném klientském počítači.
 
-5. Jako osvědčený postup se ujistěte, že je nastavená logika opakování. Další informace o logice opakování najdete v tématu [řešení přechodných chyb a chyb připojení k SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
+5. Jako osvědčený postup se ujistěte, že je nastavená logika opakování. Další informace o logice opakování najdete v tématu [řešení přechodných chyb a chyb připojení k SQL Database](./troubleshoot-common-connectivity-issues.md).
 
 Pokud tyto kroky problém nevyřeší, zkuste shromáždit více dat a pak se obraťte na podporu. Pokud je vaše aplikace cloudová služba, povolte protokolování. Tento krok vrátí časové razítko UTC selhání. Kromě toho SQL Database vrátí ID trasování. Tyto informace mohou využívat [služby zákaznické podpory společnosti Microsoft](https://azure.microsoft.com/support/options/) .
 
-Další informace o tom, jak povolit protokolování, najdete v tématu [Povolení protokolování diagnostiky pro aplikace v Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
+Další informace o tom, jak povolit protokolování, najdete v tématu [Povolení protokolování diagnostiky pro aplikace v Azure App Service](../../app-service/troubleshoot-diagnostic-logs.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Architektura připojení Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Architektura připojení Azure SQL Database](./connectivity-architecture.md)
+- [Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti](./network-access-controls-overview.md)

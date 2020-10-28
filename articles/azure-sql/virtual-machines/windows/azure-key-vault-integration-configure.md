@@ -14,26 +14,26 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7fab8db1fcc02e26d1b19d3889414565ff56351b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fca190d4818dc2ee8d598a3a1d3535ba7132398
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293540"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789960"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Existuje několik funkcí SQL Server šifrování, jako je [transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [šifrování na úrovni sloupce (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)a [šifrování záloh](https://msdn.microsoft.com/library/dn449489.aspx). Tyto formy šifrování vyžadují, abyste mohli spravovat a ukládat kryptografické klíče, které používáte pro šifrování. Služba Azure Key Vault je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. [Konektor SQL serveru](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL Server používat tyto klíče z Azure Key Vault.
+Existuje několik funkcí SQL Server šifrování, jako je [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption), [šifrování na úrovni sloupce (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)a [šifrování záloh](/sql/relational-databases/backup-restore/backup-encryption). Tyto formy šifrování vyžadují, abyste mohli spravovat a ukládat kryptografické klíče, které používáte pro šifrování. Služba Azure Key Vault je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. [Konektor SQL serveru](https://www.microsoft.com/download/details.aspx?id=45344) umožňuje SQL Server používat tyto klíče z Azure Key Vault.
 
-Pokud používáte SQL Server v místním prostředí, můžete postupovat podle pokynů pro [přístup k Azure Key Vault z vaší místní instance SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Ale pro SQL Server na virtuálních počítačích Azure můžete ušetřit čas pomocí funkce *integrace Azure Key Vault* .
+Pokud používáte SQL Server v místním prostředí, můžete postupovat podle pokynů pro [přístup k Azure Key Vault z vaší místní instance SQL Server](/sql/relational-databases/security/encryption/extensible-key-management-using-azure-key-vault-sql-server). Ale pro SQL Server na virtuálních počítačích Azure můžete ušetřit čas pomocí funkce *integrace Azure Key Vault* .
 
 Když je tato funkce povolená, nainstaluje se Konektor SQL Serveru automaticky, nakonfiguruje poskytovatele EKM pro přístup k Azure Key Vault a vytvoří přihlašovací údaje, které vám umožní přístup k trezoru. Pokud jste si prohlédli postup uvedený v předchozí dokumentaci, vidíte, že tato funkce automatizuje kroky 2 a 3. Jedinou věcí, kterou byste pořád museli ručně udělat, je vytvoření trezoru klíčů a klíčů. Odtud je celá instalace SQL Server virtuálního počítače automatizovaná. Až tato funkce dokončí tuto instalaci, můžete spustit příkazy jazyka Transact-SQL (T-SQL) a začít šifrovat databáze nebo zálohy, jako byste to udělali normálně.
 
 [!INCLUDE [Prepare for Key Vault integration](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
   >[!NOTE]
-  > Zprostředkovatel EKM (Extensible Key Management) verze 1.0.4.0 je nainstalovaná na SQL Serverm virtuálním počítači prostřednictvím [rozšíření SQL infrastruktura jako služba (IaaS)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Při upgradu rozšíření SQL IaaS se verze poskytovatele neaktualizuje. V případě potřeby prosím zvažte ruční upgrade verze zprostředkovatele EKM (například při migraci do spravované instance SQL).
+  > Zprostředkovatel EKM (Extensible Key Management) verze 1.0.4.0 je nainstalovaná na SQL Serverm virtuálním počítači prostřednictvím [rozšíření SQL infrastruktura jako služba (IaaS)](./sql-server-iaas-agent-extension-automate-management.md). Při upgradu rozšíření SQL IaaS se verze poskytovatele neaktualizuje. V případě potřeby prosím zvažte ruční upgrade verze zprostředkovatele EKM (například při migraci do spravované instance SQL).
 
 
 ## <a name="enabling-and-configuring-key-vault-integration"></a>Povolení a konfigurace integrace Key Vault
@@ -50,7 +50,7 @@ Podrobný návod k zřizování najdete v tématu [zřízení virtuálního poč
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Pro existující virtuální počítače SQL otevřete [prostředek virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení**vyberte **zabezpečení** . Výběrem **Povolit** povolte integraci Azure Key Vault. 
+Pro existující virtuální počítače SQL otevřete [prostředek virtuálních počítačů SQL](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) a v části **Nastavení** vyberte **zabezpečení** . Výběrem **Povolit** povolte integraci Azure Key Vault. 
 
 ![Integrace se službou SQL Key Vault pro existující virtuální počítače](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 

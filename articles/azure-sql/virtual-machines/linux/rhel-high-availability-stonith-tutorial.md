@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358912"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790232"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -242,7 +242,7 @@ Po dokončení příkazu byste měli získat následující výsledky:
     done
     ```
 
-Pomocí výše uvedeného příkazu se vytvoří virtuální počítače a pro tyto virtuální počítače se vytvoří výchozí virtuální síť. Další informace o různých konfiguracích najdete v článku [AZ VM Create](https://docs.microsoft.com/cli/azure/vm) .
+Pomocí výše uvedeného příkazu se vytvoří virtuální počítače a pro tyto virtuální počítače se vytvoří výchozí virtuální síť. Další informace o různých konfiguracích najdete v článku [AZ VM Create](/cli/azure/vm) .
 
 Po dokončení příkazu u každého virtuálního počítače byste měli získat výsledky podobné následujícímu:
 
@@ -304,7 +304,7 @@ Připojte se ke každému uzlu virtuálního počítače a postupujte podle poky
 1. Aktualizujte a nainstalujte balíčky Pacemaker na všech uzlech pomocí následujících příkazů:
 
     > [!NOTE]
-    > **nmap** se instaluje jako součást tohoto bloku příkazů jako nástroj k vyhledání dostupných IP adres ve vaší síti. Nemusíte instalovat **nmap**, ale bude to užitečné později v tomto kurzu.
+    > **nmap** se instaluje jako součást tohoto bloku příkazů jako nástroj k vyhledání dostupných IP adres ve vaší síti. Nemusíte instalovat **nmap** , ale bude to užitečné později v tomto kurzu.
 
     ```bash
     sudo yum update -y
@@ -489,11 +489,11 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  3. Klikněte na [ **Registrace aplikací**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. Klikněte na **Nová registrace** .
  5. Zadejte **název** , jako `<resourceGroupName>-app` je, vyberte **účty pouze v tomto adresáři organizace**
- 6. Vyberte možnost **Web**typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
+ 6. Vyberte možnost **Web** typu aplikace, zadejte adresu URL pro přihlášení (například http://localhost) a klikněte na Přidat. Přihlašovací adresa URL se nepoužívá a může to být jakákoli platná adresa URL. Po dokončení klikněte na **zaregistrovat** .
  7. Vyberte **certifikáty a tajné klíče** pro novou registraci aplikace a pak klikněte na **nový tajný klíč klienta** .
  8. Zadejte popis nového klíče (tajný klíč klienta), vyberte možnost **nikdy nevyprší** a klikněte na **Přidat** .
  9. Zapište hodnotu tajného kódu. Používá se jako heslo instančního objektu.
-10. Vyberte **Přehled**. Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
+10. Vyberte **Přehled** . Poznamenejte si ID aplikace. Používá se jako uživatelské jméno (přihlašovací ID v následujících krocích) instančního objektu.
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>Vytvoření vlastní role pro agenta plotu
 
@@ -571,7 +571,7 @@ Přiřaďte vlastní roli `Linux Fence Agent Role-<username>` vytvořenou v posl
 5. Klikněte na **Přidat přiřazení role** .
 6. Vyberte roli `Linux Fence Agent Role-<username>` ze seznamu **rolí** .
 7. V seznamu **Vybrat** zadejte název aplikace, kterou jste vytvořili výše. `<resourceGroupName>-app`
-8. Klikněte na **Uložit**.
+8. Klikněte na **Uložit** .
 9. Opakujte výše uvedené kroky pro uzel všechny uzly clusteru.
 
 ### <a name="create-the-stonith-devices"></a>Vytvoření zařízení STONITH

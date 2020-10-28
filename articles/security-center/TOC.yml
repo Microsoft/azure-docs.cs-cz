@@ -17,13 +17,13 @@
     - name: Co je nového?
       items:
         - name: "Poznámky k\_verzi"
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes.md
         - name: Důležité chystané změny
-          displayName: 'release notes, changelog'
+          displayName: 'release notes, changelog, news'
           href: upcoming-changes.md
         - name: Archivované poznámky k verzi (starší než šest měsíců)
-          displayName: changelog
+          displayName: 'changelog, news'
           href: release-notes-archive.md
     - name: Základy služby Security Center
       items:
@@ -92,6 +92,7 @@
     - name: Nastavení e-mailových oznámení
       href: security-center-provide-security-contact-details.md
     - name: Vytvoření automatické odpovědi na upozornění s využitím šablony ARM
+      displayName: Resource Manager
       href: quickstart-automation-alert.md
 - name: Kurzy
   items:
@@ -238,6 +239,7 @@
           displayName: 'continuous, SIEM, SOAR, Splunk, QRadar, ServiceNow, ArcSight, Monitor, Graph, Sentinel,'
           href: export-to-siem.md
         - name: Export do pracovního prostoru služby Log Analytics nebo do Azure Event Hubu
+          displayName: continuous
           href: continuous-export.md
         - name: Stažení sestavy CSV se všemi upozorněními
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations

@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f7b1255553334bfaa75c5c0c96ecd36afa2c27f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be063105db2384f566e7c94d9f2e7a2bd808b15f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293760"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790130"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "91293760"
 
 SQL Server v Azure Virtual Machines umožňují používat v cloudu úplné verze SQL Server, aniž byste museli spravovat jakýkoli místní hardware. Pokud platíte průběžně, pro virtuální počítače s SQL Serverem se také zjednoduší náklady na licencování.
 
-Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/windows/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru. 
+Virtuální počítače Azure běží v mnoha různých [geografických oblastech](https://azure.microsoft.com/regions/) po celém světě. Také nabízejí celou řadu [velikostí počítačů](../../../virtual-machines/sizes.md). Galerie imagí virtuálních počítačů umožňuje vytvoření virtuálního počítače s SQL Serverem, který má správnou verzi, vydání i operační systém. Díky tomu jsou virtuální počítače vhodné pro mnoho různých úloh SQL Serveru. 
 
 Pokud s Azure SQL začínáte, podívejte se na video s *přehledem SQL Server na virtuálním počítači Azure* z naší podrobné [série videí SQL Azure](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner):
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
@@ -55,7 +55,7 @@ Chcete-li začít, zvolte image virtuálního počítače s SQL Serverem s poža
 
 Při konfiguraci SQL Server on Linux nainstalujete balíček databázového stroje a pak několik volitelných balíčků v závislosti na vašich požadavcích. Image virtuálních počítačů s Linuxem pro SQL Server automaticky nainstalují většinu balíčků za vás. Následující tabulka uvádí, které balíčky se nainstalují pro jednotlivé distribuce.
 
-| Distribuce | [Databázový stroj](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Nástroje](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [Agent SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Fulltextové vyhledávání](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [Doplněk pro vysokou dostupnost](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distribuce | [Databázový stroj](/sql/linux/sql-server-linux-setup) | [Nástroje](/sql/linux/sql-server-linux-setup-tools) | [Agent SQL Server](/sql/linux/sql-server-linux-setup-sql-agent) | [Fulltextové vyhledávání](/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](/sql/linux/sql-server-linux-setup-ssis) | [Doplněk pro vysokou dostupnost](/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![RHEL a databázový stroj](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a nástroje](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a Agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a fulltextové vyhledávání](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![RHEL a SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![Doplněk RHEL a HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) |
 | SLES | ![SLES a databázový stroj](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a nástroje](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a Agent SQL Server](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a fulltextové vyhledávání](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![SLES a SSIS](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![Doplněk SLES a HA](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png)|
@@ -67,7 +67,7 @@ Při konfiguraci SQL Server on Linux nainstalujete balíček databázového stro
 
 * [Přehled služby Azure Virtual Machines](../../../virtual-machines/linux/overview.md)
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 * [Úvod do Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
@@ -79,7 +79,7 @@ Při konfiguraci SQL Server on Linux nainstalujete balíček databázového stro
 
 ### <a name="sql"></a>SQL
 
-* [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux)
+* [Dokumentace k SQL Server on Linux](/sql/linux)
 * [Porovnání Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Další kroky

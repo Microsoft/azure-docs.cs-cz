@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093510"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789722"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Rychlý Start: vytvoření okruhu ExpressRoute s privátním partnerským vztahem pomocí šablony ARM
 
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-expressroute-private-peering-vnet%2Fazuredeploy.json)
 
@@ -34,16 +34,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet).
 
-V tomto rychlém startu vytvoříte okruh ExpressRoute s *Equinix* jako poskytovatelem služeb. Okruh bude používat *SKU úrovně Premium*, se šířkou pásma *50 MB/* s a umístěním partnerského vztahu *řadiče domény Washington*. Privátní partnerské vztahy budou povolené s primární a sekundární podsítí *192.168.10.16/30* a *192.168.10.20/30* . Vytvoří se taky virtuální síť spolu s *bránou HighPerformance ExpressRoute*.
+V tomto rychlém startu vytvoříte okruh ExpressRoute s *Equinix* jako poskytovatelem služeb. Okruh bude používat *SKU úrovně Premium* , se šířkou pásma *50 MB/* s a umístěním partnerského vztahu *řadiče domény Washington* . Privátní partnerské vztahy budou povolené s primární a sekundární podsítí *192.168.10.16/30* a *192.168.10.20/30* . Vytvoří se taky virtuální síť spolu s *bránou HighPerformance ExpressRoute* .
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 V šabloně bylo definováno více prostředků Azure:
 
 * [**Microsoft. Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft. Network/expressRouteCircuits/Peers**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (používá se pro povolení privátního partnerského vztahu na okruhu)
 * [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (skupina zabezpečení sítě se používá pro podsítě ve virtuální síti).
-* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (veřejná IP adresa je používána bránou ExpressRoute)
 * [**Microsoft. Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (Brána ExpressRoute se používá k propojení virtuální sítě k okruhu).
 
@@ -51,7 +51,7 @@ Další šablony, které souvisejí s ExpressRoute, najdete v tématu [šablony 
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte **vyzkoušet** z následujícího bloku kódu a otevřete Azure Cloud Shell a pak postupujte podle pokynů pro přihlášení k Azure. 
+1. Vyberte **vyzkoušet** z následujícího bloku kódu a otevřete Azure Cloud Shell a pak postupujte podle pokynů pro přihlášení k Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -70,7 +70,7 @@ Další šablony, které souvisejí s ExpressRoute, najdete v tématu [šablony 
 
 1. Pro zkopírování skriptu PowerShellu vyberte **Kopírovat** z předchozího bloku kódu.
 
-1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit**.
+1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit** .
 
 1. Zadejte hodnoty.
 
@@ -84,7 +84,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -94,7 +94,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
      :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
 
-1. Vyberte ExpressRoute okruh **ER-ck01** , abyste ověřili, že je **povolený**stav okruhu, stav poskytovatele není **zřízený** , a soukromý partnerský vztah má stav **zřízený**.
+1. Vyberte ExpressRoute okruh **ER-ck01** , abyste ověřili, že je **povolený** stav okruhu, stav poskytovatele není **zřízený** , a soukromý partnerský vztah má stav **zřízený** .
 
     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="Výstup nasazení ExpressRoute Správce prostředků PowerShellu":::
 
@@ -114,6 +114,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>Další kroky
 
 V tomto rychlém startu jste vytvořili:
+
 * Okruh ExpressRoute
 * Virtual Network
 * VPN Gateway

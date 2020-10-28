@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5948f7adedfa430d7d0dac570910f662846464c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058212"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790861"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Kurz: Konfigurace replikace mezi dvěma spravovanými instancemi
 
@@ -68,7 +68,7 @@ Pro připojení ke spravovaným instancím budete taky muset [nakonfigurovat vir
 
 ## <a name="3---create-an-azure-storage-account"></a>3. vytvoření účtu služby Azure Storage
 
-[Vytvořte účet úložiště Azure](/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
+[Vytvořte účet úložiště Azure](../../storage/common/storage-account-create.md#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště. 
 
 Zkopírujte cestu ke sdílené složce ve formátu: `\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -326,4 +326,4 @@ Prostředky Azure můžete vyčistit [odstraněním prostředků spravované ins
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete si taky přečíst další informace o [transakční replikaci pomocí spravované instance Azure SQL](replication-transactional-overview.md) nebo se seznámit s konfigurací replikace mezi [vydavatelem nebo distributorem spravované instance SQL a SQL na předplatiteli virtuálních počítačů Azure](replication-two-instances-and-sql-server-configure-tutorial.md). 
+Můžete si taky přečíst další informace o [transakční replikaci pomocí spravované instance Azure SQL](replication-transactional-overview.md) nebo se seznámit s konfigurací replikace mezi [vydavatelem nebo distributorem spravované instance SQL a SQL na předplatiteli virtuálních počítačů Azure](replication-two-instances-and-sql-server-configure-tutorial.md).

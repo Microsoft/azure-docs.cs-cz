@@ -14,25 +14,25 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293369"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789824"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Serveru na virtuálním počítači Azure
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Server na virtuálním počítači Azure
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak změnit verzi Microsoft SQL Server na virtuálním počítači s Windows (VM) v Microsoft Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení místního upgradu SQL Server platí následující podmínky:
 
 - Je třeba zadat instalační médium požadované verze SQL Server. Zákazníci, kteří mají [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default), můžou instalační médium získat z centra [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z Azure Marketplace SQL Server image virtuálního počítače, která má novější verzi SQL Server (obvykle se nachází v C:\SQLServerFull).
-- Upgrady edice by se měly řídit pomocí [cest upgradu podpory](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15).
+- Upgrady edice by se měly řídit pomocí [cest upgradu podpory](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15).
 
 ## <a name="planning-for-version-change"></a>Plánování změny verze
 
@@ -40,34 +40,34 @@ Před změnou verze doporučujeme zkontrolovat následující položky:
 
 1. Podívejte se, co je nového ve verzi, na kterou plánujete upgradovat:
 
-   - Co je nového v [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)
-   - Co je nového v [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)
-   - Co je nového v [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)
-   - Co je nového v [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)
+   - Co je nového v [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)
+   - Co je nového v [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)
+   - Co je nového v [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)
+   - Co je nového v [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)
 
-1. Doporučujeme, abyste kontrolovali [certifikaci kompatibility](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) pro verzi, na kterou se chystáte přejít, abyste mohli použít režimy kompatibility databáze k minimalizaci účinku upgradu.
+1. Doporučujeme, abyste kontrolovali [certifikaci kompatibility](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) pro verzi, na kterou se chystáte přejít, abyste mohli použít režimy kompatibility databáze k minimalizaci účinku upgradu.
 1. Následující články vám pomohou zajistit úspěšný výsledek:
 
    - [Video: modernizaci SQL Server | Pam Lahoud & Pedro Lopes | 20 let PASS](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [Pomocník pro experimentování s databázemi pro testování AB](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [Upgrade databází pomocí Pomocníka pro optimalizaci dotazů](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [Změna úrovně kompatibility databáze a použití úložiště dotazů](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [Pomocník pro experimentování s databázemi pro testování AB](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [Upgrade databází pomocí Pomocníka pro optimalizaci dotazů](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [Změna úrovně kompatibility databáze a použití úložiště dotazů](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>Upgradovat verzi SQL
 
 > [!WARNING]
 > Upgrade verze SQL Server restartuje službu, aby SQL Server kromě jakýchkoli přidružených služeb, jako jsou například služby Analysis Services a R.
 
-Pokud chcete upgradovat verzi SQL Server, Získejte pro pozdější verzi instalační médium SQL Server, které by [podporovalo cestu upgradu](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) SQL Server, a proveďte následující kroky:
+Pokud chcete upgradovat verzi SQL Server, Získejte pro pozdější verzi instalační médium SQL Server, které by [podporovalo cestu upgradu](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) SQL Server, a proveďte následující kroky:
 
 1. Před zahájením procesu zálohujte databáze, včetně systému (s výjimkou databáze tempdb) a uživatelských databází. Zálohování na úrovni virtuálního počítače konzistentní s aplikacemi můžete vytvořit také pomocí služby Azure Backup Services.
 1. Spusťte Setup.exe z instalačního média SQL Server.
-1. Průvodce instalací spustí Centrum instalace SQL Server. Chcete-li upgradovat existující instanci SQL Server, v navigačním podokně vyberte možnost **instalace** a pak vyberte možnost **upgradovat ze starší verze nástroje SQL Server**.
+1. Průvodce instalací spustí Centrum instalace SQL Server. Chcete-li upgradovat existující instanci SQL Server, v navigačním podokně vyberte možnost **instalace** a pak vyberte možnost **upgradovat ze starší verze nástroje SQL Server** .
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="Výběr pro upgrade verze SQL Server":::
 
-1. Na stránce **kód Product Key** vyberte možnost, která určuje, jestli upgradujete na bezplatnou edici SQL Server nebo že máte k dispozici klíč PID pro produkční verzi produktu. Další informace najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) a [podporované verze a upgrady edice (SQL Server 2016)](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
-1. Vyberte **Další** , dokud se nedostanete do stránky **připraveno k upgradu** , a pak vyberte **upgradovat**. Až se změna projeví, může okno nastavení přestat reagovat na několik minut. **Kompletní** stránka potvrdí, že se upgrade dokončil. Podrobný postup pro upgrade najdete v tématu [úplný postup](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
+1. Na stránce **kód Product Key** vyberte možnost, která určuje, jestli upgradujete na bezplatnou edici SQL Server nebo že máte k dispozici klíč PID pro produkční verzi produktu. Další informace najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) a [podporované verze a upgrady edice (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15).
+1. Vyberte **Další** , dokud se nedostanete do stránky **připraveno k upgradu** , a pak vyberte **upgradovat** . Až se změna projeví, může okno nastavení přestat reagovat na několik minut. **Kompletní** stránka potvrdí, že se upgrade dokončil. Podrobný postup pro upgrade najdete v tématu [úplný postup](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure).
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Výběr pro upgrade verze SQL Server":::
 

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f969c30033604cb4b331b5ed86d992af371f9c75
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490811"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791184"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -33,7 +33,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete tento kurz dokončit, Stáhněte si nejnovější verzi AzCopy. Viz Začínáme [s AzCopy](storage-use-azcopy-v10.md).
 
-Pokud používáte Windows, budete potřebovat nástroj [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx), který se v tomto kurzu používá k naplánování úlohy. Uživatelé Linuxu místo toho použijí příkaz crontab.
+Pokud používáte Windows, budete potřebovat nástroj [Schtasks](/windows/win32/taskschd/schtasks), který se v tomto kurzu používá k naplánování úlohy. Uživatelé Linuxu místo toho použijí příkaz crontab.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -44,7 +44,7 @@ Prvním krokem je vytvoření kontejneru, protože objekty blob se musí vždy n
 Podle těchto pokynů vytvořte kontejner:
 
 1. Na hlavní stránce vyberte tlačítko **Účty úložiště** a pak vyberte účet úložiště, který jste vytvořili.
-2. V části **Služby** vyberte **Objekty blob** a pak vyberte **Kontejner**.
+2. V části **Služby** vyberte **Objekty blob** a pak vyberte **Kontejner** .
 
    ![Snímek obrazovky znázorňující vytvoření kontejneru](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
@@ -62,7 +62,7 @@ Uložte soubor AzCopy kamkoli do počítače. Přidejte umístění souboru do p
 
 ## <a name="authenticate-with-azure-ad"></a>Ověřování pomocí Azure AD
 
-Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Viz [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](/azure/storage/common/storage-auth-aad-rbac-portal).
+Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) . Viz [použití Azure Portal k přiřazení role Azure pro přístup k datům objektů BLOB a front](./storage-auth-aad-rbac-portal.md).
 
 Pak otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
 
@@ -78,7 +78,7 @@ Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomo
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Nahrání obsahu složky do úložiště objektů blob
 
-Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů blob ve [Windows](/azure/storage/common/storage-use-azcopy) nebo v [Linuxu](/azure/storage/common/storage-use-azcopy-linux). Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
+Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště objektů blob ve [Windows](./storage-use-azcopy-v10.md) nebo v [Linuxu](./storage-use-azcopy-v10.md). Pokud chcete nahrát všechny objekty blob ve složce, zadejte následující příkaz AzCopy:
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,7 +135,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-V tomto kurzu se k vytvoření plánované úlohy ve Windows používá [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx). Příkaz [Crontab](http://crontab.org/) slouží k vytvoření úlohy Cron v Linuxu.
+V tomto kurzu se k vytvoření plánované úlohy ve Windows používá [Schtasks](/windows/win32/taskschd/schtasks). Příkaz [Crontab](http://crontab.org/) slouží k vytvoření úlohy Cron v Linuxu.
 
  **Schtasks** umožňuje správci vytvářet, odstraňovat, dotazovat, měnit, spouštět a ukončovat plánované úlohy na místním nebo vzdáleném počítači. **Cron** umožňuje uživatelům Linuxu a Unixu spouštět příkazy nebo skripty v zadaném datu a čase pomocí [výrazů Cron](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
@@ -166,7 +166,7 @@ Příkaz používá:
 - Parametr `/TN` k určení názvu úlohy.
 - Parametr `/TR` k určení cesty k souboru `script.bat`.
 
-Další informace o vytváření plánovaných úloh ve Windows najdete v tématu [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes).
+Další informace o vytváření plánovaných úloh ve Windows najdete v tématu [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes).
 
 ---
 
@@ -176,7 +176,7 @@ Pokud chcete ověřit správné spouštění plánované úlohy nebo úlohy Cron
 
 Další informace o způsobech přesunu místních dat do služby Azure Storage a naopak najdete na následujícím odkazu:
 
-* [Přesunout data do a z Azure Storage](/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Přesunout data do a z Azure Storage](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).  
 
 Další informace o AzCopy najdete v některém z těchto článků:
 

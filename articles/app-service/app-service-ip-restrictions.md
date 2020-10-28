@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533950"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790946"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Omezení přístupu Azure App Service
 
@@ -24,7 +24,11 @@ Po podání žádosti do vaší aplikace se adresa z vyhodnotí na základě pra
 
 Funkce omezení přístupu je implementovaná v App Service rolích front-endu, které jsou v nadřazeném hostiteli hostitele, kde se váš kód spouští. Proto jsou omezení přístupu efektivně v síti seznamy ACL.
 
-Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě pro více tenantů z vybraných podsítí. Musí být povolená jak na straně sítě, tak i na službě, se kterou se povoluje. Nefunguje tak, aby se omezil provoz na aplikace, které jsou hostované v App Service Environment. Pokud jste v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel IP adres.
+Možnost omezit přístup k vaší webové aplikaci z Azure Virtual Network (VNet) se nazývá [koncové body služby][serviceendpoints]. Koncové body služby umožňují omezit přístup ke službě pro více tenantů z vybraných podsítí. Nefunguje tak, aby se omezil provoz na aplikace, které jsou hostované v App Service Environment. Pokud jste v App Service Environment, můžete řídit přístup k aplikaci pomocí pravidel IP adres.
+
+> [!NOTE]
+> Koncové body služby musí být povolené jak na straně sítě, tak i ve službě Azure, se kterou se povoluje. Seznam služeb Azure, které podporují koncové body služby, najdete v tématu [Virtual Network koncových bodů služby](../virtual-network/virtual-network-service-endpoints-overview.md).
+>
 
 ![tok omezení přístupu](media/app-service-ip-restrictions/access-restrictions-flow.png)
 

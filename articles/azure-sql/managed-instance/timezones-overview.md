@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: 7b95ddfdb75dd5e5951a9c95442798692582fe6a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978352"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790623"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,7 +51,7 @@ Když zadáte parametry nové instance, vyberte časové pásmo ze seznamu podpo
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 
-V [šabloně správce prostředků](https://aka.ms/sql-mi-create-arm-posh) zadejte vlastnost timezoneId, která nastaví časové pásmo během vytváření instance.
+V [šabloně správce prostředků](./scripts/create-powershell-azure-resource-manager-template.md) zadejte vlastnost timezoneId, která nastaví časové pásmo během vytváření instance.
 
 ```json
 "properties": {
@@ -95,7 +95,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 
 ## <a name="limitations"></a>Omezení
 
-- Časové pásmo existující spravované instance nelze změnit. Jako alternativní řešení vytvořte novou spravovanou instanci se správným časovým pásmem a pak buď proveďte ruční zálohování a obnovení, nebo co doporučujeme, proveďte obnovení k určitému [bodu v čase v době mezi instancemi](https://docs.microsoft.com/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal#restore-an-existing-database).
+- Časové pásmo existující spravované instance nelze změnit. Jako alternativní řešení vytvořte novou spravovanou instanci se správným časovým pásmem a pak buď proveďte ruční zálohování a obnovení, nebo co doporučujeme, proveďte obnovení k určitému [bodu v čase v době mezi instancemi](./point-in-time-restore.md?tabs=azure-portal#restore-an-existing-database).
 - Externí procesy spouštěné z úloh agenta SQL Server nezohledňují časové pásmo instance.
 
 ## <a name="list-of-supported-time-zones"></a>Seznam podporovaných časových pásem
@@ -243,7 +243,7 @@ Použití stejného časového pásma v rámci primární a sekundární instanc
 
 ## <a name="see-also"></a>Viz také 
 
-- [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
-- [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
-- [V ČASOVÉm PÁSMu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
+- [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)
+- [V ČASOVÉm PÁSMu (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

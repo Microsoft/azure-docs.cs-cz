@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331681"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789110"
 ---
 # <a name="introduction-to-azure-defender"></a>Seznámení s Azure Defenderem
 
@@ -20,7 +20,7 @@ Funkce Azure Security Center pokrývají dva široké pilíře zabezpečení clo
 
 - **CSPM (Cloud Security stav Management)** – Security Center k dispozici **zdarma** všem uživatelům Azure. Bezplatné prostředí zahrnuje CSPM funkce, jako je bezpečné skóre, detekce chybných konfigurací zabezpečení v počítačích Azure, inventáři prostředků a dalších. Pomocí těchto funkcí CSPM můžete posílit své hybridní cloudové stav a sledovat dodržování předpisů pomocí integrovaných zásad.
 
-- **Cloudová ochrana zatížení (CWP)** Security Center – integrovaná cloudová platforma pro ochranu zatížení (CWPP), **Azure Defender**, přináší pokročilou, inteligentní a chráněnou službu Azure a hybridní prostředky a úlohy. Povolení služby Azure Defender přináší řadu dalších funkcí zabezpečení, jak je popsáno na této stránce. Kromě integrovaných zásad můžete při povolení jakéhokoli plánu Azure Defenderu přidat vlastní zásady a iniciativy. Můžete přidat zákonné standardy, jako je NIST a Azure CIS, a srovnávací test zabezpečení Azure pro skutečně přizpůsobený pohled na dodržování předpisů.
+- **Cloudová ochrana zatížení (CWP)** Security Center – integrovaná cloudová platforma pro ochranu zatížení (CWPP), **Azure Defender** , přináší pokročilou, inteligentní a chráněnou službu Azure a hybridní prostředky a úlohy. Povolení služby Azure Defender přináší řadu dalších funkcí zabezpečení, jak je popsáno na této stránce. Kromě integrovaných zásad můžete při povolení jakéhokoli plánu Azure Defenderu přidat vlastní zásady a iniciativy. Můžete přidat zákonné standardy, jako je NIST a Azure CIS, a srovnávací test zabezpečení Azure pro skutečně přizpůsobený pohled na dodržování předpisů.
 
 Řídicí panel Azure Defender v Security Center poskytuje viditelnost a kontrolu nad funkcemi CWP pro vaše prostředí:
 
@@ -65,7 +65,7 @@ K rozšiřování ochrany virtuálních počítačů a databází SQL, které js
 
 Když Azure Defender zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.
 
-Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z integrovaného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md).
+Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z integrovaného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel, všech SIEM třetích stran nebo jakýchkoli jiných externích nástrojů, postupujte podle pokynů v tématu [výstrahy streamování do řešení pro správu služeb Siem, společnosti nebo IT](export-to-siem.md).
 
 > [!NOTE]
 > Zobrazení výstrah z různých zdrojů může trvat různě dlouho. Například výstrahy, které vyžadují analýzu síťového provozu, mohou trvat déle než výstrahy související s podezřelými procesy běžícími na virtuálních počítačích.
