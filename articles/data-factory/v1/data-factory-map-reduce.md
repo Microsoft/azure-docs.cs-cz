@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 98e352024ceea322f09947baf1bc759459a2af19
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359964"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636846"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolat programy MapReduce z Data Factory
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359964"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -49,7 +49,7 @@ Podrobnosti o spouštění skriptů na bázi vepřového a podregistru v cluster
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>JSON pro aktivitu MapReduce služby HDInsight
 V definici JSON aktivity HDInsight: 
 
-1. Nastavte **typ** **aktivity** na **HDInsight**.
+1. Nastavte **typ** **aktivity** na **HDInsight** .
 2. Zadejte název třídy pro vlastnost **ClassName** .
 3. Zadejte cestu k souboru JAR včetně názvu souboru pro vlastnost **jarFilePath** .
 4. Zadejte propojenou službu, která odkazuje na Blob Storage Azure, která obsahuje soubor JAR pro vlastnost **jarLinkedService** .   
@@ -183,7 +183,7 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 
 | Vlastnost | Poznámky |
 |:--- |:--- |
-| typ |Typ musí být nastaven na **HDInsightMapReduce**. |
+| typ |Typ musí být nastaven na **HDInsightMapReduce** . |
 | NázevTřídy |Název třídy je: **WORDCOUNT** |
 | jarFilePath |Cesta k souboru jar obsahujícímu třídu Pokud zkopírujete/vložíte následující kód, nezapomeňte změnit název clusteru. |
 | jarLinkedService |Azure Storage propojená služba, která obsahuje soubor JAR. Tato propojená služba odkazuje na úložiště, které je přidružené ke clusteru HDInsight. |
@@ -235,14 +235,14 @@ Kanál v tomto příkladu má pouze jednu aktivitu typu: HDInsightMapReduce. Mez
 ## <a name="run-spark-programs"></a>Spouštění programů Spark
 Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět programy Spark. Podrobnosti najdete v článku [Vyvolání programů Spark ze služby Azure Data Factory](data-factory-spark.md).  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>Viz také
@@ -251,4 +251,3 @@ Pomocí aktivity MapReduce můžete na svém clusteru HDInsight Spark spouštět
 * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 * [Vyvolání programů Spark](data-factory-spark.md)
 * [Vyvolání skriptů jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

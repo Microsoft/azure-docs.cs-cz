@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368855"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637679"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 
@@ -49,7 +49,7 @@ Mapování datových toků je vizuálně navržené transformace dat v Azure Dat
 
 ### <a name="wrangling-data-flows"></a>Toky dat tahání
 
-Tahání datové toky v Azure Data Factory umožňují iterativní přípravu dat bez kódu na úrovni cloudu. Tahání datové toky se integrují s [Power Query online](https://docs.microsoft.com/power-query/) a zpřístupňují Power Query M funkcí pro data tahání v cloudovém měřítku prostřednictvím spuštění Sparku. Další informace najdete v tématu [toky tahání data](wrangling-data-flow-overview.md)flows.
+Tahání datové toky v Azure Data Factory umožňují iterativní přípravu dat bez kódu na úrovni cloudu. Tahání datové toky se integrují s [Power Query online](/power-query/) a zpřístupňují Power Query M funkcí pro data tahání v cloudovém měřítku prostřednictvím spuštění Sparku. Další informace najdete v tématu [toky tahání data](wrangling-data-flow-overview.md)flows.
 
 ## <a name="external-transformations"></a>Externí transformace
 
@@ -103,8 +103,8 @@ Můžete vytvořit vlastní aktivitu pro spouštění skriptů jazyka R na svém
 ### <a name="compute-environments"></a>Výpočetní prostředí
 Vytvoříte propojenou službu pro výpočetní prostředí a pak při definování aktivity transformace použijete propojenou službu. Data Factory podporují dva typy výpočetních prostředí. 
 
-- **Na vyžádání**: v tomto případě je výpočetní prostředí plně spravované pomocí Data Factory. Služba Data Factory ji automaticky vytvoří před odesláním úlohy ke zpracování dat a po jejím dokončení se odstraní. Můžete nakonfigurovat a řídit podrobné nastavení výpočetního prostředí na vyžádání pro provádění úloh, správu clusterů a spouštěcí akce. 
-- **Přineste si vlastní**: v takovém případě můžete zaregistrovat vlastní výpočetní prostředí (například cluster HDInsight) jako propojenou službu v Data Factory. Výpočetní prostředí je spravováno vámi a služba Data Factory ji používá ke spuštění aktivit. 
+- **Na vyžádání** : v tomto případě je výpočetní prostředí plně spravované pomocí Data Factory. Služba Data Factory ji automaticky vytvoří před odesláním úlohy ke zpracování dat a po jejím dokončení se odstraní. Můžete nakonfigurovat a řídit podrobné nastavení výpočetního prostředí na vyžádání pro provádění úloh, správu clusterů a spouštěcí akce. 
+- **Přineste si vlastní** : v takovém případě můžete zaregistrovat vlastní výpočetní prostředí (například cluster HDInsight) jako propojenou službu v Data Factory. Výpočetní prostředí je spravováno vámi a služba Data Factory ji používá ke spuštění aktivit. 
 
 Seznamte se s výpočetními službami podporovanými nástrojem Data Factory v článku věnovaném [výpočetním propojeným službám](compute-linked-services.md) . 
 

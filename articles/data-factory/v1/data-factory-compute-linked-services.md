@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f584ba1021e9cc66454e3aebd7f51b34e72885f5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2250a2565aa4fbab32daed54830fb701a3a2a1ac
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369178"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636183"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Výpočetní prostředí podporovaná ve verzi Azure Data Factory 1
 > [!NOTE]
@@ -49,19 +49,19 @@ Microsoft aktualizuje seznam podporovaných verzí HDInsight s nejnovějšími k
 Od 15. prosince 2017:
 
 - Nemůžete už vytvářet clustery HDInsight verze 3,3 (nebo starší verze), které používají propojenou službu HDInsight na vyžádání v Data Factory verze 1. 
-- Pokud vlastnosti [ **OsType** a **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) nejsou explicitně zadány v definici JSON pro Data Factory existující propojenou službu HDInsight verze 1 na vyžádání, bude výchozí hodnota změněna z **verze = 3.1, osType = Windows** na **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux**).
+- Pokud vlastnosti [ **OsType** a **Version**](#azure-hdinsight-on-demand-linked-service) nejsou explicitně zadány v definici JSON pro Data Factory existující propojenou službu HDInsight verze 1 na vyžádání, bude výchozí hodnota změněna z **verze = 3.1, osType = Windows** na **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , osType = Linux** ).
 
 Od 31. července 2018:
 
 - Pomocí propojené služby HDInsight na vyžádání v Data Factory verze 1 už nemůžete vytvářet žádné verze clusterů HDInsight se systémem Windows. 
 
-### <a name="recommended-actions"></a>Doporučené akce 
+### <a name="recommended-actions"></a>Doporučené akce
 
-- Aby bylo zajištěno, že budete moci použít nejnovější součásti a opravy ekosystému Hadoop, aktualizujte [vlastnosti **OsType** a **Version** ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) Data Factory ovlivněných služeb HDInsight na vyžádání verze 1 na vyžádání v novějších verzích HDInsight založených na systému Linux (HDInsight 3,6). 
-- Do 15. prosince 2017 zkušebního Data Factory v podregistru, prase, MapReduce a streamování Hadoop verze 1, které odkazují na ovlivněnou propojenou službu. Ujistěte se, že jsou kompatibilní s novými **osType** a výchozími hodnotami **verze** (**verze = 3.6**, **OsType = Linux**) nebo explicitní verzí HDInsight a typem operačního systému, na který upgradujete. 
-  Další informace o kompatibilitě najdete v tématu [migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) a [Jaké jsou komponenty a verze systému Hadoop dostupné v HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
+- Aby bylo zajištěno, že budete moci použít nejnovější součásti a opravy ekosystému Hadoop, aktualizujte [vlastnosti **OsType** a **Version**](#azure-hdinsight-on-demand-linked-service) Data Factory ovlivněných služeb HDInsight na vyžádání verze 1 na vyžádání v novějších verzích HDInsight založených na systému Linux (HDInsight 3,6). 
+- Do 15. prosince 2017 zkušebního Data Factory v podregistru, prase, MapReduce a streamování Hadoop verze 1, které odkazují na ovlivněnou propojenou službu. Ujistěte se, že jsou kompatibilní s novými **osType** a výchozími hodnotami **verze** ( **verze = 3.6** , **OsType = Linux** ) nebo explicitní verzí HDInsight a typem operačního systému, na který upgradujete. 
+  Další informace o kompatibilitě najdete v tématu [migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux](../../hdinsight/index.yml) a [Jaké jsou komponenty a verze systému Hadoop dostupné v HDInsight?](../../hdinsight/hdinsight-component-versioning.md). 
 - Pokud chcete dál používat propojenou službu HDInsight na vyžádání Data Factory verze 1 k vytváření clusterů HDInsight se systémem Windows, explicitně nastavte **osType** na **Windows** do 15. prosince 2017. Doporučujeme migrovat clustery HDInsight se systémem Linux do 31. července 2018. 
-- Pokud používáte propojenou službu HDInsight na vyžádání k provedení Data Factory vlastní aktivity verze 1, aktualizujte definici JSON vlastní aktivity DotNet, aby místo toho používala Azure Batch propojenou službu. Další informace najdete v tématu [použití vlastních aktivit v kanálu Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
+- Pokud používáte propojenou službu HDInsight na vyžádání k provedení Data Factory vlastní aktivity verze 1, aktualizujte definici JSON vlastní aktivity DotNet, aby místo toho používala Azure Batch propojenou službu. Další informace najdete v tématu [použití vlastních aktivit v kanálu Data Factory](./data-factory-use-custom-activities.md). 
 
 > [!Note]
 > Pokud používáte své stávající propojené zařízení HDInsight clusteru v Data Factory verze 1 nebo v Azure Data Factory propojená služba HDInsight na vyžádání a na vyžádání, není nutná žádná akce. V těchto scénářích se už vynutila zásada podpory nejnovější verze clusterů HDInsight. 
@@ -112,7 +112,7 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 ```
 
 > [!IMPORTANT]
-> Cluster HDInsight vytvoří *výchozí kontejner* ve službě Azure Blob Storage, kterou zadáte ve vlastnosti **linkedServiceName** JSON. Podle návrhu služba HDInsight při odstranění clusteru neodstraní tento kontejner. V propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat řez, pokud není existující živý cluster (**TimeToLive**). Po dokončení zpracování se cluster odstraní. 
+> Cluster HDInsight vytvoří *výchozí kontejner* ve službě Azure Blob Storage, kterou zadáte ve vlastnosti **linkedServiceName** JSON. Podle návrhu služba HDInsight při odstranění clusteru neodstraní tento kontejner. V propojené službě HDInsight na vyžádání se cluster HDInsight vytvoří pokaždé, když je potřeba zpracovat řez, pokud není existující živý cluster ( **TimeToLive** ). Po dokončení zpracování se cluster odstraní. 
 >
 > Po zpracování dalších řezů se v úložišti objektů BLOB zobrazuje spousta kontejnerů. Pokud nepotřebujete kontejnery pro úlohy odstraňování potíží, možná budete chtít kontejnery odstranit, abyste snížili náklady na úložiště. Názvy těchto kontejnerů se řídí vzorem: `adf<your Data Factory name>-<linked service name>-<date and time>`. K odstranění kontejnerů v úložišti objektů blob můžete použít nástroj, jako je [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/) .
 >
@@ -121,13 +121,13 @@ Následující JSON definuje propojenou službu HDInsight na vyžádání v syst
 ### <a name="properties"></a>Vlastnosti
 | Vlastnost                     | Popis                              | Povinné |
 | ---------------------------- | ---------------------------------------- | -------- |
-| typ                         | Nastavte vlastnost Type na **HDInsightOnDemand**. | Ano      |
+| typ                         | Nastavte vlastnost Type na **HDInsightOnDemand** . | Ano      |
 | clusterSize                  | Počet pracovních procesů a datových uzlů v clusteru. Cluster HDInsight se vytvoří s 2 hlavními uzly kromě počtu pracovních uzlů, které pro tuto vlastnost zadáte. Uzly mají velikost Standard_D3, která má 4 jádra. Cluster se čtyřmi pracovními uzly přijímá 24 jader (4 \* 4 = 16 jader pro pracovní uzly a 2 \* 4 = 8 jader pro hlavní uzly). Podrobnosti o Standard_D3 vrstvě najdete [v tématu vytváření clusterů Hadoop se systémem Linux ve službě HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ano      |
-| timeToLive                   | Povolený čas nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane aktivní cluster HDInsight na vyžádání, když je dokončený běh aktivity, pokud v clusteru nejsou žádné další aktivní úlohy.<br /><br />Pokud například spuštění aktivity trvá 6 minut a **TimeToLive** je nastaveno na 5 minut, zůstane cluster aktivní po dobu 5 minut po 6 minutách zpracování spuštění aktivity. Pokud se v okně 6 minut spustí jiný běh aktivity, zpracuje ho stejný cluster.<br /><br />Vytvoření clusteru HDInsight na vyžádání je náročná operace (může chvíli trvat). Toto nastavení použijte, pokud je to potřeba pro zlepšení výkonu datové továrny, a to tak, že znovu použijete cluster HDInsight na vyžádání.<br /><br />Pokud nastavíte hodnotu **TimeToLive** na hodnotu **0**, cluster se odstraní hned po dokončení spuštění aktivity. Pokud však nastavíte vysokou hodnotu, cluster může zůstat nečinný, což zbytečně vede k vysokým nákladům. Je důležité nastavit odpovídající hodnotu podle svých potřeb.<br /><br />Pokud je hodnota **TimeToLive** vhodně nastavená, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
-| verze                      | Verze clusteru HDInsight. Povolené verze HDInsight najdete v tématu [podporované verze HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Pokud tato hodnota není zadaná, použije se [nejnovější výchozí verze HDI](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) . | Ne       |
+| timeToLive                   | Povolený čas nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane aktivní cluster HDInsight na vyžádání, když je dokončený běh aktivity, pokud v clusteru nejsou žádné další aktivní úlohy.<br /><br />Pokud například spuštění aktivity trvá 6 minut a **TimeToLive** je nastaveno na 5 minut, zůstane cluster aktivní po dobu 5 minut po 6 minutách zpracování spuštění aktivity. Pokud se v okně 6 minut spustí jiný běh aktivity, zpracuje ho stejný cluster.<br /><br />Vytvoření clusteru HDInsight na vyžádání je náročná operace (může chvíli trvat). Toto nastavení použijte, pokud je to potřeba pro zlepšení výkonu datové továrny, a to tak, že znovu použijete cluster HDInsight na vyžádání.<br /><br />Pokud nastavíte hodnotu **TimeToLive** na hodnotu **0** , cluster se odstraní hned po dokončení spuštění aktivity. Pokud však nastavíte vysokou hodnotu, cluster může zůstat nečinný, což zbytečně vede k vysokým nákladům. Je důležité nastavit odpovídající hodnotu podle svých potřeb.<br /><br />Pokud je hodnota **TimeToLive** vhodně nastavená, může více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
+| verze                      | Verze clusteru HDInsight. Povolené verze HDInsight najdete v tématu [podporované verze HDInsight](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Pokud tato hodnota není zadaná, použije se [nejnovější výchozí verze HDI](../../hdinsight/hdinsight-component-versioning.md) . | Ne       |
 | linkedServiceName            | Propojená služba Azure Storage, kterou má cluster na vyžádání použít k ukládání a zpracování dat. Cluster HDInsight se vytvoří ve stejné oblasti jako tento účet úložiště.<p>V současné době nemůžete vytvořit cluster HDInsight na vyžádání, který jako úložiště používá Azure Data Lake Store. Pokud chcete uložit výsledná data ze zpracování HDInsight v Data Lake Store, zkopírujte data z úložiště objektů blob do Data Lake Store pomocí aktivity kopírování. </p> | Ano      |
 | additionalLinkedServiceNames | Určuje další účty úložiště pro propojenou službu HDInsight. Data Factory registruje účty úložiště vaším jménem. Tyto účty úložiště musí být ve stejné oblasti jako cluster HDInsight. Cluster HDInsight se vytvoří ve stejné oblasti jako účet úložiště, který je určený vlastností **linkedServiceName** . | Ne       |
-| osType                       | Typ operačního systému. Povolené hodnoty jsou **Linux** a **Windows**. Pokud tato hodnota není zadaná, použije se **Linux** .  <br /><br />Důrazně doporučujeme používat clustery HDInsight se systémem Linux. Datum vyřazení pro HDInsight ve Windows je 31. července 2018. | Ne       |
+| osType                       | Typ operačního systému. Povolené hodnoty jsou **Linux** a **Windows** . Pokud tato hodnota není zadaná, použije se **Linux** .  <br /><br />Důrazně doporučujeme používat clustery HDInsight se systémem Linux. Datum vyřazení pro HDInsight ve Windows je 31. července 2018. | Ne       |
 | hcatalogLinkedServiceName    | Název propojené služby Azure SQL, která odkazuje na databázi HCatalog. Cluster HDInsight na vyžádání se vytvoří pomocí SQL Database jako metastore. | Ne       |
 
 #### <a name="example-linkedservicenames-json"></a>Příklad: LinkedServiceNames JSON
@@ -197,12 +197,12 @@ Chcete-li určit velikost hlav, dat a uzlů ZooKeeper, použijte následující 
 
 | Vlastnost          | Popis                              | Povinné |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Nastaví velikost hlavního uzlu. Výchozí hodnota je **Standard_D3**. Podrobnosti najdete v tématu [Určení velikosti uzlů](#specify-node-sizes). | Ne       |
-| dataNodeSize      | Nastaví velikost datového uzlu. Výchozí hodnota je **Standard_D3**. | Ne       |
-| zookeeperNodeSize | Nastaví velikost uzlu ZooKeeper. Výchozí hodnota je **Standard_D3**. | Ne       |
+| headNodeSize      | Nastaví velikost hlavního uzlu. Výchozí hodnota je **Standard_D3** . Podrobnosti najdete v tématu [Určení velikosti uzlů](#specify-node-sizes). | Ne       |
+| dataNodeSize      | Nastaví velikost datového uzlu. Výchozí hodnota je **Standard_D3** . | Ne       |
+| zookeeperNodeSize | Nastaví velikost uzlu ZooKeeper. Výchozí hodnota je **Standard_D3** . | Ne       |
 
 #### <a name="specify-node-sizes"></a>Zadat velikosti uzlů
-Pro řetězcové hodnoty, které musíte zadat pro vlastnosti popsané v předchozí části, najdete informace v tématu [velikosti virtuálních počítačů](../../virtual-machines/linux/sizes.md). Hodnoty musí odpovídat rutinám a rozhraním API, na která se odkazuje v [velikostech virtuálních počítačů](../../virtual-machines/linux/sizes.md). Velká (výchozí) velikost uzlu dat má 7 GB paměti. To nemusí být pro váš scénář dostačující. 
+Pro řetězcové hodnoty, které musíte zadat pro vlastnosti popsané v předchozí části, najdete informace v tématu [velikosti virtuálních počítačů](../../virtual-machines/sizes.md). Hodnoty musí odpovídat rutinám a rozhraním API, na která se odkazuje v [velikostech virtuálních počítačů](../../virtual-machines/sizes.md). Velká (výchozí) velikost uzlu dat má 7 GB paměti. To nemusí být pro váš scénář dostačující. 
 
 Pokud chcete vytvořit hlavní uzly velikosti D4 a pracovní uzly, zadejte **Standard_D4** jako hodnotu pro vlastnosti **headNodeSize** a **dataNodeSize** : 
 
@@ -215,7 +215,7 @@ Pokud jste pro tyto vlastnosti nastavili nesprávnou hodnotu, může se zobrazit
 
   Nepovedlo se vytvořit cluster. Výjimka: Operaci vytvoření clusteru nelze dokončit. Operace se nezdařila, kód chyby je 400. Zanechaný stav clusteru: Chyba. Zpráva: ' PreClusterCreationValidationFailure '. 
   
-Pokud se zobrazí tato zpráva, ujistěte se, že používáte rutinu a názvy rozhraní API z tabulky ve [velikostech virtuálních počítačů](../../virtual-machines/linux/sizes.md).  
+Pokud se zobrazí tato zpráva, ujistěte se, že používáte rutinu a názvy rozhraní API z tabulky ve [velikostech virtuálních počítačů](../../virtual-machines/sizes.md).  
 
 > [!NOTE]
 > V současné době Data Factory nepodporuje clustery HDInsight, které jako primární úložiště používají Data Lake Store. Jako primární úložiště pro clustery HDInsight použijte Azure Storage. 
@@ -257,7 +257,7 @@ Můžete vytvořit propojenou službu HDInsight k registraci vlastního clusteru
 ### <a name="properties"></a>Vlastnosti
 | Vlastnost          | Popis                              | Povinné |
 | ----------------- | ---------------------------------------- | -------- |
-| typ              | Nastavte vlastnost Type na **HDInsight**. | Ano      |
+| typ              | Nastavte vlastnost Type na **HDInsight** . | Ano      |
 | clusterUri        | Identifikátor URI clusteru HDInsight.        | Ano      |
 | username          | Název uživatelského účtu, který se má použít pro připojení k existujícímu clusteru HDInsight. | Ano      |
 | heslo          | Heslo pro uživatelský účet.   | Ano      |
@@ -269,8 +269,8 @@ Můžete vytvořit propojenou službu Batch k registraci fondu služby Batch vir
 Pokud s používáním služby Batch začínáte, provedete to takto:
 
 * Seznamte se se [základy Azure Batch](../../azure-sql/database/sql-database-paas-overview.md).
-* Přečtěte si informace o rutině [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) . Pomocí této rutiny můžete vytvořit účet Batch. Případně můžete vytvořit účet Batch pomocí [Azure Portal](../../batch/batch-account-create-portal.md). Podrobné informace o použití rutiny najdete v tématu [použití PowerShellu ke správě účtu Batch](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
-* Přečtěte si informace o rutině [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) . Pomocí této rutiny můžete vytvořit fond Batch.
+* Přečtěte si informace o rutině [New-AzureBatchAccount](/previous-versions/azure/mt125880(v=azure.100)) . Pomocí této rutiny můžete vytvořit účet Batch. Případně můžete vytvořit účet Batch pomocí [Azure Portal](../../batch/batch-account-create-portal.md). Podrobné informace o použití rutiny najdete v tématu [použití PowerShellu ke správě účtu Batch](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account).
+* Přečtěte si informace o rutině [New-AzureBatchPool](/previous-versions/azure/mt125936(v=azure.100)) . Pomocí této rutiny můžete vytvořit fond Batch.
 
 ### <a name="example"></a>Příklad
 
@@ -289,7 +289,7 @@ Pokud s používáním služby Batch začínáte, provedete to takto:
 }
 ```
 
-Pro vlastnost názvu **účtu** přidejte **. \<region name\> ** do názvu účtu Batch. Příklad:
+Pro vlastnost názvu **účtu** přidejte **. \<region name\>** do názvu účtu Batch. Příklad:
 
 ```json
 "accountName": "mybatchaccount.eastus"
@@ -305,7 +305,7 @@ Další možností je poskytnout koncový bod **batchUri** . Příklad:
 ### <a name="properties"></a>Vlastnosti
 | Vlastnost          | Popis                              | Povinné |
 | ----------------- | ---------------------------------------- | -------- |
-| typ              | Nastavte vlastnost Type na **AzureBatch**. | Ano      |
+| typ              | Nastavte vlastnost Type na **AzureBatch** . | Ano      |
 | accountName       | Název účtu Batch.         | Ano      |
 | accessKey         | Přístupový klíč pro účet Batch.  | Ano      |
 | poolName          | Název fondu virtuálních počítačů.    | Ano      |
@@ -332,7 +332,7 @@ Můžete vytvořit propojenou službu Azure Machine Learning Studio (Classic), p
 ### <a name="properties"></a>Vlastnosti
 | Vlastnost   | Popis                              | Povinné |
 | ---------- | ---------------------------------------- | -------- |
-| Typ       | Nastavte vlastnost Type na **AzureML**. | Ano      |
+| Typ       | Nastavte vlastnost Type na **AzureML** . | Ano      |
 | mlEndpoint | Adresa URL dávkového vyhodnocování                   | Ano      |
 | apiKey     | Rozhraní API modelu publikovaného pracovního prostoru.     | Ano      |
 
@@ -343,7 +343,7 @@ Následující tabulka popisuje obecné vlastnosti, které se používají v def
 
 | Vlastnost                 | Popis                              | Povinné                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| typ                 | Nastavte vlastnost Type na **AzureDataLakeAnalytics**. | Ano                                      |
+| typ                 | Nastavte vlastnost Type na **AzureDataLakeAnalytics** . | Ano                                      |
 | accountName          | Název Data Lake Analytics účtu  | Ano                                      |
 | dataLakeAnalyticsUri | Identifikátor URI Data Lake Analytics.           | Ne                                       |
 | subscriptionId       | ID předplatného Azure.                    | Ne<br /><br />(Pokud není zadaný, použije se předplatné Data Factory.) |
@@ -353,7 +353,7 @@ Následující tabulka popisuje obecné vlastnosti, které se používají v def
 Pro propojenou službu Data Lake Analytics můžete vybrat mezi ověřováním pomocí instančního objektu nebo přihlašovacích údajů uživatele.
 
 #### <a name="service-principal-authentication-recommended"></a>Ověřování instančního objektu (doporučeno)
-Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD). Pak udělte službě Azure AD přístup k Data Lake Store. Podrobný postup najdete v tématu [ověřování služba-služba](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
+Pokud chcete použít ověřování instančního objektu, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD). Pak udělte službě Azure AD přístup k Data Lake Store. Podrobný postup najdete v tématu [ověřování služba-služba](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které použijete k definování propojené služby:
 * ID aplikace
 * Klíč aplikace 
 * ID tenanta
@@ -453,9 +453,9 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 Podrobnosti o třídách Data Factory, které jsou používány v tomto příkladu kódu, naleznete v tématu:
-* [AzureDataLakeStoreLinkedService – třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
-* [AzureDataLakeAnalyticsLinkedService – třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
-* [AuthorizationSessionGetResponse – třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)
+* [AzureDataLakeStoreLinkedService – třída](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice)
+* [AzureDataLakeAnalyticsLinkedService – třída](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice)
+* [AuthorizationSessionGetResponse – třída](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse)
 
 Přidejte odkaz na Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro třídu **WindowsFormsWebAuthenticationDialog** . 
 
@@ -467,4 +467,3 @@ Můžete vytvořit propojenou službu Azure synapse Analytics a použít ji s [a
 
 ## <a name="sql-server-linked-service"></a>Propojená služba SQL Server
 Můžete vytvořit propojenou službu SQL Server a použít ji s [aktivitou uložené procedury](data-factory-stored-proc-activity.md) k vyvolání uložené procedury z kanálu Data Factory. Další informace najdete v tématu [konektor SQL Server](data-factory-sqlserver-connector.md#linked-service-properties).
-

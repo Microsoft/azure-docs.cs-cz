@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/08/2020
-ms.openlocfilehash: 5888f2c432757b3139306df12711353859ead9e1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 43e3916e47aa0305209b8e6e32803426ac1ebe3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637560"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -50,7 +50,7 @@ Níže je uveden seznam některých výhod integrace Gitu do prostředí pro vyt
 
 ## <a name="author-with-azure-repos-git-integration"></a>Vytváření s využitím integrace Gitu s Azure Repos
 
-Vytváření vizuálního obsahu pomocí Azure Repos integrace Gitu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k Azure Repos úložiště organizace Git pro správu zdrojového kódu, spolupráci, správu verzí atd. Jediná Azure Repos organizace Git může mít víc úložišť, ale Azure Repos úložiště Git se dá přidružit jenom k jednomu objektu pro vytváření dat. Pokud nemáte Azure Repos organizaci nebo úložiště, vytvořte prostředky podle [těchto pokynů](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
+Vytváření vizuálního obsahu pomocí Azure Repos integrace Gitu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k Azure Repos úložiště organizace Git pro správu zdrojového kódu, spolupráci, správu verzí atd. Jediná Azure Repos organizace Git může mít víc úložišť, ale Azure Repos úložiště Git se dá přidružit jenom k jednomu objektu pro vytváření dat. Pokud nemáte Azure Repos organizaci nebo úložiště, vytvořte prostředky podle [těchto pokynů](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
 
 > [!NOTE]
 > Skripty a datové soubory můžete ukládat do Azure Repos úložiště Git. Soubory však budete muset odeslat ručně, aby bylo možné Azure Storage. Kanál Data Factory neodesílá automaticky do Azure Storage soubory skriptu nebo datových souborů uložených v úložišti Git Azure Repos.
@@ -61,12 +61,12 @@ Pomocí dvou metod můžete nakonfigurovat Azure Repos úložiště Git s datovo
 
 #### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfigurační Metoda 1: Azure Data Factory domovské stránky
 
-Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu**.
+Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu** .
 
 ![Konfigurace úložiště kódu Azure Repos](media/author-visually/configure-repo.png)
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurační Metoda 2: plátno pro vytváření uživatelského rozhraní
-Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu**.
+Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu** .
 
 ![Konfigurace nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
 
@@ -93,13 +93,13 @@ Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Použít jiného tenanta Azure Active Directory
 
-Azure Repos úložiště Git se může nacházet v jiném tenantovi Azure Active Directory. Pokud chcete zadat jiného tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte. Další informace najdete v tématu [Změna správce předplatného](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator) .
+Azure Repos úložiště Git se může nacházet v jiném tenantovi Azure Active Directory. Pokud chcete zadat jiného tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte. Další informace najdete v tématu [Změna správce předplatného](../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator) .
 
 ### <a name="use-your-personal-microsoft-account"></a>Použití osobních účet Microsoft
 
 Pokud chcete použít osobní účet Microsoft pro integraci Gitu, můžete své osobní úložiště Azure propojit se službou Active Directory vaší organizace.
 
-1. Přidejte osobní účet Microsoft do služby Active Directory vaší organizace jako hosta. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/b2b/add-users-administrator.md).
+1. Přidejte osobní účet Microsoft do služby Active Directory vaší organizace jako hosta. Další informace najdete v tématu [přidání Azure Active Directory uživatelů spolupráce B2B v Azure Portal](../active-directory/external-identities/add-users-administrator.md).
 
 2. Přihlaste se k Azure Portal pomocí osobního účet Microsoft. Pak přejděte do služby Active Directory vaší organizace.
 
@@ -111,7 +111,7 @@ Další informace o připojení Azure Repos ke službě Active Directory vaší 
 
 ## <a name="author-with-github-integration"></a>Vytváření s využitím integrace GitHubu
 
-Vytváření vizuálů pomocí integrace GitHubu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k úložišti účtů GitHub pro správu zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít několik úložišť, ale úložiště GitHubu je možné přidružit pouze k jednomu objektu pro vytváření dat. Pokud nemáte účet GitHub nebo úložiště, vytvořte prostředky podle [těchto pokynů](https://github.com/join)   .
+Vytváření vizuálů pomocí integrace GitHubu podporuje správu zdrojového kódu a spolupráci pro práci na kanálech služby Data Factory. Datovou továrnu můžete přidružit k úložišti účtů GitHub pro správu zdrojového kódu, spolupráci, správu verzí. Jeden účet GitHub může mít několik úložišť, ale úložiště GitHubu je možné přidružit pouze k jednomu objektu pro vytváření dat. Pokud nemáte účet GitHub nebo úložiště, vytvořte prostředky podle [těchto pokynů](https://github.com/join) .
 
 Integrace GitHubu s Data Factory podporuje veřejné GitHub (tj [https://github.com](https://github.com) .) i GitHub Enterprise. Pokud máte oprávnění ke čtení a zápisu do úložiště v GitHubu, můžete použít veřejné i soukromé úložiště GitHub s Data Factory.
 
@@ -127,13 +127,13 @@ Po devět minut Úvod a ukázku této funkce se podívejte na toto video:
 
 #### <a name="configuration-method-1-azure-data-factory-home-page"></a>Konfigurační Metoda 1: Azure Data Factory domovské stránky
 
-Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu**.
+Na domovské stránce Azure Data Factory vyberte **nastavit úložiště kódu** .
 
 ![Konfigurace úložiště kódu Azure Repos](media/author-visually/configure-repo.png)
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurační Metoda 2: plátno pro vytváření uživatelského rozhraní
 
-Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu**.
+Na plátně pro vytváření Azure Data Factory UX vyberte **Data Factory** rozevírací nabídku a pak vyberte **nastavit úložiště kódu** .
 
 ![Konfigurace nastavení úložiště kódu pro vytváření uživatelského rozhraní](media/author-visually/configure-repo-2.png)
 
@@ -147,7 +147,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
-| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
+| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
 | **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
@@ -169,7 +169,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 ## <a name="version-control"></a>Správa verzí
 
-Systémy správy verzí (označované také jako _Správa zdrojového_kódu) umožňují vývojářům spolupracovat na kódu a sledovat změny, které jsou provedeny v základu kódu. Správa zdrojového kódu je důležitým nástrojem pro projekty s více vývojáři.
+Systémy správy verzí (označované také jako _Správa zdrojového_ kódu) umožňují vývojářům spolupracovat na kódu a sledovat změny, které jsou provedeny v základu kódu. Správa zdrojového kódu je důležitým nástrojem pro projekty s více vývojáři.
 
 ### <a name="creating-feature-branches"></a>Vytváření větví funkcí
 
@@ -177,7 +177,7 @@ Každé Azure Repos úložiště Git, které je přidružené k datové továrn�
 
 ![Vytvořit novou větev](media/author-visually/new-branch.png)
 
-Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spolupráci, klikněte na rozevírací seznam větev a vyberte **vytvořit žádost o získání dat**. Tato akce vás provede Azure Repos Git, kde můžete vyvolávat žádosti o přijetí změn, provádět revize kódu a sloučit změny ve větvi pro spolupráci. ( `master` výchozí). Do služby Data Factory se povoluje pouze publikování z vaší větve pro spolupráci. 
+Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spolupráci, klikněte na rozevírací seznam větev a vyberte **vytvořit žádost o získání dat** . Tato akce vás provede Azure Repos Git, kde můžete vyvolávat žádosti o přijetí změn, provádět revize kódu a sloučit změny ve větvi pro spolupráci. ( `master` výchozí). Do služby Data Factory se povoluje pouze publikování z vaší větve pro spolupráci. 
 
 ![Vytvořit novou žádost o získání dat](media/author-visually/create-pull-request.png)
 
@@ -244,7 +244,7 @@ Níže jsou uvedeny některé příklady situací, které mohou způsobit zastar
 
 ## <a name="switch-to-a-different-git-repository"></a>Přepnout na jiné úložiště Git
 
-Pokud chcete přepnout na jiné úložiště Git, přejděte na stránku konfigurace Git v centru správy pod správou **zdrojových kódů**. Vyberte **Odpojit**. 
+Pokud chcete přepnout na jiné úložiště Git, přejděte na stránku konfigurace Git v centru správy pod správou **zdrojových kódů** . Vyberte **Odpojit** . 
 
 ![Ikona Git](media/author-visually/remove-repository.png)
 

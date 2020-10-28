@@ -11,19 +11,19 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: 068586a96ad3655cb70171266bd58f56ed320fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36414c975e97dbaa7d8747da98c31eeb12fbc206
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83664379"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636965"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatizace instalace místního prostředí Integration runtime pomocí místních skriptů PowerShellu
 Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí na místních počítačích (kromě virtuálních počítačů Azure, kde můžeme místo toho použít šablonu Správce prostředků), můžete použít místní skripty PowerShellu. Tento článek obsahuje dva skripty, které můžete použít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Na místním počítači spusťte PowerShell. Chcete-li spustit skripty, je třeba zvolit možnost **Spustit jako správce**.
+* Na místním počítači spusťte PowerShell. Chcete-li spustit skripty, je třeba zvolit možnost **Spustit jako správce** .
 * [Stáhněte si](https://www.microsoft.com/download/details.aspx?id=39717) místně hostovaný software Integration runtime. Zkopírujte cestu k umístění staženého souboru. 
 * K registraci modulu runtime integrace v místním prostředí potřebujete také **ověřovací klíč** .
 * Pro automatizaci ručních aktualizací musíte mít předem konfigurovaný modul runtime integrace v místním prostředí.
@@ -31,20 +31,20 @@ Pokud chcete automatizovat instalaci Integration Runtime v místním prostředí
 ## <a name="scripts-introduction"></a>Úvod ke skriptům 
 
 > [!NOTE]
-> Tyto skripty se vytvářejí pomocí [dokumentovaného nástroje příkazového řádku](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell) v místním prostředí Integration runtime. Pokud je to potřeba, může tyto skripty přizpůsobit svým potřebám pro automatizaci.
+> Tyto skripty se vytvářejí pomocí [dokumentovaného nástroje příkazového řádku](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell) v místním prostředí Integration runtime. Pokud je to potřeba, může tyto skripty přizpůsobit svým potřebám pro automatizaci.
 > Skripty je potřeba použít pro jednotlivé uzly, proto je nezapomeňte spustit napříč všemi uzly v případě nastavení vysoké dostupnosti (2 nebo více uzlů).
 
 * Pro automatizaci instalačního programu: Nainstalujte a zaregistrujte nový uzel Integration runtime v místním prostředí pomocí **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** – skript lze použít k instalaci uzlu místního prostředí Integration runtime a jeho registraci k ověřovacímu klíči. Skript přijímá dva argumenty, **nejdříve** určí umístění místního [prostředí Integration runtime](https://www.microsoft.com/download/details.aspx?id=39717) na místním disku, přičemž **druhý** Určuje **ověřovací klíč** (pro registraci uzlu IR v místním prostředí).
 
 * Pro automatizaci ručních aktualizací: aktualizujte uzel IR v místním prostředí pomocí konkrétní verze nebo na nejnovější verzi **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** – to se podporuje i v případě, že jste automatické aktualizace vypnuli nebo chcete mít větší kontrolu nad aktualizacemi. Skript lze použít k aktualizaci uzlu místního prostředí Integration runtime na nejnovější verzi nebo na určenou vyšší verzi (downgrade nefunguje). Přijímá argument pro zadání čísla verze (příklad:-Version 3.13.6942.1). Pokud není zadána žádná verze, vždy aktualizuje modul IR v místním prostředí na nejnovější verzi, která se nachází ve [stahování](https://www.microsoft.com/download/details.aspx?id=39717).
     > [!NOTE]
-    > Zadat lze pouze poslední 3 verze. V ideálním případě se používá k aktualizaci existujícího uzlu na nejnovější verzi. **předpokládá se, že máte registrovanou technologii IR hostovaná na sebe**. 
+    > Zadat lze pouze poslední 3 verze. V ideálním případě se používá k aktualizaci existujícího uzlu na nejnovější verzi. **předpokládá se, že máte registrovanou technologii IR hostovaná na sebe** . 
 
 ## <a name="usage-examples"></a>Příklady použití
 
 ### <a name="for-automating-setup"></a>Pro automatizaci instalace
 1. Stáhněte si místně hostovaný IR z [tohoto místa](https://www.microsoft.com/download/details.aspx?id=39717). 
-1. Zadejte cestu, ve které výše stažený SHIR MSI (instalační soubor). Pokud je například cesta *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi*, můžete pro tuto úlohu použít níže uvedený příklad příkazového řádku PowerShellu:
+1. Zadejte cestu, ve které výše stažený SHIR MSI (instalační soubor). Pokud je například cesta *C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi* , můžete pro tuto úlohu použít níže uvedený příklad příkazového řádku PowerShellu:
 
    ```powershell
    PS C:\windows\system32> C:\Users\username\Desktop\InstallGatewayOnLocalMachine.ps1 -path "C:\Users\username\Downloads\IntegrationRuntime_4.7.7368.1.msi" -authKey "[key]"

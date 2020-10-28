@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634773"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odolnost aktivity kopírování ve službě Azure Data Factory proti chybám
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,15 +70,15 @@ Když kopírujete binární soubory mezi úložišti úložiště, můžete zapn
      } 
 } 
 ```
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | -------- 
-skipErrorFile | Skupina vlastností pro určení typů selhání, které chcete během přesunu dat přeskočit. | | No
-Chybí chybějící | Jedna z párů klíč-hodnota v kontejneru objektů a dat skipErrorFile slouží k určení, jestli chcete přeskočit soubory, které při každém kopírování ADF odstraňují jiné aplikace. <br/> -True: chcete zkopírovat zbývající soubory přeskočením souborů odstraněných jinými aplikacemi. <br/> -False: chcete přerušit aktivitu kopírování, jakmile se odstraní nějaké soubory ze zdrojového úložiště v průběhu přesunu dat. <br/>Upozorňujeme, že tato vlastnost je jako výchozí nastavená na true. | True (výchozí) <br/>Nepravda | No
-Zakázaný | Jedna z párů klíč-hodnota v kontejneru objektů a dat skipErrorFile k určení, jestli chcete přeskočit konkrétní soubory, když seznamy ACL těchto souborů nebo složek vyžadují vyšší úroveň oprávnění než připojení nakonfigurované v podavači ADF. <br/> -True: chcete zkopírovat zbývající soubory přeskočením souborů. <br/> -False: chcete přerušit aktivitu kopírování, když se dostanete k potížím s oprávněním pro složky nebo soubory. | Ano <br/>False (výchozí) | No
-dataInconsistency | Jedna z párů klíč-hodnota v kontejneru vlastností skipErrorFile k určení, jestli chcete přeskočit nekonzistentní data mezi zdrojovým a cílovým úložištěm. <br/> -True: chcete zkopírovat zbývající data vynecháním nekonzistentních dat. <br/> -False: chcete přerušit aktivitu kopírování po nalezení nekonzistentních dat. <br/>Počítejte s tím, že tato vlastnost je platná, pouze pokud nastavíte validateDataConsistency jako true. | Ano <br/>False (výchozí) | No
-logStorageSettings  | Skupina vlastností, které lze zadat, pokud chcete protokolovat vynechané názvy objektů. | &nbsp; | No
-linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat soubory protokolu relace. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou použijete k uložení souboru protokolu. | No
-program | Cesta souborů protokolu. | Zadejte cestu, kterou použijete k uložení souborů protokolu. Pokud cestu nezadáte, služba vytvoří kontejner. | No
+skipErrorFile | Skupina vlastností pro určení typů selhání, které chcete během přesunu dat přeskočit. | | Ne
+Chybí chybějící | Jedna z párů klíč-hodnota v kontejneru objektů a dat skipErrorFile slouží k určení, jestli chcete přeskočit soubory, které při každém kopírování ADF odstraňují jiné aplikace. <br/> -True: chcete zkopírovat zbývající soubory přeskočením souborů odstraněných jinými aplikacemi. <br/> -False: chcete přerušit aktivitu kopírování, jakmile se odstraní nějaké soubory ze zdrojového úložiště v průběhu přesunu dat. <br/>Upozorňujeme, že tato vlastnost je jako výchozí nastavená na true. | True (výchozí) <br/>Nepravda | Ne
+Zakázaný | Jedna z párů klíč-hodnota v kontejneru objektů a dat skipErrorFile k určení, jestli chcete přeskočit konkrétní soubory, když seznamy ACL těchto souborů nebo složek vyžadují vyšší úroveň oprávnění než připojení nakonfigurované v podavači ADF. <br/> -True: chcete zkopírovat zbývající soubory přeskočením souborů. <br/> -False: chcete přerušit aktivitu kopírování, když se dostanete k potížím s oprávněním pro složky nebo soubory. | Pravda <br/>False (výchozí) | Ne
+dataInconsistency | Jedna z párů klíč-hodnota v kontejneru vlastností skipErrorFile k určení, jestli chcete přeskočit nekonzistentní data mezi zdrojovým a cílovým úložištěm. <br/> -True: chcete zkopírovat zbývající data vynecháním nekonzistentních dat. <br/> -False: chcete přerušit aktivitu kopírování po nalezení nekonzistentních dat. <br/>Počítejte s tím, že tato vlastnost je platná, pouze pokud nastavíte validateDataConsistency jako true. | Pravda <br/>False (výchozí) | Ne
+logStorageSettings  | Skupina vlastností, které lze zadat, pokud chcete protokolovat vynechané názvy objektů. | &nbsp; | Ne
+linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat soubory protokolu relace. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou použijete k uložení souboru protokolu. | Ne
+program | Cesta souborů protokolu. | Zadejte cestu, kterou použijete k uložení souborů protokolu. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne
 
 > [!NOTE]
 > Níže jsou uvedené předpoklady pro povolení odolnosti proti chybám v aktivitě kopírování při kopírování binárních souborů.
@@ -93,7 +93,7 @@ program | Cesta souborů protokolu. | Zadejte cestu, kterou použijete k uložen
 > - Pouze pokud zadáte více souborů ve zdrojové datové sadě, což může být složka, zástupný znak nebo seznam souborů, aktivita kopírování může přeskočit konkrétní soubory chyb. Pokud je ve zdrojové datové sadě zadaný jeden soubor, který se má zkopírovat do cíle, aktivita kopírování selže, pokud dojde k nějaké chybě.
 >
 > Pro přeskočení konkrétních souborů v případě, že jsou ověřeny jako nekonzistentní mezi zdrojovým a cílovým úložištěm:
-> - Další podrobnosti z dokumentu konzistence dat najdete [tady](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency).
+> - Další podrobnosti z dokumentu konzistence dat najdete [tady](./copy-activity-data-consistency.md).
 
 ### <a name="monitoring"></a>Monitorování 
 
@@ -146,22 +146,22 @@ Z výše uvedeného protokolu vidíte, že bigfile.csv bylo přeskočeno z důvo
 ### <a name="supported-scenarios"></a>Podporované scénáře
 Aktivita kopírování podporuje tři scénáře pro zjišťování, přeskočení a protokolování nekompatibilních tabulkových dat:
 
-- **Nekompatibilita mezi zdrojovým datovým typem a nativním typem jímky**. 
+- **Nekompatibilita mezi zdrojovým datovým typem a nativním typem jímky** . 
 
     Například: Zkopírujte data ze souboru CSV v úložišti objektů blob do databáze SQL s definicí schématu, která obsahuje tři sloupce typu INT. Řádky souboru CSV, které obsahují číselná data, například 123 456 789, se úspěšně zkopírují do úložiště jímky. Řádky, které obsahují jiné než číselné hodnoty, jako například 123 456, ABC jsou však zjištěny jako nekompatibilní a jsou vynechány.
 
-- **Neshoda v počtu sloupců mezi zdrojem a jímkou**.
+- **Neshoda v počtu sloupců mezi zdrojem a jímkou** .
 
     Například: Zkopírujte data ze souboru CSV v úložišti objektů blob do databáze SQL s definicí schématu, která obsahuje šest sloupců. Řádky souboru CSV, které obsahují šest sloupců, se úspěšně zkopírují do úložiště jímky. Řádky souboru CSV, které obsahují více než šest sloupců, se zjišťují jako nekompatibilní a přeskočí se.
 
-- **Při zápisu do SQL Server/Azure SQL Database/Azure Cosmos DB došlo k porušení primárního klíče**.
+- **Při zápisu do SQL Server/Azure SQL Database/Azure Cosmos DB došlo k porušení primárního klíče** .
 
     Příklad: kopírování dat z SQL serveru do databáze SQL. Primární klíč je definovaný v databázi SQL jímky, ale ve zdrojovém SQL serveru není definovaný žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji, nelze zkopírovat do jímky. Aktivita kopírování kopíruje do jímky pouze první řádek zdrojových dat. Následné zdrojové řádky, které obsahují duplicitní hodnotu primárního klíče, jsou zjištěny jako nekompatibilní a jsou vynechány.
 
 >[!NOTE]
 >- Pokud chcete načíst data do služby Azure synapse Analytics (dříve SQL Data Warehouse) s využitím základny, nakonfigurujte nativní nastavení odolnosti proti chybám, a to tak, že v aktivitě kopírování určíte možnost odmítnout zásady prostřednictvím "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)". Přesto můžete povolit přesměrování základních nekompatibilních řádků do objektů BLOB nebo ADLS jako normální, jak je znázorněno níže.
 >- Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala službu [Amazon RedShift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
->- Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala [uloženou proceduru z jímky SQL](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink).
+>- Tato funkce se nepoužije, když je aktivita kopírování nakonfigurovaná tak, aby vyvolala [uloženou proceduru z jímky SQL](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink).
 
 ### <a name="configuration"></a>Konfigurace
 Následující příklad poskytuje definici JSON pro konfiguraci přeskočení nekompatibilních řádků v aktivitě kopírování:
@@ -185,12 +185,12 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 }, 
 ```
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Určuje, zda se během kopírování mají přeskočit nekompatibilní řádky. | Ano<br/>False (výchozí) | No
-logStorageSettings | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No
-linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat protokol, který obsahuje vynechané řádky. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou použijete k uložení souboru protokolu. | No
-program | Cesta souborů protokolu, které obsahují vynechané řádky. | Zadejte cestu, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No
+enableSkipIncompatibleRow | Určuje, zda se během kopírování mají přeskočit nekompatibilní řádky. | Pravda<br/>False (výchozí) | Ne
+logStorageSettings | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne
+linkedServiceName | Propojená služba [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) ukládat protokol, který obsahuje vynechané řádky. | Názvy `AzureBlobStorage` `AzureBlobFS` propojených služeb typu nebo, které odkazují na instanci, kterou použijete k uložení souboru protokolu. | Ne
+program | Cesta souborů protokolu, které obsahují vynechané řádky. | Zadejte cestu, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne
 
 ### <a name="monitor-skipped-rows"></a>Sledování vynechaných řádků
 Po dokončení aktivity kopírování můžete zobrazit počet vynechaných řádků ve výstupu aktivity kopírování:
@@ -259,12 +259,12 @@ Následující příklad poskytuje definici JSON pro konfiguraci přeskočení n
 }
 ```
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | -------- 
-enableSkipIncompatibleRow | Určuje, zda se během kopírování mají přeskočit nekompatibilní řádky. | Ano<br/>False (výchozí) | No
-redirectIncompatibleRowSettings | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | No
-linkedServiceName | Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) k uložení protokolu, který obsahuje vynechané řádky. | Názvy `AzureStorage` `AzureDataLakeStore` propojených služeb typu nebo, které odkazují na instanci, kterou chcete použít k uložení souboru protokolu. | No
-program | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | No
+enableSkipIncompatibleRow | Určuje, zda se během kopírování mají přeskočit nekompatibilní řádky. | Pravda<br/>False (výchozí) | Ne
+redirectIncompatibleRowSettings | Skupina vlastností, které lze zadat, pokud chcete protokolovat nekompatibilní řádky. | &nbsp; | Ne
+linkedServiceName | Propojená služba [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) k uložení protokolu, který obsahuje vynechané řádky. | Názvy `AzureStorage` `AzureDataLakeStore` propojených služeb typu nebo, které odkazují na instanci, kterou chcete použít k uložení souboru protokolu. | Ne
+program | Cesta k souboru protokolu, který obsahuje vynechané řádky. | Zadejte cestu, kterou chcete použít k protokolování nekompatibilních dat. Pokud cestu nezadáte, služba vytvoří kontejner. | Ne
 
 ### <a name="monitor-skipped-rows"></a>Sledování vynechaných řádků
 Po dokončení aktivity kopírování můžete zobrazit počet vynechaných řádků ve výstupu aktivity kopírování:
@@ -298,5 +298,3 @@ Další články o aktivitě kopírování najdete v článcích:
 
 - [Přehled aktivit kopírování](copy-activity-overview.md)
 - [Výkon aktivity kopírování](copy-activity-performance.md)
-
-

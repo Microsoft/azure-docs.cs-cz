@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276658"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635316"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -118,11 +118,11 @@ Osa y je počet balíčků, které dokončily provádění během jedné hodiny.
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** upravuje škálovatelnost prostředí Integration runtime. Propustnost prostředí Integration runtime je úměrná **AzureSSISNodeNumber**. Nastavte nejprve **AzureSSISNodeNumber** na malou hodnotu, Sledujte propustnost prostředí Integration runtime a pak upravte hodnotu pro váš scénář. Informace o překonfigurování počtu pracovních uzlů najdete v tématu [Správa prostředí Azure-SSIS Integration runtime](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** upravuje škálovatelnost prostředí Integration runtime. Propustnost prostředí Integration runtime je úměrná **AzureSSISNodeNumber** . Nastavte nejprve **AzureSSISNodeNumber** na malou hodnotu, Sledujte propustnost prostředí Integration runtime a pak upravte hodnotu pro váš scénář. Informace o překonfigurování počtu pracovních uzlů najdete v tématu [Správa prostředí Azure-SSIS Integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode**. Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/windows/sizes-general.md).
+Když už používáte výkonný pracovní uzel ke spouštění balíčků, zvýšení **AzureSSISMaxParallelExecutionsPerNode** může zvýšit celkovou propustnost prostředí Integration runtime. Pokud chcete zvýšit maximální hodnotu, je potřeba použít Azure PowerShell k aktualizaci **AzureSSISMaxParallelExecutionsPerNode** . Odpovídající hodnotu můžete odhadnout na základě nákladů na váš balíček a následujících konfigurací pro pracovní uzly. Další informace najdete v tématu [velikosti virtuálních počítačů pro obecné účely](../virtual-machines/sizes-general.md).
 
 | Velikost             | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Max. počet síťových karet / Očekávaný výkon sítě (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ Tady jsou pokyny pro nastavení správné hodnoty pro vlastnost **AzureSSISMaxPa
 
 -   Vyberte výkonnější databázi, jako je například S3, pokud je úroveň protokolování nastavená na Verbose. V souladu s neoficiálním testováním interních testů může cenová úroveň S3 podporovat provádění balíčků SSIS se dvěma uzly, 128 paralelních počtů a podrobné úrovně protokolování.
 
-Cenovou úroveň databáze můžete také upravit na základě informací o využití [jednotek databázové transakce](../sql-database/sql-database-what-is-a-dtu.md) (DTU) dostupných na Azure Portal.
+Cenovou úroveň databáze můžete také upravit na základě informací o využití [jednotek databázové transakce](../azure-sql/database/service-tiers-dtu.md) (DTU) dostupných na Azure Portal.
 
 ## <a name="design-for-high-performance"></a>Návrh pro vysoký výkon
 Návrh balíčku SSIS, který se má spustit v Azure, se liší od návrhu balíčku pro místní spuštění. Místo kombinace více nezávislých úloh ve stejném balíčku je můžete oddělit do několika balíčků a zefektivnit tak provádění Azure-SSIS IR. Vytvořte spuštění balíčku pro každý balíček, aby nemuseli čekat na jeho dokončení. Tento přístup přináší výhody škálovatelnosti prostředí Azure-SSIS Integration runtime a zlepšuje celkovou propustnost.

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
+ms.author: metang
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ac23ad66cadc553095ff869b665a6bba2fba6f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac7bca305b0c23cceb00f97f426b3f68fbea91b3
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262276"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636438"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Kurz: spuštění moderního čtecího zařízení (Node.js)
 
@@ -30,7 +30,7 @@ V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čte
 > * Zadejte jazyk rozhraní moderního čtecího zařízení.
 > * Spuštění moderního čtečky s využitím matematického obsahu
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -69,7 +69,7 @@ ClientSecret => Azure AD Application Service Principal password
 Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
 ````
 
-Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného. Nezahrnujte uvozovky nebo znaky "{" a "}".
+Jakmile máte tyto hodnoty, vytvořte nový soubor s názvem _. env_ a vložte do něj následující kód a zadejte hodnoty vlastních vlastností z výše uvedeného. Nezahrnujte uvozovky nebo znaky "{" a "}".
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -133,14 +133,14 @@ Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabez
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
-1. Otevřete _views\layout.pug_a přidejte následující kód pod `head` značku před `body` značku. Tyto `script` značky načtou [sadu pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk) a jQuery.
+1. Otevřete _views\layout.pug_ a přidejte následující kód pod `head` značku před `body` značku. Tyto `script` značky načtou [sadu pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk) a jQuery.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
-2. Otevřete _views\index.pug_a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku nějakým ukázkovým obsahem a přidá tlačítko, které spustí moderní čtečku.
+2. Otevřete _views\index.pug_ a nahraďte jeho obsah následujícím kódem. Tento kód naplní stránku nějakým ukázkovým obsahem a přidá tlačítko, které spustí moderní čtečku.
 
     ```pug
     extends layout
@@ -211,13 +211,13 @@ Moderní čtečka podporuje řadu různých jazyků. Jazyk vašeho obsahu může
     });
     ```
 
-3. Znovu přejděte na _http://localhost:3000_ . Na stránce byste měli vidět španělský text a když kliknete na **moderní čtečku**, zobrazí se i v moderní čtečce.
+3. Znovu přejděte na _http://localhost:3000_ . Na stránce byste měli vidět španělský text a když kliknete na **moderní čtečku** , zobrazí se i v moderní čtečce.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>Zadejte jazyk rozhraní moderního čtecího zařízení.
 
 Standardně se jazyk moderního čtecího rozhraní shoduje s nastavením jazyka prohlížeče. Jazyk moderního čtecího rozhraní lze také určit pomocí následujícího kódu.
 
-1. V _views\index.pug_nahraďte volání `ImmersiveReader.launchAsync(token, subdomain, content)` kódem níže.
+1. V _views\index.pug_ nahraďte volání `ImmersiveReader.launchAsync(token, subdomain, content)` kódem níže.
 
     ```javascript
     const options = {

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb9f2673eb080ee2919297fcbb5199f99d176bce
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88042764"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635843"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Cosmos DB (SQL API) pomocí Azure Data Factory
 
@@ -43,8 +43,8 @@ Tento konektor Azure Cosmos DB (SQL API) se podporuje pro následující činnos
 
 Pro aktivitu kopírování podporuje tato Azure Cosmos DBová konektorová rozhraní SQL API:
 
-- Kopírovat data z a do Azure Cosmos DB [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
-- Zapsat do Azure Cosmos DB jako **INSERT** nebo **Upsert**.
+- Kopírovat data z a do Azure Cosmos DB [rozhraní SQL API](../cosmos-db/introduction.md).
+- Zapsat do Azure Cosmos DB jako **INSERT** nebo **Upsert** .
 - Importujte a exportujte dokumenty JSON tak, jak jsou, nebo zkopírujte data z tabulkové sady nebo z ní. Mezi příklady patří databáze SQL a soubor CSV. Pokud chcete kopírovat dokumenty tak, jak jsou, nebo ze souborů JSON nebo do jiné kolekce Azure Cosmos DB, přečtěte si téma [Import a export dokumentů JSON](#import-and-export-json-documents).
 
 Data Factory se integruje s [knihovnou prováděcího modulu Azure Cosmos DB Bulk](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) , která poskytuje nejlepší výkon při psaní do Azure Cosmos DB.
@@ -64,9 +64,9 @@ Pro propojenou službu Azure Cosmos DB (SQL API) se podporují tyto vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **CosmosDb**. | Yes |
-| připojovací řetězec |Zadejte informace, které jsou požadovány pro připojení k databázi Azure Cosmos DB.<br />**Poznámka**: v připojovacím řetězci je nutné zadat informace o databázi, jak je znázorněno v následujících příkladech. <br/> Můžete také umístit klíč účtu do Azure Key Vault a získat konfiguraci z `accountKey` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Yes |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud tato vlastnost není zadaná, použije se výchozí Azure Integration Runtime. |No |
+| typ | Vlastnost **Type** musí být nastavená na **CosmosDb** . | Ano |
+| připojovací řetězec |Zadejte informace, které jsou požadovány pro připojení k databázi Azure Cosmos DB.<br />**Poznámka** : v připojovacím řetězci je nutné zadat informace o databázi, jak je znázorněno v následujících příkladech. <br/> Můžete také umístit klíč účtu do Azure Key Vault a získat konfiguraci z `accountKey` připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. |Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Můžete použít Azure Integration Runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud tato vlastnost není zadaná, použije se výchozí Azure Integration Runtime. |Ne |
 
 **Příklad**
 
@@ -95,13 +95,13 @@ Pro propojenou službu Azure Cosmos DB (SQL API) se podporují tyto vlastnosti:
         "type": "CosmosDb",
         "typeProperties": {
             "connectionString": "AccountEndpoint=<EndpointUrl>;Database=<Database>",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -120,8 +120,8 @@ Pro datovou sadu Azure Cosmos DB (SQL API) jsou podporovány následující vlas
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **CosmosDbSqlApiCollection**. |Yes |
-| collectionName |Název kolekce dokumentů Azure Cosmos DB. |Yes |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **CosmosDbSqlApiCollection** . |Ano |
+| collectionName |Název kolekce dokumentů Azure Cosmos DB. |Ano |
 
 Pokud používáte datovou sadu typu "DocumentDbCollection", je stále podporovaná, protože je pro zpětnou kompatibilitu pro aktivity kopírování a vyhledávání podporována. tok dat není podporován. Navrhnete použití nového modelu.
 
@@ -150,16 +150,16 @@ V této části najdete seznam vlastností, které podporuje zdroj Azure Cosmos 
 
 ### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (SQL API) jako zdroj
 
-Chcete-li kopírovat data z Azure Cosmos DB (SQL API), nastavte typ **zdroje** v aktivitě kopírování na **DocumentDbCollectionSource**. 
+Chcete-li kopírovat data z Azure Cosmos DB (SQL API), nastavte typ **zdroje** v aktivitě kopírování na **DocumentDbCollectionSource** . 
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **CosmosDbSqlApiSource**. |Yes |
-| query |Zadejte Azure Cosmos DB dotaz pro čtení dat.<br/><br/>Příklad:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Pokud není zadán, je proveden příkaz SQL: `select <columns defined in structure> from mycollection` |
-| preferredRegions | Upřednostňovaný seznam oblastí, ke kterým se má připojit při načítání dat z Cosmos DB. | No |
-| pageSize | Počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, což znamená, že na straně služby se používá dynamická velikost stránky až na 1000. | No |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **CosmosDbSqlApiSource** . |Ano |
+| query |Zadejte Azure Cosmos DB dotaz pro čtení dat.<br/><br/>Příklad:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadán, je proveden příkaz SQL: `select <columns defined in structure> from mycollection` |
+| preferredRegions | Upřednostňovaný seznam oblastí, ke kterým se má připojit při načítání dat z Cosmos DB. | Ne |
+| pageSize | Počet dokumentů na stránku výsledku dotazu. Výchozí hodnota je-1, což znamená, že na straně služby se používá dynamická velikost stránky až na 1000. | Ne |
 
 Použijete-li zdroj typu "DocumentDbCollectionSource", je stále podporováno, protože je z důvodu zpětné kompatibility. Navrhnete použití nového modelu, který bude poskytovat rozsáhlejší možnosti kopírování dat z Cosmos DB.
 
@@ -202,22 +202,22 @@ Při kopírování dat z Cosmos DB, pokud nechcete [exportovat dokumenty JSON ta
 
 ### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (SQL API) jako jímka
 
-Chcete-li kopírovat data do Azure Cosmos DB (SQL API), nastavte typ **jímky** v aktivitě kopírování na **DocumentDbCollectionSink**. 
+Chcete-li kopírovat data do Azure Cosmos DB (SQL API), nastavte typ **jímky** v aktivitě kopírování na **DocumentDbCollectionSink** . 
 
 V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **CosmosDbSqlApiSink**. |Yes |
-| writeBehavior |Popisuje, jak zapisovat data do Azure Cosmos DB. Povolené hodnoty: **INSERT** a **Upsert**.<br/><br/>Chování **Upsert** je nahradit dokument, pokud již existuje dokument se stejným ID; v opačném případě vložte dokument.<br /><br />**Poznámka**: Data Factory automaticky vygeneruje ID pro dokument, pokud ID není zadáno v původním dokumentu nebo mapování sloupce. To znamená, že musíte zajistit, aby **Upsert** v případě, že bude fungovat podle očekávání, měl váš dokument ID. |No<br />(výchozí hodnota je **INSERT**) |
-| writeBatchSize | Data Factory používá [knihovnu Azure Cosmos DB Bulk prováděcích](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) modulů k zápisu dat do Azure Cosmos DB. Vlastnost **writeBatchSize** určuje velikost dokumentů, které ADF poskytuje do knihovny. Můžete zkusit zvýšit hodnotu pro **writeBatchSize** a zvýšit tak výkon a snížit hodnotu, pokud je velikost dokumentu Velká – viz Tipy níže. |No<br />(výchozí hodnota je **10 000**) |
+| typ | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na **CosmosDbSqlApiSink** . |Ano |
+| writeBehavior |Popisuje, jak zapisovat data do Azure Cosmos DB. Povolené hodnoty: **INSERT** a **Upsert** .<br/><br/>Chování **Upsert** je nahradit dokument, pokud již existuje dokument se stejným ID; v opačném případě vložte dokument.<br /><br />**Poznámka** : Data Factory automaticky vygeneruje ID pro dokument, pokud ID není zadáno v původním dokumentu nebo mapování sloupce. To znamená, že musíte zajistit, aby **Upsert** v případě, že bude fungovat podle očekávání, měl váš dokument ID. |Ne<br />(výchozí hodnota je **INSERT** ) |
+| writeBatchSize | Data Factory používá [knihovnu Azure Cosmos DB Bulk prováděcích](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) modulů k zápisu dat do Azure Cosmos DB. Vlastnost **writeBatchSize** určuje velikost dokumentů, které ADF poskytuje do knihovny. Můžete zkusit zvýšit hodnotu pro **writeBatchSize** a zvýšit tak výkon a snížit hodnotu, pokud je velikost dokumentu Velká – viz Tipy níže. |Ne<br />(výchozí hodnota je **10 000** ) |
 | disableMetricsCollection | Data Factory shromažďuje metriky, jako je například Cosmos DB ru, pro optimalizaci výkonu a doporučení pro kopírování. Pokud se s tímto chováním obáváte, určete, jestli `true` ho chcete vypnout. | Ne (výchozí nastavení je `false` ) |
 
 >[!TIP]
 >Pokud chcete importovat dokumenty JSON tak, jak jsou, přečtěte si část [Import nebo export dokumentů JSON](#import-and-export-json-documents) . Chcete-li kopírovat z tabulkových dat, přečtěte si téma [migrace z relační databáze na Cosmos DB](#migrate-from-relational-database-to-cosmos-db).
 
 >[!TIP]
->Cosmos DB omezuje velikost jednoho požadavku na 2 MB. Vzorec je velikost požadavku = jedna velikost dokumentu * velikost dávky zápisu. Pokud se zobrazí chybová zpráva **"velikost požadavku je příliš velká."**, **omezte `writeBatchSize` hodnotu** v konfiguraci kopie jímky.
+>Cosmos DB omezuje velikost jednoho požadavku na 2 MB. Vzorec je velikost požadavku = jedna velikost dokumentu * velikost dávky zápisu. Pokud se zobrazí chybová zpráva **"velikost požadavku je příliš velká."** , **omezte `writeBatchSize` hodnotu** v konfiguraci kopie jímky.
 
 Použijete-li zdroj typu "DocumentDbCollectionSink", je stále podporováno, protože je z důvodu zpětné kompatibility. Navrhnete použití nového modelu, který bude poskytovat rozsáhlejší možnosti kopírování dat z Cosmos DB.
 
@@ -295,7 +295,7 @@ Nastavení specifická pro Azure Cosmos DB jsou k dispozici na kartě **Nastaven
 * Žádné: v kolekci se neprovede žádná akce.
 * Znovu vytvořit: kolekce se vynechá a znovu vytvoří.
 
-**Velikost dávky**: Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
+**Velikost dávky** : Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
 
 **Klíč oddílu:** Zadejte řetězec, který představuje klíč oddílu pro kolekci. Příklad: ```/movies/title```
 

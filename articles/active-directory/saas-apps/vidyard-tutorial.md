@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f10ffeae9e583c03831b81da2ecf7c128a5ddc8e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4176c92d48b67b9f9207f22ebd8939b5ec1437ee
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636744"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Kurz: Azure Active Directory integrace s Vidyard
 
@@ -63,13 +63,13 @@ Pokud chcete nakonfigurovat integraci Vidyard do služby Azure AD, musíte přid
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Vidyard**, vyberte **Vidyard** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Vidyard** , vyberte **Vidyard** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Vidyard v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Vidyard na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Vidyard na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Vidyard.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Vidyard, musíte dokončit tyto stavební bloky:
@@ -87,7 +87,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Vidyard** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Vidyard** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -101,7 +101,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard,
 
 4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Informace o jednotném přihlašování v doméně Vidyard a adresách URL](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
@@ -109,7 +109,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard,
 
 5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlašování v doméně Vidyard a adresách URL](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://secure.vidyard.com/sso/saml/<unique id>/login`
 
@@ -136,15 +136,15 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard,
 
 2. Z řídicího panelu Vidyard vyberte **Group**  >  **zabezpečení** skupiny.
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure1.png)
+    ![Snímek obrazovky zobrazuje zabezpečení vybraný ze skupiny na webu Vidyard softwaru.](./media/vidyard-tutorial/configure1.png)
 
 3. Klikněte na kartu **Nový profil** .
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure2.png)
+    ![Snímek obrazovky se zobrazeným tlačítkem nový profil.](./media/vidyard-tutorial/configure2.png)
 
 4. V části **Konfigurace SAML** proveďte následující kroky:
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure3.png)
+    ![Snímek obrazovky se zobrazí v sekci konfigurace SAML, kde můžete zadat hodnoty, které jsou popsány.](./media/vidyard-tutorial/configure3.png)
 
     a. Do textového pole **název profilu** zadejte obecný název profilu.
 
@@ -162,18 +162,18 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard,
 
 5. Na kartě jednotné přihlašování vyberte **přiřadit** vedle existujícího profilu.
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure4.png)
+    ![Snímek obrazovky s tlačítkem přiřadit pro profil Azure A D S S O.](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
     > Jakmile vytvoříte profil jednotného přihlašování, přiřaďte ho ke všem skupinám, pro které budou uživatelé potřebovat přístup prostřednictvím Azure. Pokud uživatel ve skupině, ke které byl přiřazen, neexistuje, Vidyard automaticky vytvoří uživatelský účet a přiřadí jeho roli v reálném čase.
 
-6. Vyberte skupinu organizace, která je viditelná ve skupinách, které je **možné přiřadit**.
+6. Vyberte skupinu organizace, která je viditelná ve skupinách, které je **možné přiřadit** .
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure5.png)
+    ![Snímek obrazovky zobrazuje část přiřazení konfigurace SAML k organizacím, kde můžete vybrat svou skupinu.](./media/vidyard-tutorial/configure5.png)
 
-7. Přiřazené skupiny můžete zobrazit v **aktuálně přiřazených skupinách**. Vyberte roli pro skupinu dle vaší organizace a klikněte na **Potvrdit**.
+7. Přiřazené skupiny můžete zobrazit v **aktuálně přiřazených skupinách** . Vyberte roli pro skupinu dle vaší organizace a klikněte na **Potvrdit** .
 
-    ![Konfigurace Vidyard](./media/vidyard-tutorial/configure6.png)
+    ![Snímek obrazovky zobrazuje část přiřazení konfigurace SAML k organizacím, kde můžete vybrat roli.](./media/vidyard-tutorial/configure6.png)
 
     > [!NOTE]
     > Další informace najdete v [tomto dokumentu](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
@@ -182,7 +182,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Vidyard,
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -194,27 +194,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Vidyard.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Vidyard**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **Vidyard** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Vidyard**.
+2. V seznamu aplikace vyberte **Vidyard** .
 
     ![Odkaz Vidyard v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 

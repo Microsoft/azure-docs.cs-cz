@@ -3,14 +3,14 @@ title: Postup vytvoření nasazení aktualizací pro Azure Automation Update Man
 description: Tento článek popisuje, jak naplánovat nasazení aktualizací a zkontrolovat jejich stav.
 services: automation
 ms.subservice: update-management
-ms.date: 10/21/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426402"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637594"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Jak nasadit aktualizace a zkontrolovat výsledky
 
@@ -20,7 +20,7 @@ V každém scénáři je nasazení, které jste vytvořili, cíleno na vybraný 
 
 * Operační systém se automaticky vybere v závislosti na operačním systému počítače.
 * Cílový počítač, který chcete aktualizovat, je nastaven na automatické zacílení.
-* Při konfiguraci plánu můžete zadat **Update now**, nastane jednou nebo používá opakovaný plán.
+* Při konfiguraci plánu můžete zadat **Update now** , nastane jednou nebo používá opakovaný plán.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -43,11 +43,11 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
 2. V závislosti na prostředku, který jste vybrali, přejděte na Update Management:
 
-   * Pokud jste vybrali svůj účet Automation, v části **Správa aktualizací**klikněte na **Správa aktualizací** a pak vyberte **naplánovat nasazení aktualizace**.
-   * Pokud jste vybrali virtuální počítač Azure, klikněte na **Host + aktualizace hostitelů**a pak vyberte **Přejít na Update Management**.
-   * Pokud jste vybrali Server s podporou ARC, klikněte na **Update Management**a pak vyberte **naplánovat nasazení aktualizací**.
+   * Pokud jste vybrali svůj účet Automation, v části **Správa aktualizací** klikněte na **Správa aktualizací** a pak vyberte **naplánovat nasazení aktualizace** .
+   * Pokud jste vybrali virtuální počítač Azure, klikněte na **Host + aktualizace hostitelů** a pak vyberte **Přejít na Update Management** .
+   * Pokud jste vybrali Server s podporou ARC, klikněte na **Update Management** a pak vyberte **naplánovat nasazení aktualizací** .
 
-3. V části **nové nasazení aktualizací**do pole **název** zadejte jedinečný název pro vaše nasazení.
+3. V části **nové nasazení aktualizací** do pole **název** zadejte jedinečný název pro vaše nasazení.
 
 4. Vyberte operační systém, který má být cílem nasazení aktualizace.
 
@@ -68,7 +68,7 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
 
     Pokud je vaše nasazení určeno pro použití pouze vybrané sady aktualizací, je nutné zrušit výběr všech předem vybraných klasifikací aktualizací při konfiguraci možnosti **Zahrnout/vyloučit aktualizace** , jak je popsáno v následujícím kroku. Tím se zajistí, že se na cílových počítačích nainstalují jenom aktualizace, které jste zadali pro *zahrnutí* do tohoto nasazení.
 
-8. Pomocí oblasti **zahrnout nebo vyloučit aktualizace** můžete přidat nebo vyloučit vybrané aktualizace z nasazení. Na stránce **zahrnutí/vyloučení** zadejte čísla ID článků znalostní báze, která se mají zahrnout nebo vyloučit.
+8. Pomocí oblasti **zahrnout nebo vyloučit aktualizace** můžete přidat nebo vyloučit vybrané aktualizace z nasazení. Na stránce **zahrnutí/vyloučení** zadejte čísla ID článků znalostní báze, která se mají zahrnout nebo vyloučit pro aktualizace Windows. Pro podporovanou distribuce systému Linux zadáte název balíčku.
 
    > [!IMPORTANT]
    > Zapamatujte si, že vyloučení přepisují. Například pokud definujete pravidlo vyloučení `*` , Update Management vyloučí všechny opravy nebo balíčky z instalace. Vyloučené opravy se pořád na počítačích zobrazují jako chybějící. U počítačů se systémem Linux, pokud zahrnete balíček, který má vyloučený závislý balíček, Update Management nenainstaluje hlavní balíček.
@@ -76,12 +76,15 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
    > [!NOTE]
    > Aktualizace, které se nahradily, se nedají zadat, aby se zahrnuly do nasazení aktualizace.
 
-9. Vyberte **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
+   > [!IMPORTANT]
+   > V případě Red Hat Enterprise se aktualizace jádra zobrazují také jako balíčky v YUMU. Pokud nevylučujete aktualizace, které zahrnují upgrady jádra, Update Management tyto aktualizace použít.
+
+9. Vyberte **Nastavení plánu** . Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
     > [!NOTE]
     > Tato možnost je odlišná, pokud jste vybrali Server s podporou ARC. Můžete vybrat **aktualizovat hned** nebo čas zahájení 20 minut do budoucna.
 
-10. Pomocí **opakování** určete, jestli k nasazení dojde jednou, nebo použijte opakovaný plán, a pak vyberte **OK**.
+10. Pomocí **opakování** určete, jestli k nasazení dojde jednou, nebo použijte opakovaný plán, a pak vyberte **OK** .
 
 11. V oblasti **pre-Scripts + post-Scripts** vyberte skripty, které chcete spustit před a po nasazení. Další informace najdete v tématu [Správa předběžných skriptů a pozálohovacích skriptů](pre-post-scripts.md).
 
@@ -102,14 +105,14 @@ K naplánování nového nasazení aktualizace proveďte následující kroky. V
     * Pouze restart; Tato možnost neinstaluje aktualizace.
 
     > [!NOTE]
-    > Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat**.
+    > Klíče registru uvedené v části [klíče registru používané ke správě restartování](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) můžou způsobit restart události, pokud jsou **Možnosti restartování** nastavené na **Nikdy nerestartovat** .
 
-14. Až skončíte s konfigurací plánu nasazení, vyberte **vytvořit**.
+14. Až skončíte s konfigurací plánu nasazení, vyberte **vytvořit** .
 
     ![Podokno nastavení plánu aktualizací](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit**.
+    > Až dokončíte konfiguraci plánu nasazení pro vybraný server s povoleným obloukem, vyberte **zkontrolovat + vytvořit** .
 
 15. Vrátíte se na řídicí panel stavu. Vyberte **plány nasazení** a zobrazte plán nasazení, který jste vytvořili. Uvádí se maximálně 500 plánů. Pokud máte více než 500 plánů a chcete zobrazit úplný seznam, přečtěte si téma [Konfigurace aktualizace softwaru – seznam](/rest/api/automation/softwareupdateconfigurations/list) REST API metoda. Zadejte rozhraní API verze 2019-06-01 nebo vyšší.
 
@@ -121,7 +124,7 @@ Pomocí ukázkové sady Runbook můžete vytvořit týdenní nasazení aktualiza
 
 ## <a name="check-deployment-status"></a>Zkontroluje stav nasazení.
 
-Po spuštění naplánovaného nasazení uvidíte jeho stav na kartě **Historie** v části **Správa aktualizací**. Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá**. Po úspěšném dokončení nasazení se stav změní na **úspěch**. Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav se **nezdařil**.
+Po spuštění naplánovaného nasazení uvidíte jeho stav na kartě **Historie** v části **Správa aktualizací** . Pokud je nasazení aktuálně spuštěné, jeho stav je **Probíhá** . Po úspěšném dokončení nasazení se stav změní na **úspěch** . Pokud dojde k chybám s jednou nebo více aktualizacemi v nasazení, stav se **nezdařil** .
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Zobrazit výsledky dokončeného nasazení aktualizace
 
@@ -129,7 +132,7 @@ Až se nasazení dokončí, můžete ho vybrat a zobrazit jeho výsledky.
 
 [![Řídicí panel stavu nasazení aktualizace pro konkrétní nasazení](./media/deploy-updates/manageupdates-view-results.png)](./media/deploy-updates/manageupdates-view-results-expanded.png#lightbox)
 
-V části **výsledky aktualizace**najdete souhrn celkového počtu aktualizací a výsledků nasazení na cílových virtuálních počítačích. V tabulce na pravé straně se zobrazuje podrobný rozpis aktualizací a výsledků instalace pro každou z nich.
+V části **výsledky aktualizace** najdete souhrn celkového počtu aktualizací a výsledků nasazení na cílových virtuálních počítačích. V tabulce na pravé straně se zobrazuje podrobný rozpis aktualizací a výsledků instalace pro každou z nich.
 
 Dostupné hodnoty jsou:
 

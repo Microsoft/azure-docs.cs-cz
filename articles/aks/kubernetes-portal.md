@@ -2,16 +2,14 @@
 title: Přístup k prostředkům Kubernetes z Azure Portal (Preview)
 description: Naučte se pracovat s prostředky Kubernetes a spravovat cluster Azure Kubernetes Service (AKS) z Azure Portal.
 services: container-service
-author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
-ms.author: lahugh
-ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070635"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635605"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Přístup k prostředkům Kubernetes z Azure Portal (Preview)
 
@@ -24,7 +22,7 @@ Zobrazení prostředků Kubernetes z Azure Portal nahrazuje [doplněk řídicíh
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K zobrazení prostředků Kubernetes v Azure Portal potřebujete cluster AKS. Podporuje se libovolný cluster, ale pokud používáte integraci Azure Active Directory (Azure AD), musí cluster používat [integraci Azure AD spravovanou pomocí AKS][aks-managed-aad]. Pokud váš cluster používá starší verzi služby Azure AD, můžete cluster upgradovat na portálu nebo pomocí rozhraní příkazového [řádku Azure CLI][cli-aad-upgrade].
 
@@ -62,7 +60,7 @@ Zobrazení prostředků Kubernetes zahrnuje také Editor YAML. Integrovaný edit
 
 :::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Kubernetes pod informace zobrazené v Azure Portal.":::
 
-Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit**, potvrďte změny a pak znovu uložíte.
+Po úpravě YAML se změny aplikují tak, že vyberete **zkontrolovat + Uložit** , potvrďte změny a pak znovu uložíte.
 
 >[!WARNING]
 > Provádění přímých změn v produkčním prostředí prostřednictvím uživatelského rozhraní nebo CLI se nedoporučuje, měli byste využít [osvědčené postupy průběžné integrace (CI) a průběžného nasazování (CD)](kubernetes-action.md). Možnosti správy Kubernetes a YAML v portálu Azure jsou vytvořené pro učení a získávání nových nasazení v nastavení pro vývoj a testování.

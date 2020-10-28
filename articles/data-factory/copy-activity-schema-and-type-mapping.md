@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249648"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637254"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Mapování schématu a datového typu v aktivitě kopírování
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,17 +50,17 @@ Můžete nakonfigurovat mapování Data Factory vytváření uživatelského roz
 | Vlastnost | Popis                                                  | Povinné |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Název sloupce/pole zdroje nebo jímky. Platí pro tabelární zdroj a jímku. | Ano      |
-| řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | No       |
-| program     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchické zdroje a jímky, například Cosmos DB, MongoDB nebo konektory REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem `$` ; pro pole v poli, které je zvoleno `collectionReference` vlastností, cesta JSON začíná z prvku pole bez `$` . | No       |
-| typ     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
-| jazyková verze  | Jazyková verze zdroje nebo sloupce jímky. Použijte, pokud je typ `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`.<br>Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
-| formát   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset` . Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | No       |
+| řadový  | Index sloupce. Začněte od 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | Ne       |
+| program     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchické zdroje a jímky, například Cosmos DB, MongoDB nebo konektory REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem `$` ; pro pole v poli, které je zvoleno `collectionReference` vlastností, cesta JSON začíná z prvku pole bez `$` . | Ne       |
+| typ     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
+| jazyková verze  | Jazyková verze zdroje nebo sloupce jímky. Použijte, pokud je typ `Datetime` nebo `Datetimeoffset` . Výchozí formát je `en-us`.<br>Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
+| formát   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset` . Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](/dotnet/standard/base-types/custom-date-and-time-format-strings) . Obecně platí, že tuto vlastnost nemusíte zadávat ani měnit. Přečtěte si další informace o [mapování datových typů](#data-type-mapping). | Ne       |
 
 Následující vlastnosti jsou podporovány v nástroji `translator` kromě následujících `mappings` :
 
 | Vlastnost            | Popis                                                  | Povinné |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Použijte při kopírování dat z hierarchického zdroje, například Cosmos DB, MongoDB nebo konektory REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | No       |
+| collectionReference | Použijte při kopírování dat z hierarchického zdroje, například Cosmos DB, MongoDB nebo konektory REST.<br>Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. | Ne       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>Tabulkový zdroj do tabulkové jímky
 
@@ -170,7 +170,7 @@ Například pokud máte zdrojový MongoDB dokument s následujícím obsahem:
 }
 ```
 
-A chcete ho zkopírovat do textového souboru v následujícím formátu s hlavičkou záhlaví, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se s běžnými kořenovými informacemi *(číslo, datum a město)*:
+A chcete ho zkopírovat do textového souboru v následujícím formátu s hlavičkou záhlaví, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se s běžnými kořenovými informacemi *(číslo, datum a město)* :
 
 | orderNumber | orderDate | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,13 +182,13 @@ Toto mapování můžete definovat při vytváření Data Factory uživatelskéh
 
 1. Na kartě > aktivity kopírování klikněte na tlačítko **importovat schéma** a importujte zdrojová i schémata jímky. Když Data Factory při importu schématu vyvzorkuje nejvyšší počet objektů, můžete ho přidat do správné vrstvy v hierarchii – najeďte na existující název pole a vyberte přidat uzel, objekt nebo pole.
 
-2. Vyberte pole, ze kterého chcete iterovat a extrahujte data. Automaticky se vyplní jako **odkaz na kolekci**. Poznámka pro takovou operaci je podporována pouze jedno pole.
+2. Vyberte pole, ze kterého chcete iterovat a extrahujte data. Automaticky se vyplní jako **odkaz na kolekci** . Poznámka pro takovou operaci je podporována pouze jedno pole.
 
 3. Namapujte potřebná pole na jímku. Data Factory automaticky určuje odpovídající cesty JSON pro hierarchickou stranu.
 
 ![Mapování hierarchicky na tabelární pomocí uživatelského rozhraní](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
-Můžete také přepnout na **Rozšířený editor**. v takovém případě můžete přímo zobrazit a upravit cesty JSON polí. Pokud se rozhodnete přidat nové mapování v tomto zobrazení, zadejte cestu JSON.
+Můžete také přepnout na **Rozšířený editor** . v takovém případě můžete přímo zobrazit a upravit cesty JSON polí. Pokud se rozhodnete přidat nové mapování v tomto zobrazení, zadejte cestu JSON.
 
 ![Mapování hierarchicky na tabulkové pomocí rozšířeného editoru](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
 
@@ -287,7 +287,7 @@ Následující převody datových typů jsou podporovány mezi dočasnými typy 
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
 | Logická hodnota     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Bajtové pole  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
-| Datum/čas   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
+| Datum/Čas   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
 | Decimal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Plovoucí desetinná čárka | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Identifikátor GUID        |         |            |         |                              |                                | ✓    |                            | ✓      |          |
@@ -309,15 +309,15 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování pro převo
 
 | Vlastnost                         | Popis                                                  | Povinné |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | Povolte nové prostředí pro konverzi datových typů. <br>Výchozí hodnota je false z důvodu zpětné kompatibility.<br><br>Pro nové aktivity kopírování vytvořené prostřednictvím Data Factory vytváření uživatelského rozhraní od 12. června 2020 je tento převod datového typu ve výchozím nastavení povolený pro dosažení optimálního prostředí a u příslušných scénářů můžete zobrazit následující nastavení převodu typů na kartě aktivity kopírování – > mapování. <br>Chcete-li vytvořit kanál programově, je nutné explicitně nastavit `typeConversion` vlastnost na hodnotu true, chcete-li ji povolit.<br>Pro existující aktivity kopírování vytvořené před vydáním této funkce se nezobrazí možnosti konverze typu na Data Factory vytváření uživatelského rozhraní pro zpětnou kompatibilitu. | No       |
-| typeConversionSettings           | Skupina nastavení převodu typů. Použijte, pokud `typeConversion` je nastavená na `true` . V rámci této skupiny jsou všechny níže uvedené vlastnosti. | No       |
+| typeConversion                   | Povolte nové prostředí pro konverzi datových typů. <br>Výchozí hodnota je false z důvodu zpětné kompatibility.<br><br>Pro nové aktivity kopírování vytvořené prostřednictvím Data Factory vytváření uživatelského rozhraní od 12. června 2020 je tento převod datového typu ve výchozím nastavení povolený pro dosažení optimálního prostředí a u příslušných scénářů můžete zobrazit následující nastavení převodu typů na kartě aktivity kopírování – > mapování. <br>Chcete-li vytvořit kanál programově, je nutné explicitně nastavit `typeConversion` vlastnost na hodnotu true, chcete-li ji povolit.<br>Pro existující aktivity kopírování vytvořené před vydáním této funkce se nezobrazí možnosti konverze typu na Data Factory vytváření uživatelského rozhraní pro zpětnou kompatibilitu. | Ne       |
+| typeConversionSettings           | Skupina nastavení převodu typů. Použijte, pokud `typeConversion` je nastavená na `true` . V rámci této skupiny jsou všechny níže uvedené vlastnosti. | Ne       |
 | *Položk `typeConversionSettings`* |                                                              |          |
-| allowDataTruncation              | Povolí zkracování dat při převodu zdrojových dat na jímku s jiným typem během kopírování, například z desítkového čísla na celé číslo od DatetimeOffset do data a času. <br>Výchozí hodnota je true (pravda). | No       |
-| treatBooleanAsNumber             | Považovat logické hodnoty jako čísla, například true jako 1.<br>Výchozí hodnota je false. | No       |
-| dateTimeFormat                   | Formátovací řetězec při konverzi mezi daty bez posunutí a řetězce časového pásma, například `yyyy-MM-dd HH:mm:ss.fff` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
-| dateTimeOffsetFormat             | Formátovací řetězec při konverzi mezi daty pomocí posunutí a řetězců časového pásma, například `yyyy-MM-dd HH:mm:ss.fff zzz` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
-| timeSpanFormat                   | Řetězec formátu při převodu mezi časovými obdobími a řetězci, například `dd\.hh\:mm` . Podrobné informace najdete v tématu [Vlastní řetězce formátu TimeSpan](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | No       |
-| jazyková verze                          | Informace o jazykové verzi, která má být použita při převodu typů, například `en-us` nebo `fr-fr` . | No       |
+| allowDataTruncation              | Povolí zkracování dat při převodu zdrojových dat na jímku s jiným typem během kopírování, například z desítkového čísla na celé číslo od DatetimeOffset do data a času. <br>Výchozí hodnota je true (pravda). | Ne       |
+| treatBooleanAsNumber             | Považovat logické hodnoty jako čísla, například true jako 1.<br>Výchozí hodnota je false. | Ne       |
+| dateTimeFormat                   | Formátovací řetězec při konverzi mezi daty bez posunutí a řetězce časového pásma, například `yyyy-MM-dd HH:mm:ss.fff` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
+| dateTimeOffsetFormat             | Formátovací řetězec při konverzi mezi daty pomocí posunutí a řetězců časového pásma, například `yyyy-MM-dd HH:mm:ss.fff zzz` .  Podrobné informace najdete v tématu [Vlastní řetězce formátu data a času](/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
+| timeSpanFormat                   | Řetězec formátu při převodu mezi časovými obdobími a řetězci, například `dd\.hh\:mm` . Podrobné informace najdete v tématu [Vlastní řetězce formátu TimeSpan](/dotnet/standard/base-types/custom-timespan-format-strings) . | Ne       |
+| jazyková verze                          | Informace o jazykové verzi, která má být použita při převodu typů, například `en-us` nebo `fr-fr` . | Ne       |
 
 **Příklad:**
 
@@ -356,7 +356,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování pro převo
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternativní mapování sloupce (starší model)
 
-Můžete určit aktivitu kopírování – > `translator`  ->  `columnMappings` k mapování mezi daty tabelárních ve tvaru. V tomto případě je oddíl "Structure" vyžadován pro vstupní i výstupní datové sady. Mapování sloupce podporuje **mapování všech nebo dílčích sloupců ve struktuře zdrojové datové sady na všechny sloupce ve struktuře datové sady jímky**. Následující jsou chybové stavy, jejichž výsledkem je výjimka:
+Můžete určit aktivitu kopírování – > `translator`  ->  `columnMappings` k mapování mezi daty tabelárních ve tvaru. V tomto případě je oddíl "Structure" vyžadován pro vstupní i výstupní datové sady. Mapování sloupce podporuje **mapování všech nebo dílčích sloupců ve struktuře zdrojové datové sady na všechny sloupce ve struktuře datové sady jímky** . Následující jsou chybové stavy, jejichž výsledkem je výjimka:
 
 - Výsledek dotazu na zdrojové úložiště dat nemá název sloupce, který je zadaný v části struktura vstupní datové sady.
 - Úložiště dat jímky (Pokud s předem definovaným schématem) nemá název sloupce, který je zadaný v části struktura výstupní datové sady.
@@ -455,8 +455,8 @@ Můžete určit aktivitu kopírování – > `translator`  ->  `schemaMapping` k
 | Vlastnost            | Popis                                                  | Povinné |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | typ                | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Ano      |
-| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Ano      |
-| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | No       |
+| schemaMapping       | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky** .<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje** zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Hodnota:** reprezentuje jímku. Pro **tabulkovou jímku** zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky** zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole uvnitř pole, které je zvoleno `collectionReference` vlastností, začíná cesta JSON od elementu pole. | Ano      |
+| collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | Ne       |
 
 **Příklad: kopírování z MongoDB do Oracle:**
 
@@ -487,7 +487,7 @@ Například pokud máte MongoDB dokument s následujícím obsahem:
 }
 ```
 
-a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se společnými kořenovými informacemi *(číslo, datum a město)*:
+a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se společnými kořenovými informacemi *(číslo, datum a město)* :
 
 | orderNumber | orderDate | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |

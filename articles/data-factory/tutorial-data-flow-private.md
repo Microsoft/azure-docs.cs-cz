@@ -8,18 +8,18 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
-ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52e45017643c63937ffc521adfe08d6415460254
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079468"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637135"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Zabezpečená transformace dat pomocí mapování toku dat
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction).
+Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](./introduction.md).
 
 V tomto kurzu použijete Data Factory uživatelské rozhraní (UI) k vytvoření kanálu, který kopíruje a transformuje data *ze zdroje Azure Data Lake Storage Gen2 do data Lake Storage Gen2 jímky (povolením přístupu pouze k vybraným sítím)* pomocí mapování toku dat v [Data Factory spravovaných Virtual Network](managed-virtual-network-private-endpoint.md). Při transformaci dat pomocí mapování toku dat můžete v tomto kurzu rozbalit konfigurační vzor.
 
@@ -33,67 +33,67 @@ V tomto kurzu provedete následující kroky:
 > * Testovací spuštění kanálu
 > * Monitorování aktivity toku dat.
 
-## <a name="prerequisites"></a>Požadavky
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet služby Azure Storage**. Používáte Data Lake Storage jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
+## <a name="prerequisites"></a>Předpoklady
+* **Předplatné Azure** . Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet služby Azure Storage** . Používáte Data Lake Storage jako *zdrojová* úložiště a úložiště dat *jímky* . Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal), kde najdete postup jeho vytvoření. *Ujistěte se, že účet úložiště povoluje přístup jenom z vybraných sítí.* 
 
-Soubor, který v tomto kurzu transformuje, je moviesDB.csv, který najdete na tomto [webu obsahu GitHubu](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Příklady budou odkazovat na kontejner s názvem **Sample-data**.
+Soubor, který v tomto kurzu transformuje, je moviesDB.csv, který najdete na tomto [webu obsahu GitHubu](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv). Pokud chcete načíst soubor z GitHubu, zkopírujte obsah do textového editoru, který si zvolíte, a uložte ho místně jako soubor. csv. Postup nahrání souboru do účtu úložiště najdete v tématu [nahrání objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md). Příklady budou odkazovat na kontejner s názvem **Sample-data** .
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 V tomto kroku vytvoříte datovou továrnu a otevřete Data Factory uživatelské rozhraní pro vytvoření kanálu v datové továrně.
 
 1. Otevřete Microsoft Edge nebo Google Chrome. V současné době podporuje Data Factory uživatelské rozhraní pouze webové prohlížeče Microsoft Edge a Google Chrome.
-1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků.
-1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
+1. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory** analýzy prostředků.
+1. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory** .
 
-   Název datové továrny musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva s názvem hodnota, zadejte jiný název objektu pro vytváření dat (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny musí být *globálně jedinečný* . Pokud se zobrazí chybová zpráva s názvem hodnota, zadejte jiný název objektu pro vytváření dat (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 
 1. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit.
 1. U položky **Skupina prostředků** proveďte jeden z následujících kroků:
 
     * Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-    * Vyberte **vytvořit novou**a zadejte název skupiny prostředků. 
+    * Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
-1. Jako **Verzi** vyberte **V2**.
+1. Jako **Verzi** vyberte **V2** .
 1. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a Azure SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou mohou být v jiných oblastech.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 1. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejít na stránku **Data Factory** .
-1. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
+1. Vyberte **Vytvořit a monitorovat** . Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Vytvoření Azure IR v Data Factory spravovaném Virtual Network
 V tomto kroku vytvoříte Azure IR a povolíte Data Factory spravované Virtual Network.
 
-1. Na portálu Data Factory klikněte na **Spravovat**a vyberte **Nový** , aby se vytvořila nová Azure IR.
+1. Na portálu Data Factory klikněte na **Spravovat** a vyberte **Nový** , aby se vytvořila nová Azure IR.
 
    ![Snímek obrazovky, který ukazuje vytvoření nového Azure IR.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
 1. Vyberte možnost **Azure** IR.
 
    ![Snímek obrazovky, který zobrazuje novou Azure IR.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
-1. V části **Konfigurace virtuální sítě (Preview)** vyberte **Povolit**.
+1. V části **Konfigurace virtuální sítě (Preview)** vyberte **Povolit** .
 
    ![Snímek obrazovky, který ukazuje povolení nového Azure IR.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Vytvoření kanálu s aktivitou toku dat
 
 V tomto kroku vytvoříte kanál, který obsahuje aktivitu toku dat.
 
-1. Na stránce **Začínáme** vyberte **Vytvořit kanál**.
+1. Na stránce **Začínáme** vyberte **Vytvořit kanál** .
 
    ![Snímek obrazovky, který ukazuje vytvoření kanálu.](./media/doc-common-process/get-started-page.png)
 
 1. V podokně vlastnosti kanálu zadejte **TransformMovies** pro název kanálu.
-1. V horním panelu pro vytváření snímků nastavte posuvník **ladění toku dat** . Režim ladění umožňuje interaktivní testování logiky transformace proti clusteru Live Spark. Zahřívání clusterů toku dat trvá pět až sedmi minut. Pokud plánujete vývoj toku dat, zapněte nejprve **ladění toku dat** . Další informace naleznete v tématu [režim ladění](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-debug-mode).
+1. V horním panelu pro vytváření snímků nastavte posuvník **ladění toku dat** . Režim ladění umožňuje interaktivní testování logiky transformace proti clusteru Live Spark. Zahřívání clusterů toku dat trvá pět až sedmi minut. Pokud plánujete vývoj toku dat, zapněte nejprve **ladění toku dat** . Další informace naleznete v tématu [režim ladění](./concepts-data-flow-debug-mode.md).
 
     ![Snímek obrazovky zobrazující posuvník ladění toku dat](media/tutorial-data-flow-private/dataflow-debug.png)
-1. V podokně **aktivity** rozbalte možnost **přesunout a transformovat**. Přetáhněte aktivitu **toku dat** z podokna na plátno kanálu.
+1. V podokně **aktivity** rozbalte možnost **přesunout a transformovat** . Přetáhněte aktivitu **toku dat** z podokna na plátno kanálu.
 
-1. V místní nabídce **Přidat tok dat** vyberte **vytvořit nový tok dat** a pak vyberte **mapování toku dat**. Až budete hotovi, vyberte **OK** .
+1. V místní nabídce **Přidat tok dat** vyberte **vytvořit nový tok dat** a pak vyberte **mapování toku dat** . Až budete hotovi, vyberte **OK** .
 
     ![Snímek obrazovky zobrazující tok dat mapování](media/tutorial-data-flow-private/mapping-dataflow.png)
 
@@ -109,21 +109,21 @@ V tomto kroku nastavíte Data Lake Storage Gen2 jako zdroj.
 
 1. V plátně toku dat přidejte zdroj výběrem pole **Přidat zdroj** .
 
-1. Pojmenujte své zdrojové **MoviesDB**. Pokud chcete vytvořit novou zdrojovou datovou sadu, vyberte **Nový** .
+1. Pojmenujte své zdrojové **MoviesDB** . Pokud chcete vytvořit novou zdrojovou datovou sadu, vyberte **Nový** .
 
-1. Vyberte **Azure Data Lake Storage Gen2**a pak vyberte **pokračovat**.
+1. Vyberte **Azure Data Lake Storage Gen2** a pak vyberte **pokračovat** .
 
-1. Vyberte **DelimitedText**a pak vyberte **pokračovat**.
+1. Vyberte **DelimitedText** a pak vyberte **pokračovat** .
 
-1. Pojmenujte datovou sadu **MoviesDB**. V rozevíracím seznamu propojená služba vyberte **Nový**.
+1. Pojmenujte datovou sadu **MoviesDB** . V rozevíracím seznamu propojená služba vyberte **Nový** .
 
 1. Na obrazovce pro vytvoření propojené služby pojmenujte Data Lake Storage Gen2 propojených služeb **ADLSGen2** a zadejte metodu ověřování. Pak zadejte přihlašovací údaje pro připojení. V tomto kurzu používáme **klíč účtu** pro připojení k našemu účtu úložiště. 
 
-1. Ujistěte se, že jste povolili **interaktivní vytváření**. Povolení může trvat minutu.
+1. Ujistěte se, že jste povolili **interaktivní vytváření** . Povolení může trvat minutu.
 
     ![Snímek obrazovky zobrazující interaktivní vytváření obsahu](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. Vyberte **Test připojení**. Nemělo by to selhat, protože účet úložiště nepovoluje přístup k němu bez vytvoření a schválení privátního koncového bodu. V chybové zprávě byste měli vidět odkaz pro vytvoření privátního koncového bodu, pomocí kterého můžete vytvořit spravovaný privátní koncový bod. Alternativou je přejít přímo na kartu **Správa** a postupovat podle pokynů v [této části](#create-a-managed-private-endpoint) a vytvořit spravovaný privátní koncový bod.
+1. Vyberte **Test připojení** . Nemělo by to selhat, protože účet úložiště nepovoluje přístup k němu bez vytvoření a schválení privátního koncového bodu. V chybové zprávě byste měli vidět odkaz pro vytvoření privátního koncového bodu, pomocí kterého můžete vytvořit spravovaný privátní koncový bod. Alternativou je přejít přímo na kartu **Správa** a postupovat podle pokynů v [této části](#create-a-managed-private-endpoint) a vytvořit spravovaný privátní koncový bod.
 
 1. Nechejte dialogové okno otevřené a pak na svém účtu úložiště.
 
@@ -131,7 +131,7 @@ V tomto kroku nastavíte Data Lake Storage Gen2 jako zdroj.
 
 1. Vraťte se do dialogového okna. Znovu vyberte **Test připojení** a vyberte **vytvořit** a nasaďte propojenou službu.
 
-1. Na obrazovce vytváření datové sady zadejte, kde se nachází soubor v poli **cesta k souboru** . V tomto kurzu se soubor moviesDB.csv nachází v **ukázce kontejneru – data**. Vzhledem k tomu, že soubor obsahuje záhlaví, zaškrtněte políčko **první řádek jako záhlaví** . Vyberte možnost **z připojení/Store** a importujte schéma hlaviček přímo ze souboru v úložišti. Až budete hotovi, vyberte **OK** .
+1. Na obrazovce vytváření datové sady zadejte, kde se nachází soubor v poli **cesta k souboru** . V tomto kurzu se soubor moviesDB.csv nachází v **ukázce kontejneru – data** . Vzhledem k tomu, že soubor obsahuje záhlaví, zaškrtněte políčko **první řádek jako záhlaví** . Vyberte možnost **z připojení/Store** a importujte schéma hlaviček přímo ze souboru v úložišti. Až budete hotovi, vyberte **OK** .
 
     ![Snímek obrazovky zobrazující cestu ke zdroji](media/tutorial-data-flow-private/source-file-path.png)
 
@@ -146,16 +146,16 @@ Pokud jste nepoužili hypertextový odkaz, když jste otestovali předchozí př
 1. Přejít na kartu **Spravovat** .
 
    > [!NOTE]
-   > Karta **Spravovat** nemusí být k dispozici pro všechny instance Data Factory. Pokud ho nevidíte, můžete získat přístup k privátním koncovým bodům výběrem možnosti **vytvořit**  >  **připojení**  >  **soukromý koncový bod**.
+   > Karta **Spravovat** nemusí být k dispozici pro všechny instance Data Factory. Pokud ho nevidíte, můžete získat přístup k privátním koncovým bodům výběrem možnosti **vytvořit**  >  **připojení**  >  **soukromý koncový bod** .
 
 1. Přejít do oddílu **spravované privátní koncové body** .
-1. V části **spravované privátní koncové body**vyberte **+ Nový** .
+1. V části **spravované privátní koncové body** vyberte **+ Nový** .
 
     ![Snímek obrazovky, který zobrazuje nové tlačítko spravované soukromé koncové body.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
 
-1. V seznamu Vyberte dlaždici **Azure Data Lake Storage Gen2** a vyberte **pokračovat**.
+1. V seznamu Vyberte dlaždici **Azure Data Lake Storage Gen2** a vyberte **pokračovat** .
 1. Zadejte název účtu úložiště, který jste vytvořili.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 1. Po několika sekundách byste měli vidět, že vytvoření privátního odkazu vyžaduje schválení.
 1. Vyberte privátní koncový bod, který jste vytvořili. Zobrazí se hypertextový odkaz, který vás provede schválením privátního koncového bodu na úrovni účtu úložiště.
 
@@ -165,23 +165,23 @@ Pokud jste nepoužili hypertextový odkaz, když jste otestovali předchozí př
 
 1. V účtu úložiště v části **Nastavení** použijte **připojení privátního koncového bodu** .
 
-1. Zaškrtněte políčko pomocí privátního koncového bodu, který jste vytvořili, a vyberte **schválit**.
+1. Zaškrtněte políčko pomocí privátního koncového bodu, který jste vytvořili, a vyberte **schválit** .
 
     ![Snímek obrazovky, který zobrazuje tlačítko pro schválení privátního koncového bodu.](./media/tutorial-data-flow-private/approve-private-endpoint.png)
 
-1. Přidejte popis a vyberte **Ano**.
+1. Přidejte popis a vyberte **Ano** .
 1. Vraťte se do části **spravované soukromé koncové body** na kartě **Spravovat** v Data Factory.
 1. Po uplynutí minuty byste měli vidět, že se schválení zobrazí pro váš soukromý koncový bod.
 
 ### <a name="add-the-filter-transformation"></a>Přidat transformaci filtru
 
-1. Vedle zdrojového uzlu na plátně toku dat vyberte ikonu se symbolem plus a přidejte novou transformaci. První transformace, kterou přidáte, je **Filtr**.
+1. Vedle zdrojového uzlu na plátně toku dat vyberte ikonu se symbolem plus a přidejte novou transformaci. První transformace, kterou přidáte, je **Filtr** .
 
     ![Snímek obrazovky, který ukazuje přidání filtru.](media/tutorial-data-flow-private/add-filter.png)
-1. Pojmenujte transformaci filtru **FilterYears**. Vyberte pole výrazu vedle **filtrování** a otevřete Tvůrce výrazů. Tady zadáte podmínku filtrování.
+1. Pojmenujte transformaci filtru **FilterYears** . Vyberte pole výrazu vedle **filtrování** a otevřete Tvůrce výrazů. Tady zadáte podmínku filtrování.
 
     ![Snímek obrazovky zobrazující FilterYears](media/tutorial-data-flow-private/filter-years.png)
-1. Tvůrce výrazů toku dat umožňuje interaktivně vytvářet výrazy pro použití v různých transformacích. Výrazy mohou zahrnovat předdefinované funkce, sloupce ze vstupního schématu a uživatelsky definované parametry. Další informace o tom, jak sestavit výrazy, najdete v tématu [Tvůrce výrazů toku dat](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder).
+1. Tvůrce výrazů toku dat umožňuje interaktivně vytvářet výrazy pro použití v různých transformacích. Výrazy mohou zahrnovat předdefinované funkce, sloupce ze vstupního schématu a uživatelsky definované parametry. Další informace o tom, jak sestavit výrazy, najdete v tématu [Tvůrce výrazů toku dat](./concepts-data-flow-expression-builder.md).
 
     * V tomto kurzu chcete filtrovat filmy v komedie žánru, který jste nahlásili mezi roky 1910 a 2000. Vzhledem k tomu, že rok je aktuálně řetězec, je nutné jej převést na celé číslo pomocí ```toInteger()``` funkce. Použijte operátory větší než nebo rovno (>=) a menší než nebo rovno (<=) pro porovnání s hodnotami roku literálu 1910 a 2000. Sjednotte tyto výrazy spolu s operátorem and (&&). Výraz se vychází takto:
 
@@ -203,37 +203,37 @@ Pokud jste nepoužili hypertextový odkaz, když jste otestovali předchozí př
 
 ### <a name="add-the-aggregate-transformation"></a>Přidat agregovanou transformaci
 
-1. Další transformace, kterou přidáte, je **agregovaná** transformace v rámci **modifikátoru schématu**.
+1. Další transformace, kterou přidáte, je **agregovaná** transformace v rámci **modifikátoru schématu** .
 
     ![Snímek obrazovky, který ukazuje přidání agregace.](media/tutorial-data-flow-private/add-aggregate.png)
-1. Pojmenujte agregovanou transformaci **AggregateComedyRating**. Na kartě **Seskupit podle** v rozevíracím seznamu vyberte možnost **year (rok** ) a seskupte seskupení podle roku, ve kterém byl film vydaný.
+1. Pojmenujte agregovanou transformaci **AggregateComedyRating** . Na kartě **Seskupit podle** v rozevíracím seznamu vyberte možnost **year (rok** ) a seskupte seskupení podle roku, ve kterém byl film vydaný.
 
     ![Snímek obrazovky znázorňující agregovanou skupinu.](media/tutorial-data-flow-private/group-by-year.png)
-1. Přejít na kartu **agregace** . V levém textovém poli pojmenujte agregovaný sloupec **AverageComedyRating**. Vyberte pravé pole výrazu a zadejte agregační výraz pomocí Tvůrce výrazů.
+1. Přejít na kartu **agregace** . V levém textovém poli pojmenujte agregovaný sloupec **AverageComedyRating** . Vyberte pravé pole výrazu a zadejte agregační výraz pomocí Tvůrce výrazů.
 
     ![Snímek obrazovky zobrazující název agregovaného sloupce](media/tutorial-data-flow-private/name-column.png)
-1. Chcete-li získat průměr **hodnocení**sloupce, použijte ```avg()``` agregační funkci. Vzhledem k tomu, že **hodnocení** je řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím ```toInteger()``` funkce. Tento výraz vypadá takto:
+1. Chcete-li získat průměr **hodnocení** sloupce, použijte ```avg()``` agregační funkci. Vzhledem k tomu, že **hodnocení** je řetězec a ```avg()``` přebírá numerické vstupy, je nutné hodnotu převést na číslo prostřednictvím ```toInteger()``` funkce. Tento výraz vypadá takto:
 
     ```avg(toInteger(Rating))```
 
 1. Až budete hotovi, vyberte **Uložit a dokončit** .
 
     ![Snímek obrazovky, který ukazuje uložení agregace.](media/tutorial-data-flow-private/save-aggregate.png)
-1. Výstup transformace zobrazíte tak, že přejdete na kartu **Náhled dat** . Všimněte si, že jsou k dispozici pouze dva sloupce, **rok** a **AverageComedyRating**.
+1. Výstup transformace zobrazíte tak, že přejdete na kartu **Náhled dat** . Všimněte si, že jsou k dispozici pouze dva sloupce, **rok** a **AverageComedyRating** .
 
 ### <a name="add-the-sink-transformation"></a>Přidat transformaci jímky
 
-1. Dále chcete přidat transformaci **jímky** do **umístění cíl**.
+1. Dále chcete přidat transformaci **jímky** do **umístění cíl** .
 
     ![Snímek obrazovky, který ukazuje přidání jímky.](media/tutorial-data-flow-private/add-sink.png)
-1. Pojmenujte **jímku**jímky. Vyberte **Nový** a vytvořte datovou sadu jímky.
+1. Pojmenujte **jímku** jímky. Vyberte **Nový** a vytvořte datovou sadu jímky.
 
     ![Snímek obrazovky, který ukazuje vytvoření jímky.](media/tutorial-data-flow-private/create-sink.png)
-1. Na stránce **Nová datová sada** vyberte **Azure Data Lake Storage Gen2** a pak vyberte **pokračovat**.
+1. Na stránce **Nová datová sada** vyberte **Azure Data Lake Storage Gen2** a pak vyberte **pokračovat** .
 
-1. Na stránce **Vybrat formát** vyberte **DelimitedText** a pak vyberte **pokračovat**.
+1. Na stránce **Vybrat formát** vyberte **DelimitedText** a pak vyberte **pokračovat** .
 
-1. Pojmenujte datovou sadu jímky **MoviesSink**. Pro propojenou službu vyberte stejnou propojenou službu **ADLSGen2** , kterou jste vytvořili pro transformaci zdroje. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu zapisujeme do **výstupu** složky v kontejneru **Sample-data**. Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Zaškrtněte políčko **první řádek jako záhlaví** a vyberte možnost **žádné** pro **schéma importu**. Vyberte **OK**.
+1. Pojmenujte datovou sadu jímky **MoviesSink** . Pro propojenou službu vyberte stejnou propojenou službu **ADLSGen2** , kterou jste vytvořili pro transformaci zdroje. Zadejte výstupní složku, do které se budou zapisovat data. V tomto kurzu zapisujeme do **výstupu** složky v kontejneru **Sample-data** . Složka nemusí být předem k dispozici a je možné ji vytvořit dynamicky. Zaškrtněte políčko **první řádek jako záhlaví** a vyberte možnost **žádné** pro **schéma importu** . Vyberte **OK** .
 
     ![Snímek obrazovky zobrazující cestu jímky](media/tutorial-data-flow-private/sink-file-path.png)
 
@@ -254,6 +254,6 @@ Kanál můžete ladit před jeho publikováním. V tomto kroku aktivujete ladic�
 
 Pokud jste postupovali podle tohoto kurzu správně, měli byste do složky jímky zapsat 83 řádků a 2 sloupce. Správnost dat můžete ověřit kontrolou úložiště objektů BLOB.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto kurzu jste použili Data Factory uživatelské rozhraní k vytvoření kanálu, který kopíruje a transformuje data ze zdroje Data Lake Storage Gen2 do jímky Data Lake Storage Gen2 (povolením přístupu pouze k vybraným sítím) pomocí mapování toku dat v [Data Factory spravovaných Virtual Network](managed-virtual-network-private-endpoint.md).

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: becebf5e56840b8430dd8d4a7714229503e677da
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253958"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637118"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště objektů BLOB v Azure do databáze v Azure SQL Database pomocí Azure Data Factory
 
@@ -38,10 +38,10 @@ V tomto kurzu budete provádět následující kroky:
 > * Aktivace kanálu podle plánu
 > * Monitorování spuštění aktivit a kanálu
 
-## <a name="prerequisites"></a>Požadavky
-* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
-* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
+## <a name="prerequisites"></a>Předpoklady
+* **Předplatné Azure** . Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet služby Azure Storage** . Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
+* **Azure SQL Database** . Tuto databázi použijete jako úložiště dat *jímky* . Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -49,7 +49,7 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
 
 #### <a name="create-a-source-blob"></a>Vytvoření zdrojového objektu blob
 
-1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte si ho na disk jako soubor **emp.txt**:
+1. Spusťte Poznámkový blok. Zkopírujte následující text a uložte si ho na disk jako soubor **emp.txt** :
 
     ```
     FirstName,LastName
@@ -57,7 +57,7 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
     Jane,Doe
     ```
 
-1. V úložišti Blob Storage vytvořte kontejner s názvem **adftutorial**. V tomto kontejneru vytvořte složku **input**. Pak do složky **input** nahrajte soubor **emp.txt**. K provedení těchto úloh použijte Azure Portal nebo nástroj, jako je například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
+1. V úložišti Blob Storage vytvořte kontejner s názvem **adftutorial** . V tomto kontejneru vytvořte složku **input** . Pak do složky **input** nahrajte soubor **emp.txt** . K provedení těchto úloh použijte Azure Portal nebo nástroj, jako je například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
@@ -75,16 +75,16 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Povolte službám Azure přístup k SQL Serveru. Zkontrolujte, že je nastavení **Povolit přístup ke službám Azure** pro váš SQL Server **ZAPNUTÉ**, aby mohla služba Data Factory na tento SQL Server zapisovat data. Pokud chcete toto nastavení ověřit a zapnout, přejděte na logický server SQL > přehled > nastavení brány firewall serveru> nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto**.
+1. Povolte službám Azure přístup k SQL Serveru. Zkontrolujte, že je nastavení **Povolit přístup ke službám Azure** pro váš SQL Server **ZAPNUTÉ** , aby mohla služba Data Factory na tento SQL Server zapisovat data. Pokud chcete toto nastavení ověřit a zapnout, přejděte na logický server SQL > přehled > nastavení brány firewall serveru> nastavte možnost **Povolit přístup ke službám Azure** na **zapnuto** .
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní služby Data Factory, ve kterém v této datové továrně vytvoříte kanál.
 
-1. Otevřete **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků.
-3. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory**.
+1. Otevřete **Microsoft Edge** nebo **Google Chrome** . Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
+2. V nabídce vlevo vyberte **vytvořit**  >  **Analytics**  >  **Data Factory** analýzy prostředků.
+3. Do pole **Název** na stránce **Nová datová továrna** zadejte **ADFTutorialDataFactory** .
 
-   Název objektu pro vytváření dat Azure musí být *globálně jedinečný*. Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název objektu pro vytváření dat Azure musí být *globálně jedinečný* . Pokud se zobrazí chybová zpráva týkající se hodnoty názvu, zadejte jiný název datové továrny. (například yournameADFTutorialDataFactory). Pravidla pro pojmenovávání artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
 
      ![Nová datová továrna](./media/doc-common-process/name-not-available-error.png)
 4. Vyberte **předplatné** Azure, v rámci kterého chcete datovou továrnu vytvořit.
@@ -92,14 +92,14 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
 
     a. Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
 
-    b. Vyberte **vytvořit novou**a zadejte název skupiny prostředků. 
+    b. Vyberte **vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md). 
-6. Jako **Verzi** vyberte **V2**.
+6. Jako **Verzi** vyberte **V2** .
 7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
-8. Vyberte **Vytvořit**.
+8. Vyberte **Vytvořit** .
 9. Po dokončení vytváření se zobrazí oznámení v centru oznámení. Vyberte **Přejít k prostředku** a přejděte na stránku Datová továrna.
-10. Vyberte **Vytvořit a monitorovat**. Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
+10. Vyberte **Vytvořit a monitorovat** . Na samostatné kartě se spustí uživatelské rozhraní služby Data Factory.
 
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
@@ -111,58 +111,58 @@ V tomto kroku vytvoříte v datové továrně kanál s aktivitou kopírován�
 
 V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služby a datové sady, které budete potřebovat ke konfiguraci kanálu.
 
-1. Na stránce **Začínáme** vyberte **Vytvořit kanál**.
+1. Na stránce **Začínáme** vyberte **Vytvořit kanál** .
 
    ![Vytvoření kanálu](./media/doc-common-process/get-started-page.png)
 
-1. 1. Na panelu Obecné v části **vlastnosti**zadejte **CopyPipeline** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
+1. 1. Na panelu Obecné v části **vlastnosti** zadejte **CopyPipeline** pro **název** . Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
 
-1. V poli nástroje **aktivity** rozbalte kategorii **přesunout a transformovat** a přetáhněte **kopírování dat** aktivity z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
+1. V poli nástroje **aktivity** rozbalte kategorii **přesunout a transformovat** a přetáhněte **kopírování dat** aktivity z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql** .
 
     ![Aktivita kopírování](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
 ### <a name="configure-source"></a>Konfigurace zdroje
 
 >[!TIP]
->V tomto kurzu použijete *klíč účtu* jako typ ověřování pro zdrojové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS*,*instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) .
->K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) .
+>V tomto kurzu použijete *klíč účtu* jako typ ověřování pro zdrojové úložiště dat, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *URI SAS* , *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-blob-storage.md#linked-service-properties) .
+>K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
 1. Přejít na kartu **zdroj** . Vyberte **+ Nová** a vytvořte zdrojovou datovou sadu.
 
-1. V dialogovém okně **Nová datová sada** vyberte **Azure Blob Storage**a pak vyberte **pokračovat**. Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage**.
+1. V dialogovém okně **Nová datová sada** vyberte **Azure Blob Storage** a pak vyberte **pokračovat** . Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage** .
 
-1. V dialogovém okně **Vybrat formát** zvolte typ formátu dat a pak vyberte **pokračovat**.
+1. V dialogovém okně **Vybrat formát** zvolte typ formátu dat a pak vyberte **pokračovat** .
 
-1. V dialogovém okně **nastavit vlastnosti** zadejte **SourceBlobDataset** do pole název. Zaškrtněte políčko pro **první řádek jako záhlaví**. V textovém poli **propojená služba** vyberte **+ Nová**.
+1. V dialogovém okně **nastavit vlastnosti** zadejte **SourceBlobDataset** do pole název. Zaškrtněte políčko pro **první řádek jako záhlaví** . V textovém poli **propojená služba** vyberte **+ Nová** .
 
 1. V dialogovém okně **Nová propojená služba (Azure Blob Storage)** jako název zadejte **AzureStorageLinkedService** a v seznamu **název účtu úložiště** vyberte svůj účet úložiště. Otestujte připojení, vyberte **vytvořit** a nasaďte propojenou službu.
 
-1. Po vytvoření propojené služby přejdete zpátky na stránku **Vlastnosti sady** . Vedle pole **Cesta k souboru** vyberte **Procházet**.
+1. Po vytvoření propojené služby přejdete zpátky na stránku **Vlastnosti sady** . Vedle pole **Cesta k souboru** vyberte **Procházet** .
 
-1. Přejděte do složky **adftutorial/Input** , vyberte soubor **emp.txt** a pak vyberte **OK**.
+1. Přejděte do složky **adftutorial/Input** , vyberte soubor **emp.txt** a pak vyberte **OK** .
 
-1. Vyberte **OK**. Automaticky přejde na stránku kanálu. Na kartě **zdroj** potvrďte, že je vybraná možnost **SourceBlobDataset** . Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**.
+1. Vyberte **OK** . Automaticky přejde na stránku kanálu. Na kartě **zdroj** potvrďte, že je vybraná možnost **SourceBlobDataset** . Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat** .
 
     ![Zdrojová datová sada](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
 ### <a name="configure-sink"></a>Konfigurace jímky
 >[!TIP]
->V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro úložiště dat jímky, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) .
->K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) .
+>V tomto kurzu použijete *ověřování SQL* jako typ ověřování pro úložiště dat jímky, ale v případě potřeby můžete vybrat jiné podporované metody ověřování: *instanční objekt* a *spravovaná identita* . Podrobnosti najdete v odpovídajících částech [tohoto článku](./connector-azure-sql-database.md#linked-service-properties) .
+>K bezpečnému ukládání tajných kódů pro úložiště dat je také vhodné použít Azure Key Vault. Podrobnější ilustrace najdete v [tomto článku](./store-credentials-in-key-vault.md) .
 
-1. Přejděte na kartu **Jímka**, vyberte **+ Nová** a vytvořte datovou sadu jímky.
+1. Přejděte na kartu **Jímka** , vyberte **+ Nová** a vytvořte datovou sadu jímky.
 
-1. V dialogovém okně **Nová datová sada** zadejte "SQL" do vyhledávacího pole, chcete-li filtrovat konektory, vyberte **Azure SQL Database**a pak vyberte **pokračovat**. V tomto kurzu zkopírujte data do databáze SQL Database.
+1. V dialogovém okně **Nová datová sada** zadejte "SQL" do vyhledávacího pole, chcete-li filtrovat konektory, vyberte **Azure SQL Database** a pak vyberte **pokračovat** . V tomto kurzu zkopírujte data do databáze SQL Database.
 
-1. V dialogovém okně **nastavit vlastnosti** zadejte **OutputSqlDataset** do pole název. V rozevíracím seznamu **propojená služba** vyberte **+ Nová**. Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který Data Factory používá pro připojení k SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují.
+1. V dialogovém okně **nastavit vlastnosti** zadejte **OutputSqlDataset** do pole název. V rozevíracím seznamu **propojená služba** vyberte **+ Nová** . Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který Data Factory používá pro připojení k SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují.
 
 1. V dialogovém okně **Nová propojená služba (Azure SQL Database)** proveďte následující kroky:
 
-    a. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService**.
+    a. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService** .
 
     b. V rozevíracím seznamu **Název serveru** vyberte příslušný název instance SQL Serveru.
 
-    c. V části **název databáze**vyberte svou databázi.
+    c. V části **název databáze** vyberte svou databázi.
 
     d. Do pole **Uživatelské jméno** zadejte jméno uživatele.
 
@@ -174,9 +174,9 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
     ![Uložení nové propojené služby](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Automaticky přejde do dialogového okna **nastavit vlastnosti** . V části **Tabulka** vyberte **[dbo].[emp]**. Pak vyberte **OK**.
+1. Automaticky přejde do dialogového okna **nastavit vlastnosti** . V části **Tabulka** vyberte **[dbo].[emp]** . Pak vyberte **OK** .
 
-1. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset**.
+1. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset** .
 
     ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
@@ -190,22 +190,22 @@ Kliknutím na **kód** v pravém horním rohu uvidíte kód JSON přidružený k
 ## <a name="debug-and-publish-the-pipeline"></a>Ladění a publikování kanálu
 Před publikováním artefaktů (propojených služeb, datových sad a kanálu) do služby Data Factory nebo vlastního úložiště Gitu Azure Repos můžete kanál odladit.
 
-1. K ladění kanálu vyberte na panelu nástrojů **Ladit**. Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu.
+1. K ladění kanálu vyberte na panelu nástrojů **Ladit** . Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu.
 
-1. Po úspěšném spuštění kanálu klikněte na horním panelu nástrojů na **publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
+1. Po úspěšném spuštění kanálu klikněte na horním panelu nástrojů na **publikovat vše** . Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
 
-1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit zprávy oznámení, klikněte vpravo nahoře (tlačítko zvonečku) na **Zobrazit oznámení**.
+1. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně** . Pokud chcete zobrazit zprávy oznámení, klikněte vpravo nahoře (tlačítko zvonečku) na **Zobrazit oznámení** .
 
 ## <a name="trigger-the-pipeline-manually"></a>Ruční aktivace kanálu
 V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém kroku.
 
-1. Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivovat**. Na stránce **spuštění kanálu** vyberte **OK**.  
+1. Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivovat** . Na stránce **spuštění kanálu** vyberte **OK** .  
 
-1. Vlevo přejděte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
+1. Vlevo přejděte na kartu **Monitorování** . Zobrazí se stav ručně aktivovaného spuštění kanálu. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
 
     [![Monitorování spuštění kanálu](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
-1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **CopyPipeline** pod sloupcem **název kanálu** . V tomto příkladu je k dispozici pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
+1. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **CopyPipeline** pod sloupcem **název kanálu** . V tomto příkladu je k dispozici pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat** .
 
     [![Monitorování spuštění aktivit](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
@@ -214,38 +214,38 @@ V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém krok
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Aktivace kanálu podle plánu
 V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato aktivační událost spouští kanál podle zadaného plánu (například každou hodinu nebo každý den). Tady nastavíte, aby se aktivační událost spouštěla každou minutu až do zadané koncové hodnoty DateTime.
 
-1. Vlevo nad kartou monitorování přejděte na kartu **Autor**.
+1. Vlevo nad kartou monitorování přejděte na kartu **Autor** .
 
-1. Přejděte na kanál, na panelu nástrojů klikněte na **Aktivační událost** a vyberte **Nové/upravit**.
+1. Přejděte na kanál, na panelu nástrojů klikněte na **Aktivační událost** a vyberte **Nové/upravit** .
 
 1. V dialogovém okně **Přidat triggery** vyberte **+ Nová** pro **možnost zvolit oblast aktivace** .
 
 1. V okně **Nová aktivační událost** proveďte následující kroky:
 
-    a. Do pole **Název** zadejte **RunEveryMinute**.
+    a. Do pole **Název** zadejte **RunEveryMinute** .
 
-    b. V části **Konec** vyberte **Dne**.
+    b. V části **Konec** vyberte **Dne** .
 
-    c. Klikněte na šipku rozevíracího seznamu **Konec dne**.
+    c. Klikněte na šipku rozevíracího seznamu **Konec dne** .
 
-    d. Vyberte **aktuální den**. Ve výchozím nastavení je koncový den nastavený na další den.
+    d. Vyberte **aktuální den** . Ve výchozím nastavení je koncový den nastavený na další den.
 
     e. Aktualizujte část **čas ukončení** tak, aby byla několik minut po aktuálním datu a času. Aktivační událost se aktivuje pouze po publikování změn. Pokud nakonfigurujete tuto hodnotu jenom na pár minut a nepublikujete ji, neuvidíte Trigger spustit.
 
-    f. Vyberte **OK**.
+    f. Vyberte **OK** .
 
-    například Pro možnost **aktivováno** vyberte **Ano**.
+    například Pro možnost **aktivováno** vyberte **Ano** .
 
-    h. Vyberte **OK**.
+    h. Vyberte **OK** .
 
     > [!IMPORTANT]
     > S každým spuštěním kanálu jsou spojené určité náklady, takže nastavte koncové datum správně.
 
-1. Na stránce **Upravit aktivační událost** si přečtěte upozornění a pak vyberte **Uložit**. Kanál v tomto příkladu nepoužívá žádné parametry.
+1. Na stránce **Upravit aktivační událost** si přečtěte upozornění a pak vyberte **Uložit** . Kanál v tomto příkladu nepoužívá žádné parametry.
 
 1. Kliknutím na **publikovat vše** publikujte změnu.
 
-1. Vlevo přejděte na kartu **Monitorování**, kde uvidíte aktivovaná spuštění kanálu.
+1. Vlevo přejděte na kartu **Monitorování** , kde uvidíte aktivovaná spuštění kanálu.
 
     [![Aktivovaná spuštění kanálu](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 

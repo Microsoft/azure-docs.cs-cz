@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 55a49ac13cdfd3f6157ae7495403f76056e734ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be49d56d301c23791777f4d89e8c6c6fd35d7035
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86184091"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636302"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Zřídit Enterprise Edition pro Azure-SSIS Integration Runtime
 
@@ -38,7 +38,7 @@ Některé z těchto funkcí vyžadují instalaci dalších komponent pro přizp�
 | Konektory Oracle | Správce připojení Oracle, zdroj a cíl jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Je také potřeba nainstalovat ovladač Oracle Call Interface (OCI) a v případě potřeby nakonfigurovat TNS (Oracle Transport Network substrát) na Azure-SSIS IR. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
 | Konektory Teradata | V edici Azure-SSIS IR Enterprise je nutné nainstalovat Správce připojení Teradata, zdroj a cíl i rozhraní API Teradata Parallel Transporter (TPT) a Teradata ODBC Driver. Další informace najdete v tématu [Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
 | Konektory SAP BW | SAP BW Správce připojení, zdroj a cíl jsou předem nainstalovány v Azure-SSIS IR Enterprise Edition. Také je nutné na Azure-SSIS IR nainstalovat ovladač SAP BW. Tyto konektory podporují SAP BW 7,0 nebo starší verze. Pokud se chcete připojit k novějším verzím SAP BW nebo jiným produktům SAP, můžete si v Azure-SSIS IR koupit a nainstalovat konektory SAP od jiných nezávislých výrobců softwaru. Další informace o tom, jak nainstalovat další součásti, najdete v tématu [vlastní nastavení pro prostředí Azure-SSIS Integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md). |
-| Analysis Services komponenty               | Verze školení modelu dolování dat, cíl zpracování dimenze a cíl zpracování oddílu a také transformace dotazu dolování dat jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Všechny tyto komponenty podporují SQL Server Analysis Services (SSAS), ale pouze cíl zpracování oddílu podporuje Azure Analysis Services (AAS). Pokud se chcete připojit k SSAS, musíte taky [nakonfigurovat přihlašovací údaje pro ověřování Windows v SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Kromě těchto součástí jsou také předinstalovány úlohy Analysis Services spustit DDL, úloha zpracování Analysis Services a úloha dotaz dolování dat, a to i v edici Azure-SSIS IR Standard/Enterprise. |
+| Analysis Services komponenty               | Verze školení modelu dolování dat, cíl zpracování dimenze a cíl zpracování oddílu a také transformace dotazu dolování dat jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Všechny tyto komponenty podporují SQL Server Analysis Services (SSAS), ale pouze cíl zpracování oddílu podporuje Azure Analysis Services (AAS). Pokud se chcete připojit k SSAS, musíte taky [nakonfigurovat přihlašovací údaje pro ověřování Windows v SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). Kromě těchto součástí jsou také předinstalovány úlohy Analysis Services spustit DDL, úloha zpracování Analysis Services a úloha dotaz dolování dat, a to i v edici Azure-SSIS IR Standard/Enterprise. |
 | Fuzzy seskupení a transformace vyhledávání s fuzzy logikou  | Nepřibližná seskupení a transformace pro vyhledávání s fuzzy logikou jsou předem nainstalovány v edici Azure-SSIS IR Enterprise. Tyto komponenty podporují SQL Server i Azure SQL Database pro ukládání referenčních dat. |
 | Extrakce termínů a transformace termínu vyhledávání | V Azure-SSIS IR Enterprise Edition jsou předem nainstalovány výrazy pro extrakci a vyhledávání termínů. Tyto komponenty podporují SQL Server i Azure SQL Database pro ukládání referenčních dat. |
 

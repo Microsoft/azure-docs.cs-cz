@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637339"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -36,6 +36,7 @@ Export dat Log Analytics pracovního prostoru průběžně exportuje data z prac
 ## <a name="current-limitations"></a>Aktuální omezení
 
 - Konfigurace se teď dá provést jenom pomocí požadavků CLI nebo REST. Nemůžete použít Azure Portal ani PowerShell.
+- Možnost v rozhraní příkazového ```--export-all-tables``` řádku a REST není podporována a bude odebrána. Seznam tabulek v pravidlech exportu byste měli zadat explicitně.
 - Podporované tabulky jsou aktuálně omezeny na konkrétní v níže uvedené části [podporované tabulky](#supported-tables) . Pokud pravidlo exportu dat obsahuje nepodporovanou tabulku, operace bude úspěšná, ale pro tuto tabulku nebudou exportována žádná data. Pokud pravidlo exportu dat obsahuje tabulku, která neexistuje, dojde k selhání s chybou. ```Table <tableName> does not exist in the workspace.```
 - Pracovní prostor Log Analytics může být v libovolné oblasti s výjimkou následujících:
   - Švýcarsko – sever
@@ -63,9 +64,9 @@ Pro funkci exportu dat se momentálně neúčtují žádné další poplatky. Ce
 ## <a name="export-destinations"></a>Exportovat cíle
 
 ### <a name="storage-account"></a>Účet úložiště
-Data se odesílají do účtů úložiště každou hodinu. Konfigurace exportu dat vytvoří kontejner pro každou tabulku v účtu úložiště s názvem, pod *kterým následuje název* tabulky. Například tabulka *SecurityEvent* by se poslala do kontejneru s názvem *am-SecurityEvent*.
+Data se odesílají do účtů úložiště každou hodinu. Konfigurace exportu dat vytvoří kontejner pro každou tabulku v účtu úložiště s názvem, pod *kterým následuje název* tabulky. Například tabulka *SecurityEvent* by se poslala do kontejneru s názvem *am-SecurityEvent* .
 
-Cesta k objektu BLOB účtu úložiště je *WorkspaceResourceId =/Subscriptions/Subscription-ID/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jsna*. Vzhledem k tomu, že se doplňovací objekty blob omezí na 50 tis zápisy do úložiště, počet exportovaných objektů BLOB může být prodloužený, pokud je počet připojení vysoký. Vzor pro pojmenování objektů BLOB v takovém případě by byl PT1H_ #. JSON, kde # je přírůstkový počet objektů BLOB.
+Cesta k objektu BLOB účtu úložiště je *WorkspaceResourceId =/Subscriptions/Subscription-ID/ResourceGroups/ \<resource-group\> /providers/Microsoft.operationalinsights/Workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d = \<two-digit numeric day\> /h = \<two-digit 24-hour clock hour\> /m = 00/PT1H.jsna* . Vzhledem k tomu, že se doplňovací objekty blob omezí na 50 tis zápisy do úložiště, počet exportovaných objektů BLOB může být prodloužený, pokud je počet připojení vysoký. Vzor pro pojmenování objektů BLOB v takovém případě by byl PT1H_ #. JSON, kde # je přírůstkový počet objektů BLOB.
 
 Formát dat účtu úložiště jsou [řádky JSON](diagnostic-logs-append-blobs.md). To znamená, že každý záznam je oddělený novým řádkem, bez pole vnějších záznamů a žádné čárky mezi záznamy JSON. 
 
@@ -74,12 +75,12 @@ Formát dat účtu úložiště jsou [řádky JSON](diagnostic-logs-append-blobs
 Export dat Log Analytics může zapisovat doplňovací objekty blob do neměnných účtů úložiště, pokud mají povolené zásady uchovávání *informací na základě* času. To umožňuje psát nové bloky do doplňovacího objektu BLOB a přitom zachovat ochranu neměnnosti a dodržování předpisů. Viz [Povolení chráněných objektů BLOB pro zápis](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 
 ### <a name="event-hub"></a>Centrum událostí
-Data se odesílají do centra událostí téměř v reálném čase, protože dosáhne Azure Monitor. Centrum událostí se vytvoří pro každý datový typ, který exportujete s názvem, *za nímž následuje název tabulky* . Například tabulka *SecurityEvent* se odeslala do centra událostí s názvem *am-SecurityEvent*. Pokud chcete, aby se exportovaná data dostala na konkrétní centrum událostí, nebo pokud máte tabulku s názvem, který překračuje limit počtu znaků 47, můžete zadat vlastní název centra událostí a exportovat do něj všechny tabulky.
+Data se odesílají do centra událostí téměř v reálném čase, protože dosáhne Azure Monitor. Centrum událostí se vytvoří pro každý datový typ, který exportujete s názvem, *za nímž následuje název tabulky* . Například tabulka *SecurityEvent* se odeslala do centra událostí s názvem *am-SecurityEvent* . Pokud chcete, aby se exportovaná data dostala na konkrétní centrum událostí, nebo pokud máte tabulku s názvem, který překračuje limit počtu znaků 47, můžete zadat vlastní název centra událostí a exportovat do něj všechna data pro definované tabulky.
 
 Objem exportovaných dat se v průběhu času často zvětšuje a škálování centra událostí je potřeba zvýšit, aby se zpracovávala větší přenosové rychlosti, a vyhnout se tak scénářům omezování a latenci dat. K automatickému horizontálnímu navýšení kapacity a navýšení počtu jednotek propustnosti a splnění potřeb použití byste měli použít funkci automatického rozšíření Event Hubs. Podrobnosti najdete v tématu [Automatické horizontální navýšení kapacity Event Hubs jednotky propustnosti Azure](../../event-hubs/event-hubs-auto-inflate.md) .
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené požadavky, které je nutné před konfigurací Log Analytics exportu dat dokončit.
 
 - Účet úložiště a centrum událostí se už musí vytvořit a musí být ve stejné oblasti jako pracovní prostor Log Analytics. Pokud potřebujete replikovat data do jiných účtů úložiště, můžete použít kteroukoli z [možností redundance Azure Storage](../../storage/common/storage-redundancy.md).  
@@ -98,7 +99,7 @@ Následující poskytovatel prostředků Azure musí zaregistrovat pro vaše př
 
 - Microsoft. Insights
 
-Tento poskytovatel prostředků bude pravděpodobně již zaregistrován pro většinu Azure Monitorch uživatelů. Pokud to chcete ověřit, klikněte na **odběry** v Azure Portal. Vyberte své předplatné a pak klikněte na **poskytovatelé prostředků** v části **Nastavení** v nabídce. Vyhledejte **Microsoft. Insights**. Pokud je jeho stav **zaregistrován**, je již zaregistrován. V takovém případě ji zaregistrujte kliknutím na **Registrovat** .
+Tento poskytovatel prostředků bude pravděpodobně již zaregistrován pro většinu Azure Monitorch uživatelů. Pokud to chcete ověřit, klikněte na **odběry** v Azure Portal. Vyberte své předplatné a pak klikněte na **poskytovatelé prostředků** v části **Nastavení** v nabídce. Vyhledejte **Microsoft. Insights** . Pokud je jeho stav **zaregistrován** , je již zaregistrován. V takovém případě ji zaregistrujte kliknutím na **Registrovat** .
 
 K registraci poskytovatele prostředků můžete použít také kteroukoli z dostupných metod, jak je popsáno v tématu [poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md). Následuje ukázkový příkaz pomocí prostředí PowerShell:
 
@@ -107,13 +108,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>Povolení důvěryhodných služeb Microsoftu
-Pokud jste nakonfigurovali účet úložiště tak, aby povoloval přístup z vybraných sítí, musíte přidat výjimku, aby Azure Monitor mohl zapisovat do účtu. Z **bran firewall a virtuálních sítí** pro svůj účet úložiště vyberte možnost **dovolit přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu**.
+Pokud jste nakonfigurovali účet úložiště tak, aby povoloval přístup z vybraných sítí, musíte přidat výjimku, aby Azure Monitor mohl zapisovat do účtu. Z **bran firewall a virtuálních sítí** pro svůj účet úložiště vyberte možnost **dovolit přístup k tomuto účtu úložiště důvěryhodným službám Microsoftu** .
 
 [![Brány firewall a virtuální sítě v účtu úložiště](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 
 ### <a name="create-or-update-data-export-rule"></a>Vytvořit nebo aktualizovat pravidlo exportu dat
-Pravidlo exportu dat definuje data, která mají být exportována ze všech tabulek nebo určité sady tabulek do jednoho cíle. Pokud potřebujete odesílat do více cílů, vytvořte několik pravidel.
+Pravidlo exportu dat definuje data, která se mají exportovat pro sadu tabulek do jednoho cíle. Můžete vytvořit pravidlo pro každý cíl.
+
+Pomocí následujícího příkazu rozhraní příkazového řádku můžete zobrazit tabulky v pracovním prostoru. Může vám to usnadnit kopírování tabulek, které chcete, a zahrnutí v pravidle exportu dat.
+```azurecli
+az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+```
 
 Pomocí následujícího příkazu vytvořte pravidlo exportu dat do účtu úložiště pomocí rozhraní příkazového řádku.
 
@@ -142,8 +148,8 @@ Tělo požadavku určuje cíl tabulek. Následuje ukázkový text žádosti REST
             "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
         },
         "tablenames": [
-"table1",
-    "table2" 
+            "table1",
+            "table2" 
         ],
         "enable": true
     }
@@ -165,9 +171,26 @@ Následuje vzorový text žádosti REST pro centrum událostí.
         "enable": true
     }
 }
-
 ```
 
+Následuje ukázkový text žádosti REST pro centrum událostí, kde je zadaný název centra událostí. V tomto případě se všechna exportovaná data odešlou do tohoto centra událostí.
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name",
+            "metaData": {
+                "EventHubName": "eventhub-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+```
 
 ## <a name="view-data-export-configuration"></a>Zobrazit konfiguraci exportu dat
 Pomocí následujícího příkazu můžete zobrazit konfiguraci pravidla exportu dat pomocí rozhraní příkazového řádku (CLI).

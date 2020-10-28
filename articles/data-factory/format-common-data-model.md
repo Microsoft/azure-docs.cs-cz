@@ -7,17 +7,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042588"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636404"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](https://docs.microsoft.com/common-data-model/) .
+Systém metadat CDM (Common data model) umožňuje, aby data a jejich význam bylo možné snadno sdílet napříč aplikacemi a obchodními procesy. Další informace najdete v tématu Přehled [modelu Common data model](/common-data-model/) .
 
 V Azure Data Factory můžou uživatelé transformovat data z entit CDM v model.jsna a ve formě manifestu uložené v [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (adls Gen2) pomocí mapování datových toků. Data můžete také ve formátu CDM založit pomocí odkazů na entity CDM, které budou vaše data uvádět ve formátu CSV nebo Parquet v dělených složkách. 
 
@@ -38,7 +38,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto
 | Název | Popis | Povinné | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být `cdm` | ano | `cdm` | formát |
-| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Yes | `'manifest'` nebo `'model'` | manifestType |
+| Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model.jszapnuto. | Ano | `'manifest'` nebo `'model'` | manifestType |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
 | Kořenové umístění: cesta ke složce | Umístění kořenové složky složky CDM | ano | Řetězec | folderPath |
 | Soubor manifestu: cesta k entitě | Cesta ke složce entity v kořenové složce | ne | Řetězec | entityPath |

@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195903"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637067"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -65,9 +65,9 @@ Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo 
 Na počítači brány spusťte **Správa dat Configuration Manager brány** a pomocí karty **Poradce při potížích** otestujte připojení k SQL Server z počítače brány. Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problém: vstupní řezy jsou ve stavu čekání navždy.
-Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true**. Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
+Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true** . Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené** .
 
-Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData***, pokud nastavíte možnost externí na hodnotu true.
+Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData** _, pokud nastavíte možnost externí na hodnotu true.
 
 Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-factory-create-datasets.md).
 
@@ -97,7 +97,7 @@ Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-fa
 }
 ```
 
-Pokud chcete tuto chybu vyřešit, přidejte vlastnost **external** a volitelný oddíl **externalData** do definice JSON vstupní tabulky a potom tuto tabulku vytvořte znovu.
+Chcete-li chybu vyřešit, přidejte do definice JSON vstupní tabulky (_ *External* *) a volitelného oddílu **externalData** a tabulku vytvořte znovu.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Problém: operace hybridního kopírování se nezdařila
 Postup řešení potíží s kopírováním do nebo z místního úložiště dat pomocí Správa dat brány najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .
@@ -130,9 +130,9 @@ Podrobnosti najdete v tématu [monitorování data Factorych kanálů pomocí Az
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
+[json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/
 

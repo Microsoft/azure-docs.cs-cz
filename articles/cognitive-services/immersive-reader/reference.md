@@ -9,19 +9,19 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761545"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636523"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)
 
 Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Sada SDK zpřístupňuje funkce:
 
@@ -46,7 +46,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | Název | Typ | Description |
 | ---- | ---- |------------ |
 | `token` | řetězec | Ověřovací token Azure AD. Další podrobnosti najdete v tématu [Postup vytvoření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md) . |
-| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. Další podrobnosti najdete v tématu [Postup vytvoření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md) . |
+| `subdomain` | string | Vlastní subdoména prostředku pro moderní čtečku v Azure. Další podrobnosti najdete v tématu [Postup vytvoření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md) . |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
 | `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Nepovinný parametr. |
 
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>Parametry renderButtons
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | `options` | [renderButtons možnosti](#renderbuttons-options) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
@@ -131,7 +131,7 @@ Možnosti pro vykreslování tlačítek pro moderní čtečku
 
 #### <a name="renderbuttons-options-parameters"></a>Parametry možností renderButtons
 
-| Nastavení | Typ | Description |
+| Nastavení | Typ | Popis |
 | ------- | ---- | ----------- |
 | elementy | HTMLDivElement[] | Prvky pro vykreslení tlačítek pro moderní čtečku v. |
 
@@ -156,12 +156,12 @@ Obsahuje odpověď od volání `ImmersiveReader.launchAsync` . Všimněte si, ž
 
 #### <a name="launchresponse-parameters"></a>Parametry LaunchResponse
 
-| Nastavení | Typ | Description |
+| Nastavení | Typ | Popis |
 | ------- | ---- | ----------- |
 | kontejner | HTMLDivElement | Prvek HTML, který obsahuje prvek pro moderní čtečku. |
 | sessionId | Řetězec | Globálně jedinečný identifikátor pro tuto relaci, který se používá pro ladění. |
  
-## <a name="error"></a>Chyba
+## <a name="error"></a>Chybová
 
 Obsahuje informace o chybě.
 
@@ -174,14 +174,14 @@ Obsahuje informace o chybě.
 
 #### <a name="error-parameters"></a>Parametry chyby
 
-| Nastavení | Typ | Description |
+| Nastavení | Typ | Popis |
 | ------- | ---- | ----------- |
 | kód | Řetězec | Jeden ze sady chybových kódů. Viz [kódy chyb](#error-codes). |
 | zpráva | Řetězec | Reprezentace chyby v čitelném člověku |
 
 #### <a name="error-codes"></a>Kódy chyb
 
-| Kód | Description |
+| Kód | Popis |
 | ---- | ----------- |
 | BadArgument | Zadaný argument je neplatný, viz `message` parametr [chyby](#error). |
 | Časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
@@ -205,7 +205,7 @@ Obsahuje obsah, který se zobrazí v moderní čtečce.
 
 #### <a name="content-parameters"></a>Parametry obsahu
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | title | Řetězec | Text nadpisu zobrazený v horní části moderního čtecího zařízení (volitelné) |
 | bloky dat | [Blok dat []](#chunk) | Pole bloků |
@@ -240,11 +240,11 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
 #### <a name="chunk-parameters"></a>Parametry bloku dat
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | obsah | Řetězec | Řetězec obsahující obsah odeslaný do moderního čtecího zařízení. |
 | jazyk | Řetězec | Jazyk textu, hodnota je ve formátu značek IETF BCP 47, například en, ES-ES. Jazyk bude detekován automaticky, pokud není zadán. Viz [Podporované jazyky](#supported-languages). |
-| mimeType | řetězec | Jsou podporovány formáty prostého textu, MathML, HTML & formáty DOCX Microsoft Wordu. Další podrobnosti najdete v tématu [podporované typy MIME](#supported-mime-types) . |
+| mimeType | string | Jsou podporovány formáty prostého textu, MathML, HTML & formáty DOCX Microsoft Wordu. Další podrobnosti najdete v tématu [podporované typy MIME](#supported-mime-types) . |
 
 ##### `content`
 ```Parameters
@@ -269,11 +269,11 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Podporované typy MIME
 
-| Typ MIME | Description |
+| Typ MIME | Popis |
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | text/html | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](./how-to/display-math.md).
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Přečtěte si další informace](./how-to/display-math.md).
 | aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument formátu Microsoft Word. docx.
 
 
@@ -305,22 +305,22 @@ Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího
 
 #### <a name="options-parameters"></a>Parametry možností
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | uiLang | Řetězec | Jazyk uživatelského rozhraní, hodnota je ve formátu značek IETF BCP 47, například en, ES-ES. Pokud není zadaný, použije se výchozí jazyk prohlížeče. |
 | timeout | Číslo | Doba (v milisekundách), po jejímž uplynutí [launchAsync](#launchasync) dojde k chybě s časovým limitem (výchozí hodnota je 15000 MS). Tento časový limit se vztahuje pouze na počáteční spuštění stránky čtenář, kde po otevření stránky čtenář a spuštění číselníku dojde k úspěchu. Nastavení časového limitu by nemělo být nutné. |
 | uiZIndex | Číslo | Z-index prvku IFRAME, který bude vytvořen (výchozí hodnota je 1000). |
 | useWebview | Logická hodnota| Pro kompatibilitu s aplikacemi pro Chrome (výchozí hodnota je false) použijte značku WebView namísto prvku IFRAME. |
-| Probíhá ukončení | Funkce | Provede se při ukončení moderního čtečky. |
+| Probíhá ukončení | Function | Provede se při ukončení moderního čtečky. |
 | allowFullscreen | Logická hodnota | Možnost přepnout na celou obrazovku (výchozí hodnota je true). |
 | hideExitButton | Logická hodnota | Určuje, zda se má skrýt šipka tlačítka pro tlačítko ukončení pro moderní čtečku (výchozí hodnota je false). To by mělo být pravdivé pouze v případě, že je k dispozici alternativní mechanismus pro opuštění moderního čtecího zařízení (například šipky zpětného volání na mobilním panelu nástrojů). |
-| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Nastavení pro použití souborů cookie pro moderní čtečku (výchozí nastavení je *CookiePolicy. disable*). Je zodpovědný za to, že hostitelská aplikace získá potřebný souhlas uživatele v souladu se zásadami dodržování předpisů v EU cookie. Viz [Možnosti zásad souborů cookie](#cookiepolicy-options). |
+| cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Nastavení pro použití souborů cookie pro moderní čtečku (výchozí nastavení je *CookiePolicy. disable* ). Je zodpovědný za to, že hostitelská aplikace získá potřebný souhlas uživatele v souladu se zásadami dodržování předpisů v EU cookie. Viz [Možnosti zásad souborů cookie](#cookiepolicy-options). |
 | disableFirstRun | Logická hodnota | Zakažte první prostředí pro spuštění. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Možnosti pro konfiguraci čtení po nahlasu. |
 | translationOptions | [TranslationOptions](#translationoptions) | Možnosti konfigurace překladu |
 | displayOptions | [DisplayOptions](#displayoptions) | Možnosti konfigurace velikosti textu, písma atd. |
 | hodnot | Řetězec | Řetězec vrácený z onPreferencesChanged představující předvolby uživatele v moderní čtečce. Další informace najdete v tématu [Nastavení parametrů](#settings-parameters) a [postup ukládání uživatelských předvoleb](./how-to-store-user-preferences.md) . |
-| onPreferencesChanged | Funkce | Provede se, když se změní předvolby uživatele. Další informace najdete v tématu [jak ukládat předvolby uživatele](./how-to-store-user-preferences.md) . |
+| onPreferencesChanged | Function | Provede se, když se změní předvolby uživatele. Další informace najdete v tématu [jak ukládat předvolby uživatele](./how-to-store-user-preferences.md) . |
 | customDomain | Řetězec | Vyhrazeno pro interní použití. Vlastní doména, ve které je WebApp moderního čtecího zařízení (výchozí hodnota je null). |
 
 ##### `uiLang`
@@ -390,7 +390,7 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>Parametry ReadAloudOptions
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | telefonní | Řetězec | Voice, buďto "žena" nebo "muž". Všimněte si, že ne všechny jazyky podporují pohlaví. |
 | rychlost | Číslo | Rychlost přehrávání musí být v rozmezí od 0,5 do 2,5 (včetně). |
@@ -429,7 +429,7 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>Parametry TranslationOptions
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | language | Řetězec | Nastaví jazyk překladu, hodnota je ve formátu značky jazyka IETF BCP 47, například fr-FR, ES-MX, zh-Hans-CN. Vyžaduje se pro automatické povolení převodu Wordu nebo dokumentu. |
 | autoEnableDocumentTranslation | Logická hodnota | Automaticky převede celý dokument. |
@@ -457,7 +457,7 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>Parametry DisplayOptions
 
-| Název | Typ | Description |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | textSize | Číslo | Nastaví zvolenou velikost textu. |
 | increaseSpacing | Logická hodnota | Nastaví, zda se má zapnout nebo vypnout řádkování textu. |
@@ -487,11 +487,11 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**Níže uvedená nastavení slouží pouze k informativním účelům**. Moderní čtečka ukládá nastavení nebo předvolby uživatele v souborech cookie. Tato *cookiePolicy* možnost cookiePolicy **zakáže** použití souborů cookie ve výchozím nastavení, aby bylo možné dodržovat zákony dodržování předpisů v souborech cookie EU. Chcete-li znovu povolit soubory cookie a obnovit výchozí funkce pro uživatelské předvolby pro moderní čtečku, bude nutné zajistit, aby váš web nebo aplikace získala správný souhlas od uživatele a povolil soubory cookie. Chcete-li znovu povolit soubory cookie v moderní čtečce, je nutné explicitně nastavit možnost *cookiePolicy* na *cookiePolicy. Enable* při spouštění moderního čtecího zařízení. Následující tabulka popisuje, jaká nastavení jsou v souboru cookie pro moderní čtečku v případě, že je povolená možnost *cookiePolicy* .
+**Níže uvedená nastavení slouží pouze k informativním účelům** . Moderní čtečka ukládá nastavení nebo předvolby uživatele v souborech cookie. Tato *cookiePolicy* možnost cookiePolicy **zakáže** použití souborů cookie ve výchozím nastavení, aby bylo možné dodržovat zákony dodržování předpisů v souborech cookie EU. Chcete-li znovu povolit soubory cookie a obnovit výchozí funkce pro uživatelské předvolby pro moderní čtečku, bude nutné zajistit, aby váš web nebo aplikace získala správný souhlas od uživatele a povolil soubory cookie. Chcete-li znovu povolit soubory cookie v moderní čtečce, je nutné explicitně nastavit možnost *cookiePolicy* na *cookiePolicy. Enable* při spouštění moderního čtecího zařízení. Následující tabulka popisuje, jaká nastavení jsou v souboru cookie pro moderní čtečku v případě, že je povolená možnost *cookiePolicy* .
 
 #### <a name="settings-parameters"></a>Parametry nastavení
 
-| Nastavení | Typ | Description |
+| Nastavení | Typ | Popis |
 | ------- | ---- | ----------- |
 | textSize | Číslo | Nastaví zvolenou velikost textu. |
 | fontFamily | Řetězec | Nastaví zvolené písmo ("Calibri", "ComicSans" nebo "Sitka"). |

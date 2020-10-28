@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 8db16ba415e609827f6b775840f153489702ecca
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28de993f51b13e973edb0e42f138217cd35ab8dd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370555"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636693"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role v Azure
 
@@ -91,8 +91,8 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Role přispěvatele služby Azure Kubernetes](#azure-kubernetes-service-contributor-role) | Uděluje přístup ke čtení a zápisu clusterů služby Azure Kubernetes. | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | [Správce RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-admin) | Umožňuje spravovat všechny prostředky v rámci clusteru nebo oboru názvů, s výjimkou kvót prostředků a obory názvů pro aktualizaci nebo odstranění. | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
 > | [Správce clusteru RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-cluster-admin) | Umožňuje správu všech prostředků v clusteru. | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
-> | [Čtečka RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-reader) | Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimkou tajných klíčů. | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
-> | [Zapisovač RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-writer) | Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostředků, oborů názvů, pod zásadami zabezpečení, žádostí o podepsání certifikátu, (cluster) a vazeb rolí (cluster) rolí. | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
+> | [Čtečka RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-reader) | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazování rolí nebo vazeb rolí. Tato role nepovoluje zobrazení tajných kódů, protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění). Použití této role v oboru clusteru umožní přístup napříč všemi obory názvů. | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [Zapisovač RBAC služby Azure Kubernetes](#azure-kubernetes-service-rbac-writer) | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje zobrazování ani úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k tajným klíčům a spuštění lusků jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. Použití této role v oboru clusteru umožní přístup napříč všemi obory názvů. | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **Databáze** |  |  |
 > | [Role čtečky účtu Cosmos DB](#cosmos-db-account-reader-role) | Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najdete v tématu [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) . | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Operátor Cosmos DB](#cosmos-db-operator) | Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Zabraňuje přístup k klíčům účtu a připojovacím řetězcům. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -121,7 +121,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel Cognitive Services](#cognitive-services-contributor) | Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Čtečka dat Cognitive Services (Preview)](#cognitive-services-data-reader-preview) | Umožňuje číst Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services uživatel](#cognitive-services-user) | Umožňuje číst a zobrazit seznam klíčů Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Smíšená realita** |  |  |
+> | **Mixed realita** |  |  |
 > | [Správce vzdáleného vykreslování](#remote-rendering-administrator) | Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Klient vzdáleného vykreslování](#remote-rendering-client) | Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Přispěvatel účtu prostorových kotev](#spatial-anchors-account-contributor) | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je. | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -206,7 +206,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Čtecí modul Site Recovery](#site-recovery-reader) | Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace správy. | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | [Přispěvatel žádostí o podporu](#support-request-contributor) | Umožňuje vytvářet a spravovat žádosti o podporu. | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [Přispěvatel značek](#tag-contributor) | Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entitám. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
-> | **Další** |  |  |
+> | **Jiné** |  |  |
 > | [Přispěvatel BizTalk](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Uživatel virtualizace plochy](#desktop-virtualization-user) | Umožňuje uživateli používat aplikace ve skupině aplikací. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
 > | [Přispěvatel kolekcí úloh Scheduleru](#scheduler-job-collections-contributor) | Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
@@ -1154,7 +1154,7 @@ Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 
 ### <a name="avere-contributor"></a>Přispěvatel avere
@@ -2786,7 +2786,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -3274,7 +3274,7 @@ Umožňuje správu všech prostředků v clusteru. [Další informace](../aks/ma
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>Čtečka RBAC služby Azure Kubernetes
 
-Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimkou tajných klíčů. [Další informace](../aks/manage-azure-rbac.md)
+Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazování rolí nebo vazeb rolí. Tato role nepovoluje zobrazení tajných kódů, protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění). Použití této role v oboru clusteru umožní přístup napříč všemi obory názvů. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3286,22 +3286,47 @@ Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimk
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | Výpis přihlašovacích údajů clusterUser spravovaného clusteru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/controllerrevisions/Read | Přečte controllerrevisions |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/daemonsets/Read | Přečte daemonsets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/Deployments/Read | Načte nasazení |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/replicasets/Read | Přečte replicasets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/statefulsets/Read | Přečte statefulsets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/AutoScaling/horizontalpodautoscalers/Read | Přečte horizontalpodautoscalers |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Batch/cronjobs/Read | Přečte cronjobs |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Batch/Jobs/Read | Čte úlohy |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/Read | Přečte configmaps |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Endpoints/Read | Přečte koncové body. |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events.k8s.IO/Events/Read | Čte události |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events/Read | Čte události |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/daemonsets/Read | Přečte daemonsets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/Deployments/Read | Načte nasazení |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/ingresses/Read | Načte příchozí přenosy. |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/networkpolicies/Read | Přečte networkpolicies |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/replicasets/Read | Přečte replicasets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/Read | Přečte limitranges |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Namespaces/Read | Čtení oborů názvů |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.k8s.IO/ingresses/Read | Načte příchozí přenosy. |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.k8s.IO/networkpolicies/Read | Přečte networkpolicies |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/Read | Přečte persistentvolumeclaims |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/Read | Čtení lusků |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/poddisruptionbudgets/Read | Přečte poddisruptionbudgets |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/Read | Přečte replicationcontrollers |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/Read | Přečte replicationcontrollers |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Read | Přečte resourcequotas |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/Read | Přečte serviceaccounts |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Services/Read | Čte služby |
 > | **NotDataActions** |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.k8s.IO/*/Read |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.k8s.IO/*/Write |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Secrets/* |  |
+> | *žádný* |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "description": "Allows read-only access to see most objects in a namespace. It does not allow viewing roles or role bindings. This role does not allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation). Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "permissions": [
@@ -3313,18 +3338,41 @@ Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimk
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/read",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/read",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/read",
+        "Microsoft.ContainerService/managedClusters/configmaps/read",
+        "Microsoft.ContainerService/managedClusters/endpoints/read",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/read",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/read",
+        "Microsoft.ContainerService/managedClusters/pods/read",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/read",
+        "Microsoft.ContainerService/managedClusters/services/read"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/secrets/*"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Reader",
@@ -3335,7 +3383,7 @@ Umožňuje zobrazit všechny prostředky v clusteru nebo oboru názvů s výjimk
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Zapisovač RBAC služby Azure Kubernetes
 
-Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostředků, oborů názvů, pod zásadami zabezpečení, žádostí o podepsání certifikátu, (cluster) a vazeb rolí (cluster) rolí. [Další informace](../aks/manage-azure-rbac.md)
+Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje zobrazování ani úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k tajným klíčům a spuštění lusků jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. Použití této role v oboru clusteru umožní přístup napříč všemi obory názvů. [Další informace](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
@@ -3347,26 +3395,48 @@ Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostř
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | Výpis přihlašovacích údajů clusterUser spravovaného clusteru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Write |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/controllerrevisions/Read | Přečte controllerrevisions |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/daemonsets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/Deployments/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/replicasets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Apps/statefulsets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/AutoScaling/horizontalpodautoscalers/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Batch/cronjobs/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Batch/Jobs/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Endpoints/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events.k8s.IO/Events/Read | Čte události |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Events/Read | Čte události |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/daemonsets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/Deployments/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/ingresses/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/networkpolicies/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Extensions/replicasets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/Read | Přečte limitranges |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Namespaces/Read | Čtení oborů názvů |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.k8s.IO/ingresses/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Networking.k8s.IO/networkpolicies/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/poddisruptionbudgets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Read | Přečte resourcequotas |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Secrets/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/* |  |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Services/* |  |
 > | **NotDataActions** |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.k8s.IO/*/Read |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.k8s.IO/*/Write |  |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Namespaces/Write | Zapisuje obory názvů |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Write | Zapisuje resourcequotas |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Certificates.k8s.IO/certificatesigningrequests/Write | Zapisuje certificatesigningrequests |
-> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/podsecuritypolicies/Write | Zapisuje podsecuritypolicies |
+> | *žádný* |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "description": "Allows read/write access to most objects in a namespace.This role does not allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "permissions": [
@@ -3378,22 +3448,42 @@ Umožňuje aktualizovat vše v clusteru/oboru názvů, s výjimkou kvót prostř
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read",
-        "Microsoft.ContainerService/managedClusters/*/write"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/*",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/*",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/*",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/*",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/*",
+        "Microsoft.ContainerService/managedClusters/configmaps/*",
+        "Microsoft.ContainerService/managedClusters/endpoints/*",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/*",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/*",
+        "Microsoft.ContainerService/managedClusters/pods/*",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/secrets/*",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/*",
+        "Microsoft.ContainerService/managedClusters/services/*"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/namespaces/write",
-        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
-        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
-        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Writer",
@@ -3691,10 +3781,8 @@ Umožňuje spravovat databáze SQL, ale ne přístup k nim. Nemůžete také spr
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Upravit zásady auditu |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Upravit nastavení auditu |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Upravit zásady připojení |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/* |  |
@@ -3744,10 +3832,8 @@ Umožňuje spravovat databáze SQL, ale ne přístup k nim. Nemůžete také spr
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -3794,7 +3880,8 @@ Umožňuje spravovat spravované instance SQL a požadovanou konfiguraci sítě,
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
 > | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/Read | Čtení definic metriky |
 > | **NotActions** |  |
-> | *žádný* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/DELETE | Odstraní konkrétní spravovaný server Azure Active Directory jenom objekt ověřování. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/Write | Přidá nebo aktualizuje určitý spravovaný server Azure Active Directory jenom objekt ověřování. |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -3827,7 +3914,10 @@ Umožňuje spravovat spravované instance SQL a požadovanou konfiguraci sítě,
         "Microsoft.Insights/metrics/read",
         "Microsoft.Insights/metricDefinitions/read"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/write"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -3861,13 +3951,10 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/transparentDataEncryption/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingPolicies/* | Vytváření a Správa zásad auditování SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingSettings/* | Vytvoření a Správa nastavení auditování SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedAuditingSettings/Read | Načíst podrobnosti o zásadách auditování rozšířených objektů BLOB serveru nakonfigurovaných na daném serveru |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Vytvoření a Správa zásad auditování databáze systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Vytvoření a Správa nastavení auditování databáze systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Vytváření a Správa zásad připojení k databázi SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Vytváření a Správa zásad pro maskování dat databáze SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/Read | Načte podrobnosti o rozšířených zásadách auditování objektů BLOB konfigurovaných pro danou databázi. |
@@ -3889,8 +3976,9 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Administrators/Read | Získá konkrétní objekt správce Azure Active Directory. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureADOnlyAuthentications/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/Read | Vrátí seznam spravovaných instancí nebo získá vlastnosti zadané spravované instance. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3925,13 +4013,10 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/read",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
@@ -3953,8 +4038,9 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
         "Microsoft.Support/*",
-        "Microsoft.Sql/servers/administrators/read",
-        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
+        "Microsoft.Sql/managedInstances/read",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3993,12 +4079,9 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingPolicies/* | Upravit zásady auditování SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingSettings/* | Upravit nastavení auditování SQL serveru |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Upravit zásady auditování databáze systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Upravit nastavení auditování databáze systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Upravit zásady připojení databáze SQL serveru |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat databáze systému SQL Server |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/* |  |
@@ -4051,12 +4134,9 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -5470,7 +5550,7 @@ Umožňuje spravovat Azure Stack registrace.
 > [!div class="mx-tableFixed"]
 > | Akce | Popis |
 > | --- | --- |
-> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read |  |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read | Získání vlastností předplatného Azure Stack Edge |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Products/* za akci |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Products/Read | Získá vlastnosti produktu Azure Stack Marketplace. |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Read | Získá vlastnosti registrace Azure Stack. |
@@ -6246,6 +6326,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Ověřit autorizaci a licenci uživatele |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/Indicators/Query/Action | Dotazování na indikátory analýzy hrozeb |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/Action | Dotazování na indikátory analýzy hrozeb |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Hledání pomocí nového stroje |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/LinkedServices/Read | Získejte propojené služby v daném pracovním prostoru. |
@@ -6281,6 +6362,7 @@ Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -7879,7 +7961,7 @@ Může číst, zapisovat, odstraňovat a znovu připojit počítače připojené
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Read | Čtení jakýchkoli počítačů s obloukem Azure ARC |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Write | Zapisuje počítače s obloukem Azure ARC. |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/DELETE | Odstraní počítače s obloukem Azure ARC. |
-> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/reconnect/Action | Znovu připojí počítače ARC Azure. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/reconnect/Action |  |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Extensions/Write | Nainstaluje nebo aktualizuje rozšíření ARC Azure. |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/Read |  |
 > | **NotActions** |  |
@@ -9127,7 +9209,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Ostatní
 
 
 ### <a name="biztalk-contributor"></a>Přispěvatel BizTalk

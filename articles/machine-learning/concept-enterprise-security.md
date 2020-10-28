@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496009"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637084"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -111,7 +111,7 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 ## <a name="data-encryption"></a>Šifrování dat
 
 > [!IMPORTANT]
-> Pro šifrování produkčních prostředků během __školení__doporučuje Microsoft používat výpočetní cluster Azure Machine Learning. V případě šifrování produkčních stupňů při __odvozování__doporučuje Microsoft používat službu Azure Kubernetes.
+> Pro šifrování produkčních prostředků během __školení__ doporučuje Microsoft používat výpočetní cluster Azure Machine Learning. V případě šifrování produkčních stupňů při __odvozování__ doporučuje Microsoft používat službu Azure Kubernetes.
 >
 > Azure Machine Learning výpočetní instance je prostředí pro vývoj a testování. Při použití doporučujeme ukládat do sdílené složky soubory, jako jsou třeba poznámkové bloky a skripty. Data by měla být uložená v úložišti dat.
 
@@ -158,12 +158,7 @@ Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomo
         > [!NOTE]
         > Tato instance trezoru klíčů se může lišit od trezoru klíčů, který je vytvořený Azure Machine Learning při zřizování pracovního prostoru. Pokud chcete pro pracovní prostor použít stejnou instanci trezoru klíčů, předejte stejný Trezor klíčů při zřizování pracovního prostoru pomocí [parametru key_vault](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 
-Tato instance Cosmos DB je vytvořená ve skupině prostředků spravované Microsoftem ve vašem předplatném, spolu s případnými prostředky, které potřebuje. Spravovaná skupina prostředků je pojmenována ve formátu `<AML Workspace Resource Group Name><GUID>` . Pokud váš pracovní prostor Azure Machine Learning používá privátní koncový bod, vytvoří se pro instanci Cosmos DB taky virtuální síť. Tato virtuální síť slouží k zabezpečení komunikace mezi Cosmos DB a Azure Machine Learning.
-
-> [!IMPORTANT]
-> * Neodstraňujte skupinu prostředků, která obsahuje tuto instanci Cosmos DB, nebo žádný z prostředků, které se automaticky vytvořily v této skupině. Pokud potřebujete odstranit skupinu prostředků, Cosmos DB instanci atd., je nutné odstranit Azure Machine Learning pracovní prostor, který ho používá. Skupina prostředků, instance Cosmos DB a další automaticky vytvořené prostředky se odstraní při odstranění přidruženého pracovního prostoru.
-> * Výchozí [__jednotky žádostí__](../cosmos-db/request-units.md) pro tento účet Cosmos DB jsou nastavené na __8000__. Změna této hodnoty není podporována.
-> * Pro použití s vytvořenou instancí Cosmos DB nemůžete zadat vlastní virtuální síť. Nemůžete také upravovat virtuální síť. Nemůžete například změnit rozsah IP adres, který používá.
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Pokud potřebujete svůj klíč __otočit nebo odvolat__ , můžete to udělat kdykoli. Při otočení klíče Cosmos DB začne používat nový klíč (nejnovější verzi) k šifrování neaktivních dat. Při odvolání (zakázání) klíče se Cosmos DB postará o neúspěšné požadavky. To obvykle trvá hodinu, než se rotace nebo odvolání projeví.
 
@@ -261,7 +256,7 @@ Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazen�
 
 ### <a name="metrics"></a>Metriky
 
-Metriky Azure Monitor můžete použít k zobrazení a monitorování metrik pro pracovní prostor Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte **metriky**:
+Metriky Azure Monitor můžete použít k zobrazení a monitorování metrik pro pracovní prostor Azure Machine Learning. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte **metriky** :
 
 [![Snímek obrazovky znázorňující ukázkovou metriku pro pracovní prostor](media/concept-enterprise-security/workspace-metrics.png)](media/concept-enterprise-security/workspace-metrics-expanded.png#lightbox)
 
@@ -371,8 +366,8 @@ Podrobnosti najdete tady:
 
 [Azure Policy](/azure/governance/policy) je nástroj zásad správného řízení, který vám umožní zajistit, aby prostředky Azure vyhovovaly vašim zásadám. Pomocí Azure Machine Learning můžete přiřadit následující zásady:
 
-* **Klíč spravovaný zákazníkem**: audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
-* **Privátní odkaz**: Audituje, jestli pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
+* **Klíč spravovaný zákazníkem** : audit nebo vymáhání, jestli musí pracovní prostory používat klíč spravovaný zákazníkem.
+* **Privátní odkaz** : Audituje, jestli pracovní prostory používají privátní koncový bod ke komunikaci s virtuální sítí.
 
 Další informace o Azure Policy najdete v dokumentaci k [Azure Policy](/azure/governance/policy/overview).
 

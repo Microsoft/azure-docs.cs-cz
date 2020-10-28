@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 0b7af5c04d5c7931714240048d7d3f2269a40334
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 52ad0d0356f4d309db89db6527d7fd2d7dec253d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521692"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636812"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Kurz: Azure Active Directory integrace s integrací sady webMethods
 
@@ -63,13 +63,13 @@ Pokud chcete nakonfigurovat integraci integrační sady webMethods do Azure AD, 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Integration Suite webMethods**, vyberte **Integration Suite webMethods** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Integration Suite webMethods** , vyberte **Integration Suite webMethods** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Sada Integration Suite webMethods v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí integrační sady webMethods na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí integrační sady webMethods na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v integrační sadě webMethods.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí integrační sady WebMethods, musíte dokončit tyto stavební bloky:
@@ -87,7 +87,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí integrační sady WebMethods, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Integration Suite** pro webové metody vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Integration Suite** pro webové metody vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -99,9 +99,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí integra�
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Pokud chcete nakonfigurovat **integrační Cloud webMethods**, v **základní části Konfigurace SAML** , pokud chcete nakonfigurovat aplikaci v režimu spuštěném v **IDP** , proveďte následující kroky:
+4. Pokud chcete nakonfigurovat **integrační Cloud webMethods** , v **základní části Konfigurace SAML** , pokud chcete nakonfigurovat aplikaci v režimu spuštěném v **IDP** , proveďte následující kroky:
 
-    ![informace o jednotném přihlašování domény a adresy URL integrační sady webMethods](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -118,7 +118,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí integra�
 
     c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![informace o jednotném přihlašování domény a adresy URL integrační sady webMethods](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -129,9 +129,9 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí integra�
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory klientů pro integraci webMethods Integration Suite](https://empower.softwareag.com/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Pokud chcete nakonfigurovat **Cloud API webMethods**, v **základní části Konfigurace SAML** , pokud chcete nakonfigurovat aplikaci v režimu, který je spuštěný v **IDP** , proveďte následující kroky:
+5. Pokud chcete nakonfigurovat **Cloud API webMethods** , v **základní části Konfigurace SAML** , pokud chcete nakonfigurovat aplikaci v režimu, který je spuštěný v **IDP** , proveďte následující kroky:
 
-    ![informace o jednotném přihlašování domény a adresy URL integrační sady webMethods](common/idp-intiated.png)
+    ![Snímek obrazovky ukazuje základní konfiguraci SAML, kde můžete zadat identifikátor, odpovědět U R L a vybrat Uložit.](common/idp-intiated.png)
 
     a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -147,7 +147,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí integra�
 
     c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![informace o jednotném přihlašování domény a adresy URL integrační sady webMethods](common/metadata-upload-additional-signon.png)
+    ![Snímek obrazovky s nastavením další U R ls, kde můžete zadat přihlášení U R L.](common/metadata-upload-additional-signon.png)
 
     d. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
@@ -180,7 +180,7 @@ Chcete-li nakonfigurovat jednotné přihlašování na straně **integračních 
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -192,28 +192,28 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte **brittasimon \@ yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k integrační sadě webMethods.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **integrační sada webMethods**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **integrační sada webMethods** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **integrační sada webMethods**.
+2. V seznamu aplikace vyberte **integrační sada webMethods** .
 
     ![Odkaz na integrační sadu webMethods v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 

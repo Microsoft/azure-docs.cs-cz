@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9615dc358b1c5bed0e48c07c2571ccce05fcdf2e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84659711"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637203"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,27 +41,27 @@ Integration Runtime lze vytvořit pomocí rutiny prostředí PowerShell **set-Az
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Pro Azure IR musí být typ nastavený na **spravované**. Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
+Pro Azure IR musí být typ nastavený na **spravované** . Nemusíte zadávat podrobné informace o výpočetním prostředí, protože je plně spravovaná elastická v cloudu. Určete výpočetní údaje, jako je velikost uzlu a počet uzlů, když chcete vytvořit Azure-SSIS IR. Další informace najdete v tématu [Vytvoření a konfigurace Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
 
 Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomocí rutiny Set-AzDataFactoryV2IntegrationRuntime PowerShellu. Další informace o umístění Azure IR najdete v tématu [Úvod do prostředí Integration runtime](concepts-integration-runtime.md).
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Vytvoření Azure IR prostřednictvím uživatelského rozhraní Azure Data Factory
 Pomocí následujících kroků můžete vytvořit Azure IR pomocí uživatelského rozhraní Azure Data Factory.
 
-1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) z levého podokna.
+1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](./author-management-hub.md) z levého podokna.
 
    ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
 
-1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový**.
+1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový** .
 
    ![Vytvoření prostředí Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat**. 
+1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat** . 
 
-1. Na následující stránce vyberte **Azure** a vytvořte Azure IR a pak vyberte **pokračovat**.
+1. Na následující stránce vyberte **Azure** a vytvořte Azure IR a pak vyberte **pokračovat** .
    ![Vytvoření prostředí Integration Runtime](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. Zadejte název pro Azure IR a vyberte **vytvořit**.
+1. Zadejte název pro Azure IR a vyberte **vytvořit** .
    ![Vytvoření Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Po dokončení vytváření se zobrazí místní oznámení. Na stránce **Integration runtime** se ujistěte, že se v seznamu zobrazuje nově vytvořený IR.
@@ -92,4 +92,3 @@ V následujících článcích najdete informace o tom, jak vytvořit další ty
 
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)
 - [Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md)
- 

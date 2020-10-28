@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983421"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637696"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -40,9 +40,9 @@ V tomto kurzu se dozvíte, jak provádět následující úlohy:
 > * Spuštění kanálu
 > * Monitorování spuštění aktivit a kanálu
 
-Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](/azure/data-factory/quickstart-create-data-factory-portal).
+Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](./quickstart-create-data-factory-portal.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -54,33 +54,33 @@ Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný úče
 
 Seznam oblastí Azure, ve kterých je Data Factory aktuálně k dispozici, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat a výpočetní prostředky můžou být v jiných oblastech. Mezi obchody patří Azure Storage a Azure SQL Database. K výpočtům patří HDInsight, který Data Factory používá.
 
-Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Přiřaďte aplikaci roli **Přispěvatel** podle pokynů ve stejném článku. Pro pozdější části tohoto kurzu budete potřebovat několik hodnot, jako je například **ID aplikace (klienta)** a **ID adresáře (tenant)**.
+Vytvořte aplikaci, jak je popsáno v tématu [Vytvoření aplikace Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Přiřaďte aplikaci roli **Přispěvatel** podle pokynů ve stejném článku. Pro pozdější části tohoto kurzu budete potřebovat několik hodnot, jako je například **ID aplikace (klienta)** a **ID adresáře (tenant)** .
 
 ### <a name="create-a-blob-table"></a>Vytvoření tabulky objektů BLOB
 
-1. Otevřete textový editor. Zkopírujte následující text a uložte ho místně jako *input.txt*.
+1. Otevřete textový editor. Zkopírujte následující text a uložte ho místně jako *input.txt* .
 
    ```
    Ethel|Berg
    Tamika|Walsh
    ```
 
-1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Pravým tlačítkem klikněte na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob**.
+1. Otevřete Průzkumník služby Azure Storage. Rozbalte svůj účet úložiště. Pravým tlačítkem klikněte na **Kontejnery objektů blob** a vyberte **Vytvořit kontejner objektů blob** .
 1. Pojmenujte nový kontejner *adfv2branch* a vyberte **nahrát** a přidejte soubor *input.txt* do kontejneru.
 
 ## <a name="create-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio<a name="create-visual-studio-project"></a>
 
 Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
-1. Spusťte aplikaci Visual Studio a vyberte možnost **vytvořit nový projekt**.
-1. V možnosti **vytvořit nový projekt**zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další**.
-1. Pojmenujte projekt *ADFv2BranchTutorial*.
-1. Vyberte **.NET verze 4.5.2** nebo vyšší a pak vyberte **vytvořit**.
+1. Spusťte aplikaci Visual Studio a vyberte možnost **vytvořit nový projekt** .
+1. V možnosti **vytvořit nový projekt** zvolte **Konzolová aplikace (.NET Framework)** pro C# a vyberte **Další** .
+1. Pojmenujte projekt *ADFv2BranchTutorial* .
+1. Vyberte **.NET verze 4.5.2** nebo vyšší a pak vyberte **vytvořit** .
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
-1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
+1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** .
+1. V **konzole správce balíčků** spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -211,7 +211,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a jednu pro jímk
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>Vytvoření datové sady pro zdrojový objekt blob Azure
 
-Přidejte metodu, která vytvoří *datovou sadu objektů BLOB v Azure*. Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
+Přidejte metodu, která vytvoří *datovou sadu objektů BLOB v Azure* . Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
 
 `SourceBlobDatasetDefinition`Do souboru *program.cs* přidejte metodu:
 
@@ -234,9 +234,9 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename*.
+Nadefinujete datovou sadu, která představuje zdrojová data v objektu blob Azure. Tato datová sada objektů BLOB odkazuje na propojenou službu Azure Storage, která je v předchozím kroku podporovaná. Datová sada objektů BLOB popisuje umístění objektu blob, ze kterého se mají kopírovat: *FolderPath* a *filename* .
 
-Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
+Všimněte si použití parametrů pro *FolderPath* . `sourceBlobContainer` je název parametru a výraz je nahrazen hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 
@@ -308,7 +308,7 @@ K aktivaci odesílání e-mailů použijete [Logic Apps](../logic-apps/logic-app
 
 ### <a name="success-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-V [Azure Portal](https://portal.azure.com)vytvořte pracovní postup Logic Apps s názvem *CopySuccessEmail*. Definujte Trigger pracovního postupu jako `When an HTTP request is received` . Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
+V [Azure Portal](https://portal.azure.com)vytvořte pracovní postup Logic Apps s názvem *CopySuccessEmail* . Definujte Trigger pracovního postupu jako `When an HTTP request is received` . Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
 
 ```json
 {
@@ -344,7 +344,7 @@ Po uložení pracovního postupu zkopírujte a uložte hodnotu **adresy URL post
 
 ## <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-Naklonujte **CopySuccessEmail** jako jiný pracovní postup Logic Apps s názvem *CopyFailEmail*. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
+Naklonujte **CopySuccessEmail** jako jiný pracovní postup Logic Apps s názvem *CopyFailEmail* . Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
 
 ![Návrhář aplikace logiky – pracovní postup selhání e-mailu](media/tutorial-control-flow/fail-email-workflow.png)
 
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 V tomto kurzu jste provedli následující úlohy:
 
 > [!div class="checklist"]
-> * Vytvoření datové továrny
+> _ Vytvoření datové továrny
 > * Vytvoření propojené služby Azure Storage
 > * Vytvoření datové sady Azure Blob
 > * Vytvoření kanálu, který obsahuje aktivitu kopírování a aktivitu webu

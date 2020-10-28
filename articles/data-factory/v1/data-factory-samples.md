@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359998"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636829"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "92359998"
 | [Ukázka stahovacího data http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Tato ukázka předvádí stažení dat z koncového bodu HTTP do Azure Blob Storage pomocí vlastní aktivity rozhraní .NET. |
 | [Ukázka aktivity mezi dvěma doménami AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Tato ukázka umožňuje vytvořit vlastní aktivitu rozhraní .NET, která není omezená na verze sestavení používané spouštěčem ADF (například WindowsAzure. Storage v 4.3.0, Newtonsoft.Jsna v 6.0. x atd.). |
 | [Spuštění skriptu jazyka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Tato ukázka obsahuje Data Factory vlastní aktivity, které lze použít k vyvolání RScript.exe. Tato ukázka funguje jenom s vlastním clusterem HDInsight (ne na vyžádání), na kterém už je nainstalovaný R. |
-| [Vyvolání úloh Spark v clusteru HDInsight Hadoop](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |V této ukázce se dozvíte, jak používat aktivitu MapReduce k vyvolání programu Spark. Program Spark pouze kopíruje data z jednoho kontejneru objektů BLOB v Azure do jiného. |
+| [Vyvolání úloh Spark v clusteru HDInsight Hadoop](../tutorial-transform-data-spark-portal.md) |V této ukázce se dozvíte, jak používat aktivitu MapReduce k vyvolání programu Spark. Program Spark pouze kopíruje data z jednoho kontejneru objektů BLOB v Azure do jiného. |
 | [Analýza Twitteru pomocí aktivity dávkového vyhodnocování Azure Machine Learning Studio (Classic)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |V této ukázce se dozvíte, jak použít AzureMLBatchScoringActivity k vyvolání Azure Machine Learningho modelu, který provádí Twitter mínění Analysis, bodování, předpovědi atd. |
 | [Analýza Twitteru pomocí vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |V této ukázce se dozvíte, jak použít vlastní aktivitu .NET k vyvolání modelu Azure Machine Learning, který provádí Twitter mínění Analysis, bodování, předpovědi atd. |
 | [Parametrizované kanály pro Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Ukázka poskytuje ucelený kód v jazyce C# pro nasazení N kanálů pro vyhodnocování a přeškolení každého s jiným parametrem oblasti, kde seznam oblastí pochází z parameters.txt souboru, který je součástí této ukázky. |
@@ -79,37 +79,37 @@ Dlaždici **ukázkové kanály** na domovské stránce vaší datové továrny m
 Na počítači musíte mít nainstalované tyto položky:
 
 * Visual Studio 2013 nebo Visual Studio 2015.
-* Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
-* Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Pokud používáte Visual Studio 2013, můžete modul plug-in také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie Visual Studio**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**.
+* Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET** .
+* Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Pokud používáte Visual Studio 2013, můžete modul plug-in také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie Visual Studio**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update** .
 
 ### <a name="use-data-factory-templates"></a>Použití šablon Data Factory
-1. V nabídce klikněte na **soubor** , přejděte na **Nový**a klikněte na **projekt**.
+1. V nabídce klikněte na **soubor** , přejděte na **Nový** a klikněte na **projekt** .
 2. V dialogovém okně **Nový projekt** proveďte následující kroky:
 
-   1. V části **šablony**vyberte možnost **DataFactory** .
+   1. V části **šablony** vyberte možnost **DataFactory** .
    2. V pravém podokně vyberte **šablony Data Factory** .
    3. Zadejte **název** projektu.
    4. Vyberte **umístění** projektu.
-   5. Klikněte na **OK**.
+   5. Klikněte na **OK** .
 
       ![Dialogové okno Nový projekt](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. V dialogovém okně **Data Factory šablony** vyberte vzorovou šablonu v části **šablony použití** a klikněte na **Další**. Následující kroky vás provedou použitím šablony **profilace zákazníka** . Postup je podobný jako u ostatních ukázek.
+3. V dialogovém okně **Data Factory šablony** vyberte vzorovou šablonu v části **šablony použití** a klikněte na **Další** . Následující kroky vás provedou použitím šablony **profilace zákazníka** . Postup je podobný jako u ostatních ukázek.
 
     ![Dialogové okno Data Factory šablony](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. V dialogovém okně **konfigurace Data Factory** klikněte na stránce **základy Data Factory** na **Další** .
 5. Na stránce **konfigurace objektu pro vytváření dat** proveďte následující kroky:
-   1. Vyberte **vytvořit novou Data Factory**. Můžete také vybrat **použít existující datovou továrnu**.
+   1. Vyberte **vytvořit novou Data Factory** . Můžete také vybrat **použít existující datovou továrnu** .
    2. Zadejte **název** objektu pro vytváření dat.
    3. Vyberte **předplatné Azure** , ve kterém chcete datovou továrnu vytvořit.
    4. Vyberte **skupinu prostředků** pro datovou továrnu.
-   5. Pro **oblast**vyberte **západní USA**, **východní USA**nebo **Severní Evropa** .
+   5. Pro **oblast** vyberte **západní USA** , **východní USA** nebo **Severní Evropa** .
    6. Klikněte na **Next** (Další).
 6. Na stránce **Konfigurovat úložiště dat** Zadejte existující **databázi v Azure SQL Database** a **účet úložiště Azure** (nebo) vytvořte databázi nebo úložiště a klikněte na další.
-7. Na stránce **Konfigurace COMPUTE** vyberte výchozí a klikněte na **Další**.
-8. Na stránce **Souhrn** Zkontrolujte všechna nastavení a klikněte na **Další**.
-9. Na stránce **stav nasazení** počkejte na dokončení nasazení a klikněte na tlačítko **Dokončit**.
-10. V Průzkumníku řešení klikněte pravým tlačítkem na požadovaný projekt a poté klikněte na **Publikovat**.
-11. Pokud se zobrazí dialogové okno **Přihlásit se pomocí účtu Microsoft**, zadejte přihlašovací údaje k účtu s předplatným Azure a klikněte na **Přihlásit**.
+7. Na stránce **Konfigurace COMPUTE** vyberte výchozí a klikněte na **Další** .
+8. Na stránce **Souhrn** Zkontrolujte všechna nastavení a klikněte na **Další** .
+9. Na stránce **stav nasazení** počkejte na dokončení nasazení a klikněte na tlačítko **Dokončit** .
+10. V Průzkumníku řešení klikněte pravým tlačítkem na požadovaný projekt a poté klikněte na **Publikovat** .
+11. Pokud se zobrazí dialogové okno **Přihlásit se pomocí účtu Microsoft** , zadejte přihlašovací údaje k účtu s předplatným Azure a klikněte na **Přihlásit** .
 12. Mělo by se zobrazit následující dialogové okno:
 
     ![Dialogové okno publikování](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -117,9 +117,9 @@ Na počítači musíte mít nainstalované tyto položky:
 
     1. Potvrďte, že **použijte existující možnost Datové továrny** .
     2. Vyberte **datovou továrnu** , kterou jste při použití šablony vybrali.
-    3. Kliknutím na **Další** přejděte na stránku **Publish Items** (Publikovat položky). (Pokud je tlačítko **Další** neaktivní, opusťte pole Název stisknutím klávesy **TAB**.)
-14. Na stránce **Publish Items** (Publikovat položky) zkontrolujte, jestli jsou vybrané všechny entity služby Data Factory, a kliknutím na **Další** přejděte na stránku **Souhrn**.     
-15. Zkontrolujte souhrn a klikněte na **Další**. Spustí se proces nasazení a zobrazí se **Stav nasazení**.
+    3. Kliknutím na **Další** přejděte na stránku **Publish Items** (Publikovat položky). (Pokud je tlačítko **Další** neaktivní, opusťte pole Název stisknutím klávesy **TAB** .)
+14. Na stránce **Publish Items** (Publikovat položky) zkontrolujte, jestli jsou vybrané všechny entity služby Data Factory, a kliknutím na **Další** přejděte na stránku **Souhrn** .     
+15. Zkontrolujte souhrn a klikněte na **Další** . Spustí se proces nasazení a zobrazí se **Stav nasazení** .
 16. Na stránce **Stav nasazení** byste měli vidět stav procesu nasazení. Až se nasazení dokončí, klikněte na Dokončit.
 
-Podrobné informace o použití sady Visual Studio k vytváření Data Factory entit a jejich publikování do Azure najdete v tématu [Vytvoření první datové továrny (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) .          
+Podrobné informace o použití sady Visual Studio k vytváření Data Factory entit a jejich publikování do Azure najdete v tématu [Vytvoření první datové továrny (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) .

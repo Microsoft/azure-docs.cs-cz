@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417874"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634976"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Aktivita Webhooku v Azure Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "81417874"
 
 Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu. V případě aktivity Webhooku může kód zákazníka zavolat koncovému bodu a předat mu adresu URL zpětného volání. Běh kanálu počká na vyvolání zpětného volání, než pokračuje na další aktivitu.
 
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 ```json
 
@@ -53,17 +53,17 @@ Aktivita Webhooku může řídit provádění kanálů pomocí vlastního kódu.
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | --------
 **Jméno** | Název aktivity Webhooku. | Řetězec | Ano |
 **textový** | Musí být nastavené na Webhook. | Řetězec | Ano |
 **Metoda** | Metoda REST API pro cílový koncový bod. | Řetězec. Podporovaný typ je POST. | Ano |
 **Adresa URL** | Cílový koncový bod a cesta. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano |
 **záhlaví** | Hlavičky, které se odesílají do žádosti Tady je příklad, který nastaví jazyk a typ v žádosti: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ano. `Content-Type` `"headers":{ "Content-Type":"application/json"}` Požaduje se záhlaví. |
-**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) . | Ano |
-**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | No |
-**prodlev** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d*. *HH*:*mm*:*SS*. | Řetězec | No |
-**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | No |
+**těles** | Představuje datovou část, která je odeslána do koncového bodu. | Platný JSON nebo výraz s hodnotou **RESULTTYPE** JSON. Schéma datové části požadavku najdete v tématu [schéma datové části požadavku](./control-flow-web-activity.md#request-payload-schema) . | Ano |
+**přihlašovací** | Metoda ověřování použitá pro volání koncového bodu. Podporované typy jsou "základní" a "ClientCertificate". Další informace najdete v tématu [Ověřování](./control-flow-web-activity.md#authentication). Pokud se ověřování nepožaduje, vylučte tuto vlastnost. | Řetězec nebo výraz s hodnotou **ResultType** řetězce. | Ne |
+**prodlev** | Jak dlouho aktivita čeká na vyvolání zpětného volání zadaného parametrem **callBackUri** . Výchozí hodnota je 10 minut ("00:10:00"). Hodnoty mají formát TimeSpan *d* . *HH* : *mm* : *SS* . | Řetězec | Ne |
+**Vykázat stav při zpětném volání** | Umožňuje uživateli ohlásit stav selhání aktivity Webhooku. | Logická hodnota | Ne |
 
 ## <a name="authentication"></a>Authentication
 
@@ -99,7 +99,7 @@ Zadejte obsah souboru PFX v kódování Base64 a heslo.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Pomocí spravované identity objektu pro vytváření dat určete identifikátor URI prostředku, pro který je požadován přístupový token. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/` . Další informace o tom, jak spravované identity fungují, najdete v tématu [Přehled prostředků spravovaných identit pro Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+Pomocí spravované identity objektu pro vytváření dat určete identifikátor URI prostředku, pro který je požadován přístupový token. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/` . Další informace o tom, jak spravované identity fungují, najdete v tématu [Přehled prostředků spravovaných identit pro Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -119,7 +119,7 @@ Aktivita Webhooku se nezdařila, pokud volání vlastního koncového bodu nepro
 
 U každého volání REST API vyprší časový limit, pokud koncový bod neodpoví během jedné minuty. Toto chování je osvědčeným postupem standardu HTTP. Chcete-li tento problém vyřešit, implementujte vzor 202. V aktuálním případě koncový bod vrátí 202 (přijato) a dotaz na klienta.
 
-Časový limit minut na žádosti nemá žádnou akci s časovým limitem aktivity. Druhý se používá pro čekání na zpětné volání určené parametrem **callbackUri**.
+Časový limit minut na žádosti nemá žádnou akci s časovým limitem aktivity. Druhý se používá pro čekání na zpětné volání určené parametrem **callbackUri** .
 
 Tělo předané zpět do identifikátoru URI zpětného volání musí být platný kód JSON. Nastavte `Content-Type` hlavičku na `application/json` .
 

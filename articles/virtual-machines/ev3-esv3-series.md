@@ -1,18 +1,18 @@
 ---
 title: Řady Ev3-Series a Esv3-Series
 description: Specifikace pro virtuální počítače s Ev3 a Esv3-Series.
-author: joelpelley
+author: DavidCBerry13
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.author: lahugh
-ms.openlocfilehash: 698b95dc5b38e1d365a80878a5057dee357d81af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: daberry
+ms.openlocfilehash: 250223c5c15a0179fe105e66e7004f8920c5eb34
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649571"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637611"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 

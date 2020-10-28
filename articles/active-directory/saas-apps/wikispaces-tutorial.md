@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f48e9f039917fbd7f4437b8a0d3b81e65a0f9b62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f62e746a189a14838227a40be3bca9d05553a642
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520281"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Kurz: Azure Active Directory integrace s Wikispaces
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci Wikispaces do služby Azure AD, musíte p�
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Wikispaces**, vyberte **Wikispaces** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Wikispaces** , vyberte **Wikispaces** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Wikispaces v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Wikispaces na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Wikispaces na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wikispaces.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wikispaces, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wikispaces, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wikispaces** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Wikispaces** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Ke konfiguraci jednotného přihlašování na straně **Wikispaces** je potřeb
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -142,27 +142,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Wikispaces.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Wikispaces**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **Wikispaces** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Wikispaces**.
+2. V seznamu aplikace vyberte **Wikispaces** .
 
     ![Odkaz Wikispaces v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
@@ -184,21 +184,21 @@ Aby se uživatelé Azure AD mohli přihlašovat k Wikispaces, musí se zřídit 
 
 1. Přihlaste se k webu **Wikispaces** společnosti jako správce.
 
-2. Přejít na **členy**.
+2. Přejít na **členy** .
    
     ![Členové](./media/wikispaces-tutorial/ic787193.png "Členové")
 
-3. Klikněte na **pozvat lidi**.
+3. Klikněte na **pozvat lidi** .
    
-    ![Pozvat lidi](./media/wikispaces-tutorial/ic787194.png "Pozvat lidi")
+    ![Snímek obrazovky se zobrazí stránka členové, kde můžete vybrat pozvat lidi.](./media/wikispaces-tutorial/ic787194.png "Pozvat lidi")
 
 4. V části **pozvat lidi** proveďte následující kroky:
    
-    ![Pozvat lidi](./media/wikispaces-tutorial/ic787208.png "Pozvat lidi")
+    ![Snímek obrazovky se zobrazí v části pozvat lidi, kde můžete zadat uživatelská data.](./media/wikispaces-tutorial/ic787208.png "Pozvat lidi")
    
     a. Zadejte **uživatelská jména nebo e-mailovou adresu** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
    
-    b. Klikněte na **Odeslat**.  
+    b. Klikněte na **Odeslat** .  
       
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mail, včetně odkazu na potvrzení účtu, než bude aktivní.

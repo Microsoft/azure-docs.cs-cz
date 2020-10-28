@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927565"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634534"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Spuštění Integration Runtime Self-Hosted v kontejneru Windows
 
@@ -25,8 +25,8 @@ ms.locfileid: "87927565"
 V tomto článku se dozvíte, jak spustit Self-Hosted Integration Runtime v kontejneru Windows.
 Azure Data Factory přináší oficiální podporu kontejneru Windows Self-Hosted Integration Runtime. Zdrojový kód sestavení Docker můžete stáhnout a kombinovat proces sestavení a spuštění ve vlastním kanálu průběžného doručování. 
 
-## <a name="prerequisites"></a>Požadavky 
-- [Požadavky na kontejner Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
+## <a name="prerequisites"></a>Předpoklady 
+- [Požadavky na kontejner Windows](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker verze 2,3 a novější 
 - Self-Hosted Integration Runtime verze 4.11.7512.1 a novější 
 ## <a name="get-started"></a>Začínáme 
@@ -61,7 +61,5 @@ V současné době nepodporujeme při spouštění Self-Hosted Integration Runti
 - Automatická aktualizace 
 
 ### <a name="next-steps"></a>Další kroky
-- Projděte si [koncept prostředí Integration runtime v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
-- Naučte se [vytvořit místní prostředí Integration runtime v Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
-
-
+- Projděte si [koncept prostředí Integration runtime v Azure Data Factory](./concepts-integration-runtime.md).
+- Naučte se [vytvořit místní prostředí Integration runtime v Azure Portal](./create-self-hosted-integration-runtime.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: cf1bf9e05f83610fd43146cf4c99c5006fdc97b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171454"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637747"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
 
@@ -22,21 +22,21 @@ Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integrat
 
 Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve spravované instanci SQL, systému souborů, jako jsou soubory Azure, nebo v úložišti balíčků prostředí Azure-SSIS Integration runtime.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Chcete-li použít tuto funkci, [Stáhněte](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) a nainstalujte nejnovější SQL Server Management Studio (SSMS). Podrobnosti o podpoře verze, jak je uvedeno níže:
+Chcete-li použít tuto funkci, [Stáhněte](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) a nainstalujte nejnovější SQL Server Management Studio (SSMS). Podrobnosti o podpoře verze, jak je uvedeno níže:
 
 - Pokud chcete spouštět balíčky v SSISDB nebo v systému souborů, nainstalujte SSMS verze 18,5 nebo vyšší.
 - Pokud chcete spouštět balíčky v obchodě s balíčky, nainstalujte SSMS verze 18,6 nebo novější.
 
-Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](tutorial-create-azure-ssis-runtime-portal.md) v Azure Data Factory. Používá spravovanou instanci SQL jako server koncového bodu.
+Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](./tutorial-deploy-ssis-packages-azure.md) v Azure Data Factory. Používá spravovanou instanci SQL jako server koncového bodu.
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>Spuštění balíčku SSIS v SSISDB
 
 V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčku SSIS, který je uložený v SSISDB.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha** .
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -52,9 +52,9 @@ V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčk
 
 1. Na kartě **Konfigurace** můžete:
   
-   - Zadejte hodnoty parametrů v části **parametry**.
-   - Přepište hodnoty v části **Správci připojení**.
-   - Přepište vlastnost a vyberte úroveň protokolování v části **Upřesnit**.
+   - Zadejte hodnoty parametrů v části **parametry** .
+   - Přepište hodnoty v části **Správci připojení** .
+   - Přepište vlastnost a vyberte úroveň protokolování v části **Upřesnit** .
 
    ![Karta konfigurace s výběry pro typ zdroje balíčku](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
@@ -66,7 +66,7 @@ V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčk
 V tomto postupu použijete agenta spravované instance SQL ke spuštění balíčku SSIS, který je uložený v systému souborů.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha** .
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -76,19 +76,19 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
 1. Na kartě **balíček** :
 
-   1. V případě **umístění balíčku**vyberte možnost **systém souborů**.
+   1. V případě **umístění balíčku** vyberte možnost **systém souborů** .
 
-   1. Pro **typ zdroje souboru**:
+   1. Pro **typ zdroje souboru** :
 
-      - Pokud se balíček nahraje do souborů Azure, vyberte **sdílená složka Azure**.
+      - Pokud se balíček nahraje do souborů Azure, vyberte **sdílená složka Azure** .
 
         ![Možnosti pro typ zdroje souboru](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
 
         Cesta k balíčku je **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
 
-        V části **přihlašovací údaje pro přístup k souboru balíčku**zadejte název účtu služby Azure a klíč účtu pro přístup k souboru Azure. Doména je nastavená jako **Azure**.
+        V části **přihlašovací údaje pro přístup k souboru balíčku** zadejte název účtu služby Azure a klíč účtu pro přístup k souboru Azure. Doména je nastavená jako **Azure** .
 
-      - Pokud se balíček nahraje do sdílené síťové složky, vyberte **Síťová sdílená položka**.
+      - Pokud se balíček nahraje do sdílené síťové složky, vyberte **Síťová sdílená položka** .
 
         Cesta k balíčku je cesta UNC k souboru balíčku s příponou. dtsx.
 
@@ -111,7 +111,7 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 V tomto postupu použijete agenta spravované instance SQL ke spuštění balíčku SSIS, který je uložený v úložišti balíčků Azure-SSIS IR.
 
 1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
-1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
+1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server** klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha** .
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -121,9 +121,9 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
 1. Na kartě **balíček** :
 
-   1. V případě **umístění balíčku**vyberte možnost **obchod s balíčky**.
+   1. V případě **umístění balíčku** vyberte možnost **obchod s balíčky** .
 
-   1. Pro **cestu k balíčku**:
+   1. Pro **cestu k balíčku** :
 
       Cesta k balíčku je **`<package store name>\<folder name>\<package name>`** .
 
@@ -146,17 +146,17 @@ V tomto postupu použijete agenta spravované instance SQL ke spuštění balí�
 
 Chcete-li zrušit spuštění balíčku z úlohy agenta spravované instance SQL, proveďte následující kroky místo přímého zastavení úlohy agenta:
 
-1. Najděte svůj Agent SQL **jobId** z **msdb.dbo.sysúloh**.
+1. Najděte svůj Agent SQL **jobId** z **msdb.dbo.sysúloh** .
 1. Pomocí tohoto dotazu Najděte odpovídající **EXECUTIONID** SSIS na základě ID úlohy:
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   Pokud jsou balíčky SSIS v SSISDB, použijte jako tabulku pro provádění úloh **ssisdb.internal.execution_parameter_values** . Pokud jsou balíčky SSIS v systému souborů, použijte **ssisdb.internal.execution_parameter_values_noncatalog**.
-1. Klikněte pravým tlačítkem na katalog SSISDB a pak vyberte **aktivní operace**.
+   Pokud jsou balíčky SSIS v SSISDB, použijte jako tabulku pro provádění úloh **ssisdb.internal.execution_parameter_values** . Pokud jsou balíčky SSIS v systému souborů, použijte **ssisdb.internal.execution_parameter_values_noncatalog** .
+1. Klikněte pravým tlačítkem na katalog SSISDB a pak vyberte **aktivní operace** .
 
    !["Aktivní operace" v místní nabídce katalogu SSISDB](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
 
-1. Zastavte odpovídající operaci na základě **ExecutionID**.
+1. Zastavte odpovídající operaci na základě **ExecutionID** .
 
 ## <a name="next-steps"></a>Další kroky
-Balíčky SSIS můžete také naplánovat pomocí Azure Data Factory. Podrobné pokyny najdete v tématu [Azure Data Factory Trigger události](how-to-create-event-trigger.md). 
+Balíčky SSIS můžete také naplánovat pomocí Azure Data Factory. Podrobné pokyny najdete v tématu [Azure Data Factory Trigger události](how-to-create-event-trigger.md).

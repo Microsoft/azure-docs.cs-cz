@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ce40d1a46a6448e678a8a86812d08e9013310d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086904"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636914"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Snadné kopírování a přesouvání dat pomocí Průvodce kopírováním Azure Data Factory
 > [!NOTE]
@@ -62,7 +62,7 @@ V příkladu používá dotaz SQL `Text.Format` funkci a `WindowStart` proměnno
 ![Ověřit výrazy](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrování dat ve složce Azure Blob
-Proměnné v cestě ke složce můžete použít ke kopírování dat ze složky, která je určena za běhu na základě [systémových proměnných](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}**, **{month}**, **{Day}**, **{Hour}**, **{minute}** a **{Custom}**. Příklad: inputfolder/{Year}/{Month}/{Day}.
+Proměnné v cestě ke složce můžete použít ke kopírování dat ze složky, která je určena za běhu na základě [systémových proměnných](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}** , **{month}** , **{Day}** , **{Hour}** , **{minute}** a **{Custom}** . Příklad: inputfolder/{Year}/{Month}/{Day}.
 
 Předpokládejme, že máte vstupní složky v následujícím formátu:
 
@@ -73,11 +73,11 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
 ...
 ```
 
-Klikněte na tlačítko **Procházet** pro **soubor nebo složku**, vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit**. Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** řetězcem **{year}**, **03** a **{month}**, **01** s **{Day}** a **02** s **{Hour}** a stiskněte klávesu TAB. Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
+Klikněte na tlačítko **Procházet** pro **soubor nebo složku** , vyhledejte jednu z těchto složek (například 2016->03->01->02) a klikněte na **zvolit** . Mělo by se zobrazit `2016/03/01/02` v textovém poli. Nyní nahraďte **2016** řetězcem **{year}** , **03** a **{month}** , **01** s **{Day}** a **02** s **{Hour}** a stiskněte klávesu TAB. Měli byste vidět rozevírací seznamy a vybrat formát pro tyto čtyři proměnné:
 
 ![Použití systémových proměnných](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy TAB zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
+Jak je znázorněno na následujícím snímku obrazovky, můžete také použít **vlastní** proměnnou a všechny [podporované formátovací řetězce](/dotnet/standard/base-types/custom-date-and-time-format-strings). Chcete-li vybrat složku s touto strukturou, použijte nejprve tlačítko **Procházet** . Potom hodnotu nahraďte hodnotou **{Custom}** a stisknutím klávesy TAB zobrazte textové pole, ve kterém můžete zadat řetězec formátu.     
 
 ![Použití vlastní proměnné](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 
@@ -95,4 +95,3 @@ Jednorázová operace kopírování umožňuje přesun dat ze zdroje do cíle po
 
 ## <a name="next-steps"></a>Další kroky
 Rychlý návod, jak pomocí Průvodce kopírováním Data Factory vytvořit kanál s aktivitou kopírování, najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
-

@@ -10,23 +10,23 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 45f9f61712903436d63f483673705650f5470b3f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426362"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635945"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
 
 V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Learning pomocí Azure CLI. Rozhraní příkazového řádku Azure nabízí příkazy pro správu prostředků Azure. Rozšíření Machine Learning pro rozhraní příkazového řádku poskytuje příkazy pro práci s Azure Machine Learning prostředky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí** , potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
     Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
 
@@ -71,14 +71,14 @@ Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity A
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
 | **Skupina prostředků Azure** | `-g <resource-group-name>`
-| **Účet služby Azure Storage** | `--storage-account <service-id>` |
-| **Azure Application Insights** | `--application-insights <service-id>` |
+| **Účet Azure Storage** | `--storage-account <service-id>` |
+| **Application Insights Azure** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pracovní prostor Azure Machine Learning musí být vytvořený v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
+Pracovní prostor Azure Machine Learning musí být vytvořený v rámci skupiny prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou. Pokud chcete __vytvořit novou skupinu prostředků__ , použijte následující příkaz. Nahraďte `<resource-group-name>` názvem, který se má použít pro tuto skupinu prostředků. Nahraďte `<location>` oblastí Azure, kterou chcete použít pro tuto skupinu prostředků:
 
 > [!TIP]
 > Vyberte oblast, ve které je Azure Machine Learning k dispozici. Informace najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -107,7 +107,7 @@ Další informace o práci se skupinami prostředků najdete v tématu [AZ Group
 
 ### <a name="automatically-create-required-resources"></a>Automaticky vytvářet požadované prostředky
 
-Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__, použijte následující příkaz:
+Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__ , použijte následující příkaz:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -160,18 +160,17 @@ Ve výchozím nastavení se metriky a metadata pro pracovní prostor ukládají 
 
 Místo používání klíče spravovaného společností Microsoft můžete použít vlastní klíč. Tím se vytvoří instance Azure Cosmos DB, která ukládá metriky a metadata v předplatném Azure. Pomocí `--cmk-keyvault` parametru zadejte Azure Key Vault, který obsahuje klíč, a `--resource-cmk-uri` Zadejte adresu URL klíče v trezoru.
 
-> [!IMPORTANT]
-> Před použitím `--cmk-keyvault` parametrů a je `--resource-cmk-uri` třeba nejprve provést následující akce:
->
-> 1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
-> 1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:
->     * Registrace poskytovatele Azure Cosmos DB
->     * Vytvoření a konfigurace Azure Key Vault
->     * Vygenerovat klíč
->
->     Nemusíte vytvářet instanci Azure Cosmos DB ručně, ta se vytvoří během vytváření pracovního prostoru. Tato instance Azure Cosmos DB se vytvoří v samostatné skupině prostředků s použitím názvu založeného na tomto vzoru: `<your-resource-group-name>_<GUID>` .
->
-> Po vytvoření pracovního prostoru toto nastavení nemůžete změnit. Pokud odstraníte Azure Cosmos DB, kterou používá váš pracovní prostor, musíte také odstranit pracovní prostor, který ho používá.
+Před použitím `--cmk-keyvault` parametrů a je `--resource-cmk-uri` třeba nejprve provést následující akce:
+
+1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
+1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:
+    * Registrace poskytovatele Azure Cosmos DB
+    * Vytvoření a konfigurace Azure Key Vault
+    * Vygenerovat klíč
+
+Nemusíte vytvářet instanci Azure Cosmos DB ručně, ta se vytvoří během vytváření pracovního prostoru. Tato instance Azure Cosmos DB se vytvoří v samostatné skupině prostředků s použitím názvu založeného na tomto vzoru: `<your-resource-group-name>_<GUID>` .
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 Chcete-li omezit data, která společnost Microsoft shromažďuje v pracovním prostoru, použijte `--hbi-workspace` parametr. 
 
@@ -187,7 +186,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 > [!IMPORTANT]
 > Nemusíte zadávat všechny existující prostředky. Můžete zadat jednu nebo více. Můžete například zadat existující účet úložiště a pracovní prostor vytvoří další prostředky.
 
-+ **Účet Azure Storage**: `az storage account show --name <storage-account-name> --query "id"`
++ **Účet Azure Storage** : `az storage account show --name <storage-account-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID účtu úložiště:
 
@@ -196,7 +195,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     > [!IMPORTANT]
     > Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). Ve _výchozím_ účtu úložiště pracovního prostoru není podporován ani obor názvů Premium Storage ani hierarchický obor názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
 
-+ **Application Insights Azure**:
++ **Application Insights Azure** :
 
     1. Instalace rozšíření Application Insights:
 
@@ -214,13 +213,13 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID vašeho trezoru klíčů:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Odpověď z tohoto příkazu je podobná následujícímu textu a je ID pro registr kontejneru:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d524e34623d5fde3d6f22afbdd63ce95699fe6f
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494490"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636013"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -26,16 +26,16 @@ Tento článek poskytuje přehled dostupných rozhraní API a metody, jak s nimi
 
 Rozhraní API plochy ovládacího prvku jsou rozhraní API [ARM](../azure-resource-manager/management/overview.md) , která slouží ke správě vaší instance digitálního vlákna Azure jako celku, takže pokrývá operace, jako je vytváření nebo odstraňování celé instance. Tyto koncové body budete také používat k vytváření a odstraňování koncových bodů.
 
-Nejaktuálnější verze rozhraní API roviny ovládacího prvku pro verzi Public Preview je _**2020-10-31**_.
+Nejaktuálnější verze rozhraní API roviny ovládacího prvku pro verzi Public Preview je _**2020-10-31**_ .
 
 Chcete-li použít rozhraní API plochy ovládacího prvku:
 * Rozhraní API můžete volat přímo odkazem na nejnovější Swagger ve [složce Swagger řídicí roviny](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Toto úložiště obsahuje také složku příkladů, které ukazují použití.
 * V tuto chvíli můžete přistupovat k sadám SDK pro řídicí rozhraní API v...
   - [.NET (C#)](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) ([Referenční dokumentace [automaticky generované]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview))
-  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) ([Referenční dokumentace [automaticky generované]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
+  - [Java](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([zdroj](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) ([Referenční dokumentace [automaticky generované]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview))
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [Přejít](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)
+  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([zdroj](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
+  - [Přejít](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([zdroj](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
 
 Rozhraní API rovin ovládacích prvků můžete také využít k interakci s digitálními podčinnostmi Azure pomocí [Azure Portal](https://portal.azure.com) a [CLI](how-to-use-cli.md).
 
@@ -47,7 +47,7 @@ Rozhraní API roviny dat představují rozhraní API digitálních vláken Azure
 * **Dotaz** – kategorie dotazu umožňuje vývojářům [Najít sady digitálních vláken ve dvojitých grafech](how-to-query-graph.md) napříč relacemi.
 * **Směrování událostí** – kategorie trasy událostí obsahuje rozhraní API pro [směrování dat](concepts-route-events.md)prostřednictvím systému a služeb pro příjem dat.
 
-Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-10-31**_.
+Nejaktuálnější verze rozhraní API roviny dat pro verzi Public Preview je _**2020-10-31**_ .
 
 Použití rozhraní API roviny dat:
 * Můžete volat rozhraní API přímo, do...
@@ -80,7 +80,7 @@ Sada Azure Digital revlákens .NET (C#) SDK je součástí sady Azure SDK for .N
 
 Pokud chcete použít sadu SDK, zahrňte do svého projektu balíček NuGet **Azure. DigitalTwins. Core** . Budete také potřebovat nejnovější verzi balíčku **Azure. identity** .
 
-* V aplikaci Visual Studio můžete přidat balíčky pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení*). 
+* V aplikaci Visual Studio můžete přidat balíčky pomocí Správce balíčků NuGet (k dispozici prostřednictvím *nástrojů > správce balíčků nuget > spravovat balíčky NuGet pro řešení* ). 
 * Pomocí nástroje pro příkazový řádek .NET můžete spustit:
 
     ```cmd/sh
@@ -275,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>Obecné poznámky k používání rozhraní API/sady SDK
 
 > [!NOTE]
-> Upozorňujeme, že digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)**. Další informace o strategiích dopadů a rozlišení najdete v části věnované [*sdílení prostředků mezi zdroji (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) v tématu *Koncepty: Security for Azure Digital*Solutions.
+> Upozorňujeme, že digitální vlákna Azure v současné době nepodporuje **sdílení prostředků mezi zdroji (CORS)** . Další informace o strategiích dopadů a rozlišení najdete v části věnované [*sdílení prostředků mezi zdroji (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) v tématu *Koncepty: Security for Azure Digital* Solutions.
 
 Následující seznam poskytuje další podrobnosti a obecné pokyny pro používání rozhraní API a sad SDK.
 

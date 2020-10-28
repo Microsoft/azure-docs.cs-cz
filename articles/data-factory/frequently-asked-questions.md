@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440503"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635758"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy ke službě Azure Data Factory
 
@@ -67,10 +67,10 @@ Uživatelé můžou k rozhraní s Data Factory v2 použít taky dokumentované r
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Iterativní vývoj a ladění pomocí vizuálních nástrojů
 Azure Data Factory Visual Tools umožňují iterativní vývoj a ladění. Můžete vytvářet kanály a provádět testovací běhy pomocí možnosti **ladění** na plátně kanálu bez psaní jediného řádku kódu. Výsledky testovacích běhů můžete zobrazit v okně **výstup** plátna kanálu. Po úspěšném spuštění testu můžete do kanálu přidat další aktivity a pokračovat v ladění iterativním způsobem. Můžete také zrušit spuštění testů poté, co probíhá. 
 
-Před výběrem možnosti **ladit**není nutné publikovat změny ve službě Data Factory. To je užitečné ve scénářích, kde se chcete ujistit, že nové dodatky nebo změny budou fungovat podle očekávání, než provedete aktualizaci pracovních postupů služby Data Factory ve vývojovém, testovacím nebo produkčním prostředí. 
+Před výběrem možnosti **ladit** není nutné publikovat změny ve službě Data Factory. To je užitečné ve scénářích, kde se chcete ujistit, že nové dodatky nebo změny budou fungovat podle očekávání, než provedete aktualizaci pracovních postupů služby Data Factory ve vývojovém, testovacím nebo produkčním prostředí. 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Možnost nasadit balíčky SSIS do Azure 
-Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit prostředí Azure-SSIS Integration runtime. Prostředí Azure-SSIS Integration runtime je plně spravovaný cluster virtuálních počítačů Azure (uzlů) vyhrazených ke spouštění balíčků SSIS v cloudu. Podrobné pokyny najdete v kurzu [nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) . 
+Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit prostředí Azure-SSIS Integration runtime. Prostředí Azure-SSIS Integration runtime je plně spravovaný cluster virtuálních počítačů Azure (uzlů) vyhrazených ke spouštění balíčků SSIS v cloudu. Podrobné pokyny najdete v kurzu [nasazení balíčků SSIS do Azure](./tutorial-deploy-ssis-packages-azure.md) . 
  
 ### <a name="sdks"></a>Sady SDK
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
@@ -95,9 +95,9 @@ Od počáteční verze Public Preview v 2017 Data Factory přidali následujíc�
 ## <a name="what-is-the-integration-runtime"></a>Co je prostředí Integration runtime?
 Prostředí Integration runtime je výpočetní infrastruktura, kterou Azure Data Factory používá k tomu, aby poskytovala následující možnosti integrace dat napříč různými síťovými prostředími:
 
-- **Pohyb dat**: Integration runtime při přesunu dat přesouvá data mezi zdrojovým a cílovým úložištěm dat a nabízí podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Aktivity odeslání**: pro transformaci Integration runtime poskytuje možnost nativně spouštět balíčky SSIS.
-- **Spouštění balíčků SSIS**: Integration runtime nativně spouští balíčky SSIS ve spravovaném prostředí Azure Compute. Prostředí Integration runtime také podporuje odesílání a monitorování transformačních aktivit, které běží na různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, SQL Database a SQL Server.
+- **Pohyb dat** : Integration runtime při přesunu dat přesouvá data mezi zdrojovým a cílovým úložištěm dat a nabízí podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
+- **Aktivity odeslání** : pro transformaci Integration runtime poskytuje možnost nativně spouštět balíčky SSIS.
+- **Spouštění balíčků SSIS** : Integration runtime nativně spouští balíčky SSIS ve spravovaném prostředí Azure Compute. Prostředí Integration runtime také podporuje odesílání a monitorování transformačních aktivit, které běží na různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, SQL Database a SQL Server.
 
 Můžete nasadit jednu nebo více instancí prostředí Integration runtime, jak je potřeba k přesunutí a transformaci dat. Prostředí Integration runtime může běžet ve veřejné síti Azure nebo v privátní síti (místní, Azure Virtual Network nebo Amazon Web Services virtuální privátní cloud [VPC]). 
 
@@ -127,7 +127,7 @@ Propojené služby jsou velmi podobné připojovacím řetězcům, které definu
 Propojené služby mají dva účely v Data Factory:
 
 - Představuje *úložiště dat* , které zahrnuje, ale není omezené na, instance SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
-- Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
+- Představují *výpočetní prostředek* , který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
 
 ### <a name="triggers"></a>Aktivační události
 Triggery reprezentují jednotky zpracování, které určují, kdy se spustí spuštění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. 
@@ -159,7 +159,7 @@ Podrobnosti o cenách Azure Data Factory najdete v článku [Podrobnosti o cená
 Nejaktuálnější informace o Azure Data Factory najdete na následujících webech:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Domovská stránka dokumentace](/azure/data-factory)
+- [Domovská stránka dokumentace](./index.yml)
 - [Domovská stránka produktu](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>Technický hluboký podrobně 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c8eabd7d2ef02a92684b51de0bf45bdf7d995421
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 5e4c49e7aea05b6f430860eb6975713f59ad8080
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494454"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635979"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Použití rozhraní příkazového řádku Azure Digital Twins
 
-Kromě správy instance digitálních vláken Azure v Azure Portal má služba Azure Digital disvlákna **rozhraní příkazového řádku (CLI)** , které můžete použít k provádění většiny hlavních akcí se službou, včetně těchto:
+Kromě správy instance digitálních vláken Azure v Azure Portal má digitální vlákna Azure **sadu příkazů pro [Azure CLI](/cli/azure/what-is-azure-cli)** , kterou můžete použít k provádění většiny hlavních akcí se službou, včetně těchto:
 * Správa instance digitálních vláken Azure
 * Správa modelů
 * Správa digitálních vláken
@@ -25,17 +25,32 @@ Kromě správy instance digitálních vláken Azure v Azure Portal má služba A
 * Správa [tras](concepts-route-events.md)
 * Konfigurace [zabezpečení](concepts-security.md) prostřednictvím řízení přístupu na základě role Azure (Azure RBAC)
 
+Sada příkazů se nazývá **AZ DT** a je součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
+
 ## <a name="uses-deploy-and-validate"></a>Použití (nasazení a ověření)
 
 Kromě všeobecně spravované instance je také rozhraní příkazového řádku užitečným nástrojem pro nasazení a ověřování.
 * Příkazy roviny ovládacího prvku lze použít k zajištění opakovaného nebo automatizovaného nasazení nové instance.
 * Příkazy roviny dat lze použít k rychlé kontrole hodnot ve vaší instanci a k ověření, že operace byly dokončeny podle očekávání.
 
-## <a name="get-the-extension"></a>Získat rozšíření
+## <a name="get-the-command-set"></a>Získat sadu příkazů
 
-Příkazy digitálních vláken Azure jsou součástí [rozšíření Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension). Úplný seznam příkazů a jejich použití můžete zobrazit jako součást Referenční dokumentace pro `az iot` sadu příkazů: [ *AZ DT* Command reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest).
+Příkazy digitálních vláken Azure jsou součástí [rozšíření Azure IoT pro Azure CLI (Azure-IoT)](https://github.com/Azure/azure-iot-cli-extension), takže pomocí těchto kroků se ujistěte, že máte nejnovější `azure-iot` rozšíření s příkazy **AZ DT** .
 
-Pomocí těchto kroků se můžete ujistit, že máte nejnovější verzi rozšíření. Tyto příkazy můžete spustit v [Azure Cloud Shell](../cloud-shell/overview.md) nebo v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
+### <a name="cli-version-requirements"></a>Požadavky na verzi rozhraní příkazového řádku
+
+Pokud používáte Azure CLI s PowerShellem, balíček rozšíření vyžaduje, aby vaše verze Azure CLI byla **2.3.1** nebo vyšší.
+
+Verzi rozhraní příkazového řádku Azure CLI můžete zjistit pomocí tohoto příkazu rozhraní příkazového řádku:
+```azurecli
+az --version
+```
+
+Pokyny k instalaci nebo aktualizaci Azure CLI na novější verzi najdete v tématu Instalace rozhraní příkazového [*řádku Azure CLI*](/cli/azure/install-azure-cli).
+
+### <a name="get-the-extension"></a>Získat rozšíření
+
+Pomocí těchto kroků se můžete ujistit, že máte nejnovější verzi `azure-iot` rozšíření. Tyto příkazy můžete spustit v [Azure Cloud Shell](../cloud-shell/overview.md) nebo v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 [!INCLUDE [digital-twins-cloud-shell-extensions.md](../../includes/digital-twins-cloud-shell-extensions.md)]
 

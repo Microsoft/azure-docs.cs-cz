@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629362"
+ms.locfileid: "92637186"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Řešení potíží s místním hostováním Integration runtime
 
@@ -183,7 +183,7 @@ Z chyby níže můžete zřetelně zobrazit *systém sestavení. ValueTuple* nen
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-Další informace o globální mezipaměti sestavení (GAC) najdete v [tomto článku](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
+Další informace o globální mezipaměti sestavení (GAC) najdete v [tomto článku](/dotnet/framework/app-domains/gac).
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Audit chybějícího klíče místního prostředí IR
@@ -468,7 +468,7 @@ Očekává se následující odpověď:
 
 > [!NOTE] 
 > Hlediska proxy serveru:
-> *    Ověřte, zda proxy server musí být vloženy do seznamu bezpečných příjemců. Pokud ano, ujistěte se, že jsou [tyto domény](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) v seznamu bezpečných příjemců.
+> *    Ověřte, zda proxy server musí být vloženy do seznamu bezpečných příjemců. Pokud ano, ujistěte se, že jsou [tyto domény](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) v seznamu bezpečných příjemců.
 > *    Ověřte, jestli je certifikát TLS/SSL wu2.frontend.clouddatahub.net/na proxy server důvěryhodný.
 > *    Pokud na proxy serveru používáte ověřování pomocí služby Active Directory, změňte účet služby na uživatelský účet, který bude mít přístup k proxy serveru jako služba Integration Runtime.
 
@@ -632,7 +632,7 @@ Jak zjistit, jestli máte vliv na:
 - Nebudete mít vliv na definování pravidel brány firewall na základě názvů plně kvalifikovaného názvu domény pomocí přístupu popsaného v tomto dokumentu: [Konfigurace brány firewall a nastavení povolených seznamů pro IP adresu](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
 - Pokud jste ale výslovně povolili seznam povolených IP adres pro odchozí IP adresy na podnikové bráně firewall, budete ovlivněni.
 
-Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval konfiguraci sítě tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval konfiguraci sítě tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
 ##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Scénář 2: odchozí komunikace z Integration Runtime v místním prostředí, která běží na virtuálním počítači Azure v rámci zákaznické spravované virtuální sítě Azure
 Jak zjistit, jestli máte vliv na:
@@ -641,14 +641,14 @@ Jak zjistit, jestli máte vliv na:
  ![Kontrolu cíle](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 - Pokud jste ale výslovně povolili seznam povolených IP adres v nastavení pravidel NSG ve službě Azure Virtual Network, budete ovlivněni.
 
-Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scénář 3: odchozí komunikace z SSIS Integration Runtime ve službě Azure Virtual Network spravované zákazníkem
 - Ověřte, jestli máte v privátní síti žádná odchozí pravidla NSG, která obsahují SSIS Integration Runtime. Pokud neexistují žádná odchozí omezení, nebude to mít žádný vliv.
 - Pokud máte omezení odchozího pravidla, ověřte, zda používáte značku služby nebo ne. Pokud používáte značku služby, nemusíte nic měnit ani přidávat, protože nové rozsahy IP adres se nacházejí v rámci existující značky služby.
 - Pokud jste ale výslovně povolili seznam povolených adres pro odchozí IP adresy v nastavení pravidel NSG ve virtuální síti Azure, budete ovlivněni.
 
-Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
+Akce, která se má provést, pokud máte vliv: upozorněte tým síťové infrastruktury, aby aktualizoval pravidla NSG v konfiguraci virtuální sítě Azure tak, aby používal nejnovější Data Factory IP adresy od 8. listopadu 2020.  Pokud si chcete stáhnout nejnovější IP adresy, klikněte na [odkaz služby značky IP rozsah IP](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)adres ke stažení.
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Nepovedlo se vytvořit vztah důvěryhodnosti pro zabezpečený kanál SSLTLS. 
 
@@ -709,7 +709,7 @@ Další pomoc při řešení potíží najdete v následujících zdrojích info
 *  [Blog Data Factory](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 *  [Videa k Azure](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Fórum přetečení zásobníku pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Průvodce mapováním výkonu datových toků](concepts-data-flow-performance.md)

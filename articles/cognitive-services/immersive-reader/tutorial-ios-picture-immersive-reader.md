@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
-ms.author: metan
-ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516499"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636489"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
@@ -24,9 +24,9 @@ ms.locfileid: "88516499"
 
 V tomto kurzu vytvoříte aplikaci pro iOS od začátku a integrujete rozhraní API pro čtení a moderní čtečku s využitím sady moderní čtečky. Kompletní pracovní ukázka tohoto kurzu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
@@ -38,7 +38,7 @@ Vytvoří nový projekt v Xcode.
 
 ![Nový projekt](./media/ios/xcode-create-project.png)
 
-Vyberte **aplikaci s jedním zobrazením**.
+Vyberte **aplikaci s jedním zobrazením** .
 
 ![Nová aplikace s jedním zobrazením](./media/ios/xcode-single-view-app.png)
 
