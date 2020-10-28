@@ -4,12 +4,12 @@ description: Naučte se připojit soukromě k účtu Azure Batch pomocí soukrom
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669011"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Použití privátních koncových bodů s účty Azure Batch
 
@@ -24,29 +24,29 @@ Privátní odkaz umožňuje uživatelům přístup k účtu Azure Batch z virtu�
 
 Tento článek popisuje kroky pro vytvoření privátního účtu Batch a přístup k němu pomocí privátního koncového bodu.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 Pomocí následujícího postupu vytvořte pomocí Azure Portal privátní účet Batch:
 
-1. V podokně **vytvořit prostředek** zvolte **Služba Batch** a pak vyberte **vytvořit**.
-2. Na kartě **základy** zadejte předplatné, skupinu prostředků, oblast a název účtu Batch a potom vyberte **Další: Upřesnit**.
-3. Na kartě **Upřesnit** nastavte přístup k **veřejné síti** na **zakázaný**.
-4. V **Nastavení**vyberte **připojení privátního koncového bodu** a pak vyberte **+ privátní koncový bod**.
+1. V podokně **vytvořit prostředek** zvolte **Služba Batch** a pak vyberte **vytvořit** .
+2. Na kartě **základy** zadejte předplatné, skupinu prostředků, oblast a název účtu Batch a potom vyberte **Další: Upřesnit** .
+3. Na kartě **Upřesnit** nastavte přístup k **veřejné síti** na **zakázaný** .
+4. V **Nastavení** vyberte **připojení privátního koncového bodu** a pak vyberte **+ privátní koncový bod** .
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Připojení privátního koncového bodu":::
-5. V podokně **základy** zadejte nebo vyberte předplatné, skupinu prostředků, název prostředku privátního koncového bodu a podrobnosti oblasti a potom vyberte **Další: prostředek**.
-6. V podokně **prostředek** nastavte **typ prostředku** na **Microsoft.Batch/batchAccounts**. Vyberte účet privátní dávky, ke kterému chcete získat přístup, a potom vyberte **Další: Konfigurace**.
+5. V podokně **základy** zadejte nebo vyberte předplatné, skupinu prostředků, název prostředku privátního koncového bodu a podrobnosti oblasti a potom vyberte **Další: prostředek** .
+6. V podokně **prostředek** nastavte **typ prostředku** na **Microsoft.Batch/batchAccounts** . Vyberte účet privátní dávky, ke kterému chcete získat přístup, a potom vyberte **Další: Konfigurace** .
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Připojení privátního koncového bodu":::
 7. V podokně **Konfigurace** zadejte nebo vyberte tyto informace:
-   - **Virtuální síť**: Vyberte svou virtuální síť.
-   - **Podsíť**: Vyberte svou podsíť.
-   - **Integrace s privátní zónou DNS**: vyberte **Ano**. Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích.
-   - **Privátní DNS zóna**: vyberte privatelink. <region> . batch.azure.com. Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.
-8. Vyberte **zkontrolovat + vytvořit**a potom počkejte, než Azure ověří vaši konfiguraci.
-9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně**, vyberte **Vytvořit**.
+   - **Virtuální síť** : Vyberte svou virtuální síť.
+   - **Podsíť** : Vyberte svou podsíť.
+   - **Integrace s privátní zónou DNS** : vyberte **Ano** . Abyste mohli soukromě propojit s vaším soukromým koncovým bodem, budete potřebovat záznam DNS. Doporučujeme integrovat privátní koncový bod s privátní zónou DNS. Můžete také použít vlastní servery DNS nebo vytvořit záznamy DNS pomocí hostitelských souborů na virtuálních počítačích.
+   - **Privátní DNS zóna** : vyberte privatelink. \<region\> . batch.azure.com. Privátní zóna DNS je určena automaticky. Nemůžete ho změnit pomocí Azure Portal.
+8. Vyberte **zkontrolovat + vytvořit** a potom počkejte, než Azure ověří vaši konfiguraci.
+9. Jakmile se zobrazí zpráva **Ověření proběhlo úspěšně** , vyberte **Vytvořit** .
 
 Po zřízení privátního koncového bodu můžete k účtu Batch přistupovat z virtuálních počítačů ve stejné virtuální síti pomocí privátního koncového bodu. Postup zobrazení IP adresy z Azure Portal:
 
-1. Vyberte **Všechny prostředky**.
+1. Vyberte **Všechny prostředky** .
 2. Vyhledejte privátní koncový bod, který jste vytvořili dříve.
 3. Vyberte kartu **Přehled** a zobrazte tak nastavení DNS a IP adresy.
 

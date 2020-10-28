@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0484d846501ef20e5d474668c45324452d0c8fc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418231"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638223"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopírování dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 
@@ -47,7 +47,7 @@ Pro propojenou službu Azure Kognitivní hledání se podporují tyto vlastnosti
 | typ | Vlastnost Type musí být nastavená na: **AzureSearch** . | Ano |
 | url | Adresa URL služby vyhledávání | Ano |
 | key | Klíč správce pro vyhledávací službu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 > [!IMPORTANT]
 > Když kopírujete data z cloudového úložiště dat do indexu vyhledávání, v propojené službě Azure Kognitivní hledání musíte odkazovat Azure Integration Runtime s explicitní oblastí v connactVia. Nastavte oblast jako tu, kde se nachází vaše vyhledávací služba. Další informace o [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime).
@@ -110,13 +110,13 @@ Pokud chcete kopírovat data do Azure Kognitivní hledání, podporují se tyto 
 
 ### <a name="azure-cognitive-search-as-sink"></a>Azure Kognitivní hledání jako jímka
 
-Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink**. V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data do Azure Kognitivní hledání, nastavte typ zdroje v aktivitě kopírování na **AzureSearchIndexSink** . V části **jímka** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Povinné |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **AzureSearchIndexSink** . | Ano |
-| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání**. | No |
-| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | No |
+| writeBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **Merge** (výchozí) a **nahrání** . | Ne |
+| writeBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) .<br/><br/>Povolené hodnoty jsou: celé číslo 1 až 1 000; Výchozí hodnota je 1000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 
@@ -124,10 +124,10 @@ AzureSearchSink upsertuje při zápisu dat. Jinými slovy, když při psaní dok
 
 AzureSearchSink poskytuje následující dvě chování Upsert (pomocí sady AzureSearch SDK):
 
-- **Merge**: kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
-- **Nahrání**: nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
+- **Merge** : kombinovat všechny sloupce v novém dokumentu s existujícím. U sloupců s hodnotou null v novém dokumentu je zachována hodnota existující.
+- **Nahrání** : nový dokument nahradí stávající. Pro sloupce, které nejsou zadány v novém dokumentu, je hodnota nastavena na hodnotu null, zda je v existujícím dokumentu hodnota jiná než null, nebo ne.
 
-Výchozí chování je **sloučeno**.
+Výchozí chování je **sloučeno** .
 
 ### <a name="writebatchsize-property"></a>Vlastnost WriteBatchSize
 
@@ -180,7 +180,7 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 | Pole řetězců | N |
 | GeographyPoint | N |
 
-V současné době nejsou podporovány jiné datové typy, například ComplexType. Úplný seznam podporovaných datových typů Azure Kognitivní hledání najdete v tématu [podporované datové typy (Azure kognitivní hledání)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
+V současné době nejsou podporovány jiné datové typy, například ComplexType. Úplný seznam podporovaných datových typů Azure Kognitivní hledání najdete v tématu [podporované datové typy (Azure kognitivní hledání)](/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Další kroky
 Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

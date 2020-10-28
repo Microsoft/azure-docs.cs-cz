@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83691261"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638002"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Plánování a Správa nákladů na Azure Data Factory
 
@@ -56,15 +56,15 @@ Nyní můžete do cenové kalkulačky služby ADF (DIÚ) zapojte 30 spuštění 
 
 ## <a name="use-budgets-and-cost-alerts"></a>Použití rozpočtů a upozornění na náklady
 
-Pro účely řízení nákladů můžete vytvořit [rozpočty](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets) a nastavit upozornění, která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů.  Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů.  Když vytvoříte rozpočet, můžete to udělat buď na úrovni předplatného, nebo s nižší členitosti přidáním dalších filtrů, jako je ID prostředku a název měřiče.  Nemůžete ale vytvářet rozpočty pro jednotlivé kanály v rámci továrny.
+Pro účely řízení nákladů můžete vytvořit [rozpočty](../cost-management-billing/costs/tutorial-acm-create-budgets.md) a nastavit upozornění, která účastníky automaticky upozorňují na anomálie a nebezpečí nadměrných výdajů.  Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů.  Když vytvoříte rozpočet, můžete to udělat buď na úrovni předplatného, nebo s nižší členitosti přidáním dalších filtrů, jako je ID prostředku a název měřiče.  Nemůžete ale vytvářet rozpočty pro jednotlivé kanály v rámci továrny.
 
 ## <a name="monitor-costs-at-factory-level"></a>Monitorování nákladů na úrovni továrny
 
-Při zahájení používání Azure Data Factory můžete zobrazit náklady vzniklé v podokně [Analýza nákladů](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) v Azure Portal.
+Při zahájení používání Azure Data Factory můžete zobrazit náklady vzniklé v podokně [Analýza nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md) v Azure Portal.
 
-1. Chcete-li zobrazit [analýzu nákladů](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis), otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte možnost **otevřít analýzu nákladů**.
+1. Chcete-li zobrazit [analýzu nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md), otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte možnost **otevřít analýzu nákladů** .
 2. Výchozí zobrazení zobrazuje akumulované náklady na aktuální měsíc.  Můžete přepnout na jiný časový rozsah a jinou členitost, například denně nebo měsíčně.
-3. Chcete-li zúžit náklady na jednu službu, například Azure Data Factory, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby**.  Pak ze seznamu zvolte **Azure Data Factory v2** .
+3. Chcete-li zúžit náklady na jednu službu, například Azure Data Factory, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby** .  Pak ze seznamu zvolte **Azure Data Factory v2** .
 4. Můžete přidat další filtry, abyste mohli analyzovat náklady na konkrétní instanci továrny a konkrétní členitost měřičů ADF.
 
    ![Analýza nákladů](media/plan-manage-costs/cost-analysis.png)
@@ -81,7 +81,7 @@ Když kliknete na tlačítko **spotřebovat** vedle názvu kanálu, zobrazí se 
 
 ![Podrobnosti o spotřebě kanálu](media/plan-manage-costs/pipeline-consumption-details.png)
 
-Zobrazení spotřeba za běhu znázorňuje množství spotřebované na jednotlivých měřičích ADF pro konkrétní spuštění kanálu, ale nezobrazuje skutečnou cenu, protože se vám fakturovaná částka závisí na typu účtu Azure a typu používané měny.  Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data).
+Zobrazení spotřeba za běhu znázorňuje množství spotřebované na jednotlivých měřičích ADF pro konkrétní spuštění kanálu, ale nezobrazuje skutečnou cenu, protože se vám fakturovaná částka závisí na typu účtu Azure a typu používané měny.  Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](../cost-management-billing/costs/understand-cost-mgt-data.md).
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>Monitorování spotřeby na úrovni aktivity – spuštění
 Jakmile pochopíte agregovanou spotřebu na úrovni běhu s kanálem, existují scénáře, kdy potřebujete dále přejít k podrobnostem a určit, která z nich je nejdražších aktivit v rámci kanálu.
@@ -101,5 +101,5 @@ A tady je ukázka z běhu aktivity toku dat mapování:
 Další informace o tom, jak ceny fungují Azure Data Factory, najdete v následujících článcích:
 
 - [Stránka s cenami Azure Data Factory](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [Principy Azure Data Factory příklady](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [Principy Azure Data Factory příklady](./pricing-concepts.md)
 - [Azure Data Factory cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

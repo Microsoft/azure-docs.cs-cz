@@ -1,20 +1,20 @@
 ---
 title: Ukázkové ovládací prvky FedRAMP High detailal
 description: Mapování ovládacího prvku pro ukázku FedRAMP High detailal. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 07/31/2020
+ms.date: 10/26/2020
 ms.topic: sample
-ms.openlocfilehash: 99fcb41e1961cbf7def766249940023eb2f330f7
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0b729046d44d76f71dfb520db16e6fd268d421c9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929349"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669370"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Mapování ovládacího prvku ukázky FedRAMP High detailal
 
 Následující článek podrobně popisuje, jak se vzor Azure modrotisky FedRAMP High Details mapuje na ovládací prvky FedRAMP High. Další informace o ovládacích prvcích najdete v tématu [základní informace o ovládacích prvcích zabezpečení FedRAMP](https://www.fedramp.gov/).
 
-Následující mapování jsou k ovládacím prvkům **FedRAMP High** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[ verzi Preview \] : audit FedRAMP High Controls a nasaďte specifická rozšíření virtuálních počítačů, aby podporovaly** integrovanou iniciativu zásad pro požadavky na audit.
+Následující mapování jsou k ovládacím prvkům **FedRAMP High** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve **\[ verzi Preview \] : audit FedRAMP High Controls a nasaďte specifická rozšíření virtuálních počítačů, aby podporovaly** integrovanou iniciativu zásad pro požadavky na audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-h/control-mapping.md).

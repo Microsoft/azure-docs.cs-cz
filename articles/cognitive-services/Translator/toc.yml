@@ -4,10 +4,10 @@
   items:
     - name: Co je Translator?
       href: translator-info-overview.md
-    - name: Rychlé zprovoznění
+    - name: Rychlý start
       href: quickstart-translator.md
     - name: Podpora jazyků
-      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+      href: language-support.md
     - name: Kurzy
       items:
         - name: 'Vytvoření aplikace WPF pro Translator, C#'

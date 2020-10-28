@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 55d8b5ebdfb226247f8a500f36e6df3ae02ea58a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb83be59a3ccb11ea8bbd88307596937caa2b354
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619041"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638291"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>ID adresy modulu Azure Integration Runtime
 
@@ -31,12 +31,12 @@ IP adresy, které Azure Integration Runtime používá, závisí na oblasti, ve 
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP adresy: konkrétní oblasti
 
-Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní oblasti Azure, ve které se vaše prostředky nacházejí. Z [odkazu na stažení rozsahu IP adres značek služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)můžete získat seznam ROZSAHŮ IP adres. Pokud je například oblast Azure **AustraliaEast**, můžete získat seznam ROZSAHŮ IP adres z objektu **DataFactory. AustraliaEast**.
+Povolte provoz z IP adres uvedených pro Azure Integration runtime v konkrétní oblasti Azure, ve které se vaše prostředky nacházejí. Z [odkazu na stažení rozsahu IP adres značek služby](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)můžete získat seznam ROZSAHŮ IP adres. Pokud je například oblast Azure **AustraliaEast** , můžete získat seznam ROZSAHŮ IP adres z objektu **DataFactory. AustraliaEast** .
 
 
 ## <a name="known-issue-with-azure-storage"></a>Známý problém s Azure Storage
 
-* Při připojování k účtu Azure Storage nemají pravidla sítě IP žádný vliv na požadavky pocházející z prostředí Azure Integration runtime ve stejné oblasti jako účet úložiště. Další podrobnosti najdete v [tomto článku](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range). 
+* Při připojování k účtu Azure Storage nemají pravidla sítě IP žádný vliv na požadavky pocházející z prostředí Azure Integration runtime ve stejné oblasti jako účet úložiště. Další podrobnosti najdete v [tomto článku](../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range). 
 
   Místo toho doporučujeme [při připojování k Azure Storage používat důvěryhodné služby](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993). 
 

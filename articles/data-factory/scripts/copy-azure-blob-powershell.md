@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: cd8c8450d6e747e9789c785d1c594532b94a36cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9550556aa022a9211072fd4c5fb18acb4ee7882e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443071"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637985"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Použití PowerShellu k vytvoření kanálu Data Factory pro kopírování dat v cloudu
 
@@ -25,8 +25,8 @@ Tento ukázkový skript PowerShellu vytvoří v Azure Data Factory kanál, kter�
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
-* **Účet Azure Storage**. Úložiště objektů blob použijete jako úložiště dat pro **zdroj** i **jímku**. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md) při jeho vytváření. 
+## <a name="prerequisites"></a>Předpoklady
+* **Účet Azure Storage** . Úložiště objektů blob použijete jako úložiště dat pro **zdroj** i **jímku** . Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md) při jeho vytváření. 
 * Vytvořte **kontejner objektů blob** ve službě Blob Storage, v tomto kontejneru vytvořte vstupní **složku** a uložte do ní nějaké soubory. Pomocí nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) , se můžete připojit k úložišti objektů BLOB v Azure, vytvořit kontejner objektů blob, nahrát vstupní soubor a ověřit výstupní soubor.
 
 ## <a name="sample-script"></a>Ukázkový skript
@@ -68,6 +68,6 @@ Tento skript používá následující příkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [ukázkách Azure Data Factory PowerShellu](../samples-powershell.md).

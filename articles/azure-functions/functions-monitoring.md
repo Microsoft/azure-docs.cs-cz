@@ -4,13 +4,13 @@ description: Naučte se používat Azure Application Insights s Azure Functions 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2
-ms.openlocfilehash: 85851c896d32d2e15efa0a39260af4331f99f862
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js
+ms.openlocfilehash: 87c31df6ecb92acd5bedaee274f9886383e5c617
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217146"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668723"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -33,7 +33,7 @@ Pokud povolíte Application Insights během vývoje, můžete během testování
 
 ## <a name="application-insights-integration"></a>Integrace Application Insights
 
-Při vytváření aplikace Function App se obvykle vytváří instance Application Insights. V takovém případě je klíč instrumentace vyžadovaný pro integraci již nastaven jako nastavení aplikace s názvem *APPINSIGHTS_INSTRUMENTATIONKEY*. Pokud z nějakého důvodu nemá vaše aplikace Functions nastaven klíč instrumentace, je potřeba [Povolit integraci Application Insights](configure-monitoring.md#enable-application-insights-integration).  
+Při vytváření aplikace Function App se obvykle vytváří instance Application Insights. V takovém případě je klíč instrumentace vyžadovaný pro integraci již nastaven jako nastavení aplikace s názvem *APPINSIGHTS_INSTRUMENTATIONKEY* . Pokud z nějakého důvodu nemá vaše aplikace Functions nastaven klíč instrumentace, je potřeba [Povolit integraci Application Insights](configure-monitoring.md#enable-application-insights-integration).  
 
 ## <a name="collecting-telemetry-data"></a>Shromažďování dat telemetrie
 
@@ -95,9 +95,9 @@ Při vývoji aplikace často chcete zjistit, co se do protokolů zapisuje témě
 
 Existují dva způsoby, jak zobrazit datový proud dat protokolu generovaných spuštěním vaší funkce.
 
-* **Integrované streamování protokolů**: platforma App Service umožňuje zobrazit datový proud souborů protokolu aplikace. Tento datový proud je stejný jako výstup, který se zobrazuje při ladění funkcí během [místního vývoje](functions-develop-local.md) a při použití karty **test** na portálu. Zobrazí se všechny informace založené na protokolu. Další informace najdete v tématu [protokoly streamování](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Tato metoda streamování podporuje pouze jednu instanci a nelze ji použít s aplikací spuštěnou v systému Linux v plánu spotřeby.
+* **Integrované streamování protokolů** : platforma App Service umožňuje zobrazit datový proud souborů protokolu aplikace. Tento datový proud je stejný jako výstup, který se zobrazuje při ladění funkcí během [místního vývoje](functions-develop-local.md) a při použití karty **test** na portálu. Zobrazí se všechny informace založené na protokolu. Další informace najdete v tématu [protokoly streamování](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Tato metoda streamování podporuje pouze jednu instanci a nelze ji použít s aplikací spuštěnou v systému Linux v plánu spotřeby.
 
-* **Live Metrics Stream**: když je aplikace funkcí [připojená k Application Insights](configure-monitoring.md#enable-application-insights-integration), můžete zobrazit data protokolu a další metriky téměř v reálném čase v Azure Portal pomocí [Live Metrics Stream](../azure-monitor/app/live-stream.md). Tuto metodu použijte, když chcete monitorovat funkce běžící na více instancích nebo v systému Linux v plánu spotřeby. Tato metoda používá [ukázková data](configure-monitoring.md#configure-sampling).
+* **Live Metrics Stream** : když je aplikace funkcí [připojená k Application Insights](configure-monitoring.md#enable-application-insights-integration), můžete zobrazit data protokolu a další metriky téměř v reálném čase v Azure Portal pomocí [Live Metrics Stream](../azure-monitor/app/live-stream.md). Tuto metodu použijte, když chcete monitorovat funkce běžící na více instancích nebo v systému Linux v plánu spotřeby. Tato metoda používá [ukázková data](configure-monitoring.md#configure-sampling).
 
 Streamy protokolů je možné zobrazit na portálu i ve většině místních vývojových prostředí. Další informace o tom, jak povolit streamy protokolů, najdete [v tématu Povolení protokolů spouštění streamování v Azure Functions](streaming-logs.md).
 

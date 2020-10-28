@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: db52f7f4853789b6d7f4290d39f8adc882432945
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b4cddae25bbf7ff113d2ea67700e28eb81c0e7c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517563"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Azure Active Directory integrace se softwarem pro produktivitu Wizergos
 
@@ -61,13 +61,13 @@ Pokud chcete nakonfigurovat integraci Wizergos produktivity softwaru do služby 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Wizergos software pro zvýšení produktivity**, vyberte **Wizergos software pro produktivitu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Wizergos software pro zvýšení produktivity** , vyberte **Wizergos software pro produktivitu** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Wizergos produktivní software v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí softwaru Wizergos pro produktivitu na základě testovacího uživatele s názvem **Britta Simon**.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí softwaru Wizergos pro produktivitu na základě testovacího uživatele s názvem **Britta Simon** .
 Aby jednotné přihlašování fungovalo, je potřeba zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Wizergos kancelářském softwaru.
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Wizergos kancelářského softwaru, musíte dokončit tyto stavební bloky:
@@ -85,7 +85,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos softwaru pro produktivitu, proveďte následující kroky:
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarové aplikace Wizergos** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **softwarové aplikace Wizergos** vyberte **jednotné přihlašování** .
 
     ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
@@ -121,17 +121,17 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
 1. V jiném okně webového prohlížeče se přihlaste k tenantovi Wizergos produktivity softwaru jako správce.
 
-2. V nabídce hamburgerovou "vyberte **správce**.
+2. V nabídce hamburgerovou "vyberte **správce** .
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
+    ![Snímek obrazovky se zobrazí ikona správce vybraná z nabídky.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_000.png)
 
-3. V nabídce na stránce pro správu na levé straně vyberte **ověřování** a klikněte na **Azure AD**.
+3. V nabídce na stránce pro správu na levé straně vyberte **ověřování** a klikněte na **Azure AD** .
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
+    ![Snímek obrazovky zobrazuje Azure A D vybraný z ověřování.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_002.png)
 
 4. V části **ověřování** proveďte následující kroky.
 
-    ![Konfigurovat jednu Sign-On na straně aplikace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
+    ![Snímek obrazovky se zobrazí stránka ověřování, kde můžete zadat hodnoty, které jsou popsány.](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_003.png)
     
     a. Klikněte na tlačítko **nahrát** a nahrajte stažený certifikát z Azure AD.
     
@@ -147,7 +147,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Wizergos
 
 Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé** .
 
     ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
@@ -159,27 +159,27 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon** .
   
     b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension . Například BrittaSimon@contoso.com.
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Vytvořit** .
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k softwaru Wizergos produktivity.
 
-1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte software pro **Wizergos produktivity**.
+1. V Azure Portal vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte software pro **Wizergos produktivity** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Wizergos software pro zvýšení produktivity**.
+2. V seznamu aplikace vyberte **Wizergos software pro zvýšení produktivity** .
 
     ![Odkaz na software pro produktivitu Wizergos v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny** .
 
     ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 

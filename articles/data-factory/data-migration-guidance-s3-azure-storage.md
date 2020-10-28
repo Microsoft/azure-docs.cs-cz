@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616920"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638036"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Migrace dat ze služby Amazon S3 do Azure Storage pomocí Azure Data Factory 
 
@@ -41,9 +41,9 @@ Zákazníci úspěšně migrovali petabajty dat sestávající ze stovek milion�
 
 Obrázek výše znázorňuje, jak můžete dosáhnout velkých rychlostí přesunu dat prostřednictvím různých úrovní paralelismu:
  
-- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly. 
+- Jediná aktivita kopírování může využít výhod škálovatelných výpočetních prostředků: při použití Azure Integration Runtime můžete pro každou aktivitu kopírování v rámci serveru zadat [až 256 DIUs](./copy-activity-performance.md#data-integration-units) . Při použití Integration Runtime v místním prostředí můžete ručně navýšení kapacity počítače nebo horizontální navýšení kapacity na více počítačů ([až 4 uzly](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) a jedna aktivita kopírování bude rozdělit svou sadu souborů napříč všemi uzly. 
 - Jedna aktivita kopírování čte z a zapisuje do úložiště dat pomocí více vláken. 
-- Tok řízení ADF může spustit více aktivit kopírování paralelně, například pomocí [pro každou smyčku](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
+- Tok řízení ADF může spustit více aktivit kopírování paralelně, například pomocí [pro každou smyčku](./control-flow-for-each-activity.md). 
 
 ## <a name="resilience"></a>Odolnost
 
@@ -81,10 +81,10 @@ Migrovat data prostřednictvím privátního propojení:
 
 ### <a name="authentication-and-credential-management"></a>Ověřování a Správa přihlašovacích údajů 
 
-- K ověření v účtu Amazon S3 musíte použít [přístupová klávesu pro účet IAM](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
-- Pro připojení k Azure Blob Storage se podporuje víc typů ověřování.  Použití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) se důrazně doporučuje: postavené na automaticky spravované identifikaci ADF ve službě Azure AD umožňuje konfigurovat kanály bez zadání přihlašovacích údajů v definici propojené služby.  Případně můžete provést ověření v Azure Blob Storage pomocí [instančního objektu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [sdíleného přístupového podpisu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)nebo [klíče účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication). 
-- Pro připojení k Azure Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Použití [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) se důrazně doporučuje, i když je možné také použít [instanční objekt](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) nebo [klíč účtu úložiště](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) . 
-- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně se doporučuje [ukládat přihlašovací údaje v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav propojených služeb ADF.  Toto je také jedním z [osvědčených postupů pro CI/CD](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
+- K ověření v účtu Amazon S3 musíte použít [přístupová klávesu pro účet IAM](./connector-amazon-simple-storage-service.md#linked-service-properties). 
+- Pro připojení k Azure Blob Storage se podporuje víc typů ověřování.  Použití [spravovaných identit pro prostředky Azure](./connector-azure-blob-storage.md#managed-identity) se důrazně doporučuje: postavené na automaticky spravované identifikaci ADF ve službě Azure AD umožňuje konfigurovat kanály bez zadání přihlašovacích údajů v definici propojené služby.  Případně můžete provést ověření v Azure Blob Storage pomocí [instančního objektu](./connector-azure-blob-storage.md#service-principal-authentication), [sdíleného přístupového podpisu](./connector-azure-blob-storage.md#shared-access-signature-authentication)nebo [klíče účtu úložiště](./connector-azure-blob-storage.md#account-key-authentication). 
+- Pro připojení k Azure Data Lake Storage Gen2 se podporuje taky více typů ověřování.  Použití [spravovaných identit pro prostředky Azure](./connector-azure-data-lake-storage.md#managed-identity) se důrazně doporučuje, i když je možné také použít [instanční objekt](./connector-azure-data-lake-storage.md#service-principal-authentication) nebo [klíč účtu úložiště](./connector-azure-data-lake-storage.md#account-key-authentication) . 
+- Pokud nepoužíváte spravované identity pro prostředky Azure, důrazně se doporučuje [ukládat přihlašovací údaje v Azure Key Vault](./store-credentials-in-key-vault.md) , aby bylo snazší centrálně spravovat a střídat klíče bez nutnosti úprav propojených služeb ADF.  Toto je také jedním z [osvědčených postupů pro CI/CD](./continuous-integration-deployment.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Migrace dat počátečního snímku 
 
@@ -138,16 +138,16 @@ Tady je odhadovaná cena na základě výše uvedených předpokladů:
 ![Snímek obrazovky tabulky zobrazuje odhadovanou cenu.](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>Další odkazy 
-- [Konektor služby Amazon Simple Storage Service Connector](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Konektor Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Konektor Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Průvodce laděním výkonu aktivity kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Vytváření a konfigurace Integration Runtime pro místní hostování](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
-- [Aspekty zabezpečení přesunu dat](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
-- [Uložení přihlašovacích údajů v Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Kopírovat soubor postupně na základě názvu souboru s oddíly](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
-- [Kopírování nových a změněných souborů na základě LastModifiedDate](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
+- [Konektor služby Amazon Simple Storage Service Connector](./connector-amazon-simple-storage-service.md)
+- [Konektor Azure Blob Storage](./connector-azure-blob-storage.md)
+- [Konektor Azure Data Lake Storage Gen2](./connector-azure-data-lake-storage.md)
+- [Průvodce laděním výkonu aktivity kopírování](./copy-activity-performance.md)
+- [Vytváření a konfigurace Integration Runtime pro místní hostování](./create-self-hosted-integration-runtime.md)
+- [Vysoce hostované prostředí Integration runtime – HA a škálovatelnost](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)
+- [Aspekty zabezpečení přesunu dat](./data-movement-security-considerations.md)
+- [Uložení přihlašovacích údajů v Azure Key Vault](./store-credentials-in-key-vault.md)
+- [Kopírovat soubor postupně na základě názvu souboru s oddíly](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
+- [Kopírování nových a změněných souborů na základě LastModifiedDate](./tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 - [Stránka s cenami ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>Šablona

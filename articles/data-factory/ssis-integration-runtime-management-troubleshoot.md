@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172022"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637917"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Řešení potíží se správou SSIS Integration Runtime v Azure Data Factory
 
@@ -82,7 +82,7 @@ Tento druh chybové zprávy vypadá takto: "neplatný název objektu catalog.cat
 
 ## <a name="custom-setup-issues"></a>Problémy s vlastním nastavením
 
-Vlastní instalace nabízí rozhraní pro přidání vlastních pokynů k instalaci během zřizování a rekonfigurace prostředí SSIS IR. Další informace najdete v tématu [Přizpůsobení instalace prostředí Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+Vlastní instalace nabízí rozhraní pro přidání vlastních pokynů k instalaci během zřizování a rekonfigurace prostředí SSIS IR. Další informace najdete v tématu [Přizpůsobení instalace prostředí Azure-SSIS Integration Runtime](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 Ujistěte se, že váš kontejner obsahuje pouze potřebné soubory vlastní instalace. Všechny soubory v kontejneru se stáhnou do pracovního uzlu prostředí SSIS IR. Před spuštěním skriptu vlastní instalace v prostředí SSIS IR doporučujeme skript otestovat na místním počítači a opravit případné problémy s jeho spuštěním.
 
@@ -114,7 +114,7 @@ Tato chyba znamená, že došlo k selhání při pokusu o nahrání protokolů s
 
 ## <a name="virtual-network-configuration"></a>Konfigurace virtuální sítě
 
-Když připojíte prostředí SSIS IR k virtuální síti Azure, SSIS IR bude využívat virtuální síť v rámci předplatného uživatele. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Když připojíte prostředí SSIS IR k virtuální síti Azure, SSIS IR bude využívat virtuální síť v rámci předplatného uživatele. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](./join-azure-ssis-integration-runtime-virtual-network.md).
 Po úspěšném spuštění SSIS IR dojde k problémům se síťovým připojením a můžete se pokusit diagnostikovat problém pomocí [Nástroje pro diagnostiku připojení](ssis-integration-runtime-diagnose-connectivity-faq.md) .
 Pokud dojde k problému, který souvisí s virtuální sítí, zobrazí se některá z následujících chyb.
 
@@ -141,7 +141,7 @@ Tyto chyby znamenají, že virtuální síť neexistuje, služba Azure Batch k n
 
 Tento druh chybové zprávy může vypadat takto: "nepovedlo se zřídit Integration Runtime ve virtuální síti. Pokud jsou nakonfigurovaná nastavení server DNS nebo NSG, ujistěte se, že je server DNS přístupný a že je NSG správně nakonfigurovaný. "
 
-V této situaci pravděpodobně máte přizpůsobenou konfiguraci nastavení serveru DNS nebo skupiny zabezpečení sítě, což brání překladu názvu serveru Azure, který vyžaduje prostředí SSIS IR, nebo přístupu k tomuto serveru. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
+V této situaci pravděpodobně máte přizpůsobenou konfiguraci nastavení serveru DNS nebo skupiny zabezpečení sítě, což brání překladu názvu serveru Azure, který vyžaduje prostředí SSIS IR, nebo přístupu k tomuto serveru. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ Když zastavíte prostředí SSIS IR, všechny prostředky související s virtu
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-K této chybě dochází, když je prostředí IR spuštěné, a znamená, že prostředí IR přešlo do špatného stavu. Tato chyba je vždy způsobená změnou v konfiguraci serveru DNS nebo skupiny zabezpečení sítě, která brání prostředí SSIS IR v připojení k potřebné službě. Vzhledem k tomu, že konfiguraci serveru DNS a skupiny zabezpečení sítě řídí zákazník, musí zákazník opravit blokující problémy na své straně. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
+K této chybě dochází, když je prostředí IR spuštěné, a znamená, že prostředí IR přešlo do špatného stavu. Tato chyba je vždy způsobená změnou v konfiguraci serveru DNS nebo skupiny zabezpečení sítě, která brání prostředí SSIS IR v připojení k potřebné službě. Vzhledem k tomu, že konfiguraci serveru DNS a skupiny zabezpečení sítě řídí zákazník, musí zákazník opravit blokující problémy na své straně. Další informace najdete v tématu [Konfigurace virtuální sítě SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md). Pokud stále máte problémy, obraťte se na tým podpory pro Azure Data Factory.
 
 ## <a name="static-public-ip-addresses-configuration"></a>Konfigurace statických veřejných IP adres
 
-Když se připojíte k Azure-SSIS IR ke službě Azure Virtual Network, můžete také využít vlastní statické veřejné IP adresy pro infračervený přenos, aby IR mohl přistupovat ke zdrojům dat, které omezují přístup ke konkrétním IP adresám. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+Když se připojíte k Azure-SSIS IR ke službě Azure Virtual Network, můžete také využít vlastní statické veřejné IP adresy pro infračervený přenos, aby IR mohl přistupovat ke zdrojům dat, které omezují přístup ke konkrétním IP adresám. Další informace najdete v tématu [Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti](./join-azure-ssis-integration-runtime-virtual-network.md).
 
 Kromě výše uvedených potíží s virtuální sítí můžete také splnit problémy související se statickými veřejnými IP adresami. Nápovědu najdete v následujících chybách.
 
@@ -174,7 +174,7 @@ K této chybě může dojít z nejrůznějších důvodů při spuštění Azure
 | Zadaná statická veřejná IP adresa se už používá. Zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě nepoužité. | Měli byste vybrat dvě nepoužívané statické veřejné IP adresy nebo odebrat aktuální odkazy na zadanou veřejnou IP adresu a pak restartovat Azure-SSIS IR. |
 | Zadaná statická veřejná IP adresa nemá žádný název DNS, zadejte prosím pro Azure-SSIS Integration Runtime dva názvy DNS. | Název DNS veřejné IP adresy můžete nastavit v Azure Portal, jak ukazuje následující obrázek. Konkrétní kroky jsou následující: (1) otevřít Azure Portal a přejít na stránku prostředku této veřejné IP adresy; (2) vyberte **konfigurační** oddíl a nastavte název DNS a pak klikněte na tlačítko **Uložit** . (3) restartujte Azure-SSIS IR. |
 | Zadaná virtuální síť VNet a statické veřejné IP adresy pro váš Azure-SSIS Integration Runtime musí být ve stejném umístění. | V souladu s požadavky sítě Azure by statická veřejná IP adresa a virtuální síť měla být ve stejném umístění a předplatném. Poskytněte prosím dvě platné statické veřejné IP adresy a restartujte Azure-SSIS IR. |
-| Poskytnutá statická veřejná IP adresa je základní, zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě standardní. | Nápovědu najdete v [části SKU veřejné IP adresy](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) . |
+| Poskytnutá statická veřejná IP adresa je základní, zadejte prosím pro svůj Azure-SSIS Integration Runtime dvě standardní. | Nápovědu najdete v [části SKU veřejné IP adresy](../virtual-network/public-ip-addresses.md#sku) . |
 
 ![Prostředí Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

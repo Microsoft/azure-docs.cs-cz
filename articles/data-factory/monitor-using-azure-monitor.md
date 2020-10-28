@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 6862fa6c9dfa3e8ba26d6f07dc1d9096cf16f092
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638087"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Monitorování a Data Factory výstrah pomocí Azure Monitor
 
@@ -28,15 +28,15 @@ Azure Monitor poskytuje základní metriky a protokoly infrastruktury na základ
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
-Další informace najdete v tématu [přehled Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor).
+Další informace najdete v tématu [přehled Azure monitor](../azure-monitor/overview.md).
 
 ## <a name="keeping-azure-data-factory-metrics-and-pipeline-run-data"></a>Udržování metrik Azure Data Factory a spuštění dat kanálu
 
 Data Factory ukládá data o běhu kanálů jenom za 45 dní. Použijte Azure Monitor, pokud chcete uchovávat data delší dobu. S monitorováním můžete směrovat diagnostické protokoly pro analýzu na více různých cílů.
 
-* **Účet úložiště**: uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Nastavení diagnostiky můžete použít k určení doby uchování ve dnech.
-* **Centrum událostí**: Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do řešení partner Service nebo vlastní analýzy, jako je Power BI.
-* **Log Analytics**: Analyzujte protokoly pomocí Log Analytics. Data Factory integrace s Azure Monitor je užitečná v následujících scénářích:
+* **Účet úložiště** : uložte diagnostické protokoly do účtu úložiště pro auditování nebo ruční kontrolu. Nastavení diagnostiky můžete použít k určení doby uchování ve dnech.
+* **Centrum událostí** : Streamujte protokoly do Azure Event Hubs. Protokoly se stanou vstupem do řešení partner Service nebo vlastní analýzy, jako je Power BI.
+* **Log Analytics** : Analyzujte protokoly pomocí Log Analytics. Data Factory integrace s Azure Monitor je užitečná v následujících scénářích:
   * Chcete zapisovat komplexní dotazy na bohatou sadu metrik, která je publikována nástrojem Data Factory k monitorování. Můžete vytvářet vlastní výstrahy na těchto dotazech prostřednictvím monitorování.
   * Chcete monitorovat napříč datovými továrnami. Data z několika datových továrn můžete směrovat do jednoho pracovního prostoru monitorování.
 
@@ -46,19 +46,19 @@ Můžete použít také účet úložiště nebo obor názvů centra událostí,
 
 Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
 
-1. Na portálu klikněte na monitorování. Vyberte **Nastavení**  >  **diagnostiky**.
+1. Na portálu klikněte na monitorování. Vyberte **Nastavení**  >  **diagnostiky** .
 
 1. Vyberte objekt pro vytváření dat, pro který chcete nastavit nastavení diagnostiky.
 
-1. Pokud ve vybrané datové továrně žádná nastavení neexistují, budete vyzváni k vytvoření nastavení. Vyberte **zapnout diagnostiku**.
+1. Pokud ve vybrané datové továrně žádná nastavení neexistují, budete vyzváni k vytvoření nastavení. Vyberte **zapnout diagnostiku** .
 
    ![Vytvořit nastavení diagnostiky, pokud neexistuje žádné nastavení](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Pokud v datové továrně existují nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná u objektu pro vytváření dat. Vyberte **Přidat nastavení diagnostiky**.
+   Pokud v datové továrně existují nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná u objektu pro vytváření dat. Vyberte **Přidat nastavení diagnostiky** .
 
    ![Pokud existují nastavení, přidejte nastavení diagnostiky.](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics**a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics**.
+1. Zadejte název nastavení, vyberte **Odeslat do Log Analytics** a pak vyberte pracovní prostor z **pracovního prostoru Log Analytics** .
 
     * V režimu _diagnostiky Azure_ se protokoly diagnostiky flowují do tabulky _AzureDiagnostics_ .
 
@@ -75,14 +75,14 @@ Vytvořte nebo přidejte nastavení diagnostiky pro datovou továrnu.
 
       Můžete vybrat různé protokoly, které jsou relevantní pro vaše úlohy, pro odeslání do Log Analytics tabulek. Pokud například nepoužíváte služba SSIS (SQL Server Integration Services) (SSIS) vůbec, nemusíte vybírat žádné protokoly SSIS. Pokud chcete protokolovat SSIS Integration Runtime (IR) operace spuštění/zastavení/údržby, můžete vybrat SSIS INFRAČERVENé protokoly. Pokud vyvoláte SSIS spuštění balíčků prostřednictvím T-SQL v SQL Server Management Studio (SSMS), SQL Server agenta nebo jiných určených nástrojů, můžete vybrat protokoly balíčku SSIS. Pokud vyvoláte spouštění balíčků SSIS prostřednictvím aktivit balíčku Execute SSIS v kanálech ADF, můžete vybrat všechny protokoly.
 
-    * Vyberete-li možnost _AllMetrics_, budou k dispozici různé metriky ADF, které vám umožní monitorovat nebo vyvolávat výstrahy, včetně metrik pro aktivity ADF, kanál a triggery spuštění a také pro operace SSIS IR a spuštění balíčku SSIS.
+    * Vyberete-li možnost _AllMetrics_ , budou k dispozici různé metriky ADF, které vám umožní monitorovat nebo vyvolávat výstrahy, včetně metrik pro aktivity ADF, kanál a triggery spuštění a také pro operace SSIS IR a spuštění balíčku SSIS.
 
    ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_. Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
+    > Vzhledem k tomu, že tabulka protokolů Azure nemůže mít více než 500 sloupců, **důrazně doporučujeme** vybrat _režim specifický pro daný prostředek_ . Další informace najdete v tématu [Log Analytics známá omezení](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
 Po chvíli se nové nastavení zobrazí v seznamu nastavení pro tuto datovou továrnu. Diagnostické protokoly se do tohoto pracovního prostoru streamují ihned po vygenerování nových dat událostí. Mezi při vygenerování události a jejím zobrazením v Log Analytics může uplynout až 15 minut.
 
@@ -94,7 +94,7 @@ Toto řešení poskytuje souhrn celkového stavu vašich Data Factory, s možnos
 * Možnost přejít k podrobnostem o spuštění aktivit Data Factory podle typu
 * Souhrn kanálu nejvyšší úrovně Data Factory, chyb aktivit
 
-1. Přejít na **Azure Marketplace**, vyberte **analytický** filtr a vyhledejte **Azure Data Factory Analytics (Preview)** .
+1. Přejít na **Azure Marketplace** , vyberte **analytický** filtr a vyhledejte **Azure Data Factory Analytics (Preview)** .
 
    ![Přejděte na "Azure Marketplace", zadejte "analytický filtr" a vyberte "Azure Data Factory Analytics (Preview").](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -102,7 +102,7 @@ Toto řešení poskytuje souhrn celkového stavu vašich Data Factory, s možnos
 
    ![Podrobnosti o Azure Data Factory Analytics (Preview)](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. Vyberte **vytvořit** a pak vytvořte nebo vyberte **pracovní prostor Log Analytics**.
+1. Vyberte **vytvořit** a pak vytvořte nebo vyberte **pracovní prostor Log Analytics** .
 
    ![Vytváření nového řešení](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Můžete vizualizovat předchozí metriky, zobrazit dotazy za těmito metrikami,
 ![Grafická reprezentace kanálu spouštěná službou Data Factory](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_, _ADFTriggerRun_a _ADFActivityRun_.
+> Azure Data Factory Analytics (Preview) odesílá diagnostické protokoly do cílových tabulek _specifických pro prostředky_ . Můžete zapisovat dotazy z následujících tabulek: _ADFPipelineRun_ , _ADFTriggerRun_ a _ADFActivityRun_ .
 
 ## <a name="data-factory-metrics"></a>Data Factory metriky
 
@@ -155,7 +155,7 @@ Tady jsou některé metriky vydávané Azure Data Factory verze 2:
 | SSISPackageExecutionFailed           | Neúspěšné metriky spuštění balíčku SSIS    | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které selhaly během minutového okna. |
 | SSISPackageExecutionSucceeded        | Úspěšné metriky spuštění balíčku SSIS | Počet    | Celkem                | Celkový počet spuštěných SSIS balíčků, které byly úspěšně dokončeny během minutového okna. |
 
-Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Pokud chcete získat přístup k metrikám, postupujte podle pokynů v [Azure monitor datovou platformu](../azure-monitor/platform/data-platform.md).
 
 > [!NOTE]
 > Emitují se jenom události z dokončených, aktivované aktivity a spuštění kanálu. Probíhající a ladicí běhy **nejsou generovány** . Na druhé straně se generují události ze **všech** spuštění balíčků SSIS, včetně těch, které jsou dokončené a probíhající, bez ohledu na jejich metody vyvolání. Můžete například vyvolat spouštění balíčků na Azure-Enabled SQL Server Data Tools (SSDT), pomocí T-SQL v SSMS, agenta SQL Server nebo jiných určených nástrojů a jako aktivované nebo ladění spuštění aktivit balíčku SSIS v kanálech ADF.
@@ -226,7 +226,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
 * Nahraďte `{resource-id}` ID prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Nastavte `Content-Type` hlavičku na `application/json` .
-* Nastavte autorizační hlavičku na webový token JSON, který jste získali z Azure Active Directory (Azure AD). Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
+* Nastavte autorizační hlavičku na webový token JSON, který jste získali z Azure Active Directory (Azure AD). Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-vs-authorization.md).
 
 ##### <a name="body"></a>Text
 
@@ -346,7 +346,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 * Nahraďte `{api-version}` za `2016-09-01` (Jak velká může být moje znalostní báze?).
 * Nahraďte `{resource-id}` ID prostředku, pro který chcete upravit nastavení diagnostiky. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 * Nastavte `Content-Type` hlavičku na `application/json` .
-* Nastavte autorizační hlavičku na webový token JSON, který jste získali ze služby Azure AD. Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-scenarios.md).
+* Nastavte autorizační hlavičku na webový token JSON, který jste získali ze služby Azure AD. Další informace najdete v tématu [ověřování požadavků](../active-directory/develop/authentication-vs-authorization.md).
 
 ##### <a name="response"></a>Odpověď
 
@@ -397,7 +397,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-Další informace najdete v tématu [nastavení diagnostiky](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
+Další informace najdete v tématu [nastavení diagnostiky](/rest/api/monitor/diagnosticsettings).
 
 ## <a name="schema-of-logs-and-events"></a>Schéma protokolů a událostí
 
@@ -583,7 +583,7 @@ Tady jsou atributy protokolu SSIS a operace spuštění/zastavení/údržby IR.
 
 #### <a name="ssis-event-message-context-log-attributes"></a>Atributy protokolu kontextu zprávy události SSIS
 
-Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostech, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka kontextu zprávy události SSIS Catalog (SSISDB) nebo zobrazení](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) , které zobrazuje hodnoty za běhu mnoha vlastností balíčku SSIS. Vygenerují se, když vyberete `Basic/Verbose` úroveň protokolování a užitečnost pro ladění a kontrolu kompatibility.
+Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostech, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka kontextu zprávy události SSIS Catalog (SSISDB) nebo zobrazení](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) , které zobrazuje hodnoty za běhu mnoha vlastností balíčku SSIS. Vygenerují se, když vyberete `Basic/Verbose` úroveň protokolování a užitečnost pro ladění a kontrolu kompatibility.
 
 ```json
 {
@@ -620,7 +620,7 @@ Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostec
 | **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB          | `1` (1 znamená operace týkající se balíčků, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL) |
 | **contextDepth**           | Řetězec | Hloubka kontextu zprávy události                              | `0` (0 znamená kontext před spuštěním spuštění balíčku, 1 znamená kontext při výskytu chyby a zvyšuje se, jak je kontext dále z chyby) |
 | **packagePath**            | Řetězec | Cesta k objektu balíčku jako zdroj kontextu zprávy události      | `\Package` |
-| **contextType**            | Řetězec | Typ objektu balíčku jako zdroj kontextu zprávy události      | `60`(Další informace naleznete v tématu [Další typy kontextu](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
+| **contextType**            | Řetězec | Typ objektu balíčku jako zdroj kontextu zprávy události      | `60`(Další informace naleznete v tématu [Další typy kontextu](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
 | **contextSourceName**      | Řetězec | Název objektu balíčku jako zdroj kontextu zprávy události      | `MyPackage` |
 | **contextSourceId**        | Řetězec | Jedinečné ID objektu balíčku jako zdroj kontextu zprávy události | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | Řetězec | Název vlastnosti balíčku pro zdroj kontextu zprávy události   | `DelayValidation` |
@@ -629,7 +629,7 @@ Tady jsou atributy protokolu podmínek souvisejících se zprávami o událostec
 
 #### <a name="ssis-event-messages-log-attributes"></a>Atributy protokolu zpráv událostí SSIS
 
-Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení zpráv událostí SSISDB](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) , které zobrazují podrobný text nebo metadata zpráv událostí. Jsou vygenerovány na jakékoli úrovni protokolování s výjimkou `None` .
+Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení zpráv událostí SSISDB](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) , které zobrazují podrobný text nebo metadata zpráv událostí. Jsou vygenerovány na jakékoli úrovni protokolování s výjimkou `None` .
 
 ```json
 {
@@ -669,8 +669,8 @@ Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spoušt�
 | **úroveň**                  | Řetězec | Úroveň diagnostických protokolů                                       | `Informational` |
 | **operationId**            | Řetězec | Jedinečné ID pro sledování konkrétní operace v SSISDB        | `1` (1 znamená operace týkající se balíčků, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL) |
 | **messageTime**            | Řetězec | Čas, kdy se zpráva události vytvoří ve formátu UTC          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | Řetězec | Typ zprávy události                                     | `70`(Další informace najdete v tématu [Další typy zpráv](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
-| **messageSourceType**      | Řetězec | Typ zdroje zprávy události                              | `20`(Další informace naleznete v tématu [Další typy zdrojů zpráv](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageType**            | Řetězec | Typ zprávy události                                     | `70`(Další informace najdete v tématu [Další typy zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageSourceType**      | Řetězec | Typ zdroje zprávy události                              | `20`(Další informace naleznete v tématu [Další typy zdrojů zpráv](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
 | **Zpráva**                | Řetězec | Text zprávy události                                     | `MyPackage:Validation has started.` |
 | **soubor s balíčkem**            | Řetězec | Název provedeného souboru balíčku                             | `MyPackage.dtsx` |
 | **eventName**              | Řetězec | Název související události run-time                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ Tady jsou atributy protokolu událostí, které jsou vygenerované SSIS spoušt�
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Atributy protokolu statistiky spustitelných souborů SSIS
 
-Tady jsou atributy protokolu spustitelných statistik generovaných spouštěním balíčků SSIS na SSIS IR, kde jsou spustitelné soubory kontejnery nebo úkoly v toku řízení balíčků. Poskytují podobné informace jako [SSISDBou tabulku statistik nebo zobrazení](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) , které zobrazují řádek pro každý spuštěný spustitelný soubor, včetně jeho iterací. Vygenerují se na úrovni protokolování s výjimkou `None` a užitečnou pro identifikaci kritických bodů a selhání na úrovni úlohy.
+Tady jsou atributy protokolu spustitelných statistik generovaných spouštěním balíčků SSIS na SSIS IR, kde jsou spustitelné soubory kontejnery nebo úkoly v toku řízení balíčků. Poskytují podobné informace jako [SSISDBou tabulku statistik nebo zobrazení](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) , které zobrazují řádek pro každý spuštěný spustitelný soubor, včetně jeho iterací. Vygenerují se na úrovni protokolování s výjimkou `None` a užitečnou pro identifikaci kritických bodů a selhání na úrovni úlohy.
 
 ```json
 {
@@ -727,7 +727,7 @@ Tady jsou atributy protokolu spustitelných statistik generovaných spouštění
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>Atributy protokolu fází provádění SSIS
 
-Tady jsou atributy protokolu běhových statistik pro součásti toku dat, které jsou generovány SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení fáze komponenty SSISDB](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) , která zobrazuje čas strávený součástmi toku dat ve všech fázích spuštění. Vygenerují se, když vyberete `Performance/Verbose` úroveň protokolování a užitečnou pro zachytávání statistik spuštění toku dat.
+Tady jsou atributy protokolu běhových statistik pro součásti toku dat, které jsou generovány SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka nebo zobrazení fáze komponenty SSISDB](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) , která zobrazuje čas strávený součástmi toku dat ve všech fázích spuštění. Vygenerují se, když vyberete `Performance/Verbose` úroveň protokolování a užitečnou pro zachytávání statistik spuštění toku dat.
 
 ```json
 {
@@ -773,7 +773,7 @@ Tady jsou atributy protokolu běhových statistik pro součásti toku dat, kter�
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>Atributy protokolu statistiky dat spuštění SSIS
 
-Tady jsou atributy protokolu pohybů dat prostřednictvím každé nohy kanálů toku dat, od nadřazeného až po komponenty, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka statistiky SSISDB provádění dat nebo zobrazení](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) , která zobrazuje počty řádků dat přesunutých prostřednictvím úkolů toku dat. Vygenerují se, když vyberete `Verbose` úroveň protokolování a užitečnou pro výpočet propustnosti toku dat.
+Tady jsou atributy protokolu pohybů dat prostřednictvím každé nohy kanálů toku dat, od nadřazeného až po komponenty, které jsou vygenerované SSIS spouštěními balíčků na SSIS IR. Poskytují podobné informace jako [tabulka statistiky SSISDB provádění dat nebo zobrazení](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) , která zobrazuje počty řádků dat přesunutých prostřednictvím úkolů toku dat. Vygenerují se, když vyberete `Verbose` úroveň protokolování a užitečnou pro výpočet propustnosti toku dat.
 
 ```json
 {
@@ -836,8 +836,8 @@ Log Analytics dědí schéma z monitorování s následujícími výjimkami:
     | $. Properties. Vstup | Vstup | Dynamická |
     | $. Properties. Výkonem | Výstup | Dynamická |
     | $. Properties. Chyba. errorCode | ErrorCode | int |
-    | $. Properties. Chyba. zpráva | Chybová | řetězec |
-    | $. Properties. Chyba | Chyba | Dynamická |
+    | $. Properties. Chyba. zpráva | Chybová | string |
+    | $. Properties. Chyba | Chybová | Dynamická |
     | $. Properties. Předchůdci | Předchůdci | Dynamická |
     | $. Properties. Ukazatelů | Parametry | Dynamická |
     | $.properties.SystemParameters | Třídy SystemParameters | Dynamická |
@@ -845,42 +845,42 @@ Log Analytics dědí schéma z monitorování s následujícími výjimkami:
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>Monitorování operací SSIS pomocí Azure Monitor
 
-Pokud chcete nazvednutím & posunout úlohy SSIS, můžete [ZŘÍDIT SSIS IR v ADF](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) , který podporuje:
+Pokud chcete nazvednutím & posunout úlohy SSIS, můžete [ZŘÍDIT SSIS IR v ADF](./tutorial-deploy-ssis-packages-azure.md) , který podporuje:
 
 - Spouštění balíčků nasazených do katalogu SSIS (SSISDB) Azure SQL Database hostovaných serverem/spravovanou instancí (model nasazení projektu)
 - Spouštění balíčků nasazených do systému souborů, souborů Azure nebo databáze služby SQL Server Database (MSDB) hostované službou Azure SQL Managed instance (model nasazení balíčku)
 
-Po zřízení můžete [ověřit provozní stav SSIS IR pomocí Azure PowerShell nebo na rozbočovači **monitorování** na portálu ADF](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Pomocí modelu nasazení projektu jsou protokoly spouštění balíčků SSIS uloženy v interních tabulkách nebo zobrazeních SSISDB, takže je můžete dotazovat, analyzovat a vizuálně prezentovat pomocí určených nástrojů jako SSMS. Pomocí modelu nasazení balíčku můžete protokoly spuštění balíčků SSIS ukládat do systému souborů nebo souborů Azure jako soubory CSV, které ještě potřebujete k analýze a zpracování pomocí jiných určených nástrojů, než je budete moct dotazovat, analyzovat a vizuálně prezentovat.
+Po zřízení můžete [ověřit provozní stav SSIS IR pomocí Azure PowerShell nebo na rozbočovači **monitorování** na portálu ADF](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Pomocí modelu nasazení projektu jsou protokoly spouštění balíčků SSIS uloženy v interních tabulkách nebo zobrazeních SSISDB, takže je můžete dotazovat, analyzovat a vizuálně prezentovat pomocí určených nástrojů jako SSMS. Pomocí modelu nasazení balíčku můžete protokoly spuštění balíčků SSIS ukládat do systému souborů nebo souborů Azure jako soubory CSV, které ještě potřebujete k analýze a zpracování pomocí jiných určených nástrojů, než je budete moct dotazovat, analyzovat a vizuálně prezentovat.
 
-Nyní s [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) integrací můžete zadávat dotazy, analyzovat a vizuálně prezentovat všechny metriky a protokoly vygenerované z operací SSIS IR a spouštění balíčků SSIS na Azure Portal. Kromě toho můžete také vyvolávat výstrahy.
+Nyní s [Azure monitor](../azure-monitor/platform/data-platform.md) integrací můžete zadávat dotazy, analyzovat a vizuálně prezentovat všechny metriky a protokoly vygenerované z operací SSIS IR a spouštění balíčků SSIS na Azure Portal. Kromě toho můžete také vyvolávat výstrahy.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Konfigurace nastavení diagnostiky a pracovního prostoru pro operace SSIS
 
-Pro odesílání všech metrik a protokolů vygenerovaných z SSISch operací IR a spuštění balíčků SSIS pro Azure Monitor musíte pro [svůj ADF nakonfigurovat nastavení diagnostiky a pracovní prostor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace).
+Pro odesílání všech metrik a protokolů vygenerovaných z SSISch operací IR a spuštění balíčků SSIS pro Azure Monitor musíte pro [svůj ADF nakonfigurovat nastavení diagnostiky a pracovní prostor](#configure-diagnostic-settings-and-workspace).
 
 ### <a name="ssis-operational-metrics"></a>Provozní metriky SSIS
 
-Provozní [metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) SSIS jsou čítače výkonu nebo číselné hodnoty, které popisují stav operací spuštění a zastavení infračerveného přenosu dat SSIS a také provádění balíčků SSIS v určitém bodě v čase. Jsou součástí [metriky ADF v Azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics).
+Provozní [metriky](../azure-monitor/platform/data-platform-metrics.md) SSIS jsou čítače výkonu nebo číselné hodnoty, které popisují stav operací spuštění a zastavení infračerveného přenosu dat SSIS a také provádění balíčků SSIS v určitém bodě v čase. Jsou součástí [metriky ADF v Azure monitor](#data-factory-metrics).
 
-Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, zaškrtnutím políčka _AllMetrics_ zpřístupníte SSIS provozní metriky pro [interaktivní analýzu pomocí Azure Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), [prezentace na řídicím panelu Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)a [Upozornění téměř v reálném čase](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric).
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF na Azure Monitor, zaškrtnutím políčka _AllMetrics_ zpřístupníte SSIS provozní metriky pro [interaktivní analýzu pomocí Azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md), [prezentace na řídicím panelu Azure](../azure-monitor/learn/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/platform/alerts-metric.md).
 
 ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
 ### <a name="ssis-operational-alerts"></a>SSIS provozní výstrahy
 
-Pokud chcete vyvolat upozornění na provozní metriky SSIS z portálu ADF, [Vyberte stránku **výstrahy & metriky** v centru **monitorování** ADF a postupujte podle podrobných pokynů](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts).
+Pokud chcete vyvolat upozornění na provozní metriky SSIS z portálu ADF, [Vyberte stránku **výstrahy & metriky** v centru **monitorování** ADF a postupujte podle podrobných pokynů](./monitor-visually.md#alerts).
 
 ![Vyvolává se SSIS provozní výstrahy z portálu ADF.](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
 
-Pokud chcete vygenerovat upozornění na provozní metriky SSIS z Azure Portal, [Vyberte stránku **výstrahy** centra **monitorování** Azure a postupujte](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-alerts)podle podrobných pokynů.
+Pokud chcete vygenerovat upozornění na provozní metriky SSIS z Azure Portal, [Vyberte stránku **výstrahy** centra **monitorování** Azure a postupujte](#data-factory-alerts)podle podrobných pokynů.
 
 ![Vyvolává se SSIS provozní výstrahy z Azure Portal](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
 
 ### <a name="ssis-operational-logs"></a>Provozní protokoly SSIS
 
-Provozní [protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) SSIS jsou události generované SSISmi infračervenými operacemi a prováděním balíčků SSIS, které poskytují dostatek kontextu u všech zjištěných problémů a jsou užitečné pro analýzu původní příčiny. 
+Provozní [protokoly](../azure-monitor/platform/data-platform-logs.md) SSIS jsou události generované SSISmi infračervenými operacemi a prováděním balíčků SSIS, které poskytují dostatek kontextu u všech zjištěných problémů a jsou užitečné pro analýzu původní příčiny. 
 
-Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF v Azure Monitor, můžete vybrat relevantní provozní protokoly SSIS a odeslat je Log Analytics založené na Azure Průzkumník dat. V takovém případě budou k dispozici pro [analýzu pomocí bohatých dotazovacích jazyků](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [prezentace na řídicím panelu Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)a [Upozornění téměř v reálném čase](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Když konfigurujete nastavení diagnostiky a pracovní prostor pro ADF v Azure Monitor, můžete vybrat relevantní provozní protokoly SSIS a odeslat je Log Analytics založené na Azure Průzkumník dat. V takovém případě budou k dispozici pro [analýzu pomocí bohatých dotazovacích jazyků](../azure-monitor/log-query/log-query-overview.md), [prezentace na řídicím panelu Azure](../azure-monitor/learn/tutorial-app-dashboards.md)a [Upozornění téměř v reálném čase](../azure-monitor/platform/alerts-log.md).
 
 ![Pojmenujte nastavení a vyberte pracovní prostor Log-Analytics.](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -895,7 +895,7 @@ Schémata a obsah protokolů spouštění balíčků SSIS v Azure Monitor a Log 
 | `SSISPackageExecutionComponentPhases` | `ADFSSISPackageExecutionComponentPhases` | `[internal].[execution_component_phases]` |
 | `SSISPackageExecutionDataStatistics`  | `ADFSSISPackageExecutionDataStatistics`  | `[internal].[execution_data_statistics]`  |
 
-Další informace o atributech a vlastnostech operačního protokolu SSIS najdete v tématu [Azure monitor a Log Analytics schémat pro ADF](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events).
+Další informace o atributech a vlastnostech operačního protokolu SSIS najdete v tématu [Azure monitor a Log Analytics schémat pro ADF](#schema-of-logs-and-events).
 
 Vybrané protokoly spuštění balíčků SSIS se vždycky odesílají do Log Analytics bez ohledu na jejich metody vyvolání. Můžete například vyvolat spouštění balíčků v SSDT s povoleným Azure, prostřednictvím T-SQL na SSMS, SQL Server agenta nebo jiných určených nástrojů a jako aktivované nebo ladění spuštění aktivit balíčku SSIS v kanálech ADF.
 
@@ -903,7 +903,7 @@ Při dotazování protokolu SSIS IR na Log Analytics můžete použít vlastnost
 
 ![Dotazování protokolů operací IR SSIS na Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
 
-Při dotazování protokolů spouštění balíčků SSIS na Log Analytics je můžete spojit s použitím **OperationId** / **ExecutionId** / vlastností**ID korelace** OperationId ExecutionID. **OperationId** / **ExecutionID** se vždycky nastaví na `1` pro všechny operace nebo provádění související s balíčky, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL.
+Při dotazování protokolů spouštění balíčků SSIS na Log Analytics je můžete spojit s použitím **OperationId** / **ExecutionId** / vlastností **ID korelace** OperationId ExecutionID. **OperationId** / **ExecutionID** se vždycky nastaví na `1` pro všechny operace nebo provádění související s balíčky, které **nejsou** uložené v SSISDB nebo vyvolané prostřednictvím T-SQL.
 
 ![Dotazování na Log Analytics protokoly spouštění balíčků SSIS](media/data-factory-monitor-oms/log-analytics-query2.png)
 

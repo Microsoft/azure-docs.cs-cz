@@ -12,23 +12,23 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 158adb6b35b488c310bd2912d4076b86579383a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29d072c513d9a75055d4bb486f44b17b00b7f0a9
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446409"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638342"
 ---
 # <a name="manage-packages-with-azure-ssis-integration-runtime-package-store"></a>Správa balíčků pomocí Azure-SSIS Integration Runtimeho úložiště balíčků
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Pokud chcete napředt & přesun místních úloh služba SSIS (SQL Server Integration Services) (SSIS) do cloudu, můžete v Azure Data Factory (ADF) zřídit Azure-SSIS Integration Runtime (IR). Další informace najdete v tématu [zřízení Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure). Azure-SSIS IR podporuje:
+Pokud chcete napředt & přesun místních úloh služba SSIS (SQL Server Integration Services) (SSIS) do cloudu, můžete v Azure Data Factory (ADF) zřídit Azure-SSIS Integration Runtime (IR). Další informace najdete v tématu [zřízení Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md). Azure-SSIS IR podporuje:
 
 - Spouštění balíčků nasazených do katalogu SSIS (SSISDB) Azure SQL Database hostovaných serverem/spravovanou instancí (model nasazení projektu)
 - Spouštění balíčků nasazených do systému souborů, souborů Azure nebo databáze služby SQL Server Database (MSDB) hostované službou Azure SQL Managed instance (model nasazení balíčku)
 
-Když použijete model nasazení balíčku, můžete si vybrat, jestli chcete Azure-SSIS IR zřídit pomocí obchodů s balíčky. Poskytují vrstvu správy balíčků nad systémem souborů, soubory Azure nebo MSDB hostovaným pomocí spravované instance Azure SQL. Azure-SSIS IR úložiště balíčků umožňuje importovat/exportovat, odstraňovat a spouštět balíčky a monitorovat nebo zastavovat balíčky přes SQL Server Management Studio (SSMS) podobně jako [starší verze úložiště balíčků SSIS](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). 
+Když použijete model nasazení balíčku, můžete si vybrat, jestli chcete Azure-SSIS IR zřídit pomocí obchodů s balíčky. Poskytují vrstvu správy balíčků nad systémem souborů, soubory Azure nebo MSDB hostovaným pomocí spravované instance Azure SQL. Azure-SSIS IR úložiště balíčků umožňuje importovat/exportovat, odstraňovat a spouštět balíčky a monitorovat nebo zastavovat balíčky přes SQL Server Management Studio (SSMS) podobně jako [starší verze úložiště balíčků SSIS](/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). 
 
 ## <a name="connect-to-azure-ssis-ir"></a>Připojení k Azure-SSIS IR
 
@@ -42,39 +42,39 @@ V **Průzkumník objektům** okně SSMS vyberte v rozevírací nabídce **připo
 
 ## <a name="manage-folders-and-packages"></a>Správa složek a balíčků
 
-Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačítkem na libovolné úložiště balíčků, složky nebo balíčky a automaticky se otevře nabídka a vybrat **Nová složka**, **importovat balíček**, **Exportovat balíček**, **Odstranit**nebo **aktualizovat**.
+Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačítkem na libovolné úložiště balíčků, složky nebo balíčky a automaticky se otevře nabídka a vybrat **Nová složka** , **importovat balíček** , **Exportovat balíček** , **Odstranit** nebo **aktualizovat** .
 
    ![Správa složek a balíčků](media/azure-ssis-integration-runtime-package-store/ssms-package-store-manage.png)
 
    *  Výběrem **nové složky** vytvořte novou složku pro importované balíčky.
 
-   *  Vyberte **importovat balíček** pro import balíčků ze **systému souborů**, **SQL Server** (msdb) nebo z staršího **úložiště balíčků SSIS** do úložiště balíčků.
+   *  Vyberte **importovat balíček** pro import balíčků ze **systému souborů** , **SQL Server** (msdb) nebo z staršího **úložiště balíčků SSIS** do úložiště balíčků.
 
       ![Importovat balíček](media/azure-ssis-integration-runtime-package-store/ssms-package-store-import.png)
 
-      V závislosti na **umístění balíčku** , ze kterého se má importovat, vyberte příslušný **Server** / **typ ověřování**serveru, zadejte přihlašovací údaje v případě potřeby, vyberte **cestu k balíčku**a zadejte nový **název balíčku**. Při importu balíčků nejde změnit jejich úroveň ochrany. Pokud ho chcete změnit, použijte nástroje pro SQL Server Data Tools (SSDT) nebo `dtutil` Nástroj příkazového řádku.
+      V závislosti na **umístění balíčku** , ze kterého se má importovat, vyberte příslušný **Server** / **typ ověřování** serveru, zadejte přihlašovací údaje v případě potřeby, vyberte **cestu k balíčku** a zadejte nový **název balíčku** . Při importu balíčků nejde změnit jejich úroveň ochrany. Pokud ho chcete změnit, použijte nástroje pro SQL Server Data Tools (SSDT) nebo `dtutil` Nástroj příkazového řádku.
 
       > [!NOTE]
       > Import balíčků SSIS Azure-SSIS IR do úložiště balíčků se dá provést jenom jednou a jenom tak, že je zkopírujete do základního souboru MSDB/soubor/Azure a při zachování jejich verze SQL Server/SSIS. 
       >
-      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017** , při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
       >
       > Vzhledem k tomu, že starší verze úložiště balíčků SSIS jsou vázány na konkrétní verzi SQL Server a jsou přístupné pouze v SSMS pro danou verzi, je třeba nejprve exportovat balíčky nižší verze ve starších úložištích balíčků SSIS pomocí určené verze SSMS, než je bude možné importovat do Azure-SSIS IRch úložišť pomocí SSMS 2019 nebo novějších verzí.
       >
-      > Pokud chcete při přepínání úrovně ochrany importovat víc balíčků SSIS do úložiště balíčků Azure-SSIS IR, můžete použít nástroj příkazového řádku [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) . Další informace najdete v tématu [nasazení více balíčků s dtutil](#deploying-multiple-packages-with-dtutil).
+      > Pokud chcete při přepínání úrovně ochrany importovat víc balíčků SSIS do úložiště balíčků Azure-SSIS IR, můžete použít nástroj příkazového řádku [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) . Další informace najdete v tématu [nasazení více balíčků s dtutil](#deploying-multiple-packages-with-dtutil).
 
-   *  Vyberte **Exportovat balíček** pro export balíčků z úložiště balíčků do **systému souborů**, **SQL Server** (msdb) nebo starší verze **úložiště balíčků SSIS**.
+   *  Vyberte **Exportovat balíček** pro export balíčků z úložiště balíčků do **systému souborů** , **SQL Server** (msdb) nebo starší verze **úložiště balíčků SSIS** .
 
       ![Exportovat balíček](media/azure-ssis-integration-runtime-package-store/ssms-package-store-export.png)
 
-      V závislosti na **umístění balíčku** , do kterého se má exportovat, vyberte **Server**příslušný / **typ ověřování**serveru, v případě potřeby zadejte přihlašovací údaje a vyberte **cestu k balíčku**. Při exportování balíčků, pokud jsou zašifrované, zadejte hesla pro jejich dešifrování a pak můžete změnit jejich úroveň ochrany, například k tomu, abyste se vyhnuli ukládání citlivých dat nebo jejich šifrování nebo všech dat pomocí klíče nebo hesla uživatele.
+      V závislosti na **umístění balíčku** , do kterého se má exportovat, vyberte **Server** příslušný / **typ ověřování** serveru, v případě potřeby zadejte přihlašovací údaje a vyberte **cestu k balíčku** . Při exportování balíčků, pokud jsou zašifrované, zadejte hesla pro jejich dešifrování a pak můžete změnit jejich úroveň ochrany, například k tomu, abyste se vyhnuli ukládání citlivých dat nebo jejich šifrování nebo všech dat pomocí klíče nebo hesla uživatele.
 
       > [!NOTE]
       > Export balíčků SSIS Azure-SSIS IR z úložiště balíčků se dá udělat jenom jednou. stačí, když přepnete bez přepínání jejich úrovně ochrany, ale jednoduše je zkopírujete a zachováte jejich SQL Server/SSIS verzi, jinak se upgraduje na balíčky SSIS 2019 nebo novější verze.
       >
-      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+      > Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017** , při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
       >
-      > Pokud chcete při přepínání úrovně ochrany exportovat víc balíčků SSIS z úložiště balíčků Azure-SSIS IR, můžete použít nástroj příkazového řádku [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) . Další informace najdete v tématu [nasazení více balíčků s dtutil](#deploying-multiple-packages-with-dtutil).
+      > Pokud chcete při přepínání úrovně ochrany exportovat víc balíčků SSIS z úložiště balíčků Azure-SSIS IR, můžete použít nástroj příkazového řádku [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) . Další informace najdete v tématu [nasazení více balíčků s dtutil](#deploying-multiple-packages-with-dtutil).
 
    *  Vyberte **Odstranit** , pokud chcete z úložiště balíčků odstranit existující složky nebo balíčky.
 
@@ -82,13 +82,13 @@ Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačít
 
 ## <a name="execute-packages"></a>Spustit balíčky
 
-Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačítkem na libovolné uložené balíčky a automaticky se otevře nabídka a vybrat **spustit balíček**.  Tím se otevře dialogové okno **Spustit nástroj balíčku** , kde můžete nakonfigurovat spouštění balíčků na Azure-SSIS IR jako spustit aktivity balíčku SSIS v kanálech ADF.
+Po připojení k vašemu Azure-SSIS IR v SSMS můžete kliknout pravým tlačítkem na libovolné uložené balíčky a automaticky se otevře nabídka a vybrat **spustit balíček** .  Tím se otevře dialogové okno **Spustit nástroj balíčku** , kde můžete nakonfigurovat spouštění balíčků na Azure-SSIS IR jako spustit aktivity balíčku SSIS v kanálech ADF.
 
 ![Spustit stránky nástroje balíčku 1 & 2](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute.png)
 
 ![Spustit stránky nástroje balíčku 3 & 4](media/azure-ssis-integration-runtime-package-store/ssms-package-store-execute2.png)
 
-Stránka **Obecné**, **Konfigurace**, **Možnosti spuštění**a **protokolování** v dialogovém okně **Spustit nástroj pro spuštění balíčku** odpovídají kartě  **Nastavení** aktivity spustit balíček SSIS. Na těchto stránkách můžete zadat šifrovací heslo pro váš balíček a získat přístup k informacím pro konfigurační soubor balíčku. Můžete také zadat přihlašovací údaje a vlastnosti pro spuštění balíčku a také informace o přístupu pro složku protokolu.  Stránka **nastavit hodnoty** v dialogovém okně **Spustit nástroj balíčku** odpovídá kartě **přepsání vlastností** aktivity spustit balíček SSIS, kde můžete zadat existující vlastnosti balíčku, které chcete přepsat. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Stránka **Obecné** , **Konfigurace** , **Možnosti spuštění** a **protokolování** v dialogovém okně **Spustit nástroj pro spuštění balíčku** odpovídají kartě  **Nastavení** aktivity spustit balíček SSIS. Na těchto stránkách můžete zadat šifrovací heslo pro váš balíček a získat přístup k informacím pro konfigurační soubor balíčku. Můžete také zadat přihlašovací údaje a vlastnosti pro spuštění balíčku a také informace o přístupu pro složku protokolu.  Stránka **nastavit hodnoty** v dialogovém okně **Spustit nástroj balíčku** odpovídá kartě **přepsání vlastností** aktivity spustit balíček SSIS, kde můžete zadat existující vlastnosti balíčku, které chcete přepsat. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](./how-to-invoke-ssis-package-ssis-activity.md).
 
 Když vyberete tlačítko **Spustit** , automaticky se vygeneruje a aktivuje se nový kanál ADF s aktivitou spustit balíček SSIS. Pokud již existuje kanál ADF se stejným nastavením, bude znovu spuštěn a nebude vygenerován nový kanál. Aktivita kanálu ADF a spustit balíček SSIS budou pojmenovány `Pipeline_SSMS_YourPackageName_HashString` a v `Activity_SSMS_YourPackageName` uvedeném pořadí.
 
@@ -98,7 +98,7 @@ Když vyberete tlačítko **Spustit** , automaticky se vygeneruje a aktivuje se 
 
 ## <a name="monitor-and-stop-running-packages"></a>Monitorování a zastavení spouštění balíčků
 
-Po připojení k vašemu Azure-SSIS IR v SSMS můžete rozbalit uzel **běžící balíčky** , abyste viděli aktuálně spuštěné balíčky pod.  Kliknutím pravým tlačítkem myši na libovolnou z nich můžete zobrazit nabídku a vybrat **zastavit** nebo **aktualizovat**.
+Po připojení k vašemu Azure-SSIS IR v SSMS můžete rozbalit uzel **běžící balíčky** , abyste viděli aktuálně spuštěné balíčky pod.  Kliknutím pravým tlačítkem myši na libovolnou z nich můžete zobrazit nabídku a vybrat **zastavit** nebo **aktualizovat** .
 
    ![Monitorování a zastavení spouštění balíčků](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor.png)
 
@@ -108,7 +108,7 @@ Po připojení k vašemu Azure-SSIS IR v SSMS můžete rozbalit uzel **běžíc�
 
 ## <a name="monitor-azure-ssis-ir-and-edit-package-stores"></a>Monitorování Azure-SSIS IR a úpravy úložišť balíčků
 
-Po připojení k Azure-SSIS IR na SSMS můžete kliknout pravým tlačítkem myši na ni a vybrat **Přejít na Azure Data Factory Portal** nebo **aktualizovat**.
+Po připojení k Azure-SSIS IR na SSMS můžete kliknout pravým tlačítkem myši na ni a vybrat **Přejít na Azure Data Factory Portal** nebo **aktualizovat** .
 
    ![Přejít na portál ADF](media/azure-ssis-integration-runtime-package-store/ssms-package-store-monitor2.png)
 
@@ -122,9 +122,9 @@ Po připojení k Azure-SSIS IR na SSMS můžete kliknout pravým tlačítkem my�
 
 Pokud chcete převést & přesun místních úloh SSIS do SSIS v ADF při zachování staršího modelu nasazení balíčku, je potřeba nasadit balíčky ze systému souborů, MSDB hostovaného pomocí SQL Server nebo starších úložišť balíčků SSIS do souborů Azure, MSDB hostovaných pomocí spravované instance Azure SQL nebo Azure-SSIS IRch obchodů s balíčky. Pokud jste to ještě neudělali, měli byste také přepnout úroveň ochrany ze šifrování pomocí klíče uživatele na nezašifrované nebo šifrování pomocí hesla.
 
-K nasazení více balíčků v dávkách můžete použít nástroj příkazového řádku [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) , který je součástí instalace nástroje SQL Server/SSIS. Je svázána s konkrétní verzí SSIS, takže pokud ji použijete k nasazení balíčků nižší verze bez přepínání jejich úrovně ochrany, jednoduše je zkopírujete a zachováte svou SSIS verzi. Pokud ji použijete k jejich nasazení a zároveň přepnete úroveň ochrany, upgraduje se na její verzi SSIS.
+K nasazení více balíčků v dávkách můžete použít nástroj příkazového řádku [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) , který je součástí instalace nástroje SQL Server/SSIS. Je svázána s konkrétní verzí SSIS, takže pokud ji použijete k nasazení balíčků nižší verze bez přepínání jejich úrovně ochrany, jednoduše je zkopírujete a zachováte svou SSIS verzi. Pokud ji použijete k jejich nasazení a zároveň přepnete úroveň ochrany, upgraduje se na její verzi SSIS.
 
- Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017**, při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
+ Vzhledem k tomu, že Azure-SSIS IR je aktuálně založená na **SQL Server 2017** , při spouštění balíčků s nižší verzí se tyto balíčky v době běhu upgradují na balíčky SSIS 2017. Spouštění balíčků s vyšší verzí není podporováno.
 
 Proto pokud chcete zabránit upgradům za běhu, nasazování balíčků ke spuštění na Azure-SSIS IR v modelu nasazení balíčku by měl používat dtutil 2017, který je součástí instalace SQL Server/SSIS 2017. Pro tento účel si můžete stáhnout a nainstalovat bezplatnou [edici SQL Server/SSIS 2017 Developer Edition](https://go.microsoft.com/fwlink/?linkid=853016) . Po instalaci můžete v této složce najít dtutil 2017: `YourLocalDrive:\Program Files\Microsoft SQL Server\140\DTS\Binn` .
 
@@ -148,7 +148,7 @@ for %f in (*.dtsx) do dtutil.exe /FILE %f /ENCRYPT FILE;Z:\%f;2;YourEncryptionPa
 
 Chcete-li spustit výše uvedené příkazy v dávkovém souboru, nahraďte parametr `%f` `%%f` .
 
-Pokud chcete nasadit více balíčků ze starších úložišť balíčků SSIS do systému souborů do služby soubory Azure a současně přepnout úroveň ochrany, můžete použít stejné příkazy, ale nahradit ji `YourLocalDrive:\...\YourPackageFolder` místní složkou, kterou používají starší úložiště balíčků SSIS: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Například pokud je vaše starší úložiště balíčků SSIS vázáno na SQL Server 2016, pokračujte na `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  Hodnotu můžete najít `YourSQLServerDefaultCompatibilityLevel` ze [seznamu SQL Server výchozí úrovně kompatibility](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments).
+Pokud chcete nasadit více balíčků ze starších úložišť balíčků SSIS do systému souborů do služby soubory Azure a současně přepnout úroveň ochrany, můžete použít stejné příkazy, ale nahradit ji `YourLocalDrive:\...\YourPackageFolder` místní složkou, kterou používají starší úložiště balíčků SSIS: `YourLocalDrive:\Program Files\Microsoft SQL Server\YourSQLServerDefaultCompatibilityLevel\DTS\Packages\YourPackageFolder` . Například pokud je vaše starší úložiště balíčků SSIS vázáno na SQL Server 2016, pokračujte na `YourLocalDrive:\Program Files\Microsoft SQL Server\130\DTS\Packages\YourPackageFolder` .  Hodnotu můžete najít `YourSQLServerDefaultCompatibilityLevel` ze [seznamu SQL Server výchozí úrovně kompatibility](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#arguments).
 
 Pokud jste nakonfigurovali Azure-SSIS IR úložiště balíčků na Azure Files, nasadí se v nich vaše nasazené balíčky, když se připojíte k Azure-SSIS IR na SSMS 2019 nebo novějších verzích.
 
@@ -211,4 +211,4 @@ Pokud jste nakonfigurovali Azure-SSIS IR úložiště balíčků na Azure Files,
 
 ## <a name="next-steps"></a>Další kroky
 
-Automaticky generované kanály ADF můžete znovu spustit pomocí aktivit balíčku Execute SSIS nebo vytvářet nové v portálu ADF. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Automaticky generované kanály ADF můžete znovu spustit pomocí aktivit balíčku Execute SSIS nebo vytvářet nové v portálu ADF. Další informace najdete v tématu [spouštění balíčků SSIS jako aktivity balíčku SSIS v kanálech ADF](./how-to-invoke-ssis-package-ssis-activity.md).
