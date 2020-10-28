@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 14cf5238d29ede1ea229604316eee875b417e50e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361530"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895932"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Upozornění a chyby převodu kreslení
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
+[Služba Azure Maps Conversion](/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Balíčky pro kreslení musí splňovat [požadavky balíčku pro vykreslování](drawing-requirements.md). Pokud nejsou splněny některé požadavky, služba konverze vrátí chyby nebo upozornění. V tomto článku jsou uvedeny kódy chyb a varování při převodu s doporučeními, jak je vyřešit. Poskytuje také některé příklady kreseb, které mohou způsobit, že služba převodu vrátí tyto kódy.
 
 Služba konverze bude úspěšná, pokud dojde k nějakým upozorněním na převod. Doporučuje se ale zkontrolovat a vyřešit všechna upozornění. Upozornění znamená, že část převodu byla ignorována nebo automaticky opravena. Selhání při řešení problémů by mohlo způsobit chyby v těchto procesech.
 
@@ -159,7 +159,7 @@ K **redundantAttribution** upozornění dojde, pokud manifest obsahuje redundant
 
 #### <a name="how-to-fix-redundantattribution"></a>*Jak opravit redundantAttribution*
 
-Chcete-li opravit **redundantAttribution* upozornění, odeberte nadbytečné nebo konfliktní vlastnosti objektu.
+Chcete-li opravit * *redundantAttribution* upozornění, odeberte nadbytečné nebo konfliktní vlastnosti objektu.
 
 ### <a name="manifestwarning"></a>**manifestWarning**
 
@@ -175,7 +175,7 @@ K **manifestWarning** dojde v případě, že manifest obsahuje objekty UnitProp
 
 #### <a name="how-to-fix-manifestwarning"></a>*Jak opravit manifestWarning*
 
-Chcete-li opravit **manifestWarning**, odeberte nepoužitý `unitProperties` `zoneProperties` objekt nebo z manifestu nebo přidejte popisek jednotky nebo zóny k vykreslování tak, aby objekt Properties byl použit během převodu.
+Chcete-li opravit **manifestWarning** , odeberte nepoužitý `unitProperties` `zoneProperties` objekt nebo z manifestu nebo přidejte popisek jednotky nebo zóny k vykreslování tak, aby objekt Properties byl použit během převodu.
 
 ## <a name="wall-warnings"></a>Upozornění na zeď
 
@@ -267,7 +267,7 @@ Následující obrázek ukazuje zónu, která neobsahuje popisek.
 
 #### <a name="how-to-fix-zonewarning"></a>*Jak opravit zoneWarning*
 
-Chcete-li opravit **zoneWarning**, ověřte, zda má každá zóna jeden popisek.
+Chcete-li opravit **zoneWarning** , ověřte, zda má každá zóna jeden popisek.
 
 ## <a name="label-warnings"></a>Upozornění popisku
 
@@ -291,7 +291,7 @@ Následující obrázek ukazuje popisek, který se nachází uvnitř dvou zón.
 
 #### <a name="how-to-fix-labelwarning"></a>*Jak opravit labelWarning*
 
-Pokud chcete opravit **labelWarning**, ujistěte se, že:
+Pokud chcete opravit **labelWarning** , ujistěte se, že:
 
 * Všechny popisky jednotek jsou uvnitř jednotek.
 * Všechny popisky zóny jsou uvnitř zón.
@@ -311,7 +311,7 @@ K chybě **invalidArchiveFormat** dojde také v případě, že je archiv zip pr
 
 Pokud chcete opravit chybu **invalidArchiveFormat** , ověřte, že:
 
-* Název souboru archivu končí na _. zip_.
+* Název souboru archivu končí na _. zip_ .
 * Váš archiv ZIP obsahuje data.
 * Můžete otevřít archiv ZIP.
 
@@ -347,7 +347,7 @@ K **dwgError** dojde v případě, že balíček pro kreslení obsahuje soubor D
 
 #### <a name="how-to-fix-dwgerror"></a>*Jak opravit dwgError*
 
-Pokud chcete opravit **dwgError**, zkontrolujte _manifest.jsv_ souboru a ověřte, že:
+Pokud chcete opravit **dwgError** , zkontrolujte _manifest.jsv_ souboru a ověřte, že:
 
 * Všechny soubory DWG v archivu ZIP jsou platné kresby formátu DWG AutoCADu, v AutoCADu je otevřete. Odeberte nebo opravte všechny neplatné výkresy.
 * Seznam souborů DWG v _manifest.js_  se shoduje se soubory DWG v archivu zip.

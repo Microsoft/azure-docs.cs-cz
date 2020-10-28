@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 75d2833a5b270fcfdcffa668ec0e308399edab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311446"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895915"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
 Sada Azure Maps Web SDK ukládá data do zdrojů dat. Použití zdrojů dat optimalizuje datové operace pro dotazování a vykreslování. V současné době existují dva typy zdrojů dat:
 
-- Geografická **zdrojová**data: Správa nezpracovaných dat umístění ve formátu geografických JSON místně. Vhodný pro malé až střední datové sady (nahoru z stovek tisíců tvarů).
-- **Zdroj vektorové dlaždice**: načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
+- Geografická **zdrojová** data: Správa nezpracovaných dat umístění ve formátu geografických JSON místně. Vhodný pro malé až střední datové sady (nahoru z stovek tisíců tvarů).
+- **Zdroj vektorové dlaždice** : načte data formátovaná jako vektorové dlaždice pro aktuální zobrazení mapy na základě systému mapy dláždění. Ideální pro velké až obrovský datové sady (miliony nebo miliardy tvarů).
 
 ## <a name="geojson-data-source"></a>Zdroj dat pro injson
 
-Načtení zdroje dat založeného na bázi standardu JSON a uložení dat místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . `DataSource`Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource`Třída poskytuje funkce pro data bodu clusteringu. A data lze snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy. Následující kód ukazuje, jak lze vytvořit data v Azure Maps.
+Načtení zdroje dat založeného na bázi standardu JSON a uložení dat místně pomocí `DataSource` třídy. Data typu injson lze ručně vytvořit nebo vytvořit pomocí tříd pomocníka v oboru názvů [Atlas. data](/javascript/api/azure-maps-control/atlas.data) . `DataSource`Třída poskytuje funkce pro import místních nebo vzdálených souborů injson. Vzdálené soubory typu injson musí být hostované na koncovém bodu s povoleným CORs. `DataSource`Třída poskytuje funkce pro data bodu clusteringu. A data lze snadno přidat, odebrat a aktualizovat pomocí `DataSource` třídy. Následující kód ukazuje, jak lze vytvořit data v Azure Maps.
 
 ```javascript
 //Create raw GeoJSON object.
@@ -46,7 +46,7 @@ var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
 }); 
 ```
 
-Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
+Po vytvoření se zdroje dat dají přidat do mapy prostřednictvím `map.sources` vlastnosti, která je [SourceManager](/javascript/api/azure-maps-control/atlas.sourcemanager). Následující kód ukazuje, jak vytvořit `DataSource` a přidat ho do mapy.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -74,7 +74,7 @@ dataSource.setShapes(geoJsonData);
 
 ## <a name="vector-tile-source"></a>Zdroj vektorové dlaždice
 
-Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu **PBF** . Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
+Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu **PBF** . Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
 
  - Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. V takovém případě se používá menší šířka pásma. Znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
  - Vzhledem k tomu, že se na klientovi vykreslují vektorové dlaždice, přizpůsobuje se rozlišení zařízení, ve kterém se zobrazují. Výsledkem je, že vykreslené mapy jsou lépe definovány a s jasnými popisky.
@@ -83,10 +83,10 @@ Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaž
 
 Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard. Azure Maps poskytuje následující služby vektorových dlaždic jako součást platformy:
 
-- [documentation](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
-- [documentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
-- [documentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
-- Azure Maps Creator taky umožňuje vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) .
+- [documentation](/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
+- [documentation](/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
+- [documentation](/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
+- Azure Maps Creator taky umožňuje vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](/rest/api/maps/renderv2/getmaptilepreview) .
 
 > [!TIP]
 > Když použijete dlaždice vektorového nebo rastrového obrázku ze služby Azure Maps Renderer s webovou sadou SDK, můžete nahradit `atlas.microsoft.com` zástupným symbolem `{azMapsDomain}` . Tento zástupný symbol bude nahrazen stejnou doménou, kterou používá mapa, a automaticky bude automaticky připojovat stejné podrobnosti ověřování. To významně zjednodušuje ověřování pomocí služby vykreslování při použití Azure Active Directory ověřování.
@@ -213,16 +213,16 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Datového](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [Datového](/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
+> [DataSourceOptions](/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)
+> [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource)
 
 > [!div class="nextstepaction"]
-> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
+> [VectorTileSourceOptions](/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
 
 Další ukázky kódu pro přidání do vašich map najdete v následujících článcích:
 
@@ -248,4 +248,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Přidat Heat mapu](map-add-heat-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [Ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Ukázky kódu](/samples/browse/?products=azure-maps)

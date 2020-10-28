@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088920"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896051"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>Rychlý Start: Vytvoření front-dveří pomocí šablony ARM
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Azure Resource Manager
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
 
@@ -40,7 +40,7 @@ Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním 
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-front-door-create-basic).
 
-V tomto rychlém startu vytvoříte konfiguraci front-endu pomocí jediného back-endu a jedné výchozí cesty, která odpovídá "/*". 
+V tomto rychlém startu vytvoříte konfiguraci front-endu pomocí jediného back-endu a jedné výchozí cesty, která odpovídá `/*` .
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Vyberte **vyzkoušet** z následujícího bloku kódu a otevřete Azure Cloud Shell a pak postupujte podle pokynů pro přihlášení k Azure. 
+1. Vyberte **vyzkoušet** z následujícího bloku kódu a otevřete Azure Cloud Shell a pak postupujte podle pokynů pro přihlášení k Azure.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -69,11 +69,11 @@ V této šabloně je definovaný jeden prostředek Azure:
 
 1. Pro zkopírování skriptu PowerShellu vyberte **Kopírovat** z předchozího bloku kódu.
 
-1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit**.
+1. Klikněte pravým tlačítkem na Podokno konzole prostředí a pak vyberte **Vložit** .
 
 1. Zadejte hodnoty.
 
-    Nasazení šablony vytváří přední dvířka s jedním back-endu. V tomto příkladu je to * <span>Microsoft.</span> model COM* se používá jako **backendAddress**.
+    Nasazení šablony vytváří přední dvířka s jedním back-endu. V tomto příkladu `microsoft.com` se používá jako **backendAddress** .
 
     Název skupiny prostředků je název projektu s připojeným **RG** .
 
@@ -88,7 +88,7 @@ Azure PowerShell slouží k nasazení šablony. Kromě Azure PowerShell můžete
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. V levém podokně vyberte **skupiny prostředků** .
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili:
-* Front Door
+V tomto rychlém startu jste vytvořili přední dveře.
 
 Další informace o tom, jak přidat vlastní doménu do předních dveří, najdete v výukových kurzech pro přední dveře.
 

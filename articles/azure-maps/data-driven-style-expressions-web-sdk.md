@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 539145836849bb66bcf1f12a97ea405fe84c47bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311372"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895966"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -41,7 +41,7 @@ Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je ř
 
 Sada Azure Maps Web SDK podporuje mnoho typů výrazů. Výrazy lze použít na vlastní nebo v kombinaci s jinými výrazy.
 
-| Typ výrazů | Description |
+| Typ výrazů | Popis |
 |---------------------|-------------|
 | [Agregační výraz](#aggregate-expression) | Výraz definující výpočet, který je zpracován prostřednictvím sady dat a lze jej použít s `clusterProperties` možností `DataSource` . |
 | [Logické výrazy](#boolean-expressions) | Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání. |
@@ -86,15 +86,15 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci. 
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
-| `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
-| `['id']` | value | Získá ID funkce, pokud má jednu. |
+| `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | boolean | Určuje, zda podřetězec existuje v řetězci. |
@@ -179,7 +179,7 @@ Tady jsou některé další příklady použití datových výrazů:
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | číslo | Vypočítá součet zadaných čísel. |
 | `['-', number]` | číslo | Odečte 0 zadaným číslem. |
@@ -234,7 +234,7 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy. 
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['!', boolean]` | boolean | Logická negace. Vrátí `true` , zda je vstup `false` , a `false` Pokud je vstup `true` . |
 | `['!=', value, value]` | boolean | Vrátí `true` , zda vstupní hodnoty nejsou stejné, `false` jinak. |
@@ -437,7 +437,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array – \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
 | `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
@@ -473,15 +473,15 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou*, *zelenou*, *modrou*a *alfa* komponentu vstupní barvy v tomto pořadí. |
+| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených* , *zelených* a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené* , *zelené* a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou* , *zelenou* , *modrou* a *alfa* komponentu vstupní barvy v tomto pořadí. |
 
 **Příklad**
 
-Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
+Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené* .
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -647,7 +647,7 @@ Speciální výrazy, které se vztahují pouze na konkrétní vrstvy.
 
 ### <a name="heat-map-density-expression"></a>Výraz hustoty tepelné mapy
 
-Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']` . Tato hodnota je číslo mezi `0` a `1` . Používá se v kombinaci s `interpolation` `step` výrazem or k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) vrstvy Heat mapy.
+Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']` . Tato hodnota je číslo mezi `0` a `1` . Používá se v kombinaci s `interpolation` `step` výrazem or k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions#color) vrstvy Heat mapy.
 
 > [!TIP]
 > Barva v indexu 0, ve výrazu interpolace nebo ve výchozí barvě barvy kroku, definuje barvu oblasti, kde nejsou žádná data. Barva na indexu 0 se dá použít k definování barvy pozadí. Mnoho preferuje nastavení této hodnoty na transparentní nebo částečně průhlednou černou.
@@ -899,7 +899,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Výraz | Návratový typ | Description |
+| Výraz | Návratový typ | Popis |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití `var` výrazem v podřízeném výrazu, který vrací výsledek. |
 | `['var', name: string]` | Libovolný | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |
@@ -954,16 +954,16 @@ Další ukázky kódu, které implementují výrazy, najdete v následujících 
 Přečtěte si další informace o možnostech vrstvy, které podporují výrazy:
 
 > [!div class="nextstepaction"] 
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+> [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
 > [!div class="nextstepaction"] 
-> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
+> [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
 > [!div class="nextstepaction"] 
-> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)
+> [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)

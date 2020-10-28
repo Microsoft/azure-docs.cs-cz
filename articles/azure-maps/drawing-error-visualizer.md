@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524739"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895847"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Použití Azure Mapsho vykreslování – Vizualizér chyb
 
-Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
+Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](/rest/api/maps/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než si můžete stáhnout Vizualizér chyba vykreslování, budete potřebovat:
 
@@ -58,8 +58,8 @@ V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, al
 
 V rámci staženého balíčku zip z tohoto `diagnosticPackageLocation` odkazu najdete dva soubory.
 
-* _VisualizationTool.zip_: obsahuje zdrojový kód, médium a webovou stránku pro Vizualizér chyb při vykreslování.
-* _ConversionWarningsAndErrors.js_: obsahuje formátovaný seznam upozornění, chyby a další podrobnosti, které jsou používány Vizualizérm chyb kreslení.
+* _VisualizationTool.zip_ : obsahuje zdrojový kód, médium a webovou stránku pro Vizualizér chyb při vykreslování.
+* _ConversionWarningsAndErrors.js_ : obsahuje formátovaný seznam upozornění, chyby a další podrobnosti, které jsou používány Vizualizérm chyb kreslení.
 
 Rozbalte složku _VisualizationTool.zip_ . Obsahuje následující položky:
 
@@ -90,7 +90,7 @@ Po načtení _ConversionWarningsAndErrors.js_ souboru se zobrazí seznam chyb a 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jakmile [balíček pro vykreslování splňuje požadavky](drawing-requirements.md), můžete použít [službu Azure Maps DataSet](https://docs.microsoft.com/rest/api/maps/conversion) k převodu balíčku pro kreslení na datovou sadu. Pak můžete k vývoji aplikace použít webový modul vnitřních map. Další informace najdete v následujících článcích:
+Jakmile [balíček pro vykreslování splňuje požadavky](drawing-requirements.md), můžete použít [službu Azure Maps DataSet](/rest/api/maps/conversion) k převodu balíčku pro kreslení na datovou sadu. Pak můžete k vývoji aplikace použít webový modul vnitřních map. Další informace najdete v následujících článcích:
 
 > [!div class="nextstepaction"]
 > [Vykreslení kódů chyb převodu](drawing-conversion-error-codes.md)

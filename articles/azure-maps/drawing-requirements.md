@@ -8,35 +8,35 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053388"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895830"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
-Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](https://docs.microsoft.com/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
+Nahrané balíčky výkresu můžete převést na data mapy pomocí [služby Azure Maps Conversion Service](/rest/api/maps/conversion). Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je formát nativního souboru pro software Autodesk pro® pro AutoCAD.
 
 Můžete vybrat libovolný software CAD a vykreslit kresby v balíčku pro kreslení.  
 
-[Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) převede balíček pro vykreslování na data mapy. Služba převodu funguje ve formátu souboru DWG AutoCADu. `AC1032` je interní formát verze souborů DWG a je vhodné zvolit `AC1032` interní verzi formátu souboru DWG.  
+[Služba konverze Azure Maps](/rest/api/maps/conversion) převede balíček pro vykreslování na data mapy. Služba převodu funguje ve formátu souboru DWG AutoCADu. `AC1032` je interní formát verze souborů DWG a je vhodné zvolit `AC1032` interní verzi formátu souboru DWG.  
 
 ## <a name="glossary-of-terms"></a>Glosář termínů
 
 Tady jsou některé pojmy a definice, které jsou důležité při čtení tohoto článku.
 
-| Označení  | Definice |
+| Pojem  | Definice |
 |:-------|:------------|
 | Vrstva | Vrstva DWG AutoCADu.|
 | Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg), připojený k primárnímu výkresu jako externí odkaz.  |
-| Příznak | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
+| Doporučené | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například *jednotka* je třída funkce a *kancelář* je funkce. |
 
 ## <a name="drawing-package-structure"></a>Vykreslování struktury balíčku
@@ -50,13 +50,13 @@ Soubory DWG můžete uspořádat jakýmkoli způsobem uvnitř složky, ale soubo
 
 ## <a name="dwg-files-requirements"></a>Požadavky na soubory DWG
 
-Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně musí být obsažena v jednom souboru DWG. Všechny externí odkazy (_xrefs_) musí být svázané s nadřazeným vykreslováním. Navíc každý soubor DWG:
+Pro každou úroveň zařízení je vyžadován jeden soubor DWG. Data úrovně musí být obsažena v jednom souboru DWG. Všechny externí odkazy ( _xrefs_ ) musí být svázané s nadřazeným vykreslováním. Navíc každý soubor DWG:
 
-* Je nutné definovat vrstvu na _vnějších_ a _jednotkách_ . Volitelně může definovat následující volitelné vrstvy: _zeď_, _dveře_, _UnitLabel_, _zóna_a _ZoneLabel_.
+* Je nutné definovat vrstvu na _vnějších_ a _jednotkách_ . Volitelně může definovat následující volitelné vrstvy: _zeď_ , _dveře_ , _UnitLabel_ , _zóna_ a _ZoneLabel_ .
 * Nesmí obsahovat funkce z více úrovní.
 * Nesmí obsahovat funkce z více zařízení.
 
-[Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) může extrahovat následující třídy funkcí ze souboru DWG:
+[Služba Azure Maps Conversion](/rest/api/maps/conversion) může extrahovat následující třídy funkcí ze souboru DWG:
 
 * Úrovně
 * Jednotky
@@ -73,11 +73,11 @@ Vrstvy DWG musí také splňovat následující kritéria:
 
 * Počátek kreseb pro všechny soubory DWG se musí Zarovnat ke stejné zeměpisné šířce a délce.
 * Každá úroveň musí být ve stejné orientaci jako ostatní úrovně.
-* Mnohoúhelníky s automatickým průnikem jsou automaticky opraveny a [služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) vyvolá upozornění. Opravené výsledky byste měli zkontrolovat ručně, protože nemusí odpovídat očekávaným výsledkům.
+* Mnohoúhelníky s automatickým průnikem jsou automaticky opraveny a [služba Azure Maps Conversion](/rest/api/maps/conversion) vyvolá upozornění. Opravené výsledky byste měli zkontrolovat ručně, protože nemusí odpovídat očekávaným výsledkům.
 
 Všechny entity vrstvy musí být jedním z následujících typů: line, lomená, mnohoúhelník, kruhový oblouk, Circle nebo text (jeden řádek). Všechny ostatní typy entit jsou ignorovány.
 
-Následující tabulka popisuje podporované typy entit a podporované funkce pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) ignoruje tyto entity.  
+Následující tabulka popisuje podporované typy entit a podporované funkce pro každou vrstvu. Pokud vrstva obsahuje nepodporované typy entit, [Služba konverze Azure Maps](/rest/api/maps/conversion) ignoruje tyto entity.  
 
 | Vrstva | Typy entit | Funkce |
 | :----- | :-------------------| :-------
@@ -168,11 +168,11 @@ V [ukázkovém balíčku kreslení](https://github.com/Azure-Samples/am-creator-
 
 ## <a name="manifest-file-requirements"></a>Požadavky souboru manifestu
 
-Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) mohla analyzovat svůj obsah. Ingestují se jenom soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, jsou ignorovány.
+Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js** . Popisuje soubory DWG, aby [Služba konverze Azure Maps](/rest/api/maps/conversion) mohla analyzovat svůj obsah. Ingestují se jenom soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, jsou ignorovány.
 
 Cesty k souborům v `buildingLevels` objektu souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" je "Basement. DWG". Soubor DWG pro úroveň 2 se jmenuje "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru.
 
-I když jsou k dispozici požadavky při použití objektů manifestu, nejsou všechny objekty požadovány. V následující tabulce jsou uvedeny povinné a volitelné objekty pro verzi 1,1 [služby Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion).
+I když jsou k dispozici požadavky při použití objektů manifestu, nejsou všechny objekty požadovány. V následující tabulce jsou uvedeny povinné a volitelné objekty pro verzi 1,1 [služby Azure Maps Conversion](/rest/api/maps/conversion).
 
 | Objekt | Povinné | Popis |
 | :----- | :------- | :------- |
@@ -188,7 +188,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `directoryInfo`
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 | `name`      | řetězec | true   |  Název budovy |
 | `streetAddress`|    řetězec |    false (nepravda)    | Adresa sestavení. |
@@ -209,7 +209,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `buildingLevels`Objekt obsahuje pole s JSON úrovněmi budov.
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`levelName`    |řetězec    |true |    Název popisné úrovně Například: Floor 1, předsálí, Blue parkování nebo Basement.|
 |`ordinal` | integer |    true | Určuje svislé pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
@@ -219,7 +219,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `georeference`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`lat`    | numerické |    true |    Desítková reprezentace stupně zeměpisné šířky v počátku kreslení zařízení. Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ).|
 |`lon`    |numerické|    true|    Desítková reprezentace ve stupních délky v počátku kreslení zařízení Souřadnice zdroje musí být v WGS84 web Mercator ( `EPSG:3857` ). |
@@ -227,7 +227,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 ### `dwgLayers`
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`exterior`    |pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
 |`unit`|    pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
@@ -241,7 +241,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `unitProperties`Objekt obsahuje pole s vlastnostmi jednotky ve formátu JSON.
 
-| Vlastnost  | Typ | Vyžadováno | Description |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |`unitName`    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
 |`categoryName`|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -261,7 +261,7 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 `zoneProperties`Objekt obsahuje pole JSON vlastností zóny.
 
-| Vlastnost  | Typ | Vyžadováno | Popis |
+| Vlastnost  | Typ | Povinné | Popis |
 |-----------|------|----------|-------------|
 |Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
 |categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
@@ -404,7 +404,7 @@ Následuje ukázkový soubor manifestu ukázkového balíčku pro kreslení. Pok
 
 ## <a name="next-steps"></a>Další kroky
 
-Když váš balíček vykreslování splňuje požadavky, můžete použít [službu Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) k převedení balíčku na datovou mapu. Pak můžete použít datovou sadu k vygenerování vnitřních map pomocí modulu mapy vnitřníchy.
+Když váš balíček vykreslování splňuje požadavky, můžete použít [službu Azure Maps Conversion](/rest/api/maps/conversion) k převedení balíčku na datovou mapu. Pak můžete použít datovou sadu k vygenerování vnitřních map pomocí modulu mapy vnitřníchy.
 
 > [!div class="nextstepaction"]
 >[Autor pro mapy vnitřníchy](creator-indoor-maps.md)

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372540"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895881"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte, jak pomocí sady Azure Machine Learning SDK pro Pyth
 
 Tento kurz je třetí *částí série kurzů* , ve které se seznámíte se základy Azure Machine Learning a dokončení úloh strojového učení na základě úloh v Azure. Tento kurz sestaví na práci, kterou jste dokončili v [části 1: nastavení místního počítače pro Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoří a spustí "Hello World!" Skript v jazyce Python lokálně.
@@ -33,7 +33,7 @@ V tomto kurzu provedete následující:
 > * Odeslat a spustit "Hello World!" pravidel.
 > * Zobrazte si výstup kódu v cloudu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončení [části 1](tutorial-1st-experiment-sdk-setup-local.md) , pokud ještě nemáte Azure Machine Learning pracovní prostor.
 - Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
@@ -142,6 +142,9 @@ Spusťte skript ovládacího prvku, který zase běží `hello.py` na výpočetn
 ```bash
 python 03-run-hello.py
 ```
+
+> [!TIP]
+> Pokud spuštění tohoto kódu vám poskytne chybu, ke které nemáte přístup k předplatnému, přečtěte si téma [připojení k pracovnímu prostoru](how-to-manage-workspace.md?tab=python#connect-multi-tenant) , kde najdete informace o možnostech ověřování.
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Monitorování kódu v cloudu pomocí studia
 

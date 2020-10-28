@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90968886"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895949"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurace spravovaných identit pro prostředky Azure v sadě škálování virtuálních počítačů pomocí REST API volání
 
@@ -33,21 +33,24 @@ V tomto článku se pomocí objektu KUDRLINKOU pro volání Azure Resource Manag
 - Povolení a zakázání spravované identity přiřazené systémem v sadě škálování virtuálních počítačů Azure
 - Přidání a odebrání spravované identity přiřazené uživatelem v sadě škálování virtuálních počítačů Azure
 
+Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+
 ## <a name="prerequisites"></a>Předpoklady
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si téma [co jsou spravované identity pro prostředky Azure?](overview.md). Další informace o spravovaných typech identity přiřazených systémem a uživatelem definovaných uživatelů najdete v tématu [spravované identity typu](overview.md#managed-identity-types).
+
 - K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení rolí Azure:
 
-    > [!NOTE]
-    > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+  - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
 
-    - [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) , aby vytvořil sadu škálování virtuálního počítače a povolil a odebral systémovou a/nebo uživatelsky spravovanou identitu ze sady škálování virtuálního počítače.
-    - Role [Přispěvatel spravovaných identit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
-    - Role [operátora spravované identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) pro přiřazení a odebrání uživatelsky přiřazené identity z a do sady škálování virtuálního počítače.
-- Všechny příkazy v tomto článku můžete spustit buď v cloudu, nebo místně:
-    - Pro spuštění v cloudu použijte [Azure Cloud Shell](../../cloud-shell/overview.md).
-    - Pokud chcete spustit místně, [nainstalujte a](https://curl.haxx.se/download.html) rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli)a pak se přihlaste k Azure pomocí [AZ Login](/cli/azure/reference-index#az-login) s účtem, který je přidružený k předplatnému Azure, chcete spravovat systém nebo uživatelsky přiřazené spravované identity.
+  - Role [Přispěvatel spravovaných identit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) k vytvoření spravované identity přiřazené uživatelem.
+
+  - Role [operátora spravované identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) pro přiřazení a odebrání uživatelsky přiřazené identity z a do sady škálování virtuálního počítače.
+
+  > [!NOTE]
+  > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>Spravovaná identita přiřazená systémem
 
@@ -63,7 +66,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    az group create --name myResourceGroup --location westus
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -75,7 +78,7 @@ Chcete-li vytvořit sadu škálování virtuálního počítače s povolenou spr
    az account get-access-token
    ``` 
 
-4. Vytvořte sadu škálování virtuálního počítače pomocí OBLÉ pro volání koncového bodu REST Azure Resource Manager. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+4. Pomocí Azure Cloud Shell vytvořte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU pro volání koncového bodu Azure Resource Manager REST. Následující příklad vytvoří v *myResourceGroup* sadu škálování virtuálního počítače s názvem *myVMSS* , která má spravovanou identitu přiřazenou systémem, jak je uvedeno v těle žádosti podle hodnoty `"identity":{"type":"SystemAssigned"}` . Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -167,7 +170,7 @@ Pokud chcete v existující sadě škálování virtuálního počítače povoli
    az account get-access-token
    ```
 
-2. Použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST, aby se povolila spravovaná identita přiřazená systémem v sadě škálování virtuálního počítače, jak je identifikovaná v těle žádosti podle hodnoty `{"identity":{"type":"SystemAssigned"}` pro sadu škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+2. Použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST, aby se povolila spravovaná identita přiřazená systémem v sadě škálování virtuálního počítače, jak je identifikovaná v těle žádosti podle hodnoty `{"identity":{"type":"SystemAssigned"}` pro sadu škálování virtuálního počítače s názvem *myVMSS* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
    
    > [!IMPORTANT]
    > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte ke službě škálování virtuálního počítače přiřazené nějaké spravované identity přiřazené uživatelem, které jsou identifikované v `identity` hodnotě odpovědi, přejděte ke kroku 3, který vám ukáže, jak uchovávat spravované identity přiřazené uživatelem a zároveň povolit spravovanou identitu přiřazenou systémem v sadě škálování virtuálního počítače.
@@ -278,7 +281,7 @@ Pokud chcete zakázat identitu přiřazenou systémem u existující sady škál
    az account get-access-token
    ```
 
-2. Aktualizujte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU a zavolejte Azure Resource Manager koncovému bodu REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, jak je identifikovaná v těle žádosti, podle hodnoty `{"identity":{"type":"None"}}` ze sady škálování virtuálního počítače s názvem *myVMSS*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+2. Aktualizujte sadu škálování virtuálního počítače pomocí metody KUDRLINKOU a zavolejte Azure Resource Manager koncovému bodu REST, aby se zakázala spravovaná identita přiřazená systémem.  Následující příklad zakáže spravovanou identitu přiřazenou systémem, jak je identifikovaná v těle žádosti, podle hodnoty `{"identity":{"type":"None"}}` ze sady škálování virtuálního počítače s názvem *myVMSS* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    > [!IMPORTANT]
    > K tomu, abyste se ujistili, že neodstraníte žádné existující spravované identity přiřazené uživatelem, které jsou přiřazené k sadě škálování virtuálních počítačů, musíte pomocí tohoto příkazu SLOŽENÉho příkazu vytvořit seznam spravovaných identit přiřazených uživateli: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"` . Pokud máte k sadě škálování virtuálního počítače přiřazenou spravovanou identitu přiřazenou uživatelem, přejděte ke kroku 3, který vám ukáže, jak zachovat uživatelem přiřazené spravované identity a zároveň odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálních počítačů.
@@ -308,7 +311,7 @@ Pokud chcete zakázat identitu přiřazenou systémem u existující sady škál
     }
    ```
 
-   Pokud chcete odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače, která má uživatelsky přiřazené spravované identity, odeberte ji `SystemAssigned` z `{"identity":{"type:" "}}` hodnoty a zachová hodnoty `UserAssigned` a `userAssignedIdentities` slovník, pokud používáte **rozhraní API verze 2018-06-01**. Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
+   Pokud chcete odebrat spravovanou identitu přiřazenou systémem ze sady škálování virtuálního počítače, která má uživatelsky přiřazené spravované identity, odeberte ji `SystemAssigned` z `{"identity":{"type:" "}}` hodnoty a zachová hodnoty `UserAssigned` a `userAssignedIdentities` slovník, pokud používáte **rozhraní API verze 2018-06-01** . Pokud používáte **rozhraní API verze 2017-12-01** nebo starší, nechejte `identityIds` pole.
 
 ## <a name="user-assigned-managed-identity"></a>Spravovaná identita přiřazená uživatelem
 
@@ -322,7 +325,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
    az account get-access-token
    ```
 
-2. Vytvořte [síťové rozhraní](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) pro sadu škálování virtuálního počítače:
+2. Vytvořte [síťové rozhraní](/cli/azure/network/nic#az-network-nic-create) pro sadu škálování virtuálního počítače:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -539,7 +542,7 @@ V této části se dozvíte, jak přidat a odebrat spravovanou identitu přiřaz
 
 4. Pokud nemáte žádné spravované identity přiřazené uživateli nebo systémem přiřazené k sadě škálování virtuálních počítačů, použijte následující příkaz, který zavolá Azure Resource Manager koncový bod REST pro přiřazení první spravované identity přiřazené uživateli do sady škálování virtuálního počítače.  Pokud máte ke službě škálování virtuálního počítače přiřazené spravované identity uživatele nebo systému, přeskočte na krok 5, který vám ukáže, jak do sady škálování virtuálních počítačů přidat víc uživatelských identit přiřazených uživatelem, a zároveň udržovat spravovanou identitu přiřazenou systémem.
 
-   Následující příklad přiřadí spravovanou identitu přiřazenou uživatelem `ID1` do sady škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup*.  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
+   Následující příklad přiřadí spravovanou identitu přiřazenou uživatelem `ID1` do sady škálování virtuálního počítače s názvem *myVMSS* ve skupině prostředků *myResourceGroup* .  Nahraďte `<ACCESS TOKEN>` hodnotou, kterou jste obdrželi v předchozím kroku, pokud jste požádali o přístupový token nosiče a hodnotu, která je `<SUBSCRIPTION ID>` pro vaše prostředí vhodná.
 
    **ROZHRANÍ API VERZE 2018-06-01**
 
