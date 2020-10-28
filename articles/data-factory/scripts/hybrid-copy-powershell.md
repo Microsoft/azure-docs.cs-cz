@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194632"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632228"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Použití PowerShellu k vytvoření kanálu Data Factory pro kopírování dat z SQL Server do Azure
 
@@ -25,11 +25,11 @@ Tento ukázkový skript PowerShellu vytvoří v Azure Data Factory kanál, kter�
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- **SQL Server**. V této ukázce použijete databázi SQL Server jako **zdrojové** úložiště dat.
-- **Účet Azure Storage**. V této ukázce použijete úložiště objektů BLOB v Azure jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
-- **Integration runtime**v místním prostředí. Stáhněte soubor MSI z [webu Download Center](https://www.microsoft.com/download/details.aspx?id=39717) a spusťte ho, abyste na svém počítači nainstalovali místně hostovaný modul runtime integrace.  
+- **SQL Server** . V této ukázce použijete databázi SQL Server jako **zdrojové** úložiště dat.
+- **Účet Azure Storage** . V této ukázce použijete úložiště objektů BLOB v Azure jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
+- **Integration runtime** v místním prostředí. Stáhněte soubor MSI z [webu Download Center](https://www.microsoft.com/download/details.aspx?id=39717) a spusťte ho, abyste na svém počítači nainstalovali místně hostovaný modul runtime integrace.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Vytvořit ukázkovou databázi v SQL Server
 1. V databázi SQL Server pomocí následujícího skriptu SQL vytvořte tabulku s názvem **EMP** :
@@ -92,6 +92,6 @@ Tento skript používá následující příkazy:
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
+Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/).
 
 Další Azure Data Factory ukázkových skriptech PowerShellu najdete v [ukázkách Azure Data Factory PowerShellu](../samples-powershell.md).

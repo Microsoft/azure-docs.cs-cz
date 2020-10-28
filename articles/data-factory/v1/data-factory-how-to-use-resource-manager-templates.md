@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5df2f9cd0a47e5a89d7ff2eb12aefe593cae7a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194465"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631474"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Vytváření Azure Data Factory entit pomocí šablon
 > [!NOTE]
@@ -228,7 +228,7 @@ Podrobnosti o vlastnostech JSON pro definování konkrétního kanálu a aktivit
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Šablona Data Factory Parametrizace
-Osvědčené postupy pro Parametrizace najdete v tématu [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../azure-resource-manager/resource-manager-template-best-practices.md). Obecně platí, že použití parametrů by mělo být minimalizováno, zejména pokud lze použít proměnné. Zadejte pouze parametry v následujících scénářích:
+Osvědčené postupy pro Parametrizace najdete v tématu [osvědčené postupy pro vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-best-practices.md). Obecně platí, že použití parametrů by mělo být minimalizováno, zejména pokud lze použít proměnné. Zadejte pouze parametry v následujících scénářích:
 
 * Nastavení se liší podle prostředí (příklad: vývoj, testování a produkce).
 * Tajné kódy (například hesla)

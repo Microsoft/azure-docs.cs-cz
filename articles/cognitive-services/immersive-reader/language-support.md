@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
-ms.author: metan
-ms.openlocfilehash: c4aa9c22a0350c5d946d2fd45a983eac34681512
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: metang
+ms.openlocfilehash: 80da6776412e0df7b5b9ae5759ac770c04673992
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320927"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631066"
 ---
 # <a name="language-support-for-immersive-reader"></a>Podpora jazyků pro moderní čtečku
 
@@ -62,7 +62,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -168,7 +168,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Fijian | FJ |
 | Filipino | náhl |
@@ -265,7 +265,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Yue čínština | yue |
 
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 | Jazyk | Značka |
 |----------|-----|
@@ -300,7 +300,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
@@ -397,7 +397,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Estonština | et |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
@@ -466,7 +466,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -516,7 +516,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Finština | WiFi |
 | finština (Finsko) | fi-FI |
 | Francouzština | FR |
@@ -561,7 +561,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Angličtina (Irsko) | EN-IE |
 | Angličtina (Nový Zéland) | EN-NZ |
 | Angličtina (Spojené království) | en-GB |
-| Angličtina (Spojené státy) | cs-CZ |
+| Angličtina (Spojené státy) | en-US |
 | Francouzština | FR |
 | Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |

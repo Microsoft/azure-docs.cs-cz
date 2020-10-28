@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088665"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631185"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Kurz: nasazení jarního cloudu Azure ve službě Azure Virtual Network (vkládání virtuální sítě)
 
@@ -35,21 +35,21 @@ az provider register --namespace Microsoft.AppPlatform
 ## <a name="virtual-network-requirements"></a>Požadavky na virtuální síť
 Virtuální síť, do které nasazujete instanci služby jarní cloudová služba Azure, musí splňovat následující požadavky:
 
-* **Umístění**: virtuální síť se musí nacházet ve stejném umístění jako instance služby jarní cloudová služba Azure.
-* **Předplatné**: virtuální síť musí být ve stejném předplatném jako instance služby jarní cloudová služba Azure.
-* **Podsítě**: virtuální síť musí zahrnovat dvě podsítě vyhrazené pro instanci Azure jaře Cloud Service: 
+* **Umístění** : virtuální síť se musí nacházet ve stejném umístění jako instance služby jarní cloudová služba Azure.
+* **Předplatné** : virtuální síť musí být ve stejném předplatném jako instance služby jarní cloudová služba Azure.
+* **Podsítě** : virtuální síť musí zahrnovat dvě podsítě vyhrazené pro instanci Azure jaře Cloud Service: 
     * Jeden pro modul runtime služby
     * Jednu pro aplikace mikroslužeb pro spouštění pomocí pružiny. 
     * Mezi těmito podsítěmi a instancí Azure jaře Cloud Service existuje vztah 1:1. Pro každou instanci služby, kterou nasazujete, musíte použít novou podsíť a Každá podsíť může zahrnovat jenom jednu instanci služby.
-* **Adresní prostor**: jeden blok CIDR až/28 pro podsíť modulu runtime služby a další blok CIDR až/24 pro podsíť aplikací mikroslužby pro jaře booting.
-* **Směrovací tabulka**: podsítě nesmí mít přidruženou stávající směrovací tabulku.
+* **Adresní prostor** : jeden blok CIDR až/28 pro podsíť modulu runtime služby a další blok CIDR až/24 pro podsíť aplikací mikroslužby pro jaře booting.
+* **Směrovací tabulka** : podsítě nesmí mít přidruženou stávající směrovací tabulku.
 
 Následující postupy popisují nastavení virtuální sítě tak, aby obsahovalo instanci Azure jaře cloudu.
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 Pokud již máte virtuální síť pro hostování instance služby Azure jaře Cloud Service, přeskočte kroky 1, 2 a 3. Pro přípravu podsítí pro virtuální síť můžete začít od kroku 4.
 
-1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**. Z Azure Marketplace vyberte **síť**  >  **virtuální síť**.
+1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek** . Z Azure Marketplace vyberte **síť**  >  **virtuální síť** .
 
 1. V dialogovém okně **vytvořit virtuální síť** zadejte nebo vyberte následující informace:
 
@@ -57,24 +57,24 @@ Pokud již máte virtuální síť pro hostování instance služby Azure jaře 
     |-----------------|--------------------------------------------------|
     |Předplatné     |Vyberte své předplatné.                         |
     |Skupina prostředků   |Vyberte skupinu prostředků nebo vytvořte novou.  |
-    |Name             |Přechod do *Azure-jaře-Cloud-VNet*                   |
+    |Název             |Přechod do *Azure-jaře-Cloud-VNet*                   |
     |Umístění         |Vyberte **východní USA**                                |
 
-1. Klikněte na **Další: IP adresy >**. 
+1. Klikněte na **Další: IP adresy >** . 
  
 1. V případě adresního prostoru IPv4 zadejte 10.1.0.0/16.
 
-1. Vyberte **Přidat podsíť**a pak zadejte *Service-runtime-Subnet* pro **název podsítě** a 10.1.0.0/24 pro **Rozsah adres podsítě**. Pak klikněte na **Přidat**.
+1. Vyberte **Přidat podsíť** a pak zadejte *Service-runtime-Subnet* pro **název podsítě** a 10.1.0.0/24 pro **Rozsah adres podsítě** . Pak klikněte na **Přidat** .
 
-1. Vyberte **Přidat podsíť** znovu a pak zadejte *aplikace – podsíť* pro **název podsítě** a 10.1.1.0/24 pro **Rozsah adres podsítě**.  Klikněte na **Přidat**.
+1. Vyberte **Přidat podsíť** znovu a pak zadejte **název podsítě** a **Rozsah adres podsítě** , například *aplikace-podsíť* a a 10.1.1.0/24.  Klikněte na **Přidat** .
 
-1. Klikněte na **Zkontrolovat a vytvořit**. Nechejte zbývající výchozí hodnoty a klikněte na **vytvořit**.
+1. Klikněte na **Zkontrolovat a vytvořit** . Nechejte zbývající výchozí hodnoty a klikněte na **vytvořit** .
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Udělení oprávnění ke službě virtuální síti
 
 Vyberte virtuální síť *Azure-jaře-Cloud-VNet* , kterou jste vytvořili dříve.
 
-1. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat > přidat přiřazení role**.
+1. Vyberte **řízení přístupu (IAM)** a pak vyberte **Přidat > přidat přiřazení role** .
 
     ![Řízení přístupu pro v-NET](./media/spring-cloud-v-net-injection/access-control.png)
 
@@ -85,7 +85,7 @@ Vyberte virtuální síť *Azure-jaře-Cloud-VNet* , kterou jste vytvořili dř�
     |Role     |Vybrat **vlastníka**                                  |
     |Vyberte   |Zadejte *poskytovatele prostředků pro jarní cloud Azure*      |
 
-    Pak vyberte *cloudový poskytovatel prostředků Azure*a klikněte na **Uložit**.
+    Pak vyberte *cloudový poskytovatel prostředků Azure* a klikněte na **Uložit** .
 
     ![Udělení poskytovatele prostředků pro jarní cloud Azure do v-NET](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
 
@@ -108,38 +108,38 @@ az role assignment create \
 
 1. Otevřete Azure Portal pomocí https://ms.portal.azure.com .
 
-1. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud**a z výsledku vyberte **Azure jaře Cloud** .
+1. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud** a z výsledku vyberte **Azure jaře Cloud** .
 
-1. Na stránce **jarní cloud Azure** vyberte **+ Přidat**.
+1. Na stránce **jarní cloud Azure** vyberte **+ Přidat** .
 
 1. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure. 
 
 1. Vyberte stejnou skupinu prostředků a oblast jako virtuální síť.
 
-1. V části **Podrobnosti o službě** **název** vyberte *Azure-jaře-Cloud-VNet*.
+1. V části **Podrobnosti o službě** **název** vyberte *Azure-jaře-Cloud-VNet* .
 
 1. Vyberte kartu **sítě** a vyberte následující:
 
     |Nastavení                                |Hodnota                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Nasazení ve vlastní virtuální síti     |Vyberte **Ano**.                                    |
+    |Nasazení ve vlastní virtuální síti     |Vyberte **Ano** .                                    |
     |Virtuální síť                        |Výběr *Azure-jaře-Cloud-VNet*                  |
     |Podsíť modulu runtime služby                 |Výběr *služby – modul runtime-podsíť*                   |
     |Podsíť pro aplikace s pružinou spouštěcích mikroslužeb   |Vybrat *aplikace – podsíť*                              |
 
     ![Karta vytvořit síť](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
 
-1. Klikněte na **Zkontrolovat a vytvořit**.
+1. Klikněte na **Zkontrolovat a vytvořit** .
 
-1. Ověřte vaše specifikace a klikněte na **vytvořit**.
+1. Ověřte vaše specifikace a klikněte na **vytvořit** .
 
 Po nasazení se ve vašem předplatném vytvoří dvě další skupiny prostředků, které budou hostovat síťové prostředky pro instanci Azure jaře Cloud Service.  Přejděte na **domovskou stránku** a v horních položkách nabídky vyberte **skupiny prostředků** , abyste našli následující nové skupiny prostředků.
 
-Skupina prostředků s názvem *Azure-jaře-Cloud-Service-runtime_ {název instance služby} _ {region instance služby}* obsahuje síťové prostředky pro modul runtime služby instance služby.
+Skupina prostředků s názvem *AP-svc-RT_ {název instance služby} _ {region instance služby}* obsahuje síťové prostředky pro modul runtime služby instance služby.
 
   ![Modul runtime služby](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-Skupina prostředků s názvem *Azure-jaře-Cloud-Service-runtime_ {název instance služby} _ {region instance služby}* obsahuje síťové prostředky pro aplikace instance služby jarního spuštění.
+Skupina prostředků s názvem *AP-App_ {Service instance Service} _ {region instance služby}* obsahuje síťové prostředky pro aplikace instance služby pružinového spouštění.
 
   ![Skupina prostředků aplikace](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 

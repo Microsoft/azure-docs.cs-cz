@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4e9ea34317951ecd9d3b6649ce42ffcf2f476d03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149220"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631134"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
- 
 ## <a name="overview"></a>Přehled ##
 
 Azure App Service Environment je funkce služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service ve velkém měřítku. Tato funkce umožňuje hostovat vaše:
@@ -32,7 +31,7 @@ Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které 
 * Izolace a bezpečný přístup k síti
 * Využití velkého množství paměti
 
-Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě jsou služby ASE ideální pro horizontální škálování nestavových aplikačních vrstev s podporou náročných úloh RPS.
+Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě je služby ASE ideální pro horizontální škálování bezstavových aplikačních vrstev v rámci podpory úloh vysoké požadavků za sekundu (RPS).
 
 Služby ASE hostitelské aplikace jenom od jednoho zákazníka a tak učinit v jednom ze svých virtuální sítě. Zákazníci mají podrobnou kontrolu nad příchozími i odchozími přenosy v síti aplikací. Aplikace můžou prostřednictvím sítí VPN vytvářet vysokorychlostní zabezpečená připojení k místním firemním prostředkům.
 

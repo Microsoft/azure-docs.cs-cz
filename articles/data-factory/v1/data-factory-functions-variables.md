@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73667655"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631508"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
@@ -61,7 +61,7 @@ Funkce v datové továrně můžete použít spolu se systémovými proměnnými
    
     $ $ není potřeba pro zadání výrazů vstupních závislostí.     
 
-V následující ukázce je vlastnost **sqlReaderQuery** v souboru JSON přiřazena k hodnotě vrácené `Text.Format` funkcí. Tato ukázka také používá systémovou proměnnou s názvem **WindowStart**, která představuje čas spuštění okna spuštění aktivity.
+V následující ukázce je vlastnost **sqlReaderQuery** v souboru JSON přiřazena k hodnotě vrácené `Text.Format` funkcí. Tato ukázka také používá systémovou proměnnou s názvem **WindowStart** , která představuje čas spuštění okna spuštění aktivity.
 
 ```json
 {
@@ -70,28 +70,28 @@ V následující ukázce je vlastnost **sqlReaderQuery** v souboru JSON přiřaz
 }
 ```
 
-Viz téma [vlastní formátovací řetězce pro datum a čas](https://msdn.microsoft.com/library/8kb3ddd4.aspx) , které popisují různé možnosti formátování, které můžete použít (například: Ay vs. rrrr). 
+Viz téma [vlastní formátovací řetězce pro datum a čas](/dotnet/standard/base-types/custom-date-and-time-format-strings) , které popisují různé možnosti formátování, které můžete použít (například: Ay vs. rrrr). 
 
 ### <a name="functions"></a>Functions
 V následujících tabulkách jsou uvedeny všechny funkce v Azure Data Factory:
 
-| Kategorie | Funkce | Parametry | Popis |
+| Kategorie | Function | Parametry | Popis |
 | --- | --- | --- | --- |
 | Čas |AddHours (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y hodiny do daného času X. <br/><br/>Příklad: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Čas |AddMinutes (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y minuty do X.<br/><br/>Příklad: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
 | Čas |StartOfHour (X) |X: datum a čas |Získá počáteční čas hodiny reprezentované hodinovou komponentou X. <br/><br/>Příklad: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| Date |AddDays (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y dní do X. <br/><br/>Příklad: 9/15/2013 12:00:00 PM + 2 dny = 9/17/2013 12:00:00 odp.<br/><br/>Můžete také odečíst dny zadáním Y jako záporného čísla.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| Date |AddMonths (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y měsíců do X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Zadáním hodnoty Y jako záporné číslo můžete odečíst i měsíc.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Date |AddQuarters (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y * 3 měsíce do X.<br/><br/>Příklad: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| Date |AddWeeks (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y * 7 dní do X.<br/><br/>Příklad: 9/15/2013 12:00:00 PM + 1 týden = 9/22/2013 12:00:00 odp.<br/><br/>Zadáním hodnoty Y jako záporné číslo můžete odečíst i týdny.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| Date |AddYears (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y roky do X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Můžete také odečíst roky zadáním Y jako záporného čísla.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| Date |Den (X) |X: datum a čas |Načte komponentu dne X.<br/><br/>Příklad: `Day of 9/15/2013 12:00:00 PM is 9`. |
-| Date |DayOfWeek (X) |X: datum a čas |Načte komponentu dne v týdnu X.<br/><br/>Příklad: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| Date |DayOfYear (X) |X: datum a čas |Vrátí den v roce reprezentovaný komponentou year v roce X.<br/><br/>Příklady:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| Date |DaysInMonth (X) |X: datum a čas |Vrátí dny v měsíci reprezentované komponentou month parametru X.<br/><br/>Příklad: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| Date |EndOfDay (X) |X: datum a čas |Získá datum a čas, který představuje konec dne (den komponenty) X.<br/><br/>Příklad: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| Date |EndOfMonth (X) |X: datum a čas |Vrátí konec měsíce reprezentovaného součástí měsíce parametru X. <br/><br/>Příklad: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datum a čas, který představuje konec dne v měsíci) |
-| Date |StartOfDay (X) |X: datum a čas |Získá začátek dne reprezentovaného komponentou Day parametru X.<br/><br/>Příklad: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| Datum |AddDays (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y dní do X. <br/><br/>Příklad: 9/15/2013 12:00:00 PM + 2 dny = 9/17/2013 12:00:00 odp.<br/><br/>Můžete také odečíst dny zadáním Y jako záporného čísla.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| Datum |AddMonths (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y měsíců do X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Zadáním hodnoty Y jako záporné číslo můžete odečíst i měsíc.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Datum |AddQuarters (X, Y) |X: datum a čas <br/><br/>Y: int |Přidá Y * 3 měsíce do X.<br/><br/>Příklad: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Datum |AddWeeks (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y * 7 dní do X.<br/><br/>Příklad: 9/15/2013 12:00:00 PM + 1 týden = 9/22/2013 12:00:00 odp.<br/><br/>Zadáním hodnoty Y jako záporné číslo můžete odečíst i týdny.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Datum |AddYears (X, Y) |X: datum a čas<br/><br/>Y: int |Přidá Y roky do X.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Můžete také odečíst roky zadáním Y jako záporného čísla.<br/><br/>Příklad: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| Datum |Den (X) |X: datum a čas |Načte komponentu dne X.<br/><br/>Příklad: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Datum |DayOfWeek (X) |X: datum a čas |Načte komponentu dne v týdnu X.<br/><br/>Příklad: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| Datum |DayOfYear (X) |X: datum a čas |Vrátí den v roce reprezentovaný komponentou year v roce X.<br/><br/>Příklady:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Datum |DaysInMonth (X) |X: datum a čas |Vrátí dny v měsíci reprezentované komponentou month parametru X.<br/><br/>Příklad: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| Datum |EndOfDay (X) |X: datum a čas |Získá datum a čas, který představuje konec dne (den komponenty) X.<br/><br/>Příklad: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| Datum |EndOfMonth (X) |X: datum a čas |Vrátí konec měsíce reprezentovaného součástí měsíce parametru X. <br/><br/>Příklad: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (datum a čas, který představuje konec dne v měsíci) |
+| Datum |StartOfDay (X) |X: datum a čas |Získá začátek dne reprezentovaného komponentou Day parametru X.<br/><br/>Příklad: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
 | DateTime |Od (X) |X: řetězec |Analyzuje řetězec X do data a času. |
 | DateTime |Osové značky (X) |X: datum a čas |Získá vlastnost Ticks parametru X. Jedna značka se rovná 100 nanosekund. Hodnota této vlastnosti představuje počet taktů, jejichž platnost uplynula 12:00:00 od 1. ledna 0001. |
 | Text |Formát (X) |X: řetězcová proměnná |Zformátuje text (použijte `\\'` kombinaci pro řídicí `'` znak).|
@@ -227,5 +227,4 @@ Chcete-li číst data z předchozího dne reprezentovaného vlastnosti slicestar
 }
 ```
 
-Viz téma [vlastní formátovací řetězce pro datum a čas](https://msdn.microsoft.com/library/8kb3ddd4.aspx) , které popisují různé možnosti formátování, které můžete použít (například: RR vs. rrrr). 
-
+Viz téma [vlastní formátovací řetězce pro datum a čas](/dotnet/standard/base-types/custom-date-and-time-format-strings) , které popisují různé možnosti formátování, které můžete použít (například: RR vs. rrrr).

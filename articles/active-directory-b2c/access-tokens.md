@@ -7,20 +7,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b6adb06f22013e68987f3315d52e3594fba63907
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309018"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631389"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Vyžádání přístupového tokenu ve službě Azure Active Directory B2C
 
-*Přístupový token* obsahuje deklarace identity, pomocí kterých můžete v Azure Active Directory B2C (Azure AD B2C) identifikovat oprávnění udělená vašim rozhraním API. Při volání serveru prostředků musí požadavek HTTP obsahovat přístupový token. Přístupový token se v odpovědích služby Azure AD B2C označuje textem **access_token**.
+*Přístupový token* obsahuje deklarace identity, pomocí kterých můžete v Azure Active Directory B2C (Azure AD B2C) identifikovat oprávnění udělená vašim rozhraním API. Při volání serveru prostředků musí požadavek HTTP obsahovat přístupový token. Přístupový token se v odpovědích služby Azure AD B2C označuje textem **access_token** .
 
 V tomto článku se dozvíte, jak požádat o přístupový token pro webovou aplikaci a webové rozhraní API. Další informace o tokenech v Azure AD B2C najdete v [přehledu tokenů v Azure Active Directory B2C](tokens-overview.md).
 
@@ -71,10 +71,10 @@ V následujícím příkladu nahraďte tyto hodnoty:
 - `<tenant-name>` – název domény tenanta Azure AD B2C.
 - `<policy-name>` – název vlastní zásady nebo toku uživatele.
 - `<application-ID>` – identifikátor webové aplikace, kterou jste zaregistrovali za účelem zpracování toku uživatele.
-- `<redirect-uri>` – **identifikátor URI pro přesměrování**, který jste zadali při registraci klientské aplikace.
+- `<redirect-uri>` – **identifikátor URI pro přesměrování** , který jste zadali při registraci klientské aplikace.
 
 ```http
-GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms

@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 1c630cdd66fa4f8e609524feb9c3f0bcad9711a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458162"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632443"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>Odstranění duplicit řádků a vyhledání hodnot null pomocí fragmentů toku dat
 
@@ -25,7 +25,7 @@ Pomocí fragmentů kódu při mapování toků dat můžete snadno provádět b�
 
 ## <a name="create-a-pipeline"></a>Vytvoření kanálu
 
-1. Vyberte **Nový kanál**.
+1. Vyberte **Nový kanál** .
 
 1. Přidejte aktivitu toku dat.
 
@@ -35,9 +35,9 @@ Pomocí fragmentů kódu při mapování toků dat můžete snadno provádět b�
 
     Deduplicity a fragmenty kontroly hodnoty null používají obecné vzory, které využívají posun schématu toku dat. Fragmenty kódu fungují s jakýmkoli schématem z vaší datové sady nebo s datovými sadami, které nemají žádné předdefinované schéma.
 
-1. V oddílu "DISTINCT řádky všech sloupců" [skriptu toku dat (DFS)](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)zkopírujte fragment kódu pro DistinctRows.
+1. V oddílu "DISTINCT řádky všech sloupců" [skriptu toku dat (DFS)](./data-flow-script.md#distinct-row-using-all-columns)zkopírujte fragment kódu pro DistinctRows.
 
-1. V uživatelském rozhraní návrháře toku dat vyberte tlačítko **skriptu** v pravém horním rohu a otevřete editor skriptů za grafem toku dat.
+1. [Přejít na stránku dokumentace ke skriptu toku dat a zkopírovat fragment kódu pro jedinečné řádky.](./data-flow-script.md#distinct-row-using-all-columns)
 
     ![Snímek obrazovky zdrojového fragmentu](media/data-flow/snippet-adf-3.png)
 
@@ -55,7 +55,7 @@ Pomocí fragmentů kódu při mapování toků dat můžete snadno provádět b�
     
 1. Přidejte fragment kódu pro rozdělení dat do jednoho datového proudu, který obsahuje řádky s hodnotami null a další datový proud bez hodnot null. Postupujte následovně:
 
-   a. Vraťte se do [knihovny fragmentů kódu](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns)a pak zkopírujte kód pro kontroly null.
+1. [Vraťte se do knihovny fragmentů kódu a tentokrát zkopírujte kód pro kontroly hodnoty NULL.](./data-flow-script.md#check-for-nulls-in-all-columns)
 
    b. V Návrháři toku dat znovu vyberte **skript** a potom tento nový kód transformace vložte do dolní části. Tato akce připojí skript k předchozí transformaci tím, že místo vloženého fragmentu umístí název této transformace.
 

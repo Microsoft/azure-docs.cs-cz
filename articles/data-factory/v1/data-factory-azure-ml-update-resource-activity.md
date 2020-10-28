@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d0dd7f71c21e223203fb0e695ba3139eaea0aa81
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368821"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631746"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning Studio (Classic) pomocí aktivity aktualizovat prostředek
 
@@ -26,8 +26,8 @@ ms.locfileid: "92368821"
 > * [Aktivita MapReduce](data-factory-map-reduce.md)
 > * [Aktivita streamování Hadoop](data-factory-hadoop-streaming-activity.md)
 > * [Aktivita Sparku](data-factory-spark.md)
-> * [Aktivita spuštění dávky Azure Machine Learning Studio (Classic)](data-factory-azure-ml-batch-execution-activity.md)
-> * [Aktivita aktualizace prostředku Azure Machine Learning Studio (Classic)](data-factory-azure-ml-update-resource-activity.md)
+> * [Aktivita Provedení dávky služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktivita Aktualizace prostředků služby Azure Machine Learning Studio (klasická verze)](data-factory-azure-ml-update-resource-activity.md)
 > * [Aktivita Uložená procedura](data-factory-stored-proc-activity.md)
 > * [Aktivita U-SQL služby Data Lake Analytics](data-factory-usql-activity.md)
 > * [Vlastní aktivita rozhraní .NET](data-factory-use-custom-activities.md)
@@ -42,9 +42,9 @@ Tento článek doplňuje hlavní článek o integraci Azure Data Factory-Azure M
 Prediktivní modely v Azure Machine Learning Studio (klasický) experimenty bodování se v průběhu času musí přenášet pomocí nových vstupních datových sad. Až budete s rekurzem hotovi, chcete aktualizovat webovou službu bodování pomocí předaného modelu ML. Typický postup, jak povolit přeškolení a aktualizace modelů studia (Classic) prostřednictvím webových služeb, jsou tyto:
 
 1. Vytvořte experiment v [Azure Machine Learning Studio (Classic)](https://studio.azureml.net).
-2. Pokud jste s modelem spokojeni, použijte Azure Machine Learning Studio (Classic) k publikování webových služeb pro **školicí experiment** i bodování/**prediktivní experiment**.
+2. Pokud jste s modelem spokojeni, použijte Azure Machine Learning Studio (Classic) k publikování webových služeb pro **školicí experiment** i bodování/ **prediktivní experiment** .
 
-Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Azure Machine Learning Studio (Classic)](../../machine-learning/studio/retrain-machine-learning-model.md) .
+Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Azure Machine Learning Studio (Classic)](../../machine-learning/classic/retrain-machine-learning-model.md) .
 
 - **Školení webové služby** – přijímá školicí data a vytváří školené modely. Výstupem rekurze je soubor. ilearner v úložišti objektů BLOB v Azure. **Výchozím koncovým bodem** se automaticky vytvoří při publikování experimentu školení jako webové služby. Můžete vytvořit další koncové body, ale v příkladu se používá pouze výchozí koncový bod.
 - **Webová služba bodování** – přijímá příklady neoznačených dat a zpřístupňuje předpovědi. Výstup předpovědi může mít různé formuláře, jako je například soubor. csv nebo řádky v Azure SQL Database v závislosti na konfiguraci experimentu. Výchozí koncový bod je automaticky vytvořen při publikování prediktivního experimentu jako webové služby. 
@@ -53,12 +53,12 @@ Následující obrázek znázorňuje vztah mezi školicími a vyhodnocovacími k
 
 ![webové služby](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-**Webovou službu školení** můžete vyvolat pomocí **aktivity spuštění dávky Azure Machine Learning Studio (Classic)**. Vyvolání webové služby školení je stejné jako vyvolání webové služby Azure Machine Learning Studio (Classic) (webová služba bodování) pro data bodování. Předchozí části obsahují podrobnosti o tom, jak v kanálu Azure Data Factory vyvolat webovou službu Azure Machine Learning Studio (Classic). 
+**Webovou službu školení** můžete vyvolat pomocí **aktivity spuštění dávky Azure Machine Learning Studio (Classic)** . Vyvolání webové služby školení je stejné jako vyvolání webové služby Azure Machine Learning Studio (Classic) (webová služba bodování) pro data bodování. Předchozí části obsahují podrobnosti o tom, jak v kanálu Azure Data Factory vyvolat webovou službu Azure Machine Learning Studio (Classic). 
 
 **Webovou službu bodování** můžete vyvolat pomocí **aktivity aktualizace prostředku Azure Machine Learning Studio (Classic)** a aktualizovat webovou službu pomocí nově vyučeného modelu. V následujících příkladech jsou uvedeny definice propojených služeb: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Webová služba bodování je klasický Web Service.
-Pokud webová služba bodování je **klasický web**, vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/studio/create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
+Pokud webová služba bodování je **klasický web** , vytvořte druhý **nevýchozí a aktualizovatelný koncový bod** pomocí Azure Portal. Postup najdete v článku [Vytvoření koncových bodů](../../machine-learning/classic/create-endpoint.md) . Po vytvoření nevýchozího koncového bodu s možností aktualizace proveďte následující kroky:
 
 * Kliknutím na **DÁVKOVÉ spuštění** Získejte hodnotu identifikátoru URI pro vlastnost **mlEndpoint** JSON.
 * Kliknutím na odkaz **aktualizovat prostředek** získáte hodnotu identifikátoru URI pro vlastnost **updateResourceEndpoint** JSON. Klíč rozhraní API se nachází na samotné stránce koncového bodu (v pravém dolním rohu).
@@ -208,7 +208,7 @@ Následující fragment kódu JSON definuje propojenou službu studia (Classic),
 }
 ```
 
-V **Azure Machine Learning Studio (Classic)** proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey**:
+V **Azure Machine Learning Studio (Classic)** proveďte následující kroky a získejte hodnoty pro **mlEndpoint** a **apiKey** :
 
 1. V nabídce vlevo klikněte na položku **webové služby** .
 2. Klikněte na **webovou službu školení** v seznamu webových služeb.
@@ -260,7 +260,7 @@ Aktivita aktualizace prostředku studia (Classic) negeneruje žádný výstup. A
 ```
 
 ### <a name="pipeline"></a>Kanál
-Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná**. Aktivita spuštění dávky Azure Machine Learning Studio (Classic) vezme data školení jako vstup a vytvoří soubor iLearner jako výstup. Tato aktivita vyvolá webovou službu školení (zkušební experiment vydaný jako webovou službu) se vstupními školicími daty a přijme soubor ilearner z webové služby. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
+Kanál má dvě aktivity: **AzureMLBatchExecution** a **povinná** . Aktivita spuštění dávky Azure Machine Learning Studio (Classic) vezme data školení jako vstup a vytvoří soubor iLearner jako výstup. Tato aktivita vyvolá webovou službu školení (zkušební experiment vydaný jako webovou službu) se vstupními školicími daty a přijme soubor ilearner z webové služby. PlaceholderBlob je pouze fiktivní výstupní datová sada, kterou služba Azure Data Factory vyžaduje ke spuštění kanálu.
 
 ![Diagram kanálu](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

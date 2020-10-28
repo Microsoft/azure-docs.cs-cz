@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: 4ff1a793b3e8c4fe642aa304f1aa59bd8edefb8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405615"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633123"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopírování dat z Azure Databricks rozdílových Lake pomocí Azure Data Factory
 
@@ -37,7 +37,7 @@ Obecně platí, že Azure Data Factory podporuje rozdílové Lake s následujíc
 - [Mapování toku dat](concepts-data-flow-overview.md) podporuje [Formát obecného rozdílu](format-delta.md) v Azure Storage jako zdroj a jímka pro čtení a zápis rozdílových souborů pro ETL bez kódu a spouštění na spravovaných Azure Integration runtime.
 - [Aktivity datacihlů](transform-data-databricks-notebook.md) podporují orchestraci prostředí ETL zaměřeného na kód nebo úlohy strojového učení v rámci rozdílových Lake.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít tento Azure Databricks rozdílového konektoru Lake, musíte nastavit cluster v Azure Databricks.
 
@@ -46,19 +46,19 @@ Pokud chcete použít tento Azure Databricks rozdílového konektoru Lake, musí
 
 Cluster datacihly musí mít přístup ke službě Azure Blob nebo Azure Data Lake Storage Gen2 účtu, a to jak kontejner úložiště, tak systém souborů, který se používá pro zdroj, jímku a přípravu a kontejner nebo systém souborů, kde chcete zapsat rozdílové tabulky Lake.
 
-- Pokud chcete použít **Azure Data Lake Storage Gen2**, můžete nakonfigurovat **instanční objekt** nebo **přístupový klíč účtu úložiště** v clusteru datacihly jako součást konfigurace Apache Spark. Postupujte podle kroků v části [přímý přístup k instančnímu objektu](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) nebo [přímý přístup pomocí přístupového klíče účtu úložiště](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
+- Pokud chcete použít **Azure Data Lake Storage Gen2** , můžete nakonfigurovat **instanční objekt** nebo **přístupový klíč účtu úložiště** v clusteru datacihly jako součást konfigurace Apache Spark. Postupujte podle kroků v části [přímý přístup k instančnímu objektu](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20) nebo [přímý přístup pomocí přístupového klíče účtu úložiště](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key).
 
-- Pokud chcete používat **úložiště objektů BLOB v Azure**, můžete v rámci konfigurace Apache Spark nakonfigurovat **přístupový klíč účtu úložiště** nebo **token SAS** v clusteru datacihly. Postupujte podle kroků v části [přístup k úložišti objektů BLOB v Azure pomocí rozhraní RDD API](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
+- Pokud chcete používat **úložiště objektů BLOB v Azure** , můžete v rámci konfigurace Apache Spark nakonfigurovat **přístupový klíč účtu úložiště** nebo **token SAS** v clusteru datacihly. Postupujte podle kroků v části [přístup k úložišti objektů BLOB v Azure pomocí rozhraní RDD API](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api).
 
 Pokud byl cluster, který jste nakonfigurovali, ukončen při spuštění aktivity kopírování, Data Factory ho automaticky spustí. Pokud vytváříte kanál pomocí uživatelského rozhraní Data Factory vytváření obsahu, pro operace, jako je data Preview, potřebujete mít živý cluster, Data Factory nebude cluster vaším jménem začínat.
 
 #### <a name="specify-the-cluster-configuration"></a>Zadejte konfiguraci clusteru.
 
-1. V rozevíracím seznamu **režim clusteru** vyberte **standardní**.
+1. V rozevíracím seznamu **režim clusteru** vyberte **standardní** .
 
 2. V rozevíracím seznamu **verze Databricks runtime** vyberte verzi modulu runtime datacihly.
 
-3. Zapnout [Automatické optimalizace](https://docs.microsoft.com/azure/databricks/delta/optimizations/auto-optimize) přidáním následujících vlastností do [Konfigurace Sparku](https://docs.microsoft.com/azure/databricks/clusters/configure#spark-config):
+3. Zapnout [Automatické optimalizace](/azure/databricks/delta/optimizations/auto-optimize) přidáním následujících vlastností do [Konfigurace Sparku](/azure/databricks/clusters/configure#spark-config):
 
    ```
    spark.databricks.delta.optimizeWrite.enabled true
@@ -67,7 +67,7 @@ Pokud byl cluster, který jste nakonfigurovali, ukončen při spuštění aktivi
 
 4. Nakonfigurujte cluster v závislosti na potřebách integrace a škálování.
 
-Podrobnosti o konfiguraci clusteru najdete v tématu [konfigurace clusterů](https://docs.microsoft.com/azure/databricks/clusters/configure).
+Podrobnosti o konfiguraci clusteru najdete v tématu [konfigurace clusterů](/azure/databricks/clusters/configure).
 
 ## <a name="get-started"></a>Začínáme
 
@@ -81,11 +81,11 @@ Pro propojenou službu Azure Databricks Delta Lake jsou podporovány následují
 
 | Vlastnost    | Popis                                                  | Povinné |
 | :---------- | :----------------------------------------------------------- | :------- |
-| typ        | Vlastnost Type musí být nastavená na **AzureDatabricksDeltaLake**. | Yes      |
+| typ        | Vlastnost Type musí být nastavená na **AzureDatabricksDeltaLake** . | Ano      |
 | doména      | Zadejte adresu URL Azure Databricks pracovního prostoru, třeba `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . |          |
-| clusterId   | Zadejte ID clusteru existujícího clusteru. Měl by to být již vytvořený interaktivní cluster. <br>ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Další informace](https://docs.microsoft.com/azure/databricks/clusters/configure#cluster-tags). |          |
-| accessToken | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky pro vyhledání přístupového tokenu najdete [tady](https://docs.microsoft.com/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
-| connectVia  | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | No       |
+| clusterId   | Zadejte ID clusteru existujícího clusteru. Měl by to být již vytvořený interaktivní cluster. <br>ID clusteru interaktivního clusteru můžete najít v pracovním prostoru datacihly – > clustery – > interaktivní název clusteru – > značky konfigurace >. [Přečtěte si další informace](/azure/databricks/clusters/configure#cluster-tags). |          |
+| accessToken | Pro Data Factory ověřování pro Azure Databricks je vyžadován přístupový token. Přístupový token se musí vygenerovat z pracovního prostoru datacihly. Podrobnější kroky pro vyhledání přístupového tokenu najdete [tady](/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
+| connectVia  | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | Ne       |
 
 **Příklad:**
 
@@ -114,7 +114,7 @@ Pro Azure Databricks rozdílovou datovou sadu se podporují následující vlast
 
 | Vlastnost  | Popis                                                  | Povinné                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Vlastnost Type datové sady musí být nastavená na **AzureDatabricksDeltaLakeDataset**. | Yes                         |
+| typ      | Vlastnost Type datové sady musí být nastavená na **AzureDatabricksDeltaLakeDataset** . | Ano                         |
 | database | Název databáze. |Ne pro zdroj, Ano pro jímku  |
 | stolu | Název rozdílové tabulky |Ne pro zdroj, Ano pro jímku  |
 
@@ -148,13 +148,13 @@ Pokud chcete kopírovat data z Azure Databricks rozdílových Lake, v části **
 
 | Vlastnost                     | Popis                                                  | Povinné |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureDatabricksDeltaLakeSource**. | Yes      |
-| query          | Zadejte dotaz SQL pro čtení dat. Pro řízení času služební cesty použijte následující vzor:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
-| exportSettings | Rozšířená nastavení používaná k načtení dat z rozdílové tabulky. | No       |
-| ***V části `exportSettings` :*** |  |  |
-| typ | Typ příkazu pro export nastavený na **AzureDatabricksDeltaLakeExportCommand**. | Yes |
-| Parametr DateFormat | Umožňuje formátovat typ data String pomocí formátu data. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
-| timestampFormat | Formátujte typ časového razítka na řetězec ve formátu timestamp. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AzureDatabricksDeltaLakeSource** . | Ano      |
+| query          | Zadejte dotaz SQL pro čtení dat. Pro řízení času služební cesty použijte následující vzor:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Ne       |
+| exportSettings | Rozšířená nastavení používaná k načtení dat z rozdílové tabulky. | Ne       |
+| ***Pod `exportSettings` :** _ |  |  |
+| typ | Typ příkazu pro export nastavený na _ * AzureDatabricksDeltaLakeExportCommand * *. | Ano |
+| Parametr DateFormat | Umožňuje formátovat typ data String pomocí formátu data. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | Ne |
+| timestampFormat | Formátujte typ časového razítka na řetězec ve formátu timestamp. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Ne |
 
 #### <a name="direct-copy-from-delta-lake"></a>Přímá kopie ze rozdílových Lake
 
@@ -162,14 +162,14 @@ Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v té
 
 - **Propojená služba jímky** je [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). Přihlašovací údaje účtu by měly být předem nakonfigurované v Azure Databricks konfiguraci clusteru, další informace najdete v části [požadavky](#prerequisites).
 
-- **Formát dat jímky** je **Parquet**, **oddělený text**nebo **Avro** s následujícími konfiguracemi a odkazuje na složku namísto souboru.
+- **Formát dat jímky** je **Parquet** , **oddělený text** nebo **Avro** s následujícími konfiguracemi a odkazuje na složku namísto souboru.
 
-    - V případě formátu **Parquet** je Kompresní kodek **žádný**, **přichycený**nebo **gzip**.
+    - V případě formátu **Parquet** je Kompresní kodek **žádný** , **přichycený** nebo **gzip** .
     - Textový formát s **oddělovači** :
         - `rowDelimiter` je libovolný jeden znak.
-        - `compression` může být **none**, **bzip2**, **gzip**.
+        - `compression` může být **none** , **bzip2** , **gzip** .
         - `encodingName` Kódování UTF-7 není podporováno.
-    - V případě formátu **Avro** je Kompresní kodek **žádný**, **zúžený**nebo **přichycený**.
+    - V případě formátu **Avro** je Kompresní kodek **žádný** , **zúžený** nebo **přichycený** .
 
 - Ve zdroji aktivity kopírování není `additionalColumns` zadán.
 - Pokud kopírujete data na text s oddělovači, musí být v jímky aktivity kopírování `fileExtension` ". csv".
@@ -262,13 +262,13 @@ Chcete-li kopírovat data do Azure Databricks rozdílových dat, jsou v části 
 
 | Vlastnost      | Popis                                                  | Povinné |
 | :------------ | :----------------------------------------------------------- | :------- |
-| typ          | Vlastnost Type jímky aktivity kopírování nastavená na **AzureDatabricksDeltaLakeSink**. | Yes      |
-| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do tabulky Delta datacihly v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat nebo k přidání zkrácené tabulky nebo výpisu vaku. | No       |
-| importSettings | Rozšířená nastavení použitá pro zápis dat do rozdílové tabulky | No |
-| ***V části `importSettings` :*** |                                                              |  |
-| typ | Typ příkazu pro import, který je nastavený na **AzureDatabricksDeltaLakeImportCommand**. | Yes |
-| Parametr DateFormat | Řetězec formátu pro typ data s formátem data Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | No |
-| timestampFormat | Řetězec formátu pro typ časového razítka ve formátu časového razítka. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ          | Vlastnost Type jímky aktivity kopírování nastavená na **AzureDatabricksDeltaLakeSink** . | Ano      |
+| preCopyScript | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do tabulky Delta datacihly v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat nebo k přidání zkrácené tabulky nebo výpisu vaku. | Ne       |
+| importSettings | Rozšířená nastavení použitá pro zápis dat do rozdílové tabulky | Ne |
+| **_Pod `importSettings` :_* _ |                                                              |  |
+| typ | Typ příkazu pro import, nastavený na _ * AzureDatabricksDeltaLakeImportCommand * *. | Ano |
+| Parametr DateFormat | Řetězec formátu pro typ data s formátem data Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd` . | Ne |
+| timestampFormat | Řetězec formátu pro typ časového razítka ve formátu časového razítka. Vlastní formáty data se řídí formáty ve [vzoru data a času](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Pokud není zadaný, použije se výchozí hodnota `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Ne |
 
 #### <a name="direct-copy-to-delta-lake"></a>Přímá kopie do rozdílových Lake
 
@@ -276,14 +276,14 @@ Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této 
 
 - **Zdrojová propojená služba** je [úložiště objektů BLOB v Azure](connector-azure-blob-storage.md) nebo [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). Přihlašovací údaje účtu by měly být předem nakonfigurované v Azure Databricks konfiguraci clusteru, další informace najdete v části [požadavky](#prerequisites).
 
-- **Zdrojový formát dat** je **Parquet**, **oddělený text**nebo **Avro** s následujícími konfiguracemi a odkazuje na složku namísto souboru.
+- **Zdrojový formát dat** je **Parquet** , **oddělený text** nebo **Avro** s následujícími konfiguracemi a odkazuje na složku namísto souboru.
 
-    - V případě formátu **Parquet** je Kompresní kodek **žádný**, **přichycený**nebo **gzip**.
+    - V případě formátu **Parquet** je Kompresní kodek **žádný** , **přichycený** nebo **gzip** .
     - Textový formát s **oddělovači** :
         - `rowDelimiter` je výchozí nebo jakýkoli jeden znak.
-        - `compression` může být **none**, **bzip2**, **gzip**.
+        - `compression` může být **none** , **bzip2** , **gzip** .
         - `encodingName` Kódování UTF-7 není podporováno.
-    - V případě formátu **Avro** je Kompresní kodek **žádný**, **zúžený**nebo **přichycený**.
+    - V případě formátu **Avro** je Kompresní kodek **žádný** , **zúžený** nebo **přichycený** .
 
 - Ve zdroji aktivity kopírování: 
 
@@ -374,7 +374,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 
 ## <a name="monitoring"></a>Monitorování
 
-Azure Data Factory poskytuje stejné [možnosti monitorování aktivity kopírování](copy-activity-monitoring.md) jako jiné konektory. Vzhledem k tomu, že je v clusteru Azure Databricks spuštěno načítání dat z/do rozdílového Lake, můžete dále [Zobrazit podrobné protokoly clusteru](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--view-cluster-logs) a [monitorovat výkon](https://docs.microsoft.com/azure/databricks/clusters/clusters-manage#--monitor-performance).
+Azure Data Factory poskytuje stejné [možnosti monitorování aktivity kopírování](copy-activity-monitoring.md) jako jiné konektory. Vzhledem k tomu, že je v clusteru Azure Databricks spuštěno načítání dat z/do rozdílového Lake, můžete dále [Zobrazit podrobné protokoly clusteru](/azure/databricks/clusters/clusters-manage#--view-cluster-logs) a [monitorovat výkon](/azure/databricks/clusters/clusters-manage#--monitor-performance).
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

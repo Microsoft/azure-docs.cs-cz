@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ae12355dddbae40eb84730549ccebcd004ff6be
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371762"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631695"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – často kladené otázky
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92371762"
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?
-Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat**. Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
+Data Factory je cloudová služba pro integraci dat, která **automatizuje přesun a transformaci dat** . Stejně jako továrna, která používá zařízení k převzetí surovin a jejich transformaci na dokončené produkty, Data Factory orchestruje existující služby, které shromažďují nezpracovaná data a transformují je na informace připravené k použití.
 
 Data Factory umožňuje vytvářet pracovní postupy řízené daty k přesouvání dat mezi místními i cloudovým úložištěm dat a také zpracovávat a transformovat data pomocí výpočetních služeb, jako je Azure HDInsight a Azure Data Lake Analytics. Po vytvoření kanálu, který provede akci, kterou potřebujete, můžete naplánovat jeho pravidelné spuštění (každou hodinu, každý den, každý týden atd.).   
 
@@ -41,7 +41,7 @@ Podrobnosti o cenách pro Azure Data Factory najdete na [stránce s podrobnostmi
 * Návod, jak **transformovat data** pomocí aktivity podregistru HDInsight. Viz [procesní data spuštěním skriptu registru v clusteru Hadoop](data-factory-build-your-first-pipeline.md) .
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>Jaká je dostupnost oblasti Data Factory?
-Data Factory je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
+Data Factory je k dispozici v **USA – západ** a **Severní Evropa** . Výpočetní služby a služby úložiště, které používají datové továrny, můžou být v jiných oblastech. Viz [podporované oblasti](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu datových továren/kanálů/aktivit/datových sad?
 V článku limity [, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) najdete v části **omezení Azure Data Factory** .
@@ -141,7 +141,7 @@ V příkladu výše otherLinkedServiceName1 a otherLinkedServiceName2 představu
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>Proč nejsou moje vstupní řezy ve stavu připraveno?
 Společná chyba nenastavuje vlastnost **External** na vstupní datovou sadu na **true** , když vstupní data jsou externí pro objekt pro vytváření dat (nevyráběné objektem pro vytváření dat).
 
-V následujícím příkladu stačí nastavit vlastnost **External** na hodnotu true v **DataSet1.**.  
+V následujícím příkladu stačí nastavit vlastnost **External** na hodnotu true v **DataSet1.** .  
 
 **DataFactory1** Kanál 1: DataSet1.-> Activity1-> Dataset2-> "Activity2"-> dataset3 Pipeline 2: dataset3-> activity3-> dataset4
 
@@ -205,4 +205,4 @@ Pokud opravdu chcete okamžitě zastavit všechna spuštění, jediným způsobe
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://docs.microsoft.com/archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

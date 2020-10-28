@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632563"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Řešení potíží s Azure Data Factorym UX
 
@@ -42,7 +42,7 @@ UX v uživatelském rozhraní ADF používá soubory cookie prohlížeče k zach
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>Umožněte použití souborů cookie jenom v uživatelském prostředí ADF.
 Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jenom uživatelské prostředí ADF:
-1. Navštivte **Chrome://Settings/cookies**.
+1. Navštivte **Chrome://Settings/cookies** .
 1. Vyberte možnost **Přidat** do **webů, které můžou vždycky používat soubory cookie** . 
 
     ![Přidání uživatelského prostředí ADF do povolených webů v Chrome](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
@@ -63,7 +63,7 @@ Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jeno
 
 Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jenom uživatelské prostředí ADF:
 
-1. Navštivte **Edge://Settings/Content/cookies**.
+1. Navštivte **Edge://Settings/Content/cookies** .
 1. V části **povoleno** vyberte **Přidat** a přidat web **ADF.Azure.com** . 
 
     ![Přidání uživatelského prostředí ADF do povolených lokalit na hraničních zařízeních](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ Pokud nechcete povolit všechny soubory cookie, můžete volitelně povolit jeno
 
 ## <a name="connection-failed-on-adf-ux"></a>Nepovedlo se připojit k UŽIVATELSKÉmu prostředí ADF
 
-Někdy se vám v uživatelském prostředí ADF po kliknutí na **test Connection**, **Preview**atd. zobrazí chyby "připojení nebylo úspěšné".
+Někdy se vám v uživatelském prostředí ADF po kliknutí na **test Connection** , **Preview** atd. zobrazí chyby "připojení nebylo úspěšné".
 
 ![Připojení selhalo.](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 V takovém případě můžete v prohlížeči nejprve vyzkoušet stejnou operaci s režimem procházení InPrivate.
 
-Pokud to pořád nefunguje, otevřete v prohlížeči stisknutím klávesy F12 **vývojářské nástroje**. Vraťte se na kartu **síť** , vyhledejte možnost **Zakázat mezipaměť**, opakujte neúspěšnou operaci a najděte neúspěšnou žádost (červeně).
+Pokud to pořád nefunguje, otevřete v prohlížeči stisknutím klávesy F12 **vývojářské nástroje** . Vraťte se na kartu **síť** , vyhledejte možnost **Zakázat mezipaměť** , opakujte neúspěšnou operaci a najděte neúspěšnou žádost (červeně).
 
 ![Neúspěšná žádost](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-Pak vyhledejte **název hostitele** (v tomto případě **dpnortheurope.svc.DataFactory.Azure.com**) z **adresy URL požadavku** neúspěšného požadavku.
+Pak vyhledejte **název hostitele** (v tomto případě **dpnortheurope.svc.DataFactory.Azure.com** ) z **adresy URL požadavku** neúspěšného požadavku.
 
 Zadejte **název hostitele** přímo do adresního řádku prohlížeče. Pokud se v prohlížeči zobrazí 404, obvykle to znamená, že je na straně klienta ok a problém je na straně služby ADF. Zasouborte lístek podpory s **ID aktivity** z chybové zprávy uživatelského rozhraní ADF.
 
@@ -91,7 +91,7 @@ Pokud ne nebo se v prohlížeči zobrazí podobná chyba, obvykle to znamená, �
 
 ![Chyba na straně klienta](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-Otevřete **příkazový řádek** a zadejte příkaz **nslookup dpnortheurope.svc.DataFactory.Azure.com**. Normální odpověď by měla vypadat nějak takto:
+Otevřete **příkazový řádek** a zadejte příkaz **nslookup dpnortheurope.svc.DataFactory.Azure.com** . Normální odpověď by měla vypadat nějak takto:
 
 ![Odezva příkazu 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
@@ -119,5 +119,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
-* [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Stránka s otázkou Microsoft Q&](/answers/topics/azure-data-factory.html)

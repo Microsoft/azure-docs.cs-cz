@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 6b79b2722438403e29851d3a87929ddc67eef727
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 117b0db4f04c3fd631f6692d288945019507f5c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123745"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632800"
 ---
 # <a name="managed-identity-for-data-factory"></a>Spravovaná identita pro Data Factory
 
@@ -39,9 +39,9 @@ Spravovaná identita pro Data Factory přináší následující funkce:
 
 Spravovaná identita pro Data Factory je generována takto:
 
-- Při vytváření datové továrny prostřednictvím **Azure Portal nebo PowerShellu**se spravovaná identita vždycky automaticky vytvoří.
-- Při vytváření datové továrny prostřednictvím **sady SDK**se spravovaná identita vytvoří jenom v případě, že při vytváření objektu factory zadáte identity = New FactoryIdentity (). Viz příklad v tématu [rychlý Start .NET – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
-- Při vytváření datové továrny prostřednictvím **REST API**se spravovaná identita vytvoří jenom v případě, že v textu žádosti zadáte část identita. Viz příklad v [rychlém startu REST – vytvořit datovou továrnu](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **Azure Portal nebo PowerShellu** se spravovaná identita vždycky automaticky vytvoří.
+- Při vytváření datové továrny prostřednictvím **sady SDK** se spravovaná identita vytvoří jenom v případě, že při vytváření objektu factory zadáte identity = New FactoryIdentity (). Viz příklad v tématu [rychlý Start .NET – vytvoření datové továrny](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
+- Při vytváření datové továrny prostřednictvím **REST API** se spravovaná identita vytvoří jenom v případě, že v textu žádosti zadáte část identita. Viz příklad v [rychlém startu REST – vytvořit datovou továrnu](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 
 Pokud zjistíte, že objekt pro vytváření dat nemá přidruženu spravovanou identitu po [načtení spravované instrukce identity](#retrieve-managed-identity) , můžete ji explicitně vygenerovat tak, že programově aktualizujete datovou továrnu pomocí iniciátoru identity.
 
@@ -79,7 +79,7 @@ V textu žádosti volejte pod rozhraním API část identita:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Text žádosti**: přidejte "identity": {"Type": "SystemAssigned"}.
+**Text žádosti** : přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -92,7 +92,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-**Odpověď**: spravovaná identita se vytvoří automaticky a v části Identita se odpovídajícím způsobem naplní.
+**Odpověď** : spravovaná identita se vytvoří automaticky a v části Identita se odpovídajícím způsobem naplní.
 
 ```json
 {
@@ -117,7 +117,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>Generování spravované identity pomocí šablony Azure Resource Manager
 
-**Šablona**: přidejte "identity": {"Type": "SystemAssigned"}.
+**Šablona** : přidejte "identity": {"Type": "SystemAssigned"}.
 
 ```json
 {
@@ -201,7 +201,7 @@ Volání pod rozhraním API v žádosti:
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
 ```
 
-**Odpověď**: zobrazí se odpověď, jak je znázorněno v následujícím příkladu. V části Identita se odpovídajícím způsobem naplní.
+**Odpověď** : zobrazí se odpověď, jak je znázorněno v následujícím příkladu. V části Identita se odpovídajícím způsobem naplní.
 
 ```json
 {
@@ -252,4 +252,4 @@ Podívejte se na následující témata, která obsahují informace o tom, kdy a
 - [Ukládat přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopírování dat z/do Azure Data Lake Store používáním spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md)
 
-V tématu [Přehled spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) najdete další informace o spravovaných identitách pro prostředky Azure, na kterých je založena identita spravované datovou továrnou. 
+V tématu [Přehled spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) najdete další informace o spravovaných identitách pro prostředky Azure, na kterých je založena identita spravované datovou továrnou.

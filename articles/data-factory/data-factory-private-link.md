@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546666"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632681"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Privátní odkaz Azure pro Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Pomocí privátního odkazu Azure se můžete připojit k různým nasazením platforem jako služby (PaaS) v Azure prostřednictvím privátního koncového bodu. Privátní koncový bod je privátní IP adresa v konkrétní virtuální síti a podsíti. Seznam nasazení PaaS, která podporují funkce privátního propojení, najdete v tématu [dokumentace k privátním odkazům](https://docs.microsoft.com/azure/private-link/). 
+Pomocí privátního odkazu Azure se můžete připojit k různým nasazením platforem jako služby (PaaS) v Azure prostřednictvím privátního koncového bodu. Privátní koncový bod je privátní IP adresa v konkrétní virtuální síti a podsíti. Seznam nasazení PaaS, která podporují funkce privátního propojení, najdete v tématu [dokumentace k privátním odkazům](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Zabezpečená komunikace mezi zákaznickými sítěmi a Azure Data Factory 
 Virtuální síť Azure můžete nastavit jako logickou reprezentaci vaší sítě v cloudu. Díky tomu jsou k dispozici následující výhody:
@@ -67,7 +67,7 @@ Povolení služby privátního propojení pro každý z předchozích komunikač
 > Když vytvoříte propojenou službu, ujistěte se, že vaše přihlašovací údaje jsou uložené v trezoru klíčů Azure. Jinak přihlašovací údaje nebudou fungovat, když povolíte privátní odkaz v Azure Data Factory.
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Nastavit privátní odkaz pro Azure Data Factory
-Soukromé koncové body lze vytvořit pomocí [Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+Soukromé koncové body lze vytvořit pomocí [Azure Portal](../private-link/create-private-endpoint-portal.md).
 
 Můžete také přejít na objekt pro vytváření dat Azure v Azure Portal a vytvořit privátní koncový bod, jak je znázorněno zde:
 
@@ -89,4 +89,3 @@ Pokud chcete zablokovat veřejný přístup k objektu pro vytváření dat Azure
 - [Vytvoření datové továrny pomocí Azure Data Factoryho uživatelského rozhraní](quickstart-create-data-factory-portal.md)
 - [Úvod do služby Azure Data Factory](introduction.md)
 - [Vytváření vizuálů v Azure Data Factory](author-visually.md)
-

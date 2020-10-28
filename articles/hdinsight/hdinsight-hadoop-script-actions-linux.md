@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545986"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629438"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů pomocí HDInsight
 
@@ -26,7 +26,7 @@ Akce skriptu lze použít prostřednictvím následujících metod:
 
 | Tuto metodu použijte, chcete-li použít skript... | Během vytváření clusteru... | Ve spuštěném clusteru... |
 | --- |:---:|:---:|
-| portál Azure |✓ |✓ |
+| Azure Portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Classic CLI |&nbsp; |✓ |
 | Sada HDInsight .NET SDK |✓ |✓ |
@@ -239,7 +239,7 @@ Následující pomocníky jsou k dispozici pro použití ve skriptu:
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Stáhne soubor ze zdrojového identifikátoru URI do zadané cesty k souboru. Ve výchozím nastavení nedojde k přepsání stávajícího souboru. |
 | `untar_file TARFILE DESTDIR` |Extrahuje soubor tar (using `-xf` ) do cílového adresáře. |
-| `test_is_headnode` |V případě, že je hlavní uzel clusteru spuštěný, vrátí 1; v opačném případě 0. |
+| `test_is_headnode` |Pokud skript běžel v hlavním uzlu clusteru, vrátí hodnotu 1; v opačném případě 0. |
 | `test_is_datanode` |Pokud je aktuálním uzlem uzel data (Worker), vrátí hodnotu 1. v opačném případě 0. |
 | `test_is_first_datanode` |Pokud je aktuální uzel prvním uzlem dat (Worker) (s názvem workernode0), vrátí hodnotu 1. v opačném případě 0. |
 | `get_headnodes` |Vrátí plně kvalifikovaný název domény hlavních v clusteru. Názvy jsou odděleny čárkami. Při chybě se vrátí prázdný řetězec. |
@@ -268,7 +268,7 @@ Nastavení proměnné prostředí se provádí následujícím příkazem:
 VARIABLENAME=value
 ```
 
-WHERE proměnná je název proměnné. Pro přístup k proměnné použijte `$VARIABLENAME` . Například chcete-li přiřadit hodnotu poskytnutou pozičním parametrem jako proměnnou prostředí s názvem PASSWORD, použijte následující příkaz:
+V předchozím příkladu `VARIABLENAME` je název proměnné. Pro přístup k proměnné použijte `$VARIABLENAME` . Například chcete-li přiřadit hodnotu poskytnutou pozičním parametrem jako proměnnou prostředí s názvem PASSWORD, použijte následující příkaz:
 
 ```bash
 PASSWORD=$1
@@ -317,7 +317,7 @@ Tady jsou kroky, které je potřeba provést při přípravě nasazení skriptu:
 
 Pomocí akcí skriptů můžete přizpůsobit clustery HDInsight následujícími způsoby:
 
-* portál Azure
+* Azure Portal
 * Azure PowerShell
 * Šablony Azure Resource Manageru
 * Sada SDK pro HDInsight .NET.
