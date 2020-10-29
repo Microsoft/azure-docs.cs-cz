@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: b833b45f5243e446ac507ee913abe256a12ac01d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368464"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900129"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Zabezpečené pody s využitím Azure Policy
 
@@ -61,7 +61,7 @@ Na Azure Policy doplňku pro clustery Kubernetes se vztahují následující obe
 Následující omezení platí pouze pro Azure Policy doplněk pro AKS:
 
 - [Zásada zabezpečení AKS pod (Preview)](use-pod-security-policies.md) a doplněk Azure Policy pro AKS nelze povolit současně. 
-- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_, _gatekeeper-System_a _AKS-Periscope_.
+- Obory názvů automaticky vyloučené Azure Policy doplněk pro vyhodnocení: _Kube-System_ , _gatekeeper-System_ a _AKS-Periscope_ .
 
 ### <a name="recommendations"></a>Doporučení
 
@@ -150,7 +150,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > Lusky v názvových prostorech správců, jako je Kube-System, musí běžet, aby cluster zůstal v pořádku. odebrání požadovaného oboru názvů ze seznamu výchozích vyloučených oborů názvů může vystavit porušení zásad z důvodu požadovaného systému pod.
 
-AKS vyžaduje, aby se systémové lusky spouštěly na clusteru a poskytovaly důležité služby, jako je například překlad DNS. Zásady, které omezují funkčnost, můžou ovlivnit stabilitu systému pod. V důsledku toho jsou během **žádosti o přijetí při vytváření, aktualizaci a auditování zásad vyloučené z vyhodnocení zásad**tyto obory názvů. To vynutí, aby se nová nasazení do těchto oborů názvů vyloučila ze zásad Azure.
+AKS vyžaduje, aby se systémové lusky spouštěly na clusteru a poskytovaly důležité služby, jako je například překlad DNS. Zásady, které omezují funkčnost, můžou ovlivnit stabilitu systému pod. V důsledku toho jsou během **žádosti o přijetí při vytváření, aktualizaci a auditování zásad vyloučené z vyhodnocení zásad** tyto obory názvů. To vynutí, aby se nová nasazení do těchto oborů názvů vyloučila ze zásad Azure.
 
 1. Kube – systém
 1. Server Gatekeeper
@@ -209,7 +209,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +244,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 Vytvořte pod pomocí příkazu [kubectl Applu][kubectl-apply] a zadejte název manifestu YAML:
@@ -253,7 +253,7 @@ Vytvořte pod pomocí příkazu [kubectl Applu][kubectl-apply] a zadejte název 
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný*:
+V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný* :
 
 ```console
 $ kubectl get pods

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781477"
+ms.locfileid: "92899190"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -142,10 +142,7 @@ SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje
    4. Vyberte možnost **Upravit seznam atributů pro AppName** .
    5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut** .
 
-Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" lze přizpůsobit podle požadavků vaší aplikace, například:  
- * urn: IETF: parametry: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: Atribut CustomAttribute 
- * urn: IETF: parametry: SCIM: schémata: rozšíření: 2.0: CustomExtensionName: CustomAttribute  
- * urn: IETF: parametry: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: CustomAttributeName: hodnota
+Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" je možné přizpůsobit podle požadavků vaší aplikace, například: urn: IETF: param: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: Atribut CustomAttribute 
 
 Tyto pokyny platí pouze pro aplikace s podporou SCIM. Aplikace jako ServiceNow a Salesforce nejsou integrovány se službou Azure AD pomocí SCIM, a proto při přidávání vlastního atributu nevyžadují tento konkrétní obor názvů.
 

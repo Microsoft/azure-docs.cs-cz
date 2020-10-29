@@ -4,12 +4,12 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: bec9c7b4be5c3c3e334a8e3cb3a8b2e0a7130de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9f6ead7edea7a3a6240e116d3073ea01fa9f6bb
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900108"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
@@ -28,7 +28,7 @@ Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části j
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
@@ -52,7 +52,7 @@ Pokud chcete vytvořit nebo aktualizovat cluster AKS pro použití zásad zabezp
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-Zobrazení stavu v *registraci*trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
+Zobrazení stavu v *registraci* trvá několik minut. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
@@ -80,7 +80,7 @@ Pokud chcete zobrazit, jak výchozí zásady omezují podle nasazení, v tomto �
 
 ## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Povolit zásadu zabezpečení pod v clusteru AKS
 
-Pomocí příkazu [AZ AKS Update][az-aks-update] můžete povolit nebo zakázat zásadu zabezpečení pod. Následující příklad povolí zásady zabezpečení pro název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*.
+Pomocí příkazu [AZ AKS Update][az-aks-update] můžete povolit nebo zakázat zásadu zabezpečení pod. Následující příklad povolí zásady zabezpečení pro název clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* .
 
 > [!NOTE]
 > Pro reálné použití nepovolujte zásady zabezpečení pod, dokud nedefinujete vlastní zásady. V tomto článku aktivujete zásadu zabezpečení pod prvním krokem, abyste viděli, jak výchozí zásady omezují na pod nasazeními.
@@ -94,7 +94,7 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Výchozí zásady AKS
 
-Když zapnete zásadu zabezpečení pod, AKS vytvoří jednu výchozí zásadu s názvem *Privileged*. Neupravujte ani neodstraňujte výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
+Když zapnete zásadu zabezpečení pod, AKS vytvoří jednu výchozí zásadu s názvem *Privileged* . Neupravujte ani neodstraňujte výchozí zásady. Místo toho vytvořte vlastní zásady, které definují nastavení, které chcete ovládat. Nejdřív se podíváme na to, jak tyto výchozí zásady ovlivňují nasazení pod.
 
 Pokud chcete zobrazit dostupné zásady, použijte příkaz [kubectl Get PSP][kubectl-get] , jak je znázorněno v následujícím příkladu.
 
@@ -181,7 +181,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
       securityContext:
         privileged: true
 ```
@@ -216,7 +216,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
 ```
 
 Vytvořte pod pomocí příkazu [kubectl Applu][kubectl-apply] a zadejte název manifestu YAML:
@@ -249,7 +249,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx:1.14.2
+      image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
       securityContext:
         runAsUser: 2000
 ```
@@ -274,7 +274,7 @@ V poli se nedosáhnou fáze plánování, takže před přesunutím na neexistuj
 
 Teď, když jste se seznámili s chováním výchozích zásad zabezpečení pod, Pojďme dát *nesprávci* možnost, aby nedokázali naplánovat lusky.
 
-Pojďme vytvořit zásadu, která odmítne lusky, které požadují privilegovaný přístup. Další možnosti, například *runAsUser* nebo povolené *svazky*, nejsou výslovně omezeny. Tento typ zásady odepře požadavek na privilegovaný přístup, ale jinak umožňuje clusteru spustit požadované lusky.
+Pojďme vytvořit zásadu, která odmítne lusky, které požadují privilegovaný přístup. Další možnosti, například *runAsUser* nebo povolené *svazky* , nejsou výslovně omezeny. Tento typ zásady odepře požadavek na privilegovaný přístup, ale jinak umožňuje clusteru spustit požadované lusky.
 
 Vytvořte soubor s názvem `psp-deny-privileged.yaml` a vložte následující YAML manifest:
 
@@ -315,7 +315,7 @@ psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    R
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Povolí uživatelskému účtu používat vlastní zásady zabezpečení pod.
 
-V předchozím kroku jste vytvořili zásadu zabezpečení pod tím, že odmítnete lusky, které požadují privilegovaný přístup. Pokud chcete, aby se tato zásada použila, vytvořte *roli* nebo *ClusterRole*. Pak přidružíte jednu z těchto rolí pomocí *RoleBinding* nebo *ClusterRoleBinding*.
+V předchozím kroku jste vytvořili zásadu zabezpečení pod tím, že odmítnete lusky, které požadují privilegovaný přístup. Pokud chcete, aby se tato zásada použila, vytvořte *roli* nebo *ClusterRole* . Pak přidružíte jednu z těchto rolí pomocí *RoleBinding* nebo *ClusterRoleBinding* .
 
 V tomto příkladu vytvořte ClusterRole, který umožňuje *použít* zásadu *PSP-Deny-Privileged* vytvořenou v předchozím kroku. Vytvořte soubor s názvem `psp-deny-privileged-clusterrole.yaml` a vložte následující YAML manifest:
 
@@ -375,7 +375,7 @@ Když použijete vlastní zásadu zabezpečení pod a vytvoříte vazbu pro uži
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný*:
+V části se úspěšně naplánovalo. Když zkontrolujete stav pod, pomocí příkazu [kubectl Get lusky][kubectl-get] je *spuštěný* :
 
 ```
 $ kubectl-nonadminuser get pods
@@ -394,7 +394,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete zakázat zásadu zabezpečení pod, použijte znovu příkaz [AZ AKS Update][az-aks-update] . Následující příklad zakáže zásady zabezpečení v názvu clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+Pokud chcete zakázat zásadu zabezpečení pod, použijte znovu příkaz [AZ AKS Update][az-aks-update] . Následující příklad zakáže zásady zabezpečení v názvu clusteru *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup* :
 
 ```azurecli-interactive
 az aks update \

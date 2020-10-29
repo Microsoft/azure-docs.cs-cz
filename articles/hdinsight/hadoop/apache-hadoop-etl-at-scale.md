@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: eb3c45c01b2e3ca1761e86f3ac991d67f7813856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504311"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899657"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -27,7 +27,7 @@ Následující části obsahují všechny fáze ETL a jejich přidružené souč
 
 ## <a name="orchestration"></a>Orchestrace
 
-Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Například:
+Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Příklad:
 
 - Můžete použít Apache Hive k vyčištění části dat a Apache prasete k vyčištění další části.
 - Pomocí Azure Data Factory můžete načíst data do Azure SQL Database z Azure Data Lake Store.
@@ -86,7 +86,7 @@ Pro nahrávání datových sad v rozsahu terabajtů může být latence sítě v
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure synapse Analytics je vhodná volba k uložení připravených výsledků. Azure HDInsight můžete použít k provádění těchto služeb pro Zure synapse Analytics.
+Azure synapse Analytics (dřív SQL DW) je vhodným výběrem pro uložení připravených výsledků. Azure HDInsight můžete použít k provádění těchto služeb pro Azure synapse Analytics.
 
 Azure synapse Analytics je relační úložiště databáze optimalizované pro analytické úlohy. Škáluje se v závislosti na dělených tabulkách. Tabulky mohou být rozděleny mezi více uzlů. Uzly jsou vybrány v době vytváření. Můžou se škálovat po faktu, ale to je aktivní proces, který může vyžadovat přesun dat. Další informace najdete v tématu [Správa výpočetních prostředků ve službě Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 

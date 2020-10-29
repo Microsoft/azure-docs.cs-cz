@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895218"
+ms.locfileid: "92900838"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Automatizace odpovědí na triggery Security Center
 
@@ -66,7 +66,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 1. V nové aplikaci logiky si můžete vybrat z předdefinovaných předdefinovaných šablon z kategorie zabezpečení. Případně můžete definovat vlastní tok událostí, které mají nastat při aktivaci tohoto procesu.
 
     > [!TIP]
-    > Někdy v aplikaci logiky jsou parametry zahrnuty v konektoru jako součást řetězce a nikoli ve vlastním poli. Příklad pro EAN postup extrakce parametrů naleznete v tématu Krok #14 [práce s parametry aplikace logiky při sestavování Azure Security Center automatizaci pracovního postupu](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
+    > Někdy v aplikaci logiky jsou parametry zahrnuty v konektoru jako součást řetězce a nikoli ve vlastním poli. Příklad extrakce parametrů naleznete v tématu Krok #14 [práce s parametry aplikace logiky při sestavování Azure Security Centerch automatizace pracovních postupů](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
 
     Návrhář aplikace logiky podporuje tyto aktivační události Security Center:
 

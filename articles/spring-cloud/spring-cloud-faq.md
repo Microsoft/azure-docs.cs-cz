@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a0851e9d032d4d1bf9751d63061141839e95d510
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491287"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900267"
 ---
 # <a name="azure-spring-cloud-faq"></a>Nejčastější dotazy k jarnímu cloudu Azure
 
@@ -39,6 +39,9 @@ Zabezpečení a ochrana osobních údajů jsou v rámci nejdůležitějších pr
 
 Východní USA, Východní USA 2, Střed USA, Střed USA – jih, Západní USA 2, Západní Evropa, Severní Evropa, Velká Británie – jih, jihovýchodní Asie a Austrálie – východ.
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Jsou všechna zákaznická data uložená mimo určenou oblast?
+
+Azure jarní Cloud je regionální služba. Veškerá zákaznická data v Azure jaře cloudu se ukládají do několika oblastí v rámci stejné geografické oblasti zadané oblasti pro zajištění redundance. Další informace o geografických a geografických oblastech najdete v tématu [zasídlí dat v Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Jaká jsou známá omezení Azure jarního cloudu?
 
@@ -72,7 +75,7 @@ Azure jarní Cloud podporuje jazyky Java 8 a 11. Viz [Java Runtime a verze opera
 
 Metriky najdete na kartě Přehled aplikace a na kartě [Azure monitor](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) .
 
-Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře cloudu do Azure Storage, EventHub a [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). Název tabulky v Log Analytics je *AppPlatformLogsforSpring*. Další informace o tom, jak ho povolit, najdete v tématu [diagnostické služby](diagnostic-services.md).
+Azure jaře Cloud podporuje Exportování protokolů a metriky aplikace na jaře cloudu do Azure Storage, EventHub a [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries). Název tabulky v Log Analytics je *AppPlatformLogsforSpring* . Další informace o tom, jak ho povolit, najdete v tématu [diagnostické služby](diagnostic-services.md).
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Podporuje Azure jaře Cloud distribuované trasování?
 

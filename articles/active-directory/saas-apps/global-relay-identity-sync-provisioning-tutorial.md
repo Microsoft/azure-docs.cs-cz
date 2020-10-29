@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514380"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900293"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace globální synchronizace identity Relay pro Automatické zřizování uživatelů
 
-Tento kurz popisuje kroky, které je třeba provést v globální synchronizaci identity a Azure Active Directory (Azure AD) pro konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a zruší pravidla pro uživatele a skupiny pro [globální synchronizaci identity Relay](https://portalalpha1.globalrelay.com/) pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md). 
+Tento kurz popisuje kroky, které je třeba provést v globální synchronizaci identity a Azure Active Directory (Azure AD) pro konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a zruší pravidla pro uživatele a skupiny pro globální synchronizaci identity Relay pomocí služby zřizování Azure AD. Důležité podrobnosti o tom, co tato služba dělá a jak funguje, a odpovědi na nejčastější dotazy najdete v tématu [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Podporované funkce
@@ -67,33 +67,33 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro synchronizaci globální identity Relay v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace** .
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **globální synchronizace přenosového identity**.
+2. V seznamu aplikace vyberte **globální synchronizace přenosového identity** .
 
     ![Odkaz globální přenos identity na synchronizaci v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování**.
+3. Vyberte kartu **Zřizování** .
 
     ![Karta Zřizování](common/provisioning.png)
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
 
     ![Automatická karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta**globální Relay pro synchronizaci identity. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k globální synchronizaci identity Relay. Pokud se připojení nepovede, zajistěte, aby váš globální účet pro synchronizaci identity Relay měl oprávnění správce, a pokud chcete tento problém vyřešit, kontaktujte svého globálního zástupce.
+5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta** globální Relay pro synchronizaci identity. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k globální synchronizaci identity Relay. Pokud se připojení nepovede, zajistěte, aby váš globální účet pro synchronizaci identity Relay měl oprávnění správce, a pokud chcete tento problém vyřešit, kontaktujte svého globálního zástupce.
 
     ![Tlačítko autorizace](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
-6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
+6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem** .
 
     ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-7. Vyberte **Uložit**.
+7. Vyberte **Uložit** .
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatele s globální synchronizací identity Relay**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatele s globální synchronizací identity Relay** .
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD až po globální synchronizaci identity Relay v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v globální synchronizaci identity Relay pro operace aktualizace. Pokud se rozhodnete, že chcete změnit [odpovídající atribut cíle](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), je nutné zajistit, aby rozhraní API pro synchronizaci globálních identit identity Relay podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
@@ -103,7 +103,6 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |active|Logická hodnota|
    |displayName|Řetězec|
    |title|Řetězec|
-   |emails[type eq "work"].value|Řetězec|
    |preferredLanguage|Řetězec|
    |name.givenName|Řetězec|
    |name.familyName|Řetězec|
@@ -170,7 +169,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 
 
-10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s globální synchronizací identity Relay**.
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny s globální synchronizací identity Relay** .
 
 11. Zkontrolujte atributy skupiny synchronizované z Azure AD až po globální synchronizaci identity Relay v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v globální synchronizaci identity Relay pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
@@ -189,11 +188,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
+15. Jakmile budete připraveni na zřízení, klikněte na **Uložit** .
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení** . Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:

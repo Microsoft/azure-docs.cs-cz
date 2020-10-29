@@ -1,5 +1,5 @@
 ---
-title: Připojení k Power BI Professional
+title: Připojení k synapse SQL pomocí Power BI Professional
 description: V tomto kurzu provedeme kroky, jak připojit Power BI Desktop k SQL na vyžádání (Preview).
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288694"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899113"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Připojení k synapse SQL pomocí Power BI Professional
 
@@ -75,7 +75,7 @@ Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tento
 > [!NOTE]
 > Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když může SQL na vyžádání získat přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
 
-**Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání**, spusťte:
+**Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání** , spusťte:
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -98,7 +98,7 @@ Otevřete Power BI desktopovou aplikaci a vyberte možnost **získat data** .
 
 ### <a name="step-1---select-data-source"></a>Krok 1 – Výběr zdroje dat
 
-V nabídce vyberte **Azure** a pak **Azure SQL Database**.
+V nabídce vyberte **Azure** a pak **Azure SQL Database** .
 ![Vyberte zdroj dat.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>Krok 2 – Výběr databáze

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332004"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901552"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -37,9 +37,9 @@ Azure Security Center řeší tři nejnaléhavější nároky na zabezpečení:
 
 Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, které umožňují:
 
--   **Posílit zabezpečení stav**: Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
+-   **Posílit zabezpečení stav** : Security Center vyhodnocuje vaše prostředí a umožní vám pochopit stav vašich prostředků a to, jestli jsou zabezpečené.
 
--   **Ochrana před hrozbami**: Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
+-   **Ochrana před hrozbami** : Security Center posuzuje vaše úlohy a vyvolává doporučení prevence hrozeb a výstrahy zabezpečení.
 
 -   **Rychleji se zabezpečit:** Ve službě Security Center probíhá vše rychlostí cloudu. Vzhledem k nativní integraci je nasazení služby Security Center jednoduché a poskytuje pro služby Azure automatické zřizování a ochranu.
 
@@ -62,11 +62,11 @@ Azure Security Center vám umožní posílit stav zabezpečení. To znamená, ž
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení a dodržování předpisů v organizaci
 
-Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postaveny nad Azure Policy ovládací prvky, získáte celou škálu a flexibilitu **špičkového řešení zásad**. V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
+Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postaveny nad Azure Policy ovládací prvky, získáte celou škálu a flexibilitu **špičkového řešení zásad** . V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="Stránka správy zásad":::
 
-Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
+Security Center vám pomůže **identifikovat Stínová předplatná** . Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
 
 :::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Stránka správy zásad":::
 
@@ -74,13 +74,13 @@ Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazen
 
 Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a posuzuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označené jako prioritní a vy získáte seznam doporučení, která je potřeba opravit, aby bylo možné počítače chránit.
 
-Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
+Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení** .
 
 :::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Stránka správy zásad":::
 
 ### <a name="network-map"></a>Mapa sítě
 
-Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
+Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě** . Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
 
 :::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Stránka správy zásad":::
 
@@ -103,9 +103,9 @@ Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetě
 
 :::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Stránka správy zásad":::
 
-### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integrace pomocí rozšířené ochrany před internetovými útoky v programu Microsoft Defender
+### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrace s Microsoft Defenderem pro koncový bod
 
-Security Center zahrnuje automatickou nativní integraci s rozšířenou ochranou před internetovými útoky v programu Microsoft Defender. To znamená, že bez jakékoli konfigurace jsou počítače s Windows a Linux plně integrované s doporučeními a posouzením Security Center.
+Security Center zahrnuje automatickou nativní integraci s Microsoft Defenderem pro koncový bod. To znamená, že bez jakékoli konfigurace jsou počítače s Windows a Linux plně integrované s doporučeními a posouzením Security Center.
 
 Security Center navíc umožňuje automatizovat zásady řízení aplikací v prostředích serveru. Adaptivní řízení aplikací v Security Center umožňuje, aby se v rámci serverů Windows nastalo úplný seznam schválení aplikací. Nemusíte vytvářet pravidla a kontrolovat porušení, je to vše hotovo automaticky za vás.
 
@@ -123,7 +123,7 @@ Security Center obsahuje možnosti, které vám pomůžou provést automatickou 
 
 ## <a name="get-secure-faster"></a>Rychlejší získání zabezpečení
 
-Nativní Integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je třeba Microsoft Cloud App Security a Rozšířená ochrana před internetovými útoky v programu Windows Defender, se ujistěte, že je vaše řešení zabezpečení komplexní a je snadno zaregistrované a zaveďte.
+Nativní Integrace Azure (včetně protokolů Azure Policy a Azure Monitor) v kombinaci s bezproblémovou integrací s dalšími řešeními zabezpečení Microsoftu, jako je třeba Microsoft Cloud App Security a Microsoft Defender pro koncové body, se ujistěte, že je vaše řešení zabezpečení komplexní a je snadné je zaregistrování a zavedení.
 
 Kromě toho můžete rozšířit úplné řešení mimo Azure na úlohy spuštěné v jiných cloudech a v místních datových centrech.
 

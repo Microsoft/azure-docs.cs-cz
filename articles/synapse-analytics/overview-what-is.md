@@ -6,29 +6,29 @@ author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
-ms.date: 09/12/2020
+ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4338152579170bf809577262992f0db9a1a95ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09429e26c5b7192141262e1a31c0ef90427bdd32
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90524942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899031"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Podniková analýza musí pracovat s rozsáhlým škálováním na jakýkoli druh dat bez ohledu na to, jestli je hrubá, rafinovaná nebo vysoce popracovaná. Tyto podniky vyžadují spolupráci s velkými objemy dat a technologie datových skladů, jako jsou Spark a SQL, do kanálů s bohatými daty, které fungují napříč daty v relačních úložištích a v datových lakůch. Toto řešení je obtížné sestavit, zabezpečit a udržovat. Zpoždění složitosti, které dodává přehled o Enteprises potřeb.
+Podniková analýza musí fungovat na velkém rozsahu libovolného druhu dat bez ohledu na to, jestli jsou hrubá, rafinovaná nebo vysoce popracovaná. To obvykle vyžaduje, aby podniky spolupracovaly s velkými objemy dat a technologie datových skladů do složitých datových kanálů, které pracují s daty v relačních úložištích a v datových lakůch. Tyto druhy řešení, jako je obtížné sestavovat, udržovat a zabezpečit. Jejich složitost se doručí na to, co Enteprises potřebuje.
 
-**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy pro analýzy velkých objemů dat. V jádru Azure synapse přináší dohromady nejlepší technologie **SQL** , které se používají v podnikových datových skladech, technologie **Sparku** používané pro velké objemy dat a **kanály** pro integraci dat a ETL/ELT. Synapse má web založený na webovém **studiu** , který poskytuje jedno místo pro správu, monitorování, kódování a zabezpečení. Synapse nabízí rozsáhlou integraci s dalšími službami Azure, jako jsou **PowerBI**, **CosmosDB**a **AzureML**.
+**Azure synapse** je integrovaná analytická služba, která zrychluje přehled napříč datovými sklady a systémy velkých objemů dat. Azure synapse spojuje nejlepší technologie **SQL** , které se používají v datových skladech v podniku, technologie **Sparku** používané pro velké objemy dat a **kanály** pro integraci dat a ETL/ELT. **Synapse Studio** poskytuje jednotné prostředí pro správu, monitorování, kódování a zabezpečení. Synapse má rozsáhlou integraci s dalšími službami Azure, jako jsou **PowerBI** , **CosmosDB** a **AzureML** .
 
 ## <a name="key-features--benefits"></a>Klíčové funkce & výhody
 
 ### <a name="industry-leading-sql"></a>Špičkový SQL v oboru
 
-* **Synapse SQL** je distribuovaný systém dotazů, který podnikům umožňuje implementovat scénáře datových skladů a virtualizace dat pomocí standardních prostředí T-SQL, které znají technici pro práci s daty. Rozšiřuje také možnosti scénářů SQL pro řešení streamování a strojového učení.
+* **Synapse SQL** je distribuovaný systém dotazů, který umožňuje podnikům implementovat scénáře datových skladů a virtualizace dat pomocí standardních a známých prostředí T-SQL. Rozšiřuje také možnosti scénářů SQL pro řešení streamování a strojového učení.
 
 * Synapse SQL nabízí jak **servery bez serveru** , tak i **vyhrazené** modely prostředků, které nabízejí možnosti spotřeby a fakturace podle vašich potřeb. Pro předvídatelný výkon a náklady Vytvořte vyhrazené fondy SQL pro rezervaci výkonu pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy použijte vždy dostupný koncový bod SQL bez serveru.
 * Použití integrovaných funkcí **streamování** k obstání dat z cloudových zdrojů dat do tabulek SQL
@@ -56,7 +56,7 @@ Azure synapse odstraňuje tradiční technologické bariéry mezi použitím SQL
 Azure synapse přináší integrovaný nástroj se stejným modulem pro integraci dat a prostředí jako Azure Data Factory, což vám umožní vytvářet bohatý kanály ETL v měřítku, aniž byste museli opustit analýzu synapse.
 
 * Ingestování dat z devadesáti zdrojů dat
-* ETL bez kódu s aktivitami toku dat
+* Code-Free ETL s aktivitami toku dat
 * Orchestrace poznámkových bloků, úloh Sparku, uložených procedur, skriptů SQL a dalších
 
 ### <a name="unified-management-monitoring-and-security"></a>Sjednocená Správa, monitorování a zabezpečení

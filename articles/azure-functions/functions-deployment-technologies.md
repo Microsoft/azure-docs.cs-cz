@@ -4,12 +4,12 @@ description: Seznamte se s různými způsoby, jak můžete nasadit kód pro Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641955"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900174"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -33,8 +33,8 @@ Zatímco nasazení konkrétních funkcí používá nejlepší technologii na z�
 
 Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
 
-+ [Consumption](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
++ [Nároky](functions-scale.md#consumption-plan)
++ [Nárok](functions-scale.md#premium-plan)
 + [Vyhrazeno (App Service)](functions-scale.md#app-service-plan)
 
 Každý plán má jiné chování. Ne všechny technologie nasazení jsou k dispozici pro každý charakter Azure Functions. Následující graf ukazuje, které technologie nasazení jsou podporovány pro každou kombinaci operačního systému a plánu hostování:
@@ -128,7 +128,7 @@ Můžete nasadit image kontejneru pro Linux, která obsahuje vaši aplikaci Func
 
 >__Jak ji použít:__ Vytvořte aplikaci Functions pro Linux v plánu Premium nebo vyhrazené a určete, ze které image kontejneru se má spustit. To můžete provést dvěma způsoby:
 >
->* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat**vyberte **Image Docker**a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
+>* Vytvořte aplikaci funkcí pro Linux v plánu Azure App Service Azure Portal. V části **publikovat** vyberte **Image Docker** a pak nakonfigurujte kontejner. Zadejte umístění, kde je bitová kopie hostovaná.
 >* Pomocí Azure CLI vytvoříte aplikaci funkcí pro Linux v plánu App Service. Další informace o postupu najdete v tématu [Vytvoření funkce na platformě Linux pomocí vlastní image](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Pokud chcete nasadit do existující aplikace pomocí vlastního kontejneru, v [Azure Functions Core Tools](functions-run-local.md)použijte [`func deploy`](functions-run-local.md#publish) příkaz.
@@ -210,9 +210,9 @@ Když nasazení provedete, všechna stávající spuštění budou moci být dok
 
 Pokud potřebujete větší kontrolu nad tímto přechodem, měli byste použít sloty nasazení.
 
-## <a name="deployment-slots"></a>Nasazovací sloty
+## <a name="deployment-slots"></a>Sloty nasazení
 
-Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](../app-service/deploy-staging-slots.md) – další podrobnosti.
+Když nasadíte aplikaci Function App do Azure, můžete ji nasadit do samostatného slotu pro nasazení místo přímo do produkčního prostředí. Další informace o slotech nasazení najdete v dokumentaci [Azure Functions Deployments](functions-deployment-slots.md) – další podrobnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

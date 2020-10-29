@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987646"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899798"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
 
@@ -44,11 +44,11 @@ Začněte vytvořením jednoduchého Runbooku, který vypíše text `Hello World
 
 2. V části **Automatizace procesu** vyberte **Runbooky** a otevřete seznam runbooků.
 
-3. Kliknutím na **vytvořit Runbook**vytvořte nový Runbook.
+3. Kliknutím na **vytvořit Runbook** vytvořte nový Runbook.
 
-4. Dejte runbooku název **MyFirstRunbook-Graphical**.
+4. Dejte runbooku název **MyFirstRunbook-Graphical** .
 
-5. V takovém případě se chystáte vytvořit [grafický Runbook](../automation-graphical-authoring-intro.md). Vyberte **grafický** **typ Runbooku**.
+5. V takovém případě se chystáte vytvořit [grafický Runbook](../automation-graphical-authoring-intro.md). Vyberte **grafický** **typ Runbooku** .
 
     ![Nový runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)
 
@@ -62,7 +62,7 @@ Ovládací prvek Knihovna na levé straně editoru vám umožní vybrat aktivity
 
     ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 
-2. Přejděte do dolní části seznamu. Klikněte pravým tlačítkem na **Write-Output** a vyberte **Přidat na plátno**. Případně můžete kliknout na tři tečky (...) vedle názvu rutiny a pak vybrat **Přidat na plátno**.
+2. Přejděte do dolní části seznamu. Klikněte pravým tlačítkem na **Write-Output** a vyberte **Přidat na plátno** . Případně můžete kliknout na tři tečky (...) vedle názvu rutiny a pak vybrat **Přidat na plátno** .
 
 3. Klikněte na aktivitu **Write-Output** na plátně. Tato akce otevře stránku řízení konfigurace, která umožňuje konfiguraci aktivity.
 
@@ -74,11 +74,11 @@ Ovládací prvek Knihovna na levé straně editoru vám umožní vybrat aktivity
 
 6. Vyberte `InputObject` parametr. Toto je parametr, který použijete k určení textu, který se odešle do výstupního datového proudu.
 
-7. Rozevírací nabídka **zdroje dat** poskytuje zdroje, které můžete použít k naplnění hodnoty parametru. V této nabídce vyberte **powershellový výraz**.
+7. Rozevírací nabídka **zdroje dat** poskytuje zdroje, které můžete použít k naplnění hodnoty parametru. V této nabídce vyberte **powershellový výraz** .
 
    Můžete použít výstup z takových zdrojů jako jinou aktivitu, Asset Automation nebo PowerShellový výraz. V tomto případě je výstup pouze `Hello World` . Můžete použít powershellový výraz a zadat řetězec.
 
-8. Do pole **výraz** zadejte `Hello World` a dvakrát klikněte na tlačítko **OK** , čímž se vrátíte na plátno.
+8. Do pole **výraz** zadejte `"Hello World"` a dvakrát klikněte na tlačítko **OK** , čímž se vrátíte na plátno.
 
 9. Kliknutím na **Uložit** runbook uložte.
 
@@ -106,15 +106,15 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
 1. Vyberte **publikovat** a publikujte Runbook a po zobrazení výzvy klikněte na **Ano** .
 
-2. Posunutím doleva zobrazíte sadu Runbook na stránce sady Runbook a Všimněte si, že hodnota **stav vytváření** je nastavena na **Publikováno**.
+2. Posunutím doleva zobrazíte sadu Runbook na stránce sady Runbook a Všimněte si, že hodnota **stav vytváření** je nastavena na **Publikováno** .
 
-3. Posuňte se zpět doprava, abyste si zobrazili stránku **MyFirstRunbook-Graphics**.
+3. Posuňte se zpět doprava, abyste si zobrazili stránku **MyFirstRunbook-Graphics** .
 
    Možnosti v horní části umožňují spuštění sady Runbook nyní, naplánování budoucího času spuštění nebo vytvoření [Webhooku](../automation-webhooks.md) , aby bylo možné sadu Runbook spustit prostřednictvím volání protokolu HTTP.
 
 4. Po zobrazení výzvy ke spuštění Runbooku vyberte **Start** a potom na **Ano** .
 
-5. Otevře se podokno úlohy pro vytvořenou úlohu Runbooku. Ověřte, že se v poli **stav úlohy** zobrazuje **dokončeno**.
+5. Otevře se podokno úlohy pro vytvořenou úlohu Runbooku. Ověřte, že se v poli **stav úlohy** zobrazuje **dokončeno** .
 
 6. Kliknutím na **výstup** otevřete stránku výstup, kde vidíte `Hello World` zobrazené.
 
@@ -126,7 +126,7 @@ Sada Runbook, kterou jste vytvořili, je stále v režimu konceptu. Abyste ho mo
 
 9. Zavřete podokno datové proudy a podokno úlohy, které se vrátí na stránku MyFirstRunbook-Graphical.
 
-10. Chcete-li zobrazit všechny úlohy pro sadu Runbook, vyberte v části **prostředky**položku **úlohy** . Na stránce úlohy jsou uvedeny všechny úlohy, které sada Runbook vytvořila. V seznamu by se měla zobrazit jenom jedna úloha, protože jste úlohu spustili jenom jednou.
+10. Chcete-li zobrazit všechny úlohy pro sadu Runbook, vyberte v části **prostředky** položku **úlohy** . Na stránce úlohy jsou uvedeny všechny úlohy, které sada Runbook vytvořila. V seznamu by se měla zobrazit jenom jedna úloha, protože jste úlohu spustili jenom jednou.
 
 11. Kliknutím na název úlohy otevřete stejné podokno úloh, které jste zobrazili při spuštění Runbooku. V tomto podokně si můžete zobrazit podrobnosti o všech úlohách vytvořených pro sadu Runbook.
 
@@ -136,9 +136,9 @@ Runbook jste otestovali a publikovali, ale zatím neděláme žádnou užitečno
 
 1. Zkopírujte ID předplatného z možnosti **předplatná** v navigačním podokně.
 
-2. Na stránce účty Automation v části **sdílené prostředky**vyberte **proměnné** .
+2. Na stránce účty Automation v části **sdílené prostředky** vyberte **proměnné** .
 
-3. Vyberte **přidat proměnnou**.
+3. Vyberte **přidat proměnnou** .
 
 4. Na stránce Nová proměnná proveďte v zadaných polích následující nastavení.
 
@@ -158,9 +158,9 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 
 1. Přejděte na Runbook a na stránce MyFirstRunbook-Graphical vyberte **Upravit** .
 
-2. Tuto položku už nepotřebujete `Write Hello World to output` . Stačí kliknout na tři tečky a vybrat **Odstranit**.
+2. Tuto položku už nepotřebujete `Write Hello World to output` . Stačí kliknout na tři tečky a vybrat **Odstranit** .
 
-3. V ovládacím prvku knihovna rozbalte **prostředky**a pak **připojení**. Přidejte `AzureRunAsConnection` na plátno tak, že vyberete **Přidat na plátno**.
+3. V ovládacím prvku knihovna rozbalte **prostředky** a pak **připojení** . Přidejte `AzureRunAsConnection` na plátno tak, že vyberete **Přidat na plátno** .
 
 4. Přejmenujte `AzureRunAsConnection` na `Get Run As Connection` .
 
@@ -174,32 +174,32 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 
 8. Na plátně vyberte `Connect-AzAccount` . V podokně ovládacího prvku konfigurace zadejte do pole **popisek** **přihlášení do Azure** .
 
-9. Klikněte na **parametry**a zobrazí se stránka Konfigurace parametru aktivity.
+9. Klikněte na **parametry** a zobrazí se stránka Konfigurace parametru aktivity.
 
-10. `Connect-AzAccount`Rutina má více sad parametrů a před zadáním hodnot parametrů je nutné ji vybrat. Klikněte na **sada parametrů** a pak vyberte **ServicePrincipalCertificateWithSubscriptionId**.
+10. `Connect-AzAccount`Rutina má více sad parametrů a před zadáním hodnot parametrů je nutné ji vybrat. Klikněte na **sada parametrů** a pak vyberte **ServicePrincipalCertificateWithSubscriptionId** .
 
-11. Parametry pro tuto sadu parametrů se zobrazí na stránce Konfigurace parametru aktivity. Klikněte na **APPLICATIONID**.
+11. Parametry pro tuto sadu parametrů se zobrazí na stránce Konfigurace parametru aktivity. Klikněte na **APPLICATIONID** .
 
     ![Přidat parametry účtu Azure](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
 
-12. Na stránce hodnota parametru proveďte následující nastavení a potom klikněte na tlačítko **OK**.
+12. Na stránce hodnota parametru proveďte následující nastavení a potom klikněte na tlačítko **OK** .
 
-   * **Zdroj dat** – vyberte **výstup aktivity**.
-   * Seznam zdrojů dat – vyberte **získat připojení Automation**.
+   * **Zdroj dat** – vyberte **výstup aktivity** .
+   * Seznam zdrojů dat – vyberte **získat připojení Automation** .
    * **Cesta k poli** -- `ApplicationId` Type Určujete název vlastnosti pro cestu k poli, protože výstupem aktivity je objekt s více vlastnostmi.
 
-13. Klikněte na **CERTIFICATETHUMBPRINT**a na stránce hodnota parametru proveďte následující nastavení a pak klikněte na **OK**.
+13. Klikněte na **CERTIFICATETHUMBPRINT** a na stránce hodnota parametru proveďte následující nastavení a pak klikněte na **OK** .
 
-    * **Zdroj dat** – vyberte **výstup aktivity**.
-    * Seznam zdrojů dat – vyberte **získat připojení Automation**.
+    * **Zdroj dat** – vyberte **výstup aktivity** .
+    * Seznam zdrojů dat – vyberte **získat připojení Automation** .
     * **Cesta k poli** -- `CertificateThumbprint` Type
 
-14. Klikněte na **SERVICEPRINCIPAL**a na stránce hodnota parametru vyberte **ConstantValue** pro pole **zdroj dat** . Klikněte na možnost **pravda**a pak klikněte na tlačítko **OK**.
+14. Klikněte na **SERVICEPRINCIPAL** a na stránce hodnota parametru vyberte **ConstantValue** pro pole **zdroj dat** . Klikněte na možnost **pravda** a pak klikněte na tlačítko **OK** .
 
-15. Klikněte na **TENANTID**a na stránce hodnota parametru proveďte následující nastavení. Až budete hotovi, klikněte dvakrát na **OK** .
+15. Klikněte na **TENANTID** a na stránce hodnota parametru proveďte následující nastavení. Až budete hotovi, klikněte dvakrát na **OK** .
 
-    * **Zdroj dat** – vyberte **výstup aktivity**.
-    * Seznam zdrojů dat – vyberte **získat připojení Automation**.
+    * **Zdroj dat** – vyberte **výstup aktivity** .
+    * Seznam zdrojů dat – vyberte **získat připojení Automation** .
     * **Cesta k poli** -- `TenantId` Type
 
 16. V ovládacím prvku knihovna zadejte `Set-AzContext` do vyhledávacího pole.
@@ -210,9 +210,9 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 
 19. Klikněte na **parametry** a zobrazí se stránka Konfigurace parametru aktivity.
 
-20. `Set-AzContext`Rutina má více sad parametrů a před zadáním hodnot parametrů je nutné ji vybrat. Klikněte na **sada parametrů** a potom vyberte **SubscriptionId**.
+20. `Set-AzContext`Rutina má více sad parametrů a před zadáním hodnot parametrů je nutné ji vybrat. Klikněte na **sada parametrů** a potom vyberte **SubscriptionId** .
 
-21. Parametry pro tuto sadu parametrů se zobrazí na stránce Konfigurace parametru aktivity. Klikněte na **SubscriptionId**.
+21. Parametry pro tuto sadu parametrů se zobrazí na stránce Konfigurace parametru aktivity. Klikněte na **SubscriptionId** .
 
 22. Na stránce hodnota parametru vyberte položku **prostředek** pro pole **zdroj dat** a v seznamu zdroj vyberte možnost **AzureSubscriptionId** . Až budete hotovi, klikněte dvakrát na **OK** .
 
@@ -234,9 +234,9 @@ Nyní musíte přidat `Start-AzVM` aktivitu pro spuštění virtuálního počí
 
 5. Jako sadu parametrů vyberte **ResourceGroupNameParameterSetName** . Pole **ResourceGroupName** a **Name** obsahují vykřičník vedle sebe, aby označovali, že se jedná o požadované parametry. Všimněte si, že obě pole očekávají hodnoty řetězce.
 
-6. Vyberte **Název**. V poli **zdroj dat** vyberte **powershellový výraz** . Pro virtuální počítač, který používáte ke spuštění této sady Runbook, zadejte název počítače, který je ohraničený dvojitými uvozovkami. Klikněte na **OK**.
+6. Vyberte **Název** . V poli **zdroj dat** vyberte **powershellový výraz** . Pro virtuální počítač, který používáte ke spuštění této sady Runbook, zadejte název počítače, který je ohraničený dvojitými uvozovkami. Klikněte na **OK** .
 
-7. Vyberte **ResourceGroupName**. Pro pole **zdroje dat** použijte **výraz PowerShell** Value a zadejte název skupiny prostředků, která je ohraničená dvojitými uvozovkami. Klikněte na **OK**.
+7. Vyberte **ResourceGroupName** . Pro pole **zdroje dat** použijte **výraz PowerShell** Value a zadejte název skupiny prostředků, která je ohraničená dvojitými uvozovkami. Klikněte na **OK** .
 
 8. Klikněte na **testovací podokno** , abyste mohli Runbook otestovat.
 
@@ -252,20 +252,20 @@ Runbook aktuálně spouští virtuální počítač ve skupině prostředků, kt
 
 2. Vyberte **vstup a výstup** a pak **přidejte vstup** . otevře se podokno vstupní parametr Runbooku.
 
-3. V zadaných polích proveďte následující nastavení a pak klikněte na **OK**.
+3. V zadaných polích proveďte následující nastavení a pak klikněte na **OK** .
    * **Název** – zadejte `VMName` .
    * **Typ** – zachovejte nastavení řetězce.
-   * **Povinné** – změňte hodnotu na **Ano**.
+   * **Povinné** – změňte hodnotu na **Ano** .
 
 4. Vytvořte druhý povinný vstupní parametr s názvem `ResourceGroupName` a potom kliknutím na tlačítko **OK** zavřete podokno vstup a výstup.
 
     ![Vstupní parametry runbooku](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
 
-5. Vyberte `Start-AzVM` aktivitu a pak klikněte na **parametry**.
+5. Vyberte `Start-AzVM` aktivitu a pak klikněte na **parametry** .
 
-6. Změňte pole **zdroj dat** pro **název** na **vstup ze sady Runbook**. Pak vyberte **VMName**.
+6. Změňte pole **zdroj dat** pro **název** na **vstup ze sady Runbook** . Pak vyberte **VMName** .
 
-7. Změňte pole **zdroj dat** pro **ResourceGroupName** na **vstup z Runbooku** a potom vyberte **ResourceGroupName**.
+7. Změňte pole **zdroj dat** pro **ResourceGroupName** na **vstup z Runbooku** a potom vyberte **ResourceGroupName** .
 
     ![Parametry Start-AzVM](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
 
@@ -287,7 +287,7 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
 1. V grafickém editoru otevřete **MyFirstRunbook-Graphics** .
 
-2. Odstraňte propojení mezi `Specify Subscription Id` a `Start-AzVM` kliknutím na něj a stisknutím klávesy **Delete**.
+2. Odstraňte propojení mezi `Specify Subscription Id` a `Start-AzVM` kliknutím na něj a stisknutím klávesy **Delete** .
 
 3. V ovládacím prvku knihovna zadejte `Get-Az` do vyhledávacího pole.
 
@@ -295,13 +295,13 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
 5. Vyberte `Get-AzVM` a potom klikněte na **sada parametrů** , abyste zobrazili sady pro rutinu.
 
-6. Vyberte sadu parametrů **GetVirtualMachineInResourceGroupNameParamSet**. Pole **ResourceGroupName** a **Name** obsahují vykřičník vedle sebe, což značí, že určují požadované parametry. Všimněte si, že obě pole očekávají hodnoty řetězce.
+6. Vyberte sadu parametrů **GetVirtualMachineInResourceGroupNameParamSet** . Pole **ResourceGroupName** a **Name** obsahují vykřičník vedle sebe, což značí, že určují požadované parametry. Všimněte si, že obě pole očekávají hodnoty řetězce.
 
-7. V části **zdroj dat** pro **název**vyberte **vstup ze sady Runbook**a pak **VMName**. Klikněte na **OK**.
+7. V části **zdroj dat** pro **název** vyberte **vstup ze sady Runbook** a pak **VMName** . Klikněte na **OK** .
 
-8. V části **zdroj dat** pro **ResourceGroupName**vyberte **vstup ze sady Runbook**a pak **ResourceGroupName**. Klikněte na **OK**.
+8. V části **zdroj dat** pro **ResourceGroupName** vyberte **vstup ze sady Runbook** a pak **ResourceGroupName** . Klikněte na **OK** .
 
-9. V části **zdroj dat** pro **stav**vyberte **konstantní hodnota**a potom na **true (pravda**). Klikněte na **OK**.
+9. V části **zdroj dat** pro **stav** vyberte **konstantní hodnota** a potom na **true (pravda** ). Klikněte na **OK** .
 
 10. Vytvořte odkaz z `Specify Subscription Id` na `Get-AzVM` .
 
@@ -309,7 +309,7 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
 12. Vytvořte odkaz z `Get-AzVM` na `Code` .  
 
-13. Klikněte na `Code` a v podokně Konfigurace Změňte popisek na **získat stav**.
+13. Klikněte na `Code` a v podokně Konfigurace Změňte popisek na **získat stav** .
 
 14. Vyberte `Code` a zobrazí se stránka Editor kódu.  
 
@@ -331,27 +331,27 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
     ![Runbook s modulem kódu](../media/automation-tutorial-runbook-graphical/runbook-startvm-get-status.png)  
 
-17. Vyberte odkaz a v podokně Konfigurace změňte **Podmínka použít** na **Ano**. Všimněte si, že odkaz se zobrazí jako přerušovaná čára, což značí, že se cílová aktivita spustí pouze v případě, že se podmínka přeloží na hodnotu true.  
+17. Vyberte odkaz a v podokně Konfigurace změňte **Podmínka použít** na **Ano** . Všimněte si, že odkaz se zobrazí jako přerušovaná čára, což značí, že se cílová aktivita spustí pouze v případě, že se podmínka přeloží na hodnotu true.  
 
-18. Jako **výraz podmínky**zadejte `$ActivityOutput['Get Status'] -eq "Stopped"` . `Start-AzVM` Teď se spustí jenom v případě, že je virtuální počítač zastavený.
+18. Jako **výraz podmínky** zadejte `$ActivityOutput['Get Status'] -eq "Stopped"` . `Start-AzVM` Teď se spustí jenom v případě, že je virtuální počítač zastavený.
 
-19. V ovládacím prvku Knihovna rozbalte položku **Rutiny** a potom **Microsoft.PowerShell.Utility**.
+19. V ovládacím prvku Knihovna rozbalte položku **Rutiny** a potom **Microsoft.PowerShell.Utility** .
 
 20. `Write-Output`Dvakrát přidejte na plátno.
 
-21. V případě prvního `Write-Output` ovládacího prvku klikněte na **parametry** a změňte hodnotu **popisek** na **oznamuje spuštění virtuálního počítače**.
+21. V případě prvního `Write-Output` ovládacího prvku klikněte na **parametry** a změňte hodnotu **popisek** na **oznamuje spuštění virtuálního počítače** .
 
-22. Pro **položky InputObject**změňte **zdroj dat** na **powershellový výraz**a zadejte výraz `$VMName successfully started.` .
+22. Pro **položky InputObject** změňte **zdroj dat** na **powershellový výraz** a zadejte výraz `$VMName successfully started.` .
 
-23. V druhém `Write-Output` ovládacím prvku klikněte na **parametry** a změňte hodnotu **popisek** na **oznamovat spuštění virtuálního počítače se nezdařilo**.
+23. V druhém `Write-Output` ovládacím prvku klikněte na **parametry** a změňte hodnotu **popisek** na **oznamovat spuštění virtuálního počítače se nezdařilo** .
 
-24. Pro **položky InputObject**změňte **zdroj dat** na **powershellový výraz**a zadejte výraz `$VMName could not start` .
+24. Pro **položky InputObject** změňte **zdroj dat** na **powershellový výraz** a zadejte výraz `$VMName could not start` .
 
 25. Vytvořte odkazy z `Start-AzVM` na `Notify VM Started` a `Notify VM Start Failed` .
 
 26. Vyberte odkaz `Notify VM Started` a změňte **podmínku použít** na hodnotu true.
 
-27. Pro **výraz podmínky**zadejte `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` . Tento `Write-Output` ovládací prvek se teď spustí jenom v případě, že se virtuální počítač úspěšně spustí.
+27. Pro **výraz podmínky** zadejte `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` . Tento `Write-Output` ovládací prvek se teď spustí jenom v případě, že se virtuální počítač úspěšně spustí.
 
 28. Vyberte odkaz `Notify VM Start Failed` a změňte **podmínku použít** na hodnotu true.
 

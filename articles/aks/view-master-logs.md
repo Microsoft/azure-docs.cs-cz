@@ -4,12 +4,12 @@ description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kuber
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 82570606aee294aafe7da5ffaf581b11b6775073
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368447"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899932"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -25,21 +25,21 @@ Aby bylo možné získat a zkontrolovat data z více zdrojů, Azure Monitor prot
 
 Protokoly Azure Monitor jsou v Azure Portal povolené a spravované. Chcete-li povolit shromažďování protokolů pro hlavní komponenty Kubernetes v clusteru AKS, otevřete Azure Portal ve webovém prohlížeči a proveďte následující kroky:
 
-1. Vyberte skupinu prostředků pro cluster AKS, například *myResourceGroup*. Nevybírejte skupinu prostředků, která obsahuje vaše jednotlivé prostředky clusteru AKS, například *MC_myResourceGroup_myAKSCluster_eastus*.
-1. Na levé straně vyberte **nastavení diagnostiky**.
-1. Vyberte cluster AKS, jako je například *myAKSCluster*, a pak zvolte **Přidání nastavení diagnostiky**.
-1. Zadejte název, třeba *myAKSClusterLogs*, a pak vyberte možnost **odeslání do Log Analytics**.
+1. Vyberte skupinu prostředků pro cluster AKS, například *myResourceGroup* . Nevybírejte skupinu prostředků, která obsahuje vaše jednotlivé prostředky clusteru AKS, například *MC_myResourceGroup_myAKSCluster_eastus* .
+1. Na levé straně vyberte **nastavení diagnostiky** .
+1. Vyberte cluster AKS, jako je například *myAKSCluster* , a pak zvolte **Přidání nastavení diagnostiky** .
+1. Zadejte název, třeba *myAKSClusterLogs* , a pak vyberte možnost **odeslání do Log Analytics** .
 1. Vyberte existující pracovní prostor nebo vytvořte nový. Pokud vytváříte pracovní prostor, zadejte název pracovního prostoru, skupinu prostředků a umístění.
-1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. V tomto příkladu povolte protokoly *Kube-audit* a *Kube-audit-admin* . Mezi běžné protokoly patří *Kube-apiserver*, *Kube-Controller-Manager*a *Kube-Scheduler*. Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
+1. V seznamu dostupných protokolů vyberte protokoly, které chcete povolit. V tomto příkladu povolte protokoly *Kube-audit* a *Kube-audit-admin* . Mezi běžné protokoly patří *Kube-apiserver* , *Kube-Controller-Manager* a *Kube-Scheduler* . Shromážděné protokoly můžete vrátit a změnit, jakmile jsou povolené pracovní prostory Log Analytics.
 1. Až budete připraveni, vyberte **Uložit** a povolte shromažďování vybraných protokolů.
 
 ## <a name="log-categories"></a>Kategorie protokolů
 
 Kromě záznamů zapsaných v Kubernetes mají protokoly auditu vašeho projektu také záznamy z AKS.
 
-Protokoly auditu se zaznamenávají do tří kategorií: *Kube-audit*, *Kube-audit-admin*a *Guard*.
+Protokoly auditu se zaznamenávají do tří kategorií: *Kube-audit* , *Kube-audit-admin* a *Guard* .
 
-- Kategorie *Kube-audit* obsahuje všechna data protokolu auditu pro každou událost auditu, včetně *Get*, *list*, *Create*, *Update*, *Delete*, *patch*a *post*.
+- Kategorie *Kube-audit* obsahuje všechna data protokolu auditu pro každou událost auditu, včetně *Get* , *list* , *Create* , *Update* , *Delete* , *patch* a *post* .
 - Kategorie *Kube-audit-admin* je podmnožinou kategorie protokolu *Kube-audit* . *Kube – audit – správce* zkracuje počet protokolů významně tím, že z protokolu vyloučí události *Get* a *list* audit.
 - Kategorie *Guard* je spravovaná pro audity Azure AD a Azure RBAC. Pro spravovanou službu Azure AD: token v, informace o uživateli. Pro Azure RBAC: kontroly přístupu a kontrolují se.
 
@@ -55,7 +55,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -84,7 +84,7 @@ Povolení a zobrazení diagnostických protokolů může trvat až 10 minut.
 
 V Azure Portal přejděte na svůj cluster AKS a na levé straně vyberte **protokoly** . Pokud se zobrazí okno *příklady dotazů* , zavřete ho.
 
-Na levé straně vyberte **protokoly**. Chcete-li zobrazit protokoly *Kube-audit* , zadejte do textového pole následující dotaz:
+Na levé straně vyberte **protokoly** . Chcete-li zobrazit protokoly *Kube-audit* , zadejte do textového pole následující dotaz:
 
 ```
 AzureDiagnostics
@@ -109,7 +109,7 @@ AzureDiagnostics
 | project log_s
 ```
 
-V tomto příkladu se v dotazu zobrazí všechny úlohy vytváření v *Kube-audit-admin*. Bylo vráceno příliš mnoho výsledků. Chcete-li zobrazit protokoly o NGINX pod vytvořením v předchozím kroku, přidejte do rozsahu dotazu další příkaz *WHERE* *, jak je* znázorněno v následujícím příkladu dotazu.
+V tomto příkladu se v dotazu zobrazí všechny úlohy vytváření v *Kube-audit-admin* . Bylo vráceno příliš mnoho výsledků. Chcete-li zobrazit protokoly o NGINX pod vytvořením v předchozím kroku, přidejte do rozsahu dotazu další příkaz *WHERE* *, jak je* znázorněno v následujícím příkladu dotazu.
 
 ```
 AzureDiagnostics
