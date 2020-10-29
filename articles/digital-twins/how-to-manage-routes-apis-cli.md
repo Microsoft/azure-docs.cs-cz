@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2ea8840a4c66ff05bea22c5c7c063e31d09f9dc8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f9e770557bc600c6eae084e36ad7c5816ee5ad16
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911745"
+ms.locfileid: "93027495"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Správa koncových bodů a tras v Azure Digital revláken (rozhraní API a CLI)
 
@@ -27,7 +27,7 @@ Dají se taky spravovat prostřednictvím [Azure Portal](https://portal.azure.co
 ## <a name="prerequisites"></a>Předpoklady
 
 * Budete potřebovat **účet Azure** (můžete [si ho nastavit zdarma).](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
+* V předplatném Azure budete potřebovat **instanci digitálního vlákna Azure** . Pokud instanci již nemáte, můžete ji vytvořit pomocí kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md). Použijte následující hodnoty z instalačního programu užitečné pro pozdější použití v tomto článku:
     - Název instance
     - Skupina prostředků
     

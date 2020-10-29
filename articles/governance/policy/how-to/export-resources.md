@@ -1,15 +1,15 @@
 ---
 title: Export prostředků Azure Policy
 description: Naučte se exportovat Azure Policy prostředky do GitHubu, jako jsou definice zásad a přiřazení zásad.
-ms.date: 09/30/2020
+ms.date: 10/29/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c16ceed755cab3228b8f9e401f486a0629f3a60d
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777084"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025710"
 ---
 # <a name="export-azure-policy-resources"></a>Export prostředků Azure Policy
 
@@ -19,20 +19,20 @@ Tento článek poskytuje informace o tom, jak exportovat stávající prostředk
 
 Pokud chcete exportovat definici zásady z Azure Portal, postupujte podle těchto kroků:
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
+1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady** .
 
 1. Na levé straně stránky Azure Policy vyberte **definice** .
 
-1. Použijte tlačítko **exportovat definice** nebo vyberte tři tečky na řádku definice zásady a pak vyberte **Exportovat definici**.
+1. Použijte tlačítko **exportovat definice** nebo vyberte tři tečky na řádku definice zásady a pak vyberte **Exportovat definici** .
 
 1. Vyberte tlačítko **Přihlásit se pomocí GitHubu** . Pokud jste se ještě neověřili pomocí GitHubu k autorizaci Azure Policy k exportu prostředku, přečtěte si téma přístup k [akci GitHubu](https://github.com/features/actions) v novém okně, které se otevře, a vyberte **autorizovat AzureGitHubActions** , aby bylo možné pokračovat v procesu exportu. Po dokončení se nové okno automaticky zavře.
 
 1. Na kartě **základy** nastavte následující možnosti a potom v dolní části stránky vyberte kartu **zásady** nebo tlačítko **Další: zásady** .
 
-   - **Filtr úložiště**: nastavte na _Moje úložiště_ , abyste viděli jenom úložiště, která vlastníte, nebo _všechna úložiště_ , abyste viděli všechna oprávnění k přístupu k akci GitHubu.
-   - **Úložiště**: nastavte na úložiště, do kterého chcete exportovat prostředky Azure Policy.
-   - **Větev**: nastavte větev v úložišti. Použití jiné než výchozí větve je dobrým způsobem, jak ověřit aktualizace před tím, než se sloučí do zdrojového kódu.
-   - **Adresář**: _Složka kořenové úrovně_ , do které se mají exportovat prostředky Azure Policy. V závislosti na tom, jaké prostředky se exportují, se vytvoří podsložky v tomto adresáři.
+   - **Filtr úložiště** : nastavte na _Moje úložiště_ , abyste viděli jenom úložiště, která vlastníte, nebo _všechna úložiště_ , abyste viděli všechna oprávnění k přístupu k akci GitHubu.
+   - **Úložiště** : nastavte na úložiště, do kterého chcete exportovat prostředky Azure Policy.
+   - **Větev** : nastavte větev v úložišti. Použití jiné než výchozí větve je dobrým způsobem, jak ověřit aktualizace před tím, než se sloučí do zdrojového kódu.
+   - **Adresář** : _Složka kořenové úrovně_ , do které se mají exportovat prostředky Azure Policy. V závislosti na tom, jaké prostředky se exportují, se vytvoří podsložky v tomto adresáři.
 
 1. Na kartě **zásady** nastavte obor pro hledání tak, že vyberete tři tečky a vybíráte kombinaci skupin pro správu, předplatných nebo skupin prostředků.
    
@@ -47,7 +47,7 @@ Pokud chcete exportovat definici zásady z Azure Portal, postupujte podle těcht
 
 1. Zkontrolujte, zda jsou vybrané prostředky nyní exportovány do vašeho zdrojového kódu, ve složce vašeho úložiště GitHub, větve a _kořenové úrovně_ .
 
-Prostředky Azure Policy jsou exportovány do následující struktury v rámci vybraného úložiště GitHub a _složky na kořenové úrovni_:
+Prostředky Azure Policy jsou exportovány do následující struktury v rámci vybraného úložiště GitHub a _složky na kořenové úrovni_ :
 
 ```text
 |
@@ -67,7 +67,7 @@ Azure Policy definice, iniciativy a přiřazení se dají exportovat jako JSON p
 - Iniciativa- [AZ Policy set-definition show](/cli/azure/policy/set-definition#az-policy-set-definition-show)
 - Přiřazení – [AZ Policy Assignment show](/cli/azure/policy/assignment#az-policy-assignment-show)
 
-Tady je příklad získání formátu JSON pro definici zásady s **názvem** _VirtualMachineStorage_:
+Tady je příklad získání formátu JSON pro definici zásady s **názvem** _VirtualMachineStorage_ :
 
 ```azurecli-interactive
 az policy definition show --name 'VirtualMachineStorage'
@@ -81,10 +81,10 @@ Azure Policy definice, iniciativy a přiřazení lze exportovat jako JSON s [Azu
 - Iniciativa- [Get-AzPolicySetDefinition](/powershell/module/az.resources/get-azpolicysetdefinition)
 - Přiřazení – [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment)
 
-Tady je příklad získání formátu JSON pro definici zásady s **názvem** _VirtualMachineStorage_:
+Tady je příklad získání formátu JSON pro definici zásady s **názvem** _VirtualMachineStorage_ :
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage' | ConvertTo-Json -Depth 10
 ```
 
 ## <a name="next-steps"></a>Další kroky

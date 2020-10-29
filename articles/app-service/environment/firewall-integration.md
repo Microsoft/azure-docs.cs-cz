@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 8acd0a6992c26266f20aaf46dd225a9fff9d6974
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e5f9cd361d4f130d725f608614159d67fb7b56d1
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172022"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026356"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -61,11 +61,11 @@ Postup, jak uzamknout výstup z vašeho stávajícího pomocného programu pomoc
    
    ![Přidat pravidlo aplikace][1]
    
-1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel sítě vyberte přidat kolekci pravidel sítě. Zadejte název, prioritu a nastavte povoleno. V části pravidla v části IP adresy zadejte název, vyberte protokol **libovolné**, nastavené * na zdrojové a cílové adresy a nastavte porty na 123. Toto pravidlo umožňuje systému provádět synchronizaci hodin pomocí protokolu NTP. Vytvořte další pravidlo stejným způsobem jako port 12000, který vám může pomáhat s tříděním všech systémových problémů. 
+1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel sítě vyberte přidat kolekci pravidel sítě. Zadejte název, prioritu a nastavte povoleno. V části pravidla v části IP adresy zadejte název, vyberte protokol **libovolné** , nastavené * na zdrojové a cílové adresy a nastavte porty na 123. Toto pravidlo umožňuje systému provádět synchronizaci hodin pomocí protokolu NTP. Vytvořte další pravidlo stejným způsobem jako port 12000, který vám může pomáhat s tříděním všech systémových problémů. 
 
    ![Přidat pravidlo sítě NTP][3]
    
-1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel sítě vyberte přidat kolekci pravidel sítě. Zadejte název, prioritu a nastavte povoleno. V části pravidla v části značky služby zadejte název, vyberte protokol **libovolné**, nastavené * na zdrojové adresy, vyberte značku služby AzureMonitor a nastavte porty na 80, 443. Toto pravidlo umožňuje systému poskytovat Azure Monitor s informacemi o stavu a metrikách.
+1. Z > pravidla Azure Firewall uživatelského rozhraní > kolekce pravidel sítě vyberte přidat kolekci pravidel sítě. Zadejte název, prioritu a nastavte povoleno. V části pravidla v části značky služby zadejte název, vyberte protokol **libovolné** , nastavené * na zdrojové adresy, vyberte značku služby AzureMonitor a nastavte porty na 80, 443. Toto pravidlo umožňuje systému poskytovat Azure Monitor s informacemi o stavu a metrikách.
 
    ![Přidat síťové pravidlo pro značku služby NTP][6]
    
@@ -255,6 +255,7 @@ U Azure Firewall automaticky získáte vše, co je nakonfigurováno pomocí zna�
 |security.ubuntu.com:80 |
 |oryx-cdn.microsoft.io:443 |
 | \*. cdn.mscr.io:443 |
+| \*. data.mcr.microsoft.com:443 |
 |mcr.microsoft.com:443 |
 |\*. data.mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |

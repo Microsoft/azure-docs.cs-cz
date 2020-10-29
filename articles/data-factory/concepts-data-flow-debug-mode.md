@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/11/2020
-ms.openlocfilehash: 41153c488825e87583284b23a287353f63ff8db8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90085089"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026985"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapování režimu ladění toku dat
 
@@ -77,15 +77,15 @@ Pokud se test jednotky připojí, existují nebo transformace vyhledávání, uj
 
 Jakmile se zobrazí náhled dat, můžete vygenerovat rychlou transformaci pro přetypovat, odebrání nebo provedení úprav sloupce. Klikněte na záhlaví sloupce a pak na panelu nástrojů Náhled dat vyberte jednu z možností.
 
-![Rychlé akce](media/data-flow/quick-actions1.png "Rychlé akce")
+![Snímek obrazovky se zobrazí na panelu nástrojů Náhled dat s možnostmi: přetypovat, upravit, Statistika a odebrat.](media/data-flow/quick-actions1.png "Rychlé akce")
 
 Jakmile vyberete úpravu, náhled dat se okamžitě aktualizuje. Kliknutím na **Potvrdit** v pravém horním rohu Vygenerujte novou transformaci.
 
-![Rychlé akce](media/data-flow/quick-actions2.png "Rychlé akce")
+![Snímek obrazovky zobrazující tlačítko Potvrdit](media/data-flow/quick-actions2.png "Rychlé akce")
 
 **Přetypovat** a **Modify** vygenerují odvozenou transformaci sloupce a **Odebrání** vytvoří transformaci SELECT.
 
-![Rychlé akce](media/data-flow/quick-actions3.png "Rychlé akce")
+![Snímek obrazovky ukazuje nastavení odvozeného sloupce.](media/data-flow/quick-actions3.png "Rychlé akce")
 
 > [!NOTE]
 > Pokud upravíte tok dat, budete muset před přidáním rychlé transformace znovu načíst náhled dat.

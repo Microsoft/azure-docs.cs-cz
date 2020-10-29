@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d52e8e0157c891cf8be6c610b7c0185d83ef9f06
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 519447dfffaa660131fa587eaef946c76f66983b
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638053"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027325"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý start: Vytvoření datové továrny pomocí uživatelského rozhraní Azure Data Factory 
 
@@ -61,6 +61,8 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 1. V poli **Umístění** vyberte umístění pro datovou továrnu.
 
    Seznam obsahuje jenom umístění podporovaná službou Data Factory, do kterých se budou ukládat vaše metadata Azure Data Factory. Přidružená úložiště dat (například Azure Storage a Azure SQL Database) a výpočetní prostředí (například Azure HDInsight), které Data Factory používá, mohou běžet v jiných oblastech.
+
+1. Vyberte **Další: Konfigurace Gitu** a pak vyberte **Konfigurovat Git později** .
 
 1. Vyberte **Vytvořit** . Po dokončení vytváření vyberte **Přejít k prostředku** a přejděte na stránku **Data Factory** . 
 

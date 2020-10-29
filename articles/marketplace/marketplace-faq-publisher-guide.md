@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707978"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026951"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -20,7 +20,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se komer
 
 ## <a name="general"></a>Obecné
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>Co je komerční tržiště Microsoftu?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Co je komerční marketplace Microsoftu?
 
 Komerční tržiště spojuje obchodní a státní úřady s řešeními vytvořenými našimi partnery. Naši partneři vytvářejí a spravují nabídky v partnerském centru a zákazníci můžou vyhledat a koupit řešení prostřednictvím prostředí v rámci produktu, jako jsou Microsoft AppSource, Azure Marketplace, prodejci v programu Cloud Solution Provider a naši prodejní týmy prostřednictvím programu společného prodeje.
 
@@ -58,10 +58,10 @@ Pokud se chcete přihlásit k komerčnímu vydavateli na webu Marketplace, jdět
 
 Způsoby použití vaší komerční nabídky na webu Marketplace závisí na tom, jak vytváříte nabídky.
 
-- Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat*.
-- Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky*. 
-- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi*, která poskytuje zkušební verzi mimo komerční web Marketplace.
-- Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování*.
+- Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat* .
+- Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky* . 
+- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi* , která poskytuje zkušební verzi mimo komerční web Marketplace.
+- Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování* .
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Návody vytvořit nabídky pro komerční tržiště?
 
@@ -99,10 +99,10 @@ Ano, Azure Government Marketplace je k dispozici v rámci Azure Government oblas
 
 Existují čtyři relevantní role, které řídí přístup k partnerskému centru.
 
-- *Manager*: poskytuje oprávnění ke správě uživatelů partnerského centra v adresáři a k vytváření a aktualizaci nabídek.
-- *Vývojář*: umožňuje uživateli vytvářet a aktualizovat nabídky.
-- *Finanční Přispěvatel*: poskytuje oprávnění k zobrazení generování sestav výběr.
-- *Vlastník*: lze nastavit účet výběr a daňový profil. Uživatel, který přijal smlouvu vydavatele, se ve výchozím nastavení nastaví jako vlastník.
+- *Manager* : poskytuje oprávnění ke správě uživatelů partnerského centra v adresáři a k vytváření a aktualizaci nabídek.
+- *Vývojář* : umožňuje uživateli vytvářet a aktualizovat nabídky.
+- *Finanční Přispěvatel* : poskytuje oprávnění k zobrazení generování sestav výběr.
+- *Vlastník* : lze nastavit účet výběr a daňový profil. Uživatel, který přijal smlouvu vydavatele, se ve výchozím nastavení nastaví jako vlastník.
 
 Pro vytváření nových uživatelských účtů nebo pozvaní účtů hostů v podkladovém adresáři jsou nutná oprávnění *globálního správce* Azure Active Directory (Azure AD). Partnerský centrum používá Azure AD na model identity a instance Azure AD organizace je často spravovaná a řízená IT týmy IT nebo zabezpečením.
 
@@ -303,15 +303,15 @@ Další informace najdete v tématu [Nastavení účtu výběr a daňového form
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Jsou vracené a refundace podporované na komerčním webu Marketplace?
 
-Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
+Náhrady jsou zákazníkům k dispozici za určitých podmínek a za určité poplatky. Žádosti o refundaci za opakované poplatky účtované měsíčně se musí přijmout do 24 hodin od nákupu nebo obnovení. Podobně se požadavky na náhrady za periodické poplatky, které se účtují za rok, musí získat do 14 dnů od nákupu nebo obnovení. Tento typ náhrad se nevztahuje na poplatky vyplývající z využití (z nabídek virtuálních počítačů nebo účtované podle objemu).
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
 Tady je několik zdrojů, které vám pomohou začít:
 
-- [Co je komerční tržiště Microsoftu?](overview.md)
+- [Co je komerční marketplace Microsoftu?](overview.md)
 - [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Jak se můžu zapojit do Microsoftu a dalších partnerů?
@@ -323,7 +323,7 @@ Doporučujeme tyto prostředky:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Kde se mohu dozvědět více o partnerském centru?
 
-- [Dokumentace k partnerskému centru](/partner-center/)
+- [Dokumentace k Partnerskému centru](/partner-center/)
 - [Vítá vás komerční marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Kde se mohu dozvědět více o centru pro správu Microsoftu?

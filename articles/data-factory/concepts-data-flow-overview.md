@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370908"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027597"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mapování toků dat v Azure Data Factory
 
@@ -27,7 +27,7 @@ Mapování toků dat poskytuje zcela vizuální prostředí bez nutnosti kódov�
 
 ## <a name="getting-started"></a>Začínáme
 
-Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a datové sady. Tok dat vytvoříte tak, že vyberete znaménko plus vedle **prostředků výrobce**a pak vyberete **tok dat**. 
+Toky dat se vytvářejí v podokně prostředky továrny, jako jsou kanály a datové sady. Tok dat vytvoříte tak, že vyberete znaménko plus vedle **prostředků výrobce** a pak vyberete **tok dat** . 
 
 ![Nový tok dat](media/data-flow/new-data-flow.png "Nový tok dat")
 
@@ -37,13 +37,13 @@ Tato akce přejde k plátnu toku dat, kde můžete vytvořit logiku transformace
 
 Mapování toku dat má jedinečné plátno pro vytváření, které usnadňuje sestavování logiky transformace. Plátno toku dat je rozdělené na tři části: horní pruh, graf a panel konfigurace. 
 
-![Plátno](media/data-flow/canvas1.png "Plátno")
+![Snímek obrazovky znázorňující plátno toku dat s popisem horního panelu, grafu a panelu konfigurace.](media/data-flow/canvas1.png "Plátno")
 
 ### <a name="graph"></a>Graph
 
-Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj**. Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace. Přečtěte si další informace o tom, jak [Spravovat Graf toku dat](concepts-data-flow-manage-graph.md).
+Graf zobrazí datový proud transformace. Ukazuje, že se při toku dat do jedné nebo více umyvadel zobrazuje čára. Chcete-li přidat nový zdroj, vyberte možnost **Přidat zdroj** . Chcete-li přidat novou transformaci, vyberte znaménko plus na pravé straně existující transformace. Přečtěte si další informace o tom, jak [Spravovat Graf toku dat](concepts-data-flow-manage-graph.md).
 
-![Plátno](media/data-flow/canvas2.png "Plátno")
+![Snímek obrazovky znázorňuje část grafu na plátně s textovým polem hledání.](media/data-flow/canvas2.png "Plátno")
 
 ### <a name="configuration-panel"></a>Panel konfigurace
 

@@ -3,12 +3,12 @@ title: Přehled úloh ACR
 description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, která poskytuje zabezpečené, automatizované vytváření imagí kontejnerů, správu a opravy v cloudu.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488639"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027662"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
 
@@ -70,7 +70,7 @@ Naučte se, jak aktivovat sestavení v potvrzení zdrojového kódu v druhém ku
 
 ## <a name="automate-os-and-framework-patching"></a>Automatizace oprav operačního systému a rozhraní
 
-Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci *základní image*. Pro většinu imagí kontejnerů je základní image nadřazená image, na které je založena jedna nebo více imagí aplikace. Základní image obvykle obsahují operační systém a někdy aplikační architektury. 
+Výkon úloh ACR, které mají skutečně vylepšit pracovní postup sestavení kontejneru, pochází z jeho schopnosti detekovat aktualizaci *základní image* . Pro většinu imagí kontejnerů je základní image nadřazená image, na které je založena jedna nebo více imagí aplikace. Základní image obvykle obsahují operační systém a někdy aplikační architektury. 
 
 Můžete nastavit úlohu ACR pro sledování závislosti na základní imagi při sestavení image aplikace. Po vložení aktualizované základní image do registru nebo obnovení základní image ve veřejném úložišti, jako je například Docker Hub, můžou úlohy ACR automaticky vytvářet na základě této aplikace bitové kopie aplikací.
 Díky této automatické detekci a novému sestavování vám ACR úlohy šetří čas a úsilí obvykle potřebné k ručnímu sledování a aktualizaci jednotlivých imagí a všech imagí aplikace, které odkazují na aktualizovanou základní image.
@@ -138,10 +138,6 @@ Až budete připraveni automatizovat sestavení a údržbu imagí kontejneru v c
 Volitelně můžete nainstalovat [rozšíření Docker pro Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) a rozšíření [účtu Azure](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) pro práci se službou Azure Container Registry. Vyhrajte a nahrajte image do služby Azure Container registry nebo spouštějte ACR úlohy, a to všechno v rámci Visual Studio Code.
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

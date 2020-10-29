@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211557"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025948"
 ---
 # <a name="monitor-workload---azure-portal"></a>Monitorování úloh – Azure Portal
 
 Tento článek popisuje, jak pomocí Azure Portal monitorovat vaše úlohy. Zahrnuje nastavení protokolů Azure Monitor pro zkoumání provádění dotazů a trendy úloh pomocí Log Analytics pro [synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Fond SQL: bude shromažďovat protokoly pro fond SQL. Pokud nemáte zřízen Fond SQL, přečtěte si pokyny v tématu [Vytvoření fondu SQL](load-data-from-azure-blob-storage-using-polybase.md).
@@ -32,9 +32,9 @@ Přejděte do okna procházení pro Log Analytics pracovní prostory a vytvořte
 
 ![Pracovní prostory služby Log Analytics](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
-![Přidat pracovní prostor analýzy](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
+![Snímek obrazovky zobrazuje Log Analytics pracovní prostory, kde můžete vybrat přidat.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace.png)
 
-![Přidat pracovní prostor analýzy](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
+![Snímek obrazovky ukazuje Log Analytics pracovní prostor, do kterého můžete zadat hodnoty.](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
 Další informace o pracovních prostorech najdete v následující [dokumentaci](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace).
 

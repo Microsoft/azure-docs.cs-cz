@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 25252b73f25a96f85d5e2cf1d68b76f9eaa3ca75
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979585"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026832"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Použití Azure Sentinel watchlists
 
@@ -27,28 +27,31 @@ Obvyklé scénáře použití watchlists zahrnují:
 
 - **Import obchodních dat** jako watchlists Například importujte seznamy uživatelů s privilegovaným přístupem k systému nebo ukončené zaměstnance a potom pomocí seznamu ke zhlédnutí Vytvořte seznamy povolených a zakázaných aplikací, které se používají ke zjištění nebo zabránění uživatelům v přihlášení k síti.
 
-- **Omezení únavy výstrah**. Vytvořte seznamy povolených pro potlačení výstrah ze skupiny uživatelů, jako jsou uživatelé z autorizovaných IP adres, které provádějí úlohy, které by obvykle aktivovaly výstrahu, a zabraňují nedovoleným událostem v zobrazování výstrah.
+- **Omezení únavy výstrah** . Vytvořte seznamy povolených pro potlačení výstrah ze skupiny uživatelů, jako jsou uživatelé z autorizovaných IP adres, které provádějí úlohy, které by obvykle aktivovaly výstrahu, a zabraňují nedovoleným událostem v zobrazování výstrah.
 
 - **Obohacení dat události** Pomocí watchlists můžete rozšířit data události pomocí kombinací název-hodnota odvozené z externích zdrojů dat.
 
 ## <a name="create-a-new-watchlist"></a>Vytvořit nový seznamu ke zhlédnutí
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **Configuration**  >  **seznamu ke zhlédnutí** a pak vyberte **Přidat nový**.
+1. V Azure Portal přejděte na **Azure Sentinel**  >  **Configuration**  >  **seznamu ke zhlédnutí** a pak vyberte **Přidat nový** .
 
     > [!div class="mx-imgBorder"]
     > ![Nový seznamu ke zhlédnutí](./media/watchlists/sentinel-watchlist-new.png)
 
-1. Na stránce **Obecné** zadejte název, popis a alias pro seznamu ke zhlédnutí a pak vyberte **Další**.
+1. Na stránce **Obecné** zadejte název, popis a alias pro seznamu ke zhlédnutí a pak vyberte **Další** .
 
     > [!div class="mx-imgBorder"]
     > ![Obecná stránka seznamu ke zhlédnutí](./media/watchlists/sentinel-watchlist-general.png)
 
-1. Na stránce **zdroj** vyberte typ datové sady, nahrajte soubor a pak vyberte **Další**.
+1. Na stránce **zdroj** vyberte typ datové sady, nahrajte soubor a pak vyberte **Další** .
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-source.png" alt-text="seznamu ke zhlédnutí zdrojová stránka" lightbox="./media/watchlists/sentinel-watchlist-source.png":::
 
+    > [!NOTE]
+    >
+    > Nahrávání souborů je v současné době omezené na soubory o velikosti až 3,8 MB.
 
-1. Zkontrolujte informace, ověřte, zda je správná, a pak vyberte **vytvořit**.
+1. Zkontrolujte informace, ověřte, zda je správná, a pak vyberte **vytvořit** .
 
     > [!div class="mx-imgBorder"]
     > ![Stránka seznamu ke zhlédnutí Revize](./media/watchlists/sentinel-watchlist-review.png)
@@ -57,13 +60,11 @@ Obvyklé scénáře použití watchlists zahrnují:
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-complete.png" alt-text="seznamu ke zhlédnutí zdrojová stránka" lightbox="./media/watchlists/sentinel-watchlist-complete.png":::
 
-
 ## <a name="use-watchlists-in-queries"></a>Použití watchlists v dotazech
 
-1. V Azure Portal přejděte na **Azure Sentinel**  >  **Configuration**  >  **seznamu ke zhlédnutí**, vyberte seznamu ke zhlédnutí, který chcete použít, a pak vyberte **Zobrazit v Log Analytics**.
+1. V Azure Portal přejděte na **Azure Sentinel**  >  **Configuration**  >  **seznamu ke zhlédnutí** , vyberte seznamu ke zhlédnutí, který chcete použít, a pak vyberte **Zobrazit v Log Analytics** .
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="seznamu ke zhlédnutí zdrojová stránka" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
-
 
 1. Položky ve vašem seznamu ke zhlédnutí jsou automaticky extrahovány pro váš dotaz a zobrazí se na kartě **výsledky** . Následující příklad ukazuje výsledky extrakce polí **servername** a **IPAddress** .
 
@@ -74,14 +75,13 @@ Obvyklé scénáře použití watchlists zahrnují:
     
 ## <a name="use-watchlists-in-analytics-rules"></a>Použití watchlists v pravidlech analýz
 
-Pokud chcete použít watchlists v pravidlech analýzy, přejděte z Azure Portal na **Azure Sentinel**  >  **Configuration**  >  **Analytics**a vytvořte pravidlo pomocí `_GetWatchlist('<watchlist>')` funkce v dotazu.
+Pokud chcete použít watchlists v pravidlech analýzy, přejděte z Azure Portal na **Azure Sentinel**  >  **Configuration**  >  **Analytics** a vytvořte pravidlo pomocí `_GetWatchlist('<watchlist>')` funkce v dotazu.
 
 :::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="seznamu ke zhlédnutí zdrojová stránka" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
-
 ## <a name="view-list-of-watchlists-aliases"></a>Zobrazit seznam aliasů watchlists
 
-Pokud chcete získat seznam aliasů seznamu ke zhlédnutí, přejděte z Azure Portal do části **Azure Sentinel**  >  **General**  >  **logs**a spusťte následující dotaz: `_GetWatchlistAlias` . Seznam aliasů můžete zobrazit na kartě **výsledky** .
+Pokud chcete získat seznam aliasů seznamu ke zhlédnutí, přejděte z Azure Portal do části **Azure Sentinel**  >  **General**  >  **logs** a spusťte následující dotaz: `_GetWatchlistAlias` . Seznam aliasů můžete zobrazit na kartě **výsledky** .
 
 > [!div class="mx-imgBorder"]
 > ![seznam watchlists](./media/watchlists/sentinel-watchlist-alias.png)

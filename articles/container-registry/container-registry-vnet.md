@@ -3,12 +3,12 @@ title: Omezení přístupu pomocí koncového bodu služby
 description: Omezte přístup ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network. Přístup ke koncovému bodu služby je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215497"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026220"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network
 
@@ -37,7 +37,7 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 
 * Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
-* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
+* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -53,7 +53,7 @@ V této části nakonfigurujete registr kontejneru tak, aby povoloval přístup 
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>Přidání koncového bodu služby do podsítě
 
-Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM*, výchozí název virtuální sítě je *myDockerVMVNET*s podsítí s názvem *myDockerVMSubnet*. Ověřte to pomocí příkazu [AZ Network VNet list][az-network-vnet-list] :
+Když vytvoříte virtuální počítač, Azure ve výchozím nastavení vytvoří virtuální síť ve stejné skupině prostředků. Název virtuální sítě je založený na názvu virtuálního počítače. Například pokud pojmenujete virtuální počítač *myDockerVM* , výchozí název virtuální sítě je *myDockerVMVNET* s podsítí s názvem *myDockerVMSubnet* . Ověřte to pomocí příkazu [AZ Network VNet list][az-network-vnet-list] :
 
 ```azurecli
 az network vnet list \
@@ -151,7 +151,7 @@ Chcete-li zobrazit seznam síťových pravidel nakonfigurovaných pro váš regi
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Například:
+Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Příklad:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.
@@ -189,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

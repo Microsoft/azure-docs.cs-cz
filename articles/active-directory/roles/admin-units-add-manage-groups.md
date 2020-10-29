@@ -1,6 +1,6 @@
 ---
 title: Přidání, odebrání a výpis skupin v jednotce pro správu – Azure Active Directory | Microsoft Docs
-description: Správa skupin a jejich oprávnění role v jednotce pro správu v Azure Active Directory
+description: Spravujte skupiny a jejich oprávnění role v jednotce pro správu v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,38 +14,56 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec566fecb0dd14a4e56a2a3b9a59745bfe549faf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376148"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026730"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotkách pro správu v Azure Active Directory
+# <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotce pro správu v Azure Active Directory
 
-V Azure Active Directory (Azure AD) můžete přidat skupiny do jednotky pro správu (AU), kde najdete přesnější administrativní rozsah řízení.
+V Azure Active Directory (Azure AD) můžete přidat skupiny do jednotky pro správu a podrobnějšího administrativního rozsahu řízení.
 
-Postup přípravy na používání PowerShellu a Microsoft Graph pro správu jednotek správy najdete v tématu [Začínáme](admin-units-manage.md#get-started).
+Informace o přípravě na používání PowerShellu a Microsoft Graph pro správu jednotek správy najdete v [tématu Začínáme.](admin-units-manage.md#get-started)
 
-## <a name="add-groups-to-an-au"></a>Přidání skupin do AU
+## <a name="add-groups-to-an-administrative-unit"></a>Přidání skupin do jednotky pro správu
 
-### <a name="azure-portal"></a>portál Azure
+Skupiny můžete přidat do jednotky pro správu pomocí Azure Portal, PowerShellu nebo Microsoft Graph.
 
-Skupiny můžete přiřadit pouze jednotlivě do jednotky pro správu. Neexistuje možnost hromadného přiřazování skupin do jednotky pro správu. Skupinu můžete přiřadit jednotce pro správu jedním ze dvou způsobů na portálu:
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Na stránce **skupin Azure AD >**
+Jednotce pro správu můžete přiřadit pouze jednotlivé skupiny. Neexistuje možnost přiřadit skupiny jako hromadnou operaci. V Azure Portal můžete přiřadit skupinu k jednotce pro správu jedním ze dvou způsobů:
 
-    Otevřete stránku Přehled skupin v Azure AD a vyberte skupinu, která musí být přiřazená k jednotce pro správu. Na levé straně vyberte **jednotky pro správu** a uveďte jednotky pro správu, ke kterým je skupina přiřazená. V horní části najdete možnost přiřazení k jednotce pro správu a kliknutím na ni získáte panel na pravé straně, kde si vyberete jednotku správy.
+* Z podokna **skupiny** :
 
-    ![přiřazení skupiny jednotlivě k jednotce pro správu](./media/admin-units-add-manage-groups/assign-to-group-1.png)
+  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. Vyberte **skupiny** a pak vyberte skupinu, kterou chcete přiřadit k jednotce pro správu. 
+  1. V levém podokně vyberte **jednotky pro správu** a zobrazte seznam jednotek pro správu, ke kterým je skupina přiřazená. 
 
-1. Z **administrativních jednotek > služby Azure AD > všechny skupiny**
+     ![Snímek obrazovky s odkazem "přiřadit k jednotce správy" v podokně "jednotky pro správu".](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
-    Otevřete okno všechny skupiny ve službě Azure AD > jednotky pro správu. Pokud jsou už skupiny přiřazené k jednotce pro správu, zobrazí se na pravé straně. V horní části vyberte **Přidat** a v pravém panelu se zobrazí seznam skupin dostupných ve vaší organizaci Azure AD. Vyberte jednu nebo více skupin, které chcete přiřadit k administrativním jednotkám.
+  1. Vyberte **přiřadit k jednotce pro správu** .
+  1. V pravém podokně vyberte jednotku pro správu.
 
-    ![Vyberte jednotku pro správu a pak vyberte Přidat člena.](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+* V podokně všechny skupiny **jednotek pro správu**  >  **All Groups** :
 
-### <a name="powershell"></a>PowerShell
+  1. V Azure Portal přejdete do **služby Azure AD** .
+  
+  1. V levém podokně vyberte **jednotky pro správu** a pak vyberte **všechny skupiny** . 
+     V pravém podokně se zobrazí všechny skupiny, které jsou už přiřazené k jednotce pro správu. 
+
+  1. V podokně **skupiny** vyberte **Přidat** .
+    V pravém podokně se zobrazí všechny dostupné skupiny v organizaci Azure AD. 
+
+     ![Snímek obrazovky s tlačítkem Přidat pro přidání skupiny do jednotky pro správu](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+
+  1. Vyberte jednu nebo více skupin, které chcete přiřadit k jednotce pro správu, a pak vyberte tlačítko **Vybrat** .
+
+### <a name="use-powershell"></a>Použití prostředí PowerShell
+
+V následujícím příkladu `Add-AzureADMSAdministrativeUnitMember` přidejte skupinu do jednotky pro správu pomocí rutiny. ID objektu jednotky pro správu a ID objektu skupiny, která se má přidat, se považují za argumenty. Změňte zvýrazněný oddíl podle potřeby pro konkrétní prostředí.
+
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
@@ -53,9 +71,9 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-V tomto příkladu rutina Add-AzureADMSAdministrativeUnitMember slouží k přidání skupiny do jednotky pro správu. ID objektu jednotky pro správu a ID objektu skupiny, která se má přidat, se považují za argument. Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+Spusťte následující příkazy:
 
 ```http
 Http request
@@ -75,22 +93,28 @@ Příklad:
 }
 ```
 
-## <a name="list-groups-in-an-au"></a>Seznam skupin v AU
+## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>Zobrazení seznamu skupin v jednotce pro správu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Na portálu můžete přejít na **jednotky pro správu Azure AD >** . Vyberte jednotku pro správu, pro kterou chcete zobrazit seznam uživatelů. Ve výchozím nastavení je na levém panelu vybraná možnost **Všichni uživatelé** . Vyberte **všechny skupiny** a napravo se seznam skupin, které jsou členy vybrané jednotky pro správu.
+1. V Azure Portal přejdete do **služby Azure AD** .
 
-![Seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku pro správu, jejíž skupiny chcete zobrazit. Ve výchozím nastavení se v levém podokně vybere možnost **Všichni uživatelé** . 
 
-### <a name="powershell"></a>PowerShell
+1. V levém podokně vyberte **skupiny** . V pravém podokně se zobrazí seznam skupin, které jsou členy vybrané jednotky pro správu.
+
+   ![Snímek obrazovky s podoknem skupiny zobrazující seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+
+### <a name="use-powershell"></a>Použití prostředí PowerShell
+
+Chcete-li zobrazit seznam všech členů jednotky pro správu, spusťte následující příkaz: 
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 ```
 
-To vám pomůže získat všechny členy jednotky pro správu. Pokud chcete zobrazit všechny skupiny, které jsou členy jednotky pro správu, můžete použít následující fragment kódu:
+Chcete-li zobrazit všechny skupiny, které jsou členy jednotky pro správu, použijte následující fragment kódu:
 
 ```http
 foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
@@ -102,7 +126,9 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
+
+Spusťte následující příkaz:
 
 ```http
 HTTP request
@@ -111,54 +137,71 @@ Request body
 {}
 ```
 
-## <a name="list-aus-for-a-group"></a>Seznam jednotek Austrálie pro skupinu
+## <a name="view-a-list-of-administrative-units-for-a-group"></a>Zobrazit seznam jednotek pro správu pro skupinu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Na portálu Azure AD můžete otevřít podrobnosti skupiny otevřením **skupin**. Výběrem skupiny otevřete profil skupiny. Vyberte **jednotky pro správu** a seznam všech jednotek pro správu, ve kterých je skupina členem.
+1. V Azure Portal přejdete do **služby Azure AD** .
 
-![Výpis jednotek pro správu pro skupinu](./media/admin-units-add-manage-groups/list-group-au.png)
+1. V levém podokně vyberte **skupiny** a zobrazte seznam skupin.
 
-### <a name="powershell"></a>PowerShell
+1. Výběrem skupiny otevřete profil skupiny. 
+
+1. V levém podokně vyberte **jednotky pro správu** a seznam všech jednotek pro správu, v nichž je skupina členem.
+
+   ![Snímek obrazovky s podoknem "jednotky pro správu", ve kterém se zobrazí jednotky pro správu seznamu, ke kterým je skupina přiřazena](./media/admin-units-add-manage-groups/list-group-au.png)
+
+### <a name="use-powershell"></a>Použití prostředí PowerShell
+
+Spusťte následující příkaz:
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
+
+Spusťte následující příkaz:
 
 ```http
 https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
-## <a name="remove-a-group-from-an-au"></a>Odebrání skupiny z AU
+## <a name="remove-a-group-from-an-administrative-unit"></a>Odebrání skupiny z jednotky pro správu
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Existují dva způsoby, jak skupinu odebrat z jednotky pro správu v Azure Portal.
+Skupinu můžete z jednotky pro správu v Azure Portal odebrat jedním ze dvou způsobů:
 
-- Odebrat ze skupiny – přehled
+- Odebrání z přehledu skupiny:
 
-  1. Otevřete **skupiny Azure AD**  >  **Groups** a otevřete profil pro skupinu, kterou chcete odebrat z jednotky pro správu.
-  1. Vyberte **jednotky pro správu** na levém panelu a seznam všech jednotek správy, v nichž je skupina členem. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu**.
+  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V levém podokně vyberte **skupiny** a pak otevřete profil pro skupinu, kterou chcete odebrat z jednotky pro správu.
+  1. V levém podokně vyberte **jednotky pro správu** a uveďte všechny jednotky pro správu, ke kterým je skupina přiřazená. 
+  1. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu** .
 
-    ![Odebrání skupiny z jednotky pro správu](./media/admin-units-add-manage-groups/group-au-remove.png)
+     ![Snímek obrazovky s podoknem "administrativní jednotky" a zobrazení seznamu skupin přiřazených vybrané jednotce pro správu.](./media/admin-units-add-manage-groups/group-au-remove.png)
 
-- Odebrat z jednotky pro správu
+- Odebrat z jednotky pro správu:
 
-  1. Otevřete **Azure AD**  >  **jednotky pro správu** Azure AD a vyberte jednotku pro správu, kde je skupina členem.
-  1. Vyberte **skupiny** na levém panelu a seznamte se se skupinami členů.
-  1. Vyberte skupinu, která se má odebrat z jednotky pro správu, a pak vyberte **odebrat skupiny**.
+  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku správy, ke které je skupina přiřazená.
+  1. V levém podokně vyberte **skupiny** a uveďte všechny skupiny, které jsou přiřazené jednotce pro správu.
+  1. Vyberte skupinu, kterou chcete odebrat, a pak vyberte **odebrat skupiny** .
 
-    ![Seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+    ![Snímek obrazovky s podoknem skupiny, kde se zobrazí seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>Použití prostředí PowerShell
+
+Spusťte následující příkaz:
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
+
+Spusťte následující příkaz:
 
 ```http
 https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495789"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027308"
 ---
 # <a name="write-client-app-authentication-code"></a>Zápis ověřovacího kódu klientské aplikace
 
@@ -24,7 +24,7 @@ Tento článek popisuje, jak získat pověření pomocí `Azure.Identity` klient
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Tím se zajistí, že máte instanci digitálního vlákna Azure, ke které má váš uživatel oprávnění pro přístup, a Vy jste nastavili oprávnění pro klientské aplikace. Po dokončení všech těchto nastavení jste připraveni k psaní kódu klientské aplikace.
+Nejdřív dokončete kroky nastavení v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). Tím zajistíte, že budete mít instanci digitálního vlákna Azure a že má váš uživatel oprávnění k přístupu. Po dokončení instalace jste připraveni k psaní kódu klientské aplikace.
 
 Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve kterém budete psát kód. Pokud ještě nemáte nastavený projekt klientské aplikace, vytvořte si základní projekt v jazyce zvoleném pro použití v tomto kurzu.
 
@@ -37,7 +37,7 @@ Chcete-li pokračovat, budete potřebovat projekt klientské aplikace, ve které
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 Tři běžné metody získávání přihlašovacích údajů v nástroji `Azure.Identity` :
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**. Dá se taky povolit, aby se vyzkoušely další dvě metody doporučené v tomto článku. zalomí `ManagedIdentityCredential` a má přístup k `InteractiveBrowserCredential` konfigurační proměnné.
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj** . Dá se taky povolit, aby se vyzkoušely další dvě metody doporučené v tomto článku. zalomí `ManagedIdentityCredential` a má přístup k `InteractiveBrowserCredential` konfigurační proměnné.
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) funguje skvěle v případech, kdy potřebujete [spravované identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md), a je vhodným kandidátem na práci s Azure functions a nasazením do služeb Azure.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) je určený pro interaktivní aplikace a dá se použít k vytvoření ověřeného klienta SDK.
 
@@ -60,7 +60,7 @@ Pak přidejte kód pro získání přihlašovacích údajů pomocí jedné z met
 
 ### <a name="defaultazurecredential-method"></a>Metoda DefaultAzureCredential
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj**.
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) poskytuje výchozí `TokenCredential` tok ověřování pro aplikace, které se nasazují do Azure, a je **doporučená volba pro místní vývoj** .
 
 Pokud chcete použít výchozí přihlašovací údaje Azure, budete potřebovat adresu URL instance digitálního vlákna Azure ([pokyny, které se mají najít](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
 
@@ -110,8 +110,8 @@ client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 Metoda [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) je určena pro interaktivní aplikace a otevře webový prohlížeč pro ověřování. Místo toho můžete použít `DefaultAzureCredential` interaktivní ověřování v případech.
 
 Pokud chcete použít přihlašovací údaje interaktivního prohlížeče, budete potřebovat **registraci aplikace** , která má oprávnění k rozhraním API pro digitální vlákna Azure. Postup nastavení registrace této aplikace najdete v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md). Po nastavení registrace aplikace budete potřebovat...
-* *ID aplikace (klienta)* registrace aplikace ([pokyny, které se mají najít](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
-* *ID adresáře (klienta)* registrace aplikace ([pokyny k vyhledání](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* *ID aplikace (klienta)* registrace aplikace ( [pokyny, které se mají najít](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
+* *ID adresáře (klienta)* registrace aplikace ( [pokyny k vyhledání](how-to-create-app-registration.md#collect-client-id-and-tenant-id))
 * Adresa URL instance digitálního vlákna Azure ([pokyny k vyhledání](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 
 Zde je příklad kódu pro vytvoření ověřeného klienta sady SDK pomocí nástroje `InteractiveBrowserCredential` .

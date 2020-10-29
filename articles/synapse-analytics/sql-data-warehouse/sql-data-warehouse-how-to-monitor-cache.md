@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211880"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026798"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Jak monitorovat mezipaměť Gen2
 
@@ -26,15 +26,15 @@ Architektura úložiště Gen2 automaticky vychází z nejčastěji dotazovanýc
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Řešení potíží pomocí Azure Portal
 
-Pomocí Azure Monitor můžete zobrazit metriky mezipaměti Gen2 a řešit potíže s výkonem dotazů. Nejprve přejděte na Azure Portal a klikněte na **monitorování**, **metriky** a **Vyberte rozsah**:
+Pomocí Azure Monitor můžete zobrazit metriky mezipaměti Gen2 a řešit potíže s výkonem dotazů. Nejprve přejděte na Azure Portal a klikněte na **monitorování** , **metriky** a **Vyberte rozsah** :
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![Snímek obrazovky ukazuje vybrat obor vybraný z metrik v Azure Portal.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 K vyhledání datového skladu použijte panely hledání a rozevírací seznam. Pak vyberte použít.
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![Snímek obrazovky se zobrazí v podokně vybrat obor, kde můžete vybrat svůj datový sklad.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-Klíčovou metrikou pro řešení potíží s mezipamětí Gen2 je **Procento přístupů do mezipaměti** a **procento využití mezipaměti**. Vyberte **Procento přístupů do mezipaměti** a potom pomocí tlačítka **Přidat metriku** přidejte **procento využité mezipaměti**. 
+Klíčovou metrikou pro řešení potíží s mezipamětí Gen2 je **Procento přístupů do mezipaměti** a **procento využití mezipaměti** . Vyberte **Procento přístupů do mezipaměti** a potom pomocí tlačítka **Přidat metriku** přidejte **procento využité mezipaměti** . 
 
 ![Metriky mezipaměti](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

@@ -3,12 +3,12 @@ title: Ověřování mezi registry z ACR úlohy
 description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přístup k jinému privátnímu registru služby Azure Container Registry pomocí spravované identity pro prostředky Azure
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057347"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026254"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
@@ -26,12 +26,12 @@ Tento příklad ukazuje kroky buď pomocí uživatelsky přiřazené nebo spravo
 
 V reálném scénáři může organizace udržovat sadu základních imagí, které používají všechny vývojové týmy pro vytváření aplikací. Tyto základní image jsou uložené v podnikovém registru, přičemž každý vývojový tým má jenom práva k získání. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento článek potřebujete dva služby Azure Container Registry:
 
-* Pomocí prvního registru můžete vytvářet a spouštět úlohy ACR. V tomto článku má tento registr název *myregistry*. 
-* Druhý registr hostuje základní image, která se používá pro úkol k sestavení image. V tomto článku má druhý registr název *mybaseregistry*. 
+* Pomocí prvního registru můžete vytvářet a spouštět úlohy ACR. V tomto článku má tento registr název *myregistry* . 
+* Druhý registr hostuje základní image, která se používá pro úkol k sestavení image. V tomto článku má druhý registr název *mybaseregistry* . 
 
 Nahraďte vlastními názvy registru v pozdějších krocích.
 
@@ -39,16 +39,12 @@ Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si tém
 
 ## <a name="prepare-base-registry"></a>Příprava základního registru
 
-Nejprve vytvořte pracovní adresář a pak vytvořte soubor s názvem souboru Dockerfile s následujícím obsahem. V tomto jednoduchém příkladu se vytvoří základní image Node.js z veřejné image v Docker Hub.
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+Pro demonstrační účely, jako jednorázovou operaci, spusťte příkaz [az ACR Import] [az-ACR-Import], abyste importovali veřejnou Node.js image z Docker Hub do svého základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat image v základním registru.
 
-V aktuálním adresáři spuštěním příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte základní image do základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat základní Registry.
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>Definování kroků úkolu v souboru YAML
@@ -88,7 +84,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
 
-V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry*.
+V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry* .
 
 Pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku základního registru a uložte ho do proměnné:
 
@@ -127,7 +123,7 @@ az acr task create \
 
 ### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
 
-V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry*.
+V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry* .
 
 Pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku základního registru a uložte ho do proměnné:
 
@@ -223,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Spuštěním příkazu [AZ ACR úložiště show-Tags][az-acr-repository-show-tags] ověřte, že se image sestavila a byla úspěšně vložena do *myregistry*:
+Spuštěním příkazu [AZ ACR úložiště show-Tags][az-acr-repository-show-tags] ověřte, že se image sestavila a byla úspěšně vložena do *myregistry* :
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv

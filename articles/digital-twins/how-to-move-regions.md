@@ -8,16 +8,16 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 3c7f9ed9558adc9d129d1df767a05aff1fa4c66c
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e586e9acc9510dc1aaae511fa51e5a0c3255bd8f
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047382"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026492"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
-Pokud potřebujete přesunout instanci digitálních vláken Azure z jedné oblasti do druhé, aktuální proces je **znovu vytvořit prostředky v nové oblasti**a pak odstranit původní prostředky. Na konci tohoto procesu budete pracovat s novou instancí digitálních vláken Azure, která je stejná jako první, s výjimkou aktualizovaného umístění.
+Pokud potřebujete přesunout instanci digitálních vláken Azure z jedné oblasti do druhé, aktuální proces je **znovu vytvořit prostředky v nové oblasti** a pak odstranit původní prostředky. Na konci tohoto procesu budete pracovat s novou instancí digitálních vláken Azure, která je stejná jako první, s výjimkou aktualizovaného umístění.
 
 Tento článek obsahuje informace o tom, jak provést úplné přesunutí, kopírování přes všechno, co budete potřebovat k tomu, aby se nová instance shodovala s původní.
 
@@ -30,7 +30,7 @@ Tento proces zahrnuje následující kroky:
     - Znovu propojte připojené prostředky.
 4. Vyčistit zdrojové prostředky: odstranit původní instanci.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než se pokusíte znovu vytvořit instanci digitálních vláken Azure, je vhodné přejít na součásti původní instance a získat jasný nápad na všechny části, které bude nutné znovu vytvořit.
 
@@ -40,7 +40,7 @@ Tady jsou některé otázky, které byste mohli zvážit:
 * Jaký je obecný tvar **grafu** v mé instanci? Kolik relací je?
 * Jaké **koncové body** mám v mé instanci?
 * Jaké **trasy** mám v mé instanci? Mají filtry?
-* Kde se moje instance **připojuje k jiným službám Azure**? Mezi běžné integrační body patří...
+* Kde se moje instance **připojuje k jiným službám Azure** ? Mezi běžné integrační body patří...
     - Event Grid, centrum událostí nebo Service Bus
     - Azure Functions
     - Logic Apps
@@ -76,11 +76,13 @@ Pokud ukázka nedokáže zpracovat velikost grafu, můžete ho exportovat a impo
 
 Pokud chcete pokračovat v Průzkumníkovi aplikace ADT, nejdřív si stáhněte ukázkový kód aplikace a nastavte ho tak, aby se spouštěl na vašem počítači. 
 
-Přejděte k ukázce sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu na váš počítač jako _**ADT_Explorer.zip**_. Rozbalte soubor.
+Přejděte k ukázce sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_ . Rozbalte soubor.
 
-Dále nastavte oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači. Provedete to podle kroků v části [*Nastavení oprávnění Průzkumníka programu ADT*](quickstart-adt-explorer.md#set-adt-explorer-permissions) v rychlém startu pro digitální vlákna Azure.
-
-Nakonec spusťte a nakonfigurujte Průzkumníka aplikace ADT, aby se připojil k původní instanci digitálních vláken Azure. Postupujte podle kroků v části [*spuštění a konfigurace nástroje ADT Explorer*](quickstart-adt-explorer.md#run-and-configure-adt-explorer) v rychlém startu.
+Dále nastavte a nakonfigurujte oprávnění pro Průzkumníka aplikace ADT. Postupujte podle pokynů v části [*nastavení digitálního vlákna Azure a Průzkumníka služby ADT*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) v rychlém startu pro digitální vlákna Azure. Tato část vás provede následujícími kroky:
+1. Nastavte instanci digitálních vláken Azure (tuto část můžete přeskočit, protože už máte instanci).
+2. Nastavení **Registrace aplikace Azure AD** pro poskytnutí přístupu k vaší instanci
+3. Nastavte oprávnění pro spuštění Průzkumníka aplikace ADT na vašem počítači.
+4. Spusťte Průzkumníka aplikace ADT a nakonfigurujte ho tak, aby se připojil k vaší instanci. Použijete **název hostitele** původní instance digitálních vláken Azure, kterou přesouváte, a **ID klienta** a **ID tenanta** z registrace aplikace.
 
 Nyní byste měli mít ukázkovou aplikaci Průzkumníka ADT spuštěnou v prohlížeči na vašem počítači. Vzorek by měl být připojený k původní instanci digitálních vláken Azure.
 
@@ -102,10 +104,10 @@ Pak v poli *zobrazení grafu* stiskněte ikonu *Export grafu* .
 
 :::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/export-graph.png":::
 
-Tím se povolí odkaz *ke stažení* v *zobrazení grafu*. Vyberte ji a Stáhněte si výsledek dotazu založený na formátu JSON, včetně vašich modelů, vláken a vztahů. To by mělo na váš počítač stáhnout soubor *. JSON* .
+Tím se povolí odkaz *ke stažení* v *zobrazení grafu* . Vyberte ji a Stáhněte si výsledek dotazu založený na formátu JSON, včetně vašich modelů, vláken a vztahů. To by mělo na váš počítač stáhnout soubor *. JSON* .
 
 >[!NOTE]
->Pokud se zdá, že stažený soubor má jinou příponu, zkuste rozšíření upravit přímo a změnit na *. JSON*.
+>Pokud se zdá, že stažený soubor má jinou příponu, zkuste rozšíření upravit přímo a změnit na *. JSON* .
 
 ## <a name="move"></a>Přesunout
 
@@ -113,12 +115,9 @@ Dále dokončíte přesunutí instance vytvořením nové instance v cílové ob
 
 ### <a name="create-a-new-instance"></a>Vytvořit novou instanci
 
-Nejdřív **vytvořte novou instanci digitálních vláken Azure v cílové oblasti**. Provedete to podle kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md)a zachovávání těchto ukazatelů:
+Nejdřív **vytvořte novou instanci digitálních vláken Azure v cílové oblasti** . Provedete to podle kroků v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md)a zachovávání těchto ukazatelů:
 * Stejný název můžete zachovat pro novou instanci, **Pokud** se nachází v jiné skupině prostředků. Pokud potřebujete použít stejnou skupinu prostředků, která obsahuje původní instanci, bude vaše nová instance potřebovat vlastní jedinečný název.
 * Až se zobrazí výzva k zadání umístění, zadejte cílovou novou oblast.
-* Registraci aplikace **nemusíte** vytvářet znovu. Vaše nová instance může znovu použít stejnou registraci aplikace, kterou už máte.
-    - Pokud používáte článek s [skriptem](how-to-set-up-instance-scripted.md) instalace, můžete po zobrazení výzvy znovu zadat podrobnosti o registraci existující aplikace, a to bez zadání nového názvu.
-    - Pokud používáte portál pro ruční instalaci [portálu](how-to-set-up-instance-portal.md) nebo rozhraní příkazového [řádku](how-to-set-up-instance-cli.md) , můžete zastavit za *instancí vytvoření digitálního vlákna Azure* a *nastavením kroků přístupu uživatele* . Není nutné pokračovat v *Nastavení oprávnění přístupu pro klientské aplikace*.
 
 Po dokončení budete potřebovat **název hostitele** nové instance, abyste mohli pokračovat v nastavování s Vašimi daty. Pokud jste to neudělali během instalace, můžete postupovat podle [těchto pokynů](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) a získat to hned z Azure Portal.
 
@@ -138,23 +137,23 @@ V současné době je Průzkumník aplikace ADT připojený k původní instanci
 
 :::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/sign-in.png":::
 
-Vzhledem k tomu, že používáte registraci aplikace znovu, stačí nahradit *adresu URL programu ADT*. Změňte tuto hodnotu na ta, která načte *https://{New instance hostname}*.
+Můžete znovu použít stejnou registraci aplikace, takže stačí nahradit *adresu URL aplikace ADT* novou instancí. Změňte tuto hodnotu na ta, která načte *https://{New instance hostname}* .
 
-Stiskněte *připojit*. Může se zobrazit výzva k opětovnému přihlášení s přihlašovacími údaji Azure a/nebo udělení tohoto souhlasu s aplikací pro vaši instanci.
+Stiskněte *připojit* . Může se zobrazit výzva k opětovnému přihlášení s přihlašovacími údaji Azure a/nebo udělení tohoto souhlasu s aplikací pro vaši instanci.
 
 ##### <a name="upload-models-twins-and-graph"></a>Nahrávání modelů, vláken a grafů
 
 Dále nahrajte součásti řešení, které jste stáhli dříve, do nové instance.
 
-Chcete-li nahrát vaše **modely, vlákna a graf**, stiskněte ikonu *Import grafu* v poli *zobrazení grafu* . Tato možnost nahraje všechny tři tyto součásti najednou (dokonce i modely, které se v grafu aktuálně nepoužívají).
+Chcete-li nahrát vaše **modely, vlákna a graf** , stiskněte ikonu *Import grafu* v poli *zobrazení grafu* . Tato možnost nahraje všechny tři tyto součásti najednou (dokonce i modely, které se v grafu aktuálně nepoužívají).
 
 :::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/import-graph.png":::
 
-V poli pro výběr souboru přejděte do staženého grafu. Vyberte soubor Graph *. JSON* a stiskněte *tlačítko otevřít*.
+V poli pro výběr souboru přejděte do staženého grafu. Vyberte soubor Graph *. JSON* a stiskněte *tlačítko otevřít* .
 
 Po několika sekundách otevře Průzkumník aplikace ADT zobrazení pro *Import* , ve kterém se zobrazí náhled grafu, který se bude načítat.
 
-Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém horním rohu *zobrazení grafu*:
+Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém horním rohu *zobrazení grafu* :
 
 :::row:::
     :::column:::
@@ -176,7 +175,7 @@ Průzkumník aplikace ADT nyní nahraje vaše modely a graf (včetně zdvojenýc
     :::column-end:::
 :::row-end:::
 
-Pokud chcete ověřit, jestli se všechno úspěšně nahrálo, klikněte na tlačítko *Spustit dotaz* v poli *Průzkumník grafů* a spusťte výchozí dotaz, který zobrazí všechny vazby a relace v grafu. Tím se také obnoví seznam modelů v *zobrazení modelu*.
+Pokud chcete ověřit, jestli se všechno úspěšně nahrálo, klikněte na tlačítko *Spustit dotaz* v poli *Průzkumník grafů* a spusťte výchozí dotaz, který zobrazí všechny vazby a relace v grafu. Tím se také obnoví seznam modelů v *zobrazení modelu* .
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/run-query.png":::
 
@@ -191,8 +190,8 @@ Tím se potvrdí, že vaše modely, vlákna a grafy se znovu nahrály do nové i
 Pokud máte v původní instanci **koncové body nebo trasy** , budete je muset v nové instanci znovu vytvořit. Pokud v původní instanci nemáte žádné koncové body nebo trasy nebo je nechcete přesunout do nové instance, můžete přejít k [Další části](#re-link-connected-resources).
 
 V opačném případě pokračujte podle kroků v tématu [*Postup: Správa koncových bodů a tras*](how-to-manage-routes-portal.md) pomocí nové instance, přičemž mějte na paměti tyto ukazatele: 
-* **Nemusíte** vytvářet znovu Event Grid, centrum událostí ani prostředek Service Bus, které používáte pro koncový bod (*požadavky* v pokynech pro koncové body). Stačí znovu vytvořit koncový bod v instanci digitálních vláken Azure.
-* Můžete znovu použít koncová **jména**a směrování, protože jsou vymezeny na jinou instanci.
+* **Nemusíte** vytvářet znovu Event Grid, centrum událostí ani prostředek Service Bus, které používáte pro koncový bod ( *požadavky* v pokynech pro koncové body). Stačí znovu vytvořit koncový bod v instanci digitálních vláken Azure.
+* Můžete znovu použít koncová **jména** a směrování, protože jsou vymezeny na jinou instanci.
 * Nezapomeňte přidat všechny požadované **filtry** na trasy, které vytvoříte.
 
 #### <a name="re-link-connected-resources"></a>Znovu propojit připojené prostředky
@@ -201,7 +200,7 @@ Pokud máte jiné aplikace nebo prostředky Azure, které jsou připojené k pů
 
 Pokud nemáte žádné další prostředky připojené k původní instanci nebo je nechcete přesunout do nové instance, můžete přejít k [Další části](#verify).
 
-V opačném případě pokračujte ve svém scénáři i na připojené prostředky. Nemusíte odstraňovat a znovu vytvářet žádné připojené prostředky; místo toho stačí upravit body, které se připojují k instanci digitálních vláken Azure pomocí jejího **názvu hostitele**, a aktualizovat je tak, aby místo originálu používaly název hostitele nové instance.
+V opačném případě pokračujte ve svém scénáři i na připojené prostředky. Nemusíte odstraňovat a znovu vytvářet žádné připojené prostředky; místo toho stačí upravit body, které se připojují k instanci digitálních vláken Azure pomocí jejího **názvu hostitele** , a aktualizovat je tak, aby místo originálu používaly název hostitele nové instance.
 
 Přesné prostředky, které je třeba upravit, závisí na vašem scénáři, ale zde jsou některé běžné integrační body:
 * Azure Functions. Pokud máte funkci Azure, jejíž kód obsahuje název hostitele původní instance, měli byste tuto hodnotu aktualizovat na název hostitele nové instance a funkci znovu publikovat.
@@ -226,7 +225,7 @@ Můžete také zkusit spustit libovolné vlastní aplikace nebo komplexní toky,
 
 ## <a name="clean-up-source-resources"></a>Vyčištění zdrojových prostředků
 
-Teď, když je vaše nová instance nastavená v cílové oblasti s kopií dat a připojení původní instance, můžete **původní instanci odstranit**.
+Teď, když je vaše nová instance nastavená v cílové oblasti s kopií dat a připojení původní instance, můžete **původní instanci odstranit** .
 
 To můžete provést v [Azure Portal](https://portal.azure.com), pomocí rozhraní příkazového [řádku](how-to-use-cli.md)nebo pomocí [rozhraní API plochy ovládacího prvku](how-to-use-apis-sdks.md#overview-control-plane-apis).
 

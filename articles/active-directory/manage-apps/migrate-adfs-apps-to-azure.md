@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22b0ba97a0f3eddda9a0e0d4f5e5392d12f21eef
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802697"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026084"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
 
@@ -39,7 +39,7 @@ Mnoho organizací má SaaS (software jako služba) nebo vlastní obchodní aplik
 
 ![Aplikace připojené přímo v místním prostředí](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**Aby bylo možné zvýšit zabezpečení aplikací, vaším cílem je mít v místních i cloudových prostředích jednu sadu řízení přístupu a zásad**.
+**Aby bylo možné zvýšit zabezpečení aplikací, vaším cílem je mít v místních i cloudových prostředích jednu sadu řízení přístupu a zásad** .
 
 ![Aplikace připojené přes Azure AD](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -86,7 +86,7 @@ Aktualizujte konfiguraci tak, aby ukazovala vaši testovací instanci aplikace n
 
 Aktualizujte konfiguraci své produkční aplikace tak, aby odkazovala na produkčního tenanta Azure.
 
-![Fáze 1 migrace ](media/migrate-adfs-apps-to-azure/stage4.jpg)
+![Fáze 4 migrace ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
  Aplikace, které se ověřují pomocí AD FS, můžou pro oprávnění použít skupiny služby Active Directory. Než začnete s migrací, synchronizujte data identity mezi místním prostředím a službou Azure AD pomocí [Azure AD Connect synchronizace](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) . Před migrací ověřte tyto skupiny a členství, abyste mohli při migraci aplikace udělit přístup stejným uživatelům.
 
@@ -133,7 +133,7 @@ Podobným způsobem je možné integrovat se službou Azure AD aplikace, které 
 
 Pokud máte problémy s připojováním aplikací SaaS, můžete se obrátit na [alias podpory aplikace SaaS Integration support](mailto:SaaSApplicationIntegrations@service.microsoft.com).
 
-**Podpisové certifikáty SAML pro jednotné přihlašování**: podpisové certifikáty jsou důležitou součástí jakéhokoli nasazení jednotného přihlašování. Azure AD vytvoří podpisové certifikáty pro vytvoření federovaného jednotného přihlašování založeného na SAML pro aplikace SaaS. Jakmile přidáte buď galerii nebo jiné aplikace, nakonfigurujete přidanou aplikaci pomocí možnosti federované jednotné přihlašování. Viz [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on).
+**Podpisové certifikáty SAML pro jednotné přihlašování** : podpisové certifikáty jsou důležitou součástí jakéhokoli nasazení jednotného přihlašování. Azure AD vytvoří podpisové certifikáty pro vytvoření federovaného jednotného přihlašování založeného na SAML pro aplikace SaaS. Jakmile přidáte buď galerii nebo jiné aplikace, nakonfigurujete přidanou aplikaci pomocí možnosti federované jednotné přihlašování. Viz [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on).
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>Aplikace a konfigurace, které se dají přesunout dnes
 
@@ -147,7 +147,7 @@ Mezi aplikace, které se dají snadno přesunout, patří aplikace SAML 2,0, kte
 
 * příjmení
 
-* Alternativní atribut jako SAML **NameID**, včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName**. Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+* Alternativní atribut jako SAML **NameID** , včetně atributu Azure AD mail, předpony atributu mail, ID zaměstnance, atributů rozšíření 1–15 nebo místního atributu **SamAccountName** . Další informace najdete v tématu [Úprava deklarace identity NameIdentifier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
 
 * Vlastní deklarace identity.
 
@@ -199,12 +199,12 @@ Následující tabulka popisuje některé nejběžnější mapování nastavení
 | Nastavení konfigurace| AD FS| Jak konfigurovat v Azure AD| Token SAML |
 | - | - | - | - |
 | **Přihlašovací adresa URL aplikace** <p>Adresa URL pro uživatele, který se má přihlašovat k aplikaci v toku SAML iniciované poskytovatelem služeb (SP).| Není k dispozici| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
-| **Adresa URL odpovědi aplikace** <p>Adresa URL aplikace z perspektivy poskytovatele identity (IdP). IdP odesílá uživatele a token, když se uživatel přihlásí k IdP.  Toto je také známé jako **koncový bod příjemce kontrolního výrazu SAML**.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Cílový element v tokenu SAML. Příklad hodnoty: `https://contoso.my.salesforce.com` |
+| **Adresa URL odpovědi aplikace** <p>Adresa URL aplikace z perspektivy poskytovatele identity (IdP). IdP odesílá uživatele a token, když se uživatel přihlásí k IdP.  Toto je také známé jako **koncový bod příjemce kontrolního výrazu SAML** .| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Cílový element v tokenu SAML. Příklad hodnoty: `https://contoso.my.salesforce.com` |
 | **Adresa URL pro odhlášení z aplikace** <p>Toto je adresa URL, na kterou se odesílají žádosti o vyčištění odhlášení, když se uživatel z aplikace odhlásí. IdP odešle požadavek na odhlášení uživatele ze všech ostatních aplikací.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
 | **Identifikátor aplikace** <p>Toto je identifikátor aplikace z perspektivy IdP. Hodnota adresy URL pro přihlášení se často používá pro identifikátor (ale ne vždycky).  Někdy aplikace volá toto ID entity.| Vyberte kartu **identifikátory** .|Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Provede mapování na element **cílové skupiny** v tokenu SAML. |
 | **Federační metadata aplikace** <p>Toto je umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.| Vyberte kartu **monitorování** .| Není k dispozici. Azure AD nepodporuje přímé využívání federačních metadat aplikace. Federační metadata můžete ručně importovat.| Není k dispozici |
-| **Identifikátor uživatele/ID názvu** <p>Atribut sloužící k jedinečné identifikaci identity uživatele ze služby Azure AD nebo AD FS ve vaší aplikaci.  Tento atribut je obvykle buď hlavní název uživatele, nebo e-mailová adresa uživatele.| Pravidla deklarací identity. Ve většině případů pravidlo deklarace identity vydá deklaraci identity s typem, který končí na NameIdentifier.| Identifikátor najdete pod nadpisem **atributy uživatele a deklarace identity**. Ve výchozím nastavení se používá hlavní název uživatele (UPN).| Provede mapování na element **NameId** v tokenu SAML. |
-| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| Není k dispozici |
+| **Identifikátor uživatele/ID názvu** <p>Atribut sloužící k jedinečné identifikaci identity uživatele ze služby Azure AD nebo AD FS ve vaší aplikaci.  Tento atribut je obvykle buď hlavní název uživatele, nebo e-mailová adresa uživatele.| Pravidla deklarací identity. Ve většině případů pravidlo deklarace identity vydá deklaraci identity s typem, který končí na NameIdentifier.| Identifikátor najdete pod nadpisem **atributy uživatele a deklarace identity** . Ve výchozím nastavení se používá hlavní název uživatele (UPN).| Provede mapování na element **NameId** v tokenu SAML. |
+| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity** . Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| Není k dispozici |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>Nastavení IdP (map identity Provider)
@@ -238,9 +238,9 @@ Aplikace SaaS musí znát, kam se mají odesílat žádosti o ověření a jak o
 | - | - | - |
 | **Přihlašovací adresa URL pro IdP** <p>Přihlašovací adresa URL IdP z pohledu aplikace (kam se uživatel přesměruje pro přihlášení).| Přihlašovací adresa URL AD FS je název služby AD FS Federation Service následovaný "/adfs/ls/.". <p>Příklad: `https://fs.contoso.com/adfs/ls/`| Nahraďte {tenant-ID} vaším ID tenanta. <p> Pro aplikace, které používají protokol SAML-P: [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>Pro aplikace, které používají protokol WS-Federation: [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
 | **Adresa URL pro odhlášení IdP**<p>Odhlašovací adresa URL IdP z pohledu aplikace (kde se uživatel přesměruje, když se rozhodne odhlásit z aplikace).| Adresa URL pro odhlášení je buď shodná s přihlašovací adresou URL, nebo stejnou adresou URL s připojenou "WA = wsignout 1.0". Příklad: `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| Nahraďte {tenant-ID} vaším ID tenanta.<p>Pro aplikace, které používají protokol SAML-P:<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> Pro aplikace, které používají protokol WS-Federation: [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
-| **Podpisový certifikát tokenu**<p>IdP používá k podepsání vydaných tokenů privátní klíč certifikátu. Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.| Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části **Certifikáty**.| Najdete ho v Azure Portal ve **vlastnostech jednotného přihlašování** aplikace pod hlavičkou **podpisového certifikátu SAML**. Tam můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.  <p>Pokud má aplikace více než jeden certifikát, můžete najít všechny certifikáty v souboru XML s federačními metadaty. |
-| **Identifikátor/Vystavitel**<p>Identifikátor IdP z pohledu aplikace (někdy se označuje jako "ID vystavitele").<p>V tokenu SAML se hodnota zobrazí jako element Issuer.| Identifikátor pro AD FS je obvykle identifikátor federační služby ve správě AD FS v části **služba > upravit služba FS (Federation Service) vlastnosti**. Příklad: `http://fs.contoso.com/adfs/services/trust`| Nahraďte {tenant-ID} vaším ID tenanta.<p>https: \/ /STS.Windows.NET/{tenant-ID}/ |
-| **IdP federačních metadat**<p>Umístění veřejně dostupných federačních metadat IdP. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)| Ve správě AD FS v části **> koncových bodů služby AD FS metadata federačních metadat > metadata > typ: federační metadata**. Příklad: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Odpovídající hodnota pro Azure AD se řídí vzorem [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Nahraďte {TenantDomainName} názvem vašeho tenanta ve formátu "contoso.onmicrosoft.com".   <p>Další informace najdete v tématu [Federační metadata](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
+| **Podpisový certifikát tokenu**<p>IdP používá k podepsání vydaných tokenů privátní klíč certifikátu. Ověřuje, že token pochází ze stejného zprostředkovatele identity, kterému aplikace podle konfigurace důvěřuje.| Podpisový certifikát tokenu AD FS se nachází ve správě služby AD FS v části **Certifikáty** .| Najdete ho v Azure Portal ve **vlastnostech jednotného přihlašování** aplikace pod hlavičkou **podpisového certifikátu SAML** . Tam můžete certifikát stáhnout, abyste ho mohli nahrát do aplikace.  <p>Pokud má aplikace více než jeden certifikát, můžete najít všechny certifikáty v souboru XML s federačními metadaty. |
+| **Identifikátor/Vystavitel**<p>Identifikátor IdP z pohledu aplikace (někdy se označuje jako "ID vystavitele").<p>V tokenu SAML se hodnota zobrazí jako element Issuer.| Identifikátor pro AD FS je obvykle identifikátor federační služby ve správě AD FS v části **služba > upravit služba FS (Federation Service) vlastnosti** . Příklad: `http://fs.contoso.com/adfs/services/trust`| Nahraďte {tenant-ID} vaším ID tenanta.<p>https: \/ /STS.Windows.NET/{tenant-ID}/ |
+| **IdP federačních metadat**<p>Umístění veřejně dostupných federačních metadat IdP. (Některé aplikace používají federační metadata jako alternativu ke konfiguraci adres URL, identifikátoru a podpisového certifikátu tokenu správcem.)| Ve správě AD FS v části **> koncových bodů služby AD FS metadata federačních metadat > metadata > typ: federační metadata** . Příklad: `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Odpovídající hodnota pro Azure AD se řídí vzorem [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) . Nahraďte {TenantDomainName} názvem vašeho tenanta ve formátu "contoso.onmicrosoft.com".   <p>Další informace najdete v tématu [Federační metadata](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata). |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>Představuje AD FS zásady zabezpečení ve službě Azure AD.
@@ -257,7 +257,7 @@ Následují příklady typů autorizačních pravidel v AD FS a způsob jejich n
 
 Povolit přístup všem uživatelům vypadá jako v AD FS:
 
-![Fáze 1 migrace ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
+![Snímek obrazovky s dialogovým oknem nastavit jeden Sign-On se zobrazí v dialogovém okně SAML.](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
 To se mapuje na Azure AD jedním z následujících způsobů:
@@ -279,7 +279,7 @@ V tenantovi Azure AD musíte [Povolit dynamické skupiny](https://docs.microsoft
 Explicitní autorizace skupiny v AD FS:
 
 
-![Autorizační pravidla vystavování ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
+![Snímek obrazovky se zobrazí dialogové okno Upravit pravidlo pro pravidlo deklarace identity Domain Admins.](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
 
 
 Toto pravidlo se mapuje na Azure AD:
@@ -293,7 +293,7 @@ V [Azure Portal](https://portal.azure.com/)nejprve [vytvoříte skupinu uživate
 
 Explicitní autorizace uživatele v AD FS:
 
-![Autorizační pravidla vystavování ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![Snímek obrazovky se zobrazí v dialogovém okně Upravit pravidlo pro pravidlo deklarace identity Domain Admins s typem příchozí deklarace primárního S I D.](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 Toto pravidlo se mapuje na Azure AD:
 
@@ -310,7 +310,7 @@ Následují příklady typů pravidel MFA v AD FS a způsob jejich mapování na
 
 Nastavení pravidla vícefaktorového ověřování v AD FS:
 
-![Nastavení Azure AD MFA](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Snímek obrazovky ukazuje podmínky pro Azure A D v Azure Portal.](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>Příklad 1: vymáhání MFA na základě uživatelů nebo skupin
@@ -322,11 +322,11 @@ Zadejte pravidla MFA pro uživatele nebo skupinu ve službě Azure AD:
 
 1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. Vyberte **přiřazení**. Přidejte uživatele nebo skupiny, pro které chcete vymáhat MFA.
+2. Vyberte **přiřazení** . Přidejte uživatele nebo skupiny, pro které chcete vymáhat MFA.
 
 3. Nakonfigurujte možnosti **řízení přístupu** , jak je znázorněno níže:
 
-![Nastavení ověřování AAD](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
+![Snímek obrazovky se zobrazí v podokně udělení, kde můžete udělit přístup.](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
 
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>Příklad 2: vysazení MFA pro neregistrovaná zařízení
@@ -335,11 +335,11 @@ Zadejte pravidla MFA pro neregistrovaná zařízení ve službě Azure AD:
 
 1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-2. Nastavte **přiřazení** pro **všechny uživatele**.
+2. Nastavte **přiřazení** pro **všechny uživatele** .
 
 3. Nakonfigurujte možnosti **řízení přístupu** , jak je znázorněno níže:
 
-![Nastavení ověřování AAD](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
+![Snímek obrazovky se zobrazí v podokně udělení, kde můžete udělit přístup a zadat další omezení.](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
 
 Když nastavíte možnost pro více ovládacích prvků tak, aby vyžadovala jeden z vybraných ovládacích prvků, znamená to, že pokud uživatel splní některou z podmínek zadaných v zaškrtávacím políčku, bude jim udělen přístup k vaší aplikaci.
@@ -350,13 +350,13 @@ Zadejte pravidla MFA na základě umístění uživatele v Azure AD:
 
 1. Vytvořte [nové zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json).
 
-1. Nastavte **přiřazení** pro **všechny uživatele**.
+1. Nastavte **přiřazení** pro **všechny uživatele** .
 
 1. [Nakonfigurujte pojmenovaná umístění ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) . v opačném případě je důvěryhodná z vaší podnikové sítě.
 
 1. Nakonfigurujte **pravidla podmínek** tak, aby určovala umístění, pro která byste chtěli vymáhat MFA.
 
-![Nastavení Azure AD MFA](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Snímek obrazovky zobrazuje podokno umístění pro pravidla podmínek.](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 5. Nakonfigurujte možnosti **řízení přístupu** , jak je znázorněno níže:
 
@@ -368,14 +368,14 @@ Zadejte pravidla MFA na základě umístění uživatele v Azure AD:
 
 Tady je příklad, jak jsou atributy mapovány v AD FS:
 
-![Nastavení Azure AD MFA](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
+![Snímek obrazovky se zobrazí dialogové okno Upravit pravidlo pro generování atributů jako deklarací identity.](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
 
 
 Toto pravidlo se mapuje na Azure AD:
 
-V [Azure Portal](https://portal.azure.com/)vyberte **podnikové aplikace**, **jednotné přihlašování**a přidejte **atributy tokenu SAML** , jak je znázorněno níže:
+V [Azure Portal](https://portal.azure.com/)vyberte **podnikové aplikace** , **jednotné přihlašování** a přidejte **atributy tokenu SAML** , jak je znázorněno níže:
 
-![Nastavení Azure AD MFA](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
+![Snímek obrazovky zobrazuje stránku jednotného přihlašování pro vaši podnikovou aplikaci.](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
 
 
@@ -448,7 +448,7 @@ Pak přejdete na [Azure Portal](https://aad.portal.azure.com/) a otestujete, jes
 
 1. Vyberte **Spravovat**  >  **uživatele a skupiny** a přiřaďte aplikaci aspoň jednoho uživatele nebo skupinu.
 
-1. Vyberte **Spravovat**  >  **podmíněný přístup**. Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
+1. Vyberte **Spravovat**  >  **podmíněný přístup** . Zkontrolujte seznam zásad a ujistěte se, že neblokujete přístup k aplikaci pomocí [zásad podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal).
 
 V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování funguje správně.
 
@@ -456,7 +456,7 @@ V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování f
 | - | - |
 | OAuth/OpenID Connect| Vyberte **podnikové aplikace > oprávnění** a ujistěte se, že jste souhlasili s tím, že jste aplikaci ve vaší organizaci použili v nastavení uživatele pro vaši aplikaci.
 ‎ |
-| Jednotné přihlašování založené na SAML| Použijte tlačítko [Test nastavení SAML](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) , které se nachází v části **jednotné přihlašování**.
+| Jednotné přihlašování založené na SAML| Použijte tlačítko [Test nastavení SAML](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) , které se nachází v části **jednotné přihlašování** .
 ‎ |
 | Password-Based JEDNOTNÉHO PŘIHLAŠOVÁNÍ| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [aplikace](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.
 ‎ |

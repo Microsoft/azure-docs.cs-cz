@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 99af424d44624adeedf30a87d915fbd377012378
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: d2ea7233ee923881ee430aba8d8c23a37c29da7c
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927596"
+ms.locfileid: "93027716"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS pomocí šablony ARM
 
@@ -304,7 +304,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně AR
     * Vyberte verzi systému souborů NFS ( **NFSv3** nebo **nfsv 4.1** ) pro svazek.
       Podívejte se na téma [posouzení](azure-netapp-files-create-volumes.md#considerations) a [osvědčené postupy](azure-netapp-files-create-volumes.md#best-practice) pro verze systému souborů NFS.
 
-  ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+    ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klikněte na **Zkontrolovat a vytvořit** .
 

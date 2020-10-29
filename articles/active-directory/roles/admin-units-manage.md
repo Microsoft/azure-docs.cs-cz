@@ -14,41 +14,47 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b47ea3cc55be26521dfa6e2b3230b477f82f442
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa0abffc9bfb1a0c6511af331d1e8dbc10cff455
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376112"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026526"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
-Pro přesnější administrativní řízení v Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo více jednotek pro správu (Austrálie).
+Pro přesnější administrativní řízení v Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo víc jednotek pro správu.
 
 ## <a name="get-started"></a>Začínáme
 
 1. Pokud chcete spouštět dotazy z následujících pokynů pomocí [Graph Exploreru](https://aka.ms/ge), udělejte toto:
 
-    a. V Azure Portal přejdete do služby Azure AD. V seznamu aplikace vyberte **Průzkumník grafů**a potom v **Graph Exploreru vyberte udělit souhlas správce**.
+    a. V Azure Portal přejdete do služby Azure AD. 
+    
+    b. V seznamu aplikace vyberte **Průzkumník grafů** .
+    
+    c. V podokně **oprávnění** vyberte **udělit souhlas správce pro Průzkumník grafů** .
 
-    ![Snímek obrazovky ukazující odkaz na udělení souhlasu správce](./media/admin-units-manage/select-graph-explorer.png)
+    ![Snímek obrazovky s odkazem "udělení souhlasu správce k Průzkumníku Graph".](./media/admin-units-manage/select-graph-explorer.png)
 
 
 1. Použijte verzi Preview služby Azure AD PowerShell.
 
 ## <a name="add-an-administrative-unit"></a>Přidat jednotku pro správu
 
+Jednotku pro správu můžete přidat pomocí Azure Portal nebo PowerShellu.
+
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal otevřete službu Azure AD a v levém podokně vyberte **jednotky pro správu**.
+1. V Azure Portal přejdete do služby Azure AD. Pak v levém podokně vyberte **jednotky pro správu** .
 
-    ![Snímek obrazovky správce unitslink ve službě Azure AD](./media/admin-units-manage/nav-to-admin-units.png)
+    ![Snímek obrazovky s odkazem "administrativní jednotky" v Azure AD.](./media/admin-units-manage/nav-to-admin-units.png)
 
-1. Vyberte **Přidat** a potom zadejte název jednotky pro správu. Volitelně můžete přidat popis jednotky pro správu.
+1. V horní části podokna vyberte tlačítko **Přidat** a potom do pole **název** zadejte název jednotky pro správu. Volitelně můžete přidat popis jednotky pro správu.
 
-    ![Snímek obrazovky s tlačítkem Přidat a textové pole pro zadání názvu jednotky pro správu](./media/admin-units-manage/add-new-admin-unit.png)
+    ![Snímek obrazovky s tlačítkem Přidat a polem název pro zadání názvu jednotky pro správu](./media/admin-units-manage/add-new-admin-unit.png)
 
-1. Chcete-li dokončit jednotku správy, vyberte možnost **Přidat** .
+1. Vyberte modré tlačítko **Přidat** k finalizaci jednotky pro správu.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 
@@ -79,11 +85,11 @@ V Azure AD můžete odebrat jednotku pro správu, kterou už nebudete potřebova
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete na **Azure AD**  >  **jednotky pro správu**Azure AD. 
-1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit**. 
-1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano**. Jednotka pro správu se odstraní.
+1. V Azure Portal otevřete **službu Azure AD** a vyberte **jednotky pro správu** . 
+1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit** . 
+1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano** . Jednotka pro správu se odstraní.
 
-![Snímek obrazovky s tlačítkem odstranit jednotku pro správu a potvrzovacím oknem](./media/admin-units-manage/select-admin-unit-to-delete.png)
+![Snímek obrazovky s tlačítkem pro odstranění jednotky pro správu a potvrzovacím oknem](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 

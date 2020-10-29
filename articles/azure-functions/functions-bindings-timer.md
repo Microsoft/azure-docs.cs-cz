@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 69ba8d1735d16791d62b6b04e49c0d2fb7484959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6423ec481c65155b511e398885b4954522bbb376
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325789"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025897"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions
 
@@ -163,7 +163,7 @@ Instance [objektu Timer](#usage) je předána jako první argument funkce.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad používá vazbu triggeru časovače, jejíž konfigurace je popsána v *function.jsv* souboru. Skutečná [funkce jazyka Python](functions-reference-python.md) , která používá vazbu, je popsána v souboru * __init__. py* . Objekt předaný do funkce je typu [objekt Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkce zapisuje do protokolů, které označují, zda je aktuální vyvolání způsobeno chybějícím plánovaným výskytem.
+Následující příklad používá vazbu triggeru časovače, jejíž konfigurace je popsána v *function.jsv* souboru. Skutečná [funkce jazyka Python](functions-reference-python.md) , která používá vazbu, je popsána v souboru *__init__ . py* . Objekt předaný do funkce je typu [objekt Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkce zapisuje do protokolů, které označují, zda je aktuální vyvolání způsobeno chybějícím plánovaným výskytem.
 
 Tady jsou data vazby v *function.js* souboru:
 
@@ -260,7 +260,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastavené na "timerTrigger". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | neuvedeno | Musí být nastavené na "in". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje objekt časovače v kódu funkce. | 
+|**name** | neuvedeno | Název proměnné, která představuje objekt časovače v kódu funkce. | 
 |**CXL**|**ScheduleExpression**|[Výraz cron](#ncrontab-expressions) nebo hodnota [TimeSpan](#timespan) . `TimeSpan`Dá se použít jenom pro aplikaci Function App, která běží na plánu App Service. Výraz plánu můžete zadat do nastavení aplikace a tuto vlastnost nastavit na název nastavení aplikace zabalené v **%** části znaky, jako v tomto příkladu: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Pokud `true` je funkce vyvolána při spuštění modulu runtime. Například modul runtime začíná, když se aplikace funkce probudí po přechodu do stavu nečinnosti z důvodu neaktivity. Když se aplikace Function App restartuje kvůli změnám funkcí a když se aplikace Function App škáluje. Takže **runOnStartup** by měl být zřídka nastavený na `true` , zejména v produkčním prostředí. |
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` , pokud chcete určit, jestli se má plán monitorovat. Plánování monitorování přetrvává i v případě, že dojde k podpoře při zajištění správné údržby plánu i v případě restartování instancí aplikace Function App. Pokud není nastavené explicitně, výchozí hodnota je `true` pro plány, které mají interval opakování větší nebo roven 1 minutě. Pro plány, které se spouštějí více než jednou za minutu, je výchozí hodnota `false` .
@@ -276,18 +276,18 @@ Když je vyvolána funkce Trigger časovače, je do funkce předán objekt Timer
 
 ```json
 {
-    "Schedule":{
+    "schedule":{
     },
-    "ScheduleStatus": {
-        "Last":"2016-10-04T10:15:00+00:00",
-        "LastUpdated":"2016-10-04T10:16:00+00:00",
-        "Next":"2016-10-04T10:20:00+00:00"
+    "scheduleStatus": {
+        "last":"2016-10-04T10:15:00+00:00",
+        "lastUpdated":"2016-10-04T10:16:00+00:00",
+        "next":"2016-10-04T10:20:00+00:00"
     },
-    "IsPastDue":false
+    "isPastDue":false
 }
 ```
 
-`IsPastDue`Vlastnost je v `true` případě, že aktuální volání funkce je pozdější než naplánované. Například restartování aplikace funkce může způsobit, že by se vyvolání vynechalo.
+`isPastDue`Vlastnost je v `true` případě, že aktuální volání funkce je pozdější než naplánované. Například restartování aplikace funkce může způsobit, že by se vyvolání vynechalo.
 
 ## <a name="ncrontab-expressions"></a>Výrazy NCRONTAB
 

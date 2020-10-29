@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 0c82114f697227b96e3548fff24314d4774455b9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494748"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026441"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Automatická správa zařízení v digitálních prostředcích Azure pomocí služby Device Provisioning (DPS)
 
@@ -20,7 +20,7 @@ V tomto článku se dozvíte, jak integrovat digitální vlákna Azure se [služ
 
 Řešení popsané v tomto článku vám umožní automatizovat proces **_zřízení_** a **_vyřazení_** zařízení IoT Hub v digitálních prostředcích Azure pomocí služby Device Provisioning. 
 
-Další informace o fázích _zřizování_ a _vyřazení_ a lepší pochopení sady obecných fází správy zařízení, které jsou společné pro všechny projekty IoT v podniku, najdete v [části *životní cyklus zařízení* ](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) v dokumentaci správy zařízení IoT Hub.
+Další informace o fázích _zřizování_ a _vyřazení_ a lepší pochopení sady obecných fází správy zařízení, které jsou společné pro všechny projekty IoT v podniku, najdete v [části *životní cyklus zařízení*](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle) v dokumentaci správy zařízení IoT Hub.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -29,12 +29,12 @@ Než budete moct nastavit zřizování, musíte mít **instanci digitálního vl
 Pokud toto nastavení ještě nemáte, můžete ho vytvořit pomocí kurzu digitálních vláken Azure [*: Připojte ucelené řešení*](tutorial-end-to-end.md). Tento kurz vás provede nastavením instance digitálního vlákna Azure s využitím modelů a vláken, připojené služby Azure [IoT Hub](../iot-hub/about-iot-hub.md)a několika [funkcí Azure](../azure-functions/functions-overview.md) pro šíření toku dat.
 
 Následující hodnoty budete potřebovat později v tomto článku, od okamžiku, kdy jste nastavili instanci. Pokud potřebujete tyto hodnoty shromáždit znovu, použijte odkazy níže pro pokyny.
-* **_Název hostitele_** instance digitálních vláken Azure ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* **_Připojovací řetězec_** připojovacího řetězce služby Azure Event Hubs ([najít v portálu](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
+* **_Název hostitele_** instance digitálních vláken Azure ( [najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* **_Připojovací řetězec_** připojovacího řetězce služby Azure Event Hubs ( [najít v portálu](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal))
 
 Tato ukázka také používá **simulátor zařízení** , který zahrnuje zřizování pomocí služby Device Provisioning. Simulátor zařízení je umístěný tady: [Ukázka digitálních vláken Azure a IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Získejte vzorový projekt na vašem počítači tak, že přejdete na vzorový odkaz a vyberete tlačítko *Stáhnout ZIP* pod nadpisem. Vyextrahování stažené složky.
 
-Simulátor zařízení je založený na **Node.js**, verzi 10.0. x nebo novější. [*Příprava vývojového prostředí*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
+Simulátor zařízení je založený na **Node.js** , verzi 10.0. x nebo novější. [*Příprava vývojového prostředí*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) popisuje, jak nainstalovat Node.js pro tento kurz v systému Windows nebo Linux.
 
 ## <a name="solution-architecture"></a>Architektura řešení
 
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
-V dalším kroku vytvoříte funkci aktivovanou požadavkem HTTP uvnitř aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní.
+V dalším kroku vytvoříte funkci aktivovanou požadavkem HTTP uvnitř aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ( [*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní.
 
 Tuto funkci bude používat služba Device Provisioning ve [vlastních zásadách přidělení](../iot-dps/how-to-use-custom-allocation-policies.md) ke zřízení nového zařízení. Další informace o použití požadavků HTTP se službou Azure Functions najdete v tématu [*Trigger požadavku HTTP služby Azure pro Azure Functions*](../azure-functions/functions-bindings-http-webhook-trigger.md).
 
@@ -233,7 +233,7 @@ Uložte soubor a pak znovu publikujte aplikaci Function App. Pokyny k publiková
 
 ### <a name="configure-your-function"></a>Konfigurace funkce
 
-V dalším kroku budete muset ve své aplikaci Function App nastavit proměnné prostředí, které obsahují odkaz na instanci digitálních vláken Azure, kterou jste vytvořili. Pokud jste použili kompletní kurz ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení), nastavení už se nakonfiguruje.
+V dalším kroku budete muset ve své aplikaci Function App nastavit proměnné prostředí, které obsahují odkaz na instanci digitálních vláken Azure, kterou jste vytvořili. Pokud jste použili kompletní kurz ( [*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení), nastavení už se nakonfiguruje.
 
 Přidejte nastavení pomocí tohoto příkazu Azure CLI:
 
@@ -243,18 +243,11 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 
 Zajistěte, aby přiřazení oprávnění a spravované role identity pro aplikaci Function App bylo správně nakonfigurované, jak je popsáno v části [*přiřazení oprávnění k aplikaci Function App*](tutorial-end-to-end.md#assign-permissions-to-the-function-app) v tomto koncovém kurzu.
 
-<!-- 
-* Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
-
-```azurecli-interactive
-az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
-``` -->
-
 ### <a name="create-device-provisioning-enrollment"></a>Vytvořit registraci zařízení pro zřizování
 
-V dalším kroku budete muset vytvořit registraci ve službě Device Provisioning pomocí **vlastní alokační funkce**. Postupujte podle pokynů v části [*Vytvoření registrace*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) a [*odvodit jedinečné klíče zařízení*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) v článku věnovaném službám Device Provisioning pro vlastní zásady přidělování.
+V dalším kroku budete muset vytvořit registraci ve službě Device Provisioning pomocí **vlastní alokační funkce** . Postupujte podle pokynů v části [*Vytvoření registrace*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) a [*odvodit jedinečné klíče zařízení*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) v článku věnovaném službám Device Provisioning pro vlastní zásady přidělování.
 
-Při procházení tohoto toku propojíte registraci k právě vytvořené funkci tak, že v kroku vyberete svou funkci a **vyberete způsob, jakým se mají zařízení přiřadit k rozbočovačům**. Po vytvoření registrace se název registrace a primární nebo sekundární klíč SAS použijí později ke konfiguraci simulátoru zařízení pro tento článek.
+Při procházení tohoto toku propojíte registraci k právě vytvořené funkci tak, že v kroku vyberete svou funkci a **vyberete způsob, jakým se mají zařízení přiřadit k rozbočovačům** . Po vytvoření registrace se název registrace a primární nebo sekundární klíč SAS použijí později ke konfiguraci simulátoru zařízení pro tento článek.
 
 ### <a name="set-up-the-device-simulator"></a>Nastavení simulátoru zařízení
 
@@ -266,7 +259,7 @@ Otevřete příkazové okno a přejděte do stažené složky a pak do adresář
 npm install
 ```
 
-Potom zkopírujte soubor *. env. template* do nového souboru s názvem *. env*a zadejte tato nastavení:
+Potom zkopírujte soubor *. env. template* do nového souboru s názvem *. env* a zadejte tato nastavení:
 
 ```cmd
 PROVISIONING_HOST = "global.azure-devices-provisioning.net"
@@ -318,18 +311,18 @@ V následujících částech najdete postup nastavení tohoto toku automatickéh
 Teď je potřeba vytvořit [centrum událostí](../event-hubs/event-hubs-about.md)Azure, které se použije pro příjem IoT Hubch událostí životního cyklu. 
 
 Projděte si kroky popsané v rychlém startu [*vytvoření centra událostí*](../event-hubs/event-hubs-create.md) s použitím následujících informací:
-* Pokud používáte kompletní kurz ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení), můžete znovu použít skupinu prostředků, kterou jste vytvořili pro kompletní kurz.
-* Pojmenujte své centrum událostí *lifecycleevents*nebo něco jiného, co jste si zvolili, a zapamatujte si obor názvů, který jste vytvořili. Ty budete používat při nastavování funkce životního cyklu a IoT Hub trasy v dalších částech.
+* Pokud používáte kompletní kurz ( [*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení), můžete znovu použít skupinu prostředků, kterou jste vytvořili pro kompletní kurz.
+* Pojmenujte své centrum událostí *lifecycleevents* nebo něco jiného, co jste si zvolili, a zapamatujte si obor názvů, který jste vytvořili. Ty budete používat při nastavování funkce životního cyklu a IoT Hub trasy v dalších částech.
 
 ### <a name="create-an-azure-function"></a>Vytvořit funkci Azure
 
-V dalším kroku vytvoříte funkci aktivovanou Event Hubs v rámci aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ([*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
+V dalším kroku vytvoříte funkci aktivovanou Event Hubs v rámci aplikace Function App. Můžete použít aplikaci Function App vytvořenou v rámci kompletního kurzu ( [*kurz: připojení k*](tutorial-end-to-end.md)kompletnímu řešení) nebo vlastní. 
 
-Pojmenujte aktivační událost centra událostí *lifecycleevents*a připojte Trigger centra událostí k centru událostí, které jste vytvořili v předchozím kroku. Pokud jste použili jiný název centra událostí, změňte jej tak, aby odpovídal následujícímu názvu aktivační události.
+Pojmenujte aktivační událost centra událostí *lifecycleevents* a připojte Trigger centra událostí k centru událostí, které jste vytvořili v předchozím kroku. Pokud jste použili jiný název centra událostí, změňte jej tak, aby odpovídal následujícímu názvu aktivační události.
 
 Tato funkce použije událost IoT Hub životní cyklus zařízení k vyřazení stávajícího zařízení. Další informace o událostech životního cyklu najdete v tématu [*IoT Hub událostí bez telemetrie*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Další informace o použití Event Hubs s Azure Functions najdete v tématu [*Trigger Azure Event Hubs pro Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
-V rámci vaší publikované aplikace Function App přidejte novou třídu funkce *aktivační událost centra událostí*a vložte ji do následujícího kódu.
+V rámci vaší publikované aplikace Function App přidejte novou třídu funkce *aktivační událost centra událostí* a vložte ji do následujícího kódu.
 
 ```C#
 using System;
@@ -445,7 +438,7 @@ Uložte projekt a pak znovu publikujte aplikaci Function App. Pokyny k publikov�
 
 ### <a name="configure-your-function"></a>Konfigurace funkce
 
-V dalším kroku budete muset ve své aplikaci Function App nastavit proměnné prostředí, které obsahují odkaz na instanci digitálních vláken Azure, kterou jste vytvořili, a v centru událostí. Pokud jste použili kompletní kurz ([*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení), první nastavení se už nakonfiguruje.
+V dalším kroku budete muset ve své aplikaci Function App nastavit proměnné prostředí, které obsahují odkaz na instanci digitálních vláken Azure, kterou jste vytvořili, a v centru událostí. Pokud jste použili kompletní kurz ( [*kurz: připojení k*](./tutorial-end-to-end.md)kompletnímu řešení), první nastavení se už nakonfiguruje.
 
 Přidejte nastavení pomocí tohoto příkazu rozhraní příkazového řádku Azure CLI. Příkaz se dá spustit v [Cloud Shell](https://shell.azure.com)nebo lokálně, pokud máte [na svém počítači nainstalované](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)rozhraní příkazového řádku Azure.
 

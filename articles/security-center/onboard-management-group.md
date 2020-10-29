@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: ce0858f61ca1fe3b81c3d0c8a3c97954827def80
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950614"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027563"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Povolit Security Center u všech předplatných ve skupině pro správu
 
@@ -25,7 +25,7 @@ Pomocí Azure Policy můžete povolit Azure Security Center na všech předplatn
 
 Připojení skupiny pro správu a všech jejích předplatných:
 
-1. Jako uživatel s oprávněním **Správce zabezpečení** otevřete Azure Policy a vyhledejte definici **Enable Azure Security Center v rámci vašeho předplatného**.
+1. Jako uživatel s oprávněním **Správce zabezpečení** otevřete Azure Policy a vyhledejte definici **Enable Azure Security Center v rámci vašeho předplatného** .
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Definice Azure Policy povolit Azure Security Center ve vašem předplatném":::
 

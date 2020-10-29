@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb5984ba5d5764ee2ffa3f28e2d95612c14f7e27
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371520"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025931"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Kurz: načtení datové sady New York taxislužby města
 
@@ -48,11 +48,11 @@ Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-c
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
+1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** .
 
 2. Na stránce **Nový** vyberte **databáze** a v části **Doporučené** na **nové** stránce vyberte **Azure synapse Analytics** .
 
-    ![vytvoření datového skladu](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+    ![Snímek obrazovky zobrazuje SQL Data Warehouse vybrané z databází v Azure Portal.](./media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. Do formuláře zadejte následující informace:
 
@@ -63,7 +63,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
    | **Skupina prostředků** | myResourceGroup       | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
    | **Zvolit zdroj**  | Prázdná databáze        | Určuje, že se má vytvořit prázdná databáze. Poznámka: datový sklad je jedním z typů databáze. |
 
-    ![vytvoření datového skladu](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+    ![Snímek obrazovky zobrazuje podokno SQL Data Warehouse, kde můžete zadat tyto hodnoty.](./media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
 4. Vyberte **Server** a vytvořte a nakonfigurujte nový server pro novou databázi. Do **formuláře Nový server** zadejte následující informace:
 
@@ -76,20 +76,20 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
     ![vytvořit server](./media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
 
-5. Vyberte **Vybrat**.
+5. Vyberte **Vybrat** .
 
 6. Vyberte **úroveň výkonu** , abyste určili, jestli je datový sklad Gen1 nebo Gen2, a kolik jednotek datového skladu.
 
-7. Pro tento kurz vyberte **Gen2**fond SQL. Ve výchozím nastavení je posuvník nastaven na **DW1000c** .  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje.
+7. Pro tento kurz vyberte **Gen2** fond SQL. Ve výchozím nastavení je posuvník nastaven na **DW1000c** .  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje.
 
     ![konfigurace výkonu](./media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Vyberte **Použít**.
+8. Vyberte **Použít** .
 9. V okně zřizování vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 10. Teď, když jste dokončili formulář, vyberte **vytvořit** a zřiďte databázi. Zřizování trvá několik minut.
 
-11. Na panelu nástrojů vyberte **Oznámení**, abyste mohli sledovat proces nasazení.
+11. Na panelu nástrojů vyberte **Oznámení** , abyste mohli sledovat proces nasazení.
   
      ![Snímek obrazovky ukazuje Azure Portal podokna oznámení otevřeném s probíhajícím nasazením.](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
@@ -100,7 +100,7 @@ Brána firewall na úrovni serveru, která zabraňuje externím aplikacím a ná
 > [!NOTE]
 > Azure synapse Analytics komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
 
-1. Po dokončení nasazení v nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte **mySampleDatabase** . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET**), který poskytuje možnosti pro další konfiguraci.
+1. Po dokončení nasazení v nabídce na levé straně vyberte **databáze SQL** a na stránce **databáze SQL** vyberte **mySampleDatabase** . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **MyNewServer-20180430.Database.Windows.NET** ), který poskytuje možnosti pro další konfiguraci.
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. Pak vyberte název serveru a otevřete nastavení serveru.
 
@@ -110,13 +110,13 @@ Brána firewall na úrovni serveru, která zabraňuje externím aplikacím a ná
 
     ![nastavení serveru](./media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-4. Vyberte **Zobrazit nastavení brány firewall**. Otevře se stránka **nastavení brány firewall** pro server.
+4. Vyberte **Zobrazit nastavení brány firewall** . Otevře se stránka **nastavení brány firewall** pro server.
 
     ![pravidlo brány firewall serveru](./media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
 5. Na panelu nástrojů vyberte **Přidat IP adresu klienta** a přidejte tak aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-6. Vyberte **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
+6. Vyberte **Uložit** . Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu pro otevření portu 1433 na serveru.
 
 7. Vyberte **OK** a pak zavřete stránku **nastavení brány firewall** .
 
@@ -131,7 +131,7 @@ Získejte plně kvalifikovaný název serveru pro váš server v Azure Portal. T
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Azure synapse Analytics** a na stránce **Azure synapse Analytics** vyberte svou databázi.
-3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net.
+3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru** . V tomto příkladu je plně kvalifikovaný název mynewserver-20180430.database.windows.net.
 
     ![informace o připojení](././media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -146,16 +146,16 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
     | Nastavení        | Navrhovaná hodnota                            | Popis                                                  |
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Typ serveru    | Databázový stroj                            | Tato hodnota se vyžaduje.                                       |
-    | Název serveru    | Plně kvalifikovaný název serveru            | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET**. |
+    | Název serveru    | Plně kvalifikovaný název serveru            | Název by měl být podobný tomuto: **MyNewServer-20180430.Database.Windows.NET** . |
     | Ověřování | Ověřování SQL Serveru                  | Ověřování SQL je jediný typ ověřování, který jsme v tomto kurzu nakonfigurovali. |
     | Přihlásit          | Účet správce serveru                   | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo       | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Vyberte **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
+3. Vyberte **Connect** (Připojit). V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
-4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
+4. V Průzkumníku objektů rozbalte **Databáze** . Pak rozbalte **Systémové databáze** a uzel **master** a zobrazte objekty v hlavní databázi.  Rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
 
     ![databázové objekty](./media/load-data-from-azure-blob-storage-using-polybase/connected.png)
 
@@ -165,9 +165,9 @@ V této části se k navázání připojení k serveru používá [SQL Server Ma
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
-Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete vytvářet účty a uživatele. Pomocí následujících kroků vytvořte účet a uživatele **LoaderRC20**. Pak uživatele přiřaďte k třídě prostředků **staticrc20**.
+Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete vytvářet účty a uživatele. Pomocí následujících kroků vytvořte účet a uživatele **LoaderRC20** . Pak uživatele přiřaďte k třídě prostředků **staticrc20** .
 
-1. V SSMS klikněte pravým tlačítkem myši na možnost **Hlavní** a zobrazte rozevírací nabídku a zvolte možnost **Nový dotaz**. Otevře se nové okno dotazu.
+1. V SSMS klikněte pravým tlačítkem myši na možnost **Hlavní** a zobrazte rozevírací nabídku a zvolte možnost **Nový dotaz** . Otevře se nové okno dotazu.
 
     ![Nový dotaz v uzlu master](./media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
 
@@ -180,7 +180,7 @@ Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete 
 
 3. Vyberte **Execute** (Provést).
 
-4. Klikněte pravým tlačítkem na **mySampleDataWarehouse** a zvolte **Nový dotaz**. Otevře se nové okno dotazu.  
+4. Klikněte pravým tlačítkem na **mySampleDataWarehouse** a zvolte **Nový dotaz** . Otevře se nové okno dotazu.  
 
     ![Nový dotaz na ukázkový datový sklad](./media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
 
@@ -198,13 +198,13 @@ Vzhledem k tomu, že jste aktuálně připojeni jako správce serveru, můžete 
 
 Prvním krokem k načítání dat je přihlášení jako LoaderRC20.  
 
-1. V Průzkumník objektů vyberte rozevírací nabídku **připojit** a vyberte možnost **databázový stroj**. Zobrazí se dialogové okno **Připojení k serveru**.
+1. V Průzkumník objektů vyberte rozevírací nabídku **připojit** a vyberte možnost **databázový stroj** . Zobrazí se dialogové okno **Připojení k serveru** .
 
     ![Přihlášení pomocí nového účtu](./media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
-2. Zadejte plně kvalifikovaný název serveru a jako Účet zadejte **LoaderRC20**.  Zadejte své heslo k účtu LoaderRC20.
+2. Zadejte plně kvalifikovaný název serveru a jako Účet zadejte **LoaderRC20** .  Zadejte své heslo k účtu LoaderRC20.
 
-3. Vyberte **Připojit**.
+3. Vyberte **Connect** (Připojit).
 
 4. Až bude vaše připojení připravené, v Průzkumníku objektů se zobrazí dvě připojení k serveru. Jedno připojení jako ServerAdmin a druhé jako MedRCLogin.
 
@@ -216,7 +216,7 @@ Teď jste připraveni zahájit proces načítání dat do svého nového datové
 
 Spusťte následující skripty SQL a zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data.
 
-1. V předchozí části jste se do svého datového skladu přihlásili jako LoaderRC20. V SSMS klikněte pravým tlačítkem na připojení LoaderRC20 a vyberte **Nový dotaz**.  Zobrazí se nové okno dotazu.
+1. V předchozí části jste se do svého datového skladu přihlásili jako LoaderRC20. V SSMS klikněte pravým tlačítkem na připojení LoaderRC20 a vyberte **Nový dotaz** .  Zobrazí se nové okno dotazu.
 
     ![Nové okno dotazu načítání](./media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
 
@@ -505,13 +505,13 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
     ![Vyčištění prostředků](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit**.  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit**.
+2. Pokud chcete pozastavit výpočetní prostředky, vyberte tlačítko **pozastavit** . Když je datový sklad pozastavený, zobrazí se tlačítko **Spustit** .  Pokud chcete pokračovat v výpočetních prostředích, vyberte **Spustit** .
 
-3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit**.
+3. Pokud chcete odebrat datový sklad, aby se vám neúčtovaly výpočetní výkon nebo úložiště, vyberte **Odstranit** .
 
-4. Pokud chcete odebrat server, který jste vytvořili, vyberte na předchozím obrázku **MyNewServer-20180430.Database.Windows.NET** a pak vyberte **Odstranit**.  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
+4. Pokud chcete odebrat server, který jste vytvořili, vyberte na předchozím obrázku **MyNewServer-20180430.Database.Windows.NET** a pak vyberte **Odstranit** .  Buďte opatrní, protože odstraněním serveru se odstraní také všechny databáze k tomuto serveru přiřazené.
 
-5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup**a pak vyberte **Odstranit skupinu prostředků**.
+5. Pokud chcete odebrat skupinu prostředků, vyberte **myResourceGroup** a pak vyberte **Odstranit skupinu prostředků** .
 
 ## <a name="next-steps"></a>Další kroky
 

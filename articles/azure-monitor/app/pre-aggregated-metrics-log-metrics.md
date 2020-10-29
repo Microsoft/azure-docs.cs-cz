@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539125"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027155"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
 
@@ -40,6 +40,28 @@ Novější sady SDK ([Application Insights 2,7](https://www.nuget.org/packages/M
 Pro sady SDK, které neimplementují předagregační (to znamená starší verze sady Application Insights SDK nebo instrumentace prohlížeče) Application Insights back-end stále naplní nové metriky agregací událostí přijatých koncovým bodem shromažďování událostí Application Insights. To znamená, že i když nebudete využívat redukovaný objem dat přenášených po síti, můžete stále používat předem agregované metriky a využívat lepší výkon a podporu pro multidimenzionální upozorňování v reálném čase pomocí sad SDK, které během shromažďování nemají předem agregované metriky.
 
 Je třeba uvést, že koncový bod kolekce před pokračováním vzorkování předem agreguje události, což znamená, že [vzorkování](./sampling.md) ingest nebude nikdy ovlivňovat přesnost předagregovaných metrik bez ohledu na verzi sady SDK, kterou používáte spolu s vaší aplikací.  
+
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>Sada SDK podporovala předem agregované tabulky metrik
+
+| Aktuální provozní sady SDK | Standardní metriky (předběžný agregační sada SDK) | Vlastní metriky (bez předem agregované sady SDK) | Vlastní metriky (s předem agregovanou sadou SDK)|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core a .NET Framework | Podporováno (V 2.13.1 +)| Podporováno prostřednictvím [TrackMetric](api-custom-events-metrics.md#trackmetric)| Podporováno (V 2.7.2 +) prostřednictvím [Getmetric](get-metric.md) |
+| Java                         | Nepodporuje se       | Podporováno prostřednictvím [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nepodporuje se                           |
+| Node.js                      | Nepodporuje se       | Podporováno prostřednictvím  [TrackMetric](api-custom-events-metrics.md#trackmetric)| Nepodporuje se                           |
+| Python                       | Nepodporuje se       | Podporováno                                 | Podporováno prostřednictvím [OpenCensus. stats](opencensus-python.md#metrics) |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>Předem agregovaná tabulka metrik podporuje bez kódování
+
+| Aktuální provozní sady SDK | Standardní metriky (předběžný agregační sada SDK) | Vlastní metriky (bez předem agregované sady SDK) | Vlastní metriky (s předem agregovanou sadou SDK)|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | Podporované <sup> 1<sup>    | Nepodporuje se                             | Nepodporuje se                           |
+| ASP.NET Core            | Podporované <sup> 2<sup>    | Nepodporuje se                             | Nepodporuje se                           |
+| Java                    | Nepodporuje se            | Nepodporuje se                             | [Podporováno](java-in-process-agent.md#metrics) |
+| Node.js                 | Nepodporuje se            | Nepodporuje se                             | Nepodporuje se                           |
+
+1. ASP.NETelné připojení neelné na App Service generuje metriky jenom v režimu úplného monitorování. ASP.NET připojení bez kódu na App Service, VM/VMSS a místní emitují standardní metriky bez dimenzí. Sada SDK je vyžadována pro všechny dimenze.
+2. ASP.NET Core připojení bez kódu v App Service emituje standardní metriky bez dimenzí. Sada SDK je vyžadována pro všechny dimenze.
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Použití předagregačních s Application Insights vlastními metrikami
 

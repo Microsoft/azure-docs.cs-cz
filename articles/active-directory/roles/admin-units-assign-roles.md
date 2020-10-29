@@ -1,6 +1,6 @@
 ---
 title: Přiřazení a výpis rolí s rozsahem jednotky pro správu – Azure Active Directory | Microsoft Docs
-description: Omezení rozsahu přiřazování rolí v Azure Active Directory pomocí jednotek pro správu
+description: Pomocí jednotek pro správu Omezte rozsah přiřazení rolí v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,25 +14,25 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66a4810b3a84cac55a49744025b6ac71c3f1c0a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dfae813f01d3e7a08e18cde76e5c26ca253a371f
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376130"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026594"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
-V Azure Active Directory (Azure AD) můžete přiřadit uživatele k roli Azure AD s oborem omezeným na jednu nebo více jednotek pro správu (Austrálie) pro přesnější administrativní řízení.
+V Azure Active Directory (Azure AD) můžete pro podrobnější řízení správy přiřadit uživatele k roli Azure AD s oborem, který je omezený na jednu nebo více jednotek pro správu.
 
-Postup přípravy na používání PowerShellu a Microsoft Graph pro správu jednotek správy najdete v tématu [Začínáme](admin-units-manage.md#get-started).
+Informace o přípravě na používání PowerShellu a Microsoft Graph pro správu jednotek správy najdete v [tématu Začínáme.](admin-units-manage.md#get-started)
 
-## <a name="roles-available"></a>Role k dispozici
+## <a name="available-roles"></a>Dostupné role
 
 Role  |  Popis
 ----- |  -----------
 Správce ověřování  |  Má přístup k informacím o způsobu ověřování, nastavení a resetování pro libovolného uživatele bez oprávnění správce v přiřazené jednotce pro správu.
-Správce skupin  |  Může spravovat všechny aspekty nastavení skupin a skupin, jako jsou zásady pojmenování a vypršení platnosti pouze v přiřazené jednotce pro správu.
+Správce skupin  |  Může spravovat všechny aspekty nastavení skupin a skupin, jako jsou zásady pojmenování a vypršení platnosti, jenom v přiřazené jednotce pro správu.
 Správce helpdesku  |  Může resetovat hesla správců bez oprávnění správce a helpdesku pouze v přiřazené jednotce pro správu.
 Správce licencí  |  Může přiřazovat, odebírat a aktualizovat přiřazení licencí pouze v rámci jednotky pro správu.
 Správce hesel  |  Může resetovat hesla správců, kteří nejsou správci a hesla, jenom v rámci přiřazené jednotky pro správu.
@@ -43,26 +43,33 @@ Správce uživatelů  |  Může spravovat všechny aspekty uživatelů a skupin,
 K roli s rozsahem jednotky pro správu je možné přiřadit následující objekty zabezpečení:
 
 * Uživatelé
-* Role cloudových skupin s přiřazením (Preview)
+* Role – přiřaditelné cloudové skupiny (Preview)
 * Hlavní název služby (SPN)
 
 ## <a name="assign-a-scoped-role"></a>Přiřazení vymezené role
 
-### <a name="azure-portal"></a>portál Azure
+Můžete přiřadit vymezenou roli pomocí Azure Portal, PowerShellu nebo Microsoft Graph.
 
-Na portálu můžete přejít na **jednotky pro správu Azure AD >** . Vyberte jednotku správy, ke které chcete přiřadit roli uživateli. V levém podokně vyberte role a správci a seznamte se se všemi dostupnými rolemi.
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-![Výběr jednotky pro správu pro změnu rozsahu role](./media/admin-units-assign-roles/select-role-to-scope.png)
+1. V Azure Portal přejdete do **služby Azure AD** .
 
-Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. Otevře se panel na pravé straně, kde můžete vybrat jednoho nebo více uživatelů, kteří mají být přiřazeni k roli.
+1. Vyberte **jednotky pro správu** a potom vyberte jednotku správy, ke které chcete přiřadit obor role uživatele. 
 
-![Vyberte roli pro obor a pak vyberte přidat přiřazení.](./media/admin-units-assign-roles/select-add-assignment.png)
+1. V levém podokně vyberte **role a správci** a seznamte se se všemi dostupnými rolemi.
+
+   ![Snímek obrazovky s podoknem role a správci pro výběr jednotky pro správu, jejíž rozsah role chcete přiřadit.](./media/admin-units-assign-roles/select-role-to-scope.png)
+
+1. Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení** . 
+
+1. V podokně **Přidat přiřazení** vyberte jednoho nebo více uživatelů, kteří mají být přiřazeni k roli.
+
+   ![Vyberte roli pro obor a pak vyberte přidat přiřazení.](./media/admin-units-assign-roles/select-add-assignment.png)
 
 > [!Note]
->
-> Pokud chcete přiřadit roli v jednotce pro správu pomocí PIM [, postupujte podle těchto kroků.](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)
+> Postup přiřazení role v jednotce pro správu pomocí Azure AD Privileged Identity Management (PIM) najdete v tématu [přiřazení rolí Azure AD v PIM](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope).
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
@@ -73,9 +80,9 @@ $RoleMember.ObjectId = $AdminUser.ObjectId
 Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
-Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
+Zvýrazněný oddíl můžete změnit podle potřeby konkrétního prostředí.
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
 
 ```http
 Http request
@@ -90,22 +97,30 @@ Request body
 }
 ```
 
-## <a name="list-the-scoped-admins-on-an-au"></a>Seznam správců s vymezeným oborem na AU
+## <a name="view-a-list-of-the-scoped-admins-in-an-administrative-unit"></a>Zobrazení seznamu správců s vymezeným oborem v jednotce pro správu
 
-### <a name="azure-portal"></a>portál Azure
+Seznam správců s vymezeným oborem můžete zobrazit pomocí Azure Portal, PowerShellu nebo Microsoft Graph.
 
-Všechna přiřazení rolí prováděná s oborem administrativní jednotky se dají zobrazit v [části jednotky pro správu Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit). Na portálu můžete přejít na **jednotky pro správu Azure AD >** . Vyberte jednotku pro správu pro přiřazení rolí, která chcete zobrazit. Vyberte **role a správce** a otevřete roli pro zobrazení přiřazení v jednotce pro správu.
+### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-### <a name="powershell"></a>PowerShell
+V [části jednotky pro správu Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)můžete zobrazit všechna přiřazení rolí vytvořená s oborem jednotky pro správu. 
+
+1. V Azure Portal přejdete do **služby Azure AD** .
+
+1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku pro správu seznamu přiřazení rolí, která chcete zobrazit. 
+
+1. Vyberte **role a správci** a pak otevřete roli pro zobrazení přiřazení v jednotce pro správu.
+
+### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 ```powershell
 $administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
-Zvýrazněný oddíl se může změnit podle potřeby pro konkrétní prostředí.
+Zvýrazněný oddíl můžete změnit podle potřeby konkrétního prostředí.
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>Použít Microsoft Graph
 
 ```http
 Http request
@@ -116,5 +131,5 @@ Request body
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
-- [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](groups-faq-troubleshooting.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
+- [Řešení potíží s rolemi přiřazenými ke skupinám cloudu](groups-faq-troubleshooting.md)

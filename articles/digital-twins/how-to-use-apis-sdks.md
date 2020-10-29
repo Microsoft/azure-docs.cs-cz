@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ad9d72d69e23e4029de163ded1a71ae4dfb82fb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 89fb0e8435bd1804193db5b0f8c0596733a7e674
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913768"
+ms.locfileid: "93026135"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Použití rozhraní API a sad SDK služby Azure Digital Twins
 
@@ -306,7 +306,7 @@ Tady můžete zobrazit metriky pro vaši instanci a vytvořit vlastní zobrazen�
 ## <a name="next-steps"></a>Další kroky
 
 Informace o použití rozhraní API k nastavení instance a ověřování digitálních vláken Azure:
-* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md)
+* [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-cli.md)
 
 Nebo si Projděte kroky k vytvoření klientské aplikace, jako je ta, kterou jste použili v tomto postupu:
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)

@@ -3,12 +3,12 @@ title: Azure Service Bus – výjimky zasílání zpráv | Microsoft Docs
 description: Tento článek poskytuje seznam výjimek zasílání zpráv Azure Service Bus a navrhovaných akcí, které se mají učinit, když dojde k výjimce.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4813ad7386af3d9dd730b74e6b815ff173cfe809
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45f18d16aaeee0017bd4d219b6dc9e6beab515af
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885743"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027512"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus výjimky zasílání zpráv
 Tento článek obsahuje seznam výjimek rozhraní .NET generovaných rozhraními API .NET Framework. 
@@ -33,9 +33,10 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 | [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1&preserve-view=true) |Jeden nebo více argumentů dodaných metodě je neplatných.<br /> Identifikátor URI zadaný pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) obsahuje segmenty cesty.<br /> Schéma identifikátoru URI zadané pro [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) nebo [Vytvoření](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) je neplatné. <br />Hodnota vlastnosti je větší než 32 KB. |Zkontrolujte kód volajícího a ujistěte se, že jsou argumenty správné. |Nemůžete to zkusit znovu. |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |Entita přidružená k operaci neexistuje nebo byla odstraněna. |Ujistěte se, že entita existuje. |Nemůžete to zkusit znovu. |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Došlo k pokusu o přijetí zprávy s určitým pořadovým číslem. Tato zpráva se nenašla. |Ujistěte se, že zpráva již nebyla přijata. Zkontrolujte frontu nedoručených zpráv a podívejte se, zda byla zpráva deadlettered. |Nemůžete to zkusit znovu. |
-| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |Klient nemůže navázat připojení k Service Bus. |Ujistěte se, že je zadaný název hostitele správný a že je hostitel dosažitelný. |Zkuste to znovu, pokud dojde k problémům s přerušovaným připojením. |
+| [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |Klient nemůže navázat připojení k Service Bus. |Ujistěte se, že je zadaný název hostitele správný a že je hostitel dosažitelný. <p>Pokud je váš kód spuštěn v prostředí s bránou firewall nebo proxy, zajistěte, aby přenosy do Service Bus domény/IP adresy a porty nebyly blokované.
+</p>|Zkuste to znovu, pokud dojde k problémům s přerušovaným připojením. |
 | [Výjimka serverbusyexception](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |Služba v tuto chvíli nemůže zpracovat požadavek. |Klient může na určitou dobu počkat a pak operaci zopakovat. |Klient může po určitém intervalu opakovat pokus. Pokud výsledkem opakování dojde k jiné výjimce, ověřte chování této výjimky znovu. |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech:<p>Byl proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma).</p><p>Byl proveden pokus o odeslání zprávy, která je větší než 256 KB. </p>U serveru nebo služby došlo k chybě během zpracování žádosti. Podrobnosti najdete ve zprávě výjimky. Obvykle se jedná o přechodnou výjimku.</p><p>Požadavek se ukončil, protože entita je omezená. Kód chyby: 50001, 50002, 50008. </p> | Zkontrolujte kód a zajistěte, aby se pro tělo zprávy používaly pouze serializovatelné objekty (nebo použijte vlastní serializátor). <p>Vyhledejte v dokumentaci podporované typy hodnot vlastností a používejte pouze podporované typy.</p><p> Ověřte vlastnost- [přechodný](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Pokud je to **pravda**, můžete operaci zopakovat. </p>| Pokud je výjimka způsobena omezením, počkejte několik sekund a operaci opakujte. Chování při opakování není definované a nemusí pomáhat v dalších scénářích.|
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech:<p>Byl proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma).</p><p>Byl proveden pokus o odeslání zprávy, která je větší než 256 KB. </p>U serveru nebo služby došlo k chybě během zpracování žádosti. Podrobnosti najdete ve zprávě výjimky. Obvykle se jedná o přechodnou výjimku.</p><p>Požadavek se ukončil, protože entita je omezená. Kód chyby: 50001, 50002, 50008. </p> | Zkontrolujte kód a zajistěte, aby se pro tělo zprávy používaly pouze serializovatelné objekty (nebo použijte vlastní serializátor). <p>Vyhledejte v dokumentaci podporované typy hodnot vlastností a používejte pouze podporované typy.</p><p> Ověřte vlastnost- [přechodný](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Pokud je to **pravda** , můžete operaci zopakovat. </p>| Pokud je výjimka způsobena omezením, počkejte několik sekund a operaci opakujte. Chování při opakování není definované a nemusí pomáhat v dalších scénářích.|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Pokusí se vytvořit entitu s názvem, který už používá jiná entita v daném oboru názvů služby. |Odstraňte existující entitu nebo vyberte jiný název entity, která se má vytvořit. |Nemůžete to zkusit znovu. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |Entita zasílání zpráv dosáhla maximální povolené velikosti nebo byl překročen maximální počet připojení k oboru názvů. |Přiřadíte místo v entitě příjem zpráv z entity nebo jejích podfront. Viz [QuotaExceededException](#quotaexceededexception). |Pokud se zprávy během této doby odstranily, může to zkusit znovu. |
 | [RuleActionException](/dotnet/api/microsoft.servicebus.messaging.ruleactionexception) |Service Bus vrátí tuto výjimku, pokud se pokusíte vytvořit neplatnou akci pravidla. Service Bus připojí tuto výjimku ke zprávě deadlettered, pokud dojde k chybě při zpracování akce pravidla pro tuto zprávu. |Ověřte správnost akce pravidla. |Nemůžete to zkusit znovu. |
@@ -45,8 +46,8 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |Požadavek na běhovou operaci u zakázané entity |Aktivujte entitu. |Zkuste to znovu, pokud se entita aktivovala průběžně. |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |Service Bus vrátí tuto výjimku, pokud odešlete zprávu do tématu s povoleným předfiltrem a žádný z filtrů neodpovídá. |Ujistěte se, že alespoň jeden filtr odpovídá. |Nemůžete to zkusit znovu. |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Datová část zprávy překračuje limit 256 KB. Limit 256-KB je celková velikost zprávy, která může zahrnovat systémové vlastnosti a veškeré režie technologie .NET. |Snižte velikost datové části zprávy a potom operaci opakujte. |Nemůžete to zkusit znovu. |
-| [TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1&preserve-view=true) |Ambientní transakce (*Transaction. Current*) je neplatná. Je možné, že byla dokončena nebo přerušena. Vnitřní výjimka může poskytovat další informace. | |Nemůžete to zkusit znovu. |
-| [TransactionInDoubtException –](/dotnet/api/system.transactions.transactionindoubtexception?view=netcore-3.1&preserve-view=true) |Došlo k pokusu o provedení operace v transakci, která je nejistá, nebo dojde k pokusu o potvrzení transakce a transakce se stane nejistými. |Vaše aplikace musí tuto výjimku zpracovat (jako zvláštní případ), protože transakce již byla potvrzena. |- |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception) |Ambientní transakce ( *Transaction. Current* ) je neplatná. Je možné, že byla dokončena nebo přerušena. Vnitřní výjimka může poskytovat další informace. | |Nemůžete to zkusit znovu. |
+| [TransactionInDoubtException –](/dotnet/api/system.transactions.transactionindoubtexception) |Došlo k pokusu o provedení operace v transakci, která je nejistá, nebo dojde k pokusu o potvrzení transakce a transakce se stane nejistými. |Vaše aplikace musí tuto výjimku zpracovat (jako zvláštní případ), protože transakce již byla potvrzena. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) indikuje, že došlo k překročení kvóty pro některou z entit.
@@ -65,7 +66,7 @@ Zpráva uvádí, že téma překročilo omezení velikosti, v tomto případě 1
 
 ### <a name="namespaces"></a>Obory názvů
 
-Pro obory názvů může [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) značit, že aplikace překročila maximální počet připojení k oboru názvů. Například:
+Pro obory názvů může [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) značit, že aplikace překročila maximální počet připojení k oboru názvů. Příklad:
 
 ```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
@@ -80,7 +81,7 @@ Existují dva běžné příčiny této chyby: fronta nedoručených zpráv a p�
 1. **[Fronta nedoručených zpráv](service-bus-dead-letter-queues.md)** U čtecího modulu se nedaří dokončit zprávy a zprávy jsou po vypršení zámku vráceny do fronty nebo tématu. K tomu může dojít, pokud Čtenář narazí na výjimku, která zabrání v volání [BrokeredMessage. Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.complete). Po 10 časech se zpráva ve výchozím nastavení přesune do fronty nedoručených zpráv. Toto chování je řízeno vlastností [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) a má výchozí hodnotu 10. Vzhledem k tomu, že se zprávy dostanou ve frontě nedoručených zpráv, zabírají místo.
    
     Chcete-li tento problém vyřešit, přečtěte si a dokončete zprávy z fronty nedoručených zpráv, stejně jako z jakékoli jiné fronty. Můžete použít metodu [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) , která vám pomůžou naformátovat cestu fronty nedoručených zpráv.
-2. **Přijímač byl zastaven**. Příjemce zastavil přijímání zpráv z fronty nebo odběru. Způsob, jak to zjistit, je podívat se na vlastnost [QueueDescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) , která zobrazuje úplné rozpis zpráv. Pokud je vlastnost [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) vysoká nebo roste, zprávy nejsou čteny tak rychle, jak jsou zapisovány.
+2. **Přijímač byl zastaven** . Příjemce zastavil přijímání zpráv z fronty nebo odběru. Způsob, jak to zjistit, je podívat se na vlastnost [QueueDescription. MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) , která zobrazuje úplné rozpis zpráv. Pokud je vlastnost [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) vysoká nebo roste, zprávy nejsou čteny tak rychle, jak jsou zapisovány.
 
 ## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](/dotnet/api/system.timeoutexception?view=netcore-3.1&preserve-view=true) označuje, že operace iniciovaná uživatelem trvá déle, než je časový limit operace. 
@@ -106,11 +107,11 @@ Zámek zprávy může vypršet z různých důvodů –
 
 ### <a name="resolution"></a>Řešení
 
-V případě **MessageLockLostException**nemůže klientská aplikace nadále zprávu zpracovat. Klientská aplikace může volitelně zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
+V případě **MessageLockLostException** nemůže klientská aplikace nadále zprávu zpracovat. Klientská aplikace může volitelně zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
 
 Vzhledem k tomu, že zámek zprávy vypršel, by se mohl vrátit do fronty (nebo předplatného) a může je zpracovat další klientská aplikace, která volá příjem.
 
-Pokud **MaxDeliveryCount** překročí, může se zpráva přesunout do **DeadLetterQueue**.
+Pokud **MaxDeliveryCount** překročí, může se zpráva přesunout do **DeadLetterQueue** .
 
 ## <a name="sessionlocklostexception"></a>SessionLockLostException
 
@@ -125,7 +126,7 @@ Zámek relace může vypršet z různých důvodů –
 
 ### <a name="resolution"></a>Řešení
 
-V případě **SessionLockLostException**nemůže klientská aplikace nadále zpracovávat zprávy v relaci. Klientská aplikace může zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
+V případě **SessionLockLostException** nemůže klientská aplikace nadále zpracovávat zprávy v relaci. Klientská aplikace může zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
 
 Vzhledem k tomu, že zámek relace vypršel, vrátí se zpátky do fronty (nebo předplatného) a může být uzamčený další klientskou aplikací, která relaci přijme. Vzhledem k tomu, že zámek relace je uchováván v jediné klientské aplikaci v daném okamžiku, je zaručeno zpracování v daném pořadí.
 
@@ -159,7 +160,7 @@ Aliases:  <mynamespace>.servicebus.windows.net
 
 Pokud se výše uvedený název **nepřekladuje** na IP adresu a alias oboru názvů, zkontrolujte, který správce sítě další prozkoumat. Překlad názvů se provádí prostřednictvím serveru DNS obvykle prostřednictvím prostředku v síti zákazníka. Pokud se překlad DNS provádí Azure DNS kontaktujte prosím podporu Azure.
 
-Pokud překlad názvů **funguje podle očekávání**, ověřte, jestli [tady](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues) jsou povolené připojení k Azure Service Bus.
+Pokud překlad názvů **funguje podle očekávání** , ověřte, jestli [tady](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues) jsou povolené připojení k Azure Service Bus.
 
 
 ## <a name="messagingexception"></a>MessagingException
@@ -168,7 +169,7 @@ Pokud překlad názvů **funguje podle očekávání**, ověřte, jestli [tady](
 
 **MessagingException** je obecná výjimka, která může být vyvolána z různých důvodů. Níže jsou uvedeny některé z důvodů.
 
-   * Došlo k pokusu o vytvoření **QueueClient** na **téma** nebo v **předplatném**.
+   * Došlo k pokusu o vytvoření **QueueClient** na **téma** nebo v **předplatném** .
    * Velikost odeslané zprávy je větší než limit dané úrovně. Přečtěte si další informace o [kvótách Service Bus a omezeních](service-bus-quotas.md).
    * Konkrétní požadavek na rovinu dat (odeslání, přijetí, dokončení, opuštění) byl ukončen z důvodu omezení.
    * Přechodné problémy způsobily kvůli upgradům a restartům služby.
@@ -180,7 +181,7 @@ Pokud překlad názvů **funguje podle očekávání**, ověřte, jestli [tady](
 
 Postup řešení závisí na tom, co způsobilo vyvolání **MessagingException** .
 
-   * V případě **přechodného problému** (kde je v ***přechodném*** případě je nastaveno na ***hodnotu true***) nebo pro **problémy s omezením**je možné operaci vyřešit opakováním operace. Pro tuto operaci je možné využít výchozí zásady opakování v sadě SDK.
+   * V případě **přechodného problému** (kde je to velmi **_přechodný příkaz_*_ nastaveno na _*_true_*_) nebo pro* problémy s omezením** , opakování operace může problém vyřešit. Pro tuto operaci je možné využít výchozí zásady opakování v sadě SDK.
    * V případě jiných problémů se v podrobnostech výjimky označují problémy a postup řešení je možné odvodit ze stejného.
 
 ## <a name="next-steps"></a>Další kroky
