@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 0365238fd70e2e098e5a228ee71d5b9e0e584c71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279782"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909926"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Jak vybrat standardní (ruční) a zajištěné propustnosti v rámci automatického škálování 
 
@@ -83,7 +83,7 @@ Teď analyzujeme historii. Předpokládejme, že máme využití popsané v nás
 
 Všimněte si, že ve hodinu 1 platí, že pokud je využití 6%, bude automatické škálování platit RU/s po dobu 10% maximálního RU/s, což je minimum za hodinu. I když náklady na automatické škálování můžou být v určitou dobu vyšší než ruční propustnost, pokud je průměrné využití méně než 66% všech hodin, automatické škálování bude finančně levnější.
 
-|  | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
+|Časové období  | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
 |---------|---------|---------|---------|---------|
 |Hodina 1  | 6 %  |     3000  |  30 000 * 0,008/100 = $2,40        |   3000 * 0,012/100 = $0,36      |
 |Hodina 2  | 100 %  |     30 000    |  30 000 * 0,008/100 = $2,40       |  30 000 * 0,012/100 = $3,60      |
@@ -102,7 +102,7 @@ Předpokládejme, že máme historii využití, jak je popsáno v tabulce. Naše
 
 Obecně platí, že pokud je průměrné využití napříč všemi 730 hodinami v jednom měsíci větší než 66%, uložíme je pomocí ruční propustnosti. 
 
-|  | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
+| Časové období | Využití |Poplatky za automatické škálování (RU/s)  |Možnost 1: ruční 30 000 RU/s  | Možnost 2: automatické škálování mezi 3000 – 30 000 RU/s |
 |---------|---------|---------|---------|---------|
 |Hodina 1  | 72%  |     21 600   |  30 000 * 0,008/100 = $2,40        |   21600 * 0,012/100 = $2,59      |
 |Hodina 2  | 93 %  |     28 000    |  30 000 * 0,008/100 = $2,40       |  28 000 * 0,012/100 = $3,36       |
@@ -116,18 +116,18 @@ Obecně platí, že pokud je průměrné využití napříč všemi 730 hodinami
 Automatické škálování faktur pro nejvyšší úroveň RU/s za hodinu Při analýze normalizované spotřeby RU v čase je při výpočtu průměru důležité použít nejvyšší využití za hodinu. 
 
 Výpočet průměru nejvyššího využití ve všech hodinách:
-1. Nastavte **agregaci** pro metriku spotřeby Noramlized ru na **Max**.
+1. Nastavte **agregaci** pro metriku spotřeby Noramlized ru na **Max** .
 1. Vyberte **časový interval členitosti** na 1 hodinu.
-1. Přejděte na **Možnosti grafu**.
+1. Přejděte na **Možnosti grafu** .
 1. Vyberte možnost pruhového grafu. 
-1. V části **sdílet**vyberte možnost **stáhnout do aplikace Excel** . Z vygenerované tabulky Vypočítejte průměrné využití napříč všemi hodinami. 
+1. V části **sdílet** vyberte možnost **stáhnout do aplikace Excel** . Z vygenerované tabulky Vypočítejte průměrné využití napříč všemi hodinami. 
 
 :::image type="content" source="media/how-to-choose-offer/variable-workload-highest-util-by-hour.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
 
 ## <a name="measure-and-monitor-your-usage"></a>Měření a monitorování využití
 Po výběru typu propustnosti v průběhu času byste měli monitorovat svoji aplikaci a podle potřeby provádět úpravy. 
 
-Pokud používáte automatické škálování, použijte Azure Monitor k zobrazení maximálního množství RU/s poskytovaného pro automatické škálování (**maximální propustnost automatického škálování**) a ru/s, na který je systém aktuálně škálovatelný (**zřízená propustnost**). Níže je uveden příklad proměnné nebo nepředvídatelné úlohy pomocí automatického škálování. Všimněte si, že pokud nedochází k žádným přenosům, systém škáluje RU/s na minimum z 10% maximálního RU/s, což je v tomto případě 5000 RU/s a 50 000 RU/s. 
+Pokud používáte automatické škálování, použijte Azure Monitor k zobrazení maximálního množství RU/s poskytovaného pro automatické škálování ( **maximální propustnost automatického škálování** ) a ru/s, na který je systém aktuálně škálovatelný ( **zřízená propustnost** ). Níže je uveden příklad proměnné nebo nepředvídatelné úlohy pomocí automatického škálování. Všimněte si, že pokud nedochází k žádným přenosům, systém škáluje RU/s na minimum z 10% maximálního RU/s, což je v tomto případě 5000 RU/s a 50 000 RU/s. 
 
 :::image type="content" source="media/how-to-choose-offer/autoscale-metrics-azure-monitor.png" alt-text="Zatížení s proměnnými přenosy – normalizovaná spotřeba RU mezi 6% a 100% po dobu všech hodin":::
 

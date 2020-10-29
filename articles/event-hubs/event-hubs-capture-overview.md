@@ -3,12 +3,12 @@ title: Zachytávání událostí streamování – Azure Event Hubs | Microsoft 
 description: Tento článek poskytuje přehled funkce Capture, která umožňuje zachytit streamování událostí prostřednictvím Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32741fdd98ec79c38568ff5a6c4fa476f27d794b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613403"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912612"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
 Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs Capture je nejjednodušší způsob, jak načíst streamovaná data do Azure, a umožňuje se zaměřit na zpracování dat, nikoli na shromažďování dat.
@@ -58,6 +58,8 @@ V čase vytvoření centra událostí můžete pomocí [Azure Portal](https://po
 - [Povolení funkce Event Hubs Capture prostřednictvím webu Azure Portal](event-hubs-capture-enable-through-portal.md)
 - [Vytvoření oboru názvů Event Hubs s centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
+> [!NOTE]
+> Pokud povolíte funkci Capture pro existující centrum událostí, tato funkce zachytí události, které dorazí do centra událostí **po** zapnutí funkce. Nezachycuje události, které existovaly v centru událostí předtím, než byla funkce zapnuta. 
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Zkoumání zachycených souborů a práce s Avro
 

@@ -7,66 +7,65 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f78aa110ed42e17db873b9593de62602aa4193f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121863"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911131"
 ---
 # <a name="what-is-a-test-drive"></a>Co je testovací verze?
 
-Testovací jednotka představuje skvělý způsob, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost *vyzkoušet*si, jak si je koupit, a výsledkem je vyšší konverze a generace vysoce kvalifikovaných potenciálních zákazníků. Testovací jednotka přináší vašemu produktu život v reálném scénáři implementace a zároveň generuje vysoce kvalifikované potenciální zákazníky.
+Testovací jednotka je skvělým způsobem, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si, jak si můžete koupit, vygenerovat vysoce kvalifikované potenciální zákazníky a výsledkem je vyšší konverze. Testovací jednotka přináší produkt do životnosti ve scénáři implementace reálného světa. Zákazníci, kteří si vyzkoušeli váš produkt, vykazují jasný záměr koupit podobné řešení. Využijte tyto výhody a využijte pokročilejších zájemců.
 
-Testovací jednotky jsou spravované instance, které nasazují vaše řešení nebo aplikace na vyžádání pro zákazníky, kteří si je vyžádají. Jakmile je instance testovací jednotky přiřazena, je k dispozici pro použití v nastaveném časovém intervalu a pak se odstraní, aby se vytvořila místnost pro jiného zákazníka.
-
-Jako vydavatel spravujete a konfigurujete nastavení testovacích jednotek v partnerském centru. Podrobnosti technické konfigurace se liší v závislosti na typu nabídky, se kterou pracujete. Podrobné pokyny najdete v části [Další krok](#next-step) na konci tohoto tématu.
-
-Potenciální zákazníci si vyzkouší vaši testovací jednotku na komerčním webu Marketplace. Poskytují své kontaktní údaje a souhlasím s podmínkami vaší nabídky a zásadami ochrany osobních údajů a pak získají přístup k předkonfigurovanému prostředí, aby je bylo možné vyzkoušet po určitou dobu. Zákazníci obdrží praktickou zkušební verzi klíčových funkcí vašeho produktu a výhod a dostanete cenného zákazníka.
+Vaše zákazníci mají i z testovacích jednotek. Tím, že jim umožníte vyzkoušet si produkt jako první, zmenšíte tření procesu nákupu. Kromě toho je testovací jednotka předem zřízena, tj. zákazníci nemusí stahovat, nastavovat ani konfigurovat produkt.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Jako vydavatel spravujete a konfigurujete nastavení testovacích jednotek v partnerském centru. Po dokončení instalace se spustí spravovaná instance, která bude na vyžádání nasazena pro zákazníka požadujícího IT. Jakmile je instance testovací jednotky přiřazena, je k dispozici pro použití v nastaveném časovém intervalu a pak se odstraní, aby se vytvořila místnost pro jiného zákazníka.
+Testovací jednotky jsou spravované instance, které spouštějí vaše řešení nebo aplikace na vyžádání pro zákazníky, kteří si je vyžádají. Jakmile je instance testovací jednotky přiřazená, je k dispozici pro daného zákazníka za nastavené období. Po skončení období se pak odstraní a vytvoří se místo pro jiného zákazníka.
+
+Jako vydavatel spravujete a konfigurujete nastavení testovacích jednotek v partnerském centru. Podrobnosti technické konfigurace se liší v závislosti na typu nabídky. Podrobné pokyny najdete v [technické konfiguraci testovacích jednotek](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+
+Potenciální zákazníci zjišťují vaši zkušební verzi jako výzva na vaší nabídce na [AppSource](https://appsource.microsoft.com/en-US/). Poskytují své kontaktní údaje a souhlasím s podmínkami vaší nabídky a zásadami ochrany osobních údajů. potom získáte přístup k předkonfigurovanému prostředí a vyzkoušíte ho po určitou dobu. Zákazníci obdrží praktickou zkušební verzi klíčových funkcí vašeho produktu a výhod a dostanete cenného zákazníka.
 
 ## <a name="types-of-test-drives"></a>Typy testovacích jednotek
 
 Na komerčním webu Marketplace jsou k dispozici různé testovací jednotky pro vybrané nabídky v závislosti na typu produktu, scénáře a Marketplace, na kterém jste:
 
 - Azure Resource Manager
+    - Aplikace Azure
+    - SaaS
+    - Virtual Machines
 - Hostovaný testovací disk
-    - Dynamics 365 for Business Central
+    - Dynamics 365 pro firmy – střed (aktuálně Nepodporováno)
     - Dynamics 365 for Customer Engagement
     - Dynamics 365 for Operations
-- Aplikace logiky
+- Aplikace logiky (jenom v režimu podpory)
 - Power BI
 
-Podrobnosti o konfiguraci jedné z těchto testovacích jednotek najdete v části [Další krok](#next-step) na konci tohoto tématu.
+Podrobnosti o konfiguraci jedné z těchto testovacích jednotek najdete v tématu [Technická konfigurace testovacích](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration)jednotek. 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
 Tato šablona nasazení obsahuje všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure. K dispozici je Azure Resource Manager testovací jednotka pro tyto typy nabídek: 
 
 - Aplikace Azure
-- Dynamics 365 for Business Central
-- Dynamics 365 pro Customer Engagement & PowerApps
-- Dynamics 365 for Operations
 - SaaS
 - Virtuální počítače
 
 >[!NOTE]
 >Toto je jediná možnost testovacího disku pro virtuální počítač a nabídky aplikací Azure.
 
-### <a name="hosted-test-drive"></a>Hostovaný testovací disk
+### <a name="hosted-test-drive-recommended"></a>Hostovaný testovací disk (doporučeno)
 
-Hostovaná testovací jednotka odebere složitost nastavení tím, že umožní hostování Microsoftu a údržbu služby, která provede testovací zřízení, nasazení a zrušení zřizování uživatelů. Pokud máte k dispozici nabídku Microsoft AppSource, Sestavte si testovací jednotku pro připojení k instanci Dynamics AX/CRM nebo jinému prostředku mimo platformu Azure. Tento typ použijte pro AppSource nabídky pro připojení k těmto nabídkám Dynamics 365:
+Hostovaná testovací jednotka odebere složitost nastavení tím, že umožní hostování společnosti Microsoft a údržbu služby, která provede test zřizování uživatelů a zrušení zřizování. Pokud máte nabídku Microsoft AppSource, sestavte testovací jednotku pro připojení k instanci Dynamics AX/CRM. Můžete použít následující typy nabídek AppSource:
 
-- Použijte [Dynamics 365 pro firmy Business](partner-center-portal/create-new-operations-offer.md) Central pro systém plánování podnikových prostředků, jako jsou finance, operace, dodavatelský řetězec a CRM.
 - Pro zákaznickou práci se zákaznickým systémem, jako je například prodej, služba, služba projektu a služba pole, použijte [Dynamics 365 pro zapojení zákazníka](partner-center-portal/create-new-customer-engagement-offer.md) .
 - Pro operace s plánováním podnikových prostředků podnikových zdrojů, jako jsou finance, operace a výrobní, dodavatelský řetězec, použijte [Dynamics 365](partner-center-portal/create-new-operations-offer.md) .
 
 ### <a name="logic-app-test-drive"></a>Testovací jednotka aplikace logiky
 
-Tento typ testovacích jednotek není hostitelem společnosti Microsoft. Použijte ho pro připojení k nabídce Dynamics 365 nebo k jinému vlastnímu prostředku.
+Tento typ testovacích jednotek není hostitelem Microsoft a používá šablony Azure Resource Manager (ARM) pro typy nabídek Dynamics AX/CRM. K vytvoření požadovaných prostředků ve vašem předplatném Azure budete muset spustit šablonu ARM. Testovací jednotka aplikace logiky je momentálně zapnutá jenom v režimu podpory a Microsoft nedoporučuje podrobnosti o konfiguraci testovacích jednotek aplikace logiky, viz [Technická konfigurace testovacích jednotek](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
 
 ### <a name="power-bi-test-drive"></a>Power BI testovacích jednotek
 
@@ -92,7 +91,7 @@ Pokud uzavřete obchod se zájemcem testovacích jednotek, nezapomeňte ho zareg
 
 Další zdroje testovacích jednotek:
 
-- [Technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 
 ## <a name="next-step"></a>Další krok

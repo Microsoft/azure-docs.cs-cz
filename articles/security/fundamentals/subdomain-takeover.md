@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447369"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911388"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -51,7 +51,7 @@ Běžný scénář pro převzetí subdomény:
 
     1. Objekt actor Threat zřídí prostředek Azure se stejným plně kvalifikovaným názvem domény dříve řízeného prostředku. V tomto příkladu `app-contogreat-dev-001.azurewebsites.net` .
 
-    1. Provoz odeslaný do subdomény `myapp.contoso.com` je nyní směrován do prostředku objektu pro škodlivý objekt actor, kde tento obsah ovládá.
+    1. Provoz odeslaný do subdomény `greatapp.contoso.com` je nyní směrován do prostředku objektu pro škodlivý objekt actor, kde tento obsah ovládá.
 
 
 
@@ -100,7 +100,7 @@ Nástroj podporuje prostředky Azure uvedené v následující tabulce. Nástroj
 
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Spusťte dotaz jako uživatel, který má:
 
@@ -119,7 +119,7 @@ Pokud jste globálním správcem tenanta vaší organizace, zvyšte svůj účet
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 
-Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1**a Stáhněte si ho z GitHubu: https://aka.ms/DanglingDNSDomains .
+Přečtěte si další informace o skriptu PowerShellu, **Get-DanglingDnsRecords.ps1** a Stáhněte si ho z GitHubu: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Napravit dangling položky DNS 
 

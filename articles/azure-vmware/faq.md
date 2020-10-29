@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779437"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911881"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -76,7 +76,7 @@ Ne, použijte [pokyny poskytované VMware](https://docs.vmware.com/en/VMware-vSp
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Podporuje se VMware HCX na sítích VPN?
 Ne, z důvodu požadavků na šířku pásma a latenci.
 
-#### <a name="can-azure-bastion-be-used-for-connecting-to-avs-vms"></a>Dá se Azure bastionu použít pro připojení k virtuálním počítačům služby AVS?
+#### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Dá se Azure bastionu použít pro připojení k virtuálním počítačům řešení VMware Azure?
 Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Může se pro připojení k řešení Azure VMware použít existující brána ExpressRoute?
@@ -172,7 +172,7 @@ Upgrade sady prostředků privátního cloudu se provádí za účelem zachován
 
 Software privátního cloudu se upgraduje podle plánu, který sleduje vydání softwarového balíčku od VMware. Váš privátní cloud nevyžaduje pro upgrady výpadky.
 
-## <a name="connectivity"></a>Možnosti připojení
+## <a name="connectivity"></a>Připojení
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Jaké plánování síťových IP adres je potřeba k začleňování privátních cloudů do místních prostředí?
 

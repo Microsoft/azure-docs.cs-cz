@@ -13,6 +13,7 @@
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení – šablona ARM
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
     - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
       href: quickstart-load-balancer-standard-internal-portal.md
@@ -21,6 +22,7 @@
     - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-internal-cli.md
     - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-internal-template.md
   expanded: true
 - name: Kurzy
@@ -53,6 +55,8 @@
       items:
         - name: Sondy stavu
           href: load-balancer-custom-probe-overview.md
+        - name: Přehledy Azure Monitoru pro Load Balancer
+          href: load-balancer-insights.md
         - name: Diagnostika a metriky Load Balanceru úrovně Standard
           href: load-balancer-standard-diagnostics.md
         - name: Protokoly služby Azure Monitor pro Load Balancer úrovně Basic

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/30/2020
-ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485033"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910759"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Aktivita toku dat v Azure Data Factory
 
@@ -54,13 +54,13 @@ Aktivitu toku dat můžete použít k transformaci a přesunutí dat prostředni
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Vyžadováno
+Vlastnost | Popis | Povolené hodnoty | Povinné
 -------- | ----------- | -------------- | --------
-toku dat | Odkaz na prováděný tok dat | DataFlowReference | Yes
-integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | No
-Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | No
-Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | No
-Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, účet úložiště, který se používá pro základní fázování | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
+toku dat | Odkaz na prováděný tok dat | DataFlowReference | Ano
+integrationRuntime | Výpočetní prostředí, na kterém se tok dat spouští. Pokud není zadaný, použije se automatické řešení Azure Integration runtime. | IntegrationRuntimeReference | Ne
+Compute. coreCount | Počet jader používaných v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | 8, 16, 32, 48, 80, 144, 272 | Ne
+Compute. computeType | Typ výpočetní služby použitý v clusteru Spark. Dá se zadat jenom v případě, že se používá prostředí Azure Integration runtime pro automatické rozpoznávání. | "Obecné", "ComputeOptimized", "MemoryOptimized" | Ne
+Příprava. linkedService | Pokud používáte zdroj nebo jímku Azure synapse Analytics, zadejte účet úložiště, který se používá pro základní fázování.<br/><br/>Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Seznamte se také s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.<br/> | LinkedServiceReference | Jenom v případě, že tok dat čte nebo zapisuje do Azure synapse Analytics
 Příprava. folderPath | Pokud používáte zdroj nebo jímku Azure synapse Analytics, cesta ke složce v účtu BLOB Storage použitá pro základní fázování | Řetězec | Jenom v případě, že tok dat čte nebo zapisuje do služby Azure synapse Analytics
 
 ![Spustit tok dat](media/data-flow/activity-data-flow.png "Spustit tok dat")
@@ -116,7 +116,7 @@ Ladicí kanál běží na aktivním ladicím clusteru, nikoli v prostředí Inte
 
 ## <a name="monitoring-the-data-flow-activity"></a>Monitorování aktivity toku dat
 
-Aktivita toku dat má speciální prostředí pro monitorování, ve kterém můžete zobrazit oddíly, čas fáze a informace o datových řádcích. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce**. Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
+Aktivita toku dat má speciální prostředí pro monitorování, ve kterém můžete zobrazit oddíly, čas fáze a informace o datových řádcích. Otevřete podokno monitorování pomocí ikony brýlí v části **Akce** . Další informace najdete v tématu [monitorování toků dat](concepts-data-flow-monitoring.md).
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Použití aktivity toku dat v důsledku následné aktivity
 

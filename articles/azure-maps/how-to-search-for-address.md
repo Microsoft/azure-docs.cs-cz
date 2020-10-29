@@ -3,21 +3,22 @@ title: Vyhledat umístění pomocí služby Azure Maps Search Services
 description: Přečtěte si o službě Azure Maps Search. Podívejte se, jak používat tuto sadu rozhraní API pro účely geografického kódování, reverzního geografického kódování, přibližného vyhledávání a obráceného hledání mezi ulice.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895694"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910980"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
 [Azure Maps Search Service](/rest/api/maps/search) je sada rozhraní API pro RESTful navržená tak, aby vývojářům usnadnila hledání adres, míst a obchodních seznamů podle názvu, kategorie a dalších geografických informací. Kromě podpory tradičního geografického kódování můžou služby také přesměrovat adresy geografického kódu a meziulic na základě Latitudes a délky. Hodnoty zeměpisné šířky a délky vrácené hledáním se dají použít jako parametry v jiných službách Azure Maps, jako jsou třeba [trasy](/rest/api/maps/route) a [povětrnostní](/rest/api/maps/weather) služby.
+
 
 V tomto článku se naučíte:
 
@@ -44,9 +45,7 @@ V tomto příkladu použijeme rozhraní API pro Azure Maps [získat adresu pro h
 
 2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozím kroku, a pak vyberte **Uložit** .
 
-3. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. V této žádosti hledáme konkrétní adresu: `400 Braod St, Seattle, WA 98109` .
-
-    U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného. Požadavek by měl vypadat jako na následující adrese URL:
+3. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. V této žádosti hledáme konkrétní adresu: `400 Braod St, Seattle, WA 98109` . U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ V tomto příkladu použijeme rozhraní API pro Azure Maps [získat adresu pro h
 
 6. Dále zkuste nastavit `query` klíč na `400 Broa` .
 
-7. Klikněte na tlačítko **Odeslat** .  Nyní vidíte, že odpověď zahrnuje odpovědi z více zemí. Chcete-li výsledky geografického posunu do příslušné oblasti pro uživatele, vždy do žádosti přidat tolik podrobností o umístění.
+7. Klikněte na tlačítko **Odeslat** . Nyní vidíte, že odpověď zahrnuje odpovědi z více zemí. Chcete-li výsledky geografického posunu do příslušné oblasti pro uživatele, vždy do žádosti přidat tolik podrobností o umístění.
 
 ## <a name="using-fuzzy-search-api"></a>Použití rozhraní API pro vyhledávání s fuzzy logikou
 
@@ -78,7 +77,7 @@ V tomto příkladu použijeme přibližné hledání k prohledání celého svě
 
 1. Otevřete aplikaci pro odesílání, klikněte na **Nový** a vyberte **žádost** . Zadejte **název žádosti** . Vyberte kolekci, kterou jste vytvořili v předchozí části, nebo vytvořte novou, a pak vyberte **Uložit** .
 
-2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného. Požadavek by měl vypadat jako na následující adrese URL:
+2. Na kartě tvůrce vyberte metodu **Get** http a zadejte následující adresu URL. U této žádosti a dalších žádostí uvedených v tomto článku nahraďte `{Azure-Maps-Primary-Subscription-key}` primárním klíčem předplatného.
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: ff92f66d4d7b96660fe83b79273f65ca50eb22f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89292890"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910249"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Toky ověřování a scénáře aplikací
 
@@ -42,8 +42,8 @@ V následujících částech jsou popsány kategorie aplikací.
 
 Scénáře ověřování zahrnují dvě aktivity:
 
-- **Získávání tokenů zabezpečení pro chráněné webové rozhraní API**: Doporučujeme, abyste k získání tokenů používali [klientské knihovny podporované Microsoftem](reference-v2-libraries.md#microsoft-supported-client-libraries) . Konkrétně doporučujeme rodinu Microsoft Authentication Library (MSAL).
-- **Ochrana webového rozhraní API nebo webové aplikace**: jedna výzva k ochraně těchto prostředků ověřuje token zabezpečení. Na některých platformách Microsoft nabízí [knihovny middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
+- **Získávání tokenů zabezpečení pro chráněné webové rozhraní API** : Doporučujeme, abyste k získání tokenů používali [klientské knihovny podporované Microsoftem](reference-v2-libraries.md#microsoft-supported-client-libraries) . Konkrétně doporučujeme rodinu Microsoft Authentication Library (MSAL).
+- **Ochrana webového rozhraní API nebo webové aplikace** : jedna výzva k ochraně těchto prostředků ověřuje token zabezpečení. Na některých platformách Microsoft nabízí [knihovny middlewaru](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries).
 
 ### <a name="with-users-or-without-users"></a>S uživateli nebo bez uživatelů
 
@@ -59,14 +59,14 @@ Existují však také aplikace démona. V těchto scénářích aplikace získá
 
 Tokeny zabezpečení lze získat pomocí více typů aplikací. Tyto aplikace jsou obvykle rozdělené do následujících tří kategorií. Každý se používá s různými knihovnami a objekty.
 
-- **Jednostránkové aplikace**: označují se také jako jednostránkové, jedná se o webové aplikace, ve kterých jsou tokeny získány pomocí JavaScriptu nebo aplikace TypeScriptu spuštěné v prohlížeči. Mnohé moderní aplikace mají jednostránkovou aplikaci na front-endu, která je primárně napsaná v JavaScriptu. Aplikace často používá rozhraní, jako je například úhlová, reakce nebo Vue. MSAL.js je jediná knihovna Microsoft Authentication Library, která podporuje jednostránkové aplikace.
+- **Jednostránkové aplikace** : označují se také jako jednostránkové, jedná se o webové aplikace, ve kterých jsou tokeny získány pomocí JavaScriptu nebo aplikace TypeScriptu spuštěné v prohlížeči. Mnohé moderní aplikace mají jednostránkovou aplikaci na front-endu, která je primárně napsaná v JavaScriptu. Aplikace často používá rozhraní, jako je například úhlová, reakce nebo Vue. MSAL.js je jediná knihovna Microsoft Authentication Library, která podporuje jednostránkové aplikace.
 
-- **Veřejné klientské aplikace**: aplikace v této kategorii, například následující typy, vždy přihlašovat uživatele:
+- **Veřejné klientské aplikace** : aplikace v této kategorii, například následující typy, vždy přihlašovat uživatele:
   - Aplikace klasické pracovní plochy, které volají webová rozhraní API jménem přihlášeného uživatele
   - Mobilní aplikace
   - Aplikace běžící na zařízeních, která nemají prohlížeč, podobně jako u aplikací využívajících IoT
   
-- **Důvěrné klientské aplikace**: aplikace v této kategorii zahrnují:
+- **Důvěrné klientské aplikace** : aplikace v této kategorii zahrnují:
   - Webové aplikace, které volají webové rozhraní API
   - Webová rozhraní API, která volají webové rozhraní API
   - Aplikace démona, i když jsou implementovány jako služba konzoly, jako je třeba démon pro Linux nebo služba systému Windows
@@ -217,7 +217,7 @@ Scénáře, které zahrnují získání tokenů, jsou také mapovány na toky ov
  </tr>
 
   <tr>
-   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that calls web APIs" src="media/scenarios/web-app.svg"></a></td>
    <td><a href="scenario-web-app-call-api-overview.md">Webová aplikace, která volá webová rozhraní API</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">Autorizační kód</a></td>
    <td>Pracovní nebo školní účty, osobní účty a Azure AD B2C</td>

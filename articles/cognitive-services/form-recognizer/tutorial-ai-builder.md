@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 90e6c41ad9f6b3d13f29e76d053287395eb88aed
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889897"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912323"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Kurz: Vytvoření aplikace pro zpracování formulářů pomocí Tvůrce AI
 
-Nástroj pro [sestavovatele AI](https://docs.microsoft.com/ai-builder/overview) je funkce Power Platform, která umožňuje automatizovat procesy a předpovídat výsledky pro zlepšení výkonu firmy. Pomocí zpracování formuláře pro sestavovatele AI můžete vytvořit modely AI, které identifikují a extrahují páry klíč-hodnota a tabulková data z dokumentů formuláře.
+Nástroj pro [sestavovatele AI](/ai-builder/overview) je funkce Power Platform, která umožňuje automatizovat procesy a předpovídat výsledky pro zlepšení výkonu firmy. Pomocí zpracování formuláře pro sestavovatele AI můžete vytvořit modely AI, které identifikují a extrahují páry klíč-hodnota a tabulková data z dokumentů formuláře.
 
 > [!NOTE]
-> Tento projekt je také k dispozici jako [modul Microsoft Learn](https://docs.microsoft.com/learn/modules/get-started-with-form-processing/).
+> Tento projekt je také k dispozici jako [modul Microsoft Learn](/learn/modules/get-started-with-form-processing/).
 
 V tomto kurzu se naučíte:
 
@@ -129,11 +129,11 @@ Pokud máte s modelem spokojeni, vyberte **publikovat**  a publikujte ho. Po dok
 > [!div class="mx-imgBorder"]
 > ![Stránka publikovat model](./media/tutorial-ai-builder/model-page.png)
 
-Po publikování modelu zpracování formuláře ho můžete použít v [aplikaci plátna Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps) nebo v [Power](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)automatu.
+Po publikování modelu zpracování formuláře ho můžete použít v [aplikaci plátna Power Apps](/ai-builder/form-processor-component-in-powerapps) nebo v [Power](/ai-builder/form-processing-model-in-flow)automatu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Použijte dokumentaci Tvůrce AI pro použití modelu zpracování formulářů.
 
-* [Použití komponenty Form-Processor v Power Apps](https://docs.microsoft.com/ai-builder/form-processor-component-in-powerapps)
-* [Použití modelu zpracování formulářů v Power Automate](https://docs.microsoft.com/ai-builder/form-processing-model-in-flow)
+* [Použití komponenty Form-Processor v Power Apps](/ai-builder/form-processor-component-in-powerapps)
+* [Použití modelu zpracování formulářů v Power Automate](/ai-builder/form-processing-model-in-flow)

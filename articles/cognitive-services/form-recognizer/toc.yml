@@ -45,7 +45,7 @@
 - name: Kurzy
   items:
     - name: Použití Rozpoznávání formulářů se službou Cognitive Search
-      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+      href: ../../search/cognitive-search-custom-skill-form.md
     - name: Použití Rozpoznávání formulářů se službou AI Builder
       href: tutorial-ai-builder.md
 - name: Koncepty
@@ -81,19 +81,19 @@
     - name: Sady SDK
       items:
         - name: .NET
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme'
+          href: /dotnet/api/overview/azure/ai.formrecognizer-readme
         - name: Python
-          href: 'https://docs.microsoft.com/en-us/python/api/azure-ai-formrecognizer/?view=azure-python'
+          href: /python/api/azure-ai-formrecognizer/?view=azure-python
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme'
+          href: /java/api/overview/azure/ai-formrecognizer-readme
         - name: JavaScript
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme'
+          href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: Ceny a omezení
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
     - name: Stack Overflow

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 14a532e7809db3359d90a03c169c27a19cf89a9a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164223"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911626"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -21,7 +21,7 @@ Tento článek je navržený tak, aby pomohl řešit problémy, se kterými se m
 
 1. [Microsoft Q&stránku s otázkou pro Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage).
 2. [Soubory Azure ve službě UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
+3. podpora Microsoftu. Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu** .
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mám potíže s Azure File Sync na mém serveru (synchronizace, vrstvení cloudu atd.). Mám odebrat a znovu vytvořit koncový bod serveru?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -102,17 +102,20 @@ Pokud server není uvedený v seznamu **registrovaných serverů** pro službu s
 3. Spusťte ServerRegistration.exe a dokončete průvodce k registraci serveru pomocí služby synchronizace úložiště.
 
 ## <a name="sync-group-management"></a>Správa skupin synchronizace
+
+### <a name="cloud-endpoint-creation-errors"></a>Chyby při vytváření koncového bodu cloudu
+
 <a id="cloud-endpoint-using-share"></a>**Vytvoření koncového bodu cloudu se nezdařilo, došlo k této chybě: "Zadaná sdílená složka Azure se již používá v jiném CloudEndpoint".**  
 K této chybě dojde v případě, že sdílenou složku Azure již používá jiný koncový bod cloudu. 
 
 Pokud se zobrazí tato zpráva a sdílená složka Azure aktuálně nepoužívá koncový bod cloudu, proveďte následující kroky, aby se ve sdílené složce Azure vymazala Azure File Syncová metadata:
 
 > [!Warning]  
-> Odstranění metadat ve sdílené složce Azure, kterou aktuálně používá koncový bod cloudu, způsobí selhání Azure File Sync operací. 
+> Odstranění metadat ve sdílené složce Azure, kterou aktuálně používá koncový bod cloudu, způsobí selhání Azure File Sync operací. 
 
-1. V Azure Portal přejdete do složky Azure File Share.  
-2. Klikněte pravým tlačítkem na sdílenou složku Azure a pak vyberte **Upravit metadata**.
-3. Klikněte pravým tlačítkem na **SyncService**a pak vyberte **Odstranit**.
+1. V Azure Portal přejdete do složky Azure File Share.  
+2. Klikněte pravým tlačítkem na sdílenou složku Azure a pak vyberte **Upravit metadata** .
+3. Klikněte pravým tlačítkem na **SyncService** a pak vyberte **Odstranit** .
 
 <a id="cloud-endpoint-authfailed"></a>**Vytvoření koncového bodu cloudu se nezdařilo, došlo k této chybě: "AuthorizationFailed"**  
 K této chybě dochází, pokud váš uživatelský účet nemá dostatečná oprávnění k vytvoření koncového bodu cloudu. 
@@ -128,13 +131,15 @@ Následující předdefinované role mají požadovaná autorizační oprávněn
 * Správce uživatelských přístupů
 
 Pokud chcete zjistit, jestli má role uživatelského účtu požadovaná oprávnění, postupujte takto:  
-1. V Azure Portal vyberte **skupiny prostředků**.
-2. Vyberte skupinu prostředků, ve které se nachází účet úložiště, a pak vyberte **řízení přístupu (IAM)**.
+1. V Azure Portal vyberte **skupiny prostředků** .
+2. Vyberte skupinu prostředků, ve které se nachází účet úložiště, a pak vyberte **řízení přístupu (IAM)** .
 3. Vyberte kartu **přiřazení rolí** .
 4. Pro svůj uživatelský účet vyberte **roli** (například vlastníka nebo přispěvatele).
-5. V seznamu **poskytovatel prostředků** vyberte **autorizaci Microsoft**. 
+5. V seznamu **poskytovatel prostředků** vyberte **autorizaci Microsoft** . 
     * **Přiřazení role** by mělo mít oprávnění **ke čtení** a **zápisu** .
     * **Definice role** musí mít oprávnění **ke čtení** a **zápisu** .
+
+### <a name="server-endpoint-creation-and-deletion-errors"></a>Chyby vytvoření a odstranění koncového bodu serveru
 
 <a id="-2134375898"></a>**Vytvoření koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobFailed" (kód chyby:-2134375898 nebo 0x80c80226)**  
 K této chybě dochází v případě, že je cesta ke koncovému bodu serveru na systémovém svazku a je povolené vrstvení cloudu. Vrstvení cloudu se na systémovém svazku nepodporuje. Pokud chcete vytvořit koncový bod serveru na systémovém svazku, při vytváření koncového bodu serveru zakažte vrstvení cloudu.
@@ -165,6 +170,8 @@ K této chybě dochází, pokud cesta koncového bodu serveru obsahuje osamocen�
 
 <a id="-2134347757"></a>**Odstranění koncového bodu serveru se nezdařilo, došlo k této chybě: "MgmtServerJobExpired" (kód chyby:-2134347757 nebo 0x80c87013)**  
 K této chybě dojde v případě, že je server offline nebo nemá připojení k síti. Pokud server už není k dispozici, zrušte registraci serveru na portálu. Tím se odstraní koncové body serveru. Pokud chcete odstranit koncové body serveru, postupujte podle kroků popsaných v tématu [zrušení registrace serveru pomocí Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
+
+### <a name="server-endpoint-health"></a>Stav koncového bodu serveru
 
 <a id="server-endpoint-provisioningfailed"></a>**Nepovedlo se otevřít stránku vlastností koncového bodu serveru nebo aktualizovat zásady cloudové vrstvy.**  
 K tomuto problému může dojít, pokud se operace správy na koncovém bodu serveru nezdařila. Pokud se stránka Vlastnosti koncového bodu serveru v Azure Portal neotevře, může tento problém vyřešit aktualizace koncového bodu serveru pomocí příkazů prostředí PowerShell ze serveru. 
@@ -338,7 +345,9 @@ Pokud se chcete podívat na tyto chyby, spusťte skript **FileSyncErrorsReport.p
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Soubor nelze synchronizovat, protože byl dosažen maximální počet souborů konfliktů. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Další informace o konfliktech souborů najdete v tématu Azure File Sync [Nejčastější dotazy](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | Chcete-li tento problém vyřešit, snižte počet konfliktních souborů. Soubor se synchronizuje, jakmile bude počet konfliktních souborů menší než 100. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporovaných znaků
-Pokud skript **FileSyncErrorsReport.ps1** PowerShellu v důsledku nepodporovaných znaků (kód chyby 0x8007007B nebo 0x80c80255) zobrazí chyby synchronizace jednotlivých položek, měli byste odebrat nebo přejmenovat znaky při chybě z příslušných názvů souborů. PowerShell pravděpodobně vytiskne tyto znaky jako otazníky nebo prázdné obdélníky, protože většina těchto znaků nemá standardní vizuální kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) lze použít k identifikaci nepodporovaných znaků. Pokud vaše datová sada obsahuje několik souborů s neplatnými znaky, použijte skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) k přejmenování souborů obsahujících nepodporované znaky.
+Pokud skript **FileSyncErrorsReport.ps1** PowerShellu v důsledku nepodporovaných znaků (kód chyby 0x8007007B nebo 0x80c80255) zobrazí chyby synchronizace jednotlivých položek, měli byste odebrat nebo přejmenovat znaky při chybě z příslušných názvů souborů. PowerShell pravděpodobně vytiskne tyto znaky jako otazníky nebo prázdné obdélníky, protože většina těchto znaků nemá standardní vizuální kódování. 
+> [!Note]  
+> [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-cmdlet) lze použít k identifikaci nepodporovaných znaků. Pokud vaše datová sada obsahuje několik souborů s neplatnými znaky, použijte skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) k přejmenování souborů obsahujících nepodporované znaky.
 
 Následující tabulka obsahuje všechny znaky Unicode, které Azure File Sync ještě nepodporují.
 
@@ -520,7 +529,7 @@ K této chybě dochází při dosažení limitu úložiště sdílené složky A
 
 5. Vyberte **soubory** a zobrazte seznam sdílených složek.
 6. Klikněte na tři tečky na konci řádku pro sdílenou složku Azure, na kterou odkazuje koncový bod cloudu.
-7. Ověřte, že **využití** nedosahuje **kvóty**. Poznámka: Pokud se nezadá alternativní kvóta, kvóta bude odpovídat [maximální velikosti sdílené složky Azure](storage-files-scale-targets.md).
+7. Ověřte, že **využití** nedosahuje **kvóty** . Poznámka: Pokud se nezadá alternativní kvóta, kvóta bude odpovídat [maximální velikosti sdílené složky Azure](storage-files-scale-targets.md).
 
     ![Snímek obrazovky vlastností sdílené složky Azure](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
@@ -995,16 +1004,16 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**Ujistěte se, že Azure File Sync má přístup k účtu úložiště.**  
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. V obsahu na levé straně klikněte na **řízení přístupu (IAM)** .
-1. Klikněte na kartu **přiřazení rolí** a seznam uživatelů a aplikací (*instanční objekty*), které mají přístup k vašemu účtu úložiště.
+1. Klikněte na kartu **přiřazení rolí** a seznam uživatelů a aplikací ( *instanční objekty* ), které mají přístup k vašemu účtu úložiště.
 1. Ověřte, že se v seznamu zobrazí položka **Microsoft. StorageSync** nebo **Služba hybridní synchronizace souborů** (starý název aplikace) s rolí **Čtenář a přístup k datům** . 
 
     ![Snímek obrazovky s instančním objektem služby Hybrid Synchronizace souborů na kartě řízení přístupu účtu úložiště](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     Pokud se v seznamu nezobrazí **Microsoft. StorageSync** nebo **Služba Hybrid synchronizace souborů** , proveďte následující kroky:
 
-    - Klikněte na **Přidat**.
-    - V poli **role** vyberte **Čtenář a přístup k datům**.
-    - Do pole **Vyberte** zadejte **Microsoft. StorageSync**, vyberte roli a klikněte na **Uložit**.
+    - Klikněte na **Přidat** .
+    - V poli **role** vyberte **Čtenář a přístup k datům** .
+    - Do pole **Vyberte** zadejte **Microsoft. StorageSync** , vyberte roli a klikněte na **Uložit** .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1047,15 +1056,15 @@ Existují dvě hlavní třídy selhání, ke kterým může dojít prostřednict
 - Selhání cloudového úložiště
     - *Dočasné problémy s dostupností služby úložiště* Další informace najdete v tématu [smlouva SLA (SLA) pro Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
     - *Nepřístupná sdílená složka Azure* K této chybě obvykle dochází, když odstraníte sdílenou složku Azure, pokud je stále koncový bod cloudu ve skupině synchronizace.
-    - *Účet úložiště*, který je k dispozici K této chybě obvykle dochází, když odstraníte účet úložiště, když stále obsahuje sdílenou složku Azure, která je cloudovým koncovým bodem ve skupině synchronizace. 
+    - *Účet úložiště* , který je k dispozici K této chybě obvykle dochází, když odstraníte účet úložiště, když stále obsahuje sdílenou složku Azure, která je cloudovým koncovým bodem ve skupině synchronizace. 
 - Selhání serveru 
-  - *Azure File Sync filtr systému souborů (StorageSync.sys) není načten*. Aby bylo možné reagovat na požadavky na vrstvení a odvolání, musí být načten filtr systému souborů Azure File Sync. Nenačtený filtr může být z několika důvodů, ale nejběžnějším důvodem je to, že ho správce nenačte ručně. Filtr systému souborů Azure File Sync musí být pro správné fungování Azure File Sync zaveden pro všechny časy.
-  - *Chybí, je poškozený nebo jinak přerušený spojovací bod*. Spojovací bod je speciální datová struktura pro soubor, který se skládá ze dvou částí:
+  - *Azure File Sync filtr systému souborů (StorageSync.sys) není načten* . Aby bylo možné reagovat na požadavky na vrstvení a odvolání, musí být načten filtr systému souborů Azure File Sync. Nenačtený filtr může být z několika důvodů, ale nejběžnějším důvodem je to, že ho správce nenačte ručně. Filtr systému souborů Azure File Sync musí být pro správné fungování Azure File Sync zaveden pro všechny časy.
+  - *Chybí, je poškozený nebo jinak přerušený spojovací bod* . Spojovací bod je speciální datová struktura pro soubor, který se skládá ze dvou částí:
     1. Značka rozboru, která indikuje operačnímu systému, že Azure File Sync filtr systému souborů (StorageSync.sys) může vyžadovat určitou akci pro vstup do souboru v/v. 
     2. Data znovu Analyzujte, což znamená, že systém souborů vyfiltruje identifikátor URI souboru v přidruženém koncovém bodě cloudu (sdílená složka Azure). 
         
        Nejběžnější způsob, jak by byl bod rozboru poškozený, je, že se správce pokusí změnit buď značku, nebo její data. 
-  - *Problémy s připojením k síti*. Aby bylo možné vytvořit vrstvu nebo odvolat soubor, musí mít server připojení k Internetu.
+  - *Problémy s připojením k síti* . Aby bylo možné vytvořit vrstvu nebo odvolat soubor, musí mít server připojení k Internetu.
 
 Následující části označují, jak řešit problémy s vrstvami cloudu a zjistit, jestli se jedná o problém s cloudovým úložištěm nebo problém se serverem.
 
@@ -1271,7 +1280,7 @@ Chcete-li spustit AFSDiag, proveďte následující kroky:
 
 3. Pro Azure File Sync úroveň trasování režimu jádra zadejte **1** (není-li uvedeno jinak), chcete-li vytvořit více podrobných trasování, a potom stiskněte klávesu ENTER.
 4. Pro úroveň trasování režimu Azure File Sync uživatele zadejte **1** (Pokud není uvedeno jinak), aby se vytvořily podrobnější trasování, a pak stiskněte ENTER.
-5. Reprodukujte problém. Až skončíte, zadejte **D**.
+5. Reprodukujte problém. Až skončíte, zadejte **D** .
 6. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali.
 
 ## <a name="see-also"></a>Viz také

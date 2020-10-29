@@ -11,12 +11,12 @@ ms.date: 9/17/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: rozpoznávání obličeje, software pro rozpoznávání obličeje, analýza obličeje, shoda obličeje, aplikace pro rozpoznávání obličeje, hledání na základě obrázku, hledání ve formátu obličeje
-ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ccc9ee3107d287844430be0ae089e4b7ac3a2f44
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91262480"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911439"
 ---
 # <a name="what-is-the-azure-face-service"></a>Co je služba Azure Face?
 
@@ -34,7 +34,7 @@ Služba Face nabízí několik různých funkcí analýzy obličeje, které jsou
 Služba Face detekuje lidské obličeje v obrázku a vrátí souřadnice obdélníku jejich umístění. V případě potřeby může rozpoznávání tváře extrahovat řadu atributů souvisejících s obličejem, jako je například pozice, pohlaví, věk, emoce, obličeje a brýle.
 
 > [!NOTE]
-> Funkce detekce tváře je dostupná taky prostřednictvím [služby počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Pokud ale chcete provádět další operace s předními daty, měli byste místo toho použít tuto službu.
+> Funkce detekce tváře je dostupná taky prostřednictvím [služby počítačové zpracování obrazu](../computer-vision/overview.md). Pokud ale chcete provádět další operace s předními daty, měli byste místo toho použít tuto službu.
 
 ![Obrázek žena a člověku s obdélníky nakreslenými kolem plošek a stáří a zobrazených pohlaví](./Images/Face.detection.jpg)
 
@@ -48,7 +48,7 @@ Rozhraní API pro ověření provádí ověřování proti dvěma zjištěným p
 
 Rozhraní API najít podobné se shoduje mezi cílovou ploškou a sadou kandidátních plošek a hledáním menší sady tváře, které vypadají podobně jako cílový obličej. To je užitečné při hledání na základě obrázku. 
 
-Podporují se dva pracovní režimy **matchPerson** a **matchFace**. Režim **matchPerson** vrací podobné obličeje po filtrování pro stejnou osobu pomocí [rozhraní API pro ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim **matchFace** ignoruje filtr stejné osoby. Vrátí seznam podobných kandidátních plošek, které mohou nebo nemusí patřit stejné osobě.
+Podporují se dva pracovní režimy **matchPerson** a **matchFace** . Režim **matchPerson** vrací podobné obličeje po filtrování pro stejnou osobu pomocí [rozhraní API pro ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Režim **matchFace** ignoruje filtr stejné osoby. Vrátí seznam podobných kandidátních plošek, které mohou nebo nemusí patřit stejné osobě.
 
 Následující příklad ukazuje cílovou plochu:
 

@@ -23,8 +23,6 @@
   items:
     - name: Vlastní modely
       href: concepts-models.md
-    - name: Převod oborových standardních modelů
-      href: concepts-convert-models.md
     - name: Digitální dvojčata a graf dvojčat
       href: concepts-twins-graph.md
     - name: Dotazovací jazyk
@@ -63,6 +61,8 @@
       items:
         - name: Správa vlastních modelů
           href: how-to-manage-model.md
+        - name: Převod oborových standardních modelů
+          href: how-to-convert-models.md
         - name: Parsování a ověření modelů
           href: how-to-parse-models.md
         - name: Přidání značek
@@ -176,11 +176,15 @@
             - name: Java SDK – zdroj
               href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
             - name: JavaScript SDK – npm
-              href: 'https://www.npmjs.com/package/@azure/digital-twins/'
+              href: 'https://www.npmjs.com/package/@azure/digital-twins-core'
             - name: JavaScript SDK – referenční informace
               href: /javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest
+            - name: JavaScript SDK – zdroj
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core'
             - name: Python SDK – PyPi
               href: 'https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/'
+            - name: Python SDK – zdroj
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core'
     - name: CLI služby Digital Twins
       items:
         - name: Referenční informace k CLI služby Digital Twins

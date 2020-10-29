@@ -2,22 +2,22 @@
 title: Nastavení diagnostických protokolů – centrum událostí Azure | Microsoft Docs
 description: Naučte se, jak nastavit protokoly aktivit a diagnostické protokoly pro centra událostí v Azure.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88927727"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912595"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
 Můžete si zobrazit dva typy protokolů pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené. Položky protokolu aktivit můžete zobrazit tak, že v levém podokně pro obor názvů centra událostí v Azure Portal vyberete **Protokol aktivit** . Například: "vytvořit nebo aktualizovat obor názvů", "vytvořit nebo aktualizovat centrum událostí".
+* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)** : tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené. Položky protokolu aktivit můžete zobrazit tak, že v levém podokně pro obor názvů centra událostí v Azure Portal vyberete **Protokol aktivit** . Například: "vytvořit nebo aktualizovat obor názvů", "vytvořit nebo aktualizovat centrum událostí".
 
     ![Protokol aktivit pro obor názvů Event Hubs](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)**: diagnostické protokoly poskytují bohatší informace o operacích a akcích, které se provádí v rámci vašeho oboru názvů pomocí rozhraní API, nebo prostřednictvím klientů pro správu v jazykové sadě SDK. 
+* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)** : diagnostické protokoly poskytují bohatší informace o operacích a akcích, které se provádí v rámci vašeho oboru názvů pomocí rozhraní API, nebo prostřednictvím klientů pro správu v jazykové sadě SDK. 
     
     V následující části se dozvíte, jak povolit diagnostické protokoly pro obor názvů Event Hubs.
 
@@ -25,7 +25,7 @@ Můžete si zobrazit dva typy protokolů pro Azure Event Hubs:
 Diagnostické protokoly jsou ve výchozím nastavení zakázané. K povolení diagnostických protokolů použijte následující postup:
 
 1.  V [Azure Portal](https://portal.azure.com)přejděte do svého oboru názvů Event Hubs. 
-2. V levém podokně vyberte **nastavení diagnostiky** v části **monitorování** a pak vyberte **+ Přidat nastavení diagnostiky**. 
+2. V levém podokně vyberte **nastavení diagnostiky** v části **monitorování** a pak vyberte **+ Přidat nastavení diagnostiky** . 
 
     ![Stránka nastavení diagnostiky – přidat nastavení diagnostiky](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
 4. V části **Podrobnosti kategorie** vyberte **typy diagnostických protokolů** , které chcete povolit. Podrobnosti o těchto kategoriích najdete dále v tomto článku. 
@@ -188,7 +188,6 @@ JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující ta
 | `Message` | Informační zpráva, která poskytuje podrobné informace o chybě |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
-
 Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
 
 | Název | Popis |
@@ -196,10 +195,12 @@ Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky u
 | `SubscriptionId` | ID předplatného Azure |
 | `NamespaceName` | Název oboru názvů |
 | `IPAddress` | IP adresa klienta připojujícího se ke službě Event Hubs |
-| `Action` | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení**. |
+| `Action` | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce **akceptují připojení** a **zamítají připojení** . |
 | `Reason` | Poskytuje důvod, proč byla akce dokončena. |
 | `Count` | Počet výskytů pro danou akci |
 | `ResourceId` | ID prostředku Azure Resource Manager. |
+
+Protokoly virtuální sítě se generují jenom v případě, že obor názvů umožňuje přístup z **vybraných sítí** nebo z **konkrétních IP adres** (pravidla filtru IP). Pokud nechcete omezit přístup k vašemu oboru názvů pomocí těchto funkcí a přesto chcete získat protokoly virtuální sítě ke sledování IP adres klientů připojujících se k Event Hubsmu oboru názvů, můžete použít následující alternativní řešení. Povolte filtrování IP adres a přidejte celkový adresovatelný rozsah IPv4 (1.0.0.0/1-255.0.0.0/1). Event Hubs nepodporuje rozsahy IPv6. 
 
 ### <a name="example"></a>Příklad
 

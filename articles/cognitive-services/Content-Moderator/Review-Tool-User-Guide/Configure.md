@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8812fd1e6c1efb2aa44c77573bc4b8f1c099834d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689839"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912017"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -35,7 +35,7 @@ V této části se dozvíte, jak vytvářet dílčí týmy a rychle přiřazovat
 
 ### <a name="create-a-subteam"></a>Vytvořit subtým
 
-Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým**. Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit**.
+Přejděte do části **subtýmy** a klikněte na **Přidat dílčí tým** . Do dialogového okna zadejte název svého subtýmu a klikněte na **Uložit** .
 
 ![Název subtýmu](images/1-Teams-2.PNG)
 
@@ -54,19 +54,19 @@ Kliknutím na tlačítko **Přidat člena** můžete přiřadit členy z výchoz
 ### <a name="assign-reviews-to-subteams"></a>Přiřadit recenze k podtýmům
 
 Po vytvoření svých subtýmů a přiřazených členů můžete pro tyto subtými začít přiřazovat [Revize](../review-api.md#reviews) obsahu. To se provádí na kartě **Revize** webu.
-Chcete-li přiřadit obsah dílčímu týmu, klikněte na tlačítko se třemi tečkami v pravém horním rohu, vyberte možnost **přesunout do**a vyberte dílčí tým.
+Chcete-li přiřadit obsah dílčímu týmu, klikněte na tlačítko se třemi tečkami v pravém horním rohu, vyberte možnost **přesunout do** a vyberte dílčí tým.
 
 ![Přiřadit k subtýmu kontrolu obrázků](images/3-review-image-subteam-1.png)
 
 ### <a name="switch-between-subteams"></a>Přepínání mezi subskupinami
 
-Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupeními přepínat a změnit, které recenze obsahu se vám budou zobrazovat. Na kartě **Revize** vyberte rozevírací nabídku s názvem **výchozí** a vyberte **možnost dílčí tým**. Můžete zobrazit revize obsahu pro různé subtýmy, ale pouze ty, které jsou členy.
+Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupeními přepínat a změnit, které recenze obsahu se vám budou zobrazovat. Na kartě **Revize** vyberte rozevírací nabídku s názvem **výchozí** a vyberte **možnost dílčí tým** . Můžete zobrazit revize obsahu pro různé subtýmy, ale pouze ty, které jsou členy.
 
 ![Přepínání mezi subskupinami](images/3-review-image-subteam-2.png)
 
 ## <a name="tags"></a>Značky
 
-Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash; **isadult** (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash; **isadult** ( **a** ) a **isracy** ( **r** ). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -74,9 +74,9 @@ Karta **značky** vám umožňuje definovat vlastní značky moderování kromě
 
 Chcete-li vytvořit novou značku, je nutné do příslušných polí zadat krátký kód, název a popis.
 
-- **Krátký kód**: zadejte pro značku kód se dvěma písmeny. Příklad: **cb**
-- **Název**: zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying**.
-- **Popis**: (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy**.
+- **Krátký kód** : zadejte pro značku kód se dvěma písmeny. Příklad: **cb**
+- **Název** : zadejte krátký a popisný název značky malými písmeny bez mezer. Příklad: **isbullying** .
+- **Popis** : (volitelné) zadejte popis druhu obsahu, který vaše značka cílí. Příklad: **znázornění nebo instance počítačové bullyingy** .
 
 Kliknutím na **Přidat** přidejte značku a po dokončení vytváření značek klikněte na **Uložit** .
 
@@ -90,12 +90,12 @@ Vlastní značky můžete odstranit tak, že v seznamu značek vyberete ikonu od
 
 Karta **konektory** vám umožní spravovat vaše konektory, které jsou moduly plug-in pro konkrétní služby, které mohou zpracovávat obsah různými způsoby jako součást [pracovních postupů](../review-api.md#workflows)obsahu.
 
-Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní**, Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](https://docs.microsoft.com/azure/cognitive-services/face/overview) ).
+Výchozí konektor při vytváření pracovního postupu je konektor Content Moderator, který může označovat obsah jako **dospělý** nebo **pikantní** , Hledat vulgární výrazy atd. Můžete ale použít i jiné konektory, které jsou tady uvedené, pokud máte přihlašovací údaje pro příslušné služby (například pro použití konektoru obličeje, budete potřebovat klíč předplatného pro [obličej](../../face/overview.md) ).
 
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
 - Emoce
-- Rozpoznávání tváře
+- Tvář
 - Cloudová služba PhotoDNA
 - Analýza textu
 
@@ -125,7 +125,7 @@ Pokud jste vytvořili [prostředek Content moderator](https://ms.portal.azure.co
 
 ![Content Moderator klíče v Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-Na kartě [Kontrola](https://contentmoderator.cognitive.microsoft.com) **přihlašovacích údajů** nástroje otevřete podokno **Nastavení pracovního postupu** , vyberte **Upravit**a vložte svůj klíč do pole **OCP-APIM-Subscription-Key** . Nyní budou pracovní postupy, které volají rozhraní API pro moderování, používat vaše přihlašovací údaje Azure.
+Na kartě [Kontrola](https://contentmoderator.cognitive.microsoft.com) **přihlašovacích údajů** nástroje otevřete podokno **Nastavení pracovního postupu** , vyberte **Upravit** a vložte svůj klíč do pole **OCP-APIM-Subscription-Key** . Nyní budou pracovní postupy, které volají rozhraní API pro moderování, používat vaše přihlašovací údaje Azure.
 
 > [!NOTE]
 > Další dvě pole v podokně **Nastavení pracovního postupu** slouží pro vlastní seznamy termínů a obrázků. Další informace o těchto tématech najdete v příručkách [vlastní podmínka](../try-terms-list-api.md) nebo [vlastní obrázky](../try-image-list-api.md) .

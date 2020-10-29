@@ -10,25 +10,25 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfda4d7970c734d92c9f2355d553721ef6165e43
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044117"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911847"
 ---
 # <a name="create-human-reviews"></a>Vytvořit recenze lidí
 
 V této příručce se dozvíte, jak nastavit [recenze](../review-api.md#reviews) na webu nástrojů pro revize. Kontroluje ukládání a zobrazování obsahu pro Moderátoři pro lidské moderování k vyhodnocení. Moderátoři mohou změnit použité značky a podle potřeby použít vlastní značky. Když uživatel dokončí revizi, výsledky se odešlou do zadaného koncového bodu zpětného volání a obsah se odebere z webu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
 ## <a name="image-reviews"></a>Recenze obrázků
 
 1. Spusťte nástroj pro [revizi](https://contentmoderator.cognitive.microsoft.com/), vyberte kartu **vyzkoušet** a nahrajte některé obrázky, které chcete zkontrolovat.
-1. Po dokončení zpracování odeslaných imagí přejdete na kartu **Revize** a vyberte **Obrázek**.
+1. Po dokončení zpracování odeslaných imagí přejdete na kartu **Revize** a vyberte **Obrázek** .
 
     ![Prohlížeč Chrome, který zobrazuje Nástroj pro revizi s zvýrazněnou možností revize image](images/review-images-1.png)
 
@@ -38,7 +38,7 @@ V této příručce se dozvíte, jak nastavit [recenze](../review-api.md#reviews
 
     ![Prohlížeč Chrome zobrazující Nástroj pro revizi s tagovanými obrázky ke kontrole](images/review-images-2.png)
 
-1. Chcete-li zobrazit další informace o obrázku, klikněte na tlačítko se třemi tečkami na miniaturu a vyberte **Zobrazit podrobnosti**. K dílčímu týmu můžete přiřadit obrázek pomocí možnosti **přesunout do** (Další informace o podtýmích najdete v části [týmy](./configure.md#manage-team-and-subteams) ).
+1. Chcete-li zobrazit další informace o obrázku, klikněte na tlačítko se třemi tečkami na miniaturu a vyberte **Zobrazit podrobnosti** . K dílčímu týmu můžete přiřadit obrázek pomocí možnosti **přesunout do** (Další informace o podtýmích najdete v části [týmy](./configure.md#manage-team-and-subteams) ).
 
     ![Obrázek s zvýrazněnou možností zobrazit podrobnosti](images/review-images-3.png)
 
@@ -56,4 +56,4 @@ Kontroly textu fungují podobně jako recenze obrázků. Místo nahrávání obs
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste zjistili, jak nastavit a používat recenze z [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)Content moderator. Další informace o tom, jak vytvořit recenze prostřednictvím kódu programu, najdete v [průvodci REST API](../try-review-api-review.md) nebo v článku věnovaném [rychlému startu sady .NET SDK](../dotnet-sdk-quickstart.md) .
+V této příručce jste zjistili, jak nastavit a používat recenze z [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com)Content moderator. Další informace o tom, jak vytvořit recenze prostřednictvím kódu programu, najdete v [průvodci REST API](../try-review-api-review.md) nebo v článku věnovaném [rychlému startu sady .NET SDK](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) .

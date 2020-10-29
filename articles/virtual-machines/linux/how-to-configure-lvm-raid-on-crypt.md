@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476157"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911813"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Konfigurace LVM a RAID na šifrovaných zařízeních
 
@@ -42,7 +42,7 @@ Fyzické svazky (PVs) se vytvoří v zašifrované vrstvě. Fyzické svazky slou
 
 Podobným způsobem se zařízení RAID vytvoří v horní části zašifrované vrstvy na discích. Na zařízení RAID se vytvoří systém souborů a jako běžné zařízení se přidají do/etc/fstab.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Doporučujeme použít LVM-on-crypt. RAID je možnost, když LVM nejde použít kvůli konkrétnímu omezení aplikace nebo prostředí.
 
@@ -287,7 +287,7 @@ Místo použití názvu zařízení použijte cesty/dev/Mapper pro jednotlivé d
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>Konfigurace LVM nad šifrovanými vrstvami
 #### <a name="create-the-physical-volumes"></a>Vytvoření fyzických svazků
-Zobrazí se upozornění s dotazem, jestli chcete vymazat signaturu systému souborů. Pokračujte zadáním **y**, nebo použijte **echo "y"** , jak je znázorněno níže:
+Zobrazí se upozornění s dotazem, jestli chcete vymazat signaturu systému souborů. Pokračujte zadáním **y** , nebo použijte **echo "y"** , jak je znázorněno níže:
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -298,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![Ověření, že byl vytvořen fyzický svazek](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami na základě výstupu **lsblk**.
+>Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami na základě výstupu **lsblk** .
 
 #### <a name="verify-the-information-for-physical-volumes"></a>Ověřte informace o fyzických svazcích.
 ```bash
@@ -368,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![Snímek obrazovky zobrazuje okno konzoly se systémy souborů připojenými jako DATA0 a Data1.](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-V této variaci **lsblk**uvádíme zařízení, která zobrazují závislosti v obráceném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku místo původních názvů zařízení/dev/SD [disk].
+V této variaci **lsblk** uvádíme zařízení, která zobrazují závislosti v obráceném pořadí. Tato možnost pomáhá identifikovat zařízení seskupená podle logického svazku místo původních názvů zařízení/dev/SD [disk].
 
 Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojného bodu LVM svazků vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 
@@ -406,7 +406,7 @@ mdadm --create /dev/md10 \
 ![Informace pro konfiguraci RAID pomocí příkazu mdadm](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami, a to na základě výstupu **lsblk**.
+>Názvy/dev/Mapper/Device je třeba nahradit skutečnými hodnotami, a to na základě výstupu **lsblk** .
 
 ### <a name="checkmonitor-raid-creation"></a>Kontrolovat a monitorovat vytváření polí RAID
 ```bash
@@ -437,7 +437,7 @@ Ověřte, zda je nový systém souborů připojen:
 lsblk -fs
 df -h
 ```
-![Informace pro připojené systémy souborů](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Snímek obrazovky zobrazuje okno konzoly se systémem souborů připojeným jako raiddata.](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 Je důležité zajistit, aby se možnost **neúspěšného** připojení přidala do možností přípojných bodů svazků RAID vytvořených na zařízení zašifrovaném pomocí Azure Disk Encryption. Zabrání operačnímu systému v zablokování během procesu spouštění (nebo v režimu údržby).
 

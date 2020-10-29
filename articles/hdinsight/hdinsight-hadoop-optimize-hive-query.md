@@ -1,27 +1,35 @@
 ---
 title: Optimalizace dotazů na podregistry ve službě Azure HDInsight
-description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive pro Hadoop v HDInsight.
+description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: how-to
+ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/14/2020
-ms.openlocfilehash: 89c276ffe6059a61323755eaf928d525ab5ea416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085289"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910878"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
-V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Vyberte vhodný typ clusteru, který vám umožní optimalizovat výkon vašich potřeb úloh.
+Tento článek popisuje některé z nejběžnějších optimalizací výkonu, které můžete použít ke zlepšení výkonu Apache Hive dotazů.
 
-Například vyberte typ clusteru **interaktivních dotazů** , který se má optimalizovat pro `ad hoc` interaktivní dotazy. Vyberte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy na podregistr používané jako dávkové zpracování. Typy clusterů **Spark** a **HBA** můžou také spouštět dotazy na podregistr. Další informace o spouštění dotazů na podregistry na různých typech clusterů HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hadoop/hdinsight-use-hive.md).
+## <a name="cluster-type-selection"></a>Výběr typu clusteru
 
-Clustery HDInsight typu clusteru Hadoop nejsou ve výchozím nastavení optimalizované pro výkon. Tento článek popisuje některé z nejběžnějších metod optimalizace výkonu podregistru, které můžete použít pro vaše dotazy.
+V Azure HDInsight můžete spouštět dotazy Apache Hive na několika různých typech clusterů. 
+
+Vyberte vhodný typ clusteru, který vám umožní optimalizovat výkon vašich potřeb pro úlohy:
+
+* Vyberte typ clusteru **interaktivních dotazů** , který se má optimalizovat pro `ad hoc` interaktivní dotazy. 
+* Vyberte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy na podregistr používané jako dávkové zpracování. 
+* Typy clusterů **Spark** a **HBA** můžou také spouštět dotazy na podregistr a můžou být vhodné, pokud tyto úlohy spouštíte. 
+
+Další informace o spouštění dotazů na podregistry na různých typech clusterů HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hadoop/hdinsight-use-hive.md).
 
 ## <a name="scale-out-worker-nodes"></a>Horizontální navýšení kapacity pracovních uzlů
 
@@ -45,11 +53,11 @@ Další informace o škálování HDInsight najdete v tématu [škálování clu
 
 Tez je rychlejší z těchto důvodů:
 
-* **Spusťte acyklického graf (DAG) jako jednu úlohu v modulu MapReduce**. DAG vyžaduje, aby na každé sadě mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že pro každý dotaz na podregistr se má vypínat více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje náklady na spuštění úlohy.
-* **Nepoužívejte zbytečné zápisy**. Ke zpracování stejného dotazu podregistru v modulu MapReduce se používá víc úloh. Výstup každé úlohy MapReduce se zapisuje do HDFS pro mezilehlé údaje. Vzhledem k tomu, že tez minimalizuje počet úloh pro každý dotaz na podregistr, je možné vyhnout se zbytečnému zápisu.
-* **Minimalizuje prodlevy při spuštění**. Tez je lepším řešením pro minimalizaci počáteční prodlevy tím, že snižuje počet mapovačů, které musí spustit, a také zlepšuje optimalizaci v celém systému.
-* Znovu **použije kontejnery**. Kdykoli je to možné, tez znovu použije kontejnery, aby se snížila latence od spuštění kontejnerů.
-* **Techniky plynulé optimalizace**. Během fáze kompilace byla provedena tradičně optimalizace. K dispozici jsou ale další informace o vstupech, které umožňují lepší optimalizaci během běhu. Tez využívá techniky kontinuální optimalizace, které umožňují IT optimalizaci plánu dále do fáze modulu runtime.
+* **Spusťte acyklického graf (DAG) jako jednu úlohu v modulu MapReduce** . DAG vyžaduje, aby na každé sadě mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že pro každý dotaz na podregistr se má vypínat více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje náklady na spuštění úlohy.
+* **Nepoužívejte zbytečné zápisy** . Ke zpracování stejného dotazu podregistru v modulu MapReduce se používá víc úloh. Výstup každé úlohy MapReduce se zapisuje do HDFS pro mezilehlé údaje. Vzhledem k tomu, že tez minimalizuje počet úloh pro každý dotaz na podregistr, je možné vyhnout se zbytečnému zápisu.
+* **Minimalizuje prodlevy při spuštění** . Tez je lepším řešením pro minimalizaci počáteční prodlevy tím, že snižuje počet mapovačů, které musí spustit, a také zlepšuje optimalizaci v celém systému.
+* Znovu **použije kontejnery** . Kdykoli je to možné, tez znovu použije kontejnery, aby se snížila latence od spuštění kontejnerů.
+* **Techniky plynulé optimalizace** . Během fáze kompilace byla provedena tradičně optimalizace. K dispozici jsou ale další informace o vstupech, které umožňují lepší optimalizaci během běhu. Tez využívá techniky kontinuální optimalizace, které umožňují IT optimalizaci plánu dále do fáze modulu runtime.
 
 Další informace o těchto konceptech najdete v článku [Apache tez](https://tez.apache.org/).
 
@@ -63,7 +71,7 @@ set hive.execution.engine=tez;
 
 Vstupně-výstupní operace jsou zásadním kritickým bodem pro spouštění dotazů na podregistr. Výkon lze zvýšit, pokud množství dat, která je třeba číst, může být sníženo. Ve výchozím nastavení dotazy na podregistr prohledají celé tabulky podregistru. V případě dotazů, které potřebují pouze prohledávání malých objemů dat (například dotazů s filtrováním), ale toto chování vytváří zbytečné režijní náklady. Dělení podregistru umožňuje dotazům na podregistr přístup pouze k potřebným objemům dat v tabulkách podregistru.
 
-Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year*. Vytvoří se nový adresář pro každý rok.
+Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year* . Vytvoří se nový adresář pro každý rok.
 
 ![Apache Hive vytváření oddílů v HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
@@ -122,11 +130,11 @@ Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/
 
 ## <a name="use-the-orcfile-format"></a>Použití formátu ORCFile
 
-Podregistr podporuje různé formáty souborů. Například:
+Podregistr podporuje různé formáty souborů. Příklad:
 
-* **Text**: výchozí formát souboru a funguje ve většině scénářů.
-* **Avro**: funguje dobře pro scénáře interoperability.
-* **ORC/Parquet**: nejvhodnější pro výkon.
+* **Text** : výchozí formát souboru a funguje ve většině scénářů.
+* **Avro** : funguje dobře pro scénáře interoperability.
+* **ORC/Parquet** : nejvhodnější pro výkon.
 
 ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak ukládat data z podregistru. Ve srovnání s jinými formáty ORC má následující výhody:
 
@@ -135,7 +143,7 @@ ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak uklád
 * indexuje každých 10 000 řádků, což povoluje přeskočení řádků.
 * významné přerušení spuštění.
 
-Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC*:
+Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC* :
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -148,7 +156,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Například:
+V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Příklad:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -191,13 +199,12 @@ Existuje více metod optimalizace, které je možné zvážit, například:
 
 * Sestavování **podregistru:** technika, která umožňuje clusteru a segmentovat velké sady dat pro optimalizaci výkonu dotazů.
 * **Optimalizace spojení:** optimalizace plánování spouštění dotazů na podregistr pro zlepšení efektivity spojení a omezení nutnosti pomocného parametru pro uživatele. Další informace najdete v tématu věnovaném [optimalizaci spojení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Zvyšte reduktorů**.
+* **Zvyšte reduktorů** .
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v těchto článcích:
 
-* [Použití Apache Hive ve službě HDInsight](hadoop/hdinsight-use-hive.md)
 * [Optimalizace Apache Hivu](./optimize-hive-ambari.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](hdinsight-analyze-twitter-data-linux.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314821"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912442"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 
@@ -35,10 +35,10 @@ Když externí klienti back-end virtuálních počítačů procházejí nástroj
 
 **Ověření a rozlišení**
 
-Standardní ILBs jsou **ve výchozím nastavení zabezpečené**. Základní ILBs povoluje připojení k Internetu prostřednictvím *skryté* veřejné IP adresy. To není doporučeno pro produkční úlohy, protože IP adresa není ani statická ani uzamčená prostřednictvím skupin zabezpečení sítě, kterou vlastníte. Pokud jste v nedávné době přesunuli ze základní interního nástroje na standardní interního nástroje, měli byste vytvořit veřejnou IP adresu explicitně prostřednictvím [odchozí jenom odchozí](egress-only.md) konfigurace, která uzamkne IP přes skupin zabezpečení sítě. 
+Standardní ILBs jsou **ve výchozím nastavení zabezpečené** . Základní ILBs povoluje připojení k Internetu prostřednictvím *skryté* veřejné IP adresy. To není doporučeno pro produkční úlohy, protože IP adresa není ani statická ani uzamčená prostřednictvím skupin zabezpečení sítě, kterou vlastníte. Pokud jste v nedávné době přesunuli ze základní interního nástroje na standardní interního nástroje, měli byste vytvořit veřejnou IP adresu explicitně prostřednictvím [odchozí jenom odchozí](egress-only.md) konfigurace, která uzamkne IP přes skupin zabezpečení sítě. V podsíti můžete také použít [bránu NAT](../virtual-network/nat-overview.md) .
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Příznak: virtuální počítače za Load Balancer nereagují na sondy stavu.
-Aby se servery back-end účastnily sady nástroje pro vyrovnávání zatížení, musí projít kontrolu sondy. Další informace o sondách stavu najdete v tématu [principy Load Balancer sondy](load-balancer-custom-probe-overview.md). 
+Aby se servery back-end účastnily sady nástroje pro vyrovnávání zatížení, musí projít kontrolu sondy. Další informace o sondách stavu najdete v tématu [principy Load Balancer sondy](load-balancer-custom-probe-overview.md). 
 
 Virtuální počítače Load Balancer fondu back-endu nereagují na sondy z některého z následujících důvodů: 
 - Virtuální počítač fondu back-endu Load Balancer není v pořádku. 
@@ -58,12 +58,12 @@ Pokud je virtuální počítač v pořádku, ale nereaguje na test, pak může b
 **Ověření a rozlišení**
 
 1. Přihlaste se k virtuálnímu počítači back-end. 
-2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na portu sondy:   
+2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na portu sondy:   
             netstat – a
-3. Pokud stav portu není uveden jako **naslouchání**, nakonfigurujte správný port. 
-4. Případně vyberte jiný port, který je uveden jako **naslouchání**, a odpovídajícím způsobem aktualizujte konfiguraci nástroje pro vyrovnávání zatížení.              
+3. Pokud stav portu není uveden jako **naslouchání** , nakonfigurujte správný port. 
+4. Případně vyberte jiný port, který je uveden jako **naslouchání** , a odpovídajícím způsobem aktualizujte konfiguraci nástroje pro vyrovnávání zatížení.              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána firewall nebo skupina zabezpečení sítě blokuje port ve virtuálních počítačích back-endu fondu nástroje pro vyrovnávání zatížení.  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>Příčina 3: Brána firewall nebo skupina zabezpečení sítě blokuje port ve virtuálních počítačích back-endu fondu nástroje pro vyrovnávání zatížení.  
 Pokud brána firewall na virtuálním počítači blokuje port sondy nebo jednu nebo více skupin zabezpečení sítě nakonfigurovaných v podsíti nebo na virtuálním počítači, nepovoluje testům přístup k portu, virtuální počítač nemůže odpovědět na sondu stavu.          
 
 **Ověření a rozlišení**
@@ -71,7 +71,7 @@ Pokud brána firewall na virtuálním počítači blokuje port sondy nebo jednu 
 * Pokud je povolená brána firewall, ověřte, jestli je nakonfigurovaná tak, aby umožňovala port testu. V takovém případě nakonfigurujte bránu firewall tak, aby povolovala přenosy na portu sondy, a znovu spusťte test. 
 * V seznamu skupin zabezpečení sítě ověřte, zda příchozí nebo odchozí provoz na portu sondy obsahuje rušivý vliv. 
 * Také ověřte, zda pravidlo **Odepřít všechny** skupiny zabezpečení sítě na síťové kartě virtuálního počítače nebo podsítě s vyšší prioritou, než je výchozí pravidlo, které povoluje sondy po kg & provozu (skupiny zabezpečení sítě musí umožňovat Load Balancer IP adresy 168.63.129.16). 
-* Pokud některá z těchto pravidel blokují provoz sondy, odeberte a překonfigurujte pravidla, aby umožňovala provoz sondy.  
+* Pokud některá z těchto pravidel blokují provoz sondy, odeberte a překonfigurujte pravidla, aby umožňovala provoz sondy.  
 * Otestujte, jestli virtuální počítač nyní začal reagovat na sondy stavu. 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>Příčina 4: jiné chyby v Load Balancer
@@ -93,7 +93,7 @@ Pokud se zdá, že se všechny předchozí příčiny ověřují a správně vy�
 
 Pokud je virtuální počítač s back-end fondem uveden jako v pořádku a reaguje na sondy stavu, ale stále se neúčastní vyrovnávání zatížení nebo nereaguje na přenos dat, může to být z následujících důvodů: 
 * Virtuální počítač Load Balancerového fondu back-endu nenaslouchá na datovém portu. 
-* Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
+* Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
 * Přístup k Load Balancer ze stejného virtuálního počítače a síťové karty 
 * Přístup k Internetu Load Balancer front-endu z virtuálního počítače fondu back-endu Load Balancer 
 
@@ -103,11 +103,12 @@ Pokud virtuální počítač nereaguje na přenos dat, může to být způsobeno
 **Ověření a rozlišení**
 
 1. Přihlaste se k virtuálnímu počítači back-end. 
-2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na datovém portu:   netstat-a 
+2. Otevřete příkazový řádek a spuštěním následujícího příkazu ověřte, že aplikace naslouchá na datovém portu:  
+            netstat – a 
 3. Pokud port není uveden se stavem "NASLOUCHÁní", nakonfigurujte správný port naslouchacího procesu. 
 4. Pokud je port označený jako naslouchání, zkontrolujte u cílové aplikace na tomto portu případné problémy.
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Příčina 2: Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Příčina 2: Skupina zabezpečení sítě blokuje port ve virtuálním počítači Load Balancer fondu back-endu.  
 
 Pokud jedna nebo více skupin zabezpečení sítě nakonfigurovaných v podsíti nebo na VIRTUÁLNÍm počítači blokuje zdrojovou IP adresu nebo port, virtuální počítač nemůže odpovědět.
 
@@ -117,7 +118,7 @@ Pro veřejný Nástroj pro vyrovnávání zatížení se IP adresa internetovýc
 1. V seznamu skupin zabezpečení sítě ověřte, zda:
     - příchozí nebo odchozí provoz na datovém portu má rušivý vliv. 
     - **zamítne všechna** pravidla skupiny zabezpečení sítě na síťové kartě virtuálního počítače nebo podsítě s vyšší prioritou, jako je výchozí pravidlo, které umožňuje Load Balancer sondy a provozu (skupiny zabezpečení sítě musí umožňovat Load Balancer IP adresy 168.63.129.16, což je port testu).
-1. Pokud některá pravidla blokují provoz, odeberte a překonfigurujte tato pravidla, aby umožňovala přenos dat.  
+1. Pokud některá pravidla blokují provoz, odeberte a překonfigurujte tato pravidla, aby umožňovala přenos dat.  
 1. Otestujte, jestli virtuální počítač teď začal reagovat na sondy stavu.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Příčina 3: přístup k Load Balancer ze stejného virtuálního počítače a síťového rozhraní 

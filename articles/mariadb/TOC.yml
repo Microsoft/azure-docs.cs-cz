@@ -118,10 +118,6 @@
           href: concepts-data-in-replication.md
         - name: Čtení replik
           href: concepts-read-replicas.md
-    - name: Přesun mezi oblastmi
-      items:
-        - name: portál Azure
-          href: howto-move-regions-portal.md
 - name: Návody
   items:
     - name: Správa serveru
@@ -240,6 +236,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: Přesun mezi oblastmi
+      items:
+        - name: portál Azure
+          href: howto-move-regions-portal.md
 - name: Referenční informace
   items:
     - name: Azure CLI
