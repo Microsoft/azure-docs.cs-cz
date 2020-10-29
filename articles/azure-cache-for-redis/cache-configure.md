@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 10/29/2020
 ms.locfileid: "92544762"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
@@ -386,7 +386,7 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Popis |
+| Nastavení | Výchozí hodnota | Description |
 | --- | --- | --- |
 | `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
