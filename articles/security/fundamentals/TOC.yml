@@ -56,8 +56,8 @@
       href: network-overview.md
     - name: Osvědčené postupy
       href: network-best-practices.md
-    - name: DDoS Protection
-      href: ddos-best-practices.md
+    - name: Osvědčené postupy služby DDoS Protection
+      href: 'https://docs.microsoft.com/azure/ddos-protection/fundamental-best-practices'
     - name: Standardní hodnoty zabezpečení pro DDoS Protection
       href: ddos-protection-security-baseline.md
     - name: Visící záznam DNS a převzetí subdomény

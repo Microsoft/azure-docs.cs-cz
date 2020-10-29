@@ -1,5 +1,9 @@
 - name: Přehled
   href: overview.md
+- name: Rychlá zprovoznění Red Hatu
+  items: null
+- name: Rychlé zprovoznění – WildFly v CentOS
+  href: wildfly-on-centos.md
 - name: Image Red Hat Enterprise Linuxu
   items:
     - name: Přehled imagí Red Hat Enterprise Linuxu

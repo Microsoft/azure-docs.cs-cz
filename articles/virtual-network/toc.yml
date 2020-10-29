@@ -112,7 +112,7 @@
         - name: Zásady sítě Kubernetes
           href: kubernetes-network-policies.md
         - name: Ochrana před útoky DDoS
-          href: ddos-protection-overview.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-overview'
         - name: Naslouchací zařízení virtuální sítě
           href: virtual-network-tap-overview.md
         - name: Mechanismy zabezpečení služby Azure Policy
@@ -299,9 +299,9 @@
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: Správa ochrany před útoky DDoS
-          href: manage-ddos-protection.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/manage-ddos-protection'
         - name: Onboarding partnerů pro DDoS Protection úrovně Standard
-          href: ddos-protection-partner-onboarding.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-partner-onboarding'
         - name: Správa skupin zabezpečení sítě
           href: manage-network-security-group.md
         - name: Scénáře zabezpečení

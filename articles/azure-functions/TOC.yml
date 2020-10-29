@@ -79,7 +79,33 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: Index ukázek CLI
+          href: functions-cli-samples.md
+        - name: Vytvoření aplikace funkcí
+          items:
+            - name: Bezserverová aplikace funkcí
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: Bezserverová aplikace v Pythonu
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: Aplikace škálovatelného plánu Premium
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: Aplikace plánu Dedicated (App Service)
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: Integrace služeb
+          items:
+            - name: Připojení služby Azure Storage
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: Připojení služby Azure Cosmos DB
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Připojená sdílená složka s využitím Pythonu
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: Průběžné nasazování
+          items:
+            - name: Nasazení GitHubu
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: Nasazení DevOps
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: Koncepty
   items:
     - name: Porovnání modulů runtime
