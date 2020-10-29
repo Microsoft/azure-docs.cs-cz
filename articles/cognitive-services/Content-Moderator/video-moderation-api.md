@@ -11,20 +11,20 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919348"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912850"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analýza obsahu videa pro nevhodný materiál v jazyce C #
 
 V tomto článku najdete informace a ukázky kódu, které vám pomůžou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ke skenování obsahu videa pro dospělé nebo pikantní obsah.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure
@@ -33,17 +33,17 @@ Funkce pro moderování videa Content Moderator je k dispozici jako bezplatný *
 
 ### <a name="create-an-azure-media-services-account"></a>Vytvoření účtu Azure Media Services
 
-Postupujte podle pokynů v části [Vytvoření účtu Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account) pro přihlášení k odběru AMS a vytvořte přidružený účet úložiště Azure. V tomto účtu úložiště vytvořte nový kontejner úložiště objektů BLOB.
+Postupujte podle pokynů v části [Vytvoření účtu Azure Media Services](../../media-services/previous/media-services-portal-create-account.md) pro přihlášení k odběru AMS a vytvořte přidružený účet úložiště Azure. V tomto účtu úložiště vytvořte nový kontejner úložiště objektů BLOB.
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-V Azure Portal přejděte do nového předplatného AMS a v postranní nabídce vyberte **přístup přes rozhraní API** . Vyberte **připojit k Azure Media Services s instančním objektem**. Poznamenejte si hodnotu v poli **REST API koncový bod** . budete ho potřebovat později.
+V Azure Portal přejděte do nového předplatného AMS a v postranní nabídce vyberte **přístup přes rozhraní API** . Vyberte **připojit k Azure Media Services s instančním objektem** . Poznamenejte si hodnotu v poli **REST API koncový bod** . budete ho potřebovat později.
 
 V části **aplikace Azure AD** vyberte **vytvořit novou** a pojmenujte novou registraci aplikace služby Azure AD (například "VideoModADApp"). Klikněte na **Uložit** a počkejte několik minut, než se aplikace nakonfiguruje. Pak by se měla zobrazit nová registrace aplikace v části **aplikace Azure AD** stránky.
 
-Vyberte registraci aplikace a klikněte na tlačítko **Spravovat aplikaci** pod ním. Poznamenejte si hodnotu v poli **ID aplikace** . budete ho potřebovat později. Vyberte **Nastavení**  >  **klíče**a zadejte popis nového klíče (například "VideoModKey"). Klikněte na **Uložit**a pak si všimněte nové hodnoty klíče. Zkopírujte tento řetězec a uložte ho někam do zabezpečení.
+Vyberte registraci aplikace a klikněte na tlačítko **Spravovat aplikaci** pod ním. Poznamenejte si hodnotu v poli **ID aplikace** . budete ho potřebovat později. Vyberte **Nastavení**  >  **klíče** a zadejte popis nového klíče (například "VideoModKey"). Klikněte na **Uložit** a pak si všimněte nové hodnoty klíče. Zkopírujte tento řetězec a uložte ho někam do zabezpečení.
 
-Podrobný návod k výše uvedenému procesu najdete v tématu Začínáme [s ověřováním Azure AD](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
+Podrobný návod k výše uvedenému procesu najdete v tématu Začínáme [s ověřováním Azure AD](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
 Až to uděláte, můžete použít procesor médií pro moderování videa dvěma různými způsoby.
 
@@ -55,9 +55,9 @@ Azure Media Services Explorer je uživatelsky přívětivý front-end pro AMS. P
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **VideoModeration**. 
+1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **VideoModeration** . 
 1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
-1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na svůj projekt v Průzkumníku řešení a vyberte **Spravovat balíčky NuGet**. Potom vyhledejte a nainstalujte následující balíčky:
+1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na svůj projekt v Průzkumníku řešení a vyberte **Spravovat balíčky NuGet** . Potom vyhledejte a nainstalujte následující balíčky:
     - windowsazure. MediaServices
     - windowsazure. MediaServices. Extensions
 
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Nastavení odkazů na prostředky
 
-Do třídy **program** v _program.cs_přidejte následující statická pole. Tato pole obsahují informace potřebné pro připojení k předplatnému AMS. Vyplňte je hodnotami, které jste získali v krocích výše. Všimněte si, že `CLIENT_ID` je hodnota **ID aplikace** vaší aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", kterou jste pro tuto aplikaci vytvořili.
+Do třídy **program** v _program.cs_ přidejte následující statická pole. Tato pole obsahují informace potřebné pro připojení k předplatnému AMS. Vyplňte je hodnotami, které jste získali v krocích výše. Všimněte si, že `CLIENT_ID` je hodnota **ID aplikace** vaší aplikace Azure AD a `CLIENT_SECRET` je hodnota "VideoModKey", kterou jste pro tuto aplikaci vytvořili.
 
 ```csharp
 // declare constants and globals
@@ -121,7 +121,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Pokud chcete použít místní videosoubor (nejjednodušší případ), přidejte ho do projektu a zadejte jeho cestu jako `INPUT_FILE` hodnotu (relativní cesty jsou relativní vzhledem ke spouštěcímu adresáři).
 
-Budete také muset vytvořit _preset.jspro_ soubor v aktuálním adresáři a použít ho k zadání čísla verze. Například:
+Budete také muset vytvořit _preset.jspro_ soubor v aktuálním adresáři a použít ho k zadání čísla verze. Příklad:
 
 ```JSON
 {
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Po dokončení úlohy Moderování obsahu Analyzujte odpověď JSON. Skládá se z těchto elementů:
 
 - Shrnutí informací o videu
-- **Nasnímků** jako "**fragmenty**"
-- **Klíčové snímky** jako "**události**" s příznakem "události" s **reviewRecommended "(= true nebo false)"** na základě výsledků z **dospělého** a **pikantní**
-- možnost **Start**, **Duration**, **totalDuration**a **timestamp** jsou v "Ticks". Rozdělte podle **časové osy** k získání počtu v sekundách.
+- **Nasnímků** jako " **fragmenty** "
+- **Klíčové snímky** jako " **události** " s příznakem "události" s **reviewRecommended "(= true nebo false)"** na základě výsledků z **dospělého** a **pikantní**
+- možnost **Start** , **Duration** , **totalDuration** a **timestamp** jsou v "Ticks". Rozdělte podle **časové osy** k získání počtu v sekundách.
  
 > [!NOTE]
 > - `adultScore` představuje potenciální přítomnost a předpověď skóre obsahu, který může být v určitých situacích považován za zřejmý nebo dospělý.

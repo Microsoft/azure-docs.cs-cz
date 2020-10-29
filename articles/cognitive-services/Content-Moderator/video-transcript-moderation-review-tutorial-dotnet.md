@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919284"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912833"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -33,9 +33,9 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Moderování přepisu pomocí služby moderování textu
 > - Přidání moderovaného přepisu do kontroly videa
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Zaregistrujte se na webu [Nástroje pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a vytvořte vlastní značky. Pokud potřebujete s tímto krokem pomáhat, přečtěte si téma [použití značek](Review-Tool-User-Guide/tags.md) .
+- Zaregistrujte se na webu [Nástroje pro kontrolu Content moderator](https://contentmoderator.cognitive.microsoft.com/) a vytvořte vlastní značky. Pokud potřebujete s tímto krokem pomáhat, přečtěte si téma [použití značek](./review-tool-user-guide/configure.md#tags) .
 
     ![snímek obrazovky s vlastními značkami moderování videa](images/video-tutorial-custom-tags.png)
 - Pokud chcete spustit ukázkovou aplikaci, potřebujete účet Azure, Azure Media Services prostředek, prostředek Azure Content Moderator a přihlašovací údaje Azure Active Directory. Pokyny k získání těchto prostředků najdete v příručce k [rozhraní API pro moderování videa](video-moderation-api.md) .
@@ -83,7 +83,7 @@ Třída `Program` v souboru `Program.cs` je hlavní vstupní bod do aplikace mod
 Pokud nejsou přítomné žádné argumenty příkazového řádku, `Main()` zavolá metodu `GetUserInputs()`. Tato metoda vyzve uživatele, aby zadal cestu k jedinému souboru videa a určil, jestli se má vygenerovat přepis textu.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní Azure Media Indexer API](../../media-services/previous/legacy-components.md) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ### <a name="initialize-and-processvideo-methods"></a>Metody Initialize a ProcessVideo
 
@@ -224,7 +224,7 @@ Výsledek úlohy moderování videa (viz [rychlý start moderování videa](vide
 Přepis zvuku z videa se vytvoří také při nastavení příznaku `GenerateVTT`.
 
 > [!NOTE]
-> Konzolová aplikace používá [rozhraní Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
+> Konzolová aplikace používá [rozhraní Azure Media Indexer API](../../media-services/previous/legacy-components.md) ke generování přepisů ze zvukové stopy nahraného videa. Výsledky jsou k dispozici ve formátu WebVTT. Další informace o tomto formátu najdete v tématu [Formáty sledování textu webového videa](https://developer.mozilla.org/docs/Web/API/WebVTT_API).
 
 ## <a name="create-a-human-review"></a>Vytvoření lidské recenze
 
@@ -249,7 +249,7 @@ Na následujícím obrázku vidíte výsledky předchozích kroků.
 
 ## <a name="process-the-transcript"></a>Zpracování přepisu
 
-Dosud se kód uvedený v tomto kurzu zaměřoval na vizuální obsah. Kontrola mluveného obsahu je samostatný a volitelný proces, který (jak už bylo zmíněno) používá přepis vygenerovaný ze zvuku. Je čas podívat se, jak se vytváří přepisy textu a jak se používají při procesu kontroly. Úloha generování přepisu spadá pod službu [Azure Media Indexer](https://docs.microsoft.com/azure/media-services/media-services-index-content).
+Dosud se kód uvedený v tomto kurzu zaměřoval na vizuální obsah. Kontrola mluveného obsahu je samostatný a volitelný proces, který (jak už bylo zmíněno) používá přepis vygenerovaný ze zvuku. Je čas podívat se, jak se vytváří přepisy textu a jak se používají při procesu kontroly. Úloha generování přepisu spadá pod službu [Azure Media Indexer](../../media-services/previous/media-services-index-content.md).
 
 Aplikace provádí následující úlohy:
 

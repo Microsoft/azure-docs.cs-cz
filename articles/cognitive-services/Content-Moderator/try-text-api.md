@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81272589"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912867"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Střední text z konzoly API
 
@@ -33,7 +33,7 @@ Přejít na [odkaz rozhraní API pro moderování textu](https://westus.dev.cogn
 
 ## <a name="open-the-api-console"></a>Otevřete konzolu rozhraní API.
 
-V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
   ![Výběr oblasti stránky text-obrazovka](images/test-drive-region.png)
 
@@ -43,20 +43,20 @@ V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuj
 
 ### <a name="parameters"></a>Parametry
 
-Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk**. Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
+Vyberte parametry dotazu, které chcete použít na textové obrazovce. V tomto příkladu použijte výchozí hodnotu pro **jazyk** . Můžete ho nechat prázdné, protože operace automaticky detekuje pravděpodobný jazyk v rámci provádění.
 
 > [!NOTE]
-> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu**.
+> Pro parametr **jazyka** přiřaďte `eng` nebo nechejte prázdný, aby se zobrazila odpověď s podporou počítače **classification** (funkce Preview). **Tato funkce podporuje jenom angličtinu** .
 >
 > Pro detekci **podmínek vulgárních** výrazů použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo ponechte prázdné.
 
-V možnosti **Automatické**hodnoty, **PII**a **klasifikovat (Preview)** vyberte **true (pravda**). Pole **ListId** ponechte prázdné.
+V možnosti **Automatické** hodnoty, **PII** a **klasifikovat (Preview)** vyberte **true (pravda** ). Pole **ListId** ponechte prázdné.
 
   ![Parametry dotazu na konzolu text-obrazovka](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Typ obsahu
 
-Jako **typ obsahu**vyberte typ obsahu, který chcete na obrazovce. V tomto příkladu použijte výchozí typ **textu/prostý** obsah. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
+Jako **typ obsahu** vyberte typ obsahu, který chcete na obrazovce. V tomto příkladu použijte výchozí typ **textu/prostý** obsah. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
 
 ### <a name="sample-text-to-scan"></a>Ukázkový text, který se má zkontrolovat
 
@@ -137,4 +137,4 @@ Podrobné vysvětlení všech sekcí v odpovědi JSON najdete v koncepční př�
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte REST API ve vašem kódu nebo postupujte podle pokynů pro [rychlý Start .NET SDK](dotnet-sdk-quickstart.md) pro integraci s vaší aplikací.
+Použijte REST API ve vašem kódu nebo postupujte podle pokynů pro [rychlý Start .NET SDK](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) pro integraci s vaší aplikací.

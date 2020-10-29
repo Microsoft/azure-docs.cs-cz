@@ -1,23 +1,25 @@
 ---
-title: Jak používat funkci veřejné IP adresy ve virtuální síti WAN
+title: Jak používat funkci veřejné IP adresy v řešení Azure VMware
 description: Tento článek vysvětluje, jak používat funkci veřejné IP adresy ve službě Azure Virtual WAN.
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/28/2020
+ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048300"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912663"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>Jak používat funkci veřejné IP adresy v Azure Virtual WAN
+# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Jak používat funkci veřejné IP adresy v řešení Azure VMware
 
-Veřejná IP adresa je nová funkce při připojení řešení Azure VMware a zákazníci můžou pomocí dvou způsobů povolit veřejný přístup k Internetu. 
+Veřejná IP adresa je nová funkce při připojení řešení Azure VMware. Zpřístupňuje prostředky, jako jsou webové servery, virtuální počítače (VM) a hostitele přístupné prostřednictvím veřejné sítě. 
+
+Veřejný přístup k Internetu povolíte dvěma způsoby. 
 
 - Aplikace lze hostovat a publikovat v nástroji Application Gateway Load Balancer pro přenosy HTTP/HTTPS.
 - Publikováno prostřednictvím funkcí veřejné IP adresy v Azure Virtual WAN.
 
-V rámci nasazení privátního cloudu řešení Azure VMware se po povolení funkce veřejné IP adresy automaticky vytvoří a povolí požadované komponenty s automatizací:
+V rámci nasazení privátního cloudu řešení Azure VMware se po povolení funkce veřejné IP adresy vytvoří a povolí požadované komponenty s automatizací:
 
 -  Virtual WAN
 
@@ -25,9 +27,9 @@ V rámci nasazení privátního cloudu řešení Azure VMware se po povolení fu
 
 -  Azure Firewall služby s veřejnou IP adresou
 
-Tento článek podrobně popisuje, jak můžete využít funkci veřejné IP adresy ve virtuální síti WAN k vytváření prostředků, jako jsou webové servery, virtuální počítače a hostitele, přístupné prostřednictvím veřejné sítě.
+Tento článek podrobně popisuje, jak můžete používat funkci veřejné IP adresy ve virtuální síti WAN.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 - Prostředí řešení Azure VMware
 - WebServer běžící v prostředí řešení Azure VMware.
@@ -48,21 +50,21 @@ V tomto scénáři je nutné publikovat na internetovém serveru službu IIS. K 
 
 ## <a name="deploy-virtual-wan"></a>Nasadit Virtual WAN.
 
-1. Přihlaste se k Azure Portal a pak vyhledejte a vyberte **Řešení Azure VMware**.
+1. Přihlaste se k Azure Portal a pak vyhledejte a vyberte **Řešení Azure VMware** .
 
 1. Vyberte privátní cloud řešení Azure VMware.
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
-1. V části **Spravovat**vyberte možnost **připojení**.
+1. V části **Spravovat** vyberte možnost **připojení** .
 
    :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
-1. Vyberte kartu **Veřejná IP adresa** a pak vyberte **Konfigurovat**.
+1. Vyberte kartu **Veřejná IP adresa** a pak vyberte **Konfigurovat** .
 
    :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
-1. Přijměte výchozí hodnoty nebo je změňte a pak vyberte **vytvořit**.
+1. Přijměte výchozí hodnoty nebo je změňte a pak vyberte **vytvořit** .
 
    - Skupina prostředků virtuální sítě ve velké oblasti
 
@@ -81,9 +83,9 @@ Dokončení nasazení všech součástí trvá přibližně jednu hodinu. Toto n
 
 Pomocí následujících kroků můžeme kontrolovat a přidávat další veřejné IP adresy.
 
-1. V Azure Portal vyhledejte a vyberte **firewall**.
+1. V Azure Portal vyhledejte a vyberte **firewall** .
 
-1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall**.
+1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall** .
 
    :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
@@ -91,11 +93,11 @@ Pomocí následujících kroků můžeme kontrolovat a přidávat další veřej
 
    :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Diagram architektury veřejné IP adresy" lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
-1. Na stránce virtuální rozbočovač vyberte **Konfigurace veřejné IP**adresy a přidejte další veřejnou IP adresu a pak vyberte **Přidat**. 
+1. Na stránce virtuální rozbočovač vyberte **Konfigurace veřejné IP** adresy a přidejte další veřejnou IP adresu a pak vyberte **Přidat** . 
 
    :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
-1. Zadejte požadovaný počet IP adres a vyberte **Přidat**.
+1. Zadejte požadovaný počet IP adres a vyberte **Přidat** .
 
    :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Diagram architektury veřejné IP adresy" border="true":::
 
@@ -104,51 +106,51 @@ Pomocí následujících kroků můžeme kontrolovat a přidávat další veřej
 
 Po nasazení všech součástí je můžete zobrazit v přidané skupině prostředků. Dalším krokem je přidání zásady brány firewall.
 
-1. V Azure Portal vyhledejte a vyberte **firewall**.
+1. V Azure Portal vyhledejte a vyberte **firewall** .
 
-1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall**.
+1. Vyberte nasazenou bránu firewall a potom vyberte **navštívit Manager Azure firewall a nakonfigurujte a spravujte tuto bránu firewall** .
 
    :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
-1. Vyberte **zásady Azure firewall** a pak vyberte **vytvořit Azure firewall zásady**.
+1. Vyberte **zásady Azure firewall** a pak vyberte **vytvořit Azure firewall zásady** .
 
    :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
-1. Na kartě **základy** zadejte požadované podrobnosti a vyberte **Další: nastavení DNS**. 
+1. Na kartě **základy** zadejte požadované podrobnosti a vyberte **Další: nastavení DNS** . 
 
-1. Na kartě **DNS** vyberte **Zakázat**a potom vyberte **Další: pravidla**.
+1. Na kartě **DNS** vyberte **Zakázat** a potom vyberte **Další: pravidla** .
 
-1. Vyberte **přidat kolekci pravidel**, zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb**.
+1. Vyberte **přidat kolekci pravidel** , zadejte níže podrobnosti a vyberte **Přidat** a potom vyberte **Další: Analýza hrozeb** .
 
-   -  Name
+   -  Název
    -  Typ kolekce pravidel – DNAT
    -  Priorita
    -  Akce kolekce pravidel – povolení
    -  Název pravidla
    -  Typ zdroje – **IPaddress**
-   -  Zdrojová **\***
-   -  Protokol – **TCP**
+   -  Zdroj – * *\** _
+   -  Protokol – _ *TCP**
    -  Cílový port – **80**
    -  Cílový typ – **IP adresa**
    -  Cíl – **Veřejná IP adresa**
    -  Přeložená adresa – **privátní IP adresa webového serveru řešení Azure VMware**
    -  Přeložený port – **port webového serveru řešení Azure VMware**
 
-1. Ponechte výchozí hodnotu a pak vyberte **Další: rozbočovače**.
+1. Ponechte výchozí hodnotu a pak vyberte **Další: rozbočovače** .
 
-1. Vyberte **přidružit virtuální rozbočovač**.
+1. Vyberte **přidružit virtuální rozbočovač** .
 
    :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
 
-1. V seznamu vyberte centrum a vyberte **Přidat**.
+1. V seznamu vyberte centrum a vyberte **Přidat** .
 
    :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Diagram architektury veřejné IP adresy" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
-1. Vyberte **Další: Značky**. 
+1. Vyberte **Další: Značky** . 
 
 1. Volitelné Vytvořte páry název/hodnota pro kategorizaci prostředků. 
 
-1. Vyberte **Další: zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
+1. Vyberte **Další: zkontrolovat + vytvořit** a pak vyberte **vytvořit** .
 
 ## <a name="limitations"></a>Omezení
 

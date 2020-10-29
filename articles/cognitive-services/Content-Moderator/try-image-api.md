@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 542fadd5e5ab91be7b7113064bf8c998dae08d12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75448260"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912935"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Střední obrázky z konzoly API
 
@@ -28,7 +28,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
    Otevře se stránka pro moderování image **vyhodnocování** obrazu.
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Vyzkoušet výběr oblasti stránky a vyhodnotit image](images/test-drive-region.png)
   
@@ -40,7 +40,7 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 4. V poli **Text žádosti** použijte výchozí ukázkovou bitovou kopii nebo určete obrázek, který chcete prohledat. Samotný obrázek můžete odeslat jako binární data nebo zadat veřejně přístupnou adresu URL pro obrázek. 
 
-   V tomto příkladu použijte cestu zadanou v poli **Text žádosti** a pak vyberte **Odeslat**. 
+   V tomto příkladu použijte cestu zadanou v poli **Text žádosti** a pak vyberte **Odeslat** . 
 
    ![Vyzkoušení image – tělo žádosti konzoly](images/try-image-api-2.PNG)
 
@@ -48,9 +48,9 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
    ![Vyzkoušejte ukázkový obrázek konzoly pro vyhodnocení image](images/sample-image.jpg) 
 
-5. Vyberte **Poslat**.
+5. Vyberte **Poslat** .
 
-6. Rozhraní API vrací skóre pravděpodobnosti pro každou klasifikaci. Také vrátí určení, zda bitová kopie splňuje podmínky (**true** nebo **false**). 
+6. Rozhraní API vrací skóre pravděpodobnosti pro každou klasifikaci. Také vrátí určení, zda bitová kopie splňuje podmínky ( **true** nebo **false** ). 
 
    ![Vyzkoušejte hodnocení pravděpodobnosti a určení podmínky v konzole pro vyhodnocení image](images/try-image-api-3.PNG)
 
@@ -58,11 +58,11 @@ Než budete moct otestovat rozhraní API v online konzole, budete potřebovat sv
 
 Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek v obrázku. Tato možnost může být užitečná, když máte obavy z ochrany osobních údajů a chcete zabránit tomu, aby se na vaší platformě publikoval konkrétní obličej. 
 
-1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **Najít obličeje**. 
+1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek** vyberte **Najít obličeje** . 
 
    Otevře se stránka **s obrázkem obličeje** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Vyzkoušejte si obrázek – najde výběr oblasti stránky obličeje](images/test-drive-region.png)
 
@@ -74,7 +74,7 @@ Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek
 
    ![Vyzkoušejte si ukázkovou žádost o image – vyhledání obličeje](images/try-image-api-face-request.png)
 
-4. Vyberte **Poslat**. V tomto příkladu rozhraní API najde dvě obličeje a vrátí jejich souřadnice v obrázku.
+4. Vyberte **Poslat** . V tomto příkladu rozhraní API najde dvě obličeje a vrátí jejich souřadnice v obrázku.
 
    ![Vyzkoušejte si pole obsah odpovědi na obrázek ukázkové obličeje.](images/try-image-api-face-response.png)
 
@@ -82,11 +82,11 @@ Rozhraní API pro moderování obrázků můžete použít k vyhledání plošek
 
 K detekci textu v obrázcích můžete použít funkci Content Moderator optické rozpoznávání znaků.
 
-1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek**vyberte **optické rozpoznávání znaků**. 
+1. V [referenčních informacích k rozhraní API pro moderování imagí](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)v nabídce vlevo v části **Obrázek** vyberte **optické rozpoznávání znaků** . 
 
    Otevře se stránka **Obrázek – optické rozpoznávání znaků** .
 
-2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
+2. V případě **konzoly Open API Testing** vyberte oblast, která nejlépe popisuje vaše umístění. 
 
    ![Obrázek – výběr oblasti stránky s rozpoznáváním OCR](images/test-drive-region.png)
 
@@ -96,10 +96,10 @@ K detekci textu v obrázcích můžete použít funkci Content Moderator optick�
 
 4. V poli **Text žádosti** použijte výchozí ukázkovou bitovou kopii. To je stejný obrázek, který se používá v předchozí části.
 
-5. Vyberte **Poslat**. Extrahovaný text se zobrazí ve formátu JSON:
+5. Vyberte **Poslat** . Extrahovaný text se zobrazí ve formátu JSON:
 
    ![Obrázek – pole obsahu odpovědi vzorku pro optické rozpoznávání znaků](images/try-image-api-ocr.PNG)
 
 ## <a name="next-steps"></a>Další kroky
 
-Použijte REST API ve vašem kódu nebo použijte Průvodce pro [.NET SDK](dotnet-sdk-quickstart.md) pro přidání moderování obrázků do aplikace.
+Použijte REST API ve vašem kódu nebo použijte Průvodce pro [.NET SDK](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) pro přidání moderování obrázků do aplikace.

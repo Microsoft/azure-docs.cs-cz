@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980466"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913020"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Začínáme s Threat Modeling Tool
 
-Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)**. Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
+Microsoft Threat Modeling Tool 2018 byla vydána jako GA v září 2018 jako bezplatný soubor **[ke stažení](https://aka.ms/threatmodelingtool)** . Mechanismus změny v doručení nám umožňuje nabízet nejnovější vylepšení a opravy chyb zákazníkům pokaždé, když tento nástroj otevřou, což usnadňuje údržbu a používání.
 Tento článek vás provede procesem Začínáme s řešením Microsoft SDL Threat Modeling a ukazuje, jak používat nástroj k vývoji skvělých modelů hrozeb jako páteře procesu zabezpečení.
 
 Tento článek se sestavuje s existujícím vědomím přístupu k modelování hrozeb v SDL. V případě rychlé kontroly se podívejte na **[webové aplikace modelování hrozeb](https://msdn.microsoft.com/library/ms978516.aspx)** a Archivovaná verze řešení chyb **[zabezpečení na základě přístupu k](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** článku věnovaném webu MSDN publikovaném v 2006.
@@ -87,7 +87,7 @@ Jaký Ricardo se právě ukázal jako Cristina, je **[diagram toku dat](https://
 
 ## <a name="analyzing-threats"></a>Analýza hrozeb
 
-Jakmile kliknete na zobrazení analýzy z výběru nabídky ikony (soubor se zvětšováním skla), převezme se seznam generovaných hrozeb Threat Modeling Tool nalezen na základě výchozí šablony, která používá přístup SDL s názvem **[Rozteč (falšování identity, manipulace, zpřístupnění informací, odmítnutí služby a zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Účelem je, aby se software objevil v předvídatelné sadě hrozeb, které se dají najít pomocí těchto 6 kategorií.
+Jakmile kliknete na zobrazení analýzy z výběru nabídky ikony (soubor se zvětšováním skla), převezme se seznam generovaných hrozeb Threat Modeling Tool nalezen na základě výchozí šablony, která používá přístup SDL s názvem **[Rozteč (falšování identity, manipulace, zpřístupnění informací, odmítnutí služby a zvýšení oprávnění)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Účelem je, aby se software objevil v předvídatelné sadě hrozeb, které se dají najít pomocí těchto 6 kategorií.
 
 Tento přístup se podobá zabezpečení vaší domu tím, že před přidáním poplašného systému nebo dohledávání po moci zloděj zajistíte, aby jednotlivé dveře a okna byly na svém místě blokovacího mechanismu.
 
@@ -101,7 +101,7 @@ Za prvé je vylepšená interakce mezi těmito dvěma vzorníky.
 
 Za druhé se zobrazí další informace týkající se hrozby okno Vlastnosti
 
-![Informace o interakci](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Snímek obrazovky zobrazuje okno Vlastnosti hrozeb, která obsahuje název, kategorii, popis, interakci a prioritu.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 Vygenerovaná hrozba pomáhá pochopit možné nedostatky v návrhu. Kategorizace v ROZTEČi poskytuje představu o potenciálních způsobech útoku, zatímco další popis přesně informuje o tom, co je špatně, a také potenciální způsoby, jak to zmírnit. Může použít upravitelná pole k zápisu poznámek v podrobnostech odůvodnění nebo změnu hodnocení priority v závislosti na panelu chyb ve své organizaci.
 
@@ -118,7 +118,7 @@ V rozevíracím seznamu stav můžete změnit hrozby, které se nevztahují na n
 
 Jakmile Ricardo projde seznamem pomocí Cristina a přidá důležité poznámky, zmírnění a odůvodnění, priority a změny stavu, vybere sestavy – > vytvořit úplnou sestavu > Uložit sestavu, která pro ni vytiskne zprávu, která bude mít k dispozici, aby bylo zajištěno správné fungování zabezpečení.
 
-![Informace o interakci](./media/threat-modeling-tool-feature-overview/report.png)
+![Snímek obrazovky se zobrazí jako zástupce sestavy modelování hrozeb.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Pokud místo toho chce Ricardo sdílet soubor, může to udělat tak, že se uloží na účet OneDrive jeho organizace. Jakmile to provede, může zkopírovat odkaz na dokument a sdílet ho s kolegy. 
 

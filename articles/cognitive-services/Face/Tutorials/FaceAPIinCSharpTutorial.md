@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 13bbb5e006f725ff0b75a5b86aee414f84a80dcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff97e52d005ba1e91194b449377653317876163
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936295"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912799"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF (Windows Presentation Framework) pro zobrazení obličejových dat v obrázku
 
@@ -35,25 +35,25 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkovém úložišti pro rozpoznávání tváře CSharp](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) na GitHubu.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/). 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
     * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a v `FACE_ENDPOINT` uvedeném pořadí.
+* [Vytvořte proměnné prostředí](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a v `FACE_ENDPOINT` uvedeném pořadí.
 - Libovolná edice sady [Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
 Postupujte podle těchto kroků a vytvořte nový projekt aplikace WPF.
 
-1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované**, potom **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)**.
-1. Pojmenujte tuto aplikaci **FaceTutorial** a klikněte na **OK**.
-1. Získejte požadované balíčky NuGet. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**; pak vyhledejte a nainstalujte následující balíček:
+1. V aplikaci Visual Studio otevřete dialogové okno Nový projekt. Rozbalte položku **nainstalované** , potom **Visual C#** a pak vyberte **aplikace WPF (.NET Framework)** .
+1. Pojmenujte tuto aplikaci **FaceTutorial** a klikněte na **OK** .
+1. Získejte požadované balíčky NuGet. V Průzkumník řešení klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet** ; pak vyhledejte a nainstalujte následující balíček:
     - [Microsoft. Azure. Cognitiveservices Account. Vision. Face 2.6.0-Preview. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>Přidání počátečního kódu
@@ -80,7 +80,7 @@ Dále přidejte konstruktor **MainWindow** . Zkontroluje řetězec adresy URL ko
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Nakonec přidejte do třídy metody **BrowseButton_Click** a **FacePhoto_MouseMove** . Tyto metody odpovídají obslužným rutinám událostí deklarovaným v souboru *MainWindow. XAML*. Metoda **BrowseButton_Click** vytvoří **OpenFileDialog**, který umožňuje uživateli vybrat obrázek. jpg. Pak zobrazí obrázek v hlavním okně. V pozdějších krocích budete vkládat zbývající kód pro **BrowseButton_Click** a **FacePhoto_MouseMove** . Všimněte si také `faceList` odkaz &mdash; na seznam objektů **DetectedFace** . Tento odkaz na místo, kde bude vaše aplikace ukládat a volat skutečná data obličeje.
+Nakonec přidejte do třídy metody **BrowseButton_Click** a **FacePhoto_MouseMove** . Tyto metody odpovídají obslužným rutinám událostí deklarovaným v souboru *MainWindow. XAML* . Metoda **BrowseButton_Click** vytvoří **OpenFileDialog** , který umožňuje uživateli vybrat obrázek. jpg. Pak zobrazí obrázek v hlavním okně. V pozdějších krocích budete vkládat zbývající kód pro **BrowseButton_Click** a **FacePhoto_MouseMove** . Všimněte si také `faceList` odkaz &mdash; na seznam objektů **DetectedFace** . Tento odkaz na místo, kde bude vaše aplikace ukládat a volat skutečná data obličeje.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -100,13 +100,13 @@ Stisknutím klávesy **Start** v nabídce otestujte vaši aplikaci. Po otevřen�
 
 Vaše aplikace detekuje obličeje voláním metody **FaceClient. Face. DetectWithStreamAsync** , která zabalí REST API [zjišťování](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) pro nahrání místní image.
 
-Vložte následující metodu do třídy **MainWindow** pod metodou **FacePhoto_MouseMove** . Tato metoda definuje seznam atributů obličeje pro načtení a čtení odeslaného souboru obrázku do **datového proudu**. Pak předá oba tyto objekty voláním metody **DetectWithStreamAsync** .
+Vložte následující metodu do třídy **MainWindow** pod metodou **FacePhoto_MouseMove** . Tato metoda definuje seznam atributů obličeje pro načtení a čtení odeslaného souboru obrázku do **datového proudu** . Pak předá oba tyto objekty voláním metody **DetectWithStreamAsync** .
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_uploaddetect)]
 
 ## <a name="draw-rectangles-around-faces"></a>Kreslení obdélníků kolem plošek
 
-Dále přidáte kód, který vykreslí obdélník kolem každého zjištěného obličeje v obrázku. Do třídy **MainWindow** vložte následující kód na konec metody **BrowseButton_Click** za `FacePhoto.Source = bitmapSource` řádkem. Tento kód naplní seznam zjištěných plošek od volání **UploadAndDetectFaces**. Pak nakreslí obdélník kolem každé plošky a v hlavním okně se zobrazí upravený obrázek.
+Dále přidáte kód, který vykreslí obdélník kolem každého zjištěného obličeje v obrázku. Do třídy **MainWindow** vložte následující kód na konec metody **BrowseButton_Click** za `FacePhoto.Source = bitmapSource` řádkem. Tento kód naplní seznam zjištěných plošek od volání **UploadAndDetectFaces** . Pak nakreslí obdélník kolem každé plošky a v hlavním okně se zobrazí upravený obrázek.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
