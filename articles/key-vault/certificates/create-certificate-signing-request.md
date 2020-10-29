@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cea061c1fd36bed9fa1e43c874fbca347707f78d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569369"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925863"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Vytvoření a sloučení CSR v Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault podporuje ukládání digitálního certifikátu vydaného jakou
 
 Obecnější informace o certifikátech najdete v tématu [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Přidání certifikátu v Key Vault vydaného nedůvěryhodnou certifikační autoritou
 
@@ -34,7 +34,7 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 
 
 
-1.  Nejdřív **Vytvořte zásady certifikátu**. Key Vault nebude registrovat ani obnovovat certifikát od vystavitele jménem uživatele, protože certifikační autorita zvolená v tomto scénáři není podporovaná, a proto je název vystavitele nastavený na neznámý.
+1.  Nejdřív **Vytvořte zásady certifikátu** . Key Vault nebude registrovat ani obnovovat certifikát od vystavitele jménem uživatele, protože certifikační autorita zvolená v tomto scénáři není podporovaná, a proto je název vystavitele nastavený na neznámý.
 
     ```azurepowershell
     $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
@@ -62,19 +62,19 @@ Následující kroky vám pomůžou vytvořit certifikát od certifikačních au
 ### <a name="azure-portal"></a>portál Azure
 
 1.  Pokud chcete vygenerovat CSR pro certifikační autoritu dle vašeho výběru, přejděte do trezoru klíčů, do kterého chcete certifikát přidat.
-2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
+2.  Na stránkách Key Vault vlastnosti vyberte **certifikáty** .
 3.  Vyberte kartu **Generovat/importovat** .
 4.  Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
     - **Metoda vytvoření certifikátu:** Vytváří.
     - **Název certifikátu:** ContosoManualCSRCertificate.
     - **Typ certifikační autority (CA):** Certifikát vydaný neintegrovanou certifikační autoritou
     - **Předmět:**`"CN=www.contosoHRApp.com"`
-    - Vyberte další hodnoty podle potřeby. Klikněte na **Vytvořit**.
+    - Vyberte další hodnoty podle potřeby. Klikněte na **Vytvořit** .
 
     ![Vlastnosti certifikátu](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Uvidíte, že certifikát se teď přidal do seznamu certifikáty. Vyberte tento nový certifikát, který jste právě vytvořili. Aktuální stav certifikátu by byl zakázán, protože ještě nebyl vydán certifikační autoritou.
-7. Klikněte na kartu **operace certifikátu** a vyberte **Stáhnout CSR**.
- ![Vlastnosti certifikátu](../media/certificates/create-csr-merge-csr/download-csr.png)
+7. Klikněte na kartu **operace certifikátu** a vyberte **Stáhnout CSR** .
+ ![Snímek obrazovky, který zvýrazní tlačítko Stáhnout CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  Pořiďte si soubor. CSR pro certifikační autoritu, aby se žádost mohla podepsat.
 9.  Jakmile je žádost podepsána certifikační autoritou, vraťte soubor certifikátu pro **sloučení podepsané žádosti** na obrazovku stejné operace certifikátu.

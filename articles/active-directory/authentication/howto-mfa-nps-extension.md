@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5095df51fe430990e200b7bc7c3ca03feb0799d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20ae53805d25614e18f17a7d20acd884d31ab7d6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964277"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925709"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace stávající infrastruktury serveru NPS (Network Policy Server) s Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Rozšíření serveru NPS funguje jako adaptér mezi POLOMĚRem a cloudovou Mult
 Když použijete rozšíření serveru NPS pro Azure Multi-Factor Authentication, bude tok ověřování zahrnovat tyto komponenty:
 
 1. **Server NAS/VPN** přijímá žádosti od klientů VPN a převede je na žádosti RADIUS na servery NPS.
-2. **Server NPS** se připojí k Active Directory Domain Services (služba AD DS), aby provedl primární ověřování pro žádosti RADIUS a po úspěšném dokončení předává požadavek do všech nainstalovaných rozšíření.  
+2. **Server NPS** se připojí k Active Directory Domain Services (služba AD DS), aby provedl primární ověřování pro žádosti RADIUS a po úspěšném dokončení předává požadavek do všech nainstalovaných rozšíření.  
 3. **Rozšíření serveru NPS** aktivuje požadavek na Azure Multi-Factor Authentication pro sekundární ověřování. Jakmile rozšíření obdrží odpověď a v případě úspěšného ověření MFA selže, dokončí žádost o ověření tím, že server NPS poskytne tokeny zabezpečení, které zahrnují deklaraci MFA, kterou vystavila služba Azure STS.
 4. **Azure MFA** komunikuje s Azure Active Directory (Azure AD) a načítá podrobnosti o uživateli a provádí sekundární ověřování pomocí metody ověřování nakonfigurované pro uživatele.
 
@@ -98,8 +98,8 @@ Každý, kdo používá rozšíření serveru NPS, musí být synchronizovaný s
 Když nainstalujete rozšíření, budete potřebovat *ID tenanta* a přihlašovací údaje správce pro vašeho TENANTA Azure AD. Chcete-li získat ID tenanta, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
-1. Vyhledejte a vyberte **Azure Active Directory**.
-1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta*vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
+1. Vyhledejte a vyberte **Azure Active Directory** .
+1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta* vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
    ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
@@ -125,10 +125,10 @@ Než nainstalujete rozšíření serveru NPS, připravte prostředí pro zpracov
 
 Server NPS se připojí k Azure AD a ověří požadavky MFA. Vyberte jeden server pro tuto roli. Doporučujeme vybrat server, který nezpracovává požadavky z jiných služeb, protože rozšíření serveru NPS vyvolá chyby pro všechny požadavky, které nejsou POLOMĚRem. Server NPS musí být nastaven jako primární a sekundární ověřovací server pro vaše prostředí. Nedokáže proxy požadavky RADIUS na jiný server.
 
-1. Na serveru otevřete **Správce serveru**. V nabídce *rychlý Start* vyberte **Průvodce přidáním rolí a funkcí** .
-2. Pro typ instalace vyberte **instalace na základě rolí nebo na základě funkcí**.
+1. Na serveru otevřete **Správce serveru** . V nabídce *rychlý Start* vyberte **Průvodce přidáním rolí a funkcí** .
+2. Pro typ instalace vyberte **instalace na základě rolí nebo na základě funkcí** .
 3. Vyberte roli serveru **Služba Síťové zásady a přístup** . Okno se může zobrazit jako informování o dalších požadovaných funkcích pro spuštění této role.
-4. Pokračujte v průvodci, dokud nebude stránka *potvrzení* . Až budete připraveni, vyberte **nainstalovat**.
+4. Pokračujte v průvodci, dokud nebude stránka *potvrzení* . Až budete připraveni, vyberte **nainstalovat** .
 
 Instalace role serveru NPS může trvat několik minut. Až budete hotovi, pokračujte v následujících částech a nakonfigurujte tento server tak, aby zpracovával příchozí žádosti RADIUS z řešení sítě VPN.
 
@@ -150,16 +150,16 @@ Pokud potřebujete zahájit novou operaci synchronizace, přečtěte si téma [A
 
 Existují dva faktory, které mají vliv na to, které metody ověřování jsou k dispozici v nasazení rozšíření serveru NPS:
 
-1. Šifrovací algoritmus hesla, který se používá mezi klientem RADIUS (VPN, NetScaler serverem nebo jiným) a servery NPS.
+* Šifrovací algoritmus hesla, který se používá mezi klientem RADIUS (VPN, NetScaler serverem nebo jiným) a servery NPS.
    - Protokol **PAP** podporuje všechny metody ověřování Azure Multi-Factor Authentication v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace, tokeny hardwaru Oath a ověřovací kód mobilní aplikace.
    - Protokol **CHAPv2** a **EAP** podporují telefonní hovor a oznámení mobilní aplikace.
 
-      > [!NOTE]
-      > Když nasadíte rozšíření serveru NPS, použijte tyto faktory k vyhodnocení, které metody jsou pro vaše uživatele k dispozici. Pokud váš klient protokolu RADIUS podporuje protokol PAP, ale uživatelské prostředí klienta nemá vstupní pole pro ověřovací kód, pak jsou k dispozici dvě podporované možnosti pro telefonní hovory a oznámení mobilní aplikace.
-      >
-      > Kromě toho, pokud uživatelské rozhraní klienta VPN podporuje vstupní pole a máte nakonfigurované zásady přístupu k síti, ověření může být úspěšné. Žádné z atributů RADIUS nakonfigurovaných v zásadách sítě se ale nepoužijí pro zařízení s přístupem k síti, jako je třeba server RRAS ani klient VPN. Výsledkem je, že klient VPN může mít k dispozici větší přístup, než je požadováno, nebo méně pro přístup.
+    > [!NOTE]
+    > Když nasadíte rozšíření serveru NPS, použijte tyto faktory k vyhodnocení, které metody jsou pro vaše uživatele k dispozici. Pokud váš klient protokolu RADIUS podporuje protokol PAP, ale uživatelské prostředí klienta nemá vstupní pole pro ověřovací kód, pak jsou k dispozici dvě podporované možnosti pro telefonní hovory a oznámení mobilní aplikace.
+    >
+    > Bez ohledu na použitý protokol ověřování (PAP, CHAP nebo EAP) platí, že pokud je vaše metoda MFA založená na textu (SMS, ověřovací kód mobilní aplikace nebo hardwarový token OATH) a vyžaduje, aby uživatel zadal kód nebo text ve vstupním poli uživatelského rozhraní klienta VPN, ověření může být úspěšné. *Ale* všechny atributy protokolu RADIUS, které jsou nakonfigurované v zásadách přístupu k síti *, se nepředávají do* cient protokolu RADIUS (zařízení pro přístup k síti, jako je Brána VPN). Výsledkem je, že klient VPN může mít větší přístup, než když chcete, aby měl přístup nebo aby nepřístupoval.
 
-2. Metody vstupu, které může klientská aplikace (VPN, NetScaler Server nebo jiný) zpracovat. Například má klient VPN nějaký způsob, jak uživateli dovolit zadat ověřovací kód z textové nebo mobilní aplikace?
+* Metody vstupu, které může klientská aplikace (VPN, NetScaler Server nebo jiný) zpracovat. Například má klient VPN nějaký způsob, jak uživateli dovolit zadat ověřovací kód z textové nebo mobilní aplikace?
 
 V Azure můžete [Zakázat nepodporované metody ověřování](howto-mfa-mfasettings.md#verification-methods) .
 
@@ -226,7 +226,7 @@ Pokud chcete poskytnout funkce Vyrovnávání zatížení nebo redundanci, opaku
 1. Spusťte PowerShellový skript vytvořený instalačním programem.
 
    > [!IMPORTANT]
-   > Pro zákazníky, kteří používají Azure Government nebo cloudy Azure Čína 21Vianet, nejprve upravte `Connect-MsolService` rutiny ve skriptu *AzureMfaNpsExtnConfigSetup.ps1* tak, aby zahrnovaly parametry *AzureEnvironment* pro požadovaný Cloud. Zadejte například *-AzureEnvironment USGovernment* nebo *-AzureEnvironment AzureChinaCloud*.
+   > Pro zákazníky, kteří používají Azure Government nebo cloudy Azure Čína 21Vianet, nejprve upravte `Connect-MsolService` rutiny ve skriptu *AzureMfaNpsExtnConfigSetup.ps1* tak, aby zahrnovaly parametry *AzureEnvironment* pro požadovaný Cloud. Zadejte například *-AzureEnvironment USGovernment* nebo *-AzureEnvironment AzureChinaCloud* .
    >
    > Další informace najdete v tématu [Reference k parametrům Connect-MsolService](/powershell/module/msonline/connect-msolservice#parameters).
 
@@ -241,7 +241,7 @@ Pokud chcete poskytnout funkce Vyrovnávání zatížení nebo redundanci, opaku
 Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se nový certifikát, měli byste odstranit všechny certifikáty s vypršenou platností. Máte-li certifikáty s vypršenou platností, můžete způsobit problémy s počátkem rozšíření serveru NPS
 
 > [!NOTE]
-> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \<TenantID\> , OU = rozšíření Microsoft NPS**.
+> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \<TenantID\> , OU = rozšíření Microsoft NPS** .
 
 ### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure Government nebo Azure Čína 21Vianet – další kroky
 
@@ -301,15 +301,15 @@ Nakonfigurujte klienty RADIUS, u kterých chcete, aby MFA odesílaly požadavky 
 
 ### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Příprava pro uživatele, kteří nejsou zaregistrovaní pro MFA
 
-Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit, co se stane při pokusu o ověření. K řízení tohoto chování použijte *REQUIRE_USER_MATCH* nastavení v cestě registru *HKLM\Software\Microsoft\AzureMFA*. Toto nastavení má jedinou možnost konfigurace:
+Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit, co se stane při pokusu o ověření. K řízení tohoto chování použijte *REQUIRE_USER_MATCH* nastavení v cestě registru *HKLM\Software\Microsoft\AzureMFA* . Toto nastavení má jedinou možnost konfigurace:
 
 | Klíč | Hodnota | Výchozí |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE NEBO FALSE | Nenastaveno (ekvivalent hodnoty TRUE) |
 
-Toto nastavení určuje, co dělat, když se uživatel nezaregistruje pro MFA. Pokud klíč neexistuje, není nastaven nebo je nastaven na *hodnotu true*a uživatel není zaregistrován, rozšíření MFA neuspěje.
+Toto nastavení určuje, co dělat, když se uživatel nezaregistruje pro MFA. Pokud klíč neexistuje, není nastaven nebo je nastaven na *hodnotu true* a uživatel není zaregistrován, rozšíření MFA neuspěje.
 
-Když je klíč nastavený na *false* a uživatel není zaregistrovaný, ověřování pokračuje bez provedení MFA. Pokud je uživatel zaregistrován v MFA, musí se ověřit pomocí VÍCEFAKTOROVÉHO ověřování, i když je *REQUIRE_USER_MATCH* nastaveno na *false*.
+Když je klíč nastavený na *false* a uživatel není zaregistrovaný, ověřování pokračuje bez provedení MFA. Pokud je uživatel zaregistrován v MFA, musí se ověřit pomocí VÍCEFAKTOROVÉHO ověřování, i když je *REQUIRE_USER_MATCH* nastaveno na *false* .
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na *hodnotu NEPRAVDA* , pokud se vaši uživatelé chtějí zaregistrovat a nemusí se zatím zaregistrovat pro Azure Multi-Factor Authentication. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
@@ -323,7 +323,7 @@ Následující skript je k dispozici k provedení základních kroků kontroly s
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Návody ověřte, zda je certifikát klienta nainstalován podle očekávání?
 
-Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená *síťové službě*uživatele. Certifikát má název subjektu **CN \<tenantid\> , OU = rozšíření Microsoft NPS** .
+Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená *síťové službě* uživatele. Certifikát má název subjektu **CN \<tenantid\> , OU = rozšíření Microsoft NPS** .
 
 Certifikáty podepsané svým držitelem generované `AzureMfaNpsExtnConfigSetup.ps1` skriptem mají dobu platnosti dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, že platnost certifikátu nevypršela.
 
@@ -339,7 +339,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 Tyto příkazy vytisknou všechny certifikáty, které v relaci PowerShellu přidruží vašeho tenanta k vaší instanci rozšíření serveru NPS. Vyhledejte svůj certifikát tak, že vyexportujete certifikát klienta jako soubor *X. 509 (. cer) s kódováním Base-64* bez privátního klíče a porovnáte ho se seznamem z PowerShellu.
 
-Následující příkaz vytvoří soubor s názvem *npscertificate* v kořenu jednotky *C:* ve formátu *. cer*.
+Následující příkaz vytvoří soubor s názvem *npscertificate* v kořenu jednotky *C:* ve formátu *. cer* .
 
 ```powershell
 import-module MSOnline

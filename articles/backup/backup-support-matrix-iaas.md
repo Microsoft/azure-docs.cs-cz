@@ -4,12 +4,12 @@ description: Poskytuje souhrn nastavení podpory a omezení při zálohování v
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332725"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925641"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -27,7 +27,7 @@ Tady je postup, jak můžete zálohovat a obnovovat virtuální počítače Azur
 
 **Scénář** | **Backup** | **Agenta** |**Obnovení**
 --- | --- | --- | ---
-Přímé zálohování virtuálních počítačů Azure  | Zálohujte celý virtuální počítač.  | Na virtuálním počítači Azure není potřeba žádný další agent. Azure Backup nainstaluje a použije rozšíření pro [agenta virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) , který běží na virtuálním počítači. | Obnovte následujícím způsobem:<br/><br/> - **Vytvořte základní virtuální počítač**. To je užitečné v případě, že virtuální počítač nemá žádnou speciální konfiguraci, třeba více IP adres.<br/><br/> - **Obnovte disk virtuálního počítače**. Obnovte disk. Pak ho připojte k existujícímu virtuálnímu počítači nebo vytvořte nový virtuální počítač z disku pomocí PowerShellu.<br/><br/> - **Nahraďte disk virtuálního počítače**. Pokud virtuální počítač existuje a používá spravované disky (nešifrované), můžete disk obnovit a použít ho k nahrazení stávajícího disku na virtuálním počítači.<br/><br/> - **Obnovte konkrétní soubory/složky**. Můžete obnovit soubory nebo složky z virtuálního počítače místo z celého virtuálního počítače.
+Přímé zálohování virtuálních počítačů Azure  | Zálohujte celý virtuální počítač.  | Na virtuálním počítači Azure není potřeba žádný další agent. Azure Backup nainstaluje a použije rozšíření pro [agenta virtuálního počítače Azure](../virtual-machines/extensions/agent-windows.md) , který běží na virtuálním počítači. | Obnovte následujícím způsobem:<br/><br/> - **Vytvořte základní virtuální počítač** . To je užitečné v případě, že virtuální počítač nemá žádnou speciální konfiguraci, třeba více IP adres.<br/><br/> - **Obnovte disk virtuálního počítače** . Obnovte disk. Pak ho připojte k existujícímu virtuálnímu počítači nebo vytvořte nový virtuální počítač z disku pomocí PowerShellu.<br/><br/> - **Nahraďte disk virtuálního počítače** . Pokud virtuální počítač existuje a používá spravované disky (nešifrované), můžete disk obnovit a použít ho k nahrazení stávajícího disku na virtuálním počítači.<br/><br/> - **Obnovte konkrétní soubory/složky** . Můžete obnovit soubory nebo složky z virtuálního počítače místo z celého virtuálního počítače.
 Přímá záloha virtuálních počítačů Azure (jenom Windows)  | Zálohujte konkrétní soubory/složky/svazky. | Nainstalujte [agenta Azure Recovery Services](backup-azure-file-folder-backup-faq.md).<br/><br/> Agenta MARS můžete spustit vedle záložního rozšíření pro agenta virtuálního počítače Azure, aby se virtuální počítač mohl zálohovat na úrovni souboru nebo složky. | Obnovte konkrétní složky nebo soubory.
 Zálohování virtuálního počítače Azure do záložního serveru  | Zálohování souborů, složek a svazků; stav systému/úplné soubory; data aplikace do aplikace System Center DPM nebo do serveru Microsoft Azure Backup (MABS).<br/><br/> DPM/MABS se pak zálohuje do trezoru záloh. | Nainstalujte na virtuální počítač agenta ochrany DPM/MABS. Agent MARS je nainstalován v DPM/MABS.| Obnovit soubory/složky/svazky; stav systému/úplné soubory; data aplikací.
 
@@ -88,7 +88,7 @@ Pro zálohování virtuálních počítačů Azure Azure Backup podporuje seznam
 **Nastavení** | **Omezení**
 --- | ---
 Maximální počet bodů obnovení na chráněnou instanci (počítač/zatížení) | 9999.
-Maximální doba vypršení platnosti bodu obnovení | Bez omezení.
+Maximální doba vypršení platnosti bodu obnovení | Bez omezení (99 let).
 Maximální četnost zálohování do trezoru (rozšíření virtuálního počítače Azure) | Jednou denně.
 Maximální četnost záloh do trezoru (agent MARS) | Tři zálohy za den.
 Maximální četnost zálohování pro DPM/MABS | Každých 15 minut SQL Server.<br/><br/> Jednou za hodinu pro jiné úlohy.
@@ -130,7 +130,7 @@ Obnovení virtuálního počítače přímo do skupiny dostupnosti | U spravovan
 Obnovení zálohy nespravovaných virtuálních počítačů po upgradu na spravovaný virtuální počítač| Podporuje se.<br/><br/> Můžete obnovit disky a pak vytvořit spravovaný virtuální počítač.
 Obnovení virtuálního počítače do bodu obnovení před migrací virtuálního počítače na Managed disks | Podporuje se.<br/><br/> Obnovíte na nespravované disky (výchozí), převedete obnovené disky na spravovaný disk a vytvoříte virtuální počítač se spravovanými disky.
 Obnovte virtuální počítač, který byl odstraněn. | Podporuje se.<br/><br/> Virtuální počítač můžete obnovit z bodu obnovení.
-Obnovení virtuálního počítače řadiče domény, který je součástí konfigurace s více řadiči domény prostřednictvím portálu | Podporováno, pokud obnovíte disk a vytvoříte virtuální počítač pomocí prostředí PowerShell.
+Obnovení virtuálního počítače řadiče domény  | Podporuje se. Podrobnosti najdete v tématu [obnovení virtuálních počítačů řadičů domény](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 Obnovení virtuálního počítače v jiné virtuální síti |Podporuje se.<br/><br/> Virtuální síť musí být ve stejném předplatném a oblasti.
 
 ## <a name="vm-compute-support"></a>Výpočetní podpora virtuálních počítačů
@@ -160,12 +160,13 @@ Velikost datového disku | Velikost jednotlivých disků může být až 32 TB a
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
 Šifrované disky | Podporuje se.<br/><br/> Virtuální počítače Azure s povoleným Azure Disk Encryption můžou být zálohované (s aplikací Azure AD nebo bez ní).<br/><br/> Šifrované virtuální počítače nelze obnovit na úrovni souboru nebo složky. Musíte obnovit celý virtuální počítač.<br/><br/> Můžete povolit šifrování u virtuálních počítačů, které už jsou chráněné pomocí Azure Backup.
-Disky s povoleným Akcelerátor zápisu | Nepodporováno<br/><br/> Azure Backup automaticky vyloučí disky s povoleným Akcelerátor zápisu (WA), které jsou povoleny během zálohování. Vzhledem k tomu, že nejsou zálohovány, nelze tyto disky obnovit z bodů obnovení virtuálního počítače. <br><br> **Důležité upozornění**: virtuální počítače s disky v WA potřebují pro úspěšnou zálohu připojení k Internetu (i když se tyto disky ze zálohy vylučují.)
+Disky s povoleným Akcelerátor zápisu | Nepodporováno<br/><br/> Azure Backup automaticky vyloučí disky s povoleným Akcelerátor zápisu (WA), které jsou povoleny během zálohování. Vzhledem k tomu, že nejsou zálohovány, nelze tyto disky obnovit z bodů obnovení virtuálního počítače. <br><br> **Důležité upozornění** : virtuální počítače s disky v WA potřebují pro úspěšnou zálohu připojení k Internetu (i když se tyto disky ze zálohy vylučují.)
 Zálohování & obnovení virtuálních počítačů nebo disků s odstraněnými duplicitními daty | Azure Backup nepodporuje odstranění duplicitních dat. Další informace najdete v tomto [článku](./backup-support-matrix.md#disk-deduplication-support) . <br/> <br/>  -Azure Backup neprovádí odstranění duplicitních dat mezi virtuálními počítači v trezoru Recovery Services. <br/> <br/>  – Pokud během obnovování dojde k virtuálním počítačům ve stavu odstranění duplicitních dat, soubory se nedají obnovit, protože trezor nerozumí formátu. Úplné obnovení virtuálního počítače ale můžete úspěšně provést.
 Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílený svazek clusteru (CSV) nebo souborového serveru Scale-Out se nepodporuje. Při zálohování pravděpodobně dojde k chybě zapisovačů sdílených svazků clusteru. Při obnovení se nemusí nacházet disky obsahující svazky sdíleného svazku clusteru.
 [Sdílené disky](../virtual-machines/disks-shared-enable.md) | Nepodporováno
+SSD úrovně Ultra disky | Nepodporováno Další podrobnosti najdete v těchto [omezeních](selective-disk-backup-restore.md#limitations).
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 64a9143e7a425b35e37f23b233c91b8e7bb70169
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bf24d7c5ca88c47d3bfd8067a4e533ed413dde90
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755985"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924966"
 ---
 Začněte s klientskou knihovnou Azure Content Moderator pro Python. Pomocí těchto kroků nainstalujete balíček PiPy a vyzkoušíte ukázkový kód pro základní úlohy. 
 
@@ -30,9 +30,9 @@ Použití klientské knihovny Content Moderator pro Python pro:
 * Použití vlastního seznamu obrázků
 * Vytvořit recenzi
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Referenční dokumentace](/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  |  [Balíček (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
@@ -73,12 +73,12 @@ Dále vytvořte proměnné pro umístění a klíč koncového bodu prostředku.
 
 Následující třídy zpracovávají některé hlavní funkce klientské knihovny Content Moderator Pythonu.
 
-|Název|Popis|
+|Název|Description|
 |---|---|
-|[ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
-|[ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
-|[TextModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu textu pro jazyk, vulgární výrazy, chyby a osobní údaje.|
-[ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Tato třída poskytuje funkce v rozhraních API pro revize, včetně metod vytváření úloh, vlastních pracovních postupů a lidských recenzí.|
+|[ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python)|Tato třída je potřebná pro všechny funkce Content Moderator. Vytvoří se jeho instance s informacemi o předplatném a Vy ho použijete k vytvoření instancí jiných tříd.|
+|[ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu obrázků pro obsah pro dospělé, osobní údaje nebo lidské obličeje.|
+|[TextModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)|Tato třída poskytuje funkce pro analýzu textu pro jazyk, vulgární výrazy, chyby a osobní údaje.|
+[ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python)|Tato třída poskytuje funkce v rozhraních API pro revize, včetně metod vytváření úloh, vlastních pracovních postupů a lidských recenzí.|
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -93,7 +93,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Cont
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ContentModeratorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) .
+Vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [ContentModeratorClient](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.content_moderator_client.contentmoderatorclient?view=azure-python) .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_client)]
 
@@ -116,7 +116,7 @@ Potom do skriptu Pythonu přidejte následující kód.
 
 ## <a name="use-a-custom-terms-list"></a>Použití vlastního seznamu podmínek
 
-Následující kód ukazuje, jak spravovat seznam vlastních podmínek pro moderování textu. Pomocí třídy [ListManagementTermListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) můžete vytvořit seznam podmínek, spravovat jednotlivé výrazy a na základě nich zobrazit další těla textu.
+Následující kód ukazuje, jak spravovat seznam vlastních podmínek pro moderování textu. Pomocí třídy [ListManagementTermListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementtermlistsoperations?view=azure-python) můžete vytvořit seznam podmínek, spravovat jednotlivé výrazy a na základě nich zobrazit další těla textu.
 
 ### <a name="get-sample-text"></a>Získat vzorový text
 
@@ -186,7 +186,7 @@ Pomocí následujícího kódu odstraňte vlastní seznam podmínek.
 
 ## <a name="moderate-images"></a>Střední obrázky
 
-Následující kód používá klienta Content Moderator společně s objektem [ImageModerationOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) k analýze imagí pro dospělé a pikantní obsah.
+Následující kód používá klienta Content Moderator společně s objektem [ImageModerationOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.imagemoderationoperations?view=azure-python) k analýze imagí pro dospělé a pikantní obsah.
 
 ### <a name="get-sample-images"></a>Získat ukázkové obrázky
 
@@ -218,7 +218,7 @@ Následující kód zkontroluje obrázek pro lidské obličeje a vytiskne výsle
 
 ## <a name="use-a-custom-image-list"></a>Použití vlastního seznamu obrázků
 
-Následující kód ukazuje, jak spravovat vlastní seznam imagí pro moderování obrázku. Tato funkce je užitečná v případě, že vaše platforma často přijímá instance stejné sady imagí, které chcete vymonitorovat. Udržováním seznamu těchto konkrétních imagí můžete zlepšit výkon. Třída [ListManagementImageListsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) vám umožňuje vytvořit seznam obrázků, spravovat jednotlivé obrázky v seznamu a porovnat ostatní image.
+Následující kód ukazuje, jak spravovat vlastní seznam imagí pro moderování obrázku. Tato funkce je užitečná v případě, že vaše platforma často přijímá instance stejné sady imagí, které chcete vymonitorovat. Udržováním seznamu těchto konkrétních imagí můžete zlepšit výkon. Třída [ListManagementImageListsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.listmanagementimagelistsoperations?view=azure-python) vám umožňuje vytvořit seznam obrázků, spravovat jednotlivé obrázky v seznamu a porovnat ostatní image.
 
 Vytvořte následující textové proměnné pro uložení adres URL imagí, které budete používat v tomto scénáři.
 
@@ -296,7 +296,7 @@ Pomocí následujícího kódu odstraňte daný seznam obrázků.
 
 Můžete použít knihovnu klienta Content Moderator Pythonu k zakládání obsahu do [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com) , aby ho lidé mohli zkontrolovat. Další informace o nástroji pro kontrolu najdete v [koncepční příručce k nástroji pro kontrolu](../../review-tool-user-guide/human-in-the-loop.md).
 
-Následující kód používá třídu [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) k vytvoření revize, načtení jeho ID a kontrolu jeho podrobností po přijetí lidského vstupu prostřednictvím webového portálu nástroje pro kontrolu.
+Následující kód používá třídu [ReviewsOperations](/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) k vytvoření revize, načtení jeho ID a kontrolu jeho podrobností po přijetí lidského vstupu prostřednictvím webového portálu nástroje pro kontrolu.
 
 ### <a name="get-review-credentials"></a>Získat pověření pro kontrolu
 
@@ -311,7 +311,7 @@ Přidejte následující kód k vytvoření a odeslání revize pro danou adresu
 
 ### <a name="get-review-details"></a>Získat podrobnosti o kontrole
 
-Pomocí následujícího kódu zkontrolujte podrobnosti dané recenze. Po vytvoření recenze můžete přejít k nástroji pro kontrolu sami a interagovat s obsahem. Informace o tom, jak to provést, najdete v [příručce k recenzi](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Až budete hotovi, můžete znovu spustit tento kód a načte výsledky procesu kontroly.
+Pomocí následujícího kódu zkontrolujte podrobnosti dané recenze. Po vytvoření recenze můžete přejít k nástroji pro kontrolu sami a interagovat s obsahem. Informace o tom, jak to provést, najdete v [příručce k recenzi](../../review-tool-user-guide/review-moderated-images.md). Až budete hotovi, můžete znovu spustit tento kód a načte výsledky procesu kontroly.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 
@@ -351,7 +351,7 @@ Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prost
 V tomto rychlém startu jste zjistili, jak pomocí Content Moderator knihovny Pythonu provádět úlohy moderování. V dalším kroku se dozvíte další informace o moderování imagí nebo jiných médií. Přečtěte si koncepční průvodce.
 
 > [!div class="nextstepaction"]
->[Koncepty moderování obrázků](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
+>[Koncepty moderování obrázků](../../image-moderation-api.md)
 
 * [Co je Azure Content Moderator?](../../overview.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py).

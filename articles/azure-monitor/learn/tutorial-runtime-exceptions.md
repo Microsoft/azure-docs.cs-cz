@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 057b211179c6932d4214e6118e3fa97b95145ba0
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357858"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926627"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -27,7 +27,7 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -47,11 +47,11 @@ Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.c
 Application Insights shromažďuje informace o selháních v aplikaci a umožňuje zobrazit jejich četnost pro různé operace, abyste se mohli zaměřit na ty s nejvyšším dopadem.  Potom můžete přejít k podrobnostem a identifikovat hlavní příčinu selhání.   
 
 1. Vyberte **Application Insights** a pak své předplatné.  
-2. Otevřete panel **Selhání** buď výběrem možnosti **Selhání** v nabídce **Prozkoumat**, nebo kliknutím na graf **Neúspěšné požadavky**.
+2. Otevřete panel **Selhání** buď výběrem možnosti **Selhání** v nabídce **Prozkoumat** , nebo kliknutím na graf **Neúspěšné požadavky** .
 
     ![Neúspěšné požadavky](media/tutorial-runtime-exceptions/failed-requests.png)
 
-3. Panel **Neúspěšné požadavky** ukazuje počet neúspěšných požadavků a počet ovlivněných uživatelů pro každou operaci v aplikaci.  Seřazením těchto informací podle počtu uživatelů můžete identifikovat selhání, která uživatele ovlivňují nejvíc.  V tomto příkladu jsou hlavními kandidáty na bližší zkoumání operace **GET Employees/Create** a **GET Customers/Details**, protože selhávají nejčastěji a ovlivňují nejvíc uživatelů.  Výběrem operace zobrazíte v pravém panelu další informace.
+3. Panel **Neúspěšné požadavky** ukazuje počet neúspěšných požadavků a počet ovlivněných uživatelů pro každou operaci v aplikaci.  Seřazením těchto informací podle počtu uživatelů můžete identifikovat selhání, která uživatele ovlivňují nejvíc.  V tomto příkladu jsou hlavními kandidáty na bližší zkoumání operace **GET Employees/Create** a **GET Customers/Details** , protože selhávají nejčastěji a ovlivňují nejvíc uživatelů.  Výběrem operace zobrazíte v pravém panelu další informace.
 
     ![Panel Neúspěšné požadavky](media/tutorial-runtime-exceptions/failed-requests-blade.png)
 
@@ -74,16 +74,16 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
 ## <a name="identify-failing-code"></a>Identifikace chyb kódu
 Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Následně máte možnost ladit zdrojový kód stažením snímku a jeho otevřením v aplikaci Visual Studio 2019 Enterprise.
 
-1. Ve vlastnostech výjimky klikněte na tlačítko **Otevřít snímek ladění**.
+1. Ve vlastnostech výjimky klikněte na tlačítko **Otevřít snímek ladění** .
 2. Otevře se panel **Snímek Ladění** se zásobníkem volání pro daný požadavek.  Kliknutím na kteroukoli metodu můžete zobrazit hodnoty všech místních proměnných v době požadavku.  Počínaje hlavní metodou v tomto příkladu vidíte místní proměnné, které nemají žádnou hodnotu.
 
     ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-3. První volání, která má platné hodnoty, je **ValidZipCode**, a my vidíme, že směrovací číslo bylo zadáno s písmeny, takže ho není možné převést na celé číslo.  To vypadá jako chyba v kódu, kterou je třeba opravit.
+3. První volání, která má platné hodnoty, je **ValidZipCode** , a my vidíme, že směrovací číslo bylo zadáno s písmeny, takže ho není možné převést na celé číslo.  To vypadá jako chyba v kódu, kterou je třeba opravit.
 
-    ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
+    ![Snímek obrazovky, který zobrazuje chybu v kódu, který je třeba opravit.    ](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Pak máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek**.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek** .
 5. Snímek se načte do aplikace Visual Studio.
 6. Nyní můžete spustit relaci ladění v Visual Studio Enterprise, která rychle identifikuje řádek kódu, který způsobil výjimku.
 
@@ -103,7 +103,7 @@ Všechna data shromážděná pomocí Application Insights jsou uložená ve slu
 Pokud propojíte Application Insights se sledovacím systémem, jako je Azure DevOps nebo GitHub, můžete pracovní položky vytvářet přímo z Application Insights.
 
 1. Vraťte se na panel **Vlastnosti výjimky** ve službě Application Insights.
-2. Klikněte na **Nová pracovní položka**.
+2. Klikněte na **Nová pracovní položka** .
 3. Otevře se panel **Nová pracovní položka** s předvyplněnými podrobnostmi o výjimce.  Před uložením můžete doplnit další údaje.
 
     ![Nová pracovní položka](media/tutorial-runtime-exceptions/new-work-item.png)

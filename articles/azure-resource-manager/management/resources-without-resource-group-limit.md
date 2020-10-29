@@ -2,13 +2,13 @@
 title: Prostředky bez omezení počtu 800
 description: Obsahuje seznam typů prostředků Azure, které můžou mít víc než 800 instancí ve skupině prostředků.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330753"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913496"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Prostředky, které nejsou omezeny na 800 instancí na skupinu prostředků
 
@@ -81,6 +81,7 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
+* Labs/virtualMachines – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 * časových
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
@@ -173,6 +174,10 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * workspaceCollections – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
+
+* kapacity – ve výchozím nastavení omezen na 800 instancí. Toto omezení se dá zvýšit kontaktováním podpory.
+
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 * obsažené
@@ -185,18 +190,21 @@ U některých typů prostředků musíte kontaktovat podporu, aby byl limit inst
 
 * obsažené
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Microsoft. jednotného
 
-* aplikace
-* containerGroups
-* brány
-* sítí
-* záleží
-* volumes
+* accounts
+* účty/accountQuotaPolicies
+* účty/groupPolicies
+* účty/úlohy
+* účty/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* servery/databáze
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 

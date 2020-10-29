@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f74fdc9cd30e1dfbd4df6c94842a9dccb435ef4
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73744785"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913649"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Export nebo odstranění uživatelských dat v Content Moderator
 
-Content Moderator shromažďuje data uživatelů za účelem provozu služby, ale zákazníci mají plnou kontrolu nad tím, že budou data zobrazovat, exportovat a odstraňovat pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) a [rozhraní API pro moderování a kontrolu](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference).
+Content Moderator shromažďuje data uživatelů za účelem provozu služby, ale zákazníci mají plnou kontrolu nad tím, že budou data zobrazovat, exportovat a odstraňovat pomocí [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) a [rozhraní API pro moderování a kontrolu](./api-reference.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -33,4 +33,3 @@ Další informace o tom, jak exportovat a odstranit data uživatelů v Content M
 | Značky | Není k dispozici | Použijte ikonu **Odstranit** dostupnou pro každou značku na stránce zkontrolovat nastavení značky uživatelského rozhraní. Nebo použijte tlačítko **Odstranit tým** na stránce zkontrolovat nastavení týmu [uživatelského rozhraní](https://contentmoderator.cognitive.microsoft.com/) . |
 | Recenze | Volání [rozhraní get View API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) | Použijte tlačítko **Odstranit tým** na stránce zkontrolovat nastavení týmu [uživatelského rozhraní](https://contentmoderator.cognitive.microsoft.com/) .
 | Uživatelé | Není k dispozici | Použijte ikonu **Odstranit** dostupnou pro každého uživatele na stránce zkontrolovat nastavení týmu [uživatelského rozhraní](https://contentmoderator.cognitive.microsoft.com/) . Nebo použijte tlačítko **Odstranit tým** na stránce zkontrolovat nastavení týmu [uživatelského rozhraní](https://contentmoderator.cognitive.microsoft.com/) . |
-

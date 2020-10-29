@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 187d430e1475a85118be3811520824d6f8ca3aa7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: aedaedd29082c9ad51c03aa919181649a6dcf281
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636506"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913343"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopírování a transformace dat v Azure Data Lake Storage Gen2 pomocí Azure Data Factory
 
@@ -46,10 +46,6 @@ Pro aktivitu kopírování můžete pomocí tohoto konektoru:
 - [Při kopírování zachovat metadata souboru](#preserve-metadata-during-copy).
 - Při kopírování z Azure Data Lake Storage Gen1/Gen2 [zachovat seznamy ACL](#preserve-acls) .
 
->[!IMPORTANT]
->Pokud povolíte možnost **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** při Azure Storage nastavení brány firewall a chcete použít prostředí Azure Integration runtime pro připojení k Data Lake Storage Gen2, musíte pro adls Gen2 použít [spravované ověřování identity](#managed-identity) .
-
-
 ## <a name="get-started"></a>Začínáme
 
 >[!TIP]
@@ -68,7 +64,8 @@ Konektor Azure Data Lake Storage Gen2 podporuje následující typy ověřován�
 - [Spravované identity pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
->Když použijete základnu k načtení dat do služby Azure synapse Analytics (dříve SQL Data Warehouse), pokud je váš zdrojový Data Lake Storage Gen2 nakonfigurovaný pomocí Virtual Network koncového bodu, musíte použít spravované ověřování identity podle požadavků v základu. Viz část [spravované ověřování identity](#managed-identity) s dalšími požadavky na konfiguraci.
+>- Pokud chcete pomocí veřejného prostředí Azure Integration runtime připojit k Data Lake Storage Gen2 pomocí možnosti **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** , který je povolený v bráně firewall Azure Storage, musíte použít [spravované ověřování identity](#managed-identity).
+>- Pokud k načtení dat do služby Azure synapse Analytics použijete příkaz Base nebo COPY, pokud je váš zdrojový nebo pracovní Data Lake Storage Gen2 nakonfigurovaný s koncovým bodem Azure Virtual Network, musíte použít spravované ověřování identity podle požadavků synapse. Viz část [spravované ověřování identity](#managed-identity) s dalšími požadavky na konfiguraci.
 
 ### <a name="account-key-authentication"></a>Ověřování klíčů účtu
 
@@ -210,7 +207,7 @@ Pokud chcete používat spravované identity pro ověřování prostředků Azur
 >Pokud použijete Data Factory uživatelské rozhraní k vytváření a spravovaná identita není nastavena pomocí role čtenář/Přispěvatel dat objektů BLOB úložiště v nástroji IAM, při provádění testovacího připojení nebo procházení/procházení složek zvolte možnost Test připojení k cestě k souboru nebo procházet ze zadané cesty a zadejte cestu s oprávněním **číst + spustit** , aby bylo možné pokračovat.
 
 >[!IMPORTANT]
->Pokud použijete základnu k načtení dat z Data Lake Storage Gen2 do služby Azure synapse Analytics (dřív SQL Data Warehouse), při použití spravovaného ověřování identity pro Data Lake Storage Gen2 se ujistěte, že jste v těchto pokynech také provedli kroky 1 a 2 v [těchto pokynech](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) : 1) Zaregistrujte se Azure Active Directory (Azure AD) a 2) přiřaďte k vašemu serveru roli Přispěvatel dat objektu BLOB úložiště. zbytek se zpracovává pomocí Data Factory. Pokud je váš Data Lake Storage Gen2 nakonfigurovaný s koncovým bodem Azure Virtual Network, aby se k načtení dat z něj používala základna, musíte použít spravované ověřování identity podle požadavků základu.
+>Pokud k načtení dat z Data Lake Storage Gen2 do služby Azure synapse Analytics použijete příkaz Base nebo COPY, při použití spravovaného ověřování identity pro Data Lake Storage Gen2 se ujistěte, že provedete také kroky 1 až 3 v [těchto pokynech](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tyto kroky zaregistrují váš server ve službě Azure AD a přiřadí roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru. Data Factory zpracuje zbytek. Pokud nakonfigurujete úložiště objektů BLOB pomocí koncového bodu Azure Virtual Network, musíte taky **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v části Azure Storage **brány firewall účtů a nastavení virtuálních sítí** , jak to vyžaduje synapse.
 
 Tyto vlastnosti jsou pro propojenou službu podporované:
 

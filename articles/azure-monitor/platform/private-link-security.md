@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461426"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926797"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití Azure Private Linku k bezpečnému propojení sítí k Azure Monitoru
 
@@ -90,18 +90,18 @@ V následující topologii:
 
 Začněte vytvořením prostředku oboru privátního propojení Azure Monitor.
 
-1. V Azure Portal **vytvořte prostředek** a vyhledejte **Azure monitor oboru privátního odkazu**.
+1. V Azure Portal **vytvořte prostředek** a vyhledejte **Azure monitor oboru privátního odkazu** .
 
    ![Najít Azure Monitor oboru privátního odkazu](./media/private-link-security/ampls-find-1c.png)
 
-2. Klikněte na **vytvořit**.
+2. Klikněte na **vytvořit** .
 3. Vyberte předplatné a skupinu prostředků.
 4. Zadejte název AMPLS. Je nejvhodnější použít název, který je jasný a jaký je účel a hranice zabezpečení, pro které se rozsah používá, aby někdo nechtěně nenarušil hranice zabezpečení sítě. Například "AppServerProdTelem".
-5. Klikněte na **Zkontrolovat a vytvořit**. 
+5. Klikněte na **Zkontrolovat a vytvořit** . 
 
    ![Vytvořit Azure Monitor obor privátních odkazů](./media/private-link-security/ampls-create-1d.png)
 
-6. Potvrďte ověření a pak klikněte na **vytvořit**.
+6. Potvrďte ověření a pak klikněte na **vytvořit** .
 
 ## <a name="connect-azure-monitor-resources"></a>Připojit Azure Monitor prostředky
 
@@ -112,40 +112,45 @@ AMPLS se můžete připojit jako první k soukromým koncovým bodům a potom k 
 
     ![Snímek obrazovky s výběrem oboru uživatelského rozhraní](./media/private-link-security/ampls-select-2.png)
 
+> [!NOTE]
+> Odstranění prostředků Azure Monitor vyžaduje, abyste je nejdřív odpojíte od všech objektů AMPLS, ke kterým jsou připojené. Prostředky připojené k AMPLS není možné odstranit.
+
 ### <a name="connect-to-a-private-endpoint"></a>Připojení k privátnímu koncovému bodu
 
 Teď, když máte prostředky připojené k AMPLS, vytvořte privátní koncový bod pro připojení k naší síti. Tuto úlohu můžete provést v [Azure Portal privátním linkovém centru](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)nebo v Azure monitor oboru privátních odkazů, jak to udělalo v tomto příkladu.
 
-1. V prostředku oboru klikněte v nabídce prostředky na možnost **připojení privátního koncového bodu** . Kliknutím na **soukromý koncový bod** spusťte proces vytváření koncových bodů. Můžete také schválit připojení, která byla zahájena v centru privátních propojení, a to tak, že je vyberete a kliknete na tlačítko **schválit**.
+1. V prostředku oboru klikněte v nabídce prostředky na možnost **připojení privátního koncového bodu** . Kliknutím na **soukromý koncový bod** spusťte proces vytváření koncových bodů. Můžete také schválit připojení, která byla zahájena v centru privátních propojení, a to tak, že je vyberete a kliknete na tlačítko **schválit** .
 
     ![Snímek obrazovky uživatelského rozhraní připojení privátního koncového bodu](./media/private-link-security/ampls-select-private-endpoint-connect-3.png)
 
 2. Vyberte předplatné, skupinu prostředků a název koncového bodu a oblast, ve které by měla být aktivní. Region musí být stejná oblast jako virtuální síť, ke které se připojíte.
 
-3. Klikněte na **Další: prostředek**. 
+3. Klikněte na **Další: prostředek** . 
 
 4. Na obrazovce prostředek
 
    a. Vyberte **předplatné** , které obsahuje prostředek privátního oboru Azure monitor. 
 
-   b. Jako **typ prostředku**vyberte **Microsoft. Insights/privateLinkScopes**. 
+   b. Jako **typ prostředku** vyberte **Microsoft. Insights/privateLinkScopes** . 
 
    c. V rozevíracím seznamu **prostředek** vyberte obor privátního propojení, který jste vytvořili dříve. 
 
-   d. Klikněte na **Další: >konfigurace **.
+   d. Klikněte na **Další: >konfigurace** .
       ![Snímek obrazovky výběru vytvoření privátního koncového bodu](./media/private-link-security/ampls-select-private-endpoint-create-4.png)
 
 5. V podokně Konfigurace
 
    a.    Vyberte **virtuální síť** a **podsíť** , ke kterým se chcete připojit, k prostředkům Azure monitor. 
  
-   b.    Pro **integraci s privátní zónou DNS**vyberte **Ano** a umožněte tak, aby se automaticky vytvořila nová zóna privátní DNS. Skutečné zóny DNS se mohou lišit od toho, co se zobrazuje na snímku obrazovky níže. 
+   b.    Pro **integraci s privátní zónou DNS** vyberte **Ano** a umožněte tak, aby se automaticky vytvořila nová zóna privátní DNS. Skutečné zóny DNS se mohou lišit od toho, co se zobrazuje na snímku obrazovky níže. 
+   > [!NOTE]
+   > Pokud zvolíte **ne** a dáváte přednost ruční správě záznamů DNS, nejprve dokončete nastavení privátního koncového bodu a konfigurace AMPLS. Pak nakonfigurujte DNS podle pokynů v tématu [Konfigurace služby DNS privátního koncového bodu Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-dns). Ujistěte se, že nechcete vytvářet prázdné záznamy jako přípravu pro nastavení privátního odkazu. Vytvořené záznamy DNS můžou přepsat existující nastavení a ovlivnit vaše připojení k Azure Monitor.
  
-   c.    Klikněte na **Zkontrolovat a vytvořit**.
+   c.    Klikněte na **Zkontrolovat a vytvořit** .
  
    d.    Nechte ověření Pass. 
  
-   e.    Klikněte na **Vytvořit**. 
+   e.    Klikněte na **Vytvořit** . 
 
     ![Snímek obrazovky s výběrem vytvořit privátní pro endpoint2 u](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -159,7 +164,7 @@ Přejděte na Azure Portal. V Log Analytics prostředku pracovního prostoru je 
 
 Nejprve můžete připojit tento prostředek Log Analytics k jakýmkoli Azure Monitorm oborům privátního propojení, ke kterým máte přístup. Klikněte na tlačítko **Přidat** a vyberte Azure monitor obor privátních odkazů.  Kliknutím na **použít** ho připojte. Na této obrazovce se zobrazí všechny připojené obory. Když se toto připojení připojuje k tomuto pracovnímu prostoru, umožní síťovému provozu v připojených virtuálních sítích. Vytvoření připojení má stejný účinek jako připojení z oboru, jako jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources).  
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
+Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních odkazů uvedených výše. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne** , počítače mimo připojené obory nemůžou do tohoto pracovního prostoru nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne** , počítače mimo rozsah nebudou mít přístup k datům v tomto pracovním prostoru. Tato data zahrnují přístup k sešitům, řídicím panelům, klientským prostředím založeném na rozhraní API pro dotazy, přehledům v Azure Portal a dalším. Prostředí spuštěné mimo Azure Portal a dotaz Log Analytics data musí být spuštěná také v rámci virtuální sítě s privátním propojením.
 
 Omezení přístupu tímto způsobem se nevztahuje na Azure Resource Manager a má proto tato omezení:
 * Přístup k datům – při blokování dotazů z veřejných sítí se používá pro většinu Log Analyticsch prostředí, některá prostředí dotazují data prostřednictvím Azure Resource Manager a proto se nebudou moci dotazovat na data, pokud se pro Správce prostředků nepoužijí nastavení privátního propojení (funkce už brzy). Patří mezi ně například Azure Monitor řešení, sešity a přehledy a konektor LogicApp.
@@ -185,9 +190,9 @@ Přejděte na Azure Portal. Ve složce Azure Monitor Application Insights prost�
 
 ![Izolace sítě AI](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
-Nejdřív můžete připojit tento prostředek Application Insights, abyste Azure Monitor obory privátních odkazů, ke kterým máte přístup. Klikněte na tlačítko **Přidat** a vyberte **Azure monitor obor privátních odkazů**. Kliknutím na použít ho připojte. Na této obrazovce se zobrazí všechny připojené obory. Když se toto připojení připojuje k této součásti, umožní síťovému provozu v propojených virtuálních sítích. Vytvoření připojení má stejný účinek jako připojení z oboru, jako jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources). 
+Nejdřív můžete připojit tento prostředek Application Insights, abyste Azure Monitor obory privátních odkazů, ke kterým máte přístup. Klikněte na tlačítko **Přidat** a vyberte **Azure monitor obor privátních odkazů** . Kliknutím na použít ho připojte. Na této obrazovce se zobrazí všechny připojené obory. Když se toto připojení připojuje k této součásti, umožní síťovému provozu v propojených virtuálních sítích. Vytvoření připojení má stejný účinek jako připojení z oboru, jako jsme provedli [připojení Azure Monitorch prostředků](#connect-azure-monitor-resources). 
 
-Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních vazeb, které jsou uvedené dřív. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne**, počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne**, počítače mimo rozsah nebudou mít přístup k datům v tomto prostředku Application Insights. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
+Za druhé můžete řídit, jak se tento prostředek dá oslovit mimo rozsahy privátních vazeb, které jsou uvedené dřív. Pokud nastavíte možnost **povolí přístup k veřejné síti pro** ingestování na **ne** , počítače nebo sady SDK mimo připojené obory nemůžou do této součásti nahrávat data. Pokud nastavíte možnost **povolí přístup k veřejné síti pro dotazy** na **ne** , počítače mimo rozsah nebudou mít přístup k datům v tomto prostředku Application Insights. Tato data zahrnují přístup k protokolům APM, metrikám a živému streamu metrik a také k prostředí postaveným nahoře, jako jsou sešity, řídicí panely, prostředí klientů založené na rozhraní API, přehledy v Azure Portal a další. 
 
 Všimněte si, že prostředí pro využívání mimo portál musí také běžet v rámci veřejné virtuální sítě, která obsahuje monitorované úlohy. 
 
@@ -235,7 +240,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>portál Azure
 
-Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do skupiny zabezpečení sítě přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala**, **AzureResourceManager**, **AzureFrontDoor. FirstParty**a **AzureFrontDoor. front-endu** .
+Chcete-li použít Azure Monitor portálu, jako je Application Insights a Log Analytics, je nutné, aby byla rozšíření Azure Portal a Azure Monitor dostupná v privátních sítích. Do skupiny zabezpečení sítě přidejte [značky služby](../../firewall/service-tags.md) **azureactivedirectory selhala** , **AzureResourceManager** , **AzureFrontDoor. FirstParty** a **AzureFrontDoor. front-endu** .
 
 ### <a name="programmatic-access"></a>Programový přístup
 

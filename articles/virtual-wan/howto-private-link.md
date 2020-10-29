@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306629"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913751"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>Použití privátního odkazu ve virtuální síti WAN
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-Jak vidíte, používáme speciální dotaz SQL, který nám poskytuje zdrojovou IP adresu, kterou SQL Server uvidí od klienta. V takovém případě server uvidí klienta s jeho privátní IP adresou ( `10.1.3.75` ), což znamená, že přenos neprojde veřejným internetem, ale přímo do privátního koncového bodu.
+Jak vidíte, používáme speciální dotaz SQL, který nám poskytuje zdrojovou IP adresu, kterou SQL Server uvidí od klienta. V takovém případě server uvidí klienta s jeho privátní IP adresou ( `10.1.3.75` ), což znamená, že provoz přechází z virtuální sítě přímo do privátního koncového bodu.
 
 Všimněte si, že pokud chcete, aby `username` `password` Příklady v této příručce fungovaly, musíte nastavit proměnné a tak, aby odpovídaly přihlašovacím údajům definovaným v Azure SQL Database.
 

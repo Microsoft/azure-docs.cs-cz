@@ -1,14 +1,14 @@
 ---
 title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578525"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926083"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -28,14 +28,15 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure
 
 |Tabulky grafů prostředků |Description |
 |---|---|
-|Zdroje a prostředky |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
+|Zdroje informací |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
 |ResourceContainers |Zahrnuje předplatné (ve verzi Preview- `Microsoft.Resources/subscriptions` ) a `Microsoft.Resources/subscriptions/resourcegroups` typy prostředků a data skupiny prostředků (). |
 |AdvisorResources |Zahrnuje prostředky _související_ s `Microsoft.Advisor` . |
 |AlertsManagementResources |Zahrnuje prostředky _související_ s `Microsoft.AlertsManagement` . |
 |GuestConfigurationResources |Zahrnuje prostředky _související_ s `Microsoft.GuestConfiguration` . |
-|HealthResources |Zahrnuje prostředky _související_ s `Microsoft.ResourceHealth` . |
 |MaintenanceResources |Zahrnuje prostředky _související_ s `Microsoft.Maintenance` . |
+|PolicyResources |Zahrnuje prostředky _související_ s `Microsoft.PolicyInsights` . ( **Preview** )|
 |SecurityResources |Zahrnuje prostředky _související_ s `Microsoft.Security` . |
+|ServiceHealthResources |Zahrnuje prostředky _související_ s `Microsoft.ResourceHealth` . |
 
 Úplný seznam včetně typů prostředků najdete v tématu [referenční informace: podporované tabulky a typy prostředků](../reference/supported-tables-resources.md).
 
@@ -44,7 +45,7 @@ Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure
 
 Pomocí Průzkumníka grafů prostředků na portálu můžete zjistit, jaké typy prostředků jsou v každé tabulce k dispozici. Jako alternativu použijte dotaz, jako je například `<tableName> | distinct type` , abyste získali seznam typů prostředků, které podporuje daná tabulka grafu prostředků ve vašem prostředí.
 
-Následující dotaz ukazuje jednoduché `join` . Výsledek dotazu smíchá sloupce dohromady a všechny duplicitní názvy sloupců z Spojené tabulky, _ResourceContainers_ v tomto příkladu, jsou připojeny s **1**. Jelikož tabulka _ResourceContainers_ má typy pro předplatné i skupiny prostředků, může být použit buď typ pro připojení k tabulce prostředků z tabulky _prostředků_ .
+Následující dotaz ukazuje jednoduché `join` . Výsledek dotazu smíchá sloupce dohromady a všechny duplicitní názvy sloupců z Spojené tabulky, _ResourceContainers_ v tomto příkladu, jsou připojeny s **1** . Jelikož tabulka _ResourceContainers_ má typy pro předplatné i skupiny prostředků, může být použit buď typ pro připojení k tabulce prostředků z tabulky _prostředků_ .
 
 ```kusto
 Resources
@@ -52,7 +53,7 @@ Resources
 | limit 1
 ```
 
-Následující dotaz ukazuje složitější použití `join` . Dotaz omezí propojenou tabulku na prostředky předplatného a s tím, že `project` zahrne pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _subname_. Přejmenování pole zabraňuje `join` jeho přidání jako _název1_ , protože pole již v _prostředcích_existuje. Původní tabulka je filtrována pomocí `where` a následující `project` obsahuje sloupce z obou tabulek. Výsledkem dotazu je jeden Trezor klíčů, který zobrazuje typ, název trezoru klíčů a název předplatného, ve kterém je.
+Následující dotaz ukazuje složitější použití `join` . Dotaz omezí propojenou tabulku na prostředky předplatného a s tím, že `project` zahrne pouze původní pole _SubscriptionId_ a pole _název_ bylo přejmenováno na _subname_ . Přejmenování pole zabraňuje `join` jeho přidání jako _název1_ , protože pole již v _prostředcích_ existuje. Původní tabulka je filtrována pomocí `where` a následující `project` obsahuje sloupce z obou tabulek. Výsledkem dotazu je jeden Trezor klíčů, který zobrazuje typ, název trezoru klíčů a název předplatného, ve kterém je.
 
 ```kusto
 Resources
@@ -67,7 +68,7 @@ Resources
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Rozšířené vlastnosti (Preview)
 
-Jako funkce ve _verzi Preview_ mají některé typy prostředků v grafu zdrojů k dispozici další vlastnosti související s typem, které jsou dostupné pro dotaz nad vlastnostmi poskytovanými Azure Resource Manager. Tato sada hodnot známá jako _Rozšířené vlastnosti_existuje v podporovaném typu prostředku v `properties.extended` . Chcete-li zjistit, které typy prostředků mají _Rozšířené vlastnosti_, použijte následující dotaz:
+Jako funkce ve _verzi Preview_ mají některé typy prostředků v grafu zdrojů k dispozici další vlastnosti související s typem, které jsou dostupné pro dotaz nad vlastnostmi poskytovanými Azure Resource Manager. Tato sada hodnot známá jako _Rozšířené vlastnosti_ existuje v podporovaném typu prostředku v `properties.extended` . Chcete-li zjistit, které typy prostředků mají _Rozšířené vlastnosti_ , použijte následující dotaz:
 
 ```kusto
 Resources
@@ -121,7 +122,7 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 
 |KQL |Ukázkový dotaz grafu prostředků |Poznámky |
 |---|---|---|
-|[výpočtu](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
+|[count](/azure/kusto/query/countoperator) |[Počet trezorů klíčů](../samples/starter.md#count-keyvaults) | |
 |[znak](/azure/kusto/query/distinctoperator) |[Zobrazit odlišné hodnoty pro konkrétní alias](../samples/starter.md#distinct-alias-values) | |
 |[zvětšení](/azure/kusto/query/extendoperator) |[Počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os) | |
 |[zúčastnit](/azure/kusto/query/joinoperator) |[Trezor klíčů s názvem předplatného](../samples/advanced.md#join) |Podporované charaktery spojení: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [LeftOuter](/azure/kusto/query/joinoperator#left-outer-join). Limit 3 `join` v jednom dotazu. Vlastní strategie spojení, jako je připojení všesměrového vysílání, nejsou povolené. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
@@ -135,15 +136,15 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[Souhrn](/azure/kusto/query/summarizeoperator) |[Počet prostředků Azure](../samples/starter.md#count-resources) |Jenom zjednodušená první stránka |
 |[take](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum `limit` . Nefunguje s [přeskočením](./work-with-data.md#skipping-records). |
 |[vrchol](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
-|[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[where](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
+|[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_ . Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
+|[,](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 
 ## <a name="query-scope"></a>Rozsah dotazu
 
 Rozsah předplatných, ze kterých jsou vráceny prostředky, závisí na metodě přístupu ke grafu zdrojů. Azure CLI a Azure PowerShell naplní seznam předplatných, která se mají zahrnout do žádosti na základě kontextu oprávněného uživatele. Seznam předplatných lze pro každou z nich ručně definovat pomocí parametrů předplatné a **předplatného** **v uvedeném** pořadí.
 V REST API a všech ostatních sadách SDK musí být seznam předplatných, které mají být zahrnuté prostředky, explicitně definován jako součást požadavku.
 
-Ve verzi **Preview**verze REST API `2020-04-01-preview` přidá vlastnost pro určení oboru dotazu do [skupiny pro správu](../../management-groups/overview.md). Toto rozhraní API ve verzi Preview také umožňuje volitelnou vlastnost Subscription. Pokud není definována skupina pro správu nebo seznam předplatných, obor dotazu je všechny prostředky, včetně delegovaných prostředků [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) , ke kterým má ověřený uživatel přístup. Nová `managementGroupId` vlastnost převezme ID skupiny pro správu, které se liší od názvu skupiny pro správu. `managementGroupId`Je-li parametr zadán, jsou zde zahrnuty prostředky z prvních 5000 předplatných v rámci nebo pod určenou hierarchií skupin pro správu. `managementGroupId` nelze použít ve stejnou dobu jako `subscriptions` .
+Ve verzi **Preview** verze REST API `2020-04-01-preview` přidá vlastnost pro určení oboru dotazu do [skupiny pro správu](../../management-groups/overview.md). Toto rozhraní API ve verzi Preview také umožňuje volitelnou vlastnost Subscription. Pokud není definována skupina pro správu nebo seznam předplatných, obor dotazu je všechny prostředky, včetně delegovaných prostředků [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) , ke kterým má ověřený uživatel přístup. Nová `managementGroupId` vlastnost převezme ID skupiny pro správu, které se liší od názvu skupiny pro správu. `managementGroupId`Je-li parametr zadán, jsou zde zahrnuty prostředky z prvních 5000 předplatných v rámci nebo pod určenou hierarchií skupin pro správu. `managementGroupId` nelze použít ve stejnou dobu jako `subscriptions` .
 
 Příklad: dotazování všech prostředků v rámci hierarchie skupiny pro správu s názvem moje skupina pro správu s ID ' myMG '.
 
@@ -168,7 +169,7 @@ Některé názvy vlastností, jako jsou například ty, které obsahují `.` neb
 
 - `.` – Název vlastnosti zabalíte takto: `['propertyname.withaperiod']`
   
-  Příklad dotazu, který zabalí vlastnost _OData. Type_:
+  Příklad dotazu, který zabalí vlastnost _OData. Type_ :
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
@@ -178,7 +179,7 @@ Některé názvy vlastností, jako jsou například ty, které obsahují `.` neb
 
   - **bash** - `\`
 
-    Příklad dotazu, který řídí _ \$ typ_ vlastnosti v bash:
+    Příklad dotazu, který řídí _\$ typ_ vlastnosti v bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -188,7 +189,7 @@ Některé názvy vlastností, jako jsou například ty, které obsahují `.` neb
 
   - **Prostředí** - ``` ` ```
 
-    Příklad dotazu, který řídí _ \$ typ_ vlastnosti v PowerShellu:
+    Příklad dotazu, který řídí _\$ typ_ vlastnosti v PowerShellu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

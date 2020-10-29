@@ -3,12 +3,12 @@ title: Připojení k aplikaci Apache Spark – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak používat Apache Spark s Azure Event Hubs pro Kafka.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 8535b7dc81da8c46685e12c3861793b919296cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061576"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913734"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Připojení aplikace Apache Spark k Azure Event Hubs
 Tento kurz vás provede připojením aplikace Spark k Event Hubs pro streamování v reálném čase. Tato integrace umožňuje streamování bez nutnosti měnit klienty protokolu nebo spouštět vlastní clustery Kafka nebo Zookeeper. Tento kurz vyžaduje Apache Spark v 2.4 + a Apache Kafka v 2.0 +.
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Čtení ze služby Event Hubs pro ekosystém Kafka
 > * Zápis do služby Event Hubs pro ekosystém Kafka
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že máte následující:
 -   Předplatné Azure. Pokud žádné nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
@@ -62,7 +62,7 @@ val df = spark.readStream
     .option("kafka.request.timeout.ms", "60000")
     .option("kafka.session.timeout.ms", "30000")
     .option("kafka.group.id", GROUP_ID)
-    .option("failOnDataLoss", "false")
+    .option("failOnDataLoss", "true")
     .load()
 
 //Use dataframe like normal (in this example, write to console)

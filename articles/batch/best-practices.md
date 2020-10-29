@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102774"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913224"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -20,7 +20,7 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
 
 ### <a name="pool-configuration-and-naming"></a>Konfigurace fondu a názvy
 
-- **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele**. Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Režim přidělování fondů** Při vytváření účtu Batch si můžete vybrat mezi dvěma režimy přidělování fondů: předplatné **služby Batch** nebo **uživatele** . Ve většině případů byste měli použít výchozí režim služby Batch, ve kterém se fondy přidělují na pozadí v předplatných spravovaných dávkou. V alternativním režimu Předplatné uživatele se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Účty předplatného uživatele se primárně používají k zajištění důležité, ale malé podmnožiny scénářů. Další informace o režimu předplatného uživatele najdete v [Další konfiguraci pro režim předplatného uživatele](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Při určování úlohy na mapování fondu zvažte čas spuštění úlohy a úlohy.**
     Pokud máte úlohy skládající se hlavně z krátkých spuštěných úloh a očekávaného celkového počtu úloh je malý, takže celková Očekávaná doba běhu úlohy není dlouhá, nepřiřazujte nový fond pro každou úlohu. Čas přidělení uzlů sníží dobu běhu úlohy.
@@ -41,7 +41,7 @@ Tento článek pojednává o shromažďování osvědčených postupů pro efekt
 Doba života fondu se může lišit v závislosti na metodě přidělování a parametrech, které se vztahují ke konfiguraci fondu. Fondy můžou mít v libovolném časovém okamžiku libovolnou dobu života a proměnlivý počet výpočetních uzlů ve fondu. Vaše zodpovědnost za správu výpočetních uzlů ve fondu buď výslovně, nebo prostřednictvím funkcí poskytovaných službou (automatické škálování nebo automatického fondu).
 
 - **Udržujte fondy v čerstvém stavu.**
-    Při každém několika měsících byste měli své fondy změnit na nula, abyste měli jistotu, že získáte nejnovější aktualizace agenta uzlů a opravy chyb. Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
+    Při každém několika měsících byste měli své fondy změnit na nula, abyste měli jistotu, že získáte [nejnovější aktualizace agenta uzlů a opravy chyb](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md). Váš fond nebude dostávat aktualizace agenta uzlu, pokud není znovu vytvořen, nebo se změnila velikost na 0 výpočetních uzlů. Než znovu vytvoříte nebo změníte velikost fondu, doporučujeme, abyste si stáhli všechny protokoly agenta uzlů pro účely ladění, jak je popsáno v části [uzly](#nodes) .
 
 - **Opětovné vytvoření fondu** Na podobném upozornění se nedoporučuje každý den odstranit a znovu vytvořit fondy. Místo toho vytvořte nový fond a aktualizujte stávající úlohy tak, aby odkazovaly na nový fond. Po přesunutí všech úkolů do nového fondu odstraňte starý fond.
 
@@ -67,7 +67,7 @@ Fondy se dají vytvářet pomocí imagí třetích stran publikovaných na Azure
 
 ### <a name="azure-region-dependency"></a>Závislost oblasti Azure
 
-Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení*. Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
+Doporučujeme, abyste nezávislí na jedné oblasti Azure v případě, že máte časově citlivou nebo produkční úlohu. V některých případech dochází k problémům, které mohou ovlivnit celou oblast. Například pokud vaše zpracování potřebuje spustit v určitou dobu, zvažte možnost škálovat fond v hlavní oblasti *dobře před časem zahájení* . Pokud se škálování fondu nepovede, můžete se vrátit k vertikálnímu navýšení kapacity fondu v oblasti zálohování (nebo oblastech). Fondy napříč několika účty v různých oblastech poskytují připravenou a snadno dostupnou zálohu, pokud se něco pokazilo s jiným fondem. Další informace najdete v tématu [Návrh aplikace pro zajištění vysoké dostupnosti](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Úlohy
 

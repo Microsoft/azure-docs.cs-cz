@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f4e429d9c5eeee382d59a294a11204f674b1f546
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911507"
+ms.locfileid: "92926032"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -85,7 +85,7 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
@@ -216,12 +216,11 @@ Mějte na paměti následující omezení/požadavky:
   - Musí existovat v době nasazení. 
   - Zásady přístupu Key Vault musí být nastavené pro identitu VM/VMSS pomocí spravované identity. Další informace najdete v tématu [ověření Key Vault](../../key-vault/general/authentication.md) a [přiřazení zásad Key Vault přístupu](../../key-vault/general/assign-access-policy-cli.md).
 
-## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
-
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 * Existuje omezení počtu observedCertificates, která můžete nastavit?
   Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
+
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
@@ -243,6 +242,14 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>Použití symlink
+
+Symbolické odkazy nebo symbolických odkazů jsou v podstatě pokročilé zkratky. Abyste se vyhnuli monitorování složky a k automatickému získání nejnovějšího certifikátu, můžete použít tento symlink `([VaultName].[CertificateName])` k získání nejnovější verze certifikátu v systému Linux.
+
+### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+* Existuje omezení počtu observedCertificates, která můžete nastavit?
+  Ne, Key Vault rozšíření virtuálního počítače nemá omezení počtu observedCertificates.
 
 ### <a name="support"></a>Podpora
 

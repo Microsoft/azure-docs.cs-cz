@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332385"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913513"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Příklad: použití funkce rozsáhlého škálování
 
@@ -31,7 +31,7 @@ Ukázky jsou napsány v jazyce C# pomocí klientské knihovny Azure Cognitive Se
 
 ## <a name="step-1-initialize-the-client-object"></a>Krok 1: inicializace objektu klienta
 
-Při použití klientské knihovny pro tvář se klíč předplatného a koncový bod předplatného předávají prostřednictvím konstruktoru třídy FaceClient. Například:
+Při použití klientské knihovny pro tvář se klíč předplatného a koncový bod předplatného předávají prostřednictvím konstruktoru třídy FaceClient. Příklad:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -65,7 +65,7 @@ Přidejte všechny plošky a osoby ze strany Person do nové LargePersonGroup. D
 | Rozhraní API kolekce FaceList | Rozhraní API kolekce LargeFaceList |
 |:---:|:---:|
 | Vytvořit | Vytvořit |
-| Odstranit | Delete |
+| Odstranit | Odstranit |
 | Získat | Získat |
 | Seznam | Seznam |
 | Aktualizace | Aktualizace |
@@ -232,7 +232,7 @@ Příklad pracovního postupu:
 
 Pokud je přijatelné poměrně dlouhé latence, nemusíte aktivovat operaci vlaku hned po přidání nových dat. Místo toho můžete operaci Train oddělit od hlavní logiky a spouštět ji pravidelně. Tato strategie je vhodná pro dynamické scénáře s přijatelnou latencí. Dá se použít ke statickým scénářům k dalšímu snížení četnosti vlaků.
 
-Předpokládejme, že je `TrainLargePersonGroup` funkce podobná `TrainLargeFaceList` . Typická implementace samostatného školení na LargePersonGroup vyvoláním [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) třídy v `System.Timers` je:
+Předpokládejme, že je `TrainLargePersonGroup` funkce podobná `TrainLargeFaceList` . Typická implementace samostatného školení na LargePersonGroup vyvoláním [`Timer`](/dotnet/api/system.timers.timer) třídy v `System.Timers` je:
 
 ```csharp
 private static void Main()

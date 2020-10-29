@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931552"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913479"
 ---
 # <a name="specify-a-face-detection-model"></a>Určení modelu detekce obličeje
 
@@ -28,7 +28,7 @@ Přečtěte si, kde se dozvíte, jak určit model detekce obličeje v určitých
 
 Pokud si nejste jistí, jestli byste měli použít nejnovější model, přejděte k části [vyhodnotit různé modely](#evaluate-different-models) a vyhodnoťte nový model a porovnejte výsledky pomocí aktuální datové sady.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Měli byste být obeznámeni s konceptem rozpoznávání obličeje AI. Pokud ne, přečtěte si koncepční Průvodce rozpoznáváním obličeje nebo průvodce postupy:
 
@@ -110,9 +110,9 @@ Nejlepším způsobem, jak porovnávat funkční způsobilost `detection_01` mod
 
 V tomto článku jste zjistili, jak určit model detekce, který se má použít u různých rozhraní API pro rozpoznávání tváře. Potom postupujte podle pokynů k rychlému zprovoznění a začněte používat rozpoznávání tváře.
 
-* [Sada Face .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Sada SDK pro tváře v Pythonu](../Quickstarts/python-sdk.md)
-* [Tvář – sada SDK](../Quickstarts/go-sdk.md)
+* [Sada Face .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [Sada SDK pro tváře v Pythonu](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [Tvář – sada SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [Face - Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

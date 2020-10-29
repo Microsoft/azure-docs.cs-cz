@@ -2,19 +2,18 @@
 title: Použití profilu spuštění k vyhodnocení dotazů v rozhraní Azure Cosmos DB API Gremlin
 description: Přečtěte si, jak řešit a zdokonalovat dotazy Gremlin pomocí kroku profil spuštění.
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.author: chrande
+ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490590"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926372"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Vyhodnocování dotazů Gremlin s využitím kroku profilu spuštění
 
@@ -22,7 +21,7 @@ Tento článek obsahuje přehled použití kroku profilu spuštění pro grafov�
 
 Chcete-li použít tento krok, stačí na `executionProfile()` konci dotazu Gremlin připojit volání funkce. **Dotaz Gremlin se** spustí a výsledek operace vrátí objekt odpovědi JSON s profilem spuštění dotazu.
 
-Například:
+Příklad:
 
 ```java
     // Basic traversal
@@ -139,12 +138,12 @@ V následujícím příkladu je zobrazený příklad výstupu s poznámkami, kte
 ## <a name="execution-profile-response-objects"></a>Objekty odezvy profilu spuštění
 
 Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s následující strukturou:
-  - **Objekt operace Gremlin**: představuje celou spuštěnou operaci Gremlin. Obsahuje následující vlastnosti.
+  - **Objekt operace Gremlin** : představuje celou spuštěnou operaci Gremlin. Obsahuje následující vlastnosti.
     - `gremlin`: Explicitní příkaz Gremlin, který byl proveden.
     - `totalTime`: Čas (v milisekundách), po který se krok uskutečnil. 
     - `metrics`: Pole obsahující všechny operátory modulu runtime Cosmos DB, které byly provedeny pro splnění dotazu. Tento seznam je seřazen v pořadí podle spuštění.
     
-  - **Cosmos DB operátory runtime**: představují všechny součásti celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
+  - **Cosmos DB operátory runtime** : představují všechny součásti celé operace Gremlin. Tento seznam je seřazen v pořadí podle spuštění. Každý objekt obsahuje následující vlastnosti:
     - `name`: Název operátoru. Toto je typ kroku, který byl vyhodnocen a proveden. Další informace najdete v následující tabulce.
     - `time`: Množství času v milisekundách, které daný operátor trval.
     - `annotations`: Obsahuje další informace, které jsou specifické pro operátor, který byl proveden.
@@ -155,7 +154,7 @@ Odezva funkce executionProfile () bude vracet hierarchii objektů JSON s násled
     - `storeOps.count`: Představuje počet výsledků, které tato operace úložiště vrátila.
     - `storeOps.size`: Představuje velikost výsledku dané operace úložiště v bajtech.
 
-Cosmos DB – operátor běhu Gremlin|Popis
+Cosmos DB – operátor běhu Gremlin|Description
 ---|---
 `GetVertices`| Tento krok získá predikátové sady objektů z trvalé vrstvy. 
 `GetEdges`| Tento krok získá hrany sousedící se sadou vrcholů. Tento krok může mít za následek jednu nebo více operací úložiště.
@@ -177,7 +176,7 @@ Následují příklady běžných optimalizací, které je možné Spotted pomoc
 
 ### <a name="blind-fan-out-query-patterns"></a>Vzory dotazů na nevidomé ventilátory
 
-Z **rozděleného grafu**Předpokládejme následující odpověď profilu spuštění:
+Z **rozděleného grafu** Předpokládejme následující odpověď profilu spuštění:
 
 ```json
 [
@@ -220,7 +219,7 @@ Z **rozděleného grafu**Předpokládejme následující odpověď profilu spuš
 
 Z nich je možné provést následující závěry:
 - Dotaz je jednoduché vyhledávání ID, protože příkaz Gremlin se řídí vzorem `g.V('id')` .
-- Z hlediska `time` metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide).
+- Z hlediska `time` metriky je latence tohoto dotazu vysoká, protože se jedná o [více než 10ms pro jednu operaci čtení z bodu](./introduction.md#guaranteed-speed-at-any-scale).
 - Pokud se do objektu podíváme, vidíte, `storeOps` že `fanoutFactor` je to `5` , což znamená, že tato operace získala [5 oddílů](./partitioning-overview.md) .
 
 V závěru této analýzy můžeme určit, že první dotaz přistupuje k více oddílům, než je potřeba. Dá se to vyřešit zadáním klíče rozdělení do dotazu jako predikátu. To bude mít za následek menší latenci a méně nákladů na dotaz. Přečtěte si další informace o [dělení grafu](graph-partitioning.md). Optimální dotaz by byl `g.V('tt0093640').has('partitionKey', 't1001')` .

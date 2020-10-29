@@ -1,5 +1,5 @@
 ---
-title: Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure
+title: Azure CLI – vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků
 description: Jak najít a odstranit nepřipojené a nespravované disky Azure spravované a nespravované (VHD/Page BLOBS) pomocí Azure CLI.
 author: roygara
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 821ba551dc19f92988a352b8f1bab792ce52207b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c3e8bb2ff6f3313e851a4253a95a5ad923a8f70
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978913"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913938"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>Vyhledání a odstranění nepřipojených spravovaných a nespravovaných disků Azure pomocí Azure CLI
 Při odstranění virtuálního počítače v Azure se ve výchozím nastavení neodstraní všechny disky připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat z důvodu neúmyslného odstranění virtuálních počítačů. Po odstranění virtuálního počítače budete platit za nepřipojené disky. V tomto článku se dozvíte, jak najít a odstranit všechny nepřipojené disky a omezit zbytečné náklady. 
@@ -29,11 +29,9 @@ Následující skript vyhledá nepřipojené [spravované disky](../managed-disk
 >
 
 ```azurecli
-
 # Set deleteUnattachedDisks=1 if you want to delete unattached Managed Disks
 # Set deleteUnattachedDisks=0 if you want to see the Id of the unattached Managed Disks
 deleteUnattachedDisks=0
-
 unattachedDiskIds=$(az disk list --query '[?managedBy==`null`].[id]' -o tsv)
 for id in ${unattachedDiskIds[@]}
 do
@@ -52,7 +50,7 @@ done
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Nespravované disky: najít a odstranit nepřipojené disky 
 
-Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) v [účtech úložiště Azure](../../storage/common/storage-account-overview.md). Následující skript vyhledá nepřipojené nespravované disky (objekty blob stránky) prozkoumáním hodnoty vlastnosti **LeaseStatus** . Pokud je k virtuálnímu počítači připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **Uzamčeno**. Když není připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **odemčeno**. Skript prověřuje všechny nespravované disky ve všech účtech úložiště Azure v rámci předplatného Azure. Když skript najde nespravovaný disk s vlastností **LeaseStatus** nastavenou na **odemknutý**, skript určí, že disk není připojený.
+Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob stránky](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) v [účtech úložiště Azure](../../storage/common/storage-account-overview.md). Následující skript vyhledá nepřipojené nespravované disky (objekty blob stránky) prozkoumáním hodnoty vlastnosti **LeaseStatus** . Pokud je k virtuálnímu počítači připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **Uzamčeno** . Když není připojen nespravovaný disk, vlastnost **LeaseStatus** je nastavena na hodnotu **odemčeno** . Skript prověřuje všechny nespravované disky ve všech účtech úložiště Azure v rámci předplatného Azure. Když skript najde nespravovaný disk s vlastností **LeaseStatus** nastavenou na **odemknutý** , skript určí, že disk není připojený.
 
 >[!IMPORTANT]
 >Nejdřív spusťte skript nastavením proměnné **deleteUnattachedVHDs** na hodnotu 0. Tato akce vám umožní najít a zobrazit všechny nepřipojené nepřipojené nespravované virtuální pevné disky.
@@ -61,13 +59,10 @@ Nespravované disky jsou soubory VHD, které se ukládají jako [objekty blob st
 >
 
 ```azurecli
-   
 # Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
 # Set deleteUnattachedVHDs=0 if you want to see the details of the unattached VHDs
 deleteUnattachedVHDs=0
-
 storageAccountIds=$(az storage account list --query [].[id] -o tsv)
-
 for id in ${storageAccountIds[@]}
 do
     connectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)

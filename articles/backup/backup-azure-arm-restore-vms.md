@@ -4,12 +4,12 @@ description: Obnovte virtuální počítač Azure z bodu obnovení pomocí Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: c9e7cd3423ebe02503204f8831c9dd74c1126e72
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 335dfc665cc7fb9727e4eff3e65a18a2aa5c3f94
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174145"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926763"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -27,19 +27,19 @@ Azure Backup poskytuje několik způsobů obnovení virtuálního počítače.
 **Mezi oblastmi (sekundární oblast)** | Obnovení mezi oblastmi se dá použít k obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárované v oblasti Azure](../best-practices-availability-paired-regions.md#what-are-paired-regions).<br><br> Pokud se zálohování provádí v sekundární oblasti, můžete obnovit všechny virtuální počítače Azure pro vybraný bod obnovení.<br><br> Tato funkce je k dispozici pro následující možnosti:<br> <li> [Vytvořit virtuální počítač](#create-a-vm) <br> <li> [Obnovit disky](#restore-disks) <br><br> Momentálně nepodporujeme možnost [nahradit existující disky](#replace-existing-disks) .<br><br> Oprávnění<br> Operaci obnovení v sekundární oblasti můžou provádět správci zálohování a správci aplikací.
 
 > [!NOTE]
-> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Další informace](backup-azure-restore-files-from-vm.md).
+> Můžete také obnovit konkrétní soubory a složky na virtuálním počítači Azure. [Přečtěte si další informace](backup-azure-restore-files-from-vm.md).
 
 ## <a name="storage-accounts"></a>Účty úložiště
 
 Některé podrobnosti o účtech úložiště:
 
-- **Vytvoření virtuálního**počítače: Když vytváříte nový virtuální počítač, virtuální počítač se umístí do zadaného účtu úložiště.
-- **Obnovit disk**: Když obnovíte disk, disk se zkopíruje do zadaného účtu úložiště. Úloha obnovení vygeneruje šablonu, kterou můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače. Tato šablona je umístěná v zadaném účtu úložiště.
-- **Výměna disku**: když nahradíte disk v EXISTUJÍCÍm virtuálním počítači, Azure Backup před nahrazením disku vybere snímek existujícího virtuálního počítače. Snímek se také zkopíruje do trezoru Recovery Services prostřednictvím přenosu dat jako proces na pozadí. Po dokončení fáze snímku se ale spustí operace nahradit disky. Po operaci nahradit disk jsou disky zdrojového virtuálního počítače Azure ponechány v zadané skupině prostředků pro vaši operaci a virtuální pevné disky budou uloženy v zadaném účtu úložiště. Můžete zvolit, že tyto virtuální pevné disky a disky chcete odstranit nebo zachovat.
-- **Umístění účtu úložiště**: účet úložiště musí být ve stejné oblasti jako trezor. Zobrazí se pouze tyto účty. Pokud v tomto umístění nejsou žádné účty úložiště, budete ho muset vytvořit.
-- **Typ úložiště**: BLOB Storage není podporovaný.
-- **Redundance úložiště**: zóna redundantní úložiště (ZRS) se nepodporuje. Informace o replikaci a redundanci účtu se zobrazí v závorkách za názvem účtu.
-- **Premium Storage**:
+- **Vytvoření virtuálního** počítače: Když vytváříte nový virtuální počítač, virtuální počítač se umístí do zadaného účtu úložiště.
+- **Obnovit disk** : Když obnovíte disk, disk se zkopíruje do zadaného účtu úložiště. Úloha obnovení vygeneruje šablonu, kterou můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače. Tato šablona je umístěná v zadaném účtu úložiště.
+- **Výměna disku** : když nahradíte disk v EXISTUJÍCÍm virtuálním počítači, Azure Backup před nahrazením disku vybere snímek existujícího virtuálního počítače. Snímek se také zkopíruje do trezoru Recovery Services prostřednictvím přenosu dat jako proces na pozadí. Po dokončení fáze snímku se ale spustí operace nahradit disky. Po operaci nahradit disk jsou disky zdrojového virtuálního počítače Azure ponechány v zadané skupině prostředků pro vaši operaci a virtuální pevné disky budou uloženy v zadaném účtu úložiště. Můžete zvolit, že tyto virtuální pevné disky a disky chcete odstranit nebo zachovat.
+- **Umístění účtu úložiště** : účet úložiště musí být ve stejné oblasti jako trezor. Zobrazí se pouze tyto účty. Pokud v tomto umístění nejsou žádné účty úložiště, budete ho muset vytvořit.
+- **Typ úložiště** : BLOB Storage není podporovaný.
+- **Redundance úložiště** : zóna redundantní úložiště (ZRS) se nepodporuje. Informace o replikaci a redundanci účtu se zobrazí v závorkách za názvem účtu.
+- **Premium Storage** :
   - Při obnovování virtuálních počítačů, které nejsou Premium, se nepodporuje účty úložiště úrovně Premium.
   - Při obnovování spravovaných virtuálních počítačů se účty Premium Storage nakonfigurované pomocí pravidel sítě nepodporují.
 
@@ -53,9 +53,9 @@ Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnoven�
 
 ## <a name="select-a-restore-point"></a>Vybrat bod obnovení
 
-1. V trezoru přidruženého k virtuálnímu počítači, který chcete obnovit, vyberte **zálohované položky**  >  **virtuální počítač Azure**.
+1. V trezoru přidruženého k virtuálnímu počítači, který chcete obnovit, vyberte **zálohované položky**  >  **virtuální počítač Azure** .
 1. Vyberte virtuální počítač. Ve výchozím nastavení se na řídicím panelu virtuálních počítačů zobrazí body obnovení za posledních 30 dní. Můžete zobrazit body obnovení starší než 30 dní nebo filtrovat a vyhledat body obnovení na základě dat, časových rozsahů a různých typů konzistence snímků.
-1. Pokud chcete virtuální počítač obnovit, vyberte **obnovit virtuální počítač**.
+1. Pokud chcete virtuální počítač obnovit, vyberte **obnovit virtuální počítač** .
 
     ![Bod obnovení](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -63,23 +63,23 @@ Pokud nemáte oprávnění, můžete [disk obnovit](#restore-disks)a po obnoven�
 
 ## <a name="choose-a-vm-restore-configuration"></a>Zvolit konfiguraci obnovení virtuálního počítače
 
-1. V možnosti **obnovit virtuální počítač**vyberte možnost obnovení:
-    - **Vytvořit novou**: tuto možnost použijte, pokud chcete vytvořit nový virtuální počítač. Můžete vytvořit virtuální počítač s jednoduchým nastavením nebo obnovit disk a vytvořit přizpůsobený virtuální počítač.
-    - **Nahradit existující**: tuto možnost použijte, pokud chcete nahradit disky na EXISTUJÍCÍm virtuálním počítači.
+1. V možnosti **obnovit virtuální počítač** vyberte možnost obnovení:
+    - **Vytvořit novou** : tuto možnost použijte, pokud chcete vytvořit nový virtuální počítač. Můžete vytvořit virtuální počítač s jednoduchým nastavením nebo obnovit disk a vytvořit přizpůsobený virtuální počítač.
+    - **Nahradit existující** : tuto možnost použijte, pokud chcete nahradit disky na EXISTUJÍCÍm virtuálním počítači.
 
         ![Průvodce obnovením konfigurace virtuálního počítače](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. Zadejte nastavení pro vybranou možnost obnovení.
 
-## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
+## <a name="create-a-vm"></a>Vytvořit virtuální počítač
 
 Jako jednu z [možností obnovení](#restore-options)můžete vytvořit virtuální počítač rychle pomocí základního nastavení z bodu obnovení.
 
-1. V nástroji **obnovit virtuální počítač**  >  **vytvořit nový**  >  **typ obnovení**vyberte **vytvořit virtuální počítač**.
-1. V části **název virtuálního počítače**zadejte virtuální počítač, který v předplatném neexistuje.
-1. V části **Skupina prostředků**vyberte existující skupinu prostředků pro nový virtuální počítač, nebo vytvořte novou s globálně jedinečným názvem. Pokud přiřadíte název, který už existuje, Azure přiřadí skupině stejný název jako virtuální počítač.
-1. Ve **virtuální síti**vyberte virtuální síť, do které se virtuální počítač umístí. Zobrazí se všechny virtuální sítě přidružené k předplatnému. Vyberte podsíť. Ve výchozím nastavení je vybraná první podsíť.
-1. Do pole **pracovní umístění**zadejte účet úložiště pro virtuální počítač. [Další informace](#storage-accounts).
+1. V nástroji **obnovit virtuální počítač**  >  **vytvořit nový**  >  **typ obnovení** vyberte **vytvořit virtuální počítač** .
+1. V části **název virtuálního počítače** zadejte virtuální počítač, který v předplatném neexistuje.
+1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro nový virtuální počítač, nebo vytvořte novou s globálně jedinečným názvem. Pokud přiřadíte název, který už existuje, Azure přiřadí skupině stejný název jako virtuální počítač.
+1. Ve **virtuální síti** vyberte virtuální síť, do které se virtuální počítač umístí. Zobrazí se všechny virtuální sítě přidružené k předplatnému. Vyberte podsíť. Ve výchozím nastavení je vybraná první podsíť.
+1. Do pole **pracovní umístění** zadejte účet úložiště pro virtuální počítač. [Přečtěte si další informace](#storage-accounts).
 
     ![Průvodce obnovením konfigurace – výběr možností obnovení](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -93,34 +93,34 @@ Jako jednu z [možností obnovení](#restore-options)můžete vytvořit disk z b
 - [Připojte obnovené disky](../virtual-machines/windows/attach-managed-disk-portal.md) k EXISTUJÍCÍmu virtuálnímu počítači.
 - [Vytvořte nový virtuální počítač](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) z obnovených disků pomocí PowerShellu.
 
-1. V **nastavení obnovit konfiguraci**  >  **vytvořit nový**  >  **typ obnovení**vyberte **obnovit disky**.
-1. V části **Skupina prostředků**vyberte existující skupinu prostředků pro obnovené disky nebo vytvořte novou s globálně jedinečným názvem.
-1. Do pole **pracovní umístění**zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Další informace](#storage-accounts).
+1. V **nastavení obnovit konfiguraci**  >  **vytvořit nový**  >  **typ obnovení** vyberte **obnovit disky** .
+1. V části **Skupina prostředků** vyberte existující skupinu prostředků pro obnovené disky nebo vytvořte novou s globálně jedinečným názvem.
+1. Do pole **pracovní umístění** zadejte účet úložiště, do kterého se mají kopírovat virtuální pevné disky. [Přečtěte si další informace](#storage-accounts).
 
     ![Vybrat skupinu prostředků a pracovní umístění](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Vyberte **obnovit** pro aktivaci operace obnovení.
 
-Když virtuální počítač používá spravované disky a vyberete možnost **vytvořit virtuální počítač** , Azure Backup nepoužije zadaný účet úložiště. V případě **obnovení disků** a **okamžitého obnovení**se účet úložiště používá jenom pro ukládání šablony. Spravované disky se vytvářejí v zadané skupině prostředků.
+Když virtuální počítač používá spravované disky a vyberete možnost **vytvořit virtuální počítač** , Azure Backup nepoužije zadaný účet úložiště. V případě **obnovení disků** a **okamžitého obnovení** se účet úložiště používá jenom pro ukládání šablony. Spravované disky se vytvářejí v zadané skupině prostředků.
 Když virtuální počítač používá nespravované disky, obnoví se jako objekty blob do účtu úložiště.
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>Přizpůsobení obnoveného virtuálního počítače pomocí šablon
 
 Po obnovení disku použijte šablonu generovanou jako součást operace obnovení a přizpůsobte a vytvořte nový virtuální počítač:
 
-1. V části **úlohy zálohování**vyberte příslušnou úlohu obnovení.
+1. V části **úlohy zálohování** vyberte příslušnou úlohu obnovení.
 
-1. V **obnovení**vyberte **nasadit šablonu** pro zahájení nasazování šablony.
+1. V **obnovení** vyberte **nasadit šablonu** pro zahájení nasazování šablony.
 
     ![Přejít k podrobnostem úlohy obnovení](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
-1. Pokud chcete upravit nastavení virtuálního počítače v šabloně, vyberte **Upravit šablonu**. Pokud chcete přidat další úpravy, vyberte **Upravit parametry**.
+1. Pokud chcete upravit nastavení virtuálního počítače v šabloně, vyberte **Upravit šablonu** . Pokud chcete přidat další úpravy, vyberte **Upravit parametry** .
     - [Přečtěte si další informace](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) o nasazení prostředků z vlastní šablony.
     - [Přečtěte si další informace](../azure-resource-manager/templates/template-syntax.md) o vytváření šablon.
 
    ![Načíst nasazení šablony](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-1. Zadejte vlastní hodnoty pro virtuální počítač, přijměte **podmínky a** zvolte **koupit**.
+1. Zadejte vlastní hodnoty pro virtuální počítač, přijměte **podmínky a** zvolte **koupit** .
 
    ![Odeslat nasazení šablony](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
@@ -128,9 +128,9 @@ Po obnovení disku použijte šablonu generovanou jako součást operace obnoven
 
 Jako jednu z [možností obnovení](#restore-options)můžete stávající disk virtuálního počítače nahradit vybraným bodem obnovení. [Zkontrolujte](#restore-options) všechny možnosti obnovení.
 
-1. V **nastavení obnovit konfiguraci**vyberte **nahradit existující**.
-1. V **typu obnovení**vyberte **nahradit disk/s**. Toto je bod obnovení, který bude použit k nahrazení existujících disků virtuálního počítače.
-1. V části **pracovní umístění**určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Další informace](#storage-accounts).
+1. V **nastavení obnovit konfiguraci** vyberte **nahradit existující** .
+1. V **typu obnovení** vyberte **nahradit disk/s** . Toto je bod obnovení, který bude použit k nahrazení existujících disků virtuálního počítače.
+1. V části **pracovní umístění** určete, kam se mají během procesu obnovení ukládat snímky aktuálních spravovaných disků. [Přečtěte si další informace](#storage-accounts).
 
    ![Průvodce obnovením konfigurace nahradit existující](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -146,7 +146,7 @@ Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v část
 
 Pokud je povolená možnost CRR, můžete zobrazit zálohované položky v sekundární oblasti.
 
-1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky**.
+1. Na portálu přejdete do části **Recovery Services trezoru**  >  **zálohované položky** .
 1. Vyberte **Sekundární oblast** pro zobrazení položek v sekundární oblasti.
 
 >[!NOTE]
@@ -194,19 +194,25 @@ Při obnovení máte k dispozici možnost obnovit [nespravované disky](../stora
 
 K dispozici je řada běžných scénářů, ve kterých může být nutné obnovení virtuálních počítačů.
 
-**Scénář** | **Doprovodné materiály**
+**Scénář** | **Pokyny**
 --- | ---
-**Obnovení virtuálních počítačů pomocí zvýhodněné hybridní využití** | Pokud virtuální počítač s Windows používá [licencování programu zvýhodněné hybridní využití (centra)](../virtual-machines/windows/hybrid-use-benefit-licensing.md), obnovte disky a vytvořte nový virtuální počítač pomocí zadané šablony (s **typem licence** nastavenou na **Windows_Server**) nebo v PowerShellu.  Toto nastavení se dá použít i po vytvoření virtuálního počítače.
+**Obnovení virtuálních počítačů pomocí zvýhodněné hybridní využití** | Pokud virtuální počítač s Windows používá [licencování programu zvýhodněné hybridní využití (centra)](../virtual-machines/windows/hybrid-use-benefit-licensing.md), obnovte disky a vytvořte nový virtuální počítač pomocí zadané šablony (s **typem licence** nastavenou na **Windows_Server** ) nebo v PowerShellu.  Toto nastavení se dá použít i po vytvoření virtuálního počítače.
 **Obnovení virtuálních počítačů během havárie datacentra Azure** | Pokud trezor používá GRS a primární datacentrum pro virtuální počítač funguje, Azure Backup podporuje obnovení zálohovaných virtuálních počítačů do spárovaného datového centra. V spárovaném datovém centru vyberete účet úložiště a obnovíte ho jako normální. Azure Backup používá výpočetní službu v spárované oblasti k vytvoření obnoveného virtuálního počítače. [Přečtěte si další informace](/azure/architecture/resiliency/recovery-loss-azure-region) o odolnosti datového centra.<br><br> Pokud trezor používá GRS, můžete si vybrat novou funkci – [obnovení mezi oblastmi](#cross-region-restore). To vám umožňuje obnovení do druhé oblasti ve scénářích úplného nebo částečného výpadku, nebo i v případě, že vůbec nedochází k výpadku.
-**Obnovení virtuálního počítače s jedním řadičem domény v jedné doméně** | Obnovte virtuální počítač stejným způsobem jako jakýkoli jiný virtuální počítač. Poznámky:<br/><br/> V perspektivě služby Active Directory je virtuální počítač Azure podobně jako jakýkoli jiný virtuální počítač.<br/><br/> K dispozici je také režim obnovení adresářových služeb (DSRM), aby všechny scénáře obnovení služby Active Directory byly životaschopné. [Přečtěte si další](#post-restore-steps) informace o požadavcích na zálohování a obnovení u virtualizovaných řadičů domény.
-**Obnovení virtuálních počítačů s několika řadiči domény v jedné doméně** | Pokud je možné přes síť dosáhnout jiných řadičů domény ve stejné doméně, může být řadič domény obnovený jako libovolný virtuální počítač. Pokud se jedná o poslední zbývající řadič domény v doméně, nebo se provede obnovení v izolované síti, použijte [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
-**Obnovení více domén v jedné doménové struktuře** | Doporučujeme [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Úplné obnovení** | Hlavním rozdílem mezi virtuálními počítači Azure a místními hypervisory je, že v Azure není k dispozici žádná konzola virtuálních počítačů. Pro určité scénáře se vyžaduje konzola, jako je třeba obnovení pomocí zálohování typu úplného obnovení systému (BMR). Obnovení virtuálního počítače z trezoru je ale úplná náhrada pro BMR.
 **Obnovení virtuálních počítačů se speciálními síťovými konfiguracemi** | Mezi speciální síťové konfigurace patří virtuální počítače s využitím interního nebo externího vyrovnávání zatížení, použití více síťových adaptérů nebo více rezervovaných IP adres. Tyto virtuální počítače obnovíte pomocí [možnosti obnovit disk](#restore-disks). Tato možnost vytvoří kopii VHD do zadaného účtu úložiště a pak můžete vytvořit virtuální počítač s [interním](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) nebo [externím](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) nástrojem pro vyrovnávání zatížení, [několika síťovými kartami](../virtual-machines/windows/multiple-nics.md)nebo [více rezervovanými IP adresami](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)v souladu s vaší konfigurací.
 **Skupina zabezpečení sítě (NSG) na síťové kartě nebo podsíti** | Zálohování virtuálních počítačů Azure podporuje zálohování a obnovení NSG informací na úrovni virtuální sítě, podsítě a síťové karty.
 **Virtuální počítače připojené k zóně** | Pokud zálohujete virtuální počítač Azure, který je připnuté k zóně (pomocí Azure Backup), můžete ho obnovit ve stejné zóně, kde byla připnutá. [Další informace](../availability-zones/az-overview.md)
 **Obnovit virtuální počítač v libovolné skupině dostupnosti** | Při obnovení virtuálního počítače z portálu není k dispozici možnost výběru skupiny dostupnosti. Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 **Obnovení speciálních virtuálních počítačů, jako jsou třeba virtuální počítače SQL** | Pokud zálohujete virtuální počítač s SQL pomocí zálohování virtuálních počítačů Azure a pak použijete možnost obnovit virtuální počítač nebo po obnovení disků vytvořit virtuální počítač, musí být nově vytvořený virtuální počítač zaregistrován u poskytovatele SQL, jak je uvedeno [zde](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash). Tím se obnovený virtuální počítač převede na virtuální počítač SQL.
+
+### <a name="restore-domain-controller-vms"></a>Obnovení virtuálních počítačů řadiče domény
+
+**Scénář** | **Pokyny**
+--- | ---
+**Obnovení virtuálního počítače s jedním řadičem domény v jedné doméně** | Obnovte virtuální počítač stejným způsobem jako jakýkoli jiný virtuální počítač. Poznámky:<br/><br/> V perspektivě služby Active Directory je virtuální počítač Azure podobně jako jakýkoli jiný virtuální počítač.<br/><br/> K dispozici je také režim obnovení adresářových služeb (DSRM), aby všechny scénáře obnovení služby Active Directory byly životaschopné. [Přečtěte si další](#post-restore-steps) informace o požadavcích na zálohování a obnovení u virtualizovaných řadičů domény.
+**Obnovení virtuálních počítačů s několika řadiči domény v jedné doméně** | Pokud je možné přes síť dosáhnout jiných řadičů domény ve stejné doméně, může být řadič domény obnovený jako libovolný virtuální počítač. Pokud se jedná o poslední zbývající řadič domény v doméně, nebo se provede obnovení v izolované síti, použijte [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
+**Obnovení virtuálního počítače s jedním řadičem domény v konfiguraci s více doménami** |  Obnovení disků a vytvoření virtuálního počítače [pomocí PowerShellu](backup-azure-vms-automation.md#restore-the-disks)  
+**Obnovení více domén v jedné doménové struktuře** | Doporučujeme [obnovení doménové struktury](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
 
@@ -216,15 +222,15 @@ Po aktivaci operace obnovení vytvoří služba Backup úlohu pro sledování. A
 
  Sledujte obnovení následujícím způsobem:
 
-1. Chcete-li zobrazit operace pro úlohu, vyberte hypertextový odkaz oznámení. Případně můžete v trezoru vybrat **úlohy zálohování**a pak vybrat příslušný virtuální počítač.
+1. Chcete-li zobrazit operace pro úlohu, vyberte hypertextový odkaz oznámení. Případně můžete v trezoru vybrat **úlohy zálohování** a pak vybrat příslušný virtuální počítač.
 
     ![Seznam virtuálních počítačů v trezoru](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 1. Pokud chcete monitorovat průběh obnovení, vyberte libovolnou úlohu obnovení se stavem **probíhá.** Tím se zobrazí indikátor průběhu, který zobrazí informace o průběhu obnovení:
 
-    - **Odhadovaný čas obnovení**: zpočátku poskytuje čas potřebný k dokončení operace obnovení. V průběhu operace se čas zmenšuje a při dokončení operace obnovení se dosáhne nuly.
-    - **Procento obnovení**. Zobrazuje procento dokončené operace obnovení.
-    - **Počet přenesených bajtů**: Pokud provádíte obnovení vytvořením nového virtuálního počítače, zobrazí se bajty přenesené na celkový počet bajtů, které se mají přenést.
+    - **Odhadovaný čas obnovení** : zpočátku poskytuje čas potřebný k dokončení operace obnovení. V průběhu operace se čas zmenšuje a při dokončení operace obnovení se dosáhne nuly.
+    - **Procento obnovení** . Zobrazuje procento dokončené operace obnovení.
+    - **Počet přenesených bajtů** : Pokud provádíte obnovení vytvořením nového virtuálního počítače, zobrazí se bajty přenesené na celkový počet bajtů, které se mají přenést.
 
 ## <a name="post-restore-steps"></a>Kroky po obnovení
 

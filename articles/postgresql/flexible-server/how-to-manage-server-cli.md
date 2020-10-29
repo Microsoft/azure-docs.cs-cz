@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547669"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913870"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Správa Azure Database for PostgreSQL flexibilního serveru pomocí Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "92547669"
 
 V tomto článku se dozvíte, jak spravovat flexibilní Server nasazený v Azure. Úlohy správy zahrnují výpočetní výkon a škálování úložiště, resetování hesla správce a zobrazení podrobností serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Tento článek vyžaduje, abyste v místním prostředí používali Azure CLI verze 2,0 nebo novější. Pokud chcete zjistit nainstalovanou verzi, spusťte příkaz `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 K účtu se budete muset přihlásit pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) . Poznamenejte si vlastnost **ID** , která se vztahuje k **ID předplatného** pro váš účet Azure.
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Škálování výpočetních prostředků a úložiště
 
-Pomocí následujícího příkazu můžete snadno škálovat výpočetní vrstvu, virtuální jádra a úložiště. Můžete zobrazit všechny operace serveru, které můžete spustit [AZ Postgres Flexible-Server Server Overview](https://azure.microsoft.com/services/postgresql/)
+Pomocí následujícího příkazu můžete snadno škálovat výpočetní vrstvu, virtuální jádra a úložiště. Můžete zobrazit všechny operace serveru, které můžete spustit [AZ Postgres Flexible-Server Server Overview](https://docs.microsoft.com/cli/azure/postgres/flexible-server)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Odstranění serveru
 
-Pokud byste chtěli jenom odstranit PostgreSQL flexibilní Server, můžete spustit příkaz [AZ Postgres Flexible-Server Delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) .
+Pokud byste chtěli jenom odstranit PostgreSQL flexibilní Server, můžete spustit příkaz [AZ Postgres Flexible-Server Delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) .
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

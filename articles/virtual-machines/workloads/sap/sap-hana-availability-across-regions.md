@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de5a449e90452307f3c9b02c725050df6fdd873
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078853"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925675"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA dostupnost napříč oblastmi Azure
 
@@ -74,7 +74,7 @@ Možná architektura s replikací s více cíli vypadá takto:
 
 Pokud má organizace požadavky na připravenost na vysokou dostupnost v druhé oblasti Azure (DR), pak by architektura vypadala takto:
 
-![Diagram tří virtuálních počítačů ve dvou oblastech milti-Target](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![Diagram znázorňující organizaci, která má požadavky na připravenost vysoké dostupnosti v druhé oblasti Azure (DR).](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 Tato konfigurace poskytuje v rámci operace logreplay jako provozní režim RPO RPO = 0 s nízkou RTO v rámci primární oblasti. Konfigurace také poskytuje dát RPO, pokud je zahrnut přesun do druhé oblasti. Doba RTO ve druhé oblasti závisí na tom, zda jsou data předem načtena. Mnoho zákazníků používá virtuální počítač v sekundární oblasti ke spuštění testovacího systému. V takovém případě se data nedají předem načíst.

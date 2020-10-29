@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 2809fce890e1a7bcc47163c8a5d4c0210d6aa9d4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106123"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913541"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -25,86 +25,41 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 
 | Sekce | Úlohy |
 | ------- | ----- |
-| **Authentication** | <ol><li>Stáhněte si profil publikování nebo definujte instanční objekt.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
-| **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
-| **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
+| **Authentication** | Stáhněte si profil publikování.<br/>Vytvořte tajný klíč GitHubu.|
+| **Sestavení** | Nastavte prostředí.<br/>Sestavte aplikaci Function App.|
+| **Nasazení** | Nasaďte aplikaci Function App.|
 
-> [!NOTE]
-> Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
-
-## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>Stažení a použití profilu publikování jako přihlašovacích údajů nasazení (doporučeno)
-
-Chcete-li stáhnout profil publikování aplikace Function App:
-
-1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování**.
-
-   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Stáhnout profil publikování":::
-
-1. Uložte a zkopírujte obsah souboru nastavení publikování.
-
-## <a name="create-a-service-principal-deprecated"></a>Vytvoření instančního objektu (zastaralé)
-=======
 ## <a name="prerequisites"></a>Předpoklady
 
-- Účet Azure s aktivním předplatným. [Vytvořit účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Účet GitHub. Pokud ho ještě nemáte, zaregistrujte se [zdarma](https://github.com/join).  
 - Pracovní funkce hostovaná v Azure s úložištěm GitHub.   
     - [Rychlé zprovoznění: Vytvoření funkce v Azure s využitím Visual Studio Code](functions-create-first-function-vs-code.md)
 
-
 ## <a name="generate-deployment-credentials"></a>Generovat přihlašovací údaje nasazení
 
-Doporučený způsob ověřování pomocí Azure Functions pro akce GitHubu je profil publikování. Můžete se také ověřit pomocí instančního objektu, ale proces vyžaduje více kroků. 
+Doporučený způsob ověřování pomocí Azure Functions pro akce GitHubu je použití profilu publikování. Můžete se také ověřit pomocí instančního objektu. Další informace najdete v [tomto úložišti akcí GitHubu](https://github.com/Azure/functions-action). 
 
-## <a name="configure-the-github-secret"></a>Konfigurace tajného kódu GitHubu
-= = = = = = = Při ověřování pomocí Azure uložte přihlašovací údaje k publikačnímu profilu nebo instanční objekt jako [tajný kód GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets) . V rámci pracovního postupu budete mít přístup ke tajnému kódu. 
+Po uložení přihlašovacích údajů profilu publikování jako [tajného kódu GitHubu](https://docs.github.com/en/actions/reference/encrypted-secrets)použijete tento tajný klíč v rámci pracovního postupu k ověření v Azure. 
 
-# <a name="publish-profile"></a>[Publikovat profil](#tab/publish-profile)
+#### <a name="download-your-publish-profile"></a>Stáhnout publikační profil
 
 Chcete-li stáhnout profil publikování aplikace Function App:
 
-1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování**.
+1. Vyberte stránku **Přehled** aplikace Function App a pak vyberte **získat profil publikování** .
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Stáhnout profil publikování":::
 
 1. Uložte a zkopírujte obsah souboru.
 
 
-# <a name="service-principal"></a>[Instanční objekt](#tab/service-principal)
+### <a name="add-the-github-secret"></a>Přidat tajný klíč GitHubu
 
-[Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) pro [Azure CLI](/cli/azure/). Spusťte tento příkaz pomocí [Azure Cloud Shell](https://shell.azure.com) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
-
-```azurecli-interactive
-az ad sp create-for-rbac --name "<MY-APP-NAME>" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
-```
-
-V tomto příkladu Nahraďte zástupné symboly v prostředku ID vašeho předplatného, skupiny prostředků a názvu aplikace Function App. Výstupem jsou přihlašovací údaje přiřazení role, které poskytují přístup k vaší aplikaci Function App. Zkopírujte tento objekt JSON, který můžete použít k ověření z GitHubu. 
-
-```output 
-  {
-    "clientId": "<GUID>",
-    "clientSecret": "<GUID>",
-    "subscriptionId": "<GUID>",
-    "tenantId": "<GUID>",
-    (...)
-  }
-```
-
-> [!IMPORTANT]
-> Je vždy dobrým zvykem udělit minimální přístup. To je důvod, proč je obor v předchozím příkladu omezený na konkrétní aplikaci Function App, a ne na celou skupinu prostředků.
-
----
-
-## <a name="add-the-github-secret"></a>Přidat tajný klíč GitHubu
-
-1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení**  >  **tajné klíče**  >  **Přidat nový tajný kód**.
+1. V [GitHubu](https://github.com)přejděte do úložiště, vyberte **Nastavení**  >  **tajné klíče**  >  **Přidat nový tajný kód** .
 
    :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Stáhnout profil publikování":::
 
-1. Přidejte nový tajný kód.
-
-   * Pokud používáte instanční objekt, který jste vytvořili pomocí Azure CLI, použijte `AZURE_CREDENTIALS` **název**. Pak vložte zkopírovaný výstup objektu JSON pro **hodnotu**a vyberte **Přidat tajný klíč**.
-   * Pokud používáte profil publikování, použijte `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` pro **název**. Pak použijte obsah souboru profilu publikování pro **hodnotu**a vyberte **Přidat tajný kód**.
+1. Přidejte nový tajný kód s `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` použitím **pro název** , obsah souboru profilu publikování pro **hodnotu** a pak vyberte **Přidat tajný klíč** .
 
 GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
@@ -112,18 +67,10 @@ GitHub se teď může ověřit pro vaši aplikaci Function App v Azure.
 
 Nastavení prostředí se provádí pomocí akce nastavení publikování pro konkrétní jazyk.
 
-|**Jazyk**  |**Akce nastavení**  |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**ASP.NET**     | `actions/setup-dotnet` |
-|**Java**     | `actions/setup-java` |
-|**JavaScript** | `actions/setup-node` |
-|**Python**     | `actions/setup-python` |
-
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-dotnet` akci pro nastavení prostředí:
+Rozhraní .NET (včetně ASP.NET) používá `actions/setup-dotnet` akci.  
+Následující příklad ukazuje část pracovního postupu, která nastavuje prostředí:
 
 ```yaml
     - name: Setup DotNet 2.2.402 Environment
@@ -134,7 +81,8 @@ Následující příklad ukazuje část pracovního postupu, který používá `
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje část pracovního postupu, který používá  `actions/setup-java` akci pro nastavení prostředí:
+Jazyk Java tuto  `actions/setup-java` akci používá.  
+Následující příklad ukazuje část pracovního postupu, která nastavuje prostředí:
 
 ```yaml
     - name: Setup Java 1.8.x
@@ -147,7 +95,8 @@ Následující příklad ukazuje část pracovního postupu, který používá  
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-node` akci pro nastavení prostředí:
+JavaScript (Node.js) používá `actions/setup-node` akci.  
+Následující příklad ukazuje část pracovního postupu, která nastavuje prostředí:
 
 ```yaml
 
@@ -159,7 +108,8 @@ Následující příklad ukazuje část pracovního postupu, který používá `
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-python` akci pro nastavení prostředí:
+Python používá `actions/setup-python` akci.  
+Následující příklad ukazuje část pracovního postupu, která nastavuje prostředí:
 
 ```yaml
     - name: Setup Python 3.7 Environment
@@ -245,11 +195,7 @@ Použijte `Azure/functions-action` akci pro nasazení kódu do aplikace Function
 |_**název slotu**_ | Volitelné Název [slotu nasazení](functions-deployment-slots.md) , na který chcete nasadit. Slot už musí být definovaný ve vaší aplikaci Function App. |
 |_**publikování – profil**_ | Volitelné Název tajného kódu GitHubu pro váš publikační profil. |
 
-
-### <a name="publish-profile-deploy"></a>Publikovat profil nasazení
-
-V následujících příkladech se pro ověřování používá verze 1 `functions-action` a a `publish profile` :
-
+Následující příklad používá `functions-action` pro ověřování verze 1 a. `publish profile` 
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -545,366 +491,6 @@ jobs:
         app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
         package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-```
-
----
-
-### <a name="service-principal-deploy"></a>Nasazení instančního objektu
-
-Následující příklad používá `functions-action` pro ověřování verze 1 a `service principal` . Pracovní postup nastavuje prostředí Windows .NET. 
-
-# <a name="net"></a>[.NET](#tab/dotnet)
-
-Nastavte pracovní postup .NET Linux, který používá instanční objekt.
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Nastavte pracovní postup systému Windows .NET, který používá instanční objekt.
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Nastavte pracovní postup Java Linux, který používá instanční objekt.
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: bash
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Nastavte pracovní postup Java Windows, který používá instanční objekt.
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the java version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: pwsh
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Nastavte pracovní postup Node.JS Linux, který používá instanční objekt.
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '12.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-Nastavte Node.JS pracovní postup systému Windows, který používá instanční objekt.
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '10.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Nastavte pracovní postup pro Python Linux, který používá instanční objekt.
-
-```yaml
-name: Deploy Python project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'   # set this to the path to your web app project, defaults to the repository root
-  PYTHON_VERSION: '3.7'                 # set this to the python version to use (supports 3.6, 3.7, 3.8)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Pip'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
 ```
 
 ---

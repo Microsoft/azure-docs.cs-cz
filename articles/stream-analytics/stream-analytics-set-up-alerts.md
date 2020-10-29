@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461032"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92914006"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro Azure Stream Analytics úlohy
 
@@ -30,15 +30,15 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
 2. Na stránce **úloha** přejděte do části **monitorování** .  
 
-3. Vyberte **metriky**a pak **nové pravidlo výstrahy**.
+3. Vyberte **metriky** a pak **nové pravidlo výstrahy** .
 
    ![Nastavení výstrah Azure Portal Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek**. Klikněte na **Přidat podmínku**a v části **Konfigurovat logiku signálu**vyberte **všechny operace správy** .
+4. Název vaší Stream Analytics úlohy by se měl automaticky zobrazit v části **prostředek** . Klikněte na **Přidat podmínku** a v části **Konfigurovat logiku signálu** vyberte **všechny operace správy** .
 
    ![Vyberte název signálu pro výstrahu Stream Analytics.](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. V části **Konfigurovat logiku signálu**změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch**. Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo**.
+5. V části **Konfigurovat logiku signálu** změňte **úroveň události** na **vše** a změňte **stav** na **neúspěch** . Nechejte **událost iniciovaná** prázdným a vyberte **Hotovo** .
 
    ![Konfigurace výstrahy signálu pro Stream Analytics výstrahu](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,13 +46,13 @@ Následující příklad ukazuje, jak nastavit upozornění, když vaše úloha 
 
    ![Nastavení výstrahy pro úlohu Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Jednotlivé skupiny **prostředků**, **podmínek**a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
+7. Jednotlivé skupiny **prostředků** , **podmínek** a **akcí** by měly mít položku. Všimněte si, že aby se výstrahy mohly aktivovat, musí být splněné podmínky. Například můžete každých 5 minut měřit průměrnou hodnotu metriky za posledních 15 minut.
 
-   ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![Snímek obrazovky s dialogovým oknem vytvořit pravidlo se zobrazí jako prostředek, podmínka a skupina akcí.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy**, **Popis**a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
+   Přidejte k **podrobnostem výstrahy** **název pravidla výstrahy** , **Popis** a **skupinu prostředků** a kliknutím na **vytvořit pravidlo výstrahy** vytvořte pravidlo pro Stream Analytics úlohu.
 
-   ![Vytvořit pravidlo upozornění Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![Snímek obrazovky se zobrazí dialogové okno vytvořit pravidlo s PODROBNOSTmi výstrahy.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>Scénáře k monitorování
 
@@ -60,10 +60,10 @@ Následující výstrahy jsou doporučeny pro sledování výkonu Stream Analyti
 
 |Metrika|Stav|Časová agregace|Prahová hodnota|Nápravné akce|
 |-|-|-|-|-|
-|Využití SU%|Je větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Běhové chyby|Je větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|
-|Zpoždění vodoznaku|Je větší než|Maximum|V případě, že průměrná hodnota této metriky za posledních 15 minut je větší než pozdě tolerance doručení (v sekundách). Pokud jste nezměnili toleranci pozdního doručení, je výchozí hodnota nastavená na 5 sekund.|Zkuste zvýšit počet služby SUs nebo virtuálního dotazu. Další informace o službě SUs najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o virtuálního dotazu naleznete v tématu [využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
-|Chyby při deserializaci vstupu|Je větší než|Celkem|0|Zkontrolujte aktivity nebo protokoly prostředků a proveďte příslušné změny ve vstupu. Další informace o protokolech prostředků najdete v tématu [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md) .|
+|Využití SU%|Větší než|Maximum|80|Existuje několik faktorů, které zvyšují využití SU%. Můžete škálovat pomocí paralelního zpracování dotazů nebo zvýšit počet jednotek streamování. Další informace najdete v tématu [Využití paralelizace dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Běhové chyby|Větší než|Celkem|0|Projděte si protokoly aktivit nebo prostředků a proveďte příslušné změny ve vstupech, dotazech nebo výstupech.|
+|Zpoždění vodoznaku|Větší než|Maximum|V případě, že průměrná hodnota této metriky za posledních 15 minut je větší než pozdě tolerance doručení (v sekundách). Pokud jste nezměnili toleranci pozdního doručení, je výchozí hodnota nastavená na 5 sekund.|Zkuste zvýšit počet služby SUs nebo virtuálního dotazu. Další informace o službě SUs najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Další informace o virtuálního dotazu naleznete v tématu [využití paralelismu dotazů v Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Chyby při deserializaci vstupu|Větší než|Celkem|0|Zkontrolujte aktivity nebo protokoly prostředků a proveďte příslušné změny ve vstupu. Další informace o protokolech prostředků najdete v tématu [řešení potíží s Azure Stream Analytics pomocí protokolů prostředků](stream-analytics-job-diagnostic-logs.md) .|
 
 ## <a name="next-steps"></a>Další kroky
 

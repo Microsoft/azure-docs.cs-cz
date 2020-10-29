@@ -1,6 +1,6 @@
 ---
 title: Připojení dat Fortinet ke službě Azure Sentinel | Microsoft Docs
-description: Připojte zařízení Fortinet ke službě Azure Sentinel a zobrazte řídicí panely, vytvářejte vlastní výstrahy a vylepšete šetření. 
+description: Připojte zařízení Fortinet ke službě Azure Sentinel a zobrazte řídicí panely, vytvářejte vlastní výstrahy a vylepšete šetření.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511326"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913989"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Připojení Fortinet ke službě Azure Sentinel
 
@@ -38,16 +38,16 @@ Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pra
 
     ```console
     config log syslogd setting
+    set status enable
     set format cef
     set port 514
     set server <ip_address_of_Receiver>
-    set status enable
     end
     ```
 
     - Nahraďte **IP adresu** serveru IP adresou agenta.
     - Nastavte **port SYSLOG** na **514** nebo na port nastavený na agentovi.
-    - Pokud chcete povolit formát CEF ve verzích rané FortiOS, možná budete muset spustit sadu příkazů **CSV Disable**.
+    - Pokud chcete povolit formát CEF ve verzích rané FortiOS, možná budete muset spustit sadu příkazů **CSV Disable** .
  
    > [!NOTE] 
    > Další informace najdete v [knihovně dokumentů Fortinet](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Vyberte svou verzi a použijte **odkaz na zprávu** **příručky** a protokolu.

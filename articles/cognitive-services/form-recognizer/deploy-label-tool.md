@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717893"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913105"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Nasazení ukázkového nástroje pro popisování
 
@@ -41,9 +41,9 @@ Než začneme, je důležité si uvědomit, že existují dva způsoby, jak nasa
 
 Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal: 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/signin/index/).
-2. Vyberte **Vytvořit prostředek**. 
-3. Pak vyberte **Webová aplikace**. 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/signin/index/).
+2. Vyberte **Vytvořit prostředek** . 
+3. Pak vyberte **Webová aplikace** . 
 
    > [!div class="mx-imgBorder"]
    > ![Výběr webové aplikace](./media/quickstarts/formre-create-web-app.png)
@@ -95,14 +95,14 @@ Pomocí následujících kroků vytvořte nový prostředek pomocí Azure Portal
    > [!div class="mx-imgBorder"]
    > ![Konfigurovat Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. A je to! V dalším kroku vyberte **zkontrolovat + vytvořit**a pak **vytvořit** a nasaďte webovou aplikaci. Po dokončení budete mít přístup k webové aplikaci na adrese URL uvedené v **přehledu** prostředku.
+7. Hotovo. V dalším kroku vyberte **zkontrolovat + vytvořit** a pak **vytvořit** a nasaďte webovou aplikaci. Po dokončení budete mít přístup k webové aplikaci na adrese URL uvedené v **přehledu** prostředku.
 
 > [!NOTE]
 > Při vytváření webové aplikace můžete taky nakonfigurovat autorizaci a ověřování. Není to nutné pro začátek. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Jako alternativu k používání Azure Portal můžete vytvořit prostředek pomocí Azure CLI. Než budete pokračovat, bude nutné nainstalovat rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud už s Azure CLI pracujete, můžete tento krok přeskočit. 
+Jako alternativu k používání Azure Portal můžete vytvořit prostředek pomocí Azure CLI. Než budete pokračovat, bude nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Pokud už s Azure CLI pracujete, můžete tento krok přeskočit. 
 
 K tomuto příkazu potřebujete znát několik věcí:
 
@@ -149,7 +149,7 @@ az container create \
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Připojení k Azure AD pro autorizaci
 
-Doporučuje se připojit svou webovou aplikaci k Azure Active Directory. Tím se zajistí, že se můžou přihlásit a používat vaše webová aplikace jenom uživatelé s platnými přihlašovacími údaji. Postupujte podle pokynů v tématu [Konfigurace aplikace App Service](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) pro připojení k Azure Active Directory.
+Doporučuje se připojit svou webovou aplikaci k Azure Active Directory. Tím se zajistí, že se můžou přihlásit a používat vaše webová aplikace jenom uživatelé s platnými přihlašovacími údaji. Postupujte podle pokynů v tématu [Konfigurace aplikace App Service](../../app-service/configure-authentication-provider-aad.md) pro připojení k Azure Active Directory.
 
 ## <a name="open-source-on-github"></a>Open source na GitHubu
 

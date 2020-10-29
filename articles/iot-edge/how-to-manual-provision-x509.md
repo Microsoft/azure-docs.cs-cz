@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048181"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913972"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>Nastavení zařízení Azure IoT Edge s ověřováním pomocí certifikátu X. 509
 
@@ -26,17 +26,17 @@ Kroky v tomto článku vás provedou procesem, který se nazývá ruční zřizo
 
 Pro ruční zřizování máte dvě možnosti ověřování IoT Edge zařízení:
 
-* **Symetrický klíč**: když v IoT Hub vytvoříte novou identitu zařízení, služba vytvoří dva klíče. Do zařízení umístíte jeden z klíčů a při ověřování se zobrazí klíč, který se IoT Hub.
+* **Symetrický klíč** : když v IoT Hub vytvoříte novou identitu zařízení, služba vytvoří dva klíče. Do zařízení umístíte jeden z klíčů a při ověřování se zobrazí klíč, který se IoT Hub.
 
   Tato metoda ověřování je rychlejší, aby se dala začít, ale ne tak bezpečné.
 
-* **X. 509 podepsaný svým držitelem**: vytvoříte dva certifikáty identit x. 509 a umístíte je na zařízení. Když v IoT Hub vytvoříte novou identitu zařízení, zadáváte kryptografické otisky z obou certifikátů. Když se zařízení ověřuje IoT Hub, prezentuje jeho certifikáty a IoT Hub může ověřit, jestli odpovídají kryptografickým otiskům.
+* **X. 509 podepsaný svým držitelem** : vytvoříte dva certifikáty identit x. 509 a umístíte je na zařízení. Když v IoT Hub vytvoříte novou identitu zařízení, zadáváte kryptografické otisky z obou certifikátů. Když se zařízení ověřuje IoT Hub, prezentuje jeho certifikáty a IoT Hub může ověřit, jestli odpovídají kryptografickým otiskům.
 
   Tato metoda ověřování je bezpečnější a doporučuje se pro produkční scénáře.
 
 Tento článek vás provede procesem registrace a zřízení s ověřováním pomocí certifikátu X. 509. Pokud se chcete dozvědět, jak nastavit zařízení pomocí symetrických klíčů, přečtěte si téma [nastavení Azure IoT Edge zařízení s ověřováním pomocí symetrického klíče](how-to-manual-provision-symmetric-key.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle kroků v tomto článku, měli byste mít nainstalované zařízení s modulem runtime IoT Edge. V takovém případě postupujte podle pokynů v části [instalace nebo odinstalace modulu runtime Azure IoT Edge](how-to-install-iot-edge.md).
 
@@ -44,9 +44,24 @@ Ruční zřizování s certifikáty X. 509 vyžaduje IoT Edge verze 1.0.10 nebo 
 
 ## <a name="create-certificates-and-thumbprints"></a>Vytváření certifikátů a kryptografických otisků
 
+Certifikát identity zařízení je listový certifikát, který se připojuje prostřednictvím řetězu certifikátů s nejvyšším certifikátem certifikační autority (CA) X. 509. Certifikát identity zařízení musí mít svůj běžný název (CN) nastavený na ID zařízení, které má mít zařízení ve službě IoT Hub.
 
+Certifikáty identit zařízení se používají jenom ke zřízení IoT Edge zařízení a ověřování zařízení s využitím Azure IoT Hub. Nepodepisují certifikáty, na rozdíl od certifikátů certifikační autority, které IoT Edge zařízení prezentuje modulům nebo listovým zařízením k ověření. Další informace najdete v tématu informace o [využití certifikátu Azure IoT Edge](iot-edge-certs.md).
 
-<!-- TODO -->
+Po vytvoření certifikátu identity zařízení byste měli mít dva soubory: soubor. cer nebo. pem, který obsahuje veřejnou část certifikátu, a soubor. cer nebo. pem s privátním klíčem certifikátu.
+
+Pro ruční zřizování pomocí X. 509 potřebujete následující soubory:
+
+* Dvě sady certifikátů identit zařízení a privátních klíčů. IoT Edge modulu runtime se poskytne jedna sada souborů certifikátu nebo klíče.
+* Kryptografické otisky jsou pořízeny z certifikátů identit zařízení. Hodnoty kryptografických otisků jsou 40 hexadecimálních znaků pro hodnoty hash SHA-1 nebo 64-HEX znaků pro hodnoty hash SHA-256. Pro IoT Hub v době registrace zařízení jsou k dispozici oba kryptografické otisky.
+
+Pokud nemáte k dispozici certifikáty, můžete [Vytvořit Ukázkové certifikáty pro testování IoT Edgech funkcí zařízení](how-to-create-test-certificates.md). Podle pokynů v tomto článku nastavte skripty pro vytváření certifikátů, vytvořte certifikát kořenové certifikační autority a pak vytvořte dva IoT Edge certifikáty identit zařízení.
+
+Jedním ze způsobů, jak načíst kryptografický otisk z certifikátu, je následující příkaz OpenSSL:
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>Registrace nového zařízení
 
@@ -54,7 +69,7 @@ Každé zařízení, které se připojuje k IoT Hub, má ID zařízení, které 
 
 Pro ověřování pomocí certifikátu X. 509 se tyto informace poskytují ve formě *kryptografických otisků* z certifikátů identit zařízení. Tyto kryptografické otisky se přidávají IoT Hub v době registrace zařízení, takže služba může zařízení rozpoznat při připojení.
 
-Můžete použít několik nástrojů k registraci nového IoT Edge zařízení v IoT Hub a nahrání kryptografických otisků certifikátů. 
+Můžete použít několik nástrojů k registraci nového IoT Edge zařízení v IoT Hub a nahrání kryptografických otisků certifikátů.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -68,7 +83,7 @@ V IoT Hub v Azure Portal se zařízení IoT Edge vytváří a spravují oddělen
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
 
-1. V levém podokně vyberte v nabídce **IoT Edge** a pak vyberte **Přidat IoT Edge zařízení**.
+1. V levém podokně vyberte v nabídce **IoT Edge** a pak vyberte **Přidat IoT Edge zařízení** .
 
    ![Přidat zařízení IoT Edge z Azure Portal](./media/how-to-manual-provision-symmetric-key/portal-add-iot-edge-device.png)
 
@@ -78,7 +93,7 @@ V IoT Hub v Azure Portal se zařízení IoT Edge vytváří a spravují oddělen
    * Jako typ ověřování vyberte **X. 509 podepsaný svým držitelem** .
    * Zadejte kryptografické otisky certifikátů primární a sekundární identity. Hodnoty kryptografických otisků jsou 40 hexadecimálních znaků pro hodnoty hash SHA-1 nebo 64-HEX znaků pro hodnoty hash SHA-256.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
 ### <a name="view-iot-edge-devices-in-the-azure-portal"></a>Zobrazit IoT Edge zařízení v Azure Portal
 
@@ -121,7 +136,7 @@ Pomocí příkazu [AZ IoT Hub Device-identity list](/cli/azure/ext/azure-iot/iot
 
 Přidejte příznak `--edge-enabled` nebo `--ee` k vypsání IoT Edge zařízení ve službě IoT Hub.
 
-Všechna zařízení, která jsou zaregistrovaná jako zařízení IoT Edge, budou mít **Možnosti vlastností. iotEdge** nastaveno na **hodnotu true**.
+Všechna zařízení, která jsou zaregistrovaná jako zařízení IoT Edge, budou mít **Možnosti vlastností. iotEdge** nastaveno na **hodnotu true** .
 
 --- 
 
@@ -160,10 +175,10 @@ Na zařízení se systémem Linux zadáte tyto informace úpravou souboru config
 
 1. Aktualizujte následující pole:
 
-   * **iothub_hostname**: název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například, `{IoT hub name}.azure-devices.net`.
-   * **device_ID**: ID, které jste zadali při registraci zařízení.
-   * **identity_cert**: identifikátor URI certifikátu identity na zařízení. Například, `file:///path/identity_certificate.pem`.
-   * **identity_pk**: identifikátor URI pro soubor privátního klíče pro poskytnutý certifikát identity. Například, `file:///path/identity_key.pem`.
+   * **iothub_hostname** : název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například, `{IoT hub name}.azure-devices.net`.
+   * **device_ID** : ID, které jste zadali při registraci zařízení.
+   * **identity_cert** : identifikátor URI certifikátu identity na zařízení. Například, `file:///path/identity_certificate.pem`.
+   * **identity_pk** : identifikátor URI pro soubor privátního klíče pro poskytnutý certifikát identity. Například, `file:///path/identity_key.pem`.
 
 1. Uložte soubor a zavřete ho.
 
@@ -202,10 +217,10 @@ Na zařízení se systémem Linux zadáte tyto informace úpravou souboru config
 
 3. Po zobrazení výzvy zadejte následující informace:
 
-   * **IotHubHostName**: název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například, `{IoT hub name}.azure-devices.net`.
-   * **DeviceID**: ID, které jste zadali při registraci zařízení.
-   * **X509IdentityCertificate**: absolutní cesta k certifikátu identity na zařízení. Například, `C:\path\identity_certificate.pem`.
-   * **X509IdentityPrivateKey**: absolutní cesta k souboru privátního klíče pro poskytnutý certifikát identity. Například, `C:\path\identity_key.pem`.
+   * **IotHubHostName** : název hostitele IoT Hub, ke kterému se bude zařízení připojovat. Například, `{IoT hub name}.azure-devices.net`.
+   * **DeviceID** : ID, které jste zadali při registraci zařízení.
+   * **X509IdentityCertificate** : absolutní cesta k certifikátu identity na zařízení. Například, `C:\path\identity_certificate.pem`.
+   * **X509IdentityPrivateKey** : absolutní cesta k souboru privátního klíče pro poskytnutý certifikát identity. Například, `C:\path\identity_key.pem`.
 
 Při ručním zřizování zařízení můžete pomocí dalších parametrů upravit proces, včetně:
 

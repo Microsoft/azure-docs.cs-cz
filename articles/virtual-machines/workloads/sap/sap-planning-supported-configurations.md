@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648985"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926610"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](./hana-overview-architecture.md)najdete v článku [podporované scénáře pro velké instance Hana](./hana-supported-scenario.md). 
@@ -46,7 +46,7 @@ V takových konfiguracích oddělíte vrstvu aplikace SAP a vrstvu DBMS do různ
 
 Grafická reprezentace vypadá takto:
 
-![Jednoduchá konfigurace na dvě úrovně](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![Diagram, který zobrazuje jednoduchou konfiguraci 3 vrstvy.](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 Tento typ konfigurace se podporuje ve Windows, Red Hat, SUSE a Oracle Linux pro systémy DBMS SQL Server, Oracle, Db2, SAP HANA, maxDB a SAP pomocného programu pro produkční a neprodukční případy. Toto je výchozí konfigurace nasazení pro [velké instance Azure Hana](./hana-overview-architecture.md). Pro zjednodušení nerozlišujeme mezi instancemi systému SAP Central Services a dialogy SAP v aplikační vrstvě SAP. V této jednoduché konfiguraci se třemi úrovněmi by neexistovala žádná ochrana s vysokou dostupností pro centrální služby SAP.
 
@@ -83,7 +83,7 @@ V mnoha případech byly na holé servery nasazené víc instancí dialogů, neb
 
 V případě konfigurace na 3 úrovni, kde se v rámci virtuálních počítačů Azure spouští víc instancí dialogů SAP, může vypadat takto:
 
-![Více instancí systému DBMS v jedné jednotce](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![Diagram, který zobrazuje konfiguraci na 3 úrovni, kde se na virtuálních počítačích Azure spouští víc instancí dialogů SAP.](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 Pro zjednodušení nerozlišujeme mezi instancemi systému SAP Central Services a dialogy SAP v aplikační vrstvě SAP. V této jednoduché konfiguraci se třemi úrovněmi by neexistovala žádná ochrana s vysokou dostupností pro centrální služby SAP. U produkčních systémů se nedoporučuje opustit službu SAP Central Services bez ochrany. Konkrétní informace, které se označují jako konfigurace více identifikátorů SID kolem centrálních instancí SAP a vysoké dostupnosti takových konfigurací s více identifikátory SID, najdete v dalších částech tohoto dokumentu.
 
@@ -208,7 +208,7 @@ Konfigurace je popsána ve [vysoké dostupnosti pro SAP NetWeaver na virtuální
 
 Cluster s více identifikátory SID se schématem replikačního serveru pro zařazování do fronty vypadá nějak takto:
 
-![Konfigurace systému DBMS a ASCS HA](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![Diagram, který zobrazuje cluster s více identifikátory SID se serverem replikace ve frontě.](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA scénáře škálování na více instancí

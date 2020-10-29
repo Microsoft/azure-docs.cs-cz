@@ -33,6 +33,8 @@
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+    - name: Azure PowerShell
+      href: /powershell/module/Az.ConnectedKubernetes/
 - name: Zdroje a prostředky
   items:
     - name: Rychlé zprovoznění služby Azure Arc

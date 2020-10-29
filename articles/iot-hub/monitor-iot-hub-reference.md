@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: b4d5b3682114d44ceaadc73252f355e4cdc9cc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548508"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926321"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Monitorování referenčních informací o službě Azure IoT Hub
 
@@ -57,7 +57,7 @@ U většiny metrik jsou všechny typy agregace platné; pro počítání metrik,
 
 ### <a name="cloud-to-device-command-metrics"></a>Metriky příkazů z cloudu do zařízení
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |C2D zprávy prošly (Preview)|C2DMessagesExpired|Počet|Celkem|Počet zpráv typu cloud-zařízení, jejichž platnost vypršela|Žádné|
 |Doručení zpráv C2D bylo dokončeno.|C2D. Commands. odchozí.<br>dokončeno. úspěch|Počet|Celkem|Počet úspěšně dokončených doručení zpráv typu cloud-zařízení do zařízení|Žádné|
@@ -68,7 +68,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="cloud-to-device-direct-methods-metrics"></a>Metriky přímých metod cloudu na zařízení
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Neúspěšná volání přímé metody|C2D. Methods. Failure|Počet|Celkem|Počet všech neúspěšných volání metody Direct|Žádné|
 |Velikost žádosti o vyvolání přímé metody|C2D. Methods. requestSize|Bajty|Průměr|Počet všech úspěšných žádostí přímých metod.|Žádné|
@@ -79,7 +79,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** (suma) je platná agregace. Hod
 
 ### <a name="cloud-to-device-twin-operations-metrics"></a>Metriky s dvojitou operací z cloudu na zařízení
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Neúspěšné čtení z back-endu ze zadních vláken|C2D. nevlákenný. Read. Failure|Počet|Celkem|Počet všech neúspěšných čtení, která byla inicializována back-endu.|Žádné|
 |Neúspěšné zdvojené aktualizace z back-endu|C2D. nevlákenná. aktualizace. selhání|Počet|Celkem|Počet všech neúspěšných provolaných aktualizací, které selhaly po back-endu.|Žádné|
@@ -92,7 +92,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="configurations-metrics"></a>Konfigurace metrik
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Metriky konfigurace|konfiguračních|Počet|Celkem|Počet celkových operací CRUD provedených pro konfiguraci zařízení a nasazení IoT Edge v sadě cílových zařízení. To zahrnuje také počet operací, které mění v důsledku těchto konfigurací práci v zařízení, která je typu vlákna nebo je v něm.|Žádné|
 
@@ -100,7 +100,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="daily-quota-metrics"></a>Denní metriky kvót
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Celkové využití dat zařízení|deviceDataUsage|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
 |Celkové využití dat zařízení (Preview)|deviceDataUsageV2|Bajty|Celkem|Bajtů přenesených do a ze všech zařízení připojených k IotHub|Žádné|
@@ -110,7 +110,7 @@ Pro *Celkový počet použitých zpráv* jsou podporovány pouze agregace minima
 
 ### <a name="device-metrics"></a>Metriky zařízení
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Celkem zařízení (zastaralé)|Devices. totalDevices|Počet|Celkem|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
 |Připojená zařízení (zastaralé) |Devices. connectedDevices.<br>allProtocol|Počet|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné|
@@ -125,7 +125,7 @@ Pro *Celkový počet zařízení (Preview)* a *připojených zařízení (ve ver
 
 ### <a name="device-telemetry-metrics"></a>Metriky telemetrie zařízení
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Počet chyb omezování|D2C. telemetrie. příchozí přenos dat<br>sendThrottle|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné|
 |Počet pokusů o odeslání zprávy telemetrie|D2C. telemetrie. příchozí přenos dat<br>allProtocol|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádné|
@@ -135,7 +135,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="device-to-cloud-twin-operations-metrics"></a>Metriky nevlákenných operací zařízení do cloudu
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Neúspěšná čtení ze zařízení|D2C. nevlákenný. Read. Failure|Počet|Celkem|Počet všech neúspěšných čtení, která byla iniciována zařízením.|Žádné|
 |Neúspěšné aktualizace ze zařízení se zdvojenými chybami|D2C. nevlákenná. aktualizace. selhání|Počet|Celkem|Počet všech neúspěšných aktualizací inicializovaných zařízením.|Žádné|
@@ -148,7 +148,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="event-grid-metrics"></a>Metriky Event gridu
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Event Grid doručení (Preview)|EventGridDeliveries|Počet|Celkem|Počet událostí IoT Hub publikovaných do Event Grid Použijte výslednou dimenzi pro počet úspěšných a neúspěšných žádostí. Dimenze EventType zobrazuje typ události ( https://aka.ms/ioteventgrid) .|Výsledek<br/>Typ události<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* .|
 |Latence Event Grid (Preview)|EventGridLatency|Milisekund|Průměr|Průměrná latence (v milisekundách) od okamžiku, kdy byla událost centra IoT vygenerována při publikování události do Event Grid. Toto číslo je průměrem mezi všemi typy událostí. Použijte dimenzi EventType k zobrazení latence konkrétního typu události.|Typ události<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* .|
@@ -157,7 +157,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="jobs-metrics"></a>Metriky úloh
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Dokončené úlohy|dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné|
 |Neúspěšná volání pro výpis úloh|Jobs. listJobs. selhání|Počet|Celkem|Počet všech neúspěšných volání pro výpis úloh|Žádné|
@@ -176,7 +176,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="routing-metrics"></a>Metriky směrování
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 | Směrování pokusů o doručení (Preview) |RoutingDeliveries | Počet | Celkem |Toto je metrika doručení směrování. Použijte dimenze k identifikaci stavu doručení pro konkrétní koncový bod nebo pro konkrétní zdroj směrování.| Výsledek<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Koncový bod<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* . |
 | Velikost dat doručení směrování v bajtech (Preview)|RoutingDataSizeInBytesDelivered| Bajty | Celkem |Celkový počet bajtů směrovaných nástrojem IoT Hub do vlastního koncového bodu a předdefinovaného koncového bodu. Použijte dimenze k identifikaci velikosti dat směrovaného na konkrétní koncový bod nebo pro konkrétní zdroj směrování.| RoutingSource,<br>EndpointType<br>Koncový bod<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* .|
@@ -203,7 +203,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 ### <a name="twin-query-metrics"></a>Dvojitá metrika dotazu
 
-|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Popis|Dimenze|
+|Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Neúspěšné zdvojené dotazy|twinQueries. selhání|Počet|Celkem|Počet všech neúspěšných dotazů, které selhaly.|Žádné|
 |Úspěšné zdvojené dotazy|twinQueries. Success|Počet|Celkem|Počet všech úspěšných vlákenných dotazů.|Žádné|
@@ -215,7 +215,7 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 
 Azure IoT Hub má následující dimenze, které jsou přidružené k některým z jeho metrik směrování a služby Event Grid.
 
-|Název dimenze | Popis|
+|Název dimenze | Description|
 |---|---|
 ||
 |**Koncový bod**| Název koncového bodu.|
@@ -559,7 +559,7 @@ IoT Hub zaznamenává tento protokol, když se do IoT Hub dorazí zpráva obsahu
 
 V tomto případě `durationMs` se nepočítá, protože hodiny IoT Hub nemusejí být synchronizované s hodinami zařízení, takže výpočet doby trvání může být zavádějící. `properties`Pro zachycení špičky v latenci v rámci zařízení do cloudu doporučujeme napsat logiku pomocí časových razítek v části.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | Velikost zprávy typu zařízení-Cloud v bajtech |
 | **deviceId** | Řetězec alfanumerických alfanumerických znaků ASCII | Identita zařízení |
@@ -593,7 +593,7 @@ IoT Hub zaznamenává tento protokol, pokud zpráva obsahující platné vlastno
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Řetězec | Hodnota true nebo false označuje, zda je v IoT Hub povoleno směrování zpráv. |
 | **parentSpanId** | Řetězec | [Identifikátor rozsahu](https://w3c.github.io/trace-context/#parent-id) nadřazené zprávy, který by byl trasováním zpráv D2C v tomto případě |
@@ -625,7 +625,7 @@ IoT Hub zaznamenává tento protokol, pokud je povoleno [Směrování](iot-hub-d
 
 V `properties` části Tento protokol obsahuje další informace o příchozím přenosu zpráv.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **koncový bod** | Řetězec | Název koncového bodu směrování |
 | **endpointType** | Řetězec | Typ koncového bodu směrování |

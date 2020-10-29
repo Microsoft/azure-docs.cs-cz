@@ -2,14 +2,14 @@
 title: Kurz – použití Docker Compose k nasazení skupiny více kontejnerů
 description: Pomocí Docker Compose Sestavte a spusťte aplikaci s více kontejnery a pak aplikaci zaveďte do Azure Container Instances
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709655"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913836"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Kurz: nasazení skupiny s více kontejnery pomocí Docker Compose 
 
@@ -67,14 +67,16 @@ Otevřete Docker-YAML. v textovém editoru. Soubor konfiguruje `azure-vote-back`
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
   azure-vote-front:
     build: ./azure-vote
-    image: azure-vote-front
+    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
@@ -84,7 +86,7 @@ services:
 
 V `azure-vote-front` konfiguraci proveďte následující dvě změny:
 
-1. Aktualizuje `image` vlastnost ve `azure-vote-front` službě. Jako předponu názvu obrázku použijte název přihlašovacího serveru služby Azure Container Registry, \<acrName\> . azurecr.IO. Pokud je například registr nazvaný *myregistry*, název přihlašovacího serveru je *myregistry.azurecr.IO* (všechny malé písmeno) a vlastnost Image je pak `myregistry.azurecr.io/azure-vote-front` .
+1. Aktualizuje `image` vlastnost ve `azure-vote-front` službě. Jako předponu názvu obrázku použijte název přihlašovacího serveru služby Azure Container Registry, \<acrName\> . azurecr.IO. Pokud je například registr nazvaný *myregistry* , název přihlašovacího serveru je *myregistry.azurecr.IO* (všechny malé písmeno) a vlastnost Image je pak `myregistry.azurecr.io/azure-vote-front` .
 1. Změňte `ports` mapování na `80:80` . Uložte soubor.
 
 Aktualizovaný soubor by měl vypadat nějak takto:
@@ -93,8 +95,10 @@ Aktualizovaný soubor by měl vypadat nějak takto:
 version: '3'
 services:
   azure-vote-back:
-    image: redis
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
     container_name: azure-vote-back
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
     ports:
         - "6379:6379"
 
@@ -128,7 +132,7 @@ $ docker images
 
 REPOSITORY                                TAG        IMAGE ID            CREATED             SIZE
 myregistry.azurecr.io/azure-vote-front    latest     9cc914e25834        40 seconds ago      944MB
-redis                                     latest     a1b99da73d05        7 days ago          104MB
+mcr.microsoft.com/oss/bitnami/redis       6.0.8      3a54a920bb6c        4 weeks ago          103MB
 tiangolo/uwsgi-nginx-flask                python3.6  788ca94b2313        9 months ago        9444MB
 ```
 
@@ -137,9 +141,9 @@ Spuštěním příkazu [docker ps](https://docs.docker.com/engine/reference/comm
 ```
 $ docker ps
 
-CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS                           NAMES
-82411933e8f9        myregistry.azurecr.io/azure-vote-front  "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
-b68fed4b66b6        redis                                   "docker-entrypoint.s…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
+CONTAINER ID        IMAGE                                      COMMAND                  CREATED             STATUS              PORTS                           NAMES
+82411933e8f9        myregistry.azurecr.io/azure-vote-front     "/entrypoint.sh /sta…"   57 seconds ago      Up 30 seconds       443/tcp, 0.0.0.0:80->80/tcp   azure-vote-front
+b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/script…"   57 seconds ago      Up 30 seconds       0.0.0.0:6379->6379/tcp          azure-vote-back
 ```
 
 Pokud chcete zobrazit spuštěnou aplikaci, zadejte v místním webovém prohlížeči `http://localhost:80`. Načte se ukázková aplikace, jak je znázorněno v následujícím příkladu:
@@ -205,16 +209,16 @@ docker ps
 Ukázkový výstup:
 
 ```
-CONTAINER ID                           IMAGE                                    COMMAND             STATUS              PORTS
-azurevotingappredis_azure-vote-back    redis                                                        Running             52.179.23.131:6379->6379/tcp
-azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                       Running             52.179.23.131:80->80/tcp
+CONTAINER ID                           IMAGE                                         COMMAND             STATUS              PORTS
+azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8                         Running             52.179.23.131:6379->6379/tcp
+azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
 Pokud chcete zobrazit spuštěnou aplikaci v cloudu, zadejte zobrazenou IP adresu v místním webovém prohlížeči. V tomto příkladu zadejte `52.179.23.131` . Načte se ukázková aplikace, jak je znázorněno v následujícím příkladu:
 
 :::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Obrázek hlasovací aplikace":::
 
-Pokud chcete zobrazit protokoly front-endu kontejneru, spusťte příkaz [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) . Například:
+Pokud chcete zobrazit protokoly front-endu kontejneru, spusťte příkaz [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) . Příklad:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front

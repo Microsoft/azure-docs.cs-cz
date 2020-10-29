@@ -12,12 +12,12 @@ ms.date: 10/27/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a8e3b6cfce9bff76ec3989273cadadebb23d6d40
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795170"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913241"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Přepínání organizací na portálu
 
@@ -32,9 +32,9 @@ Přepínač organizace je dostupný na následujících portálech:
 
 Přepínání organizací není k dispozici pro **Moje přihlašovací** údaje, **informace o zabezpečení** nebo **Moje skupiny** .
 
-## <a name="switch-organizations"></a>Přepínat organizace
+## <a name="switch-organizations"></a>Přepnutí organizací
 
-Tady je postup, jak přepnout na jinou organizaci. Tento příklad používá na portálu **můj účet** , ale ikona přepínače a umístění jsou podobné i na jiných portálech.
+Tady je postup, jak přepnout na jinou organizaci. V tomto příkladu se používá portál **můj účet** , ale jeho ikona a umístění jsou podobné na jiných portálech.
 
 1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a otevřete stránku [můj účet](https://myaccount.microsoft.com) .
 1. Vyberte možnost organizace přepínač :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="pro přepínání organizace"::: v horní části stránky vedle fotografie vašeho účtu.

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543776"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926185"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Volba pravého serveru MySQL v Azure
 
@@ -55,7 +55,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 | Vysoká dostupnost | Integrované HA v rámci jedné zóny dostupnosti| Integrované HA v rámci zón dostupnosti a napříč nimi | Vlastní spravované pomocí clusteringu, replikace atd.|
 | Zónová redundance | Nepodporováno | Podporováno | Podporováno|
 | Hybridní scénáře | Podporováno s [replikace vstupních dat](./concepts-data-in-replication.md)| Není k dispozici ve verzi Preview. | Spravováno koncovými uživateli |
-| Čtení replik | Podporováno| Podporováno | Spravováno koncovými uživateli |
+| Čtení replik | Podporováno (až 5 replik)| Podporováno (až 10 replik)| Spravováno koncovými uživateli |
 | Backup | Automatizovaná doba uchování s 7-35 dny | Automatizovaná doba uchování s 1-35 dny | Spravováno koncovými uživateli |
 | Monitorování operací databáze | Podporováno | Podporováno | Spravováno koncovými uživateli |
 | Zotavení po havárii | Podporováno s geograficky redundantním úložištěm zálohování a replikami čtení mezi oblastmi | Nepodporováno ve verzi Preview| Vlastní Správa s využitím technologií replikace |

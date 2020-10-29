@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 6dfee84c44643823a4ec76c32e750febc6646be5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908061"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926984"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -34,13 +34,21 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 
 ## <a name="how-to-use-evaluate-model"></a>Jak používat model vyhodnocení
-1. Připojte výstup skóre výsledné **sady** výsledků [modelu skóre](./score-model.md) nebo výstup výsledné sady [dat ke clusterům](./assign-data-to-clusters.md) k levému vstupnímu portu pro **vyhodnocení modelu**. 
+1. Připojte výstup skóre výsledné **sady** výsledků [modelu skóre](./score-model.md) nebo výstup výsledné sady [dat ke clusterům](./assign-data-to-clusters.md) k levému vstupnímu portu pro **vyhodnocení modelu** . 
     > [!NOTE] 
     > Pokud k výběru části vstupní datové sady používáte moduly, jako je "vybrat sloupce v sadě dat", zajistěte, aby byl pro výpočet metriky, jako je AUC, přesnost pro binární klasifikaci nebo detekci anomálií k dispozici sloupec s popiskem skóre
     > Pro výpočet metriky pro klasifikaci a regresi ve více třídách existuje skutečný sloupec popisku, sloupec označené skóre.
     > Sloupec ' přiřazení ', sloupce ' DistancesToClusterCenter ne. X (X je těžiště index, v rozsahu od 0,..., počet centroids-1) existuje pro výpočet metrik pro clusteringu.
 
-2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
+    > [!IMPORTANT]
+    > + Pro vyhodnocení výsledků by měla výstupní datová sada obsahovat konkrétní názvy sloupců skóre, které splňují požadavky na modul pro vyhodnocení modelu.
+    > + `Labels`Sloupec bude považován za skutečné popisky.
+    > + Pro úlohu regrese musí mít datová sada k vyhodnocení jeden sloupec s názvem `Regression Scored Labels` , který představuje popisky skóre.
+    > + Pro úlohu binární klasifikace musí mít datová sada, která se má vyhodnotit, dva sloupce s názvem `Binary Class Scored Labels` , `Binary Class Scored Probabilities` , které představují popisky s skóre a pravděpodobnosti v uvedeném pořadí.
+    > + Pro úlohu více klasifikací musí mít datová sada, která se má vyhodnotit, jeden sloupec s názvem `Multi Class Scored Labels` , který představuje popisky skóre.
+    > Pokud výstupy nadřazeného modulu tyto sloupce nemají, je nutné upravit podle výše uvedených požadavků.
+
+2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu** . Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
     > [!NOTE]
     > Typ algoritmu odkazuje na třídu "klasifikace dvou tříd", "klasifikace s více třídami", "regrese", "clusteringu" pod "Machine Learning algoritmy". 
@@ -49,14 +57,14 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 ## <a name="results"></a>Výsledky
 
-Po spuštění **modelu vyhodnocení**vyberte modul a otevřete na pravé straně navigační panel **modelu hodnocení** .  Pak zvolte kartu **výstupy + protokoly** a na této kartě se v části **datové výstupy** zobrazí několik ikon. Ikona **vizualizace** má pruhový graf s ikonou a je prvním způsobem, jak zobrazit výsledky.
+Po spuštění **modelu vyhodnocení** vyberte modul a otevřete na pravé straně navigační panel **modelu hodnocení** .  Pak zvolte kartu **výstupy + protokoly** a na této kartě se v části **datové výstupy** zobrazí několik ikon. Ikona **vizualizace** má pruhový graf s ikonou a je prvním způsobem, jak zobrazit výsledky.
 
 V případě binární klasifikace můžete po kliknutí na ikonu **vizualizace** vizualizovat matrici v binární měně.
 V případě vícenásobné klasifikace můžete najít soubor vykreslení matrice na kartě **výstupy a protokoly** , jako je následující:
 > [!div class="mx-imgBorder"]
 > ![Náhled nahraného obrázku](media/module/multi-class-confusion-matrix.png)
 
-Pokud připojíte datové sady ke vstupům **modelu vyhodnocení**, budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
+Pokud připojíte datové sady ke vstupům **modelu vyhodnocení** , budou výsledky obsahovat metriky pro sadu dat nebo oba modely.
 Model nebo data připojená k levému portu se zobrazí jako první v sestavě, za kterými následuje metrika pro datovou sadu nebo model připojený ke správnému portu.  
 
 Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly vytvořeny na stejných datech, ale s různými parametry.  
@@ -67,7 +75,7 @@ Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou ji
 
 ## <a name="metrics"></a>Metriky
 
-Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
+Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu** :
 
 + [modely klasifikace](#metrics-for-classification-models)
 + [Regresní modely](#metrics-for-regression-models)
@@ -105,7 +113,7 @@ Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb. 
   
 
   
-- **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
+- **Koeficient stanovitelnosti** , který se často označuje jako R <sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
 
 ###  <a name="metrics-for-clustering-models"></a>Metriky pro modely clusteringu
 
@@ -117,15 +125,15 @@ Vzhledem k tomu, že se modely clusteringu výrazně liší od klasifikace a reg
   
 Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
     
--   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu**představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
+-   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu** představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
 
--   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů**, představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
+-   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů** , představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
   
 -   Sloupec **počet bodů** ukazuje, kolik datových bodů bylo přiřazeno ke každému clusteru, spolu s celkovým celkovým počtem datových bodů v jakémkoli clusteru.  
   
      Pokud je počet datových bodů přiřazených ke clusterům menší, než je celkový počet dostupných datových bodů, znamená to, že datové body nelze přiřadit ke clusteru.  
   
--   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje maximální vzdálenost mezi každým bodem a těžištěem clusteru daného bodu.  
+-   Skóre ve sloupci, **maximální vzdálenost do centra clusterů** , představuje maximální vzdálenost mezi každým bodem a těžištěem clusteru daného bodu.  
   
      Pokud je toto číslo vysoké, může to znamenat, že cluster je výrazně rozptýlený. Tuto statistiku byste měli projít společně s **průměrnou vzdáleností do centra clusterů** k určení rozprostření clusteru.   
 

@@ -3,15 +3,15 @@ title: Ověření aplikace pro přístup k prostředkům Azure Event Hubs
 description: Tento článek poskytuje informace o ověřování aplikace s Azure Active Directory pro přístup k prostředkům Azure Event Hubs.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359930"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913309"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Ověření aplikace s Azure Active Directory pro přístup k prostředkům Event Hubs
-Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu `https://eventhubs.azure.net/` (pro klienty Kafka je prostředek k vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
+Microsoft Azure poskytuje integrované řízení přístupu pro prostředky a aplikace založené na Azure Active Directory (Azure AD). Klíčovou výhodou použití Azure AD s Azure Event Hubs je, že už nemusíte ukládat přihlašovací údaje do kódu. Místo toho můžete požádat o přístupový token OAuth 2,0 z platformy Microsoft Identity Platform. Název prostředku pro vyžádání tokenu je `https://eventhubs.azure.net/` a je stejný pro všechny cloudy/klienty (pro klienty Kafka, prostředek pro vyžádání tokenu `https://<namespace>.servicebus.windows.net` ). Azure AD ověřuje objekt zabezpečení (uživatel, skupina nebo instanční objekt), který spouští aplikaci. Pokud je ověření úspěšné, služba Azure AD vrátí přístupový token do aplikace a aplikace pak může pomocí přístupového tokenu autorizovat požadavky na prostředky Azure Event Hubs.
 
 Když je role přiřazená k objektu zabezpečení Azure AD, poskytuje Azure přístup k těmto prostředkům pro daný objekt zabezpečení. Přístup může být vymezen na úrovni předplatného, skupiny prostředků, oboru názvů Event Hubs nebo jakéhokoli prostředku. Zabezpečení Azure AD může přiřadit role uživateli, skupině, instančnímu objektu služby nebo [spravované identitě pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md). 
 
@@ -48,7 +48,7 @@ Následující obrázky ukazují kroky pro registraci webové aplikace:
 > [!Note]
 > Pokud aplikaci zaregistrujete jako nativní aplikaci, můžete pro identifikátor URI přesměrování zadat libovolný platný identifikátor URI. Pro nativní aplikace nemusí být tato hodnota skutečnou adresou URL. Pro webové aplikace musí být identifikátor URI pro přesměrování platným identifikátorem URI, protože určuje adresu URL, na které jsou tokeny poskytovány.
 
-Po zaregistrování aplikace se v části **Nastavení**zobrazí **ID aplikace (klienta)** :
+Po zaregistrování aplikace se v části **Nastavení** zobrazí **ID aplikace (klienta)** :
 
 ![ID aplikace registrované aplikace](./media/authenticate-application/application-id.png)
 
@@ -60,7 +60,7 @@ Aplikace potřebuje při žádosti o tokenu klíč klienta k prokázání jeho i
 
 1. Přejděte k registraci vaší aplikace v Azure Portal.
 1. Vyberte nastavení **certifikáty & tajných** kódů.
-1. V části **tajné klíče klienta**vyberte **nový tajný klíč klienta** a vytvořte nový tajný klíč.
+1. V části **tajné klíče klienta** vyberte **nový tajný klíč klienta** a vytvořte nový tajný klíč.
 1. Zadejte popis tajného kódu a vyberte požadovaný interval vypršení platnosti.
 1. Hodnotu nového tajného klíče hned zkopírujte do zabezpečeného umístění. Hodnota Fill se zobrazí pouze jednou.
 
@@ -75,7 +75,7 @@ Po registraci aplikace přiřadíte instanční objekt aplikace k Event Hubs rol
 
     ![Výběr centra událostí](./media/authenticate-application/select-event-hub.png)
 1. Vyberte **Access Control (IAM)** a zobrazte nastavení řízení přístupu pro centrum událostí. 
-1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role**. 
+1. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí. Na panelu nástrojů vyberte tlačítko **Přidat** a pak vyberte **Přidat přiřazení role** . 
 
     ![Přidat tlačítko na panelu nástrojů](./media/authenticate-application/role-assignments-add-button.png)
 1. Na stránce **Přidat přiřazení role** proveďte následující kroky:

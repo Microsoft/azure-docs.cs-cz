@@ -7,26 +7,28 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 32f5ae0e06c38f610ae9751d81b7bf77a0ebc050
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149289"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927286"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
 
 Tato stránka popisuje řešení pro spouštění Oracle WebLogic serveru (WLS) na virtuálních počítačích Azure. Tato řešení jsou společně vyvinutá a podporovaná Oracle a Microsoftem.
 
+Na službě Azure Kubernetes je také možné spustit službu WLS. Tato řešení jsou popsaná v [tomto článku společnosti Microsoft](/azure/virtual-machines/workloads/oracle/weblogic-aks).
+
 Server WLS je předním aplikačním serverem Java, který provozuje nejdůležitější podnikové aplikace v jazyce Java po celém světě. Na serveru WLS je základem middlewaru pro sadu Oracle Software Suite. Oracle a Microsoft se zavazují přispívat zákazníkům ze serveru WLS a pružně spouštět úlohy v Azure jako špičkovou cloudovou platformu.
 
-Řešení Azure na Azure je zaměřené na to, aby bylo co nejsnáze navoláno a přesunuto aplikace Java EE na virtuální počítače Azure díky automatizaci většiny často vydaných operací. Řešení automaticky zřídí prostředky virtuální sítě, úložiště, jazyků Java a Linux. S minimálním úsilím se nainstaluje WebLogic Server. Řešení můžou nastavit zabezpečení pomocí skupiny zabezpečení sítě, Vyrovnávání zatížení pomocí Azure App Gateway a ověřování pomocí Azure Active Directory. K vaší stávající databázi se můžete také automaticky připojit, včetně Azure PostgreSQL, Azure SQL a Oracle DB v cloudu Oracle nebo v Azure. Mapa cest pro řešení zahrnuje možnost Povolit distribuované protokolování a distribuované ukládání do mezipaměti prostřednictvím soudržnosti Oracle. Microsoft a Oracle jsou partnerství, aby umožňovaly podobné funkce pro WebLogic a službu Azure Kubernetes (AKS).
+Řešení Azure na Azure je zaměřené na to, aby bylo co nejsnáze navoláno a přesunuto aplikace Java EE na virtuální počítače Azure díky automatizaci většiny často vydaných operací. Řešení automaticky zřídí prostředky virtuální sítě, úložiště, jazyků Java a Linux. S minimálním úsilím se nainstaluje WebLogic Server. Řešení můžou nastavit zabezpečení pomocí skupiny zabezpečení sítě, Vyrovnávání zatížení pomocí Azure App Gateway a ověřování pomocí Azure Active Directory. K vaší stávající databázi se můžete také automaticky připojit, včetně Azure PostgreSQL, Azure SQL a Oracle DB v cloudu Oracle nebo v Azure. Mapa cest pro řešení zahrnuje možnost Povolit distribuované protokolování a distribuované ukládání do mezipaměti prostřednictvím soudržnosti Oracle.  
 
 :::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="K nasazení WebLogic serveru v Azure můžete použít Azure Portal.":::
 
 Existují čtyři nabídky k dispozici pro splnění různých scénářů: [jeden uzel bez serveru pro správu](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), [jeden uzel se serverem pro správu](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin), [clusterem](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)a [dynamickým clusterem](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster). Nabídky jsou k dispozici bezplatně. Tyto nabídky jsou popsány a propojeny níže.
 
-_Tyto nabídky jsou vlastními licencemi_. Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
+_Tyto nabídky jsou vlastními licencemi_ . Předpokládají, že už máte příslušné licence pro Oracle a máte řádně licenci na spuštění nabídek v Azure.
 
 Nabízí podporu řady operačních systémů, jazyků Java a serveru WLS prostřednictvím základních imagí (například WebLogic Server 14 a JDK 11 v Oracle Linux 7,6). Tyto základní image jsou k dispozici také na Azure sami. Základní image jsou vhodné pro zákazníky, kteří vyžadují složitá a přizpůsobená nasazení Azure. Aktuální sada základních imagí je k dispozici [zde](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1).
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 8d24eb868a13e7b2d9ff3d2b625302c1c1fcb908
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69dd2c6cdba41779849b4eb6b889cde9b1d6e5c9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318003"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913564"
 ---
 # <a name="threat-modeling-tool-update-release-71604081---492019"></a>Threat Modeling Tool vydání aktualizace 7.1.60408.1-4/9/2019
 
@@ -28,7 +28,7 @@ ms.locfileid: "91318003"
 
 ### <a name="new-stencils-for-azure-key-vault-and-azure-traffic-manager"></a>Nové vzorníky pro Azure Key Vault a Azure Traffic Manager
 
-![Azure Key Vault Vzorník](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
+![Snímek obrazovky zobrazuje ikony pro Azure Key Vault a Azure Traffic Manager.](./media/threat-modeling-tool-releases-71604081/tmt_keyvault_trafficmanager.PNG)
 
 Nové vzorníky a hrozby pro Azure Key Vault a Azure Traffic Manager byly přidány do sady vzorníků Azure. Při otevírání modelů založených na sadě vzorníků Azure se uživatelům zobrazí výzva k aktualizaci šablony přidružené k modelu. Aktualizace modelu založeného na sadě vzorníků Azure se dá spustit taky ručně pomocí příkazu použít šablonu v nabídce soubor a opětovným použitím nejnovějšího souboru Cloud Services. tb7 Azure.
 
@@ -36,7 +36,7 @@ Nové vzorníky a hrozby pro Azure Key Vault a Azure Traffic Manager byly přid�
 
 Verze Threat Modeling Tool klienta se teď zobrazuje na domovské obrazovce aplikace pro usnadnění přístupu.
 
-![Azure Key Vault Vzorník](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
+![Snímek obrazovky zobrazuje Microsoft Threat Modeling Tool s číslem verze klienta.](./media/threat-modeling-tool-releases-71604081/tmt_version.PNG)
 
 ### <a name="support-links-have-been-updated"></a>Odkazy na podporu byly aktualizovány
 

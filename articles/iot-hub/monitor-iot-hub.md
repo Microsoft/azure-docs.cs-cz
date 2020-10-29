@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548505"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926253"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Monitorování IoT Hub Azure
 
@@ -54,11 +54,14 @@ Metriky platforem a protokol aktivit se shromažďují a ukládají automaticky,
 
 Protokoly prostředků se neshromažďují a ukládají, dokud nevytvoříte nastavení diagnostiky a nebudete je směrovat do jednoho nebo více umístění.
 
-Metriky a protokoly je možné směrovat do Log Analytics pracovního prostoru, kde je lze analyzovat pomocí protokolů Azure Monitor; Azure Storage k archivaci a offline analýze; nebo do Event Hubsho koncového bodu, kde je mohou číst externí aplikace, například nástroje SIEM třetích stran.
+Metriky a protokoly je možné směrovat do několika umístění, včetně:
+- Azure Monitor protokoluje úložiště prostřednictvím přidruženého pracovního prostoru Log Analytics. Dá se analyzovat pomocí Log Analytics.
+- Azure Storage k archivaci a offline analýze 
+- Event Hubs koncový bod, ve kterém mohou být čteny externími aplikacemi, například nástroje SIEM třetích stran.
 
 V Azure Portal můžete vybrat **nastavení diagnostiky** v části **monitorování** v levém podokně služby IoT Hub a potom **Přidat nastavení** diagnostiky a vytvořit tak nastavení diagnostiky pro protokoly a metriky platforem vydávané službou IoT Hub.
 
-Následující snímek obrazovky ukazuje nastavení diagnostiky pro operace směrování připojení v protokolech prostředků a všechny metriky platforem do Log Analyticsho pracovního prostoru.
+Následující snímek obrazovky ukazuje nastavení diagnostiky pro směrování *operací připojení* typu protokolu prostředků a všechny metriky platforem do log Analyticsho pracovního prostoru.
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Výchozí grafy metrik na stránce s přehledem IoT Hub.":::
 
@@ -86,7 +89,7 @@ Některé metriky IoT Hub, jako jsou [metriky směrování](monitor-iot-hub-refe
 
 ## <a name="analyzing-logs"></a>Analýza protokolů
 
-Data v Azure Monitor protokoly se ukládají v tabulkách, kde každá tabulka má svou vlastní sadu jedinečných vlastností. Další informace o protokolech Azure Monitor najdete v tématu [Přehled protokolů Azure monitor](/azure/azure-monitor/platform/data-platform-logs) v dokumentaci k Azure monitor. 
+Data v Azure Monitor protokoly se ukládají v tabulkách, kde každá tabulka má svou vlastní sadu jedinečných vlastností. Data v těchto tabulkách jsou přidružená k Log Analyticsmu pracovnímu prostoru a lze je dotazovat v Log Analytics. Další informace o protokolech Azure Monitor najdete v tématu [Přehled protokolů Azure monitor](/azure/azure-monitor/platform/data-platform-logs) v dokumentaci k Azure monitor. 
 
 Chcete-li směrovat data do protokolů Azure Monitor, je nutné vytvořit nastavení diagnostiky k odeslání protokolů prostředků nebo metriky platformy do pracovního prostoru Log Analytics. Další informace najdete v tématu [shromažďování a směrování](#collection-and-routing).
 

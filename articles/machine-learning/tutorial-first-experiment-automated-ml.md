@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
-ms.openlocfilehash: ebc3899c98a09b64443b129dde52cb597fac9eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3fd4dcfa4c01c39e4e6cab4915de807c3d19ae6
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976646"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913853"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Kurz: vytvoření klasifikačního modelu pomocí automatizovaného ML v Azure Machine Learning
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Zobrazit podrobnosti experimentu.
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -44,12 +44,12 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
-Vytvořte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-workspace.md). V tomto kurzu vytvoříte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
+> Poznamenejte si svůj **pracovní prostor** a **předplatné** . Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
 
 ## <a name="get-started-in-azure-machine-learning-studio"></a>Začínáme v Azure Machine Learning Studiu
 
@@ -59,7 +59,7 @@ Provedete následující kroky experimentu a spustíte je pomocí nástroje Azur
 
 1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
 
-1. Vyberte **Začínáme**.
+1. Vyberte **Začínáme** .
 
 1. V levém podokně vyberte v části **Autor** možnost **automatizovaná ml** .
 
@@ -67,7 +67,7 @@ Provedete následující kroky experimentu a spustíte je pomocí nástroje Azur
 
    ![Stránka Začínáme](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. Vyberte **+ Nový Automated ml Run**. 
+1. Vyberte **+ Nový Automated ml Run** . 
 
 ## <a name="create-and-load-dataset"></a>Vytvořit a načíst datovou sadu
 
@@ -75,13 +75,13 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
 1. Vytvořte novou datovou sadu výběrem možnosti **místní soubory** z rozevíracího seznamu  **+ vytvořit datovou sadu** . 
 
-    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Rozhraní Automated ML aktuálně podporuje pouze TabularDatasets, takže typ datové sady by měl být výchozí *tabulkou*.
+    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Rozhraní Automated ML aktuálně podporuje pouze TabularDatasets, takže typ datové sady by měl být výchozí *tabulkou* .
 
     1. V levém dolním rohu vyberte **Další** .
 
-    1. Na formuláři **úložiště dat a výběr souboru** vyberte výchozí úložiště dat, které se automaticky nastavilo během vytváření pracovního prostoru, **workspaceblobstore (Azure Blob Storage)**. Do tohoto místa nahrajete datový soubor, abyste ho mohli zpřístupnit vašemu pracovnímu prostoru.
+    1. Na formuláři **úložiště dat a výběr souboru** vyberte výchozí úložiště dat, které se automaticky nastavilo během vytváření pracovního prostoru, **workspaceblobstore (Azure Blob Storage)** . Do tohoto místa nahrajete datový soubor, abyste ho mohli zpřístupnit vašemu pracovnímu prostoru.
 
-    1. Vyberte **Procházet**.
+    1. Vyberte **Procházet** .
     
     1. Vyberte soubor **bankmarketing_train.csv** na místním počítači. Jedná se o soubor, který jste stáhli jako [požadavek](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
@@ -91,7 +91,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
     
        Po dokončení nahrávání se formulář nastavení a náhled předem vyplní podle typu souboru. 
        
-    1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další**.
+    1. Ověřte, zda je formulář **nastavení a náhled** vyplněný následujícím způsobem, a vyberte možnost **Další** .
         
         Pole|Popis| Hodnota pro kurz
         ---|---|---
@@ -101,7 +101,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Všechny soubory mají stejná záhlaví.
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
-    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další**.
+    1. Formulář **schématu** umožňuje další konfiguraci dat pro tento experiment. V tomto příkladu vyberte přepínač přepínacího tlačítka pro funkci **day_of_week** , tak, aby se pro tento experiment nezahrnul. Vyberte **Další** .
 
         ![Konfigurace karty Preview](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -111,9 +111,9 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
     
     1. Jakmile se datová sada zobrazí v seznamu, vyberte ji.
     
-    1. Přečtěte si **Náhled dat**  a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK**.
+    1. Přečtěte si **Náhled dat**  a ujistěte se, že jste nezahrnuli **Day_of_week** pak vyberte **OK** .
 
-    1. Vyberte  **Další**.
+    1. Vyberte  **Další** .
 
 ## <a name="configure-experiment-run"></a>Konfigurace experimentového běhu
 
@@ -140,7 +140,7 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
 
         1. Po vytvoření vyberte nový cíl služby COMPUTE z rozevíracího seznamu.
 
-    1. Vyberte **Další**.
+    1. Vyberte **Další** .
 
 1. Ve formuláři **typ úlohy a nastavení** dokončete instalaci automatizovaného experimentu ml zadáním typu úlohy Machine Learning a nastavení konfigurace.
     
@@ -157,13 +157,13 @@ Po načtení a konfiguraci dat můžete nastavit experiment. Tato instalace zahr
         Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 2
         Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 5
         
-        Vyberte **Uložit**.
+        Vyberte **Uložit** .
 
 1. Vyberte **Dokončit** pro spuštění experimentu. Po zahájení přípravy experimentu se otevře obrazovka s **podrobnostmi o spuštění**  se **stavem spuštění** v horní části.
 
 >[!IMPORTANT]
 > Příprava na Příprava spuštění experimentu trvá **10-15 minut** .
-> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut**.  
+> Po spuštění bude **pro každou iteraci trvat více než 2-3 minut** .  
 > Pokud chcete zobrazit stav spuštění v průběhu experimentu, vyberte **aktualizovat** pravidelně.
 >
 > V produkčním prostředí byste pravděpodobně nemuseli trochu začít. Pro tento kurz ale doporučujeme začít zkoumat testované algoritmy na kartě **modely** , jak jsou dokončeny, zatímco ostatní stále běží. 
@@ -206,9 +206,9 @@ Tento model nasadíme, ale doporučujeme, aby dokončení nasazení trvalo přib
     
     V tomto příkladu používáme výchozí hodnoty uvedené v nabídce *Upřesnit* . 
 
-1. Vyberte **Nasadit**.  
+1. Vyberte **Nasadit** .  
 
-    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu a v podokně **Souhrn modelu** se zobrazí stavová zpráva v části **stav nasazení**. Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
+    V horní části obrazovky **spuštění** se zobrazí zelená zpráva o úspěchu a v podokně **Souhrn modelu** se zobrazí stavová zpráva v části **stav nasazení** . Pro pravidelnou kontrolu stavu nasazení vyberte **aktualizovat** .
     
 Nyní máte provozní webovou službu, která generuje předpovědi. 
 
@@ -222,11 +222,11 @@ Soubory nasazení jsou větší než data a experimenty, takže se o jejich ulo�
 
 \/Pokud chcete zachovat skupinu prostředků a pracovní prostor pro jiné kurzy a průzkum, odstraňte jenom instanci nasazení z Azure Machine Learning na https:/ml.Azure.com/. 
 
-1. Přejít na [Azure Machine Learning](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body**. 
+1. Přejít na [Azure Machine Learning](https://ml.azure.com/). Přejděte do pracovního prostoru a vlevo pod podoknem **assety** vyberte **koncové body** . 
 
-1. Vyberte nasazení, které chcete odstranit, a vyberte **Odstranit**. 
+1. Vyberte nasazení, které chcete odstranit, a vyberte **Odstranit** . 
 
-1. Vyberte **pokračovat**.
+1. Vyberte **pokračovat** .
 
 ### <a name="delete-the-resource-group"></a>Odstranění skupiny prostředků
 

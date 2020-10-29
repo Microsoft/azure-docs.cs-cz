@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 6b953c0183943e895c8836f79c1b8e81a22fb31d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792272"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913326"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rychlý Start: Vytvoření šablony NAT Gateway – ARM
 
@@ -54,26 +54,18 @@ Virtuální počítač Ubuntu se nasadí do podsítě, která je přidružená k
 V šabloně jsou definované devět prostředků Azure:
 
 * **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : vytvoří skupinu zabezpečení sítě.
-
 * **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : vytvoří pravidlo zabezpečení.
-
 * **[Microsoft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)** : Vytvoří veřejnou IP adresu.
-
 * **[Microsoft. Network/publicIPPrefixes](/azure/templates/microsoft.network/publicipprefixes)** : vytvoří předponu veřejné IP adresy.
-
 * **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : vytvoří virtuální počítač.
-
 * **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : vytvoří virtuální síť.
-
 * **[Microsoft. Network/natGateways](/azure/templates/microsoft.network/natgateways)** : vytvoří prostředek brány NAT.
-
 * **[Microsoft. Network/virtualNetworks/subnets](/azure/templates/microsoft.network/virtualnetworks/subnets)** : vytvoří podsíť virtuální sítě.
-
 * **[Microsoft. Network/networkinterfaces](/azure/templates/microsoft.network/networkinterfaces)** : vytvoří síťové rozhraní.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 ```azurecli-interactive
 read -p "Enter the location (i.e. westcentralus): " location
@@ -89,7 +81,7 @@ az group deployment create \
 --template-uri  $templateUri
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. westcentralus)"
@@ -101,7 +93,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri
 ```
 
-### <a name="azure-portal"></a>portál Azure
+**Azure Portal**
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-nat-gateway-1-vm%2Fazuredeploy.json)
 
@@ -119,7 +111,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-### <a name="azure-cli"></a>Azure CLI
+**Azure CLI**
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) .
 
@@ -128,7 +120,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
     --name myResourceGroupNAT
 ```
 
-### <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) .
 
@@ -136,7 +128,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-### <a name="azure-portal"></a>Azure Portal
+**Azure Portal**
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT** , která obsahuje bránu NAT, a pak vyberte **Odstranit** .
 

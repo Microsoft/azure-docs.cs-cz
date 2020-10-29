@@ -7,8 +7,6 @@
       href: overview.md
 - name: Rychlé starty
   items:
-    - name: Prozkoumání ukázkového webu
-      href: quickstarts/explore-demo.md
     - name: Použití webového portálu
       href: quickstarts/web-portal.md
     - name: Použití rozhraní REST API
@@ -40,9 +38,9 @@
     - name: Rozhraní API pro Metrics Advisor
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Referenční informace k Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell – reference
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

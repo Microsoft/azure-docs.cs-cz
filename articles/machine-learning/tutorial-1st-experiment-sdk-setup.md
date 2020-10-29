@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5e9fd3b3d2d5bceb766651c2758f956b9ef105e0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494956"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913292"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Kurz: Začínáme s Azure Machine Learning v poznámkových blocích Jupyter
 
@@ -36,12 +36,12 @@ Azure Machine Learning pracovní prostor je základní prostředek v cloudu, kte
 
 Pokud již máte pracovní prostor Azure Machine Learning, přeskočte k [naklonování složky poznámkového bloku](#clone) .  
 
-Pracovní prostor můžete vytvořit prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
+Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-workspace.md).  V tomto kurzu vytvoříte pracovní prostor prostřednictvím Azure Portal, webové konzoly pro správu prostředků Azure.
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> Poznamenejte si svůj *pracovní prostor* a *předplatné*. Tyto informace budete potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě.
+> Poznamenejte si svůj *pracovní prostor* a *předplatné* . Tyto informace budete potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě.
 
 ## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>Spuštění poznámkového bloku v pracovním prostoru
 
@@ -59,7 +59,7 @@ Dokončili jste následující postup nastavení experimentu a spustíte kroky v
 
 1. Vyberte své předplatné a pracovní prostor, který jste vytvořili.
 
-1. Na levé straně vyberte **poznámkové bloky**.
+1. Na levé straně vyberte **poznámkové bloky** .
 
 1. V horní části vyberte kartu **ukázky** .
 
@@ -67,7 +67,7 @@ Dokončili jste následující postup nastavení experimentu a spustíte kroky v
 
 1. Otevřete složku s číslem verze. Toto číslo představuje aktuální vydání sady Python SDK.
 
-1. Klikněte na tlačítko **...** napravo od složky **kurzy** a pak vyberte **klonovat**.
+1. Klikněte na tlačítko **...** napravo od složky **kurzy** a pak vyberte **klonovat** .
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Snímek obrazovky, který zobrazuje složku s pokyny pro klonování.":::
 
@@ -99,11 +99,11 @@ Dokončili jste následující postup nastavení experimentu a spustíte kroky v
 
     1. Z dostupných možností vyberte velikost virtuálního počítače. Pro kurzy je výchozí virtuální počítač dobrý volbou.
 
-    1. Potom vyberte **Vytvořit**. Nastavení virtuálního počítače může trvat přibližně pět minut.
+    1. Potom vyberte **Vytvořit** . Nastavení virtuálního počítače může trvat přibližně pět minut.
 
 1. Když je virtuální počítač k dispozici, zobrazí se na horním panelu nástrojů. Nyní můžete spustit Poznámkový blok buď pomocí rutiny **Spustit vše** na panelu nástrojů, nebo **stisknutím SHIFT + ENTER** v buňkách kódu poznámkového bloku.
 
-Pokud máte vlastní widgety nebo dáváte přednost použití Jupyter nebo JupyterLab, vyberte v rozevíracím seznamu **Jupyter** úplně vpravo. Pak vyberte **Jupyter** nebo **JupyterLab**. Otevře se nové okno prohlížeče.
+Pokud máte vlastní widgety nebo dáváte přednost použití Jupyter nebo JupyterLab, vyberte v rozevíracím seznamu **Jupyter** úplně vpravo. Pak vyberte **Jupyter** nebo **JupyterLab** . Otevře se nové okno prohlížeče.
 
 ## <a name="next-steps"></a>Další kroky
 

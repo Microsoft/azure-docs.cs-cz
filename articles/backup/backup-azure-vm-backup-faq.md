@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172839"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925573"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -65,17 +65,21 @@ Průvodce zobrazí jenom virtuální počítače ve stejné oblasti jako trezor,
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuální počítač je vypnutý. Bude aplikace na vyžádání nebo plánované zálohování fungovat?
 
-Yes. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
+Ano. Zálohování se spustí při vypnutí počítače. Bod obnovení je označen jako konzistentní se selháním.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Můžu zrušit probíhající úlohu zálohování?
 
-Yes. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
+Ano. Úlohu zálohování můžete zrušit ve stavu **pořizování snímků** . Pokud probíhá přenos dat z snímku, nemůžete úlohu zrušit.
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Aktivoval (a) jsem zámek pro skupinu prostředků vytvořenou službou Azure Backup (například `AzureBackupRG_<geo>_<number>` ). Budou moje zálohy stále fungovat?
 
 Pokud zamknete skupinu prostředků vytvořenou službou Azure Backup, zálohování začnou selhat, protože je k dispozici maximální limit 18 bodů obnovení.
 
 Odeberte zámek a vymažte kolekci bodů obnovení z dané skupiny prostředků, aby bylo možné obnovit budoucí zálohy. [Pomocí těchto kroků](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) odeberte kolekci bodů obnovení.
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>Mám zámek na úrovni skupiny prostředků, která obsahuje všechny prostředky vztahující se k virtuálnímu počítači. Bude moje záloha fungovat?
+
+Azure Backup vytvoří samostatnou skupinu prostředků ve formátu `AzureBackupRG_<geo>_<number>` pro ukládání objektů ResourcePointCollections. Vzhledem k tomu, že tato skupina prostředků je vlastněná službou, její uzamčení způsobí selhání zálohování. Zámky lze použít pouze pro skupiny prostředků vytvořené zákazníky.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Podporuje Azure Backup standardní disky se správou SSD?
 
@@ -141,11 +145,11 @@ V případě obnovení spravovaného virtuálního počítače i v případě, �
 
 ### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Můžu obnovit odstraněný virtuální počítač?
 
-Yes. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
+Ano. I když virtuální počítač odstraníte, můžete přejít na odpovídající zálohovanou položku v trezoru a obnovit z bodu obnovení.
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Návody obnovit virtuální počítač do stejných skupin dostupnosti?
 
-U virtuálních počítačů Azure se spravovanými disky je obnovení do skupin dostupnosti umožněno tím, že v šabloně při obnovení jako spravované disky poskytnete možnost. Tato šablona obsahuje vstupní parametr s názvem **skupiny dostupnosti**.
+U virtuálních počítačů Azure se spravovanými disky je obnovení do skupin dostupnosti umožněno tím, že v šabloně při obnovení jako spravované disky poskytnete možnost. Tato šablona obsahuje vstupní parametr s názvem **skupiny dostupnosti** .
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Jak získám rychlejší obnovení?
 
@@ -181,7 +185,7 @@ Virtuální počítač se zálohuje pomocí nastavení plánu a uchování v upr
 
    1. Najděte umístění virtuálního počítače.
    2. Vyhledejte skupinu prostředků s následujícím vzorem pojmenování: `AzureBackupRG_<location of your VM>_1` . Například *AzureBackupRG_westus2_1*
-   3. V Azure Portal zaškrtnout **Zobrazit skryté typy**.
+   3. V Azure Portal zaškrtnout **Zobrazit skryté typy** .
    4. Vyhledejte prostředek typu **Microsoft. COMPUTE/restorePointCollections** , který má vzor pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Odstranit tento prostředek. Tato operace odstraní pouze rychlé body obnovení, nikoli zálohovaná data v trezoru.
    6. Po dokončení operace odstranění můžete virtuální počítač přesunout.
@@ -199,7 +203,7 @@ Po přesunutí virtuálního počítače do nové skupiny prostředků můžete 
 
 V případě potřeby budou obnoveny body obnovení starého virtuálního počítače. Pokud tato zálohovaná data nepotřebujete, můžete zastavit ochranu původního virtuálního počítače pomocí odstranit data.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Existuje omezení počtu virtuálních počítačů, které mohou být přidruženy ke stejné zásadě zálohování?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>Existuje omezení počtu virtuálních počítačů, které mohou být přidruženy ke stejné zásadě zálohování?
 
 Ano, existuje limit 100 virtuálních počítačů, které se dají přidružit ke stejné zásadě zálohování z portálu. Doporučujeme, abyste pro více než 100 virtuálních počítačů vytvořili více zásad zálohování se stejným plánem nebo jiným plánem.
 

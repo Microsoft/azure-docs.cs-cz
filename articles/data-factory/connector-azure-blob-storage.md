@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: af03dde724b4f1ec75c9505bb2f9311ad09f5fd0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: 5969c449afe203ec9a014d2da78b56eeeb837590
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635911"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913360"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopírování a transformace dat v úložišti objektů BLOB v Azure pomocí Azure Data Factory
 
@@ -48,9 +48,6 @@ Pro aktivitu kopírování podporuje tento konektor úložiště objektů BLOB:
 - Kopírování objektů blob, jako je, nebo analýza nebo generování objektů BLOB s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md).
 - [Při kopírování se zachovává metadata souboru](#preserving-metadata-during-copy).
 
->[!IMPORTANT]
->Pokud povolíte možnost **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v Azure Storage nastavení brány firewall a chcete použít prostředí Azure Integration runtime pro připojení k úložišti objektů blob, musíte použít [spravované ověřování identity](#managed-identity).
-
 ## <a name="get-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -67,7 +64,8 @@ Tato konektorová služba BLOB Storage podporuje následující typy ověřován
 - [Spravované identity pro ověřování prostředků Azure](#managed-identity)
 
 >[!NOTE]
->Pokud k načtení dat do služby Azure synapse Analytics (dříve SQL Data Warehouse) používáte základnu, pokud je vaše zdrojové nebo pracovní úložiště objektů BLOB nakonfigurované s koncovým bodem Azure Virtual Network, musíte použít spravované ověřování identity podle požadavků základu. Je také nutné použít modul runtime integrace v místním prostředí s verzí 3,18 nebo novější. Další požadavky na konfiguraci najdete v části věnované [ověřování spravované identity](#managed-identity) .
+>- Pokud chcete použít veřejný prostředí Azure Integration runtime pro připojení k úložišti objektů BLOB pomocí možnosti **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** , který je povolený v bráně Azure Storage firewall, musíte použít [spravované ověřování identity](#managed-identity).
+>- Když použijete příkaz Base nebo COPY k načtení dat do služby Azure synapse Analytics, pokud je vaše zdrojové nebo pracovní úložiště objektů BLOB nakonfigurované s koncovým bodem Azure Virtual Network, musíte použít spravované ověřování identity podle požadavků synapse. Další požadavky na konfiguraci najdete v části věnované [ověřování spravované identity](#managed-identity) .
 
 >[!NOTE]
 >Azure HDInsight a Azure Machine Learning aktivity podporují jenom ověřování, které používá klíče účtu úložiště Azure Blob.
@@ -286,7 +284,7 @@ Obecné informace o ověřování Azure Storage najdete v tématu [ověření p�
     - **Jako jímka** udělte v **řízení přístupu (IAM)** aspoň roli **Přispěvatel dat objektu BLOB úložiště** .
 
 >[!IMPORTANT]
->Pokud použijete základnu k načtení dat z úložiště objektů BLOB (jako zdroj nebo jako pracovní) do služby Azure synapse Analytics (dříve SQL Data Warehouse), při použití spravovaného ověřování identity pro úložiště objektů BLOB se ujistěte, že jste provedli kroky 1 a 2 v [těchto pokynech](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tyto kroky zaregistrují váš server ve službě Azure AD a přiřadí roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru. Data Factory zpracuje zbytek. Pokud jste nakonfigurovali úložiště objektů BLOB s koncovým bodem Azure Virtual Network a chcete k načtení dat z něj použít základnu, musíte použít spravované ověřování identity podle požadavků základu.
+>Pokud k načtení dat z úložiště objektů BLOB (jako zdroje nebo přípravné) do služby Azure synapse Analytics použijete příkaz Base nebo COPY, při použití spravovaného ověřování identity pro úložiště objektů BLOB se ujistěte, že jste provedli kroky 1 až 3 v [těchto pokynech](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tyto kroky zaregistrují váš server ve službě Azure AD a přiřadí roli Přispěvatel dat objektů BLOB úložiště k vašemu serveru. Data Factory zpracuje zbytek. Pokud nakonfigurujete úložiště objektů BLOB pomocí koncového bodu Azure Virtual Network, musíte taky **Povolit důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v části Azure Storage **brány firewall účtů a nastavení virtuálních sítí** , jak to vyžaduje synapse.
 
 Tyto vlastnosti jsou podporované pro propojenou službu Azure Blob Storage:
 

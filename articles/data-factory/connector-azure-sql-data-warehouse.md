@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901598"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913530"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování a transformace dat ve službě Azure synapse Analytics (dříve SQL Data Warehouse) pomocí Azure Data Factory
 
@@ -42,7 +42,7 @@ U aktivity kopírování tento konektor Azure synapse Analytics podporuje tyto f
 
 - Zkopírujte data pomocí ověřování SQL a Azure Active Directory (Azure AD) ověřování tokenu aplikace pomocí instančního objektu nebo spravovaných identit pro prostředky Azure.
 - Jako zdroj načte data pomocí dotazu SQL nebo uložené procedury. Můžete si také vybrat paralelní kopírování ze zdroje Azure synapse Analytics. Podrobnosti najdete v části [paralelní kopírování z synapse Analytics](#parallel-copy-from-synapse-analytics) .
-- Jako jímky načtěte data pomocí příkazu [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) nebo [copy](#use-copy-statement) (Preview) nebo hromadného vložení. Pro lepší výkon kopírování doporučujeme použít příkaz Base nebo COPY (Preview). Konektor také podporuje automatické vytváření cílových tabulek, pokud na základě zdrojového schématu neexistuje.
+- Jako jímky načtěte data pomocí příkazu [Base](#use-polybase-to-load-data-into-azure-synapse-analytics) nebo [copy](#use-copy-statement) nebo hromadného vložení. Pro lepší výkon kopírování doporučujeme použít příkaz Base nebo COPY. Konektor také podporuje automatické vytváření cílových tabulek, pokud na základě zdrojového schématu neexistuje.
 
 > [!IMPORTANT]
 > Pokud kopírujete data pomocí Azure Data Factory Integration Runtime, nakonfigurujte [pravidlo brány firewall na úrovni serveru](../azure-sql/database/firewall-configure.md) tak, aby služby Azure mohly přistupovat k [logickému SQL serveru](../azure-sql/database/logical-servers.md).
@@ -51,7 +51,7 @@ U aktivity kopírování tento konektor Azure synapse Analytics podporuje tyto f
 ## <a name="get-started"></a>Začínáme
 
 > [!TIP]
-> Abyste dosáhli nejlepšího výkonu, využijte základ k načtení dat do služby Azure synapse Analytics. Informace najdete v části [použití základu k načtení dat do služby Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) . Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Abyste dosáhli nejlepšího výkonu, pomocí příkazu Base nebo COPY načtěte data do služby Azure synapse Analytics. [Použití základny k načtení dat do Azure synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) a [použití příkazu copy k načtení dat do sekcí Azure synapse Analytics](#use-copy-statement) má podrobnosti. Návod s případem použití najdete v tématu [načtení 1 TB do služby Azure synapse Analytics za 15 minut s Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ Použití [základny](/sql/relational-databases/polybase/polybase-guide) je úč
 - Pokud se vaše zdrojové úložiště dat a formát v základu nepodporují, použijte místo toho funkci **[dvoufázové kopie pomocí základní](#staged-copy-by-using-polybase)** funkce. Funkce dvoufázové kopírování nabízí také lepší propustnost. Automaticky převádí data do formátu kompatibilního se standardem, ukládá data do úložiště objektů BLOB v Azure a pak volá základnu, aby načetla data do Azure synapse Analytics.
 
 > [!TIP]
-> Přečtěte si další informace o [osvědčených postupech pro použití základny](#best-practices-for-using-polybase). Při použití základny s Azure Integration Runtime jsou efektivní jednotky integrace dat (DIUs) vždycky 2. Vyladění DIÚ nemá vliv na výkon, protože načítání dat z úložiště využívá modul synapse.
+> Přečtěte si další informace o [osvědčených postupech pro použití základny](#best-practices-for-using-polybase). Při použití základny s Azure Integration Runtime jsou efektivní [jednotky pro integraci dat (diú)](copy-activity-performance-features.md#data-integration-units) pro přímé nebo dvoufázové úložiště-na synapse vždycky 2. Vyladění DIÚ nemá vliv na výkon, protože načítání dat z úložiště využívá modul synapse.
 
 V rámci aktivity kopírování jsou podporovány následující základní nastavení `polyBaseSettings` :
 
@@ -507,7 +507,8 @@ Pokud požadavky nejsou splněné, Azure Data Factory zkontroluje nastavení a a
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Ověřování klíčů účtu, ověřování spravované identity |
 
     >[!IMPORTANT]
-    >Pokud je vaše Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si, [Jaký je dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z oddílu [ověřování identity spravovaného pomocí objektů BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a v části [ověřování identity spravované Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
+    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. **Zdrojový formát dat** je **Parquet** , **ORC** nebo **text s oddělovači** , s následujícími konfiguracemi:
 
@@ -567,7 +568,8 @@ Pokud vaše zdrojová data nejsou nativně kompatibilní s základnu, povolte ko
 Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) nebo [Azure Data Lake Storage Gen2 propojenou službu](connector-azure-data-lake-storage.md#linked-service-properties) pomocí **klíče účtu nebo spravovaného ověřování identity** , který jako dočasné úložiště odkazuje na účet služby Azure Storage.
 
 >[!IMPORTANT]
->Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z [ověřování identity spravovaného objektem BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a [ověřování identity spravovaného Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity).
+>- Pokud pro pracovní propojenou službu používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
+>- Pokud je vaše pracovní Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity s povoleným účtem úložiště povolit důvěryhodnou službu Microsoftu. Podívejte se na [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Hodnota NULL je speciální forma výchozí hodnoty. Pokud sloupec může mít h
 >V současné době Data Factory pouze podpora kopírování ze zdrojů kompatibilních se KOPÍROVÁNÍm, které jsou uvedeny níže.
 
 >[!TIP]
->Při použití příkazu COPY s Azure Integration Runtime je platná jednotka pro integraci dat (DIUs) vždy 2. Vyladění DIÚ nemá vliv na výkon, protože načítání dat z úložiště využívá modul synapse.
+>Při použití příkazu COPY s Azure Integration Runtime je platná [jednotka pro integraci dat (diú)](copy-activity-performance-features.md#data-integration-units) vždy 2. Vyladění DIÚ nemá vliv na výkon, protože načítání dat z úložiště využívá modul synapse.
 
 Použití příkazu COPY podporuje následující konfiguraci:
 
@@ -687,7 +689,8 @@ Použití příkazu COPY podporuje následující konfiguraci:
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Text oddělený textem](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Ověřování klíčů účtu, ověřování instančního objektu, ověřování spravované identity |
 
     >[!IMPORTANT]
-    >Pokud je vaše Azure Storage nakonfigurovaná pomocí koncového bodu služby virtuální sítě, musíte použít spravované ověřování identity – Přečtěte si, [Jaký je dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Přečtěte si o požadovaných konfiguracích v Data Factory z oddílu [ověřování identity spravovaného pomocí objektů BLOB v Azure](connector-azure-blob-storage.md#managed-identity) a v části [ověřování identity spravované Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
+    >- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
+    >- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. Nastavení formátu jsou následující:
 
@@ -769,7 +772,10 @@ Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **
 
 **Vstup** Vyberte, zda se má zdroj nasměrovat v tabulce (odpovídající hodnotě ```Select * from <table-name>``` ), nebo zadejte vlastní dotaz SQL.
 
-**Povolit přípravu** Tato možnost se důrazně doporučuje používat v produkčních úlohách se zdroji synapse DW. Po spuštění aktivity toku dat se zdroji Synapase z kanálu vám ADF zobrazí výzvu k zadání účtu úložiště pro pracovní umístění a použije ho pro připravené načítání dat. Je to nejrychlejší mechanismus načítání dat z synapse DW.
+**Povolit přípravu** Doporučuje se použít tuto možnost v produkčních úlohách se zdroji Azure synapse Analytics. Když provedete [aktivitu toku dat](control-flow-execute-data-flow-activity.md) se zdroji analýzy Azure synapse z kanálu, zobrazí se v něm výzva k zadání účtu úložiště pracovního umístění a použije se pro přípravu načítání dat. Je to nejrychlejší mechanismus načítání dat z Azure synapse Analytics.
+
+- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
+- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Dotaz** : Pokud ve vstupním poli vyberete možnost dotaz, zadejte pro zdroj dotaz SQL. Toto nastavení potlačí všechny tabulky, které jste vybrali v datové sadě. Klauzule **ORDER by** nejsou tady podporované, ale můžete nastavit úplný příkaz SELECT FROM. Můžete také použít uživatelsky definované funkce tabulky. **SELECT * FROM udfGetData ()** je UDF v SQL, který vrací tabulku. Tento dotaz vytvoří zdrojovou tabulku, kterou můžete použít v toku dat. Použití dotazů je také skvělým způsobem, jak omezit řádky pro testování nebo pro vyhledávání.
 
@@ -798,7 +804,10 @@ Nastavení specifická pro Azure synapse Analytics jsou k dispozici na kartě **
 - Znovu vytvořit: tabulka se vynechá a znovu vytvoří. Požadováno při dynamickém vytváření nové tabulky.
 - Zkrátit: všechny řádky z cílové tabulky se odeberou.
 
-**Povolit přípravu:** Určuje, jestli se má při zápisu do Azure synapse Analytics použít [základ](/sql/relational-databases/polybase/polybase-guide) .
+**Povolit přípravu:** Určuje, jestli se má při zápisu do Azure synapse Analytics použít [základ](/sql/relational-databases/polybase/polybase-guide) . Pracovní úložiště je nakonfigurované v [aktivitě spustit tok dat](control-flow-execute-data-flow-activity.md). 
+
+- Pokud pro propojenou službu úložiště používáte spravované ověřování identity, Seznamte se s potřebnými konfiguracemi pro [Azure Blob](connector-azure-blob-storage.md#managed-identity) a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) v uvedeném pořadí.
+- Pokud je váš Azure Storage nakonfigurovaný s koncovým bodem služby virtuální sítě, musíte použít spravované ověřování identity s povolenou možnost Povolit důvěryhodnou službu Microsoftu v účtu úložiště. Přečtěte si [dopad použití koncových bodů služby virtuální sítě se službou Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Velikost dávky** : Určuje, kolik řádků je v jednotlivých intervalech zapisováno. Větší velikosti dávek zlepšují kompresi a optimalizaci paměti, ale při ukládání dat do mezipaměti riskuje výjimky z paměti.
 

@@ -4,12 +4,12 @@ description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech v
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 9cbf7dcb5b0f6f43b4fc5d69127e817dceea650e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 704b73ab43f40a5542e80ffebc4ab34edfc446dc
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108061"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913785"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -46,7 +46,8 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 >
 
 ### <a name="node-agent-sku"></a>SKU agenta uzlu
-Agent uzlu služby Batch je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Existují různé implementace agenta uzlu, označované jako SKU, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače nejprve zadáte odkaz na image virtuálního počítače a pak zadáte agenta uzlu, který se má na bitovou kopii nainstalovat. Obvykle je každá SKU agenta uzlu kompatibilní s několika imagemi virtuálních počítačů. Tady je několik příkladů SKU agenta uzlu:
+
+[Agent uzlu služby Batch](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. Existují různé implementace agenta uzlu, označované jako SKU, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače nejprve zadáte odkaz na image virtuálního počítače a pak zadáte agenta uzlu, který se má na bitovou kopii nainstalovat. Obvykle je každá SKU agenta uzlu kompatibilní s několika imagemi virtuálních počítačů. Tady je několik příkladů SKU agenta uzlu:
 
 * Batch. Node. Ubuntu 18,04
 * Batch. Node. CentOS 7
@@ -276,7 +277,7 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Místo hesla můžete zadat veřejný klíč SSH při vytváření uživatele v uzlu. V sadě Python SDK použijte parametr **ssh_public_key** v [ComputeNodeUser][py_computenodeuser]. V rozhraní .NET použijte [ComputeNodeUser][net_computenodeuser]. Vlastnost [SshPublicKey][net_ssh_key]
 
 ## <a name="pricing"></a>Ceny
-Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Samotná služba Batch je bezplatně nabízená, což znamená, že se vám účtují jenom výpočetní prostředky (a související náklady, které zahrnují), které vaše řešení Batch spotřebují. Když zvolíte **Cloud Services konfiguraci**, bude se vám účtovat na základě [Cloud Services cenové][cloud_services_pricing] struktury. Když zvolíte **konfiguraci virtuálního počítače**, bude se vám účtovat na základě [Virtual Machines cenové][vm_pricing] struktury.
+Azure Batch je postavená na technologii Azure Cloud Services a platformě Azure Virtual Machines. Samotná služba Batch je bezplatně nabízená, což znamená, že se vám účtují jenom výpočetní prostředky (a související náklady, které zahrnují), které vaše řešení Batch spotřebují. Když zvolíte **Cloud Services konfiguraci** , bude se vám účtovat na základě [Cloud Services cenové][cloud_services_pricing] struktury. Když zvolíte **konfiguraci virtuálního počítače** , bude se vám účtovat na základě [Virtual Machines cenové][vm_pricing] struktury.
 
 Pokud nasazujete aplikace do vašich dávkových uzlů pomocí [balíčků aplikací](batch-application-packages.md), účtují se vám také Azure Storage prostředky, které vaše balíčky aplikací spotřebovávají.
 
