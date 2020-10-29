@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: eeceb1279579055bfff33f0a4413f0798418faed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59b57e292275888140045bf94ff36995f312b6c1
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83201515"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927477"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Kurz: Konfigurace automatického rotace certifikátů v Key Vault
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -41,13 +41,13 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-Vytvořte Trezor klíčů nebo vyberte existující trezor pro provádění operací (viz [Postup vytvoření trezoru klíčů](../quick-create-portal.md)). V tomto příkladu je název trezoru klíčů **příkladem trezoru**.
+Vytvořte Trezor klíčů nebo vyberte existující trezor pro provádění operací (viz [Postup vytvoření trezoru klíčů](../quick-create-portal.md)). V tomto příkladu je název trezoru klíčů **příkladem trezoru** .
 
 ![Výstup po dokončení vytvoření trezoru klíčů](../media/certificates/tutorial-import-cert/vault-properties.png)
 
 ## <a name="create-a-certificate-in-key-vault"></a>Vytvoření certifikátu v Key Vault
 
-Vytvořte certifikát nebo importujte certifikát do trezoru klíčů (viz [Postup vytvoření certifikátu v Key Vault](../quick-create-portal.md)). V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate**.
+Vytvořte certifikát nebo importujte certifikát do trezoru klíčů (viz [Postup vytvoření certifikátu v Key Vault](../quick-create-portal.md)). V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate** .
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Aktualizace atributů životního cyklu certifikátu
 
@@ -73,38 +73,38 @@ Key Vault automaticky otočí certifikáty prostřednictvím zavedených partner
 
 ### <a name="update-certificate-lifecycle-attributes-at-the-time-of-creation"></a>Aktualizace atributů životního cyklu certifikátu v době vytváření
 
-1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
-1. Vyberte **Generovat/importovat**.
+1. Na stránkách Key Vault vlastnosti vyberte **certifikáty** .
+1. Vyberte **Generovat/importovat** .
 1. Na obrazovce **vytvořit certifikát** aktualizujte následující hodnoty:
 
-   - **Doba platnosti**: zadejte hodnotu (v měsících). Vytváření krátkodobých certifikátů je doporučeným postupem zabezpečení. Ve výchozím nastavení je hodnota platnosti nově vytvořeného certifikátu 12 měsíců.
-   - **Typ akce životního cyklu**: vyberte akci automatického obnovení a upozornění certifikátu a pak aktualizujte **procentuální hodnotu životnosti** nebo **počet dní před vypršením platnosti**. Ve výchozím nastavení je automatické obnovení certifikátu nastavené na 80% své životnosti. V rozevírací nabídce vyberte jednu z následujících možností.
+   - **Doba platnosti** : zadejte hodnotu (v měsících). Vytváření krátkodobých certifikátů je doporučeným postupem zabezpečení. Ve výchozím nastavení je hodnota platnosti nově vytvořeného certifikátu 12 měsíců.
+   - **Typ akce životního cyklu** : vyberte akci automatického obnovení a upozornění certifikátu a pak aktualizujte **procentuální hodnotu životnosti** nebo **počet dní před vypršením platnosti** . Ve výchozím nastavení je automatické obnovení certifikátu nastavené na 80% své životnosti. V rozevírací nabídce vyberte jednu z následujících možností.
 
         |  Automaticky obnovit v daném čase| Poslat všem kontaktům e-mail v daném čase |
         |-----------|------|
         |Výběrem této možnosti se *zapne* automatické otočení. | Vyberete-li tuto možnost, *nedojde* k automatickému otočení, ale budete upozorněni pouze na kontakty.|
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 ![Životní cyklus certifikátů](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
 
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Aktualizovat atributy životního cyklu uloženého certifikátu
 
 1. Vyberte Trezor klíčů.
-1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
-1. Vyberte certifikát, který chcete aktualizovat. V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate**.
+1. Na stránkách Key Vault vlastnosti vyberte **certifikáty** .
+1. Vyberte certifikát, který chcete aktualizovat. V takovém případě budete pracovat s certifikátem s názvem **ExampleCertificate** .
 1. V horním řádku nabídek vyberte **zásady vystavování** .
 
-   ![Vlastnosti certifikátu](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
+   ![Snímek obrazovky, který zvýrazní tlačítko Zásady vystavování.](../media/certificates/tutorial-rotate-cert/cert-issuance-policy.png)
 
 1. Na obrazovce **zásady vystavování** aktualizujte následující hodnoty:
 
-   - **Doba platnosti**: Aktualizujte hodnotu (v měsících).
-   - **Typ akce životního cyklu**: vyberte akci automatického obnovení a upozorňování certifikátu a potom aktualizujte **procentuální hodnotu životnosti** nebo **počet dnů před vypršením platnosti**.
+   - **Doba platnosti** : Aktualizujte hodnotu (v měsících).
+   - **Typ akce životního cyklu** : vyberte akci automatického obnovení a upozorňování certifikátu a potom aktualizujte **procentuální hodnotu životnosti** nebo **počet dnů před vypršením platnosti** .
 
    ![Vlastnosti certifikátu](../media/certificates/tutorial-rotate-cert/cert-policy-change.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
 > [!IMPORTANT]
 > Změna typu akce životního cyklu pro certifikát bude okamžitě zaznamenávat změny stávajících certifikátů.
@@ -144,8 +144,8 @@ Pokud je už nepotřebujete, odstraňte skupinu prostředků, která odstraní T
 Odstranění skupiny prostředků pomocí portálu:
 
 1. Do **vyhledávacího** pole v horní části portálu zadejte název vaší skupiny prostředků. Pokud se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
-1. Vyberte **Odstranit skupinu prostředků**.
-1. Do pole **Zadejte název skupiny prostředků:** zadejte název skupiny prostředků a pak vyberte **Odstranit**.
+1. Vyberte **Odstranit skupinu prostředků** .
+1. Do pole **Zadejte název skupiny prostředků:** zadejte název skupiny prostředků a pak vyberte **Odstranit** .
 
 
 ## <a name="next-steps"></a>Další kroky

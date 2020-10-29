@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: b4e2b5afd7742791218394422d00ee8ee46cb23a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212607"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927409"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions vzorů výrazů vazeb
 
-Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby*. V *function.jsna* soubor a v parametrech funkce a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
+Jednou z nejúčinnějších funkcí [triggerů a vazeb](./functions-triggers-bindings.md) jsou *výrazy vazby* . V *function.jsna* soubor a v parametrech funkce a kódu můžete použít výrazy, které se předají na hodnoty z různých zdrojů.
 
 Většina výrazů je označena a tím, že je zabalena ve složených závorkách. Například ve funkci triggeru fronty se `{queueTrigger}` překládá na text zprávy fronty. Pokud `path` je vlastnost pro výstupní vazbu objektu BLOB `container/{queueTrigger}` a funkce se aktivuje ve zprávě fronty `HelloWorld` , vytvoří se objekt BLOB s názvem `HelloWorld` .
 
@@ -41,7 +41,7 @@ Když je funkce spuštěná místně, hodnoty nastavení aplikace přicházejí 
 > [!NOTE]
 > `connection`Vlastnost Triggers a Bindings je zvláštní případ a automaticky řeší hodnoty jako nastavení aplikace bez znaménka procenta. 
 
-V následujícím příkladu je Trigger služby Azure Queue Storage, který pomocí nastavení aplikace `%input-queue-name%` definuje frontu, která se má aktivovat.
+V následujícím příkladu je Trigger služby Azure Queue Storage, který pomocí nastavení aplikace `%input_queue_name%` definuje frontu, která se má aktivovat.
 
 ```json
 {
@@ -50,7 +50,7 @@ V následujícím příkladu je Trigger služby Azure Queue Storage, který pomo
       "name": "order",
       "type": "queueTrigger",
       "direction": "in",
-      "queueName": "%input-queue-name%",
+      "queueName": "%input_queue_name%",
       "connection": "MY_STORAGE_ACCT_APP_SETTING"
     }
   ]
@@ -62,7 +62,7 @@ Stejný přístup můžete použít v knihovnách tříd:
 ```csharp
 [FunctionName("QueueTrigger")]
 public static void Run(
-    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    [QueueTrigger("%input_queue_name%")]string myQueueItem, 
     ILogger log)
 {
     log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
@@ -292,7 +292,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
-`{rand-guid}`Výraz vazby vytvoří identifikátor GUID. Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *50710cb5-84b9-4d87-9d83-a03d6976a682.txt*.
+`{rand-guid}`Výraz vazby vytvoří identifikátor GUID. Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* .
 
 ```json
 {
@@ -305,7 +305,7 @@ public class BlobName
 
 ## <a name="current-time"></a>Aktuální čas
 
-Výraz vazby se `DateTime` překládá na `DateTime.UtcNow` . Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *2018-02-16T17-59-55Z.txt*.
+Výraz vazby se `DateTime` překládá na `DateTime.UtcNow` . Následující cesta objektu BLOB v `function.json` souboru vytvoří objekt BLOB s názvem, jako *2018-02-16T17-59-55Z.txt* .
 
 ```json
 {

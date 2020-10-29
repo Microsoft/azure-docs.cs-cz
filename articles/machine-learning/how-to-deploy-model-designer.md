@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999008"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927579"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Použití studia k nasazení modelů vyškolených v Návrháři
 
@@ -33,7 +33,7 @@ Modely můžete nasadit přímo v návrháři, aby bylo možné přeskočit regi
 
 Modely, které jsou vyškolené v návrháři, se dají nasadit taky prostřednictvím sady SDK nebo rozhraní příkazového řádku (CLI). Další informace najdete v tématu [nasazení stávajícího modelu pomocí Azure Machine Learning](how-to-deploy-existing-model.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md)
 
@@ -56,7 +56,7 @@ Po dokončení kanálu školení Zaregistrujte vyškolený model do svého praco
 
     ![Snímek obrazovky se pravým podoknem modulu výuka modelu](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. Zadejte název modelu a pak vyberte **Uložit**.
+1. Zadejte název modelu a pak vyberte **Uložit** .
 
 Po registraci modelu je můžete najít na stránce Asset **modely** v studiu.
     
@@ -104,8 +104,8 @@ Po stažení nezbytných souborů jste připraveni model nasadit.
 
     - Zadejte název koncového bodu.
     - Tuto možnost vyberte, pokud chcete model nasadit do [služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md) nebo [Azure Container instance](how-to-deploy-azure-container-instance.md).
-    - Nahrajte `score.py` soubor pro **vstupní skript**.
-    - Nahrajte `conda_env.yml` soubor pro **conda závislosti**. 
+    - Nahrajte `score.py` soubor pro **vstupní skript** .
+    - Nahrajte `conda_env.yml` soubor pro **conda závislosti** . 
 
     >[!TIP]
     > V **rozšířeném** nastavení můžete nastavit kapacitu procesoru/paměti a další parametry pro nasazení. Tato nastavení jsou důležitá pro určité modely, jako jsou například modely PyTorch, které využívají značné množství memery (přibližně 4 GB).
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>Další kroky
 
 * [Výuka modelu v Návrháři](tutorial-designer-automobile-price-train-score.md)
+* [Nasazení modelů pomocí sady Azure Machine Learning SDK](how-to-deploy-and-where.md)
 * [Řešení potíží s neúspěšným nasazením](how-to-troubleshoot-deployment.md)
 * [Nasazení do Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [Vytváření klientských aplikací pro využívání webových služeb](how-to-consume-web-service.md)

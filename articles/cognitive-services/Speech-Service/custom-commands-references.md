@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 83725a3839d36fc753bb43803e67acaca7571a6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 052418924e73252a780689aea33e84d5bfdbc3f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851830"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927647"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Koncepty a definice vlastních příkazů
 
@@ -62,10 +62,10 @@ Všechny tyto typy parametrů podporují konfiguraci výchozí hodnoty, kterou m
 ### <a name="configuration"></a>Konfigurace
 Konfigurace je vlastnost parametru definovaná pouze pro řetězec typu. Podporovány jsou následující hodnoty:
 
-* **Žádné**.
-* **Přijmout úplný vstup**: Pokud je povoleno, parametr akceptuje všechny vstupní utterance. Tato možnost je užitečná v případě, že uživatel potřebuje parametr s úplným utterance. Příkladem jsou poštovní adresy.
-* **Přijměte předdefinované vstupní hodnoty z externího katalogu**: Tato hodnota se používá ke konfiguraci parametru, který může předpokládat širokou škálu hodnot. Příkladem je prodej v katalogu. V tomto případě je katalog hostovaný na externím webovém koncovém bodu a dá se nakonfigurovat nezávisle.
-* **Přijměte předdefinované vstupní hodnoty z interního katalogu**: Tato hodnota se používá ke konfiguraci parametru, který může předpokládat několik hodnot. V takovém případě musí být hodnoty nakonfigurovány v studiu řeči.
+* **Žádné** .
+* **Přijmout úplný vstup** : Pokud je povoleno, parametr akceptuje všechny vstupní utterance. Tato možnost je užitečná v případě, že uživatel potřebuje parametr s úplným utterance. Příkladem jsou poštovní adresy.
+* **Přijměte předdefinované vstupní hodnoty z externího katalogu** : Tato hodnota se používá ke konfiguraci parametru, který může předpokládat širokou škálu hodnot. Příkladem je prodej v katalogu. V tomto případě je katalog hostovaný na externím webovém koncovém bodu a dá se nakonfigurovat nezávisle.
+* **Přijměte předdefinované vstupní hodnoty z interního katalogu** : Tato hodnota se používá ke konfiguraci parametru, který může předpokládat několik hodnot. V takovém případě musí být hodnoty nakonfigurovány v studiu řeči.
 
 
 ### <a name="validation"></a>Ověřování
@@ -75,47 +75,50 @@ Ověření jsou určena pro určité typy parametrů, které umožňují konfigu
 * Číslo
 
 ## <a name="rules-configuration"></a>Konfigurace pravidel
-Pravidlo ve vlastních příkazech je definováno sadou *podmínek* , které při splnění splní sadu *akcí*. Pravidla také umožňují nakonfigurovat *stav po spuštění* a *očekávání* pro další tah.
+Pravidlo ve vlastních příkazech je definováno sadou *podmínek* , které při splnění splní sadu *akcí* . Pravidla také umožňují nakonfigurovat *stav po spuštění* a *očekávání* pro další tah.
 
 ### <a name="types"></a>Typy
 Vlastní příkazy podporují následující kategorie pravidel:
 
-* **Pravidla dokončování**: Tato pravidla se musí provést při splnění příkazu. Všechna pravidla konfigurovaná v této části, pro které jsou splněné podmínky, se spustí. 
-* **Pravidla interakce**: Tato pravidla se dají použít ke konfiguraci dalších vlastních ověření, potvrzení a krokového opravy nebo k provedení jakékoli jiné vlastní logiky dialogových oken. Pravidla interakce jsou vyhodnocována při každém zapínání zpracování a lze je použít k aktivaci pravidel dokončení.
+* **Pravidla dokončování** : Tato pravidla se musí provést při splnění příkazu. Všechna pravidla konfigurovaná v této části, pro které jsou splněné podmínky, se spustí. 
+* **Pravidla interakce** : Tato pravidla se dají použít ke konfiguraci dalších vlastních ověření, potvrzení a krokového opravy nebo k provedení jakékoli jiné vlastní logiky dialogových oken. Pravidla interakce jsou vyhodnocována při každém zapínání zpracování a lze je použít k aktivaci pravidel dokončení.
 
 Různé akce nakonfigurované jako součást pravidla jsou spouštěny v pořadí, ve kterém se zobrazují na portálu pro vytváření.
 
 ### <a name="conditions"></a>Podmínky
 Podmínky jsou požadavky, které musí být splněny, aby bylo pravidlo spuštěno. Podmínky pravidel mohou být následujícího typu:
 
-* **Hodnota parametru Equals**: hodnota konfigurovaného parametru se rovná konkrétní hodnotě.
-* **Žádná hodnota parametru**: nakonfigurované parametry by neměly mít žádnou hodnotu.
-* **Požadované parametry**: nakonfigurovaný parametr má hodnotu.
-* **Všechny požadované parametry**: všechny parametry, které byly označeny jako povinné, mají hodnotu.
-* **Aktualizované parametry**: jedna nebo více hodnot parametrů bylo aktualizováno v důsledku zpracování aktuálního vstupu (utterance nebo aktivita).
-* **Potvrzení bylo úspěšné**: vstupní utterance nebo aktivita byla úspěšné potvrzení (Ano).
-* **Potvrzení bylo odepřeno**: vstupní utterance nebo aktivita nebyla úspěšné (ne).
-* **Předchozí příkaz se musí aktualizovat**: Tato podmínka se v instancích používá, když chcete zachytit souběžné potvrzení spolu s aktualizací. Na pozadí je tato podmínka nakonfigurovaná pro případ, že se modul dialogového okna detekuje negativní potvrzení, kde je záměr stejný jako u předchozího tahu, a uživatel odpověděl s aktualizací.
+* **Hodnota parametru Equals** : hodnota konfigurovaného parametru se rovná konkrétní hodnotě.
+* **Žádná hodnota parametru** : nakonfigurované parametry by neměly mít žádnou hodnotu.
+* **Požadované parametry** : nakonfigurovaný parametr má hodnotu.
+* **Všechny požadované parametry** : všechny parametry, které byly označeny jako povinné, mají hodnotu.
+* **Aktualizované parametry** : jedna nebo více hodnot parametrů bylo aktualizováno v důsledku zpracování aktuálního vstupu (utterance nebo aktivita).
+* **Potvrzení bylo úspěšné** : vstupní utterance nebo aktivita byla úspěšné potvrzení (Ano).
+* **Potvrzení bylo odepřeno** : vstupní utterance nebo aktivita nebyla úspěšné (ne).
+* **Předchozí příkaz se musí aktualizovat** : Tato podmínka se v instancích používá, když chcete zachytit souběžné potvrzení spolu s aktualizací. Na pozadí je tato podmínka nakonfigurovaná pro případ, že se modul dialogového okna detekuje negativní potvrzení, kde je záměr stejný jako u předchozího tahu, a uživatel odpověděl s aktualizací.
 
 ### <a name="actions"></a>Akce
-* **Odeslat odezvu na řeč**: odešlete odpověď na řeč zpátky klientovi.
-* **Hodnota parametru aktualizace**: Aktualizujte hodnotu parametru příkazu na zadanou hodnotu.
-* **Vymazat parametr hodnota**: Vymažte hodnotu parametru příkazu.
-* **Zavolat webový koncový bod**: provede volání do webového koncového bodu.
-* **Odeslat aktivitu klientovi**: odeslání vlastní aktivity klientovi.
+* **Odeslat odezvu na řeč** : odešlete odpověď na řeč zpátky klientovi.
+* **Hodnota parametru aktualizace** : Aktualizujte hodnotu parametru příkazu na zadanou hodnotu.
+* **Vymazat parametr hodnota** : Vymažte hodnotu parametru příkazu.
+* **Zavolat webový koncový bod** : provede volání do webového koncového bodu.
+* **Odeslat aktivitu klientovi** : odeslání vlastní aktivity klientovi.
 
 ### <a name="expectations"></a>Očekávání
 Očekávání se používají ke konfiguraci pomocných parametrů pro zpracování dalšího vstupu uživatele. Jsou podporovány následující typy:
 
-* **Očekává se potvrzení od uživatele**: tato očekávaná hodnota určuje, že aplikace očekává potvrzení (ano/ne) pro další uživatelský vstup.
-* **Byl očekáván vstup z parametru od uživatele**: Toto očekávání Určuje jeden nebo více parametrů příkazu, které aplikace od vstupu uživatele očekává.
+* **Očekává se potvrzení od uživatele** : tato očekávaná hodnota určuje, že aplikace očekává potvrzení (ano/ne) pro další uživatelský vstup.
+* **Byl očekáván vstup z parametru od uživatele** : Toto očekávání Určuje jeden nebo více parametrů příkazu, které aplikace od vstupu uživatele očekává.
 
 ### <a name="post-execution-state"></a>Stav po spuštění
 Stav po spuštění je stav dialogového okna po zpracování aktuálního vstupu (utterance nebo aktivita). Jedná se o následující typy:
 
-* **Příkaz byl dokončen**: dokončete příkaz a nebudou zpracována žádná další pravidla příkazu.
-* **Spustit pravidla dokončení**: proveďte všechna platná pravidla dokončování.
-* **Počkat na vstup uživatele**: Počkejte na zadání dalšího uživatele.
+* **Zachovat aktuální stav** : zachovat pouze aktuální stav.
+* **Dokončete příkaz** : dokončete příkaz a nebudou zpracována žádná další pravidla příkazu.
+* **Spustit pravidla dokončení** : proveďte všechna platná pravidla dokončování.
+* **Počkat na vstup uživatele** : Počkejte na zadání dalšího uživatele.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978777"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927664"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačních SAP HANA systémů, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA škálování pro SKU virtuálního počítače M128s. Tento dokument nemá za cíl nahradit standardní dokumentaci SAP, která zahrnuje následující obsah:
@@ -135,11 +135,11 @@ Pro/Hana/Shared doporučujeme také použití [Azure NetApp Files](https://azure
 
 Typický základní návrh pro jeden uzel v konfiguraci se škálováním na více instancí bude vypadat takto:
 
-![Základní informace o škálování jednoho uzlu](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![Diagram znázorňující typický základní návrh pro jeden uzel v konfiguraci s možností horizontálního rozšíření kapacity.](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 Základní konfigurace uzlu virtuálního počítače pro SAP HANA škálování na více instancí vypadá takto:
 
-- Pro **/Hana/Shared**používáte NATIVNÍ službu NFS, která je poskytována prostřednictvím Azure NetApp Files. 
+- Pro **/Hana/Shared** používáte NATIVNÍ službu NFS, která je poskytována prostřednictvím Azure NetApp Files. 
 - Všechny ostatní svazky disku nejsou sdíleny mezi různými uzly a nejsou založené na systému souborů NFS. Konfigurace a kroky instalace pro škálování na více systémů s nesdílenými **/Hana/data** a **/Hana/log** se poskytují dál v tomto dokumentu. Pro certifikované úložiště HANA, které se dá použít, se podívejte na článek [SAP HANA konfigurace úložiště virtuálních počítačů Azure](./hana-vm-operations-storage.md).
 
 
@@ -187,7 +187,7 @@ Kromě SAP HANA certifikace na virtuálních počítačích Azure M-Series je po
 SAP HANA dynamické vrstvení 2,0 není podporován SAP BW nebo S4HANA. Hlavní případy použití: teď jsou nativní aplikace HANA.
 
 
-### <a name="overview"></a>Overview
+### <a name="overview"></a>Přehled
 
 Následující obrázek obsahuje přehled týkající se podpory DT 2,0 na Microsoft Azure. Existuje sada povinných požadavků, které je třeba dodržovat, aby byly dodrženy oficiální certifikace:
 

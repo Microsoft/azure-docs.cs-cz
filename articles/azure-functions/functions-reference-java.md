@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736689"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927511"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -49,7 +49,7 @@ Pokud dáváte přednost vývoji příkazového řádku od terminálu, nejjednod
 
 Následující příkaz vytvoří nový projekt funkce jazyka Java pomocí tohoto archetype:
 
-```
+```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype 
@@ -153,7 +153,7 @@ Verzi Java, která cílí na Maven Archetype, můžete řídit pomocí `-DjavaVe
 
 Maven Archetype vygeneruje pom.xml, která cílí na zadanou verzi Java. Následující prvky v pom.xml označují verzi jazyka Java, která se má použít:
 
-| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
+| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Description |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Verze jazyka Java, kterou používá modul Maven-Compiler-plugin. |
 | **`JavaVersion`** | 8 | 11 | Verze Java hostovaná aplikací Function App v Azure |
@@ -202,7 +202,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 

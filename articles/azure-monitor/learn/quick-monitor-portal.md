@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dd262b942d6ce4e423f524c7381574afd501f466
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88080945"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927545"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 
@@ -33,16 +33,16 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
 1. Otevřete projekt v aplikaci Visual Studio 2019.
-2. V nabídce Projekt vyberte **Nakonfigurovat Application Insights**. Visual Studio přidá Application Insights SDK do vaší aplikace.
+2. V nabídce Projekt vyberte **Nakonfigurovat Application Insights** . Visual Studio přidá Application Insights SDK do vaší aplikace.
 
     > [!IMPORTANT]
-    > Postup pro přidání Application Insights se liší podle typu šablony ASP.NET. Pokud používáte **prázdnou** šablonu nebo šablonu **Mobilní aplikace Azure**, vyberte **Projekt** > **Přidat Telemetrii Application Insights**. Pokyny pro všechny ostatní šablony ASP.NET najdete v kroku výše. 
+    > Postup pro přidání Application Insights se liší podle typu šablony ASP.NET. Pokud používáte **prázdnou** šablonu nebo šablonu **Mobilní aplikace Azure** , vyberte **Projekt** > **Přidat Telemetrii Application Insights** . Pokyny pro všechny ostatní šablony ASP.NET najdete v kroku výše. 
 
-3. Klikněte na **Začínáme** (starší verze sady Visual Studio mají tlačítko **Začít zdarma**).
+3. Klikněte na **Začínáme** (starší verze sady Visual Studio mají tlačítko **Začít zdarma** ).
 
     ![Přidání Application Insights k sadě Visual Studio](./media/quick-monitor-portal/add-application-insights-b.png)
 
-4. Vyberte své předplatné a klikněte na **Zaregistrovat**.
+4. Vyberte své předplatné a klikněte na **Zaregistrovat** .
 
 5. Vyberte **projekt**  >  **Spravovat balíčky balíčků NuGet**  >  **Zdroj: NuGet.org**  >  **aktualizujte** balíček sady SDK Application Insights na nejnovější stabilní verzi.
 
@@ -52,7 +52,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Application Insights shromažďuje telemetrická data pro vaši aplikaci bez ohledu na to, kde je spuštěná. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Otevřete Application Insights kliknutím na tlačítko **Zobrazit**  ->  **ostatní**  ->  **Application Insights Windows Search**.  Zobrazí se telemetrie z aktuální relace.<BR><br>![Telemetrie v sadě Visual Studio](./media/quick-monitor-portal/telemetry-in-vs.png)
+1. Otevřete Application Insights kliknutím na tlačítko **Zobrazit**  ->  **ostatní**  ->  **Application Insights Windows Search** .  Zobrazí se telemetrie z aktuální relace.<BR><br>![Telemetrie v sadě Visual Studio](./media/quick-monitor-portal/telemetry-in-vs.png)
 
 2. Klikněte na první požadavek v seznamu list (v tomto příkladu GET Home/Index). Zobrazí se podrobné informace o tomto požadavku. Všimněte si, že se kromě dalších cenných informací o požadavku zobrazí také stavový kód a doba odezvy.<br><br>![Podrobnosti o odpovědi v sadě Visual Studio](media/quick-monitor-portal/request-details.png)
 
@@ -60,15 +60,15 @@ Application Insights shromažďuje telemetrická data pro vaši aplikaci bez ohl
 
 Teď můžete otevřít Application Insights na webu Azure Portal a prohlédnout si různé podrobnosti o spuštěné aplikaci.
 
-1. Rozbalte složku **připojené služby** (ikona cloudu a modul plug-in) v Průzkumník řešení potom klikněte pravým tlačítkem na složku **Application Insights** a pak klikněte na **otevřít Application Insights portál**.  Zobrazí se informace o vaší aplikaci a řada různých možností.
+1. Rozbalte složku **připojené služby** (ikona cloudu a modul plug-in) v Průzkumník řešení potom klikněte pravým tlačítkem na složku **Application Insights** a pak klikněte na **otevřít Application Insights portál** .  Zobrazí se informace o vaší aplikaci a řada různých možností.
 
-    ![Mapa aplikace](media/quick-monitor-portal/04-overview.png)
+    ![Snímek obrazovky, který zobrazuje informace o aplikaci v rámci Application Insightsového portálu.](media/quick-monitor-portal/04-overview.png)
 
 2. Po kliknutí na **Mapa aplikace** se zobrazí rozložení vztahů závislosti mezi komponentami vaší aplikace.  U každé komponenty se zobrazují klíčové ukazatele výkonu, jako je zatížení, výkon, selhání a upozornění.
 
     ![Mapa aplikace](media/quick-monitor-portal/05-appmap.png)
 
-3. Klikněte na ikonu **analýzy aplikace** ![ zobrazení mapa aplikace ](media/quick-monitor-portal/app-viewinlogs-icon.png) **v části protokoly (Analytics)** na jednu z komponent aplikace. Tím se otevře **protokol (Analytics)**, který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
+3. Klikněte na ikonu **Analýza aplikace** ![ snímek obrazovky s ikonou analýzy aplikací.](media/quick-monitor-portal/app-viewinlogs-icon.png) **Zobrazit v protokolech (Analytics)** na jedné z komponent aplikace. Tím se otevře **protokol (Analytics)** , který poskytuje bohatý dotazovací jazyk pro analýzu všech dat shromážděných v Application Insights. V tomto případě jsme za vás vytvořili dotaz, který vykreslí počet požadavků ve formě grafu. Můžete psát své vlastní dotazy pro analýzu dalších dat.
 
     ![Analýzy](media/quick-monitor-portal/6viewanalytics.png)
 
@@ -103,8 +103,8 @@ Další informace najdete v úložišti naší [open source sady JavaScript SDK]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Až budete s testováním hotovi, můžete odstranit skupinu prostředků a všechny související prostředky. Provedete to podle následujících kroků.
-1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
+1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup** .
+2. Na stránce skupiny prostředků klikněte na **Odstranit** , do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 V tomto rychlém startu jste povolili aplikaci pro monitorování pomocí služby Azure Application Insights.  Pokud chcete zjistit, jak ji používat k monitorování statistik a detekování potíží ve vaší aplikaci, přejděte k dalším kurzům.

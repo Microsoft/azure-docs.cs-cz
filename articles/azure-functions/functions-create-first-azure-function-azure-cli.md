@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b7b46f2d280577f40f927a0d8eb6fcf2ed33e04a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519669"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927426"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -88,7 +88,7 @@ Spuštěním následujícího příkazu v prázdné složce vygenerujte projekt 
 > + Použijte, pokud chcete, aby `-DjavaVersion=11` vaše funkce běžely na Java 11. Další informace najdete v tématu [verze Java](functions-reference-java.md#java-versions). 
 > + `JAVA_HOME`Aby bylo možné tento článek dokončit, musí být proměnná prostředí nastavena na umístění instalace správné verze JDK.
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=8
 ```
@@ -114,7 +114,7 @@ Po zobrazení výzvy zadejte následující hodnoty:
 
 `Y`Potvrďte zadáním nebo stisknutím klávesy ENTER.
 
-Maven vytvoří soubory projektu v nové složce s názvem _artifactId_, který je v tomto příkladu `fabrikam-functions` . 
+Maven vytvoří soubory projektu v nové složce s názvem _artifactId_ , který je v tomto příkladu `fabrikam-functions` . 
 
 ::: zone-end  
 Přejděte do složky projektu:
@@ -140,7 +140,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute**, který definuje chování triggeru. 
+*HttpExample.cs* obsahuje `Run` metodu, která přijímá data požadavku v `req` proměnné, je [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , který je upraven pomocí **HttpTriggerAttribute** , který definuje chování triggeru. 
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
@@ -170,41 +170,41 @@ Archetype také generuje test jednotek pro vaši funkci. Když změníte funkci 
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init \_ \_ . py
 
-* \_ \_ init \_ \_ . py* obsahuje `main()` funkci Pythonu, která se aktivuje podle konfigurace v *function.js*.
+*\_ \_ init \_ \_ . py* obsahuje `main()` funkci Pythonu, která se aktivuje podle konfigurace v *function.js* .
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. `req` je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` in *function.json*, je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=python).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js* . `req` je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` in *function.json* , je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 #### <a name="indexjs"></a>index.js
 
-*index.js* vyexportuje funkci, která se aktivuje podle konfigurace v *function.jsna*.
+*index.js* vyexportuje funkci, která se aktivuje podle konfigurace v *function.jsna* .
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js* . Návratový objekt definovaný jako `$return` in *function.json* , je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
 #### <a name="indexts"></a>index. TS
 
-*index. TS* exportuje funkci, která se aktivuje podle konfigurace v *function.js*.
+*index. TS* exportuje funkci, která se aktivuje podle konfigurace v *function.js* .
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` typu **HttpRequest** , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. 
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` typu **HttpRequest** , jak je definováno v *function.js* . Návratový objekt definovaný jako `$return` in *function.json* , je odpověď. 
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
 #### <a name="runps1"></a>run.ps1
 
-*run.ps1* definuje skript funkce, který se aktivuje podle konfigurace v *function.jsna*.
+*run.ps1* definuje skript funkce, který se aktivuje podle konfigurace v *function.jsna* .
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-U triggeru HTTP funkce přijímá data žádosti předaná parametru `$Request` definovanému v *function.js*. Návratový objekt definovaný jako `Response` in *function.json*, se do rutiny předává `Push-OutputBinding` jako odpověď. 
+U triggeru HTTP funkce přijímá data žádosti předaná parametru `$Request` definovanému v *function.js* . Návratový objekt definovaný jako `Response` in *function.json* , se do rutiny předává `Push-OutputBinding` jako odpověď. 
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
@@ -369,10 +369,10 @@ mvn azure-functions:deploy
 
 Tím se v Azure vytvoří následující prostředky:
 
-+ Skupina prostředků. Název jako _Java-Functions-Group_.
++ Skupina prostředků. Název jako _Java-Functions-Group_ .
 + Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
-+ Plán hostování. Hostování bez serveru pro aplikaci Function App v oblasti _westus_ Název je _Java-Functions-App-Service-Plan_.
-+ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název se náhodně generuje na základě vašeho _artifactId_a připojuje se k náhodně vygenerovanému číslu. 
++ Plán hostování. Hostování bez serveru pro aplikaci Function App v oblasti _westus_ Název je _Java-Functions-App-Service-Plan_ .
++ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název se náhodně generuje na základě vašeho _artifactId_ a připojuje se k náhodně vygenerovanému číslu. 
 
 Nasazení zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy). Kód se spouští z balíčku pro nasazení v Azure.
 ::: zone-end
@@ -390,7 +390,7 @@ Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příka
 
 # <a name="curl"></a>[Curl](#tab/curl)
 
-Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
+Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání** a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
 
 ![Výstup funkce spuštěný v Azure pomocí kudrlinkou](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 

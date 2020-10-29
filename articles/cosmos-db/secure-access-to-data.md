@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371728"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927630"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Tento článek poskytuje přehled zabezpečení přístupu k datům uloženým v
 
 Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Zdroje a prostředky|
+|Typ klíče|Zdroje informací|
 |---|---|
 |[Primární klíče](#primary-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatele a oprávnění.|
 |[Tokeny prostředků](#resource-tokens)|Používá se pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a UDF.|
@@ -119,6 +119,12 @@ Prostředek oprávnění je přidružen k uživateli a přiřazený v kontejneru
 > [!NOTE]
 > Aby bylo možné spustit uložené procedury, musí mít uživatel oprávnění všechna oprávnění na kontejneru, ve kterém bude uložená procedura spuštěna.
 
+Pokud povolíte [diagnostické protokoly pro požadavky na rovinu dat](cosmosdb-monitor-resource-logs.md), protokolují se následující dvě vlastnosti, které odpovídají oprávnění:
+
+* **resourceTokenPermissionId** – Tato vlastnost označuje ID oprávnění tokenu prostředku, které jste zadali. 
+
+* **resourceTokenPermissionMode** – Tato vlastnost označuje režim oprávnění, který jste nastavili při vytváření tokenu prostředku. Režim oprávnění může mít hodnoty jako "vše" nebo "číst".
+
 ### <a name="code-sample-to-create-permission"></a>Ukázka kódu pro vytvoření oprávnění
 
 Následující ukázka kódu ukazuje, jak vytvořit prostředek oprávnění, přečtěte si token prostředku prostředku oprávnění a přidružte oprávnění k výše vytvořenému [uživateli](#users) .
@@ -150,12 +156,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Chcete-li přidat ke svému uživatelskému účtu přístup ke čtečce účtu Azure Cosmos DB, požádejte vlastníka předplatného o provedení následujících kroků v Azure Portal.
 
 1. Otevřete Azure Portal a vyberte svůj účet Azure Cosmos DB.
-2. Klikněte na kartu **řízení přístupu (IAM)** a pak klikněte na  **+ Přidat přiřazení role**.
-3. V podokně **Přidat přiřazení role** v poli **role** vyberte **Cosmos DB role čtecího modulu účtu**.
-4. V **poli přiřadit přístup k**vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD**.
+2. Klikněte na kartu **řízení přístupu (IAM)** a pak klikněte na  **+ Přidat přiřazení role** .
+3. V podokně **Přidat přiřazení role** v poli **role** vyberte **Cosmos DB role čtecího modulu účtu** .
+4. V **poli přiřadit přístup k** vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD** .
 5. V adresáři vyberte uživatele, skupinu nebo aplikaci, ke kterým chcete udělit přístup.  Můžete hledat v adresáři podle zobrazovaného jména, e-mailové adresy nebo identifikátorů objektů.
     Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybrané členy.
-6. Klikněte na **Uložit**.
+6. Klikněte na **Uložit** .
 
 Entita může nyní číst prostředky Azure Cosmos DB.
 

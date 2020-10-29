@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335999"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927681"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
@@ -32,22 +32,23 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
 > [!IMPORTANT]
 > Změna velikosti operačního systému nebo datového disku virtuálního počítače Azure vyžaduje, aby se virtuální počítač nadělil.
 >
-> Po rozbalení disků je potřeba [rozšířit svazek v operačním systému](#expand-the-volume-within-the-os) a využít tak větší disk.
+> Zmenšení stávajícího disku se nepodporuje a může potenciálně vést ke ztrátě dat.
 > 
+> Po rozbalení disků je potřeba [rozšířit svazek v operačním systému](#expand-the-volume-within-the-os) a využít tak větší disk.
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Změna velikosti spravovaného disku v Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do virtuálního počítače, ve kterém chcete disk rozbalit. Kliknutím na tlačítko **zastavit zrušíte** přidělení virtuálního počítače.
-2. Po zastavení virtuálního počítače v nabídce vlevo v části **Nastavení**vyberte **disky**.
+2. Po zastavení virtuálního počítače v nabídce vlevo v části **Nastavení** vyberte **disky** .
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
  
-3. V části **název disku**vyberte disk, u kterého chcete změnit velikost.
+3. V části **název disku** vyberte disk, u kterého chcete změnit velikost.
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
-4. V nabídce vlevo v části **Nastavení**vyberte **Konfigurace**.
+4. V nabídce vlevo v části **Nastavení** vyberte **Konfigurace** .
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
@@ -59,7 +60,7 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
-6. Vyberte **Uložit**.
+6. Vyberte **Uložit** .
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
@@ -230,11 +231,11 @@ Podobně můžete odkazovat na jiné datové disky připojené k virtuálnímu p
 
 ## <a name="expand-the-volume-within-the-os"></a>Rozšířit svazek v operačním systému
 
-Po rozbalení disku pro virtuální počítač musíte přejít do operačního systému a rozšířit svazek tak, aby zahrnoval nové místo. Existuje několik způsobů, jak rozšířit oddíl. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP, které umožňuje rozšířit oddíl pomocí **nástroje DiskPart**.
+Po rozbalení disku pro virtuální počítač musíte přejít do operačního systému a rozšířit svazek tak, aby zahrnoval nové místo. Existuje několik způsobů, jak rozšířit oddíl. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP, které umožňuje rozšířit oddíl pomocí **nástroje DiskPart** .
 
 1. Otevřete připojení RDP k vašemu VIRTUÁLNÍmu počítači.
 
-2. Otevřete příkazový řádek a zadejte příkaz **DiskPart**.
+2. Otevřete příkazový řádek a zadejte příkaz **DiskPart** .
 
 3. Do příkazového řádku **DiskPart** zadejte `list volume` . Poznamenejte si svazek, který chcete zvětšit.
 

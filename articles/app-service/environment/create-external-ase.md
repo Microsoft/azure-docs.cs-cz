@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: aa65508c4f8df2c11bab74cd34f3311b21c63d9c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164597"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927443"
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího prostředí App Service
 
@@ -47,9 +47,9 @@ Po vytvoření pomocného mechanismu služby nemůžete změnit následující:
 
 Existují tři způsoby, jak vytvořit pomocného mechanismu řízení:
 
-- **Při vytváření plánu App Service**. Tato metoda vytvoří pomocného průvodce a plán App Service v jednom kroku.
-- **Jako samostatnou akci**. Tato metoda vytvoří samostatný objekt pro vytváření, což je pomocným mechanismem, který v něm není nic. Tato metoda je pokročilejším procesem vytvoření pomocného mechanismu. Použijete ho k vytvoření pomocného objektu s interního nástroje.
-- **Ze šablony Azure Resource Manager**. Tato metoda je určena pro pokročilé uživatele. Další informace najdete v tématu [Vytvoření POmocného mechanismu ze šablony][MakeASEfromTemplate].
+- **Při vytváření plánu App Service** . Tato metoda vytvoří pomocného průvodce a plán App Service v jednom kroku.
+- **Jako samostatnou akci** . Tato metoda vytvoří samostatný objekt pro vytváření, což je pomocným mechanismem, který v něm není nic. Tato metoda je pokročilejším procesem vytvoření pomocného mechanismu. Použijete ho k vytvoření pomocného objektu s interního nástroje.
+- **Ze šablony Azure Resource Manager** . Tato metoda je určena pro pokročilé uživatele. Další informace najdete v tématu [Vytvoření POmocného mechanismu ze šablony][MakeASEfromTemplate].
 
 Externí přístupový modul pro čtení má veřejnou virtuální IP adresu, což znamená, že všechny přenosy HTTP/HTTPS do aplikací v pomocném mechanismu přístupu narazí na internetovou IP adresu. Služba pomocného objektu s interního nástroje má IP adresu z podsítě, kterou používá pomocným mechanismem řízení. Aplikace hostované v pomocném mechanismu interního nástroje se nezveřejňují přímo na internetu.
 
@@ -59,7 +59,7 @@ Plán App Service je kontejner aplikací. Když vytváříte aplikaci v App Serv
 
 Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek**  >  **web a mobilní zařízení**  >  **webovou aplikaci**.
+1. V [Azure Portal](https://portal.azure.com/)vyberte **vytvořit prostředek**  >  **web a mobilní zařízení**  >  **webovou aplikaci** .
 
     ![Snímek obrazovky Azure Portal zobrazující Web a mobilní zařízení vybrané v Azure Marketplace a na obrazovce pro vytvoření nové webové aplikace na pravé straně][1]
 
@@ -69,27 +69,27 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 4. Vyberte svůj operační systém (Windows, Linux nebo Docker). 
 
-5. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
+5. Vyberte plán App Service a pak vyberte **vytvořit novou** . Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
     ![Snímek obrazovky Azure Portal zobrazující podokno webové aplikace, podokno plán služby App Service a nové podokno plánu App Service otevřené.][2]
 
 6. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
-7. Vyberte **cenovou úroveň**a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat**. **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný**. 
+7. Vyberte **cenovou úroveň** a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat** . **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný** . 
 
     ![Výběr cenové úrovně][3]
 
-8. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
+8. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_ , název domény je *. appsvcenvdemo.p.azurewebsites.NET* . Pokud vytvoříte aplikaci s názvem *MyTestApp* , tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
 
     ![Název nového plánu App Service][4]
 
-9. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující**. Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový**, zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující**, budete potřebovat:
+9. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující** . Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový** , zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující** , budete potřebovat:
 
     a. Vyberte blok adres virtuální sítě, pokud máte více než jeden.
 
     b. Zadejte nový název podsítě.
 
-    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, abyste měli `/24` k dis128 adresám a mohli zpracovat maximální velikost POmocného mechanismu. Nedoporučujeme `/28` například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. V `/28` podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí POmocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
+    c. Vyberte velikost podsítě. *Nezapomeňte si vybrat dostatečně velkou velikost, aby vyhovovala budoucímu růstu vašeho pomocného mechanismu.* Doporučujeme, abyste měli `/24` k dis256 adresám a mohli zpracovat maximální velikost POmocného mechanismu. Nedoporučujeme `/28` například, protože k dispozici jsou jenom 16 adres. Infrastruktura používá minimálně sedm adres a síť Azure používá další 5. V `/28` podsíti zůstanete s maximálním počtem 4 App Service instancí plánu pro externí POmocného mechanismu pro zápis a jenom 3 App Service plánování instancí pro interního nástroje.
 
     d. Vyberte rozsah IP adres podsítě.
 
@@ -105,21 +105,21 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 1. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat související prostředky Azure jako jednotku. Skupiny prostředků jsou také užitečné při vytváření Role-Basedch pravidel Access Control pro vaše aplikace. Další informace najdete v tématu [Přehled Azure Resource Manageru][ARMOverview].
 
-1. Vyberte plán App Service a pak vyberte **vytvořit novou**. Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
+1. Vyberte plán App Service a pak vyberte **vytvořit novou** . Webové aplikace a webové aplikace pro Linux nemůžou být ve stejném plánu App Service, ale můžou být ve stejném App Service Environment. 
 
     ![Snímek obrazovky Azure Portal znázorňující podokno Web App for Containers, podokno plán služby App Service a nové podokno App Service plán se otevřelo.][8]
 
 1. V rozevíracím seznamu **umístění** vyberte oblast, ve které chcete vytvořit pomocného panelu. Když vyberete existující pomocným mechanismem, nevytvoří se nový. V rámci pomocného mechanismu, který jste vybrali, se vytvoří plán App Service. 
 
-1. Vyberte **cenovou úroveň**a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat**. **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný**. 
+1. Vyberte **cenovou úroveň** a zvolte jednu z **izolovaných** SKU s cenami. Pokud zvolíte kartu **izolované** SKU a umístění, které není pomocným mechanismem, vytvoří se v tomto umístění nový pomocný objekt pro vytváření. Pokud chcete zahájit proces vytváření pomocného mechanismu, vyberte **Vybrat** . **Izolovaná** SKU je k dispozici pouze ve spojení s pomocným mechanismem řízení. Nemůžete také použít žádnou jinou cenovou jednotku v pomocném objektu, který je jiný než **izolovaný** . 
 
     ![Výběr cenové úrovně][3]
 
-1. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_, název domény je *. appsvcenvdemo.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
+1. Zadejte název pro pomocného správce. Tento název se používá v adresních názvech pro vaše aplikace. Pokud je název pomocného mechanismu _appsvcenvdemo_ , název domény je *. appsvcenvdemo.p.azurewebsites.NET* . Pokud vytvoříte aplikaci s názvem *MyTestApp* , tato adresa se dá adresovat na MyTestApp.appsvcenvdemo.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Pokud použijete velká písmena, název domény je celková verze tohoto názvu.
 
     ![Název nového plánu App Service][4]
 
-1. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující**. Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový**, zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující**, budete potřebovat:
+1. Zadejte podrobnosti o virtuální síti Azure. Vyberte možnost **vytvořit novou** nebo **Vyberte existující** . Možnost výběru existující virtuální sítě je dostupná jenom v případě, že ve vybrané oblasti máte virtuální síť. Pokud vyberete **vytvořit nový** , zadejte název virtuální sítě. Vytvoří se nová virtuální síť Správce prostředků s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **Vybrat existující** , budete potřebovat:
 
     a. Vyberte blok adres virtuální sítě, pokud máte více než jeden.
 
@@ -141,9 +141,9 @@ Vytvoření pomocného mechanismu pro vytváření App Serviceho plánu:
 
 Pokud vytvoříte samostatného pomocného mechanismu řízení, nemá nic v něm. Prázdnému pomocnému mechanismu řízení se pořád účtuje měsíční poplatek za infrastrukturu. Postupujte podle těchto kroků a vytvořte pomocí služby interního nástroje nebo vytvořte v vlastní skupině prostředků pomocného mechanismu řízení. Po vytvoření pomocného mechanismu služby můžete v něm vytvářet aplikace pomocí normálního procesu. Jako umístění vyberte nový pomocného panelu.
 
-1. Vyhledejte Azure Marketplace pro **App Service Environment**nebo vyberte **vytvořit prostředek**  >  **Web mobilní**  >  **App Service Environment**. 
+1. Vyhledejte Azure Marketplace pro **App Service Environment** nebo vyberte **vytvořit prostředek**  >  **Web mobilní**  >  **App Service Environment** . 
 
-1. Zadejte název vašeho pomocného programu. Tento název se používá pro aplikace vytvořené v pomocném formuláři. Pokud je název *mynewdemoase*, název subdomény je *. mynewdemoase.p.azurewebsites.NET*. Pokud vytvoříte aplikaci s názvem *MyTestApp*, tato adresa se dá adresovat na MyTestApp.mynewdemoase.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Použijete-li velká písmena, název domény je celková verze názvu. Pokud použijete interního nástroje, váš název pomocného mechanismu se v subdoméně nepoužije, ale místo toho se zadává explicitně během vytváření pomocného mechanismu.
+1. Zadejte název vašeho pomocného programu. Tento název se používá pro aplikace vytvořené v pomocném formuláři. Pokud je název *mynewdemoase* , název subdomény je *. mynewdemoase.p.azurewebsites.NET* . Pokud vytvoříte aplikaci s názvem *MyTestApp* , tato adresa se dá adresovat na MyTestApp.mynewdemoase.p.azurewebsites.NET. V názvu nelze použít prázdné znaky. Použijete-li velká písmena, název domény je celková verze názvu. Pokud použijete interního nástroje, váš název pomocného mechanismu se v subdoméně nepoužije, ale místo toho se zadává explicitně během vytváření pomocného mechanismu.
 
     ![Pojmenování pomocného mechanismu][5]
 
@@ -159,15 +159,15 @@ Pokud vytvoříte samostatného pomocného mechanismu řízení, nemá nic v ně
     
     * Nová virtuální síť má rozsah adres 192.168.250.0/23 a podsíť s názvem default. Podsíť je definovaná jako 192.168.250.0/24. Můžete vybrat jenom Správce prostředků virtuální síť. Výběr **typu VIP** určuje, jestli k vašemu přimocnému objektu se dá získat přímý pøístup z Internetu (externí) nebo jestli používá interního nástroje. Další informace o těchto možnostech najdete v tématu [Vytvoření a použití interního nástroje pro vyrovnávání zatížení v prostředí App Service][MakeILBASE]. 
 
-      * Pokud pro **Typ VIP**vyberete **externí** , můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely protokolu SSL založeného na protokolu IP. 
+      * Pokud pro **Typ VIP** vyberete **externí** , můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely protokolu SSL založeného na protokolu IP. 
     
-      * Pokud pro **Typ VIP**vyberete **interní** , musíte zadat doménu, kterou používá váš správce přidaných mechanismů. Pomocného mechanismu můžete nasadit do virtuální sítě, která používá veřejné nebo soukromé rozsahy adres. Chcete-li použít virtuální síť s rozsahem veřejných adres, je nutné vytvořit virtuální síť předem. 
+      * Pokud pro **Typ VIP** vyberete **interní** , musíte zadat doménu, kterou používá váš správce přidaných mechanismů. Pomocného mechanismu můžete nasadit do virtuální sítě, která používá veřejné nebo soukromé rozsahy adres. Chcete-li použít virtuální síť s rozsahem veřejných adres, je nutné vytvořit virtuální síť předem. 
     
     * Pokud vyberete existující virtuální síť, vytvoří se při vytvoření pomocného mechanismu řízení Nová podsíť. *V portálu nemůžete použít předem vytvořenou podsíť. Pokud použijete šablonu Správce prostředků, můžete vytvořit pomocného programu s existující podsítí.* Informace o vytvoření pomocného mechanismu ze šablony naleznete v tématu [vytvoření App Service Environment ze šablony][MakeASEfromTemplate].
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1
 
-Stále můžete vytvářet instance první verze App Service Environment (ASEv1). Pokud chcete tento proces spustit, vyhledejte na webu Marketplace **App Service Environment v1**. Pomocného mechanismu pro vytváření můžete vytvořit stejným způsobem jako samostatný pomocným mechanismem pro vytváření. Až se dokončí, vaše ASEv1 má dvě front-endy a dva pracovní procesy. V ASEv1 musíte spravovat front-endy a pracovníky. Při vytváření plánů App Service nejsou automaticky přidány. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají do pracovních procesů provoz. Pracovní procesy jsou role hostující vaše aplikace. Po vytvoření pomocného mechanismu služeb můžete upravit množství front-endy a pracovníků. 
+Stále můžete vytvářet instance první verze App Service Environment (ASEv1). Pokud chcete tento proces spustit, vyhledejte na webu Marketplace **App Service Environment v1** . Pomocného mechanismu pro vytváření můžete vytvořit stejným způsobem jako samostatný pomocným mechanismem pro vytváření. Až se dokončí, vaše ASEv1 má dvě front-endy a dva pracovní procesy. V ASEv1 musíte spravovat front-endy a pracovníky. Při vytváření plánů App Service nejsou automaticky přidány. Front-endy slouží jako koncové body HTTP/HTTPS a odesílají do pracovních procesů provoz. Pracovní procesy jsou role hostující vaše aplikace. Po vytvoření pomocného mechanismu služeb můžete upravit množství front-endy a pracovníků. 
 
 Další informace o ASEv1 najdete v tématu [Úvod do App Service Environment v1][ASEv1Intro]. Další informace o škálování, správě a monitorování ASEv1 naleznete v tématu [How to Configure a App Service Environment][ConfigureASEv1].
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b58f402766e369894fcf014836ab9f24c231c489
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503119"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927494"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md). 
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -41,21 +41,21 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
-2. Do vyhledávacího pole zadejte **Key Vault**.
-3. V seznamu výsledků zvolte **Key Vault**.
-4. V části Key Vault zvolte **Vytvořit**.
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek** .
+2. Do vyhledávacího pole zadejte **Key Vault** .
+3. V seznamu výsledků zvolte **Key Vault** .
+4. V části Key Vault zvolte **Vytvořit** .
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor**. 
+    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor** . 
     - **Předplatné:** Zvolte předplatné.
-    - V části **Skupina prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    - V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
-6. Po zadání výše uvedených informací vyberte **Vytvořit**.
+6. Po zadání výše uvedených informací vyberte **Vytvořit** .
 
 Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru**: v tomto příkladu je to **příklad – trezor**. Tento název budete používat pro další kroky.
+* **Název trezoru** : v tomto příkladu je to **příklad – trezor** . Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://example-vault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
@@ -64,21 +64,21 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 
 ## <a name="import-a-certificate-to-key-vault"></a>Import certifikátu do Key Vault
 
-Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate**.
+Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate** .
 
 > [!IMPORTANT]
 > Ve službě Azure Key Vault se podporují certifikáty ve formátu PFX a PEM. 
 > - Formát souboru. pem obsahuje jeden nebo více souborů certifikátu x509.
 > - Formát souboru. PFX je formát archivního souboru pro ukládání několika kryptografických objektů do jednoho souboru, tj. certifikát serveru (vydaný pro vaši doménu), odpovídajícího privátního klíče a volitelně může zahrnovat zprostředkující certifikační autoritu.  
 
-1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
-2. Klikněte na **Vygenerovat/importovat**.
+1. Na stránkách Key Vault vlastnosti vyberte **certifikáty** .
+2. Klikněte na **Vygenerovat/importovat** .
 3. Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
-    - **Metoda vytvoření certifikátu**: import.
-    - **Název certifikátu**: ExampleCertificate.
-    - **Nahrát soubor certifikátu**: vyberte soubor certifikátu z disku.
+    - **Metoda vytvoření certifikátu** : import.
+    - **Název certifikátu** : ExampleCertificate.
+    - **Nahrát soubor certifikátu** : vyberte soubor certifikátu z disku.
     - **Heslo** : Pokud nahráváte soubor certifikátu chráněný heslem, zadejte toto heslo sem. V opačném případě ponechte prázdné. Po úspěšném importu souboru certifikátu odstraní Trezor klíčů toto heslo.
-4. Klikněte na **Vytvořit**.
+4. Klikněte na **Vytvořit** .
 
 ![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -86,7 +86,7 @@ Když přidáte certifikát pomocí metody **importování** , služba Azure Key
 
 Jakmile se zobrazí zpráva o úspěšném importu certifikátu, můžete na něj kliknout v seznamu a zobrazit jeho vlastnosti. 
 
-![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+![Snímek obrazovky, který ukazuje, kde zobrazit vlastnosti certifikátu.](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
 ## <a name="import-a-certificate-using-azure-cli"></a>Import certifikátu pomocí Azure CLI
 
@@ -144,8 +144,8 @@ Další rychlé starty a kurzy týkající se služby Key Vault vycházejí z to
 Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstraníte Key Vault i související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
-2. Vyberte **Odstranit skupinu prostředků**.
-3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
+2. Vyberte **Odstranit skupinu prostředků** .
+3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit** .
 
 
 ## <a name="next-steps"></a>Další kroky
