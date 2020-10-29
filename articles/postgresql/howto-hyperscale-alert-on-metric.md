@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489859"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909909"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL – Citus (škálování)
 
@@ -43,7 +43,7 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Vybrat pravidla výstrah":::
 
-5. V části **Podmínka** vyberte **Přidat**.
+5. V části **Podmínka** vyberte **Přidat** .
 
 6. Vyberte metriku ze seznamu signálů, na kterých se má upozornit. V tomto příkladu vyberte "úložiště v procentech".
    
