@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900293"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927987"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Kurz: Konfigurace globální synchronizace identity Relay pro Automatické zřizování uživatelů
 
@@ -33,6 +33,10 @@ Tento kurz popisuje kroky, které je třeba provést v globální synchronizaci 
 > * Odebrat uživatele v globální synchronizaci identity Relay, když už nevyžadují přístup
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a globální synchronizací identity Relay
 > * Zřizování skupin a členství ve skupinách v globální synchronizaci identity Relay
+
+
+> [!NOTE]
+> Konektor pro zřizování globální předávací identity pro synchronizaci využívá metodu autorizace SCIM, která se už nepodporuje z důvodu obav zabezpečení. Úsilí s globálním přenosem umožňuje přepnout na bezpečnější metodu autorizace.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -149,7 +153,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Reference|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: GlobalRelay: 2.0: uživatel: proxyAddresses|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: GlobalRelay: 2.0: uživatel: extensionAttribute1|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: GlobalRelay: 2.0: uživatel: extensionAttribute2|Řetězec|

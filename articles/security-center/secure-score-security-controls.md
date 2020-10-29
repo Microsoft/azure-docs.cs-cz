@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425337"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928089"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -29,7 +29,7 @@ Azure Security Center má dva hlavní cíle:
 - pomůže vám pochopit aktuální situaci zabezpečení
 - abychom vám pomohli efektivně a efektivně zlepšit zabezpečení
 
-Centrální funkce v Security Center, která vám umožňuje dosáhnout těchto cílů je **bezpečné skóre**.
+Centrální funkce v Security Center, která vám umožňuje dosáhnout těchto cílů je **bezpečné skóre** .
 
 Security Center průběžně vyhodnocuje vaše prostředky, odběry a organizace pro problémy se zabezpečením. Pak agreguje všechna zjištění do jediného skóre, abyste na první pohled mohli sdělit aktuální situaci zabezpečení: čím vyšší je skóre, tím se sníží zjištěná úroveň rizika.
 
@@ -39,7 +39,7 @@ Zabezpečené skóre je zobrazeno na Azure Portal stránkách jako procentuáln�
 
 Chcete-li zvýšit zabezpečení, přečtěte si stránku s doporučeními Security Center pro nedokončené akce potřebné k vyvolání skóre. Každé doporučení obsahuje pokyny, které vám pomůžou vyřešit konkrétní problém.
 
-Doporučení jsou seskupena do **ovládacích prvků zabezpečení**. Každý ovládací prvek je logickou skupinou souvisejících doporučení zabezpečení a odráží vaše zranitelné plochy pro útok. Vaše skóre se zlepšuje jenom při nápravě *všech* doporučení pro jeden prostředek v rámci ovládacího prvku. Pokud chcete zjistit, jak dobře vaše organizace zabezpečuje jednotlivé plochy pro útok, Projděte si skóre pro jednotlivé ovládací prvky zabezpečení.
+Doporučení jsou seskupena do **ovládacích prvků zabezpečení** . Každý ovládací prvek je logickou skupinou souvisejících doporučení zabezpečení a odráží vaše zranitelné plochy pro útok. Vaše skóre se zlepšuje jenom při nápravě *všech* doporučení pro jeden prostředek v rámci ovládacího prvku. Pokud chcete zjistit, jak dobře vaše organizace zabezpečuje jednotlivé plochy pro útok, Projděte si skóre pro jednotlivé ovládací prvky zabezpečení.
 
 Další informace najdete v tématu [jak se počítá vaše zabezpečené skóre](secure-score-security-controls.md#how-your-secure-score-is-calculated) níže. 
 
@@ -88,7 +88,7 @@ Azure Resource Graph poskytuje okamžitý přístup k informacím o prostředcí
 
 Pro přístup k zabezpečenému skóre pro více předplatných s ARG:
 
-1. V Azure Portal otevřete **Průzkumníka Azure Resource Graph**.
+1. V Azure Portal otevřete **Průzkumníka Azure Resource Graph** .
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Celkové bezpečné skóre, jak je znázorněno na portálu" :::
 
@@ -112,7 +112,7 @@ Pro přístup k zabezpečenému skóre pro více předplatných s ARG:
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. Vyberte **Spustit dotaz**.
+1. Vyberte **Spustit dotaz** .
 
 ## <a name="how-your-secure-score-is-calculated"></a>Jak se počítá vaše zabezpečené skóre 
 
@@ -162,6 +162,14 @@ Dalším způsobem, jak vylepšit skóre a zajistit, aby uživatelé nevytváře
 
 Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security Center. U každého ovládacího prvku uvidíte maximální počet bodů, které můžete přidat do svého zabezpečeného skóre, pokud opravíte *všechna* doporučení uvedená v ovládacím prvku pro *všechny* vaše prostředky. 
 
+Sada doporučení zabezpečení dodaná s Security Center je přizpůsobená dostupným prostředkům v prostředí jednotlivých organizací. Doporučení se dají dál upravovat tím, že [zakážete zásady](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) a [vyloučíte konkrétní prostředky z doporučení](exempt-resource.md). 
+ 
+Doporučujeme, aby se v každé organizaci pečlivě zkontrolovaly přiřazené Azure Policy iniciativy. 
+
+> [!TIP]
+> Podrobnosti o kontrole a úpravách iniciativ najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md). 
+
+I když je výchozí iniciativa zabezpečení Security Center založená na osvědčených postupech a standardech, existují scénáře, ve kterých jsou předdefinovaná doporučení uvedená níže pravděpodobně zcela nevejdou do vaší organizace. V důsledku toho bude někdy nutné upravit výchozí iniciativu – bez narušení zabezpečení – zajistíte tak, aby byla zarovnána s vlastními zásadami vaší organizace. oborové standardy, regulativní normy a srovnávací testy, které jsou povinny splnit.<br><br>
 <div class="foo">
 
 <style type="text/css"> . TG {Border-sbalení: sbalení; Border-rozteč: 0;}. TG TD {Border-Color: Black; Border-Style: Solid; border-width: 1px; font-family: Arial, Sans-Serif; font-size: 14px; přetečení: Hidden; odsazení textu: 10px 5px; dělení na slova: normální;}. TG th {Border-Color: Black; styl okraje: Solid; Šířka ohraničení: 1px; font-family: Arial, Sans-Serif; font-size: 18px; font-weight: Normal; přetečení: Hidden; odsazení: 10px 5px; slovo-break: Normal;}. TG. TG-cly1 {text-align: Left; vertikální zarovnání: prostřední}. TG. TG-lboi {Border-Color: zdědit; text zarovnání: Left; vertikální zarovnání: prostřední} </style>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518003"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927715"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -123,8 +123,8 @@ Ne. Virtuální síť je omezená jenom na jednu oblast. Virtuální síť ale z
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Můžu připojit virtuální síť k jiné virtuální síti v Azure?
 Ano. Jednu virtuální síť můžete připojit k jiné virtuální síti pomocí těchto akcí:
-- **Partnerský vztah virtuální sítě**: Podrobnosti najdete v tématu [Přehled partnerských vztahů](virtual-network-peering-overview.md) virtuálních sítí.
-- **Azure VPN Gateway**: Podrobnosti najdete v tématu [Konfigurace připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+- **Partnerský vztah virtuální sítě** : Podrobnosti najdete v tématu [Přehled partnerských vztahů](virtual-network-peering-overview.md) virtuálních sítí.
+- **Azure VPN Gateway** : Podrobnosti najdete v tématu [Konfigurace připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Překlad názvů (DNS)
 
@@ -159,10 +159,10 @@ Ano. Všechna síťová rozhraní (NIC) připojená k virtuálnímu počítači 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jaké jsou různé typy IP adres, které můžu přiřadit k virtuálním počítačům?
 * **Privátní:** Přiřazené ke každému síťovému rozhraní v rámci každého virtuálního počítače. Adresa je přiřazena buď pomocí statické, nebo dynamické metody. Privátní IP adresy se přiřazují z rozsahu, který jste zadali v nastavení podsítě vaší virtuální sítě. Prostředky nasazené prostřednictvím modelu nasazení Classic jsou přiřazeny privátní IP adresy, i když nejsou připojené k virtuální síti. Chování metody přidělování se liší v závislosti na tom, jestli byl prostředek nasazený pomocí modelu nasazení Správce prostředků nebo Classic: 
 
-  - **Správce prostředků**: privátní IP adresa přiřazená s dynamickou nebo statickou metodou zůstane přiřazená k virtuálnímu počítači (Správce prostředků) až do odstranění prostředku. Rozdílem je, že vyberete adresu, která se má přiřadit při použití Static, a Azure při použití dynamického výběru zvolí. 
-  - **Classic**: privátní IP adresa přiřazená k dynamické metodě se může změnit, když se virtuální počítač (klasický) restartuje po restartování virtuálního počítače v zastaveném (uvolněném) stavu. Pokud potřebujete zajistit, aby se privátní IP adresa pro prostředek nasazená prostřednictvím modelu nasazení Classic nikdy nezměnila, přiřaďte privátní IP adresu statickou metodou.
+  - **Správce prostředků** : privátní IP adresa přiřazená s dynamickou nebo statickou metodou zůstane přiřazená k virtuálnímu počítači (Správce prostředků) až do odstranění prostředku. Rozdílem je, že vyberete adresu, která se má přiřadit při použití Static, a Azure při použití dynamického výběru zvolí. 
+  - **Classic** : privátní IP adresa přiřazená k dynamické metodě se může změnit, když se virtuální počítač (klasický) restartuje po restartování virtuálního počítače v zastaveném (uvolněném) stavu. Pokud potřebujete zajistit, aby se privátní IP adresa pro prostředek nasazená prostřednictvím modelu nasazení Classic nikdy nezměnila, přiřaďte privátní IP adresu statickou metodou.
 
-* **Veřejné:** Volitelně se přiřazují síťové adaptéry připojené k virtuálním počítačům nasazeným prostřednictvím modelu nasazení Azure Resource Manager. Adresa může být přiřazena se statickou nebo dynamickou metodou přidělování. Všechny virtuální počítače a Cloud Services instance rolí nasazené prostřednictvím modelu nasazení Classic existují v rámci cloudové služby, která je přiřazená k *dynamické*veřejné virtuální IP adrese (VIP). Veřejnou *statickou* IP adresu, která se nazývá [vyhrazená IP adresa adresa](virtual-networks-reserved-public-ip.md), se dá volitelně přiřadit jako virtuální IP adresa. Veřejné IP adresy můžete přiřadit jednotlivým virtuálním počítačům nebo Cloud Services instancím rolí nasazeným prostřednictvím modelu nasazení Classic. Tyto adresy se nazývají [veřejné IP adresy na úrovni instance (adresy ILPIP](virtual-networks-instance-level-public-ip.md) a dají se dynamicky přiřazovat.
+* **Veřejné:** Volitelně se přiřazují síťové adaptéry připojené k virtuálním počítačům nasazeným prostřednictvím modelu nasazení Azure Resource Manager. Adresa může být přiřazena se statickou nebo dynamickou metodou přidělování. Všechny virtuální počítače a Cloud Services instance rolí nasazené prostřednictvím modelu nasazení Classic existují v rámci cloudové služby, která je přiřazená k *dynamické* veřejné virtuální IP adrese (VIP). Veřejnou *statickou* IP adresu, která se nazývá [vyhrazená IP adresa adresa](virtual-networks-reserved-public-ip.md), se dá volitelně přiřadit jako virtuální IP adresa. Veřejné IP adresy můžete přiřadit jednotlivým virtuálním počítačům nebo Cloud Services instancím rolí nasazeným prostřednictvím modelu nasazení Classic. Tyto adresy se nazývají [veřejné IP adresy na úrovni instance (adresy ILPIP](virtual-networks-instance-level-public-ip.md) a dají se dynamicky přiřazovat.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Můžu si vyhradit soukromou IP adresu pro virtuální počítač, který vytvořím později?
 Ne. Nemůžete rezervovat privátní IP adresu. Pokud je k dispozici privátní IP adresa, je server DHCP přiřazen k virtuálnímu počítači nebo instanci role. Virtuální počítač může nebo nemusí být ten, ke kterému chcete přiřadit privátní IP adresu. Můžete však změnit soukromou IP adresu již vytvořeného virtuálního počítače na libovolnou dostupnou privátní IP adresu.
@@ -228,6 +228,9 @@ Ano. Můžete nasadit [síťové virtuální zařízení brány firewall](https:
 ### <a name="is-there-information-available-about-securing-vnets"></a>Jsou k dispozici informace o zabezpečení virtuální sítě?
 Ano. Podrobnosti najdete v tématu [Přehled zabezpečení sítě Azure](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
+### <a name="do-virtual-networks-store-customer-data"></a>Ukládají se do virtuálních sítí zákaznická data?
+Ne. Virtuální sítě neukládají žádná zákaznická data. 
+
 ## <a name="apis-schemas-and-tools"></a>Rozhraní API, schémata a nástroje
 
 ### <a name="can-i-manage-vnets-from-code"></a>Můžu spravovat virtuální sítě z kódu?
@@ -268,7 +271,7 @@ K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo
 Ano. Je možné vytvořit partnerský vztah virtuální sítě (místní nebo globální), pokud vaše předplatná patří do různých klientů Azure Active Directory. Můžete to provést prostřednictvím portálu, PowerShellu nebo rozhraní příkazového řádku.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Moje připojení partnerského vztahu virtuální sítě je v *inicializovaném* stavu, proč se nemůžu připojit?
-Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno*.
+Pokud je připojení partnerského vztahu v *inicializovaném* stavu, znamená to, že jste vytvořili pouze jeden odkaz. Aby bylo možné vytvořit úspěšné připojení, je nutné vytvořit obousměrný odkaz. Například pro partnerský virtuální síť A k virtuální síti B se musí vytvořit odkaz z partnerském na VNetB a od VNetB do partnerském. Vytvořením obou propojení dojde ke změně stavu na *připojeno* .
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Moje připojení partnerského vztahu virtuálních sítí je v *odpojeném* stavu, proč nemůžu vytvořit připojení partnerského vztahu?
 Pokud je připojení partnerského vztahu virtuálních sítí v *odpojeném* stavu, znamená to, že se odstranila jedna z vytvořených odkazů. Aby bylo možné znovu vytvořit partnerské připojení, bude nutné odstranit odkaz a znovu ho vytvořit.
@@ -331,7 +334,7 @@ Prvním krokem je operace na straně sítě a druhý krok je operace na straně 
 >[!NOTE]
 > Aby bylo možné omezit přístup služby Azure na povolenou virtuální síť a podsíť, musí být obě výše popsané operace dokončené. Pouze zapnutí koncových bodů služby pro službu Azure na straně sítě vám neposkytuje omezený přístup. Kromě toho musíte také na straně služby Azure nastavit seznamy ACL pro virtuální sítě.
 
-Některé služby (například SQL a CosmosDB) umožňují výjimky z výše uvedené sekvence pomocí příznaku **IgnoreMissingVnetServiceEndpoint** . Po nastavení příznaku na **hodnotu true**můžete na straně služby Azure nastavit seznamy ACL pro virtuální sítě před nastavením koncových bodů služby na straně sítě. Pomocí tohoto příznaku služby Azure můžou zákazníkům pomáhat v případech, kdy jsou konkrétní brány firewall IP v rámci služeb Azure nakonfigurované a zapnutí koncových bodů služby na straně sítě může způsobit odpojení od změny zdrojové IP adresy z veřejné IPv4 adresy na soukromou adresu. Nastavení seznamů ACL pro virtuální síť na straně služby před nastavením koncových bodů služby na straně sítě může zabránit vyřazení připojení.
+Některé služby (například SQL a CosmosDB) umožňují výjimky z výše uvedené sekvence pomocí příznaku **IgnoreMissingVnetServiceEndpoint** . Po nastavení příznaku na **hodnotu true** můžete na straně služby Azure nastavit seznamy ACL pro virtuální sítě před nastavením koncových bodů služby na straně sítě. Pomocí tohoto příznaku služby Azure můžou zákazníkům pomáhat v případech, kdy jsou konkrétní brány firewall IP v rámci služeb Azure nakonfigurované a zapnutí koncových bodů služby na straně sítě může způsobit odpojení od změny zdrojové IP adresy z veřejné IPv4 adresy na soukromou adresu. Nastavení seznamů ACL pro virtuální síť na straně služby před nastavením koncových bodů služby na straně sítě může zabránit vyřazení připojení.
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>Budou se všechny služby Azure nacházet ve virtuální síti Azure poskytované zákazníkem? Jak funguje koncový bod služby VNet se službami Azure?
 

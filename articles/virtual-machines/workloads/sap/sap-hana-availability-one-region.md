@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c706ba6847334648fade1e8983e00433d3fa618
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978199"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927766"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Dostupnost SAP HANA v rámci jedné oblasti Azure
 Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má spoustu oblastí a šíří se po celém světě. Seznam oblastí Azure najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure nabízí Microsoft nasazení jednoho virtuálního počítače s instancí HANA. Pro zvýšení dostupnosti můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [skupiny dostupnosti Azure](../../windows/tutorial-availability-sets.md) , která pro dostupnost používá replikaci systému Hana. 
@@ -78,7 +78,7 @@ Jedním z základní nastavení je použít zálohování. Konkrétně můžete 
 
 Architektura vypadá takto:
 
-![Diagram dvou virtuálních počítačů pomocí replikace úložiště](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
+![Diagram znázorňující architekturu dvou virtuálních počítačů pomocí replikace úložiště.](./media/sap-hana-availability-one-region/two_vm_storage_replication.PNG) 
 
 Toto nastavení není vhodné pro dosažení skvělého cíle bodu obnovení (RPO) a doby obnovení (RTO). RTOí času, zejména by znamenalo, že je potřeba plně obnovit úplnou databázi pomocí zkopírovaných záloh. Tato instalace se ale hodí pro obnovu nezamýšlených odstranění dat v hlavních instancích. Pomocí této instalace se můžete kdykoli vrátit k určitému časovému okamžiku, extrahovat data a importovat Odstraněná data do vaší hlavní instance. Proto může být vhodné použít metodu záložního kopírování v kombinaci s jinou funkcí vysoké dostupnosti. 
 

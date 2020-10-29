@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537945"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927970"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -84,6 +84,17 @@ Další informace najdete v tématu [Koncepty sítě](concepts-networking.md) .
 Flexibilní serverová služba je k dispozici ve třech úrovních SKU: shluky, Pro obecné účely a paměťově optimalizované. Vícevrstvá vrstva je nejvhodnější pro vývoj s nízkými náklady a pro úlohy s nízkou úrovní souběžnosti, které nepotřebují nepřetržitě plný výpočet kapacity. Pro obecné účely a paměť optimalizované pro produkční úlohy, které vyžadují vysokou souběžnost, škálování a předvídatelný výkon, jsou lépe vhodné. Svou první aplikaci můžete vytvořit na malé databázi po dobu několika dolarů měsíčně a pak hladce upravit škálování tak, aby splňovalo požadavky vašeho řešení. Škálování úložiště je online a podporuje automatické zvětšování úložiště. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které využíváte. 
 
 Další informace najdete v tématu [Koncepty služby COMPUTE and Storage](concepts-compute-storage.md) .
+
+## <a name="scale-out-your-read-workload-with-up-to-10-read-replicas"></a>Horizontální navýšení kapacity pro čtení a zatížení až na 10 replik pro čtení
+
+MySQL je jedním z oblíbených databázových modulů pro provozování webových a mobilních aplikací v internetovém měřítku. Spousta našich zákazníků ji používá pro svoje online vzdělávací služby, služby streamování videí, digitální platební řešení, platformy elektronického obchodování, herní služby, diskusní portály, státní správu a weby zdravotnictví. Tyto služby jsou nutné k obsluze a škálování při zvyšování provozu webové nebo mobilní aplikace.
+
+Na straně aplikace je aplikace obvykle vyvinutá v jazyce Java nebo php a migrována do provozu na [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview.md)   nebo v [Azure App Services](/azure/app-service/overview.md)   nebo je kontejnerem pro spuštění ve [službě Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md). Pomocí sady škálování virtuálních počítačů, App Service nebo AKS jako základní infrastruktury, se škálování aplikace zjednodušuje okamžitým zřizováním nových virtuálních počítačů a replikací bezstavových komponent aplikací do zařízení do systému stravování až po požadavky, ale databáze ukončí kritické body jako centralizované stavové součásti.
+
+Funkce replika čtení umožňuje replikovat data z Azure Database for MySQL flexibilního serveru do serveru jen pro čtení. Můžete replikovat ze zdrojového serveru do až **10 replik** . Repliky se asynchronně aktualizují pomocí [technologie replikace nativního binárního protokolu (binlog)](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)modulu MySQL. Řešení proxy serveru pro vyrovnávání zatížení, jako je [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) , můžete využít k bezproblémovému škálování úlohy aplikace na čtení replik bez jakýchkoli nákladů refaktoringu aplikací. 
+
+Další informace najdete v tématu věnovaném [konceptům repliky pro čtení](concepts-read-replicas.md) . 
+
 
 ## <a name="stopstart-server-to-optimize-cost"></a>Zastavení/spuštění serveru za účelem optimalizace nákladů
 

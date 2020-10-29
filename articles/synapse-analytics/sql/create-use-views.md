@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: f91611ab3c75a96f13ab84312ca0b2157e69af0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c965b27fde80e1cb8d52b1061917d83e5cd7f5d6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289306"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927800"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Vytváření a používání zobrazení v SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -57,7 +57,7 @@ WITH (
 
 Zobrazení v tomto příkladu používá `OPENROWSET` funkci, která používá absolutní cestu k podkladovým souborům. Pokud máte `EXTERNAL DATA SOURCE` s kořenovou adresou URL vašeho úložiště, můžete použít `OPENROWSET` s `DATA_SOURCE` a relativní cestou k souboru:
 
-```
+```sql
 CREATE VIEW TaxiView
 AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
 FROM

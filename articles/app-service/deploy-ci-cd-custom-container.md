@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: b73c7e62c6b621d3ac86cfb99b10b567460534f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a51fbcb7b7504b9a16e8d0025856c2b007070a9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961852"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928004"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování pomocí služby Web App for Containers
 
@@ -23,7 +23,7 @@ V tomto kurzu nakonfigurujete průběžné nasazování pro vlastní image konte
 
 ![Snímek Webhooku ACR](./media/deploy-ci-cd-custom-container/ci-cd-acr-02.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .
@@ -35,13 +35,13 @@ V tomto kurzu nakonfigurujete průběžné nasazování pro vlastní image konte
 
 Po povolení průběžného nasazování můžete na stránce Azure Container Registry Webhooky zobrazit nově vytvořený Webhook.
 
-![Snímek Webhooku ACR](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
+![Snímek obrazovky, který ukazuje, kde můžete na stránce Azure Container Registry Webhooky zobrazit nově vytvořený Webhook.](./media/deploy-ci-cd-custom-container/ci-cd-acr-03.png)
 
 V Container Registry kliknutím na Webhooky zobrazíte aktuální Webhooky.
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>Povolit průběžné nasazování pomocí Docker Hub (volitelné)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Na levé straně stránky vyberte možnost **App Service** .
 3. Vyberte název aplikace, pro kterou chcete nakonfigurovat průběžné nasazování.
 4. Na stránce **nastavení kontejneru** vyberte **jeden kontejner** .

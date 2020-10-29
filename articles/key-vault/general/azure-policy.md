@@ -7,12 +7,12 @@ ms.date: 10/15/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6c1ccbfc221970980d5d0b15e82f9f8483c48bce
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043761"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927749"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Integrace služby Azure Key Vault se službou Azure Policy
 
@@ -29,9 +29,9 @@ Příklady scénářů použití:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>Typy efektů a pokynů pro zásady
 
-**Audit**: když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí.
+**Audit** : když je účinek zásady nastavený na audit, zásada nezpůsobí žádné změny v prostředí. Upozorní vás jenom na součásti, jako jsou certifikáty, které nejsou v souladu s definicemi zásad v rámci zadaného oboru, tak, že tyto komponenty označíte jako nedodržující předpisy na řídicím panelu pro dodržování zásad. Pokud není vybraný žádný efekt zásad, audit je výchozí.
 
-**Odepřít**: Pokud je účinek zásady nastavený na odepřít, zásada bude blokovat vytváření nových komponent, jako jsou certifikáty, a zablokovat nové verze existujících součástí, které neodpovídají definici zásad. Stávající nekompatibilní prostředky v rámci trezoru klíčů nejsou ovlivněny. Možnosti auditu budou i nadále fungovat.
+**Odepřít** : Pokud je účinek zásady nastavený na odepřít, zásada bude blokovat vytváření nových komponent, jako jsou certifikáty, a zablokovat nové verze existujících součástí, které neodpovídají definici zásad. Stávající nekompatibilní prostředky v rámci trezoru klíčů nejsou ovlivněny. Možnosti auditu budou i nadále fungovat.
 
 ## <a name="available-built-in-policy-definitions"></a>Dostupné definice zásad "předdefinované"
 
@@ -91,9 +91,9 @@ Vaše služba se může setkat s výpadkem, pokud se nedostatečně monitorovan�
 
 Pokud se chcete ujistit, že vaše klíče nebyly aktivní po dobu delší, než je zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl klíč aktivní.
 
-**Pokud má klíč nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+**Pokud má klíč nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data aktivace** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
 
-**Pokud klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
+**Pokud klíč nemá nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** klíče k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, klíč bude označen jako nekompatibilní se zásadou.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>Klíče by měly být zadaného kryptografického typu RSA nebo ES (Preview).
 
@@ -139,9 +139,9 @@ Požadavky na dodržování předpisů vaší organizace můžete spravovat tak,
 
 Pokud chcete zajistit, aby vaše tajná data nebyla aktivní déle než zadaný počet dní, můžete pomocí této zásady Auditovat, jak dlouho byl váš tajný klíč aktivní.
 
-**Pokud má váš tajný kód nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data aktivace** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+**Pokud má váš tajný kód nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data aktivace** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
 
-**Pokud váš tajný klíč nemá nastavené datum aktivace**, tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
+**Pokud váš tajný klíč nemá nastavené datum aktivace** , tato zásada vypočítá počet dní, které uplynuly od **data vytvoření** tajného kódu k aktuálnímu datu. Pokud počet dní překročí nastavenou prahovou hodnotu, bude tajný kód označen jako nekompatibilní se zásadou.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>Tajné klíče by měly mít nastaven typ obsahu (Preview)
 
@@ -175,51 +175,51 @@ Můžete spravovat Trezor klíčů používaný více týmy, které obsahují ce
 ### <a name="select-a-policy-definition"></a>Výběr definice zásady
 
 1. Přihlaste se k webu Azure Portal. 
-1. Na panelu hledání vyhledejte "zásady" a vyberte **zásady**.
+1. Na panelu hledání vyhledejte "zásady" a vyberte **zásady** .
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img1.png)
+    ![Snímek obrazovky, který zobrazuje panel hledání.](../media/policy-img1.png)
 
-1. V okně zásady vyberte **definice**.
+1. V okně zásady vyberte **definice** .
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img2.png)
+    ![Snímek obrazovky, který zvýrazní možnost definice](../media/policy-img2.png)
 
-1. V Filtr kategorie zrušte výběr **Vybrat vše** a vyberte **Key Vault**. 
+1. V Filtr kategorie zrušte výběr **Vybrat vše** a vyberte **Key Vault** . 
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img3.png)
+    ![Snímek obrazovky, který zobrazuje filtr kategorie a vybranou kategorii Key Vault.](../media/policy-img3.png)
 
 1. Nyní byste měli být schopni zobrazit všechny zásady, které jsou k dispozici pro Public Preview Azure Key Vault. Ujistěte se, že jste si přečetli a porozuměli část doprovodné materiály k zásadám, a vyberte zásadu, kterou chcete přiřadit k oboru.  
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img4.png)
+    ![Snímek obrazovky zobrazující zásady, které jsou k dispozici pro Public Preview.](../media/policy-img4.png)
 
 ### <a name="assign-a-policy-to-a-scope"></a>Přiřazení zásad k oboru 
 
 1. Vyberte zásadu, kterou chcete použít. v tomto příkladu se zobrazí zásada **Spravovat období platnosti certifikátu** . Klikněte na tlačítko přiřadit v levém horním rohu.
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img5.png)
+    ![Snímek obrazovky, který zobrazuje zásady období platnosti certifikátu pro správu.](../media/policy-img5.png)
   
 1. Vyberte předplatné, ve kterém chcete zásadu použít. Můžete omezit rozsah jenom na jednu skupinu prostředků v rámci předplatného. Pokud chcete zásady použít na celé předplatné a vyloučit některé skupiny prostředků, můžete taky nakonfigurovat seznam vyloučení. Nastavte selektor vynucení zásad na **povoleno** , pokud chcete, aby došlo k vlivu zásad (audit nebo Deny **) na zapnutí nebo vypnutí** efektu (audit nebo zamítnutí). 
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img6.png)
+    ![Snímek obrazovky, který ukazuje, kde se můžete rozhodnout omezit rozsah jenom na jednu skupinu prostředků v rámci předplatného.](../media/policy-img6.png)
 
 1. V horní části obrazovky klikněte na kartu parametry a určete maximální dobu platnosti v měsících, kterou chcete. Podle pokynů v předchozích částech vyberte **audit** nebo **Odepřít** pro účinek zásad. Pak vyberte tlačítko revize + vytvořit. 
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img7.png)
+    ![Snímek obrazovky zobrazující kartu parametry, kde můžete zadat maximální dobu platnosti v měsících, kterou chcete použít.](../media/policy-img7.png)
 
 ### <a name="view-compliance-results"></a>Zobrazit výsledky dodržování předpisů
 
 1. Vraťte se do okna zásady a vyberte kartu dodržování předpisů. Klikněte na přiřazení zásad, pro které chcete zobrazit výsledky dodržování předpisů.
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img8.png)
+    ![Snímek obrazovky zobrazující kartu dodržování předpisů, kde můžete vybrat přiřazení zásad, pro které chcete zobrazit výsledky dodržování předpisů.](../media/policy-img8.png)
 
 1. Na této stránce můžete filtrovat výsledky podle kompatibilních a nekompatibilních trezorů. Tady vidíte seznam trezorů klíčů, které nedodržují předpisy, v rámci přiřazení zásady. Trezor se považuje za nevyhovující, pokud některá z komponent (certifikátů) v trezoru nedodržuje předpisy. Pro zobrazení individuálních komponent, které nedodržují předpisy, můžete vybrat jednotlivý trezor. 
 
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img9.png)
+    ![Snímek obrazovky, který zobrazuje seznam trezorů klíčů, které nedodržují předpisy v rámci rozsahu přiřazení zásady.](../media/policy-img9.png)
 
 1. Zobrazení názvu součástí v trezoru, které nejsou kompatibilní
 
 
-    ![Přehled toho, jak Azure Key Vault funguje](../media/policy-img10.png)
+    ![Snímek obrazovky, který ukazuje, kde můžete zobrazit názvy komponent v trezoru, které nedodržují předpisy.](../media/policy-img10.png)
 
 1. Pokud potřebujete zjistit, jestli uživatelé mají odepřenou možnost vytvářet prostředky v trezoru klíčů, můžete kliknout na kartu **události komponenty (Preview)** a zobrazit souhrn zamítnutých operací certifikátu s žadatelem a časovými razítky žádostí. 
 

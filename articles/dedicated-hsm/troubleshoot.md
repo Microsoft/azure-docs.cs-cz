@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 622ead2ab58075fe6edbe2c013f14391624fd2b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590451"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927834"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Řešení potíží s vyhrazenou službou HSM Azure
 
@@ -71,7 +71,7 @@ Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro v
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Návody se při zřizování zobrazuje HSM?
 Vzhledem k vyhrazenému modulu HSM, který je na seznamu povolených služeb, se v Azure Portal považuje za "skrytý typ". Chcete-li zobrazit prostředky HSM, je nutné zaškrtnout políčko Zobrazit skryté typy, jak je znázorněno níže. Prostředek síťových adaptérů vždy sleduje modul hardwarového zabezpečení (HSM) a je dobrým místem, kde můžete zjistit IP adresu modulu HARDWAROVÉho zabezpečení před použitím SSH pro připojení.
 
-![Delegování podsítě](./media/troubleshoot/hsm-provisioned.png)
+![Snímek obrazovky, který zvýrazní kontrolu skrytých typů](./media/troubleshoot/hsm-provisioned.png)
 
 ## <a name="networking-resources"></a>Síťové prostředky
 
@@ -85,7 +85,7 @@ Vyhrazený HSM používá ExpressRoute bránu jako tunel pro komunikaci mezi pri
 
 Ukázkové šablony poskytované pro vyhrazený modul HSM předpokládá, že IP modul HSM se automaticky vezme z daného rozsahu podsítě. Pomocí atributu "NetworkInterfaces" v šabloně ARM můžete zadat explicitní IP adresu pro modul hardwarového zabezpečení (HSM). 
 
-![Delegování podsítě](./media/troubleshoot/private-ip-address.png)
+![Snímek obrazovky, který zobrazuje ukázkovou šablonu pro vyhrazený modul HSM.](./media/troubleshoot/private-ip-address.png)
 
 ## <a name="hsm-initialization"></a>Inicializace HSM
 

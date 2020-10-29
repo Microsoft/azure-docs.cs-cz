@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537877"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927732"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak nakonfigurovat Virtual Network podporu pro Azure cache Premium pro Redis
 Azure cache pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti, včetně funkcí úrovně Premium, jako je podpora clusteringu, trvalosti a virtuální sítě. Virtuální síť je privátní síť v cloudu. Když je u instance Azure cache for Redis nakonfigurovaná virtuální síť, není veřejně adresovatelná a je dostupná jenom z virtuálních počítačů a aplikací v rámci virtuální sítě. Tento článek popisuje, jak nakonfigurovat podporu virtuální sítě pro instanci Redis Premium Azure cache.
@@ -50,10 +50,10 @@ Podpora Virtual Network (VNet) je nakonfigurovaná v **novém okně Azure cache 
 
 5. Na kartě **sítě** vyberte jako metodu připojení možnost **virtuální sítě** . Pokud chcete použít novou virtuální síť, vytvořte ji jako první pomocí postupu v části [vytvoření virtuální sítě pomocí Azure Portal](../virtual-network/manage-virtual-network.md#create-a-virtual-network) nebo [vytvořte virtuální síť (classic) pomocí Azure Portal](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) a pak se vraťte do **nového okna Azure cache pro Redis** a vytvořte a nakonfigurujte mezipaměť Premium.
 
-> [!IMPORTANT]
-> Při nasazování mezipaměti Azure pro Redis do virtuální sítě Správce prostředků se mezipaměť musí nacházet ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou mezipaměti Azure pro instance Redis. Pokud se provede pokus o nasazení mezipaměti Azure pro Redis do virtuální sítě Správce prostředků do podsítě, která obsahuje další prostředky, nasazení se nezdaří.
-> 
-> 
+   > [!IMPORTANT]
+   > Při nasazování mezipaměti Azure pro Redis do virtuální sítě Správce prostředků se mezipaměť musí nacházet ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou mezipaměti Azure pro instance Redis. Pokud se provede pokus o nasazení mezipaměti Azure pro Redis do virtuální sítě Správce prostředků do podsítě, která obsahuje další prostředky, nasazení se nezdaří.
+   > 
+   > 
 
    | Nastavení      | Navrhovaná hodnota  | Popis |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -61,12 +61,12 @@ Podpora Virtual Network (VNet) je nakonfigurovaná v **novém okně Azure cache 
    | **Podsíť** | Rozevírací seznam a vyberte svou podsíť. | Rozsah adres podsítě by měl být v zápisu CIDR (např. 192.168.1.0/24). Musí být obsažený v adresním prostoru virtuální sítě. | 
    | **Statická IP adresa** | Volitelné Zadejte statickou IP adresu. | Pokud nezadáte statickou IP adresu, zvolí se IP adresa automaticky. | 
 
-> [!IMPORTANT]
-> Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
-> 
-> Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance Redis v podsíti používá dvě IP adresy na horizontálních oddílů a jednu další IP adresu pro nástroj pro vyrovnávání zatížení. Mezipaměť, která není Clusterová, se považuje za jednu horizontálních oddílů.
-> 
-> 
+   > [!IMPORTANT]
+   > Azure rezervuje některé IP adresy v rámci každé podsítě a tyto adresy se nedají použít. První a poslední IP adresa podsítí jsou vyhrazené pro shodu protokolu a tři další adresy, které se používají pro služby Azure. Další informace najdete v tématu [jakákoli omezení používání IP adres v těchto podsítích](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) .
+   > 
+   > Kromě IP adres, které používá infrastruktura virtuální sítě Azure, každá instance Redis v podsíti používá dvě IP adresy na horizontálních oddílů a jednu další IP adresu pro nástroj pro vyrovnávání zatížení. Mezipaměť, která není Clusterová, se považuje za jednu horizontálních oddílů.
+   > 
+   > 
 
 6. Vyberte kartu **Další: Upřesnit** nebo klikněte na tlačítko **Další: Upřesnit** v dolní části stránky.
 
@@ -131,7 +131,7 @@ K dispozici jsou devět požadavků na Odchozí porty. Odchozí požadavky v tě
 | Port(y) | Směr | Transportní protokol | Účel | Místní IP adresa | Vzdálená IP adresa |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Odchozí |TCP |Redis závislosti na Azure Storage/PKI (Internet) | (Podsíť Redis) |* |
-| 443 | Odchozí | TCP | Redis závislost na Azure Key Vault | (Podsíť Redis) | AzureKeyVault <sup>1</sup> |
+| 443 | Odchozí | TCP | Redis závislost na Azure Key Vault a Azure Monitor | (Podsíť Redis) | AzureKeyVault, AzureMonitor <sup>1</sup> |
 | 53 |Odchozí |TCP/UDP |Redis závislosti na DNS (Internet/VNet) | (Podsíť Redis) | 168.63.129.16 a 169.254.169.254 <sup>2</sup> a jakýkoli vlastní server DNS pro podsíť <sup>3</sup> |
 | 8443 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
 | 10221-10231 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) | (Podsíť Redis) |
@@ -140,7 +140,7 @@ K dispozici jsou devět požadavků na Odchozí porty. Odchozí požadavky v tě
 | 15000-15999 |Odchozí |TCP |Interní komunikace pro Redis a Geo-Replication | (Podsíť Redis) |(Podsíť Redis) (Geografická podsíť pro rovnocenné repliky) |
 | 6379-6380 |Odchozí |TCP |Interní komunikace pro Redis | (Podsíť Redis) |(Podsíť Redis) |
 
-<sup>1</sup> můžete použít značku služby AzureKeyVault s správce prostředkůmi skupinami zabezpečení sítě.
+<sup>1</sup> můžete použít značky služby AzureKeyVault a AzureMonitor se skupinami zabezpečení sítě Správce prostředků.
 
 <sup>2</sup> tyto IP adresy vlastněné Microsoftem slouží k adresování HOSTITELSKÉHO virtuálního počítače, který slouží Azure DNS.
 
@@ -172,9 +172,9 @@ Existuje osm požadavků na rozsah příchozích portů. Příchozí požadavky 
 Existují požadavky na připojení k síti pro službu Azure cache pro Redis, které nemusí být zpočátku splněné ve virtuální síti. Azure cache pro Redis vyžaduje, aby při použití v rámci virtuální sítě správně fungovaly všechny následující položky.
 
 * Odchozí připojení k síti Azure Storage koncovým bodům po celém světě. To zahrnuje koncové body umístěné ve stejné oblasti jako Azure cache for Redis instance a koncové body úložiště umístěné v **jiných** oblastech Azure. Azure Storage koncových bodů se vyhodnotí v následujících doménách DNS: *Table.Core.Windows.NET* , *BLOB.Core.Windows.NET* , *Queue.Core.Windows.NET* a *File.Core.Windows.NET* . 
-* Odchozí připojení k síti pro *OCSP.msocsp.com* , *mscrl.Microsoft.com* a *CRL.Microsoft.com* . Toto připojení je potřeba k podpoře funkcí TLS/SSL.
+* Odchozí připojení k síti pro *OCSP.DigiCert.com* , *crl4.DigiCert.com* , *OCSP.msocsp.com* , *mscrl.Microsoft.com* , *crl3.DigiCert.com* , *cacerts.DigiCert.com* , *oneocsp.Microsoft.com* a *CRL.Microsoft.com* . Toto připojení je potřeba k podpoře funkcí TLS/SSL.
 * Konfigurace DNS pro virtuální síť musí umožňovat překlad všech koncových bodů a domén uvedených v předchozích bodech. Tyto požadavky DNS můžou být splněné tím, že zajistí konfiguraci a údržbu platné infrastruktury DNS pro virtuální síť.
-* Odchozí síťové připojení k následujícím koncovým bodům monitorování Azure, které se řeší v následujících doménách DNS: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Odchozí síťové připojení k následujícím koncovým bodům Azure Monitor, které se řeší v následujících doménách DNS: *shoebox2-Black.shoebox2.Metrics.nsatc.NET* , *North-prod2.prod2.Metrics.nsatc.NET* , *azglobal-Black.azglobal.Metrics.nsatc.NET* , *shoebox2-Red.shoebox2.Metrics.nsatc.NET* , *East-prod2.prod2.Metrics.nsatc.NET* , *azglobal-Red.azglobal.Metrics.nsatc.NET* .
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Jak ověřit, že mezipaměť funguje ve virtuální síti?
 

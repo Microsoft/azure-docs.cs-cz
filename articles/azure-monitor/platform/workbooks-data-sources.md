@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143728"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927902"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -77,7 +77,7 @@ Pracovní sešity podporují získání stavu prostředků Azure a jejich kombin
 
 Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam **typ dotazu** k výběru možnosti stav služby Azure a vyberte prostředky, které chcete cílit. Pomocí rozevíracího seznamu filtru stavu můžete vybrat zajímavou podmnožinu problémů s prostředky pro potřeby analýzy.
 
-![Snímek obrazovky s dotazem výstrahy](./media/workbooks-overview/resource-health.png)
+![Snímek obrazovky s dotazem výstrahy, který zobrazuje seznamy filtru stavů.](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -100,7 +100,7 @@ Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozev�
 
 Pracovní sešity podporují získávání dat z libovolného externího zdroje. Pokud vaše data žijí mimo Azure, můžete je přenést do sešitů pomocí tohoto typu zdroje dat.
 
-Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam _zdroj dat_ a vyberte možnost _vlastní koncový bod_. Zadejte příslušné parametry, například, `Http method` `url` , a `headers` `url parameters` /nebo `body` . Ujistěte se, že zdroj dat podporuje [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) v opačném případě požadavek selže.
+Chcete-li, aby ovládací prvek dotazu použil tento zdroj dat, použijte rozevírací seznam _zdroj dat_ a vyberte možnost _vlastní koncový bod_ . Zadejte příslušné parametry, například, `Http method` `url` , a `headers` `url parameters` /nebo `body` . Ujistěte se, že zdroj dat podporuje [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) v opačném případě požadavek selže.
 
 Aby nedocházelo k automatickému volání nedůvěryhodných hostitelů při používání šablon, uživatel musí označit používané hostitele jako důvěryhodné. Můžete to udělat tak, že kliknete na tlačítko _Přidat jako důvěryhodné_ nebo když ho přidáte jako důvěryhodného hostitele v nastavení sešitu. Tato nastavení budou uložená v prohlížečích, které podporují IndexDb s webovými pracovníky. Další informace [najdete tady](https://caniuse.com/#feat=indexeddb).
 

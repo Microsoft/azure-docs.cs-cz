@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: fc67012dff5931fb86452ea95c2ea074a426953c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee431df89128a516e3a1cabeb43b5cbe9e356dae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075661"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927851"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
@@ -38,7 +38,7 @@ Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz pod
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](/powershell/azure/get-started-azureps).
 
@@ -233,7 +233,7 @@ Když jste se připojili k zařízení HSM pomocí SSH, spusťte následující 
 
 Výstup by měl vypadat jako obrázek uvedený níže:
 
-![stav zřizování](media/tutorial-deploy-hsm-powershell/output.png)
+![Snímek obrazovky, který zobrazuje výstup z příkazu HSM show.](media/tutorial-deploy-hsm-powershell/output.png)
 
 V tuto chvíli jste přidělili všechny prostředky pro vysoce dostupný, dva nasazení HSM a ověřený přístup a provozní stav. Jakákoli další konfigurace nebo testování zahrnuje více práce se samotným zařízením HSM. V takovém případě byste měli postupovat podle pokynů v tématu Identita Gemalto Luna Network HSM 7 Kapitola 7 a inicializovat modul HSM a vytvořit oddíly. Veškerá dokumentace a software jsou k dispozici přímo z identita Gemalto ke stažení, jakmile se zaregistrujete na portálu zákaznické podpory identita Gemalto a máte ID zákazníka. Stáhněte si klientský software verze 7,2, abyste získali všechny požadované součásti.
 
@@ -262,5 +262,5 @@ Po dokončení kroků v tomto kurzu jsou vyhrazené prostředky HSM zřízené a
 * [Vysoká dostupnost](high-availability.md)
 * [Fyzické zabezpečení](physical-security.md)
 * [Sítě](networking.md)
-* [Sledování](monitoring.md)
+* [Monitorování](monitoring.md)
 * [Možnosti podpory](supportability.md)

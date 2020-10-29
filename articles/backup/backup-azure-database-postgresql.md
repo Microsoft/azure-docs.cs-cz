@@ -4,12 +4,12 @@ description: Přečtěte si o Azure Database for PostgreSQL zálohování s dlou
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3c326ff197f18333812438719908daced2b268bb
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173575"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927885"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL zálohování s dlouhodobou dobou uchovávání (Preview)
 
@@ -32,7 +32,7 @@ Toto řešení můžete použít nezávisle nebo kromě nativního řešení zá
 |Podpora  |Podrobnosti  |
 |---------|---------|
 |Podporovaná nasazení   |  Azure Database for PostgreSQL samostatný jediný server     |
-|Podporované oblasti Azure |  Východní USA, Východní USA 2, Střed USA – jih Západní USA |
+|Podporované oblasti Azure |  Východní USA, Východní USA 2, Střed USA Střed USA – jih, Západní USA, Západní USA 2, Středozápadní USA, Brazílie – jih, Kanada – střed, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, Německo – středozápad, Švýcarsko – sever, Švýcarsko – západ, Východní Asie, Jižní Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, USA – střed, Spojené arabské emiráty – sever, Kanada – střed, východní Austrálie  |
 |Podporované verze Azure PostgreSQL    |   9,5, 9,6, 10, 11      |
 
 ## <a name="feature-considerations-and-limitations"></a>Hlediska a omezení funkcí
@@ -55,7 +55,7 @@ Toto řešení můžete použít nezávisle nebo kromě nativního řešení zá
   
 5. Po aktivaci konfigurace ochrany u vybraných databází služba zálohování nastaví koordinátora s plány zálohování a dalšími podrobnostmi o zásadách.
 
-6. V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat ze serveru Postgres pomocí **pg_dump**.
+6. V naplánovaném čase koordinátor komunikuje s modulem plug-in a spustí streamování zálohovaných dat ze serveru Postgres pomocí **pg_dump** .
 
 7. Modul plug-in odesílá data přímo do trezoru služby Backup, takže nepotřebuje pracovní umístění. Data se šifrují pomocí klíčů spravovaných Microsoftem a ukládají se službou Azure Backup v účtech úložiště.
 
@@ -71,25 +71,25 @@ V následujících pokynech jsou podrobné pokyny ke konfiguraci zálohování v
 
 1. Existují dva způsoby, jak spustit proces:
 
-    1. Přejít na zálohování přehled [služby Backup](backup-center-overview.md)  ->  **Overview**  ->  **Backup**.
+    1. Přejít na zálohování přehled [služby Backup](backup-center-overview.md)  ->  **Overview**  ->  **Backup** .
 
         ![Přejít na centrum zálohování](./media/backup-azure-database-postgresql/backup-center.png)
 
-        Pod položkou **zahájit: Konfigurace zálohování**vyberte **typ zdroje dat** **Azure Database for PostgreSQL**.
+        Pod položkou **zahájit: Konfigurace zálohování** vyberte **typ zdroje dat** **Azure Database for PostgreSQL** .
 
         ![V iniciování: Konfigurace zálohování, výběr typu zdroje dat](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
 
-    1. Případně můžete přímo přejít na zálohu [trezorů služby Backup](backup-vault-overview.md)  ->  **Backup**.
+    1. Případně můžete přímo přejít na zálohu [trezorů služby Backup](backup-vault-overview.md)  ->  **Backup** .
 
         ![Přejít na trezory služby Backup](./media/backup-azure-database-postgresql/backup-vaults.png)
 
         ![Vybrat zálohu v úložišti záloh](./media/backup-azure-database-postgresql/backup-backup-vault.png)
 
-1. V části **Konfigurovat zálohování**vyberte **úložiště záloh** , do kterého chcete zálohovat databáze Postgres. Tyto informace jsou předem vyplněné, pokud jste již v kontextu trezoru.
+1. V části **Konfigurovat zálohování** vyberte **úložiště záloh** , do kterého chcete zálohovat databáze Postgres. Tyto informace jsou předem vyplněné, pokud jste již v kontextu trezoru.
 
     ![Výběr úložiště záloh v konfiguraci zálohování](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. Vyberte nebo vytvořte **zásadu zálohování**.
+1. Vyberte nebo vytvořte **zásadu zálohování** .
 
     ![Zvolit zásady zálohování](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -121,7 +121,7 @@ V následujících pokynech jsou podrobné pokyny ke konfiguraci zálohování v
 
 ## <a name="create-backup-policy"></a>Vytvořit zásady zálohování
 
-1. Do **centra zálohování**přejít  ->  **zásady zálohování**  ->  **Přidat**. Případně můžete přejít na zásady zálohování **trezoru záloh**  ->  **Backup policy**  ->  **Přidat**.
+1. Do **centra zálohování** přejít  ->  **zásady zálohování**  ->  **Přidat** . Případně můžete přejít na zásady zálohování **trezoru záloh**  ->  **Backup policy**  ->  **Přidat** .
 
     ![Přidat zásady zálohování](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
@@ -142,8 +142,8 @@ V následujících pokynech jsou podrobné pokyny ke konfiguraci zálohování v
 
 1. **Výchozí pravidlo uchovávání** se použije při absenci jiného pravidla uchovávání informací a má výchozí hodnotu tří měsíců.
 
-    - Doba uchování v **úložišti zálohovaných dat**se pohybuje v rozmezí sedmi dní až 10 let.
-    - Doba uchování v **úložišti dat archivu**je šest měsíců až 10 let.
+    - Doba uchování v **úložišti zálohovaných dat** se pohybuje v rozmezí sedmi dní až 10 let.
+    - Doba uchování v **úložišti dat archivu** je šest měsíců až 10 let.
 
     ![Upravit dobu uchování](./media/backup-azure-database-postgresql/edit-retention.png)
 
@@ -157,15 +157,15 @@ Databázi můžete obnovit na libovolný server Azure PostgreSQL v rámci stejn�
 Pomocí tohoto podrobného průvodce můžete spustit obnovení:
 
 1. Existují dva způsoby, jak spustit proces obnovení:
-    1. Přejít na [Backup Center](backup-center-overview.md)  ->  **Overview**  ->  **obnovení**přehled služby Backup Center
+    1. Přejít na [Backup Center](backup-center-overview.md)  ->  **Overview**  ->  **obnovení** přehled služby Backup Center
 
     ![Výběr obnovení v centru zálohování](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    V části **iniciovat: obnovit**vyberte **typ DataSource** **Azure Database for PostgreSQL**. Vyberte **instanci zálohování**.
+    V části **iniciovat: obnovit** vyberte **typ DataSource** **Azure Database for PostgreSQL** . Vyberte **instanci zálohování** .
 
     ![Vybrat typ DataSource v iniciování: obnovit](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    1. Případně můžete přímo přejít na instance zálohování **trezoru služby Backup**  ->  **Backup Instances**. Vyberte **instanci zálohování** odpovídající databázi, kterou chcete obnovit.
+    1. Případně můžete přímo přejít na instance zálohování **trezoru služby Backup**  ->  **Backup Instances** . Vyberte **instanci zálohování** odpovídající databázi, kterou chcete obnovit.
 
     ![Instance zálohování pro obnovení](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
@@ -179,25 +179,25 @@ Pomocí tohoto podrobného průvodce můžete spustit obnovení:
 
     ![Seznam bodů obnovení](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. **Parametry obnovení**vstupu. V tomto okamžiku můžete vybrat ze dvou typů obnovení: **Obnovit jako databázi** a **obnovit soubory**.
+1. **Parametry obnovení** vstupu. V tomto okamžiku můžete vybrat ze dvou typů obnovení: **Obnovit jako databázi** a **obnovit soubory** .
 
-1. **Obnovit jako databázi**: obnovit zálohovaná data a vytvořit novou databázi na cílovém PostgreSQL serveru.
+1. **Obnovit jako databázi** : obnovit zálohovaná data a vytvořit novou databázi na cílovém PostgreSQL serveru.
 
     - Cílový server může být stejný jako zdrojový server. Přepsání původní databáze však není podporováno.
     - Můžete si vybrat ze serveru ve všech předplatných, ale ve stejné oblasti jako trezor.
-    - Vyberte **zkontrolovat a obnovit**. Tím se aktivuje ověření, aby se zkontrolovalo, jestli má služba příslušná oprávnění k obnovení na cílovém serveru.
+    - Vyberte **zkontrolovat a obnovit** . Tím se aktivuje ověření, aby se zkontrolovalo, jestli má služba příslušná oprávnění k obnovení na cílovém serveru.
 
     ![Obnovit jako databázi](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **Obnovit jako soubory**: vypíše záložní soubory do cílového účtu úložiště (BLOB).
+1. **Obnovit jako soubory** : vypíše záložní soubory do cílového účtu úložiště (BLOB).
 
     - Můžete si vybrat z účtů úložiště ve všech předplatných, ale ve stejné oblasti jako trezor.
     - Vyberte cílový kontejner ze seznamu kontejnerů filtrovaného pro vybraný účet úložiště.
-    - Vyberte **zkontrolovat a obnovit**. Tím se aktivuje ověření, aby se zkontrolovalo, jestli má služba příslušná oprávnění k obnovení na cílovém serveru.
+    - Vyberte **zkontrolovat a obnovit** . Tím se aktivuje ověření, aby se zkontrolovalo, jestli má služba příslušná oprávnění k obnovení na cílovém serveru.
 
     ![Obnovit jako soubory](./media/backup-azure-database-postgresql/restore-as-files.png)
 
-1. Zkontrolujte informace a vyberte **obnovit**. Tím se aktivuje odpovídající úloha obnovení, kterou je možné sledovat v rámci **úloh zálohování**.
+1. Zkontrolujte informace a vyberte **obnovit** . Tím se aktivuje odpovídající úloha obnovení, kterou je možné sledovat v rámci **úloh zálohování** .
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Požadovaná oprávnění pro konfiguraci zálohování a obnovení
 
@@ -207,11 +207,11 @@ Azure Backup tyto přísné bezpečnostní pokyny. I když se jedná o nativní 
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>Správa zálohovaných databází Azure PostgreSQL
 
-Jedná se o operace správy, které můžete provádět na **instancích zálohování**:
+Jedná se o operace správy, které můžete provádět na **instancích zálohování** :
 
 ### <a name="on-demand-backup"></a>Zálohování na vyžádání
 
-Pokud chcete spustit zálohování, které není v plánu zadaném v zásadách, klikněte na **zálohovat instance**zálohovat  ->  **nyní**.
+Pokud chcete spustit zálohování, které není v plánu zadaném v zásadách, klikněte na **zálohovat instance** zálohovat  ->  **nyní** .
 Vyberte ze seznamu pravidel uchovávání, která byla definována v přidružených zásadách zálohování.
 
 ![Spustit zálohování hned](./media/backup-azure-database-postgresql/backup-now.png)
@@ -228,7 +228,7 @@ Ochranu zálohované položky můžete zastavit. Tím se také odstraní přidru
 
 Přidruženou zásadu můžete změnit pomocí instance zálohování.
 
-1. Vyberte **Backup Instance**  ->  **zásadu změny**instance zálohování.
+1. Vyberte **Backup Instance**  ->  **zásadu změny** instance zálohování.
 
     ![Změnit zásady](./media/backup-azure-database-postgresql/change-policy.png)
 
@@ -254,7 +254,7 @@ Kroky:
 
     ![Access Control podokno](./media/backup-azure-database-postgresql/access-control-pane.png)
 
-1. Vyberte **Přidat přiřazení role**.
+1. Vyberte **Přidat přiřazení role** .
 
     ![Přidat přiřazení role](./media/backup-azure-database-postgresql/add-role-assignment.png)
 
@@ -280,7 +280,7 @@ Kroky:
 
 Přidejte do serveru OSS Správce služby Active Directory:
 
-Tento krok je nutný pro připojení k databázi prostřednictvím uživatele, který se dá ověřit pomocí Azure Active Directory místo hesla. Uživatel s rolí správce Azure AD v Azure Database for PostgreSQL bude mít **azure_ad_admin**role. Jenom role **azure_ad_admin** může vytvořit nové uživatele databáze, kteří se můžou ověřit pomocí Azure AD.
+Tento krok je nutný pro připojení k databázi prostřednictvím uživatele, který se dá ověřit pomocí Azure Active Directory místo hesla. Uživatel s rolí správce Azure AD v Azure Database for PostgreSQL bude mít **azure_ad_admin** role. Jenom role **azure_ad_admin** může vytvořit nové uživatele databáze, kteří se můžou ověřit pomocí Azure AD.
 
 1. V levém navigačním podokně zobrazení serveru klikněte na kartu Správce služby Active Directory a přidejte sami sebe (nebo někoho jiného) jako správce služby Active Directory.
 
@@ -294,7 +294,7 @@ V [tomto dokumentu](https://download.microsoft.com/download/7/4/d/74d689aa-909d-
 
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
-Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit přístup ke službám Azure** v zobrazení serveru. V zobrazení serveru v podokně **zabezpečení připojení** nastavte příznak **Povolení přístupu ke službám Azure** na **Ano**.
+Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit přístup ke službám Azure** v zobrazení serveru. V zobrazení serveru v podokně **zabezpečení připojení** nastavte příznak **Povolení přístupu ke službám Azure** na **Ano** .
 
 ![Povolení přístupu ke službám Azure](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 
@@ -303,7 +303,7 @@ Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit příst
 #### <a name="permission-to-restore-to-a-storage-account-container-when-restoring-as-files"></a>Oprávnění k obnovení kontejneru účtu úložiště při obnovení souborů
 
 1. Dejte záložnímu úložišti MSI oprávnění k přístupu ke kontejnerům účtu úložiště pomocí Azure Portal.
-    1. Přejít na **účet úložiště**  ->  **Access Control**  ->  **Přidat přiřazení role**.
+    1. Přejít na **účet úložiště**  ->  **Access Control**  ->  **Přidat přiřazení role** .
     1. Přiřaďte roli **Přispěvatel dat objektu BLOB úložiště** ke službě MSI trezoru záloh.
 
     ![Přiřazení role Přispěvatel dat objektu BLOB služby Storage](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
@@ -315,7 +315,7 @@ Vytvořením přístupnosti sítě v síti povolíte příznak **Povolit příst
     ```
 
     1. Nahraďte parametr zmocnění **ID aplikace** MSI trezoru a parametrem oboru, který bude odkazovat na váš konkrétní kontejner.
-    1. Chcete-li získat **ID aplikace** pro soubor MSI trezoru, vyberte možnost **všechny aplikace** v části **Typ aplikace**:
+    1. Chcete-li získat **ID aplikace** pro soubor MSI trezoru, vyberte možnost **všechny aplikace** v části **Typ aplikace** :
 
         ![Vybrat všechny aplikace](./media/backup-azure-database-postgresql/select-all-applications.png)
 
