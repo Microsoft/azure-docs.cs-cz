@@ -7,41 +7,17 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6e253604c57d73c2a89ccfa5cff7efe9e572d11d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89094277"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061595"
 ---
 Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub",
-    "controlQueueBatchSize": 32,
-    "partitionCount": 4,
-    "controlQueueVisibilityTimeout": "00:05:00",
-    "workItemQueueVisibilityTimeout": "00:05:00",
-    "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
-    "maxQueuePollingInterval": "00:00:30",
-    "azureStorageConnectionStringName": "AzureWebJobsStorage",
-    "trackingStoreConnectionStringName": "TrackingStorage",
-    "trackingStoreNamePrefix": "DurableTask",
-    "traceInputsAndOutputs": false,
-    "logReplayEvents": false,
-    "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "eventGridKeySettingName":  "EventGridKey",
-    "eventGridPublishRetryCount": 3,
-    "eventGridPublishRetryInterval": "00:00:30",
-    "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
-  }
-}
-```
+> [!NOTE]
+> Všechny hlavní verze Durable Functions jsou podporovány ve všech verzích modulu runtime Azure Functions. Schéma host.jsv konfiguraci se ale mírně liší v závislosti na verzi Azure Functions runtime a používané verzi rozšíření Durable Functions. Následující příklady slouží pro použití s Azure Functions 2,0 a 3,0. V obou příkladech platí, že pokud používáte Azure Functions 1,0, jsou dostupná nastavení stejná, ale část "durableTask" v host.jsby měla být v kořenovém adresáři host.jsv konfiguraci, a ne jako pole v části "rozšíření".
 
 ### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2. x
 
@@ -92,7 +68,36 @@ Nastavení konfigurace pro [Durable Functions](../articles/azure-functions/durab
 
 ```
 
-Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub**. Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md).
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "hubName": "MyTaskHub",
+      "controlQueueBatchSize": 32,
+      "partitionCount": 4,
+      "controlQueueVisibilityTimeout": "00:05:00",
+      "workItemQueueVisibilityTimeout": "00:05:00",
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10,
+      "maxQueuePollingInterval": "00:00:30",
+      "azureStorageConnectionStringName": "AzureWebJobsStorage",
+      "trackingStoreConnectionStringName": "TrackingStorage",
+      "trackingStoreNamePrefix": "DurableTask",
+      "traceInputsAndOutputs": false,
+      "logReplayEvents": false,
+      "eventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+      "eventGridKeySettingName":  "EventGridKey",
+      "eventGridPublishRetryCount": 3,
+      "eventGridPublishRetryInterval": "00:00:30",
+      "eventGridPublishEventTypes": ["Started", "Completed", "Failed", "Terminated"]
+    }
+  }
+}
+```
+
+Názvy centra úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadaný, použije se výchozí název centra úloh pro aplikaci Function App **DurableFunctionsHub** . Další informace najdete v tématu [centra úloh](../articles/azure-functions/durable-functions-task-hubs.md).
 
 |Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
