@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5d02085fe4850dacf6e876b42cf301df2ea76713
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016191"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043335"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
@@ -29,10 +29,10 @@ Velikosti řady Edv4-Series běží na &reg; &reg; procesorech Intel Xeon Platin
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br>
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2|2000 |
@@ -44,6 +44,8 @@ Velikosti řady Edv4-Series běží na &reg; &reg; procesorech Intel Xeon Platin
 | Standard_E64d_v4 | 64 | 504 | 2400 | 32 | 615000/3872 | 8|30000 |
 
 
+<sup>**</sup>Tyto hodnoty IOPs se dají zaručit pomocí [virtuálních počítačů s Gen2](generation-2.md) .
+
 ## <a name="edsv4-series"></a>Edsv4-Series
 
 Velikosti řady Edsv4-Series běží na &reg; &reg; procesorech Intel Xeon Platinum 8272CL (Cascade Lake). Velikost virtuálních počítačů s Edsv4 je součástí až 504 GiB paměti RAM, navíc k rychlému a velkému místnímu úložišti SSD (až 2 400 GiB). Tyto virtuální počítače jsou ideální pro podnikové aplikace náročné na paměť a aplikace, které využívají nízkou latenci a vysoce rychlé místní úložiště.
@@ -53,10 +55,10 @@ Velikosti řady Edsv4-Series běží na &reg; &reg; procesorech Intel Xeon Plati
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): podporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br>
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120 (50) | 3200/48 | 2|1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242 (100) | 6400/96 | 2|2000 |

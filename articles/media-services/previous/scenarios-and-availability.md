@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014405"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042766"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -41,9 +41,9 @@ Pokud chcete začít používat Azure Media Services, potřebujete následujíc�
 
 * Účet Azure: Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
-* Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
+* Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno** .
 
-    Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování být ve stavu **Spuštěno**.
+    Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno** . Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování být ve stavu **Spuštěno** .
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Běžně používané objekty při vývoji na základě modelu AMS OData
 
@@ -123,7 +123,7 @@ Při živém streamování můžete zvolit jednu z následujících cest:
 
 Následující diagram znázorňuje hlavní části platformy AMS, které se podílejí na **průchozím** pracovním postupu.
 
-![Živý pracovní postup](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+![Diagram znázorňující hlavní části platformy A M S, které jsou součástí pracovního postupu "předávacího".](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 Další informace najdete v článku o [práci s kanály, které přijímají živé streamování s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md).
 
@@ -149,11 +149,11 @@ Služba Media Services podporuje integraci s Azure CDN. Informace o povolení Az
 
 Zákazníci AMS můžou ve svých účtech AMS škálovat koncové body streamování, zpracování médií a úložiště.
 
-* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Zahrnuje stejné funkce jako koncové body streamování **Premium** a automaticky škáluje šířku odchozího pásma. 
+* Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard** , nebo koncový bod streamování **Premium** . Koncový bod streamování **Standard** je vhodný pro většinu úloh streamování. Zahrnuje stejné funkce jako koncové body streamování **Premium** a automaticky škáluje šířku odchozího pásma. 
 
-    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium**, ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
+    Koncové body streamování **Premium** jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Zákazníci, kteří mají koncový bod streamování **Premium** , ve výchozím nastavení získají jednu jednotku streamování (SU). Koncový bod streamování je možné škálovat přidáním jednotek streamování. Každá jednotka streamování poskytuje aplikaci další kapacitu šířky pásma. Další informace o škálování koncových bodů streamování **Premium** najdete v tématu [Škálování koncových bodů streamování](media-services-portal-scale-streaming-endpoints.md).
 
-* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1**, **S2** nebo **S3**. Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2**, než kdybyste použili typ **S1**.
+* Účet Media Services je přidružený k typu rezervované jednotky, který určuje rychlost zpracování vašich úloh zpracování médií. Můžete si vybrat mezi následujícími typy rezervovaných jednotek: **S1** , **S2** nebo **S3** . Například stejná úloha kódování bude rychlejší, když použijete typ rezervované jednotky **S2** , než kdybyste použili typ **S1** .
 
     Kromě určení typu rezervované jednotky můžete určit, že se má účet zřídit pomocí **rezervovaných jednotek** (ru). Počet zřízených RU určuje počet úloh médií, které je možné v daném účtu zpracovávat současně.
 
@@ -175,13 +175,13 @@ Pomocí [produktů Azure podle oblastí](https://azure.microsoft.com/global-infr
 
 ### <a name="streaming-endpoints"></a>Koncové body streamování 
 
-Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard**, nebo koncový bod streamování **Premium**. Další informace najdete v části popisující [škálování](#scaling).
+Zákazníci Media Services si můžou zvolit koncový bod streamování **Standard** , nebo koncový bod streamování **Premium** . Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
 |Name|Status|Datová centra
 |---|---|---|
-|Standard|GA|Vše|
+|Standardní|GA|Vše|
 |Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
@@ -192,7 +192,7 @@ K dispozici ve všech datových centrech kromě oblastí: Německo, Brazílie �
 
 ### <a name="encoding-media-processors"></a>Kódovací procesory médií
 
-AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Pracovní postup kodéru Media Encoder Premium**. Další informace najdete v tématu [Přehled a porovnání kodérů médií na vyžádání v Azure](media-services-encode-asset.md). 
+AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Pracovní postup kodéru Media Encoder Premium** . Další informace najdete v tématu [Přehled a porovnání kodérů médií na vyžádání v Azure](media-services-encode-asset.md). 
 
 #### <a name="availability"></a>Dostupnost
 

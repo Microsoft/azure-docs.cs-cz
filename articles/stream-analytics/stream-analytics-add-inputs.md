@@ -6,13 +6,13 @@ ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: f49ba8a907a65180061ef3973ae30b4438a945a2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043013"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Vysvětlení vstupů pro Azure Stream Analytics
 
@@ -22,7 +22,7 @@ Stream Analytics má při první třídě integraci se čtyřmi druhy prostředk
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
-- [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 Tyto vstupní prostředky můžou být živé ve stejném předplatném Azure jako vaše Stream Analyticsová úloha nebo z jiného předplatného.
 
@@ -37,7 +37,7 @@ Datový proud je neohraničená posloupnost událostí v průběhu času. Úlohy
 Další informace o datových vstupech streamování najdete v tématu [streamování dat jako vstup do Stream Analytics](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Referenční datové vstupy
-Stream Analytics podporuje také vstup známý jako *referenční data*. Referenční data jsou buď zcela statická, nebo se mění pomalu. Obvykle se používá k provádění korelace a vyhledávání. Například můžete spojit data datového proudu s daty v referenčních datech, podobně jako byste provedli příkaz SQL JOIN k vyhledání statických hodnot. Úložiště objektů BLOB v Azure, Azure Data Lake Storage Gen2 a Azure SQL Database se v současné době podporují jako vstupní zdroje pro referenční data. Velikost objektů BLOB zdroje referenčních dat má limit až 300 MB, v závislosti na složitosti dotazu a přidělených jednotkách streamování (Další informace najdete v části [omezení velikosti](stream-analytics-use-reference-data.md#size-limitation) v dokumentaci referenčních dat).
+Stream Analytics podporuje také vstup známý jako *referenční data* . Referenční data jsou buď zcela statická, nebo se mění pomalu. Obvykle se používá k provádění korelace a vyhledávání. Například můžete spojit data datového proudu s daty v referenčních datech, podobně jako byste provedli příkaz SQL JOIN k vyhledání statických hodnot. Úložiště objektů BLOB v Azure, Azure Data Lake Storage Gen2 a Azure SQL Database se v současné době podporují jako vstupní zdroje pro referenční data. Velikost objektů BLOB zdroje referenčních dat má limit až 300 MB, v závislosti na složitosti dotazu a přidělených jednotkách streamování (Další informace najdete v části [omezení velikosti](stream-analytics-use-reference-data.md#size-limitation) v dokumentaci referenčních dat).
 
 Další informace o vstupech referenčních dat naleznete [v tématu použití referenčních dat pro vyhledávání v Stream Analytics](stream-analytics-use-reference-data.md)
 

@@ -8,15 +8,15 @@
 - name: Kurzy
   items:
     - name: Vytvoření CF v Azure
-      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+      href: ./create-cloud-foundry-on-azure.md
     - name: Nasazení aplikace CF do Azure
-      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
+      href: ./cloudfoundry-deploy-your-first-app.md
     - name: CloudFoundry v Azure
-      href: /azure/cloudfoundry/cloudfoundry-get-started
+      href: ./cloudfoundry-get-started.md
     - name: Nasazení CF OMS Nozzle
-      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+      href: ./cloudfoundry-oms-nozzle.md
     - name: Integrace Cloud Foundry s Azure
-      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+      href: ./how-cloud-foundry-integrates-with-azure.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

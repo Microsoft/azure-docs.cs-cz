@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543147"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043266"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (Preview)
 
@@ -52,7 +52,7 @@ Následující diagram znázorňuje základní tok ověřování pro federované
 
 Vytvoření clusteru Balíček zabezpečení podniku s povoleným zprostředkovatelem HDInsight ID:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Postupujte podle základních kroků pro vytvoření clusteru Balíček zabezpečení podniku. Další informace najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 1. Vyberte **Povolit zprostředkovatele ID HDInsight** .
 
@@ -83,7 +83,7 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy 
 .
 .
 ```
+
+Pokud chcete zobrazit úplnou ukázku šablony ARM, podívejte se prosím na šablonu publikovanou [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
+
 
 ## <a name="tool-integration"></a>Integrace nástrojů
 
@@ -132,6 +135,8 @@ Po získání tokenu OAuth ho použijte v autorizační hlavičce požadavku HTT
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
+
+Pro použití Beeline a Livy můžete také použít kódy ukázek, které [tady](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) najdete, a nastavit tak klienta tak, aby používal OAuth a připojil se ke clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 

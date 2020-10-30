@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164818"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043102"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -107,13 +107,13 @@ V jazyce JavaScript jsou [vazby](functions-triggers-bindings.md) konfigurovány 
 
 ### <a name="inputs"></a>Vstupy
 Vstup je rozdělen do dvou kategorií v Azure Functions: jeden je vstup triggeru a druhý je další vstup. Trigger a další vstupní vazby (vazby `direction === "in"` ) mohou být čteny funkcí třemi způsoby:
- - **_[Doporučeno]_ Jako parametry předané do vaší funkce.** Jsou předány do funkce ve stejném pořadí, v jakém jsou definovány v *function.js*. `name`Vlastnost definovaná v *function.js* se nemusí shodovat s názvem vašeho parametru, i když by měla být.
+ - **_[Doporučeno]_ Jako parametry předané do vaší funkce.** Jsou předány do funkce ve stejném pořadí, v jakém jsou definovány v *function.js* . `name`Vlastnost definovaná v *function.js* se nemusí shodovat s názvem vašeho parametru, i když by měla být.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Jako členové [`context.bindings`](#contextbindings-property) objektu.** Každý člen je pojmenován `name` vlastností definovanými v *function.js*.
+ - **Jako členové [`context.bindings`](#contextbindings-property) objektu.** Každý člen je pojmenován `name` vlastností definovanými v *function.js* .
  
    ```javascript
    module.exports = async function(context) { 
@@ -138,7 +138,7 @@ Výstupy (vazby `direction === "out"` ) mohou být do funkce zapisovány pomocí
 
 Do výstupních vazeb můžete přiřadit data jedním z následujících způsobů (tyto metody nekombinovat):
 
-- **_[Doporučeno pro více výstupů]_ Vrácení objektu.** Pokud používáte funkci vracející asynchronní nebo příslib, můžete vrátit objekt s přiřazenými výstupními daty. V následujícím příkladu jsou výstupní vazby pojmenovány "httpResponse" a "queueOutput" v *function.jsna*.
+- **_[Doporučeno pro více výstupů]_ Vrácení objektu.** Pokud používáte funkci vracející asynchronní nebo příslib, můžete vrátit objekt s přiřazenými výstupními daty. V následujícím příkladu jsou výstupní vazby pojmenovány "httpResponse" a "queueOutput" v *function.jsna* .
 
   ```javascript
   module.exports = async function(context) {
@@ -154,7 +154,7 @@ Do výstupních vazeb můžete přiřadit data jedním z následujících způso
 
   Používáte-li synchronní funkci, můžete tento objekt vrátit pomocí [`context.done`](#contextdone-method) (viz příklad).
 - **_[Doporučeno pro jeden výstup]_ Vrácení hodnoty přímo a pomocí názvu $return vazby.** To funguje jenom pro funkce asynchronního nebo příslibu. Viz příklad při [Exportování asynchronní funkce](#exporting-an-async-function). 
-- **Přiřazení hodnot k `context.bindings` ** Hodnoty můžete přiřadit přímo kontextu. Bindings.
+- **Přiřazení hodnot k `context.bindings`** Hodnoty můžete přiřadit přímo kontextu. Bindings.
 
   ```javascript
   module.exports = async function(context) {
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Popis |
+| Název vlastnosti  | Typ  | Description |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |
@@ -325,10 +325,10 @@ Kromě výchozí úrovně jsou k dispozici následující metody protokolování
 
 | Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
-| **Chyba (_zpráva_)**   | Zapíše událost na úrovni chyby do protokolů.   |
-| **upozornit (_zpráva_)**    | Zapíše událost úrovně upozornění do protokolů. |
-| **informace (_zpráva_)**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
-| **verbose (_zpráva_)** | Zapisuje do protokolování na úrovni podrobností.           |
+| **Chyba ( _zpráva_ )**   | Zapíše událost na úrovni chyby do protokolů.   |
+| **upozornit ( _zpráva_ )**    | Zapíše událost úrovně upozornění do protokolů. |
+| **informace ( _zpráva_ )**    | Provede zápis do protokolování na úrovni informací nebo nižší.    |
+| **verbose ( _zpráva_ )** | Zapisuje do protokolování na úrovni podrobností.           |
 
 Následující příklad zapíše stejný protokol na úrovni trasování upozornění místo úrovně info:
 
@@ -358,7 +358,7 @@ Chcete-li nastavit prahovou hodnotu pro všechna trasování zapsaná do protoko
 }  
 ```
 
-Hodnoty **consoleLevel** odpovídají názvům `context.log` metod. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** na _off_. Další informace najdete v tématu [host.jsv odkazu v1. x](functions-host-json-v1.md).
+Hodnoty **consoleLevel** odpovídají názvům `context.log` metod. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** na _off_ . Další informace najdete v tématu [host.jsv odkazu v1. x](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ Existují dva způsoby, jak nainstalovat balíčky do Function App:
 ### <a name="using-kudu"></a>Použití Kudu
 1. Přejděte na `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klikněte na **ladit konzolu**  >  **cmd**.
+2. Klikněte na **ladit konzolu**  >  **cmd** .
 
 3. Přejít na `D:\home\site\wwwroot` a poté přetáhněte package.jsdo souboru do složky **wwwroot** v horní polovině stránky.  
     Soubory můžete do aplikace Function App nahrávat i jiným způsobem. Další informace najdete v tématu [Postup aktualizace souborů aplikace Function App](functions-reference.md#fileupdate). 
 
-4. Po nahrání package.jsv souboru spusťte `npm install` příkaz v **konzole vzdáleného spuštění Kudu**.  
+4. Po nahrání package.jsv souboru spusťte `npm install` příkaz v **konzole vzdáleného spuštění Kudu** .  
     Tato akce stáhne balíčky uvedené v package.jsv souboru a restartuje aplikaci Function App.
 
 ## <a name="environment-variables"></a>Proměnné prostředí

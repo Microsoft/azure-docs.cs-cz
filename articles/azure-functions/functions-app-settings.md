@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043229"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -226,6 +226,14 @@ Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úlož
 |Klíč|Ukázková hodnota|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; Název účtu = [název]; AccountKey = [klíč]|
+
+## <a name="website_contentovervnet"></a>\_CONTENTOVERVNET webu
+
+Jenom pro plány Premium. Hodnota `1` umožňuje škálování aplikace Function App, když máte účet úložiště omezený na virtuální síť. Toto nastavení byste měli povolit při omezení účtu úložiště na virtuální síť. Další informace najdete v tématu [omezení účtu úložiště na virtuální síť](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
 
 ## <a name="website_contentshare"></a>\_CONTENTSHARE webu
 

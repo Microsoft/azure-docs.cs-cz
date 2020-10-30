@@ -5,18 +5,18 @@ description: Popis omezení a omezení pro formát identifikátoru URI přesměr
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030306"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042908"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omezení a omezení URI pro přesměrování (adresa URL odpovědi)
 
@@ -24,7 +24,7 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
  Pro identifikátory URI přesměrování platí následující omezení:
 
-* Identifikátor URI přesměrování musí začínat schématem `https` .
+* Identifikátor URI přesměrování musí začínat schématem `https` . Pro identifikátory URI přesměrování [localhost existují výjimky](#localhost-exceptions) .
 
 * Identifikátor URI pro přesměrování rozlišuje velká a malá písmena. Jeho velikost se musí shodovat s písmenem adresy URL vaší běžící aplikace. Například pokud vaše aplikace obsahuje jako součást cesty `.../abc/response-oidc` , nezadávejte `.../ABC/response-oidc` v identifikátoru URI přesměrování. Vzhledem k tomu, že webový prohlížeč považuje cesty jako rozlišování velkých a malých písmen, mohou být soubory cookie přidružené k `.../abc/response-oidc` vyloučeny při přesměrování na neshodnou `.../ABC/response-oidc` adresu URL.
 
@@ -64,11 +64,10 @@ Z pohledu vývoje to znamená několik věcí:
 
 * Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` `spa` přesměrování typu).
 * Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://127.0.0.1/MyWebApp` neodpovídá `http://127.0.0.1/MyNativeApp` .
-* Pokyny pro RFC byste neměli používat `localhost` v identifikátoru URI přesměrování. Místo toho použijte skutečnou IP adresu zpětné smyčky, `127.0.0.1` . Tím se zabrání v přerušení vaší aplikace nenakonfigurovanými branami firewall nebo přejmenovanými síťovými rozhraními.
+* Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
+* Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` .
 
-    Chcete-li použít `http` schéma s adresou zpětné smyčky (127.0.0.1) namísto localhost, je nutné upravit [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute). 
-
-    Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
+    Chcete-li použít `http` schéma s adresou zpětné smyčky IP `127.0.0.1` , je nutné v [manifestu aplikace](reference-app-manifest.md)v současné době Upravit atribut [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) .
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Omezení zástupných znaků v identifikátorech URI pro přesměrování
 
@@ -78,9 +77,9 @@ Zástupné identifikátory URI se v současné době nepodporují v registracíc
 
 Chcete-li přidat identifikátory URI pro přesměrování se zástupnými znaky k registrům aplikací, které přihlásí pracovní nebo školní účty, je nutné použít editor manifestu aplikace v [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Azure Portal. I když je možné nastavit identifikátor URI pro přesměrování se zástupným znakem pomocí editoru manifestu, *důrazně* doporučujeme, abyste dodržovali [oddíl 3.1.2 RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) a používali pouze absolutní identifikátory URI.
 
-Pokud váš scénář vyžaduje více identifikátorů URI pro přesměrování, než je maximální povolený limit, zvažte [následující postup](#use-a-state-parameter) , místo aby se přidal identifikátor URI pro přesměrování zástupných znaků.
+Pokud váš scénář vyžaduje víc identifikátorů URI pro přesměrování, než je maximální povolený limit, zvažte následující [přístup k parametrům stavu](#use-a-state-parameter) místo přidávání identifikátoru URI pro přesměrování zástupných znaků.
 
-### <a name="use-a-state-parameter"></a>Použít parametr stavu
+#### <a name="use-a-state-parameter"></a>Použít parametr stavu
 
 Pokud máte několik subdomén a váš scénář vyžaduje, abyste po úspěšném ověření přesměrovali uživatele na stejnou stránku, ze které začala, použití parametru State může být užitečné.
 

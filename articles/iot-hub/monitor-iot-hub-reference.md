@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042934"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Monitorování referenčních informací o službě Azure IoT Hub
 
@@ -60,9 +60,9 @@ U většiny metrik jsou všechny typy agregace platné; pro počítání metrik,
 |Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |C2D zprávy prošly (Preview)|C2DMessagesExpired|Počet|Celkem|Počet zpráv typu cloud-zařízení, jejichž platnost vypršela|Žádné|
-|Doručení zpráv C2D bylo dokončeno.|C2D. Commands. odchozí.<br>dokončeno. úspěch|Počet|Celkem|Počet úspěšně dokončených doručení zpráv typu cloud-zařízení do zařízení|Žádné|
-|Zrušené zprávy C2D|C2D. Commands. odchozí.<br>opustit. úspěch|Počet|Celkem|Počet zpráv typu cloud-zařízení opuštěných zařízením|Žádné|
-|Odmítnuté zprávy C2D|C2D. Commands. odchozí.<br>odmítnout. úspěch|Počet|Celkem|Počet zpráv typu cloud-zařízení odmítnutých zařízením|Žádné|
+|Doručení zpráv C2D bylo dokončeno.|C2D. Commands.. Complete. Complete. Success|Počet|Celkem|Počet úspěšně dokončených doručení zpráv typu cloud-zařízení do zařízení|Žádné|
+|Zrušené zprávy C2D|C2D. Commands. odchozí. Abandon. Success|Počet|Celkem|Počet zpráv typu cloud-zařízení opuštěných zařízením|Žádné|
+|Odmítnuté zprávy C2D|C2D. Commands. odchozí. remítat. Success|Počet|Celkem|Počet zpráv typu cloud-zařízení odmítnutých zařízením|Žádné|
 
 Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celkem (Sum). Hodnoty agregace minima, maxima a průměr vždy vrátí hodnotu 1. Další informace najdete v tématu [podporované agregace](#supported-aggregations).
 
@@ -113,7 +113,7 @@ Pro *Celkový počet použitých zpráv* jsou podporovány pouze agregace minima
 |Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |Celkem zařízení (zastaralé)|Devices. totalDevices|Počet|Celkem|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
-|Připojená zařízení (zastaralé) |Devices. connectedDevices.<br>allProtocol|Počet|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné|
+|Připojená zařízení (zastaralé) |Devices. connectedDevices. allProtocol|Počet|Celkem|Počet zařízení připojených ke službě IoT Hub|Žádné|
 |Celkem zařízení (Preview)|totalDeviceCount|Počet|Průměr|Počet zařízení zaregistrovaných ve službě IoT Hub|Žádné|
 |Připojená zařízení (Preview)|connectedDeviceCount|Počet|Průměr|Počet zařízení připojených ke službě IoT Hub|Žádné|
 
@@ -127,9 +127,9 @@ Pro *Celkový počet zařízení (Preview)* a *připojených zařízení (ve ver
 
 |Zobrazovaný název metriky|Metrika|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
-|Počet chyb omezování|D2C. telemetrie. příchozí přenos dat<br>sendThrottle|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné|
-|Počet pokusů o odeslání zprávy telemetrie|D2C. telemetrie. příchozí přenos dat<br>allProtocol|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádné|
-|Odeslané zprávy telemetrie|D2C. telemetrie. příchozí přenos dat<br>úspěch|Počet|Celkem|Počet zpráv telemetrie typu zařízení-Cloud, které se úspěšně odeslaly do služby IoT Hub|Žádné|
+|Počet chyb omezování|D2C. telemetrie. příchozí přenos dat sendThrottle|Počet|Celkem|Počet chyb omezení z důvodu omezení propustnosti zařízení|Žádné|
+|Počet pokusů o odeslání zprávy telemetrie|D2C. telemetrie. příchozí přenos dat allProtocol|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádné|
+|Odeslané zprávy telemetrie|D2C. telemetrie. příchozí přenos dat. úspěch|Počet|Celkem|Počet zpráv telemetrie typu zařízení-Cloud, které se úspěšně odeslaly do služby IoT Hub|Žádné|
 
 Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celkem (Sum). Hodnoty agregace minima, maxima a průměr vždy vrátí hodnotu 1. Další informace najdete v tématu [podporované agregace](#supported-aggregations).
 
@@ -161,13 +161,13 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 |---|---|---|---|---|---|
 |Dokončené úlohy|dokončené úlohy|Počet|Celkem|Počet všech dokončených úloh.|Žádné|
 |Neúspěšná volání pro výpis úloh|Jobs. listJobs. selhání|Počet|Celkem|Počet všech neúspěšných volání pro výpis úloh|Žádné|
-|Nepovedlo se vytvořit úlohy vyvolání metody|Jobs. createDirectMethodJob.<br>poruše|Počet|Celkem|Počet všech neúspěšných vytvoření úloh volání přímé metody.|Žádné|
-|Nepovedlo se vytvořit úlohy s dvojitou aktualizací|Jobs. createTwinUpdateJob.<br>poruše|Počet|Celkem|Počet všech neúspěšných vytvoření zdvojených úloh aktualizace.|Žádné|
+|Nepovedlo se vytvořit úlohy vyvolání metody|Jobs. createDirectMethodJob. selhání|Počet|Celkem|Počet všech neúspěšných vytvoření úloh volání přímé metody.|Žádné|
+|Nepovedlo se vytvořit úlohy s dvojitou aktualizací|Jobs. createTwinUpdateJob. selhání|Počet|Celkem|Počet všech neúspěšných vytvoření zdvojených úloh aktualizace.|Žádné|
 |Neúspěšná zrušení úloh|Jobs. cancelJob. selhání|Počet|Celkem|Počet všech neúspěšných volání pro zrušení úlohy.|Žádné|
 |Neúspěšné dotazy na úlohy|Jobs. queryJobs. selhání|Počet|Celkem|Počet všech neúspěšných volání pro úlohy dotazu.|Žádné|
 |Neúspěšné úlohy|úlohy. nezdařilo se|Počet|Celkem|Počet všech neúspěšných úloh.|Žádné|
 |Úspěšná volání na seznam úloh|Jobs. listJobs. Success|Počet|Celkem|Počet všech úspěšných volání pro výpis úloh.|Žádné|
-|Úspěšné vytváření úloh vyvolání metod|Jobs. createDirectMethodJob.<br>úspěch|Počet|Celkem|Počet všech úspěšných vytvoření úloh vyvolání přímé metody.|Žádné|
+|Úspěšné vytváření úloh vyvolání metod|Jobs. createDirectMethodJob. Success|Počet|Celkem|Počet všech úspěšných vytvoření úloh vyvolání přímé metody.|Žádné|
 |Úspěšné vytváření zdvojených úloh aktualizace|Jobs. createTwinUpdateJob.<br>úspěch|Počet|Celkem|Počet všech úspěšných vytvoření zdvojených úloh aktualizace.|Žádné|
 |Úspěšná zrušení úlohy|Jobs. cancelJob. Success|Počet|Celkem|Počet všech úspěšných volání pro zrušení úlohy.|Žádné|
 |Úspěšné dotazy na úlohy|Jobs. queryJobs. Success|Počet|Celkem|Počet všech úspěšných volání úloh dotazů.|Žádné|
@@ -181,23 +181,23 @@ Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celke
 | Směrování pokusů o doručení (Preview) |RoutingDeliveries | Počet | Celkem |Toto je metrika doručení směrování. Použijte dimenze k identifikaci stavu doručení pro konkrétní koncový bod nebo pro konkrétní zdroj směrování.| Výsledek<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Koncový bod<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* . |
 | Velikost dat doručení směrování v bajtech (Preview)|RoutingDataSizeInBytesDelivered| Bajty | Celkem |Celkový počet bajtů směrovaných nástrojem IoT Hub do vlastního koncového bodu a předdefinovaného koncového bodu. Použijte dimenze k identifikaci velikosti dat směrovaného na konkrétní koncový bod nebo pro konkrétní zdroj směrování.| RoutingSource,<br>EndpointType<br>Koncový bod<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* .|
 | Latence směrování (Preview) |RoutingDeliveryLatency| Milisekund | Průměr |Toto je metrika latence doručení směrování. Použijte dimenze k identifikaci latence pro konkrétní koncový bod nebo pro konkrétní zdroj směrování.| RoutingSource,<br>EndpointType,<br>Koncový bod<br>*Další informace najdete v tématu [dimenze metriky](#metric-dimensions)* .|
-|Směrování: objekty blob doručené do úložiště|D2C. Endpoints. výstup.<br>Storage. BLOBs|Počet|Celkem|Počet pokusů IoT Hub směrování dodaných objektů blob do koncových bodů úložiště.|Žádné|
-|Směrování: data Doručená do úložiště|D2C. Endpoints. výstup.<br>Storage. bytes|Bajty|Celkem|Množství dat (v bajtech) IoT Hub směrování doručené koncovým bodům úložiště.|Žádné|
-|Směrování: latence zprávy pro centrum událostí|D2C. Endpoints. latence.<br>eventHubs|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami, které se IoT Hub a příchozími zprávami do vlastních koncových bodů typu centrum událostí. To nezahrnuje směrování zpráv do předdefinovaných koncových bodů (události).|Žádné|
-|Směrování: latence zprávy pro Service Bus frontu|D2C. Endpoints. latence.<br>serviceBusQueues|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu fronty Service Bus|Žádné|
-|Směrování: latence zprávy pro Service Bus téma|D2C. Endpoints. latence.<br>serviceBusTopics|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu Service Bus tématu.|Žádné|
-|Směrování: latence zpráv pro zprávy/události|D2C. Endpoints. latence.<br>Předdefinované události|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a příchozí přenos dat do integrovaného koncového bodu (zprávy/události) a záložní trasy.|Žádné|
-|Směrování: latence zpráv pro úložiště|D2C. Endpoints. latence.<br>úložiště|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a příchozí přenos dat do koncového bodu úložiště|Žádné|
-|Směrování: zprávy doručené do centra událostí|D2C. Endpoints. výstup.<br>eventHubs|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do vlastních koncových bodů typu centrum událostí. To nezahrnuje směrování zpráv do předdefinovaných koncových bodů (události).|Žádné|
-|Směrování: zprávy doručené do fronty Service Bus|D2C. Endpoints. výstup.<br>serviceBusQueues|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů fronty Service Bus|Žádné|
-|Směrování: zprávy doručené do Service Bus tématu|D2C. Endpoints. výstup.<br>serviceBusTopics|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů tématu Service Bus.|Žádné|
-|Směrování: zprávy doručené do záložního režimu|D2C. telemetrie. odchozí.<br>nalezení|Počet|Celkem|Počet, kolikrát IoT Hub směrování doručených zpráv do koncového bodu přidruženého k záložní trase.|Žádné|
-|Směrování: zprávy doručené zprávám/událostem|D2C. Endpoints. výstup.<br>Předdefinované události|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do integrovaného koncového bodu (zprávy/události) a záložní trasy.|Žádné|
-|Směrování: zprávy doručené do úložiště|D2C. Endpoints. výstup.<br>úložiště|Počet|Celkem|Počet pokusů, IoT Hub směrování úspěšně doručuje zprávy do koncových bodů úložiště.|Žádné|
-|Směrování: doručené zprávy telemetrie|D2C. telemetrie. odchozí.<br>úspěch|Počet|Celkem|Počet pokusů o úspěšné doručení zpráv do všech koncových bodů pomocí směrování IoT Hub. Pokud je zpráva směrována do více koncových bodů, tato hodnota se u každého úspěšného doručení zvyšuje o jednu. Pokud se zpráva doručí do stejného koncového bodu víckrát, tato hodnota se u každého úspěšného doručení zvyšuje o jednu.|Žádné|
-|Směrování: vyřazené zprávy telemetrie |D2C. telemetrie. odchozí.<br>odpojení|Počet|Celkem|Počet pokusů o vyřazení zpráv IoT Hub směrování z důvodu nedoručených koncových bodů. Tato hodnota nepočítá počet zpráv doručených do záložní trasy, protože se tam nedoručují vyřazené zprávy.|Žádné|
-|Směrování: nekompatibilní zprávy telemetrie|D2C. telemetrie. odchozí.<br>neplatné|Počet|Celkem|Počet, kolikrát IoT Hub směrování nedokázala doručovat zprávy z důvodu nekompatibility s koncovým bodem. Zpráva není kompatibilní s koncovým bodem, když se služba IoT Hub pokusí doručit zprávu do koncového bodu a dojde k jejímu nepřechodné chybě. Neplatné zprávy se neopakují. Tato hodnota nezahrnuje opakované pokusy.|Žádné|
-|Směrování: osamocené zprávy telemetrie |D2C. telemetrie. odchozí.<br>osamocené|Počet|Celkem|Počet, kolikrát byly zprávy osamoceny IoT Hub směrování, protože neodpovídaly žádnému dotazu směrování, pokud je vypnutá záložní trasa.|Žádné|
+|Směrování: objekty blob doručené do úložiště|D2C. Endpoints. výstup. Storage. BLOBs|Počet|Celkem|Počet pokusů IoT Hub směrování dodaných objektů blob do koncových bodů úložiště.|Žádné|
+|Směrování: data Doručená do úložiště|D2C. Endpoints. invýstups. Storage. bytes|Bajty|Celkem|Množství dat (v bajtech) IoT Hub směrování doručené koncovým bodům úložiště.|Žádné|
+|Směrování: latence zprávy pro centrum událostí|D2C. Endpoints. latence. eventHubs|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami, které se IoT Hub a příchozími zprávami do vlastních koncových bodů typu centrum událostí. To nezahrnuje směrování zpráv do předdefinovaných koncových bodů (události).|Žádné|
+|Směrování: latence zprávy pro Service Bus frontu|D2C. Endpoints. latence. serviceBusQueues|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu fronty Service Bus|Žádné|
+|Směrování: latence zprávy pro Service Bus téma|D2C. Endpoints. latence. serviceBusTopics|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami IoT Hub a příchozími zprávami do koncového bodu Service Bus tématu.|Žádné|
+|Směrování: latence zpráv pro zprávy/události|D2C. Endpoints. latence. builtIn. events|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a příchozí přenos dat do integrovaného koncového bodu (zprávy/události) a záložní trasy.|Žádné|
+|Směrování: latence zpráv pro úložiště|D2C. Endpoints. latence. Storage|Milisekund|Průměr|Průměrná latence (v milisekundách) mezi příchozími a příchozími zprávami pro IoT Hub a příchozí přenos dat do koncového bodu úložiště|Žádné|
+|Směrování: zprávy doručené do centra událostí|D2C. Endpoints. odchozí. eventHubs|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do vlastních koncových bodů typu centrum událostí. To nezahrnuje směrování zpráv do předdefinovaných koncových bodů (události).|Žádné|
+|Směrování: zprávy doručené do fronty Service Bus|D2C. Endpoints. odchozí. serviceBusQueues|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů fronty Service Bus|Žádné|
+|Směrování: zprávy doručené do Service Bus tématu|D2C. Endpoints. odchozí. serviceBusTopics|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do koncových bodů tématu Service Bus.|Žádné|
+|Směrování: zprávy doručené do záložního režimu|D2C. telemetrie. odchozí. Fallback|Počet|Celkem|Počet, kolikrát IoT Hub směrování doručených zpráv do koncového bodu přidruženého k záložní trase.|Žádné|
+|Směrování: zprávy doručené zprávám/událostem|D2C. Endpoints. invýstups. builtIns. events|Počet|Celkem|Počet, kolikrát IoT Hub směrování úspěšně doručuje zprávy do integrovaného koncového bodu (zprávy/události) a záložní trasy.|Žádné|
+|Směrování: zprávy doručené do úložiště|D2C. Endpoints. odchozí úložiště. Storage|Počet|Celkem|Počet pokusů, IoT Hub směrování úspěšně doručuje zprávy do koncových bodů úložiště.|Žádné|
+|Směrování: doručené zprávy telemetrie|D2C. telemetrie. odchozí. úspěch|Počet|Celkem|Počet pokusů o úspěšné doručení zpráv do všech koncových bodů pomocí směrování IoT Hub. Pokud je zpráva směrována do více koncových bodů, tato hodnota se u každého úspěšného doručení zvyšuje o jednu. Pokud se zpráva doručí do stejného koncového bodu víckrát, tato hodnota se u každého úspěšného doručení zvyšuje o jednu.|Žádné|
+|Směrování: vyřazené zprávy telemetrie |D2C. telemetrie. výstup. vyřazeno|Počet|Celkem|Počet pokusů o vyřazení zpráv IoT Hub směrování z důvodu nedoručených koncových bodů. Tato hodnota nepočítá počet zpráv doručených do záložní trasy, protože se tam nedoručují vyřazené zprávy.|Žádné|
+|Směrování: nekompatibilní zprávy telemetrie|D2C. telemetrie. invýstup. neplatné|Počet|Celkem|Počet, kolikrát IoT Hub směrování nedokázala doručovat zprávy z důvodu nekompatibility s koncovým bodem. Zpráva není kompatibilní s koncovým bodem, když se služba IoT Hub pokusí doručit zprávu do koncového bodu a dojde k jejímu nepřechodné chybě. Neplatné zprávy se neopakují. Tato hodnota nezahrnuje opakované pokusy.|Žádné|
+|Směrování: osamocené zprávy telemetrie |D2C. telemetrie. výstup. osamocený|Počet|Celkem|Počet, kolikrát byly zprávy osamoceny IoT Hub směrování, protože neodpovídaly žádnému dotazu směrování, pokud je vypnutá záložní trasa.|Žádné|
 
 Pro metriky s **jednotkovou** hodnotou **Count** je platná pouze agregace celkem (Sum). Hodnoty agregace minima, maxima a průměr vždy vrátí hodnotu 1. Další informace najdete v tématu [podporované agregace](#supported-aggregations).
 

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970754"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043385"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
@@ -28,11 +28,11 @@ Výstrahy jsou teď ve výchozím nastavení automaticky povolené, ale aby bylo
 
 1. Po uložení testu dostupnosti klikněte na kartě Podrobnosti na tři tečky, které jste právě provedli. Klikněte na upravit upozornění.
 
-   ![Upravit po uložení](./media/availability-alerts/edit-alert.png)
+   ![Snímek obrazovky s vybraným z nabídky zobrazí upravit výstrahu.](./media/availability-alerts/edit-alert.png)
 
 2. Nastavte požadovanou úroveň závažnosti, popis pravidla a nejdůležitější informace – skupina akcí, která má předvolby oznámení, kterou chcete použít pro toto pravidlo upozornění.
 
-   ![Upravit po uložení](./media/availability-alerts/set-action-group.png)
+   ![Snímek obrazovky se zobrazí na stránce správy pravidel, kde můžete pravidlo upravit.](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > Výstrahy dostupnosti vytvořené prostřednictvím tohoto prostředí jsou založené na stavu. To znamená, že když je kritérium výstrahy splněno, vygeneruje se jedna výstraha, když je lokalita zjištěná jako nedostupná. Pokud je lokalita stále v provozu při příštím vyhodnocení kritérií výstrahy, nebude vygenerována nová výstraha. Takže pokud vaše lokalita byla kratší hodinu a nastavili jste e-mailové upozornění, dostanete e-mail jenom v případě, že se web vypnul, a následný e-mail, když se web zálohoval. Nebudete dostávat nepřetržité výstrahy s upozorněním, že je lokalita stále nedostupná.

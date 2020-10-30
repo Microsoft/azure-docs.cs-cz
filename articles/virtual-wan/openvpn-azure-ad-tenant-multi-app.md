@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988266"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043437"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Vytvoření tenanta Azure Active Directory (AD) pro připojení protokolu P2S OpenVPN
 
@@ -53,13 +53,13 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 
 2. Vyberte centrum, ke kterému chcete přiřadit konfiguraci serveru VPN, a klikněte na tlačítko se třemi tečkami (...).
 
-    ![nová lokalita](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
+    ![Snímek obrazovky se zobrazí v nabídce Upravit virtuální rozbočovač vybraný.](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
-3. Klikněte na **Upravit virtuální rozbočovač**.
+3. Klikněte na **Upravit virtuální rozbočovač** .
 
 4. Zaškrtněte políčko **Zahrnout bránu Point-to-site** a vyberte **jednotku škálování brány** , kterou chcete použít.
 
-    ![nová lokalita](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
+    ![Snímek obrazovky se zobrazí dialogové okno Upravit virtuální centrum, kde můžete vybrat jednotku škálování brány.](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
 
 5. Zadejte **fond adres** , ze kterého budou klienti VPN přiřazeni IP adresy.
 
@@ -71,9 +71,9 @@ Konfigurace P2S definuje parametry pro připojení vzdálených klientů.
 
 Pomocí profilu sítě VPN nakonfigurujte své klienty.
 
-1. Na stránce pro virtuální síť WAN klikněte na **Konfigurace sítě VPN uživatele**.
+1. Na stránce pro virtuální síť WAN klikněte na **Konfigurace sítě VPN uživatele** .
 
-2. V horní části stránky klikněte na **Stáhnout uživatelskou konfiguraci VPN**.
+2. V horní části stránky klikněte na **Stáhnout uživatelskou konfiguraci VPN** .
 
 3. Jakmile se dokončí vytváření souboru, můžete ho kliknutím na odkaz stáhnout.
 
@@ -99,53 +99,53 @@ Pomocí tohoto [odkazu](https://go.microsoft.com/fwlink/?linkid=2117554) si stá
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>Import profilu klienta
 
-1. Na stránce vyberte **importovat**.
+1. Na stránce vyberte **importovat** .
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![Snímek obrazovky zobrazující import vybraný z nabídky plus](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
+2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít** .
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![Snímek obrazovky zobrazuje otevřené dialogové okno, ve kterém můžete vybrat soubor.](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. Zadejte název profilu a vyberte **Uložit**.
+3. Zadejte název profilu a vyberte **Uložit** .
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![Snímek obrazovky zobrazuje název připojení, který jste přidali, a tlačítko Uložit.](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
 4. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![Snímek obrazovky se zobrazí tlačítko připojit pro připojení, které jste právě vytvořili.](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
+5. Po připojení se ikona změní na zelenou a znamená se **připojit** .
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![Snímek obrazovky zobrazuje připojení v připojeném stavu s možností odpojení.](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Odstranění profilu klienta
 
-1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
+1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat** .
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![Snímek obrazovky se zobrazí z nabídky odebrat vybrané.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![Snímek obrazovky se zobrazí potvrzovací dialogové okno s možností odebrat nebo zrušit.](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Postup diagnostiky problémů s připojením
 
-1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte tři tečky (...) vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
+1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte tři tečky (...) vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika** .
 
-    ![diagnóz](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
+    ![Snímek obrazovky zobrazuje diagnostiku vybranou z nabídky.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
+2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku** .
 
-    ![diagnóz](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+    ![Snímek obrazovky ukazuje tlačítko spustit diagnostiku pro připojení.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 
 3. Přihlaste se pomocí svých přihlašovacích údajů.
 
-    ![diagnóz](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+    ![Snímek obrazovky se zobrazí dialogové okno přihlášení pro tuto akci.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. Zobrazení výsledků diagnostiky.
 
-    ![diagnóz](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
+    ![Snímek obrazovky zobrazuje výsledky diagnostiky.](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
 ## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10. Podívejte se na virtuální síť WAN
 

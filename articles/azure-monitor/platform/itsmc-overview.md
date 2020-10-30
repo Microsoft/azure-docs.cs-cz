@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043319"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
 
@@ -57,7 +57,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
 3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete řešení nainstalovat.
    >[!NOTE]
    > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
-   > * Konektor ITSM se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, západ USA 2, Střed USA – jih, Středozápadní USA, Fairfax, Central Canada, Západní Evropa, Jižní Británie, jihovýchodní Asie, Východní Japonsko, Střed Indie, jihovýchodní Austrálie.
+   > * Konektor ITSM se dá nainstalovat jenom v pracovních prostorech Log Analytics v těchto oblastech: Východní USA, západ USA 2, Střed USA – jih, Středozápadní USA, US Gov – Arizona, US Gov – Virginie, Central Kanada, Západní Evropa, Jižní Británie, jihovýchodní Asie, Východní Japonsko, Střed Indie, jihovýchodní Austrálie.
 
 4. V části **Nastavení pracovního prostoru OMS** vyberte zdrojovou položku, kde chcete vytvořit prostředek řešení.
 
@@ -246,7 +246,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Popis
+- Description
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -293,7 +293,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Popis |
+| Description_s | Description |
 | Počítač  | Položka konfigurace |
 
 

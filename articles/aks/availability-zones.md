@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745804"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043033"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -52,7 +52,7 @@ Při vytváření clusteru AKS pomocí zón dostupnosti platí následující om
 
 Svazky, které používají službu Azure Managed disks, nejsou momentálně redundantní prostředky v zóně. Svazky nelze připojit mezi zónami a musí být umístěny společně umístěné ve stejné zóně jako daný uzel, který je hostitelem cíle pod.
 
-Pokud musíte spustit stavové úlohy, použijte k seskupení pod plánováním ve stejné zóně, které jsou na svých discích, použití příchuti a tolerování fondů uzlů v rámci specifikací pod. Alternativně můžete použít síťové úložiště, například soubory Azure, které se mohou připojit k luskům při jejich plánování mezi zónami.
+Kubernetes má informace o zónách dostupnosti Azure od verze 1,12. Objekt PersistentVolumeClaim, který odkazuje na spravovaný disk Azure, můžete nasadit v clusteru s více zónami AKS a [Kubernetes se postará o plánování](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) všech objektů pod tím, že tento trvalý virtuální okruh nárokuje ve správné zóně dostupnosti.
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Přehled zón dostupnosti pro clustery AKS
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Při přidávání dalších uzlů do fondu agentů platforma Azure automaticky distribuuje příslušné virtuální počítače v rámci zadané zóny dostupnosti.
 
-Všimněte si, že v novějších verzích Kubernetes (1.17.0 a novějších) AKS používá novější popisek `topology.kubernetes.io/zone` kromě zastaralého `failure-domain.beta.kubernetes.io/zone` .
+Všimněte si, že v novějších verzích Kubernetes (1.17.0 a novějších) AKS používá novější popisek `topology.kubernetes.io/zone` kromě zastaralého `failure-domain.beta.kubernetes.io/zone` . Stejný výsledek můžete získat tak, že spustíte následující skript:
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+Což vám poskytne stručnější výstup:
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>Ověřit distribuci pod mezi zónami
 

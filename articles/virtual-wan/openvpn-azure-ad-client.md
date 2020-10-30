@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977829"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043420"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení typu point-to-site přes protokol OpenVPN: Ověřování Azure AD
 
@@ -32,7 +32,7 @@ Pomocí tohoto [odkazu](https://go.microsoft.com/fwlink/?linkid=2117554) si stá
 
 1. Pokračujte na Start a pak vyberte nastavení > ochrany osobních údajů > aplikace na pozadí.
 2. V části aplikace na pozadí se ujistěte, že je zapnutá volba **Povolit aplikace spuštěné na pozadí** .
-3. V části zvolit, které aplikace se můžou spouštět na pozadí, zapnout nastavení pro klienta Azure VPN na **zapnuto**.
+3. V části zvolit, které aplikace se můžou spouštět na pozadí, zapnout nastavení pro klienta Azure VPN na **zapnuto** .
 
   ![udělen](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -54,111 +54,111 @@ Při práci s profilem založeným na certifikátech se ujistěte, že jsou na k
 
 Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním uživatelům, můžete ho exportovat pomocí následujících kroků:
 
-1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat**.
+1. Zvýrazněte profil klienta VPN, který chcete exportovat, vyberte **...** a pak vyberte **exportovat** .
 
-    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Snímek obrazovky s vybraným exportem zobrazí z nabídky.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Vyberte umístění, do kterého chcete uložit tento profil, ponechte název souboru tak, jak je, a pak vyberte **Uložit** a uložte soubor XML.
 
-    ![export](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![Snímek obrazovky se zobrazí dialogové okno Uložit jako, kde můžete zadat název souboru.](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>Import profilu klienta
 
-1. Na stránce vyberte **importovat**.
+1. Na stránce vyberte **importovat** .
 
-    ![import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Snímek obrazovky zobrazující import vybraný z nabídky plus](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít**.
+2. Přejděte k souboru XML profilu a vyberte ho. Když je vybraný soubor, vyberte **otevřít** .
 
-    ![import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Snímek obrazovky zobrazuje otevřené dialogové okno, ve kterém můžete vybrat soubor.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. Zadejte název profilu a vyberte **Uložit**.
+3. Zadejte název profilu a vyberte **Uložit** .
 
-    ![import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![Snímek obrazovky zobrazuje název připojení, který jste přidali, a tlačítko Uložit.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![Snímek obrazovky se zobrazí tlačítko připojit pro připojení, které jste právě vytvořili.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. Po připojení se ikona změní na zelenou a znamená se **připojit**.
+5. Po připojení se ikona změní na zelenou a znamená se **připojit** .
 
-    ![import](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![Snímek obrazovky zobrazuje připojení v připojeném stavu s možností odpojení.](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>Odstranění profilu klienta
 
-1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
+1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat** .
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Snímek obrazovky se zobrazí z nabídky odebrat vybrané.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![Snímek obrazovky se zobrazí potvrzovací dialogové okno s možností odebrat nebo zrušit.](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Vytvoření připojení
 
-1. Na stránce vyberte **+** a potom **+ Přidat**.
+1. Na stránce vyberte **+** a potom **+ Přidat** .
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![Snímek obrazovky se zobrazí přidat vybrané z nabídky Plus.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. Vyplňte informace o připojení. Pokud si hodnoty nejste jistí, obraťte se na správce. Po vyplnění hodnot vyberte **Uložit**.
+2. Vyplňte informace o připojení. Pokud si hodnoty nejste jistí, obraťte se na správce. Po vyplnění hodnot vyberte **Uložit** .
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Snímek obrazovky se zobrazí v podokně, kde můžete zadat požadované hodnoty.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. Vyberte **připojit** a připojte se k síti VPN.
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![Snímek obrazovky se zobrazí tlačítko připojit pro vaše připojení.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. Vyberte správné přihlašovací údaje a pak vyberte **pokračovat**.
+4. Vyberte správné přihlašovací údaje a pak vyberte **pokračovat** .
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Snímek obrazovky se zobrazí v dialogovém okně přihlásit se.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. Po úspěšném připojení se ikona změní na zelenou a znamená se **připojit**.
+5. Po úspěšném připojení se ikona změní na zelenou a znamená se **připojit** .
 
-    ![připojení](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![Snímek obrazovky ukazuje připojení v připojeném stavu.](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>Automatické připojení
 
 Tyto kroky vám pomůžou nakonfigurovat připojení pro automatické připojení s vždycky zapnutým.
 
-1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN**.
+1. Na domovské stránce klienta VPN vyberte **nastavení sítě VPN** .
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![Snímek obrazovky ukazuje připojení V P N, kde můžete vybrat nastavení V P N.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. V dialogovém okně přepnout aplikace vyberte **Ano** .
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![Snímek obrazovky se zobrazí ověřovací zpráva o přepínání aplikací.](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Ujistěte se, že připojení, které chcete nastavit, ještě není připojené, zvýrazněte profil a zaškrtněte políčko **Připojit automaticky** .
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![Snímek obrazovky se zobrazí dialogové okno nastavení, kde můžete vybrat připojit automaticky.](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Kliknutím na **připojit** zahajte připojení k síti VPN.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![Snímek obrazovky se zobrazí tlačítko připojit.](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnostika problémů s připojením
 
-1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika**.
+1. K diagnostice problémů s připojením můžete použít nástroj pro **diagnostiku** . Vyberte **...** vedle připojení VPN, které chcete diagnostikovat, aby se nabídka zobrazila. Pak vyberte **Diagnostika** .
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Snímek obrazovky zobrazuje diagnostiku vybranou z nabídky.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku**.
+2. Na stránce **Vlastnosti připojení** vyberte **Spustit diagnostiku** .
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Snímek obrazovky ukazuje tlačítko spustit diagnostiku pro připojení.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Přihlaste se pomocí svých přihlašovacích údajů.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Snímek obrazovky se zobrazí dialogové okno přihlášení pro tuto akci.](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Zobrazení výsledků diagnostiky.
 
-    ![diagnóz](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![Snímek obrazovky zobrazuje výsledky diagnostiky.](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>Časté otázky
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Návody přidat do klienta VPN přípony DNS?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> ** značky.
+Můžete upravit stažený soubor XML profilu a přidat **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** značky.
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<dnssuffixes> \<dnss
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>Návody do klienta VPN přidat vlastní servery DNS?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** značky.
+Můžete upravit stažený soubor XML profilu a přidat **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** značky.
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<dnsservers> \<dnsse
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** značky.
+Můžete upravit stažený soubor XML profilu a přidat **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** značky.
 
 ```
 <azvpnprofile>
@@ -214,7 +214,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes> \<ro
 ```
 ### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>Návody směrovat veškerý provoz do tunelu VPN (vynucení tunelu)?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> ** značky.
+Můžete upravit stažený soubor XML profilu a přidat **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** značky.
 
 ```
 <azvpnprofile>
@@ -235,7 +235,7 @@ Můžete upravit stažený soubor XML profilu a přidat ** \<includeroutes> \<ro
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>Návody (vyloučit) trasy blokování z klienta VPN?
 
-Můžete upravit stažený soubor XML profilu a přidat ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> ** značky.
+Můžete upravit stažený soubor XML profilu a přidat **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** značky.
 
 ```
 <azvpnprofile>

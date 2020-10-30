@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 879b9f965a5ee76131a65bf3151be5c6114cd20c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042781"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Sledujte průběh úlohy kódování pomocí Azure Portal
 
@@ -32,9 +32,9 @@ ms.locfileid: "89260879"
 
 Když spouštíte úlohy, často potřebujete způsob, jak sledovat průběh úloh. 
 
-Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy**.
+Pokud chcete monitorovat průběh úlohy kódování, klikněte na **Nastavení** (v horní části stránky) a pak vyberte **Úlohy** .
 
-![Úlohy](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Snímek obrazovky, který zobrazuje "úlohy" vybrané v nabídce nastavení.](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 Kliknutím na úlohu můžete zobrazit další podrobnosti.
 
