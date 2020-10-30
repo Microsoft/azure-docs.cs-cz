@@ -679,6 +679,8 @@
           href: data-lake-storage-best-practices.md
         - name: Akcelerace dotazů
           href: data-lake-storage-query-acceleration.md
+        - name: Úroveň Premium pro Data Lake Storage
+          href: premium-tier-for-data-lake-storage.md
         - name: Architektura
           items:
             - name: Ovladač systému souborů Azure Blob pro Hadoop

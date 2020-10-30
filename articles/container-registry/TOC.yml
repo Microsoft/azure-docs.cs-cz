@@ -59,6 +59,8 @@
           href: container-registry-geo-replication.md
         - name: Osvědčené postupy registru
           href: container-registry-best-practices.md
+        - name: Správa veřejných imagí
+          href: buffer-gate-public-content.md
     - name: Návody
       expanded: false
       items:

@@ -11,7 +11,8 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS
+    - name: Nastavení služby Azure NetApp Files a vytvoření svazku NFS – šablona ARM
+      displayName: Resource Manager
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Koncepty
   items:

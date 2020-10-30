@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: Jaká jsou řešení pro spouštění Oracle WebLogic Serveru na virtuálních počítačích Azure?
       href: oracle-weblogic.md
+    - name: Jaká jsou řešení pro spouštění Oracle WebLogic Serveru v Azure Kubernetes Service?
+      href: weblogic-aks.md
     - name: Řešení s využitím OCI
       href: oracle-oci-overview.md
 - name: Rychlé starty
