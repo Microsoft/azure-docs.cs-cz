@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 10/02/2020
 ms.author: joflore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b2ea0806f70d9f99982b9d9af9c462ff0099966
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 46fdaed4a3e1dbbe5575cd573061a480bf330389
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967949"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041946"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolení Azure Active Directory Domain Services pomocí prostředí PowerShell
 
@@ -44,15 +44,15 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 
 Služba Azure služba AD DS vyžaduje instanční objekt a skupinu Azure AD. Tyto prostředky umožňují, aby Azure služba AD DS spravovaná doména synchronizovaná data a definovali, kteří uživatelé mají oprávnění správce ve spravované doméně.
 
-Nejdřív vytvořte instanční objekt služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *2565bd9d-DA50-47d4-8B85-4c97f669dc36*. Neměňte toto ID aplikace.
+Nejdřív vytvořte instanční objekt služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* . Neměňte toto ID aplikace.
 
 Pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] vytvořte instanční objekt služby Azure AD:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
-Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators*. Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
+Nyní vytvořte skupinu Azure AD s názvem *AAD DC Administrators* . Uživatelům přidaným do této skupiny se pak udělí oprávnění k provádění úloh správy ve spravované doméně.
 
 Nejprve pomocí rutiny [Get-AzureADGroup][Get-AzureADGroup] Získejte ID objektu skupiny *AAD DC Administrators* . Pokud skupina neexistuje, vytvořte ji se skupinou *správců řadiče domény AAD* pomocí rutiny [New-AzureADGroup][New-AzureADGroup] :
 
@@ -109,7 +109,7 @@ New-AzResourceGroup `
   -Location $AzureLocation
 ```
 
-Vytvořte virtuální síť a podsítě pro Azure AD Domain Services. Vytvoří se dvě podsítě – jeden pro *DomainServices*a jeden pro *úlohy*. Azure služba AD DS je nasazený do vyhrazené podsítě *DomainServices* . Do této podsítě nesaďte žádné další aplikace ani úlohy. Pro zbytek virtuálních počítačů použijte samostatné *úlohy* nebo jiné podsítě.
+Vytvořte virtuální síť a podsítě pro Azure AD Domain Services. Vytvoří se dvě podsítě – jeden pro *DomainServices* a jeden pro *úlohy* . Azure služba AD DS je nasazený do vyhrazené podsítě *DomainServices* . Do této podsítě nesaďte žádné další aplikace ani úlohy. Pro zbytek virtuálních počítačů použijte samostatné *úlohy* nebo jiné podsítě.
 
 Vytvořte podsítě pomocí rutiny [New-AzVirtualNetworkSubnetConfig][New-AzVirtualNetworkSubnetConfig] a pak vytvořte virtuální síť pomocí rutiny [New-AzVirtualNetwork][New-AzVirtualNetwork] .
 
@@ -200,7 +200,7 @@ $vnet | Set-AzVirtualNetwork
 
 ## <a name="create-a-managed-domain"></a>Vytvoření spravované domény
 
-Nyní vytvoříme spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com*. ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
+Nyní vytvoříme spravovanou doménu. Nastavte ID vašeho předplatného Azure a potom zadejte název spravované domény, třeba *aaddscontoso.com* . ID vašeho předplatného můžete získat pomocí rutiny [Get-AzSubscription][Get-AzSubscription] .
 
 Pokud zvolíte oblast, která podporuje Zóny dostupnosti, prostředky Azure služba AD DS se rozdělují mezi zóny, aby se mohla zvýšit redundance.
 
@@ -252,7 +252,7 @@ Connect-AzureAD
 Connect-AzAccount
 
 # Create the service principal for Azure AD Domain Services.
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 
 # First, retrieve the object ID of the 'AAD DC Administrators' group.
 $GroupObjectId = Get-AzureADGroup `

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 922f4a2785a0b7260bcd0aae19c0172a2fa7a782
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bc5e98484560fcc15e0ea3e289069c84687f158c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283907"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040581"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Vytvoření plánů pro nabídku virtuálního počítače
 
@@ -30,8 +30,8 @@ Po vytvoření plánů vyberte kartu **Přehled plánu** , kterou chcete zobrazi
 
 Akce, které jsou k dispozici v podokně **Přehled plánu** , se liší v závislosti na aktuálním stavu plánu.
 
-- Pokud je stav plánu koncept, vyberte **Odstranit koncept**.
-- Pokud je stav plánu publikovaný v reálném čase, vyberte **zastavit prodej plánu** nebo **synchronizovat soukromou cílovou skupinu**.
+- Pokud je stav plánu koncept, vyberte **Odstranit koncept** .
+- Pokud je stav plánu publikovaný v reálném čase, vyberte **zastavit prodej plánu** nebo **synchronizovat soukromou cílovou skupinu** .
 
 ## <a name="create-a-new-plan"></a>Vytvořit nový plán
 
@@ -40,11 +40,11 @@ V horní části vyberte **vytvořit nový plán** . Zobrazí se dialogové okno
 V poli **ID plánu** Vytvořte jedinečné ID plánu pro každý plán v této nabídce. Toto ID bude pro zákazníky viditelné na webové adrese produktu. Používejte jenom malá písmena a číslice, pomlčky nebo podtržítka a maximálně 50 znaků.
 
 > [!NOTE]
-> Po zvolení možnost **vytvořit**se ID plánu nedá změnit.
+> Po zvolení možnost **vytvořit** se ID plánu nedá změnit.
 
-Do pole **název plánu** zadejte název pro tento plán. Zákazníci uvidí tento název, když rozhodují, který plán vybrat v rámci vaší nabídky. Vytvořte jedinečný název, který bude jasně ukazovat rozdíly mezi plány. Můžete například zadat **Windows Server** s plány průběžných *plateb*, *BYOL*, *Advanced*a *Enterprise* .
+Do pole **název plánu** zadejte název pro tento plán. Zákazníci uvidí tento název, když rozhodují, který plán vybrat v rámci vaší nabídky. Vytvořte jedinečný název, který bude jasně ukazovat rozdíly mezi plány. Můžete například zadat **Windows Server** s plány průběžných *plateb* , *BYOL* , *Advanced* a *Enterprise* .
 
-Vyberte **Vytvořit**.
+Vyberte **Vytvořit** .
 
 ## <a name="plan-setup"></a>Nastavení plánu
 
@@ -52,7 +52,7 @@ Nastavte na nejvyšší úrovni konfiguraci pro typ plánu, určete, zda znovu p
 
 ### <a name="reuse-a-technical-configuration"></a>Opětovné použití technické konfigurace
 
-Pokud máte více než jeden plán stejného typu a jsou mezi nimi identické balíčky, můžete vybrat tento plán, který znovu **použije technickou konfiguraci z jiného plánu**. Tato možnost umožňuje vybrat jeden z dalších plánů stejného typu pro tuto nabídku a umožňuje znovu použít jeho technickou konfiguraci.
+Pokud máte více než jeden plán stejného typu a jsou mezi nimi identické balíčky, můžete vybrat tento plán, který znovu **použije technickou konfiguraci z jiného plánu** . Tato možnost umožňuje vybrat jeden z dalších plánů stejného typu pro tuto nabídku a umožňuje znovu použít jeho technickou konfiguraci.
 
 > [!NOTE]
 > Když znovu použijete technickou konfiguraci z jiného plánu, z tohoto plánu zmizí karta s celou **technickou konfigurací** . Pro tento plán se použijí i podrobnosti technické konfigurace z druhého plánu, včetně všech aktualizací, které v budoucnu provedete. Toto nastavení nelze po publikování plánu změnit.
@@ -114,13 +114,13 @@ Když odeberete trh, zákazníci z tohoto trhu, kteří používají aktivní na
 
 ### <a name="pricing"></a>Ceny
 
-V případě **licenčního modelu**vyberte **měsíčně účtované plány založené na využití** , abyste nakonfigurovali ceny pro tento plán, nebo vyberte možnost **Přineste si vlastní licenci** a umožněte zákazníkům používat tento plán s existující licencí.
+V případě **licenčního modelu** vyberte **měsíčně účtované plány založené na využití** , abyste nakonfigurovali ceny pro tento plán, nebo vyberte možnost **Přineste si vlastní licenci** a umožněte zákazníkům používat tento plán s existující licencí.
 
 V případě měsíčního plánu účtovaného podle využití použijte jednu z následujících možností cenové položky:
 
-- **Za jádro**: zadejte ceny za jádro v USD. Společnost Microsoft vypočítá ceny na základě základní velikosti a převede je na místní měny pomocí aktuálního směnného kurzu.
-- **Za jadernou velikost**: zadejte ceny podle velikosti jader v USD. Společnost Microsoft vypočítá ceny a převede je na místní měny pomocí aktuálního směnného kurzu.
-- **Podle trhu a základní velikosti**: Poskytněte ceny za jednotlivé základní velikosti pro všechny trhy. Ceny můžete importovat z tabulky.
+- **Za jádro** : zadejte ceny za jádro v USD. Společnost Microsoft vypočítá ceny na základě základní velikosti a převede je na místní měny pomocí aktuálního směnného kurzu.
+- **Za jadernou velikost** : zadejte ceny podle velikosti jader v USD. Společnost Microsoft vypočítá ceny a převede je na místní měny pomocí aktuálního směnného kurzu.
+- **Podle trhu a základní velikosti** : Poskytněte ceny za jednotlivé základní velikosti pro všechny trhy. Ceny můžete importovat z tabulky.
 
 > [!NOTE]
 > Uložte cenové změny, abyste mohli exportovat data o cenách. Po zveřejnění ceny za uvedení na trh ve vašem plánu ji nelze později změnit. Abyste měli jistotu, že jsou ceny před publikováním správné, exportujte tabulku s cenami a Prohlédněte si ceny na každém trhu.
@@ -133,14 +133,14 @@ Zákazníkům si můžete nabídnout měsíční nebo měsíční *bezplatnou zk
 
 Jednotlivé plány můžete navrhovat tak, aby je bylo možné zobrazit všem uživatelům nebo pouze pro předem vybranou cílovou skupinu. Přiřaďte členství v této omezené cílové skupině pomocí ID předplatných Azure.
 
-**Veřejné**: váš plán uvidí všichni uživatelé.
+**Veřejné** : váš plán uvidí všichni uživatelé.
 
-**Soukromá skupina**: Nastavte si váš plán viditelný jenom pro předvybranou cílovou skupinu. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo ji změnit na veřejné. Po zveřejnění plánu musí být veřejný. Nedá se změnit zpátky na soukromý plán.
+**Soukromá skupina** : Nastavte si váš plán viditelný jenom pro předvybranou cílovou skupinu. Po zveřejnění jako soukromého plánu můžete cílovou skupinu aktualizovat nebo ji změnit na veřejné. Po zveřejnění plánu musí být veřejný. Nedá se změnit zpátky na soukromý plán.
 
 > [!NOTE]
 > Soukromá nebo omezená skupina se liší od cílové skupiny Preview, kterou jste definovali v podokně **náhledu** . Cílová skupina Preview může získat přístup k vaší nabídce _před tím, než_ se publikuje živě do Azure Marketplace. I když se soukromá cílová skupina vztahuje jenom na konkrétní plán, cílová skupina Preview může zobrazit všechny soukromé a veřejné plány pro účely ověření.
 
-**Skupina s omezeným přístupem (ID předplatných Azure)**: přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu, pomocí ID předplatných Azure. Volitelně můžete zahrnout popis každého ID předplatného Azure, které jste přiřadili. Pokud importujete tabulku CSV, přidejte až 10 ID předplatných ručně nebo až 20 000 ID. ID předplatných Azure se reprezentují jako identifikátory GUID a všechna písmena musí být malá.
+**Skupina s omezeným přístupem (ID předplatných Azure)** : přiřaďte cílovou skupinu, která bude mít přístup k tomuto privátnímu plánu, pomocí ID předplatných Azure. Volitelně můžete zahrnout popis každého ID předplatného Azure, které jste přiřadili. Pokud importujete tabulku CSV, přidejte až 10 ID předplatných ručně nebo až 20 000 ID. ID předplatných Azure se reprezentují jako identifikátory GUID a všechna písmena musí být malá.
 
 >[!Note]
 >Pro předplatná Azure vytvořená prostřednictvím prodejce programu Cloud Solution Provider (CSP) nejsou podporovány soukromé nabídky.
@@ -165,9 +165,9 @@ Poskytněte image a další technické vlastnosti, které jsou spojené s tímto
 
 V podokně **operační systém** postupujte takto:
 
-- V případě **řady operačních systémů**vyberte operační systém **Windows** nebo **Linux** .
-- U vydaných **verzí** nebo **dodavatelů**vyberte dodavatel Windows Release nebo Linux.
-- V případě **popisného názvu operačního**systému zadejte popisný název operačního systému. Tento název je viditelný pro zákazníky.
+- V případě **řady operačních systémů** vyberte operační systém **Windows** nebo **Linux** .
+- U vydaných **verzí** nebo **dodavatelů** vyberte dodavatel Windows Release nebo Linux.
+- V případě **popisného názvu operačního** systému zadejte popisný název operačního systému. Tento název je viditelný pro zákazníky.
 
 ### <a name="recommended-vm-sizes"></a>Doporučené velikosti virtuálních počítačů
 
@@ -179,24 +179,48 @@ Otevřete veřejné nebo soukromé porty na nasazeném virtuálním počítači.
 
 ### <a name="storage-option-for-deployment"></a>Možnost úložiště pro nasazení
 
-Pro **možnost nasazení disku**vyberte typ nasazení disku, který můžou vaši zákazníci pro virtuální počítač použít. Microsoft doporučuje omezení nasazení pouze na **spravované disky** .
+Pro **možnost nasazení disku** vyberte typ nasazení disku, který můžou vaši zákazníci pro virtuální počítač použít. Microsoft doporučuje omezení nasazení pouze na **spravované disky** .
 
 ### <a name="properties"></a>Vlastnosti
 
-Pokud chcete **podporovat urychlené síťové služby**, vyberte, jestli váš virtuální počítač podporuje [akcelerované síťové služby](https://go.microsoft.com/fwlink/?linkid=2124513).
+Pokud chcete **podporovat urychlené síťové služby** , vyberte, jestli váš virtuální počítač podporuje [akcelerované síťové služby](https://go.microsoft.com/fwlink/?linkid=2124513).
+
+### <a name="generations"></a>Všechna
+
+Vygenerování virtuálního počítače definuje virtuální hardware, který používá. Na základě potřeb vašeho zákazníka můžete publikovat virtuální počítač 1. generace, virtuální počítač 2. generace nebo obojí.
+
+1. Při vytváření nové nabídky vyberte **typ generace** a zadejte požadované podrobnosti o imagi:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details.png" alt-text="Zobrazení rozevíracího seznamu generování":::
+
+2. Pokud chcete do plánu přidat další generaci, vyberte **Přidat generaci** :
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="Zobrazení rozevíracího seznamu generování":::
+
+    Pak zadejte podrobnosti generování:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="Zobrazení rozevíracího seznamu generování":::
+
+    **ID generování** , které zvolíte, bude zákazníkům viditelné na místech, jako jsou adresy URL produktů a šablony ARM (pokud jsou k dispozici). Používejte jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování ji nelze změnit.
+
+3. Chcete-li aktualizovat existující virtuální počítač, který má již vytvořenou generaci 1, jednoduše upravte podrobnosti na stránce **Technická konfigurace** :
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Zobrazení rozevíracího seznamu generování":::
+
+Další informace o rozdílech mezi možnostmi generace 1 a generace 2 najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../virtual-machines/generation-2.md).
 
 ### <a name="vm-images"></a>Image virtuálních počítačů
 
 Zadejte verzi disku a identifikátor URI sdíleného přístupového podpisu (SAS) pro image virtuálních počítačů. Přidejte k každé imagi virtuálního počítače až 16 datových disků. Zadejte v zadaném odeslání jenom jednu novou verzi image na plán. Po publikování je obrázek možné upravovat, ale můžete ho odstranit. Odstranění verze zabrání novým i stávajícím uživatelům nasazovat novou instanci odstraněné verze.
 
-- **Verze disku**: verze image, kterou poskytujete.
-- **Identifikátor URI SAS**: umístění v účtu služby Azure Storage, kam jste uložili virtuální pevný disk operačního systému. Informace o tom, jak získat identifikátor URI SAS, najdete v tématu [Získání identifikátoru URI sdíleného přístupového podpisu pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
+- **Verze disku** : verze image, kterou poskytujete.
+- **Identifikátor URI SAS** : umístění v účtu služby Azure Storage, kam jste uložili virtuální pevný disk operačního systému. Informace o tom, jak získat identifikátor URI SAS, najdete v tématu [Získání identifikátoru URI sdíleného přístupového podpisu pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 - Image datových disků jsou taky identifikátory URI sdíleného přístupového virtuálního pevného disku, které jsou uložené ve svých účtech úložiště Azure.
 - Přidá do plánu pouze jeden obrázek pro každé odeslání.
 
 Bez ohledu na to, jaký operační systém používáte, přidejte jenom minimální počet datových disků, které řešení vyžaduje. Během nasazení nemohou zákazníci odebrat disky, které jsou součástí bitové kopie, ale mohou vždy přidávat disky během nebo po nasazení.
 
-Než budete pokračovat, vyberte **Uložit koncept** a vraťte se do **přehledu plánu**.
+Než budete pokračovat, vyberte **Uložit koncept** a vraťte se do **přehledu plánu** .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042455"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamování dat jako vstup do Stream Analytics
 
@@ -21,6 +21,7 @@ Stream Analytics má prvotřídní integraci s datovými proudy Azure jako vstup
 - [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) 
 
 Tyto vstupní prostředky můžou být živé ve stejném předplatném Azure jako vaše úloha Stream Analytics nebo jiné předplatné.
 
@@ -125,18 +126,18 @@ Pokud používáte data datového proudu z IoT Hub, máte v dotazu Stream Analyt
 | **IoTHub. EnqueuedTime** | Čas, kdy IoT Hub přijal zprávu. |
 
 
-## <a name="stream-data-from-blob-storage"></a>Streamování dat z úložiště objektů BLOB
-Pro scénáře s velkým množstvím nestrukturovaných dat, která se mají ukládat v cloudu, Azure Blob Storage nabízí nákladově efektivní a škálovatelné řešení. Data v úložišti objektů BLOB se obvykle považují za neaktivní data. data objektů BLOB se ale dají zpracovat jako datový proud pomocí Stream Analytics. 
+## <a name="stream-data-from-blob-storage-or-data-lake-storage-gen2"></a>Streamování dat z úložiště objektů BLOB nebo Data Lake Storage Gen2
+Pro scénáře s velkým množstvím nestrukturovaných dat, která se mají ukládat v cloudu, Azure Blob Storage nebo Azure Data Lake Storage Gen2 (ADLS Gen2) nabízí cenově výhodné a škálovatelné řešení. Data v úložišti objektů BLOB nebo ADLS Gen2 se obvykle považují za neaktivní data. Tato data ale mohou být zpracována jako datový proud pomocí Stream Analytics. 
 
-Zpracování protokolu je běžně používaný scénář pro použití vstupů služby Blob Storage s Stream Analytics. V tomto scénáři byly datové soubory telemetrie zachyceny ze systému a musí být analyzovány a zpracovány pro extrakci smysluplných dat.
+Zpracování protokolu je běžně používaný scénář pro použití takových vstupů s Stream Analytics. V tomto scénáři byly datové soubory telemetrie zachyceny ze systému a musí být analyzovány a zpracovány pro extrakci smysluplných dat.
 
-Výchozím časovým razítkem událostí služby Blob Storage v Stream Analytics je časové razítko, které bylo naposledy změněno v objektu BLOB `BlobLastModifiedUtcTime` . Pokud se objekt BLOB nahraje do účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí pomocí možnosti *Now* (13:01), objekt BLOB se nevybere, protože čas změny spadá mimo dobu běhu úlohy.
+Výchozím časovým razítkem události BLOB Storage nebo ADLS Gen2 v Stream Analytics je časové razítko, které bylo naposledy změněno `BlobLastModifiedUtcTime` . Pokud se objekt BLOB nahraje do účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí pomocí možnosti *teď* v 13:01, nebude se po změně doby trvání za běhu úlohy vyzvednuta.
 
 Pokud se objekt BLOB nahraje do kontejneru účtu úložiště v 13:00 a úloha Azure Stream Analytics se spustí s využitím *vlastního času* v 13:00 nebo dřívějším, bude se tento objekt BLOB vyzvednout, protože čas změny spadá do doby běhu úlohy.
 
 Pokud se úloha Azure Stream Analytics začala používat *hned* v 13:00 a do kontejneru účtu úložiště se nahraje objekt blob na 13:01, Azure Stream Analytics si tento objekt BLOB zachová. Časové razítko přiřazené ke každému objektu BLOB je založeno pouze na `BlobLastModifiedTime` . Složka, ve které je objekt blob, nemá žádnou relaci s přiřazeným časovým razítkem. Pokud je například objekt BLOB *2019/10-01/00/b1.txt* s `BlobLastModifiedTime` 2019-11-11m, pak časové razítko přiřazené tomuto objektu BLOB je 2019-11-11.
 
-Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Stream Analytics úloha vyžádá data ze vstupu Azure Blob Storage každou sekundu, pokud je k dispozici soubor BLOB. Pokud soubor BLOB není k dispozici, existuje exponenciální omezení rychlosti s maximálním časovým intervalem 90 sekund.
+Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Stream Analytics úloha vyžádá data z úložiště objektů BLOB v Azure nebo ADLS Gen2 vstup každou sekundu, pokud je soubor BLOB k dispozici. Pokud soubor BLOB není k dispozici, existuje exponenciální omezení rychlosti s maximálním časovým intervalem 90 sekund.
 
 Vstupy ve formátu CSV vyžadují pro definování polí pro datovou sadu řádek záhlaví a všechna řádková pole záhlaví musí být jedinečná.
 
@@ -152,10 +153,10 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | Vlastnost | Popis |
 | --- | --- |
 | **Alias vstupu** | Popisný název, který použijete v dotazu úlohy pro odkazování na tento vstup. |
-| **Předplatné** | Vyberte předplatné, ve kterém existuje IoT Hub prostředek. | 
+| **Předplatné** | Vyberte předplatné, ve kterém prostředek úložiště existuje. | 
 | **Účet úložiště** | Název účtu úložiště, ve kterém se nacházejí soubory objektů BLOB. |
-| **Klíč účtu úložiště** | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení úložiště objektů BLOB ručně. |
-| **Kontejner** | Kontejner pro vstup objektu BLOB Kontejnery poskytují logické seskupení pro objekty blob uložené v Blob service Microsoft Azure. Když nahrajete objekt blob do služby Azure Blob Storage, musíte pro tento objekt BLOB zadat kontejner. Můžete zvolit možnost **použít existující** kontejner nebo  **vytvořit nový** , chcete-li vytvořit nový kontejner.|
+| **Klíč účtu úložiště** | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení ručně. |
+| **Kontejner** | Kontejnery poskytují logické seskupení pro objekty blob. Můžete zvolit možnost **použít existující** kontejner nebo  **vytvořit nový** , chcete-li vytvořit nový kontejner.|
 | **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo. `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
 | **Formát data** (volitelné) | Použijete-li proměnnou data v cestě, formát data, ve kterém jsou soubory uspořádány. Příklad: `YYYY/MM/DD` <br/><br/> Pokud má vstup objektu BLOB `{date}` nebo `{time}` v jeho cestě, složky se procházejí ve vzestupném časovém pořadí.|
 | **Formát času** (volitelné) |  Použijete-li časovou proměnnou v cestě, formát času, ve kterém jsou soubory uspořádány. V současné době je jediná podporovaná hodnota `HH` pro hodiny. |

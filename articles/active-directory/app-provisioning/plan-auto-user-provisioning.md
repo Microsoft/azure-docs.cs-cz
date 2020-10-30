@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363687"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041127"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -34,13 +34,13 @@ Zřizování uživatelů vytvoří základ pro průběžné řízení identit a 
 
 Mezi klíčové výhody povolení automatického zřizování uživatelů patří:
 
-* **Zvýšení produktivity**. Pomocí jednoho rozhraní pro správu zřizování uživatelů můžete spravovat identity uživatelů napříč SaaS aplikacemi. Toto rozhraní má jednu sadu zásad zřizování.
+* **Zvýšení produktivity** . Pomocí jednoho rozhraní pro správu zřizování uživatelů můžete spravovat identity uživatelů napříč SaaS aplikacemi. Toto rozhraní má jednu sadu zásad zřizování.
 
-* **Řízení rizik**. Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách, které definují role nebo přístup.
+* **Řízení rizik** . Zabezpečení můžete zvýšit automatizací změn na základě stavu zaměstnanců nebo členství ve skupinách, které definují role nebo přístup.
 
-* **Vyřešte dodržování předpisů a zásady správného řízení**. Azure AD podporuje protokoly nativního auditu pro každou žádost o zřízení uživatele. Žádosti jsou spouštěny ve zdrojovém i cílovém systému. Díky tomu můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
+* **Vyřešte dodržování předpisů a zásady správného řízení** . Azure AD podporuje protokoly nativního auditu pro každou žádost o zřízení uživatele. Žádosti jsou spouštěny ve zdrojovém i cílovém systému. Díky tomu můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 
-* **Snižte náklady**. Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
+* **Snižte náklady** . Automatické zřizování uživatelů snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Omezuje nutnost vlastních řešení pro zřizování uživatelů, skriptů a protokolů auditu.
 
 ### <a name="licensing"></a>Licencování
 
@@ -66,14 +66,14 @@ Tento článek používá následující výrazy:
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| Zdroje a prostředky| Odkaz a popis |
+| Zdroje informací| Odkaz a popis |
 | - | - |
 | Webináře na vyžádání| [Správa podnikových aplikací pomocí Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Přečtěte si, jak vám Azure AD může přispět k zajištění jednotného přihlašování k podnikovým aplikacím SaaS a osvědčeným postupům pro řízení přístupu. |
 | Videa| [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak nasadit zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrování Salesforce s Azure AD: Jak automatizovat zřizování uživatelů](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Online kurzy| SkillUp online:  [Správa identit](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Naučte se integrovat Azure AD s mnoha aplikacemi SaaS a zabezpečit uživatelům přístup k těmto aplikacím. |
 | Knihy| [Moderní ověřování pomocí Azure Active Directory pro webové aplikace (Referenční příručka pro vývojáře) 1](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Toto je autoritativní podrobně průvodce pro vytváření řešení pro ověřování služby Active Directory pro tato nová prostředí. |
 | Kurzy| Podívejte se na [Seznam kurzů, jak integrovat aplikace SaaS s Azure AD](../saas-apps/tutorial-list.md). |
-| Nejčastější dotazy| [Nejčastější dotazy](../app-provisioning/user-provisioning.md) k automatizovanému zřizování uživatelů |
+| Časté otázky| [Nejčastější dotazy](../app-provisioning/user-provisioning.md) k automatizovanému zřizování uživatelů |
 
 ### <a name="solution-architectures"></a>Architektury řešení
 
@@ -99,7 +99,7 @@ V tomto příkladu se uživatelé a skupiny vytvoří v databázi HR připojené
 
 V tomto příkladu dojde k vytvoření uživatele ve službě Azure AD a služba zřizování Azure AD spravuje Automatické zřizování uživatelů pro cílové (SaaS) aplikace.
 
-![Obrázek 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagram, který znázorňuje proces vytvoření uživatele nebo skupiny z místní aplikace v jazyce H R prostřednictvím služby Azure A D Provisioning pro cílové aplikace S a a S.](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Popis pracovního postupu:**
 
@@ -316,7 +316,7 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Agent zřizování Azure AD Connect: Historie verzí](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Zdroje informací
 
 * [Poskytnutí zpětné vazby k produktu](https://feedback.azure.com/forums/169401-azure-active-directory)
 

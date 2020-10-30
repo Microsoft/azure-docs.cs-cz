@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282204"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042673"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -68,13 +68,13 @@ Možnost použít rekurzivní změny seznamů ACL z nadřazeného adresáře na 
 
 ## <a name="azcopy"></a>AzCopy
 
-Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)).Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.
+Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Starší verze AzCopy, jako je AzCopy v 8.1, nejsou podporovány.
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure Storage Explorer
+## <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
 
-Používejte pouze verze  `1.6.0`   nebo vyšší.
+Používejte pouze verze `1.6.0` nebo vyšší.
 
 <a id="explorer-in-portal"></a>
 
@@ -84,7 +84,7 @@ Seznamy řízení přístupu (ACL) ještě nejsou podporované.
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>Aplikace třetích stran
+## <a name="third-party-applications"></a>Aplikace třetích stran
 
 Aplikace třetích stran, které používají rozhraní REST API k práci, budou fungovat i v případě, že je použijete s Data Lake Storage Gen2 aplikacemi, které volají rozhraní API objektů blob, budou pravděpodobně fungovat.
 
@@ -92,38 +92,15 @@ Aplikace třetích stran, které používají rozhraní REST API k práci, budou
 
 Pokud byl kontejneru udělen [přístup anonymního přístupu pro čtení](storage-manage-access-to-resources.md) , nebudou mít seznamy ACL žádný vliv na tento kontejner nebo soubory v tomto kontejneru.
 
-### <a name="diagnostic-logs"></a>Diagnostické protokoly
+## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
 Nastavení pro dny uchování se ještě nepodporuje, ale protokoly můžete odstranit ručně pomocí libovolného podporovaného nástroje, jako je Průzkumník služby Azure Storage, REST nebo SDK.
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Problémy specifické pro BlockBlobStorage účty úložiště úrovně Premium – výkon
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Zásady správy životního cyklu s úrovní Premium pro Azure Data Lake Storage
 
-### <a name="diagnostic-logs"></a>Diagnostické protokoly
+Nemůžete přesouvat data uložená na úrovni Premium mezi horkou, studenou a archivní úrovní. Data z úrovně Premium ale můžete kopírovat na úroveň Hot Access v jiném účtu.
 
-Diagnostické protokoly nelze zatím povolit pomocí Azure Portal. Můžete je povolit pomocí prostředí PowerShell. Příklad:
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
-
-- Zásady správy životního cyklu se podporují jenom u účtů pro obecné účely v2. V účtech úložiště úrovně Premium BlockBlobStorage ještě nejsou podporované.
-- Data nejde přesunout z úrovně Premium do nižších úrovní.
-
-
-### <a name="hdinsight-support"></a>Podpora HDInsight
-
-Když vytvoříte cluster HDInsight n, nemůžete ještě vybrat účet BlockBlobStorage, který má povolenou funkci hierarchického oboru názvů. Po vytvoření však můžete účet připojit ke clusteru.
-
-### <a name="dremio-support"></a>Podpora Dremio
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Podpora Dremio s účty úložiště Premium-Performance BlockBlobStorage
 
 Dremio se ještě nepřipojí k účtu BlockBlobStorage, který má povolenou funkci hierarchického oboru názvů. 
 

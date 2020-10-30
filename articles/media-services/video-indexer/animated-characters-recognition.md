@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040087"
 ---
 # <a name="animated-character-detection-preview"></a>Detekce animovaných postav (Preview)
 
@@ -75,11 +75,11 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
     > [!NOTE]
     > K poskytnutí všech klíčů, které potřebujete k získání dvou samostatných prostředků v Custom Vision, jeden pro školení a jeden pro předpověď.
 1. Přejděte na [video indexer](https://vi.microsoft.com/)a přihlaste se.
-1. Klikněte na otazník v pravém horním rohu stránky a vyberte **Reference k rozhraní API**.
+1. Klikněte na otazník v pravém horním rohu stránky a vyberte **Reference k rozhraní API** .
 1. Ujistěte se, že jste se přihlásili k odběru API Management kliknutím na kartu **produkty** . Pokud máte připojené rozhraní API, můžete pokračovat k dalšímu kroku, jinak se přihlaste k odběru. 
-1. Na portálu pro vývojáře klikněte na **úplný odkaz rozhraní API** a přejděte na **operace**.  
-1. Vyberte **připojit Custom Vision účet (Preview)** a klikněte na **vyzkoušet**.
-1. Vyplňte požadovaná pole i přístupového tokenu a klikněte na **Odeslat**. 
+1. Na portálu pro vývojáře klikněte na **úplný odkaz rozhraní API** a přejděte na **operace** .  
+1. Vyberte **připojit Custom Vision účet (Preview)** a klikněte na **vyzkoušet** .
+1. Vyplňte požadovaná pole i přístupového tokenu a klikněte na **Odeslat** . 
 
     Další informace o tom, jak získat přístupový token Video Indexer přejděte na portál pro [vývojáře](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)a podívejte se na [příslušnou dokumentaci](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api).  
 1. Jakmile volání vrátí odpověď 200 OK, váš účet je připojený.
@@ -96,9 +96,9 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 1. Přejděte na web [Video Indexer](https://vi.microsoft.com/) a přihlaste se.
 1. Klikněte na tlačítko Přizpůsobení modelu obsahu v pravém horním rohu stránky.
 
-    ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization.png)
+    ![Snímek obrazovky, který zobrazuje stránku Video Indexer s tlačítkem přizpůsobení modelu obsahu, který je vybraný v pravém horním rohu.](./media/animated-characters-recognition/content-model-customization.png)
 1. V části Přizpůsobení modelu přejdete na kartu **animované znaky** .
-1. Klikněte na **přidat model**.
+1. Klikněte na **přidat model** .
 1. Název, který zadáte, a kliknutím na ENTER uložte název.
 
 > [!NOTE]
@@ -108,8 +108,8 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 
 1. V horní nabídce klikněte na tlačítko **nahrát** .
 1. Vyberte video, které chcete nahrát (ze souboru nebo adresy URL).
-1. Klikněte na **Upřesnit možnosti**.
-1. V části **lidé/animované znaky** vyberte **modely animace**.
+1. Klikněte na **Upřesnit možnosti** .
+1. V části **lidé/animované znaky** vyberte **modely animace** .
 1. Pokud máte jeden model, vybere se automaticky a pokud máte více modelů, můžete si z rozevírací nabídky vybrat příslušnou z nich.
 1. Klikněte na nahrát.
 1. Po indexování videa se v podokně **přehledy** zobrazí zjištěné znaky v části **animované znaky** .
@@ -129,7 +129,7 @@ Pomocí těchto kroků se připojíte Custom Vision účtu k Video Indexer nebo 
 
         Otevřete stránku přizpůsobení a klikněte na kartu **animované znaky** a potom klikněte na tlačítko **výuka** a prohlaste svůj model.
          
-        Pokud máte placený účet, můžete kliknout na odkaz **Správa modelů v zákaznických vizi** (viz níže). Pak budete přesměrováni na stránku modelu v **Custom Vision**.
+        Pokud máte placený účet, můžete kliknout na odkaz **Správa modelů v zákaznických vizi** (viz níže). Pak budete přesměrováni na stránku modelu v **Custom Vision** .
  
         ![Přizpůsobení modelu obsahu](./media/animated-characters-recognition/content-model-customization-tab.png)
 

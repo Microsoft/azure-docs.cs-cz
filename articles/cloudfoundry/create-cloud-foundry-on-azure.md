@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73161775"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040798"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Vytvoření Cloud Foundryho clusteru s Pivotem v Azure
 
@@ -36,13 +36,13 @@ Existuje několik způsobů, jak vygenerovat klíč SSH (Secure Shell) pomocí s
 ssh-keygen -t rsa -b 2048
 ```
 
-Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]
 >
-> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
+> K vytvoření instančního objektu potřebujete oprávnění k účtu vlastníka. Můžete také napsat skript pro automatizaci vytváření instančního objektu. Můžete například použít Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest).
 
 1. Přihlaste se ke svému účtu Azure.
 
@@ -50,7 +50,7 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](h
 
     ![Přihlášení Azure CLI](media/deploy/az-login-output.png )
  
-    Zkopírujte hodnotu ID jako **ID vašeho předplatného**a zkopírujte hodnotu "tenantId", která se použije později.
+    Zkopírujte hodnotu ID jako **ID vašeho předplatného** a zkopírujte hodnotu "tenantId", která se použije později.
 
 2. Nastavte své výchozí předplatné pro tuto konfiguraci.
 
@@ -84,7 +84,7 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](h
 
     `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného**, **tenantID**, **clientID**a **clientSecret** , které jste zkopírovali dříve. Uložte soubor.
+7. Vytvořte soubor. JSON v následujícím formátu. Použijte hodnoty **ID předplatného** , **tenantID** , **clientID** a **clientSecret** , které jste zkopírovali dříve. Uložte soubor.
 
     ```json
     {
@@ -98,7 +98,7 @@ Další informace najdete v tématu [použití klíčů ssh s Windows v Azure](h
 ## <a name="get-the-pivotal-network-token"></a>Získání tokenu pro Pivoting Network
 
 1. Zaregistrujte se nebo se přihlaste ke svému účtu [pivoted Network](https://network.pivotal.io) .
-2. V pravém horním rohu stránky vyberte název vašeho profilu. Vyberte **Upravit profil**.
+2. V pravém horním rohu stránky vyberte název vašeho profilu. Vyberte **Upravit profil** .
 3. Posuňte se do dolní části stránky a zkopírujte hodnotu **tokenu starší verze API** . Tato hodnota je hodnota **tokenu vaší kontingenční sítě** , kterou použijete později.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Zřízení clusteru Cloud Foundry v Azure
@@ -128,4 +128,3 @@ Zadejte parametry a vytvořte cluster PCF.
 5. Správce OPS PCF zobrazí nasazené instance Azure. Nyní můžete nasazovat a spravovat aplikace zde.
                
     ![Nasadila se instance Azure v pivotu.](media/deploy/ops-mgr.png )
- 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 370e9e0df2a4fc2ee4aca43c01bfe0a98077d189
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6367a3c3e6a946068498c92456ba42cd3c7c4bdd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018844"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042637"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
@@ -33,10 +33,10 @@ Nové velikosti virtuálních počítačů Ddv4 zahrnují rychlé, větší mís
 [Ukládání Premium Storage do mezipaměti](premium-storage-performance.md): nepodporováno<br>
 [Migrace za provozu](maintenance-and-updates.md): podporováno<br>
 [Aktualizace pro zachování paměti](maintenance-and-updates.md): podporováno<br>
-[Podpora generování virtuálních počítačů](generation-2.md): generace 1<br>
+[Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br> 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -45,6 +45,8 @@ Nové velikosti virtuálních počítačů Ddv4 zahrnují rychlé, větší mís
 | Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8|16000 |
 | Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8|24000 |
 | Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8|30000 |
+
+<sup>**</sup>Tyto hodnoty IOPs se dají zaručit pomocí [virtuálních počítačů s Gen2](generation-2.md) .
 
 ## <a name="ddsv4-series"></a>Ddsv4-Series
 
@@ -63,7 +65,7 @@ Nové velikosti virtuálních počítačů Ddsv4 zahrnují rychlé, větší mí
 [Podpora generování virtuálních počítačů](generation-2.md): generace 1 a 2<br>
 <br> 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | <sup>**</sup> Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet|Očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3200/48 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2|2000 |
@@ -72,6 +74,8 @@ Nové velikosti virtuálních počítačů Ddsv4 zahrnují rychlé, větší mí
 | Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308000/1936 (800) | 51200/768 | 8|16000 |
 | Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8|24000 |
 | Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8|30000 |
+
+<sup>**</sup>Tyto hodnoty IOPs se dají zaručit pomocí [virtuálních počítačů s Gen2](generation-2.md) .
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18260867f0258ebe3cc885c5a1b1754f143bfccc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fd95de8033fc5a986ac30677a4272336b1e17244
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541600"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041568"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
@@ -73,11 +73,11 @@ V tomto kroku vytvoříte bránu virtuální sítě pro svou virtuální síť. 
 
 Azure používá certifikáty k ověřování klientů, kteří se připojují k virtuální síti přes připojení VPN typu Point-to-Site. Jakmile získáte kořenový certifikát, [nahrajete](#uploadfile) do Azure informace o veřejném klíči. Azure pak kořenový certifikát považuje za důvěryhodný pro připojení k virtuální síti přes Point-to-Site. Z kořenového certifikátu také generujete klientské certifikáty, které pak nainstalujete na každém klientském počítači. Klientský certifikát se používá k ověřování klienta při zahájení připojení k virtuální síti. 
 
-### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="getcer"></a>1. získání souboru. cer pro kořenový certifikát
+### <a name="1-root-certificate"></a><a name="getcer"></a>1. kořenový certifikát
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="2-generate-a-client-certificate"></a><a name="generateclientcert"></a>2. vygenerujte klientský certifikát.
+### <a name="2-client-certificate"></a><a name="generateclientcert"></a>2. klientský certifikát
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
@@ -142,21 +142,7 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Připojení z klienta VPN systému Windows
 
->[!NOTE]
->Na klientském počítači s Windows, že kterého se připojujete, musíte mít oprávnění správce.
->
->
-
-1. Chcete-li se připojit ke své síti VNet, přejděte na klientském počítači na připojení VPN a vyhledejte připojení VPN, které jste vytvořili. Bude mít stejný název jako vaše virtuální síť. Vyberte **Connect** (Připojit). Může se zobrazit místní zpráva týkající se použití certifikátu. Pokud chcete používat zvýšená oprávnění, vyberte **pokračovat** .
-
-2. Na stránce Stav **připojení** vyberte **připojit** a spusťte připojení. Pokud uvidíte obrazovku **Výběr certifikátu** , ujistěte se, že zobrazený klientský certifikát je ten, který chcete pro připojení použít. Pokud není, vyberte pomocí šipky rozevíracího seznamu správný certifikát a pak vyberte **OK** .
-
-   ![Připojení klienta VPN k Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "připojit")
-3. Vaše připojení bylo vytvořeno.
-
-   ![Vytvořené připojení](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png "navázáno připojení")
-
-#### <a name="troubleshoot-windows-p2s-connections"></a>Řešení potíží s připojeními P2S v systému Windows
+[!INCLUDE [Connect from a Windows client](../../includes/vpn-gateway-p2s-connect-windows-client.md)]
 
 [!INCLUDE [verifies client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 

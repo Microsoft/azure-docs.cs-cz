@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: Vytvoření šablony Azure DB pro MySQL – ARM'
 description: V tomto rychlém startu se dozvíte, jak vytvořit server Azure Database for MySQL s integrací virtuální sítě pomocí Azure Resource Manager šablony.
-author: mgblythe
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 97a16bd81fd79646fb3693ec2dc4b8a40b9a6a3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 952bfa7182997511ce072c051d872140c3b907cb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896158"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041214"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Azure Database for MySQL je spravovaná služba, pomocí které můžete spoušt
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
@@ -70,34 +70,34 @@ Vyberte následující odkaz pro nasazení šablony Azure Database for MySQL ser
 
 Na stránce **nasadit Azure Database for MySQL se sítí VNET** :
 
-1. V poli **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
+1. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK** .
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru**, **přihlašovací jméno správce**a **přihlašovací heslo správce**.
+3. Zadejte **název serveru** , **přihlašovací jméno správce** a **přihlašovací heslo správce** .
 
     :::image type="content" source="./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png" alt-text="Nasazení do Azure":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
-    * **Předplatné**: předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32*nebo *64*.
-    * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
-    * **Velikost SKU MB**: velikost úložiště pro Azure Database for MySQL server (standardně *5120*) v megabajtech.
-    * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
-    * **Rodina SKU**: *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
-    * **MySQL verze**: verze serveru MySQL, která se má nasadit, například *5,6* nebo *5,7* (výchozí nastavení).
-    * **Dny uchovávání záloh**: požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7*).
-    * **Geograficky redundantní zálohování**: *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
-    * **Virtual Network název**: název virtuální sítě (výchozí *azure_mysql_vnet*).
-    * **Název podsítě**: název podsítě (výchozí *azure_mysql_subnet*).
-    * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
-    * **Předpona adresy virtuální**sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
-    * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
+    * **Předplatné** : předplatné Azure, které chcete použít pro server.
+    * **Kapacita SKU** : kapacita Vcore, která může být *2* (výchozí), *4* , *8* , *16* , *32* nebo *64* .
+    * **Název SKU** : Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1* , *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32* .
+    * **Velikost SKU MB** : velikost úložiště pro Azure Database for MySQL server (standardně *5120* ) v megabajtech.
+    * **Úroveň SKU** : vrstva nasazení, jako je například *Basic* , *GeneralPurpose* (výchozí), nebo *MemoryOptimized* .
+    * **Rodina SKU** : *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
+    * **MySQL verze** : verze serveru MySQL, která se má nasadit, například *5,6* nebo *5,7* (výchozí nastavení).
+    * **Dny uchovávání záloh** : požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7* ).
+    * **Geograficky redundantní zálohování** : *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
+    * **Virtual Network název** : název virtuální sítě (výchozí *azure_mysql_vnet* ).
+    * **Název podsítě** : název podsítě (výchozí *azure_mysql_subnet* ).
+    * **Virtual Network název pravidla** : název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet* ).
+    * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16* ).
+    * **Předpona podsítě** : Předpona adresy pro podsíť (výchozí *10.0.0.0/16* ).
 
-5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními** .
 
-6. Vyberte **Koupit**.
+6. Vyberte **Koupit** .
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -153,7 +153,7 @@ echo "Press [ENTER] to continue ..."
 
 Pomocí těchto kroků můžete zobrazit přehled nového serveru Azure Database for MySQL:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for MySQL servery**.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for MySQL servery** .
 
 2. V seznamu databáze vyberte nový server. Zobrazí se stránka s **přehledem** nového serveru Azure Database for MySQL.
 
@@ -187,13 +187,13 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků** .
 
 2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
 
-3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků** .
 
-4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit** .
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

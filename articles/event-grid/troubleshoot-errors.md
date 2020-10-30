@@ -3,12 +3,12 @@ title: Azure Event Grid – Průvodce odstraňováním potíží
 description: Tento článek uvádí seznam kódů chyb, chybové zprávy, popisy a doporučené akce.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119034"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041398"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Řešení chyb Azure Event Grid
 Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azure Event Grid, chybové zprávy, jejich popisy a doporučené akce, které byste měli provést při obdržení těchto chyb. 
@@ -16,8 +16,8 @@ Tato příručka pro řešení potíží poskytuje seznam chybových kódů Azur
 ## <a name="error-code-400"></a>Kód chyby: 400
 | Kód chyby | Chybová zpráva | Description | Doporučení |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Název vlastního tématu by měl mít délku 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy: <ul><li>Partnerský vztah Microsoftu</li><li>EventGrid</li><li>Systém</li></ul> | Vyberte jiný název tématu, které dodržuje požadavky na název tématu. |
-| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy:<ul><li>Partnerský vztah Microsoftu</li><li>EventGrid</li><li>Systém</li> | Vyberte jiný název domény, který splňuje požadavky na název domény. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název tématu musí mít délku 3 až 50 znaků. | Název vlastního tématu by měl mít délku 3 až 50 znaků. V názvu tématu jsou povoleny pouze alfanumerické písmena, číslice a znak-. Název by měl také začínat následujícími rezervovanými slovy: <ul><li>Microsoft</li><li>EventGrid</li><li>Souborů</li></ul> | Vyberte jiný název tématu, které dodržuje požadavky na název tématu. |
+| HttpStatusCode. důvodu chybného požadavku<br/>400 | Název domény musí mít délku 3 až 50 znaků. | Délka názvu domény by měla být 3 až 50 znaků. V názvu domény jsou povoleny pouze alfanumerické písmena, číslice a znaky-. Název by měl také začínat následujícími rezervovanými slovy:<ul><li>Microsoft</li><li>EventGrid</li><li>Souborů</li> | Vyberte jiný název domény, který splňuje požadavky na název domény. |
 | HttpStatusCode. důvodu chybného požadavku<br/>400 | Neplatný čas vypršení platnosti. | Čas vypršení platnosti odběru události Určuje, kdy bude odběr události vyřazení. Tato hodnota by měla být v budoucnu platná hodnota DateTime.| Ujistěte se, že doba vypršení platnosti předplatného události v platném formátu data a času je nastavená na budoucnost. |
 
 ## <a name="error-code-409"></a>Kód chyby: 409

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/16/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 956773872babbd30dea1e17a9a3d7ede7a022850
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 9f6df1fb2c83cea5ddf3ad7f21c9a7d28342d373
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131730"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041725"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu zprostředkovatele identity SAML v Azure Active Directory B2C vlastní zásady
 
@@ -86,6 +86,16 @@ Následující příklad ukazuje oddíl popisovače klíče metadat SAML použí
 
 Atribut **Name** elementu Protocol musí být nastaven na hodnotu `SAML2` .
 
+## <a name="input-claims"></a>Vstupní deklarace identity
+
+Element **InputClaims** se používá k odeslání **NameId** v rámci **předmětu** žádosti Authn SAML. K tomuto účelu přidejte vstupní deklaraci s **PartnerClaimType** nastavenou na `subject` , jak je znázorněno níže.
+
+```xml
+<InputClaims>
+    <InputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="subject" />
+</InputClaims>
+```
+
 ## <a name="output-claims"></a>Deklarace výstupů
 
 Element **OutputClaims** obsahuje seznam deklarací identity vrácených zprostředkovatelem identity SAML v části `AttributeStatement` . Možná budete muset namapovat název deklarace identity definované v zásadě na název definovaný v poskytovateli identity. Můžete také zahrnout deklarace identity, které nevrací poskytovatel identity, pokud nastavíte `DefaultValue` atribut.
@@ -126,7 +136,7 @@ Následující příklad ukazuje deklarace identity vrácené zprostředkovatele
 Technický profil také vrací deklarace identity, které nejsou vráceny zprostředkovatelem identity:
 
 - Deklarace identity **identityProvider** , která obsahuje název poskytovatele identity.
-- Deklarace identity **authenticationSource** s výchozí hodnotou **socialIdpAuthentication**.
+- Deklarace identity **authenticationSource** s výchozí hodnotou **socialIdpAuthentication** .
 
 ```xml
 <OutputClaims>
@@ -146,18 +156,18 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| PartnerEntity | Ano | Adresa URL metadat zprostředkovatele identity SAML. Kopírovat metadata zprostředkovatele identity a přidat je dovnitř elementu CDATA `<![CDATA[Your IDP metadata]]>` |
-| WantsSignedRequests | Ne | Určuje, jestli technický profil vyžaduje, aby všechny odchozí požadavky na ověřování byly podepsané. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true` , je nutné zadat kryptografický klíč **SamlMessageSigning** a všechny odchozí žádosti o ověření budou podepsány. Pokud je hodnota nastavena na `false` , jsou z požadavku vynechány parametry **SigAlg** a **signatury** (řetězec dotazu nebo parametr post). Tato metadata také řídí atribut **AuthnRequestsSigned** metadat, který je výstupem v metadatech Azure AD B2C Technical profil, který je sdílen s poskytovatelem identity. Azure AD B2C nepodepisuje požadavek, pokud je hodnota **WantsSignedRequests** v metadatech technického profilu nastavená na `false` a **WantAuthnRequestsSigned** metadata poskytovatele identity je nastavená na `false` nebo není zadaná. |
-| XmlSignatureAlgorithm | Ne | Metoda, kterou Azure AD B2C používá k podepsání požadavku SAML. Tato metadata řídí hodnotu parametru  **SigAlg** (řetězec dotazu nebo parametr post) v požadavku SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` nebo `Sha1` (výchozí). Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. |
-| WantsSignedAssertions | Ne | Určuje, zda technický profil vyžaduje, aby byly všechny příchozí kontrolní výrazy podepsány. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true` , `saml:Assertion` musí být podepsána část všech kontrolních výrazů odeslaných zprostředkovatelem identity Azure AD B2C. Pokud je hodnota nastavena na `false` , zprostředkovatel identity by neměl podepsat kontrolní výrazy, ale i v případě, Azure AD B2C podpis neověřuje. Tato metadata také řídí příznak **WantsAssertionsSigned**(metadata), který je výstupem v metadatech Azure AD B2C Technical profil, který je sdílen s poskytovatelem identity. Pokud zakážete ověřování kontrolních výrazů, můžete také chtít zakázat ověřování podpisů odpovědí (Další informace najdete v tématu **ResponsesSigned**). |
-| ResponsesSigned | Ne | Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavená na `false` , zprostředkovatel identity by neměl podepsat odpověď SAML, ale i v případě, Azure AD B2C neověřuje signaturu. Pokud je hodnota nastavena na `true` , je odpověď SAML poslaná zprostředkovatelem identity Azure AD B2C podepsaná a musí být ověřena. Pokud zakážete ověřování odpovědí SAML, můžete také chtít zakázat ověřování signatury kontrolního výrazu (Další informace najdete v tématu **WantsSignedAssertions**). |
-| WantsEncryptedAssertions | Ne | Určuje, jestli technický profil vyžaduje, aby všechny příchozí kontrolní výrazy byly šifrované. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `false`. Je-li hodnota nastavena na hodnotu `true` , musí být pozměněny kontrolní výrazy odeslané zprostředkovatelem identity na Azure AD B2C a musí být zadán kryptografický klíč **SamlAssertionDecryption** . Pokud je hodnota nastavena na `true` , metadata Azure AD B2Cho technického profilu obsahují oddíl **šifrování** . Zprostředkovatel identity přečte metadata a zašifruje kontrolní výraz odpovědi SAML pomocí veřejného klíče, který je k dispozici v metadatech Azure AD B2C Technical Profile. Pokud povolíte šifrování kontrolních výrazů, může být také nutné zakázat ověřování podpisů odpovědí (Další informace najdete v tématu **ResponsesSigned**). |
-| NameIdPolicyFormat | Ne | Určuje omezení pro identifikátor názvu, který se má použít k reprezentaci požadovaného předmětu. Je-li tento parametr vynechán, lze použít jakýkoli typ identifikátoru podporovaný zprostředkovatelem identity pro požadovaný předmět. Například `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** se dá použít s **NameIdPolicyAllowCreate**. Pokyny k tomu, které zásady identifikátoru ID jsou podporované, najdete v dokumentaci poskytovatele identity. |
-| NameIdPolicyAllowCreate | Ne | Při použití **NameIdPolicyFormat**můžete také zadat `AllowCreate` vlastnost **NameIDPolicy**. Hodnota těchto metadat je `true` nebo `false` označuje, zda může zprostředkovatel identity během přihlašování vytvořit nový účet. Pokyny k tomu, jak to udělat, najdete v dokumentaci poskytovatele identity. |
-| AuthenticationRequestExtensions | Ne | Volitelné prvky rozšíření zprávy protokolu, které jsou dohodnuté mezi Azure AD BC a poskytovatelem identity. Přípona je prezentována ve formátu XML. Data XML přidáte do elementu CDATA `<![CDATA[Your IDP metadata]]>` . Zkontrolujte dokumentaci poskytovatele identity a zjistěte, jestli je element Extensions podporovaný. |
-| IncludeAuthnContextClassReferences | Ne | Určuje jeden nebo více odkazů identifikátorů URI identifikujících třídy kontextu ověřování. Chcete-li například uživateli dovolit, aby se přihlásili pouze pomocí uživatelského jména a hesla, nastavte hodnotu na `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` . Pokud chcete dovolit přihlášení prostřednictvím uživatelského jména a hesla přes chráněnou relaci (SSL/TLS), zadejte `PasswordProtectedTransport` . Pokyny k **AuthnContextClassRef** identifikátorům URI, které jsou podporované, najdete v dokumentaci poskytovatele identity. Zadejte více identifikátorů URI jako seznam oddělených čárkami. |
-| IncludeKeyInfo | Ne | Určuje, jestli žádost o ověření SAML obsahuje veřejný klíč certifikátu, když je vazba nastavená na `HTTP-POST` . Možné hodnoty: `true` nebo `false` . |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| PartnerEntity | Yes | Adresa URL metadat zprostředkovatele identity SAML. Kopírovat metadata zprostředkovatele identity a přidat je dovnitř elementu CDATA `<![CDATA[Your IDP metadata]]>` |
+| WantsSignedRequests | No | Určuje, jestli technický profil vyžaduje, aby všechny odchozí požadavky na ověřování byly podepsané. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true` , je nutné zadat kryptografický klíč **SamlMessageSigning** a všechny odchozí žádosti o ověření budou podepsány. Pokud je hodnota nastavena na `false` , jsou z požadavku vynechány parametry **SigAlg** a **signatury** (řetězec dotazu nebo parametr post). Tato metadata také řídí atribut **AuthnRequestsSigned** metadat, který je výstupem v metadatech Azure AD B2C Technical profil, který je sdílen s poskytovatelem identity. Azure AD B2C nepodepisuje požadavek, pokud je hodnota **WantsSignedRequests** v metadatech technického profilu nastavená na `false` a **WantAuthnRequestsSigned** metadata poskytovatele identity je nastavená na `false` nebo není zadaná. |
+| XmlSignatureAlgorithm | No | Metoda, kterou Azure AD B2C používá k podepsání požadavku SAML. Tato metadata řídí hodnotu parametru  **SigAlg** (řetězec dotazu nebo parametr post) v požadavku SAML. Možné hodnoty: `Sha256` , `Sha384` , `Sha512` nebo `Sha1` (výchozí). Nezapomeňte nakonfigurovat algoritmus podpisu na obou stranách se stejnou hodnotou. Používejte jenom algoritmus, který podporuje váš certifikát. |
+| WantsSignedAssertions | No | Určuje, zda technický profil vyžaduje, aby byly všechny příchozí kontrolní výrazy podepsány. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavena na `true` , `saml:Assertion` musí být podepsána část všech kontrolních výrazů odeslaných zprostředkovatelem identity Azure AD B2C. Pokud je hodnota nastavena na `false` , zprostředkovatel identity by neměl podepsat kontrolní výrazy, ale i v případě, Azure AD B2C podpis neověřuje. Tato metadata také řídí příznak **WantsAssertionsSigned** (metadata), který je výstupem v metadatech Azure AD B2C Technical profil, který je sdílen s poskytovatelem identity. Pokud zakážete ověřování kontrolních výrazů, můžete také chtít zakázat ověřování podpisů odpovědí (Další informace najdete v tématu **ResponsesSigned** ). |
+| ResponsesSigned | No | Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `true`. Pokud je hodnota nastavená na `false` , zprostředkovatel identity by neměl podepsat odpověď SAML, ale i v případě, Azure AD B2C neověřuje signaturu. Pokud je hodnota nastavena na `true` , je odpověď SAML poslaná zprostředkovatelem identity Azure AD B2C podepsaná a musí být ověřena. Pokud zakážete ověřování odpovědí SAML, můžete také chtít zakázat ověřování signatury kontrolního výrazu (Další informace najdete v tématu **WantsSignedAssertions** ). |
+| WantsEncryptedAssertions | No | Určuje, jestli technický profil vyžaduje, aby všechny příchozí kontrolní výrazy byly šifrované. Možné hodnoty: `true` nebo `false` . Výchozí hodnota je `false`. Je-li hodnota nastavena na hodnotu `true` , musí být pozměněny kontrolní výrazy odeslané zprostředkovatelem identity na Azure AD B2C a musí být zadán kryptografický klíč **SamlAssertionDecryption** . Pokud je hodnota nastavena na `true` , metadata Azure AD B2Cho technického profilu obsahují oddíl **šifrování** . Zprostředkovatel identity přečte metadata a zašifruje kontrolní výraz odpovědi SAML pomocí veřejného klíče, který je k dispozici v metadatech Azure AD B2C Technical Profile. Pokud povolíte šifrování kontrolních výrazů, může být také nutné zakázat ověřování podpisů odpovědí (Další informace najdete v tématu **ResponsesSigned** ). |
+| NameIdPolicyFormat | No | Určuje omezení pro identifikátor názvu, který se má použít k reprezentaci požadovaného předmětu. Je-li tento parametr vynechán, lze použít jakýkoli typ identifikátoru podporovaný zprostředkovatelem identity pro požadovaný předmět. Například `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** se dá použít s **NameIdPolicyAllowCreate** . Pokyny k tomu, které zásady identifikátoru ID jsou podporované, najdete v dokumentaci poskytovatele identity. |
+| NameIdPolicyAllowCreate | No | Při použití **NameIdPolicyFormat** můžete také zadat `AllowCreate` vlastnost **NameIDPolicy** . Hodnota těchto metadat je `true` nebo `false` označuje, zda může zprostředkovatel identity během přihlašování vytvořit nový účet. Pokyny k tomu, jak to udělat, najdete v dokumentaci poskytovatele identity. |
+| AuthenticationRequestExtensions | No | Volitelné prvky rozšíření zprávy protokolu, které jsou dohodnuté mezi Azure AD BC a poskytovatelem identity. Přípona je prezentována ve formátu XML. Data XML přidáte do elementu CDATA `<![CDATA[Your IDP metadata]]>` . Zkontrolujte dokumentaci poskytovatele identity a zjistěte, jestli je element Extensions podporovaný. |
+| IncludeAuthnContextClassReferences | No | Určuje jeden nebo více odkazů identifikátorů URI identifikujících třídy kontextu ověřování. Chcete-li například uživateli dovolit, aby se přihlásili pouze pomocí uživatelského jména a hesla, nastavte hodnotu na `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` . Pokud chcete dovolit přihlášení prostřednictvím uživatelského jména a hesla přes chráněnou relaci (SSL/TLS), zadejte `PasswordProtectedTransport` . Pokyny k **AuthnContextClassRef** identifikátorům URI, které jsou podporované, najdete v dokumentaci poskytovatele identity. Zadejte více identifikátorů URI jako seznam oddělených čárkami. |
+| IncludeKeyInfo | No | Určuje, jestli žádost o ověření SAML obsahuje veřejný klíč certifikátu, když je vazba nastavená na `HTTP-POST` . Možné hodnoty: `true` nebo `false` . |
+| IncludeClaimResolvingInClaimsHandling  | No | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -165,9 +175,9 @@ Element **CryptographicKeys** obsahuje následující atributy:
 
 | Atribut |Povinné | Popis |
 | --------- | ----------- | ----------- |
-| SamlMessageSigning |Ano | Certifikát x509 (sada klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání žádostí a jejich odeslání poskytovateli identity. |
-| SamlAssertionDecryption |Ne | Certifikát x509 (sada klíčů RSA) Zprostředkovatel identity SAML používá veřejnou část certifikátu k zašifrování kontrolního výrazu odpovědi SAML. Azure AD B2C používá soukromou část certifikátu k dešifrování kontrolního výrazu. |
-| MetadataSigning |Ne | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat.  |
+| SamlMessageSigning |Yes | Certifikát x509 (sada klíčů RSA), který se použije k podepisování zpráv SAML. Azure AD B2C používá tento klíč k podepsání žádostí a jejich odeslání poskytovateli identity. |
+| SamlAssertionDecryption |No | Certifikát x509 (sada klíčů RSA) Zprostředkovatel identity SAML používá veřejnou část certifikátu k zašifrování kontrolního výrazu odpovědi SAML. Azure AD B2C používá soukromou část certifikátu k dešifrování kontrolního výrazu. |
+| MetadataSigning |No | Certifikát x509 (sada klíčů RSA), který se použije k podepisování metadat SAML. Azure AD B2C používá tento klíč k podepsání metadat.  |
 
 ## <a name="saml-entityid-customization"></a>Přizpůsobení entityID SAML
 

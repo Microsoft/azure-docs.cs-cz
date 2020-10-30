@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 958bfa605e0195b5f4fde2c0ff53a8ce567f50a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257139"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041985"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Použití ověřování AD pro přístup k rozhraní API služby Media Services s využitím REST
 
@@ -56,7 +56,7 @@ V tomto kurzu se naučíte:
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí služby Azure AD Authentication](media-services-use-aad-auth-to-access-ams-api.md) .
 - Nainstalujte klienta [post](https://www.getpostman.com/) REST, který SPUSTÍ rozhraní REST API uvedená v tomto článku. 
 
-    V tomto kurzu používáme **metodu post** , ale jakýkoli nástroj REST by byl vhodný. Další alternativy: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
+    V tomto kurzu používáme **metodu post** , ale jakýkoli nástroj REST by byl vhodný. Další alternativy: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler** . 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Získat informace o ověřování z Azure Portal
 
@@ -71,16 +71,16 @@ Chcete-li získat přístup k rozhraní Media Services API, je nutné shromážd
 |ID klienta (ID aplikace)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|ID aplikace (klienta) služby Azure AD. Pro získání přístupového tokenu se vyžaduje ID klienta. |
 |Tajný klíč klienta|+ mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq + Dbim0 =|Klíče aplikace služby Azure AD (tajný klíč klienta). K získání přístupového tokenu se vyžaduje tajný klíč klienta.|
 
-### <a name="get-aad-auth-info-from-the-azure-portal"></a>Získat informace o ověřování AAD z Azure Portal
+### <a name="get-azure-active-directory-auth-info-from-the-azure-portal"></a>Získat informace o ověřování Azure Active Directory z Azure Portal
 
 Chcete-li získat informace, postupujte podle následujících kroků:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Přejděte do své instance AMS.
-3. Vyberte **přístup přes rozhraní API**.
-4. Klikněte na **připojit k Azure Media Services rozhraní API s instančním objektem**.
+3. Vyberte **přístup přes rozhraní API** .
+4. Klikněte na **připojit k Azure Media Services rozhraní API s instančním objektem** .
 
-    ![API access](./media/connect-with-rest/connect-with-rest01.png)
+    ![Snímek obrazovky, který zobrazuje "A P I" přístup "v nabídce" Media Services "a" připojit k Azure Media Services A P s instančním objektem "vybraným v pravém podokně.](./media/connect-with-rest/connect-with-rest01.png)
 
 5. Vyberte existující **aplikaci Azure AD** nebo vytvořte novou (viz níže).
 
@@ -89,12 +89,12 @@ Chcete-li získat informace, postupujte podle následujících kroků:
 
     Pokud potřebujete vytvořit novou aplikaci AD, postupujte podle těchto kroků:
     
-   1. Stiskněte **vytvořit nové**.
+   1. Stiskněte **vytvořit nové** .
    2. Zadejte název.
    3. Znovu stiskněte **vytvořit nové** .
-   4. Stiskněte **Uložit**.
+   4. Stiskněte **Uložit** .
 
-      ![API access](./media/connect-with-rest/new-app.png)
+      ![Snímek obrazovky, který zobrazuje dialogové okno vytvořit nový s zvýrazněným textovým polem pro vytvoření aplikace a vybraným tlačítkem Uložit.](./media/connect-with-rest/new-app.png)
 
       Nová aplikace se zobrazí na stránce.
 
@@ -103,15 +103,15 @@ Chcete-li získat informace, postupujte podle následujících kroků:
    1. Vyberte aplikaci.
    2. Získejte **ID klienta** z okna na pravé straně. 
 
-      ![API access](./media/connect-with-rest/existing-client-id.png)
+      ![Snímek obrazovky zobrazující, že je vybraná možnost Azure a D a spravovat aplikaci, a v pravém podokně se zvýrazní "klient I D".](./media/connect-with-rest/existing-client-id.png)
 
 7. Získá **klíč** aplikace (tajný klíč klienta). 
 
-   1. Klikněte na tlačítko **Spravovat aplikaci** (Všimněte si, že informace o ID klienta se nachází pod položkou **ID aplikace**). 
-   2. Stiskněte **klávesy**.
+   1. Klikněte na tlačítko **Spravovat aplikaci** (Všimněte si, že informace o ID klienta se nachází pod položkou **ID aplikace** ). 
+   2. Stiskněte **klávesy** .
     
-       ![API access](./media/connect-with-rest/manage-app.png)
-   3. Vygenerujte klíč aplikace (tajný klíč klienta) vyplněním **popisu** a **vypršení platnosti** a stisknutím tlačítka **Uložit**.
+       ![Snímek obrazovky, který zobrazuje vybrané tlačítko "spravovat aplikaci", "aplikace I D" v prostředním podokně se zvýrazní a "klíče", které jsou v pravém podokně vybrané.](./media/connect-with-rest/manage-app.png)
+   3. Vygenerujte klíč aplikace (tajný klíč klienta) vyplněním **popisu** a **vypršení platnosti** a stisknutím tlačítka **Uložit** .
     
        Po stisknutí tlačítka **Uložit** se zobrazí hodnota klíč. Před zavřením okna Zkopírujte hodnotu klíče.
 
@@ -124,18 +124,18 @@ Do souboru web.config nebo app.config můžete přidat hodnoty pro parametry př
 
 ## <a name="get-the-access-token-using-postman"></a>Získání přístupového tokenu pomocí metody post
 
-V této části se dozvíte, jak použít **metodu post** ke spuštění REST API, který vrací token nosiče JWT (přístupový token). Chcete-li volat jakékoli Media Services REST API, je nutné přidat do volání hlavičku "autorizace" a přidat hodnotu "nosiče *your_access_token*" do každého volání (jak je uvedeno v další části tohoto kurzu). 
+V této části se dozvíte, jak použít **metodu post** ke spuštění REST API, který vrací token nosiče JWT (přístupový token). Chcete-li volat jakékoli Media Services REST API, je nutné přidat do volání hlavičku "autorizace" a přidat hodnotu "nosiče *your_access_token* " do každého volání (jak je uvedeno v další části tohoto kurzu). 
 
-1. Otevřete **post**.
-2. Vyberte **POST**.
-3. Zadejte adresu URL, která obsahuje název vašeho tenanta, a to v následujícím formátu: název tenanta by měl končit **příponou. onmicrosoft.com** a adresa URL by měla končit **OAuth2/tokenem**: 
+1. Otevřete **post** .
+2. Vyberte **POST** .
+3. Zadejte adresu URL, která obsahuje název vašeho tenanta, a to v následujícím formátu: název tenanta by měl končit **příponou. onmicrosoft.com** a adresa URL by měla končit **OAuth2/tokenem** : 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. Vyberte kartu **hlavičky** .
 5. Zadejte informace o **hlavičkách** pomocí datové mřížky "klíč/hodnota". 
 
-    ![Datová mřížka](./media/connect-with-rest/headers-data-grid.png)
+    ![Snímek obrazovky zobrazující kartu Headers (hlavičky) a výběr akce hromadné úpravy](./media/connect-with-rest/headers-data-grid.png)
 
     Případně klikněte na odkaz **Hromadná úprava** na pravé straně okna po odeslání a vložte následující kód.
 
@@ -158,21 +158,21 @@ V této části se dozvíte, jak použít **metodu post** ke spuštění REST AP
     resource:https://rest.media.azure.net
     ```
 
-8. Stiskněte **Odeslat**.
+8. Stiskněte **Odeslat** .
 
-    ![získat token](./media/connect-with-rest/connect-with-rest04.png)
+    ![Snímek obrazovky, který zobrazuje textové pole "post", "hlavičky" a "tělo" a "access_token" se zvýrazní a bylo zjištěno tlačítko Send (Odeslat).](./media/connect-with-rest/connect-with-rest04.png)
 
 Vrácená odpověď obsahuje **přístupový token** , který potřebujete použít pro přístup k rozhraním API AMS.
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>Testování rozhraní API **assetů** pomocí přístupového tokenu
 
-V této části se dozvíte, jak získat přístup k rozhraní API **assetů** pomocí **metody post**.
+V této části se dozvíte, jak získat přístup k rozhraní API **assetů** pomocí **metody post** .
 
-1. Otevřete **post**.
-2. Vyberte **GET**.
+1. Otevřete **post** .
+2. Vyberte **GET** .
 3. Vložte REST API koncový bod (například https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. Vyberte kartu **autorizace** . 
-5. Vyberte **token nosiče**.
+5. Vyberte **token nosiče** .
 6. Vložte token, který byl vytvořen v předchozí části.
 
     ![získat token](./media/connect-with-rest/connect-with-rest05.png)
@@ -182,7 +182,7 @@ V této části se dozvíte, jak získat přístup k rozhraní API **assetů** p
 
    ![Ověřovací hlavička](./media/connect-with-rest/auth-header.png)
 
-7. Vyberte **záhlaví**.
+7. Vyberte **záhlaví** .
 5. V pravé části okna po kliknutí klikněte na odkaz **hromadné úpravy** .
 6. Vložte následující hlavičky:
 
@@ -194,7 +194,7 @@ V této části se dozvíte, jak získat přístup k rozhraní API **assetů** p
     MaxDataServiceVersion:3.0
     ```
 
-7. Stiskněte **Odeslat**.
+7. Stiskněte **Odeslat** .
 
 Vrácená odpověď obsahuje prostředky, které jsou ve vašem účtu.
 

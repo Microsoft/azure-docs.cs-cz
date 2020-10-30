@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040180"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -27,7 +27,7 @@ Transformace vyhledávání se podobá levému vnějšímu spojení. Všechny ř
 
 ## <a name="configuration"></a>Konfigurace
 
-![Transformace vyhledávání](media/data-flow/lookup1.png "Vyhledávání")
+![Snímek obrazovky zobrazuje kartu nastavení vyhledávání s popisky popsanými v následujícím textu.](media/data-flow/lookup1.png "Vyhledávání")
 
 **Primární datový proud:** Příchozí datový proud dat. Tento datový proud je ekvivalentní levé straně spojení.
 
@@ -65,7 +65,7 @@ Při testování transformace vyhledávání s náhledem dat v režimu ladění 
 
 ![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
 
-V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná**.
+V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání** . Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná** .
 
 Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
 
@@ -85,7 +85,7 @@ Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pok
 ```
 ### <a name="example"></a>Příklad
 
-![Transformace vyhledávání](media/data-flow/lookup-dsl-example.png "Vyhledávání")
+![Snímek obrazovky zobrazující kartu nastavení vyhledávání pro následující kód.](media/data-flow/lookup-dsl-example.png "Vyhledávání")
 
 Skript toku dat pro výše uvedenou konfiguraci vyhledávání je ve fragmentu kódu níže.
 

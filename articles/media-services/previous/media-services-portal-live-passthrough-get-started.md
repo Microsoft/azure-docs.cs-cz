@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 15b876104dfa1a35077a34aa178d650e2d68855e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266727"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040732"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Živé streamování pomocí místních kodérů pomocí Azure Portal
 
@@ -35,9 +35,9 @@ ms.locfileid: "89266727"
 > [!NOTE]
 > Do Media Services v2 se nepřidávají žádné nové funkce. <br/>Podívejte se na nejnovější verzi [Media Services V3](../latest/index.yml). Podívejte se taky na [pokyny k migraci z v2 na V3](../latest/migrate-from-v2-to-v3.md) .
 
-Tento kurz vás provede kroky pro vytvoření **Kanálu**, který je nakonfigurován pro průchozí doručování. 
+Tento kurz vás provede kroky pro vytvoření **Kanálu** , který je nakonfigurován pro průchozí doručování. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 K dokončení kurzu potřebujete následující:
 
 * Účet Azure: Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
@@ -55,7 +55,7 @@ Důrazně doporučujeme přečtení následujících článků:
 Následující kroky popisují úlohy, které jsou běžně součástí procesu vytváření aplikací pro živé streamování, které používají kanály, nakonfigurované pro průchozí doručování. Tento kurz ukazuje, jak vytvořit a spravovat průchozí kanál a živé události.
 
 > [!NOTE]
-> Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno**. 
+> Zkontrolujte, že koncový bod streamování, ze kterého chcete streamovat obsah, je ve stavu **Spuštěno** . 
     
 1. Připojte k počítači videokameru. <br/>V případě nápadů při instalaci se podívejte na [Nastavení jednoduchého a přenosného kormidelního videa událostí]( https://link.medium.com/KNTtiN6IeT).
 1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který produkuje RTMP s více přenosovými rychlostmi nebo fragmentovaný proud MP4. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
@@ -107,33 +107,33 @@ I po zastavení a odstranění události můžou uživatelé streamovat archivov
 Pokud chcete archivovaný obsah zachovat, ale nechcete ho zpřístupňovat pro streamování, odstraňte lokátor streamování.
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>Použití portálu k vytvoření kanálu
-Tento oddíl ukazuje, jak vytvořit průchozí kanál pomocí možnosti **Rychle vytvořit**.
+Tento oddíl ukazuje, jak vytvořit průchozí kanál pomocí možnosti **Rychle vytvořit** .
 
 Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamování pomocí místních kodérů, které vytvářejí datové proudy s více přenosovými rychlostmi](media-services-live-streaming-with-onprem-encoders.md).
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. V okně **Nastavení** klikněte na **Živé streamování**. 
+2. V okně **Nastavení** klikněte na **Živé streamování** . 
    
     ![Začínáme](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    Zobrazí se okno **Živé vysílání datového proudu**.
+    Zobrazí se okno **Živé vysílání datového proudu** .
 3. Klikněte na **Rychle vytvořit** a vytvořte průchozí kanál s protokolem ingestování RTMP.
    
-    Zobrazí se okno **VYTVOŘIT NOVÝ KANÁL**.
-4. Zadejte název nového kanálu a klikněte na **Vytvořit**. 
+    Zobrazí se okno **VYTVOŘIT NOVÝ KANÁL** .
+4. Zadejte název nového kanálu a klikněte na **Vytvořit** . 
    
     Tím vytvoříte průchozí kanál s protokolem ingestování RTMP.
 
 ## <a name="create-events"></a>Vytvoření událostí
 1. Vyberte kanál, ke kterému chcete přidat událost.
-2. Stiskněte tlačítko **Živá událost**.
+2. Stiskněte tlačítko **Živá událost** .
 
 ![Událost](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
 Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
-![Vytvořeno](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
+![Snímek obrazovky zobrazující stránku živého streamování s vybraným kanálem a zobrazeným podoknem kanálů.](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>Sledování události
 Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na webu Azure Portal nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
@@ -151,7 +151,7 @@ Další podrobnosti o průchozích kanálech najdete v tématu [Živé streamov�
 ## <a name="view-archived-content"></a>Zobrazení archivovaného obsahu
 I po zastavení a odstranění události můžou uživatelé streamovat archivovaný obsah jako video na vyžádání, a to tak dlouho, dokud asset neodstraníte. Asset nemůžete odstranit, pokud ho událost používá. Nejdřív odstraňte událost. 
 
-Pokud chcete spravovat prostředky, vyberte **Nastavení** a klikněte na **prostředky**.
+Pokud chcete spravovat prostředky, vyberte **Nastavení** a klikněte na **prostředky** .
 
 ![Prostředky](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

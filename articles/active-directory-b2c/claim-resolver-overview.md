@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259631"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040450"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
 Překladače deklarací identity v Azure Active Directory B2C (Azure AD B2C) [vlastní zásady](custom-policy-overview.md) poskytují kontextové informace o žádosti o autorizaci, jako je název zásady, ID korelace požadavku, jazyk uživatelského rozhraní a další.
 
-Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType**a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
+Chcete-li použít překladač deklarací identity ve vstupní nebo výstupní deklaraci identity, definujte v rámci elementu [ClaimsSchema](claimsschema.md) řetězec **ClaimType** a pak nastavte hodnotu **DefaultValue** na překladač deklarací identity v elementu Input nebo Output. Azure AD B2C přečte hodnotu překladače deklarací identity a použije hodnotu v technickém profilu.
 
 V následujícím příkladu je typ deklarace s názvem `correlationId` definován s **datovým** typem `string` .
 
@@ -51,7 +51,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
-| {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
 
 ### <a name="policy"></a>Zásady
 
@@ -127,6 +127,7 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {SAML: ForceAuthn} | `ForceAuthN`Hodnota atributu z `AuthnRequest` prvku požadavku SAML. | Ano |
 | {SAML: ProviderName} | `ProviderName`Hodnota atributu z `AuthnRequest` prvku požadavku SAML.| Contoso.com |
 | {SAML: RelayState} | `RelayState`Parametr řetězce dotazu.| 
+| {SAML: Subject} | `Subject`Z prvku NameId žádosti AUTHN SAML.| 
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity
 

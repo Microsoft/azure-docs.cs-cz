@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212159"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040926"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
 Pro posílání zpráv fronty nebo témat použít výstupní vazbu Azure Service Bus.
 
-Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-service-bus-output.md).
+Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-service-bus.md).
 
 ## <a name="example"></a>Příklad
 
@@ -175,7 +175,7 @@ Definice vazby Service Bus je definována v *function.jsna* místě, kde je *typ
 }
 ```
 
-V * _ \_ init_ \_ . py*můžete do fronty napsat zprávu předáním hodnoty `set` metodě.
+V *_\_ init_ \_ . py* můžete do fronty napsat zprávu předáním hodnoty `set` metodě.
 
 ```python
 import azure.functions as func
@@ -284,7 +284,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|----------------------|
 |**textový** | neuvedeno | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**směr** | neuvedeno | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
+|**name** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu. Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma.|
@@ -346,7 +346,7 @@ Místo předdefinované výstupní vazby použijte [sadu Azure Service Bus SDK](
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Odkaz |
+| Vazba | Reference |
 |---|---|
 | Service Bus | [Kódy chyb Service Bus](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Omezení Service Bus](../service-bus-messaging/service-bus-quotas.md) |

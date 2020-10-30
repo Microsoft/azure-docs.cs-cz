@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960945"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041108"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Vytvoření doménové struktury prostředků Azure Active Directory Domain Services a odchozího vztahu důvěryhodnosti doménové struktury do místní domény pomocí Azure PowerShell
 
@@ -74,12 +74,12 @@ Než začnete, ujistěte se, že rozumíte [hlediskům sítě, pojmenování dom
 
 Azure služba AD DS vyžaduje, aby instanční objekt synchronizoval data ze služby Azure AD. Tento objekt zabezpečení musí být vytvořený v tenantovi Azure AD před tím, než jste vytvořili doménovou strukturu prostředků spravované domény.
 
-Vytvoření instančního objektu služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *2565bd9d-DA50-47d4-8B85-4c97f669dc36*. Neměňte toto ID aplikace.
+Vytvoření instančního objektu služby Azure AD pro Azure služba AD DS, který bude komunikovat a ověřovat sám sebe. Konkrétní ID aplikace se používá s názvem *služby řadiče domény* s ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* . Neměňte toto ID aplikace.
 
 Pomocí rutiny [New-AzureADServicePrincipal][New-AzureADServicePrincipal] vytvořte instanční objekt služby Azure AD:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>Vytvoření doménové struktury prostředků spravované domény
@@ -102,24 +102,24 @@ Pokud chcete vytvořit doménovou strukturu prostředků spravované domény, po
 
 1. Zkontrolujte následující parametry potřebné pro tento `New-AzureAaddsForest` skript. Ujistěte se, že máte také požadované **Azure PowerShell** a moduly **Azure AD PowerShellu** . Ujistěte se, že jste naplánovali požadavky virtuální sítě, aby poskytovaly aplikace a místní připojení.
 
-    | Název                         | Parametr skriptu          | Popis |
+    | Name                         | Parametr skriptu          | Popis |
     |:-----------------------------|---------------------------|:------------|
     | Předplatné                 | *– azureSubscriptionId*    | ID předplatného, které se používá pro fakturaci Azure služba AD DS Seznam předplatných můžete získat pomocí rutiny [Get-AzureRMSubscription][Get-AzureRMSubscription] . |
-    | Resource Group               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
+    | Skupina prostředků               | *-aaddsResourceGroupName* | Název skupiny prostředků pro spravovanou doménu a přidružené prostředky. |
     | Umístění                     | *-aaddsLocation*          | Oblast Azure pro hostování spravované domény. Dostupné oblasti najdete v tématu [podporované oblasti pro Azure služba AD DS.](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
     | Správce Azure služba AD DS    | *-aaddsAdminUser*         | Hlavní název uživatele prvního spravovaného správce domény. Tento účet musí být ve vašem Azure Active Directory existujícím účtem cloudového uživatele. Uživatel a uživatel, který spouští skript, se přidají do skupiny *Administrators řadiče domény AAD* . |
     | Název domény pro Azure služba AD DS      | *-aaddsDomainName*        | Plně kvalifikovaný název domény spravované domény založený na předchozích pokynech k výběru názvu doménové struktury. |
 
     `New-AzureAaddsForest`Skript může vytvořit virtuální síť Azure a podsíť azure služba AD DS, pokud tyto prostředky ještě neexistují. Skript může volitelně vytvořit podsítě úloh, pokud jsou zadané:
 
-    | Název                              | Parametr skriptu                  | Popis |
+    | Name                              | Parametr skriptu                  | Description |
     |:----------------------------------|:----------------------------------|:------------|
     | Název virtuální sítě              | *-aaddsVnetName*                  | Název virtuální sítě pro spravovanou doménu.|
     | Adresní prostor                     | *-aaddsVnetCIDRAddressSpace*      | Rozsah adres virtuální sítě v zápisu CIDR (při vytváření virtuální sítě).|
     | Název podsítě pro Azure služba AD DS           | *-aaddsSubnetName*                | Název podsítě virtuální sítě *aaddsVnetName* , která je hostitelem spravované domény. Do této podsítě nesaďte své vlastní virtuální počítače a úlohy. |
-    | Rozsah adres Azure služba AD DS         | *-aaddsSubnetCIDRAddressRange*    | Rozsah adres podsítě v zápisu CIDR pro instanci služby AAD DS, například *192.168.1.0/24*. Rozsah adres musí být obsažený v rozsahu adres virtuální sítě a jiný než ostatní podsítě. |
+    | Rozsah adres Azure služba AD DS         | *-aaddsSubnetCIDRAddressRange*    | Rozsah adres podsítě v zápisu CIDR pro instanci služby AAD DS, například *192.168.1.0/24* . Rozsah adres musí být obsažený v rozsahu adres virtuální sítě a jiný než ostatní podsítě. |
     | Název podsítě úloh (volitelné)   | *-workloadSubnetName*             | Volitelný název podsítě ve virtuální síti *aaddsVnetName* , která se má vytvořit pro vlastní aplikační úlohy. Virtuální počítače a aplikace a také připojené k virtuální síti Azure s partnerským vztahem. |
-    | Rozsah adres úloh (volitelné) | *-workloadSubnetCIDRAddressRange* | Volitelný rozsah adres podsítě v zápisu CIDR pro úlohy aplikace, například *192.168.2.0/24*. Rozsah adres musí být obsažený v rozsahu adres virtuální sítě a jiný než ostatní podsítě.|
+    | Rozsah adres úloh (volitelné) | *-workloadSubnetCIDRAddressRange* | Volitelný rozsah adres podsítě v zápisu CIDR pro úlohy aplikace, například *192.168.2.0/24* . Rozsah adres musí být obsažený v rozsahu adres virtuální sítě a jiný než ostatní podsítě.|
 
 1. Teď pomocí skriptu vytvořte doménovou strukturu prostředků spravované domény `New-AzureAaaddsForest` . Následující příklad vytvoří doménovou strukturu s názvem *addscontoso.com* a vytvoří podsíť úloh. Zadejte vlastní názvy parametrů a rozsahy IP adres nebo existující virtuální sítě.
 
@@ -163,7 +163,7 @@ Než začnete, ujistěte se, že rozumíte [hlediskům a doporučením sítě](t
     * Ujistěte se, že se Váš místní řadič domény může připojit ke spravovanému virtuálnímu počítači pomocí nástroje `ping` nebo vzdálené plochy, například.
     * Ověřte, že se váš virtuální počítač pro správu může připojit k místním řadičům domény, a to pomocí nástroje, jako je například `ping` .
 
-1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, třeba *aaddscontoso.com* , a počkejte, než se stav nahlásí jako **spuštěný**.
+1. V Azure Portal vyhledejte a vyberte **Azure AD Domain Services** . Vyberte spravovanou doménu, třeba *aaddscontoso.com* , a počkejte, než se stav nahlásí jako **spuštěný** .
 
     Když se spustí, [aktualizujte nastavení DNS pro virtuální síť Azure](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) a pak [Povolte uživatelské účty pro Azure služba AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) k finalizaci konfigurací pro doménovou strukturu spravované domény.
 
@@ -193,16 +193,16 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Nyní zadejte skript následující informace:
 
-| Název                               | Parametr skriptu     | Popis |
+| Name                               | Parametr skriptu     | Description |
 |:-----------------------------------|:---------------------|:------------|
 | Název domény pro Azure služba AD DS            | *-ManagedDomainFqdn* | Plně kvalifikovaný název domény spravované domény, například *aaddscontoso.com* |
 | Název domény v místním služba AD DS      | *-TrustFqdn*         | Plně kvalifikovaný název domény důvěryhodné doménové struktury, například *OnPrem.contoso.com* |
 | Popisný název vztahu důvěryhodnosti                | *-TrustFriendlyName* | Popisný název vztahu důvěryhodnosti |
 | Místní služba AD DS IP adresy DNS | *-TrustDnsIPs*       | Seznam IPv4 adres serveru DNS, které jsou v seznamu důvěryhodných domén odděleny čárkami. |
 | Heslo vztahu důvěryhodnosti                     | *-TrustPassword*     | Složité heslo pro vztah důvěryhodnosti. Toto heslo se zadává taky při vytváření jednosměrného příchozího vztahu důvěryhodnosti v místních služba AD DS. |
-| Credentials                        | *– Pověření*       | Přihlašovací údaje, které se používají k ověření v Azure. Uživatel musí být ve *skupině AAD DC Administrators*. Pokud není zadaný, skript se vyzve k ověření. |
+| Credentials                        | *– Pověření*       | Přihlašovací údaje, které se používají k ověření v Azure. Uživatel musí být ve *skupině AAD DC Administrators* . Pokud není zadaný, skript se vyzve k ověření. |
 
-Následující příklad vytvoří vztah důvěryhodnosti s názvem *myAzureADDSTrust* a *OnPrem.contoso.com*. Použijte vlastní názvy parametrů a hesla:.
+Následující příklad vytvoří vztah důvěryhodnosti s názvem *myAzureADDSTrust* a *OnPrem.contoso.com* . Použijte vlastní názvy parametrů a hesla:.
 
 ```azurepowershell
 Add-AaddsResourceForestTrust `
@@ -221,9 +221,9 @@ Add-AaddsResourceForestTrust `
 Chcete-li správně přeložit spravovanou doménu z místního prostředí, bude pravděpodobně nutné přidat servery pro přeposílání na existující servery DNS. Pokud jste nenakonfigurovali místní prostředí pro komunikaci se spravovanou doménou, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služba AD DS:
 
 1. Vyberte **Spustit | Nástroje pro správu | Služba DNS**
-1. Klikněte pravým tlačítkem na server DNS, jako je například *myAD01*, vyberte možnost **vlastnosti** .
-1. Zvolte nástroje **pro přeposílání**a pak **Upravit** pro přidání dalších služeb pro dodávání.
-1. Přidejte IP adresy spravované domény, například *10.0.1.4* a *10.0.1.5*.
+1. Klikněte pravým tlačítkem na server DNS, jako je například *myAD01* , vyberte možnost **vlastnosti** .
+1. Zvolte nástroje **pro přeposílání** a pak **Upravit** pro přidání dalších služeb pro dodávání.
+1. Přidejte IP adresy spravované domény, například *10.0.1.4* a *10.0.1.5* .
 1. Z místního příkazového řádku ověřte překlad IP adres pomocí **příkazu nslookup** názvu domény doménové struktury prostředku spravované domény. Například `Nslookup aaddscontoso.com` by měly vracet dvě IP adresy pro doménovou strukturu prostředků spravované domény.
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Vytvoření vztahu důvěryhodnosti příchozí doménové struktury v místní doméně
@@ -233,13 +233,13 @@ Místní služba AD DS doména potřebuje příchozí vztah důvěryhodnosti dom
 Pokud chcete nakonfigurovat příchozí vztah důvěryhodnosti v místní doméně služba AD DS, proveďte následující kroky z pracovní stanice pro správu pro místní doménu služba AD DS:
 
 1. Vyberte **Spustit | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
-1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com*, vyberte možnost **vlastnosti** .
+1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com* , vyberte možnost **vlastnosti** .
 1. Zvolte kartu **vztahy důvěryhodnosti** a pak **nový vztah důvěryhodnosti** .
-1. Zadejte název spravované domény, třeba *aaddscontoso.com*, a pak vyberte **Další** .
-1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury**a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
-1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu**. V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu.
-1. Zvolte možnost použití **ověřování v rámci doménové struktury**a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
-1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti**. Vztah důvěryhodnosti nelze ověřit, protože účet delegovaného správce k doménové struktuře prostředků spravované domény nemá požadovaná oprávnění. Toto chování je záměrné.
+1. Zadejte název spravované domény, třeba *aaddscontoso.com* , a pak vyberte **Další** .
+1. Vyberte možnost vytvoření **vztahu důvěryhodnosti doménové struktury** a pak vytvořte **jednosměrné: příchozí** vztah důvěryhodnosti.
+1. Vyberte, chcete-li vytvořit vztah důvěryhodnosti **pouze pro tuto doménu** . V dalším kroku vytvoříte vztah důvěryhodnosti v Azure Portal pro spravovanou doménu.
+1. Zvolte možnost použití **ověřování v rámci doménové struktury** a pak zadejte a potvrďte heslo vztahu důvěryhodnosti. Stejné heslo je také zadáno v Azure Portal v další části.
+1. Projděte několik dalších oken s výchozími možnostmi a zvolte možnost **Ne, Nepotvrzujte odchozí vztah důvěryhodnosti** . Vztah důvěryhodnosti nelze ověřit, protože účet delegovaného správce k doménové struktuře prostředků spravované domény nemá požadovaná oprávnění. Toto chování je záměrné.
 1. Vyberte **Dokončit** .
 
 ## <a name="validate-resource-authentication"></a>Ověření ověřování prostředků
@@ -288,21 +288,21 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
     > [!TIP]
     > K zabezpečenému připojení k virtuálním počítačům připojeným k Azure AD Domain Services můžete použít [službu Azure bastionu Host](../bastion/bastion-overview.md) v podporovaných oblastech Azure.
 
-1. Otevřete **nastavení systému Windows**, vyhledejte a vyberte **Centrum síťových a sdílení**.
+1. Otevřete **nastavení systému Windows** , vyhledejte a vyberte **Centrum síťových a sdílení** .
 1. Vyberte možnost pro **změnu pokročilého nastavení sdílení** .
-1. V části **Profil domény**vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte**.
-1. Zavřete **Centrum síťových a sdílení**.
+1. V části **Profil domény** vyberte **zapnout sdílení souborů a tiskáren** a pak **změny uložte** .
+1. Zavřete **Centrum síťových a sdílení** .
 
 #### <a name="create-a-security-group-and-add-members"></a>Vytvoření skupiny zabezpečení a přidání členů
 
-1. Otevřete položku **Uživatelé a počítače služby Active Directory**.
-1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový**a pak vyberte možnost **organizační jednotka**.
-1. Do pole název zadejte *LocalObjects*a pak vyberte **OK**.
-1. V navigačním podokně vyberte a klikněte pravým tlačítkem na **LocalObjects** . Vyberte **Nový** a potom **Skupina**.
-1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny**vyberte **místní doména**a pak zvolte **OK**.
-1. V podokně obsah poklikejte na **FileServerAccess**. Vyberte možnost **Členové**, zvolte možnost **Přidat**a potom vyberte **umístění**.
-1. V zobrazení **umístění** vyberte místní službu Active Directory a pak zvolte **OK**.
-1. Do pole **Zadejte názvy objektů k výběru** zadejte *Domain Users* . Vyberte možnost **kontrolovat jména**, zadejte přihlašovací údaje pro místní službu Active Directory a pak vyberte **OK**.
+1. Otevřete položku **Uživatelé a počítače služby Active Directory** .
+1. Klikněte pravým tlačítkem myši na název domény, vyberte možnost **Nový** a pak vyberte možnost **organizační jednotka** .
+1. Do pole název zadejte *LocalObjects* a pak vyberte **OK** .
+1. V navigačním podokně vyberte a klikněte pravým tlačítkem na **LocalObjects** . Vyberte **Nový** a potom **Skupina** .
+1. Do pole **název skupiny** zadejte *FileServerAccess* . V poli **Rozsah skupiny** vyberte **místní doména** a pak zvolte **OK** .
+1. V podokně obsah poklikejte na **FileServerAccess** . Vyberte možnost **Členové** , zvolte možnost **Přidat** a potom vyberte **umístění** .
+1. V zobrazení **umístění** vyberte místní službu Active Directory a pak zvolte **OK** .
+1. Do pole **Zadejte názvy objektů k výběru** zadejte *Domain Users* . Vyberte možnost **kontrolovat jména** , zadejte přihlašovací údaje pro místní službu Active Directory a pak vyberte **OK** .
 
     > [!NOTE]
     > Je nutné zadat přihlašovací údaje, protože vztah důvěryhodnosti je pouze jedním ze způsobů. To znamená, že uživatelé ze spravované domény nemůžou získat přístup k prostředkům nebo Hledat uživatele nebo skupiny v důvěryhodné (místní) doméně.
@@ -311,27 +311,27 @@ Pomocí virtuálního počítače s Windows serverem připojeného k doménové 
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>Vytvoření sdílené složky pro přístup mezi doménovými strukturami
 
-1. Na virtuálním počítači s Windows serverem připojeném k doménové struktuře spravované domény vytvořte složku a zadejte její název, třeba *CrossForestShare*.
-1. Klepněte pravým tlačítkem myši na složku a vyberte možnost **vlastnosti**.
-1. Vyberte kartu **zabezpečení** a pak zvolte **Upravit**.
-1. V dialogovém okně *oprávnění pro CrossForestShare* vyberte **Přidat**.
-1. Do pole **Zadejte názvy objektů k výběru**zadejte *FileServerAccess* a pak vyberte **OK**.
-1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK**.
+1. Na virtuálním počítači s Windows serverem připojeném k doménové struktuře spravované domény vytvořte složku a zadejte její název, třeba *CrossForestShare* .
+1. Klepněte pravým tlačítkem myši na složku a vyberte možnost **vlastnosti** .
+1. Vyberte kartu **zabezpečení** a pak zvolte **Upravit** .
+1. V dialogovém okně *oprávnění pro CrossForestShare* vyberte **Přidat** .
+1. Do pole **Zadejte názvy objektů k výběru** zadejte *FileServerAccess* a pak vyberte **OK** .
+1. V seznamu **skupiny nebo jména uživatelů** vyberte *FileServerAccess* . V seznamu **oprávnění pro FileServerAccess** zvolte možnost *Povolení* oprávnění k **úpravám** a **zápisu** a pak vyberte **OK** .
 1. Vyberte kartu **sdílení** a pak zvolte **Rozšířené sdílení...**
-1. Zvolte **sdílet tuto složku**a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare*.
-1. Vyberte **oprávnění**. V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
-1. Dvakrát klikněte na **OK** a pak na **Zavřít**.
+1. Zvolte **sdílet tuto složku** a pak zadejte zapamatovatelné jméno sdílené složky v **názvu sdílené složky** , například *CrossForestShare* .
+1. Vyberte **oprávnění** . V seznamu **oprávnění pro všechny** vyberte možnost **udělit** oprávnění ke **změně** .
+1. Dvakrát klikněte na **OK** a pak na **Zavřít** .
 
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>Ověření ověřování mezi doménovými strukturami v prostředku
 
 1. Přihlaste se k počítači s Windows připojenému k místní službě Active Directory pomocí uživatelského účtu z vaší místní služby Active Directory.
-1. Pomocí **Průzkumníka Windows**se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je například `\\fs1.aaddscontoso.com\CrossforestShare` .
-1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový**a pak vyberte možnost **textový dokument**. Použijte výchozí název **nový textový dokument**.
+1. Pomocí **Průzkumníka Windows** se připojte ke sdílené složce, kterou jste vytvořili, pomocí plně kvalifikovaného názvu hostitele a sdílené složky, jako je například `\\fs1.aaddscontoso.com\CrossforestShare` .
+1. Chcete-li ověřit oprávnění k zápisu, ve složce klikněte pravým tlačítkem myši, vyberte možnost **Nový** a pak vyberte možnost **textový dokument** . Použijte výchozí název **nový textový dokument** .
 
     Pokud jsou oprávnění k zápisu nastavena správně, je vytvořen nový textový dokument. Následující kroky pak otevřou, upraví a odstraní soubor podle potřeby.
-1. Chcete-li ověřit oprávnění ke čtení, otevřete **nový textový dokument**.
-1. Chcete-li ověřit oprávnění upravit, přidejte text do souboru a ukončete **Poznámkový blok**. Po zobrazení výzvy k uložení změn klikněte na **Uložit**.
-1. Chcete-li ověřit oprávnění k odstranění, klikněte pravým tlačítkem myši na **nový textový dokument** a zvolte možnost **Odstranit**. Kliknutím na **tlačítko Ano** potvrďte odstranění souboru.
+1. Chcete-li ověřit oprávnění ke čtení, otevřete **nový textový dokument** .
+1. Chcete-li ověřit oprávnění upravit, přidejte text do souboru a ukončete **Poznámkový blok** . Po zobrazení výzvy k uložení změn klikněte na **Uložit** .
+1. Chcete-li ověřit oprávnění k odstranění, klikněte pravým tlačítkem myši na **nový textový dokument** a zvolte možnost **Odstranit** . Kliknutím na **tlačítko Ano** potvrďte odstranění souboru.
 
 ## <a name="update-or-remove-outbound-forest-trust"></a>Aktualizace nebo odebrání vztahu důvěryhodnosti pro odchozí doménové struktury
 
@@ -349,7 +349,7 @@ Následující příklady kroků ukazují, jak aktualizovat existující vztah d
     Install-Script -Name Get-AaddsResourceForestTrusts,Set-AaddsResourceForestTrust
     ```
 
-1. Předtím, než budete moci aktualizovat existující vztah důvěryhodnosti, nejprve získejte prostředek důvěryhodnosti pomocí `Get-AaddsResourceForestTrusts` skriptu. V následujícím příkladu je existující vztah důvěryhodnosti přiřazen k objektu s názvem *existingTrust*. Zadejte název vlastní spravované doménové struktury domény a název místní doménové struktury, které chcete aktualizovat:
+1. Předtím, než budete moci aktualizovat existující vztah důvěryhodnosti, nejprve získejte prostředek důvěryhodnosti pomocí `Get-AaddsResourceForestTrusts` skriptu. V následujícím příkladu je existující vztah důvěryhodnosti přiřazen k objektu s názvem *existingTrust* . Zadejte název vlastní spravované doménové struktury domény a název místní doménové struktury, které chcete aktualizovat:
 
     ```powershell
     $existingTrust = Get-AaddsResourceForestTrust `
@@ -388,9 +388,9 @@ Pokud již nepotřebujete jednosměrný odchozí vztah důvěryhodnosti doménov
 Chcete-li odebrat jednosměrný příchozí vztah důvěryhodnosti z místní doménové struktury služba AD DS, připojte se k počítači pro správu s přístupem k místní doménové struktuře služba AD DS a proveďte následující kroky:
 
 1. Vyberte **Spustit | Nástroje pro správu | Domény a vztahy důvěryhodnosti služby Active Directory**
-1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com*, vyberte možnost **vlastnosti** .
+1. Klikněte pravým tlačítkem na doména, jako je například *OnPrem.contoso.com* , vyberte možnost **vlastnosti** .
 1. Zvolte kartu **vztahy důvěryhodnosti** a pak vyberte existující příchozí vztah důvěryhodnosti z vaší spravované doménové struktury domény.
-1. Vyberte **Odebrat**a potvrďte, že chcete odebrat příchozí vztah důvěryhodnosti.
+1. Vyberte **Odebrat** a potvrďte, že chcete odebrat příchozí vztah důvěryhodnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

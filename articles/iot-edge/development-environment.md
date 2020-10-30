@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17531c6e38447fba7fe8761a963be39ecfc8f489
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4064acd6d2857ebc00a38ea7f6ff5d5e30bbd699
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041374"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>Příprava vývojového a testovacího prostředí pro IoT Edge
 
@@ -49,7 +49,7 @@ Další informace a jejich stažení najdete v tématu [Azure IoT Tools for Visu
 
 Kromě rozšíření IoT Edge může být užitečné nainstalovat další rozšíření pro vývoj. Můžete například použít [podporu Docker pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker) ke správě imagí, kontejnerů a registrů. Všechny hlavní podporované jazyky navíc mají rozšíření pro Visual Studio Code, která můžou pomáhat při vývoji modulů.
 
-#### <a name="prerequisites"></a>Požadované součásti
+#### <a name="prerequisites"></a>Předpoklady
 
 Šablony modulů pro některé jazyky a služby mají požadavky, které jsou nezbytné pro sestavení složek projektu na vývojovém počítači pomocí Visual Studio Code.
 
@@ -83,7 +83,7 @@ Pro produkční nasazení se podporuje jenom modul runtime IoT Edge, ale násled
 | Nástroj | Označuje se také jako | Podporované platformy | Nejvhodnější pro |
 | ---- | ------------- | ------------------- | --------- |
 | Nástroj pro vývoj IoT EdgeHub  | iotedgehubdev | Windows, Linux, macOS | Simulace zařízení pro moduly ladění. |
-| IoT Edge kontejner pro vývoj | Microsoft/iotedgedev | Windows, Linux, macOS | Vývoj bez instalace závislostí. |
+| IoT Edge kontejner pro vývoj | iotedgedev | Windows, Linux, macOS | Vývoj bez instalace závislostí. |
 | IoT Edge modul runtime v kontejneru | iotedgec | Windows, Linux, macOS, ARM | Testování v zařízení, které nemusí podporovat modul runtime. |
 | IoT Edge kontejner zařízení | toolboc/Azure – IoT-Edge-Device-Container | Windows, Linux, macOS, ARM | Testování scénáře s velkým množstvím IoT Edge zařízení ve velkém měřítku. |
 
@@ -99,7 +99,7 @@ Další informace a pokyny k instalaci najdete v tématu [Azure IoT EdgeHub dev 
 
 Kontejner pro vývoj Azure IoT Edge je kontejner Docker, který obsahuje všechny závislosti, které potřebujete pro vývoj IoT Edge. Tento kontejner usnadňuje začátek s libovolným jazykem, ve kterém chcete vyvíjet, včetně jazyků C#, Python, Node.js a Java. Vše, co je potřeba nainstalovat, je kontejnerový modul, jako je Docker nebo Moby, který načte kontejner do vývojového počítače.
 
-Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://hub.docker.com/r/microsoft/iotedgedev/).
+Další informace najdete v tématu [Azure IoT Edge vývojového kontejneru](https://github.com/Azure/iotedgedev/wiki/quickstart-with-iot-edge-dev-container).
 
 ### <a name="iot-edge-runtime-in-a-container"></a>IoT Edge modul runtime v kontejneru
 

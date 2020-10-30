@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82691901"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041634"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Migrace normalizovaného schématu databáze z Azure SQL Database do denormalizovaného kontejneru Azure CosmosDB
 
@@ -50,7 +50,7 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 2. Přidání aktivity toku dat
 
-3. V aktivitě toku dat vyberte **Nový tok dat mapování**.
+3. V aktivitě toku dat vyberte **Nový tok dat mapování** .
 
 4. Tento graf toku dat budeme sestavovat níže.
 
@@ -96,11 +96,11 @@ Výsledný kontejner CosmosDB vloží vnitřní dotaz do jediného dokumentu a b
 
 19. V nastavení jímky, klíč oddílu na ```\SalesOrderID``` a akci kolekce na "znovu vytvořit". Zajistěte, aby karta mapování vypadala takto:
 
-![Nastavení jímky](media/data-flow/cosmosb7.png)
+![Snímek obrazovky se zobrazí karta mapování.](media/data-flow/cosmosb7.png)
 
 20. Klikněte na náhled dat a ujistěte se, že se tyto 32 řádky nastavily tak, aby se do nového kontejneru vložily jako nové dokumenty:
 
-![Nastavení jímky](media/data-flow/cosmosb8.png)
+![Snímek obrazovky se zobrazí na kartě náhled dat.](media/data-flow/cosmosb8.png)
 
 Pokud vše vypadá dobře, teď jste připraveni vytvořit nový kanál, přidejte tuto aktivitu toku dat do tohoto kanálu a spusťte ji. Můžete provést z ladění nebo aktivovaného spuštění. Po několika minutách byste měli mít v databázi CosmosDB nový denormalizovaný kontejner objednávek nazývaný "Orders".
 

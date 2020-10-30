@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7ea61a1f09a9340661f333e452f70c5ad8cf877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266642"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041975"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Správa koncových bodů streamování s využitím webu Azure Portal
 
@@ -38,9 +38,9 @@ Informace o tom, jak škálovat koncový bod streamování, najdete v [tomto](me
 Pokud chcete začít spravovat koncové body streamování pro svůj účet, udělejte toto:
 
 1. Na webu [Azure Portal](https://portal.azure.com/) zvolte účet Azure Media Services.
-2. V okně **Nastavení** vyberte **koncové body streamování**.
+2. V okně **Nastavení** vyberte **koncové body streamování** .
    
-    ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![Snímek obrazovky, který zobrazuje stránku Media Services se zvolenými možnostmi "koncové body streamování" v okně nastavení.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > Fakturuje se vám jenom v případě, že je koncový bod streamování ve stavu spuštěno.
@@ -59,7 +59,7 @@ Pokud chcete přidat nebo odstranit koncový bod streamování pomocí Azure Por
 2. Pokud chcete odstranit koncový bod streamování, stiskněte tlačítko **Odstranit** .      
 3. Kliknutím na tlačítko **Spustit** spusťte koncový bod streamování.
    
-    ![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![Snímek obrazovky s vybraným názvem "Endpoint" a zobrazeným podoknem "Podrobnosti o koncovém bodu streamování".](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Konfigurace koncového bodu streamování
@@ -77,11 +77,11 @@ Podrobné informace o těchto vlastnostech naleznete v tématu [StreamingEndpoin
 Koncový bod streamování můžete nakonfigurovat následujícím způsobem:
 
 1. Vyberte koncový bod streamování, který chcete nakonfigurovat.
-2. Klikněte na **Nastavení**.
+2. Klikněte na **Nastavení** .
 
 Následuje stručný popis polí.
 
-![Koncový bod streamování](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![Snímek obrazovky, který zobrazuje akci nastavení vybranou pro koncový bod streamování.](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. Maximální zásada mezipaměti: slouží ke konfiguraci životního cyklu mezipaměti pro prostředky poskytované prostřednictvím tohoto koncového bodu streamování. Pokud není nastavená žádná hodnota, použije se výchozí hodnota. Výchozí hodnoty lze také definovat přímo ve službě Azure Storage. Pokud je pro koncový bod streamování povolené Azure CDN, neměli byste nastavit hodnotu zásad mezipaměti na míň než 600 sekund.  
 2. Povolené IP adresy: slouží k zadání IP adres, které se můžou připojit k publikovanému koncovému bodu streamování. Pokud nejsou zadané žádné IP adresy, může se připojit jakákoli IP adresa. IP adresy je možné zadat buď jako jednu IP adresu (například 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (například 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky podsítě s tečkami (například 10.0.0.1 (255.255.255.0)).
@@ -99,10 +99,10 @@ Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncov�
 
 Integrace CDN je povolená ve všech datových centrech Azure s výjimkou Číny a federálních vládních oblastí.
 
-Jakmile je tato možnost povolená, **Access Control**, * * vlastní název hostitele a konfigurace **ověřování signatur Akamai** budou zakázané.
+Jakmile je tato možnost povolená, **Access Control** , * * vlastní název hostitele a konfigurace **ověřování signatur Akamai** budou zakázané.
  
 > [!IMPORTANT]
-> Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z Verizon** pro koncové body streamování Standard. Koncové body streamování Premium se dají nakonfigurovat pomocí všech **Azure CDN cenové úrovně a zprostředkovatelů**. Další informace o funkcích Azure CDN najdete v [přehledu CDN](../../cdn/cdn-overview.md).
+> Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z Verizon** pro koncové body streamování Standard. Koncové body streamování Premium se dají nakonfigurovat pomocí všech **Azure CDN cenové úrovně a zprostředkovatelů** . Další informace o funkcích Azure CDN najdete v [přehledu CDN](../../cdn/cdn-overview.md).
  
 ### <a name="additional-considerations"></a>Další aspekty
 

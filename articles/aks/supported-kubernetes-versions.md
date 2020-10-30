@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735064"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042130"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes – kalendář vydání
 
-Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kubernetes#History).
+Historii minulých verzí najdete v tématu [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  Verze K8s | Verze nadřazeného softwaru  | AKS ve verzi Preview  | AKS GA  | Konec života |
 |--------------|-------------------|--------------|---------|-------------|
@@ -139,10 +139,12 @@ Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kuber
 | 1,17  | Dec-09-19  | Leden 2019   | Července 2020  | 1,20 GA | 
 | 1,18  | Březen – 23-20  | Květen 2020   | Srpna 2020  | 1,21 GA | 
 | 1,19  | Srpna 04-20  | SEP 2020   | Listopadu 2020  | 1,22 GA | 
-| 1,20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA | 
-\* V důsledku AKS svátků prodlouží životnost 1,16 od 2020 do ledna 2021. Další informace najdete [tady](https://github.com/Azure/AKS/releases/tag/2020-10-12) .
+| 1,20  | DEC-08-20  | Leden 2021   | Březen 2021  | 1,23 GA |
 
-## <a name="faq"></a>Nejčastější dotazy
+\* V důsledku svátků se AKS prodlouží životnost 1,16 od listopadu 2020 až do ledna 2021. [Další informace](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+
+
+## <a name="faq"></a>Časté otázky
 
 **Jak často mám očekávat, že upgradují verze Kubernetes, aby zůstaly v podpoře?**
 

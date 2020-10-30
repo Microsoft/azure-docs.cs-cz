@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: eaf12fe1d757c3a5a76307d87151bf71aa720b2b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460865"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042392"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží s agentem Log Analytics pro Linux 
 
@@ -55,6 +55,15 @@ Další podrobnosti najdete v [dokumentaci k GitHubu](https://github.com/microso
  >[!NOTE]
  >Pokud se setkáte s problémem, spusťte prosím nástroj kolektor protokolů. S tím, jak protokoly začnou mít na začátku, výrazně pomůžou tým podpory řešit potíže rychleji.
 
+## <a name="purge-and-re-install-the-linux-agent"></a>Vyprázdnit a Re-Install agenta pro Linux
+
+Zjistili jsme, že při čisté opakované instalaci agenta se vyřeší i většina problémů. Je možné, že se jedná o první návrh z podpory pro získání agenta do uncurropted stavu od našeho týmu podpory. Spuštění Poradce při potížích, shromáždění protokolů a pokus o čistou opětovnou instalaci vám pomůže rychleji řešit problémy.
+
+1. Stáhněte si skript pro vyprázdnění:
+- `$ wget https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/tools/purge_omsagent.sh`
+2. Spusťte skript vyprázdnění (s oprávněními sudo):
+- `$ sudo sh purge_omsagent.sh`
+
 ## <a name="important-log-locations-and-log-collector-tool"></a>Důležitá umístění protokolů a nástroj kolektoru protokolů
 
  Soubor | Cesta
@@ -83,9 +92,9 @@ Další podrobnosti najdete v [dokumentaci k GitHubu](https://github.com/microso
 | NOT_DEFINED | Vzhledem k tomu, že nezbytné závislosti nejsou nainstalovány, modul plug-in auoms audit nebude nainstalován. | Instalace auoms selhala, nainstalujte balíček audited. |
 | 2 | Pro sadu prostředí se dala zadat neplatná možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití |
 | 3 | Sada Shell neposkytla žádnou možnost. Spustit `sudo sh ./omsagent-*.universal*.sh --help` pro použití. |
-| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent-*ot*. sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent-*deb*. sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
+| 4 | Neplatný typ balíčku nebo neplatné nastavení proxy serveru; balíčky omsagent- *ot* . sh lze instalovat pouze na systémy na bázi ot./min. a balíčky omsagent- *deb* . sh lze instalovat pouze v systémech založených na Debian. Doporučuje se použít univerzální instalační program z [nejnovější verze](../learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Přečtěte si také téma ověření nastavení proxy serveru. |
 | 5 | Sada prostředí musí být spuštěná jako kořenová nebo během připojování se vrátila 403 chyba. Spusťte příkaz pomocí příkazu `sudo` . |
-| 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent-*x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
+| 6 | Během připojování se vrátila Neplatná architektura balíčku nebo došlo k chybě 200. balíčky omsagent- *x64.sh lze instalovat pouze v systémech 64 a balíčky omsagent-* x86.sh lze instalovat pouze na 32 systémy. Stáhněte si správný balíček pro vaši architekturu z [nejnovější verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 19 | Instalace balíčku OMI se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
 | 20 | Instalace balíčku SCX se nezdařila. Prohlédněte si výstup příkazu pro kořenovou chybu. |
@@ -454,7 +463,7 @@ Problém vyřešíte provedením následujících kroků.
 1. Odebere rozšíření z Azure Portal.
 2. Nainstalujte agenta podle [pokynů](../learn/quick-collect-linux-computer.md).
 3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
-* Počkejte několik minut a stav zřizování se změní na **zřizování bylo úspěšné**.
+* Počkejte několik minut a stav zřizování se změní na **zřizování bylo úspěšné** .
 
 
 ## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problém: Upgrade agenta Log Analytics na vyžádání

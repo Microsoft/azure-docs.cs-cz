@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84752472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040253"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamů vyloučení požadavků firewallu webových aplikací
 
@@ -38,11 +38,11 @@ Můžete zadat přesně takovou hlavičku požadavku, tělo, soubor cookie nebo 
 
 Následují podporované operátory kritérií shody:
 
-- **Equals**: Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr záhlaví s názvem **bearerToken**použijte operátor Equals se sadou selektoru jako **bearerToken**.
-- **Začíná**na: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou selektoru.
-- **Končí**na: Tento operátor odpovídá všem polím žádosti, která končí zadanou hodnotou selektoru.
-- **Obsahuje**: Tento operátor odpovídá všem polím požadavku, která obsahují zadanou hodnotu selektoru.
-- **Equals**: Tento operátor odpovídá všem polím žádosti. * bude hodnota selektoru.
+- **Equals** : Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr záhlaví s názvem **bearerToken** použijte operátor Equals se sadou selektoru jako **bearerToken** .
+- **Začíná** na: Tento operátor odpovídá všem polím, která začínají zadanou hodnotou selektoru.
+- **Končí** na: Tento operátor odpovídá všem polím žádosti, která končí zadanou hodnotou selektoru.
+- **Obsahuje** : Tento operátor odpovídá všem polím požadavku, která obsahují zadanou hodnotu selektoru.
+- **Equals** : Tento operátor odpovídá všem polím žádosti. * bude hodnota selektoru.
 
 Ve všech případech porovnávání nerozlišuje velká a malá písmena a regulární výraz nejsou povoleny jako selektory.
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` předána do WAF, nevyhodnotí se řetězec **fdafdasfda**, ale přesto bude vyhodnocen uživatel s názvem parametru **%281 %29**. 
+Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` předána do WAF, nevyhodnotí se řetězec **fdafdasfda** , ale přesto bude vyhodnocen uživatel s názvem parametru **%281 %29** . 
 
 ## <a name="waf-request-size-limits"></a>Omezení velikosti žádosti WAF
 
@@ -89,7 +89,7 @@ Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` pře
 
 Firewall webových aplikací umožňuje konfigurovat omezení velikosti požadavků v rámci dolních a horních mezí. K dispozici jsou následující dvě konfigurace omezení velikosti:
 
-- Pole Maximální velikost textu požadavku je zadáno v kilobajtech a řídí celkové omezení velikosti požadavku bez jakýchkoli nahrávání souborů. Toto pole může být v rozsahu od 1 do KB minimálně až 128-maximální hodnota KB. Výchozí hodnota velikosti textu požadavku je 128 KB.
+- Pole Maximální velikost textu požadavku je zadáno v kilobajtech a řídí celkové omezení velikosti požadavku bez jakýchkoli nahrávání souborů. Toto pole má minimální hodnotu 1 KB a maximální hodnotu 128 KB. Výchozí hodnota velikosti textu požadavku je 128 KB.
 - Pole limit pro nahrání souboru je zadané v MB a určuje maximální povolenou velikost nahrávání souborů. Toto pole může mít minimální hodnotu 1 MB a následující maximum:
 
    - 100 MB pro brány v1 Medium WAF

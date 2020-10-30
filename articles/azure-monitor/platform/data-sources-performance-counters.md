@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040878"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Shromažďování zdrojů dat výkonu pro Windows a Linux pomocí agenta Log Analytics
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu od agentů Log Analytics v častých intervalech pro analýzu téměř v reálném čase (NRT) společně s agregací údajů o výkonu pro dlouhodobé analýzy a generování sestav.
@@ -24,11 +24,11 @@ ms.locfileid: "92461358"
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
 Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources) pro pracovní prostor Log Analytics.
 
-Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový pracovní prostor budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou zaškrtnuté všechny čítače, které chcete zpočátku vytvořit, a pak klikněte na **Přidat vybrané čítače výkonu**.
+Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový pracovní prostor budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou zaškrtnuté všechny čítače, které chcete zpočátku vytvořit, a pak klikněte na **Přidat vybrané čítače výkonu** .
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Popis |
+| Název instance | Description |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -38,14 +38,14 @@ V případě čítačů výkonu systému Windows můžete zvolit konkrétní ins
 
 ![Konfigurace čítačů výkonu systému Windows](media/data-sources-performance-counters/configure-windows.png)
 
-Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows, který se má shromáždit.
+Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows, který se má shromáždit. Upozorňujeme, že čítače výkonu v2 pro Windows nejsou podporované.
 
-1. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter*.  
+1. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter* .  
 
     Když shromažďujete čítače výkonu SQL Server z pojmenovaných instancí, všechny pojmenované čítače instancí začínají na *MSSQL $* a za názvem instance.  Například pro shromáždění čítače poměru přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze pro pojmenovanou instanci SQL INST2 zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
 2. Chcete **+** -li přidat čítač do seznamu, klikněte nebo stiskněte klávesu **ENTER** .
-3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
+3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování** .  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
 4. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu pro Linux
@@ -55,13 +55,13 @@ Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows,
 Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který se má shromáždit.
 
 1. Ve výchozím nastavení jsou všechny změny konfigurace automaticky vloženy do všech agentů.  Pro agenty Linux se konfigurační soubor pošle do Fluent sběrače dat.  Pokud chcete tento soubor upravit ručně u každého agenta pro Linux, zrušte jeho zaškrtávací políčko u *počítačů se systémem Linux níže uvedená konfigurace* a postupujte podle pokynů níže.
-2. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
+2. Do textového pole ve formátu *objekt (instance) \counter* zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  
 3. Klikněte **+** nebo stiskněte klávesu **ENTER** , chcete-li přidat čítač do seznamu dalších čítačů pro daný objekt.
-4. Všechny čítače pro objekt používají stejný **interval vzorkování**.  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
+4. Všechny čítače pro objekt používají stejný **interval vzorkování** .  Výchozí hodnota je 10 sekund.  Pokud chcete snížit požadavky na úložiště shromážděných dat výkonu, změňte tuto hodnotu na vyšší hodnotu až na 1800 sekund (30 minut).
 5. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurace čítačů výkonu systému Linux v konfiguračním souboru
-Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**.
+Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf** .
 
 Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být definovány v konfiguračním souboru jako jeden `<source>` prvek. Syntaxe následuje níže uvedený vzor.
 
@@ -78,7 +78,7 @@ Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být d
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Popis |
+| Parametry | Description |
 |:--|:--|
 | \_název objektu | Název objektu pro kolekci |
 | \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
@@ -206,7 +206,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |

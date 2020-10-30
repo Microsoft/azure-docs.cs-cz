@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327914"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042611"
 ---
 # <a name="what-is-risk"></a>Co je riziko?
 
@@ -24,11 +24,14 @@ Detekce rizik v Azure AD Identity Protection zahrnuje všechny identifikované p
 
 Identity Protection poskytuje organizacím přístup k výkonným prostředkům, abyste mohli rychle sledovat tyto podezřelé akce a reagovat na ně. 
 
+>**Poznámka:** Identity Protection generuje detekci rizik jenom v případě, že se používají správné přihlašovací údaje. Pokud se při přihlášení použijí nesprávné přihlašovací údaje, nepředstavuje riziko zneužití přihlašovacích údajů.
+
 ![Přehled zabezpečení znázorňující rizikové uživatele a přihlášení](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
+
 
 ## <a name="risk-types-and-detection"></a>Typy a detekce rizik
 
-Existují dva typy rizikového **uživatele** a **přihlášení** a dva typy detekce nebo výpočtu v **reálném čase** a v **režimu offline**.
+Existují dva typy rizikového **uživatele** a **přihlášení** a dva typy detekce nebo výpočtu v **reálném čase** a v **režimu offline** .
 
 Zjišťování v reálném čase se nemusí zobrazit v hlášení po dobu pěti až deseti minut. Offline detekce se nemusí zobrazit v hlášení po dobu dvou až dvaceti čtyř hodin.
 

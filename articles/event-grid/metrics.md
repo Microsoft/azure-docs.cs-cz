@@ -3,12 +3,12 @@ title: Metriky podporované aplikací Azure Event Grid
 description: Tento článek poskytuje Azure Monitor metriky, které služba Azure Event Grid podporuje.
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: 06c43b1990efc977cae33ced3f66f02e2de0b9c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87c91077c8eeca2134da53774979c212a82e3b7d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225168"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042134"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Metriky podporované aplikací Azure Event Grid
 Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do kategorií podle oborů názvů. 
@@ -26,6 +26,8 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 |PublishFailCount|Yes|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|Téma, ErrorType, chyba|
 |PublishSuccessCount|Yes|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Téma|
 |PublishSuccessLatencyInMs|Yes|Latence úspěšného publikování|Milisekund|Celkem|Latence úspěšného publikování v milisekundách|Žádné dimenze|
+| AdvancedFilterEvaluationCount | Yes | Vyhodnocení pokročilých filtrů | Počet | Celkem | Celkové Rozšířené filtry vyhodnocené napříč odběry událostí | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
@@ -64,6 +66,8 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 |PublishSuccessCount|Yes|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádné dimenze|
 |PublishSuccessLatencyInMs|Yes|Latence úspěšného publikování|Milisekund|Celkem|Latence úspěšného publikování v milisekundách|Žádné dimenze|
 |UnmatchedEventCount|Yes|Nespárované události|Počet|Celkem|Celkový počet událostí nevyhovujících žádnému z odběrů událostí pro toto téma|Žádné dimenze|
+| AdvancedFilterEvaluationCount | Yes | Vyhodnocení pokročilých filtrů | Počet | Celkem | Celkové Rozšířené filtry vyhodnocené napříč odběry událostí | EventSubscriptionName |
+
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
@@ -80,6 +84,7 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 |PublishSuccessCount|Yes|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádné dimenze|
 |PublishSuccessLatencyInMs|Yes|Latence úspěšného publikování|Milisekund|Celkem|Latence úspěšného publikování v milisekundách|Žádné dimenze|
 |UnmatchedEventCount|Yes|Nespárované události|Počet|Celkem|Celkový počet událostí nevyhovujících žádnému z odběrů událostí pro toto téma|Žádné dimenze|
+| AdvancedFilterEvaluationCount | Yes | Vyhodnocení pokročilých filtrů | Počet | Celkem | Celkové Rozšířené filtry vyhodnocené napříč odběry událostí | Téma, EventSubscriptionName, DomainEventSubscriptionName |
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující článek: [diagnostické protokoly](diagnostic-logs.md)

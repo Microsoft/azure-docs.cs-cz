@@ -74,6 +74,8 @@
       href: concepts/sdk-options.md
     - name: Cenový model
       href: concepts/pricing.md
+    - name: Ochrana osobních údajů
+      href: concepts/privacy.md
     - name: Authentication
       href: concepts/authentication.md
     - name: Zpracování událostí

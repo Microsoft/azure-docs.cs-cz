@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84754501"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040028"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Nasazení první aplikace pro Cloud Foundry v Microsoft Azure
 
@@ -95,7 +95,7 @@ Většinu aplikací můžete nasadit pro Cloud Foundry pomocí `push` příkazu:
 cf push
 ```
 
-Když nahrajete aplikaci, Cloud Foundry detekuje typ aplikace (v tomto případě aplikace Java) a identifikuje její závislosti (v tomto případě se *jedná o* architekturu pružiny). Pak zabalí vše potřebné ke spuštění kódu v samostatné imagi kontejneru, označované jako *droplet*. Nakonec Cloud Foundry naplánování aplikace na jednom z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, na které se můžete dostat, která je k dispozici ve výstupu příkazu.
+Když nahrajete aplikaci, Cloud Foundry detekuje typ aplikace (v tomto případě aplikace Java) a identifikuje její závislosti (v tomto případě se *jedná o* architekturu pružiny). Pak zabalí vše potřebné ke spuštění kódu v samostatné imagi kontejneru, označované jako *droplet* . Nakonec Cloud Foundry naplánování aplikace na jednom z dostupných počítačů ve vašem prostředí a vytvoří adresu URL, na které se můžete dostat, která je k dispozici ve výstupu příkazu.
 
 ![Výstup z příkazu CR push][cf-push-output]
 
@@ -114,7 +114,7 @@ Pomocí rozhraní příkazového řádku Cloud Foundry můžete zobrazit protoko
 cf logs hello-spring-cloud
 ```
 
-Ve výchozím nastavení používá příkaz logs *konec*, který zobrazuje nové protokoly při jejich zápisu. Pokud se chcete podívat na nové protokoly, aktualizujte v prohlížeči aplikaci Hello-jaře-Cloud.
+Ve výchozím nastavení používá příkaz logs *konec* , který zobrazuje nové protokoly při jejich zápisu. Pokud se chcete podívat na nové protokoly, aktualizujte v prohlížeči aplikaci Hello-jaře-Cloud.
 
 Chcete-li zobrazit protokoly, které již byly zapsány, přidejte `recent` přepínač:
 
@@ -146,7 +146,7 @@ Spuštění `cf app` příkazu v aplikaci ukazuje, že Cloud Foundry vytváří 
 [oss-cf-bosh]: https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs
 [pcf-azuremarketplace-pivotaldocs]: https://docs.pivotal.io/pivotalcf/customizing/pcf_azure.html
 [cf-cli]: https://github.com/cloudfoundry/cli
-[cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
+[cloudshell-docs]: ../cloud-shell/overview.md
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
 [spring-framework]: https://spring.io

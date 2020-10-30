@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780367"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040741"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
 
@@ -28,7 +28,7 @@ Využijte tuto možnost k tomu, aby vaše datové toky byly pro obecné účely,
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Vytváření parametrů v toku dat mapování
 
-Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem **parametr**. Vyberte **Nový** a vygenerujte nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
+Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátna toku dat a zobrazte obecné vlastnosti. V podokně nastavení se zobrazí karta s názvem **parametr** . Vyberte **Nový** a vygenerujte nový parametr. Pro každý parametr musíte přiřadit název, vybrat typ a volitelně nastavit výchozí hodnotu.
 
 ![Vytvoření parametrů toku dat](media/data-flow/create-params.png "Vytvoření parametrů toku dat")
 
@@ -36,11 +36,11 @@ Pokud chcete do toku dat přidat parametry, klikněte na prázdnou část plátn
 
 Na parametry se dá odkazovat v jakémkoli výrazu toku dat. Parametry začínají na $ a jsou neměnné. Seznam dostupných parametrů se nachází uvnitř Tvůrce výrazů na kartě **parametry** .
 
-![Výraz parametru toku dat](media/data-flow/parameter-expression.png "Výraz parametru toku dat")
+![Snímek obrazovky ukazuje dostupné parametry na kartě Parameters (parametry).](media/data-flow/parameter-expression.png "Výraz parametru toku dat")
 
 Další parametry můžete rychle přidat tak, že vyberete **Nový parametr** a zadáte název a typ.
 
-![Výraz parametru toku dat](media/data-flow/new-parameter-expression.png "Výraz parametru toku dat")
+![Snímek obrazovky ukazuje parametry na kartě parametry s přidanými novými parametry.](media/data-flow/new-parameter-expression.png "Výraz parametru toku dat")
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>Přiřazení hodnot parametrů z kanálu
 
@@ -48,13 +48,13 @@ Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivit
 
 Při přiřazování hodnot parametrů můžete použít jazyk [výrazu kanálu](control-flow-expression-language-functions.md) nebo [Jazyk výrazu datového toku](data-flow-expression-functions.md) , který je založený na typech Spark. Každý tok dat mapování může obsahovat libovolnou kombinaci parametrů výrazu kanálu a toku dat.
 
-![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
+![Snímek obrazovky zobrazuje kartu parametry s výrazem toku dat vybraným pro hodnotu myParam.](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
 
 ### <a name="pipeline-expression-parameters"></a>Parametry výrazu kanálu
 
-Parametry výrazu kanálu umožňují odkazovat systémové proměnné, funkce, parametry kanálu a proměnné podobně jako jiné aktivity kanálu. Když kliknete na **kanál – výraz**, otevře se vedlejší navigace, která vám umožní zadat výraz pomocí Tvůrce výrazů.
+Parametry výrazu kanálu umožňují odkazovat systémové proměnné, funkce, parametry kanálu a proměnné podobně jako jiné aktivity kanálu. Když kliknete na **kanál – výraz** , otevře se vedlejší navigace, která vám umožní zadat výraz pomocí Tvůrce výrazů.
 
-![Nastavení parametru toku dat](media/data-flow/parameter-pipeline.png "Nastavení parametru toku dat")
+![Snímek obrazovky se zobrazí v podokně Tvůrce výrazů.](media/data-flow/parameter-pipeline.png "Nastavení parametru toku dat")
 
 V případě, že se na něj odkazuje, vyhodnocují se parametry kanálu a pak se jejich hodnota používá v jazyce výrazu toku dat. Typ výrazu kanálu nemusí odpovídat typu parametru toku dat. 
 
@@ -62,7 +62,7 @@ V případě, že se na něj odkazuje, vyhodnocují se parametry kanálu a pak s
 
 Při přiřazování parametru výrazu kanálu typu String budou přidány výchozí uvozovky a hodnota bude vyhodnocena jako literál. Chcete-li načíst hodnotu parametru jako výraz toku dat, zaškrtněte políčko výrazu vedle parametru.
 
-![Nastavení parametru toku dat](media/data-flow/string-parameter.png "Nastavení parametru toku dat")
+![Snímek obrazovky ukazuje výraz podokna parametry toku dat vybraný pro parametr.](media/data-flow/string-parameter.png "Nastavení parametru toku dat")
 
 Pokud parametr toku dat `stringParam` odkazuje na parametr kanálu s hodnotou `upper(column1)` . 
 
@@ -73,7 +73,7 @@ Pokud parametr toku dat `stringParam` odkazuje na parametr kanálu s hodnotou `u
 
 V jazyce výrazu kanálu jsou systémové proměnné, jako například `pipeline().TriggerTime` , a funkce jako `utcNow()` návratová časová razítka ve formátu yyyy-MM-DD \' T \' HH: mm: ss. SSSSSSZ'. Chcete-li je převést na parametry toku dat typu timestamp, použijte interpolaci řetězce k zahrnutí požadovaného časového razítka do `toTimestamp()` funkce. Chcete-li například převést dobu triggeru kanálu na parametr toku dat, můžete použít `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
-![Nastavení parametru toku dat](media/data-flow/parameter-timestamp.png "Nastavení parametru toku dat")
+![Snímek obrazovky se zobrazí na kartě parametry, kde můžete zadat dobu triggeru.](media/data-flow/parameter-timestamp.png "Nastavení parametru toku dat")
 
 > [!NOTE]
 > Toky dat můžou podporovat jenom až 3 milisekundové číslice. `left()`Funkce se používá pro oříznutí dalších číslic.
@@ -82,15 +82,15 @@ V jazyce výrazu kanálu jsou systémové proměnné, jako například `pipeline
 
 Řekněme, že máte parametr typu Integer, `intParam` který odkazuje na parametr kanálu typu String, `@pipeline.parameters.pipelineParam` . 
 
-![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-2.png "Nastavení parametru toku dat")
+![Snímek obrazovky se zobrazí na kartě parametry s parametry s názvem stringParam a intParam.](media/data-flow/parameter-pipeline-2.png "Nastavení parametru toku dat")
 
 `@pipeline.parameters.pipelineParam` je přiřazena hodnota za `abs(1)` běhu.
 
-![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-4.png "Nastavení parametru toku dat")
+![Snímek obrazovky zobrazuje kartu parametry s hodnotou a b s (1) vybranou.](media/data-flow/parameter-pipeline-4.png "Nastavení parametru toku dat")
 
 Pokud `$intParam` je odkazováno ve výrazu, jako je například odvozený sloupec, vyhodnotí se `abs(1)` vrátí zpět `1` . 
 
-![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-3.png "Nastavení parametru toku dat")
+![Snímek obrazovky zobrazuje hodnotu sloupců.](media/data-flow/parameter-pipeline-3.png "Nastavení parametru toku dat")
 
 ### <a name="data-flow-expression-parameters"></a>Parametry výrazu toku dat
 

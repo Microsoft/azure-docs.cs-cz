@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 10/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3a7a9711f04a4b54459d57a05ae65b4eedf1d6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 517b006b013bddbe4e7e7a3d44be74dfa36cc154
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986635"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042601"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro konfigurace připojení typu point-to-site s využitím nativního ověřování Azure pomocí certifikátů
 
@@ -34,16 +34,16 @@ Než začnete, ujistěte se, že všichni připojující se uživatelé mají na
 
 Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pomocí Azure Portal. Kterákoli z metod vrátí stejný soubor zip. Rozbalte soubor pro zobrazení následujících složek:
 
-  * **WindowsAmd64** a **WindowsX86**, které obsahují instalační balíčky Windows 32-bit a 64, v uvedeném pořadí. Balíček Instalační služby **WindowsAmd64** je pro všechny podporované 64 klienty Windows, ne jenom pro procesory AMD.
-  * **Obecné**, který obsahuje obecné informace, které se používají k vytvoření vlastní konfigurace klienta VPN. Obecná složka je k dispozici, pokud byla v bráně nakonfigurována IKEv2 nebo SSTP + IKEv2. Je-li nakonfigurován pouze protokol SSTP, není obecná složka k dispozici.
+  * **WindowsAmd64** a **WindowsX86** , které obsahují instalační balíčky Windows 32-bit a 64, v uvedeném pořadí. Balíček Instalační služby **WindowsAmd64** je pro všechny podporované 64 klienty Windows, ne jenom pro procesory AMD.
+  * **Obecné** , který obsahuje obecné informace, které se používají k vytvoření vlastní konfigurace klienta VPN. Obecná složka je k dispozici, pokud byla v bráně nakonfigurována IKEv2 nebo SSTP + IKEv2. Je-li nakonfigurován pouze protokol SSTP, není obecná složka k dispozici.
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Generovat soubory pomocí Azure Portal
 
 1. V Azure Portal přejděte do brány virtuální sítě pro virtuální síť, ke které se chcete připojit.
-2. Na stránce Brána virtuální sítě klikněte na **Konfigurace Point-to-site**.
+2. Na stránce Brána virtuální sítě klikněte na **Konfigurace Point-to-site** .
 
    ![Stáhnout klientský portál](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
-3. V horní části stránky konfigurace typu Point-to-site klikněte na **stáhnout klienta VPN**. Generování konfiguračního balíčku klienta může trvat několik minut.
+3. V horní části stránky konfigurace typu Point-to-site klikněte na **stáhnout klienta VPN** . Generování konfiguračního balíčku klienta může trvat několik minut.
 4. V prohlížeči se zobrazí zpráva, že je k dispozici soubor zip konfigurace klienta. Má název stejný jako brána. Rozbalte soubor, aby se zobrazily složky.
 
 ### <a name="generate-files-using-powershell"></a><a name="zipps"></a>Generování souborů pomocí PowerShellu
@@ -60,26 +60,14 @@ Konfigurační soubory klienta můžete vygenerovat pomocí PowerShellu nebo pom
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 
-Stejný konfigurační balíček klienta VPN můžete použít na každém klientském počítači s Windows, pokud verze odpovídá architektuře pro klienta. Seznam podporovaných klientských operačních systémů najdete v části [Nejčastější dotazy k VPN Gateway](vpn-gateway-vpn-faq.md#P2S)v části Point-to-site.
-
->[!NOTE]
->Musíte mít oprávnění správce na klientském počítači s Windows, ze kterého se chcete připojit.
->
->
-
-Pomocí následujících kroků nakonfigurujte nativního klienta VPN systému Windows pro ověřování certifikátů:
-
-1. Vyberte konfigurační soubory klienta VPN, které odpovídají architektuře počítače s Windows. V případě 64bitové architektury procesoru zvolte instalační balíček VpnClientSetupAmd64. V případě 32bitové architektury procesoru zvolte instalační balíček VpnClientSetupX86. 
-2. Dvakrát klikněte na balíček a nainstalujte ho. Pokud se zobrazí automaticky otevírané okno filtru SmartScreen, klikněte na **Další informace**a potom na **přesto spustit**.
-3. Na klientském počítači přejděte do části **Nastavení sítě** a klikněte na možnost **Síť VPN**. Připojení k síti VPN zobrazuje název virtuální sítě, ke které se připojuje. 
-4. Než se pokusíte o připojení, ověřte, že jste na klientském počítači nainstalovali klientský certifikát. Klientský certifikát se vyžaduje k ověřování při použití typu nativního ověřování certifikátů Azure. Další informace o generování certifikátů najdete v tématu věnovaném [generování certifikátů](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Informace o instalaci klientského certifikátu najdete v tématu [instalace klientského certifikátu](point-to-site-how-to-vpn-client-install-azure-cert.md).
+[!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
 ## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
 
  Na každém počítači Mac, který se bude připojovat k Azure, je potřeba ručně nakonfigurovat nativního klienta IKEv2 VPN. Azure neposkytuje soubor mobileconfig pro nativní ověřování certifikátů Azure. **Obecné** obsahuje všechny informace, které potřebujete pro konfiguraci. Pokud složku Generic mezi staženými soubory nevidíte, pravděpodobně jste jako typ tunelu nevybrali IKEv2. Upozorňujeme, že základní skladová položka služby VPN Gateway nepodporuje IKEv2. Jakmile vyberete IKEv2, znovu vygenerujte soubor zip a načtěte složku Generic.<br>Složka Generic obsahuje následující soubory:
 
-* **VpnSettings.xml**, která obsahuje důležitá nastavení jako adresa serveru a typ tunelového propojení. 
-* **VpnServerRoot. cer**, který obsahuje kořenový certifikát nutný k ověření služby Azure VPN Gateway během nastavení připojení P2S.
+* **VpnSettings.xml** , která obsahuje důležitá nastavení jako adresa serveru a typ tunelového propojení. 
+* **VpnServerRoot. cer** , který obsahuje kořenový certifikát nutný k ověření služby Azure VPN Gateway během nastavení připojení P2S.
 
 Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN na Macu pro ověřování certifikátů. Tyto kroky je potřeba provést na všech počítačích Mac, které se budou připojovat k Azure:
 
@@ -100,18 +88,18 @@ Pomocí následujících kroků můžete nakonfigurovat nativního klienta VPN n
 4. V **Obecné** složce v souboru **VpnSettings.xml** Zkopírujte hodnotu značky **VpnServer** . Vložte tuto hodnotu do polí **Adresa serveru** a **vzdálený identifikátor** v profilu.
 
    ![informace o serveru](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Klikněte na **nastavení ověřování** a vyberte **certifikát**.V **Catalina**klikněte na **žádná** a pak na **certifikát** .
+5. Klikněte na **nastavení ověřování** a vyberte **certifikát** . V **Catalina** klikněte na **žádná** a pak na **certifikát** .
 
    ![nastavení ověřování](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
 
-   * V případě Catalina vyberte možnost **žádná** a pak **certifikát**. **Vyberte** správný certifikát:
+   * V případě Catalina vyberte možnost **žádná** a pak **certifikát** . **Vyberte** správný certifikát:
    
    ![Snímek obrazovky se zobrazí okno síť s možnostmi žádný vybraný pro nastavení ověřování a vybraný certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
 
 6. Klikněte na **Vybrat...** pro výběr klientského certifikátu, který chcete použít pro ověřování. Toto je certifikát, který jste nainstalovali v kroku 2.
 
    ![Snímek obrazovky se zobrazí okno síť s nastavením ověřování, kde můžete vybrat certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
-7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat**.
+7. **Volba identity** zobrazí seznam certifikátů, ze kterých si můžete vybrat. Vyberte vhodný certifikát a potom klikněte na **pokračovat** .
 
    ![Snímek obrazovky se zobrazí dialogové okno zvolit identitu, kde můžete vybrat vhodný certifikát.](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Do pole **místní ID** zadejte název certifikátu (z kroku 6). V tomto příkladu je to "ikev2Client.com". Potom kliknutím na tlačítko **použít** uložte změny.
@@ -140,7 +128,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Vyberte **Nastavení**a pak vybrat **síť**.
+2. Vyberte **Nastavení** a pak vybrat **síť** .
 
    ![Upravit připojení](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Kliknutím na **+** tlačítko vytvořte nové připojení.
@@ -153,7 +141,7 @@ V Ubuntu 18.0.4 byly vytvořeny následující pokyny. Ubuntu 16.0.10 nepodporuj
 
    ![Kopírovat název](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Tento název vložte do pole **adresa** nového připojení k síti VPN v části **Brána** . V dalším kroku vyberte ikonu složky na konci pole **certifikát** , přejděte do složky **Obecné** a vyberte soubor **VpnServerRoot** .
-7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč**. V části **certifikát** a **privátní klíč**vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti**vyberte možnost **požádat o vnitřní IP adresu**. Pak klikněte na tlačítko **Přidat**.
+7. V části **klient** tohoto připojení vyberte pro **ověřování** **certifikát/privátní klíč** . V části **certifikát** a **privátní klíč** vyberte certifikát a privátní klíč, který jste vytvořili dříve. V **Možnosti** vyberte možnost **požádat o vnitřní IP adresu** . Pak klikněte na tlačítko **Přidat** .
 
    ![požádat o vnitřní IP adresu](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Zapněte připojení **.**
@@ -193,7 +181,7 @@ Pokud jste ještě vygenerovali certifikáty, použijte následující postup:
          leftsourceip=%config
          auto=add
    ```
-6. Do */etc/IPSec.Secrets*přidejte následující.
+6. Do */etc/IPSec.Secrets* přidejte následující.
 
    ```
    : P12 client.p12 'password' # key filename inside /etc/ipsec.d/private directory

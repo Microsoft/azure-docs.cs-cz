@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 10/29/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 247742cac3dc24b062fc8e1cb5eceb6c1a6f3f8b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3f97a91d56324ab583c1f8ae9989631a908df447
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911609"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042232"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -47,9 +47,7 @@ Nainstalujte potřebné knihovny.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Ujistěte se, že je nainstalováno rozhraní .NET Framework. Viz [stažení .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
- 
-2. Pomocí následujícího příkazu ověřte, že verze prostředí PowerShell, která je nainstalovaná, je `5.1` nebo vyšší.    
+1. Pomocí následujícího příkazu ověřte, že verze prostředí PowerShell, která je nainstalovaná, je `5.1` nebo vyšší.    
 
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
@@ -57,18 +55,10 @@ Nainstalujte potřebné knihovny.
     
    Pokud chcete upgradovat verzi PowerShellu, přečtěte si téma [upgrade existujícího prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell) .
     
-3. Nainstalujte nejnovější verzi modulu PowershellGet.
+2. Nainstalujte modul **AZ. Storage** .
 
    ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force  
-   ```
-
-4. Zavřete a znovu otevřete konzolu PowerShellu.
-
-5. Nainstalujte modul **AZ. Storage** Preview.
-
-   ```powershell
-   Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    Další informace o tom, jak nainstalovat moduly PowerShellu, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) .
@@ -875,10 +865,10 @@ $result
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-V případě selhání můžete vrátit token pokračování nastavením `--continue-on-failure` parametru na `true` . Po vyřešení chyb můžete proces obnovit z bodu selhání tak, že znovu spustíte příkaz a pak nastavíte `--continuation` parametr na token pro pokračování. 
+V případě selhání můžete vrátit token pokračování nastavením `--continue-on-failure` parametru na `false` . Po vyřešení chyb můžete proces obnovit z bodu selhání tak, že znovu spustíte příkaz a pak nastavíte `--continuation` parametr na token pro pokračování. 
 
 ```azurecli
-az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --continue-on-failure true --continuation xxxxxxx -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login  
+az storage fs access set-recursive --acl "user::rw-,group::r-x,other::---" --continue-on-failure false --continuation xxxxxxx -p my-parent-directory/ -f my-container --account-name mystorageaccount --auth-mode login  
 ```
 
 ## <a name="net"></a>[.NET](#tab/dotnet)
@@ -976,13 +966,13 @@ def resume_set_acl_recursive(continuation_token):
 
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Zdroje informací
 
 Tato část obsahuje odkazy na knihovny a ukázky kódu.
 
 #### <a name="libraries"></a>Knihovny
 
-- [PowerShell](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.powershellgallery.com%2Fpackages%2FAz.Storage%2F2.5.2-preview&data=02%7C01%7Cnormesta%40microsoft.com%7Ccdabce06132c42132b4008d849a2dfb1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637340311173215017&sdata=FWynO9UKTt7ESMCFgkWaL7J%2F%2BjODaRo5BD6G6yCx9os%3D&reserved=0)
+- [PowerShell](https://www.powershellgallery.com/packages/Az.Storage/3.0.0)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/storage/fs/access)
 - [.NET](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json)
 - [Java](/java/api/overview/azure/storage-file-datalake-readme)

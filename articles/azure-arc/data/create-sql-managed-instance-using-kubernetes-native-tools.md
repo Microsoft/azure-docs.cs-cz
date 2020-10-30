@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 80aa323dfb08ec1e8156099bd5d04e790732b3b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 290745f89c7978fdcbda8be566938b58167a4f5a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040921"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Vytvoření spravované instance Azure SQL pomocí nástrojů Kubernetes
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Měli byste už mít vytvořený [řadič dat ARC Azure](./create-data-controller.md).
 
@@ -89,10 +89,10 @@ Můžete použít online nástroj k kódování Base64 vaše požadované uživa
 PowerShell
 
 ```console
-[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('<your string to encode here>'))
+[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('<your string to encode here>'))
 
 #Example
-#[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('example'))
+#[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes('example'))
 
 ```
 

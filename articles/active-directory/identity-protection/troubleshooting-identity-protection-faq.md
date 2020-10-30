@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b8fdabc3f4f33627936eead9dda57e67c7b0da8
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827902"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040517"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Zavřít známé problémy s rizikem uživatele
 
-Zrušení **rizika uživatele** v rámci klasické Identity Protection nastaví objekt actor v historii rizik uživatele v části Identity Protection na **službu Azure AD**.
+Zrušení **rizika uživatele** v rámci klasické Identity Protection nastaví objekt actor v historii rizik uživatele v části Identity Protection na **službu Azure AD** .
 
 Zrušení **rizika uživatele** v ochraně identity nastaví objekt actor v historii rizik uživatele v ochraně identity na **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -34,17 +34,23 @@ Dotaz na pole **username** rozlišuje velká a malá písmena, zatímco dotazy v
 
 Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika** . Pro čtení sloupce klikněte v horní části okna rizikové uživatele na **sloupce** .
 
-**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav detekce rizik na **Uzavřeno (vyřešeno)**.
+**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav detekce rizik na **Uzavřeno (vyřešeno)** .
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Zpráva o rizikových přihlášeních sestav známých problémů
 
-**Řešení** při detekci rizik nastaví stav na **uživatele, kteří prošli MFA řízenými zásadami na základě rizika**.
+**Řešení** při detekci rizik nastaví stav na **uživatele, kteří prošli MFA řízenými zásadami na základě rizika** .
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 ### <a name="why-is-a-user-is-at-risk"></a>Proč je uživatel ohrožen?
 
 Pokud jste zákazník Azure AD Identity Protection, přejděte do zobrazení [rizikové uživatelé](howto-identity-protection-investigate-risk.md#risky-users) a klikněte na uživatele s riziky. V zásuvce v dolní části se na kartě Historie rizik zobrazí všechny události, které vedly ke změně rizika uživatele. Pokud chcete zobrazit všechna riziková přihlášení pro uživatele, klikněte na rizikové přihlašování uživatele. Chcete-li zobrazit všechna zjištění rizik pro tohoto uživatele, klikněte na možnost detekce rizik uživatele.
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Proč bylo moje přihlášení blokované, ale ochrana identity negenerovala detekci rizika?
+Přihlášení mohou být blokována z několika důvodů. Je důležité si uvědomit, že ochrana identity generuje jenom detekci rizik, pokud se v žádosti o ověření používají správné přihlašovací údaje. Pokud uživatel používá nesprávné přihlašovací údaje, nebude označen ochranou identity, protože nehrozí riziko ohrožení zabezpečení přihlašovacích údajů, pokud nesprávný objekt actor nepoužívá správné přihlašovací údaje. Některé důvody, proč může být uživatel zablokován z podepisování, které negeneruje detekci Identity Protection, zahrnují:
+* **IP adresa může být zablokovaná** z důvodu škodlivé aktivity z IP adresy. Zpráva blokovaná protokolem IP nerozlišuje, zda byly pověření správné nebo nikoli. Pokud je IP adresa blokovaná a správné přihlašovací údaje se nepoužijí, vygeneruje se detekce Identity Protection.
+* **[Inteligentní uzamčení](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** může účtu zabránit v přihlášení po několika neúspěšných pokusech.
+* Je možné vyhovět **zásadám podmíněného přístupu** , které používají jiné podmínky než úroveň rizika k blokování žádosti o ověření.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Jak získám sestavu zjištění určitého typu?
 
@@ -76,12 +82,12 @@ Všechna zjišťování rizik jsou popsána v článku [co je to riziko](concept
 
 **Potvrďte ohrožení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že přihlášení neudělal vlastník identity a označuje ohrožení zabezpečení.
 
-- Po přijetí této zpětné vazby přesuneme stav přihlášení a rizika uživatele na **potvrzené ohrožení** a úroveň rizika na **vysokou**.
+- Po přijetí této zpětné vazby přesuneme stav přihlášení a rizika uživatele na **potvrzené ohrožení** a úroveň rizika na **vysokou** .
 
 - Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
 
     > [!NOTE]
-    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na **potvrzené napadení** a úroveň rizika na **Vysoká**.
+    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na **potvrzené napadení** a úroveň rizika na **Vysoká** .
 
 **Potvrzení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že se přihlásilo od vlastníka identity a neindikuje kompromis.
 

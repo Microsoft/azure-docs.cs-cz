@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 06/20/2019
-ms.openlocfilehash: 08aaec23b0edc0e797d26d4b51081f6daa5b5c19
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/29/2020
+ms.openlocfilehash: 30a511caec82ead406f0a80f107e4261a707bfdb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671222"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040168"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,9 +62,11 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 
 ## <a name="using-sqlpackage"></a>Použití SqlPackage
 
-Chcete-li importovat databázi SQL Server pomocí nástroje příkazového řádku [SqlPackage](/sql/tools/sqlpackage) , přečtěte si téma [Import parametrů a vlastností](/sql/tools/sqlpackage#import-parameters-and-properties). K [disSQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) patří SqlPackage. Nejnovější [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) můžete také stáhnout z webu služby Stažení softwaru.
+Chcete-li importovat databázi SQL Server pomocí nástroje příkazového řádku [SqlPackage](/sql/tools/sqlpackage) , přečtěte si téma [Import parametrů a vlastností](/sql/tools/sqlpackage#import-parameters-and-properties). K [disSQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) patří SqlPackage. Nejnovější [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876) můžete také stáhnout z webu služby Stažení softwaru. 
 
 Pro škálování a výkon doporučujeme místo použití Azure Portal používat SqlPackage ve většině produkčních prostředí. Blog týmu pro poradenské zákazníky SQL Server o migraci pomocí `BACPAC` souborů najdete v tématu [migrace z SQL Server na Azure SQL Database pomocí souborů BacPac](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files).
+
+Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
 
 Následující příkaz SqlPackage importuje databázi **AdventureWorks2008R2** z místního úložiště na logický SQL Server s názvem **mynewserver20170403** . Vytvoří novou databázi s názvem **myMigratedDatabase** s úrovní služeb **Premium** a cílem služby **P6** . Změňte tyto hodnoty tak, jak jsou vhodné pro vaše prostředí.
 
@@ -81,7 +83,7 @@ Tento příklad ukazuje, jak importovat databázi pomocí SqlPackage s univerzá
 sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 > [!NOTE]
 > [Spravovaná instance SQL](../managed-instance/sql-managed-instance-paas-overview.md) v současné době nepodporuje migraci databáze do databáze instancí ze souboru BACPAC pomocí Azure PowerShell. Pro import do spravované instance SQL použijte SQL Server Management Studio nebo SQLPackage.
@@ -94,7 +96,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-K odeslání žádosti o import databáze do Azure použijte rutinu [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) . V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat.
+K odeslání žádosti o import databáze do Azure použijte rutinu [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) . V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat. Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```powershell
 $importRequest = New-AzSqlDatabaseImport -ResourceGroupName "<resourceGroupName>" `
@@ -126,7 +128,7 @@ $importStatus
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí příkazu [AZ-SQL-DB-import](/cli/azure/sql/db#az-sql-db-import) odešlete žádost o import databáze do Azure. V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat.
+Pomocí příkazu [AZ-SQL-DB-import](/cli/azure/sql/db#az-sql-db-import) odešlete žádost o import databáze do Azure. V závislosti na velikosti databáze může dokončení importu nějakou dobu trvat. Model zřizování založený na DTU podporuje pro každou vrstvu výběr hodnot maximální velikosti databáze. Při importu databáze [použijte jednu z těchto podporovaných hodnot](/sql/t-sql/statements/create-database-transact-sql). 
 
 ```azurecli
 # get the storage account key

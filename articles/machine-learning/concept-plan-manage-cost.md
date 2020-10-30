@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704724"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042169"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -41,7 +41,7 @@ Informace o přiřazování přístupu k datům služby Azure Cost Management na
 
 ## <a name="estimate-costs"></a>Odhadněte náklady
 
-Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady ještě předtím, než vytvoříte prostředky v účtu Azure Machine Learning. Na levé straně vyberte **AI + Machine Learning**a pak vyberte **Azure Machine Learning** a začněte.  
+Pomocí [cenové kalkulačky Azure](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady ještě předtím, než vytvoříte prostředky v účtu Azure Machine Learning. Na levé straně vyberte **AI + Machine Learning** a pak vyberte **Azure Machine Learning** a začněte.  
 
 Následující snímek obrazovky ukazuje odhad nákladů pomocí kalkulačky:
 
@@ -61,7 +61,9 @@ Při používání prostředků s Azure Machine Learning se účtují náklady. 
 
 Náklady můžete zobrazit v grafech a tabulkách v různých časových intervalech. Můžete také zobrazit náklady na rozpočty a předpokládané náklady. Přepnutím na delší zobrazení v průběhu času můžete identifikovat trendy útraty a zjistit, kde došlo k nadměrnému útratě. Pokud jste vytvořili rozpočty, přečtěte si téma kde byly překročeny.  
 
-Pro Machine Learning se nezobrazí samostatná oblast služby.  Místo toho uvidíte různé prostředky, které jste přidali do vašich Machine Learning pracovních prostorů.
+Pro Machine Learning se nezobrazí samostatná oblast služby.  Místo toho uvidíte různé prostředky, které jste přidali do vašich Machine Learning pracovních prostorů. 
+
+Všimněte si, že i když pracovní prostor Machine Learning sám nemá přímé náklady, budou se vám účtovat spravované výpočetní prostředky. Proto pokud jste přidali značky do pracovních prostorů, protože na ně neexistují žádné přímé náklady, bude podokno analýza nákladů odpovídat tomuto pracovnímu prostoru. Pro přesné řízení nákladů prostřednictvím značek budete muset označit přidružené výpočetní prostředky.  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Použití Azure Machine Learning Compute Cluster (AmlCompute)
 
