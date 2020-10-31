@@ -38,6 +38,8 @@
   items:
     - name: JavaScript SDK
       href: reference.md
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

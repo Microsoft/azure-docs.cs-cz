@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: Streamování dat do Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Insights
-      href: insights/insights-overview.md
     - name: Zabezpečení dat
       items:
         - name: Protokolování dat
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: Řešení potíží
           href: insights/container-insights-troubleshoot.md
-    - name: Další přehledy
+    - name: Insights
       items:
         - name: Azure Cache for Redis (Preview)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: Řešení potíží s přehledy
           href: insights/troubleshoot-workbooks.md
-    - name: Řešení
-      items:
-        - name: Přehled
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: Cílová řešení
-          href: insights/solution-targeting.md
-        - name: Dostupná řešení
+        - name: Řešení
           items:
-            - name: Hodnocení stavu služby AD
-              href: insights/ad-assessment.md
-            - name: Stav replikace AD
-              href: insights/ad-replication-status.md
-            - name: Řešení kapacity a výkonu
-              href: insights/capacity-performance.md
-            - name: Monitorování Dockeru a kontejnerů s Windows
-              href: insights/containers.md
-            - name: Sítě
+            - name: Přehled
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: Cílová řešení
+              href: insights/solution-targeting.md
+            - name: Dostupná řešení
               items:
-                - name: Analýza sítě
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: Sledování výkonu sítě
+                - name: Hodnocení stavu služby AD
+                  href: insights/ad-assessment.md
+                - name: Stav replikace AD
+                  href: insights/ad-replication-status.md
+                - name: Řešení kapacity a výkonu
+                  href: insights/capacity-performance.md
+                - name: Monitorování Dockeru a kontejnerů s Windows
+                  href: insights/containers.md
+                - name: Sítě
                   items:
-                    - name: Přehled řešení
-                      href: insights/network-performance-monitor.md
-                    - name: Monitorování výkonu
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: Monitorování připojení služby
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: Ceny
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: Nejčastější dotazy
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: Řešení Service Map
-              href: insights/service-map.md
-            - name: Service Map a Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: Řešení VMware Analytics
-              href: insights/vmware.md
-            - name: Řešení Wire Data
-              href: insights/wire-data.md
-            - name: Řešení Alert Managementu
-              href: platform/alert-management-solution.md
+                    - name: Analýza sítě
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: Sledování výkonu sítě
+                      items:
+                        - name: Přehled řešení
+                          href: insights/network-performance-monitor.md
+                        - name: Monitorování výkonu
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: Monitorování připojení služby
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: Ceny
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: Nejčastější dotazy
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: Řešení Service Map
+                  href: insights/service-map.md
+                - name: Service Map a Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: Řešení VMware Analytics
+                  href: insights/vmware.md
+                - name: Řešení Wire Data
+                  href: insights/wire-data.md
+                - name: Řešení Alert Managementu
+                  href: platform/alert-management-solution.md
     - name: Workbooks
       items:
         - name: Přehled

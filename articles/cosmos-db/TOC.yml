@@ -731,6 +731,10 @@
               items:
                 - name: Řešení potíží se sadou Java SDK v4
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: Řešení potíží s časovým limitem požadavku
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: Řešení potíží s nedostupností služby
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: Řešení potíží – sada Async Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: Změna kanálu
@@ -877,8 +881,6 @@
         - name: Šablona Resource Manageru
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: Poznámky k verzi pro emulátor
-          href: local-emulator-release-notes.md
         - name: Integrované služby Azure Policy
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: Řešení potíží s emulátorem
               href: troubleshoot-local-emulator.md
+            - name: Poznámky k verzi pro emulátor
+              href: local-emulator-release-notes.md
             - name: Rozšíření editoru Visual Studio Code
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: Nastavení kanálu CI/CD pro Azure DevOps

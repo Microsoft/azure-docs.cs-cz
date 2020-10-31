@@ -224,7 +224,7 @@
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
         - name: Zpracování Azure SQL Database
-          href: ../sql-database/sql-database-stream-analytics.md
+          href: ../azure-sql/database/stream-data-stream-analytics-integration.md
           maintainContext: true
         - name: Geoprostorové scénáře
           href: geospatial-scenarios.md
@@ -686,7 +686,7 @@
     - name: Fórum pro názory
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-stream-analytics.html'
+      href: /answers/topics/azure-stream-analytics.html
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
     - name: Cenová kalkulačka

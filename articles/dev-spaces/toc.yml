@@ -5,10 +5,6 @@
       items:
         - name: Co je služba Azure Dev Spaces?
           href: about.md
-    - name: Kurzy
-      items:
-        - name: Začínáme se sadou Visual Studio
-          href: get-started-netcore-visualstudio.md
     - name: Koncepty
       items:
         - name: Migrace na přemostění na Kubernetes

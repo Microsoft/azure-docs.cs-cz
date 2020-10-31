@@ -11,14 +11,14 @@
 - name: Kurzy
   items:
     - name: Vytvoření dynamické skupiny
-      href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/enterprise-users/users-revoke-access
 - name: Koncepty
   expanded: true
   items:
     - name: Delegování rolí správce Azure AD
       href: concept-delegation.md
     - name: Porovnání výchozích uživatelských oprávnění
-      href: /azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/fundamentals/users-default-permissions
     - name: Porovnání rolí Azure a Azure AD
       href: ../../role-based-access-control/rbac-and-directory-admin-roles.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Vysvětlení jednotek pro správu v Azure AD
@@ -29,13 +29,13 @@
     - name: Uživatelé a role
       items:
         - name: Přiřazení uživatelů k rolím správce
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
         - name: Odvolání přístupu uživatele
-          href: /azure/active-directory/enterprise-users/users-revoke-access.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/enterprise-users/users-revoke-access
         - name: Přiřazení rolí uživatelům typu host
           href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/roles/context/ugr-context
         - name: Omezení přístupu uživatelů typu host
-          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/enterprise-users/users-restrict-guest-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
         - name: Dynamické skupiny a hosté
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/roles/context/ugr-context
     - name: Role a oprávnění
@@ -57,7 +57,7 @@
         - name: Zobrazení přiřazení vlastních rolí
           href: custom-view-assignments.md
         - name: Přiřazení vlastních rolí na webu Azure Portal
-          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal
         - name: Přiřazení vlastních rolí v PowerShellu
           href: custom-assign-powershell.md
         - name: Přiřazení vlastních rolí pro podnikové aplikace
@@ -111,7 +111,7 @@
     - name: Řešení potíží
       items:
         - name: Získání podpory pro Azure AD
-          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+          href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto
 - name: Referenční informace
   items:
     - name: Role s nejnižšími oprávněními podle úkolu
@@ -125,4 +125,4 @@
     - name: Azure AD PowerShell pro Graph
       href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
     - name: Omezení služby Azure AD
-      href: /azure/active-directory/fundamentals/directory-service-limits-restrictions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context
+      href: /azure/active-directory/enterprise-users/directory-service-limits-restrictions

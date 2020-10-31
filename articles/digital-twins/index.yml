@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure Digital Twins Preview
+title: Dokumentace ke službě Azure Digital Twins
 summary: Naučte se využívat službu Azure Digital Twins k vytvoření digitální reprezentace vašich prostředků, prostředí a obchodních systémů, abyste mohli vytvářet řešení IoT nové generace, která modelují reálný svět.
 metadata:
-  title: Dokumentace ke službě Azure Digital Twins Preview – kurzy, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace ke službě Azure Digital Twins – kurzy, reference k rozhraní API | Microsoft Docs
   description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím inteligentních prostorových analýz.
   ms.service: digital-twins
   ms.topic: landing-page
@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: b9d6067fe8c5c81024f6fa211d32e0ecc92f5a47
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: a05f168b18f32e2b4730e5ef50624d41fb48e147
+  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92358978"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93099092"
 landingContent:
 - title: Informace o službě Azure Digital Twins
   linkLists:
