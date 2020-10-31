@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
-ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409659"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096304"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Upgrade verze MongoDB přenosového protokolu rozhraní API vašeho Azure Cosmos DB pro účet MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento článek popisuje, jak upgradovat verzi přenosového protokolu rozhraní API vašeho Azure Cosmos DB pro účet MongoDB. Po upgradu verze přenosového protokolu můžete využít nejnovější funkce rozhraní Azure Cosmos DB API pro MongoDB. Proces upgradu nepřerušil dostupnost vašeho účtu a nespotřebovává RU/s nebo sníží kapacitu databáze v jakémkoli bodě. Tímto procesem nebudou ovlivněna žádná existující data ani indexy.
 
@@ -37,7 +38,7 @@ Níže jsou uvedené nové funkce, které jsou součástí verze 3,6:
 
 ### <a name="changes-from-version-32"></a>Změny ze verze 3,2
 
-- Byly **odebrány RequestRateIsLarge chyby**. Žádosti z klientské aplikace již nevrátí 16500 chyb. Místo toho budou požadavky pokračovat, dokud nebudou dokončeny nebo nesplní časový limit.
+- Byly **odebrány RequestRateIsLarge chyby** . Žádosti z klientské aplikace již nevrátí 16500 chyb. Místo toho budou požadavky pokračovat, dokud nebudou dokončeny nebo nesplní časový limit.
 - Na časový limit žádosti se nastaví na 60 sekund.
 - Kolekce MongoDB vytvořené v nové verzi přenosového protokolu budou mít `_id` ve výchozím nastavení indexovanou vlastnost.
 
@@ -49,7 +50,7 @@ Pro upgrade na verzi 3,6 bude přípona koncového bodu účtu databáze aktuali
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích, které se připojují k tomuto účtu databáze. **Pouze připojení, která používají nový koncový bod, budou mít přístup k funkcím v MongoDB verze 3,6**. Předchozí koncový bod by měl mít příponu `.documents.azure.com` .
+Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích, které se připojují k tomuto účtu databáze. **Pouze připojení, která používají nový koncový bod, budou mít přístup k funkcím v MongoDB verze 3,6** . Předchozí koncový bod by měl mít příponu `.documents.azure.com` .
 
 >[!Note]
 > Tento koncový bod může mít mírné rozdíly v případě, že byl váš účet vytvořen v cloudu pro svrchované, státní nebo omezené cloudové prostředí Azure.
@@ -80,7 +81,7 @@ Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích,
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 
-7. **Chcete-li začít používat upgradovanou verzi vašeho databázového účtu**, vraťte se do okna `Overview` a zkopírujte nový připojovací řetězec, který chcete použít ve své aplikaci. Jakmile se aplikace připojí k novému koncovému bodu, začnou tuto upgradovanou verzi používat. Existující připojení nebudou přerušená a bude možné je aktualizovat na pohodlí. Aby se zajistilo konzistentní prostředí, musí všechny vaše aplikace používat nový koncový bod.
+7. **Chcete-li začít používat upgradovanou verzi vašeho databázového účtu** , vraťte se do okna `Overview` a zkopírujte nový připojovací řetězec, který chcete použít ve své aplikaci. Jakmile se aplikace připojí k novému koncovému bodu, začnou tuto upgradovanou verzi používat. Existující připojení nebudou přerušená a bude možné je aktualizovat na pohodlí. Aby se zajistilo konzistentní prostředí, musí všechny vaše aplikace používat nový koncový bod.
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
 

@@ -9,20 +9,21 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096491"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojení aplikace Node.js Mongoose k Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento kurz ukazuje, jak používat [rozhraní Mongoose](https://mongoosejs.com/) při ukládání dat v Cosmos DB. Pro tento návod používáme rozhraní API Azure Cosmos DB pro MongoDB. Pokud Mongoose ještě neznáte, jedná se o rozhraní pro modelování objektů pro MongoDB v Node.js, které poskytuje jednoduché řešení modelování dat aplikací založené na schématu.
 
 Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, klíčů a hodnot a grafů, z nichž všechno přináší výhody funkcí globální distribuce a horizontálního škálování v jádru Cosmos DB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,11 +39,11 @@ Pojďme vytvořit účet Cosmos. Pokud již máte účet, který chcete použít
 
 ### <a name="create-a-database"></a>Vytvoření databáze 
 V této aplikaci se budeme zabývat dvěma způsoby vytváření kolekcí v Azure Cosmos DB: 
-- **Ukládání každého objektového modelu do samostatné kolekce**: doporučujeme [vytvořit databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto modelu kapacity vám poskytne lepší náklady na efektivitu.
+- **Ukládání každého objektového modelu do samostatné kolekce** : doporučujeme [vytvořit databázi s vyhrazenou propustností](set-throughput.md#set-throughput-on-a-database). Použití tohoto modelu kapacity vám poskytne lepší náklady na efektivitu.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text=" KurzNode.js – snímek obrazovky Azure Portal, který ukazuje, jak vytvořit databázi v Průzkumník dat pro účet Azure Cosmos DB pro použití s modulem Mongoose Node":::
 
-- **Ukládání všech objektových modelů do jedné kolekce Cosmos DB**: Chcete-li uložit všechny modely do jedné kolekce, stačí vytvořit novou databázi bez výběru možnosti pro zajištění propustnosti. Použití tohoto modelu kapacity vytvoří každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
+- **Ukládání všech objektových modelů do jedné kolekce Cosmos DB** : Chcete-li uložit všechny modely do jedné kolekce, stačí vytvořit novou databázi bez výběru možnosti pro zajištění propustnosti. Použití tohoto modelu kapacity vytvoří každou kolekci s vlastní kapacitou propustnosti pro každý objektový model.
 
 Po vytvoření databáze použijete název v `COSMOSDB_DBNAME` proměnné prostředí níže.
 

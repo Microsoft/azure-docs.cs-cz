@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/28/2020
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: 39f116139d68f2382085dbbab5e862d0c621ad2e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 68f7c9331423fa4ef350bd7915ad85e3152c6885
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282457"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096542"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Použití příkazů rozšíření MongoDB ke správě dat uložených v rozhraní API Azure Cosmos DB pro MongoDB 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Následující dokument obsahuje příkazy vlastní akce, které jsou specifické pro rozhraní API Azure Cosmos DB pro MongoDB. Tyto příkazy lze použít k vytvoření a získání databázových prostředků, které jsou specifické pro [model Azure Cosmos DB kapacity](account-databases-containers-items.md).
 
@@ -26,7 +27,7 @@ Rozhraní API Azure Cosmos DB pro MongoDB je kompatibilní s MongoDB serverem ve
 
 Následující příkazy rozšíření poskytují možnost vytvářet a upravovat prostředky specifické pro Azure Cosmos DB přes požadavky databáze:
 
-* [Vytvoření databáze](#create-database)
+* [Vytvořit databázi](#create-database)
 * [Aktualizovat databázi](#update-database)
 * [Získat databázi](#get-database)
 * [Vytvořit kolekci](#create-collection)
@@ -211,11 +212,11 @@ Příkaz vytvořit rozšíření kolekce vytvoří novou kolekci MongoDB. Název
 
 Následující tabulka popisuje parametry v rámci příkazu:
 
-| **Pole** | **Typ** | **Požadováno** | **Popis** |
+| **Pole** | **Typ** | **Povinné** | **Popis** |
 |---------|---------|---------|---------|
-| `customAction` | `string` | Povinné | Název vlastního příkazu Musí být "Vytvořitcollection".|
-| `collection` | `string` | Povinné | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
-| `offerThroughput` | `int` | Nepovinné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
+| `customAction` | `string` | Vyžadováno | Název vlastního příkazu Musí být "Vytvořitcollection".|
+| `collection` | `string` | Vyžadováno | Název kolekce Nejsou povoleny žádné speciální znaky ani mezery.|
+| `offerThroughput` | `int` | Volitelné | Zřízená propustnost pro nastavení databáze. Pokud tento parametr není zadán, bude výchozí hodnota minimálně 400 RU/s. * Pokud chcete zadat propustnost přesahující 10 000 RU/s, `shardKey` parametr je povinný.|
 | `shardKey` | `string` | Vyžadováno pro kolekce s velkou propustností | Cesta k horizontálních oddílůmu klíči pro kolekci horizontálně dělené Tento parametr je vyžadován, pokud nastavíte více než 10 000 RU/s v `offerThroughput` .  Pokud je zadáno, budou všechny vložené dokumenty vyžadovat tento klíč a hodnotu. |
 | `autoScaleSettings` | `Object` | Vyžaduje se pro [režim automatického škálování](provision-throughput-autoscale.md) . | Tento objekt obsahuje nastavení přidružená k režimu kapacity automatického škálování. Můžete nastavit `maxThroughput` hodnotu, která popisuje nejvyšší množství jednotek požadavků, na které se kolekce zvyšuje dynamicky. |
 
@@ -234,7 +235,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection"});
 ```
 
-Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Příklad: 
+Výsledkem bude, že se vytvoří nová pevná, unsharded, kolekce s 400RU/s a `_id` automaticky se vytvoří index pole. Tento typ konfigurace se použije také při vytváření nových kolekcí prostřednictvím `insert()` funkce. Například: 
 
 ```javascript
 use test
@@ -423,7 +424,7 @@ Pokud tento parametr nezadáte, vlastní odpověď obsahuje dokument s následuj
 | `code`    |   `int`      |   Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje kód chyby MongoDB. Toto je volitelný parametr odpovědi.      |
 |  `errMsg`   |  `string`      |    Vrátí se jenom v případě, že se příkaz nezdařil (tj. ok = = 0). Obsahuje uživatelsky přívětivou chybovou zprávu. Toto je volitelný parametr odpovědi.      |
 
-Příklad:
+Například:
 
 ```javascript
 { "ok" : 1 }

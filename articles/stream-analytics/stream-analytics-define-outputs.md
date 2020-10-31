@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708431"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097647"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Výstupy z Azure Stream Analytics
 
 Azure Stream Analytics úloha se skládá ze vstupu, dotazu a výstupu. Existuje několik typů výstupu, do kterých můžete posílat transformovaná data. V tomto článku jsou uvedené podporované výstupy Stream Analytics. Pokud navrhujete Stream Analytics dotaz, přečtěte si název výstupu pomocí [klauzule into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) přidáním více klauzulí do dotazu.
 
-Chcete-li vytvářet, upravovat a testovat Stream Analytics výstupy úlohy, můžete použít [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), rozhraní [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)a [Visual Studio](stream-analytics-quick-create-vs.md).
+Chcete-li vytvářet, upravovat a testovat Stream Analytics výstupy úlohy, můžete použít [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), rozhraní [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)a [Visual Studio](stream-analytics-quick-create-vs.md).
 
 Některé typy výstupů podporují [dělení](#partitioning)a [velikosti výstupních dávek](#output-batch-size) se liší při optimalizaci propustnosti. V následující tabulce jsou uvedeny funkce, které jsou podporovány pro každý typ výstupu:
 
@@ -59,7 +59,7 @@ Při použití Azure Resource Managerho nasazení šablony nebo REST API jsou dv
 
    Počet minimálních řádků na dávku Pro Parquet Každá dávka vytvoří nový soubor. Aktuální výchozí hodnota je 2 000 řádků a povolené maximum je 10 000 řádků.
 
-Tyto vlastnosti dávkového okna jsou podporovány pouze pomocí rozhraní API verze **2017-04-01-Preview**. Níže je uveden příklad datové části JSON pro REST API volání:
+Tyto vlastnosti dávkového okna jsou podporovány pouze pomocí rozhraní API verze **2017-04-01-Preview** . Níže je uveden příklad datové části JSON pro REST API volání:
 
 ```json
 "type": "stream",

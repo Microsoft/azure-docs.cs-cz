@@ -7,14 +7,15 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282469"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097545"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB je škálovatelná, globálně distribuovaná a plně spravovaná databáze. Poskytuje zaručený přístup k datům s nízkou latencí. Další informace o Azure Cosmos DB najdete v článku [Přehled](introduction.md) . Tento článek poskytuje pokyny k migraci aplikací Java, které jsou připojené k Couchbase, na účet rozhraní SQL API v Azure Cosmos DB.
 
@@ -25,7 +26,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
 |Server Couchbase| Účet       |
-|Blocích           | Databáze      |
+|Blocích           | databáze      |
 |Blocích           | Kontejner/kolekce |
 |Dokument JSON    | Položka/dokument |
 
@@ -37,7 +38,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
 
 * V Azure Cosmos DB není nutné, aby hierarchie nejvyšší úrovně naznamenala kolekci, protože název kolekce již existuje. Tato funkce zpřístupňuje strukturu JSON mnohem jednodušší. Následuje příklad, který ukazuje rozdíly v datovém modelu mezi Couchbase a Azure Cosmos DB:
 
-   **Couchbase**: Document ID = "99FF4444"
+   **Couchbase** : Document ID = "99FF4444"
 
     ```json
     {
@@ -67,7 +68,7 @@ Níže jsou uvedené klíčové funkce, které v Azure Cosmos DB ve srovnání s
     }
    ```
 
-   **Azure Cosmos DB**: v dokumentu uveďte "ID", jak je znázorněno níže.
+   **Azure Cosmos DB** : v dokumentu uveďte "ID", jak je znázorněno níže.
 
     ```json
     {
@@ -311,7 +312,7 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
 
 1. Zvažte možnost "/ID" jako primární klíč, což zajistí, že můžete provádět operace vyhledávání přímo v konkrétním oddílu. Vytvořte kolekci a jako klíč oddílu zadejte "/ID".
 
-1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat**vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování**. V současné době indexování zásad vypadá takto:
+1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat** vyberte svou **databázi** a **kontejner** . Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování** . V současné době indexování zásad vypadá takto:
     
    ```json
    {

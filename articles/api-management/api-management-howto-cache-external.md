@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904951"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095930"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Použití externí mezipaměti kompatibilní s Redis v Azure API Management
 
@@ -39,7 +39,7 @@ Naučíte se:
 > [!div class="checklist"]
 > * Přidat externí mezipaměť v API Management
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -60,41 +60,41 @@ Pro ukládání do mezipaměti jsou brány v místním prostředí závislé vý
 
 Pomocí následujících kroků přidejte externí mezipaměť Azure pro Redis do Azure API Management.
 
-![Přineste si vlastní mezipaměť do APIM](media/api-management-howto-cache-external/add-external-cache.png)
+![Snímek obrazovky, který ukazuje, jak přidat externí mezipaměť Azure pro Redis do Azure API Management.](media/api-management-howto-cache-external/add-external-cache.png)
 
 > [!NOTE]
 > Nastavení **použít z** určuje oblast Azure nebo umístění brány v místním prostředí, které bude používat nakonfigurovanou mezipaměť. Mezipaměti nakonfigurované jako **výchozí** budou přepsány mezipamětí s určitou platnou oblastí nebo hodnotou umístění.
 >
-> Pokud se například API Management hostuje v oblastech Východní USA, jihovýchodní Asie a Západní Evropa a jsou nakonfigurované dvě mezipaměti, jeden pro **výchozí** a druhý pro **jihovýchodní Asie**, API Management v **jihovýchodní Asie** bude používat vlastní mezipaměť, zatímco ostatní dvě oblasti použijí **výchozí** položku mezipaměti.
+> Pokud se například API Management hostuje v oblastech Východní USA, jihovýchodní Asie a Západní Evropa a jsou nakonfigurované dvě mezipaměti, jeden pro **výchozí** a druhý pro **jihovýchodní Asie** , API Management v **jihovýchodní Asie** bude používat vlastní mezipaměť, zatímco ostatní dvě oblasti použijí **výchozí** položku mezipaměti.
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Přidání mezipaměti Azure pro Redis ze stejného předplatného
 
 1. V Azure Portal přejděte k instanci API Management.
 2. V nabídce na levé straně vyberte kartu **externí mezipaměť** .
-3. Klikněte na tlačítko **+Přidat**.
+3. Klikněte na tlačítko **+Přidat** .
 4. V rozevíracím poli **instance mezipaměti** vyberte mezipaměť.
 5. Vyberte **výchozí** nebo zadejte požadovanou oblast do rozevíracího pole **použít z** .
-6. Klikněte na **Uložit**.
+6. Klikněte na **Uložit** .
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Přidání mezipaměti Azure pro Redis hostované mimo aktuální předplatné Azure nebo obecně Azure
 
 1. V Azure Portal přejděte k instanci API Management.
 2. V nabídce na levé straně vyberte kartu **externí mezipaměť** .
-3. Klikněte na tlačítko **+Přidat**.
+3. Klikněte na tlačítko **+Přidat** .
 4. V rozevíracím poli **instance mezipaměti** vyberte **vlastní** .
 5. Vyberte **výchozí** nebo zadejte požadovanou oblast do rozevíracího pole **použít z** .
 6. Zadejte do pole **připojovací řetězec** svou mezipaměť Azure pro připojovací řetězec Redis.
-7. Klikněte na **Uložit**.
+7. Klikněte na **Uložit** .
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Přidání mezipaměti Redis do samoobslužné brány
 
 1. V Azure Portal přejděte k instanci API Management.
 2. V nabídce na levé straně vyberte kartu **externí mezipaměť** .
-3. Klikněte na tlačítko **+Přidat**.
+3. Klikněte na tlačítko **+Přidat** .
 4. V rozevíracím poli **instance mezipaměti** vyberte **vlastní** .
 5. Zadejte požadované umístění místní hostované brány nebo **výchozí** v rozevíracím poli **použít z** .
 6. Zadejte připojovací řetězec Redis Cache do pole **připojovací řetězec** .
-7. Klikněte na **Uložit**.
+7. Klikněte na **Uložit** .
 
 ## <a name="use-the-external-cache"></a>Použít externí mezipaměť
 

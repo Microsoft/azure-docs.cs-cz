@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fc285599176057c57621dc6bfefbe9188d3badd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370759"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096882"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje kroky potřebné k vytvoření živého řídicího panelu počasí v Power BI pomocí Azure Cosmos DB a Azure Analysis Services. Řídicí panel Power BI zobrazí grafy, ve kterých se v reálném čase zobrazí informace o teplotě a vodních srážek v oblasti.
 
@@ -63,7 +64,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    V závislosti na tom, který sloupec a datový typ se nachází ve zdrojové datové sadě, můžete pole RangeStart a RangeEnd změnit odpovídajícím způsobem.
 
    
-   |Vlastnost  |Datový typ  |Filtr  |
+   |Vlastnost  |Datový typ  |Filtrovat  |
    |---------|---------|---------|
    |_ts     |   Numeric      |  [_ts] > Duration. TotalSeconds (RangeStart-#datetime (1970, 1, 1, 0, 0, 0)) a [_ts] < Duration. TotalSeconds (RangeEnd-#datetime (1970, 1, 1, 0, 0, 0)))       |
    |Datum (například:-2019-08-19)     |   Řetězec      | [Document. Date] > DateTime. ToText (RangeStart, "rrrr-MM-DD") a [Document. Date] < DateTime. ToText (RangeEnd, "rrrr-MM-DD")        |
@@ -74,7 +75,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/define-refresh-policy.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 
-   Ignorujte upozornění oznamující, že *dotaz M nelze považovat za přeložený*. Konektory Azure Cosmos DB přeloží dotazy filtru.
+   Ignorujte upozornění oznamující, že *dotaz M nelze považovat za přeložený* . Konektory Azure Cosmos DB přeloží dotazy filtru.
 
 1. **Načtěte data a generujte sestavy** – pomocí dat, která jste načetli dříve, vytvořte grafy pro hlášení teploty a vodních srážek.
 
@@ -101,11 +102,11 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 
-1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely**Data Sources ( >  **Data Sources**  >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
+1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely** Data Sources ( >  **Data Sources**  >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 
-   Připojte se k Azure Cosmos DB zadáním **identifikátoru URI účtu**, **názvu databáze**a **názvu kontejneru**. Teď můžete vidět data z kontejneru Azure Cosmos, která se importují do Power BI.
+   Připojte se k Azure Cosmos DB zadáním **identifikátoru URI účtu** , **názvu databáze** a **názvu kontejneru** . Teď můžete vidět data z kontejneru Azure Cosmos, která se importují do Power BI.
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 
@@ -140,7 +141,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-partitions.png" alt-text="Konektor Power BI pro Azure Cosmos DB" = Table.SelectRows(#"Sorted Rows", each [Document.month] = "2019-07")`
    * **Dosavadní** -  `#"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [Document.month] <> "2019-07")`
 
-1. **Nasaďte model do Azure Analysis Server** – klikněte pravým tlačítkem na projekt Azure Analysis Services a vyberte **nasadit**. Přidejte název serveru v podokně **Vlastnosti serveru nasazení** .
+1. **Nasaďte model do Azure Analysis Server** – klikněte pravým tlačítkem na projekt Azure Analysis Services a vyberte **nasadit** . Přidejte název serveru v podokně **Vlastnosti serveru nasazení** .
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/analysis-services-deploy-model.png" alt-text="Konektor Power BI pro Azure Cosmos DB":::
 

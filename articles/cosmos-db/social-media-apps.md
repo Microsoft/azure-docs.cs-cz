@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478146"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097324"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Spolupráce s Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě**. Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
+Živý ve vysoce propojené společnosti znamená, že v určitém okamžiku se stanete součástí **sociální sítě** . Pomocí sociálních sítí se budete moci spojit s přáteli, kolegy, rodinou nebo občas sdílet své zaujetí s lidmi se společnými zájmy.
 
 Jako technici nebo vývojáři můžete mít přemýšleli, jak tyto sítě ukládají a propojovat vaše data. Nebo jste dokonce mohli vytvořit nebo vytvořit architekta nové sociální sítě pro konkrétní mezery trh. To je v situaci, kdy se jedná o významnou otázku: jak jsou všechna tato data uložena?
 
@@ -238,9 +239,9 @@ Další dostupnou možností je použít k analýze obsahu uživatelů službu [
 
 ## <a name="a-planet-scale-social-experience"></a>Prostředí globálním pro sociální škálování
 
-K dispozici je jen poslední, ale nejméně důležitý článek, který je potřeba řešit: **škálovatelnost**. Při návrhu architektury by se každá součást měla škálovat samostatně. Nakonec budete muset zpracovat více dat nebo budete chtít mít větší geografické pokrytí. Naštěstí, které jsou v obou úlohách, je **prostředí klíč** s Cosmos DB.
+K dispozici je jen poslední, ale nejméně důležitý článek, který je potřeba řešit: **škálovatelnost** . Při návrhu architektury by se každá součást měla škálovat samostatně. Nakonec budete muset zpracovat více dat nebo budete chtít mít větší geografické pokrytí. Naštěstí, které jsou v obou úlohách, je **prostředí klíč** s Cosmos DB.
 
-Cosmos DB podporuje dynamické dělení předem. Automaticky vytvoří oddíly na základě daného **klíče oddílu**, který je definován jako atribut v dokumentech. Definování správného klíče oddílu je nutné provést v době návrhu. Další informace najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
+Cosmos DB podporuje dynamické dělení předem. Automaticky vytvoří oddíly na základě daného **klíče oddílu** , který je definován jako atribut v dokumentech. Definování správného klíče oddílu je nutné provést v době návrhu. Další informace najdete v tématu [dělení v Azure Cosmos DB](partitioning-overview.md).
 
 Pro sociální prostředí je nutné sjednotit strategii dělení pomocí způsobu dotazování a zápisu. (Například čtení v rámci stejného oddílu je žádoucí a nepoužívejte "aktivní body" rozšíříte zápisy na více oddílů.) Mezi možnosti patří: oddíly založené na dočasném klíči (den/měsíc/týden), podle kategorie obsahu, podle zeměpisné oblasti nebo podle uživatele. Všechno ve skutečnosti záleží na způsobu, jakým se dotazuje na data a zobrazují data v sociálním prostředí.
 
@@ -252,7 +253,7 @@ V čase budete nakonec růst provozu a spotřebu prostředků (měřené v [ru](
 
 Co se stane, když všechno pořád ještě lepší? Předpokládejme, že uživatelé z jiné oblasti, země nebo kontinentu si vyvšimli vaši platformu a začnou ji používat. Co Skvělé neočekávaně!
 
-Ale počkejte! Brzy zjistíte, že své zkušenosti s platformou nejsou optimální. Jsou zatím mimo vaši provozní oblast, že latence je ještěrů. Zjevně nechcete, aby se ukončily. Pokud je k dispozici pouze snadný způsob **rozšíření globálního dosahu**? K dispozici je!
+Ale počkejte! Brzy zjistíte, že své zkušenosti s platformou nejsou optimální. Jsou zatím mimo vaši provozní oblast, že latence je ještěrů. Zjevně nechcete, aby se ukončily. Pokud je k dispozici pouze snadný způsob **rozšíření globálního dosahu** ? K dispozici je!
 
 Cosmos DB umožňuje globálně a transparentně [replikovat data](../cosmos-db/tutorial-global-distribution-sql-api.md) několika kliknutími a automaticky vybírat z dostupných oblastí z vašeho [klientského kódu](../cosmos-db/tutorial-global-distribution-sql-api.md). Tento proces také znamená, že můžete mít [více oblastí převzetí služeb při selhání](high-availability.md).
 

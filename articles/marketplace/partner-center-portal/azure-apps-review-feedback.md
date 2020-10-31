@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320098"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095668"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Zpracování zpětné vazby revize pro nabídky aplikací Azure
 
@@ -39,11 +39,11 @@ Pomocí následujícího postupu můžete zkontrolovat problémy popsané v žá
     [![Domovská stránka žádosti o získání dat](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kliknutím na tento obrázek rozbalíte.*
 
-1. Volitelné Na pravé straně okna v části **zásady**vyberte zprávu problém (v tomto příkladě: **ověření zásad se nezdařilo**) a prozkoumejte podrobnosti o nízké úrovni problému včetně přidružených souborů protokolu. Chyby se obvykle zobrazují v dolní části souborů protokolu.
+1. Volitelné Na pravé straně okna v části **zásady** vyberte zprávu problém (v tomto příkladě: **ověření zásad se nezdařilo** ) a prozkoumejte podrobnosti o nízké úrovni problému včetně přidružených souborů protokolu. Chyby se obvykle zobrazují v dolní části souborů protokolu.
 
 1. V nabídce na levé straně domovské stránky vyberte **soubory** , abyste zobrazili seznam souborů, které obsahují technické prostředky pro tuto nabídku. Kontroloři společnosti Microsoft by měli přidat komentáře popisující zjištěné kritické problémy. V následujícím příkladu byly zjištěny dva problémy.
 
-    [![Domovská stránka žádosti o získání dat](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![Snímek obrazovky, který zvýrazní soubory a dva zjištěné problémy.](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kliknutím na tento obrázek rozbalíte.*
 
 1. Vyberte každý uzel komentáře v levém stromu a přejděte k komentáři v kontextu okolního kódu. Opravte zdrojový kód v projektu týmu a opravte problém popsaný v komentáři.

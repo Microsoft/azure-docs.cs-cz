@@ -4,12 +4,12 @@ description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, 
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbaa56ab444b9d686e5054a3668604bd40f7a262
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747053"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097685"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -26,13 +26,13 @@ V tomto kurzu vykreslíte scénu 3ds Max s využitím služby Batch a rendereru 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
+ - Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. **Licencování s platbami na základě využití se nepodporuje, pokud používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.**
 
-Ukázková scéna 3ds Max pro tento kurz je na [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) společně s ukázkovým skriptem Bash a konfiguračními soubory JSON. Scéna 3ds Max je převzatá z [ukázkových souborů pro Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Ukázkové soubory pro Autodesk 3ds Max jsou dostupné v rámci licence Creative Commons Attribution-NonCommercial-Share Alike. Copyright &copy; Autodesk, Inc.)
+ - Ukázková scéna 3ds Max pro tento kurz je na [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) společně s ukázkovým skriptem Bash a konfiguračními soubory JSON. Scéna 3ds Max je převzatá z [ukázkových souborů pro Autodesk 3ds Max](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Ukázkové soubory pro Autodesk 3ds Max jsou dostupné v rámci licence Creative Commons Attribution-NonCommercial-Share Alike. Copyright &copy; Autodesk, Inc.)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI ve verzi 2.0.20 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+- V tomto kurzu se vyžaduje verze rozhraní příkazového řádku Azure 2.0.20 nebo novější. Pokud používáte Azure Cloud Shell, nejnovější verze je už nainstalovaná.
 
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
@@ -91,7 +91,7 @@ az storage container create \
     --name scenefiles
 ```
 
-Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Příklad:
+Stáhněte scénu `MotionBlur-Dragon-Flying.max` z [GitHubu](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max) do místního pracovního adresáře. Například:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -296,7 +296,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Příklad:
+Spuštění úkolu trvá několik minut. K zobrazení stavu úkolů použijte příkaz [az batch task list](/cli/azure/batch/task#az-batch-task-list). Například:
 
 ```azurecli-interactive
 az batch task list \
@@ -304,7 +304,7 @@ az batch task list \
     --output table
 ```
 
-K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Příklad:
+K zobrazení podrobností o jednotlivých úkolech použijte příkaz [az batch task show](/cli/azure/batch/task#az-batch-task-show). Například:
 
 ```azurecli-interactive
 az batch task show \
@@ -312,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Příklad:
+Úkoly generují výstupní soubory s názvem *dragon0002.jpg*  -  *dragon0007.jpg* na výpočetních uzlech a nahrajte je do kontejneru *Job-myrenderjob* ve vašem účtu úložiště. Pokud chcete zobrazit výstup, stáhněte soubory do složky na svém místním počítači pomocí příkazu [az storage blob download-batch](/cli/azure/storage/blob). Například:
 
 ```azurecli-interactive
 az storage blob download-batch \

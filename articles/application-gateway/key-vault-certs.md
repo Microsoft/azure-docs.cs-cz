@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095643"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Ukončení protokolu TLS s certifikáty Key Vault
 
@@ -49,6 +49,9 @@ Application Gateway integrace s Key Vault vyžaduje proces konfigurace se třemi
 
    Pak buď importujte existující certifikát, nebo vytvořte nový v trezoru klíčů. Certifikát budou používat aplikace, které běží přes Aplikační bránu. V tomto kroku můžete použít taky tajný klíč trezoru klíčů, který je uložený jako soubor PFX s kódováním bez hesla (Base-64). Pro možnost autorecovery, která je k dispozici pro objekty typu certifikátu v trezoru klíčů, doporučujeme použít typ certifikátu. Po vytvoření certifikátu nebo tajného klíče v trezoru klíčů Definujte zásady přístupu, aby bylo možné udělení identity *získat* přístup k tajnému kódu.
    
+   > [!IMPORTANT]
+   > Application Gateway v současné době vyžaduje Key Vault povolení přístupu ze všech sítí, aby bylo možné tuto integraci využít. Nepodporuje Key Vault Integration, pokud je Key Vault nastavená jenom na soukromé koncové body a výběr přístupu k síti. Podpora pro privátní a vybrané sítě je v rámci sady Works pro úplnou integraci Key Vault s Application Gateway. 
+
    > [!NOTE]
    > Pokud službu Application Gateway nasadíte přes šablonu ARM, ať už pomocí Azure CLI nebo PowerShellu, nebo přes aplikaci Azure nasazenou z Azure Portal, certifikát SSL je uložený v trezoru klíčů jako soubor PFX s kódováním base64. Musíte dokončit kroky v části [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md). 
    >

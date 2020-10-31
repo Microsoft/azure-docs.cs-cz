@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.author: sngun
-ms.openlocfilehash: 319713cd631b87d9f97af0db3d4a7b3af1c580ec
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 18850fafd1f6cb084c9e5fdb9a24e9c4fd8bb4cc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926117"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097562"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Monitorování Azure Cosmos DB dat pomocí nastavení diagnostiky v Azure
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Nastavení diagnostiky v Azure slouží ke shromažďování protokolů prostředků. Protokoly prostředků Azure se generují prostředkem a poskytují bohatou a častou data o provozu daného prostředku. Tyto protokoly jsou zachyceny na žádost a jsou také označovány jako "protokoly roviny dat". Mezi Příklady operací s rovinou dat patří odstranění, vložení a readFeed. Obsah těchto protokolů se liší podle typu prostředku.
 

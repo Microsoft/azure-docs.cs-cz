@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167963"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096508"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Připojení k účtu Azure Cosmos pomocí studia 3T
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Pokud se chcete připojit k rozhraní API Azure Cosmos DB pro MongoDB pomocí studia 3T, musíte:
 
@@ -42,23 +43,23 @@ Pokud chcete přidat účet Azure Cosmos do Správce připojení studia 3T, pou�
 5. V okně **nové připojení** na kartě **SSL** zaškrtněte políčko **používat protokol SSL pro připojení** a přepínač pro **příjem certifikátů SSL přihlášený držitelem** .
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
-6. Kliknutím na tlačítko **Testovat připojení** ověřte informace o připojení, kliknutím na tlačítko **OK** se vraťte do okna nové připojení a pak klikněte na **Uložit**.
+6. Kliknutím na tlačítko **Testovat připojení** ověřte informace o připojení, kliknutím na tlačítko **OK** se vraťte do okna nové připojení a pak klikněte na **Uložit** .
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Použití studia 3T k vytvoření databáze, kolekce a dokumentů
 Pokud chcete vytvořit databázi, kolekci a dokumenty pomocí nástroje Studio 3T, proveďte následující kroky:
 
-1. V **programu Správce připojení**zvýrazněte připojení a klikněte na **připojit**.
+1. V **programu Správce připojení** zvýrazněte připojení a klikněte na **připojit** .
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
-2. Klikněte pravým tlačítkem na hostitele a vyberte **Přidat databázi**.  Zadejte název databáze a klikněte na tlačítko **OK**.
+2. Klikněte pravým tlačítkem na hostitele a vyberte **Přidat databázi** .  Zadejte název databáze a klikněte na tlačítko **OK** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
-3. Klikněte pravým tlačítkem na databázi a vyberte **přidat kolekci**.  Zadejte název kolekce a klikněte na **vytvořit**.
+3. Klikněte pravým tlačítkem na databázi a vyberte **přidat kolekci** .  Zadejte název kolekce a klikněte na **vytvořit** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce":::
-4. Klikněte na položku nabídky **kolekce** a pak klikněte na **Přidat dokument**.
+4. Klikněte na položku nabídky **kolekce** a pak klikněte na **Přidat dokument** .
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Snímek obrazovky se stránkou připojovacího řetězce" },
         "isRegistered": false

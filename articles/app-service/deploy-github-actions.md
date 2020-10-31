@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783075"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095556"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -75,6 +75,9 @@ Profil publikování je přihlašovací údaje na úrovni aplikace. Nastavte sv�
 
 1. Stažený soubor uložte. Pomocí obsahu souboru vytvoříte tajný klíč GitHubu.
 
+> [!NOTE]
+> Od října 2020 budou webové aplikace pro Linux potřebovat nastavení aplikace `WEBSITE_WEBDEPLOY_USE_SCM` nastavené na hodnotu `true` **před stažením publikačního profilu** . Tento požadavek se v budoucnu odebere.
+
 # <a name="service-principal"></a>[Instanční objekt](#tab/userlevel)
 
 [Instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) můžete vytvořit pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) v rozhraní příkazového [řádku Azure CLI](/cli/azure/). Spusťte tento příkaz s [Azure Cloud Shell](https://shell.azure.com/) v Azure Portal nebo vyberte tlačítko **vyzkoušet** .
@@ -111,7 +114,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni aplikace](#generate-deployment-credentials), vložte obsah staženého souboru publikačního profilu do pole hodnota tajného klíče. Pojmenujte tajný klíč `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Příklad:
+Když nakonfigurujete pracovní postup GitHubu, použijte `AZURE_WEBAPP_PUBLISH_PROFILE` v akci nasazení webové aplikace Azure. Například:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -125,7 +128,7 @@ V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení
 
 Pokud chcete použít [přihlašovací údaje na úrovni uživatele](#generate-deployment-credentials), vložte celý výstup JSON z příkazu Azure CLI do pole hodnota tajného klíče. Zadejte název tajného klíče `AZURE_CREDENTIALS` .
 
-Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Příklad:
+Když později nakonfigurujete soubor pracovního postupu, použijete tajný klíč pro vstup `creds` Akce přihlášení do Azure. Například:
 
 ```yaml
 - uses: azure/login@v1

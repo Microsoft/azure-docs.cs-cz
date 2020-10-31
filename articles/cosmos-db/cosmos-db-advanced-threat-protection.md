@@ -8,14 +8,15 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489247"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097715"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB poskytuje další vrstvu zabezpečení, která detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, i když není odborník na zabezpečení a integruje se se systémy centrálního monitorování zabezpečení.
 
@@ -32,9 +33,9 @@ V případě úplného šetření výstrah zabezpečení doporučujeme povolit [
 
 Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. V současné době může aktivovat následující výstrahy:
 
-- **Přístup z neobvyklých umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu Azure Cosmos, kde se někdo připojil k Azure Cosmos DB koncovému bodu z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci, což znamená, že nová aplikace nebo operace údržby vývojářů. V jiných případech výstraha detekuje škodlivou akci od bývalého zaměstnance, externího útočníka atd.
+- **Přístup z neobvyklých umístění** : Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k účtu Azure Cosmos, kde se někdo připojil k Azure Cosmos DB koncovému bodu z neobvyklého zeměpisného umístění. V některých případech výstraha detekuje legitimní akci, což znamená, že nová aplikace nebo operace údržby vývojářů. V jiných případech výstraha detekuje škodlivou akci od bývalého zaměstnance, externího útočníka atd.
 
-- **Neobvyklé extrakce dat**: Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
+- **Neobvyklé extrakce dat** : Tato výstraha se aktivuje, když klient extrahuje neobvyklé množství dat z Azure Cosmos DB účtu. Může to být příznak některých exfiltrace dat provedených k přenosu všech dat uložených v účtu do externího úložiště dat.
 
 
 
@@ -46,13 +47,13 @@ Rozšířenou ochranu před internetovými útoky můžete nakonfigurovat libovo
 
 1. Spusťte Azure Portal v  [https://portal.azure.com](https://portal.azure.com/) .
 
-2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení**.
+2. Z účtu Azure Cosmos DB v nabídce **Nastavení** vyberte **Rozšířené zabezpečení** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="Nastavení ATP":::
 
 3. V okně **Upřesnit konfiguraci zabezpečení** :
 
-    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto**.
+    * Klikněte na možnost **Rozšířená ochrana před internetovými útoky** a nastavte ji na **zapnuto** .
     * Klikněte na **Uložit** a uložte nové nebo aktualizované zásady Advanced Threat Protection.   
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -83,17 +84,17 @@ K povolení rozšířené ochrany před internetovými útoky pro Cosmos DB pou�
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Nastavení ATP"::: 
 
-1. Klikněte na zásady **nasadit rozšířenou ochranu před internetovými útoky pro CosmosDB** a pak klikněte na **přiřadit**.
+1. Klikněte na zásady **nasadit rozšířenou ochranu před internetovými útoky pro CosmosDB** a pak klikněte na **přiřadit** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Nastavení ATP":::
 
 
-1. V poli **obor** klikněte na tři tečky, vyberte předplatné Azure nebo skupinu prostředků a pak klikněte na **Vybrat**.
+1. V poli **obor** klikněte na tři tečky, vyberte předplatné Azure nebo skupinu prostředků a pak klikněte na **Vybrat** .
 
     :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Nastavení ATP":::
 
 
-1. Zadejte další parametry a klikněte na **přiřadit**.
+1. Zadejte další parametry a klikněte na **přiřadit** .
 
 
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: ed11488f397704be782a092d6cdc6463449cc71e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039071"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097783"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementace CI/CD pro Stream Analytics na IoT Edge pomocí rozhraní API
 
@@ -59,7 +59,7 @@ Chcete-li vytvořit úlohu Stream Analytics, zavolejte metodu PUT pomocí rozhra
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-Příklad příkazu využívajícího **kudrlinkou**:
+Příklad příkazu využívajícího **kudrlinkou** :
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
@@ -136,7 +136,7 @@ Příklad textu žádosti ve formátu JSON:
 } 
 ```
  
-Další informace najdete v [dokumentaci k rozhraní API](/rest/api/streamanalytics/stream-analytics-job).  
+Další informace najdete v [dokumentaci k rozhraní API](/rest/api/streamanalytics/).  
  
 ## <a name="publish-edge-package"></a>Publikovat hraniční balíček 
  
@@ -148,7 +148,7 @@ Pokud chcete publikovat úlohu Stream Analytics na IoT Edge, zavolejte metodu PO
 
 Tato asynchronní operace vrátí stav 202 až do úspěšného publikování úlohy. Hlavička odpovědi umístění obsahuje identifikátor URI, který se používá k získání stavu procesu. Při běhu procesu vrátí volání identifikátoru URI v hlavičce umístění stav 202. Po dokončení procesu vrátí identifikátor URI v hlavičce umístění stav 200. 
 
-Příklad balíčku Edge s voláním pro publikování pomocí objektu **kudrlinkou**: 
+Příklad balíčku Edge s voláním pro publikování pomocí objektu **kudrlinkou** : 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
@@ -163,7 +163,7 @@ https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{
 ```
 Počkejte jednu až dvě minuty, než spustíte následující příkaz, aby bylo volání rozhraní API s adresou URL, kterou jste nalezli v HLAVIČCE odpovědi. Pokud neobdržíte odpověď 200, zkuste příkaz zopakovat.
  
-Příklad volání rozhraní API s vrácenou adresou URL s **kudrlinkou**:
+Příklad volání rozhraní API s vrácenou adresou URL s **kudrlinkou** :
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 

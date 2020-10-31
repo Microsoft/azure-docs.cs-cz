@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097460"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Díky zajišťování modelu propustnosti nabízí Azure Cosmos DB předvídatelný výkon v jakémkoli měřítku. Zachovávání nebo zřizování propustnosti předem eliminuje u vašeho výkonu "hlučné sousední účinky". Zadáváte přesnou míru propustnosti, kterou potřebujete, a Azure Cosmos DB garantuje nakonfigurovanou propustnost, kterou zajišťuje smlouva SLA.
 
@@ -30,7 +31,7 @@ Propustnost můžete zřídit pro databáze nebo kontejnery a v závislosti na k
 
 Níže jsou uvedeny některé pokyny k rozhodování o strategii zřízené propustnosti:
 
-**Zvažte zajištění propustnosti v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud**:
+**Zvažte zajištění propustnosti v databázi Azure Cosmos (obsahující sadu kontejnerů), pokud** :
 
 1. Máte několik desítek Cosmos kontejnerů Azure a chcete sdílet propustnost napříč některými nebo všemi z nich. 
 

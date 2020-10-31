@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5ebe0bcf1e491166c5fc61597904056307f9679c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461715"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098004"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro službu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 - **Delegování podsítě:** Podsíť spravované instance SQL musí být delegovaná na `Microsoft.Sql/managedInstances` poskytovatele prostředků.
 - **Skupina zabezpečení sítě (NSG):** NSG musí být přidružený k podsíti spravované instance SQL. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance SQL pomocí filtrování provozu na portech 1433 a porty 11000-11999 při konfiguraci spravované instance SQL pro připojení přesměrování. Služba automaticky zřídí a zachová aktuální [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) nutná k tomu, aby bylo možné nepřerušovaný tok provozu správy.
 - **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR musí být přidružena k podsíti spravované instance SQL. Prostřednictvím brány virtuální sítě nebo síťového virtuálního zařízení můžete do směrovací tabulky přidat záznamy pro směrování provozu, který má jako cíl místní rozsahy privátních IP adres. Služba bude automaticky zřizovat a udržovat aktuální [záznamy](#user-defined-routes-with-service-aided-subnet-configuration) požadované k umožnění nepřerušovaného toku provozu správy.
-- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít aspoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravovanou instanci SQL](vnet-subnet-determine-size.md). Spravované instance můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravovanou instanci SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
+- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít minimálně 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravovanou instanci SQL](vnet-subnet-determine-size.md). Spravované instance můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravovanou instanci SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
 > Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
@@ -301,20 +301,22 @@ Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální s�
 
 \* PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
+\** Pokud je cílová adresa pro jednu ze služeb Azure, Azure směruje provoz přímo do služby přes páteřní síť Azure místo směrování provozu na Internet. Provoz mezi službami Azure neprochází přes internet, a to bez ohledu na to, ve které oblasti Azure existuje virtuální síť nebo ve které oblasti Azure je nasazená instance služby Azure. Další podrobnosti najdete na [stránce dokumentace k udr](../../virtual-network/virtual-networks-udr-overview.md).
+
 Kromě toho můžete přidat položky do směrovací tabulky pro směrování provozu, který má místní rozsahy privátních IP adres jako cíl prostřednictvím brány virtuální sítě nebo zařízení virtuální sítě (síťové virtuální zařízení).
 
 Pokud virtuální síť obsahuje vlastní DNS, vlastní server DNS musí být schopný přeložit veřejné záznamy DNS. Použití dalších funkcí, jako je ověřování Azure AD, může vyžadovat vyřešení dalších plně kvalifikovaných názvů domén. Další informace najdete v tématu [nastavení vlastního DNS](custom-dns-configure.md).
 
 ### <a name="networking-constraints"></a>Omezení sítě
 
-Pro **odchozí připojení se vynutilo tls 1,2**: v lednu 2020 Microsoft vynutila 1,2 TLS pro provoz uvnitř služby ve všech službách Azure. U spravované instance Azure SQL to vedlo k vymáhání TLS 1,2 u odchozích připojení používaných pro replikaci a připojení k serveru SQL Server. Pokud používáte verze SQL Server starší než 2016 se službou SQL Managed instance, zajistěte, aby byly použity [specifické aktualizace TLS 1,2](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) .
+Pro **odchozí připojení se vynutilo tls 1,2** : v lednu 2020 Microsoft vynutila 1,2 TLS pro provoz uvnitř služby ve všech službách Azure. U spravované instance Azure SQL to vedlo k vymáhání TLS 1,2 u odchozích připojení používaných pro replikaci a připojení k serveru SQL Server. Pokud používáte verze SQL Server starší než 2016 se službou SQL Managed instance, zajistěte, aby byly použity [specifické aktualizace TLS 1,2](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) .
 
 U spravované instance SQL se aktuálně nepodporují následující funkce virtuální sítě:
 
-- **Partnerský vztah Microsoftu**: povolení [partnerského vztahu Microsoftu](../../expressroute/expressroute-faqs.md#microsoft-peering) na okruhech ExpressRoute partnerských vztahů přímo nebo v transitu s virtuální sítí, kde se nachází spravovaná instance SQL, ovlivňuje tok přenosů mezi komponentami spravované instance SQL uvnitř virtuální sítě a služeb, na kterých závisí, a způsobující problémy s dostupností. Očekává se, že nasazení spravované instance SQL do virtuální sítě s partnerským vztahem Microsoftu je už povolené.
-- **Globální partnerské vztahy virtuálních sítí**: připojení [partnerských vztahů virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) napříč oblastmi Azure nefunguje pro spravované instance SQL umístěné v podsítích vytvořených před 9/22/2020.
-- **AzurePlatformDNS**: použití [značky služby](../../virtual-network/service-tags-overview.md) AZUREPLATFORMDNS k blokování překladu DNS platformy by vygenerovalo nedostupné spravované instance SQL. I když spravovaná instance SQL podporuje DNS definované uživatelem pro překlad DNS v rámci motoru, je závislá na platformě DNS platformy pro operace platforem.
-- **Brána NAT**: použití služby [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) k řízení odchozího připojení s konkrétní veřejnou IP adresou by nedostupné pro vykreslování spravované instance SQL. Služba SQL Managed instance je momentálně omezená na použití základního nástroje pro vyrovnávání zatížení, který neposkytuje koexistenci příchozích a odchozích toků s Virtual Network překladem adres (NAT).
+- **Partnerský vztah Microsoftu** : povolení [partnerského vztahu Microsoftu](../../expressroute/expressroute-faqs.md#microsoft-peering) na okruhech ExpressRoute partnerských vztahů přímo nebo v transitu s virtuální sítí, kde se nachází spravovaná instance SQL, ovlivňuje tok přenosů mezi komponentami spravované instance SQL uvnitř virtuální sítě a služeb, na kterých závisí, a způsobující problémy s dostupností. Očekává se, že nasazení spravované instance SQL do virtuální sítě s partnerským vztahem Microsoftu je už povolené.
+- **Globální partnerské vztahy virtuálních sítí** : připojení [partnerských vztahů virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) napříč oblastmi Azure nefunguje pro spravované instance SQL umístěné v podsítích vytvořených před 9/22/2020.
+- **AzurePlatformDNS** : použití [značky služby](../../virtual-network/service-tags-overview.md) AZUREPLATFORMDNS k blokování překladu DNS platformy by vygenerovalo nedostupné spravované instance SQL. I když spravovaná instance SQL podporuje DNS definované uživatelem pro překlad DNS v rámci motoru, je závislá na platformě DNS platformy pro operace platforem.
+- **Brána NAT** : použití služby [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) k řízení odchozího připojení s konkrétní veřejnou IP adresou by nedostupné pro vykreslování spravované instance SQL. Služba SQL Managed instance je momentálně omezená na použití základního nástroje pro vyrovnávání zatížení, který neposkytuje koexistenci příchozích a odchozích toků s Virtual Network překladem adres (NAT).
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Zastaralé Požadavky na síť bez konfigurace podsítě pro službu
 

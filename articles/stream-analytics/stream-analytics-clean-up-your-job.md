@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044596"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097749"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavení nebo odstranění úlohy Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Azure Stream Analytics úlohy je možné snadno zastavit nebo odstranit pomocí 
 
 Po zastavení úlohy dojde ke zrušení zřízení prostředků a zastavení zpracování událostí. Poplatky související s touto úlohou se také zastaví. Veškerá vaše konfigurace je ale zachovaná a později ji můžete restartovat. 
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 2. Vyhledejte spuštěnou úlohu Stream Analytics a vyberte ji.
 
@@ -40,7 +40,7 @@ Po zastavení úlohy dojde ke zrušení zřízení prostředků a zastavení zpr
 >[!WARNING] 
 >Po odstranění nelze úlohu Stream Analytics obnovit.
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 
 2. Vyhledejte existující úlohu Stream Analytics a vyberte ji.
 
@@ -61,4 +61,4 @@ K zastavení úlohy pomocí sady Azure SDK pro .NET použijte metodu [StreamingJ
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Zastavení nebo odstranění úlohy pomocí REST API
 
-Chcete-li zastavit úlohu pomocí REST API, přečtěte si metodu [stop](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) . Pokud chcete úlohu odstranit pomocí REST API, přečtěte si metodu [Delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) .
+Chcete-li zastavit úlohu pomocí REST API, přečtěte si metodu [stop](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) . Pokud chcete úlohu odstranit pomocí REST API, přečtěte si metodu [Delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) .

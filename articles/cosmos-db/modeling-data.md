@@ -7,14 +7,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: ae0bf6836fd08e20d97f1cfd85627b25e31bf380
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278410"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096644"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Databáze bez schématu, jako je například Azure Cosmos DB, usnadňují ukládání a dotazování nestrukturovaných a částečně strukturovaných dat, měli byste věnovat si nějaké informace o datovém modelu a získat tak většinu služby z pohledu výkonu a škálovatelnosti a nejnižších nákladů.
 
@@ -35,7 +36,7 @@ V případě porovnání si nejdřív projdeme, jak můžeme modelovat data v re
 
 :::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Model relační databáze" border="false":::
 
-Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business*.
+Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business* .
 
 Základní GUID při normalizaci dat je **vyhnout se ukládání redundantních dat** u každého záznamu a místo toho je třeba odkazovat na data. Chcete-li v tomto příkladu číst osobu se všemi kontaktními údaji a adresami kontaktů, je nutné použít spojení k efektivnímu psaní (nebo denormalizaci) dat v době běhu.
 
@@ -85,9 +86,9 @@ V obecném případě použijte vložené datové modely v těchto případech:
 
 * Mezi entitami je **obsažena** relace.
 * Mezi entitami existuje relace **1:1** .
-* K dispozici jsou vložená data, která se **mění zřídka**.
-* Existují vložená data, která se nezvětšují **bez vazby**.
-* K dispozici jsou vložená data, která se **často dotazují**.
+* K dispozici jsou vložená data, která se **mění zřídka** .
+* Existují vložená data, která se nezvětšují **bez vazby** .
+* K dispozici jsou vložená data, která se **často dotazují** .
 
 > [!NOTE]
 > Typicky denormalizované datové modely poskytují lepší výkon při **čtení** .
@@ -116,7 +117,7 @@ Proveďte tento fragment kódu JSON.
 }
 ```
 
-Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené**, což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
+Může to být tím, že entita příspěvku s vloženými komentáři by vypadala jako při vytváření modelů typického blogu nebo CMS, systému. Problém s tímto příkladem je, že pole komentáře je **neohraničené** , což znamená, že neexistuje (praktické) omezení na počet komentářů, který může mít každý příspěvek. Může se jednat o problém, protože velikost položky by mohla růst nekonečně velká.
 
 Jak velikost položky zvětšuje schopnost přenášet data prostřednictvím sítě a také číst a aktualizovat položku ve velkém měřítku, bude to mít vliv na.
 
@@ -241,8 +242,8 @@ Obecně používejte normalizované datové modely v těchto případech:
 
 * Reprezentace vztahů **1: n** .
 * Reprezentace vztahů **m:n** .
-* Změny souvisejících dat jsou **často časté**.
-* Odkazovaná data by mohla být **neohraničená**.
+* Změny souvisejících dat jsou **často časté** .
+* Odkazovaná data by mohla být **neohraničená** .
 
 > [!NOTE]
 > Obvykle normalizace poskytuje lepší výkon **zápisu** .
@@ -402,7 +403,7 @@ Ujistěte se, že pokud se změnil název autora nebo chce aktualizovat fotograf
 
 V tomto příkladu jsou **předem vypočtené agregované** hodnoty pro ukládání nákladného zpracování operace čtení. V příkladu jsou některá data vložená v dokumentu autora data počítána za běhu. Pokaždé, když se publikuje nová kniha, vytvoří se dokument knihy **a** pole countOfBooks se nastaví na vypočtenou hodnotu na základě počtu dokumentů knihy, které existují pro určitého autora. Tato optimalizace by byla dobrá pro čtení těžkých systémů, kde můžeme pro účely optimalizace čtení provádět výpočty na zápisy.
 
-Možnost mít model s předem vypočítanými poli je možná, protože Azure Cosmos DB podporuje transakce s **více dokumenty**. Mnoho úložišť NoSQL nemůže dělat transakce napříč dokumenty a proto rozhodování o návrhu, jako je "vždy vkládat vše", z důvodu tohoto omezení. Pomocí Azure Cosmos DB můžete použít triggery na straně serveru nebo uložené procedury, které v rámci transakce s kyselým obsahem vloží všechny knihy a tvůrci aktualizací. Teď **nemusíte** vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
+Možnost mít model s předem vypočítanými poli je možná, protože Azure Cosmos DB podporuje transakce s **více dokumenty** . Mnoho úložišť NoSQL nemůže dělat transakce napříč dokumenty a proto rozhodování o návrhu, jako je "vždy vkládat vše", z důvodu tohoto omezení. Pomocí Azure Cosmos DB můžete použít triggery na straně serveru nebo uložené procedury, které v rámci transakce s kyselým obsahem vloží všechny knihy a tvůrci aktualizací. Teď **nemusíte** vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
 
 ## <a name="distinguishing-between-different-document-types"></a>Odlišení mezi různými typy dokumentů
 

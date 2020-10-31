@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 5b1edb5bbd3ac6fa415f24670c98cd99ffb74fc6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488499"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096712"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Odhad RU/s pomocí plánovače kapacity Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Konfigurace databází a kontejnerů Azure Cosmos s využitím správného množství zřízené propustnosti nebo [jednotek žádostí (ru/s)](request-units.md)pro vaše zatížení je základem pro optimalizaci nákladů a výkonu. Tento článek popisuje, jak pomocí služby Azure Cosmos DB [Capacity Planner](https://cosmos.azure.com/capacitycalculator/) získat odhad požadovaných ru/s a nákladů na vaše zatížení. 
 
@@ -21,9 +22,9 @@ Konfigurace databází a kontejnerů Azure Cosmos s využitím správného množ
 
 Plánovač kapacity se dá použít ve dvou režimech.
 
-|**Mode**  |**Popis**  |
+|**Režim**  |**Popis**  |
 |---------|---------|
-|Basic|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
+|Základní|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
 |Pokročilý|Poskytuje podrobnější informace o RU/s a odhad nákladů s možností optimalizace dalších nastavení – zásad indexování, úrovně konzistence a dalších parametrů, které mají vliv na náklady a propustnost. <br/><br/>Pokročilý režim použijte při odhadování RU/s pro nový projekt nebo chcete podrobnější odhad. |
 
 
@@ -39,7 +40,7 @@ Pokud chcete získat rychlý odhad vašich úloh pomocí režimu Basic, přejdě
 |Počet čtení za sekundu na oblast|Počet očekávaných čtení za sekundu |
 |Počet zápisů za sekundu na oblast|Počet očekávaných zápisů za sekundu |
 
-Po vyplnění požadovaných podrobností vyberte **Vypočítat**. Karta **odhad nákladů** zobrazuje celkové náklady na úložiště a zřízenou propustnost. Kliknutím na odkaz **Zobrazit podrobnosti** na této kartě můžete získat rozpis propustnosti požadované pro požadavky na čtení a zápis. Pokaždé, když změníte hodnotu libovolného pole, vyberte **Vypočítat** a přepočítejte odhadované náklady. 
+Po vyplnění požadovaných podrobností vyberte **Vypočítat** . Karta **odhad nákladů** zobrazuje celkové náklady na úložiště a zřízenou propustnost. Kliknutím na odkaz **Zobrazit podrobnosti** na této kartě můžete získat rozpis propustnosti požadované pro požadavky na čtení a zápis. Pokaždé, když změníte hodnotu libovolného pole, vyberte **Vypočítat** a přepočítejte odhadované náklady. 
 
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Základní režim plánovače kapacity":::
 
@@ -55,7 +56,7 @@ Po přihlášení uvidíte další pole v porovnání s poli v základním reži
 |Počet oblastí|Azure Cosmos DB je k dispozici ve všech oblastech Azure. Vyberte počet oblastí vyžadovaných pro vaše zatížení. K vašemu účtu Cosmos můžete přidružit libovolný počet oblastí. Další podrobnosti najdete v tématu [globální distribuce](distribute-data-globally.md) v Azure Cosmos DB.|
 |Zápisy ve více oblastech|Pokud povolíte [zápisy ve více oblastech](distribute-data-globally.md#key-benefits-of-global-distribution), může vaše aplikace číst a zapisovat do libovolné oblasti Azure. Pokud zakážete zápisy ve více oblastech, může vaše aplikace zapisovat data do jedné oblasti. <br/><br/> Povolte zápisy ve více oblastech, pokud očekáváte, že budete mít aktivní aktivní úlohu, která vyžaduje zápis s nízkou latencí v různých oblastech. Například úloha IOT, která zapisuje data do databáze na vysoce svazcích v různých oblastech. <br/><br/> Zápisy ve více oblastech garantuje 99,999% dostupnost čtení a zápisu. Zápisy ve více oblastech vyžadují při porovnání s jednou oblastí zápisu větší propustnost. Další informace najdete v článku [o tom, jak se ru liší od jednoduchých článků a oblastí vícenásobného zápisu](optimize-cost-regions.md) .|
 |Výchozí konzistence|Azure Cosmos DB podporuje 5 úrovní konzistence a umožňuje vývojářům vyrovnávat kompromisy mezi konzistencí, dostupností a kompromisy při latenci. Další informace najdete v článku o [úrovních konzistence](consistency-levels.md) . <br/><br/> Ve výchozím nastavení Azure Cosmos DB používá konzistenci relací, což zaručuje možnost číst vlastní zápisy v relaci. <br/><br/> Výběr silné nebo ohraničené neaktuálnosti bude vyžadovat zdvojnásobení požadovaných RU/s pro čtení, ve srovnání s relací, konzistentní předponou a konečnou konzistenci. Silná konzistence s zápisy ve více oblastech není podporovaná a automaticky se ve výchozím nastavení zapisuje zápisy do jedné oblasti s silnou konzistencí. |
-|Zásada indexování|Ve výchozím nastavení Azure Cosmos DB [indexuje všechny vlastnosti](index-policy.md) ve všech položkách pro flexibilní a efektivní dotazy (mapuje se na zásady **automatického** indexování). <br/><br/> Pokud zvolíte **vypnuto**, žádná z vlastností nebude indexována. Výsledkem je nejnižší poplatek za zápis. Pokud očekáváte, že chcete provádět jenom [čtení bodů](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet) (vyhledávání hodnot klíčů) a/nebo zápisy a žádné dotazy, vyberte **vypnout** zásadu. <br/><br/> Vlastní zásady indexování umožňují zahrnout nebo vyloučit konkrétní vlastnosti z indexu pro nižší propustnost zápisu a úložiště. Další informace najdete v článcích o [zásadách indexování](index-overview.md) a [ukázkových zásadách indexování](how-to-manage-indexing-policy.md#indexing-policy-examples) .|
+|Zásada indexování|Ve výchozím nastavení Azure Cosmos DB [indexuje všechny vlastnosti](index-policy.md) ve všech položkách pro flexibilní a efektivní dotazy (mapuje se na zásady **automatického** indexování). <br/><br/> Pokud zvolíte **vypnuto** , žádná z vlastností nebude indexována. Výsledkem je nejnižší poplatek za zápis. Pokud očekáváte, že chcete provádět jenom [čtení bodů](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet) (vyhledávání hodnot klíčů) a/nebo zápisy a žádné dotazy, vyberte **vypnout** zásadu. <br/><br/> Vlastní zásady indexování umožňují zahrnout nebo vyloučit konkrétní vlastnosti z indexu pro nižší propustnost zápisu a úložiště. Další informace najdete v článcích o [zásadách indexování](index-overview.md) a [ukázkových zásadách indexování](how-to-manage-indexing-policy.md#indexing-policy-examples) .|
 |Celkem uložených dat (na oblast)|Celková odhadovaná data uložená v GB v jedné oblasti.|
 |Režim zatížení|Pokud je váš objem úloh konstantní, vyberte možnost **ustáleno** . <br/><br/> Pokud se objem úloh mění v čase, vyberte možnost **Proměnná** .  Například během určitého dne nebo v měsíci. <br/><br/> Pokud zvolíte možnost proměnné úlohy, jsou k dispozici následující nastavení:<ul><li>Procento času ve špičce: procento času v měsíci, ve kterém vaše zatížení vyžaduje nejvyšší propustnost (nejvyšší). <br/><br/> Pokud máte například úlohu s vysokou aktivitou během 9:00 – 18:00 v pracovní době, pak je procento času ve špičce: 45 hodin ve špičce/730 hodin/měsíc = ~ 6%.<br/><br/></li><li>Počet čtení za sekundu na oblast ve špičce – počet očekávaných čtení za sekundu ve špičce</li><li>Počet zápisů za sekundu na oblast ve špičce – počet zápisů očekávaných za sekundu ve špičce.</li><li>Počet čtení/s na oblast mimo špičku – počet operací čtení očekávaných za sekundu v době mimo špičku.</li><li>Počet zápisů za sekundu v oblasti mimo špičku – počet očekávaných zápisů za sekundu v době mimo špičku.</li></ul>V intervalech špičky a mimo špičku můžete své náklady optimalizovat díky [programovému škálování zřízené propustnosti](set-throughput.md#update-throughput-on-a-database-or-a-container) nahoru a dolů.|
 |Velikost položky|Velikost datové položky (např. dokumentu) od 1 KB do 2 MB. <br/><br/>Můžete také **načíst ukázkový dokument (JSON)** pro přesnější odhad.<br/><br/>Pokud vaše úloha obsahuje více typů položek (s jiným obsahem JSON) ve stejném kontejneru, můžete nahrát několik dokumentů JSON a získat odhad. K přidání více ukázkových dokumentů JSON použijte tlačítko **Přidat novou položku** .|

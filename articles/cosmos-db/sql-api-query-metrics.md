@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477823"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097222"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů pomocí služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB poskytuje [rozhraní SQL API pro dotazování na data](./sql-query-getting-started.md), bez nutnosti schématu nebo sekundárních indexů. Tento článek poskytuje pro vývojáře následující informace:
 
@@ -238,7 +239,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrika | Jednotka | Popis | 
+| Metrika | Jednotka | Description | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | milisekundy | Čas provedení dotazu | 
 | `queryCompileTimeInMs` | milisekundy | Čas kompilace dotazu  | 
@@ -260,7 +261,7 @@ Klientské sady SDK mohou interně provádět dotazy v rámci jednotlivých odd�
 
 Tady je několik ukázkových dotazů a postup interpretace některých metrik vrácených spuštěním dotazu: 
 
-| Dotaz | Ukázková metrika | Popis | 
+| Dotaz | Ukázková metrika | Description | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Počet načtených dokumentů je 100 + 1, aby se shodovala s horní klauzulí. Čas dotazu se většinou stráví v `WriteOutputTime` a `DocumentLoadTime` vzhledem k tomu, že se jedná o kontrolu. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount je teď vyšší (500 + 1 tak, aby odpovídalo horní klauzuli). | 

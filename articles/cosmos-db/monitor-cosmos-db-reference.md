@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/28/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: c17d660c75fdfd6f1eb429db3a8b55f3e3db1b2d
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: eb06fda43590198f1b2643c8362f774a031eaef9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925947"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096271"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Referenční informace o monitorování dat ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek obsahuje referenční informace o datech protokolů a metrik, která se shromažďují za účelem analýzy výkonu a dostupnosti služby Azure Cosmos DB. Informace o tom, jak shromažďovat a analyzovat data monitorování pro Azure Cosmos DB, najdete v článku [monitorování Azure Cosmos DB](monitor-cosmos-db.md) .
 

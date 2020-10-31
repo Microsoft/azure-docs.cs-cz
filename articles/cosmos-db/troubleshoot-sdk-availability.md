@@ -8,14 +8,15 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097885"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>Diagnostika a řešení potíží s dostupností sad Azure Cosmos SDK v prostředí s více oblastmi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje chování nejnovější verze sad Azure Cosmos SDK, pokud se zobrazí problém s připojením k určité oblasti nebo když dojde k převzetí služeb při selhání oblasti.
 
@@ -34,7 +35,7 @@ Když nastavíte místní předvolbu, klient se připojí k oblasti, jak je uved
 | Jedna oblast zápisu | Upřednostňovaná oblast | Primární oblast  |
 | Více oblastí zápisu | Upřednostňovaná oblast | Upřednostňovaná oblast  |
 
-Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výchozím nastavení primární oblastí:
+Pokud **nenastavíte upřednostňovanou oblast** , klient sady SDK bude ve výchozím nastavení primární oblastí:
 
 |Typ účtu |Čtení |Zápisy |
 |------------------------|--|--|
@@ -46,7 +47,7 @@ Pokud **nenastavíte upřednostňovanou oblast**, klient sady SDK bude ve výcho
 
 Za normálních okolností se klient SDK připojí k upřednostňované oblasti (Pokud je nastavená místní předvolba) nebo do primární oblasti (Pokud není nastavená žádná předvolba) a operace budou omezené na tuto oblast, pokud nedošlo k žádnému z následujících scénářů.
 
-V těchto případech klient, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci**:
+V těchto případech klient, který používá sadu Azure Cosmos SDK, zveřejňuje protokoly a obsahuje informace o opakování jako součást **diagnostických informací o operaci** :
 
 * Vlastnost *RequestDiagnosticsString* na odpovědích v sadě .NET v2 SDK.
 * Vlastnost *Diagnostic* na odpovědích a výjimkách v sadě .NET V3 SDK.

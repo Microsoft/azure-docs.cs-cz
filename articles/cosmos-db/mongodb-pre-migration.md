@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8e3a0ac6996762bc7f4bd1a6d9dde8cfb59db662
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096423"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Před migrací dat z MongoDB (místně nebo v cloudu), abyste Azure Cosmos DB rozhraní API pro MongoDB, měli byste:
 
@@ -30,13 +31,13 @@ Pokud jste už dokončili výše uvedené požadavky na migraci, můžete [migro
 
 Níže jsou uvedené specifické charakteristiky rozhraní API Azure Cosmos DB pro MongoDB:
 
-- **Model kapacity**: kapacita databáze na Azure Cosmos dB vychází z modelu založeného na propustnosti. Tento model je založen na [jednotkách žádosti za sekundu](request-units.md), což je jednotka, která představuje počet operací databáze, které mohou být provedeny na základě kolekce za sekundu. Tato kapacita se dá přidělit na [úrovni databáze nebo kolekce](set-throughput.md)a dá se zřídit podle modelu přidělení nebo pomocí [zřízené propustnosti automatického škálování](provision-throughput-autoscale.md).
+- **Model kapacity** : kapacita databáze na Azure Cosmos dB vychází z modelu založeného na propustnosti. Tento model je založen na [jednotkách žádosti za sekundu](request-units.md), což je jednotka, která představuje počet operací databáze, které mohou být provedeny na základě kolekce za sekundu. Tato kapacita se dá přidělit na [úrovni databáze nebo kolekce](set-throughput.md)a dá se zřídit podle modelu přidělení nebo pomocí [zřízené propustnosti automatického škálování](provision-throughput-autoscale.md).
 
-- **Jednotky žádosti**: každá databázová operace má v Azure Cosmos DB náklady na přidružené jednotky žádosti (ru). Po spuštění se toto odečte od úrovně dostupné jednotky žádosti v dané druhé. Pokud požadavek vyžaduje více ru než aktuálně přidělený RU/s, existují dvě možnosti, jak tento problém vyřešit – Zvyšte množství ru nebo počkejte na další sekundu a pak zkuste operaci zopakovat.
+- **Jednotky žádosti** : každá databázová operace má v Azure Cosmos DB náklady na přidružené jednotky žádosti (ru). Po spuštění se toto odečte od úrovně dostupné jednotky žádosti v dané druhé. Pokud požadavek vyžaduje více ru než aktuálně přidělený RU/s, existují dvě možnosti, jak tento problém vyřešit – Zvyšte množství ru nebo počkejte na další sekundu a pak zkuste operaci zopakovat.
 
-- **Elastická kapacita**: kapacita pro danou kolekci nebo databázi se může kdykoli změnit. Díky tomu bude databáze pružně přizpůsobena požadavkům na propustnost vašich úloh.
+- **Elastická kapacita** : kapacita pro danou kolekci nebo databázi se může kdykoli změnit. Díky tomu bude databáze pružně přizpůsobena požadavkům na propustnost vašich úloh.
 
-- **Automaticky horizontálního dělení**: Azure Cosmos DB poskytuje systém automatického dělení, který vyžaduje jenom horizontálních oddílů (nebo klíč oddílu). [Automatický mechanismus dělení](partitioning-overview.md) se sdílí napříč všemi rozhraními API Azure Cosmos DB a umožňuje bezproblémová data a celou škálu až po horizontální distribuci.
+- **Automaticky horizontálního dělení** : Azure Cosmos DB poskytuje systém automatického dělení, který vyžaduje jenom horizontálních oddílů (nebo klíč oddílu). [Automatický mechanismus dělení](partitioning-overview.md) se sdílí napříč všemi rozhraními API Azure Cosmos DB a umožňuje bezproblémová data a celou škálu až po horizontální distribuci.
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>Možnosti migrace pro rozhraní API Azure Cosmos DB pro MongoDB
 
@@ -56,11 +57,11 @@ V Azure Cosmos DB propustnost je zajištěná předem a měří se v jednotkách
 Pomocí [kalkulačky Azure Cosmos DB kapacity](https://cosmos.azure.com/capacitycalculator/) můžete určit množství jednotek požadavků na základě konfigurace vašeho databázového účtu, množství dat, velikosti dokumentu a požadovaných čtení a zápisů za sekundu.
 
 Níže jsou uvedené klíčové faktory, které ovlivňují počet požadovaných ru:
-- **Velikost dokumentu**: v případě zvýšení velikosti položky nebo dokumentu se také zvýší počet ru spotřebovaných na čtení nebo zápis položky nebo dokumentu.
+- **Velikost dokumentu** : v případě zvýšení velikosti položky nebo dokumentu se také zvýší počet ru spotřebovaných na čtení nebo zápis položky nebo dokumentu.
 
-- **Počet vlastností dokumentu**: počet ru spotřebovaných k vytvoření nebo aktualizaci dokumentu souvisí s počtem, složitostí a délkou jeho vlastností. [Omezením počtu indexovaných vlastností](mongodb-indexing.md)můžete snížit spotřebu jednotek požadavků pro operace zápisu.
+- **Počet vlastností dokumentu** : počet ru spotřebovaných k vytvoření nebo aktualizaci dokumentu souvisí s počtem, složitostí a délkou jeho vlastností. [Omezením počtu indexovaných vlastností](mongodb-indexing.md)můžete snížit spotřebu jednotek požadavků pro operace zápisu.
 
-- **Vzorce dotazů**: složitost dotazu ovlivňuje počet jednotek požadavků, které dotaz spotřebovává. 
+- **Vzorce dotazů** : složitost dotazu ovlivňuje počet jednotek požadavků, které dotaz spotřebovává. 
 
 Nejlepším způsobem, jak porozumět nákladům na dotazy, je použití ukázkových dat v Azure Cosmos DB [a spuštění ukázkových dotazů z prostředí MongoDB](connect-mongodb-account.md) pomocí `getLastRequestStastistics` příkazu pro získání poplatků za požadavek, který vypíše počet spotřebovaných ru:
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adb221c12af436135b1e740fdef7c5c0a0a7f0cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254738"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096032"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Postup při integraci služby Azure API Management s Azure Application Insights
 
 Azure API Management umožňuje snadnou integraci se službou Azure Application Insights – rozšiřitelná služba pro webové vývojáře vytvářející a spravované aplikace na různých platformách. Tato příručka vás provede jednotlivými kroky této integrace a popisuje strategie pro snížení dopadu na výkon vaší instance služby API Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto průvodce, musíte mít instanci služby Azure API Management. Pokud ho nemáte, dokončete nejprve [kurz](get-started-create-service-instance.md) .
 
@@ -32,39 +32,39 @@ Pokud chcete postupovat podle tohoto průvodce, musíte mít instanci služby Az
 
 Než budete moct použít Azure Application Insights, musíte nejdřív vytvořit instanci služby.
 
-1. Otevřete **Azure Portal** a přejděte do **Application Insights**.  
-    ![Vytvoření App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
-2. Klikněte na **+ Přidat**.  
+1. Otevřete **Azure Portal** a přejděte do **Application Insights** .  
+    ![Snímek obrazovky, který ukazuje, jak přejít na Application Insights.](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
+2. Klikněte na **+ Přidat** .  
     ![Vytvoření App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
-3. Vyplňte formulář. Jako **Typ aplikace**vyberte **Obecné** .
-4. Klikněte na **Vytvořit**.
+3. Vyplňte formulář. Jako **Typ aplikace** vyberte **Obecné** .
+4. Klikněte na **Vytvořit** .
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Vytvoření připojení mezi službou Azure Application Insights a instancí služby Azure API Management
 
-1. V **Azure Portal**přejděte do své **instance služby Azure API Management** .
+1. V **Azure Portal** přejděte do své **instance služby Azure API Management** .
 2. V nabídce vlevo vyberte **Application Insights** .
-3. Klikněte na **+ Přidat**.  
-    ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
+3. Klikněte na **+ Přidat** .  
+    ![Snímek obrazovky, který ukazuje, kde přidat nové připojení](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Vyberte dříve vytvořenou instanci **Application Insights** a zadejte krátký popis.
-5. Klikněte na **Vytvořit**.
+5. Klikněte na **Vytvořit** .
 6. Právě jste vytvořili protokolovací nástroj pro Azure Application Insights s klíčem instrumentace. Měl by se teď zobrazit v seznamu.  
-    ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
+    ![Snímek obrazovky, který ukazuje, kde zobrazit nově vytvořený protokolovací nástroj služby Azure Application Insights pomocí klíče instrumentace.](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
 > Za scénou je ve vaší instanci API Management vytvořená entita [protokolovacího](/rest/api/apimanagement/2019-12-01/logger/createorupdate) nástroje obsahující klíč instrumentace instance Application Insights.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Povolení protokolování Application Insights pro vaše rozhraní API
 
-1. V **Azure Portal**přejděte do své **instance služby Azure API Management** .
-2. V nabídce na levé straně vyberte **Rozhraní API**.
-3. V tomto případě **ukázkové konferenční rozhraní API**klikněte na své rozhraní API.
+1. V **Azure Portal** přejděte do své **instance služby Azure API Management** .
+2. V nabídce na levé straně vyberte **Rozhraní API** .
+3. V tomto případě **ukázkové konferenční rozhraní API** klikněte na své rozhraní API.
 4. V horním panelu přejdete na kartu **Nastavení** .
 5. Přejděte dolů do části **diagnostické protokoly** .  
     ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-api-1.png)  
 6. Zaškrtněte políčko **Povolit** .
 7. V rozevíracím seznamu **cíl** vyberte připojeného protokolovacího nástroje.
 8. Zadejte **100** jako **vzorkování (%)** a zaškrtněte políčko **vždy zaznamenávat chyby** .
-9. Klikněte na **Uložit**.
+9. Klikněte na **Uložit** .
 
 > [!WARNING]
 > Přepsání výchozí hodnoty **0** v **prvních bajtech pole body** může výrazně snížit výkon vašich rozhraní API.
@@ -97,8 +97,8 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 
 Azure Application Insights přijímá:
 
-+ *Vyžádat* položku telemetrie pro každý příchozí požadavek (*žádost front-end*, *odpověď front-endu*)
-+ Položka telemetrie *závislosti* pro každý požadavek předaný do back-endu (*žádost back*-end, *odpověď back-endu*)
++ *Vyžádat* položku telemetrie pro každý příchozí požadavek ( *žádost front-end* , *odpověď front-endu* )
++ Položka telemetrie *závislosti* pro každý požadavek předaný do back-endu ( *žádost back* -end, *odpověď back-endu* )
 + Položka telemetrie *výjimky* pro všechny neúspěšné žádosti.
 
 Neúspěšný požadavek je požadavek, který:

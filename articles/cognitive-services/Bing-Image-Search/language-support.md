@@ -10,14 +10,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7037804f1a0984cee2d1756adf80bfe2eec3918
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68881926"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095523"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání obrázků
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API Bingu pro vyhledávání obrázků podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem slouží hlavně k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho můžou výsledky obsahovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle zadaných zemí nebo oblastí nebo jazyka.
 
@@ -115,7 +120,7 @@ Případně můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|USA|Angličtina|cs-CZ|
+|USA|Angličtina|en-US|
 |USA|Španělština|ES – US|
 
 ## <a name="next-steps"></a>Další kroky

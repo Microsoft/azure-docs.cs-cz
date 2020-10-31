@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 10/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594335"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095998"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -81,7 +81,7 @@ Váš adresář potřebuje aspoň tolik licencí Azure AD Premium P2 jako počet
 
 Licence Azure AD Premium P2 nejsou **vyžadovány** pro uživatele s rolemi globální správce nebo Správce uživatelů, kteří nastavili kontroly přístupu, nakonfigurují nastavení nebo použijí rozhodnutí z recenzí.
 
-Pro každou placená licenci Azure AD Premium P2, kterou přiřadíte k jednomu z uživatelů vaší organizace, můžete použít Azure AD Business-to-Business (B2B) k pozvání až pěti uživatelů typu Host v rámci osvobození od externích uživatelů. Tito uživatelé typu Host můžou také používat funkce Azure AD Premium P2. Další informace najdete v tématu [pokyny k licencování spolupráce Azure AD B2B](../external-identities/licensing-guidance.md).
+Přístup uživatelů hosta Azure AD je založený na modelu fakturace měsíčně aktivních uživatelů (MAU), který nahrazuje model fakturace s poměrem 1:5. Další informace najdete v tématu [ceny služby Azure AD External identity](../external-identities/external-identities-pricing.md).
 
 Další informace o licencích najdete v tématu [přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory](../fundamentals/license-users-groups.md).
 

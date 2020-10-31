@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e26d128fea7208206be8a7329522f8202051215
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74326723"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095403"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Odesílání a používání dotazů a odpovědí v rozhraní API Bingu pro vyhledávání místních obchodních hledání
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Místní výsledky můžete získat z rozhraní API pro místní vyhledávání Bingu, a to tak, že odešlete vyhledávací dotaz na jeho koncový bod a zahrnete do něj `Ocp-Apim-Subscription-Key` hlavičku, která je povinná. Spolu s dostupnými [hlavičkami](local-search-reference.md#headers) a [parametry](local-search-reference.md#query-parameters)můžete vyhledávat pomocí [geografických hranic](specify-geographic-search.md) pro oblast, která má být prohledána, a [kategorií](local-search-query-response.md) vrácených míst.
 

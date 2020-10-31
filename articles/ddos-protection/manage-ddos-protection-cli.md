@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0307fcee207f045c2808b3c66e9911623391d486
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095539"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard pomocí Azure CLI
 
@@ -107,8 +107,6 @@ az network ddos-protection show \
 
 Ověřte, že příkaz vrací správné podrobnosti vašeho plánu DDoS Protection.
 
-Testování prostřednictvím simulací
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Své prostředky můžete uchovávat pro další kurz. Pokud už je nepotřebujete, odstraňte skupinu prostředků _MyResourceGroup_ . Když odstraníte skupinu prostředků, odstraní se i plán DDoS Protection a všechny související prostředky. 
@@ -136,4 +134,4 @@ Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit 
 Pokud se chcete dozvědět, jak zobrazit a nakonfigurovat telemetrii pro svůj plán DDoS Protection, přejděte k kurzům.
 
 > [!div class="nextstepaction"]
-> [Zobrazení a konfigurace telemetrie DDoS Protection](telemetry-monitoring-alerting.md)
+> [Zobrazení a konfigurace telemetrie ochrany před útoky DDoS](telemetry-monitoring-alerting.md)

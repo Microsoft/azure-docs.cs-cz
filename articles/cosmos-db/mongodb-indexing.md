@@ -9,14 +9,15 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487377"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096474"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Rozhraní API pro Azure Cosmos DB MongoDB využívá základní možnosti správy indexů Azure Cosmos DB. Tento článek se zaměřuje na přidání indexů pomocí rozhraní API Azure Cosmos DB pro MongoDB. Můžete si také přečíst [Přehled indexování v Azure Cosmos DB](index-overview.md) relevantním pro všechna rozhraní API.
 
@@ -121,7 +122,7 @@ Následující příkaz vytvoří index zástupného znaku u všech vlastností 
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-Na **rozdíl od MongoDB můžou indexy zástupných znaků podporovat více polí v predikátech dotazů**. Pokud použijete jeden index zástupného znaku namísto vytvoření samostatného indexu pro každou vlastnost, nebudete mít rozdíl ve výkonu dotazů.
+Na **rozdíl od MongoDB můžou indexy zástupných znaků podporovat více polí v predikátech dotazů** . Pokud použijete jeden index zástupného znaku namísto vytvoření samostatného indexu pro každou vlastnost, nebudete mít rozdíl ve výkonu dotazů.
 
 Pomocí syntaxe zástupných znaků můžete vytvořit následující typy indexů:
 
@@ -147,7 +148,7 @@ Indexy zástupných znaků nepodporují žádné z následujících typů index�
 - TTL
 - Jedinečná
 
-Na **rozdíl od MongoDB**v rozhraní API služby Azure Cosmos DB pro MongoDB **nemůžete** použít indexy zástupných znaků pro:
+Na **rozdíl od MongoDB** v rozhraní API služby Azure Cosmos DB pro MongoDB **nemůžete** použít indexy zástupných znaků pro:
 
 - Vytvoření indexu zástupných znaků, který obsahuje více konkrétních polí
 

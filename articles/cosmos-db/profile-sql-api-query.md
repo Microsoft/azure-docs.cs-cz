@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d47bd90f7704cd3c55f9e5d64fe6b58946d4568
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 66aefea441d78303ccd611d9df10eea985d61e7c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097392"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Získat metriky spouštění dotazů SQL a analyzovat výkon dotazů pomocí sady .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek ukazuje, jak Profilovat výkon dotazů SQL na Azure Cosmos DB. Tato profilace se dá provést pomocí `QueryMetrics` načtení ze sady .NET SDK a je tady popsána. [QueryMetrics](/dotnet/api/microsoft.azure.documents.querymetrics) je objekt silného typu s informacemi o spuštění dotazu back-endu. Tyto metriky jsou podrobněji popsány v článku o [výkonu dotazů ladění](./sql-api-query-metrics.md) .
 

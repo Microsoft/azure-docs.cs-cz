@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: ae99f5fc1cd6f27c46f7a4444bc75b8c773b4f74
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d25cd7418ec34b8c4a4a53dba4892e85ed1a66d5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098072"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Co je Azure synapse Link pro Azure Cosmos DB (Preview)?
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Odkaz na službu Azure synapse pro Azure Cosmos DB je momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
@@ -116,7 +117,7 @@ Odkaz synapse se nedoporučuje, pokud hledáte tradiční požadavky na datový 
 
 ## <a name="limitations"></a>Omezení
 
-* Pro rozhraní SQL API a rozhraní Azure Cosmos DB API pro MongoDB se podporuje dnes Azure synapse Link pro Azure Cosmos DB. Rozhraní API pro Gremlin a rozhraní API pro tabulky se nepodporuje. Podpora rozhraní API Cassandra je v privátní verzi Preview. Další informace získáte od [týmu odkazů Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).  
+* V současné době Azure Synapse Link pro Azure Cosmos DB podporuje rozhraní SQL API a rozhraní API služby Azure Cosmos DB pro MongoDB. Rozhraní Gremlin API a rozhraní API pro tabulky se nepodporují. Podpora rozhraní API Cassandra je v privátní verzi Preview. Další informace získáte od [týmu odkazů Azure synapse](mailto:cosmosdbsynapselink@microsoft.com).  
 
 * V současné době se analytické úložiště dá povolit jenom pro nové kontejnery. Pokud chcete použít analytické úložiště pro existující kontejnery, migrujte data z existujících kontejnerů do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB](cosmosdb-migrationchoices.md). Můžete povolit synapse odkaz na nové a existující účty Azure Cosmos DB.
 
@@ -132,7 +133,7 @@ Model fakturace propojení Azure synapse zahrnuje náklady vzniklé pomocí Azur
 
 Další informace najdete v následujících dokumentech:
 
-* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
+* [Přehled analýzy Azure Cosmos DBho úložiště](analytical-store-introduction.md)
 
 * [Začínáme s Azure Synapse Linkem pro Azure Cosmos DB](configure-synapse-link.md)
  

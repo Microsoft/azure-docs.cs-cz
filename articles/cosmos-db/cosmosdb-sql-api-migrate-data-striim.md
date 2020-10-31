@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1e190c9f06dc2c662760421b7240eafdf22986b0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a77f039ea266e10130b6460855f989ab317a20ba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491304"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097664"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB účtu rozhraní SQL API pomocí Striim
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
  
 Image Striim na webu Azure Marketplace nabízí průběžné přesuny dat z datových skladů a databází do Azure v reálném čase. Při přesouvání dat můžete provádět nenormalizované denormalizace, transformaci dat, povolit analýzy v reálném čase a scénáře generování sestav dat. Je snadné začít s Striim, aby se nepřetržitě přesunula podniková data na Azure Cosmos DB rozhraní SQL API. Azure poskytuje nabídku na webu Marketplace, která usnadňuje nasazení Striim a migraci dat do Azure Cosmos DB. 
 
-Tento článek popisuje, jak pomocí Striim migrovat data z **databáze Oracle** na **účet Azure Cosmos DB rozhraní SQL API**.
+Tento článek popisuje, jak pomocí Striim migrovat data z **databáze Oracle** na **účet Azure Cosmos DB rozhraní SQL API** .
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -30,11 +31,11 @@ Tento článek popisuje, jak pomocí Striim migrovat data z **databáze Oracle**
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** a vyhledejte **Striim** na webu Azure Marketplace. Vyberte první možnost a **vytvořte**.
+1. Vyberte **vytvořit prostředek** a vyhledejte **Striim** na webu Azure Marketplace. Vyberte první možnost a **vytvořte** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Potom zadejte vlastnosti konfigurace instance Striim. Prostředí Striim je nasazeno na virtuálním počítači. V podokně **základy** zadejte **uživatelské jméno virtuálního počítače**, **heslo virtuálního počítače** (Toto heslo se používá pro SSH do virtuálního počítače). Vyberte své **předplatné**, **skupinu prostředků**a **Podrobnosti o umístění** , kde byste chtěli nasadit Striim. Po dokončení vyberte **OK**.
+1. Potom zadejte vlastnosti konfigurace instance Striim. Prostředí Striim je nasazeno na virtuálním počítači. V podokně **základy** zadejte **uživatelské jméno virtuálního počítače** , **heslo virtuálního počítače** (Toto heslo se používá pro SSH do virtuálního počítače). Vyberte své **předplatné** , **skupinu prostředků** a **Podrobnosti o umístění** , kde byste chtěli nasadit Striim. Po dokončení vyberte **OK** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -48,11 +49,11 @@ Tento článek popisuje, jak pomocí Striim migrovat data z **databáze Oracle**
 
    Po vyplnění formuláře pokračujte výběrem **OK** .
 
-1. V podokně **nastavení přístupu Striim** NAKONFIGURUJTE **veřejnou IP adresu** (vyberte výchozí hodnoty), **název domény pro Striim**, **heslo správce** , které chcete použít pro přihlášení k uživatelskému rozhraní Striim. Nakonfigurujte virtuální síť a podsíť (vyberte výchozí hodnoty). Po vyplnění podrobností vyberte **OK** a pokračujte.
+1. V podokně **nastavení přístupu Striim** NAKONFIGURUJTE **veřejnou IP adresu** (vyberte výchozí hodnoty), **název domény pro Striim** , **heslo správce** , které chcete použít pro přihlášení k uživatelskému rozhraní Striim. Nakonfigurujte virtuální síť a podsíť (vyberte výchozí hodnoty). Po vyplnění podrobností vyberte **OK** a pokračujte.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Azure ověří nasazení a zajistí, že vše vypadá dobře. dokončení ověření trvá několik minut. Po dokončení ověření vyberte **OK**.
+1. Azure ověří nasazení a zajistí, že vše vypadá dobře. dokončení ověření trvá několik minut. Po dokončení ověření vyberte **OK** .
   
 1. Nakonec si přečtěte část s podmínkami použití a vyberte **vytvořit** a vytvořte instanci Striim. 
 
@@ -68,7 +69,7 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
 1. Vytvořte [Azure Cosmos DB účet rozhraní SQL API](create-cosmosdb-resources-portal.md) pomocí Azure Portal.
 
-1. Přejděte do podokna **Průzkumník dat** v účtu Azure Cosmos. Vyberte **Nový kontejner** a vytvořte nový kontejner. Předpokládejme, že migrujete data *produktů* a *objednávek* z databáze Oracle do Azure Cosmos DB. Vytvořte novou databázi s názvem **StriimDemo** s kontejnerem s názvem **objednávky**. Zajistěte kontejner pomocí **1000 ru** (Tento příklad používá 1000 ru, ale měli byste použít propustnost očekávanou pro vaše zatížení) a **/Order_Id** jako klíč oddílu. Tyto hodnoty se budou lišit v závislosti na zdrojových datech. 
+1. Přejděte do podokna **Průzkumník dat** v účtu Azure Cosmos. Vyberte **Nový kontejner** a vytvořte nový kontejner. Předpokládejme, že migrujete data *produktů* a *objednávek* z databáze Oracle do Azure Cosmos DB. Vytvořte novou databázi s názvem **StriimDemo** s kontejnerem s názvem **objednávky** . Zajistěte kontejner pomocí **1000 ru** (Tento příklad používá 1000 ru, ale měli byste použít propustnost očekávanou pro vaše zatížení) a **/Order_Id** jako klíč oddílu. Tyto hodnoty se budou lišit v závislosti na zdrojových datech. 
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/create-sql-api-account.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -128,7 +129,7 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Teď přijdete na domovskou stránku Striim. Existují tři různá podokna – **řídicí panely**, **aplikace**a **SourcePreview**. Podokno řídicích panelů umožňuje přesouvat data v reálném čase a vizualizovat je. Podokno aplikace obsahuje vaše kanály streamování dat nebo datové toky. Na pravé straně stránky je SourcePreview, kde můžete před přesunutím zobrazit náhled dat.
+1. Teď přijdete na domovskou stránku Striim. Existují tři různá podokna – **řídicí panely** , **aplikace** a **SourcePreview** . Podokno řídicích panelů umožňuje přesouvat data v reálném čase a vizualizovat je. Podokno aplikace obsahuje vaše kanály streamování dat nebo datové toky. Na pravé straně stránky je SourcePreview, kde můžete před přesunutím zobrazit náhled dat.
 
 1. Vyberte podokno **aplikace** . teď se zaměříme na toto podokno. K dispozici je celá řada ukázkových aplikací, které můžete použít k získání informací o Striim, ale v tomto článku budete vytvářet vlastní. V pravém horním rohu vyberte tlačítko **Přidat aplikaci** .
 
@@ -136,21 +137,21 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
 1. Existuje několik různých způsobů, jak vytvářet Striim aplikace. Vyberte možnost **začít šablonou** a začněte se stávající šablonou.
 
-   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/start-with-template.png" alt-text="Najít položku Striim Marketplace" a vyberte **cíl: Azure Cosmos DB** a potom vyberte **Oracle CDC pro Azure Cosmos DB**.
+   :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/start-with-template.png" alt-text="Najít položku Striim Marketplace" a vyberte **cíl: Azure Cosmos DB** a potom vyberte **Oracle CDC pro Azure Cosmos DB** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/oracle-cdc-cosmosdb.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Na další stránce Pojmenujte svoji aplikaci. Můžete zadat název jako **oraToCosmosDB** a pak vybrat **Uložit**.
+1. Na další stránce Pojmenujte svoji aplikaci. Můžete zadat název jako **oraToCosmosDB** a pak vybrat **Uložit** .
 
-1. Potom zadejte zdrojovou konfiguraci zdrojové instance Oracle. Zadejte hodnotu pro **název zdroje**. Název zdroje je pouze konvence pojmenování aplikace Striim, můžete použít něco podobného jako **src_onPremOracle**. Zadejte hodnoty pro zbytek **adresy URL**zdrojových parametrů, **uživatelské jméno**a **heslo**. Vyberte **LogMiner** jako čtecí modul pro čtení dat z Oracle. Pokračujte výběrem tlačítka **Další**.
+1. Potom zadejte zdrojovou konfiguraci zdrojové instance Oracle. Zadejte hodnotu pro **název zdroje** . Název zdroje je pouze konvence pojmenování aplikace Striim, můžete použít něco podobného jako **src_onPremOracle** . Zadejte hodnoty pro zbytek **adresy URL** zdrojových parametrů, **uživatelské jméno** a **heslo** . Vyberte **LogMiner** jako čtecí modul pro čtení dat z Oracle. Pokračujte výběrem tlačítka **Další** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Striim zkontroluje vaše prostředí a zajistí, že se může připojit ke zdrojové instanci Oracle, mít správná oprávnění a že je funkce CDC nakonfigurovaná správně. Po ověření všech hodnot vyberte **Další**.
+1. Striim zkontroluje vaše prostředí a zajistí, že se může připojit ke zdrojové instanci Oracle, mít správná oprávnění a že je funkce CDC nakonfigurovaná správně. Po ověření všech hodnot vyberte **Další** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/validate-source-parameters.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Vyberte tabulky z databáze Oracle, které chcete migrovat. Například vyberte tabulku Orders (objednávky) a pak vyberte **Next (další**). 
+1. Vyberte tabulky z databáze Oracle, které chcete migrovat. Například vyberte tabulku Orders (objednávky) a pak vyberte **Next (další** ). 
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/select-source-tables.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -160,11 +161,11 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
    * **Název cíle** – zadejte popisný název cíle. 
    * **Vstup z** – v rozevíracím seznamu vyberte vstupní datový proud od, který jste vytvořili v konfiguraci zdrojového Oracle. 
-   * **Kolekce**– zadejte cílové vlastnosti konfigurace Azure Cosmos DB. Syntaxe kolekcí je **SourceSchema. Source, TargetDatabase. TargetContainer**. V tomto příkladu bude hodnota "SYSTEM. ORDERs, StriimDemo. Orders. 
+   * **Kolekce** – zadejte cílové vlastnosti konfigurace Azure Cosmos DB. Syntaxe kolekcí je **SourceSchema. Source, TargetDatabase. TargetContainer** . V tomto příkladu bude hodnota "SYSTEM. ORDERs, StriimDemo. Orders. 
    * **AccessKey** – PrimaryKey vašeho účtu Azure Cosmos.
    * **ServiceEndpoint** – identifikátor URI vašeho účtu Azure Cosmos, najdete ho v části **klíče** Azure Portal. 
 
-   Vyberte **Uložit** a **Další**.
+   Vyberte **Uložit** a **Další** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-target-parameters.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -177,7 +178,7 @@ V této části nakonfigurujete Azure Cosmos DB účet rozhraní SQL API jako c�
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/deploy-using-default-option.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Po nasazení můžete zobrazit náhled datového proudu a zobrazit tok dat. Vyberte ikonu **Wave** a Eyeball vedle ní. V horním řádku nabídek vyberte tlačítko **nasazeno** a vyberte **Spustit aplikaci**.
+1. Po nasazení můžete zobrazit náhled datového proudu a zobrazit tok dat. Vyberte ikonu **Wave** a Eyeball vedle ní. V horním řádku nabídek vyberte tlačítko **nasazeno** a vyberte **Spustit aplikaci** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/start-app.png" alt-text="Najít položku Striim Marketplace":::
 

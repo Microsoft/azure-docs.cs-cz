@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 58b57bd592ec0b302724f9339c0e0d48fed42d15
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281190"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097495"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>Optimalizace nákladů na žádosti v Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek popisuje, jak se požadavky na čtení a zápis převádějí do [jednotek žádostí](request-units.md) a jak optimalizovat náklady na tyto požadavky. Operace čtení zahrnují čtení a dotazy bodů. Operace zápisu zahrnují vložení, nahrazení, odstranění a Upsert položek.
 

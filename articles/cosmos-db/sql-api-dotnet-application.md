@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e1dd1e94bd9747bb0961c09ce2f281c433b4b4fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488210"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097358"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Kurz: vývoj webové aplikace ASP.NET Core MVC pomocí Azure Cosmos DB pomocí sady .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -47,7 +48,7 @@ Tento kurz zahrnuje:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -67,33 +68,33 @@ V další části vytvoříte novou ASP.NET Core aplikaci MVC.
 
 ## <a name="step-2-create-a-new-aspnet-core-mvc-application"></a><a name="create-a-new-mvc-application"></a>Krok 2: vytvoření nové ASP.NET Core aplikace MVC
 
-1. Otevřete Visual Studio a vyberte **vytvořit nový projekt**.
+1. Otevřete Visual Studio a vyberte **vytvořit nový projekt** .
 
-1. V nástroji **vytvořit nový projekt**vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Další**.
+1. V nástroji **vytvořit nový projekt** vyhledejte a vyberte **ASP.NET Core webové aplikace** pro C#. Pokračujte výběrem tlačítka **Další** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
-1. V části **Konfigurovat nový projekt**zadejte název *projektu a vyberte* **vytvořit**.
+1. V části **Konfigurovat nový projekt** zadejte název *projektu a vyberte* **vytvořit** .
 
-1. V v možnosti **vytvořit novou webovou aplikaci ASP.NET Core**vyberte možnost **Webová aplikace (model-zobrazení-kontroler)**. Pokračujte výběrem **vytvořit** .
+1. V v možnosti **vytvořit novou webovou aplikaci ASP.NET Core** vyberte možnost **Webová aplikace (model-zobrazení-kontroler)** . Pokračujte výběrem **vytvořit** .
 
    Visual Studio vytvoří prázdnou aplikaci MVC.
 
-1. **Debug**  >  Pro místní spuštění aplikace ASP.NET vyberte ladit**Spustit ladění** nebo F5.
+1. **Debug**  >  Pro místní spuštění aplikace ASP.NET vyberte ladit **Spustit ladění** nebo F5.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>Krok 3: Přidání balíčku Azure Cosmos DB NuGet do projektu
 
 Teď, když máme většinu ASP.NET Core rozhraní MVC, které potřebujeme pro toto řešení, můžeme přidat balíčky NuGet, které jsou potřebné pro připojení k Azure Cosmos DB.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet** .
 
-1. Ve **Správci balíčků NuGet**vyhledejte a vyberte **Microsoft. Azure. Cosmos**. Vyberte **Nainstalovat**.
+1. Ve **Správci balíčků NuGet** vyhledejte a vyberte **Microsoft. Azure. Cosmos** . Vyberte **Nainstalovat** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
    Sada Visual Studio stáhne a nainstaluje balíček Azure Cosmos DB a jeho závislosti.
 
-   K instalaci balíčku NuGet můžete použít taky **konzolu Správce balíčků** . Provedete to tak, že vyberete **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. Na příkazovém řádku zadejte následující příkaz:
+   K instalaci balíčku NuGet můžete použít taky **konzolu Správce balíčků** . Provedete to tak, že vyberete **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků** . Na příkazovém řádku zadejte následující příkaz:
 
    ```ps
    Install-Package Microsoft.Azure.Cosmos
@@ -105,9 +106,9 @@ Nyní přidáme do této aplikace MVC modely, zobrazení a řadiče.
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> Přidání modelu
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **modely** , vyberte **Přidat**  >  **třídu** .
 
-1. V **položce Přidat novou položku**pojmenujte novou třídu *Item.cs* a vyberte **Přidat**.
+1. V **položce Přidat novou položku** pojmenujte novou třídu *Item.cs* a vyberte **Přidat** .
 
 1. Obsah třídy *Item.cs* nahraďte následujícím kódem:
 
@@ -127,17 +128,17 @@ Nyní přidáme následující zobrazení.
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Vytvořit zobrazení položky
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **zobrazení** a vyberte **Přidat**  >  **novou složku**. Pojmenujte *položku*složky.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **zobrazení** a vyberte **Přidat**  >  **novou složku** . Pojmenujte *položku* složky.
 
-1. Klikněte pravým tlačítkem na složku prázdná **položka** a pak vyberte **Přidat**  >  **zobrazení**.
+1. Klikněte pravým tlačítkem na složku prázdná **položka** a pak vyberte **Přidat**  >  **zobrazení** .
 
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-   * Do **zobrazení název**zadejte *vytvořit*.
-   * V **šabloně**vyberte **vytvořit**.
-   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte **Přidat**.
+   * Do **zobrazení název** zadejte *vytvořit* .
+   * V **šabloně** vyberte **vytvořit** .
+   * V seznamu **třída modelu** vyberte **položku (todo. Modely)** .
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml* .
+   * Vyberte **Přidat** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
@@ -147,15 +148,15 @@ Nyní přidáme následující zobrazení.
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Odstranit zobrazení položky
 
-1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení** .
 
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-   * Do pole **název zobrazení** zadejte Delete ( *Odstranit*).
-   * V poli **Šablona** vyberte **Odstranit**.
-   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte **Přidat**.
+   * Do pole **název zobrazení** zadejte Delete ( *Odstranit* ).
+   * V poli **Šablona** vyberte **Odstranit** .
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)** .
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml* .
+   * Vyberte **Přidat** .
 
 1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
@@ -163,14 +164,14 @@ Nyní přidáme následující zobrazení.
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Přidání zobrazení pro získání podrobností o položce
 
-1. V **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+1. V **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení** .
 
-1. V **zobrazení přidat MVC**zadejte následující hodnoty:
+1. V **zobrazení přidat MVC** zadejte následující hodnoty:
 
-   * Do **název zobrazení**zadejte *Podrobnosti*.
-   * V **šabloně**vyberte **Podrobnosti**.
-   * V seznamu **třída modelu**vyberte **položku (todo. Modely)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
+   * Do **název zobrazení** zadejte *Podrobnosti* .
+   * V **šabloně** vyberte **Podrobnosti** .
+   * V seznamu **třída modelu** vyberte **položku (todo. Modely)** .
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml* .
 
 1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
@@ -178,15 +179,15 @@ Nyní přidáme následující zobrazení.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Přidání zobrazení upravit položku
 
-1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení** .
 
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-   * Do pole **Název zobrazení** zadejte *Edit*.
-   * V poli **Šablona** vyberte **Edit**.
-   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte **Přidat**.
+   * Do pole **Název zobrazení** zadejte *Edit* .
+   * V poli **Šablona** vyberte **Edit** .
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)** .
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml* .
+   * Vyberte **Přidat** .
 
 1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
@@ -196,15 +197,15 @@ Nyní přidáme následující zobrazení.
 
 A nakonec přidejte zobrazení pro získání všech položek pomocí následujících kroků:
 
-1. Z **Průzkumník řešení**znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení**.
+1. Z **Průzkumník řešení** znovu klikněte pravým tlačítkem na složku **položky** a vyberte **Přidat**  >  **zobrazení** .
 
-1. V okně **Přidat zobrazení MVC**proveďte následující změny:
+1. V okně **Přidat zobrazení MVC** proveďte následující změny:
 
-   * Do pole **Název zobrazení** zadejte *Index*.
-   * V poli **Šablona** vyberte **Seznam**.
-   * V poli **Třída modelu** vyberte **Položka (todo.Models)**.
-   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml*.
-   * Vyberte **Přidat**.
+   * Do pole **Název zobrazení** zadejte *Index* .
+   * V poli **Šablona** vyberte **Seznam** .
+   * V poli **Třída modelu** vyberte **Položka (todo.Models)** .
+   * Vyberte možnost **použít stránku rozložení** a zadejte *~/views/Shared/_Layout. cshtml* .
+   * Vyberte **Přidat** .
 
 1. Potom vyberte **Přidat** a nechte Visual Studio vytvořit nové zobrazení šablony. Nahraďte kód ve vygenerovaném souboru následujícím obsahem:
 
@@ -216,21 +217,21 @@ Po dokončení těchto kroků zavřete všechny dokumenty *cshtml* v aplikaci Vi
 
 Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Azure Cosmos DB. Pro tento kurz zapouzdřeme tuto logiku do třídy s názvem `CosmosDbService` a z rozhraní s názvem `ICosmosDbService` . Tato služba provádí operace CRUD. Také provádí operace čtení informačního kanálu, jako je například výpis neúplných položek, vytváření, úpravy a odstraňování položek.
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem myši na projekt a vyberte **Přidat**  >  **novou složku**. Pojmenujte složku *služby*.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Přidat**  >  **novou složku** . Pojmenujte složku *služby* .
 
-1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *CosmosDbService* a vyberte **Přidat**.
+1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu** . Pojmenujte novou třídu *CosmosDbService* a vyberte **Přidat** .
 
 1. Obsah *CosmosDbService.cs* nahraďte následujícím kódem:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu**. Pojmenujte novou třídu *ICosmosDbService* a vyberte **Přidat**.
+1. Klikněte pravým tlačítkem na složku **služby** a vyberte **Přidat**  >  **třídu** . Pojmenujte novou třídu *ICosmosDbService* a vyberte **Přidat** .
 
 1. Do třídy *ICosmosDbService* přidejte následující kód:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Ve svém řešení otevřete soubor *Startup.cs* a přidejte následující metodu **InitializeCosmosClientInstanceAsync**, která přečte konfiguraci a inicializuje klienta.
+1. Ve svém řešení otevřete soubor *Startup.cs* a přidejte následující metodu **InitializeCosmosClientInstanceAsync** , která přečte konfiguraci a inicializuje klienta.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -258,13 +259,13 @@ Nejprve přidáme třídu, která obsahuje logiku pro připojení a použití Az
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Přidání kontroleru
 
-1. V **Průzkumník řešení**klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler**.
+1. V **Průzkumník řešení** klikněte pravým tlačítkem na složku **řadiče** a vyberte **Přidat**  >  **kontroler** .
 
-1. V nástroji **Přidat generování uživatelského rozhraní**vyberte možnost **kontroler MVC – prázdné** a vyberte **Přidat**.
+1. V nástroji **Přidat generování uživatelského rozhraní** vyberte možnost **kontroler MVC – prázdné** a vyberte **Přidat** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
-1. Pojmenujte svůj nový kontroler *ItemController*.
+1. Pojmenujte svůj nový kontroler *ItemController* .
 
 1. Obsah *ItemController.cs* nahraďte následujícím kódem:
 
@@ -286,11 +287,11 @@ K otestování aplikace na místním počítači použijte následující postup
 
 1. Vyberte odkaz **vytvořit nový** a přidejte hodnoty do polí **název** a **Popis** . Zrušte zaškrtnutí políčka **dokončeno** . Pokud ho vyberete, aplikace přidá novou položku do dokončeného stavu. Položka se již nezobrazuje v počátečním seznamu.
 
-1. Vyberte **Vytvořit**. Aplikace vás pošle zpátky do zobrazení **indexu** a položka se zobrazí v seznamu. Do seznamu **úkolů** můžete přidat několik dalších položek.
+1. Vyberte **Vytvořit** . Aplikace vás pošle zpátky do zobrazení **indexu** a položka se zobrazí v seznamu. Do seznamu **úkolů** můžete přidat několik dalších položek.
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
   
-1. Vyberte **Upravit** vedle **položky** v seznamu. Aplikace otevře zobrazení pro **Úpravy** , kde můžete aktualizovat jakoukoli vlastnost objektu, včetně příznaku **dokončeno** . Pokud vyberete **dokončeno** a vyberete **Uložit**, aplikace zobrazí **položku** jako dokončenou v seznamu.
+1. Vyberte **Upravit** vedle **položky** v seznamu. Aplikace otevře zobrazení pro **Úpravy** , kde můžete aktualizovat jakoukoli vlastnost objektu, včetně příznaku **dokončeno** . Pokud vyberete **dokončeno** a vyberete **Uložit** , aplikace zobrazí **položku** jako dokončenou v seznamu.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
@@ -302,27 +303,27 @@ K otestování aplikace na místním počítači použijte následující postup
 
 Nyní, když je aplikace dokončena a správně funguje se službou Azure Cosmos DB, nasadíme tuto webovou aplikaci ve službě Azure App Service.  
 
-1. Pokud chcete tuto aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **publikovat**.
+1. Pokud chcete tuto aplikaci publikovat, klikněte pravým tlačítkem na projekt v **Průzkumník řešení** a vyberte **publikovat** .
 
-1. V **rozevíracím App Service vybrat cíl publikování**vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service** .
 
-1. Pokud chcete použít existující profil App Service, zvolte **Vybrat existující**a pak vyberte **publikovat**.
+1. Pokud chcete použít existující profil App Service, zvolte **Vybrat existující** a pak vyberte **publikovat** .
 
-1. V **App Service**vyberte **předplatné**. Použijte filtr **zobrazení** k řazení podle skupiny prostředků nebo typu prostředku.
+1. V **App Service** vyberte **předplatné** . Použijte filtr **zobrazení** k řazení podle skupiny prostředků nebo typu prostředku.
 
-1. Najděte svůj profil a pak vyberte **OK**. V dalším hledání požadovaného Azure App Service a vyberte **OK**.
+1. Najděte svůj profil a pak vyberte **OK** . V dalším hledání požadovaného Azure App Service a vyberte **OK** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 
 Další možností je vytvořit nový profil:
 
-1. Jako v předchozím postupu klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a vyberte **publikovat**.
+1. Jako v předchozím postupu klikněte pravým tlačítkem myši na projekt v **Průzkumník řešení** a vyberte **publikovat** .
   
-1. V **rozevíracím App Service vybrat cíl publikování**vyberte možnost **App Service**.
+1. V **rozevíracím App Service vybrat cíl publikování** vyberte možnost **App Service** .
 
-1. V **rozevíracím výběru vybrat cíl publikování**vyberte **vytvořit novou** a vyberte **publikovat**.
+1. V **rozevíracím výběru vybrat cíl publikování** vyberte **vytvořit novou** a vyberte **publikovat** .
 
-1. V **App Service**zadejte název vaší webové aplikace a příslušné předplatné, skupinu prostředků a plán hostování a pak vyberte **vytvořit**.
+1. V **App Service** zadejte název vaší webové aplikace a příslušné předplatné, skupinu prostředků a plán hostování a pak vyberte **vytvořit** .
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Snímek webové aplikace MVC seznamu úkolů vytvořené v tomto kurzu – Kurz ASP NET Core MVC krok za krokem":::
 

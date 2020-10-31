@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: d5de1cc606f97655427c0c86aea0c5c722e1bab8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbd4f32e77dc8d386067987a0ab0436a7875c15e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84171459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095386"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenční informace o rozhraní API pro vyhledávání místních obchodních v7 Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API pro místní vyhledávání v obchodu pošle vyhledávací dotaz do Bingu a získá výsledky, které zahrnují restaurace, hotely nebo jiné místní firmy. V případě míst může dotaz zadat název místní firmy nebo kategorii (například restaurace v blízkosti mě). Mezi výsledky entit patří osoby, místa nebo věci. Místo v tomto kontextu patří obchodní entity, státy, země/oblasti atd.  
 
@@ -92,7 +97,7 @@ Níže jsou uvedené objekty odpovědi JSON, které může odpověď zahrnovat. 
 |[Místa](#place)|Definuje informace o místních firmách, jako je restaurace nebo Hotel.|  
 
   
-### <a name="error"></a>Chyba  
+### <a name="error"></a>Chybová  
 Definuje chybu, ke které došlo.  
   
 |Element|Popis|Typ|  
@@ -167,10 +172,10 @@ Definuje kontext dotazu, který Bing použil pro požadavek.
   
 |Element|Popis|Typ|  
 |-------------|-----------------|----------|  
-|adultIntent|Logická hodnota, která označuje, zda má zadaný dotaz záměr k dospělému. Hodnota je **true** , pokud má dotaz záměr k dospělému; v opačném případě **false**.|Logická hodnota|  
-|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení použití původního řetězce v Bingu. Například pokud je řetězec dotazu *Saling downwind*, řetězec přepisu řetězce dotazu bude *+ Saling downwind*. Nezapomeňte zakódovat řetězec dotazu, který má za následek *% 2Bsaling + downwind*.<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
+|adultIntent|Logická hodnota, která označuje, zda má zadaný dotaz záměr k dospělému. Hodnota je **true** , pokud má dotaz záměr k dospělému; v opačném případě **false** .|Logická hodnota|  
+|alterationOverrideQuery|Řetězec dotazu, který se má použít k vynucení použití původního řetězce v Bingu. Například pokud je řetězec dotazu *Saling downwind* , řetězec přepisu řetězce dotazu bude *+ Saling downwind* . Nezapomeňte zakódovat řetězec dotazu, který má za následek *% 2Bsaling + downwind* .<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
 |alteredQuery|Řetězec dotazu, který Bing používá k provedení dotazu. Bing používá změněný řetězec dotazu, pokud původní řetězec dotazu obsahoval pravopisné chyby. Například pokud je řetězec dotazu `saling downwind` , změněný řetězec dotazu bude `sailing downwind` .<br /><br /> Toto pole je zahrnuto pouze v případě, že původní řetězec dotazu obsahuje pravopisnou chybu.|Řetězec|  
-|askUserForLocation|Logická hodnota, která určuje, zda Bing vyžaduje umístění uživatele, aby poskytovalo přesné výsledky. Pokud jste zadali umístění uživatele pomocí hlaviček [x-MSEdge-IP adresa klienta](#clientip) a [x-Search-Location](#location) , můžete toto pole ignorovat.<br /><br /> Pro dotazy na umístění, jako je "dnešní počasí" nebo "Restaurace v mém okolí", které potřebují umístění uživatele, aby poskytovaly přesné výsledky, je toto pole nastaveno na **hodnotu true**.<br /><br /> Pro dotazy na umístění, které zahrnují umístění (například "povětrnostní počasí"), je toto pole nastaveno na **hodnotu NEPRAVDA**. Toto pole je také nastaveno na **hodnotu false** u dotazů, které nejsou v umístění, například "nejlepší prodejci".|Logická hodnota|  
+|askUserForLocation|Logická hodnota, která určuje, zda Bing vyžaduje umístění uživatele, aby poskytovalo přesné výsledky. Pokud jste zadali umístění uživatele pomocí hlaviček [x-MSEdge-IP adresa klienta](#clientip) a [x-Search-Location](#location) , můžete toto pole ignorovat.<br /><br /> Pro dotazy na umístění, jako je "dnešní počasí" nebo "Restaurace v mém okolí", které potřebují umístění uživatele, aby poskytovaly přesné výsledky, je toto pole nastaveno na **hodnotu true** .<br /><br /> Pro dotazy na umístění, které zahrnují umístění (například "povětrnostní počasí"), je toto pole nastaveno na **hodnotu NEPRAVDA** . Toto pole je také nastaveno na **hodnotu false** u dotazů, které nejsou v umístění, například "nejlepší prodejci".|Logická hodnota|  
 |originalQuery|Řetězec dotazu, jak je uveden v požadavku.|Řetězec|  
 
 ### <a name="identifiable"></a>Identifikovatelné údaje
@@ -194,7 +199,7 @@ Definuje položku výsledku hledání, která se má zobrazit.
 |resultIndex|Index položky vycházející z nuly v odpovědi, která se má zobrazit Pokud tato položka neobsahuje toto pole, zobrazí všechny položky v odpovědi. Můžete například zobrazit všechny články v odpovědi na zprávy.|Integer|
 |answerType|Odpověď obsahující položku, která se má zobrazit Například zprávy.<br /><br />Pomocí typu vyhledejte odpověď v objektu SearchResponse. Typ je název pole SearchResponse.<br /><br /> Typ odpovědi však použijte pouze v případě, že tento objekt obsahuje pole hodnota. v opačném případě tuto chybu ignorujte.|Řetězec|
 |textualIndex|Index odpovědi v textualAnswers, který se má zobrazit| Celé číslo bez znaménka|
-|value|ID, které identifikuje odpověď pro zobrazení nebo položku odpovědi, která se má zobrazit Pokud ID identifikuje odpověď, zobrazí všechny položky odpovědi.|Identifikovatelné údaje|
+|hodnota|ID, které identifikuje odpověď pro zobrazení nebo položku odpovědi, která se má zobrazit Pokud ID identifikuje odpověď, zobrazí všechny položky odpovědi.|Identifikovatelné údaje|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Definuje, kde má být obsah stránky výsledků hledání umístěn a v jakém pořadí.  

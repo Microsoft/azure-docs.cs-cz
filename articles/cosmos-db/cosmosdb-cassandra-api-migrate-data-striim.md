@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 749e0f7c2d79c03be052869d7d1d9539976a09c5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a9545bcbb8fbb71143b91a764795986f519c2262
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489298"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097759"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Migrace dat do Azure Cosmos DB rozhraní API Cassandra účtu pomocí Striim
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Image Striim na webu Azure Marketplace nabízí průběžné přesuny dat z datových skladů a databází do Azure v reálném čase. Při přesouvání dat můžete provádět nenormalizované denormalizace, transformaci dat, povolit analýzy v reálném čase a scénáře generování sestav dat. Je snadné začít s Striim, aby se nepřetržitě přesunuly podniková data na Azure Cosmos DB rozhraní API Cassandra. Azure poskytuje nabídku na webu Marketplace, která usnadňuje nasazení Striim a migraci dat do Azure Cosmos DB. 
 
-V tomto článku se dozvíte, jak pomocí Striim migrovat data z **databáze Oracle** na **účet služby Azure Cosmos DB rozhraní API Cassandra**.
+V tomto článku se dozvíte, jak pomocí Striim migrovat data z **databáze Oracle** na **účet služby Azure Cosmos DB rozhraní API Cassandra** .
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -30,11 +31,11 @@ V tomto článku se dozvíte, jak pomocí Striim migrovat data z **databáze Ora
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** a vyhledejte **Striim** na webu Azure Marketplace. Vyberte první možnost a **vytvořte**.
+1. Vyberte **vytvořit prostředek** a vyhledejte **Striim** na webu Azure Marketplace. Vyberte první možnost a **vytvořte** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Potom zadejte vlastnosti konfigurace instance Striim. Prostředí Striim je nasazeno na virtuálním počítači. V podokně **základy** zadejte **uživatelské jméno virtuálního počítače**, **heslo virtuálního počítače** (Toto heslo se používá pro SSH do virtuálního počítače). Vyberte své **předplatné**, **skupinu prostředků**a **Podrobnosti o umístění** , kde byste chtěli nasadit Striim. Po dokončení vyberte **OK**.
+1. Potom zadejte vlastnosti konfigurace instance Striim. Prostředí Striim je nasazeno na virtuálním počítači. V podokně **základy** zadejte **uživatelské jméno virtuálního počítače** , **heslo virtuálního počítače** (Toto heslo se používá pro SSH do virtuálního počítače). Vyberte své **předplatné** , **skupinu prostředků** a **Podrobnosti o umístění** , kde byste chtěli nasadit Striim. Po dokončení vyberte **OK** .
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -49,11 +50,11 @@ V tomto článku se dozvíte, jak pomocí Striim migrovat data z **databáze Ora
 
    Po vyplnění formuláře pokračujte výběrem **OK** .
 
-1. V podokně **nastavení přístupu Striim** NAKONFIGURUJTE **veřejnou IP adresu** (vyberte výchozí hodnoty), **název domény pro Striim**, **heslo správce** , které chcete použít pro přihlášení k uživatelskému rozhraní Striim. Nakonfigurujte virtuální síť a podsíť (vyberte výchozí hodnoty). Po vyplnění podrobností vyberte **OK** a pokračujte.
+1. V podokně **nastavení přístupu Striim** NAKONFIGURUJTE **veřejnou IP adresu** (vyberte výchozí hodnoty), **název domény pro Striim** , **heslo správce** , které chcete použít pro přihlášení k uživatelskému rozhraní Striim. Nakonfigurujte virtuální síť a podsíť (vyberte výchozí hodnoty). Po vyplnění podrobností vyberte **OK** a pokračujte.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Azure ověří nasazení a zajistí, že vše vypadá dobře. dokončení ověření trvá několik minut. Po dokončení ověření vyberte **OK**.
+1. Azure ověří nasazení a zajistí, že vše vypadá dobře. dokončení ověření trvá několik minut. Po dokončení ověření vyberte **OK** .
   
 1. Nakonec si přečtěte část s podmínkami použití a vyberte **vytvořit** a vytvořte instanci Striim. 
 
@@ -69,7 +70,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
 1. Vytvořte [účet Azure Cosmos DB rozhraní API Cassandra](create-cassandra-dotnet.md#create-a-database-account) pomocí Azure Portal.
 
-1. Přejděte do podokna **Průzkumník dat** v účtu Azure Cosmos. Vyberte **Nová tabulka** a vytvořte nový kontejner. Předpokládejme, že migrujete data *produktů* a *objednávek* z databáze Oracle do Azure Cosmos DB. Vytvoří nový prostor s názvem **StriimDemo** s kontejnerem Orders. Zajistěte kontejner pomocí **1000 ru**(Tento příklad používá 1000 ru, ale měli byste použít propustnost odhadovanou pro vaše zatížení) a **/Order_Id** jako primární klíč. Tyto hodnoty se budou lišit v závislosti na zdrojových datech. 
+1. Přejděte do podokna **Průzkumník dat** v účtu Azure Cosmos. Vyberte **Nová tabulka** a vytvořte nový kontejner. Předpokládejme, že migrujete data *produktů* a *objednávek* z databáze Oracle do Azure Cosmos DB. Vytvoří nový prostor s názvem **StriimDemo** s kontejnerem Orders. Zajistěte kontejner pomocí **1000 ru** (Tento příklad používá 1000 ru, ale měli byste použít propustnost odhadovanou pro vaše zatížení) a **/Order_Id** jako primární klíč. Tyto hodnoty se budou lišit v závislosti na zdrojových datech. 
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-cassandra-api-account.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -129,7 +130,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Teď přijdete na domovskou stránku Striim. Existují tři různá podokna – **řídicí panely**, **aplikace**a **SourcePreview**. Podokno řídicích panelů umožňuje přesouvat data v reálném čase a vizualizovat je. Podokno aplikace obsahuje vaše kanály streamování dat nebo datové toky. Na pravé straně stránky je SourcePreview, kde můžete před přesunutím zobrazit náhled dat.
+1. Teď přijdete na domovskou stránku Striim. Existují tři různá podokna – **řídicí panely** , **aplikace** a **SourcePreview** . Podokno řídicích panelů umožňuje přesouvat data v reálném čase a vizualizovat je. Podokno aplikace obsahuje vaše kanály streamování dat nebo datové toky. Na pravé straně stránky je SourcePreview, kde můžete před přesunutím zobrazit náhled dat.
 
 1. Vyberte podokno **aplikace** . teď se zaměříme na toto podokno. K dispozici je celá řada ukázkových aplikací, které můžete použít k získání informací o Striim, ale v tomto článku budete vytvářet vlastní. V pravém horním rohu vyberte tlačítko **Přidat aplikaci** .
 
@@ -139,7 +140,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-app-from-scratch.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Zadejte popisný název vaší aplikace, třeba **oraToCosmosDB** , a vyberte **Uložit**.
+1. Zadejte popisný název vaší aplikace, třeba **oraToCosmosDB** , a vyberte **Uložit** .
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/create-new-application.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -147,7 +148,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/oracle-cdc-source.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Zadejte vlastnosti zdrojové konfigurace vaší instance Oracle. Název zdroje je pouze konvence pro pojmenování aplikace Striim, můžete použít název, například  **src_onPremOracle**. Zadejte také další podrobnosti, jako je typ adaptéru, adresa URL připojení, uživatelské jméno, heslo a název tabulky. Pokračujte výběrem **Uložit** .
+1. Zadejte vlastnosti zdrojové konfigurace vaší instance Oracle. Název zdroje je pouze konvence pro pojmenování aplikace Striim, můžete použít název, například  **src_onPremOracle** . Zadejte také další podrobnosti, jako je typ adaptéru, adresa URL připojení, uživatelské jméno, heslo a název tabulky. Pokračujte výběrem **Uložit** .
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-source-parameters.png" alt-text="Najít položku Striim Marketplace":::
 
@@ -159,7 +160,7 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
 1. Zadejte vlastnosti konfigurace vaší cílové instance Azure Cosmos DB a pokračujte výběrem možnosti **Uložit** . Tady jsou klíčové parametry k označení:
 
-   * **Adaptér** – použijte **DatabaseWriter**. Při zápisu do Azure Cosmos DB rozhraní API Cassandra se vyžaduje DatabaseWriter. Cassandra ovladač 3.6.0 je součástí sady Striim. Pokud DatabaseWriter překročí počet Ruů zřízených v kontejneru Azure Cosmos, aplikace selže.
+   * **Adaptér** – použijte **DatabaseWriter** . Při zápisu do Azure Cosmos DB rozhraní API Cassandra se vyžaduje DatabaseWriter. Cassandra ovladač 3.6.0 je součástí sady Striim. Pokud DatabaseWriter překročí počet Ruů zřízených v kontejneru Azure Cosmos, aplikace selže.
 
    * **Adresa URL připojení** – zadejte adresu URL pro připojení Azure Cosmos DB JDBC. Adresa URL má formát.     `jdbc:cassandra://<contactpoint>:10350/<databaseName>?SSL=true`
 
@@ -173,12 +174,12 @@ V této části nakonfigurujete účet Azure Cosmos DB rozhraní API Cassandra j
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters2.png" alt-text="Najít položku Striim Marketplace":::
 
-1. Teď budeme pokračovat a spustíme aplikaci Striim. V horním řádku nabídek vyberte **Vytvořeno**a pak **Nasaďte aplikaci**. V okně nasazení můžete určit, jestli chcete spouštět určité části aplikace na určitých částech topologie nasazení. Vzhledem k tomu, že běží v jednoduché topologii nasazení prostřednictvím Azure, použijeme výchozí možnost.
+1. Teď budeme pokračovat a spustíme aplikaci Striim. V horním řádku nabídek vyberte **Vytvořeno** a pak **Nasaďte aplikaci** . V okně nasazení můžete určit, jestli chcete spouštět určité části aplikace na určitých částech topologie nasazení. Vzhledem k tomu, že běží v jednoduché topologii nasazení prostřednictvím Azure, použijeme výchozí možnost.
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/deploy-the-app.png" alt-text="Najít položku Striim Marketplace":::
 
 
-1. Nyní přejdeme do datového proudu a zobrazíme náhled toku dat pomocí Striim. Klikněte na ikonu Wave a vedle ní klikněte na ikonu oka. Po nasazení můžete zobrazit náhled datového proudu a zobrazit tok dat. Vyberte ikonu **Wave** a **Eyeball** vedle ní. V horním řádku nabídek vyberte tlačítko **nasazeno** a vyberte **Spustit aplikaci**.
+1. Nyní přejdeme do datového proudu a zobrazíme náhled toku dat pomocí Striim. Klikněte na ikonu Wave a vedle ní klikněte na ikonu oka. Po nasazení můžete zobrazit náhled datového proudu a zobrazit tok dat. Vyberte ikonu **Wave** a **Eyeball** vedle ní. V horním řádku nabídek vyberte tlačítko **nasazeno** a vyberte **Spustit aplikaci** .
 
    :::image type="content" source="./media/cosmosdb-cassandra-api-migrate-data-striim/start-the-app.png" alt-text="Najít položku Striim Marketplace":::
 

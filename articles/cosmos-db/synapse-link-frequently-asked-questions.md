@@ -6,14 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480067"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098038"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azure Cosmos DB a analýzou Azure synapse. Umožňuje zákazníkům provozovat analýzy téměř v reálném čase prostřednictvím jejich provozních dat s plnou izolací výkonu ze svých transakčních úloh a bez kanálu ETL. Tento článek odpovídá na nejčastější dotazy k Synapse Linku pro Azure Cosmos DB.
 
@@ -98,9 +99,9 @@ Data v analytickém úložišti se dělí na základě horizontálního dělení
 
 Datové položky aktuálně nemůžete transformovat, když jsou automaticky šířeny z transakčního úložiště do analytického úložiště. Pokud máte scénáře blokované tímto omezením, odešlete e-mailem [Azure Cosmos DB týmu](mailto:cosmosdbsynapselink@microsoft.com).
 
-### <a name="is-analytical-store-supported-by-terraform"></a>Podporuje Terraformu analytické úložiště?
+### <a name="is-analytical-store-supported-by-terraform"></a>Podporuje Terraform analytické úložiště?
 
-V současné době Terraformu nepodporuje kontejnery analytického úložiště. Další informace najdete v [Terraformu potížích GitHubu](https://github.com/hashicorp/terraform/issues) .
+V současné době Terraform nepodporuje kontejnery analytického úložiště. Další informace najdete v [problémech s Terraformem na GitHubu](https://github.com/hashicorp/terraform/issues).
 
 ## <a name="analytical-time-to-live-ttl"></a>Doba analýzy – Live (TTL)
 

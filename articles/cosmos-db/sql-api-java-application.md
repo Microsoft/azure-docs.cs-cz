@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 774c829b3f9c36cef33f8f334825440b92582f4e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485286"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097300"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Kurz: Vytvoření webové aplikace v jazyce Java pomocí Azure Cosmos DB a rozhraní SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -43,7 +44,7 @@ Tento kurz o aplikaci Java vám ukáže, jak vytvořit webovou aplikaci pro spr�
 
 Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -65,15 +66,15 @@ Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte n
 
 Vytvoření aplikace JSP:
 
-1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud nevidíte **dynamický webový projekt** uvedený jako dostupný projekt, udělejte toto: klikněte na **soubor**, klikněte na **Nový**, klikněte na **projekt**..., rozbalte **Web**, klikněte na **dynamický webový projekt**a klikněte na **Další**.
+1. Nejdříve začneme vytvořením projektu Java. Spusťte Eclipse, klikněte na **File** (Soubor), pak na **New** (Nový) a nakonec na **Dynamic Web Project** (Dynamický webový projekt). Pokud nevidíte **dynamický webový projekt** uvedený jako dostupný projekt, udělejte toto: klikněte na **soubor** , klikněte na **Nový** , klikněte na **projekt** ..., rozbalte **Web** , klikněte na **dynamický webový projekt** a klikněte na **Další** .
    
     :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
 1. Zadejte název projektu do pole **Project name** (Název projektu), volitelně v rozevírací nabídce **Target Runtime** (Cílový modul runtime) vyberte hodnotu (např. Apache Tomcat v7.0) a klikněte na **Finish** (Dokončit). Pokud vyberete cílový modul runtime, budete moci spouštět projekt místně přes Eclipse.
 
-1. V prostředí Eclipse v zobrazení Project Explorer (Průzkumník projektů) rozbalte projekt. Klikněte pravým tlačítkem na **WebContent**, pak na **New** (Nový) a nakonec na **JSP File** (Soubor JSP).
+1. V prostředí Eclipse v zobrazení Project Explorer (Průzkumník projektů) rozbalte projekt. Klikněte pravým tlačítkem na **WebContent** , pak na **New** (Nový) a nakonec na **JSP File** (Soubor JSP).
 
-1. V dialogovém okně **New JSP File** (Nový soubor JSP) pojmenujte soubor **index.jsp**. Nadřazený adresář ponechte na **WebContent**, jak ukazuje následující ilustrace, a klikněte na **Next** (Další).
+1. V dialogovém okně **New JSP File** (Nový soubor JSP) pojmenujte soubor **index.jsp** . Nadřazený adresář ponechte na **WebContent** , jak ukazuje následující ilustrace, a klikněte na **Next** (Další).
    
     :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Aplikace pro seznam úkolů v jazyce Java":::
 
@@ -99,7 +100,7 @@ Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti
 
 1. Klikněte pravým tlačítkem na projekt v Project Exploreru, pak klikněte na **Configure** (Konfigurovat) a následně na **Convert to Maven Project** (Převést na projekt Maven).
 
-1. V okně **vytvořit nové pom** přijměte výchozí hodnoty a klikněte na **Dokončit**.
+1. V okně **vytvořit nové pom** přijměte výchozí hodnoty a klikněte na **Dokončit** .
 
 1. V **Project Exploreru** otevřete soubor pom.xml.
 
@@ -129,7 +130,7 @@ Nyní přidáme do vaší webové aplikace modely, zobrazení a řadiče.
 
 ### <a name="add-a-model"></a>Přidání modelu
 
-Nejdřív nadefinujte model v rámci nového souboru *TodoItem. Java*. `TodoItem`Třída definuje schéma položky spolu s metodami getter a setter:
+Nejdřív nadefinujte model v rámci nového souboru *TodoItem. Java* . `TodoItem`Třída definuje schéma položky spolu s metodami getter a setter:
 
 :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
 
@@ -183,13 +184,13 @@ Teď, když jsme dokončili zábavné služby, je to vše, co zbývá k vytvoře
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
 
-1. Nyní již zbývá aplikaci jen otestovat. Spusťte aplikaci místně a zadáním názvů a kategorie položek a kliknutím na **Add Task** (Přidat úkol) přidejte několik položek Todo. Po zobrazení položky můžete aktualizovat, zda je to hotové, přepnutím zaškrtávacího políčka a kliknutím na **aktualizovat úkoly**.
+1. Nyní již zbývá aplikaci jen otestovat. Spusťte aplikaci místně a zadáním názvů a kategorie položek a kliknutím na **Add Task** (Přidat úkol) přidejte několik položek Todo. Po zobrazení položky můžete aktualizovat, zda je to hotové, přepnutím zaškrtávacího políčka a kliknutím na **aktualizovat úkoly** .
 
 ## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>Nasazení aplikace Java na weby Azure
 
 Díky Azure Websites je nasazování aplikací Java stejně snadné jako export aplikace jako souboru WAR a jeho nahrání buď přes správu zdrojových kódů (např. Git), nebo FTP.
 
-1. Pokud chcete aplikaci exportovat jako soubor WAR, klikněte pravým tlačítkem na projekt v **Project Exploreru**, pak levým na **Export** a nakonec na **WAR File** (Soubor WAR).
+1. Pokud chcete aplikaci exportovat jako soubor WAR, klikněte pravým tlačítkem na projekt v **Project Exploreru** , pak levým na **Export** a nakonec na **WAR File** (Soubor WAR).
 
 1. V okně **WAR Export** udělejte následující:
    
@@ -209,35 +210,35 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 
 1. Pokud je prostředí Eclipse otevřené, zavřete ho a znovu ho spusťte, aby se načetl Lombok.
 
-1. V prostředí Eclipse v nabídce **File** (Soubor) klikněte na **Import**.
+1. V prostředí Eclipse v nabídce **File** (Soubor) klikněte na **Import** .
 
-1. V okně **Import** klikněte na **Git**, pak na **Projects from Git** (Projekty z Gitu) a nakonec na **Next** (Další).
+1. V okně **Import** klikněte na **Git** , pak na **Projects from Git** (Projekty z Gitu) a nakonec na **Next** (Další).
 
 1. Na obrazovce **Select Repository Source** (Výběr zdroje úložiště) klikněte na **Clone URI** (Klonovat URI).
 
 1. Na obrazovce **Source Git Repository** (Zdrojové úložiště Git) v poli **URI** zadejte https://github.com/Azure-Samples/documentdb-java-todo-app.git a potom klikněte na **Next** (Další).
 
-1. Na obrazovce **Branch Selection** (Výběr větve) se ujistěte, že je zvolena možnost **master** (hlavní), a klikněte na **Next**.
+1. Na obrazovce **Branch Selection** (Výběr větve) se ujistěte, že je zvolena možnost **master** (hlavní), a klikněte na **Next** .
 
-1. Na obrazovce **Local Destination** (Místní cíl) klikněte na **Browse** (Procházet), vyberte složku, do které lze úložiště zkopírovat, a pak klikněte na **Next**.
+1. Na obrazovce **Local Destination** (Místní cíl) klikněte na **Browse** (Procházet), vyberte složku, do které lze úložiště zkopírovat, a pak klikněte na **Next** .
 
-1. Na obrazovce **Select a wizard to use for importing projects** (Výběr průvodce, který se použije k importování projektů) se ujistěte, že je vybrána možnost **Import existing projects** (Import existujících projektů) a klikněte na **Next**.
+1. Na obrazovce **Select a wizard to use for importing projects** (Výběr průvodce, který se použije k importování projektů) se ujistěte, že je vybrána možnost **Import existing projects** (Import existujících projektů) a klikněte na **Next** .
 
 1. Na obrazovce **Import Projects** (Import projektů) zrušte výběr projektu **DocumentDB** a klikněte na **Finish** (Dokončit). Projekt Azure Cosmos DB obsahuje sadu Azure Cosmos DB Java SDK, kterou přidáme jako závislost.
 
 1. V **Project Exploreru** přejděte na azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java a nahraďte hodnoty HOST a MASTER_KEY hodnotami URI a PRIMARY KEY pro účet Azure Cosmos DB. Pak soubor uložte. Další informace najdete v části [Krok 1. Vytvořte účet databáze Azure Cosmos](#CreateDB).
 
-1. V **Project Exploreru** klikněte pravým tlačítkem na **azure-documentdb-java-sample**, pak levým na **Build Path** (Cesta sestavení) a nakonec na **Configure Build Path** (Konfigurovat cestu sestavení).
+1. V **Project Exploreru** klikněte pravým tlačítkem na **azure-documentdb-java-sample** , pak levým na **Build Path** (Cesta sestavení) a nakonec na **Configure Build Path** (Konfigurovat cestu sestavení).
 
-1. Na obrazovce **Java Build Path** (Cesta sestavení Java) v pravém podokně vyberte kartu **Libraries** (Knihovny) a klikněte na **Add External JARs** (Přidat externí balíčky JAR). Přejděte na umístění souboru lombok.jar, klikněte na **Open** (Otevřít) a pak na **OK**.
+1. Na obrazovce **Java Build Path** (Cesta sestavení Java) v pravém podokně vyberte kartu **Libraries** (Knihovny) a klikněte na **Add External JARs** (Přidat externí balíčky JAR). Přejděte na umístění souboru lombok.jar, klikněte na **Open** (Otevřít) a pak na **OK** .
 
 1. Pomocí kroku 12 otevřete znovu okno **Properties** (Vlastnosti) a v levém podokně klikněte na **Targeted Runtimes** (Cílené moduly runtime).
 
-1. Na obrazovce **Targeted Runtimes** klikněte na **New** (Nový), vyberte **Apache Tomcat v7.0** a klikněte na **OK**.
+1. Na obrazovce **Targeted Runtimes** klikněte na **New** (Nový), vyberte **Apache Tomcat v7.0** a klikněte na **OK** .
 
 1. Pomocí kroku 12 otevřete znovu okno **Properties** a v levém podokně klikněte na **Project Facets** (Omezující vlastnosti projektu).
 
-1. Na obrazovce **Project Facets** vyberte **Dynamic Web Module** (Dynamický webový modul) a **Java** a klikněte na **OK**.
+1. Na obrazovce **Project Facets** vyberte **Dynamic Web Module** (Dynamický webový modul) a **Java** a klikněte na **OK** .
 
 1. Na kartě **Servers** (Servery) v dolní části obrazovky klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a pak levým na **Add and Remove** (Přidat a odstranit).
 

@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3c404f0028705754a68be113a331132eec02f7cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304028"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095437"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Na této jednostránkové aplikaci můžete vidět, jak načíst, analyzovat a zobrazit výsledky vyhledávání z rozhraní API Bingu pro vyhledávání na webu. V tomto kurzu se používají standardní jazyk HTML a šablony stylů CSS a kurz se zaměřuje na kód jazyka JavaScript. Jazyk HTML, šablony stylů CSS a soubory JS jsou k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) s pokyny pro rychlý start.
 
@@ -33,12 +38,12 @@ Tato ukázková aplikace může provádět následující akce:
 
 Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu pro vyhledávání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tady je pár věcí, které budete potřebovat ke spuštění aplikace:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
 
 * Node.js 8 nebo novější
 
@@ -131,9 +136,9 @@ function bingSearchOptions(form) {
 
 `SafeSearch` je možné nastavit na `strict`, `moderate` nebo `off` a výchozí nastavení pro vyhledávání na webu Bingu je `moderate`. Tento formulář používá zaškrtávací políčko, které má dva stavy: `strict` nebo `moderate` .
 
-Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění**, přidá se k dotazu parametr `answerCount`. Když je použitý parametr `promote`, vyžaduje se `answerCount`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
+Pokud je vybrané kterékoliv ze zaškrtávacích políček **upřednostnění** , přidá se k dotazu parametr `answerCount`. Když je použitý parametr `promote`, vyžaduje se `answerCount`. Aby se vrátily všechny dostupné typy výsledků, je v tomto fragmentu kódu nastavená hodnota `9`.
 > [!NOTE]
-> Upřednostnění typu výsledku *nezaručuje*, že bude tento typ zahrnutý ve výsledcích hledání. Upřednostnění ve srovnání s obvyklým hodnocením spíše zvýší hodnocení daných druhů výsledků. Pokud chcete omezit hledání na konkrétní typy výsledků, použijte parametr dotazu `responseFilter` nebo volejte konkrétnější koncový bod, jako je například Vyhledávání obrázků Bingu nebo Vyhledávání zpráv Bingu.
+> Upřednostnění typu výsledku *nezaručuje* , že bude tento typ zahrnutý ve výsledcích hledání. Upřednostnění ve srovnání s obvyklým hodnocením spíše zvýší hodnocení daných druhů výsledků. Pokud chcete omezit hledání na konkrétní typy výsledků, použijte parametr dotazu `responseFilter` nebo volejte konkrétnější koncový bod, jako je například Vyhledávání obrázků Bingu nebo Vyhledávání zpráv Bingu.
 
 Do skriptu jsou pevně zakódované parametry dotazu `textDecoration` a `textFormat` a díky tomu je hledaný termín ve výsledcích hledání napsaný tučně. Tyto parametry nejsou povinné.
 
@@ -284,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Úspěšná žádost HTTP *neznamená*, že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, vrátí rozhraní API Bingu pro vyhledávání na webu stavový kód HTTP jiný než 200 a zahrne do odpovědi JSON informace o chybě. Pokud byla u žádosti omezena rychlost, vrátí rozhraní API prázdnou odpověď.
+> Úspěšná žádost HTTP *neznamená* , že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, vrátí rozhraní API Bingu pro vyhledávání na webu stavový kód HTTP jiný než 200 a zahrne do odpovědi JSON informace o chybě. Pokud byla u žádosti omezena rychlost, vrátí rozhraní API prázdnou odpověď.
 
 Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 

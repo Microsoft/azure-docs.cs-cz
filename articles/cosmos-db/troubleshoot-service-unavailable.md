@@ -7,14 +7,16 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b40787e1b7c40e5c238b2e400f6b449ad8963dd1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 44dcaa270e167ada22d48d1061c3eb3ed3ac88f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277142"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097868"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-service-unavailable-exceptions"></a>Diagnostika a řešení potíží s nedostupnými výjimkami služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Sada SDK se nemohla připojit k Azure Cosmos DB.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
@@ -24,7 +26,7 @@ Následující seznam obsahuje známé příčiny a řešení nedostupných výj
 Ověřte, zda jsou všechny [požadované porty](sql-sdk-connection-modes.md#service-port-ranges) povoleny.
 
 ### <a name="client-side-transient-connectivity-issues"></a>Problémy s přechodným připojením na straně klienta
-Pokud dochází k přechodným problémům s připojením, které způsobují vypršení časových limitů, můžou být nedostupné výjimky. Trasování zásobníku související s tímto scénářem obvykle bude obsahovat `TransportException` chybu. Příklad:
+Pokud dochází k přechodným problémům s připojením, které způsobují vypršení časových limitů, můžou být nedostupné výjimky. Trasování zásobníku související s tímto scénářem obvykle bude obsahovat `TransportException` chybu. Například:
 
 ```C#
 TransportException: A client transport error occurred: The request timed out while waiting for a server response. 

@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: e4c2969db560ff20cae2ed7b9ffbe0cea206c7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff861b5a58de4f108e49e52e6f09c71d7dd678ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611567"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097188"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK .NET s procesorem kanálu změn: Stažení a poznámky k verzi
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 >
@@ -188,7 +189,7 @@ ms.locfileid: "91611567"
 
 ## <a name="release--retirement-dates"></a>Data vydání a vyřazení z provozu
 
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce, možnosti a optimalizace se přidávají jen do aktuální sady SDK, proto vám doporučujeme, abyste vždy co nejdříve provedli aktualizaci na nejnovější verzi sady SDK.
 
 > [!WARNING]
 > Od 31. srpna 2022 už Azure Cosmos DB nebude provádět opravy chyb, přidávat nové funkce ani poskytovat podporu pro verze 1.x sad SDK Azure Cosmos DB .NET nebo .NET Core pro rozraní SQL API. Pokud nechcete provést upgrade, služba Azure Cosmos DB bude dál zpracovávat požadavky odeslané z verze 1.x sady SDK.

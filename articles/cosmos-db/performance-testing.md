@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6ddc428a1b2228c7e6e15093c12deb25ddd65c27
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281026"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097409"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování výkonu a škálování pomocí Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Testování výkonu a škálování je klíčový krok při vývoji aplikací. U mnoha aplikací má databázová vrstva významný dopad na celkový výkon a škálovatelnost. Proto je to kritická součást testování výkonu. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je účelově sestavený pro elastické škálování a předvídatelný výkon. Tyto funkce se skvěle hodí pro aplikace, které potřebují vysoce výkonnou databázovou vrstvu. 
 

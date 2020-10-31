@@ -7,14 +7,15 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4f51b641ca38b2b6f74bb77928537270d12f1e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 860748c7114017dcd1120551d9539e0d098fa1fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870846"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097835"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DB neoprávněnými výjimkami
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 HTTP 401: podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis.
 Pokud jste obdrželi chybovou zprávu 401 "podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis," může to být způsobeno následujícími scénáři ".

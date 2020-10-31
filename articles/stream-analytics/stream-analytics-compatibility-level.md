@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056512"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097732"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -33,13 +33,13 @@ Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak
 
 ## <a name="set-the-compatibility-level"></a>Nastavení úrovně kompatibility
 
-Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/rest/api/streamanalytics/stream-analytics-job).
+Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/azure/stream-analytics/stream-analytics-quick-create-portal).
 
 Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
 1. K vyhledání Stream Analytics úlohy použijte [Azure Portal](https://portal.azure.com) .
 2. Před aktualizací úrovně kompatibility úlohu **zastavte** . Úroveň kompatibility nejde aktualizovat, pokud je vaše úloha ve spuštěném stavu.
-3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility**.
+3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility** .
 4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
 5. V dolní části stránky vyberte **Save (Uložit** ).
 
@@ -53,7 +53,7 @@ V úrovni kompatibility 1,2 jsou představeny tyto hlavní změny:
 
 ###  <a name="amqp-messaging-protocol"></a>Protokol zasílání zpráv AMQP
 
-**1,2 úroveň**: Azure Stream Analytics používá rozšířený protokol zasílání zpráv [protokolu AMQP (Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) k zápisu do Service Busch front a témat. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu.
+**1,2 úroveň** : Azure Stream Analytics používá rozšířený protokol zasílání zpráv [protokolu AMQP (Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) k zápisu do Service Busch front a témat. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu.
 
 ### <a name="geospatial-functions"></a>Geoprostorové funkce
 
@@ -75,11 +75,11 @@ Další informace najdete v tématu [aktualizace geoprostorových funkcí v Azur
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Nativní integrace rozhraní API s využitím výstupu CosmosDB
 
-**Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno*.
+**Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno* .
 
 **úroveň 1,2:** Nativní integrace rozhraní API s využitím výstupu CosmosDB maximalizuje propustnost a efektivně zpracovává požadavky na omezování. Další informace najdete [na stránce Azure Stream Analytics výstup do Azure Cosmos DB](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12).
 
-Chování Upsert je *vloženo nebo nahrazeno*.
+Chování Upsert je *vloženo nebo nahrazeno* .
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset při zápisu do výstupu SQL
 

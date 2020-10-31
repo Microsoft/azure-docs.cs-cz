@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6177426ce62f3369092403c52344fa764bcf2e6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261824"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095845"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrátí hodnotu řetězce DateTime, která je výsledkem přidání zadané číselné hodnoty (jako čísla se znaménkem) k určenému řetězci DateTime.  
   
@@ -31,8 +32,8 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 | DateTimePart | zkratky        |
 | ------------ | -------------------- |
-| Year         | "Year", "rrrr", "RR" |
-| Month        | "Month", "mm", "m"   |
+| Year (Rok)         | "Year", "rrrr", "RR" |
+| Month (Měsíc)        | "Month", "mm", "m"   |
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |

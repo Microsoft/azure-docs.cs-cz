@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 513af71384fd1fa5d38ee3ec367a42892a662444
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487598"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096933"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace rozhraní API pro tabulky pomocí sady .NET SDK a Azure Cosmos DB 
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -29,7 +30,7 @@ Tento rychlý start ukazuje, jak pomocí .NET a rozhraní [Table API](table-intr
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development** .
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -72,7 +73,7 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Otevření ukázkové aplikace v sadě Visual Studio
 
-1. V sadě Visual Studio z nabídky **Soubor** zvolte **Otevřít** a pak **Projekt nebo řešení**. 
+1. V sadě Visual Studio z nabídky **Soubor** zvolte **Otevřít** a pak **Projekt nebo řešení** . 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-open-solution.png" alt-text="Otevření řešení"::: 
 
@@ -102,7 +103,7 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
 
-1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC**.
+1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec** . Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC** .
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Otevření řešení"
    }
@@ -114,7 +115,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="build-and-deploy-the-app"></a>Sestavení a nasazení aplikace
 
-1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt **CosmosTableSamples** v **Průzkumník řešení** a pak klikněte na **Spravovat balíčky NuGet**. 
+1. V aplikaci Visual Studio klikněte pravým tlačítkem na projekt **CosmosTableSamples** v **Průzkumník řešení** a pak klikněte na **Spravovat balíčky NuGet** . 
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-manage-nuget.png" alt-text="Otevření řešení":::
 
@@ -124,7 +125,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 3. Kliknutím na **nainstalovat** nainstalujte knihovnu **Microsoft. Azure. Cosmos. Table** . Tím se nainstaluje balíček rozhraní Azure Cosmos DB Table API a všechny závislosti.
 
-4. Když spustíte celou aplikaci, ukázková data se vloží do entity tabulky a odstraní se na konci, takže se žádná data nevloží, pokud spustíte celou ukázku. Můžete však vložit některé zarážky k zobrazení dat. Otevřete soubor BasicSamples.cs a klikněte pravým tlačítkem na řádek 52, vyberte **zarážku**a pak vyberte **Vložit zarážku**. Vložte další zarážku na řádku 55.
+4. Když spustíte celou aplikaci, ukázková data se vloží do entity tabulky a odstraní se na konci, takže se žádná data nevloží, pokud spustíte celou ukázku. Můžete však vložit některé zarážky k zobrazení dat. Otevřete soubor BasicSamples.cs a klikněte pravým tlačítkem na řádek 52, vyberte **zarážku** a pak vyberte **Vložit zarážku** . Vložte další zarážku na řádku 55.
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-breakpoint.png" alt-text="Otevření řešení"::: 
 
@@ -132,7 +133,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
     
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-console.png" alt-text="Otevření řešení":::
 
-   Až se dostanete k první zarážce, přejděte zpět do Průzkumníku dat na webu Azure Portal. Klikněte na tlačítko **Aktualizovat**, rozbalte tabulku demo* a klikněte na **Entity**. Na kartě **Entity** na pravé straně se zobrazí nově přidaná entita pro Waltera Harpa. Všimněte si, že telefonní číslo nové entity je 425-555-0101.
+   Až se dostanete k první zarážce, přejděte zpět do Průzkumníku dat na webu Azure Portal. Klikněte na tlačítko **Aktualizovat** , rozbalte tabulku demo* a klikněte na **Entity** . Na kartě **Entity** na pravé straně se zobrazí nově přidaná entita pro Waltera Harpa. Všimněte si, že telefonní číslo nové entity je 425-555-0101.
 
    :::image type="content" source="media/create-table-dotnet/azure-cosmosdb-entity.png" alt-text="Otevření řešení":::
     
@@ -150,7 +151,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
     
 7. Stisknutím klávesy F5 spusťte aplikaci až k další zarážce. 
 
-    Až se dostanete k zarážce, přejděte zpět na web Azure Portal, znovu klikněte na **Entity** a otevřete kartu **Entity**. Všimněte si, že se telefonní číslo aktualizovalo na 425-555-0105.
+    Až se dostanete k zarážce, přejděte zpět na web Azure Portal, znovu klikněte na **Entity** a otevřete kartu **Entity** . Všimněte si, že se telefonní číslo aktualizovalo na 425-555-0105.
 
 8. Stisknutím klávesy F5 spusťte aplikaci. 
  

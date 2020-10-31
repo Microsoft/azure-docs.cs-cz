@@ -11,21 +11,21 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097953"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Používání pracovního prostoru s vlastním serverem DNS
 
-Při použití Azure Machine Learning s virtuální sítí existuje [několik způsobů, jak řešit překlad názvů DNS](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud ale __používáte vlastní server DNS__, musíte ručně vytvořit položky DNS pro tento pracovní prostor.
+Při použití Azure Machine Learning s virtuální sítí existuje [několik způsobů, jak řešit překlad názvů DNS](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances). Ve výchozím nastavení Azure automaticky zpracovává překlad adres IP pro váš pracovní prostor a soukromý koncový bod. Pokud ale __používáte vlastní server DNS__ , musíte ručně vytvořit položky DNS pro tento pracovní prostor.
 
 > [!IMPORTANT]
 > Tento článek popisuje, jak najít plně kvalifikovaný název domény (FQDN) a IP adresy pro tyto položky, které neposkytuje informace o konfiguraci záznamů DNS pro tyto položky. Informace o tom, jak přidat záznamy, najdete v dokumentaci k vašemu softwaru DNS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Virtual Network Azure, který používá [vlastní server DNS](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
 
@@ -46,7 +46,7 @@ Následující seznam obsahuje plně kvalifikované názvy domény (FQDN) použ�
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Pokud vytvoříte výpočetní instanci, musíte také přidat položku pro `<instance-name>.<region>.instances.azureml.ms` .
+* Pokud vytvoříte výpočetní instanci, musíte taky přidat položku pro privátní `<instance-name>.<region>.instances.azureml.ms` IP adresu privátního koncového bodu v pracovním prostoru. Počítejte s tím, že ke výpočetní instanci se dá dostat jenom z virtuální sítě.
 
 Pokud chcete najít interní IP adresy pro plně kvalifikované názvy domén ve virtuální síti, použijte jednu z následujících metod:
 
@@ -68,8 +68,8 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V [Azure Portal](https://portal.azure.com)vyberte __pracovní prostor__Azure Machine Learning.
-1. V části __Nastavení__ vyberte __připojení privátního koncového bodu__.
+1. V [Azure Portal](https://portal.azure.com)vyberte __pracovní prostor__ Azure Machine Learning.
+1. V části __Nastavení__ vyberte __připojení privátního koncového bodu__ .
 1. Vyberte odkaz ve sloupci __privátní koncový bod__ , který se zobrazí.
 1. V dolní části stránky je seznam plně kvalifikovaných názvů domény (FQDN) a IP adresy privátního koncového bodu v pracovním prostoru.
 
@@ -92,7 +92,7 @@ Informace vrácené ze všech metod jsou stejné; seznam plně kvalifikovaného 
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * Pokud máte výpočetní instanci, použijte `<instance-name>.<region>.instances.azureml.ms` , kde `<instance-name>` je název vaší výpočetní instance.
+> * Pokud máte výpočetní instanci, použijte `<instance-name>.<region>.instances.azureml.ms` , kde `<instance-name>` je název vaší výpočetní instance. Použijte prosím privátní IP adresu privátního koncového bodu v pracovním prostoru. Počítejte s tím, že ke výpočetní instanci se dá dostat jenom z virtuální sítě.
 >
 > Pro všechny tyto IP adresy použijte stejnou adresu jako u `*.api.azureml.ms` položek vrácených z předchozích kroků.
 

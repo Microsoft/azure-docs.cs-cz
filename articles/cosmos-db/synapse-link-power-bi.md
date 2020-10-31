@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480033"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098055"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse fondu SQL bez serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
-V tomto článku se dozvíte, jak vytvořit synapse fond SQL bez serveru (který se dříve odkazoval na databázi a zobrazení **SQL na vyžádání**) prostřednictvím odkazu na Synapse pro Azure Cosmos DB. Budete dotazováni na kontejnery Azure Cosmos a pak sestavíte model pomocí Power BI přes tato zobrazení, aby odrážely dotaz.
+V tomto článku se dozvíte, jak vytvořit synapse fond SQL bez serveru (který se dříve odkazoval na databázi a zobrazení **SQL na vyžádání** ) prostřednictvím odkazu na Synapse pro Azure Cosmos DB. Budete dotazováni na kontejnery Azure Cosmos a pak sestavíte model pomocí Power BI přes tato zobrazení, aby odrážely dotaz.
 
 V tomto scénáři použijete zástupné údaje o prodeji na Surface produktů v partnerském prodejnovém obchodě. Výnosy za obchod budete analyzovat na základě blízkosti velkých domácností a dopadu reklamy na konkrétní týden. V tomto článku vytvoříte dvě zobrazení s názvem **RetailSales** a **StoreDemographics** a dotaz mezi nimi. Z tohoto úložiště [GitHubu](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) můžete získat ukázková data produktu.
 
@@ -31,21 +32,21 @@ Než začnete, nezapomeňte vytvořit tyto prostředky:
 
 * Načtěte data produktů do kontejnerů Azure Cosmos, jak je popsáno v tomto poznámkovém bloku pro příjem [dat služby Batch](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) .
 
-* [Vytvořte pracovní prostor synapse](../synapse-analytics/quickstart-create-workspace.md) s názvem **SynapseLinkBI**.
+* [Vytvořte pracovní prostor synapse](../synapse-analytics/quickstart-create-workspace.md) s názvem **SynapseLinkBI** .
 
 * [Připojte databázi Azure Cosmos k pracovnímu prostoru synapse](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json).
 
 ## <a name="create-a-database-and-views"></a>Vytvoření databáze a zobrazení
 
-V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
+V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL** .
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
-Každý pracovní prostor přichází s koncovým bodem SQL bez serveru. Po vytvoření skriptu SQL na panelu nástrojů v horní části se připojte k **SQL na vyžádání**.
+Každý pracovní prostor přichází s koncovým bodem SQL bez serveru. Po vytvoření skriptu SQL na panelu nástrojů v horní části se připojte k **SQL na vyžádání** .
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
-Vytvoří novou databázi s názvem **RetailCosmosDB**a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
+Vytvoří novou databázi s názvem **RetailCosmosDB** a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
 
 ```sql
 -- Create database
@@ -109,15 +110,15 @@ Vyberte **příkaz Spustit** , který jako výsledek poskytne následující tab
 
 Potom otevřete Power BI plochu a připojte se k koncovému bodu SQL bez serveru pomocí následujících kroků:
 
-1. Otevřete aplikaci Power BI Desktop. Vyberte **získat data** a vyberte **Další**.
+1. Otevřete aplikaci Power BI Desktop. Vyberte **získat data** a vyberte **Další** .
 
 1. V seznamu možností připojení vyberte **Azure synapse Analytics (SQL DW)** .
 
-1. Zadejte název koncového bodu SQL, kde se nachází databáze. `SynapseLinkBI-ondemand.sql.azuresynapse.net`Do pole **Server** zadejte. V tomto příkladu je  **SynapseLinkBI** název pracovního prostoru. Pokud jste přidali jiný název k pracovnímu prostoru, nahraďte ho. Vyberte možnost **přímý dotaz** pro režim připojení dat a pak klikněte na **tlačítko OK**.
+1. Zadejte název koncového bodu SQL, kde se nachází databáze. `SynapseLinkBI-ondemand.sql.azuresynapse.net`Do pole **Server** zadejte. V tomto příkladu je  **SynapseLinkBI** název pracovního prostoru. Pokud jste přidali jiný název k pracovnímu prostoru, nahraďte ho. Vyberte možnost **přímý dotaz** pro režim připojení dat a pak klikněte na **tlačítko OK** .
 
 1. Vyberte upřednostňovanou metodu ověřování, například Azure AD.
 
-1. Vyberte databázi **RetailCosmosDB** a zobrazení **RetailSales**, **StoreDemographics** .
+1. Vyberte databázi **RetailCosmosDB** a zobrazení **RetailSales** , **StoreDemographics** .
 
 1. Vyberte **načíst** , pokud chcete načíst dvě zobrazení do režimu přímých dotazů.
 
@@ -129,7 +130,7 @@ Potom otevřete Power BI plochu a připojte se k koncovému bodu SQL bez serveru
 
 Teď přejděte do okna **sestavy** a vytvořte sestavu s cílem porovnat relativní důležitost velikosti domácnosti s průměrnou tržbou na obchod na základě bodové reprezentace výnosů a indexu LargeHH:
 
-1. Vyberte **bodový graf**.
+1. Vyberte **bodový graf** .
 
 1. Přetáhněte **LargeHH** ze zobrazení **StoreDemographics** na osu X.
 

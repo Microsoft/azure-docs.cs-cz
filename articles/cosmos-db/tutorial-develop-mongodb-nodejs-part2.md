@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3af713d6e120e66a0cde5116f4556bb8caedf55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097840"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – vytvoření aplikace Node.js Express
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
 
@@ -33,7 +34,7 @@ Druhá část kurzu vychází z [úvodu](tutorial-develop-mongodb-nodejs.md) a z
 
 > [!VIDEO https://www.youtube.com/embed/lIwJIYcGSUg]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením této části kurzu se nezapomeňte podívat na [úvodní video](tutorial-develop-mongodb-nodejs.md).
 
@@ -81,9 +82,9 @@ V tomto kurzu budete také potřebovat:
 
 ## <a name="build-the-app-using-the-express-framework"></a>Sestavení aplikace pomocí rozhraní Express
 
-1. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **src**, klikněte na **Nová složka** a pojmenujte novou složku *server*.
+1. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **src** , klikněte na **Nová složka** a pojmenujte novou složku *server* .
 
-2. V podokně **Průzkumník** klikněte pravým tlačítkem na složku **server**, klikněte na **Nový soubor** a pojmenujte nový soubor *index.js*.
+2. V podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** , klikněte na **Nový soubor** a pojmenujte nový soubor *index.js* .
 
 3. Zpět na příkazovém řádku pomocí následujícího příkazu nainstalujte analyzátor textu. Ten pomáhá aplikaci parsovat data JSON předávaná prostřednictvím rozhraní API.
 
@@ -125,7 +126,7 @@ V tomto kurzu budete také potřebovat:
    app.listen(port, () => console.log(`API running on localhost:${port}`));
    ```
 
-5. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** a pak klikněte na **Nový soubor**. Pojmenujte nový soubor *routes.js*. 
+5. Ve Visual Studio Code v podokně **Průzkumník** klikněte pravým tlačítkem na složku **server** a pak klikněte na **Nový soubor** . Pojmenujte nový soubor *routes.js* . 
 
 6. Do souboru **routes.js** zkopírujte následující kód. Tento kód:
    * Přidá referenci na směrovač Express.

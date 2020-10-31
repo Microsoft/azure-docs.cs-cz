@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 87663c18ddaa5da6740a0f54aa5f2812cbb06af8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd88f8d6a0f5271da97d6f2f95eecb60bf94ed78
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227185"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095794"
 ---
 # <a name="datetimepart-azure-cosmos-db"></a>DateTimePart (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Vrací hodnotu zadaného DateTimePart mezi zadaným datem a časem.
   
@@ -31,8 +32,8 @@ DateTimePart (<DateTimePart> , <DateTime>)
 
 | DateTimePart | zkratky        |
 | ------------ | -------------------- |
-| Year         | "Year", "rrrr", "RR" |
-| Month        | "Month", "mm", "m"   |
+| Year (Rok)         | "Year", "rrrr", "RR" |
+| Month (Měsíc)        | "Month", "mm", "m"   |
 | Den          | "Day", "dd", "d"     |
 | Hodina         | "hour", "HH"         |
 | Minuta       | "Minute", "mi", "n"  |

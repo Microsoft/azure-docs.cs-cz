@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097273"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Kurz: vytvoření Node.js webové aplikace pomocí sady JavaScript SDK pro správu účtu rozhraní SQL API v Azure Cosmos DB 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -42,7 +43,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující prostředky:
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -64,7 +65,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 
 1. Přejděte do adresáře, do kterého chcete novou aplikaci uložit.
 
-1. Pomocí generátoru Express vygenerujte novou aplikaci s názvem **todo**.
+1. Pomocí generátoru Express vygenerujte novou aplikaci s názvem **todo** .
 
    ```bash
    express todo
@@ -93,7 +94,7 @@ Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí
 
 Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu. Tento soubor obsahuje seznam dalších modulů, které aplikace Node.js vyžaduje. Až budete tuto aplikaci nasazovat v Azure, tento soubor se použije k vyhodnocení, které moduly se musí v Azure pro podporu vaší aplikace nainstalovat. Pro účely tohoto kurzu nainstalujte další dva balíčky.
 
-1. Nainstalujte modul ** \@ Azure/Cosmos** prostřednictvím npm. 
+1. Nainstalujte modul **\@ Azure/Cosmos** prostřednictvím npm. 
 
    ```bash
    npm install @azure/cosmos
@@ -103,9 +104,9 @@ Soubor **package.json** je jedním ze souborů vytvořených v kořenu projektu.
 Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, který potřebuje aplikace seznamu úkolů ke komunikaci se službou Azure Cosmos DB.
 
 ### <a name="create-the-model"></a>Vytvoření modelu
-1. V kořenovém adresáři adresáře projektu vytvořte nový adresář s názvem **Models**.  
+1. V kořenovém adresáři adresáře projektu vytvořte nový adresář s názvem **Models** .  
 
-2. V adresáři **models** vytvořte nový soubor s názvem **taskDao.js**. Tento soubor obsahuje kód potřebný k vytvoření databáze a kontejneru. Definuje také metody pro čtení, aktualizaci, vytváření a hledání úloh v Azure Cosmos DB. 
+2. V adresáři **models** vytvořte nový soubor s názvem **taskDao.js** . Tento soubor obsahuje kód potřebný k vytvoření databáze a kontejneru. Definuje také metody pro čtení, aktualizaci, vytváření a hledání úloh v Azure Cosmos DB. 
 
 3. Zkopírujte následující kód do souboru **taskDao.js** :
 
@@ -184,13 +185,13 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
 
     module.exports = TaskDao
    ```
-4. Uložte a zavřete soubor **taskDao.js**.  
+4. Uložte a zavřete soubor **taskDao.js** .  
 
 ### <a name="create-the-controller"></a>Vytvoření kontroleru
 
-1. V adresáři **routes** projektu vytvořte nový soubor s názvem **tasklist.js**.  
+1. V adresáři **routes** projektu vytvořte nový soubor s názvem **tasklist.js** .  
 
-2. Do souboru **tasklist.js** přidejte následující kód: Tento kód načte moduly CosmosClient a async, které se používají v souboru **tasklist.js**. Tento kód také definuje třídu **TaskList**, která se předává jako instance objektu **TaskDao**, který jsme definovali dříve:
+2. Do souboru **tasklist.js** přidejte následující kód: Tento kód načte moduly CosmosClient a async, které se používají v souboru **tasklist.js** . Tento kód také definuje třídu **TaskList** , která se předává jako instance objektu **TaskDao** , který jsme definovali dříve:
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -245,11 +246,11 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
     module.exports = TaskList;
    ```
 
-3. Uložte a zavřete soubor **tasklist.js**.
+3. Uložte a zavřete soubor **tasklist.js** .
 
 ### <a name="add-configjs"></a>Přidání souboru config.js
 
-1. V kořenovém adresáři projektu vytvořte nový soubor **config.js**. 
+1. V kořenovém adresáři projektu vytvořte nový soubor **config.js** . 
 
 2. Do souboru **config.js** přidejte následující kód. Tento kód definuje nastavení konfigurace a hodnoty, které aplikace potřebuje.
    
@@ -274,11 +275,11 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
 
 3. V souboru **config.js** aktualizujte hodnoty hostitelů a AUTH_KEY pomocí hodnot, které se nacházejí na stránce klíčů účtu Azure Cosmos DB na [Azure Portal](https://portal.azure.com). 
 
-4. Uložte a zavřete soubor **config.js**.
+4. Uložte a zavřete soubor **config.js** .
 
 ### <a name="modify-appjs"></a>Úprava souboru app.js
 
-1. V adresáři projektu otevřete soubor **app.js**. Tento soubor byl vytvořen již dříve, při vytváření webové aplikace Express.  
+1. V adresáři projektu otevřete soubor **app.js** . Tento soubor byl vytvořen již dříve, při vytváření webové aplikace Express.  
 
 2. Do souboru **app.js** přidejte následující kód. Tento kód definuje konfigurační soubor, který se má použít, a načte hodnoty několika proměnných, které použijete v dalších částech. 
    
@@ -359,9 +360,9 @@ Dokončili jste počáteční nastavení a konfiguraci a teď napíšete kód, k
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Sestavení uživatelského rozhraní
 
-Nyní sestavíme uživatelské rozhraní tak, aby uživatel mohl pracovat s aplikací. Aplikace Express, kterou jsme vytvořili v předchozích částech, používá jako zobrazovací modul **Jade**.
+Nyní sestavíme uživatelské rozhraní tak, aby uživatel mohl pracovat s aplikací. Aplikace Express, kterou jsme vytvořili v předchozích částech, používá jako zobrazovací modul **Jade** .
 
-1. Soubor **layout.jade** v adresáři **views** slouží jako globální šablona pro ostatní soubory **.jade**. V tomto kroku ho upravíte tak, aby používal sadu nástrojů pro návrh webu Twitter Bootstrap.  
+1. Soubor **layout.jade** v adresáři **views** slouží jako globální šablona pro ostatní soubory **.jade** . V tomto kroku ho upravíte tak, aby používal sadu nástrojů pro návrh webu Twitter Bootstrap.  
 
 2. Otevřete soubor **layout.jade** umístěný ve složce **views** a nahraďte jeho obsah následujícím kódem:
 
@@ -381,9 +382,9 @@ Nyní sestavíme uživatelské rozhraní tak, aby uživatel mohl pracovat s apli
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Tento kód říká modulu **Jade** , aby vygeneroval nějaký kód HTML pro naši aplikaci, a vytvoří **blok** s názvem **Content** , kde můžeme dodat rozložení pro naše stránky obsahu. Uložte a zavřete soubor **layout.jade**.
+    Tento kód říká modulu **Jade** , aby vygeneroval nějaký kód HTML pro naši aplikaci, a vytvoří **blok** s názvem **Content** , kde můžeme dodat rozložení pro naše stránky obsahu. Uložte a zavřete soubor **layout.jade** .
 
-3. Teď otevřete soubor **index.jade**, který představuje zobrazení používané v naší aplikaci, a nahraďte jeho obsah následujícím kódem:
+3. Teď otevřete soubor **index.jade** , který představuje zobrazení používané v naší aplikaci, a nahraďte jeho obsah následujícím kódem:
 
    ```html
    extends layout
@@ -427,11 +428,11 @@ Nyní sestavíme uživatelské rozhraní tak, aby uživatel mohl pracovat s apli
           button.btn(type="submit") Add item
    ```
 
-Tento kód rozšiřuje rozložení a poskytuje obsah pro zástupný symbol **content**, který jsme viděli v souboru **layout.jade** výše. V tomto rozložení jsme vytvořili dva formuláře HTML.
+Tento kód rozšiřuje rozložení a poskytuje obsah pro zástupný symbol **content** , který jsme viděli v souboru **layout.jade** výše. V tomto rozložení jsme vytvořili dva formuláře HTML.
 
-První formulář obsahuje tabulku dat a tlačítko, které umožňuje aktualizovat položky odesláním informací do metody kontroleru **/completeTask**.
+První formulář obsahuje tabulku dat a tlačítko, které umožňuje aktualizovat položky odesláním informací do metody kontroleru **/completeTask** .
     
-Druhý formulář obsahuje dvě vstupní pole a tlačítko, které umožňuje vytvořit novou položku odesláním informací do metody kontroleru **/addtask**. To je vše, co potřebujeme, aby aplikace fungovala.
+Druhý formulář obsahuje dvě vstupní pole a tlačítko, které umožňuje vytvořit novou položku odesláním informací do metody kontroleru **/addtask** . To je vše, co potřebujeme, aby aplikace fungovala.
 
 ## <a name="run-your-application-locally"></a><a name="_Toc395783181"></a>Místní spuštění aplikace
 
@@ -444,15 +445,15 @@ Teď, když jste sestavili aplikaci, ji můžete spustit místně pomocí násle
     > [!TIP]
     > Pokud se zobrazí chyba týkající se odložení v souboru layout. Jade nebo index. Jade, ujistěte se, že první dva řádky v obou souborech jsou zarovnané vlevo, bez mezer. Pokud jsou před prvními dvěma řádky mezery, odstraňte je, uložte oba soubory a pak aktualizujte okno prohlížeče. 
 
-2. K zadání nové úlohy použijte pole položka, název položky a kategorie a pak vyberte **Přidat položku**. Ve službě Azure Cosmos DB se vytvoří dokument s těmito vlastnostmi. 
+2. K zadání nové úlohy použijte pole položka, název položky a kategorie a pak vyberte **Přidat položku** . Ve službě Azure Cosmos DB se vytvoří dokument s těmito vlastnostmi. 
 
 3. Stránka by se měla aktualizovat, aby se v seznamu úkolů zobrazila nově vytvořená položka.
    
     :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Výuka Node.js – snímek obrazovky aplikace Hello World v okně prohlížeče":::
 
-4. Chcete-li dokončit úkol, zaškrtněte políčko v poli dokončeno a pak vyberte **aktualizovat úkoly**. Vytvořený dokument se aktualizuje a odebere ze zobrazení.
+4. Chcete-li dokončit úkol, zaškrtněte políčko v poli dokončeno a pak vyberte **aktualizovat úkoly** . Vytvořený dokument se aktualizuje a odebere ze zobrazení.
 
-5. Pokud chcete aplikaci zastavit, stiskněte CTRL + C v okně terminálu a pak ukončete dávkovou úlohu výběrem **Y**.
+5. Pokud chcete aplikaci zastavit, stiskněte CTRL + C v okně terminálu a pak ukončete dávkovou úlohu výběrem **Y** .
 
 ## <a name="deploy-your-application-to-web-apps"></a><a name="_Toc395783182"></a>Nasazení aplikace pro Web Apps
 
@@ -476,7 +477,7 @@ Po úspěšném dokončení aplikace v místním prostředí můžete službu na
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
+Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit** a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>Další kroky
 

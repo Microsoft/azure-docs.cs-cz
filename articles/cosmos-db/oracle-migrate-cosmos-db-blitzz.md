@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263c38e330bad00833bd31bc8a43208c3784bcf4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097477"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Oracle do Azure Cosmos DB účtu rozhraní API Cassandra pomocí Blitzz
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Rozhraní API Cassandra v Azure Cosmos DB se stal skvělou volbou pro podnikové úlohy spuštěné v Oracle z různých důvodů:
 
@@ -100,7 +101,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    Propustnost je nutné po dokončení migrace snížit. Na základě množství uložených dat a ru vyžadovaných pro jednotlivé operace můžete odhadnout propustnost vyžadovanou po migraci dat. Další informace o tom, jak odhadovat požadované ru, najdete v tématech [zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhad ru/s pomocí článků Azure Cosmos DB kapacity pro plánování](estimate-ru-with-capacity-planner.md) .
 
-1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno**a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
+1. V podokně **připojovací řetězec** Získejte **kontaktní bod, port, uživatelské jméno** a **primární heslo** účtu Azure Cosmos. Tyto hodnoty použijete v konfiguračním souboru.
 
 1. V terminálu CLI nastavte konfiguraci cílové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cosmosdb.yml`** příkazu a přidejte čárkami oddělený seznam identifikátorů URI hostitele, číslo portu, uživatelské jméno, heslo a další požadované parametry. Následuje příklad obsahu v konfiguračním souboru:
 

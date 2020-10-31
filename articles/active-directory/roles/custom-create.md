@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254ab7a10eb9779706ee31e5a16d51fe03b7122b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376058"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097987"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -31,11 +31,11 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Vytvoření nové vlastní role pro udělení přístupu pro správu registrací aplikací
 
 1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory**  >  **role a správci**  >  **novou vlastní roli**.
+1. Vyberte **Azure Active Directory**  >  **role a správci**  >  **novou vlastní roli** .
 
    ![Vytvoření nebo úprava rolí na stránce role a správci](./media/custom-create/new-custom-role.png)
 
-1. Na kartě **základy** zadejte název a popis role a pak klikněte na **Další**.
+1. Na kartě **základy** zadejte název a popis role a pak klikněte na **Další** .
 
    ![zadání názvu a popisu vlastní role na kartě základy](./media/custom-create/basics-tab.png)
 
@@ -44,8 +44,8 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 
       ![Na kartě oprávnění vyberte oprávnění pro vlastní roli.](./media/custom-create/permissions-tab.png)
 
-   1. Potom na panelu hledání zadejte "základní", vyberte `microsoft.directory/applications/basic/update` oprávnění a pak klikněte na **Další**.
-1. Na kartě **Revize + vytvořit** Zkontrolujte oprávnění a vyberte **vytvořit**.
+   1. Potom na panelu hledání zadejte "základní", vyberte `microsoft.directory/applications/basic/update` oprávnění a pak klikněte na **Další** .
+1. Na kartě **Revize + vytvořit** Zkontrolujte oprávnění a vyberte **vytvořit** .
 
 Vaše vlastní role se zobrazí v seznamu dostupných rolí, které se mají přiřadit.
 
@@ -169,12 +169,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 Podobně jako předdefinované role jsou vlastní role ve výchozím rozsahu přiřazeny ve výchozím oboru pro udělení oprávnění k přístupu ke všem registrům aplikací ve vaší organizaci. Ale na rozdíl od integrovaných rolí se můžou vlastní role přiřadit taky v oboru jednoho prostředku Azure AD. To vám umožní dát uživateli oprávnění aktualizovat přihlašovací údaje a základní vlastnosti pro jednu aplikaci, aniž by museli vytvořit druhou vlastní roli.
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění vývojáře aplikace v organizaci Azure AD.
-1. Vyberte **Registrace aplikací**.
+1. Vyberte **Registrace aplikací** .
 1. Vyberte registraci aplikace, ke které udělujete přístup pro správu. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vyberte registraci aplikace jako obor prostředku pro přiřazení role.](./media/custom-create/appreg-all-apps.png)
 
-1. V části registrace aplikace vyberte **role a správci**. Pokud jste ho ještě nevytvořili, postupujte podle pokynů v [předchozím postupu](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
+1. V části registrace aplikace vyberte **role a správci** . Pokud jste ho ještě nevytvořili, postupujte podle pokynů v [předchozím postupu](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
 
 1. Výběrem role otevřete stránku **přiřazení** .
 1. Vyberte **Přidat přiřazení** a přidejte uživatele. Uživateli se udělí jakákoli oprávnění jenom pro vybranou registraci aplikace.
@@ -183,4 +183,4 @@ Podobně jako předdefinované role jsou vlastní role ve výchozím rozsahu př
 
 - Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](permissions-reference.md).
-- Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](/azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).
+- Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](/azure/active-directory/fundamentals/users-default-permissions).

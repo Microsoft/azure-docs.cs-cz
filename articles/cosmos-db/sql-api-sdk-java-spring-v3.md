@@ -9,14 +9,16 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 1695fb04872e505842318d21e856a9a01b1b1f3a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477364"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097120"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>Jarní data Azure Cosmos DB v3 pro Core (SQL) API: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -57,7 +59,7 @@ Ve [jarních cloudových aplikacích Azure](https://azure.microsoft.com/services
 
 ## <a name="start-here"></a>Začněte tady
 
-# <a name="explore"></a>[Okno](#tab/explore)
+# <a name="explore"></a>[Zkoumání](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -100,9 +102,9 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="resources"></a>Zdroje a prostředky
 
-* **Přispívání do sady SDK**: [jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
+* **Přispívání do sady SDK** : [jarní data Azure Cosmos DB úložiště na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)
 
-* **Kurz**: [Azure Cosmos DB kurz pro jarní data na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
+* **Kurz** : [Azure Cosmos DB kurz pro jarní data na GitHubu](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started) 
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 

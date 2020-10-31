@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 9a5749d115a4d5d9ce1e0ac454609c7b639c2f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1b666e8929309778fc7b72e034a425c841fc2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309760"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095913"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 V tomto kurzu vytvoříme webovou stránku, která umožňuje uživatelům zadávat dotazy do rozhraní API pro automatické návrhy Bingu.
 
@@ -28,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření jednoduchého dotazu na rozhraní API pro automatické návrhy Bingu
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek automatické návrhy Bingu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) .
 
@@ -119,7 +124,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API pro automatické návrhy Bingu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API pro automatické návrhy Bingu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true** , funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API pro automatické návrhy Bingu. Pokud má **invalidate** hodnotu **false** , funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API pro automatické návrhy Bingu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -233,7 +238,7 @@ Také ošetřete možné chybové události v objektu XMLHttpRequest.
     });
 ```
 
-Odešlete požadavek. Zavřete funkci bingAutosuggest, značku **script** a značku **head**.
+Odešlete požadavek. Zavřete funkci bingAutosuggest, značku **script** a značku **head** .
 
 ```html
     request.send();
@@ -267,7 +272,7 @@ Vytvořte formulář HTML s textovým polem. Zpracování `oninput` události a 
 </form>
 ```
 
-Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
+Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div** .
 
 ```html
 <h2>Results</h2>
@@ -284,7 +289,7 @@ Uložte soubor.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 
-Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API pro automatické návrhy Bingu. Potom zadejte dotaz (zde v příkladu „sail“) do textového pole **Automatické návrhy**. Jak začnete psát, webová stránka se automaticky aktualizuje a zobrazuje výsledky pro automatické návrhy.
+Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API pro automatické návrhy Bingu. Potom zadejte dotaz (zde v příkladu „sail“) do textového pole **Automatické návrhy** . Jak začnete psát, webová stránka se automaticky aktualizuje a zobrazuje výsledky pro automatické návrhy.
 
 ```json
 {

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2016f00249da9abfa2f0904b14d6a34298973f99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408607"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096610"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>Použití MongoDB kompasu pro připojení k rozhraní API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto kurzu se dozvíte, jak pomocí [MongoDB kompasu](https://www.mongodb.com/products/compass) ukládat a spravovat data v Cosmos DB. Pro tento návod používáme rozhraní API Azure Cosmos DB pro MongoDB. U těch, které neznáte, je kompas pro MongoDB grafické uživatelské rozhraní. Často se používá k vizualizaci dat, spouštění ad-hoc dotazů spolu se správou vašich dat.
 
@@ -42,7 +43,7 @@ Pokud chcete účet Cosmos DB připojit k kompasu, můžete postupovat podle ná
 
     :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="Snímek obrazovky okna připojovací řetězec":::
 
-3. Otevřete kompas na ploše nebo počítači a klikněte na **připojit** a pak **se připojte k...**.
+3. Otevřete kompas na ploše nebo počítači a klikněte na **připojit** a pak **se připojte k...** .
 
 4. Kompas automaticky zjistí připojovací řetězec ve schránce a zobrazí výzvu k dotazování, jestli chcete použít, aby se připojil. Klikněte na **Ano** , jak je znázorněno na snímku obrazovky níže.
 

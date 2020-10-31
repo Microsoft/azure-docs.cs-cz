@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480917"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096695"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrace stovek terabajtů dat do Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB může uchovávat terabajty dat. Můžete provést rozsáhlou migraci dat a přesunout svou produkční úlohu do služby Azure Cosmos DB. Tento článek popisuje výzvy spojené s přesunem velkých objemů dat do služby Azure Cosmos DB a představuje nástroj, který pomáhá tyto výzvy řešit a migruje data do služby Azure Cosmos DB. V této případové studii zákazník použil rozhraní SQL API služby Cosmos DB.  
 
@@ -28,11 +29,11 @@ Azure Cosmos DB strategie migrace se aktuálně liší podle volby rozhraní API
 
 Stávající nástroje pro migraci dat na Azure Cosmos DB mají určitá omezení, která se budou obzvláště vymezit velkými škálami:
 
- * **Omezené možnosti horizontálního**navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
+ * **Omezené možnosti horizontálního** navýšení kapacity: aby bylo možné migrovat terabajty dat do Azure Cosmos DB co nejrychleji a efektivně spotřebovat celou zřízenou propustnost, klienti migrace by měli mít možnost horizontálního navýšení kapacity navýšit na neomezenou dobu.  
 
-* **Nedostatek sledování průběhu a vracení se změnami**: je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
+* **Nedostatek sledování průběhu a vracení se změnami** : je důležité sledovat průběh migrace a vracet se změnami při migraci velkých datových sad. V opačném případě všechny chyby, ke kterým dojde během migrace, zastaví migraci a vy budete muset proces začít od začátku. Nepovedlo se vám neproduktivní restartování celého procesu migrace, až 99% z něj už je dokončený.  
 
-* **Nedostatek fronty nedoručených zpráv**: v rámci velkých datových sad může v některých případech dojít k problémům s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
+* **Nedostatek fronty nedoručených zpráv** : v rámci velkých datových sad může v některých případech dojít k problémům s částmi zdrojových dat. Kromě toho může docházet k přechodným problémům s klientem nebo sítí. Některé z těchto případů by nemělo způsobit selhání celé migrace. I když většina nástrojů pro migraci má robustní možnosti opakovaného pokusů, které chrání před přerušovanými problémy, není vždy dostatek. Pokud je například méně než 0,01% zdrojových datových dokumentů větší než 2 MB, způsobí to, že zápis dokumentu selže v Azure Cosmos DB. V ideálním případě je vhodné, aby nástroj pro migraci zachoval tyto "neúspěšné" dokumenty do jiné fronty nedoručených zpráv, která může být zpracována po migraci. 
 
 Mnohé z těchto omezení se stanovují pro nástroje, jako je Azure Data Factory, služby Azure Data Migration Services. 
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: b82fdd40c9ae538d1d7aa87ab5b71ea6a6c0542d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d5958ea947f6b786e9fbc6c44ab914ea895d6e08
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487496"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096797"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Práce s daty s využitím průzkumníka Azure Cosmos 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zobrazit a spravovat data uložená v Azure Cosmos DB. Azure Cosmos DB Explorer je ekvivalentní existující kartě **Průzkumník dat** , která je k dispozici v Azure Portal při vytváření účtu Azure Cosmos DB. Klíčovými výhodami pro Azure Cosmos DB Explorer v rámci stávajících Průzkumníku dat jsou tyto:
 
@@ -27,19 +28,19 @@ Azure Cosmos DB Explorer je samostatné webové rozhraní, které umožňuje zob
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). 
 
-2. V části **všechny prostředky**vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec**.  
+2. V části **všechny prostředky** vyhledejte a přejděte na účet Azure Cosmos DB, vyberte klíče a zkopírujte **primární připojovací řetězec** .  
 
-3. Přejít na https://cosmos.azure.com/ , vložte připojovací řetězec a vyberte **připojit**. Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
+3. Přejít na https://cosmos.azure.com/ , vložte připojovací řetězec a vyberte **připojit** . Pomocí připojovacího řetězce můžete získat přístup k Průzkumníku Azure Cosmos DB bez jakýchkoli časových omezení.  
 
    Pokud chcete jiným uživatelům poskytnout dočasný přístup k vašemu Azure Cosmos DB účtu, můžete k tomu použít adresy URL pro čtení i zápis a přístup pro čtení. 
 
-4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce**. V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení**. Tyto adresy URL umožňují dočasně sdílet Azure Cosmos DB účet s ostatními uživateli. Přístup k účtu vyprší během 24 hodin, po kterém se můžete znovu připojit pomocí nové adresy URL pro přístup nebo připojovacího řetězce. 
+4. Otevřete okno **Průzkumník dat** vyberte otevřít na **celé obrazovce** . V místním dialogovém okně můžete zobrazit dvě adresy URL pro přístup – čtení i **zápis** a **čtení** . Tyto adresy URL umožňují dočasně sdílet Azure Cosmos DB účet s ostatními uživateli. Přístup k účtu vyprší během 24 hodin, po kterém se můžete znovu připojit pomocí nové adresy URL pro přístup nebo připojovacího řetězce. 
 
    **Čtení i zápis** – při sdílení adresy URL Read-Write s ostatními uživateli můžou zobrazit a upravit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu.
 
    **Číst** – když sdílíte adresu URL jen pro čtení s ostatními uživateli, můžou si Zobrazit databáze, kolekce, dotazy a další prostředky, které jsou přidružené k tomuto konkrétnímu účtu. Pokud třeba chcete sdílet výsledky dotazu s ostatními týmu, kteří nemají přístup k Azure Portal nebo vašemu účtu Azure Cosmos DB, můžete je zadat pomocí této adresy URL.
 
-   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít**. Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
+   Vyberte typ přístupu, se kterým chcete účet otevřít, a klikněte na **otevřít** . Po otevření Průzkumníka je prostředí stejné jako při použití karty Průzkumník dat v Azure Portal.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Otevřít Azure Cosmos DB Explorer":::
 

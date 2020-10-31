@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f32c7a97036319dcae610fd0baa2dad48763d8ae
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68883551"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094927"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vizuální vyhledávání Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API pro vizuální vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Každý požadavek by měl zahrnovat zemi nebo oblast uživatele a zvolený jazyk. Znalost trhu uživatele pomáhá službě Bing vracet odpovídající výsledky. Pokud nezadáte zemi, oblast a jazyk, Bing se snaží určit zemi, oblast a jazyk uživatele. Vzhledem k tomu, že výsledky mohou obsahovat odkazy na Bing, může správce země nebo oblasti a jazyku poskytovat preferované lokalizované uživatelské prostředí Bingu, pokud uživatel klikne na odkazy Bingu.
 
@@ -117,5 +122,5 @@ Případně můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|USA|Angličtina|cs-CZ|
+|USA|Angličtina|en-US|
 |USA|Španělština|ES – US|

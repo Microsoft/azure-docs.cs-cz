@@ -7,14 +7,15 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488380"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096355"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>Řešení potíží s dotazy při použití rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako počáteční místo pro řešení potíží s pomalými nebo nákladnými dotazy v rozhraní API Azure Cosmos DB pro MongoDB. Pokud používáte rozhraní API pro Azure Cosmos DB Core (SQL), přečtěte si článek [Průvodce řešením potíží s dotazem rozhraní SQL API](troubleshoot-query-performance.md) .
 

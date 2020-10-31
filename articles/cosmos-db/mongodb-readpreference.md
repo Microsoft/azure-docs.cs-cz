@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482260"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096389"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Jak globálně distribuovat čtení pomocí rozhraní Azure Cosmos DB API pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto článku se dozvíte, jak globálně distribuovat operace čtení s nastavením [předvoleb čtení MongoDB](https://docs.mongodb.com/manual/core/read-preference/) pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 
@@ -145,7 +146,7 @@ Kromě režimu předvolby čtení umožňuje protokol MongoDB použití značek 
       }
 ```
 
-Proto může MongoClient použít `region` značku spolu s názvem oblasti a směrovat tak operace čtení na konkrétní oblasti. V případě účtů Cosmos se názvy oblastí nacházejí v Azure Portal vlevo v části **Nastavení – >data repliky globálně**. Toto nastavení je užitečné při dosahování **izolace čtení** – případy, kdy klientská aplikace chce směrovat operace čtení pouze do konkrétní oblasti. Toto nastavení je ideální pro scénáře typu neprodukčního a analytického prostředí, které běží na pozadí a nejsou důležitými službami pro produkční prostředí.
+Proto může MongoClient použít `region` značku spolu s názvem oblasti a směrovat tak operace čtení na konkrétní oblasti. V případě účtů Cosmos se názvy oblastí nacházejí v Azure Portal vlevo v části **Nastavení – >data repliky globálně** . Toto nastavení je užitečné při dosahování **izolace čtení** – případy, kdy klientská aplikace chce směrovat operace čtení pouze do konkrétní oblasti. Toto nastavení je ideální pro scénáře typu neprodukčního a analytického prostředí, které běží na pozadí a nejsou důležitými službami pro produkční prostředí.
 
 Následující fragment kódu z ukázkové aplikace ukazuje, jak nakonfigurovat předvolby pro čtení pomocí značek v NodeJS:
 
@@ -167,7 +168,7 @@ V tomto článku jste se naučili, jak globálně distribuovat operace čtení p
 Pokud nebudete tuto aplikaci nadále používat, odstraňte všechny prostředky vytvořené tímto článkem v Azure Portal pomocí následujících kroků:
 
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+2. Na stránce skupiny prostředků klikněte na **Odstranit** , do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 
