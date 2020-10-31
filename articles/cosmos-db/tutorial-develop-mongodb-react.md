@@ -10,14 +10,15 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 06c309de5054887a64e61d61345190c776835709
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cdb8612bb04d52df3603aa4520cad4cbacb661da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476582"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074076"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace použila pro server uzel a expresní verzi, připojí se k databázi Cosmos s nakonfigurovaným [rozhraním API Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí reakce front-end k serverové části aplikace. V tomto kurzu také ukážeme, Cosmos DB jak v Azure Portal a v případě, že nasadíte aplikaci na Internet a jak nasazovat aplikaci na Internet, aby všichni mohli sledovat své oblíbené Heroes. 
 
@@ -91,7 +92,7 @@ Toto video ukazuje, jak dokončit aplikaci a napojování uživatelského rozhra
 Pokud nebudete tuto aplikaci nadále používat, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem na webu Azure Portal. 
 
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku. 
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+2. Na stránce skupiny prostředků klikněte na **Odstranit** , do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

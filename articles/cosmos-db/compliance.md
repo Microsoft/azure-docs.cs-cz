@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a013e07ada0ba88b20598c23f706eb5ee71d49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83747360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073059"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Dodržování předpisů ve službě Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB je k dispozici ve všech oblastech Azure. Společnost Microsoft pro zákazníky zpřístupní pět různých cloudových prostředí Azure:
 
@@ -47,12 +48,12 @@ Počet certifikací služby Azure Cosmos DB se neustále zvyšuje. V současné 
 | ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Další informace o každé z těchto nabídek dodržování předpisů a o tom, jak vám můžou těžit, najdete v tématu [přehled Microsoft Azure dodržování předpisů](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) .
+Další informace o každé z těchto nabídek dodržování předpisů a o tom, jak vám jejich výhody dostanou, najdete v tématu [Microsoft Azure nabídky dodržování předpisů](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/), dodatek a & B.
 
 V následující tabulce jsou uvedeny certifikace podporované nástrojem Azure Cosmos DB v Azure Government:
 
 | **Globálně použitelné** | **Státní správa USA** | **Specifické pro obor** | 
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | Certifikace pro CSA STAR | CJIS| HIPAA BAA | 
 | Ověření identity CSA STAR| DoD SRG úrovně 2| HITRUST  | 
 | ISO 20000-1:2011 | DoD SRG úrovně 4 | PCI DSS | 
@@ -68,8 +69,14 @@ V následující tabulce jsou uvedeny certifikace podporované nástrojem Azure 
 
 Další informace o certifikaci dodržování předpisů Azure najdete v následujících článcích:
 
-* Nejnovější certifikace dodržování předpisů pro Azure Cosmos DB najdete v tématu [Přehled dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).  
+* Chcete-li zjistit nejnovější certifikace dodržování předpisů pro Azure Cosmos DB, přečtěte si téma [nabídky dodržování předpisů Microsoft Azure](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)A příloha a & B.  
 
-* Přehled zabezpečení Azure Cosmos DB a nejnovější vylepšení najdete v článku o [zabezpečení databáze Azure Cosmos](database-security.md) .
+* Přehled zabezpečení Azure Cosmos DB a nejnovější vylepšení najdete v tématu [zabezpečení databáze Azure Cosmos](database-security.md).
+
+* Doporučení k vylepšení stav zabezpečení nasazení Azure Cosmos DB najdete v [Azure Cosmos DB směrného plánu zabezpečení](security-baseline.md). 
 
 * Další informace o certifikaci Microsoftu najdete v [Centrum zabezpečení Azure](https://azure.microsoft.com/support/trust-center/).
+
+* Informace o kompatibilitě FedRAMP najdete v článku [služby Azure podle FedRAMP a DoD CC SRG Scope audit](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+
+* Informace o dodržování předpisů DoD najdete v tématu [nabídky pro dodržování předpisů DoD](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide).

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30e1f43e283707434adfa48b8754a7b0509b9eed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798257"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075343"
 ---
 # <a name="log-azure-cosmos-db"></a>PROTOKOL (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí přirozený logaritmus zadaného číselného výrazu.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -39,7 +41,7 @@ LOG (<numeric_expr> [, <base>])
   
   Ve výchozím nastavení vrátí LOG () přirozený logaritmus. Základ logaritmu na jinou hodnotu můžete změnit pomocí volitelného základního parametru.  
   
-  Přirozený logaritmus je logaritmus základu **e**, kde **e** je Irrational konstanta, která je přibližně rovna hodnotě 2,718281828.  
+  Přirozený logaritmus je logaritmus základu **e** , kde **e** je Irrational konstanta, která je přibližně rovna hodnotě 2,718281828.  
   
   Přirozený logaritmus exponenciálního čísla je číslo samotné: LOG (EXP (n)) = n. A exponenciální hodnota přirozeného logaritmu čísla je samotné číslo: EXP (LOG (n)) = n.
 

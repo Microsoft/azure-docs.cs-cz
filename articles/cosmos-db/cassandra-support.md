@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489315"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073097"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Funkce Apache Cassandra, které podporuje rozhraní API Cassandra pro Azure Cosmos DB 
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete komunikovat s Azure Cosmos DB rozhraní API Cassandra prostřednictvím klientských [ovladačů](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver)Open-Source Cassandra kompatibilního s [protokolem](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) CQL Binary Protocol v4. 
 
@@ -44,33 +45,33 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje následující datové typ
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| ascii  | Ano |
-| bigint  | Ano |
-| blob  | Ano |
-| boolean  | Ano |
-| counter  | Ano |
-| date  | Ano |
-| decimal  | Ano |
-| double  | Ano |
-| float  | Ano |
-| frozen  | Ano |
-| inet  | Ano |
-| int  | Ano |
-| list  | Ano |
-| set  | Ano |
-| smallint  | Ano |
-| text  | Ano |
-| time  | Ano |
-| časové razítko  | Ano |
-| timeuuid  | Ano |
-| tinyint  | Ano |
-| tuple  | Ano |
-| uuid  | Ano |
-| varchar  | Ano |
-| varint  | Ano |
-| tuples | Ano | 
-| udts  | Ano |
-| mapa | Ano |
+| ascii  | Yes |
+| bigint  | Yes |
+| blob  | Yes |
+| boolean  | Yes |
+| counter  | Yes |
+| date  | Yes |
+| decimal  | Yes |
+| double  | Yes |
+| float  | Yes |
+| frozen  | Yes |
+| inet  | Yes |
+| int  | Yes |
+| list  | Yes |
+| set  | Yes |
+| smallint  | Yes |
+| text  | Yes |
+| time  | Yes |
+| časové razítko  | Yes |
+| timeuuid  | Yes |
+| tinyint  | Yes |
+| tuple  | Yes |
+| uuid  | Yes |
+| varchar  | Yes |
+| varint  | Yes |
+| tuples | Yes | 
+| udts  | Yes |
+| mapa | Yes |
 
 Pro deklaraci datového typu je podporovaná statická.
 
@@ -80,10 +81,10 @@ Rozhraní API Cassandra pro Azure Cosmos DB podporuje tyto funkce CQL:
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| Klíčové | Ano |
-| TTL | Ano |
-| writetime | Ano |
-| přetypování | Ne |
+| Klíčové | Yes |
+| TTL | Yes |
+| writetime | Yes |
+| přetypování | No |
 
 \* Rozhraní API Cassandra podporuje token jako projekci nebo selektor a povoluje token (PK) na levé straně klauzule WHERE. Například `WHERE token(pk) > 1024` je podporován, ale není `WHERE token(pk) > token(100)` podporován.
 
@@ -92,34 +93,34 @@ Agregační funkce:
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| min | Ano |
-| max | Ano |
-| volání | Ano |
-| count | Ano |
+| min | Yes |
+| max | Yes |
+| volání | Yes |
+| count | Yes |
 
 Funkce pro převod objektů BLOB:
  
 |Příkaz  |Podporováno |
 |---------|---------|
-| typeAsBlob(value)   | Ano |
-| blobAsType(value) | Ano |
+| typeAsBlob(value)   | Yes |
+| blobAsType(value) | Yes |
 
 
 Funkce UUID a timeuuid:
  
 |Příkaz  |Podporováno |
 |---------|---------|
-| dateOf()  | Ano |
-| now()  | Ano |
-| minTimeuuid()  | Ano |
-| unixTimestampOf()  | Ano |
-| toDate(timeuuid)  | Ano |
-| toTimestamp(timeuuid)  | Ano |
-| toTimestamp(timeuuid)  | Ano |
-| toDate(timeuuid)  | Ano |
-| toTimestamp(timeuuid)  | Ano |
-| toTimestamp(date)  | Ano |
-| toTimestamp(date) | Ano |
+| dateOf()  | Yes |
+| now()  | Yes |
+| minTimeuuid()  | Yes |
+| unixTimestampOf()  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toDate(timeuuid)  | Yes |
+| toTimestamp(timeuuid)  | Yes |
+| toTimestamp(date)  | Yes |
+| toTimestamp(date) | Yes |
 
 
   
@@ -129,60 +130,60 @@ Azure Cosmos DB podporuje u účtů rozhraní API Cassandra následující datab
 
 |Příkaz  |Podporováno |
 |---------|---------|
-| POVOLENÍ FILTROVÁNÍ | Ano |
+| POVOLENÍ FILTROVÁNÍ | Yes |
 | ZMĚNIT MÍSTO NA DISKU | Není k dispozici (služba PaaS, interně spravovaná replikace)|
-| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ZMĚNIT ROLI | Ne |
-| ALTER TABLE | Ano |
-| ZMĚNIT TYP | Ne |
-| ZMĚNIT UŽIVATELE | Ne |
+| ZMĚNIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ZMĚNIT ROLI | No |
+| ALTER TABLE | Yes |
+| ZMĚNIT TYP | No |
+| ZMĚNIT UŽIVATELE | No |
 | PARTIE | Ano (pouze nezaznamenaná dávka)|
 | KOMPAKTNÍ ÚLOŽIŠTĚ | Není k dispozici (služba PaaS) |
-| VYTVOŘIT AGREGOVANOU | Ne | 
-| VYTVOŘIT VLASTNÍ INDEX (SASI) | Ne |
+| VYTVOŘIT AGREGOVANOU | No | 
+| VYTVOŘIT VLASTNÍ INDEX (SASI) | No |
 | CREATE INDEX | Ano (bez [zadání názvu indexu](cassandra-secondary-index.md)a indexů na klíčích clusteringu nebo celá zmrazená kolekce není podporovaná) |
-| CREATE FUNCTION | Ne |
-| VYTVOŘIT prostor (nastavení replikace se ignorují) | Ano |
-| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| CREATE TABLE | Ano |
-| VYTVOŘIT AKTIVAČNÍ UDÁLOST | Ne |
-| VYTVOŘIT TYP | Ano |
-| VYTVOŘIT ROLI | Ne |
-| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | Ne |
-| DELETE | Ano |
-| Odstranit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| DISTINCT | Ne |
-| ZRUŠIT AGREGAČNÍ | Ne |
-| DROP FUNCTION | Ne |
-| DROP INDEX | Ano |
-| ODKLÁDACÍ MÍSTO | Ano |
-| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | Ne |
-| ROLE ZRUŠENÍ | Ne |
-| DROP TABLE | Ano |
-| VYŘADIT AKTIVAČNÍ UDÁLOST | Ne | 
-| TYP PŘETAŽENÍ | Ano |
-| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | Ne |
-| GRANT | Ne |
-| INSERT | Ano |
-| Vložit (odlehčené transakce s PODMÍNKou IF)| Ano |
-| OPRÁVNĚNÍ K VYPSÁNÍ | Ne |
-| SEZNAM ROLÍ | Ne |
-| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | Ne |
-| REVOKE | Ne |
-| SELECT | Ano |
-| VYBRAT (odlehčené transakce s PODMÍNKou IF)| Ne |
-| UPDATE | Ano |
-| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| Ne |
-| ZKRÁTIT | Ne |
-| USE | Ano |
+| CREATE FUNCTION | No |
+| VYTVOŘIT prostor (nastavení replikace se ignorují) | Yes |
+| VYTVOŘIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| CREATE TABLE | Yes |
+| VYTVOŘIT AKTIVAČNÍ UDÁLOST | No |
+| VYTVOŘIT TYP | Yes |
+| VYTVOŘIT ROLI | No |
+| VYTVOŘIT uživatele (zastaralé v nativní Apache Cassandra) | No |
+| DELETE | Yes |
+| Odstranit (odlehčené transakce s PODMÍNKou IF)| Yes |
+| DISTINCT | No |
+| ZRUŠIT AGREGAČNÍ | No |
+| DROP FUNCTION | No |
+| DROP INDEX | Yes |
+| ODKLÁDACÍ MÍSTO | Yes |
+| VYŘADIT MATERIALIZOVANÉ ZOBRAZENÍ | No |
+| ROLE ZRUŠENÍ | No |
+| DROP TABLE | Yes |
+| VYŘADIT AKTIVAČNÍ UDÁLOST | No | 
+| TYP PŘETAŽENÍ | Yes |
+| Přetažení uživatele (zastaralé v nativní Apache Cassandra) | No |
+| GRANT | No |
+| INSERT | Yes |
+| Vložit (odlehčené transakce s PODMÍNKou IF)| Yes |
+| OPRÁVNĚNÍ K VYPSÁNÍ | No |
+| SEZNAM ROLÍ | No |
+| SEZNAM uživatelů (zastaralých v nativních Apache Cassandra) | No |
+| REVOKE | No |
+| SELECT | Yes |
+| VYBRAT (odlehčené transakce s PODMÍNKou IF)| No |
+| UPDATE | Yes |
+| AKTUALIZACE (lehké transakce s PODMÍNKou IF)| No |
+| ZKRÁTIT | No |
+| USE | Yes |
 
 ## <a name="json-support"></a>Podpora JSON
 |Příkaz  |Podporováno |
 |---------|---------|
-| VYBRAT JSON | Ano |
-| VLOŽIT JSON | Ano |
-| fromJson() | Ne |
-| toJson () | Ne |
+| VYBRAT JSON | Yes |
+| VLOŽIT JSON | Yes |
+| fromJson() | No |
+| toJson () | No |
 
 
 ## <a name="cassandra-api-limits"></a>Omezení rozhraní API Cassandra

@@ -7,23 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d1b03417b81299ca959670287e252402e994f15a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476395"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073821"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Jako plně spravovaná cloudová databázová služba Azure Cosmos DB zjednodušuje fakturaci tím, že se účtuje jenom za vaše databázové operace a využité úložiště. V porovnání s místními nebo IaaS alternativami nejsou žádné další licenční poplatky, náklady na nástroj ani náklady na zařízení. Když posuzujete možnosti více oblastí Azure Cosmos DB, databázová služba poskytuje výrazné snížení nákladů ve srovnání se stávajícími místními nebo IaaS řešeními.
 
-- **Databázové operace**: způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
+- **Databázové operace** : způsob, jakým se vám účtují operace s databází, závisí na typu účtu Azure Cosmos, který používáte.
 
-  - **Zajištěná propustnost**: za každou hodinu se účtuje po hodinách maximální zajištěné propustnosti v přírůstcích po 100 ru/s.
-  - Bez **serveru**: účtuje se každou hodinu za celkovou částku jednotek žádostí spotřebovaných operacemi vaší databáze.
+  - **Zajištěná propustnost** : za každou hodinu se účtuje po hodinách maximální zajištěné propustnosti v přírůstcích po 100 ru/s.
+  - Bez **serveru** : účtuje se každou hodinu za celkovou částku jednotek žádostí spotřebovaných operacemi vaší databáze.
 
-- **Úložiště**: za určitou hodinu se účtuje paušální sazba za celkovou velikost úložiště (v GB) spotřebované Vašimi daty a indexy.
+- **Úložiště** : za určitou hodinu se účtuje paušální sazba za celkovou velikost úložiště (v GB) spotřebované Vašimi daty a indexy.
 
 Nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
@@ -284,8 +285,8 @@ Celkový počet faktur (bez rezervované kapacity) by byl (za 30 dní nebo 720 h
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**|**Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|USA – východ|$0,008 |50 K|$4|$2 880 |
-|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
+|East US|$0,008 |50 K|$4|$2 880 |
+|Japan East|$0,009 |50 K| $4,50 |$3 240 |
 |Celkem|||$8,50|$6 120 |
 
 Pojďme si vzít v úvahu, že jste místo toho koupili rezervovanou kapacitu. Rezervovanou kapacitu můžete zakoupit 100 – K RU/s za cenu $56 064 po dobu jednoho roku (s 20% slevou) nebo $6,40 za hodinu. Podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)na ceny rezervovaných kapacit.  
@@ -298,8 +299,8 @@ Z toho, co jste efektivně koupili, je kredit $8 za hodinu, za 100 K RU/s pomoc�
 
 |**Oblast**| **Hodinová cena za 100 RU/s**|**Jednotky (RU/s)**| **Fakturovaná částka (každou hodinu)**| **Fakturovaná částka (měsíčně)**|
 |----|----|----|----|----|
-|USA – východ|$0,008 |50 K|$4|$2 880 |
-|Japonsko – východ|$0,009 |50 K| $4,50 |$3 240 |
+|East US|$0,008 |50 K|$4|$2 880 |
+|Japan East|$0,009 |50 K| $4,50 |$3 240 |
 |||Průběžné platby|$8,50|$6120|
 |Zakoupená Rezervovaná kapacita|$0,0064 (20% sleva) |předem zakoupená kapacita 100 RU/s nebo $8 |-$8|-$5 760 |
 |Čistý účet|||$0,50 |$360 |

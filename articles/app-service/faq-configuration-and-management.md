@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962345"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074178"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -60,23 +60,25 @@ Další informace najdete v tématu [omezení App Service](../azure-resource-man
 Nastavení časového pásma serveru pro vaši webovou aplikaci:
 
 1. V Azure Portal v předplatném App Service přejděte do nabídky **nastavení aplikace** .
-2. V části **nastavení aplikace**přidejte toto nastavení:
+2. V části **nastavení aplikace** přidejte toto nastavení:
     * Key = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
-3. Vyberte **Uložit**.
+3. Vyberte **Uložit** .
 
-Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
+Pro služby App Service, které běží na Windows, se podívejte na výstup z `tzutil /L` příkazu Windows. Použijte hodnotu z druhého řádku každé položky. Například: "Tonga (běžný čas)". Některé z těchto hodnot jsou také uvedeny ve sloupci **timezone (časové pásmo** ) ve [výchozích časových pásmech](/windows-hardware/manufacture/desktop/default-time-zones).
+
+Pro služby App Services spuštěné v systému Linux nastavte hodnotu z [databáze IANA TZ](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Například: "Amerika/Adak".
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč dojde k selhání mých nepřetržitých webových úloh?
 
-Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. To umožňuje systému šetřit prostředky. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se webová aplikace neustále načetla. Pokud vaše webová aplikace spouští nepřetržité webové úlohy, měli byste zapnout funkci **Always On**, jinak nemusí být webové úlohy spolehlivě fungovat. Další informace najdete v tématu [Vytvoření nepřetržitě spuštěné úlohy WebJob](webjobs-create.md#CreateContinuous).
+Ve výchozím nastavení jsou webové aplikace uvolněny, pokud nejsou po stanovenou dobu nečinné. To umožňuje systému šetřit prostředky. V plánech Basic a Standard můžete zapnout nastavení **Always On** , aby se webová aplikace neustále načetla. Pokud vaše webová aplikace spouští nepřetržité webové úlohy, měli byste zapnout funkci **Always On** , jinak nemusí být webové úlohy spolehlivě fungovat. Další informace najdete v tématu [Vytvoření nepřetržitě spuštěné úlohy WebJob](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Návody získat odchozí IP adresu pro moji webovou aplikaci?
 
 Získání seznamu odchozích IP adres pro vaši webovou aplikaci:
 
 1. V okně Azure Portal v okně webové aplikace přejděte do nabídky **vlastnosti** .
-2. Vyhledejte **odchozí IP adresy**.
+2. Vyhledejte **odchozí IP adresy** .
 
 Zobrazí se seznam odchozích IP adres.
 
@@ -129,7 +131,7 @@ Kontrola protokolů webové úlohy:
 2. Vyberte webovou úlohu.
 3. Vyberte tlačítko **přepnout výstup** .
 4. Pokud chcete stáhnout výstupní soubor, vyberte odkaz **ke stažení** .
-5. Pro jednotlivé běhy vyberte **jednotlivé vyvolání**.
+5. Pro jednotlivé běhy vyberte **jednotlivé vyvolání** .
 6. Vyberte tlačítko **přepnout výstup** .
 7. Vyberte odkaz ke stažení.
 
@@ -183,8 +185,8 @@ Pro zachycení trasování F12 máte dvě možnosti:
 ### <a name="f12-console-output"></a>Výstup konzoly F12
 
 1. Vyberte kartu **Konzola** .
-2. Pro každou kartu, která obsahuje více než 0 položek, vyberte kartu (**Chyba**, **varování**nebo **informace**). Pokud karta není vybraná, ikona karty je po přesunutí kurzoru z ní šedá nebo černá.
-3. V oblasti zpráv v podokně klikněte pravým tlačítkem myši a vyberte možnost **Kopírovat vše**.
+2. Pro každou kartu, která obsahuje více než 0 položek, vyberte kartu ( **Chyba** , **varování** nebo **informace** ). Pokud karta není vybraná, ikona karty je po přesunutí kurzoru z ní šedá nebo černá.
+3. V oblasti zpráv v podokně klikněte pravým tlačítkem myši a vyberte možnost **Kopírovat vše** .
 4. Vložte zkopírovaný text do souboru a pak soubor uložte.
 
 Chcete-li zobrazit soubor HAR, můžete použít [prohlížeč Har](http://www.softwareishard.com/har/viewer/).
@@ -282,7 +284,7 @@ Podrobnou dokumentaci k ověřování a autorizaci v App Service najdete v člá
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Návody přesměrovat výchozí doménu *. azurewebsites.net na vlastní doménu webové aplikace Azure?
 
-Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se přiřadí výchozí *název_webu*. azurewebsites.NET doména. Pokud do svého webu přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k vaší výchozí doméně *. azurewebsites.net, můžete přesměrovat výchozí adresu URL. Informace o tom, jak přesměrovat veškerý provoz z výchozí domény vašeho webu do vlastní domény, najdete v tématu [přesměrování výchozí domény do vlastní domény ve službě Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Když vytváříte nový web pomocí Web Apps v Azure, k vaší lokalitě se přiřadí výchozí *název_webu* . azurewebsites.NET doména. Pokud do svého webu přidáte vlastní název hostitele a nechcete, aby uživatelé měli přístup k vaší výchozí doméně *. azurewebsites.net, můžete přesměrovat výchozí adresu URL. Informace o tom, jak přesměrovat veškerý provoz z výchozí domény vašeho webu do vlastní domény, najdete v tématu [přesměrování výchozí domény do vlastní domény ve službě Azure Web Apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Návody určit, která verze rozhraní .NET je nainstalovaná v App Service?
 

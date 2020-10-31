@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a25cd2c0a9205dc184640e95f122c770b29cf24a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486527"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073243"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ověřování pomocí certifikátů umožňuje ověřování klientské aplikace pomocí Azure Active Directory (Azure AD) a klientského certifikátu. Ověřování pomocí certifikátů můžete provádět na počítači, na kterém potřebujete identitu, jako je místní počítač nebo virtuální počítač v Azure. Vaše aplikace potom může číst Azure Cosmos DB klíčů bez použití klíčů přímo v aplikaci. Tento článek popisuje, jak vytvořit ukázkovou aplikaci Azure AD, nakonfigurovat ji pro ověřování na základě certifikátů, přihlaste se k Azure pomocí nové identity aplikace a pak načte klíče z vašeho účtu Azure Cosmos. Tento článek používá Azure PowerShell k nastavení identit a poskytuje ukázkovou aplikaci v jazyce C#, která ověřuje a přistupuje k klíčům z vašeho účtu Azure Cosmos.  
 
@@ -30,7 +31,7 @@ V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služb
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace**. 
+1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace** . 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
 
@@ -44,7 +45,7 @@ V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služb
 
 1. Po vyplnění formuláře vyberte **Registrovat** .
 
-1. Po zaregistrování aplikace si poznamenejte **ID aplikace (ID klienta)** a **ID objektu**. Tyto podrobnosti budete používat v dalších krocích. 
+1. Po zaregistrování aplikace si poznamenejte **ID aplikace (ID klienta)** a **ID objektu** . Tyto podrobnosti budete používat v dalších krocích. 
 
    :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
 
@@ -107,7 +108,7 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
-1. Vyberte **Přidat** a **Přidat přiřazení role**. Přidejte dotazů, který jste vytvořili v předchozím kroku, s rolí **přispěvatele** , jak je znázorněno na následujícím snímku obrazovky:
+1. Vyberte **Přidat** a **Přidat přiřazení role** . Přidejte dotazů, který jste vytvořili v předchozím kroku, s rolí **přispěvatele** , jak je znázorněno na následujícím snímku obrazovky:
 
    :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
 
@@ -123,9 +124,9 @@ V registraci aplikace Azure pro klientskou aplikaci:
 
 1. Otevřete podokno Azure **Active Directory** , v podokně **Registrace aplikací** a otevřete ukázkovou aplikaci, kterou jste vytvořili v předchozím kroku. 
 
-1. Vyberte **certifikáty & tajných** kódů a pak **Nahrajte certifikát**. Vyhledejte soubor certifikátu, který jste vytvořili v předchozím kroku, a nahrajte ho.
+1. Vyberte **certifikáty & tajných** kódů a pak **Nahrajte certifikát** . Vyhledejte soubor certifikátu, který jste vytvořili v předchozím kroku, a nahrajte ho.
 
-1. Vyberte **Přidat**. Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
+1. Vyberte **Přidat** . Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
 
 ## <a name="access-the-keys-from-powershell"></a>Přístup k klíčům z PowerShellu
 

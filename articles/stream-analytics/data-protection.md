@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746410"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074246"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -59,7 +59,7 @@ Další informace o [nabídkách dodržování předpisů Microsoftu](https://ga
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** . 
 
@@ -73,6 +73,27 @@ Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro
 
    ![Nastavení účtu úložiště privátních dat](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>Soukromé datové prostředky, které jsou uloženy
+
+Všechna privátní data, která jsou potřeba k uchování pomocí Stream Analytics, se ukládají do svého účtu úložiště. Mezi soukromé datové prostředky patří: 
+
+* Dotazy, které jste vytvořili, a jejich související konfigurace  
+
+* Uživatelsky definované funkce 
+
+* Kontrolní body vyžadované modulem runtime Stream Analytics
+
+* Snímky referenčních dat 
+
+Ukládají se také podrobnosti o připojení vašich prostředků, které používá vaše úloha Stream Analytics. Zašifrujte svůj účet úložiště, abyste zabezpečili všechna vaše data. 
+
+Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
+
+## <a name="enables-data-residency"></a>Povoluje zasídlí dat 
+Tuto funkci můžete použít k vykonání požadavků na všechny požadavky na data, které můžete mít v souladu s odpovídajícím účtem úložiště.
+
+## <a name="known-issues"></a>Známé problémy
+K dispozici je známý problém, kdy úloha pomocí spravovaného klíče zákazníka spustí chyby při použití spravované identity k ověření pro jakékoli vstupy nebo výstupy. 
 
 ## <a name="next-steps"></a>Další kroky
 

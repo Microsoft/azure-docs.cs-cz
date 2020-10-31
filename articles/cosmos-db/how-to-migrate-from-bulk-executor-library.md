@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7f51f6944de48e58ff53e7685164df3a04afe56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491015"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075581"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny hromadného prováděcího modulu do hromadné podpory v sadě Azure Cosmos DB .NET V3 SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje nezbytné kroky pro migraci kódu existující aplikace, který používá [knihovnu hromadného prováděcího modulu .NET](bulk-executor-dot-net.md) , do funkce [Hromadná podpora](tutorial-sql-api-dotnet-bulk-import.md) v nejnovější verzi sady .NET SDK.
 

@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a876c5ba9c289f0edbbfdf8727e9957e7937b781
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c9df71763c610f9773949ef618de7840ae752d82
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476242"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073566"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB zajišťuje flexibilitu schématu a bohatou indexaci prostřednictvím nativního datového modelu [JSON](https://www.json.org) . Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumentů a uložených procedur, jsou modelovány a uloženy jako dokumenty JSON. Jako požadavek na přenos, JSON (a Azure Cosmos DB) podporuje jenom malou sadu základních typů: String, Number, Boolean, Array, Object a null. JSON je však flexibilní a umožňuje vývojářům a architekturám znázornit komplexnější typy pomocí těchto primitiv a jejich sestavování jako objektů nebo polí.
 

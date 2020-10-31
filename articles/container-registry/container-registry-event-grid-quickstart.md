@@ -4,12 +4,12 @@ description: V tomto rychlém startu povolíte Event Grid události pro registr 
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736853"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074212"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
@@ -19,11 +19,11 @@ Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí
 
 ![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
+- Příkazy rozhraní příkazového řádku Azure v tomto článku jsou formátované pro prostředí **bash** Shell. Pokud používáte jiné prostředí, jako je PowerShell nebo příkazový řádek, možná budete muset odpovídajícím způsobem upravit řádky pro pokračování řádku nebo přiřazení proměnných. V tomto článku se k minimalizaci velikosti požadovaných příkazů používají proměnné.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -200,7 +200,7 @@ Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi udál
 
 ![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Blahopřejeme vám. Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
+Gratulujeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid koncepty
 description: Popisuje Azure Event Grid a jeho koncepty. Definuje několik klíčových součástí Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116484"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075105"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
@@ -37,11 +37,11 @@ Informace o implementaci některého z podporovaných zdrojů Event Grid najdete
 
 Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. Vydavatel vytvoří téma Event Grid a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Pro reakci na určité typy událostí předplatitelé rozhodují, která témata se přihlásí k odběru.
 
-Systémová témata jsou integrovaná témata poskytované službami Azure, jako jsou Azure Storage, Azure Event Hubs a Azure Service Bus. V předplatném Azure můžete vytvořit systémová témata a přihlásit se k jejich odběru. Další informace najdete v tématu [Přehled systémových témat](system-topics.md). 
+**Systémová témata** jsou integrovaná témata poskytované službami Azure, jako jsou Azure Storage, Azure Event Hubs a Azure Service Bus. V předplatném Azure můžete vytvořit systémová témata a přihlásit se k jejich odběru. Další informace najdete v tématu [Přehled systémových témat](system-topics.md). 
 
-Vlastní témata jsou témata aplikací a témata třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md).
+**Vlastní témata** jsou témata aplikací a třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md). Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
-Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
+K dispozici je jiný typ tématu: **Partnerská část** . Funkce [partnerských událostí](partner-events-overview.md) umožňuje poskytovateli SaaS třetí strany publikovat události ze svých služeb, aby byly dostupné pro uživatele, kteří se můžou přihlásit k odběru těchto událostí. Poskytovatel SaaS zpřístupňuje typ tématu, **Partnerská část** , kterou předplatitelé používají ke spotřebě událostí. Nabízí také čistý model Pub-sub, který odděluje obavy a vlastnictví prostředků, které používají vydavatelé a předplatitelé událostí.
 
 ## <a name="event-subscriptions"></a>Odběry událostí
 

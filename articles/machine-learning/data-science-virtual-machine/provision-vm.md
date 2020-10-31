@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e807cde2d99cf23d459b395444d642e46ada32ab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88816350"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93071449"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
@@ -36,18 +36,18 @@ Vytvoření instance DSVM:
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
 
 1. Vyplňte kartu **základy** :
-      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
-      * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
-      * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
-      * **Umístění**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Obrázek**: ponechte výchozí hodnotu.
-      * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
-      * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
-      * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
-1. Vyberte **Zkontrolovat a vytvořit**.
+      * **Předplatné** : Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+      * **Skupina prostředků** : Vytvořte novou skupinu nebo použijte existující.
+      * **Název virtuálního počítače** : zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
+      * **Umístění** : vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Obrázek** : ponechte výchozí hodnotu.
+      * **Velikost** : Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
+      * **Uživatelské jméno** : zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
+      * **Heslo** : zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
+1. Vyberte **Zkontrolovat a vytvořit** .
 1. **Zkontrolovat a vytvořit**
    * Ověřte správnost všech zadaných informací. 
-   * Vyberte **Vytvořit**.
+   * Vyberte **Vytvořit** .
 
 
 > [!NOTE]
@@ -56,7 +56,7 @@ Vytvoření instance DSVM:
 
 ## <a name="access-the-dsvm"></a>Přístup k DSVM
 
-Až se virtuální počítač vytvoří a zřídí, postupujte podle kroků uvedených v části [připojení k virtuálnímu počítači založenému na Azure](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Použijte přihlašovací údaje účtu správce, které jste nakonfigurovali v kroku **základní informace** o vytvoření virtuálního počítače. 
+Až se virtuální počítač vytvoří a zřídí, postupujte podle kroků uvedených v části [připojení k virtuálnímu počítači založenému na Azure](https://docs.microsoft.com/azure/marketplace/azure-vm-create-using-approved-base). Použijte přihlašovací údaje účtu správce, které jste nakonfigurovali v kroku **základní informace** o vytvoření virtuálního počítače. 
 
 Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnohé z těchto nástrojů jsou dostupné prostřednictvím dlaždic v nabídce **Start** a ikon na ploše.
 

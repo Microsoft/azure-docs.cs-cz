@@ -10,14 +10,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a64ad1ddb955ccebdcddca996959f1bb5f932b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ceede96cbf3be12a6129e27d34e318e4c4163458
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840947"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073492"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z Azure Cosmos DB rozhraní API Cassandra tabulek pomocí Sparku
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
  Tento článek popisuje, jak číst data uložená v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
@@ -139,6 +140,6 @@ Níže najdete další články o práci s Azure Cosmos DB rozhraní API Cassand
  
  * [Operace Upsert](cassandra-spark-upsert-ops.md)
  * [Operace Delete](cassandra-spark-delete-ops.md)
- * [Agregační operace](cassandra-spark-aggregation-ops.md)
+ * [Operace agregace](cassandra-spark-aggregation-ops.md)
  * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

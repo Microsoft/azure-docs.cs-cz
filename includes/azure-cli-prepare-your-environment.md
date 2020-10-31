@@ -4,16 +4,20 @@ ms.date: 09/10/2020
 author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
-ms.openlocfilehash: d4e8b8d6a23648b3c8eb5dedcd4ae041c8fbcf4b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 1aa344d80df6bfc22d0c94c6d5c61d305ace8d0c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875018"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073535"
 ---
-## <a name="prepare-your-environment"></a>Příprava prostředí
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokud chcete spustit příkazy rozhraní příkazového řádku Azure, proveďte [místní instalaci](/cli/azure/install-azure-cli) rozhraní příkazového řádku Azure nebo spusťte [Azure Cloud Shell](/azure/cloud-shell/quickstart) pomocí prostředí bash.
+- Použijte [Azure Cloud Shell](/azure/cloud-shell/quickstart) s využitím prostředí bash.
 
-- Pokud používáte místní instalaci, přihlaste se pomocí Azure CLI pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.  Další možnosti přihlašování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
-- Po zobrazení výzvy nainstalujte rozšíření Azure CLI při prvním použití.  Přečtěte si další informace o rozšířeních [využívajících rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+   [![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)  
+- Pokud dáváte přednost, proveďte [místní instalaci](/cli/azure/install-azure-cli) Azure CLI pro spuštění příkazů odkazů CLI.
+   - Pokud používáte místní instalaci, přihlaste se pomocí Azure CLI pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.  Další možnosti přihlašování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
+  - Po zobrazení výzvy nainstalujte rozšíření Azure CLI při prvním použití.  Přečtěte si další informace o rozšířeních [využívajících rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
+  - Spuštěním [AZ Version](/cli/azure/reference-index?#az_version) vyhledejte verzi a závislé knihovny, které jsou nainstalovány. Pokud chcete upgradovat na nejnovější verzi, spusťte příkaz [AZ upgrade](/cli/azure/reference-index?#az_upgrade).
+

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485099"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075397"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL překlad
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Zprostředkovatel dotazů Azure Cosmos DB provádí nejlepší mapování úsilí z dotazu LINQ na dotaz typu Cosmos DB SQL. Pokud chcete získat dotaz SQL, který je přeložen z LINQ, použijte `ToString()` metodu pro vygenerovaný `IQueryable` objekt. Následující popis předpokládá základní znalost pomocí [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries).
 
@@ -79,19 +80,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 Zprostředkovatel LINQ zahrnutý v sadě SQL .NET SDK podporuje následující operátory:
 
-- **Vyberte**: posunutí projekce pro [Výběr](sql-query-select.md), včetně konstrukce objektu.
-- **Kde**: filtry se překládají na [WHERE](sql-query-where.md)a podporují překlad mezi `&&` , a `||` `!` operátory SQL
-- **Operátor SelectMany**: umožňuje odvinutí polí do klauzule [Join](sql-query-join.md) . Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
-- **OrderBy** a **OrderByDescending**: PŘELOŽÍ na [pořadí pomocí](sql-query-order-by.md) ASC nebo DESC.
-- **Count**, **Sum**, **min**, **Max**a **Average** operátory pro [agregaci](sql-query-aggregates.md)a jejich asynchronní ekvivalenty **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**a **AverageAsync**.
-- **CompareTo**: přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
-- **Přeskočte** a **proveďte**následující kroky: přeloží se na [posun a omezení](sql-query-offset-limit.md) pro omezení výsledků dotazu a stránkování.
-- **Matematické funkce**: podporuje překlad z rozhraní .NET,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` , `Exp` , `Floor` ,, `Log` `Log10` , `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` a `Truncate` na ekvivalentní [integrované matematické funkce](sql-query-mathematical-functions.md).
-- **Řetězcové funkce**: podporuje překlad z rozhraní .NET `Concat` , `Contains` ,,,, `Count` `EndsWith` `IndexOf` `Replace` ,,,,, `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` a `TrimStart` na ekvivalentní [integrované řetězcové funkce](sql-query-string-functions.md).
-- **Funkce pole**: podporuje převod z rozhraní .NET `Concat` , `Contains` a `Count` do ekvivalentních [integrovaných funkcí pole](sql-query-array-functions.md).
-- **Funkce geoprostorového rozšíření**: podporuje překlad z metod zástupných procedur `Distance` , `IsValid` , `IsValidDetailed` a `Within` na ekvivalentní [vestavěné geoprostorové funkce](sql-query-geospatial-query.md).
-- **Uživatelsky definovaná funkce rozšíření**: podporuje převod z metody zástupné procedury `UserDefinedFunctionProvider.Invoke` na odpovídající [uživatelsky definovanou funkci](sql-query-udfs.md).
-- **Různé**: podporuje překlad `Coalesce` a podmíněných [operátorů](sql-query-operators.md). Lze převést `Contains` na řetězec obsahuje, ARRAY_CONTAINS nebo v, v závislosti na kontextu.
+- **Vyberte** : posunutí projekce pro [Výběr](sql-query-select.md), včetně konstrukce objektu.
+- **Kde** : filtry se překládají na [WHERE](sql-query-where.md)a podporují překlad mezi `&&` , a `||` `!` operátory SQL
+- **Operátor SelectMany** : umožňuje odvinutí polí do klauzule [Join](sql-query-join.md) . Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
+- **OrderBy** a **OrderByDescending** : PŘELOŽÍ na [pořadí pomocí](sql-query-order-by.md) ASC nebo DESC.
+- **Count** , **Sum** , **min** , **Max** a **Average** operátory pro [agregaci](sql-query-aggregates.md)a jejich asynchronní ekvivalenty **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** a **AverageAsync** .
+- **CompareTo** : přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
+- **Přeskočte** a **proveďte** následující kroky: přeloží se na [posun a omezení](sql-query-offset-limit.md) pro omezení výsledků dotazu a stránkování.
+- **Matematické funkce** : podporuje překlad z rozhraní .NET,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` , `Exp` , `Floor` ,, `Log` `Log10` , `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` a `Truncate` na ekvivalentní [integrované matematické funkce](sql-query-mathematical-functions.md).
+- **Řetězcové funkce** : podporuje překlad z rozhraní .NET `Concat` , `Contains` ,,,, `Count` `EndsWith` `IndexOf` `Replace` ,,,,, `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` , `TrimEnd` a `TrimStart` na ekvivalentní [integrované řetězcové funkce](sql-query-string-functions.md).
+- **Funkce pole** : podporuje převod z rozhraní .NET `Concat` , `Contains` a `Count` do ekvivalentních [integrovaných funkcí pole](sql-query-array-functions.md).
+- **Funkce geoprostorového rozšíření** : podporuje překlad z metod zástupných procedur `Distance` , `IsValid` , `IsValidDetailed` a `Within` na ekvivalentní [vestavěné geoprostorové funkce](sql-query-geospatial-query.md).
+- **Uživatelsky definovaná funkce rozšíření** : podporuje převod z metody zástupné procedury `UserDefinedFunctionProvider.Invoke` na odpovídající [uživatelsky definovanou funkci](sql-query-udfs.md).
+- **Různé** : podporuje překlad `Coalesce` a podmíněných [operátorů](sql-query-operators.md). Lze převést `Contains` na řetězec obsahuje, ARRAY_CONTAINS nebo v, v závislosti na kontextu.
 
 ## <a name="examples"></a>Příklady
 

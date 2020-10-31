@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317822"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074793"
 ---
 # <a name="overview-of-the-developer-portal"></a>Přehled portálu pro vývojáře
 
@@ -62,7 +62,7 @@ Při prvním spuštění verze Preview portálu pro vývojáře jste ve službě
 
 Pokud jste portál silně přizpůsobili na základě verze Preview obsahu, můžete ho i nadále používat a na stránkách na portálu umístit nové widgety ručně. V opačném případě doporučujeme nahradit obsah vašeho portálu novým výchozím obsahem.
 
-Chcete-li obnovit obsah na spravovaném portálu, vyberte možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět**.
+Chcete-li obnovit obsah na spravovaném portálu, vyberte možnost **obnovit obsah** v části nabídka **operace** . Tato operace odstraní veškerý obsah portálu a zřídí nový výchozí obsah. Ztratíte všechna přizpůsobení a změny portálu pro vývojáře. **Tuto akci nelze vrátit zpět** .
 
 ![Resetování obsahu portálu](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -126,7 +126,7 @@ Interaktivní konzola vytvoří požadavek rozhraní API na straně klienta z pr
 
 Stav zásad CORS můžete zjistit v části **Přehled portálu** služby API Management v Azure Portal. Výstražné pole indikuje chybějící nebo nesprávně nakonfigurovanou zásadu.
 
-![Portál pro vývojáře API Management](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![Snímek obrazovky, který ukazuje, kde můžete zjistit stav zásad CORS.](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 Automaticky použít zásadu CORS kliknutím na tlačítko **Povolit CORS**
 
@@ -196,7 +196,7 @@ Selhání volání může být způsobeno také certifikátem TLS/SSL, který je
 | Apple Safari                | Ano<sup>1</sup> |
 | Google Chrome               | Ano<sup>1</sup> |
 | Microsoft Edge              | Ano<sup>1</sup> |
-| Microsoft Internet Explorer | Ne              |
+| Microsoft Internet Explorer | No              |
 | Mozilla Firefox             | Ano<sup>1</sup> |
 
  <small><sup>1</sup> podporuje se v obou nejnovějších produkčních verzích.</small>

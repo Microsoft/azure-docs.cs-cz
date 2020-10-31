@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475800"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072802"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Procesor změn kanálu je součástí sady [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3). Zjednodušuje proces čtení kanálu změn a umožňuje distribuci zpracování událostí mezi více příjemců efektivně.
 
@@ -30,7 +31,7 @@ Implementace procesoru kanálu změn zahrnuje čtyři hlavní komponenty:
 
 1. **Kontejner zapůjčení:** Kontejner zapůjčení funguje jako úložiště stavu a koordinuje zpracování kanálu změn mezi několika pracovními procesy. Kontejner zapůjčení může být uložený ve stejném účtu jako monitorovaný kontejner nebo v samostatném účtu.
 
-1. **Hostitel:** Hostitel je instance aplikace, která pomocí procesoru kanálu změn naslouchá změnám. Paralelně může být spuštěných více instancí se stejnou konfigurací zapůjčení, ale každá instance musí mít jiný **název instance**.
+1. **Hostitel:** Hostitel je instance aplikace, která pomocí procesoru kanálu změn naslouchá změnám. Paralelně může být spuštěných více instancí se stejnou konfigurací zapůjčení, ale každá instance musí mít jiný **název instance** .
 
 1. **Delegát:** Delegát je kód, který definuje, co jako vývojář chcete udělat s jednotlivými dávkami změn, které procesor kanálu změn načte. 
 
@@ -61,8 +62,8 @@ Normální životní cyklus instance hostitele je následující:
 
 1. Přečtěte si kanál změn.
 1. Pokud nedošlo k žádným změnám, přejdete do režimu spánku v předdefinovaném čase (dá se přizpůsobit `WithPollInterval` v Tvůrci) a přejdete na #1.
-1. Pokud dojde ke změnám, odešlete je **delegátovi**.
-1. Když delegát dokončí zpracování změn **úspěšně**, aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
+1. Pokud dojde ke změnám, odešlete je **delegátovi** .
+1. Když delegát dokončí zpracování změn **úspěšně** , aktualizujte úložiště zapůjčení s nejnovějším zpracovávaným bodem v čase a přejděte na #1.
 
 ## <a name="error-handling"></a>Zpracování chyb
 
@@ -104,7 +105,7 @@ Ve výchozím nastavení se při prvním spuštění procesoru Change feed inici
 
 ### <a name="reading-from-a-previous-date-and-time"></a>Čtení z předchozího data a času
 
-Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času**, a to předáním instance do `DateTime` `WithStartTime` rozšíření tvůrce:
+Je možné inicializovat procesor změn, aby bylo možné číst změny od **určitého data a času** , a to předáním instance do `DateTime` `WithStartTime` rozšíření tvůrce:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -112,7 +113,7 @@ Procesor změnového kanálu se inicializuje pro konkrétní datum a čas a zač
 
 ### <a name="reading-from-the-beginning"></a>Čtení od začátku
 
-V jiných scénářích, jako jsou migrace dat nebo analýza celé historie kontejneru, musíme načíst kanál změn od **začátku životnosti tohoto kontejneru**. K tomu můžeme použít `WithStartTime` rozšíření tvůrce, ale předáním `DateTime.MinValue.ToUniversalTime()` , což vygeneruje reprezentaci UTC minimální `DateTime` hodnoty, například:
+V jiných scénářích, jako jsou migrace dat nebo analýza celé historie kontejneru, musíme načíst kanál změn od **začátku životnosti tohoto kontejneru** . K tomu můžeme použít `WithStartTime` rozšíření tvůrce, ale předáním `DateTime.MinValue.ToUniversalTime()` , což vygeneruje reprezentaci UTC minimální `DateTime` hodnoty, například:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

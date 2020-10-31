@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e19c2a8711a9862bb72b29045c65ecd1bd5b5d20
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075497"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny Change feed Processor do sady Azure Cosmos DB .NET V3 SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje nezbytné kroky pro migraci kódu existující aplikace, který používá [knihovnu Change feed Processor](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) , na funkci [Change feed](change-feed.md) v nejnovější verzi sady .NET SDK (označované také jako sada .NET V3 SDK).
 

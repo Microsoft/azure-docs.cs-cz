@@ -8,14 +8,15 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7aace0b1ee6963aa220a60a11d02c370bf4d822a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476548"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073889"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Emulátor umožňuje vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. 
 
@@ -25,7 +26,7 @@ Tento článek ukazuje, jak v Azure DevOps nastavit kanál CI pro aplikaci ASP.N
 
 ## <a name="install-the-emulator-build-task"></a>Instalace úlohy sestavení emulátoru
 
-Abychom mohli použít úlohu sestavení, musíme ji nejprve nainstalovat do naší organizace Azure DevOps. Rozšíření **Emulátor Azure Cosmos DB** vyhledejte na webu [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) a klikněte na tlačítko pro **získání zdarma**.
+Abychom mohli použít úlohu sestavení, musíme ji nejprve nainstalovat do naší organizace Azure DevOps. Rozšíření **Emulátor Azure Cosmos DB** vyhledejte na webu [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) a klikněte na tlačítko pro **získání zdarma** .
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
@@ -44,11 +45,11 @@ Teď, když je rozšíření nainstalované, přihlaste se ke svojí organizaci 
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
-2. Vyberte požadovaný **zdroj**, **Týmový projekt**, **Úložiště** a **Výchozí větev pro ruční a plánovaná sestavení**. Až zvolíte požadované možnosti, vyberte **Pokračovat**.
+2. Vyberte požadovaný **zdroj** , **Týmový projekt** , **Úložiště** a **Výchozí větev pro ruční a plánovaná sestavení** . Až zvolíte požadované možnosti, vyberte **Pokračovat** .
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
-3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET**. Nyní máte kanál sestavení, který můžete nastavit tak, aby používal úlohu sestavení emulátoru Azure Cosmos DB. 
+3. Nakonec vyberte požadovanou šablonu pro kanál sestavení. V tomto kurzu vybereme šablonu **ASP.NET** . Nyní máte kanál sestavení, který můžete nastavit tak, aby používal úlohu sestavení emulátoru Azure Cosmos DB. 
 
 > [!NOTE]
 > Fond agentů, který se má vybrat pro tuto CI, by měl mít Docker for Windows nainstalováno, pokud se instalace neprovádí ručně v předchozí úloze jako součást CI. Výběr fondů agentů najdete v článku [hostované agenti Microsoftu](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops) . Doporučujeme začít s `Hosted VS2017` .
@@ -62,9 +63,9 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>Přidání úlohy do kanálu sestavení
 
-1. Před přidáním úlohy do kanálu sestavení byste měli přidat úlohu agenta. Přejděte do kanálu sestavení, vyberte **...** a zvolte **Přidat úlohu agenta**.
+1. Před přidáním úlohy do kanálu sestavení byste měli přidat úlohu agenta. Přejděte do kanálu sestavení, vyberte **...** a zvolte **Přidat úlohu agenta** .
 
-1. Dále vyberte **+** symbol vedle úlohy agenta a přidejte tak úlohu sestavení pro emulátor. Ve vyhledávacím poli vyhledejte **cosmos**, vyberte **Emulátor služby Azure Cosmos DB** a přidejte ho k úloze agenta. Úloha sestavení spustí kontejner s již spuštěnou instancí emulátoru služby Cosmos DB. Úloha emulátoru služby Azure Cosmos DB se musí nacházet před všemi ostatními úlohami, které očekávají, že je emulátor spuštěný.
+1. Dále vyberte **+** symbol vedle úlohy agenta a přidejte tak úlohu sestavení pro emulátor. Ve vyhledávacím poli vyhledejte **cosmos** , vyberte **Emulátor služby Azure Cosmos DB** a přidejte ho k úloze agenta. Úloha sestavení spustí kontejner s již spuštěnou instancí emulátoru služby Cosmos DB. Úloha emulátoru služby Azure Cosmos DB se musí nacházet před všemi ostatními úlohami, které očekávají, že je emulátor spuštěný.
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
@@ -92,9 +93,9 @@ Tento krok je nepovinný a je nutný jenom v případě, že nastavujete kanál 
 
 Teď nakonfigurujeme naše testy, aby používaly emulátor. Úloha sestavení emulátoru exportuje proměnnou prostředí – CosmosDbEmulator.Endpoint – aby jakékoli další úlohy v kanálu sestavení mohly žádost znovu vydat. 
 
-V tomto kurzu použijeme [úkol nástroje Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) ke spouštění testů jednotek nakonfigurovaných prostřednictvím souboru **.runsettings**. Pokud se chcete o nastavení testu jednotek dozvědět více, přečtěte si [dokumentaci](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017). Kompletní ukázka kódu aplikace todo, který použijete v tomto dokumentu, je k dispozici na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) .
+V tomto kurzu použijeme [úkol nástroje Visual Studio Test](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) ke spouštění testů jednotek nakonfigurovaných prostřednictvím souboru **.runsettings** . Pokud se chcete o nastavení testu jednotek dozvědět více, přečtěte si [dokumentaci](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017). Kompletní ukázka kódu aplikace todo, který použijete v tomto dokumentu, je k dispozici na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) .
 
-Níže je uvedený příklad souboru **.runsettings**, který definuje parametry předávané do testů jednotek aplikace. Všimněte si, že použitá proměnná `authKey` je [dobře známý klíč](./local-emulator.md#authenticate-requests) pro emulátor. Tento klíč `authKey` je očekávaný úlohou sestavení emulátoru a měl by být definovaný ve vašem souboru **.runsettings**.
+Níže je uvedený příklad souboru **.runsettings** , který definuje parametry předávané do testů jednotek aplikace. Všimněte si, že použitá proměnná `authKey` je [dobře známý klíč](./local-emulator.md#authenticate-requests) pro emulátor. Tento klíč `authKey` je očekávaný úlohou sestavení emulátoru a měl by být definovaný ve vašem souboru **.runsettings** .
 
 ```csharp
 <RunSettings>
@@ -157,13 +158,13 @@ namespace todo.Tests
 }
 ```
 
-V úkolu nástroje Visual Studio Test přejděte na Execution Options (Možnosti spuštění). V možnosti **Settings file** (Soubor nastavení) specifikujte, že testy jsou nakonfigurovány pomocí souboru **.runsettings**. V možnosti **Override test run parameters** (Přepsat parametry testovacího běhu) přidejte `-endpoint $(CosmosDbEmulator.Endpoint)`. Nakonfigurujete tak úkol testu, aby odkazoval na koncový bod úlohy sestavení emulátoru, nikoli na bod definovaný v souboru **.runsettings**.  
+V úkolu nástroje Visual Studio Test přejděte na Execution Options (Možnosti spuštění). V možnosti **Settings file** (Soubor nastavení) specifikujte, že testy jsou nakonfigurovány pomocí souboru **.runsettings** . V možnosti **Override test run parameters** (Přepsat parametry testovacího běhu) přidejte `-endpoint $(CosmosDbEmulator.Endpoint)`. Nakonfigurujete tak úkol testu, aby odkazoval na koncový bod úlohy sestavení emulátoru, nikoli na bod definovaný v souboru **.runsettings** .  
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 
 ## <a name="run-the-build"></a>Spuštění sestavení
 
-Teď pro sestavení vyberte **Uložit a vložit do fronty**. 
+Teď pro sestavení vyberte **Uložit a vložit do fronty** . 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Vyhledání a instalace úlohy sestavení emulátoru služby Azure Cosmos DB na webu Azure DevOps Marketplace":::
 

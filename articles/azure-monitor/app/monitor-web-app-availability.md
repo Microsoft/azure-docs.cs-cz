@@ -4,12 +4,12 @@ description: Nastavení testů webu ve službě Application Insights. Zasílán�
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986026"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075139"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -37,7 +37,7 @@ V Azure Portal vyberte **vytvořit prostředek**  >  **vývojářské nástroje*
 
 Název "test příkazu" URL testu adresy URL je bitovou příponou misnomer. Aby bylo jasné, že tento test neprovádí žádné použití protokolu ICMP (Internet Control Message Protocol) ke kontrole dostupnosti vašeho webu. Místo toho používá pokročilejší funkci požadavku HTTP k ověření, zda koncový bod reaguje. Měří také výkon spojený s touto odpovědí a přidává možnost nastavit vlastní kritéria úspěchu v kombinaci s pokročilejšími funkcemi, jako je například analýza závislých požadavků a umožnění opakování.
 
-Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dostupnost a vyberte **vytvořit test**.
+Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dostupnost a vyberte **vytvořit test** .
 
 ![Vyplňte alespoň adresu URL webu](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,20 +47,20 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |----|----|----|
 |**Adresa URL** |  Adresa URL může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.|
 |**Analyzovat závislé požadavky**| Test žádostí o obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Test se nezdaří, pokud některý z těchto prostředků nelze úspěšně stáhnout v časovém limitu pro celý test. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL. Povolení této možnosti má za následek přísnější kontrolu. Test se nezdařil pro případy, které nemusí být při ručním procházení lokality patrné.
-|**Povolit opakování**|v případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme**. V průměru přibližně 80 % selhání při opakování zmizí.|
+|**Povolit opakování**|v případě, že se test nezdařil, bude opakován po krátkém intervalu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. **Tuto možnost doporučujeme** . V průměru přibližně 80 % selhání při opakování zmizí.|
 |**Frekvence testování**| Nastaví, jak často se test spouští z každého umístění testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.|
 |**Testovací umístění**| Jsou místa, odkud naše servery odesílají webové požadavky na adresu URL. **Náš minimální počet doporučených testovacích umístění je pět** , abyste měli jistotu, že můžete odlišit problémy na webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
-**Pokud vaše adresa URL není viditelná z veřejného Internetu, můžete vybrat možnost selektivně otevřít bránu firewall, aby povolovala pouze testovací transakce**. Další informace o výjimkách brány firewall pro testovací agenty dostupnosti najdete v [Průvodci IP adresou](./ip-addresses.md#availability-tests).
+**Pokud vaše adresa URL není viditelná z veřejného Internetu, můžete vybrat možnost selektivně otevřít bránu firewall, aby povolovala pouze testovací transakce** . Další informace o výjimkách brány firewall pro testovací agenty dostupnosti najdete v [Průvodci IP adresou](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
-> Důrazně doporučujeme testování z více umístění s **minimálně pěti umístěními**. K tomu je potřeba zabránit falešným poplachům, které mohou být způsobeny přechodnými problémy s konkrétním umístěním. Kromě toho jsme zjistili, že optimální konfigurace má mít **počet testovacích umístění stejný jako prahová hodnota umístění výstrahy + 2**.
+> Důrazně doporučujeme testování z více umístění s **minimálně pěti umístěními** . K tomu je potřeba zabránit falešným poplachům, které mohou být způsobeny přechodnými problémy s konkrétním umístěním. Kromě toho jsme zjistili, že optimální konfigurace má mít **počet testovacích umístění stejný jako prahová hodnota umístění výstrahy + 2** .
 
 ### <a name="success-criteria"></a>Kritéria úspěchu
 
 |Nastavení| Vysvětlení
 |----|----|----|
-| **Časový limit testu** |Snižte tuto hodnotu, aby se zobrazila výstraha týkající se pomalých odpovědí. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky**, potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.|
+| **Časový limit testu** |Snižte tuto hodnotu, aby se zobrazila výstraha týkající se pomalých odpovědí. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky** , potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.|
 | **Odpověď HTTP** | Vrácený stavový kód, který se počítá jako úspěch. 200 je kód, který označuje, že byla vrácena normální webová stránka.|
 | **Shoda obsahu** | Řetězec, například "Welcome!" U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat. **U shody obsahu se podporují jenom anglické znaky.** |
 
@@ -71,6 +71,55 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
 |**Klasický** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
 |**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem testovacích umístění je **prahová hodnota pro umístění upozornění**  =  **v umístění testovacích umístění – 2, minimálně pět umístění testu.**|
+
+### <a name="location-population-tags"></a>Umístění značek naplnění
+
+Po nasazení testu adresy URL dostupnosti pomocí Azure Resource Manager se dá pro atribut geografické polohy použít následující Tagy naplnění.
+
+#### <a name="azure-gov"></a>Gov Azure
+
+| Zobrazovaný název   | Název souboru     |
+|----------------|---------------------|
+| USGov Virginie | usgov – VA – AZR        |
+| USGov Arizona  | usgov-PHX-AZR       |
+| USGov Texas    | usgov-TX-AZR        |
+| USDoD východ     | usgov-ddeast-AZR    |
+| USDoD – střed  | usgov-ddcentral-AZR |
+
+#### <a name="us-sec"></a>US sec
+
+| Zobrazovaný název | Název souboru |
+|--------------|-----------------|
+| USSec – západ   | ussec – západ – AZR  |
+| USSec východ   | ussec – východ – AZR  |
+
+#### <a name="us-nat"></a>US NAT
+
+| Zobrazovaný název | Název souboru |
+|--------------|-----------------|
+| USNat východ   | usnat – východ – AZR  |
+| USNat – západ   | usnat – západ – AZR  |
+
+#### <a name="azure"></a>Azure
+
+| Zobrazovaný název                           | Název souboru   |
+|----------------------------------------|-------------------|
+| Austrálie – východ                         | Evropa – au – SYD – Edge  |
+| Brazil South                           | LATAM-br – Gru – Edge |
+| Střední USA                             | US-FL – Mia – Edge    |
+| Východní Asie                              | APAC-HK-hkn-AZR   |
+| East US                                | US-VA-popel – AZR     |
+| Francie – jih (dříve Francie – střed) | oblast EMEA-ch-ZRH-Edge  |
+| Francie – střed                         | Evropa – fr – pra – Edge  |
+| Japan East                             | APAC – JP – KAW – Edge  |
+| Severní Evropa                           | oblast EMEA-GB-DB3-AZR   |
+| USA – středosever                       | US-Il-CH1-AZR     |
+| Středojižní USA                       | US-TX-SN1-AZR     |
+| Southeast Asia                         | APAC-SG-Sin-AZR   |
+| Spojené království – západ                                | oblast EMEA-se-ši-Edge  |
+| West Europe                            | Evropa – nl – AMS – AZR   |
+| USA – západ                                | US-CA-SJC-AZR     |
+| Spojené království – jih                               | Evropa – ru – MSA – Edge  |
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 
@@ -118,7 +167,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu.
 2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Automatizace
 
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](./powershell.md#add-an-availability-test).
 * Nastavení [webhook](../platform/alerts-webhooks.md), který je volán při vydání výstrahy.

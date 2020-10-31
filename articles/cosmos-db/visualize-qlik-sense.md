@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd9f10bcf8be5539528be1f513f7e7dd74549e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073685"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojte Qlik smysl pro Azure Cosmos DB a vizualizaci dat
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Qlik Sense je nástroj pro vizualizaci dat, který kombinuje data z různých zdrojů do jednoho zobrazení. Qlik Sense indexuje každou možnou relaci vašich dat, abyste mohli získat okamžité přehledy o datech. Azure Cosmos DB data můžete vizualizovat pomocí Qlikového rozpoznávání. Tento článek popisuje kroky potřebné k připojení Azure Cosmos DB k Qlik smyslům a vizualizaci dat. 
 
@@ -34,7 +35,7 @@ Tento článek popisuje podrobnosti o připojení k rozhraní Cosmos DB SQL API 
 
 Tento článek popisuje podrobnosti o připojení k rozhraní Cosmos DB SQL API pomocí konektoru ODBC.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte připravené následující prostředky:
 
@@ -52,15 +53,15 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte p
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>Připojte Qlik smysl k Cosmos DB
 
-1. Otevřete Qlik smysl a vyberte **vytvořit novou aplikaci**. Zadejte název vaší aplikace a vyberte **vytvořit**.
+1. Otevřete Qlik smysl a vyberte **vytvořit novou aplikaci** . Zadejte název vaší aplikace a vyberte **vytvořit** .
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik":::
 
-2. Po úspěšném vytvoření nové aplikace vyberte **otevřít aplikaci** a zvolte možnost **Přidat data ze souborů a dalších zdrojů**. 
+2. Po úspěšném vytvoření nové aplikace vyberte **otevřít aplikaci** a zvolte možnost **Přidat data ze souborů a dalších zdrojů** . 
 
 3. V části zdroje dat vyberte **ODBC** a otevřete tak nové okno nastavení připojení. 
 
-4. Přepněte na **uživatelské DSN** a vyberte připojení ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit**. 
+4. Přepněte na **uživatelské DSN** a vyberte připojení ODBC, které jste vytvořili dříve. Zadejte název připojení a vyberte **vytvořit** . 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Vytvoření nové aplikace pro rozpoznávání Qlik":::
 

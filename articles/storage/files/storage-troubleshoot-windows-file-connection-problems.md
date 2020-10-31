@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715990"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075122"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Řešení potíží se soubory Azure v systému Windows (SMB)
 
-V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu.
+V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu.
 
 > [!IMPORTANT]
 > Obsah tohoto článku platí pouze pro sdílené složky SMB. Podrobnosti o sdílených složkách NFS najdete v tématu [řešení potíží s sdílenými složkami souborů Azure NFS](storage-troubleshooting-files-nfs.md).
@@ -45,7 +45,7 @@ Pokud jsou pro účet úložiště nakonfigurovaná pravidla virtuální sítě 
 
 ### <a name="solution-for-cause-2"></a>Řešení 2. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí** . Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Příčina 3: oprávnění na úrovni sdílené složky nejsou při použití ověřování založeného na identitě správná
 
@@ -167,7 +167,7 @@ Kód chyby: 403
 
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
-Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí**. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ověřte, že jsou pro účet úložiště správně nakonfigurovaná pravidla brány firewall a virtuální sítě. Pokud chcete otestovat, jestli problém způsobují pravidla brány firewall nebo virtuální sítě, dočasně změňte nastavení pro účet úložiště na **Povolit přístup ze všech sítí** . Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Příčina 2: váš uživatelský účet nemá přístup k účtu úložiště.
 
@@ -177,23 +177,82 @@ Přejděte k účtu úložiště, kde se nachází sdílená složka Azure, klik
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nejde odstranit soubor nebo adresář ve sdílené složce Azure
-Při pokusu o odstranění souboru se může zobrazit následující chyba:
+Jedním z klíčových účelů sdílené složky je, že více uživatelů a aplikací může současně komunikovat se soubory a adresáři ve sdílené složce. Pro pomoc s touto interakcí nabízí sdílení souborů několik způsobů, jak Mediating přístup k souborům a adresářům.
 
-Zadaný prostředek je označený k odstranění klientem SMB.
+Když otevřete soubor z připojené sdílené složky Azure přes protokol SMB, aplikace nebo operační systém vyžádá popisovač souboru, který je odkazem na soubor. Mimo jiné aplikace určí režim sdílení souborů, když požádá o popisovač souboru, který určuje úroveň výhradního přístupu k souboru vydanému soubory Azure: 
 
-### <a name="cause"></a>Příčina
-K tomuto problému obvykle dochází, pokud má soubor nebo adresář otevřený popisovač. 
+- `None`: máte výhradní přístup. 
+- `Read`: ostatní můžou soubor přečíst, když ho máte otevřený.
+- `Write`: ostatní můžou zapisovat do souboru, když ho máte otevřený. 
+- `ReadWrite`: kombinace `Read` `Write` režimů sdílení a.
+- `Delete`: ostatní můžou soubor odstranit, když ho máte otevřený. 
 
-### <a name="solution"></a>Řešení
+I když jako bezstavový protokol nemá protokol REST koncept popisovačů souborů, poskytuje podobný mechanismus k napravení přístupu k souborům a složkám, které může skript, aplikace nebo služba používat: zapůjčení souborů. Když je soubor pronajatý, považuje se za ekvivalentní popisovači souborů s režimem sdílení souborů `None` . 
 
-Pokud klienti SMB zavřeli všechny otevřené popisovače a problém přetrvává, udělejte toto:
+I když obsluha souborů a zapůjčení slouží k důležitému účelu, někdy může být popisovač souborů a zapůjčení osamocený. Pokud k tomu dojde, může to způsobit problémy s úpravou nebo odstraněním souborů. Můžou se zobrazit chybové zprávy jako:
 
-- K zobrazení otevřených popisovačů použijte rutinu prostředí PowerShell [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) .
+- Proces nemá přístup k souboru, protože ho používá jiný proces.
+- Akci nejde dokončit, protože soubor je otevřený v jiném programu.
+- Dokument je zamčený pro úpravy jiným uživatelem.
+- Zadaný prostředek je označený k odstranění klientem SMB.
 
-- K zavření otevřených popisovačů použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
+Řešení tohoto problému závisí na tom, jestli je to způsobeno osamoceným popisovačem nebo zapůjčením souborů. 
+
+### <a name="cause-1"></a>Příčina 1
+Popisovač souboru brání v úpravě nebo odstranění souboru nebo adresáře. K zobrazení otevřených popisovačů můžete použít rutinu PowerShellu [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) . 
+
+Pokud všichni klienti SMB zavřeli otevřené popisovače v souboru nebo adresáři a problém přetrvává, můžete vynutit zavření popisovače souboru.
+
+### <a name="solution-1"></a>Řešení 1
+Pokud chcete vynutit, aby se popisovač souboru zavřel, použijte rutinu [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) prostředí PowerShell. 
 
 > [!Note]  
 > Rutiny Get-AzStorageFileHandle a Close-AzStorageFileHandle jsou součástí AZ PowerShell Module verze 2,4 nebo novější. Pokud chcete nainstalovat nejnovější modul AZ PowerShellu, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+
+### <a name="cause-2"></a>Příčina 2
+Zapůjčení souborů brání v úpravě nebo odstranění souboru. Můžete zjistit, jestli soubor má zapůjčení souboru s následujícím PowerShellem, nahrazujete `<resource-group>` , `<storage-account>` , `<file-share>` a `<path-to-file>` s odpovídajícími hodnotami pro vaše prostředí:
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+Pokud má soubor zapůjčení, vrácený objekt by měl obsahovat následující vlastnosti:
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>Řešení 2
+Pokud chcete odebrat zapůjčení ze souboru, můžete zapůjčení uvolnit nebo zrušit jeho zapůjčení. Pokud chcete uvolnit zapůjčení, budete potřebovat LeaseId zapůjčení, které jste nastavili při vytváření zapůjčení. LeaseId nepotřebujete k přerušení zapůjčení.
+
+Následující příklad ukazuje, jak přerušit zapůjčení pro soubor uvedený ve příčině 2 (Tento příklad pokračuje s proměnnými PowerShellu z příčiny 2):
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Pomalé kopírování souborů do služby Azure Files a z ní ve Windows
