@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026951"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126715"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -46,7 +46,7 @@ Další informace najdete v [centru Microsoftu pro komerční tržišti](https:/
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Existuje poplatek za výpis pro komerční tržiště Microsoftu?
 
-Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace. Tento poplatek za transakce se snižuje pro nabídky [spoluprodávajících Azure IP](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) motivovaní a placené SaaS nabídky na AppSource, které jsou přidružené k jedné aplikaci Microsoft teams, nebo aspoň dvěma Microsoft 365 doplňky (Excel, PowerPoint, Word, Outlook a SharePoint).
+Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace. Tento poplatek za transakce se snižuje pro nabídky [spoluprodávajících Azure IP](./marketplace-co-sell.md) motivovaní a placené SaaS nabídky na AppSource, které jsou přidružené k jedné aplikaci Microsoft teams, nebo aspoň dvěma Microsoft 365 doplňky (Excel, PowerPoint, Word, Outlook a SharePoint).
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Návody se zaregistrovat jako Vydavatel na komerčním webu Microsoft Marketplace?
 
@@ -106,7 +106,7 @@ Existují čtyři relevantní role, které řídí přístup k partnerskému cen
 
 Pro vytváření nových uživatelských účtů nebo pozvaní účtů hostů v podkladovém adresáři jsou nutná oprávnění *globálního správce* Azure Active Directory (Azure AD). Partnerský centrum používá Azure AD na model identity a instance Azure AD organizace je často spravovaná a řízená IT týmy IT nebo zabezpečením.
 
-Další informace najdete v tématu [přiřazení rolí uživatelů a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).
+Další informace najdete v tématu [přiřazení rolí uživatelů a oprávnění](/partner-center/permissions-overview).
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Potřebují zákazníci předplatné pro Microsoft Azure Cloud Services?
 
@@ -305,7 +305,7 @@ Další informace najdete v tématu [Nastavení účtu výběr a daňového form
 
 Náhrady jsou zákazníkům k dispozici za určitých podmínek a za určité poplatky. Žádosti o refundaci za opakované poplatky účtované měsíčně se musí přijmout do 24 hodin od nákupu nebo obnovení. Podobně se požadavky na náhrady za periodické poplatky, které se účtují za rok, musí získat do 14 dnů od nákupu nebo obnovení. Tento typ náhrad se nevztahuje na poplatky vyplývající z využití (z nabídek virtuálních počítačů nebo účtované podle objemu).
 
-## <a name="resources"></a>Zdroje informací
+## <a name="resources"></a>Zdroje a prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 

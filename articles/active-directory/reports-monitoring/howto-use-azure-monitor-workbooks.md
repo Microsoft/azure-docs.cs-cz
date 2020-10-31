@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226977"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126630"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Použití Azure Monitorch sešitů pro sestavy Azure Active Directory
 
@@ -54,7 +54,7 @@ Tento článek:
  
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete používat monitorované sešity, potřebujete:
 
@@ -81,17 +81,17 @@ Musíte být v jedné z následujících rolí a mít [přístup k podkladovým 
 
 Přístup k sešitům:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Přejděte na **Azure Active Directory**  >  **monitorování**  >  **sešitů**. 
+1. Přejděte na **Azure Active Directory**  >  **monitorování**  >  **sešitů** . 
 
-1. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít**. 
+1. Vyberte sestavu nebo šablonu nebo na panelu nástrojů vyberte **otevřít** . 
 
 ![Hledání sešitů Azure Monitor ve službě Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Analýza přihlášení
 
-Chcete-li získat přístup k sešitu analýzy přihlašování, vyberte v části **využití** možnost **přihlášení**. 
+Chcete-li získat přístup k sešitu analýzy přihlašování, vyberte v části **využití** možnost **přihlášení** . 
 
 Tento sešit obsahuje následující trendy při přihlašování:
 
@@ -107,7 +107,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Apps
+- Aplikace
 
 - Uživatelé
 
@@ -128,7 +128,7 @@ Pro každý trend získáte rozpis podle následujících kategorií:
 ## <a name="sign-ins-using-legacy-authentication"></a>Přihlášení pomocí starší verze ověřování 
 
 
-Pokud chcete získat přístup k sešitu pro přihlášení, která používají [starší verze ověřování](../conditional-access/block-legacy-authentication.md), v části **využití** vyberte **přihlášení pomocí starší verze ověřování**. 
+Pokud chcete získat přístup k sešitu pro přihlášení, která používají [starší verze ověřování](../conditional-access/block-legacy-authentication.md), v části **využití** vyberte **přihlášení pomocí starší verze ověřování** . 
 
 Tento sešit obsahuje následující trendy při přihlašování:
 
@@ -141,7 +141,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Apps
+- Aplikace
 
 - Uživatelé
 
@@ -159,13 +159,13 @@ Pro každý trend získáte rozpis podle aplikace a protokolu.
 ## <a name="sign-ins-by-conditional-access"></a>Přihlášení podle podmíněného přístupu 
 
 
-Chcete-li získat přístup k sešitu pro přihlášení podle [zásad podmíněného](../conditional-access/overview.md)přístupu, vyberte v části **podmíněný přístup** možnost **přihlášení podle podmíněného přístupu**. 
+Chcete-li získat přístup k sešitu pro přihlášení podle [zásad podmíněného](../conditional-access/overview.md)přístupu, vyberte v části **podmíněný přístup** možnost **přihlášení podle podmíněného přístupu** . 
 
 Tento sešit zobrazuje trendy pro zakázané přihlášení. Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Apps
+- Aplikace
 
 - Uživatelé
 
@@ -174,7 +174,7 @@ Tento sešit zobrazuje trendy pro zakázané přihlášení. Jednotlivé trendy 
 
 Pro zakázaná přihlášení získáte rozpis stavu podmíněného přístupu.
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![Snímek obrazovky zobrazuje stav podmíněného přístupu a Poslední přihlášení.](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>Přehled podmíněného přístupu
@@ -186,7 +186,7 @@ Sešity obsahují dotazy protokolu přihlášení, které mohou správcům IT po
 ### <a name="instructions"></a>Pokyny 
 Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu, vyberte v části Podmíněný přístup sešit s **informacemi o podmíněném** přístupu. V tomto sešitu se zobrazuje očekávaný dopad na jednotlivé zásady podmíněného přístupu ve vašem tenantovi. V rozevíracím seznamu vyberte jednu nebo více zásad podmíněného přístupu a zužte rozsah sešitu použitím následujících filtrů: 
 
-- **Časový rozsah**
+- **Časové rozmezí**
 
 - **Uživatel**
 
@@ -194,12 +194,12 @@ Pokud chcete získat přístup k sešitu pro přehledy podmíněného přístupu
 
 - **Zobrazení dat**
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![Snímek obrazovky se zobrazí v podokně podmíněný přístup, kde můžete vybrat zásadu podmíněného přístupu.](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 Souhrn dopadů zobrazuje počet uživatelů nebo přihlášení, pro které měly vybrané zásady určitý výsledek. Total je počet uživatelů nebo přihlášení, pro které se vybrané zásady vyhodnotily ve vybraném časovém rozsahu. Kliknutím na dlaždici vyfiltrujete data v sešitu podle tohoto typu výsledku. 
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![Snímek obrazovky zobrazuje dlaždice, které slouží k filtrování výsledků, jako je součet, úspěch a selhání.](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 V tomto sešitu se také zobrazuje dopad vybraných zásad, které jsou rozdělené podle všech šesti podmínek: 
 - **Stav zařízení**
@@ -209,19 +209,15 @@ V tomto sešitu se také zobrazuje dopad vybraných zásad, které jsou rozděle
 - **Umístění**
 - **Aplikace**
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![Snímek obrazovky zobrazuje podrobnosti z filtru celkový počet přihlášení.](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 Můžete také prozkoumat jednotlivá přihlášení filtrovaná podle parametrů vybraných v sešitu. Vyhledávejte jednotlivé uživatele, seřazené podle četnosti přihlašování a Prohlédněte si jejich odpovídající přihlašovací události. 
 
-![Stav podmíněného přístupu](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![Snímek obrazovky zobrazuje jednotlivá přihlášení, která můžete zkontrolovat.](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>Přihlášení pomocí ovládacích prvků grant
 
-Chcete-li získat přístup k sešitu pro přihlášení prostřednictvím [udělení ovládacích prvků](../conditional-access/controls.md), v části **podmíněný přístup** vyberte možnost **přihlášení pomocí udělení ovládacích prvků**. 
+Chcete-li získat přístup k sešitu pro přihlášení prostřednictvím [udělení ovládacích prvků](../conditional-access/controls.md), v části **podmíněný přístup** vyberte možnost **přihlášení pomocí udělení ovládacích prvků** . 
 
 Tento sešit obsahuje následující zakázané trendy přihlašování:
 
@@ -238,7 +234,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Apps
+- Aplikace
 
 - Uživatelé
 
@@ -261,7 +257,7 @@ Použijte sešit **analýzy selhání přihlášení** k řešení chyb s:
 - Starší verze ověřování 
 
 
-Chcete-li získat přístup k přihlášení podle dat podmíněného přístupu, vyberte v části **Poradce při potížích** možnost **přihlášení pomocí starší verze ověřování**. 
+Chcete-li získat přístup k přihlášení podle dat podmíněného přístupu, vyberte v části **Poradce při potížích** možnost **přihlášení pomocí starší verze ověřování** . 
 
 Tento sešit obsahuje následující trendy při přihlašování:
 
@@ -278,7 +274,7 @@ Jednotlivé trendy můžete filtrovat podle následujících kategorií:
 
 - Časové rozmezí
 
-- Apps
+- Aplikace
 
 - Uživatelé
 

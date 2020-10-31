@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311814"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126035"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát TLS/SSL v kódu v Azure App Service
 
@@ -20,7 +20,7 @@ Tento přístup k používání certifikátů v kódu využívá funkci TLS v Ap
 
 Když necháte App Service spravovat certifikáty TLS/SSL, můžete spravovat certifikáty a kód aplikace samostatně a chránit citlivá data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -31,7 +31,7 @@ Postup při použití tohoto průvodce:
 
 V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**, pak vyberte **certifikáty privátních klíčů (. pfx)** nebo **certifikáty veřejného klíče (. cer)**.
+V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL** , pak vyberte **certifikáty privátních klíčů (. pfx)** nebo **certifikáty veřejného klíče (. cer)** .
 
 Vyhledejte certifikát, který chcete použít, a zkopírujte jeho kryptografický otisk.
 
@@ -49,10 +49,7 @@ Pro zpřístupnění všech certifikátů nastavte hodnotu na `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Načtení certifikátu v aplikacích pro Windows
 
-`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows a umístění závisí na [cenové úrovni](overview-hosting-plans.md):
-
-- **Izolovaná** vrstva – [místní Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
-- Všechny ostatní úrovně – v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
+`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
 V kódu jazyka C# získáte přístup k certifikátu pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
@@ -151,7 +148,7 @@ Názvy souborů certifikátů jsou kryptografické otisky certifikátů.
 > Cesty k certifikátům App Service vložit do kontejnerů Windows jako následující proměnné prostředí `WEBSITE_PRIVATE_CERTS_PATH` ,, `WEBSITE_INTERMEDIATE_CERTS_PATH` `WEBSITE_PUBLIC_CERTS_PATH` a `WEBSITE_ROOT_CERTS_PATH` . Je lepší odkazovat na cestu k certifikátu pomocí proměnných prostředí místo zakódujeme cesty k certifikátu pro případ, že se cesty certifikátů v budoucnu nezmění.
 >
 
-Kromě toho [základní kontejnery Windows serveru](configure-custom-container.md#supported-parent-images) načtou certifikáty do úložiště certifikátů automaticky v **úložišti LocalMachine\MY**. Pokud chcete načíst certifikáty, použijte stejný vzor jako [načíst certifikát v aplikacích pro Windows](#load-certificate-in-windows-apps). Pro kontejnery založené na Windows nano použijte cesty k souborům uvedené výše k [načtení certifikátu přímo ze souboru](#load-certificate-from-file).
+Kromě toho [základní kontejnery Windows serveru](configure-custom-container.md#supported-parent-images) načtou certifikáty do úložiště certifikátů automaticky v **úložišti LocalMachine\MY** . Pokud chcete načíst certifikáty, použijte stejný vzor jako [načíst certifikát v aplikacích pro Windows](#load-certificate-in-windows-apps). Pro kontejnery založené na Windows nano použijte cesty k souborům uvedené výše k [načtení certifikátu přímo ze souboru](#load-certificate-from-file).
 
 Následující kód jazyka C# ukazuje, jak načíst veřejný certifikát v aplikaci pro Linux.
 

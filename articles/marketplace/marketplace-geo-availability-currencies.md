@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: d04f95372eb050c3eea08d50d4c9bdbd3a0232b1
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282339"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126681"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografická dostupnost a podpora měny pro komerční tržiště
 
@@ -50,7 +50,7 @@ Nabídky komerčních webů na webu Marketplace si můžete koupit v 141 zeměpi
 | Kanada                              | CA        | CAD          |
 | Kajmanské ostrovy                      | KY        | USD          |
 | Chile                               | CL        | USD          |
-| Lidov\**                            | CN        | –          |
+| Lidov\**                            | CN        | Není k dispozici          |
 | Kolumbie                            | CO        | USD          |
 | Kostarika                          | CR        | USD          |
 | Côte d’Ivoire (Pobřeží slonoviny)                       | CI        | USD          |
@@ -204,4 +204,4 @@ Podrobnosti o tom, jak zadat ceny pro konkrétní typy nabídek, najdete v těch
 - [Vytvoření nabídky modulu IoT Edge](partner-center-portal/azure-iot-edge-module-creation.md)
 - [Vytvoření nabídky spravované služby](partner-center-portal/create-new-managed-service-offer.md)
 - [Vytvoření aplikace Power BI](partner-center-portal/create-power-bi-app-offer.md)
-- [Vytvoření nabídky SaaS](partner-center-portal/create-new-saas-offer.md)
+- [Vytvoření nabídky SaaS](./create-new-saas-offer.md)

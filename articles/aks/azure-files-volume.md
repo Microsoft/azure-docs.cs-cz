@@ -5,12 +5,12 @@ description: Zjistěte, jak ručně vytvořit svazek se soubory Azure pro použi
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 227b592a2384d82fde78258a97ede9d318aaaf40
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 89976211763f5d4729718c4e4c6503650f27f7cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126269"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ruční vytvoření a použití svazku se sdílenou složkou Azure ve službě Azure Kubernetes Service (AKS)
 
@@ -110,7 +110,7 @@ Teď máte spuštěný pod s sdílenou složkou Azure, která je připojená na 
 Containers:
   mypod:
     Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
-    Image:          nginx:1.15.5
+    Image:          mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
     State:          Running
       Started:      Sat, 02 Mar 2019 00:05:47 +0000
@@ -161,7 +161,7 @@ spec:
 
 Pokud používáte cluster verze 1.8.0-1.8.4, je možné určit kontext zabezpečení s hodnotou *runAsUser* nastavenou na *0* . Další informace o kontextu zabezpečení najdete v tématu [Konfigurace kontextu zabezpečení][kubernetes-security-context].
 
-Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume* . Příklad:
+Pokud chcete aktualizovat možnosti připojení, vytvořte soubor *azurefile-Mount-Options-PV. yaml* s *PersistentVolume* . Například:
 
 ```yaml
 apiVersion: v1
@@ -187,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume* . Příklad:
+Vytvořte soubor *azurefile-Mount-Options-PVC. yaml* s *PersistentVolumeClaim* , který používá *PersistentVolume* . Například:
 
 ```yaml
 apiVersion: v1
@@ -219,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Příklad:
+Aktualizujte své specifikace kontejneru, aby odkazovaly na *PersistentVolumeClaim* a aktualizovali pod. Například:
 
 ```yaml
 ...

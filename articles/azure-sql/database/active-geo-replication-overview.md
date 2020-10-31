@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672988"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125338"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Vytvoření a použití aktivní geografické replikace – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Ve výchozím nastavení je redundance záložního úložiště sekundárního 
 > Frekvence transakčního protokolu na primárním počítači může být omezena z důvodů, které nesouvisí s nižší výpočetní velikostí na sekundárním. Tento druh omezování může nastat i v případě, že sekundární má stejnou nebo vyšší výpočetní velikost než primární. Podrobnosti, včetně typů čekání pro různé druhy omezení přenosové rychlosti, najdete v tématu zásady [správného řízení sazeb transakčních protokolů](resource-limits-logical-server.md#transaction-log-rate-governance).
 
 > [!NOTE]
-> Služba Azure SQL Database konfigurovatelný záložní úložiště je v současné době všeobecně dostupná jenom v oblasti Azure jihovýchodní Asie. Když je zdrojová databáze vytvořená pomocí místně redundantní nebo redundance záložního úložiště s redundantní zónou, vytváření sekundární databáze v jiné oblasti Azure se nepodporuje. 
+> Služba Azure SQL Database konfigurovatelný záložní úložiště je teď dostupná ve verzi Public Preview v oblasti Brazílie – jih a obecně dostupná jenom v oblasti jihovýchodní Asie – Azure. Když je zdrojová databáze vytvořená pomocí místně redundantní nebo redundance záložního úložiště s redundantní zónou, vytváření sekundární databáze v jiné oblasti Azure se nepodporuje. 
 
 Další informace o SQL Database velikosti výpočetních prostředků najdete v tématu [co jsou SQL Database úrovně služeb](purchasing-models.md).
 

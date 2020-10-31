@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro použití pokročilých fu
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530057"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125627"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro pokročilé funkce plánování ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Plánovač Kubernetes může pomocí chuti a omezení omezit, jaké úlohy je mo
 * Pro uzel, který indikuje, že je možné naplánovat pouze určité lusky, se použije značka **chuti** .
 * **Tolerování** se pak použije na uzel pod, který umožňuje *tolerovat* chuti v uzlu.
 
-Když nasadíte uzel pod do clusteru AKS, Kubernetes pouze plánuje na uzly, kde je dovoleno sjednocení s příchodem. Předpokládejme například, že máte ve svém clusteru AKS fond uzlů pro uzly s podporou GPU. Definujte název, jako je například *GPU*, a pak hodnotu pro plánování. Pokud tuto hodnotu nastavíte na *plán*, Plánovač Kubernetes nemůže naplánovat lusky na uzlu, pokud uzel pod nedefinuje příslušnou tolerovánost.
+Když nasadíte uzel pod do clusteru AKS, Kubernetes pouze plánuje na uzly, kde je dovoleno sjednocení s příchodem. Předpokládejme například, že máte ve svém clusteru AKS fond uzlů pro uzly s podporou GPU. Definujte název, jako je například *GPU* , a pak hodnotu pro plánování. Pokud tuto hodnotu nastavíte na *plán* , Plánovač Kubernetes nemůže naplánovat lusky na uzlu, pokud uzel pod nedefinuje příslušnou tolerovánost.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -79,15 +79,15 @@ Když upgradujete fond uzlů v AKS, příchuti a tolerovánosti se řídí vzore
 
 - **Výchozí clustery, které používají Virtual Machine Scale Sets**
   - [Nodepool][taint-node-pool] z rozhraní AKS API můžete nastavit tak, aby se nově škálované uzly dostaly do uzlů rozhraní API.
-  - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2*. Upgradujete fond uzlů.
-  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4*a v uvedeném pořadí se přenesou příchuti.
+  - Předpokládejme, že máte dva uzly clusteru – *Uzel1* a *Uzel2* . Upgradujete fond uzlů.
+  - Vytvoří se dva další uzly, *Uzel3* a *Uzel4* a v uvedeném pořadí se přenesou příchuti.
   - Původní *Uzel1* a *Uzel2* se odstraní.
 
 - **Clustery bez podpory sady škálování virtuálních počítačů**
-  - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2*. Při upgradu se vytvoří další uzel (*Uzel3*).
-  - Od *Uzel1* se aplikují příchuti na *Uzel3*, *Uzel1* se pak odstraní.
-  - Vytvoří se další nový uzel (s názvem *Uzel1*, protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1*se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
-  - V podstatě *Uzel1* se bude *Uzel3*a *Uzel2* se bude *Uzel1*.
+  - Pak Předpokládejme, že máte dva uzly cluster- *Uzel1* a *Uzel2* . Při upgradu se vytvoří další uzel ( *Uzel3* ).
+  - Od *Uzel1* se aplikují příchuti na *Uzel3* , *Uzel1* se pak odstraní.
+  - Vytvoří se další nový uzel (s názvem *Uzel1* , protože předchozí *Uzel1* byl odstraněn) a na nový *Uzel1* se aplikují *uzel2é* chuti. Pak se *Uzel2* odstraní.
+  - V podstatě *Uzel1* se bude *Uzel3* a *Uzel2* se bude *Uzel1* .
 
 Při horizontálním navýšení kapacity fondu uzlů v AKS se neprovádí návrh.
 
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,9 +131,9 @@ Další informace o používání selektorů uzlů najdete v tématu [přiřazen
 
 ### <a name="node-affinity"></a>Spřažení uzlů
 
-Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů*. U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale pokud není k dispozici, nechejte možnost naplánovaná na jiném hostiteli.
+Selektor uzlů je základní způsob, jak přiřadit lusky k danému uzlu. K dispozici je větší flexibilita s použitím *spřažení uzlů* . U spřažení uzlů definujete, co se stane, pokud se pod nedá spárovat s uzlem. Můžete *požadovat* , aby Plánovač Kubernetes odpovídal znaku pod pod názvem hostitele. Nebo můžete *preferovat* shodu, ale pokud není k dispozici, nechejte možnost naplánovaná na jiném hostiteli.
 
-Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution*. Tento spřažení vyžaduje, aby plán Kubernetes používal uzel se shodným popiskem. Pokud není k dispozici žádný uzel, musí čekat na pokračování plánování. Chcete-li nechat naplánovaná hodnota v poli pod jiným uzlem, můžete místo toho nastavit hodnotu na *preferredDuringSchedulingIgnoreDuringExecution*:
+Následující příklad nastaví spřažení uzlu na *requiredDuringSchedulingIgnoredDuringExecution* . Tento spřažení vyžaduje, aby plán Kubernetes používal uzel se shodným popiskem. Pokud není k dispozici žádný uzel, musí čekat na pokračování plánování. Chcete-li nechat naplánovaná hodnota v poli pod jiným uzlem, můžete místo toho nastavit hodnotu na *preferredDuringSchedulingIgnoreDuringExecution* :
 
 ```yaml
 kind: Pod
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

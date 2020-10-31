@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891957"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127344"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Výstup tabulkového úložiště z Azure Stream Analytics
 
@@ -28,7 +28,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název tabulky |Název tabulky Tabulka se vytvoří, pokud neexistuje. |
 | Klíč oddílu |Název výstupního sloupce, který obsahuje klíč oddílu. Klíč oddílu je jedinečný identifikátor oddílu v tabulce, který tvoří první část primárního klíče entity. Je to hodnota řetězce, která může mít velikost až 1 KB. |
 | Klíč řádku |Název výstupního sloupce, který obsahuje klíč řádku. Klíč řádku je jedinečný identifikátor pro entitu v rámci oddílu. Tvoří druhou část primárního klíče entity. Klíč řádku je řetězcová hodnota, která může mít velikost až 1 KB. |
-| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí (100) je pro většinu úloh dostačující. Další informace o úpravách tohoto nastavení najdete v článku [specifikace operace dávky tabulky](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
+| Velikost dávky |Počet záznamů pro dávkovou operaci. Výchozí (100) je pro většinu úloh dostačující. Další informace o úpravách tohoto nastavení najdete v článku [specifikace operace dávky tabulky](/java/api/com.microsoft.azure.storage.table.tablebatchoperation) . |
 
 ## <a name="partitioning"></a>Dělení
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/04/2020
-ms.openlocfilehash: b01b482b967ba6db90aa80ba537457597fb91046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfa5d77077b8827bed1cbd8c7a46a5dbf361f139
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488605"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125712"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Sestavení cílové stránky bezplatné nebo zkušební SaaS nabídky na komerčním webu Marketplace
 
@@ -43,23 +43,23 @@ Následující části tohoto článku vás provedou procesem vytvoření cílov
 
 ## <a name="create-an-azure-ad-app-registration"></a>Vytvoření registrace aplikace Azure AD
 
-Obchod na komerčním webu je plně integrovaný s Azure AD. Uživatelé dorazí na web Marketplace ověřený pomocí [účtu Azure AD nebo účet Microsoft (MSA)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Po získání bezplatného nebo bezplatného zkušebního předplatného prostřednictvím nabídky jenom se seznamem přejde uživatel z komerčního tržiště na adresu URL vaší cílové stránky, kde můžete aktivovat a spravovat svoje předplatné s vaší aplikací SaaS. Je nutné, aby se uživatel přihlásil k aplikaci pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na stránce [technické konfigurace](plan-saas-offer.md#technical-information) nabídky.
+Obchod na komerčním webu je plně integrovaný s Azure AD. Uživatelé dorazí na web Marketplace ověřený pomocí [účtu Azure AD nebo účet Microsoft (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology). Po získání bezplatného nebo bezplatného zkušebního předplatného prostřednictvím nabídky jenom se seznamem přejde uživatel z komerčního tržiště na adresu URL vaší cílové stránky, kde můžete aktivovat a spravovat svoje předplatné s vaší aplikací SaaS. Je nutné, aby se uživatel přihlásil k aplikaci pomocí jednotného přihlašování služby Azure AD. (Adresa URL cílové stránky je uvedena na stránce [technické konfigurace](plan-saas-offer.md#technical-information) nabídky.
 
 Prvním krokem k použití identity je, abyste se ujistili, že je vaše cílová stránka registrovaná jako aplikace Azure AD. Registrace aplikace vám umožní pomocí Azure AD ověřovat uživatele a žádat o přístup k prostředkům uživatele. Může být považována za definici aplikace, která umožňuje službě zjistit, jak vydávat tokeny aplikaci na základě nastavení aplikace.
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Registrace nové aplikace pomocí portálu Azure Portal
 
-Chcete-li začít, postupujte podle pokynů pro [registraci nové aplikace](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app). Pokud chcete umožnit uživatelům z jiných firem, aby si aplikaci navštívili, musíte zvolit **účty v libovolné organizační složce (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (jako Skype nebo Xbox)** , když se zobrazí dotaz, kdo může aplikaci používat.
+Chcete-li začít, postupujte podle pokynů pro [registraci nové aplikace](../active-directory/develop/quickstart-register-app.md). Pokud chcete umožnit uživatelům z jiných firem, aby si aplikaci navštívili, musíte zvolit **účty v libovolné organizační složce (libovolný adresář Azure AD – víceklientské) a osobní účty Microsoft (jako Skype nebo Xbox)** , když se zobrazí dotaz, kdo může aplikaci používat.
 
-Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí nastavení **uživatel. čtení** je dostatečné pro shromáždění základních informací o uživateli, aby bylo možné proces připojování hladce a automatickým způsobem vytvořit. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce**, protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
+Pokud se chystáte zadat dotaz na rozhraní Microsoft Graph API, [nakonfigurujte novou aplikaci pro přístup k webovým rozhraním API](../active-directory/develop/quickstart-configure-app-access-web-apis.md). Když vyberete oprávnění rozhraní API pro tuto aplikaci, výchozí nastavení **uživatel. čtení** je dostatečné pro shromáždění základních informací o uživateli, aby bylo možné proces připojování hladce a automatickým způsobem vytvořit. Nevyžadovat žádná oprávnění API s popiskem **vyžaduje souhlas správce** , protože to zabrání všem uživatelům bez oprávnění správce na návštěvě cílové stránky.
 
-Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená oprávnění, zvažte použití funkcí [přírůstkového souhlasu](https://aka.ms/incremental-consent) Azure AD, aby všichni uživatelé, kteří odesílají z webu Marketplace, mohli s cílovou stránkou interaktivně pracovat.
+Pokud v rámci procesu připojování nebo zřizování požadujete zvýšená oprávnění, zvažte použití funkcí [přírůstkového souhlasu](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md) Azure AD, aby všichni uživatelé, kteří odesílají z webu Marketplace, mohli s cílovou stránkou interaktivně pracovat.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Použití ukázky kódu jako počátečního bodu
 
 Microsoft nabízí několik ukázkových aplikací, které implementují jednoduchý web s povoleným přihlášením Azure AD. Po registraci aplikace v Azure AD okno **rychlý Start** nabízí seznam běžných typů aplikací a vývojových zásobníků (obrázek 1). Vyberte ten, který odpovídá vašemu prostředí, a postupujte podle pokynů ke stažení a instalaci.
 
-***Obrázek 1: okno rychlý Start v Azure Portal***
+**_Obrázek 1: okno rychlý Start v Azure Portal_* _
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Znázorňuje okno rychlý Start v Azure Portal.":::
 
@@ -67,7 +67,7 @@ Po stažení kódu a nastavení vývojového prostředí změňte nastavení kon
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Načíst informace z deklarací identity kódovaných v tokenu ID
 
-V rámci toku [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) Azure AD přidá do žádosti [token ID](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) , když se uživatel pošle na cílovou stránku. Tento token obsahuje několik částí základních informací, které by mohly být užitečné v procesu aktivace, včetně informací zobrazených v této tabulce.
+V rámci toku [OpenID Connect](../active-directory/develop/v2-protocols-oidc.md) Azure AD přidá do žádosti [token ID](../active-directory/develop/id-tokens.md) , když se uživatel pošle na cílovou stránku. Tento token obsahuje několik částí základních informací, které by mohly být užitečné v procesu aktivace, včetně informací zobrazených v této tabulce.
 
 | Hodnota | Popis |
 | ------------ | ------------- |
@@ -82,7 +82,7 @@ V rámci toku [OpenID Connect](https://docs.microsoft.com/azure/active-directory
 
 ## <a name="use-the-microsoft-graph-api"></a>Použití rozhraní Microsoft Graph API
 
-Token ID obsahuje základní informace pro identifikaci uživatele, ale proces aktivace může vyžadovat další podrobnosti, jako je například společnost uživatele – k dokončení procesu připojování. Použijte [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) k vyžádání těchto informací, abyste zabránili vynucení zadání těchto podrobností uživatelem. Standardní **uživatel. oprávnění číst** ve výchozím nastavení zahrnují následující informace:
+Token ID obsahuje základní informace pro identifikaci uživatele, ale proces aktivace může vyžadovat další podrobnosti, jako je například společnost uživatele – k dokončení procesu připojování. Použijte [rozhraní Microsoft Graph API](/graph/use-the-api) k vyžádání těchto informací, abyste zabránili vynucení zadání těchto podrobností uživatelem. Ve výchozím nastavení zahrnují oprávnění Standard _ *User. Read* * následující informace:
 
 | Hodnota | Popis |
 | ------------ | ------------- |
@@ -95,9 +95,9 @@ Token ID obsahuje základní informace pro identifikaci uživatele, ale proces a
 | surname | Příjmení uživatele |
 |||
 
-Další vlastnosti, například název společnosti uživatele nebo umístění uživatele (země), lze vybrat k zařazení do žádosti. Další podrobnosti najdete v tématu [vlastnosti pro typ prostředku uživatele](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties).
+Další vlastnosti, například název společnosti uživatele nebo umístění uživatele (země), lze vybrat k zařazení do žádosti. Další podrobnosti najdete v tématu [vlastnosti pro typ prostředku uživatele](/graph/api/resources/user?view=graph-rest-1.0#properties).
 
-Většina aplikací zaregistrovaných ve službě Azure AD uděluje delegovaná oprávnění ke čtení informací o uživateli z tenanta Azure AD společnosti. Každá žádost o Microsoft Graph pro tyto informace musí být doprovázena přístupovým tokenem jako ověřování. Konkrétní kroky pro vygenerování přístupového tokenu budou záviset na použitém zásobníku technologie, ale vzorový kód bude obsahovat příklad. Další informace najdete v tématu [získání přístupu jménem uživatele](https://docs.microsoft.com/graph/auth-v2-user).
+Většina aplikací zaregistrovaných ve službě Azure AD uděluje delegovaná oprávnění ke čtení informací o uživateli z tenanta Azure AD společnosti. Každá žádost o Microsoft Graph pro tyto informace musí být doprovázena přístupovým tokenem jako ověřování. Konkrétní kroky pro vygenerování přístupového tokenu budou záviset na použitém zásobníku technologie, ale vzorový kód bude obsahovat příklad. Další informace najdete v tématu [získání přístupu jménem uživatele](/graph/auth-v2-user).
 
 > [!NOTE]
 > Účty z klienta MSA (s ID tenanta `9188040d-6c67-4c5b-b112-36a304b66dad` ) nebudou vracet více informací, než již byly shromážděny pomocí tokenu ID. Toto volání Graph API pro tyto účty můžete přeskočit.

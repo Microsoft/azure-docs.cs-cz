@@ -4,12 +4,12 @@ description: Naučte se integrovat Azure NetApp Files se službou Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 78119d3d7ff83ca237c1e668785439d943dcfd14
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126249"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
@@ -29,7 +29,6 @@ Při použití Azure NetApp Files platí následující omezení:
 
 * Azure NetApp Files je k dispozici pouze [ve vybraných oblastech Azure][anf-regions].
 * Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist]. Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
-* Vaše služba Azure NetApp Files musí být vytvořená ve stejné virtuální síti jako cluster AKS.
 * Po počátečním nasazení clusteru AKS se podporuje pouze statické zřizování pro Azure NetApp Files.
 * Pokud chcete používat dynamické zřizování s Azure NetApp Files, nainstalujte a nakonfigurujte [NetApp Trident](https://netapp-trident.readthedocs.io/) verze 19,07 nebo novější.
 
@@ -146,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Příklad:
+Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Například:
 
 ```yaml
 ---
@@ -178,7 +177,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>Vytvoření PersistentVolumeClaim
 
-Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Příklad:
+Vytvoří `pvc-nfs.yaml` definici PersistentVolume. Například:
 
 ```yaml
 apiVersion: v1
@@ -208,7 +207,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Připojit pomocí pod
 
-Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Příklad:
+Vytvořte `nginx-nfs.yaml` definici pod, která používá PersistentVolumeClaim. Například:
 
 ```yaml
 kind: Pod

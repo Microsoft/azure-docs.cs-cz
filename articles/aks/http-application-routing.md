@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495144"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125865"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -26,8 +26,8 @@ Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další inform
 
 Doplněk nasazuje dvě součásti: [kontroler][ingress] příchozího přenosu dat Kubernetes a externí řadič [DNS][external-dns] .
 
-- **Adaptér**příchozího přenosu dat: kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu Vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
-- **Externí kontroler DNS**: sleduje Kubernetes prostředky příchozího přenosu dat a vytváří záznamy DNS v zóně DNS specifické pro clustery.
+- **Adaptér** příchozího přenosu dat: kontroler příchozího přenosu dat je přístupný pro Internet pomocí služby Kubernetes typu Vyrovnávání zatížení. Kontroler příchozího přenosu dat sleduje a implementuje [Kubernetes příchozí prostředky][ingress-resource], které vytváří trasy k koncovým bodům aplikace.
+- **Externí kontroler DNS** : sleduje Kubernetes prostředky příchozího přenosu dat a vytváří záznamy DNS v zóně DNS specifické pro clustery.
 
 ## <a name="deploy-http-routing-cli"></a>Nasazení směrování HTTP: rozhraní příkazového řádku
 
@@ -78,7 +78,7 @@ Pokud používáte Azure Cloud Shell, `kubectl` je už nainstalovaný. Můžete 
 az aks install-cli
 ```
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKSCluster* v *MyResourceGroup*:
+Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *MyAKSCluster* v *MyResourceGroup* :
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\> *například *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* a ověřte, že vidíte ukázkovou aplikaci. Zobrazení aplikace může trvat několik minut.
+Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\>* například *AKS-HelloWorld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.IO* a ověřte, že vidíte ukázkovou aplikaci. Zobrazení aplikace může trvat několik minut.
 
 ## <a name="remove-http-routing"></a>Odebrat směrování protokolu HTTP
 
@@ -173,7 +173,7 @@ Otevřete webový prohlížeč a *Akste Hello. \<CLUSTER_SPECIFIC_DNS_ZONE\> *na
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-Když je doplněk pro směrování aplikace HTTP zakázaný, některé prostředky Kubernetes můžou v clusteru zůstat. Tyto prostředky zahrnují *configMaps* a *tajné klíče*a vytvářejí se v oboru názvů *Kube-System* . Pokud chcete zachovat čistý cluster, možná budete chtít tyto prostředky odebrat.
+Když je doplněk pro směrování aplikace HTTP zakázaný, některé prostředky Kubernetes můžou v clusteru zůstat. Tyto prostředky zahrnují *configMaps* a *tajné klíče* a vytvářejí se v oboru názvů *Kube-System* . Pokud chcete zachovat čistý cluster, možná budete chtít tyto prostředky odebrat.
 
 Vyhledejte prostředky *addon-http-Application-Routing* pomocí následujících příkazů [Get kubectl][kubectl-get] :
 

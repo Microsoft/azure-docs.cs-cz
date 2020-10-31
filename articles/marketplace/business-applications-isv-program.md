@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 7/14/2020
-ms.openlocfilehash: 4c4455d62f32acb1cfebde8f5e4d97de5bda17c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 345b9447daa9fcb5f97ec5d8d00bcf5ea76d958c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89463543"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126732"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Průvodce onboardingem programu Microsoft Business Applications ISV (Independent Software Vendor) Connect
 
@@ -25,7 +25,7 @@ Pokud chcete zaregistrovat a využít výhody pro Business Applications softwaru
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Nastavení účtu partnerského centra Microsoftu
 
-Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte kroky popsané v článku [Vytvoření účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account). Tento článek poskytuje všechny kroky pro vytvoření nového účtu a také informace o přidání nových vydavatelů do programu komerčního tržiště.
+Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte kroky popsané v článku [Vytvoření účtu komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md). Tento článek poskytuje všechny kroky pro vytvoření nového účtu a také informace o přidání nových vydavatelů do programu komerčního tržiště.
 
 > [!NOTE]
 > Tento krok vyžaduje roli *vlastníka* nebo *manažera* v partnerském centru.
@@ -38,10 +38,10 @@ Pokud chcete nastavit a spravovat účet pro program ISV Connect, proveďte krok
 > Tento krok vyžaduje roli *vlastníka* nebo *manažera* v partnerském centru, aby váš účet mohl podepsat právní smlouvy.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
-1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře**.
-1. Vyberte možnost **smlouvy**.
+1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře** .
+1. Vyberte možnost **smlouvy** .
 1. Vyberte odkaz verze a Prohlédněte si smlouvu.
-1. Pokud souhlasíte a souhlasíte se smlouvou, vyberte **přijmout smlouvu**.
+1. Pokud souhlasíte a souhlasíte se smlouvou, vyberte **přijmout smlouvu** .
 
 ## <a name="set-up-your-billing-information"></a>Nastavení fakturačních údajů
 
@@ -51,8 +51,8 @@ Nastavte informace o fakturaci pro Business Applications program ISV Connect.
 > Tento krok vyžaduje v partnerském centru roli *vlastníka* nebo *správce* , aby váš účet aktualizoval fakturační údaje.
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard).
-1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře**.
-1. V části **účet**vyberte **profil fakturace**.
+1. Vyberte **Nastavení** (ikona ozubeného kolečka) a vyberte **Nastavení vývojáře** .
+1. V části **účet** vyberte **profil fakturace** .
 1. Zkontrolujte primární kontaktní a fakturační informace, které jsou vyplněny z vaší právní entity, a proveďte potřebné aktualizace.
 1. V případě potřeby zadejte daňové ID/nastavení ID DPH.
 1. Změny můžete uložit kliknutím na **Save** (Uložit).
@@ -66,11 +66,11 @@ Po dokončení výše uvedeného postupu budou vaše stávající aplikace pro i
 
 Posledním krokem k registraci v programu Business Applications ISV Connect je publikování a certifikace stávajících aplikací. Pokud chcete aplikaci publikovat a certifikovat na AppSource, postupujte podle příslušného odkazu:
 
-- [Pro zákaznickou zapojení Dynamics 365](https://docs.microsoft.com/powerapps/developer/common-data-service/publish-app-appsource) 
-- [Pro Dynamics 365 pro finance a operace](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+- [Pro zákaznickou zapojení Dynamics 365](/powerapps/developer/common-data-service/publish-app-appsource) 
+- [Pro Dynamics 365 pro finance a operace](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> Vaše aplikace je potřeba znovu certifikovat každých 6 měsíců, aby byly zachovány na AppSource. Podrobnosti najdete v tématu Zásady pro [certifikaci v obchodních tržištích](https://docs.microsoft.com/legal/marketplace/certification-policies)služby Marketplace.
+> Vaše aplikace je potřeba znovu certifikovat každých 6 měsíců, aby byly zachovány na AppSource. Podrobnosti najdete v tématu Zásady pro [certifikaci v obchodních tržištích](/legal/marketplace/certification-policies)služby Marketplace.
 
 ## <a name="next-steps"></a>Další kroky
 

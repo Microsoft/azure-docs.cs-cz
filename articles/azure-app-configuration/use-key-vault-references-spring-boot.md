@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 849f25f6fdd3fef2e1ebca7dae397d96e6849f10
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748852"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127089"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -51,7 +51,7 @@ V tomto kurzu se naučíte:
 
 1. V levém horním rohu Azure Portal vyberte možnost **vytvořit prostředek** :
 
-    ![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/search-services.png)
+    ![Snímek obrazovky ukazuje možnost vytvořit prostředek v Azure Portal.](./media/quickstarts/search-services.png)
 1. Do vyhledávacího pole zadejte **Key Vault** .
 1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
 1. V **trezorech klíčů** vyberte **Přidat** .
@@ -65,7 +65,7 @@ V tomto kurzu se naučíte:
 
 V tomto okamžiku je váš účet Azure jediným autorizovaným oprávněním pro přístup k tomuto novému trezoru.
 
-![Výstup po dokončení vytvoření trezoru klíčů](./media/quickstarts/vault-properties.png)
+![Snímek obrazovky se zobrazí v trezoru klíčů.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do služby Key Vault
 
@@ -82,7 +82,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky** a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace** .
 

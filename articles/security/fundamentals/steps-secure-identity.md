@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127055"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -145,7 +145,7 @@ Azure Active Directory má mnoho možností, které automaticky zachycují útok
 
 Riziko uživatele indikuje pravděpodobnost ohrožení identity uživatele a počítá se na základě [zjištění rizik uživatele](../../active-directory/identity-protection/overview.md) , která jsou přidružena k identitě uživatele. Zásady rizik uživatelů jsou zásady podmíněného přístupu, které vyhodnotí úroveň rizika pro konkrétního uživatele nebo skupinu. Na základě nízké, střední a vysoké úrovně rizika může být zásada nakonfigurovaná tak, aby blokovala přístup, nebo vyžadovala zabezpečenou změnu hesla pomocí Multi-Factor Authentication. Doporučení Microsoftu je vyžadovat pro uživatele s vysokým rizikem zabezpečenou změnu hesla.
 
-![Uživatelé označení příznakem rizika](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![Snímek obrazovky s vybraným uživatelem zobrazuje uživatele označené příznakem rizika.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>Implementace zásad rizik přihlašování pomocí Azure AD Identity Protection
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection poskytuje dvě důležité sestavy, které byste m�
 1. V sestavách rizikové přihlašování se budou provádět aktivity přihlašování uživatelů, které byste měli prozkoumat, ale oprávněný vlastník neudělal přihlášení.
 2. Rizikové sestavy uživatelů budou Surface uživatelských účtů, které mohly být ohroženy, například zjištěná zjištěná pověření nebo uživatel přihlášený z různých míst, což způsobuje nemožnou cestu k akci.
 
-![Uživatelé označení příznakem rizika](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![Snímek obrazovky ukazuje podokno Azure A D Identity Protection s uživateli a jejich úrovněmi rizika.](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Auditovat aplikace a souhlasná oprávnění
 
@@ -199,7 +199,7 @@ Azure AD poskytuje správcům možnost spravovat přístup k prostředkům pomoc
 
 Pomocí kontrol [přístupu ke službě Azure AD](../../active-directory/governance/access-reviews-overview.md)můžete spravovat přístup k balíčku a členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí, abyste měli jistotu, že udržujete standard zabezpečení.  Vlastníci prohledí samy sebe, vlastníci prostředků a další kontroloři zajišťují, že uživatelé neuchovávají přístup po delší dobu, kdy je už nepotřebují.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Existuje mnoho aspektů zabezpečení infrastruktury identity, ale tento kontrolní seznam s pěti kroky vám pomůže rychle provést bezpečnější a zabezpečenou infrastrukturu identity:
 

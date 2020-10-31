@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 6ef4d63e30aeceec9cba3ae97f69afa1c299ec65
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742739"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126223"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -77,7 +77,7 @@ Následující bloky kódu Azure CLI jsou příkazy, které připravují vstupn�
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
+    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -124,7 +124,7 @@ Následující bloky kódu Azure CLI vytvoří účet Blob Storage, který se po
    az storage account keys list -g streamanalyticsrg -n <storage-account>
    ```
 
-3. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). Klíč účtu úložiště použijete k autorizaci operace vytvoření kontejneru. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](/azure/storage/common/authorize-data-operations-cli).
+3. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). Klíč účtu úložiště použijete k autorizaci operace vytvoření kontejneru. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](../storage/common/authorize-data-operations-cli.md).
 
    ```azurecli
    az storage container create \

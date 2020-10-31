@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 7b91cf3d49d88501fb908d157892ec3eb24bee6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1c89887117c10ca77ec4c04b3adbe3e2d9923479
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283750"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126834"
 ---
 # <a name="virtual-machine-sas-failure-messages"></a>Zprávy o selhání SAS virtuálních počítačů
 
@@ -29,7 +29,7 @@ V této části se vyskytují běžné problémy při práci se sdílenými př�
 | Parametry identifikátoru URI SAS "St" a "se" neobsahují úplné specifikace data a času. | `Failure: Copying Images. Not able to download blob due to incorrect SAS Uri.` | Parametry **počátečního** a **koncového** data URI SAS `st` `se` musí mít úplný formát data a času, například `11-02-2017T00:00:00Z` . Zkrácené verze jsou neplatné (některé příkazy v rozhraní příkazového řádku Azure CLI můžou ve výchozím nastavení generovat zkrácené hodnoty). |
 |  |  |  |
 
-Podrobnosti najdete v tématu [použití sdílených přístupových podpisů (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/).
+Podrobnosti najdete v tématu [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-sas-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

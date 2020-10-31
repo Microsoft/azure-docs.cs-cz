@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125678"
 ---
 # <a name="test-drive-technical-configuration"></a>Technická konfigurace testovací verze
 
@@ -50,7 +50,7 @@ Tento typ testovacích jednotek není hostitelem společnosti Microsoft. Použij
 
 - **Doba trvání testovacího disku** (požadováno) – zadejte dobu, po kterou bude testovací jednotka aktivní, v počtu hodin. Testovací jednotka se po skončení tohoto časového období ukončí automaticky.
 
-- **Název skupiny prostředků Azure** (požadováno) – zadejte název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md#resource-groups), kde se vaše testovací jednotka aplikace logiky uloží.
+- **Název skupiny prostředků Azure** (požadováno) – zadejte název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md#resource-groups), kde se vaše testovací jednotka aplikace logiky uloží.
 
 - **Název aplikace logiky Azure** (povinné) – zadejte název aplikace logiky, která uživateli přiřadí testovací jednotku. Tato aplikace logiky se musí uložit do skupiny prostředků Azure výše.
 
@@ -60,7 +60,7 @@ Tento typ testovacích jednotek není hostitelem společnosti Microsoft. Použij
 
 Produkty, které chtějí předvést interaktivní Power BI vizuál, můžou pomocí vloženého odkazu sdílet vlastní řídicí panel jako svoji testovací jednotku, nevyžaduje se žádná další technická konfigurace. Vše, co potřebujete udělat, je nahrát vloženou adresu URL Power BI.
 
-Další informace o nastavení Power BIch aplikací najdete v tématu [co jsou Power BI aplikace?](https://docs.microsoft.com/power-bi/service-template-apps-overview)
+Další informace o nastavení Power BIch aplikací najdete v tématu [co jsou Power BI aplikace?](/power-bi/service-template-apps-overview)
 
 ## <a name="deployment-subscription-details"></a>Podrobnosti předplatného nasazení
 
