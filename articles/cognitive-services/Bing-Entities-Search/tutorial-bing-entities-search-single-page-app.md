@@ -11,18 +11,23 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91277321"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084625"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+
 Rozhraní API Bingu pro vyhledávání entit umožňuje vyhledávat na webu informace o *entitách* a *místech.* Daným dotazem můžete požadovat jeden z druhů výsledku, nebo oba. Definice míst a entit jsou uvedeny níže.
 
-| Výsledek | Popis |
+| Výsledek | Description |
 |-|-|
 |Entity|Známí lidé, místa a věci, které najdete podle jména|
 |Zadá|Restaurace, hotely a další místní firmy, které najdete podle názvu *nebo* podle typu (italské restaurace)|
@@ -63,8 +68,8 @@ Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného 
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -142,7 +147,7 @@ Značka HTML `<body>` obsahuje atribut `onload`, který po dokončení načítá
 
 HTML formulář obsahuje následující ovládací prvky:
 
-| Řízení | Popis |
+| Řízení | Description |
 |-|-|
 |`where`|Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.|
 |`query`|Textové pole pro zadání hledaných termínů.|
@@ -257,7 +262,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-Dotaz rozhraní API Bingu pro vyhledávání entit vyžaduje společně se zeměpisnou šířkou a délkou také *poloměr*, který určuje přesnost informací o poloze. Poloměr počítáme pomocí *ohraničujícího rámečku*, který poskytla odpověď Map Bing. Ohraničující rámeček je obdélník, který ohraničuje celé umístění. Když například uživatel zadá `NYC`, výsledkem budou zhruba souřadnice středu města New York a ohraničující rámeček, který město obklopuje. 
+Dotaz rozhraní API Bingu pro vyhledávání entit vyžaduje společně se zeměpisnou šířkou a délkou také *poloměr* , který určuje přesnost informací o poloze. Poloměr počítáme pomocí *ohraničujícího rámečku* , který poskytla odpověď Map Bing. Ohraničující rámeček je obdélník, který ohraničuje celé umístění. Když například uživatel zadá `NYC`, výsledkem budou zhruba souřadnice středu města New York a ohraničující rámeček, který město obklopuje. 
 
 Nejprve spočítáme vzdálenosti primárních souřadnic od všech čtyř rohů ohraničujícího rámečku pomocí funkce `haversineDistance()` (neukázáno). Největší z těchto čtyř vzdáleností použijeme jako poloměr. Nejmenší velikost poloměru je jeden kilometr. Tato hodnota je zároveň použitá jako výchozí, když v odpovědi není ohraničující rámeček.
 

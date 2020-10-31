@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093306"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083231"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Pochopení zabezpečení pracovních stanic spravovaných Azure
 
@@ -94,12 +94,15 @@ Základem pro zabezpečenou pracovní stanici je řešení dodavatelského řet�
 
 Pro toto řešení se kořen důvěryhodnosti nasadí pomocí technologie [Microsoft autopilot](/windows/deployment/windows-autopilot/windows-autopilot) s hardwarem, který splňuje moderní technické požadavky. Za účelem zabezpečení pracovní stanice vám nástroj autopilot umožňuje využívat zařízení s Windows 10 optimalizovaná výrobcem OEM. Tato zařízení jsou od výrobce dodávána se známým dobrým stavem. Místo opětovného navýšení obrazu potenciálně nezabezpečeného zařízení může tento autopilot transformovat zařízení s Windows do stavu připraveného pro přípravu do zaměstnání. Aplikuje nastavení a zásady, nainstaluje aplikace a dokonce změní edici Windows 10. Například autopilot může změnit instalaci Windows zařízení z Windows 10 pro na Windows 10 Enterprise, aby mohl používat pokročilé funkce.
 
-![Úrovně zabezpečení pracovních stanic](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="Diagram znázorňující životní cyklus zabezpečené pracovní stanice" border="false":::
+V horní části diagramu je dodavatel zařízení s obrázkem. Šipky ukazují od tohoto dodavatele na zákazníka, který zakoupil pracovní stanici a na nákladní vozík, který je označený jako plnění a doručení. Od nákladového vozíku se šipka odkazuje na obrázek označený jako nasazení, který obrázky osoba používá pracovní stanici. Šipka označená samoobslužným prostředím rozšiřuje uživatele na obrazovku označenou jako připravenou pro firmy. Pod touto obrazovkou jsou ikony označené jako spravované zabezpečeny. Šipka s označením rovnoměrného využití stavu, spravovat a zachovat aktuální body z obrazovky na ikonu konce životnosti a na ikonu pro obnovení původní opravy. Koncová šipka se vrátí na obrazovku připraveno pro firmy zpátky z ikony pro přerušení a opravu.
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>Role a profily zařízení
 
 Tento návod odkazuje na několik profilů zabezpečení a rolí, které vám pomůžou vytvořit bezpečnější řešení pro uživatele, vývojáře a pracovníky IT. Tyto profily vyrovnávají použitelnost a rizika pro běžné uživatele, kteří můžou využívat rozšířenou nebo zabezpečenou pracovní stanici. Zde uvedené konfigurace nastavení jsou založené na standardech, které byly přijaty v oborech. V těchto pokynech se dozvíte, jak posílit Windows 10 a snížit rizika spojená s ohrožením zařízení nebo uživatele. Pokud chcete využít výhod moderní hardwarové technologie a kořenového adresáře důvěryhodného zařízení, použijeme [ověření stavu zařízení](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643), která je povolená od **vysokého profilu zabezpečení** . Tato funkce je k dispozici, aby nemohly být při předčasném spuštění zařízení trvalé. K tomu slouží zásady a technologie, které vám pomůžou se správou bezpečnostních funkcí a rizik.
-![Úrovně zabezpečení pracovních stanic](./media/concept-azure-managed-workstation/seccon-levels.png)
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="Diagram znázorňující životní cyklus zabezpečené pracovní stanice" border="false":::
 
 * **Základní zabezpečení** – spravovaná standardní pracovní stanice nabízí dobrý výchozí bod pro většinu domácích a malých obchodních použití. Tato zařízení jsou registrovaná v Azure AD a spravovaná pomocí Intune. Tento profil umožňuje uživatelům spouštět libovolné aplikace a procházet libovolný web. Mělo by být povoleno řešení ochrany proti malwaru, jako je [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) .
 

@@ -11,14 +11,19 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221226"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084846"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu pro vyhledávání entit a zobrazení odpovědi JSON. Tato jednoduchá aplikace v jazyce C# pošle do rozhraní API dotaz pro hledání zpráv a zobrazí odpověď. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
@@ -38,9 +43,9 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 
 1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. 
 1. Přidejte [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) do balíčku NuGet.
-    1. V **Průzkumník řešení**klikněte pravým tlačítkem na svůj projekt.
-    2. Vyberte **Spravovat balíčky NuGet**.
-    3. Vyhledejte a vyberte *Newtonsoft.Jsna*a pak balíček nainstalujte.
+    1. V **Průzkumník řešení** klikněte pravým tlačítkem na svůj projekt.
+    2. Vyberte **Spravovat balíčky NuGet** .
+    3. Vyhledejte a vyberte *Newtonsoft.Jsna* a pak balíček nainstalujte.
 1. Pak přidejte následující obory názvů do hlavního souboru kódu:
     
     ```csharp

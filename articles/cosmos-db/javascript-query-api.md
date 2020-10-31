@@ -8,14 +8,15 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 116253e783595cf0e169c6a5774944dfd89f890e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495892"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082942"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Kromě vydávání dotazů pomocí rozhraní SQL API v Azure Cosmos DB poskytuje [sada SDK na straně serveru Cosmos DB](https://github.com/Azure/azure-cosmosdb-js-server/) rozhraní JavaScript pro provádění optimalizovaných dotazů v Cosmos DB uložených procedurách a triggerech. Pro použití tohoto rozhraní JavaScript nemusíte znát jazyk SQL. Rozhraní API pro dotazování v jazyce JavaScript umožňuje programově vytvářet dotazy tím, že předává funkce predikátů do sekvence volání funkce, se syntaxí ECMAScript5's předdefinované a oblíbené knihovny JavaScriptu, jako je Lodash. Dotazy jsou analyzovány modulem runtime jazyka JavaScript a efektivně spouštěny pomocí Azure Cosmos DB indexy.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653209"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083282"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -24,7 +24,7 @@ Služba Azure AD JOIN umožňuje připojit zařízení přímo k Azure AD bez nu
 
 Tento článek poskytuje informace, které potřebujete k plánování vaší implementace služby Azure AD JOIN.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [správou zařízení v Azure Active Directory](./overview.md).
 
@@ -90,8 +90,8 @@ K připojení zařízení do Azure AD nemůžete použít čipové karty ani ov�
 
 Pokud vytvoříte uživatele v:
 
-- **Místní služba Active Directory**, je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md). 
-- **Azure AD**, nevyžaduje se žádné další nastavení.
+- **Místní služba Active Directory** , je třeba je synchronizovat s Azure AD pomocí [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md). 
+- **Azure AD** , nevyžaduje se žádné další nastavení.
 
 Místní hlavní názvy služby (UPN), které se liší od Azure AD UPN, se na zařízeních připojených k Azure AD nepodporují. Pokud uživatelé používají místní hlavní název uživatele (UPN), měli byste naplánovat přechod na použití primárního hlavního názvu uživatele (UPN) ve službě Azure AD.
 
@@ -187,7 +187,7 @@ Připojení ke vzdálené ploše k zařízením připojeným k Azure AD vyžaduj
 Když se spouští aktualizace Windows 10 2004, můžou uživatelé použít taky vzdálenou plochu ze zařízení s Windows 10 registrovaných v Azure AD na zařízení připojené k Azure AD. 
 
 ## <a name="understand-your-provisioning-options"></a>Informace o možnostech zřizování
-**Poznámka**: zařízení připojená k Azure AD nejde nasadit pomocí nástroje pro přípravu systému (Sysprep) nebo podobných nástrojů pro vytváření bitových kopií.
+**Poznámka** : zařízení připojená k Azure AD nejde nasadit pomocí nástroje pro přípravu systému (Sysprep) nebo podobných nástrojů pro vytváření bitových kopií.
 
 Službu Azure AD JOIN můžete zřídit pomocí následujících přístupů:
 
@@ -219,7 +219,7 @@ Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projd�
 
 ## <a name="configure-your-device-settings"></a>Konfigurace nastavení zařízení
 
-Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory**vyberte `Devices > Device settings` .
+Azure Portal vám umožní řídit nasazení zařízení připojených k Azure AD ve vaší organizaci. Pokud chcete nakonfigurovat související nastavení, na **stránce Azure Active Directory** vyberte `Devices > Device settings` .
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>Uživatelé můžou připojovat zařízení do Azure AD
 
@@ -243,13 +243,13 @@ Pokud požadujete, aby uživatelé prováděli MFA během připojování zaříz
 
 Než budete moct nakonfigurovat nastavení mobility, možná budete muset nejdřív přidat poskytovatele MDM.
 
-**Postup přidání poskytovatele MDM**:
+**Postup přidání poskytovatele MDM** :
 
-1. Na **stránce Azure Active Directory**v části **Spravovat** klikněte na `Mobility (MDM and MAM)` . 
-1. Klikněte na **Přidat aplikaci**.
+1. Na **stránce Azure Active Directory** v části **Spravovat** klikněte na `Mobility (MDM and MAM)` . 
+1. Klikněte na **Přidat aplikaci** .
 1. Ze seznamu vyberte poskytovatele MDM.
 
-   ![Přidání aplikace](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Snímek obrazovky Azure Active Directory přidat stránku aplikace V seznamu je uvedeno několik poskytovatelů M D M." border="false":::
 
 Vyberte poskytovatele MDM a nakonfigurujte související nastavení. 
 
@@ -261,8 +261,8 @@ V závislosti na rozsahu **nasazení vyberte možnost** **vše nebo vše** .
 
 Na základě vašeho oboru nastane jedna z následujících možností: 
 
-- **Uživatel je v oboru MDM**: Pokud máte předplatné Azure AD Premium, je registrace MDM automatizovaná spolu se službou Azure AD JOIN. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro MDM. Pokud v tomto scénáři registrace MDM selže, vrátí se i služba Azure AD JOIN.
-- **Uživatel není v oboru MDM**: Pokud uživatelé nejsou v oboru MDM, připojení k Azure AD se dokončí bez registrace MDM. Výsledkem je nespravované zařízení.
+- **Uživatel je v oboru MDM** : Pokud máte předplatné Azure AD Premium, je registrace MDM automatizovaná spolu se službou Azure AD JOIN. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro MDM. Pokud v tomto scénáři registrace MDM selže, vrátí se i služba Azure AD JOIN.
+- **Uživatel není v oboru MDM** : Pokud uživatelé nejsou v oboru MDM, připojení k Azure AD se dokončí bez registrace MDM. Výsledkem je nespravované zařízení.
 
 ### <a name="mdm-urls"></a>Adresy URL MDM
 
@@ -272,7 +272,7 @@ Existují tři adresy URL, které souvisejí s konfigurací MDM:
 - Adresa URL zjišťování MDM 
 - Adresa URL s předpisy služby MDM
 
-![Přidání aplikace](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Snímek obrazovky Azure Active Directory přidat stránku aplikace V seznamu je uvedeno několik poskytovatelů M D M." border="false":::
 
 Každá adresa URL má předdefinovanou výchozí hodnotu. Pokud jsou tato pole prázdná, požádejte prosím o další informace svého poskytovatele MDM.
 
@@ -284,7 +284,7 @@ MAM se nevztahuje na službu Azure AD JOIN.
 
 Pokud chcete povolit roaming stavu do služby Azure AD, aby uživatelé mohli synchronizovat nastavení napříč zařízeními, přečtěte si téma [povolení Enterprise State Roaming v Azure Active Directory](enterprise-state-roaming-enable.md). 
 
-**Doporučení**: Toto nastavení povolte i pro zařízení připojená k hybridní službě Azure AD.
+**Doporučení** : Toto nastavení povolte i pro zařízení připojená k hybridní službě Azure AD.
 
 ## <a name="configure-conditional-access"></a>Konfigurace podmíněného přístupu
 

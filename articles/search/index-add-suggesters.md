@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083537"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování*, které dokončuje částečný vstup pro celý dotaz, a *návrhy* , které vás přejdou na konkrétní shodu. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
+V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování* , které dokončuje částečný vstup pro celý dotaz, a *návrhy* , které vás přejdou na konkrétní shodu. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
 
 Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě. Automatické dokončování předpokládá potenciální termín a dokončuje "TW" s "in". Návrhy jsou zkrácené výsledky hledání, kde pole jako název hotelu představuje odpovídající dokument hledání hotelu z indexu. V případě návrhů můžete Surface libovolného pole, které poskytuje popisné informace.
 
@@ -52,7 +52,7 @@ Automatické dokončování přináší výhody většího fondu polí, ze kter�
 
 Na druhé straně návrhy poskytují lepší výsledky, pokud je volba pole vybraná. Mějte na paměti, že návrh je proxy pro dokument hledání, takže budete chtít, aby pole, která nejlépe reprezentují jeden výsledek. Názvy, názvy nebo jiná jedinečná pole, která rozlišují mezi více shod, fungují nejlépe. Pokud se pole skládají z opakujících se hodnot, návrhy se skládají z identických výsledků a uživatel nebude znát, který z nich se má kliknout.
 
-Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte **$Select**, **$Top**, **$Filter**a **searchFields** k řízení výsledků návrhů.
+Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechna pole, která potřebujete pro automatické dokončování, ale pak použijte **$Select** , **$Top** , **$Filter** a **searchFields** k řízení výsledků návrhů.
 
 ### <a name="choose-analyzers"></a>Zvolit analyzátory
 
@@ -167,7 +167,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka konstrukce, navrhovaných dotazů, automatického dokončování a vymezené navigace pro návrhy. Tato ukázka kódu běží na službě izolovaného prostoru Azure Kognitivní hledání a používá předem načtený index hotelů, takže ke spuštění aplikace stačí stisknout klávesu F5. Není nutné žádné předplatné ani přihlášení.
 
-+ [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) je starší ukázka obsahující kód C# i Java. Ukazuje také vytváření návrhů, navrhované dotazy, automatické dokončování a omezující navigaci. Tato ukázka kódu používá ukázková data hostovaného [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) . 
++ [DotNetHowToAutocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) je starší ukázka obsahující kód C# i Java. Ukazuje také vytváření návrhů, navrhované dotazy, automatické dokončování a omezující navigaci. Tato ukázka kódu používá ukázková data hostovaného [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) . 
 
 ## <a name="next-steps"></a>Další kroky
 

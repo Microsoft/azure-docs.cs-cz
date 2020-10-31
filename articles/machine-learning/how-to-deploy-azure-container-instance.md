@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: e64914118409332f6a1c08b6d5e1669685529d76
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ff071373706759576f80426d61a27851bfc4e1b6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999166"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082160"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Nasazení modelu do služby Azure Container Instances
 
@@ -33,7 +33,7 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 >
 > Můžete využít také [poznámkový blok služby Azure Machine Learning pro místní nasazení](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -60,7 +60,7 @@ Další informace najdete v tématu [Jak zabezpečit Inferencing pomocí virtuá
 
 ## <a name="deploy-to-aci"></a>Nasazení do ACI
 
-Pokud chcete nasadit model, který se Azure Container Instances, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__, která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+Pokud chcete nasadit model, který se Azure Container Instances, vytvořte __konfiguraci nasazení__ , která popisuje potřebné výpočetní prostředky. Například počet jader a paměti. Potřebujete také __konfiguraci odvození__ , která popisuje prostředí potřebné pro hostování modelu a webové služby. Další informace o vytvoření konfigurace odvození najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > * ACI je vhodný jenom pro malé modely, které jsou menší než 1 GB. 
@@ -104,6 +104,8 @@ Viz [nasazení modelů pomocí vs Code](tutorial-train-deploy-image-classificati
 > [!IMPORTANT]
 > Nemusíte vytvářet kontejner ACI k testování předem. Kontejnery ACI se vytvářejí podle potřeby.
 
+> [!IMPORTANT]
+> K vytvoření všech základních prostředků ACI přidáváme ID pracovního prostoru s algoritmem hash, takže všechny ACI názvy ze stejného pracovního prostoru budou mít stejnou příponu. Název služby Azure Machine Learning by byl stejný zákazník, který poskytl "service_name" a všechna Azure Machine Learning rozhraní API sady SDK pro uživatele nepotřebují žádnou změnu. Neposkytujeme žádné záruky na názvy podkladových prostředků, které se vytvářejí.
 
 ## <a name="next-steps"></a>Další kroky
 

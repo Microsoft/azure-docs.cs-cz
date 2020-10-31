@@ -4,12 +4,12 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757975"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083163"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -44,7 +44,7 @@ ms.locfileid: "91757975"
 
 * V nástrojích nejsou podporovány všechny typy projektů .NET. Webové a WCF projekty jsou podporovány. Pro jiné typy projektů, jako jsou například aplikace pro stolní nebo služby, můžete [Přidat sadu Application Insights SDK do projektu ručně](./windows-desktop.md).
 * Ujistěte se, že máte [Visual Studio 2013 Update 3 nebo novější](/visualstudio/releasenotes/vs2013-update3-rtm-vs). Je součástí předinstalovaného nástroje pro vývojáře, které poskytují sadu Application Insights SDK.
-* Vyberte **nástroje**, **rozšíření a aktualizace** a ověřte, že je nainstalovaná a povolená **Developer Analytics Tools** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
+* Vyberte **nástroje** , **rozšíření a aktualizace** a ověřte, že je nainstalovaná a povolená **Developer Analytics Tools** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
 * Otevřete dialogové okno Nový projekt a vyberte ASP.NET webová aplikace. Pokud se zobrazí možnost Application Insights, jsou nástroje nainstalovány. V takovém případě zkuste odinstalovat a znovu nainstalovat Developer Analytics Tools.
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>Přidání Application Insights se nezdařilo
@@ -65,7 +65,7 @@ Opravit
 ## <a name="i-get-an-error-instrumentation-key-cannot-be-empty"></a><a name="emptykey"></a>Zobrazila se chybová zpráva klíč instrumentace nemůže být prázdný.
 Vypadá to, že při instalaci Application Insights nebo možná protokolovacího adaptéru došlo k chybě.
 
-V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Application Insights > konfigurovat Application Insights**. Zobrazí se dialogové okno, které vás vyzve, abyste se přihlásili do Azure a vytvořili prostředek Application Insights, nebo znovu použít už existující.
+V Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost **Application Insights > konfigurovat Application Insights** . Zobrazí se dialogové okno, které vás vyzve, abyste se přihlásili do Azure a vytvořili prostředek Application Insights, nebo znovu použít už existující.
 
 ## <a name="nuget-packages-are-missing-on-my-build-server"></a><a name="NuGetBuild"></a> Na mém serveru sestavení chybí tento počet balíčků NuGet:
 *Při ladění na svém vývojovém počítači se všechno vytvoří, ale na serveru sestavení se zobrazí chyba NuGet.*
@@ -84,8 +84,8 @@ Pravděpodobná příčina:
 Opravit
 
 * Ujistěte se, že verze sady Visual Studio je 2013 Update 3 nebo novější.
-* Vyberte **nástroje**, **rozšíření a aktualizace** a ověřte, že jsou nainstalované a povolené **vývojářské analytické nástroje** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
-* V Průzkumník řešení klikněte pravým tlačítkem na svůj projekt. Pokud se zobrazí příkaz **Application Insights > nakonfigurovat Application Insights**, použijte ho k připojení projektu k prostředku ve službě Application Insights.
+* Vyberte **nástroje** , **rozšíření a aktualizace** a ověřte, že jsou nainstalované a povolené **vývojářské analytické nástroje** . Pokud ano, kliknutím na **aktualizace** ověřte, zda je k dispozici aktualizace.
+* V Průzkumník řešení klikněte pravým tlačítkem na svůj projekt. Pokud se zobrazí příkaz **Application Insights > nakonfigurovat Application Insights** , použijte ho k připojení projektu k prostředku ve službě Application Insights.
 
 V opačném případě váš typ projektu není přímo podporován analytickými nástroji pro vývojáře. Pokud chcete zobrazit telemetrii, přihlaste se k [Azure Portal](https://portal.azure.com), zvolte Application Insights na levém navigačním panelu a vyberte svou aplikaci.
 
@@ -128,7 +128,7 @@ Opravit
   ![Snímek obrazovky, který ukazuje spuštění aplikace v režimu ladění v aplikaci Visual Studio.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Na portálu Application Insights otevřete [diagnostické vyhledávání](./diagnostic-search.md). Data se obvykle zobrazují jako první.
 * Klikněte na tlačítko Aktualizovat. Okno se pravidelně aktualizuje, ale můžete ho také provést ručně. Interval aktualizace je delší pro větší časové rozsahy.
-* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete ApplicationInsights.config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
+* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace** . Potom v projektu v aplikaci Visual Studio otevřete ApplicationInsights.config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
   * Na portálu klikněte na Application Insights a vyhledejte prostředek aplikace se správným klíčem. ani
   * V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurovat. Resetujte aplikaci, aby odesílala telemetrii do správného prostředku.
   * Pokud nemůžete najít odpovídající klíče, ověřte, že používáte stejné přihlašovací údaje pro přihlášení v aplikaci Visual Studio jako v portálu.
@@ -239,14 +239,14 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 Tyto parametry můžete upravit podle potřeby:
-- **MaxCollectSec**. Nastavením tohoto parametru zabráníte spuštění PerfView na neomezenou dobu a vlivu na výkon serveru.
-- **OnlyProviders**. Nastavte tento parametr tak, aby shromáždil jenom protokoly ze sady SDK. Tento seznam můžete přizpůsobit podle konkrétního šetření. 
-- **NoGui**. Nastavte tento parametr pro shromažďování protokolů bez grafického uživatelského rozhraní.
+- **MaxCollectSec** . Nastavením tohoto parametru zabráníte spuštění PerfView na neomezenou dobu a vlivu na výkon serveru.
+- **OnlyProviders** . Nastavte tento parametr tak, aby shromáždil jenom protokoly ze sady SDK. Tento seznam můžete přizpůsobit podle konkrétního šetření. 
+- **NoGui** . Nastavte tento parametr pro shromažďování protokolů bez grafického uživatelského rozhraní.
 
 
 Další informace
 - [Zaznamenávání trasování výkonu pomocí PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Application Insights zdroje událostí](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights zdroje událostí](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Shromažďování protokolů pomocí dotnet – trasování
 

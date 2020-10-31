@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f39dbfc33bfc34e8f5e339a489d0c74bebb415e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303133"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082279"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí logický výraz, který označuje, zda je objekt LineString, který je určen v prvním argumentu, přesměruje v druhém argumentu bodový kód JSON (Point, mnohoúhelník nebo LineString).  
   
 ## <a name="syntax"></a>Syntaxe

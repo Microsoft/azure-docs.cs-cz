@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: 2859f603dd168e4f93eb8f3cbc9c841de884e1ee
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0ee7dc8890c228617eaeee8b1cdc72d2230458e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489230"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082959"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Ve službě Azure Cosmos DB má každý kontejner zásady indexování, které určují, jakým způsobem by se měly indexovat položky kontejneru. Výchozí zásady indexování pro nově vytvořené kontejnery indexují všechny vlastnosti všech položek a u všech řetězců a čísel vynucují indexy rozsahu. Díky tomu můžete dosáhnout vysokého výkonu dotazů, aniž byste předem museli myslet na indexování a správu indexů.
 
-V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování*a zahrnutí nebo vyloučení *cest k vlastnostem*.
+V některých situacích možná budete chtít toto automatické chování přepsat, aby lépe vyhovovalo vašim požadavkům. Zásady indexování kontejneru můžete přizpůsobit nastavením jeho *režimu indexování* a zahrnutí nebo vyloučení *cest k vlastnostem* .
 
 > [!NOTE]
 > Metoda aktualizace zásad indexování popsaná v tomto článku se týká jenom rozhraní API pro Azure Cosmos DB SQL (Core). Další informace o indexování v [rozhraní Azure Cosmos DB API pro MongoDB](mongodb-indexing.md)
@@ -26,8 +27,8 @@ V některých situacích možná budete chtít toto automatické chování přep
 
 Azure Cosmos DB podporuje dva režimy indexování:
 
-- **Konzistentní**: index se aktualizuje synchronně při vytváření, aktualizaci nebo odstraňování položek. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
-- **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
+- **Konzistentní** : index se aktualizuje synchronně při vytváření, aktualizaci nebo odstraňování položek. To znamená, že konzistence vašich dotazů pro čtení bude [konzistence nakonfigurovaná pro tento účet](consistency-levels.md).
+- **Žádné** : indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
 > Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority v době, kdy modul neprovádí žádnou jinou práci. To může vést k **nekonzistentním nebo neúplným** výsledkům dotazů. Pokud plánujete dotazy na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete taky požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (s výjimkou případů, kdy používáte účet Azure Cosmos v režimu bez [serveru](serverless.md) , který nepodporuje opožděné indexování).
@@ -77,7 +78,7 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 
 - Vlastnost System `_etag` je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
-- Pokud je režim indexování nastavený na **konzistentní**, vlastnosti systému `id` a `_ts` jsou automaticky indexovány.
+- Pokud je režim indexování nastavený na **konzistentní** , vlastnosti systému `id` a `_ts` jsou automaticky indexovány.
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
@@ -103,9 +104,9 @@ Pokud jsou zahrnuté cesty a vyloučené cesty v konfliktu, má přednost přesn
 
 Tady je příklad:
 
-**Zahrnutá cesta**: `/food/ingredients/nutrition/*`
+**Zahrnutá cesta** : `/food/ingredients/nutrition/*`
 
-**Vyloučená cesta**: `/food/ingredients/*`
+**Vyloučená cesta** : `/food/ingredients/*`
 
 V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest `food/ingredients` by se z indexu vyloučila jakákoli data v cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*` , která by byla indexována.
 

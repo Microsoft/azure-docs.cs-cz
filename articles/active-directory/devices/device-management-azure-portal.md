@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76c5f51486f7c1673fb5359eabc99ee41130472
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ab17e5c0a024fec938f1b588cc4ce69bf16a878
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278852"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083248"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení přes Azure Portal
 
@@ -38,8 +38,8 @@ Stránka **všechna zařízení** vám umožní:
 
 Přístup k portálu zařízení získáte pomocí následujících kroků:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **zařízení**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**  >  **zařízení** .
 
 ## <a name="manage-devices"></a>Správa zařízení
 
@@ -71,7 +71,7 @@ Obě možnosti umožňují správcům:
 
 ### <a name="manage-an-intune-device"></a>Správa zařízení v Intune
 
-Pokud jste správce Intune, můžete spravovat zařízení, ve kterých je MDM označená **Microsoft Intune**. Pokud zařízení není zaregistrované v Microsoft Intune, bude možnost spravovat šedá.
+Pokud jste správce Intune, můžete spravovat zařízení, ve kterých je MDM označená **Microsoft Intune** . Pokud zařízení není zaregistrované v Microsoft Intune, bude možnost spravovat šedá.
 
 ### <a name="enable-or-disable-an-azure-ad-device"></a>Povolení nebo zakázání zařízení Azure AD
 
@@ -111,7 +111,7 @@ ID zařízení můžete použít k ověření podrobností ID zařízení v zař
   
 ### <a name="view-or-copy-bitlocker-keys"></a>Zobrazení nebo kopírování klíčů nástroje BitLocker
 
-Klíče nástroje BitLocker můžete zobrazit a zkopírovat a uživatelům tak dovolit obnovení šifrovaných jednotek. Tyto klíče jsou k dispozici pouze pro zařízení s Windows, která jsou zašifrovaná a mají své klíče uložené v Azure AD. Tyto klíče můžete najít při přístupu k podrobnostem o zařízení výběrem možnosti **Zobrazit obnovovací klíč**. Když vyberete **Zobrazit obnovovací klíč** , vygeneruje se protokol auditu, který najdete v `KeyManagement` kategorii.
+Klíče nástroje BitLocker můžete zobrazit a zkopírovat a uživatelům tak dovolit obnovení šifrovaných jednotek. Tyto klíče jsou k dispozici pouze pro zařízení s Windows, která jsou zašifrovaná a mají své klíče uložené v Azure AD. Tyto klíče můžete najít při přístupu k podrobnostem o zařízení výběrem možnosti **Zobrazit obnovovací klíč** . Když vyberete **Zobrazit obnovovací klíč** , vygeneruje se protokol auditu, který najdete v `KeyManagement` kategorii.
 
 ![Zobrazit klíče BitLockeru](./media/device-management-azure-portal/device-details-show-bitlocker-key.png)
 
@@ -139,8 +139,8 @@ Povolení funkce filtrování ve verzi Preview v zobrazení **všechna zařízen
 
 ![Povolit funkci Preview pro filtrování](./media/device-management-azure-portal/device-filter-preview-enable.png)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory**  >  **zařízení**.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přejděte na **Azure Active Directory**  >  **zařízení** .
 1. Vyberte banner, který uvádí, a **Vyzkoušejte si nová vylepšení filtrování zařízení. Kliknutím povolíte náhled.**
 
 Teď budete mít možnost **Přidat filtry** do zobrazení **všechna zařízení** .
@@ -158,19 +158,19 @@ Chcete-li zobrazit nebo spravovat nastavení zařízení v Azure Portal, je nutn
 
 ![Nastavení zařízení související s Azure AD](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
-- **Uživatelé můžou připojovat zařízení do Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou svá zařízení zaregistrovat jako zařízení připojená k Azure AD. Výchozí hodnota je **All**.
+- **Uživatelé můžou připojovat zařízení do Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou svá zařízení zaregistrovat jako zařízení připojená k Azure AD. Výchozí hodnota je **All** .
 
 > [!NOTE]
 > **Uživatelé můžou připojovat zařízení k nastavení Azure AD** jenom pro službu Azure AD JOIN ve Windows 10.
 
 - **Další místní správci na zařízeních připojených k Azure AD** – můžete vybrat uživatele, kterým se v zařízení udělují oprávnění místního správce. Tito uživatelé se přidají do role *Správci zařízení* v Azure AD. Globální správci ve službě Azure AD a vlastníci zařízení mají ve výchozím nastavení udělena práva místního správce. Tato možnost je funkce Premium Edition, která je dostupná prostřednictvím produktů, jako je Azure AD Premium nebo sada Enterprise Mobility Suite (EMS).
-- **Uživatelé mohou zaregistrovat svá zařízení ve službě Azure AD** – je třeba nakonfigurovat toto nastavení tak, aby bylo možné zaregistrovat zařízení s Windows 10 osobní, iOS, Androidem a MacOS, která budou registrována ve službě Azure AD. Pokud vyberete možnost **žádné**, zařízení se nemůžou registrovat v Azure AD. Registrace pomocí Microsoft Intune nebo správy mobilních zařízení (MDM) pro Microsoft 365 vyžaduje registraci. Pokud jste nakonfigurovali některou z těchto služeb, je vybraná možnost **vše** a **žádná** není k dispozici.
-- **Vyžadovat vícefaktorové ověřování pro připojení zařízení** – můžete si vybrat, jestli uživatelé musí poskytovat dodatečný ověřovací faktor k připojení zařízení k Azure AD. Výchozí hodnota je **ne**. Při registraci zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých službách Azure Multi-Factor Authentication najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
+- **Uživatelé mohou zaregistrovat svá zařízení ve službě Azure AD** – je třeba nakonfigurovat toto nastavení tak, aby bylo možné zaregistrovat zařízení s Windows 10 osobní, iOS, Androidem a MacOS, která budou registrována ve službě Azure AD. Pokud vyberete možnost **žádné** , zařízení se nemůžou registrovat v Azure AD. Registrace pomocí Microsoft Intune nebo správy mobilních zařízení (MDM) pro Microsoft 365 vyžaduje registraci. Pokud jste nakonfigurovali některou z těchto služeb, je vybraná možnost **vše** a **žádná** není k dispozici.
+- **Vyžadovat vícefaktorové ověřování pro připojení zařízení** – můžete si vybrat, jestli uživatelé musí poskytovat dodatečný ověřovací faktor k připojení zařízení k Azure AD. Výchozí hodnota je **ne** . Při registraci zařízení doporučujeme vyžadovat službu Multi-Factor Authentication. Než povolíte službu Multi-Factor Authentication pro tuto službu, musíte zajistit, aby bylo pro uživatele, kteří registrují svá zařízení, nakonfigurované vícefaktorové ověřování. Další informace o různých službách Azure Multi-Factor Authentication najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
 > **Vyžadovat použití vícefaktorového ověřování pro připojení zařízení** se vztahuje na zařízení, která jsou buď připojená k Azure AD, nebo v případě registrace Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
 
-- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50**.
+- **Maximální počet zařízení** – toto nastavení umožňuje vybrat maximální počet připojených zařízení Azure AD nebo zařízení s registrovanými službou Azure AD, která může uživatel mít ve službě Azure AD. Pokud uživatel dosáhne této kvóty, nebude moct přidávat další zařízení, dokud nebudou odebrána některá z existujících zařízení. Výchozí hodnota je **50** .
 
 > [!NOTE]
 > Nastavení **maximální počet zařízení** se vztahuje na zařízení, která jsou buď připojená ke službě Azure AD, nebo v zaregistrovaných Azure AD. Toto nastavení se nevztahuje na zařízení připojená k hybridní službě Azure AD.
@@ -194,11 +194,11 @@ Protokol auditu má výchozí zobrazení seznamu, které obsahuje:
 - Iniciátor/actor (kdo) aktivity
 - Aktivita (co)
 
-![Protokoly auditu](./media/device-management-azure-portal/63.png)
+:::image type="content" source="./media/device-management-azure-portal/63.png" alt-text="Snímek obrazovky tabulky v části aktivita na stránce zařízení, kde jsou uvedeny datum, cíl, objekt actor a aktivita pro čtyři protokoly auditu." border="false":::
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Protokoly auditu](./media/device-management-azure-portal/64.png)
+:::image type="content" source="./media/device-management-azure-portal/64.png" alt-text="Snímek obrazovky tabulky v části aktivita na stránce zařízení, kde jsou uvedeny datum, cíl, objekt actor a aktivita pro čtyři protokoly auditu." border="false":::
 
 Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
@@ -211,7 +211,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 Kromě filtrů můžete vyhledat konkrétní položky.
 
-![Protokoly auditu](./media/device-management-azure-portal/65.png)
+:::image type="content" source="./media/device-management-azure-portal/65.png" alt-text="Snímek obrazovky tabulky v části aktivita na stránce zařízení, kde jsou uvedeny datum, cíl, objekt actor a aktivita pro čtyři protokoly auditu." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 
