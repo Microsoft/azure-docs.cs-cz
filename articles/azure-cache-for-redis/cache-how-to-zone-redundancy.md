@@ -1,28 +1,24 @@
 ---
 title: Povolení redundance zóny pro Azure cache pro Redis (Preview)
-description: Zjistěte, jak nastavit redundanci zóny pro Azure cache na úrovni Premium pro instance Redis.
+description: Přečtěte si, jak nastavit redundanci zóny pro Redis instance úrovně Premium a Enterprise pro Azure.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 3f40c21fdd5144b325a8dd94eed2c9cbbe8c7877
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cb7ee5b9fa02e726d03bf1ae9935c07ded6e4a6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088008"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Povolení redundance zóny pro Azure cache pro Redis (Preview)
 V tomto článku se dozvíte, jak nakonfigurovat instanci redundantní mezipaměti Azure v zóně pomocí Azure Portal.
 
-Azure cache pro Redis úrovně Standard a Premium nabízí integrovanou redundanci tím, že hostuje každou mezipaměť na dvou vyhrazených virtuálních počítačích (VM). I když se tyto virtuální počítače nacházejí v samostatných [doménách selhání a aktualizacích Azure](../virtual-machines/manage-availability.md) a vysoce dostupné, jsou náchylné k selhání na úrovni datacentra. Azure cache pro Redis také podporuje redundanci zóny ve své úrovni Premium. Zóna – redundantní mezipaměť běží na virtuálních počítačích, které jsou rozloženy v několika [zónách dostupnosti](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures). Poskytuje vyšší odolnost a dostupnost.
+Azure cache pro Redis úrovně Standard, Premium a Enterprise nabízí integrovanou redundanci tím, že hostuje každou mezipaměť na dvou vyhrazených virtuálních počítačích (VM). I když se tyto virtuální počítače nacházejí v samostatných [doménách selhání a aktualizacích Azure](../virtual-machines/manage-availability.md) a vysoce dostupné, jsou náchylné k selhání na úrovni datacentra. Azure cache pro Redis také podporuje redundanci zóny ve svých úrovních Premium a Enterprise. Zóna – redundantní mezipaměť běží na virtuálních počítačích, které jsou rozloženy v několika [zónách dostupnosti](../virtual-machines/manage-availability.md#use-availability-zones-to-protect-from-datacenter-level-failures). Poskytuje vyšší odolnost a dostupnost.
 
-> [!IMPORTANT]
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview. 
-> 
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 > [!NOTE]
@@ -46,9 +42,9 @@ Mezipaměť vytvoříte pomocí následujících kroků:
     | **Skupina prostředků** | Vyberte skupinu prostředků nebo vyberte **vytvořit novou** a zadejte nový název skupiny prostředků. | Název skupiny prostředků, ve které se má vytvořit mezipaměť a další prostředky Po uložení všech prostředků vaší aplikace do jedné skupiny prostředků je můžete snadno spravovat nebo odstraňovat společně. | 
     | **Název DNS** | Zadejte globálně jedinečný název. | Název mezipaměti musí být řetězec v rozmezí 1 až 63 znaků, který obsahuje jenom čísla, písmena nebo spojovníky. Název musí začínat a končit číslicí nebo písmenem a nesmí obsahovat po sobě jdoucí spojovníky. *Název hostitele* vaší instance mezipaměti bude *\<DNS name> . Redis.cache.Windows.NET* . | 
     | **Umístění** | Vyberte umístění. | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž jiných služeb, které budou používat vaši mezipaměť. |
-    | **Typ mezipaměti** | Vyberte mezipaměť [úrovně Premium](https://azure.microsoft.com/pricing/details/cache/) . |  Cenová úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro danou mezipaměť. Další informace najdete v tématu [Přehled služby Azure cache pro Redis](cache-overview.md). |
+    | **Typ mezipaměti** | Vyberte mezipaměť [úrovně Premium nebo Enterprise](https://azure.microsoft.com/pricing/details/cache/) . |  Cenová úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro danou mezipaměť. Další informace najdete v tématu [Přehled služby Azure cache pro Redis](cache-overview.md). |
    
-1. Na stránce **Upřesnit** vyberte **počet replik** .
+1. Na stránce **Upřesnit** pro mezipaměť úrovně Premium vyberte **počet replik** .
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Vyberte mezipaměť Azure pro Redis.":::
 

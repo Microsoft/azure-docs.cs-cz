@@ -4,12 +4,12 @@ description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místn
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: adec05a4d8e34374fe260343c73b1ecd14ba04f1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168167"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086773"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit**.
+    Toto nastavení můžete aktualizovat přímo v souboru daemon.json v instalační cestě Dockeru. Nastavení konfigurace démona můžete přímo upravit v Docker. Vyberte **ikonu Docker** a potom vyberte **Předvolby** > **Démon** > **Upřesnit** .
     
     >[!NOTE]
     >
@@ -49,7 +49,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     >
 
     >[!TIP]
-    >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru**, pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
+    >Při testování rozsáhlých aplikací doporučujeme zvýšit množství prostředků přidělených Dockeru. Můžete to provést tak, že vyberete **ikonu Dockeru** , pak vyberete **Upřesnit** a upravíte počet jader a velikost paměti.
 
 2. Spusťte cluster.<br/>
     <b>Ubuntu 18,04 LTS:</b>
@@ -63,7 +63,7 @@ Pokud chcete nastavit místní kontejner Dockeru a mít v něm spuštěný clust
     ```
 
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Service Fabric OneBox](https://hub.docker.com/_/microsoft-service-fabric-onebox) v Docker Hub.
 
 
 

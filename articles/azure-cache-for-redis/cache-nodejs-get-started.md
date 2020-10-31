@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: použití mezipaměti Azure pro Redis s Node.js'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v Node.js'
 description: V tomto rychlém startu se dozvíte, jak používat Azure cache pro Redis s Node.js a node_redis.
 author: yegu-ms
 ms.service: cache
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: ce570475617236bb99f1bca7a07dc95e1f3285aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa22cffc1fc38e055c6c2bb504c311c012f31ac2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91330991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087141"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis s Node.js
+# <a name="quickstart-use-azure-cache-for-redis-in-nodejs"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Node.js
 
 V tomto rychlém startu zahrňte Azure cache pro Redis do aplikace Node.js, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
@@ -51,11 +51,11 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
     {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
 ```
 
-Nevytvářejte nová připojení pro každou operaci v kódu. Raději co nejvíce připojení použijte opakovaně. 
+Pro každou operaci v kódu nevytvářejte nové připojení. Raději co nejvíce připojení použijte opakovaně. 
 
 ## <a name="create-a-new-nodejs-app"></a>Vytvoření nové aplikace Node.js
 
-Vytvořte nový soubor skriptu s názvem *redistest.js*. Pomocí příkazu `npm install redis bluebird` nainstalujte požadované balíčky.
+Vytvořte nový soubor skriptu s názvem *redistest.js* . Pomocí příkazu `npm install redis bluebird` nainstalujte požadované balíčky.
 
 Přidejte následující příklad JavaScriptu do souboru. Tento kód ukazuje, jak se připojit k instanci služby Azure cache for Redis pomocí názvu hostitele mezipaměti a proměnných prostředí klíče. Kód také ukládá a načítá hodnotu řetězce v mezipaměti. Spouští se také příkazy `PING` a `CLIENT LIST`. Pro další příklady použití Redis pomocí klienta [node_redis](https://github.com/mranney/node_redis) se podívejte na [https://redis.js.org/](https://redis.js.org/).
 
@@ -119,13 +119,13 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 > Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
 >
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků** .
 
-Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků**.
+Do textového pole **filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources* . Ve vaší skupině prostředků v seznamu výsledků vyberte **...** a pak **odstraňte skupinu prostředků** .
 
 ![Odstranit skupinu prostředků Azure](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit**.
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Zadejte název vaší skupiny prostředků, který chcete potvrdit, a vyberte **Odstranit** .
 
 Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 

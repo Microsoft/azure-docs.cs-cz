@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390869"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086410"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Sdílení prostředků mezi zdroji (CORS) je funkce HTTP, která umožňuje webové aplikaci spuštěné v jedné doméně přistupovat k prostředkům v jiné doméně. Webové prohlížeče implementují omezení zabezpečení označované jako zásady stejného původu, které brání webové stránce v volání rozhraní API v jiné doméně. CORS ale poskytuje zabezpečený způsob, jak, aby zdrojová doména mohla volat rozhraní API v jiné doméně. Rozhraní API Core (SQL) v Azure Cosmos DB teď podporuje sdílení prostředků mezi zdroji (CORS) pomocí hlavičky "allowedOrigins". Po povolení podpory CORS pro váš účet Azure Cosmos se vyhodnotí jenom ověřené požadavky, které určují, jestli jsou povolené podle pravidel, která jste zadali.
 
@@ -28,7 +29,7 @@ Pomocí následujících kroků můžete povolit sdílení prostředků mezi zdr
 
 1. Přejděte k účtu služby Azure Cosmos DB. Otevřete okno **CORS** .
 
-2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například,, `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com` . Můžete také použít zástupný znak \* "" pro povolení všech původu a vybrat **Odeslat**. 
+2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například,, `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com` . Můžete také použít zástupný znak \* "" pro povolení všech původu a vybrat **Odeslat** . 
 
    > [!NOTE]
    > V současné době nemůžete použít zástupné znaky jako součást názvu domény. Například `https://*.mydomain.net` formát není dosud podporován. 

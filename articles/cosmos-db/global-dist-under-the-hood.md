@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f19e009341ac0e9556cef36f8da6ef19cde0447f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570446"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087506"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globální distribuce dat pomocí Azure Cosmos DB – pod kapotou
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB je základní služba v Azure, která se nasazuje napříč všemi oblastmi Azure po celém světě, včetně veřejných, svrchovaného, ministerstva obrany a státních cloudů. V rámci datového centra nasadíme a spravujeme Azure Cosmos DB na obrovských razítek počítačů, z nichž každá má vyhrazené místní úložiště. V rámci datového centra je Azure Cosmos DB nasazený v mnoha clusterech, z nichž každá potenciálně spouští více generací hardwaru. Počítače v clusteru jsou obvykle rozloženy mezi 10-20 domén selhání pro zajištění vysoké dostupnosti v rámci oblasti. Následující obrázek ukazuje topologii globálního distribučního systému Cosmos DB:
 
@@ -22,9 +23,9 @@ Azure Cosmos DB je základní služba v Azure, která se nasazuje napříč vše
 
 **Globální distribuce v Azure Cosmos DB je klíč:** Po několika kliknutích nebo programově s jedním voláním rozhraní API můžete přidat nebo odebrat geografické oblasti přidružené k databázi Cosmos. Databáze Cosmos se zase skládá ze sady Cosmos kontejnerů. V Cosmos DB kontejnery slouží jako logické jednotky distribuce a škálovatelnosti. Kolekce, tabulky a grafy, které vytvoříte, jsou (interně) pouze Cosmos kontejnery. Kontejnery jsou zcela nezávislá schématu a poskytují obor dotazu. Data v kontejneru Cosmos jsou automaticky indexována při příjmu. Automatické indexování umožňuje uživatelům dotazování na data bez starostí se správou schématu nebo indexu, zejména při globálně distribuované instalaci.  
 
-- V dané oblasti jsou data v kontejneru distribuována pomocí klíče oddílu, který zadáte a je transparentně spravován základními fyzickými oddíly (*místní distribuce*).  
+- V dané oblasti jsou data v kontejneru distribuována pomocí klíče oddílu, který zadáte a je transparentně spravován základními fyzickými oddíly ( *místní distribuce* ).  
 
-- Každý fyzický oddíl je také replikován v rámci geografických oblastí (*globální distribuce*). 
+- Každý fyzický oddíl je také replikován v rámci geografických oblastí ( *globální distribuce* ). 
 
 Když aplikace používající Cosmos DB elasticky škáluje propustnost Cosmos kontejneru nebo spotřebovává více úložiště, Cosmos DB transparentně zpracovává operace správy oddílů (rozdělené, klonování, odstraňování) napříč všemi oblastmi. Nezávisle na škálování, distribuci nebo selháních aplikace Cosmos DB nadále poskytovat jedinou systémovou bitovou kopii dat v kontejnerech, které jsou globálně distribuované napříč libovolným počtem oblastí.  
 
@@ -32,13 +33,13 @@ Jak je znázorněno na následujícím obrázku, data v kontejneru jsou distribu
 
 :::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Systémová topologie" border="false":::
 
-Fyzický oddíl je implementován skupinou replik, která se nazývá *sada replik*. Každý počítač hostuje stovky replik, které odpovídají různým fyzickým oddílům v rámci pevně stanovené sady procesů, jak je znázorněno na obrázku výše. Repliky odpovídající fyzickým oddílům se dynamicky umísťují a vyrovnávají zatížení napříč počítači v rámci clusteru a datových center v rámci jedné oblasti.  
+Fyzický oddíl je implementován skupinou replik, která se nazývá *sada replik* . Každý počítač hostuje stovky replik, které odpovídají různým fyzickým oddílům v rámci pevně stanovené sady procesů, jak je znázorněno na obrázku výše. Repliky odpovídající fyzickým oddílům se dynamicky umísťují a vyrovnávají zatížení napříč počítači v rámci clusteru a datových center v rámci jedné oblasti.  
 
 Replika jedinečně patří do tenanta Azure Cosmos DB. Každá replika je hostitelem instance [databázového stroje](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)Cosmos DB, který spravuje prostředky i přidružené indexy. Databázový stroj Cosmos funguje na systém typů založených na Atom-Record-Sequence (ARS). Modul je nezávislá k konceptu schématu a rozostří hranice mezi strukturou a hodnotami instancí záznamů. Cosmos DB dosahuje úplného agnosticism schématu automatickým indexováním všeho po ingestování, což umožňuje uživatelům dotazování na globálně distribuovaná data, aniž by museli zabývat se správou schématu nebo indexu.
 
 Databázový stroj Cosmos se skládá z komponent, včetně implementace několika koordinačních primitivních prvků, jazykových modulů runtime, procesoru dotazů a subsystémů úložiště a indexování zodpovědných za transakční úložiště a indexování dat (v uvedeném pořadí). Aby zajistila odolnost a vysokou dostupnost, databázový stroj uchovává data a index v SSD a replikuje je mezi instancemi databázového stroje v uvedeném pořadí replik. Větší klienti odpovídají vyšší škále propustnosti a úložiště a mají buď větší nebo více replik, nebo obojí. Každá součást systému je plně asynchronní – žádné vlákno nikdy neblokuje a každé vlákno provádí krátkodobou práci bez nutnosti přepínačů zbytečných vláken. Omezení rychlosti a zatížení se nachází v celém zásobníku z řízení přístupu ke všem cestám vstupu a výstupu. Databázový stroj Cosmos je navržený tak, aby využil jemně odstupňované souběžnosti a poskytoval vysokou propustnost při provozu v Frugal množství systémových prostředků.
 
-Globální distribuce Cosmos DB spoléhá na dvě abstrakce klíčů – *sady replik* a *sady oddílů*. Sada replik je modulární Galerie příček pro koordinaci a sada oddílů je dynamická překryva jednoho nebo více geograficky distribuovaných fyzických oddílů. Abychom porozuměli tomu, jak globální distribuce funguje, musíme pochopit tyto dvě klíčové abstrakce. 
+Globální distribuce Cosmos DB spoléhá na dvě abstrakce klíčů – *sady replik* a *sady oddílů* . Sada replik je modulární Galerie příček pro koordinaci a sada oddílů je dynamická překryva jednoho nebo více geograficky distribuovaných fyzických oddílů. Abychom porozuměli tomu, jak globální distribuce funguje, musíme pochopit tyto dvě klíčové abstrakce. 
 
 ## <a name="replica-sets"></a>Sady replik
 
@@ -68,7 +69,7 @@ Používáme kódované vektorové hodiny (s ID oblasti a logickými hodinami od
 
 Pro databáze Cosmos nakonfigurované s více oblastmi zápisu nabízí systém řadu flexibilních zásad řešení konfliktů, které vývojáři můžou vybírat, včetně těchto: 
 
-- **Last-Write-WINS (LWW)**, který ve výchozím nastavení používá systémově definovanou vlastnost časového razítka (která je založená na protokolu hodinové synchronizace času). Cosmos DB také umožňuje zadat jakoukoli jinou vlastní číselnou vlastnost, která se má použít pro řešení konfliktů.  
+- **Last-Write-WINS (LWW)** , který ve výchozím nastavení používá systémově definovanou vlastnost časového razítka (která je založená na protokolu hodinové synchronizace času). Cosmos DB také umožňuje zadat jakoukoli jinou vlastní číselnou vlastnost, která se má použít pro řešení konfliktů.  
 - **Zásada pro řešení konfliktů definovaná aplikací (vlastní)** (vyjádřená prostřednictvím procedur sloučení), která je určená pro sémantiku pro sémantiku definovaná aplikacemi pro účely sladění konfliktů. Tyto postupy se vyvolají při detekci konfliktů zápisu a zápisu pod záštitou databázové transakce na straně serveru. Systém poskytuje přesně jednu jistotu pro provedení slučovací procedury jako součást protokolu závazku. K dispozici je [několik ukázek řešení konfliktů](how-to-manage-conflicts.md) , se kterými můžete hrát.  
 
 ## <a name="consistency-models"></a>Modely konzistence

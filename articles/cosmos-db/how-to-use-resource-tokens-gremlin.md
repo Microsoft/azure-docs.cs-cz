@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570560"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085730"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Použití Azure Cosmos DBch tokenů prostředků v sadě SDK pro Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Tento článek vysvětluje, jak používat [tokeny prostředků Azure Cosmos DB](secure-access-to-data.md) pro přístup k databázi grafu prostřednictvím sady SDK pro Gremlin.
 
@@ -100,7 +101,7 @@ S jedním účtem Gremlin můžete vystavit neomezený počet tokenů. V průbě
 
 ## <a name="permission"></a>Oprávnění
 
-Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()*, *. addE ()*, *. drop ()* nebo *. Property ()*.
+Častá chyba, kterou aplikace, ke kterým dochází, když používají tokeny prostředků, jsou v autorizační hlavičce pro odpovídající požadavek nedostatečná oprávnění. Zkuste to prosím znovu s jinou autorizační hlavičkou. " Tato chyba se vrátí, když se Gremlin přecházení pokusí zapsat Edge nebo vrchol, ale token prostředku uděluje pouze oprávnění *ke čtení* . Zkontrolujte svůj průchod, abyste viděli, zda obsahuje některý z následujících kroků: *. addV ()* , *. addE ()* , *. drop ()* nebo *. Property ()* .
 
 ## <a name="next-steps"></a>Další kroky
 * [Řízení přístupu na základě role v Azure (Azure RBAC)](role-based-access-control.md) v Azure Cosmos DB

@@ -10,20 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872064"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085118"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Hledání entit pomocí rozhraní API entity Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Navrhněte hledané výrazy pomocí rozhraní API pro automatické návrhy Bingu
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel*, nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel*.
+Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel* , nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel* .
 
 Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsahuje objekt[QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
 
@@ -189,7 +194,7 @@ Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentatio
 > [!NOTE]
 > Odpovědi na entity podporují různé trhy, ale odpovědi na místa podporují pouze obchodní místa v USA. 
 
-Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true**(pravda). 
+Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true** (pravda). 
 
 ```json
 {
@@ -296,7 +301,7 @@ Následující příklad ukazuje použití pravidla`LicenseAttribution`.
 
 ![Atribuce licencí](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-Poznámky k licencím, které uvádíte, musí obsahovat hypertextový odkaz na web obsahující informace o dané licenci. Obvykle vytvoříte z názvu licence hypertextový odkaz. Pokud je například poznámka ** Text je pod licencí CC-BY-SA ** a CC-BY-SA je název licence, uděláte z CC-BY-SA hypertextový odkaz.
+Poznámky k licencím, které uvádíte, musí obsahovat hypertextový odkaz na web obsahující informace o dané licenci. Obvykle vytvoříte z názvu licence hypertextový odkaz. Pokud je například poznámka **Text je pod licencí CC-BY-SA** a CC-BY-SA je název licence, uděláte z CC-BY-SA hypertextový odkaz.
 
 ### <a name="link-and-text-attribution"></a>Atribuce odkazu a textu
 

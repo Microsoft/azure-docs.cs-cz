@@ -4,12 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Windows na plat
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: e8c3a0d60e10b1cf1f8a827cec8fcc25f3d33b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564300"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087056"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -25,7 +25,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2019.
@@ -38,8 +38,8 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
   
 Pokud chcete zjistit verzi Windows serveru s kontejnery, které potřebujete pro svůj cluster, spusťte `ver` příkaz z příkazového řádku Windows na vašem vývojovém počítači:
 
-* Pokud verze obsahuje *x. x. 14323. x*, vyberte pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md) *windowsserver 2016 – Datacenter-with-Containers* .
-  * Pokud verze obsahuje *x. x. 16299. x*, vyberte *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md).
+* Pokud verze obsahuje *x. x. 14323. x* , vyberte pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md) *windowsserver 2016 – Datacenter-with-Containers* .
+  * Pokud verze obsahuje *x. x. 16299. x* , vyberte *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* pro operační systém při [vytváření clusteru](service-fabric-cluster-creation-via-portal.md).
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
@@ -85,7 +85,7 @@ CMD ["python", "app.py"]
 Další informace najdete v [referenčních informacích k souboru Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
 ## <a name="create-a-basic-web-application"></a>Vytvoření základní webové aplikace
-Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací `Hello World!`. Ve stejném adresáři vytvořte soubor *requirements.txt*. Přidejte do něj následující a uložte změny:
+Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací `Hello World!`. Ve stejném adresáři vytvořte soubor *requirements.txt* . Přidejte do něj následující a uložte změny:
 ```
 Flask
 ```
@@ -190,11 +190,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Vytvoření kontejnerizované služby v sadě Visual Studio
 Sada Service Fabric SDK a nástroje poskytují šablonu služby, která vám pomůže s vytvořením kontejnerizované aplikace.
 
-1. Spusťte Visual Studio. Vyberte **soubor**  >  **Nový**  >  **projekt**.
-2. Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte na **OK**.
-3. Ze seznamu **šablon služeb** vyberte **Kontejner**.
+1. Spusťte Visual Studio. Vyberte **soubor**  >  **Nový**  >  **projekt** .
+2. Vyberte **Aplikace Service Fabric** , pojmenujte ji MyFirstContainer a klikněte na **OK** .
+3. Ze seznamu **šablon služeb** vyberte **Kontejner** .
 4. Do pole **Název image** zadejte „myregistry.azurecr.io/samples/helloworldapp“, tedy image, kterou jste nahráli do úložiště kontejnerů.
-5. Zadejte název služby a klikněte na **OK**.
+5. Zadejte název služby a klikněte na **OK** .
 
 ## <a name="configure-communication"></a>Konfigurace komunikace
 Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru ServiceManifest.xml přidejte element `Endpoint` s protokolem, portem a typem. V tomto příkladu se používá pevný port 8081. Pokud port není zadaný, zvolí se v rozsahu portů aplikace náhodně. 
@@ -284,9 +284,9 @@ Systém Windows podporuje pro kontejnery dva režimy izolace: procesy a Hyper-V.
 ```
 ## <a name="configure-docker-healthcheck"></a>Konfigurace dockeru HEALTHCHECK 
 
-Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. 
+Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy* , v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK** . Pokud *health_status* je *unhealthy* , zobrazí se **UPOZORNĚNÍ** . 
 
-Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku*.
+Počínaje nejnovější verzí aktualizace v 6.4 máte možnost určit, že se mají tato hodnocení Docker HEALTHCHECK hlásit jako chyba. Pokud je tato možnost povolená, zobrazí se zpráva o stavu **OK** , když *health_status* je *v pořádku* a zobrazí se **Chyba** , když *health_status* není v *pořádku* .
 
 Instrukce **HEALTHCHECK** ukazující na skutečnou kontrolu prováděnou pro monitorování stavu kontejneru musí být přítomna v souboru Dockerfile použitém při generování image kontejneru.
 
@@ -310,20 +310,20 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
     </Policies>
 </ServiceManifestImport>
 ```
-Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true**, hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false**a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false**. 
+Ve výchozím nastavení je *IncludeDockerHealthStatusInSystemHealthReport* nastaveno na **hodnotu true** , hodnota *RestartContainerOnUnhealthyDockerHealthStatus* je nastavena na **hodnotu false** a vlastnost *TreatContainerUnhealthyStatusAsError* je nastavena na **hodnotu false** . 
 
-Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
+Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true** , kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
-Pokud je *TreatContainerUnhealthyStatusAsError* nastavené na **true**, zobrazí se **chybové** zprávy o stavu, když *health_status* kontejneru není v *pořádku*.
+Pokud je *TreatContainerUnhealthyStatusAsError* nastavené na **true** , zobrazí se **chybové** zprávy o stavu, když *health_status* kontejneru není v *pořádku* .
 
-Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
+Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false** .
 
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
-Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
+Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat** .
 
 Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například, `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
-Klikněte na **Publikovat**.
+Klikněte na **Publikovat** .
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je webový nástroj pro kontrolu a správu aplikací a uzlů v clusteru Service Fabric. Otevřete prohlížeč, přejděte na adresu `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` a postupujte podle pokynů k nasazení aplikace. Aplikace se nasadí, ale bude v chybovém stavu, dokud se image nestáhne na uzlech clusteru (což v závislosti na velikosti image může nějakou dobu trvat): ![Chyba][1]
 
@@ -534,7 +534,7 @@ Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepouží
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }
@@ -568,7 +568,7 @@ Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přiděl
 
 ## <a name="set-container-retention-policy"></a>Nastavení zásad uchovávání informací kontejneru
 
-Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze 6.1 nebo vyšší) podporuje zachování kontejnerů, které se ukončily nebo které se nepovedlo spustit. Tuto zásadu je možné nastavit v souboru **ApplicationManifest.xml**, jak ukazuje následující fragment kódu:
+Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze 6.1 nebo vyšší) podporuje zachování kontejnerů, které se ukončily nebo které se nepovedlo spustit. Tuto zásadu je možné nastavit v souboru **ApplicationManifest.xml** , jak ukazuje následující fragment kódu:
 
 ```xml
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
@@ -578,7 +578,7 @@ Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se p�
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>Spuštění démona Dockeru s vlastními argumenty
 
-V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona Dockeru s vlastními argumenty. Pokud zadáte vlastní argumenty, Service Fabric do modulu Dockeru nepředá žádné další argumenty s výjimkou argumentu `--pidfile`. Proto by se `--pidfile` nemělo předávat jako argument. Kromě toho by tento argument měl umožnit, aby démon Dockeru i nadále naslouchal kanálu s výchozím názvem ve Windows (nebo unixovému soketu domény v Linuxu), aby se zajistila komunikace Service Fabric s démonem. Vlastní argumenty se předávají v manifestu clusteru v části **Hosting** v rámci části **ContainerServiceArguments**, jak ukazuje následující fragment kódu: 
+V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona Dockeru s vlastními argumenty. Pokud zadáte vlastní argumenty, Service Fabric do modulu Dockeru nepředá žádné další argumenty s výjimkou argumentu `--pidfile`. Proto by se `--pidfile` nemělo předávat jako argument. Kromě toho by tento argument měl umožnit, aby démon Dockeru i nadále naslouchal kanálu s výchozím názvem ve Windows (nebo unixovému soketu domény v Linuxu), aby se zajistila komunikace Service Fabric s démonem. Vlastní argumenty se předávají v manifestu clusteru v části **Hosting** v rámci části **ContainerServiceArguments** , jak ukazuje následující fragment kódu: 
  
 
 ```json

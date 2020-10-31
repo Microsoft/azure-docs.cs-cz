@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278822"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087634"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Vytváření oddílů v Azure Cosmos DB rozhraní API Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek popisuje, jak vytváření oddílů funguje v Azure Cosmos DB rozhraní API Cassandra. 
 

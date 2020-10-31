@@ -3,12 +3,12 @@ title: Nastavení clusteru Azure Service Fabric Linux ve Windows
 description: Tento článek popisuje, jak nastavit clustery Service Fabric Linux spuštěné ve vývojových počítačích s Windows. Tento přístup je vhodný pro vývoj pro různé platformy.
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164104"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087073"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 
@@ -57,7 +57,7 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
     ```
 
     >[!TIP]
-    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Docker Hubu](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+    > Ve výchozím nastavení se tím přetáhne image s nejnovější verzí Service Fabric. Konkrétní revize najdete na stránce [Service Fabric OneBox](https://hub.docker.com/_/microsoft-service-fabric-onebox) v Docker Hub.
 
 
 

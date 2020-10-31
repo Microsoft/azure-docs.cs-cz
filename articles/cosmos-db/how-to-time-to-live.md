@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486000"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085883"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontejneru nebo ji můžete přepsat na úrovni položky po nastavení kontejneru. Hodnotu TTL pro kontejner můžete nakonfigurovat pomocí Azure Portal nebo sad SDK pro konkrétní jazyk. Přepsání na úrovni položek TTL lze konfigurovat pomocí sad SDK.
 
@@ -33,7 +34,7 @@ Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez 
 4. Vyberte existující kontejner, rozbalte jej a upravte následující hodnoty:
 
    * Otevřete okno **nastavení & škálování** .
-   * V části **Nastavení** najít, **Doba do provozu**.
+   * V části **Nastavení** najít, **Doba do provozu** .
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL.
    * Kliknutím na **Uložit** uložte změny.
 
@@ -204,7 +205,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 * Pokud je hodnota TTL na úrovni kontejneru zakázaná, bude pole TTL u této položky ignorováno, dokud nebude hodnota TTL znovu povolena v kontejneru.
 
-### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>Azure Portal
+### <a name="azure-portal"></a><a id="portal-set-ttl-item"></a>portál Azure
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
@@ -217,11 +218,11 @@ Chcete-li povolit dobu provozu na položce, použijte následující postup:
 4. Vyberte existující kontejner, rozbalte jej a upravte následující hodnoty:
 
    * Otevřete okno **nastavení & škálování** .
-   * V části **Nastavení** najít, **Doba do provozu**.
+   * V části **Nastavení** najít, **Doba do provozu** .
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL. 
    * Kliknutím na **Uložit** uložte změny.
 
-5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte `ttl` vlastnost a vyberte **aktualizovat**. 
+5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte `ttl` vlastnost a vyberte **aktualizovat** . 
 
    ```json
    {

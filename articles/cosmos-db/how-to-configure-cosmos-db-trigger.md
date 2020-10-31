@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: 152454b3da0ff1efd33ac463aecec78155a8e6f7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490471"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086461"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Jak nakonfigurovat protokolování a konektivitu pomocí triggeru Azure Functions pro Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje pokročilé možnosti konfigurace, které můžete nastavit při použití triggeru Azure Functions pro Cosmos DB.
 
@@ -56,7 +57,7 @@ Existují dva režimy připojení – přímý režim a režim brány. Další i
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>Změna režimu připojení a protokolu
 
-Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protokolu připojení**jsou k dispozici dvě klíčová nastavení konfigurace. Můžete změnit výchozí režim připojení a protokol používaný triggerem Azure Functions pro Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-output.md)). Chcete-li změnit výchozí nastavení, je třeba vyhledat `host.json` soubor v projektu Azure Functions nebo v aplikaci Azure functions a přidat následující [Další nastavení](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
+Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protokolu připojení** jsou k dispozici dvě klíčová nastavení konfigurace. Můžete změnit výchozí režim připojení a protokol používaný triggerem Azure Functions pro Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-output.md)). Chcete-li změnit výchozí nastavení, je třeba vyhledat `host.json` soubor v projektu Azure Functions nebo v aplikaci Azure functions a přidat následující [Další nastavení](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
 
 ```js
 {

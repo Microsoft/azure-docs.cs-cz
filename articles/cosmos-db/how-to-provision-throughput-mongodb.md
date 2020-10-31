@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 44a69581f0763972dd30a016bf0826b31657a3d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25eaa4a66fb4a73f976edbd30e6f82015ce84f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283738"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086121"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>Zřizování databáze, kontejneru nebo propustnosti automatického škálování v rozhraní Azure Cosmos DB API pro prostředky MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Tento článek vysvětluje, jak zřídit propustnost v rozhraní Azure Cosmos DB API pro MongoDB. Můžete zřídit standardní (ruční) nebo propustnost automatického škálování na kontejneru nebo databázi a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
 
@@ -27,13 +28,13 @@ Pokud používáte jiné rozhraní API, přečtěte si téma [SQL API](how-to-pr
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nová kolekce** . Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující. Vyberte možnost **zřízení propustnosti databáze** , pokud chcete zřídit propustnost na úrovni databáze.
    * Zadejte ID kolekce.
    * Zadejte hodnotu klíče oddílu (například `/ItemID` ).
    * Zadejte propustnost, kterou chcete zřídit (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
     :::image type="content" source="./media/how-to-provision-throughput-mongodb/provision-database-throughput-portal-mongodb-api.png" alt-text="Snímek obrazovky Průzkumník dat při vytváření nové kolekce s propustností úrovně databáze":::
 

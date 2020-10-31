@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088093"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault
 Azure Monitor pro Key Vault poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -34,7 +34,7 @@ Pokud chcete zobrazit využití a operace vašich trezorů klíčů ve všech va
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/)
 
-2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů**.
+2. V Azure Portal v levém podokně vyberte **monitor** a v části přehledy vyberte **trezory klíčů** .
 
 ![Snímek obrazovky s přehledem možností více grafů](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ Sešit selhání rozděluje výsledky všech požadavků trezoru klíčů ve vyb
 
 Pracovní sešit umožňuje uživatelům hluboko podrobně do úplných podrobností všech transakcí, které je možné filtrovat podle stavu výsledku pomocí dlaždic nejvyšší úrovně.
 
-![Snímek obrazovky s zobrazením operací](./media/key-vaults-insights-overview/info.png)
+![Snímek obrazovky zobrazující pracovní sešit, který obsahuje úplné podrobnosti o všech transakcích.](./media/key-vaults-insights-overview/info.png)
 
 Uživatelé mohou také vystavovat zobrazení na základě konkrétních typů transakcí v horní tabulce, která dynamicky aktualizuje spodní tabulku, kde mohou uživatelé zobrazit podrobnosti úplné operace v podokně místní nabídky.
 
@@ -126,7 +126,7 @@ Vlastní nastavení se ukládají do vlastního sešitu, aby se zabránilo přep
 Pomocí následujících kroků můžete nakonfigurovat předplatné s více předplatnými a trezory klíčů a neúspěšné sešity pro obor na konkrétní odběry nebo trezory klíčů při každém spuštění:
 
 1. Na portálu vyberte **monitor** a v levém podokně vyberte **trezory klíčů** .
-2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit**.
+2. V sešitu **přehledu** na panelu příkazů vyberte **Upravit** .
 3. V rozevíracím seznamu **odběry** vyberte jedno nebo více předplatných, které má Jo použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až 10 předplatných.
 4. V rozevíracím seznamu **trezory klíčů** vyberte jeden nebo více účtů, které chcete použít jako výchozí. Nezapomeňte, že sešit podporuje výběr až na celkem 200 účtů úložiště.
 5. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791575"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087022"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Řešení potíží s latencí replikace ve službě Azure Database for MySQL
 
@@ -236,6 +236,9 @@ V Azure Database for MySQL ve výchozím nastavení je replikace optimalizovaná
 Parametr binlog_group_commit_sync_delay určuje, kolik mikrosekund bude zápis binárního protokolu čekat před synchronizací binárního souboru protokolu. Výhodou tohoto parametru je, že místo okamžitého použití každé potvrzené transakce odesílá zdrojový server hromadné aktualizace binárního protokolu. Tato prodleva snižuje počet vstupně-výstupních operací v replice a pomáhá zvýšit výkon. 
 
 Může být užitečné nastavit parametr binlog_group_commit_sync_delay na 1000. Pak Sledujte latenci replikace. Nastavte tento parametr opatrně a používejte ho pouze pro úlohy s vysokou mírou využití. 
+
+> [!IMPORTANT] 
+> Na serveru repliky se binlog_group_commit_sync_delay parametr doporučuje 0. Doporučuje se to proto, že na rozdíl od zdrojového serveru nebude mít server repliky vysokou souběžnost a zvýšení hodnoty binlog_group_commit_sync_delay na serveru repliky může nechtěně způsobit zvýšení prodlevy replikace.
 
 Pro úlohy s nízkou souběžnou zátěží, které zahrnují mnoho transakcí s jedním prvkem, může nastavení binlog_group_commit_sync_delay zvýšit latenci. Latence může být zvýšena, protože vlákno v/v čeká na hromadné aktualizace binárních protokolů i v případě, že je potvrzena pouze jedna transakce. 
 

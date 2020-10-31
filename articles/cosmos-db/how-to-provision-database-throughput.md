@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 63de1c970a118ddf24c52e7e14a0632a4eee7fba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486102"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086291"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Zřizování standardní (ruční) propustnosti databáze v Azure Cosmos DB-SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek vysvětluje, jak zřídit standardní (ruční) propustnost v databázi v Azure Cosmos DB SQL API. Můžete zřídit propustnost pro jeden [kontejner](how-to-provision-container-throughput.md)nebo pro databázi a sdílet propustnost mezi kontejnery. Informace o použití úrovně kontejneru a propustnosti na úrovni databáze najdete v článku [případy použití pro zajištění propustnosti v kontejnerech a databázích](set-throughput.md) . Propustnost na úrovni databáze můžete zřídit pomocí Azure Portal nebo Azure Cosmos DB SDK.
 
@@ -26,12 +27,12 @@ Pokud používáte jiné rozhraní API, přečtěte si téma [rozhraní API pro 
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová databáze**. Zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová databáze** . Zadejte následující podrobnosti:
 
    * Zadejte ID databáze.
    * Vyberte možnost **zřídit propustnost databáze** .
    * Zadejte propustnost (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Snímek obrazovky dialogového okna Nová databáze":::
 

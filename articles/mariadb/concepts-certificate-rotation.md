@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: db717394ba102fb646a4194d0be2722e17251f48
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743007"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087158"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Porozumění změnám v kořenové CA se mění Azure Database for MariaDB
 
@@ -103,7 +103,7 @@ Pokud kořenový certifikát neaktualizujete před 15. února 2021 (02/15/2021),
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. Jaký je dopad při použití App Service s Azure Database for MariaDB?
 V případě Azure App Services můžeme mít Azure Database for MariaDB k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
 *   Tento nový certifikát se přidal do App Service na úrovni platformy. Pokud používáte certifikáty SSL obsažené na platformě App Service v aplikaci, není nutné provádět žádnou akci.
-*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát. Dobrým příkladem tohoto scénáře je použití vlastních kontejnerů v App Service jako sdílené v [dokumentaci k App Service](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)
+*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát. Dobrým příkladem tohoto scénáře je použití vlastních kontejnerů v App Service jako sdílené v [dokumentaci k App Service](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. Jaký je dopad použití služeb Azure Kubernetes Services (AKS) s Azure Database for MariaDB?
 Pokud se pokoušíte připojit k Azure Database for MariaDB pomocí služeb Azure Kubernetes Services (AKS), bude se podobat přístupu z hostitelského prostředí s vyhrazenými zákazníky. Postup najdete [tady](../aks/ingress-own-tls.md).

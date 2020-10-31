@@ -8,14 +8,15 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087175"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při používání služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek vás provede obecným doporučeným přístupem k řešení potíží s dotazy v Azure Cosmos DB. I když byste neměli zvážit kroky popsané v tomto článku s ucelenou ochranou proti potenciálním problémům s dotazy, zahrnuli jsme sem nejběžnější tipy k výkonu. Tento článek byste měli použít jako výchozí bod při řešení potíží s pomalými nebo nákladnými dotazy v rozhraní Core (SQL) API služby Azure Cosmos DB. K identifikaci dotazů, které jsou pomalé nebo které spotřebovávají významnou část propustnosti, můžete použít také [diagnostické protokoly](cosmosdb-monitor-resource-logs.md). Pokud používáte rozhraní API Azure Cosmos DB pro MongoDB, měli byste použít [rozhraní Azure Cosmos DB API pro Průvodce odstraňováním potíží dotazů MongoDB](mongodb-troubleshoot-query.md) .
 
@@ -50,7 +51,7 @@ Když v Azure Cosmos DB optimalizujete dotaz, prvním krokem je vždycky [získa
 
 Po získání metriky dotazu Porovnejte **počet načtených dokumentů** s **počtem výstupních dokumentů** pro váš dotaz. Pomocí tohoto porovnání Identifikujte relevantní oddíly, které je potřeba si projít v tomto článku.
 
-**Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů**, existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
+**Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů, které byly potřeba pro výsledky dotazu. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů** , existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
 
 V následujících částech najdete informace o relevantních optimalizaci dotazů pro váš scénář.
 
@@ -92,7 +93,7 @@ V následujících částech najdete informace o relevantních optimalizaci dota
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Dotazy, kde počet načtených dokumentů překračuje počet výstupních dokumentů
 
- **Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů vrácených dotazem. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů**, existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
+ **Počet načtených dokumentů** je počet dokumentů, které dotazovací stroj potřebuje k načtení. **Počet výstupních dokumentů** je počet dokumentů vrácených dotazem. Pokud je **počet načtených dokumentů** výrazně vyšší než **Počet výstupních dokumentů** , existovala aspoň jedna část dotazu, která nedokázala použít index a aby se provedla kontrola.
 
 Tady je příklad skenovacího dotazu, který nebyl zcela obsluhován indexem:
 
@@ -384,7 +385,7 @@ Předpokládejte, že pouze jedna položka v poli značek odpovídá filtru a ž
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Dotazy, kde se načtený počet dokumentů rovná počtu výstupních dokumentů
 
-Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů**, stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které používají `TOP` klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
+Pokud je **počet načtených dokumentů** přibližně roven **výstupnímu počtu dokumentů** , stroj dotazů nemusel kontrolovat mnoho zbytečných dokumentů. U mnoha dotazů, například u těch, které používají `TOP` klíčové slovo, může **počet načtených dokumentů** překročit **Počet výstupních dokumentů** o 1. Nemusíte se k tomu zabývat.
 
 ### <a name="minimize-cross-partition-queries"></a>Minimalizace dotazů mezi oddíly
 

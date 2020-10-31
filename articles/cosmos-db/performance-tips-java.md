@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 633cfe64e5978b1802a7c4b6c1f7842872ab665a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4b5c8e1a1e810deb9e5315816c122c0ac09ce778
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475205"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085543"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB synchronizaci Java SDK v2
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -91,15 +92,15 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
     Azure Cosmos DB Sync Java SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
 
-    (a) **_ladění setMaxDegreeOfParallelism \: _*_ paralelní dotazy fungují s dotazem na více oddílů paralelně. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu. 
+    (a) * *_ladění setMaxDegreeOfParallelism \:_* _ paralelní dotazy fungují s dotazem na více oddílů paralelně. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu. 
 
     Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-    (b) _*_optimalizace \: _*_ paralelního dotazu setMaxBufferedItemCount je navržena tak, aby se výsledky předem načetly, zatímco je aktuální dávka výsledků zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. setMaxBufferedItemCount omezuje počet předběžně načtených výsledků. Nastavením [setMaxBufferedItemCount](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) na očekávaný počet vrácených výsledků (nebo vyšší číslo) Tím umožníte, aby dotaz získal maximální přínos před načtením.
+    (b) _*_optimalizace \:_*_ paralelního dotazu setMaxBufferedItemCount je navržena tak, aby se výsledky předem načetly, zatímco je aktuální dávka výsledků zpracovávána klientem. Předběžné načítání pomáhá při celkové latenci v rámci dotazu. setMaxBufferedItemCount omezuje počet předběžně načtených výsledků. Nastavením [setMaxBufferedItemCount](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) na očekávaný počet vrácených výsledků (nebo vyšší číslo) Tím umožníte, aby dotaz získal maximální přínos před načtením.
 
     Předběžné načítání funguje stejným způsobem bez ohledu na Z MaxDegreeOfParallelism a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
 
-5. _*Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
+5. _ *Implementovat omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
     Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti na omezení pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy. Podpora zásad opakování je obsažená ve verzi 1.8.0 a vyšší než [Azure Cosmos DB Sync Java SDK](./sql-api-sdk-java.md). Další informace najdete v tématu [getRetryAfterInMilliseconds](/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 

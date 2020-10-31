@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 56fa87cfec7f50253dfce7d7c296ff7cb980aebe
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1db64ecc231a55e59321a5c94097668f3ddc91d8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085407"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Škálování Azure Cosmos DB propustnosti pomocí triggeru časovače Azure Functions
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Výkon účtu Azure Cosmos vychází z množství zřízené propustnosti vyjádřené v jednotkách žádosti za sekundu (RU/s). Zřizování je druhé členitosti a účtuje se na základě nejvyšších RU/s za hodinu. Tento model zřízené kapacity umožňuje službě poskytovat předvídatelné a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost. Většina produkčních úloh tyto funkce. Ve vývojových a testovacích prostředích, kde se Azure Cosmos DB používá jenom během pracovní doby, si ale můžete horizontální navýšení kapacity škálovat a až do hodin večer po pracovní době škálovat zpátky.
 

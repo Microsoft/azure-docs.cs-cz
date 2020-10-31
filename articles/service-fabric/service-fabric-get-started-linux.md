@@ -4,12 +4,12 @@ description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojov
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675269"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086886"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -175,7 +175,7 @@ Modul runtime Service Fabric, který je součástí instalace sady SDK, obsahuje
 
 # <a name="container-based-local-cluster"></a>[Místní cluster založený na kontejneru](#tab/localclusteroneboxcontainer)
 
-Spusťte [Service Fabric clusteru](https://hub.docker.com/r/microsoft/service-fabric-onebox/), který je založen na kontejneru.
+Spusťte clusterový [Service Fabric OneBox](https://hub.docker.com/_/microsoft-service-fabric-onebox) založený na kontejneru.
 
 1. Nainstalujte Moby, abyste mohli nasazovat kontejnery Docker.
     ```bash

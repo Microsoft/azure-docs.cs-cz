@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: acb84a11318175c17976c5dc570ce5d5f6aa6b6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d4e9bf67aa1d3df815c674fdc1e2019f68b4a60
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512687"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086699"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Příklady využití Bing Insights
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Tento článek obsahuje příklady, jak může Bing používat a zobrazovat přehledy imagí v Bing.com.
 

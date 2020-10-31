@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87985154226369cd47cc6437fc82c59602a78d9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777169"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085574"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem aktualizací funkcí, které byly provedeny v jednotlivých verzích. Obsahuje také nejnovější verzi emulátoru, která se má stáhnout a použít.
 
@@ -24,7 +25,7 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Stažení MSI**|[Stažení softwaru společnosti Microsoft](https://aka.ms/cosmosdb-emulator)|
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="2116-6-october-2020"></a>2.11.6 (6. října 2020)
 

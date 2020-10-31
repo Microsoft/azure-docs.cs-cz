@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 70eecc7843867a5832d962b7efaecda1b6ab4ae4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c2af7f33135a8c6621db233451231ffa89c2d64
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283741"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086155"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-gremlin-api-resources"></a>Zřizování databáze, kontejneru nebo propustnosti automatického škálování v Azure Cosmos DB prostředky rozhraní API Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Tento článek vysvětluje, jak zřídit propustnost v rozhraní Azure Cosmos DB Gremlin API. Můžete zřídit standardní (ruční) nebo propustnost automatického škálování na kontejneru nebo databázi a sdílet ji mezi kontejnery v rámci databáze. Propustnost můžete zřídit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo sady Azure Cosmos DB SDK.
 
@@ -27,13 +28,13 @@ Pokud používáte jiné rozhraní API, přečtěte si článek rozhraní API pr
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)nebo vyberte existující účet Azure Cosmos.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nový graf**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový graf** . Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující. Vyberte možnost **zřízení propustnosti databáze** , pokud chcete zřídit propustnost na úrovni databáze.
    * Zadejte ID grafu.
    * Zadejte hodnotu klíče oddílu (například `/ItemID` ).
    * Zadejte propustnost, kterou chcete zřídit (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
     :::image type="content" source="./media/how-to-provision-throughput-gremlin/provision-database-throughput-portal-gremlin-api.png" alt-text="Snímek obrazovky Průzkumník dat při vytváření nového grafu s propustností na úrovni databáze":::
 

@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357212"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085169"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
 
@@ -69,7 +69,7 @@ Cluster obsahuje dva podstromy: jeden pro aplikace a druhý pro uzly.
 
 Zobrazení aplikace můžete použít k procházení logických hierarchií Service Fabric: aplikace, služby, oddíly a repliky.
 
-V následujícím příkladu se aplikace **Mojeapl** skládá ze dvou služeb, **MyStatefulService** a **WebService**. Vzhledem k tomu, že **MyStatefulService** je stavový, zahrnuje oddíl s jednou primární a dvěma sekundárními replikami. Naproti tomu WebSvcService je Bezstavová a obsahuje jednu instanci.
+V následujícím příkladu se aplikace **Mojeapl** skládá ze dvou služeb, **MyStatefulService** a **WebService** . Vzhledem k tomu, že **MyStatefulService** je stavový, zahrnuje oddíl s jednou primární a dvěma sekundárními replikami. Naproti tomu WebSvcService je Bezstavová a obsahuje jednu instanci.
 
 ![Zobrazení aplikace Service Fabric Explorer][sfx-application-tree]
 
@@ -83,7 +83,7 @@ Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete 
 ## <a name="actions"></a>Akce
 Service Fabric Explorer nabízí rychlý způsob, jak vyvolat akce na uzlech, aplikacích a službách v rámci vašeho clusteru.
 
-Pokud chcete například odstranit instanci aplikace, zvolte aplikaci ze stromu na levé straně a pak zvolte **Akce**  >  **Odstranit aplikaci**.
+Pokud chcete například odstranit instanci aplikace, zvolte aplikaci ze stromu na levé straně a pak zvolte **Akce**  >  **Odstranit aplikaci** .
 
 ![Odstranění aplikace v Service Fabric Explorer][sfx-delete-application]
 
@@ -117,7 +117,7 @@ Eventstoru je funkce nabízená platformou, která poskytuje Service Fabric udá
 ## <a name="image-store-viewer"></a>Image Store Viewer
 Prohlížeč úložiště imagí je funkce nabízená při použití nativního Image Store, která umožňuje zobrazit aktuální obsah úložiště imagí a získat informace o souborech a složkách spolu s odebráním souborů nebo složek.
 
-![Service Fabric Explorer mapa clusteru][sfx-imagestore]
+![Snímek obrazovky, který zobrazuje Image Store Viewer.][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Zálohování a obnovení
 Service Fabric Explorer nabízí možnost rozhraní se [zálohováním a obnovením](./service-fabric-reliable-services-backup-restore.md). Aby bylo možné zobrazit funkce zálohování a obnovení v SFX, musí být povolen rozšířený režim.
