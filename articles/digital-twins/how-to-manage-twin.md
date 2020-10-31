@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 425ee90306de3961c64766f42bd28f668fc9396e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077944"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -35,14 +35,19 @@ K vytvoření digitálního vlákna musíte zadat:
 * Požadované ID digitálního vlákna
 * [Model](concepts-models.md) , který chcete použít
 
-Volitelně můžete zadat počáteční hodnoty pro všechny vlastnosti digitálního vlákna. 
+Volitelně můžete zadat počáteční hodnoty pro všechny vlastnosti digitálního vlákna. Vlastnosti jsou považovány za volitelné a lze je nastavit později, ale **nebudou zobrazeny jako součást vlákna, dokud nebudou nastaveny.**
 
-Hodnoty modelů a počátečních vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data. Další informace o strukturování tohoto objektu získáte, když budete pokračovat k další části.
+>[!NOTE]
+>I když nemusíte inicializovat zdvojené vlastnosti, musí být při vytvoření **vlákna nastaveny** všechny [komponenty](concepts-models.md#elements-of-a-model) na vlákna. Můžou to být prázdné objekty, ale samotné komponenty musí existovat.
+
+Model a jakékoli počáteční hodnoty vlastností jsou k dispozici prostřednictvím `initData` parametru, což je řetězec JSON obsahující relevantní data. Další informace o strukturování tohoto objektu získáte, když budete pokračovat k další části.
 
 > [!TIP]
 > Po vytvoření nebo aktualizaci vlákna může být latence až 10 sekund, než se změny projeví v [dotazech](how-to-query-graph.md). `GetDigitalTwin`Rozhraní API (popsané [dále v tomto článku) v](#get-data-for-a-digital-twin)této prodlevě nefunguje, takže pokud potřebujete okamžitou reakci, použijte volání rozhraní API namísto dotazování, abyste viděli nově vytvořené vlákna. 
 
 ### <a name="initialize-model-and-properties"></a>Inicializace modelu a vlastností
+
+Můžete inicializovat vlastnosti vlákna v době, kdy je vytvořena dvojitá vlákna. 
 
 Rozhraní API pro vytvoření vlákna přijímá objekt, který je serializován do platného popisu JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu. 
 
@@ -110,7 +115,7 @@ Po načtení vlákna s metodou se vrátí pouze vlastnosti, které byly nastaven
 
 Chcete-li načíst více vláken pomocí jediného volání rozhraní API, přečtěte si příklady rozhraní API pro dotazování v tématu [*Postupy: vytvoření dotazu na nevlákenný graf*](how-to-query-graph.md).
 
-Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL), který definuje *měsíc*:
+Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL), který definuje *měsíc* :
 
 ```json
 {
@@ -133,7 +138,7 @@ Vezměte v úvahu následující model (napsaný v [digitálním DTDL)](https://
     ]
 }
 ```
-Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");` na vlákna typu *měsíc*může vypadat takto:
+Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");` na vlákna typu *měsíc* může vypadat takto:
 
 ```json
 {
@@ -164,7 +169,7 @@ Výsledek volání `object result = await client.GetDigitalTwinAsync("my-moon");
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
 * `$etag`, standardní pole HTTP přiřazené webovým serverem.
-* Další vlastnosti v `$metadata` oddílu. Tady jsou některé z nich:
+* Další vlastnosti v `$metadata` oddílu. Mezi ně patří:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 
@@ -276,8 +281,8 @@ Zvažte například následující dokument opravy JSON, který nahrazuje pole m
 Tato operace proběhne úspěšně pouze v případě, že digitální práce, která je upravována opravou, bude v souladu s novým modelem. 
 
 Uvažujte následující příklad:
-1. Představte si digitální dvojitou hodnotu s modelem *foo_old*. *foo_old* definuje požadovanou *hmotnost*vlastnosti.
-2. Nový model *foo_new* definuje hmotnostní vlastnost a přidává novou *teplotu*požadované vlastnosti.
+1. Představte si digitální dvojitou hodnotu s modelem *foo_old* . *foo_old* definuje požadovanou *hmotnost* vlastnosti.
+2. Nový model *foo_new* definuje hmotnostní vlastnost a přidává novou *teplotu* požadované vlastnosti.
 3. Po opravě musí mít digitální vlákna současně vlastnost pro hmotnost i teplotu. 
 
 Oprava pro tuto situaci musí aktualizovat model i vlastnost teploty vlákna, například takto:

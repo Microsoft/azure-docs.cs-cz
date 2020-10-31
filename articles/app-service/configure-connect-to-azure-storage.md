@@ -6,18 +6,21 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057752"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075785"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Přístup ke službě Azure Storage jako sdílené síťové složce z kontejneru ve službě App Service
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Přístup k Azure Storage (Preview) jako sdílené síťové složky z kontejneru v App Service
 
 ::: zone pivot="container-windows"
 
 V této příručce se dozvíte, jak připojit Azure Storage soubory jako sdílenou síťovou složku pro kontejner Windows v App Service. Podporují se jenom [sdílené složky souborů Azure](../storage/files/storage-how-to-use-files-cli.md) a [sdílené složky Premium](../storage/files/storage-how-to-create-premium-fileshare.md) . Mezi výhody patří zabezpečený obsah, přenositelnost obsahu, přístup k více aplikacím a více metod přenosu.
+
+> [!NOTE]
+>Azure Storage v App Service jsou **ve verzi Preview** a **nepodporují** se v **produkčních scénářích** .
 
 ::: zone-end
 
@@ -25,9 +28,12 @@ V této příručce se dozvíte, jak připojit Azure Storage soubory jako sdíle
 
 Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru Linux. K výhodám patří zabezpečený obsah, přenositelnost obsahu, trvalé úložiště, přístup k více aplikacím a více metod přenosu.
 
+> [!NOTE]
+>Azure Storage v App Service je **ve verzi Preview** pro App Service v systémech Linux a Web App for Containers. Nepodporují **not supported** se v **produkčních scénářích** .
+
 ::: zone-end
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ::: zone pivot="container-windows"
 
@@ -53,7 +59,6 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 
 ::: zone pivot="container-windows"
 
-- Azure Storage v App Service jsou **ve verzi Preview** a **nepodporují** se v **produkčních scénářích**.
 - Azure Storage v App Service se v současné době **nepodporují** pro scénáře přináší vlastní kód (aplikace pro Windows bez kontejneru).
 - Azure Storage v App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
 - Azure Storage s App Service vám umožní zadat **až pět** přípojných bodů na jednu aplikaci.
@@ -63,7 +68,6 @@ Tato příručka ukazuje, jak připojit Azure Storage k App Service kontejneru L
 
 ::: zone pivot="container-linux"
 
-- Azure Storage v App Service je **ve verzi Preview** pro App Service v systémech Linux a Web App for Containers. Nepodporují **not supported** se v **produkčních scénářích**.
 - Azure Storage v App Service podporuje připojování **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů blob Azure** (jen pro čtení).
 - Azure Storage v App Service umožňuje zadat **až pět** přípojných bodů na jednu aplikaci.
 - Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88948857"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077893"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý Start: vyžadovat, aby se před přístupem ke cloudovým aplikacím přijaly podmínkami použití
 
@@ -27,9 +27,9 @@ Než budete mít přístup k určitým cloudovým aplikacím ve vašem prostřed
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásadu podmíněného přístupu Azure AD](./overview.md) , která vyžaduje přijetí podmínky použití pro vybranou cloudovou aplikaci ve vašem prostředí.
 
-![Vytvoření zásad](./media/require-tou/5555.png)
+:::image type="content" source="./media/require-tou/5555.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -49,40 +49,40 @@ Cílem tohoto kroku je získat dojem o přihlášení bez zásad podmíněného 
 
 ## <a name="create-your-terms-of-use"></a>Vytvoření podmínek použití
 
-V této části najdete postup vytvoření ukázkové podmínky použití. Při vytváření podmínky použití vyberte hodnotu pro **vymáhání pomocí šablon zásad podmíněného přístupu**. Když vyberete **vlastní zásady** , otevře se dialogové okno, ve kterém se vytvoří nové zásady podmíněného přístupu hned po vytvoření podmínky použití.
+V této části najdete postup vytvoření ukázkové podmínky použití. Při vytváření podmínky použití vyberte hodnotu pro **vymáhání pomocí šablon zásad podmíněného přístupu** . Když vyberete **vlastní zásady** , otevře se dialogové okno, ve kterém se vytvoří nové zásady podmíněného přístupu hned po vytvoření podmínky použití.
 
 **Vytvoření podmínek použití:**
 
 1. V aplikaci Microsoft Word vytvořte nový dokument.
-1. Zadejte **Moje podmínkami použití**a pak dokument uložte do počítače jako **mytou.pdf**.
+1. Zadejte **Moje podmínkami použití** a pak dokument uložte do počítače jako **mytou.pdf** .
 1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. V Azure Portal klikněte v levém navigačním panelu na možnost **Azure Active Directory**.
+1. V Azure Portal klikněte v levém navigačním panelu na možnost **Azure Active Directory** .
 
    ![Azure Active Directory](./media/require-tou/02.png)
 
-1. Na stránce **Azure Active Directory** v části **zabezpečení** klikněte na **podmíněný přístup**.
+1. Na stránce **Azure Active Directory** v části **zabezpečení** klikněte na **podmíněný přístup** .
 
    ![Podmíněný přístup](./media/require-tou/03.png)
 
-1. V části **Spravovat** klikněte na **podmínky použití**.
+1. V části **Spravovat** klikněte na **podmínky použití** .
 
-   ![Podmínky použití](./media/require-tou/04.png)
+   :::image type="content" source="./media/require-tou/04.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-1. V nabídce v horní části klikněte na **nové výrazy**.
+1. V nabídce v horní části klikněte na **nové výrazy** .
 
-   ![Podmínky použití](./media/require-tou/05.png)
+   :::image type="content" source="./media/require-tou/05.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 1. Na stránce **nové požadavky na použití** :
 
-   ![Podmínky použití](./media/require-tou/112.png)
+   :::image type="content" source="./media/require-tou/112.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-   1. Do textového pole **název** zadejte **My podmínky použití**.
-   1. Do textového pole **Zobrazovaný název** zadejte **My podmínky použití**.
+   1. Do textového pole **název** zadejte **My podmínky použití** .
+   1. Do textového pole **Zobrazovaný název** zadejte **My podmínky použití** .
    1. Nahrajte vaše požadavky na použití souboru PDF.
-   1. Jako **jazyk**vyberte **angličtinu**.
-   1. Jak **vyžadují, aby uživatelé rozšířili podmínek použití**, vyberte **zapnuto**.
-   1. Jako **Vynutilit šablony zásad podmíněného přístupu**vyberte **vlastní zásady**.
-   1. Klikněte na **Create** (Vytvořit).
+   1. Jako **jazyk** vyberte **angličtinu** .
+   1. Jak **vyžadují, aby uživatelé rozšířili podmínek použití** , vyberte **zapnuto** .
+   1. Jako **Vynutilit šablony zásad podmíněného přístupu** vyberte **vlastní zásady** .
+   1. Klikněte na **Vytvořit** .
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -99,39 +99,39 @@ V zásadách nastavte:
 | Cloudové aplikace | Správa Microsoft Azure |
 | Udělení přístupu | Moje podmínky použití |
 
-![Vytvoření zásad](./media/require-tou/1234.png)
+:::image type="content" source="./media/require-tou/1234.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 **Konfigurace zásad podmíněného přístupu:**
 
-1. Na **nové** stránce zadejte do textového pole **název** text **vyžadovat podmínky použití pro Isabella**.
+1. Na **nové** stránce zadejte do textového pole **název** text **vyžadovat podmínky použití pro Isabella** .
 
    ![Name](./media/require-tou/71.png)
 
-1. V části **přiřazení** klikněte na **Uživatelé a skupiny**.
+1. V části **přiřazení** klikněte na **Uživatelé a skupiny** .
 
-   ![Uživatelé a skupiny](./media/require-tou/06.png)
+   :::image type="content" source="./media/require-tou/06.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 1. Na stránce **Uživatelé a skupiny** :
 
-   ![Uživatelé a skupiny](./media/require-tou/24.png)
+   :::image type="content" source="./media/require-tou/24.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-   1. Klikněte na **Vybrat uživatele a skupiny**a pak vyberte **Uživatelé a skupiny**.
-   1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Isabella Simonsen**a pak klikněte na **Vybrat**.
-   1. Na stránce **Uživatelé a skupiny** klikněte na **Hotovo**.
-1. Klikněte na **cloudové aplikace**.
+   1. Klikněte na **Vybrat uživatele a skupiny** a pak vyberte **Uživatelé a skupiny** .
+   1. Klikněte na **Vybrat** .
+   1. Na stránce **Vybrat** vyberte **Isabella Simonsen** a pak klikněte na **Vybrat** .
+   1. Na stránce **Uživatelé a skupiny** klikněte na **Hotovo** .
+1. Klikněte na **cloudové aplikace** .
 
-   ![Cloudové aplikace](./media/require-tou/08.png)
+   :::image type="content" source="./media/require-tou/08.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 1. Na stránce **cloudové aplikace** :
 
    ![Vybrat cloudové aplikace](./media/require-tou/26.png)
 
-   1. Klikněte na **vybrat aplikace**.
-   1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management**a pak klikněte na **Vybrat**.
-   1. Na stránce **cloudové aplikace** klikněte na **Hotovo**.
-1. V části **řízení přístupu** klikněte na **udělit**.
+   1. Klikněte na **vybrat aplikace** .
+   1. Klikněte na **Vybrat** .
+   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management** a pak klikněte na **Vybrat** .
+   1. Na stránce **cloudové aplikace** klikněte na **Hotovo** .
+1. V části **řízení přístupu** klikněte na **udělit** .
 
    ![Řízení přístupu](./media/require-tou/10.png)
 
@@ -139,14 +139,14 @@ V zásadách nastavte:
 
    ![Oprávnění](./media/require-tou/111.png)
 
-   1. Vyberte **Udělit přístup**.
-   1. Vyberte **Moje podmínky použití**.
-   1. Klikněte na **Vybrat**.
-1. V části **Povolit zásady** klikněte **na zapnuto**.
+   1. Vyberte **Udělit přístup** .
+   1. Vyberte **Moje podmínky použití** .
+   1. Klikněte na **Vybrat** .
+1. V části **Povolit zásady** klikněte **na zapnuto** .
 
    ![Povolení zásady](./media/require-tou/18.png)
 
-1. Klikněte na **Create** (Vytvořit).
+1. Klikněte na **Vytvořit** .
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnotit simulované přihlašování
 
@@ -160,30 +160,30 @@ Pro inicializaci nástroje pro vyhodnocování zásad **What If** nastavte:
 Kliknutím na **What If** se vytvoří sestava simulace, která zobrazuje:
 
 - **Vyžadovat podmínky použití pro Isabella** v rámci **zásad, které se použijí**
-- **Moje podmínky použití** jako **udělení ovládacích prvků**.
+- **Moje podmínky použití** jako **udělení ovládacích prvků** .
 
 ![Nástroj Policy if](./media/require-tou/79.png)
 
 **Vyhodnocení zásad podmíněného přístupu:**
 
-1. Na stránce [zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na **What If**.  
+1. Na stránce [zásady podmíněného přístupu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) klikněte v nabídce v horní části na **What If** .  
 
    ![Citlivostní analýza](./media/require-tou/14.png)
 
-1. Klikněte na **Uživatelé**, vyberte **Isabella Simonsen**a pak klikněte na **Vybrat**.
+1. Klikněte na **Uživatelé** , vyberte **Isabella Simonsen** a pak klikněte na **Vybrat** .
 
    ![Uživatel](./media/require-tou/15.png)
 
 1. Výběr cloudové aplikace:
 
-   ![Cloudové aplikace](./media/require-tou/16.png)
+   :::image type="content" source="./media/require-tou/16.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
-   1. Klikněte na **cloudové aplikace**.
-   1. Na **stránce cloudové aplikace**klikněte na **vybrat aplikace**.
-   1. Klikněte na **Vybrat**.
-   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management**a pak klikněte na **Vybrat**.
-   1. Na stránce cloudové aplikace klikněte na **Hotovo**.
-1. Klikněte na **What If**.
+   1. Klikněte na **cloudové aplikace** .
+   1. Na **stránce cloudové aplikace** klikněte na **vybrat aplikace** .
+   1. Klikněte na **Vybrat** .
+   1. Na stránce **Vybrat** vyberte **Microsoft Azure Management** a pak klikněte na **Vybrat** .
+   1. Na stránce cloudové aplikace klikněte na **Hotovo** .
+1. Klikněte na **What If** .
 
 ## <a name="test-your-conditional-access-policy"></a>Testování zásad podmíněného přístupu
 
@@ -191,7 +191,7 @@ V předchozí části jste se dozvěděli, jak vyhodnotit simulované přihlašo
 
 Pokud chcete zásady otestovat, zkuste se přihlásit ke svému [Azure Portal](https://portal.azure.com) pomocí účtu testování **Simonsen Isabella** . Mělo by se zobrazit dialogové okno, které vyžaduje, abyste přijali podmínky použití.
 
-![Podmínky použití](./media/require-tou/57.png)
+:::image type="content" source="./media/require-tou/57.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -200,11 +200,11 @@ Pokud už je nepotřebujete, odstraňte testovacího uživatele a zásadu podmí
 - Pokud nevíte, jak odstranit uživatele Azure AD, přečtěte si téma [odstranění uživatelů ze služby Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 - Pokud chcete zásadu odstranit, vyberte zásadu a pak na panelu nástrojů Rychlý přístup klikněte na **Odstranit** .
 
-    ![Ověřování pomocí služby Multi-Factor Authentication](./media/require-tou/33.png)
+    :::image type="content" source="./media/require-tou/33.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 - Pokud chcete odstranit svoje podmínkami použití, vyberte ji a pak na panelu nástrojů nahoře klikněte na **Odstranit výrazy** .
 
-    ![Ověřování pomocí služby Multi-Factor Authentication](./media/require-tou/29.png)
+    :::image type="content" source="./media/require-tou/29.png" alt-text="Snímek obrazovky Azure Portal. Podokno definující zásadu s názvem vyžadovat T O u pro Isabella je viditelné." border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

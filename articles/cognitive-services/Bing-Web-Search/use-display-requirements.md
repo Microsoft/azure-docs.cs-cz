@@ -10,14 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60499881"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075683"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Požadavky rozhraní API pro vyhledávání Bingu na zobrazení a použití
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Tyto požadavky na použití a zobrazení se vztahují na veškerou implementaci obsahu a související informace z následujících rozhraní API pro vyhledávání Bingu, včetně vztahů, metadat a dalších signálů.
 
@@ -34,7 +39,7 @@ Tyto požadavky na použití a zobrazení se vztahují na veškerou implementaci
 ## <a name="definitions"></a>Definice
 
 
-|Období  |Popis  |
+|Období  |Description  |
 |---------|---------|
 |Odpověď     | Odpověď vrátila kategorii výsledků. Odpověď z rozhraní API Bingu pro vyhledávání na webu například může obsahovat odpovědi v kategoriích výsledků webové stránky, obrázku, videa, vizuálu a novinkách. |
 |Odpověď     | Jakékoli a všechny odpovědi a přidružená data přijatá v reakci na jedno volání rozhraní API pro hledání. |
@@ -99,7 +104,7 @@ Ne:
 ### <a name="notices-and-branding"></a>Oznámení a branding 
 Postup
 
-- Výrazně obsahuje funkční hypertextový odkaz na [prohlášení o zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839)poblíž každého bodu uživatelského prostředí (UX), které uživateli nabízí možnost zadat vyhledávací dotaz. Označte hypertextový odkaz **prohlášení Microsoftu o zásadách ochrany osobních údajů**.
+- Výrazně obsahuje funkční hypertextový odkaz na [prohlášení o zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839)poblíž každého bodu uživatelského prostředí (UX), které uživateli nabízí možnost zadat vyhledávací dotaz. Označte hypertextový odkaz **prohlášení Microsoftu o zásadách ochrany osobních údajů** .
 
 - Výrazným zobrazením brandingu Bingu, který je v souladu s [pokyny pro použití ochranné známky Bingu](https://go.microsoft.com/fwlink/?linkid=833278), poblíž každého místa v uživatelském rozhraní, které nabízí uživateli možnost zadat vyhledávací dotaz. Tato značka musí jasně uvádět uživatele, že Microsoft provádí vyhledávání v Internetu.
 

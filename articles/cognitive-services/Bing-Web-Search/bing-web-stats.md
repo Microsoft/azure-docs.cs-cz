@@ -11,16 +11,21 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8523792de5e43cedd35594f8eec8b6517bf69fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86147404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078726"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Přidání analýzy do rozhraní API pro vyhledávání Bingu
 
-Statistika Bingu poskytuje analýzy pro rozhraní API pro vyhledávání Bingu. Tyto analýzy zahrnují objem volání, nejčastější řetězce dotazů, geografické distribuce a další. Statistiku Bingu můžete v [Azure Portal](https://ms.portal.azure.com) povolit tak, že přejdete do svého prostředku Azure a kliknete na **Povolit statistiku Bingu**.
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+
+Statistika Bingu poskytuje analýzy pro rozhraní API pro vyhledávání Bingu. Tyto analýzy zahrnují objem volání, nejčastější řetězce dotazů, geografické distribuce a další. Statistiku Bingu můžete v [Azure Portal](https://ms.portal.azure.com) povolit tak, že přejdete do svého prostředku Azure a kliknete na **Povolit statistiku Bingu** .
 
 > [!IMPORTANT]
 > * Statistika Bingu není k dispozici u prostředků na `F0` cenové úrovni Free.
@@ -44,18 +49,18 @@ Bing data Analytics aktualizuje data každých 24 hodin a udržuje až 13 měsí
 
 Ve výchozím nastavení se v grafech a grafech zobrazují všechny metriky a data, ke kterým máte přístup. Data zobrazená v grafech a grafech můžete filtrovat tak, že vyberete prostředky, trhy, koncové body a období hlášení, které vás zajímá. Můžete změnit následující filtry:
 
-- **ID prostředku**: jedinečné ID prostředku, které identifikuje vaše předplatné Azure. Seznam obsahuje více ID, pokud se přihlásíte k odběru více než jedné vrstvy rozhraní API Vyhledávání Bingu. Ve výchozím nastavení jsou vybrány všechny prostředky.  
+- **ID prostředku** : jedinečné ID prostředku, které identifikuje vaše předplatné Azure. Seznam obsahuje více ID, pokud se přihlásíte k odběru více než jedné vrstvy rozhraní API Vyhledávání Bingu. Ve výchozím nastavení jsou vybrány všechny prostředky.  
   
-- **Trhy**: trhy, ze kterých pocházejí výsledky. Například en-US (angličtina, USA). Ve výchozím nastavení jsou vybrané všechny trhy. Na `en-WW` trhu je trh, který Bing používá v případě, že volání neuvádí trh a Bing nedokáže určit trh uživatele.  
+- **Trhy** : trhy, ze kterých pocházejí výsledky. Například en-US (angličtina, USA). Ve výchozím nastavení jsou vybrané všechny trhy. Na `en-WW` trhu je trh, který Bing používá v případě, že volání neuvádí trh a Bing nedokáže určit trh uživatele.  
   
-- **Koncové body**: koncové body rozhraní vyhledávání Bingu API. Seznam obsahuje všechny koncové body, pro které máte placené předplatné. Ve výchozím nastavení jsou vybrány všechny koncové body.  
+- **Koncové body** : koncové body rozhraní vyhledávání Bingu API. Seznam obsahuje všechny koncové body, pro které máte placené předplatné. Ve výchozím nastavení jsou vybrány všechny koncové body.  
 
-- **Časový rámec**: období generování sestav. Můžete zadat:
-  - **Vše**: zahrnuje data o hodnotě až 13 měsíců.  
-  - **Posledních 24 hodin**: zahrnuje analýzu za posledních 24 hodin.  
-  - **Minulý týden**: zahrnuje analýzu z předchozích 7 dnů.  
-  - **Minulý měsíc**: zahrnuje analýzu z předchozích 30 dnů.  
-  - **Vlastní rozsah kalendářních dat**: zahrnuje analýzu ze zadaného rozsahu kalendářních dat, pokud je k dispozici.  
+- **Časový rámec** : období generování sestav. Můžete zadat:
+  - **Vše** : zahrnuje data o hodnotě až 13 měsíců.  
+  - **Posledních 24 hodin** : zahrnuje analýzu za posledních 24 hodin.  
+  - **Minulý týden** : zahrnuje analýzu z předchozích 7 dnů.  
+  - **Minulý měsíc** : zahrnuje analýzu z předchozích 30 dnů.  
+  - **Vlastní rozsah kalendářních dat** : zahrnuje analýzu ze zadaného rozsahu kalendářních dat, pokud je k dispozici.  
 
 ## <a name="charts-and-graphs"></a>Grafy a grafy
 
@@ -67,12 +72,12 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 Níže jsou uvedené možné metriky a omezení koncových bodů.
 
-- **Svazek volání**: zobrazuje počet volání provedených během období generování sestav. Pokud je období generování sestav za den, graf znázorňuje počet volání provedených za hodinu. V opačném případě graf znázorňuje počet volání prováděných za den v období generování sestav.  
+- **Svazek volání** : zobrazuje počet volání provedených během období generování sestav. Pokud je období generování sestav za den, graf znázorňuje počet volání provedených za hodinu. V opačném případě graf znázorňuje počet volání prováděných za den v období generování sestav.  
   
   > [!NOTE]
   > Svazek volání se může lišit od fakturačních sestav, které obvykle zahrnují pouze úspěšná volání.
 
-- **Nejčastější dotazy**: zobrazuje horní dotazy a počet výskytů každého dotazu během období generování sestav. Můžete nakonfigurovat počet zobrazených dotazů. Můžete například zobrazit prvních 25, 50 nebo 75 dotazů. Horní dotazy nejsou k dispozici pro následující koncové body:  
+- **Nejčastější dotazy** : zobrazuje horní dotazy a počet výskytů každého dotazu během období generování sestav. Můžete nakonfigurovat počet zobrazených dotazů. Můžete například zobrazit prvních 25, 50 nebo 75 dotazů. Horní dotazy nejsou k dispozici pro následující koncové body:  
 
   - /images/trending
   - /images/details
@@ -86,19 +91,19 @@ Níže jsou uvedené možné metriky a omezení koncových bodů.
   > [!NOTE]  
   > Některé výrazy dotazu je možné potlačit a odebrat tak důvěrné informace, jako jsou e-maily, telefonní čísla, rodné číslo atd.
 
-- **Geografická distribuce**: trhy, kde pocházejí výsledky hledání. Například `en-us` (Čeština, USA). Bing používá `mkt` parametr dotazu k určení trhu, pokud je zadaný. V opačném případě Bing používá ke zjištění trhu signály, jako je IP adresa volajícího.
+- **Geografická distribuce** : trhy, kde pocházejí výsledky hledání. Například `en-us` (Čeština, USA). Bing používá `mkt` parametr dotazu k určení trhu, pokud je zadaný. V opačném případě Bing používá ke zjištění trhu signály, jako je IP adresa volajícího.
 
-- **Distribuce kódu odezvy**: stavové kódy http všech volání během období generování sestav.
+- **Distribuce kódu odezvy** : stavové kódy http všech volání během období generování sestav.
 
-- **Distribuce zdroje volání**: typy prohlížečů používaných uživateli. Například Microsoft Edge, Chrome, Safari a FireFox. V rámci knihoven se seskupují volání z mimo prohlížeč (například roboty, post nebo using kudrlinkou z konzolové aplikace). Počátek se určuje pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit původ z jiných signálů.  
+- **Distribuce zdroje volání** : typy prohlížečů používaných uživateli. Například Microsoft Edge, Chrome, Safari a FireFox. V rámci knihoven se seskupují volání z mimo prohlížeč (například roboty, post nebo using kudrlinkou z konzolové aplikace). Počátek se určuje pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit původ z jiných signálů.  
 
-- **Distribuce bezpečného vyhledávání**: distribuce bezpečných vyhledávacích hodnot. Například off, mírná nebo Strict. `safeSearch`Parametr dotazu obsahuje hodnotu, je-li zadán. V opačném případě Bing nastaví hodnotu na střední.  
+- **Distribuce bezpečného vyhledávání** : distribuce bezpečných vyhledávacích hodnot. Například off, mírná nebo Strict. `safeSearch`Parametr dotazu obsahuje hodnotu, je-li zadán. V opačném případě Bing nastaví hodnotu na střední.  
 
-- **Odpovědi požadovaly distribuci**: vyhledávání na webu odpovědi rozhraní API, které jste požadovali v `responseFilter` parametru dotazu.  
+- **Odpovědi požadovaly distribuci** : vyhledávání na webu odpovědi rozhraní API, které jste požadovali v `responseFilter` parametru dotazu.  
 
-- Odpověď **vrátila distribuci**: odpovědi, které vyhledávání na webu rozhraní API vrátilo v odpovědi.
+- Odpověď **vrátila distribuci** : odpovědi, které vyhledávání na webu rozhraní API vrátilo v odpovědi.
 
-- **Distribuce serveru odpovědí**: aplikační server, který zpracovává požadavky rozhraní API. Možné hodnoty jsou Bing.com (pro přenosy poskytované z desktopových a přenosných zařízení) a Bing.com-Mobile (pro přenos dat poskytovaných z mobilních zařízení). Server je určen pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit Server z jiných signálů.
+- **Distribuce serveru odpovědí** : aplikační server, který zpracovává požadavky rozhraní API. Možné hodnoty jsou Bing.com (pro přenosy poskytované z desktopových a přenosných zařízení) a Bing.com-Mobile (pro přenos dat poskytovaných z mobilních zařízení). Server je určen pomocí hodnoty hlavičky User-Agent požadavku. Pokud žádost neobsahuje hlavičku User-Agent, Bing se pokusí odvodit Server z jiných signálů.
 
 ## <a name="next-steps"></a>Další kroky
 

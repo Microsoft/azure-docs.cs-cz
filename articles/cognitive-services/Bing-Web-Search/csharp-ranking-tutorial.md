@@ -12,14 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8bfd7b6e5c9a2a7e3d9ed750e544036f3874271f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933218"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078675"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 V tomto kurzu se dozvíte, jak vytvořit jednoduchou konzolovou aplikaci .NET Core, která umožňuje uživatelům dotazovat se na rozhraní API Bingu pro vyhledávání na webu a zobrazovat seřazené výsledky.
 
@@ -28,42 +33,42 @@ V tomto kurzu se dozvíte, jak:
 - Vytvoření jednoduchého dotazu na rozhraní API Bingu pro vyhledávání na webu
 - Zobrazit výsledky dotazu v pořadí podle pořadí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli postupovat podle tohoto kurzu, budete potřebovat:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
 * [Integrované vývojové prostředí sady Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Vytvořit nový projekt konzolové aplikace
 
 V sadě Visual Studio vytvořte projekt pomocí `Ctrl`+`Shift`+`N`.
 
-V dialogovém okně **Nový projekt** klikněte na **Visual C# > Windows Classic Desktop > Konzolová aplikace (.NET Framework)**.
+V dialogovém okně **Nový projekt** klikněte na **Visual C# > Windows Classic Desktop > Konzolová aplikace (.NET Framework)** .
 
-Pojmenujte aplikaci **MyConsoleSearchApp**a pak klikněte na **OK**.
+Pojmenujte aplikaci **MyConsoleSearchApp** a pak klikněte na **OK** .
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Přidat do projektu balíček NuGet JSON.net
 
 JSON.net umožňuje pracovat se odpověďmi JSON vrácenými rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
-- V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...**.
-- Na kartě  **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
+- V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...** .
+- Na kartě  **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat** .
 - V okně **Zkontrolovat změny** klikněte na tlačítko **OK** .
-- Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
+- Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp** .
 
 ## <a name="add-a-reference-to-systemweb"></a>Přidat odkaz na System. Web
 
 Tento kurz spoléhá na `System.Web` sestavení. Přidejte do projektu odkaz na toto sestavení:
 
-- V **Průzkumník řešení**klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz...**
-- Vyberte **sestavení > Framework**a pak se posuňte dolů a zkontrolujte **System. Web.**
+- V **Průzkumník řešení** klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz...**
+- Vyberte **sestavení > Framework** a pak se posuňte dolů a zkontrolujte **System. Web.**
 - Vybrat **OK**
 
 ## <a name="add-some-necessary-using-statements"></a>Přidat některé nezbytné příkazy using
 
-Kód v tomto kurzu vyžaduje tři další příkazy using. Přidejte tyto příkazy pod stávající `using` příkazy v horní části **program.cs**:
+Kód v tomto kurzu vyžaduje tři další příkazy using. Přidejte tyto příkazy pod stávající `using` příkazy v horní části **program.cs** :
 
 ```csharp
 using System.Web;
@@ -72,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Požádat uživatele o dotaz
 
-V **Průzkumník řešení**otevřete **program.cs**. Aktualizujte `Main()` metodu:
+V **Průzkumník řešení** otevřete **program.cs** . Aktualizujte `Main()` metodu:
 
 ```csharp
 static void Main()
@@ -231,7 +236,7 @@ Než se pustíte do zobrazení výsledků v pořadí podle pořadí, podívejte 
 
 JSON odpovědi na řazení může zahrnovat jednu nebo více skupin.
 
-V **program.cs**přidejte následující metodu pro zobrazení výsledků v pořadí podle správné klasifikace:
+V **program.cs** přidejte následující metodu pro zobrazení výsledků v pořadí podle správné klasifikace:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -278,7 +283,7 @@ Tato metoda:
 - Projde mezi `rankingResponse` skupinami, které odpověď obsahuje.
 - Zobrazí položky v každé skupině voláním `DisplaySpecificResults(...)`
 
-Do **program.cs**přidejte následující dvě metody:
+Do **program.cs** přidejte následující dvě metody:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)

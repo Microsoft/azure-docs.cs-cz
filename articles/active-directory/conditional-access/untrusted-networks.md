@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9d544cc205d2971b2097110d8c36c5d85fa1fd
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e4c020a9be7683bf045dbcc747dad3cb45058dd7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144995"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077672"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postupy: vyžadování MFA pro přístup z nedůvěryhodných sítí s podmíněným přístupem   
 
@@ -54,11 +54,11 @@ Místo toho, abyste se pokoušeli definovat, která všechna umístění nejsou 
 
 - Zahrnout libovolné umístění 
 
-   ![Podmíněný přístup](./media/untrusted-networks/02.png)
+   :::image type="content" source="./media/untrusted-networks/02.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, zobrazit kartu zahrnout a vybranou možnost Libovolná poloha a zvýrazněná." border="false":::
 
 - Vyloučit všechna důvěryhodná umístění 
 
-   ![Podmíněný přístup](./media/untrusted-networks/01.png)
+   :::image type="content" source="./media/untrusted-networks/01.png" alt-text="Snímek obrazovky s podoknem umístění Azure a D s možností konfigurovat nastavenou na hodnotu Ano, zobrazit kartu zahrnout a vybranou možnost Libovolná poloha a zvýrazněná." border="false":::
 
 ## <a name="policy-deployment"></a>Nasazení zásad
 

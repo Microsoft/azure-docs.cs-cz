@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077723"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Plánování a nasazení místní Azure Active Directory ochrany heslem
 
@@ -125,7 +125,7 @@ Na službu proxy ochrany heslem služby Azure AD platí následující požadavk
     * Rozhraní .NET 4,7 by již mělo být nainstalováno na plně aktualizovaný systém Windows Server. V případě potřeby si stáhněte a spusťte instalační program, který najdete v [instalačním programu .NET Framework 4,7 offline pro Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows).
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby řadičům domény udělily možnost přihlásit se k proxy službě. Tato možnost se ovládá přes přiřazení oprávnění "přístup k tomuto počítači ze sítě".
 * Všechny počítače, které hostují službu proxy ochrany heslem Azure AD, musí být nakonfigurované tak, aby umožňovaly odchozí přenosy TLS 1,2 HTTP.
-* Účet *globálního správce* pro registraci služby proxy ochrany heslem Azure AD a doménové struktury pomocí Azure AD.
+* Účet *globálního správce* nebo *Správce zabezpečení* , který zaregistruje službu proxy ochrany heslem Azure AD a doménovou strukturu pomocí Azure AD.
 * Pro sadu portů a adres URL, které jsou zadané v [postupech nastavení prostředí proxy aplikací](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment), musí být povolený přístup k síti.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Požadavky aktualizace agenta Microsoft Azure AD Connect
@@ -142,8 +142,8 @@ Služba aktualizace agenta Microsoft Azure AD Connect je nainstalovaná souběž
 
 Pro místní nasazení ochrany heslem Azure AD jsou k dispozici dvě požadované instalační programy:
 
-* Agent DC pro ochranu heslem Azure AD (*AzureADPasswordProtectionDCAgentSetup.msi*)
-* Proxy ochrana heslem Azure AD (*AzureADPasswordProtectionProxySetup.exe*)
+* Agent DC pro ochranu heslem Azure AD ( *AzureADPasswordProtectionDCAgentSetup.msi* )
+* Proxy ochrana heslem Azure AD ( *AzureADPasswordProtectionProxySetup.exe* )
 
 Stáhnout instalační programy z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
@@ -155,9 +155,11 @@ V další části nainstalujete agenty řadiče domény Azure AD pro ochranu hes
 
 Vyberte jeden nebo více serverů, které budou hostovat službu proxy ochrany heslem služby Azure AD. Pro servery platí následující požadavky:
 
-* Každá taková služba může poskytovat jenom zásady pro hesla pro jednu doménovou strukturu. Hostitelský počítač musí být připojený k doméně v této doménové struktuře. Jsou podporovány obě kořenové a podřízené domény. Potřebujete připojení k síti mezi alespoň jedním ŘADIČEm domény v každé doméně doménové struktury a počítačem ochrany heslem.
+* Každá taková služba může poskytovat jenom zásady pro hesla pro jednu doménovou strukturu. Hostitelský počítač musí být připojený k jakékoli doméně v této doménové struktuře.
+* Podporuje instalaci proxy služby buď v kořenové doméně, nebo v podřízených doménách, nebo na jejich kombinaci.
+* Potřebujete připojení k síti mezi alespoň jedním ŘADIČEm domény v každé doméně doménové struktury a jedním proxy server ochrany heslem.
 * Službu proxy ochrany heslem Azure AD můžete spustit na řadiči domény pro účely testování, ale tento řadič domény pak vyžaduje připojení k Internetu. Toto připojení může být bezpečnostním problémem. Doporučujeme tuto konfiguraci pouze pro testování.
-* Pro redundanci doporučujeme aspoň dva proxy servery ochrany heslem Azure AD, jak je uvedeno v předchozí části týkající se [vysoké dostupnosti](#high-availability-considerations).
+* Pro zajištění redundance doporučujeme aspoň dva proxy servery ochrany heslem Azure AD na doménovou strukturu, jak je uvedeno v předchozí části týkající se [vysoké dostupnosti](#high-availability-considerations).
 * Spuštění služby proxy ochrany heslem Azure AD na řadiči domény jen pro čtení se nepodporuje.
 
 Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte následující kroky:
@@ -191,11 +193,11 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
     Get-Service AzureADPasswordProtectionProxy | fl
     ```
 
-    Výsledek by měl zobrazovat **stav** *spuštěno*.
+    Výsledek by měl zobrazovat **stav** *spuštěno* .
 
 1. Služba proxy je v počítači spuštěná, ale nemá přihlašovací údaje ke komunikaci se službou Azure AD. Pomocí rutiny Zaregistrujte proxy server ochrany heslem Azure AD pomocí služby Azure AD `Register-AzureADPasswordProtectionProxy` .
 
-    Tato rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. V kořenové doméně doménové struktury budete také potřebovat místní oprávnění správce domény služby Active Directory. Tuto rutinu je taky potřeba spustit pomocí účtu s oprávněními místního správce:
+    Tato rutina vyžaduje pro vašeho tenanta Azure buď pověření *globálního správce* nebo *Správce zabezpečení* . Tuto rutinu je taky potřeba spustit pomocí účtu s oprávněními místního správce.
 
     Po úspěšném provedení tohoto příkazu pro službu proxy ochrany heslem služby Azure AD je další vyvolání úspěšné, ale nepotřebujeme je.
 
@@ -233,7 +235,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. Pokud chcete tento požadavek vyřešit, můžete použít jiný účet, který podporuje MFA s jedním z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure.
         >
-        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení**. Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému*. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
+        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení** . Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému* . Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
         >
         > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 
@@ -246,7 +248,9 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
     > [!NOTE]
     > Pokud je ve vašem prostředí nainstalované víc proxy serverů ochrany heslem Azure AD, nezáleží na tom, který proxy server používáte k registraci doménové struktury.
 
-    Rutina vyžaduje pro vašeho tenanta Azure přihlašovací údaje globálního správce. Tuto rutinu musíte spustit taky pomocí účtu s oprávněními místního správce. Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tento krok se spouští jednou pro každou doménovou strukturu.
+    Rutina vyžaduje pro vašeho tenanta Azure buď pověření *globálního správce* nebo *Správce zabezpečení* . Vyžaduje taky místní oprávnění podnikového Správce služby Active Directory. Tuto rutinu musíte spustit taky pomocí účtu s oprávněními místního správce. Účet Azure, který se používá k registraci doménové struktury, se může lišit od místního účtu služby Active Directory.
+    
+    Tento krok se spouští jednou pro každou doménovou strukturu.
 
     `Register-AzureADPasswordProtectionForest`Rutina podporuje následující tři režimy ověřování. První dva režimy podporují Azure Multi-Factor Authentication ale třetí režim ne.
 
@@ -282,7 +286,7 @@ Pokud chcete nainstalovat službu Azure AD Password Protection proxy, proveďte 
         >
         > Je také možné, že se vyžaduje ověřování MFA, pokud je registrace zařízení Azure (která se používá v rámci zabezpečení Azure AD heslem) nakonfigurovaná tak, aby globálně vyžadovala MFA. Pokud chcete tento požadavek vyřešit, můžete použít jiný účet, který podporuje MFA s jedním z předchozích dvou režimů ověřování, nebo můžete také dočasně uvolnit požadavek MFA pro registraci zařízení Azure.
         >
-        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení**. Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému*. Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
+        > Tuto změnu provedete tak, že vyhledáte a vyberete **Azure Active Directory** v Azure Portal a pak vyberete **zařízení > nastavení zařízení** . Nastavte **vyžadovat vícefaktorové ověřování, aby se zařízení připojila** k *žádnému* . Nezapomeňte znovu nakonfigurovat toto nastavení zpět na *Ano* , jakmile se registrace dokončí.
         >
         > Pro účely testování doporučujeme vynechat požadavky na vícefaktorové ověřování.
 

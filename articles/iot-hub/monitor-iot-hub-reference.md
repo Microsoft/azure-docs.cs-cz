@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042934"
+ms.locfileid: "93078199"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Monitorování referenčních informací o službě Azure IoT Hub
 
@@ -689,4 +689,4 @@ Odkaz na všechny Azure Monitor protokolů/Log Analytics tabulek najdete v téma
 ## <a name="see-also"></a>Viz také
 
 * Popis monitorování Azure IoT Hub najdete v tématu [monitorování azure IoT Hub](monitor-iot-hub.md) .
-* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resources) .
+* Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) .

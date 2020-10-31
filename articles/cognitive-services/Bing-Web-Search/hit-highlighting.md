@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68854011"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078539"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Zvýraznění textu pomocí značek dekorace
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Bing podporuje zvýrazňování přístupů, které označuje výrazy dotazu (nebo jiné výrazy, které Bing najde relevantní) v zobrazovaných řetězcích některých odpovědí. Například výsledek webové stránky `name` , `displayUrl` a `snippet` pole mohou obsahovat označené výrazy dotazu. 
 
@@ -51,7 +56,7 @@ Pokud žádost neurčila dekorace, `expression` pole by obsahovalo `log10(2)` .
 
 Pokud `textDecorations` je `true` , Bing může do zobrazovaných řetězců odpovědí zahrnout následující značky. Pokud neexistuje odpovídající značka HTML, buňka tabulky je prázdná.
 
-|Unicode|HTML|Popis
+|Kódování Unicode|HTML|Description
 |-|-|-
 |U + E000|\<b>|Označuje začátek termínu dotazu (zvýrazňování přístupů).
 |U + E001|\</b>|Označuje konec termínu dotazu.

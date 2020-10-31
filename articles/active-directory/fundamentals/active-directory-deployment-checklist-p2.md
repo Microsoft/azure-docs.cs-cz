@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077961"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Průvodce nasazením funkcí Azure Active Directory
 
@@ -35,7 +35,7 @@ Další informace o licencování najdete na následujících stránkách:
 * [Licencování Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Pokyny k licencování Azure AD B2B](../external-identities/licensing-guidance.md)
+* [Ceny služby Azure AD External identity](../external-identities/external-identities-pricing.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>Fáze 1: sestavení základu zabezpečení
 
@@ -70,7 +70,7 @@ V dalším kroku přidáme do základu, která je ve fázi 1, importem uživatel
 | [Implementace zpětného zápisu hesla](../authentication/tutorial-enable-sspr-writeback.md) | Povolí zpětný zápis změn hesel v cloudu do místního prostředí Active Directory Windows serveru. | Azure AD Premium P1 |
 | [Implementovat Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | Povolte monitorování statistik stavu klíčů pro Azure AD Connect servery, servery AD FS a řadiče domény. | Azure AD Premium P1 |
 | [Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory](../enterprise-users/licensing-groups-assign.md) | Ušetřete čas a úsilí vytvořením skupin licencí, které umožňují povolit nebo zakázat funkce podle skupin namísto nastavení na uživatele. | |
-| [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlašovat se k vašim aplikacím a službám s vlastními pracovními, školními nebo sociálními identitami. | [Pokyny k licencování Azure AD B2B](../external-identities/licensing-guidance.md) |
+| [Vytvoření plánu pro přístup uživatele typu Host](../external-identities/what-is-b2b.md) | Spolupracujte s uživateli typu Host tím, že jim umožníte přihlašovat se k vašim aplikacím a službám s vlastními pracovními, školními nebo sociálními identitami. | [Ceny služby Azure AD External identity](../external-identities/external-identities-pricing.md) |
 | [Rozhodnutí o strategii správy zařízení](../devices/overview.md) | Rozhodněte se, co vaše organizace povoluje pro zařízení. Při registraci vs se spojí vaše vlastní zařízení a společnost. | |
 | [Nasazení Windows Hello pro firmy ve vaší organizaci](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Příprava ověřování pomocí hesla ve Windows Hello | |
 | [Nasazení metod ověřování neheslem pro vaše uživatele](../authentication/concept-authentication-passwordless.md) | Poskytněte uživatelům praktické metody ověřování bez hesla | Azure AD Premium P1 |

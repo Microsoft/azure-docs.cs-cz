@@ -13,14 +13,15 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487581"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078777"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Rychlý Start: sestavení aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V3](create-sql-api-dotnet.md)
@@ -57,7 +58,7 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
 
-1. Vyberte **Průzkumník dat**  >  **Nový kontejner**. 
+1. Vyberte **Průzkumník dat**  >  **Nový kontejner** . 
     
     Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
@@ -67,14 +68,14 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření d
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
     |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
     |**ID kontejneru**|Položky|Jako název nového kontejneru zadejte *položky* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
     
     Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](unique-keys.md).
     
-    Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner.
+    Vyberte **OK** . Průzkumník dat zobrazí novou databázi a kontejner.
 
 ## <a name="add-sample-data"></a>Přidání ukázkových dat
 
@@ -119,13 +120,13 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Průzkumník dat na webu Azure Portal s podoknem Přidat kontejner":::
 
-2. V Visual Studio Code otevřete soubor *cosmos_get_started. py* v *\git-samples\azure-Cosmos-DB-Python-Getting-Started*.
+2. V Visual Studio Code otevřete soubor *cosmos_get_started. py* v *\git-samples\azure-Cosmos-DB-Python-Getting-Started* .
 
-3. Z portálu Zkopírujte hodnotu **identifikátoru URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu proměnné **koncového bodu** v *cosmos_get_started. py*. 
+3. Z portálu Zkopírujte hodnotu **identifikátoru URI** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu proměnné **koncového bodu** v *cosmos_get_started. py* . 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
-4. Pak z portálu Zkopírujte hodnotu **primárního klíče** a nastavte ji jako hodnotu **klíče** v *cosmos_get_started. py*. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
+4. Pak z portálu Zkopírujte hodnotu **primárního klíče** a nastavte ji jako hodnotu **klíče** v *cosmos_get_started. py* . Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
 
     `key = 'FILLME'`
 
@@ -163,7 +164,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *cosmos_get_s
    
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů**. 
+1. V Visual Studio Code vyberte **Zobrazit**  >  **paleta příkazů** . 
 
 2. Do příkazového řádku zadejte **Python: Select Interpreter** a pak vyberte verzi jazyka Python, kterou chcete používat.
 
@@ -191,7 +192,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *cosmos_get_s
     python cosmos_get_started.py
     ```
 
-7. Pokud chcete potvrdit, že se nové položky vytvořily a uložily, vyberte v Azure Portal **Průzkumník dat**  >  **AzureSampleFamilyDatabase**  >  **položky**AzureSampleFamilyDatabase. Zobrazit položky, které byly vytvořeny. Například tady je ukázkový dokument JSON pro Andersen rodinu:
+7. Pokud chcete potvrdit, že se nové položky vytvořily a uložily, vyberte v Azure Portal **Průzkumník dat**  >  **AzureSampleFamilyDatabase**  >  **položky** AzureSampleFamilyDatabase. Zobrazit položky, které byly vytvořeny. Například tady je ukázkový dokument JSON pro Andersen rodinu:
    
    ```json
    {
