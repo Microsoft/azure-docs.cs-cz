@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web App, Linux, Windows, Docker, kontejner
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743720"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130098"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrace vlastního softwaru na Azure App Service pomocí vlastního kontejneru
 
@@ -318,6 +318,10 @@ ENTRYPOINT ["init.sh"]
 * Poslední řádek, `ENTRYPOINT ["init.sh"]` , vyvolá `init.sh` spuštění služby SSH a serveru Python.
 
 ## <a name="build-and-test-the-image-locally"></a>Místní sestavení a otestování image
+
+> [!NOTE]
+> Docker Hub má [kvóty pro počet anonymních přijetí změn na jednu IP adresu a počet ověřených přijetí na bezplatného uživatele (viz **přenos dat** )](https://www.docker.com/pricing). Pokud si všimnete, že se vaše přijetí z dokovacího centra bude omezovat, zkuste, jestli ještě nejste `docker login` přihlášení.
+> 
 
 1. Spusťte následující příkaz, který sestaví bitovou kopii:
 

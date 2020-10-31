@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 1befc26d6c6d0a12af57c8a0d3d0e6d32f363f19
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 10cee7f5b0deff37a9b1df1937fe8f6ed8431daa
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135608"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Linux.
 
@@ -23,7 +23,7 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 
 ## <a name="system-requirements"></a>Požadavky na systém
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8)
+Linux Podívejte se na seznam [podporovaných distribucí a cílových architektur systému Linux](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -33,19 +33,14 @@ K dokončení tohoto rychlého startu budete potřebovat:
 
 * Podporované platformy Linux budou vyžadovat nainstalovaná konkrétní knihovny ( `libssl` pro podporu SSL (Secure Sockets Layer `libasound2` ) a pro podporu zvuku. Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
-   * V Ubuntu:
+   * V Ubuntu/Debian:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * V Debian 9:
-
-     ```sh
-     sudo apt-get update
-     sudo apt-get install build-essential libssl1.0.2 libasound2 wget
-     ```
+     Pokud libssl 1.0.0 není k dispozici, nainstalujte libssl 1.0. x (kde x je větší než 0) nebo místo toho libssl 1.1.
 
    * V RHEL/CentOS:
 

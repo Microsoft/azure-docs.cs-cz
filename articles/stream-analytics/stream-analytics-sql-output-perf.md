@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869418"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129741"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
@@ -27,15 +27,15 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 - **Zdědit dělení** – Tato možnost Konfigurace výstupu SQL umožňuje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, zapisuje se do tabulky založené na disku a má [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie pro vaši práci. očekává se, že se zobrazí lepší propustnost. Tento oddíl již probíhá automaticky pro mnoho dalších [výstupů](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs). Uzamykání tabulek (byla TABLOCK) je také zakázáno pro hromadné vložení vytvořené s touto možností.
 
 > [!NOTE] 
-> Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Tento horní limit byl pozorován v tabulce s jedním sloupcem identity a clusterovaným indexem. V takovém případě zvažte, jestli v dotazu použijete [do](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8, jestli chcete explicitně zadat počet modulů pro zápis výstupu. Na základě schématu a volby indexů se může vaše pozorování lišit.
+> Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Tento horní limit byl pozorován v tabulce s jedním sloupcem identity a clusterovaným indexem. V takovém případě zvažte, jestli v dotazu použijete [do](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8, jestli chcete explicitně zadat počet modulů pro zápis výstupu. Na základě schématu a volby indexů se může vaše pozorování lišit.
 
-- **Velikost dávky** – Konfigurace výstupu SQL umožňuje zadat maximální velikost dávky ve Azure Stream Analytics výstupu SQL na základě povaze cílové tabulky nebo úlohy. Velikost dávky je maximální počet záznamů, které se odesílají při každé transakci hromadného vložení. V clusterovaných indexech columnstore můžou velikosti dávek kolem [100 tisíc](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) umožňovat více paralelních, minimálního protokolování a optimalizace zámků. V tabulkách založených na disku může být pro vaše řešení optimální (výchozí) nebo nižší, protože vyšší velikosti dávek můžou během hromadných vložení aktivovat zvýšení úrovně zámku.
+- **Velikost dávky** – Konfigurace výstupu SQL umožňuje zadat maximální velikost dávky ve Azure Stream Analytics výstupu SQL na základě povaze cílové tabulky nebo úlohy. Velikost dávky je maximální počet záznamů, které se odesílají při každé transakci hromadného vložení. V clusterovaných indexech columnstore můžou velikosti dávek kolem [100 tisíc](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) umožňovat více paralelních, minimálního protokolování a optimalizace zámků. V tabulkách založených na disku může být pro vaše řešení optimální (výchozí) nebo nižší, protože vyšší velikosti dávek můžou během hromadných vložení aktivovat zvýšení úrovně zámku.
 
 - **Optimalizace vstupních zpráv** – Pokud jste optimalizovani pomocí dědění a velikosti dávek, zvýšením počtu vstupních událostí na jednu zprávu na oddíl pomůžete dalšímu doručování propustnosti zápisu. Ladění vstupní zprávy umožňuje velikost dávky v rámci Azure Stream Analytics až po zadanou velikost dávky, což zlepšuje propustnost. Toho je možné dosáhnout použitím [Komprese](stream-analytics-define-inputs.md) nebo zvýšení velikosti vstupních zpráv v centru EventHub nebo v objektu BLOB.
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Dělená tabulka a indexy** – použití [dělené](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
+- **Dělená tabulka a indexy** – použití [dělené](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
 
 - **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [Ignorovat \_ \_ klíč duplicity](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
 

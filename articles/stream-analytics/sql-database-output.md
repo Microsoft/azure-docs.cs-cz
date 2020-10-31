@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 4310bd94edd5ebe14eab40b6d19e2bacbdd1b03c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906217"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129826"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure SQL Database výstup z Azure Stream Analytics
 
 Můžete použít [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) jako výstup pro data, která jsou v podstatě relační nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Azure Stream Analytics úlohy zapisují do existující tabulky v SQL Database. Schéma tabulky musí přesně odpovídat polím a jejich typům ve výstupu vaší úlohy. Můžete také zadat [Azure synapse Analytics](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) jako výstup pomocí možnosti výstup SQL Database. Další informace o způsobech zvýšení propustnosti zápisu naleznete v článku [Stream Analytics s Azure SQL Database jako výstup](stream-analytics-sql-output-perf.md) .
 
-Můžete také použít [spravovanou instanci Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) jako výstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
+Můžete také použít [spravovanou instanci Azure SQL](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) jako výstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](../azure-sql/managed-instance/public-endpoint-configure.md) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
 
 ## <a name="output-configuration"></a>Konfigurace výstupu
 
@@ -37,9 +37,9 @@ Následující tabulka uvádí seznam názvů vlastností a jejich popis pro vyt
 
 Existují dva adaptéry, které umožňují výstup z Azure Stream Analytics do služby Azure synapse Analytics (dřív SQL Data Warehouse): SQL Database a Azure synapse. Pokud platí některá z následujících podmínek, doporučujeme místo SQL Database adaptéru zvolit adaptér Azure synapse Analytics:
 
-* **Propustnost**: Pokud je vaše očekávaná propustnost nyní nebo v budoucnosti větší než 10 MB/s, použijte pro lepší výkon možnost výstup Azure synapse.
+* **Propustnost** : Pokud je vaše očekávaná propustnost nyní nebo v budoucnosti větší než 10 MB/s, použijte pro lepší výkon možnost výstup Azure synapse.
 
-* **Vstupní oddíly**: Pokud máte osm nebo více vstupních oddílů, použijte možnost výstup Azure synapse pro lepší horizontální navýšení kapacity.
+* **Vstupní oddíly** : Pokud máte osm nebo více vstupních oddílů, použijte možnost výstup Azure synapse pro lepší horizontální navýšení kapacity.
 
 ## <a name="partitioning"></a>Dělení
 
@@ -47,7 +47,7 @@ Dělení je nutné povolit a je založené na klauzuli PARTITION BY v dotazu. Kd
 
 ## <a name="output-batch-size"></a>Velikost výstupní dávky
 
-Maximální velikost zprávy můžete nakonfigurovat pomocí **maximálního počtu dávek**. Výchozí maximum je 10 000 a výchozí minimum je 100 řádků na jedno hromadné vložení. Další informace najdete v tématu [omezení Azure SQL](../sql-database/sql-database-resource-limits.md). Každá dávka je zpočátku hromadně vložena s maximálním počtem dávek. Dávka je rozdělena na polovinu (až do minimálního počtu dávek) na základě opakovaných chyb z SQL.
+Maximální velikost zprávy můžete nakonfigurovat pomocí **maximálního počtu dávek** . Výchozí maximum je 10 000 a výchozí minimum je 100 řádků na jedno hromadné vložení. Další informace najdete v tématu [omezení Azure SQL](../azure-sql/database/resource-limits-logical-server.md). Každá dávka je zpočátku hromadně vložena s maximálním počtem dávek. Dávka je rozdělena na polovinu (až do minimálního počtu dávek) na základě opakovaných chyb z SQL.
 
 ## <a name="next-steps"></a>Další kroky
 

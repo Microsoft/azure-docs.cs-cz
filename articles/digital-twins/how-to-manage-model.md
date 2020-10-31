@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494850"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130374"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
 Můžete spravovat [modely](concepts-models.md) , které vaše instance digitálního vlákna Azure ví o používání [**rozhraní DigitalTwinModels API**](/rest/api/digital-twins/dataplane/models), [sady SDK pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo [digitálních vláken Azure](how-to-use-cli.md). 
 
 Mezi operace správy patří nahrávání, ověřování, načítání a odstraňování modelů. 
+
+## <a name="prerequisites"></a>Předpoklady
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>Vytváření modelů
 
@@ -61,7 +65,7 @@ Prvním krokem k řešení je vytvoření modelů, které reprezentují aspekty 
 > [!NOTE]
 > Toto je vzorový text pro soubor. JSON, ve kterém je model definovaný a uložený, aby se nahrál jako součást klientského projektu. REST API volání na druhé straně převezme pole definic modelů, jako je výše (která je namapována na `IEnumerable<string>` rozhraní .NET SDK). Takže pokud chcete tento model použít přímo v REST API, uzavřete ho do závorek.
 
-Tento model definuje název a jedinečné ID pro místnost pacienta a vlastnosti představující počet návštěvníků a stav ručního mytí (tyto čítače se budou aktualizovat ze senzorů pohybu a inteligentních zásobníků protokolu SOAP a společně se použijí k výpočtu *procentuální vlastnosti handwash* ). Model také definuje *hasDevices*vztahu, který se použije pro připojení všech [digitálních vláken](concepts-twins-graph.md) na základě tohoto modelu *Room* na skutečná zařízení.
+Tento model definuje název a jedinečné ID pro místnost pacienta a vlastnosti představující počet návštěvníků a stav ručního mytí (tyto čítače se budou aktualizovat ze senzorů pohybu a inteligentních zásobníků protokolu SOAP a společně se použijí k výpočtu *procentuální vlastnosti handwash* ). Model také definuje *hasDevices* vztahu, který se použije pro připojení všech [digitálních vláken](concepts-twins-graph.md) na základě tohoto modelu *Room* na skutečná zařízení.
 
 V rámci této metody můžete přejít na, abyste definovali modely pro nemocnice, zóny nebo samotnou nemocnice.
 
@@ -200,7 +204,7 @@ Když vytvoříte nové vlákny, protože verze nového modelu a stará verze mo
 
 To také znamená, že nahrání nové verze modelu automaticky neovlivní stávající vlákna. Stávající vlákna budou jednoduše zachovány instance staré verze modelu.
 
-Tyto existující vlákna můžete aktualizovat na novou verzi modelu tím, že ji aktualizujete, jak je popsáno v části [*aktualizace modelu digitálního vlákna*](how-to-manage-twin.md#update-a-digital-twins-model) v tématu *Postupy: Správa digitálních vláken*. V rámci jedné opravy je nutné aktualizovat **ID modelu** (na novou verzi) a **všechna pole, která je nutné změnit na vlákna, aby odpovídala novému modelu**.
+Tyto existující vlákna můžete aktualizovat na novou verzi modelu tím, že ji aktualizujete, jak je popsáno v části [*aktualizace modelu digitálního vlákna*](how-to-manage-twin.md#update-a-digital-twins-model) v tématu *Postupy: Správa digitálních vláken* . V rámci jedné opravy je nutné aktualizovat **ID modelu** (na novou verzi) a **všechna pole, která je nutné změnit na vlákna, aby odpovídala novému modelu** .
 
 ### <a name="remove-models"></a>Odebrat modely
 

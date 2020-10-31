@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675313"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131356"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -50,7 +50,7 @@ Pro SQL Database lze redundanci úložiště zálohování nakonfigurovat v dob�
 > Redundantní úložiště v zóně je aktuálně dostupné jenom v [určitých oblastech](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Konfigurovatelná redundance záložního úložiště pro Azure SQL Database je v současnosti všeobecně dostupná jenom v oblasti Azure jihovýchodní Asie. Tato funkce ještě není k dispozici pro úroveň škálování. 
+> Konfigurovatelná redundance úložiště zálohování pro Azure SQL Database je aktuálně dostupná ve veřejné verzi Preview v oblasti Brazílie – jih a obecně dostupná jenom v oblasti jihovýchodní Asie – Azure. Tato funkce ještě není k dispozici pro úroveň škálování. 
 
 ### <a name="backup-usage"></a>Využití zálohy
 
@@ -70,7 +70,7 @@ Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálo
 
 Operaci konfigurace zálohování a obnovení můžete vyzkoušet v následujících příkladech:
 
-| Operace | Azure Portal | Azure PowerShell |
+| Operace | portál Azure | Azure PowerShell |
 |---|---|---|
 | **Změna uchovávání záloh** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance SQL](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance SQL](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **Změna dlouhodobého uchovávání záloh** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance SQL – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[Spravovaná instance SQL](../managed-instance/long-term-backup-retention-configure.md)  |
@@ -371,7 +371,7 @@ Další informace najdete v tématu [REST API uchovávání záloh](/rest/api/sq
 ## <a name="configure-backup-storage-redundancy"></a>Konfigurace redundance úložiště zálohování
 
 > [!NOTE]
-> Nastavitelná redundance úložiště pro zálohování pro spravovanou instanci SQL se dá zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování. Pro SQL Database je verze Public Preview této funkce aktuálně dostupná jenom v oblasti jihovýchodní Asie – Azure. 
+> Nastavitelná redundance úložiště pro zálohování pro spravovanou instanci SQL se dá zadat jenom během procesu vytváření spravované instance. Po zřízení prostředku nemůžete změnit možnost redundance úložiště zálohování. Pro SQL Database je verze Public Preview této funkce aktuálně dostupná v oblasti Brazílie – jih a je všeobecně dostupná v oblasti jihovýchodní Asie v Azure. 
 
 Redundanci úložiště zálohy spravované instance lze nastavit pouze během vytváření instance. Pro SQL Database může být nastavená při vytváření databáze nebo může být aktualizována pro existující databázi. Výchozí hodnota je geograficky redundantní úložiště (RA-GRS). Pro rozdíly v cenách mezi místně redundantními (LRS), ZRS a geograficky redundantním úložištěm zálohování navštivte [stránku s cenami spravované instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 

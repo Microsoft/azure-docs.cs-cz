@@ -6,21 +6,18 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: 9704ff7dec02a0de044863ec2da6280d65b30ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043500"
+ms.locfileid: "93131152"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Úroveň Premium pro Azure Data Lake Storage
 
-Azure Data Lake Storage Gen2 teď podporuje [úroveň výkonu Premium](storage-blob-performance-tiers.md#premium-performance). Úroveň výkonu Premium je ideální pro aplikace pro analýzu velkých objemů dat a úlohy, které vyžadují nízkou latenci a mají vysoký počet transakcí. 
-
-> [!NOTE]
-> Úroveň Premium pro Azure Data Lake Storage je ve verzi Public Preview. Viz [oblast dostupnosti](#regional-availability).
+Azure Data Lake Storage Gen2 teď podporuje [úroveň výkonu Premium](storage-blob-performance-tiers.md#premium-performance). Úroveň výkonu Premium je ideální pro aplikace pro analýzu velkých objemů dat a úlohy, které vyžadují nízkou latenci a mají vysoký počet transakcí.
 
 ## <a name="workloads-that-can-benefit-from-the-premium-performance-tier"></a>Úlohy, které můžou těžit z úrovně výkonu Premium
 
@@ -106,8 +103,3 @@ Toto nastavení se zobrazuje na stránce **vytvořit účet úložiště** na n�
 |Austrálie – východ|LRS, ZRS|
 |Austrálie – jihovýchod|LRS|
 |Brazil South|LRS|
-
-
-## <a name="next-steps"></a>Další kroky
-
-Přečtěte si [oznámení blogu](https://www.microsoft.com)Azure Data Lake Storage úrovně Premium.

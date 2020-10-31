@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d8c70ac0a34470e8121d2234fd6b898cfed1ab
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045259"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130591"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scénáře použití geografického a geoprostorového agregace pomocí Azure Stream Analytics
 
@@ -125,4 +125,4 @@ Následující obrázek ukazuje výstup dotazu na Power BI řídicí panel.
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Stream Analytics geoprostorové funkce](stream-analytics-geospatial-functions.md)
-* [Geoprostorové funkce (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)
+* [Geoprostorové funkce (Azure Stream Analytics)](/stream-analytics-query/geospatial-functions)

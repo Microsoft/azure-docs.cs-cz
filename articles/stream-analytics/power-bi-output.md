@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822998"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129775"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI výstup z Azure Stream Analytics
 
@@ -51,7 +51,7 @@ Power BI používá zásady uchovávání dat first in, First-out (FIFO). Data s
 
 Pokud se změní výstupní schéma, Azure Stream Analytics aktualizuje datový model dynamicky za běhu. Změny názvu sloupce, změny typu sloupce a přidání nebo odebrání sloupců jsou sledovány.
 
-Tato tabulka popisuje převody datových typů z [Stream Analytics typy dat](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) do Power BI [model EDM (Entity Data Model) (EDM)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model), pokud Power BI datová sada a tabulka neexistuje.
+Tato tabulka popisuje převody datových typů z [Stream Analytics typy dat](/stream-analytics-query/data-types-azure-stream-analytics) do Power BI [model EDM (Entity Data Model) (EDM)](/dotnet/framework/data/adonet/entity-data-model), pokud Power BI datová sada a tabulka neexistuje.
 
 Z Stream Analytics | Pro Power BI
 -----|-----
@@ -76,7 +76,7 @@ Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 
 ## <a name="output-batch-size"></a>Velikost výstupní dávky
 
-Velikost výstupní dávky najdete v tématu [Power BI omezení rozhraní REST API](https://msdn.microsoft.com/library/dn950053.aspx).
+Velikost výstupní dávky najdete v tématu [Power BI omezení rozhraní REST API](/power-bi/developer/automation/api-rest-api-limitations).
 
 ## <a name="next-steps"></a>Další kroky
 

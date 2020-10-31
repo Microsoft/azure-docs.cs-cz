@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130251"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s Azure Stream Analytics dotazy
 
@@ -25,26 +25,26 @@ Tento článek popisuje běžné problémy s vývojem Azure Stream Analyticsch d
 
 1.  Kontrola chyb pomocí místního testování:
 
-    - Na Azure Portal na kartě **dotaz** vyberte **test**. K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
+    - Na Azure Portal na kartě **dotaz** vyberte **test** . K [otestování dotazu](stream-analytics-test-query.md)použijte stažená ukázková data. Prověřte případné chyby a pokuste se je opravit.   
     - Dotaz můžete také [místně otestovat](stream-analytics-live-data-local-testing.md) pomocí Azure Stream Analyticsch nástrojů pro aplikaci Visual Studio nebo [Visual Studio Code](visual-studio-code-local-run-live-input.md). 
 
 2.  [Ladit dotazy krok za krokem místně pomocí diagramu úloh](debug-locally-using-job-diagram-vs-code.md) v Azure Stream Analytics nástrojů pro Visual Studio Code. Diagram úlohy ukazuje, jak toky dat ze vstupních zdrojů (centra událostí, IoT Hub atd.) prostřednictvím více kroků dotazů a nakonec až po výstupní jímky. Každý krok dotazu je namapován na dočasnou sadu výsledků definovanou ve skriptu pomocí příkazu WITH. Můžete zobrazit data a také metriky v každé mezilehlé sadě výsledků, abyste našli zdroj problému.
 
     ![Výsledek náhledu diagramu úlohy](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  Pokud používáte [**časové razítko**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](stream-analytics-out-of-order-and-late-events.md).
+3.  Pokud používáte [**časové razítko**](/stream-analytics-query/timestamp-by-azure-stream-analytics), ověřte, zda mají události časové razítko větší, než je [čas spuštění úlohy](./stream-analytics-time-handling.md).
 
 4.  Odstraňte běžné nástrah, například:
-    - Klauzule [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
-    - Funkce [**cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) .
+    - Klauzule [**WHERE**](/stream-analytics-query/where-azure-stream-analytics) v dotazu vyfiltroval všechny události, což znemožňuje vygenerování všech výstupů.
+    - Funkce [**cast**](/stream-analytics-query/cast-azure-stream-analytics) selže, což způsobí selhání úlohy. Chcete-li se vyhnout chybám přetypování typů, použijte místo toho [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics) .
     - Při použití funkcí okna počkejte na celou dobu trvání okna, aby se zobrazil výstup dotazu.
     - Časové razítko pro události předchází času zahájení úlohy a události jsou vyřazeny.
-    - Podmínky [**spojení**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) se neshodují. Pokud se žádné shody neshodují, bude nulový výstup.
+    - Podmínky [**spojení**](/stream-analytics-query/join-azure-stream-analytics) se neshodují. Pokud se žádné shody neshodují, bude nulový výstup.
 
-5.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít na **Nastavení** a vybrat [**řazení událostí**](stream-analytics-out-of-order-and-late-events.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
+5.  Zajistěte, aby byly zásady řazení událostí nakonfigurované podle očekávání. Přejít na **Nastavení** a vybrat [**řazení událostí**](./stream-analytics-time-handling.md). Zásada *se nepoužije,* když použijete tlačítko **test** k otestování dotazu. Výsledkem je jeden rozdíl mezi testováním v prohlížeči a spuštění úlohy v produkčním prostředí. 
 
 6. Ladění pomocí protokolů aktivit a prostředků:
-    - Použijte [protokoly aktivit](../azure-resource-manager/resource-group-audit.md)a filtrujte k identifikaci a ladění chyb.
+    - Použijte [protokoly aktivit](../azure-resource-manager/management/view-activity-logs.md)a filtrujte k identifikaci a ladění chyb.
     - K identifikaci a ladění chyb použijte [protokoly prostředků úloh](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="resource-utilization-is-high"></a>Využití prostředků je vysoké.
@@ -103,12 +103,12 @@ Tentokrát se data ve výstupu naformátují a vyplní podle očekávání.
 
 ## <a name="get-help"></a>Získání pomoci
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

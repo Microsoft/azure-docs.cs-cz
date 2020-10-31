@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 30fb0d000a64c7e460dd0ccf7e7eaf4b67957c8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5032880ddc5d23f824adec28aee85c652bad29d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129656"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS ve službě Azure Kubernetes (AKS)
 
@@ -43,10 +43,10 @@ Pokud chcete vytvořit kontroler příchozích dat, pomocí `helm` příkazu nai
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
-> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic* . Podle potřeby zadejte obor názvů pro vlastní prostředí.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro* . Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 ```console
 # Create a namespace for your ingress resources
@@ -194,7 +194,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-one
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -232,7 +232,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld-two
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -265,7 +265,7 @@ Obě aplikace jsou teď spuštěné v clusteru Kubernetes. Jsou však konfigurov
 V následujícím příkladu provoz na adresu *Hello-World – příchozí. MY_CUSTOM_DOMAIN* je směrován do služby *AKS-HelloWorld* . Provoz na adresu *Hello-World – příchozí. Služba MY_CUSTOM_DOMAIN/Hello-World-Two* je směrována do služby *AKS-HelloWorld-dvě* . Provoz do *Hello-World – příchozí. MY_CUSTOM_DOMAIN/static* je směrován do služby s názvem *AKS-HelloWorld* pro statické prostředky.
 
 > [!NOTE]
-> Pokud jste nakonfigurovali plně kvalifikovaný název domény pro IP adresu kontroleru příchozího přenosu dat místo vlastní domény, použijte místo *Hello-World-to plně kvalifikovaný název domény. MY_CUSTOM_DOMAIN*. Pokud je například plně kvalifikovaný název domény *demo-AKS-Ingress.eastus.cloudapp.Azure.com*, nahraďte *Hello-World-příchozí. MY_CUSTOM_DOMAIN* s *demo-AKS-Ingress.eastus.cloudapp.Azure.com* v `hello-world-ingress.yaml` .
+> Pokud jste nakonfigurovali plně kvalifikovaný název domény pro IP adresu kontroleru příchozího přenosu dat místo vlastní domény, použijte místo *Hello-World-to plně kvalifikovaný název domény. MY_CUSTOM_DOMAIN* . Pokud je například plně kvalifikovaný název domény *demo-AKS-Ingress.eastus.cloudapp.Azure.com* , nahraďte *Hello-World-příchozí. MY_CUSTOM_DOMAIN* s *demo-AKS-Ingress.eastus.cloudapp.Azure.com* v `hello-world-ingress.yaml` .
 
 `hello-world-ingress.yaml`Pomocí níže uvedeného příkladu YAML vytvořte soubor s názvem. Aktualizujte *hostitele* a *hostitele* na název DNS, který jste vytvořili v předchozím kroku.
 
@@ -335,7 +335,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 V dalším kroku se musí vytvořit prostředek certifikátu. Prostředek certifikátu definuje požadovaný certifikát X. 509. Další informace najdete v tématu [certifikáty pro správce][cert-manager-certificates]certifikátů. Správce certifikátů vytvořil pro vás automaticky objekt certifikátu pomocí překrytí příchozího přenosu dat, které se automaticky nasadí pomocí nástroje CERT Manager od verze v 0.2.2. Další informace najdete v dokumentaci ke [vstupnímu překrytí][ingress-shim].
 
-Chcete-li ověřit, zda byl certifikát vytvořen úspěšně, použijte `kubectl get certificate --namespace ingress-basic` příkaz a ověřte, zda je hodnota *připravena* nastavena na *hodnotu true*, což může trvat několik minut.
+Chcete-li ověřit, zda byl certifikát vytvořen úspěšně, použijte `kubectl get certificate --namespace ingress-basic` příkaz a ověřte, zda je hodnota *připravena* nastavena na *hodnotu true* , což může trvat několik minut.
 
 ```
 $ kubectl get certificate --namespace ingress-basic
@@ -368,7 +368,7 @@ Další možností je podrobnější přístup k odstranění jednotlivých vytv
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Seznam vydaných verzí Helm pomocí `helm list` příkazu. Vyhledejte grafy s názvem *Nginx* a *CERT-Manager*, jak je znázorněno v následujícím příkladu výstupu:
+Seznam vydaných verzí Helm pomocí `helm list` příkazu. Vyhledejte grafy s názvem *Nginx* a *CERT-Manager* , jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list --namespace ingress-basic

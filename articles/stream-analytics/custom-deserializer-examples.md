@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac08b5af0afbf43c7b13808fac06c40066e48b7a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87f3e2014281580cc35f941ad62046dcb24539df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074229"
+ms.locfileid: "93129401"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Čtení vstupu v jakémkoli formátu pomocí vlastních deserializátorů .NET
 
@@ -201,7 +201,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>Formát serializace pro rozhraní REST API
 
-Každý vstup Stream Analytics má **formát serializace** . Další informace o možnostech vstupu najdete v dokumentaci ke [vstupu REST API](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs) .
+Každý vstup Stream Analytics má **formát serializace** . Další informace o možnostech vstupu najdete v dokumentaci ke [vstupu REST API](./stream-analytics-define-inputs.md) .
 
 Následující kód jazyka JavaScript je příkladem formátu serializace deserializace rozhraní .NET při použití REST API:
 
@@ -239,7 +239,7 @@ Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblast
 
 ### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Kdy bude tato funkce dostupná ve všech oblastech Azure?
 
-Tato funkce je k dispozici v [6 oblastech](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
+Tato funkce je k dispozici v [6 oblastech](#region-support). Pokud vás zajímá použití této funkce v jiné oblasti, můžete [Odeslat žádost](https://aka.ms/ccodereqregion). Podpora všech oblastí Azure je v plánu.
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Můžu získat přístup k MetadataPropertyValue ze svých vstupů, podobně jako funkce GetMetadataPropertyValue?
 

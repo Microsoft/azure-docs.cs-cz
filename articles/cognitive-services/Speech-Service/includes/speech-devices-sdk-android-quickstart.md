@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135558"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Android vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) .
 
@@ -35,7 +35,7 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
 
 - Pokud plánujete použít službu Speech k identifikaci záměrů (nebo akcí) od uživatele projevy, budete potřebovat předplatné [služby Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) . Další informace o LUIS a rozpoznávání záměrů najdete v tématu [rozpoznávání hlasových záměrů pomocí Luis, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
 
-  Můžete [vytvořit jednoduchý model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použít Vzorový model Luis LUIS-example.jsv. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci**a pak vyberte soubor JSON.
+  Můžete [vytvořit jednoduchý model Luis](https://docs.microsoft.com/azure/cognitive-services/luis/) nebo použít Vzorový model Luis LUIS-example.jsv. Vzorový model LUIS je k dispozici na [webu pro stažení sady Speech Devices SDK](https://aka.ms/sdsdk-luis). Pokud chcete nahrát soubor JSON modelu na [portál Luis](https://www.luis.ai/home), vyberte **importovat novou aplikaci** a pak vyberte soubor JSON.
 
 - Na svůj počítač nainstalujte [Android Studio](https://developer.android.com/studio/) a [Vysor](https://vysor.io/download/) .
 
@@ -45,24 +45,24 @@ Než začnete používat sadu Speech SDK pro zařízení, budete muset:
 
    ![Vysor](../media/speech-devices-sdk/qsg-3.png)
 
-1. Vaše zařízení by mělo být uvedené v části **zvolit zařízení**. Vyberte tlačítko **Zobrazit** vedle zařízení.
+1. Vaše zařízení by mělo být uvedené v části **zvolit zařízení** . Vyberte tlačítko **Zobrazit** vedle zařízení.
 
-1. Připojte se k bezdrátové síti tak, že vyberete ikonu složky a pak vyberete **Nastavení**  >  **síť WLAN**.
+1. Připojte se k bezdrátové síti tak, že vyberete ikonu složky a pak vyberete **Nastavení**  >  **síť WLAN** .
 
    ![Vysor WLAN](../media/speech-devices-sdk/qsg-4.png)
 
    > [!NOTE]
-   > Pokud má vaše společnost zásady týkající se připojení zařízení k systému Wi-Fi, musíte získat adresu MAC a kontaktovat oddělení IT, jak ho připojit k Wi-Fi vaší společnosti.
+   > Pokud má vaše společnost zásady týkající se připojení zařízení ke svému Wi-Fi systému, je potřeba získat adresu MAC a kontaktovat oddělení IT, jak ho připojit k Wi-Fi vaší společnosti.
    >
    > Pokud chcete najít adresu MAC pro vývojovou sadu, vyberte ikonu složky souborů na ploše sady dev Kit.
    >
    > ![Složka souborů Vysor](../media/speech-devices-sdk/qsg-10.png)
    >
-   > Vyberte **Nastavení**. Vyhledejte adresu MAC a pak vyberte **MAC adresa**  >  **Upřesnit síť WLAN**. Zapište adresu MAC, která se zobrazí v dolní části dialogového okna.
+   > Vyberte **Nastavení** . Vyhledejte adresu MAC a pak vyberte **MAC adresa**  >  **Upřesnit síť WLAN** . Zapište adresu MAC, která se zobrazí v dolní části dialogového okna.
    >
    > ![Adresa MAC Vysor](../media/speech-devices-sdk/qsg-11.png)
    >
-   > Některé společnosti můžou mít časový limit, jak dlouho může být zařízení připojené k systému Wi-Fi. Po určitém počtu dnů možná budete muset v systému Wi-Fi zvětšit registraci sady dev Kit.
+   > Některé společnosti můžou mít časový limit, jak dlouho může být zařízení připojené k Wi-Fimu systému. Po určitém počtu dnů možná budete muset v Wi-Fi systému zvětšit registraci sady dev Kit.
 
 ## <a name="run-the-sample-application"></a>Spuštění ukázkové aplikace
 
@@ -78,7 +78,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
 
 1. Nakonfigurujte Gradle tak, aby odkazoval na sadu Speech SDK. Následující soubory najdete v části **Gradle skripty** v Android Studio.
 
-    Aktualizujte **Build. Gradle (projekt: example)**, blok allprojects by se měl shodovat s tím, že přidá řádky Maven.
+    Aktualizujte **Build. Gradle (projekt: example)** , blok allprojects by se měl shodovat s tím, že přidá řádky Maven.
 
     ```xml
     allprojects {
@@ -96,7 +96,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
     Aktualizujte **Build. Gradle (Module: App)** tak, že přidáte tento řádek do oddílu závislosti. 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.13.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.14.0'
     ```
     
 1. Přidejte klíč předplatného řeči do zdrojového kódu. Pokud chcete vyzkoušet rozpoznávání záměru, přidejte také klíč předplatného [služby Language Understanding](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) a ID aplikace.
@@ -152,7 +152,7 @@ Chcete-li ověřit nastavení vývojové sady, sestavte a nainstalujte ukázkovo
    |          |         | Pro lineární vývojovou sadu, která používá všechny mics: `Linear4` |
    |          |         | Pro lineární vývojovou sadu, která používá dvě mics: `Linear2` |
 
-1. Aplikaci vytvoříte tak, že v nabídce **Spustit** vyberete **Spustit aplikaci**. Zobrazí se dialogové okno **vybrat cíl nasazení** .
+1. Aplikaci vytvoříte tak, že v nabídce **Spustit** vyberete **Spustit aplikaci** . Zobrazí se dialogové okno **vybrat cíl nasazení** .
 
 1. Vyberte své zařízení a pak kliknutím na **OK** Nasaďte aplikaci do zařízení.
 

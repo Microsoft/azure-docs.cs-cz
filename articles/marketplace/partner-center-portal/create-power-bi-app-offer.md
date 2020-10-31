@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710647"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131492"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Vytvoření nabídky aplikací Power BI
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Power BI aplikace služby** .
 
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-power-bi-app.png)
 
@@ -36,16 +36,16 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit**.
+- ID nabídky nelze změnit po výběru možnost **vytvořit** .
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-- Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
+- Po zvolení možnost **vytvořit** se alias nabídky nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -55,10 +55,10 @@ Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publiko
 
 Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
 
-- Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
+- Pokud je nabídka nabídkou konceptu a odstranění konceptu
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
-- Pokud je nabídka ve verzi Preview – [Přejít do provozu](publishing-status.md#publisher-approval)
-- Pokud jste nedokončili publikování – [Zrušit publikování](update-existing-offer.md#cancel-publishing)
+- Pokud je nabídka ve verzi Preview – [Přejít do provozu](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Pokud jste nedokončili registraci vydavatele [, zrušte publikování.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
@@ -97,7 +97,7 @@ Tato stránka vám umožní definovat kategorie a odvětví používané k sesku
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -186,7 +186,7 @@ Zadejte webovou adresu do zásad ochrany osobních údajů vaší organizace. Zo
 
 ### <a name="contact-information"></a>Kontaktní informace
 
-Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
+Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
 
 - Kontakt podpory (povinné): pro obecné dotazy týkající se podpory.
 - Technický kontakt (povinné): pro technické dotazy a problémy certifikace.
@@ -234,7 +234,7 @@ Další informace o vytváření seznamů nabídek najdete v tématu [nabídky D
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 
-Zvyšte svou aplikaci ve službě Power BI na produkční prostředí a poskytněte odkaz na instalační program aplikace Power BI, který zákazníkům umožňuje nainstalovat vaši aplikaci. Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavami v Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).
+Zvyšte svou aplikaci ve službě Power BI na produkční prostředí a poskytněte odkaz na instalační program aplikace Power BI, který zákazníkům umožňuje nainstalovat vaši aplikaci. Další informace najdete v tématu [publikování aplikací s řídicími panely a sestavami v Power BI](/power-bi/service-create-distribute-apps).
 
 ## <a name="supplemental-content"></a>Doplňkový obsah
 
@@ -248,7 +248,7 @@ Volitelně můžete přidat pokyny (až 3 000 znaků), které vám pomohou týmu
 
 Po dokončení všech požadovaných částí nabídky můžete odeslat nabídku pro kontrolu a publikování.
 
-V pravém horním rohu portálu vyberte **zkontrolovat a publikovat**.
+V pravém horním rohu portálu vyberte **zkontrolovat a publikovat** .
 
 Na stránce pro kontrolu můžete:
 
@@ -258,6 +258,6 @@ Na stránce pro kontrolu můžete:
   - **Complete** – oddíl obsahuje všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky dokončené.
 - Poskytněte pokyny pro testování certifikačního týmu, aby se zajistilo správné testování vaší aplikace. Poskytněte také všechny doplňkové poznámky, které jsou užitečné pro porozumění vaší nabídce.
 
-Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
+Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat** .
 
-Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.
+Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení. Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live** .

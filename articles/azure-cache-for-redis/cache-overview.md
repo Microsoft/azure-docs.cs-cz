@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 47c4fbada4bb4e7019cb2fa619d97bbb38843dd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085101"
+ms.locfileid: "93131628"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure cache pro Redis poskytuje úložiště dat v paměti založené na softwaru [Redis](https://redis.io/) . Redis vylepšuje výkon a škálovatelnost aplikace, která se používá v úložištích back-end dat. Může zpracovávat velké objemy žádostí o aplikace tím, že udržuje často používaná data v paměti serveru, na kterou je možné zapisovat a číst rychleji. Redis přináší pro moderní aplikace kritická řešení pro úložiště dat s nízkou latencí a vysokou propustností.
@@ -48,7 +48,7 @@ Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 | Standardní | Mezipaměť OSS Redis spuštěná na dvou virtuálních počítačích v replikované konfiguraci. |
 | Premium | Vysoce výkonné Redis mezipaměti OSS. Tato úroveň nabízí vyšší propustnost, nižší latenci, lepší dostupnost a další funkce. Mezipaměti úrovně Premium se nasazují na výkonnější virtuální počítače ve srovnání se základními a standardními mezipaměťmi. |
 | Enterprise | Vysoce výkonné mezipaměti založené na Redis podnikovém softwaru Redis Labs. Tato vrstva podporuje Redis moduly, včetně RediSearch, RedisBloom a RedisTimeSeries. Kromě toho nabízí ještě vyšší dostupnost než úroveň Premium. |
-| Enterprise | Nákladově efektivní velké mezipaměti využívající software Redis Labs "Redis Enterprise software. Tato vrstva rozšiřuje Redis úložiště dat do nestálé paměti, která je levnější než DRAM na virtuálním počítači. Snižuje celkové náklady na GB paměti. |
+| Podnikový přehrávač | Nákladově efektivní velké mezipaměti využívající software Redis Labs "Redis Enterprise software. Tato vrstva rozšiřuje Redis úložiště dat do nestálé paměti, která je levnější než DRAM na virtuálním počítači. Snižuje celkové náklady na GB paměti. |
 
 ### <a name="feature-comparison"></a>Porovnání funkcí
 [Ceny Azure cache for Redis](https://azure.microsoft.com/pricing/details/cache/) poskytují podrobné porovnání každé úrovně. V následující tabulce jsou popsány některé funkce podporované jednotlivými vrstvami:

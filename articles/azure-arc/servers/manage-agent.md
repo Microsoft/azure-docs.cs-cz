@@ -1,18 +1,18 @@
 ---
 title: Správa agenta serverů s podporou ARC Azure
 description: Tento článek popisuje různé úlohy správy, které obvykle provedete během životního cyklu serverů s podporou ARC Azure, které jsou agentem počítače připojené.
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371422"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130965"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
-Po počátečním nasazení serverů s podporou ARC Azure, které jsou připojené k počítači pro Windows nebo Linux, budete možná muset agenta překonfigurovat, upgradovat ho nebo ho odebrat z počítače, pokud v životním cyklu dosáhli fáze vyřazení. Tyto rutinní úlohy údržby můžete snadno spravovat ručně nebo prostřednictvím automatizace, což snižuje provozní chybu i výdaje.
+Po počátečním nasazení serverů s podporou ARC Azure, které jsou připojené k počítači pro Windows nebo Linux, možná budete muset agenta překonfigurovat, upgradovat ho nebo ho odebrat z počítače. Tyto rutinní úlohy údržby můžete snadno spravovat ručně nebo prostřednictvím automatizace, což snižuje provozní chybu i výdaje.
 
 ## <a name="before-uninstalling-agent"></a>Před odinstalací agenta
 
@@ -38,7 +38,11 @@ U serverů nebo počítačů, které už nechcete spravovat se servery s podporo
 
 ## <a name="upgrading-agent"></a>Upgrade agenta
 
-Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Následující tabulka popisuje metody podporované pro provedení upgradu agenta.
+Agent připojeného počítače Azure se pravidelně aktualizuje a řeší opravy chyb, vylepšení stability a nové funkce. [Azure Advisor](../../advisor/advisor-overview.md) identifikuje prostředky, které nepoužívají nejnovější verzi agenta Machine agent, a doporučuje, abyste provedli upgrade na nejnovější verzi. Zobrazí se vám upozornění, když vyberete server s podporou ARC tím, že zobrazíte banner na stránce **Přehled** nebo při přístupu ke službě Advisor prostřednictvím Azure Portal.
+
+Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích.
+
+Následující tabulka popisuje metody podporované pro provedení upgradu agenta.
 
 | Operační systém | Metoda upgradu |
 |------------------|----------------|
@@ -163,7 +167,7 @@ Nástroj Azcmagent (Azcmagent.exe) se používá ke konfiguraci serverů s povol
 Můžete provést **připojení** a **odpojení** ručně během interaktivního přihlášení nebo automatizovat pomocí stejného instančního objektu, který jste použili k připojování více agentů nebo k Microsoft Identity Platform [Access tokenu](../../active-directory/develop/access-tokens.md). Pokud jste nepoužívali instanční objekt k registraci počítače se servery s podporou ARC Azure, přečtěte si následující [článek](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) a vytvořte instanční objekt.
 
 >[!NOTE]
->Aby bylo možné spustit **azcmagent**, musíte mít oprávnění *root* Access pro počítače se systémem Linux.
+>Aby bylo možné spustit **azcmagent** , musíte mít oprávnění *root* Access pro počítače se systémem Linux.
 
 ### <a name="connect"></a>Připojit
 
@@ -215,8 +219,8 @@ Obě následující metody odeberou agenta, ale neodstraňují složku *C:\Progr
 1. Chcete-li odinstalovat agenta systému Windows z počítače, postupujte takto:
 
     a. Přihlaste se k počítači pomocí účtu, který má oprávnění správce.  
-    b. V **Ovládacích panelech**vyberte **programy a funkce**.  
-    c. V **programech a funkcích**vyberte **Azure Connected Machine agent**, vyberte **odinstalovat**a pak vyberte **Ano**.  
+    b. V **Ovládacích panelech** vyberte **programy a funkce** .  
+    c. V **programech a funkcích** vyberte **Azure Connected Machine agent** , vyberte **odinstalovat** a pak vyberte **Ano** .  
 
     >[!NOTE]
     > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček Instalační služby **AzureConnectedMachineAgent.msi** .
@@ -277,7 +281,7 @@ Pokud plánujete ukončit správu počítače s podpůrnými službami v Azure, 
 
 1. Otevřete servery s podporou ARC Azure pomocí přechodu na [Azure Portal](https://aka.ms/hybridmachineportal).
 
-2. Vyberte počítač v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.
+2. Vyberte počítač v seznamu, vyberte tři tečky ( **...** ) a pak vyberte **Odstranit** .
 
 ## <a name="update-or-remove-proxy-settings"></a>Aktualizovat nebo odebrat nastavení proxy serveru
 

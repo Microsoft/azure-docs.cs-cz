@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 59e862fe04e7bf715e6e44c783f2cf9c0ecbc7c3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b05e63dc549fdf1fec4485e27086bb32251b41d8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376409"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135550"
 ---
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -29,7 +29,7 @@ Než začnete:
 Aktualizujte soubor. mod nejnovější verzí sady SDK přidáním tohoto řádku.
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.14.0
 )
 ```
 

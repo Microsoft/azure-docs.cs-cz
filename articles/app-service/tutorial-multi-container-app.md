@@ -4,15 +4,15 @@ description: Naučte se, jak pomocí sestavení aplikace s více kontejnery na A
 keywords: Azure App Service, Web App, Linux, Docker, sestavení, více kontejnerů, Web App for Containers, více kontejnerů, kontejnerů, WordPress, Azure DB pro MySQL, provozní databáze s kontejnery
 author: msangapu-msft
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f2f1713866eb06b4b514ff988ef3e010491e1efc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743450"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131339"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
 
@@ -151,7 +151,7 @@ Pomocí příkazu vytvořte server Azure Database for MySQL [`az mysql server cr
 V následujícím příkazu nahraďte název serveru MySQL, kde se zobrazí zástupný symbol _&lt; MySQL-Server-Name>_ (platné znaky jsou `a-z` , `0-9` a `-` ). Tento název je součástí názvu hostitele serveru MySQL (`<mysql-server-name>.database.windows.net`) a musí být globálně jedinečný.
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
+az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen5_1 --version 5.7
 ```
 
 Vytvoření serveru může trvat několik minut. Po vytvoření serveru MySQL se ve službě Cloud Shell zobrazí podobné informace jako v následujícím příkladu:
@@ -262,14 +262,14 @@ Následující změny byly provedeny pro Redis (bude použito později):
 * [Byl přidán modul plug-in Mezipaměť objektů Redis 1.3.8 pro WordPress.](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L74)
 * [V souboru wp-config.php WordPressu se používá nastavení aplikace pro název hostitele Redis](https://github.com/Azure-Samples/multicontainerwordpress/blob/5669a89e0ee8599285f0e2e6f7e935c16e539b92/docker-entrypoint.sh#L162).
 
-Abyste mohli tuto vlastní image použít, aktualizujete soubor docker-compose-wordpress.yml. Ve službě Cloud Shell otevřete textový editor nano zadáním příkazu `nano docker-compose-wordpress.yml`. `image: wordpress` změňte tak, aby se používalo `image: microsoft/multicontainerwordpress`. Kontejner databáze už nepotřebujete. Odeberte z konfiguračního souboru oddíly `db`, `environment`, `depends_on` a `volumes`. Soubor by měl připomínat následující kód:
+Abyste mohli tuto vlastní image použít, aktualizujete soubor docker-compose-wordpress.yml. Ve službě Cloud Shell otevřete textový editor nano zadáním příkazu `nano docker-compose-wordpress.yml`. `image: wordpress` změňte tak, aby se používalo `image: mcr.microsoft.com/azuredocs/multicontainerwordpress`. Kontejner databáze už nepotřebujete. Odeberte z konfiguračního souboru oddíly `db`, `environment`, `depends_on` a `volumes`. Soubor by měl připomínat následující kód:
 
 ```yaml
 version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      ports:
        - "8000:80"
      restart: always
@@ -345,7 +345,7 @@ version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      volumes:
       - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
      ports:
@@ -401,13 +401,15 @@ version: '3.3'
 
 services:
    wordpress:
-     image: microsoft/multicontainerwordpress
+     image: mcr.microsoft.com/azuredocs/multicontainerwordpress
      ports:
        - "8000:80"
      restart: always
 
    redis:
-     image: redis:3-alpine
+     image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+     environment: 
+      - ALLOW_EMPTY_PASSWORD=yes
      restart: always
 ```
 

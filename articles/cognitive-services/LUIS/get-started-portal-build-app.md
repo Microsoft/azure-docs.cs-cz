@@ -5,36 +5,37 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 38fffd7793e1f5bd59ac6dde4499b2eb25009b52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91303841"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131449"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rychlý Start: vytvoření nové aplikace na portálu LUIS
 
-V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů**a **entit**. Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
+V tomto rychlém startu vytvoříte novou aplikaci na portálu LUIS. Nejdřív vytvořte základní části aplikace, **záměrů** a **entit** . Pak otestujte aplikaci zadáním ukázkového uživatele utterance na interaktivním panelu testů, který získá předpokládaný záměr.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Vytvoření aplikace
 
-1. Z panelu nástrojů kontextu vyberte **+ Nová aplikace pro konverzaci** a pak znovu vyberte **+ Nová aplikace pro konverzaci** .
+Pokud chcete vytvořit aplikaci, klikněte na  **+ Nová aplikace** . 
 
-    > [!div class="mx-imgBorder"]
-    > [![Snímek obrazovky s vytvářením nové aplikace na portálu LUIS](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+V okně, které se zobrazí, zadejte následující informace:
 
-1. V automaticky otevíraném okně nakonfigurujte aplikaci s následujícím nastavením a potom vyberte **Hotovo**.
+|Název  |Popis  |
+|---------|---------|
+|Název     | Název vaší aplikace. Například "domácí automatizace". Povinná hodnota.        |
+|Kultura     | Jazyk, který vaše aplikace chápe a mluví. Povinná hodnota.   |
+|Description | Popis vaší aplikace Nepovinný parametr.
+|Prostředek předpovědi | Předpověď prostředku, který bude přijímat dotazy. Nepovinný parametr. |
 
-   |Název nastavení| Hodnota | Účel|
-   |--|--|--|
-   |Name|`myEnglishApp`|Jedinečný název aplikace LUIS<br>vyžadováno|
-   |Kultura|**Angličtina**|Jazyk projevy od uživatelů, **en-US**<br>vyžadováno|
-   |Popis (volitelné)|`App made with LUIS Portal`|Popis aplikace<br>optional|
-   |Prostředek předpovědi (volitelné) |-  |Nevybírejte. LUIS vám nabízí počáteční klíč, který můžete zdarma použít pro vytváření a 1 000 požadavků na koncový bod předpovědi. |
+Vyberte **Hotovo** .
 
-   ![Snímek obrazovky s zadáním nového nastavení aplikace](./media/get-started-portal-build-app/create-new-app-settings.png)
+>[!NOTE]
+>Jakmile se aplikace vytvoří, nemůžete změnit její jazykovou verzi.
+
 
 ## <a name="create-intents"></a>Vytvořit záměry
 
@@ -52,22 +53,17 @@ Dvě různé _záměry_ aplikace jsou v souladu s následujícími záměry:
 
 Chcete-li vytvořit záměry, proveďte následující kroky:
 
-1. Po vytvoření aplikace se nacházíte na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit**.
+1. Po vytvoření aplikace se ujistěte, že jste na stránce **záměry** v části **sestavení** . Vyberte **Vytvořit** .
 
    [![Snímek obrazovky s výběrem možnosti ' vytvořit ' pro vytvoření nového záměru](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Zadejte název záměru `FindForm` a potom vyberte **Hotovo**.
+1. Zadejte název záměru `FindForm` a potom vyberte **Hotovo** .
 
 ## <a name="add-an-example-utterance"></a>Přidat příklad utterance
 
-Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr.
+Můžete přidat příklad projevy po vytvoření záměrů. Příkladem projevy je text, který uživatel zadá do robota chatu nebo jiné klientské aplikace. Namapují záměr textu uživatele na LUIS záměr. Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
 
-Pro tento příklad `FindForm` záměru aplikace bude vzorový projevy obsahovat číslo formuláře. Klientská aplikace potřebuje ke splnění požadavku uživatele číslo formuláře, takže je důležité ho zahrnout do utterance.
-
-> [!div class="mx-imgBorder"]
-> [![Snímek obrazovky se vstupním příkladem projevy pro záměr FindForm](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
-
-Přidejte následující 15 příkladů projevy k `FindForm` záměru.
+Na stránce **záměry** pro `FindForm` přidejte následující příklad projevy v části **příklad utterance** , 
 
 |#|Ukázkové promluvy|
 |--|--|
@@ -106,7 +102,7 @@ Chcete-li vrátit číslo formuláře v odpovědi předpovědi modulu runtime, �
 
 1. Zadejte název `FormNumber` , vyberte typ entity **Regex** .
 
-1. `hrf-[0-9]{6}`Do pole **Regex** zadejte regulární výraz. Tato položka odpovídá znakům literálu, `hrf-` a umožňuje zadat přesně šest číslic a pak vybrat **vytvořit**.
+1. `hrf-[0-9]{6}`Do pole **Regex** zadejte regulární výraz. Tato položka odpovídá znakům literálu, `hrf-` a umožňuje zadat přesně šest číslic a pak vybrat **vytvořit** .
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky s vytvořením entity regulárního výrazu](./media/get-started-portal-build-app/create-regular-expression-entity.png)

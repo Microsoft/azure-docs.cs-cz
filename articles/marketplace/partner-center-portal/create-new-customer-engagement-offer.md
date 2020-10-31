@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bcb14c786ab652b1c51a3d3bf487e39fd0ebfdb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96bdfc513023cafb2d94a68c06f1065cf20c3ba8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710681"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130166"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro zákaznickou zapojení & PowerApps**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro zákaznickou zapojení & PowerApps** .
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
@@ -33,17 +33,17 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - ID nabídky v kombinaci s ID vydavatele musí být kratší než 40 znaků.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například ID vydavatele testpublisherid a zadáte **test-nabídka-1**, bude webová adresa nabídky `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit**.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například ID vydavatele testpublisherid a zadáte **test-nabídka-1** , bude webová adresa nabídky `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
+- ID nabídky nelze změnit po výběru možnost **vytvořit** .
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-- Po výběru **vytvořit**se tato možnost nedá změnit.
+- Po výběru **vytvořit** se tato možnost nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -95,7 +95,7 @@ Tato stránka umožňuje definovat kategorie a odvětví používané k seskupen
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -179,7 +179,7 @@ Zadejte adresu do zásad ochrany osobních údajů vaší organizace. Zodpovíd�
 
 ### <a name="contacts"></a>Kontakty
 
-Zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
+Zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
 
 V části **kontakt podpory** je také nutné zadat **adresu URL podpory** , kde mohou partneři CSP najít podporu pro vaši nabídku.
 
@@ -229,7 +229,7 @@ Tato stránka umožňuje definovat, kde a jak má být nabídka dostupná.
 
 ### <a name="markets"></a>Trhy
 
-Zadejte trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy**, ve kterém se zobrazí místní okno pro **Výběr trhu** .
+Zadejte trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy** , ve kterém se zobrazí místní okno pro **Výběr trhu** .
 
 Ve výchozím nastavení nejsou vybrané žádné trhy, ale pro publikování vaší nabídky musíte vybrat aspoň jeden trh. Zvolte  **možnost Vybrat vše** , pokud chcete nabídku zpřístupnit na všech možných trzích, nebo vyberte konkrétní trhy, které chcete přidat.
 
@@ -240,7 +240,7 @@ Vaše výběry se tady vztahují jenom na nové akvizice; Pokud už má vaše ap
 
 ### <a name="preview-audience"></a>Cílová skupina Preview
 
-Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview**. Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
+Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview** . Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
 
 Až budete připraveni zpřístupnit nabídku a odebrat omezení verze Preview, je nutné odebrat **Skrýt klíč** a znovu publikovat.
 
@@ -269,9 +269,9 @@ V poli **URL umístění balíčku** zadejte adresu URL účtu Azure Blob Storag
 > [!IMPORTANT]
 > Aby se zabránilo publikačnímu bloku, ujistěte se, že platnost data vypršení platnosti v adrese URL úložiště objektů BLOB vypršela. Datum můžete upravit přístupem k zásadám. **Doba vypršení platnosti** doporučujeme v budoucnu aspoň jeden měsíc.
 
-Zaškrtněte políčko s označením **v souboru balíčku je více než jeden balíček CRM, pokud je k**dispozici. Pokud ano, nezapomeňte zahrnout všechny balíčky v souboru. zip.
+Zaškrtněte políčko s označením **v souboru balíčku je více než jeden balíček CRM, pokud je k** dispozici. Pokud ano, nezapomeňte zahrnout všechny balíčky v souboru. zip.
 
-Podrobné informace o tom, jak sestavit balíček a aktualizovat jeho strukturu, najdete v [kroku 3: vytvoření balíčku AppSource pro vaši aplikaci](https://docs.microsoft.com/powerapps/developer/common-data-service/create-package-app-appsource).
+Podrobné informace o tom, jak sestavit balíček a aktualizovat jeho strukturu, najdete v [kroku 3: vytvoření balíčku AppSource pro vaši aplikaci](/powerapps/developer/common-data-service/create-package-app-appsource).
 
 ### <a name="crm-package-availability"></a>Dostupnost balíčku CRM
 
@@ -312,7 +312,7 @@ Pokud tuto nabídku publikujete poprvé, můžete:
     - **Nedokončeno** – oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
     - **Complete** – oddíl je kompletní, jsou k dispozici všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
-- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Vraťte se do partnerského centra a vyberte možnost **Přejít na aktivní** , aby se nabídka publikovala veřejně.
+- Kliknutím na **Odeslat** nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Vraťte se do partnerského centra a vyberte možnost **Přejít na aktivní** , aby se nabídka publikovala veřejně.
 
 ## <a name="next-step"></a>Další krok
 

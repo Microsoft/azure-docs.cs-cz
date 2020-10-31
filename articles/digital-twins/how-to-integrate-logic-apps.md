@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3fbd9016bcbfa83574d894af7ca728b863f54344
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027546"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129316"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrace s Logic Apps s využitím vlastního konektoru
 
@@ -33,34 +33,11 @@ Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí tohoto účtu.
 
 V rámci požadované instalace je také nutné provést následující položky. Zbývající část této části vás provede následujícími kroky:
 - Nastavení instance digitálních vláken Azure
-- Získat tajný klíč klienta registrace aplikace
 - Přidání digitálního vlákna
 
 ### <a name="set-up-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
 
-Pokud chcete připojit instanci digitálních vláken Azure k Logic Apps v tomto článku, musíte mít už nanastavenou **instanci digitálních vláken Azure** . 
-
-Nejdřív **nastavte instanci digitálních vláken Azure** a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md).
-* Po nastavení instance digitálního vlákna Azure budete potřebovat **_název hostitele_** instance ( [najít v Azure Portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
-
-K ověření konektoru budete taky muset nastavit **registraci aplikace** . Postupujte podle pokynů v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md) pro nastavení. 
-* Jakmile budete mít registraci aplikace, budete potřebovat ID **_aplikace (klienta)_** registrace a **_ID adresáře (_** klienta) ( [najít v Azure Portal](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
-
-### <a name="get-app-registration-client-secret"></a>Získat tajný klíč klienta registrace aplikace
-
-Pro registraci aplikace Azure AD budete taky muset vytvořit **_tajný klíč klienta_** . Provedete to tak, že přejdete na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) v Azure Portal (Tento odkaz můžete použít nebo ho můžete najít na portálu pro hledání). Vyberte svou registraci, kterou jste vytvořili v předchozí části seznamu, aby bylo možné otevřít její podrobnosti. 
-
-V nabídce registrace klikněte na *certifikáty a tajné klíče* a vyberte *+ nový tajný klíč klienta* .
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
-
-Zadejte libovolné hodnoty, které chcete pro popis a vypršení platnosti, a potom stiskněte *Přidat* .
-
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
-
-Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty & tajných_ kódů s poli _Expires_ a _Value_ . Poznamenejte si jeho _hodnotu_ pro pozdější použití (můžete ji také zkopírovat do schránky pomocí ikony kopírování).
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ### <a name="add-a-digital-twin"></a>Přidání digitálního vlákna
 
@@ -70,9 +47,29 @@ Pomocí [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins), [
 
 Budete potřebovat **_zdvojené ID_** vlákna ve vaší instanci, kterou jste vytvořili.
 
+## <a name="set-up-app-registration"></a>Nastavení registrace aplikace
+
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+
+### <a name="get-app-registration-client-secret"></a>Získat tajný klíč klienta registrace aplikace
+
+Pro registraci aplikace Azure AD budete taky muset vytvořit **_tajný klíč klienta_** . Provedete to tak, že přejdete na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) v Azure Portal (Tento odkaz můžete použít nebo ho můžete najít na portálu pro hledání). Vyberte svou registraci, kterou jste vytvořili v předchozí části seznamu, aby bylo možné otevřít její podrobnosti. 
+
+V nabídce registrace klikněte na *certifikáty a tajné klíče* a vyberte *+ nový tajný klíč klienta* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
+
+Zadejte libovolné hodnoty, které chcete pro *Popis* a *vypršení platnosti* , a potom stiskněte *Přidat* .
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
+
+Nyní ověřte, zda je tajný klíč klienta zobrazen na stránce _certifikáty & tajných_ kódů s poli _Expires_ a _Value_ . Poznamenejte si jeho _hodnotu_ pro pozdější použití (můžete ji také zkopírovat do schránky pomocí ikony kopírování).
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Zobrazení portálu pro registraci aplikace Azure AD V nabídce prostředků se zvýrazní certifikát a tajné klíče a zvýrazní se stránka kolem nového tajného klíče klienta.":::
+
 ## <a name="create-custom-logic-apps-connector"></a>Vytvoření vlastního konektoru Logic Apps
 
-V tomto kroku vytvoříte [vlastní konektor Logic Apps](../logic-apps/custom-connector-overview.md) pro rozhraní API digitálních vláken Azure. Až to uděláte, budete moct při vytváření aplikace logiky v další části připojit digitální vlákna Azure.
+Nyní jste připraveni vytvořit [vlastní konektor Logic Apps](../logic-apps/custom-connector-overview.md) pro rozhraní API digitálních vláken Azure. Až to uděláte, budete moct při vytváření aplikace logiky v další části připojit digitální vlákna Azure.
 
 Přejít na stránku [vlastního konektoru Logic Apps](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) v Azure Portal (můžete použít tento odkaz nebo ho vyhledat na portálu pro hledání). Stiskněte *+ Přidat* .
 

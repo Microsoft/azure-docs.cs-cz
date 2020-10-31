@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e445f6d1dce8193109d6b5ad1742210458e74c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75426228"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130404"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Úvod do Stream Analytics geoprostorové funkce
 
@@ -26,7 +26,7 @@ Mezi příklady scénářů, které můžou využívat geoprostorové funkce, pa
 * Geografické oplocení
 * Sledování telefonů napříč weby s buňkami
 
-Jazyk Stream Analytics dotazů má sedm integrovaných geoprostorovéch funkcí: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**a **ST_WITHIN**.
+Jazyk Stream Analytics dotazů má sedm integrovaných geoprostorovéch funkcí: **CreateLineString** , **CreatePoint** , **CreatePolygon** , **ST_DISTANCE** , **ST_OVERLAPS** , **ST_INTERSECTS** a **ST_WITHIN** .
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -42,9 +42,9 @@ FROM input
 
 ### <a name="input-example"></a>Příklad vstupu  
   
-|šířce|bodu|  
+|zeměpisná šířka|bodu|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Příklad výstupu  
@@ -53,7 +53,7 @@ FROM input
 
  {"Type": "LineString"; "souřadnice": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-Další informace najdete v referenčních informacích k [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) .
+Další informace najdete v referenčních informacích k [CreateLineString](/stream-analytics-query/createlinestring) .
 
 ## <a name="createpoint"></a>CreatePoint
 
@@ -69,9 +69,9 @@ FROM input
 
 ### <a name="input-example"></a>Příklad vstupu  
   
-|šířce|bodu|  
+|zeměpisná šířka|bodu|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Příklad výstupu
@@ -80,7 +80,7 @@ FROM input
   
  {"Type": "Point"; "souřadnice": [20,2321,-87,33]}  
 
-Další informace najdete v referenčních informacích k [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) .
+Další informace najdete v referenčních informacích k [CreatePoint](/stream-analytics-query/createpoint) .
 
 ## <a name="createpolygon"></a>CreatePolygon
 
@@ -96,9 +96,9 @@ FROM input
 
 ### <a name="input-example"></a>Příklad vstupu  
   
-|šířce|bodu|  
+|zeměpisná šířka|bodu|  
 |--------------|---------------|  
-|3,0|-10,2|  
+|3.0|-10,2|  
 |-87,33|20,2321|  
   
 ### <a name="output-example"></a>Příklad výstupu  
@@ -107,7 +107,7 @@ FROM input
  
  {"Type": "mnohoúhelník"; "souřadnice": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-Další informace najdete v referenčních informacích k [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) .
+Další informace najdete v referenčních informacích k [CreatePolygon](/stream-analytics-query/createpolygon) .
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
@@ -121,7 +121,7 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Další informace najdete v referenčních informacích k [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) .
+Další informace najdete v referenčních informacích k [ST_DISTANCE](/stream-analytics-query/st-distance) .
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS`Funkce porovná dva mnohoúhelníky. Pokud se mnohoúhelníky překrývají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se mnohoúhelníky nepřekrývají. 
@@ -142,7 +142,7 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Další informace najdete v referenčních informacích k [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) .
+Další informace najdete v referenčních informacích k [ST_OVERLAPS](/stream-analytics-query/st-overlaps) .
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS`Funkce porovná dvě LineString. Pokud se LineString protínají, funkce vrátí hodnotu 1. Funkce vrátí hodnotu 0, pokud se LineString neprotínají.
@@ -168,7 +168,7 @@ FROM input
   
  0  
 
-Další informace najdete v referenčních informacích k [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) .
+Další informace najdete v referenčních informacích k [ST_INTERSECTS](/stream-analytics-query/st-intersects) .
 
 ## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN`Funkce určuje, zda je bod nebo mnohoúhelník v rámci mnohoúhelníku. Pokud mnohoúhelník obsahuje bod nebo mnohoúhelník, funkce vrátí hodnotu 1. Funkce vrátí 0, pokud se bod nebo mnohoúhelník nenachází v deklarovaném mnohoúhelníku.
@@ -194,12 +194,12 @@ FROM input
   
  1  
 
-Další informace najdete v referenčních informacích k [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) .
+Další informace najdete v referenčních informacích k [ST_WITHIN](/stream-analytics-query/st-within) .
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

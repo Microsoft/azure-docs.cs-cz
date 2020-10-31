@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: badc3cd372ca992a83678ef8d32ac76966ba9b94
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 873c2048773a8e5a1df79153c9147ea0ed6b3509
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499140"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135693"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -37,7 +37,7 @@ Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`Sp
 import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
 
-SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+SpeechConfig config = SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) :

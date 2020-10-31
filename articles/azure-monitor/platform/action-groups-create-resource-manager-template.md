@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01fb93a4b74a35501d0684b822ea83fc7b20770a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321900"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130574"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Vytvoření skupiny akcí s Správce prostředků šablonou
 V tomto článku se dozvíte, jak použít [šablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) ke konfiguraci skupin akcí. Pomocí šablon můžete automaticky nastavit skupiny akcí, které se dají znovu použít v určitých typech výstrah. Tyto skupiny akcí zajistí, že při aktivaci výstrahy budou všechny správné strany upozorněny.
@@ -23,11 +23,11 @@ Základní kroky:
 
 2. Nasaďte šablonu pomocí [jakékoli metody nasazení](../../azure-resource-manager/templates/deploy-powershell.md).
 
-Nejprve popisujeme, jak vytvořit šablonu Správce prostředků pro skupinu akcí, kde jsou definice akcí pevně zakódované v šabloně. Za druhé popisujeme, jak vytvořit šablonu, která při nasazení šablony převezme informace o konfiguraci Webhooku jako vstupní parametry.
-
 ## <a name="resource-manager-templates-for-an-action-group"></a>Šablony Správce prostředků pro skupinu akcí
 
 Chcete-li vytvořit skupinu akcí pomocí šablony Správce prostředků, vytvořte prostředek typu `Microsoft.Insights/actionGroups` . Pak vyplníte všechny související vlastnosti. Tady jsou dvě vzorové šablony, které vytvářejí skupinu akcí.
+
+První šablona popisuje, jak vytvořit šablonu Správce prostředků pro skupinu akcí, kde jsou definice akcí pevně zakódované v šabloně. Druhá šablona popisuje, jak vytvořit šablonu, která při nasazení šablony převezme informace o konfiguraci Webhooku jako vstupní parametry.
 
 ```json
 {

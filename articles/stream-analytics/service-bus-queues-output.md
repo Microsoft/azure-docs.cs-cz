@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317771"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129877"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Výstup front Service Bus z Azure Stream Analytics
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Formát serializace události |Formát serializace pro výstupní data. Podporují se JSON, CSV a Avro. |
 | Encoding |V případě CSV a JSON je v tuto chvíli jediným podporovaným formátem kódování UTF-8. |
 | Oddělovač |Platí pouze pro serializaci CSV. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, mezera, tabulátor a svislá čára. |
-| Formát |Platí pouze pro typ JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. Pokud vyberete možnost **oddělený řádek**, bude JSON číst jeden objekt současně. Celý obsah samotný by nepředstavoval platný formát JSON. **Pole** určuje, že výstup je formátován jako pole objektů JSON. |
+| Formát |Platí pouze pro typ JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. Pokud vyberete možnost **oddělený řádek** , bude JSON číst jeden objekt současně. Celý obsah samotný by nepředstavoval platný formát JSON. **Pole** určuje, že výstup je formátován jako pole objektů JSON. |
 | Sloupce vlastností | Nepovinný parametr. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
 | Sloupce systémových vlastností | Nepovinný parametr. Páry klíč-hodnota vlastností systému a odpovídajících názvů sloupců, které je třeba připojit k odchozí zprávě místo datové části.  |
 
@@ -70,9 +70,9 @@ Následující obrázek má očekávané vlastnosti výstupní zprávy, které b
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 
-Sloupce dotazu můžete připojit jako [systémové vlastnosti](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) do odchozí fronty služby Service Bus nebo do zpráv tématu.
+Sloupce dotazu můžete připojit jako [systémové vlastnosti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) do odchozí fronty služby Service Bus nebo do zpráv tématu.
 
-Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) hodnotami sloupce dotazu.
+Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) hodnotami sloupce dotazu.
 Tyto vlastnosti systému jsou podporovány – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Řetězcové hodnoty těchto sloupců se analyzují jako odpovídající typ hodnoty vlastnosti systému a jakékoli selhání při analýze se považují za chyby dat.

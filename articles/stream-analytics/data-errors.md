@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071995"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131373"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Chyby Azure Stream Analytics dat
 
@@ -168,7 +168,7 @@ V tématu [řešení potíží s Azure Stream Analytics pomocí diagnostických 
 * Příčina: rozdíl mezi časem a dobou doručení aplikace je větší než zpožděná tolerance doručení.
 * Poskytnuté oznámení na portálu: ne
 * Úroveň protokolu prostředků: informace
-* Dopad: zpožděné vstupní události se zpracovávají podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Dopad: zpožděné vstupní události se zpracovávají podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
    * Čas aplikace a čas doručení. 
    * Skutečná datová část až do několika kilobajtů
@@ -184,7 +184,7 @@ V tématu [řešení potíží s Azure Stream Analytics pomocí diagnostických 
 * Příčina: rozdíl mezi časem aplikace a dobou doručení je větší než 5 minut.
 * Poskytnuté oznámení na portálu: ne
 * Úroveň protokolu prostředků: informace
-* Dopad: události předčasného vstupu jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Dopad: události předčasného vstupu jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
    * Čas aplikace a čas doručení. 
    * Skutečná datová část až do několika kilobajtů
@@ -200,7 +200,7 @@ V tématu [řešení potíží s Azure Stream Analytics pomocí diagnostických 
 * Příčina: událost je považována za mimo pořadí podle definovaného okna tolerance mimo pořadí.
 * Poskytnuté oznámení na portálu: ne
 * Úroveň protokolu prostředků: informace
-* Dopad: události mimo pořadí jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
+* Dopad: události mimo pořadí jsou zpracovávány podle nastavení "zpracovat jiné události" v části řazení událostí v konfiguraci úlohy. Další informace najdete v tématu [zásady zpracování času](/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Podrobnosti protokolu
    * Skutečná datová část až do několika kilobajtů
 
@@ -221,7 +221,7 @@ Došlo k několika chybám dat, které mohou být zjištěny pouze po volání v
 * Příčina: sloupec vyžadovaný pro výstup neexistuje. Například sloupec, který je definován jako Azure Table PartitionKey does't, existuje.
 * Poskytnuté oznámení na portálu: Ano
 * Úroveň protokolu prostředků: upozornění
-* Dopad: všechny chyby převodu výstupních dat, včetně chybějících požadovaných sloupců, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Dopad: všechny chyby převodu výstupních dat, včetně chybějících požadovaných sloupců, se zpracovávají podle nastavení [zásad výstupních dat](./stream-analytics-output-error-policy.md) .
 * Podrobnosti protokolu
    * Název sloupce a buď identifikátor záznamu, nebo část záznamu.
 
@@ -236,7 +236,7 @@ Došlo k několika chybám dat, které mohou být zjištěny pouze po volání v
 * Příčina: hodnota sloupce nevyhovuje výstupu. Například název sloupce není platný sloupec tabulky Azure.
 * Poskytnuté oznámení na portálu: Ano
 * Úroveň protokolu prostředků: upozornění
-* Dopad: všechny chyby převodu výstupních dat, včetně neplatného názvu sloupce, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Dopad: všechny chyby převodu výstupních dat, včetně neplatného názvu sloupce, se zpracovávají podle nastavení [zásad výstupních dat](./stream-analytics-output-error-policy.md) .
 * Podrobnosti protokolu
    * Název sloupce a buď identifikátor záznamu, nebo část záznamu.
 
@@ -251,7 +251,7 @@ Došlo k několika chybám dat, které mohou být zjištěny pouze po volání v
 * Příčina: sloupec nejde převést na platný typ ve výstupu. Například hodnota sloupce je nekompatibilní s omezeními nebo typem definovaným v tabulce SQL.
 * Poskytnuté oznámení na portálu: Ano
 * Úroveň protokolu prostředků: upozornění
-* Dopad: všechny chyby převodu výstupních dat, včetně chyby konverze typu, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Dopad: všechny chyby převodu výstupních dat, včetně chyby konverze typu, se zpracovávají podle nastavení [zásad výstupních dat](./stream-analytics-output-error-policy.md) .
 * Podrobnosti protokolu
    * Název sloupce
    * Buď identifikátor záznamu, nebo část záznamu.
@@ -267,7 +267,7 @@ Došlo k několika chybám dat, které mohou být zjištěny pouze po volání v
 * Příčina: hodnota zprávy je větší než podporovaná velikost výstupu. Například záznam je větší než 1 MB pro výstup centra událostí.
 * Poskytnuté oznámení na portálu: Ano
 * Úroveň protokolu prostředků: upozornění
-* Dopad: všechny chyby převodu výstupních dat, včetně omezení velikosti překročení záznamu, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Dopad: všechny chyby převodu výstupních dat, včetně omezení velikosti překročení záznamu, se zpracovávají podle nastavení [zásad výstupních dat](./stream-analytics-output-error-policy.md) .
 * Podrobnosti protokolu
    * Buď identifikátor záznamu, nebo část záznamu.
 
@@ -282,7 +282,7 @@ Došlo k několika chybám dat, které mohou být zjištěny pouze po volání v
 * Příčina: záznam již obsahuje sloupec se stejným názvem jako systémový sloupec. Například výstup CosmosDB se sloupcem s názvem ID, když sloupec ID je na jiný sloupec.
 * Poskytnuté oznámení na portálu: Ano
 * Úroveň protokolu prostředků: upozornění
-* Dopad: všechny chyby převodu výstupních dat, včetně duplicitního klíče, se zpracovávají podle nastavení [zásad výstupních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
+* Dopad: všechny chyby převodu výstupních dat, včetně duplicitního klíče, se zpracovávají podle nastavení [zásad výstupních dat](./stream-analytics-output-error-policy.md) .
 * Podrobnosti protokolu
    * Název sloupce
    * Buď identifikátor záznamu, nebo část záznamu.

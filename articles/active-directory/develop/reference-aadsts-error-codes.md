@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115097"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130183"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -156,7 +156,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50136 | Byla zjištěna relace RedirectMsaSessionToApp-Single MSA. |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken – relace je neplatná z důvodu chybějícího externího aktualizačního tokenu. |
 | AADSTS50140 | KmsiInterrupt – k této chybě došlo v důsledku přerušení přihlášení uživatele v případě, že se přihlásil uživatel. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
-| AADSTS50143 | Neshoda relací – relace je neplatná, protože klient uživatele se neshoduje s pomocným parametrem domény z důvodu jiného prostředku. Pokud chcete získat další podrobnosti,  [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) s ID korelace, ID požadavku a kódem chyby. |
+| AADSTS50143 | Neshoda relace – relace je neplatná, protože se tenant uživatele kvůli jinému prostředku neshoduje s nápovědou domény. Více informací získáte, když [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword – vypršela platnost hesla služby Active Directory uživatele. Vygenerujte nové heslo pro uživatele nebo ho použijte k resetování hesla pomocí nástroje pro samoobslužné obnovení. |
 | AADSTS50146 | MissingCustomSigningKey – Tato aplikace musí být nakonfigurovaná pomocí podpisového klíče specifického pro aplikaci. Buď není pomocí tohoto klíče nakonfigurovaná nebo klíči vypršela platnost nebo ještě klíč v platnost nevstoupil. |
 | AADSTS50147 | MissingCodeChallenge – velikost parametru výzvy kódu není platná. |
@@ -200,7 +200,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS70007 | UnsupportedResponseMode – `response_mode` při požadavku na token vrátila aplikace nepodporovanou hodnotu.  |
 | AADSTS70008 | ExpiredOrRevokedGrant – platnost obnovovacího tokenu vypršela z důvodu nečinnosti. Token byl vydán v XXX a byl po určitou dobu neaktivní. |
 | AADSTS70011 | InvalidScope – rozsah požadovaný aplikací je neplatný. |
-| AADSTS70012 | MsaServerError – při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to ještě jednou. Pokud se i nadále nedaří, [otevřete lístek podpory](../fundamentals/active-directory-troubleshooting-support-howto.md) . |
+| AADSTS70012 | MsaServerError – při ověřování uživatele MSA (příjemce) došlo k chybě serveru. Zkuste to ještě jednou. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](../fundamentals/active-directory-troubleshooting-support-howto.md). |
 | AADSTS70016 | Chyba toku zařízení AuthorizationPending-OAuth 2,0. Autorizace čeká na vyřízení. Zařízení se znovu pokusí dotazovat požadavek. |
 | AADSTS70018 | BadVerificationCode – neplatný ověřovací kód z důvodu zadání nesprávného uživatelského kódu pro tok kódu zařízení uživatelem Autorizace není schválená. |
 | AADSTS70019 | CodeExpired – platnost ověřovacího kódu vypršela. Nechejte uživatele opakovat přihlášení. |
@@ -320,6 +320,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS1000000 | UserNotBoundError – rozhraní API pro vázání vyžaduje, aby uživatel Azure AD ověřil i s externím IDP, ke kterému ještě nedošlo. |
 | AADSTS1000002 | BindCompleteInterruptError – vazba byla úspěšně dokončena, ale uživatel musí být informován. |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled – aplikace je zakázaná. |
+| AADSTS7000114| Aplikace ' appIdentifier ' nemá povoleno provádět aplikace na základě volání.|
 | AADSTS7500529 | Hodnota ' SAMLId-GUID ' není platné ID SAML – Azure AD používá tento atribut k naplnění atributu InResponseTo vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například id6c1c178c166d486687be4aaf5e482730 je platný identifikátor. |
 
 ## <a name="next-steps"></a>Další kroky

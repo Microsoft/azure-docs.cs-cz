@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 08/12/2020
-ms.openlocfilehash: 47d82982bbb7546b53dd4754c49bd22fe958d5ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 10/27/2020
+ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976431"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129571"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 
@@ -42,7 +42,7 @@ Až budete připraveni odeslat nabídku k publikování, vyberte **zkontrolovat 
    - **Nedokončeno** – stránka neobsahuje požadované informace nebo obsahuje chyby, které je třeba opravit. Budete se muset vrátit na stránku a aktualizovat ji.
    - **Dokončit** – stránka je dokončená. Byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby.
 
-Pokud má kterákoli z stránek stav jiný než **úplný**, je třeba opravit problém na této stránce a pak se vrátit na stránku **Kontrola a publikování** a potvrdit stav nyní zobrazuje jako **dokončený**. Některé typy nabídek vyžadují testování. V takovém případě se zobrazí **poznámky k poli certifikace** , kde potřebujete poskytnout pokyny pro testování certifikačního týmu a všechny doplňkové poznámky užitečné pro porozumění vaší aplikaci.
+Pokud má kterákoli z stránek stav jiný než **úplný** , je třeba opravit problém na této stránce a pak se vrátit na stránku **Kontrola a publikování** a potvrdit stav nyní zobrazuje jako **dokončený** . Některé typy nabídek vyžadují testování. V takovém případě se zobrazí **poznámky k poli certifikace** , kde potřebujete poskytnout pokyny pro testování certifikačního týmu a všechny doplňkové poznámky užitečné pro porozumění vaší aplikaci.
 
 Po dokončení všech stránek a zadání použitelných zkušebních poznámek vyberte **publikovat** a zahajte tak procesy ověřování a publikování. Fáze a celková sekvence se můžou lišit v závislosti na typu nabídky, kterou publikujete. Následující tabulka uvádí jeden možný postup publikování. Jednotlivé fáze jsou podrobněji vysvětleny v následujících oddílech.
 
@@ -77,7 +77,7 @@ Prvním krokem procesu publikování je sada automatizovaných ověření. Každ
 
 ## <a name="certification-phase"></a>Fáze certifikace
 
-Nabídky odeslané na komerční tržišti musí být před publikováním certifikovány. Nabídky jsou přísně testovány, některé automatizované a jiné ruční. Další informace najdete v tématu [zásady certifikace pro komerční tržiště](https://aka.ms/commercial-marketplace-certification-policies).
+Nabídky odeslané na komerční tržišti musí být před publikováním certifikovány. Nabídky jsou přísně testovány, některé automatizované a jiné ruční. Další informace najdete v tématu [zásady certifikace pro komerční tržiště](/legal/marketplace/certification-policies).
 
 ### <a name="types-of-validation-that-take-place-during-certification"></a>Typy ověřování, které probíhají během certifikace
 
@@ -100,7 +100,7 @@ Informace, které jste zadali při vytváření vaší nabídky, jsou zkontrolov
 - Snímky obrazovky a videa kvality
 - Vysvětlení způsobu, jakým nabídka využívá platformy a nástroje společnosti Microsoft.
 
-Další informace o kritériích ověřování obsahu najdete v tématu [Obecné zásady výpisu](https://aka.ms/commercial-marketplace-certification-policies#100-general).
+Další informace o kritériích ověřování obsahu najdete v tématu [Obecné zásady výpisu](/legal/marketplace/certification-policies#100-general).
 
 #### <a name="technical-validation"></a>Technické ověření
 
@@ -126,6 +126,19 @@ Během fáze vytváření verze Preview vytvoříme verzi vaší nabídky, kter�
 > [!NOTE]
 > Nepoužívejte cílovou skupinu Preview k tomu, aby uživatelé mimo vaši organizaci mohli zobrazit nabídku. Místo toho použijte možnost soukromé nabídky. V tuto chvíli nebyla vaše nabídka plně testována a ověřena a není připravena k externí distribuci.
 
+## <a name="cancel-publishing"></a>Zrušit publikování
+
+Zrušení nabídky se stavem **publikování** probíhá:
+
+1. Vyberte název nabídky a otevřete stránku **Přehled nabídky** .
+1. Vyberte **Zrušit publikování** v pravém horním rohu stránky.
+1. Potvrďte, že chcete zastavit nabídku publikováním.
+
+Pokud chcete nabídku publikovat později, budete muset spustit proces publikování.
+
+> [!NOTE]
+> Publikování nabídky můžete zastavit pouze v případě, že nabídka ještě neprobíhala na základě odhlášení vydavatele. Po výběru možnosti **Přejít na Live** nebudete mít možnost zrušit publikování.
+
 ## <a name="publisher-sign-off-phase"></a>Fáze pro odhlášení vydavatele
 
 Když je nabídka připravená na kontrolu a její odhlášení, pošleme vám e-mail s žádostí o kontrolu a schválení vaší nabídky Preview. Stránku s **přehledem nabídky** můžete také aktualizovat v prohlížeči, abyste viděli, jestli vaše nabídka dosáhla fáze pro odhlášení vydavatele. Pokud má, budou k dispozici tlačítka **Přejít živě** a náhled.
@@ -143,7 +156,7 @@ Na stránce **Přehled nabídky** se zobrazí odkazy ve verzi Preview pod tlač�
 
 Po schválení verze Preview vyberte možnost **Přejít na Live** a publikujte nabídku živě na komerčním webu Marketplace. 
 
-Chcete-li provést změny po zobrazení náhledu nabídky, můžete upravit a znovu odeslat žádost o publikování. Pokud je vaše nabídka už živá a dostupná pro veřejnost na webu Marketplace, jakékoli aktualizace, které provedete, se neprojeví, dokud nevyberete možnost **jít živě*. Další informace najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](./partner-center-portal/update-existing-offer.md) .
+Chcete-li provést změny po zobrazení náhledu nabídky, můžete upravit a znovu odeslat žádost o publikování. Pokud je vaše nabídka už živá a dostupná pro veřejnost na webu Marketplace, jakékoli aktualizace, které provedete, se neprojeví, dokud nevyberete možnost * *jít živě* . Další informace najdete v tématu [aktualizace stávající nabídky na komerčním webu Marketplace](partner-center-portal/update-existing-offer.md) .
 
 ## <a name="publish-phase"></a>Fáze publikování
 
@@ -178,24 +191,24 @@ Stránka **Historie** v partnerském centru zobrazuje události publikování pr
 Zobrazení historie vaší nabídky:
 
 1.    Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2.    V navigační nabídce na levé straně vyberte **obchodní Marketplace**  >  **Přehled**.
+2.    V navigační nabídce na levé straně vyberte **obchodní Marketplace**  >  **Přehled** .
 3.    Vyberte svoji nabídku.
 4.    V navigační nabídce vlevo vyberte kartu **Historie** . Stránka poskytuje podrobné informace o následujících událostech, které se vztahují na vaši nabídku:
 
-|Událost    |Popis    |
+|Událost    |Description    |
 |---------|---------------|
-|Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště**typ nabídky, ID nabídky a alias nabídky  >  **Overview**.    |
-|Vytvořený plán: *název plánu*    |Uživatel vytvořil nový plán zadáním ID plánu a názvu plánu na kartě **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
-|Plán se odstranil    |Uživatel odstranil pracovní plán, který nebyl publikován, výběrem možnosti **Odstranit koncept** ze stránky **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
-|Vyvolaný plán zastavil prodej: *název plánu*    |Uživatel zahájil plán, který se zastavil – prodej výběrem možnosti **ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
-|Zrušit prodej – plán zastavit: *název plánu*    |Uživatel zrušil plán – prodej výběrem možnosti **zpět ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány*.    |
+|Nabídka vytvořena    |Nabídka se vytvořila v partnerském centru. Uživatel vybral v přehledu **komerčního tržiště** typ nabídky, ID nabídky a alias nabídky  >  **Overview** .    |
+|Vytvořený plán: *název plánu*    |Uživatel vytvořil nový plán zadáním ID plánu a názvu plánu na kartě **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány* .    |
+|Plán se odstranil    |Uživatel odstranil pracovní plán, který nebyl publikován, výběrem možnosti **Odstranit koncept** ze stránky **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány* .    |
+|Vyvolaný plán zastavil prodej: *název plánu*    |Uživatel zahájil plán, který se zastavil – prodej výběrem možnosti **ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány* .    |
+|Zrušit prodej – plán zastavit: *název plánu*    |Uživatel zrušil plán – prodej výběrem možnosti **zpět ukončit prodej** na stránce **Přehled plánu** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují plány* .    |
 |Odeslaná nabídka do verze Preview    |Uživatel odeslal nabídku do náhledu výběrem možnosti **publikovat** na stránce **Kontrola a publikování** .    |
-|Zrušení vyvolaného odeslání do verze Preview    |Uživatel požádal o zrušení publikace nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **přehledu nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení*.    |
-|Zrušené odeslání do verze Preview    |Uživatel zrušil publikaci nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **Přehled nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení*.    |
+|Zrušení vyvolaného odeslání do verze Preview    |Uživatel požádal o zrušení publikace nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **přehledu nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení* .    |
+|Zrušené odeslání do verze Preview    |Uživatel zrušil publikaci nabídky do verze Preview výběrem možnosti **Zrušit publikování** na stránce **Přehled nabídky** po odeslání do náhledu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení* .    |
 |Odhlásit se a přejít na Live    |Uživatel publikoval nabídku na komerční tržišti výběrem možnosti **Přejít živě** na stránce **Přehled nabídky** .    |
-|Zrušení zahájení publikování na webu Marketplace    |Uživatel požádal o zrušení publikace nabídky kliknutím na **tlačítko Zrušit publikování** na stránce **Přehled nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení*.    |
-|Zrušené publikování na komerčním webu Marketplace    |Uživatel zrušil publikaci nabídky kliknutím na **tlačítko Zrušit publikování** na stránce s **přehledem nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení*.    |
-|Synchronizovat soukromou cílovou skupinu    |Uživatel aktualizoval a synchronizoval soukromou cílovou skupinu tak, že vybere možnost **synchronizovat soukromou cílovou skupinu** na stránce **Přehled plánu** nebo na stránce s **cenami plánu & dostupnosti** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují soukromé plány*.    |
+|Zrušení zahájení publikování na webu Marketplace    |Uživatel požádal o zrušení publikace nabídky kliknutím na **tlačítko Zrušit publikování** na stránce **Přehled nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí při zpracování žádosti o zrušení* .    |
+|Zrušené publikování na komerčním webu Marketplace    |Uživatel zrušil publikaci nabídky kliknutím na **tlačítko Zrušit publikování** na stránce s **přehledem nabídky** po přihlášení k webu.</br>*Tato událost se zobrazí po úspěšném zpracování žádosti o zrušení* .    |
+|Synchronizovat soukromou cílovou skupinu    |Uživatel aktualizoval a synchronizoval soukromou cílovou skupinu tak, že vybere možnost **synchronizovat soukromou cílovou skupinu** na stránce **Přehled plánu** nebo na stránce s **cenami plánu & dostupnosti** .</br>*Tato událost se vztahuje pouze na typy nabídek, které podporují soukromé plány* .    |
 |Zastavit prodej nabídky    |Uživatel zastavil prodej nabídky výběrem možnosti **ukončit prodej** na stránce **Přehled nabídky** .    |
 
 > [!NOTE]

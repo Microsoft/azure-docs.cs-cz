@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9685081c0beacd745a83067b9d9876384933377
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651152"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131237"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 finance a ověřování funkčnosti operací
 
@@ -22,7 +22,7 @@ Aby bylo možné dokončit první publikování v [partnerském centru](https://
 - Prezentovat snímky obrazovky, které ukazují prostředí [služby pro životní cyklus](https://lcs.dynamics.com/) (LCS) řešení.
 
 > [!NOTE]
-> Publikování následujících opětovných potvrzení nevyžaduje ukázku. Další informace najdete v [dokumentu zásady AppSource](https://docs.microsoft.com/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
+> Publikování následujících opětovných potvrzení nevyžaduje ukázku. Další informace najdete v [dokumentu zásady AppSource](/legal/marketplace/certification-policies#1440-dynamics-365-finance-ops).
 
 ## <a name="how-to-validate"></a>Jak ověřit
 
@@ -50,11 +50,11 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
 
 2. Proveďte následující snímky obrazovky prostředí [LCS](https://lcs.dynamics.com/) , které odpovídají nabídce nebo řešení, které chcete publikovat. Aby mohl Certifikační tým číst text, musí být dostatečně jasné. Uložte snímky obrazovky jako soubory JPG. Můžete poskytnout [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) oprávnění k vašemu prostředí LCS, abychom mohli místo poskytování snímků obrazovky ověřit nastavení.
 
-    1. Přejít na **LCS**  >  knihovnu projektů LCS**Business Process Modeler**  >  **Project library**. Pořídit snímky obrazovky všech kroků procesu. Zahrňte **diagramy** a **revidované** sloupce, jak je znázorněno zde:
+    1. Přejít na **LCS**  >  knihovnu projektů LCS **Business Process Modeler**  >  **Project library** . Pořídit snímky obrazovky všech kroků procesu. Zahrňte **diagramy** a **revidované** sloupce, jak je znázorněno zde:
 
        :::image type="content" source="media/dynamics-365-finance-operations/project-library.png" alt-text="Zobrazuje okno knihovny projektu.":::
 
-      2. Přejít na **LCS**  >  **Solution Management**  >  **balíček testovacího řešení**správy řešení LCS Pořídit snímky obrazovky, které obsahují přehled balíčku a obsah uvedený v těchto příkladech:
+      2. Přejít na **LCS**  >  **Solution Management**  >  **balíček testovacího řešení** správy řešení LCS Pořídit snímky obrazovky, které obsahují přehled balíčku a obsah uvedený v těchto příkladech:
 
     | Pole | Image <img src="" width="400px">|
     | --- | --- |
@@ -65,7 +65,7 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
     | <ul><li>Model sestavy Power BI</li><li>Artefakt BPM</li></ul><br>Artefakty nejsou v oddílu **Power BI** požadovány. | [![Obrazovka obsahu balíčku – tři](media/dynamics-365-finance-operations/package-contents-3-45.png)](media/dynamics-365-finance-operations/package-contents-3.png#lightbox) |
     | <ul><li>Zpracovat balíček dat</li><li>Licenční smlouva k řešení a zásady ochrany osobních údajů</li></ul><br>Části **GER Configuration** and **Power BI model sestavy** jsou volitelné, aby se zahrnuly do nabídek finance a operace. | [![Obrazovka obsahu balíčku – čtyři](media/dynamics-365-finance-operations/package-contents-4-45.png)](media/dynamics-365-finance-operations/package-contents-4.png#lightbox) |
 
-    Další informace o jednotlivých oddílech portálu LCS najdete v [uživatelské příručce LCS](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide).
+    Další informace o jednotlivých oddílech portálu LCS najdete v [uživatelské příručce LCS](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide).
 
 3. Odeslat do partnerského centra
 
@@ -76,4 +76,4 @@ Chcete-li naplánovat konečný hovor na revizi, kontaktujte [appsourceCRM@micro
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o vytvoření nabídky najdete v tématu: [Vytvoření nabídky Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
+Další informace o vytvoření nabídky najdete v tématu: [Vytvoření nabídky Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md).

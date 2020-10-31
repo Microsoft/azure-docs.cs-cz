@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218251"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130982"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v aplikaci Visual Studio
 
@@ -32,7 +32,7 @@ V tomto [rychlém](stream-analytics-quick-create-vs.md) startu se dozvíte, jak 
 > [!NOTE]
 > Pokud exportujete úlohu do místního projektu a chcete provést test proti živému vstupnímu streamu, musíte zadat přihlašovací údaje pro všechny vstupy znovu.  
 
-V editoru skriptů zvolte vstupní a výstupní zdroj a vyberte **spustit místně**. Diagram úlohy se zobrazí na pravé straně.
+V editoru skriptů zvolte vstupní a výstupní zdroj a vyberte **spustit místně** . Diagram úlohy se zobrazí na pravé straně.
 
 ### <a name="view-the-intermediate-result-set"></a>Zobrazit mezilehlé sady výsledků  
 
@@ -119,7 +119,7 @@ Další metriky na úrovni úlohy se zobrazí v místní konzole. Pokud chcete �
 
 * Výstupní jímky Power BI a Azure Data Lake Storage Gen1 nejsou v důsledku omezení modelu ověřování podporované.
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 

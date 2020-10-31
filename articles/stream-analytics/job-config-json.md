@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885500"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129333"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>JobConfig.jsAzure Stream Analytics pro pole
 
@@ -58,4 +58,4 @@ Následující pole jsou podporovaná v *JobConfig.jspro* soubor, který se pou�
 * [Vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-visual-studio-code.md)
 * [Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code](visual-studio-code-local-run.md)
 * [Test Stream Analytics dotazy místně proti vstupu živého datového proudu pomocí Visual Studio Code](visual-studio-code-local-run-live-input.md) 
-* [Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm](setup-cicd-vs-code.md)
+* [Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm](./cicd-overview.md)

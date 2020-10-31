@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74420f1a83792437a2779c9745fc52c22c5121d4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 26b5a4c920833669ae0ea44ae5f69c3a72b5a522
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886503"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135816"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -49,7 +49,7 @@ class Program
 {
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
     }
 }
 ```
@@ -88,7 +88,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
         await FromMic(speechConfig);
     }
 }
@@ -120,7 +120,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
         await FromFile(speechConfig);
     }
 }
@@ -163,7 +163,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
         await FromStream(speechConfig);
     }
 }

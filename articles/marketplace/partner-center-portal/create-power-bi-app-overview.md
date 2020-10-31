@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131424"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
 
@@ -33,22 +33,22 @@ Výhody publikování na komerčním webu Marketplace:
 
 Toto jsou klíčové kroky pro publikování:
 
-1. Vytvořte aplikaci v Power BI. Zobrazí se odkaz pro instalaci balíčku, který je hlavním technickým prostředkem pro tuto nabídku. Před vytvořením nabídky v partnerském centru odešlete testovací balíček do předprodukčního prostředí. Podrobnosti najdete v tématu [co jsou aplikace Power BI?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+1. Vytvořte aplikaci v Power BI. Zobrazí se odkaz pro instalaci balíčku, který je hlavním technickým prostředkem pro tuto nabídku. Před vytvořením nabídky v partnerském centru odešlete testovací balíček do předprodukčního prostředí. Podrobnosti najdete v tématu [co jsou aplikace Power BI?](/power-bi/service-template-apps-overview).
 2. Přidejte marketingové materiály, jako je například oficiální název, popis a loga.
 3. Zahrňte právní a podpůrné dokumenty nabídky, jako jsou podmínek použití, zásady ochrany osobních údajů, zásady podpory a uživatelská pomoc.
 4. Vytvoření nabídky – pomocí partnerského centra můžete upravit podrobnosti, včetně popisu nabídky, marketingových materiálů, právních informací, informací o podpoře a specifikace assetu.
 5. Odešlete ji k publikování.
 6. Monitorujte proces v partnerském centru, kde AppSource týmu testuje, ověřuje a osvědčuje vaši aplikaci.
 7. Po certifikaci si aplikaci přečtěte v testovacím prostředí a uvolněte ji. Tato možnost zobrazí seznam na AppSource (bude to živě).
-8. V Power BI odešlete balíček do produkčního prostředí. Podrobnosti najdete v tématu [Správa verze aplikace Power BI](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+8. V Power BI odešlete balíček do produkčního prostředí. Podrobnosti najdete v tématu [Správa verze aplikace Power BI](/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 ## <a name="before-you-begin"></a>Než začnete
 
 Přečtěte si níže uvedené odkazy, které poskytují šablony, tipy a ukázky.
 
-- [Vytvoření aplikace Power BI](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Tipy pro vytváření Power BIch aplikací](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [ukázky](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [Vytvoření aplikace Power BI](/power-bi/service-template-apps-create)
+- [Tipy pro vytváření Power BIch aplikací](/power-bi/service-template-apps-tips)
+- [ukázky](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Požadavky
 
@@ -56,13 +56,13 @@ Aby bylo možné publikovat na komerčním webu Marketplace, musí vaše nabídk
 
 ### <a name="technical-requirements"></a>Technické požadavky
 
-Hlavním technickým prostředkem, který budete potřebovat, je [Power BI aplikace](https://go.microsoft.com/fwlink/?linkid=2028636). Jedná se o kolekci primárních datových sad, sestav nebo řídicích panelů. Zahrnuje také volitelné připojené služby a vložené datové sady, dříve označované jako [balíček obsahu](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Další informace o vývoji tohoto typu aplikace najdete v tématu [co jsou aplikace Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636).
+Hlavním technickým prostředkem, který budete potřebovat, je [Power BI aplikace](/power-bi/connect-data/service-template-apps-overview). Jedná se o kolekci primárních datových sad, sestav nebo řídicích panelů. Zahrnuje také volitelné připojené služby a vložené datové sady, dříve označované jako [balíček obsahu](/power-bi/service-organizational-content-pack-introduction). Další informace o vývoji tohoto typu aplikace najdete v tématu [co jsou aplikace Power BI?](/power-bi/connect-data/service-template-apps-overview).
 
 #### <a name="get-an-installation-web-address"></a>Získat instalační webovou adresu
 
 Power BI aplikaci můžete vytvořit pouze v rámci [Power BI](https://powerbi.microsoft.com/) prostředí.
 
-1. Přihlaste se pomocí [licence Power BI pro](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+1. Přihlaste se pomocí [licence Power BI pro](/power-bi/service-admin-purchasing-power-bi-pro).
 2. Vytvoření a otestování aplikace v Power BI.
 3. Když obdržíte webovou adresu instalace aplikace, přidejte ji na stránku **technické konfigurace** v partnerském centru.
 

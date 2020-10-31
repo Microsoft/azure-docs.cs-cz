@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230615"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131050"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Vyhledání sestav aktivit na webu Azure Portal
 
@@ -149,7 +149,7 @@ K sestavám zjištěných detekcí rizik můžete získat přístup v části **
 
 Ve stažených protokolech aktivity (auditu nebo přihlášení) se nezobrazují žádné záznamy pro zvolený čas. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-data-download/01.png)
+ ![Snímek obrazovky se zobrazí v sestavě aktivity tlačítko Stáhnout.](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -165,7 +165,7 @@ Můžete využít [rozhraní API pro vytváření sestav Azure AD](concept-repor
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Snímek obrazovky se zobrazí v sestavě aktivity.](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -186,7 +186,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Snímek obrazovky ukazuje přihlášení pro Azure Active Directory.](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>Příčina
 
@@ -207,7 +207,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Snímek obrazovky se zobrazí v nabídce datum.](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>Příčina
 

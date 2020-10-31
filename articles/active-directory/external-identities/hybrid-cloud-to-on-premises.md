@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/10/2018
+ms.date: 10/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896462"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131016"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD
 
@@ -64,7 +64,7 @@ Následující obrázek poskytuje podrobný přehled o tom, jak Azure Proxy apli
 
 ### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-Místní uživatelské objekty B2B můžete spravovat prostřednictvím zásad správy životního cyklu. Příklad:
+Místní uživatelské objekty B2B můžete spravovat prostřednictvím zásad správy životního cyklu. Například:
 
 - Pro uživatele typu Host můžete nastavit zásady MFA (Multi-Factor Authentication), aby se MFA používalo při ověřování proxy aplikací. Další informace najdete v tématu [podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md).
 - Jakékoli sponsorships, kontroly přístupu, ověření účtu atd., které se provádějí na cloudu uživatele B2B, se vztahují na místní uživatele. Pokud se například uživatel cloudu odstraní pomocí zásad správy životního cyklu, místní uživatel je také odstraněn pomocí služby MIM Sync nebo pomocí Azure AD Connect synchronizace. Další informace najdete v tématu [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).
@@ -77,7 +77,7 @@ Informace o tom, jak pomocí MIM 2016 Service Pack 1 a agenta pro správu MIM pr
 
 K dispozici je ukázkový skript PowerShellu, který můžete použít jako výchozí bod pro vytvoření objektů uživatele typu Host v místní službě Active Directory.
 
-Skript a soubor Readme si můžete stáhnout z [webu Stažení softwaru](https://www.microsoft.com/download/details.aspx?id=51495). Vyberte **skript a soubor Readme pro stažení uživatelů Azure AD B2B on-prem.zip** souboru.
+Skript a soubor Readme si můžete stáhnout z [konektorů pro Microsoft Identity Manager 2016 a Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495). V balíčku ke stažení vyberte **skript a soubor Readme pro stažení uživatelů Azure AD B2B on-prem.zip** souboru.
 
 Před použitím tohoto skriptu nezapomeňte zkontrolovat předpoklady a důležité důležité informace v souvisejícím souboru Readme. Také se seznámíte s tím, že skript je zpřístupněn pouze jako ukázka. Váš vývojový tým nebo partner musí před spuštěním přizpůsobit a zkontrolovat skript.
 

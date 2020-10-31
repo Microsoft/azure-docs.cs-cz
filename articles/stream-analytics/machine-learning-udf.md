@@ -8,28 +8,28 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249480"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130676"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
 Modely strojového učení můžete implementovat jako uživatelsky definovanou funkci (UDF) ve svých úlohách Azure Stream Analytics, abyste v reálném čase provedli bodování a předpovědi se na vašich vstupních datech streamování. [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) vám umožňuje používat libovolný oblíbený open source nástroj, jako je Tensorflow, scikit-učení nebo PyTorch, pro přípravu, výuku a nasazení modelů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy proveďte následující kroky:
 
-1. K [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)použijte Azure Machine Learning.
+1. K [nasazení modelu jako webové služby](../machine-learning/how-to-deploy-and-where.md)použijte Azure Machine Learning.
 
 2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby. Tuto [ukázkovou definici Swagger](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) můžete použít jako referenci, abyste měli jistotu, že je správně nastavená.
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
-4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal. Modely vytvořené pomocí [Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/concept-designer) se v Stream Analytics ještě nepodporují.
+4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal. Modely vytvořené pomocí [Azure Machine Learning designeru](../machine-learning/concept-designer.md) se v Stream Analytics ještě nepodporují.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 
@@ -37,7 +37,7 @@ Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přím
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy**vyberte **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **Azure Machine Learning Service** .
+1. V Azure Portal přejděte na svou Stream Analytics úlohu a v části **topologie úlohy** vyberte **funkce** . Pak z rozevírací nabídky **+ Přidat** vyberte **Azure Machine Learning Service** .
 
    ![Přidat Azure Machine Learning systému souborů UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -47,7 +47,7 @@ Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přím
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci**. V rozevíracím seznamu vyberte **Machine Learning UDF** .
+1. Otevřete projekt Stream Analytics v Visual Studio Code a klikněte pravým tlačítkem na složku **Functions** . Pak zvolte **Přidat funkci** . V rozevíracím seznamu vyberte **Machine Learning UDF** .
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Přidat UDF do VS Code":::
 

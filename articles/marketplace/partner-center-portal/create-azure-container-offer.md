@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c30a9997fcc7ac10b1072d4f164c3e7bfa16f0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91709100"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130506"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Vytvoření nabídky kontejnerů Azure na Azure Marketplace
 
@@ -22,9 +22,9 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azur
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
 
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
 
-3. Na stránce Přehled vyberte **+ Nový nabídka**  >  **Azure Container**.
+3. Na stránce Přehled vyberte **+ Nový nabídka**  >  **Azure Container** .
 
    ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-container.png)
 
@@ -33,16 +33,16 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azur
 
 ### <a name="offer-id-and-alias"></a>ID nabídky a alias
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
-- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit**.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- ID nabídky nelze změnit po výběru možnost **vytvořit** .
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-- Po výběru **vytvořit**se tato možnost nedá změnit.
+- Po výběru **vytvořit** se tato možnost nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -52,10 +52,10 @@ Na stránce **Přehled nabídky** se zobrazuje vizuální reprezentace kroků po
 
 Tato stránka zobrazuje různé odkazy na základě aktuálního stavu nabídky. Například:
 
-- Pokud je nabídka nabídkou konceptu a [odstranění konceptu](update-existing-offer.md#delete-a-draft-offer)
+- Pokud je nabídka nabídkou konceptu a odstranění konceptu
 - Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan) .
-- Pokud je nabídka ve verzi Preview – [Přejít do provozu](publishing-status.md#publisher-approval)
-- Pokud jste nedokončili registraci vydavatele, [zrušte publikování](update-existing-offer.md#cancel-publishing)
+- Pokud je nabídka ve verzi Preview – [Přejít do provozu](../review-publish-offer.md#previewing-and-approving-your-offer)
+- Pokud jste nedokončili registraci vydavatele [, zrušte publikování.](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
@@ -65,7 +65,7 @@ Pomocí těchto kroků můžete nastavit nabídku.
 
 Při publikování vaší nabídky na komerční tržišti s partnerským centrem se můžete připojit k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt.
 
-1. **Vyberte cíl zájemce, u kterého chceme poslat zákaznickou zájem**. Partnerské centrum podporuje následující systémy CRM:
+1. **Vyberte cíl zájemce, u kterého chceme poslat zákaznickou zájem** . Partnerské centrum podporuje následující systémy CRM:
 
    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) pro zákaznickou zapojení
    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
@@ -96,7 +96,7 @@ Tato stránka umožňuje definovat kategorie používané k seskupení vaší na
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md). Kontejnery se vždy zobrazují v části **kontejnery** a potom v kategorii **Image kontejneru** .
 
@@ -172,7 +172,7 @@ Poskytněte dodatečné online dokumenty o vaší nabídce. Můžete přidat až
 
 ### <a name="contact-information"></a>Kontaktní informace
 
-Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují, ale jsou k dispozici pro společnost Microsoft. Můžou se taky poskytovat partnerům Cloud Solution Provider (CSP).
+Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují, ale jsou k dispozici pro společnost Microsoft. Můžou se taky poskytovat partnerům Cloud Solution Provider (CSP).
 
 - Kontakt podpory (povinné): pro obecné dotazy týkající se podpory.
 - Technický kontakt (povinné): pro technické dotazy a problémy certifikace.
@@ -180,7 +180,7 @@ Musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **te
 
 V části **kontakt podpory** zadejte **web podpory** , kde partneři můžou najít podporu pro vaši nabídku na základě toho, jestli je nabídka dostupná v globálním Azure, Azure Government nebo obojí.
 
-V části **kontakt programu CSP** zadejte odkaz (**marketingové materiály programu CSP**), kde mohou partneři CSP najít marketingové materiály pro vaši nabídku.
+V části **kontakt programu CSP** zadejte odkaz ( **marketingové materiály programu CSP** ), kde mohou partneři CSP najít marketingové materiály pro vaši nabídku.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
@@ -242,7 +242,7 @@ Zobrazí se výsledky hledání v Azure Portal:
 Na kartě Náhled můžete zvolit **cílovou skupinu omezené verze Preview** pro ověření vaší nabídky před jejím publikováním za provozu.
 
 > [!IMPORTANT]
-> Po zobrazení této nabídky ve **verzi Preview**musíte vybrat možnost **Přejít na Live** a publikovat svou nabídku na veřejném.
+> Po zobrazení této nabídky ve **verzi Preview** musíte vybrat možnost **Přejít na Live** a publikovat svou nabídku na veřejném.
 
 Určete cílovou skupinu Preview pomocí identifikátorů GUID předplatného Azure, spolu s volitelným popisem pro každý z nich. Žádná z těchto polí nemohou zákazníci vidět.
 
@@ -274,14 +274,14 @@ Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na akt
 
 ### <a name="create-new-plan"></a>Vytvořit nový plán
 
-Vyberte **vytvořit nový plán**. Zobrazí se dialogové okno **Nový plán** .
+Vyberte **vytvořit nový plán** . Zobrazí se dialogové okno **Nový plán** .
 
 V poli **ID plánu** Vytvořte jedinečný identifikátor plánu pro každý plán v této nabídce. Toto ID bude viditelné pro zákazníky na webové adrese daného produktu. Používejte jenom malá písmena a číslice, pomlčky nebo podtržítka a maximálně 50 znaků.
 
 > [!NOTE]
-> Po zvolení možnost **vytvořit**se ID plánu nedá změnit.
+> Po zvolení možnost **vytvořit** se ID plánu nedá změnit.
 
-Do pole **název plánu** zadejte název pro tento plán. Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název. Můžete například použít název nabídky **Windows serveru** s plány **Windows Server 2016** a **Windows Server 2019**.
+Do pole **název plánu** zadejte název pro tento plán. Zákazníci uvidí tento název při rozhodování, který plán vybrat v rámci vaší nabídky. Pro každý plán v této nabídce Vytvořte jedinečný název. Můžete například použít název nabídky **Windows serveru** s plány **Windows Server 2016** a **Windows Server 2019** .
 
 ### <a name="plan-setup"></a>Nastavení plánu
 
@@ -289,7 +289,7 @@ Na této kartě můžete vybrat cloudy, ve kterých je plán k dispozici. Vaše 
 
 #### <a name="azure-regions"></a>Oblast Azure
 
-Všechny plány pro nabídky Azure Container jsou automaticky dostupné v **globálním Azure**.  Váš plán můžou používat zákazníci ve všech globálních oblastech Azure, které využívají komerční tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](../marketplace-geo-availability-currencies.md).
+Všechny plány pro nabídky Azure Container jsou automaticky dostupné v **globálním Azure** .  Váš plán můžou používat zákazníci ve všech globálních oblastech Azure, které využívají komerční tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](../marketplace-geo-availability-currencies.md).
 
 Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [Azure Government](../../azure-government/documentation-government-welcome.md) . Toto je Cloud komunity státní správy s řízeným přístupem pro zákazníky ze federálních, státních a místních nebo samosprávné vládních úřadů USA a partnerů, kteří jim mají nárok na jejich obsluhu. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy pro tuto komunitu cloudu. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA). Před [publikováním](../../azure-government/documentation-government-manage-marketplace-partners.md) Azure Government, otestujte a potvrďte své řešení v rámci této oblasti, protože výsledky se můžou lišit. Pokud chcete své řešení vytvořit a otestovat, vyžádejte si zkušební účet z [Microsoft Azure Government zkušební verze](https://azure.microsoft.com/global-infrastructure/government/request/).
 
@@ -298,7 +298,7 @@ Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [Azure Gov
 
 #### <a name="azure-government-certifications"></a>Azure Government certifikace
 
-Tato možnost se dá zobrazit jenom v případě, že je v **oblastech Azure**vybraná možnost **Azure Government** .
+Tato možnost se dá zobrazit jenom v případě, že je v **oblastech Azure** vybraná možnost **Azure Government** .
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS.
 
@@ -365,11 +365,11 @@ Na kartě **Podrobnosti o úložišti imagí** zadejte následující informace.
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
-**Heslo pro Azure Container Registry** – zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
+**Heslo pro Azure Container Registry** – zadejte heslo pro uživatelské jméno správce, které je přidružené k Azure Container registry a má vaši image kontejneru. Aby vaše společnost měla přístup k registru, je nutné zadat uživatelské jméno a heslo. Heslo z Azure Portal můžete získat tak, že v **Container Registry**  >  **přístupové klávesy** nebo pomocí Azure CLI použijete [příkaz show](/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Znázorňuje použití zaškrtávacího políčka standardní smlouva pro komerčního tržiště Microsoftu.":::
 
-**Název úložiště v rámci Azure Container Registry**. Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání image do registru zahrňte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť** . Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](../../container-registry/container-registry-repositories.md).
+**Název úložiště v rámci Azure Container Registry** . Zadejte název úložiště Azure Container Registry, které obsahuje váš obrázek. Při odesílání image do registru zahrňte název úložiště. Název úložiště můžete najít tak, že kliknete na stránku [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **úložišť** . Další informace najdete v tématu [zobrazení úložišť registru kontejnerů v Azure Portal](../../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > Po nastavení je název nelze změnit. Pro každou nabídku ve vašem účtu použijte jedinečný název.
@@ -391,7 +391,7 @@ Všechny značky manifestu (s výjimkou nejnovější značky) musí začínat z
 
 Po dokončení všech požadovaných oddílů nabídky ji můžete odeslat pro kontrolu a publikování.
 
-V pravém horním rohu portálu vyberte **zkontrolovat a** **publikovat**.
+V pravém horním rohu portálu vyberte **zkontrolovat a** **publikovat** .
 
 Na stránce pro kontrolu můžete:
 
@@ -401,11 +401,11 @@ Na stránce pro kontrolu můžete:
   - **Complete** – zahrnuje všechna požadovaná data bez chyb. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky dokončené.
 - Poskytněte pokyny pro testování certifikačního týmu, abyste měli jistotu, že vaše nabídka je testována správně. Poskytněte také všechny doplňkové poznámky, které jsou užitečné pro porozumění vaší nabídce.
 
-Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat**.
+Pokud chcete odeslat nabídku pro publikování, vyberte **publikovat** .
 
 Pošleme vám e-mail s oznámením, že je k dispozici verze Preview této nabídky ke kontrole a schválení.
 
-Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live**.
+Pokud chcete svou nabídku publikovat na veřejném, klikněte na partnerské centrum a vyberte **jít-Live** .
 
 ## <a name="next-step"></a>Další krok
 

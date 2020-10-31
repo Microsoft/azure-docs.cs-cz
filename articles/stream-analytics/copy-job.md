@@ -7,21 +7,21 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892291"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129452"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopírování nebo zálohování úloh Azure Stream Analytics
 
-Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomocí Visual Studio Code nebo sady Visual Studio. Zkopírování úlohy do jiné oblasti nekopíruje poslední výstupní čas. Proto nemůžete použít, pokud se při spuštění zkopírované úlohy používá možnost [**naposledy zastaveno**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) .
+Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomocí Visual Studio Code nebo sady Visual Studio. Zkopírování úlohy do jiné oblasti nekopíruje poslední výstupní čas. Proto nemůžete použít, pokud se při spuštění zkopírované úlohy používá možnost [**naposledy zastaveno**](./start-job.md#start-options) .
 
 ## <a name="before-you-begin"></a>Než začnete
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 * Nainstalujte [Azure Stream Analytics rozšíření pro Visual Studio Code](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension) nebo [Azure Stream Analytics nástroje pro Visual Studio](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension).  
 
@@ -45,7 +45,7 @@ Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomo
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. Postupujte podle [pokynů k projektu export Azure Stream Analytics nasazené úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project).
+1. Postupujte podle [pokynů k projektu export Azure Stream Analytics nasazené úlohy](./stream-analytics-vs-tools.md#export-jobs-to-a-project).
 
 2. Otevřete \* soubor. asaql v editoru dotazů, v editoru skriptů vyberte **Odeslat do Azure** a postupujte podle pokynů pro publikování úlohy do jiné oblasti nebo zálohy pomocí nového názvu.
 

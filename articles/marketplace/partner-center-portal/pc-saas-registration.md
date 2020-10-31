@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548331"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130013"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
@@ -20,30 +20,30 @@ Tento článek vysvětluje, jak zaregistrovat aplikaci SaaS pomocí Microsoft [A
 
 Azure Marketplace neobsahují žádná omezení pro metodu ověřování, kterou služba SaaS používá pro koncové uživatele. Následující tok se vyžaduje jenom k ověření služby SaaS v Azure Marketplace.
 
-Další informace o službě Azure AD (Active Directory) najdete v tématu [co je ověřování](../../active-directory/develop/authentication-scenarios.md)?.
+Další informace o službě Azure AD (Active Directory) najdete v tématu [co je ověřování](../../active-directory/develop/authentication-vs-authorization.md)?.
 
 ## <a name="register-an-azure-ad-secured-app"></a>Registrace aplikace zabezpečené službou Azure AD
 
 Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nejdřív zaregistrované v tenantovi Azure AD. Tento proces registrace zahrnuje poskytnutí některých podrobností o vaší aplikaci Azure AD. Chcete-li zaregistrovat novou aplikaci pomocí Azure Portal, proveďte následující kroky:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Pokud vám váš účet poskytne přístup k více než jednomu, klikněte na svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
-3. V levém navigačním podokně klikněte na službu **Azure Active Directory** , klikněte na **Registrace aplikací**a pak klikněte na **Nová registrace aplikace**.
+3. V levém navigačním podokně klikněte na službu **Azure Active Directory** , klikněte na **Registrace aplikací** a pak klikněte na **Nová registrace aplikace** .
 
     ![Registrace aplikací AD SaaS](./media/saas-offer-app-registration-v1.png)
 
 4. Na stránce vytvořit zadejte \' informace o registraci aplikace:
-    -   **Název**: zadejte smysluplný název aplikace.
-    -   **Typ aplikace**:  
+    -   **Název** : zadejte smysluplný název aplikace.
+    -   **Typ aplikace** :  
         
-        Vyberte možnost **Webová aplikace/rozhraní API** pro [klientské aplikace](../../active-directory/develop/active-directory-dev-glossary.md#client-application)) a [aplikace pro prostředky a rozhraní API](../../active-directory/develop/active-directory-dev-glossary.md#resource-server)), které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá u důvěrných [webových klientů](../../active-directory/develop/active-directory-dev-glossary.md#web-client)OAuth a [klientů založených na agentech veřejného uživatele](../../active-directory/develop/active-directory-dev-glossary.md#user-agent-based-client)).
+        Vyberte možnost **Webová aplikace/rozhraní API** pro [klientské aplikace](../../active-directory/develop/developer-glossary.md#client-application)) a [aplikace pro prostředky a rozhraní API](../../active-directory/develop/developer-glossary.md#resource-server)), které jsou nainstalované na zabezpečeném serveru. Toto nastavení se používá u důvěrných [webových klientů](../../active-directory/develop/developer-glossary.md#web-client)OAuth a [klientů založených na agentech veřejného uživatele](../../active-directory/develop/developer-glossary.md#user-agent-based-client)).
         Stejná aplikace může také zpřístupnit klienta i prostředek / rozhraní API.
 
         Konkrétní příklady webových aplikací najdete v průvodci rychlým startem, které jsou k dispozici [v části Začínáme](../../active-directory/develop/quickstart-create-new-tenant.md) v [příručce pro vývojáře Azure AD](../../active-directory/develop/index.yml).
 
-5. Po dokončení klikněte na **zaregistrovat**.  Azure AD přiřadí nové aplikaci jedinečné *ID aplikace* . Doporučujeme zaregistrovat jednu aplikaci, která přistupuje pouze k rozhraní API a jako jeden tenant.
+5. Po dokončení klikněte na **zaregistrovat** .  Azure AD přiřadí nové aplikaci jedinečné *ID aplikace* . Doporučujeme zaregistrovat jednu aplikaci, která přistupuje pouze k rozhraní API a jako jeden tenant.
 
-6. Pokud chcete vytvořit tajný klíč klienta, přejděte na **stránku certifikáty & tajných** kódů a klikněte na **+ nový tajný klíč klienta**.  Nezapomeňte zkopírovat tajnou hodnotu a použít ji ve svém kódu.
+6. Pokud chcete vytvořit tajný klíč klienta, přejděte na **stránku certifikáty & tajných** kódů a klikněte na **+ nový tajný klíč klienta** .  Nezapomeňte zkopírovat tajnou hodnotu a použít ji ve svém kódu.
 
 **ID aplikace Azure AD** je přidruženo k vašemu ID vydavatele, takže se ujistěte, že se stejné *ID aplikace* používá ve všech nabídkách.
 

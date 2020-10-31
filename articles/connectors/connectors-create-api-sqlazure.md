@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100707"
+ms.locfileid: "93130931"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
 
@@ -96,9 +96,14 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
    ||||
 
    > [!TIP]
-   > Tyto informace najdete v připojovacím řetězci vaší databáze. Například v Azure Portal vyhledejte a otevřete databázi. V nabídce databáze vyberte buď **připojovací řetězce** , nebo **vlastnosti** , kde můžete najít tento řetězec:
+   > K poskytnutí informací o databázi a tabulce máte tyto možnosti:
+   > 
+   > * Tyto informace najdete v připojovacím řetězci vaší databáze. Například v Azure Portal vyhledejte a otevřete databázi. V nabídce databáze vyberte buď **připojovací řetězce** , nebo **vlastnosti** , kde můžete najít tento řetězec:
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * Ve výchozím nastavení jsou tabulky v systémových databázích odfiltrovány, takže se nemusí automaticky zobrazit při výběru systémové databáze. Jako alternativu můžete název tabulky zadat ručně, až vyberete možnost **zadat vlastní hodnotu** ze seznamu databáze.
+   >
 
    Tento příklad ukazuje, jak tyto hodnoty mohou vypadat:
 

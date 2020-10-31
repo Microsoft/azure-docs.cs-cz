@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129894"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Použití spravovaných identit pro přístup k Azure SQL Database z úlohy Azure Stream Analytics (Preview)
 
@@ -19,7 +19,7 @@ Azure Stream Analytics podporuje [spravované ověřování identity](../active-
 
 Spravovaná identita je spravovaná aplikace zaregistrovaná v Azure Active Directory, která představuje danou Stream Analytics úlohu. Spravovaná aplikace se používá k ověření cílového prostředku. V tomto článku se dozvíte, jak povolit spravovanou identitu pro Azure SQL Database výstupy Stream Analytics úlohy prostřednictvím Azure Portal.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tato funkce vyžaduje následující:
 
@@ -60,7 +60,7 @@ Po vytvoření spravované identity vyberete Správce služby Active Directory.
 
    ![Přidat správce služby Active Directory](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou zobrazeny šedě, nelze vybrat, protože nejsou podporovány jako správci Azure Active Directory. Seznam podporovaných správců najdete v části **Azure Active Directory funkcí a omezeních**    [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database nebo synapse Azure](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Řízení přístupu na základě role Azure (Azure RBAC) se vztahuje jenom na portál a nešíří se na SQL Server. Vybraný uživatel nebo skupina je také uživatel, který bude moci vytvořit **uživatele databáze s omezením** v další části.
+   Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou zobrazeny šedě, nelze vybrat, protože nejsou podporovány jako správci Azure Active Directory. Seznam podporovaných správců najdete v části **Azure Active Directory funkcí a omezeních**    [použití Azure Active Directory ověřování pro ověřování pomocí SQL Database nebo synapse Azure](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations). Řízení přístupu na základě role Azure (Azure RBAC) se vztahuje jenom na portál a nešíří se na SQL Server. Vybraný uživatel nebo skupina je také uživatel, který bude moci vytvořit **uživatele databáze s omezením** v další části.
 
 1. Vyberte **Uložit** na stránce **Správce služby Active Directory** . Proces změny správce trvá několik minut.
 

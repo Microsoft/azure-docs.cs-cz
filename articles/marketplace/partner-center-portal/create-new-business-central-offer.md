@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71cbc09f21e21c325665809953f209615d835124
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774574"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130149"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Vytvoření nabídky Dynamics 365 Business Central
 
@@ -23,8 +23,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 Business Central**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 Business Central** .
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-business-central.png)
 
@@ -33,17 +33,17 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - ID nabídky v kombinaci s ID vydavatele musí být kratší než 40 znaků.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například vaše Vydavatel s ID testpublisherid a zadáte **zkušební nabídku – 1** , Webová adresa nabídky bude `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit**.
+- ID nabídky nelze změnit po výběru možnost **vytvořit** .
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
-- Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
+- Po zvolení možnost **vytvořit** se alias nabídky nedá změnit.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -91,7 +91,7 @@ Tato stránka umožňuje definovat kategorie a odvětví používané k seskupen
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -171,9 +171,9 @@ Zadejte adresu URL zásad ochrany osobních údajů vaší organizace. Zodpovíd
 
 ### <a name="contact-information"></a>Kontaktní informace
 
-V této části musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
+V této části musíte zadat jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
 
-V části **kontakt podpory** je také nutné zadat **adresu URL podpory** , kde mohou partneři CSP najít podporu pro vaši nabídku. Vaše adresa URL podpory nemůže být stejná jako odkaz na vaši **pomoc**.
+V části **kontakt podpory** je také nutné zadat **adresu URL podpory** , kde mohou partneři CSP najít podporu pro vaši nabídku. Vaše adresa URL podpory nemůže být stejná jako odkaz na vaši **pomoc** .
 
 ### <a name="supporting-documents"></a>Podpůrné dokumenty
 
@@ -215,7 +215,7 @@ Tato stránka vám nabídne možnosti, kde a jak má být nabídka dostupná.
 
 ### <a name="markets"></a>Trhy
 
-V této části můžete zadat trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy**, ve kterém se zobrazí místní okno pro **Výběr trhu** .
+V této části můžete zadat trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy** , ve kterém se zobrazí místní okno pro **Výběr trhu** .
 
 Vyberte aspoň jeden trh, aby se vaše nabídka publikovala. Zvolte **možnost Vybrat vše** , pokud chcete nabídku zpřístupnit na všech možných trzích, nebo vyberte konkrétní trhy, které chcete přidat.
 
@@ -228,7 +228,7 @@ Mějte na paměti, že i když vyberete všechny trhy, místní zákony, omezen�
 
 ### <a name="preview-audience"></a>Cílová skupina Preview
 
-Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview**. Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
+Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview** . Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
 
 Až budete připraveni zpřístupnit nabídku a odebrat omezení verze Preview, je nutné odebrat **Skrýt klíč** a znovu publikovat.
 
@@ -242,8 +242,8 @@ Tato stránka definuje technické podrobnosti používané pro připojení k va�
 
 Vyberte možnost, která se vztahuje na vaši nabídku:
 
-* **Přidání na** – doplňková aplikace rozšiřuje prostředí a stávající funkce Dynamics 365 Business Central. Podrobnosti najdete v tématu věnovaném [doplňkovým aplikacím](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
-* **Connect** – aplikace připojení se dá použít ve scénáři, ve kterém musí být navázáno připojení Point-to-Point mezi Dynamics 365 Business Central a řešením nebo službou třetí strany. Podrobnosti najdete v tématu [připojení aplikací](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps).
+* **Přidání na** – doplňková aplikace rozšiřuje prostředí a stávající funkce Dynamics 365 Business Central. Podrobnosti najdete v tématu věnovaném [doplňkovým aplikacím](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
+* **Connect** – aplikace připojení se dá použít ve scénáři, ve kterém musí být navázáno připojení Point-to-Point mezi Dynamics 365 Business Central a řešením nebo službou třetí strany. Podrobnosti najdete v tématu [připojení aplikací](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps).
 
 ### <a name="file-upload"></a>Nahrání souboru
 
@@ -280,11 +280,11 @@ Tato stránka vám umožní zadat další informace o vaší nabídce, které n�
 
 ### <a name="target-release"></a>Cílová verze
 
-Určete, která verze Microsoft Dynamics Business Central má vaše řešení cíle: **aktuální**, **Další hlavní**nebo **další vedlejší**. Tyto informace nám umožní správně otestovat vaše řešení.
+Určete, která verze Microsoft Dynamics Business Central má vaše řešení cíle: **aktuální** , **Další hlavní** nebo **další vedlejší** . Tyto informace nám umožní správně otestovat vaše řešení.
 
 ### <a name="supported-editions"></a>Podporované edice
 
-Pokud vaše nabídka vyžaduje edici Premium z Microsoft Dynamics 365 Business Central, vyberte jenom **Premium** . V opačném případě vyberte možnost **základy** i **Premium**.
+Pokud vaše nabídka vyžaduje edici Premium z Microsoft Dynamics 365 Business Central, vyberte jenom **Premium** . V opačném případě vyberte možnost **základy** i **Premium** .
 
 ### <a name="key-usage-scenario"></a>Scénář použití klíče
 
@@ -311,7 +311,7 @@ Pokud tuto nabídku publikujete poprvé, můžete:
     - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
     - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
-- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném.
+- Kliknutím na **Odeslat** nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném.
 
 ## <a name="next-steps"></a>Další kroky
 

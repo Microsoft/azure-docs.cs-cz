@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708590"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131169"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
@@ -64,11 +64,11 @@ K autorizaci partnerů vyberte **Vybrat partneři CSP** a otevřenou nabídku, k
 
 ![Výběr nabídky CSP](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-Můžete použít vyhledávací filtry, jako je například **země**, **kompetence**nebo **dovednost**.
+Můžete použít vyhledávací filtry, jako je například **země** , **kompetence** nebo **dovednost** .
 
 ![Země/oblast, kompetence a filtry dovedností pro hledání partnerů](media/marketplace-publishers-guide/csp-add-resellers.png)
 
-Po výběru seznamu partnerů vyberte **Přidat**.
+Po výběru seznamu partnerů vyberte **Přidat** .
 
 ![Příklad seznamu autorizovaných partnerů v programu CSP](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
@@ -81,11 +81,11 @@ Pokud chcete zaregistrovat změny, vyberte **Uložit koncept** .
 Pokud je tato nabídka Nepublikovaná, budete ji muset publikovat, abyste ji mohli zpřístupnit vybraným partnerům.
 
 >[!NOTE]
->Pokud v dané oblasti autorizujete partnera v programu CSP, může prodávat nabídku zákazníkovi, který patří do příslušné oblasti. Další informace o tom, jak jsou v oblastech klasifikovány nabídky CSP, najdete v tématu věnovaném [cloudovým řešením pro regionální trhy a měnu](https://docs.microsoft.com/partner-center/regional-authorization-overview).
+>Pokud v dané oblasti autorizujete partnera v programu CSP, může prodávat nabídku zákazníkovi, který patří do příslušné oblasti. Další informace o tom, jak jsou v oblastech klasifikovány nabídky CSP, najdete v tématu věnovaném [cloudovým řešením pro regionální trhy a měnu](/partner-center/regional-authorization-overview).
 
-Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další partnery a vyberte **synchronizovat cílovou skupinu CSP**.
+Pokud aktualizujete seznam CSP již publikované nabídky, přidejte další partnery a vyberte **synchronizovat cílovou skupinu CSP** .
 
-Pokud máte nabídku, která už má seznam autorizovaných partnerů a chcete použít stejný seznam pro jinou nabídku, použijte **Import/export**. Přejděte na nabídku, která má seznam CSP, a vyberte **exportovat zprostředkovatele CSP**. Funkce vytvoří soubor. csv, který lze importovat do jiné nabídky.
+Pokud máte nabídku, která už má seznam autorizovaných partnerů a chcete použít stejný seznam pro jinou nabídku, použijte **Import/export** . Přejděte na nabídku, která má seznam CSP, a vyberte **exportovat zprostředkovatele CSP** . Funkce vytvoří soubor. csv, který lze importovat do jiné nabídky.
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>Možnost 3: žádní partneři v programu CSP
 
@@ -104,9 +104,9 @@ Pokud partner v programu CSP neprodal váš produkt svým zákazníkům a chcete
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
+2. V **části vybrat verzi produktu** vyberte **živá nabídka Správa** .
+3. **Vyberte kategorii, která nejlépe popisuje problém** , a zvolte kategorii, která se vztahuje na vaši nabídku.
+4. Pro **vyberte problém, který nejlépe popisuje problém** , vyberte **aktualizovat existující nabídku** .
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
 
@@ -123,9 +123,9 @@ Pokud je vaše nabídka momentálně **možnost 1: všichni partneři v programu
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
+2. V **části vybrat verzi produktu** vyberte **živá nabídka Správa** .
+3. **Vyberte kategorii, která nejlépe popisuje problém** , a zvolte kategorii, která se vztahuje na vaši nabídku.
+4. Pro **vyberte problém, který nejlépe popisuje problém** , vyberte **aktualizovat existující nabídku** .
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
 
@@ -134,35 +134,35 @@ Pokud je vaše nabídka momentálně **možnost 1: všichni partneři v programu
 
 ### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Navigace z možnosti 2: konkrétní partneři v programu CSP vybraný program
 
-Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP, který jsem vybral** a chcete přejít k **Možnosti jedna: všichni partneři v programu CSP**, vytvořte žádost pomocí následujících pokynů:
+Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP, který jsem vybral** a chcete přejít k **Možnosti jedna: všichni partneři v programu CSP** , vytvořte žádost pomocí následujících pokynů:
 
 1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
+2. V **části vybrat verzi produktu** vyberte **živá nabídka Správa** .
+3. **Vyberte kategorii, která nejlépe popisuje problém** , a zvolte kategorii, která se vztahuje na vaši nabídku.
+4. Pro **vyberte problém, který nejlépe popisuje problém** , vyberte **aktualizovat existující nabídku** .
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
 
- Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP**, budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti použijte následující pokyny:
+ Pokud je vaše nabídka v současné době **možnost 2: konkrétní partneři v programu CSP** , který je vybrán a chcete přejít k **Možnosti 3: žádní partneři v programu CSP** , budete moci přejít na tuto možnost pouze v případě, že partneři v programu CSP, který jste předtím povolili, neprodali vaši nabídku koncovým zákazníkům. K vytvoření žádosti použijte následující pokyny:
 
 1. Přejít na [stránku support Request](https://aka.ms/marketplacepublishersupport). Pro vás se automaticky vyplní prvních několik rozevíracích nabídek.
 
    > [!NOTE]
    > Neměňte výběry předem vyplněných rozevíracích nabídek.
 
-2. V **části vybrat verzi produktu**vyberte **živá nabídka Správa**.
-3. **Vyberte kategorii, která nejlépe popisuje problém**, a zvolte kategorii, která se vztahuje na vaši nabídku.
-4. Pro **vyberte problém, který nejlépe popisuje problém**, vyberte **aktualizovat existující nabídku**.
+2. V **části vybrat verzi produktu** vyberte **živá nabídka Správa** .
+3. **Vyberte kategorii, která nejlépe popisuje problém** , a zvolte kategorii, která se vztahuje na vaši nabídku.
+4. Pro **vyberte problém, který nejlépe popisuje problém** , vyberte **aktualizovat existující nabídku** .
 5. Vyberte možnost **Další** , aby se přesměrovala na **stránku podrobnosti o problému** , kde můžete zadat další podrobnosti o vašem problému.
 6. Jako název problému použijte **deautorizovat CSP** a vyplňte zbývající části požadovaných oddílů.
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Navigace z možnosti 3: žádní partneři v programu CSP
 
-Pokud je vaše nabídka v současné době **možnost 3: žádní partneři v programu CSP**, můžete kdykoli přejít na kteroukoli z dalších dvou možností.
+Pokud je vaše nabídka v současné době **možnost 3: žádní partneři v programu CSP** , můžete kdykoli přejít na kteroukoli z dalších dvou možností.
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Sdílení materiálů pro prodej a podporu s partnery v programu CSP
 

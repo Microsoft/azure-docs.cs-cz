@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
-ms.openlocfilehash: 093e5482896e2af8008f20826e30443bdeb9aae9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 142d4504ab12e7df5cc1e009038554a5b90dff0c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097027"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135843"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro 64 JRE Java 8. Pokud chcete, aby název balíčku byl spuštěný sami, sada Java SDK není v centrálním úložišti Maven k dispozici. Bez ohledu na to, jestli používáte Gradle nebo `pom.xml` soubor závislosti, musíte přidat vlastní úložiště, na které odkazuje `https://csspeechstorage.blob.core.windows.net/maven/` (viz níže pro název balíčku).
 
@@ -30,7 +30,7 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 - Balíček Java Speech SDK je k dispozici pro tyto operační systémy:
   - Windows: jenom 64 bitů
   - Mac: macOS X verze 10,13 nebo novější
-  - Linux: 64-bit pouze v Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8
+  - Linux Podívejte se na seznam [podporovaných distribucí a cílových architektur systému Linux](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -39,19 +39,14 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 - [Java IDE zatmění](https://www.eclipse.org/downloads/) (vyžaduje už nainstalovaný Java)
 - Podporované platformy Linux budou vyžadovat nainstalovaná konkrétní knihovny ( `libssl` pro podporu SSL (Secure Sockets Layer `libasound2` ) a pro podporu zvuku. Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
-  - V Ubuntu spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+  - V Ubuntu/Debian spuštěním následujících příkazů nainstalujte požadované balíčky:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - V Debian 9 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Pokud libssl 1.0.0 není k dispozici, nainstalujte libssl 1.0. x (kde x je větší než 0) nebo místo toho libssl 1.1.
 
   - V RHEL/CentOS spuštěním následujících příkazů nainstalujte požadované balíčky:
 

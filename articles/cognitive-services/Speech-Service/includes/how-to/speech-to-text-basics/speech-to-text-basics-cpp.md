@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6240cdb184e0e226e5d407c8d24fed7395a285c2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499192"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135531"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -37,7 +37,7 @@ Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`Sp
 using namespace std;
 using namespace Microsoft::CognitiveServices::Speech;
 
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) :

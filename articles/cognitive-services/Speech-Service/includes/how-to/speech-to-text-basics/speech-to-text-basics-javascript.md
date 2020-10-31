@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: f16b0fb5cf241604c627925a7cd905c1683399fd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ea5a5948ad051aca58879851e5e657973710eb8d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886504"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136055"
 ---
 Jednou z klíčových funkcí služby Speech je možnost rozpoznávat a přepisovat lidské řeči (často se označuje jako převod řeči na text). V tomto rychlém startu se naučíte používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitních převodů řeči na text.
 
@@ -58,7 +58,7 @@ Další informace o najdete v `require` tématu <a href="https://nodejs.org/en/k
 Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token. Vytvořte [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```javascript
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 ```
 
 Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) :
@@ -70,13 +70,13 @@ Existuje několik dalších způsobů, jak můžete inicializovat [`SpeechConfig
 > [!NOTE]
 > Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
-## <a name="recognize-from-microphone"></a>Rozpoznávání z mikrofonu
+## <a name="recognize-from-microphone-browser-only"></a>Rozpoznat z mikrofonu (jenom prohlížeč)
 
 Pokud chcete rozpoznávat řeč pomocí mikrofonu zařízení, vytvořte `AudioConfig` pomocí `fromDefaultMicrophoneInput()` . Pak inicializujte [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) a, předejte své `speechConfig` a `audioConfig` .
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromMic() {
     let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
@@ -100,7 +100,7 @@ Pro rozpoznávání řeči ze zvukového souboru v prostředí JavaScript založ
 
 ```javascript
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
     // wavByteContent should be a byte array of the raw wav content
@@ -126,7 +126,7 @@ Pro rozpoznávání řeči ze zvukového souboru v Node.js musí být použit al
 ```javascript
 const fs = require('fs');
 const sdk = require("microsoft-cognitiveservices-speech-sdk");
-const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
     let pushStream = sdk.AudioInputStream.createPushStream();

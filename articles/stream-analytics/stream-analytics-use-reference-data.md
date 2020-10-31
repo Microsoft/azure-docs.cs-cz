@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196427"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129724"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Použití referenčních dat pro vyhledávání v Stream Analytics
 
-Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou datovou sadu, která je statická nebo pomalá, se mění v podstatě, která se používá k vyhledávání nebo rozšíření datových proudů. Například ve scénáři IoT můžete ukládat metadata o senzorech (které se často nemění) v referenčních datech a spojit je s datovými proudy IoT v reálném čase. Azure Stream Analytics načte referenční data v paměti, aby bylo možné zpracovat zpracování datových proudů s nízkou latencí. Pokud chcete používat referenční data v úloze Azure Stream Analytics, obecně se v dotazu použije [referenční datová připojení](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) . 
+Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou datovou sadu, která je statická nebo pomalá, se mění v podstatě, která se používá k vyhledávání nebo rozšíření datových proudů. Například ve scénáři IoT můžete ukládat metadata o senzorech (které se často nemění) v referenčních datech a spojit je s datovými proudy IoT v reálném čase. Azure Stream Analytics načte referenční data v paměti, aby bylo možné zpracovat zpracování datových proudů s nízkou latencí. Pokud chcete používat referenční data v úloze Azure Stream Analytics, obecně se v dotazu použije [referenční datová připojení](/stream-analytics-query/reference-data-join-azure-stream-analytics) . 
 
 ## <a name="example"></a>Příklad  
 V reálném čase můžete mít datový proud událostí vygenerovaných v případě, že automobily přejdou na svůj telefonní kabinu. V rámci telefonní kabiny může být v reálném čase zachycena licence a spojí se se statickou datovou sadou, která má registrační údaje, a identifikovat tak licenční štítky, jejichž platnost vypršela.  
@@ -37,7 +37,7 @@ Referenční data jsou modelována jako sekvence objektů BLOB (definovaných ve
 
 ### <a name="configure-blob-reference-data"></a>Konfigurace referenčních dat objektů BLOB
 
-Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, který je typu **referenčních dat**. Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních referenčních dat pomocí jejího popisu:
+Chcete-li nakonfigurovat referenční data, musíte nejprve vytvořit vstup, který je typu **referenčních dat** . Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních referenčních dat pomocí jejího popisu:
 
 |**Název vlastnosti**  |**Popis**  |
 |---------|---------|
@@ -96,7 +96,7 @@ Pomocí možnosti rozdílového dotazu Stream Analytics spustí nejprve dotaz sn
 
 Chcete-li nakonfigurovat referenční data SQL Database, musíte nejprve vytvořit **referenční vstupní data** . Následující tabulka vysvětluje každou vlastnost, kterou budete muset zadat při vytváření vstupních dat s popisem. Další informace najdete v tématu [použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics](sql-reference-data.md).
 
-Můžete použít [spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) jako referenční datový vstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
+Můžete použít [spravovanou instanci SQL Azure](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) jako referenční datový vstup. Musíte [nakonfigurovat veřejný koncový bod ve spravované instanci SQL](../azure-sql/managed-instance/public-endpoint-configure.md) a pak ručně nakonfigurovat následující nastavení v Azure Stream Analytics. Virtuální počítač Azure se spuštěným SQL Server s připojenou databází je také podporován ruční konfigurací nastavení níže.
 
 |**Název vlastnosti**|**Popis**  |
 |---------|---------|
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: ca8f2e1721c99c79188917e5b44950b8db6895ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ce256db907589ace7e77157397257732564fb6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130319"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -24,7 +24,7 @@ Vydavatel nebo Microsoft zodpovídá za správu transakcí softwarových licenc�
 
 ### <a name="contact-me-free-trial-and-byol-options"></a>Kontaktujte mě, bezplatné zkušební verze a BYOL možnosti
 
-Vydavatelé si můžou zvolit _kontaktní mě_ a _bezplatnou zkušební verzi_, možnosti pro účely propagačního a nabývání uživatelů. U některých typů nabídek můžou vydavatelé zvolit možnost Přineste si vlastní licenci (BYOL), která zákazníkům umožní zakoupit si předplatné pro vaši nabídku pomocí licence, kterou si koupili přímo od vás. S těmito možnostmi se společnost Microsoft neúčastní přímo v transakcích licencí na software vydavatele a není k dispozici žádný související transakční poplatek. 
+Vydavatelé si můžou zvolit _kontaktní mě_ a _bezplatnou zkušební verzi_ , možnosti pro účely propagačního a nabývání uživatelů. U některých typů nabídek můžou vydavatelé zvolit možnost Přineste si vlastní licenci (BYOL), která zákazníkům umožní zakoupit si předplatné pro vaši nabídku pomocí licence, kterou si koupili přímo od vás. S těmito možnostmi se společnost Microsoft neúčastní přímo v transakcích licencí na software vydavatele a není k dispozici žádný související transakční poplatek. 
 
 Vydavatel zodpovídá za podporu všech aspektů transakce softwarové licence. To zahrnuje, ale není omezené na pořadí, splnění, měření, fakturaci, fakturaci, platby a shromažďování. Pomocí možnosti kontakt mi se seznam vydavatelů udržuje 100% licenčních poplatků za software vydavatele shromážděných od zákazníka.
 
@@ -46,9 +46,9 @@ Možnost publikování v režimu Transact je aktuálně podporována pro násled
 
 ### <a name="billing-infrastructure-costs"></a>Náklady na infrastrukturu fakturace
 
-U **virtuálních počítačů** a **aplikací Azure**se poplatky za využití infrastruktury Azure účtují na základě předplatného Azure zákazníka. Poplatky za využití infrastruktury se účtují a zobrazují se odděleně od licenčních poplatků poskytovatele softwaru na faktuře zákazníka.
+U **virtuálních počítačů** a **aplikací Azure** se poplatky za využití infrastruktury Azure účtují na základě předplatného Azure zákazníka. Poplatky za využití infrastruktury se účtují a zobrazují se odděleně od licenčních poplatků poskytovatele softwaru na faktuře zákazníka.
 
-V případě **aplikací SaaS**musí vydavatel považovat za poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů.  Je reprezentována jako paušální poplatek zákazníkovi. Využití infrastruktury Azure se spravuje a účtuje přímo vydavateli. Zákazníky nevidí skutečné poplatky za využití infrastruktury. Vydavatelé obvykle můžou využít poplatky za využití infrastruktury Azure na ceny za licence na software. Licenční poplatky na software se neměří nebo využívají spotřebu uživatelů.
+V případě **aplikací SaaS** musí vydavatel považovat za poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů.  Je reprezentována jako paušální poplatek zákazníkovi. Využití infrastruktury Azure se spravuje a účtuje přímo vydavateli. Zákazníky nevidí skutečné poplatky za využití infrastruktury. Vydavatelé obvykle můžou využít poplatky za využití infrastruktury Azure na ceny za licence na software. Licenční poplatky na software se neměří nebo využívají spotřebu uživatelů.
 
 ## <a name="pricing-models"></a>Cenové modely
 
@@ -107,7 +107,7 @@ V tomto scénáři vám Microsoft účtuje $1,14 za hodinu pro použití publiko
 |Microsoft udržuje 100% nákladů na využití Azure. | $0,14 za hodinu |
 ||
 
-**Přineste si vlastní licenci (BYOL)**
+**Používání vlastní licence (BYOL)**
 
 BYOL má následující nákladovou strukturu:
 
@@ -197,7 +197,7 @@ Možnost publikování v režimu Transact je k dispozici pouze pro následujíc�
 
 - **Aplikace Azure: Šablona řešení nebo spravovaná aplikace** – musí zřídit jeden nebo víc virtuálních počítačů a vyžádat si součet cen virtuálních počítačů. U spravovaných aplikací s jedním plánem je možné jako cenový model vybrat ceny za virtuální počítače paušální měsíční předplatné. V některých případech jsou poplatky za využití infrastruktury Azure předávány zákazníkovi odděleně od licenčních poplatků za software, ale na stejném výpisu fakturace. Pokud však nakonfigurujete nabídku spravované aplikace pro poplatky za infrastrukturu ISV, prostředky Azure se budou fakturovat vydavateli a zákazník obdrží paušální poplatek, který zahrnuje náklady na infrastrukturu, licence na software a služby správy.
 
-- **SaaS aplikace** – musí se jednat o víceklientské řešení, použít [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pro ověřování a integrovat s [rozhraními API pro plnění SaaS](partner-center-portal/pc-saas-fulfillment-api-v2.md). Využití infrastruktury Azure se spravuje a fakturuje přímo vám (partner), takže musíte mít poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů. Podrobné pokyny najdete v tématu [Vytvoření nové nabídky SaaS na komerčním webu Marketplace](partner-center-portal/create-new-saas-offer.md).
+- **SaaS aplikace** – musí se jednat o víceklientské řešení, použít [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) pro ověřování a integrovat s [rozhraními API pro plnění SaaS](partner-center-portal/pc-saas-fulfillment-api-v2.md). Využití infrastruktury Azure se spravuje a fakturuje přímo vám (partner), takže musíte mít poplatky za využití infrastruktury Azure a licenční poplatky za software jako jednu položku nákladů. Podrobné pokyny najdete v tématu [Vytvoření nové nabídky SaaS na komerčním webu Marketplace](./create-new-saas-offer.md).
 
 ## <a name="next-steps"></a>Další kroky
 

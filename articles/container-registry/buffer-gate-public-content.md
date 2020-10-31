@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: c7beddda0d344f6b7606f3e2d3624bee39009c66
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043497"
+ms.locfileid: "93130846"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Správa veřejného obsahu pomocí Azure Container Registry
 
@@ -21,7 +21,7 @@ Tento článek představuje přehled postupů a pracovních postupů pro použit
 
 Vaše prostředí může mít závislosti na veřejném obsahu, jako jsou obrázky veřejného kontejneru, [Helm grafy](https://helm.sh/), zásady neprů ( [Open Policy agent](https://www.openpolicyagent.org/) ) nebo jiné artefakty. Můžete například spustit [Nginx](https://hub.docker.com/_/nginx) pro směrování služeb nebo `docker build FROM alpine` nastavovat image přímo z Docker Hub nebo jiného veřejného registru. 
 
-Bez správných ovládacích prvků, které mají závislosti na obsahu veřejného registru, mohou představovat rizika pro vaše pracovní postupy pro vývoj a nasazení imagí. Chcete-li zmírnit rizika, udržujte místní kopie veřejného obsahu, pokud je to možné. Podrobnosti najdete v [blogu otevřít iniciativu kontejneru](https://opencontainers.org/posts/blog). 
+Bez správných ovládacích prvků, které mají závislosti na obsahu veřejného registru, mohou představovat rizika pro vaše pracovní postupy pro vývoj a nasazení imagí. Chcete-li zmírnit rizika, udržujte místní kopie veřejného obsahu, pokud je to možné. Podrobnosti najdete v [blogu otevřít iniciativu kontejneru](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/). 
 
 ## <a name="authenticate-with-docker-hub"></a>Ověřování pomocí Docker Hub
 
@@ -33,8 +33,6 @@ V prvním kroku, pokud v rámci pracovního postupu sestavení nebo nasazení ak
 > Při odhadování počtu žádostí o přijetí změn Vezměte v úvahu, že při použití služeb poskytovatele cloudu nebo při práci za podnikovým překladem adres (NAT) bude k dispozici více uživatelů, kteří mají v souhrnu k dispozici jako podmnožinu IP adres.  Přidání ověřování placeného účtu Docker do požadavků odeslaných do služby Docker Hub se vyhnete potenciálním přerušením služeb z důvodu omezení četnosti.
 >
 > Podrobnosti najdete v tématu [ceny a předplatné Docker](https://www.docker.com/pricing) a [podmínek služby Docker](https://www.docker.com/legal/docker-terms-service).
-
-
 
 Příklady a scénáře ověřování najdete v tématu [Omezení četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit/).
 
@@ -72,7 +70,7 @@ Pokud chcete začít spravovat kopie veřejných imagí, můžete vytvořit regi
 
 Jako doporučený jednorázový krok [importujte](container-registry-import-images.md) základní image a další veřejný obsah do služby Azure Container Registry. Příkaz [AZ ACR import](/cli/azure/acr#az_acr_import) v Azure CLI podporuje import obrázků z veřejných registrů, jako je Docker Hub a Microsoft Container Registry, a z jiných privátních registrů kontejnerů. 
 
-`az acr import` nevyžaduje místní instalaci Docker. Můžete ji spustit v místní instalaci rozhraní příkazového řádku Azure CLI nebo přímo v Azure Cloud Shell podpora jakéhokoli typu operačního systému imagí, imagí s více architekturami nebo artefaktů OCI, jako jsou grafy Helm.
+`az acr import` nevyžaduje místní instalaci Docker. Můžete ji spustit v místní instalaci rozhraní příkazového řádku Azure CLI nebo přímo v Azure Cloud Shell. Podporuje obrázky libovolného typu operačního systému, imagí s více architekturami nebo artefaktů OCI, jako jsou Helm grafy.
 
 Příklad:
 
@@ -82,7 +80,7 @@ az acr import \
   --source docker.io/library/hello-world:latest \
   --image hello-world:latest \
   --username <Docker Hub username> \
-  --password <Docker Hub password>
+  --password <Docker Hub token>
 ```
 
 V závislosti na potřebách vaší organizace můžete importovat do vyhrazeného registru nebo úložiště ve sdíleném registru.
@@ -93,7 +91,7 @@ Vývojáři imagí aplikace by měli zajistit, aby jejich kód odkazoval na mís
 
 Při rozšiřování při importu obrázků nastavte [úlohu Azure Container Registry](container-registry-tasks-overview.md) pro automatizaci sestavení imagí aplikace, když se aktualizují základní image. Úkol automatizovaného sestavení může sledovat [aktualizace základní image](container-registry-tasks-base-images.md) i [aktualizace zdrojového kódu](container-registry-tasks-overview.md#trigger-task-on-source-code-update).
 
-Podrobný příklad najdete v tématu [jak využívat a spravovat veřejný obsah s Azure Container Registry úkoly](https://github.com/SteveLasker/azure-docs/blob/consuming-public-content/articles/container-registry/container-registry-consuming-public-content.md). 
+Podrobný příklad najdete v tématu [jak využívat a spravovat veřejný obsah s Azure Container Registry úkoly](tasks-consume-public-content.md). 
 
 > [!NOTE]
 > Jedna předkonfigurovaná úloha může automaticky znovu sestavit každou image aplikace, která odkazuje na závislý základní obrázek. 
@@ -101,4 +99,5 @@ Podrobný příklad najdete v tématu [jak využívat a spravovat veřejný obsa
 ## <a name="next-steps"></a>Další kroky
  
 * Přečtěte si další informace o [ACR úlohách](container-registry-tasks-overview.md) pro vytváření, spouštění, vkládání a opravy imagí kontejnerů v Azure.
+* Přečtěte si [, jak používat a spravovat veřejný obsah s Azure Container Registry úkoly](tasks-consume-public-content.md) pro pracovní postup automatizovaného uzavírání, který umožňuje aktualizovat základní image na vaše prostředí. 
 * Další příklady pro automatizaci sestavení a aktualizací imagí najdete v [kurzech k ACR úlohám](container-registry-tutorial-quick-task.md) .

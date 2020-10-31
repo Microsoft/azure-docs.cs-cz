@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c70d976a05cbeed058243829d0658693341636e9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131203"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrujte svůj výpis na komerčním trhu s Azure Active Directory
 
@@ -80,7 +80,7 @@ Pokud s použitím federovaného jednotného přihlašování Azure AD začíná
 
 Pomocí Azure AD můžete podporovat jednu z následujících akcí:
 
-- Přidejte uživatele typu Host do adresáře pomocí [Azure AD B2B](../active-directory/b2b/what-is-b2b.md).
+- Přidejte uživatele typu Host do adresáře pomocí [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md).
 - Ručně nastavte zkušební verze pro zákazníky pomocí možnosti publikování v **kontaktu** .
 - Vývoj testovacích jednotek pro zákazníka
 - Vytvořte ukázkovou ukázkovou aplikaci pro více tenantů, která používá jednotné přihlašování.

@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080733"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130863"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek podregistru a načítání dat z Azure Blob Storage
 
 Tento článek představuje obecné dotazy na podregistry, které vytvářejí tabulky podregistru a načítají data z Azure Blob Storage. Některé doprovodné materiály jsou k dispozici také pro vytváření oddílů tabulek podregistru a při použití formátování optimalizovaného řádku (ORC) ke zlepšení výkonu dotazů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet Azure Storage. Pokud potřebujete pokyny, přečtěte si téma [informace o Azure Storagech účtech](../../storage/common/storage-introduction.md).
@@ -34,7 +34,7 @@ Pokud jste virtuální počítač Azure vytvořili podle pokynů uvedených v č
 
 Předpokládáme, že data pro tabulky podregistru jsou v **nekomprimovaném** tabulkovém formátu a že se data nahrála do výchozího (nebo do dalšího) kontejneru účtu úložiště používaného clusterem Hadoop.
 
-Pokud chcete postupovat podle údajů o **cestách NYC taxislužby**, musíte:
+Pokud chcete postupovat podle údajů o **cestách NYC taxislužby** , musíte:
 
 * **Stáhněte** si 24 [datových souborů NYC taxislužby pro služební cestu](https://www.andresmh.com/nyctaxitrips) (soubory o 12 cestách a soubory tarifů),
 * **rozbalení všech souborů** do souborů. csv a potom
@@ -86,7 +86,7 @@ hive -S -e "<Hive queries>"
 ```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Odešlete dotazy na podregistr v konzole příkazů pro podregistr.
-Můžete taky nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů pro podregistr. Tady je příklad. V tomto příkladu jsou dvě červená pole zvýrazněné příkazy, které slouží k zadání konzoly příkazového řádku, a dotaz na podregistr odeslaný do konzoly příkazového řádku v uvedeném pořadí. Zelené pole zvýrazní výstup z dotazu na podregistr.
+Můžete taky nejdřív zadat příkazovou konzolu pro podregistr spuštěním příkazu `hive` v příkazovém řádku Hadoop a pak odeslat dotazy na podregistr v konzole příkazů pro podregistr. Zde je příklad. V tomto příkladu jsou dvě červená pole zvýrazněné příkazy, které slouží k zadání konzoly příkazového řádku, a dotaz na podregistr odeslaný do konzoly příkazového řádku v uvedeném pořadí. Zelené pole zvýrazní výstup z dotazu na podregistr.
 
 ![Otevřete příkazový konzolu pro podregistr a zadejte příkaz, zobrazte výstup dotazu na podregistry.](./media/move-hive-tables/run-hive-queries-2.png)
 
@@ -101,7 +101,7 @@ hive -e "<hive query>" > <local path in the head node>
 
 V následujícím příkladu je výstup dotazu na podregistr zapsán do souboru `hivequeryoutput.txt` v adresáři `C:\apps\temp` .
 
-![Výstup dotazu na podregistr](./media/move-hive-tables/output-hive-results-1.png)
+![Snímek obrazovky zobrazuje výstup dotazu na podregistr v okně příkazového řádku Hadoop.](./media/move-hive-tables/output-hive-results-1.png)
 
 **Výsledky dotazu na výstupní podregistr do objektu blob Azure**
 
@@ -113,7 +113,7 @@ insert overwrite directory wasb:///<directory within the default container> <sel
 
 V následujícím příkladu se výstup dotazu na podregistr zapisuje do adresáře objektů BLOB `queryoutputdir` v rámci výchozího kontejneru clusteru Hadoop. V tomto případě stačí zadat název adresáře bez názvu objektu BLOB. Pokud zadáte název adresáře a objektů blob, například, je vyvolána chyba `wasb:///queryoutputdir/queryoutput.txt` .
 
-![Výstup dotazu na podregistr](./media/move-hive-tables/output-hive-results-2.png)
+![Snímek obrazovky se zobrazí v okně příkazového řádku Hadoop předchozí příkaz.](./media/move-hive-tables/output-hive-results-2.png)
 
 Pokud otevřete výchozí kontejner clusteru Hadoop pomocí Průzkumník služby Azure Storage, můžete zobrazit výstup dotazu na podregistr, jak je znázorněno na následujícím obrázku. Můžete použít filtr (zvýrazněný červeně), chcete-li načíst pouze objekt BLOB se zadaným písmeny v názvu.
 
@@ -147,12 +147,12 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 
 Tady jsou popisy polí, která potřebujete připojit, a další konfigurace:
 
-* **\<database name\>**: název databáze, kterou chcete vytvořit. Pokud chcete použít pouze výchozí databázi, dotaz "*vytvořit databázi...*" lze vynechat.
-* **\<table name\>**: název tabulky, kterou chcete vytvořit v zadané databázi. Pokud chcete použít výchozí databázi, může být tabulka přímo označována *\<table name\>* bez \<database name\> .
-* **\<field separator\>**: oddělovač, který omezuje pole v datovém souboru, který se má odeslat do tabulky podregistru.
-* **\<line separator\>**: oddělovač, který omezuje řádky v datovém souboru.
-* **\<storage location\>**: umístění Azure Storage pro uložení dat tabulek podregistru. Pokud nezadáte *umístění \<storage location\> *, databáze a tabulky budou ve výchozím nastavení uloženy v *podregistru/skladu/* adresáři ve výchozím kontejneru clusteru podregistru. Pokud chcete zadat umístění úložiště, umístění úložiště musí být ve výchozím kontejneru pro databáze a tabulky. Toto umístění musí být označováno jako umístění relativní vzhledem k výchozímu kontejneru clusteru ve formátu *"wasb:/// \<directory 1> /"* nebo *"wasb:/// \<directory 1> / \<directory 2> /"* atd. Po provedení dotazu se relativní adresáře vytvoří v rámci výchozího kontejneru.
-* **TBLPROPERTIES ("Skip. Header. line. Count" = "1")**: Pokud datový soubor obsahuje řádek záhlaví, je nutné tuto vlastnost přidat **na konci** dotazu *Create Table* . V opačném případě se řádek záhlaví načte jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může být v dotazu vynechána.
+* **\<database name\>** : název databáze, kterou chcete vytvořit. Pokud chcete použít pouze výchozí databázi, dotaz " *vytvořit databázi...* " lze vynechat.
+* **\<table name\>** : název tabulky, kterou chcete vytvořit v zadané databázi. Pokud chcete použít výchozí databázi, může být tabulka přímo označována *\<table name\>* bez \<database name\> .
+* **\<field separator\>** : oddělovač, který omezuje pole v datovém souboru, který se má odeslat do tabulky podregistru.
+* **\<line separator\>** : oddělovač, který omezuje řádky v datovém souboru.
+* **\<storage location\>** : umístění Azure Storage pro uložení dat tabulek podregistru. Pokud nezadáte *umístění \<storage location\>* , databáze a tabulky budou ve výchozím nastavení uloženy v *podregistru/skladu/* adresáři ve výchozím kontejneru clusteru podregistru. Pokud chcete zadat umístění úložiště, umístění úložiště musí být ve výchozím kontejneru pro databáze a tabulky. Toto umístění musí být označováno jako umístění relativní vzhledem k výchozímu kontejneru clusteru ve formátu *"wasb:/// \<directory 1> /"* nebo *"wasb:/// \<directory 1> / \<directory 2> /"* atd. Po provedení dotazu se relativní adresáře vytvoří v rámci výchozího kontejneru.
+* **TBLPROPERTIES ("Skip. Header. line. Count" = "1")** : Pokud datový soubor obsahuje řádek záhlaví, je nutné tuto vlastnost přidat **na konci** dotazu *Create Table* . V opačném případě se řádek záhlaví načte jako záznam do tabulky. Pokud datový soubor nemá řádek záhlaví, tato konfigurace může být v dotazu vynechána.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Načtení dat do tabulek podregistru
 Tady je dotaz na podregistr, který načte data do tabulky podregistru.
@@ -161,7 +161,7 @@ Tady je dotaz na podregistr, který načte data do tabulky podregistru.
 LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 ```
 
-* **\<path to blob data\>**: Pokud se soubor objektu blob, který se má nahrát do tabulky podregistru, nachází ve výchozím kontejneru clusteru HDInsight Hadoop, *\<path to blob data\>* měl by být ve formátu *"wasb:// \<directory in this container> / \<blob file name> "*. Soubor BLOB může být taky v dodatečném kontejneru clusteru HDInsight Hadoop. V takovém případě *\<path to blob data\>* by měla být ve formátu *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.NET/ \<blob file name> "*.
+* **\<path to blob data\>** : Pokud se soubor objektu blob, který se má nahrát do tabulky podregistru, nachází ve výchozím kontejneru clusteru HDInsight Hadoop, *\<path to blob data\>* měl by být ve formátu *"wasb:// \<directory in this container> / \<blob file name> "* . Soubor BLOB může být taky v dodatečném kontejneru clusteru HDInsight Hadoop. V takovém případě *\<path to blob data\>* by měla být ve formátu *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.NET/ \<blob file name> "* .
 
   > [!NOTE]
   > Data objektu blob, která se mají nahrát do tabulky podregistru, musí být ve výchozím nebo dodatečném kontejneru účtu úložiště pro cluster Hadoop. V opačném případě dotaz *načíst data* nevydá stížnost, že nemá přístup k datům.
@@ -238,7 +238,7 @@ INSERT OVERWRITE TABLE <database name>.<ORC table name>
 ```
 
 > [!NOTE]
-> Pokud * \<database name\> \<external textfile table name\> tabulka textfile* má v kroku 3 oddíly, `SELECT * FROM <database name>.<external textfile table name>` příkaz vybere proměnnou oddílu jako pole ve vrácené datové sadě. Vložení do * \<database name\> . \<ORC table name\> * neproběhne od * \<database name\> . \<ORC table name\> * nemá proměnnou oddílu jako pole ve schématu tabulky. V takovém případě je nutné konkrétně vybrat pole, do kterých mají být vložena * \<database name\> . \<ORC table name\> * následujícím způsobem:
+> Pokud *\<database name\> \<external textfile table name\> tabulka textfile* má v kroku 3 oddíly, `SELECT * FROM <database name>.<external textfile table name>` příkaz vybere proměnnou oddílu jako pole ve vrácené datové sadě. Vložení do *\<database name\> . \<ORC table name\>* neproběhne od *\<database name\> . \<ORC table name\>* nemá proměnnou oddílu jako pole ve schématu tabulky. V takovém případě je nutné konkrétně vybrat pole, do kterých mají být vložena *\<database name\> . \<ORC table name\>* následujícím způsobem:
 >
 >
 
@@ -249,7 +249,7 @@ INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition va
     WHERE <partition variable>=<partition value>;
 ```
 
-Po *\<external text file table name\>* vložení všech dat do můžete bezpečně vyřadit při použití následujícího dotazu * \<database name\> . \<ORC table name\> *:
+Po *\<external text file table name\>* vložení všech dat do můžete bezpečně vyřadit při použití následujícího dotazu *\<database name\> . \<ORC table name\>* :
 
 ```hiveql
     DROP TABLE IF EXISTS <database name>.<external textfile table name>;

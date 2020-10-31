@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027373"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130897"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Použití referenčních dat z SQL Database pro úlohu Azure Stream Analytics
 
@@ -173,11 +173,11 @@ Při použití rozdílového dotazu jsou doporučeny [dočasné tabulky v Azure 
    Všimněte si, že modul runtime Stream Analytics může pravidelně spouštět dotaz na snímky společně s rozdílovým dotazem na ukládání kontrolních bodů.
 
 ## <a name="test-your-query"></a>Otestování dotazu
-   Je důležité ověřit, že váš dotaz vrací očekávanou datovou sadu, kterou bude Stream Analytics úloha používat jako referenční data. Dotaz otestujete tak, že v části topologie úloh na portálu přejdete na vstup. Pak můžete vybrat ukázková data na SQL Database odkazem na vstup. Jakmile bude ukázka k dispozici, můžete stáhnout soubor a ověřit, zda jsou vracená data podle očekávání. Pokud chcete optimalizovat vaše iterace vývoje a testování, doporučuje se používat [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install). Můžete také použít jakýkoli jiný nástroj vaší předvolby, abyste nejdřív zajistili, že dotaz vrací správné výsledky od vás Azure SQL Database a pak ho použijete v úloze Stream Analytics. 
+   Je důležité ověřit, že váš dotaz vrací očekávanou datovou sadu, kterou bude Stream Analytics úloha používat jako referenční data. Dotaz otestujete tak, že v části topologie úloh na portálu přejdete na vstup. Pak můžete vybrat ukázková data na SQL Database odkazem na vstup. Jakmile bude ukázka k dispozici, můžete stáhnout soubor a ověřit, zda jsou vracená data podle očekávání. Pokud chcete optimalizovat vaše iterace vývoje a testování, doporučuje se používat [nástroje Stream Analytics pro Visual Studio](./stream-analytics-tools-for-visual-studio-install.md). Můžete také použít jakýkoli jiný nástroj vaší předvolby, abyste nejdřív zajistili, že dotaz vrací správné výsledky od vás Azure SQL Database a pak ho použijete v úloze Stream Analytics. 
 
 ### <a name="test-your-query-with-visual-studio-code"></a>Otestujte dotaz pomocí Visual Studio Code
 
-   Nainstalujte [Azure Stream Analytics nástroje](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) a [SQL Server (mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) na Visual Studio Code a nastavte svůj projekt ASA. Další informace najdete v tématu [rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) a v [kurzu rozšíření SQL Server (MSSQL)](https://aka.ms/mssql-getting-started).
+   Nainstalujte [Azure Stream Analytics nástroje](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) a [SQL Server (mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) na Visual Studio Code a nastavte svůj projekt ASA. Další informace najdete v tématu [rychlý Start: vytvoření úlohy Azure Stream Analytics v Visual Studio Code](./quick-create-visual-studio-code.md) a v [kurzu rozšíření SQL Server (MSSQL)](/sql/tools/visual-studio-code/sql-server-develop-use-vscode).
 
 1. Nakonfigurujte zadání referenčních dat SQL.
    

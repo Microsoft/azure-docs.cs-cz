@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: 613ee87064cc3b0bbbae8b8ac2e31a5ed60d39f2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: eae4aece79cd387aaa7e708591ca31442eaa05c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097197"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93135926"
 ---
 V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) pro Python. Pokud chcete, aby název balíčku začínal vlastním, spusťte příkaz `pip install azure-cognitiveservices-speech` .
 
@@ -20,25 +20,20 @@ V této příručce se dozvíte, jak nainstalovat [sadu Speech SDK](~/articles/c
 - Balíček python Speech SDK je k dispozici pro tyto operační systémy:
   - Windows: x64 a x86
   - Mac: macOS X verze 10,12 nebo novější
-  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 na platformě x64
+  - Linux Podívejte se na seznam [podporovaných distribucí a cílových architektur systému Linux](~/articles/cognitive-services/speech-service/speech-sdk.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
 - Podporované platformy Linux budou vyžadovat nainstalovaná konkrétní knihovny ( `libssl` pro podporu SSL (Secure Sockets Layer `libasound2` ) a pro podporu zvuku. Pro příkazy potřebné k instalaci správných verzí těchto knihoven použijte níže uvedenou distribuci.
 
-  - V Ubuntu spusťte následující příkazy, abyste nainstalovali požadované balíčky:
+  - V Ubuntu/Debian spuštěním následujících příkazů nainstalujte požadované balíčky:
 
     ```sh
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.0 libasound2
     ```
 
-  - V Debian 9 spusťte následující příkazy, abyste nainstalovali požadované balíčky:
-
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+    Pokud libssl 1.0.0 není k dispozici, nainstalujte libssl 1.0. x (kde x je větší než 0) nebo místo toho libssl 1.1.
 
   - V RHEL/CentOS spuštěním následujících příkazů nainstalujte požadované balíčky:
 
@@ -79,12 +74,12 @@ import azure.cognitiveservices.speech as speechsdk
 1. Stáhněte a nainstalujte nejnovější podporovanou verzi [Pythonu](https://www.python.org/downloads/) pro vaši platformu, 3,5 až 3,8.
    - Uživatelé systému Windows při instalaci nezapomeňte v procesu instalace vybrat přidat Python do vaší cesty.
 1. Stáhněte a nainstalujte si [Visual Studio Code](https://code.visualstudio.com/Download).
-1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. **File**  >  **Preferences**  >  V nabídce vyberte**rozšíření** předvoleb souborů. Vyhledejte **Python** a klikněte na **nainstalovat**.
+1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. **File**  >  **Preferences**  >  V nabídce vyberte **rozšíření** předvoleb souborů. Vyhledejte **Python** a klikněte na **nainstalovat** .
 
    ![Instalace rozšíření Python](~/articles/cognitive-services/speech-service/media/sdk/qs-python-vscode-python-extension.png)
 
 1. V rámci Visual Studio Code také nainstalujte sadu Speech SDK Python Package z integrovaného příkazového řádku:
-   1. Otevření terminálu (z rozevíracích nabídek, **terminálového**  >  **nového terminálu**)
+   1. Otevření terminálu (z rozevíracích nabídek, **terminálového**  >  **nového terminálu** )
    1. V terminálu, který se otevře, zadejte příkaz. `python -m pip install azure-cognitiveservices-speech`
 
 Pokud s Visual Studio Code začínáte, přečtěte si rozsáhlejší [Visual Studio Code dokumentaci](https://code.visualstudio.com/docs). Další informace o Visual Studio Code a Pythonu najdete v [kurzu Visual Studio Code Pythonu](https://code.visualstudio.com/docs/python/python-tutorial).

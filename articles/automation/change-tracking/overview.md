@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100690"
+ms.locfileid: "93130336"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -93,7 +93,7 @@ Pro sledování změn v souborech v systémech Windows i Linux používá Change
 
 ## <a name="tracking-file-content-changes"></a>Sledování změn obsahu souboru
 
-Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](/azure/storage/common/storage-account-create). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe.
+Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](../../storage/common/storage-account-create.md). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe.
 
 ![Zobrazit změny v souboru](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 |Služby|250|
 |Procesy démon|250|
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 

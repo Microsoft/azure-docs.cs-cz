@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 8653279c353ad679503f2501afeb14725c7fc215
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329028"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129588"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Postup plánování nabídky virtuálního počítače
 
 Tento článek popisuje různé možnosti a požadavky pro publikování nabídky virtuálního počítače na komerčním webu Marketplace. Nabídky virtuálních počítačů jsou nasazené a účtované prostřednictvím Azure Marketplace.
 
-Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) a ujistěte se, že je váš účet zaregistrovaný v programu pro komerční Marketplace.
+Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](./partner-center-portal/create-account.md) a ujistěte se, že je váš účet zaregistrovaný v programu pro komerční Marketplace.
 
 ### <a name="technical-fundamentals"></a>Technické základy
 
@@ -29,7 +29,7 @@ Proces navrhování, sestavování a testování nabídek trvá čas a vyžaduje
   - [Virtuální počítače s Linuxem](../virtual-machines/linux/tutorial-manage-vm.md)
   - [Virtuální počítače s Windows](../virtual-machines/windows/tutorial-manage-vm.md)
 
-- Ukázky
+- ukázky
   - [Ukázky v Azure CLI pro virtuální počítače se systémem Linux](../virtual-machines/linux/cli-samples.md)
   - [Azure PowerShell pro virtuální počítače se systémem Linux](../virtual-machines/linux/powershell-samples.md)
   - [Ukázky v Azure CLI pro virtuální počítače s Windows](../virtual-machines/windows/cli-samples.md)
@@ -70,7 +70,7 @@ Pozvánky můžete odesílat do e-mailových adres účtu Microsoft (MSA) nebo A
 
 Nabídka virtuálních počítačů vyžaduje aspoň jeden plán. Plán definuje rozsah a omezení řešení a související ceny. Můžete vytvořit více plánů pro vaši nabídku a poskytnout zákazníkům různé možnosti technického a licencování a také bezplatné zkušební verze. Obecné pokyny k plánům, včetně cenových modelů, bezplatných zkušebních verzí a privátních plánů, najdete v tématu [plány a ceny pro komerční web Marketplace](plans-pricing.md) . 
 
-Virtuální počítače jsou plně aktivní a využívají licenční modely (BYOL) s průběžnými platbami nebo s vlastními licencemi. Společnost Microsoft hostuje transakci obchodu a účtuje vaše zákazníky vaším jménem. Výhody používání upřednostňovaného platebního vztahu mezi zákazníkem a Microsoftem, včetně všech smluv Enterprise, získáte s výhodou. Další informace najdete v tématu [Možnosti Transact](https://docs.microsoft.com/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)-The pro prodej na webu Marketplace.
+Virtuální počítače jsou plně aktivní a využívají licenční modely (BYOL) s průběžnými platbami nebo s vlastními licencemi. Společnost Microsoft hostuje transakci obchodu a účtuje vaše zákazníky vaším jménem. Výhody používání upřednostňovaného platebního vztahu mezi zákazníkem a Microsoftem, včetně všech smluv Enterprise, získáte s výhodou. Další informace najdete v tématu [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro prodej na webu Marketplace.
 
 > [!NOTE]
 > Peněžní závazky spojené s smlouva Enterprise se dají použít k využití Azure vašeho virtuálního počítače, ale ne k licenčním poplatkům za software.
@@ -84,7 +84,7 @@ Toto jsou dostupné možnosti licencování pro nabídky virtuálních počíta�
 | Možnost licence | Proces transakce |
 | --- | --- |
 | Bezplatná zkušební verze | Poskytněte zákazníkům jednu, tři nebo šest měsíců bezplatné zkušební období. |
-| Testovací jednotka | Tato možnost zákazníkům umožní vyhodnotit virtuální počítače bez dalších poplatků. Nemusejí být stávajícím zákazníkem Azure, aby mohli začít s zkušebním prostředím. Podrobnosti najdete v tématu [co je testovací jednotka?](https://docs.microsoft.com/azure/marketplace/what-is-test-drive) . |
+| Testovací jednotka | Tato možnost zákazníkům umožní vyhodnotit virtuální počítače bez dalších poplatků. Nemusejí být stávajícím zákazníkem Azure, aby mohli začít s zkušebním prostředím. Podrobnosti najdete v tématu [co je testovací jednotka?](./what-is-test-drive.md) . |
 | BYOL | Možnost Přineste si vlastní licencování umožní vašim zákazníkům přenášet do Azure existující softwarové licence.\* |
 | Na základě využití | Tato možnost se také označuje jako průběžné platby. Tato možnost umožňuje zákazníkům platit za hodinu. |
 | Interaktivní ukázka  | Poskytněte svým zákazníkům zkušenosti s vaším řešením pomocí interaktivní ukázky. Výhodou je, že můžete nabízet zkušební prostředí, aniž byste museli poskytovat složitou instalaci komplexního řešení. |
@@ -129,7 +129,7 @@ Pokud se rozhodnete použít standardní smlouvu, máte možnost přidat do stan
 Při vytváření vaší nabídky v partnerském centru se zobrazí karta pro **prodej** na kartě CSP. Tato možnost umožňuje partnerům, kteří jsou součástí programu Microsoft Cloud poskytovatelé řešení (CSP), aby váš virtuální počítač mohli dál prodávat jako součást sady prostředků v rámci sady. K programu se automaticky přihlásí všechny plány BYOL (Přineste si vlastní licenci). Můžete se také rozhodnout, že se chcete vyjádřit k BYOL plánům. Další informace najdete v tématu [program Cloud Solution Provider](cloud-solution-providers.md) . 
 
 > [!NOTE]
-> Výslovný souhlas kanálu partner Cloud Solution Provider (CSP) je nyní k dispozici. Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [**poskytovatelé Cloud Solution Provider**](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+> Výslovný souhlas kanálu partner Cloud Solution Provider (CSP) je nyní k dispozici. Další informace o marketingu vaší nabídky prostřednictvím kanálů partnerů Microsoft CSP najdete v tématu [**poskytovatelé Cloud Solution Provider**](./cloud-solution-providers.md).
 
 ## <a name="next-steps"></a>Další kroky
 

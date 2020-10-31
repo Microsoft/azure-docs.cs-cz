@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: a7a77cc18ddc1ab8664d49aa3c2ac049a683ed3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c28b4edab1e1033bf9ac7df6b1249b549bb4fe1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131509"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Vytvoření nabídky Dynamics 365 for Operations
 
@@ -26,8 +26,8 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled**.
-3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro operace**.
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace**  >  **Přehled** .
+3. Na stránce Přehled vyberte **+ Nová nabídka**  >  **Dynamics 365 pro operace** .
 
     ![Znázorňuje levou navigační nabídku.](./media/new-offer-dynamics-365-operations.png)
 
@@ -36,14 +36,14 @@ Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centr
 
 ## <a name="new-offer"></a>Nová nabídka
 
-Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+Zadejte **ID nabídky** . Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - ID nabídky v kombinaci s ID vydavatele musí být kratší než 40 znaků.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery. Pokud je například vaše Vydavatel s ID testpublisherid a zadáte **zkušební nabídku – 1** , Webová adresa nabídky bude `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- ID nabídky nelze změnit po výběru možnost **vytvořit**.
+- ID nabídky nelze změnit po výběru možnost **vytvořit** .
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+Zadejte **alias nabídky** . Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 
@@ -93,7 +93,7 @@ Tato stránka umožňuje definovat kategorie a odvětví používané k seskupen
 Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
 
 - Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
-- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito** .
 
 Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
@@ -175,7 +175,7 @@ Zadejte adresu URL zásad ochrany osobních údajů vaší organizace. Zodpovíd
 
 ### <a name="contacts"></a>Kontakty
 
-V této části zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt**. Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
+V této části zadejte jméno, e-mail a telefonní číslo pro **kontakt podpory** a **technický kontakt** . Tyto informace se zákazníkům nezobrazují, ale budou k dispozici pro společnost Microsoft a mohou být poskytovány partnerům CSP.
 
 V části **kontakt podpory** zadejte **adresu URL podpory** , kde partneři CSP můžou najít podporu pro vaši nabídku.
 
@@ -227,7 +227,7 @@ Tato stránka poskytuje možnosti, kde a jak má být nabídka dostupná.
 
 V této části můžete zadat trhy, ve kterých by měla být vaše nabídka dostupná. Provedete to tak, že vyberete **Upravit trhy,** ve kterém se zobrazí místní okno pro **Výběr trhu** .
 
-Ve výchozím nastavení nejsou vybrané žádné trhy. Vyberte alespoň jeden trh pro publikování vaší nabídky. Klikněte na  **Vybrat vše** , aby vaše nabídka byla dostupná na všech možných trzích, nebo vyberte konkrétní trhy, které chcete přidat. Po dokončení vyberte **Uložit**.
+Ve výchozím nastavení nejsou vybrané žádné trhy. Vyberte alespoň jeden trh pro publikování vaší nabídky. Klikněte na  **Vybrat vše** , aby vaše nabídka byla dostupná na všech možných trzích, nebo vyberte konkrétní trhy, které chcete přidat. Po dokončení vyberte **Uložit** .
 
 Vaše výběry se tady vztahují jenom na nové akvizice; Pokud už má vaše aplikace na určitém trhu nějaký uživatel a později tento trh odeberete, lidé, kteří si tuto nabídku už na tomto trhu mají, můžou i nadále používat, ale žádní noví zákazníci na tomto trhu nebudou moct nabídku získat.
 
@@ -238,7 +238,7 @@ Mějte na paměti, že i když vyberete všechny trhy, místní zákony a omezen
 
 ### <a name="preview-audience"></a>Cílová skupina Preview
 
-Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview**. Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
+Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí **Preview** . Zadejte **Skrýt klíč** (libovolný řetězec s malými písmeny a číslicemi). Členové vaší cílové skupiny ve verzi Preview můžou použít tento skrytý klíč jako token k zobrazení náhledu vaší nabídky na webu Marketplace.
 
 Až budete připraveni zpřístupnit nabídku a odebrat omezení verze Preview, je nutné odebrat **Skrýt klíč** a znovu publikovat.
 
@@ -254,8 +254,8 @@ Zadejte identifikátor řešení (GUID) pro vaše řešení.
 
 Zjištění identifikátoru řešení:
 
-1. V Microsoft Dynamics Lifecycle Services (LCS) vyberte **Správa řešení**.
-2. Vyberte své řešení a pak vyhledejte **identifikátor řešení** v **přehledu balíčku**. Pokud je identifikátor prázdný, vyberte **Upravit** a znovu publikovat balíček a pak to zkuste znovu.
+1. V Microsoft Dynamics Lifecycle Services (LCS) vyberte **Správa řešení** .
+2. Vyberte své řešení a pak vyhledejte **identifikátor řešení** v **přehledu balíčku** . Pokud je identifikátor prázdný, vyberte **Upravit** a znovu publikovat balíček a pak to zkuste znovu.
 
 ### <a name="release-version"></a>Verze vydaných verzí
 
@@ -277,7 +277,7 @@ Tato stránka vám umožní zadat další informace o vaší nabídce, které n�
 
 ### <a name="validation-assets"></a>Prostředky ověřování
 
-V této části nahrajte [sestavu analýzy přizpůsobení (auto)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) . Tato sestava je vygenerována analýzou modelů přizpůsobení a rozšíření na základě předdefinované sady pravidel osvědčených postupů.
+V této části nahrajte [sestavu analýzy přizpůsobení (auto)](/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) . Tato sestava je vygenerována analýzou modelů přizpůsobení a rozšíření na základě předdefinované sady pravidel osvědčených postupů.
 
 Tento soubor musí být ve formátu. xls nebo. xlsx. Pokud máte více než jednu sestavu, můžete nahrát soubor. zip obsahující všechny sestavy.
 
@@ -303,8 +303,8 @@ Pokud tuto nabídku publikujete poprvé, můžete:
     - **Nezahájeno** – oddíl se nedotkl a měl by být dokončený.
     - **Nedokončeno** – oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
     - **Complete** – část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
-- V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci. Další informace o pokynech pro testování a dokončení prvního publikování naleznete v tématu [AppSource Dynamics 365 Finance and Operational Validation](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation).
-- Kliknutím na **Odeslat**nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném.
+- V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci. Další informace o pokynech pro testování a dokončení prvního publikování naleznete v tématu [AppSource Dynamics 365 Finance and Operational Validation](../dynamics-365-finance-operations-functional-validation.md).
+- Kliknutím na **Odeslat** nabídku pro publikování odešlete. Pošleme vám e-mail s oznámením, že je k dispozici verze Preview vaší nabídky, kterou si můžete prohlédnout a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném.
 
 ## <a name="next-step"></a>Další krok
 

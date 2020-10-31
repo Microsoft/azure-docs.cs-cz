@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 70ea5ec9ee91fdba8023b9c6af1ce65b691a17fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 127fcdf68990b15098c24488e6ed879fbaa79116
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006886"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129673"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Kurz: spuštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -44,7 +44,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Vytvořte mezipaměť v mezipaměti Azure pro Redis pomocí kroků popsaných v tématu [vytvoření mezipaměti](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
 
-2. Po vytvoření mezipaměti v části **Nastavení** vyberte **Přístupové klíče**. Poznamenejte si **primární připojovací řetězec**.
+2. Po vytvoření mezipaměti v části **Nastavení** vyberte **Přístupové klíče** . Poznamenejte si **primární připojovací řetězec** .
 
    ![Snímek obrazovky s mezipamětí Azure cache pro připojovací řetězec Redis](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -52,7 +52,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). V této části se dozvíte, jak vytvořit aplikaci funkcí a funkci aktivovanou [protokolem HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function)pomocí jazyka CSharp.  
 
-2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. Nahraďte **" \<your Azure Cache for Redis connection string goes here\> "** pomocí mezipaměti Azure pro primární připojovací řetězec Redis, který jste získali v předchozí části. 
+2. Vyhledejte funkci **run.csx** . Aktualizujte ji následujícím kódem. Nahraďte **" \<your Azure Cache for Redis connection string goes here\> "** pomocí mezipaměti Azure pro primární připojovací řetězec Redis, který jste získali v předchozí části. 
 
     ```csharp
     using System;
@@ -112,7 +112,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
         }
    ```
 
-3. V libovolném textovém editoru vytvořte soubor JSON s názvem **project.json**. Vložte následující kód a uložte ho do místního počítače. Tento soubor obsahuje závislosti balíčku NuGet, které vyžaduje funkce jazyka C#.  
+3. V libovolném textovém editoru vytvořte soubor JSON s názvem **project.json** . Vložte následující kód a uložte ho do místního počítače. Tento soubor obsahuje závislosti balíčku NuGet, které vyžaduje funkce jazyka C#.  
    
     ```json
     {
@@ -128,33 +128,33 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
    ```
  
-4. Vraťte se na Azure Portal. Na kartě **Funkce platformy** vyhledejte danou funkci. V části **Vývojové nástroje** vyberte **App Service Editor**. 
+4. Vraťte se na Azure Portal. Na kartě **Funkce platformy** vyhledejte danou funkci. V části **Vývojové nástroje** vyberte **App Service Editor** . 
  
-   ![Snímek obrazovky s App Service Editorem](./media/stream-analytics-with-azure-functions/image3.png)
+   ![Snímek obrazovky zobrazuje kartu funkce platformy s vybraným Editor služby App Service.](./media/stream-analytics-with-azure-functions/image3.png)
 
-5. V App Service Editoru klikněte pravým tlačítkem myši na kořenový adresář a nahrajte soubor **project.json**. Po úspěšném nahrání aktualizujte stránku. Teď by se měl zobrazit automaticky vygenerovaný soubor s názvem **project.lock.json**. Automaticky vygenerovaný soubor obsahuje odkazy na soubory .dll, které jsou určené v souboru project.json.  
+5. V App Service Editoru klikněte pravým tlačítkem myši na kořenový adresář a nahrajte soubor **project.json** . Po úspěšném nahrání aktualizujte stránku. Teď by se měl zobrazit automaticky vygenerovaný soubor s názvem **project.lock.json** . Automaticky vygenerovaný soubor obsahuje odkazy na soubory .dll, které jsou určené v souboru project.json.  
 
-   ![Snímek obrazovky s App Service Editorem](./media/stream-analytics-with-azure-functions/image4.png)
+   ![Snímek obrazovky s informacemi o nahrání souborů vybraných z nabídky](./media/stream-analytics-with-azure-functions/image4.png)
 
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce
 
 1. Otevřete úlohu Stream Analytics na portálu Azure Portal.  
 
-2. Přejděte na svou funkci a vyberte **Přehled**  >  **výstupy**  >  **Přidat**. Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Adaptér pro výstup funkcí má následující vlastnosti:  
+2. Přejděte na svou funkci a vyberte **Přehled**  >  **výstupy**  >  **Přidat** . Pokud chcete přidat nový výstup, vyberte **funkci Azure** pro možnost jímky. Adaptér pro výstup funkcí má následující vlastnosti:  
 
    |**Název vlastnosti**|**Popis**|
    |---|---|
    |Alias pro výstup| Popisný název, který v dotazu úlohy používáte k odkazu na výstup |
    |Možnost importu| Můžete použít funkci z aktuálního předplatného nebo ručně zadat nastavení, pokud se funkce nachází v jiném předplatném. |
    |Function App| Název vaší aplikace Functions |
-   |Funkce| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
+   |Function| Název funkce ve vaší aplikaci Functions (název vaší funkce run.csx)|
    |Maximální velikost dávky|Nastaví maximální velikost pro každou výstupní dávku, která se pošle do vaší funkce v bajtech. Ve výchozím nastavení je tato hodnota nastavená na 262 144 bajtů (256 KB).|
    |Maximální počet v dávce|Určuje maximální počet událostí v každé dávce, která se odesílá do dané funkce. Výchozí hodnota je 100. Tato vlastnost je nepovinná.|
    |Klíč|Umožňuje vám použít funkci z jiného předplatného. Zadejte hodnotu klíče pro přístup k dané funkci. Tato vlastnost je nepovinná.|
 
-3. Zadejte název aliasu pro výstup. V tomto kurzu se jmenuje **saop1**, ale můžete použít libovolný název. Zadejte další podrobnosti.
+3. Zadejte název aliasu pro výstup. V tomto kurzu se jmenuje **saop1** , ale můžete použít libovolný název. Zadejte další podrobnosti.
 
-4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. Pokud jste své výstupní jímky nevytvořili **saop1**, nezapomeňte je změnit v dotazu.  
+4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. Pokud jste své výstupní jímky nevytvořili **saop1** , nezapomeňte je změnit v dotazu.  
 
    ```sql
     SELECT
@@ -177,7 +177,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 ## <a name="check-azure-cache-for-redis-for-results"></a>Podívejte se na výsledky Azure cache for Redis
 
-1. Přejděte do Azure Portal a vyhledejte mezipaměť Azure pro Redis. Vyberte **Konzola**.  
+1. Přejděte do Azure Portal a vyhledejte mezipaměť Azure pro Redis. Vyberte **Konzola** .  
 
 2. Pomocí [Azure cache pro příkazy Redis](https://redis.io/commands) ověřte, že jsou vaše data v mezipaměti Azure pro Redis. (Příkaz má formát Get {klíč}.) Například:
 
@@ -198,7 +198,7 @@ Pokud při posílání událostí do Azure Functions dojde k selhání, Stream A
 
 Když se na portálu Azure Portal provede pokus o resetování maximální velikosti dávky nebo maximálního počtu v dávce na prázdnou (výchozí) hodnotu, po uložení se tato hodnota změní zpět na dříve zadanou hodnotu. V tom případě zadejte výchozí hodnoty pro tato pole ručně.
 
-Použití [Směrování http](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) na vašem Azure Functions v současnosti není v Stream Analytics podporováno.
+Použití [Směrování http](/sandbox/functions-recipes/routes?tabs=csharp) na vašem Azure Functions v současnosti není v Stream Analytics podporováno.
 
 Podpora pro připojení k Azure Functions hostované ve virtuální síti není povolená.
 
@@ -207,7 +207,7 @@ Podpora pro připojení k Azure Functions hostované ve virtuální síti není 
 Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud plánujete používat tuto úlohu v budoucnu, můžete ji zastavit a znovu ji spustit později, až ji budete potřebovat. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené podle tohoto rychlého startu pomocí následujícího postupu:
 
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.  
-2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
+2. Na stránce skupiny prostředků klikněte na **Odstranit** , do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat NGINX příchozího �
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 2055946728231452b5359bbe4c98892cba72cfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ef83c25f4af85fcf8dbb1ee78bd3f797e5a3581
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855816"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131135"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat do interní virtuální sítě ve službě Azure Kubernetes (AKS)
 
@@ -50,10 +50,10 @@ Teď nasaďte *Nginx a vstupní* graf s Helm. Chcete-li použít soubor manifest
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
-> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic* . Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro* . Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 ```console
 # Create a namespace for your ingress resources
@@ -111,7 +111,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -292,7 +292,7 @@ Další možností je podrobnější přístup k odstranění jednotlivých vytv
 helm list --namespace ingress-basic
 ```
 
-Vyhledejte grafy s názvem *Nginx-* příchozí a *AKS-HelloWorld*, jak je znázorněno v následujícím příkladu výstupu:
+Vyhledejte grafy s názvem *Nginx-* příchozí a *AKS-HelloWorld* , jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list --namespace ingress-basic

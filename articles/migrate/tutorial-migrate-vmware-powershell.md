@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 10/1/2020
 ms.author: rahugup
-ms.openlocfilehash: eed10f13b9495ab2cccfd9c57ae14ccc5d8e4a63
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 40f8a63481adc2e5641337c41dee1cf55d1f39ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043540"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130302"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>Migrace virtuálních počítačů VMware do Azure (bez agenta) – PowerShell
 
@@ -33,7 +33,7 @@ Získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -114,10 +114,10 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer -ProjectName $MigrateProject.
 
 [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool) využívá více prostředků Azure pro migraci virtuálních počítačů. Migrace serveru zřídí následující prostředky ve stejné skupině prostředků jako projekt.
 
-- **Service Bus**: Migrace serveru používá Service Bus k posílání zpráv orchestrace replikace do zařízení.
-- **Účet úložiště brány**: Migrace serveru používá účet úložiště brány k ukládání informací o stavu virtuálních počítačů, které se replikují.
-- **Účet úložiště protokolu**: zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na disky spravované replikou.
-- **Trezor klíčů**: zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci.
+- **Service Bus** : Migrace serveru používá Service Bus k posílání zpráv orchestrace replikace do zařízení.
+- **Účet úložiště brány** : Migrace serveru používá účet úložiště brány k ukládání informací o stavu virtuálních počítačů, které se replikují.
+- **Účet úložiště protokolu** : zařízení Azure Migrate nahrává protokoly replikace pro virtuální počítače do účtu úložiště protokolu. Azure Migrate použije informace o replikaci na disky spravované replikou.
+- **Trezor klíčů** : zařízení Azure Migrate používá Trezor klíčů ke správě připojovacích řetězců pro Service Bus a přístup k klíčům pro účty úložiště používané v replikaci.
 
 Před replikací prvního virtuálního počítače v projektu Azure Migrate spusťte následující skript, který zřídí infrastrukturu replikace. Tento skript zřídí a nakonfiguruje výše uvedené prostředky, abyste mohli začít migrovat vaše virtuální počítače VMware.
 
@@ -146,7 +146,7 @@ Vlastnosti replikace můžete zadat následujícím způsobem.
 - **Cílová virtuální síť a podsíť** – zadejte ID Virtual Network Azure a název podsítě, do které se má virtuální počítač migrovat, pomocí `TargetNetworkId` parametrů a v `TargetSubnetName` uvedeném pořadí. 
 - **Název cílového virtuálního počítače** – zadejte název virtuálního počítače Azure, který se má vytvořit, pomocí `TargetVMName` parametru.
 - **Velikost cílového virtuálního počítače** – určete velikost virtuálního počítače Azure, která se má použít pro virtuální počítač pro replikaci pomocí `TargetVMSize` parametru. Pokud například chcete migrovat virtuální počítač na D2_v2 virtuálního počítače v Azure, zadejte hodnotu `TargetVMSize` jako "Standard_D2_v2".  
-- **Licence** – Chcete-li použít zvýhodněné hybridní využití Azure pro počítače s Windows serverem, které jsou pokryté s aktivními předplatnými Software Assurance nebo Windows Server, zadejte hodnotu `LicenseType` parametru jako "AHUB". V opačném případě zadejte hodnotu `LicenseType` parametru jako "NoLicenseType".
+- **Licence** – Chcete-li použít zvýhodněné hybridní využití Azure pro počítače s Windows serverem, které jsou pokryté s aktivními předplatnými Software Assurance nebo Windows Server, zadejte hodnotu `LicenseType` parametru jako "windowsserver". V opačném případě zadejte hodnotu `LicenseType` parametru jako "NoLicenseType".
 - **Disk s operačním** systémem – zadejte jedinečný identifikátor disku, který obsahuje zaváděcí program pro spouštění a instalaci operačního systému. ID disku, který se má použít, je vlastnost jedinečného identifikátoru (UUID) pro disk načtený pomocí `Get-AzMigrateServer` rutiny.
 - **Typ disku** – zadejte hodnotu `DiskType` parametru následujícím způsobem.
     - Chcete-li použít disky spravované na úrovni Premium, zadejte jako hodnotu parametru "Premium_LRS" `DiskType` . 
@@ -156,6 +156,7 @@ Vlastnosti replikace můžete zadat následujícím způsobem.
     - Zóna dostupnosti pro připnutí migrovaného počítače ke konkrétní zóně dostupnosti v oblasti Tuto možnost použijte k distribuci serverů, které tvoří aplikační vrstvu s více uzly napříč Zóny dostupnosti. Tato možnost je dostupná jenom v případě, že cílová oblast vybraná pro migraci podporuje Zóny dostupnosti. Pokud chcete použít zóny dostupnosti, zadejte hodnotu zóny dostupnosti pro `TargetAvailabilityZone` parametr.
     - Skupina dostupnosti umístí migrovaný počítač do skupiny dostupnosti. Vybraná cílová skupina prostředků musí mít jednu nebo víc skupin dostupnosti, aby bylo možné tuto možnost použít. Chcete-li použít skupinu dostupnosti, zadejte ID skupiny dostupnosti pro `TargetAvailabilitySet` parametr. 
 
+### <a name="replicate-vms-with-all-disks"></a>Replikace virtuálních počítačů se všemi disky
 V tomto kurzu budeme replikovat všechny disky zjištěného virtuálního počítače a zadat nový název virtuálního počítače v Azure. Určíme první disk zjištěného serveru jako disk s operačním systémem a migrujete všechny disky jako HDD úrovně Standard. Disk s operačním systémem je disk, který obsahuje spouštěcí zavaděč a instalační program operačního systému.
 
 ```azurepowershell
@@ -178,6 +179,7 @@ while (($MigrateJob.State -eq "InProgress") -or ($MigrateJob.State -eq "NotStart
 Write-Output $MigrateJob.State
 ```
 
+### <a name="replicate-vms-with-select-disks"></a>Replikace virtuálních počítačů pomocí vybraných disků
 Můžete také selektivně replikovat disky zjištěného virtuálního počítače pomocí `New-AzMigrateDiskMapping` rutiny a poskytnout je jako vstup do `DiskToInclude` parametru v `New-AzMigrateServerReplication` rutině. Pomocí `New-AzMigrateDiskMapping` rutiny můžete také určit různé typy cílových disků pro jednotlivé disky, které se mají replikovat. 
 
 Zadejte hodnoty pro následující parametry `New-AzMigrateDiskMapping` rutiny.
@@ -416,8 +418,8 @@ $StopReplicationJob = Remove-AzMigrateServerReplication -InputObject $Replicatin
 ## <a name="post-migration-best-practices"></a>Osvědčené postupy po migraci
 
 - Pro zvýšení odolnosti:
-    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Další informace](../backup/quick-backup-vm-portal.md).
-    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Zálohujte virtuální počítače Azure pomocí služby Azure Backup, abyste měli data zabezpečená. [Přečtěte si další informace](../backup/quick-backup-vm-portal.md).
+    - Replikujte virtuální počítače Azure do sekundární oblasti pomocí služby Site Recovery, aby úlohy mohly neustále běžet a byly dostupné. [Přečtěte si další informace](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - Pro zvýšení zabezpečení:
     - Odblokujte a omezte přístup k příchozímu provozu pomocí [správy v čase Azure Security Center](../security-center/security-center-just-in-time.md).
     - Omezte síťový provoz na koncové body správy pomocí [skupin zabezpečení sítě](../virtual-network/security-overview.md).

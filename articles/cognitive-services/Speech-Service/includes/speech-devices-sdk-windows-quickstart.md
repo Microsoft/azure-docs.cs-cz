@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0fae0172467bb4499c2710c49553d9134a32fa9b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92169087"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93136068"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . Pro konverzaci s přepisem se podporuje jenom [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . Pro jiný hlas použijte lineární pole Mic, která poskytují geometrii pole mikrofonu.
 
@@ -42,19 +42,19 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 1. Spusťte Eclipse.
 
-1. Ve **Spouštěči s IDE pro zatmění**zadejte do pole **pracovní prostor** název nového adresáře pracovního prostoru. Potom vyberte **Launch** (Spustit).
+1. Ve **Spouštěči s IDE pro zatmění** zadejte do pole **pracovní prostor** název nového adresáře pracovního prostoru. Potom vyberte **Launch** (Spustit).
 
    ![Snímek obrazovky zobrazující spouštěč zatmění, kde zadáváte název adresáře pracovního prostoru](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud se zobrazí úvodní obrazovka, zavřete ji.
 
-1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java**. Pokud není k dispozici, zvolte **projekt** a pak **projekt Java**.
+1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java** . Pokud není k dispozici, zvolte **projekt** a pak **projekt Java** .
 
-1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Dokončit**.
+1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Dokončit** .
 
    ![Snímek obrazovky, který ukazuje Průvodce novým projektem Java.](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Dokončit**.
+1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Dokončit** .
 
    ![Snímek obrazovky s průzkumníkem balíčků](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -74,7 +74,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.13.0</version>
+             <version>1.14.0</version>
         </dependency>
     </dependencies>
    ```
@@ -112,7 +112,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
     Chcete-li použít nové klíčové slovo, aktualizujte následující řádek v `FunctionsList.java` a zkopírujte klíčové slovo do aplikace. Například pro použití klíčového slova ' Machine ' z balíčku klíčového slova `machine.zip` :
 
-   * Zkopírujte `kws.table` soubor z balíčku zip do složky **cíl/třídy**projektu.
+   * Zkopírujte `kws.table` soubor z balíčku zip do složky **cíl/třídy** projektu.
    * Aktualizujte `FunctionsList.java` název klíčového slova:
 
      ```java
@@ -121,7 +121,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Spuštění ukázkové aplikace z zatmění
 
-1. V řádku nabídek zatmění **Spusťte**  >  **Run As**  >  **aplikaci Java**. Pak vyberte **FunctionsList** a **OK**.
+1. V řádku nabídek zatmění **Spusťte**  >  **Run As**  >  **aplikaci Java** . Pak vyberte **FunctionsList** a **OK** .
 
    ![Snímek obrazovky s vybranou aplikací Java](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,19 +129,19 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
    ![Snímek obrazovky s ukázkou aplikace a možnosti sady SDK pro zařízení Speech](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením**relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být vloženy do souboru `participants.properties` v **cílové nebo třídy**složky projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Vyzkoušejte si novou ukázku **přepisu konverzace** . Spusťte zdlouhavého přepisování s **Session**  >  **zahájením** relace. Ve výchozím nastavení je každý host. Nicméně pokud máte signatury hlasu účastníka, mohou být vloženy do souboru `participants.properties` v **cílové nebo třídy** složky projektu. Pokud chcete vygenerovat hlasový podpis, podívejte se na [konverzace přepisovat (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Snímek obrazovky s ukázkou aplikace přepisující konverzaci](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>Vytvoření a spuštění samostatné aplikace
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. Vyberte **exportovat**.
+1. V **Průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt. Vyberte **exportovat** .
 
-1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další**.
+1. Zobrazí se okno **exportovat** . Rozbalte **Java** a vyberte **soubor JAR spustitelný** a pak vyberte **Další** .
 
    ![Snímek obrazovky, který zobrazuje okno pro export, ve kterém vyberete soubor JAR spustitelný](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. Zobrazí se okno pro **Export souboru jar spustitelný** . Zvolte **cíl exportu** pro aplikaci a pak vyberte **Dokončit**.
+1. Zobrazí se okno pro **Export souboru jar spustitelný** . Zvolte **cíl exportu** pro aplikaci a pak vyberte **Dokončit** .
 
    ![Snímek obrazovky, který zobrazuje okno pro export souboru JAR spustitelný, kde zvolíte cíl exportu.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 

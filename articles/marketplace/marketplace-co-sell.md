@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 819b0401b8516538c6fdd12b47e57f79ec45ae09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131084"
 ---
 # <a name="co-sell-partner-engagement"></a>Zapojení partnerů do společného prodeje
 
 Pomocí programu společného prodeje můžete pracovat přímo se prodejci Microsoftu na společných prodejních příležitostech a odemykat významné další komerční a obchodní výhody, které se prodávají prostřednictvím komerčního tržiště.
 
-Program pro společný prodej je dostupný pro **software sestavený s duševním vlastnictvím (IP),** který je možné zabalit, zabalené nabídky a pro **služby s integrovanými technologiemi Microsoftu**. Většina typů nabídek v programu společného prodeje je také k dispozici na komerčním webu Marketplace. Nabídky, které splňují další požadavky, se stanou **připravenými pro spoluprodejní** **motivovaní nebo spoluprodejně**.
+Program pro společný prodej je dostupný pro **software sestavený s duševním vlastnictvím (IP),** který je možné zabalit, zabalené nabídky a pro **služby s integrovanými technologiemi Microsoftu** . Většina typů nabídek v programu společného prodeje je také k dispozici na komerčním webu Marketplace. Nabídky, které splňují další požadavky, se stanou **připravenými pro spoluprodejní** **motivovaní nebo spoluprodejně** .
 
 - **Nabídky společnosti** Microsoft pro vystavování jsou vystavené nabídkám pro prodej. Při práci s prodejci Microsoftu vám program pro spoluprodejní aplikace pomůže oslovit rozsáhlou komunitu spravovaných zákazníků Microsoftu, aby spolupracovali s prodejními příležitostmi, které urychlují růst vašeho podnikání.
 
@@ -40,15 +40,15 @@ Nabídky, které dosahují **společného prodeje Azure IP motivovaní** stav z�
 
 ## <a name="co-sell-publishing-steps-and-requirements"></a>Společný prodej kroků a požadavků publikování
 
-V následující tabulce jsou uvedené kroky a požadavky pro získání nabídky na webu Marketplace, které jsou připravené nebo společně prodávány motivovaní. Ne všechny typy nabídek z komerčního tržiště je možné v partnerském centru ještě konfigurovat pro společný prodej. Nejnovější informace najdete [v tématu možnost společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell) . 
+V následující tabulce jsou uvedené kroky a požadavky pro získání nabídky na webu Marketplace, které jsou připravené nebo společně prodávány motivovaní. Ne všechny typy nabídek z komerčního tržiště je možné v partnerském centru ještě konfigurovat pro společný prodej. Nejnovější informace najdete [v tématu možnost společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md) . 
 
 |Krok    |Typ nabídky    |Požadavky    |Stav společného prodeje    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> Vytvořte si účet v partnerském centru a publikujte nabídku na komerčním webu Marketplace.</li>|Vše|<li>Tato nabídka splňuje požadavky na publikování na komerčním webu Marketplace.</li><li>Máte kompletní obchodní profil v partnerském centru.</li>|Nepřipraveno|
-|<ol start=2><li>Odeslat požadované spoluprodejní materiály.</li>|Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|[Odeslat požadované materiály do partnerského centra](#how-to-submit-co-sell-materials-in-partner-center)|Připravený společný prodej|
-||Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.|Připravený společný prodej|
+|<ol start=2><li>Odeslat požadované spoluprodejní materiály.</li>|Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md)|[Odeslat požadované materiály do partnerského centra](#how-to-submit-co-sell-materials-in-partner-center)|Připravený společný prodej|
+||Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md)|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.|Připravený společný prodej|
 ||Konzultační služby|<li>Požadavek na [spolupráci s cloudovým specialistem](https://partner.microsoft.com/campaigns/ced-nomination-form/) , který poskytne požadovanou dokumentaci pro spoluprodej.</li><li>Aktivní kompetence Gold.</li>|Připravený společný prodej|
-|<ol start=3><li>Nárok na pobídky pro společný prodej IP</li>|Aplikace Azure, kontejnery Azure, IoT Edge moduly, SaaS, virtuální počítače|Po dosažení připraveného společného prodeje jsou k dispozici dva další požadavky: <ul> Požadavek 1: dosáhnete těchto:<ul><li>*Na úrovni organizace:* vyhovět nebo překročit $100 000 USD výnosů za Azure spotřebovaných za poslední 12 měsíců.</li><li>*Na úrovni nabídky:* účtované výnosy z kumulativního tržiště $100 000 USD.</li></ul><br>Požadavek 2: v Azure musí běžet více než 50% infrastruktury vaší nabídky:<ul><li>Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury se společnými prodeji dokumentů v partnerském centru pro kontrolu.</li><li>Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell): nahrání diagramu architektury do OCP GTM.|Azure IP – společný prodej motivovaní|
+|<ol start=3><li>Nárok na pobídky pro společný prodej IP</li>|Aplikace Azure, kontejnery Azure, IoT Edge moduly, SaaS, virtuální počítače|Po dosažení připraveného společného prodeje jsou k dispozici dva další požadavky: <ul> Požadavek 1: dosáhnete těchto:<ul><li>*Na úrovni organizace:* vyhovět nebo překročit $100 000 USD výnosů za Azure spotřebovaných za poslední 12 měsíců.</li><li>*Na úrovni nabídky:* účtované výnosy z kumulativního tržiště $100 000 USD.</li></ul><br>Požadavek 2: v Azure musí běžet více než 50% infrastruktury vaší nabídky:<ul><li>Nabídky protokolu IP *s* [možností společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md): nahrání diagramu architektury se společnými prodeji dokumentů v partnerském centru pro kontrolu.</li><li>Nabídky protokolu IP *bez* [možnosti společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md): nahrání diagramu architektury do OCP GTM.|Azure IP – společný prodej motivovaní|
 ||Dynamics|<li>Máte aktivní registraci na ISV Connect Premium úrovně.</li>|Business Applications spoluprodeji motivovaní|
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Jak odeslat materiály pro spoluprodej v partnerském centru
@@ -56,24 +56,24 @@ V následující tabulce jsou uvedené kroky a požadavky pro získání nabídk
 Svůj společný prodej přímo v partnerském centru začněte podle následujících kroků. Další podrobnosti najdete v tématu [možnost společného prodeje v partnerském centru](./partner-center-portal/commercial-marketplace-co-sell.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-1. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview**a pak vyberte nabídku, kterou chcete společně prodávat.
+1. V levém podokně vyberte přehled **komerčního tržiště**  >  **Overview** a pak vyberte nabídku, kterou chcete společně prodávat.
 
     > [!NOTE]
     > K programu společného prodeje se můžete připojit pomocí nové nabídky, která ještě není publikovaná, nebo s nabídkou, která už je publikovaná.
 
-1. V nabídce na levé straně vyberte **společný prodej s Microsoftem**.
+1. V nabídce na levé straně vyberte **společný prodej s Microsoftem** .
 
     :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
 
-1. Poskytněte základní informace o seznamech, které pomůžou prodejcům Microsoftu rychle seřadit a zjistit vaši nabídku v oddílu **výpisu** . (*Požadováno: všechna pole.*)
+1. Poskytněte základní informace o seznamech, které pomůžou prodejcům Microsoftu rychle seřadit a zjistit vaši nabídku v oddílu **výpisu** . ( *Požadováno: všechna pole.* )
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::  
 
-1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. (*Požadováno: zákaznická balíček One-pager a zákaznická prezentace.*)
+1. Zadejte podrobnosti o vaší nabídce a dokumentaci k odeslání do části **dokumenty** . Prodejci Microsoftu použijí tyto informace k doporučení a prodeji vaší nabídky. ( *Požadováno: zákaznická balíček One-pager a zákaznická prezentace.* )
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft.":::
  
-1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. (*Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.*)
+1. Odeslat prodejní kontaktní informace v části **Kontakty** . Prodejci Microsoftu mohou kontaktovat tyto kontakty a požádat o další informace o vaší nabídce. ( *Požadováno: kontakt pro každou zeměpisnou oblast, ve které je vaše nabídka dostupná.* )
 
     :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="Tento obrázek ukazuje umístění společného prodeje na kartě Microsoft." vyberte možnost "připustit do stejného prodeje":
 <ul><ul>
