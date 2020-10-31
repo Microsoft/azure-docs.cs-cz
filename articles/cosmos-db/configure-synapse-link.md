@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e62128edf6558e461bf2c61f16d513c4085241e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489264"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090388"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
@@ -44,7 +45,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
 
-1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte **Povolit**. Dokončení tohoto procesu může trvat 1 až 5 minut.
+1. V dalším kroku se zobrazí výzva, abyste na svém účtu povolili odkaz na synapse. Vyberte **Povolit** . Dokončení tohoto procesu může trvat 1 až 5 minut.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Najít funkci synapse Link Preview":::
 
@@ -70,11 +71,11 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Najít funkci synapse Link Preview":::
 
-1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse**. Dokončení tohoto procesu může trvat 1 až 5 minut.
+1. Pokud jste na tomto účtu dříve nepovolili odkaz na synapse, zobrazí se výzva k tomu, abyste to učinili, protože je to předpoklad pro vytvoření kontejneru s povoleným analytickým úložištěm. Po zobrazení výzvy vyberte **Povolit odkaz na synapse** . Dokončení tohoto procesu může trvat 1 až 5 minut.
 
-1. Vyberte **OK**a vytvořte kontejner Azure Cosmos s povoleným analytickým úložištěm.
+1. Vyberte **OK** a vytvořte kontejner Azure Cosmos s povoleným analytickým úložištěm.
 
-1. Po vytvoření kontejneru ověřte, že je analytické úložiště povolené, a to tak, že kliknete na **Nastavení**, vpravo pod dokumenty v Průzkumník dat a zkontrolujete, jestli je zapnutá možnost **Doba provozu analytického úložiště** .
+1. Po vytvoření kontejneru ověřte, že je analytické úložiště povolené, a to tak, že kliknete na **Nastavení** , vpravo pod dokumenty v Průzkumník dat a zkontrolujete, jestli je zapnutá možnost **Doba provozu analytického úložiště** .
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -217,7 +218,7 @@ Postupujte podle pokynů v článku [dotaz Azure Cosmos DB analytické úložiš
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> Dotazování analytického úložiště s využitím synapse SQL bez serveru
 
-Synapse SQL bez serveru (funkce Preview, která se dřív odkazovala na **požadavky SQL na vyžádání**), umožňuje dotazovat a analyzovat data v kontejnerech Azure Cosmos DB, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku s [dotazem na analytické úložiště s synapse SQL bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
+Synapse SQL bez serveru (funkce Preview, která se dřív odkazovala na **požadavky SQL na vyžádání** ), umožňuje dotazovat a analyzovat data v kontejnerech Azure Cosmos DB, které jsou povolené pomocí odkazu Azure synapse. Data můžete analyzovat téměř v reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z analytického úložiště a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL. Další informace najdete v článku s [dotazem na analytické úložiště s synapse SQL bez serveru](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) .
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>K analýze a vizualizaci dat v Power BI používejte SQL Server bez serveru synapse
 
@@ -237,7 +238,7 @@ Další informace najdete v následujících dokumentech:
 
 * [Odkaz na Azure synapse pro Azure Cosmos DB.](synapse-link.md)
 
-* [Přehled analytického úložiště Azure Cosmos DB.](analytical-store-introduction.md)
+* [Přehled analytického úložiště Azure Cosmos DB](analytical-store-introduction.md)
 
 * [Nejčastější dotazy týkající se Azure Cosmos DB odkaz na synapse.](synapse-link-frequently-asked-questions.md)
 

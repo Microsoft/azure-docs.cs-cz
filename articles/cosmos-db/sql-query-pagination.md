@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089232"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Stránkování v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V Azure Cosmos DB mohou dotazy obsahovat více stránek výsledků. Tento dokument vysvětluje kritéria, která Azure Cosmos DB dotazovací modul používá k rozhodnutí, zda se mají rozdělit výsledky dotazu na více stránek. Volitelně můžete použít tokeny pro pokračování ke správě výsledků dotazu, které jsou rozloženy na více stránkách.
 
@@ -23,7 +24,7 @@ Někdy budou výsledky dotazu rozděleny na více stránek. Výsledky každé st
 
 Můžete zadat maximální počet položek vrácených dotazem nastavením `MaxItemCount` . `MaxItemCount`Je určen pro každý požadavek a oznamuje dotazovacímu stroji, aby vrátil tento počet položek nebo méně. Můžete nastavit `MaxItemCount` na, `-1` Pokud nechcete omezit počet výsledků na provedení dotazu.
 
-Kromě toho existují další důvody, proč může dotazovací stroj potřebovat rozdělit výsledky dotazu na více stránek. Tady jsou některé z nich:
+Kromě toho existují další důvody, proč může dotazovací stroj potřebovat rozdělit výsledky dotazu na více stránek. Mezi ně patří:
 
 - Kontejner byl omezen a nebylo k dispozici ru k vrácení více výsledků dotazu.
 - Odpověď na provedení dotazu byla příliš velká.
@@ -45,12 +46,13 @@ Tady je několik příkladů zpracování výsledků z dotazů s více stránkam
 
 ## <a name="continuation-tokens"></a>Tokeny pro pokračování
 
-V sadě .NET SDK a Java SDK můžete volitelně použít tokeny pro pokračování jako záložku pro průběh dotazu. Azure Cosmos DB provádění dotazů je bezstavové na straně serveru a lze je kdykoli obnovit pomocí tokenu pro pokračování. Tokeny pro pokračování nejsou podporovány v sadě SDK Node.js SDK nebo Python SDK.
+V sadě .NET SDK a Java SDK můžete volitelně použít tokeny pro pokračování jako záložku pro průběh dotazu. Azure Cosmos DB provádění dotazů je bezstavové na straně serveru a lze je kdykoli obnovit pomocí tokenu pro pokračování. Tokeny pro pokračování nejsou v sadě Node.js SDK podporovány. V sadě Python SDK je podporováno pro dotazy s jedním oddílem a v objektu Options je nutné zadat PK, protože není dostačující pro vlastní dotaz.
 
 Tady je příklad použití tokenů pro pokračování:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Pokud dotaz vrátí token pro pokračování, existují další výsledky dotazu.
 

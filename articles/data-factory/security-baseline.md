@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089079"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Základní hodnoty zabezpečení Azure pro Azure Data Factory
 
@@ -688,9 +688,9 @@ Pokud používáte Integration Runtime na virtuálním počítači Azure, postup
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Řešení Update Management v Azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Řešení Update Management v Azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Správa aktualizací a oprav pro virtuální počítače Azure](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny** : pokud používáte Integration runtime na virtuálním počítači Azure, můžete použít řešení pro správu oprav třetí strany. Pomocí řešení Azure Update Management můžete spravovat aktualizace a opravy pro virtuální počítače. Update Management spoléhá na místně nakonfigurované úložiště aktualizací, které opraví podporované systémy Windows. Nástroje, jako je System Center Updates Publisher (Updates Publisher), umožňují publikovat vlastní aktualizace do Windows Server Update Services (WSUS). Tento scénář umožňuje Update Management opravit počítače, které používají Configuration Manager jako úložiště aktualizací se softwarem třetích stran.
 
-* [Řešení Update Management v Azure](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Řešení Update Management v Azure](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [Správa aktualizací a oprav pro virtuální počítače Azure](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [Správa aktualizací a oprav pro virtuální počítače Azure](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Monitorování Azure Security Center** : aktuálně není k dispozici.
 

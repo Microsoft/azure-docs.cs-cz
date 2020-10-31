@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c40f1762ea7c87ea73ec20e47b0398e0d3e364b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 69c8f9f01241100a81ddd1707dbd226e6bf56c2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089011"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Propojení produktů nebo služeb ITSM s využitím ITSM konektoru
 Tento článek poskytuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktem/službou a konektorem Service Management Connector (ITSMC) v Log Analytics pro centrální správu vašich pracovních položek. Další informace o ITSMC najdete v tématu [Přehled](./itsmc-overview.md).
@@ -36,7 +36,7 @@ Následující části obsahují podrobné informace o tom, jak připojit System
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - Webová aplikace Service Manager (webová aplikace) je nasazená a nakonfigurovaná. [Tady](#create-and-deploy-service-manager-web-app-service)jsou informace o webové aplikaci.
 - Hybridní připojení se vytvořilo a nakonfigurovalo. Další informace: [Konfigurace hybridního připojení](#configure-the-hybrid-connection).
 - Podporované verze Service Manager: 2012 R2 nebo 2016.
@@ -184,7 +184,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 ### <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že jsou splněné následující předpoklady:
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - Podporované verze ServiceNow: Orlandu, New York, Madrid, Londýn, Kingston, Jakarta, Istanbul, Helsinky, Ženeva.
 > [!NOTE]
 > ITSMC podporuje nyní jenom oficiální nabídku SaaS ze služby. Soukromá nasazení služby teď nejsou podporovaná. 
@@ -316,7 +316,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 Ujistěte se, že jsou splněné následující předpoklady:
 
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - Aplikace pro zakazování by měla být zaregistrovaná ve službě Azure AD – a ID klienta je dostupné. Podrobné informace najdete v tématu [Konfigurace ověřování služby Active Directory](../../app-service/configure-authentication-provider-aad.md).
 
 - Role uživatele: správce.
@@ -373,7 +373,7 @@ Následující části obsahují podrobné informace o tom, jak připojit produk
 
 Ujistěte se, že jsou splněné následující předpoklady:
 
-- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC je nainstalovaný. Další informace: [Přidání řešení IT Service Management Connector](./itsmc-overview.md#add-it-service-management-connector).
 - ID klienta bylo vygenerováno. Další informace: [vygenerujte ID klienta pro Cherwell](#generate-client-id-for-cherwell).
 - Role uživatele: správce.
 

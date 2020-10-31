@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c37224a3a455abcf3de62998cb65e1d66a1bb0f2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910708"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088875"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD pro API Management používání šablon Azure Resource Manager
 
@@ -43,7 +43,7 @@ V tomto příkladu jsou k dispozici dvě prostředí nasazení: *vývoj* a *prod
 
 Klíčem k tomuto navrhovanému přístupu je udržování všech konfigurací API Management v [šablonách Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Organizace by tyto šablony měly uchovat v systému správy zdrojového kódu, jako je třeba Git. Jak je znázorněno na obrázku, obsahuje úložiště vydavatele všechny konfigurace produkčního API Management instance v kolekci šablon:
 
-|Šablona  |Popis  |
+|Šablona  |Description  |
 |---------|---------|
 |Šablona služby     | Konfigurace na úrovni služby API Management instance, jako je například cenová úroveň a vlastní domény.         |
 |Sdílené šablony     |  Sdílené prostředky v rámci instance API Management, jako jsou skupiny, produkty a protokolovací nástroje.    |
@@ -67,7 +67,8 @@ Vývojáři rozhraní API čelí při práci se šablonami Správce prostředků
 
 * Vydavatelé rozhraní API můžou žádost o přijetí změn ověřit a ujistit se, že jsou tyto změny bezpečné a kompatibilní. Mohou například kontrolovat, zda může komunikovat s rozhraním API pouze protokol HTTPS. Většinu ověření můžete automatizovat jako krok v kanálu CI/CD.
 
-* Po schválení a sloučení změn se můžou vydavatelé rozhraní API rozhodnout nasadit je do provozní instance buď podle plánu, nebo na vyžádání. Můžou automatizovat nasazení šablon pomocí [akcí GitHubu](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipelines](/devops/pipelines/), [Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md), rozhraní příkazového [řádku Azure](../azure-resource-manager/templates/deploy-cli.md)nebo dalších nástrojů.
+* Jakmile se změny schvalují a sloučí se úspěšně, vydavatelé rozhraní API je můžou zvolit, aby je nasadili do provozní instance, a to buď podle plánu, nebo na vyžádání. Nasazení šablon lze automatizovat pomocí [akcí GitHubu](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipelines](/azure/devops/pipelines), [Azure POWERSHELL](../azure-resource-manager/templates/deploy-powershell.md), rozhraní příkazového [řádku Azure](../azure-resource-manager/templates/deploy-cli.md)a dalších nástrojů.
+
 
 Díky tomuto přístupu může organizace automatizovat nasazení změn rozhraní API do instancí API Management a snadno zvýšit úroveň změn z jednoho prostředí na jiný. Vzhledem k tomu, že různé vývojové týmy rozhraní API budou pracovat na různých sadách šablon a souborů rozhraní API, zabraňuje rušení mezi různými týmy.
 

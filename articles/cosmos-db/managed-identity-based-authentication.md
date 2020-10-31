@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918033f736a28534cd36a4637b41d0a6b3b4cdc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088569"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V tomto článku nastavíte robustní řešení nezávislá pro *střídání klíčů* pro přístup k Azure Cosmos DB klíčům pomocí [spravovaných identit](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Příklad v tomto článku používá Azure Functions, ale můžete použít libovolnou službu, která podporuje spravované identity. 
 
@@ -33,7 +34,7 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
-1. Na kartě **Identita** **zapněte** **stav** identity systému a vyberte **Uložit**. Podokno **Identita** by mělo vypadat takto:  
+1. Na kartě **Identita** **zapněte** **stav** identity systému a vyberte **Uložit** . Podokno **Identita** by mělo vypadat takto:  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
@@ -60,19 +61,19 @@ V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data za
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
-1. Vyberte **+ Přidat** > **Přidat přiřazení role**.
+1. Vyberte **+ Přidat** > **Přidat přiřazení role** .
 
 1. Otevře se panel **přiřazení role přidat** napravo:
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
-   * **Role**: vyberte **Přispěvatel účtu DocumentDB** .
-   * **Přiřadit přístup k**: v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App**.
-   * **Vyberte**: v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému**. V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
+   * **Role** : vyberte **Přispěvatel účtu DocumentDB** .
+   * **Přiřadit přístup k** : v podčásti **Vybrat spravovanou identitu přiřazenou systémem** vyberte **Function App** .
+   * **Vyberte** : v předplatném se naplní všechny aplikace Function App, které mají **identitu spravovaného systému** . V takovém případě vyberte aplikaci funkcí **FishTankTemperatureService** : 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Snímek obrazovky znázorňující funkce platformy a možnosti identity pro aplikaci Function App":::
 
-1. Po výběru aplikace Function App vyberte **Save (Uložit**).
+1. Po výběru aplikace Function App vyberte **Save (Uložit** ).
 
 ### <a name="assign-the-role-using-azure-cli"></a>Přiřazení role pomocí Azure CLI
 

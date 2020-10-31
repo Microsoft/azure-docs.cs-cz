@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475222"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091272"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Sada Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -38,7 +39,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 * **Režim připojení: použít přímý režim**
 <a id="direct-connection"></a>
     
-    Výchozí režim připojení sady Java SDK je přímý. Režim připojení můžete nakonfigurovat v Tvůrci klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*,  *GatewayConnectionConfig* pro *gatewayMode ()*.). Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
+    Výchozí režim připojení sady Java SDK je přímý. Režim připojení můžete nakonfigurovat v Tvůrci klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument ( *DirectConnectionConfig* pro *directMode ()* ,  *GatewayConnectionConfig* pro *gatewayMode ()* .). Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
@@ -106,7 +107,7 @@ Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-v
 
 * **Použijte nejnižší úroveň konzistence požadovanou pro vaši aplikaci.**
 
-    Když vytvoříte *CosmosClient*, použije se výchozí konzistence, pokud není explicitně nastavená *relace*. Pokud vaše logika aplikace nevyžaduje konzistenci *relace* , nastavte *konzistenci* na hodnotu *ne.* Poznámka: doporučuje se používat minimálně konzistenci *relací* v aplikacích, které používají procesor Azure Cosmos DB Change feed.
+    Když vytvoříte *CosmosClient* , použije se výchozí konzistence, pokud není explicitně nastavená *relace* . Pokud vaše logika aplikace nevyžaduje konzistenci *relace* , nastavte *konzistenci* na hodnotu *ne.* Poznámka: doporučuje se používat minimálně konzistenci *relací* v aplikacích, které používají procesor Azure Cosmos DB Change feed.
 
 * **Použití asynchronního rozhraní API k překročení zajištěné propustnosti**
 
@@ -148,13 +149,13 @@ Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-v
 
     V Azure Cosmos DB Java SDK v4 je přímým řešením nejlepší volbou pro zlepšení výkonu databáze s většinou úloh. 
 
-    * ***Přehled přímého režimu**_
+    * ***Přehled přímého režimu** _
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
 
-        Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _*kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
+        Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _ *kanálů* * na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
-    * ***Možnosti konfigurace pro přímý režim**_
+    * ***Možnosti konfigurace pro přímý režim** _
 
         Pokud je žádoucí jiné než výchozí chování přímého režimu, vytvořte instanci _DirectConnectionConfig * a upravte její vlastnosti a pak předejte vlastní instanci vlastnosti metodě *directMode ()* v nástroji Azure Cosmos DB Client Builder.
 
@@ -180,7 +181,7 @@ Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-v
 
         Je důležité si uvědomit, že paralelní dotazy poskytují nejlepší výhody, pokud jsou data rovnoměrně rozložena napříč všemi oddíly v souvislosti s dotazem. Pokud je dělená kolekce rozdělena takovým způsobem, že všechna nebo většina dat vrácených dotazem je soustředěna v několika oddílech (jeden oddíl v nejhorším případě), výkon dotazu by tyto oddíly měl být kritický.
 
-    _ ***Vyladění \: setMaxBufferedItemCount**_
+    _ * **Vyladění \: setMaxBufferedItemCount** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -196,7 +197,7 @@ _ **Horizontálního navýšení kapacity klienta – zatížení**
 
 * **Vyladění velikosti stránek pro dotazy a kanály pro čtení pro lepší výkon**
 
-    Při hromadném čtení dokumentů pomocí funkce kanálu pro čtení (například *readItems*) nebo při vystavení dotazu SQL (*queryItems*) se výsledky vrátí segmenticky, pokud je sada výsledků příliš velká. Ve výchozím nastavení se výsledky vrátí do bloků 100 položek nebo 1 MB, podle toho, který limit se narazí jako první.
+    Při hromadném čtení dokumentů pomocí funkce kanálu pro čtení (například *readItems* ) nebo při vystavení dotazu SQL ( *queryItems* ) se výsledky vrátí segmenticky, pokud je sada výsledků příliš velká. Ve výchozím nastavení se výsledky vrátí do bloků 100 položek nebo 1 MB, podle toho, který limit se narazí jako první.
 
     Předpokládejme, že vaše aplikace vydá dotaz Azure Cosmos DB a předpokládá se, že vaše aplikace vyžaduje úplnou sadu výsledků dotazu, aby bylo možné dokončit její úlohu. Chcete-li snížit počet síťových přenosů potřebných k načtení všech použitelných výsledků, můžete zvětšit velikost stránky úpravou pole Hlavička požadavku [x-MS-Max-Item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) . 
 
@@ -231,11 +232,11 @@ _ **Horizontálního navýšení kapacity klienta – zatížení**
 
     Z nejrůznějších důvodů možná budete chtít přidat protokolování do vlákna, které generuje propustnost vysokého požadavku. Pokud je vaším cílem plně nazvýšit výkon zajištěné propustnosti kontejneru pomocí požadavků generovaných tímto vláknem, optimalizace protokolování můžou významně zlepšit výkon.
 
-    * ***Konfigurace asynchronního protokolovacího**nástroje _
+    * ***Konfigurace asynchronního protokolovacího** nástroje _
 
         Latence synchronního protokolovacího nástroje nutně zohledňuje celkové latence ve vašem vlákně generující požadavky. Asynchronní protokolovací nástroj, jako je [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) , se doporučuje oddělit režijní náklady od vašich vysoce výkonných aplikačních vláken.
 
-    _ ***Zakázat protokolování síťoviny**_
+    _ * **Zakázat protokolování síťoviny** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

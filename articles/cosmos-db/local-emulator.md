@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482617"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088723"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Instalace a použití emulátoru Azure Cosmos pro místní vývoj a testování
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru Azure Cosmos můžete svou aplikaci vyvíjet a testovat místně, aniž byste museli vytvářet předplatné Azure nebo náklady. Až budete spokojeni s tím, jak vaše aplikace funguje v emulátoru Azure Cosmos, můžete přejít na používání účtu Azure Cosmos v cloudu. Tento článek popisuje, jak nainstalovat a používat emulátor v prostředích Windows, Linux, macOS a Windows Docker.
 
@@ -80,7 +81,7 @@ Pokud jste použili výchozí nastavení, budou data odpovídající emulátoru 
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>Použití emulátoru ve Windows
 
-Emulátor Azure Cosmos se `C:\Program Files\Azure Cosmos DB Emulator` ve výchozím nastavení instaluje do umístění. Pokud chcete spustit emulátor Azure Cosmos ve Windows, vyberte tlačítko **Start** nebo stiskněte klávesu Windows. Začněte psát **emulátor Azure Cosmos**a vyberte ze seznamu aplikací emulátor.
+Emulátor Azure Cosmos se `C:\Program Files\Azure Cosmos DB Emulator` ve výchozím nastavení instaluje do umístění. Pokud chcete spustit emulátor Azure Cosmos ve Windows, vyberte tlačítko **Start** nebo stiskněte klávesu Windows. Začněte psát **emulátor Azure Cosmos** a vyberte ze seznamu aplikací emulátor.
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
 
@@ -98,7 +99,7 @@ Emulátor Azure Cosmos ve výchozím nastavení běží na místním počítači
 
 Emulátor Azure Cosmos můžete spustit v kontejneru Docker systému Windows. Další informace najdete v [centru Docker](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) pro příkaz Docker Pull a na [GitHubu](https://github.com/Azure/azure-cosmos-db-emulator-docker) `Dockerfile` . V současné době emulátor nefunguje v Docker pro Oracle Linux. K provedení emulátoru v Docker for Windows použijte následující pokyny:
 
-1. Po instalaci [Docker for Windows](https://www.docker.com/docker-windows) přepněte do kontejnerů Windows tak, že kliknete pravým tlačítkem na ikonu Docker na panelu nástrojů a vyberete **Přepnout na kontejnery Windows**.
+1. Po instalaci [Docker for Windows](https://www.docker.com/docker-windows) přepněte do kontejnerů Windows tak, že kliknete pravým tlačítkem na ikonu Docker na panelu nástrojů a vyberete **Přepnout na kontejnery Windows** .
 
 1. Potom si spuštěním následujícího příkazu z vašeho oblíbeného prostředí stáhněte image emulátoru z Centra Dockeru.
 
@@ -293,7 +294,7 @@ Pokud pracujete na Macu, použijte následující postup:
 
 1. Otevřete seznam certifikátů a Identifikujte ho názvem `localhost` .
 
-1. Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte možnost *získat položku* a v části *důvěřovat*  >  *při použití tohoto certifikátu* vyberte možnost *vždy důvěřovat*. 
+1. Otevřete kontextovou nabídku pro tuto konkrétní položku, vyberte možnost *získat položku* a v části *důvěřovat*  >  *při použití tohoto certifikátu* vyberte možnost *vždy důvěřovat* . 
 
    :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Vyberte tlačítko Start nebo stiskněte klávesu Windows, začněte psát emulátor Azure Cosmos a vyberte ze seznamu aplikací emulátor.":::
   
@@ -328,7 +329,7 @@ Pokud máte více počítačů pomocí jedné sítě, a pokud nastavíte emulát
 
 Emulátor můžete spustit v místní síti. Pokud chcete povolit přístup k síti, zadejte na `/AllowNetworkAccess` [příkazovém řádku](emulator-command-line-parameters.md)možnost, která také vyžaduje, abyste zadali `/Key=key_string` nebo `/KeyFile=file_name` . Můžete použít `/GenKeyFile=file_name` k vygenerování souboru s náhodným klíčem. Pak můžete předat to `/KeyFile=file_name` nebo `/Key=contents_of_file` .
 
-Pokud chcete povolit přístup k síti poprvé, měl by uživatel vypnout emulátor a odstranit adresář dat emulátoru *%localappdata%\CosmosDBEmulator*.
+Pokud chcete povolit přístup k síti poprvé, měl by uživatel vypnout emulátor a odstranit adresář dat emulátoru *%localappdata%\CosmosDBEmulator* .
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>Ověřování připojení při použití emulátoru
 
@@ -458,11 +459,11 @@ Spusťte emulátor z [příkazového řádku](emulator-command-line-parameters.m
 
 K odinstalaci emulátoru použijte následující postup:
 
-1. Zavřete všechny otevřené instance místního emulátoru tak, že kliknete pravým tlačítkem na ikonu **emulátoru Azure Cosmos** na hlavním panelu systému a pak vyberete **ukončit**. Ukončení všech instancí může chvíli trvat.
+1. Zavřete všechny otevřené instance místního emulátoru tak, že kliknete pravým tlačítkem na ikonu **emulátoru Azure Cosmos** na hlavním panelu systému a pak vyberete **ukončit** . Ukončení všech instancí může chvíli trvat.
 
 1. Do vyhledávacího pole Windows zadejte **aplikace & funkce** a vyberte **aplikace & funkce (nastavení systému)** výsledek.
 
-1. V seznamu aplikací se posuňte k **emulátoru Azure Cosmos DB**, vyberte ho, klikněte na **odinstalovat**, pak potvrďte a vyberte **odinstalovat** znovu.
+1. V seznamu aplikací se posuňte k **emulátoru Azure Cosmos DB** , vyberte ho, klikněte na **odinstalovat** , pak potvrďte a vyberte **odinstalovat** znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

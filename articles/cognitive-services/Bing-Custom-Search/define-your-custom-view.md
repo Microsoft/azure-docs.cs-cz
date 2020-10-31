@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183201"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090813"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Vlastní instance vyhledávání umožňuje přizpůsobit možnosti vyhledávání tak, aby zahrnovaly obsah jenom z webů, o kterých se uživatelé setkávají. Místo provádění vyhledávání v rámci webu Bing vyhledává pouze řezy webu, které vás zajímají. Pokud chcete vytvořit vlastní zobrazení webu, použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu.
 
@@ -82,9 +87,9 @@ Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhled�
 
 Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně portálu pro odeslání vyhledávacích dotazů a zobrazení výsledků. 
 
-1. Pod vyhledávacím polem vyberte **Moje instance**. Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing**. 
+1. Pod vyhledávacím polem vyberte **Moje instance** . Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing** . 
 2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web**, **Obrázek**nebo **video** , abyste získali odpovídající výsledky. 
+3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web** , **Obrázek** nebo **video** , abyste získali odpovídající výsledky. 
 
 <a name="adjustrank"></a>
 
@@ -120,7 +125,7 @@ Webovou stránku můžete připnout na začátek dvěma způsoby:
 
 * Na **připnuté** kartě zadejte adresu URL webové stránky, kterou chcete připnout k hornímu, a odpovídající dotaz.
 
-* V podokně **náhledu** zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Vyhledejte webovou stránku, kterou chcete pro svůj dotaz připnout, a klikněte na **Připnout na začátek**. Webová stránka a dotaz budou přidány do **připnutého** seznamu.
+* V podokně **náhledu** zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Vyhledejte webovou stránku, kterou chcete pro svůj dotaz připnout, a klikněte na **Připnout na začátek** . Webová stránka a dotaz budou přidány do **připnutého** seznamu.
 
 ### <a name="specify-the-pins-match-condition"></a>Zadejte podmínku shody PIN kódu.
 

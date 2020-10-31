@@ -4,62 +4,31 @@ description: Naučte se používat skupiny umístění pro Proximity k omezení 
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/19/2020
 author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986708"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090793"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Snížení latence se skupinami umístění blízkosti (Preview)
+# <a name="reduce-latency-with-proximity-placement-groups"></a>Snížení latence se skupinami umístění blízkosti
 
 > [!Note]
 > Při použití skupin umístění blízkosti na AKS se společné umístění týká pouze uzlů agentů. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
 
 Při nasazování aplikace v Azure dojde k rozšiřování instancí virtuálních počítačů v různých oblastech nebo zónách dostupnosti k zajištění latence sítě, což může mít vliv na celkový výkon vaší aplikace. Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že jsou výpočetní prostředky Azure fyzicky umístěné blízko sebe. Některé aplikace, jako jsou hraní her, metodologie a vysoká frekvence obchodování (HFT), vyžadují nízkou latenci a úlohy, které se rychle dokončí. U scénářů s vysokým výkonem (HPC), jako jsou třeba, zvažte použití [skupin umístění blízkosti](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) pro fondy uzlů vašeho clusteru.
 
-## <a name="limitations"></a>Omezení
+## <a name="before-you-begin"></a>Než začnete
+
+Tento článek vyžaduje, abyste spustili Azure CLI verze 2,14 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+
+### <a name="limitations"></a>Omezení
 
 * Skupina umístění blízkosti se může mapovat na maximálně jednu zónu dostupnosti.
 * Fond uzlů musí použít Virtual Machine Scale Sets k přidružení skupiny umístění blízkosti.
 * Fond uzlů může přidružit skupinu umístění blízkosti pouze při vytváření fondu uzlů.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-
-Musíte mít nainstalované následující zdroje:
-
-- Rozšíření AKS-Preview 0.4.53
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Nastavte funkci Preview pro skupiny umístění pro Proximity.
-
-> [!IMPORTANT]
-> Při použití skupin umístění blízkosti s fondy uzlů AKS se společné umístění týká pouze uzlů agentů. Vylepšení uzlu na uzel a odpovídající hostované latenci pod Společné umístění nemá vliv na umístění řídicí plochy clusteru.
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-Registrace může trvat několik minut. Pomocí níže uvedeného příkazu ověřte, že je funkce zaregistrovaná:
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-Během období Preview budete potřebovat rozšíření CLI *AKS-Preview* , které používá skupiny umístění pro Proximity. Použijte příkaz [AZ Extension Add][az-extension-add] a potom vyhledejte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>Fondy uzlů a skupiny umístění blízkosti
 

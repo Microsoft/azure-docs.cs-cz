@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909926"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089633"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Jak vybrat standardní (ruční) a zajištěné propustnosti v rámci automatického škálování 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB podporuje dva typy nebo nabídky zřízené propustnosti: standardní (ruční) a automatické škálování. Oba typy propustnosti jsou vhodné pro klíčové úlohy, které vyžadují vysoký výkon a škálování a jsou založené na stejné Azure Cosmos DB SLA na propustnost, dostupnost, latenci a konzistenci.
 
@@ -26,7 +27,7 @@ Při použití zřízené propustnosti nastavíte propustnost měřenou v jednot
 
 V následující tabulce je uvedeno porovnání na vysoké úrovni mezi standardem (ručním) a AutoScale.
 
-|Popis|Standardní (ruční)|Automatické škálování|
+|Description|Standardní (ruční)|Automatické škálování|
 |-------------|------|-------|
 |Nejlépe vhodné pro|Úlohy se stabilním nebo předvídatelným provozem|Úlohy s proměnným nebo nepředvídatelným provozem. Viz [případy použití automatického škálování](provision-throughput-autoscale.md#use-cases-of-autoscale).|
 |Jak to funguje|V průběhu času zřizujete nastavenou velikost RU/s `T` , pokud je ručně nezměníte. Každou sekundu můžete použít `T` propustnost až ru/s. <br/><br/>Pokud například nastavíte standardní (ruční) 400 RU/s, propustnost zůstane v 400 RU/s.|Nastavíte nejvyšší nebo maximální RU/s, `Tmax` které nechcete, aby systém překročil. Systém automaticky škáluje propustnost `T` tak, aby `0.1* Tmax <= T <= Tmax` . <br/><br/>Pokud například nastavíte automatické škálování maximum RU/s z 4000 RU/s, systém bude škálovat mezi 400-4000 RU/s.|
