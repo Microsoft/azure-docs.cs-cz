@@ -9,14 +9,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 58f22a335f4c619a6348e9e127e60f5a79f658b2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486493"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099653"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace v Pythonu pomocí rozhraní API Azure Cosmos DB pro MongoDB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -99,7 +100,7 @@ Všechny následující fragmenty kódu jsou pořízeny ze souboru *App.py* a po
 
 3. Pak nastavte proměnnou prostředí pro aplikaci v baňce `set FLASK_APP=app.py` `$env:FLASK_APP = app.py` pro editory prostředí PowerShell, nebo `export FLASK_APP=app.py` Pokud používáte Mac. 
 
-4. Spusťte aplikaci pomocí nástroje `flask run` a přejděte na adresu *http: \/ /127.0.0.1:5000/*.
+4. Spusťte aplikaci pomocí nástroje `flask run` a přejděte na adresu *http: \/ /127.0.0.1:5000/* .
 
 5. Přidávejte a odebírejte úlohy a sledujte, jak se objevují a mění v rámci kolekce.
 
@@ -113,15 +114,15 @@ Pokud chcete otestovat kód proti účtu Live Azure Cosmos DB, vytvořte účet 
 
 K otestování kódu proti účtu Live Azure Cosmos DB Získejte informace o svém připojovacím řetězci. Potom ho zkopírujte do aplikace.
 
-1. V Azure Cosmos DB účtu v Azure Portal v levém navigačním panelu vyberte **připojovací řetězec**a pak vyberte **klíče pro čtení i zápis**. Pomocí tlačítek kopírování na pravé straně obrazovky zkopírujte uživatelské jméno, připojovací řetězec a heslo. 
+1. V Azure Cosmos DB účtu v Azure Portal v levém navigačním panelu vyberte **připojovací řetězec** a pak vyberte **klíče pro čtení i zápis** . Pomocí tlačítek kopírování na pravé straně obrazovky zkopírujte uživatelské jméno, připojovací řetězec a heslo. 
 
 2. Otevřete soubor *app.py* v kořenovém adresáři.
 
-3. Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **name** v souboru *app.py*.
+3. Z portálu zkopírujte hodnotu **username** (pomocí tlačítka kopírování) a nastavte ji jako hodnotu položky **name** v souboru *app.py* .
 
 4. Pak z portálu Zkopírujte hodnotu **připojovacího řetězce** a nastavte ji jako hodnotu **MongoClient** v souboru *App.py* .
 
-5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru *app.py*.
+5. Nakonec z portálu zkopírujte hodnotu **password** a nastavte ji jako hodnotu **password** v souboru *app.py* .
 
 Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. Můžete ji spustit stejným způsobem jako předtím.
 

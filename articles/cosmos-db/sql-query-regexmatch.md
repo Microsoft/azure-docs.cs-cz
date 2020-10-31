@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 620ffcb379f9fa1402e422c13bcadf8da4047409
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16004ece7877358be54ba67c2f72eb3210f16fb0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098123"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Poskytuje možnosti regulárních výrazů. Regulární výrazy jsou stručným a flexibilním zápisem pro hledání vzorů textu. Azure Cosmos DB používá [standardní výrazy kompatibilní s Perl (PCRE)](http://www.pcre.org/). 
 
@@ -39,7 +40,7 @@ Můžete se dozvědět o [syntaxi pro vytváření regulárních výrazů v jazy
 
 Azure Cosmos DB podporuje následující čtyři modifikátory:
 
-| Modifikátor | Popis |
+| Modifikátor | Description |
 | ------ | ----------- |
 | `m` | Zacházejte řetězcovým výrazem, který má být prohledán jako více řádků. Bez této možnosti se bude shodovat "^" a "$" na začátku nebo na konci řetězce, a ne na každém jednotlivém řádku. |
 | `s` | Povoluje, aby znak "." odpovídal jakémukoli znaku, včetně znaku nového řádku. | 

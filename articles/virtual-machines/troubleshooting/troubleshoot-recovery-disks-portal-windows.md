@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b7fc4a120f5a4b513e1852fc6e2cf5ab68e9631
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074356"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101251"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal
 Pokud váš virtuální počítač s Windows v Azure najde chybu spuštění nebo disku, možná budete muset provést kroky pro řešení potíží na samotném virtuálním pevném disku. Běžným příkladem může být neúspěšná aktualizace aplikace, která brání úspěšnému spuštění virtuálního počítače. Tento článek podrobně popisuje, jak pomocí Azure Portal připojit virtuální pevný disk k jinému virtuálnímu počítači s Windows a opravit případné chyby a pak znovu vytvořit původní virtuální počítač. 
@@ -40,9 +40,9 @@ Proces řešení potíží je následující:
 Snímek je plná kopie virtuálního pevného disku jen pro čtení (VHD). Doporučujeme, abyste virtuální počítač před vytvořením snímku čistě vypnuli, aby se vymazaly všechny procesy, které probíhají. Pokud chcete pořídit snímek disku s operačním systémem, postupujte podle těchto kroků:
 
 1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
-1. V levém podokně vyberte **disky**a potom vyberte název disku s operačním systémem.
+1. V levém podokně vyberte **disky** a potom vyberte název disku s operačním systémem.
     ![Obrázek s názvem disku s operačním systémem](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Na stránce **Přehled** na disku s operačním systémem a pak vyberte **vytvořit snímek**.
+1. Na stránce **Přehled** na disku s operačním systémem a pak vyberte **vytvořit snímek** .
 1. Vytvořte snímek ve stejném umístění jako disk s operačním systémem.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Vytvoření disku ze snímku
@@ -86,7 +86,7 @@ K vytvoření disku ze snímku použijte následující postup:
 ## <a name="attach-the-disk-to-another-vm"></a>Připojte disk k jinému virtuálnímu počítači.
 V následujících několika krocích použijete pro účely odstraňování potíží jiný virtuální počítač. Po připojení disku k virtuálnímu počítači pro řešení potíží můžete procházet a upravovat obsah disku. Tento proces umožňuje opravit chyby konfigurace nebo zkontrolovat další soubory protokolu aplikace nebo systému. K připojení disku k jinému virtuálnímu počítači použijte následující postup:
 
-1. Z portálu vyberte skupinu prostředků a potom vyberte virtuální počítač pro řešení potíží. Vyberte **disky**, vyberte **Upravit**a pak klikněte na **přidat datový disk**:
+1. Z portálu vyberte skupinu prostředků a potom vyberte virtuální počítač pro řešení potíží. Vyberte **disky** , vyberte **Upravit** a pak klikněte na **přidat datový disk** :
 
     ![Připojit existující disk na portálu](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
@@ -96,11 +96,11 @@ V následujících několika krocích použijete pro účely odstraňování pot
 ## <a name="mount-the-attached-data-disk-to-the-vm"></a>Připojte k virtuálnímu počítači připojený datový disk
 
 1. Otevřete připojení ke vzdálené ploše na virtuálním počítači pro řešení potíží. 
-2. Na virtuálním počítači pro řešení potíží otevřete **Správce serveru**a pak vyberte **Souborová služba a služba úložiště**. 
+2. Na virtuálním počítači pro řešení potíží otevřete **Správce serveru** a pak vyberte **Souborová služba a služba úložiště** . 
 
     ![Vyberte Souborová služba a služba úložiště v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-3. Datový disk se automaticky detekuje a připojí. Pokud chcete zobrazit seznam připojených disků, vyberte **disky**. Můžete vybrat datový disk pro zobrazení informací o svazku, včetně písmene jednotky. Následující příklad ukazuje, že datový disk je připojený a používá **F:**:
+3. Datový disk se automaticky detekuje a připojí. Pokud chcete zobrazit seznam připojených disků, vyberte **disky** . Můžete vybrat datový disk pro zobrazení informací o svazku, včetně písmene jednotky. Následující příklad ukazuje, že datový disk je připojený a používá **F:** :
 
     ![Informace o připojených discích a svazcích v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 
@@ -110,27 +110,27 @@ S připojeným virtuálním pevným diskem teď můžete podle potřeby provád�
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Odpojte a odpojte původní virtuální pevný disk
 Po vyřešení chyb odpojte stávající virtuální pevný disk od virtuálního počítače pro řešení potíží. Virtuální pevný disk nemůžete použít s žádným jiným virtuálním počítačem, dokud se neuvolní zapůjčení virtuálního pevného disku k virtuálnímu počítači pro řešení potíží.
 
-1. Z relace RDP na svůj virtuální počítač otevřete **Správce serveru**a pak vyberte **Souborová služba a služba úložiště**:
+1. Z relace RDP na svůj virtuální počítač otevřete **Správce serveru** a pak vyberte **Souborová služba a služba úložiště** :
 
     ![Vyberte Souborová služba a služba úložiště v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-2. Vyberte **disky** a pak vyberte svůj datový disk. Pravým tlačítkem myši klikněte na datový disk a vyberte příkaz **převést do režimu offline**:
+2. Vyberte **disky** a pak vyberte svůj datový disk. Pravým tlačítkem myši klikněte na datový disk a vyberte příkaz **převést do režimu offline** :
 
     ![Nastavte datový disk jako offline v Správce serveru](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. Teď odpojte virtuální pevný disk od virtuálního počítače. V Azure Portal vyberte svůj virtuální počítač a klikněte na **disky**. 
-4. Vyberte **Upravit**, vyberte disk s operačním systémem, který jste připojili, a potom klikněte na **Odpojit**:
+3. Teď odpojte virtuální pevný disk od virtuálního počítače. V Azure Portal vyberte svůj virtuální počítač a klikněte na **disky** . 
+4. Vyberte **Upravit** , vyberte disk s operačním systémem, který jste připojili, a pak klikněte na **Odstranit** :
 
     ![Odpojit stávající virtuální pevný disk](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    Než budete pokračovat, počkejte, než virtuální počítač úspěšně odpojí datový disk.
+    Počkejte, až se virtuální počítač úspěšně odstraní v rámci virtuálního počítače IE. než budete pokračovat, odpojte datový disk.
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>Prohození disku s operačním systémem pro virtuální počítač
 
 Azure Portal teď podporuje změnu disku s operačním systémem virtuálního počítače. Postupujte takto:
 
 1. Přejít na [Azure Portal](https://portal.azure.com). Z bočního panelu vyberte **virtuální počítače** a potom vyberte virtuální počítač, který má problém.
-1. V levém podokně vyberte **disky**a pak vyberte **swap disk s operačním systémem**.
+1. V levém podokně vyberte **disky** a pak vyberte **swap disk s operačním systémem** .
         ![Obrázek odkládacího disku s operačním systémem v Azure Portal](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
 1. Zvolte nový disk, který jste opravili, a potom zadejte název virtuálního počítače pro potvrzení změny. Pokud se disk v seznamu nezobrazí, počkejte 10. po odpojení disku od virtuálního počítače pro řešení potíží počkejte 10 minut. Také se ujistěte, že je disk ve stejném umístění jako virtuální počítač.

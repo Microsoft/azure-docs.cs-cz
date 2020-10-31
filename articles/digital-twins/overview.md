@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 7ff1e2f00b20344fc19d797ed5bafdfbc2113b66
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044662"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099109"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
 
@@ -52,7 +52,7 @@ Tady je přehled toho, jak vypadá ukázková vizualizace:
 
 Digitální vlákna Azure poskytuje bohatý **systém událostí** , který umožňuje zajistit, aby graf aktuální se zpracováním dat a obchodní logikou. Můžete propojit externí výpočetní prostředky, jako je [Azure Functions](../azure-functions/functions-overview.md), aby se zpracování těchto dat mohlo řídit flexibilním, přizpůsobeným způsobem.
 
-Přehledy můžete také extrahovat z prostředí pro spouštění v reálném čase pomocí výkonného **rozhraní API pro dotazy**Azure Digital revláken. Rozhraní API vám umožní dotazovat se s bohatou vyhledávacími podmínkami, včetně hodnot vlastností, vztahů, vlastností vztahu, informací o modelu a dalších. Můžete také kombinovat dotazy a shromažďovat širokou škálu přehledů o vašem prostředí a odpovídání na vlastní otázky, které jsou pro vás důležité.
+Přehledy můžete také extrahovat z prostředí pro spouštění v reálném čase pomocí výkonného **rozhraní API pro dotazy** Azure Digital revláken. Rozhraní API vám umožní dotazovat se s bohatou vyhledávacími podmínkami, včetně hodnot vlastností, vztahů, vlastností vztahu, informací o modelu a dalších. Můžete také kombinovat dotazy a shromažďovat širokou škálu přehledů o vašem prostředí a odpovídání na vlastní otázky, které jsou pro vás důležité.
 
 ### <a name="input-from-iot-and-business-systems"></a>Vstup z IoT a obchodních systémů
 
@@ -64,7 +64,7 @@ Můžete také řídit digitální vlákna Azure z jiných zdrojů dat pomocí r
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>Výstup do TSI, úložiště a analýzy
 
-Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí**, které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
+Data v modelu digitálních vláken Azure je možné směrovat do navazujících služeb Azure za účelem dalších analýz nebo úložiště. Tato akce je k dispozici prostřednictvím **tras událostí** , které používají [centrum událostí](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)nebo [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) k řízení požadovaných toků dat.
 
 Mezi trasy událostí můžete dělat tyto věci:
 * Ukládání dat digitálních vláken Azure v [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
@@ -90,18 +90,14 @@ Následující diagram znázorňuje, kde se digitální vlákna Azure nachází 
 
 :::image type="content" source="media/overview/solution-context.png" alt-text="Snímek obrazovky s ukázkovou aplikací Průzkumníka digitálních vláken Azure a zobrazením grafu uzlů reprezentujících digitální vlákna" border="false" lightbox="media/overview/solution-context.png":::
 
-## <a name="service-limits-in-public-preview"></a>Omezení služby ve verzi Public Preview
+## <a name="service-limits"></a>Omezení služby
 
-> [!IMPORTANT]
-> Digitální vlákna Azure je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v tématu [*doplňujících podmínek použití pro Microsoft Azure*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
-
-Seznam omezení digitálních vláken Azure v rámci veřejné verze Preview najdete v tématu [*referenční informace: omezení služby Public Preview*](reference-service-limits.md).
+Seznam omezení digitálních vláken Azure najdete v tématu [*referenční informace: omezení služby*](reference-service-limits.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste pracovali s předchozí verzí Preview digitálních vláken Azure, přečtěte si, co se změnilo:
-* [*Přehled: rozdíly z předchozí verze*](overview-differences.md)
+Pokud jste pracovali s první verzí Preview digitálních vláken Azure (říjen 2018), přečtěte si, co se změnilo:
+* [*Přehled: rozdíly od první verze*](overview-differences.md)
 
 Nebo si pokračujte a podrobněi se s využitím digitálních vláken Azure pomocí prvního kurzu:
 

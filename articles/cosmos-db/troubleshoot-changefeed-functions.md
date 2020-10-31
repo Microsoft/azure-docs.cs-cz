@@ -7,14 +7,15 @@ ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da07dc76bdd9273b70f68ee1abcddfa04519fda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365504"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101030"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje běžné problémy, alternativní řešení a diagnostické kroky při použití [triggeru Azure Functions pro Cosmos DB](change-feed-functions.md).
 
@@ -31,7 +32,7 @@ Tento článek se vždy odkazuje na Azure Functions v2 vždy, když je zmíněn 
 
 Klíčovou funkcí balíčku rozšíření je poskytnutí podpory Azure Functions triggeru a vazeb pro Cosmos DB. Zahrnuje také [sadu Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md), která je užitečná, pokud chcete pracovat s Azure Cosmos DB programově bez použití triggeru a vazeb.
 
-Pokud chcete použít sadu Azure Cosmos DB SDK, ujistěte se, že do projektu nepřidáte další odkaz na balíček NuGet. Místo toho je třeba **pomocí balíčku rozšíření Azure Functions vyhodnotit odkaz na sadu SDK**. Využití sady SDK Azure Cosmos DB odděleně od triggeru a vazeb
+Pokud chcete použít sadu Azure Cosmos DB SDK, ujistěte se, že do projektu nepřidáte další odkaz na balíček NuGet. Místo toho je třeba **pomocí balíčku rozšíření Azure Functions vyhodnotit odkaz na sadu SDK** . Využití sady SDK Azure Cosmos DB odděleně od triggeru a vazeb
 
 Pokud navíc ručně vytváříte vlastní instanci [klienta Azure Cosmos DB SDK](./sql-api-sdk-dotnet-core.md), měli byste postupovat podle vzoru, který má pouze jednu instanci klienta s [přístupem ke vzorům typu Singleton](../azure-functions/manage-connections.md#documentclient-code-example-c). Tento proces se zabrání potenciálním problémům soketu v rámci vašich operací.
 
@@ -43,7 +44,7 @@ Funkce Azure Functions se nezdařila s chybovou zprávou "buď zdrojová kolekce
 
 To znamená, že jeden nebo oba kontejnery Azure Cosmos, které má aktivační událost fungovat, neexistují nebo nejsou dosažitelné pro funkci Azure Functions. **Samotná chyba vám řekne, ke které službě Azure Cosmos Database a kontejneru bude na základě vaší konfigurace vyhledána aktivační událost** .
 
-1. Ověřte `ConnectionStringSetting` atribut, který **odkazuje na nastavení, které existuje ve vašem Azure Function App**. Hodnota tohoto atributu nesmí být samotný připojovací řetězec, ale název nastavení konfigurace.
+1. Ověřte `ConnectionStringSetting` atribut, který **odkazuje na nastavení, které existuje ve vašem Azure Function App** . Hodnota tohoto atributu nesmí být samotný připojovací řetězec, ale název nastavení konfigurace.
 2. Ověřte, jestli `databaseName` v `collectionName` účtu Azure Cosmos existují a. Pokud používáte automatické nahrazení hodnoty (pomocí `%settingName%` vzorů), ujistěte se, že název nastavení existuje ve vašem Azure Function App.
 3. Pokud nezadáte a `LeaseCollectionName/leaseCollectionName` , výchozí hodnota je "zapůjčení". Ověřte, že tento kontejner existuje. Volitelně můžete nastavit `CreateLeaseCollectionIfNotExists` atribut v triggeru tak, aby `true` se automaticky vytvořil.
 4. Ověřte [konfiguraci brány firewall účtu Azure Cosmos](how-to-configure-firewall.md) , abyste viděli, že neblokuje funkci Azure Functions.
@@ -94,7 +95,7 @@ V tomto scénáři je nejlepší akcí přidání `try/catch` bloků do kódu a 
 > [!NOTE]
 > Trigger služby Azure Functions pro službu Cosmos DB ve výchozím nastavení neopakuje dávku změn, pokud při provádění kódu dojde k neošetřené výjimce. To znamená, že důvodem nedoručení změn do cíle je to, že nebudete schopni je zpracovat.
 
-Pokud zjistíte, že Trigger vůbec nepřijal nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure**. Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorované a zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které byste očekávali při zpracování funkce Azure.
+Pokud zjistíte, že Trigger vůbec nepřijal nějaké změny, nejběžnějším scénářem je, že je **spuštěná jiná funkce Azure** . Může to být jiná funkce Azure nasazená v Azure nebo funkce Azure spuštěná místně na počítači vývojáře, který má **přesně stejnou konfiguraci** (stejný monitorované a zapůjčení), a tato funkce Azure ukrást podmnožinu změn, které byste očekávali při zpracování funkce Azure.
 
 Pokud víte, kolik instancí Azure Function App máte spuštěné, můžete taky ověřit scénář. Pokud provedete kontrolu kontejneru zapůjčení a určíte počet položek zapůjčení v rámci, budou jedinečné hodnoty `Owner` vlastnosti v nich rovny počtu instancí Function App. Pokud jsou k dispozici více vlastníků než známé instance služby Azure Function App, znamená to, že tyto další vlastníci budou tyto změny ukrást.
 

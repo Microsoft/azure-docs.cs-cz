@@ -8,14 +8,15 @@ ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: e1e6f977d47d98e7c9f5300dc8165ee44a531499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 693984ceaef1a71ebfbe4122c18a45a563c9c101
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91564863"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100421"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: dotazování dat z rozhraní API Cassandra účtu v Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. K ukládání a dotazování dat o klíčích a hodnotách můžete použít účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu se dozvíte, jak zadávat dotazy na data uživatelů z rozhraní API Cassandra účtu v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a dotazuje se na uživatelská data, jako je ID uživatele, jméno uživatele a město uživatele. 
 
@@ -27,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento článek patří do vícedílného kurzu. Než začnete, ujistěte se, že jste dokončili předchozí kroky, abyste vytvořili rozhraní API Cassandra účet, místo, tabulku a [načetli ukázková data do tabulky](cassandra-api-load-data.md). 
 
@@ -106,7 +107,7 @@ Pomocí následujícího postupu můžete dotazovat data z účtu rozhraní API 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už je nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Pokud to chcete udělat, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
+Když už je nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Pokud to chcete udělat, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit** a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

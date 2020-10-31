@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee221acb9ff045716e3a8015b20b467ab6d0b10
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764974"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098548"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Dotazování na geoprostorové údaje pomocí Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek popisuje, jak zadávat dotazy na geoprostorové údaje v Azure Cosmos DB pomocí jazyka SQL a LINQ. V současné době jsou ukládání a přístup k geoprostorovému datům podporované jenom pomocí Azure Cosmos DBch jenom účtů rozhraní SQL API. Azure Cosmos DB podporuje následující integrované funkce pro geoprostorové dotazování (OGC) Open Geospatial Consortium (). Další informace o kompletní sadě integrovaných funkcí v jazyce SQL naleznete v tématu [Query System Functions in Azure Cosmos DB](sql-query-system-functions.md).
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed34bf755023ab866e95c51aca6d1bfb1dd7bf71
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610604"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099449"
 ---
 # <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaného názvu domény
 
@@ -30,7 +30,7 @@ Následující tabulka uvádí aktuální plně kvalifikované názvy domén, kt
 
 |FQDN – značka  |Description  |
 |---------|---------|
-|Windows Update     |Povolte odchozí přístup k Microsoft Update, jak je popsáno v tématu [jak nakonfigurovat bránu firewall pro aktualizace softwaru](https://technet.microsoft.com/library/bb693717.aspx).|
+|Windows Update     |Povolte odchozí přístup k Microsoft Update, jak je popsáno v tématu [jak nakonfigurovat bránu firewall pro aktualizace softwaru](https://docs.microsoft.com/mem/configmgr/sum/get-started/install-a-software-update-point).|
 |Program Diagnostika|Povolí odchozí přístup ke všem [koncovým bodům diagnostiky Windows](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
 |Služba Microsoft Active Protection Service (MAPS)|Povolí odchozí přístup ke [mapám](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |App Service Environment (pomocného mechanismu)|Povolte odchozí přístup k provozu platformy ASE. Tato značka nepokrývá úložiště pro konkrétní zákazníky a koncové body SQL vytvořené pomocí pomocného mechanismu služby. Ty by měly být povolené prostřednictvím [koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidat ručně.<br><br>Další informace o integraci Azure Firewall s pomocným mechanismem řízení přístupu najdete v tématu [uzamčení App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
@@ -40,7 +40,7 @@ Následující tabulka uvádí aktuální plně kvalifikované názvy domén, kt
 |Azure Kubernetes Service (AKS)|Povolí odchozí přístup k AKS. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení AKS (Azure Kubernetes Service)](protect-azure-kubernetes-service.md).|
 
 > [!NOTE]
-> Při výběru značky plně kvalifikovaného názvu domény v pravidle aplikace musí být pole protokol: port nastavené na **https**.
+> Při výběru značky plně kvalifikovaného názvu domény v pravidle aplikace musí být pole protokol: port nastavené na **https** .
 
 ## <a name="next-steps"></a>Další kroky
 

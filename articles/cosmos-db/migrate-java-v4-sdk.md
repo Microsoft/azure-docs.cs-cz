@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 24e9087a175385f8e5c347a1d2df3b2785868506
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327850"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099636"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]  
 > Další informace o této sadě SDK najdete v Azure Cosmos DB zpráva k [vydání verze](sql-api-sdk-java-v4.md)Java SDK v4, [úložiště služby Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB tipy k [výkonu](performance-tips-java-sdk-v4-sql.md)Java SDK v4 Azure Cosmos DB a příručka pro [odstraňování potíží s](troubleshoot-java-sdk-v4-sql.md)rozhraním Java SDK v4.
@@ -31,7 +32,7 @@ Tento článek vysvětluje, jak upgradovat stávající aplikaci Java, která po
 
 V následující tabulce jsou uvedeny různé Azure Cosmos DB Java SDK, název balíčku a informace o verzi:
 
-| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční informace k rozhraním API   | Zpráva k vydání verze  |
+| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční dokumentace ke knihovně API   | Zpráva k vydání verze  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-async-java.md) |
 | Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-java.md)  |
@@ -64,9 +65,9 @@ Níže jsou uvedené změny úrovně rozhraní API v Azure Cosmos DB Java SDK 4.
 
   * **Java SDK 4,0** : všechny třídy patří do rozhraní API pro synchronizaci, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Java SDK 3. x. x**: všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
+  * **Java SDK 3. x. x** : všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Async Java SDK 2. x. x**: názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async*.
+  * **Async Java SDK 2. x. x** : názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async* .
 
 ### <a name="hierarchical-api-structure"></a>Hierarchická struktura rozhraní API
 

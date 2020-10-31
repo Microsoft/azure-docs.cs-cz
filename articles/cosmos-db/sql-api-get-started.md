@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 804330d44d63aa70076a7387aacfbbd3b4f742c9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49fa928285b29eaff806b009cf327e84e17491c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480985"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098718"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -153,7 +154,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
 
     Konzola zobrazí zprávu: **konec ukázky, stisknutím libovolné klávesy ukončete.** Tato zpráva potvrdí, že vaše aplikace vytvořila připojení k Azure Cosmos DB. Potom můžete okno konzoly zavřít.
 
-Blahopřejeme vám. Úspěšně jste se připojili k účtu Azure Cosmos DB.
+Gratulujeme! Úspěšně jste se připojili k účtu Azure Cosmos DB.
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 
@@ -269,7 +270,7 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Pom
             });
    ```
 
-Blahopřejeme vám. Úspěšně jste vytvořili databázi Azure Cosmos.  
+Gratulujeme! Úspěšně jste vytvořili databázi Azure Cosmos.  
 
 ## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>Krok 5: vytvoření kontejneru
 
@@ -300,7 +301,7 @@ Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/do
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste vytvořili kontejner Azure Cosmos.  
+Gratulujeme! Úspěšně jste vytvořili kontejner Azure Cosmos.  
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>Krok 6: Přidání položek do kontejneru
 
@@ -341,7 +342,7 @@ Nejprve vytvoříme `Family` třídu, která představuje objekty uložené v r�
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste vytvořili dvě položky Azure Cosmos.  
+Gratulujeme! Úspěšně jste vytvořili dvě položky Azure Cosmos.  
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
 
@@ -369,7 +370,7 @@ Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v jednotliv
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste dotazováni na kontejner Azure Cosmos.
+Gratulujeme! Úspěšně jste dotazováni na kontejner Azure Cosmos.
 
 ## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>Krok 8: nahrazení položky JSON
 
@@ -398,7 +399,7 @@ Teď aktualizujeme položku v Azure Cosmos DB. Změníme `IsRegistered` vlastnos
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste nahradili položku Azure Cosmos.
+Gratulujeme! Úspěšně jste nahradili položku Azure Cosmos.
 
 ## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>Krok 9: odstranění položky
 
@@ -428,7 +429,7 @@ Nyní odstraníme položku v Azure Cosmos DB.
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste odstranili položku Azure Cosmos.
+Gratulujeme! Úspěšně jste odstranili položku Azure Cosmos.
 
 ## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
 
@@ -444,7 +445,7 @@ Nyní odstraníme naši databázi. Odstraněním vytvořené databáze dojde k o
 
 1. Zvolte F5 pro spuštění aplikace.
 
-Blahopřejeme vám. Úspěšně jste odstranili databázi Azure Cosmos.
+Gratulujeme! Úspěšně jste odstranili databázi Azure Cosmos.
 
 ## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>Krok 11: Spuštění celé konzolové aplikace jazyka C#!
 
@@ -477,7 +478,7 @@ Deleted Database: FamilyDatabase
 End of demo, press any key to exit.
 ```
 
-Blahopřejeme vám. Dokončili jste tento kurz a máte funkční konzolovou aplikaci jazyka C#!
+Gratulujeme! Dokončili jste tento kurz a máte funkční konzolovou aplikaci jazyka C#!
 
 ## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>Získání úplného řešení kurzu
 

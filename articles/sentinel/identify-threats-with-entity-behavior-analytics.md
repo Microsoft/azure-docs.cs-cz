@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995507"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100656"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
 
@@ -62,11 +62,43 @@ Každá aktivita je hodnocena jako "skóre priority šetření" – což určuje
 
 Příklad toho, jak to funguje, najdete v tématu Jak se používá analýza chování v [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) .
 
+## <a name="entities-in-azure-sentinel"></a>Entity v Azure Sentinel
 
+### <a name="entity-identifiers"></a>Identifikátory entit
 
-## <a name="entity-pages"></a>Stránky entit
+Když se výstrahy odesílají do Azure Sentinel, obsahují datové prvky, které Azure Sentinel identifikuje a klasifikuje jako entity, například uživatelské účty, hostitele, IP adresy a další. V některých případech může být tato identifikace výzvou, pokud výstraha neobsahuje dostatečné informace o entitě.
 
-Když narazíte na libovolnou entitu (v současné době omezené na uživatele a hostitele), můžete vybrat entitu a provést ji na **stránce entity**, datový list, který je plný z užitečných informací o této entitě. Typy informací, které na této stránce najdete, zahrnují základní fakta o entitě, časovou osu důležitých událostí souvisejících s touto entitou a přehled o chování entity.
+Uživatelské účty je například možné identifikovat více než jedním způsobem: pomocí číselného identifikátoru (GUID) účtu Azure AD nebo jeho hodnoty hlavní název uživatele (UPN) nebo případně pomocí kombinace uživatelského jména a názvu domény NT. Různé zdroje dat mohou identifikovat stejného uživatele různými způsoby. Proto pokud je to možné, Azure Sentinel tyto identifikátory sloučí do jedné entity, aby mohla být správně identifikována.
+
+Může k tomu dojít, když některý z poskytovatelů prostředků vytvoří výstrahu, ve které není entita dostatečně identifikovaná – například uživatelské jméno bez kontextu názvu domény. V takovém případě nemůže být entita uživatele sloučena s jinými instancemi stejného uživatelského účtu, který by byl identifikován jako samostatná entita, a tyto dvě entity by zůstaly oddělené místo sjednocení.
+
+Abyste minimalizovali riziko tohoto problému, měli byste ověřit, že všichni poskytovatelé výstrah správně identifikují entity v upozorněních, které vydávají. Synchronizace entit uživatelských účtů pomocí Azure Active Directory může navíc vytvořit sjednocený adresář, který bude moci sloučit entity uživatelských účtů.
+
+V systému Azure Sentinel jsou v tuto chvíli identifikované následující typy entit:
+
+- Uživatelský účet (účet)
+- Hostitel
+- IP adresa (IP)
+- Malware
+- Soubor
+- Proces
+- Cloudová aplikace (CloudApplication)
+- Název domény (DNS)
+- Prostředek Azure
+- File (hash)
+- Klíč registru
+- Hodnota registru
+- Skupina zabezpečení
+- URL
+- Zařízení IoT
+- Mailbox
+- Poštovní cluster
+- Poštovní zpráva
+- Odeslaná pošta
+
+### <a name="entity-pages"></a>Stránky entit
+
+Když narazíte na libovolnou entitu (v současné době omezené na uživatele a hostitele), můžete vybrat entitu a provést ji na **stránce entity** , datový list, který je plný z užitečných informací o této entitě. Typy informací, které na této stránce najdete, zahrnují základní fakta o entitě, časovou osu důležitých událostí souvisejících s touto entitou a přehled o chování entity.
  
 Stránky entit se skládají ze tří částí:
 - Panel na levé straně obsahuje identifikační informace entity shromážděné ze zdrojů dat, jako jsou Azure Active Directory, Azure Monitor, Azure Security Center a Microsoft Defender.
@@ -81,11 +113,11 @@ Stránky entit se skládají ze tří částí:
 
 Časová osa je hlavní součástí příspěvku na stránce entity k analýze chování v Azure Sentinel. Prezentuje v souvislosti s událostmi souvisejícími s entitami, které vám pomůžou pochopit aktivitu entity v určitém časovém rámci.
 
-Můžete zvolit **časový rozsah** mezi několika možnostmi přednastavených (například *posledních 24 hodin*) nebo ho nastavit na libovolný vlastní časový rámec. Kromě toho můžete nastavit filtry, které omezují informace na časové ose na konkrétní typy událostí nebo výstrah.
+Můžete zvolit **časový rozsah** mezi několika možnostmi přednastavených (například *posledních 24 hodin* ) nebo ho nastavit na libovolný vlastní časový rámec. Kromě toho můžete nastavit filtry, které omezují informace na časové ose na konkrétní typy událostí nebo výstrah.
 
 Časová osa obsahuje následující typy položek:
 
-- Výstrahy – všechny výstrahy, ve kterých je entita definovaná jako **mapovaná entita**. Všimněte si, že pokud vaše organizace vytvořila [vlastní výstrahy pomocí analytických pravidel](./tutorial-detect-threats-custom.md), měli byste se ujistit, že mapování entit pravidel se provádí správně.
+- Výstrahy – všechny výstrahy, ve kterých je entita definovaná jako **mapovaná entita** . Všimněte si, že pokud vaše organizace vytvořila [vlastní výstrahy pomocí analytických pravidel](./tutorial-detect-threats-custom.md), měli byste se ujistit, že mapování entit pravidel se provádí správně.
 
 - Záložky – jakékoli záložky, které obsahují konkrétní entitu zobrazenou na stránce.
 
@@ -162,7 +194,7 @@ K vizualizaci metadat partnerských vztahů uživatelů můžete použít [Pozn�
 
 Analýza oprávnění pomáhá určit potenciální dopad na narušení organizačního prostředku útočníkem. Tento dopad se označuje také jako "vysoké poloměr assetu". Analytici zabezpečení můžou tyto informace použít k určení priorit šetření a zpracování incidentů.
 
-Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso*. Model řízení přístupu předplatného je RBAC.   
+Azure Sentinel Určuje práva k přímým a přenosnému přístupu držené daným uživatelem a prostředky Azure vyhodnocením předplatných Azure, ke kterým může uživatel přistupovat přímo nebo prostřednictvím skupin nebo instančních objektů. Tyto informace, stejně jako úplný seznam členství uživatele ve skupině zabezpečení Azure AD, se pak ukládají do tabulky **UserAccessAnalytics** . Níže uvedený snímek obrazovky ukazuje vzorový řádek v tabulce UserAccessAnalytics pro uživatele Alex Johnsonem. **Zdrojová entita** je uživatel nebo hlavní účet služby a **Cílová entita** je prostředek, ke kterému má zdrojová entita přístup. Hodnoty **úrovně přístupu** a **typu přístupu** závisí na modelu řízení přístupu cílové entity. Můžete vidět, že Alex má přispěvatele přístup k Tenantovi Azure s předplatným *Contoso* . Model řízení přístupu předplatného je RBAC.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Architektura analýzy chování entit":::
 

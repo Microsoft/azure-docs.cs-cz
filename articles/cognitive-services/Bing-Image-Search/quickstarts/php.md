@@ -12,14 +12,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: aad804179739a77010446a146d32cd51ac6e6757
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f9a72084cc9dd138eed58e395e009e1161c9382
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85603362"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099891"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý Start: hledání imagí pomocí Vyhledávání obrázků Bingu REST API a PHP
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 
@@ -39,7 +44,7 @@ Další informace najdete v tématu [Cognitive Services ceny – vyhledávání 
 
 Pokud chcete tuto aplikaci spustit, postupujte následovně:
 
-1. Ověřte, že je v souboru `php.ini` povolená podpora zabezpečeného protokolu HTTP. Pro Windows je tento soubor umístěný v *C:\Windows*.
+1. Ověřte, že je v souboru `php.ini` povolená podpora zabezpečeného protokolu HTTP. Pro Windows je tento soubor umístěný v *C:\Windows* .
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.
 3. Definujte koncový bod rozhraní API, klíč předplatného a hledaný termín. Koncový bod může být globálním koncovým bodem v následujícím kódu nebo se vlastní koncový bod [subdomény](../../../cognitive-services/cognitive-services-custom-subdomains.md) zobrazený v Azure Portal pro váš prostředek.
 

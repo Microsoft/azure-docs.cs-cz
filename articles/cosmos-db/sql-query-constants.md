@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100860"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Konstanta, která se označuje také jako literál nebo skalární hodnota, je symbol, který představuje konkrétní datovou hodnotu. Formát konstanty závisí na datovém typu hodnoty, kterou představuje.  
   
@@ -23,13 +24,13 @@ ms.locfileid: "74873416"
 |-|-|  
 |**Nedefinované**|Jedna hodnota: **Nedefinováno**|  
 |**Null**|Jedna hodnota: **null**|  
-|**Logická hodnota**|Hodnoty: **false**, **true**.|  
+|**Datového**|Hodnoty: **false** , **true** .|  
 |**Číselná**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
 |**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
-|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
-|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
+|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného** .|  
+|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného** .|  
   
-## <a name="syntax"></a><a name="bk_syntax"></a>Syntaxe
+## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
 ```sql  
 <constant> ::=  
@@ -67,7 +68,7 @@ ms.locfileid: "74873416"
   
 * `<null_constant>; null`  
   
-  Reprezentuje hodnotu **null** typu s hodnotou **null**.  
+  Reprezentuje hodnotu **null** typu s hodnotou **null** .  
   
 * `<boolean_constant>`  
   
@@ -113,7 +114,7 @@ ms.locfileid: "74873416"
 |\f|informační kanál formuláře|U + 000C|  
 |\n|čárový kanál|U + 000A|  
 |\r|návrat na začátek řádku|U + 000D|  
-|\t|rážky|U + 0009|  
+|\t| tabulátor|U + 0009|  
 |\uXXXX|Znak Unicode definovaný 4 šestnáctkovými číslicemi.|U + XXXX|  
 
 ## <a name="next-steps"></a>Další kroky

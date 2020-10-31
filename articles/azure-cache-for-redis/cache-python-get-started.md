@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření aplikace v Pythonu – mezipaměť Azure pro Redis'
+title: 'Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu'
 description: V tomto rychlém startu se dozvíte, jak vytvořit aplikaci v Pythonu, která používá Azure cache pro Redis.
 author: yegu-ms
 ms.author: yegu
@@ -11,14 +11,14 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 ms.date: 11/05/2019
-ms.openlocfilehash: aed9be394076b4ef10b8354552d69771ae659eea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87845320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099432"
 ---
-# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
+# <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Rychlý Start: použití mezipaměti Azure pro Redis v Pythonu
 
 V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste měli přístup k zabezpečené vyhrazené mezipaměti, která je přístupná z libovolné aplikace v Azure.
 
@@ -34,7 +34,7 @@ V tomto článku zahrňte Azure cache pro Redis do aplikace v Pythonu, abyste m�
 
 ## <a name="install-redis-py"></a>Instalace redis-py
 
-[Redis-py](https://github.com/andymccurdy/redis-py) je rozhraní Pythonu pro službu Azure cache pro Redis. K instalaci balíčku *Redis-py* z příkazového řádku použijte nástroj pro balíčky Pythonu ( *PIP*). 
+[Redis-py](https://github.com/andymccurdy/redis-py) je rozhraní Pythonu pro službu Azure cache pro Redis. K instalaci balíčku *Redis-py* z příkazového řádku použijte nástroj pro balíčky Pythonu ( *PIP* ). 
 
 Následující příklad používá *PIP3* pro Python 3 k instalaci *Redis-py* ve Windows 10 z příkazového řádku správce.
 
@@ -42,7 +42,7 @@ Následující příklad používá *PIP3* pro Python 3 k instalaci *Redis-py* v
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
+Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu *\<DNS name> . Redis.cache.Windows.NET* .
 
 ```python
 >>> import redis
@@ -59,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Vytvoření ukázkové aplikace v Pythonu
 
-Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
+Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py* . `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu *\<DNS name> . Redis.cache.Windows.NET* .
 
 ```python
 import redis
@@ -98,10 +98,10 @@ Pokud jste hotovi s prostředky a skupinami prostředků Azure, které jste vytv
 
 Odstranění skupiny prostředků a její Redis Cache pro instanci Azure:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků** .
 1. Do textového pole **filtrovat podle názvu** zadejte název skupiny prostředků, která obsahuje vaši instanci mezipaměti, a pak ji vyberte z výsledků hledání. 
-1. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků**.
-1. Zadejte název skupiny prostředků a pak vyberte **Odstranit**.
+1. Na stránce skupiny prostředků vyberte **Odstranit skupinu prostředků** .
+1. Zadejte název skupiny prostředků a pak vyberte **Odstranit** .
    
    ![Odstranění skupiny prostředků pro Azure cache pro Redis](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 

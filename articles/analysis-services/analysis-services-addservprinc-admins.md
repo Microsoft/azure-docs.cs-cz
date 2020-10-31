@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013929"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100724"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Přidání instančního objektu k roli správce serveru 
 
@@ -33,14 +33,14 @@ Před dokončením této úlohy musíte mít v Azure Active Directory zaregistro
 Správce serveru můžete nakonfigurovat pomocí SQL Server Management Studio (SSMS). K dokončení této úlohy musíte mít oprávnění [Správce serveru](analysis-services-server-admins.md) na serveru Azure as. 
 
 1. V SSMS se připojte k Azure AS serveru.
-2. V nabídce zabezpečení **vlastností serveru**  >  **Security**klikněte na **Přidat**.
-3. V nabídce **Vyberte uživatele nebo skupinu**vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat**.
+2. V nabídce zabezpečení **vlastností serveru**  >  **Security** klikněte na **Přidat** .
+3. V nabídce **Vyberte uživatele nebo skupinu** vyhledejte registrovanou aplikaci podle názvu, vyberte a pak klikněte na **Přidat** .
 
     ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK**.
+4. Ověřte ID účtu zabezpečení služby a pak klikněte na **OK** .
     
-    ![Hledat hlavní účet služby](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Snímek obrazovky, který zobrazuje ID hlavního účtu služby a zvýrazní tlačítko OK.](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>Použití šablony Resource Manageru
 

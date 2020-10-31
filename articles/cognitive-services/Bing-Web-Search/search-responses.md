@@ -11,14 +11,19 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a5e69fe855f0c1e99dc3672425d9aeea13d4e827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cea88c2e20c9e96c5ad5504815886b2cc771e44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297786"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100554"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Když odešlete Vyhledávání na webu Bingu požadavek hledání, vrátí [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objekt v těle odpovědi. Objekt obsahuje pole pro každou odpověď, kterou Bing určil pro dotazování. Tento příklad ukazuje objekt odpovědi, pokud Bing vrátil všechny odpovědi:
 
@@ -38,7 +43,7 @@ Když odešlete Vyhledávání na webu Bingu požadavek hledání, vrátí [`Sea
 }, ...
 ```
 
-Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies*, může odpověď zahrnovat `webPages` , `images` a `rankingResponse` . Pokud jste nepoužívali [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje `webpages` odpovědi a `rankingResponse` .
+Vyhledávání na webu Bingu obvykle vrací podmnožinu odpovědí. Pokud se například termín dotazu *dodinghies* , může odpověď zahrnovat `webPages` , `images` a `rankingResponse` . Pokud jste nepoužívali [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) k odfiltrování webových stránek, odpověď vždy obsahuje `webpages` odpovědi a `rankingResponse` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -300,7 +305,7 @@ Matematický výraz může obsahovat následující symboly:
 |!|Faktoriál|
 |.|Decimal|
 |()|Seskupování priorit|
-|[]|Funkce|
+|[]|Function|
 
 Matematický výraz může obsahovat následující konstanty:
 
@@ -316,7 +321,7 @@ Matematický výraz může obsahovat následující funkce:
 
 |Symbol|Description|
 |------------|-----------------|
-|Řazení|Druhá odmocnina|
+|Seřadit|Druhá odmocnina|
 |Sin [x]; cos [x]; Tan [x]<br />CSc [x], SEK [x], COT [x]|Trigonometrické funkce (s argumenty v radiánech)|
 |ArcSin [x]; ArcCos [x]; ArcTan [x]<br />ArcCsc [x]; ArcSec [x]; ArcCot [x]|Inverzní trigonometrické funkce (poskytující výsledky v radiánech)|
 |EXP [x], E ^ x|Exponenciální funkce|
@@ -328,7 +333,7 @@ Matematické výrazy, které obsahují proměnné (například 4x + 6 = 18, kde 
 
 ## <a name="timezone-answer"></a>Odpověď časového pásma
 
-Pokud uživatel zadá dotaz na čas nebo datum, odpověď může obsahovat odpověď [časového pásma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) . Tato odpověď podporuje implicitní nebo explicitní dotazy. Implicitní dotaz, jako je například *čas?*, vrátí místní čas na základě umístění uživatele. Explicitní dotaz, jako je například *čas v Seattlu?*, vrátí místní čas pro Seattle, WA.
+Pokud uživatel zadá dotaz na čas nebo datum, odpověď může obsahovat odpověď [časového pásma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) . Tato odpověď podporuje implicitní nebo explicitní dotazy. Implicitní dotaz, jako je například *čas?* , vrátí místní čas na základě umístění uživatele. Explicitní dotaz, jako je například *čas v Seattlu?* , vrátí místní čas pro Seattle, WA.
 
 `timeZone`Odpověď poskytuje název umístění, aktuální datum a čas UTC v zadaném umístění a posun UTC. Pokud se hranice umístění nachází v několika časových pásmech, odpověď obsahuje aktuální datum a čas UTC všech časových pásem v rámci hranice. Například vzhledem k tomu, že stav Florida spadá do dvou časových pásem, odpověď obsahuje místní datum a čas obou časových pásem.  
 
@@ -419,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion odpověď
 
-Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď zahrnuje objekt [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) . Pokud uživatel například vyhledá *Carlos pero*, Bing může určit, že uživatel pravděpodobně hledal místo toho, aby Carlos Pena (na základě předchozích hledání ostatních *carlosho pera*). Následuje ukázka reakce na kontrolu pravopisu.
+Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď zahrnuje objekt [SpellSuggestions](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) . Pokud uživatel například vyhledá *Carlos pero* , Bing může určit, že uživatel pravděpodobně hledal místo toho, aby Carlos Pena (na základě předchozích hledání ostatních *carlosho pera* ). Následuje ukázka reakce na kontrolu pravopisu.
 
 ```json
 "spellSuggestions": {

@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260742"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098242"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Jak monitorovat propustnost nebo využití jednotek žádosti operace v Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování vašeho účtu a vytváření řídicích panelů. Metriky Azure Cosmos DB jsou ve výchozím nastavení shromažďovány, takže tato funkce nevyžaduje explicitní povolení ani konfiguraci. Metrika **celkových jednotek žádostí** se používá k získání využití jednotek žádosti pro různé typy operací. Později můžete analyzovat, které operace používaly většinu propustnosti. Ve výchozím nastavení se data propustnosti agreguje v intervalu 1 minuty. Agregační jednotku však můžete změnit změnou možnosti časové rozlišení.
 
@@ -34,13 +35,13 @@ Pokud si všimnete, že některé dotazy pobírají více jednotek žádostí, m
 
 ## <a name="view-the-total-request-unit-usage-metric"></a>Zobrazení celkové metriky využití jednotky žádosti
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
 
    :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
-1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
 
    :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Podokno metrik v Azure Monitor":::
 
@@ -50,7 +51,7 @@ Pokud si všimnete, že některé dotazy pobírají více jednotek žádostí, m
 
 ## <a name="filters-for-request-unit-usage"></a>Filtry pro využití jednotky požadavku
 
-Můžete také filtrovat metriky a získat grafy zobrazené konkrétním názvem **CollectionName**, **DatabaseName**, **typem operace OperationType**, **oblastí**, **stavem**a **StatusCode**. Možnosti **Přidat filtr** a **použít rozdělení** umožňují filtrovat využití jednotek požadavků a seskupit metriky.
+Můžete také filtrovat metriky a získat grafy zobrazené konkrétním názvem **CollectionName** , **DatabaseName** , **typem operace OperationType** , **oblastí** , **stavem** a **StatusCode** . Možnosti **Přidat filtr** a **použít rozdělení** umožňují filtrovat využití jednotek požadavků a seskupit metriky.
 
 Pokud chcete získat využití jednotky žádosti každé operace buď podle součtu (Sum), nebo průměrně, vyberte **použít rozdělení** a zvolte **typ operace** a hodnotu filtru, jak je znázorněno na následujícím obrázku:
 

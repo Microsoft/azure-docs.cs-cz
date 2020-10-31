@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c724925a12535c561b035296e374691f3fb2689
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74111480"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098344"
 ---
 # <a name="bing-news-search-api-endpoints"></a>rozhraní API Bingu pro vyhledávání zpráv koncové body
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 **Rozhraní vyhledávání zpráv API** vrací články, webové stránky, obrázky, videa a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)s novinkami. Entity obsahují souhrnné informace o osobě, místě nebo tématu.
 
@@ -39,7 +44,7 @@ Vrátí položky zpráv na základě vyhledávacího dotazu. Pokud je vyhledáva
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Vrátí hlavní položky zpráv podle kategorií. Konkrétně si můžete vyžádat požadavky na nejlepší obchodní, sportovní nebo zábavní články pomocí `category=business` , `category=sports` nebo `category=entertainment` . `category`Parametr lze použít pouze s `/news` adresou URL. Existují některé formální požadavky pro určení kategorií. informace najdete `category` v dokumentaci k [parametrům dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Odešlete dotaz podle adresy URL pro kódování hledaného výrazu a připojíte ho k `q=""` parametru. Informace o dostupnosti najdete v článku [Podporované země/oblasti a trhy](language-support.md#supported-markets-for-news-endpoint).
+Vrátí hlavní položky zpráv podle kategorií. Konkrétně si můžete vyžádat požadavky na nejlepší obchodní, sportovní nebo zábavní články pomocí `category=business` , `category=sports` nebo `category=entertainment` .  `category`Parametr lze použít pouze s `/news` adresou URL. Existují některé formální požadavky pro určení kategorií. informace najdete `category` v dokumentaci k [parametrům dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Odešlete dotaz podle adresy URL pro kódování hledaného výrazu a připojíte ho k `q=""` parametru. Informace o dostupnosti najdete v článku [Podporované země/oblasti a trhy](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Témata týkající se vývoje zpráv 
 

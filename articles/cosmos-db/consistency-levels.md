@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547074"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100452"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Distribuované databáze, které spoléhají na replikaci při vysoké dostupnosti, nízké latenci nebo obojí, musí učinit zásadní kompromis mezi úrovní konzistence čtení, dostupností, latencí a propustností podle definice [PACLC věta](https://en.wikipedia.org/wiki/PACELC_theorem). Linearizability modelu silné konzistence je Gold Standard pro programovatelnost dat. Přidává ale strméou cenu z vyšších latencí zápisu, protože data se musí replikovat a potvrzovat napříč velkými vzdálenostmi. Silná konzistence může mít taky vliv na omezenou dostupnost (během selhání), protože data nejde replikovat a potvrzovat v každé oblasti. Konečná konzistence nabízí vyšší dostupnost a lepší výkon, ale jejich aplikace je obtížnější, protože data nemusí být zcela konzistentní napříč všemi oblastmi.
 
@@ -21,7 +22,7 @@ Většina komerčně dostupných distribuovaných databází NoSQL dostupných n
 
 - *Silná*
 - *Ohraničená neaktuálnost*
-- *Relace*
+- *Jednání*
 - *Konzistentní předpona*
 - *Konečné*
 
@@ -139,7 +140,7 @@ Přesná latence RTT je funkce rychlosti a topologie sítě Azure. Azure Network
 |--|--|--|
 |**Silná**|Místní menšina|Globální většina|
 |**Ohraničená neaktuálnost**|Místní menšina|Místní většina|
-|**Relace**|Jedna replika (pomocí tokenu relace)|Místní většina|
+|**Jednání**|Jedna replika (pomocí tokenu relace)|Místní většina|
 |**Konzistentní předpona**|Jedna replika|Místní většina|
 |**Konečné**|Jedna replika|Místní většina|
 

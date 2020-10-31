@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 486930776b4b4b6d852102be723ac1047ebd5e0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078158"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098480"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -85,13 +85,13 @@ Konektory Azure Logic Apps vám pomůžou aplikace logiky přistupovat k aplikac
 
 Trigger je vždy prvním krokem v pracovním postupu aplikace logiky a jedná se o speciální akci, která vytvoří a spustí instanci aplikace logiky, když jsou splněna určitá kritéria nebo dojde ke konkrétní události. Triggery fungují různými způsoby, které mají vliv na měření aplikace logiky. Tady jsou různé druhy aktivačních událostí, které existují v Azure Logic Apps:
 
-* **Aktivační událost opakování**: můžete použít tuto obecnou triggerovou proceduru, která není specifická pro žádnou službu nebo systém, aby se spustila pracovní postup aplikace logiky a vytvořila se instance aplikace logiky, která se spouští na základě intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit Trigger opakování, který se spouští každé tři dny nebo složitějším plánem.
+* **Aktivační událost opakování** : můžete použít tuto obecnou triggerovou proceduru, která není specifická pro žádnou službu nebo systém, aby se spustila pracovní postup aplikace logiky a vytvořila se instance aplikace logiky, která se spouští na základě intervalu opakování, který jste nastavili v aktivační události. Můžete například nastavit Trigger opakování, který se spouští každé tři dny nebo složitějším plánem.
 
-* **Aktivační událost cyklického dotazování**: můžete použít konkrétnější aktivační událost opakování, která je obvykle přidružená ke spravovanému konektoru pro konkrétní službu nebo systém, a kontrolovat události nebo zprávy, které splňují kritéria pro vytvoření a spuštění instance aplikace logiky, a to na základě intervalu opakování, který jste nastavili v aktivační události. I když se nevytvoří žádná instance aplikace logiky, například když se triggery přeskočí, služba Logic Apps každou žádost o cyklické dotazování vyřadí jako spuštění. Pokud chcete zadat interval dotazování, nastavte Trigger pomocí návrháře aplikace logiky.
+* **Aktivační událost cyklického dotazování** : můžete použít konkrétnější aktivační událost opakování, která je obvykle přidružená ke spravovanému konektoru pro konkrétní službu nebo systém, a kontrolovat události nebo zprávy, které splňují kritéria pro vytvoření a spuštění instance aplikace logiky, a to na základě intervalu opakování, který jste nastavili v aktivační události. I když se nevytvoří žádná instance aplikace logiky, například když se triggery přeskočí, služba Logic Apps každou žádost o cyklické dotazování vyřadí jako spuštění. Pokud chcete zadat interval dotazování, nastavte Trigger pomocí návrháře aplikace logiky.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Trigger Webhooku**: místo použití triggeru cyklického dotazování můžete použít Trigger Webhooku, který počká, až klient pošle žádost do vaší aplikace logiky na konkrétní adresu URL koncového bodu. Každý požadavek, který se odešle na koncový bod Webhooku, se počítá jako provedení akce. Například triggerem Webhooku žádosti a HTTP jsou oba triggery obecného Webhooku. Některé konektory pro služby nebo systémy také mají triggery Webhooku.
+* **Trigger Webhooku** : místo použití triggeru cyklického dotazování můžete použít Trigger Webhooku, který počká, až klient pošle žádost do vaší aplikace logiky na konkrétní adresu URL koncového bodu. Každý požadavek, který se odešle na koncový bod Webhooku, se počítá jako provedení akce. Například triggerem Webhooku žádosti a HTTP jsou oba triggery obecného Webhooku. Některé konektory pro služby nebo systémy také mají triggery Webhooku.
 
 <a name="actions"></a>
 
@@ -122,11 +122,11 @@ Pokud máte [ *prostředí ISE (Integration Service Environment* ) (](../logic-a
 
 Pokud si chcete vybrat mezi účtem pro integraci Free, Basic nebo Standard, přečtěte si tyto popisy případů použití:
 
-* **Zdarma**: v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře. Tato úroveň je dostupná jenom pro veřejné oblasti v Azure, například Západní USA nebo jihovýchodní Asie, ale ne pro [Azure Čína 21Vianet](/azure/china/overview-operations) nebo [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Zdarma** : v případě, že chcete vyzkoušet průzkumné scénáře, nikoli produkční scénáře. Tato úroveň je dostupná jenom pro veřejné oblasti v Azure, například Západní USA nebo jihovýchodní Asie, ale ne pro [Azure Čína 21Vianet](/azure/china/overview-operations) nebo [Azure Government](../azure-government/documentation-government-welcome.md).
 
-* **Basic**: Pokud chcete, aby zpracování zpráv fungovalo jako malý obchodní partner, který má vztah obchodního partnera s větší obchodní entitou
+* **Basic** : Pokud chcete, aby zpracování zpráv fungovalo jako malý obchodní partner, který má vztah obchodního partnera s větší obchodní entitou
 
-* **Standard**: Pokud máte SLOŽITĚJŠÍ vztahy B2B a vyšší počet entit, které musíte spravovat
+* **Standard** : Pokud máte SLOŽITĚJŠÍ vztahy B2B a vyšší počet entit, které musíte spravovat
 
 <a name="data-retention"></a>
 
@@ -137,6 +137,7 @@ S výjimkou aplikací logiky, které běží v prostředí ISE (Integration Serv
 Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete:
 
 * Podívejte se na počet jednotek úložiště v GB, které vaše aplikace logiky používá měsíčně.
+
 * Zobrazení velikosti pro vstupy a výstupy konkrétní akce v historii spuštění aplikace logiky
 
 <a name="storage-consumption"></a>
@@ -145,11 +146,14 @@ Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete
 
 1. V Azure Portal Najděte a otevřete aplikaci logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **metriky**.
+1. V nabídce aplikace logiky v části **monitorování** vyberte **metriky** .
 
-1. V pravém podokně v části **název grafu**vyberte v seznamu **metrika** možnost **využití fakturace pro spouštění spotřeby úložiště**.
+1. V pravém podokně v části **název grafu** vyberte v seznamu **metrika** možnost **využití fakturace pro spouštění spotřeby úložiště** .
 
    Tato metrika poskytuje počet jednotek spotřeby úložiště v GB za měsíc, které se účtují.
+
+   > [!NOTE]
+   > Spuštění, které spotřebovávají méně než 500 MB v úložišti, se nemusí zobrazit v zobrazení monitorování, ale pořád se účtují.
 
 <a name="input-output-sizes"></a>
 
@@ -157,15 +161,18 @@ Abyste mohli monitorovat spotřebu úložiště vaší aplikace logiky, můžete
 
 1. V Azure Portal Najděte a otevřete aplikaci logiky.
 
-1. V nabídce aplikace logiky zvolte **Přehled**.
+1. V nabídce aplikace logiky zvolte **Přehled** .
 
-1. V pravém podokně v části **historie spuštění**vyberte běh, který obsahuje vstupy a výstupy, které chcete kontrolovat.
+1. V pravém podokně v části **historie spuštění** vyberte běh, který obsahuje vstupy a výstupy, které chcete kontrolovat.
 
-1. V části **spuštění aplikace logiky**klikněte na tlačítko **Spustit podrobnosti**.
+1. V části **spuštění aplikace logiky** klikněte na tlačítko **Spustit podrobnosti** .
 
 1. V podokně s **podrobnostmi o spuštění aplikace logiky** v tabulce akce, které uvádí stav a dobu trvání jednotlivých akcí, vyberte akci, kterou chcete zobrazit.
 
-1. V podokně **Akce aplikace logiky** vyhledejte v části **vstupy odkaz** a **výstupy**odkazy velikosti pro vstupy a výstupy této akce.
+1. V podokně **Akce aplikace logiky** Najděte velikosti pro vstupy a výstupy této akce. V části **vstupy odkaz** a **výstupy** vyhledejte odkazy na tyto vstupy a výstupy.
+
+   > [!NOTE]
+   > U smyček se pouze akce nejvyšší úrovně zobrazují velikosti pro jejich vstupy a výstupy. Pro akce uvnitř vnořených smyček se vstupy a výstupy zobrazují nulové velikosti a žádné odkazy.
 
 ## <a name="next-steps"></a>Další kroky
 

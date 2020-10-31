@@ -7,14 +7,16 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490573"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100384"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Hlavičky odpovědi serveru Azure Cosmos DB Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Tento článek se věnuje hlavičkám, které server Gremlin služby Cosmos DB vrací volajícímu po provedení požadavku. Tyto hlavičky jsou užitečné při řešení potíží s výkonem požadavků a vytváření aplikací, které se nativně integrují se službou Cosmos DB, a umožňují zjednodušit zákaznickou podporu.
 
 Mějte na paměti, že při použití závislosti na těchto hlavičkách omezujete přenositelnost své aplikace na jiné implementace Gremlin. V rámci návratu získáte užší integraci s Cosmos DB Gremlin. Tato záhlaví nejsou TinkerPop Standard.

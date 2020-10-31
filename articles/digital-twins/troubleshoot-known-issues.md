@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489009"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100608"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Známé problémy v případě digitálních vláken Azure
 
@@ -32,7 +32,7 @@ To se dá vyřešit tak, že znovu spustíte `az login` příkaz v Cloud Shell a
 
 Případně můžete otevřít podokno Cloud Shell v Azure Portal a dokončit Cloud Shell práci z těchto kroků:
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Zobrazuje se Azure Portal se zvýrazněnou ikonou Cloud Shell a Cloud Shell se zobrazuje v dolní části okna portálu.":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="Zobrazuje se Azure Portal se zvýrazněnou ikonou Cloud Shell a Cloud Shell se zobrazuje v dolní části okna portálu." lightbox="media/includes/portal-cloud-shell.png":::
 
 Nakonec další řešení je [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) do vašeho počítače, abyste mohli spouštět příkazy rozhraní příkazového řádku Azure v místním prostředí. V místním rozhraní příkazového řádku se tento problém netýká.
 
@@ -66,9 +66,9 @@ Pro uživatele, kteří se přihlásili pomocí osobního [účet Microsoft (MSA
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Problém s interaktivním ověřováním prohlížeče
 
-Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) **může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) .
+Při psaní ověřovacího kódu v aplikacích digitálního vlákna Azure s využitím **1.2.0** verze v **knihovně [Azure. identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)** může docházet k problémům s metodou [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) .
 
-Nejedná se o nejnovější verzi knihovny. Nejnovější verze je **1.2.2**.
+Nejedná se o nejnovější verzi knihovny. Nejnovější verze je **1.2.2** .
 
 Ovlivněná metoda se používá v následujících článcích: 
 * [*Kurz: vytvoření kódu klientské aplikace*](tutorial-code.md)
@@ -79,11 +79,11 @@ Tento problém při pokusu o ověření v okně prohlížeče obsahuje chybovou 
 
 ### <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Pokud chcete řešení vyřešit, aktualizujte své aplikace tak, aby používaly `Azure.Identity` verzi **1.2.2**. V této verzi knihovny by měl prohlížeč načíst a ověřit podle očekávání.
+Pokud chcete řešení vyřešit, aktualizujte své aplikace tak, aby používaly `Azure.Identity` verzi **1.2.2** . V této verzi knihovny by měl prohlížeč načíst a ověřit podle očekávání.
 
 ### <a name="possible-causes"></a>Možné příčiny
 
-To se vztahuje na otevřený problém s nejnovější verzí `Azure.Identity` knihovny (verze **1.2.0**): [*ověření při použití InteractiveBrowserCredential se nezdařilo*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
+To se vztahuje na otevřený problém s nejnovější verzí `Azure.Identity` knihovny (verze **1.2.0** ): [*ověření při použití InteractiveBrowserCredential se nezdařilo*](https://github.com/Azure/azure-sdk-for-net/issues/13940).
 
 Tento problém se zobrazí, pokud použijete **1.2.0** verze v aplikaci digitálního vlákna v Azure, nebo pokud knihovnu přidáte do projektu bez zadání verze (která je také výchozí pro tuto nejnovější verzi).
 

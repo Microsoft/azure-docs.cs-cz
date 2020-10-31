@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 9a7f36299d235ca2578a1ff3518650c5632ef046
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209815"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100673"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>Odebrání virtuálních počítačů z řešení Change Tracking a Inventory
 
@@ -18,11 +18,11 @@ Až budete hotovi sledovat změny virtuálních počítačů ve vašem prostřed
 
 ## <a name="sign-into-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="to-remove-your-vms"></a>Odebrání virtuálních počítačů
 
-1. V Azure Portal spusťte **Cloud Shell** z horní navigace Azure Portal. Pokud neznáte Azure Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](/cloud-shell/overview).
+1. V Azure Portal spusťte **Cloud Shell** z horní navigace Azure Portal. Pokud neznáte Azure Cloud Shell, přečtěte si téma [přehled Azure Cloud Shell](/azure/cloud-shell/overview).
 
 2. Pomocí následujícího příkazu Identifikujte identifikátor UUID počítače, který chcete odebrat ze správy.
 
@@ -30,7 +30,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
     az vm show -g MyResourceGroup -n MyVm -d
     ```
 
-3. V Azure Portal přejděte na **Log Analytics pracovní prostory**. V seznamu vyberte svůj pracovní prostor.
+3. V Azure Portal přejděte na **Log Analytics pracovní prostory** . V seznamu vyberte svůj pracovní prostor.
 
 4. V pracovním prostoru Log Analytics vyberte možnost **protokoly** a pak zvolte možnost **Průzkumník dotazů** v nabídce Top Actions (akce).
 

@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951396"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098446"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
-Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Další forma je *návrhy*: krátký seznam odpovídajících dokumentů (pro vracení titulů knih s ID, aby bylo možné propojit stránku s podrobnostmi). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
+Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování* , které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Další forma je *návrhy* : krátký seznam odpovídajících dokumentů (pro vracení titulů knih s ID, aby bylo možné propojit stránku s podrobnostmi). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 
 K implementaci těchto prostředí v Azure Kognitivní hledání budete potřebovat:
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Povolit zvýrazňování
 
-Zvýrazňování aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Pokud je například částečný vstup "mikro", výsledek by se **zobrazil jako**mikroměkký, **mikroskop Scope a**tak dále. Zvýrazňování je založeno na parametrech HighlightPreTag a HighlightPostTag, který je definovaný jako vložený s funkcí návrh.
+Zvýrazňování aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Pokud je například částečný vstup "mikro", výsledek by se **zobrazil jako** mikroměkký, **mikroskop Scope a** tak dále. Zvýrazňování je založeno na parametrech HighlightPreTag a HighlightPostTag, který je definovaný jako vložený s funkcí návrh.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -181,7 +181,7 @@ Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet
 
 ## <a name="autocomplete"></a>Automatické dokončování
 
-V tomto případě byl kód uživatelského rozhraní hledání na základě návrhů na střed. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského rozhraní XDSoft jQuery, která předá požadavek na automatické dokončování Azure Kognitivní hledání. Stejně jako u návrhů v aplikaci jazyka C#, kód, který podporuje interakci s uživatelem, přechází do **indexu. cshtml**.
+V tomto případě byl kód uživatelského rozhraní hledání na základě návrhů na střed. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského rozhraní XDSoft jQuery, která předá požadavek na automatické dokončování Azure Kognitivní hledání. Stejně jako u návrhů v aplikaci jazyka C#, kód, který podporuje interakci s uživatelem, přechází do **indexu. cshtml** .
 
 ```javascript
 $(function () {
@@ -253,4 +253,4 @@ Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demons
 
 + [Kurz: Vytvoření první aplikace v jazyce C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [Ukázka C# a JavaScriptu se ZBYTKem kódu pro souběžné navýšení](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [Ukázka C# a JavaScriptu se ZBYTKem kódu pro souběžné navýšení](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

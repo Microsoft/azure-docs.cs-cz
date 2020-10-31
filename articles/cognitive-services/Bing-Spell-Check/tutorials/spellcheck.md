@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b87a2cd3e6edc6a47de77f475c40d30ce1606e01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316609"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099857"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 V tomto kurzu vytvoříme webovou stránku, která uživatelům umožňuje zadávat dotazy do rozhraní API Bingu pro kontrolu pravopisu. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingSpellCheckApp.html).
 
@@ -28,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - vytvoření jednoduchého dotazu na rozhraní API Bingu pro kontrolu pravopisu,
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, budete potřebovat:
@@ -123,7 +128,7 @@ Podpůrná funkce getSubscriptionKeyLocalStorage se nejprve pokusí načíst kl�
     }
 ```
 
-Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true**, funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false**, funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
+Pomocná funkce GetSubscriptionKey přijímá jeden parametr, **invalidate** (Zneplatnit). Pokud má **invalidate** hodnotu **true** , funkce getSubscriptionKey odstraní soubor cookie, který obsahuje klíč rozhraní API Bingu pro kontrolu pravopisu. Pokud má **invalidate** hodnotu **false** , funkce getSubscriptionKey vrátí hodnotu klíče rozhraní API Bingu pro kontrolu pravopisu.
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -237,7 +242,7 @@ Také ošetřete možné chybové události v objektu XMLHttpRequest.
     });
 ```
 
-Odešlete požadavek. Zavřete funkci bingSpellCheck, značku **script** a značku **head**.
+Odešlete požadavek. Zavřete funkci bingSpellCheck, značku **script** a značku **head** .
 
 ```html
     request.send();
@@ -271,7 +276,7 @@ Vytvořte formulář HTML s textovým polem. Zpracujte `onsubmit` událost a zav
 </form>
 ```
 
-Přidejte značku HTML **div**, kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
+Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div** .
 
 ```html
 <h2>Results</h2>
@@ -288,7 +293,7 @@ Uložte soubor.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 
-Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API Bingu pro kontrolu pravopisu. Do textového pole **Kontrola pravopisu** zadejte dotaz (například „Hollo, wlrd!“) a stiskněte **Enter**. Webová stránka zobrazí výsledky dotazu.
+Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API Bingu pro kontrolu pravopisu. Do textového pole **Kontrola pravopisu** zadejte dotaz (například „Hollo, wlrd!“) a stiskněte **Enter** . Webová stránka zobrazí výsledky dotazu.
 
 ```json
 {

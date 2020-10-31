@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757893"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098752"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB bez serveru (Preview)
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB bez serveru je aktuálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouva SLA a nedoporučuje se pro produkční úlohy. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
@@ -32,9 +33,9 @@ Při použití Azure Cosmos DB má každá databázová operace náklady vyjád�
 
 Azure Cosmos DB nejlépe vyhovuje scénářům, kde očekáváte:
 
-- **Lehký provoz**: vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují
-- **Střední úroveň shlukování**: protože kontejnery bez serveru můžou doručovat až 5 000 jednotek žádostí za sekundu.
-- **Střední výkon**: vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
+- **Lehký provoz** : vzhledem k tomu, že zřízení kapacity v takových situacích není nutné a může být nákladově zakazují
+- **Střední úroveň shlukování** : protože kontejnery bez serveru můžou doručovat až 5 000 jednotek žádostí za sekundu.
+- **Střední výkon** : vzhledem k tomu, že kontejnery bez serveru mají [specifické charakteristiky výkonu](#performance)
 
 Z těchto důvodů je Azure Cosmos DB bez serveru zvážit pro následující typy úloh:
 
@@ -81,9 +82,9 @@ Stejný graf můžete najít při použití Azure Monitor, jak je popsáno [zde]
 
 Prostředky bez serveru poskytují specifické charakteristiky výkonu, které se liší od poskytovaných prostředků propustnosti:
 
-- **Dostupnost**: až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
-- **Latence**: po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
-- Prostupnost **: po**zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
+- **Dostupnost** : až bude nabídka bez serveru všeobecně dostupná, dostupnost kontejnerů bez serveru se pokryje s smlouva SLA (SLA) 99,9%, pokud se nepoužijí zóny dostupnosti (redundance zóny). Smlouva SLA je 99,99% při použití Zóny dostupnosti.
+- **Latence** : po zpřístupnění nabídky bez serveru bude obecně dostupná, latence kontejnerů bez serveru bude pokrytá cílovou úrovní služeb (SLO) a 10 milisekundami pro čtení bodů a 30 milisekundami a méně pro zápisy. Operace čtení z bodu se skládá z načtení jedné položky podle jejího ID a hodnoty klíče oddílu.
+- Prostupnost **: po** zpřístupnění nabídky bez serveru bude dostupná i v případě, že dojde k obecné dostupnosti nabídek bez serveru, bude se vztahovat na úroveň služeb (SLO) 95%. To znamená, že maximální navýšení zatížení je možné dosáhnout minimálně 95% času.
 
 > [!NOTE]
 > Jako jakákoli verze Azure Preview se Azure Cosmos DB bez serveru vylučuje ze smluv o úrovni služeb (SLA). Výše uvedené charakteristiky výkonu se poskytují jako náhled toho, co tato nabídka dodá, když je všeobecně dostupná.

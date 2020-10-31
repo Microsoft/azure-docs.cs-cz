@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100246"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modelování a dělení dat ve službě Azure Cosmos DB s využitím příkladu z reálného světa
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek se sestavuje na několika Azure Cosmos DB konceptech, jako jsou [modelování dat](modeling-data.md), [vytváření oddílů](partitioning-overview.md)a [zajištěná propustnost](request-units.md) , která ukazují, jak se vypořádat s návrhem dat reálného světa.
 
@@ -22,10 +23,10 @@ Pokud obvykle pracujete s relačními databázemi, pravděpodobně jste vytvoři
 
 ## <a name="the-scenario"></a>Scénář
 
-Pro toto cvičení bereme v úvahu doménu blogovací platformy, kde můžou *Uživatelé* vytvářet *příspěvky*. Uživatelé můžou také *jako* příspěvky přidávat *Komentáře* .
+Pro toto cvičení bereme v úvahu doménu blogovací platformy, kde můžou *Uživatelé* vytvářet *příspěvky* . Uživatelé můžou také *jako* příspěvky přidávat *Komentáře* .
 
 > [!TIP]
-> Některá slova byla v *kurzívě*zvýrazněna. Tato slova identifikují druh "věcí" Náš model bude muset manipulovat.
+> Některá slova byla v *kurzívě* zvýrazněna. Tato slova identifikují druh "věcí" Náš model bude muset manipulovat.
 
 Přidání dalších požadavků do naší specifikace:
 
@@ -291,7 +292,7 @@ Také upravujeme komentáře a podobné položky pro přidání uživatelského 
 
 To, co chceme dosáhnout, je to, že při každém přidání komentáře nebo podobného příspěvku také zvýšíme `commentCount` nebo `likeCount` v odpovídajícím příspěvku. Jak `posts` je náš kontejner rozdělený na oddíly `postId` , nová položka (komentář nebo jako) a její odpovídající příspěvek do stejného logického oddílu. V důsledku toho můžeme tuto operaci provést pomocí [uložené procedury](stored-procedures-triggers-udfs.md) .
 
-Nyní při vytváření komentáře (**[C3]**) místo pouhého přidávání nové položky do `posts` kontejneru zavoláme následující uloženou proceduru v tomto kontejneru:
+Nyní při vytváření komentáře ( **[C3]** ) místo pouhého přidávání nové položky do `posts` kontejneru zavoláme následující uloženou proceduru v tomto kontejneru:
 
 ```javascript
 function createComment(postId, comment) {
@@ -405,7 +406,7 @@ Přesná stejná situace při výpisu podobných.
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: zajištění škálovatelnosti všech požadavků
 
-V našich celkových vylepšeních výkonu stále existují dvě požadavky, které jsme nedokončili plně optimalizované: **[Q3]** a **[Q6]**. Jedná se o požadavky zahrnující dotazy, které nemají filtr na klíč oddílu kontejnerů, na které cílí.
+V našich celkových vylepšeních výkonu stále existují dvě požadavky, které jsme nedokončili plně optimalizované: **[Q3]** a **[Q6]** . Jedná se o požadavky zahrnující dotazy, které nemají filtr na klíč oddílu kontejnerů, na které cílí.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>Q3 Seznam příspěvků uživatele v krátké podobě
 

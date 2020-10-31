@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670731"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100690"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -93,7 +93,7 @@ Pro sledování změn v souborech v systémech Windows i Linux používá Change
 
 ## <a name="tracking-file-content-changes"></a>Sledování změn obsahu souboru
 
-Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](/storage/common/storage-account-create). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe.
+Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](/azure/storage/common/storage-account-create). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe.
 
 ![Zobrazit změny v souboru](./media/overview/view-file-changes.png)
 
@@ -175,7 +175,7 @@ Pro optimalizaci výkonu Log Analytics agent sledovat pouze změny. Nastavením 
 
 Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se změn stavu konfigurace hybridního prostředí. K dispozici je mnoho užitečných akcí, které je možné aktivovat v reakci na výstrahy. Například akce v Azure Functions, Runbooky automatizace, webhookech a podobně. Upozornění na změny v souboru **c:\Windows\System32\drivers\etc\hosts** pro počítač je jedním z užitečných výstrah pro Change Tracking a data inventáře. K dispozici je mnoho dalších scénářů pro upozorňování, včetně scénářů dotazu definovaných v následující tabulce.
 
-|Dotaz  |Popis  |
+|Dotaz  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c \\ : \\ ovladače Windows system32 \\ \\ "|Hodí se ke sledování změn souborů důležitých pro systém.|
 |ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c \\ : \\ ovladače systému Windows system32 atd. \\ \\ \\ "|Hodí se ke sledování úprav konfiguračních souborů klíčů.|

@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262884"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101472"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Po [Povolení podpory poznámkových bloků](enable-notebooks.md) pro účty Azure Cosmos můžete vytvářet nové poznámkové bloky, nahrávat nové poznámkové bloky z místního počítače nebo importovat stávající poznámkové bloky z vašich účtů GitHubu. Tento článek ukazuje, jak připojit pracovní prostor vašich poznámkových bloků k GitHubu a importovat poznámkové bloky z úložiště GitHub do svého účtu Azure Cosmos. Po importu je můžete spustit, provést změny a uložit změny zpátky do GitHubu.
 
@@ -27,7 +28,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Vyberte položku nabídky **připojit k GitHubu** .
 
-1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým**úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup**. Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
+1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým** úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup** . Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
@@ -43,13 +44,13 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 Po integraci s účtem GitHubu uvidíte jenom seznam úložišť a poznámkových bloků v účtu Azure Cosmos. Tento příkaz platí i v případě, že se k účtu Azure Cosmos DB přihlašuje více uživatelů a přidáte vlastní účty. Jinými slovy, více uživatelů může použít stejný účet Azure Cosmos k připojení pracovního prostoru poznámkového bloku k GitHubu. Každý uživatel ale uvidí jenom seznam úložišť a poznámkových bloků, které naimportovali. Poznámkové bloky importované jinými uživateli nejsou pro vás vidět.
 
-Pokud chcete odpojit svůj účet GitHubu z pracovního prostoru poznámkových bloků, otevřete kartu **Průzkumník dat** , vyberte možnost `…` vedle **úložišť GitHub** a vyberte **Odpojit od GitHubu**.
+Pokud chcete odpojit svůj účet GitHubu z pracovního prostoru poznámkových bloků, otevřete kartu **Průzkumník dat** , vyberte možnost `…` vedle **úložišť GitHub** a vyberte **Odpojit od GitHubu** .
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Úprava poznámkového bloku a vložení změn do GitHubu
 
 Můžete upravit existující Poznámkový blok nebo přidat nový Poznámkový blok do úložiště a uložit změny zpátky do GitHubu.
 
-Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit**). Otevře se dialogové okno, kde můžete zadat potvrzovací zprávu pro změny, které jste udělali. Vyberte **Potvrdit** a Poznámkový blok na GitHubu se aktualizuje. Aktualizace můžete ověřit tak, že se přihlásíte k účtu GitHub a ověříte historii potvrzení změn.
+Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit** ). Otevře se dialogové okno, kde můžete zadat potvrzovací zprávu pro změny, které jste udělali. Vyberte **Potvrdit** a Poznámkový blok na GitHubu se aktualizuje. Aktualizace můžete ověřit tak, že se přihlásíte k účtu GitHub a ověříte historii potvrzení změn.
 
 V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzdáleného. V takovém případě ale možnost potvrzení slouží jako "fázování, potvrzování a" doručování "vašich aktualizací do GitHubu.
 

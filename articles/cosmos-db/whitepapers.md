@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: adbbdf39875e67552de2f797b94eae89e0aba409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b4beba04bf90e61ac959c90d3559d8cef2db4db
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74869778"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099126"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB dokumenty White Paper
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Dokumenty White Paper umožňují prozkoumat Azure Cosmos DB koncepty na hlubší úrovni. V tomto článku najdete seznam dostupných dokumentů White paper pro Azure Cosmos DB.
 

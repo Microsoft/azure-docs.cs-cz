@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7370642f5a325867c901d7ebd362e6dfa68e098f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491083"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101501"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Správa zásad řešení konfliktů v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 V případě zápisů ve více oblastech může dojít ke konfliktům, pokud více klientů zapisuje ke stejné položce. Pokud dojde ke konfliktu, můžete konflikt vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů.
 
@@ -134,10 +135,10 @@ Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešen�
 
 Uložené procedury řešení Custom konfliktů by se měly implementovat pomocí signatury funkce uvedené níže. Název funkce se nemusí shodovat s názvem použitým při registraci uložené procedury s kontejnerem, ale zjednodušuje pojmenování. Zde je popis parametrů, které musí být pro tuto uloženou proceduru implementovány.
 
-- **incomingItem**: položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
-- **existingItem**: aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
-- neoznačovatelné **položky: logická**hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
-- **conflictingItems**: pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
+- **incomingItem** : položka, která je vložena nebo aktualizována v potvrzení, které generuje konflikty. Má hodnotu null pro operace odstranění.
+- **existingItem** : aktuálně potvrzená položka. Tato hodnota je v aktualizaci jiná než null a pro vložení nebo odstranění je null.
+- neoznačovatelné **položky: logická** hodnota označující, jestli je incomingItem v konfliktu s dříve odstraněnou položkou. V případě hodnoty true je existingItem také null.
+- **conflictingItems** : pole zapsané verze všech položek v kontejneru, které jsou v konfliktu s INCOMINGITEM na ID nebo jakékoli jiné jedinečné vlastnosti indexu.
 
 > [!IMPORTANT]
 > Stejně jako u jakékoli uložené procedury má vlastní procedura řešení konfliktů přístup k jakýmkoli datům se stejným klíčem oddílu a může provést jakoukoli operaci vložení, aktualizace nebo odstranění pro vyřešení konfliktů.

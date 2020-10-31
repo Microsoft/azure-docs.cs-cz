@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498833"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101234"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operátory v Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek podrobně popisuje různé operátory podporované nástrojem Azure Cosmos DB.
 
@@ -21,11 +22,11 @@ Tento článek podrobně popisuje různé operátory podporované nástrojem Azu
 
 Následující tabulka ukazuje výsledek porovnání rovnosti v rozhraní SQL API mezi libovolnými dvěma typy JSON.
 
-| **Evřít** | **Nedefinované** | **Null** | **Logická hodnota** | **Číselná** | **Řetězec** | **Předmětů** | **Skupin** |
+| **Evřít** | **Nedefinované** | **Null** | **Datového** | **Číselná** | **Řetězec** | **Předmětů** | **Skupin** |
 |---|---|---|---|---|---|---|---|
 | **Nedefinované** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
 | **Null** | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
-| **Logická hodnota** | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
+| **Datového** | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované | Nedefinované |
 | **Číselná** | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované | Nedefinované |
 | **Řetězec** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované | Nedefinované |
 | **Předmětů** | Nedefinované | Nedefinované | Nedefinované | Nedefinované | Nedefinované | **Ok** | Nedefinované |
@@ -54,7 +55,7 @@ Vrátí `true` , pokud je jedna z podmínek `true` .
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
 | **True** |Ano |Ano |Ano |
-| **False** |Ano |Nepravda |Nedefinované |
+| **False** |Ano |Ne |Nedefinované |
 | **Nedefinované** |Ano |Nedefinované |Nedefinované |
 
 **AND – operátor**
@@ -63,9 +64,9 @@ Vrátí `true` , pokud jsou oba výrazy `true` .
 
 |  | **True** | **False** | **Nedefinované** |
 | --- | --- | --- | --- |
-| **True** |Ano |Nepravda |Nedefinované |
+| **True** |Ano |Ne |Nedefinované |
 | **False** |Nepravda |Nepravda |Nepravda |
-| **Nedefinované** |Nedefinované |Nepravda |Nedefinované |
+| **Nedefinované** |Nedefinované |Ne |Nedefinované |
 
 **NOT – operátor**
 
@@ -73,7 +74,7 @@ Obrátí hodnotu libovolného logického výrazu.
 
 |  | **NOT** |
 | --- | --- |
-| **True** |Nepravda |
+| **True** |Ne |
 | **False** |Ano |
 | **Nedefinované** |Nedefinované |
 

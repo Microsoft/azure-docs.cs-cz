@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: b1e0f8c301d40ff10dbf977731d457a31b096328
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477993"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098651"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -85,7 +86,7 @@ Teď, když aplikace existuje, musíte se ujistit, že může komunikovat s Azur
 
 1. Otevřete *config.js* soubor ve svém oblíbeném textovém editoru.
 
-1. Zkopírujte a vložte následující fragment kódu do souboru *config.js* a nastavte vlastnosti `endpoint` a `key` na identifikátor URI koncového bodu Azure Cosmos DB a primární klíč. Databáze, názvy kontejnerů jsou nastaveny na **úlohy** a **položky**. Klíč oddílu, který budete používat pro tuto aplikaci, je **/Category**.
+1. Zkopírujte a vložte následující fragment kódu do souboru *config.js* a nastavte vlastnosti `endpoint` a `key` na identifikátor URI koncového bodu Azure Cosmos DB a primární klíč. Databáze, názvy kontejnerů jsou nastaveny na **úlohy** a **položky** . Klíč oddílu, který budete používat pro tuto aplikaci, je **/Category** .
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -93,7 +94,7 @@ Teď, když aplikace existuje, musíte se ujistit, že může komunikovat s Azur
 
    :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="Snímek obrazovky se získáním klíčů z webu Azure Portal":::
 
-Sada JavaScript SDK používá obecný pojem *kontejner* a *položka*. Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. V předchozím fragmentu kódu se `module.exports = config;` kód používá k exportu konfiguračního objektu, abyste na něj mohli odkazovat v souboru *app.js* .
+Sada JavaScript SDK používá obecný pojem *kontejner* a *položka* . Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. V předchozím fragmentu kódu se `module.exports = config;` kód používá k exportu konfiguračního objektu, abyste na něj mohli odkazovat v souboru *app.js* .
 
 ## <a name="create-a-database-and-a-container"></a>Vytvoření databáze a kontejneru
 
@@ -123,7 +124,7 @@ V souboru *app.js* zkopírujte a vložte následující kód pro použití dří
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> Pokud se připojujete k **emulátoru Cosmos DB**, zakažte ověřování TLS pro váš proces uzlu:
+> Pokud se připojujete k **emulátoru Cosmos DB** , zakažte ověřování TLS pro váš proces uzlu:
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -216,7 +217,7 @@ node app.js
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
+Když už tyto prostředky nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos DB a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků, kterou jste použili pro účet Azure Cosmos DB, vyberte **Odstranit** a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 

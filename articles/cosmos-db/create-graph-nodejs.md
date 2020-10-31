@@ -9,14 +9,15 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
-ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 546187b49e1186d665fe32b3f8d632a0281bffa4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409370"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099670"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: sestavení aplikace Node.js pomocí účtu rozhraní API Azure Cosmos DB Gremlin
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -95,7 +96,7 @@ Tato aplikace konzoly používá open source ovladač [Node.jsGremlin ](https://
 
     ```
 
-  Všechny konfigurace jsou v *config.js*, které jsme upravili v [následující části](#update-your-connection-string).
+  Všechny konfigurace jsou v *config.js* , které jsme upravili v [následující části](#update-your-connection-string).
 
 * Definuje se série funkcí pro provádění různých operací Gremlin. Toto je jedna z nich:
 
@@ -151,13 +152,13 @@ Tato aplikace konzoly používá open source ovladač [Node.jsGremlin ](https://
 
 1. Otevřete soubor *config.js* . 
 
-2. V *config.js*vyplňte `config.endpoint` klíč hodnotou **koncového bodu Gremlin** ze stránky **Přehled** účtu Cosmos DB v Azure Portal. 
+2. V *config.js* vyplňte `config.endpoint` klíč hodnotou **koncového bodu Gremlin** ze stránky **Přehled** účtu Cosmos DB v Azure Portal. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
     :::image type="content" source="./media/create-graph-nodejs/gremlin-uri.png" alt-text="Zobrazení a zkopírování přístupového klíče na stránce Azure Portal, přehled":::
 
-3. V *config.js*vyplňte hodnotu config. PrimaryKey hodnotou **primárního klíče** ze stránky **klíče** vašeho účtu Cosmos DB v Azure Portal. 
+3. V *config.js* vyplňte hodnotu config. PrimaryKey hodnotou **primárního klíče** ze stránky **klíče** vašeho účtu Cosmos DB v Azure Portal. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -191,9 +192,9 @@ module.exports = config;
 
 Teď se můžete vrátit do Průzkumníku dat na webu Azure Portal, kde můžete zobrazit, upravit a pracovat s novými daty grafu a zadávat na ně dotazy.
 
-V Průzkumníku dat se nová databáze zobrazí v podokně **Graphs** (Grafy). Rozbalte databázi, potom kontejner a vyberte **Graph**.
+V Průzkumníku dat se nová databáze zobrazí v podokně **Graphs** (Grafy). Rozbalte databázi, potom kontejner a vyberte **Graph** .
 
-Data generovaná ukázkovou aplikací se zobrazí v dalším podokně na kartě **Graph**, když vyberete **Použít filtr**.
+Data generovaná ukázkovou aplikací se zobrazí v dalším podokně na kartě **Graph** , když vyberete **Použít filtr** .
 
 Zkuste filtr otestovat provedením metody `g.V()` s hodnotami `.has('firstName', 'Thomas')`. Nezapomeňte, že se v hodnotě rozlišují malá a velká písmena.
 

@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 67cccc1eaa889d0180da9b5ae0fca9b75366edd9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477330"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101149"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -98,7 +99,7 @@ K otestování vaší aplikace v místním počítači se systémem Windows mů�
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Chcete-li spustit emulátor Azure Storage, vyberte z plochy systému Windows tlačítko **Start** nebo klávesu Windows. Zadejte a spusťte *emulátor úložiště Microsoft Azure*. Další informace najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](../storage/common/storage-use-emulator.md).
+Chcete-li spustit emulátor Azure Storage, vyberte z plochy systému Windows tlačítko **Start** nebo klávesu Windows. Zadejte a spusťte *emulátor úložiště Microsoft Azure* . Další informace najdete v tématu [použití emulátoru Azure Storage pro vývoj a testování](../storage/common/storage-use-emulator.md).
 
 ### <a name="retrieve-your-connection-string"></a>Načtení připojovacího řetězce
 
@@ -499,11 +500,11 @@ else
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h*, odeberte přepínač kompilátoru **/Permissive-** :
+Pro Visual Studio Community Edition, pokud projekt získá chyby sestavení z důvodu souborů include *storage_account. h* a *Table. h* , odeberte přepínač kompilátoru **/Permissive-** :
 
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti**.
-1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
-1. Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na váš projekt a vyberte **Vlastnosti** .
+1. V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace** , pak rozbalte **C/C++** a vyberte **Jazyk** .
+1. Nastavte **Režim přizpůsobení** na hodnotu **Ne** .
 
 ## <a name="next-steps"></a>Další kroky
 

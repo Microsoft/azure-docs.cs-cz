@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/25/2020
-ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/28/2020
+ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91361207"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099184"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Rychlé zprovoznění: Vytváření a správa definic pracovních postupů aplikací logiky pomocí Visual Studio Code
 
@@ -20,7 +20,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a Visual Studio
 
 I když tyto stejné úlohy můžete provádět v [Azure Portal](https://portal.azure.com) a v aplikaci Visual Studio, můžete začít rychleji v Visual Studio Code, když už jste obeznámeni s definicemi aplikace logiky a chcete pracovat přímo v kódu. Můžete například zakázat, povolit, odstranit a aktualizovat již vytvořené aplikace logiky. Můžete také pracovat na Logic Apps a účtech pro integraci z libovolné vývojové platformy, kde Visual Studio Code běžet, jako je Linux, Windows nebo Mac.
 
-V tomto článku můžete vytvořit stejnou aplikaci logiky z tohoto [rychlého](../logic-apps/quickstart-create-first-logic-app-workflow.md)startu, která se zaměřuje na základní koncepty. V Visual Studio Code aplikace logiky vypadá jako v tomto příkladu:
+V tomto článku můžete vytvořit stejnou aplikaci logiky z tohoto [rychlého](../logic-apps/quickstart-create-first-logic-app-workflow.md)startu, která se zaměřuje na základní koncepty. Můžete se také [naučit vytvořit ukázkovou aplikaci v aplikaci Visual Studio](quickstart-create-logic-apps-with-visual-studio.md)a [Naučte se vytvářet a spravovat aplikace prostřednictvím rozhraní Azure Command-Line (CLI)](quickstart-logic-apps-azure-cli.md). V Visual Studio Code aplikace logiky vypadá jako v tomto příkladu:
 
 ![Příklad definice pracovního postupu aplikace logiky](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
@@ -58,23 +58,23 @@ Než začnete, ujistěte se, že máte tyto položky:
 
    ![Výběr ikony Azure na panelu nástrojů Visual Studio Code](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. V okně Azure v části **Logic Apps**vyberte **Přihlásit se k Azure**. Až se vám zobrazí přihlašovací stránka Microsoftu, přihlaste se pomocí svého účtu Azure.
+1. V okně Azure v části **Logic Apps** vyberte **Přihlásit se k Azure** . Až se vám zobrazí přihlašovací stránka Microsoftu, přihlaste se pomocí svého účtu Azure.
 
    ![Vyberte možnost přihlásit se k Azure.](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   1. Pokud se přihlášení trvá déle než obvykle, Visual Studio Code vás vyzve, abyste se přihlásili přes web Microsoftu pro ověřování tím, že vám poskytne kód zařízení. Chcete-li se místo toho přihlásit pomocí kódu, vyberte **použít kód zařízení**.
+   1. Pokud se přihlášení trvá déle než obvykle, Visual Studio Code vás vyzve, abyste se přihlásili přes web Microsoftu pro ověřování tím, že vám poskytne kód zařízení. Chcete-li se místo toho přihlásit pomocí kódu, vyberte **použít kód zařízení** .
 
       ![Místo toho pokračovat pomocí kódu zařízení](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   1. Chcete-li zkopírovat kód, vyberte možnost **kopírovat & otevřít**.
+   1. Chcete-li zkopírovat kód, vyberte možnost **kopírovat & otevřít** .
 
       ![Kopírovat kód pro přihlášení k Azure](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. Chcete-li otevřít nové okno prohlížeče a pokračovat na webu ověřování, vyberte možnost **Otevřít odkaz**.
+   1. Chcete-li otevřít nové okno prohlížeče a pokračovat na webu ověřování, vyberte možnost **Otevřít odkaz** .
 
       ![Potvrzení otevření prohlížeče a přechodu na web ověřování](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. Na stránce **Přihlásit se k účtu** zadejte svůj ověřovací kód a vyberte **Další**.
+   1. Na stránce **Přihlásit se k účtu** zadejte svůj ověřovací kód a vyberte **Další** .
 
       ![Zadejte ověřovací kód pro přihlášení Azure.](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
@@ -88,12 +88,12 @@ Než začnete, ujistěte se, že máte tyto položky:
 
    1. V seznamu, který se zobrazí, vyberte odběry, které chcete zobrazit.
 
-1. V části **Logic Apps**vyberte požadované předplatné. Uzel předplatné rozbalí a zobrazí všechny aplikace logiky, které v tomto předplatném existují.
+1. V části **Logic Apps** vyberte požadované předplatné. Uzel předplatné rozbalí a zobrazí všechny aplikace logiky, které v tomto předplatném existují.
 
    ![Vyberte své předplatné Azure.](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
    > [!TIP]
-   > V části **účty pro integraci**vyberte předplatné, ve kterém se zobrazí všechny účty pro integraci, které v tomto předplatném existují.
+   > V části **účty pro integraci** vyberte předplatné, ve kterém se zobrazí všechny účty pro integraci, které v tomto předplatném existují.
 
 <a name="create-logic-app"></a>
 
@@ -101,7 +101,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 1. Pokud jste se ještě přihlásili k účtu Azure a předplatnému z Visual Studio Code, [Přihlaste se hned pomocí předchozích kroků](#access-azure).
 
-1. V aplikaci Visual Studio Code v části **Logic Apps**otevřete místní nabídku vašeho předplatného a vyberte **vytvořit aplikaci logiky**.
+1. V aplikaci Visual Studio Code v části **Logic Apps** otevřete místní nabídku vašeho předplatného a vyberte **vytvořit aplikaci logiky** .
 
    ![V nabídce předplatné vyberte vytvořit aplikaci logiky.](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
@@ -194,7 +194,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 1. Až budete hotovi, uložte definici pracovního postupu aplikace logiky. (Nabídka soubor > uložit, nebo stiskněte klávesy CTRL + S)
 
-1. Po zobrazení výzvy k odeslání vaší aplikace logiky do předplatného Azure vyberte **Odeslat**.
+1. Po zobrazení výzvy k odeslání vaší aplikace logiky do předplatného Azure vyberte **Odeslat** .
 
    Tento krok publikuje vaši aplikaci logiky na [Azure Portal](https://portal.azure.com), která a zajišťuje, aby byla logika živá a spuštěná v Azure.
 
@@ -204,7 +204,7 @@ Než začnete, ujistěte se, že máte tyto položky:
 
 V Visual Studio Code můžete aplikaci logiky otevřít v zobrazení návrhu jen pro čtení. I když aplikaci logiky v Návrháři nemůžete upravovat, můžete pracovní postup vaší aplikace logiky vizuálně kontrolovat pomocí zobrazení návrháře.
 
-V okně Azure v části **Logic Apps**otevřete místní nabídku aplikace logiky a v **Návrháři vyberte otevřít**.
+V okně Azure v části **Logic Apps** otevřete místní nabídku aplikace logiky a v **Návrháři vyberte otevřít** .
 
 Návrhář, který je jen pro čtení, se otevře v samostatném okně a zobrazí pracovní postup vaší aplikace logiky, například:
 
@@ -228,13 +228,13 @@ Pokud v Visual Studio Code upravíte publikovanou aplikaci logiky a uložíte zm
 
 1. Pokud jste se ještě přihlásili k účtu Azure a předplatnému z Visual Studio Code, [Přihlaste se hned pomocí předchozích kroků](#access-azure).
 
-1. V okně Azure v části **Logic Apps**rozbalte své předplatné Azure, abyste mohli zobrazit všechny aplikace logiky v tomto předplatném.
+1. V okně Azure v části **Logic Apps** rozbalte své předplatné Azure, abyste mohli zobrazit všechny aplikace logiky v tomto předplatném.
 
-   1. Chcete-li zakázat aplikaci logiky, kterou chcete, otevřete nabídku aplikace logiky a vyberte možnost **Zakázat**.
+   1. Chcete-li zakázat aplikaci logiky, kterou chcete, otevřete nabídku aplikace logiky a vyberte možnost **Zakázat** .
 
       ![Zakázání aplikace logiky](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. Až budete připraveni znovu aktivovat aplikaci logiky, otevřete nabídku aplikace logiky a vyberte **Povolit**.
+   1. Až budete připraveni znovu aktivovat aplikaci logiky, otevřete nabídku aplikace logiky a vyberte **Povolit** .
 
       ![Povolení aplikace logiky](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
@@ -249,9 +249,9 @@ V Visual Studio Code můžete otevřít a upravit definici pracovního postupu p
 
 1. Pokud jste se ještě přihlásili k účtu Azure a předplatnému z Visual Studio Code, [Přihlaste se hned pomocí předchozích kroků](#access-azure).
 
-1. V okně Azure v části **Logic Apps**rozbalte své předplatné Azure a vyberte aplikaci logiky, kterou chcete.
+1. V okně Azure v části **Logic Apps** rozbalte své předplatné Azure a vyberte aplikaci logiky, kterou chcete.
 
-1. Otevřete nabídku aplikace logiky a **v editoru vyberte otevřít**. Případně klikněte na ikonu Upravit vedle názvu vaší aplikace logiky.
+1. Otevřete nabídku aplikace logiky a **v editoru vyberte otevřít** . Případně klikněte na ikonu Upravit vedle názvu vaší aplikace logiky.
 
    ![Otevřít editor pro existující aplikaci logiky](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -263,7 +263,7 @@ V Visual Studio Code můžete otevřít a upravit definici pracovního postupu p
 
 1. Jakmile budete hotovi, uložte změny. (Nabídka soubor > uložit, nebo stiskněte klávesy CTRL + S)
 
-1. Po zobrazení výzvy k odeslání změn a *přepsání* stávající aplikace logiky v Azure Portal vyberte **Odeslat**.
+1. Po zobrazení výzvy k odeslání změn a *přepsání* stávající aplikace logiky v Azure Portal vyberte **Odeslat** .
 
    Tento krok publikuje vaše aktualizace do aplikace logiky v [Azure Portal](https://portal.azure.com).
 
@@ -276,9 +276,9 @@ V Visual Studio Code můžete otevřít a zkontrolovat starší verze aplikace l
 > [!IMPORTANT] 
 > Než začnete měnit aktivně běžící aplikace logiky v produkčním prostředí, vyhněte se riziku při rozdělování aplikace logiky a minimalizaci přerušení tím, že [nejprve zakážete aplikaci logiky](#disable-enable-logic-app).
 
-1. V okně Azure v části **Logic Apps**rozbalte své předplatné Azure, abyste mohli zobrazit všechny aplikace logiky v tomto předplatném.
+1. V okně Azure v části **Logic Apps** rozbalte své předplatné Azure, abyste mohli zobrazit všechny aplikace logiky v tomto předplatném.
 
-1. V rámci vašeho předplatného rozbalte aplikaci logiky a rozbalte položku **verze**.
+1. V rámci vašeho předplatného rozbalte aplikaci logiky a rozbalte položku **verze** .
 
    Seznam **verze** zobrazuje starší verze vaší aplikace logiky, pokud existují.
 
@@ -286,19 +286,19 @@ V Visual Studio Code můžete otevřít a zkontrolovat starší verze aplikace l
 
 1. Chcete-li zobrazit předchozí verzi, vyberte jeden z těchto kroků:
 
-   * Definici JSON zobrazíte tak, že v části **verze**vyberete číslo verze této definice. Případně otevřete místní nabídku této verze a **v editoru vyberte otevřít**.
+   * Definici JSON zobrazíte tak, že v části **verze** vyberete číslo verze této definice. Případně otevřete místní nabídku této verze a **v editoru vyberte otevřít** .
 
      V místním počítači se otevře nový soubor a zobrazí se definice JSON této verze.
 
-   * Chcete-li zobrazit verzi v zobrazení návrháře jen pro čtení, otevřete místní nabídku této verze a vyberte možnost **otevřít v Návrháři**.
+   * Chcete-li zobrazit verzi v zobrazení návrháře jen pro čtení, otevřete místní nabídku této verze a vyberte možnost **otevřít v Návrháři** .
 
 1. Pro zvýšení úrovně předchozí verze na aktuální verzi použijte následující postup:
 
-   1. V části **verze**otevřete místní nabídku předchozí verze a vyberte **zvýšit úroveň**.
+   1. V části **verze** otevřete místní nabídku předchozí verze a vyberte **zvýšit úroveň** .
 
       ![Zvýšit úroveň předchozí verze](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 
-   1. Pokud chcete pokračovat, až Visual Studio Code zobrazí výzvu k potvrzení, vyberte **Ano**.
+   1. Pokud chcete pokračovat, až Visual Studio Code zobrazí výzvu k potvrzení, vyberte **Ano** .
 
       ![Potvrdit zvýšení úrovně předchozí verze](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 

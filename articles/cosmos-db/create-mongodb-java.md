@@ -9,14 +9,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2dcd72f9231726d5a2f473dbbfa4d8fd81e64b97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475953"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098956"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Rychlý Start: Vytvoření konzolové aplikace pomocí Java a rozhraní MongoDB API v Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -41,7 +42,7 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB pro účet rozh
 
 ## <a name="add-a-collection"></a>Přidání kolekce
 
-Pojmenujte novou **databázi databáze a novou**kolekci **coll**.
+Pojmenujte novou **databázi databáze a novou** kolekci **coll** .
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -111,7 +112,7 @@ Tato aplikace konzoly používá [ovladač Java MongoDB](https://docs.mongodb.co
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Z účtu Azure Cosmos DB vyberte **rychlé zprovoznění**, vyberte **Java**a pak zkopírujte připojovací řetězec do schránky.
+1. Z účtu Azure Cosmos DB vyberte **rychlé zprovoznění** , vyberte **Java** a pak zkopírujte připojovací řetězec do schránky.
 
 2. Otevřete soubor *program. Java* , nahraďte argument konstruktorem MongoClientURI připojovacím řetězcem. Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB. 
     

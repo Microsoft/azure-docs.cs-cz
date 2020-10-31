@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367121"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098769"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB umožňuje nastavit zřízenou propustnost pro vaše databáze a kontejnery. Existují dva typy zřízené propustnosti, standardní (ruční) nebo automatické škálování. Tento článek poskytuje přehled o tom, jak zajištěná propustnost funguje. 
 
@@ -79,11 +80,11 @@ Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekc
 Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i kontejneru je povoleno. Následující příklad ukazuje, jak zřídit standardní (ruční) zřízené propustnost v databázi Azure Cosmos a v kontejneru:
 
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
-* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D*a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
+* Dále v rámci databáze vytvořte pět kontejnerů s názvem *a* , *B* , *C* , *D* a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Sdílenou a vyhrazenou propustnost můžete nakonfigurovat pouze při vytváření databáze a kontejneru. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fyzický oddíl, který je hostitelem jednoho nebo více logických oddílů kontejneru":::
 
-* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a*, *C*, *D*a *E*. Přesné množství propustnosti, které je dostupné pro *a*, *C*, *D*nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
+* Propustnost *"K"* ru se sdílí mezi čtyřmi kontejnery *a* , *C* , *D* a *E* . Přesné množství propustnosti, které je dostupné pro *a* , *C* , *D* nebo *E* , se liší. Pro každou propustnost jednotlivých kontejnerů neexistují žádné SLA.
 * U kontejneru s názvem *B* je zaručeno, že se po celou dobu vrátí propustnost ru *"P"* . Je zajištěný pomocí SLA.
 
 > [!NOTE]
@@ -119,9 +120,9 @@ Zřízenou propustnost kontejneru nebo databáze můžete škálovat prostředni
 * [Container. ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) v sadě .NET SDK.
 * [CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) v sadě Java SDK.
 
-Pokud **snižujete zřízenou propustnost**, budete ji moci provést až na [minimum](#current-provisioned-throughput).
+Pokud **snižujete zřízenou propustnost** , budete ji moci provést až na [minimum](#current-provisioned-throughput).
 
-Pokud **zvýšíte zřízenou propustnost**, většinou je operace okamžitá. Existují však případy, kdy může operace trvat delší dobu, protože systémové úlohy vyžadují zřízení požadovaných prostředků. V takovém případě se pokus o změnu zřízené propustnosti v průběhu této operace zaznamená odpověď HTTP 423 s chybovou zprávou s vysvětlením, že probíhá jiná operace škálování.
+Pokud **zvýšíte zřízenou propustnost** , většinou je operace okamžitá. Existují však případy, kdy může operace trvat delší dobu, protože systémové úlohy vyžadují zřízení požadovaných prostředků. V takovém případě se pokus o změnu zřízené propustnosti v průběhu této operace zaznamená odpověď HTTP 423 s chybovou zprávou s vysvětlením, že probíhá jiná operace škálování.
 
 > [!NOTE]
 > Pokud plánujete velmi velkou úlohu příjmu, která bude vyžadovat velký nárůst zřízené propustnosti, pamatujte na to, že operace škálování nemá žádnou smlouvu SLA a jak je uvedeno v předchozím odstavci, může trvat dlouhou dobu, než se zvýší velká doba. Možná budete chtít naplánovat dopředu a zahájit škálování před spuštěním úlohy a pomocí níže uvedených metod ověřit průběh.

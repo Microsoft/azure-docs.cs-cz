@@ -6,14 +6,15 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099330"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Jak monitorovat normalizovaná RU/s pro kontejner Azure Cosmos nebo účet
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování vašeho účtu a vytváření řídicích panelů. Metriky Azure Cosmos DB jsou ve výchozím nastavení shromažďovány, takže tato funkce nevyžaduje explicitní povolení ani konfiguraci.
 
@@ -23,7 +24,7 @@ Azure Monitor pro Azure Cosmos DB poskytuje zobrazení metrik pro monitorování
 
 Když normalizovaná spotřeba RU/s dosáhne 100% pro daný rozsah klíčů oddílu a klient v tomto časovém intervalu (1 sekund) vydává požadavky na určitý rozsah klíčů oddílu, obdrží v něm chybu s omezeným počtem. Klient by měl respektovat navrhovanou dobu čekání a opakovat požadavek. Sada SDK usnadňuje zpracování této situace opakováním předem nakonfigurovaných časů tím, že se bude čekat správně.  Není nutné, abyste viděli chybu omezení míry RU, protože normalizované RU dosáhlo 100%. Vzhledem k tomu, že normalizované RU je jediná hodnota, která představuje maximální využití pro všechny rozsahy klíčů oddílu, může být jeden rozsah klíčů oddílu zaneprázdněný, ale ostatní rozsahy klíčů oddílu můžou požadavky zpracovat bez problémů. Například jedna operace, například uložená procedura, která spotřebovává všechny důležité/s na rozsah klíče oddílu, povede k krátkému nárůstu normalizované spotřeby RU/s. V takových případech nedojde k žádným okamžitému omezení rychlosti, pokud je rychlost požadavků nízká nebo se požadavky provedou na jiné oddíly v různých rozsahech klíčů oddílu. 
 
-Metriky Azure Monitor vám pomůžou najít operace na stavový kód pro SQL API pomocí metriky **celkových požadavků** . Později můžete tyto požadavky filtrovat pomocí kódu stavu 429 a rozdělit je podle **typu operace**.  
+Metriky Azure Monitor vám pomůžou najít operace na stavový kód pro SQL API pomocí metriky **celkových požadavků** . Později můžete tyto požadavky filtrovat pomocí kódu stavu 429 a rozdělit je podle **typu operace** .  
 
 Pokud chcete zjistit, které požadavky jsou omezené, doporučuje se tyto informace získat prostřednictvím diagnostických protokolů.
 
@@ -35,13 +36,13 @@ V souhrnu se za **normalizovanou** metriku s využitím ru používá k zobrazen
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Zobrazení normalizované metriky spotřeby jednotek požadavků
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
-2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
+2. V levém navigačním panelu vyberte **monitor** a vyberte **metriky** .
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Podokno metrik v Azure Monitor":::
 
-3. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
+3. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné** a **skupinu prostředků** . Jako **typ prostředku** vyberte **Azure Cosmos DB účty** , zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít** .
 
    :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Podokno metrik v Azure Monitor":::
 
@@ -53,7 +54,7 @@ V souhrnu se za **normalizovanou** metriku s využitím ru používá k zobrazen
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filtry normalizované spotřeby jednotek požadavků
 
-Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **PartitionKeyRangeID**a **oblasti**. Pokud chcete metriky filtrovat, vyberte **Přidat filtr** a zvolte požadovanou vlastnost, jako je například **CollectionName** a odpovídající hodnota, které vás zajímají. Graf pak zobrazí normalizované jednotky pro spotřebu RU spotřebované pro kontejner pro vybrané období.  
+Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName** , **DatabaseName** , **PartitionKeyRangeID** a **oblasti** . Pokud chcete metriky filtrovat, vyberte **Přidat filtr** a zvolte požadovanou vlastnost, jako je například **CollectionName** a odpovídající hodnota, které vás zajímají. Graf pak zobrazí normalizované jednotky pro spotřebu RU spotřebované pro kontejner pro vybrané období.  
 
 Metriky můžete seskupit pomocí možnosti **použít rozdělení** .  
 

@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426614"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100707"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro databázi SQL pomocí Azure Logic Apps
 
@@ -22,7 +22,7 @@ Můžete vytvářet aplikace logiky, které se spouštějí při aktivaci událo
 
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informace o technických informacích, omezeních a známých problémech specifických pro konektor najdete na [stránce s referenčními informacemi pro konektor SQL Server](/connectors/sql/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -38,7 +38,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
   * V případě Azure SQL Database můžete najít tyto podrobnosti v připojovacím řetězci.
   
-    Chcete-li například najít tento řetězec v Azure Portal, otevřete databázi. V nabídce databáze vyberte buď **připojovací řetězce** , nebo **vlastnosti**:
+    Chcete-li například najít tento řetězec v Azure Portal, otevřete databázi. V nabídce databáze vyberte buď **připojovací řetězce** , nebo **vlastnosti** :
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
@@ -72,27 +72,27 @@ Pokud chcete získat přístup ke spravované instanci SQL Azure bez použití m
 
 Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql-action)a ještě jste nevytvořili připojení k vaší databázi, budete vyzváni k provedení těchto kroků:
 
-1. Jako **typ ověřování**vyberte požadované a povolené ověřování ve vaší databázi v Azure SQL Database nebo spravované instanci SQL Azure:
+1. Jako **typ ověřování** vyberte požadované a povolené ověřování ve vaší databázi v Azure SQL Database nebo spravované instanci SQL Azure:
 
-   | Ověřování | Popis |
+   | Authentication | Description |
    |----------------|-------------|
    | [**Integrovaná služba Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platnou identitu v Azure Active Directory (Azure AD), která má přístup k vaší databázi. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – integrované ověřování Azure AD](../azure-sql/database/authentication-aad-overview.md) |
    | [**Ověřování SQL Serveru**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do vaší databáze. <p>Další informace najdete v těchto tématech: <p>- [Přehled zabezpečení Azure SQL – ověřování](../azure-sql/database/security-overview.md#authentication) <br>- [Autorizace přístupu k databázi do Azure SQL – ověřování a autorizace](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   Tento příklad pokračuje s **integrací služby Azure AD**:
+   Tento příklad pokračuje s **integrací služby Azure AD** :
 
    ![Snímek obrazovky, který zobrazuje okno připojení "SQL Server" s otevřeným seznamem "typ ověřování" a "integrovaná služba Azure AD".](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
-1. Po výběru **integrovaného Azure AD**vyberte **Přihlásit**se. Na základě toho, jestli používáte Azure SQL Database nebo Azure SQL Managed instance, vyberte přihlašovací údaje uživatele pro ověřování.
+1. Po výběru **integrovaného Azure AD** vyberte **Přihlásit** se. Na základě toho, jestli používáte Azure SQL Database nebo Azure SQL Managed instance, vyberte přihlašovací údaje uživatele pro ověřování.
 
 1. Vyberte tyto hodnoty pro vaši databázi:
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
    | **Název serveru** | Yes | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze** | Ano | Název vaší databáze SQL, například `Fabrikam-Azure-SQL-DB` |
-   | **Název tabulky** | Ano | Tabulka, kterou chcete použít, například `SalesLT.Customer` |
+   | **Název databáze** | Yes | Název vaší databáze SQL, například `Fabrikam-Azure-SQL-DB` |
+   | **Název tabulky** | Yes | Tabulka, kterou chcete použít, například `SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -116,15 +116,15 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
    V opačném případě se prostředek brány dat při vytváření připojení nezobrazí v seznamu **brány připojení** .
 
-1. Jako **typ ověřování**vyberte požadované a povolené ověřování v SQL Server:
+1. Jako **typ ověřování** vyberte požadované a povolené ověřování v SQL Server:
 
-   | Ověřování | Popis |
+   | Authentication | Description |
    |----------------|-------------|
    | [**Ověřování systému Windows**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | – Podporuje jenom konektor non-ISE SQL Server, který vyžaduje prostředek brány dat, který se dřív vytvořil v Azure pro vaše připojení, bez ohledu na to, jestli používáte víceklientské prostředí Azure nebo ISE. <p><p>– Vyžaduje platné uživatelské jméno a heslo systému Windows k potvrzení vaší identity prostřednictvím účtu systému Windows. <p>Další informace najdete v tématu [ověřování systému Windows](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) . |
    | [**Ověřování SQL Serveru**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Podporuje SQL Server konektor non-ISE a ISE. <p><p>– Vyžaduje platné uživatelské jméno a silné heslo, které se vytvoří a uloží do SQL Server. <p>Další informace najdete v tématu [ověřování SQL Server](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication). |
    |||
 
-   Tento příklad pokračuje s **ověřováním systému Windows**:
+   Tento příklad pokračuje s **ověřováním systému Windows** :
 
    ![Vyberte typ ověřování, který se má použít.](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -132,12 +132,12 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název systému SQL Server** | Ano | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
-   | **Název databáze SQL** | Ano | Název databáze SQL Server, například `Fabrikam-Azure-SQL-DB` |
-   | **Uživatelské jméno** | Ano | Vaše uživatelské jméno pro SQL Server a databázi |
-   | **Heslo** | Ano | Heslo pro SQL Server a databázi |
+   | **Název systému SQL Server** | Yes | Adresa pro váš SQL Server, například `Fabrikam-Azure-SQL.database.windows.net` |
+   | **Název databáze SQL** | Yes | Název databáze SQL Server, například `Fabrikam-Azure-SQL-DB` |
+   | **Uživatelské jméno** | Yes | Vaše uživatelské jméno pro SQL Server a databázi |
+   | **Heslo** | Yes | Heslo pro SQL Server a databázi |
    | **Předplatné** |  Ano, pro ověřování systému Windows | Předplatné Azure pro prostředek brány dat, který jste dříve vytvořili v Azure |
-   | **Brána připojení** | Ano, pro ověřování systému Windows | Název prostředku brány dat, který jste dříve vytvořili v Azure <p><p>**Tip**: Pokud se brána v seznamu nezobrazí, ověřte, že jste správně [nastavili bránu](../logic-apps/logic-apps-gateway-connection.md). |
+   | **Brána připojení** | Ano, pro ověřování systému Windows | Název prostředku brány dat, který jste dříve vytvořili v Azure <p><p>**Tip** : Pokud se brána v seznamu nezobrazí, ověřte, že jste správně [nastavili bránu](../logic-apps/logic-apps-gateway-connection.md). |
    |||
 
    > [!TIP]
@@ -152,7 +152,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
 
    ![Vytvoření připojení SQL Server dokončeno](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-1. Až budete připraveni, vyberte **vytvořit**.
+1. Až budete připraveni, vyberte **vytvořit** .
 
 1. Nyní pokračujte v krocích, které jste ještě nedokončili, buď [přidáním triggeru SQL](#add-sql-trigger) , nebo [přidáním akce SQL](#add-sql-action).
 
@@ -176,7 +176,7 @@ Když poprvé přidáte [Trigger SQL](#add-sql-trigger) nebo [akci SQL](#add-sql
    
    Pokud například chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a pak pošle e-mailové výstrahy. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](/connectors/sql/).
 
-1. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Na panelu nástrojů návrháře vyberte **Uložit** .
 
    I když tento krok automaticky povolí a publikuje aplikaci logiky v Azure v reálném čase, jedinou akcí, kterou vaše aplikace logiky aktuálně potřebuje, je ověřit vaši databázi na základě zadaného intervalu a frekvence.
 
@@ -188,33 +188,35 @@ V tomto příkladu aplikace logiky začíná [triggerem opakování](../connecto
 
 1. V [Azure Portal](https://portal.azure.com) nebo v aplikaci Visual Studio otevřete aplikaci logiky v návrháři aplikace logiky. Tento příklad pokračuje Azure Portal.
 
-1. V rámci triggeru nebo akce, kam chcete přidat akci SQL, vyberte **Nový krok**.
+1. V rámci triggeru nebo akce, kam chcete přidat akci SQL, vyberte **Nový krok** .
 
    ![Přidání akce do aplikace logiky](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   Nebo pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
+   Nebo pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci** .
 
-1. V části **zvolit akci**zadejte do vyhledávacího pole `sql server` . V seznamu akce vyberte akci SQL, kterou chcete. V tomto příkladu se používá akce **získat řádek** , která získá jeden záznam.
+1. V části **zvolit akci** zadejte do vyhledávacího pole `sql server` . V seznamu akce vyberte akci SQL, kterou chcete. V tomto příkladu se používá akce **získat řádek** , která získá jeden záznam.
 
    ![Vybrat akci SQL "získat řádek"](./media/connectors-create-api-sqlazure/select-sql-get-row-action.png)
 
 1. Pokud se k databázi SQL připojujete poprvé, budete vyzváni k [vytvoření připojení k databázi SQL](#create-connection). Po vytvoření tohoto připojení můžete pokračovat dalším krokem.
 
-1. Vyberte **název tabulky**, který je `SalesLT.Customer` v tomto příkladu. Zadejte **ID řádku** záznamu, který chcete.
+1. Vyberte **název tabulky** , který je `SalesLT.Customer` v tomto příkladu. Zadejte **ID řádku** záznamu, který chcete.
 
    ![Vyberte název tabulky a zadejte ID řádku.](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
    Tato akce vrátí pouze jeden řádek z vybrané tabulky bez dalšího. Pokud tedy chcete zobrazit data na tomto řádku, můžete přidat další akce, které vytvoří soubor, který obsahuje pole ze vráceného řádku, a uložit tento soubor do účtu cloudového úložiště. Další informace o dalších dostupných akcích pro tento konektor najdete na [referenční stránce konektoru](/connectors/sql/).
 
-1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
+1. Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit** .
 
    Tento krok automaticky povolí a publikuje aplikaci logiky živě v Azure.
+
+<a name="handle-bulk-data"></a>
 
 ## <a name="handle-bulk-data"></a>Zpracování hromadných dat
 
 V některých případech je nutné pracovat se sadami výsledků, takže konektor nevrátí všechny výsledky ve stejnou dobu nebo chcete lepší kontrolu nad velikostí a strukturou pro sady výsledků. Tady je několik způsobů, jak můžete tyto velké sady výsledků zpracovat:
 
-* Pokud vám pomůžete spravovat výsledky jako menší sady, zapněte *stránkování*. Další informace najdete v tématu [získání hromadných dat, záznamů a položek pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Další informace najdete v tématu [stránkování SQL pro přenos hromadných dat pomocí Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
+* Pokud vám pomůžete spravovat výsledky jako menší sady, zapněte *stránkování* . Další informace najdete v tématu [získání hromadných dat, záznamů a položek pomocí stránkování](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Další informace najdete v tématu [stránkování SQL pro přenos hromadných dat pomocí Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
 * Vytvořte [*uloženou proceduru*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) , která uspořádá výsledky podle vašich představ. SQL Connector poskytuje mnoho funkcí back-endu, ke kterým můžete přistupovat pomocí Azure Logic Apps, abyste mohli snadněji automatizovat obchodní úkoly, které pracují s tabulkami SQL Database.
 
@@ -223,7 +225,9 @@ V některých případech je nutné pracovat se sadami výsledků, takže konekt
   Chcete-li uspořádat výsledky tak, jak chcete, můžete vytvořit uloženou proceduru, která bude spuštěna v instanci SQL a používat příkaz **Select-ORDER by** . Toto řešení vám nabízí větší kontrolu nad velikostí a strukturou vašich výsledků. Vaše aplikace logiky volá uloženou proceduru pomocí akce **Spustit uloženou proceduru** SQL serverového konektoru. Další informace najdete v tématu [klauzule SELECT-ORDER by](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
   > [!NOTE]
-  > V tomto konektoru je provádění uložených procedur omezeno na [časový limit kratší než 2 minuty](/connectors/sql/#known-issues-and-limitations). Některé uložené procedury mohou trvat déle než tento limit pro zpracování a úplné dokončení, což generuje `504 TIMEOUT` chybu. Některé dlouhotrvající procesy jsou ve skutečnosti kódované jako výslovně uložené procedury pro tento účel. Volání těchto procedur z Azure Logic Apps může vytvořit problémy z důvodu tohoto limitu. Přestože SQL Connector nativně nepodporuje asynchronní režim, můžete tento režim simulovat pomocí triggeru dokončení SQL, nativního předávacího dotazu SQL, tabulky stavu a úloh na straně serveru pomocí [agenta elastické úlohy Azure](../azure-sql/database/elastic-jobs-overview.md).
+  > Konektor SQL má časový limit uložené procedury, který je [kratší než 2 minuty](/connectors/sql/#known-issues-and-limitations). Některé uložené procedury mohou trvat déle, než je toto omezení, což způsobí `504 Timeout` chybu. Tento problém můžete obejít pomocí triggeru dokončení SQL, nativního předávacího dotazu SQL, tabulky stavu a úloh na straně serveru.
+  > 
+  > Pro tuto úlohu můžete použít [agenta elastické úlohy Azure](../azure-sql/database/elastic-jobs-overview.md) pro [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md). Pro [SQL Server místní](/sql/sql-server/sql-server-technical-documentation) a [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)můžete použít [agenta SQL Server](/sql/ssms/agent/sql-server-agent). Další informace najdete v tématu [zpracování časových limitů pro dlouhodobé ukládání uložených procedur v SQL Connectoru pro Azure Logic Apps](../logic-apps/handle-long-running-stored-procedures-sql-connector.md).
 
 ### <a name="handle-dynamic-bulk-data"></a>Zpracovat dynamická Hromadná data
 
@@ -233,18 +237,18 @@ Když zavoláte uloženou proceduru pomocí konektoru SQL Server, vrácený výs
 
 1. Zobrazit výstupní formát provedením testovacího běhu. Zkopírujte a uložte ukázkový výstup.
 
-1. V návrháři v rámci akce, kde zavoláte uloženou proceduru, vyberte **Nový krok**.
+1. V návrháři v rámci akce, kde zavoláte uloženou proceduru, vyberte **Nový krok** .
 
-1. V části **Vybrat akci**vyhledejte a vyberte akci [**analyzovat JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
+1. V části **Vybrat akci** vyhledejte a vyberte akci [**analyzovat JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
 
-1. V akci **analyzovat JSON** vyberte **použít ukázkovou datovou část k vygenerování schématu**.
+1. V akci **analyzovat JSON** vyberte **použít ukázkovou datovou část k vygenerování schématu** .
 
-1. Do pole **Zadejte nebo vložte ukázkovou datovou část JSON** vložte vzorový výstup a vyberte **Hotovo**.
+1. Do pole **Zadejte nebo vložte ukázkovou datovou část JSON** vložte vzorový výstup a vyberte **Hotovo** .
 
    > [!NOTE]
    > Pokud se zobrazí chyba, že Logic Apps nemůže vygenerovat schéma, ověřte, že je správně naformátována syntaxe ve výstupu ukázky. Pokud stále nemůžete generovat schéma, v poli **schématu** zadejte ručně schéma.
 
-1. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Na panelu nástrojů návrháře vyberte **Uložit** .
 
 1. Chcete-li odkazovat na vlastnosti obsahu JSON, klikněte do textových polí, kde chcete odkazovat na tyto vlastnosti, aby se zobrazil seznam dynamického obsahu. V seznamu v záhlaví [**JSON analýzy**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) vyberte datové tokeny pro vlastnosti obsahu JSON, které chcete.
 

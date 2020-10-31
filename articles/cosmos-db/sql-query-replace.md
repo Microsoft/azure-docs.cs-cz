@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb3afd2524949b1209ac42542a012b74559234d5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302198"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098106"
 ---
 # <a name="replace-azure-cosmos-db"></a>NAHRADIT (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Nahradí všechny výskyty zadané hodnoty řetězce hodnotou jiné řetězcové hodnoty.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -32,7 +34,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
    Je řetězcový výraz, který se má najít.  
   
 *str_expr3*  
-   Je řetězcový výraz, který nahradí výskyty *str_expr2* v *str_expr1*.  
+   Je řetězcový výraz, který nahradí výskyty *str_expr2* v *str_expr1* .  
   
 ## <a name="return-types"></a>Návratové typy
   

@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82858557"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100401"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: migrace dat na účet rozhraní API Cassandra v Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Jako vývojář můžete mít stávající Cassandra úlohy, které běží místně nebo v cloudu, a můžete je chtít migrovat do Azure. Tyto úlohy můžete migrovat na účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu najdete informace o různých možnostech, které jsou k dispozici pro migraci dat Apache Cassandra do účtu rozhraní API Cassandra v Azure Cosmos DB.
 
@@ -83,7 +84,7 @@ Data můžete přesunout data z existujících úloh Cassandra do Azure Cosmos D
 
    * Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte k účtu Azure Cosmos.
 
-   * Otevřete podokno **Připojovací řetězec**, které obsahuje všechny informace potřebné pro připojení k vašemu účtu rozhraní API Cassandra z cqlsh.
+   * Otevřete podokno **Připojovací řetězec** , které obsahuje všechny informace potřebné pro připojení k vašemu účtu rozhraní API Cassandra z cqlsh.
 
 2. Přihlaste se ke cqhsh pomocí informací o připojení z portálu.
 
@@ -105,7 +106,7 @@ Migrace dat pomocí úloh Spark je doporučená možnost, pokud máte data umís
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už je nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Pokud to chcete udělat, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit**a pak potvrďte název skupiny prostředků, která se má odstranit.
+Když už je nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Pokud to chcete udělat, vyberte skupinu prostředků pro virtuální počítač, vyberte **Odstranit** a pak potvrďte název skupiny prostředků, která se má odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
