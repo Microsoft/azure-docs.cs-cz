@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 358fccec56f81ee41acc2898751b8848beaeb168
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905232"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094570"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rychlý Start: vytvoření a konfigurace Azure DDoS Protection Standard
 
@@ -63,7 +63,7 @@ V tomto rychlém startu vytvoříte plán DDoS Protection a propojíte ho s virt
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **použít existující** a pak vyberte **MyResourceGroup** . |
     | Umístění        | Zadejte _východní USA_                                                    |
-    | DDoS Protection Standard | Vyberte **Povolit** . Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
+    | DDoS Protection úrovně Standard | Vyberte **Povolit** . Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.
 
@@ -84,8 +84,6 @@ Nejdřív si Projděte podrobnosti svého plánu DDoS Protection:
 3. Ze seznamu vyberte svůj plán DDoS Protection.
 
 _MyVnet_ virtuální síť by měla být uvedena v seznamu. 
-
-Testování prostřednictvím simulací
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -114,4 +112,4 @@ Pokud chcete odstranit plán DDoS Protection, musíte nejdřív z něj oddělit 
 Pokud se chcete dozvědět, jak zobrazit a nakonfigurovat telemetrii pro svůj plán DDoS Protection, přejděte k kurzům.
 
 > [!div class="nextstepaction"]
-> [Zobrazení a konfigurace telemetrie DDoS Protection](telemetry-monitoring-alerting.md)
+> [Zobrazení a konfigurace telemetrie ochrany před útoky DDoS](telemetry-monitoring-alerting.md)

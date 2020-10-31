@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091799"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Žádost o službu se nezdařila. Stav: 403 (zakázáno)
 
@@ -25,7 +25,7 @@ K této chybě může dojít u mnoha typů žádostí o služby, které vyžaduj
 
 ### <a name="cause-1"></a>Příčina #1
 
-Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli v **instanci, kterou se pokoušíte spravovat**, roli *vlastníka dat digitálních vláken Azure* . 
+Tato chyba nejčastěji znamená, že oprávnění k řízení přístupu na základě role Azure (RBAC) pro službu nejsou nastavena správně. Celá řada akcí pro instanci digitálních vláken Azure vyžaduje, abyste měli v **instanci, kterou se pokoušíte spravovat** , roli *vlastníka dat digitálních vláken Azure* . 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -52,15 +52,15 @@ Všimněte si, že tato role se liší od...
 
 #### <a name="fix-issues"></a>Opravit problémy 
 
-Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který vašemu uživateli Azure poskytne roli *vlastníka dat Azure s digitálními* úlohami v **instanci digitálních vláken Azure**. 
+Pokud toto přiřazení role nemáte, měl by uživatel s rolí vlastníka v rámci vašeho **předplatného Azure** spustit následující příkaz, který vašemu uživateli Azure poskytne roli *vlastníka dat Azure s digitálními* úlohami v **instanci digitálních vláken Azure** . 
 
-Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pokud ne, obraťte se na vlastníka, aby tento příkaz spustili vaším jménem.
+Pokud jste vlastníkem předplatného, můžete tento příkaz Spustit sami. Pokud nejste, obraťte se na vlastníka, aby tento příkaz spouštěl vaším jménem.
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele* ](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)*.
+Další podrobnosti o tomto požadavku role a procesu přiřazení najdete v [části *Nastavení přístupových oprávnění uživatele*](how-to-set-up-instance-CLI.md#set-up-user-access-permissions) v tématu *Postupy: nastavení instance a ověřování (CLI nebo portál)* .
 
 Pokud toto přiřazení role už máte *a* k ověření klientské aplikace používáte registraci aplikace Azure AD, můžete pokračovat k dalšímu řešení, pokud toto řešení nevyřešilo problém 403.
 

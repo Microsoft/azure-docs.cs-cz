@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 47b7eaacc8aba3655223eb1f0cde4a5516e370fd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792425"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091595"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -260,7 +260,7 @@ Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obsluž
 
 Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken** použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
-Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [Link MODIFIED for Preview]:
+Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview).
 
 ```csharp
 using System.Text.Json;

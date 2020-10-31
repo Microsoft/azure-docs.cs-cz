@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330358"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092989"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -37,7 +37,7 @@ Azure Machine Learning používá Anaconda distribuci Pythonu, která zahrnuje m
 
 Úplný seznam najdete v části [předinstalované balíčky Pythonu](#preinstalled-python-packages).
 
-Chcete-li nainstalovat balíčky, které nejsou v předinstalovaném seznamu (například *scikit-různé*), přidejte do skriptu následující kód: 
+Chcete-li nainstalovat balíčky, které nejsou v předinstalovaném seznamu (například *scikit-různé* ), přidejte do skriptu následující kód: 
 
 ```python
 import os
@@ -110,17 +110,17 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
 
 1. Přidejte modul **spuštění skriptu Pythonu** do vašeho kanálu.
 
-2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
+2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1** .
 
     Použití datové sady je volitelné. Použijte ho, pokud chcete generovat data pomocí Pythonu, nebo použijte kód Pythonu k importu dat přímo do modulu.
 
-    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkaz na druhou datovou sadu ve skriptu Pythonu jako **DataFrame2**.
+    Tento modul podporuje přidání druhé datové sady na **Dataset2** . Odkaz na druhou datovou sadu ve skriptu Pythonu jako **DataFrame2** .
 
     Datové sady uložené v Azure Machine Learning se při načtení s tímto modulem automaticky převedou na datové rámce PANDAS.
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, připojte soubor zip, který obsahuje tyto vlastní prostředky, na port **sady skriptu** . Nebo pokud je váš skript větší než 16 KB, zabraňte **chybám, jako** je *příkazový řádek, vyšší než maximální počet 16597 znaků*. 
+4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, připojte soubor zip, který obsahuje tyto vlastní prostředky, na port **sady skriptu** . Nebo pokud je váš skript větší než 16 KB, zabraňte **chybám, jako** je *příkazový řádek, vyšší než maximální počet 16597 znaků* . 
 
     
     1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
@@ -129,7 +129,10 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
     1. Připojte modul DataSet k portu **skriptu** sady **spouštěného modulu R Script** .
     
     Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová.
-    
+ 
+    > [!WARNING]
+    > **Don't** Nepoužívejte **aplikaci** jako název složky nebo skriptu, protože **aplikace** je vyhrazeným slovem pro předdefinované služby. Můžete ale použít jiné obory názvů jako `app123` .
+   
     Následuje příklad sady skriptu, který obsahuje soubor skriptu Pythonu a soubor txt:
       
     > [!div class="mx-imgBorder"]
@@ -194,9 +197,9 @@ Výsledky jakýchkoli výpočtů pomocí vloženého kódu Pythonu musí být k 
 
 Modul vrací dvě datové sady:  
   
-+ **Datová sada výsledků 1**definovaná prvním vráceným datovým snímkem PANDAS ve skriptu Pythonu.
++ **Datová sada výsledků 1** definovaná prvním vráceným datovým snímkem PANDAS ve skriptu Pythonu.
 
-+ **Výsledná datová sada 2**definovaná druhým vráceným datovým snímkem PANDAS ve skriptu Pythonu.
++ **Výsledná datová sada 2** definovaná druhým vráceným datovým snímkem PANDAS ve skriptu Pythonu.
 
 ## <a name="preinstalled-python-packages"></a>Předinstalované balíčky Pythonu
 Předinstalované balíčky jsou:

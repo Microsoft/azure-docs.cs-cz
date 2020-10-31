@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c4f9954977d6c5523bc70586d3b0cbb0328bcd8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bd67f9641a644d3302e1f8bc1e53ad14a3801e47
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278041"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092836"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpečení klíčů Azure Cosmos s využitím služby Azure Key Vault 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 >[!IMPORTANT]
 > Doporučeným řešením pro přístup k Azure Cosmos DB klíčům je použití [spravované identity přiřazené systémem](managed-identity-based-authentication.md). Pokud vaše služba nemůže využít spravované identity, použijte [řešení založené na certifikátech](certificate-based-authentication.md). Pokud řešení spravované identity i certifikátů založené na certifikátech nevyhovují vašim potřebám, použijte prosím níže uvedené řešení trezoru klíčů.
@@ -34,22 +35,22 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
 ## <a name="create-a-key-vault"></a>Vytvoření trezoru klíčů
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).  
-2. Vyberte **vytvořit prostředek > > zabezpečení Key Vault**.  
+2. Vyberte **vytvořit prostředek > > zabezpečení Key Vault** .  
 3. V části **Vytvořit trezor klíčů** zadejte následující informace:  
    * **Název:** Zadejte jedinečný název Key Vault.  
    * **Předplatné:** Vyberte předplatné, které budete používat.  
    * V části **Skupina prostředků** zvolte **Vytvořit novou** a zadejte název skupiny prostředků.  
    * V rozevírací nabídce Umístění zvolte umístění.  
    * U ostatních možností ponechte výchozí nastavení.  
-4. Po zadání výše uvedených informací vyberte **Vytvořit**.  
+4. Po zadání výše uvedených informací vyberte **Vytvořit** .  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Přidejte do Key Vault přístupové klíče Azure Cosmos DB.
 1. Přejděte na Key Vault, který jste vytvořili v předchozím kroku, a otevřete kartu **tajné klíče** .  
-2. Vybrat **+ Generovat/importovat**, 
+2. Vybrat **+ Generovat/importovat** , 
 
-   * Pro **Možnosti odeslání**vyberte možnost **ručně** .
+   * Pro **Možnosti odeslání** vyberte možnost **ručně** .
    * Zadejte **název** tajného klíče.
-   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . A pak vyberte **vytvořit**.
+   * Zadejte připojovací řetězec účtu Cosmos DB do pole **hodnota** . A pak vyberte **vytvořit** .
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Vytvoření tajného kódu":::
 
@@ -66,7 +67,7 @@ Pro ukládání a čtení Azure Cosmos DB přístupových klíčů z Key Vault j
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. **Uložte** soubor a **Sestavte** řešení.  
-4. Potom aplikaci nasaďte do Azure. Klikněte pravým tlačítkem na projekt a vyberte **publikovat**. Vytvořte nový profil služby App Service (můžete aplikaci pojmenovat WebAppKeyVault1) a vybrat **publikovat**.   
+4. Potom aplikaci nasaďte do Azure. Klikněte pravým tlačítkem na projekt a vyberte **publikovat** . Vytvořte nový profil služby App Service (můžete aplikaci pojmenovat WebAppKeyVault1) a vybrat **publikovat** .   
 
 5. Po nasazení aplikace. Z Azure Portal přejděte na webovou aplikaci, kterou jste nasadili, a zapněte **identitu spravované služby** této aplikace.  
 
@@ -82,7 +83,7 @@ V této části zaregistrujete aplikaci pomocí Azure Active Directory a udělí
 
 1. Přejděte na Azure Portal otevřete **Key Vault** , který jste vytvořili v předchozí části.  
 
-2. Otevřete **zásady přístupu**, vyberte **+ Přidat nový** najít webovou aplikaci, kterou jste nasadili, vyberte oprávnění a vyberte **OK**.  
+2. Otevřete **zásady přístupu** , vyberte **+ Přidat nový** najít webovou aplikaci, kterou jste nasadili, vyberte oprávnění a vyberte **OK** .  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Vytvoření tajného kódu":::
 

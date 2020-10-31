@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c5cc1a6032a0aee16f1922fc59349449c65b55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091919"
 ---
 # <a name="power-azure-cosmos-db"></a>NAPÁJENÍ (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí hodnotu zadaného výrazu zadané mocniny.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -29,7 +31,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    Je numerický výraz.  
   
 *numeric_expr2*  
-   Je mocninou, kterou chcete vyvolat *numeric_expr1*.  
+   Je mocninou, kterou chcete vyvolat *numeric_expr1* .  
   
 ## <a name="return-types"></a>Návratové typy
   

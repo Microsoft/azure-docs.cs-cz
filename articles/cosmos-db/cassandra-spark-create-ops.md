@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec44d20b763a98683d9b947c94ad6be75180113
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260520"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092232"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Vytvoření nebo vložení dat do Azure Cosmos DB rozhraní API Cassandra ze Sparku
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
  
 Tento článek popisuje, jak vložit ukázková data do tabulky v Azure Cosmos DB rozhraní API Cassandra ze Sparku.
 
@@ -141,6 +142,6 @@ Po vložení dat do tabulky Azure Cosmos DB rozhraní API Cassandra proveďte da
 * [Operace čtení](cassandra-spark-read-ops.md)
 * [Operace Upsert](cassandra-spark-upsert-ops.md)
 * [Operace Delete](cassandra-spark-delete-ops.md)
-* [Agregační operace](cassandra-spark-aggregation-ops.md)
+* [Operace agregace](cassandra-spark-aggregation-ops.md)
 * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

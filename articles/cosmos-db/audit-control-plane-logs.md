@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743892"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092802"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Postup při auditování operací roviny ovládacího prvku Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Řídicí rovina v Azure Cosmos DB je služba RESTful, která umožňuje provádět různé sady operací na účtu Azure Cosmos. Zveřejňuje model veřejného prostředku (například databáze, účet) a různé operace pro koncové uživatele k provádění akcí v modelu prostředků. Operace roviny ovládacího prvku zahrnuje změny v rámci účtu nebo kontejneru Azure Cosmos. Například operace, jako je vytvoření účtu Azure Cosmos, přidání oblasti, aktualizace propustnosti, převzetí služeb při selhání, přidání virtuální sítě atd. jsou některé z operací roviny ovládacího prvku. Tento článek vysvětluje, jak auditovat operace roviny ovládacího prvku v Azure Cosmos DB. Pomocí Azure CLI nebo PowerShellu můžete spouštět operace řídicích roviny na účtech Azure Cosmos pomocí Azure CLI, PowerShellu nebo Azure Portal, zatímco kontejnery.
 
@@ -170,29 +171,29 @@ Vlastnost *ResourceDetails* obsahuje celé tělo prostředku jako datovou část
 Následuje několik příkladů, jak získat diagnostické protokoly pro operace roviny řízení:
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 Dotaz pro získání activityId a volajícího, který inicioval operaci odstranění kontejneru:

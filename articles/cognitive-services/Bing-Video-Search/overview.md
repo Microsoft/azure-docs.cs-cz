@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6f5da1d17722f89bee88a4b69177583e095eeac3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85601934"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094281"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Co je rozhraní API Bingu pro vyhledávání videí?
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API Bingu pro vyhledávání videí usnadňuje přidávání funkcí pro vyhledávání videí pro vaše služby a aplikace. Když odesíláte vyhledávací dotazy uživatelů pomocí rozhraní API, můžete získat a zobrazit relevantní a vysoce kvalitní videa podobná [videu Bingu](https://www.bing.com/video). Toto rozhraní API se používá pro výsledky hledání, které obsahují jenom videa. [Rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/search-the-web.md) mohou vracet další typy webového obsahu, včetně webových stránek, videí, zpráv a obrázků.
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789977"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094451"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurace skupiny dostupnosti Always On SQL Server napříč různými oblastmi Azure
 
@@ -31,7 +31,7 @@ Tento článek se týká Azure Virtual Machines v režimu Správce prostředků.
 
 Na následujícím obrázku vidíte běžné nasazení skupiny dostupnosti na virtuálních počítačích Azure:
 
-   ![Skupina dostupnosti](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![Diagram, který zobrazuje Nástroj pro vyrovnávání zatížení Azure a skupinu dostupnosti s "clusterem s podporou převzetí služeb při selhání systému Windows Server" a "Always On".](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 V tomto nasazení jsou všechny virtuální počítače v jedné oblasti Azure. Repliky skupin dostupnosti můžou mít synchronní potvrzení s automatickým převzetím služeb při selhání na SQL-1 a SQL-2. Pokud chcete vytvořit tuto architekturu, přečtěte si téma [Šablona skupiny dostupnosti nebo kurz](availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Když jsou repliky skupin dostupnosti na virtuálních počítačích Azure v r�
 
 Následující diagram znázorňuje, jak sítě komunikují mezi datovými centry.
 
-   ![Skupina dostupnosti](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![Diagram znázorňující dvě virtuální sítě v různých oblastech Azure komunikujících pomocí bran V P N.](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Tato architektura nenese poplatky za odchozí data pro data replikovaná mezi oblastmi Azure. Podívejte se na téma [ceny šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -98,7 +98,7 @@ Pokud chcete vytvořit repliku ve vzdáleném datovém centru, proveďte násled
 
    Prostředek IP adresy můžete vytvořit v Správce clusteru s podporou převzetí služeb při selhání. Vyberte název clusteru, klikněte pravým tlačítkem na název clusteru v části **základní prostředky clusteru** a vyberte **vlastnosti** : 
 
-   ![Vlastnosti clusteru](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![Snímek obrazovky zobrazující "Správce clusteru s podporou převzetí služeb při selhání" s názvem clusteru, názvem serveru a "vlastnostmi".](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    V dialogovém okně **vlastnosti** vyberte v části **IP adresa** možnost **Přidat** a potom přidejte IP adresu názvu clusteru z oblasti vzdálené sítě. V dialogovém okně **IP adresa** vyberte **OK** a potom v dialogovém okně **Vlastnosti clusteru** vyberte znovu **OK** . tím uložíte novou IP adresu. 
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 95396f28fd835091258bccbfdb0a0c0eafebea91
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283734"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093550"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB režimy připojení sady SQL SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména u pozorované latence na straně klienta. Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS nazvaný režim brány. Kromě toho nabízí efektivní protokol TCP, který se taky RESTful ve svém komunikačním modelu a používá protokol TLS pro počáteční ověřování a šifrování provozu, který se nazývá přímý režim.
 
@@ -34,7 +35,7 @@ K dispozici jsou dva režimy připojení:
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Režimy připojení Azure Cosmos DB" border="false":::
 
-Tyto režimy připojení v podstatě vybírají trasu, kterou požadavky na data rovinují – čtení a zápis dokumentů – z klientského počítače na oddíly v Azure Cosmos DB back-endu. Přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo*na zpracování bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB.
+Tyto režimy připojení v podstatě vybírají trasu, kterou požadavky na data rovinují – čtení a zápis dokumentů – z klientského počítače na oddíly v Azure Cosmos DB back-endu. Přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo* na zpracování bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB.
 
 ## <a name="service-port-ranges"></a>Rozsahy portů služby
 
