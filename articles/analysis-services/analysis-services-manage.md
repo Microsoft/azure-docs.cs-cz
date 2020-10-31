@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 697e5484c007c095201344fb4829a92eb642a6e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014847"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078896"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlohy správy a správy, které potřebujete udělat hned nebo po dobu provozu. Například spusťte zpracování na data aktualizace, řízení, kdo má přístup k modelům na vašem serveru, nebo můžete monitorovat stav svého serveru. Některé úlohy správy lze provádět pouze v Azure Portal, dalších v SQL Server Management Studio (SSMS) a některé úlohy lze provádět v obou.
@@ -20,7 +20,7 @@ Po vytvoření Analysis Servicesho serveru v Azure můžou nastat některé úlo
 ## <a name="azure-portal"></a>portál Azure
 [Azure Portal](https://portal.azure.com/) je místo, kde můžete vytvářet a odstraňovat servery, monitorovat prostředky serveru, měnit velikost a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
 
-![Získání názvu serveru v Azure](./media/analysis-services-manage/aas-manage-portal.png)
+![Snímek obrazovky zobrazující Azure Portal, kde můžete vytvářet a odstraňovat servery, monitorovat prostředky serveru, měnit velikost a spravovat, kdo má přístup k vašim serverům.](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
 Připojení k serveru v Azure je stejné jako připojení k instanci serveru ve vaší vlastní organizaci. Z SSMS můžete provádět mnoho stejných úkolů, jako jsou například zpracování dat nebo vytváření skriptu pro zpracování, Správa rolí a používání prostředí PowerShell.
@@ -39,10 +39,10 @@ Pokud chcete získat nejnovější funkce a využít nejplynulejší prostředí
 1. Než se připojíte, musíte získat název serveru. Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
    
     ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
-3. V dialogovém okně **připojit k serveru** vložte do pole název serveru a pak v části **ověřování**zvolte jeden z následujících typů ověřování:   
+2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services** .
+3. V dialogovém okně **připojit k serveru** vložte do pole název serveru a pak v části **ověřování** zvolte jeden z následujících typů ověřování:   
     > [!NOTE]
-    > Doporučuje se typ ověřování **Active Directory – univerzální s podporou vícefaktorového ověřování**.
+    > Doporučuje se typ ověřování **Active Directory – univerzální s podporou vícefaktorového ověřování** .
 
     > [!NOTE]
     > Pokud se přihlásíte pomocí účtu Microsoft, Live ID, Yahoo, Gmail atd., nechte pole heslo prázdné. Po kliknutí na připojit se zobrazí výzva k zadání hesla.

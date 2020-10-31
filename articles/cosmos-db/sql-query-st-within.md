@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da475ced067f19cddd4a20284ba556c8a0b52677
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78296112"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079967"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí logický výraz, který označuje, zda je objekt LineString (Point, mnohoúhelník nebo) zadaný v prvním argumentu v rámci objektu (Point, mnohoúhelník nebo LineString) v druhém argumentu.  
   
 ## <a name="syntax"></a>Syntaxe

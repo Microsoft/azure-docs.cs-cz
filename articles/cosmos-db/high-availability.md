@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0bbb0da0ce39aab9fba843dda99b45ea59881ce2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490539"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081871"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB poskytuje vysokou dostupnost dvěma hlavním způsobem. Nejprve Azure Cosmos DB replikuje data mezi oblastmi konfigurovanými v rámci účtu Cosmos. Druhý Azure Cosmos DB udržuje 4 repliky dat v rámci oblasti.
 
@@ -73,7 +74,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 * Jakmile se výše ovlivněné oblasti zápisu napřed mění, bude automaticky dostupná jako oblast pro čtení. Můžete přejít zpátky do obnovené oblasti jako oblast zápisu. Oblasti můžete přepínat pomocí [PowerShellu, rozhraní příkazového řádku Azure nebo Azure Portal](how-to-manage-database-account.md#manual-failover). Neexistují **žádná data ani ztráta dostupnosti** před, během nebo po přepnutí oblasti zápisu a aplikace bude dál vysoce dostupná.
 
 > [!IMPORTANT]
-> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání**. Ruční převzetí služeb při selhání vyžaduje připojení mezi sekundární a primární oblastí pro zápis k dokončení kontroly konzistence, aby při převzetí služeb při selhání nedošlo ke ztrátě dat. Pokud není primární oblast k dispozici, tato kontrola konzistence nemůže být dokončena a ruční převzetí služeb při selhání nebude úspěšné, což vede ke ztrátě dostupnosti zápisu po dobu trvání regionu v oblasti výpadku.
+> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání** . Ruční převzetí služeb při selhání vyžaduje připojení mezi sekundární a primární oblastí pro zápis k dokončení kontroly konzistence, aby při převzetí služeb při selhání nedošlo ke ztrátě dat. Pokud není primární oblast k dispozici, tato kontrola konzistence nemůže být dokončena a ruční převzetí služeb při selhání nebude úspěšné, což vede ke ztrátě dostupnosti zápisu po dobu trvání regionu v oblasti výpadku.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Účty s více oblastmi s jednou oblastí zápisu (nevýpadek oblasti čtení)
 
@@ -89,7 +90,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 
 * Následná čtení se přesměrují na zotavenou oblast bez toho, aby se musel nějak změnit kód aplikace. V průběhu převzetí služeb při selhání a opětovném připojení k dříve neúspěšnému výskytu se Přečtěte záruky konzistence, které Azure Cosmos DB.
 
-* I ve výjimečné a unfortunate události, když je oblast Azure trvale nezotavitelné, nedochází k žádné ztrátě dat, pokud je váš účet Azure Cosmos ve více oblastech nakonfigurovaný se *silnými* konzistencí. V případě trvale nezotavitelné oblasti zápisu se jedná o účet Azure Cosmos ve více oblastech nakonfigurovaný s kostarou konzistencí, což je potenciální okno ztráty dat omezené na okno zastaralosti (*k* nebo *T*), kde k = 100 000 aktualizací a t = 5 minut. V případě relace, konzistentní a konečné úrovně konzistence je možné okno ztráty dat omezit na maximálně 15 minut. Další informace o cílech RTO a RPO pro Azure Cosmos DB najdete v tématu [úrovně konzistence a odolnost dat](./consistency-levels.md#rto) .
+* I ve výjimečné a unfortunate události, když je oblast Azure trvale nezotavitelné, nedochází k žádné ztrátě dat, pokud je váš účet Azure Cosmos ve více oblastech nakonfigurovaný se *silnými* konzistencí. V případě trvale nezotavitelné oblasti zápisu se jedná o účet Azure Cosmos ve více oblastech nakonfigurovaný s kostarou konzistencí, což je potenciální okno ztráty dat omezené na okno zastaralosti ( *k* nebo *T* ), kde k = 100 000 aktualizací a t = 5 minut. V případě relace, konzistentní a konečné úrovně konzistence je možné okno ztráty dat omezit na maximálně 15 minut. Další informace o cílech RTO a RPO pro Azure Cosmos DB najdete v tématu [úrovně konzistence a odolnost dat](./consistency-levels.md#rto) .
 
 ## <a name="availability-zone-support"></a>Podpora zón dostupnosti
 
@@ -131,7 +132,7 @@ Zóny dostupnosti lze povolit prostřednictvím:
 
 * [Azure CLI](manage-with-cli.md#add-or-remove-regions)
 
-* [Šablony Azure Resource Manageru](./manage-with-templates.md)
+* [Šablony Azure Resource Manager](./manage-with-templates.md)
 
 ## <a name="building-highly-available-applications"></a>Vytváření vysoce dostupných aplikací
 

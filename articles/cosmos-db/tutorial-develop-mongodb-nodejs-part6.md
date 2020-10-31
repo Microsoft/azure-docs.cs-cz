@@ -10,14 +10,15 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8e2c707566b08219b495e76be7f6f6130d876ab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292417"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081310"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB – přidání funkcí CRUD do aplikace
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v Node.js pomocí Expressu a úhlu a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md). Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
 
@@ -27,7 +28,7 @@ V tomto výukovém kurzu se dozvíte, jak vytvořit novou aplikaci napsanou v No
 
 > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v [části 5](tutorial-develop-mongodb-nodejs-part5.md) tohoto kurzu.
 
@@ -38,7 +39,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 1. V Visual Studio Code otevřete **routes.js** a **hero.service.js** vedle sebe stisknutím tlačítka **rozdělit Editor** :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: .
 
-    Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js**.  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
+    Podívejte se, že řádek 7 v souboru routes.js volá funkci `getHeroes` na řádku 5 v souboru **hero.service.js** .  Stejné párování potřebujeme vytvořit i pro funkce post, put a delete. 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png" alt-text="Soubory routes.js a hero.service.js ve Visual Studio Code":::
     
@@ -76,7 +77,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     };
     ```
 
-4. V souboru **routes.js** za směrovač `get` přidejte směrovač pro funkci `post`. Tento směrovač odesílá hrdiny jednotlivě. Strukturování směrovacího souboru tímto způsobem jasně ukazuje všechny dostupné koncové body rozhraní API a skutečnou práci nechává na souboru **hero.service.js**.
+4. V souboru **routes.js** za směrovač `get` přidejte směrovač pro funkci `post`. Tento směrovač odesílá hrdiny jednotlivě. Strukturování směrovacího souboru tímto způsobem jasně ukazuje všechny dostupné koncové body rozhraní API a skutečnou práci nechává na souboru **hero.service.js** .
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -173,7 +174,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 5. V internetovém prohlížeči aktualizujte stránku a vyberte tlačítko **Add New Hero** (Přidat nového hrdinu). Přidejte nového hrdinu s ID 9, jménem (name) Starlord a slavným výrokem (saying) „Hi“. Výběrem tlačítka **Save** (Uložit) nového hrdinu uložte.
 
-6. Teď vyberte hrdinu **Starlord**, změňte slavný výrok (saying) z „Hi“ na „Bye“ a vyberte tlačítko **Save** (Uložit). 
+6. Teď vyberte hrdinu **Starlord** , změňte slavný výrok (saying) z „Hi“ na „Bye“ a vyberte tlačítko **Save** (Uložit). 
 
     Teď můžete na kartě Síť vybrat příslušné ID a zobrazit datovou část. V datové části se zobrazí, ze slavný výrok (saying) je teď nastavený na „Bye“.
 

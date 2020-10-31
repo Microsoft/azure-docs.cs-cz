@@ -7,14 +7,15 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3e3e8cd7a505b6f445a1a72cb9d5b2b77583ff87
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 97458f17bcb74e54e0b0453c2a279703bb392f9f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313100"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080630"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Policy předdefinované definice pro Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Cosmos DB. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 

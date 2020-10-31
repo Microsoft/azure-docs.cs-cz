@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928089"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081225"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Skóre zabezpečení ve službě Azure Security Center
 
@@ -190,7 +190,7 @@ I když je výchozí iniciativa zabezpečení Security Center založená na osv�
     <td class="tg-lboi"; width=55%>- Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu<br>- Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>- Porty pro správu by měly být uzavřeny na virtuálních počítačích</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít aktualizace systému (maximální skóre 6)</p></strong>Aktualizace systému poskytují organizacím možnost udržet provozní efektivitu, snižovat zranitelnosti zabezpečení a poskytovat stabilnější prostředí pro koncové uživatele. Pokud aktualizace nepoužijete, zůstanou neopravená ohrožení zabezpečení a výsledky v prostředích, která jsou náchylná k útokům. Tyto chyby zabezpečení je možné zneužít a vést k úniku dat, exfiltrace dat, ransomwarem a zneužití prostředků. Pokud chcete nasadit aktualizace systému, můžete pomocí <a href="/azure/automation/automation-update-management">Update Management řešení spravovat opravy a aktualizace</a> virtuálních počítačů. Správa aktualizací je proces řízení nasazení a údržby vydaných verzí softwaru.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít aktualizace systému (maximální skóre 6)</p></strong>Aktualizace systému poskytují organizacím možnost udržet provozní efektivitu, snižovat zranitelnosti zabezpečení a poskytovat stabilnější prostředí pro koncové uživatele. Pokud aktualizace nepoužijete, zůstanou neopravená ohrožení zabezpečení a výsledky v prostředích, která jsou náchylná k útokům. Tyto chyby zabezpečení je možné zneužít a vést k úniku dat, exfiltrace dat, ransomwarem a zneužití prostředků. Pokud chcete nasadit aktualizace systému, můžete pomocí <a href="/azure/automation/update-management/overview">Update Management řešení spravovat opravy a aktualizace</a> virtuálních počítačů. Správa aktualizací je proces řízení nasazení a údržby vydaných verzí softwaru.</td>
     <td class="tg-lboi"; width=55%>- Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.<br>- Agent monitorování by měl být nainstalovaný na Virtual Machine Scale Sets<br>- Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>- Verze operačního systému by se měla aktualizovat pro vaše role cloudové služby.<br>- Musí být nainstalované aktualizace systému ve virtuálních počítačích Virtual Machine Scale Sets.<br>- Do vašich počítačů by se měly nainstalovat aktualizace systému<br>- Počítače by měly být restartovány, aby bylo možné použít aktualizace systému<br>- Služby Kubernetes by se měly upgradovat na nezranitelnou Kubernetes verzi.<br>- Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>- Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).</td>
   </tr>
   <tr>

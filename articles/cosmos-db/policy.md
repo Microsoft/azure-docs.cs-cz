@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482226"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080647"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure Policy](../governance/policy/overview.md) pomáhá vyhovět standardům zásad správného řízení organizace, vyhodnocovat dodržování předpisů prostředků a implementovat automatickou nápravu. Mezi běžné případy použití patří zabezpečení, Správa nákladů a konzistence konfigurace.
 
@@ -24,7 +25,7 @@ Azure Policy poskytuje předdefinované definice zásad. Můžete vytvořit vlas
 
 ## <a name="assign-a-built-in-policy-definition"></a>Přiřazení definice předdefinované zásady
 
-Definice zásad popisují podmínky dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. _Přiřazení_ zásad se vytvářejí z _definic_zásad. Můžete použít předdefinované nebo vlastní definice zásad pro prostředky Azure Cosmos DB. Přiřazení zásad mají rozsah pro skupinu pro správu Azure, předplatné Azure nebo skupinu prostředků a používají se pro prostředky v rámci vybraného oboru. Volitelně můžete z oboru vyloučit konkrétní prostředky.
+Definice zásad popisují podmínky dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. _Přiřazení_ zásad se vytvářejí z _definic_ zásad. Můžete použít předdefinované nebo vlastní definice zásad pro prostředky Azure Cosmos DB. Přiřazení zásad mají rozsah pro skupinu pro správu Azure, předplatné Azure nebo skupinu prostředků a používají se pro prostředky v rámci vybraného oboru. Volitelně můžete z oboru vyloučit konkrétní prostředky.
 
 Přiřazení zásad můžete vytvořit pomocí šablony [Azure Portal](../governance/policy/assign-policy-portal.md), [Azure POWERSHELL](../governance/policy/assign-policy-powershell.md), [Azure CLI](../governance/policy/assign-policy-azurecli.md)nebo [ARM](../governance/policy/assign-policy-template.md).
 
@@ -39,7 +40,7 @@ V kroku vyberte definici zásady, `Cosmos DB` do vyhledávacího pole zadejte a 
 
 ## <a name="create-a-custom-policy-definition"></a>Vytvoření vlastní definice zásad
 
-V případě konkrétních scénářů, které nejsou řešeny pomocí integrovaných zásad, můžete vytvořit [vlastní definici zásad](../governance/policy/tutorials/create-custom-policy-definition.md). Později vytvoříte _přiřazení_ zásady z vlastní _definice_zásady.
+V případě konkrétních scénářů, které nejsou řešeny pomocí integrovaných zásad, můžete vytvořit [vlastní definici zásad](../governance/policy/tutorials/create-custom-policy-definition.md). Později vytvoříte _přiřazení_ zásady z vlastní _definice_ zásady.
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>Typy vlastností a aliasy vlastností v pravidlech zásad
 

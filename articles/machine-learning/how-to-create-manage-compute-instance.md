@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ac134e6a371ea85a20094e688adc57da8550a03d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427530"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078981"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Vytvoření a Správa výpočetní instance Azure Machine Learning
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním síťovém prostředí](how-to-secure-training-vnet.md), aniž by museli podniky otevírat porty SSH. Úloha se spustí v kontejnerovém prostředí a zabalí závislosti vašich modelů v kontejneru Docker. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ Výpočetní instance můžou úlohy spouštět bezpečně ve [virtuálním sí�
 
 ## <a name="create"></a>Vytvořit
 
-**Časový odhad**: přibližně 5 minut.
+**Časový odhad** : přibližně 5 minut.
 
 Vytvoření výpočetní instance je jednorázový proces pro váš pracovní prostor. Tuto výpočetní kapacitu můžete znovu použít jako pracovní stanici pro vývoj nebo jako cíl pro školení. K vašemu pracovnímu prostoru můžete připojit více výpočetních instancí.
 
@@ -109,7 +109,7 @@ Můžete také vytvořit výpočetní instanci pomocí [šablony Azure Resource 
 
 Jako správce můžete vytvořit instanci služby COMPUTE jménem odborníka na data a přiřadit k nim instanci s těmito možnostmi:
 * [Šablona Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Podrobnosti o tom, jak najít TenantID a ObjectID potřebné v této šabloně, najdete v tématu [Vyhledání ID objektů identity pro konfiguraci ověřování](../healthcare-apis/find-identity-object-ids.md).  Tyto hodnoty můžete také najít na portálu Azure Active Directory.
-* Rozhraní REST API
+* REST API
 
 Data, na základě kterých vytvoříte výpočetní instanci pro potřeby, jsou tato oprávnění [řízení přístupu založená na rolích Azure (Azure RBAC)](../role-based-access-control/overview.md) : 
 * *Microsoft. MachineLearningServices/pracovní prostory/výpočty/spustit/akce*
@@ -206,7 +206,7 @@ V níže uvedených příkladech je název výpočetní instance **instance** .
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-V pracovním prostoru v Azure Machine Learning Studiu vyberte **COMPUTE**a pak v horní části vyberte **výpočetní instanci** .
+V pracovním prostoru v Azure Machine Learning Studiu vyberte **COMPUTE** a pak v horní části vyberte **výpočetní instanci** .
 
 ![Správa výpočetní instance](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -256,7 +256,9 @@ Balíčky můžete nainstalovat přímo do Jupyter Notebook nebo RStudio:
 * Python: přidejte instalační kód a proveďte v Jupyter Notebook buňce.
 
 Případně můžete provést instalaci z okna terminálu. Nainstalujte balíčky Pythonu do prostředí **Python 3,6-AzureML** .  Nainstalujte balíčky R do prostředí jazyka **r** .
-% PIP a% conda Magic Functions automaticky instaluje balíčky do aktuálně běžícího jádra v relaci poznámkového bloku Jupyter.
+
+> [!NOTE]
+> Pro správu balíčků v rámci poznámkového bloku použijte funkce **% PIP** nebo **% conda** Magic k automatické instalaci balíčků do **aktuálně běžícího jádra** , ne z **! PIP** nebo **! conda** , která odkazuje na všechny balíčky (včetně balíčků mimo aktuálně běžící jádro).
 
 ## <a name="add-new-kernels"></a>Přidat nové jádra
 

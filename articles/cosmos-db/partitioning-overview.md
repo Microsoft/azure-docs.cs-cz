@@ -6,20 +6,21 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 353abe5ac55e49e01f6a99f72307b8525a72fc00
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c05ca6462d49d1d41791e5b93b7723ac681d448
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281094"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080828"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Dělení a horizontální škálování ve službě Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
+Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly* . Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 
 Například kontejner obsahuje položky. Každá položka má jedinečnou hodnotu pro `UserID` vlastnost. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru a jsou-li k dispozici jedinečné `UserID` hodnoty 1 000, jsou pro kontejner vytvořeny logické oddíly 1 000.
 
-Kromě klíče oddílu, který určuje logický oddíl položky, každá položka v kontejneru má *ID položky* (jedinečné v rámci logického oddílu). Kombinování klíče oddílu a *ID položky* vytvoří *index*položky, který položku jednoznačně identifikuje. [Výběr klíče oddílu](#choose-partitionkey) je důležité rozhodnutí, které bude mít vliv na výkon vaší aplikace.
+Kromě klíče oddílu, který určuje logický oddíl položky, každá položka v kontejneru má *ID položky* (jedinečné v rámci logického oddílu). Kombinování klíče oddílu a *ID položky* vytvoří *index* položky, který položku jednoznačně identifikuje. [Výběr klíče oddílu](#choose-partitionkey) je důležité rozhodnutí, které bude mít vliv na výkon vaší aplikace.
 
 Tento článek vysvětluje vztah mezi logickými a fyzickými oddíly. Popisuje také osvědčené postupy pro dělení a poskytuje podrobné zobrazení, jak horizontální škálování funguje v Azure Cosmos DB. Není nutné porozumět těmto interním podrobnostem, abyste mohli vybrat klíč oddílu, ale my jsme je pokryli, abyste měli jasnou představu o tom, jak Azure Cosmos DB funguje.
 
@@ -77,7 +78,7 @@ Následující obrázek ukazuje, jak jsou logické oddíly namapovány na fyzick
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Výběr klíče oddílu
 
-Klíč oddílu má dvě komponenty: **cestu ke klíči oddílu** a **hodnotu klíče oddílu**. Představte si třeba položku {"userId": "Andrew", "worksFor": "Microsoft"} Pokud jako klíč oddílu zvolíte "userId", budou to tyto dvě komponenty klíče oddílu:
+Klíč oddílu má dvě komponenty: **cestu ke klíči oddílu** a **hodnotu klíče oddílu** . Představte si třeba položku {"userId": "Andrew", "worksFor": "Microsoft"} Pokud jako klíč oddílu zvolíte "userId", budou to tyto dvě komponenty klíče oddílu:
 
 * Cesta ke klíči oddílu (například: "/userId"). Cesta ke klíči oddílu přijímá alfanumerické znaky a znaky podtržítka (_). Můžete také použít vnořené objekty pomocí standardního zápisu cesty (/).
 
@@ -113,20 +114,20 @@ Pokud by váš kontejner mohl růst na více než několik fyzických oddílů, 
 
 ## <a name="using-item-id-as-the-partition-key"></a>Použití ID položky jako klíče oddílu
 
-Pokud má váš kontejner vlastnost, která má široké spektrum možných hodnot, je pravděpodobné, že je vhodný klíč oddílu. Jedním z možných příkladů takové vlastnosti je *ID položky*. Pro malé kontejnery pro čtení nebo zapisovatelné kontejnery libovolné velikosti je *ID položky* přirozeně skvělým výběrem pro klíč oddílu.
+Pokud má váš kontejner vlastnost, která má široké spektrum možných hodnot, je pravděpodobné, že je vhodný klíč oddílu. Jedním z možných příkladů takové vlastnosti je *ID položky* . Pro malé kontejnery pro čtení nebo zapisovatelné kontejnery libovolné velikosti je *ID položky* přirozeně skvělým výběrem pro klíč oddílu.
 
-*ID položky* systémové vlastnosti existuje v každé položce v kontejneru. Můžete mít další vlastnosti, které reprezentují logické ID vaší položky. V mnoha případech jsou to také skvělé volby klíče oddílu ze stejných důvodů jako *ID položky*.
+*ID položky* systémové vlastnosti existuje v každé položce v kontejneru. Můžete mít další vlastnosti, které reprezentují logické ID vaší položky. V mnoha případech jsou to také skvělé volby klíče oddílu ze stejných důvodů jako *ID položky* .
 
 *ID položky* je skvělý výběr klíče oddílu z následujících důvodů:
 
 * Existuje celá řada možných hodnot (jedno jedinečné *ID položky* na jednu položku).
 * Vzhledem k tomu, že existuje jedinečné *ID položky* na jednu položku, má *ID položky* skvělou úlohu s rovnoměrně vyvážením využití ru a úložiště dat.
-* Můžete snadno provádět efektivní čtení bodů, protože poznáte jeho *ID*, vždy znát klíč oddílu položky.
+* Můžete snadno provádět efektivní čtení bodů, protože poznáte jeho *ID* , vždy znát klíč oddílu položky.
 
 Je potřeba vzít v úvahu několik věcí, které byste měli zvážit při výběru *ID položky* jako klíč oddílu:
 
-* Pokud je *ID položky* klíč oddílu, stane se jedinečným identifikátorem v celém rámci celého kontejneru. Nebudete moct mít položky, které mají duplicitní *ID položky*.
-* Pokud máte kontejner pro čtení s velkým množstvím [fyzických oddílů](partitioning-overview.md#physical-partitions), dotazy budou efektivnější, pokud mají filtr rovnosti s *ID položky*.
+* Pokud je *ID položky* klíč oddílu, stane se jedinečným identifikátorem v celém rámci celého kontejneru. Nebudete moct mít položky, které mají duplicitní *ID položky* .
+* Pokud máte kontejner pro čtení s velkým množstvím [fyzických oddílů](partitioning-overview.md#physical-partitions), dotazy budou efektivnější, pokud mají filtr rovnosti s *ID položky* .
 * Uložené procedury nebo triggery nemůžete spouštět v několika logických oddílech.
 
 ## <a name="next-steps"></a>Další kroky

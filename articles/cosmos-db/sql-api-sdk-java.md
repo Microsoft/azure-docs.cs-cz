@@ -9,14 +9,15 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 546c8ab9df58b19a47e0d330e13e65d3357c9e7c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 87ff11c33c909c7398ebced54ec81907dab2d991
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080511"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -260,7 +261,7 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
 
-Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců**, aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože je to proto, že doporučujeme vždy co nejdříve upgradovat na nejnovější verzi sady SDK.
+Microsoft bude o vyřazení sady SDK informovat s předstihem nejméně **12 měsíců** , aby mohlo dojít k bezproblémovému přechodu na novější/podporovanou verzi. Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože je to proto, že doporučujeme vždy co nejdříve upgradovat na nejnovější verzi sady SDK.
 
 > [!WARNING]
 > Po 30. května 2020 už Azure Cosmos DB neprovádí opravy chyb, přidávají nové funkce a poskytuje podporu pro verze 1. x sady Azure Cosmos DB Java SDK pro SQL API. Pokud nechcete provést upgrade, služba Azure Cosmos DB bude dál zpracovávat požadavky odeslané z verze 1.x sady SDK.

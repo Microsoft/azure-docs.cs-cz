@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5a3eefdb742d847950819fccfd87b9b5501cbefd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476718"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079236"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Začínáme s rozhraním Azure Cosmos DB API pro tabulky a Azure Table Storage s využitím .NET SDK
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
@@ -44,13 +45,13 @@ Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
 V aplikaci Visual Studio vytvořte novou konzolovou aplikaci .NET. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v aplikaci Visual Studio 2019. Můžete použít Azure Cosmos DB knihovny tabulek v jakémkoli typu aplikace .NET, včetně cloudové služby Azure nebo webové aplikace a desktopových a mobilních aplikací. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
-1. Vyberte **soubor**  >  **Nový**  >  **projekt**.
+1. Vyberte **soubor**  >  **Nový**  >  **projekt** .
 
-1. Zvolte **Konzolová aplikace (.NET Core)** a pak vyberte **Další**.
+1. Zvolte **Konzolová aplikace (.NET Core)** a pak vyberte **Další** .
 
-1. Do pole **název projektu** zadejte název vaší aplikace, například **CosmosTableSamples**. (V případě potřeby můžete zadat jiný název.)
+1. Do pole **název projektu** zadejte název vaší aplikace, například **CosmosTableSamples** . (V případě potřeby můžete zadat jiný název.)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Vytvořit** .
 
 Všechny příklady kódu v této ukázce lze přidat do metody Main () souboru **program.cs** vaší konzolové aplikace.
 
@@ -58,7 +59,7 @@ Všechny příklady kódu v této ukázce lze přidat do metody Main () souboru 
 
 K získání balíčku NuGet použijte tento postup:
 
-1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
+1. Klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet** .
 
 1. Vyhledejte v online [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) režimu [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) , [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) , [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) a vyberte **nainstalovat** a nainstalujte Microsoft Azure Cosmos DB knihovnu tabulek.
 
@@ -66,13 +67,13 @@ K získání balíčku NuGet použijte tento postup:
 
 1. V [Azure Portal](https://portal.azure.com/)přejděte k účtu Azure Cosmos nebo k účtu Table Storage. 
 
-1. Otevřete okno **připojovací řetězec** nebo **přístupové klávesy** . Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC**.
+1. Otevřete okno **připojovací řetězec** nebo **přístupové klávesy** . Pomocí tlačítka pro kopírování na pravé straně okna zkopírujte **PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC** .
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="Zobrazení a zkopírování PRIMÁRNÍHO PŘIPOJOVACÍHO ŘETĚZCE v podokně Připojovací řetězec":::
    
-1. Pokud chcete nakonfigurovat připojovací řetězec, klikněte pravým tlačítkem ze sady Visual Studio na projekt **CosmosTableSamples**.
+1. Pokud chcete nakonfigurovat připojovací řetězec, klikněte pravým tlačítkem ze sady Visual Studio na projekt **CosmosTableSamples** .
 
-1. Vyberte **Přidat** a poté **Nová položka**. Vytvoří nový soubor **Settings.js** s typem souboru jako konfigurační soubor **TypeScript JSON** . 
+1. Vyberte **Přidat** a poté **Nová položka** . Vytvoří nový soubor **Settings.js** s typem souboru jako konfigurační soubor **TypeScript JSON** . 
 
 1. Nahraďte kód v Settings.jssouboru následujícím kódem a přiřaďte k primárnímu připojovacímu řetězci:
 
@@ -82,7 +83,7 @@ K získání balíčku NuGet použijte tento postup:
    }
    ```
 
-1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová položka** a přidejte třídu s názvem **appSettings.cs**.
+1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples** . Vyberte **Přidat** , **Nová položka** a přidejte třídu s názvem **appSettings.cs** .
 
 1. Do souboru AppSettings.cs přidejte následující kód. Tento soubor přečte připojovací řetězec z Settings.jsv souboru a přiřadí ho ke konfiguračnímu parametru:
 
@@ -90,7 +91,7 @@ K získání balíčku NuGet použijte tento postup:
 
 ## <a name="parse-and-validate-the-connection-details"></a>Analyzovat a ověřit podrobnosti připojení
 
-1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová položka** a přidejte třídu s názvem **Common.cs**. Budete psát kód, který ověří podrobnosti připojení a vytvoří tabulku v rámci této třídy.
+1. Klikněte pravým tlačítkem na projekt **CosmosTableSamples** . Vyberte **Přidat** , **Nová položka** a přidejte třídu s názvem **Common.cs** . Budete psát kód, který ověří podrobnosti připojení a vytvoří tabulku v rámci této třídy.
 
 1. Definujte metodu `CreateStorageAccountFromConnectionString` , jak je znázorněno níže. Tato metoda analyzuje podrobnosti připojovacího řetězce a ověří, zda jsou platné podrobnosti o názvu účtu a klíči účtu uvedené v souboru Settings.json.
 
@@ -112,7 +113,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 Entity se mapují na objekty jazyka C# pomocí vlastní třídy odvozené z [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity). Když budete chtít do tabulky přidat entitu, vytvořte třídu, která definuje vlastnosti vaší entity.
 
-Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová složka** a pojmenujte ji jako **model**. Do složky modelu přidejte třídu s názvem **CustomerEntity.cs** a přidejte do ní následující kód.
+Klikněte pravým tlačítkem na projekt **CosmosTableSamples** . Vyberte **Přidat** , **Nová složka** a pojmenujte ji jako **model** . Do složky modelu přidejte třídu s názvem **CustomerEntity.cs** a přidejte do ní následující kód.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
@@ -122,7 +123,7 @@ Tento kód definuje třídu entity, která používá křestní jméno zákazní
 
 Následující příklad kódu vytvoří objekt entity a přidá jej do tabulky. Metoda InsertOrMerge v rámci třídy [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) se používá k vložení nebo sloučení entity. Pro provedení operace je volána metoda [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) . 
 
-Klikněte pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová položka** a přidejte třídu s názvem **SamplesUtils.cs**. Tato třída ukládá veškerý kód potřebný k provádění operací CRUD u entit. 
+Klikněte pravým tlačítkem na projekt **CosmosTableSamples** . Vyberte **Přidat** , **Nová položka** a přidejte třídu s názvem **SamplesUtils.cs** . Tato třída ukládá veškerý kód potřebný k provádění operací CRUD u entit. 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
@@ -140,7 +141,7 @@ Entitu můžete po jejím načtení snadno odstranit, a to pomocí stejného vzo
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>Provádění operací CRUD pro ukázková data
 
-Po definování metod pro vytvoření tabulky, vložení nebo sloučení entit spusťte tyto metody pro ukázková data. Provedete to tak, že kliknete pravým tlačítkem na projekt **CosmosTableSamples**. Vyberte **Přidat**, **Nová položka** a přidejte třídu s názvem **BasicSamples.cs** a přidejte do ní následující kód. Tento kód vytvoří tabulku a přidá do ní entity.
+Po definování metod pro vytvoření tabulky, vložení nebo sloučení entit spusťte tyto metody pro ukázková data. Provedete to tak, že kliknete pravým tlačítkem na projekt **CosmosTableSamples** . Vyberte **Přidat** , **Nová položka** a přidejte třídu s názvem **BasicSamples.cs** a přidejte do ní následující kód. Tento kód vytvoří tabulku a přidá do ní entity.
 
 Pokud nechcete entitu a tabulku na konci projektu odstranit, přikomentujte `await table.DeleteIfExistsAsync()` `SamplesUtils.DeleteEntityAsync(table, customer)` metody a z následujícího kódu. Před odstraněním tabulky je nejlepší tyto metody opatřit poznámkami a ověřit data.
 
@@ -152,7 +153,7 @@ V tomto kurzu jste vytvořili kód, který provádí základní operace CRUD s d
 
 ## <a name="run-the-project"></a>Spuštění projektu
 
-Z projektu **CosmosTableSamples**. Otevřete třídu s názvem **program.cs** a přidejte do ní následující kód pro volání BasicSamples při spuštění projektu.
+Z projektu **CosmosTableSamples** . Otevřete třídu s názvem **program.cs** a přidejte do ní následující kód pro volání BasicSamples při spuštění projektu.
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

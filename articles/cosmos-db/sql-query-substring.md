@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb96270d1db970230e3abb528b58b7341d652f0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303694"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081463"
 ---
 # <a name="substring-azure-cosmos-db"></a>Podřetězec (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  Vrátí část řetězcového výrazu počínaje zadaným znakem na základě nuly a pokračuje určenou délkou nebo na konci řetězce.  
   
 ## <a name="syntax"></a>Syntaxe
@@ -29,7 +31,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Je řetězcový výraz.
   
 *num_expr1*  
-   Je číselný výraz, který označuje počáteční znak. Hodnota 0 je prvním znakem *str_expr*.
+   Je číselný výraz, který označuje počáteční znak. Hodnota 0 je prvním znakem *str_expr* .
   
 *num_expr2*  
    Je číselný výraz, který označuje maximální počet znaků *str_expr* , které mají být vráceny. Hodnota 0 nebo méně výsledků v prázdném řetězci.

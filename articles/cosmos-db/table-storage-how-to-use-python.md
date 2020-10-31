@@ -10,14 +10,15 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 0dd56b285401bd99a173700be6d6eb7c1fc97faa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 341615bf8fe231eafa606411948ad014399b8261
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477245"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079542"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
@@ -118,7 +119,7 @@ table_service.insert_entity('tasktable', task)
 
 ### <a name="partitionkey-and-rowkey"></a>PartitionKey a RowKey
 
-Pro každou entitu musíte zadat vlastnost **PartitionKey** i **RowKey**. Jedná se o jedinečné identifikátory entit a společně tvoří primární klíč entity. Pomocí těchto hodnot můžete provádět mnohem rychlejší dotazování než na jakékoli ostatní vlastnosti entit, protože pouze tyto vlastnosti se indexují.
+Pro každou entitu musíte zadat vlastnost **PartitionKey** i **RowKey** . Jedná se o jedinečné identifikátory entit a společně tvoří primární klíč entity. Pomocí těchto hodnot můžete provádět mnohem rychlejší dotazování než na jakékoli ostatní vlastnosti entit, protože pouze tyto vlastnosti se indexují.
 
 Table Storage používá **PartitionKey** k inteligentní distribuci entit tabulky napříč uzly úložiště. Entity se stejnou hodnotou **PartitionKey** se ukládají na stejném uzlu. **RowKey** je jedinečné ID entity v rámci oddílu, do kterého patří.
 
@@ -192,7 +193,7 @@ print(task.priority)
 
 ## <a name="query-a-set-of-entities"></a>Dotaz na sadu entit
 
-Dotaz na sadu entit můžete zadat uvedením řetězce filtru v parametru **filter**. Tento příklad vyhledá všechny úlohy v Seattlu použitím filtru hodnoty PartitionKey:
+Dotaz na sadu entit můžete zadat uvedením řetězce filtru v parametru **filter** . Tento příklad vyhledá všechny úlohy v Seattlu použitím filtru hodnoty PartitionKey:
 
 ```python
 tasks = table_service.query_entities(
@@ -204,7 +205,7 @@ for task in tasks:
 
 ## <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
 
-U každé entity v dotazu také můžete omezit, jaké vlastnosti se vrátí. Tato technika, označovaná jako *projekce*, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit nebo sad výsledků. Použijte parametr **select** a předejte názvy vlastností, které chcete vrátit do klienta.
+U každé entity v dotazu také můžete omezit, jaké vlastnosti se vrátí. Tato technika, označovaná jako *projekce* , snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit nebo sad výsledků. Použijte parametr **select** a předejte názvy vlastností, které chcete vrátit do klienta.
 
 Dotaz v následujícím kódu vrátí pouze popisy entit v tabulce.
 

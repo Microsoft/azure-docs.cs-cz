@@ -1,14 +1,14 @@
 ---
 title: Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích.
 description: Přečtěte si, jak přidružit ID partnera pro příjem kreditu (PEC) pro zákaznické prostředky, které spravujete prostřednictvím Azure Lighthouse.
-ms.date: 10/13/2020
+ms.date: 10/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 95483cfabb7632182a7c23ae4963f2d38a2bd2c3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019901"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080273"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>Propojte své ID partnera a sledujte svůj dopad na delegovaných prostředcích. 
 
@@ -20,9 +20,9 @@ Pokud připojíte [zákazníky pomocí šablon správy prostředků Azure](onboa
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>Přidružte své ID partnera při připojování nových zákazníků.
 
-Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera (a pokud je k dispozici možnost Povolit získaný partnerský kredit). K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN**, které je uvedené ve vašem partnerském profilu.
+Při připojování zákazníků prostřednictvím šablon Azure Resource Manager (šablony ARM) použijte následující postup, který propojí ID partnera (a pokud je k dispozici možnost Povolit získaný partnerský kredit). K provedení těchto kroků budete muset znát [ID partnera MPN](/partner-center/partner-center-account-setup#locate-your-mpn-id) . Nezapomeňte použít **přidružené ID MPN** , které je uvedené ve vašem partnerském profilu.
 
-Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN**a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
+Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, propojit ho s **přidruženým ID MPN** a pak mu udělit přístup ke každému zákazníkovi, který zařadíte pomocí [předdefinované role Azure, která má nárok na pec](/partner-center/azure-roles-perms-pec).
 
 1. Ve vašem tenantovi pro správu [Vytvořte hlavní účet služby](../../active-directory/develop/howto-authenticate-service-principal-powershell.md) . V tomto příkladu použijeme *účet automatizace poskytovatele* názvu pro tento instanční objekt.
 1. Pomocí tohoto účtu instančního objektu se v tenantovi [pro správu připojte k přidruženému ID MPN](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) . Stačí to udělat jenom jednou.
@@ -42,7 +42,9 @@ Jakmile je účet [propojený s vaším přidruženým ID MPN](../../cost-manage
 
 Podrobnosti o [řadiči pec můžete zobrazit v Azure Portal](/partner-center/partner-earned-credit-explanation#azure-cost-management) a potvrdit, které náklady na řadič PEC dostaly. Pamatujte, že PEC se vztahuje jenom na zákazníky CSP, kteří si zaregistrovali MCA a jsou v rámci plánu Azure.
 
-Pokud jste postupovali podle výše uvedených kroků a nevidíte přidružení, otevřete žádost o podporu v Azure Portal.
+Pokud jste postupovali podle výše uvedených kroků a nevidíte očekávané přidružení, otevřete žádost o podporu v Azure Portal.
+
+K automatizaci ověřování PEC pro předplatné můžete také použít [sadu SDK partnerského centra](/partner-center/develop/get-invoice-unbilled-consumption-lineitems) a filtrovat `rateOfPartnerEarnedCredit` .
 
 ## <a name="next-steps"></a>Další kroky
 

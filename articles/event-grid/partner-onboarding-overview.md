@@ -1,33 +1,32 @@
 ---
-title: Připojení jako Azure Event Grid partner
-description: Připojte se jako typ tématu Azure Event Grid partner. Seznamte se s modelem prostředků a s průběhem publikování pro témata partnerů.
+title: Přehled připojování partnerů (Azure Event Grid)
+description: Poskytuje přehled o tom, jak se dá připojit jako partner Event Grid.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87826785"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081191"
 ---
-# <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
+# <a name="partner-onboarding-overview-azure-event-grid"></a>Přehled připojování partnerů (Azure Event Grid)
 
 Tento článek popisuje, jak soukromě používat Azure Event Grid prostředky partnerů a jak se stát veřejně dostupným typem partnerského tématu.
 
 Nepotřebujete zvláštní oprávnění, abyste mohli začít používat Event Grid typy prostředků přidružené k událostem publikování jako partner Event Grid. Ve skutečnosti je můžete použít dnes k publikování událostí soukromě do vlastních předplatných Azure a k otestování modelu prostředků, Pokud zvažujete, že se stanete partnerem.
 
-## <a name="become-an-event-grid-partner"></a>Staňte se Event Grid partnerem
+> [!NOTE]
+> Podrobné pokyny týkající se toho, jak se připojit jako Event Grid partner pomocí Azure Portal, najdete v tématu [jak se připojit jako Event Grid partner (Azure Portal)](onboard-partner.md). 
 
-Pokud se chcete stát partnerem veřejného Event Grid, začněte vyplněním [tohoto formuláře](https://aka.ms/gridpartnerform). Pak se obraťte na tým Event Grid na adrese [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) .
+## <a name="how-partner-events-work"></a>Jak fungují partnerské události
+Funkce partnerských událostí převezme existující architekturu, kterou Event Grid už používá k publikování událostí z prostředků Azure, jako jsou Azure Storage a Azure IoT Hub, a zpřístupňuje tyto nástroje všem uživatelům, kteří je používají. Používání těchto nástrojů je standardně soukromé jenom pro vaše předplatné Azure. Pokud chcete, aby byly události veřejně dostupné, vyplňte formulář a [kontaktujte tým Event Grid](mailto:gridpartner@microsoft.com).
 
-## <a name="how-partner-topics-work"></a>Jak fungují témata partnerů
-Partnerská témata přebírají stávající architekturu, která Event Grid už používá k publikování událostí z prostředků Azure, jako jsou Azure Storage a Azure IoT Hub, a zpřístupňuje tyto nástroje všem uživatelům, kteří je používají. Používání těchto nástrojů je standardně soukromé jenom pro vaše předplatné Azure. Pokud chcete, aby byly události veřejně dostupné, vyplňte formulář a [kontaktujte tým Event Grid](mailto:gridpartner@microsoft.com).
+Funkce partnerských událostí umožňuje publikovat události pro Azure Event Grid pro víceklientské využití.
 
-Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro víceklientské využití.
+## <a name="onboarding-and-event-publishing-overview"></a>Přehled zprovoznění a publikování událostí
 
-### <a name="onboarding-and-event-publishing-overview"></a>Přehled zprovoznění a publikování událostí
-
-#### <a name="partner-flow"></a>Partnerský tok
+### <a name="partner-flow"></a>Partnerský tok
 
 1. Vytvořte tenanta Azure, pokud ho ještě nemáte.
 1. Pomocí rozhraní příkazového řádku Azure vytvořte novou Event Grid `partnerRegistration` . Tento prostředek obsahuje informace, jako je zobrazované jméno, popis, identifikátor URI instalace atd.
@@ -41,7 +40,7 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
 1. Poskytněte zákazníkům možnost zaregistrovat se do vašeho systému, který chce o partnerovi.
 1. Obraťte se na tým Event Grid a sdělte mu, že chcete, aby se Váš typ partnerského tématu stal veřejným.
 
-#### <a name="customer-flow"></a>Tok zákazníka
+### <a name="customer-flow"></a>Tok zákazníka
 
 1. Zákazník navštíví Azure Portal a poznamenejte si ID předplatného Azure a skupinu prostředků, ve kterých se má partnerské téma vytvořit.
 1. Zákazník požádá o partnerské téma prostřednictvím vašeho systému. V reakci vytvoříte tunelové propojení událostí pro svůj partnerský obor názvů.
@@ -54,9 +53,7 @@ Témata o partnerovi umožňují publikovat události pro Azure Event Grid pro v
     ![Aktivovat téma partnera](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
 ## <a name="resource-model"></a>Model prostředků
-
-
-Následující model prostředků je pro témata partnerů.
+Následující model prostředků je pro partnerské události.
 
 ### <a name="partner-registrations"></a>Registrace partnerů
 * Partner `partnerRegistrations`
@@ -69,7 +66,7 @@ Následující model prostředků je pro témata partnerů.
 * Obor: vytvořeno v rámci předplatného Azure partnera. Po zveřejnění jsou metadata viditelná pro zákazníky.
 
 ### <a name="partner-namespaces"></a>Obory názvů partnerů
-* Prostředek: partnerNamespaces
+* Partner `partnerNamespaces`
 * Používá: partneři
 * Popis: poskytuje regionální prostředek pro publikování událostí zákazníků. Každý partnerský obor názvů má koncový bod publikování a ověřovací klíče. Obor názvů je také způsob, jakým partner požaduje partnerské téma pro daného zákazníka a uvádí seznam aktivních zákazníků.
 * Rozsah: žije v předplatném partnera.
@@ -77,7 +74,7 @@ Následující model prostředků je pro témata partnerů.
 ### <a name="event-channel"></a>Kanál událostí
 * Partner `partnerNamespaces/eventChannels`
 * Používá: partneři
-* Popis: tunely událostí jsou zrcadlem k tématu partnera zákazníka. Vytvořením tunelového propojení událostí a zadáním předplatného Azure a skupiny prostředků v metadatech můžete signalizovat, Event Grid vytvořit partnerské téma pro zákazníka. Event Grid vydá volání ARM k vytvoření odpovídajícího partnerTopic v předplatném zákazníka. Téma partnerského serveru je vytvořeno ve stavu čeká na vyřízení. Mezi jednotlivými tunely a partnerem události existuje propojení 1:1.
+* Popis: kanály událostí jsou zrcadlem k tématu partnera zákazníka. Když vytvoříte kanál událostí a zadáte předplatné Azure a skupinu prostředků v metadatech, budete signálem Event Grid vytvořit partnerské téma pro zákazníka. Event Grid vydá Azure Resource Manager voláním k vytvoření odpovídajícího partnerského tématu v předplatném zákazníka. Téma partnerského serveru je vytvořeno ve stavu čeká na vyřízení. Mezi jednotlivými kanály událostí a partnerem můžete propojit 1:1.
 * Rozsah: žije v předplatném partnera.
 
 ### <a name="partner-topics"></a>Témata pro partnery
@@ -85,7 +82,7 @@ Následující model prostředků je pro témata partnerů.
 * Používá: zákazníci
 * Popis: témata partnerů jsou podobná vlastním tématům a tématům systému v Event Grid. Každé téma partnera je přidruženo ke konkrétnímu zdroji (například `Contoso:myaccount` ) a určitému typu tématu partnera (například contoso). Zákazníci vytvářejí odběry událostí v tématu partnera, aby mohli směrovat události do různých obslužných rutin událostí.
 
-    Zákazníci nemůžou vytvořit tento prostředek přímo. Jediným způsobem, jak vytvořit partnerský předmět, je prostřednictvím partnerské operace, která vytváří tunelové propojení událostí.
+    Zákazníci nemůžou vytvořit tento prostředek přímo. Jediným způsobem, jak vytvořit partnerské téma, je prostřednictvím partnerské operace, která vytváří kanál událostí.
 * Rozsah: žije v předplatném zákazníka.
 
 ### <a name="partner-topic-types"></a>Typy partnerských témat
@@ -95,7 +92,7 @@ Následující model prostředků je pro témata partnerů.
 * Rozsah: globální
 
 ## <a name="publish-events-to-event-grid"></a>Publikovat události pro Event Grid
-Když vytvoříte obor názvů partnera v oblasti Azure, získáte místní koncový bod a odpovídající klíče ověřování. Umožňuje publikovat dávky událostí do tohoto koncového bodu pro všechny tunely událostí zákazníka v tomto oboru názvů. Na základě zdrojového pole v události Azure Event Grid mapuje každou událost s odpovídajícími tématy o partnerovi.
+Když vytvoříte obor názvů partnera v oblasti Azure, získáte místní koncový bod a odpovídající klíče ověřování. Umožňuje publikovat dávky událostí do tohoto koncového bodu pro všechny kanály událostí zákazníka v daném oboru názvů. Na základě zdrojového pole v události Azure Event Grid mapuje každou událost s odpovídajícími tématy o partnerovi.
 
 ### <a name="event-schema-cloudevents-v10"></a>Schéma události: CloudEvents v 1.0
 Publikujte události do Azure Event Grid pomocí schématu CloudEvents 1,0. Event Grid podporuje jak strukturovaný, tak i dávkový režim. CloudEvents 1,0 je jediné podporované schéma událostí pro obory názvů partnerů.
@@ -105,7 +102,7 @@ Publikujte události do Azure Event Grid pomocí schématu CloudEvents 1,0. Even
 1.  Služba publikování provede příspěvek HTTP na `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  V žádosti zahrňte hodnotu hlavičky s názvem AEG-SAS-Key obsahující klíč pro ověření. Tento klíč se zřídí během vytváření oboru názvů partnera. Platná hodnota hlavičky je například AEG-SAS-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 1.  Nastavte hlavičku Content-Type na "Application/cloudevents-Batch + JSON; charset = UTF-8a.
-1.  Proveďte příspěvek HTTP na adresu URL pro publikování s dávkou událostí, které odpovídají dané oblasti. Například:
+1.  Spusťte dotaz HTTP POST na adresu URL pro publikování s dávkou událostí, které odpovídají dané oblasti. Například:
 
 ``` json
 [
@@ -140,7 +137,7 @@ Publikujte události do Azure Event Grid pomocí schématu CloudEvents 1,0. Even
 ]
 ```
 
-Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpověď je standardní kód odpovědi HTTP. Mezi běžné odezvy patří:
+Po odeslání do koncového bodu oboru názvů partnera obdržíte odpověď. Odpověď je standardní kód odpovědi HTTP. Mezi běžné odezvy patří:
 
 | Výsledek                             | Odpověď              |
 |------------------------------------|-----------------------|
@@ -156,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
   * [Šablona ARM](/azure/templates/microsoft.eventgrid/allversions)
   * [Schéma šablony ARM](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [Rozšíření CLI](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [Rozšíření CLI](/cli/azure/ext/eventgrid/)
 
 ### <a name="sdks"></a>Sady SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)
@@ -168,7 +165,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Témata o partnerech – přehled](partner-topics-overview.md)
+- [Témata o partnerech – přehled](partner-events-overview.md)
 - [Formulář pro témata týkající se připojování k partnerům](https://aka.ms/gridpartnerform)
 - [Téma Auth0 partner](auth0-overview.md)
 - [Jak používat téma Auth0 partner](auth0-how-to.md)

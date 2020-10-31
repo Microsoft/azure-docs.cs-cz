@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608742"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079334"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Jak vybrat mezi zřízenou propustností a bez serveru
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB je k dispozici ve dvou různých režimech kapacity: [zřízená propustnost](set-throughput.md) a bez [serveru](serverless.md). V obou režimech můžete provádět přesně stejné databázové operace, ale způsob, jakým se vám tyto operace účtuje, se odliší od sebe. Následující video vysvětluje základní rozdíly mezi těmito režimy a způsob, jakým odpovídají různým typům úloh:
 
@@ -42,20 +43,20 @@ Azure Cosmos DB je k dispozici ve dvou různých režimech kapacity: [zřízená
 V některých situacích může být nejasné, jestli se pro danou úlohu má vybrat zajištěná propustnost nebo bez serveru. Pro usnadnění tohoto rozhodnutí můžete odhadnout:
 
 - **Požadavek na** zatížení vašeho pracovního vytížení, což je maximální množství ru, které může být potřeba spotřebovat za jednu sekundu
-- Vaše celková **očekávaná spotřeba**, což je celkový počet ru, které můžete využívat za měsíc (můžete to odhadnout pomocí [níže](plan-manage-costs.md#estimating-serverless-costs)uvedené tabulky)
+- Vaše celková **očekávaná spotřeba** , což je celkový počet ru, které můžete využívat za měsíc (můžete to odhadnout pomocí [níže](plan-manage-costs.md#estimating-serverless-costs)uvedené tabulky)
 
 Pokud vaše úloha vyžaduje nárůst zatížení nad 5 000 RU za sekundu, měla by být zvolena zajištěná propustnost, protože kontejnery bez serveru nemůžou nad tímto limitem zvýšit nárůst. V takovém případě můžete porovnat náklady na oba režimy na základě očekávané spotřeby.
 
-**Příklad 1**: u úlohy se očekává nárůst počtu na maximálně 10 000 ru/s a za měsíc se spotřebuje celkem 20 000 000 ru.
+**Příklad 1** : u úlohy se očekává nárůst počtu na maximálně 10 000 ru/s a za měsíc se spotřebuje celkem 20 000 000 ru.
 
 - Propustnost 10 000 RU/s může doručovat jenom v režimu zajištění propustnosti.
 
-**Příklad 2**: u úlohy se očekává nárůst zatížení na maximálně 500 ru/s a za měsíc se spotřebuje celkem 20 000 000 ru.
+**Příklad 2** : u úlohy se očekává nárůst zatížení na maximálně 500 ru/s a za měsíc se spotřebuje celkem 20 000 000 ru.
 
 - V režimu zřízené propustnosti byste zřídili kontejner s 500 RU/s za měsíční cenu: $0,008 * 5 * 730 = **$29,20**
 - V režimu bez serveru platíte za spotřebované ru: $0,25 * 20 = **$5,00**
 
-**Příklad 3**: u úlohy se očekává nárůst zatížení na maximum 500 ru/s a za měsíc se spotřebuje celkem 250 000 000 ru.
+**Příklad 3** : u úlohy se očekává nárůst zatížení na maximum 500 ru/s a za měsíc se spotřebuje celkem 250 000 000 ru.
 
 - V režimu zřízené propustnosti byste zřídili kontejner s 500 RU/s za měsíční cenu: $0,008 * 5 * 730 = **$29,20**
 - V režimu bez serveru platíte za spotřebované ru: $0,25 * 250 = **$62,50**

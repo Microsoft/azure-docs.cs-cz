@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447424"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081446"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Řešení potíží při použití emulátoru Azure Cosmos
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Emulátor Azure Cosmos poskytuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Tipy v tomto článku vám pomůžou při řešení problémů, se kterými se setkáte při instalaci nebo používání emulátoru Azure Cosmos. 
 
@@ -34,11 +35,11 @@ Pokud jste nainstalovali novou verzi emulátoru a dochází k chybám, proveďte
 
 * Pokud narazíte na problém s připojením, [Shromážděte trasovací soubory](#trace-files), Zkomprimujte je a otevřete lístek podpory v [Azure Portal](https://portal.azure.com).
 
-* Pokud se zobrazí zpráva **Služba není dostupná**, pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
+* Pokud se zobrazí zpráva **Služba není dostupná** , pravděpodobně se emulátoru nedaří inicializovat sadu síťových protokolů. Zkontrolujte, zda máte nainstalovaného klienta Pulse Secure nebo klienta Juniper Networks, protože potíže mohou způsobovat jejich ovladače síťových filtrů. Odinstalace ovladačů síťových filtrů třetích stran obvykle potíže vyřeší. Případně můžete spustit emulátor pomocí/DisableRIO, který přepne síťovou komunikaci emulátoru na normální rozhraní Winsock. 
 
-* Pokud dojde k **chybě "zakázáno", "zpráva": "žádost se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Zaškrtněte nastavení minimální povolený protokol SSL/TLS... "** problémy s připojením, to může být způsobeno globálními změnami v operačním systému (například Insider Preview build 20170) nebo nastavením prohlížeče, které povoluje TLS 1,3 jako výchozí. K podobné chybě může dojít při použití sady SDK ke spuštění žádosti o emulátoru Cosmos, například **Microsoft.Azure.Documents.DocumentClientException: požadavek se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Ověřte nastavení minimálního povoleného protokolu SSL/TLS účtu**. V současné době se jedná o očekávané chování, protože emulátor služby Cosmos přijímá pouze protokol TLS 1.2 a funguje pouze s ním. Doporučeným řešením je změnit nastavení a výchozí možnost TLS 1,2; například ve Správci služby IIS přejděte na "weby" – > "výchozí weby" a vyhledejte "vazby lokality" pro port 8081 a upravte je tak, aby se protokol TLS 1,3 zakázal. Podobnou operaci je možné provést pro webový prohlížeč přes možnosti Nastavení.
+* Pokud dojde k **chybě "zakázáno", "zpráva": "žádost se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Zaškrtněte nastavení minimální povolený protokol SSL/TLS... "** problémy s připojením, to může být způsobeno globálními změnami v operačním systému (například Insider Preview build 20170) nebo nastavením prohlížeče, které povoluje TLS 1,3 jako výchozí. K podobné chybě může dojít při použití sady SDK ke spuštění žádosti o emulátoru Cosmos, například **Microsoft.Azure.Documents.DocumentClientException: požadavek se zakazuje zakázaným šifrováním v tranzitním protokolu nebo šifrě. Ověřte nastavení minimálního povoleného protokolu SSL/TLS účtu** . V současné době se jedná o očekávané chování, protože emulátor služby Cosmos přijímá pouze protokol TLS 1.2 a funguje pouze s ním. Doporučeným řešením je změnit nastavení a výchozí možnost TLS 1,2; například ve Správci služby IIS přejděte na "weby" – > "výchozí weby" a vyhledejte "vazby lokality" pro port 8081 a upravte je tak, aby se protokol TLS 1,3 zakázal. Podobnou operaci je možné provést pro webový prohlížeč přes možnosti Nastavení.
 
-* Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná**. Obnovte data emulátoru tak, že kliknete pravým tlačítkem na ikonu, která se zobrazuje v oznamovacím panelu Windows, a vyberete **resetovat data**.
+* Pokud emulátor běží, když počítač přechází do režimu spánku nebo instaluje nějaké aktualizace operačního systému, může se zobrazit zpráva, že **služba momentálně není dostupná** . Obnovte data emulátoru tak, že kliknete pravým tlačítkem na ikonu, která se zobrazuje v oznamovacím panelu Windows, a vyberete **resetovat data** .
 
 ## <a name="collect-trace-files"></a><a id="trace-files"></a>Shromažďování trasovacích souborů
 

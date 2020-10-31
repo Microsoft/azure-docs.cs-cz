@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742498"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081106"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobená vyhledávací prostředí pro témata, o která máte zájem. Pokud například vlastníte web Martial umění, který poskytuje vyhledávání, můžete určit domény, podřízené weby a webové stránky, které vyhledávání Bingu. Uživatelům se budou zobrazovat výsledky hledání přizpůsobené obsahu, který je zajímá, a nebudou tak muset procházet obecné výsledky hledání, které můžou obsahovat irelevantní obsah. 
 
@@ -32,7 +37,7 @@ Probírají se tyto úlohy:
 > - Přidání připnutých položek
 > - Integrace vlastního vyhledávání do webové stránky
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro vlastní vyhledávání Bingu.  Pokud chcete získat klíč, [vytvořte v Azure Portal prostředek vlastní vyhledávání Bingu](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch) .
 - Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2017 nebo novější, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/).
@@ -45,9 +50,9 @@ Vytvoření instance vlastního vyhledávání Bingu:
   
 2. Přejděte na [portál](https://customsearch.ai) vlastního vyhledávání.  
   
-3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft**. Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na **Ano**.  
+3. Přihlaste se k portálu pomocí účtu Microsoft. Pokud nemáte MSA, klikněte na **vytvořit účet Microsoft** . Pokud na portálu používáte portál poprvé, bude požádat o oprávnění k přístupu k vašim datům. Klikněte na **Ano** .  
   
-4. Po přihlášení klikněte na **Nové vlastní vyhledávání**. V okně **vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název a popis typu obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
+4. Po přihlášení klikněte na **Nové vlastní vyhledávání** . V okně **vytvořit novou instanci vlastního vyhledávání** zadejte smysluplný název a popis typu obsahu, který hledání vrátí. Název můžete kdykoli změnit.  
   
    ![Snímek obrazovky s oknem Vytvořit novou instanci vlastního vyhledávání](../media/newCustomSrch.png)  
   
@@ -58,7 +63,7 @@ Vytvoření instance vlastního vyhledávání Bingu:
 
 ## <a name="add-active-entries"></a>Přidání aktivních položek
 
-Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Aktivní**.
+Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Aktivní** .
 
 1. Na stránce **Konfigurace** klikněte na kartu **Aktivní** a zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
 
@@ -68,7 +73,7 @@ Pokud chcete zahrnout výsledky z konkrétních webů nebo adres URL, přidejte 
 
 ## <a name="add-blocked-entries"></a>Přidání blokovaných položek
 
-Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Blokované**.
+Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte je na kartě **Blokované** .
 
 1. Na stránce **Konfigurace** klikněte na kartu **Blokované** a zadejte adresy URL webů, které chcete z vyhledávání vyloučit.
 
@@ -93,7 +98,7 @@ Chcete-li připnout konkrétní webovou stránku na začátek výsledků hledán
 
 Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykreslení odpovědi JSON vaší instance vlastního vyhledávání. Definice uživatelského rozhraní:
 
-1. Klikněte na kartu **Hostované uživatelské rozhraní**.  
+1. Klikněte na kartu **Hostované uživatelské rozhraní** .  
   
 2. Vyberte rozložení.  
   
@@ -103,7 +108,7 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
   
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a výběrem barevného motivu](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-   Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv**. Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Případně můžete kliknout na tlačítko barvy a pak kliknout na odstín, který vám vyhovuje. Při výběru barev mějte vždy na paměti přístupnost.
+   Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv** . Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Případně můžete kliknout na tlačítko barvy a pak kliknout na odstín, který vám vyhovuje. Při výběru barev mějte vždy na paměti přístupnost.
   
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a přizpůsobením barevného motivu](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
@@ -112,7 +117,7 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
   
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Další konfigurace](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-   Pokud chcete zobrazit pokročilou konfiguraci, klikněte na **Zobrazit pokročilou konfiguraci**. Tím se přidají například konfigurace *Cíl odkazu* mezi možnosti Vyhledávání na webu, *Povolit filtry* mezi možnosti Vyhledávání obrázků a videí a *Zástupný text ve vyhledávacím poli* mezi možnosti Různé.
+   Pokud chcete zobrazit pokročilou konfiguraci, klikněte na **Zobrazit pokročilou konfiguraci** . Tím se přidají například konfigurace *Cíl odkazu* mezi možnosti Vyhledávání na webu, *Povolit filtry* mezi možnosti Vyhledávání obrázků a videí a *Zástupný text ve vyhledávacím poli* mezi možnosti Různé.
 
    ![Snímek obrazovky s kartou Hostované uživatelské rozhraní a krokem Pokročilá konfigurace](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
@@ -130,19 +135,19 @@ Hostované uživatelské rozhraní můžete používat dvěma způsoby.
 - Možnost 1: Integrace poskytnutého fragmentu kódu JavaScriptu do aplikace
 - Možnost 2: Použití poskytnutého koncového bodu HTML
 
-Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScriptu**.  
+Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScriptu** .  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 
-1. Otevřete na svém počítači sadu **Visual Studio**.  
+1. Otevřete na svém počítači sadu **Visual Studio** .  
   
-2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.  
+2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt** .  
   
-3. V okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET Core**, zadejte název projektu a pak klikněte na **OK**.  
+3. V okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET Core** , zadejte název projektu a pak klikněte na **OK** .  
   
    ![Snímek obrazovky s oknem Nový projekt](./media/custom-search-new-project.png)  
   
-4. V okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a klikněte na **OK**.  
+4. V okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a klikněte na **OK** .  
   
    ![Snímek obrazovky s novým WebApp oknem](./media/custom-search-new-webapp.png)  
 
@@ -174,7 +179,7 @@ Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScri
    <div id="customSearch"></div>
    ```  
   
-4. Na stránce **Hostované uživatelské rozhraní** se posuňte dolů do části **Používání uživatelského rozhraní**. Kliknutím na *Koncové body* přejděte k fragmentu kódu JavaScriptu. K fragmentu kódu můžete přejít také kliknutím na **Produkce** a pak na kartu **Hostované uživatelské rozhraní**.
+4. Na stránce **Hostované uživatelské rozhraní** se posuňte dolů do části **Používání uživatelského rozhraní** . Kliknutím na *Koncové body* přejděte k fragmentu kódu JavaScriptu. K fragmentu kódu můžete přejít také kliknutím na **Produkce** a pak na kartu **Hostované uživatelské rozhraní** .
   
    <!-- Get new screenshot after prod gets new bits
    ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
@@ -197,7 +202,7 @@ Zbývající část tohoto kurzu ilustruje **možnost 1: fragment kódu JavaScri
    </div>
    ```  
   
-6. V **Průzkumníku řešení** klikněte pravým tlačítkem na **wwwroot** a pak na **Zobrazit v prohlížeči**.  
+6. V **Průzkumníku řešení** klikněte pravým tlačítkem na **wwwroot** a pak na **Zobrazit v prohlížeči** .  
   
    ![Snímek obrazovky Průzkumníka řešení s výběrem možnosti Zobrazit v prohlížeči v místní nabídce wwwroot](./media/custom-search-webapp-view-in-browser.png)  
 

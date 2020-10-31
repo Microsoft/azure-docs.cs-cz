@@ -8,14 +8,15 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477585"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080001"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Průvodce návrhem tabulek v Azure Table Storage: Škálovatelné a výkonné tabulky
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -123,7 +124,7 @@ Následující příklad ukazuje jednoduchý návrh tabulky pro ukládání enti
 </table>
 
 
-Tento návrh se zatím bude podobat tabulce v relační databázi. Hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit do stejné tabulky. Kromě toho má každý z uživatelem definovaných vlastností, jako je například **FirstName** nebo **věk**, datový typ, jako je například celé číslo nebo řetězec, stejně jako sloupec v relační databázi. Na rozdíl od relační databáze ale bez schématu pro úložiště tabulek je to, že vlastnost nemusí mít stejný datový typ pro každou entitu. Pro uložení složitých datových typů do jediné vlastnosti je nutné použít serializovaný formát, jako je JSON nebo XML. Další informace najdete v tématu [Principy datového modelu Table Storage](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Tento návrh se zatím bude podobat tabulce v relační databázi. Hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit do stejné tabulky. Kromě toho má každý z uživatelem definovaných vlastností, jako je například **FirstName** nebo **věk** , datový typ, jako je například celé číslo nebo řetězec, stejně jako sloupec v relační databázi. Na rozdíl od relační databáze ale bez schématu pro úložiště tabulek je to, že vlastnost nemusí mít stejný datový typ pro každou entitu. Pro uložení složitých datových typů do jediné vlastnosti je nutné použít serializovaný formát, jako je JSON nebo XML. Další informace najdete v tématu [Principy datového modelu Table Storage](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 Vaše volba `PartitionKey` a `RowKey` je zásadní pro dobrý návrh tabulek. Každá entita uložená v tabulce musí mít jedinečnou kombinaci `PartitionKey` a `RowKey` . Stejně jako u klíčů v tabulce relační databáze `PartitionKey` `RowKey` jsou hodnoty a indexovány, aby se vytvořil clusterovaný index, který umožňuje rychlé vyhledávání. Table Storage ale nevytváří žádné sekundární indexy, takže se jedná o jediné dvě indexované vlastnosti (některé ze vzorů popsaných později ukazují, jak můžete toto zjevné omezení obejít).  
 
@@ -137,7 +138,7 @@ V tabulkovém úložišti má jednotlivé uzly služby jednoho nebo více úpln�
 Další informace o interních podrobnostech úložiště tabulek a zejména o tom, jak spravuje oddíly, najdete v tématu [Microsoft Azure Storage: vysoce dostupnou cloudovou službu cloudového úložiště se silnými konzistencí](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ### <a name="entity-group-transactions"></a>Transakce skupiny entit
-V úložišti tabulek jsou transakce skupin entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se také označují jako *transakce Batch*. EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (sdílení stejného klíče oddílu v konkrétní tabulce), takže kdykoli budete potřebovat atomické transakční chování napříč více entitami, ujistěte se, že jsou tyto entity ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužívá více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nespolupracovaly s entitami, které jsou společné napříč EGTs. V opačném případě riskujete zpracování zpoždění.
+V úložišti tabulek jsou transakce skupin entit (EGTs) jediným integrovaným mechanismem pro provádění atomických aktualizací v několika entitách. EGTs se také označují jako *transakce Batch* . EGTs může pracovat pouze s entitami uloženými ve stejném oddílu (sdílení stejného klíče oddílu v konkrétní tabulce), takže kdykoli budete potřebovat atomické transakční chování napříč více entitami, ujistěte se, že jsou tyto entity ve stejném oddílu. To je často důvod pro udržení více typů entit ve stejné tabulce (a oddílu) a nepoužívá více tabulek pro různé typy entit. Jeden EGT může pracovat s maximálně 100 entitami.  Pokud odešlete více souběžných EGTs ke zpracování, je důležité zajistit, aby tyto EGTs nespolupracovaly s entitami, které jsou společné napříč EGTs. V opačném případě riskujete zpracování zpoždění.
 
 EGTs také zavede potenciální kompromis k vyhodnocení v návrhu. Použití více oddílů zvyšuje škálovatelnost vaší aplikace, protože Azure nabízí více příležitostí pro žádosti o vyrovnávání zatížení napříč uzly. To ale může omezit schopnost vaší aplikace provádět atomické transakce a udržovat velkou konzistenci pro vaše data. Kromě toho existují konkrétní cíle škálovatelnosti na úrovni oddílu, která může omezit propustnost transakcí, které můžete očekávat pro jeden uzel.
 
@@ -204,13 +205,13 @@ V následujících příkladech se předpokládá, že Table Storage ukládá en
 
 Tady jsou některé obecné pokyny pro navrhování dotazů na úložiště tabulek. Syntaxe filtru použitá v následujících příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](/rest/api/storageservices/Query-Entities).  
 
-* *Dotaz na bod* je nejúčinnější vyhledávání, které se má použít, a doporučuje se pro vyhledávání ve velkém objemu nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může pomocí indexů snadno vyhledat jednotlivou entitu zadáním `PartitionKey` `RowKey` hodnot a. Například: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
-* Druhý nejlepší je *dotaz na rozsah*. Pomocí `PartitionKey` filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey`Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Například: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
-* Třetí nejlepší je *Kontrola oddílu*. Používá `PartitionKey` filtry, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey`Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Například: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
-* *Prohledávání tabulky* nezahrnuje `PartitionKey` a je neefektivní, protože vyhledává všechny oddíly, které tvoří tabulku pro všechny odpovídající entity. Provede prohledávání tabulky bez ohledu na to, zda filtr používá `RowKey` . Například: `$filter=LastName eq 'Jones'`.  
+* *Dotaz na bod* je nejúčinnější vyhledávání, které se má použít, a doporučuje se pro vyhledávání ve velkém objemu nebo vyhledávání vyžadující nejnižší latenci. Takový dotaz může pomocí indexů snadno vyhledat jednotlivou entitu zadáním `PartitionKey` `RowKey` hodnot a. Příklad: `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')`.  
+* Druhý nejlepší je *dotaz na rozsah* . Pomocí `PartitionKey` filtrů a na základě rozsahu `RowKey` hodnot vrátí více než jednu entitu. `PartitionKey`Hodnota identifikuje konkrétní oddíl a `RowKey` hodnoty identifikují podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
+* Třetí nejlepší je *Kontrola oddílu* . Používá `PartitionKey` filtry, a pro jinou neklíčovou vlastnost a může vracet více než jednu entitu. `PartitionKey`Hodnota určuje konkrétní oddíl a hodnoty vlastností se vyberou pro podmnožinu entit v tomto oddílu. Příklad: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
+* *Prohledávání tabulky* nezahrnuje `PartitionKey` a je neefektivní, protože vyhledává všechny oddíly, které tvoří tabulku pro všechny odpovídající entity. Provede prohledávání tabulky bez ohledu na to, zda filtr používá `RowKey` . Příklad: `$filter=LastName eq 'Jones'`.  
 * Dotazy služby Azure Table Storage, které vracejí více entit, je seřadí v `PartitionKey` `RowKey` pořadí a. Chcete-li se vyhnout vyřazování entit v klientovi, vyberte `RowKey` , který definuje nejběžnější pořadí řazení. Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
 
-Použití "**nebo**" k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry jako: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
+Použití " **nebo** " k určení filtru založeného na `RowKey` hodnotách má za následek kontrolu oddílu a nepovažuje se za dotaz na rozsah. Proto se vyhněte dotazům, které používají filtry jako: `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')` .  
 
 Příklady kódu na straně klienta, který používá klientskou knihovnu pro úložiště ke spouštění efektivních dotazů, najdete v těchto tématech:  
 
@@ -252,7 +253,7 @@ Table Storage vrátí výsledky dotazu seřazené vzestupně podle `PartitionKey
 > [!NOTE]
 > Výsledky dotazu vrácené službou Azure rozhraní API pro tabulky v Azure Cosmos DB nejsou seřazené podle klíče oddílu nebo klíče řádku. Podrobný seznam rozdílů funkcí najdete v tématu [rozdíly mezi rozhraní API pro tabulky v Azure Cosmos DB a v úložišti tabulek Azure](table-api-faq.md#table-api-vs-table-storage).
 
-Klíče v úložišti tabulek jsou řetězcové hodnoty. Chcete-li zajistit, aby číselné hodnoty byly správně řazeny, je nutné je převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete, `RowKey` je celočíselná hodnota, měli byste převést ID zaměstnance **123** na **00000123**. 
+Klíče v úložišti tabulek jsou řetězcové hodnoty. Chcete-li zajistit, aby číselné hodnoty byly správně řazeny, je nutné je převést na pevnou délku a doplnit je nulami. Pokud například hodnota ID zaměstnance, kterou použijete, `RowKey` je celočíselná hodnota, měli byste převést ID zaměstnance **123** na **00000123** . 
 
 Mnoho aplikací má požadavky na použití dat seřazených v různých objednávkách: například řazení zaměstnanců podle názvu nebo připojení k datu. Následující vzory [vzorů návrhu tabulek](#table-design-patterns) popisují, jak alternativní objednávky řazení pro vaše entity:  
 
@@ -494,7 +495,7 @@ Následující dvě kritéria filtru (jedno vyhledávání podle ID zaměstnance
 
 Pokud se dotazuje na rozsah entit zaměstnanců, můžete určit rozsah seřazený v pořadí podle ID zaměstnance nebo rozsah seřazený v e-mailové adrese. Dotaz na entity s odpovídající předponou v `RowKey` .  
 
-* Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu **000100** až **000199**, seřazené v pořadí ID zaměstnanců, použijte: $Filter = (PartitionKey EQ ' empid_Sales ') a (RowKey GE ' 000100 ') a (RowKey Le ' 000199 ')  
+* Chcete-li najít všechny zaměstnance v rámci prodejního oddělení s ID zaměstnance v rozsahu **000100** až **000199** , seřazené v pořadí ID zaměstnanců, použijte: $Filter = (PartitionKey EQ ' empid_Sales ') a (RowKey GE ' 000100 ') a (RowKey Le ' 000199 ')  
 * Chcete-li najít všechny zaměstnance v prodejním oddělení pomocí e-mailové adresy, která začíná na "a" seřazené v e-mailové adrese, použijte: $filter = (PartitionKey EQ ' email_Sales ') a (RowKey GE ' a ') a (RowKey lt ' b ')  
 
 Všimněte si, že syntaxe filtru použitá v předchozích příkladech je z tabulkového úložiště REST API. Další informace najdete v tématu věnovaném [dotazování entit](/rest/api/storageservices/Query-Entities).  
@@ -700,7 +701,7 @@ $filter = (PartitionKey EQ ' Sales ') a (RowKey GE ' empid_000123 ') a (RowKey l
 #### <a name="issues-and-considerations"></a>Problémy a důležité informace
 Když se budete rozhodovat, jak tento model implementovat, měli byste vzít v úvahu následující skutečnosti:  
 
-* Měli byste použít vhodný oddělovací znak, který usnadňuje analýzu `RowKey` hodnoty: například **000123_2012**.  
+* Měli byste použít vhodný oddělovací znak, který usnadňuje analýzu `RowKey` hodnoty: například **000123_2012** .  
 * Tuto entitu ukládáte i do stejného oddílu jako jiné entity, které obsahují související data pro stejného zaměstnance. To znamená, že můžete pomocí EGTs zachovat silnou konzistenci.
 * Měli byste zvážit, jak často budete zadávat dotazy na data, abyste zjistili, jestli je tento model vhodný. Například pokud ke kontrole dat přistupujete nečasto a hlavním datům zaměstnanců, měli byste je uchovávat jako samostatné entity.  
 

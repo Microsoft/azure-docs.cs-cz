@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475154"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080715"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy pro zvýšení výkonu pro službu Azure Cosmos DB a sadu .NET SDK v2
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -44,14 +45,14 @@ Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského syst�
 
 - U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**  v okně **Vlastnosti projektu** na kartě **sestavení** .
 
-- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test**že  >  v nabídce Test sady Visual Studio vyberete**možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
+- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test** že  >  v nabídce Test sady Visual Studio vyberete **možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
 
-- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty**.
+- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** .
 
 - Pro webové aplikace ASP.NET nasazené v Azure můžete změnit zpracování hostitele tak, že v **nastavení aplikace** v Azure Portal vyberete platformu **64** .
 
 > [!NOTE] 
-> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor**. Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86**. Projekt nastavený na **Libovolný procesor** může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
+> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor** . Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86** . Projekt nastavený na **Libovolný procesor** může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
 > ServiceInterop.dll musí být ve složce, ze které je spuštěna knihovna DLL sady SDK. To by mělo být obavy jenom v případě, že knihovny DLL ručně kopírujete nebo máte vlastní systémy sestavení/nasazení.
     
 **Zapnout uvolňování paměti na straně serveru (GC)**
@@ -135,7 +136,7 @@ Sada SQL .NET SDK 1.9.0 a novější podporuje paralelní dotazy, které umožň
 - `MaxDegreeOfParallelism` Určuje maximální počet oddílů, které lze dotazovat paralelně. 
 - `MaxBufferedItemCount` Určuje počet předběžně načtených výsledků.
 
-**_Stupeň optimalizace paralelismus_*_
+**_Stupeň optimalizace paralelismus_* _
 
 Paralelní dotaz funguje paralelně dotazování na více oddílů. Data z jednotlivého oddílu se ale v souvislosti s dotazem načítají sériově. Nastavení `MaxDegreeOfParallelism` v [sadě SDK v2](sql-api-sdk-dotnet.md) na počet oddílů má největší šanci na dosažení nejvíce výkonného dotazu, za předpokladu, že všechny ostatní systémové podmínky zůstávají stejné. Pokud neznáte počet oddílů, můžete nastavit úroveň paralelismu na vysoké číslo. V systému se jako stupeň paralelismu zvolí minimální počet oddílů, uživatelem zadaný vstup.
 
@@ -147,7 +148,7 @@ Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímc
 
 Předběžné načítání funguje stejným způsobem bez ohledu na stupeň paralelismu a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
 
-_*Implementovat omezení rychlosti v intervalech RetryAfter**
+_ *Implementovat omezení rychlosti v intervalech RetryAfter**
 
 Během testování výkonu byste měli zvýšit zatížení, dokud se neomezí malá míra požadavků. Pokud jsou požadavky omezené, klientská aplikace by se měla v případě intervalu opakování zadaného serverem vypnout na omezovači. Respektování omezení rychlosti zajišťuje minimální dobu čekání mezi opakovanými pokusy. 
 

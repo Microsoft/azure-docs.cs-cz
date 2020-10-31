@@ -9,19 +9,20 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 4e9df3343a89097b192c51d3b9f093805afe6b87
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477347"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079763"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Javy
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět operace CRUD s daty. Vyberte buď Azure Table service, nebo rozhraní API pro tabulky Azure Cosmos DB. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Popsané scénáře zahrnují **vytváření**, **výpis** a **odstraňování** tabulek a také **vkládání**, **dotazování**, **úpravy** a **odstraňování** entit v tabulce. Další informace o tabulkách najdete v části [Další kroky](#next-steps).
+V tomto článku se dozvíte, jak vytvářet tabulky, ukládat data a provádět operace CRUD s daty. Vyberte buď Azure Table service, nebo rozhraní API pro tabulky Azure Cosmos DB. Ukázky jsou napsané v Javě a využívají [sadu SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]. Popsané scénáře zahrnují **vytváření** , **výpis** a **odstraňování** tabulek a také **vkládání** , **dotazování** , **úpravy** a **odstraňování** entit v tabulce. Další informace o tabulkách najdete v části [Další kroky](#next-steps).
 
 > [!NOTE]
 > Sada SDK je k dispozici pro vývojáře používající službu Azure Storage na zařízeních s Androidem. Další informace najdete v tématu [Sada SDK služby Azure Storage pro Android][Azure Storage SDK for Android].
@@ -88,7 +89,7 @@ public static final String storageConnectionString =
     "TableEndpoint=https://your_endpoint;" ;
 ```
 
-V aplikaci spuštěné v rámci role v Azure můžete tento řetězec uložit do konfiguračního souboru služby *ServiceConfiguration.cscfg* a přistupovat k němu voláním metody **RoleEnvironment.getConfigurationSettings**. Tady je příklad získání připojovacího řetězce *StorageConnectionString* z elementu **Settings** (Nastavení) v konfiguračním souboru služby:
+V aplikaci spuštěné v rámci role v Azure můžete tento řetězec uložit do konfiguračního souboru služby *ServiceConfiguration.cscfg* a přistupovat k němu voláním metody **RoleEnvironment.getConfigurationSettings** . Tady je příklad získání připojovacího řetězce *StorageConnectionString* z elementu **Settings** (Nastavení) v konfiguračním souboru služby:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -136,7 +137,7 @@ catch (Exception e)
 
 ## <a name="list-the-tables"></a>Výpis tabulek
 
-Pokud chcete zobrazit seznam tabulek, zavolejte metodu **CloudTableClient.listTables()**, která načte seznam názvů tabulek s možností iterace.
+Pokud chcete zobrazit seznam tabulek, zavolejte metodu **CloudTableClient.listTables()** , která načte seznam názvů tabulek s možností iterace.
 
 ```java
 try
@@ -434,7 +435,7 @@ catch (Exception e)
 
 ## <a name="modify-an-entity"></a>Úprava entity
 
-Pokud chcete entitu upravit, načtěte ji ze služby Table Storage, proveďte změny objektu entity a uložte změny zpět do služby Table Storage pomocí operace nahrazení nebo sloučení. Následující kód změní telefonní číslo stávajícího zákazníka. Místo volání metody **TableOperation.insert**, kterou jsme použili k vložení, volá tento kód metodu **TableOperation.replace**. Metoda **CloudTable.execute** zavolá službu Table Storage a entita se nahradí, pokud ji od načtení touto aplikací nějaká jiná aplikace nezměnila. Pokud k tomu dojde, vyvolá se výjimka a entitu je potřeba znovu načíst, upravit a uložit. Tento vzorec opakování využívající optimistickou souběžnost je běžný v systémech distribuovaného úložiště.
+Pokud chcete entitu upravit, načtěte ji ze služby Table Storage, proveďte změny objektu entity a uložte změny zpět do služby Table Storage pomocí operace nahrazení nebo sloučení. Následující kód změní telefonní číslo stávajícího zákazníka. Místo volání metody **TableOperation.insert** , kterou jsme použili k vložení, volá tento kód metodu **TableOperation.replace** . Metoda **CloudTable.execute** zavolá službu Table Storage a entita se nahradí, pokud ji od načtení touto aplikací nějaká jiná aplikace nezměnila. Pokud k tomu dojde, vyvolá se výjimka a entitu je potřeba znovu načíst, upravit a uložit. Tento vzorec opakování využívající optimistickou souběžnost je běžný v systémech distribuovaného úložiště.
 
 ```java
 try
@@ -518,7 +519,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>Vložení nebo nahrazení entity
 
-Často chcete do tabulky přidat entitu, aniž byste věděli, jestli v ní již neexistuje. Operace INSERT-or-Replace umožňuje vytvořit jeden požadavek, který entitu vloží, pokud neexistuje, nebo nahradit existující entitu, pokud k ní dojde. Následující kód staví na předchozích příkladech a vloží nebo nahradí entitu Walter Harp. Po vytvoření nové entity tento kód zavolá metodu **TableOperation.insertOrReplace**. Tento kód pak zavolá metodu **Execute** pro objekt **cloudové tabulky** s tabulkou a operaci vložení nebo nahrazení tabulky jako parametry. Pokud chcete aktualizovat pouze část entity, můžete místo toho použít metodu **TableOperation.insertOrMerge**. Příkaz INSERT-nebo-Replace není podporován v emulátoru místního úložiště, takže tento kód bude spuštěn pouze při použití účtu ve službě Table Service. Další informace o vložení nebo nahrazení a vložení nebo sloučení najdete v tomto [tabulkách Azure: představení Upsert a projekce dotazů] [tabulky Azure: představení Upsert a projekce dotazů].
+Často chcete do tabulky přidat entitu, aniž byste věděli, jestli v ní již neexistuje. Operace INSERT-or-Replace umožňuje vytvořit jeden požadavek, který entitu vloží, pokud neexistuje, nebo nahradit existující entitu, pokud k ní dojde. Následující kód staví na předchozích příkladech a vloží nebo nahradí entitu Walter Harp. Po vytvoření nové entity tento kód zavolá metodu **TableOperation.insertOrReplace** . Tento kód pak zavolá metodu **Execute** pro objekt **cloudové tabulky** s tabulkou a operaci vložení nebo nahrazení tabulky jako parametry. Pokud chcete aktualizovat pouze část entity, můžete místo toho použít metodu **TableOperation.insertOrMerge** . Příkaz INSERT-nebo-Replace není podporován v emulátoru místního úložiště, takže tento kód bude spuštěn pouze při použití účtu ve službě Table Service. Další informace o vložení nebo nahrazení a vložení nebo sloučení najdete v tomto [tabulkách Azure: představení Upsert a projekce dotazů] [tabulky Azure: představení Upsert a projekce dotazů].
 
 ```java
 try

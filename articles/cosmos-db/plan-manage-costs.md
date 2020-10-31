@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482243"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080698"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Plánování a Správa nákladů na Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Tento článek popisuje, jak můžete plánovat a spravovat náklady na Azure Cosmos DB:
 
@@ -56,7 +57,7 @@ Pokud plánujete používat Azure Cosmos DB v režimu bez serveru, musíte odhad
 > [!IMPORTANT] 
 > Věnujte pozornost komentářům z výše uvedené tabulky. Pro přesnější odhad skutečných nákladů na vaše operace můžete použít [emulátor Azure Cosmos](local-emulator.md) a [měřit přesné náklady na ru za vaše operace](find-request-unit-charge.md). I když emulátor Azure Cosmos nepodporuje bez serveru, oznamuje za databázové operace Standard RU a dá se použít pro tento odhad.
 
-Po vypočítání celkového počtu jednotek žádostí a GB úložiště, které budete pravděpodobně spotřebovávat za měsíc, vrátí následující vzorec odhad nákladů: **([počet jednotek žádosti]/1 000 000 × $0,25) + ([GB úložiště] * $0,25)**.
+Po vypočítání celkového počtu jednotek žádostí a GB úložiště, které budete pravděpodobně spotřebovávat za měsíc, vrátí následující vzorec odhad nákladů: **([počet jednotek žádosti]/1 000 000 × $0,25) + ([GB úložiště] * $0,25)** .
 
 > [!NOTE]
 > Náklady zobrazené v předchozím příkladu jsou pouze pro demonstrační účely. Nejnovější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) .
@@ -87,11 +88,11 @@ Při použití analýzy nákladů můžete zobrazit Azure Cosmos DB náklady v g
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
-1. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů**. V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
+1. Otevřete okno **cost management + fakturace** , v nabídce vyberte možnost **Správa nákladů** a pak vyberte **Analýza nákladů** . V rozevíracím seznamu **Rozsah** pak můžete změnit obor pro konkrétní předplatné.
 
 1. Ve výchozím nastavení jsou náklady na všechny služby zobrazeny v prvním prstenovém grafu. Vyberte oblast v grafu s názvem "Azure Cosmos DB".
 
-1. Chcete-li zúžit náklady na jednu službu, například Azure Cosmos DB, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby**. Pak ze seznamu vyberte **Azure Cosmos DB** . Tady je příklad, který ukazuje náklady jenom pro Azure Cosmos DB:
+1. Chcete-li zúžit náklady na jednu službu, například Azure Cosmos DB, vyberte možnost **Přidat filtr** a potom vyberte možnost **název služby** . Pak ze seznamu vyberte **Azure Cosmos DB** . Tady je příklad, který ukazuje náklady jenom pro Azure Cosmos DB:
  
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Odhad nákladů v programu Kalkulačka kapacity Azure Cosmos DB":::
 

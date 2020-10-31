@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fff9bc55b324875601a2c4e68835a17c61c3769b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014043"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079253"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Diagnostika a řešení potíží Azure Cosmos DB zpráva "moc velká hlavička" žádosti
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 Zpráva "požadavek je příliš velká" se vyvolala s kódem chyby HTTP 400. K této chybě dochází, pokud se velikost hlavičky požadavku zvětšila tak, aby byla větší než maximální povolená velikost. Doporučujeme, abyste používali nejnovější verzi sady SDK. Použijte alespoň verzi 3. x nebo 2. x, protože tyto verze přidávají do zprávy výjimky trasování velikosti hlavičky.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží

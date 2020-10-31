@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627368"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079015"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Řešení potíží s modulem hybridní Azure Active Directory připojená zařízení nižší úrovně 
 
@@ -55,7 +55,7 @@ Tento článek poskytuje pokyny k odstraňování potíží, jak řešit potenci
 
 Tento příkaz zobrazí dialogové okno, které vám poskytne podrobné informace o stavu připojení.
 
-![Workplace Join pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/01.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: vyhodnocení stavu připojení k hybridní službě Azure AD 
 
@@ -65,7 +65,7 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
 
 - Nesprávně nakonfigurované AD FS nebo Azure AD nebo síťové problémy
 
-    ![Workplace Join pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
     
    - Autoworkplace.exe se nemůže tiše ověřit pomocí Azure AD nebo AD FS. Příčinou může být chybějící nebo nesprávně nakonfigurované AD FS (pro federované domény) nebo chybějící nebo nesprávně nakonfigurovaná služba Azure AD bez problémů s jedním Sign-On (u spravovaných domén) nebo problémy se sítí. 
    - Může to být, že pro uživatele je povolený nebo nakonfigurovaný Multi-Factor Authentication (MFA) a WIAORMULTIAUTHN není nakonfigurovaný na serveru AD FS. 
@@ -76,7 +76,7 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
    - Vaše organizace používá bezproblémové jednotné přihlašování Azure AD `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` se nezobrazuje v nastavení intranetu v zařízení pro Internet Explorer a **povoluje aktualizace stavového řádku prostřednictvím skriptu** není pro zónu intranetu povolené.
 - Nejste přihlášení jako uživatel domény.
 
-   ![Workplace Join pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/03.png)
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
 
    Existuje několik různých důvodů, proč k tomu může dojít:
 
@@ -84,11 +84,11 @@ Pokud se zařízení nepřipojilo k hybridní službě Azure AD, můžete se pok
    - Klient se nemůže připojit k řadiči domény.    
 - Byla dosažena kvóta.
 
-    ![Workplace Join pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/04.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
 
 - Služba neodpovídá 
 
-    ![Workplace Join pro Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Snímek obrazovky dialogového okna Workplace Join pro systém Windows. Text, který obsahuje e-mailovou adresu, uvádí, že určité zařízení je připojené k pracovišti." border="false":::
 
 Informace o stavu můžete najít také v protokolu událostí v části **aplikace a služby Log\Microsoft-Workplace JOIN** .
   
@@ -97,7 +97,7 @@ Informace o stavu můžete najít také v protokolu událostí v části **aplik
 - Váš počítač není připojený k interní síti vaší organizace nebo k síti VPN s připojením k místnímu řadiči domény AD.
 - K počítači jste přihlášení pomocí účtu místního počítače. 
 - Problémy s konfigurací služby: 
-   - AD FS server nebyl nakonfigurován pro podporu **WIAORMULTIAUTHN**. 
+   - AD FS server nebyl nakonfigurován pro podporu **WIAORMULTIAUTHN** . 
    - Doménová struktura vašeho počítače nemá žádný objekt spojovacího bodu služby, který odkazuje na váš ověřený název domény ve službě Azure AD. 
    - Nebo pokud je vaše doména spravovaná, pak se bezproblémové jednotné přihlašování nenakonfigurovalo nebo nepracuje.
    - Uživatel dosáhl limitu počtu zařízení. 
