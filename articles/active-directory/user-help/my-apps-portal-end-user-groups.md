@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277475"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124148"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualizace informací o skupinách na portálu moje aplikace
 
@@ -88,7 +88,7 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
     - **Zásady skupiny.** Tuto možnost vyberte, pokud chcete, aby se všichni mohli připojovat ke skupině, nebo jenom vlastníkovi skupiny přidávají členy.
 
-3. Vyberte **Vytvořit**.
+3. Vyberte **Vytvořit** .
 
     Vytvoří se nová skupina s vámi jako vlastník a zobrazí se v seznamu **vlastní skupiny** . Vzhledem k tomu, že jste vlastníkem, tato skupina se zobrazí také v seznamu skupiny, které jsem **v** seznamu.
 
@@ -96,27 +96,27 @@ Pokud vám správce udělil oprávnění k zobrazení dlaždice **skupiny** , m�
 
 Po vytvoření skupiny můžete upravit její podrobnosti, včetně aktualizace jakýchkoli stávajících informací.
 
-1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce * &lt; group_name &gt; * vyberte **Upravit podrobnosti** .
+1. Na stránce **skupiny** vyberte skupinu, kterou chcete upravit, a pak na stránce *&lt; group_name &gt;* vyberte **Upravit podrobnosti** .
 
     Zobrazí se okno **Upravit podrobnosti** , ve kterém můžete aktualizovat informace, které jste přidali při počátečním vytvoření skupiny.
 
-2. Proveďte všechny změny a pak vyberte **aktualizovat**.
+2. Proveďte všechny změny a pak vyberte **aktualizovat** .
 
 ## <a name="add-or-remove-a-member"></a>Přidat nebo odebrat člena
 
 Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
-1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce * &lt; group_name &gt; * .
+1. Vyberte skupinu, do které chcete přidat členy, a pak vyberte **+** na stránce *&lt; group_name &gt;* .
 
     ![Přidat člena skupiny se zvýrazněným znaménkem +](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-2. Vyhledejte člena, kterého chcete přidat, v poli **přidat členy** a pak vyberte **Přidat**.
+2. Vyhledejte člena, kterého chcete přidat, v poli **přidat členy** a pak vyberte **Přidat** .
 
     ![Přidat pole členů s novým členem, který se má přidat](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
     Novému členovi se pošle pozvánka, aby bylo možné začít přistupovat k aplikacím organizace.
 
-3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce * &lt; group_name &gt; * .
+3. Pokud jste člena přidali omylem nebo pokud člen opustil vaši organizaci, můžete člena odebrat výběrem možnosti **odebrat člena** vedle názvu člena na stránce *&lt; group_name &gt;* .
 
     ![Odebrání člena s zvýrazněným odkazem na odebrání](media/my-apps-portal/my-apps-portal-remove-member-link.png)
 
@@ -124,7 +124,7 @@ Můžete přidat nebo odebrat členy pro všechny skupiny, které vlastníte.
 
 Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prodloužit datum vypršení platnosti.
 
-1. Vyberte skupinu Office 365, kterou chcete obnovit, a pak vyberte **obnovit skupinu**.
+1. Vyberte skupinu Office 365, kterou chcete obnovit, a pak vyberte **obnovit skupinu** .
 
     ![Prodloužit platnost skupiny Office 365 a prodloužit datum vypršení platnosti](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
@@ -136,7 +136,7 @@ Pokud to vaše organizace umožňuje, můžete obnovit skupinu Office 365 a prod
 
 Jakékoli vlastní skupiny můžete kdykoli odstranit. Pokud však odstraníte skupinu omylem, budete ji muset vytvořit a znovu přidat členy.
 
-1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce * &lt; Group_name &gt; * vyberte **Odstranit skupinu** .
+1. Vyberte skupinu, kterou chcete trvale odstranit, a pak na stránce *&lt; Group_name &gt;* vyberte **Odstranit skupinu** .
 
     ![Stránka <Group_name> s zvýrazněným odkazem odstranit skupinu](media/my-apps-portal/my-apps-portal-delete-group-link.png)
 
@@ -154,11 +154,11 @@ Existující skupinu můžete ze stránky **skupiny** připojit nebo opustit.
 
     ![Stránka spojení skupin se zvýrazněným tlačítkem připojit ke skupině](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-2. Na stránce **spojovací skupiny** vyberte název skupiny, ke které se chcete připojit, zobrazte podrobnosti přidružené skupiny a pak pokud je skupina k dispozici, vyberte **připojit se ke skupině**.
+2. Na stránce **spojovací skupiny** vyberte název skupiny, ke které se chcete připojit, zobrazte podrobnosti přidružené skupiny a pak pokud je skupina k dispozici, vyberte **připojit se ke skupině** .
 
-    Pokud skupina vyžaduje, aby vlastník skupiny schválil členství, zobrazí se výzva, abyste zadali obchodní odůvodnění, proč se ke skupině potřebujete připojit, a pak vyberte **požadavek**. Pokud skupina nevyžaduje schválení, budete hned přidáni jako člen a skupina se zobrazí ve skupinách, které jsem **v** seznamu.
+    Pokud skupina vyžaduje, aby vlastník skupiny schválil členství, zobrazí se výzva, abyste zadali obchodní odůvodnění, proč se ke skupině potřebujete připojit, a pak vyberte **požadavek** . Pokud skupina nevyžaduje schválení, budete hned přidáni jako člen a skupina se zobrazí ve skupinách, které jsem **v** seznamu.
 
-3. Pokud jste se připojili ke skupině omylem nebo pokud už nemusíte být součástí této skupiny, můžete na stránce **spojovací skupiny** vybrat název skupiny a pak vybrat **opustit skupinu**.
+3. Pokud jste se připojili ke skupině omylem nebo pokud už nemusíte být součástí této skupiny, můžete na stránce **spojovací skupiny** vybrat název skupiny a pak vybrat **opustit skupinu** .
 
     ![Stránka spojit skupiny se zvýrazněným tlačítkem opustit skupinu](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
@@ -166,6 +166,6 @@ Existující skupinu můžete ze stránky **skupiny** připojit nebo opustit.
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](./my-account-portal-settings.md).
 
 - [Proveďte vlastní kontroly přístupu](my-apps-portal-end-user-access-reviews.md).

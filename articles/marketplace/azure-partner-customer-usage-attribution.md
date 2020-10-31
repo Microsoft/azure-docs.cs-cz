@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282349"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125168"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -33,15 +33,18 @@ Označení zákaznického využití podporuje tři možnosti nasazení:
 >- Přidělení zákaznického využití je pro nová nasazení a nepodporuje označení existujících prostředků, které už byly nasazené.
 >
 >- Pro nabídky [aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md) publikované do Azure Marketplace se vyžaduje přidělení zákaznického využití.
+>
+>- Ne všechny služby Azure jsou kompatibilní se zákaznickým využitím. Služba Azure Kubernetes Services (AKS) a VM Scale Sets v současnosti známé problémy, které způsobují v hlášení o využití.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>Vytvořit GUID
 
-Identifikátor GUID je jedinečný referenční identifikátor, který obsahuje 32 hexadecimálních číslic. Chcete-li vytvořit identifikátory GUID pro sledování, měli byste použít generátor GUID. Tým Azure Storage vytvořil [formulář generátoru GUID](https://aka.ms/StoragePartners) , který pošle e-mailem identifikátor GUID správného formátu a bude možné ho znovu použít v různých sledovacích systémech.
+Identifikátor GUID je jedinečný referenční identifikátor, který obsahuje 32 hexadecimálních číslic. Pokud chcete pro sledování vytvořit GUID, měli byste použít generátor GUID, například přes PowerShell.
 
-> [!NOTE]
-> Důrazně doporučujeme, abyste pomocí [formuláře generátoru identifikátoru guid Azure Storage](https://aka.ms/StoragePartners) vytvořili identifikátor GUID. Další informace najdete v našich [nejčastějších dotazech](#faq).
+```powershell
+[guid]::NewGuid()]
+```
 
 Pro každou nabídku a distribuční kanál pro každý produkt doporučujeme vytvořit jedinečný identifikátor GUID. Pokud nechcete, aby vytváření sestav bylo rozděleno, můžete použít jeden identifikátor GUID pro více distribučních kanálů produktu.
 
@@ -67,19 +70,19 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. Zaregistrujte se jako [komerční Vydavatel na webu Marketplace](https://aka.ms/JoinMarketplace).
 
-   * Partneři musí [mít profil v partnerském centru](become-publisher.md). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
+   * Partneři musí [mít profil v partnerském centru](./partner-center-portal/create-account.md). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
    * Partneři můžou registrovat víc identifikátorů GUID.
    * Partneři můžou registrovat GUID pro šablony řešení mimo Marketplace a nabídky.
 
-1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře**.
+1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře** .
 
-1. Na **stránce nastavení účtu**vyberte **Přidat identifikátor GUID sledování.**
+1. Na **stránce nastavení účtu** vyberte **Přidat identifikátor GUID sledování.**
 
 1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte pouze identifikátor GUID bez `pid-` předpony. Do pole **Popis** zadejte název nebo popis vaší nabídky.
 
 1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Uložit** .
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager šablon. Pokud máte šablonu Správce prostředků, která je k dispozici v Azure Marketplace, na GitHubu nebo jako rychlý Start, proces změny šablony tak, aby bylo možné označení zákaznického využívání rovného dopřed.
@@ -97,9 +100,9 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 
 1. Otevřete šablonu Správce prostředků.
 
-1. Přidejte do hlavního souboru šablony nový prostředek typu [Microsoft. Resources/Deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) . Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
+1. Přidejte do hlavního souboru šablony nový prostředek typu [Microsoft. Resources/Deployments](/azure/templates/microsoft.resources/deployments) . Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
-1. Jako název prostředku zadejte hodnotu GUID za `pid-` předponou. Pokud je například identifikátor GUID eb7927c8-dd66-43e1-b0cf-c346a422063, název prostředku bude _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
+1. Jako název prostředku zadejte hodnotu GUID za `pid-` předponou. Pokud je například identifikátor GUID eb7927c8-dd66-43e1-b0cf-c346a422063, název prostředku bude _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ .
 
 1. V šabloně vyhledejte případné chyby.
 
@@ -132,7 +135,7 @@ Prostředek se musí přidat do **mainTemplate.js** nebo **azuredeploy.jsjenom v
 
 ## <a name="use-the-resource-manager-apis"></a>Použití rozhraní API pro Správce prostředků
 
-V některých případech můžete chtít volat přímo proti Správce prostředků rozhraní REST API pro nasazení služeb Azure. [Azure podporuje několik sad SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) , aby tato volání mohla povolit. Můžete použít jednu ze sad SDK nebo volat rozhraní REST API přímo k nasazení prostředků.
+V některých případech můžete chtít volat přímo proti Správce prostředků rozhraní REST API pro nasazení služeb Azure. [Azure podporuje několik sad SDK](../index.yml?pivot=sdkstools) , aby tato volání mohla povolit. Můžete použít jednu ze sad SDK nebo volat rozhraní REST API přímo k nasazení prostředků.
 
 Pokud používáte šablonu Správce prostředků, měli byste označit své řešení podle pokynů popsaných výše. Pokud nepoužíváte šablonu Správce prostředků a provádíte Přímá volání rozhraní API, můžete si i nadále označit nasazení, aby bylo možné přidružit využití prostředků Azure.
 
@@ -156,7 +159,7 @@ Pro Python použijte atribut **config** . Atribut lze přidat pouze k vlastnosti
 
 #### <a name="example-the-net-sdk"></a>Příklad: sada .NET SDK
 
-V případě .NET nezapomeňte nastavit agenta pro uživatele. Knihovna [Microsoft. Azure. Management. Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) se dá použít k nastavení uživatelského agenta s následujícím kódem (příklad v jazyce C#):
+V případě .NET nezapomeňte nastavit agenta pro uživatele. Knihovna [Microsoft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) se dá použít k nastavení uživatelského agenta s následujícím kódem (příklad v jazyce C#):
 
 ```csharp
 
@@ -183,7 +186,7 @@ Když k připojení svého GUID použijete rozhraní příkazového řádku Azur
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Další informace najdete v tématu [Azure SDK pro go](https://docs.microsoft.com/azure/developer/go/).
+Další informace najdete v tématu [Azure SDK pro go](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Použití Terraformu
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7084458d8d3fbae45819fc29daa502423c919bbf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490641"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101608"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Kurz: Použití nástroje pro migraci dat k migraci dat do Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento kurz obsahuje pokyny k použití nástroje pro migraci dat do služby Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kontejnerů a tabulek Azure Cosmos. Můžete importovat ze souborů JSON, CSV, SQL, MongoDB, služby Azure Table Storage, Amazon DynamoDB a dokonce i z kolekcí rozhraní SQL API služby Azure Cosmos DB. Pro použití se službou Azure Cosmos DB tato data migrujete do kolekcí a tabulek. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
 
@@ -99,7 +100,7 @@ Připojovací řetězec je v následujícím formátu:
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * `<CosmosDB Endpoint>`Je identifikátor URI koncového bodu. Tuto hodnotu můžete získat z Azure Portal. Přejděte k účtu Azure Cosmos. Otevřete podokno **Přehled** a zkopírujte hodnotu **identifikátoru URI** .
-* `<AccountKey>`Je to heslo nebo **primární klíč**. Tuto hodnotu můžete získat z Azure Portal. Přejděte k účtu Azure Cosmos. Otevřete podokno **připojovací řetězce** nebo **klíče** a zkopírujte hodnotu "heslo" nebo **primární klíč** .
+* `<AccountKey>`Je to heslo nebo **primární klíč** . Tuto hodnotu můžete získat z Azure Portal. Přejděte k účtu Azure Cosmos. Otevřete podokno **připojovací řetězce** nebo **klíče** a zkopírujte hodnotu "heslo" nebo **primární klíč** .
 * `<CosmosDB Database>`Je název databáze CosmosDB.
 
 Příklad: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -375,7 +376,7 @@ Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze str�
 > [!NOTE]
 > Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 
-Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do více než jedné kolekce, buď zadejte jednotlivé názvy kolekcí jednotlivě, nebo použijte následující syntaxi k určení více než jedné kolekce: *collection_prefix*[začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
+Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do více než jedné kolekce, buď zadejte jednotlivé názvy kolekcí jednotlivě, nebo použijte následující syntaxi k určení více než jedné kolekce: *collection_prefix* [začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
@@ -434,7 +435,7 @@ Připojovací řetězec pro účet Azure Cosmos DB můžete načíst ze stránky
 > [!NOTE]
 > Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 
-Chcete-li importovat do jedné kolekce, zadejte název kolekce, do které chcete importovat data, a poté klikněte na tlačítko Přidat. Chcete-li importovat do více než jedné kolekce, zadejte jednotlivé názvy kolekcí jednotlivě. K určení více než jedné kolekce můžete použít také následující syntaxi: *collection_prefix*[začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
+Chcete-li importovat do jedné kolekce, zadejte název kolekce, do které chcete importovat data, a poté klikněte na tlačítko Přidat. Chcete-li importovat do více než jedné kolekce, zadejte jednotlivé názvy kolekcí jednotlivě. K určení více než jedné kolekce můžete použít také následující syntaxi: *collection_prefix* [začátek indexu-end index]. Při zadávání více než jedné kolekce pomocí zmíněné syntaxe mějte na paměti následující pokyny:
 
 1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
 2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.

@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 3aa8d691eb62b94c5784d8a6efc35b53a3762d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad00d60c5a1b75e200b49b0cdcf0d396012a5f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294114"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101948"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků do rozhraní API pro automatické návrhy Bingu.
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhledávání Bingu, můžete pomocí rozhraní API pro automatické návrhy Bingu vylepšit možnosti vyhledávání vašich uživatelů. Rozhraní API pro automatické návrhy Bingu vrátí seznam navrhovaných dotazů na základě částečného řetězce dotazu ve vyhledávacím poli. Do vyhledávacího pole ve vaší aplikaci se jako znaky zadávají v rozevíracím seznamu, kde můžete zobrazit návrhy. V tomto článku se dozvíte víc o odesílání požadavků do tohoto rozhraní API. 
 
@@ -35,7 +40,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 Podrobnosti o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách atd. naleznete v tématu [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) reference.
 
-Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu.Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON.
+Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu. Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON.
 Všechny koncové body podporují dotazy, které vracejí konkrétní jazyk a umístění podle délky, zeměpisné šířky a poloměru hledání.
 
 Úplné informace o parametrech podporovaných každým koncovým bodem naleznete na referenčních stránkách pro každý typ.
@@ -88,7 +93,7 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 
 Požadavky by měly zahrnovat všechny navrhované parametry dotazu a hlavičky. 
 
-Následující příklad ukazuje požadavek, který vrací navrhované řetězce dotazu pro *sail*.
+Následující příklad ukazuje požadavek, který vrací navrhované řetězce dotazu pro *sail* .
 
 > ```http
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1

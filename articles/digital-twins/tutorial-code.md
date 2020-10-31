@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 47b7eaacc8aba3655223eb1f0cde4a5516e370fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9ccde8ea5453e3e553a020707ecde6e60f29b3dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091595"
+ms.locfileid: "93124709"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -33,7 +33,9 @@ Co je potřeba začít:
 * Jakýkoli Editor kódu
 * **.NET Core 3,1** na vašem vývojovém počítači. Tuto verzi .NET Core SDK můžete stáhnout pro více platforem od [stažení .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 
-[!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
+### <a name="prepare-an-azure-digital-twins-instance"></a>Příprava instance digitálních vláken Azure
+
+[!INCLUDE [Azure Digital Twins: instance prereq](../../includes/digital-twins-prereq-instance.md)]
 
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
@@ -260,7 +262,7 @@ Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obsluž
 
 Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken** použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
-Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview).
+Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true).
 
 ```csharp
 using System.Text.Json;

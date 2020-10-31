@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8074b2411a053c8b55457f9ace716481f6b107a5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79220300"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102220"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Hledání videí pomocí rozhraní API Bingu pro vyhledávání videí
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API Bingu pro vyhledávání videí usnadňuje integraci funkcí vyhledávání zpráv Bingu ve vašich aplikacích. I když rozhraní API primárně najde a vrátí relevantní videa z webu, nabízí několik funkcí pro inteligentní a cílené načítání videí na webu.
 
@@ -144,9 +149,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Rozšíření dotazu
 
-Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů*, rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země**, **Stroj na** čištění okapů a **snadné** čištění okapů.
+Pokud Bing dokáže rozšířením dotazu zúžit původní hledání, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `queryExpansions`. Například, pokud byl původní dotaz *čištění okapů* , rozšířené dotazy můžou být: **nástroje na** čištění okapů, čištění okapů **ze země** , **Stroj na** čištění okapů a **snadné** čištění okapů.
 
-Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů*.
+Následující příklad ukazuje rozšířené dotazy pro dotaz *čištění okapů* .
 
 ```json
 {
@@ -175,9 +180,9 @@ Pole `queryExpansions` obsahuje seznam objektů [Query](https://docs.microsoft.c
 
 ## <a name="pivoting-the-query"></a>Rozdělení dotazu na pivoty
 
-Pokud Bing dokáže segmentovat původní vyhledávací dotaz, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `pivotSuggestions`. Pokud byl původní dotaz například *čištění okapů*, může ho Bing segmentovat na *čištění* a *okapů*.
+Pokud Bing dokáže segmentovat původní vyhledávací dotaz, bude objekt [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) obsahovat pole `pivotSuggestions`. Pokud byl původní dotaz například *čištění okapů* , může ho Bing segmentovat na *čištění* a *okapů* .
 
-Následující příklad ukazuje návrhy pivotů pro dotaz *čištění okapů*.
+Následující příklad ukazuje návrhy pivotů pro dotaz *čištění okapů* .
 
 ```json
 {

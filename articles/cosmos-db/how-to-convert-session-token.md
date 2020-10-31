@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490437"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101659"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Převod formátů tokenů relací v sadě .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Tento článek vysvětluje, jak převádět mezi různými formáty tokenů relace, aby se zajistila kompatibilita mezi verzemi SDK.
 
@@ -26,7 +27,7 @@ Tento článek vysvětluje, jak převádět mezi různými formáty tokenů rela
 
 ## <a name="session-token-formats"></a>Formáty tokenů relace
 
-Existují dva formáty tokenů relace: **jednoduchý** a **vektorový**.  Tyto dva formáty nejsou zaměnitelné, takže při předávání do klientské aplikace s různými verzemi by měl být tento formát převeden.
+Existují dva formáty tokenů relace: **jednoduchý** a **vektorový** .  Tyto dva formáty nejsou zaměnitelné, takže při předávání do klientské aplikace s různými verzemi by měl být tento formát převeden.
 - Rozhraní .NET SDK V1 používá k použití **jednoduchého** formátu tokenu relace (Microsoft.Azure.DocumentDB verze 1. x).
 - Formát tokenu **vektorové** relace používá sada .NET SDK V2 (Microsoft.Azure.DocumentDB verze 2. x).
 

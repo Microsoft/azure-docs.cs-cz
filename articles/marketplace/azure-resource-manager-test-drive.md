@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125134"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager testovacích jednotek
 
 Tento typ použijte, pokud máte nabídku Azure Marketplace nebo AppSource, ale chcete vytvořit testovací jednotku s pouze prostředky Azure. Šablona Azure Resource Manager (ARM) je kódovaný kontejner prostředků Azure, který navrhujete, aby nejlépe představoval vaše řešení. Test Drive vezme zadanou šablonu ARM a nasadí všechny prostředky, které vyžaduje, do skupiny prostředků. Toto je jediná možnost testovacího disku pro virtuální počítač nebo nabídky aplikací Azure.
 
-Pokud nejste obeznámeni s tím, co je šablona ARM, přečtěte si téma [co je Azure Resource Manager?](../azure-resource-manager/resource-group-overview.md) a [Pochopte strukturu a syntaxi šablon ARM](../azure-resource-manager/resource-group-authoring-templates.md) , abyste lépe pochopili, jak vytvářet a testovat vlastní šablony.
+Pokud nejste obeznámeni s tím, co je šablona ARM, přečtěte si téma [co je Azure Resource Manager?](../azure-resource-manager/management/overview.md) a [Pochopte strukturu a syntaxi šablon ARM](../azure-resource-manager/templates/template-syntax.md) , abyste lépe pochopili, jak vytvářet a testovat vlastní šablony.
 
 Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete v tématu [co je testovací jednotka?](what-is-test-drive.md)
 
@@ -34,7 +34,7 @@ Informace o **hostované** nebo testovací jednotce **Aplikace logiky** najdete 
 
   - **Studená** – tento typ instance představuje celkový počet instancí, které mohou být nasazeny v jednotlivých oblastech. Studené instance vyžadují pro nasazení celé testovací jednotky Správce prostředků šablonu, když zákazník požádá o testovací verzi, takže *studené* instance budou mnohem pomalejší, než se dosadí *za horké* instance. Kompromisy je, že je nutné platit jenom za dobu trvání testovacích jednotek *, ale v* předplatném Azure není vždycky spuštěná jako s *horkou* instancí.
 
-- **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+- **Test drive Azure Resource Manager šablona** – nahrajte soubor. zip obsahující šablonu Azure Resource Manager. Další informace o vytvoření šablony Azure Resource Manager v článku rychlý Start [vytváření a nasazování Azure Resource Manager šablon pomocí Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
     > [!note]
     > Pro úspěšné publikování je důležité ověřit formátování šablony ARM. Existují dva způsoby, jak to provést (1) pomocí [Nástroje pro online rozhraní API](https://docs.microsoft.com/rest/api/resources/deployments/validate) nebo (2) s [testovacím nasazením](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal).
@@ -73,12 +73,12 @@ Pro parametry můžete použít libovolný platný název; testovací jednotka r
 
 ### <a name="accepted-parameter-metadata-types"></a>Přijaté typy metadat parametrů
 
-| Typ metadat   | Typ parametru  | Popis     | Ukázková hodnota    |
+| Typ metadat   | Typ parametru  | Description     | Ukázková hodnota    |
 |---|---|---|---|
-| **identifikátor**     | string          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **jmen**    | string          | Nové náhodné uživatelské jméno.| admin68876      |
+| **identifikátor**     | řetězec          | Základní identifikátor URI balíčku pro nasazení| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **jmen**    | řetězec          | Nové náhodné uživatelské jméno.| admin68876      |
 | **heslo**    | zabezpečený řetězec    | Nové náhodné heslo | LP! ACS \^ 2kH     |
-| **ID relace**   | string          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **ID relace**   | řetězec          | Jedinečný identifikátor relace testovacích jednotek (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>identifikátor
 
@@ -348,7 +348,7 @@ Teď, když jsou všechna vaše pole testovacích jednotek dokončená, **znovu 
 1. V Azure Portal otevřete své předplatné Azure.
 1. Ověřte, zda je správně nasazování testovacích jednotek.
 
-   ![Azure Portal](media/test-drive/azure-portal.png)
+   ![portál Azure](media/test-drive/azure-portal.png)
 
 Neodstraňujte žádné instance testovacích jednotek zřízené pro vaše zákazníky. Služba Test Drive po dokončení práce s ní automaticky vyčistí tyto skupiny prostředků.
 

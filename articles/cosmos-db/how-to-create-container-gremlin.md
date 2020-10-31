@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 55dabccf5a5ab9e81ff0644056002f3beb644fa9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7e9de1f23ec46af08fe96b5db3170fac9a7eb2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491151"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101625"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-gremlin-api"></a>Vytvoření kontejneru v rozhraní Azure Cosmos DB Gremlin API
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Tento článek popisuje různé způsoby, jak vytvořit kontejner v rozhraní Azure Cosmos DB Gremlin API. Ukazuje, jak vytvořit kontejner pomocí Azure Portal, Azure CLI, PowerShellu nebo podporovaných sad SDK. Tento článek ukazuje, jak vytvořit kontejner, zadat klíč oddílu a zajistit propustnost.
 
@@ -30,14 +31,14 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner v rozhraní Az
 
 1. [Vytvořte nový účet Azure Cosmos](create-graph-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte **Nový graf**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte **Nový graf** . Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte novou databázi, nebo použijte existující.
    * Zadejte ID grafu.
    * Vyberte **neomezenou** kapacitu úložiště.
    * Zadejte klíč oddílu pro vrcholy.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Snímek obrazovky s rozhraním API Gremlin, dialogové okno Přidat graf":::
 

@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1ac0033b7ed2de90ece481cd02d64970ff5f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85608105"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123060"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Řešení potíží: Chybějící data v protokolech aktivit Azure Active Directory 
 
@@ -32,7 +32,7 @@ ms.locfileid: "85608105"
 
 Provedl jsem nějaké akce na webu Azure Portal a očekával jsem pro tyto akce zobrazení protokolu auditu v okně `Activity logs > Audit Logs`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/01.png)
+ ![Snímek obrazovky se zobrazí položky protokolu auditu.](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -53,7 +53,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Nedávno jsem se přihlásil/a k webu Azure Portal a očekával/a jsem, že se pro tyto akce zobrazí protokoly přihlášení v okně `Activity logs > Sign-ins`, ale nemůžu je najít.
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/02.png)
+ ![Snímek obrazovky ukazuje přihlášení v protokolu aktivit.](./media/troubleshoot-missing-audit-data/02.png)
  
 ### <a name="cause"></a>Příčina
 
@@ -74,7 +74,7 @@ Počkejte 15 minut až dvě hodiny a pak se podívejte, jestli se akce v protoko
 
 Na webu Azure Portal nemůžu zobrazit data přihlášení a auditu za více než 30 dnů. Proč? 
 
- ![Generování sestav](./media/troubleshoot-missing-audit-data/03.png)
+ ![Snímek obrazovky se zobrazí v nabídce datum.](./media/troubleshoot-missing-audit-data/03.png)
 
 ### <a name="cause"></a>Příčina
 

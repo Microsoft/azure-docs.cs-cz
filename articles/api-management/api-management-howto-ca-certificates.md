@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102033"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Postup přidání vlastního certifikátu certifikační autority do Azure API Management
 
@@ -39,17 +39,17 @@ Pomocí následujícího postupu Nahrajte nový certifikát certifikační autor
 
 2. Z nabídky vyberte **certifikáty certifikační autority** .
 
-3. Klikněte na tlačítko **+Přidat**.  
+3. Klikněte na tlačítko **+Přidat** .  
 
-    ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/01.png)  
+    ![Snímek obrazovky, který zobrazuje tlačítko + Přidat pro přidání certifikátu certifikační autority](media/api-management-howto-ca-certificates/01.png)  
 
 4. Vyhledejte certifikát a rozhodněte se v úložišti certifikátů. Je potřeba jenom veřejný klíč, takže se heslo nepožaduje.
 
-    ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/02.png)  
+    ![Snímek obrazovky, který ukazuje, jak vyhledat certifikát.](media/api-management-howto-ca-certificates/02.png)  
 
-5. Klikněte na **Uložit**. Tato operace může trvat několik minut.
+5. Klikněte na **Uložit** . Tato operace může trvat několik minut.
 
-    ![Přidání certifikátů certifikační autority](media/api-management-howto-ca-certificates/03.png)  
+    ![Snímek obrazovky, který ukazuje, jak certifikát Uložit.](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
 > Certifikát certifikační autority můžete nahrát pomocí `New-AzApiManagementSystemCertificate` příkazu PowerShellu.

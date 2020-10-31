@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: d2fe8445d41f88852c6c9d4db84f4e1b03183a2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015528"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124403"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -40,7 +40,7 @@ Určete *toleranci* latence pro vaši úlohu Stream Analytics. Zvýšením velik
 
 Zvýšení velikosti dávky umožní úloze Stream Analytics zpracovávat **Další události** se **stejným počtem** požadavků webové služby Studio (Classic). Zvýšení latence webové služby Studio (Classic) je obvykle lineárně lineární na zvýšení velikosti dávky. 
 
-V každé konkrétní situaci je důležité vzít v úvahu největší cenově efektivní velikost dávky pro webovou službu studia (Classic). Výchozí velikost dávky pro žádosti webové služby je 1000. Tuto výchozí velikost můžete změnit pomocí [REST API Stream Analytics](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Rozhraní REST API služby Stream Analytics") nebo [klienta powershellu pro Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md).
+V každé konkrétní situaci je důležité vzít v úvahu největší cenově efektivní velikost dávky pro webovou službu studia (Classic). Výchozí velikost dávky pro žádosti webové služby je 1000. Tuto výchozí velikost můžete změnit pomocí [REST API Stream Analytics](/previous-versions/azure/mt653706(v=azure.100) "Rozhraní REST API služby Stream Analytics") nebo [klienta powershellu pro Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md).
 
 Jakmile se rozhodnete pro velikost dávky, můžete nastavit počet jednotek streamování (SUs) na základě počtu událostí, které funkce musí zpracovat za sekundu. Další informace o jednotkách streamování najdete v tématu [Stream Analytics škálování úloh](stream-analytics-scale-jobs.md).
 
@@ -52,7 +52,7 @@ Aby bylo možné zpracovat události 200 000 za sekundu, Stream Analytics úlohy
 
 ![Stream Analytics škály s funkcemi studia (klasické) – příklad dvou úloh](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Stream Analytics škály s funkcemi studia (klasické) – příklad dvou úloh")
 
-Obecně platí, že ***b*** pro velikost dávky, ***L*** pro latenci webové služby ve velikosti dávky B v milisekundách, propustnost Stream Analytics úlohy s ***N*** službami SUs:
+Obecně platí, že * *_B_* _ pro velikost dávky, _*_L_*_ pro latenci webové služby ve velikosti dávky B v milisekundách, propustnost Stream Analytics úlohy s _*_N_*_ službami SUs:
 
 ![Škálování Stream Analytics se vzorcem funkcí studia (Classic)](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Škálování Stream Analytics se vzorcem funkcí studia (Classic)")
 
@@ -63,7 +63,7 @@ Další informace o tomto nastavení najdete v článku o [škálování pro web
 ## <a name="example--sentiment-analysis"></a>Příklad – Analýza mínění
 Následující příklad obsahuje úlohu Stream Analytics pomocí funkce mínění Analysis Studio (Classic), jak je popsáno v [kurzu integrace Stream Analytics Machine Learning Studio (Classic)](stream-analytics-machine-learning-integration-tutorial.md).
 
-Dotaz je jednoduchý plně rozdělený dotaz následovaný funkcí **mínění** , jak je znázorněno v následujícím příkladu:
+Dotaz je jednoduchý plně rozdělený dotaz následovaný funkcí _ *mínění* *, jak je znázorněno v následujícím příkladu:
 
 ```SQL
     WITH subquery AS (
@@ -88,7 +88,7 @@ Pokud se míra vstupních událostí zvyšuje o 1 – ROM, úloha Stream Analyti
 
 Při první možnosti se zvyšuje **latence** úlohy.
 
-Po druhé možnosti bude nutné zřídit více služeb SUs, aby měly více souběžných žádostí o webovou službu Studio (Classic). Tento větší počet služby SUs zvyšuje **náklady**na úlohu.
+Po druhé možnosti bude nutné zřídit více služeb SUs, aby měly více souběžných žádostí o webovou službu Studio (Classic). Tento větší počet služby SUs zvyšuje **náklady** na úlohu.
 
 Pojďme se podívat na měřítko s využitím následujících měření latence pro každou velikost dávky:
 
@@ -99,7 +99,7 @@ Pojďme se podívat na měřítko s využitím následujících měření latenc
 | 300 MS | 10 000 – dávky událostí |
 | 500 ms | 25 000 – dávky událostí |
 
-1. Pomocí první**Možnosti (** nezřizování služby SUs). Velikost dávky se dá zvýšit na **25 000**. Zvýšení velikosti dávky tímto způsobem umožní úloze zpracovávat 1 000 000 události s 20 souběžnými připojeními k webové službě studia (Classic) (s latencí 500 ms na volání). Proto se další latence Stream Analytics úlohy z důvodu požadavků funkce mínění proti žádostem o webovou službu Studio (Classic) zvýšila z **200 MS** na **500 ms**. Velikost dávky se ale **nedá** navýšit nekonečně, protože webové služby studia (Classic) vyžadují, aby velikost datové části žádosti byla 4 MB nebo menší, a po 100 sekundách operace vypršel časový limit požadavků webové služby.
+1. Pomocí první **Možnosti (** nezřizování služby SUs). Velikost dávky se dá zvýšit na **25 000** . Zvýšení velikosti dávky tímto způsobem umožní úloze zpracovávat 1 000 000 události s 20 souběžnými připojeními k webové službě studia (Classic) (s latencí 500 ms na volání). Proto se další latence Stream Analytics úlohy z důvodu požadavků funkce mínění proti žádostem o webovou službu Studio (Classic) zvýšila z **200 MS** na **500 ms** . Velikost dávky se ale **nedá** navýšit nekonečně, protože webové služby studia (Classic) vyžadují, aby velikost datové části žádosti byla 4 MB nebo menší, a po 100 sekundách operace vypršel časový limit požadavků webové služby.
 1. Při použití druhé možnosti je velikost dávky ponechána v 1000, s latencí webové služby 200-ms, každých 20 souběžných připojení k webové službě by bylo možné zpracovat 1000 × 20 * 5 událostí = 100 000 za sekundu. Aby bylo možné zpracovávat 1 000 000 událostí za sekundu, úloha by potřebovala 60 SUs. V porovnání s první možností by služba Stream Analytics Job prováděla více požadavků na dávku webových služeb a zároveň vygenerovala zvýšené náklady.
 
 Níže je tabulka propustnosti Stream Analytics úlohy pro různé velikosti služby SUs a dávky (v počtu událostí za sekundu).
@@ -120,17 +120,17 @@ Teď byste měli mít dobrou představu o tom, jak funkce studia (Classic) v Str
 Velikost dávky, kterou nastavíme pro funkce studia (Classic), se běžně neprojeví na základě počtu událostí vrácených jednotlivými Stream Analytics úlohou "pull". Pokud k tomu dojde, Webová služba Studio (Classic) se zavolá s "částečnými" dávkami. Použití částečných dávek zabraňuje dalšímu zvýšení režijních nákladů úlohy v slučovacích událostech z akce Pull na vyžádání.
 
 ## <a name="new-function-related-monitoring-metrics"></a>Nové metriky monitorování související s funkcí
-V oblasti monitorování Stream Analytics úlohy byly přidány tři metriky související s funkcí. Jsou to **žádosti o funkce**, **události funkcí** a **neúspěšné žádosti o funkce**, jak je znázorněno na obrázku níže.
+V oblasti monitorování Stream Analytics úlohy byly přidány tři metriky související s funkcí. Jsou to **žádosti o funkce** , **události funkcí** a **neúspěšné žádosti o funkce** , jak je znázorněno na obrázku níže.
 
 ![Škálování Stream Analytics s využitím metriky funkcí studia (Classic)](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Škálování Stream Analytics s využitím metriky funkcí studia (Classic)")
 
 Jsou definovány následujícím způsobem:
 
-**Požadavky na funkce**: počet žádostí o funkce.
+**Požadavky na funkce** : počet žádostí o funkce.
 
-**Události funkcí**: počet událostí v požadavcích funkce.
+**Události funkcí** : počet událostí v požadavcích funkce.
 
-**Neúspěšné požadavky na funkce**: počet neúspěšných žádostí o funkce.
+**Neúspěšné požadavky na funkce** : počet neúspěšných žádostí o funkce.
 
 ## <a name="key-takeaways"></a>Key poznatky
 
@@ -140,12 +140,12 @@ Pokud chcete škálovat úlohu Stream Analytics pomocí funkcí studia (Classic)
 2. Tolerováná latence pro spuštěnou úlohu Stream Analytics (a tedy velikost dávky požadavků webové služby Studio (Classic)).
 3. Zřízená služba Stream Analytics SUs a počet požadavků webové služby Studio (Classic) (další náklady související s funkcí).
 
-Jako příklad se použil plně rozdělený Stream Analytics dotaz. Pokud je potřeba složitější dotaz, je [stránka Microsoft Q&otázka pro Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) skvělým prostředkem pro získání další užitečné informace od týmu Stream Analytics.
+Jako příklad se použil plně rozdělený Stream Analytics dotaz. Pokud je potřeba složitější dotaz, je [stránka Microsoft Q&otázka pro Azure Stream Analytics](/answers/topics/azure-stream-analytics.html) skvělým prostředkem pro získání další užitečné informace od týmu Stream Analytics.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Stream Analytics najdete v těchto tématech:
 
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935201"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123163"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Průběžná integrace a nasazování (CI/CD) pro Azure Stream Analytics
 
@@ -27,7 +27,7 @@ Při vytváření kanálu CI/CD pro Stream Analytics postupujte podle pokynů v 
 
 1. Vytvořte dotaz Azure Stream Analytics.
 
-   K [vývoji a testování dotazů lokálně](develop-locally.md)použijte Azure Stream Analytics nástroje pro [Visual Studio Code](quick-create-vs-code.md) nebo [Visual Studio](stream-analytics-quick-create-vs.md) . [Existující úlohu](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) můžete také exportovat do místního projektu.
+   K [vývoji a testování dotazů lokálně](develop-locally.md)použijte Azure Stream Analytics nástroje pro [Visual Studio Code](./quick-create-visual-studio-code.md) nebo [Visual Studio](stream-analytics-quick-create-vs.md) . [Existující úlohu](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) můžete také exportovat do místního projektu.
 
 2. Potvrďte své Azure Stream Analytics projekty do systému správy zdrojového kódu, jako je úložiště Git.
 

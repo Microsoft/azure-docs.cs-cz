@@ -11,14 +11,19 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: d5dc762499342f0004073fb6c240c98c4ac2bc09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334561"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102200"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
+
+> [!WARNING]
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
 
 Rozhraní API pro vizuální vyhledávání Bingu vám umožňuje hledat na webu obrázky podobné těm, které nahráváte. Pomocí tohoto kurzu můžete vytvořit webovou aplikaci, která může odeslat obrázek do rozhraní API a zobrazit přehledy, které vrátí na webové stránce. Všimněte si, že tato aplikace není v souladu se všemi [požadavky na použití a zobrazení Bingu](../bing-web-search/use-display-requirements.md) pro použití rozhraní API.
 

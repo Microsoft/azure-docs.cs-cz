@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044375"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123706"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -42,7 +42,7 @@ Mezery v časové řadě můžou být výsledkem modelu, který nepřijímá ud�
 
 ## <a name="spike-and-dip"></a>Špička a DIP
 
-Dočasné anomálie v datovém proudu událostí časové řady se označují jako špičky a DIP. Špičky a DIP lze monitorovat pomocí operátoru založeného na Machine Learning [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+Dočasné anomálie v datovém proudu událostí časové řady se označují jako špičky a DIP. Špičky a DIP lze monitorovat pomocí operátoru založeného na Machine Learning [AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ).
 
 ![Příklad anomálií špičky a DIP](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +74,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Změnit bod
 
-Trvalé anomálie v datovém proudu událostí v časové řadě jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou například změny úrovně a trendy. V Stream Analytics se tyto anomálie zjišťují pomocí operátoru [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) založeného na Machine Learning.
+Trvalé anomálie v datovém proudu událostí v časové řadě jsou změny v distribuci hodnot v datovém proudu událostí, jako jsou například změny úrovně a trendy. V Stream Analytics se tyto anomálie zjišťují pomocí operátoru [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) založeného na Machine Learning.
 
 Trvalé změny jsou poslední mnohem delší než špičky a DIP a můžou označovat závažné události. Trvalé změny nejsou obvykle viditelné pro holé oči, ale lze je zjistit pomocí operátoru **AnomalyDetection_ChangePoint** .
 
@@ -114,9 +114,9 @@ FROM AnomalyDetectionStep
 
 Výkon těchto modelů závisí na velikosti historie, trvání okna, zatížení události a na tom, zda je použito dělení na úrovni funkcí. Tato část pojednává o těchto konfiguracích a obsahuje ukázky, jak tolerovat rychlosti přijímání 1 tisíc, 5K a 10 000 událostí za sekundu.
 
-* **Velikost historie** – tyto modely fungují lineárně s **velikostí historie**. Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
+* **Velikost historie** – tyto modely fungují lineárně s **velikostí historie** . Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
 * **Doba trvání okna** – **Doba trvání okna** by měla odrážet, jak dlouho trvá přijímání tolika událostí, kolik je určeno velikostí historie. Bez tohoto počtu událostí v okně Azure Stream Analytics by nedošlo ke imputaci chybějících hodnot. Proto je spotřeba procesoru funkcí velikosti historie.
-* **Zatížení událostí** – větší **zatížení události**, více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
+* **Zatížení událostí** – větší **zatížení události** , více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
 * Dělení na úrovni **funkcí**  -  **Dělení na úrovni funkcí** se provádí pomocí ```PARTITION BY``` volání funkce detekce anomálií. Tento typ dělení přináší režii, protože stav musí být udržován pro více modelů současně. Dělení na úrovni funkcí se používá ve scénářích, jako je vytváření oddílů na úrovni zařízení.
 
 ### <a name="relationship"></a>Relace
@@ -152,13 +152,12 @@ Vzorový kód pro spuštění výše uvedených konfigurací, které nejsou rozd
 > Pokud chcete přesnější odhad, přizpůsobte si ukázky podle svého scénáře.
 
 ### <a name="identifying-bottlenecks"></a>Identifikace kritických bodů
-Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
+Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU** .
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

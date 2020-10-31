@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c169f10ac0444f5bca67d76e8e8ebc0f0b145ee1
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495915"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124237"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Připojení aplikací Azure Functions pro zpracování dat
 
@@ -30,17 +30,21 @@ Tady je přehled kroků, které obsahuje:
 4. Publikování aplikace Function App do Azure
 5. Nastavení přístupu [zabezpečení](concepts-security.md) pro aplikaci Azure Function App
 
+## <a name="prerequisite-set-up-azure-digital-twins-instance"></a>Předpoklad: nastavení instance digitálních vláken Azure
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
 ## <a name="create-an-azure-functions-app-in-visual-studio"></a>Vytvoření aplikace Azure Functions v aplikaci Visual Studio
 
-V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte šablonu _Azure Functions_ vyberte možnost _Další_.
+V aplikaci Visual Studio 2019 vyberte _soubor > nový > projekt_ a vyhledejte šablonu _Azure Functions_ vyberte možnost _Další_ .
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-Zadejte název aplikace Function App a vyberte _vytvořit_.
+Zadejte název aplikace Function App a vyberte _vytvořit_ .
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-Vyberte typ *triggeru* function App Event Grid a vyberte _vytvořit_.
+Vyberte typ *triggeru* function App Event Grid a vyberte _vytvořit_ .
 
 :::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
@@ -155,14 +159,14 @@ namespace adtIngestFunctionSample
 
 ## <a name="publish-the-function-app-to-azure"></a>Publikování aplikace Function App do Azure
 
-Pokud chcete publikovat aplikaci Function App do Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat**.
+Pokud chcete publikovat aplikaci Function App do Azure, klikněte pravým tlačítkem na projekt funkce (ne řešení) v Průzkumník řešení a zvolte **publikovat** .
 
 > [!IMPORTANT] 
 > Publikování funkce Azure Functions bude mít za následek další poplatky na vaše předplatné, nezávisle na digitálních událostech Azure.
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
-Jako cíl publikování vyberte **Azure** a pak vyberte **Další**.
+Jako cíl publikování vyberte **Azure** a pak vyberte **Další** .
 
 :::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
@@ -205,7 +209,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 Nakonec můžete nastavit proměnnou prostředí tak, aby se adresa URL instance digitálního vlákna Azure pro vaši funkci přístupná. Další informace o nastavení proměnných prostředí naleznete v tématu [*proměnné prostředí*](/sandbox/functions-recipes/environment-variables). 
 
 > [!TIP]
-> Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele*instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
+> Adresa URL instance digitálních vláken Azure se provede přidáním *https://* na začátek *názvu hostitele* instance digitálního vlákna Azure. Chcete-li zobrazit název hostitele spolu se všemi vlastnostmi vaší instance, můžete spustit `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
 
 ```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
@@ -219,7 +223,7 @@ V [Azure Portal](https://portal.azure.com/)vyhledejte _aplikaci Function App_ na
 :::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 V okně Function App vyberte v navigačním panelu vlevo možnost _Identita_ a povolte spravovanou identitu.
-V části _přiřazená systémová_ karta přepněte _stav_ na zapnuto a _uložte_ ho. Zobrazí se automaticky otevírané okno, ve kterém se _povolí spravovaná identita přiřazená systémem_.
+V části _přiřazená systémová_ karta přepněte _stav_ na zapnuto a _uložte_ ho. Zobrazí se automaticky otevírané okno, ve kterém se _povolí spravovaná identita přiřazená systémem_ .
 Vyberte tlačítko _Ano_ . 
 
 :::image type="content" source="media/how-to-create-azure-function/enable-system-managed-identity.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
@@ -234,16 +238,16 @@ Všimněte si také **ID objektu** zobrazené na stránce _identity_ , jak bude 
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Přiřazení rolí přístupu pomocí Azure Portal
 
-Vyberte tlačítko _přiřazení rolí Azure_ , ve kterém se otevře stránka *přiřazení rolí Azure* . Pak vyberte _+ Přidat přiřazení role (Preview)_.
+Vyberte tlačítko _přiřazení rolí Azure_ , ve kterém se otevře stránka *přiřazení rolí Azure* . Pak vyberte _+ Přidat přiřazení role (Preview)_ .
 
 :::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 
 Na stránce _Přidat přiřazení role (Preview)_ , která se otevře, vyberte:
 
 * _Obor:_ Skupina prostředků
-* _Předplatné_: vyberte předplatné Azure.
-* _Skupina prostředků_: z rozevíracího seznamu vyberte svoji skupinu prostředků.
-* _Role_: vyberte z rozevíracího seznamu možnost _vlastník dat digitálních vláken Azure_ .
+* _Předplatné_ : vyberte předplatné Azure.
+* _Skupina prostředků_ : z rozevíracího seznamu vyberte svoji skupinu prostředků.
+* _Role_ : vyberte z rozevíracího seznamu možnost _vlastník dat digitálních vláken Azure_ .
 
 Pak podrobnosti uložte kliknutím na tlačítko _Uložit_ .
 
@@ -255,7 +259,7 @@ Adresu URL instance digitálního vlákna Azure, která je pro vaši funkci př�
 
 Budete potřebovat ADT_INSTANCE_URL k vytvoření nastavení aplikace.
 
-Můžete získat ADT_INSTANCE_URL připojením **_https://_** k názvu hostitele instance. V Azure Portal můžete najít název hostitele instance digitálního vlákna, a to tak, že na panelu hledání vyhledáte svou instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_. Zkopírujte tuto hodnotu pro vytvoření nastavení aplikace.
+Můžete získat ADT_INSTANCE_URL připojením **_https://_** k názvu hostitele instance. V Azure Portal můžete najít název hostitele instance digitálního vlákna, a to tak, že na panelu hledání vyhledáte svou instanci. Pak na levém navigačním panelu vyberte _Přehled_ a zobrazte _název hostitele_ . Zkopírujte tuto hodnotu pro vytvoření nastavení aplikace.
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Visual Studio: dialogové okno Nový projekt":::
 

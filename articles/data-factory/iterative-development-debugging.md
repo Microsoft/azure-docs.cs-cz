@@ -1,7 +1,7 @@
 ---
 title: Iterativní vývoj a ladění v Azure Data Factory
 description: Naučte se vyvíjet a ladit kanály Data Factory v uživatelském prostředí ADF iterativním způsobem.
-ms.date: 09/11/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -9,12 +9,12 @@ documentationcenter: ''
 ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: e4c66055184b2ef0113aa0e25c02ad8635feddb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031003"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102064"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterativní vývoj a ladění pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 ## <a name="debugging-a-pipeline"></a>Ladění kanálu
 
-Při vytváření plátna kanálu můžete své aktivity testovat pomocí možnosti **ladění** . Při spuštění testů není nutné publikovat změny do objektu pro vytváření dat před výběrem příkazu **ladit**. Tato funkce je užitečná ve scénářích, ve kterých se chcete ujistit, že změny fungují podle očekávání, než aktualizujete pracovní postup datové továrny.
+Při vytváření plátna kanálu můžete své aktivity testovat pomocí možnosti **ladění** . Při spuštění testů není nutné publikovat změny do objektu pro vytváření dat před výběrem příkazu **ladit** . Tato funkce je užitečná ve scénářích, ve kterých se chcete ujistit, že změny fungují podle očekávání, než aktualizujete pracovní postup datové továrny.
 
 ![Možnost ladění na plátně kanálu](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ Po úspěšném spuštění testu přidejte do kanálu další aktivity a pokra�
 
 ### <a name="setting-breakpoints"></a>Nastavení zarážek
 
-Azure Data Factory umožňuje ladit kanál, dokud nedosáhnete určité aktivity na plátně kanálu. Umístěte zarážku na aktivitu, do které chcete testovat, a vyberte **ladit**. Data Factory zajistí, že se test spustí pouze do aktivity zarážky na plátně kanálu. Tento *ladicí program* je použitelný, dokud nechcete testovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
+Azure Data Factory umožňuje ladit kanál, dokud nedosáhnete určité aktivity na plátně kanálu. Umístěte zarážku na aktivitu, do které chcete testovat, a vyberte **ladit** . Data Factory zajistí, že se test spustí pouze do aktivity zarážky na plátně kanálu. Tento *ladicí program* je použitelný, dokud nechcete testovat celý kanál, ale pouze podmnožinu aktivit uvnitř kanálu.
 
 ![Zarážky na plátně kanálu](media/iterative-development-debugging/iterative-development-3.png)
 
@@ -79,11 +79,14 @@ Můžete monitorovat aktivní relace ladění toku dat napříč továrnou v pro
  
 ### <a name="debugging-a-pipeline-with-a-data-flow-activity"></a>Ladění kanálu s aktivitou toku dat
 
-Při spuštění ladění s tokem dat máte dvě možnosti, na kterých výpočetní prostředky použít. Můžete použít buď existující cluster ladění, nebo aktivovat nový cluster za běhu pro datové toky.
+Při spouštění ladicího kanálu s tokem dat máte dvě možnosti, na kterých výpočetní prostředky použít. Můžete použít buď existující cluster ladění, nebo aktivovat nový cluster za běhu pro datové toky.
 
-Použití existující relace ladění významně sníží čas spuštění toku dat, protože cluster už je spuštěný, ale nedoporučuje se pro komplexní nebo Paralelní úlohy, protože může selhat, když se víc úloh spouští najednou. 
+Použití existující relace ladění významně zkrátí čas spuštění toku dat, protože cluster už je spuštěný, ale nedoporučuje se pro komplexní nebo Paralelní úlohy, protože to může selhat při spuštění několika úloh najednou.
 
-Pomocí modulu runtime aktivit se vytvoří nový cluster s použitím nastavení zadaného v modulu runtime integrace každé aktivity toku dat. To umožňuje izolovat každou úlohu a měla by se používat pro komplexní úlohy nebo testování výkonu.
+Pomocí modulu runtime aktivit se vytvoří nový cluster s použitím nastavení zadaného v modulu runtime integrace každé aktivity toku dat. To umožňuje izolovat každou úlohu a měla by se používat pro komplexní úlohy nebo testování výkonu. Hodnotu TTL můžete také řídit v Azure IR tak, aby prostředky clusteru používané pro ladění byly pro toto časové období k dispozici pro poskytování dalších požadavků na úlohy.
+
+> [!NOTE]
+> Pokud máte kanál s daty, která běží paralelně, vyberte možnost použít modul runtime aktivit, aby Data Factory mohl používat Integration Runtime, které jste vybrali v aktivitě toku dat. Tím umožníte, aby toky dat běžely na několika clusterech a mohli pojmout vaše paralelní provádění toku dat.
 
 ![Spuštění kanálu s tokem dat](media/iterative-development-debugging/iterative-development-dataflow.png)
 

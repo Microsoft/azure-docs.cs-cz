@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798002"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123944"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Řešení problémů s portálem moje aplikace
 
@@ -87,7 +87,7 @@ Až se přihlásíte na portál **Moje aplikace** , můžete také aktualizovat 
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
 
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md).
+- [Změna informací o profilu](./my-account-portal-settings.md).
 
 - [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md).
 

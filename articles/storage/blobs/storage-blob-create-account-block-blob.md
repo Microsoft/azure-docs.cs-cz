@@ -5,16 +5,16 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043094"
+ms.locfileid: "93124964"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Vytvoření účtu BlockBlobStorage
 
@@ -118,9 +118,6 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
 
 9. Pokud chcete optimalizovat účet úložiště pro analýzu dat, nastavte **hierarchický obor názvů** na **Enabled** . V opačném případě ponechte tuto možnost nastavenou na výchozí hodnotu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview. Informace o regionální dostupnosti najdete v tématu věnovaném [místní dostupnosti](premium-tier-for-data-lake-storage.md#regional-availability).
-
 8. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení účtu úložiště.
 
 9. Vyberte **Vytvořit** .
@@ -162,9 +159,6 @@ Pokud chcete v Azure Portal vytvořit účet BlockBlobStorage, postupujte násle
    ```
    Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `-EnableHierarchicalNamespace $True` ho do příkazu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
 
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview. Informace o regionální dostupnosti najdete v tématu věnovaném [místní dostupnosti](premium-tier-for-data-lake-storage.md#regional-availability).
-
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete vytvořit účet bloku BLOB pomocí rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat rozhraní příkazového řádku Azure CLI v. 2.0.46 nebo novější verze. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
@@ -195,10 +189,7 @@ Pokud chcete vytvořit účet bloku BLOB pomocí rozhraní příkazového řádk
    ```
 
    Pokud chcete optimalizovat účet úložiště pro analýzu dat, přidejte `--hierarchical-namespace true` ho do příkazu. Když toto nastavení povolíte, váš účet BlockBlobStorage vám poskytne [úroveň Premium pro data Lake Storage](premium-tier-for-data-lake-storage.md).  Další informace o Data Lake Storage najdete v tématu [Úvod do Azure Data Lake Storage Gen2](data-lake-storage-introduction.md).
-   
-   > [!NOTE]
-   > Funkce hierarchického oboru názvů v účtu úložiště objektů blob bloku je ve verzi Public Preview. Informace o regionální dostupnosti najdete v tématu věnovaném [místní dostupnosti](premium-tier-for-data-lake-storage.md#regional-availability).
-   
+
 ---
 
 ## <a name="next-steps"></a>Další kroky

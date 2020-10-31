@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: cc9b91ce7e40d8f1efab060376a9641642a10472
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a07fccc79c34509d9d5b7073b1c28b3f60fe8f61
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101319"
+ms.locfileid: "93123689"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
@@ -39,7 +39,7 @@ Než začnete, proveďte následující akce:
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure
 
-Než bude Stream Analytics moct analyzovat datový proud podvodných volání, musí se data odeslat do Azure. V tomto kurzu budete data odesílat do Azure pomocí služby [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs).
+Než bude Stream Analytics moct analyzovat datový proud podvodných volání, musí se data odeslat do Azure. V tomto kurzu budete data odesílat do Azure pomocí služby [Azure Event Hubs](../event-hubs/event-hubs-about.md).
 
 Pomocí následujícího postupu vytvořte centrum událostí a odešlete do něj data volání:
 
@@ -189,7 +189,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definování dotazu pro analýzu vstupních dat
 
-Dalším krokem je vytvoření transformace, která v reálném čase analyzuje data. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Dotaz použitý v tomto kurzu detekuje podvodná volání z dat telefonních hovorů.
+Dalším krokem je vytvoření transformace, která v reálném čase analyzuje data. Transformační dotaz definujete pomocí jazyka [Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference). Dotaz použitý v tomto kurzu detekuje podvodná volání z dat telefonních hovorů.
 
 V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundových rozestupech, ale z různých umístění. Například stejný uživatel nemůže legitimně uskutečnit volání z USA a Austrálie současně. Definování transformačního dotazu pro úlohu Stream Analytics:
 
@@ -210,7 +210,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak můžete vyhledat záznamy volání `CallingIMSI` , kde hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics).
+   Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak můžete vyhledat záznamy volání `CallingIMSI` , kde hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](/stream-analytics-query/datediff-azure-stream-analytics).
 
    Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF** . Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
 
@@ -262,7 +262,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 ## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>Vložení řídicího panelu Power BI do webové aplikace
 
-V této části kurzu použijete ukázkovou webovou aplikaci [ASP.NET](https://asp.net/) vytvořenou týmem Power BI pro vložení vašeho řídicího panelu. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
+V této části kurzu použijete ukázkovou webovou aplikaci [ASP.NET](https://asp.net/) vytvořenou týmem Power BI pro vložení vašeho řídicího panelu. Další informace o vkládání řídicích panelů najdete v tématu [Vkládání pomocí Power BI](/power-bi/developer/embedding).
 
 Pokud chcete nastavit aplikaci, přejděte do úložiště GitHubu [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) a postupujte podle pokynů v části **data, která vlastní uživatel** (použijte adresy URL přesměrování a domovské stránky v podčásti **Integration-Web-App** ). Vzhledem k tomu, že používáme příklad řídicího panelu, použijte vzorový kód **Integration-Web-App** umístěný v [úložišti GitHub](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/).
 Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vložte do webové stránky řídicí panel, který jste vytvořili dříve:

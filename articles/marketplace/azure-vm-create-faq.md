@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 131cd9b1de82213d89ee07f30aed25544f6fcb18
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124947"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Běžné dotazy k virtuálnímu počítači v Azure Marketplace
 
@@ -22,7 +22,7 @@ Tyto nejčastější dotazy se týkají běžných problémů, se kterými se m�
 
 Pokud používáte model nasazení Azure Resource Manager, máte k dispozici tři možnosti:
 
-- [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+- [Vytvoření brány sítě VPN založené na trasách pomocí Azure Portal](../vpn-gateway/tutorial-create-gateway-portal.md)
 - [Vytvoření brány sítě VPN založené na trasách pomocí Azure PowerShell](../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
 - [Vytvoření brány sítě VPN založené na trasách pomocí rozhraní příkazového řádku](../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
@@ -32,7 +32,7 @@ Podrobnosti najdete na [webu podpora serverového softwaru Microsoftu pro Micros
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>Jak se ve virtuálním počítači dá spravovat rozšíření vlastních skriptů v úloze po spuštění?
 
-Podrobnosti o použití rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablon a postupu při řešení potíží v systémech Windows najdete v tématu [rozšíření vlastních skriptů pro Windows](/azure/virtual-machines/extensions/custom-script-windows).
+Podrobnosti o použití rozšíření vlastních skriptů pomocí modulu Azure PowerShell, Azure Resource Manager šablon a postupu při řešení potíží v systémech Windows najdete v tématu [rozšíření vlastních skriptů pro Windows](../virtual-machines/extensions/custom-script-windows.md).
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Jsou 32 aplikace nebo služby podporované v Azure Marketplace?
 
@@ -40,7 +40,7 @@ Ne. Podporované operační systémy a standardní služby pro virtuální poč�
 
 Další informace najdete v těchto článcích:
 
-- [Spouštění 32 aplikací](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
+- [Spouštění 32 aplikací](/windows/desktop/WinProg64/running-32-bit-applications)
 - [Podpora 32bitových operačních systémů ve virtuálních počítačích Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [Podpora serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
@@ -52,4 +52,4 @@ K tomuto problému obvykle dochází, pokud jste vytvořili virtuální počíta
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží s certifikacem virtuálních počítačů](azure-vm-create-certification-faq.md)
+- [Řešení potíží s certifikacemi virtuálních počítačů](azure-vm-create-certification-faq.md)

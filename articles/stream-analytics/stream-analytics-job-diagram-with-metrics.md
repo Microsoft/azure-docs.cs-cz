@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044477"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123978"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Ladění založené na datech s využitím diagramu úloh
 
@@ -20,7 +20,7 @@ Diagram úlohy v okně **sledování** v Azure Portal vám může pomáhat s viz
 
 ## <a name="using-the-job-diagram"></a>Používání diagramu úloh
 
-V Azure Portal v rámci úlohy Stream Analytics v části **Podpora a řešení potíží**vyberte **diagram úlohy**:
+V Azure Portal v rámci úlohy Stream Analytics v části **Podpora a řešení potíží** vyberte **diagram úlohy** :
 
 ![Diagram úloh s metrikami – umístění](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 
@@ -75,15 +75,15 @@ Pokud je předchozí krok dotazu vstupní procesor, použijte vstupní metriky, 
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>Zavedli jsme za čtení dat?
 
-*   **Nevyřízené události vstupu (celkem)** oznamuje, kolik dalších zpráv je potřeba přečíst pro Event Hubs a Azure IoT Hub vstupy. Pokud je toto číslo větší než 0, znamená to, že vaše úloha nemůže zpracovat data jako rychlou, jak je připravujeme v. V takovém případě možná budete muset zvýšit počet jednotek streamování a/nebo zajistit, aby se vaše úloha mohla paralelně rozrůstat. Další informace najdete na  [stránce věnované paralelnímu dotazování](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization). 
+*   **Nevyřízené události vstupu (celkem)** oznamuje, kolik dalších zpráv je potřeba přečíst pro Event Hubs a Azure IoT Hub vstupy. Pokud je toto číslo větší než 0, znamená to, že vaše úloha nemůže zpracovat data jako rychlou, jak je připravujeme v. V takovém případě možná budete muset zvýšit počet jednotek streamování a/nebo zajistit, aby se vaše úloha mohla paralelně rozrůstat. Další informace najdete na  [stránce věnované paralelnímu dotazování](./stream-analytics-parallelization.md). 
 
 
 ## <a name="get-help"></a>Získání pomoci
-Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
+Pokud potřebujete další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme se Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování úloh Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční informace o REST API správy Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční dokumentace jazyka Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční informace o REST API správy Stream Analytics](/rest/api/streamanalytics/)

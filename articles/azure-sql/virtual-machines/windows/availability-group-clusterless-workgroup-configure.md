@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790028"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124930"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ K nakonfigurování přípony DNS použijte následující postup:
 1. Pokud chcete otevřít dialogové okno **přípona DNS a název počítače pro rozhraní NetBIOS** , vyberte **Další...** 
 1. Do pole **Přípona primárního serveru DNS tohoto počítače** zadejte název vaší přípony DNS, například `ag.wgcluster.example.com` a pak vyberte **OK** : 
 
-   ![Přidat příponu DNS](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![Snímek obrazovky se zobrazí v dialogovém okně Přípona D N S a název počítače pro rozhraní NetBIOS, kde můžete zadat hodnotu.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. Potvrďte, že **úplný název počítače** teď zobrazuje příponu DNS, a pak vyberte **OK** , aby se změny uložily: 
 
-   ![Přidat příponu DNS](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![Snímek obrazovky ukazuje, kde se zobrazí úplný název počítače.](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. Až se vám zobrazí výzva, restartujte server. 
 1. Opakujte tyto kroky na všech ostatních uzlech, které chcete použít pro skupinu dostupnosti. 

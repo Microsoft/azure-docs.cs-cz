@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913037"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124013"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Řešení potíží s Azure Stream Analytics pomocí protokolů prostředků
 
@@ -48,7 +48,7 @@ Protokoly aktivit jsou ve výchozím nastavení zapnuté a poskytují podrobné 
 
    ![Souhrn operací protokolu aktivit Stream Analytics](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Přejděte dolů k části **vlastnosti** ve formátu JSON, která poskytuje podrobné informace o chybě, která způsobila neúspěšnou operaci. V tomto příkladu došlo k chybě kvůli chybě za běhu z nevázaných hodnot zeměpisné šířky. Nesoulad v datech, která jsou zpracována úlohou Stream Analytics, způsobuje chybu dat. Můžete se seznámit s různými [chybami vstupních a výstupních dat a proč k nim dojde](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+4. Přejděte dolů k části **vlastnosti** ve formátu JSON, která poskytuje podrobné informace o chybě, která způsobila neúspěšnou operaci. V tomto příkladu došlo k chybě kvůli chybě za běhu z nevázaných hodnot zeměpisné šířky. Nesoulad v datech, která jsou zpracována úlohou Stream Analytics, způsobuje chybu dat. Můžete se seznámit s různými [chybami vstupních a výstupních dat a proč k nim dojde](./data-errors.md).
 
    ![Podrobnosti o chybě JSON](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -95,7 +95,7 @@ Azure Stream Analytics zachycuje dvě kategorie protokolů prostředků:
 
 Všechny protokoly jsou uložené ve formátu JSON. Každá položka má následující obecná pole řetězců:
 
-Název | Popis
+Název | Description
 ------- | -------
 time | Časové razítko (v UTC) protokolu
 resourceId | ID prostředku, na kterém byla operace provedena, v horním případě. Obsahuje ID předplatného, skupinu prostředků a název úlohy. Například **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/my-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB** .
@@ -111,7 +111,7 @@ Protokoly spouštění obsahují informace o událostech, ke kterým došlo běh
 
 ### <a name="data-errors"></a>Chyby dat
 
-Všechny chyby, ke kterým dojde během zpracování úlohy, jsou v této kategorii protokolů. Tyto protokoly se nejčastěji vytvářejí během operací čtení, serializace a zápisu dat. Tyto protokoly nezahrnují chyby připojení. Chyby připojení se považují za obecné události. Můžete si přečíst další informace o příčině různých [vstupních a výstupních chybových dat](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+Všechny chyby, ke kterým dojde během zpracování úlohy, jsou v této kategorii protokolů. Tyto protokoly se nejčastěji vytvářejí během operací čtení, serializace a zápisu dat. Tyto protokoly nezahrnují chyby připojení. Chyby připojení se považují za obecné události. Můžete si přečíst další informace o příčině různých [vstupních a výstupních chybových dat](./data-errors.md).
 
 Název | Popis
 ------- | -------
@@ -134,7 +134,7 @@ V závislosti na hodnotě **OperationName** mají chyby dat následující sché
 
 Obecné události se týkají všech ostatních.
 
-Název | Popis
+Název | Description
 -------- | --------
 Chybová | volitelné Informace o chybě. Obvykle se jedná o výjimku, pokud je k dispozici.
 Zpráva| Zpráva protokolu
@@ -143,5 +143,5 @@ ID korelace | Identifikátor GUID, který jedinečně identifikuje provádění 
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Chyby Stream Analytics dat](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Referenční dokumentace jazyka Stream Analytics dotazů](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Chyby Stream Analytics dat](./data-errors.md)
+* [Referenční dokumentace jazyka Stream Analytics dotazů](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490454"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101642"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Vytvoření kontejneru v Azure Cosmos DB rozhraní API Cassandra
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Tento článek popisuje různé způsoby, jak vytvořit kontejner v Azure Cosmos DB rozhraní API Cassandra. Ukazuje, jak vytvořit kontejner pomocí Azure Portal, Azure CLI, PowerShellu nebo podporovaných sad SDK. Tento článek ukazuje, jak vytvořit kontejner, zadat klíč oddílu a zajistit propustnost.
 
@@ -30,13 +31,13 @@ Tento článek popisuje různé způsoby, jak vytvořit kontejner v Azure Cosmos
 
 1. [Vytvořte nový účet Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)nebo vyberte existující účet.
 
-1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová tabulka**. Dále zadejte následující podrobnosti:
+1. Otevřete podokno **Průzkumník dat** a vyberte možnost **Nová tabulka** . Dále zadejte následující podrobnosti:
 
    * Určete, zda vytváříte nové místo na disku, nebo použijte existující.
    * Zadejte název tabulky.
    * Zadejte vlastnosti a zadejte primární klíč.
    * Zadejte propustnost, která se má zřídit (například 1000 ru).
-   * Vyberte **OK**.
+   * Vyberte **OK** .
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Snímek obrazovky rozhraní API Cassandra, dialogové okno Přidat tabulku":::
 

@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 69571afceddab61c2a6134516e237facfb7a5073
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746876"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124522"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -26,9 +26,9 @@ Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Vstupní dat
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/)
 
-* Tento rychlý Start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Tento rychlý Start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.70 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a použijte `az extension add --name azure-iot` k instalaci rozšíření IoT.
+* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.70 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) a použijte `az extension add --name azure-iot` k instalaci rozšíření IoT.
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -52,7 +52,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -68,9 +68,9 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
 
 Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstupních dat vyžadovaných úlohou. Prohlédněte si jednotlivé části a seznamte se s kódem.
 
-1. V okně PowerShellu spuštěním příkazu [AZ Login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) se přihlaste ke svému účtu Azure.
+1. V okně PowerShellu spuštěním příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) se přihlaste ke svému účtu Azure.
 
-    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že jste nahradili `<your subscription name>` názvem vašeho předplatného.
+    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že jste nahradili `<your subscription name>` názvem vašeho předplatného.
 
     ```azurecli
     az login
@@ -84,7 +84,7 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
+    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -112,11 +112,11 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
 
 Následující blok kódu Azure PowerShell používá příkazy k vytvoření úložiště objektů blob, který se používá pro výstup úlohy. Prohlédněte si jednotlivé části a seznamte se s kódem.
 
-1. Pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) vytvořte účet úložiště úrovně Standard pro obecné účely.  Tento příklad vytvoří účet úložiště s názvem **myasaquickstartstorage** s místně redundantním úložištěm (LRS) a šifrováním objektů BLOB (ve výchozím nastavení povolený).
+1. Pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) vytvořte účet úložiště úrovně Standard pro obecné účely.  Tento příklad vytvoří účet úložiště s názvem **myasaquickstartstorage** s místně redundantním úložištěm (LRS) a šifrováním objektů BLOB (ve výchozím nastavení povolený).
 
 2. Načtěte kontext účtu úložiště `$storageAccount.Context` určující účet úložiště, který chcete použít. Když pracujete s účtem úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext.
 
-3. Vytvořte kontejner úložiště pomocí [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer).
+3. Vytvořte kontejner úložiště pomocí [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer).
 
 4. Zkopírujte klíč úložiště, který je výstupem kódu, a uložte si tento klíč a vytvořte výstup úlohy streamování později.
 
@@ -146,7 +146,7 @@ Následující blok kódu Azure PowerShell používá příkazy k vytvoření ú
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-Vytvořte úlohu Stream Analytics pomocí rutiny [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) . Tato rutina použije název úlohy, název skupiny prostředků a definici úlohy jako parametry. Jako název úlohy můžete zadat jakýkoli popisný název, který identifikuje vaši úlohu. Může obsahovat jenom alfanumerické znaky, spojovníky a podtržítka a musí mít délku 3 až 63 znaků. Definici úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné k vytvoření úlohy. Na místním počítači vytvořte soubor s názvem `JobDefinition.json` a přidejte do něj následující data JSON:
+Vytvořte úlohu Stream Analytics pomocí rutiny [New-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) . Tato rutina použije název úlohy, název skupiny prostředků a definici úlohy jako parametry. Jako název úlohy můžete zadat jakýkoli popisný název, který identifikuje vaši úlohu. Může obsahovat jenom alfanumerické znaky, spojovníky a podtržítka a musí mít délku 3 až 63 znaků. Definici úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné k vytvoření úlohy. Na místním počítači vytvořte soubor s názvem `JobDefinition.json` a přidejte do něj následující data JSON:
 
 ```json
 {
@@ -176,7 +176,7 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>Konfigurace vstupu do úlohy
 
-Přidejte vstup do úlohy pomocí rutiny [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definici vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte úložiště objektů BLOB jako vstup.
+Přidejte vstup do úlohy pomocí rutiny [New-AzStreamAnalyticsInput](/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definici vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte úložiště objektů BLOB jako vstup.
 
 Na místním počítači vytvořte soubor s názvem `JobInputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu v `accesspolicykey` `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
 
@@ -223,7 +223,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>Konfigurace výstupu do úlohy
 
-Přidejte do úlohy výstup pomocí rutiny [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definici výstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
+Přidejte do úlohy výstup pomocí rutiny [New-AzStreamAnalyticsOutput](/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definici výstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
 
 Na místním počítači vytvořte soubor s názvem `JobOutputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu položky `accountKey` přístupovým klíčem k vašemu účtu úložiště, který je uložený v hodnotě $storageAccountKey.
 
@@ -272,7 +272,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
-Pomocí rutiny [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) přidejte transformaci vaší úlohy. Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. Na místním počítači vytvořte soubor s názvem `JobTransformationDefinition.json` a přidejte do něj následující data JSON. Soubor JSON obsahuje parametr dotazu, který definuje transformaci dotazu:
+Pomocí rutiny [New-AzStreamAnalyticsTransformation](/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) přidejte transformaci vaší úlohy. Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. Na místním počítači vytvořte soubor s názvem `JobTransformationDefinition.json` a přidejte do něj následující data JSON. Soubor JSON obsahuje parametr dotazu, který definuje transformaci dotazu:
 
 ```json
 {
@@ -310,7 +310,7 @@ New-AzStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-Spusťte úlohu pomocí rutiny [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`. Další informace o tom, na co tyto hodnoty odkazují, najdete v části [Parametry](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) v dokumentaci k prostředí PowerShell.
+Spusťte úlohu pomocí rutiny [Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`. Další informace o tom, na co tyto hodnoty odkazují, najdete v části [Parametry](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob) v dokumentaci k prostředí PowerShell.
 
 Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu `True`, pokud se úloha spustí. V kontejneru úložiště se vytvoří výstupní složku s transformovanými daty.
 

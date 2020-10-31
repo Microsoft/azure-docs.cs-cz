@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: fe1caca11ec0a3d89ddae140d00cd3556b9d3d89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0788d8b4f659364fcedc690185c9159a24434125
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123910"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Místní testování živých dat pomocí Azure Stream Analyticsch nástrojů pro Visual Studio (Preview)
 
@@ -31,7 +31,7 @@ Podporovány jsou následující možnosti místního testování:
 
 ## <a name="local-testing-with-live-data"></a>Místní testování s dynamickými daty
 
-1. Po vytvoření [cloudového projektu Azure Stream Analytics v aplikaci Visual Studio](stream-analytics-quick-create-vs.md)otevřete **skript Script. asaql**. Místní testování používá ve výchozím nastavení místní vstupní a místní výstup.
+1. Po vytvoření [cloudového projektu Azure Stream Analytics v aplikaci Visual Studio](stream-analytics-quick-create-vs.md)otevřete **skript Script. asaql** . Místní testování používá ve výchozím nastavení místní vstupní a místní výstup.
 
    ![Azure Stream Analytics místní vstup a místní výstup sady Visual Studio](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
@@ -43,7 +43,7 @@ Podporovány jsou následující možnosti místního testování:
 
    ![Čas spuštění sady Visual Studio Live data Azure Stream Analytics](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
-4. Klikněte na **spustit místně**. Zobrazí se okno konzoly s metrikami průběhu a úloh. Pokud chcete proces zastavit, můžete to provést ručně. 
+4. Klikněte na **spustit místně** . Zobrazí se okno konzoly s metrikami průběhu a úloh. Pokud chcete proces zastavit, můžete to provést ručně. 
 
    ![Azure Stream Analytics okno procesu Visual Studio Live data](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
@@ -59,7 +59,7 @@ Podporovány jsou následující možnosti místního testování:
 
 * Power BI a Azure Data Lake Storage nejsou podporovány výstupní jímky z důvodu omezení modelu ověřování.
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 

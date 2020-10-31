@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 196d722e57abe743fc51692dde231e8f93682c46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002262"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123442"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programové vytvoření monitorování úloh Stream Analytics
 
 Tento článek ukazuje, jak povolit monitorování Stream Analytics úlohy. Stream Analytics úlohy vytvořené přes rozhraní REST API, Azure SDK nebo PowerShell nemají ve výchozím nastavení povolené monitorování. Můžete ji ručně povolit v Azure Portal tak, že přejdete na stránku monitorování úlohy a kliknete na tlačítko Povolit nebo tento proces můžete automatizovat podle kroků v tomto článku. Data monitorování se zobrazí v oblasti metriky Azure Portal pro vaši úlohu Stream Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než zahájíte tento proces, musíte splnit následující předpoklady:
 
@@ -168,14 +168,14 @@ Následující kód umožňuje monitorování pro **existující** úlohu Stream
 >   ```
 
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
-Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
+Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](/answers/topics/azure-stream-analytics.html).
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
-* [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Referenční příručka k jazyku Azure Stream Analytics Query Language](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenční příručka k rozhraní REST API pro správu služby Azure Stream Analytics](/rest/api/streamanalytics/)

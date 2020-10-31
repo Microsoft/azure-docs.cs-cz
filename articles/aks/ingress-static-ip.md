@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e3e052915b6bcc1f6dee89f5ed5e2acf13dd78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290544"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124352"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě*. Další informace najdete v tématu [použití statické veřejné IP adresy a popisku DNS s nástrojem AKS Load Balancer][aks-static-ip].
+> Výše uvedené příkazy vytvoří IP adresu, která se odstraní, když odstraníte cluster AKS. Případně můžete vytvořit IP adresu v jiné skupině prostředků, kterou je možné spravovat odděleně od clusteru AKS. Pokud vytvoříte IP adresu v jiné skupině prostředků, ujistěte se, že instanční objekt používaný clusterem AKS má delegovaná oprávnění k jiné skupině prostředků, jako je například *Přispěvatel sítě* . Další informace najdete v tématu [použití statické veřejné IP adresy a popisku DNS s nástrojem AKS Load Balancer][aks-static-ip].
 
 Teď nasaďte *Nginx a vstupní* graf s Helm. Pro přidání redundance se nasadí dvě repliky kontrolerů příchozího přenosu dat NGINX s parametrem `--set controller.replicaCount`. Pokud chcete mít v clusteru AKS k dispozici více než jeden uzel, zajistěte, aby bylo možné plně využít více uzlů.
 
@@ -62,10 +62,10 @@ Do vydaných verzí musíte předat dva další parametry, takže kontroler př�
 Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
-> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
+> Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic* . Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
 
 > [!TIP]
-> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro*. Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
+> Pokud chcete povolit [zachování IP adresy zdrojového klienta][client-source-ip] pro požadavky na kontejnery v clusteru, přidejte `--set controller.service.externalTrafficPolicy=Local` do příkazu Helm Install. Zdrojová IP adresa klienta je uložená v hlavičce žádosti v části *předané X-pro* . Při použití kontroleru příchozího přenosu dat s povoleným zachováním IP adresy klienta nebude předávat protokol TLS fungovat.
 
 Aktualizujte následující skript s použitím **IP adresy** vašeho kontroleru příchozího přenosu dat a **jedinečného názvu** , který byste chtěli použít pro předponu plně kvalifikovaného názvu domény.
 
@@ -199,7 +199,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -237,7 +237,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -435,7 +435,7 @@ Odstraňte vlastní obor názvů. Použijte `kubectl delete` příkaz a zadejte 
 kubectl delete namespace ingress-basic
 ```
 
-Nakonec Odeberte statickou veřejnou IP adresu vytvořenou pro kontroler příchozího přenosu dat. Zadejte název skupiny prostředků clusteru *MC_* získané v prvním kroku tohoto článku, například *MC_myResourceGroup_myAKSCluster_eastus*:
+Nakonec Odeberte statickou veřejnou IP adresu vytvořenou pro kontroler příchozího přenosu dat. Zadejte název skupiny prostředků clusteru *MC_* získané v prvním kroku tohoto článku, například *MC_myResourceGroup_myAKSCluster_eastus* :
 
 ```azurecli-interactive
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP

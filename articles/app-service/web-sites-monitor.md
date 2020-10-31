@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c4e9a66e6bd6b94d8397429769d7718b3e9c555d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b201ebb5ad8ab9d98a76a29831fa12d6174e47cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125202"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](./overview.md) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -27,11 +27,11 @@ Pro aplikace, které jsou hostované v App Service, se vztahují určitá omezen
 
 Pokud je aplikace hostovaná v *bezplatném* nebo *sdíleném* plánu, omezení prostředků, které může aplikace používat, jsou definovaná pomocí kvót.
 
-Pokud je aplikace hostována v plánu *Basic*, *Standard*nebo *Premium* , omezení prostředků, které mohou používat, jsou nastavena podle *velikosti* (malá, střední, Velká) a *počtu instancí* (1, 2, 3 atd.) v plánu App Service.
+Pokud je aplikace hostována v plánu *Basic* , *Standard* nebo *Premium* , omezení prostředků, které mohou používat, jsou nastavena podle *velikosti* (malá, střední, Velká) a *počtu instancí* (1, 2, 3 atd.) v plánu App Service.
 
 Kvóty pro bezplatné nebo sdílené aplikace jsou:
 
-| Kvóta | Popis |
+| Kvóta | Description |
 | --- | --- |
 | **PROCESOR (krátký)** | Počet PROCESORů povolených pro tuto aplikaci v intervalu 5 minut. Tato kvóta se resetuje každých pět minut. |
 | **CPU (den)** | Celková velikost procesoru povoleného pro tuto aplikaci za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
@@ -39,13 +39,13 @@ Kvóty pro bezplatné nebo sdílené aplikace jsou:
 | **Šířka pásma** | Celková velikost odchozí šířky pásma, která je pro tuto aplikaci povolená za den. Tato kvóta se resetuje každých 24 hodin v půlnoci UTC. |
 | **Filesystem** | Celková velikost povoleného úložiště. |
 
-Jediná kvóta platí pro aplikace, které jsou hostované v systému souborů *Basic*, *Standard*a *Premium* .
+Jediná kvóta platí pro aplikace, které jsou hostované v systému souborů *Basic* , *Standard* a *Premium* .
 
 Další informace o konkrétních kvótách, omezeních a funkcích, které jsou dostupné pro různé App Service SKU, najdete v tématu [omezení služby předplatného Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 ### <a name="quota-enforcement"></a>Vynucení kvót
 
-Pokud aplikace překročí kvótu *CPU (krátký)*, *CPU (den)* nebo *šířky pásma* , aplikace se zastaví až do obnovení kvóty. Během této doby všechny příchozí žádosti vyplývají z důvodu chyby HTTP 403.
+Pokud aplikace překročí kvótu *CPU (krátký)* , *CPU (den)* nebo *šířky pásma* , aplikace se zastaví až do obnovení kvóty. Během této doby všechny příchozí žádosti vyplývají z důvodu chyby HTTP 403.
 
 ![chybová zpráva 403][http403]
 
@@ -87,6 +87,7 @@ V případě aplikace jsou dostupné metriky:
 | **Generace paměti 1. generace** | Kolikrát jsou objekty generace 1 od spuštění procesu aplikace uvolněny z paměti. GC vyšší generace zahrnuje všechny GC nižší generace.|
 | **Uvolňování paměti 2. generace** | Kolikrát jsou objekty generace 2 od spuštění procesu aplikace uvolněny z paměti.|
 | **Počet popisovačů** | Celkový počet popisovačů aktuálně otevřených procesem aplikace.|
+| **Stav kontroly stavu** | Průměrný stav mezi instancemi aplikace v plánu App Service.|
 | **2xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 200, ale < 300. |
 | **3xx http** | Počet požadavků, které mají za následek stavový kód HTTP ≥ 300, ale < 400. |
 | **HTTP 401** | Počet požadavků, které mají za následek stavový kód HTTP 401 |
@@ -113,7 +114,7 @@ V případě aplikace jsou dostupné metriky:
 V případě plánu App Service jsou dostupné metriky:
 
 > [!NOTE]
-> Metriky plánu App Service jsou dostupné jenom pro plány v úrovních *Basic*, *Standard*a *Premium* .
+> Metriky plánu App Service jsou dostupné jenom pro plány v úrovních *Basic* , *Standard* a *Premium* .
 > 
 
 | Metrika | Popis |
@@ -130,9 +131,9 @@ V případě plánu App Service jsou dostupné metriky:
 
 K dispozici jsou dvě metriky, které odrážejí využití CPU:
 
-**Čas procesoru**: hodí se pro aplikace hostované v bezplatných nebo sdílených plánech, protože jedna z jejich kvót je definována v minutách procesoru, který používá aplikace.
+**Čas procesoru** : hodí se pro aplikace hostované v bezplatných nebo sdílených plánech, protože jedna z jejich kvót je definována v minutách procesoru, který používá aplikace.
 
-**Procento využití procesoru**: užitečné pro aplikace hostované v plánech Basic, Standard a Premium, protože je možné je škálovat. Procento využití procesoru je dobrým označením celkového využití napříč všemi instancemi.
+**Procento využití procesoru** : užitečné pro aplikace hostované v plánech Basic, Standard a Premium, protože je možné je škálovat. Procento využití procesoru je dobrým označením celkového využití napříč všemi instancemi.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Členitost metrik a zásady uchovávání informací
 Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou a uchovávají se v [souladu s těmito pravidly](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
@@ -142,7 +143,7 @@ Pokud chcete zkontrolovat stav různých kvót a metrik, které mají vliv na ap
 
 ![Graf kvót v Azure Portal][quotas]
 
-Pokud chcete najít kvóty, vyberte **Nastavení**  >  **kvóty**. V grafu můžete zkontrolovat: 
+Pokud chcete najít kvóty, vyberte **Nastavení**  >  **kvóty** . V grafu můžete zkontrolovat: 
 1. Název kvóty
 1. Interval jeho resetování.
 1. Jeho aktuální limit.

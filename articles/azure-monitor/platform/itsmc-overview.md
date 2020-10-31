@@ -1,25 +1,26 @@
 ---
-title: IT Service Management Connector v Azure Log Analytics | Microsoft Docs
-description: Tento článek poskytuje přehled konektoru pro správu služeb IT (ITSMC) a informace o tom, jak toto řešení použít k centrálnímu monitorování a správě pracovních položek ITSM v Azure Log Analytics a k řešení případných problémů rychle.
+title: IT Service Management Connector v Log Analytics
+description: Tento článek poskytuje přehled konektoru pro správu služby IT (ITSMC) a informace o jeho používání pro monitorování a správu pracovních položek ITSM v Log Analytics a rychlé řešení problémů.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: references_regions
+ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043319"
+ms.locfileid: "93102016"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Propojení Azure s nástroji ITSM s využitím ITSM konektoru
+# <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
-![Symbol IT Service Management Connectoru](media/itsmc-overview/itsmc-symbol.png)
+:::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
-ITSM konektor (ITSMC) umožňuje propojit Azure s podporovaným produktem nebo službou správy IT služeb (ITSM).
+IT Service Management Connector (ITSMC) umožňuje připojit Azure k podporovanému produktu nebo službě IT Service Management (ITSM).
 
-Služby Azure, jako jsou Log Analytics a Azure Monitor poskytují nástroje pro detekci, analýzu a řešení potíží s prostředky Azure a mimo Azure. Pracovní položky týkající se problému se ale obvykle nacházejí v ITSMm produktu nebo službě. Konektor ITSM poskytuje obousměrné propojení mezi nástroji Azure a ITSM, které vám pomůžou rychleji řešit problémy.
+Služby Azure, jako je Azure Log Analytics a Azure Monitor poskytují nástroje pro detekci, analýzu a řešení problémů s prostředky Azure a mimo Azure. Pracovní položky, které se k problému vztahují, se obvykle nacházejí v ITSMm produktu nebo ve službě. ITSMC poskytuje obousměrné propojení mezi nástroji Azure a ITSM, které vám pomůžou rychleji řešit problémy.
 
 ITSMC podporuje připojení s následujícími ITSM nástroji:
 
@@ -30,164 +31,164 @@ ITSMC podporuje připojení s následujícími ITSM nástroji:
 
 Pomocí ITSMC můžete:
 
--  Vytvořte pracovní položky v nástroji ITSM na základě vašich výstrah Azure (výstrahy metrik, výstrahy protokolu aktivit a výstrahy Log Analytics).
+-  Vytvořte pracovní položky v nástroji ITSM na základě výstrah Azure (výstrahy metrik, výstrahy protokolu aktivit a výstrahy Log Analytics).
 -  Volitelně můžete svůj incident a data žádostí o změnu z nástroje ITSM na pracovní prostor služby Azure Log Analytics synchronizovat.
 
-Přečtěte si další informace o [právních podmínek a zásadách ochrany osobních údajů](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9).
+Informace o právních výrazech a zásadách ochrany osobních údajů najdete v tématu [prohlášení o zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9).
 
-Můžete začít používat konektor ITSM pomocí následujících kroků:
+Můžete začít používat ITSMC provedením následujících kroků:
 
-1.  [Přidat řešení konektoru ITSM](#adding-the-it-service-management-connector-solution)
-2.  Vytvoření připojení ITSM
-3.  [Použít připojení](#using-the-solution)
+1.  [Přidat ITSMC.](#add-it-service-management-connector)
+2.  [Vytvořte připojení ITSM.](#create-an-itsm-connection)
+3.  [Použijte připojení.](#use-itsmc)
 
 
-##  <a name="adding-the-it-service-management-connector-solution"></a>Přidání řešení IT Service Management Connector
+##  <a name="add-it-service-management-connector"></a>Přidat konektor pro správu služeb IT
 
-Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM.
+Než budete moct vytvořit připojení, musíte přidat ITSMC.
 
-1. V Azure Portal klikněte na **+ Nová** ikona.
+1. V Azure Portal vyberte **vytvořit prostředek** :
 
-   ![Nový prostředek Azure](media/itsmc-overview/azure-add-new-resource.png)
+   ![Snímek obrazovky, který ukazuje položku nabídky vytvořit prostředek.](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Vyhledejte na webu Marketplace **konektor pro správu služeb IT** a klikněte na **vytvořit** .
+2. Vyhledejte **konektor pro správu služeb IT** v Azure Marketplace. Vyberte **vytvořit** :
 
-   ![Přidat řešení ITSMC](media/itsmc-overview/add-itsmc-solution.png)
+   ![Snímek obrazovky, který zobrazuje tlačítko vytvořit v Azure Marketplace.](media/itsmc-overview/add-itsmc-solution.png)
 
-3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete řešení nainstalovat.
+3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete nainstalovat ITSMC.
    >[!NOTE]
-   > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
-   > * Konektor ITSM se dá nainstalovat jenom v pracovních prostorech Log Analytics v těchto oblastech: Východní USA, západ USA 2, Střed USA – jih, Středozápadní USA, US Gov – Arizona, US Gov – Virginie, Central Kanada, Západní Evropa, Jižní Británie, jihovýchodní Asie, Východní Japonsko, Střed Indie, jihovýchodní Austrálie.
+   > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory* .
+   > * ITSMC se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, Západní USA 2, Střed USA – jih, Středozápadní USA, US Gov – Arizona, US Gov – Virginie, Kanada – střed, Západní Evropa, Jižní Velká Británie, jihovýchodní Asie, Japonsko – východ, Střed Indie a Austrálie – jihovýchod.
 
-4. V části **Nastavení pracovního prostoru OMS** vyberte zdrojovou položku, kde chcete vytvořit prostředek řešení.
 
-   ![Pracovní prostor ITSMC](media/itsmc-overview/itsmc-solution-workspace.png)
+4. V části **pracovní prostor Log Analytics** vyberte skupinu prostředků, ve které chcete vytvořit prostředek ITSMC:
+
+   ![Snímek obrazovky zobrazující část Log Analytics pracovní prostor](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
+   >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory* .
 
-5. Klikněte na **OK** .
+5. Vyberte **OK** .
 
-Po nasazení prostředku řešení se zobrazí oznámení v pravém horním rohu okna.
+Po nasazení prostředku ITSMC se v pravém horním rohu okna zobrazí oznámení.
 
 
-## <a name="creating-an-itsm--connection"></a>Vytvoření připojení ITSM
+## <a name="create-an-itsm-connection"></a>Vytvoření připojení ITSM
 
-Po instalaci řešení můžete vytvořit připojení.
+Po instalaci ITSMC můžete vytvořit připojení.
 
-Pro vytvoření připojení budete muset nástroj ITSM použít k tomu, aby bylo možné připojení z řešení konektoru ITSM.  
+Pokud chcete vytvořit připojení, budete muset nástroj ITSM použít k tomu, aby bylo možné připojení z ITSMC.  
 
-V závislosti na ITSM produktu, ke kterému se připojujete, použijte následující postup:
+Podle ITSM produktu, ke kterému se připojujete, vyberte jeden z následujících odkazů pro pokyny:
 
-- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [System Center Service Manager](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Prov](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
-Jakmile budete mít připravenou nástroje ITSM, vytvořte připojení pomocí následujících kroků:
+Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
-1. Přejít na **všechny prostředky** , vyhledejte **partnera (YourWorkspaceName)** .
-2. V části **zdroje dat pracovního prostoru** v levém podokně klikněte na **připojení ITSM** .
-   ![Připojení ITSM](media/itsmc-overview/itsm-connections.png)
+1. Ve **všech prostředcích** vyhledejte **partnera ( *název vašeho pracovního prostoru* )** :
 
+   ![Snímek obrazovky, který zobrazuje poslední prostředky v Azure Portal.](media/itsmc-overview/itsm-connections.png)
+
+1. V části **zdroje dat pracovního prostoru** v levém podokně vyberte **připojení ITSM** :
+
+   ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
    Tato stránka zobrazuje seznam připojení.
-3. Klikněte na **Přidat připojení** .
+1. Vyberte **Přidat připojení** .
 
-   ![Přidat připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
-
-4. Zadejte nastavení připojení, jak je popsáno v [tématu Konfigurace připojení ITSMC k článku ITSM Products/Services](./itsmc-connections.md).
+4. Zadejte nastavení připojení, jak je popsáno v tématu [Konfigurace připojení ITSMC k vašim ITSMm produktům a službám](./itsmc-connections.md).
 
    > [!NOTE]
    >
-   > Ve výchozím nastavení ITSMC aktualizuje konfigurační data připojení jednou za každých 24 hodin. Pokud chcete data připojení okamžitě aktualizovat pro jakékoli úpravy nebo aktualizace šablon, které uděláte, klikněte na tlačítko **synchronizovat** v okně připojení.
+   > Ve výchozím nastavení ITSMC aktualizuje konfigurační data připojení každých 24 hodin. Pokud chcete data připojení okamžitě aktualizovat tak, aby odrážela jakékoli úpravy nebo aktualizace šablon, které jste provedli, vyberte v okně připojení tlačítko **synchronizovat** :
+   >
+   > ![Snímek obrazovky, který zobrazuje tlačítko synchronizovat v okně připojení](media/itsmc-overview/itsmc-connections-refresh.png)
 
-   ![Aktualizace připojení](media/itsmc-overview/itsmc-connections-refresh.png)
 
-
-## <a name="using-the-solution"></a>Použití řešení
-   Pomocí řešení konektoru ITSM můžete vytvářet pracovní položky z výstrah Azure, Log Analytics upozornění a záznamů protokolu Log Analytics.
+## <a name="use-itsmc"></a>Použití ITSMC
+   Pomocí ITSMC můžete vytvářet pracovní položky z výstrah Azure, výstrahy Log Analytics a Log Analytics záznamů protokolu.
 
 ## <a name="template-definitions"></a>Definice šablon
    Existují typy pracovních položek, které mohou používat šablony, které jsou definovány nástrojem ITSM.
-Použití šablon umožňuje zákazníkovi definovat pole, která se automaticky vyplní podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Definice šablon se provádí v nástroji ITSM.
+Pomocí šablon můžete definovat pole, která budou automaticky vyplněna podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Šablony definujete v nástroji ITSM.
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Vytváření pracovních položek ITSM z výstrah Azure
 
-Po vytvoření připojení ITSM můžete vytvořit pracovní položku v nástroji ITSM na základě výstrah Azure pomocí **Akce ITSM** ve **skupinách akcí** .
+Po vytvoření připojení ITSM můžete v nástroji ITSM vytvořit pracovní položky založené na výstrahách Azure. Chcete-li vytvořit pracovní položky, použijte akci ITSM ve skupinách akcí.
 
-Skupiny akcí poskytují modulární a opakovaně použitelný způsob aktivace akcí pro vaše výstrahy Azure. Skupiny akcí s upozorněními na metriky, upozornění protokolu aktivit a výstrahy služby Azure Log Analytics můžete používat v Azure Portal.
+Skupiny akcí poskytují modulární a opakovaně použitelný způsob, jak aktivovat akce pro vaše výstrahy Azure. V Azure Portal můžete použít skupiny akcí s upozorněními na metriky, výstrahy protokolu aktivit a výstrahy Azure Log Analytics.
 
 > [!NOTE]
-> Po vytvoření připojení ITSM je potřeba po dokončení konektoru, který se vytvoří pro proces synchronizace, počkat na 30 min.
+> Po vytvoření připojení ITSM musíte počkat 30 minut, než se proces synchronizace dokončí.
 > 
 
-Použijte následující postup:
+Chcete-li vytvořit pracovní položky, použijte následující postup:
 
-1. V Azure Portal klikněte na  **výstrahy** .
-2. V horním podokně klikněte na možnost  **Spravovat akce** . Zobrazí se okno **Přidat skupinu akcí** .
+1. V Azure Portal vyberte  **výstrahy** .
+2. V nabídce v horní části obrazovky vyberte **Spravovat akce** :
 
-    [![Skupiny akcí](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
+    ![Snímek obrazovky zobrazující položku nabídky spravovat akce](media/itsmc-overview/action-groups-selection-big.png)
 
-3. Vyberte **předplatné** a **skupinu prostředků** , ve kterých chcete vytvořit skupinu akcí. Zadejte **název skupiny akcí** a **zobrazované jméno** pro vaši skupinu akcí. Klikněte na **Další: oznámení** .
+   Zobrazí se okno **vytvořit skupinu akcí** .
 
-    ![Podrobnosti o skupinách akcí](media/itsmc-overview/action-groups-details.png)
+3. Vyberte **předplatné** a **skupinu prostředků** , ve kterých chcete vytvořit skupinu akcí. Zadejte **název skupiny akcí** a **zobrazované jméno** pro vaši skupinu akcí. Vyberte **Další: oznámení** .
 
-4. V seznamu oznámení klikněte na **vnoření: akce** .
-5. V seznamu akce vyberte možnost **ITSM** z rozevírací nabídky pro **typ akce** . Zadejte **název** akce a klikněte na pero, které představuje **Podrobnosti o úpravách** .
-6. Vyberte **předplatné** , ve kterém se nachází váš Log Analytics pracovní prostor. Vyberte název **připojení** (název konektoru ITSM) následovaný názvem vašeho pracovního prostoru. Například "MyITSMMConnector (MyWorkspace)."
+    ![Snímek obrazovky, který ukazuje okno vytvořit skupinu akcí.](media/itsmc-overview/action-groups-details.png)
 
-    ![Podrobnosti o akci ITSM](media/itsmc-overview/itsm-action-configuration.png)
+4. V seznamu oznámení vyberte **Další: akce** .
+5. V seznamu akce vyberte v seznamu **typ akce** možnost **ITSM** . Zadejte **název** akce. Vyberte tlačítko pera, které představuje **Úpravy podrobností** .
+6. V seznamu **předplatné** vyberte předplatné, ve kterém se nachází váš pracovní prostor Log Analytics. V seznamu **připojení** vyberte název konektoru ITSM. Za ním bude následovat název vašeho pracovního prostoru. Například MyITSMConnector (MyWorkspace).
 
-7. Z rozevírací nabídky vyberte typ **pracovní položky** .
+7. Vyberte typ **pracovní položky** .
 
-8. Chcete-li vyplnit pole s pevnými hodnotami, byste měli zaškrtnout políčko použít vlastní šablonu, jinak zvolit použití existující [šablony](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) z rozevíracího seznamu a vyplnit pole šablony pevnými hodnotami.
+8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu** . V opačném případě v seznamu **šablon** vyberte existující [šablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a v polích šablony zadejte pevné hodnoty.
 
-9. Zaškrtnutím políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** každá položka konfigurace bude mít svou vlastní pracovní položku. To znamená, že bude jedna pracovní položka na jednu položku konfigurace a bude aktualizována podle výstrah, které budou vytvořeny.
-Pokud zrušíte zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , každá výstraha vytvoří novou pracovní položku, což znamená, že může být více než jedna výstraha pro jednu položku konfigurace.
+9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá položka konfigurace mít svou vlastní pracovní položku. Pro každou položku konfigurace bude k dispozici jedna pracovní položka. Bude aktualizován podle výstrah, které budou vytvořeny.
 
-10. Klikněte na **OK** .
+   Zrušíte-li zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
 
-Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se aktivuje výstraha, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
+   ![Snímek obrazovky, který zobrazuje okno lístku ITSM.](media/itsmc-overview/itsm-action-configuration.png)
+
+10. Vyberte **OK** .
+
+Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se výstraha aktivuje, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
 > [!NOTE]
 >
-> Informace o cenách ITSM akce najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) pro skupiny akcí.
-
-> [!NOTE]
+>- Informace o cenách akce ITSM najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) pro skupiny akcí.
 >
-> Pole krátký popis v definici pravidla výstrahy je při odeslání pomocí akce ITSM omezeno na 40 znaků.
+>
+>- Pole s krátkým popisem v definici pravidla výstrahy je při odeslání pomocí akce ITSM omezené na 40 znaků.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizujte a analyzujte data o incidentech a žádostech o změnu.
 
-V závislosti na vaší konfiguraci při nastavování připojení může konektor ITSM synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [následující části](#additional-information).
+V závislosti na konfiguraci při nastavování připojení se ITSMC může synchronizovat až 120 dní a data žádosti o změnu. Schéma záznamu protokolu pro tato data je k dispozici v [Další části](#additional-information) tohoto článku.
 
-Data incidentu a žádosti o změnu lze vizuálně vylepšovat pomocí řídicího panelu konektoru ITSM v řešení.
+Pomocí řídicího panelu ITSMC můžete vizualizovat incident a data žádosti o změnu.
 
-![Snímek obrazovky zobrazující řídicí panel konektoru ITSM](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![Snímek obrazovky zobrazující řídicí panel ITSMC](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-Řídicí panel také poskytuje informace o stavu konektoru, který lze použít jako výchozí bod k analýze případných problémů s připojením.
+Řídicí panel také poskytuje informace o stavu konektoru, který můžete použít jako výchozí bod k analýze problémů s připojením.
 
-Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v rámci řešení Service Map.
+Můžete také vizualizovat incidenty synchronizované s ovlivněnými počítači v Service Map.
 
-Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje zobrazit servery přirozeným způsobem – jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené pomocí protokolu TCP a nevyžaduje přitom žádnou konfiguraci kromě instalace agenta. [Přečtěte si další informace](../insights/service-map.md).
+Service Map automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Umožňuje vám zobrazit vaše servery podle toho, jak jste si je rozmysleli: jako propojené systémy, které poskytují důležité služby. Service Map zobrazuje připojení mezi servery, procesy a porty v rámci libovolné architektury připojené k protokolu TCP. Kromě instalace agenta není nutná žádná konfigurace. Další informace najdete v tématu [použití Service map](../insights/service-map.md).
 
-Pokud používáte řešení Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno v následujícím příkladu:
+Pokud používáte Service Map, můžete zobrazit položky oddělení služeb vytvořené v řešeních ITSM, jak je znázorněno zde:
 
-![Log Analytics obrazovce](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
-Další informace: [Service map](../insights/service-map.md)
+![Snímek obrazovky zobrazující Log Analytics obrazovku](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 
 ## <a name="additional-information"></a>Další informace
 
-### <a name="data-synced-from-itsm-product"></a>Data synchronizovaná z produktu ITSM
-Incidenty a žádosti o změnu se synchronizují z vašeho ITSM produktu do vašeho pracovního prostoru Log Analytics na základě konfigurace připojení.
+### <a name="data-synced-from-your-itsm-product"></a>Data synchronizovaná z produktu ITSM
+Incidenty a žádosti o změnu se synchronizují z vašeho ITSM produktu do vašeho pracovního prostoru Log Analytics v závislosti na konfiguraci připojení.
 
-Následující informace ukazují příklady dat shromažďovaných nástrojem ITSMC:
+V této části jsou uvedeny některé příklady dat shromažďovaných nástrojem ITSMC.
 
-> [!NOTE]
->
-> V závislosti na typu pracovní položky importovaném do Log Analytics **ServiceDesk_CL** obsahuje následující pole:
+Pole v **ServiceDesk_CL** se liší v závislosti na typu pracovní položky, který importujete do Log Analytics. Zde je seznam polí pro dva typy pracovních položek:
 
 **Pracovní položka:** **incidenty**  
 ServiceDeskWorkItemType_s = incident
@@ -298,28 +299,28 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojením ITSM
-1. Pokud se připojení nezdařilo z uživatelského rozhraní připojeného zdroje s **chybou při ukládání** zprávy o připojení, proveďte následující kroky:
-   - Pro připojení ServiceNow, Cherwell a prov,  
-   - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
-   - Zkontrolujte, jestli máte v odpovídajícím ITSM produktu dostatečná oprávnění pro vytvoření připojení.  
-   - Pro Service Manager připojení,  
-   - Zajistěte, aby byla webová aplikace úspěšně nasazena a vytvořilo se hybridní připojení. Pokud chcete ověřit, že se připojení úspěšně navázalo na místním Service Manager počítači, přejděte na adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection).  
+- Pokud se připojení z uživatelského rozhraní připojeného zdroje nepovede a zobrazí se **Chyba při ukládání** zprávy o připojení, proveďte následující kroky:
+   - Pro připojení ServiceNow, Cherwell a prov:  
+     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný klíč klienta pro každé připojení.  
+     - Ujistěte se, že máte v odpovídajícím ITSM produktu dostatečná oprávnění pro připojení.  
+   - Pro Service Manager připojení:  
+     - Ujistěte se, že je webová aplikace úspěšně nasazená a že je vytvořené hybridní připojení. Pokud chcete ověřit, jestli se úspěšně navázalo připojení k místnímu Service Managermu počítači, přečtěte si adresu URL webové aplikace, jak je popsáno v dokumentaci pro vytvoření [hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection).  
 
-2. Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance pro vývoj v ServiceNow se někdy po dlouhou dobu nečinným přechodem do režimu spánku. Jinak nahlaste problém.
-3. Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM nebo položky konfigurace nejsou vytvořené/propojené s pracovními položkami nebo pro jiné obecné informace, podívejte se do následujících umístění:
-   -  ITSMC: řešení zobrazuje souhrn připojení/pracovních položek/počítačů atd. Klikněte na dlaždici se **stavem konektoru** , který vám umožní **Protokolovat hledání**  pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s LogType_S chybě.
-   - Stránka **prohledávání protokolu** : zobrazení chyb/souvisejících informací přímo pomocí `*` ServiceDeskLog_CL dotazů `*` .
+- Pokud se data z ServiceNow nesynchronizují Log Analytics, ujistěte se, že instance ServiceNow není v režimu spánku. Instance ServiceNow dev někdy přecházejí do režimu spánku, pokud jsou nečinné po dlouhou dobu. Pokud to neudělá, nahlaste problém.
+- Pokud se Log Analytics výstrahy aktivují, ale pracovní položky se nevytvoří v produktu ITSM, pokud se položky konfigurace nevytvoří/propojí s pracovními položkami nebo další informace, podívejte se na tyto zdroje:
+   -  ITSMC: řešení zobrazuje souhrn připojení, pracovních položek, počítačů a dalších. Vyberte dlaždici, která má popisek **stavu konektoru** . Provedete to tak, že přejdete do **protokolu hledání** pomocí příslušného dotazu. Další informace najdete v záznamech protokolu s `LogType_S` `ERROR` .
+   - Stránka **hledání v protokolu** : zobrazí chyby a související informace přímo pomocí dotazu `*ServiceDeskLog_CL*` .
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazením Service Manager Web App
-1.  V případě jakýchkoli problémů s nasazením webové aplikace se ujistěte, že máte dostatečná oprávnění v předplatném, zmíněné pro vytváření a nasazování prostředků.
-2.  Pokud se při spuštění [skriptu](itsmc-service-manager-script.md)zobrazí chyba **"odkaz na objekt není nastaven na instanci objektu"** , ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
-3.  Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, zajistěte, aby byl v předplatném zaregistrován požadovaný poskytovatel prostředků. Pokud není zaregistrován, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection) z Azure Portal.
+-   Pokud máte problémy s nasazením webové aplikace, ujistěte se, že máte oprávnění k vytváření a nasazování prostředků v rámci předplatného.
+-   Pokud získáte **odkaz na objekt není nastaven na instanci objektu** při spuštění [skriptu](itsmc-service-manager-script.md), ujistěte se, že jste zadali platné hodnoty v části **Konfigurace uživatele** .
+-   Pokud se vám nepodaří vytvořit obor názvů služby Service Bus Relay, ujistěte se, že je v předplatném registrovaný požadovaný poskytovatel prostředků. Pokud není zaregistrované, ručně vytvořte obor názvů služby Service Bus Relay z Azure Portal. Můžete ho také vytvořit při [vytváření hybridního připojení](./itsmc-connections.md#configure-the-hybrid-connection) v Azure Portal.
 
 
 ## <a name="contact-us"></a>Kontaktujte nás
 
-Pokud máte jakékoli dotazy nebo připomínky ke konektoru pro IT služby IT, kontaktujte nás na adrese [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
+Pokud máte dotazy nebo připomínky ke konektoru správy IT služeb, kontaktujte nás na adrese [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) .
 
 ## <a name="next-steps"></a>Další kroky
-[Přidejte ITSM produkty/služby do konektoru správy služeb IT](./itsmc-connections.md).
+[Přidat ITSM produkty/služby do konektoru správy služeb IT](./itsmc-connections.md)
 

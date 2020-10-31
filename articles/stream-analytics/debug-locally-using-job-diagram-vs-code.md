@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f8885229c8ab6784c6c0bf45487812fcc43f9b22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903828"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124165"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Ladění Azure Stream Analytics dotazů místně pomocí diagramu úloh v Visual Studio Code
 
@@ -31,7 +31,7 @@ V tomto [rychlém](quick-create-visual-studio-code.md) startu se dozvíte, jak v
 
 Pokud chcete otestovat dotaz pomocí místních vstupních dat, postupujte podle těchto [pokynů](visual-studio-code-local-run.md). Pokud chcete provést test pomocí živého vstupu, [nakonfigurujte vstupní](stream-analytics-add-inputs.md) přesun na další krok. 
 
-Otevřete soubor skriptu * \. asaql* a vyberte **spustit místně**. Pak vyberte **použít místní vstup** nebo **použít živý vstup**. Diagram úlohy se zobrazí na pravé straně okna.
+Otevřete soubor skriptu *\. asaql* a vyberte **spustit místně** . Pak vyberte **použít místní vstup** nebo **použít živý vstup** . Diagram úlohy se zobrazí na pravé straně okna.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Zobrazit výstupní a průběžnou sadu výsledků  
 
@@ -56,7 +56,7 @@ V této části prozkoumáte metriky, které jsou k dispozici pro každou část
    > [!div class="mx-imgBorder"]
    > ![Metriky diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/job-metrics.png)
 
-3. Pokud chcete zobrazit vstupní metriky, vyberte v rozevíracím seznamu název vstupního zdroje dat. Zdroj vstupu na snímku obrazovky níže se nazývá *uvozovky*. Další informace o vstupních metrikách najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
+3. Pokud chcete zobrazit vstupní metriky, vyberte v rozevíracím seznamu název vstupního zdroje dat. Zdroj vstupu na snímku obrazovky níže se nazývá *uvozovky* . Další informace o vstupních metrikách najdete v tématu [pochopení Stream Analytics monitorování úloh a postup monitorování dotazů](stream-analytics-monitoring.md).
 
    > [!div class="mx-imgBorder"]
    > ![Vstupní metrika diagramu úloh](./media/debug-locally-using-job-diagram-vs-code/input-metrics.png)
@@ -104,7 +104,7 @@ Vyberte **Souhrn úlohy** v pravém horním rohu diagramu úlohy, abyste viděli
 
 * Vlastní kód a Azure Machine Learning funkce jazyka C# nejsou podporovány. 
 
-* Pouze možnosti cloudového vstupu mají podporu [časových zásad](stream-analytics-out-of-order-and-late-events.md) , zatímco možnosti místního vstupu ne.
+* Pouze možnosti cloudového vstupu mají podporu [časových zásad](./stream-analytics-time-handling.md) , zatímco možnosti místního vstupu ne.
 
 ## <a name="next-steps"></a>Další kroky
 

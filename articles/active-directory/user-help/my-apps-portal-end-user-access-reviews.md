@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124808"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Provedení kontroly přístupu z portálu moje aplikace
 
@@ -62,11 +62,11 @@ Pokud vám správce udělil oprávnění k provádění vlastních kontrol pří
 
 6. Vyberte **Ano** , pokud chcete zachovat přístup nebo **ne** pro odebrání přístupu.
 
-    Pokud vyberete **Ano**, možná budete muset zadat odůvodnění v poli **důvod** .
+    Pokud vyberete **Ano** , možná budete muset zadat odůvodnění v poli **důvod** .
 
     ![Stránka pro kontrolu přístupu, která zobrazuje pole důvod s ukázkovým textem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Vyberte **Odeslat**.
+7. Vyberte **Odeslat** .
 
     Vaše kontrola přístupu je hotová a vrátíte se na portál **Moje aplikace** .
 
@@ -76,5 +76,5 @@ Pokud vám správce udělil oprávnění k provádění vlastních kontrol pří
 ## <a name="next-steps"></a>Další kroky
 
 - [Přístup k aplikacím a jejich používání na portálu moje aplikace](my-apps-portal-end-user-access.md)
-- [Změna informací o profilu](my-apps-portal-end-user-update-profile.md)
+- [Změna informací o profilu](./my-account-portal-settings.md)
 - [Zobrazit a aktualizovat informace související se skupinami](my-apps-portal-end-user-groups.md)

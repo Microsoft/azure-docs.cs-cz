@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231125"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123128"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Rutiny Azure AD PowerShellu pro vytváření sestav
 
@@ -54,12 +54,12 @@ Přístup k protokolům auditu získáte pomocí rutiny Get-AzureADAuditDirector
 | Zobrazovaný název aplikace      | Get-AzureADAuditDirectoryLogs filtr "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "" |
 | Kategorie                      | Get-AzureADAuditDirectoryLogs-filtr "Category EQ" ApplicationManagement "" |
 | Datum a čas aktivity            | Get-AzureADAuditDirectoryLogs – filtr "activityDateTime gt 2019-04-18" |
-| Všechny výše uvedené možnosti              | Get-AzureADAuditDirectoryLogs filtr "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "and Category EQ" ApplicationManagement "and activityDateTime gt 2019-04-18"|
+| Všechny výše uvedené              | Get-AzureADAuditDirectoryLogs filtr "initiatedBy/App/DisplayName EQ" Azure AD Cloud Sync "and Category EQ" ApplicationManagement "and activityDateTime gt 2019-04-18"|
 
 
 Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
 
-![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![Snímek obrazovky ukazuje výsledek Get-Azure příkazu D auditu adresáře auditu.](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -76,12 +76,12 @@ Přístup k protokolům přihlášení získáte pomocí rutiny Get-AzureADAudit
 | Vytvořit datum a čas              | Get-AzureADAuditSignInLogs-Filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (vše od 5:30 pm v 4/18) |
 | Status                        | Get-AzureADAuditSignInLogs filtr "status/errorCode EQ 50105" |
 | Zobrazovaný název aplikace      | Get-AzureADAuditSignInLogs-Filter "appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
-| Všechny výše uvedené možnosti              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "and status/errorCode New 0 a appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
+| Všechny výše uvedené              | Get-AzureADAuditSignInLogs-Filter "userDisplayName EQ" Alexander Perkins "and status/errorCode New 0 a appDisplayName EQ" StoreFrontStudio [wsfed Enabled] "" |
 
 
 Příklad tohoto příkazu je znázorněn na následujícím obrázku. 
 
-![Tlačítko Souhrn dat](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![Snímek obrazovky ukazuje výsledek Get-Azure příkazu pro přihlášení k auditu v protokolu D.](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

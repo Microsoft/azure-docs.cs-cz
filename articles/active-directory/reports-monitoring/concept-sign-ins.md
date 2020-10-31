@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23074dcd7ee888d6d9d8bf288cf0fda66dc0ceec
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319760"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122839"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -58,13 +58,13 @@ Sestava přihlášení uživatelů poskytuje odpovědi na následující otázky
 * Kolik uživatelů se přihlásilo za týden?
 * Jaký je stav těchto přihlášení?
 
-V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
+V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory** nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
 
 ![Vyberte Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-V části **monitorování**vyberte **přihlášení** a otevřete [sestavu přihlášení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
+V části **monitorování** vyberte **přihlášení** a otevřete [sestavu přihlášení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns).
 
-![Přihlašovací aktivita](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aktivita přihlášení")
+![Snímek obrazovky zobrazující přihlášení vybraná z nabídky monitorování](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "Aktivita přihlášení")
 
 Může trvat až dvě hodiny, než se některé záznamy přihlášení zobrazí na portálu.
 
@@ -80,19 +80,19 @@ Protokol přihlášení má výchozí zobrazení seznamu, které obsahuje násle
 - Stav detekce rizik
 - Stav požadavku na vícefaktorové ověřování (MFA)
 
-![Přihlašovací aktivita](./media/concept-sign-ins/sign-in-activity.png "Aktivita přihlášení")
+![Snímek obrazovky se zobrazí přihlášení k SharePointu Online v Office 365.](./media/concept-sign-ins/sign-in-activity.png "Aktivita přihlášení")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/19.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje možnost sloupce na stránce přihlášení.](./media/concept-sign-ins/19.png "Aktivita přihlášení")
 
 Dialog **sloupce** vám umožní přístup k volitelným atributům. V sestavě přihlášení nemůžete mít pole, která mají více než jednu hodnotu pro danou žádost o přihlášení jako sloupec. Jedná se například o hodnotu true pro podrobnosti o ověřování, data podmíněného přístupu a umístění v síti.   
 
-![Přihlašovací aktivita](./media/concept-sign-ins/columns.png "Aktivita přihlášení")
+![Snímek obrazovky se zobrazí v dialogovém okně sloupce, kde můžete vybrat atributy.](./media/concept-sign-ins/columns.png "Aktivita přihlášení")
 
 Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznamu.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/basic-sign-in.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje podrobné zobrazení informací.](./media/concept-sign-ins/basic-sign-in.png "Aktivita přihlášení")
 
 > [!NOTE]
 > Zákazníci teď můžou řešit zásady podmíněného přístupu prostřednictvím všech sestav přihlášení. Kliknutím na kartu **podmíněný přístup** pro záznam pro přihlášení mohou zákazníci zkontrolovat stav podmíněného přístupu a podrobně do podrobností o zásadách, které se vztahují k přihlašování a výsledku pro jednotlivé zásady.
@@ -104,7 +104,7 @@ Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznam
 
 Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyhovovat. Za druhé filtrujte data přihlášení pomocí pole data jako výchozí filtr. Azure AD poskytuje širokou škálu dalších filtrů, které můžete nastavit:
 
-![Přihlašovací aktivita](./media/concept-sign-ins/04.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje možnost přidat filtry.](./media/concept-sign-ins/04.png "Aktivita přihlášení")
 
 **ID žádosti** – ID žádosti, o kterou vám záleží.
 
@@ -143,7 +143,7 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 ![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Název|Moderní ověřování|Popis|
+|Name|Moderní ověřování|Description|
 |---|:-:|---|
 |Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
 |Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
@@ -177,11 +177,11 @@ Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyho
 
 **Podmíněný přístup** – stav použitých pravidel podmíněného přístupu
 
-- **Nepoužito**: pro uživatele a aplikaci během přihlašování nebyly aplikovány žádné zásady.
+- **Nepoužito** : pro uživatele a aplikaci během přihlašování nebyly aplikovány žádné zásady.
 
-- **Úspěch**: jedna nebo více zásad podmíněného přístupu použitých pro uživatele a aplikaci (ale ne nutně i v ostatních podmínkách) během přihlašování. 
+- **Úspěch** : jedna nebo více zásad podmíněného přístupu použitých pro uživatele a aplikaci (ale ne nutně i v ostatních podmínkách) během přihlašování. 
 
-- **Selhání**: přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
+- **Selhání** : přihlášení splnilo podmínku pro uživatele a aplikaci alespoň pro jednu zásadu podmíněného přístupu a udělení těchto ovládacích prvků není splněno nebo je nastaveno pro blokování přístupu.
 
 
 
@@ -214,7 +214,7 @@ Azure AD a Azure Portal poskytují další vstupní body pro data přihlášení
 
 Graf přihlašování uživatelů na stránce Přehled **ochrany zabezpečení identity** zobrazuje týdenní agregace přihlášení. Výchozí hodnota pro časové období je 30 dní.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/06.png "Aktivita přihlášení")
+![Snímek obrazovky zobrazuje graf přihlášení za měsíc.](./media/concept-sign-ins/06.png "Aktivita přihlášení")
 
 Když v grafu přihlašování kliknete na konkrétní den, zobrazí se přehled aktivit přihlašování pro tento den.
 
@@ -242,9 +242,9 @@ Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
 > [!NOTE]
 > IP adresy se vydávají takovým způsobem, že mezi IP adresou neexistuje konečné připojení a kde je počítač s touto adresou fyzicky umístěný. Mapování IP adres je složité, protože mobilní poskytovatelé a sítě VPN vydávají IP adresy z centrálních fondů, které jsou často příliš daleko od místa, kde je klientské zařízení skutečně použito. V současné době se v sestavách Azure AD převádějí IP adresa na fyzické místo, což je nejlepší úsilí na základě trasování, dat registru, zpětného vyhledávání a dalších informací.
 
-Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
+Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita** .
 
-![Přihlašovací aktivita](./media/concept-sign-ins/08.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje část aktivity, kde můžete vybrat přihlášení.](./media/concept-sign-ins/08.png "Aktivita přihlášení")
 
 ## <a name="usage-of-managed-applications"></a>Použití spravovaných aplikací
 
@@ -254,17 +254,17 @@ S použitím zobrazení dat přihlašování zaměřeného na aplikace můžete 
 * Jaké jsou tři hlavní aplikace ve vaší organizaci?
 * Jak funguje moje nejnovější aplikace?
 
-Vstupním bodem k těmto datům jsou tři hlavní aplikace ve vaší organizaci. Data jsou obsažena v posledních 30 dnech sestavy v části **Přehled** v části **podnikové aplikace**.
+Vstupním bodem k těmto datům jsou tři hlavní aplikace ve vaší organizaci. Data jsou obsažena v posledních 30 dnech sestavy v části **Přehled** v části **podnikové aplikace** .
 
-![Přihlašovací aktivita](./media/concept-sign-ins/10.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje, kde můžete vybrat přehled.](./media/concept-sign-ins/10.png "Aktivita přihlášení")
 
 Grafy využití aplikace týdenní agregovaná přihlášení k vašim horním třem aplikacím v daném časovém období. Výchozí časové období je 30 dnů.
 
-![Přihlašovací aktivita](./media/concept-sign-ins/graph-chart.png "Aktivita přihlášení")
+![Snímek obrazovky ukazuje použití aplikace po dobu jednoho měsíce.](./media/concept-sign-ins/graph-chart.png "Aktivita přihlášení")
 
 Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 
-![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Generování sestav")
+![Generování sestav](./media/concept-sign-ins/single-app-usage-graph.png "Přehledy")
 
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 925a5000f9778689660765ef715dd8760d5340a2
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9d3c9d03c4297af0b9155c2d528e27221b42bc9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495974"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124831"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
-Pomocí digitálních vláken Azure můžete vytvářet a interagovat s živými modely vašich reálných prostředí. To se provádí modelováním jednotlivých prvků jako **digitálních vláken**a pak je propojíte do **grafu** znalostí, který může reagovat na živé události a dotazování na informace.
+Pomocí digitálních vláken Azure můžete vytvářet a interagovat s živými modely vašich reálných prostředí. To se provádí modelováním jednotlivých prvků jako **digitálních vláken** a pak je propojíte do **grafu** znalostí, který může reagovat na živé události a dotazování na informace.
 
 V tomto rychlém startu prozkoumáte předem sestavený graf digitálních vláken Azure, který vám pomůže s ukázkovou aplikací nazvanou [**Azure Digital Nevlákens (ADT) Explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Průzkumník služby ADT umožňuje nahrát digitální reprezentaci prostředí, zobrazit vizuální obrázky vláken a grafů, které jsou vytvořeny tak, aby představovaly prostředí v digitálních událostech Azure, a provádět další aktivity správy prostřednictvím vizuálního prostředí založeného na prohlížeči.
 
@@ -37,34 +37,32 @@ K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pok
 
 Budete také potřebovat **Node.js** na svém počítači. Nejnovější verzi můžete získat na tomto odkazu: [Node.js](https://nodejs.org/).
 
-Nakonec také budete muset stáhnout ukázku, která se má použít při rychlém startu: Ukázková aplikace **Průzkumníka aplikace ADT** . Tato ukázka obsahuje aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure a také ukázkových souborů scénářů. Ukázku získáte tak, že přejdete sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_. Rozbalte složku a extrahujte soubory.
+Nakonec také budete muset stáhnout ukázku, která se má použít při rychlém startu: Ukázková aplikace **Průzkumníka aplikace ADT** . Tato ukázka obsahuje aplikaci, kterou používáte v rychlém startu k načtení a prozkoumání scénáře digitálních vláken Azure a také ukázkových souborů scénářů. Ukázku získáte tak, že přejdete sem: [Průzkumník digitálních vláken Azure (ADT)](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/). Stiskněte tlačítko *Stáhnout soubor zip* a Stáhněte si *. Soubor ZIP* tohoto ukázkového kódu do vašeho počítače. Tím se stáhne. Složka ZIP na váš počítač jako _**Azure_Digital_Twins__ADT__explorer.zip**_ . Rozbalte složku a extrahujte soubory.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka služby ADT
 
-Prvním krokem při práci se službou Azure Digital proworking je nastavení **instance digitálních vláken Azure**. Po vytvoření instance služby ji budete moct naplnit pomocí ukázkových dat později v rychlém startu.
+Prvním krokem při práci se službou Azure Digital proworking je nastavení **instance digitálních vláken Azure** . Po vytvoření instance služby ji budete moct naplnit pomocí ukázkových dat později v rychlém startu.
 
-Nastavili jste taky oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači a přístup k instanci digitálních vláken Azure. To vám umožní prozkoumat svou instanci a data pomocí ukázkové aplikace.
+Nastavili jste taky oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači a přístup k instanci digitálního vlákna Azure, včetně nastavení **Registrace aplikace** Azure Active Directory (Azure AD), která se má použít. Potom můžete pomocí ukázkové aplikace prozkoumat svou instanci a její data.
 
 ### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Nastavení instance digitálních vláken Azure a registrace aplikací
 
-Nejdřív **nastavte instanci digitálních vláken Azure** a požadované ověřování, abyste s ním mohli pracovat. Provedete to podle pokynů v tématu [*Postupy: nastavení instance a ověřování*](how-to-set-up-instance-portal.md). V závislosti na preferovaných zkušenostech je k dispozici článek o instalaci pro [ukázkový skript nasazení](how-to-set-up-instance-scripted.md) [Azure Portal](how-to-set-up-instance-portal.md), [CLI](how-to-set-up-instance-cli.md)nebo automatizované Cloud Shell. Všechny verze pokynů také obsahují kroky k ověření, že jste dokončili každý krok úspěšně a že jste připraveni na přechod k používání nové instance.
-* Po nastavení instance digitálního vlákna Azure budete potřebovat **_název hostitele_** instance ([najít v portálu](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-Chcete-li ověřit aplikaci pro Průzkumníka aplikace ADT, budete také muset nastavit **registraci aplikace**. Postupujte podle pokynů v tématu [*Postupy: Vytvoření registrace aplikace*](how-to-create-app-registration.md) pro nastavení. 
-* Jakmile budete mít registraci aplikace, budete potřebovat ID **_aplikace (klienta)_** registrace a **_ID adresáře (_** klienta) ([najdete je na portálu](how-to-create-app-registration.md#collect-client-id-and-tenant-id)).
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
 
 ### <a name="set-adt-explorer-permissions"></a>Nastavení oprávnění Průzkumníka aplikace ADT
 
 Dále Připravte instanci digitálních vláken Azure, kterou jste vytvořili pro práci s Průzkumníkem aplikace ADT, což je místně hostovaná webová aplikace. Přejděte na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal a v seznamu vyberte název registrace vaší **aplikace** , kterou jste vytvořili v předchozí části.
 
-V nabídce registrace vyberte *ověřování* a stiskněte *+ Přidat platformu*.
+V nabídce registrace vyberte *ověřování* a stiskněte *+ Přidat platformu* .
 
 :::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
-Na následující stránce *Konfigurace platforem* vyberte *Web*.
+Na následující stránce *Konfigurace platforem* vyberte *Web* .
 Podrobnosti konfigurace vyplňte následujícím způsobem:
-* **Identifikátory URI pro přesměrování**: přidejte identifikátor URI přesměrování *http://localhost:3000* .
-* **Implicitní udělení**: zaškrtněte políčko pro *přístupové tokeny*.
+* **Identifikátory URI pro přesměrování** : přidejte identifikátor URI přesměrování *http://localhost:3000* .
+* **Implicitní udělení** : zaškrtněte políčko pro *přístupové tokeny* .
 
 Pro dokončení *Konfigurace* stiskněte klávesu.
 
@@ -76,7 +74,7 @@ Pro dokončení *Konfigurace* stiskněte klávesu.
     :::column-end:::
 :::row-end:::
 
-Nyní máte nakonfigurovanou konfiguraci webu, kterou použije Průzkumník aplikace ADT. Na kartě ověřování v Azure Portal by se měla odrážet. Po ověření níže uvedených částí stiskněte *Uložit*.
+Nyní máte nakonfigurovanou konfiguraci webu, kterou použije Průzkumník aplikace ADT. Na kartě ověřování v Azure Portal by se měla odrážet. Po ověření níže uvedených částí stiskněte *Uložit* .
 
 :::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
@@ -84,7 +82,7 @@ Nyní máte nakonfigurovanou konfiguraci webu, kterou použije Průzkumník apli
 
 V dalším kroku spusťte aplikaci aplikace ADT Explorer a nakonfigurujte ji pro instanci digitálních vláken Azure.
 
-Přejděte do složky Downloaded and unzip _**Azure_Digital_Twins__ADT__explorer**_ . Otevřete příkazový řádek v umístění složky *Azure_Digital_Twins__ADT__explorer/Client/src*.
+Přejděte do složky Downloaded and unzip _**Azure_Digital_Twins__ADT__explorer**_ . Otevřete příkazový řádek v umístění složky *Azure_Digital_Twins__ADT__explorer/Client/src* .
 
 Spusťte `npm install` , aby se stáhly všechny požadované závislosti.
 
@@ -107,7 +105,7 @@ Zadejte důležité informace, které jste shromáždili dříve v části [pož
 > Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné načtení přihlašovacího pole. Zachová se hodnoty, které jste předali.
 
 > [!TIP]
-> Pokud `SignalRService.subscribe` se při připojení zobrazí chybová zpráva, ujistěte se, že adresa URL digitálních vláken Azure začíná na *https://*.
+> Pokud `SignalRService.subscribe` se při připojení zobrazí chybová zpráva, ujistěte se, že adresa URL digitálních vláken Azure začíná na *https://* .
 
 Pokud se zobrazí *oprávnění požadované* automaticky otevírané okno od společnosti Microsoft, poskytněte pro tuto aplikaci souhlas a potvrďte pokračování.
 
@@ -119,7 +117,7 @@ V dalším kroku naimportujete vzorový scénář a graf do nástroje ADT Explor
 
 Prvním krokem v řešení digitálních vláken Azure je definování slovníku pro vaše prostředí. K tomu je potřeba vytvořit vlastní [**modely**](concepts-models.md), které popisují typy entit, které ve vašem prostředí existují. 
 
-Každý model je napsán v jazyce formátu JSON-LD, který se nazývá **DTDL (Digital Term Definition Language)**, a popisuje jediný typ entity z pohledu jeho *vlastností*, *telemetrie*, *vztahů*a *komponent*. Později použijete tyto modely jako základ pro digitální vlákna, které představuje konkrétní instance těchto typů.
+Každý model je napsán v jazyce formátu JSON-LD, který se nazývá **DTDL (Digital Term Definition Language)** , a popisuje jediný typ entity z pohledu jeho *vlastností* , *telemetrie* , *vztahů* a *komponent* . Později použijete tyto modely jako základ pro digitální vlákna, které představuje konkrétní instance těchto typů.
 
 Obvykle při vytváření modelu dokončíte tři kroky:
 1. Zapsat definici modelu (v rychlém startu, která je už hotová jako součást ukázkového řešení)
@@ -137,7 +135,7 @@ V poli *zobrazení modelu* stiskněte tlačítko nahrát ikonu *modelu* .
 :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. V zobrazeném poli pro výběr souboru přejděte do složky *Azure_Digital_Twins__ADT__explorer/Client/Examples* ve staženém úložišti.
-2. Vyberte *Room.jszapnuto* a *Floor.js*a stiskněte OK. (Pokud chcete, můžete nahrávat další modely, ale nepoužijí se v tomto rychlém startu.)
+2. Vyberte *Room.jszapnuto* a *Floor.js* a stiskněte OK. (Pokud chcete, můžete nahrávat další modely, ale nepoužijí se v tomto rychlém startu.)
 3. Použijte místní dialogové okno s výzvou, abyste se přihlásili ke svému účtu Azure.
 
 >[!NOTE]
@@ -174,11 +172,11 @@ V poli *zobrazení grafu* stiskněte ikonu *Import grafu* .
 
 :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-V poli pro výběr souboru přejděte do složky*Azure_Digital_Twins__ADT__explorer/Client/Examples* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
+V poli pro výběr souboru přejděte do složky *Azure_Digital_Twins__ADT__explorer/Client/Examples* a vyberte soubor tabulky _**buildingScenario.xlsx**_ . Tento soubor obsahuje popis ukázkového grafu. Stiskněte OK.
 
 Po několika sekundách otevře Průzkumník aplikace ADT zobrazení pro *Import* , ve kterém se zobrazí náhled grafu, který se bude načítat.
 
-Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém horním rohu *zobrazení grafu*:
+Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém horním rohu *zobrazení grafu* :
 
 :::row:::
     :::column:::
@@ -188,7 +186,7 @@ Pokud chcete potvrdit nahrávání grafu, stiskněte ikonu *Uložit* v pravém h
     :::column-end:::
 :::row-end:::
 
-Průzkumník aplikace ADT nyní pomocí nahraného souboru vytvoří požadované zdvojení a vztahy mezi nimi. Zobrazí se dialogové okno s označením, že je dokončeno. Stiskněte *Zavřít*.
+Průzkumník aplikace ADT nyní pomocí nahraného souboru vytvoří požadované zdvojení a vztahy mezi nimi. Zobrazí se dialogové okno s označením, že je dokončeno. Stiskněte *Zavřít* .
 
 :::row:::
     :::column:::
@@ -212,7 +210,7 @@ Teď si můžete prohlédnout nahraný graf ukázkového scénáře:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-Kruhy (grafy "uzly") reprezentují digitální vlákna a řádky prezentují relace. Uvidíte, že *Floor0* se nachází v *Room0*a vlákna *Floor1* obsahuje *Room1*.
+Kruhy (grafy "uzly") reprezentují digitální vlákna a řádky prezentují relace. Uvidíte, že *Floor0* se nachází v *Room0* a vlákna *Floor1* obsahuje *Room1* .
 
 Pokud používáte myš, můžete je přesunout kliknutím a přetažením částí grafu.
 
@@ -220,7 +218,7 @@ Pokud používáte myš, můžete je přesunout kliknutím a přetažením čás
 
 Můžete vybrat dvojitou hodnotu pro zobrazení seznamu vlastností a jejich hodnot v poli *Průzkumník vlastností* . 
 
-Tady jsou vlastnosti *Room0*:
+Tady jsou vlastnosti *Room0* :
 
 :::row:::
     :::column:::
@@ -230,9 +228,9 @@ Tady jsou vlastnosti *Room0*:
     :::column-end:::
 :::row-end:::
 
-Všimněte si, že *Room0* má teplotu **70**.
+Všimněte si, že *Room0* má teplotu **70** .
 
-Tady jsou vlastnosti *Room1*:
+Tady jsou vlastnosti *Room1* :
 
 :::row:::
     :::column:::
@@ -242,15 +240,15 @@ Tady jsou vlastnosti *Room1*:
     :::column-end:::
 :::row-end:::
 
-Všimněte si, že *Room1* má teplotu **80**.
+Všimněte si, že *Room1* má teplotu **80** .
 
 ### <a name="query-the-graph"></a>Dotazování grafu
 
 Hlavní funkcí digitálních vláken Azure je schopnost snadno a efektivně [dotazovat](concepts-query-language.md) se na váš graf, aby odpovídal na dotazy týkající se vašeho prostředí. 
 
-Jedním ze způsobů, jak zadat dotaz na vlákna v grafu, je podle jejich *vlastností*. Dotazování na základě vlastností může přispět k zodpovězení nejrůznějších otázek, včetně vyhledávání životních hodnot ve vašem prostředí, které by mohly vyžadovat pozornost.
+Jedním ze způsobů, jak zadat dotaz na vlákna v grafu, je podle jejich *vlastností* . Dotazování na základě vlastností může přispět k zodpovězení nejrůznějších otázek, včetně vyhledávání životních hodnot ve vašem prostředí, které by mohly vyžadovat pozornost.
 
-V této části spustíte dotaz na odpověď na následující otázku: _ **co jsou všechny vlákna v mém prostředí s teplotou vyšší než 75?**_
+V této části spustíte dotaz na odpověď na následující otázku: _**co jsou všechny vlákna v mém prostředí s teplotou vyšší než 75?**_
 
 Pokud chcete zobrazit odpověď, spusťte následující dotaz v poli *Průzkumník dotazů* :
 
@@ -258,20 +256,20 @@ Pokud chcete zobrazit odpověď, spusťte následující dotaz v poli *Průzkumn
 SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 ```
 
-Odvolání ze zobrazení vlastností s dvojitou platností dříve, než *Room0* má teplotu **70** a *Room1* má teplotu **80**. Výsledkem je, že se tady zobrazí jenom _**Room1é**_ výsledky.
+Odvolání ze zobrazení vlastností s dvojitou platností dříve, než *Room0* má teplotu **70** a *Room1* má teplotu **80** . Výsledkem je, že se tady zobrazí jenom _**Room1é**_ výsledky.
     
 :::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
-> Jiné operátory porovnání ( *<* , *>* , *=* , nebo *! =*) jsou podporovány také v rámci dotazu výše. Můžete se pokusit o připojení těchto, různých hodnot nebo různých vlastností do dotazu, abyste si vyzkoušeli odpovědi na vlastní otázky.
+> Jiné operátory porovnání ( *<* , *>* , *=* , nebo *! =* ) jsou podporovány také v rámci dotazu výše. Můžete se pokusit o připojení těchto, různých hodnot nebo různých vlastností do dotazu, abyste si vyzkoušeli odpovědi na vlastní otázky.
 
 ## <a name="edit-data-in-the-graph"></a>Úprava dat v grafu
 
-Pomocí Průzkumníka programu ADT můžete upravit vlastnosti vláken reprezentovaných v grafu. V této části zvýšíme ** _teplotu_ Room0 až 76**.
+Pomocí Průzkumníka programu ADT můžete upravit vlastnosti vláken reprezentovaných v grafu. V této části zvýšíme **_teplotu_ Room0 až 76** .
 
-Provedete to tak, že vyberete *Room0*a v poli *Průzkumník vlastností* zadáte seznam vlastností.
+Provedete to tak, že vyberete *Room0* a v poli *Průzkumník vlastností* zadáte seznam vlastností.
 
-Vlastnosti v tomto seznamu lze upravovat. Vyberte hodnotu teploty **70** a povolte tak zadání nové hodnoty. Zadejte **76**a stiskněte ikonu *Uložit* a aktualizujte teplotu na **76**.
+Vlastnosti v tomto seznamu lze upravovat. Vyberte hodnotu teploty **70** a povolte tak zadání nové hodnoty. Zadejte **76** a stiskněte ikonu *Uložit* a aktualizujte teplotu na **76** .
 
 :::row:::
     :::column:::
@@ -281,17 +279,17 @@ Vlastnosti v tomto seznamu lze upravovat. Vyberte hodnotu teploty **70** a povol
     :::column-end:::
 :::row-end:::
 
-Po úspěšném uložení se zobrazí okno s *informacemi o opravě* , které zobrazuje kód opravy, který se použil na pozadí s [rozhraními API](how-to-use-apis-sdks.md) pro digitální vlákna Azure, která tuto aktualizaci provedla. Stiskněte *Zavřít*.
+Po úspěšném uložení se zobrazí okno s *informacemi o opravě* , které zobrazuje kód opravy, který se použil na pozadí s [rozhraními API](how-to-use-apis-sdks.md) pro digitální vlákna Azure, která tuto aktualizaci provedla. Stiskněte *Zavřít* .
 
 ### <a name="query-to-see-the-result"></a>Dotaz pro zobrazení výsledku
 
-Pokud chcete ověřit, že se v grafu úspěšně zaregistrovala vaše aktualizace na teplotu *Room0*, spusťte dotaz znovu z předchozích verzí a **Získejte všechny vlákna v prostředí s teplotou vyšší 75**:
+Pokud chcete ověřit, že se v grafu úspěšně zaregistrovala vaše aktualizace na teplotu *Room0* , spusťte dotaz znovu z předchozích verzí a **Získejte všechny vlákna v prostředí s teplotou vyšší 75** :
 
 ```SQL
 SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 ```
 
-Teď, když se teplota *Room0* změnila z **70** na **76**, ve výsledku by se měla zobrazit obě vlákna.
+Teď, když se teplota *Room0* změnila z **70** na **76** , ve výsledku by se měla zobrazit obě vlákna.
 
 :::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
@@ -322,7 +320,7 @@ V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou j
 az ad app delete --id <your-application-ID>
 ```
 
-Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do místního počítače (_**Azure_Digital_Twins__ADT__explorer**_). Možná bude nutné odstranit verze zip i unzip.
+Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do místního počítače ( _**Azure_Digital_Twins__ADT__explorer**_ ). Možná bude nutné odstranit verze zip i unzip.
 
 ## <a name="next-steps"></a>Další kroky 
 
