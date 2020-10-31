@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ca5bdf606b51b4019bd9e655d172733074febd39
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: bd5e05f38d34199d9012c52ca3fdad33af231aad
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077987"
+ms.locfileid: "93127977"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Rychlý Start: vytvoření mezipaměti podnikové vrstvy (Preview)
 
@@ -29,7 +29,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
 
 1. Na stránce **Nový** vyberte **databáze** a pak vyberte **Azure cache pro Redis** .
    
-   ![Vybrat mezipaměť Azure pro Redis](media/cache-create/new-cache-menu.png)
+   :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Vybrat mezipaměť Azure pro Redis":::
    
 1. Na stránce **nový Redis Cache** nakonfigurujte nastavení pro novou mezipaměť.
    
@@ -41,7 +41,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
    | **Umístění** | Rozevírací seznam a vyberte umístění. | Úrovně Enterprise jsou dostupné v omezených oblastech Azure ve verzi Preview. |
    | **Typ mezipaměti** | Rozevírací seznam a vyberte úroveň *podnikového* a podnikového *Flash* a velikost. |  Úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro mezipaměť. |
    
-   ![Základy na podnikové úrovni](media/cache-create/enterprise-tier-basics.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-basics.png" alt-text="Vybrat mezipaměť Azure pro Redis":::
 
    > [!NOTE] 
    > Než budete pokračovat, nezapomeňte zaškrtnout políčko "terms".
@@ -53,11 +53,11 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
    > Možnost privátního odkazu je zastaralá a nemusí být k dispozici okamžitě ve vaší oblasti.
    >
 
-1. Vyberte **Další: Upřesnit** .
+1. Vyberte **Další: Upřesnit** a nastavte **zásady clusteringu** na **Enterprise** .
    
    Můžete ponechat výchozí nastavení nebo je podle potřeby změnit. Když zapnete **Povolení přístupu přes protokol TLS** , musíte k přístupu k nové mezipaměti z aplikace použít protokol TLS.
 
-   ![Rozšířená úroveň Enterprise](media/cache-create/enterprise-tier-advanced.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-advanced.png" alt-text="Vybrat mezipaměť Azure pro Redis":::
 
    > [!NOTE] 
    > Redis moduly se zatím nepodporují ve vrstvě Enterprise Flash. Pokud máte v úmyslu použít modul Redis, nezapomeňte zvolit mezipaměť podnikové vrstvy.
@@ -67,7 +67,7 @@ Než začnete, budete potřebovat předplatné Azure. Pokud ho ještě nemáte, 
 
 1. Vyberte **Další: Zkontrolovat a vytvořit** .
 
-   ![Souhrn úrovně Enterprise](media/cache-create/enterprise-tier-summary.png) 
+   :::image type="content" source="media/cache-create/enterprise-tier-summary.png" alt-text="Vybrat mezipaměť Azure pro Redis":::
 
 1. Zkontrolujte nastavení a klikněte na **vytvořit** .
    

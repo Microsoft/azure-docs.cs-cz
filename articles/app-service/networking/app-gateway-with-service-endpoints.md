@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746195"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127820"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Integrace Application Gateway s koncovými body služby
 Existují tři variace App Service, které vyžadují mírně odlišnou konfiguraci integrace s Azure Application Gateway. Mezi varianty patří běžné App Service – také označované jako víceklientské, interní Load Balancer (interního nástroje) App Service Environment (pomocného mechanismu) a externí pomocný modul pro čtení. Tento článek vás seznámí s postupem, jak ho nakonfigurovat App Service (multi-tenant) a diskuze o požadavcích na interního nástroje a externím pomocném mechanismem.
@@ -27,7 +27,7 @@ Existují tři variace App Service, které vyžadují mírně odlišnou konfigur
 ## <a name="integration-with-app-service-multi-tenant"></a>Integrace s App Service (více tenantů)
 App Service (víceklientské tenant) má veřejný internetový koncový bod. Pomocí [koncových bodů služby](../../virtual-network/virtual-network-service-endpoints-overview.md) můžete povolený provoz jenom z konkrétní podsítě v rámci Azure Virtual Network a zablokovat všechno ostatní. V následujícím scénáři použijeme tuto funkci k zajištění toho, aby instance App Service mohla přijímat jenom přenosy z konkrétní instance Application Gateway.
 
-![Application Gateway integrace s App Service](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+![Diagram zobrazuje Internet, který se bude nacházet Application Gateway v Azure Virtual Network a prostřednictvím ikony brány firewall na instancích aplikací v App Service.](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
 Existují dvě části této konfigurace, kromě vytvoření App Service a Application Gateway. První část povoluje koncové body služby v podsíti Virtual Network, kde je Application Gateway nasazený. Koncové body služby zajistí, že veškerý síťový provoz, který opouští podsíť, do App Service, bude označený IDENTIFIKÁTORem konkrétní podsítě. Druhá část je nastavit omezení přístupu konkrétní webové aplikace, aby se zajistilo, že bude povolený jenom provoz označený pomocí tohoto konkrétního ID podsítě. Můžete ji nakonfigurovat pomocí různých nástrojů v závislosti na preferencích.
 
@@ -40,7 +40,7 @@ V Azure Portal budete postupovat podle čtyř kroků, kterými instalaci zříd�
 
 Nyní můžete k App Service přistupovat prostřednictvím Application Gateway, ale pokud se pokusíte získat přístup k App Service přímo, měli byste obdržet chybu 403 HTTP s oznámením, že web je zastavený.
 
-![Application Gateway integrace s App Service](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![Snímek obrazovky znázorňující text chyby 403 – Tato webová aplikace je zastavena.](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
 [Šablona nasazení Správce prostředků][template-app-gateway-app-service-complete] zřídí kompletní scénář. Scénář se skládá z instance App Service uzamčená s koncovými body služby a omezením přístupu pouze pro příjem provozu z Application Gateway. Šablona obsahuje mnoho inteligentních výchozích hodnot a jedinečné přípony, které jsou přidány do názvů prostředků, aby byly jednoduché. Pokud je chcete přepsat, budete muset klonovat úložiště nebo stáhnout šablonu a upravit ji. 

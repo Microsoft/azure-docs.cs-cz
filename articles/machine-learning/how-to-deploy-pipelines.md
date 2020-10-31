@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128771"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak sdílet kanál strojového učení se svými k
 
 Kanály strojového učení jsou opakovaně použitelnými pracovními postupy pro úlohy strojového učení. Jedna výhoda kanálů zvyšuje spolupráci. Můžete také vytvářet verze kanálů a umožnit tak zákazníkům používat aktuální model při práci na nové verzi. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvoření [pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md) pro uložení všech prostředků kanálu
 
@@ -95,9 +95,148 @@ response = requests.post(published_pipeline1.endpoint,
 | `DataSetDefinitionValueAssignments` | Slovník používaný pro změnu datových sad bez přeškolení (viz diskuze níže) | 
 | `DataPathAssignments` | Slovník používaný pro změnu datapaths bez přeškolení (viz diskuze níže) | 
 
+### <a name="run-a-published-pipeline-using-c"></a>Spuštění publikovaného kanálu pomocí jazyka C # 
+
+Následující kód ukazuje, jak se má vytvořit asynchronní volání kanálu z jazyka C#. Částečný fragment kódu právě ukazuje strukturu volání a není součástí ukázky společnosti Microsoft. Nezobrazuje kompletní třídy nebo zpracování chyb. 
+
+```csharp
+[DataContract]
+public class SubmitPipelineRunRequest
+{
+    [DataMember]
+    public string ExperimentName { get; set; }
+
+    [DataMember]
+    public string Description { get; set; }
+
+    [DataMember(IsRequired = false)]
+    public IDictionary<string, string> ParameterAssignments { get; set; }
+}
+
+// ... in its own class and method ... 
+const string RestEndpoint = "your-pipeline-endpoint";
+
+using (HttpClient client = new HttpClient())
+{
+    var submitPipelineRunRequest = new SubmitPipelineRunRequest()
+    {
+        ExperimentName = "YourExperimentName", 
+        Description = "Asynchronous C# REST api call", 
+        ParameterAssignments = new Dictionary<string, string>
+        {
+            {
+                // Replace with your pipeline parameter keys and values
+                "your-pipeline-parameter", "default-value"
+            }
+        }
+    };
+
+    string auth_key = "your-auth-key"; 
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth_key);
+
+    // submit the job
+    var requestPayload = JsonConvert.SerializeObject(submitPipelineRunRequest);
+    var httpContent = new StringContent(requestPayload, Encoding.UTF8, "application/json");
+    var submitResponse = await client.PostAsync(RestEndpoint, httpContent).ConfigureAwait(false);
+    if (!submitResponse.IsSuccessStatusCode)
+    {
+        await WriteFailedResponse(submitResponse); // ... method not shown ...
+        return;
+    }
+
+    var result = await submitResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+    var obj = JObject.Parse(result);
+    // ... use `obj` dictionary to access results
+}
+```
+
+### <a name="run-a-published-pipeline-using-java"></a>Spuštění publikovaného kanálu pomocí Java
+
+Následující kód ukazuje volání kanálu, který vyžaduje ověření (viz [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md)). Pokud je váš kanál nasazený veřejně, nepotřebujete volání, která vytváří `authKey` . Částečný fragment kódu nezobrazuje kódování Java Class a Exception-zpracovává. Kód používá `Optional.flatMap` pro zřetězení funkcí, které mohou vracet prázdné `Optional` . Použití `flatMap` zkratek a objasnění kódu, ale Upozorňujeme, že se `getRequestBody()` výjimky požití.
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Optional;
+// JSON library
+import com.google.gson.Gson;
+
+String scoringUri = "scoring-endpoint";
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+String dataToBeScored = "{ \"ExperimentName\" : \"My_Pipeline\", \"ParameterAssignments\" : { \"pipeline_arg\" : \"20\" }}";
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+Optional<String> authBody = getRequestBody(client, tokenAuthenticationRequest);
+Optional<String> authKey = authBody.flatMap(body -> Optional.of(gson.fromJson(body, AuthenticationBody.class).access_token);;
+Optional<HttpRequest> scoringRequest = authKey.flatMap(key -> Optional.of(scoringRequest(key, scoringUri, dataToBeScored)));
+Optional<String> scoringResult = scoringRequest.flatMap(req -> getRequestBody(client, req));
+// ... etc (`scoringResult.orElse()`) ... 
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl)
+{
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(authUrl))
+        .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+        .build();
+    return request;
+}
+
+static HttpRequest scoringRequest(String authKey, String scoringUri, String dataToBeScored)
+{
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(scoringUri))
+        .header("Authorization", String.format("Token %s", authKey))
+        .POST(HttpRequest.BodyPublishers.ofString(dataToBeScored))
+        .build();
+    return request;
+
+}
+
+static Optional<String> getRequestBody(HttpClient client, HttpRequest request) {
+    try {
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            System.out.println(String.format("Unexpected server response %d", response.statusCode()));
+            return Optional.empty();
+        }
+        return Optional.of(response.body());
+    }catch(Exception x)
+    {
+        System.out.println(x.toString());
+        return Optional.empty();
+    }
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
 ### <a name="changing-datasets-and-datapaths-without-retraining"></a>Změna datových sad a datových cest bez přeškolení
 
-Je možné, že budete chtít naučit a odvozovat na různých datových sadách a datacestách. Například můžete chtít vytvořit na menší, zhuštěnou datovou sadu, ale odvozovat pro kompletní datovou sadu. Datové sady můžete přepínat pomocí `DataSetDefinitionValueAssignments` klíče v `json` argumentu požadavku. V případě, že jste přepnuli datapaths `DataPathAssignments` . Postup pro obojí je podobný:
+Je možné, že budete chtít naučit a odvozovat na různých datových sadách a datacestách. Například můžete chtít vytvořit z menší datové sady, ale odvozovat pro kompletní datovou sadu. Datové sady můžete přepínat pomocí `DataSetDefinitionValueAssignments` klíče v `json` argumentu požadavku. V případě, že jste přepnuli datapaths `DataPathAssignments` . Postup pro obojí je podobný:
 
 1. Ve svém skriptu definice kanálu vytvořte `PipelineParameter` pro datovou sadu. Vytvořte `DatasetConsumptionConfig` nebo `DataPath` z `PipelineParameter` :
 
@@ -155,7 +294,7 @@ Poznámkové bloky [předvádí DataSet a PipelineParameter](https://github.com/
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Vytvoření koncového bodu kanálu se správou verzí
 
-Koncový bod kanálu můžete vytvořit s několika publikovanými kanály. Získáte tak pevný koncový bod REST při iteraci a aktualizujete kanály ML.
+Koncový bod kanálu můžete vytvořit s několika publikovanými kanály. Tento postup vám poskytne pevný koncový bod REST při iteraci a aktualizuje vaše kanály ML.
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint
@@ -201,9 +340,9 @@ Můžete také spustit publikovaný kanál z studia:
 
 1. [Zobrazení pracovního prostoru](how-to-manage-workspace.md#view)
 
-1. Na levé straně vyberte **koncové body**.
+1. Na levé straně vyberte **koncové body** .
 
-1. V horní části vyberte **koncové body kanálu**.
+1. V horní části vyberte **koncové body kanálu** .
  ![Seznam publikovaných kanálů ve strojovém učení](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. Vyberte konkrétní kanál, který se má spustit, spotřebovat nebo zkontrolovat výsledky předchozích spuštění koncového bodu kanálu.

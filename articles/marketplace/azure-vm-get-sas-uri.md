@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: b927e90c60110d6922649b75b6549528a2a9a40f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283876"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129112"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Jak vygenerovat identifikátor URI SAS pro image virtuálního počítače
 
@@ -34,12 +34,12 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>Použití nástroje 1: Průzkumník služby Azure Storage
 
-1. Přejít na **účet úložiště**.
-1. Otevřete **Průzkumník služby Storage**.
+1. Přejít na **účet úložiště** .
+1. Otevřete **Průzkumník služby Storage** .
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="Okno účtu úložiště.":::
 
-3. V **kontejneru**klikněte pravým tlačítkem na soubor VHD a vyberte **získat přístupový podpis sdílení**.
+3. V **kontejneru** klikněte pravým tlačítkem na soubor VHD a vyberte **získat přístupový podpis sdílení** .
 4. V dialogovém okně **sdílený přístupový podpis** vyplňte následující pole:
 
     1. Čas spuštění – datum zahájení oprávnění pro přístup VHD. Zadejte datum, které je před aktuálním datem jeden den.
@@ -49,7 +49,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
     ![Dialogové okno sdílený přístupový podpis.](media/vm/create-sas-uri-storage-explorer.png)
 
-5. Pokud chcete vytvořit přidružený identifikátor URI SAS pro tento virtuální pevný disk, vyberte **vytvořit**.
+5. Pokud chcete vytvořit přidružený identifikátor URI SAS pro tento virtuální pevný disk, vyberte **vytvořit** .
 6. Zkopírujte identifikátor URI a uložte ho do textového souboru v zabezpečeném umístění. Tento vygenerovaný identifikátor URI SAS je pro přístup na úrovni kontejneru. Pokud to chcete udělat, upravte textový soubor a přidejte název VHD.
 7. Po řetězci VHD v identifikátoru URI SAS vložte název virtuálního pevného disku (včetně lomítka). Výsledný identifikátor URI SAS by měl vypadat takto:
 
@@ -59,7 +59,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
 ### <a name="using-tool-2-azure-cli"></a>Použití nástroje 2: Azure CLI
 
-1. Stáhněte a nainstalujte [Microsoft Azure CL](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)I. Verze jsou k dispozici pro Windows, macOS a různé distribucey systému Linux.
+1. Stáhněte a nainstalujte [Microsoft Azure CL](/cli/azure/install-azure-cli)I. Verze jsou k dispozici pro Windows, macOS a různé distribucey systému Linux.
 2. Vytvořte soubor PowerShellu (Přípona souboru. ps1), zkopírujte následující kód a pak ho uložte místně.
 
     ```JSON
@@ -81,8 +81,8 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 1. Uložte změny.
 2. Pomocí jedné z následujících metod spusťte tento skript s oprávněními správce a vytvořte připojovací řetězec SAS pro přístup na úrovni kontejneru:
 
-    - Spusťte skript z konzoly nástroje. V systému Windows klikněte pravým tlačítkem na skript a vyberte **Spustit jako správce**.
-    - Spusťte skript z editoru skriptu prostředí PowerShell, jako je například [Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). Tato obrazovka ukazuje vytvoření připojovacího řetězce SAS v rámci tohoto editoru:
+    - Spusťte skript z konzoly nástroje. V systému Windows klikněte pravým tlačítkem na skript a vyberte **Spustit jako správce** .
+    - Spusťte skript z editoru skriptu prostředí PowerShell, jako je například [Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). Tato obrazovka ukazuje vytvoření připojovacího řetězce SAS v rámci tohoto editoru:
 
     [![vytvoření připojovacího řetězce SAS v editoru prostředí PowerShell](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/27/2020
-ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.date: 10/30/2020
+ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128959"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 
@@ -20,6 +20,8 @@ ms.locfileid: "92484589"
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MySQL
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump)
 - Výpis a obnovení pomocí PHPMyAdmin
+
+Podrobné informace a případy použití migrace databází do Azure Database for MySQL najdete také v [Průvodci migrací databáze](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) . Tato příručka poskytuje pokyny, které povedou k úspěšnému plánování a provádění migrace MySQL do Azure.
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, musíte mít:
@@ -168,5 +170,5 @@ V případě známých problémů, tipů a triky vám doporučujeme podívat se 
 
 ## <a name="next-steps"></a>Další kroky
 - [Připojte aplikace k Azure Database for MySQL](./howto-connection-string.md).
-- Další informace o migraci databází do Azure Database for MySQL najdete v [Průvodci migrací databáze](https://aka.ms/datamigration).
+- Další informace o migraci databází do Azure Database for MySQL najdete v [Průvodci migrací databáze](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide).
 - Pokud chcete migrovat velké databáze s velikostmi databáze více než 1 TBs, můžete zvážit použití nástrojů komunity jako **mydumper/myloader** , které podporují paralelní export a import. Naučte [se migrovat velké databáze MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699).

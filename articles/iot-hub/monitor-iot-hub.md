@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078216"
+ms.locfileid: "93128875"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Monitorování IoT Hub Azure
 
@@ -23,7 +23,9 @@ Stránka **Přehled** v Azure Portal pro každé centrum IoT obsahuje grafy, kte
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="Výchozí grafy metrik na stránce s přehledem IoT Hub.":::
 
-Tyto informace jsou užitečné, ale představují jenom malé množství dat monitorování, která jsou k dispozici pro Centrum IoT. Některá data monitorování se shromažďují automaticky a jsou dostupná k analýze hned po vytvoření centra IoT. Můžete povolit další typy shromažďování dat s určitou konfigurací.
+Počítejte s tím, že hodnota počet zpráv může být zpožděna o 1 minutu a to z důvodů, které je třeba provést s infrastrukturou služby IoT Hub, hodnota může při aktualizaci někdy vycházet z vyšších a nižších hodnot. Tento čítač by měl být nesprávný pro hodnoty, které byly za poslední minutu časově rozlišeny.
+
+Informace, které jsou uvedeny v podokně Přehled, jsou užitečné, ale představují pouze malé množství dat monitorování, která jsou k dispozici pro Centrum IoT. Některá data monitorování se shromažďují automaticky a jsou dostupná k analýze hned po vytvoření centra IoT. Můžete povolit další typy shromažďování dat s určitou konfigurací.
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
 

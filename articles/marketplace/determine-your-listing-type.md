@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032380"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128993"
 ---
 # <a name="determine-your-publishing-option"></a>Určení možnosti publikování
 
@@ -49,14 +49,14 @@ Nabídky &#42;&#42; Microsoft 365 jsou zdarma a je možné je můžou finančně
 
 ## <a name="choose-a-listing-option"></a>Zvolit možnost výpisu
 
-Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zákaznickou zapojení a poskytují přístup k výhodám sdílení potenciálních zákazníků a [komerčních Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits). Všimněte si možností výpisu, které odpovídají možnosti publikování:
+Možnosti výpisu, které jsou k dispozici, nabízejí časově rozlišenou zákaznickou zapojení a poskytují přístup k výhodám sdílení potenciálních zákazníků a [komerčních Marketplace](./gtm-your-marketplace-benefits.md). Všimněte si možností výpisu, které odpovídají možnosti publikování:
 
 | **Možnost publikování**    | **Popis**  |
 | :------------------- | :-------------------|
 | **Seznam** | Jednoduchý seznam vaší aplikace nebo služby, který umožňuje uživateli na webu Marketplace požádat o připojení k zákazníkovi prostřednictvím možností pro seznam **kontaktů** . |
-| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka**. |
-| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá**.
-| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá**.|
+| **Zkušební verze** | Pomocí komerčního tržiště Vylepšete možnosti zjistitelnosti a automatizujte zřizování zkušebního prostředí vašeho řešení. umožníte tak potenciálním uživatelům používat vaše SaaS, IaaS nebo prostředí v aplikaci od Microsoftu zdarma po určitou dobu, než se nakupují. Možnosti výpisu, které se používají pro možnost publikování zkušební verze, jsou buď **bezplatné zkušební verze** , nebo **testovací jednotka** . |
+| **BYOL** | Pomocí komerčního tržiště Vylepšete zjistitelnost a automatizujte zřizování vašich řešení a dokončete finanční transakci samostatně. Typy nabídek BYOL jsou ideální pro migrace z místního prostředí do cloudu. Možnost výpisu se **teď získá** .
+| **Transakce** | Nabídky Transact jsou prodávány prostřednictvím komerčního tržiště. Společnost Microsoft zodpovídá za fakturaci a kolekce. Možnost výpisu se **teď získá** .|
 
 > [!Note]
 > Při použití možnosti publikování v transakčním systému je důležité pochopit důležité informace o cenách, fakturaci, fakturaci a výběru před výběrem typu nabídky a vytvořením nabídky. Pokud se chcete dozvědět víc, přečtěte si článek [Možnosti Transact](./marketplace-commercial-transaction-capabilities-and-considerations.md)-The pro obchod na webu.

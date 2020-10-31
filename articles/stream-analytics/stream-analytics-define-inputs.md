@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042455"
+ms.locfileid: "93127565"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamování dat jako vstup do Stream Analytics
 
@@ -38,7 +38,7 @@ Pomocí [Azure Portal](stream-analytics-quick-create-portal.md), sady [Visual St
 
 Azure Event Hubs poskytuje vysoce škálovatelné investory o událostech publikování a odběru. Centrum událostí může shromažďovat miliony událostí za sekundu, abyste mohli zpracovávat a analyzovat obrovské objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Společně Event Hubs a Stream Analytics poskytují ucelené řešení pro analýzy v reálném čase. Event Hubs umožňuje zasílat události do Azure v reálném čase a úlohy Stream Analytics můžou tyto události zpracovat v reálném čase. Můžete například odeslat webové kliknutí, čtení ze senzorů nebo online události protokolu a Event Hubs. Pak můžete vytvořit Stream Analytics úlohy, které budou používat Event Hubs jako vstupní datové proudy pro filtrování, agregaci a korelaci v reálném čase.
 
-`EventEnqueuedUtcTime` je časové razítko příjezdu události v centru událostí a je výchozím časovým razítkem událostí přicházejících z Event Hubs do Stream Analytics. Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
+`EventEnqueuedUtcTime` je časové razítko příjezdu události v centru událostí a je výchozím časovým razítkem událostí přicházejících z Event Hubs do Stream Analytics. Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) .
 
 ### <a name="event-hubs-consumer-groups"></a>Event Hubs skupiny příjemců
 
@@ -56,7 +56,7 @@ Následující tabulka vysvětluje jednotlivé vlastnosti na **nové vstupní** 
 | **Název centra událostí** | Název centra událostí, které se má použít jako vstup |
 | **Název zásad centra událostí** | Zásady sdíleného přístupu, které poskytují přístup k centru událostí. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra událostí ručně.|
 | **Skupina uživatelů centra událostí** (doporučeno) | Důrazně doporučujeme použít pro každou úlohu Stream Analytics odlišnou skupinu uživatelů. Tento řetězec identifikuje skupinu uživatelů, která se má použít k ingestování dat z centra událostí. Pokud není zadána žádná skupina příjemců, úloha Stream Analytics používá skupinu uživatelů $Default.  |
-| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
+| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](./stream-analytics-compatibility-level.md) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
 | **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
@@ -80,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> Při použití centra událostí jako koncového bodu pro IoT Hub trasy můžete k metadatům IoT Hub přistupovat pomocí [funkce GetMetadataPropertyValue](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue).
+> Při použití centra událostí jako koncového bodu pro IoT Hub trasy můžete k metadatům IoT Hub přistupovat pomocí [funkce GetMetadataPropertyValue](/stream-analytics-query/getmetadatapropertyvalue).
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>Streamování dat z IoT Hub
 
 Azure IoT Hub je vysoce škálovatelný ingestování událostí publikování a odběru optimalizované pro scénáře IoT.
 
-Výchozím časovým razítkem událostí přicházejících z IoT Hub v Stream Analytics je časové razítko, které událost dorazila do IoT Hub, což je `EventEnqueuedUtcTime` . Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
+Výchozím časovým razítkem událostí přicházejících z IoT Hub v Stream Analytics je časové razítko, které událost dorazila do IoT Hub, což je `EventEnqueuedUtcTime` . Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](/stream-analytics-query/timestamp-by-azure-stream-analytics) .
 
 ### <a name="iot-hub-consumer-groups"></a>Skupiny uživatelů centra IoT Hub
 
@@ -106,7 +106,7 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Název zásady sdíleného přístupu** | Zásada sdíleného přístupu, která poskytuje přístup k IoT Hub. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
 | **Klíč zásad sdíleného přístupu** | Sdílený přístupový klíč, který slouží k autorizaci přístupu k IoT Hub.  Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení centra IoT Hub ručně. |
 | **Skupina uživatelů** | Důrazně doporučujeme pro každou úlohu Stream Analytics použít jinou skupinu uživatelů. Skupina příjemců slouží k ingestování dat z IoT Hub. Stream Analytics používá skupinu příjemců $Default, pokud neurčíte jinak.  |
-| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
+| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](./stream-analytics-compatibility-level.md) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
 | **Kódování** | Kódování UTF-8 je aktuálně jediným podporovaným formátem kódování. |
 | **Typ komprese události** | Typ komprese používaný ke čtení příchozího datového proudu, jako je například None (výchozí), GZip nebo deflate. |
@@ -137,7 +137,7 @@ Pokud se objekt BLOB nahraje do kontejneru účtu úložiště v 13:00 a úloha 
 
 Pokud se úloha Azure Stream Analytics začala používat *hned* v 13:00 a do kontejneru účtu úložiště se nahraje objekt blob na 13:01, Azure Stream Analytics si tento objekt BLOB zachová. Časové razítko přiřazené ke každému objektu BLOB je založeno pouze na `BlobLastModifiedTime` . Složka, ve které je objekt blob, nemá žádnou relaci s přiřazeným časovým razítkem. Pokud je například objekt BLOB *2019/10-01/00/b1.txt* s `BlobLastModifiedTime` 2019-11-11m, pak časové razítko přiřazené tomuto objektu BLOB je 2019-11-11.
 
-Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) . Stream Analytics úloha vyžádá data z úložiště objektů BLOB v Azure nebo ADLS Gen2 vstup každou sekundu, pokud je soubor BLOB k dispozici. Pokud soubor BLOB není k dispozici, existuje exponenciální omezení rychlosti s maximálním časovým intervalem 90 sekund.
+Chcete-li zpracovat data jako datový proud pomocí časového razítka v datové části události, je nutné použít klíčové slovo [timestamp by](/stream-analytics-query/stream-analytics-query-language-reference) . Stream Analytics úloha vyžádá data z úložiště objektů BLOB v Azure nebo ADLS Gen2 vstup každou sekundu, pokud je soubor BLOB k dispozici. Pokud soubor BLOB není k dispozici, existuje exponenciální omezení rychlosti s maximálním časovým intervalem 90 sekund.
 
 Vstupy ve formátu CSV vyžadují pro definování polí pro datovou sadu řádek záhlaví a všechna řádková pole záhlaví musí být jedinečná.
 
@@ -157,10 +157,10 @@ V následující tabulce jsou popsány jednotlivé vlastnosti na **nové vstupn�
 | **Účet úložiště** | Název účtu úložiště, ve kterém se nacházejí soubory objektů BLOB. |
 | **Klíč účtu úložiště** | Tajný klíč přidružený k účtu úložiště Tato možnost se vyplní automaticky, pokud nevyberete možnost zadat nastavení ručně. |
 | **Kontejner** | Kontejnery poskytují logické seskupení pro objekty blob. Můžete zvolit možnost **použít existující** kontejner nebo  **vytvořit nový** , chcete-li vytvořit nový kontejner.|
-| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo. `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
+| **Vzor cesty** (volitelné) | Cesta k souboru, který se používá k vyhledání objektů BLOB v zadaném kontejneru. Pokud chcete číst objekty BLOB z kořenového adresáře kontejneru, nenastavujte vzor cesty. V cestě můžete zadat jednu nebo více instancí následujících tří proměnných: `{date}` , `{time}` nebo. `{partition}`<br/><br/>Příklad 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Příklad 2: `cluster1/logs/{date}`<br/><br/>`*`Znak není povolená hodnota pro předponu cesty. Jsou povoleny pouze platné <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">znaky objektu BLOB v Azure</a> . Nezahrnujte názvy kontejnerů nebo názvy souborů. |
 | **Formát data** (volitelné) | Použijete-li proměnnou data v cestě, formát data, ve kterém jsou soubory uspořádány. Příklad: `YYYY/MM/DD` <br/><br/> Pokud má vstup objektu BLOB `{date}` nebo `{time}` v jeho cestě, složky se procházejí ve vzestupném časovém pořadí.|
 | **Formát času** (volitelné) |  Použijete-li časovou proměnnou v cestě, formát času, ve kterém jsou soubory uspořádány. V současné době je jediná podporovaná hodnota `HH` pro hodiny. |
-| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
+| **Klíč oddílu** | Toto volitelné pole je dostupné jenom v případě, že je vaše úloha nakonfigurovaná na používání [úrovně kompatibility](./stream-analytics-compatibility-level.md) 1,2 nebo vyšší. Pokud je vstup rozdělený pomocí vlastnosti, můžete sem přidat název této vlastnosti. Tato metoda se používá ke zvýšení výkonu dotazu, pokud obsahuje klauzuli PARTITION BY nebo GROUP BY pro tuto vlastnost. Pokud tato úloha používá úroveň kompatibility 1,2 nebo vyšší, toto pole je standardně nastavené na "PartitionId". |
 | **Počet vstupních oddílů** | Toto pole je k dispozici pouze v případě, že je ve vzoru cesty uveden oddíl {partition}. Hodnota této vlastnosti je celé číslo >= 1. Bez ohledu na to, kde {partition} se zobrazí v pathPattern, se použije číslo mezi 0 a hodnotou tohoto pole – 1. |
 | **Formát serializace události** | Formát serializace (JSON, CSV, Avro nebo [jiný (Protobuf, XML, proprietární...)](custom-deserializer.md)) příchozího datového proudu.  Ujistěte se, že formát JSON se zarovnává se specifikací a neobsahuje úvodní číslo 0 pro desetinná čísla. |
 | **Kódování** | V případě sdílených svazků clusteru a JSON je kódování UTF-8 aktuálně jediným podporovaným formátem kódování. |
@@ -194,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

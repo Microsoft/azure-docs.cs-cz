@@ -7,26 +7,26 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187655"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127429"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
 
-K získání podpory pro MSBuild použijte verzi 2.3.0000.0 nebo novější z [Stream Analytics nástrojů pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) .
+K získání podpory pro MSBuild použijte verzi 2.3.0000.0 nebo novější z [Stream Analytics nástrojů pro Visual Studio](./stream-analytics-quick-create-vs.md) .
 
 K dispozici je balíček NuGet: [Microsoft. Azure. Stream Analytics. CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Poskytuje nástroje pro MSBuild, místní běh a nasazení, které podporují proces průběžné integrace a nasazování [Stream Analytics projektů sady Visual Studio](stream-analytics-vs-tools.md). 
 > [!NOTE]
 > Balíček NuGet se dá použít jenom s 2.3.0000.0 nebo novější verzí Stream Analytics nástrojů pro Visual Studio. Pokud máte projekty vytvořené v předchozích verzích nástrojů sady Visual Studio, stačí je otevřít pomocí 2.3.0000.0 nebo novější verze a uložit. Nové funkce jsou pak povoleny. 
 
-Další informace naleznete v tématu [Stream Analytics Tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
+Další informace naleznete v tématu [Stream Analytics Tools for Visual Studio](./stream-analytics-quick-create-vs.md).
 
 ## <a name="msbuild"></a>MSBuild
-Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit**. Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
+Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení projektu máte dvě možnosti. Můžete kliknout pravým tlačítkem na projekt a pak zvolit **sestavit** . Nástroj **MSBuild** můžete také použít v balíčku NuGet z příkazového řádku.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -52,7 +52,7 @@ Výchozí parametry v souboru parameters.json jsou z nastavení v projektu sady 
       "value": null
     },
 ```
-Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Přečtěte si další informace o tom, jak [nasadit pomocí souboru šablony Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md). Přečtěte si další informace o [použití objektu jako parametru v šabloně správce prostředků](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako výstupní jímku, musíte před nasazením do Azure poskytnout přístup k instančnímu objektu pomocí PowerShellu. Přečtěte si další informace o [nasazení adls Gen1 se správou identity pomocí šablony Správce prostředků](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment).
 
@@ -60,7 +60,7 @@ Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako v
 ## <a name="command-line-tool"></a>Nástroj pro příkazový řádek
 
 ### <a name="build-the-project"></a>Sestavení projektu
-Balíček NuGet má nástroj příkazového řádku s názvem **SA.exe**. Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
+Balíček NuGet má nástroj příkazového řádku s názvem **SA.exe** . Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
 
 Ve výchozím nastavení jsou soubory nasazení umístěny do aktuálního adresáře. Výstupní cestu můžete zadat pomocí následujícího parametru-OutputPath:
 

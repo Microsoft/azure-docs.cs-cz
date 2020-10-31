@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 95607b78ff80566b76b8e6aa20462957249015b4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097647"
+ms.locfileid: "93128830"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Výstupy z Azure Stream Analytics
 
-Azure Stream Analytics úloha se skládá ze vstupu, dotazu a výstupu. Existuje několik typů výstupu, do kterých můžete posílat transformovaná data. V tomto článku jsou uvedené podporované výstupy Stream Analytics. Pokud navrhujete Stream Analytics dotaz, přečtěte si název výstupu pomocí [klauzule into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) přidáním více klauzulí do dotazu.
+Azure Stream Analytics úloha se skládá ze vstupu, dotazu a výstupu. Existuje několik typů výstupu, do kterých můžete posílat transformovaná data. V tomto článku jsou uvedené podporované výstupy Stream Analytics. Pokud navrhujete Stream Analytics dotaz, přečtěte si název výstupu pomocí [klauzule into](/stream-analytics-query/into-azure-stream-analytics). Můžete použít jeden výstup na úlohu nebo více výstupů na úlohu streamování (Pokud je potřebujete) přidáním více klauzulí do dotazu.
 
-Chcete-li vytvářet, upravovat a testovat Stream Analytics výstupy úlohy, můžete použít [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), rozhraní [.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](https://docs.microsoft.com/rest/api/streamanalytics/)a [Visual Studio](stream-analytics-quick-create-vs.md).
+Chcete-li vytvářet, upravovat a testovat Stream Analytics výstupy úlohy, můžete použít [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), rozhraní [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), [REST API](/rest/api/streamanalytics/)a [Visual Studio](stream-analytics-quick-create-vs.md).
 
 Některé typy výstupů podporují [dělení](#partitioning)a [velikosti výstupních dávek](#output-batch-size) se liší při optimalizaci propustnosti. V následující tabulce jsou uvedeny funkce, které jsou podporovány pro každý typ výstupu:
 
@@ -41,7 +41,7 @@ Některé typy výstupů podporují [dělení](#partitioning)a [velikosti výstu
 
 Stream Analytics podporuje oddíly pro všechny výstupy s výjimkou Power BI. Další informace o klíčích oddílů a počtu modulů pro zápis výstupu najdete v článku konkrétního typu výstupu, který vás zajímá. Všechny články v produkci jsou propojeny v předchozí části.  
 
-Kromě toho pro pokročilejší optimalizaci oddílů je možné počet zapisovačů výstupu ovládat pomocí `INTO <partition count>` klauzule (viz v tématu) v dotazu [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count), což může být užitečné při dosahování požadované topologie úlohy. Pokud váš výstupní adaptér není rozdělený na oddíly, způsobí nedostatek dat v jednom vstupním oddílu zpoždění až do doby, kdy se doba doručení uvolní. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](stream-analytics-out-of-order-and-late-events.md).
+Kromě toho pro pokročilejší optimalizaci oddílů je možné počet zapisovačů výstupu ovládat pomocí `INTO <partition count>` klauzule (viz v tématu) v dotazu [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count), což může být užitečné při dosahování požadované topologie úlohy. Pokud váš výstupní adaptér není rozdělený na oddíly, způsobí nedostatek dat v jednom vstupním oddílu zpoždění až do doby, kdy se doba doručení uvolní. V takových případech se výstup sloučí do jediného zapisovače, což může způsobit kritické body ve vašem kanálu. Další informace o zásadách pozdního doručení najdete v tématu [Azure Stream Analytics požadavky na pořadí událostí](./stream-analytics-time-handling.md).
 
 ## <a name="output-batch-size"></a>Velikost výstupní dávky
 
@@ -91,5 +91,5 @@ Tyto vlastnosti dávkového okna jsou podporovány pouze pomocí rozhraní API v
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

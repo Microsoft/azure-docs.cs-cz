@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 24adbfe38a3d43a83307fb8726849f7c73def3f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283888"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129271"
 ---
 ## <a name="generalize-the-image"></a>Generalizace bitové kopie
 
@@ -20,7 +20,7 @@ Všechny obrázky v Azure Marketplace musí být obecně znovu použitelné. K t
 
 ### <a name="for-windows"></a>Pro Windows
 
-Disky s operačním systémem Windows jsou zobecněny pomocí nástroje [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) . Pokud později aktualizujete nebo znovu nakonfigurujete operační systém, musíte znovu spustit nástroj Sysprep.
+Disky s operačním systémem Windows jsou zobecněny pomocí nástroje [Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) . Pokud později aktualizujete nebo znovu nakonfigurujete operační systém, musíte znovu spustit nástroj Sysprep.
 
 > [!WARNING]
 > Po spuštění nástroje Sysprep vypněte virtuální počítač, dokud nebude nasazen, protože aktualizace mohou být spouštěny automaticky. Toto vypnutí zabrání následným aktualizacím v provádění změn specifických pro konkrétní instance v operačním systému nebo nainstalovaných službách. Další informace o spuštění nástroje Sysprep najdete v tématu [postup generalizace VHD](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep).
@@ -41,13 +41,13 @@ Následující proces generalizuje virtuální počítač Linux a znovu ho nasad
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>Pořízení snímku disku virtuálního počítače
 
 1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
-2. V levém horním rohu vyberte **vytvořit prostředek**, vyhledejte a vyberte **snímek**.
-3. V okně snímek vyberte  **vytvořit**.
+2. V levém horním rohu vyberte **vytvořit prostředek** , vyhledejte a vyberte **snímek** .
+3. V okně snímek vyberte  **vytvořit** .
 4. Zadejte **název** snímku.
 5. Vyberte existující skupinu prostředků nebo zadejte název nového.
-6. Pro **zdrojový disk**vyberte spravovaný disk, který se má snímek.
+6. Pro **zdrojový disk** vyberte spravovaný disk, který se má snímek.
 7. Vyberte **typ účtu** , který chcete použít k uložení snímku. Použijte **HDD úrovně Standard** , pokud ho nepotřebujete, aby byl uložený na disku SSD s vysokou úrovní.
-8. Vyberte **Vytvořit**.
+8. Vyberte **Vytvořit** .
 
 #### <a name="extract-the-vhd"></a>Extrakce VHD
 

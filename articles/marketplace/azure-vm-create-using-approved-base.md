@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129273"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>Postup vytvoření virtuálního počítače pomocí schválené základní třídy
 
@@ -32,12 +32,12 @@ Jako základ vyberte jednu z následujících imagí systému Windows nebo Linux
 
 ### <a name="linux"></a>Linux
 
-Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete v tématu [Linux v distribucích, které jsou schváleny v Azure](../virtual-machines/linux/endorsed-distros.md).
 
 ## <a name="create-vm-on-the-azure-portal"></a>Vytvoření virtuálního počítače na Azure Portal
 
 1. Přihlaste se na [Azure Portal](https://ms.portal.azure.com/).
-2. Vyberte **Virtuální počítače**.
+2. Vyberte **Virtuální počítače** .
 3. Výběrem **+ Přidat** otevřete obrazovku **vytvořit virtuální počítač** .
 4. Vyberte obrázek v rozevíracím seznamu nebo vyberte **Procházet všechny veřejné a soukromé image** , aby bylo možné vyhledávat nebo procházet všechny dostupné image virtuálních počítačů.
 5. Virtuální počítač **2. generace** vytvoříte tak, že přejdete na kartu **Upřesnit** a vyberete možnost **Obecné 2** .
@@ -49,9 +49,9 @@ Azure nabízí řadu schválených distribucí Linux. Aktuální seznam najdete 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Vyberte Obecné 1 nebo obecné 2.":::
 
 7. Zadejte další požadované podrobnosti pro vytvoření virtuálního počítače.
-8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Jakmile se zobrazí zpráva **ověření proběhlo** , vyberte  **vytvořit**.
+8. Vyberte **zkontrolovat + vytvořit** a zkontrolujte své volby. Jakmile se zobrazí zpráva **ověření proběhlo** , vyberte  **vytvořit** .
 
-Azure zahájí zřizování virtuálního počítače, který jste zadali. V nabídce vlevo vyberte kartu **Virtual Machines** a sledujte její průběh. Po vytvoření se stav virtuálního počítače změní na **spuštěno**.
+Azure zahájí zřizování virtuálního počítače, který jste zadali. V nabídce vlevo vyberte kartu **Virtual Machines** a sledujte její průběh. Po vytvoření se stav virtuálního počítače změní na **spuštěno** .
 
 
 ## <a name="configure-the-vm"></a>Nakonfigurování virtuálního počítače
