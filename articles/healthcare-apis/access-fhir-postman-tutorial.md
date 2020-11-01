@@ -9,18 +9,18 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844843"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145646"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Přístup k rozhraní API Azure pro FHIR s využitím post
 
 Klientská aplikace by měla přístup k rozhraní FHIR API prostřednictvím [REST API](https://www.hl7.org/fhir/http.html). Můžete také při sestavování aplikací pracovat přímo se serverem FHIR, například pro účely ladění. V tomto kurzu Vás provedeme kroky potřebnými k použití [metody post](https://www.getpostman.com/) pro přístup k serveru FHIR. Publikování je nástroj, který se často používá pro ladění při sestavování aplikací, které přistupují k rozhraním API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Koncový bod FHIR v Azure. Můžete ho nastavit pomocí spravovaného rozhraní API Azure pro FHIR nebo open source serveru FHIR pro Azure. Nastavte spravované rozhraní API Azure pro FHIR pomocí [Azure Portal](fhir-paas-portal-quickstart.md), [PowerShellu](fhir-paas-powershell-quickstart.md)nebo rozhraní příkazového [řádku Azure CLI](fhir-paas-cli-quickstart.md).
 - [Klientská aplikace](register-confidential-azure-ad-client-app.md) , kterou budete používat pro přístup ke službě FHIR
@@ -71,7 +71,7 @@ Budete potřebovat několik podrobností:
 | Adresa URL přístupového tokenu      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
 | ID klienta             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | ID aplikace             |
 | Tajný klíč klienta         | `XXXXXXXX`                                                                                                        | Tajný klíč klienta          |
-| Rozsah | `<Leave Blank>` |
+| Obor | `<Leave Blank>` |
 | Stav                 | `1234`                                                                                                            |                            |
 | Ověření klienta | Poslat přihlašovací údaje klienta v těle                                                                                 |                 
 
@@ -121,7 +121,7 @@ Teď máte platný přístupový token. Můžete vložit nový pacient. Přepně
 
 Stiskněte Odeslat a měli byste vidět, že se pacient úspěšně vytvořil:
 
-![Vytvořený pacient](media/tutorial-postman/postman-patient-created.png)
+![Snímek obrazovky, který ukazuje, že pacient byl úspěšně vytvořen.](media/tutorial-postman/postman-patient-created.png)
 
 Pokud hledání v pacientech zopakujete, měli byste teď vidět záznam pacienta:
 

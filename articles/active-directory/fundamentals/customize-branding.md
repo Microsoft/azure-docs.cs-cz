@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04e1d35ab17a49dd1c4e9bd2bd19289de2b8658a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "89565850"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace
@@ -37,7 +37,7 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
 ### <a name="to-customize-your-branding"></a>Přizpůsobení brandingu
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **Branding společnosti**a pak vyberte **Konfigurovat**.
+2. Vyberte **Azure Active Directory** a pak vyberte **Branding společnosti** a pak vyberte **Konfigurovat** .
 
     ![Contoso – stránka brandingu společnosti, konfigurace zvýrazněné možnosti](media/customize-branding/company-branding-configure-button.png)
 
@@ -86,15 +86,15 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
     
         - **Obrázek čtvercového loga, tmavý motiv** Stejné jako u obrázku čtvercového loga výše. Tento obrázek loga při použití s tmavým pozadím získá místo obrázku čtvercového loga, jako jsou obrazovky připojené ke službě Azure AD s Windows 10 během spouštěného spouštěného prostředí (OOBE).  Pokud vaše logo vypadá dobře na bílém, tmavém a černém pozadí, nemusíte tento obrázek přidávat. 
         
-        - **Zobrazit možnost zůstat přihlášeni.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne**, tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
+        - **Zobrazit možnost zůstat přihlášeni.** Můžete zvolit, aby vaši uživatelé měli zůstat přihlášení ke službě Azure AD, dokud se explicitně odhlásíte. Pokud zvolíte **ne** , tato možnost bude skrytá a uživatelé se musí přihlašovat pokaždé, když se prohlížeč zavře a znovu otevře.
 
             Tato funkce je k dispozici pouze na výchozím objektu brandingu a nikoli na objektu specifickém pro daný jazyk. Další informace o konfiguraci a řešení potíží s možnostmi zůstat přihlášené najdete v tématu [Konfigurace "zůstat přihlášeného?" pro účty Azure AD](keep-me-signed-in.md) .
         
             >[!NOTE]
-            >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne**, můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.
+            >Některé funkce služeb SharePoint Online a Office 2010 závisí na tom, jestli mají uživatelé možnost zůstat přihlášení. Pokud nastavíte **Ne** , můžou se vašim uživatelům zobrazovat další neočekávané výzvy k přihlášení.
    
 
-3. Až dokončíte přidávání brandingu, vyberte **Uložit**.
+3. Až dokončíte přidávání brandingu, vyberte **Uložit** .
 
     Pokud tento proces vytvoří první vlastní konfiguraci brandingu, bude pro vašeho tenanta výchozí. Pokud máte další konfigurace, budete si moct vybrat výchozí konfiguraci.
     
@@ -107,13 +107,13 @@ Po vytvoření vlastního brandingu se můžete vrátit zpátky a změnit všech
 ### <a name="to-edit-your-custom-branding"></a>Úprava vlastního brandingu
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **Branding společnosti**a pak vyberte **Konfigurovat**.
+2. Vyberte **Azure Active Directory** a pak vyberte **Branding společnosti** a pak vyberte **Konfigurovat** .
 
     ![Contoso – stránka brandingu společnosti s zobrazenou výchozí konfigurací](media/customize-branding/company-branding-default-config.png)
 
 3. Na stránce **Konfigurovat Branding společnosti** přidejte, odeberte nebo změňte jakékoli informace na základě popisu v části [přizpůsobení přihlašovací stránky Azure AD](#customize-your-azure-ad-sign-in-page) tohoto článku.
 
-4. Vyberte **Uložit**.
+4. Vyberte **Uložit** .
 
    Změny brandingu přihlašovací stránky se můžou projevit třeba až za hodinu.
 
@@ -124,13 +124,13 @@ Jazyk původní konfigurace nemůžete změnit z výchozího jazyka. Pokud ale p
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
-2. Vyberte **Azure Active Directory**a pak vyberte **Branding společnosti**a pak vyberte **Nový jazyk**.
+2. Vyberte **Azure Active Directory** a pak vyberte **Branding společnosti** a pak vyberte **Nový jazyk** .
 
     ![Contoso – stránka brandingu společnosti s zvýrazněnou možností nový jazyk](media/customize-branding/company-branding-new-language.png)
 
 3. Na stránce **Konfigurovat Branding společnosti** vyberte svůj jazyk (například francouzštinu) a pak přidejte přeložené informace na základě popisu v části [vlastní nastavení přihlašovací stránky Azure AD](#customize-your-azure-ad-sign-in-page) tohoto článku.
 
-4. Vyberte **Uložit**.
+4. Vyberte **Uložit** .
 
     Společnost **Contoso – značka** stránky se aktualizuje, aby se zobrazila vaše nová Francouzská konfigurace.
 

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 6d6757af6619edd41709a4b8f06ef615cd35bf30
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b24a9dcb7a369708b1374f367186dc4d9a6ce475
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636574"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146871"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>Přizpůsobení tlačítka pro moderní čtečku
 
@@ -41,7 +41,7 @@ Použijte `data-button-style` atribut pro nastavení stylu tlačítka. Povolené
 
 Vykreslí se následující:
 
-![Tlačítko ikony](./media/button-icon.png)
+![Toto je tlačítko vykresleného textu](./media/button-icon.png)
 
 ### <a name="text-button"></a>Tlačítko text
 
@@ -51,7 +51,7 @@ Vykreslí se následující:
 
 Vykreslí se následující:
 
-![Tlačítko ikony](./media/button-text.png)
+![Toto je tlačítko vykreslené moderní čtečky.](./media/button-text.png)
 
 ### <a name="icon-and-text-button"></a>Tlačítko ikona a text
 

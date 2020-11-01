@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: d2606f793c7ab2e3ac29b1eb869e60a2c8e634ad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495813"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145918"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Ingestování IoT Hub telemetrie do digitálních vláken Azure
 
@@ -25,7 +25,7 @@ Tento postup popisuje, jak dokumentovat pomocí procesu vytváření funkce Azur
 ## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v tomto příkladu, budete muset nastavit následující prostředky jako požadavky:
-* **Centrum IoT**. Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
+* **Centrum IoT** . Pokyny najdete v části *vytvoření IoT Hub* [tohoto IoT Hub rychlé](../iot-hub/quickstart-send-telemetry-cli.md)spuštění.
 * **Funkce Azure** se správnými oprávněními pro volání vaší digitální zdvojené instance. Pokyny najdete v tématu [*Postup: nastavení funkce Azure pro zpracování dat*](how-to-create-azure-function.md). 
 * **Instance digitálního vlákna Azure** , která bude přijímat telemetrii zařízení. Pokyny najdete v tématu [*Postup: nastavení instance a ověřování digitálních vláken Azure*](./how-to-set-up-instance-portal.md).
 
@@ -62,13 +62,13 @@ Model vypadá takto:
 }
 ```
 
-Pokud chcete **Tento model nahrát do instance vláken**, otevřete Azure CLI a spusťte následující příkaz:
+Pokud chcete **Tento model nahrát do instance vláken** , otevřete Azure CLI a spusťte následující příkaz:
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-Pak budete muset **vytvořit jeden z těchto vláken pomocí tohoto modelu**. Pomocí následujícího příkazu vytvořte dvojitou hodnotu a nastavte 0,0 jako počáteční hodnotu teploty.
+Pak budete muset **vytvořit jeden z těchto vláken pomocí tohoto modelu** . Pomocí následujícího příkazu vytvořte dvojitou hodnotu a nastavte 0,0 jako počáteční hodnotu teploty.
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -117,9 +117,9 @@ Další ukázka kódu vezme ID a teplotu a použije je k opravě (provedení akt
 
 ```csharp
 //Update twin using device temperature
-var uou = new UpdateOperationsUtility();
-uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 ...
 ```
 
@@ -176,9 +176,9 @@ namespace IotHubtoTwins
                     log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
 
                     //Update twin using device temperature
-                    var uou = new UpdateOperationsUtility();
-                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                    var updateTwinData = new JsonPatchDocument();
+                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
                 }
             }
             catch (Exception e)
@@ -210,25 +210,25 @@ Můžete také ověřit stav procesu publikování v [Azure Portal](https://port
 ## <a name="connect-your-function-to-iot-hub"></a>Připojte funkci k IoT Hub
 
 Nastavte cíl události pro data centra.
-V [Azure Portal](https://portal.azure.com/)přejděte na instanci IoT Hub, kterou jste vytvořili v části [*požadavky*](#prerequisites) . V části **události**Vytvořte předplatné pro funkci Azure Functions.
+V [Azure Portal](https://portal.azure.com/)přejděte na instanci IoT Hub, kterou jste vytvořili v části [*požadavky*](#prerequisites) . V části **události** Vytvořte předplatné pro funkci Azure Functions.
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 Na stránce **vytvořit odběr události** vyplňte pole následujícím způsobem:
-  1. V části **název**zadejte název předplatného, co byste chtěli.
-  2. V části **schéma události**vyberte _Event Grid schéma_.
-  3. V části **typy událostí**vyberte zaškrtávací políčko _telemetrie zařízení_ a zrušte zaškrtnutí ostatních typů událostí.
-  4. V části **Typ koncového bodu**vyberte _Azure Function_.
-  5. V části **koncový bod**zvolte _možnost vybrat odkaz na koncový bod_ a vytvořte koncový bod.
+  1. V části **název** zadejte název předplatného, co byste chtěli.
+  2. V části **schéma události** vyberte _Event Grid schéma_ .
+  3. V části **typy událostí** vyberte zaškrtávací políčko _telemetrie zařízení_ a zrušte zaškrtnutí ostatních typů událostí.
+  4. V části **Typ koncového bodu** vyberte _Azure Function_ .
+  5. V části **koncový bod** zvolte _možnost vybrat odkaz na koncový bod_ a vytvořte koncový bod.
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="Diagram znázorňující vývojový diagram V grafu IoT Hub zařízení odesílá telemetrii teploty prostřednictvím IoT Hub do funkce Azure, která aktualizuje vlastnost teploty v případě, že se v digitálních událostech Azure pracuje s dvojitou teplotou.":::
 
 Na stránce _Vybrat funkci Azure_ , která se otevře, ověřte níže uvedené podrobnosti.
  1. **Předplatné:** Vaše předplatné Azure.
- 2. **Skupina prostředků**: vaše skupina prostředků
- 3. **Aplikace Function App**: název vaší aplikace Function App
- 4. **Slot**: _Výroba_
- 5. **Funkce**: z rozevíracího seznamu vyberte svou funkci Azure.
+ 2. **Skupina prostředků** : vaše skupina prostředků
+ 3. **Aplikace Function App** : název vaší aplikace Function App
+ 4. **Slot** : _Výroba_
+ 5. **Funkce** : z rozevíracího seznamu vyberte svou funkci Azure.
 
 Kliknutím na tlačítko _potvrdit výběr_ uložte podrobnosti.            
       

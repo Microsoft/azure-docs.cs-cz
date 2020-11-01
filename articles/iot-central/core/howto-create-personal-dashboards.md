@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f7dca7352a49e668231f64632371a445985e4de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bb4e2ac525270004a698471cd44955cd25fefc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83634537"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146105"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Vytvoření a správa několika řídicích panelů
 
@@ -42,7 +42,7 @@ Můžete například přidat dlaždici **telemetrie** pro aktuální teplotu za�
 
 1. Vybrat **šablonu zařízení**
 1. V **zařízení vyberte** zařízení, které chcete zobrazit na dlaždici řídicího panelu. Pak se zobrazí seznam vlastností zařízení, které se dají na dlaždici použít.
-1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **Přidat dlaždici**. Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a zařízení a pak na řídicím panelu vytvořit dlaždici s Telemetriem teploty.
+1. Pokud chcete vytvořit dlaždici na řídicím panelu, klikněte na **teplotu** a přetáhněte ji do oblasti řídicího panelu. Můžete také kliknout na zaškrtávací políčko vedle **teploty** a kliknout na **Přidat dlaždici** . Následující snímek obrazovky ukazuje, jak vybrat šablonu zařízení a zařízení a pak na řídicím panelu vytvořit dlaždici s Telemetriem teploty.
 1. Vyberte **Uložit** v levém horním rohu a uložte změny na řídicí panel.
 
 > [!div class="mx-imgBorder"]
@@ -51,7 +51,7 @@ Můžete například přidat dlaždici **telemetrie** pro aktuální teplotu za�
 Když teď zobrazíte svůj osobní řídicí panel, zobrazí se nová dlaždice s nastavením **teploty** pro zařízení:
 
 > [!div class="mx-imgBorder"]
-> ![Karta řídicího panelu s podrobnostmi pro dlaždici teploty](media/howto-create-personal-dashboards/temperature-tile-complete.png)
+> ![Snímek obrazovky, který zobrazuje novou dlaždici s nastavením teploty pro zařízení.](media/howto-create-personal-dashboards/temperature-tile-complete.png)
 
 Můžete prozkoumat další typy dlaždic v knihovně, abyste zjistili, jak dále přizpůsobit osobní řídicí panely.
 
@@ -64,7 +64,7 @@ Můžete mít několik osobních řídicích panelů a mezi nimi přepínat nebo
 > [!div class="mx-imgBorder"]
 > ![Přepínání mezi řídicími panely](media/howto-create-personal-dashboards/switch-dashboards.png)
 
-Můžete upravit osobní řídicí panely a odstranit všechny řídicí panely, které už nepotřebujete. Pokud jste **správce**, máte také možnost upravovat nebo odstraňovat řídicí panely na úrovni aplikace i.
+Můžete upravit osobní řídicí panely a odstranit všechny řídicí panely, které už nepotřebujete. Pokud jste **správce** , máte také možnost upravovat nebo odstraňovat řídicí panely na úrovni aplikace i.
 
 > [!div class="mx-imgBorder"]
 > ![Odstranit řídicí panely](media/howto-create-personal-dashboards/delete-dashboards.png)

@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c498046b9088f78eda95693fa23f0a0bb3472724
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05295efec3d7651c3a77dd5ad6e2c72b57a6c5a3
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626866"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146752"
 ---
 # <a name="import-an-openapi-specification"></a>Import specifikace OpenAPI
 
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Testovat rozhraní API na portálu Azure Portal
 > * Testovat rozhraní API na portálu pro vývojáře
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
@@ -39,11 +39,11 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování back-endu rozhraní API
 
 1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
-2. Ze seznamu **Přidat nové rozhraní API** vyberte **Specifikace OpenAPI**.
+2. Ze seznamu **Přidat nové rozhraní API** vyberte **Specifikace OpenAPI** .
 
     ![Specifikace OpenAPI](./media/import-api-from-oas/oas-api.png)
 3. Zadejte nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#import-and-publish-a-backend-api) .
-4. Vyberte **Vytvořit**.
+4. Vyberte **Vytvořit** .
 
 > [!NOTE]
 > Omezení importu rozhraní API jsou zdokumentována v [jiném článku](api-management-api-import-restrictions.md).

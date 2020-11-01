@@ -4,10 +4,10 @@ description: Průvodce pro povolení migrace stávajících oborů názvů Azure
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "85340745"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
@@ -21,11 +21,11 @@ Tento článek popisuje, jak migrovat existující obory názvů úrovně Standa
 
 Některé body, které je potřeba poznamenat:
 
-- Tato migrace by měla být provedena, což znamená, že stávající aplikace odesílatele a přijímače **nevyžadují žádné změny kódu nebo konfigurace**. Existující připojovací řetězec bude automaticky ukazovat na nový obor názvů Premium.
+- Tato migrace by měla být provedena, což znamená, že stávající aplikace odesílatele a přijímače **nevyžadují žádné změny kódu nebo konfigurace** . Existující připojovací řetězec bude automaticky ukazovat na nový obor názvů Premium.
 - Obor názvů **Premium** by neměl obsahovat **žádné entity** , aby migrace proběhla úspěšně.
 - Všechny **entity** v oboru názvů Standard jsou během procesu migrace **zkopírovány** do oboru názvů Premium.
 - Migrace podporuje **1 000 entit na jednu jednotku zasílání zpráv** na úrovni Premium. Pokud chcete zjistit, kolik jednotek pro zasílání zpráv potřebujete, začněte s počtem entit, které máte v aktuálním oboru názvů Standard.
-- Nemůžete migrovat přímo z úrovně **Basic** na **úroveň Premium**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
+- Nemůžete migrovat přímo z úrovně **Basic** na **úroveň Premium** , ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
 
 ## <a name="migration-steps"></a>Kroky migrace
 
@@ -89,14 +89,14 @@ Pokud chcete migrovat obor názvů Service Bus Standard do úrovně Premium pomo
 
 Migrace pomocí Azure Portal má stejný logický tok jako migrace pomocí příkazů. Při migraci pomocí Azure Portal postupujte podle těchto kroků.
 
-1. V **navigační** nabídce v levém podokně vyberte **migrovat na Premium**. Kliknutím na tlačítko **Začínáme** můžete pokračovat na další stránku.
+1. V **navigační** nabídce v levém podokně vyberte **migrovat na Premium** . Kliknutím na tlačítko **Začínáme** můžete pokračovat na další stránku.
     ![Cílová stránka migrace][]
 
-1. Dokončete **Nastavení**.
+1. Dokončete **Nastavení** .
    ![Nastavit obor názvů][]
    1. Vytvořte a přiřaďte obor názvů Premium pro migraci stávajícího oboru názvů Standard na.
         ![Nastavení oboru názvů – vytvoření oboru názvů Premium][]
-   1. Vyberte **název následné migrace**. Tento název použijete pro přístup ke standardnímu oboru názvů po dokončení migrace.
+   1. Vyberte **název následné migrace** . Tento název použijete pro přístup ke standardnímu oboru názvů po dokončení migrace.
         ![Nastavení oboru názvů – vybrat název následné migrace][]
    1. Pokračujte výběrem **příkazu ' Next '** .
 1. Synchronizace entit mezi obory názvů Standard a Premium.

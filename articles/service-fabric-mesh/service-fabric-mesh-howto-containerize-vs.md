@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840060"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144473"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Kontejnerizace stávající aplikace v .NET pro Service Fabric Mesh
 
@@ -21,7 +21,7 @@ V aplikaci Visual Studio 2017 můžete přidat podporu kontejneru do ASP.NET a k
 > [!NOTE]
 > Projekty .NET **Core** nejsou aktuálně podporovány.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -39,21 +39,27 @@ Získat kopii projektu **eshop** :
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-Po stažení v aplikaci Visual Studio 2017 Open **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln**.
+Po stažení v aplikaci Visual Studio 2017 Open **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln** .
 
 ## <a name="add-container-support"></a>Přidat podporu kontejneru
  
 Přidejte podporu orchestrace kontejnerů do existujícího projektu ASP.NET nebo konzole pomocí Service Fabricch nástrojů pro mřížku, jak je znázorněno níže:
 
-V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu (v příkladu **eShopLegacyWebForms**) a pak zvolte **Přidat**  >  **podporu kontejneru Orchestrator**.
+V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem myši na název projektu (v příkladu **eShopLegacyWebForms** ) a pak zvolte **Přidat**  >  **podporu kontejneru Orchestrator** .
 Zobrazí se dialogové okno **Přidat podporu produktu Orchestrator pro kontejner** .
 
 ![Dialogové okno Přidat kontejner nástroje Orchestrator pro Visual Studio](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-V rozevíracím seznamu vyberte **Service Fabric síť** a pak klikněte na **OK**.
+V rozevíracím seznamu vyberte **Service Fabric síť** a pak klikněte na **OK** .
+
+
+>[!NOTE]
+> Od 2. listopadu 2020 se [limity četnosti stahování vztahují](https://docs.docker.com/docker-hub/download-rate-limit/) na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+>
+> Aby nedocházelo k omezení četnosti, ujistěte se, že výchozí hodnota `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` ve vašem souboru Dockerfile je nahrazena hodnotou `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 
 Nástroj potom ověří, že je Docker nainstalovaný, přidá do projektu souboru Dockerfile a napředá image Docker pro váš projekt.  
-Do vašeho řešení se přidá projekt aplikace Service Fabric mřížka. Obsahuje vaše sítě publikační profil a konfigurační soubory. Název projektu je stejný jako název projektu a "aplikace" zřetězené na konec, například **eShopLegacyWebFormsApplication**. 
+Do vašeho řešení se přidá projekt aplikace Service Fabric mřížka. Obsahuje vaše sítě publikační profil a konfigurační soubory. Název projektu je stejný jako název projektu a "aplikace" zřetězené na konec, například **eShopLegacyWebFormsApplication** . 
 
 V novém projektu sítě se zobrazí dvě složky, na které byste měli vědět:
 - **Prostředky aplikací** , které obsahují YAML soubory, které popisují další síťové prostředky, jako je například síť.

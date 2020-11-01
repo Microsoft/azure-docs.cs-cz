@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505333"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145748"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,21 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="animated-character-identification-improvements"></a>Vylepšení animovaných identifikací znaků  
+
+Video Indexer podporuje detekci, seskupení a rozpoznávání znaků v animovaném obsahu prostřednictvím integrace s Cognitive Services vlastní vize. Do detekce a rozpoznávání znaků jsme přidali hlavní vylepšení tohoto algoritmu AI. v důsledku toho se výrazně vylepšuje přesnost a zjištěné znaky.
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>Authenticatication změny na webu plánovaného Video Indexer
+
+Od 1. ledna 2021 se už nebudete moct zaregistrovat a přihlásit k webu [video indexer](https://www.videoindexer.ai/) (nabídka zkušební verze) pomocí Facebooku nebo LinkedInu.
+
+Budete se moct zaregistrovat a přihlásit pomocí některého z těchto poskytovatelů: Azure AD, Microsoft a Google.
+
+> [!NOTE]
+> Doporučujeme exportovat obsah do 1. ledna 2021, protože se odstraní účty připojené k LinkedInu a Facebooku a obsah už nebude přístupný.
 
 ## <a name="august-2020"></a>Srpen 2020
 
@@ -123,7 +138,7 @@ V nadcházejících týdnech ji změníme a vrátíme adresu URL [video indexer 
     * Nahrazení adresy URL adresou URL odkazující na rozhraní API widgetů Video Indexer (například [pomůcka Insights](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Pomocí webu Video Indexer Vygenerujte novou vloženou adresu URL:
          
-         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro ** &lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
+         Stisknutím tlačítka **Přehrát** přejděte na stránku videa – > klikněte na tlačítko pro **&lt; / &gt; vložení** – > zkopírujte adresu URL do vaší aplikace:
    
     Regionální adresy URL nejsou podporované a v nadcházejících týdnech se zablokují.
 

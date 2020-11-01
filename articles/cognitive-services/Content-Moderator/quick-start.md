@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý Start: Vyzkoušejte Content Moderator na webu'
 titleSuffix: Azure Cognitive Services
-description: Pomocí nástroje online Content Moderator recenze můžete testovat základní funkce Content Moderator bez nutnosti psát jakýkoli kód.
+description: V tomto rychlém startu použijete nástroj online Content Moderator recenze k otestování základních funkcí Content Moderator bez nutnosti psát jakýkoli kód.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: moderátor obsahu, Moderování obsahu
-ms.openlocfilehash: 025c8fcf98a31d7b3380ee2530428d08428493fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596800"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143681"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Rychlý Start: Vyzkoušejte Content Moderator na webu
 
@@ -28,14 +28,13 @@ V tomto rychlém startu použijete nástroj online Content Moderator recenze k o
 - Webový prohlížeč
 
 ## <a name="set-up-the-review-tool"></a>Nastavení nástroje pro kontrolu
-
 Nástroj pro kontrolu Content Moderator je webový nástroj, který umožňuje lidským kontrolorům pomoci při rozhodování. V této příručce si projdete krátký proces nastavení nástroje pro kontrolu, abyste viděli, jak služba Content Moderator funguje. Přejít na web [nástroje Content moderator recenze](https://contentmoderator.cognitive.microsoft.com/) a zaregistrovat se.
 
 ![Content Moderator domovskou stránku](images/homepage.PNG)
 
 ## <a name="create-a-review-team"></a>Vytvořit tým pro revize
 
-Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživatelů, kteří ručně kontrolují rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast**a zadat **název týmu** a **ID týmu**. Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
+Dále vytvořte tým revize. V pracovním scénáři bude tento tým skupinou uživatelů, kteří ručně kontrolují rozhodnutí o moderování služby. Chcete-li vytvořit tým, je nutné vybrat **oblast** a zadat **název týmu** a **ID týmu** . Pokud chcete kolegům pozvat do týmu, můžete to udělat tak, že zadáte e-mailovou adresu.
 
 > [!NOTE]
 > **Název týmu** je popisný název pro váš tým recenze. Toto je název zobrazený v Azure Portal. **ID týmu** je to, co se používá k identifikaci programově týmu.
@@ -43,35 +42,39 @@ Dále vytvořte tým revize. V pracovním scénáři se jedná o skupinu uživat
 > [!div class="mx-imgBorder"]
 > ![Pozvat člena týmu](images/create-team.png)
 
-Pokud se rozhodnete šifrovat data pomocí klíče spravovaného zákazníkem (CMK), budete vyzváni k zadání **ID prostředku** pro váš Content moderator prostředku v cenové úrovni E0. Prostředek, který zadáte, musí být nový. 
+Pokud se rozhodnete šifrovat data pomocí klíče spravovaného zákazníkem (CMK), budete vyzváni k zadání **ID prostředku** pro váš Content moderator prostředku v cenové úrovni E0. Prostředek, který zadáte, musí být pro tento tým jedinečný. 
 
 > [!div class="mx-imgBorder"]
 > ![Pozvání člena týmu pomocí CMK](images/create-team-cmk.png)
 
-Pokud se pokusíte znovu použít prostředek Content Moderator, zobrazí se toto upozornění: 
-
-> [!div class="mx-imgBorder"]
-> ![Selhání CMK](images/create-team-cmk-fail.png)
-
 ## <a name="upload-sample-content"></a>Nahrát ukázkový obsah
 
-Teď jste připraveni nahrát ukázkový obsah. Vyberte možnost **vyzkoušet > obrázek**, **zkuste > Text**nebo **Vyzkoušejte > video**.
+Teď jste připraveni nahrát ukázkový obsah. Vyberte možnost **vyzkoušet > obrázek** , **zkuste > Text** nebo **Vyzkoušejte > video** .
 
-![Vyzkoušení obrázku nebo moderování textu](images/tryimagesortext.png)
+> [!div class="mx-imgBorder"]
+> ![Vyzkoušení obrázku nebo moderování textu](images/tryimagesortext.png)
 
-Odešlete obsah pro moderování. Interně Nástroj pro kontrolu zavolá rozhraní API pro moderování, aby kontroloval váš obsah. Až se kontrola dokončí, zobrazí se zpráva s oznámením, že výsledky čekají na vaši kontrolu.
+Odešlete obsah pro moderování. Můžete použít následující ukázkový textový obsah:
 
-![Střední soubory](images/submitted.png)
+```
+Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
+Crap is the profanity here. Is this information PII? phone 4255550111
+```
+
+Interně Nástroj pro kontrolu zavolá rozhraní API pro moderování, aby kontroloval váš obsah. Až se kontrola dokončí, zobrazí se zpráva s oznámením, že výsledky čekají na vaši kontrolu.
+
+> [!div class="mx-imgBorder"]
+> ![Střední soubory](images/submitted.png)
 
 ## <a name="review-moderation-tags"></a>Kontrola značek moderování
 
-Zkontrolujte použité značky moderování. Můžete vidět, které značky byly aplikovány na váš obsah a jaké byly skóre v každé kategorii. Další informace o tom, co ukazují různé značky obsahu, najdete v tématech o moderování [obrázku](image-moderation-api.md), [textu](text-moderation-api.md)a [videa](video-moderation-api.md) .
+Zkontrolujte použité značky moderování. Můžete vidět, které značky byly aplikovány na váš obsah a jaké byly skóre v každé kategorii. Další informace o tom, co ukazují různé značky obsahu, najdete v článcích o moderování [obrázků](image-moderation-api.md), [textu](text-moderation-api.md)a [videa](video-moderation-api.md) .
 
-![Kontrola výsledků](images/reviewresults_text.png)
+<!-- ![Review results](images/reviewresults_text.png) -->
 
 V projektu můžete vy nebo váš tým revize tyto značky změnit nebo podle potřeby přidat další značky. Tyto změny odešlete tlačítkem **Další** . Protože vaše obchodní aplikace volá rozhraní API moderátorů, bude se zde zařadit do fronty, která je připravená k revizi týmy pro lidskou kontrolu. Pomocí tohoto přístupu můžete rychle zkontrolovat velké objemy obsahu.
 
-V tuto chvíli jste použili nástroj Content Moderator recenze k zobrazení příkladů, co může služba Content Moderator provádět. Dále si můžete přečíst další informace o nástroji pro revize a o tom, jak ho integrovat do softwarového projektu pomocí rozhraní API pro revize, nebo můžete přejít na část [Další kroky](#next-steps) , kde se dozvíte, jak používat rozhraní API pro moderování ve vaší aplikaci.
+V tuto chvíli jste použili nástroj Content Moderator recenze k zobrazení příkladů toho, co může služba Content Moderator provádět. Dále si můžete přečíst další informace o nástroji pro revize a o tom, jak ho integrovat do softwarového projektu pomocí rozhraní API pro revize, nebo můžete přejít na část [Další kroky](#next-steps) , kde se dozvíte, jak používat rozhraní API pro moderování ve vaší aplikaci.
 
 ## <a name="learn-more-about-the-review-tool"></a>Další informace o nástroji pro revize
 

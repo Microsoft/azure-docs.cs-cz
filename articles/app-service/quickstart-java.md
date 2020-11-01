@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 6d154d8b35c175b88e91545ddc1e78f58f9be685
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776319"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146820"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service
 
@@ -80,7 +80,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 
 1. Po zobrazení výzvy s možností **předplatného** vyberte správnou položku `Subscription` zadáním čísla tisk na začátku řádku.
 1. Po zobrazení výzvy s možností **webové aplikace** přijměte možnost defaut `<create>` stisknutím klávesy ENTER.
-1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `2` .
+1. Po zobrazení výzvy s možností **OS** vyberte **Windows** zadáním `3` .
 1. Pomocí výchozí verze Java 1,8 stiskněte klávesu ENTER.
 1. Nakonec stiskněte klávesu ENTER na poslední výzvu k potvrzení výběru.
 
@@ -207,14 +207,14 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 
 Konfigurace pro App Service můžete v `pom.xml` případě potřeby upravit přímo. Níže jsou uvedeny některé běžné položky:
 
-Vlastnost | Požaduje se | Popis | Verze
+Vlastnost | Povinné | Popis | Verze
 ---|---|---|---
 `<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1` , `v2` . | 1.5.2
 `<subscriptionId>` | false (nepravda) | Zadejte ID předplatného. | 0.1.0 +
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
-`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
-`<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2**.| 0.1.0 +
+`<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope** . Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
+`<pricingTier>` | false (nepravda) | Cenová úroveň pro vaši webovou aplikaci. Výchozí hodnota je **P1V2** .| 0.1.0 +
 `<runtime>` | true | Konfigurace běhového prostředí můžete zobrazit podrobnosti [zde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0 +
 `<deployment>` | true | Konfigurace nasazení vám může [Zobrazit podrobnosti.](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) | 0.1.0 +
 

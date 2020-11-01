@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789858"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146224"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Jak pomocí Azure Portal zřídit virtuální počítač s Windows pomocí SQL Server
 
@@ -144,7 +144,7 @@ Na kartě **nastavení SQL Server** nakonfigurujte konkrétní nastavení a opti
 - [Machine Learning Services](#machine-learning-services)
 
 
-### <a name="connectivity"></a>Možnosti připojení
+### <a name="connectivity"></a>Připojení
 
 V části **Připojení SQL** zadejte typ přístupu, který chcete mít k instanci SQL Serveru na tomto virtuálním počítači. Pro účely tohoto návodu vyberte možnost **veřejné (Internet)** , která umožňuje připojení k SQL Server z počítačů nebo služeb na internetu. Když je vybraná tato možnost, Azure automaticky nakonfiguruje bránu firewall a skupinu zabezpečení sítě tak, aby na vybraném portu povolovala provoz.
 
@@ -196,7 +196,7 @@ Další informace najdete v tématu [Konfigurace Integrace se službou Azure Key
 
 Na kartě **nastavení SQL Server** v části **Konfigurace úložiště** vyberte **změnit konfiguraci** . otevře se stránka konfigurace optimalizovaného úložiště výkonu a určí požadavky na úložiště.
 
-![Konfigurace úložiště virtuálních počítačů SQL](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![Snímek obrazovky, který zvýrazní, kde můžete změnit konfiguraci úložiště.](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 V části **Optimalizace úložiště** vyberte jednu z následujících možností:
 

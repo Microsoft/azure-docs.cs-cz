@@ -1,18 +1,18 @@
 ---
-title: Protokoly Apache Hive zaplňujících místo na disku – Azure HDInsight
-description: Protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
+title: 'Řešení potíží: protokoly Apache Hive zaplní místo na disku – Azure HDInsight'
+description: Tento článek popisuje postup řešení potíží, když Apache Hive protokoly doplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533015"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145629"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scénář: protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 
@@ -20,13 +20,13 @@ Tento článek popisuje postup řešení potíží a možná řešení pro probl
 
 ## <a name="issue"></a>Problém
 
-V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech celé místo na disku. V důsledku toho mohou být zjištěny následující problémy.
+V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech celé místo na disku. Tento stav může způsobit následující problémy:
 
-1. Přístup SSH se nezdařil z důvodu nedostatku místa na hlavním uzlu.
-2. Ambari poskytuje *chybu protokolu http: služba 503 není k dispozici* .
-3. HiveServer2 Interactive se nerestartuje.
+- Přístup SSH se nezdařil, protože na hlavním uzlu není žádné místo.
+- Ambari vyvolá *chybu protokolu http: služba 503 není k dispozici* .
+- HiveServer2 Interactive se nerestartuje.
 
-V `ambari-agent` protokolech se při potížích zobrazí následující.
+`ambari-agent`Protokoly budou zahrnovat následující položky, když dojde k problému:
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -36,17 +36,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>Příčina
 
-V pokročilých konfiguracích log4j podregistru je aktuální výchozí plán odstranění nastavený na soubory starší než 30 dní na základě data poslední úpravy.
+V části Pokročilá konfigurace log4j podregistru je aktuálním výchozím plánem odstranění odstranění souborů, které jsou starší než 30 dní, na základě data poslední úpravy.
 
 ## <a name="resolution"></a>Řešení
 
-1. Přejděte na souhrn komponenty podregistru na portálu Ambari a klikněte na `Configs` kartu.
+1. Na portálu Ambari přejít na souhrn komponenty podregistr a vyberte kartu **Konfigurace** .
 
-2. Přejít na `Advanced hive-log4j` část v části Upřesnit nastavení.
+2. Přejít na `Advanced hive-log4j` oddíl v části **Upřesnit nastavení** .
 
-3. Nastavte `appender.RFA.strategy.action.condition.age` parametr na stáří podle vašeho výběru. Příklad 14 dnů: `appender.RFA.strategy.action.condition.age = 14D`
+3. Nastavte `appender.RFA.strategy.action.condition.age` parametr na stáří podle vašeho výběru. V tomto příkladu se nastaví stáří na 14 dnů: `appender.RFA.strategy.action.condition.age = 14D`
 
-4. Pokud nevidíte žádná související nastavení, přidejte prosím následující nastavení.
+4. Pokud nevidíte žádná související nastavení, přidejte tato nastavení:
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
@@ -57,7 +57,7 @@ V pokročilých konfiguracích log4j podregistru je aktuální výchozí plán o
     appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
     ```
 
-5. Nastavte `hive.root.logger` následujícím `INFO,RFA` způsobem. Výchozím nastavením je ladění, které způsobí, že se protokoly budou velmi velké.
+5. Nastavte `hive.root.logger` na `INFO,RFA` , jak je znázorněno v následujícím příkladu. Výchozí nastavení je `DEBUG` , což znamená, že protokoly budou velké.
 
     ```
     # Define some default values that can be overridden by system properties

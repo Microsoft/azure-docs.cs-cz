@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558631"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145816"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Seznámení s Azure Defenderem pro Registry kontejnerů
 
@@ -32,6 +32,12 @@ Security Center filtruje a klasifikuje závěry ze skeneru. Když je obrázek v 
 
 Tím, že se upozorní jenom na problémy, Security Center snižuje potenciální informativní výstrahy.
 
+
+> [!TIP]
+> Další informace o funkcích zabezpečení kontejneru Security Center najdete v tématech:
+>
+> - [Zabezpečení Azure Security Center a kontejneru](container-security.md)
+> - [Seznámení s Azure Defenderem pro Kubernetes](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>Kdy jsou naskenované obrázky?
 
@@ -81,10 +87,5 @@ Ano. Pokud máte organizaci, kterou je třeba ignorovat, místo toho, aby ji byl
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o funkcích zabezpečení kontejneru Security Center najdete v tématech:
-
-- [Zabezpečení Azure Security Center a kontejneru](container-security.md)
-
-- [Seznámení s Azure Defenderem pro Kubernetes](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [Skenování imagí pro chyby zabezpečení](defender-for-container-registries-usage.md)

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: seo-lt-2019
+ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789909"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146684"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Skupina dostupnosti Always On u SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuáln�
 Skupina dostupnosti je seskupení prostředků, které jsou nakonfigurované tak, aby ve stejné zóně dostupnosti nebyla žádná dvě půda. To brání vlivu na více prostředků ve skupině během zavádění nasazení. 
 
 
-## <a name="connectivity"></a>Možnosti připojení 
+## <a name="connectivity"></a>Připojení 
 
 V tradičním místním nasazení se klienti připojují k naslouchacího procesu skupiny dostupnosti pomocí názvu virtuální sítě (VNN) a naslouchací proces směruje provoz do příslušné repliky SQL Server ve skupině dostupnosti. Pro směrování provozu v síti Azure ale existuje dodatečný požadavek. 
 
@@ -74,27 +74,27 @@ Existuje několik možností, jak nasadit skupinu dostupnosti, která se SQL Ser
 
 Následující tabulka poskytuje porovnání dostupných možností: 
 
-| |**[Azure Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[portál Azure](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Šablony pro rychlý Start](availability-group-quickstart-template-configure.md)**|**[Ruční](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**Verze SQL Serveru** |2016 + |2016 +|2016 +|2012 +|
 |**Edice SQL Serveru** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
 |**Verze Windows serveru**| 2016 + | 2016 + | 2016 + | Vše| 
-|**Vytvoří cluster za vás.**|Ano|Ano | Ano |Ne|
-|**Vytvoří skupinu dostupnosti pro vás.** |Ano |Ne|Ne|Ne|
-|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |Ne|Ne|Ne|Ano|
-|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|Ne|Ne|Ne|Ano|
+|**Vytvoří cluster za vás.**|Yes|Yes | Yes |No|
+|**Vytvoří skupinu dostupnosti pro vás.** |Yes |No|No|No|
+|**Nezávisle vytvoří naslouchací proces a vyrovnávání zatížení.** |No|No|No|Yes|
+|**Je možné vytvořit naslouchací proces DNN pomocí této metody?**|No|No|No|Yes|
 |**Konfigurace kvora služby WSFC** n|Disk s kopií cloudu|Disk s kopií cloudu|Disk s kopií cloudu|Vše|
-|**DR s více oblastmi** |Ne|Ne|Ne|Ano|
-|**Podpora více podsítí** |Ano|Ano|Ano|Ano|
-|**Podpora pro existující službu AD**|Ano|Ano|Ano|Ano|
-|**DR s více zónami ve stejné oblasti**|Ano|Ano|Ano|Ano|
-|**Distributed AG bez AD**|Ne|Ne|Ne|Ano|
-|**Distribuovaný AG bez clusteru** |Ne|Ne|Ne|Ano|
+|**DR s více oblastmi** |No|No|No|Yes|
+|**Podpora více podsítí** |Yes|Yes|Yes|Yes|
+|**Podpora pro existující službu AD**|Yes|Yes|Yes|Yes|
+|**DR s více zónami ve stejné oblasti**|Yes|Yes|Yes|Yes|
+|**Distributed AG bez AD**|No|No|No|Yes|
+|**Distribuovaný AG bez clusteru** |No|No|No|Yes|
 ||||||
 
 
 
-## <a name="considerations"></a>Co je potřeba vzít v úvahu 
+## <a name="considerations"></a>Požadavky 
 
 Na hostovaném clusteru s podporou převzetí služeb při selhání ve virtuálním počítači Azure IaaS doporučujeme použít jednu síťovou kartu na server (uzel clusteru) a jednu podsíť. Sítě Azure mají fyzickou redundanci, která v clusteru hostů virtuálních počítačů Azure IaaS vyžaduje další síťové adaptéry a podsítě, které nejsou potřebné. I když ověřovací zpráva clusteru vydá varování, že uzly jsou dosažitelné pouze v jedné síti, můžete toto varování bezpečně ignorovat ve všech hostovaných clusterech ve virtuálních počítačích Azure IaaS. 
 

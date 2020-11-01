@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5ba765f03e7ac700fb4338e14358fc55e6423c47
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 33c572719d76a2add39aec37329679113fcddb76
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097035"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146326"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Jednotky dotazů v digitálních prozdvojeních Azure 
 
@@ -21,51 +21,53 @@ Jednotka pro dotazování digitálních vláken Azure **(qu)** je jednotka výpo
 Vyabstrakcí systémové prostředky, jako jsou CPU, IOPS a paměť, které jsou nutné k provádění operací dotazů podporovaných pomocí digitálních vláken Azure, a umožňuje tak sledovat využití v jednotkách dotazů.
 
 Množství jednotek dotazů spotřebovaných za provedení dotazu je ovlivněno...
-* složitost dotazu 
+
+* složitost dotazu
 * velikost sady výsledků (takže dotaz vracející 10 výsledků bude spotřebovávat víc QUs než dotaz podobné složitosti, který vrací jenom jeden výsledek).
 
 Tento článek vysvětluje, jak porozumět jednotkám dotazů a sledovat spotřebu jednotek dotazů.
 
-## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>Hledání využití jednotky dotazu v digitálních prozdvojeních Azure 
+## <a name="find-the-query-unit-consumption-in-azure-digital-twins"></a>Hledání využití jednotky dotazu v digitálních prozdvojeních Azure
 
-Když spustíte dotaz pomocí [rozhraní API pro dotazování](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure, můžete prozkoumat hlavičku odpovědi a sledovat počet QUs, které dotaz spotřeboval. V odpovědi odeslané zpět z digitálních vláken Azure hledejte "dotaz-poplatek". 
+Když spustíte dotaz pomocí [rozhraní API pro dotazování](/rest/api/digital-twins/dataplane/query)digitálních vláken Azure, můžete prozkoumat hlavičku odpovědi a sledovat počet QUs, které dotaz spotřeboval. V odpovědi odeslané zpět z digitálních vláken Azure hledejte "dotaz-poplatek".
 
 Sady [SDK](how-to-use-apis-sdks.md) pro digitální vlákna Azure umožňují extrakci hlavičky poplatků za dotaz z reakce na stránku. V této části se dozvíte, jak zadávat dotazy na digitální vlákna a jak iterovat na základě stránkované reakce za účelem extrakce hlavičky dotazu. 
 
 Následující fragment kódu ukazuje, jak lze extrahovat poplatky za dotaz vzniklé při volání rozhraní API pro dotazy. Při přístupu k hlavičce poplatků za dotaz vychází z odpovědí na stránky odpovědi a potom Iteruje na základě digitálního výsledku výsledků na každé stránce. 
- 
+
 ```csharp
-AsyncPageable<string> asyncPageableResponseWithCharge = client.QueryAsync("SELECT * FROM digitaltwins"); 
-int pageNum = 0; 
+AsyncPageable<string> asyncPageableResponseWithCharge = client.QueryAsync("SELECT * FROM digitaltwins");
+int pageNum = 0;
 
-// The "await" keyword here is required, as a call is made when fetching a new page. 
+// The "await" keyword here is required, as a call is made when fetching a new page.
 
-await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages()) 
-{ 
-    Console.WriteLine($"Page {++pageNum} results:"); 
+await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
+{
+    Console.WriteLine($"Page {++pageNum} results:");
 
-    // Extract the query-charge header from the page 
+    // Extract the query-charge header from the page
 
-    if (QueryChargeHelper.TryGetQueryCharge(page, out float queryCharge)) 
-    { 
-        Console.WriteLine($"Query charge was: {queryCharge}"); 
-    } 
+    if (QueryChargeHelper.TryGetQueryCharge(page, out float queryCharge))
+    {
+        Console.WriteLine($"Query charge was: {queryCharge}");
+    }
 
-    // Iterate over the twin instances. 
+    // Iterate over the twin instances.
 
-    // The "await" keyword is not required here, as the paged response is local. 
+    // The "await" keyword is not required here, as the paged response is local.
 
-    foreach (string response in page.Values) 
-    { 
-        BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(response); 
-        Console.WriteLine($"Found digital twin '{twin.Id}'"); 
-    } 
-} 
+    foreach (string response in page.Values)
+    {
+        BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(response);
+        Console.WriteLine($"Found digital twin '{twin.Id}'");
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o dotazování na digitální vlákna Azure najdete tady:
+
 * [*Koncepty: dotazovací jazyk*](concepts-query-language.md)
 * [*Postupy: dotazování na nevlákenný graf*](how-to-query-graph.md)
 * [Referenční dokumentace k rozhraní API pro dotazy](/rest/api/digital-twins/dataplane/query/querytwins)

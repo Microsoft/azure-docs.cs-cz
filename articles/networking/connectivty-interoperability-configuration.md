@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "86171852"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilita funkcí back-end připojení Azure: podrobnosti konfigurace testu
@@ -23,17 +23,17 @@ Tento článek popisuje konfigurační podrobnosti [nastavení testu][Setup]. Na
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Připojení k virtuální síti na straně koncové sítě pomocí partnerského vztahu virtuální sítě
 
-Následující obrázek ukazuje podrobnosti partnerského vztahu Azure Virtual Network pro virtuální síť rozbočovače (VNet). Další informace o tom, jak nastavit partnerský vztah mezi dvěma virtuální sítě, najdete v tématu [Správa partnerského vztahu virtuální][VNet-Config]sítě. Pokud chcete, aby virtuální síť rozbočovače používala brány, které jsou připojené k virtuální síti centra, vyberte **použít vzdálené brány**.
+Následující obrázek ukazuje podrobnosti partnerského vztahu Azure Virtual Network pro virtuální síť rozbočovače (VNet). Další informace o tom, jak nastavit partnerský vztah mezi dvěma virtuální sítě, najdete v tématu [Správa partnerského vztahu virtuální][VNet-Config]sítě. Pokud chcete, aby virtuální síť rozbočovače používala brány, které jsou připojené k virtuální síti centra, vyberte **použít vzdálené brány** .
 
 [![první]][1]
 
-Následující obrázek ukazuje podrobnosti partnerského vztahu virtuální sítě pro virtuální síť centra. Pokud chcete, aby virtuální síť rozbočovače povolovala použití bran rozbočovače, vyberte možnost **Povolit přenos brány**.
+Následující obrázek ukazuje podrobnosti partnerského vztahu virtuální sítě pro virtuální síť centra. Pokud chcete, aby virtuální síť rozbočovače povolovala použití bran rozbočovače, vyberte možnost **Povolit přenos brány** .
 
 [![odst]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>Připojení k virtuální síti větví pomocí sítě VPN typu Site-to-site
 
-Nastavte připojení VPN typu Site-to-site mezi centrem a větví virtuální sítě pomocí bran VPN Gateway v Azure VPN Gateway. Ve výchozím nastavení používají brány sítě VPN a brány Azure ExpressRoute privátní hodnotu autonomního systému číslo (ASN) **65515**. Hodnotu ASN můžete změnit v VPN Gateway. V nastavení testu se hodnota ASN brány VPN virtuální sítě pro větev změnila na **65516** , aby podporovala eBGP směrování mezi virtuální sítě centra a větví.
+Nastavte připojení VPN typu Site-to-site mezi centrem a větví virtuální sítě pomocí bran VPN Gateway v Azure VPN Gateway. Ve výchozím nastavení používají brány sítě VPN a brány Azure ExpressRoute privátní hodnotu autonomního systému číslo (ASN) **65515** . Hodnotu ASN můžete změnit v VPN Gateway. V nastavení testu se hodnota ASN brány VPN virtuální sítě pro větev změnila na **65516** , aby podporovala eBGP směrování mezi virtuální sítě centra a větví.
 
 
 [![1]][3]

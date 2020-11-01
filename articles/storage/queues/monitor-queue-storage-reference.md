@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ec82ec6613b6d2e68d01815d5669bfb169037e72
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787478"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146565"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Referenční informace o monitorování úložiště fronty Azure
 
@@ -26,7 +26,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 ### <a name="capacity-metrics"></a>Kapacitní metriky
 
-Hodnoty metrik kapacity se odesílají do Azure Monitor každou hodinu. Hodnoty se aktualizují každý den. Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
+Hodnoty metrik kapacity se aktualizují každý den (až 24 hodin). Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
 
 Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 

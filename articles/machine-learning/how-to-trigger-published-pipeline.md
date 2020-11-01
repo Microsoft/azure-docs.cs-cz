@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318292"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146258"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 
 Aktivovat spuštění kanálu Azure Machine Learning, když se zobrazí nová data Můžete například chtít, aby kanál aktivoval nový model při zobrazení nových dat v účtu BLOB Storage. Nastavte Trigger pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -49,7 +49,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     > [!div class="mx-imgBorder"]
     > ![Prázdná šablona](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. V Návrháři vyhledejte **objekt BLOB**. Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
+1. V Návrháři vyhledejte **objekt BLOB** . Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
     > [!div class="mx-imgBorder"]
     > ![Přidání triggeru](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -60,7 +60,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     > [!NOTE]
     > Tato aktivační událost bude monitorovat vybraný kontejner, ale nebude sledovat podsložky.
 
-1. Přidejte akci HTTP, která se spustí při zjištění nového nebo upravovaného objektu BLOB. Vyberte **+ Nový krok**, vyhledejte a vyberte akci HTTP.
+1. Přidejte akci HTTP, která se spustí při zjištění nového nebo upravovaného objektu BLOB. Vyberte **+ Nový krok** , vyhledejte a vyberte akci HTTP.
 
   > [!div class="mx-imgBorder"]
   > ![Vyhledat akci HTTP](media/how-to-trigger-published-pipeline/search-http.png)
@@ -94,6 +94,9 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     > ![Nastavení HTTP](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Vyberte **Uložit** a váš plán je teď připravený.
+
+> [!IMPORTANT]
+> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro svůj scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service) .
 
 ## <a name="next-steps"></a>Další kroky
 

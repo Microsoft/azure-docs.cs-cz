@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912952"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143603"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Recenze, pracovní postupy a úlohy pro moderování obsahu
 
@@ -23,9 +23,24 @@ Content Moderator kombinuje moderování počítačů s využitím možností fu
 
 ## <a name="reviews"></a>Recenze
 
-V recenzi se obsah nahraje do nástroje pro revize a zobrazí se na kartě **Revize** . Z tohoto místa mohou uživatelé měnit použité značky a podle potřeby používat vlastní značky. Když uživatel kontrolu odešle, výsledky se odešlou do zadaného koncového bodu zpětného volání a obsah se odebere z webu.
+V recenzi se obsah nahraje do nástroje pro revize. Můžete ji zobrazit kliknutím na její typ obsahu v části karta **Revize** na řídicím panelu. Na obrazovce revize můžete změnit použité značky a podle potřeby použít vlastní značky. Po odeslání recenze se výsledky odešlou do zadaného koncového bodu zpětného volání a obsah se odebere z webu.
 
-![Kontrola webu nástroje otevřeného v prohlížeči, na kartě kontrola](./Review-Tool-user-Guide/images/image-workflow-review.png)
+> [!div class="mx-imgBorder"]
+> ![Kontrola webu nástroje s vybranými kartami kontrola](./Review-Tool-user-Guide/images/review-tab.png)
+
+### <a name="manage-reviews"></a>Spravovat recenze
+
+Na řídicím panelu přejděte na **správce**  ->  **Správa recenze** a zobrazte obrazovku správce. Tady vidíte seznam všech revizí (čeká na vyřízení a dokončeno).
+
+Tlačítko **Akce** se třemi tečkami na každé revizi vám umožní přejít na obrazovku pro kontrolu nebo zkontrolovat historii této recenze.
+
+> [!div class="mx-imgBorder"]
+> ![Kontrola webu nástroje na obrazovce pro kontrolu](./Review-Tool-user-Guide/images/manage-reviews.png)
+
+Pomocí panelu nástrojů **hledání** seřadíte recenze podle nejrůznějších kategorií, jako je například stav revize, značky, typ obsahu, subtýmy, přiřazení uživatelé a datum vytvoření/úpravy.
+
+> [!div class="mx-imgBorder"]
+> ![Kontrola webu nástroje s vybranými kartami kontrola](./Review-Tool-user-Guide/images/review-search.png)
 
 Další informace o tom, jak to provést prostřednictvím kódu programu, najdete v [Průvodci pro kontrolu](./review-tool-user-guide/review-moderated-images.md) a Naučte se vytvářet recenze nebo si přečtěte [Průvodce REST API](./try-review-api-review.md) .
 
@@ -35,11 +50,12 @@ Pracovní postup je cloudově přizpůsobený filtr pro obsah. Pracovní postupy
 
 ### <a name="view-workflows"></a>Zobrazit pracovní postupy
 
-Pokud chcete zobrazit stávající pracovní postupy, použijte [Nástroj pro revizi](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Nastavení**  >  **pracovní postupy** .
+Pokud chcete zobrazit stávající pracovní postupy, klikněte na [Nástroj pro revize](https://contentmoderator.cognitive.microsoft.com/) a vyberte **Admin**  >  **pracovní postupy** správce.
 
-![Výchozí pracovní postup](images/default-workflow-listed.PNG)
+> [!div class="mx-imgBorder"]
+> ![Výchozí pracovní postup](images/default-workflow-list.png)
 
-Pracovní postupy mohou být zcela popsány jako řetězce JSON, díky kterým jsou přístupné programově. Pokud pro svůj pracovní postup vyberete možnost **Upravit** a pak vyberete kartu **JSON** , zobrazí se výraz JSON podobný následujícímu:
+Pracovní postupy jsou definovány jako řetězce JSON, díky kterým jsou přístupné programově. Pokud pro svůj pracovní postup vyberete možnost **Upravit** a pak vyberete kartu **JSON** , zobrazí se výraz JSON podobný následujícímu:
 
 ```json
 {

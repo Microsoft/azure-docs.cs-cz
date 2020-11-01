@@ -1,6 +1,6 @@
 ---
 title: 'Připojení k virtuální síti z počítače – P2S VPN a nativní ověřování certifikátů Azure: PowerShell'
-description: Připojíte zabezpečeně klienty Windows a Mac OS X k virtuální síti Azure pomocí P2S (Point-to-Site) a certifikátů podepsaných svým držitelem (self-signed certificate) nebo vydaných certifikační autoritou. Tento článek používá PowerShell.
+description: Připojte klienty Windows a macOS bezpečně ke službě Azure Virtual Network pomocí certifikátů P2S a certifikátů podepsaných držitelem nebo certifikátu vystaveného certifikační autoritou. Tento článek používá PowerShell.
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,29 +8,22 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d2902222dea3e84ebed04d80d7349167f83cae1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076013"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145867"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurace připojení VPN typu Point-to-site k virtuální síti s použitím nativního ověřování certifikátů Azure: PowerShell
 
-Tento článek vám pomůže bezpečně připojit jednotlivé klienty se systémem Windows, Linux nebo Mac OS X k virtuální síti Azure. Připojení VPN typu Point-to-site jsou užitečná, když se chcete připojit k virtuální síti ze vzdáleného umístění, například při práci z domova nebo z konference. Místo sítě VPN Site-to-Site můžete také použít P2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Připojení typu Point-to-site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo protokolu IKEv2.
+Tento článek vám pomůže bezpečně připojit jednotlivé klienty se systémem Windows, Linux nebo macOS k virtuální síti Azure. Připojení VPN typu Point-to-site jsou užitečná, když se chcete připojit k virtuální síti ze vzdáleného umístění, například při práci z domova nebo z konference. Místo sítě VPN Site-to-Site můžete také použít P2S, pokud máte pouze několik klientů, kteří se potřebují připojit k virtuální síti. Připojení typu Point-to-site nevyžadují zařízení VPN ani veřejnou IP adresu. P2S vytvoří připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol) nebo protokolu IKEv2.
 
 :::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="Připojení počítače k virtuální síti Azure – diagram připojení typu Point-to-site":::
 
 Další informace o síti VPN typu Point-to-site najdete v tématu věnovaném [síti VPN typu Point-to-site](point-to-site-about.md). Pokud chcete tuto konfiguraci vytvořit pomocí Azure Portal, přečtěte si téma [Konfigurace sítě VPN typu Point-to-site pomocí Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="architecture"></a>Architektura
-
-Nativní připojení k ověřování pomocí certifikátů Azure Point-to-site používají následující položky, které v tomto cvičení nakonfigurujete:
-
-* Bránu VPN typu RouteBased.
-* Veřejný klíč (soubor .cer) pro kořenový certifikát nahraný do Azure. Jakmile je certifikát nahraný, považuje za důvěryhodný certifikát a používá se k ověřování.
-* Klientský certifikát, který se generuje z kořenového certifikátu. Klientský certifikát nainstalovaný na každém klientském počítači, který se bude připojovat k virtuální síti. Tento certifikát se používá k ověřování klienta.
-* Konfigurace klienta VPN. Konfigurační soubory klienta VPN obsahují informace potřebné pro připojení klienta k virtuální síti. Soubory konfigurují stávajícího klienta VPN nativního pro příslušný operační systém. Každý klient, který se připojuje, musí být nakonfigurovaný pomocí nastavení v konfiguračních souborech.
+[!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -42,7 +35,7 @@ Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure
 > Mnohé z kroků v tomto článku můžou použít Azure Cloud Shell. Pro generování certifikátů ale nemůžete použít Cloud Shell. Kromě toho, pokud chcete odeslat veřejný klíč kořenového certifikátu, musíte použít Azure PowerShell lokálně nebo Azure Portal.
 >
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="1-sign-in"></a><a name="signin"></a>1. přihlášení
 

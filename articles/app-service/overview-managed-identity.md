@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 73b09c006b11e7f57dd3833191dd381b7f42a709
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742501"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145833"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -39,7 +39,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 4. V rámci karty **přiřazené systémem** přepněte **stav** na **zapnuto** . Klikněte na **Uložit** .
 
-    ![Spravovaná identita v App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![Snímek obrazovky, který ukazuje, kde přepnout stav na zapnuto a pak vyberte Uložit.](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -324,7 +324,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 **IDENTITY_ENDPOINT** je místní adresa URL, ze které vaše aplikace může žádat o tokeny. Pokud chcete získat token pro prostředek, udělejte požadavek HTTP GET na tento koncový bod, včetně následujících parametrů:
 
-> | Název parametru    | V     | Popis                                                                                                                                                                                                                                                                                                                                |
+> | Název parametru    | V     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | prostředek          | Dotaz  | Identifikátor URI prostředku Azure AD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.    |
 > | verze-api       | Dotaz  | Verze rozhraní API tokenu, která se má použít. Použijte prosím "2019-08-01" nebo novější (Pokud nepoužíváte spotřebu Linux, který aktuálně jenom nabízí "2017-09-01" – viz poznámku výše).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 Úspěšná odpověď 200 OK zahrnuje tělo JSON s následujícími vlastnostmi:
 
-> | Název vlastnosti | Popis                                                                                                                                                                                                                                        |
+> | Název vlastnosti | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.                                                                                                                               |
 > | client_id     | ID klienta použité identity.                                                                                                                                                                                                       |

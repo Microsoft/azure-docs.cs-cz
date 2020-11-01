@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128771"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145561"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -72,6 +72,9 @@ Jakmile budete mít kanál v provozu, můžete publikovat kanál, aby běžel s 
 ## <a name="run-a-published-pipeline"></a>Spuštění publikovaného kanálu
 
 Všechny publikované kanály mají koncový bod REST. Pomocí koncového bodu kanálu můžete aktivovat spuštění kanálu z libovolného externího systému, včetně klientů mimo Python. Tento koncový bod povoluje ve scénářích dávkového vyhodnocování a přeškolení možnost spravovaná opakovatelnost.
+
+> [!IMPORTANT]
+> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
 
 K vyvolání běhu předchozího kanálu potřebujete Azure Active Directory token hlavičky ověřování. Získání takového tokenu je popsané v referenčních informacích [třídy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) a v tématu [ověřování v](https://aka.ms/pl-restep-auth) poznámkovém bloku Azure Machine Learning.
 

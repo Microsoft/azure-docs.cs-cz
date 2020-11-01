@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84508892"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146003"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ Pokud chcete zobrazit Úvod a ukázku této funkce, podívejte se na následují
 
 
 > [!NOTE]
-> Integrace popsaná v tomto článku závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Musíte být schopni provést akci *Microsoft. EventGrid/eventSubscriptions/**. Tato akce je součástí předdefinované role EventGrid EventSubscription přispěvatele.
+> Integrace popsaná v tomto článku závisí na [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Ujistěte se, že vaše předplatné je zaregistrované u poskytovatele prostředků Event Grid. Další informace najdete v tématu [poskytovatelé a typy prostředků](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Musíte být schopni provést akci *Microsoft. EventGrid/eventSubscriptions/* *. Tato akce je součástí předdefinované role EventGrid EventSubscription přispěvatele.
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
@@ -63,23 +63,23 @@ V této části se dozvíte, jak vytvořit aktivační událost události v uži
 
 1. Vyberte, jestli aktivační událost ignoruje objekty BLOB s nulovými bajty.
 
-1. Po nakonfigurování triggeru klikněte na **Další: data ve verzi Preview**. Tato obrazovka zobrazuje existující objekty blob, které odpovídají vaší konfiguraci triggeru události. Ujistěte se, že máte konkrétní filtry. Konfigurace příliš rozsáhlých filtrů může odpovídat velkému počtu vytvořených nebo odstraněných souborů a může významně ovlivnit vaše náklady. Po ověření podmínek filtrování klikněte na **Dokončit**.
+1. Po nakonfigurování triggeru klikněte na **Další: data ve verzi Preview** . Tato obrazovka zobrazuje existující objekty blob, které odpovídají vaší konfiguraci triggeru události. Ujistěte se, že máte konkrétní filtry. Konfigurace příliš rozsáhlých filtrů může odpovídat velkému počtu vytvořených nebo odstraněných souborů a může významně ovlivnit vaše náklady. Po ověření podmínek filtrování klikněte na **Dokončit** .
 
     ![Náhled dat triggeru události](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-1. Pokud chcete k této aktivační události připojit kanál, přejděte na plátno kanálu a klikněte na **Přidat Trigger** a vyberte **Nový/upravit**. Jakmile se zobrazí boční navigace, klikněte na rozevírací seznam **vybrat aktivační událost...** a vyberte aktivační událost, kterou jste vytvořili. Klikněte na **Další: data Preview** a potvrďte, že je konfigurace správná, a pak **vedle** ověřit, jestli je verze Preview dat správná.
+1. Pokud chcete k této aktivační události připojit kanál, přejděte na plátno kanálu a klikněte na **Přidat Trigger** a vyberte **Nový/upravit** . Jakmile se zobrazí boční navigace, klikněte na rozevírací seznam **vybrat aktivační událost...** a vyberte aktivační událost, kterou jste vytvořili. Klikněte na **Další: data Preview** a potvrďte, že je konfigurace správná, a pak **vedle** ověřit, jestli je verze Preview dat správná.
 
-1. Pokud váš kanál obsahuje parametry, můžete je zadat v aktivační události spuštění na straně parametru navigace. Aktivační procedura události zachytí cestu ke složce a název souboru objektu blob do vlastností `@trigger().outputs.body.folderPath` a `@trigger().outputs.body.fileName` . Chcete-li použít hodnoty těchto vlastností v kanálu, je nutné namapovat vlastnosti na parametry kanálu. Po mapování vlastností na parametry můžete získat přístup k hodnotám zachyceným triggerem prostřednictvím `@pipeline().parameters.parameterName` výrazu v celém kanálu. Až budete hotovi, klikněte na **Dokončit** .
+1. Pokud váš kanál obsahuje parametry, můžete je zadat v aktivační události spuštění na straně parametru navigace. Aktivační procedura události zachytí cestu ke složce a název souboru objektu blob do vlastností `@triggerBody().folderPath` a `@triggerBody().fileName` . Chcete-li použít hodnoty těchto vlastností v kanálu, je nutné namapovat vlastnosti na parametry kanálu. Po mapování vlastností na parametry můžete získat přístup k hodnotám zachyceným triggerem prostřednictvím `@pipeline().parameters.parameterName` výrazu v celém kanálu. Až budete hotovi, klikněte na **Dokončit** .
 
     ![Mapování vlastností na parametry kanálu](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce – testování událostí v kontejnerech ve vzorových událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například při přidání MoviesDB.csv do cesty Sample-data/testování událostí `@trigger().outputs.body.folderPath` má hodnotu `sample-data/event-testing` a `@trigger().outputs.body.fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou namapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` lze je použít v rámci kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
+V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce – testování událostí v kontejnerech ve vzorových událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například při přidání MoviesDB.csv do cesty Sample-data/testování událostí `@triggerBody().folderPath` má hodnotu `sample-data/event-testing` a `@triggerBody().fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou namapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` lze je použít v rámci kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
 
 ## <a name="json-schema"></a>Schéma JSON
 
 Následující tabulka poskytuje přehled prvků schématu, které souvisejí s triggery založenými na událostech:
 
-| **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadováno** |
+| **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Povinné** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Yes |
 | **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Ano, libovolná kombinace těchto hodnot. |
@@ -92,7 +92,7 @@ Následující tabulka poskytuje přehled prvků schématu, které souvisejí s 
 V této části najdete příklady nastavení triggeru založeného na událostech.
 
 > [!IMPORTANT]
-> Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith**bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složku a název kontejneru ve formátu JSON triggeru.
+> Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith** bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složku a název kontejneru ve formátu JSON triggeru.
 
 | Vlastnost | Příklad | Description |
 |---|---|---|

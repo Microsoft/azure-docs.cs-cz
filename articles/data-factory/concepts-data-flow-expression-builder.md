@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635367"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145700"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Výrazy sestavení v mapování toku dat
 
@@ -30,15 +30,15 @@ Existuje více vstupních bodů pro otevření Tvůrce výrazů. Všechny jsou z
 
 V některých transformacích, jako je [Filtr](data-flow-filter.md), se kliknutím na textové pole s modrým výrazem otevře Tvůrce výrazů. 
 
-![Modré pole výrazu](media/data-flow/expressionbox.png "Tvůrce výrazů")
+![Modré pole výrazu](media/data-flow/expressionbox.png "Modré pole výrazu")
 
 Když odkazujete na sloupce v rámci párové nebo skupinové podmínky, může výraz extrahovat hodnoty ze sloupců. Pokud chcete vytvořit výraz, vyberte **vypočítaný sloupec** .
 
-![Možnost vypočítaného sloupce](media/data-flow/computedcolumn.png "Tvůrce výrazů")
+![Možnost vypočítaného sloupce](media/data-flow/computedcolumn.png "Možnost vypočítaného sloupce")
 
 V případech, kdy je výraz nebo hodnota literálu platnými vstupy, vyberte **Přidat dynamický obsah** k sestavení výrazu, který se vyhodnotí jako literální hodnota.
 
-![Přidat možnost dynamického obsahu](media/data-flow/add-dynamic-content.png "Tvůrce výrazů")
+![Přidat možnost dynamického obsahu](media/data-flow/add-dynamic-content.png "Přidat možnost dynamického obsahu")
 
 ## <a name="expression-elements"></a>Elementy výrazu
 
@@ -46,7 +46,7 @@ V části mapování toků dat mohou být výrazy tvořeny hodnotami sloupců, p
 
 ![Elementy výrazu](media/data-flow/expression-elements.png "Elementy výrazu")
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Mapování datových toků obsahuje integrované funkce a operátory, které lze použít ve výrazech. Seznam dostupných funkcí najdete v [referenčních informacích k mapování jazyka toku dat](data-flow-expression-functions.md).
 
@@ -72,6 +72,16 @@ Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, uza
 ### <a name="parameters"></a>Parametry
 
 Parametry jsou hodnoty, které se předávají do toku dat za běhu z kanálu. Chcete-li odkazovat na parametr, buď klikněte na parametr v zobrazení **prvků výrazu** nebo na něj odkázat znak dolaru před jeho názvem. Například parametr s názvem parametr1 by odkazoval na `$parameter1` . Další informace najdete v tématu [datové toky mapování Parametrizace](parameters-data-flow.md).
+
+### <a name="cached-lookup"></a>Vyhledávání v mezipaměti
+
+Vyhledávání v mezipaměti umožňuje provádět vložené vyhledávání výstupu jímky uložené v mezipaměti. Existují dvě funkce, které lze použít pro každou jímku `lookup()` a `outputs()` . Syntaxe pro odkazování na tyto funkce je `cacheSinkName#functionName()` . Další informace najdete v tématu [jímky mezipaměti](data-flow-sink.md#cache-sink).
+
+`lookup()` převezme odpovídající sloupce v aktuální transformaci jako parametry a vrátí složitý sloupec stejný jako řádek, který odpovídá klíčovým sloupcům v jímky mezipaměti. Vrácený složený sloupec obsahuje Podsloupec pro každý sloupec mapovaný v jímky mezipaměti. Například pokud byla jímka mezipaměti kódu chyby `errorCodeCache` , která obsahovala klíčový sloupec odpovídající kódu a sloupci s názvem `Message` . Volání `errorCodeCache#lookup(errorCode).Message` by vrátilo zprávu odpovídající předanému kódu. 
+
+`outputs()` nepřijímá žádné parametry a vrací celou vyrovnávací paměť jako pole komplexních sloupců. Tuto možnost nelze volat, pokud jsou v jímky zadány klíčové sloupce a měly by být použity pouze v případě, že je v jímky mezipaměti malý počet řádků. Běžným případem použití je připojení maximální hodnoty k přírůstkovým klíčům. Pokud jeden agregovaný řádek v mezipaměti `CacheMaxKey` obsahuje sloupec `MaxKey` , můžete na první hodnotu odkazovat voláním `CacheMaxKey#outputs()[1].MaxKey` .
+
+![Vyhledávání v mezipaměti](media/data-flow/cached-lookup-example.png "Vyhledávání v mezipaměti")
 
 ### <a name="locals"></a>Místní hodnoty
 

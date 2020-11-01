@@ -1,20 +1,20 @@
 ---
-title: Řešení potíží s připojením synapse Studio (Preview) pomocí PowerShellu
+title: Řešení potíží s připojením synapse studia
 description: Řešení potíží s připojením ke službě Azure synapse Studio pomocí PowerShellu
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.author: jrasnick
+ms.date: 10/30/2020
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cf9f18701317482284a3f1fa4b69a2c2927f64a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e433fd857f638c1c13e4545c19e0b6314ee62e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287708"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146502"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
+# <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>Řešení potíží s připojením synapse Studio pomocí PowerShellu
 
 Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozhraní API, aby fungovaly správně. Tato příručka vám pomůže identifikovat příčiny potíží s připojením, když máte tyto možnosti:
 - Konfigurace místní sítě (například sítě za podnikovou bránou firewall) pro přístup k Azure synapse studiu.

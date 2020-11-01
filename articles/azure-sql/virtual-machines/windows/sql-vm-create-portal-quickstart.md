@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 454dc593dca216d3805036ce78ec9986cf317d4e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791065"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145850"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>Rychlý Start: vytvoření SQL Server 2017 na virtuálním počítači s Windows v Azure Portal
 
@@ -47,7 +47,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace si můžete zobrazit tak, že na dlaždici **virtuální počítače SQL** vyberete **Zobrazit podrobnosti** .
 1. Vyberte **bezplatnou licenci SQL Server: SQL Server 2017 vývojář na obrázku Windows serveru 2016** z rozevíracího seznamu.
 
-   ![Nové okno hledání](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
+   ![Snímek obrazovky, který ukazuje, kde si vyberete bezplatnou licenci SQL Server: SQL Server 2017 vývojář na obrázku Windows serveru 2016.](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
 1. Vyberte **Vytvořit** .
 

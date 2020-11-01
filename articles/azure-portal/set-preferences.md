@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367427"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145935"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Správa nastavení a předvoleb na webu Azure Portal
 
@@ -44,13 +44,13 @@ Když se přihlásíte k Azure Portal, můžete změnit stránku, která se otev
 
 - **Domovskou stránku** nejde přizpůsobit.  Zobrazuje zástupce oblíbených služeb Azure a zobrazuje seznam aktuálně používaných prostředků. Poskytujeme vám také užitečné odkazy na prostředky, jako je Microsoft Learn a plán Azure.
 
-- Řídicí panely můžete přizpůsobit tak, aby vytvořily pracovní prostor určený jen pro vás. Můžete například vytvořit řídicí panel, který je zaměřený na projekt, úlohu nebo roli. Pokud vyberete **řídicí panel**, vaše výchozí zobrazení přejde na naposledy použitý řídicí panel. Další informace najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](azure-portal-dashboards.md).
+- Řídicí panely můžete přizpůsobit tak, aby vytvořily pracovní prostor určený jen pro vás. Můžete například vytvořit řídicí panel, který je zaměřený na projekt, úlohu nebo roli. Pokud vyberete **řídicí panel** , vaše výchozí zobrazení přejde na naposledy použitý řídicí panel. Další informace najdete v tématu [Vytvoření a sdílení řídicích panelů v Azure Portal](azure-portal-dashboards.md).
 
 ## <a name="choose-a-portal-menu-mode"></a>Zvolit režim nabídky portálu
 
 Výchozí režim pro nabídku portálu určuje, kolik místa se v nabídce portálu zabírá na stránce.
 
-![Snímek obrazovky zobrazující Azure Portal nastavení se zvýrazněnými motivy](./media/set-preferences/menu-mode.png)
+![Snímek obrazovky, který ukazuje, jak nastavit výchozí režim pro nabídku portálu.](./media/set-preferences/menu-mode.png)
 
 - Když je nabídka portálu v režimu **plovoucí** , je skrytá, dokud ji nepotřebujete. Výběrem ikony nabídky otevřete nebo zavřete nabídku.
 
@@ -68,7 +68,7 @@ Případně můžete zvolit jeden z motivů s vysokým kontrastem. Motiv vysoké
 
 Oznámení jsou systémové zprávy týkající se vaší aktuální relace. Poskytují informace, jako je aktuální zůstatek kreditu, kdy se právě vytvořené prostředky stanou dostupnými, nebo potvrďte poslední akci, například. Po zapnutí místních oznámení se zprávy krátce zobrazí v horním rohu obrazovky. 
 
-Pokud chcete povolit nebo zakázat místní oznámení, zaškrtněte nebo zrušte zaškrtnutí políčka **Povolit místní oznámení**.
+Pokud chcete povolit nebo zakázat místní oznámení, zaškrtněte nebo zrušte zaškrtnutí políčka **Povolit místní oznámení** .
 
 ![Snímek obrazovky zobrazující nastavení Azure Portal s zvýrazněnými automaticky vydanými oznámeními](./media/set-preferences/popup-notifications.png)
 
@@ -84,13 +84,13 @@ Nastavení časového limitu nečinnosti pomáhá chránit prostředky před neo
 
 ### <a name="change-your-individual-timeout-setting-user"></a>Změna nastavení individuálního časového limitu (uživatel)
 
-Vyberte rozevírací nabídku s možností **Odhlásit**se, pokud je neaktivní. Vyberte dobu, po jejímž uplynutí bude relace Azure Portal odhlášena, pokud nepracujete v nečinnosti.
+Vyberte rozevírací nabídku s možností **Odhlásit** se, pokud je neaktivní. Vyberte dobu, po jejímž uplynutí bude relace Azure Portal odhlášena, pokud nepracujete v nečinnosti.
 
 ![Snímek obrazovky s zvýrazněným nastavením neaktivního časového limitu](./media/set-preferences/inactive-signout-user.png)
 
 Změna se automaticky uloží. Pokud nepracujete, vaše relace Azure Portal se odhlásí po uplynutí doby, kterou jste nastavili.
 
-Pokud správce povolil zásady časových limitů nečinnosti, můžete nastavit vlastní, pokud je to méně, než nastavení na úrovni adresáře. Vyberte **přepsat zásady časového limitu nečinnosti adresáře**a pak nastavte časový interval.
+Pokud správce povolil zásady časových limitů nečinnosti, můžete nastavit vlastní, pokud je to méně, než nastavení na úrovni adresáře. Vyberte **přepsat zásady časového limitu nečinnosti adresáře** a pak nastavte časový interval.
 
 ![Snímek obrazovky s nastavením portálu s přepsáním nastavení zásad časového limitu nečinnosti adresáře, který se zvýrazní](./media/set-preferences/inactive-signout-override.png)
 
@@ -100,7 +100,7 @@ Správci v [roli globálního správce](../active-directory/roles/permissions-re
 
 Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu nečinnosti pro všechny uživatele Azure Portal, postupujte podle následujících kroků:
 
-1. Vyberte text odkazu **konfigurace časového limitu na úrovni adresáře**.
+1. Vyberte text odkazu **konfigurace časového limitu na úrovni adresáře** .
 
     ![Snímek obrazovky s nastavením portálu s zvýrazněným textem odkazu](./media/set-preferences/settings-admin.png)
 
@@ -108,7 +108,7 @@ Pokud jste globální správce a chcete vyhodnotit nastavení časového limitu 
 
 1. V dalším kroku zadejte **hodiny** a **minuty** pro maximální dobu, po kterou může být uživatel nečinný, než se automaticky odhlásí jeho relace.
 
-1. Vyberte **Použít**.
+1. Vyberte **Použít** .
 
     ![Snímek obrazovky zobrazující stránku pro nastavení časového limitu nečinnosti na úrovni adresáře](./media/set-preferences/configure.png)
 
@@ -118,7 +118,7 @@ Pokud chcete potvrdit, že se správně nastavily zásady časového limitu neč
 
 ## <a name="restore-default-settings"></a>Obnovit výchozí nastavení
 
-Pokud jste provedli změny nastavení Azure Portal a chcete je zahodit, vyberte **Obnovit výchozí nastavení**. Všechny změny, které jste provedli v nastavení portálu, budou ztraceny. Tato možnost nemá vliv na přizpůsobení řídicího panelu.
+Pokud jste provedli změny nastavení Azure Portal a chcete je zahodit, vyberte **Obnovit výchozí nastavení** . Všechny změny, které jste provedli v nastavení portálu, budou ztraceny. Tato možnost nemá vliv na přizpůsobení řídicího panelu.
 
 ![Snímek obrazovky, který ukazuje obnovení výchozích nastavení](./media/set-preferences/useful-links-restore-defaults.png)
 
@@ -132,7 +132,7 @@ Informace o vlastním nastavení jsou uložené v Azure. Můžete exportovat ná
 
 Pokud je chcete odstranit, je vhodné toto nastavení exportovat a zkontrolovat. Opětovné sestavení řídicích panelů nebo obnovení nastavení může být časově náročné.
 
-Pokud chcete exportovat nastavení portálu, vyberte **exportovat všechna nastavení**.
+Pokud chcete exportovat nastavení portálu, vyberte **exportovat všechna nastavení** .
 
 ![Snímek obrazovky znázorňující Export nastavení](./media/set-preferences/useful-links-export-settings.png)
 
@@ -150,7 +150,7 @@ Před odstraněním je vhodné nastavení exportovat a zkontrolovat. Opětovné 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Pokud chcete odstranit nastavení portálu, vyberte **Odstranit všechna nastavení a privátní řídicí panely**.
+Pokud chcete odstranit nastavení portálu, vyberte **Odstranit všechna nastavení a privátní řídicí panely** .
 
 ![Snímek obrazovky, který ukazuje odstranění nastavení](./media/set-preferences/useful-links-delete-settings.png)
 

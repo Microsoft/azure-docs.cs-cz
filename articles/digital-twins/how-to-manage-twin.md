@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4962116b683d648f8f2d229b5113d2c8a01e15f8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0851838b89a9a2bdc54526ac40014f645f3d88a2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130999"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146582"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -29,10 +29,10 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 
 ## <a name="create-a-digital-twin"></a>Vytvoření digitálního vlákna
 
-Chcete-li vytvořit dvojitou hodnotu, použijte `CreateDigitalTwin()` metodu na klientovi služby, například:
+Chcete-li vytvořit dvojitou hodnotu, použijte `CreateOrReplaceDigitalTwinAsync()` metodu na klientovi služby, například:
 
 ```csharp
-await client.CreateDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
 ```
 
 K vytvoření digitálního vlákna musíte zadat:
@@ -55,10 +55,10 @@ Můžete inicializovat vlastnosti vlákna v době, kdy je vytvořena dvojitá vl
 
 Rozhraní API pro vytvoření vlákna přijímá objekt, který je serializován do platného popisu JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu. 
 
-Nejprve můžete vytvořit datový objekt, který bude představovat vlákna a data vlastností. Pak můžete použít `JsonSerializer` k předání serializované verze tohoto objektu do volání rozhraní API pro `initdata` parametr, například takto:
+Nejprve můžete vytvořit datový objekt, který bude představovat vlákna a jeho data vlastností, například takto:
 
 ```csharp
-await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
 ```
 Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
 
@@ -80,14 +80,14 @@ twin.Metadata.ModelId = "dtmi:example:Room;1";
 Dictionary<string, object> props = new Dictionary<string, object>();
 props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
-twin.CustomProperties = props;
+twin.Contents = props;
 
-client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myRoomId", twin);
 Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateDigitalTwin()` volání. Například:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -100,15 +100,14 @@ Můžete získat přístup k podrobnostem jakéhokoliv digitálního vlákna vol
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Toto volání vrátí jako řetězec JSON dvojitá data. Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
+Toto volání vrátí dvojitá data jako typ objektu silně typovaného typu, jako je například `BasicDigitalTwin` . Tady je příklad toho, jak se má použít k zobrazení podrobností o zdvojených událostech:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin("myRoomId");
-twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
+foreach (string prop in twin.Contents.Keys)
 {
-  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  if (twin.Contents.TryGetValue(prop, out object value))
   Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -183,12 +182,11 @@ Můžete analyzovat vrácený formát JSON pro vlákna pomocí knihovny analýzy
 Můžete také použít třídu pomocníka serializace `BasicDigitalTwin` , která je součástí sady SDK, což vrátí základní a vlastnosti ve formě předem analyzovaných formulářů. Tady je příklad:
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_Id);
-BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.CustomProperties.Keys)
+foreach (string prop in twin.Contents.Keys)
 {
-    if (twin.CustomProperties.TryGetValue(prop, out object value))
+    if (twin.Contents.TryGetValue(prop, out object value))
         Console.WriteLine($"Property '{prop}': {value}");
 }
 ```
@@ -224,30 +222,12 @@ Tady je příklad kódu opravy JSON. Tento dokument nahrazuje hodnoty *mass* vla
   }
 ]
 ```
-Můžete ručně vytvořit opravy nebo pomocí pomocné třídy serializace v [sadě SDK](how-to-use-apis-sdks.md). Tady je příklad každé z nich.
-
-#### <a name="create-patches-manually"></a>Ruční vytvoření oprav
+Můžete vytvořit opravy pomocí `JsonPatchDocument` [sady SDK](how-to-use-apis-sdks.md). Zde je příklad.
 
 ```csharp
-List<object> twinData = new List<object>();
-twinData.Add(new Dictionary<string, object>() {
-    { "op", "add"},
-    { "path", "/Temperature"},
-    { "value", 25.0}
-});
-
-await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
-Console.WriteLine("Updated twin properties");
-FetchAndPrintTwin(twin_Id, client);
-}
-```
-
-#### <a name="create-patches-using-the-helper-class"></a>Vytváření oprav pomocí pomocné třídy
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendAddOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>Aktualizovat vlastnosti v digitálních nevlákenných komponentách
@@ -346,11 +326,10 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     try
     {
         // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+        AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
 
-        await foreach (string relJson in relsJson)
+        await foreach (BasicRelationship rel in rels)
         {
-            var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
             await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
             Log.Ok($"Deleted relationship {rel.Id} from {dtId}");
         }
@@ -455,8 +434,8 @@ namespace minimal
             Dictionary<string, object> props = new Dictionary<string, object>();
             props.Add("Temperature", 35.0);
             props.Add("Humidity", 55.0);
-            twin.CustomProperties = props;
-            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            twin.Contents = props;
+            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twin_Id, twin);
             Console.WriteLine("Twin created successfully");
             Console.WriteLine();
 
@@ -467,14 +446,9 @@ namespace minimal
             Console.WriteLine();
 
             //Update twin data
-            List<object> twinData = new List<object>();
-            twinData.Add(new Dictionary<string, object>() 
-            {
-                { "op", "add"},
-                { "path", "/Temperature"},
-                { "value", 25.0}
-            });
-            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            var updateTwinData = new JsonPatchDocument();
+            updateTwinData.AppendAdd("/Temperature", 25.0);
+            await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
             Console.WriteLine("Twin properties updated");
             Console.WriteLine();
 
@@ -491,12 +465,11 @@ namespace minimal
         private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
         {
             BasicDigitalTwin twin;
-            Response<string> res = client.GetDigitalTwin(twin_Id);
-            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
             Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-            foreach (string prop in twin.CustomProperties.Keys)
+            foreach (string prop in twin.Contents.Keys)
             {
-                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                if (twin.Contents.TryGetValue(prop, out object value))
                     Console.WriteLine($"Property '{prop}': {value}");
             }
 
@@ -524,11 +497,10 @@ namespace minimal
             try
             {
                 // GetRelationshipsAsync will throw an error if a problem occurs
-                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+                AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
 
-                await foreach (string relJson in relsJson)
+                await foreach (BasicRelationship rel in rels)
                 {
-                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
                     await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
                     Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
                 }

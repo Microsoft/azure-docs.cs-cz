@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970125"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145595"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
 V současné době jsou pro rozhraní .NET (C#), JavaScript a Java pouze sady SDK pro rovinu publikovaných dat pro interakci s rozhraními API digitálních vláken Azure. O těchto sadách SDK si můžete přečíst a obecně v tématu [*Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure*](how-to-use-apis-sdks.md). Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK pro datovou rovinu v jazyce podle vašeho výběru pomocí funkce AutoRest.
 
 >[!NOTE]
-> Můžete také použít AutoRest k vygenerování sady SDK řídicí roviny, pokud byste chtěli. Provedete to tak, že provedete kroky v tomto článku pomocí nejnovějšího souboru Swagger (openapi) **řídicí plochy** (místo toho, aby byla rovina ovládacího prvku Swagger]]) ( https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) místo pro jednu rovinu dat).
+> Můžete také použít AutoRest k vygenerování sady SDK řídicí roviny, pokud byste chtěli. Provedete to tak, že provedete kroky v tomto článku pomocí nejnovějšího souboru Swagger (openapi) **řídicí** plochy ze [složky Swagger ovládacího prvku](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) , nikoli z roviny dat.
 
 ## <a name="set-up-your-machine"></a>Nastavení počítače
 
@@ -47,7 +47,7 @@ Pokud chcete spustit AutoRest proti souboru Swagger digitálních vláken Azure,
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít obor názvů *ADTApi*. Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
+V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít obor názvů *ADTApi* . Tento obor názvů budete používat i v ostatních příkladech použití v tomto článku.
 
 AutoRest podporuje široké spektrum generátorů kódů jazyka.
 
@@ -64,7 +64,7 @@ Postupujte takto:
 3. V Průzkumníku řešení klikněte pravým tlačítkem na projekt *ADTApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
 4. Najděte složku, do které jste sadu SDK vygenerovali, a vyberte soubory na kořenové úrovni.
 5. Stiskněte OK
-6. Přidejte do projektu složku (kliknutím pravým tlačítkem vyberte projekt v Průzkumník řešení a zvolte *přidat > nová složka*).
+6. Přidejte do projektu složku (kliknutím pravým tlačítkem vyberte projekt v Průzkumník řešení a zvolte *přidat > nová složka* ).
 7. Pojmenování *modelů* složek
 8. V Průzkumníku řešení klikněte pravým tlačítkem na složku *modely* a vyberte *Přidat > existující položka...*
 9. Vyberte soubory ve složce *modely* VYGENEROVANÉ sady SDK a stiskněte OK.
@@ -73,7 +73,7 @@ K úspěšnému sestavení sady SDK bude projekt potřebovat tyto odkazy:
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-Pokud je chcete přidat, otevřete *nástroje > správce balíčků nuget > spravovat balíčky NuGet pro řešení...*.
+Pokud je chcete přidat, otevřete *nástroje > správce balíčků nuget > spravovat balíčky NuGet pro řešení...* .
 
 1. Na panelu se ujistěte, že je vybraná karta *Procházet* .
 2. Hledání *Microsoft. REST*
@@ -117,40 +117,25 @@ AutoRest generuje dva typy vzorů stránkování pro sadu SDK:
 * Jedna pro všechna rozhraní API s výjimkou rozhraní API pro dotazy
 * Jedno pro rozhraní API pro dotazování
 
-Ve vzoru stránkování bez dotazu existují dvě verze každého volání:
-* Verze, která provede počáteční volání (například `DigitalTwins.ListEdges()` )
-* Verze, na které se mají získat následující stránky Tato volání mají příponu "Next" (například). `DigitalTwins.ListEdgesNext()`
+Ve vzoru stránkování bez dotazu je zde uveden fragment kódu, který ukazuje, jak načíst stránkovaný seznam odchozích vztahů z digitálních vláken Azure:
 
-Tady je fragment kódu, který ukazuje, jak načíst stránkovaný seznam odchozích vztahů z digitálních vláken Azure:
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 

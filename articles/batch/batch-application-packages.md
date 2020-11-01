@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91277695"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
@@ -33,7 +33,7 @@ Existují omezení počtu aplikací a balíčků aplikací v rámci účtu Batch
 
 ## <a name="understand-applications-and-application-packages"></a>Porozumění aplikacím a balíčkům aplikací
 
-V rámci Azure Batch *aplikace* odkazuje na sadu binárních souborů s verzí, které se dají automaticky stáhnout do výpočetních uzlů ve fondu. Aplikace obsahuje jeden nebo více *balíčků aplikací*, které reprezentují různé verze aplikace.
+V rámci Azure Batch *aplikace* odkazuje na sadu binárních souborů s verzí, které se dají automaticky stáhnout do výpočetních uzlů ve fondu. Aplikace obsahuje jeden nebo více *balíčků aplikací* , které reprezentují různé verze aplikace.
 
 Každý *balíček aplikace* je soubor. zip, který obsahuje binární soubory aplikace a všechny podpůrné soubory. Podporován je pouze formát. zip.
 
@@ -69,7 +69,7 @@ Pokud jste ještě nenakonfigurovali účet úložiště, Azure Portal zobrazí 
 Po propojení těchto dvou účtů může služba Batch automaticky nasadit balíčky uložené v propojeném účtu úložiště do vašich výpočetních uzlů.
 
 > [!IMPORTANT]
-> Balíčky aplikací se nedají použít s účty Azure Storage nakonfigurovanými s [pravidly brány firewall](../storage/common/storage-network-security.md)nebo s **hierarchickým oborem názvů** nastaveným na **povoleno**.
+> Balíčky aplikací se nedají použít s účty Azure Storage nakonfigurovanými s [pravidly brány firewall](../storage/common/storage-network-security.md)nebo s **hierarchickým oborem názvů** nastaveným na **povoleno** .
 
 Služba Batch používá Azure Storage k ukládání balíčků aplikací jako objektů blob bloku. Poplatky za data objektů blob bloku se [účtují jako normální](https://azure.microsoft.com/pricing/details/storage/) a velikost každého balíčku nemůže překročit maximální velikost objektu blob bloku. Další informace najdete v tématu [Azure Storage škálovatelnost a výkonnostní cíle pro účty úložiště](../storage/blobs/scalability-targets.md). Pro minimalizaci nákladů nezapomeňte zvážit velikost a počet balíčků aplikací a pravidelně odebírat zastaralé balíčky.
 
@@ -81,33 +81,33 @@ Pokud chcete zobrazit aplikace ve vašem účtu Batch, v levé navigační nabí
 
 Po výběru této možnosti nabídky se otevře okno **aplikace** . V tomto okně se zobrazuje ID jednotlivých aplikací ve vašem účtu a následující vlastnosti:
 
-- **Balíčky**: počet verzí přidružených k této aplikaci.
-- **Výchozí verze**: Pokud je to možné, verze aplikace, která se nainstaluje, když při nasazování aplikace nebude zadána žádná verze
-- **Povolit aktualizace**: Určuje, jestli jsou povolené aktualizace balíčků a odstranění.
+- **Balíčky** : počet verzí přidružených k této aplikaci.
+- **Výchozí verze** : Pokud je to možné, verze aplikace, která se nainstaluje, když při nasazování aplikace nebude zadána žádná verze
+- **Povolit aktualizace** : Určuje, jestli jsou povolené aktualizace balíčků a odstranění.
 
-Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku aplikace na výpočetním uzlu, přejděte na účet Batch v Azure Portal. Vyberte **fondy**. pak vyberte fond, který obsahuje výpočetní uzel. Vyberte výpočetní uzel, na kterém je nainstalován balíček aplikace, a otevřete složku **aplikace** .
+Pokud chcete zobrazit [strukturu souborů](files-and-directories.md) balíčku aplikace na výpočetním uzlu, přejděte na účet Batch v Azure Portal. Vyberte **fondy** . pak vyberte fond, který obsahuje výpočetní uzel. Vyberte výpočetní uzel, na kterém je nainstalován balíček aplikace, a otevřete složku **aplikace** .
 
 ### <a name="view-application-details"></a>Zobrazit podrobnosti o aplikaci
 
 Chcete-li zobrazit podrobnosti o aplikaci, vyberte ji v okně **aplikace** . Pro svou aplikaci můžete nakonfigurovat následující nastavení.
 
-- **Allow Updates**: Určuje, zda lze balíčky aplikací [aktualizovat nebo odstranit](#update-or-delete-an-application-package). Výchozí hodnota je **Yes** (Ano). Pokud je tato možnost nastavená na **ne**, existující balíčky aplikací se nedají aktualizovat ani odstranit, ale pořád se můžou přidat nové verze balíčku aplikace.
-- **Výchozí verze**: výchozí balíček aplikace, který se má použít při nasazení aplikace, pokud není zadaná žádná verze.
-- **Zobrazovaný název**: popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci. Tento název lze například použít v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
+- **Allow Updates** : Určuje, zda lze balíčky aplikací [aktualizovat nebo odstranit](#update-or-delete-an-application-package). Výchozí hodnota je **Yes** (Ano). Pokud je tato možnost nastavená na **ne** , existující balíčky aplikací se nedají aktualizovat ani odstranit, ale pořád se můžou přidat nové verze balíčku aplikace.
+- **Výchozí verze** : výchozí balíček aplikace, který se má použít při nasazení aplikace, pokud není zadaná žádná verze.
+- **Zobrazovaný název** : popisný název, který může vaše řešení Batch použít, když zobrazuje informace o aplikaci. Tento název lze například použít v uživatelském rozhraní služby, které poskytnete vašim zákazníkům prostřednictvím služby Batch.
 
 ### <a name="add-a-new-application"></a>Přidat novou aplikaci
 
 Chcete-li vytvořit novou aplikaci, přidejte balíček aplikace a zadejte jedinečné ID aplikace.
 
-V účtu Batch vyberte **aplikace** a pak vyberte **Přidat**.
+V účtu Batch vyberte **aplikace** a pak vyberte **Přidat** .
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
 
 Zadejte následující informace:
 
-- **ID aplikace**: ID vaší nové aplikace.
-- **Version (verze**): verze balíčku aplikace, kterou nahráváte.
-- **Balíček aplikace**: soubor. zip obsahující binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace.
+- **ID aplikace** : ID vaší nové aplikace.
+- **Version (verze** ): verze balíčku aplikace, kterou nahráváte.
+- **Balíček aplikace** : soubor. zip obsahující binární soubory aplikace a podpůrné soubory, které jsou nutné ke spuštění aplikace.
 
 ID a **verze** **aplikace** , které zadáte, musí splňovat tyto požadavky:
 
@@ -116,13 +116,13 @@ ID a **verze** **aplikace** , které zadáte, musí splňovat tyto požadavky:
 - Musí být v rámci účtu Batch jedinečný.
 - V ID se nerozlišují velká a malá písmena.
 
-Až budete připraveni, vyberte **Odeslat**. Po nahrání souboru zip do účtu Azure Storage na portálu se zobrazí oznámení. V závislosti na velikosti souboru, který nahráváte, a rychlosti síťového připojení může to trvat delší dobu.
+Až budete připraveni, vyberte **Odeslat** . Po nahrání souboru zip do účtu Azure Storage na portálu se zobrazí oznámení. V závislosti na velikosti souboru, který nahráváte, a rychlosti síťového připojení může to trvat delší dobu.
 
 ### <a name="add-a-new-application-package"></a>Přidat nový balíček aplikace
 
-Pokud chcete přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v části **aplikace** účtu Batch a pak vyberte **Přidat**.
+Pokud chcete přidat verzi balíčku aplikace pro existující aplikaci, vyberte aplikaci v části **aplikace** účtu Batch a pak vyberte **Přidat** .
 
-Stejně jako u nové aplikace zadejte **verzi** nového balíčku, nahrajte soubor. zip do pole **balíček aplikace** a pak vyberte **Odeslat**.
+Stejně jako u nové aplikace zadejte **verzi** nového balíčku, nahrajte soubor. zip do pole **balíček aplikace** a pak vyberte **Odeslat** .
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizace nebo odstranění balíčku aplikace
 
@@ -130,9 +130,9 @@ Chcete-li aktualizovat nebo odstranit existující balíček aplikace, vyberte a
 
 :::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Diagram znázorňující zobrazení aplikací a balíčků aplikací na vysoké úrovni.":::
 
-Pokud vyberete možnost **aktualizovat**, budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
+Pokud vyberete možnost **aktualizovat** , budete moct nahrát nový soubor. zip. Tím se nahradí předchozí soubor zip, který jste nahráli pro danou verzi.
 
-Pokud vyberete **Odstranit**, zobrazí se výzva k potvrzení odstranění této verze. Jakmile vyberete **OK**, Batch odstraní soubor. zip z účtu Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro tuto aplikaci odebrána **výchozí nastavení verze** .
+Pokud vyberete **Odstranit** , zobrazí se výzva k potvrzení odstranění této verze. Jakmile vyberete **OK** , Batch odstraní soubor. zip z účtu Azure Storage. Odstraníte-li výchozí verzi aplikace, bude pro tuto aplikaci odebrána **výchozí nastavení verze** .
 
 ## <a name="install-applications-on-compute-nodes"></a>Instalace aplikací na výpočetní uzly
 
@@ -202,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Příklad:
+V uzlech se systémem Linux se formát mírně liší. Tečky (.), spojovníky (-) a znaménko čísla (#) jsou shrnuty do podtržítek v proměnné prostředí. Všimněte si také, že se zachová případ ID aplikace. Například:
 
 ```
 Linux:
@@ -225,7 +225,7 @@ AZ_BATCH_APP_PACKAGE_blender_2_7
 
 Při nahrávání balíčku aplikace můžete zadat výchozí verzi, která se má nasadit do výpočetních uzlů. Pokud jste pro aplikaci zadali výchozí verzi, můžete při odkazování na aplikaci vynechat příponu verze. Výchozí verzi aplikace můžete zadat v Azure Portal v okně **aplikace** , jak je znázorněno v části [nahrání a Správa aplikací](#upload-and-manage-applications).
 
-Například pokud nastavíte "2,7" jako výchozí verzi pro *Blend*aplikace a vaše úkoly odkazují na následující proměnnou prostředí, budou vaše uzly Windows spouštět verzi 2,7:
+Například pokud nastavíte "2,7" jako výchozí verzi pro *Blend* aplikace a vaše úkoly odkazují na následující proměnnou prostředí, budou vaše uzly Windows spouštět verzi 2,7:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 

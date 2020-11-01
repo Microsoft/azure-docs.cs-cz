@@ -1,20 +1,20 @@
 ---
-title: Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure
-description: V tomto kurzu se dozvíte, jak vytvořit server SQL Azure s privátním koncovým bodem.
+title: Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – portál
+description: V tomto kurzu se dozvíte, jak pomocí Azure Portal vytvořit server SQL Azure s privátním koncovým bodem.
 services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: d12b377d053ac546efef05d5594568c1c1dbcd0e
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92344854"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145663"
 ---
-# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure
+# <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Kurz – připojení k serveru SQL Azure pomocí privátního koncového bodu Azure – Azure Portal
 
 Privátní koncový bod Azure je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě s prostředky privátního propojení.
 
@@ -41,15 +41,15 @@ V této části vytvoříte virtuální síť, podsíť a hostitele bastionu.
 
 Hostitel bastionu se bude používat k zabezpečenému připojení k virtuálnímu počítači za účelem testování privátního koncového bodu.
 
-1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť**.
+1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek > Sítě > Virtuální síť** nebo do vyhledávacího pole zadejte **Virtuální síť** .
 
-2. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě **základy** :
+2. V části **vytvořit virtuální síť** zadejte nebo vyberte tyto informace na kartě **základy** :
 
     | **Nastavení**          | **Hodnota**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **Podrobnosti o projektu**  |                                                                 |
     | Předplatné     | Vyberte své předplatné Azure.                                  |
-    | Resource Group (Skupina prostředků)   | Vybrat **CreateSQLEndpointTutorial-RG** |
+    | Skupina prostředků   | Vybrat **CreateSQLEndpointTutorial-RG** |
     | **Podrobnosti o instancích** |                                                                 |
     | Name             | Zadejte **myVNet**                                    |
     | Oblast           | Vyberte **východní USA** |
@@ -62,31 +62,31 @@ Hostitel bastionu se bude používat k zabezpečenému připojení k virtuální
     |--------------------|----------------------------|
     | Adresní prostor protokolu IPv4 | Zadejte **10.1.0.0/16** |
 
-5. V části **název podsítě**vyberte slovo **výchozí**.
+5. V části **název podsítě** vyberte slovo **výchozí** .
 
-6. V **Upravit podsíť**zadejte tyto informace:
+6. V **Upravit podsíť** zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název podsítě | Zadejte **mySubnet** |
     | Rozsah adres podsítě | Zadejte **10.1.0.0/24** |
 
-7. Vyberte **Uložit**.
+7. Vyberte **Uložit** .
 
 8. Vyberte kartu **zabezpečení** .
 
-9. V části **BastionHost**vyberte **Povolit**. Zadejte tyto informace:
+9. V části **BastionHost** vyberte **Povolit** . Zadejte tyto informace:
 
     | Nastavení            | Hodnota                      |
     |--------------------|----------------------------|
     | Název bastionu | Zadejte **myBastionHost** |
     | Adresní prostor AzureBastionSubnet | Zadejte **10.1.1.0/24** |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myBastionIP**. </br> Vyberte **OK**. |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název** zadejte **myBastionIP** . </br> Vyberte **OK** . |
 
 
 8. Vyberte kartu **Revize + vytvořit** nebo vyberte tlačítko **Revize + vytvořit** .
 
-9. Vyberte **Vytvořit**.
+9. Vyberte **Vytvořit** .
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
@@ -94,13 +94,13 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
 
 1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač** COMPUTE nebo ve vyhledávacím poli vyhledejte **virtuální počítač** .
    
-2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+2. V části **vytvořit virtuální počítač** zadejte nebo vyberte hodnoty na kartě **základy** :
 
     | Nastavení | Hodnota                                          |
     |-----------------------|----------------------------------|
     | **Podrobnosti o projektu** |  |
     | Předplatné | Vyberte své předplatné Azure. |
-    | Resource Group (Skupina prostředků) | Vybrat **CreateSQLEndpointTutorial** |
+    | Skupina prostředků | Vybrat **CreateSQLEndpointTutorial** |
     | **Podrobnosti o instancích** |  |
     | Název virtuálního počítače | Zadejte **myVM** |
     | Oblast | Vyberte **východní USA** |
@@ -113,7 +113,7 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | Heslo | Zadat heslo |
     | Potvrzení hesla | Znovu zadejte heslo. |
 
-3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+3. Vyberte kartu **síť** nebo vyberte **Další: disky** a **Další: síť** .
   
 4. Na kartě sítě vyberte nebo zadejte:
 
@@ -122,41 +122,41 @@ V této části vytvoříte virtuální počítač, který se použije k otestov
     | **Síťové rozhraní** |  |
     | Virtuální síť | **myVNet** |
     | Podsíť | **mySubnet** |
-    | Veřejná IP adresa | Vyberte **Žádná**. |
+    | Veřejná IP adresa | Vyberte **Žádná** . |
     | Skupina zabezpečení sítě NIC | **Basic**|
-    | Veřejné příchozí porty | Vyberte **Žádná**. |
+    | Veřejné příchozí porty | Vyberte **Žádná** . |
    
-5. Vyberte **Zkontrolovat a vytvořit**. 
+5. Vyberte **Zkontrolovat a vytvořit** . 
   
-6. Zkontrolujte nastavení a pak vyberte **vytvořit**.
+6. Zkontrolujte nastavení a pak vyberte **vytvořit** .
 
 ## <a name="create-an-azure-sql-server-and-private-endpoint"></a><a name ="create-a-private-endpoint"></a>Vytvoření serveru SQL Azure a privátního koncového bodu
 
 V této části vytvoříte SQL Server v Azure. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků**  >  **Databases**  >  **SQL Database**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit databáze prostředků**  >  **Databases**  >  **SQL Database** .
 
-1. Na kartě **základy** pro **Vytvoření databáze SQL**zadejte nebo vyberte tyto informace:
+1. Na kartě **základy** pro **Vytvoření databáze SQL** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **CreateSQLEndpointTutorial**. Tuto skupinu prostředků jste vytvořili v předchozí části.|
+    | Skupina prostředků | Vyberte **CreateSQLEndpointTutorial** . Tuto skupinu prostředků jste vytvořili v předchozí části.|
     | **Podrobnosti databáze** |  |
-    | Název databáze  | Zadejte **mysqldatabase**. Pokud se tento název povede, vytvořte jedinečný název. |
+    | Název databáze  | Zadejte **mysqldatabase** . Pokud se tento název povede, vytvořte jedinečný název. |
     | Server | Vyberte, že chcete **vytvořit novou** IP adresu. |
 
-6. Na **novém serveru**zadejte nebo vyberte tyto informace:
+6. Na **novém serveru** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název serveru  | Zadejte **MySQLServer**. Pokud se tento název povede, vytvořte jedinečný název.|
+    | Název serveru  | Zadejte **MySQLServer** . Pokud se tento název povede, vytvořte jedinečný název.|
     | Přihlášení správce serveru | Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte **východní USA** |
     
-7. Vyberte **OK**.
+7. Vyberte **OK** .
 
 8. Vyberte kartu **síť** nebo vyberte tlačítko **Další: síťové** .
 
@@ -165,31 +165,31 @@ V této části vytvoříte SQL Server v Azure.
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Připojení k síti** | |
-    | Metoda připojení | Vyberte **privátní koncový bod**. |
+    | Metoda připojení | Vyberte **privátní koncový bod** . |
    
-10. V **privátních koncových bodech**vyberte **+ Přidat privátní koncový bod** .
+10. V **privátních koncových bodech** vyberte **+ Přidat privátní koncový bod** .
 
-11. V **Vytvoření privátního koncového bodu**zadejte nebo vyberte tyto informace:
+11. V **Vytvoření privátního koncového bodu** zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Předplatné | Vyberte své předplatné. |
-    | Skupina prostředků | Vyberte **CreateSQLEndpointTutorial**. |
-    | Umístění | Vyberte **USA – východ**. |
-    | Name | Zadejte **myPrivateSQLendpoint**. |
-    | Cílový dílčí prostředek | Vyberte **SQLServer**. |
+    | Skupina prostředků | Vyberte **CreateSQLEndpointTutorial** . |
+    | Umístění | Vyberte **USA – východ** . |
+    | Name | Zadejte **myPrivateSQLendpoint** . |
+    | Cílový dílčí prostředek | Vyberte **SQLServer** . |
     | **Sítě** |  |
-    | Virtuální síť | Vyberte **myVNet**. |
-    | Podsíť | Vyberte **mySubnet**. |
+    | Virtuální síť | Vyberte **myVNet** . |
+    | Podsíť | Vyberte **mySubnet** . |
     | **Integrace Privátní DNS** | |
-    | Integrovat s privátní zónou DNS | Ponechte výchozí **hodnotu Ano**. |
-    | Zóna Privátního DNS | Ponechte výchozí **(New) privatelink.Database.Windows.NET**. |
+    | Integrovat s privátní zónou DNS | Ponechte výchozí **hodnotu Ano** . |
+    | Zóna Privátního DNS | Ponechte výchozí **(New) privatelink.Database.Windows.NET** . |
 
-12. Vyberte **OK**. 
+12. Vyberte **OK** . 
 
-13. Vyberte **Zkontrolovat a vytvořit**.
+13. Vyberte **Zkontrolovat a vytvořit** .
 
-14. Vyberte **Vytvořit**.
+14. Vyberte **Vytvořit** .
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Test připojení k privátnímu koncovému bodu
 
@@ -197,11 +197,11 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 1. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-2. Vyberte **CreateSQLEndpointTutorial**.
+2. Vyberte **CreateSQLEndpointTutorial** .
 
-3. Vyberte **myVM**.
+3. Vyberte **myVM** .
 
-4. Na stránce Přehled pro **myVM**vyberte **připojit** a pak **bastionu**.
+4. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu** .
 
 5. Vyberte tlačítko modrého **použití bastionu** .
 
@@ -224,31 +224,31 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
     Pro název SQL serveru se vrátí privátní IP adresa **10.1.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
 
 
-9. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) v **myVM**.
+9. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) v **myVM** .
 
-10. Otevřete **SQL Server Management Studio**.
+10. Otevřete **SQL Server Management Studio** .
 
-4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
+4. V **Connect to Server (připojit k serveru** ) zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Typ serveru | Vyberte **Databázový stroj**.|
-    | Název serveru | Zadejte ** \<sqlserver-name> . Database.Windows.NET** |
-    | Ověřování | Vyberte **Ověřování SQL Serveru**. |
+    | Typ serveru | Vyberte **Databázový stroj** .|
+    | Název serveru | Zadejte **\<sqlserver-name> . Database.Windows.NET** |
+    | Ověřování | Vyberte **Ověřování SQL Serveru** . |
     | Uživatelské jméno | Zadejte uživatelské jméno, které jste zadali při vytváření serveru. |
     | Heslo | Zadejte heslo, které jste zadali při vytváření serveru. |
-    | Zapamatovat heslo | Vyberte **Ano**. |
+    | Zapamatovat heslo | Vyberte **Ano** . |
 
 1. Vyberte **Connect** (Připojit).
 2. Procházet databáze z levé nabídky
-3. Volitelně Vytvoření nebo dotazování informací z **mysqldatabase**.
-4. Zavřete připojení ke vzdálené ploše pro **myVM**. 
+3. Volitelně Vytvoření nebo dotazování informací z **mysqldatabase** .
+4. Zavřete připojení ke vzdálené ploše pro **myVM** . 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Až budete s použitím privátního koncového bodu, SQL serveru a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
 1. Do **vyhledávacího** pole v horní části portálu zadejte **CreateSQLEndpointTutorial** a ve výsledcích hledání vyberte **CreateSQLEndpointTutorial** . 
-2. Vyberte **Odstranit skupinu prostředků**. 
-3. Zadejte CreateSQLEndpointTutorial pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+2. Vyberte **Odstranit skupinu prostředků** . 
+3. Zadejte CreateSQLEndpointTutorial pro **typ název skupiny prostředků** a vyberte **Odstranit** .
 
 ## <a name="next-steps"></a>Další kroky
 

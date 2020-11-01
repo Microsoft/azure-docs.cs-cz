@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92541311"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Vytvoření připojení typu Site-to-Site na webu Azure Portal
@@ -30,7 +30,7 @@ Připojení brány VPN typu Site-to-Site slouží k připojení místní sítě 
 
 :::image type="content" source="./media/vpn-gateway-howto-site-to-site-resource-manager-portal/site-to-site-diagram.png" alt-text="Diagram připojení VPN Gateway typu Site-to-Site mezi různými místy":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 

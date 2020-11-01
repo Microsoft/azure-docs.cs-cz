@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b6233552501fbe1578f3abe4e203d725ecddb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707791"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146803"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Vysoká dostupnost pomocí Media Services a videa na vyžádání (VOD)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91707791"
 
 ## <a name="high-availability-for-vod"></a>Vysoká dostupnost pro VOD
 
-V dokumentaci k architektuře Azure existuje vzor návrhu vysoké dostupnosti s názvem [Geodes](/azure/architecture/patterns/geodes) . Popisuje způsob nasazení duplicitních prostředků do různých geografických oblastí za účelem zajištění škálovatelnosti a odolnosti.  Pomocí služeb Azure můžete vytvořit takovou architekturu, která bude pokrývat různé faktory pro návrh vysoké dostupnosti, jako je redundance, monitorování stavu, Vyrovnávání zatížení a zálohování a obnovení dat.  Jedna taková architektura je popsaná níže s podrobnostmi o každé službě použité v řešení a také o tom, jak se jednotlivé služby dají použít k vytvoření architektury vysoké dostupnosti pro vaši aplikaci VOD.
+V dokumentaci k architektuře Azure existuje vzor návrhu vysoké dostupnosti s názvem [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) . Popisuje způsob nasazení duplicitních prostředků do různých geografických oblastí za účelem zajištění škálovatelnosti a odolnosti.  Pomocí služeb Azure můžete vytvořit takovou architekturu, která bude pokrývat různé faktory pro návrh vysoké dostupnosti, jako je redundance, monitorování stavu, Vyrovnávání zatížení a zálohování a obnovení dat.  Jedna taková architektura je popsaná níže s podrobnostmi o každé službě použité v řešení a také o tom, jak se jednotlivé služby dají použít k vytvoření architektury vysoké dostupnosti pro vaši aplikaci VOD.
 
 ### <a name="sample"></a>Ukázka
 
@@ -36,7 +36,7 @@ K dispozici je ukázka, kterou můžete použít k seznámení s vysokou dostupn
 
 Mezi služby použité v tomto příkladu architektury patří:
 
-| Ikona | Název | Popis |
+| Ikona | Název | Description |
 | :--: | ---- | ----------- |
 |![Toto je ikona účtu Media Services.](media/media-services-high-availability-encoding/azure-media-services.svg)| Účet Media Services | **Popis:**<br>Media Services účet je výchozím bodem pro správu, šifrování, kódování, analýzu a streamování mediálního obsahu v Azure. Je spojen s prostředkem účtu Azure Storage. Účet a všechny přidružené úložiště musí být ve stejném předplatném Azure.<br><br>**VOD použít:**<br>Jedná se o služby, které používáte ke kódování a doručování videí a zvukových prostředků.  Pro zajištění vysoké dostupnosti byste nastavili aspoň dva Media Services účty, z nichž každá je v jiné oblasti. [Přečtěte si další informace o Azure Media Services](media-services-overview.md). |
 |![Toto je ikona účtu úložiště.](media/media-services-high-availability-encoding/storage-account.svg)| Účet úložiště | **Popis:**<br>Účet úložiště Azure obsahuje všechny datové objekty Azure Storage: objekty blob, soubory, fronty, tabulky a disky. Data jsou přístupná odkudkoli na světě přes protokol HTTP nebo HTTPS.<br><br>Každý Media Services účet by měl v každé oblasti účet úložiště ve stejné oblasti.<br><br>**VOD použít:**<br>Vstupní a výstupní data můžete ukládat pro zpracování VOD a streamování. [Přečtěte si další informace o Azure Storage](../../storage/common/storage-introduction.md). |
@@ -87,4 +87,4 @@ Tento diagram vysoké úrovně ukazuje architekturu ukázky, která vám umožn�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na [ukázky kódu](/samples/browse/?products=azure-media-services)
+* Podívejte se na [ukázky kódu](https://docs.microsoft.com/samples/browse/?products=azure-media-services)

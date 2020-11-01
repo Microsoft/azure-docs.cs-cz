@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: b681e3fa4963a8fe899ccbad8dbf1bbdfbe452ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02ea022bedd92e9deaa0730cc1be051a9d20c88
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326898"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145680"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
 
@@ -116,7 +116,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat moduly Docker v poč�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů pro Linux
 
-Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění**  >  **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
+Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění**  >  **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč** .  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
 **Pro všechny hostitele kontejnerů pro Linux s výjimkou CoreOS:**
 
@@ -476,12 +476,12 @@ Pokud chcete použít Helm k nasazení agenta Log Analytics v prostředí Kubern
  
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
  
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
    
     Další informace najdete v [grafu řešení kontejnerů Helm](https://aka.ms/omscontainerhelm).
@@ -513,11 +513,11 @@ Chcete-li povolit monitorování kontejnerů systému Windows a technologie Hype
 
 Kontejnery Windows běžící na Service Fabric můžete monitorovat. V současné době se ale pro Service Fabric podporují jenom [virtuální počítače běžící v Azure](../learn/quick-collect-azurevm.md) a [počítače s Windows v místním prostředí](../platform/agent-windows.md) .
 
-Můžete ověřit, jestli je řešení pro monitorování kontejnerů správně nastavené pro Windows. Chcete-li zkontrolovat, zda byl Management Pack správně stažen, vyhledejte *ContainerManagement.xxx*. Soubory by měly být ve složce C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs.
+Můžete ověřit, jestli je řešení pro monitorování kontejnerů správně nastavené pro Windows. Chcete-li zkontrolovat, zda byl Management Pack správně stažen, vyhledejte *ContainerManagement.xxx* . Soubory by měly být ve složce C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Packs.
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Z Azure Portal přejděte na *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů**. Pokud používáte agenty Windows, při přidání tohoto řešení se do každého počítače s agentem nainstaluje následující Management Pack. Pro Management Pack není nutná žádná konfigurace ani údržba.
+Z Azure Portal přejděte na *Galerie řešení* a přidejte **řešení pro monitorování kontejnerů** . Pokud používáte agenty Windows, při přidání tohoto řešení se do každého počítače s agentem nainstaluje následující Management Pack. Pro Management Pack není nutná žádná konfigurace ani údržba.
 
 - *ContainerManagement.xxx* nainstalované v adresáři C:\Program Files\Microsoft monitoring Agent\Agent\Health Service State\Management Pack
 
@@ -574,7 +574,7 @@ Klikněte na dlaždici **kontejnery** . Tady uvidíte zobrazení uspořádaná p
 
 Každá oblast řídicího panelu je vizuální znázornění hledání, které se spouští na shromážděných datech.
 
-![Řídicí panel kontejnerů](./media/containers/containers-dash01.png)
+![Snímek obrazovky, který zobrazuje řídicí panel pro zobrazení shromážděných dat. ](./media/containers/containers-dash01.png)
 
 ![Řídicí panel kontejnerů](./media/containers/containers-dash02.png)
 
@@ -599,9 +599,9 @@ Log Analytics označí kontejner jako **neúspěšný** , pokud byl ukončen s n
 2. Log Analytics se otevře a zobrazí stav kontejnerů, podobně jako v následujícím příkladu.  
    ![stav kontejnerů](./media/containers/containers-log-search.png)
 3. Rozbalte řádek selhání a kliknutím na + přidejte jeho kritéria do dotazu. Pak přidejte do dotazu řádek souhrnu.
-   ![neúspěšné kontejnery](./media/containers/containers-state-failed-select.png)  
+   ![Snímek obrazovky zobrazující řádek, který má být zakomentován.](./media/containers/containers-state-failed-select.png)  
 1. Spusťte dotaz a potom rozbalte čáru ve výsledcích, abyste zobrazili ID obrázku.  
-   ![neúspěšné kontejnery](./media/containers/containers-state-failed.png)  
+   ![Snímek obrazovky, který ukazuje, jak zobrazit ID obrázku](./media/containers/containers-state-failed.png)  
 1. V dotazu protokolu zadejte následující text. `ContainerImageInventory | where ImageID == <ImageID>` Chcete-li zobrazit podrobnosti o imagi, jako je například velikost obrázku a počet zastavených a neúspěšných imagí.  
    ![neúspěšné kontejnery](./media/containers/containers-failed04.png)
 

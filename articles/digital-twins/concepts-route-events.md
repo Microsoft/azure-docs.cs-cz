@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097069"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146309"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Směrování událostí v rámci digitálních vláken Azure a mimo ně
 
@@ -73,19 +73,19 @@ Rozhraní API koncového bodu, která jsou k dispozici v řídicí rovině, jsou
  
 Pokud chcete vytvořit trasu události, můžete použít [**rozhraní API roviny dat**](how-to-manage-routes-apis-cli.md#create-an-event-route)digitálních vláken Azure, [**příkazy CLI**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)nebo [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route). 
 
-Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateEventRoute` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) : 
+Tady je příklad vytvoření trasy události v rámci klientské aplikace pomocí `CreateOrReplaceEventRouteAsync` volání [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) : 
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
-er.Filter("true"); //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
 
-1. Nejprve `EventRoute` je vytvořen objekt a konstruktor převezme název koncového bodu. Toto `endpointName` pole označuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
+1. Nejprve `DigitalTwinsEventRoute` je vytvořen objekt a konstruktor převezme název koncového bodu. Toto `endpointName` pole označuje koncový bod, jako je například centrum událostí, Event Grid nebo Service Bus. Tyto koncové body je potřeba vytvořit v předplatném a připojit se k digitálním plochám Azure pomocí rozhraní API řídicích rovin před provedením tohoto volání registrace.
 
 2. Objekt směrování událostí má také pole [**filtru**](how-to-manage-routes-apis-cli.md#filter-events) , pomocí kterého lze omezit typy událostí, které následují po této trase. Filtr `true` umožňuje trasu bez dalšího filtrování (filtr `false` zakáže trasu). 
 
-3. Tento objekt směrování události je pak předán `CreateEventRoute` spolu s názvem trasy.
+3. Tento objekt směrování události je pak předán `CreateOrReplaceEventRouteAsync` spolu s názvem trasy.
 
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.

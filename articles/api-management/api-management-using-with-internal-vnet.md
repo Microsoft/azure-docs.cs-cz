@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077486"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145510"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Použití služby Azure API Management s interní virtuální sítí
 S Azure Virtual Networks může Azure API Management spravovat rozhraní API, která nejsou přístupná na internetu. K vytvoření připojení je k dispozici řada technologií sítě VPN. API Management lze nasadit ve dvou hlavních režimech v rámci virtuální sítě:
@@ -39,15 +39,15 @@ Pomocí API Management v interním režimu můžete dosáhnout těchto scénář
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
-+ **Aktivní předplatné Azure**.
++ **Aktivní předplatné Azure** .
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Instance Azure API Management**. Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
++ **Instance Azure API Management** . Další informace najdete v tématu [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 + Když je ve virtuální síti nasazená služba API Management, použije se [seznam portů](./api-management-using-with-vnet.md#required-ports) , který je potřeba otevřít. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>Vytvoření API Management v interní virtuální síti
@@ -56,21 +56,23 @@ Služba API Management v interní virtuální síti je hostovaná za [interním 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolení připojení k virtuální síti pomocí Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com/)přejděte do instance služby Azure API Management.
-2. Vyberte **virtuální síť**.
+2. Vyberte **virtuální síť** .
 3. Nakonfigurujte instanci API Management, která se má nasadit v rámci virtuální sítě.
 
     ![Nabídka pro nastavení API Management Azure v interní virtuální síti][api-management-using-internal-vnet-menu]
 
-4. Vyberte **Uložit**.
+4. Vyberte **Uložit** .
 
 Po úspěšném nasazení by se v okně Přehled měla zobrazit **privátní** virtuální IP adresa a **Veřejná** virtuální ip adresa vaší služby API Management. **Privátní** virtuální IP adresa je IP adresa s vyrovnáváním zatížení z API Management delegované podsítě, přes kterou `gateway` je `portal` `management` `scm` možné přistupovat k koncovým bodům, a. **Veřejná** virtuální IP adresa se používá **jenom** pro přenosy řídicích objektů do `management` koncového bodu přes port 3443 a je možné ji uzamknout na [ApiManagement][ServiceTags] servicetag.
 
 ![Řídicí panel API Management s nakonfigurovanou interní virtuální sítí][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Konzola testu dostupná na portálu Azure Portal nebude fungovat pro **interní** nasazenou službu virtuální sítě, protože adresa URL brány není zaregistrovaná na veřejném serveru DNS. Místo toho byste měli použít konzolu test, která je k dispozici na **portálu pro vývojáře**.
+> Konzola testu dostupná na portálu Azure Portal nebude fungovat pro **interní** nasazenou službu virtuální sítě, protože adresa URL brány není zaregistrovaná na veřejném serveru DNS. Místo toho byste měli použít konzolu test, která je k dispozici na **portálu pro vývojáře** .
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Povolení připojení k virtuální síti pomocí rutin prostředí PowerShell
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>Nasazení API Management do Virtual Network
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

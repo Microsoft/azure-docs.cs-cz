@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9ccde8ea5453e3e553a020707ecde6e60f29b3dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11b2d4d9ec914839b2b4730419ca5ef67b66a2f5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124709"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144490"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Kurz: kódování pomocí rozhraní API digitálních vláken Azure
 
@@ -205,8 +205,8 @@ Pokud chcete přidat příkaz Print, který určuje, jestli se modely skutečně
 
 ```csharp
 // Read a list of models back from the service
-AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-await foreach (ModelData md in modelDataList)
+AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
+await foreach (DigitalTwinsModelData md in modelDataList)
 {
     Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
 }
@@ -262,32 +262,25 @@ Od tohoto okamžiku se v kurzu zabalí všechna volání metod služby v obsluž
 
 Teď, když jste nahráli model do digitálních vláken Azure, můžete k vytváření **digitálních vláken** použít tuto definici modelu. [Digitální vlákna](concepts-twins-graph.md) jsou instance modelu a představují entity v rámci vašeho podnikového prostředí – například senzory ve farmě, místnosti v budově nebo světla v kleci. Tato část vytvoří několik digitálních vláken na základě modelu, který jste nahráli dříve.
 
-Tyto nové příkazy přidejte v `using` horní části, protože tato ukázka kódu používá integrovaný serializátor .NET JSON v nástroji `System.Text.Json` a `Serialization` obor názvů z [sady SDK digitálních vláken Azure pro .NET (C#)](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet-preview&preserve-view=true).
+Přidejte tento nový `using` příkaz v horní části, protože tato ukázka kódu používá vestavěný serializátor .NET JSON v `System.Text.Json` :
 
 ```csharp
 using System.Text.Json;
-using Azure.DigitalTwins.Core.Serialization;
 ```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` není vyžadována pro práci s digitálními úkoly a vztahy; je to volitelný obor názvů, který může pomáhat získat data do správného formátu. Mezi další alternativy použití patří:
->* Zřetězení řetězců pro vytvoření objektu JSON
->* Použití analyzátoru JSON jako `System.Text.Json` dynamického sestavení objektu JSON
->* Modelování vlastních typů v jazyce C#, jejich instance a jejich serializace do řetězců
 
 Pak na konec metody přidejte následující kód, `Main` který vytvoří a inicializuje tři digitální vlákna na základě tohoto modelu.
 
 ```csharp
 // Initialize twin data
-BasicDigitalTwin twinData = new BasicDigitalTwin();
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.CustomProperties.Add("data", $"Hello World!");
+BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
+updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+updateTwinData.Contents.Add("data", $"Hello World!");
 
 string prefix="sampleTwin-";
 for(int i=0; i<3; i++) {
     try {
         twinData.Id = $"{prefix}{i}";
-        await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
+        await client.client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twinData.Id, updateTwinData);
         Console.WriteLine($"Created twin: {prefix}{i}");
     } catch(RequestFailedException rex) {
         Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -303,8 +296,6 @@ Všimněte si, že není vyvolána žádná chyba při druhém vytvoření vlák
 
 V dalším kroku můžete vytvořit **relace** mezi dvojitými vytvořenými podmnožinami a propojit je s **dvojitým grafem** . K reprezentaci celého prostředí se používají [Dvojitá grafu](concepts-twins-graph.md) .
 
-Pro usnadnění vytváření relací používá tato ukázka kódu `Azure.DigitalTwins.Core.Serialization` obor názvů. Toto jste přidali do projektu dříve v části [*vytvořit digitální vlákna*](#create-digital-twins) .
-
 Přidejte do třídy novou statickou metodu `Program` pod `Main` metodou:
 
 ```csharp
@@ -319,7 +310,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
     try
     {
         string relId = $"{srcId}-contains->{targetId}";
-        await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+        await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
         Console.WriteLine("Created relationship successfully");
     }
     catch (RequestFailedException rex) {
@@ -350,12 +341,11 @@ Do třídy `Program` přidejte následující novou metodu:
 public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
 {
     try {
-        AsyncPageable<string> results = client.GetRelationshipsAsync(srcId);
+        AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
         Console.WriteLine($"Twin {srcId} is connected to:");
-        await foreach (string rel in results)
+        await foreach (BasicRelationship rel in results)
         {
-            var brel = JsonSerializer.Deserialize<BasicRelationship>(rel);
-            Console.WriteLine($" -{brel.Name}->{brel.TargetId}");
+            Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
         }
     } catch (RequestFailedException rex) {
         Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
@@ -455,22 +445,22 @@ namespace minimal
                 Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
             }
             // Read a list of models back from the service
-            AsyncPageable<ModelData> modelDataList = client.GetModelsAsync();
-            await foreach (ModelData md in modelDataList)
+            AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
+            await foreach (DigitalTwinsModelData md in modelDataList)
             {
                 Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
             }
 
             // Initialize twin data
-            BasicDigitalTwin twinData = new BasicDigitalTwin();
-            twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-            twinData.CustomProperties.Add("data", $"Hello World!");
+            BasicDigitalTwin updateTwinData = new BasicDigitalTwin();
+            updateTwinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
+            updateTwinData.Contents.Add("data", $"Hello World!");
     
             string prefix="sampleTwin-";
             for(int i=0; i<3; i++) {
                 try {
-                    twinData.Id = $"{prefix}{i}";
-                    await client.CreateDigitalTwinAsync($"{prefix}{i}", JsonSerializer.Serialize(twinData));
+                    updateTwinData.Id = $"{prefix}{i}";
+                    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(updateTwinData.Id, updateTwinData);
                     Console.WriteLine($"Created twin: {prefix}{i}");
                 } catch(RequestFailedException rex) {
                     Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
@@ -506,7 +496,7 @@ namespace minimal
             try
             {
                 string relId = $"{srcId}-contains->{targetId}";
-                await client.CreateRelationshipAsync(srcId, relId, JsonSerializer.Serialize(relationship));
+                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
                 Console.WriteLine("Created relationship successfully");
             }
             catch (RequestFailedException rex) {
@@ -517,12 +507,11 @@ namespace minimal
         public async static Task ListRelationships(DigitalTwinsClient client, string srcId)
         {
             try {
-                AsyncPageable<string> results = client.GetRelationshipsAsync(srcId);
+                AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
                 Console.WriteLine($"Twin {srcId} is connected to:");
                 await foreach (string rel in results)
                 {
-                    var brel = JsonSerializer.Deserialize<BasicRelationship>(rel);
-                    Console.WriteLine($" -{brel.Name}->{brel.TargetId}");
+                    Console.WriteLine($" -{rel.Name}->{rel.TargetId}");
                 }
             } catch (RequestFailedException rex) {
                 Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   

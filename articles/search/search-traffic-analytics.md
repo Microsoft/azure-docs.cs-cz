@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91333728"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Shromažďování dat telemetrie pro vyhledávání analýz provozu
@@ -49,11 +49,11 @@ Jakmile budete mít prostředek Application Insights, můžete podle [pokynů pr
 
 Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, se projeví v následujících krocích. Vytvoří prostředek a zaregistruje aplikaci během několika kliknutí.
 
-1. Pro vývoj aplikací Visual Studio a ASP.NET otevřete řešení a vyberte **projekt**  >  **Přidat telemetrie Application Insights**.
+1. Pro vývoj aplikací Visual Studio a ASP.NET otevřete řešení a vyberte **projekt**  >  **Přidat telemetrie Application Insights** .
 
-1. Klikněte na **Začít**.
+1. Klikněte na **Začít** .
 
-1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **Zaregistrovat**.
+1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **Zaregistrovat** .
 
 V tuto chvíli je vaše aplikace nastavená pro monitorování aplikací, což znamená, že všechny načtené stránky jsou sledovány s výchozími metrikami. Další informace o předchozích krocích najdete v tématu [Povolení telemetrie Application Insights na straně serveru](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Pokaždé, když uživatel vydává požadavek na hledání, byste se měli přihlásit jako událost hledání s následujícím schématem na Application Insights vlastní události. Nezapomeňte protokolovat pouze uživatelsky vygenerované vyhledávací dotazy.
 
-+ **SearchServiceName**: (String) název vyhledávací služby
-+ **Searchid**: (GUID) jedinečný identifikátor vyhledávacího dotazu (přichází v odpovědi pro hledání)
-+ **Indexer**: (String) index služby vyhledávání, na který se má dotazovat
-+ **QueryTerms**: (String) hledané výrazy zadané uživatelem
-+ **Element resultcount nastavený**: (int) počet vrácených dokumentů (v odpovědi na hledání)
-+ **ScoringProfile**: (řetězec) název použitého profilu vyhodnocování, pokud existuje
++ **SearchServiceName** : (String) název vyhledávací služby
++ **Searchid** : (GUID) jedinečný identifikátor vyhledávacího dotazu (přichází v odpovědi pro hledání)
++ **Indexer** : (String) index služby vyhledávání, na který se má dotazovat
++ **QueryTerms** : (String) hledané výrazy zadané uživatelem
++ **Element resultcount nastavený** : (int) počet vrácených dokumentů (v odpovědi na hledání)
++ **ScoringProfile** : (řetězec) název použitého profilu vyhodnocování, pokud existuje
 
 > [!NOTE]
 > Vyžádejte si počet uživatelem generovaných dotazů tak, že do vyhledávacího dotazu přidáte $count = true. Další informace najdete v tématu [hledání dokumentů (REST)](/rest/api/searchservice/search-documents#counttrue--false).
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 Pokaždé, když uživatel klikne na dokument, je signál, který musí být protokolován pro účely analýzy vyhledávání. Pomocí Application Insights vlastní události Zaprotokolujte tyto události s následujícím schématem:
 
-+ **ServiceName**: (String) název vyhledávací služby
-+ **Searchid**: (GUID) jedinečný identifikátor souvisejícího vyhledávacího dotazu
-+ **Fulltextovém identifikátorů docid**: (String) identifikátor dokumentu
-+ **Pozice**: (int) pořadí dokumentu na stránce výsledků hledání
++ **ServiceName** : (String) název vyhledávací služby
++ **Searchid** : (GUID) jedinečný identifikátor souvisejícího vyhledávacího dotazu
++ **Fulltextovém identifikátorů docid** : (String) identifikátor dokumentu
++ **Pozice** : (int) pořadí dokumentu na stránce výsledků hledání
 
 > [!NOTE]
 > Pozice odkazuje na pořadí mohutnosti ve vaší aplikaci. Můžete nastavit toto číslo, pokud je vždy stejné, aby bylo možné porovnat.
@@ -209,19 +209,19 @@ appInsights.trackEvent("Click", {
 
 Po instrumentaci aplikace a ověření, že je aplikace správně připojená k Application Insights, si stáhněte šablonu předdefinované sestavy, která bude analyzovat data v Power BI desktopu. Sestava obsahuje předdefinované grafy a tabulky, které jsou užitečné při analýze dalších dat zaznamenaných pro vyhledávání analýz provozu.
 
-1. V levém navigačním podokně Azure Kognitivní hledání řídicího panelu v části **Nastavení**klikněte na **Prohledat analýzu provozu**.
+1. V levém navigačním podokně Azure Kognitivní hledání řídicího panelu v části **Nastavení** klikněte na **Prohledat analýzu provozu** .
 
 1. Na stránce **Prohledat analýzu provozu** v kroku 3 klikněte na **získat Power BI Desktop** a nainstalujte Power BI.
 
    ![Získání sestav Power BI](./media/search-traffic-analytics/get-use-power-bi.png "Získání sestav Power BI")
 
-1. Na stejné stránce klikněte na **stáhnout Power BI sestavu**.
+1. Na stejné stránce klikněte na **stáhnout Power BI sestavu** .
 
 1. Sestava se otevře v Power BI Desktop a zobrazí se výzva, abyste se připojili k Application Insights a zadali přihlašovací údaje. Informace o připojení najdete na stránce Azure Portal pro prostředek Application Insights. Pro přihlašovací údaje zadejte stejné uživatelské jméno a heslo, které používáte pro přihlášení k portálu.
 
    ![Připojte se k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Připojte se k Application Insights")
 
-1. Klikněte na **načíst**.
+1. Klikněte na **načíst** .
 
 Sestava obsahuje grafy a tabulky, které vám pomůžou dělat podrobnější rozhodnutí o vylepšení výkonu a relevance hledání.
 

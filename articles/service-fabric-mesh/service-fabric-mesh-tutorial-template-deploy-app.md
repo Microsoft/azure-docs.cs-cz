@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745974"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145884"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -103,6 +103,11 @@ Po vytvoření registru se zobrazí výstup podobný tomuto:
 V tomto kurzu se jako příklad používá ukázková aplikace seznamu úkolů.  Image kontejneru pro služby [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) najdete na Docker Hubu. Informace o tom, jak sestavit aplikaci v aplikaci Visual Studio, najdete v tématu [Vytvoření webové aplikace s Service Fabricovou mřížkou](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabrice Mesh podporuje spouštění kontejnerů Dockeru pro Windows nebo Linux.  Pokud pracujete s kontejnery Linuxu, vyberte v Dockeru **Switch to Linux containers** (Přepnout na kontejnery Linuxu).  Pokud pracujete s kontejnery Windows, vyberte v Dockeru **Switch to Windows containers** (Přepnout na kontejnery Windows).
 
 Pokud chcete nasdílet image do instance služby ACR, musíte nejprve mít image kontejneru. Pokud ještě nemáte žádné místní image kontejneru, pomocí příkazu [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) si z Docker Hubu stáhněte image [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) a [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/).
+
+>[!NOTE]
+> Od 2. listopadu 2020 se [limity četnosti stahování vztahují](https://docs.docker.com/docker-hub/download-rate-limit/) na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. 
+> 
+> Tyto příkazy využívají veřejné image z Docker Hub. Počítejte s tím, že je možné omezit rychlost. Další podrobnosti najdete v tématu [ověřování pomocí Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
 
 Stažení imagí pro Windows:
 
