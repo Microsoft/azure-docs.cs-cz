@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130374"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147109"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Správa modelů digitálních vláken Azure
 
@@ -141,10 +141,9 @@ Při nahrávání se služba ověřuje pomocí souborů modelu.
 Můžete vypsat a načíst modely uložené ve vaší instanci digitálních vláken Azure. 
 
 Tady jsou tyto možnosti:
-* Načíst všechny modely
 * Načtení jednoho modelu
-* Načtení jednoho modelu se závislostmi
-* Načtení metadat pro modely
+* Načíst všechny modely
+* Načtení metadat a závislostí pro modely
 
 Tady je několik příkladů volání:
 
@@ -152,19 +151,16 @@ Tady je několik příkladů volání:
 // 'client' is a valid DigitalTwinsClient object
 
 // Get a single model, metadata and data
-ModelData md1 = client.GetModel(id);
+DigitalTwinsModelData md1 = client.GetModel(id);
 
 // Get a list of the metadata of all available models
-Pageable<ModelData> pmd2 = client.GetModels();
-
-// Get a list of metadata and full model definitions
-Pageable<ModelData> pmd3 = client.GetModels(null, true);
+Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
 
 // Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
+Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
 ```
 
-Rozhraní API volá pro načtení modelů všechny návratové `ModelData` objekty. `ModelData` obsahuje metadata o modelu uloženém v instanci digitálních vláken Azure, jako je název, DTMI a datum vytvoření modelu. `ModelData`Objekt také volitelně zahrnuje samotný model. V závislosti na parametrech lze proto použít volání metody načíst buď k načtení metadat (což je užitečné ve scénářích, kde chcete zobrazit seznam dostupných nástrojů, například), nebo celý model.
+Rozhraní API volá pro načtení modelů všechny návratové `DigitalTwinsModelData` objekty. `DigitalTwinsModelData` obsahuje metadata o modelu uloženém v instanci digitálních vláken Azure, jako je název, DTMI a datum vytvoření modelu. `DigitalTwinsModelData`Objekt také volitelně zahrnuje samotný model. V závislosti na parametrech lze proto použít volání metody načíst buď k načtení metadat (což je užitečné ve scénářích, kde chcete zobrazit seznam dostupných nástrojů, například), nebo celý model.
 
 `RetrieveModelWithDependencies`Volání vrátí nejen požadovaný model, ale také všechny modely, na kterých je požadovaný model závislý.
 

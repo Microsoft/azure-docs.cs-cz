@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891346"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147217"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -72,6 +72,23 @@ Následující video vysvětluje řadu různých možností jímky pro typy soub
 **Použít databázi tempdb:** Ve výchozím nastavení Data Factory použije globální dočasnou tabulku k ukládání dat v rámci procesu načítání. Případně můžete zrušit možnost použít databázi TempDB a místo toho požádat Data Factory uložit dočasnou tabulku do uživatelské databáze nacházející se v databázi, která se používá pro tuto jímku.
 
 ![Databáze](media/data-flow/tempdb.png "Databáze")
+
+## <a name="cache-sink"></a>Jímka mezipaměti
+ 
+*Jímka mezipaměti* je v případě, že tok dat zapisuje data do mezipaměti Spark místo do úložiště dat. V části mapování toků dat můžete na tato data v rámci stejného toku odkazovat vícekrát pomocí vyhledávání v *mezipaměti* . To je užitečné, pokud chcete odkazovat na data jako součást výrazu, ale nechcete, aby k nim explicitně připojila sloupce. Běžné příklady, kde může jímka mezipaměti pomáhat při hledání maximální hodnoty v úložišti dat a porovnání kódů chyb s databází chybových zpráv. 
+
+Chcete-li zapisovat do jímky mezipaměti, přidejte transformaci jímky a jako typ jímky vyberte **mezipaměť** . Na rozdíl od jiných typů jímky nemusíte vybírat datovou sadu nebo propojenou službu, protože nepíšete do externího úložiště. 
+
+![Vybrat jímku mezipaměti](media/data-flow/select-cache-sink.png "Vybrat jímku mezipaměti")
+
+V nastavení jímky můžete volitelně zadat klíčové sloupce jímky mezipaměti. Ty se používají jako podmínky pro porovnání při použití `lookup()` funkce při vyhledávání mezipaměti. Pokud zadáte klíčové sloupce, nemůžete `outputs()` funkci použít při vyhledávání v mezipaměti. Další informace o syntaxi vyhledávání mezipaměti najdete v tématu [vyhledávání v mezipaměti](concepts-data-flow-expression-builder.md#cached-lookup).
+
+![Sloupce klíčů jímky mezipaměti](media/data-flow/cache-sink-key-columns.png "Sloupce klíčů jímky mezipaměti")
+
+Pokud například zadáte jeden klíčový sloupec `column1` v jímky cache s názvem `cacheExample` , volání `cacheExample#lookup()` by má jeden parametr určuje, na který řádek v jímky mezipaměti se bude shodovat. Funkce vytvoří výstup jednoho složitého sloupce s podsloupci pro každý namapovaný sloupec.
+
+> [!NOTE]
+> Jímka mezipaměti musí být v zcela nezávislém datovém proudu z jakékoli transformace, která na ni odkazuje prostřednictvím vyhledávání v mezipaměti. Jímka mezipaměti musí také napsaná první jímka. 
 
 ## <a name="field-mapping"></a>Mapování pole
 

@@ -4,28 +4,28 @@ description: Naučte se generovat a používat klíče SSH z počítače s Windo
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.date: 07/09/2020
+ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825561"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147143"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Použití klíčů SSH s Windows v Azure
 
 Tento článek je určen pro uživatele systému Windows, kteří chtějí [vytvářet](#create-an-ssh-key-pair) a používat klíče *Secure Shell* (SSH) pro [připojení](#connect-to-your-vm) k virtuálním počítačům se systémem Linux v Azure. [V Azure Portal můžete také vygenerovat a ukládat klíče SSH](../ssh-keys-portal.md) , které se použijí při vytváření virtuálních počítačů na portálu.
 
 
-Pokud chcete používat klíče SSH z klienta Linux nebo macOS, přečtěte si téma [rychlé](mac-create-ssh-keys.md). Podrobnější přehled služby SSH najdete v tématu [podrobný postup: vytváření a Správa klíčů ssh pro ověřování na virtuálním počítači Linux v Azure](create-ssh-keys-detailed.md).
+Postup použití klíčů SSH z klienta se systémem Linux nebo macOS naleznete v tématu [rychlé kroky](mac-create-ssh-keys.md). Podrobnější přehled služby SSH najdete v tématu [podrobný postup: vytváření a Správa klíčů ssh pro ověřování na virtuálním počítači Linux v Azure](create-ssh-keys-detailed.md).
 
 ## <a name="overview-of-ssh-and-keys"></a>Přehled SSH a klíčů
 
-[SSH](https://www.ssh.com/ssh/) je zašifrovaný protokol připojení, který umožňuje zabezpečená přihlášení přes nezabezpečená připojení. SSH je výchozí protokol připojení pro virtuální počítače se systémem Linux hostované v Azure. I když SSH sám poskytuje šifrované připojení, používá hesla s SSH i nadále virtuální počítač zranitelný proti útokům hrubou silou. Doporučujeme připojit se k virtuálnímu počítači přes protokol SSH pomocí páru klíčů veřejného a soukromého klíče, označovaného také jako *klíče SSH*. 
+[SSH](https://www.ssh.com/ssh/) je zašifrovaný protokol připojení, který umožňuje zabezpečená přihlášení přes nezabezpečená připojení. SSH je výchozí protokol připojení pro virtuální počítače se systémem Linux hostované v Azure. I když SSH sám poskytuje šifrované připojení, používá hesla s SSH i nadále virtuální počítač zranitelný proti útokům hrubou silou. Doporučujeme připojit se k virtuálnímu počítači přes protokol SSH pomocí páru klíčů veřejného a soukromého klíče, označovaného také jako *klíče SSH* . 
 
-Pár klíčů veřejného a soukromého klíče je podobný jako zámek na vašich frontách. Zámek **je zveřejněný, kdokoli**, kdo má správný klíč, může otevřít dveře. Klíč je **soukromý**a je určený jenom lidem, kterým důvěřujete, protože ho můžete použít k odemknutí dveří. 
+Pár klíčů veřejného a soukromého klíče je podobný jako zámek na vašich frontách. Zámek **je zveřejněný, kdokoli** , kdo má správný klíč, může otevřít dveře. Klíč je **soukromý** a je určený jenom lidem, kterým důvěřujete, protože ho můžete použít k odemknutí dveří. 
 
 - *Veřejný klíč* se při vytváření virtuálního počítače umístí do virtuálního počítače se systémem Linux. 
 

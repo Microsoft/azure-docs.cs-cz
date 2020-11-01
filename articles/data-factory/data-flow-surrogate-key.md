@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/08/2020
-ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: d1f8993b1adc297b1bfadba114df76a66e59afa2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606299"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147166"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Transformace náhradního klíče v toku mapování dat 
 
@@ -31,9 +31,9 @@ K přidání hodnoty přírůstku do každého řádku dat použijte transformac
 
 ## <a name="increment-keys-from-existing-sources"></a>Zvýšit klíče z existujících zdrojů
 
-Chcete-li začít sekvenci z hodnoty, která existuje ve zdroji, použijte transformaci odvozeného sloupce po transformaci náhradního klíče a přidejte tyto dvě hodnoty dohromady:
+Chcete-li začít sekvenci z hodnoty, která existuje ve zdroji, doporučujeme použít jímku mezipaměti k uložení této hodnoty a použít transformaci odvozeného sloupce pro přidání dvou hodnot dohromady. K získání výstupu použijte vyhledávání v mezipaměti a přidejte ho k vygenerovanému klíči. Další informace najdete v informacích o [jímky mezipaměti](data-flow-sink.md#cache-sink) a [vyhledáváních uložených v mezipaměti](concepts-data-flow-expression-builder.md#cached-lookup).
 
-![SK – přidat max](media/data-flow/sk006.png "Transformace náhradních klíčů – přidat max")
+![Vyhledávání náhradních klíčů](media/data-flow/cached-lookup-example.png "Vyhledávání náhradních klíčů")
 
 ### <a name="increment-from-existing-maximum-value"></a>Přírůstek z existující maximální hodnoty
 
@@ -41,19 +41,18 @@ K osazení hodnoty klíče pomocí předchozího maxima jsou k dispozici dvě me
 
 #### <a name="database-sources"></a>Zdroje databáze
 
-Pomocí možnosti dotazu SQL vyberte MAX () ze zdroje. Například `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+Pomocí možnosti dotazu SQL vyberte MAX () ze zdroje. Například, `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`.
 
-![Dotaz na náhradní klíč](media/data-flow/sk002.png "Dotaz na transformaci náhradního klíče")
+![Dotaz na náhradní klíč](media/data-flow/surrogate-key-max-database.png "Dotaz na transformaci náhradního klíče")
 
 #### <a name="file-sources"></a>Zdroje souborů
 
 Pokud je předchozí maximální hodnota v souboru, použijte `max()` funkci v agregační transformaci k získání předchozí maximální hodnoty:
 
-![Soubor náhradního klíče](media/data-flow/sk008.png "Soubor náhradního klíče")
+![Soubor náhradního klíče](media/data-flow/surrogate-key-max-file.png "Soubor náhradního klíče")
 
-V obou případech je třeba spojit vaše příchozí nová data společně se zdrojem, který obsahuje předchozí maximální hodnotu.
+V obou případech budete muset zapisovat do jímky mezipaměti a vyhledat hodnotu. 
 
-![Připojení náhradních klíčů](media/data-flow/sk004.png "Připojení náhradních klíčů")
 
 ## <a name="data-flow-script"></a>Skript toku dat
 

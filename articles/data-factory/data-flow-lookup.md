@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040180"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147262"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -68,6 +68,10 @@ Při testování transformace vyhledávání s náhledem dat v režimu ladění 
 V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání** . Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná** .
 
 Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
+
+## <a name="cached-lookup"></a>Vyhledávání v mezipaměti
+
+Pokud provádíte více menších hledání na stejném zdroji, jímka v mezipaměti a vyhledávání jsou pravděpodobně vhodnější, než transformace vyhledávání. Běžné příklady, kdy může být jímka mezipaměti lepší, vyhledávají maximální hodnotu v úložišti dat a odpovídají kódy chyb v databázi chybových zpráv. Další informace najdete v informacích o [jímky mezipaměti](data-flow-sink.md#cache-sink) a [vyhledáváních uložených v mezipaměti](concepts-data-flow-expression-builder.md#cached-lookup).
 
 ## <a name="data-flow-script"></a>Skript toku dat
 

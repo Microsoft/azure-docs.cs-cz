@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3157eda4e2a21b0d153e7300db54f445fdb6878d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547754"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146922"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -112,7 +112,7 @@ Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
 Zpráva oznámení pro zařízení:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 |$content – typ | application/json |
 |$iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -148,7 +148,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 ```
 Zpráva oznámení pro modul:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 $content – typ | application/json |
 $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -188,7 +188,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 
 Identity zařízení se reprezentují jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId** , kdy byly odstraněny a znovu vytvořeny. |
@@ -200,7 +200,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 | statusUpdateTime |jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu. |
 | Vlastnost ConnectionState |jen pro čtení |Pole indikující stav připojení: **připojeno** nebo **Odpojeno** . Toto pole představuje IoT Hub zobrazení stavu připojení zařízení. **Důležité** : Toto pole by mělo být používáno pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení, která používají MQTT nebo AMQP. Také je založena na protokolech příkazového testu na úrovni protokolu (MQTT příkazového testu) a může mít maximální zpoždění pouze 5 minut. Z těchto důvodů můžou existovat falešně pozitivní, například zařízení nahlášená jako připojená, ale odpojená. |
 | connectionStateUpdatedTime |jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu připojení. |
-| lastActivityTime |jen pro čtení |Dočasná indikátor zobrazující datum a čas, kdy se zařízení připojilo, přijalo nebo poslalo zprávu. |
+| lastActivityTime |jen pro čtení |Dočasná indikátor zobrazující datum a čas, kdy se zařízení připojilo, přijalo nebo poslalo zprávu. Tato vlastnost je nakonec konzistentní, ale může se zpozdit až o 5 až 10 minut. Z tohoto důvodu by se neměl používat v produkčních scénářích. |
 
 > [!NOTE]
 > Stav připojení může představovat pouze IoT Hub zobrazení stavu připojení. Aktualizace tohoto stavu můžou být zpožděné v závislosti na podmínkách a konfiguracích sítě.
@@ -212,7 +212,7 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vlastnostmi:
 
-| Vlastnost | Možnosti | Popis |
+| Vlastnost | Možnosti | Description |
 | --- | --- | --- |
 | deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
