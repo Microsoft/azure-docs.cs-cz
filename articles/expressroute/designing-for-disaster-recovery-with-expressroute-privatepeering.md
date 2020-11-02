@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92202409"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Návrh pro zotavení po havárii s privátním partnerským vztahem ExpressRoute
 
 ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pokyny k návrhu pro maximalizaci dostupnosti okruhu ExpressRoute najdete v tématu [navrhování pro zajištění vysoké dostupnosti pomocí ExpressRoute][HA].
 
-Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se*v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy, v tomto článku se podíváme na požadavky architektury sítě, které vám pomůžou vytvářet robustní back-end síť pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute.
+Pokud se ale Murphya oblíbená pořekadlem – Pokud se něco nepovede *, může se* v tomto článku soustředit na řešení, která přesahují selhání, která se dají řešit pomocí jednoho okruhu ExpressRoute. Jinými slovy, v tomto článku se podíváme na požadavky architektury sítě, které vám pomůžou vytvářet robustní back-end síť pro zotavení po havárii pomocí geograficky redundantních okruhů ExpressRoute.
 
 >[!NOTE]
 >Koncepty popsané v tomto článku platí stejně, když je v rámci virtuální sítě WAN nebo mimo ni vytvořen okruh ExpressRoute.
