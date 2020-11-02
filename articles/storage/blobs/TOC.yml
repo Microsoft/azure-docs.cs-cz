@@ -179,7 +179,7 @@
               href: storage-blob-rehydration.md
             - name: Úrovně výkonu
               href: storage-blob-performance-tiers.md
-            - name: Správa životního cyklu úložiště objektů blob v Azure
+            - name: Automatizace životního cyklu úrovní přístupu
               href: storage-lifecycle-management-concepts.md
         - name: Zotavení po havárii a převzetí služeb při selhání
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -367,7 +367,7 @@
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
-                - name: Vytvoření SAS služby (.NET)
+                - name: Vytvoření SAS služby
                   href: storage-blob-service-sas-create-dotnet.md
                 - name: Vytvoření SAS účtu (.NET)
                   href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

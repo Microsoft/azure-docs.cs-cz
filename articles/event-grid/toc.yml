@@ -106,7 +106,7 @@
       items:
         - name: Přehled systémových témat
           href: system-topics.md
-        - name: Zdroje událostí
+        - name: Zdroje událostí (vydavatelé)
           items:
             - name: Azure App Configuration
               href: event-schema-app-configuration.md
@@ -138,13 +138,15 @@
               href: event-schema-azure-signalr.md
             - name: Předplatná Azure
               href: event-schema-subscriptions.md
-    - name: Témata pro partnery
+    - name: Partnerské akce
       items:
-        - name: Přehled témat pro partnery
-          href: partner-topics-overview.md
-        - name: Auth0
-          href: auth0-overview.md
-        - name: Jak se stát partnerem pro Event Grid
+        - name: Přehled partnerských akcí
+          href: partner-events-overview.md
+        - name: Zdroje událostí (vydavatelé)
+          items:
+            - name: Auth0
+              href: auth0-overview.md
+        - name: Přehled onboardingu partnerů
           href: partner-onboarding-overview.md
     - name: Domény událostí
       href: event-domains.md
@@ -210,12 +212,16 @@
           href: create-view-manage-system-topics-cli.md
         - name: Šablona Azure Resource Manageru
           href: create-view-manage-system-topics-arm.md
+    - name: Partnerské akce
+      items:
+        - name: Onboarding partnera
+          href: onboard-partner.md
+        - name: Přihlášení k odběru událostí Auth0
+          href: auth0-how-to.md
     - name: Získání přístupových klíčů pro témata nebo domény
       href: get-access-keys.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
-    - name: Přihlášení k odběru událostí Auth0
-      href: auth0-how-to.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
     - name: Nastavení umístění pro nedoručené zprávy a zásady opakování

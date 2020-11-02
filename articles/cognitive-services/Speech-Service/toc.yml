@@ -39,6 +39,8 @@
           href: how-to-automatic-language-detection.md
         - name: Použití rozhraní API pro dávkový přepis
           href: batch-transcription.md
+        - name: Posouzení výslovnosti
+          href: how-to-pronunciation-assessment.md
     - name: Kurzy
       items:
         - name: Rozpoznávání řeči uložené v úložišti objektů blob

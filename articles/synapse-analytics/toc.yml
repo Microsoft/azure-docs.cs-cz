@@ -1,33 +1,12 @@
 - name: Azure Synapse (pracovní prostory ve verzi Preview)
   href: sql-data-warehouse/index.yml
-- name: Přepnutí na Azure Synapse (SQL DW)
+- name: Přepnutí na Azure Synapse (dříve SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Přehled
   items:
     - name: Co je Azure Synapse?
       href: overview-what-is.md
-    - name: Začínáme
-      items:
-        - name: Úvod
-          href: get-started.md
-        - name: 1. Vytvoření pracovního prostoru Synapse
-          href: get-started-create-workspace.md
-        - name: 2. Analýza s využitím fondu SQL
-          href: get-started-analyze-sql-pool.md
-        - name: 3. Analýza s využitím Sparku
-          href: get-started-analyze-spark.md
-        - name: 4. Analýza s využitím SQL na vyžádání
-          href: get-started-analyze-sql-on-demand.md
-        - name: 5. Analýza dat v účtu úložiště
-          href: get-started-analyze-storage.md
-        - name: 6. Integrace s kanály
-          href: get-started-pipelines.md
-        - name: 7. Vizualizace pomocí Power BI
-          href: get-started-visualize-power-bi.md
-        - name: 8. Monitor
-          href: get-started-monitor.md
-        - name: 9. Seznámení se znalostním centrem
-          href: get-started-knowledge-center.md
+      displayName: overview
     - name: Tahák
       href: overview-cheat-sheet.md
     - name: Nejčastější dotazy
@@ -36,64 +15,60 @@
       href: release-notes.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření pracovního prostoru Synapse s využitím webu Azure Portal
-      href: quickstart-create-workspace.md
-    - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
-      href: quickstart-create-workspace-cli.md
-    - name: Vytvoření pracovního prostoru Synapse s využitím Azure PowerShellu
-      href: quickstart-create-workspace-powershell.md
-    - name: Nasazení s využitím šablony ARM
-      displayName: Resource Manager
-      href: quickstart-deployment-template-workspaces.md
-    - name: Propojení pracovního prostoru Power BI
-      href: quickstart-power-bi.md
-    - name: Vytváření fondů
-      items:
-        - name: Vytvoření poznámkového bloku Apache Sparku pomocí webových nástrojů
-          href: quickstart-apache-spark-notebook.md
-        - name: Vytvoření fondu úloh Apache Sparku pomocí webu Azure Portal
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Vytvoření fondu úloh Apache Sparku s využitím sady Synapse Studio
-          href: quickstart-create-apache-spark-pool-studio.md
-        - name: Vytvoření fondu SQL s využitím webu Azure Portal
-          href: quickstart-create-sql-pool-portal.md
-        - name: Vytvoření fondu SQL s využitím sady Synapse Studio
-          href: quickstart-create-sql-pool-studio.md
-    - name: Načtení dat s využitím fondů SQL
-      items:
-        - name: Příkaz COPY
-          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Příklady příkazu COPY
-          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Synapse Studio
-          href: quickstart-load-studio-sql-pool.md
-    - name: Používání SQL na vyžádání
-      href: quickstart-sql-on-demand.md
-    - name: Připojení k Synapse Linku pro Cosmos DB
-      href: quickstart-connect-synapse-link-cosmos-db.md
-    - name: Připojení k Průzkumníku dat Azure
-      href: quickstart-connect-azure-data-explorer.md
-- name: Kurzy
+    - name: Úvod
+      href: get-started.md
+      displayName: 'get, started, quickstart'
+    - name: 1. Vytvoření pracovního prostoru Synapse
+      href: get-started-create-workspace.md
+      displayName: 'get, started'
+    - name: 2. Analýza s využitím fondu SQL
+      href: get-started-analyze-sql-pool.md
+      displayName: 'get, started'
+    - name: 3. Analýza s využitím Sparku
+      href: get-started-analyze-spark.md
+      displayName: 'get, started'
+    - name: 4. Analýza s využitím SQL na vyžádání
+      href: get-started-analyze-sql-on-demand.md
+      displayName: 'get, started'
+    - name: 5. Analýza dat v účtu úložiště
+      href: get-started-analyze-storage.md
+      displayName: 'get, started'
+    - name: 6. Integrace s kanály
+      href: get-started-pipelines.md
+      displayName: 'get, started'
+    - name: 7. Vizualizace pomocí Power BI
+      href: get-started-visualize-power-bi.md
+      displayName: 'get, started'
+    - name: 8. Monitor
+      href: get-started-monitor.md
+      displayName: 'get, started'
+    - name: 9. Seznámení se znalostním centrem
+      href: get-started-knowledge-center.md
+      displayName: 'get, started'
+- name: Pracovní prostor
   items:
-    - name: Spouštění aplikací Apache Sparku
-      href: ./spark/intellij-tool-synapse.md
-    - name: Definice úloh Sparku
-      href: ./spark/apache-spark-job-definitions.md
-    - name: Power BI Desktop
-      href: ./sql/tutorial-connect-power-bi-desktop.md
-    - name: Odborník na datové vědy
+    - name: Rychlé starty
       items:
-        - name: Vytvoření modelu klasifikace s využitím knihovny Apache Spark MLlib
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-    - name: Datový analytik
-      items:
-        - name: Použití SQL na vyžádání k analýze dat
-          href: ./sql/tutorial-data-analyst.md
-- name: ukázky
-  href: 'https://github.com/Azure-Samples/Synapse'
-- name: Koncepty
-  items:
-    - name: Pracovní prostor
+        - name: Vytvoření pracovního prostoru Synapse s využitím webu Azure Portal
+          href: quickstart-create-workspace.md
+          displayName: quickstart
+        - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
+          href: quickstart-create-workspace-cli.md
+          displayName: quickstart
+        - name: Vytvoření pracovního prostoru Synapse s využitím Azure PowerShellu
+          href: quickstart-create-workspace-powershell.md
+          displayName: quickstart
+        - name: Nasazení s využitím šablony
+          href: quickstart-deployment-template-workspaces.md
+          displayName: quickstart
+        - name: Propojení pracovního prostoru Power BI
+          href: quickstart-power-bi.md
+          displayName: quickstart
+        - name: Připojení k Průzkumníku dat Azure
+          href: quickstart-connect-azure-data-explorer.md
+          displayName: quickstart
+      '-name': null
+    - name: Koncepty
       items:
         - name: Správa sdílených metadat
           items:
@@ -111,152 +86,119 @@
                   href: ./spark/apache-spark-development-using-notebooks.md
                 - name: Skript SQL
                   href: ./sql/author-sql-script.md
+                  displayname: author
                 - name: Mapování toku dat
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Plán údržby
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Monitorování
-      items:
-        - name: Monitorování fondů
+        - name: Zabezpečení
           items:
-            - name: Fond SQL
+            - name: Standardní hodnoty zabezpečení
+              href: security-baseline.md
+            - name: Zabezpečení sítě
+              items:
+                - name: Pravidla brány firewall protokolu IP pracovního prostoru Synapse
+                  href: ./security/synapse-workspace-ip-firewall.md
+                - name: Spravovaná virtuální síť pracovního prostoru Synapse
+                  href: ./security/synapse-workspace-managed-vnet.md
+                  displayname: vnet
+                - name: Spravované privátní koncové body pracovního prostoru Synapse
+                  href: ./security/synapse-workspace-managed-private-endpoints.md
+            - name: Ověřování a předávací ověřování
+              items:
+                - name: Azure Active Directory
+                  href: ./sql/active-directory-authentication.md
+                  displayname: authentication
+                - name: Ověřování pomocí služby Multi-Factor Authentication
+                  href: ./sql/mfa-authentication.md
+                - name: Autorizace SQL
+                  href: ./sql/sql-authentication.md
+            - name: Řízení přístupu
               items:
                 - name: Přehled
-                  href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Využití prostředků a aktivita dotazů
-                  href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Server historie fondu úloh Sparku
-              href: ./spark/apache-spark-history-server.md
-    - name: Zabezpečení
+                  href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Spravovaná identita pracovního prostoru Synapse
+                  href: ./security/synapse-workspace-managed-identity.md
+                - name: Fond a na vyžádání
+                  href: ./sql/access-control.md
+                  displayname: 'access, control'
+        - name: 'Integrace nástrojů (AI, ETL, BI)'
+          items:
+            - name: Řešení potíží s funkcí Synapse Studio
+              href: troubleshoot/troubleshoot-synapse-studio.md
+            - name: Řešení potíží s připojením funkce Synapse Studio
+              href: troubleshoot/troubleshoot-synapse-studio-powershell.md
+              displayname: powershell
+    - name: Návody
       items:
-        - name: Standardní hodnoty zabezpečení
-          href: security-baseline.md
-        - name: Zabezpečení sítě
+        - name: Zabezpečení
           items:
-            - name: Pravidla brány firewall protokolu IP pracovního prostoru Synapse
-              href: ./security/synapse-workspace-ip-firewall.md
-            - name: Spravovaná virtuální síť pracovního prostoru Synapse
-              href: ./security/synapse-workspace-managed-vnet.md
-            - name: Spravované privátní koncové body pracovního prostoru Synapse
-              href: ./security/synapse-workspace-managed-private-endpoints.md
-        - name: Ověřování a předávací ověřování
-          items:
-            - name: Azure Active Directory
-              href: ./sql/active-directory-authentication.md
-            - name: Vícefaktorové ověřování
-              href: ./sql/mfa-authentication.md
-            - name: Autorizace SQL
-              href: ./sql/sql-authentication.md
-        - name: Řízení přístupu
-          items:
-            - name: Přehled
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Spravovaná identita pracovního prostoru Synapse
-              href: ./security/synapse-workspace-managed-identity.md
-            - name: Fond a na vyžádání
-              href: ./sql/access-control.md
-            - name: Data
+            - name: Správa řízení přístupu
               items:
-                - name: Zabezpečení na úrovni sloupců
-                  href: ./sql-data-warehouse/column-level-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Zabezpečení na úrovni řádku
-                  href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Šifrování dat
-          items:
-            - name: Přehled transparentního šifrování dat
-              href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
-              href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integrace
-      items:
-        - name: Kanál a aktivita
-          href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Propojené služby
-          href: ../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Datové sady
-          href: ../data-factory/concepts-datasets-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Spuštění a aktivace
-          href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Prostředí Integration Runtime
-          href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Toky dat
-          items:
-            - name: Přehled mapování toků dat
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Režim ladění
-              href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Posun schématu
-              href: ../data-factory/concepts-data-flow-schema-drift.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Vzory sloupců
-              href: ../data-factory/concepts-data-flow-column-pattern.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Sledování toku dat
-              href: ../data-factory/concepts-data-flow-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Výkon toku dat
-              href: ../data-factory/concepts-data-flow-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Správa grafu
-              href: ../data-factory/concepts-data-flow-manage-graph.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Tvůrce výrazů
-              href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Jazyk výrazů
-              href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Rozdíly oproti Azure Data Factory
-          href: ./data-integration/concepts-data-factory-differences.md
-    - name: Spark
-      items:
-        - name: Přehled
-          items:
-            - name: Přehled Apache Sparku
-              href: ./spark/apache-spark-overview.md
-            - name: Koncepty Apache Sparku
-              href: ./spark/apache-spark-concepts.md
-            - name: Co je Delta Lake
-              href: ./spark/apache-spark-what-is-delta-lake.md
-            - name: Přehled funkcí Delta Lake
-              href: ./spark/apache-spark-delta-lake-overview.md
-            - name: Výkon Apache Sparku
-              href: ./spark/apache-spark-performance.md
-            - name: Optimalizace výkonu pro Apache Spark s využitím indexů hyperprostoru
-              href: ./spark/apache-spark-performance-hyperspace.md
-            - name: Chování automatického škálování Apache Sparku
-              href: ./spark/apache-spark-autoscale.md
-        - name: Vývoj
-          items:
-            - name: Knihovny
+                - name: Nastavení oprávnění pro spravovanou identitu pracovního prostoru Azure Synapse
+                  href: security/how-to-grant-workspace-managed-identity-permissions.md
+                  displayname: grant
+                - name: Nastavení řízení přístupu
+                  href: security/how-to-set-up-access-control.md
+            - name: Správa privátních koncových bodů
               items:
-                - name: Přidání a správa knihoven
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: Podpora jazyků a knihoven v modulu runtime
-                  href: ./spark/apache-spark-version-support.md
-            - name: Poznámkové bloky s funkcí Azure Synapse Studio
-              href: ./spark/apache-spark-development-using-notebooks.md
-            - name: Zabezpečení přihlašovacích údajů s využitím TokenLibrary
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
-            - name: .NET pro Apache Spark
-              href: ./spark/spark-dotnet.md
-            - name: Strojové učení v Apache Sparku
-              items:
-                - name: Vytvoření kanálu strojového učení Apache Sparku
-                  href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-    - name: Synapse SQL
+                - name: Nastavení spravovaných privátních koncových bodů pro zdroje dat
+                  href: security/how-to-create-managed-private-endpoints.md
+                - name: Připojení k pracovnímu prostoru Azure Synapse s využitím privátních koncových bodů
+                  href: security/how-to-connect-to-workspace-with-private-links.md
+                  displayname: links
+                - name: Zřízení a zabezpečení propojené služby s využitím spravované virtuální sítě
+                  href: ./data-integration/linked-service.md
+- name: Synapse SQL
+  items:
+    - name: Přehled
       items:
-        - name: Přehled
+        - name: Architektura Synapse SQL
+          href: sql/overview-architecture.md
+          displayName: overview
+        - name: SQL na vyžádání
+          href: sql/on-demand-workspace-overview.md
+          displayname: overview
+        - name: Fond SQL
+          href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+          displayname: overview
+        - name: Architektura
+          href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Přehled funkcí
+          href: sql/overview-features.md
+        - name: Modely spotřeby prostředků
+          href: sql/resource-consumption-models.md
+        - name: Osvědčené postupy pro SQL na vyžádání
+          href: sql/best-practices-sql-on-demand.md
+        - name: Osvědčené postupy pro fondy SQL
+          href: sql/best-practices-sql-pool.md
+    - name: Rychlé starty
+      items:
+        - name: Vytvoření fondu SQL s využitím sady Synapse Studio
+          href: quickstart-create-sql-pool-studio.md
+        - name: Vytvoření fondu SQL s využitím webu Azure Portal
+          href: quickstart-create-sql-pool-portal.md
+        - name: Načtení dat s využitím fondů SQL
           items:
-            - name: Architektura Synapse SQL
-              href: sql/overview-architecture.md
-            - name: SQL na vyžádání
-              href: sql/on-demand-workspace-overview.md
-            - name: Fond SQL
-              href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Architektura
-              href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Přehled funkcí
-              href: sql/overview-features.md
-            - name: Modely spotřeby prostředků
-              href: sql/resource-consumption-models.md
-            - name: Osvědčené postupy pro SQL na vyžádání
-              href: sql/best-practices-sql-on-demand.md
-            - name: Osvědčené postupy pro fondy SQL
-              href: sql/best-practices-sql-pool.md
+            - name: Příkaz COPY
+              href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: 'bulk, load'
+            - name: Příklady příkazu COPY
+              href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: 'bulk, load'
+            - name: Synapse Studio
+              href: quickstart-load-studio-sql-pool.md
+              displayname: sql pool
+        - name: Používání SQL na vyžádání
+          href: quickstart-sql-on-demand.md
+    - name: Kurzy
+      items:
+        - name: Použití SQL na vyžádání k analýze dat
+          href: ./sql/tutorial-data-analyst.md
+        - name: Power BI Desktop
+          href: ./sql/tutorial-connect-power-bi-desktop.md
+    - name: Koncepty
+      items:
         - name: Zálohování a obnovení
           href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Přijímání a příprava dat
@@ -281,8 +223,10 @@
                   href: sql/develop-materialized-view-performance-tuning.md
                 - name: Vytvořit
                   href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  displayname: 'materialized, view'
                 - name: Příkaz Alter
                   href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  displayname: 'materialized, view'
             - name: Ukládání sady výsledků dotazu do mezipaměti
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Predikce strojového učení
@@ -331,26 +275,48 @@
                   href: sql/develop-variable-assignment.md
                 - name: Zobrazení
                   href: sql/develop-views.md
-        - name: Dotazování
-          items:
-            - name: Dynamické SQL
-              href: sql/develop-dynamic-sql.md
-            - name: Možnosti pro seskupení
-              href: sql/develop-group-by-options.md
-            - name: Popisky
-              href: sql/develop-label.md
-            - name: Soubory úložiště
+            - name: Dotazování
               items:
-                - name: Přehled
-                  href: sql/develop-storage-files-overview.md
-                - name: Řízení přístupu k úložišti
-                  href: sql/develop-storage-files-storage-access-control.md
-                - name: Externí tabulky Apache Sparku pro Azure Synapse
-                  href: sql/develop-storage-files-spark-tables.md
+                - name: Dynamické SQL
+                  href: sql/develop-dynamic-sql.md
+                - name: Možnosti pro seskupení
+                  href: sql/develop-group-by-options.md
+                - name: Popisky
+                  href: sql/develop-label.md
+                - name: Soubory úložiště
+                  items:
+                    - name: Přehled
+                      href: sql/develop-storage-files-overview.md
+                    - name: Řízení přístupu k úložišti
+                      href: sql/develop-storage-files-storage-access-control.md
+                    - name: Externí tabulky Apache Sparku pro Azure Synapse
+                      href: sql/develop-storage-files-spark-tables.md
+        - name: Monitorování
+          items:
+            - name: Přehled
+              href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Využití prostředků a aktivita dotazů
+              href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Zabezpečení
+          items:
+            - name: Zabezpečení dat
+              items:
+                - name: Zabezpečení na úrovni sloupců
+                  href: ./sql-data-warehouse/column-level-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Zabezpečení na úrovni řádku
+                  href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Šifrování dat
+              items:
+                - name: Přehled transparentního šifrování dat
+                  href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Transparentní šifrování dat s využitím služby Bring Your Own Key
+                  href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  displayname: 'transparent, data, encryption'
         - name: Správa úloh
           items:
             - name: Přehled
               href: ./sql-data-warehouse/sql-data-warehouse-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: 'workload, management'
             - name: Klasifikace úloh
               href: ./sql-data-warehouse/sql-data-warehouse-workload-classification.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Důležitost úloh
@@ -361,69 +327,13 @@
               href: ./sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Paměť a omezení souběžnosti
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: 'workload, management'
             - name: Třídy prostředků
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Synapse Link
+              displayname: 'workload, management'
+    - name: Návody
       items:
-        - name: Synapse Link pro Azure Cosmos DB
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Přehled analytického úložiště
-          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Podporované funkce Synapse Linku
-          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
-        - name: Nejčastější dotazy k Synapse Linku
-          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Případy použití Synapse Linku
-          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Machine Learning
-      items:
-        - name: Přehled
-          items:
-            - name: Co je strojové učení ve službě Synapse Analytics?
-              href: machine-learning/what-is-machine-learning.md
-        - name: Rychlé starty
-          items:
-            - name: Vytvoření nové služby propojené s Azure Machine Learningem
-              href: machine-learning/quickstart-integrate-azure-machine-learning.md
-        - name: Kurzy
-          items:
-            - name: Průvodce bodováním modelů pro fondy SQL
-              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: Spuštění regresního experimentu s využitím Azure AutoML
-              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-    - name: 'Integrace nástrojů (AI, ETL, BI)'
-      items:
-        - name: Řešení potíží s funkcí Synapse Studio
-          href: troubleshoot/troubleshoot-synapse-studio.md
-        - name: Řešení potíží s připojením funkce Synapse Studio
-          href: troubleshoot/troubleshoot-synapse-studio-powershell.md
-- name: Postup
-  items:
-    - name: Zabezpečení
-      items:
-        - name: Správa řízení přístupu
-          items:
-            - name: Nastavení oprávnění pro spravovanou identitu pracovního prostoru Azure Synapse
-              href: security/how-to-grant-workspace-managed-identity-permissions.md
-            - name: Nastavení řízení přístupu
-              href: security/how-to-set-up-access-control.md
-        - name: Správa privátních koncových bodů
-          items:
-            - name: Nastavení spravovaných privátních koncových bodů pro zdroje dat
-              href: security/how-to-create-managed-private-endpoints.md
-            - name: Připojení k pracovnímu prostoru Azure Synapse s využitím privátních koncových bodů
-              href: security/how-to-connect-to-workspace-with-private-links.md
-            - name: Zřízení a zabezpečení propojené služby s využitím spravované virtuální sítě
-              href: ./data-integration/linked-service.md
-    - name: Správa a monitorování
-      items:
-        - name: Spuštění kanálu
-          href: monitoring/how-to-monitor-pipeline-runs.md
-        - name: Aplikace Apache Spark
-          href: monitoring/how-to-monitor-spark-applications.md
-        - name: Podrobnosti o aplikaci Apache Spark
-          href: monitoring/apache-spark-applications.md
-        - name: Synapse SQL
+        - name: Správa a monitorování
           items:
             - name: Monitorování mezipaměti Gen2
               href: ./sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -441,11 +351,9 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Upgrade na Gen2
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Ingestování a příprava dat
-      items:
-        - name: Do datového skladu
+        - name: Ingestování a příprava dat
           items:
-            - name: SQL
+            - name: Do datového skladu
               items:
                 - name: Azure Data Lake Storage
                   href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -455,109 +363,201 @@
                   href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: SSIS
                   href: /sql/integration-services/load-data-to-sql-data-warehouse
+                  displayname: 'integration, services'
                 - name: Údaje o newyorských taxících
                   href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  displayname: 'load, blob'
                 - name: Veřejná data společnosti Contoso
                   href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  displayname: 'load, blob'
                 - name: Načtení WideWorldImporters
                   href: ./sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Pomocí aktivity kopírování
                   href: data-integration/data-integration-sql-pool.md
-            - name: Spark
+            - name: Do služby Data Lake
+              items:
+                - name: Pomocí aktivity kopírování
+                  href: data-integration/data-integration-data-lake.md
+        - name: Dotazování externích dat
+          items:
+            - name: Přehled
+              href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: query
+            - name: Dotazování souborů CSV
+              href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování souborů Parquet
+              href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování souborů JSON
+              href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování vnořených typů
+              href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování složek a několika souborů
+              href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              displayname: csv
+            - name: Dotazování dělených souborů pomocí metadat souboru
+              href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Vytváření a používání zobrazení
+              href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Vytváření a používání externích tabulek
+              href: sql/create-use-external-tables.md
+            - name: Ukládání výsledků dotazů do úložiště
+              href: sql/create-external-table-as-select.md
+        - name: Připojení nástrojů k pracovním prostorům Synapse
+          items:
+            - name: Přehled
+              href: sql/connect-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování pomocí nástroje Azure Data Studio
+              href: sql/get-started-azure-data-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Připojovací řetězce
+              href: sql/connection-strings.md
+            - name: Dotazování pomocí nástroje sqlcmd
+              href: sql/get-started-connect-sqlcmd.md
+            - name: Dotazování pomocí aplikace SSMS
+              href: sql/get-started-ssms.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Dotazování pomocí sady Visual Studio
+              href: sql/get-started-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Připojení k aplikaci Power BI Desktop
+              href: sql/get-started-power-bi-professional.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+- name: Apache Spark
+  items:
+    - name: Přehled
+      items:
+        - name: Přehled Apache Sparku
+          href: ./spark/apache-spark-overview.md
+    - name: Rychlé starty
+      items:
+        - name: Vytvoření poznámkového bloku
+          href: quickstart-apache-spark-notebook.md
+        - name: Vytvoření fondu úloh Sparku s využitím webu Azure Portal
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Vytvoření fondu úloh Sparku s využitím sady Synapse Studio
+          href: quickstart-create-apache-spark-pool-studio.md
+    - name: Kurzy
+      items:
+        - name: Spouštění aplikací Apache Sparku
+          href: ./spark/intellij-tool-synapse.md
+          displayname: intellij
+        - name: Spouštění aplikací PySparku pro fondy úloh Sparku
+          href: ./spark/vscode-tool-synapse.md
+        - name: Definice úloh Sparku
+          href: ./spark/apache-spark-job-definitions.md
+    - name: Koncepty
+      items:
+        - name: Koncepty Apache Sparku
+          href: ./spark/apache-spark-concepts.md
+        - name: Co je Delta Lake
+          href: ./spark/apache-spark-what-is-delta-lake.md
+        - name: Přehled funkcí Delta Lake
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: Výkon Apache Sparku
+          href: ./spark/apache-spark-performance.md
+        - name: Optimalizace výkonu pro Apache Spark s využitím indexů hyperprostoru
+          href: ./spark/apache-spark-performance-hyperspace.md
+        - name: Chování automatického škálování Apache Sparku
+          href: ./spark/apache-spark-autoscale.md
+        - name: Vývoj
+          items:
+            - name: Knihovny
+              items:
+                - name: Přidání a správa knihoven
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: Podpora jazyků a knihoven v modulu runtime
+                  href: ./spark/apache-spark-version-support.md
+            - name: Poznámkové bloky s funkcí Azure Synapse Studio
+              href: ./spark/apache-spark-development-using-notebooks.md
+            - name: Zabezpečení přihlašovacích údajů s využitím TokenLibrary
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: .NET pro Apache Spark
+              href: ./spark/spark-dotnet.md
+        - name: Monitorování
+          items:
+            - name: Server historie fondu úloh Sparku
+              href: ./spark/apache-spark-history-server.md
+    - name: Návody
+      items:
+        - name: Správa a monitorování
+          items:
+            - name: Aplikace Apache Spark
+              href: monitoring/how-to-monitor-spark-applications.md
+            - name: Podrobnosti o aplikaci Apache Spark
+              href: monitoring/apache-spark-applications.md
+            - name: Analýza JSON s využitím Apache Sparku
+              href: how-to-analyze-complex-schema.md
+        - name: Ingestování a příprava dat
+          items:
+            - name: Do datového skladu
               items:
                 - name: Import a export dat pomocí Apache Sparku
                   href: ./spark/synapse-spark-sql-pool-import-export.md
-        - name: Do služby Data Lake
-          items:
-            - name: Pomocí aktivity kopírování
-              href: data-integration/data-integration-data-lake.md
-    - name: Transformace a analýza dat
+- name: Synapse Link
+  items:
+    - name: Rychlé starty
       items:
-        - name: Analýza polí a vnořených struktur
-          href: how-to-analyze-complex-schema.md
-        - name: Synapse Link
+        - name: Připojení k Synapse Linku pro Cosmos DB
+          href: quickstart-connect-synapse-link-cosmos-db.md
+    - name: Koncepty
+      items:
+        - name: Synapse Link pro Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Přehled analytického úložiště
+          href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Podporované funkce Synapse Linku
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
+        - name: Nejčastější dotazy k Synapse Linku
+          href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Případy použití Synapse Linku
+          href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Návody
+      items:
+        - name: Konfigurace Synapse Linku
+          href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Připojení k Azure Synapse Linku pro Cosmos DB
+          href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+        - name: Použití bezserverového fondu SQL a Power BI k analýze Azure Cosmos DB
+          href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku
+          href: ./synapse-link/how-to-query-analytical-store-spark.md
+        - name: Kopírování dat ze Synapse Linku do fondu SQL s využitím Apache Sparku
+          href: ./synapse-link/how-to-copy-to-sql-pool.md
+        - name: Dotazování analytického úložiště Azure Cosmos DB s využitím SQL na vyžádání
+          href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+- name: Kanál a tok dat
+  items:
+    - name: Koncepty
+      items:
+        - name: Kanál a aktivita
+          href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Propojené služby
+          href: ../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Datové sady
+          href: ../data-factory/concepts-datasets-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Spuštění a aktivace
+          href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Prostředí Integration Runtime
+          href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Toky dat
           items:
-            - name: Konfigurace Synapse Linku
-              href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Připojení k Azure Synapse Linku pro Cosmos DB
-              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Použití bezserverového fondu SQL a Power BI k analýze Azure Cosmos DB
-              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Dotazování na data ve službě Azure Cosmos DB s využitím bezserverového fondu SQL
-              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Dotazování analytického úložiště Azure Cosmos DB s využitím Apache Sparku
-              href: ./synapse-link/how-to-query-analytical-store-spark.md
-            - name: Kopírování dat ze Synapse Linku do fondu SQL s využitím Apache Sparku
-              href: ./synapse-link/how-to-copy-to-sql-pool.md
-        - name: Synapse SQL
-          items:
-            - name: Dotazování dat v úložišti
-              items:
-                - name: Přehled
-                  href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování souboru CSV
-                  href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování souborů Parquet
-                  href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování vnořených typů Parquet
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování souborů JSON
-                  href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Dotazování složek a několika souborů
-                  href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Používání metadat souborů
-                  href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Vytváření a používání zobrazení
-                  href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Vytváření a používání externích tabulek
-                  href: sql/create-use-external-tables.md
-                - name: Ukládání výsledků dotazů do úložiště
-                  href: sql/create-external-table-as-select.md
-        - name: Tok dat a příjem dat
-          items:
-            - name: Přehled transformací
-              href: ../data-factory/data-flow-transformation-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Agregace
-              href: ../data-factory/data-flow-aggregate.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Změna řádku
-              href: ../data-factory/data-flow-alter-row.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Podmíněné rozdělení
-              href: ../data-factory/data-flow-conditional-split.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Odvozený sloupec
-              href: ../data-factory/data-flow-derived-column.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Existuje
-              href: ../data-factory/data-flow-exists.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Filtr
-              href: ../data-factory/data-flow-filter.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Zploštění
-              href: ../data-factory/data-flow-flatten.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Spojit
-              href: ../data-factory/data-flow-join.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Vyhledávání
-              href: ../data-factory/data-flow-lookup.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Nová větev
-              href: ../data-factory/data-flow-new-branch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Převést na sloupce
-              href: ../data-factory/data-flow-pivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Rank
-              href: ../data-factory/data-flow-rank.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Vyberte
-              href: ../data-factory/data-flow-select.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Jímka
-              href: ../data-factory/data-flow-sink.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Seřadit
-              href: ../data-factory/data-flow-sort.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Zdroj
-              href: ../data-factory/data-flow-source.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Náhradní klíč
-              href: ../data-factory/data-flow-surrogate-key.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Sjednocení
-              href: ../data-factory/data-flow-union.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Převést na řádky
-              href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Okno
-              href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Integrace
+            - name: Přehled mapování toků dat
+              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Režim ladění
+              href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Posun schématu
+              href: ../data-factory/concepts-data-flow-schema-drift.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Vzory sloupců
+              href: ../data-factory/concepts-data-flow-column-pattern.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Sledování toku dat
+              href: ../data-factory/concepts-data-flow-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Výkon toku dat
+              href: ../data-factory/concepts-data-flow-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Správa grafu
+              href: ../data-factory/concepts-data-flow-manage-graph.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Tvůrce výrazů
+              href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Jazyk výrazů
+              href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Rozdíly oproti Azure Data Factory
+              href: ./data-integration/concepts-data-factory-differences.md
+    - name: Návody
       items:
         - name: Autor
           items:
@@ -860,6 +860,50 @@
               href: ../data-factory/control-flow-web-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Aktivita webhooku
               href: ../data-factory/control-flow-webhook-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Transformace toku dat
+          items:
+            - name: Přehled transformací
+              href: ../data-factory/data-flow-transformation-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Agregace
+              href: ../data-factory/data-flow-aggregate.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Změna řádku
+              href: ../data-factory/data-flow-alter-row.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Podmíněné rozdělení
+              href: ../data-factory/data-flow-conditional-split.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Odvozený sloupec
+              href: ../data-factory/data-flow-derived-column.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Existuje
+              href: ../data-factory/data-flow-exists.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Filtr
+              href: ../data-factory/data-flow-filter.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Zploštění
+              href: ../data-factory/data-flow-flatten.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Spojit
+              href: ../data-factory/data-flow-join.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Vyhledávání
+              href: ../data-factory/data-flow-lookup.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Nová větev
+              href: ../data-factory/data-flow-new-branch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Převést na sloupce
+              href: ../data-factory/data-flow-pivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Rank
+              href: ../data-factory/data-flow-rank.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Vyberte
+              href: ../data-factory/data-flow-select.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Jímka
+              href: ../data-factory/data-flow-sink.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Seřadit
+              href: ../data-factory/data-flow-sort.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Zdroj
+              href: ../data-factory/data-flow-source.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Náhradní klíč
+              href: ../data-factory/data-flow-surrogate-key.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Sjednocení
+              href: ../data-factory/data-flow-union.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Převést na řádky
+              href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Okno
+              href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Parametrizace
           items:
             - name: Parametrizace propojených služeb
@@ -870,6 +914,10 @@
               href: ../data-factory/control-flow-system-variables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Parametry toku dat
               href: ../data-factory/parameters-data-flow.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Správa a monitorování
+          items:
+            - name: Spuštění kanálu
+              href: monitoring/how-to-monitor-pipeline-runs.md
         - name: Vytvoření prostředí Integration Runtime
           items:
             - name: Prostředí Azure Integration Runtime
@@ -892,26 +940,31 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s konektory
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Řešení potíží s nástrojem Kopírování dat
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Řešení potíží s místním prostředím Integration Runtime
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: Připojení nástrojů k pracovním prostorům Synapse
+- name: Machine Learning
+  items:
+    - name: Přehled
       items:
-        - name: Synapse SQL
-          items:
-            - name: Přehled
-              href: sql/connect-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Dotazování pomocí nástroje Azure Data Studio
-              href: sql/get-started-azure-data-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Připojovací řetězce
-              href: sql/connection-strings.md
-            - name: Dotazování pomocí nástroje sqlcmd
-              href: sql/get-started-connect-sqlcmd.md
-            - name: Dotazování pomocí aplikace SSMS
-              href: sql/get-started-ssms.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Dotazování pomocí sady Visual Studio
-              href: sql/get-started-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Připojení k aplikaci Power BI Desktop
-              href: sql/get-started-power-bi-professional.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Co je strojové učení ve službě Synapse Analytics?
+          href: machine-learning/what-is-machine-learning.md
+    - name: Rychlé starty
+      items:
+        - name: Vytvoření nové služby propojené s Azure Machine Learningem
+          href: machine-learning/quickstart-integrate-azure-machine-learning.md
+    - name: Kurzy
+      items:
+        - name: Průvodce bodováním modelů pro fondy SQL
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+          displayname: machine learning
+        - name: Spuštění regresního experimentu s využitím Azure AutoML
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+          displayname: machine learning
+        - name: Vytvoření aplikace strojového učení Apache Sparku
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+          displayname: machine learning
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -926,6 +979,8 @@
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rozhraní REST API
       href: /rest/api/synapse/
+    - name: ukázky
+      href: 'https://github.com/Azure-Samples/Synapse'
     - name: Systémová zobrazení
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: T-SQL

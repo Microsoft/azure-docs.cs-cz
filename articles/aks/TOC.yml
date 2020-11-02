@@ -142,7 +142,7 @@
           href: upgrade-cluster.md
         - name: Použití smlouvy SLA pro dobu provozu
           href: uptime-sla.md
-        - name: Použití skupin umístění bezkontaktní komunikace (Preview)
+        - name: Použití skupin umístění bezkontaktní komunikace
           href: reduce-latency-ppg.md
         - name: Upgrade image uzlu
           href: node-image-upgrade.md
@@ -166,7 +166,7 @@
           items:
             - name: Použití fondů s více uzly
               href: use-multiple-node-pools.md
-            - name: Použití spotových fondů uzlů (Preview)
+            - name: Použití fondu spotových uzlů
               href: spot-node-pool.md
             - name: Použití fondů systémových uzlů
               href: use-system-pools.md

@@ -7,20 +7,20 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4b5f77742d3b2611fd7baf5880b9f8fed047aa86
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7b57bfbd09cd2b528b5a879acdb41b4716289aa6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147314"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372000"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Jak se uplatňuje sleva za rezervaci ve službě Azure Cache for Redis
 
-Když si koupíte rezervovanou kapacitu služby Azure Cache for Redis, na instance mezipaměti, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá jenom náklady na výpočetní prostředky Azure Cache for Redis. Poplatky za úložiště a sítě se vám budou účtovat za použití normálních sazeb. Rezervovaná kapacita je dostupná jenom pro mezipaměti [úrovně Premium](//azure/azure-cache-for-redis/quickstart-create-redis).
+Když si koupíte rezervovanou kapacitu služby Azure Cache for Redis, na instance mezipaměti, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá jenom náklady na výpočetní prostředky Azure Cache for Redis. Poplatky za úložiště a sítě se vám budou účtovat za použití normálních sazeb. Rezervovaná kapacita je dostupná jenom pro mezipaměti [úrovně Premium](/azure/azure-cache-for-redis/quickstart-create-redis).
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-Nevyužitá sleva za rezervaci se ***nenahrazuje***. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
+Nevyužitá sleva za rezervaci se * **nenahrazuje** _. Pokud tedy nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny vám nemůžeme převést.
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny přijdete.
 
@@ -30,7 +30,7 @@ Sleva za rezervovanou kapacitu služby Azure Cache for Redis se pro vaše mezipa
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu Azure Cache for Redis uplatňuje v závislosti na počtu zakoupených mezipamětí a na tom, kdy jsou tyto mezipaměti spuštěné.
 
-**Příklad 1:** Koupíte si rezervovanou kapacitu Azure Cache for Redis pro 6GB mezipaměť. Pokud používáte 13GB mezipaměť, která vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků služby Azure Cache for Redis pro 7 GB se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků 6GB mezipaměti získáte slevu za rezervaci.
+_ **Příklad 1** : Koupíte si rezervovanou kapacitu Azure Cache for Redis pro 6GB mezipaměť. Pokud používáte 13GB mezipaměť, která vyhovuje ostatním atributům rezervace, za využití výpočetních prostředků služby Azure Cache for Redis pro 7 GB se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití výpočetních prostředků 6GB mezipaměti získáte slevu za rezervaci.
 
 U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu Azure Cache for Redis pro 26 GB mezipaměť a spuštěná mezipaměť vyhovují všem zbývajícím atributům rezervace.
 

@@ -37,11 +37,13 @@
           href: onboard-service-principal.md
         - name: Připojení počítačů ke službě Azure Arc s využitím DSC PowerShellu
           href: onboard-dsc.md
+        - name: Připojení počítačů z platformy Windows Admin Center
+          href: onboard-windows-admin-center.md
         - name: Připojení počítačů ke službě Azure Arc s využitím PowerShellu
           href: onboard-powershell.md
     - name: Spravovat
       items:
-        - name: Rozšíření virtuálních počítačů Azure
+        - name: Rozšíření virtuálních počítačů
           items:
             - name: Přehled
               href: manage-vm-extensions.md

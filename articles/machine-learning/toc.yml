@@ -413,6 +413,8 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: Principy grafů a metrik
           href: how-to-understand-automated-ml.md
+        - name: Použití modelu ONNX v aplikaci .NET
+          href: how-to-use-automl-onnx-model-dotnet.md
     - name: Nasazení a obsluha modelů
       items:
         - name: Kde a jak nasadit

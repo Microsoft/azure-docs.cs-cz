@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: Poskytovatelé partnerů pro zabezpečení
       href: trusted-security-partners.md
+    - name: Zabezpečení center pomocí služby Check Point Cloudguard Connect
+      href: check-point-overview.md
     - name: Skupiny IP adres
       href: ip-groups.md
     - name: Logika zpracování pravidel

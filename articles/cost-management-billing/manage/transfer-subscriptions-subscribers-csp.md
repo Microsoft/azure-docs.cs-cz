@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460678"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Přenos předplatných Azure mezi předplatiteli a CSP
 
 Tento článek popisuje hlavní kroky, které slouží k přenosu předplatných Azure mezi partnery CSP (Cloud Solution Provider) a jejich zákazníky. Účelem zde uvedených informací je pomoct předplatiteli Azure domluvit se s partnerem. Informace o procesu převodu pro partnery Microsoftu jsou uvedené v tématu [Převod předplatných Azure zákazníka k jinému partnerovi](/partner-center/switch-azure-subscriptions-to-a-different-partner).
+
+Před zahájením žádosti o přenos byste si měli stáhnout nebo vyexportovat všechny informace o nákladech a fakturační údaje, které chcete zachovat. Informace o fakturaci a využití se s předplatným nepřevádějí. Další informace o exportu údajů o správě nákladů najdete v tématu věnovaném [vytvoření a správě exportovaných dat](../costs/tutorial-export-acm-data.md). Další informace o stažení faktury a údajů o využití najdete v tématu [Stažení nebo zobrazení faktury za Azure a dat o denním využití](download-azure-invoice-daily-usage-date.md).
+
+Pokud máte nějaké existující rezervace, po převodu předplatného se jejich použití zastaví. Před převodem předplatného nezapomeňte [zrušit všechny rezervace a refundovat je](../reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Převody předplatných EA na partnera CSP
 

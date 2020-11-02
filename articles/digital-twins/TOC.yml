@@ -127,6 +127,8 @@
   items:
     - name: Omezení služby Digital Twins
       href: reference-service-limits.md
+    - name: Ceny služby Digital Twins
+      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
     - name: Rozhraní API a sady SDK
       items:
         - name: REST API – referenční informace
@@ -188,7 +190,7 @@
     - name: CLI služby Digital Twins
       items:
         - name: Referenční informace k CLI služby Digital Twins
-          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest
+          href: /cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true
         - name: Balíček CLI
           href: 'https://github.com/Azure/azure-iot-cli-extension/releases'
     - name: DTDL

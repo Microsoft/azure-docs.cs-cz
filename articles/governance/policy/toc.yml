@@ -32,6 +32,9 @@
     - name: Přiřazení zásad – šablona Resource Manageru
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: Přiřazení zásad – Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: Kurzy
   items:
     - name: Vytvoření a správa zásad Azure
@@ -191,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Povolení Azure Monitoru pro virtuální počítače (Preview)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Integrace služby Azure Storage
+      items:
+        - name: Audit TLS s využitím Azure Policy
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Integrace Azure Web Application Firewallu
+      items:
+        - name: Integrace WAF s využitím Azure Policy
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: Řešení potíží
   items:
     - name: Běžné problémy
@@ -264,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: Definice iniciativ
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Prostředky Terraformu
+      items:
+        - name: Přiřazení
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: Definice
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: Iniciativa (nastavení definice)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: Náprava
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: Zdroje a prostředky
   items:
     - name: GitHub – Ukázky Azure Policy
@@ -280,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Nástroj pro vizualizaci zásad správného řízení Azure
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Skripty Azure Policy pro Azure Monitor
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: Zpětná vazba a podpora
       items:
         - name: Microsoft Q&A pro Azure Policy
