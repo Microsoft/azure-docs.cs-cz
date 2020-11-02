@@ -1,0 +1,340 @@
+---
+title: Kurz k rychlému zprovoznění pro metriky v jazyce Java
+titleSuffix: Azure Cognitive Services
+services: cognitive-services
+author: mrbullwinkle
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: metrics-advisor
+ms.topic: include
+ms.date: 10/14/2020
+ms.author: mbullwin
+ms.openlocfilehash: ff8a09e32a44f51571cca93655f91080e5df9a50
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186837"
+---
+[Referenční dokumentace](https://westus2.dev.cognitive.microsoft.com/docs/services/MetricsAdvisor/)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src)  |  [Artefakt (Maven)](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples)
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Nástroj Gradle Build](https://gradle.org/install/)nebo jiný správce závislostí.
+* Jakmile budete mít předplatné Azure, <a href="https://go.microsoft.com/fwlink/?linkid=2142156"  title=" vytvořte prostředek Advisoru metriky "  target="_blank"> vytvořením prostředku Advisoru metriky <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal k nasazení instance služby Advisor pro metriky.  
+* Vaše vlastní databáze SQL s daty časových řad.
+  
+  
+> [!TIP]
+> * Ukázky na GitHubu pro metriky Java najdete na [GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples).
+> * Pro nasazení instance služby, kterou můžete použít, může trvat 10 až 30 minut, než se dokončí váš prostředek poradce metriky. Po úspěšném nasazení klikněte na **Přejít k prostředku** . Po nasazení můžete začít používat vaši instanci poradce metriky s webovým portálem i REST API. 
+> * Adresu URL pro REST API můžete najít v Azure Portal v části **Přehled** prostředku. Bude vypadat takto:
+>    * `https://<instance-name>.cognitiveservices.azure.com/`
+    
+## <a name="setting-up"></a>Nastavení
+
+### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
+
+V tomto rychlém startu se používá správce závislostí Gradle. Další informace o klientské knihovně najdete v [úložišti Maven Central](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor).
+
+V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro vaši aplikaci a přejděte na něj. 
+
+```console
+mkdir myapp && cd myapp
+```
+
+Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoří základní soubory sestavení pro Gradle, včetně *Build. Gradle. kts* , který se používá za běhu k vytvoření a konfiguraci vaší aplikace.
+
+```console
+gradle init --type basic
+```
+
+Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin** .
+
+### <a name="install-the-client-library"></a>Instalace klientské knihovny
+
+Vyhledejte *Build. Gradle. kts* a otevřete ho pomocí vašeho preferovaného integrovaného vývojového prostředí (IDE) nebo textového editoru. Pak zkopírujte do této konfigurace sestavení. Nezapomeňte zahrnout závislosti projektu.
+
+```kotlin
+dependencies {
+    compile("com.azure:azure-ai-metricsadvisor:1.0.0-beta.1")
+}
+```
+
+### <a name="create-a-java-file"></a>Vytvoření souboru Java
+
+Vytvořte složku pro ukázkovou aplikaci. V pracovním adresáři spusťte následující příkaz:
+
+```console
+mkdir -p src/main/java
+```
+
+Přejděte do nové složky a vytvořte soubor s názvem *MetricsAdvisorQuickstarts. Java* . Otevřete ho v preferovaném editoru nebo integrovaném vývojovém prostředí a přidejte následující `import` příkazy:
+
+> [!TIP]
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/metricsadvisor/azure-ai-metricsadvisor/src/samples), který obsahuje příklady kódu v tomto rychlém startu.
+
+Ve `MetricsAdvisorQuickstarts` třídě aplikace vytvořte proměnné pro klíč a koncový bod prostředku.
+
+
+> [!IMPORTANT]
+> Přejděte na Azure Portal. Pokud se prostředek poradce metriky, který jste vytvořili v části **předpoklady** , úspěšně nasadil, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče předplatného a koncový bod můžete najít na stránce **klíč a koncový bod** prostředku v části **Správa prostředků** . <br><br>Pokud chcete načíst klíč rozhraní API, musíte přejít na [https://metricsadvisor.azurewebsites.net](https://metricsadvisor.azurewebsites.net) . Vyberte příslušný **adresář** , **odběry** a **pracovní prostor** pro váš prostředek a zvolte možnost **začít** . Pak budete moci načíst klíče rozhraní API z [https://metricsadvisor.azurewebsites.net/api-key](https://metricsadvisor.azurewebsites.net/api-key) .   
+>
+> Nezapomeňte odebrat klíč z kódu, až budete hotovi, a nikdy ho zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+
+```java
+private static String SUBSCRIPTION_KEY = "<replace-with-your-metrics-advisor-subscription-key-here>";
+private static String API_KEY = "<replace-with-your-metrics-advisor-api-key-here>"
+private static String ENDPOINT = "<replace-with-your-metrics-advisor-endpoint-here>";
+```
+
+V `Main()` metodě aplikace přidejte volání metod používaných v rámci tohoto rychlého startu. Později je vytvoříte.
+
+```java
+static void Main(string[] args){
+
+    // You will create the below methods later in the quickstart
+    exampleTask1();
+}
+```
+
+## <a name="object-model"></a>Objektový model
+
+Následující třídy zpracovávají některé hlavní funkce nástroje Advisor sady Java SDK.
+
+|Název|Popis|
+|---|---|
+| [MetricsAdvisorClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/MetricsAdvisorClient.html) | **Používá se pro** : <br> -Výpis incidentů <br> -Výpis hlavní příčiny incidentů <br> – Načítání původních dat časových řad a dat časových řad obohacených službou. <br> -Výpis výstrah <br> – Přidání zpětné vazby k ladění modelu |
+| [MetricsAdvisorAdministrationClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/administration/MetricsAdvisorAdministrationClient.html)| **Umožňuje:** <br> – Správa datových kanálů <br> -Konfigurovat konfigurace detekce anomálií <br> -Konfigurovat konfigurace upozorňování anomálií <br> -Spravovat zavěšení  |
+| [Datové kanály](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/DataFeed.html)| **Jaké metriky Advisoru ingestují ze zdroje dat. `DataFeed` Obsahuje řádky:** <br> – Časová razítka <br> – Nula nebo více dimenzí <br> – Jedna nebo více měr  |
+| [Metrika](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-ai-metricsadvisor/1.0.0-beta.1/com/azure/ai/metricsadvisor/models/Metric.html) | A `Metric` je kvantifikovaná míra, která se používá k monitorování a vyhodnocení stavu konkrétního obchodního procesu. Může se jednat o kombinaci více hodnot časových řad rozdělených do dimenzí. Například metrika stavu webu může obsahovat rozměry počtu uživatelů a trhu en-US. |
+
+## <a name="code-examples"></a>Příklady kódu
+
+Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí klientské knihovny Poradce pro metriky pro jazyk Java:
+
+* [Ověření klienta](#authenticate-the-client)
+* [Přidání datového kanálu](#add-a-data-feed)
+* [Zkontroluje stav příjmu.](#check-the-ingestion-status)
+* [Konfigurovat detekci anomálií](#configure-anomaly-detection)
+* [Vytvořit zavěšení](#create-a-hook)
+* [Vytvoření konfigurace výstrahy](#create-an-alert-configuration)
+* [Dotaz na upozornění](#query-the-alert)
+
+## <a name="authenticate-the-client"></a>Ověření klienta
+
+### <a name="create-a-metrics-advisor-client-using-metricsadvisorkeycredential"></a>Vytvoření klienta Advisor metriky pomocí MetricsAdvisorKeyCredential
+
+```java
+MetricsAdvisorKeyCredential credential = new MetricsAdvisorKeyCredential(SUBSCRIPTION_KEY, API_KEY);
+MetricsAdvisorClient metricsAdvisorClient = new MetricsAdvisorClientBuilder()
+    .endpoint(ENDPOINT)
+    .credential(credential)
+    .buildClient();
+```
+
+### <a name="create-a-metrics-administration-client-using-metricsadvisorkeycredential"></a>Vytvoření klienta pro správu metrik pomocí MetricsAdvisorKeyCredential
+
+```java
+MetricsAdvisorKeyCredential credential = new MetricsAdvisorKeyCredential(SUBSCRIPTION_KEY, API_KEY);
+MetricsAdvisorAdministrationClient metricsAdvisorAdministrationClient =
+    new MetricsAdvisorAdministrationClientBuilder()
+        .endpoint(ENDPOINT)
+        .credential(credential)
+        .buildClient();
+
+``` 
+
+## <a name="add-a-data-feed"></a>Přidání datového kanálu
+
+Nahraďte `sql_server_connection_string` vlastním připojovacím řetězcem SQL serveru a nahraďte `query` dotazem, který vrací vaše data v jednom časovém razítku. Také budete muset upravit `metric` hodnoty a na `dimension` základě vlastních dat.
+
+> [!IMPORTANT]
+> Dotaz by měl vracet maximálně jeden záznam pro každou kombinaci dimenzí v každém časovém razítku. A všechny záznamy vrácené dotazem musí mít stejná časová razítka. Poradce metriky spustí tento dotaz pro každé časové razítko k ingestování vašich dat. Další informace a příklady najdete v [části Nejčastější dotazy k dotazům](../../faq.md#how-do-i-write-a-valid-query-for-ingesting-my-data) . 
+
+```java
+final DataFeed createdSqlDataFeed = metricsAdvisorAdministrationClient.createDataFeed(
+    "My data feed name",
+    new SQLServerDataFeedSource("sql_server_connection_string", "query"),
+    new DataFeedGranularity().setGranularityType(DataFeedGranularityType.DAILY),
+    new DataFeedSchema(Arrays.asList(
+        new Metric().setName("cost"),
+        new Metric().setName("revenue")))
+        .setDimensions(Arrays.asList(
+            new Dimension().setName("category"),
+            new Dimension().setName("city"))),
+    new DataFeedIngestionSettings(OffsetDateTime.parse("2020-01-01T00:00:00Z")),
+    new DataFeedOptions()
+        .setDescription("My data feed description")
+        .setRollupSettings(
+            new DataFeedRollupSettings()
+                .setAutoRollup(DataFeedAutoRollUpMethod.SUM, Arrays.asList("cost"), "__CUSTOM_SUM__"))
+        .setMissingDataPointFillSettings(
+            new DataFeedMissingDataPointFillSettings()
+                .setFillType(DataSourceMissingDataPointFillType.SMART_FILLING))
+        .setAccessMode(DataFeedAccessMode.PUBLIC));
+
+System.out.printf("Data feed Id : %s%n", createdSqlDataFeed.getId());
+System.out.printf("Data feed name : %s%n", createdSqlDataFeed.getName());
+System.out.printf("Is the query user is one of data feed administrator : %s%n", createdSqlDataFeed.isAdmin());
+System.out.printf("Data feed created time : %s%n", createdSqlDataFeed.getCreatedTime());
+System.out.printf("Data feed granularity type : %s%n",
+    createdSqlDataFeed.getGranularity().getGranularityType());
+System.out.printf("Data feed granularity value : %d%n",
+    createdSqlDataFeed.getGranularity().getCustomGranularityValue());
+System.out.println("Data feed related metric Ids:");
+createdSqlDataFeed.getMetricIds().forEach(metricId -> System.out.println(metricId));
+System.out.printf("Data feed source type: %s%n", createdSqlDataFeed.getSourceType());
+createdSqlDataFeed.getSchema().getMetrics().forEach(metric -> {
+    System.out.printf("metric name: %s metric id:%s", metric.getName(), metric.getId());
+});
+
+System.out.printf("Data feed sql server query: %s%n",
+    ((SQLServerDataFeedSource) createdSqlDataFeed.getSource()).getQuery());
+```
+
+## <a name="check-the-ingestion-status"></a>Zkontroluje stav příjmu.
+
+Tento příklad kontroluje stav příjmu dříve poskytnutého zdroje datového kanálu.
+
+```java
+String dataFeedId = "<use-the-data-feed-id-from-createdSqlDataFeed.getId()"; 
+
+metricsAdvisorAdministrationClient.listDataFeedIngestionStatus(
+    dataFeedId,
+    new ListDataFeedIngestionOptions(
+        OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+        OffsetDateTime.parse("2020-09-09T00:00:00Z"))
+).forEach(dataFeedIngestionStatus -> {
+    System.out.printf("Message : %s%n", dataFeedIngestionStatus.getMessage());
+    System.out.printf("Timestamp value : %s%n", dataFeedIngestionStatus.getTimestamp());
+    System.out.printf("Status : %s%n", dataFeedIngestionStatus.getStatus());
+});
+```
+## <a name="configure-anomaly-detection"></a>Konfigurovat detekci anomálií 
+
+Tento příklad ukazuje, jak může uživatel nakonfigurovat konfiguraci detekce anomálií pro svá data.
+
+```java
+String metricId = "<metric-id-from-adding-data-feed>";
+
+ChangeThresholdCondition changeThresholdCondition = new ChangeThresholdCondition()
+    .setAnomalyDetectorDirection(AnomalyDetectorDirection.BOTH)
+    .setChangePercentage(20)
+    .setShiftPoint(10)
+    .setWithinRange(true)
+    .setSuppressCondition(new SuppressCondition().setMinNumber(1).setMinRatio(2));
+
+HardThresholdCondition hardThresholdCondition = new HardThresholdCondition()
+    .setAnomalyDetectorDirection(AnomalyDetectorDirection.DOWN)
+    .setLowerBound(5.0)
+    .setSuppressCondition(new SuppressCondition().setMinNumber(1).setMinRatio(1));
+
+SmartDetectionCondition smartDetectionCondition = new SmartDetectionCondition()
+    .setAnomalyDetectorDirection(AnomalyDetectorDirection.UP)
+    .setSensitivity(10.0)
+    .setSuppressCondition(new SuppressCondition().setMinNumber(1).setMinRatio(2));
+
+final AnomalyDetectionConfiguration anomalyDetectionConfiguration =
+    metricsAdvisorAdministrationClient.createMetricAnomalyDetectionConfiguration(
+        metricId,
+        new AnomalyDetectionConfiguration("My Anomaly detection configuration")
+            .setDescription("anomaly detection config description")
+            .setWholeSeriesDetectionCondition(
+                new MetricWholeSeriesDetectionCondition()
+                    .setChangeThresholdCondition(changeThresholdCondition)
+                    .setHardThresholdCondition(hardThresholdCondition)
+                    .setSmartDetectionCondition(smartDetectionCondition)
+                    .setCrossConditionOperator(DetectionConditionsOperator.OR))
+    );
+```
+
+## <a name="create-a-hook"></a>Vytvořit zavěšení
+
+Tento příklad vytvoří e-mailový háček, který obdrží výstrahy na incidenty anomálií.
+
+```java
+Hook emailHook = new EmailHook("email hook")
+    .setDescription("my email hook")
+    .addEmailToAlert("alertme@alertme.com")
+    .setExternalLink("https://adwiki.azurewebsites.net/articles/howto/alerts/create-hooks.html");
+
+final Hook hook = metricsAdvisorAdministrationClient.createHook(emailHook);
+EmailHook createdEmailHook = (EmailHook) hook;
+System.out.printf("Hook Id: %s%n", createdEmailHook.getId());
+System.out.printf("Hook Name: %s%n", createdEmailHook.getName());
+System.out.printf("Hook Description: %s%n", createdEmailHook.getDescription());
+System.out.printf("Hook External Link: %s%n", createdEmailHook.getExternalLink());
+System.out.printf("Hook Emails: %s%n", String.join(",", createdEmailHook.getEmailsToAlert()));
+```
+
+##  <a name="create-an-alert-configuration"></a>Vytvoření konfigurace výstrahy
+
+Tento příklad ukazuje, jak může uživatel nakonfigurovat konfiguraci výstrah pro zjištěné anomálie v jejich datech.
+
+```java
+String detectionConfigurationId1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String detectionConfigurationId2 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String hookId1 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+String hookId2 = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+
+final AnomalyAlertConfiguration anomalyAlertConfiguration
+    = metricsAdvisorAdministrationClient.createAnomalyAlertConfiguration(
+        new AnomalyAlertConfiguration("My Alert config name")
+            .setDescription("alert config description")
+            .setMetricAlertConfigurations(
+                Arrays.asList(
+                    new MetricAnomalyAlertConfiguration(detectionConfigurationId1,
+                        MetricAnomalyAlertScope.forWholeSeries()),
+                    new MetricAnomalyAlertConfiguration(detectionConfigurationId2,
+                        MetricAnomalyAlertScope.forWholeSeries())
+                        .setAlertConditions(new MetricAnomalyAlertConditions()
+                            .setSeverityCondition(new SeverityCondition()
+                                .setMaxAlertSeverity(Severity.HIGH)))
+                ))
+            .setCrossMetricsOperator(MetricAnomalyAlertConfigurationsOperator.AND)
+            .setIdOfHooksToAlert(Arrays.asList(hookId1, hookId2)));
+```
+
+## <a name="query-the-alert"></a>Dotaz na upozornění
+
+Tento příklad ukazuje, jak se může uživatel dotazovat na aktivované výstrahy pro konfiguraci detekce výstrah a získat anomálie pro tuto výstrahu.
+
+```java
+String alertConfigurationId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+metricsAdvisorClient.listAlerts(
+    alertConfigurationId,
+    new ListAlertOptions(OffsetDateTime.parse("2020-01-01T00:00:00Z"),
+        OffsetDateTime.now(),
+        TimeMode.ANOMALY_TIME))
+    .forEach(alert -> {
+        System.out.printf("Alert Id: %s%n", alert.getId());
+        System.out.printf("Alert created on: %s%n", alert.getCreatedTime());
+
+        // List anomalies for returned alerts
+        metricsAdvisorClient.listAnomaliesForAlert(
+            alertConfigurationId,
+            alert.getId())
+            .forEach(anomaly -> {
+                System.out.printf("Anomaly was created on: %s%n", anomaly.getCreatedTime());
+                System.out.printf("Anomaly severity: %s%n", anomaly.getSeverity().toString());
+                System.out.printf("Anomaly status: %s%n", anomaly.getStatus());
+                System.out.printf("Anomaly related series key: %s%n", anomaly.getSeriesKey().asMap());
+            });
+    });
+```
+
+Aplikaci můžete vytvořit pomocí:
+
+```console
+gradle build
+```
+### <a name="run-the-application"></a>Spuštění aplikace
+
+Spusťte aplikaci s `run` cílem:
+
+```console
+gradle run
+```

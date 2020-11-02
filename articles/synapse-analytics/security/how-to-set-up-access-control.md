@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341545"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186616"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview) 
 
@@ -51,8 +51,6 @@ Vytvořte a naplňte tři skupiny zabezpečení pro váš pracovní prostor:
 - **WS1 \_ WSAdmins** – pro uživatele, kteří potřebují plnou kontrolu nad pracovním prostorem
 - **WS1 \_ SparkAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty Sparku pracovního prostoru
 - **WS1 \_ SQLAdmins** – pro uživatele, kteří potřebují úplnou kontrolu nad aspekty SQL pracovního prostoru
-- Přidat ** \_ WSAdmins WS1** do **WS1 \_ SQLAdmins**
-- Přidat ** \_ WSAdmins WS1** do **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>Krok 2: Příprava účtu Data Lake Storage Gen2
 
@@ -98,7 +96,7 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
 
 - Otevřete Azure Portal.
 - Přejít na WS1
-- V části **Nastavení**vyberte **Správce služby SQL Active Directory** .
+- V části **Nastavení** vyberte **Správce služby SQL Active Directory** .
 - Vyberte **nastavit správce** a zvolte WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintain-access-control"></a>Krok 6: udržování řízení přístupu
@@ -142,7 +140,7 @@ Váš pracovní prostor je teď plně nakonfigurovaný a zabezpečený.
 
 Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Některé položky mohou být skryté nebo zakázané, pokud uživatel není přiřazen k rolím, které poskytují odpovídající přístup. Následující tabulka shrnuje efekt v synapse studiu.
 
-| Úloha | Správci pracovního prostoru | Správci Spark | Správci SQL |
+| Úkol | Správci pracovního prostoru | Správci Spark | Správci SQL |
 | --- | --- | --- | --- |
 | Otevřít synapse Studio | ANO | ANO | ANO |
 | Zobrazit centrum domů | ANO | ANO | ANO |

@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637220"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186769"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
 
@@ -99,7 +99,7 @@ Nastavte si virtuální síť tak, aby splňovala tyto požadavky:
 
 - Pokud přenesete vlastní veřejné IP adresy, ujistěte se, že skupina prostředků virtuální sítě (nebo skupina prostředků veřejné IP adresy) může vytvořit a odstranit určité síťové prostředky Azure. Další informace najdete v tématu [Nastavení skupiny prostředků](#resource-group). 
 
-- Pokud přizpůsobíte Azure-SSIS IR, jak je popsáno v tématu [vlastní nastavení pro Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md), Azure-SSIS IR uzly budou mít privátní IP adresy z předdefinovaného rozsahu 172.16.0.0 až 172.31.255.255. Proto se ujistěte, že se rozsahy privátních IP adres ve vašich virtuálních nebo místních sítích nekolidují s tímto rozsahem.
+- Pokud přizpůsobíte Azure-SSIS IR, jak je popsáno v tématu [vlastní nastavení pro Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md), náš interní proces pro správu uzlů bude využívat privátní IP adresy z předdefinovaného rozsahu 172.16.0.0 až 172.31.255.255. V důsledku toho se ujistěte, že rozsahy privátních IP adres ve vašich virtuálních nebo místních sítích nebudou v tomto rozsahu kolidovat.
 
 Tento diagram zobrazuje požadovaná připojení pro vaše Azure-SSIS IR:
 
@@ -338,7 +338,7 @@ Použijte portál ke konfiguraci Azure Resource Manager virtuální sítě před
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby** . Vyfiltrujte a vyberte **virtuální sítě** . 
 
@@ -368,7 +368,7 @@ Než se pokusíte připojit k Azure-SSIS IR, použijte portál ke konfiguraci kl
 
 1. Spusťte Microsoft Edge nebo Google Chrome. V současné době pouze tyto webové prohlížeče podporují rozhraní Data Factory. 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
 
 1. Vyberte **Další služby** . Vyfiltrujte a vyberte **virtuální sítě (klasické)** . 
 

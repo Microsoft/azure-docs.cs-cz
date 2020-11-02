@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042673"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186582"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -41,7 +41,7 @@ Rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 můžou p
 
 Tato část popisuje problémy a omezení s použitím rozhraní API objektů BLOB a rozhraní API pro Data Lake Storage Gen2 pro práci se stejnými daty.
 
-* Rozhraní API a Data Lake Storage API nemůžete použít k zápisu do stejné instance souboru. Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . Jediná výjimka je v případě, že používáte přepsání. Soubor nebo objekt blob můžete přepsat buď pomocí rozhraní API.
+* Rozhraní BLOB API a rozhraní Data Lake Storage API nemůžete použít k zápisu do stejné instance souboru. Pokud zapisujete do souboru pomocí Data Lake Storage Gen2 rozhraní API, pak bloky tohoto souboru nebudou viditelné pro volání rozhraní API objektů BLOB [Get Block](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . Jediná výjimka je v případě, že používáte přepsání. Soubor nebo objekt blob můžete přepsat buď pomocí rozhraní API.
 
 * Když použijete operaci [listovat BLOBs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) bez zadání oddělovače, výsledky budou zahrnovat adresáře a objekty blob. Pokud se rozhodnete použít oddělovač, použijte pouze lomítko ( `/` ). Toto je jediný podporovaný oddělovač.
 
@@ -72,7 +72,7 @@ Použijte pouze nejnovější verzi AzCopy ([AzCopy v10 za účelem](https://doc
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Průzkumník služby Azure Storage
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 Používejte pouze verze `1.6.0` nebo vyšší.
 
