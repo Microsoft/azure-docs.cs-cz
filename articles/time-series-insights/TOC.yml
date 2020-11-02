@@ -97,12 +97,10 @@
           items:
             - name: Postup při zřízení a správě
               href: how-to-provision-manage.md
-            - name: Postup při diagnostice a řešení potíží
-              href: how-to-diagnose-troubleshoot.md
-        - name: Příchozí přenos dat a úložiště
-          items:
             - name: Postup při výběru TSID
               href: how-to-select-tsid.md
+            - name: Postup při diagnostice a řešení potíží
+              href: how-to-diagnose-troubleshoot.md
         - name: Model
           items:
             - name: Postup při úpravě modelu

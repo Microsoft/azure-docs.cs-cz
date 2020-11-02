@@ -79,8 +79,6 @@
   items:
     - name: Průvodce publikováním podle typu nabídky
       href: publisher-guide-by-offer-type.md
-    - name: Povolení ověřování nabídek s využitím Azure AD
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Nabídky aplikací Azure
       items:
         - name: Plánování nabídky šablon řešení

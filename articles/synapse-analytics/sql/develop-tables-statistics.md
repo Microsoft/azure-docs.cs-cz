@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288660"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148248"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
@@ -245,7 +245,7 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v * \_ kategorii produktu*. Statistiky mezi sloupci se počítají podle * \_ kategorií produktů* a * \_ sub_category produktů*:
+V tomto příkladu je histogram v *\_ kategorii produktu* . Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů* :
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -254,7 +254,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Vzhledem k tomu, že existuje korelace mezi * \_ kategorií produktů* a * \_ \_ podkategoriím produktu*, může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
+Vzhledem k tomu, že existuje korelace mezi *\_ kategorií produktů* a *\_ \_ podkategoriím produktu* , může být objekt statistiky s více sloupci užitečný, pokud jsou k těmto sloupcům přistupovaly ve stejnou dobu.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Vytvořit statistiku pro všechny sloupce v tabulce
 
@@ -616,7 +616,7 @@ Můžete chtít rozšířit datový kanál, aby bylo zajištěno, že se statist
 Následující principy GUID jsou k dispozici pro aktualizaci statistik:
 
 - Zajistěte, aby byla datová sada v aktualizovaném alespoň jednom objektu statistiky. Tato velikost aktualizací (počet řádků a počet stránek) se aktualizuje jako součást aktualizace statistiky.
-- Zaměřte se na sloupce účastnící se klauzulí JOIN, GROUP BY, ORDER BY a DISTINCT.
+- Zaměřte se na sloupce, které se účastní klauzulí WHERE, JOIN, GROUP BY, ORDER BY a DISTINCT.
 - Aktualizujte sloupce vzestupného klíče, jako je například datum transakce častěji, protože tyto hodnoty nebudou zahrnuty do statistického histogramu.
 - Aktualizujte statické distribuční sloupce méně často.
 
@@ -629,12 +629,12 @@ Následující příklady vám ukážou, jak používat různé možnosti vytvá
 > [!NOTE]
 > V tuto chvíli můžete vytvořit statistiky s jedním sloupcem.
 >
-> Procedura sp_create_file_statistics bude přejmenována na sp_create_openrowset_statistics. Role veřejného serveru má udělené oprávnění Správa HROMADných operací, zatímco role veřejné databáze má oprávnění ke spouštění pro sp_create_file_statistics a sp_drop_file_statistics. To může být v budoucnu změněno.
+> Ke spuštění sp_create_openrowset_statistics a sp_drop_openrowset_statistics se vyžadují následující oprávnění: Správa HROMADných operací nebo Správa HROMADných operací databáze.
 
 K vytvoření statistiky se používá následující uložená procedura:
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 Argumenty: [ @stmt =] N ' statement_text ' – Určuje příkaz Transact-SQL, který vrátí hodnoty sloupce, které budou použity pro statistiku. Pomocí klauzule TABLESAMPLE můžete zadat ukázky dat, která se mají použít. Pokud není zadaná klauzule TABLESAMPLE, použije se FULLSCAN.
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 Chcete-li aktualizovat statistiku, je třeba vyřadit a vytvořit statistiku. K vyřazení statistiky se používá následující uložená procedura:
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> Procedura sp_drop_file_statistics bude přejmenována na sp_drop_openrowset_statistics. Role veřejného serveru má udělené oprávnění Správa HROMADných operací, zatímco role veřejné databáze má oprávnění ke spouštění pro sp_create_file_statistics a sp_drop_file_statistics. To může být v budoucnu změněno.
+> Ke spuštění sp_create_openrowset_statistics a sp_drop_openrowset_statistics se vyžadují následující oprávnění: Správa HROMADných operací nebo Správa HROMADných operací databáze.
 
 Argumenty: [ @stmt =] N ' statement_text ' – určuje stejný příkaz jazyka Transact-SQL, který se používá při vytváření statistik.
 
 Chcete-li aktualizovat statistiku pro sloupec year v datové sadě, která je založena na population.csv souboru, je třeba vyřadit a vytvořit statistiku:
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''

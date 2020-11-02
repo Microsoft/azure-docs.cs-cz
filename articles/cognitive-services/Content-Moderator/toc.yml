@@ -6,6 +6,8 @@
     - name: Co je Content Moderator?
       href: overview.md
       expanded: true
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: Vyzkoušejte si Content Moderator na webu

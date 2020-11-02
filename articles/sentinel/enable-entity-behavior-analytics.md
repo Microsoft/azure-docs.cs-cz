@@ -14,16 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 4587ab5e2cf36dce65cd02b167656c88cfde10a1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096950"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148231"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Povolení analýzy chování uživatelů a entit (UEBA) v Azure Sentinel 
 
-
+> [!IMPORTANT]
+>
+> - Funkce UEBA je teď **obecně dostupná** v následujících geografických oblastech a oblastech Sentinel Azure:
+>    - USA geografie
+>    - Oblast Evropa – západ
+>    - Zeměpisná Austrálie
+>
+> - Ve všech ostatních geografických oblastech a oblastech Tato funkce zůstává po dobu ve **verzi Public Preview** a poskytuje se bez smlouvy o úrovni služeb. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -41,7 +48,7 @@ Chcete-li povolit nebo zakázat tuto funkci (tyto požadavky nejsou nutné k pou
 
 ## <a name="how-to-enable-user-and-entity-behavior-analytics"></a>Jak povolit analýzu chování uživatelů a entit
 
-1. V nabídce navigace v Azure Sentinel vyberte **chování entity (Preview)** .
+1. V navigační nabídce Azure Sentinel vyberte **chování entity** .
 
 1. V části **zapnout** v záhlaví přepněte přepínač na **zapnuto** .
 

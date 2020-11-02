@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100656"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148350"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Identifikace pokročilých hrozeb pomocí analýzy chování uživatelů a entit (UEBA) v Azure Sentinel
+
+> [!IMPORTANT]
+>
+> - Funkce stránek UEBA a entity jsou teď **obecně dostupné** v následujících geografických oblastech a oblastech Azure Sentinel:
+>    - USA geografie
+>    - Oblast Evropa – západ
+>    - Zeměpisná Austrálie
+>
+> - Ve všech ostatních geografických oblastech a oblastech jsou tyto funkce stále ve **verzi Public Preview** a jsou poskytovány bez smlouvy o úrovni služeb. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Co je analýza chování uživatelů a entit (UEBA)?
 

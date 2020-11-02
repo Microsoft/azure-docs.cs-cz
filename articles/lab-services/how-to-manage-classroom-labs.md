@@ -3,34 +3,34 @@ title: Správa učebných cvičení v Azure Lab Services | Microsoft Docs
 description: Naučte se vytvářet a konfigurovat testovací prostředí pro učebnu, Zobrazit všechny vývojové laboratoře, sdílet odkaz na registraci s uživatelem testovacího prostředí nebo odstranit testovací prostředí.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1a251f668508ee0b727c5e2ace65d1ea4eb5123e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd05b13a34e2be1a9d6bdc011a9aa24e79bc8dd1
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251673"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148367"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
-Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Vlastník testovacího prostředí může přidat další uživatele do role Autor testovacího prostředí podle postupu v následujícím článku: [Přidání uživatele do role Autor testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+## <a name="prerequisites"></a>Předpoklady
+Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí** . Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Vlastník testovacího prostředí může přidat další uživatele do role Autor testovacího prostředí podle postupu v následujícím článku: [Přidání uživatele do role Autor testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
 
 1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Aplikace Internet Explorer 11 není zatím podporována. 
 1. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
-1. Vyberte **nové testovací prostředí**. 
+1. Vyberte **nové testovací prostředí** . 
     
     ![Vytvoření testovacího prostředí v učebně](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 1. V okně **New Lab** (Nové testovací prostředí) proveďte následující akce: 
     1. Zadejte **název** testovacího prostředí. 
     1. Vyberte **velikost virtuálních počítačů** , které pro třídu potřebujete. Seznam dostupných velikostí najdete v části [velikosti virtuálních počítačů](#vm-sizes) . 
-    1. Vyberte **bitovou kopii virtuálního počítače** , kterou chcete použít pro prostředí učebny. Pokud vyberete image pro Linux, zobrazí se možnost **Povolit připojení ke vzdálené ploše**. Podrobnosti najdete v tématu [Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
+    1. Vyberte **bitovou kopii virtuálního počítače** , kterou chcete použít pro prostředí učebny. Pokud vyberete image pro Linux, zobrazí se možnost **Povolit připojení ke vzdálené ploše** . Podrobnosti najdete v tématu [Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
 
         Pokud jste se přihlásili pomocí přihlašovacích údajů vlastníka účtu testovacího prostředí, zobrazí se vám možnost Povolit pro testovací prostředí více imagí. Další informace najdete v tématu [Povolení imagí v době vytváření testovacího prostředí](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     1. Zkontrolujte **celkovou cenu za hodinu** zobrazenou na stránce. 
-    1. Vyberte **Uložit**.
+    1. Vyberte **Uložit** .
 
         ![Snímek obrazovky, který zobrazuje okno nové testovací prostředí.](./media/tutorial-setup-classroom-lab/new-lab-window.png)
 
@@ -42,14 +42,14 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
         > [!IMPORTANT]
         > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
-    3. Pokud chcete, aby studenti nastavili vlastní hesla, zakažte možnost **použít stejné heslo pro všechny virtuální počítače** . Tento krok je **nepovinný**. 
+    3. Pokud chcete, aby studenti nastavili vlastní hesla, zakažte možnost **použít stejné heslo pro všechny virtuální počítače** . Tento krok je **nepovinný** . 
 
         Educator se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí, nebo umožní studentům nastavit hesla pro svoje virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image Windows a Linux s výjimkou Ubuntu. Když vyberete virtuální počítač **Ubuntu** , toto nastavení se zakáže, takže studenti budou vyzváni, aby při prvním přihlášení nastavili heslo.  
 
         ![Nové okno testovacího prostředí](./media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. Pak na stránce **pověření k virtuálnímu počítači** vyberte **Další** . 
 5. Na stránce **zásady testovacího prostředí** proveďte následující kroky:
-    1. Zadejte počet hodin přidělený každému uživateli (**kvóta pro každého uživatele**) mimo plánovaný čas testovacího prostředí. 
+    1. Zadejte počet hodin přidělený každému uživateli ( **kvóta pro každého uživatele** ) mimo plánovaný čas testovacího prostředí. 
     2. U možnosti **Automatické vypnutí virtuálních počítačů** určete, jestli se má virtuální počítač automaticky vypnout, když se uživatel odpojí. Můžete také určit, jak dlouho by měl virtuální počítač čekat, než se uživatel znovu připojí, než se automaticky vypíná... Další informace najdete v tématu [Povolení automatického vypnutí virtuálních počítačů při odpojení](how-to-enable-shutdown-disconnect.md).
     3. Pak vyberte **Finish** (Dokončit). 
 
@@ -71,7 +71,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
     > [!WARNING]
     > Publikování nejde vrátit zpět. 
-10. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
+10. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat** . 
 
     ![Šablona publikování – počet virtuálních počítačů](./media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
 11. Na stránce se zobrazí **stav publikování** šablony. Tento proces může trvat až hodinu. 
@@ -85,7 +85,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     
     1. Pokud chcete změnit kapacitu testovacího prostředí (počet virtuálních počítačů v testovacím prostředí), vyberte na panelu nástrojů možnost **kapacita testovacího prostředí** .
     2. Chcete-li spustit všechny virtuální počítače najednou, vyberte možnost **Spustit vše** na panelu nástrojů. 
-    3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu**šipku dolů a pak vyberte **Spustit**. Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.                
+    3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu** šipku dolů a pak vyberte **Spustit** . Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.                
 
 ### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
@@ -103,22 +103,26 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 > [!NOTE]
 > Některé z těchto velikostí virtuálních počítačů se v seznamu nemusí zobrazovat při vytváření testovacího prostředí učebny. Seznam se naplní na základě aktuální kapacity umístění testovacího prostředí. Pokud tvůrce účtu testovacího prostředí [umožňuje tvůrcům testovacího prostředí vybrat umístění pro testovací prostředí](allow-lab-creator-pick-lab-location.md), můžete zkusit zvolit jiné umístění pro testovací prostředí a zjistit, jestli je velikost virtuálního počítače dostupná. 
 
-
 ## <a name="view-all-classroom-labs"></a>Zobrazit všechna cvičení v učebně
+
 1. Přejděte na [portál Azure Lab Services](https://labs.azure.com).
-2. Vyberte **Sign in** (Přihlásit se). Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
-3. Potvrďte, že ve vybraném účtu testovacího prostředí vidíte všechny laboratoře. Na dlaždici testovacího prostředí uvidíte počet virtuálních počítačů v testovacím prostředí a kvótu pro každého uživatele (mimo naplánovaný čas).
+1. Vyberte **Sign in** (Přihlásit se). Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+
+    [!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+1. Potvrďte, že ve vybraném účtu testovacího prostředí vidíte všechny laboratoře. Na dlaždici testovacího prostředí uvidíte počet virtuálních počítačů v testovacím prostředí a kvótu pro každého uživatele (mimo naplánovaný čas).
 
     ![Všechny laboratoře](./media/how-to-manage-classroom-labs/all-labs.png)
-3. Pomocí rozevíracího seznamu v horní části vyberte jiný účet testovacího prostředí. V rámci vybraného účtu testovacího prostředí uvidíte Labs. 
+1. Pomocí rozevíracího seznamu v horní části vyberte jiný účet testovacího prostředí. V rámci vybraného účtu testovacího prostředí uvidíte Labs. 
 
 ## <a name="delete-a-classroom-lab"></a>Odstranění testovacího prostředí učebny
-1. Na dlaždici pro testovací prostředí vyberte v rohu tři tečky (...) a pak vyberte **Odstranit**. 
+
+1. Na dlaždici pro testovací prostředí vyberte v rohu tři tečky (...) a pak vyberte **Odstranit** . 
 
     ![Tlačítko Odstranit](./media/how-to-manage-classroom-labs/delete-button.png)
-3. V dialogovém okně **Odstranit testovací prostředí** vyberte **Odstranit** , aby bylo možné pokračovat v odstraňování. 
+1. V dialogovém okně **Odstranit testovací prostředí** vyberte **Odstranit** , aby bylo možné pokračovat v odstraňování. 
 
 ## <a name="switch-to-another-classroom-lab"></a>Přepnout na další prostředí učebny
+
 Pokud chcete z aktuální nabídky přejít na jiné prostředí učebny, vyberte rozevírací seznam cvičení v účtu testovacího prostředí v horní části.
 
 ![V horní části vyberte testovací prostředí z rozevíracího seznamu.](./media/how-to-manage-classroom-labs/switch-lab.png)

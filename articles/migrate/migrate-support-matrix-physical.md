@@ -3,12 +3,12 @@ title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 58ecba6bcedc036e31046aef292e482085ad7cc6
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319305"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148401"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -31,11 +31,21 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 
 ## <a name="physical-server-requirements"></a>Požadavky na fyzický server
 
-| **Podpora**                | **Podrobnosti**               
-| :-------------------       | :------------------- |
-| **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Použijte účet domény pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users. <br/><br/> **Linux:** Musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele. <br/> Případně se ujistěte, že jsou požadované možnosti nastaveny pomocí následujících příkazů. <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br/> setcap CAP_DAC_READ_SEARCH + EIP/sbin/fdisk (Pokud není k dispozici/usr/sbin/Fdisk) <br/> setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid, cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin, cap_sys_resource, cap_audit_control, cap_setfcap = + EIP"/sbin/LVM <br/> setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode <br/> chmod a + r –/sys/Class/DMI/ID/product_uuid
-| **Operační systém** | Pro všechny operační systémy Windows a Linux se dá zhodnotit migrace. |
+**Nasazení fyzického serveru:** Fyzický server může být samostatný nebo nasazený v clusteru.
+
+**Operační systém:** Pro všechny operační systémy Windows a Linux se dá zhodnotit migrace.
+
+**Nastaven**
+- Pro Windows servery použijte doménový účet pro počítače připojené k doméně a místní účet pro počítače, které nejsou připojené k doméně. Uživatelský účet by měl být přidán do těchto skupin: Remote Management Users, Performance Monitor Users a Performance Log Users.
+- V případě serverů s Linuxem musíte na serverech s Linuxem, které chcete vyhledat, mít účet superuživatele. Alternativně můžete nastavit nekořenový účet s požadovanými funkcemi pomocí následujících příkazů:
+
+**Příkaz** | **Účel**
+--- | --- |
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/Fdisk <br></br> setcap CAP_DAC_READ_SEARCH + EIP/sbin/Fdisk _(Pokud není k dispozici/usr/sbin/Fdisk)_ | Shromažďování dat konfigurace disku
+setcap "cap_dac_override, cap_dac_read_search, cap_fowner, cap_fsetid, cap_setuid,<br>cap_setpcap, cap_net_bind_service, cap_net_admin, cap_sys_chroot, cap_sys_admin<br>cap_sys_resource, cap_audit_control, cap_setfcap = + EIP "/sbin/LVM | Shromažďování dat o výkonu disku
+setcap CAP_DAC_READ_SEARCH + EIP/usr/sbin/dmidecode | Shromáždění sériového čísla systému BIOS
+chmod a + r –/sys/Class/DMI/ID/product_uuid | Shromažďování identifikátorů GUID systému BIOS
+
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate

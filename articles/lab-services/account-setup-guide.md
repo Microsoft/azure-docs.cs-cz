@@ -3,12 +3,12 @@ title: Průvodce nastavením akcelerovaného účtu testovacího prostředí pro
 description: Tato příručka správcům pomáhá rychle nastavit účet testovacího prostředí pro použití v rámci své školy.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445419"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148273"
 ---
 # <a name="lab-account-setup-guide"></a>Průvodce nastavením účtu testovacího prostředí
 
@@ -29,6 +29,10 @@ Pokud chcete rychle začít, vytvořte jeden účet testovacího prostředí a p
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Kdo by měl být vlastníky a přispěvateli účtu testovacího prostředí?
 
 Správci jsou obvykle vlastníci a Přispěvatelé pro účet testovacího prostředí. Zodpovídá za správu zásad, které se vztahují na všechny laboratoře obsažené v rámci účtu testovacího prostředí. Osoba, která vytváří účet testovacího prostředí, je automaticky vlastníkem. Můžete přidat další vlastníky a přispěvatele, obvykle z klienta Azure Active Directory (Azure AD) přidruženého k vašemu předplatnému. To může být užitečné při správě účtu testovacího prostředí přiřazením role vlastníka nebo přispěvatele na úrovni účtu testovacího prostředí.
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+Uživatelé testovacího prostředí vidí jenom jeden seznam virtuálních počítačů, ke kterým mají přístup přes klienty v rámci Azure Lab Services.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Kdo bude moci vytvářet a spravovat laboratoře?
 
