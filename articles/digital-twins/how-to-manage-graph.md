@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 62deca7ed1c34bbefed7fb76224db6ec8ab12dae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 947a0c9a0af3c38d6c4d6f66da691d62530a69e7
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147126"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279511"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
-Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) , který představuje celé prostředí. Neřízený graf se skládá z jednotlivých digitálních vláken propojených prostřednictvím **vztahů** . 
+Srdcem digitálních vláken Azure je [dvojitě graf](concepts-twins-graph.md) , který představuje celé prostředí. Neřízený graf se skládá z jednotlivých digitálních vláken propojených prostřednictvím **vztahů**. 
 
-Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-portal.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
+Jakmile budete mít funkční [instanci digitálních vláken Azure](how-to-set-up-instance-portal.md) a nastavili jste [ověřovací](how-to-authenticate-client.md) kód v klientské aplikaci, můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins) k vytváření, úpravám a odstraňování digitálních vláken a jejich vztahů v instanci digitálních vláken Azure. Můžete také použít [rozhraní .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital revlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pracovat s jednotlivými digitálními podseznamy, přečtěte si téma [*Postup: Správa digitálních vláken*](how-to-manage-twin.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
     
@@ -37,8 +37,8 @@ Vztahy se vytvářejí pomocí `CreateRelationship()` volání.
 Chcete-li vytvořit relaci, je nutné zadat následující:
 * Zdrojové ID vlákna ( `srcId` ve vzorovém kódu níže): ID vlákna, kde vztah pochází.
 * Cílové ID vlákna ( `targetId` v níže uvedeném příkladu kódu): ID vlákna, do kterého relace dorazí.
-* Název vztahu ( `relName` v níže uvedeném příkladu kódu): obecný typ vztahu, například _Contains_ .
-* ID vztahu ( `relId` v níže uvedeném příkladu kódu): konkrétní název pro tento vztah, například _Relationship1_ .
+* Název vztahu ( `relName` v níže uvedeném příkladu kódu): obecný typ vztahu, například _Contains_.
+* ID vztahu ( `relId` v níže uvedeném příkladu kódu): konkrétní název pro tento vztah, například _Relationship1_.
 
 ID vztahu musí být jedinečné v rámci daného zdroje vlákna. Nemusí být globálně jedinečný.
 Například pro zdvojenou *foo* musí být každé konkrétní ID vztahu jedinečné. Nicméně jiný ovládací prvek s dvojitou *čárkou* může mít odchozí vztah, který odpovídá stejnému ID relace *foo* .
@@ -85,7 +85,7 @@ Vztahy mohou být klasifikovány buď:
 
 Neexistuje žádné omezení počtu vztahů, které můžete mít mezi dvěma dvojitými vláknami – můžete mít tolik vztahů mezi dvojitými možnostmi, jak budete chtít. 
 
-To znamená, že můžete vyjádřit několik různých typů vztahů mezi dvěma dvojitými vlákna najednou. Například *Dvojitá* a může mít jak *uloženou* *relaci, tak* i vytvářený vztah s *dvojitým B* .
+To znamená, že můžete vyjádřit několik různých typů vztahů mezi dvěma dvojitými vlákna najednou. Například *Dvojitá* a může mít jak *uloženou* *relaci, tak* i vytvářený vztah s *dvojitým B*.
 
 V případě potřeby můžete dokonce vytvořit několik instancí stejného typu relace mezi dvěma dvěma typy vláken. V tomto příkladu může mít *Dvojitá a* dvě různé *uložené* relace s *dvojitým B* , pokud mají relace různá ID vztahů.
 

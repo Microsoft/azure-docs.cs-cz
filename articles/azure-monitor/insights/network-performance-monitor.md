@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8dcddcd3d928758557074bf01d92e4bcc57ee1d
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403717"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279441"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -74,35 +74,41 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Základní procesy použijte k instalaci agentů na adrese [připojení počítačů s Windows k Azure monitor](../platform/agent-windows.md) a [připojení Operations Manager k Azure monitor](../platform/om-agents.md).
+Pomocí základních procesů nainstalujete agenty na [počítačích s Windows připojit k Azure monitor](../platform/agent-windows.md), [připojíte počítače se systémem Linux k Azure monitor (Preview)](../../virtual-machines/extensions/oms-linux.md) a [připojíte Operations Manager k Azure monitor](../platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Kam nainstalovat agenty 
 
-* **Sledování výkonu**: Nainstalujte agenty Log Analytics v alespoň jednom uzlu připojeném ke všem podsítím, ze kterých chcete monitorovat síťové připojení k ostatním podsítím.
+* **Sledování výkonu** : Nainstalujte agenty Log Analytics v alespoň jednom uzlu připojeném ke všem podsítím, ze kterých chcete monitorovat síťové připojení k ostatním podsítím.
 
     Chcete-li monitorovat síťové propojení, nainstalujte agenty do obou koncových bodů tohoto propojení. Pokud si nejste jisti topologií sítě, nainstalujte agenty na serverech s kritickými úlohami, mezi kterými chcete monitorovat výkon sítě. Například pokud chcete monitorovat síťové připojení mezi webovým serverem a serverem se systémem SQL, nainstalujte agenta na oba servery. Agenti monitorují připojení k síti (propojení) mezi hostiteli, nikoli se samotnými hostiteli. 
 
-* **Monitorování připojení služby**: na všechny uzly, ze kterých chcete monitorovat síťové připojení ke koncovému bodu služby, nainstalujte agenta Log Analytics. Příkladem je, že chcete monitorovat síťové připojení k Microsoft 365 z webů Office označených O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel každý v umístění O1, O2 a O3. 
+* **Monitorování připojení služby** : na všechny uzly, ze kterých chcete monitorovat síťové připojení ke koncovému bodu služby, nainstalujte agenta Log Analytics. Příkladem je, že chcete monitorovat síťové připojení k Microsoft 365 z webů Office označených O1, O2 a O3. Nainstalujte agenta Log Analytics na alespoň jeden uzel každý v umístění O1, O2 a O3. 
 
-* **ExpressRoute monitor**: ve vaší virtuální síti Azure nainstalujte aspoň jednoho agenta Log Analytics. Nainstalujte také alespoň jednoho agenta do místní podsítě, který je připojen prostřednictvím privátního partnerského vztahu ExpressRoute.  
+* **ExpressRoute monitor** : ve vaší virtuální síti Azure nainstalujte aspoň jednoho agenta Log Analytics. Nainstalujte také alespoň jednoho agenta do místní podsítě, který je připojen prostřednictvím privátního partnerského vztahu ExpressRoute.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurace agentů Log Analytics pro monitorování 
 
 Network Performance Monitor používá syntetické transakce k monitorování výkonu sítě mezi zdrojovými a cílovými agenty. Můžete zvolit TCP a ICMP jako protokol pro monitorování v možnosti monitorování výkonu a sledování připojení služby. Jako monitorovací protokol pro ExpressRoute monitor je k dispozici pouze protokol TCP. Ujistěte se, že brána firewall umožňuje komunikaci mezi Log Analytics agenty, které se používají pro monitorování protokolu, který zvolíte. 
 
-* **Protokol TCP**: Pokud jako protokol pro monitorování zvolíte TCP, otevřete port brány firewall u agentů používaných pro Network Performance Monitor a monitorování ExpressRoute a ujistěte se, že se agenti mohou vzájemně připojit. Pokud chcete otevřít port, spusťte skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell bez parametrů v okně PowerShellu s oprávněními správce.
+* **Protokol TCP** : Pokud jako protokol pro monitorování zvolíte TCP, otevřete port brány firewall u agentů používaných pro Network Performance Monitor a monitorování ExpressRoute a ujistěte se, že se agenti mohou vzájemně připojit. V případě počítačů s Windows otevřete tento port spuštěním skriptu [EnableRules.ps1](https://aka.ms/npmpowershellscript) PowerShell bez parametrů v okně PowerShellu s oprávněními správce.
+U počítačů se systémem Linux je nutné změnit použití číslo_portu ručně. 
+* Přejděte na cestu:/var/opt/Microsoft/omsagent/npm_state. 
+* Otevřít soubor: npmdregistry
+* Změna hodnoty pro číslo portu ```“PortNumber:<port of your choice>”```
 
-    Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
+ Upozorňujeme, že použitá čísla portů by se měla shodovat se všemi agenty používanými v pracovním prostoru. 
+
+Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
 
     >[!NOTE]
-    > Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
+    > The script configures only Windows Firewall locally. If you have a network firewall, make sure that it allows traffic destined for the TCP port used by Network Performance Monitor.
 
     >[!NOTE]
-    > Pro monitorování připojení služby nemusíte spouštět skript prostředí [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell.
+    > You don't need to run the [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell script for Service Connectivity Monitor.
 
     
 
-* **Protokol ICMP**: Pokud jako protokol pro monitorování ZVOLÍTE protokol ICMP, povolte pro spolehlivé využívání protokolu ICMP následující pravidla brány firewall:
+* **Protokol ICMP** : Pokud jako protokol pro monitorování ZVOLÍTE protokol ICMP, povolte pro spolehlivé využívání protokolu ICMP následující pravidla brány firewall:
     
    ```
    netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -124,15 +130,15 @@ Network Performance Monitor používá syntetické transakce k monitorování v�
 
 4. Na stránce **instalace** se zobrazí možnost instalovat agenty Log Analytics a nakonfigurovat agenty pro monitorování v zobrazení **Společná nastavení** . Jak už bylo vysvětleno, pokud jste nainstalovali a nakonfigurovali agenty Log Analytics, vyberte zobrazení **Nastavení** a nakonfigurujte možnost, kterou chcete použít. 
 
-   **Sledování výkonu**: zvolte protokol, který se má použít pro syntetické transakce ve **výchozím** pravidlu sledování výkonu, a vyberte **Uložit & pokračovat**. Tento výběr protokolu se drží jenom pro výchozí pravidlo generované systémem. Protokol musíte zvolit při explicitním vytvoření pravidla nástroje sledování výkonu. Na kartě **sledování výkonu** můžete vždycky přejít na **výchozí** nastavení pravidla (zobrazí se po dokončení konfigurace dne 0) a pozdější změnu protokolu. Pokud nechcete, aby funkce sledování výkonu nesledovala, můžete výchozí pravidlo zakázat z **výchozího** nastavení pravidla na kartě **sledování výkonu** .
+   **Sledování výkonu** : zvolte protokol, který se má použít pro syntetické transakce ve **výchozím** pravidlu sledování výkonu, a vyberte **Uložit & pokračovat**. Tento výběr protokolu se drží jenom pro výchozí pravidlo generované systémem. Protokol musíte zvolit při explicitním vytvoření pravidla nástroje sledování výkonu. Na kartě **sledování výkonu** můžete vždycky přejít na **výchozí** nastavení pravidla (zobrazí se po dokončení konfigurace dne 0) a pozdější změnu protokolu. Pokud nechcete, aby funkce sledování výkonu nesledovala, můžete výchozí pravidlo zakázat z **výchozího** nastavení pravidla na kartě **sledování výkonu** .
 
    ![Zobrazení sledování výkonu](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Monitorování připojení služby**: funkce poskytuje integrované předkonfigurované testy pro monitorování připojení k síti Microsoft 365 a Dynamics 365 od vašich agentů. Zvolte Microsoft 365 a služby Dynamics 365, které chcete monitorovat, zaškrtnutím políček vedle nich. Chcete-li vybrat agenty, ze kterých chcete monitorovat, vyberte možnost **přidat agenty**. Pokud tuto funkci nechcete používat nebo ji chcete nastavit později, nevybírejte nic a vyberte **uložit & pokračovat**.
+   **Monitorování připojení služby** : funkce poskytuje integrované předkonfigurované testy pro monitorování připojení k síti Microsoft 365 a Dynamics 365 od vašich agentů. Zvolte Microsoft 365 a služby Dynamics 365, které chcete monitorovat, zaškrtnutím políček vedle nich. Chcete-li vybrat agenty, ze kterých chcete monitorovat, vyberte možnost **přidat agenty**. Pokud tuto funkci nechcete používat nebo ji chcete nastavit později, nevybírejte nic a vyberte **uložit & pokračovat**.
 
    ![Zobrazení monitorování připojení služby](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **ExpressRoute monitor**: vyberte **Vyhledat** a vyhledejte všechny soukromé partnerské vztahy ExpressRoute, které jsou připojené k virtuálním sítím v předplatném Azure propojené s tímto pracovním prostorem Log Analytics. 
+   **ExpressRoute monitor** : vyberte **Vyhledat** a vyhledejte všechny soukromé partnerské vztahy ExpressRoute, které jsou připojené k virtuálním sítím v předplatném Azure propojené s tímto pracovním prostorem Log Analytics. 
 
    ![Zobrazení monitorování ExpressRoute](media/network-performance-monitor/npm-express-route.png)
 
@@ -160,7 +166,7 @@ Povolení nebo zakázání monitorování konkrétních podsítí:
 Všechny uzly, které mají nainstalovaného agenta, jsou uvedeny na kartě **uzly** . 
 
 1. Zaškrtněte nebo zrušte zaškrtnutí uzlů, které chcete monitorovat nebo zastavit monitorování. 
-2. Vyberte možnost **použít pro monitorování**nebo ji podle potřeby vymažte. 
+2. Vyberte možnost **použít pro monitorování** nebo ji podle potřeby vymažte. 
 3. Vyberte **Uložit**. 
 
 
@@ -200,15 +206,15 @@ Po povolení řešení Network Performance Monitor poskytuje dlaždice řešení
 
 ### <a name="network-performance-monitor-dashboard"></a>Řídicí panel Network Performance Monitor 
 
-* **Nejčastější události stavu sítě**: Tato stránka obsahuje seznam nejaktuálnějších událostí stavu a výstrah v systému a čas, kdy byly události aktivní. Událost stavu nebo výstraha je vygenerována vždy, když hodnota zvolené metriky (ztráta, latence, doba odezvy nebo využití šířky pásma) pro pravidlo monitorování překračuje prahovou hodnotu. 
+* **Nejčastější události stavu sítě** : Tato stránka obsahuje seznam nejaktuálnějších událostí stavu a výstrah v systému a čas, kdy byly události aktivní. Událost stavu nebo výstraha je vygenerována vždy, když hodnota zvolené metriky (ztráta, latence, doba odezvy nebo využití šířky pásma) pro pravidlo monitorování překračuje prahovou hodnotu. 
 
-* **ExpressRoute monitor**: Tato stránka poskytuje souhrn stavů pro různé připojení ExpressRoute partnerských vztahů, které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest přes okruhy ExpressRoute, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** .
+* **ExpressRoute monitor** : Tato stránka poskytuje souhrn stavů pro různé připojení ExpressRoute partnerských vztahů, které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest přes okruhy ExpressRoute, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** .
 
-* **Monitorování připojení služby**: Tato stránka poskytuje souhrny stavu pro různé testy, které jste vytvořili. Dlaždice **topologie** znázorňuje počet monitorovaných koncových bodů. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** .
+* **Monitorování připojení služby** : Tato stránka poskytuje souhrny stavu pro různé testy, které jste vytvořili. Dlaždice **topologie** znázorňuje počet monitorovaných koncových bodů. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** .
 
-* **Sledování výkonu**: Tato stránka obsahuje souhrny stavu pro **síťové** **odkazy a odkazy na podsítě,** které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** . 
+* **Sledování výkonu** : Tato stránka obsahuje souhrny stavu pro **síťové** **odkazy a odkazy na podsítě,** které řešení monitoruje. Dlaždice **topologie** zobrazuje počet síťových cest, které jsou monitorovány ve vaší síti. Kliknutím na tuto dlaždici přejdete do zobrazení **topologie** . 
 
-* **Běžné dotazy**: Tato stránka obsahuje sadu vyhledávacích dotazů, které přímo načítají data monitorování nezpracovaných sítí. Tyto dotazy můžete použít jako výchozí bod k vytvoření vlastních dotazů pro přizpůsobené vytváření sestav. 
+* **Běžné dotazy** : Tato stránka obsahuje sadu vyhledávacích dotazů, které přímo načítají data monitorování nezpracovaných sítí. Tyto dotazy můžete použít jako výchozí bod k vytvoření vlastních dotazů pro přizpůsobené vytváření sestav. 
 
    ![Řídicí panel Network Performance Monitor](media/network-performance-monitor/npm-dashboard.png)
 

@@ -7,23 +7,23 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0851838b89a9a2bdc54526ac40014f645f3d88a2
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146582"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280391"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
-Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins), [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
+Entity ve vašem prostředí jsou reprezentovány pomocí [digitálních vláken](concepts-twins-graph.md). Správa digitálních vláken může zahrnovat vytváření, úpravy a odebírání. K provedení těchto operací můžete použít [**rozhraní API DigitalTwins**](/rest/api/digital-twins/dataplane/twins), [sadu .NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)nebo rozhraní příkazového [řádku Azure Digital vlákens](how-to-use-cli.md).
 
 Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracovat se vztahy a s [dvojitým grafem](concepts-twins-graph.md) v podobě celku, přečtěte si téma [*Postup: Správa nefunkčního grafu s relacemi*](how-to-manage-graph.md).
 
 > [!TIP]
 > Všechny funkce sady SDK přicházejí v synchronních a asynchronních verzích.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -87,7 +87,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Příklad:
 >
 >```csharp
 >twin.Id = "myRoomId";
@@ -265,7 +265,7 @@ Zvažte například následující dokument opravy JSON, který nahrazuje pole m
 Tato operace proběhne úspěšně pouze v případě, že digitální práce, která je upravována opravou, bude v souladu s novým modelem. 
 
 Uvažujte následující příklad:
-1. Představte si digitální dvojitou hodnotu s modelem *foo_old* . *foo_old* definuje požadovanou *hmotnost* vlastnosti.
+1. Představte si digitální dvojitou hodnotu s modelem *foo_old*. *foo_old* definuje požadovanou *hmotnost* vlastnosti.
 2. Nový model *foo_new* definuje hmotnostní vlastnost a přidává novou *teplotu* požadované vlastnosti.
 3. Po opravě musí mít digitální vlákna současně vlastnost pro hmotnost i teplotu. 
 

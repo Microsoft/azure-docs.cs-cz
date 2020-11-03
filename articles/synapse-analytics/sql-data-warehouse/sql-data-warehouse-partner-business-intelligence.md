@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 909ea33ed96225c75a2d093f5bf2f4878ea51d2e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939180"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279991"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure synapse Analytics business intelligence partneři
 
@@ -35,6 +35,7 @@ Pokud chcete vytvořit řešení datového skladu, můžete si vybrat z různýc
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi Analytics**<br>Logi Analytics společně umožňuje vaší organizaci shromažďovat, analyzovat a okamžitě pracovat na největších a nejvíce různých datových sadách na světě. |[Stránka produktu](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker BI**<br>Looker poskytuje všem ve vaší společnosti možnost prozkoumat a pochopit data, která jsou na vašem podniku. Looker také poskytuje analytikovi dat flexibilní a opakovaně použitelnou vrstvu modelování pro řízení a správu těchto dat.  Společnosti mají zásadní transformaci své kultury pomocí Looker jako katalyzátoru.|[Stránka produktu](https://looker.com/partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Mikrostrategie](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**Mikrostrategie**<br>Mikrostrategie platformy nabízí kompletní sadu business intelligence a analytických možností, které organizacím umožňují získat hodnotu z jejich obchodních dat. Výkonný analytický modul s mikrostrategiemi, komplexní sady nástrojů, nejrůznější datové konektory a otevřená architektura zajišťuje, že máte všechno, co potřebujete k tomu, abyste rozšířili přístup k analýzám napříč každým týmem.|[Stránka produktu](https://www.microstrategy.com/us/product/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
+| ![Analýza režimu](./media/sql-data-warehouse-partner-business-intelligence/mode-logo.png) |**Režim**<br>Režim je moderní analýza a řešení BI, které týmům pomáhá dělat rozhodnutí prostřednictvím neodůvodněné rychlé a neočekávaně otázkou analýzy dat. Datové týmy se rychleji pohybují pomocí preferovaného pracovního postupu, který kombinuje SQL, Python, R a vizuální analýzu, zatímco zúčastněné strany pracují společně a sdílejí data sami. Díky datům, které jsou dostupné pro všechny, se zkrátí vzdálenost od otázek na odpovědi a pomozte firmám lépe rozhodovat rychleji.|[Stránka produktu](https://mode.com/)<br> |
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Pomocí aplikace pro vizualizaci dat, kterou může kdokoli použít, můžete vyřídit funkci Insight Discovery. Díky Qlik smyslu můžou všichni ve vaší organizaci snadno vytvářet flexibilní a interaktivní vizualizace a dělat smysluplná rozhodnutí. |[Stránka produktu](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qlik.qlik-sense) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense je plnohodnotný software pro Business Intelligence, který se dodává s nástroji, které podnik potřebuje k analýze a vizualizaci dat: vysoce výkonné analytické databáze, možnost spojit více zdrojů, ETL (Simple data extrakce) a webovou vizualizaci dat. Začněte s analýzou a vizualizací velkých datových sad pomocí SiSense BI a analýz ještě dnes. |[Stránka produktu](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Samoobslužná analýza Tableau umožňuje komukoli zobrazit a pochopit svá data napříč mnoha druhy dat z plochých souborů až po databáze. Tableau má nativní optimalizovaný konektor na synapse fond SQL, který podporuje živá data i analýzu v paměti. |[Stránka produktu](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|

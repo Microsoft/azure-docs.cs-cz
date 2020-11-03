@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 716759fd6542cd473c236992ac88b69bfe5d0a66
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148020"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279397"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>Zobrazit konfiguraci skupiny serverů PostgreSQL s podporou ARC
 
@@ -36,7 +36,7 @@ Vypíše seznam prostředků Kubernetes typu Postgres. Spusťte příkaz:
 kubectl get postgresqls [-n <namespace name>]
 ```
 
-Výstup tohoto příkazu zobrazuje seznam skupin serverů, které byly vytvořeny. U každého z nich označuje počet lusků. Například:
+Výstup tohoto příkazu zobrazuje seznam skupin serverů, které byly vytvořeny. U každého z nich označuje počet lusků. Příklad:
 
 ```output
 NAME                                             STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
@@ -54,7 +54,7 @@ Spusťte tento příkaz:
 kubectl get pods [-n <namespace name>]
 ```
 
-Vrátí seznam lusků. V závislosti na názvech, které jste pro tyto skupiny serverů zadali, se zobrazí lusky používané vašimi skupinami serverů. Například:
+Vrátí seznam lusků. V závislosti na názvech, které jste pro tyto skupiny serverů zadali, se zobrazí lusky používané vašimi skupinami serverů. Příklad:
 
 ```console 
 NAME                 READY   STATUS    RESTARTS   AGE
@@ -108,7 +108,7 @@ Ve výchozím nastavení předpona názvu okruhu PVC indikuje jeho využití:
 - `data-`...: je trvalý virtuální okruh použitý pro datové soubory.
 - `logs-`...: je trvalý virtuální okruh, který se používá pro soubory transakčních protokolů/WAL.
 
-Například:
+Příklad:
 
 ```output
 NAME                                            STATUS   VOLUME              CAPACITY   ACCESS MODES   STORAGECLASS    AGE
@@ -183,7 +183,7 @@ Obecný formát tohoto příkazu je:
 kubectl describe <CRD name>/<server group name> [-n <namespace name>]
 ```
 
-Například:
+Příklad:
 
 ```console
 kubectl describe postgresql-12/postgres02
@@ -210,7 +210,7 @@ Spec:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -236,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>`Workers`V předchozím příkladu bylo před vydáním verze 2020 `Shards` . října. Další informace najdete v tématu [poznámky k verzi – datové služby s podporou ARC Azure (Preview)](release-notes.md) .
+
 Řekněme, že se v popisu výše uvedeného postupu vyvolají konkrétní body zájmu `servergroup` . Co nám o této skupině serverů říkáme?
 
 - Je ve verzi 12 Postgres: 
-   > Plnění         `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - Byl vytvořen během měsíce ze srpna 2020:
-   > Časové razítko vytvoření:  `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - V této skupině serverů se vytvořila dvě rozšíření Postgres: `citus` a. `pg_stat_statements`
-   > Modul: rozšíření: název:  `citus` Název:  `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - Používá dva pracovní uzly
-   > Škálování: horizontálních oddílů:  `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - Je zaručeno, že pro každý uzel bude použit 1 procesor/vCore a 512 MB paměti RAM. Bude používat více než 4 procesor/virtuální jádra a 1024MB paměti:
-   > Plánování: výchozí: prostředky: omezení: procesor: 4 paměť: požadavky 1024Mi: procesor: 1 paměť: 512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - Je k dispozici pro dotazy a nemá žádný problém. Všechny uzly jsou v provozu a jsou spuštěny:
-   > Stav:... Připravené lusky: 3/3 stav: připraveno
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **S azdata:**
 
@@ -259,7 +289,7 @@ Obecný formát příkazu je:
 azdata arc postgres server show -n <server group name>
 ```
 
-Například:
+Příklad:
 
 ```console
 azdata arc postgres server show -n postgres02
@@ -292,7 +322,7 @@ Vrátí níže uvedený výstup ve formátu a obsahu, který je velmi podobný �
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {

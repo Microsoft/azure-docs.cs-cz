@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579955"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280198"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>Instalace a použití nástrojů pro tvorbu DTDL
 
@@ -36,9 +36,9 @@ Když jste nainstalovali rozšíření, použijte ho pro pomoc s vytvářením s
 
 - Použití IntelliSense a automatického dokončování při úpravách DTDL modelů:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="Ověřování modelu v VS Code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="Použití IntelliSense pro modely DTDL v VS Code":::
 
-- Vytvořte nové rozhraní DTDL. Následující příkaz vytvoří soubor JSON s novým rozhraním. Rozhraní obsahuje ukázkovou telemetrii, vlastnost a definice příkazů.
+- Vytvořte nové rozhraní DTDL. Příkaz **DTDL: Create Interface** vytvoří soubor JSON s novým rozhraním. Rozhraní obsahuje ukázkovou telemetrii, vlastnost a definice příkazů.
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>Instalace a používání rozšíření sady Visual Studio
 
@@ -53,11 +53,11 @@ Když jste nainstalovali rozšíření, použijte ho pro pomoc s vytvářením s
 
 - Rozšíření poskytuje ověřování syntaxe v souborech modelů DTDL a zvýrazňuje chyby, jak je znázorněno na následujícím snímku obrazovky:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Ověřování modelu v VS Code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Ověřování modelu v aplikaci Visual Studio":::
 
 - Použití IntelliSense a automatického dokončování při úpravách DTDL modelů:
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Ověřování modelu v VS Code":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="Použití IntelliSense pro modely DTDL v aplikaci Visual Studio":::
 
 ## <a name="next-steps"></a>Další kroky
 

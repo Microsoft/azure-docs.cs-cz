@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d27c65938d10f9061961ebb585327bc77d8b2859
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092456"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280351"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -24,13 +24,13 @@ V tomto článku se dozvíte, jak zobrazit a vyhodnotit výsledky automatizovan�
 
 Například AutoML poskytuje různé grafy pro klasifikace a regresní modely. 
 
-|Classification|Regrese
+|Klasifikace|Regrese
 |---|---|
 |<li> [Konfuzní matice](#confusion-matrix) <li>[Přesnost – graf odvolání](#precision-recall-chart) <li> [Provozní charakteristiky přijímače (nebo ROC)](#roc) <li> [Zvednutí křivky](#lift-curve)<li> [Křivka zisků](#gains-curve)<li> [Graf kalibrace](#calibration-plot) | <li> [Předpověď oproti hodnotě true](#pvt) <li> [Histogram zbytků](#histo)|
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Vytvořte experiment pro automatizované spuštění strojového učení, a to buď pomocí sady SDK, nebo v Azure Machine Learning Studiu.
 
@@ -159,7 +159,7 @@ Můžete porovnat výtah modelu sestavený automaticky s Azure Machine Learning 
 
 ### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
 
-Vyšší křivka zvednutí, která je vyšší než váš model, je nad směrným plánem, indikuje lepší výkon modelu. 
+Lepší model provádění bude mít křivku zvednutí, která je vyšší v grafu a dále od směrného plánu. 
 
 #### <a name="example-1-a-classification-model-that-performs-poorly-compared-to-a-random-selection-model"></a>Příklad 1: klasifikační model, který se v porovnání s modelem náhodného výběru provádí špatně
 ![Model klasifikace, který je horší než model náhodného výběru](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
@@ -234,12 +234,12 @@ Předpovězené vs. hodnota true zobrazuje vztah mezi předpokládanou hodnotou 
 Po každém spuštění můžete zobrazit předpokládaný a pravdivý graf pro každý regresní model. Za účelem ochrany ochrany osobních údajů jsou hodnoty rozdělený dohromady a velikost každé přihrádky se v dolní části oblasti grafu zobrazuje jako pruhový graf. Prediktivní model můžete porovnat s plochým barevným nádechem, na kterém se zobrazují okraje chyb, oproti ideální hodnotě, kde by měl model být.
 
 ### <a name="what-does-a-good-model-look-like"></a>Co vypadá dobrý model?
-Tento graf lze použít k měření výkonu modelu jako blíže řádku y = x, protože jsou předpovězené hodnoty lepší přesností prediktivního modelu.
+Tento graf lze použít k měření výkonu modelu jako bližšího k řádku y = x, což jsou předpovězené hodnoty, což je lepší výkon prediktivního modelu.
 
-#### <a name="example-1-a-classification-model-with-low-accuracy"></a>Příklad 1: klasifikační model s nízkou přesností
+#### <a name="example-1-a-regression-model-with-low-performance"></a>Příklad 1: regresní model s nízkým výkonem
 ![Regresní model s nízkou přesností v předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-#### <a name="example-2-a-regression-model-with-high-accuracy"></a>Příklad 2: regresní model s vysokou přesností 
+#### <a name="example-2-a-regression-model-with-high-performance"></a>Příklad 2: regresní model s vysokým výkonem
 ![Regresní model s vysokou přesností ve svém předpovědi](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
 
 <a name="histo"></a> 
@@ -254,7 +254,7 @@ Chcete-li zobrazit marži chyby s nízkou špičkou, histogram zbytku by měl b�
 #### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Příklad 1: regresní model s posunem v jeho chybách
 ![SA regresní model s posunem v jeho chybách](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-#### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Příklad 2: regresní model s větší rovnoměrné distribucí chyb
+#### <a name="example-2-a-regression-model-with-a-more-even-distribution-of-errors"></a>Příklad 2: regresní model s větší distribucí chyb
 ![Regresní model s větší rovnoměrné distribucí chyb](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 <a name="explain-model"></a>

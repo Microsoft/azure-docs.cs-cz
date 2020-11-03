@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503313"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279901"
 ---
 # <a name="secure-azure-digital-twins"></a>Zabezpečení digitálních vláken Azure
 
@@ -24,13 +24,13 @@ Digitální vlákna Azure také podporuje šifrování dat v klidovém umístěn
 
 Služba Azure RBAC se poskytuje pro digitální vlákna Azure prostřednictvím integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD).
 
-Službu Azure RBAC můžete použít k udělení oprávnění *objektu zabezpečení*, který může být uživatel, skupina nebo instanční objekt aplikace. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
+Službu Azure RBAC můžete použít k udělení oprávnění *objektu zabezpečení* , který může být uživatel, skupina nebo instanční objekt aplikace. Objekt zabezpečení je ověřený službou Azure AD a při návratu obdrží token OAuth 2,0. Tento token se dá použít k autorizaci žádosti o přístup k instanci digitálních vláken Azure.
 
 ### <a name="authentication-and-authorization"></a>Ověřování a autorizace
 
 S Azure AD je přístup k procesu se dvěma kroky. Když se objekt zabezpečení (uživatel, skupina nebo aplikace) pokusí získat přístup k digitálním podmnožinám Azure, musí být požadavek *ověřený* a *autorizovaný*. 
 
-1. Nejprve je *ověřená*identita objektu zabezpečení a je vrácen token OAuth 2,0.
+1. Nejprve je *ověřená* identita objektu zabezpečení a je vrácen token OAuth 2,0.
 2. V dalším kroku se token předává jako součást požadavku službě Azure Digital zdvojené služby k *autorizaci* přístupu k zadanému prostředku.
 
 Krok ověřování vyžaduje, aby každá žádost aplikace při spuštění obsahovala přístupový token OAuth 2,0. Pokud je aplikace spuštěná v rámci entity Azure, jako je například aplikace [Azure Functions](../azure-functions/functions-overview.md) , může pro přístup k prostředkům použít **spravovanou identitu** . Další informace o spravovaných identitách najdete v další části.
@@ -72,7 +72,7 @@ Další informace o tom, jak jsou předdefinované role definované, najdete v t
 Při odkazování na role v automatizovaných scénářích doporučujeme, abyste na ně odkazovali pomocí jejich **ID** , nikoli podle jejich názvů. Názvy se můžou mezi verzemi měnit, ale identifikátory nebudou, takže jsou v automatizaci více stabilními odkazy.
 
 > [!TIP]
-> Pokud jste assiging role pomocí rutiny, jako je například `New-AzRoleAssignment` ([referenční](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)dokumentace), můžete `-RoleDefinitionId` místo `-RoleDefinitionName` názvu role předat ID, a to pomocí parametru.
+> Pokud jste assiging role pomocí rutiny, jako je například `New-AzRoleAssignment` ([referenční](/powershell/module/az.resources/new-azroleassignment)dokumentace), můžete `-RoleDefinitionId` místo `-RoleDefinitionName` názvu role předat ID, a to pomocí parametru.
 
 ### <a name="permission-scopes"></a>Obory oprávnění
 
@@ -88,6 +88,32 @@ Následující seznam popisuje úrovně, na kterých můžete přistoupit k pros
 ### <a name="troubleshooting-permissions"></a>Řešení potíží s oprávněními
 
 Pokud se uživatel pokusí provést akci, kterou role nepovoluje, může se zobrazit chyba z čtení žádosti o službu `403 (Forbidden)` . Další informace a postup pro řešení potíží najdete v tématu [*řešení potíží: žádost o digitální vlákna Azure se nezdařila se stavem: 403 (zakázáno)*](troubleshoot-error-403.md).
+
+## <a name="service-tags"></a>Značky služeb
+
+**Značka služby** představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu  [*značky virtuální sítě*](../virtual-network/service-tags-overview.md). 
+
+Značky služeb můžete použít k definování řízení přístupu k síti u [skupin zabezpečení sítě](../virtual-network/network-security-groups-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md)pomocí značek služby místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (v tomto případě **AzureDigitalTwins** ) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro odpovídající službu. 
+
+Níže jsou uvedeny podrobnosti o značce služby **AzureDigitalTwins** .
+
+| Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>Poznámka: Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k omezení přístupu k koncovým bodům nakonfigurovaným pro [trasy událostí](concepts-route-events.md). | Příchozí | Ne | Ano |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>Použití značek služby pro přístup k koncovým bodům směrování událostí 
+
+Tady je postup pro přístup k koncovým bodům [Směrování událostí](concepts-route-events.md) pomocí značek služeb s digitálními událostmi Azure.
+
+1. Nejdřív si stáhněte tento odkaz na soubor JSON, který ukazuje rozsahy IP adres Azure a značky služeb: [*rozsahy IP adres Azure a značky služeb*](https://www.microsoft.com/download/details.aspx?id=56519). 
+
+2. Vyhledejte rozsahy IP adres "AzureDigitalTwins" v souboru JSON.  
+
+3. Informace o tom, jak nastavit filtry IP pro daný prostředek, najdete v dokumentaci k externímu prostředku připojenému ke koncovému bodu (například [Event Grid](../event-grid/overview.md), [centru událostí](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)nebo [Azure Storage](../storage/blobs/storage-blobs-overview.md) pro [události nedoručených zpráv](concepts-route-events.md#dead-letter-events)).
+
+4. Nastavte filtry IP pro externí prostředky pomocí rozsahů IP adres z *kroku 2*.  
+
+5. Aktualizujte rozsahy IP adres pravidelně podle potřeby. Rozsahy se můžou v průběhu času měnit, takže je dobré je pravidelně kontrolovat a v případě potřeby je aktualizovat. Frekvence těchto aktualizací se může lišit, ale je vhodné ji kontrolovat jednou týdně.
 
 ## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 

@@ -6,15 +6,15 @@ author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02efaf3f0382a7af63717e777036637de2bbec25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033196"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279363"
 ---
 # <a name="ingest-data-into-a-sql-pool"></a>Ingestování dat do fondu SQL
 
@@ -22,16 +22,16 @@ V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úlo�
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* **Účet úložiště Azure**: Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
-* **Azure synapse Analytics**: jako úložiště dat *jímky* použijete fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [Vytvoření fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet úložiště Azure** : Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Azure synapse Analytics** : jako úložiště dat *jímky* použijete fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [Vytvoření fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
 V Azure synapse Analytics je propojená služba, kde můžete definovat informace o připojení k ostatním službám. V této části přidáte propojenou službu Azure synapse Analytics a Azure Data Lake Storage Gen2.
 
 1. Otevřete uživatelské prostředí Azure synapse Analytics a na kartě **Spravovat** .
-1. V části **externí připojení**vyberte **propojené služby**.
+1. V části **externí připojení** vyberte **propojené služby**.
 1. Chcete-li přidat propojenou službu, vyberte možnost **Nový**.
 1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a vyberte **pokračovat**.
 1. Zadejte přihlašovací údaje pro ověření. Typy ověřování aktuálně podporují klíč účtu, instanční objekt a spravovanou identitu. Vyberte test připojení a ověřte správnost vašich přihlašovacích údajů. Po dokončení vyberte **Vytvořit**.
@@ -41,7 +41,7 @@ V Azure synapse Analytics je propojená služba, kde můžete definovat informac
 
 Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen2 do fondu SQL.
 
-1. Přejít na kartu **Orchestration** . Vyberte ikonu plus vedle záhlaví kanály a vyberte **kanál**.
+1. Přejít na kartu **integrace** . Vyberte ikonu plus vedle záhlaví kanály a vyberte **kanál**.
 1. V části **přesunout a transformovat** v podokně aktivity přetáhněte **Kopírovat data** na plátno kanálu.
 1. Vyberte aktivitu kopírování a přejít na kartu **zdroj** . Pokud chcete vytvořit novou zdrojovou datovou sadu, vyberte **Nový** .
 1. Jako úložiště dat vyberte Azure Data Lake Storage Gen2 a vyberte pokračovat.

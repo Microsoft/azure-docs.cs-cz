@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq
-ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq2
+ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071483"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280593"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Nastavení instance a ověřování digitálních vláken Azure (portál)
 
@@ -38,7 +38,7 @@ Na portálu Začněte výběrem možnosti _vytvořit prostředek_ v nabídce dom
 
 Ve vyhledávacím poli vyhledejte *digitální vlákna Azure* a z výsledků vyberte službu **Azure Digital** . Kliknutím na tlačítko _vytvořit_ vytvořte novou instanci služby.
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Výběr možnosti ' vytvořit ' na stránce služby Azure Digital Service":::
 
 Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené níže:
 * **Předplatné** : předplatné Azure, které používáte
@@ -46,24 +46,24 @@ Na následující stránce *vytvořit prostředek* vyplňte hodnoty uvedené ní
 * **Umístění** : oblast s povolenými digitálními podtechnologiemi Azure pro nasazení. Další podrobnosti o místní podpoře najdete v [*produktech Azure dostupných v oblasti (digitální vlákna Azure)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
 * **Název prostředku** : název vaší instance digitálního vlákna Azure. Název nové instance musí být v rámci vašeho předplatného jedinečný (to znamená, že pokud má vaše předplatné jinou instanci digitálních vláken Azure v oblasti, která už používá zvolený název, zobrazí se výzva k výběru jiného názvu).
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Naplnění popsaných hodnot k vytvoření prostředku digitálních vláken Azure":::
 
-Po dokončení vyberte _zkontrolovat + vytvořit_ . Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a _vytvořit_ . 
+Po dokončení vyberte _zkontrolovat + vytvořit_. Tím přejdete na stránku Souhrn, kde můžete zkontrolovat podrobnosti instance, které jste zadali, a _vytvořit_. 
 
 ### <a name="verify-success-and-collect-important-values"></a>Ověřit úspěšné a shromažďovat důležité hodnoty
 
 Po nahrání *Vytvoření* můžete zobrazit stav nasazení vaší instance v oznámeních Azure na panelu ikon portálu. Oznámení bude označovat, že nasazení proběhlo úspěšně, a budete moci vybrat tlačítko _Přejít k prostředku_ a zobrazit vytvořenou instanci.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Zobrazení oznámení Azure znázorňující úspěšné nasazení a zvýraznění tlačítka přejít na prostředek":::
 
 Případně, pokud se nasazení nezdaří, oznámení indikuje, proč. Sledujte Rady z chybové zprávy a zkuste instanci vytvořit znovu.
 
 >[!TIP]
 >Po vytvoření instance se můžete kdykoli vrátit na svou stránku tak, že na panelu hledání Azure Portal vyhledáte název vaší instance.
 
-Na stránce *Přehled* instance si poznamenejte její *název* , *skupinu prostředků* a *název hostitele* . Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s vaší instancí digitálních vláken Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
+Na stránce *Přehled* instance si poznamenejte její *název* , *skupinu prostředků* a *název hostitele*. Jedná se o všechny důležité hodnoty, které možná budete potřebovat, když budete pokračovat v práci s vaší instancí digitálních vláken Azure. Pokud budou jiné uživatele programovat s instancí, měli byste je s těmito hodnotami sdílet.
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Zvýrazňování důležitých hodnot na stránce přehledu instance":::
 
 Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k přechodu. V dalším kroku poskytnete příslušnému uživateli Azure oprávnění ke správě.
 
@@ -71,9 +71,9 @@ Teď máte k dispozici instanci digitálních vláken Azure, která je připrave
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Portal. V nabídce instance vyberte *řízení přístupu (IAM)* . V části *Přidat přiřazení role* vyberte tlačítko *Přidat* .
+Nejdřív otevřete stránku pro instanci digitálních vláken Azure v Azure Portal. V nabídce instance vyberte *řízení přístupu (IAM)*. V části *Přidat přiřazení role* vyberte tlačítko *Přidat* .
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Výběr přidání přiřazení role ze stránky řízení přístupu (IAM)":::
 
 Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí být dokončené uživatelem s [dostatečnými oprávněními](#prerequisites-permission-requirements) v předplatném Azure):
 * **Role** : vyberte v rozevírací nabídce možnost *vlastník dat digitálních vláken Azure* .
@@ -82,7 +82,7 @@ Na následující stránce *Přidat přiřazení role* vyplňte hodnoty (musí b
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="Naplnění uvedených polí do dialogového okna Přidat přiřazení role":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -92,9 +92,9 @@ Až skončíte s zadáváním podrobností, stiskněte tlačítko *Uložit* .
 
 ### <a name="verify-success"></a>Ověřit úspěch
 
-Můžete zobrazit přiřazení role, které jste nastavili v části *řízení přístupu (IAM) > přiřazení rolí* . Uživatel by se měl zobrazit v seznamu s rolí *vlastníka dat digitálních vláken Azure* . 
+Můžete zobrazit přiřazení role, které jste nastavili v části *řízení přístupu (IAM) > přiřazení rolí*. Uživatel by se měl zobrazit v seznamu s rolí *vlastníka dat digitálních vláken Azure*. 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Na domovské stránce Azure Portal vyberte vytvořit prostředek.":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Zobrazení přiřazení rolí pro instanci digitálních vláken Azure v Azure Portal":::
 
 Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k použití, a máte přiřazená oprávnění ke správě IT.
 
