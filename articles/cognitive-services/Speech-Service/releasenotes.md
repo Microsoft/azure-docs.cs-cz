@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eb285f7ef536ac19d0ea7328a4428f33a47cd368
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129622"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280567"
 ---
 # <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
@@ -41,7 +41,7 @@ SPX je rozhraní příkazového řádku, které používá službu Azure Speech 
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile).
 -  **C++/c #/Java/Python/Objective-C/SWIFT** : přidání `stopSpeakingAsync()` metody pro zastavení syntézy textu na řeč. Přečtěte si referenční [dokumentaci zde (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), sem ( [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)), sem ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), [sem (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)a [sem (cíl-C/SWIFT)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java** : přidání `FromDialogServiceConnector()` funkce do `Connection` třídy, která se dá použít k monitorování událostí připojení a odpojení pro `DialogServiceConnector` . Přečtěte si referenční dokumentaci [zde (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [sem (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)a [sem (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable).
-- **C++/c #/Java/Python/Objective-C/SWIFT** : Přidání podpory pro posouzení výslovnosti, která vyhodnocuje výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. Přečtěte si dokumentaci [zde](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment).
+<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
 
 **Opravy chyb**
 - **Vše** : byla opravena 1,13 regrese v `SetServiceProperty` místě, kde byly ignorovány hodnoty s určitými speciálními znaky.
@@ -64,7 +64,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **ukázky**
 - **ObjectiveC** : [tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples)se přidala ukázka pro rozpoznávání klíčových slov.
 - **C#/JavaScript** : přidaný rychlý Start pro přepis konverzace [sem (c#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) a [zde (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription).
-- **C++/c #/Java/Python/SWIFT/ObjectiveC** : Přidání ukázky pro posouzení výslovnosti [tady](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples)
+<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
 - **Xamarin** : [zde](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin)jsme aktualizovali rychlé zprovoznění na nejnovější šablonu sady Visual Studio.
 
 **Známý problém**
@@ -78,11 +78,11 @@ Buďte v pořádku!
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard** . AriaNeural může při čtení zpráv zvuk vypadat jako při přetypování zpráv. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
+* **Neuronové TTS: nový styl speaking pro `en-US` Hlasový Standard**. AriaNeural může při čtení zpráv zvuk vypadat jako při přetypování zpráv. Styl "newscast-formální" se podrobněji rozpíná, zatímco styl "newscast-příležitostné" je uvolněn a neformální. Podívejte se, [Jak používat styly Speak v SSML](speech-synthesis-markup.md).
 
-* **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení** . Když nahráváte data, systém bude kontrolovat různé aspekty zvukových a přepisových dat a automaticky opravovat nebo filtrovat problémy pro zlepšení kvality hlasového modelu. To zahrnuje i objem zvuku, hladinu hluku, přesnost výslovnosti řeči, zarovnání řeči s normalizovaným textem, tiché ve zvukovém prostředí a také formát zvuku a skriptu. 
+* **Vlastní hlas: nová funkce se uvolní k automatickému ověření kvality dat školení**. Když nahráváte data, systém bude kontrolovat různé aspekty zvukových a přepisových dat a automaticky opravovat nebo filtrovat problémy pro zlepšení kvality hlasového modelu. To zahrnuje i objem zvuku, hladinu hluku, přesnost výslovnosti řeči, zarovnání řeči s normalizovaným textem, tiché ve zvukovém prostředí a také formát zvuku a skriptu. 
 
-* **Vytvoření zvukového obsahu: sada nových funkcí pro zajištění výkonnějšího ladění hlasu a možností správy zvuku** .
+* **Vytvoření zvukového obsahu: sada nových funkcí pro zajištění výkonnějšího ladění hlasu a možností správy zvuku**.
 
     * Výslovnost: funkce optimalizace výslovnosti se aktualizuje na nejnovější foném sadu. Můžete vybrat správný prvek foném z knihovny a zpřesnit výslovnost slov, která jste vybrali. 
 
@@ -92,7 +92,7 @@ Buďte v pořádku!
 
     * Dokumentace k SSML: propojená s dokumentem SSML vám umožní kontrolovat pravidla, jak používat všechny funkce ladění.
 
-* **Rozhraní API pro hlasový seznam se aktualizuje tak, aby obsahovalo uživatelsky přívětivé zobrazované jméno a styly speaking podporované neuronové hlasy** .
+* **Rozhraní API pro hlasový seznam se aktualizuje tak, aby obsahovalo uživatelsky přívětivé zobrazované jméno a styly speaking podporované neuronové hlasy**.
 
 ### <a name="general-tts-voice-quality-improvements"></a>Obecná vylepšení kvality hlasu TTS
 
