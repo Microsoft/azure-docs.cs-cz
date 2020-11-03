@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288303"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242428"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -155,43 +155,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>Mapování typů
 
-Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabulka popisuje, jak jsou typy Parquet mapovány na nativní typy SQL.
-
-| Typ Parquet | Logický typ Parquet (anotace) | Datový typ SQL |
-| --- | --- | --- |
-| DATOVÉHO | | bit |
-| BINÁRNÍ/BYTE_ARRAY | | varbinary |
-| KLEPAT | | float |
-| Plovák | | real |
-| UVEDENA | | int |
-| INT64 | | bigint |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |binární |
-| TVARU |UTF |varchar \* (řazení UTF8) |
-| TVARU |ŘETEZCE |varchar \* (řazení UTF8) |
-| TVARU |VYTVÁŘENÍ|varchar \* (řazení UTF8) |
-| TVARU |IDENTIFIKÁTOR |uniqueidentifier |
-| TVARU |NOTACI |decimal |
-| TVARU |JSON |varchar (max) \* (kolace UTF8) |
-| TVARU |BSON |varbinary (max) |
-| FIXED_LEN_BYTE_ARRAY |NOTACI |decimal |
-| BYTE_ARRAY |DOBA |varchar (max), serializováno do standardizovaného formátu |
-| UVEDENA |INT (8, true) |smallint |
-| UVEDENA |INT (16, true) |smallint |
-| UVEDENA |INT (32, true) |int |
-| UVEDENA |INT (8, false) |tinyint |
-| UVEDENA |INT (16, false) |int |
-| UVEDENA |INT (32, false) |bigint |
-| UVEDENA |DATE |date |
-| UVEDENA |NOTACI |decimal |
-| UVEDENA |ČAS (LISOVNY)|time |
-| INT64 |INT (64; true) |bigint |
-| INT64 |INT (64, false) |desetinné číslo (20, 0) |
-| INT64 |NOTACI |decimal |
-| INT64 |ČAS (MIKROČASU A NANO) |time |
-|INT64 |ČASOVÉ RAZÍTKO (LISOVNY//NANO) |datetime2 |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (max), serializováno do formátu JSON |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (max), serializováno do formátu JSON |
+Pro mapování typu Parquet na typ mapování nativního typu SQL [pro Parquet](develop-openrowset.md#type-mapping-for-parquet).
 
 ## <a name="next-steps"></a>Další kroky
 

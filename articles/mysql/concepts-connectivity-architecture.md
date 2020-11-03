@@ -1,17 +1,17 @@
 ---
 title: Architektura připojení – Azure Database for MySQL
 description: Popisuje architekturu připojení pro server Azure Database for MySQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 73178a9707d35fe7337210b11e76504794bc93ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896395"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242870"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -72,7 +72,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 
 ## <a name="connection-redirection"></a>Přesměrování připojení
 
-Azure Database for MySQL podporuje další zásady připojení, **přesměrování**, která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a servery MySQL. Po navázání počáteční relace protokolu TCP na Azure Database for MySQL server vrátí tato funkce server back-end uzel, který hostuje server MySQL, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
+Azure Database for MySQL podporuje další zásady připojení, **přesměrování** , která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a servery MySQL. Po navázání počáteční relace protokolu TCP na Azure Database for MySQL server vrátí tato funkce server back-end uzel, který hostuje server MySQL, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
 
 Tato funkce je podporovaná v Azure Database for MySQL serverech s verzemi modulu 5,6, 5,7 a 8,0.
 
