@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131169"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286706"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -26,7 +26,7 @@ Po operaci trezoru klíčů máte přístup k informacím o protokolování 10 m
 * Zabezpečte protokoly pomocí standardních metod řízení přístupu Azure a určete, kdo k nim má přístup.
 * Odstraňte protokoly, které už nechcete uchovávat v účtu úložiště.
 
-Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview).
+Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/). Informace o použití [Azure monitor pro Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
 
 ## <a name="interpret-your-key-vault-logs"></a>Interpretujte svoje protokoly Key Vault
 
@@ -61,7 +61,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 | Název pole | Popis |
 | --- | --- |
-| **time** |Datum a čas ve standardu UTC. |
+| **interval** |Datum a čas ve standardu UTC. |
 | **Prostředku** |ID prostředku Azure Resource Manager. U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
 | **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |
@@ -73,7 +73,7 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 | **callerIpAddress** |IP adresa klienta, který odeslal požadavek. |
 | **ID** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
-| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
+| **vlastnosti** |Informace, které se liší v závislosti na operaci ( **OperationName** ). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet** ), obsahuje taky identifikátor URI klíče (jako `id` ), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
 Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Například:
 
@@ -88,32 +88,32 @@ Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST 
 | operationName | REST API – příkaz |
 | --- | --- |
 | **Authentication** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
-| **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| **VaultPatch** |[Aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultList** |[Výpis všech trezorů klíčů ve skupině prostředků](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[Vytvoření klíče](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| **KeyGet** |[Získání informací o klíči](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[Import klíče do trezoru](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[Zálohování klíče](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[Odstranění klíče](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[Obnovení klíče](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| **KeySign** |[Podpis klíčem](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Ověření pomocí klíče](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[Zabalení klíče](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| **KeyUnwrap** |[Rozbalení klíče](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[Šifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[Dešifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[Aktualizace klíče](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| **KeyList** |[Výpis klíčů v trezoru](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| **KeyListVersions** |[Výpis verzí klíče](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[Vytvoření tajného kódu](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[Získat tajný kód](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| **SecretUpdate** |[Aktualizace tajného kódu](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| **SecretDelete** |[Odstranění tajného kódu](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| **SecretList** |[Výpis tajných kódů v trezoru](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| **SecretListVersions** |[Výpis verzí tajného kódu](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultGet** |[Získání informací o trezoru klíčů](/rest/api/keyvault/vaults) |
+| **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](/rest/api/keyvault/vaults) |
+| **VaultDelete** |[Odstranění trezoru klíčů](/rest/api/keyvault/vaults) |
+| **VaultPatch** |[Aktualizace trezoru klíčů](/rest/api/keyvault/vaults) |
+| **VaultList** |[Výpis všech trezorů klíčů ve skupině prostředků](/rest/api/keyvault/vaults) |
+| **KeyCreate** |[Vytvoření klíče](/rest/api/keyvault/createkey) |
+| **KeyGet** |[Získání informací o klíči](/rest/api/keyvault/getkey) |
+| **KeyImport** |[Import klíče do trezoru](/rest/api/keyvault/vaults) |
+| **KeyBackup** |[Zálohování klíče](/rest/api/keyvault/backupkey) |
+| **KeyDelete** |[Odstranění klíče](/rest/api/keyvault/deletekey) |
+| **KeyRestore** |[Obnovení klíče](/rest/api/keyvault/restorekey) |
+| **KeySign** |[Podpis klíčem](/rest/api/keyvault/sign) |
+| **KeyVerify** |[Ověření pomocí klíče](/rest/api/keyvault/vaults) |
+| **KeyWrap** |[Zabalení klíče](/rest/api/keyvault/wrapkey) |
+| **KeyUnwrap** |[Rozbalení klíče](/rest/api/keyvault/unwrapkey) |
+| **KeyEncrypt** |[Šifrování pomocí klíče](/rest/api/keyvault/encrypt) |
+| **KeyDecrypt** |[Dešifrování pomocí klíče](/rest/api/keyvault/decrypt) |
+| **KeyUpdate** |[Aktualizace klíče](/rest/api/keyvault/updatekey) |
+| **KeyList** |[Výpis klíčů v trezoru](/rest/api/keyvault/vaults) |
+| **KeyListVersions** |[Výpis verzí klíče](/rest/api/keyvault/getkeyversions) |
+| **SecretSet** |[Vytvoření tajného kódu](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[Získat tajný kód](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[Aktualizace tajného kódu](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[Odstranění tajného kódu](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[Výpis tajných kódů v trezoru](/rest/api/keyvault/vaults) |
+| **SecretListVersions** |[Výpis verzí tajného kódu](/rest/api/keyvault/getsecretversions) |
 | **VaultAccessPolicyChangedEventGridNotification** | Publikovaná událost změny zásad přístupu k trezoru |
 | **SecretNearExpiryEventGridNotification** |Publikovaná událost v blízkosti vypršení platnosti tajného kódu |
 | **SecretExpiredEventGridNotification** |Publikovaná událost vypršela v tajnosti |

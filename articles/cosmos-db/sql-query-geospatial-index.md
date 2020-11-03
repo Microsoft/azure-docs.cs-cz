@@ -4,30 +4,28 @@ description: Indexace prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092054"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286319"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexování geoprostorových dat pomocí Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Navrhli jsme, aby byl databázový stroj Azure Cosmos DB nezávislá jako skutečně schématu a poskytoval jako první podporu třídy pro JSON. Napsání optimalizovaného databázového stroje Azure Cosmos DB nativně rozumí prostorová data reprezentovaná v rámci standardu injson.
 
-V kostce je geometrie promítnuta z souřadnic Geodetic na 2D rovinu a poté postupně rozdělena do buněk pomocí **quadtree** . Tyto buňky jsou namapovány na 1D na základě umístění buňky v **křivce vyplňování Hilbert prostoru** , která zachovává polohu místa. Kromě toho, když jsou data umístění indexována, projde procesem známým jako **teselaci** , to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době dotazu jsou argumenty, jako jsou body a mnohoúhelníky, také teselace k extrakci příslušných rozsahů ID buněk a potom se používají k načtení dat z indexu.
+V kostce je geometrie promítnuta z souřadnic Geodetic na 2D rovinu a poté postupně rozdělena do buněk pomocí **quadtree**. Tyto buňky jsou namapovány na 1D na základě umístění buňky v **křivce vyplňování Hilbert prostoru** , která zachovává polohu místa. Kromě toho, když jsou data umístění indexována, projde procesem známým jako **teselaci** , to znamená, že všechny buňky, které protínají umístění, jsou identifikovány a uloženy jako klíče v indexu Azure Cosmos DB. V době dotazu jsou argumenty, jako jsou body a mnohoúhelníky, také teselace k extrakci příslušných rozsahů ID buněk a potom se používají k načtení dat z indexu.
 
-Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro/* (všechny cesty), pak jsou všechna data nalezená v rámci kontejneru indexována pro efektivní prostorové dotazy.
+Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro `/*` (všechny cesty), pak jsou všechna data nalezená v rámci kontejneru indexována pro efektivní prostorové dotazy.
 
 > [!NOTE]
-> Azure Cosmos DB podporuje indexování bodů, LineStrings, mnohoúhelníků a více mnohoúhelníků.
->
->
+> Azure Cosmos DB podporuje indexování bodů, LineStrings, mnohoúhelníků a více mnohoúhelníků. Při indexování některého z těchto typů budeme automaticky indexovat všechny ostatní typy. Jinými slovy, i když indexuje mnohoúhelníky, budeme také indexovat body, LineStrings a více mnohoúhelníků. Indexování nového prostorového typu nemá vliv na poplatek za zápis RU nebo na velikost indexu, pokud nemáte platná data o biojsonu tohoto typu.
 
-## <a name="modifying-geospatial-data-type"></a>Úprava geoprostorového datového typu
+## <a name="modifying-geospatial-configuration"></a>Úprava geoprostorové konfigurace
 
 V kontejneru Určuje **geoprostorové nastavení** , jak budou prostorová data indexována. Zadejte jednu **geoprostorové konfiguraci** na kontejner: Geografie nebo geometrie.
 

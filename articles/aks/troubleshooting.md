@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074409"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286774"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -154,10 +154,10 @@ Abyste mohli správně vytvořit cluster *AKS, postupujte* podle pokynů v pří
 Omezení pojmenování jsou implementovaná platformou Azure i AKS. Pokud název prostředku nebo parametr zruší jedno z těchto omezení, bude vrácena chyba s výzvou k zadání jiného vstupu. Platí následující obecné pokyny pro pojmenovávání:
 
 * Názvy clusterů musí být 1-63 znaků. Jediné povolené znaky jsou písmena, číslice, pomlčky a podtržítka. První a poslední znak musí být písmeno nebo číslo.
-* Název skupiny prostředků AKS uzel/*MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
+* Název skupiny prostředků AKS uzel/ *MC_* kombinuje název skupiny prostředků a název prostředku. Automaticky vygenerovaná syntaxe `MC_resourceGroupName_resourceName_AzureRegion` nesmí být větší než 80 znaků. V případě potřeby snižte délku názvu skupiny prostředků nebo názvu clusteru AKS. Můžete také [přizpůsobit název skupiny prostředků uzlu](cluster-configuration.md#custom-resource-group-name) .
 * *Pole dnsprefix* musí začínat a končit alfanumerickými hodnotami a musí mít 1-54 znaků. Mezi platné znaky patří alfanumerické hodnoty a spojovníky (-). *Pole dnsprefix* nemůže obsahovat speciální znaky, jako je například tečka (.).
 * Názvy fondů uzlů AKS musí mít malými písmeny a musí mít 1-11 znaků pro fondy uzlů Linux a 1-6 znaků pro fondy uzlů Windows. Název musí začínat písmenem a jediným povoleným znakem jsou písmena a číslice.
-* *Uživatelské jméno*správce, které nastavuje uživatelské jméno správce pro uzly Linux, musí začínat písmenem, může obsahovat jenom písmena, číslice, spojovníky a podtržítka a maximální délka 64 znaků.
+* *Uživatelské jméno* správce, které nastavuje uživatelské jméno správce pro uzly Linux, musí začínat písmenem, může obsahovat jenom písmena, číslice, spojovníky a podtržítka a maximální délka 64 znaků.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Při pokusu o vytvoření, aktualizaci, škálování, odstranění nebo upgrade clusteru dochází k chybám. Tato operace není povolená, protože probíhá jiná operace.
 
@@ -167,7 +167,7 @@ Operace clusteru jsou omezené, když stále probíhá předchozí operace. Chce
 
 Na základě výstupu stavu clusteru:
 
-* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný*, počkejte, než se dokončí operace (*upgrade/aktualizace/vytvoření/škálování/odstranění/migrace*). Po dokončení předchozí operace zkuste zopakovat svoji nejnovější operaci clusteru.
+* Pokud je cluster v jakémkoli stavu zřizování než *úspěšný* nebo *neúspěšný* , počkejte, než se dokončí operace ( *upgrade/aktualizace/vytvoření/škálování/odstranění/migrace* ). Po dokončení předchozí operace zkuste zopakovat svoji nejnovější operaci clusteru.
 
 * Pokud dojde k selhání upgradu clusteru, postupujte podle kroků uvedených v části mi dochází k [chybám, že můj cluster je ve stavu selhání a upgrade nebo škálování nebude fungovat, dokud nebude opraveno](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -198,7 +198,7 @@ Při omezení odchozího provozu z clusteru AKS se [vyžadují a volitelné Dopo
 
 Ověřte, že vaše nastavení nejsou v konfliktu s žádným z požadovaných nebo volitelných odchozích portů/síťových pravidel a plně kvalifikovaného názvu domény nebo pravidel pro aplikace.
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>Zobrazujem chyby "429-moc velký počet žádostí" 
+## <a name="im-receiving-429---too-many-requests-errors"></a>Zobrazujem chyby "429-moc velký počet žádostí"
 
 Když cluster Kubernetes v Azure (AKS nebo No) často horizontální navýšení kapacity nebo použití automatického škálování clusteru (CA), můžou tyto operace způsobit velký počet volání HTTP, která zase překročí přidělenou kvótu předplatného, což by vedlo k selhání. Chyby budou vypadat jako
 
@@ -213,6 +213,12 @@ Pro rezprovoznění z AKS technického týmu je potřeba zajistit, aby se verze 
 Vzhledem k těmto chybám omezení se měří na úrovni předplatného, může se přesto vyskytnout:
 - Existují aplikace třetích stran, které provádějí požadavky GET (např. Monitorujte aplikace atd...). Doporučujeme, abyste snížili četnost těchto volání.
 - V VMSS je velký počet clusterů AKS/nodepools. Obvyklé doporučení je mít v daném předplatném méně než 20-30 clusterů.
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>Stav zřizování mého clusteru se změnil z připraveno na selhalo s nebo bez provedení operace. Co bych měl/a dělat?
+
+Pokud se stav zřizování vašeho clusteru změní z *připraveno* na *selhalo* s nebo bez provádění operací, ale aplikace v clusteru budou nadále běžet, tento problém může být automaticky vyřešen službou a vaše aplikace by se neměly týkat.
+
+Pokud stav zřizování vašeho clusteru zůstane *neúspěšný* nebo pokud aplikace v clusteru přestanou fungovat, [odešlete žádost o podporu](https://azure.microsoft.com/support/options/#submit).
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Řešení potíží s Azure Storage a AKS
@@ -250,7 +256,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | Není k dispozici |
+| 1,12 a novější | – |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
@@ -307,7 +313,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | – |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -326,7 +332,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | – |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
@@ -359,7 +365,7 @@ Doporučené nastavení:
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 a novější | 0777 |
 
-Možnosti připojení lze zadat u objektu třídy úložiště. Následující příklad nastaví *0777*:
+Možnosti připojení lze zadat u objektu třídy úložiště. Následující příklad nastaví *0777* :
 
 ```yaml
 kind: StorageClass
@@ -382,7 +388,7 @@ parameters:
 Některá další užitečná nastavení *mountOptions* :
 
 * *mfsymlinks* provede podporu protokolu CIFS (Azure Files Mount), která podporuje symbolické odkazy.
-* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl*, můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
+* *nobrl* zabrání odeslání požadavků na zámek rozsahu bajtů do serveru. Toto nastavení je nezbytné pro některé aplikace, které jsou přerušeny pomocí stylu CIFS povinných zámků rozsahu bajtů. Většina serverů CIFS ještě nepodporují požadavky na zámky rozsahu v poradním bajtech. Pokud nepoužíváte *nobrl* , můžou aplikace, které mají přerušení s povinnými zámky rozsahu bajtů, způsobit chybové zprávy podobné:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -435,7 +441,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | – |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 
@@ -470,11 +476,8 @@ Tato chyba je způsobena konfliktem časování v případě automatického šk�
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Pomalé přílohy disku, GetAzureDiskLun trvá 10 až 15 minut a zobrazí se chyba.
 
-Ve verzích Kubernetes **starších než 1.15.0**se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk se nepovedlo najít logickou jednotku (LUN)**.  Alternativním řešením tohoto problému je počkat přibližně 15 minut a pak to zkuste znovu.
+Ve verzích Kubernetes **starších než 1.15.0** se může zobrazit chyba, jako je například **Error WaitForAttach. pro disk se nepovedlo najít logickou jednotku (LUN)**.  Alternativním řešením tohoto problému je počkat přibližně 15 minut a pak to zkuste znovu.
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Důvody selhání upgradu na Kubernetes 1,16 při použití popisků uzlů s předponou kubernetes.io
 
@@ -487,3 +490,9 @@ V důsledku toho můžete tyto problémy zmírnit:
 3. Odstranit starší nodepool
 
 AKS zkoumá schopnost využít aktivní popisky na nodepool pro zlepšení tohoto zmírnění.
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741272"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285315"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem v Pythonu
 
@@ -66,7 +66,7 @@ Vytvořte virtuální počítač s názvem **myVM** pomocí jedné z následují
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) |
 
-Pokud chcete vytvořit virtuální počítač se systémem Linux pomocí Azure CLI, použijte příkaz [AZ VM Create](/cli/azure/vm) .  Následující příklad přidá uživatelský účet s názvem *azureuser* . `--generate-ssh-keys`Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh* ). 
+Pokud chcete vytvořit virtuální počítač se systémem Linux pomocí Azure CLI, použijte příkaz [AZ VM Create](/cli/azure/vm) .  Následující příklad přidá uživatelský účet s názvem *azureuser*. `--generate-ssh-keys`Parametr slouží k automatickému generování klíče SSH a jeho vložení do výchozího umístění klíče ( *~/.ssh* ). 
 
 ```azurecli-interactive
 az vm create \
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>Vytvoření a úprava ukázkového skriptu v jazyce Python
 
-Na virtuálním počítači vytvořte soubor Pythonu s názvem **Sample.py** . Upravte soubor tak, aby obsahoval následující kód, a nahraďte řetězec "<jedinečného klíče-trezoru>" názvem vašeho trezoru klíčů:
+Na virtuálním počítači vytvořte soubor Pythonu s názvem **Sample.py**. Upravte soubor tak, aby obsahoval následující kód, a nahraďte řetězec "<jedinečného klíče-trezoru>" názvem vašeho trezoru klíčů:
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>Spuštění ukázkové aplikace v Pythonu
 
-Nakonec spusťte **Sample.py** . Pokud vše vypadá dobře, měla by vrátit hodnotu vašeho tajného kódu:
+Nakonec spusťte **Sample.py**. Pokud vše vypadá dobře, měla by vrátit hodnotu vašeho tajného kódu:
 
 ```bash
 python3 sample.py
@@ -166,4 +166,4 @@ az group delete -g myResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](/rest/api/keyvault/)

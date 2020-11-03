@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072760"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287606"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -33,9 +33,9 @@ Pravidelně vydáváme ve verzi Public Preview novou funkci Key Vault. Vyzkouše
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a Správa trezorů klíčů
 
-Správa Key Vault, podobně jako jiné služby Azure, se provádí prostřednictvím služby Azure Resource Manager. Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Další informace najdete v tématu [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+Správa Key Vault, podobně jako jiné služby Azure, se provádí prostřednictvím služby Azure Resource Manager. Azure Resource Manager je služba nasazování a správy pro Azure. Poskytuje úroveň správy, která vám umožňuje vytvářet, aktualizovat a odstraňovat prostředky v účtu Azure. Další informace najdete v tématu [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 
-Přístup k vrstvě správy řídí [řízení přístupu na základě role v Azure](https://docs.microsoft.com/azure/role-based-access-control/overview). V Key Vault vrstva správy, označovaná také jako správa nebo řídicí plocha, umožňuje vytvářet a spravovat trezory klíčů a jejich atributy včetně zásad přístupu, ale ne klíčů, tajných klíčů a certifikátů, které jsou spravovány na rovině dat. K `Key Vault Contributor` udělení přístupu pro správu Key Vault můžete použít předdefinovanou roli.     
+Přístup k vrstvě správy řídí [řízení přístupu na základě role v Azure](../../role-based-access-control/overview.md). V Key Vault vrstva správy, označovaná také jako správa nebo řídicí plocha, umožňuje vytvářet a spravovat trezory klíčů a jejich atributy včetně zásad přístupu, ale ne klíčů, tajných klíčů a certifikátů, které jsou spravovány na rovině dat. K `Key Vault Contributor` udělení přístupu pro správu Key Vault můžete použít předdefinovanou roli.     
 
 **Rozhraní API a sady SDK pro správu trezoru klíčů:**
 
@@ -45,7 +45,7 @@ Přístup k vrstvě správy řídí [řízení přístupu na základě role v Az
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovina správy](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac) .
+Další informace o Key Vault rovině správy najdete v tématu [Key Vault rovina správy](./secure-your-key-vault.md#management-plane-and-azure-rbac) .
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Ověřování pro Key Vault v kódu
 
@@ -53,14 +53,14 @@ Key Vault používá ověřování Azure AD, které pro udělení přístupu vy�
 
 ### <a name="authentication-best-practices"></a>Osvědčené postupy ověřování
 
-Pro aplikace nasazené do Azure se doporučuje používat spravovanou identitu. Pokud používáte služby Azure, které nepodporují spravovanou identitu, nebo pokud jsou aplikace nasazené místně, [instanční objekt s certifikátem](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) je možné alternativou. V takovém případě by certifikát měl být uložený v Key Vault a často otočený. Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a lokálně nebo v Cloud Shell se doporučuje použít objekt zabezpečení uživatele.
+Pro aplikace nasazené do Azure se doporučuje používat spravovanou identitu. Pokud používáte služby Azure, které nepodporují spravovanou identitu, nebo pokud jsou aplikace nasazené místně, [instanční objekt s certifikátem](../../active-directory/develop/howto-create-service-principal-portal.md) je možné alternativou. V takovém případě by certifikát měl být uložený v Key Vault a často otočený. Instanční objekt s tajným klíčem se dá použít pro vývojová a testovací prostředí a lokálně nebo v Cloud Shell se doporučuje použít objekt zabezpečení uživatele.
 
 Doporučené objekty zabezpečení na prostředí:
-- **Provozní prostředí**:
+- **Provozní prostředí** :
   - Spravovaná identita nebo instanční objekt s certifikátem
-- **Testovací a vývojové prostředí**:
+- **Testovací a vývojové prostředí** :
   - Spravovaná identita, instanční objekt s certifikátem nebo instančním objektem s tajným klíčem
-- **Místní vývoj**:
+- **Místní vývoj** :
   - Uživatel nebo instanční objekt s tajným klíčem
 
 Scénáře ověřování jsou podporované **klientskou knihovnou identity Azure** a jsou integrované s Key Vault SDK. Knihovna identit Azure se dá používat v různých prostředích a platformách beze změny kódu. Identita Azure taky automaticky načte ověřovací token z přihlášeného k uživateli Azure pomocí Azure CLI, sady Visual Studio, Visual Studio Code a dalších. 
@@ -70,12 +70,12 @@ Další informace o službě Azure identity Client libarary najdete v těchto t�
 ### <a name="azure-identity-client-libraries"></a>Klientské knihovny identit Azure
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
-|[Sada Azure identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Sada Azure identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[JavaScript sady Azure identity SDK](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+|[Sada Azure identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure identity SDK Python](/python/api/overview/azure/identity-readme)|[Sada Azure identity SDK Java](/java/api/overview/azure/identity-readme)|[JavaScript sady Azure identity SDK](/javascript/api/overview/azure/identity-readme)|     
 
 Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
-- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
-- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v Pythonu](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
-- [Ověřování pro Key Vault s App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
+- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v .NET](./tutorial-net-virtual-machine.md)
+- [Ověřování pro Key Vault v aplikaci hostované na virtuálním počítači v Pythonu](./tutorial-python-virtual-machine.md)
+- [Ověřování pro Key Vault s App Service](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Správa klíčů, certifikátů a tajných klíčů
 
@@ -86,14 +86,14 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
+|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
 
 **Rozhraní API a sady SDK pro certifikáty**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
+|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
 
 **Rozhraní API a sady SDK tajných klíčů**
 
@@ -104,7 +104,7 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) a [Key Vault rovině dat a RBAC (Preview)](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-azure-rbac-preview) .
+Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a RBAC (Preview)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) .
 
 ### <a name="code-examples"></a>Příklady kódu
 
@@ -117,8 +117,8 @@ Kompletní příklady použití Key Vault s vašimi aplikacemi najdete v těchto
 Následující články a scénáře poskytují pokyny pro práci s Azure Key Vault pro konkrétní úkoly:
 
 - Přístup k trezoru klíčů v [Key Vault za bránou firewall](access-behind-firewall.md) – klientská aplikace trezoru klíčů musí mít přístup k několika koncovým bodům pro různé funkce.
-- Postup nasazení certifikátů do virtuálních počítačů z Key Vault – [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows), [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) – cloudová aplikace spuštěná ve virtuálním počítači v Azure potřebuje certifikát. Jak tento certifikát do tohoto virtuálního počítače získat ještě dnes?
-- [Nasazení certifikátu webové aplikace Azure prostřednictvím Key Vault](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+- Postup nasazení certifikátů do virtuálních počítačů z Key Vault – [Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) – cloudová aplikace spuštěná ve virtuálním počítači v Azure potřebuje certifikát. Jak tento certifikát do tohoto virtuálního počítače získat ještě dnes?
+- [Nasazení certifikátu webové aplikace Azure prostřednictvím Key Vault](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - Přiřaďte zásady přístupu ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [portál](assign-access-policy-portal.md)PowerShell CLI). 
 - [Postup použití Key Vaultho obnovitelného odstranění pomocí](soft-delete-cli.md) rozhraní příkazového řádku vás provede použitím a životního cyklu trezoru klíčů a různých objektů trezoru klíčů s povoleným obnovitelném odstraněním.
 - [Jak během nasazení předat zabezpečené hodnoty (třeba hesla)](../../azure-resource-manager/templates/key-vault-parameter.md) – Pokud potřebujete před nasazením předat zabezpečenou hodnotu (třeba heslo), můžete tuto hodnotu Uložit jako tajný klíč v Azure Key Vault a odkazovat na hodnotu v jiných šablonách správce prostředků.
@@ -127,13 +127,13 @@ Následující články a scénáře poskytují pokyny pro práci s Azure Key Va
 
 Tyto články se týkají dalších scénářů a služeb, které používají nebo integrují s Key Vault.
 
-- [Šifrování v klidovém](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) případě umožňuje kódování (šifrování) dat, když jsou trvalá. Šifrovací klíče dat se často šifrují pomocí klíčového šifrovacího klíče v Azure Key Vault k dalšímu omezení přístupu.
+- [Šifrování v klidovém](../../security/fundamentals/encryption-atrest.md) případě umožňuje kódování (šifrování) dat, když jsou trvalá. Šifrovací klíče dat se často šifrují pomocí klíčového šifrovacího klíče v Azure Key Vault k dalšímu omezení přístupu.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umožňuje správce vlastního klíče tenanta. Místo toho, aby váš klíč tenanta spravovala společnost Microsoft (výchozí možnost), můžete spravovat vlastní klíč tenanta, abyste vyhověli určitým předpisům, které se vztahují na vaši organizaci. Správa vlastního klíče tenanta se také označuje jako funkce Přineste si vlastní klíč (BYOK).
 - [Služba privátního propojení Azure](private-link-service.md) vám umožňuje přístup ke službám Azure (například Azure Key Vault, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti.
-- Key Vault integrace s [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  umožňuje uživatelům upozornit na změnu stavu tajného klíče uloženého v trezoru klíčů. Můžete distribuovat nové verze tajných kódů do aplikací nebo je otáčet v blízkosti tajných klíčů s vypršenou platností, abyste zabránili výpadkům.
-- Tajné kódy [Azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) můžete chránit před nevyžádaným přístupem v Key Vault.
-- [Pomocí tajného kódu uloženého v Key Vault datacihly se připojte k Azure Storage](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
-- Konfigurace a spuštění poskytovatele Azure Key Vault pro [ovladač tajných klíčů úložiště CSI](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) na Kubernetes
+- Key Vault integrace s [Event Grid](../../event-grid/event-schema-key-vault.md)  umožňuje uživatelům upozornit na změnu stavu tajného klíče uloženého v trezoru klíčů. Můžete distribuovat nové verze tajných kódů do aplikací nebo je otáčet v blízkosti tajných klíčů s vypršenou platností, abyste zabránili výpadkům.
+- Tajné kódy [Azure DevOps](/azure/devops/pipelines/release/azure-key-vault) můžete chránit před nevyžádaným přístupem v Key Vault.
+- [Pomocí tajného kódu uloženého v Key Vault datacihly se připojte k Azure Storage](./integrate-databricks-blob-storage.md)
+- Konfigurace a spuštění poskytovatele Azure Key Vault pro [ovladač tajných klíčů úložiště CSI](./key-vault-integrate-kubernetes.md) na Kubernetes
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault přehledy a koncepty
 
@@ -143,5 +143,5 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 
 ## <a name="social"></a>Sociální sítě
 
-- [Blog Key Vault](https://aka.ms/kvblog)
+- [Blog Key Vault](/archive/blogs/kv/)
 - [Fórum Key Vault](https://aka.ms/kvforum)

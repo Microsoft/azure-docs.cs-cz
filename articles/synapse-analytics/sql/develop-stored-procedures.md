@@ -7,32 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 09/23/2020
+ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737849"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286661"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>Použití uložených procedur v synapse SQL
 
-Tipy pro implementaci uložených procedur v synapse fondu SQL pro vývoj řešení
+Synapse SQL zřízené a fondy bez serveru umožňují umístit komplexní logiku zpracování dat do uložených procedur SQL. Uložené procedury jsou skvělým způsobem, jak zapouzdřit kód SQL a uložit ho blízko k datům v datovém skladu. Uložené procedury usnadňují vývojářům naplánovat modularizaci jejich řešení zapouzdřením kódu do spravovatelných jednotek a usnadněním větší využitelnosti kódu. Každý uložený postup může také přijímat parametry, aby byly ještě flexibilnější.
+V tomto článku najdete pár tipů pro implementaci uložených procedur v synapse fondu SQL pro vývoj řešení.
 
 ## <a name="what-to-expect"></a>Co očekávat
 
-Synapse SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení.
+Synapse SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení. V tomto článku se dozvíte o funkcích, které můžete umístit do uložených procedur.
 
 > [!NOTE]
-> V těle procedury můžete použít pouze funkce, které jsou podporovány v oblasti synapse SQL Surface. Přečtěte si [Tento článek](overview-features.md) a Identifikujte objekty, příkazy, které lze použít v uložených procedurách. V příkladech těchto článků se používají obecné funkce, které jsou dostupné v oblasti bez serveru i zřízené plochy.
+> V těle procedury můžete použít pouze funkce, které jsou podporovány v oblasti synapse SQL Surface. Přečtěte si [Tento článek](overview-features.md) a Identifikujte objekty, příkazy, které lze použít v uložených procedurách. V příkladech těchto článků se používají obecné funkce, které jsou dostupné v oblasti bez serveru i zřízené plochy. Další [omezení najdete v části zřízené a synapse fondy SQL serveru](#limitations) na konci tohoto článku.
 
 Aby bylo možné zachovat rozsah a výkon fondu SQL, existují také některé funkce a funkce, které mají rozdíly v chování a jiné, které nejsou podporovány.
 
 ## <a name="stored-procedures-in-synapse-sql"></a>Uložené procedury v synapse SQL
 
-Uložené procedury jsou skvělým způsobem, jak zapouzdřit kód SQL a uložit ho blízko k datům v datovém skladu. Uložené procedury usnadňují vývojářům naplánovat modularizaci jejich řešení zapouzdřením kódu do spravovatelných jednotek, což usnadňuje větší použitelnost kódu. Každý uložený postup může také přijímat parametry, aby byly ještě flexibilnější. V následujícím příkladu vidíte postupy, které vyřadí externí objekty, pokud existují v databázi:
+V následujícím příkladu vidíte postupy, které vyřadí externí objekty, pokud existují v databázi:
 
 ```sql
 CREATE PROCEDURE drop_external_table_if_exists @name SYSNAME
@@ -184,23 +185,26 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXEROZTOMILÁ
 
-Synapse SQL neumožňuje využívat sadu výsledků uložené procedury pomocí příkazu INSERT. Existuje alternativní postup, který můžete použít. Příklad najdete v článku [dočasné tabulky](develop-tables-temporary.md) pro zřízený synapse fond SQL.
+Zřízený synapse fond SQL neumožňuje využívat sadu výsledků uložené procedury pomocí příkazu INSERT. Existuje alternativní postup, který můžete použít. Příklad najdete v článku [dočasné tabulky](develop-tables-temporary.md) pro zřízený synapse fond SQL.
 
 ## <a name="limitations"></a>Omezení
 
 Existují některé aspekty uložených procedur v jazyce Transact-SQL, které nejsou implementovány v synapse SQL, například:
 
-* dočasné uložené procedury
-* číslované uložené procedury
-* rozšířené uložené procedury
-* Uložené procedury CLR
-* možnost šifrování
-* možnost replikace
-* parametry s hodnotou tabulky
-* parametry jen pro čtení
-* výchozí parametry (v zřízeném fondu)
-* kontexty spuštění
-* return – příkaz
+| Funkce/možnosti | Zřízené | Bez serveru |
+| --- | --- |
+| Dočasné uložené procedury | Ne | Ano |
+| Číslované uložené procedury | Ne | Ne |
+| Rozšířené uložené procedury | Ne | Ne |
+| Uložené procedury CLR | Ne | Ne |
+| Možnost šifrování | Ne | Ano |
+| Možnost replikace | Ne | Ne |
+| Parametry vracející tabulku | Ne | Ne |
+| Parametry jen pro čtení | Ne | Ne |
+| Výchozí parametry | Ne | Ano |
+| Kontexty spuštění | Ne | Ne |
+| Return – příkaz | Ne | Ano |
+| VLOŽIT DO... Průměrná | Ne | Ano |
 
 ## <a name="next-steps"></a>Další kroky
 

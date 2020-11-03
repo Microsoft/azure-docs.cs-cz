@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c1da45115303bb0a67d6ff796a40ef47c24224a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398506"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287441"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
@@ -29,23 +29,23 @@ Tady jsou další důležité výrazy:
 
 - **Uživatel trezoru:** Uživatel trezoru může provádět akce s prostředky uvnitř trezoru, pokud mu vlastník trezoru udělí uživatelský přístup. Dostupné akce závisí na udělených oprávněních.
 
-- **Spravované správce HSM**: uživatelům, kteří mají přiřazenou roli správce, má úplnou kontrolu nad spravovaným fondem HSM. Můžou vytvořit další přiřazení rolí, která budou delegovat řízený přístup jiným uživatelům.
+- **Spravované správce HSM** : uživatelům, kteří mají přiřazenou roli správce, má úplnou kontrolu nad spravovaným fondem HSM. Můžou vytvořit další přiřazení rolí, která budou delegovat řízený přístup jiným uživatelům.
 
-- **Spravovaný kryptografický pracovník HSM/uživatel**: předdefinované role, které se obvykle přiřazují uživatelům nebo instančním objektům, které budou provádět kryptografické operace pomocí klíčů ve spravovaném modulu HSM. Kryptografický uživatel může vytvořit nové klíče, ale nemůže odstranit klíče.
+- **Spravovaný kryptografický pracovník HSM/uživatel** : předdefinované role, které se obvykle přiřazují uživatelům nebo instančním objektům, které budou provádět kryptografické operace pomocí klíčů ve spravovaném modulu HSM. Kryptografický uživatel může vytvořit nové klíče, ale nemůže odstranit klíče.
 
-- **Spravované šifrování kryptografické služby HSM**: Vestavěná role, která se obvykle přiřazuje identitě spravované služby (např. účet úložiště) pro šifrování neaktivních dat pomocí klíče spravovaného zákazníkem.
+- **Spravované šifrování kryptografické služby HSM** : Vestavěná role, která se obvykle přiřazuje identitě spravované služby (např. účet úložiště) pro šifrování neaktivních dat pomocí klíče spravovaného zákazníkem.
 
 - **Prostředek:** Prostředek je spravovatelná položka, která je k dispozici prostřednictvím Azure. Běžnými příklady jsou virtuální počítače, účet úložiště, Webová aplikace, databáze a virtuální síť. Existuje spousta dalších.
 
 - **Skupina prostředků:** Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
 
-- **Objekt zabezpečení**: objekt zabezpečení Azure je identita zabezpečení, kterou uživatelsky vytvořené aplikace, služby a nástroje pro automatizaci používají pro přístup ke konkrétním prostředkům Azure. Můžete si ho představit jako identitu uživatele (uživatelské jméno a heslo nebo certifikát) s určitou rolí a přísně řízenými oprávněními. Objekt zabezpečení by měl na rozdíl od obecné identity uživatele vyžadovat pouze konkrétní věci. Zvyšuje zabezpečení, pokud mu udělíte jenom minimální úroveň oprávnění, kterou potřebuje k provádění úloh správy. Objekt zabezpečení, který se používá u aplikace nebo služby, se konkrétně nazývá **instanční objekt**.
+- **Objekt zabezpečení** : objekt zabezpečení Azure je identita zabezpečení, kterou uživatelsky vytvořené aplikace, služby a nástroje pro automatizaci používají pro přístup ke konkrétním prostředkům Azure. Můžete si ho představit jako identitu uživatele (uživatelské jméno a heslo nebo certifikát) s určitou rolí a přísně řízenými oprávněními. Objekt zabezpečení by měl na rozdíl od obecné identity uživatele vyžadovat pouze konkrétní věci. Zvyšuje zabezpečení, pokud mu udělíte jenom minimální úroveň oprávnění, kterou potřebuje k provádění úloh správy. Objekt zabezpečení, který se používá u aplikace nebo služby, se konkrétně nazývá **instanční objekt**.
 
-- [Azure Active Directory (Azure AD):](../../active-directory/active-directory-whatis.md) Azure AD je služba Active Directory pro tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant.
+- [Azure Active Directory (Azure AD):](../../active-directory/fundamentals/active-directory-whatis.md) Azure AD je služba Active Directory pro tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant.
 
 - **ID tenanta Azure:** ID tenanta představuje jedinečný způsob, jak identifikovat instanci služby Azure AD v rámci předplatného Azure.
 
-- **Spravované identity**: Azure Key Vault poskytuje způsob bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit, aby se Key Vault načetl. Použití spravované identity usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu ve službě Azure AD. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace najdete na následujícím obrázku a v tématu [Přehled spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+- **Spravované identity** : Azure Key Vault poskytuje způsob bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit, aby se Key Vault načetl. Použití spravované identity usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu ve službě Azure AD. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace najdete na následujícím obrázku a v tématu [Přehled spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
     ![Diagram principu fungování spravovaných identit pro prostředky Azure](../media/key-vault-whatis/msi.png)
 
@@ -53,8 +53,8 @@ Tady jsou další důležité výrazy:
 Abyste mohli provádět operace s Key Vault, musíte se nejdřív ověřit. Existují tři způsoby, jak ověřit Key Vault:
 
 - [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md): když nasadíte aplikaci na virtuální počítač v Azure, můžete mu přiřadit identitu k vašemu virtuálnímu počítači, který má přístup k Key Vault. Můžete také přiřadit identity [jiným prostředkům Azure](../../active-directory/managed-identities-azure-resources/overview.md). Výhodou tohoto přístupu je, že aplikace nebo služba nespravuje otočení prvního tajného klíče. Azure tuto identitu automaticky otočí. Jako osvědčený postup doporučujeme tento přístup. 
-- **Objekt služby a certifikát**: můžete použít instanční objekt a přidružený certifikát, který má přístup k Key Vault. Tento přístup nedoporučujeme, protože vlastník aplikace nebo vývojář musí certifikát otočit.
-- **Instanční objekt a tajný kód**: i když můžete k ověření Key Vault použít instanční objekt a tajný klíč, nedoporučujeme ho. Automatické střídání spouštěcího klíče, který se používá k ověření Key Vault, je obtížné.
+- **Objekt služby a certifikát** : můžete použít instanční objekt a přidružený certifikát, který má přístup k Key Vault. Tento přístup nedoporučujeme, protože vlastník aplikace nebo vývojář musí certifikát otočit.
+- **Instanční objekt a tajný kód** : i když můžete k ověření Key Vault použít instanční objekt a tajný klíč, nedoporučujeme ho. Automatické střídání spouštěcího klíče, který se používá k ověření Key Vault, je obtížné.
 
 
 ## <a name="key-vault-roles"></a>Role služby Key Vault

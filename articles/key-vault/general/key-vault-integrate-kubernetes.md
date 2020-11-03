@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c101cb4eca246ee68a30ba3499981c589c564f92
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 832cb27f3056c52d22feabff0d8953b6725c1a7f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368651"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286615"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+* Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>Vytvoření instančního objektu nebo použití spravovaných identit
 
@@ -56,7 +56,7 @@ Zkopírujte přihlašovací údaje **appId** a **Password** pro pozdější pou�
 
 Nemusíte používat Azure Cloud Shell. Na příkazovém řádku (terminálu) s nainstalovaným rozhraním Azure CLI stačí. 
 
-Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a připojení ke clusteru v tématu [nasazení clusteru služby Azure Kubernetes pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough). 
+Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a připojení ke clusteru v tématu [nasazení clusteru služby Azure Kubernetes pomocí rozhraní příkazového řádku Azure](../../aks/kubernetes-walkthrough.md). 
 
 > [!NOTE] 
 > Pokud plánujete místo instančního objektu použít identitu pod, nezapomeňte ji povolit při vytváření clusteru Kubernetes, jak je znázorněno v následujícím příkazu:
@@ -70,11 +70,11 @@ Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a 
     ```azurecli
     kubectl version
     ```
-1. Ujistěte se, že verze Kubernetes je 1.16.0 nebo novější. V případě clusterů Windows se ujistěte, že verze Kubernetes je 1.18.0 nebo novější. Následující příkaz upgraduje cluster Kubernetes i fond uzlů. Spuštění příkazu může trvat několik minut. V tomto příkladu je skupina prostředků *contosoResourceGroup*a cluster Kubernetes je *contosoAKSCluster*.
+1. Ujistěte se, že verze Kubernetes je 1.16.0 nebo novější. V případě clusterů Windows se ujistěte, že verze Kubernetes je 1.18.0 nebo novější. Následující příkaz upgraduje cluster Kubernetes i fond uzlů. Spuštění příkazu může trvat několik minut. V tomto příkladu je skupina prostředků *contosoResourceGroup* a cluster Kubernetes je *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId**, **ClientID**, **SubscriptionId**a **nodeResourceGroup** pro pozdější použití. Pokud se nevytvořil cluster s DOTAZem s povolenými spravovanými identitami, bude mít hodnota **principalId** a **ClientID** hodnotu null. 
+1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId** , **ClientID** , **SubscriptionId** a **nodeResourceGroup** pro pozdější použití. Pokud se nevytvořil cluster s DOTAZem s povolenými spravovanými identitami, bude mít hodnota **principalId** a **ClientID** hodnotu null. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -103,7 +103,7 @@ Pomocí rozhraní ovladače pro [úložiště tajných klíčů](https://github.
 
 ## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Vytvoření trezoru klíčů Azure a nastavení tajných kódů
 
-Pokud chcete vytvořit vlastní Trezor klíčů a nastavit tajné kódy, postupujte podle pokynů v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli).
+Pokud chcete vytvořit vlastní Trezor klíčů a nastavit tajné kódy, postupujte podle pokynů v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
 
 > [!NOTE] 
 > Nemusíte používat Azure Cloud Shell ani vytvářet novou skupinu prostředků. Můžete použít skupinu prostředků, kterou jste vytvořili dříve pro cluster Kubernetes.
@@ -114,21 +114,21 @@ Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickým
 
 V ukázkovém souboru SecretProviderClass YAML vyplňte chybějící parametry. Jsou vyžadovány následující parametry:
 
-* **userAssignedIdentityID**: # [povinné] Pokud používáte instanční objekt, pomocí ID klienta určete, která spravovaná identita přiřazená uživatelem se má použít. Pokud jako spravovanou identitu virtuálního počítače používáte identitu přiřazenou uživatelem, zadejte ID klienta identity. Pokud je hodnota prázdná, použije se ve výchozím nastavení identita přiřazená systémem na virtuálním počítači. 
-* název **trezoru klíčů: název**vašeho trezoru klíčů
-* **objekty**: kontejner pro všechen tajný obsah, který chcete připojit.
-    * **ObjectName**: název tajného obsahu
-    * **ObjectType**: typ objektu (tajný kód, klíč, certifikát)
-* skupina **prostředků: název**skupiny prostředků # [požadováno pro Version < 0.0.4] skupiny prostředků trezoru klíčů.
-* **SubscriptionId**: ID předplatného vašeho trezoru klíčů # [požadováno pro Version < 0.0.4] ID předplatného trezoru klíčů.
-* **tenantID**: ID klienta nebo ID adresáře vašeho trezoru klíčů
+* **userAssignedIdentityID** : # [povinné] Pokud používáte instanční objekt, pomocí ID klienta určete, která spravovaná identita přiřazená uživatelem se má použít. Pokud jako spravovanou identitu virtuálního počítače používáte identitu přiřazenou uživatelem, zadejte ID klienta identity. Pokud je hodnota prázdná, použije se ve výchozím nastavení identita přiřazená systémem na virtuálním počítači. 
+* název **trezoru klíčů: název** vašeho trezoru klíčů
+* **objekty** : kontejner pro všechen tajný obsah, který chcete připojit.
+    * **ObjectName** : název tajného obsahu
+    * **ObjectType** : typ objektu (tajný kód, klíč, certifikát)
+* skupina **prostředků: název** skupiny prostředků # [požadováno pro Version < 0.0.4] skupiny prostředků trezoru klíčů.
+* **SubscriptionId** : ID předplatného vašeho trezoru klíčů # [požadováno pro Version < 0.0.4] ID předplatného trezoru klíčů.
+* **tenantID** : ID klienta nebo ID adresáře vašeho trezoru klíčů
 
 Dokumentace všech povinných polí je k dispozici zde: [odkaz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 Aktualizovaná šablona je uvedena v následujícím kódu. Stáhněte si ho jako soubor YAML a vyplňte požadovaná pole. V tomto příkladu je Trezor klíčů **contosoKeyVault5**. Má dva tajné klíče, **secret1** a **secret2**.
 
 > [!NOTE] 
-> Pokud používáte spravované identity, nastavte hodnotu **usePodIdentity** na *true*a jako dvojici uvozovek (**""**) nastavte hodnotu **userAssignedIdentityID** . 
+> Pokud používáte spravované identity, nastavte hodnotu **usePodIdentity** na *true* a jako dvojici uvozovek ( **""** ) nastavte hodnotu **userAssignedIdentityID** . 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -194,7 +194,7 @@ Pokud používáte instanční objekt, udělte mu oprávnění pro přístup k t
     ```
 
 > [!NOTE] 
-> Pokud nasazujete Kubernetes pod a obdržíte chybu týkající se neplatného ID tajného klíče klienta, můžete mít starší ID tajného klíče klienta, jehož platnost vypršela nebo resetovat. Pokud chcete tento problém vyřešit, odstraňte tajné klíče *-Store-přihlašovací* údaje a vytvořte nový s aktuálním ID tajného kódu klienta. Pokud chcete odstranit *tajná klíčová úložiště – přihlašovací*údaje, spusťte následující příkaz:
+> Pokud nasazujete Kubernetes pod a obdržíte chybu týkající se neplatného ID tajného klíče klienta, můžete mít starší ID tajného klíče klienta, jehož platnost vypršela nebo resetovat. Pokud chcete tento problém vyřešit, odstraňte tajné klíče *-Store-přihlašovací* údaje a vytvořte nový s aktuálním ID tajného kódu klienta. Pokud chcete odstranit *tajná klíčová úložiště – přihlašovací* údaje, spusťte následující příkaz:
 >
 > ```azurecli
 > kubectl delete secrets secrets-store-creds
@@ -210,7 +210,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jste vytvořili, konkrétní role. 
 
-1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [spravovaného operátoru identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes. V případě tohoto oboru se bude jednat o službu předplatného Azure, konkrétně skupinu prostředků uzlu, která byla vytvořena při vytvoření clusteru AKS. Tento rozsah zajistí, že role přiřazené níže mají vliv jenom na prostředky v této skupině. 
+1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [spravovaného operátoru identity](../../role-based-access-control/built-in-roles.md#managed-identity-operator) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes. V případě tohoto oboru se bude jednat o službu předplatného Azure, konkrétně skupinu prostředků uzlu, která byla vytvořena při vytvoření clusteru AKS. Tento rozsah zajistí, že role přiřazené níže mají vliv jenom na prostředky v této skupině. 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
@@ -355,4 +355,4 @@ Ověřte, zda se zobrazuje obsah tajného klíče.
 
 Informace o tom, jak zajistit, aby se váš Trezor klíčů mohl obnovit, najdete v těchto tématech:
 > [!div class="nextstepaction"]
-> [Zapnout obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-cli)
+> [Zapnout obnovitelné odstranění](./soft-delete-cli.md)

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091011"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288336"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
@@ -24,6 +24,10 @@ Azure Storage nabízí tři typy úložiště objektů BLOB: objekty blob bloku,
 Objekty blob stránky jsou kolekcí 512 stránek, které poskytují možnost číst a zapisovat libovolné rozsahy bajtů. Objekty blob stránky jsou proto ideální pro ukládání indexových a zhuštěných datových struktur, jako jsou operační systémy a datové disky pro Virtual Machines a databáze. Azure SQL DB například používá objekty blob stránky jako základní trvalé úložiště pro své databáze. Kromě toho se objekty blob stránky často používají také pro soubory s Range-Based aktualizacemi.  
 
 Klíčové funkce objektů blob stránky Azure jsou rozhraní REST, odolnost základního úložiště a možnosti bezproblémové migrace do Azure. Tyto funkce jsou podrobněji popsány v následující části. Kromě toho se objekty blob stránky Azure v současné době podporují na dvou typech úložiště: Premium Storage a úložiště úrovně Standard. Premium Storage je navržená speciálně pro úlohy, které vyžadují konzistentní vysoký výkon a nízkou latenci vytváření objektů blob stránky úrovně Premium, které jsou ideální pro scénáře úložiště s vysokým výkonem. Účty úložiště úrovně Standard jsou cenově efektivnější pro spouštění úloh necitlivých na latenci.
+
+## <a name="restrictions"></a>Omezení
+
+Objekty blob stránky můžou používat jenom vrstvu **Hot** Access, ale nemůžou použít žádnou **z nich** ani jednu z těchto úrovní **archivu** . Další informace o úrovních přístupu najdete v tématu [úrovně přístupu pro Azure Blob Storage – horká, studená a archivní](storage-blob-storage-tiers.md).
 
 ## <a name="sample-use-cases"></a>Ukázkové případy použití
 
@@ -59,7 +63,7 @@ Nejprve získejte odkaz na kontejner. Chcete-li vytvořit objekt blob stránky, 
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Pokud chcete vytvořit objekt blob stránky, nejdřív vytvoříme objekt **CloudBlobClient** se základním identifikátorem URI pro přístup k úložišti objektů BLOB pro váš účet úložiště (*pbaccount* na obrázku 1) společně s objektem **StorageCredentialsAccountAndKey** , jak je znázorněno v následujícím příkladu. Příklad následně ukazuje vytvoření odkazu na objekt **CloudBlobContainer** a pak vytvoření kontejneru (*testvhds*), pokud ještě neexistuje. Pak pomocí objektu **CloudBlobContainer** vytvořte odkaz na objekt **CloudPageBlob** zadáním názvu objektu blob stránky (OS4. VHD) k přístupu. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost objektu blob, který se má vytvořit. *BlobSize* musí být násobkem 512 bajtů.
+Pokud chcete vytvořit objekt blob stránky, nejdřív vytvoříme objekt **CloudBlobClient** se základním identifikátorem URI pro přístup k úložišti objektů BLOB pro váš účet úložiště ( *pbaccount* na obrázku 1) společně s objektem **StorageCredentialsAccountAndKey** , jak je znázorněno v následujícím příkladu. Příklad následně ukazuje vytvoření odkazu na objekt **CloudBlobContainer** a pak vytvoření kontejneru ( *testvhds* ), pokud ještě neexistuje. Pak pomocí objektu **CloudBlobContainer** vytvořte odkaz na objekt **CloudPageBlob** zadáním názvu objektu blob stránky (OS4. VHD) k přístupu. Chcete-li vytvořit objekt blob stránky, zavolejte [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)a předejte maximální velikost objektu blob, který se má vytvořit. *BlobSize* musí být násobkem 512 bajtů.
 
 ```csharp
 using Microsoft.Azure;

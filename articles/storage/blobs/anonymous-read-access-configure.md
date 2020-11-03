@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 10/22/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7248dff25af4693f7f264c8cbf42236612dddda0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931066"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288124"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -51,19 +51,16 @@ Nepovolení veřejného přístupu pro účet úložiště zabraňuje anonymním
 > [!IMPORTANT]
 > Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou. Před změnou tohoto nastavení nezapomeňte pochopit dopad na klientské aplikace, které můžou přistupovat k datům ve vašem účtu úložiště anonymně. Další informace najdete v tématu [zabránění anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB](anonymous-read-access-prevent.md).
 
-Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager ve veřejném cloudu Azure nebo v cloudech Azure Government. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
 
-> [!NOTE]
-> Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště umožňuje veřejný přístup, pokud má vlastnost hodnotu **null** nebo je-li hodnota **true**.
->
-> Vlastnost **AllowBlobPublicAccess** je k dispozici pro všechny účty úložiště ve veřejném cloudu Azure a v cloudech Azure Government.
+Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště v Azure Portal, postupujte podle následujících kroků:
 
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
-1. V části **Nastavení**vyhledejte nastavení **Konfigurace** .
+1. V části **Nastavení** vyhledejte nastavení **Konfigurace** .
 1. Nastavte **veřejný přístup k objektu BLOB** na **povoleno** nebo **zakázáno**.
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Snímek obrazovky ukazující, jak povolit nebo zakázat veřejný přístup objektů BLOB pro účet":::
@@ -135,8 +132,8 @@ az storage account show \
 Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště se šablonou, vytvořte šablonu s vlastností **AllowBlobPublicAccess** nastavenou na **hodnotu true** nebo **false**. Následující postup popisuje, jak vytvořit šablonu v Azure Portal.
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
-1. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
-1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)**, zvolte **vytvořit**a potom **v editoru zvolte sestavit vlastní šablonu**.
+1. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
+1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)** , zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
 1. V editoru šablon vložte následující JSON pro vytvoření nového účtu a nastavte vlastnost **AllowBlobPublicAccess** na **hodnotu true** nebo **false**. Nezapomeňte nahradit zástupné symboly v lomených závorkách vlastními hodnotami.
 
     ```json
@@ -207,7 +204,7 @@ Chcete-li aktualizovat úroveň veřejného přístupu pro jeden nebo více exis
 
 Pokud je pro účet úložiště zakázaný veřejný přístup, nedá se nastavit úroveň veřejného přístupu kontejneru. Pokud se pokusíte nastavit úroveň veřejného přístupu kontejneru, uvidíte, že nastavení je zakázané, protože pro tento účet není povolený veřejný přístup.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Snímek obrazovky ukazující, jak povolit nebo zakázat veřejný přístup objektů BLOB pro účet":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Snímek obrazovky zobrazující, že nastavení úrovně veřejného přístupu kontejneru je blokované, když je veřejný přístup nepovolený":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

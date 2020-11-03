@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282323"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285135"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Vytvoření trezoru klíčů Azure a zásad přístupu k trezoru pomocí šablony Správce prostředků
 
@@ -84,7 +84,7 @@ Následující šablona ukazuje základní způsob vytvoření trezoru klíčů.
 
 ```
 
-Další informace o Key Vault nastavení šablon naleznete v tématu [Key Vault na šablonu ARM](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults).
+Další informace o Key Vault nastavení šablon naleznete v tématu [Key Vault na šablonu ARM](/azure/templates/microsoft.keyvault/vaults).
 
 > [!IMPORTANT]
 > Pokud se šablona znovu nasadí, budou se všechny existující zásady přístupu v trezoru klíčů přepsat. `accessPolicies`Pro zamezení ztráty přístupu k trezoru klíčů doporučujeme naplnit vlastnost stávajícími zásadami přístupu. 
@@ -160,7 +160,7 @@ Zásady přístupu můžete nasadit do existujícího trezoru klíčů, aniž by
 }
 
 ```
-Další informace o nastavení šablon Key Vault naleznete v tématu [Key Vault na šablonu ARM](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies).
+Další informace o nastavení šablon Key Vault naleznete v tématu [Key Vault na šablonu ARM](/azure/templates/microsoft.keyvault/vaults/accesspolicies).
 
 ## <a name="more-key-vault-resource-manager-templates"></a>Další šablony Key Vault Správce prostředků
 
@@ -168,13 +168,13 @@ K dispozici jsou jiné šablony Správce prostředků pro objekty Key Vault:
 
 | Tajné kódy | Klíče | Certifikáty |
 |--|--|--|
-|<ul><li>[Rychlý start](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[Odkaz](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
+|<ul><li>[Rychlý start](../secrets/quick-create-template.md)<li>[Odkaz](/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
 
-Další Key Vault šablony můžete najít tady: [Key Vault správce prostředků odkazem](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions).
+Další Key Vault šablony můžete najít tady: [Key Vault správce prostředků odkazem](/azure/templates/microsoft.keyvault/allversions).
 
 ## <a name="deploy-the-templates"></a>Nasazení šablon
 
-Pomocí Azure Portal můžete nasadit předchozí šablony pomocí možnosti **vytvořit vlastní šablonu v editoru** , jak je popsáno zde: [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template).
+Pomocí Azure Portal můžete nasadit předchozí šablony pomocí možnosti **vytvořit vlastní šablonu v editoru** , jak je popsáno zde: [nasazení prostředků z vlastní šablony](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 Předchozí šablony můžete také uložit do souborů a použít tyto příkazy:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) a [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
 

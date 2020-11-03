@@ -1,26 +1,21 @@
 ---
-title: Postup odebrání přístupu uživatele k aplikaci | Microsoft Docs
-description: Princip odebrání přístupu uživatele k aplikaci
+title: Postup odebrání přístupu uživatele k aplikaci v Azure Active Directory
+description: Princip odebrání přístupu uživatele k aplikaci v Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763155"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288312"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -36,29 +31,13 @@ Pokud chcete zakázat přihlášení všech uživatelů k aplikaci, postupujte p
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Chci úplně odstranit aplikaci
 
-Pokud chcete **aplikaci odstranit**, postupujte podle těchto pokynů:
-
-1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
-
-2. Otevřete **rozšíření Azure Active Directory** kliknutím na **všechny služby** v horní části hlavní navigační nabídky vlevo.
-
-3. Do vyhledávacího pole filtru zadejte **"Azure Active Directory**" a vyberte položku **Azure Active Directory** .
-
-4. V navigační nabídce Azure Active Directory vlevo klikněte na **podnikové aplikace** .
-
-5. Kliknutím na **všechny aplikace** zobrazíte seznam všech aplikací.
-
-   * Pokud se vám nezobrazí aplikace, kterou chcete zobrazit, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace** a nastavte možnost **Zobrazit** pro **všechny aplikace.**
-
-6. Vyberte aplikaci, kterou chcete odstranit.
-
-7. Po načtení aplikace klikněte na **Odstranit** ikonu v horním podokně s **přehledem** aplikace.
+[Série rychlý Start při správě aplikací](delete-application-portal.md) zahrnuje pokyny k odstranění aplikace z vašeho tenanta Azure Active Directory.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chci zakázat všechny operace souhlasu uživatele s budoucími uživateli u libovolné aplikace
 
 Zákaz souhlasu uživatele pro celý adresář zabrání koncovým uživatelům v posílání do libovolné aplikace. Správci mohou i nadále souhlasit jménem uživatele. Další informace o souhlasu aplikace a o tom, proč můžete nebo nechcete, aby to bylo možné, najdete v článku [vysvětlení souhlasu uživatele a správce](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Viz také [oprávnění a souhlas](../develop/v2-permissions-and-consent.md).
 
-Pokud chcete **Zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři**, postupujte podle těchto pokynů:
+Pokud chcete **Zakázat všechny operace souhlasu uživatele s ostatními uživateli v celém adresáři** , postupujte podle těchto pokynů:
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 

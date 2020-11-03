@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125248"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285233"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Řešení potíží se zásadami přístupu ke službě Azure Key trezor
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125248"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Jak zjistím, jak a kdy jsou trezory klíčů k dispozici?
 
-Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Monitorování můžete provádět povolením protokolování pro Azure Key Vault, pro podrobného průvodce pro povolení protokolování, [Další informace](https://docs.microsoft.com/azure/key-vault/general/logging).
+Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Monitorování můžete provádět povolením protokolování pro Azure Key Vault, pro podrobného průvodce pro povolení protokolování, [Další informace](./logging.md).
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>Jak můžu monitorovat dostupnost trezoru, doby latence služby nebo další metriky výkonu pro Trezor klíčů?
 
-Když začnete škálovat službu, bude se vyvolávat počet požadavků odeslaných do trezoru klíčů. Taková poptávka má potenciál na zvýšení latence vašich požadavků a v extrémních případech způsobí, že vaše požadavky budou omezené, což bude mít vliv na výkon vaší služby. Můžete monitorovat metriky výkonu trezoru klíčů a získat výstrahy pro konkrétní prahové hodnoty. podrobné pokyny ke konfiguraci monitorování najdete v [článku Další informace](https://docs.microsoft.com/azure/key-vault/general/alert).
+Když začnete škálovat službu, bude se vyvolávat počet požadavků odeslaných do trezoru klíčů. Taková poptávka má potenciál na zvýšení latence vašich požadavků a v extrémních případech způsobí, že vaše požadavky budou omezené, což bude mít vliv na výkon vaší služby. Můžete monitorovat metriky výkonu trezoru klíčů a získat výstrahy pro konkrétní prahové hodnoty. podrobné pokyny ke konfiguraci monitorování najdete v [článku Další informace](./alert.md).
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>Nedaří se mi změnit zásady přístupu, jak je možné povolit?
 Uživatel musí mít dostatečná oprávnění AAD pro úpravu zásad přístupu. V takovém případě musí mít uživatel vyšší roli přispěvatele.
@@ -53,7 +53,7 @@ Aplikace taky potřebuje alespoň jednu roli správy identit a přístupu (IAM) 
 
 V současné době Key Vault opětovné nasazení odstraní všechny zásady přístupu v Key Vault a nahradí je zásadami přístupu v šabloně ARM. Pro zásady přístupu Key Vault neexistuje žádná přírůstková možnost. Pokud chcete zachovat zásady přístupu v Key Vault, musíte si přečíst existující zásady přístupu v Key Vault a naplnit šablonu ARM pomocí těchto zásad, abyste se vyhnuli výpadkům v přístupu.
 
-Další možností, která může pomoci pro tento scénář, je použití rolí RBAC jako alternativního přístupu k zásadám přístupu. Pomocí RBAC můžete znovu nasadit Trezor klíčů bez zadání zásad. Toto řešení si můžete přečíst [tady](https://docs.microsoft.com/azure/key-vault/general/rbac-guide).
+Další možností, která může pomoci pro tento scénář, je použití rolí RBAC jako alternativního přístupu k zásadám přístupu. Pomocí RBAC můžete znovu nasadit Trezor klíčů bez zadání zásad. Toto řešení si můžete přečíst [tady](./rbac-guide.md).
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Doporučené kroky pro řešení potíží pro následující typy chyb
 

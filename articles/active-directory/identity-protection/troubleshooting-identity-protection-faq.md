@@ -11,30 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074810"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288375"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Nejčastější dotazy – ochrana identity v Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Zavřít známé problémy s rizikem uživatele
 
-Zrušení **rizika uživatele** v rámci klasické Identity Protection nastaví objekt actor v historii rizik uživatele v části Identity Protection na **službu Azure AD** .
+Zrušení **rizika uživatele** v rámci klasické Identity Protection nastaví objekt actor v historii rizik uživatele v části Identity Protection na **službu Azure AD**.
 
 Zrušení **rizika uživatele** v ochraně identity nastaví objekt actor v historii rizik uživatele v ochraně identity na **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
 Existuje aktuální známý problém, který způsobil latenci v toku neúspěšných rizik uživatele. Pokud máte zásady rizik uživatelů, tato zásada se přestane používat pro uživatele v řádu minut po kliknutí na Zavřít riziko uživatele. Existují však známé prodlevy při aktualizaci uživatelského prostředí pro neúspěšné uživatele. Alternativním řešením je aktualizovat stránku na úrovni prohlížeče, aby se zobrazil nejnovější stav "rizika" uživatele.
-
-## <a name="risky-users-report-known-issues"></a>Rizikové uživatele hlásí známé problémy
-
-Dotaz na pole **username** rozlišuje velká a malá písmena, zatímco dotazy v poli **název** jsou Case-nezávislá.
-
-Přepnutí **zobrazení dat jako** SKRYJE sloupec **Poslední aktualizace rizika** . Pro čtení sloupce klikněte v horní části okna rizikové uživatele na **sloupce** .
-
-**Zavřít všechny události** v klasickém zabezpečení identity nastaví stav detekce rizik na **Uzavřeno (vyřešeno)** .
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
@@ -79,12 +71,12 @@ Všechna zjišťování rizik jsou popsána v článku [co je to riziko](concept
 
 **Potvrďte ohrožení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že přihlášení neudělal vlastník identity a označuje ohrožení zabezpečení.
 
-- Po přijetí této zpětné vazby přesuneme stav přihlášení a rizika uživatele na **potvrzené ohrožení** a úroveň rizika na **vysokou** .
+- Po přijetí této zpětné vazby přesuneme stav přihlášení a rizika uživatele na **potvrzené ohrožení** a úroveň rizika na **vysokou**.
 
 - Kromě toho poskytujeme informace pro naše systémy strojového učení pro budoucí vylepšení posuzování rizik.
 
     > [!NOTE]
-    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na **potvrzené napadení** a úroveň rizika na **Vysoká** .
+    > Pokud je uživatel už opravený, neklepejte na **Potvrdit napadení** , protože přesouvá stav přihlášení a rizika uživatele na **potvrzené napadení** a úroveň rizika na **Vysoká**.
 
 **Potvrzení zabezpečení** (při přihlášení) – informuje Azure AD Identity Protection, že se přihlásilo od vlastníka identity a neindikuje kompromis.
 

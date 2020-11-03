@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164393"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285274"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Vytvoření FCI se souborovou sdílenou složkou Premium (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ Před dokončením kroků v tomto článku byste už měli mít:
 ## <a name="mount-premium-file-share"></a>Připojit prémiovou sdílenou složku
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). a přejít na účet úložiště.
-1. V části **Souborová služba**klikněte na **sdílené složky** a potom vyberte sdílenou složku Premium, kterou chcete použít pro své úložiště SQL.
+1. V části **Souborová služba** klikněte na **sdílené složky** a potom vyberte sdílenou složku Premium, kterou chcete použít pro své úložiště SQL.
 1. Výběrem **připojit** otevřete připojovací řetězec pro sdílenou složku.
 1. V rozevíracím seznamu vyberte písmeno jednotky, které chcete použít, a potom zkopírujte oba bloky kódu do poznámkového bloku.
 
@@ -69,11 +69,11 @@ Před dokončením kroků v tomto článku byste už měli mít:
 1. [Přidejte Clustering s podporou převzetí služeb při selhání do každého virtuálního počítače](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms).
 
    Pokud chcete nainstalovat Clustering s podporou převzetí služeb při selhání z uživatelského rozhraní, udělejte na obou virtuálních počítačích tento postup:
-   1. V **Správce serveru**vyberte **Spravovat**a pak vyberte **Přidat role a funkce**.
+   1. V **Správce serveru** vyberte **Spravovat** a pak vyberte **Přidat role a funkce**.
    1. V průvodci **přidáním rolí a funkcí** vyberte **Další** , dokud se nedostanete k **vybraným funkcím**.
-   1. V **možnosti vybrat funkce**vyberte **Clustering s podporou převzetí služeb při selhání**. Zahrňte všechny požadované funkce a nástroje pro správu. 
+   1. V **možnosti vybrat funkce** vyberte **Clustering s podporou převzetí služeb při selhání**. Zahrňte všechny požadované funkce a nástroje pro správu. 
    1. Vyberte **Přidat funkce**.
-   1. Vyberte **Další**a potom vyberte **Dokončit** a nainstalujte funkce.
+   1. Vyberte **Další** a potom vyberte **Dokončit** a nainstalujte funkce.
 
    Pokud chcete nainstalovat Clustering s podporou převzetí služeb při selhání pomocí PowerShellu, spusťte následující skript z relace správce PowerShellu na jednom z virtuálních počítačů:
 
@@ -88,15 +88,25 @@ Ověřte cluster v uživatelském rozhraní nebo pomocí PowerShellu.
 
 Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na jednom z těchto virtuálních počítačů následující:
 
-1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
-1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
+1. V části **Správce serveru** vyberte **nástroje** a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
+1. V části **Správce clusteru s podporou převzetí služeb při selhání** vyberte **Akce** a pak vyberte **ověřit konfiguraci**.
 1. Vyberte **Další**.
-1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. 
+1. V části **Vybrat servery nebo cluster** zadejte názvy obou virtuálních počítačů.
+1. V části **Možnosti testování** vyberte **Spustit pouze vybrané testy**. 
 1. Vyberte **Další**.
-1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem**, jak je znázorněno zde:
+1. V části **Výběr testu** vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem** , jak je znázorněno zde:
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Výběr testů pro ověření clusteru":::
+
+1. Vyberte **Další**.
+1. V části **potvrzení** vyberte **Další**.
+
+Průvodce **ověřením konfigurace** spustí ověřovací testy.
+
+Pokud chcete cluster ověřit pomocí PowerShellu, spusťte následující skript z relace prostředí PowerShell správce na jednom z virtuálních počítačů:
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
    ```
 
 Po ověření clusteru vytvořte cluster s podporou převzetí služeb při selhání.
@@ -139,9 +149,9 @@ Nakonfigurujte řešení kvora, které nejlépe vyhovuje vašim obchodním potř
 
 ## <a name="test-cluster-failover"></a>Testovací převzetí služeb při selhání clusteru
 
-Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání**klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel**a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
+Otestujte převzetí služeb při selhání clusteru. V **Správce clusteru s podporou převzetí služeb při selhání** klikněte pravým tlačítkem na svůj cluster, vyberte **Další akce**  >  **přesunout základní prostředek clusteru**  >  **Vybrat uzel** a pak vyberte druhý uzel clusteru. Přesuňte základní prostředek clusteru do každého uzlu clusteru a pak ho přesuňte zpátky do primárního uzlu. Pokud můžete cluster úspěšně přesunout do každého uzlu, budete připraveni nainstalovat SQL Server.  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Testování převzetí služeb při selhání clusteru přesunutím základního prostředku do ostatních uzlů":::
 
 
 ## <a name="create-sql-server-fci"></a>Vytvořit SQL Server FCI
@@ -150,25 +160,25 @@ Po dokončení konfigurace clusteru s podporou převzetí služeb při selhání
 
 1. Připojte se k prvnímu virtuálnímu počítači pomocí protokolu RDP.
 
-1. V **Správce clusteru s podporou převzetí služeb při selhání**zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
+1. V **Správce clusteru s podporou převzetí služeb při selhání** zajistěte, aby všechny základní prostředky clusteru byly na prvním virtuálním počítači. V případě potřeby přesuňte všechny prostředky na tento virtuální počítač.
 
 1. Vyhledejte instalační médium. Pokud virtuální počítač používá jednu z Azure Marketplace imagí, médium se nachází na adrese `C:\SQLServer_<version number>_Full` . 
 
 1. Vyberte **Nastavení**.
 
-1. V **instalačním centru SQL Server**vyberte možnost **instalace**.
+1. V **instalačním centru SQL Server** vyberte možnost **instalace**.
 
-1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**a pak postupujte podle pokynů v průvodci a nainstalujte SQL Server FCI.
+1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání** a pak postupujte podle pokynů v průvodci a nainstalujte SQL Server FCI.
 
    Datové adresáře FCI musí být ve sdílené souborové složce Premium. Zadejte úplnou cestu ke sdílené složce v tomto formátu: `\\storageaccountname.file.core.windows.net\filesharename\foldername` . Zobrazí se upozornění s oznámením, že jste jako datový adresář zadali souborový server. Toto upozornění je očekávané. Ujistěte se, že uživatelský účet, který jste použili pro přístup k virtuálnímu počítači přes protokol RDP při trvalém sdílení souborů, je stejný účet, který služba SQL Server používá, aby se předešlo možným chybám.
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Kopírování příkazů PowerShellu z portálu pro připojení ke sdílené složce":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="Použít sdílení souborů jako datové adresáře SQL":::
 
 1. Po dokončení kroků v průvodci instalační program nainstaluje SQL Server FCI na první uzel.
 
 1. Až instalační program nainstaluje FCI na první uzel, připojte se k druhému uzlu pomocí protokolu RDP.
 
-1. Otevřete **Centrum instalace SQL Server**a pak vyberte možnost **instalace**.
+1. Otevřete **Centrum instalace SQL Server** a pak vyberte možnost **instalace**.
 
 1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
 
@@ -200,7 +210,7 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 - Microsoft DTC (Distributed Transaction Coordinator) (MSDTC) není podporován na Windows serveru 2016 a starších verzích. 
 - FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster místo toho pomocí [prostory úložiště s přímým přístupem](failover-cluster-instance-storage-spaces-direct-manually-configure.md) nebo [sdílených disků Azure](failover-cluster-instance-azure-shared-disks-manually-configure.md) .
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#management-modes) . 
+- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) . 
 
 ## <a name="next-steps"></a>Další kroky
 

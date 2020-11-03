@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 1255333e9bde54fcdf76dd40a9aaa4bc68fd103e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7ca290b7b7df9e4e03aec78b611361ba52942523
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242122"
+ms.locfileid: "93286691"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -65,7 +65,7 @@ Kromě rozpoznávání řeči a syntézy můžete také překlad řeči provést
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
 ```
 
-V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i** cíl (jazyk **pro překlad)** . Použití `--microphone` argumentu naposlouchá zvuk na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Výstupem je textový překlad do cílového jazyka zapsaný do textového souboru.
+V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i** cíl (jazyk **pro překlad)**. Použití `--microphone` argumentu naposlouchá zvuk na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Výstupem je textový překlad do cílového jazyka zapsaný do textového souboru.
 
 > [!NOTE]
 > Seznam všech podporovaných jazyků a jejich odpovídajících kódů národního prostředí najdete v článku věnovaném [jazykům a národním prostředím](language-support.md) .
@@ -163,7 +163,7 @@ Tento příkaz je ekvivalentem běhu `spx synthesize --text Sample text to synth
 
 * Záhlaví sloupců `audio.output` a, které `text` odpovídají argumentům příkazového řádku `--audio output` a v `--text` uvedeném pořadí. Argumenty příkazového řádku s více částmi `--audio output` by měly být naformátovány v souboru bez mezer, žádné úvodní pomlčky a tečky oddělující řetězce, např. `audio.output` . Všechny ostatní existující argumenty příkazového řádku lze přidat do souboru jako další sloupce pomocí tohoto modelu.
 * Pokud je tento soubor formátován tímto způsobem, není nutné předávat žádné další argumenty `--foreach` .
-* Jednotlivé hodnoty můžete oddělit `.tsv` pomocí **karty** .
+* Jednotlivé hodnoty můžete oddělit `.tsv` pomocí **karty**.
 
 Nicméně pokud máte `.tsv` soubor podobný následujícímu příkladu se záhlavími sloupců, která **neodpovídají** argumentům příkazového řádku:
 
@@ -182,4 +182,4 @@ spx synthesize --foreach audio.output;text in @C:\your\path\to\text_synthesis.ts
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokončete rychlé zprovoznění [rozpoznávání řeči](./quickstarts/speech-to-text-from-microphone.md) nebo [řeči](./quickstarts/text-to-speech.md) pomocí sady SDK.
+* Dokončete rychlé zprovoznění [rozpoznávání řeči](get-started-speech-to-text.md?pivots=programmer-tool-spx) nebo [řeči](get-started-text-to-speech.md?pivots=programmer-tool-spx) pomocí funkce CLI.

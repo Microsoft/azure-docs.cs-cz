@@ -3,12 +3,12 @@ title: Plánování nasazení řešení Azure VMware
 description: Tento článek popisuje pracovní postup nasazení řešení Azure VMware.  Konečný výsledek je prostředí připravené pro vytváření a migraci virtuálních počítačů.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517357"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287057"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Plánování nasazení řešení Azure VMware
 
@@ -17,7 +17,7 @@ Tento článek vám poskytne proces plánování, pomocí kterého můžete iden
 Procesy tohoto rychlého startu mají za následek vytváření virtuálních počítačů a migrace v prostředí připraveném pro produkční prostředí. 
 
 >[!IMPORTANT]
->Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má vaše uzly přiděleny. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělil vaše uzly. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více uzlů, Projděte si stejný postup. 
+>Před vytvořením prostředku řešení Azure VMware použijte článek [Povolení prostředku řešení Azure VMware](enable-azure-vmware-solution.md) k odeslání lístku podpory, který má přidělené hostitele. Jakmile tým podpory obdrží vaši žádost, trvá vám až pět pracovních dní, aby vaši žádost zkontroloval a rozdělila své hostitele. Pokud máte existující privátní cloud řešení Azure VMware a chcete přidělit více hostitelů, Projděte si stejný postup. 
 
 
 ## <a name="subscription"></a>Předplatné
@@ -39,9 +39,9 @@ Identifikujte oblast, kterou chcete nasadit řešení Azure VMware.  Další inf
 
 Zadejte název prostředku, který budete používat během nasazování.  Název prostředku je popisný a popisný název, ve kterém můžete název privátního cloudu řešení Azure VMware.
 
-## <a name="size-nodes"></a>Uzly velikosti
+## <a name="size-hosts"></a>Velikost hostitelů
 
-Identifikujte uzly velikosti, které chcete použít při nasazení řešení Azure VMware.  Úplný seznam najdete v dokumentaci k [privátním cloudům a clusterům řešení Azure VMware](concepts-private-clouds-clusters.md#hosts) .
+Identifikujte hostitele velikostí, které chcete použít při nasazení řešení Azure VMware.  Úplný seznam najdete v dokumentaci k [privátním cloudům a clusterům řešení Azure VMware](concepts-private-clouds-clusters.md#hosts) .
 
 ## <a name="number-of-hosts"></a>Počet hostitelů
 
@@ -79,7 +79,7 @@ Nezapomeňte, že všechny vytvořené segmenty IP adres musí být jedinečné 
 
 **Příklad:** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="Identifikace – segment IP adres pro úlohy virtuálních počítačů" border="false":::     
 
 ## <a name="optional-extend-networks"></a>Volitelné Rozšiřování sítí
 
@@ -96,7 +96,7 @@ Identifikujte `/29` blok síťových adres CIDR, který je vyžadován pro partn
 
 **Příklad:** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifikace – ExpressRoute Global Reach partnerských sítí" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure Virtual Network k připojení řešení Azure VMware
 
@@ -119,7 +119,7 @@ Libovolný způsob, jak dokumentovat, co chcete udělat v tomto kroku.
 >[!NOTE]
 >Tato virtuální síť se zobrazuje v místním prostředí a řešení Azure VMware. proto se ujistěte, že se nepřekrývají žádné segmenty IP používané v této virtuální síti a podsítích.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identifikace – segment IP adres" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identita – Azure Virtual Network pro připojení řešení Azure VMware" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>Segmenty sítě VMware HCX
 

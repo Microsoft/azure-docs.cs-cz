@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627002"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286965"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -33,7 +33,7 @@ Atributy aplikace můžete nakonfigurovat pomocí Azure Portal nebo programově 
 
 Konfigurace manifestu aplikace:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
+1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte službu **Azure Active Directory** .
 1. Vyberte **Registrace aplikací**.
 1. Vyberte aplikaci, kterou chcete nakonfigurovat.
 1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se webový editor manifestu, který umožňuje upravovat manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** a upravit manifest místně a potom použít **nahrávání** pro jeho opakované použití do aplikace.
@@ -80,7 +80,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| addIns | Kolekce |
+| addIns | Collection (Kolekce) |
 
 Definuje vlastní chování, které může přijímající služba použít k volání aplikace v konkrétních kontextech. Například aplikace, které mohou vykreslovat datové proudy souborů, mohou nastavit `addIns` vlastnost pro její funkci "handlerer". Tento parametr umožní službám, jako Microsoft 365 volat aplikaci v kontextu dokumentu, na kterém uživatel pracuje.
 
@@ -144,7 +144,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| appRoles | Kolekce |
+| appRoles | Collection (Kolekce) |
 
 Určuje kolekci rolí, které může aplikace deklarovat. Tyto role se dají přiřadit uživatelům, skupinám nebo objektům služby. Další příklady a informace najdete v tématu [Přidání rolí aplikace v aplikaci a jejich přijetí v tokenu](howto-add-app-roles-in-azure-ad-apps.md).
 
@@ -194,6 +194,7 @@ Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístu
 
 - `"None"`
 - `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)
+- `"ApplicationGroup"` (Tato možnost zahrnuje jenom skupiny, které jsou přiřazené aplikaci.)
 - `"All"` (zobrazí se všechny skupiny zabezpečení, distribuční skupiny a role adresáře Azure AD, kterých je přihlášený uživatel členem.
 
 Příklad:
@@ -284,7 +285,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| keyCredentials | Kolekce |
+| keyCredentials | Collection (Kolekce) |
 
 Obsahuje odkazy na přihlašovací údaje přiřazené aplikacím, sdílené tajné klíče založené na řetězci a certifikáty X. 509. Tyto přihlašovací údaje se používají při požadování přístupových tokenů (když aplikace funguje jako klient, ale jako prostředek).
 
@@ -392,7 +393,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| oauth2Permissions | Kolekce |
+| oauth2Permissions | Collection (Kolekce) |
 
 Určuje kolekci oborů oprávnění OAuth 2,0, které aplikace webového rozhraní API (Resource) zpřístupňuje klientským aplikacím. Tyto obory oprávnění se můžou klientským aplikacím udělit během souhlasu.
 
@@ -449,7 +450,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| passwordCredentials | Kolekce |
+| passwordCredentials | Collection (Kolekce) |
 
 Podívejte se na popis `keyCredentials` Vlastnosti.
 
@@ -471,7 +472,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| preAuthorizedApplications | Kolekce |
+| preAuthorizedApplications | Collection (Kolekce) |
 
 Vypíše aplikace a požadovaná oprávnění pro implicitní souhlas. Vyžaduje, aby správce poskytl souhlas s aplikací. preAuthorizedApplications nevyžaduje, aby uživatel mohl udělit souhlas s požadovanými oprávněními. Oprávnění uvedená v preAuthorizedApplications nevyžadují souhlas uživatele. Nicméně jakákoli další požadovaná oprávnění, která nejsou uvedená v preAuthorizedApplications, vyžadují souhlas uživatele.
 
@@ -526,7 +527,7 @@ Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starš
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| replyUrlsWithType | Kolekce |
+| replyUrlsWithType | Collection (Kolekce) |
 
 Tato vlastnost s více hodnotami obsahuje seznam registrovaných redirect_uri hodnot, které služba Azure AD přijme jako cílová umístění při vracení tokenů. Každá hodnota identifikátoru URI by měla obsahovat přidruženou hodnotu typu aplikace. Podporované hodnoty typu jsou:
 
@@ -551,7 +552,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| requiredResourceAccess | Kolekce |
+| requiredResourceAccess | Collection (Kolekce) |
 
 S dynamickým souhlasem se `requiredResourceAccess` pro uživatele, kteří používají statický souhlas, řídí prostředí pro vyjádření souhlasu správce a uživatelské prostředí pro vyjádření souhlasu uživatele. Tento parametr ale neřídí uživatelské prostředí pro vyjádření souhlasu uživatele pro obecný případ.
 

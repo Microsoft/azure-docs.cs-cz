@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167643"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284501"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -117,6 +117,11 @@ Následující vzorový *host.js* souboru pro verzi 2. x + obsahuje všechny mo�
     "managedDependency": {
         "enabled": true
     },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -167,7 +172,7 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 | samplingPercentageDecreaseTimeout | 00:00:01 | Když se změní procentuální hodnota vzorkování, tato vlastnost určuje, jak brzo Application Insights může snížit procento vzorkování znovu a zachytit tak méně dat. |
 | minSamplingPercentage | 0,1 | Když se procento vzorkování liší, tato vlastnost určuje minimální povolený procentuální podíl vzorkování. |
 | maxSamplingPercentage | 100,0 | Když se procento vzorkování liší, tato vlastnost určuje maximální povolené procento vzorkování. |
-| movingAverageRatio | 1,0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
+| movingAverageRatio | 1.0 | Při výpočtu klouzavého průměru je váha přiřazená k nejnovější hodnotě. Použijte hodnotu rovnou nebo menší než 1. Menší hodnoty nastaví algoritmus méně aktivní na náhlé změny. |
 | excludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | includedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Typ uvedený v seznamu přepsat typy, které jsou `excludedTypes` zde uvedeny. Rozpoznané typy jsou: `Dependency` , `Event` , `Exception` , `PageView` , a `Request` `Trace` . Instance zadaných typů jsou vzorkované; typy, které nejsou zadány nebo implicitně jsou přenášeny bez vzorkování. |
 
@@ -246,7 +251,7 @@ Označuje dobu trvání časového limitu pro všechny funkce. Postupuje podle f
 
 | Typ plánu | Výchozí (min.) | Maximum (min) |
 | -- | -- | -- |
-| Využití | 5 | 10 |
+| Consumption | 5 | 10 |
 | Premium<sup>1</sup> | 30 | -1 (nevázané)<sup>2</sup> |
 | Vyhrazeno (App Service) | 30 | -1 (nevázané)<sup>2</sup> |
 
@@ -283,7 +288,7 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 |healthCheckThreshold|6|Maximální počet neúspěšných kontrol stavu před zahájením recyklace hostitele.| 
 |counterThreshold|0,80|Prahová hodnota, při které bude čítač výkonu považován za špatný.| 
 
-## <a name="http"></a>HTTP
+## <a name="http"></a>http
 
 Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook-output.md#hostjson-settings).
 
@@ -349,6 +354,28 @@ Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce zal
 ## <a name="queues"></a>vytvořil
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue-output.md#host-json).  
+
+## <a name="retry"></a>retry
+
+Řídí možnosti [zásad opakování](./functions-bindings-error-pages.md#retry-policies) pro všechna spuštění v aplikaci.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------| 
+|strategie|null|Povinná hodnota. Používaná strategie opakování. Platné hodnoty jsou `fixedDelay` nebo `exponentialBackoff` .|
+|maxRetryCount|null|Povinná hodnota. Maximální počet opakovaných pokusů povolených pro spuštění funkce. `-1` způsob, jak to provést po neomezenou dobu.|
+|delayInterval|null|Zpoždění používané mezi opakovanými pokusy pomocí `fixedDelay` strategie.|
+|minimumInterval|null|Minimální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.|
+|maximumInterval|null|Maximální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.| 
 
 ## <a name="sendgrid"></a>sendGrid
 

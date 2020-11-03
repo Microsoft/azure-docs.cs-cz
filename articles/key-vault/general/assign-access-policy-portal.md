@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481405"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287710"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Přiřazení zásady přístupu Key Vault pomocí Azure Portal
 
@@ -23,21 +23,21 @@ Zásada přístupu Key Vault určuje, jestli daný instanční objekt, konkrétn
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Další informace o vytváření skupin v Azure Active Directory prostřednictvím Azure Portal najdete v tématu [Vytvoření základní skupiny a přidání členů](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) .
+Další informace o vytváření skupin v Azure Active Directory prostřednictvím Azure Portal najdete v tématu [Vytvoření základní skupiny a přidání členů](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) .
 
 ## <a name="assign-an-access-policy"></a>Přiřazení zásad přístupu
 
 1.  V [Azure Portal](https://portal.azure.com)přejděte na prostředek Key Vault. 
 
-1.  V části **Nastavení**vyberte **zásady přístupu**a pak vyberte **Přidat zásady přístupu**:
+1.  V části **Nastavení** vyberte **zásady přístupu** a pak vyberte **Přidat zásady přístupu** :
 
     ![Vyberte zásady přístupu, vyberte přidat přiřazení role.](../media/authentication/assign-policy-portal-01.png)
 
-1.  Vyberte požadovaná oprávnění v části **oprávnění certifikátu**, **oprávnění klíče**a **tajná oprávnění**. Můžete také vybrat šablonu obsahující společné kombinace oprávnění:
+1.  Vyberte požadovaná oprávnění v části **oprávnění certifikátu** , **oprávnění klíče** a **tajná oprávnění**. Můžete také vybrat šablonu obsahující společné kombinace oprávnění:
 
     ![Určení oprávnění zásad přístupu](../media/authentication/assign-policy-portal-02.png)
 
-1. V části **Vybrat objekt zabezpečení**vyberte odkaz **žádné vybrané** a otevřete tak podokno výběru **objektu zabezpečení** . Do vyhledávacího pole zadejte název aplikace nebo instančního objektu, vyberte příslušný výsledek a pak zvolte **Vybrat**.
+1. V části **Vybrat objekt zabezpečení** vyberte odkaz **žádné vybrané** a otevřete tak podokno výběru **objektu zabezpečení** . Do vyhledávacího pole zadejte název aplikace nebo instančního objektu, vyberte příslušný výsledek a pak zvolte **Vybrat**.
 
     ![Výběr objektu služby pro zásady přístupu](../media/authentication/assign-policy-portal-03.png)
 
@@ -47,7 +47,7 @@ Další informace o vytváření skupin v Azure Active Directory prostřednictv�
 
     ![Přidání zásad přístupu k přiřazenému objektu služby](../media/authentication/assign-policy-portal-04.png)
 
-1. Zpátky na stránce **zásady přístupu** ověřte, že zásady přístupu jsou uvedené v části **aktuální zásady přístupu**, a pak vyberte **Uložit**. Zásady přístupu se nepoužijí, dokud je neuložíte.
+1. Zpátky na stránce **zásady přístupu** ověřte, že zásady přístupu jsou uvedené v části **aktuální zásady přístupu** , a pak vyberte **Uložit**. Zásady přístupu se nepoužijí, dokud je neuložíte.
 
     ![Ukládají se změny zásad přístupu.](../media/authentication/assign-policy-portal-05.png)
 

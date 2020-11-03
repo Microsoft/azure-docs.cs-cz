@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604332"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286231"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
@@ -24,8 +24,8 @@ Jako správce můžete přesně určit, kteří uživatelé a aplikace budou mí
 
 V tomto dokumentu se předpokládá, že máte zkušenosti s následujícími koncepty. Pokud nejste obeznámeni s žádnou z těchto konceptů, před pokračováním použijte odkazy na tyto informace.
 
-* [Odkaz](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) na Azure Active Directory
-* [Propojení](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals) objektů zabezpečení
+* [Odkaz](../../active-directory/fundamentals/active-directory-whatis.md) na Azure Active Directory
+* [Propojení](./authentication.md#app-identity-and-security-principals) objektů zabezpečení
 
 ## <a name="key-vault-configuration-steps-summary"></a>Souhrn kroků konfigurace Key Vault
 
@@ -42,8 +42,8 @@ Když uživatel nebo aplikace odešle požadavek do trezoru klíčů, musí být
 Postup při registraci uživatele nebo aplikace v Azure Active Directory najdete v níže uvedených odkazech k dokumentaci.
 **Nezapomeňte vytvořit heslo pro registraci uživatele a tajný klíč klienta nebo přihlašovací údaje klientského certifikátu pro aplikace.**
 
-* Registrace uživatele v Azure Active Directory [odkazu](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)
-* Registrace aplikace v Azure Active Directory [odkazu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)
+* Registrace uživatele v Azure Active Directory [odkazu](../../active-directory/fundamentals/add-users-azure-active-directory.md)
+* Registrace aplikace v Azure Active Directory [odkazu](../../active-directory/develop/quickstart-register-app.md)
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Přiřazení objektu zabezpečení k roli v Azure Active Directory
 
@@ -57,8 +57,8 @@ V kontextu trezoru klíčů určují Tato přiřazení rolí úroveň přístupu
 >[!NOTE]
 > Když přiřadíte přiřazení role k uživateli na úrovni Azure Active Directory tenanta, tato sada oprávnění se trickle dolů ke všem předplatným, skupinám prostředků a prostředkům v rámci rozsahu přiřazení. Chcete-li se řídit objekty s nejmenším oprávněním, můžete toto přiřazení role udělat v podrobnějším oboru. Můžete například přiřadit uživateli roli čtenáře na úrovni předplatného a roli vlastníka pro jeden Trezor klíčů. Přejděte do nastavení IAM (identity Access Management) předplatného, skupiny prostředků nebo trezoru klíčů, aby bylo přiřazení role v podrobnějším rozsahu.
 
-* Další informace o [odkazu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) na role Azure Active Directory
-* Další informace o přiřazení nebo odebrání [odkazu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) na přiřazení rolí
+* Další informace o [odkazu](../../role-based-access-control/built-in-roles.md) na role Azure Active Directory
+* Další informace o přiřazení nebo odebrání [odkazu](../../role-based-access-control/role-assignments-portal.md) na přiřazení rolí
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Konfigurace zásad přístupu trezoru klíčů pro objekt zabezpečení
 
@@ -121,8 +121,8 @@ Přiřazení role Key Vault jsou sada předdefinovaných přiřazení rolí Azur
 
 Další informace o Key Vault RBAC najdete v následujících dokumentech:
 
-* Azure Key Vault [propojení](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac) RBAC
-* Azure Key Vault [propojení](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview) rolí RBAC (Preview)
+* Azure Key Vault [propojení](./secure-your-key-vault.md#management-plane-and-azure-rbac) RBAC
+* Azure Key Vault [propojení](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) rolí RBAC (Preview)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurace brány Key Vault firewall
 
@@ -132,9 +132,9 @@ Pokud chcete povolit bránu firewall trezoru klíčů, klikněte na kartu síť 
 
 * Přidejte adresy IPv4 do seznamu povolených bran firewall trezoru klíčů. Tato možnost funguje nejlépe pro aplikace, které mají statické IP adresy.
 
-* Přidejte virtuální síť do brány firewall trezoru klíčů. Tato možnost funguje nejlépe pro prostředky Azure s dynamickými IP adresami, jako je například Virtual Machines. Můžete přidat prostředky Azure do virtuální sítě a přidat virtuální síť do seznamu povolených bran firewall trezoru klíčů. Tato možnost používá koncový bod služby, což je privátní IP adresa v rámci virtuální sítě. To poskytuje další vrstvu ochrany, takže žádný přenos mezi trezorem klíčů a vaší virtuální sítí není směrován přes veřejný Internet. Další informace o koncovém bodu služby najdete v následující dokumentaci. [propojit](https://docs.microsoft.com/azure/key-vault/general/network-security)
+* Přidejte virtuální síť do brány firewall trezoru klíčů. Tato možnost funguje nejlépe pro prostředky Azure s dynamickými IP adresami, jako je například Virtual Machines. Můžete přidat prostředky Azure do virtuální sítě a přidat virtuální síť do seznamu povolených bran firewall trezoru klíčů. Tato možnost používá koncový bod služby, což je privátní IP adresa v rámci virtuální sítě. To poskytuje další vrstvu ochrany, takže žádný přenos mezi trezorem klíčů a vaší virtuální sítí není směrován přes veřejný Internet. Další informace o koncovém bodu služby najdete v následující dokumentaci. [propojit](./network-security.md)
 
-* Přidejte připojení k trezoru klíčů pomocí privátního propojení. Tato možnost připojí vaši virtuální síť přímo k určité instanci trezoru klíčů a efektivně tak zaznamená Trezor klíčů do vaší virtuální sítě. Další informace o konfiguraci připojení privátního koncového bodu k trezoru klíčů najdete na následujícím [odkazu](https://docs.microsoft.com/azure/key-vault/general/private-link-service) .
+* Přidejte připojení k trezoru klíčů pomocí privátního propojení. Tato možnost připojí vaši virtuální síť přímo k určité instanci trezoru klíčů a efektivně tak zaznamená Trezor klíčů do vaší virtuální sítě. Další informace o konfiguraci připojení privátního koncového bodu k trezoru klíčů najdete na následujícím [odkazu](./private-link-service.md) .
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>Otestujte schopnost objektu služby získat přístup k trezoru klíčů.
 
@@ -142,11 +142,11 @@ Jakmile budete dodržovat všechny výše uvedené kroky, budete moct nastavit a
 
 ### <a name="authentication-process-for-users-examples"></a>Proces ověřování pro uživatele (příklady)
 
-* Uživatelé se můžou k Azure Portal přihlásit, aby používali Trezor klíčů. [Rychlý Start portálu Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* Uživatelé se můžou k Azure Portal přihlásit, aby používali Trezor klíčů. [Rychlý Start portálu Key Vault](./quick-create-portal.md)
 
-* Uživatel může použít Azure CLI k použití trezoru klíčů. [Rychlý Start k rozhraní příkazového řádku Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* Uživatel může použít Azure CLI k použití trezoru klíčů. [Rychlý Start k rozhraní příkazového řádku Azure Key Vault](./quick-create-cli.md)
 
-* Uživatel může použít Azure PowerShell k použití trezoru klíčů. [Rychlý Start Key Vault Azure PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* Uživatel může použít Azure PowerShell k použití trezoru klíčů. [Rychlý Start Key Vault Azure PowerShell](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>Azure Active Directory procesu ověřování pro aplikace nebo služby (příklady)
 
@@ -156,7 +156,7 @@ Jakmile budete dodržovat všechny výše uvedené kroky, budete moct nastavit a
 
 * Prostředek Azure používá k získání tokenu Azure Active Directory ověřování pomocí MSI. 
 
-* Další informace o [připojení pro](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ověřování MSI
+* Další informace o [připojení pro](../../active-directory/managed-identities-azure-resources/overview.md) ověřování MSI
 
 ### <a name="authentication-process-for-application-python-example"></a>Proces ověřování pro aplikaci (příklad Pythonu)
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ověřování trezoru klíčů najdete podrobněji v následujícím dokumentu. [Ověřování ve službě Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+Další informace o ověřování trezoru klíčů najdete podrobněji v následujícím dokumentu. [Ověřování ve službě Key Vault](./authentication.md)

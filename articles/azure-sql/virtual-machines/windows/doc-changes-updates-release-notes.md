@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 249e65b5a9440678015598d9969c0d2ed689c626
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789739"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285358"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 | **Migrace virtuálního počítače SQL Server do jiné oblasti** | Pomocí Azure Site Recovery [migrujte virtuální počítač s SQL Server z jedné oblasti do druhé](move-sql-vm-different-region.md). |
 |  **Nové režimy instalace SQL IaaS** | Nyní je možné nainstalovat rozšíření SQL Server IaaS v [režimu prostého režimu](sql-server-iaas-agent-extension-automate-management.md) , abyste se vyhnuli restartování služby SQL Server.  |
 | **Úpravy edice SQL Server** | Nyní můžete změnit [vlastnost edice](change-sql-server-edition.md) pro váš virtuální počítač s SQL Server. |
-| **Změny zprostředkovatele prostředků virtuálních počítačů SQL** | Pomocí nových režimů IaaS SQL můžete [zaregistrovat svůj virtuální počítač s SQL Server pomocí poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md) . Tato možnost zahrnuje image [Windows serveru 2008](sql-vm-resource-provider-register.md#management-modes) .|
+| **Změny zprostředkovatele prostředků virtuálních počítačů SQL** | Pomocí nových režimů IaaS SQL můžete [zaregistrovat svůj virtuální počítač s SQL Server pomocí poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md) . Tato možnost zahrnuje image [Windows serveru 2008](sql-server-iaas-agent-extension-automate-management.md#management-modes) .|
 | **Využití imagí s vlastní licencí pomocí Zvýhodněné hybridní využití Azure** | Bitové kopie s vlastní licencí nasazené z Azure Marketplace teď můžou [jako typ licence přepnout na průběžné platby](licensing-model-azure-hybrid-benefit-ahb-change.md#remarks).| 
 | **Nová SQL Server Správa virtuálních počítačů v Azure Portal** | Nyní je možné spravovat SQL Server virtuální počítač v Azure Portal. Další informace najdete v tématu [Správa virtuálních počítačů s SQL Server v Azure Portal](manage-sql-vm-portal.md).  | 
 | **Rozšířená podpora pro SQL Server 2008 a 2008 R2** | [Podporu](sql-server-2008-extend-end-of-support.md) SQL Server 2008 a SQL Server 2008 R2 můžete podpořit tak, že migrujete *jako* na virtuální počítač Azure. | 

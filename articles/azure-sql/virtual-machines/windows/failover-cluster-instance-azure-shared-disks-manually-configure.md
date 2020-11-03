@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c78899bff39f37c63c7db0eeb12690ab2a90cac4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789756"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285380"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -151,12 +151,12 @@ Ověřte cluster v uživatelském rozhraní nebo pomocí PowerShellu.
 
 Pokud chcete cluster ověřit pomocí uživatelského rozhraní, udělejte na jednom z těchto virtuálních počítačů následující:
 
-1. V části **Správce serveru** vyberte **nástroje** a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání** .
-1. V části **Správce clusteru s podporou převzetí služeb při selhání** vyberte **Akce** a pak vyberte **ověřit konfiguraci** .
-1. Vyberte **Další** .
+1. V části **Správce serveru** vyberte **nástroje** a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
+1. V části **Správce clusteru s podporou převzetí služeb při selhání** vyberte **Akce** a pak vyberte **ověřit konfiguraci**.
+1. Vyberte **Další**.
 1. V části **Vybrat servery nebo cluster** zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování** vyberte **Spustit pouze vybrané testy** . 
-1. Vyberte **Další** .
+1. V části **Možnosti testování** vyberte **Spustit pouze vybrané testy**. 
+1. Vyberte **Další**.
 1. V části **Výběr testu** vyberte všechny testy *s výjimkou* **úložiště** .
 
 ## <a name="test-cluster-failover"></a>Testovací převzetí služeb při selhání clusteru
@@ -175,11 +175,11 @@ Po nakonfigurování clusteru s podporou převzetí služeb při selhání a vš
 
 1. Vyhledejte instalační médium. Pokud virtuální počítač používá jednu z Azure Marketplace imagí, médium se nachází na adrese `C:\SQLServer_<version number>_Full` . 
 
-1. Vyberte **Nastavení** .
+1. Vyberte **Nastavení**.
 
-1. V **SQL Server centra instalace** vyberte možnost **instalace** .
+1. V **SQL Server centra instalace** vyberte možnost **instalace**.
 
-1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání** . Podle pokynů v průvodci nainstalujte SQL Server FCI.
+1. Vyberte **nový SQL Server instalace clusteru s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server FCI.
 
 Datové adresáře FCI musí být na sdílených discích Azure. 
 
@@ -187,9 +187,9 @@ Datové adresáře FCI musí být na sdílených discích Azure.
 
 1. Až instalační program nainstaluje FCI na první uzel, připojte se k druhému uzlu pomocí protokolu RDP.
 
-1. Otevřete **Centrum instalace SQL Server** a pak vyberte možnost **instalace** .
+1. Otevřete **Centrum instalace SQL Server** a pak vyberte možnost **instalace**.
 
-1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání** . Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
+1. Vyberte **přidat uzel do clusteru SQL Server s podporou převzetí služeb při selhání**. Podle pokynů v průvodci nainstalujte SQL Server a přidejte server do FCI.
 
    >[!NOTE]
    >Pokud jste použili Azure Marketplace image galerie, která obsahuje SQL Server, SQL Server nástroje byly součástí bitové kopie. Pokud jste některou z těchto imagí nepoužili, nainstalujte nástroje SQL Server samostatně. Další informace najdete v tématu [stažení SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -217,7 +217,7 @@ Pokud chcete směrovat provoz odpovídající aktuálnímu primárnímu uzlu, na
 
 ## <a name="limitations"></a>Omezení
 
-- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-vm-resource-provider-register.md#management-modes) .
+- Podporuje se jenom registrace u poskytovatele prostředků virtuálního počítače SQL v [režimu zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) .
 
 ## <a name="next-steps"></a>Další kroky
 

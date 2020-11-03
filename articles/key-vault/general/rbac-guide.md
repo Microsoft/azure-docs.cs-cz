@@ -9,25 +9,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015151"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286597"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Poskytnutí přístupu k klíčům Key Vault, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure (Preview)
 
 > [!NOTE]
 > Poskytovatel prostředků Key Vault podporuje dva typy prostředků: **trezory** a **spravované HSM**. Řízení přístupu popsané v tomto článku platí jenom pro **trezory**. Další informace o řízení přístupu pro spravovaný modul HSM najdete v tématu [spravované řízení přístupu HSM](../managed-hsm/access-control.md).
 
-Řízení přístupu na základě role Azure (Azure RBAC) je autorizační systém založený na [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , který poskytuje jemně odstupňovanou správu prostředků Azure.
+Řízení přístupu na základě role Azure (Azure RBAC) je autorizační systém založený na [Azure Resource Manager](../../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu prostředků Azure.
 
 Azure RBAC umožňuje uživatelům spravovat klíče, tajné klíče a oprávnění k certifikátům. Poskytuje jedno místo pro správu všech oprávnění napříč všemi trezory klíčů. 
 
 Model Azure RBAC nabízí možnost nastavit oprávnění na různých úrovních oboru: skupina pro správu, předplatné, skupina prostředků nebo jednotlivé prostředky.  Azure RBAC pro Trezor klíčů taky nabízí možnost mít samostatná oprávnění pro jednotlivé klíče, tajné klíče a certifikáty.
 
-Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Další informace najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>Osvědčené postupy pro jednotlivé klíče, tajné klíče a certifikáty
 
@@ -48,7 +48,7 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 > [!NOTE]
 > `Key Vault Contributor` role je určena pro operace roviny správy ke správě trezorů klíčů. Neumožňuje přístup k klíčům, tajným klíčům a certifikátům.
 
-| Předdefinovaná role | Description | ID |
+| Předdefinovaná role | Popis | ID |
 | --- | --- | --- |
 | Správce Key Vault (Preview) | Proveďte všechny operace roviny dat u trezoru klíčů a všech objektů, včetně certifikátů, klíčů a tajných klíčů. Nejde spravovat prostředky trezoru klíčů ani spravovat přiřazení rolí. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 | Key Vault úřední certifikát (Preview) | S výjimkou oprávnění spravovat je možné provést jakoukoli akci s certifikáty trezoru klíčů. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | a4417e6f-fecd-4de8-b567-7b0420556985 |
@@ -59,18 +59,18 @@ Další informace o pokynech pro správu Azure Key Vault najdete v tématech:
 | Úředník Key Vault tajných klíčů (Preview)| Vykoná jakoukoli akci s tajnými kódy trezoru klíčů s výjimkou oprávnění ke správě. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Uživatel Key Vault tajných kódů (Preview)| Číst tajný obsah. Funguje jenom pro trezory klíčů, které používají model oprávnění řízení přístupu na základě role Azure. | 4633458b-17de-408a-b874-0445c86b69e6 |
 
-Další informace o definicích integrovaných rolí Azure najdete v tématu [předdefinované role Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Další informace o definicích integrovaných rolí Azure najdete v tématu [předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>Použití oprávnění tajných klíčů, klíčů a certifikátů Azure RBAC s Key Vault
 
 Nový model oprávnění Azure RBAC pro Trezor klíčů poskytuje alternativu k modelu oprávnění zásad přístupu trezoru. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat přiřazení rolí, je nutné mít následující:
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
-- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) [přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)
+- Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- `Microsoft.Authorization/roleAssignments/write`a `Microsoft.Authorization/roleAssignments/delete` oprávnění, jako je například správce nebo [vlastník](../../role-based-access-control/built-in-roles.md#owner) [přístupu uživatele](../../role-based-access-control/built-in-roles.md#user-access-administrator)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>Povolit oprávnění Azure RBAC na Key Vault
 
@@ -194,7 +194,7 @@ Vytvořit nový tajný klíč (tajné klíče \> + Generovat/importovat) by se m
 
 ### <a name="creating-custom-roles"></a>Vytváření vlastních rolí 
 
-[AZ role definition Create – příkaz](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)
+[AZ role definition Create – příkaz](/cli/azure/role/definition#az-role-definition-create)
 
 **(Skript CLI bash)</br>**
 ```azurecli
@@ -216,7 +216,7 @@ az role definition create --role-definition '{ \
 
 Další informace o tom, jak vytvářet vlastní role, najdete v těchto tématech:
 
-[Vlastní role Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
+[Vlastní role Azure](../../role-based-access-control/custom-roles.md)
 
 ## <a name="known-limits-and-performance"></a>Známá omezení a výkon
 
@@ -226,5 +226,5 @@ Další informace o tom, jak vytvářet vlastní role, najdete v těchto témate
 
 ## <a name="learn-more"></a>Další informace
 
-- [Přehled Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Kurz pro vlastní role](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Přehled Azure RBAC](../../role-based-access-control/overview.md)
+- [Kurz pro vlastní role](../../role-based-access-control/tutorial-custom-role-cli.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 977e3571a24e8be9d9ef6cd79e80e654ca944fa4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538812"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284465"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Řešení potíží se skripty v Azure HDInsight
 
@@ -45,7 +45,7 @@ Pokud se vytvoření clusteru nepovede kvůli chybě skriptu, protokoly se uchov
 
     ![Protokoly akcí skriptů](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu** , **pracovní uzel** a **Zookeeper uzel** . Podívejte se na následující příklady:
+    V rámci tohoto adresáře jsou protokoly uspořádány samostatně pro **hlavnímu uzlu** , **pracovní uzel** a **Zookeeper uzel**. Podívejte se na následující příklady:
 
     * **Hlavnímu uzlu** : `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
@@ -75,7 +75,7 @@ Neměňte heslo pro sledovací zařízení Ambari, hdinsightwatchdog v clusteru 
 
 ## <a name="cant-import-name-blobservice"></a>Nelze importovat název BlobService
 
-__Příznaky__ . Akce skriptu se nezdařila. Při zobrazení operace v Ambari se zobrazí text podobný následující chybě:
+__Příznaky__. Akce skriptu se nezdařila. Při zobrazení operace v Ambari se zobrazí text podobný následující chybě:
 
 ```
 Traceback (most recent call list):
@@ -86,7 +86,7 @@ ImportError: cannot import name BlobService
 
 __Příčina__ : K této chybě dojde, když upgradujete klienta Python Azure Storage, který je součástí clusteru HDInsight. HDInsight očekává Azure Storage 0.20.0 klienta.
 
-__Řešení__ . Chcete-li tuto chybu vyřešit, připojte se ručně k jednotlivým uzlům clusteru pomocí nástroje `ssh` . Spusťte následující příkaz, který znovu nainstaluje správnou verzi klienta úložiště:
+__Řešení__. Chcete-li tuto chybu vyřešit, připojte se ručně k jednotlivým uzlům clusteru pomocí nástroje `ssh` . Spusťte následující příkaz, který znovu nainstaluje správnou verzi klienta úložiště:
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -110,10 +110,4 @@ Existují dvě výjimky:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -3,14 +3,14 @@ title: Azure Functions spolehlivé zpracování událostí
 description: Vyhněte se chybějícím zprávám centra událostí v Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506022"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287234"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
@@ -50,7 +50,7 @@ Azure Functions spotřebovává události centra událostí při procházení n�
 
 Toto chování odhalí několik důležitých bodů:
 
-- *Neošetřené výjimky mohou způsobit ztrátu zpráv.* Spuštění, které způsobí výjimku, bude pokračovat v průběhu ukazatele.
+- *Neošetřené výjimky mohou způsobit ztrátu zpráv.* Spuštění, které způsobí výjimku, bude pokračovat v průběhu ukazatele.  Nastavení [zásady opakování](./functions-bindings-error-pages.md#retry-policies) bude zpozdit průběh ukazatele, dokud nebude vyhodnocena celá zásada opakování.
 - *Funkce garantuje alespoň jedno doručení.* Váš kód a závislé systémy budou pravděpodobně potřebovat [účet pro skutečnost, že stejnou zprávu lze přijmout dvakrát](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Zpracování výjimek
@@ -59,9 +59,9 @@ Obecně platí, že každá funkce by měla obsahovat [blok try/catch](./functio
 
 ### <a name="retry-mechanisms-and-policies"></a>Mechanismy a zásady opakování
 
-Některé výjimky jsou přechodným charakterem a po opakovaném pokusu o operaci později se nezobrazují. Z tohoto důvodu je prvním krokem vždy opakování operace. Pravidla opakovaného zpracování můžete napsat sami, ale je tak maloobchodech, že je k dispozici řada nástrojů. Použití těchto knihoven vám umožní definovat robustní zásady opakování, které mohou také pomoci zachovat pořadí zpracování.
+Některé výjimky jsou přechodným charakterem a po opakovaném pokusu o operaci později se nezobrazují. Z tohoto důvodu je prvním krokem vždy opakování operace.  Můžete využít [zásady opakování](./functions-bindings-error-pages.md#retry-policies) aplikace Function App nebo vytvořit logiku opakování v rámci provádění funkce.
 
-Představujeme knihovny pro zpracování chyb do vašich funkcí vám umožní definovat základní i pokročilé zásady opakování. Můžete například implementovat zásadu, která následuje za pracovním postupem, a to podle následujících pravidel:
+Zavedení chování pro zpracování chyb do vašich funkcí vám umožní definovat základní i pokročilé zásady opakování. Můžete například implementovat zásadu, která následuje za pracovním postupem, a to podle následujících pravidel:
 
 - Zkuste vložit zprávu třikrát (může se jednat o prodlevu mezi opakovanými pokusy).
 - Pokud případný výsledek všech opakovaných pokusů selže, přidejte do fronty zprávu, aby zpracování mohlo pokračovat na datovém proudu.
@@ -69,10 +69,6 @@ Představujeme knihovny pro zpracování chyb do vašich funkcí vám umožní d
 
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) je příklad odolnosti a knihovny pro zpracování s přechodnou chybou pro aplikace v jazyce C#.
-
-Při práci s předem vyplněnými knihovnami tříd jazyka C# umožňují [filtry výjimek](/dotnet/csharp/language-reference/keywords/try-catch) spustit kód vždy, když dojde k neošetřené výjimce.
-
-Ukázky, které ukazují, jak používat filtry výjimek, jsou k dispozici v úložišti [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) .
 
 ## <a name="non-exception-errors"></a>Chyby bez výjimky
 
@@ -120,7 +116,7 @@ Příjemce e-mailu může prozkoumat stav okruhu a v případě potřeby restart
 
 Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy jsou zpracovávány v daném pořadí a okruh můžete v případě potřeby rozdělit na dlouhou dobu.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 - [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Přerušení okruhu trvalých entit Azure](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2781ef69ce85e82dab45a9f890ef5e6862949d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087979"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284488"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Pomocí Logic Apps dostávat e-maily o změnách stavu tajných kódů trezoru klíčů
 
@@ -23,12 +23,12 @@ V této příručce se dozvíte, jak reagovat na události Azure Key Vault přij
 
 Přehled Integrace Azure Key Vault/Azure Event Grid najdete v tématu [monitorování Key Vault s Azure Event Grid](event-grid-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - E-mailový účet od jakéhokoli poskytovatele e-mailu, který podporuje Azure Logic Apps (například Office 365 Outlook). Tento e-mailový účet se používá k posílání oznámení o událostech. Úplný seznam podporovaných konektorů aplikace logiky najdete v článku [Přehled konektorů](/connectors).
-- Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
-- Registrované Event Grid jako poskytovatel prostředků, viz [registrace poskytovatelé prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)
+- Registrované Event Grid jako poskytovatel prostředků, viz [registrace poskytovatelé prostředků](../../azure-resource-manager/management/resource-providers-and-types.md)
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Vytvoření aplikace logiky prostřednictvím Event Grid
 
@@ -47,8 +47,8 @@ K vytvoření předplatného Azure Event Grid použijte následující postup:
 
 1. Na obrazovce **když dojde k události prostředku** , udělejte toto:
     - Ponechte **předplatné** a **název prostředku** jako výchozí.
-    - Jako **typ prostředku**vyberte **Microsoft. webtrezor. trezory** .
-    - Pro **položku Typ události-1**vyberte **Microsoft. klíčů trezor. SecretNewVersionCreated** .
+    - Jako **typ prostředku** vyberte **Microsoft. webtrezor. trezory** .
+    - Pro **položku Typ události-1** vyberte **Microsoft. klíčů trezor. SecretNewVersionCreated** .
 
     ![Návrhář aplikace logiky – obslužná rutina události](../media/eventgrid-logicappdesigner2.png)
 
@@ -60,7 +60,7 @@ K vytvoření předplatného Azure Event Grid použijte následující postup:
 
 1. Vytvoření e-mailové šablony:
     - **Na:** Zadejte e-mailovou adresu pro příjem e-mailů s oznámením. Pro účely tohoto kurzu použijte e-mailový účet, ke kterému máte při testování přístup.
-    - **Předmět** a **Text**: Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Data události můžete načíst pomocí `@{triggerBody()?['Data']}` .
+    - **Předmět** a **Text** : Napište text e-mailu. V nástroji pro výběr vyberte vlastnosti JSON, které budou zahrnovat dynamický obsah na základě dat události. Data události můžete načíst pomocí `@{triggerBody()?['Data']}` .
 
     Vaše e-mailová šablona může vypadat jako v tomto příkladu.
 
@@ -77,7 +77,7 @@ K vytvoření předplatného Azure Event Grid použijte následující postup:
     
     ![Návrhář aplikace logiky – testování a ověřování](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Přejít do trezoru klíčů, vybrat **tajné**kódy a vybrat **+ Generovat/importovat**. Vytvořte nový tajný klíč pro účely testování a zachovejte zbývající parametry ve výchozím nastavení.
+1.  Přejít do trezoru klíčů, vybrat **tajné** kódy a vybrat **+ Generovat/importovat**. Vytvořte nový tajný klíč pro účely testování a zachovejte zbývající parametry ve výchozím nastavení.
 
     ![Key Vault – vytvoření tajného kódu](../media/eventgrid-logicapps-kv-create-secret.png)
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333813"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285960"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>Zobrazit výstup po dokončení
 
-Když použijete **ScriptRunConfig**, můžete použít ```run.wait_for_completion(show_output = True)``` k zobrazení po dokončení školení modelu. ```show_output```Příznak vám poskytne podrobný výstup. Další informace najdete v části ScriptRunConfig tématu [Jak povolit protokolování](how-to-track-experiments.md#scriptrun-logs).
+Když použijete **ScriptRunConfig** , můžete použít ```run.wait_for_completion(show_output = True)``` k zobrazení po dokončení školení modelu. ```show_output```Příznak vám poskytne podrobný výstup. Další informace najdete v části ScriptRunConfig tématu [Jak povolit protokolování](how-to-track-experiments.md#scriptrun-logs).
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>Metriky spuštění dotazu
@@ -105,7 +105,9 @@ Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()``` . 
 
 V [Azure Machine Learning Studiu](https://ml.azure.com)můžete procházet dokončené záznamy spuštění, včetně protokolovaných metrik.
 
-Přejděte na kartu **experimenty** a vyberte svůj experiment. Na řídicím panelu experimentu můžete vidět sledované metriky a protokoly pro každé spuštění. 
+Přejděte na kartu **experimenty** . Pokud chcete zobrazit všechny vaše běhy v pracovním prostoru mezi experimenty, vyberte kartu **všechna spuštění** . Můžete přejít k podrobnostem o spuštění pro konkrétní experimenty pomocí filtru experimentů v horním řádku nabídek. 
+
+Pro jednotlivé zobrazení experimentů vyberte kartu **všechny experimenty** . Na řídicím panelu experimentu můžete vidět sledované metriky a protokoly pro každé spuštění. 
 
 Přechodem k podrobnostem konkrétního spuštění zobrazíte jeho výstupy nebo protokoly nebo si stáhněte snímek experimentu, abyste mohli sdílet složku experimentů s ostatními.
 

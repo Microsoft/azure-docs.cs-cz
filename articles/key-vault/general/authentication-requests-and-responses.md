@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 2100572c0bcf5bf65fe5a70ab9e552c2d7f72934
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f223a55e4a1e4db4ac7057065d67ae64fa0f2c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983263"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288474"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -39,7 +39,7 @@ Tady jsou přípony adres URL používané pro přístup k jednotlivým typům o
 
 Azure Key Vault podporuje žádosti a odpovědi ve formátu JSON. Požadavky na Azure Key Vault jsou směrovány na platnou adresu URL Azure Key Vault pomocí protokolu HTTPS s některými parametry adresy URL a texty požadavků a odpovědí kódovaných v kódování JSON.
 
-Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o používání rozhraní REST Azure, včetně ověřování/autorizace a získání přístupového tokenu, najdete v tématu [Azure REST API Reference](https://docs.microsoft.com/rest/api/azure).
+Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o používání rozhraní REST Azure, včetně ověřování/autorizace a získání přístupového tokenu, najdete v tématu [Azure REST API Reference](/rest/api/azure).
 
 ## <a name="request-url"></a>Adresa URL požadavku  
  Operace správy klíčů používají operace HTTP DELETE, GET, PATCH, PUT a HTTP POST a kryptografických operací pro existující klíčové objekty, které používají HTTP POST. Klienti, kteří nemůžou podporovat konkrétní příkazy HTTP, můžou k určení zamýšleného příkazu použít taky POST protokolu HTTP pomocí záhlaví X-HTTP-REQUEST. požadavky, které obvykle nevyžadují tělo, by měly při použití HTTP POST zahrnovat prázdné tělo, například při použití POST namísto DELETE.  
@@ -111,7 +111,7 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 ## <a name="authentication"></a>Authentication  
  Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje přístupové tokeny Azure Active Directory, které se dají získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
- Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
+ Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](/rest/api/azure/index#register-your-client-application-with-azure-ad).
  
  Přístupové tokeny musí být odesílány službě pomocí hlavičky autorizace protokolu HTTP:  
 
@@ -133,5 +133,4 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
--   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.  
-
+-   prostředek: název prostředku ( `https://vault.azure.net` ), který se má použít v žádosti o autorizaci.

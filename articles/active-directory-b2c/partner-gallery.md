@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c67ff71ccc7690fbf3362b423ba4b6a56091684
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891240"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287171"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C partneři ISV
 
@@ -36,8 +36,10 @@ Naše síť partnera ISV rozšiřuje naše možnosti řešení, které vám pom�
 | ![Snímek obrazovky s logem itsme](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) je řešení digitálního ID s elektronickými identifikacemi, ověřováním a důvěryhodnými službami (eiDAS), které uživatelům umožňuje bezpečné přihlášení bez čtecích zařízení, hesel, dvojúrovňového ověřování a více kódů PIN. |
 | ![Snímek obrazovky s logem Jumio](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) je ověřovací služba ID, která umožňuje automatické ověřování ID v reálném čase a zabezpečení zákaznických dat. |
 | ![Snímek obrazovky s logem LexisNexis](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) je profilace a zprostředkovatel ověřování identity, který ověřuje identifikaci uživatele a poskytuje komplexní vyhodnocení rizika na základě zařízení uživatele. |
+| ![Snímek obrazovky s logem N8 identity](./media/partner-gallery/n8identity-logo.png) | [N8 identity](./partner-n8identity.md) je platforma pro zásady správného řízení identity jako služba, která poskytuje řešení pro řešení migrace zákaznických účtů a správy žádostí o služby zákazníkům, které běží na Microsoft Azure. |
 | ![Snímek obrazovky s logem Onfido](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) je ID dokumentu a řešení pro ověřování obličeje biometrika, které společnosti umožňuje uspokojit požadavky na *zákazníky* a identitu v reálném čase.  |
 | ![Snímek obrazovky s logem Saviynt](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-saviynt.md) cloudová nativní platforma používá inteligentní analýzy a poskytuje integraci mezi aplikacemi k zjednodušení modernizace IT a k podpoře lepšího zabezpečení, zásad správného řízení a dodržování předpisů. Modernizace podniku mění způsob, jakým společnost přezkoumává žádosti o přístup, prověří přístup, analýzu sestav a zjednodušuje certifikační kampaně.  |
+| ![Snímek obrazovky s logem vrstev](./media/partner-gallery/strata-logo.png) | Úrovně [chrání místní](./partner-strata.md) aplikace vyvynucováním konzistentních zásad přístupu, udržováním synchronizovaných identit a zjednodušuje přechod aplikací ze starších systémů identit na ověřování pomocí standardů a řízení přístupu, které poskytuje Azure AD B2C. |
 | ![Snímek obrazovky s logem Trusona](./media/partner-gallery/trusona-logo.png) | Integrace [Trusona](./partner-trusona.md) vám pomůže bezpečně se přihlásit a povolit ověřování bez hesla, vícefaktorové ověřování a kontrolu digitální licence.|
 | ![Snímek obrazovky s logem aplikace Twilio Verify](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) poskytuje více řešení pro povolení služby Multi-Factor Authentication (MFA) prostřednictvím jednorázového hesla serveru SMS (jednorázového hesla), času založeného na čase (TOTP) a nabízených oznámení a pro splnění požadavků SCA pro platební služby ve směrnici 2 (PSD2).|
 | ![Snímek obrazovky, který zobrazuje logo TypingDNA](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) je ověření identity a poskytovatel kontroly pravopisu na základě vzoru psaní uživatelů, poskytuje řešení pro ověřování ID, které vynucuje vícefaktorové ověřování a pomáhá dodržovat požadavky SCA na službu pro platební služby. 2 (PSD2). |

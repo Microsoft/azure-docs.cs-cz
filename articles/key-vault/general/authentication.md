@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3ec831bada19aa8d3872440ba628ac06bc64f749
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099415"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287499"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Ověřování ve službě Azure Key Vault
 
@@ -20,7 +20,7 @@ Azure Key Vault umožňuje ukládat tajné klíče a řídit jejich distribuci v
 
 ## <a name="app-identity-and-security-principals"></a>Identita aplikace a objekty zabezpečení
 
-Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis), která zodpovídá za ověřování identity libovolného **objektu zabezpečení** .
+Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), která zodpovídá za ověřování identity libovolného **objektu zabezpečení**.
 
 Objekt zabezpečení je objekt, který představuje uživatele, skupinu, službu nebo aplikaci požadující přístup k prostředkům Azure. Azure přiřadí jedinečné **ID objektu** každému objektu zabezpečení.
 
@@ -36,9 +36,9 @@ Pro aplikace existují dva způsoby, jak získat instanční objekt:
 
     Díky spravované identitě Azure interně spravuje instanční objekt aplikace a automaticky ověřuje aplikaci s ostatními službami Azure. Spravovaná identita je k dispozici pro aplikace nasazené do různých služeb.
 
-    Další informace najdete v tématu [Přehled spravované identity](/azure/active-directory/managed-identities-azure-resources/overview). Podívejte se také na [služby Azure, které podporují spravovanou identitu](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities), které odkazují na články, které popisují, jak povolit spravovanou identitu pro konkrétní služby (například App Service, Azure Functions, Virtual Machines atd.).
+    Další informace najdete v tématu [Přehled spravované identity](../../active-directory/managed-identities-azure-resources/overview.md). Podívejte se také na [služby Azure, které podporují spravovanou identitu](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md), které odkazují na články, které popisují, jak povolit spravovanou identitu pro konkrétní služby (například App Service, Azure Functions, Virtual Machines atd.).
 
-* Pokud nemůžete použít spravovanou identitu, můžete místo toho aplikaci **zaregistrovat** u svého TENANTA Azure AD, jak je popsáno v tématu [rychlý Start: registrace aplikace s platformou identity Azure](/azure/active-directory/develop/quickstart-register-app). Registrace vytvoří také druhý objekt aplikace, který identifikuje aplikaci napříč všemi klienty.
+* Pokud nemůžete použít spravovanou identitu, můžete místo toho aplikaci **zaregistrovat** u svého TENANTA Azure AD, jak je popsáno v tématu [rychlý Start: registrace aplikace s platformou identity Azure](../../active-directory/develop/quickstart-register-app.md). Registrace vytvoří také druhý objekt aplikace, který identifikuje aplikaci napříč všemi klienty.
 
 ## <a name="authorize-a-security-principal-to-access-key-vault"></a>Autorizovat objekt zabezpečení pro přístup k Key Vault
 
@@ -56,13 +56,13 @@ Key Vault pracuje se dvěma různými úrovněmi autorizace:
  
     Chcete-li přiřadit a spravovat role, přečtěte si následující články:
 
-    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+    - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+    - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
-    Key Vault aktuálně podporuje roli [Přispěvatel](/azure/role-based-access-control/built-in-roles#key-vault-contributor) , která umožňuje operace správy u prostředků Key Vault. Řada dalších rolí je aktuálně ve verzi Preview. Můžete také vytvořit vlastní role, jak je popsáno v tématu [vlastní role Azure](/azure/role-based-access-control/custom-roles).
+    Key Vault aktuálně podporuje roli [Přispěvatel](../../role-based-access-control/built-in-roles.md#key-vault-contributor) , která umožňuje operace správy u prostředků Key Vault. Řada dalších rolí je aktuálně ve verzi Preview. Můžete také vytvořit vlastní role, jak je popsáno v tématu [vlastní role Azure](../../role-based-access-control/custom-roles.md).
 
-    Obecné informace o rolích najdete v tématu [co je Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview).
+    Obecné informace o rolích najdete v tématu [co je Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md).
 
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Key Vault pracuje se dvěma různými úrovněmi autorizace:
 
 Ve výchozím nastavení Key Vault umožňuje přístup k prostředkům prostřednictvím veřejných IP adres. Pro zajištění vyššího zabezpečení můžete také omezit přístup ke konkrétním rozsahům IP adres, koncovým bodům služby, virtuálním sítím nebo soukromým koncovým bodům.
 
-Další informace najdete v tématu [přístup Azure Key Vault za bránou firewall](/azure/key-vault/general/access-behind-firewall).
+Další informace najdete v tématu [přístup Azure Key Vault za bránou firewall](./access-behind-firewall.md).
 
 
 ## <a name="the-key-vault-authentication-flow"></a>Key Vault tok ověřování
@@ -80,7 +80,7 @@ Další informace najdete v tématu [přístup Azure Key Vault za bránou firewa
 1. Instanční objekt požaduje ověření ve službě Azure AD, například:
     * Uživatel se do Azure Portal přihlásí pomocí uživatelského jména a hesla.
     * Aplikace vyvolá Azure REST API, který prezentuje ID klienta a tajný klíč nebo klientský certifikát.
-    * Prostředek Azure, jako je třeba virtuální počítač se spravovanou identitou, kontaktuje koncový bod [azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) REST, který získá přístupový token.
+    * Prostředek Azure, jako je třeba virtuální počítač se spravovanou identitou, kontaktuje koncový bod [azure instance metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) REST, který získá přístupový token.
 
 1. Pokud je ověřování pomocí služby Azure AD úspěšné, instančnímu objektu se udělí token OAuth.
 
@@ -89,7 +89,7 @@ Další informace najdete v tématu [přístup Azure Key Vault za bránou firewa
 1. Brána firewall Key Vault kontroluje následující kritéria. Pokud je splněno jakékoli kritérium, volání je povoleno. V opačném případě se volání zablokuje a vrátí se zakázaná odpověď.
 
     * Brána firewall je zakázaná a veřejný koncový bod Key Vault dosažitelný z veřejného Internetu.
-    * Volající je [Key Vault Důvěryhodná služba](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services), která umožňuje obejít bránu firewall.
+    * Volající je [Key Vault Důvěryhodná služba](./overview-vnet-service-endpoints.md#trusted-services), která umožňuje obejít bránu firewall.
     * Volající je uveden v bráně firewall podle IP adresy, virtuální sítě nebo koncového bodu služby.
     * Volající může kontaktovat Key Vault přes nakonfigurované připojení pomocí privátního propojení.    
 
@@ -109,20 +109,20 @@ Následující tabulka obsahuje odkazy na různé články, které ukazují, jak
 
 | Key Vault tajných klíčů | Key Vault klíče | Key Vault certifikátů |
 |  --- | --- | --- |
-| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
-| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Python](../secrets/quick-create-python.md) | [Python](../keys/quick-create-python.md) | [Python](../certificates/quick-create-python.md) | 
+| [.NET (SDK v4)](../secrets/quick-create-net.md) | -- | -- |
 | [.NET (sada SDK V3)](https://dotnet.microsoft.com/download/dotnet-core/3.0) | -- | -- |
-| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
-| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| [Java](../secrets/quick-create-java.md) | -- | -- |
+| [JavaScript](../secrets/quick-create-node.md) | -- | -- | 
 | | | |
-| [Azure Portal](/azure/key-vault/secrets/quick-create-portal) | [Azure Portal](/azure/key-vault/keys/quick-create-portal) | [Azure Portal](/azure/key-vault/certificates/quick-create-portal) |
-| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
-| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
-| [Šablona ARM](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [Azure Portal](../secrets/quick-create-portal.md) | [Azure Portal](../keys/quick-create-portal.md) | [Azure Portal](../certificates/quick-create-portal.md) |
+| [Azure CLI](../secrets/quick-create-cli.md) | [Azure CLI](../keys/quick-create-cli.md) | [Azure CLI](../certificates/quick-create-cli.md) |
+| [Azure PowerShell](../secrets/quick-create-powershell.md) | [Azure PowerShell](../keys/quick-create-powershell.md) | [Azure PowerShell](../certificates/quick-create-powershell.md) |
+| [Šablona ARM](../secrets/quick-create-net.md) | -- | -- |
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží se zásadami přístupu Key Vault](troubleshooting-access-issues.md)
 - [Kódy chyb Key Vault REST API](rest-error-codes.md)
 - [Key Vault příručka pro vývojáře](developers-guide.md)
-- [Co je Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)
+- [Co je Azure Role-Based Access Control (RBAC)?](../../role-based-access-control/overview.md)

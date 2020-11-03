@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791983"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286338"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indexování šifrovaných objektů BLOB pomocí indexerů objektů BLOB a dovednosti v Azure Kognitivní hledání
 
-V tomto článku se dozvíte, jak pomocí služby [azure kognitivní hledání](search-what-is-azure-search.md) naindexovat dokumenty, které byly dříve zašifrované v rámci [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) pomocí [Azure Key Vault](../key-vault/general/overview.md). V normálním případě indexer nemůže extrahovat obsah ze zašifrovaných souborů, protože nemá přístup k šifrovacímu klíči. Když ale použijete vlastní dovednost [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) a potom [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md), můžete poskytnout řízený přístup k klíči k dešifrování souborů a pak z nich extrahovat obsah. Tím se odemkne možnost indexování těchto dokumentů a nikdy se nemusíte starat o data uložená v nešifrované podobě.
+V tomto článku se dozvíte, jak pomocí služby [azure kognitivní hledání](search-what-is-azure-search.md) naindexovat dokumenty, které byly dříve zašifrované v rámci [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) pomocí [Azure Key Vault](../key-vault/general/overview.md). V normálním případě indexer nemůže extrahovat obsah ze zašifrovaných souborů, protože nemá přístup k šifrovacímu klíči. Když ale použijete vlastní dovednost [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) a potom [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md), můžete poskytnout řízený přístup k klíči k dešifrování souborů a pak z nich extrahovat obsah. Tím se odemkne možnost indexování těchto dokumentů, aniž by došlo k narušení stavu šifrování vašich uložených dokumentů.
 
-Tato příručka používá post a rozhraní API REST pro vyhledávání k provádění následujících úloh:
+V Azure Blob Storage se od dříve šifrovaných celých dokumentů (nestrukturovaný text), jako je PDF, HTML, DOCX a PPTX, používá tato příručka k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure, které jsou zašifrované pomocí Azure Key Vault.
 > * Definujte kanál, který dešifruje dokumenty a extrahuje z nich text.
 > * Definujte index pro uložení výstupu.
 > * Spusťte kanál pro vytvoření a načtení indexu.
@@ -36,13 +35,10 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 V tomto příkladu se předpokládá, že jste už soubory nahráli do Azure Blob Storage a jste je zašifroval v procesu. Pokud potřebujete pomáhat s tím, jak se nahrávají a zašifrují vaše soubory, přečtěte si [Tento kurz](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) .
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ve stejném předplatném jako Azure kognitivní hledání. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
++ [Azure kognitivní hledání](search-create-service-portal.md) na [Fakturovatelné úrovni](search-sku-tier.md#tiers) (Basic nebo vyšší, v libovolné oblasti)
 + [Funkce Azure Functions](https://azure.microsoft.com/services/functions/)
 + [Desktopová aplikace Postman](https://www.getpostman.com/)
-+ [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
-
-> [!Note]
-> Pro tuto příručku můžete použít bezplatnou službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery, tři zdroje dat a tři dovednosti. Tato příručka vytvoří jednu z nich. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
 
 ## <a name="1---create-services-and-collect-credentials"></a>1. vytvoření služeb a shromažďování přihlašovacích údajů
 
@@ -68,9 +64,9 @@ V provozu DecryptBlobFile dovednost přebírá adresu URL a token SAS pro každ�
      
        ![Přidání zásad přístupu k trezoru klíčů](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Zásady přístupu trezoru klíčů")
 
-    1. V části **Konfigurovat ze šablony** vyberte **Azure Data Lake Storage nebo Azure Storage** .
+    1. V části **Konfigurovat ze šablony** vyberte **Azure Data Lake Storage nebo Azure Storage**.
 
-    1. Jako objekt zabezpečení vyberte instanci funkce Azure, kterou jste nasadili. Můžete ho vyhledat pomocí předpony prostředků, která se použila k jeho vytvoření v kroku 2, který má výchozí hodnotu předpony **psdbf-Function-App** .
+    1. Jako objekt zabezpečení vyberte instanci funkce Azure, kterou jste nasadili. Můžete ho vyhledat pomocí předpony prostředků, která se použila k jeho vytvoření v kroku 2, který má výchozí hodnotu předpony **psdbf-Function-App**.
 
     1. Pro možnost autorizované aplikace nevybírejte vše.
      
@@ -121,7 +117,7 @@ Nainstalujte a nastavte post.
 1. Stáhněte [zdrojový kód kolekce po](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
 1. Vyberte **File**  >  **importovat** soubor a importujte zdrojový kód do metody post.
 1. Vyberte kartu **kolekce** a pak klikněte na tlačítko **...** (tři tečky).
-1. Vyberte **Upravit** . 
+1. Vyberte **Edit** (Upravit). 
    
    ![Pozálohovací aplikace ukazující navigaci](media/indexing-encrypted-blob-files/postman-edit-menu.jpg "Přejít do nabídky upravit v poli post")
 1. V dialogovém okně **Upravit** vyberte kartu **proměnné** . 
@@ -141,11 +137,11 @@ Pokud chcete získat hodnotu pro `admin-key` , použijte klíč rozhraní API pr
 | `storage-container-name` | Název kontejneru objektů blob, který obsahuje šifrované soubory, které mají být indexovány. | 
 | `function-uri` |  Ve funkci Azure v části **základy** na hlavní stránce. | 
 | `function-code` | V Azure Functions přejděte na **klíče aplikace** , kliknutím zobrazíte **výchozí** klíč a zkopírujete hodnotu. | 
-| `api-version` | Nechejte jako **2020-06-30** . |
-| `datasource-name` | Ponechte jako **šifrované – objekty blob-DS** . | 
-| `index-name` | Ponechte jako **šifrované – objekty blob-IDX** . | 
-| `skillset-name` | Ponechte jako **šifrované – objekty blob – SS** . | 
-| `indexer-name` | Ponechte jako **šifrované – objekty blob – IXR** . | 
+| `api-version` | Nechejte jako **2020-06-30**. |
+| `datasource-name` | Ponechte jako **šifrované – objekty blob-DS**. | 
+| `index-name` | Ponechte jako **šifrované – objekty blob-IDX**. | 
+| `skillset-name` | Ponechte jako **šifrované – objekty blob – SS**. | 
+| `indexer-name` | Ponechte jako **šifrované – objekty blob – IXR**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Kontrola kolekce požadavků v poli pro odeslání
 

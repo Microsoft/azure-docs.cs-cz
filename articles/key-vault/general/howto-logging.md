@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744803"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285641"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Postup povolení protokolování Key Vault
 
 Po vytvoření jednoho nebo více trezorů klíčů budete pravděpodobně chtít sledovat, jak a kdy jsou k vašim trezorům klíčů přistupované a kým. Úplné informace o této funkci najdete v tématu [protokolování Key Vault](logging.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 I když pro vaše protokoly můžete použít existující účet úložiště, vytvoříme nový účet úložiště vyhrazený pro Key Vault protokoly. 
 
-Pro další snadné řízení používáme také stejnou skupinu prostředků jako ta, která obsahuje Trezor klíčů. V rychlém startu [Azure PowerShell](quick-create-powershell.md)a v rychlém startu [Azure CLI](quick-create-cli.md) se tato skupina prostředků jmenuje **myResourceGroup**a umístění je *eastus*. Tyto hodnoty nahraďte vlastními, pokud je to možné. 
+Pro další snadné řízení používáme také stejnou skupinu prostředků jako ta, která obsahuje Trezor klíčů. V rychlém startu [Azure PowerShell](quick-create-powershell.md)a v rychlém startu [Azure CLI](quick-create-cli.md) se tato skupina prostředků jmenuje **myResourceGroup** a umístění je *eastus*. Tyto hodnoty nahraďte vlastními, pokud je to možné. 
 
 Bude také potřeba zadat název účtu úložiště. Názvy účtů úložiště musí být jedinečné, musí být dlouhé 3 až 24 znaků a obsahovat jenom číslice a malá písmena.  Nakonec vytvoříme účet úložiště pro SKU "Standard_LRS".
 
@@ -147,7 +147,7 @@ Co je protokolováno:
   * Vytváření, úpravy nebo odstraňování těchto klíčů nebo tajných kódů.
   * Podepisování, ověřování, šifrování, dešifrování, zabalení a rozbalení klíčů, získávání tajných klíčů a zobrazování klíčů a tajných kódů (a jejich verzí).
 * Neověřené požadavky, které skončí odpovědí 401 – Neoprávněno. Příklady jsou požadavky, které nemají nosný token, které jsou poškozené nebo jejichž platnost vypršela, nebo které mají neplatný token.  
-* Události oznámení Event Grid pro blížící se vypršení platnosti a zásady přístupu do trezoru se změnily (událost nové verze se neprotokoluje). Události jsou protokolovány bez ohledu na to, zda je v trezoru klíčů vytvořeno předplatné událostí. Další informace najdete v tématu [Event Grid schéma událostí pro Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
+* Události oznámení Event Grid pro blížící se vypršení platnosti a zásady přístupu do trezoru se změnily (událost nové verze se neprotokoluje). Události jsou protokolovány bez ohledu na to, zda je v trezoru klíčů vytvořeno předplatné událostí. Další informace najdete v tématu [Event Grid schéma událostí pro Key Vault](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="access-your-logs"></a>Přístup k vašim protokolům
 

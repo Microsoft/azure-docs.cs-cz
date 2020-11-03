@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124217"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286894"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -37,7 +37,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
 
 **Krok 1** – poskytovatelé certifikační autority (CA)  
 -   Připojování jako správce IT, správce PKI nebo kdokoli, kdo spravuje účty s CAs pro danou společnost (např. Contoso) je předpokladem pro použití Key Vaultch certifikátů.  
-    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. Další informace najdete [tady](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers).   
+    Následující CA jsou současnými partnerskými poskytovateli s Key Vault. Další informace najdete [tady](./create-certificate.md#partnered-ca-providers).   
     -   DigiCert-Key Vault nabízí OV certifikáty TLS/SSL s DigiCert.  
     -   GlobalSign-Key Vault nabízí OV certifikáty TLS/SSL s GlobalSign.  
 
@@ -50,7 +50,7 @@ Certifikáty se skládají ze tří vzájemně propojených prostředků společ
     -   Poskytovatel  
     -   Přihlašovací údaje – přihlašovací údaje účtu certifikační autority Každá certifikační autorita má vlastní konkrétní data.  
 
-    Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](https://aka.ms/kvcertsblog).  
+    Další informace o vytváření účtů s poskytovateli certifikačních autorit najdete v souvisejícím příspěvku na [blogu Key Vault](/archive/blogs/kv/manage-certificates-via-azure-key-vault).  
 
 **Krok 3,1** – nastavení [kontaktů certifikátů](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení Toto je kontakt pro uživatele Key Vault. Key Vault nevynutila tento krok.  
 
@@ -82,7 +82,7 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
       -   Kvůli prodlevě, která se má vytvořit, se dá iniciovat operace zrušení. Zrušení může nebo nemusí být účinné.  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Zásady zabezpečení a přístupu k síti spojené s integrovanou certifikační autoritou
-Služba Key Vault odesílá požadavky do certifikační autority (odchozí provoz). Proto je plně kompatibilní s povolenými trezory klíčů brány firewall. Key Vault nesdílí zásady přístupu k certifikační autoritě. CA musí být nakonfigurovaná tak, aby přijímala požadavky na podpis nezávisle. [Průvodce integrací důvěryhodné certifikační autority](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Služba Key Vault odesílá požadavky do certifikační autority (odchozí provoz). Proto je plně kompatibilní s povolenými trezory klíčů brány firewall. Key Vault nesdílí zásady přístupu k certifikační autoritě. CA musí být nakonfigurovaná tak, aby přijímala požadavky na podpis nezávisle. [Průvodce integrací důvěryhodné certifikační autority](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>Import certifikátu  
  Alternativně – certifikát lze importovat do Key Vault – PFX nebo PEM.  

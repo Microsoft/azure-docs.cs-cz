@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635433"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287158"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurace klíčů spravovaných zákazníkem pro šifrování dat v Azure Kognitivní hledání
 
@@ -43,13 +43,11 @@ Pokud používáte jinou oblast nebo službu vytvořenou před 1. srpna, bude š
 
 ## <a name="prerequisites"></a>Předpoklady
 
-V tomto příkladu se používají následující nástroje a služby. 
+V tomto scénáři se používají následující nástroje a služby.
 
-+ [Vytvořte službu kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
-
-+ [Vytvořte prostředek Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) nebo Najděte nějaký existující. Key Vault i Kognitivní hledání musí být ve stejném předplatném. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
-
-+ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) k registraci aplikace a vytvoření tajného řetězce používaného vaší aplikací k ověření. Pokud ho nemáte, [nastavte nového tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
++ [Azure kognitivní hledání](search-create-service-portal.md) na [Fakturovatelné úrovni](search-sku-tier.md#tiers) (Basic nebo vyšší, v libovolné oblasti).
++ [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) ve stejném předplatném jako Azure kognitivní hledání. V trezoru klíčů musí být povolená **Ochrana před** **příčtením a odstraněním** .
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Pokud ho nemáte, [nastavte nového tenanta](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Měli byste mít vyhledávací aplikaci, která může vytvořit zašifrovaný objekt. Do tohoto kódu odkazujete na klíč trezoru klíčů a registrační informace služby Active Directory. Tento kód může být pracovní aplikace nebo kód prototypu, jako je například [kód C# DotNetHowToEncryptionUsingCMK Sample](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
@@ -66,7 +64,7 @@ Obě vlastnosti můžete nastavit pomocí portálu, PowerShellu nebo příkazů 
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů.
 
-1. Na stránce **Přehled** v části **základy** Povolte ochranu **obnovitelného odstranění** a **vyprázdnění** .
+1. Na stránce **Přehled** v části **základy** Povolte ochranu **obnovitelného odstranění** a **vyprázdnění**.
 
 ### <a name="using-powershell"></a>Použití PowerShellu
 
@@ -110,7 +108,7 @@ Tento krok přeskočte, pokud již máte v Azure Key Vault klíč.
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com) a otevřete stránku s přehledem trezoru klíčů.
 
-1. Na levé straně vyberte **klávesy** a pak vyberte **+ Generovat/importovat** .
+1. Na levé straně vyberte **klávesy** a pak vyberte **+ Generovat/importovat**.
 
 1. V podokně **vytvořit klíč** klikněte v seznamu **možností** na metodu, kterou chcete použít k vytvoření klíče. Můžete **vygenerovat** nový klíč, **nahrát** existující klíč nebo použít **obnovení zálohy** k výběru zálohy klíče.
 
@@ -118,7 +116,7 @@ Tento krok přeskočte, pokud již máte v Azure Key Vault klíč.
 
 1. Vyberte **vytvořit** a spusťte nasazení.
 
-1. Poznamenejte si identifikátor klíče – skládá se z **identifikátoru URI hodnoty klíče** , **názvu klíče** a **verze klíče** . Tento identifikátor budete potřebovat k definování šifrovaného indexu v Azure Kognitivní hledání.
+1. Poznamenejte si identifikátor klíče – skládá se z **identifikátoru URI hodnoty klíče** , **názvu klíče** a **verze klíče**. Tento identifikátor budete potřebovat k definování šifrovaného indexu v Azure Kognitivní hledání.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
 
@@ -126,23 +124,23 @@ Tento krok přeskočte, pokud již máte v Azure Key Vault klíč.
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte prostředek Azure Active Directory pro vaše předplatné.
 
-1. Na levé straně v části **Spravovat** vyberte **Registrace aplikací** a pak vyberte **Nová registrace** .
+1. Na levé straně v části **Spravovat** vyberte **Registrace aplikací** a pak vyberte **Nová registrace**.
 
-1. Dejte registraci název, třeba název, který se podobá názvu vyhledávací aplikace. Vyberte **Zaregistrovat** .
+1. Dejte registraci název, třeba název, který se podobá názvu vyhledávací aplikace. Vyberte **Zaregistrovat**.
 
 1. Po vytvoření registrace aplikace zkopírujte ID aplikace. Tento řetězec budete muset zadat do aplikace. 
 
    Pokud procházíte [DotNetHowToEncryptionUsingCMKem](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK), vložte tuto hodnotu do **appsettings.js** do souboru.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="ID aplikace v části Essentials":::
 
 1. Pak na levé straně vyberte **certifikáty & tajné klíče** .
 
-1. Vyberte **Nový tajný klíč klienta** . Zadejte tajný kód pro zobrazovaný název a vyberte **Přidat** .
+1. Vyberte **Nový tajný klíč klienta**. Zadejte tajný kód pro zobrazovaný název a vyberte **Přidat**.
 
 1. Zkopírujte tajný klíč aplikace. Pokud procházíte ukázkou, vložte tuto hodnotu do **appsettings.js** do souboru.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Tajný kód aplikace":::
 
 ## <a name="4---grant-key-access-permissions"></a>4 – udělení přístupových oprávnění k klíčům
 
@@ -152,24 +150,24 @@ Přístupová oprávnění by mohla být v daném okamžiku odvolána. Po odvol�
 
 1. Pořád v Azure Portal otevřete stránku s **přehledem** trezoru klíčů. 
 
-1. Vyberte **zásady přístupu** na levé straně a vyberte **+ Přidat zásady přístupu** .
+1. Vyberte **zásady přístupu** na levé straně a vyberte **+ Přidat zásady přístupu**.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Přidat nové zásady přístupu trezoru klíčů":::
 
 1. Zvolte **Vybrat objekt zabezpečení** a vyberte aplikaci, kterou jste zaregistrovali ve službě Active Directory. Můžete ho vyhledat podle názvu.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Vytvoří nový klíč trezoru klíčů.":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Výběr objektu zásad přístupu trezoru klíčů":::
 
-1. V možnosti **klíčová oprávnění** vyberte *získat* , *Rozbalit klíč* a *zabalit klíč* .
+1. V možnosti **klíčová oprávnění** vyberte *získat* , *Rozbalit klíč* a *zabalit klíč*.
 
-1. V **oprávnění ke tajným klíčům** vyberte *získat* .
+1. V **oprávnění ke tajným klíčům** vyberte *získat*.
 
-1. V **oprávnění certifikát** vyberte *získat* .
+1. V **oprávnění certifikát** vyberte *získat*.
 
-1. Vyberte **Přidat** a pak **Uložit** .
+1. Vyberte **Přidat** a pak **Uložit**.
 
 > [!Important]
-> Šifrovaný obsah ve službě Azure Kognitivní hledání je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s určitou **verzí** . Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version.. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.
+> Šifrovaný obsah ve službě Azure Kognitivní hledání je nakonfigurovaný tak, aby používal konkrétní Azure Key Vault klíč s určitou **verzí**. Pokud změníte klíč nebo verzi, je nutné aktualizovat index nebo mapu synonym, aby používaly nové key\version **před** odstraněním předchozího key\version.. Když se to nepovede, vykreslí se index nebo mapa synonym nepoužitelné. po ztrátě přístupu ke klíči nebude možné obsah dešifrovat.
 
 ## <a name="5---encrypt-content"></a>5. šifrování obsahu
 
