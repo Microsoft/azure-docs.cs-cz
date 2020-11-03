@@ -49,14 +49,14 @@ ExpressRoute umožňuje rozšiřování místních sítí do cloudu Microsoftu p
 VPN Gateway vám pomůže vytvořit šifrovaná připojení mezi různými místy k virtuální síti z místních umístění nebo vytvářet šifrovaná připojení mezi virtuální sítě. K dispozici jsou různé konfigurace pro VPN Gateway připojení, například site-to-site, Point-to-site nebo VNet-to-VNet.
 Následující diagram znázorňuje více připojení VPN typu Site-to-site ke stejné virtuální síti.
 
-:::image type="content" source="./media/networking-overview/vpngateway-multisite-connection-diagram.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/vpngateway-multisite-connection-diagram.png" alt-text="Připojení Site-to-site pro Azure VPN Gateway":::
 
 Další informace o různých typech připojení k síti VPN najdete v tématu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 ### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
 Azure Virtual WAN je síťová služba, která poskytuje optimalizované a automatizované připojení větví k Azure. Oblasti Azure slouží jako centra, ke kterým se můžete připojit ke svým větvím. Můžete využít páteřní síť Azure a taky připojit větve a využít připojení k virtuální síti. Služba Azure Virtual WAN přináší dohromady mnoho služeb cloudového připojení Azure, jako je VPN typu Site-to-site, ExpressRoute, User VPN typu Point-to-site, do jediného provozního rozhraní. Připojení ke službě Azure virtuální sítě se vytváří pomocí připojení k virtuální síti. Další informace najdete v tématu [co je Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
-:::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Diagram virtuální sítě WAN":::
 
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
 Azure DNS je hostitelská služba pro domény DNS, která poskytuje překlad názvů na IP adresy pomocí infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. Další informace najdete v tématu [co je Azure DNS?](../dns/dns-overview.md).
@@ -64,12 +64,12 @@ Azure DNS je hostitelská služba pro domény DNS, která poskytuje překlad ná
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
 Služba Azure bastionu je nová plně spravovaná služba PaaS spravovaná platformou, kterou zřizujete v rámci vaší virtuální sítě. Poskytuje zabezpečené a bezproblémové připojení RDP/SSH k virtuálním počítačům přímo v Azure Portal přes TLS. Když se připojíte přes Azure Bastion, virtuální počítače nepotřebují veřejnou IP adresu. Další informace najdete v tématu [co je Azure bastionu?](../bastion/bastion-overview.md).
 
-:::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/architecture.png" alt-text="Architektura Azure bastionu":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>Brána NAT služby Virtual Network
 Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Internetu pouze pro virtuální sítě. Při konfiguraci v podsíti všechna odchozí připojení používá vaše zadané statické veřejné IP adresy. Odchozí připojení je možné bez nástroje pro vyrovnávání zatížení nebo veřejných IP adres, které jsou přímo připojené k virtuálním počítačům. Další informace najdete v tématu [co je to brána NAT služby Virtual Network](../virtual-network/nat-overview.md).
 
-:::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/flow-map.png" alt-text="Brána NAT služby Virtual Network":::
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Služba partnerských vztahů Azure
 Azure peering Service vylepšuje připojení zákazníků ke cloudovým službám Microsoftu, jako jsou Microsoft 365, Dynamics 365, služby software jako služba (SaaS), Azure nebo jakékoli služby Microsoftu přístupné prostřednictvím veřejného Internetu. Další informace najdete v tématu [co je služba Azure peering Service?](../peering-service/about.md).
@@ -82,7 +82,7 @@ Hraniční zóna Azure je skupina nabídek od Microsoft Azure, které umožňuj�
 
 Azure Orbital je plně spravovaná cloudová pozemní stanice jako služba, která umožňuje komunikaci s vašimi kosmickými a satelitními Constellations, stahování a odesílání dat, zpracování dat v cloudu, řetězení služeb se službami Azure v jedinečných scénářích a generování produktů pro vaše zákazníky. Tento systém je založený na globální infrastruktuře Azure a globální vláknové síti s nízkou latencí. Další informace najdete v tématu [co je Azure Orbital?](azure-orbital-overview.md).
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Diagram komunikace Azure Orbital":::
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Služby ochrany aplikací
 
@@ -91,27 +91,27 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou chránit v
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
 [Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) poskytuje protiopatření proti nejpropracovanějším hrozbám DDoS. Služba poskytuje rozšířené možnosti zmírnění DDoS pro vaši aplikaci a prostředky nasazené ve virtuálních sítích. Kromě toho zákazníci, kteří používají Azure DDoS Protection, mají přístup k DDoS podpoře rychlých odpovědí, aby při aktivním útoku zapojili odborníky na DDoS.
 
-:::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
 ### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
 [Privátní odkaz Azure](../private-link/private-link-overview.md) vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím privátního koncového bodu ve vaší virtuální síti.
 Provoz mezi vaší virtuální sítí a službou přenáší páteřní síť Microsoftu. Vystavení vaší služby pro veřejný Internet již není nutné. Ve virtuální síti můžete vytvořit vlastní službu privátního propojení a předat ji zákazníkům.
 
-:::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/private-endpoint.png" alt-text="Přehled privátního koncového bodu":::
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Brána Azure Firewall
 Azure Firewall je spravovaná cloudová služba síťového zabezpečení, která chrání vaše prostředky ve virtuálních sítích Azure. Pomocí Azure Firewall můžete centrálně vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi. Brána Azure Firewall používá statickou veřejnou IP adresu pro prostředky virtuální sítě a díky tomu umožňuje venkovním bránám firewall identifikovat provoz pocházející z vaší virtuální sítě. 
 
 Další informace o Azure Firewall najdete v dokumentaci k [Azure firewall](../firewall/overview.md).
 
-:::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/firewall-threat.png" alt-text="Přehled brány firewall":::
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall (Brána firewall webových aplikací)
 [Firewall webových aplikací Azure](../web-application-firewall/overview.md) (WAF) poskytuje ochranu webových aplikací před běžnými webovými útoky a ohroženími zabezpečení, jako je například vkládání SQL a skriptování mezi weby. Azure WAF poskytuje předem chráněnou ochranu od OWASP hlavních chyb zabezpečení prostřednictvím spravovaných pravidel. Zákazníci navíc můžou nakonfigurovat také vlastní pravidla, která jsou zákaznická pravidla pro zajištění další ochrany založená na zdrojovém rozsahu IP adres, a požadavky na atributy, jako jsou hlavičky, soubory cookie, datová pole formuláře nebo parametry řetězce dotazu.
 
 Zákazníci se můžou rozhodnout nasadit [Azure WAF s Application Gateway](../application-gateway/waf-overview.md) , která poskytuje regionální ochranu entit ve veřejných a privátních adresních prostorech. Zákazníci si také můžou nasadit [Azure WAF s předními dveřmi](../frontdoor/waf-overview.md) , které poskytují ochranu na hraničních sítích pro veřejné koncové body.
 
-:::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Firewall webových aplikací":::
 
 ### <a name="network-security-groups"></a><a name="nsg"></a>Skupiny zabezpečení sítě
 Pomocí skupiny zabezpečení sítě můžete filtrovat síťový provoz do a z prostředků Azure ve virtuální síti Azure. Další informace najdete v tématu [skupiny zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
@@ -119,7 +119,7 @@ Pomocí skupiny zabezpečení sítě můžete filtrovat síťový provoz do a z 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Koncové body služby
 Koncové body služby virtuální sítě rozšiřují privátní adresní prostor vaší virtuální sítě a její identitu do služeb Azure přes přímé připojení. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždy zůstává v páteřní síti Microsoft Azure. Další informace najdete v tématu [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-:::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Koncové body služby pro virtuální síť":::
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>Služby doručování aplikací
 
@@ -128,12 +128,12 @@ Tato část popisuje síťové služby v Azure, které vám pomůžou doručovat
 ### <a name="content-delivery-network"></a><a name="cdn"></a>Content Delivery Network
 Azure Content Delivery Network (CDN) nabízí vývojářům globální řešení pro rychlé doručování širokopásmového obsahu uživatelům díky ukládání obsahu do mezipaměti na fyzických uzlech strategicky umístěných po celém světě. Další informace o Azure CDN najdete v tématu [Azure Content Delivery Network](../cdn/cdn-overview.md).
 
-:::image type="content" source="./media/networking-overview/cdn-overview.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/cdn-overview.png" alt-text="Azure CDN":::
 
 ### <a name="azure-front-door-service"></a><a name="frontdoor"></a>Azure Front Door Service
 Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. Se službou Front Door můžete transformovat svoje globální (zahrnující více oblastí) spotřebitelské a podnikové aplikace do robustních a vysoce výkonných přizpůsobených moderních aplikací, rozhraní API a obsahu, kterými s pomocí Azure oslovíte globální cílovou skupinu. Další informace najdete v tématu [přední dvířka Azure](../frontdoor/front-door-overview.md).
 
-:::image type="content" source="./media/networking-overview/front-door-visual-diagram.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/front-door-visual-diagram.png" alt-text="Přehled služby front-dveří":::
 
 ### <a name="traffic-manager"></a><a name="trafficmanager"></a>Traffic Manager
 
@@ -141,7 +141,7 @@ Azure Traffic Manager je nástroj pro vyrovnávání zatížení provozu na zák
 
 Následující diagram znázorňuje směrování na základě priority koncového bodu s Traffic Manager:
 
-:::image type="content" source="./media/networking-overview/priority.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/priority.png" alt-text="Služba Azure Traffic Manager &quot;Priorita&quot; přenosu – Metoda směrování":::
 
 Další informace o Traffic Manager najdete v tématu [co je Azure Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 
@@ -150,14 +150,14 @@ Azure Load Balancer poskytuje vysoce výkonné a nízké latence vyrovnávání 
 
 Následující obrázek znázorňuje internetovou vícevrstvou aplikaci, která využívá externí i interní nástroje pro vyrovnávání zatížení:
 
-:::image type="content" source="./media/networking-overview/load-balancer.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/load-balancer.png" alt-text="Příklad Azure Load Balancer":::
 
 ### <a name="application-gateway"></a><a name="applicationgateway"></a>Application Gateway
 Azure Application Gateway je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. Je to řadič pro doručování aplikací (ADC) jako služba a nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Další informace najdete v tématu [co je Azure Application Gateway?](../application-gateway/overview.md).
 
 Následující diagram znázorňuje směrování na základě cesty URL s Application Gateway.
 
-:::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Příklad Application Gateway":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>Služby monitorování sítě
 Tato část popisuje síťové služby v Azure, které vám pomůžou monitorovat síťové prostředky – Network Watcher Azure Monitor pro sítě, monitorování ExpressRoute, Azure Monitor a Virtual Network klepněte na.
@@ -177,7 +177,7 @@ KLEPNUTÍ na virtuální síť Azure (terminálový přístupový bod) umožňuj
 
 Následující obrázek ukazuje, jak funguje virtuální síť:
 
-:::image type="content" source="./media/networking-overview/virtual-network-tap-architecture.png" alt-text="Azure ExpressRoute":::
+:::image type="content" source="./media/networking-overview/virtual-network-tap-architecture.png" alt-text="Jak funguje na virtuální síti":::
 
 Další informace najdete v tématu [co je Virtual Network klepněte na](../virtual-network/virtual-network-tap-overview.md).
 
