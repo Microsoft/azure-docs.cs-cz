@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899190"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233879"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -111,7 +111,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 - SuccessFactors se ke službě Active Directory/SuccessFactors pro Azure Active Directory
 - Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
-- Pro Azure Active Directory zpětný zápis do Workday nebo SuccessFactors se podporuje aktualizace relevantních metadat pro podporované atributy (XPATH a JSONPath), ale není podporováno přidávání nových atributů Workday nebo SuccessFactors nad rámec těch, které jsou zahrnuté ve výchozím schématu.
+- Pro Azure Active Directory zpětný zápis do Workday nebo SuccessFactors se podporuje aktualizace relevantních metadat pro podporované atributy (XPATH a JSONPath), ale nepodporují se přidávání nových atributů Workday nebo SuccessFactors nad rámec těch, které jsou zahrnuté ve výchozím schématu.
 
 
 > [!NOTE]

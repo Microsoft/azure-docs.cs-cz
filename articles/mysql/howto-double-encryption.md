@@ -1,17 +1,17 @@
 ---
 title: Šifrování v infrastruktuře – Azure Portal-Azure Database for MySQL
 description: Naučte se nastavit a spravovat dvojité šifrování infrastruktury pro vaše Azure Database for MySQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903973"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241748"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>Dvojité šifrování infrastruktury pro Azure Database for MySQL
 
@@ -27,7 +27,7 @@ Pomocí těchto kroků můžete vytvořit Azure Database for MySQL server s šif
 
 1. V levém horním rohu portálu vyberte **vytvořit prostředek** (+).
 
-2. Vyberte **databáze**  >  **Azure Database for MySQL**. Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
+2. Vyberte **databáze**  >  **Azure Database for MySQL** . Službu můžete vyhledat také zadáním **MySQL** do vyhledávacího pole.
 
    :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png" alt-text="Možnost Azure Database for MySQL":::
 
@@ -52,7 +52,7 @@ Tento příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v `we
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-Následující příklad vytvoří server MySQL 5.7 v umístění USA – západ, `mydemoserver` ve vaší skupině prostředků `myresourcegroup` a s přihlašovacím jménem správce serveru `myadmin`. Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra**. Tím se taky povolí dvojité šifrování infrastruktury pro vytvořený server. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server MySQL 5.7 v umístění USA – západ, `mydemoserver` ve vaší skupině prostředků `myresourcegroup` a s přihlašovacím jménem správce serveru `myadmin`. Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra** . Tím se taky povolí dvojité šifrování infrastruktury pro vytvořený server. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>

@@ -1,17 +1,17 @@
 ---
 title: Odepřít přístup k veřejné síti – Azure Portal-Azure Database for MariaDB
 description: Naučte se konfigurovat přístup k veřejné síti pomocí Azure Portal pro Azure Database for MariaDB
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: f33dbfa0b96d7f6d85443005ff7e8b1a780c75a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104380"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242186"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Odepřít přístup k veřejné síti v Azure Database for MariaDB pomocí Azure Portal
 
@@ -29,7 +29,7 @@ Pomocí těchto kroků nastavte MariaDB Server odepřít přístup k veřejné s
 
 1. V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MariaDB Server.
 
-1. Na stránce Server MariaDB v části **Nastavení**klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
+1. Na stránce Server MariaDB v části **Nastavení** klikněte na **zabezpečení připojení** . tím otevřete stránku konfigurace zabezpečení připojení.
 
 1. V nástroji odepřít přístup k veřejné síti vyberte **Ano** , pokud chcete povolit přístup pro odepření přístupu pro váš server MariaDB.
 

@@ -1,17 +1,17 @@
 ---
 title: Řešení potíží s šifrováním dat – Azure Database for PostgreSQL – jeden server
 description: Přečtěte si, jak řešit potíže s šifrováním dat na vašem serveru Azure Database for PostgreSQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: ee0a1ebe483dd4719fd1a84fec37906329116eba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86117895"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242241"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Řešení potíží s šifrováním dat v Azure Database for PostgreSQL – jeden server
 
@@ -19,7 +19,7 @@ Tento článek vám pomůže identifikovat a vyřešit běžné problémy, ke kt
 
 ## <a name="introduction"></a>Úvod
 
-Když nakonfigurujete šifrování dat pro použití klíče spravovaného zákazníkem v Azure Key Vault, server vyžaduje nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Azure Key Vault, bude odepřít všechna připojení, vracet příslušnou chybovou zprávu a změnit její stav na ***nepřístupný*** v Azure Portal.
+Když nakonfigurujete šifrování dat pro použití klíče spravovaného zákazníkem v Azure Key Vault, server vyžaduje nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Azure Key Vault, bude odepřít všechna připojení, vracet příslušnou chybovou zprávu a změnit její stav na * **nedostupné** _ v Azure Portal.
 
 Pokud už nepotřebujete nedostupný Azure Database for PostgreSQL Server, můžete ho odstranit, abyste se přestali náklady. Žádné další akce na serveru nejsou povoleny, dokud nebude obnoven přístup k trezoru klíčů a server je k dispozici. Není také možné změnit možnost šifrování dat z `Yes` (spravované zákazníkem) na `No` (spravované na základě služby) na nepřístupovém serveru, když je zašifrovaný pomocí klíče spravovaného zákazníkem. Abyste mohli znovu získat přístup k serveru, budete muset klíč znovu ověřit ručně. Tato akce je nutná k ochraně dat před neoprávněným přístupem, zatímco oprávnění k klíči spravovanému zákazníkem jsou odvolána.
 
@@ -44,12 +44,12 @@ U následujících chybných konfigurací dojde u šifrování dat, které použ
 #### <a name="disabled-key-vault"></a>Zakázaný Trezor klíčů
 
 - `AzureKeyVaultKeyDisabledMessage`
-- **Vysvětlení**: operaci nelze dokončit na serveru, protože klíč Azure Key Vault je zakázán.
+- _ * Vysvětlení * *: operace se na serveru nedala dokončit, protože Azure Key Vault klíč je zakázaný.
 
 #### <a name="missing-key-vault-permissions"></a>Chybí oprávnění trezoru klíčů.
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Vysvětlení**: Server nemá požadovaná oprávnění k získání, zabalení a rozbalení Azure Key Vault. Udělte objektu služby s ID všechna chybějící oprávnění.
+- **Vysvětlení** : Server nemá požadovaná oprávnění k získání, zabalení a rozbalení Azure Key Vault. Udělte objektu služby s ID všechna chybějící oprávnění.
 
 ### <a name="mitigation"></a>Omezení rizik
 

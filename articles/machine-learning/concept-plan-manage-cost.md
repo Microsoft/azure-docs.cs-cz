@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042169"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233744"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -96,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute obsahuje [konfiguraci kvóty (nebo omezení)](how-to-manage-quotas.md#azure-machine-learning-compute). Tato kvóta vychází z řady virtuálních počítačů (například Dv2 Series, NCv3 Series) a pro každé předplatné se liší podle oblasti. Odběry začínají malým výchozím nastavením, které vám pomohou, ale pomocí tohoto nastavení můžete řídit množství Amlcompute prostředků, které mají být v předplatném k dispozici. 
 
-Také nakonfigurujte [kvótu na úrovni pracovního prostoru podle rodiny virtuálních počítačů](how-to-manage-quotas.md#workspace-level-quota)pro každý pracovní prostor v rámci předplatného. Díky tomu budete mít podrobnější kontrolu nad náklady, které může každý pracovní prostor způsobit a omezit určité rodiny virtuálních počítačů. 
+Také nakonfigurujte [kvótu na úrovni pracovního prostoru podle rodiny virtuálních počítačů](how-to-manage-quotas.md#workspace-level-quotas)pro každý pracovní prostor v rámci předplatného. Díky tomu budete mít podrobnější kontrolu nad náklady, které může každý pracovní prostor způsobit a omezit určité rodiny virtuálních počítačů. 
 
 Pokud chcete nastavit kvóty na úrovni pracovního prostoru, začněte v [Azure Portal](https://portal.azure.com).  V předplatném vyberte libovolný pracovní prostor a v levém podokně vyberte **využití a kvóty** . Pak vyberte kartu **Konfigurace kvót** pro zobrazení kvót. Pro nastavení kvóty potřebujete oprávnění v oboru předplatného, protože se jedná o nastavení, které ovlivňuje více pracovních prostorů.
 

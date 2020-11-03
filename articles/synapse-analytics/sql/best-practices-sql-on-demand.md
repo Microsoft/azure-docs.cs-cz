@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476270"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241867"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -60,17 +60,17 @@ Datové typy, které používáte v dotazu, mají vliv na výkon. Pokud budete p
 
 - Použijte nejmenší velikost dat, která bude vyhovovat největší možné hodnotě.
   - Pokud je maximální délka znakové hodnoty 30 znaků, použijte datový typ znak o délce 30.
-  - Pokud jsou všechny hodnoty sloupce znaků pevné velikosti, použijte **char** nebo **nchar**. V opačném případě použijte **varchar** nebo **nvarchar**.
-  - Pokud je maximální hodnota sloupce Integer 500, použijte typ **smallint** , protože se jedná o nejmenší datový typ, který může být přizpůsoben této hodnotě. Rozsahy datových typů typu Integer můžete najít v [tomto článku](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15).
-- Pokud je to možné, použijte typ **varchar** a **char** místo typu **nvarchar** a **nchar**.
+  - Pokud jsou všechny hodnoty sloupce znaků pevné velikosti, použijte **char** nebo **nchar** . V opačném případě použijte **varchar** nebo **nvarchar** .
+  - Pokud je maximální hodnota sloupce Integer 500, použijte typ **smallint** , protože se jedná o nejmenší datový typ, který může být přizpůsoben této hodnotě. Rozsahy datových typů typu Integer můžete najít v [tomto článku](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true).
+- Pokud je to možné, použijte typ **varchar** a **char** místo typu **nvarchar** a **nchar** .
 - Pokud je to možné, použijte datové typy založené na celých číslech. Operace SORT, JOIN a GROUP BY se dokončí rychleji pomocí celých čísel než u dat znaků.
 - Pokud používáte odvození schématu, [Prohlédněte si odvozené datové typy](#check-inferred-data-types).
 
 ## <a name="check-inferred-data-types"></a>Kontrolovat odvozené datové typy
 
-[Odvození schématu](query-parquet-files.md#automatic-schema-inference) vám pomůže rychle napsat dotazy a prozkoumat data bez znalosti schémat souborů. Náklady na tyto pohodlí jsou, že odvozené datové typy jsou větší než skutečné datové typy. K tomu dojde v případě, že ve zdrojových souborech není dostatek informací, aby bylo zajištěno, že bude použit vhodný datový typ. Například soubory Parquet neobsahují metadata o maximální délce sloupce znaků. Takže SQL na vyžádání ho odvodí jako varchar (8000).
+[Odvození schématu](query-parquet-files.md#automatic-schema-inference) vám pomůže rychle napsat dotazy a prozkoumat data bez znalosti schémat souborů. Náklady na tyto pohodlí jsou, že odvozené datové typy můžou být větší než skutečné datové typy. K tomu dojde v případě, že ve zdrojových souborech není dostatek informací, aby bylo zajištěno, že bude použit vhodný datový typ. Například soubory Parquet neobsahují metadata o maximální délce sloupce znaků. Takže SQL na vyžádání ho odvodí jako varchar (8000).
 
-Můžete použít [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15) ke kontrole výsledných datových typů dotazu.
+Můžete použít [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) ke kontrole výsledných datových typů dotazu.
 
 Následující příklad ukazuje, jak lze optimalizovat odvozené datové typy. Tento postup slouží k zobrazení odvozených datových typů: 
 ```sql  

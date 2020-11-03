@@ -1,17 +1,17 @@
 ---
 title: Šifrování v infrastruktuře – Azure Portal-Azure Database for PostgreSQL
 description: Naučte se nastavit a spravovat dvojité šifrování infrastruktury pro vaše Azure Database for PostgreSQL.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 362c051cf1dd7e97430bd6afaf4821a9c960b71d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90901554"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242224"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Dvojité šifrování infrastruktury pro Azure Database for PostgreSQL
 
@@ -27,7 +27,7 @@ Pomocí těchto kroků můžete vytvořit Azure Database for MySQL server s šif
 
 1. V levém horním rohu portálu vyberte **vytvořit prostředek** (+).
 
-2. Vyberte **databáze**  >  **Azure Database for PostgreSQL**. Službu můžete vyhledat také zadáním PostgreSQL do vyhledávacího pole. Byla povolena možnost nasazení **jednoho serveru** .
+2. Vyberte **databáze**  >  **Azure Database for PostgreSQL** . Službu můžete vyhledat také zadáním PostgreSQL do vyhledávacího pole. Byla povolena možnost nasazení **jednoho serveru** .
 
    :::image type="content" source="./media/quickstart-create-database-portal/1-create-database.png" alt-text="Azure Database for PostgreSQL v nabídce":::
 
@@ -52,7 +52,7 @@ Tento příklad vytvoří skupinu prostředků s názvem `myresourcegroup` v `we
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-Následující příklad vytvoří server PostgreSQL 11 v Západní USA s názvem `mydemoserver` ve vaší skupině prostředků `myresourcegroup` s přihlašovacím jménem správce serveru `myadmin` . Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra**. Tím se taky povolí dvojité šifrování infrastruktury pro vytvořený server. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
+Následující příklad vytvoří server PostgreSQL 11 v Západní USA s názvem `mydemoserver` ve vaší skupině prostředků `myresourcegroup` s přihlašovacím jménem správce serveru `myadmin` . Toto je **pro obecné účely** server **Gen 4** s **2 virtuální jádra** . Tím se taky povolí dvojité šifrování infrastruktury pro vytvořený server. Nahraďte položku `<server_admin_password>` vlastní hodnotou.
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 11 --infrastructure-encryption >Enabled/Disabled>

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145532"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233793"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -35,7 +35,7 @@ Alex Weinert, ředitel pro zabezpečení identity v Microsoftu, v jeho 12. břez
 
 Pokud je vaše prostředí připravené k blokování starší verze ověřování, aby se zlepšila ochrana vašeho tenanta, můžete tento cíl dosáhnout pomocí podmíněného přístupu. Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které blokují ověřování starší verze pro vašeho tenanta.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto článku se předpokládá, že máte zkušenosti se [základními koncepty](overview.md) podmíněného přístupu Azure AD.
 
@@ -60,7 +60,7 @@ V této části se dozvíte, jak nakonfigurovat zásady podmíněného přístup
 
 Následující možnosti jsou považovány za starší protokoly ověřování.
 
-- Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
+- Ověřený protokol SMTP, který používají klienti POP a IMAP k posílání e-mailových zpráv.
 - Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
 - Protokol Exchange ActiveSync (EAS) – používá se pro připojení k poštovním schránkám v Exchangi Online.
 - Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
@@ -80,8 +80,8 @@ Další informace o těchto ověřovacích protokolech a službách najdete v t�
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
-1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace**a přidejte sloupec aplikace klienta.
+1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení** .
+1. Pokud není zobrazený, klikněte na **sloupce**  >  **klientská aplikace** a přidejte sloupec aplikace klienta.
 1. **Přidat filtry**  >  **Klientská aplikace** > vybrat všechny starší protokoly pro ověřování. Vyberte mimo dialogové okno filtrování a použijte výběr a zavřete dialogové okno.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
@@ -97,7 +97,7 @@ Existují dva způsoby, jak pomocí zásad podmíněného přístupu zablokovat 
  
 ### <a name="directly-blocking-legacy-authentication"></a>Přímo blokující starší verze ověřování
 
-Nejjednodušší způsob, jak zablokovat starší ověřování v celé organizaci, je nakonfigurovat zásady podmíněného přístupu, které platí konkrétně pro klienty se starším ověřováním a blokují přístup. Při přiřazování uživatelů a aplikací k zásadám nezapomeňte vyloučit uživatele a účty služeb, které se ještě musí přihlašovat pomocí starší verze ověřování. Nastavte podmínku pro klientské aplikace tak, že vyberete možnost **klienti Exchange ActiveSync** a **Další klienti**. Pokud chcete blokovat přístup pro tyto klientské aplikace, nakonfigurujte řízení přístupu tak, aby blokovalo přístup.
+Nejjednodušší způsob, jak zablokovat starší ověřování v celé organizaci, je nakonfigurovat zásady podmíněného přístupu, které platí konkrétně pro klienty se starším ověřováním a blokují přístup. Při přiřazování uživatelů a aplikací k zásadám nezapomeňte vyloučit uživatele a účty služeb, které se ještě musí přihlašovat pomocí starší verze ověřování. Nastavte podmínku pro klientské aplikace tak, že vyberete možnost **klienti Exchange ActiveSync** a **Další klienti** . Pokud chcete blokovat přístup pro tyto klientské aplikace, nakonfigurujte řízení přístupu tak, aby blokovalo přístup.
 
 ![Podmínka klientské aplikace konfigurovaná k blokování ověřování starší verze](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 

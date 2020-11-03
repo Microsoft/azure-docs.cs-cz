@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0ece14fb1a96ac8cc66f4d35d027b9d93d1f800e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8b66a8ea3fcc6af62c872a6df6196b97ece2f55a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792816"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240915"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -31,7 +31,7 @@ V tomto kurzu:
 > * Přidá místní aplikaci do tenanta služby Azure AD.
 > * Ověří, jestli se testovací uživatel může přihlásit k aplikaci pomocí účtu Azure AD.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K přidání místní aplikace do služby Azure AD potřebujete:
 
@@ -116,7 +116,7 @@ Povolte přístup k následujícím adresám URL:
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;. microsoftonline-p.com<br>&ast;. msauth.net<br>&ast;. msauthimages.net<br>&ast;. msecnd.net<br>&ast;. msftauth.net<br>&ast;. msftauthimages.net<br>&ast;. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com | 443/HTTPS |Konektor tyto adresy URL používá během procesu registrace. |
 | ctldl.windowsupdate.com | 80/HTTP |Konektor používá tuto adresu URL během procesu registrace. |
 
-&ast; &ast; Pokud vaše brána firewall nebo proxy server umožňuje konfigurovat seznamy povolených serverů DNS, můžete připojení k příponám. msappproxy.NET a. ServiceBus.Windows.NET dovolit. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
+&ast; &ast; V případě, že vaše brána firewall nebo proxy server umožní nakonfigurovat seznamy povolených serverů DNS, můžete pro připojení k. msappproxy.NET,. ServiceBus.Windows.NET a dalším adresám URL. V takovém případě je potřeba zpřístupnit přístup k [rozsahům IP adres Azure a veřejným cloudům](https://www.microsoft.com/download/details.aspx?id=56519). Rozsahy IP adres se aktualizují každý týden.
 
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 
@@ -206,7 +206,7 @@ Teď, když jste připravili prostředí a nainstalovali konektor, jste připrav
     | **Přeložit adresy URL v hlavičkách** | Tuto hodnotu nechte jako **Ano** , pokud vaše aplikace nevyžadovala v žádosti o ověření hlavičku původního hostitele. |
     | **Přeložit adresy URL v těle aplikace** | Tuto hodnotu nechte jako **ne** , pokud jste nepevně zakódovanéi odkazy HTML na jiné místní aplikace a nepoužíváte vlastní domény. Další informace najdete v tématu [Překlad propojení pomocí proxy aplikace](application-proxy-configure-hard-coded-link-translation.md).<br><br>Tuto hodnotu nastavte na **Ano** , pokud plánujete monitorovat tuto aplikaci pomocí Microsoft Cloud App Security (MCAS). Další informace najdete v tématu [Konfigurace monitorování přístupu aplikace v reálném čase pomocí Microsoft Cloud App Security a Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Vyberte **Přidat** .
+7. Vyberte **Add** (Přidat).
 
 ## <a name="test-the-application"></a>Testování aplikace
 

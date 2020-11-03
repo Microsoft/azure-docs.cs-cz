@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327489"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242204"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Reference ke stroji pravidel Standard pro Azure CDN
 
@@ -20,7 +20,7 @@ V [modulu Standard Rules](cdn-standard-rules-engine.md) pro Azure Content Delive
 
 Modul pravidel je navržený tak, aby měl koncovou autoritu, jak jsou konkrétní typy požadavků zpracovávány standardním Azure CDN.
 
-**Společná použití pro pravidla**:
+**Společná použití pro pravidla** :
 
 - Přepsat nebo definovat vlastní zásadu mezipaměti.
 - Přesměrování požadavků.
@@ -34,7 +34,10 @@ Chcete-li definovat pravidlo v modulu pravidel, nastavte [podmínky](cdn-standar
 
 Každé pravidlo může mít až deset podmínek shody a pět akcí. Každý koncový bod Azure CDN může mít až 25 pravidel. 
 
-Součástí tohoto omezení je výchozí *globální pravidlo*. Globální pravidlo nemá podmínky shody. akce, které jsou definovány v globálním pravidle, se vždy aktivují.
+Součástí tohoto omezení je výchozí *globální pravidlo* . Globální pravidlo nemá podmínky shody. akce, které jsou definovány v globálním pravidle, se vždy aktivují.
+
+   > [!IMPORTANT]
+   > Pořadí, ve kterém jsou uvedeny více pravidel, má vliv na způsob zpracování pravidel. Akce, které jsou zadány v pravidle, mohou být přepsány následujícím pravidlem.
 
 ## <a name="limits-and-pricing"></a>Omezení a ceny 
 

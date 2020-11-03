@@ -1,230 +1,293 @@
 ---
-title: Vytvoření privátního koncového bodu Azure pomocí Azure PowerShell | Microsoft Docs
-description: Informace o privátním propojení Azure
+title: Rychlý Start – vytvoření privátního koncového bodu Azure pomocí Azure PowerShell
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell vytvořit privátní koncový bod.
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 147e646738df9d70355f379a9e64a52116e9f16f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737372"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233589"
 ---
-# <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
-Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure PowerShell
 
-V tomto rychlém startu se dozvíte, jak vytvořit virtuální počítač v Virtual Network Azure, což je logický SQL Server s privátním koncovým bodem Azure pomocí Azure PowerShell. Pak můžete bezpečně přistupovat k SQL Database z virtuálního počítače.
+Začínáme s privátním koncovým bodem Azure pomocí privátního koncového bodu pro zabezpečené připojení k webové aplikaci Azure.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+V tomto rychlém startu vytvoříte privátní koncový bod pro webovou aplikaci Azure a nasadíte virtuální počítač pro otestování privátního připojení.  
+
+Pro různé druhy služeb Azure, jako je Azure SQL a Azure Storage, je možné vytvořit privátní koncové body.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Webovou aplikaci Azure s **PremiumV2** nebo vyšším plánem služby App Service nasazeným ve vašem předplatném Azure.  
+    * Další informace a příklad najdete v tématu [rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure](../app-service/quickstart-dotnetcore.md). 
+    * Podrobný kurz týkající se vytvoření webové aplikace a koncového bodu najdete v tématu [kurz: připojení k webové aplikaci pomocí privátního koncového bodu Azure](tutorial-private-endpoint-webapp-portal.md).
+
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Než budete moci vytvořit prostředky, je nutné vytvořit skupinu prostředků, která hostuje Virtual Network a soukromý koncový bod pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *WestUS* :
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-```azurepowershell
-
-New-AzResourceGroup `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus
-```
-
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-V této části vytvoříte virtuální síť a podsíť. Potom přidružíte podsíť k vašemu Virtual Network.
-
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
-
-Vytvořte virtuální síť pro privátní koncový bod pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Následující příklad vytvoří Virtual Network s názvem *MyVirtualNetwork*:
- 
-```azurepowershell
-
-$virtualNetwork = New-AzVirtualNetwork `
-  -ResourceGroupName myResourceGroup `
-  -Location westcentralus `
-  -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/16
-```
-
-### <a name="add-a-subnet"></a>Přidat podsíť
-
-Azure nasadí prostředky do podsítě v rámci Virtual Network, takže je potřeba vytvořit podsíť. Vytvořte konfiguraci podsítě s názvem *mySubnet* pomocí [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Následující příklad vytvoří podsíť s názvem *mySubnet* s příznakem zásady sítě privátního koncového bodu nastavenou na **disabled (zakázáno**).
-
-```azurepowershell
-$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
-  -Name mySubnet `
-  -AddressPrefix 10.0.0.0/24 `
-  -PrivateEndpointNetworkPoliciesFlag "Disabled" `
-  -VirtualNetwork $virtualNetwork
-```
-
-> [!CAUTION]
-> Je snadné Zaměňujte `PrivateEndpointNetworkPoliciesFlag` parametr s jiným dostupným příznakem, `PrivateLinkServiceNetworkPoliciesFlag` protože jsou to dlouhá slova a mají podobný vzhled.  Ujistěte se, že používáte tu správnou `PrivateEndpointNetworkPoliciesFlag` .
-
-### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružte podsíť k Virtual Network
-
-Konfiguraci podsítě můžete zapsat do Virtual Network pomocí [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Tento příkaz vytvoří podsíť:
-
-```azurepowershell
-$virtualNetwork | Set-AzVirtualNetwork
-```
-
-## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
-
-Vytvořte virtuální počítač v Virtual Network pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Po spuštění dalšího příkazu budete vyzváni k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo pro virtuální počítač:
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
 
 ```azurepowershell-interactive
-New-AzVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVm" `
-    -Location "westcentralus" `
-    -VirtualNetworkName "MyVirtualNetwork" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -OpenPorts 80,3389 `
-    -AsJob  
+New-AzResourceGroup -Name 'CreatePrivateEndpointQS-rg' -Location 'eastus'
 ```
 
-`-AsJob`Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
+## <a name="create-a-virtual-network-and-bastion-host"></a>Vytvoření virtuální sítě a hostitele bastionu
 
-Když Azure začne vytvářet virtuální počítač na pozadí, získáte něco podobného:
+V této části vytvoříte virtuální síť, podsíť a hostitele bastionu. 
 
-```powershell
-Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
---     ----            -------------   -----         -----------     --------             -------
-1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
-```
+Hostitel bastionu se bude používat k zabezpečenému připojení k virtuálnímu počítači za účelem testování privátního koncového bodu.
 
-## <a name="create-a-logical-sql-server"></a>Vytvoření logického SQL serveru 
+Vytvořte virtuální síť a hostitele bastionu pomocí:
 
-Pomocí příkazu New-AzSqlServer vytvořte logický SQL Server. Pamatujte, že název vašeho serveru musí být v rámci Azure jedinečný, proto nahraďte hodnotu zástupného symbolu v závorkách vlastní jedinečnou hodnotou:
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
+* [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
+* [New-AzBastion](/powershell/module/az.network/new-azbastion)
 
 ```azurepowershell-interactive
-$adminSqlLogin = "SqlAdmin"
-$password = "ChangeYourAdminPassword1"
+## Create backend subnet config. ##
+$subnetConfig = New-AzVirtualNetworkSubnetConfig -Name myBackendSubnet -AddressPrefix 10.0.0.0/24
 
-$server = New-AzSqlServer -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver" `
-    -Location "WestCentralUS" `
-    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminSqlLogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+## Create Azure Bastion subnet. ##
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.1.0/24
 
-New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
-    -ServerName "myserver"`
-    -DatabaseName "myda"`
-    -RequestedServiceObjectiveName "S0" `
-    -SampleName "AdventureWorksLT"
+## Create the virtual network. ##
+$parameters1 = @{
+    Name = 'MyVNet'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.0.0.0/16'
+    Subnet = $subnetConfig, $bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @parameters1
+
+## Create public IP address for bastion host. ##
+$parameters2 = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @parameters2
+
+## Create bastion host ##
+$parameters3 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @parameters3
 ```
 
-## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
+Nasazení hostitele Azure bastionu může trvat několik minut.
 
-Privátní koncový bod pro server v Virtual Network pomocí [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection): 
+## <a name="create-test-virtual-machine"></a>Vytvořit testovací virtuální počítač
 
-```azurepowershell
+V této části vytvoříte virtuální počítač, který se použije k otestování privátního koncového bodu.
 
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection -Name "myConnection" `
-  -PrivateLinkServiceId $server.ResourceId `
-  -GroupId "sqlServer" 
- 
-$virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  "myResourceGroup" -Name "MyVirtualNetwork"  
- 
-$subnet = $virtualNetwork `
-  | Select -ExpandProperty subnets `
-  | Where-Object  {$_.Name -eq 'mysubnet'}  
- 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
-  -Name "myPrivateEndpoint" `
-  -Location "westcentralus" `
-  -Subnet  $subnet `
-  -PrivateLinkServiceConnection $privateEndpointConnection
-``` 
+Vytvořit virtuální počítač pomocí:
 
-## <a name="configure-the-private-dns-zone"></a>Konfigurovat zónu Privátní DNS 
-Vytvořte zónu Privátní DNS pro SQL Database doménu, vytvořte propojení přidružení s Virtual Network a vytvořte skupinu zón DNS pro přidružení privátního koncového bodu k Privátní DNS zóně.
-
-```azurepowershell
-
-$zone = New-AzPrivateDnsZone -ResourceGroupName "myResourceGroup" `
-  -Name "privatelink.database.windows.net" 
- 
-$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup" `
-  -ZoneName "privatelink.database.windows.net"`
-  -Name "mylink" `
-  -VirtualNetworkId $virtualNetwork.Id  
-
-$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
-
-$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
- -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
-``` 
-  
-## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
-
-K vrácení veřejné IP adresy virtuálního počítače použijte [příkaz Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) . Tento příklad vrátí veřejnou IP adresu virtuálního počítače *myVM* :
-
-```azurepowershell
-Get-AzPublicIpAddress `
-  -Name myPublicIpAddress `
-  -ResourceGroupName myResourceGroup `
-  | Select IpAddress 
-```  
-Otevřete příkazový řádek na místním počítači. Spusťte příkaz mstsc. Nahraďte <publicIpAddress> veřejnou IP adresou vrácenou z posledního kroku: 
+  * [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)
+  * [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 
+  * [New-AzVM](/powershell/module/az.compute/new-azvm)
+  * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+  * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+  * [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage)
+  * [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 
-> [!NOTE]
-> Pokud jste tyto příkazy spustili z příkazového řádku PowerShellu v místním počítači a používáte modul AZ PowerShell verze 1,0 nebo novější, můžete v tomto rozhraní pokračovat.
-```
-mstsc /v:<publicIpAddress>
+```azurepowershell-interactive
+## Set credentials for server admin and password. ##
+$cred = Get-Credential
+
+## Command to get virtual network configuration. ##
+$vnet = Get-AzVirtualNetwork -Name myVNet -ResourceGroupName CreatePrivateEndpointQS-rg
+
+## Command to create network interface for VM ##
+$parameters1 = @{
+    Name = 'myNicVM'
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+}
+$nicVM = New-AzNetworkInterface @parameters1
+
+## Create a virtual machine configuration.##
+$parameters2 = @{
+    VMName = 'myVM'
+    VMSize = 'Standard_DS1_v2'
+}
+$parameters3 = @{
+    ComputerName = 'myVM'
+    Credential = $cred
+}
+$parameters4 = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'
+}
+$vmConfig = 
+New-AzVMConfig @parameters2 | Set-AzVMOperatingSystem -Windows @parameters3 | Set-AzVMSourceImage @parameters4 | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine ##
+New-AzVM -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Location 'eastus' -VM $vmConfig
 ```
 
-1. Pokud se zobrazí výzva, vyberte **Připojit**. 
-2. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
-  > [!NOTE]
-  > Možná budete muset vybrat další volby > použít jiný účet a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače. 
-  
-3. Vyberte **OK**. 
-4. Může se zobrazit upozornění certifikátu. Pokud ano, vyberte **Ano** nebo **pokračovat**. 
+## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
 
-## <a name="access-sql-database-privately-from-the-vm"></a>Přístup k SQL Database soukromě z virtuálního počítače
+V této části vytvoříte privátní koncový bod a připojení pomocí:
 
-1. Na vzdálené ploše virtuálního počítače myVM otevřete PowerShell.
-2. Zadejte `nslookup myserver.database.windows.net`. Nezapomeňte nahradit `myserver` názvem SQL serveru.
+* [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
+* [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
-    Zobrazí se zpráva podobná této:
-    
-    ```azurepowershell
+```azurepowershell-interactive
+## Place web app into variable. Replace <your-webapp-name> with your server name ##
+$webapp = Get-AzWebApp -ResourceGroupName CreatePrivateEndpointQS-rg -Name <your-webapp-name>
+
+## Create private endpoint connection. ##
+$parameters1 = @{
+    Name = 'myConnection'
+    PrivateLinkServiceId = $webapp.ID
+    GroupID = 'sites'
+}
+$privateEndpointConnection = New-AzPrivateLinkServiceConnection @parameters1
+
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Disable private endpoint network policy ##
+$vnet.Subnets[0].PrivateEndpointNetworkPolicies = "Disabled"
+$vnet | Set-AzVirtualNetwork
+
+## Create private endpoint
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'myPrivateEndpoint'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    PrivateLinkServiceConnection = $privateEndpointConnection
+}
+New-AzPrivateEndpoint @parameters2
+```
+## <a name="configure-the-private-dns-zone"></a>Konfigurace privátní zóny DNS
+
+V této části vytvoříte a nakonfigurujete privátní zónu DNS pomocí:
+
+* [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
+* [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
+* [New-AzPrivateDnsZoneConfig](/powershell/module/az.network/new-azprivatednszoneconfig)
+* [New-AzPrivateDnsZoneGroup](/powershell/module/az.network/new-azprivatednszonegroup)
+
+```azurepowershell-interactive
+## Place virtual network into variable. ##
+$vnet = Get-AzVirtualNetwork -ResourceGroupName 'CreatePrivateEndpointQS-rg' -Name 'myVNet'
+
+## Create private dns zone. ##
+$parameters1 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    Name = 'privatelink.azurewebsites.net'
+}
+$zone = New-AzPrivateDnsZone @parameters1
+
+## Create dns network link. ##
+$parameters2 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    ZoneName = 'privatelink.azurewebsites.net'
+    Name = 'myLink'
+    VirtualNetworkId = $vnet.Id
+}
+$link = New-AzPrivateDnsVirtualNetworkLink @parameters2
+
+## Create DNS configuration ##
+$parameters3 = @{
+    Name = 'privatelink.azurewebsites.net'
+    PrivateDnsZoneId = $zone.ResourceId
+}
+$config = New-AzPrivateDnsZoneConfig @parameters3
+
+## Create DNS zone group. ##
+$parameters4 = @{
+    ResourceGroupName = 'CreatePrivateEndpointQS-rg'
+    PrivateEndpointName = 'myPrivateEndpoint'
+    Name = 'myZoneGroup'
+    PrivateDnsZoneConfig = $config
+}
+New-AzPrivateDnsZoneGroup @parameters4
+```
+
+## <a name="test-connectivity-to-private-endpoint"></a>Test připojení k privátnímu koncovému bodu
+
+V této části použijete virtuální počítač, který jste vytvořili v předchozím kroku, abyste se připojili k SQL serveru přes soukromý koncový bod.
+
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
+ 
+2. V levém navigačním podokně vyberte **skupiny prostředků** .
+
+3. Vyberte **CreatePrivateEndpointQS-RG** .
+
+4. Vyberte **myVM** .
+
+5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu** .
+
+6. Vyberte tlačítko modrého **použití bastionu** .
+
+7. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+
+8. Po připojení otevřete Windows PowerShell na serveru.
+
+9. Zadejte `nslookup <your-webapp-name>.azurewebsites.net`. Nahraďte **\<your-webapp-name>** názvem webové aplikace, kterou jste vytvořili v předchozích krocích.  Zobrazí se zpráva podobná tomu, co se zobrazuje níže:
+
+    ```powershell
     Server:  UnKnown
     Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    myserver.privatelink.database.windows.net
-    Address:  10.0.0.5
-    Aliases:   myserver.database.windows.net
-    ```
-    
-3. Nainstalujte [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15).
-4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
 
-    | Nastavení | Hodnota |
-    | --- | --- |
-    | Typ serveru | Databázový stroj |
-    | Název serveru | myserver.database.windows.net |
-    | Uživatelské jméno | Zadejte uživatelské jméno, které jste zadali při vytváření. |
-    | Heslo | Zadejte heslo, které jste zadali při vytváření. |
-    | Zapamatovat heslo | Yes |
-    
-5. Vyberte **Připojit**.
-6. V nabídce vlevo vyberte **databáze** . 
-7. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
-8. Zavřete připojení ke vzdálené ploše pro *myVM*. 
+    Non-authoritative answer:
+    Name:    mywebapp8675.privatelink.azurewebsites.net
+    Address:  10.0.0.5
+    Aliases:  mywebapp8675.azurewebsites.net
+    ```
+
+    Pro název webové aplikace se vrátí privátní IP adresa **10.0.0.5** .  Tato adresa je v podsíti virtuální sítě, kterou jste vytvořili dříve.
+
+10. V připojení bastionu k **myVM** otevřete Internet Explorer.
+
+11. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET** .
+
+12. Pokud vaše aplikace nebyla nasazena, obdržíte výchozí stránku webové aplikace:
+
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Výchozí stránka webové aplikace" border="true":::
+
+13. Ukončete připojení k **myVM** .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
-Až budete s použitím privátního koncového bodu SQL Database a virtuálního počítače, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
+Po dokončení používání privátního koncového bodu a virtuálního počítače odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name CreatePrivateEndpointQS-rg -Force
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- Další informace o [privátním propojení Azure](private-link-overview.md)
+
+V tomto rychlém startu jste vytvořili:
+
+* Virtuální síť a hostitel bastionu
+* Virtuální počítač.
+* Soukromý koncový bod pro webovou aplikaci Azure.
+
+Virtuální počítač jste použili k zabezpečenému otestování připojení k webové aplikaci v rámci privátního koncového bodu.
+
+Další informace o službách, které podporují soukromý koncový bod, najdete v těchto tématech:
+> [!div class="nextstepaction"]
+> [Dostupnost privátního propojení](private-link-overview.md#availability)

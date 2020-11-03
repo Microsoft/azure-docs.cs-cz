@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bceffe5c53b9cbc863fd9c923ffa4718ebd50436
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 1255333e9bde54fcdf76dd40a9aaa4bc68fd103e
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893811"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242122"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Seznamte se se základy rozpoznávání řeči v rozhraní příkazového řádku
 
@@ -65,15 +65,16 @@ Kromě rozpoznávání řeči a syntézy můžete také překlad řeči provést
 spx translate --microphone --source en-US --target ru-RU --output file C:\some\file\path\russian_translation.txt
 ```
 
-V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i**cíl (jazyk **pro překlad)**. Použití `--microphone` argumentu naposlouchá zvuk na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Výstupem je textový překlad do cílového jazyka zapsaný do textového souboru.
+V tomto příkazu zadáte jak zdroj (jazyk pro překlad) **, tak i** cíl (jazyk **pro překlad)** . Použití `--microphone` argumentu naposlouchá zvuk na aktuálním aktivním vstupním zařízení a zastaví se po stisknutí klávesy `ENTER` . Výstupem je textový překlad do cílového jazyka zapsaný do textového souboru.
 
 > [!NOTE]
 > Seznam všech podporovaných jazyků a jejich odpovídajících kódů národního prostředí najdete v článku věnovaném [jazykům a národním prostředím](language-support.md) .
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurační soubory v úložišti dat
 
-Rozhraní příkazového řádku pro rozpoznávání řeči umí číst a zapisovat více nastavení v konfiguračních souborech, které jsou uložené v místním úložišti rozpoznávání řeči CLI, a jsou pojmenovány v rámci volání funkce Speech CLI pomocí symbolu @. Funkce Speech CLI se pokusí uložit nové nastavení v novém `./spx/data` podadresáři, který vytvoří v aktuálním pracovním adresáři.
-Při hledání hodnoty konfigurace vyhledává funkce rozpoznávání řeči v aktuálním pracovním adresáři, a to v `./spx/data` cestě.
+Chování rozhraní příkazového řádku pro rozpoznávání řeči se může spoléhat na nastavení v konfiguračních souborech, které můžete v rámci volání rozhraní příkazového řádku CLI využít symbol @.
+Funkce Speech CLI uloží nové nastavení do nového `./spx/data` podadresáře, který vytvoří v aktuálním pracovním adresáři.
+Při hledání hodnoty konfigurace vyhledá funkce rozpoznávání řeči v aktuálním pracovním adresáři, pak v úložišti dat v `./spx/data` a v dalších dataobchodech, včetně konečného úložiště dat jen pro čtení v `spx` binárním souboru.
 Dřív jste používali úložiště dat `@key` a uložili `@region` hodnoty a, takže jste je nemuseli zadávat při každém volání příkazového řádku.
 Můžete také použít konfigurační soubory k uložení vlastních nastavení konfigurace nebo je dokonce použít k předávání adres URL nebo jiného dynamického obsahu vygenerovaného za běhu.
 
@@ -162,7 +163,7 @@ Tento příkaz je ekvivalentem běhu `spx synthesize --text Sample text to synth
 
 * Záhlaví sloupců `audio.output` a, které `text` odpovídají argumentům příkazového řádku `--audio output` a v `--text` uvedeném pořadí. Argumenty příkazového řádku s více částmi `--audio output` by měly být naformátovány v souboru bez mezer, žádné úvodní pomlčky a tečky oddělující řetězce, např. `audio.output` . Všechny ostatní existující argumenty příkazového řádku lze přidat do souboru jako další sloupce pomocí tohoto modelu.
 * Pokud je tento soubor formátován tímto způsobem, není nutné předávat žádné další argumenty `--foreach` .
-* Jednotlivé hodnoty můžete oddělit `.tsv` pomocí **karty**.
+* Jednotlivé hodnoty můžete oddělit `.tsv` pomocí **karty** .
 
 Nicméně pokud máte `.tsv` soubor podobný následujícímu příkladu se záhlavími sloupců, která **neodpovídají** argumentům příkazového řádku:
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474780"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242037"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
@@ -95,6 +95,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , FIELDQUOTE = 'quote_characters' ]
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
+[ , HEADER_ROW = { TRUE | FALSE } ]
 ```
 
 ## <a name="arguments"></a>Argumenty
@@ -144,12 +145,13 @@ Pokud se v následujícím příkladu unstructured_data_path = `https://mystorag
 Klauzule WITH umožňuje zadat sloupce, které chcete ze souborů číst.
 
 - V případě datových souborů CSV můžete načíst všechny sloupce a zadat názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadové číslovky a vyberte sloupce z původních datových souborů podle pořadového čísla. Sloupce budou vázány podle ordinálního označení. 
-
-    > [!IMPORTANT]
-    > Klauzule WITH je povinná pro soubory CSV.
-    >
+    > [!TIP]
+    > Můžete také vynechat klauzuli WITH pro soubory CSV. Datové typy budou automaticky odvozeny z obsahu souboru. Argument HEADER_ROW lze použít k určení existence řádku záhlaví, ve kterém budou názvy sloupců případu načteny z řádku záhlaví. Podrobnosti najdete v podrobnostech o [automatickém zjišťování schématu](#automatic-schema-discovery).
     
-- V případě datových souborů Parquet zadejte názvy sloupců, které odpovídají názvům sloupců v původních datových souborech. Sloupce budou vázány podle názvu. Pokud je klauzule WITH vynechána, budou vráceny všechny sloupce z Parquet souborů.
+- V případě datových souborů Parquet zadejte názvy sloupců, které odpovídají názvům sloupců v původních datových souborech. Sloupce se budou svázat podle názvu a rozlišuje velká a malá písmena. Pokud je klauzule WITH vynechána, budou vráceny všechny sloupce z Parquet souborů.
+    > [!IMPORTANT]
+    > Názvy sloupců v souborech Parquet rozlišují velká a malá písmena. Pokud v souboru Parquet zadáte název sloupce, který se liší od názvu sloupce a velikost písmen, vrátí se pro tento sloupec hodnoty NULL.
+
 
 column_name = název výstupního sloupce. Pokud je tento název zadán, přepíše název sloupce ve zdrojovém souboru.
 
@@ -205,6 +207,10 @@ Určuje verzi analyzátoru, která se má použít při čtení souborů. Aktuá
 
 Analyzátor CSV verze 1,0 je výchozí a funkce je bohatá. Verze 2,0 je postavená na výkon a nepodporuje všechny možnosti a kódování. 
 
+Specifické pro analyzátor CSV verze 1,0:
+
+- Následující možnosti nejsou podporovány: HEADER_ROW.
+
 Specifické pro analyzátor CSV verze 2,0:
 
 - Ne všechny datové typy jsou podporovány.
@@ -212,22 +218,93 @@ Specifické pro analyzátor CSV verze 2,0:
 - Následující možnosti nejsou podporovány: DATA_COMPRESSION.
 - Prázdný řetězec v uvozovkách ("") je interpretován jako prázdný řetězec.
 
+HEADER_ROW = {TRUE | CHYBNÉ
+
+Určuje, zda soubor CSV obsahuje řádek záhlaví. Výchozí hodnota je FALSE. Podporováno v PARSER_VERSION = ' 2.0 '. Pokud má hodnotu TRUE, názvy sloupců se načtou z prvního řádku podle argumentu FIRSTROW.
+
+## <a name="fast-delimited-text-parsing"></a>Analýza textu s rychlým oddělovačem
+
+Existují dvě verze analyzátoru s oddělovači textu, které můžete použít. Analyzátor CSV verze 1,0 je výchozí a funkce bohatá, zatímco analyzátor verze 2,0 je sestaven pro výkon. Vylepšení výkonu v analyzátoru 2,0 pochází z pokročilých technik analýzy a multithreading. Rozdíl v rychlosti bude při zvětšování velikosti souboru větší.
+
+## <a name="automatic-schema-discovery"></a>Automatické zjišťování schématu
+
+Můžete snadno dotazovat soubory CSV i Parquet bez znalosti nebo zadání schématu vyvoláním klauzule WITH. Názvy sloupců a datové typy budou odvozeny ze souborů.
+
+Soubory Parquet obsahují metadata sloupců, která se budou číst, mapování typů se dá najít v [mapování typů pro Parquet](#type-mapping-for-parquet). Podívejte se na [čtení souborů Parquet bez zadání schématu](#read-parquet-files-without-specifying-schema) pro ukázky.
+
+Názvy sloupců pro soubory CSV lze číst z řádku záhlaví. Můžete určit, zda řádek záhlaví existuje pomocí argumentu HEADER_ROW. Pokud HEADER_ROW = FALSE, použijí se názvy obecných sloupců: C1, C2,... CN, kde n je počet sloupců v souboru. Datové typy budou odvozeny z prvních 100 datových řádků. Kontroluje [čtení souborů CSV bez zadání schématu](#read-csv-files-without-specifying-schema) pro ukázky.
+
+> [!IMPORTANT]
+> Existují případy, kdy se vhodný datový typ nedá odvodit z důvodu nedostatku informací a místo toho se použije větší datový typ. To přináší nároky na výkon a je zvláště důležité pro sloupce znaků, které budou odvozeny jako varchar (8000). V případě, že máte v souborech sloupce znaků a použijete odvození schématu, pro zajištění optimálního výkonu [Zkontrolujte odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) a [použijte příslušné datové typy](best-practices-sql-on-demand.md#use-appropriate-data-types).
+
+### <a name="type-mapping-for-parquet"></a>Mapování typů pro Parquet
+
+Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabulka popisuje, jak jsou typy Parquet mapovány na nativní typy SQL.
+
+| Typ Parquet | Logický typ Parquet (anotace) | Datový typ SQL |
+| --- | --- | --- |
+| DATOVÉHO | | bit |
+| BINÁRNÍ/BYTE_ARRAY | | varbinary |
+| KLEPAT | | float |
+| Plovák | | real |
+| UVEDENA | | int |
+| INT64 | | bigint |
+| INT96 | |datetime2 |
+| FIXED_LEN_BYTE_ARRAY | |binární |
+| TVARU |UTF |varchar \* (řazení UTF8) |
+| TVARU |ŘETEZCE |varchar \* (řazení UTF8) |
+| TVARU |VYTVÁŘENÍ|varchar \* (řazení UTF8) |
+| TVARU |IDENTIFIKÁTOR |uniqueidentifier |
+| TVARU |NOTACI |decimal |
+| TVARU |JSON |varchar (max) \* (kolace UTF8) |
+| TVARU |BSON |varbinary (max) |
+| FIXED_LEN_BYTE_ARRAY |NOTACI |decimal |
+| BYTE_ARRAY |DOBA |varchar (max), serializováno do standardizovaného formátu |
+| UVEDENA |INT (8, true) |smallint |
+| UVEDENA |INT (16, true) |smallint |
+| UVEDENA |INT (32, true) |int |
+| UVEDENA |INT (8, false) |tinyint |
+| UVEDENA |INT (16, false) |int |
+| UVEDENA |INT (32, false) |bigint |
+| UVEDENA |DATE |date |
+| UVEDENA |NOTACI |decimal |
+| UVEDENA |ČAS (LISOVNY)|time |
+| INT64 |INT (64; true) |bigint |
+| INT64 |INT (64, false) |desetinné číslo (20, 0) |
+| INT64 |NOTACI |decimal |
+| INT64 |ČAS (MIKROČASU A NANO) |time |
+|INT64 |ČASOVÉ RAZÍTKO (LISOVNY//NANO) |datetime2 |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (max), serializováno do formátu JSON |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (max), serializováno do formátu JSON |
+
 ## <a name="examples"></a>Příklady
 
-Následující příklad vrátí pouze dva sloupce se řadovými čísly 1 a 4 ze souborů Population*. csv. Vzhledem k tomu, že v souborech není žádný řádek záhlaví, začíná čtení z prvního řádku:
+### <a name="read-csv-files-without-specifying-schema"></a>Čtení souborů CSV bez zadání schématu
+
+Následující příklad přečte soubor CSV, který obsahuje řádek záhlaví bez zadání názvů sloupců a datových typů: 
 
 ```sql
-SELECT * 
+SELECT 
+    *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
-        FORMAT = 'CSV',
-        FIRSTROW = 1
-    )
-WITH (
-    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
-    [population] bigint 4
-) AS [r]
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0',
+    HEADER_ROW = TRUE) as [r]
 ```
+
+Následující příklad přečte soubor CSV, který neobsahuje řádek záhlaví bez zadání názvů sloupců a datových typů: 
+
+```sql
+SELECT 
+    *
+FROM OPENROWSET(
+    BULK 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    FORMAT = 'CSV',
+    PARSER_VERSION = '2.0') as [r]
+```
+
+### <a name="read-parquet-files-without-specifying-schema"></a>Čtení souborů Parquet bez zadání schématu
 
 Následující příklad vrátí všechny sloupce prvního řádku ze sady sestavování dat ve formátu Parquet a bez zadání názvů sloupců a datových typů: 
 
@@ -241,6 +318,42 @@ FROM
     ) AS [r]
 ```
 
+### <a name="read-specific-columns-from-csv-file"></a>Číst konkrétní sloupce ze souboru CSV
+
+Následující příklad vrátí pouze dva sloupce se řadovými čísly 1 a 4 ze souborů Population*. csv. Vzhledem k tomu, že v souborech není žádný řádek záhlaví, začíná čtení z prvního řádku:
+
+```sql
+SELECT 
+    * 
+FROM OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population*.csv',
+        FORMAT = 'CSV',
+        FIRSTROW = 1
+    )
+WITH (
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2 1,
+    [population] bigint 4
+) AS [r]
+```
+
+### <a name="read-specific-columns-from-parquet-file"></a>Číst konkrétní sloupce ze souboru Parquet
+
+Následující příklad vrátí pouze dva sloupce prvního řádku ze sady oddaných dat ve formátu Parquet: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    [stateName] VARCHAR (50),
+    [population] bigint
+) AS [r]
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky najdete v [rychlém startu pro dotaz na úložiště dat](query-data-storage.md) a Naučte se, jak používat `OPENROWSET` ke čtení formátů souborů [CSV](query-single-csv-file.md), [PARQUET](query-parquet-files.md)a [JSON](query-json-files.md) . Můžete se také dozvědět, jak uložit výsledky dotazu do Azure Storage pomocí [CETAS](develop-tables-cetas.md).
+Další ukázky najdete v [rychlém startu pro dotaz na úložiště dat](query-data-storage.md) a Naučte se, jak používat `OPENROWSET` ke čtení formátů souborů [CSV](query-single-csv-file.md), [PARQUET](query-parquet-files.md)a [JSON](query-json-files.md) . Podívejte se na [osvědčené postupy](best-practices-sql-on-demand.md) pro dosažení optimálního výkonu. Můžete se také dozvědět, jak uložit výsledky dotazu do Azure Storage pomocí [CETAS](develop-tables-cetas.md).

@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 keywords: Azure, umělal Intelligence, AI, zpracování přirozeného jazyka, NLP, LUIS, Azure Luis, přirozené jazykové porozumění, AI chatovací robot, chatovací robot maker, porozumění přirozenému jazyku
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e389152292239076f3077e2edfb8d5be52ab815b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327262"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241374"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Rychlý Start: Language Understanding (LUIS) SDK klientské knihovny pro vytvoření a dotazování aplikace LUIS
 
@@ -21,7 +21,8 @@ V tomto rychlém startu pomocí C#, Pythonu nebo JavaScriptu vytvořte a Dotazuj
 
 Language Understanding (LUIS) umožňuje použít NLP (přirozené jazykové zpracování) na konverzaci uživatele, text přirozeného jazyka a předpovědět celkový význam a vyžádat si relevantní, podrobné informace.
 
-* Klientská knihovna pro **vytváření obsahu** umožňuje vytváření, úpravy, výuku a publikování aplikace Luis. * Klientská knihovna **sady SDK předpovědi prostředí** umožňuje dotazování publikované aplikace.
+* Klientská knihovna pro **vytváření obsahu** umožňuje vytváření, úpravy, výuku a publikování aplikace Luis.
+* Klientská knihovna **sady SDK předpovědi prostředí** umožňuje dotazování publikované aplikace.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [LUIS development with C# SDK](./includes/sdk-csharp.md)]
@@ -41,7 +42,7 @@ Tuto aplikaci můžete z [portálu Luis](https://www.luis.ai) odstranit a odstra
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-* Ověřování ke klientské knihovně – chyby ověřování obvykle signalizují, že byly použity nesprávné klíčové & koncové body. V tomto rychlém startu se používá vytváření klíčového a koncového bodu pro předpověď za běhu, jako je pohodlí, ale funguje jenom v případě, že jste ještě nepoužívali měsíční kvótu. Pokud nemůžete použít klíč a koncový bod pro vytváření obsahu, musíte při přístupu ke klientské knihovně sady SDK předpovědi prostředí použít předpověď klíč modulu runtime a koncový bod.
+* Ověřování ke klientské knihovně – chyby ověřování obvykle signalizují, že byly použity nesprávné klíčové & koncové body. V tomto rychlém startu se jako pohodlí používá vytváření klíčového a koncového bodu pro předpověď za běhu, ale funguje jenom v případě, že jste ještě nepoužívali měsíční kvótu. Pokud nemůžete použít klíč a koncový bod pro vytváření obsahu, musíte při přístupu ke klientské knihovně sady SDK předpovědi prostředí použít předpověď klíč modulu runtime a koncový bod.
 * Vytváření entit – Pokud se při vytváření vnořené entity strojového učení, která se používá v tomto kurzu, zobrazí chyba, ujistěte se, že jste kód zkopírovali a nezměnili kód, aby vytvořil jinou entitu.
 * Vytvoření příkladu projevy – Pokud se zobrazí chyba při vytváření ukázkového utterance, který se používá v tomto kurzu, ujistěte se, že jste kód zkopírovali a nezměnili kód tak, aby vytvořil jiný označený příklad.
 * Školení – Pokud obdržíte chybu školení, obvykle to indikuje prázdnou aplikaci (žádné záměry s příkladem projevy) nebo aplikaci s úmysly nebo nepoškozenými entitami.

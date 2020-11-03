@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e586e9acc9510dc1aaae511fa51e5a0c3255bd8f
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 4c2900ed5ebe0df3ed827acc1a16caff3beaf4d4
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026492"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241085"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
@@ -30,7 +30,7 @@ Tento proces zahrnuje následující kroky:
     - Znovu propojte připojené prostředky.
 4. Vyčistit zdrojové prostředky: odstranit původní instanci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předtím, než se pokusíte znovu vytvořit instanci digitálních vláken Azure, je vhodné přejít na součásti původní instance a získat jasný nápad na všechny části, které bude nutné znovu vytvořit.
 
@@ -80,9 +80,8 @@ Přejděte k ukázce sem: [Průzkumník digitálních vláken Azure (ADT)](/samp
 
 Dále nastavte a nakonfigurujte oprávnění pro Průzkumníka aplikace ADT. Postupujte podle pokynů v části [*nastavení digitálního vlákna Azure a Průzkumníka služby ADT*](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-adt-explorer) v rychlém startu pro digitální vlákna Azure. Tato část vás provede následujícími kroky:
 1. Nastavte instanci digitálních vláken Azure (tuto část můžete přeskočit, protože už máte instanci).
-2. Nastavení **Registrace aplikace Azure AD** pro poskytnutí přístupu k vaší instanci
-3. Nastavte oprávnění pro spuštění Průzkumníka aplikace ADT na vašem počítači.
-4. Spusťte Průzkumníka aplikace ADT a nakonfigurujte ho tak, aby se připojil k vaší instanci. Použijete **název hostitele** původní instance digitálních vláken Azure, kterou přesouváte, a **ID klienta** a **ID tenanta** z registrace aplikace.
+2. Nastavte místní přihlašovací údaje Azure pro poskytnutí přístupu k vaší instanci.
+3. Spusťte Průzkumníka aplikace ADT a nakonfigurujte ho tak, aby se připojil k vaší instanci. Použijete **název hostitele** původní instance digitálních vláken Azure, kterou přesouváte.
 
 Nyní byste měli mít ukázkovou aplikaci Průzkumníka ADT spuštěnou v prohlížeči na vašem počítači. Vzorek by měl být připojený k původní instanci digitálních vláken Azure.
 
@@ -137,7 +136,7 @@ V současné době je Průzkumník aplikace ADT připojený k původní instanci
 
 :::image type="content" source="media/how-to-move-regions/sign-in.png" alt-text="Okno prohlížeče zobrazující aplikaci spuštěnou na localhost: 3000. Aplikace se nazývá aplikace ADT Explorer a obsahuje pole pro Průzkumníka dotazů, zobrazení modelu, zobrazení grafu a Průzkumník vlastností. Ještě nejsou k dispozici žádná data na obrazovce." lightbox="media/how-to-move-regions/sign-in.png":::
 
-Můžete znovu použít stejnou registraci aplikace, takže stačí nahradit *adresu URL aplikace ADT* novou instancí. Změňte tuto hodnotu na ta, která načte *https://{New instance hostname}* .
+Nahraďte *adresu URL aplikace ADT* tak, aby odrážela vaši novou instanci. Změňte tuto hodnotu na ta, která načte *https://{New instance hostname}* .
 
 Stiskněte *připojit* . Může se zobrazit výzva k opětovnému přihlášení s přihlašovacími údaji Azure a/nebo udělení tohoto souhlasu s aplikací pro vaši instanci.
 
@@ -210,6 +209,7 @@ Přesné prostředky, které je třeba upravit, závisí na vašem scénáři, a
 * Azure Maps
 * Služba Device Provisioning (DPS)
 * Osobní nebo firemní aplikace mimo Azure, jako je například **klientská aplikace** vytvořená v [*kurzu: Code a klientská aplikace*](tutorial-code.md), která se připojí k instanci a volá rozhraní API digitálních vláken Azure
+* Registrace aplikací Azure AD **není nutné** znovu vytvořit. Pokud k připojení k rozhraním API digitálních vláken Azure používáte [registraci aplikace](how-to-create-app-registration.md) , můžete stejnou registraci aplikace znovu použít s novou instancí.
 
 Po dokončení tohoto kroku by nová instance v cílové oblasti měla být kopií původní instance.
 

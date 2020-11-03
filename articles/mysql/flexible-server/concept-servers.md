@@ -1,17 +1,17 @@
 ---
 title: Koncepty serveru – Azure Database for MySQL flexibilního serveru
 description: V tomto tématu najdete pokyny a pokyny pro práci s Azure Database for MySQL flexibilním serverem.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 7217817e9add6214c2da8362a2769cad0c2cf330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936165"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240745"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty serveru v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -59,6 +59,6 @@ Azure Database for MySQL flexibilní Server můžete spravovat pomocí [Azure Po
 
 ## <a name="next-steps"></a>Další kroky
 
--   Informace o [vytvoření serveru](./quickstart-create-server-portal.md)
+-   Informace o [vytvoření serveru](./quickstart-create-server-portal.md)
 -   Informace o [monitorování a výstrahách](./how-to-alert-on-metric.md)
 

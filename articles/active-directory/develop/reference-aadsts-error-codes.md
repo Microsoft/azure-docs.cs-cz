@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130183"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241323"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -60,7 +60,7 @@ Tady je Ukázková chybová odpověď:
 
 `error`Pole má několik možných hodnot – Přečtěte si odkazy na dokumentaci k protokolu a specifikace OAuth 2,0, abyste se dozvěděli víc o specifických chybách (například `authorization_pending` v [toku kódu zařízení](v2-oauth2-device-code.md)) a jak na ně reagovat.  Zde jsou uvedeny některé běžné položky:
 
-| Kód chyby         | Description        | Akce klienta    |
+| Kód chyby         | Popis        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu.|
 | `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nepoužitelné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
@@ -251,7 +251,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS90051 | InvalidNationalCloudId – identifikátor národního cloudu obsahuje neplatný identifikátor cloudu. |
 | AADSTS90055 | TenantThrottlingError – existuje příliš mnoho příchozích požadavků. Tato výjimka je vyvolána u blokovaných klientů. |
 | AADSTS90056 | BadResourceRequest – Chcete-li uplatnit kód pro přístupový token, aplikace by měla poslat požadavek POST na `/token` koncový bod. Před tímto kódem byste také měli poskytnout autorizační kód a odeslat ho do požadavku POST do `/token` koncového bodu. V tomto článku najdete Přehled toku autorizačního kódu OAuth 2,0: [.. /azuread-dev/v1-Protocols-OAuth-Code.MD](../azuread-dev/v1-protocols-oauth-code.md). Nasměrujte uživatele na `/authorize` koncový bod, který vrátí authorization_code. Odesláním žádosti do `/token` koncového bodu uživatel získá přístupový token. Přihlaste se Azure Portal a zkontrolujte **koncové body Registrace aplikací >** , abyste zkontrolovali, jestli byly dva koncové body správně nakonfigurované. |
-| AADSTS90072 | PassThroughUserMfaError – externí účet, ke kterému se uživatel přihlašuje, neexistuje v tenantovi, ke kterému se přihlásil. takže uživatel nemůže splnit požadavky MFA pro tenanta. Účet musí být nejdřív přidaný jako externí uživatel v tenantovi. Odhlaste se a přihlaste se pomocí jiného uživatelského účtu Azure AD. |
+| AADSTS90072 | PassThroughUserMfaError – externí účet, ke kterému se uživatel přihlašuje, neexistuje v tenantovi, ke kterému se přihlásil. takže uživatel nemůže splnit požadavky MFA pro tenanta. K této chybě může dojít také v případě, že jsou uživatelé synchronizováni, ale v atributu ImmutableID (sourceAnchor) mezi službou Active Directory a službou Azure AD dojde k neshodě. Účet musí být nejdřív přidaný jako externí uživatel v tenantovi. Odhlaste se a přihlaste se pomocí jiného uživatelského účtu Azure AD. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid – došlo k chybě, když se služba pokusila zpracovat WS-Federationovou zprávu. Zpráva není platná. |
 | AADSTS90082 | OrgIdWsFederationNotSupported – vybrané zásady ověřování pro požadavek se aktuálně nepodporují. |
 | AADSTS90084 | OrgIdWsFederationGuestNotAllowed – účty hostů nejsou pro tuto lokalitu povoleny. |

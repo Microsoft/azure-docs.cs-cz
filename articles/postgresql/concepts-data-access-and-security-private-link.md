@@ -1,17 +1,17 @@
 ---
 title: Privátní Link-Azure Database for PostgreSQL – jeden server
 description: Přečtěte si, jak privátní odkaz funguje pro Azure Database for PostgreSQL jeden server.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 9b93e3f42c6b635ced7fdca61cb2ffe4f74d19bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489502"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240422"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privátní odkaz pro server Azure Database for PostgreSQL-Single
 
@@ -113,7 +113,7 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 ## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Odepřít veřejný přístup pro Azure Database for PostgreSQL jeden server
 
-Pokud chcete pro přístup k jejich Azure Database for PostgreSQL jednomu serveru spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ([pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
+Pokud chcete pro přístup k jejich Azure Database for PostgreSQL jednomu serveru spoléhat jenom na soukromé koncové body, můžete zakázat nastavení všech veřejných koncových bodů ( [pravidla brány firewall](concepts-firewall-rules.md) a [koncových bodů služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
 
 Pokud je toto nastavení nastavené na *Ano* , můžou vaše Azure Database for PostgreSQL jenom připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *žádné* klienty, se nemohou připojit k vašemu Azure Database for PostgreSQL v závislosti na nastavení koncového bodu brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
 

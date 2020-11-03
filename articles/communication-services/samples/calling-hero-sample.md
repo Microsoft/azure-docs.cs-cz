@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461137"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233929"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Začínáme se skupinou volajícím Hero Sample
 
@@ -50,9 +50,9 @@ Jakmile nakonfigurujete své zobrazované jméno a zařízení, můžete se při
 
 Součásti hlavní volající obrazovky:
 
-1. **Galerie médií**: hlavní fáze, kde se zobrazují účastníci. Pokud má účastník zapnutou kameru, zobrazí se zde jeho video kanál. Každý účastník má jednotlivou dlaždici, která zobrazuje zobrazované jméno a datový proud videa (když je nějaký).
-2. **Záhlaví**: Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
-3. **Boční panel**: tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
+1. **Galerie médií** : hlavní fáze, kde se zobrazují účastníci. Pokud má účastník zapnutou kameru, zobrazí se zde jeho video kanál. Každý účastník má jednotlivou dlaždici, která zobrazuje zobrazované jméno a datový proud videa (když je nějaký).
+2. **Záhlaví** : Zde jsou umístěny primární ovládací prvky volání pro přepínání nastavení a bočního panelu účastníka, zapnutí a vypnutí videa, sdílení obrazovky a opuštění volání.
+3. **Boční panel** : tady jsou informace o účastnících se účastníků a nastavení při přepínání pomocí ovládacích prvků v záhlaví. Komponenta se může v pravém horním rohu vynechává pomocí ' X '. Na bočním panelu účastníci se zobrazí seznam účastníků a odkaz pro pozvání více uživatelů k chatu. Postranní panel nastavení umožňuje konfigurovat nastavení mikrofonu a kamery.
 
 Níže najdete další informace o požadavcích a krocích pro nastavení ukázky.
 
@@ -75,7 +75,7 @@ Ukázku můžete otestovat místně tak, že otevřete několik relací prohlí�
 ## <a name="before-running-the-sample-for-the-first-time"></a>Před prvním spuštěním ukázky
 
 1. Otevřete instanci PowerShellu, Windows Terminal, Command Prompt nebo ekvivalentní a přejděte do adresáře, do kterého chcete ukázku naklonovat.
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
 3. Získat `Connection String` z Azure Portal. Další informace o připojovacích řetězcích najdete v tématu [vytvoření prostředků komunikace Azure](../quickstarts/create-communication-resource.md) .
 4. Po získání přidejte do `Connection String` souboru **Called/appsetting.jsv** souboru, který se nachází ve složce služby .NET, připojovací řetězec. Zadejte připojovací řetězec do proměnné: `ResourceConnectionString` .
 

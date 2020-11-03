@@ -1,17 +1,17 @@
 ---
 title: Privátní Link-Azure Portal-Azure Database for MySQL
 description: Postup konfigurace privátního odkazu pro Azure Database for MySQL z Azure Portal
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: b6a2725c6e4d72e8e79e3e45cc60060c02d90cac
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545000"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242394"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí portálu
 
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 > Funkce privátního odkazu je dostupná jenom pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je databázový server v jedné z těchto cenových úrovní.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-vm"></a>Vytvoření virtuálního počítače Azure
 

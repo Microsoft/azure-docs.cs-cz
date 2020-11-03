@@ -1,6 +1,6 @@
 ---
-title: Získání protokolů pro řešení potíží s povoleným řadičem dat Azure ARC
-description: Získejte protokoly služby pro řešení potíží s povoleným řadičem dat Azure ARC.
+title: Získání protokolů pro řešení potíží s datovými službami s podporou ARC Azure
+description: Naučte se, jak získat soubory protokolu z řadiče dat a vyřešit problémy s datovými službami s podporou ARC Azure.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,27 +9,27 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320201"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234035"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>Získání protokolů datových služeb s podporou ARC Azure
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>Získání protokolů pro řešení potíží s datovými službami s podporou ARC Azure
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete pokračovat, budete potřebovat:
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [Pokyny k instalaci](./install-client-tools.md).
-* Účet správce pro přihlášení k řadiči Azure Data Services s povoleným ARC.
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. Další informace najdete v tématu [instalace klientských nástrojů pro nasazení a správu datových služeb Azure ARC](./install-client-tools.md).
+* Účet správce pro přihlášení k řadiči dat s povoleným ARC Azure.
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>Získání protokolů datových služeb s podporou ARC Azure
+## <a name="get-log-files"></a>Získat soubory protokolu
 
-Pro účely řešení potíží můžete získat protokoly datových služeb s podporou ARC Azure ve všech luskech nebo v jednotlivých luskech. Můžete to provést pomocí standardních Kubernetes nástrojů, jako je například `kubectl logs` příkaz nebo v tomto článku, který budete používat [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] , což usnadňuje získání všech protokolů najednou.
+Pro účely řešení potíží můžete získat protokoly služeb napříč všemi lusky nebo určitými lusky. Jedním ze způsobů je použití standardních Kubernetes nástrojů, jako je `kubectl logs` příkaz. V tomto článku budete používat [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] nástroj, který usnadňuje získání všech protokolů najednou.
 
 1. Přihlaste se k řadiči dat pomocí účtu správce.
 
@@ -43,7 +43,7 @@ Pro účely řešení potíží můžete získat protokoly datových služeb s p
    azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
    ```
 
-   Příklad:
+   Například:
 
    ```console
    #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
@@ -53,27 +53,27 @@ Pro účely řešení potíží můžete získat protokoly datových služeb s p
 
 ## <a name="options"></a>Možnosti
 
-`azdata arc dc debug copy-logs` poskytuje následující možnosti pro správu výstupu.
+`azdata arc dc debug copy-logs`Příkaz poskytuje následující možnosti pro správu výstupu:
 
 * Výstup souborů protokolu do jiného adresáře pomocí `--target-folder` parametru.
 * Zkomprimujte soubory vynecháním `--skip-compress` parametru.
-* Trigger a zahrnutí výpisů paměti vynecháním `--exclude-dumps` . Tato metoda se nedoporučuje, pokud podpora Microsoftu nepožadoval výpisy paměti. Pořizování výpisu paměti vyžaduje, aby se nastavení kontroleru dat `allowDumps` nastavilo na `true` čas vytvoření řadiče dat.
+* Vynechejte Trigger a přidejte výpisy paměti `--exclude-dumps` . Tuto metodu nedoporučujeme, pokud podpora Microsoftu nepožadoval výpisy paměti. Získání výpisu paměti vyžaduje, aby se nastavení řadiče dat `allowDumps` `true` při vytváření řadiče dat nastavilo.
 * Filtr pro shromažďování protokolů jenom pro konkrétní pod ( `--pod` ) nebo kontejner ( `--container` ) podle názvu.
-* Vyfiltrujte shromažďování protokolů pro konkrétní vlastní prostředek předáním `--resource-kind` parametru a `--resource-name` . `resource-kind`Hodnota parametru by měla být jeden z názvů vlastních definic prostředků, které mohou být načteny příkazem `kubectl get customresourcedefinition` .
+* Vyfiltrujte shromažďování protokolů pro konkrétní vlastní prostředek předáním `--resource-kind` parametrů a `--resource-name` . `resource-kind`Hodnota parametru by měla být jeden z názvů vlastních definic prostředků. Tyto názvy můžete načíst pomocí příkazu `kubectl get customresourcedefinition` .
 
-Pomocí těchto parametrů můžete nahradit `<parameters>` v následujícím příkladu. 
+Pomocí těchto parametrů můžete nahradit `<parameters>` v následujícím příkladu: 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
 ```
 
-Například
+Například:
 
 ```console
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-Příklad hierarchie složek Hierarchie složek je uspořádána podle názvu pod, potom kontejner a pak podle hierarchie adresářů v rámci kontejneru.
+Následující hierarchie složek je příklad. Organizuje se podle názvu pod, potom kontejner a pak podle hierarchie adresářů v rámci kontejneru.
 
 ```output
 <export directory>

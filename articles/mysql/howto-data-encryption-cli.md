@@ -1,18 +1,18 @@
 ---
 title: Šifrování dat – Azure CLI – Azure Database for MySQL
 description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azure Database for MySQL pomocí Azure CLI.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799815"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242088"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -50,7 +50,7 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
 * Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
   * Žádné datum vypršení platnosti
   * Nezakázáno
-  * Provádění operací **získat**, **zalamovat**a **rozbalení**
+  * Provádění operací **získat** , **zalamovat** a **rozbalení**
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Nastavení správných oprávnění pro klíčové operace
 
@@ -68,7 +68,7 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. Nastavte **klíčová oprávnění** (**získání**, **zabalení**, **rozbalení**) pro **objekt zabezpečení**, což je název serveru MySQL.
+2. Nastavte **klíčová oprávnění** ( **získání** , **zabalení** , **rozbalení** ) pro **objekt zabezpečení** , což je název serveru MySQL.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

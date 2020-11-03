@@ -1,17 +1,17 @@
 ---
 title: Vysoká dostupnost – Azure Database for MySQL
 description: Tento článek poskytuje informace o vysoké dostupnosti v Azure Database for MySQL
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b301946ce818559510b4e401b1f0aaf7c235d5a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882563"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242292"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Vysoká dostupnost v Azure Database for MySQL
 Služba Azure Database for MySQL poskytuje zaručenou vysokou úroveň dostupnosti s finančně zálohovanou smlouvou o úrovni služeb (SLA) [99,99%](https://azure.microsoft.com/support/legal/sla/mysql) doba provozu. Azure Database for MySQL poskytuje vysokou dostupnost během plánovaných událostí, jako je například operace COMPUTE initated (User-Scale), a také když dojde k neplánovaným událostem, jako je například základní hardware, software nebo selhání sítě. Azure Database for MySQL se můžou rychle zotavit z nejdůležitějších okolností, takže při použití této služby prakticky neexistují žádné aplikace.

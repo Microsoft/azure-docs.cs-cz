@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0779ac261fbb4ee91bf63021bb0cc685a371c2b2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77463216"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234065"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Synchronizace protokolu LDAP v Ranger a Apache Ambari ve službě Azure HDInsight
 
@@ -20,16 +20,19 @@ Clustery HDInsight Balíček zabezpečení podniku (ESP) používají Ranger k a
 
 ## <a name="general-guidelines"></a>Obecné pokyny
 
-* Vždy nasaďte clustery se skupinami.
-* Místo změny skupinových filtrů v Ambari a Ranger se pokuste spravovat všechny tyto filtry ve službě Azure AD a použít vnořené skupiny k uvedení požadovaných uživatelů.
-* Jakmile bude uživatel synchronizovaný, nebude odebrán ani v případě, že uživatel není součástí skupin.
-* Pokud potřebujete přímo změnit filtry LDAP, použijte uživatelské rozhraní jako první, protože obsahuje nějaké ověření.
+* Vždy nasaďte clustery s jednou nebo více skupinami.
+* Pokud chcete v clusteru použít více skupin, ověřte, jestli má smysl aktualizovat členství ve skupině v Azure Active Directory (Azure AD).
+* Pokud chcete změnit skupiny clusterů, můžete změnit filtry synchronizace pomocí Ambari.
+* Všechny změny členství ve skupinách v Azure AD se v clusterech projeví v následných synchronizacích. Změny musí být nejprve synchronizovány do Azure AD Domain Services (Azure služba AD DS) a následně do clusterů.
+* Clustery HDInsight používají Samba/winbind k navýšení členství ve skupině na uzlech clusteru.
+* Členové skupiny jsou synchronizovaný průjezdně (všechny podskupiny a jejich členové) do Ambari i Ranger. 
 
 ## <a name="users-are-synced-separately"></a>Uživatelé se synchronizují samostatně.
 
-Ambari a Ranger nesdílí uživatelskou databázi, protože slouží dvěma různým účelům. Pokud uživatel potřebuje použít uživatelské rozhraní Ambari, musí být tento uživatel synchronizovaný na Ambari. Pokud uživatel není synchronizovaný s Ambari, uživatelské rozhraní nebo rozhraní API Ambari ho zamítne, ale ostatní části systému budou fungovat (budou chráněné pomocí Ranger nebo Správce prostředků a ne Ambari). Pokud chcete zahrnout uživatele do zásad Ranger, synchronizujte uživatele s Ranger.
-
-Když se nasadí zabezpečený cluster, členové skupiny se budou synchronizovat přes Ambari i Ranger. 
+ * Ambari a Ranger nesdílí uživatelskou databázi, protože slouží dvěma různým účelům. 
+   * Pokud uživatel potřebuje použít uživatelské rozhraní Ambari, musí být tento uživatel synchronizovaný na Ambari. 
+   * Pokud uživatel není synchronizovaný s Ambari, uživatelské rozhraní nebo rozhraní API Ambari ho odmítne, ale ostatní části systému budou fungovat (ty jsou chráněné pomocí Ranger nebo Správce prostředků a ne podle Ambari).
+   * Aby bylo možné zahrnout uživatele nebo skupiny v zásadách Ranger, musí být objekty zabezpečení explicitně synchronizovány v Ranger.
 
 ## <a name="ambari-user-sync-and-configuration"></a>Synchronizace a konfigurace uživatelů Ambari
 
@@ -37,28 +40,20 @@ Z hlavních uzlů se úloha cron `/opt/startup_scripts/start_ambari_ldap_sync.py
 
 Protokoly by měly být v `/var/log/ambari-server/ambari-server.log` . Další informace najdete v tématu [Konfigurace úrovně protokolování Ambari](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
-V Data Lakech clusterech se k vytváření domovských složek pro synchronizované uživatele a jejich nastavení jako vlastníci domovských složek používá zavěšení vytvoření uživatele. Pokud uživatel není synchronizovaný tak, aby se Ambari správně, mohl by se uživateli při přístupu k přípravné a jiné dočasné složce setkat chyba.
-
-### <a name="update-groups-to-be-synced-to-ambari"></a>Aktualizace skupin, které se mají synchronizovat s Ambari
-
-Pokud ve službě Azure AD nemůžete spravovat členství ve skupinách, máte dvě možnosti:
-
-* Proveďte jednu synchronizaci, jak je popsáno podrobněji v tématu [synchronizace uživatelů a skupin LDAP](https://docs.cloudera.com/HDPDocuments/HDP3/latest/ambari-authentication-ldap-ad/content/authe_ldapad_synchronizing_ldap_users_and_groups.html). Pokaždé, když se změní členství ve skupině, bude nutné provést synchronizaci znovu.
-
-* Napíšete úlohu cron a [pravidelně volejte rozhraní Ambari API](https://community.cloudera.com/t5/Support-Questions/How-do-I-automate-the-Ambari-LDAP-sync/m-p/96634) s novými skupinami.
+V Data Lakech clusterech se k vytváření domovských složek pro synchronizované uživatele a jejich nastavení jako vlastníci domovských složek používá zavěšení vytvoření uživatele. Pokud uživatel není synchronizovaný, aby se Ambari správně, mohl by se uživateli při spouštění úloh setkat s chybami, protože Domovská složka nemusí být nastavená správně.
 
 ## <a name="ranger-user-sync-and-configuration"></a>Synchronizace a konfigurace uživatelů Ranger
 
-Ranger má sestavený modul synchronizace, který se při synchronizaci uživatelů spouští každou hodinu. Nesdílí uživatelskou databázi s Ambari. HDInsight nakonfiguruje vyhledávací filtr tak, aby synchronizoval uživatele správce, sledovacího uživatele a členy skupiny zadané během vytváření clusteru. Členové skupiny se budou synchronizovat po cestě:
+Ranger má integrovaný synchronizační modul, který se každou hodinu spouští k synchronizaci uživatelů. Nesdílí uživatelskou databázi s Ambari. HDInsight nakonfiguruje vyhledávací filtr tak, aby synchronizoval uživatele správce, sledovacího uživatele a členy skupiny zadané během vytváření clusteru. Členové skupiny se budou synchronizovat po cestě:
 
-* Zakáže přírůstkovou synchronizaci.
-* Povolit mapování skupin uživatelů na synchronizaci
-* Zadejte vyhledávací filtr, který bude obsahovat členy přenositelných skupin.
-* Synchronizace sAMAccountName pro uživatele a atribut Name pro skupiny.
+1. Zakáže přírůstkovou synchronizaci.
+1. Povolte mapování skupiny uživatelů na synchronizaci.
+1. Zadejte vyhledávací filtr, který bude obsahovat členy přenositelných skupin.
+1. Synchronizujte atribut sAMAccountName pro uživatele a atribut Name pro skupiny.
 
 ### <a name="group-or-incremental-sync"></a>Skupina nebo přírůstková synchronizace
 
-Ranger podporuje možnost synchronizace skupin, ale funguje jako průnik s uživatelským filtrem. Nejedná se o sjednocení mezi členstvím ve skupinách a filtrem uživatelů. Typický případ použití pro filtr synchronizace skupin v Ranger je filtr skupiny: (DN = clusteradmingroup), uživatelský filtr: (City = Seattle).
+Ranger podporuje možnost synchronizace skupin, ale funguje jako průnik s uživatelským filtrem, nikoli jako sjednocení mezi členstvím ve skupinách a filtrem uživatele. Typický případ použití pro filtr synchronizace skupin v Ranger je filtr skupiny: (DN = clusteradmingroup), uživatelský filtr: (City = Seattle).
 
 Přírůstková synchronizace funguje pouze pro uživatele, kteří jsou již synchronizováni (první čas). Přírůstkové neproběhne synchronizace nových uživatelů přidaných do skupin po počáteční synchronizaci.
 
@@ -73,8 +68,12 @@ K synchronizaci uživatelů Ranger může dojít z některého z hlavních. Prot
 1. Přihlaste se k Ambari.
 1. Přejít do konfiguračního oddílu Ranger.
 1. Přejít na oddíl Advanced **usersync-log4j** .
-1. Změňte na `log4j.rootLogger` `DEBUG` úroveň (po změně by měla vypadat podobně jako `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
+1. Změňte `log4j.rootLogger` na `DEBUG` úroveň. (Po jeho změně by měl vypadat jako `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Uložte konfiguraci a restartuje Ranger.
+
+## <a name="known-issues-with-ranger-user-sync"></a>Známé problémy se synchronizací uživatelů Ranger
+* Pokud má název skupiny znaky Unicode, synchronizace Ranger se nezdařila. Pokud uživatel patří do skupiny, která má mezinárodní znaky, Ranger synchronizuje členství v částečné skupině.
+* Uživatelské jméno (sAMAccountName) a název skupiny (Name) musí být kratší než 20 znaků. Pokud je název skupiny delší, bude se uživateli při výpočtu oprávnění zacházet, jako by nepatří do skupiny.
 
 ## <a name="next-steps"></a>Další kroky
 

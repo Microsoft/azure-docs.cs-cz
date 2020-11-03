@@ -1,17 +1,17 @@
 ---
 title: Zálohování a obnovení v Azure Database for MySQL flexibilním serveru
 description: Přečtěte si o konceptech zálohování a obnovení pomocí Azure Database for MySQL flexibilního serveru.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545867"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240762"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Zálohování a obnovení v Azure Database for MySQL flexibilním serveru (Preview)
 

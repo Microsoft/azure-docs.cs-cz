@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019151"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233963"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportovat certifikáty z Azure Key Vault
 
@@ -33,8 +33,8 @@ Při vytvoření certifikátu Key Vault se vytvoří adresovatelný *klíč* a *
 
 Po vytvoření Key Vault certifikátu ho můžete načíst z adresního tajného klíče s privátním klíčem. Načtěte certifikát ve formátu PFX nebo PEM.
 
-- **Exportovatelný**: zásady použité k vytvoření certifikátu označují, že klíč se dá exportovat.
-- **Neexportovatelný**: zásady použité k vytvoření certifikátu označují, že klíč není exportovatelný. V takovém případě privátní klíč není součástí hodnoty, když se načte jako tajný kód.
+- **Exportovatelný** : zásady použité k vytvoření certifikátu označují, že klíč se dá exportovat.
+- **Neexportovatelný** : zásady použité k vytvoření certifikátu označují, že klíč není exportovatelný. V takovém případě privátní klíč není součástí hodnoty, když se načte jako tajný kód.
 
 Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
 
@@ -79,18 +79,26 @@ Další informace najdete v tématu [definice parametrů](https://docs.microsoft
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pomocí tohoto příkazu v Azure PowerShell Získejte certifikát s názvem **TestCert01** z trezoru klíčů s názvem **ContosoKV01**. Chcete-li stáhnout certifikát jako soubor PFX, spusťte následující příkaz. Tyto příkazy přistupují k **SecretId**a pak obsah uloží jako soubor PFX.
+Pomocí tohoto příkazu v Azure PowerShell Získejte certifikát s názvem **TestCert01** z trezoru klíčů s názvem **ContosoKV01** . Chcete-li stáhnout certifikát jako soubor PFX, spusťte následující příkaz. Tyto příkazy přistupují k **SecretId** a pak obsah uloží jako soubor PFX.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$kvSecret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $Cert.Name
-$kvSecretBytes = [System.Convert]::FromBase64String($kvSecret.SecretValueText)
-$certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-$certCollection.Import($kvSecretBytes,$null,[System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-$password = '******'
-$protectedCertificateBytes = $certCollection.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $password)
-$pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
-[System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 Tento příkaz provede export celého řetězce certifikátů s privátním klíčem. Certifikát je chráněný heslem.
@@ -100,13 +108,13 @@ Další informace o příkazu **Get-AzKeyVaultCertificate** a parametrech najdet
 
 Po vytvoření nebo importu certifikátu v okně **certifikátu** se na Azure Portal zobrazí oznámení o úspěšném vytvoření certifikátu. Výběrem certifikátu a aktuální verze zobrazíte možnost stažení.
 
-Pokud chcete stáhnout certifikát, vyberte **Stáhnout ve formátu CER** nebo **Stáhnout ve formátu PFX/PEM**.
+Pokud chcete stáhnout certifikát, vyberte **Stáhnout ve formátu CER** nebo **Stáhnout ve formátu PFX/PEM** .
 
 ![Stažení certifikátu](../media/certificates/quick-create-portal/current-version-shown.png)
 
 **Exportovat Azure App Service certifikátů**
 
-Certifikáty Azure App Service představují pohodlný způsob, jak si koupit certifikáty SSL. V rámci portálu je můžete přiřadit k aplikacím Azure. Tyto certifikáty můžete také exportovat z portálu jako soubory PFX, které se použijí jinde. Po importu se App Service certifikáty nacházejí v **tajných klíčích**.
+Certifikáty Azure App Service představují pohodlný způsob, jak si koupit certifikáty SSL. V rámci portálu je můžete přiřadit k aplikacím Azure. Tyto certifikáty můžete také exportovat z portálu jako soubory PFX, které se použijí jinde. Po importu se App Service certifikáty nacházejí v **tajných klíčích** .
 
 Další informace najdete v postupu [export Azure App Service certifikátů](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx).
 

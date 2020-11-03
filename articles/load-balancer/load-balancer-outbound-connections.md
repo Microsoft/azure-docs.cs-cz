@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017688"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241765"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>Azure Load Balancer odchozího proxy serveru
 
 Nástroj pro vyrovnávání zatížení Azure je možné použít jako proxy server pro odchozí připojení k Internetu. Nástroj pro vyrovnávání zatížení poskytuje odchozí připojení pro instance back-end. 
 
-Tato konfigurace používá **Překlad zdrojového síťového adres (SNAT)**. SNAT přepíše IP adresu back-endu na veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení. 
+Tato konfigurace používá **Překlad zdrojového síťového adres (SNAT)** . SNAT přepíše IP adresu back-endu na veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení. 
 
 SNAT umožňuje **maskování IP** instance back-endu. Tato maskování brání vnějším zdrojům, aby měly přímo adresu back-end instancí. 
 
@@ -42,9 +42,9 @@ Pokud se port používá pro příchozí připojení, bude mít **naslouchací p
 
 Aby bylo možné navázat odchozí připojení, musí být k dispozici **dočasný port** pro určení portu, na kterém má být zajištěna komunikace a údržba odlišného toku přenosů. 
 
-Každá IP adresa má 65 535 portů. Prvních 1024 portů je vyhrazeno jako **systémové porty**. Každý port se dá použít pro příchozí nebo odchozí připojení pro TCP a UDP. 
+Každá IP adresa má 65 535 portů. Prvních 1024 portů je vyhrazeno jako **systémové porty** . Každý port se dá použít pro příchozí nebo odchozí připojení pro TCP a UDP. 
 
-Ze zbývajících portů poskytuje Azure 64 000 pro použití jako **dočasné porty**. Pokud se IP adresa přidá jako konfigurace IP adresy front-endu, můžou se tyto dočasné porty použít pro SNAT.
+Ze zbývajících portů poskytuje Azure 64 000 pro použití jako **dočasné porty** . Pokud se IP adresa přidá jako konfigurace IP adresy front-endu, můžou se tyto dočasné porty použít pro SNAT.
 
 Prostřednictvím odchozích pravidel se tyto porty SNAT dají distribuovat do back-endu instancí, aby mohly sdílet veřejné IP adresy nástroje pro vyrovnávání zatížení pro odchozí připojení.
 
@@ -52,7 +52,7 @@ Sítě na hostiteli pro jednotlivé instance back-endu budou probíhají až do 
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> Vyčerpání portů
 
-Každé připojení ke stejné cílové IP adrese a cílovému portu bude používat port SNAT. Toto připojení udržuje odlišný **přenosový tok** z instance back-endu nebo z **klienta** na **Server**. Tento proces přidělí serveru jedinečný port, na který se má adresovat přenos. Bez tohoto procesu nevíte na klientském počítači, který tok paketu je součástí.
+Každé připojení ke stejné cílové IP adrese a cílovému portu bude používat port SNAT. Toto připojení udržuje odlišný **přenosový tok** z instance back-endu nebo z **klienta** na **Server** . Tento proces přidělí serveru jedinečný port, na který se má adresovat přenos. Bez tohoto procesu nevíte na klientském počítači, který tok paketu je součástí.
 
 Představte si, že budete mít více prohlížečů https://www.microsoft.com , což je:
 
@@ -92,7 +92,7 @@ V následující <a name="snatporttable"></a> tabulce jsou uvedena předalokace 
 | 801 – 1000 | 32 | 
 
 >[!NOTE]
-> Pokud máte back-end fond s maximální velikostí 6, každá instance může mít 64000/10 = 6 400 portů, pokud definujete explicitní odchozí pravidlo. Podle výše uvedené tabulky bude mít každá z nich jenom 1 024, pokud zvolíte automatické přidělování.
+> Pokud máte back-end fond s maximální velikostí 10, každá instance může mít 64000/10 = 6 400 portů, pokud definujete explicitní odchozí pravidlo. Podle výše uvedené tabulky bude mít každá z nich jenom 1 024, pokud zvolíte automatické přidělování.
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> Odchozí pravidla a Virtual Network překlad adres (NAT)
 

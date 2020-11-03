@@ -1,18 +1,18 @@
 ---
 title: Správa redundantního vysoké dostupnosti zóny – Azure Portal-Azure Database for MySQL flexibilní Server
 description: Tento článek popisuje, jak povolit nebo zakázat redundantní vysokou dostupnost zóny v Azure Database for MySQL flexibilním serveru prostřednictvím Azure Portal.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936660"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241731"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Správa redundantní vysoké dostupnosti zóny v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -32,18 +32,18 @@ Tato stránka poskytuje pokyny, jak můžete povolit nebo zakázat vysokou dostu
 
 V této části najdete podrobnosti konkrétně pro pole související s HA. Pomocí těchto kroků můžete nasadit vysokou dostupnost při vytváření flexibilního serveru.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server a klikněte na **vytvořit**.  Podrobnosti o tom, jak vyplnit podrobnosti, jako je například **předplatné**, **Skupina prostředků**, **název serveru**, **oblast**a další pole, najdete v tématu dokumentace k vytvoření serveru.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server a klikněte na **vytvořit** .  Podrobnosti o tom, jak vyplnit podrobnosti, jako je například **předplatné** , **Skupina prostředků** , **název serveru** , **oblast** a další pole, najdete v tématu dokumentace k vytvoření serveru.
 
 2.  V možnosti dostupnosti klikněte na zaškrtávací políčko pro **redundantní vysokou dostupnost zóny** .
 
-3.  Pokud chcete změnit výchozí výpočetní výkon a úložiště, klikněte na  **Konfigurovat Server**.
+3.  Pokud chcete změnit výchozí výpočetní výkon a úložiště, klikněte na  **Konfigurovat Server** .
 
 4.  Pokud je zaškrtnuté políčko vysoká dostupnost, nebudete moct zvolit vrstvu s možností vysoké dostupnosti. Můžete si vybrat buď výpočetní úrovně pro **obecné účely** , nebo **paměťově optimalizované** .
 
     > [!IMPORTANT]
-    > Podporujeme jenom redundantní vysokou dostupnost pro cenovou úroveň pro ***obecné účely*** a ***paměť optimalizované pro paměť*** .
+    > Podporujeme jenom redundantní vysokou dostupnost zóny pro cenovou úroveň [pro *_obecné účely_* _ a _*_paměťově optimalizované pro paměť_*_ .
 
-5.  Z rozevíracího seznamu vyberte požadovanou **Velikost** pro výběr.
+5.  Z rozevíracího seznamu vyberte *Velikost COMPUTE* _ * pro vaši volbu.
 
 6.  V GiB vyberte **velikost úložiště** pomocí posuvných pruhů a vyberte **dobu uchovávání záloh** mezi 7 dny a 35 dny.   
 
@@ -51,11 +51,11 @@ V této části najdete podrobnosti konkrétně pro pole související s HA. Pom
 
 Pomocí těchto kroků zakážete vysokou dostupnost pro flexibilní Server, který je už nakonfigurovaný s možností redundance zóny.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MySQL flexibilní Server.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte svůj existující Azure Database for MySQL flexibilní Server.
 
-2.  Na stránce flexibilní Server klikněte na horním panelu na možnost **Vysoká dostupnost** a otevřete stránku vysoké dostupnosti.
+2.  Na stránce flexibilní Server klikněte na horním panelu na možnost **Vysoká dostupnost** a otevřete stránku vysoké dostupnosti.
 
-3.  Kliknutím na zaškrtávací políčko **zóna redundantního vysoké dostupnosti** zakažte možnost a kliknutím na **Uložit**   změny uložte.
+3.  Kliknutím na zaškrtávací políčko **zóna redundantního vysoké dostupnosti** zakažte možnost a kliknutím na **Uložit** změny uložte.
 
 4.  Zobrazí se potvrzovací dialogové okno, ve kterém můžete potvrdit zakázání HA.
 
@@ -66,4 +66,4 @@ Pomocí těchto kroků zakážete vysokou dostupnost pro flexibilní Server, kte
 ## <a name="next-steps"></a>Další kroky
 
 -   Informace o [kontinuitě podnikových aplikací](./concepts-business-continuity.md)
--   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
+-   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .

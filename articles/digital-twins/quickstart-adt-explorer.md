@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d3c9d03c4297af0b9155c2d528e27221b42bc9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 466129e8435ef694821b078592a100a111a43f3a
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124831"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242275"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Rychlý Start – Prozkoumejte ukázkový scénář digitálních vláken Azure pomocí Průzkumníka aplikace ADT
 
@@ -31,7 +31,7 @@ Vzorový graf, se kterým budete pracovat, představuje sestavení se dvěma pod
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu budete potřebovat předplatné Azure. Pokud ho ještě nemáte, vytvořte si **[ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** hned teď.
 
@@ -41,48 +41,36 @@ Nakonec také budete muset stáhnout ukázku, která se má použít při rychl�
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Nastavení digitálních vláken Azure a Průzkumníka služby ADT
 
-Prvním krokem při práci se službou Azure Digital proworking je nastavení **instance digitálních vláken Azure** . Po vytvoření instance služby ji budete moct naplnit pomocí ukázkových dat později v rychlém startu.
+Prvním krokem při práci se službou Azure Digital proworking je **Nastavení instance digitálních vláken Azure** . Po vytvoření instance služby a **Nastavení přihlašovacích údajů** pro ověření v PRŮZKUMNÍKOVI aplikace ADT se budete moci **připojit k instanci v Průzkumníkovi aplikace ADT** a naplnit ji pomocí ukázkových dat později v rychlém startu.
 
-Nastavili jste taky oprávnění pro Průzkumníka aplikace ADT ke spuštění na vašem počítači a přístup k instanci digitálního vlákna Azure, včetně nastavení **Registrace aplikace** Azure Active Directory (Azure AD), která se má použít. Potom můžete pomocí ukázkové aplikace prozkoumat svou instanci a její data.
+Zbytek této části vás provede následujícími kroky.
 
-### <a name="set-up-azure-digital-twins-instance-and-app-registration"></a>Nastavení instance digitálních vláken Azure a registrace aplikací
+### <a name="set-up-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
-[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+### <a name="set-up-local-azure-credentials"></a>Nastavit místní přihlašovací údaje Azure
 
-### <a name="set-adt-explorer-permissions"></a>Nastavení oprávnění Průzkumníka aplikace ADT
+Aplikace Průzkumníka ADT používá [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (součást `Azure.Identity` knihovny) k ověřování uživatelů s instancí digitálních vláken Azure, když ji spustíte na místním počítači. Další informace o různých způsobech, jak se klientská aplikace může ověřit pomocí digitálních vláken Azure, najdete v tématu [*Postup: psaní ověřovacího kódu aplikace*](how-to-authenticate-client.md).
 
-Dále Připravte instanci digitálních vláken Azure, kterou jste vytvořili pro práci s Průzkumníkem aplikace ADT, což je místně hostovaná webová aplikace. Přejděte na stránku [Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) v Azure Portal a v seznamu vyberte název registrace vaší **aplikace** , kterou jste vytvořili v předchozí části.
+V případě tohoto typu ověřování bude Průzkumník aplikace ADT Hledat přihlašovací údaje v rámci místního prostředí, jako je například přihlášení Azure v místním rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) nebo v sadě Visual Studio/Visual Studio Code. To znamená, že byste se měli **místně přihlašovat k Azure** prostřednictvím jednoho z těchto mechanismů k nastavení přihlašovacích údajů pro aplikaci v Průzkumníkovi ADT.
 
-V nabídce registrace vyberte *ověřování* a stiskněte *+ Přidat platformu* .
+Pokud jste se už k Azure přihlásili jedním z těchto způsobů, můžete přejít k [Další části](#run-and-configure-adt-explorer).
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+V opačném případě můžete místní **Azure CLI** nainstalovat pomocí těchto kroků:
+1. Postupujte podle pokynů v [**tomto odkazu pro instalaci**](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) a dokončete instalaci, která odpovídá vašemu operačnímu systému.
+2. Otevřete na svém počítači okno konzoly.
+3. Spusťte příkaz `az login` a postupujte podle pokynů pro ověřování a přihlaste se k účtu Azure.
 
-Na následující stránce *Konfigurace platforem* vyberte *Web* .
-Podrobnosti konfigurace vyplňte následujícím způsobem:
-* **Identifikátory URI pro přesměrování** : přidejte identifikátor URI přesměrování *http://localhost:3000* .
-* **Implicitní udělení** : zaškrtněte políčko pro *přístupové tokeny* .
+Po provedení tohoto postupu by měl Průzkumník aplikace ADT při spuštění v další části automaticky zvolit přihlašovací údaje Azure.
 
-Pro dokončení *Konfigurace* stiskněte klávesu.
-
-:::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-:::row-end:::
-
-Nyní máte nakonfigurovanou konfiguraci webu, kterou použije Průzkumník aplikace ADT. Na kartě ověřování v Azure Portal by se měla odrážet. Po ověření níže uvedených částí stiskněte *Uložit* .
-
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny.":::
+Okno konzoly ověřování můžete zavřít, pokud chcete, nebo ho nechat otevřený pro použití v dalším kroku.
 
 ### <a name="run-and-configure-adt-explorer"></a>Spuštění a konfigurace Průzkumníka aplikace ADT
 
 V dalším kroku spusťte aplikaci aplikace ADT Explorer a nakonfigurujte ji pro instanci digitálních vláken Azure.
 
-Přejděte do složky Downloaded and unzip _**Azure_Digital_Twins__ADT__explorer**_ . Otevřete příkazový řádek v umístění složky *Azure_Digital_Twins__ADT__explorer/Client/src* .
+Přejděte do složky Downloaded and unzip _**Azure_Digital_Twins__ADT__explorer**_ . Otevřete okno konzoly do umístění složky *Azure_Digital_Twins__ADT__explorer/Client/src* .
 
 Spusťte `npm install` , aby se stáhly všechny požadované závislosti.
 
@@ -96,10 +84,7 @@ V horní části okna klikněte na tlačítko *Přihlásit* (zobrazené na obrá
 
 :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Zobrazení grafu tvořeného čtyřmi kruhovými uzly, které jsou připojeny šipkami. Kruh označený jako ' Floor1 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room1 '; kruh označený jako ' Floor0 ' je připojen šipkou, která je označena ' Contains ' na kroužek označený ' Room0 '. ' Floor1 ' a ' Floor0 ' nejsou připojeny." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-Zadejte důležité informace, které jste shromáždili dříve v části [požadavky](#prerequisites) :
-* ID aplikace (klienta)
-* ID adresáře (tenanta)
-* Adresa URL instance digitálních vláken Azure ve formátu *https://{instance Name hosta}*
+Zadejte *adresu URL instance digitálních vláken Azure* , kterou jste shromáždili dříve v části [předpoklady](#prerequisites) , ve formátu *https://{instance Name Host}* .
 
 >[!NOTE]
 > Tyto informace můžete kdykoli znovu navštívit nebo upravit tak, že vyberete stejnou ikonu pro opětovné načtení přihlašovacího pole. Zachová se hodnoty, které jste předali.
@@ -313,12 +298,6 @@ Pokud chcete zabalit práci pro tento rychlý Start, nejprve ukončete spuštěn
 Pokud máte v úmyslu pokračovat na kurzy digitálních vláken Azure, instance použitá v tomto rychlém startu se dá pro tyto články znovu použít a nemusíte ji odebrat.
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
-
-V dalším kroku odstraňte registraci aplikace Azure Active Directory, kterou jste vytvořili pro klientskou aplikaci, pomocí tohoto příkazu:
-
-```azurecli-interactive
-az ad app delete --id <your-application-ID>
-```
 
 Nakonec odstraňte ukázkovou složku projektu, kterou jste stáhli do místního počítače ( _**Azure_Digital_Twins__ADT__explorer**_ ). Možná bude nutné odstranit verze zip i unzip.
 

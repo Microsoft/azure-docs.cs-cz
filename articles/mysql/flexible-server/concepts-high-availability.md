@@ -1,17 +1,17 @@
 ---
 title: Přehled redundantní vysoké dostupnosti zóny s Azure Database for MySQLm flexibilním serverem
 description: Přečtěte si o konceptech redundantní vysoké dostupnosti zóny s Azure Database for MySQL flexibilním serverem.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934972"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241180"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Koncepty vysoké dostupnosti v Azure Database for MySQL flexibilním serveru (Preview)
 
@@ -100,5 +100,5 @@ Tady je několik důležitých informací, které byste měli mít na paměti p�
 ## <a name="next-steps"></a>Další kroky
 
 -   Informace o [kontinuitě podnikových aplikací](./concepts-business-continuity.md)
--   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
+-   Přečtěte si o [vysoké dostupnosti zóny jako redundantní](./concepts-high-availability.md) .
 -   Další informace o [zálohování a obnovení](./concepts-backup-restore.md)

@@ -1,17 +1,17 @@
 ---
 title: Architektura připojení – Azure Database for MariaDB
 description: Popisuje architekturu připojení pro server Azure Database for MariaDB.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c1331b7d868c29fddf7b709912e87d55d73c45
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065348"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241442"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura připojení v Azure Database for MariaDB
 Tento článek popisuje architekturu připojení Azure Database for MariaDB a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MariaDB od klientů v rámci i mimo Azure.
@@ -74,7 +74,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 
 ## <a name="connection-redirection"></a>Přesměrování připojení
 
-Azure Database for MariaDB podporuje další zásady připojení, **přesměrování**, která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a MariaDB servery. Po navázání počáteční relace protokolu TCP na server Azure Database for MariaDB server vrátí back-end adresu uzlu, který hostuje server MariaDB, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
+Azure Database for MariaDB podporuje další zásady připojení, **přesměrování** , která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a MariaDB servery. Po navázání počáteční relace protokolu TCP na server Azure Database for MariaDB server vrátí back-end adresu uzlu, který hostuje server MariaDB, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
 
 Tato funkce je podporovaná v Azure Database for MariaDB serverech s verzemi modulu 10,2 a 10,3.
 

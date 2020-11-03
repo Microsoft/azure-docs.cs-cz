@@ -5,21 +5,22 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 32187b7aedd43a57ffe77c2f8524c54049ba10ae
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460729"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234116"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
 
-Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.  
+Tento článek poskytuje podrobné pokyny, jak pomocí služby importu a exportu v Azure bezpečně importovat velké objemy dat do úložiště objektů BLOB v Azure. Aby bylo možné importovat data do objektů blob Azure, služba vyžaduje, abyste dodali šifrované diskové jednotky obsahující vaše data do datacentra Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než vytvoříte úlohu importu pro přenos dat do Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadavků pro tuto službu.
 Musíte:
@@ -34,7 +35,7 @@ Musíte:
 * [Stáhněte si nejnovější verzi WAImportExport verze 1](https://www.microsoft.com/download/details.aspx?id=42659) v systému Windows. Nejnovější verze nástroje má aktualizace zabezpečení, které umožňují externí ochranu klíče BitLockeru a aktualizovanou funkci režimu odemknutí.
 
   * Rozbalte do výchozí složky `waimportexportv1` . Například, `C:\WaImportExportV1`.
-* Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .  
+* Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .
   * Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
   * Vygenerujte sledovací číslo pro úlohu exportu.
   * Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným sledovacím číslem se nepodporuje.
@@ -51,7 +52,7 @@ K přípravě jednotek proveďte následující kroky.
 1. Připojte diskové jednotky k systému Windows přes konektory SATA.
 2. Na každé jednotce vytvořte jeden svazek NTFS. Přiřaďte ke svazku písmeno jednotky. Nepoužívejte mountpoints.
 3. Povolte šifrování BitLockeru na svazku NTFS. Pokud používáte systém Windows Server, postupujte podle pokynů v tématu [Postup povolení nástroje BitLocker v systému Windows server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-4. Kopírovat data do šifrovaného svazku. Použijte přetažení nebo příkaz Robocopy nebo jakýkoli takový nástroj pro kopírování. Soubor deníku (*. jrn*) se vytvoří ve stejné složce, ve které jste nástroj spustili.
+4. Kopírovat data do šifrovaného svazku. Použijte přetažení nebo příkaz Robocopy nebo jakýkoli takový nástroj pro kopírování. Soubor deníku ( *. jrn* ) se vytvoří ve stejné složce, ve které jste nástroj spustili.
 
    Je-li jednotka uzamčena a je třeba ji odemknout, postup pro odemknutí se může lišit v závislosti na vašem případu použití.
 
@@ -100,26 +101,26 @@ K přípravě jednotek proveďte následující kroky.
 Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
 1. Přihlaste se k https://portal.azure.com/ .
-2. **> úlohy import/export přejít na všechny služby > úložiště**.
+2. **> úlohy import/export přejít na všechny služby > úložiště** .
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. Klikněte na **vytvořit úlohu importu/exportu**.
+3. Klikněte na **vytvořit úlohu importu/exportu** .
 
     ![Klikněte na vytvořit úlohu importu/exportu.](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Základní informace**:
+4. **Základní informace** :
 
-   * Vyberte **importovat do Azure**.
+   * Vyberte **importovat do Azure** .
    * Zadejte popisný název úlohy importu. Pomocí názvu můžete sledovat průběh úloh.
        * Název může obsahovat jenom malá písmena, číslice a spojovníky.
        * Název musí začínat písmenem a nesmí obsahovat mezery.
    * Vyberte předplatné.
-   * Zadejte nebo vyberte skupinu prostředků.  
+   * Zadejte nebo vyberte skupinu prostředků.
 
      ![Vytvořit úlohu importu – krok 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-5. V **podrobnostech úlohy**:
+5. V **podrobnostech úlohy** :
 
    * Nahrajte soubory deníku jednotky, které jste získali během kroku přípravy na jednotku. Pokud `waimportexport.exe version1` se použil, nahrajte jeden soubor pro každou jednotku, kterou jste připravili. Pokud velikost souboru deníku přesáhne 2 MB, můžete použít `<Journal file name>_DriveInfo_<Drive serial ID>.xml` také vytvořené se souborem deníku.
    * Vyberte cílový účet úložiště, ve kterém se budou data nacházet.
@@ -127,7 +128,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
    ![Vytvoření úlohy importu – krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-6. V **informace o expedici zpět**:
+6. V **informace o expedici zpět** :
 
    * V rozevíracím seznamu vyberte přepravce. Pokud chcete použít operátor jiného než FedEx/DHL, vyberte z rozevíracího seznamu existující možnost. Kontaktujte Azure Data Box provozní tým `adbops@microsoft.com`  s informacemi, které se týkají přepravce, kterého plánujete použít.
    * Zadejte platné číslo účtu dopravce, který jste vytvořili pomocí tohoto dopravce. Společnost Microsoft používá tento účet k dodávání jednotek zpátky po dokončení úlohy importu. Pokud nemáte číslo účtu, vytvořte účet dopravce [FedEx](https://www.fedex.com/us/oadr/) nebo [DHL](https://www.dhl.com/) .
@@ -138,7 +139,7 @@ Provedením následujících kroků vytvořte v Azure Portal úlohu importu.
 
      ![Vytvořit úlohu importu – krok 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-7. V **souhrnu**:
+7. V **souhrnu** :
 
    * Projděte si informace o úloze uvedené v souhrnu. Poznamenejte si název úlohy a dodací adresu datacentra Azure k dodávání disků zpátky do Azure. Tyto informace se používají později u expedičního štítku.
    * Kliknutím na tlačítko **OK** vytvořte úlohu importu.
@@ -221,6 +222,102 @@ Pomocí následujících kroků vytvořte v Azure CLI úlohu importu.
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Pomocí následujících kroků vytvořte v Azure PowerShell úlohu importu.
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> I když je modul PowerShell **AZ. ImportExport** ve verzi Preview, musíte ho nainstalovat samostatně pomocí `Install-Module` rutiny. Až bude tento modul PowerShellu všeobecně dostupný, bude součástí budoucna ve výchozím nastavení AZ PowerShell Module releases a Available v rámci Azure Cloud Shell.
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>Vytvoření úlohy
+
+1. Můžete použít existující skupinu prostředků nebo ji vytvořit. Pokud chcete vytvořit skupinu prostředků, spusťte rutinu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) :
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. Můžete použít existující účet úložiště nebo ho vytvořit. Pokud chcete vytvořit účet úložiště, spusťte rutinu [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) :
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. Chcete-li získat seznam umístění, do kterých lze dodávat disky, použijte rutinu [Get-AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation) :
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. Pomocí `Get-AzImportExportLocation` rutiny s `Name` parametrem Získejte umístění pro vaši oblast:
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. Spuštěním následujícího příkladu [New-AzImportExport](/powershell/module/az.importexport/new-azimportexport) vytvořte úlohu importu:
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > Místo zadání e-mailové adresy pro jednoho uživatele zadejte skupinu. Tím zajistíte, že budete dostávat oznámení i v případě, že správce opustí.
+
+1. Pomocí rutiny [Get-AzImportExport](/powershell/module/az.importexport/get-azimportexport) zobrazte všechny úlohy pro skupinu prostředků myierg:
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. Pokud chcete aktualizovat úlohu nebo zrušit úlohu, spusťte rutinu [Update-AzImportExport](/powershell/module/az.importexport/update-azimportexport) :
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
 
 ---
 

@@ -3,12 +3,12 @@ title: CI/CD s Azure Pipelines a šablonami
 description: Popisuje, jak nakonfigurovat průběžnou integraci v Azure Pipelines pomocí šablon Azure Resource Manager. Ukazuje, jak použít skript prostředí PowerShell nebo zkopírovat soubory do pracovního umístění a nasadit z něj.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653396"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233810"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrace šablon ARM se službou Azure Pipelines
 
@@ -16,11 +16,11 @@ Azure Resource Manager šablon (šablon ARM) můžete integrovat s Azure Pipelin
 
 V tomto článku se seznámíte se dvěma způsoby nasazení šablon pomocí Azure Pipelines. V tomto článku se dozvíte, jak:
 
-* **Přidejte úlohu, která spouští skript Azure PowerShell**. Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože můžete použít stejný skript, který jste použili při spouštění místních testů. Skript nasadí šablonu, ale může také provádět jiné operace, jako je například získání hodnot, které se mají použít jako parametry.
+* **Přidejte úlohu, která spouští skript Azure PowerShell** . Tato možnost je výhodou zajištění konzistence během životního cyklu vývoje, protože můžete použít stejný skript, který jste použili při spouštění místních testů. Skript nasadí šablonu, ale může také provádět jiné operace, jako je například získání hodnot, které se mají použít jako parametry.
 
    Visual Studio poskytuje [projekt skupiny prostředků Azure](create-visual-studio-deployment-project.md) , který obsahuje skript prostředí PowerShell. Skript rozhlíží artefakty z vašeho projektu na účet úložiště, ke kterému Správce prostředků získat přístup. Artefakty jsou položky ve vašem projektu, například propojené šablony, skripty a binární soubory aplikace. Pokud chcete pokračovat v používání skriptu z projektu, použijte úlohu PowerShellového skriptu, která je uvedená v tomto článku.
 
-* **Přidejte úkoly pro kopírování a nasazování úloh**. Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna úloha postupně projedná artefakty do přístupného umístění. Druhá úloha nasadí šablonu z tohoto umístění.
+* **Přidejte úkoly pro kopírování a nasazování úloh** . Tato možnost nabízí pohodlný alternativu pro skript projektu. V kanálu můžete nakonfigurovat dva úkoly. Jedna úloha postupně projedná artefakty do přístupného umístění. Druhá úloha nasadí šablonu z tohoto umístění.
 
 ## <a name="prepare-your-project"></a>Příprava projektu
 
@@ -34,11 +34,11 @@ Tento článek předpokládá, že vaše šablona ARM a organizace Azure DevOps 
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-1. Pokud jste předtím nepřidali kanál, je nutné vytvořit nový kanál. Z vaší organizace Azure DevOps vyberte **kanály** a **Nový kanál**.
+1. Pokud jste předtím nepřidali kanál, je nutné vytvořit nový kanál. Z vaší organizace Azure DevOps vyberte **kanály** a **Nový kanál** .
 
    ![Přidat nový kanál](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Určete, kde je váš kód uložený. Následující obrázek ukazuje výběr **Azure Repos Git**.
+1. Určete, kde je váš kód uložený. Následující obrázek ukazuje výběr **Azure Repos Git** .
 
    ![Vybrat zdroj kódu](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,13 +46,13 @@ Tento článek předpokládá, že vaše šablona ARM a organizace Azure DevOps 
 
    ![Vybrat úložiště](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Vyberte typ kanálu, který chcete vytvořit. Můžete vybrat **Počáteční kanál**.
+1. Vyberte typ kanálu, který chcete vytvořit. Můžete vybrat **Počáteční kanál** .
 
    ![Vybrat kanál](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
 Jste připraveni přidat úlohu Azure PowerShell nebo kopírovat soubor a nasazovat úlohy.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell úkol
+## <a name="azure-powershell-task"></a>Úloha Azure PowerShellu
 
 V této části se dozvíte, jak nakonfigurovat průběžné nasazování pomocí jedné úlohy, která spouští skript PowerShellu v projektu. Pokud potřebujete skript prostředí PowerShell, který nasadí šablonu, přečtěte si téma [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) nebo [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1).
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```
@@ -101,7 +101,7 @@ V nástroji `ScriptArguments` Zadejte všechny parametry, které váš skript po
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
+Když vyberete **Save (Uložit** ), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
 ![Zobrazení výsledků](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,7 +226,7 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-Když vyberete **Save (Uložit**), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
+Když vyberete **Save (Uložit** ), kanál sestavení se automaticky spustí. Vraťte se ke shrnutí kanálu sestavení a sledujte stav.
 
 ## <a name="next-steps"></a>Další kroky
 

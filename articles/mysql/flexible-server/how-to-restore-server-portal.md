@@ -1,17 +1,17 @@
 ---
 title: Obnovení-Azure Portal-Azure Database for MySQL-flexibilní Server
 description: Tento článek popisuje, jak provádět operace obnovení v Azure Database for MySQL prostřednictvím Azure Portal.
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 1c81ddad8a11cbad361ff84caf6f7200a0c010d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 062d53fcb122ebacd004d7dca5e11f5a883354cd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90935051"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241952"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-preview"></a>Obnovení k určitému bodu v čase Azure Database for MySQL-flexibilního serveru (Preview)
 
@@ -31,24 +31,24 @@ K dokončení tohoto průvodce budete potřebovat:
 
 Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší existující zálohy.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
 
 2.  V levém panelu klikněte na **Přehled** .
 
-3.  Na stránce Přehled klikněte na tlačítko **obnovit**.
+3.  Na stránce Přehled klikněte na tlačítko **obnovit** .
 
     Symbolu
 
 4.  Příkaz Restore Page se zobrazí s možností výběru mezi **posledním bodem obnovení** a vlastním bodem obnovení.
 
-5.  Vyberte **nejnovější bod obnovení**.
+5.  Vyberte **nejnovější bod obnovení** .
 
 
 6.  V poli **obnovit do nového serveru** zadejte nový název serveru.
 
     :::image type="content" source="./media/concept-backup-restore/restore-blade-latest.png" alt-text="Nejstarší čas obnovení":::
 
-8.  Klikněte na **OK**.
+8.  Klikněte na **OK** .
 
 9.  Zobrazí se oznámení o zahájení operace obnovení.
 
@@ -56,15 +56,15 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
 
 Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší existující zálohy.
 
-1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
+1.  V [Azure Portal](https://portal.azure.com/)vyberte flexibilní Server, ze kterého chcete zálohu obnovit.
 
-2.  Na stránce Přehled klikněte na tlačítko **obnovit**.
+2.  Na stránce Přehled klikněte na tlačítko **obnovit** .
 
     Symbolu
 
 3.  Příkaz Restore Page se zobrazí s možností výběru mezi nejstarším bodem obnovení a vlastním bodem obnovení.
 
-4.  Vyberte možnost **vlastní bod obnovení**.
+4.  Vyberte možnost **vlastní bod obnovení** .
 
 5.  Vyberte datum a čas.
 
@@ -74,7 +74,7 @@ Postupujte podle těchto kroků a obnovte flexibilní Server pomocí nejstarší
    
     :::image type="content" source="./media/concept-backup-restore/restore-blade-custom.png" alt-text="Nejstarší čas obnovení":::
  
-7.  Klikněte na **OK**.
+7.  Klikněte na **OK** .
 
 8.  Zobrazí se oznámení o zahájení operace obnovení.
 

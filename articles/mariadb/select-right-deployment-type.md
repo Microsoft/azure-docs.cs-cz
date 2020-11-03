@@ -1,17 +1,17 @@
 ---
 title: Výběr správného typu nasazení – Azure Database for MariaDB
 description: Tento článek popisuje, co je třeba zvážit před nasazením Azure Database for MariaDB jako IaaS (infrastruktura jako služba) nebo platforma jako služba (PaaS).
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5be6b97ed1647ad09a2abc3360b4f3a42c25ad62
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424912"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240269"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Volba pravého serveru MariaDB v Azure
 
@@ -49,7 +49,7 @@ Hlavní rozdíly mezi těmito možnostmi jsou uvedené v následující tabulce:
 
 Existuje několik faktorů, které mohou mít vliv na rozhodnutí zvolit PaaS nebo IaaS pro hostování databází MariaDB.
 
-### <a name="cost"></a>Náklady
+### <a name="cost"></a>Cost
 
 Omezené financování je často primárním aspektem, který určuje nejlepší řešení pro hostování databází. To platí bez ohledu na to, jestli se jedná o spuštění s malým hotovostem nebo týmem v zřízené společnosti, která funguje s přísnými rozpočtovými omezeními. Tato část popisuje základy fakturace a licencování v Azure, které se vztahují na Azure Database for MariaDB a MariaDB na virtuálních počítačích Azure.
 

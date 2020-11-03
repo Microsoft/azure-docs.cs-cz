@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074953"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242105"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
@@ -41,7 +41,7 @@ Můžete vytvořit konfigurační hodnoty aplikace, které odkazují na tajné k
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Šifruje konfigurace aplikace moje data?
 
-Yes. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
+Ano. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
 
 ## <a name="where-does-data-stored-in-app-configuration-reside"></a>Kde se nachází data uložená v konfiguraci aplikace? 
 
@@ -86,16 +86,16 @@ Obě úrovně konfigurace aplikací nabízejí základní funkce, včetně nasta
 
 Níže jsou uvedeny požadavky pro výběr vrstvy.
 
-- **Prostředky na předplatné**: prostředek se skládá z jednoho úložiště konfigurace. Každé předplatné je omezené na jedno úložiště konfigurace v bezplatné úrovni. Předplatná můžou mít neomezený počet úložišť konfigurace na úrovni Standard.
-- **Úložiště na prostředek**: na úrovni Free je každé úložiště konfigurace omezené na 10 MB úložiště. Na úrovni Standard může každé úložiště konfigurace využívat až 1 GB úložiště.
-- **Historie klíčů**: Konfigurace aplikace ukládá historii všech změn provedených v klíčích. Na úrovni Free je tato historie uložená po dobu sedmi dní. Na úrovni Standard se tato historie ukládá po dobu 30 dnů.
-- **Požadavky za den**: úložiště úrovně Free se omezuje na 1 000 požadavků za den. Jakmile obchod dosáhne 1 000 požadavků, vrátí stavový kód HTTP 429 pro všechny požadavky do půlnoci UTC.
+- **Prostředky na předplatné** : prostředek se skládá z jednoho úložiště konfigurace. Každé předplatné je omezené na jedno úložiště konfigurace v bezplatné úrovni. Předplatná můžou mít neomezený počet úložišť konfigurace na úrovni Standard.
+- **Úložiště na prostředek** : na úrovni Free je každé úložiště konfigurace omezené na 10 MB úložiště. Na úrovni Standard může každé úložiště konfigurace využívat až 1 GB úložiště.
+- **Historie revizí** : Konfigurace aplikace ukládá historii všech změn provedených v klíčích. Na úrovni Free je tato historie uložená po dobu sedmi dní. Na úrovni Standard se tato historie ukládá po dobu 30 dnů.
+- **Kvóty požadavků** : úložiště úrovně Free se omezuje na 1 000 požadavků za den. Když obchod dosáhne 1 000 požadavků, vrátí stavový kód HTTP 429 pro všechny požadavky do půlnoci UTC.
 
-    V případě obchodů úrovně Standard jsou první 200 000 žádosti každý den zahrnuté do denního poplatku. Další požadavky se účtují jako nadlimitní využití.
+    Úložiště úrovně Standard jsou omezená na 20 000 požadavků za hodinu. Po vyčerpání kvóty se vrátí stavový kód HTTP 429 pro všechny požadavky až do konce hodiny.
 
-- **Smlouva o úrovni služeb**: úroveň Standard má smlouvu SLA s 99,9% dostupností. Úroveň Free nemá smlouvu SLA.
-- **Funkce zabezpečení**: obě úrovně zahrnují základní funkce zabezpečení, včetně šifrování pomocí klíčů spravovaných Microsoftem, ověřování pomocí HMAC nebo Azure Active Directory, podpory Azure RBAC a spravované identity. Úroveň Standard nabízí pokročilejší funkce zabezpečení, včetně podpory a šifrování privátních odkazů pomocí klíčů spravovaných zákazníkem.
-- **Náklady**: obchody úrovně Standard mají denní poplatek za využití. Pro žádosti po denním přidělení se taky účtuje poplatky za nadlimitní využití. K používání úložiště úrovně Free se neúčtují žádné náklady.
+- **Smlouva o úrovni služeb** : úroveň Standard má smlouvu SLA s 99,9% dostupností. Úroveň Free nemá smlouvu SLA.
+- **Funkce zabezpečení** : obě úrovně zahrnují základní funkce zabezpečení, včetně šifrování pomocí klíčů spravovaných Microsoftem, ověřování pomocí HMAC nebo Azure Active Directory, podpory Azure RBAC, spravované identity a značek služeb. Úroveň Standard nabízí pokročilejší funkce zabezpečení, včetně podpory a šifrování privátních odkazů pomocí klíčů spravovaných zákazníkem.
+- **Náklady** : obchody úrovně Standard mají denní poplatek za využití. První 200 000 žádosti každý den jsou zahrnuty do denního poplatku. Pro žádosti po denním přidělení se taky účtuje poplatky za nadlimitní využití. K používání úložiště úrovně Free se neúčtují žádné náklady.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Můžu upgradovat obchod z úrovně Free na úroveň Standard? Můžu z úrovně Standard snížit obchod na úroveň Free?
 

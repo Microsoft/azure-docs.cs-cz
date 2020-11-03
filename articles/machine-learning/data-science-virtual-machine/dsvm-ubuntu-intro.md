@@ -8,18 +8,18 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a14f7ac212d9957e5258f75a386b8730ad5de700
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85254697"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233830"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Načtěte si Ubuntu 18,04 Data Science Virtual Machine a spusťte ho.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 
@@ -33,36 +33,36 @@ Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
 1. Přejděte na web [Azure Portal](https://portal.azure.com). Může se zobrazit výzva, abyste se přihlásili ke svému účtu Azure, pokud ještě nejste přihlášení.
 1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Ubuntu 18,04.
 
-1. V dalším okně vyberte **vytvořit**.
+1. V dalším okně vyberte **vytvořit** .
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    
 1. Zadáním následujících informací nakonfigurujte jednotlivé kroky průvodce:
 
-    1. **Základy**:
+    1. **Základy** :
     
-       * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
-       * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
-       * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tento název se použije ve vašem Azure Portal.
-       * **Oblast**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Obrázek**: ponechte výchozí hodnotu.
-       * **Velikost**: Tato možnost by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/linux/sizes.md).
-       * **Typ ověřování**: pro rychlejší nastavení vyberte možnost heslo. 
+       * **Předplatné** : Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+       * **Skupina prostředků** : Vytvořte novou skupinu nebo použijte existující.
+       * **Název virtuálního počítače** : zadejte název virtuálního počítače. Tento název se použije ve vašem Azure Portal.
+       * **Oblast** : vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Obrázek** : ponechte výchozí hodnotu.
+       * **Velikost** : Tato možnost by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/linux/sizes.md).
+       * **Typ ověřování** : pro rychlejší nastavení vyberte možnost heslo. 
          
          > [!NOTE]
          > Pokud máte v úmyslu používat JupyterHub, ujistěte se, že jste vybrali možnost "heslo", protože JupyterHub *není nakonfigurován k* používání veřejných klíčů ssh.
 
-       * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto uživatelské jméno použijete k přihlášení k virtuálnímu počítači. Toto uživatelské jméno se nemusí shodovat s vaším uživatelským jménem Azure. Nepoužívejte *Velká* písmena.
+       * **Uživatelské jméno** : zadejte uživatelské jméno správce. Toto uživatelské jméno použijete k přihlášení k virtuálnímu počítači. Toto uživatelské jméno se nemusí shodovat s vaším uživatelským jménem Azure. Nepoužívejte *Velká* písmena.
          
          > [!IMPORTANT]
          > Pokud v uživatelském jméně použijete velká písmena, JupyterHub nebude fungovat a dojde k chybě 500 interního serveru.
 
-       * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
+       * **Heslo** : zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
     
-   1. Vyberte **Zkontrolovat a vytvořit**.
+   1. Vyberte **Zkontrolovat a vytvořit** .
    1. **Zkontrolovat a vytvořit**
       * Ověřte správnost všech zadaných informací. 
-      * Vyberte **Vytvořit**.
+      * Vyberte **Vytvořit** .
     
     Zřizování by mělo trvat přibližně 5 minut. Stav se zobrazí v Azure Portal.
 
@@ -95,19 +95,19 @@ Virtuální počítač se systémem Linux je již zřízený serverem X2Go a př
 1. Spusťte klienta X2Go. Pokud se okno Nová relace automaticky neotevře, přečtěte si relaci-> novou relaci.
 
 1. Ve výsledném okně konfigurace zadejte následující konfigurační parametry:
-   * **Karta Relace**:
-     * **Hostitel**: Zadejte IP adresu vašeho virtuálního počítače, kterou jste si poznamenali dříve.
-     * **Přihlášení**: Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
-     * **Port SSH**: Ponechte ho na výchozí hodnotě 22.
-     * **Typ relace**: Změňte hodnotu na **XFCE**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop XFCE.
-   * **Karta Media (Média)**: Pokud nepotřebujete používat zvukovou podporu a tisk klienta, můžete je vypnout.
-   * **Sdílené složky**: pomocí této karty Přidejte adresář klientských počítačů, který chcete připojit k virtuálnímu počítači. 
+   * **Karta Relace** :
+     * **Hostitel** : Zadejte IP adresu vašeho virtuálního počítače, kterou jste si poznamenali dříve.
+     * **Přihlášení** : Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH** : Ponechte ho na výchozí hodnotě 22.
+     * **Typ relace** : Změňte hodnotu na **XFCE** . Virtuální počítač se systémem Linux v současné době podporuje pouze desktop XFCE.
+   * **Karta Media (Média)** : Pokud nepotřebujete používat zvukovou podporu a tisk klienta, můžete je vypnout.
+   * **Sdílené složky** : pomocí této karty Přidejte adresář klientských počítačů, který chcete připojit k virtuálnímu počítači. 
 
    ![Konfigurace X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. Vyberte **OK**.
+1. Vyberte **OK** .
 1. Kliknutím na pole v pravém podokně okna X2Go otevřete obrazovku pro přihlášení k vašemu VIRTUÁLNÍmu počítači.
 1. Zadejte heslo k virtuálnímu počítači.
-1. Vyberte **OK**.
+1. Vyberte **OK** .
 1. Je možné, že budete muset udělit oprávnění nástroji X2Go, aby se vynechala brána firewall a bylo možné dokončit připojení.
 1. Nyní byste měli vidět grafické rozhraní pro Ubuntu DSVM. 
 
@@ -126,7 +126,7 @@ Ubuntu DSVM spouští [JupyterHub](https://github.com/jupyterhub/jupyterhub), v�
       ![Zadejte Jupyter přihlášení.](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
 >[!NOTE]
-> Pokud v této fázi obdržíte chybu 500, je pravděpodobně v uživatelském jménu použita velká písmena. Jedná se o známou interakci mezi Jupyter centrem a PAMAuthenticator, kterou používá. 
+> Pokud v této fázi obdržíte chybu 500, je pravděpodobně v uživatelském jménu použita velká písmena. Jedná se o známou interakci mezi Jupyter centrem a PAMAuthenticator, kterou používá. Pokud se zobrazí chyba "nelze se spojit s touto stránkou", je pravděpodobně nutné upravit oprávnění skupiny zabezpečení sítě. V Azure Portal vyhledejte prostředek skupiny zabezpečení sítě v rámci vaší skupiny prostředků. Pokud chcete získat přístup k JupyterHub z veřejného Internetu, musíte mít otevřený port 8000. (Obrázek ukazuje, že tento virtuální počítač je nakonfigurovaný pro přístup za běhu, což se důrazně doporučuje. Přečtěte si téma [zabezpečení portů pro správu pomocí přístupu za běhu](../../security-center/security-center-just-in-time.md).) ![Konfigurace skupiny zabezpečení sítě](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Projděte si mnoho dostupných ukázkových poznámkových bloků.
 

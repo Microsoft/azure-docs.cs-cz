@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 58ba0819866f3eddfad8a9147c10da7b5e59362d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d68305087264d6ba2306ba4c345064693b595c94
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135207"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234014"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nature-research"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) k výzkumu přírody
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak integrovat výzkum pomocí Azure Active Directory
 * Umožněte, aby se vaši uživatelé automaticky přihlásili k povaze výzkumu s účty Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -61,7 +61,6 @@ Ke konfiguraci a testování jednotného přihlašování služby Azure AD s pov
     1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
     1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
 1. **[Nakonfigurujte si jednotné přihlašování k výzkumu](#configure-nature-research-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    1. **[Vytvořte si uživatele](#create-nature-research-test-user)** s popisem výzkumu, který bude mít protějšek B. Simon ve výzkumu povahy, který se odkazuje na reprezentaci uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
@@ -76,15 +75,15 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované v **IDP** , můžete v **základním oddílu konfigurace SAML** předem vyplněné hodnoty adresy URL identifikátoru a odpovědi. je třeba zadat hodnotu stavu přenosu.
 
-    Do textového pole **stav přenosu** zadejte adresu URL: `https://idp.nature.com/debug`  
+    Do textového pole **stav přenosu** zadejte adresu URL: `https://www.nature.com`  
     klikněte na **Uložit** .
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `http://sp.nature.com/saml/login?targetUrl=https%3A%2F%2Fidp.nature.com%2Fdebug&idp=<IDP_ENTITY_ID>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:  `https://sp.nature.com/saml/login?idp=<IDP_ENTITY_ID>`
 
     > [!NOTE]
-    > Hodnota URL Sign-On není reálné číslo. Aktualizujte hodnotu skutečnou adresou Sign-On. Pro získání těchto hodnot [tým podpory pro výzkumné pracovníky](mailto:identity@springernature.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota URL Sign-On není reálné číslo. `<IDP_ENTITY_ID>` je identifikátor Azure AD zkopírovaný z oddílu **Nastavení výzkumu pro povaze** . Můžete se také podívat na vzory uvedené v části základní konfigurace SAML v Azure Portal.
 
 1. Klikněte na **Uložit** .
 
@@ -118,11 +117,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-nature-research-sso"></a>Konfigurace jednotného přihlašování k výzkumu
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **výzkumu s Povazem** , musíte poslat **adresu URL federačních metadat aplikace** pro [tým technické podpory pro výzkum](mailto:identity@springernature.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
-
-### <a name="create-nature-research-test-user"></a>Vytvořit testovacího uživatele pro výzkumnou povahu
-
-V této části vytvoříte uživatele s názvem Britta Simon v rámci výzkumu povahy. Pokud chcete přidat uživatele na výzkumné platformě pro výzkum, pracujte s [týmem pro pracovníky s povaze](mailto:identity@springernature.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **výzkumu s Povazem** , musíte poslat **adresu URL federačních metadat aplikace** pro [tým technické podpory pro výzkum](mailto:onlineservice@springernature.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ## <a name="test-sso"></a>Test SSO 
 

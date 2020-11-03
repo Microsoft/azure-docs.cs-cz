@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: fefa19e8dfee295d34231d36df079b80d1e82768
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778593"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240966"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Správa platnosti webového obsahu v Azure CDN
 > [!div class="op_single_selector"]
@@ -73,9 +73,9 @@ Upřednostňovanou metodou pro nastavení hlavičky webového serveru `Cache-Con
 
 1. V části **vlastní pravidla ukládání do mezipaměti** vytvořte dvě podmínky shody:
 
-     a. U první podmínky shody nastavte **podmínku Match** na **path** a zadejte `/webfolder1/*` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a do pole **hodiny** zadejte 4.
+     a. U první podmínky shody nastavte **podmínku Match** na **path** a zadejte `/webfolder1/*` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a do pole **dnů** zadejte 4.
 
-     b. U podmínky druhé shody nastavte **podmínku Match** na **path** a zadejte `/webfolder1/file1.txt` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a zadáním 2 do pole **hodiny** .
+     b. U podmínky druhé shody nastavte **podmínku Match** na **path** a zadejte `/webfolder1/file1.txt` **hodnotu shody** . Nastavte **chování ukládání do mezipaměti** pro **přepsání** a zadáním 2 do pole **dnů** .
 
     ![Příklad vlastních pravidel ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 

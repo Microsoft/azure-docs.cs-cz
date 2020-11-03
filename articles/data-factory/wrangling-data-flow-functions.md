@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636115"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233946"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat tahání
 
@@ -25,7 +25,7 @@ Tahání data flow v Azure Data Factory umožňuje provádět přípravu agilní
 
 V současné době nejsou všechny funkce Power Query M podporovány pro tahání dat, přestože jsou k dispozici při vytváření obsahu. Při sestavování datových toků tahání se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 Níže je uvedený seznam podporovaných funkcí Power Query M.
 
@@ -76,7 +76,7 @@ Následující funkce M přidají nebo transformují sloupce: [Table. AddColumn]
 
 K agregaci hodnot použijte [Table. Group](/powerquery-m/table-group) .
 * Musí se používat s agregační funkcí
-* Podporované agregační funkce:   [Table. RowCount](/powerquery-m/table-rowcount),   [list. Sum](/powerquery-m/list-sum),   [list. Count](/powerquery-m/list-count),   [list. Average](/powerquery-m/list-average),   [list. min](/powerquery-m/list-min),   [list. Max](/powerquery-m/list-max),   [list. StandardDeviation](/powerquery-m/list-standarddeviation),   [list. First](/powerquery-m/list-first),   [list. Last](/powerquery-m/list-last)
+* Podporované agregační funkce:   [list. Sum](/powerquery-m/list-sum),   [list. Count](/powerquery-m/list-count),   [list. Average](/powerquery-m/list-average),   [list. min](/powerquery-m/list-min),   [list. Max](/powerquery-m/list-max),   [list. StandardDeviation](/powerquery-m/list-standarddeviation),   [list. First](/powerquery-m/list-first),   [list. Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Řazení
 
@@ -88,7 +88,7 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 
 ## <a name="known-unsupported-functions"></a>Známé nepodporované funkce
 
-| Function | Status |
+| Funkce | Status |
 | -- | -- |
 | Table.PromoteHeaders | Nepodporováno Stejný výsledek lze dosáhnout nastavením "první řádek jako záhlaví" v datové sadě. |
 | Table.CombineColumns | Toto je běžný scénář, který není přímo podporován, ale je možné ho dosáhnout přidáním nového sloupce, který zřetězí dva sloupce.  Například Table. AddColumn (RemoveEmailColumn; "Name"; Each [FirstName] & "" & [LastName]) |
@@ -96,7 +96,7 @@ Zachovat a odebrat horní, zachovat rozsah (odpovídající funkce M, jenom poč
 | Table.NestedJoin | Pouhým připojením dojde k chybě ověření. Aby bylo možné tyto sloupce fungovat, musí být rozbaleny. |
 | Table.Distinct | Odstranění duplicitních řádků není podporováno. |
 | Table.RemoveLastN | Odebrat dolní řádky nejsou podporovány. |
-| Table.RowCount | Nepodporuje se, ale dá se dosáhnout pomocí výrazu přidat sloupec se všemi buňkami s prázdným sloupcem (můžete použít sloupec podmínka) a potom v tomto sloupci použít Group by. Tabulka. Group je podporována. | 
+| Table.RowCount | Nepodporováno, ale lze je dosáhnout přidáním vlastního sloupce obsahujícího hodnotu 1 a následným agregacím tohoto sloupce se seznamem. Sum. Tabulka. Group je podporována. | 
 | Zpracování chyb na úrovni řádků | Zpracování chyb na úrovni řádků se momentálně nepodporuje. Chcete-li například vyfiltrovat nečíselné hodnoty ze sloupce, může být jedním z přístupů převod textového sloupce na číslo. Každá buňka, která se nedokáže transformovat, bude v chybovém stavu a bude nutné ji filtrovat. Tento scénář není možný v toku dat tahání. |
 | Table.Transpose | Nepodporováno |
 | Table.Pivot | Nepodporováno |
