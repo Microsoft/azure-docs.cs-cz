@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b320c765b258473acd6fa553831b4f075cca9ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7155e1517ba5ff203f11ee834af3c0d1dd1fa065
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983247"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289466"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault funkce zákaznických dat
 
@@ -56,10 +56,10 @@ Azure Key Vault diagnostické protokoly, které obsahují osobní údaje, lze na
 
 - [Přehled obnovitelného odstranění ve službě Azure Key Vault](soft-delete-cli.md)
 
-- [Azure Key Vault operací klíčů](https://docs.microsoft.com/rest/api/keyvault/key-operations)
+- [Azure Key Vault operací klíčů](/rest/api/keyvault/key-operations)
 
-- [Azure Key Vault operace tajného klíče](https://docs.microsoft.com/rest/api/keyvault/secret-operations)
+- [Azure Key Vault operace tajného klíče](/rest/api/keyvault/secret-operations)
 
-- [Azure Key Vault certifikátů a zásad](https://docs.microsoft.com/rest/api/keyvault/certificates-and-policies)
+- [Azure Key Vault certifikátů a zásad](/rest/api/keyvault/certificates-and-policies)
 
-- [Azure Key Vault operací účtu úložiště](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)
+- [Azure Key Vault operací účtu úložiště](/rest/api/keyvault/storage-account-key-operations)

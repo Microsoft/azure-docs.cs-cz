@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f96df14fb754578b58fb67ac116ac79cff3ffdcb
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386754"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289842"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Doporučení k zabezpečení služby Azure Key Vault
 
@@ -24,7 +24,7 @@ Tento článek obsahuje doporučení zabezpečení pro Azure Key Vault. Implemen
 Některá doporučení obsažená v tomto článku můžete automaticky monitorovat pomocí Azure Security Center. Azure Security Center je první linií obrany při ochraně vašich prostředků v Azure. Pravidelně analyzuje stav zabezpečení vašich prostředků Azure, aby identifikovala potenciální ohrožení zabezpečení. Pak vám poskytne doporučení, jak je řešit.
 
 - Další informace o Azure Security Center doporučeních najdete v tématu [doporučení zabezpečení v Azure Security Center](../../security-center/security-center-recommendations.md).
-- Informace o Azure Security Center najdete v [Azure Security Center?](../../security-center/security-center-intro.md)
+- Informace o Azure Security Center najdete v [Azure Security Center?](../../security-center/security-center-introduction.md)
 
 ## <a name="data-protection"></a>Ochrana dat
 
@@ -54,4 +54,4 @@ Některá doporučení obsažená v tomto článku můžete automaticky monitoro
 
 ## <a name="next-steps"></a>Další kroky
 
-Obraťte se na poskytovatele aplikace a zjistěte, zda jsou k dispozici další požadavky na zabezpečení. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](../../security/fundamentals/abstract-develop-secure-apps.md).
+Obraťte se na poskytovatele aplikace a zjistěte, zda jsou k dispozici další požadavky na zabezpečení. Další informace o vývoji zabezpečených aplikací najdete v [dokumentaci k zabezpečení vývoje](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/).

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b60f290f6d3ca184e25edd2984ad5b2d1ff2bdf
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819966"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289671"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Pokyny k omezování služby Azure Key Vault
 
@@ -41,14 +41,14 @@ Pokud zjistíte, že výše uvedené pořád ještě nesplňuje vaše požadavky
 
 | Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Operace * | Typ klíče | Délka klíče nebo křivka | Klíč HSM?| Je potřeba RPS stabilního stavu. | Požadovaná špička RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Klíč | Znaménko | EC | P-256 | No | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Klíč | Znaménko | EC | P-256 | Ne | 200 | 1000 |
 
 \* Úplný seznam možných hodnot naleznete v tématu [Azure Key Vault Operations](/rest/api/keyvault/key-operations).
 
 Pokud je další kapacita schválena, pamatujte na to, že v důsledku zvýšení kapacity se zvyšuje následující:
 1. Změny modelu konzistence dat. Jakmile je trezor povolený v seznamu s další kapacitou propustnosti, konzistence dat Key Vault služby garantuje změny (nutné pro splnění vyššího objemu RPS, protože základní Azure Storage služba nemůže zůstat zapnutá).  V kostce:
-  1. **Bez povoleného výpisu**: služba Key Vault bude odpovídat výsledkům operace zápisu (např. SecretSet, CreateKey) hned v následných voláních (např. SecretGet, symbol.
-  1. **Při povoleném výpisu**: služba Key Vault odráží výsledky operace zápisu (např. SecretSet, CreateKey) během následujících volání během 60 sekund (např. SecretGet, symbol.
+  1. **Bez povoleného výpisu** : služba Key Vault bude odpovídat výsledkům operace zápisu (např. SecretSet, CreateKey) hned v následných voláních (např. SecretGet, symbol.
+  1. **Při povoleném výpisu** : služba Key Vault odráží výsledky operace zápisu (např. SecretSet, CreateKey) během následujících volání během 60 sekund (např. SecretGet, symbol.
 1. Kód klienta musí dodržovat zásady pro obnovení po 429 opakování. Klientský kód, který volá službu Key Vault, nesmí okamžitě opakovat Key Vault žádosti, když obdrží kód odpovědi 429.  Průvodce omezením Azure Key Vault publikovaný tady doporučuje použití exponenciálního omezení rychlostiu při příjmu kódu odpovědi HTTP 429.
 
 Pokud máte platný obchodní případ pro omezení s vyšším omezením, kontaktujte nás prosím.
@@ -96,7 +96,6 @@ V kódu chyby HTTP 429 začněte omezovat klienta pomocí exponenciálního př�
 
 V tuto chvíli byste neměli získávat kódy odpovědí HTTP 429.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
-Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](https://docs.microsoft.com/azure/architecture/patterns/throttling).
-
+Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](/azure/architecture/patterns/throttling).

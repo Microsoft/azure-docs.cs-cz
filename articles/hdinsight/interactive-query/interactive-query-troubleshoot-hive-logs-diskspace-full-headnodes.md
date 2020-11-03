@@ -7,12 +7,12 @@ author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145629"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288923"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Scénář: protokoly Apache Hive zaplňují místo na disku v hlavních uzlech ve službě Azure HDInsight.
 
@@ -23,7 +23,7 @@ Tento článek popisuje postup řešení potíží a možná řešení pro probl
 V clusteru Apache Hive/LLAP zabírají nechtěné protokoly v hlavních uzlech celé místo na disku. Tento stav může způsobit následující problémy:
 
 - Přístup SSH se nezdařil, protože na hlavním uzlu není žádné místo.
-- Ambari vyvolá *chybu protokolu http: služba 503 není k dispozici* .
+- Ambari vyvolá *chybu protokolu http: služba 503 není k dispozici*.
 - HiveServer2 Interactive se nerestartuje.
 
 `ambari-agent`Protokoly budou zahrnovat následující položky, když dojde k problému:
@@ -42,7 +42,7 @@ V části Pokročilá konfigurace log4j podregistru je aktuálním výchozím pl
 
 1. Na portálu Ambari přejít na souhrn komponenty podregistr a vyberte kartu **Konfigurace** .
 
-2. Přejít na `Advanced hive-log4j` oddíl v části **Upřesnit nastavení** .
+2. Přejít na `Advanced hive-log4j` oddíl v části **Upřesnit nastavení**.
 
 3. Nastavte `appender.RFA.strategy.action.condition.age` parametr na stáří podle vašeho výběru. V tomto příkladu se nastaví stáří na 14 dnů: `appender.RFA.strategy.action.condition.age = 14D`
 
@@ -71,10 +71,4 @@ V části Pokročilá konfigurace log4j podregistru je aktuálním výchozím pl
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

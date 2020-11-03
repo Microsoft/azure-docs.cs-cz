@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785319"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289519"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -100,9 +100,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 Teď, když je váš trezor přidružený ke správnému ID tenanta a staré položky zásad přístupu se odeberou, nastavte nové položky zásad přístupu pomocí rutiny Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) nebo pomocí příkazu Azure CLI [AZ klíčů trezor set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) .
 
-Pokud používáte spravovanou identitu pro prostředky Azure, budete ji muset aktualizovat taky na nového tenanta Azure Active Directory. Další informace o spravovaných identitách najdete v [přehledu spravované identity](/azure/active-directory/managed-identities-azure-resources/overview).
+Pokud používáte spravovanou identitu pro prostředky Azure, budete ji muset aktualizovat taky na nového tenanta Azure Active Directory. Další informace o spravovaných identitách najdete v [přehledu spravované identity](../../active-directory/managed-identities-azure-resources/overview.md).
 
 Pokud používáte spravovanou identitu, musíte aktualizovat taky identitu, protože stará identita už nebude ve správném tenantovi Azure Active Directory. Tento problém můžete vyřešit v následujících dokumentech. 
 
-* [Aktualizace MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
-* [Přenést předplatné do nového adresáře](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
+* [Aktualizace MSI](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
+* [Přenést předplatné do nového adresáře](../../role-based-access-control/transfer-subscription.md)

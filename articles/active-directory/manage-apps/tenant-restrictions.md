@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669929"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286216"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -33,7 +33,7 @@ Tento článek se zaměřuje na omezení tenanta pro Microsoft 365, ale tato fun
 
 Celkové řešení zahrnuje tyto komponenty:
 
-1. **Azure AD** : Pokud `Restrict-Access-To-Tenants: <permitted tenant list>` se nachází, Azure AD vydává tokeny zabezpečení jenom pro povolené klienty.
+1. **Azure AD** : Pokud `Restrict-Access-To-Tenants: <permitted tenant list>` je hlavička k dispozici, Azure AD vydává tokeny zabezpečení jenom pro povolené klienty.
 
 2. **Místní infrastruktura proxy server** : Tato infrastruktura je proxy zařízení podporující kontrolu TLS (Transport Layer Security). Musíte nakonfigurovat proxy server, aby se vložila hlavička obsahující seznam povolených klientů do provozu určeného pro Azure AD.
 
@@ -63,11 +63,11 @@ K povolení omezení klientů prostřednictvím vaší proxy infrastruktury se v
 
 - Klienti musí důvěřovat řetězu certifikátů, který prezentuje proxy server pro komunikaci TLS. Pokud se například použijí certifikáty z interní [infrastruktury veřejných klíčů (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) , musí být interní vydávající certifikát kořenové certifikační autority důvěryhodný.
 
-- Tato funkce je součástí předplatných Microsoft 365, ale pokud chcete k řízení přístupu k ostatním aplikacím SaaS použít omezení tenanta, je nutné Azure AD Premium 1 licencí.
+- Pro použití omezení tenanta se vyžadují licence Azure AD Premium 1. 
 
 #### <a name="configuration"></a>Konfigurace
 
-Pro každý příchozí požadavek do login.microsoftonline.com, login.microsoft.com a login.windows.net vložte dvě hlavičky HTTP: *omezení přístupu k tenantovi* a *omezení přístupu-Access-Context* .
+Pro každý příchozí požadavek do login.microsoftonline.com, login.microsoft.com a login.windows.net vložte dvě hlavičky HTTP: *omezení přístupu k tenantovi* a *omezení přístupu-Access-Context*.
 
 > [!NOTE]
 > Když konfigurujete zachycení SSL a vkládání hlaviček, zajistěte, aby https://device.login.microsoftonline.com byl vyloučený provoz. Tato adresa URL se používá pro ověřování zařízení a provádění rušení a kontroly TLS může kolidovat s ověřováním klientských certifikátů, což může způsobit problémy s registrací zařízení a podmíněným přístupem na základě zařízení.
@@ -81,7 +81,7 @@ Hlavičky by měly obsahovat následující prvky:
 - Pro *kontext omezení přístupu* použijte hodnotu jednoho ID adresáře, která deklaruje, který tenant nastavuje omezení tenanta. Chcete-li například deklarovat contoso jako klienta, který nastaví zásady omezení klientů, bude dvojice název/hodnota vypadat takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d` .  Na tomto místě **musíte** použít vlastní ID adresáře.
 
 > [!TIP]
-> ID vašeho adresáře najdete na [portálu Azure Active Directory](https://aad.portal.azure.com/). Přihlaste se jako správce, vyberte **Azure Active Directory** a pak vyberte **vlastnosti** . 
+> ID vašeho adresáře najdete na [portálu Azure Active Directory](https://aad.portal.azure.com/). Přihlaste se jako správce, vyberte **Azure Active Directory** a pak vyberte **vlastnosti**. 
 >
 > Pokud chcete ověřit, že ID adresáře nebo název domény odkazují na stejného tenanta, použijte toto ID nebo doménu místo <tenant> v této adrese URL: `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` .  Pokud jsou výsledky s doménou a ID stejné, odkazují na stejného tenanta. 
 
@@ -106,9 +106,9 @@ I když se konfigurace omezení tenanta provádí v podnikové infrastruktuře p
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/). Zobrazí se řídicí panel **centra pro správu Azure Active Directory** .
 
-2. V levém podokně vyberte **Azure Active Directory** . Zobrazí se stránka přehled Azure Active Directory.
+2. V levém podokně vyberte **Azure Active Directory**. Zobrazí se stránka přehled Azure Active Directory.
 
-3. Na stránce Přehled vyberte **omezení tenanta** .
+3. Na stránce Přehled vyberte **omezení tenanta**.
 
 Správce pro tenanta, který je zadaný jako tenant s omezeným přístupem, může pomocí této sestavy zobrazit blokované přihlášení kvůli zásadám omezení tenanta, včetně použité identity a ID cílového adresáře. Přihlášení jsou obsažena v případě, že je nastavení klienta toto omezení buď tenant klienta, nebo tenant prostředků pro přihlášení.
 
@@ -126,7 +126,7 @@ Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určen�
 - **Podrobnosti** o ověřování MFA (podrobnosti o vícefaktorového ověřování)
 - **Výsledek MFA**
 - **IP adresa**
-- **Služba**
+- **Klient**
 - **Uživatelské jméno**
 - **Umístění**
 - **ID cílového tenanta**
@@ -176,13 +176,13 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 
 4. Uložte a zavřete soubor CustomRules.
 
-Po nakonfigurování Fiddler můžete zachytit provoz tak, že kliknete na nabídku **soubor** a vyberete možnost **zachytit přenos** .
+Po nakonfigurování Fiddler můžete zachytit provoz tak, že kliknete na nabídku **soubor** a vyberete možnost **zachytit přenos**.
 
 ### <a name="staged-rollout-of-proxy-settings"></a>Dvoufázové zavedení nastavení proxy serveru
 

@@ -4,15 +4,15 @@ description: Naučte se spravovat zásady indexování, zahrnout nebo vyloučit 
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96ae4162c78f66b75d8c1ef2a8cec16995a5f016
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 335eac64bd5dff5b466fd97f5b2e093f2f56ee79
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075700"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289931"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ Tady je několik příkladů indexování zásad, které jsou uvedené ve [form�
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už nejsou potřebné k explicitnímu nastavení a měli byste je vynechat ze zásad indexování úplně (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -101,7 +101,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už nejsou potřebné k explicitnímu nastavení a měli byste je vynechat ze zásad indexování úplně (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -143,7 +143,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 ```
 
 > [!NOTE]
-> Obecně se doporučuje použít zásadu indexování pro **výslovný souhlas** , která Azure Cosmos DB proaktivní indexování všech nových vlastností, které se dají do modelu přidat.
+> Obecně se doporučuje použít zásadu indexování pro **výslovný souhlas** , která Azure Cosmos DB proaktivně indexovat každou novou vlastnost, která může být přidána do datového modelu.
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Použití prostorového indexu pouze na konkrétní cestu k vlastnosti
 
@@ -177,7 +177,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně
 
 ## <a name="composite-indexing-policy-examples"></a>Příklady složených indexovaných zásad
 
-Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají filtr a mají klauzuli ORDER BY v různých vlastnostech.
+Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají více filtrů nebo filtr i klauzule ORDER BY.
 
 > [!NOTE]
 > Složené cesty mají implicitní `/?` , protože pouze skalární hodnota na této cestě je indexována. `/*`Zástupný znak není podporován ve složených cestách. Neměli byste zadat `/?` nebo `/*` v složené cestě.
@@ -314,7 +314,7 @@ Je volitelné zadat objednávku. Pokud tento parametr nezadáte, pořadí je vze
 
 ### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Vyloučení všech cest k vlastnostem, ale zachování aktivního indexování
 
-Tato zásada se dá použít v situacích, kdy je aktivní [funkce TTL (Time-to-Live)](time-to-live.md) , ale není nutný žádný sekundární index (pro použití Azure Cosmos DB jako úložiště čistě klíč-hodnota).
+Tato zásada se dá použít v situacích, kdy je aktivní [funkce TTL (Time-to-Live)](time-to-live.md) , ale nejsou potřeba žádné další indexy (pro použití Azure Cosmos DB jako úložiště čistě klíč-hodnota).
 
 ```json
     {
@@ -354,17 +354,17 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 
 Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON, který vám Azure Portal umožňuje přímo upravit.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
 1. Otevřete podokno **Průzkumník dat** a vyberte kontejner, na kterém chcete pracovat.
 
-1. Klikněte na **Nastavení škálování &** .
+1. Klikněte na **Nastavení škálování &**.
 
 1. Úprava dokumentu JSON zásad indexování (viz příklady [níže](#indexing-policy-examples))
 
-1. Po dokončení klikněte na **Uložit** .
+1. Po dokončení klikněte na **Uložit**.
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Správa indexování pomocí Azure Portal":::
 

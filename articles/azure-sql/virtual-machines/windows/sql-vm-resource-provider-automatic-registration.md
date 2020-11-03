@@ -9,39 +9,42 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996891"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286121"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatická registrace pomocí poskytovatele prostředků virtuálních počítačů SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Povolení funkce automatické registrace v Azure Portal pro automatické registraci všech současných a budoucích SQL Server na virtuálních počítačích Azure pomocí poskytovatele prostředků virtuálních počítačů SQL v odlehčeném režimu.
+Povolení funkce automatické registrace v Azure Portal pro automatické registraci všech současných a budoucích SQL Server na Azure Virtual Machines (virtuálních počítačů) pomocí poskytovatele prostředků virtuálního počítače SQL v odlehčeném režimu. Když se zaregistrujete do poskytovatele prostředků virtuálního počítače SQL, nainstaluje se [rozšíření agenta SQL IaaS](sql-server-iaas-agent-extension-automate-management.md).
 
 V tomto článku se naučíte, jak povolit funkci automatické registrace. Případně můžete [zaregistrovat jeden virtuální počítač](sql-vm-resource-provider-register.md)nebo [hromadně zaregistrovat virtuální](sql-vm-resource-provider-bulk-register.md) počítače pomocí poskytovatele prostředků virtuálního počítače SQL. 
 
 ## <a name="overview"></a>Přehled
 
-[Poskytovatel prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md#overview) umožňuje spravovat SQL Server virtuální počítač z Azure Portal. Poskytovatel prostředků navíc umožňuje robustní sadu funkcí, včetně [automatizovaných oprav](automated-patching.md), [automatizovaného zálohování](automated-backup.md)a možností monitorování a správy. Také odemkne [licencování](licensing-model-azure-hybrid-benefit-ahb-change.md) a flexibilitu [edice](change-sql-server-edition.md) . Dříve byly tyto funkce dostupné jenom pro SQL Server imagí virtuálních počítačů nasazených z Azure Marketplace. 
+Když zaregistrujete SQL Server virtuální počítač pomocí poskytovatele prostředků virtuálního počítače SQL, nainstaluje se [rozšíření agenta SQL IaaS](sql-server-iaas-agent-extension-automate-management.md). 
 
-Funkce automatické registrace umožňuje zákazníkům automaticky registrovat všechny aktuální a budoucí SQL Server virtuální počítače v předplatném Azure pomocí poskytovatele prostředků virtuálních počítačů SQL. To se liší od Ruční registrace, která se zaměřuje jenom na aktuální SQL Server virtuální počítače. 
+Když je povolená Automatická registrace, úloha se denně spustí, aby se zjistilo, jestli je SQL Server nainstalovaná na všech neregistrovaných virtuálních počítačích v předplatném. To se provádí zkopírováním binárních souborů rozšíření agenta SQL IaaS na virtuální počítač a následným spuštěním jednorázového nástroje, který kontroluje SQL Server podregistr registru. Pokud se zjistí podregistr SQL Server, virtuální počítač se zaregistruje u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md) ve zjednodušeném režimu. Pokud v registru neexistuje žádný podregistr SQL Server, binární soubory se odeberou.
 
-Automatická registrace registruje virtuální počítače s SQL Server v jednoduchém režimu. Abyste mohli využít celou sadu funkcí, je nutné [ručně upgradovat na režim úplné správy](sql-vm-resource-provider-register.md#upgrade-to-full) . 
+Po povolení automatické registrace u předplatného se všechny aktuální a budoucí virtuální počítače, které mají nainstalované SQL Server, zaregistrují u poskytovatele prostředků virtuálního počítače SQL v jednoduchém režimu. Abyste mohli využít celou sadu funkcí, je nutné [ručně upgradovat na režim úplné správy](sql-vm-resource-provider-register.md#upgrade-to-full) . 
 
-## <a name="prerequisites"></a>Požadavky
+> [!IMPORTANT]
+> Rozšíření agenta SQL IaaS shromažďuje data pro účely výslovného účelu poskytování dobrovolných výhod při používání SQL Server v rámci Azure Virtual Machines. Microsoft nebude tato data používat pro audity licencování bez předchozího souhlasu zákazníka. Další informace najdete v tématu [SQL Server ochrany osobních údajů](/sql/sql-server/sql-server-privacy#non-personal-data) .
+
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/)
-- [Virtuální počítač s Windows](../../../virtual-machines/windows/quick-create-portal.md) Resource modelem Azure s [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) nasazený do veřejného nebo Azure Governmentho cloudu. 
+- Model prostředků Azure [Windows Server 2008 R2 (nebo novější)](../../../virtual-machines/windows/quick-create-portal.md) , který je [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) nasazený do veřejného nebo Azure Government cloudu. Systém Windows Server 2008 není podporován. 
 
 
 ## <a name="enable"></a>Povolit
 
-Pokud chcete povolit automatickou registraci SQL Server virtuálních počítačů v Azure Portal, postupujte podle těchto pokynů:
+Pokud chcete povolit automatickou registraci SQL Server virtuálních počítačů v Azure Portal, postupujte podle následujících kroků:
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na stránku prostředku [**virtuální počítače SQL**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) . 
@@ -67,7 +70,7 @@ Pokud chcete zakázat automatickou registraci pomocí Azure CLI, spusťte násle
 az feature unregister --namespace Microsoft.SqlVirtualMachine --name BulkRegistration
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 Pokud chcete automatickou registraci zakázat pomocí Azure PowerShell, spusťte následující příkaz: 
 
@@ -89,7 +92,7 @@ To můžete provést pomocí těchto kroků:
 1. Spusťte skript a předejte SubscriptionIds jako parametry jako   
    `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
 
-   Příklad: 
+   Například: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb

@@ -1,6 +1,6 @@
 ---
 title: Azure Portal – omezení přístupu pro import/export ke spravovaným diskům pomocí privátních odkazů
-description: Povolte privátní odkazy pro vaše spravované disky pomocí Azure Portal, aktuálně ve verzi Preview. Umožňuje bezpečně exportovat a importovat disky v rámci vaší virtuální sítě.
+description: Pomocí Azure Portal povolte privátní odkazy na spravované disky. Umožňuje bezpečně exportovat a importovat disky v rámci vaší virtuální sítě.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
@@ -8,16 +8,16 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 95c4464d1ab8416f609f75f2b59fb85a578ef5b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1cf6c6516e01774d0345a3f75f6f1c2826451dce
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979049"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289859"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Použití Azure Portal k omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Podpora privátních odkazů pro spravované disky je momentálně ve verzi Preview a umožňuje omezit export a import spravovaných disků tak, aby se zobrazily jenom v rámci vaší virtuální sítě Azure. Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejnému Internetu.
+Podpora privátních odkazů u spravovaných disků umožňuje omezit export a import spravovaných disků tak, aby se staly jenom v rámci vaší virtuální sítě Azure. Můžete vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky pro export dat do jiné oblasti pro místní rozšiřování, zotavení po havárii a pro čtení dat pro forenzní analýzu. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejnému Internetu.
 
 Vytvořením privátního koncového bodu můžete vytvořit prostředek pro přístup k disku a propojit ho s virtuální sítí ve stejném předplatném. Abyste mohli exportovat a importovat data prostřednictvím privátních odkazů, musíte k přístupu k disku přidružit disk nebo snímek. Také je nutné nastavit vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . 
 
@@ -46,7 +46,7 @@ Vlastnost NetworkAccessPolicy můžete nastavit tak, aby `DenyAll` nedocházelo 
 
 Po vytvoření prostředku přejděte přímo na něj.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Snímek obrazovky s tlačítkem přejít na prostředek na portálu":::
 
 ## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
@@ -55,21 +55,21 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. V prostředku pro přístup k disku vyberte **připojení privátního koncového bodu**.
 1. Vyberte **+ soukromý koncový bod**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Snímek obrazovky okna s přehledem pro prostředek přístupu k disku Připojení privátního koncového bodu je zvýrazněné.":::
 
 1. Výběr skupiny prostředků
 1. Zadejte název a vyberte stejnou oblast, ve které byl prostředek pro přístup k disku vytvořen.
 1. Vyberte **Další: prostředek >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Snímek pracovního postupu pro vytvoření privátního koncového bodu, první okno Pokud nevyberete příslušnou oblast, může dojít k problémům později.":::
 
 1. V okně **prostředek** vyberte **připojit k prostředku Azure ve složce Můj adresář**.
 1. Jako **typ prostředku** vyberte **Microsoft. COMPUTE/diskAccesses** .
 1. Vyberte **prostředek pro přístup k disku** , který jste vytvořili dříve.
 1. Ponechte **cílový dílčí prostředek** jako **disky** .
-1. Vyberte **Další: >konfigurace **.
+1. Vyberte **Další: >konfigurace**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Snímek pracovního postupu pro vytvoření privátního koncového bodu, druhé okno Se všemi zvýrazněnými hodnotami (typ prostředku, prostředek, cílový dílčí prostředek)":::
 
 1. Vyberte virtuální síť, na kterou chcete omezit export disku, ostatní virtuální sítě nebudou moct disk exportovat.
 
@@ -79,7 +79,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Vyberte příslušnou podsíť.
 1. Vyberte **Zkontrolovat a vytvořit**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Snímek pracovního postupu vytvoření privátního koncového bodu, třetí okno Virtuální síť a podsíť jsou zvýrazněné.":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Povolení privátního koncového bodu na disku
 
@@ -88,7 +88,7 @@ Teď, když máte prostředek pro přístup k disku, můžete ho použít k tomu
 1. Vyberte **privátní koncový bod (přes přístup k disku)** a vyberte přístup k disku, který jste vytvořili dříve.
 1. Vyberte **Uložit**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Snímek obrazovky s oknem pro vytvoření přístupu k disku Zadejte požadovaný název, vyberte oblast, vyberte skupinu prostředků a pokračujte.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Snímek obrazovky okna sítě spravovaného disku. Zvýrazní se výběr privátního koncového bodu i přístup k vybranému disku. Při uložení se nakonfiguruje disk pro tento přístup.":::
 
 Právě jste dokončili konfiguraci privátních odkazů, které můžete použít při importu/exportu spravovaného disku.
 

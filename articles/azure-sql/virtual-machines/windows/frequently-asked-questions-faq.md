@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786492"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289403"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Nejčastější dotazy k SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -169,15 +169,15 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu odinstalovat výchozí instanci SQL Serveru?**
 
-   Ano, měli byste však vzít v úvahu několik skutečností. V závislosti na modelu licence pro virtuální počítač se může dál vyskytnout SQL Server – fakturace přidružená k. Za druhé, jak je uvedeno v předchozí odpovědi, jsou k dispozici funkce, které spoléhají na [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud odinstalujete výchozí instanci bez odebrání rozšíření IaaS, rozšíření bude i nadále hledat výchozí instanci a může generovat chyby protokolu událostí. Tyto chyby jsou z následujících dvou zdrojů: **Microsoft SQL Server Správa přihlašovacích údajů** a **Agent Microsoft SQL Server IaaS** . Následuje příklad jedné z chyb:
+   Ano, měli byste však vzít v úvahu několik skutečností. V závislosti na modelu licence pro virtuální počítač se může dál vyskytnout SQL Server – fakturace přidružená k. Za druhé, jak je uvedeno v předchozí odpovědi, jsou k dispozici funkce, které spoléhají na [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud odinstalujete výchozí instanci bez odebrání rozšíření IaaS, rozšíření bude i nadále hledat výchozí instanci a může generovat chyby protokolu událostí. Tyto chyby jsou z následujících dvou zdrojů: **Microsoft SQL Server Správa přihlašovacích údajů** a **Agent Microsoft SQL Server IaaS**. Následuje příklad jedné z chyb:
 
       Při navazování připojení k SQL Serveru došlo k chybě související se sítí nebo konkrétní instancí. Server se nenašel nebo nebyl dostupný.
 
    Pokud se rozhodnete odinstalovat výchozí instanci, odinstalujte taky [SQL Server rozšíření agenta IaaS](sql-server-iaas-agent-extension-automate-management.md) . 
 
-1. Můžu **použít pojmenovanou instanci SQL Server s rozšířením IaaS** ?
+1. **Můžu použít pojmenovanou instanci SQL Server s rozšířením IaaS?**
    
-   Ano, pokud je pojmenovaná instance jedinou instancí na SQL Server a v případě, že původní výchozí instance byla [správně odinstalována](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance). Pokud není k dispozici žádná výchozí instance a na jednom virtuálním počítači SQL Server existuje více pojmenovaných instancí, rozšíření agenta SQL Server IaaS se nepodaří nainstalovat. 
+   Ano, pokud je pojmenovaná instance jedinou instancí na SQL Server a v případě, že původní výchozí instance byla [správně odinstalována](sql-server-iaas-agent-extension-automate-management.md#named-instance-support). Pokud není k dispozici žádná výchozí instance a na jednom virtuálním počítači SQL Server existuje více pojmenovaných instancí, rozšíření agenta SQL Server IaaS se nepodaří nainstalovat.  
 
 1. **Můžu SQL Server a přidruženou licenci odebrat z SQL Server virtuálního počítače?**
 
@@ -210,7 +210,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu upgradovat SQL Server 2008/2008 R2 po registraci pomocí poskytovatele prostředků SQL Server virtuálního počítače?**
 
-   Ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](sql-vm-resource-provider-register.md#management-modes), a to z _žádného agenta_ na _úplný_ . Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. 
+   Pokud je operační systém Windows Server 2008 R2 nebo novější, ano. K upgradu verze a edice SQL Server můžete použít libovolné instalační médium a pak můžete upgradovat [IaaS režim rozšíření SQL](sql-server-iaas-agent-extension-automate-management.md#management-modes), a to z _žádného agenta_ na _úplný_. Díky tomu budete mít přístup ke všem výhodám rozšíření SQL IaaS, jako je Správa portálu, automatizované zálohování a automatizované opravy. Pokud je verze operačního systému Windows Server 2008, je podporován pouze režim bez agenta. 
 
 1. **Jak získám bezplatné rozšířené aktualizace zabezpečení pro instance SQL Serveru 2008 a SQL Serveru 2008 R2 na konci podpory?**
 
@@ -239,7 +239,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    
     Ano. Místní služba DTC je podporovaná pro SQL Server 2016 SP2 a vyšší. Avšak aplikace musí být testovány při použití skupin dostupnosti Always On, protože transakce probíhající během převzetí služeb při selhání se nezdaří a musí se opakovat. Služba DTC (CLUSTERED DTC) je dostupná od Windows serveru 2019. 
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 **Virtuální počítače s Windows** :
 

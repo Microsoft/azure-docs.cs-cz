@@ -10,12 +10,12 @@ ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785795"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289460"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -42,12 +42,12 @@ Pokud chcete protokolovat data Azure Storage pomocí Azure Monitor a analyzovat 
 1. Zaregistrujte se [Azure Storage přihlašování Azure monitor ve verzi Preview](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u).
 1. Vytvořte nový pracovní prostor Log Analytics v předplatném, které obsahuje váš Azure Storage účet. Po nakonfigurování protokolování účtu úložiště budou protokoly k dispozici v pracovním prostoru Log Analytics. Další informace najdete v tématu [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../../azure-monitor/learn/quick-create-workspace.md).
 1. Na webu Azure Portal přejděte na svůj účet úložiště.
-1. V části monitorování vyberte **nastavení diagnostiky (Preview)** .
+1. V části monitorování vyberte **nastavení diagnostiky (Preview)**.
 1. Vyberte službu Azure Storage, pro kterou chcete protokolovat požadavky. Například vyberte **objekt BLOB** , který bude protokolovat požadavky do úložiště objektů BLOB.
-1. Vyberte **Přidat nastavení diagnostiky** .
+1. Vyberte **Přidat nastavení diagnostiky**.
 1. Zadejte název pro nastavení diagnostiky.
 1. V části **Podrobnosti o kategorii** v části **protokol** vyberte typy požadavků, které se mají protokolovat. Můžete protokolovat požadavky na čtení, zápis a odstranění. Například volba **StorageRead** a **StorageWrite** bude protokolovat požadavky na čtení a zápis do vybrané služby.
-1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics** . Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
+1. V části **Podrobnosti o cíli** vyberte **Odeslat do Log Analytics**. Vyberte své předplatné a Log Analytics pracovní prostor, který jste vytvořili dříve, jak je znázorněno na následujícím obrázku.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
 
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 Ve výsledcích se zobrazuje počet požadavků provedených v každé z verzí TLS:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Snímek obrazovky zobrazující výsledky dotazu Log Analytics pro vrácení verze TLS":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Dotazování protokolovaných požadavků podle IP adresy volajícího a hlavičky uživatelského agenta
 
@@ -89,7 +89,9 @@ Pokud jste si jisti, že provoz od klientů používajících starší verze pro
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurace minimální verze protokolu TLS pro účet úložiště
 
-Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
+Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager ve veřejném cloudu Azure nebo v cloudech Azure Government. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
+
+Vlastnost **MinimumTlsVersion** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte.  Pokud má vlastnost hodnotu **null** , bude účet úložiště umožňovat požadavky odeslané protokolem TLS verze 1,0 nebo vyšší.
 
 # <a name="portal"></a>[Azure Portal](#tab/portal)
 
@@ -101,13 +103,11 @@ Pokud chcete nakonfigurovat minimální verzi TLS pro existující účet úlož
 1. Vyberte nastavení **Konfigurace** .
 1. V části **Minimální verze protokolu TLS** pomocí rozevíracího seznamu vyberte minimální verzi TLS potřebnou pro přístup k datům v tomto účtu úložiště, jak je znázorněno na následujícím obrázku.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Snímek obrazovky ukazující, jak nakonfigurovat minimální verzi TLS v Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště pomocí PowerShellu, nainstalujte [Azure PowerShell verze 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) nebo novější. Dále nakonfigurujte vlastnost **MinimumTLSVersion** pro nový nebo existující účet úložiště. Platné hodnoty pro **MinimumTlsVersion** jsou `TLS1_0` , `TLS1_1` a `TLS1_2` .
-
-Vlastnost **MinimumTlsVersion** se ve výchozím nastavení nenastavuje při vytváření účtu úložiště pomocí PowerShellu. Tato vlastnost nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti odesílané pomocí protokolu TLS verze 1,0 nebo vyšší, pokud je hodnota vlastnosti **null** .
 
 Následující příklad vytvoří účet úložiště a nastaví **MinimumTLSVersion** na TLS 1,1, potom tento účet aktualizuje a nastaví **MinimumTLSVersion** na TLS 1,2. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -138,8 +138,6 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště pomocí Azure CLI, nainstalujte Azure CLI verze 2.9.0 nebo novější. Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Dále nakonfigurujte vlastnost **minimumTlsVersion** pro nový nebo existující účet úložiště. Platné hodnoty pro **minimumTlsVersion** jsou `TLS1_0` , `TLS1_1` a `TLS1_2` .
-
-Vlastnost **minimumTlsVersion** se ve výchozím nastavení nenastavuje při vytváření účtu úložiště pomocí Azure CLI. Tato vlastnost nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje žádosti odesílané pomocí protokolu TLS verze 1,0 nebo vyšší, pokud je hodnota vlastnosti **null** .
 
 Následující příklad vytvoří účet úložiště a nastaví **minimumTLSVersion** na TLS 1,1. Pak aktualizuje účet a nastaví vlastnost **minimumTLSVersion** na TLS 1,2. Příklad také načte hodnotu vlastnosti v každém případě. Nezapomeňte nahradit hodnoty zástupných symbolů v závorkách vlastními hodnotami:
 
@@ -173,9 +171,9 @@ az storage account show \
 
 Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště se šablonou, vytvořte šablonu s vlastností **MinimumTLSVersion** nastavenou na `TLS1_0` , `TLS1_1` nebo `TLS1_2` . Následující postup popisuje, jak vytvořit šablonu v Azure Portal.
 
-1. V Azure Portal klikněte na možnost **vytvořit prostředek** .
-1. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER** .
-1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)** , zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu** .
+1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
+1. V **části Hledat na Marketplace** zadejte **šablonu Deployment** a potom stiskněte **ENTER**.
+1. Zvolte **template Deployment (nasadit pomocí vlastních šablon) (Preview)** , zvolte **vytvořit** a potom **v editoru zvolte sestavit vlastní šablonu**.
 1. V editoru šablon vložte následující JSON pro vytvoření nového účtu a nastavte minimální verzi TLS na TLS 1,2. Nezapomeňte nahradit zástupné symboly v lomených závorkách vlastními hodnotami.
 
     ```json
@@ -246,7 +244,7 @@ Azure Policy podporuje efekty, které určují, co se stane, když se pravidlo z
 Pokud chcete vytvořit zásadu s účinkem auditu pro minimální verzi TLS s Azure Portal, postupujte takto:
 
 1. V Azure Portal přejděte do služby Azure Policy.
-1. V části **vytváření obsahu** vyberte **definice** .
+1. V části **vytváření obsahu** vyberte **definice**.
 1. Pokud chcete vytvořit novou definici zásady, vyberte **Přidat definici zásady** .
 1. V poli **umístění definice** vyberte tlačítko **Další** a určete, kde se nachází prostředek zásad auditu.
 1. Zadejte název zásady. Volitelně můžete zadat popis a kategorii.
@@ -283,12 +281,12 @@ V dalším kroku přiřaďte zásadu k prostředku. Rozsah zásad odpovídá tom
 Chcete-li přiřadit zásadu k Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte do služby Azure Policy.
-1. V části **vytváření obsahu** vyberte **přiřazení** .
+1. V části **vytváření obsahu** vyberte **přiřazení**.
 1. Vyberte **přiřadit zásadu** a vytvořte nové přiřazení zásady.
 1. V poli **obor** vyberte obor přiřazení zásady.
 1. V poli **definice zásady** vyberte tlačítko **Další** a pak v seznamu vyberte zásadu, kterou jste definovali v předchozí části.
 1. Zadejte název přiřazení zásady. Popis je volitelný.
-1. Nechte **vynucení zásad** nastavené na *povoleno* . Toto nastavení nemá žádný vliv na zásady auditu.
+1. Nechte **vynucení zásad** nastavené na *povoleno*. Toto nastavení nemá žádný vliv na zásady auditu.
 1. Vyberte možnost **zkontrolovat + vytvořit** a vytvořte přiřazení.
 
 ### <a name="view-compliance-report"></a>Zobrazit sestavu dodržování předpisů
@@ -300,11 +298,11 @@ Po vytvoření přiřazení zásad může trvat několik minut, než se sestava 
 Chcete-li zobrazit sestavu dodržování předpisů v Azure Portal, postupujte podle následujících kroků:
 
 1. V Azure Portal přejděte do služby Azure Policy.
-1. Vyberte možnost **dodržování předpisů** .
+1. Vyberte možnost **dodržování předpisů**.
 1. Vyfiltrujte výsledky pro název přiřazení zásady, které jste vytvořili v předchozím kroku. V této sestavě se zobrazuje počet prostředků, které nejsou v souladu se zásadami.
 1. Můžete přejít k podrobnostem sestavy, kde najdete další podrobnosti, včetně seznamu účtů úložiště, které nedodržují předpisy.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Snímek obrazovky zobrazující sestavu dodržování předpisů pro zásady auditu pro minimální verzi TLS":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Použití Azure Policy k vymáhání minimální verze protokolu TLS
 
@@ -340,7 +338,7 @@ Když vytvoříte zásadu s použitím efektu odepřít a přiřadíte ji k obor
 
 Následující obrázek ukazuje chybu, ke které dochází, když se pokusíte vytvořit účet úložiště s minimální verzí TLS nastavenou na TLS 1,0 (výchozí pro nový účet), když zásada s efektem odepření vyžaduje, aby se minimální verze protokolu TLS nastavila na TLS 1,2.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky ukazující, jak vytvořit nastavení diagnostiky pro požadavky protokolování":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Snímek obrazovky znázorňující chybu při vytváření účtu úložiště při porušení zásad":::
 
 ## <a name="network-considerations"></a>Důležité informace z hlediska využívání sítě
 

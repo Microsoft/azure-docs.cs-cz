@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 64b2955b1417d6931172b41f83f05d5f1b560708
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911881"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288671"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -79,6 +79,9 @@ Ne, z důvodu požadavků na šířku pásma a latenci.
 #### <a name="can-azure-bastion-be-used-for-connecting-to-azure-vmware-solution-vms"></a>Dá se Azure bastionu použít pro připojení k virtuálním počítačům řešení VMware Azure?
 Služba Azure bastionu se doporučuje připojit k poli s odkazem, abyste zabránili odhalení řešení Azure VMware na Internet. Azure bastionu se nedá použít pro připojení k virtuálním počítačům řešení VMware Azure, protože se nejedná o objekty Azure IaaS.
 
+#### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Dá se Azure Load Balancer interní použít pro virtuální počítače řešení Azure VMware?
+Ne. Azure Load Balancer interní podporuje jenom virtuální počítače Azure s IaaS. Azure Load Balancer nepodporuje back-end fondy založené na IP adrese; jenom virtuální počítače Azure nebo objekty VMSS (Virtual Machine Scale set), ve kterých virtuální počítače Azure VMware nejsou objekty Azure.
+
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Může se pro připojení k řešení Azure VMware použít existující brána ExpressRoute?
 Ano, můžete použít existující bránu ExpressRoute pro připojení k řešení Azure VMware, pokud nepřekračuje limit čtyř ExpressRoute okruhů na jednu virtuální síť.  Pro přístup k řešení Azure VMware z místního prostředí prostřednictvím ExpressRoute ale musíte mít ExpressRoute Global Reach, protože brána ExpressRoute neposkytuje přechodné směrování mezi připojenými okruhy.
 
@@ -118,7 +121,7 @@ Jak jsou tato řešení pro zálohování nainstalovaná a spravovaná zákazní
 
 #### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>Jaké jsou správné zásady úložiště pro instalaci odstranění duplicit?
 
-Použijte zásady úložiště *thin_provision* pro šablonu virtuálního počítače.  Výchozí hodnota je *thick_provision* .
+Použijte zásady úložiště *thin_provision* pro šablonu virtuálního počítače.  Výchozí hodnota je *thick_provision*.
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>Jsou protokoly infrastruktury SNMP sdílené?
 

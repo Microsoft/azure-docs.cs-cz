@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a4400adeff8907e2d4ff690a83c63d32da8031bd
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488945"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289328"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rychlý Start: nasazení první aplikace pro cloudovou službu Azure jaře
 
@@ -112,7 +112,7 @@ V aplikaci Visual Studio vytvořte ASP.NET Core webové aplikace s názvem "Hell
    }
    ```
 
-1. Také v *appsettings.jszapnuto*, změňte úroveň protokolu pro `Microsoft` kategorii z `Warning` na `Information` . Tato změna zajistí, že se protokoly vytvoří při zobrazení protokolů streamování v pozdějším kroku.
+1. Také v *appsettings.jszapnuto* , změňte úroveň protokolu pro `Microsoft` kategorii z `Warning` na `Information` . Tato změna zajistí, že se protokoly vytvoří při zobrazení protokolů streamování v pozdějším kroku.
 
    *appsettings.jsv* souboru teď vypadá podobně jako v následujícím příkladu:
 
@@ -218,10 +218,10 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
 
 1. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
 
-   * **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
-   * **Skupina prostředků**: Vytvořte novou skupinu prostředků. Název, který zde zadáte, bude použit v pozdějších krocích jako **\<resource group name\>** .
-   * **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-   * **Oblast**: Vyberte oblast pro instanci služby.
+   * **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
+   * **Skupina prostředků** : Vytvořte novou skupinu prostředků. Název, který zde zadáte, bude použit v pozdějších krocích jako **\<resource group name\>** .
+   * **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+   * **Oblast** : Vyberte oblast pro instanci služby.
 
    ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -242,7 +242,7 @@ Následující postup sestaví a nasadí projekt, který jste vytvořili dříve
 1. Vytvořte aplikaci v instanci cloudu Azure jaře s přiřazeným veřejným koncovým bodem. Použijte stejný název aplikace "Hello World", který jste zadali v *appsettings.jszapnuto*.
 
    ```console
-   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public
+   az spring-cloud app create -n hello-world -s <service instance name> -g <resource group name> --is-public --runtime-version NetCore_31
    ```
 
 1. Nasaďte do aplikace soubor *. zip* .
@@ -387,10 +387,10 @@ Následující postup vytvoří instanci Azure jarního cloudu pomocí Azure Por
     ![Ikona ASC přidat](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
-    - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.
-    - **Skupina prostředků**: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Tento postup bude použit v pozdějších krocích jako **\<resource group name\>** .
-    - **Podrobnosti o službě/název**: zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-    - **Umístění**: Vyberte oblast pro instanci služby.
+    - **Předplatné** : vyberte předplatné, které chcete pro tento prostředek fakturovat.
+    - **Skupina prostředků** : vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem. Tento postup bude použit v pozdějších krocích jako **\<resource group name\>** .
+    - **Podrobnosti o službě/název** : zadejte **\<service instance name\>** .  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+    - **Umístění** : Vyberte oblast pro instanci služby.
 
     ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -451,7 +451,7 @@ Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účt
 1. V textovém poli pole **jarního cloudu** vyberte instanci služby Azure jaře Cloud, kterou jste vytvořili v části [zřízení instance cloudové služby Azure jaře](./spring-cloud-quickstart-provision-service-instance.md).
 1. Nastavte **veřejný koncový bod** , který se má *Povolit*.
 1. V poli **aplikace:** textové pole vyberte **vytvořit aplikaci...**.
-1. Zadejte *hellospring*a pak klikněte na **OK**.
+1. Zadejte *hellospring* a pak klikněte na **OK**.
 
     [![Nasadit do Azure v pořádku ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -481,7 +481,7 @@ Protokoly se zobrazí ve výsledcích:
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-1. Vyberte **Azure Explorer**a pak **jarní Cloud**.
+1. Vyberte **Azure Explorer** a pak **jarní Cloud**.
 1. Klikněte pravým tlačítkem na spuštěnou aplikaci.
 1. V rozevíracím seznamu vyberte možnost **protokoly streamování** .
 1. Vyberte instanci.

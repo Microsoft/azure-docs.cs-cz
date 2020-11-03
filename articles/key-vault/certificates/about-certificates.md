@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 45c0108ed87dd5264b9192f5dd69e0198bd59fc1
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126769"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289782"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informace o certifikátech ve službě Azure Key Vault
 
@@ -44,7 +44,7 @@ Když se vytvoří certifikát Key Vault, dá se načíst z adresního tajemstv�
 
 Adresovatelný klíč se bude důležitější s neexportovatelnými certifikáty KV. Operace s adresovatelnými klávesami se mapují z pole *použití* zásad certifikátu KV, které slouží k vytvoření certifikátu kV.  
 
- - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
+ - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [zde](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)uvedené) exportovatelné je povolené jenom pro RSA, ES. Klíče HSM by nebyly exportovatelné.
 
 
 ## <a name="certificate-attributes-and-tags"></a>Atributy a značky certifikátů
@@ -57,14 +57,14 @@ Atributy certifikátu se zrcadlí do atributů adresovatelného klíče a tajné
 
 Key Vault certifikát má následující atributy:  
 
--   *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp*a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
+-   *povoleno* : logická hodnota, volitelná, výchozí hodnota je **true**. Dá se zadat, aby označovala, jestli se data certifikátu dají načíst jako klíčová, nebo se dá ovládat jako klíč. Používá se také ve spojení s *NBF* a *exp* při výskytu operace mezi *NBF* a *exp* a bude povoleno pouze v případě, že je vlastnost Enabled nastavena na hodnotu true. Operace mimo okno *NBF* a *exp* jsou automaticky zakázané.  
 
 V odpovědi jsou k dispozici další atributy jen pro čtení, které jsou k dispozici:
 
--   *Vytvořeno*: IntDate: udává, kdy byla vytvořena tato verze certifikátu.  
--   *Aktualizováno*: IntDate: udává, kdy se tato verze certifikátu aktualizovala.  
--   *exp*: IntDate: obsahuje hodnotu data vypršení platnosti certifikátu x509.  
--   *NBF*: IntDate: obsahuje hodnotu data certifikátu x509.  
+-   *Vytvořeno* : IntDate: udává, kdy byla vytvořena tato verze certifikátu.  
+-   *Aktualizováno* : IntDate: udává, kdy se tato verze certifikátu aktualizovala.  
+-   *exp* : IntDate: obsahuje hodnotu data vypršení platnosti certifikátu x509.  
+-   *NBF* : IntDate: obsahuje hodnotu data certifikátu x509.  
 
 > [!Note] 
 > Pokud vyprší platnost certifikátu ve službě Key Vault, jeho adresovatelný klíč a tajný klíč přestanou fungovat.  
@@ -82,11 +82,11 @@ Zásady certifikátu obsahují informace o tom, jak vytvořit a spravovat život
 
 Když se od začátku vytvoří certifikát Key Vault, musí se zadat zásada. Zásada určuje, jak se má vytvořit tato Key Vault verze certifikátu nebo další verze certifikátu Key Vault. Jakmile je zásada navázána, nepožaduje se u následných operací vytvoření budoucích verzí. Pro všechny verze Key Vaultho certifikátu existuje jenom jedna instance zásady.  
 
-Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
+Zásady certifikátu na nejvyšší úrovni obsahují následující informace (jejich definice najdete [tady](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
 
 -   Vlastnosti certifikátu x509: obsahuje název subjektu, alternativní názvy subjektu a další vlastnosti používané k vytvoření žádosti o certifikát x509.  
 -   Klíčové vlastnosti: obsahuje typ klíče, délku klíče, exportovatelné a ReuseKeyOnRenewal pole. Tato pole instruují Trezor klíčů, jak vygenerovat klíč. 
-     - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [tady](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)se uvádí) 
+     - Podporované typy typů: RSA, RSA-HSM, ES, ES-HSM, Oct ( [tady](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)se uvádí) 
 -   Vlastnosti tajného klíče: obsahuje tajné vlastnosti, jako je typ obsahu adresovatelných tajných klíčů, aby se vygenerovala tajná hodnota pro načtení certifikátu jako tajného klíče.  
 -   Akce životního cyklu: obsahuje akce životního cyklu pro certifikát KV. Každá akce životnosti obsahuje:  
 
@@ -103,14 +103,14 @@ Následující tabulka představuje mapování zásad použití klíče x509 na 
 
 |**Příznaky použití klíče x509**|**Operace klíče Key Vault Key**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| Není k dispozici |
-|DecipherOnly|mohli| Není k dispozici  |
+|DataEncipherment|šifrování, dešifrování| – |
+|DecipherOnly|mohli| –  |
 |DigitalSignature|podepsat, ověřit| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|EncipherOnly|encrypt| Není k dispozici |
-|KeyCertSign|podepsat, ověřit|Není k dispozici|
+|EncipherOnly|encrypt| – |
+|KeyCertSign|podepsat, ověřit|–|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault výchozí bez specifikace použití při vytváření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsat, ověřit| Není k dispozici |
-|bit crlsign|podepsat, ověřit| Není k dispozici |
+|Nepopiratelnosti odpovědnosti|podepsat, ověřit| – |
+|bit crlsign|podepsat, ověřit| – |
 
 ## <a name="certificate-issuer"></a>Vystavitel certifikátu
 
@@ -133,7 +133,7 @@ Předtím, než je možné vytvořit vystavitele certifikátu v Key Vault, je nu
 
     -   Poskytuje konfiguraci, která se má použít k vytvoření objektu vystavitele zprostředkovatele v trezoru klíčů.  
 
-Další informace o vytváření objektů vystavitele z portálu Certificates najdete na [blogu Key Vault Certificates](https://aka.ms/kvcertsblog) .  
+Další informace o vytváření objektů vystavitele z portálu Certificates najdete na [blogu Key Vault Certificates](/archive/blogs/kv/manage-certificates-via-azure-key-vault) .  
 
 Key Vault umožňuje vytvoření více objektů vystavitele s jinou konfigurací zprostředkovatele vystavitele. Po vytvoření objektu vystavitele se na jeho název dá odkazovat v jedné nebo několika zásadách certifikátu. Odkazování na objekt vystavitele instruuje Key Vault pro použití konfigurace, jak je uvedeno v objektu vystavitele při vyžádání certifikátu x509 od poskytovatele CA během vytváření a obnovování certifikátu.  
 

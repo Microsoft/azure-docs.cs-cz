@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972029"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289358"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Úvod ke spravovaným diskům Azure
 
@@ -27,7 +27,7 @@ Podívejme se na některé výhody, které získáte pomocí spravovaných disk�
 
 ### <a name="highly-durable-and-available"></a>Vysoce odolné a dostupné
 
-Spravované disky jsou navržené pro 99,999% dostupnost. Služba Managed disks dosahuje tím, že poskytuje tři repliky vašich dat, což umožňuje vysokou odolnost. Pokud u jedné nebo i dvou replik dochází k problémům, zbývající repliky pomůžou zajistit trvalost vašich dat a vysokou odolnost proti chybám. Tato architektura pomáhá Azure konzistentně zajistit odolnost na podnikové úrovni pro disky infrastruktury jako služby (IaaS), a to s špičkovou neplatnou roční mírou selhání v oboru.
+Spravované disky jsou navržené pro 99,999% dostupnost. Dosahují toho tím, že poskytují tři repliky vašich dat, což zajišťuje vysokou odolnost. Pokud dojde k problémům u jedné nebo i dvou replik, zbývající repliky pomůžou zajistit trvalost dat a vysokou odolnost proti chybám. Tato architektura pomáhá Azure konzistentně zajistit odolnost na podnikové úrovni pro disky infrastruktury jako služby (IaaS), a to s špičkovou neplatnou roční mírou selhání v oboru.
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Jednoduché a škálovatelné nasazení virtuálních počítačů
 
@@ -59,7 +59,7 @@ Informace o tom, jak přenést virtuální pevný disk do Azure, najdete v člá
 
 ### <a name="private-links"></a>Privátní odkazy
 
-Podpora privátních odkazů pro služby Managed disks je aktuálně ve verzi Preview a je možné ji použít k internímu importu nebo exportu spravovaného disku do vaší sítě. Privátní odkazy umožňují vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky, které můžete použít k exportu dat do jiných oblastí pro regionální rozšiřování, zotavení po havárii a analýzu forenzní. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Teď můžete využít [privátní odkazy](../private-link/private-link-overview.md) k omezení exportu a importu spravovaných disků tak, aby se mohly vyskytovat jenom v rámci vaší virtuální sítě Azure. Soukromé odkazy vám umožní zajistit, aby data byla přenášena pouze v rámci zabezpečené páteřní sítě Microsoftu.
+Podpora privátních disků pro spravované disky se dá použít k importu nebo exportu spravovaného disku interního do vaší sítě. Privátní odkazy umožňují vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro nepřipojené spravované disky a snímky, které můžete použít k exportu dat do jiných oblastí pro regionální rozšiřování, zotavení po havárii a analýzu forenzní. Identifikátor URI SAS můžete použít také k přímému nahrání virtuálního pevného disku na prázdný disk z místního prostředí. Teď můžete využít [privátní odkazy](../private-link/private-link-overview.md) k omezení exportu a importu spravovaných disků tak, aby se mohly vyskytovat jenom v rámci vaší virtuální sítě Azure. Soukromé odkazy vám umožní zajistit, aby data byla přenášena pouze v rámci zabezpečené páteřní sítě Microsoftu.
 
 Informace o tom, jak povolit privátní odkazy pro import nebo Export spravovaného disku, najdete v článcích o [CLI](linux/disks-export-import-private-links-cli.md) nebo na [portálu](disks-enable-private-links-for-import-export-portal.md) .
 
@@ -111,7 +111,7 @@ Další informace o tom, jak vytvořit snímky pro služby Managed disks, najdet
 - [Vytvoření snímku spravovaného disku ve Windows](windows/snapshot-copy-managed-disk.md)
 - [Vytvoření snímku spravovaného disku v systému Linux](linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Images
+### <a name="images"></a>Image
 
 Spravované disky také podporují vytváření spravované vlastní image. Můžete vytvořit image z vlastního virtuálního pevného disku v účtu úložiště nebo přímo z zobecněného (nástroje Sysprep) virtuálního počítače. Tento proces zachycuje jeden obrázek. Tato image obsahuje všechny spravované disky přidružené k virtuálnímu počítači, včetně operačního systému i datových disků. Tato spravovaná vlastní image umožňuje vytvářet stovky virtuálních počítačů s využitím vlastní image bez nutnosti kopírovat ani spravovat žádné účty úložiště.
 

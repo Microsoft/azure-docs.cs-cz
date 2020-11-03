@@ -1,19 +1,19 @@
 ---
 title: 'Rychlý Start: nasazení rozhraní Azure API pro FHIR pomocí šablony ARM'
 description: V tomto rychlém startu se dozvíte, jak nasadit rozhraní API Azure pro rychlé interoperability zdravotnictví (FHIR®) pomocí šablony Azure Resource Manager (šablony ARM).
-author: mgblythe
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
+ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521437"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289294"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Rychlý Start: použití šablony ARM k nasazení rozhraní Azure API pro FHIR
 
@@ -75,13 +75,13 @@ Na stránce **nasazení rozhraní API Azure pro FHIR** :
 
 1. Pokud chcete, změňte **předplatné** z výchozí hodnoty na jiné předplatné.
 
-2. V poli **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
+2. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK**.
 
 3. Pokud jste vytvořili novou skupinu prostředků, vyberte **oblast** pro skupinu prostředků.
 
 4. Zadejte nový **název služby** a vyberte **umístění** rozhraní API Azure pro FHIR. Umístění může být stejné nebo jiné než z oblasti skupiny prostředků.
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Nasaďte do Azure rozhraní Azure API pro službu FHIR pomocí šablony ARM v Azure Portal.":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="Nasazení rozhraní API Azure pro FHIR pomocí šablony ARM v Azure Portal.":::
 
 5. Vyberte **Zkontrolovat a vytvořit**.
 

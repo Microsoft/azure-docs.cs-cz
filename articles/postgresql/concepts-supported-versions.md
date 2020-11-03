@@ -7,15 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cfe4b92dbed69440ee2c07cff758faad7e01293f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707910"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286428"
 ---
 # <a name="supported-postgresql-major-versions"></a>Podporované hlavní verze PostgreSQL
-Společnost Microsoft se zaměřuje na podporu n-2 verzí modulu PostgreSQL v Azure Database for PostgreSQLm jediném serveru. Verze by představovaly aktuální hlavní verzi v Azure (n) a dvě předchozí hlavní verze (-2).
+
+Podrobnosti o zásadách podpory najdete v tématu [zásady správy verzí Azure Database for PostgreSQL](concepts-version-policy.md) .
 
 Azure Database for PostgreSQL aktuálně podporuje následující hlavní verze:
 
@@ -35,6 +36,7 @@ Aktuální dílčí verze je 9.5.20. Informace o vylepšeních a opravách v té
 Projekt PostgreSQL pravidelně řeší nahlášené chyby v menších verzích. Azure Database for PostgreSQL automaticky opraví servery s podverzemi v rámci měsíčního nasazení služby. 
 
 Automatické místní upgrady pro hlavní verze se nepodporují. Pokud chcete upgradovat na další hlavní verzi, můžete 
+   * Viz [inovace hlavních verzí pomocí výpisu a obnovení](./how-to-upgrade-using-dump-and-restore.md)
    * Použití [pg_dump a pg_restore](./howto-migrate-using-dump-and-restore.md) k přesunu databáze na server vytvořený pomocí nové verze modulu
    * Alternativně můžete upgradovat z PostgreSQL 10 na 11 pomocí [služby Azure Database Migration Service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) .
 

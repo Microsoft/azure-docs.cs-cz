@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 84224172dbfd63fee51b3a7b80f5990b04e5e228
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535021"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288983"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
 
@@ -32,7 +32,7 @@ V tomto příkladu se obě existující fronty ( **výchozí** a **thriftsvr** )
 | thrftsvr | 25% | 50% |
 | Spark | 50% | 50% |
 
-1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz** .
+1. Vyberte ikonu **zobrazení Ambari** a pak vyberte vzor mřížky. V dalším kroku vyberte možnost **správce front příz**.
 
     ![Správce fronty PŘÍZe na řídicím panelu Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Vyberte **výchozí** frontu.
@@ -41,7 +41,7 @@ V tomto příkladu se obě existující fronty ( **výchozí** a **thriftsvr** )
 3. U **výchozí** fronty změňte **kapacitu** z 50% na 25%. V případě fronty **thriftsvr** změňte **kapacitu** na 25%.
 
     ![Změňte kapacitu na 25% pro výchozí a thriftsvr fronty.](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Pokud chcete vytvořit novou frontu, vyberte **Přidat frontu** .
+4. Pokud chcete vytvořit novou frontu, vyberte **Přidat frontu**.
 
     ![Přidat frontu pro Apache Ambari nitě řídicí panel](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
@@ -52,7 +52,7 @@ V tomto příkladu se obě existující fronty ( **výchozí** a **thriftsvr** )
 6. Hodnoty **kapacity** ponechte na 50% a pak vyberte tlačítko **Akce** .
 
     ![Akce výběru nitě Apache Ambari](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
-7. Vyberte **Uložit a aktualizovat fronty** .
+7. Vyberte **Uložit a aktualizovat fronty**.
 
     ![Výběr uložit a aktualizovat fronty](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
@@ -136,10 +136,4 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
-
-- Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
-
-- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
-
-- Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

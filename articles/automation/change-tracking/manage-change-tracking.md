@@ -3,14 +3,14 @@ title: Správa Change Tracking a inventáře v Azure Automation
 description: V tomto článku se dozvíte, jak pomocí Change Tracking a inventáře sledovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 11/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: a599bb6f07683540f5b12c6a69d6565161f89a4f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209851"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288747"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -41,11 +41,11 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
 
 3. V seznamu účtů Automation vyberte účet, který jste zvolili při povolování Change Tracking a inventáře.
 
-4. Ve svém účtu Automation v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ).
+4. Ve svém účtu Automation v části **Správa konfigurace** vyberte **Change Tracking (sledování změn** ).
 
 5. Vyberte **Upravit nastavení** (symbol ozubeného kolečka).
 
-6. Na stránce Konfigurace pracovního prostoru vyberte **soubory Windows**a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
+6. Na stránce Konfigurace pracovního prostoru vyberte **soubory Windows** a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
 
 7. V podokně Přidat soubor Windows pro Change Tracking zadejte informace pro soubor nebo složku, které chcete sledovat, a klikněte na **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
 
@@ -59,7 +59,14 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
     |Rekurze     | True, pokud se používá rekurze při hledání položky, která se má sledovat, a v opačném případě false.        |    
     |Nahrát obsah souboru | True pro nahrání obsahu souboru při sledovaných změnách a v opačném případě false.|
 
-8. Ujistěte se, že pro **nahrání obsahu souboru**zadáte hodnotu true. Toto nastavení povoluje sledování obsahu souborů pro určenou cestu k souboru.
+    Pokud plánujete konfiguraci monitorování souborů a složek pomocí zástupných znaků, vezměte v úvahu následující skutečnosti:
+
+    - Pro sledování více souborů jsou vyžadovány zástupné znaky.
+    - Zástupné znaky se dají použít jenom v posledním segmentu cesty, jako je například *C:\folder\file* nebo */etc/*. conf *.
+    - Pokud proměnná prostředí obsahuje cestu, která není platná, ověření proběhne úspěšně, ale při spuštění inventáře selže cesta.
+    - Při nastavování cesty Vyhněte obecným cestám, jako je například *c:*. * *, což bude mít za následek příliš mnoho procházených složek.
+
+8. Ujistěte se, že pro **nahrání obsahu souboru** zadáte hodnotu true. Toto nastavení povoluje sledování obsahu souborů pro určenou cestu k souboru.
 
 ### <a name="configure-file-tracking-on-linux"></a>Konfigurace sledování souborů v systému Linux
 
@@ -67,7 +74,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
 
 1. Vyberte **Upravit nastavení** (symbol ozubeného kolečka).
 
-2. Na stránce Konfigurace pracovního prostoru vyberte možnost **soubory pro Linux**a potom vyberte **+ Přidat** a přidejte nový soubor, který chcete sledovat.
+2. Na stránce Konfigurace pracovního prostoru vyberte možnost **soubory pro Linux** a potom vyberte **+ Přidat** a přidejte nový soubor, který chcete sledovat.
 
 3. Na stránce **Přidat soubor pro Linux pro Change Tracking** zadejte informace o souboru nebo adresáři, který se má sledovat, a pak vyberte **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
 
@@ -83,7 +90,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
     |Odkazy     | Nastavení, které určuje, jak se má při procházení adresářů jednat o symbolické odkazy. Možné hodnoty:<br> Ignore-ignoruje symbolické odkazy a neobsahuje odkazované soubory/adresáře.<br>Sledovat – sleduje symbolické odkazy během rekurze a také obsahuje odkazované soubory/adresáře.<br>Spravovat – sleduje symbolické odkazy a umožňuje změnu vráceného obsahu.<br>**Poznámka:** Možnost spravovat se nedoporučuje, protože nepodporuje načtení obsahu souboru.    |
     |Nahrát obsah souboru | True pro nahrání obsahu souboru při sledovaných změnách a v opačném případě false. |
 
-4. Ujistěte se, že pro **nahrání obsahu souboru**zadáte **hodnotu true** . Toto nastavení povoluje sledování obsahu souborů pro určenou cestu k souboru.
+4. Ujistěte se, že pro **nahrání obsahu souboru** zadáte **hodnotu true** . Toto nastavení povoluje sledování obsahu souborů pro určenou cestu k souboru.
 
    ![Přidat soubor pro Linux](./media/manage-change-tracking/add-linux-file.png)
 
@@ -138,7 +145,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 
 3. Vyberte **+ Přidat** a přidejte nový klíč registru, který chcete sledovat.
 
-4. Na stránce **Přidat registr systému Windows pro Change Tracking** zadejte informace pro klíč, který chcete sledovat, a pak vyberte **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
+4. Na stránce **Přidat registr systému Windows pro Change Tracking** zadejte informace pro klíč, který chcete sledovat, a pak vyberte **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace. Když zadáte cestu k registru, musí se jednat o klíč a ne o hodnotu.
 
     |Vlastnost  |Popis  |
     |---------|---------|

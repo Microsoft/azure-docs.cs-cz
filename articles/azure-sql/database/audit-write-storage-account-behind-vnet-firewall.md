@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dde6cf40e7609e902540e08fcaff65d9fe32c85c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677255"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289644"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -48,9 +48,9 @@ Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo brán
 
 Připojte se k [Azure Portal](https://portal.azure.com) k vašemu předplatnému. Přejděte do skupiny prostředků a na server.
 
-1. V záhlaví zabezpečení klikněte na **auditování** . Vyberte **zapnuto** .
+1. V záhlaví zabezpečení klikněte na **auditování** . Vyberte **zapnuto**.
 
-2. Vyberte **úložiště** . Vyberte účet úložiště, do kterého se budou ukládat protokoly. Účet úložiště musí splňovat požadavky uvedené v části [požadavky](#prerequisites).
+2. Vyberte **úložiště**. Vyberte účet úložiště, do kterého se budou ukládat protokoly. Účet úložiště musí splňovat požadavky uvedené v části [požadavky](#prerequisites).
 
 3. Otevřít **Podrobnosti o úložišti**
 
@@ -61,7 +61,7 @@ Připojte se k [Azure Portal](https://portal.azure.com) k vašemu předplatnému
   >
   >Pokud se tato zpráva nezobrazuje, účet úložiště není za virtuální sítí.
 
-4. Vyberte počet dní pro dobu uchování. Pak klikněte na **OK** . Protokoly starší než doba uchování se odstraní.
+4. Vyberte počet dní pro dobu uchování. Pak klikněte na **OK**. Protokoly starší než doba uchování se odstraní.
 
 5. V nastavení auditování vyberte **Uložit** .
 
@@ -77,7 +77,7 @@ Ukázkové skripty v této části vyžadují, abyste skript aktualizovali před
 |:-----|:-----|
 |`<subscriptionId>`| ID předplatného Azure|
 |`<resource group>`| Skupina prostředků|
-|`<logical SQL server>`| Název serveru|
+|`<logical SQL Server>`| Název serveru|
 |`<administrator login>`| Účet správce |
 |`<complex password>`| Složitá hesla pro účet správce|
 
@@ -117,7 +117,7 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
    }
    ```
 
-2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role** . Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD) jako v předchozím kroku.
+2. Otevřete [Azure Portal](https://portal.azure.com). Přejděte na svůj účet úložiště. Vyhledejte **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem databáze, kterou jste zaregistrovali ve službě Azure Active Directory (Azure AD) jako v předchozím kroku.
 
    > [!NOTE]
    > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích Azure najdete [v tématu předdefinované role Azure](../../role-based-access-control/built-in-roles.md).
@@ -153,7 +153,7 @@ Můžete nakonfigurovat auditování pro zápis událostí databáze na účet �
 > [!IMPORTANT]
 > Aby bylo možné používat účet úložiště za virtuální sítí a bránou firewall, je třeba nastavit parametr **isStorageBehindVnet** na hodnotu true.
 
-- [Nasazení serveru SQL Azure s povoleným auditováním pro zápis protokolů auditu do úložiště objektů BLOB](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [Nasazení Azure SQL Server s povoleným auditováním pro zápis protokolů auditu do úložiště objektů BLOB](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
 > Propojená ukázka je na externím veřejném úložišti a je poskytována "tak, jak je", bez záruky a není podporována v rámci žádného programu nebo služby podpory společnosti Microsoft.

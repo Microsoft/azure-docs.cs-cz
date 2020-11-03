@@ -7,18 +7,18 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370538"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289218"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Použití Azure Defenderu pro Registry kontejnerů k prohledávání imagí pro ohrožení zabezpečení
 
 Tato stránka vysvětluje použití integrovaného skeneru ohrožení zabezpečení ke skenování imagí kontejneru uložených v Azure Container Registry na základě Azure Resource Manager.
 
-Pokud je povolený **Azure Defender pro Registry kontejnerů** , bude se okamžitě kontrolovat všechny image, které do registru zadáte. Kromě toho se kontroluje i všechny image vyhledané během posledních 30 dnů. 
+Pokud je povolený nástroj **Azure Defender pro registry kontejnerů** , všechny image, které odešlete do registru, se okamžitě zkontrolují. Kromě toho se kontroluje i všechny image vyhledané během posledních 30 dnů. 
 
 Když skener ohlásí chyby zabezpečení pro Security Center, Security Center jako doporučení prezentuje závěry a související informace. Kromě toho jsou zde uvedené informace související s informacemi, jako jsou například nápravné kroky, relevantní CVEs, CVSS skóre a další. Zjištěná ohrožení zabezpečení můžete zobrazit pro jedno nebo více předplatných nebo pro konkrétní registr.
 
@@ -31,7 +31,7 @@ Když skener ohlásí chyby zabezpečení pro Security Center, Security Center j
 |Podporované registry a Image:|Image Linux v registrech ACR přístupné z veřejného Internetu s přístupem k prostředí|
 |Nepodporované registry a Image:|Bitové kopie systému Windows<br>' Soukromé ' Registry<br>Registry s přístupem omezené pomocí brány firewall, koncového bodu služby nebo privátních koncových bodů, jako je například privátní odkaz Azure<br>Minimalist image, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) nebo Image "Distroless", které obsahují jenom aplikaci a její závislosti modulu runtime bez správce balíčků, prostředí nebo operačního systému|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a [Azure Container Registry Reader](../container-registry/container-registry-roles.md)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Ano ](./media/icons/yes-icon.png) komerční cloudy<br>![Ano ](./media/icons/yes-icon.png) US gov – v současné době se podporuje jenom funkce prověřování u nabízených oznámení. Další informace o tom, [kdy se naskenované obrázky prohledávají?](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Žádná ](./media/icons/no-icon.png) čínská gov, jiné gov|
 |||
 
 
@@ -139,7 +139,7 @@ Můžete použít kterékoli z následujících kritérií:
 
 Vytvoření pravidla:
 
-1. Na stránce s podrobnostmi o doporučeních **by se měla opravit ohrožení zabezpečení v Azure Container Registry imagí**, vyberte **zakázat pravidlo**.
+1. Na stránce s podrobnostmi o doporučeních **by se měla opravit ohrožení zabezpečení v Azure Container Registry imagí** , vyberte **zakázat pravidlo**.
 1. Vyberte příslušný obor.
 1. Definujte kritéria.
 1. Vyberte **použít pravidlo**.
@@ -149,7 +149,7 @@ Vytvoření pravidla:
 1. Postup zobrazení, přepsání nebo odstranění pravidla: 
     1. Vyberte **zakázat pravidlo**.
     1. V seznamu oborů se předplatná s aktivními pravidly zobrazí jako **použitá pravidla**.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Vytvoření pravidla zákazu pro zjištění v registru pro VA":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Upravit nebo odstranit existující pravidlo":::
     1. Chcete-li zobrazit nebo odstranit pravidlo, vyberte nabídku se třemi tečkami ("...").
 
 

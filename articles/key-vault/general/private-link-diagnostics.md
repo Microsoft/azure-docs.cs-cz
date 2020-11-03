@@ -1,5 +1,5 @@
 ---
-title: Diagnostika problémů s konfigurací privátních propojení na Azure Key Vault
+title: Diagnostika potíží s konfigurací služeb Private Link ve službě Azure Key Vault
 description: Řešení běžných problémů s privátními odkazy pomocí Key Vault a hluboko podrobně do konfigurace
 author: msfcolombo
 ms.author: fcolombo
@@ -7,14 +7,14 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998407"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289369"
 ---
-# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika problémů s konfigurací privátních propojení na Azure Key Vault
+# <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Diagnostika potíží s konfigurací služeb Private Link ve službě Azure Key Vault
 
 ## <a name="introduction"></a>Úvod
 
@@ -56,7 +56,7 @@ Pokud je aplikace, skript nebo portál spuštěná v libovolné síti připojen�
 
 Tato příručka se nevztahuje na řešení spravovaná Microsoftem, kde je k trezoru klíčů přistupující produkt Azure, který existuje nezávisle na Virtual Network zákazníka. Příklady takových scénářů jsou Azure Storage nebo Azure SQL nakonfigurovaný pro šifrování v klidovém centru událostí Azure, které šifruje data pomocí klíčů poskytnutých zákazníky, Azure Data Factory přístup k přihlašovacím údajům služby uloženým v trezoru klíčů, Azure Pipelines načítání tajných kódů z trezoru klíčů a dalších podobných scénářích. V těchto případech je *nutné ověřit, zda produkt podporuje trezory klíčů s povolenou bránou firewall*. Tato podpora se obvykle provádí s funkcí [důvěryhodné služby](overview-vnet-service-endpoints.md#trusted-services) Key Vault brány firewall. Řada produktů však není v seznamu důvěryhodných služeb obsažena z nejrůznějších důvodů. V takovém případě se dostanou k podpoře pro konkrétní produkt.
 
-Malý počet produktů Azure podporuje koncept *vkládání virtuální*sítě. V jednoduchých případech produkt přidá síťové zařízení do Virtual Network zákazníka, což umožňuje odesílat žádosti, jako kdyby byla nasazená do Virtual Network. [Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)je významným příkladem. Tyto produkty můžou pomocí privátních odkazů dělat požadavky na Trezor klíčů a tato příručka pro odstraňování potíží vám může pomoci.
+Malý počet produktů Azure podporuje koncept *vkládání virtuální* sítě. V jednoduchých případech produkt přidá síťové zařízení do Virtual Network zákazníka, což umožňuje odesílat žádosti, jako kdyby byla nasazená do Virtual Network. [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)je významným příkladem. Tyto produkty můžou pomocí privátních odkazů dělat požadavky na Trezor klíčů a tato příručka pro odstraňování potíží vám může pomoci.
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2. Potvrďte, že připojení bylo schváleno a bylo úspěšné.
 
@@ -65,7 +65,7 @@ Následující kroky ověřují, zda je připojení privátního koncového bodu
 1. Otevřete Azure Portal a otevřete prostředek trezoru klíčů.
 2. V nabídce vlevo vyberte **síť**.
 3. Klikněte na kartu **připojení privátního koncového bodu** . Zobrazí se všechna připojení privátního koncového bodu a jejich příslušné stavy. Pokud neexistují žádná připojení nebo pokud chybí připojení k vašemu Virtual Network, je nutné vytvořit nový privátní koncový bod. Tato akce bude zahrnuta později.
-4. Pořád jste v **připojeních privátních koncových bodů**našli tu, kterou diagnostikuje, a ověříte, že stav připojení je **schválený** a že je stav zřizování **úspěšný**.
+4. Pořád jste v **připojeních privátních koncových bodů** našli tu, kterou diagnostikuje, a ověříte, že stav připojení je **schválený** a že je stav zřizování **úspěšný**.
     - Pokud je připojení ve stavu čeká na vyřízení, může být možné ho jenom schválit.
     - Pokud se nejedná o připojení "zamítnuto", "neúspěšné", "Chyba", "Odpojeno" nebo jiný stav, je nutné vytvořit nový prostředek privátního koncového bodu.
 
@@ -278,7 +278,7 @@ Jak vidíte, překlad názvů je pod vaším ovládacím prvkem. Pro tento návr
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>Dotazování `/healthstatus` koncového bodu trezoru klíčů
 
-Váš Trezor klíčů poskytuje `/healthstatus` koncový bod, který se dá použít pro diagnostiku. Hlavičky odpovědi obsahují IP adresu původu, jak je vidět služba trezoru klíčů. Tento koncový bod můžete zavolat pomocí následujícího příkazu (**nezapomeňte použít název hostitele trezoru klíčů**):
+Váš Trezor klíčů poskytuje `/healthstatus` koncový bod, který se dá použít pro diagnostiku. Hlavičky odpovědi obsahují IP adresu původu, jak je vidět služba trezoru klíčů. Tento koncový bod můžete zavolat pomocí následujícího příkazu ( **nezapomeňte použít název hostitele trezoru klíčů** ):
 
 Windows (PowerShell):
 

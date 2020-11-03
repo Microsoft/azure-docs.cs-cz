@@ -11,14 +11,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735465"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285916"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí Azure Machine Learning Inferencing s virtuálními sítěmi
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí pro odvozování služby Azure Machine Learning s využitím virtuálních sítí
 
 V tomto článku se dozvíte, jak zabezpečit Inferencing prostředí pomocí virtuální sítě v Azure Machine Learning.
 
@@ -138,7 +138,7 @@ Po vytvoření privátního clusteru AKS [Připojte cluster k virtuální síti]
 
 Ve výchozím nastavení používají nasazení AKS [veřejný Nástroj pro vyrovnávání zatížení](../aks/load-balancer-standard.md). V této části se dozvíte, jak nakonfigurovat AKS pro používání interního nástroje pro vyrovnávání zatížení. Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení se používá v případě, že jsou jako front-endu povoleny pouze privátní IP adresy. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu ve virtuální síti.
 
-Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_ . 
+Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
 
 #### <a name="network-contributor-role"></a>Role Přispěvatel sítě
 
@@ -217,6 +217,9 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
+> [!IMPORTANT]
+> Pomocí rozhraní příkazového řádku můžete vytvořit cluster AKS s interním nástrojem pro vyrovnávání zatížení. Neexistuje žádný příkaz AZ ml pro upgrade stávajícího clusteru tak, aby používal interní nástroj pro vyrovnávání zatížení.
+
 Další informace najdete v tématu [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
 ---
@@ -260,6 +263,9 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
 
 2. Nasaďte model pomocí [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Omezení odchozího připojení z virtuální sítě
+
+Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k vaší virtuální síti, musíte povolit přístup k Azure Container Registry. Ujistěte se například, že vaše skupiny zabezpečení sítě (NSG) obsahují pravidlo, které umožňuje přístup ke značce služby __AzureContainerRegistry. RegionName__ , kde {RegionName} je název oblasti Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

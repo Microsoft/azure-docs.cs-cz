@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: d9881fe91885a9a97b51da176be98a9ed6d007ba
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900776"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285228"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -271,7 +271,7 @@ Služba Azure: jádro
 > | Microsoft. support/supportTickets/Communications/Read | Uvádí jednu nebo všechny komunikace lístků podpory. |
 > | Microsoft. support/supportTickets/Communications/Write | Přidá novou komunikaci k lístku podpory. |
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočetní prostředky
 
 ### <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
@@ -843,7 +843,6 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Read | Získá Azure Firewall NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Write | CreatesOrUpdates Azure Firewall NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/DELETE | Odstraní Azure Firewall NetworkRuleCollection |
-> | Microsoft. Network/azureWebCategories/Read | Získá Azure webcategories. |
 > | Microsoft. Network/bastionHosts/Read | Načte hostitele bastionu. |
 > | Microsoft. Network/bastionHosts/Write | Vytvoření nebo aktualizace hostitele bastionu |
 > | Microsoft. Network/bastionHosts/DELETE | Odstraní hostitele bastionu. |
@@ -1243,8 +1242,6 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/virtualHubs/bgpConnections/Read | Získá podřízený prostředek připojení k protokolu BGP centra virtuálního rozbočovače. |
 > | Microsoft. Network/virtualHubs/bgpConnections/Write | Vytvoří nebo aktualizuje podřízený prostředek připojení protokolu BGP centra virtuálního rozbočovače. |
 > | Microsoft. Network/virtualHubs/bgpConnections/DELETE | Odstraní podřízený prostředek připojení protokolu BGP centra virtuálního rozbočovače. |
-> | Microsoft. Network/virtualHubs/bgpConnections/advertisedRoutes/Action | Získá inzerované trasy virtualrouter |
-> | Microsoft. Network/virtualHubs/bgpConnections/learnedRoutes/Action | Získá virtualrouter zjištěné trasy. |
 > | Microsoft. Network/virtualHubs/hubRouteTables/Read | Načte podřízený prostředek směrovací tabulky virtuálního rozbočovače. |
 > | Microsoft. Network/virtualHubs/hubRouteTables/Write | Vytvoří nebo aktualizuje podřízený prostředek směrovací tabulky virtuálního rozbočovače. |
 > | Microsoft. Network/virtualHubs/hubRouteTables/DELETE | Odstraní podřízený prostředek směrovací tabulky virtuálního rozbočovače. |
@@ -1332,9 +1329,6 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 > | Microsoft. Network/vpngateways/startpacketcapture/Action | Spustit zachytávání paketů brány VPN pomocí prostředku podle prostředků |
 > | Microsoft. Network/vpngateways/stoppacketcapture/Action | Zastavení zachytávání paketů brány VPN pomocí sasURL |
 > | Microsoft. Network/vpngateways/listvpnconnectionshealth/Action | Získá stav připojení pro všechny nebo jen podmnožinu připojení VpnGateway. |
-> | Microsoft. Network/vpnGateways/natRules/Read | Získá prostředek pravidla překladu adres (NAT). |
-> | Microsoft. Network/vpnGateways/natRules/Write | Vloží prostředek pravidla překladu adres (NAT). |
-> | Microsoft. Network/vpnGateways/natRules/DELETE | Odstraní prostředek pravidla NAT. |
 > | Microsoft. Network/vpnGateways/vpnConnections/Read | Načte objekt VpnConnection. |
 > | Microsoft. Network/vpnGateways/vpnConnections/Write | Vloží VpnConnection. |
 > | Microsoft. Network/vpnGateways/vpnConnections/DELETE | Odstraní objekt VpnConnection. |
@@ -1522,6 +1516,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 > | Microsoft. Storage/umístění/využití/čtení | Vrátí limit a aktuální počet použití pro prostředky v zadaném předplatném. |
 > | Microsoft. Storage/Operations/Read | Cyklické dotazování na stav asynchronní operace. |
 > | Microsoft. Storage/SKU/čtení | Zobrazuje seznam SKU podporovaný Microsoft. Storage. |
+> | Microsoft. Storage/storageAccounts/updateInternalProperties/Action |  |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/Action | Zákazník může přerušit probíhající migraci instance v účtu úložiště. |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/Action | Zákazník může migrovat na typ účtu HNS. |
 > | Microsoft. Storage/storageAccounts/restoreBlobRanges/Action | Obnovte rozsahy objektů blob do stavu určeného časem. |
@@ -1572,6 +1567,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílené/číst | Vypsat sdílené složky |
 > | Microsoft. Storage/storageAccounts/služby/služby/sdílení/zápis | Vytvořit nebo aktualizovat sdílenou složku |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/DELETE |  |
+> | Microsoft. Storage/storageAccounts/inventoryPolicies/Read |  |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/Read |  |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/Write |  |
 > | Microsoft. Storage/storageAccounts/localUsers/DELETE | Odstranit místního uživatele |
@@ -2128,18 +2124,19 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 > | Microsoft. SignalRService/Signaler/privateEndpointConnections/Read | Čtení připojení privátního koncového bodu |
 > | Microsoft. SignalRService/Signaler/privateLinkResources/Read | Zobrazit seznam všech prostředků privátního propojení signálem |
 > | **Akce dataaction** | **Popis** |
-> | Microsoft. SignalRService/Signaler/serverConnection/Action | Spusťte připojení k serveru. |
-> | Microsoft. SignalRService/Signaler/clientConnection/Action | Přidejte nebo odeberte připojení klientů ze skupin nebo zavřete připojení klienta. |
-> | Microsoft. SignalRService/Signaler/uživatel/akce | Přidejte nebo odeberte uživatele ze skupin. |
-> | Microsoft. SignalRService/Signaler/clientConnection/Read | Ověřte existenci připojení. |
-> | Microsoft. SignalRService/Signaler/clientConnection/Write | Odesílá zprávy přímo do připojení klienta. |
-> | Microsoft. SignalRService/Signaler/Group/Read | Ověřte existenci skupiny. |
-> | Microsoft. SignalRService/Signaler/Group/Write | Vysílat zprávy do klientských připojení v určité skupině nebo v některých skupinách. |
-> | Microsoft. SignalRService/Signaler/hub/Write | Vysílat zprávy všem klientským připojením připojeným k tomuto centru. |
-> | Microsoft. SignalRService/Signaler/Service/accessKey/Action | Získejte dočasnou AccessKey pro podepisování ClientTokens. |
-> | Microsoft. SignalRService/Signaler/Service/clientToken/Action | Získejte ClientToken pro spuštění připojení klienta. |
-> | Microsoft. SignalRService/Signaler/uživatel/číst | Ověřte existenci uživatele, a pokud se jednalo o skupinu. |
-> | Microsoft. SignalRService/Signaler/uživatel/zápis | Odešle zprávy uživateli, který může mít více připojení klientů. |
+> | Microsoft. SignalRService/Signaler/auth/accessKey/Action | Vygenerujte dočasnou AccessKey pro podepisování ClientTokens. |
+> | Microsoft. SignalRService/Signaler/auth/clientToken/Action | Vygenerujte ClientToken pro spuštění připojení klienta. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Send/Action | Odesílá zprávy přímo do připojení klienta. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Read | Ověřte existenci připojení klienta. |
+> | Microsoft. SignalRService/Signaler/clientConnection/Write | Ukončete připojení klienta. |
+> | Microsoft. SignalRService/Signaler/Group/Send/Action | Zpráva všesměrového vysílání do skupiny |
+> | Microsoft. SignalRService/Signaler/Group/Read | Kontrolovat existenci skupiny nebo uživatelskou existenci ve skupině. |
+> | Microsoft. SignalRService/Signaler/Group/Write | Připojit nebo opustit skupinu. |
+> | Microsoft. SignalRService/Signaler/centrum/odeslání/akce | Vysílá zprávy do všech připojení klientů v centru. |
+> | Microsoft. SignalRService/Signaler/serverConnection/Write | Spusťte připojení k serveru. |
+> | Microsoft. SignalRService/Signaler/uživatel/odeslat/akce | Odeslat zprávy uživateli, který se může skládat z několika připojení klientů. |
+> | Microsoft. SignalRService/Signaler/uživatel/číst | Ověřte existenci uživatele. |
+> | Microsoft. SignalRService/Signaler/uživatel/zápis |  |
 
 ### <a name="microsoftweb"></a>Microsoft. Web
 
@@ -2628,7 +2625,7 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -3256,6 +3253,11 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/linkedServices/Read | Načte propojenou službu. |
 > | Microsoft. DataFactory/Factory/linkedServices/DELETE | Odstraní propojenou službu. |
 > | Microsoft. DataFactory/Factory/linkedServices/Write | Vytvoří nebo aktualizuje propojenou službu. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/Read | Číst spravované Virtual Network. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/Write | Vytvořit nebo aktualizovat spravované Virtual Network. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/Read | Čtení spravovaného privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/Write | Vytvořit nebo aktualizovat spravovaný privátní koncový bod. |
+> | Microsoft. DataFactory/Factory/managedVirtualNetworks/managedPrivateEndpoints/DELETE | Odstranit spravovaný privátní koncový bod. |
 > | Microsoft. DataFactory/Factory/operationResults/Read | Získá výsledky operace. |
 > | Microsoft. DataFactory/Factory/pipelineruns/Read | Přečte spuštění kanálu. |
 > | Microsoft. DataFactory/Factory/pipelineruns/Cancel/Action | Zruší běh kanálu určený IDENTIFIKÁTORem spuštění. |
@@ -3862,6 +3864,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/instancePools/DELETE | Odstraní fond instancí. |
 > | Microsoft. SQL/instancePools/použití/čtení | Načte informace o využití fondu instancí. |
 > | Microsoft. SQL/umístění/čtení | Získá dostupná umístění pro dané předplatné. |
+> | Microsoft. SQL/Locations/administratorAzureAsyncOperation/Read | Načte výsledek operací správce asynchronního správce Azure Managed instance. |
+> | Microsoft. SQL/Locations/administratorOperationResults/Read | Získá výsledek operací správce spravované instance. |
 > | Microsoft. SQL/Locations/auditingSettingsAzureAsyncOperation/Read | Načíst výsledek operace set zásad auditování objektu BLOB rozšířeného serveru |
 > | Microsoft. SQL/Locations/auditingSettingsOperationResults/Read | Načíst výsledek operace nastavení zásad auditování objektu BLOB serveru |
 > | Microsoft. SQL/umístění/možnosti/číst | Získá možnosti pro toto předplatné v daném umístění. |
@@ -3883,6 +3887,8 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/Locations/extendedAuditingSettingsOperationResults/Read | Načíst výsledek operace set zásad auditování objektu BLOB rozšířeného serveru |
 > | Microsoft. SQL/Locations/firewallRulesAzureAsyncOperation/Read | Získá stav operace pravidla brány firewall. |
 > | Microsoft. SQL/Locations/firewallRulesOperationResults/Read | Získá stav operace pravidla brány firewall. |
+> | Microsoft. SQL/Locations/hybridLinkAzureAsyncOperation/Read | Získá stav asynchronní operace dlouhodobého připojení Hybrid Link na spravované instanci Azure SQL. |
+> | Microsoft. SQL/Locations/hybridLinkOperationResults/Read | Získá stav asynchronní operace dlouhodobého propojení Hybrid. |
 > | Microsoft. SQL/Locations/instanceFailoverGroups/Read | Vrátí seznam skupin instancí převzetí služeb při selhání nebo získá vlastnosti pro zadanou skupinu převzetí služeb při selhání. |
 > | Microsoft. SQL/Locations/instanceFailoverGroups/Write | Vytvoří skupinu převzetí služeb při selhání se zadanými parametry nebo aktualizuje vlastnosti nebo značky zadané instance skupiny převzetí služeb při selhání. |
 > | Microsoft. SQL/Locations/instanceFailoverGroups/DELETE | Odstraní skupinu převzetí služeb při selhání existující instance. |
@@ -3998,6 +4004,9 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/managedInstances/encryptionProtector/revalidate/Action | Aktualizuje vlastnosti pro zadanou ochranu pomocí šifrování serveru. |
 > | Microsoft. SQL/managedInstances/encryptionProtector/Read | Vrátí seznam chráněných šifrovacích serverů nebo získá vlastnosti pro zadané ochrany šifrování serveru. |
 > | Microsoft. SQL/managedInstances/encryptionProtector/Write | Aktualizuje vlastnosti pro zadanou ochranu pomocí šifrování serveru. |
+> | Microsoft. SQL/managedInstances/hybridLink/Read | Vrátí seznam hybridních odkazů nebo získá vlastnosti pro zadanou distribuovanou skupinu dostupnosti. |
+> | Microsoft. SQL/managedInstances/hybridLink/Write | Vytvoří nebo aktualizuje hybridní propojení se zadanými parametry. |
+> | Microsoft. SQL/managedInstances/hybridLink/DELETE | Odstraní hybridní propojení se zadanou distribuovanou skupinou dostupnosti. |
 > | Microsoft. SQL/managedInstances/inaccessibleManagedDatabases/Read | Načte seznam nepřístupných spravovaných databází ve spravované instanci. |
 > | Microsoft. SQL/managedInstances/Keys/číst | Vrátí seznam klíčů spravované instance nebo získá vlastnosti pro zadaný klíč spravované instance. |
 > | Microsoft. SQL/managedInstances/Keys/Write | Vytvoří klíč se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadaný klíč spravované instance. |
@@ -6541,6 +6550,9 @@ Služba Azure: [Key Vault](../key-vault/index.yml)
 > | Trezory Microsoft. a trezory/eventGridFilters/Read | Upozorní Microsoft. webtrezor, že se zobrazuje EventGrid odběr pro Key Vault. |
 > | Trezory Microsoft. a trezory/eventGridFilters/Write | Upozorní Microsoft. webtrezor, že se vytváří nové předplatné EventGrid pro Key Vault. |
 > | Trezory Microsoft. a trezory/eventGridFilters/DELETE | Upozorní Microsoft. webtrezor, že se odstraňuje EventGrid odběr pro Key Vault. |
+> | Trezor Microsoft. a trezory/klíče/čtení | Zobrazí seznam klíčů v zadaném trezoru nebo si přečtěte aktuální verzi zadaného klíče. |
+> | Trezor Microsoft. a trezory/klíče/zápis | Vytvoří nový klíč nebo aktualizuje existující klíč. |
+> | Trezory Microsoft. a trezory/klíče/verze/čtení | Vypíše verze zadaného klíče nebo si přečtěte zadanou verzi klíče. |
 > | Trezor Microsoft. a trezory/tajné klíče/čtení | Umožňuje zobrazit vlastnosti tajného klíče, ale ne jeho hodnotu. |
 > | Trezor Microsoft. a trezory/tajné klíče/zápis | Vytvoří nový tajný klíč nebo aktualizuje hodnotu existujícího tajného kódu. |
 > | **Akce dataaction** | **Popis** |
@@ -8283,6 +8295,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlDataClassification/číst | Čtení dat z tabulky SqlDataClassification |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SQLQueryPerformance/číst | Čtení dat z tabulky SQLQueryPerformance |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlVulnerabilityAssessmentResult/číst | Čtení dat z tabulky SqlVulnerabilityAssessmentResult |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/SqlVulnerabilityAssessmentScanStatus/číst | Čtení dat z tabulky SqlVulnerabilityAssessmentScanStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/StorageBlobLogs/číst | Čtení dat z tabulky StorageBlobLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/StorageFileLogs/číst | Čtení dat z tabulky StorageFileLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/StorageQueueLogs/číst | Čtení dat z tabulky StorageQueueLogs |

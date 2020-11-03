@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792476"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289307"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -138,7 +138,7 @@ Například NetApp Private Storage (NPS) zveřejňuje cíl iSCSI prostřednictv�
 
 Pro řešení sdíleného úložiště a replikace dat od partnerů Microsoftu se obraťte na dodavatele s případnými problémy souvisejícími s přístupem k datům při převzetí služeb při selhání.
 
-## <a name="connectivity"></a>Možnosti připojení
+## <a name="connectivity"></a>Připojení
 
 Instance clusterů s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines použít [název distribuované sítě (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) nebo [název virtuální sítě (VNN) s Azure Load Balancer](failover-cluster-instance-vnn-azure-load-balancer-configure.md) ke směrování provozu do SQL Server instance bez ohledu na to, který uzel aktuálně vlastní clusterované prostředky. Při použití určitých funkcí a DNN s SQL Server FCI existují další okolnosti. Další informace najdete v tématu [interoperabilita DNN s SQL Server FCI](failover-cluster-instance-dnn-interoperability.md) . 
 
@@ -149,7 +149,7 @@ Další podrobnosti o možnostech připojení clusteru najdete v tématu [Směro
 Vezměte v úvahu následující omezení pro instance clusteru s podporou převzetí služeb při selhání s SQL Server v Azure Virtual Machines. 
 
 ### <a name="lightweight-resource-provider"></a>Zjednodušený poskytovatel prostředků   
-V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](sql-vm-resource-provider-register.md#management-modes) [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal zrušte zaškrtnutí políčka u správného virtuálního počítače. 
+V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](sql-server-iaas-agent-extension-automate-management.md#management-modes) [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal zrušte zaškrtnutí políčka u správného virtuálního počítače. 
 
 Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Tyto funkce nebudou fungovat pro SQL Server virtuální počítače po přeinstalaci agenta v režimu zjednodušené správy.
 

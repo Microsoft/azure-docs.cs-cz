@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 3b87d68fb9b5fa5f5f8dec43c39ea8b7dbf08b93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651852"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289505"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Nejčastější dotazy k importu Azure Key Vault certifikátů
 
@@ -25,7 +25,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se impor
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>Jak mohu importovat certifikát v Azure Key Vault?
 
-V případě operace importu certifikátu Azure Key Vault akceptuje dva formáty souboru certifikátu: PEM a PFX. I když jsou PEM soubory s pouze veřejnou částí, Key Vault vyžaduje a přijímá pouze PEM nebo soubor PFX s privátním klíčem. Další informace najdete v tématu [Import certifikátu do Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-import-certificate#import-a-certificate-to-key-vault).
+V případě operace importu certifikátu Azure Key Vault akceptuje dva formáty souboru certifikátu: PEM a PFX. I když jsou PEM soubory s pouze veřejnou částí, Key Vault vyžaduje a přijímá pouze PEM nebo soubor PFX s privátním klíčem. Další informace najdete v tématu [Import certifikátu do Key Vault](./tutorial-import-certificate.md#import-a-certificate-to-key-vault).
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>Když naimportujem certifikát chráněný heslem, aby se Key Vault a pak si ho stáhl, proč se mi nezobrazuje heslo, které je k němu přidružené?
     
@@ -35,7 +35,7 @@ Po importu a ochraně certifikátu v Key Vault se jeho přidružené heslo neulo
 
 Při importu certifikátu je nutné zajistit, aby byl klíč součástí souboru. Pokud máte privátní klíč uložený samostatně v jiném formátu, budete muset klíč kombinovat s certifikátem. Některé certifikační autority (CA) poskytují certifikáty v jiných formátech. Proto je před importem certifikátu nutné se ujistit, že je ve formátu souboru PEM nebo PFX a že klíč používá šifrování standardu Rivest – Shamir – Adleman (RSA) nebo rozhraní s rozhraním ECC (eliptický-Curve Cryptography). 
 
-Další informace najdete v tématu [požadavky na certifikáty](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) a [požadavky na klíč certifikátu](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection).
+Další informace najdete v tématu [požadavky na certifikáty](./certificate-scenarios.md#formats-of-import-we-support) a [požadavky na klíč certifikátu](../keys/about-keys.md).
 
 ###  <a name="can-i-import-a-certificate-by-using-an-arm-template"></a>Můžu importovat certifikát pomocí šablony ARM?
 
@@ -43,20 +43,20 @@ Ne, nemůžete provádět operace s certifikáty pomocí šablony Azure Resource
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Když naimportujem certifikát přes Azure Portal, zobrazí se chyba "něco se pokazilo". Jak se dá prozkoumat?
     
-Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) nebo [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+Pokud chcete zobrazit výstižnější chybu, importujte soubor certifikátu pomocí [Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) nebo [PowerShellu](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>Jak můžu vyřešit typ chyby: přístup byl odepřen nebo uživatel nemá oprávnění k importu certifikátu?
     
-Operace importu vyžaduje, abyste uživateli udělili oprávnění k importu certifikátu v rámci zásad přístupu. Provedete to tak, že přejdete do svého trezoru klíčů, vyberete **zásady přístupu**  >  **Přidat zásady přístupu**  >  **Vybrat**  >  **hlavní objekt**oprávnění pro certifikáty, vyhledáte uživatele a pak přidáte e-mailovou adresu uživatele. 
+Operace importu vyžaduje, abyste uživateli udělili oprávnění k importu certifikátu v rámci zásad přístupu. Provedete to tak, že přejdete do svého trezoru klíčů, vyberete **zásady přístupu**  >  **Přidat zásady přístupu**  >  **Vybrat**  >  **hlavní objekt** oprávnění pro certifikáty, vyhledáte uživatele a pak přidáte e-mailovou adresu uživatele. 
 
-Další informace o zásadách přístupu souvisejících s certifikátem najdete v tématu [informace o Azure Key Vaultch certifikátech](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control).
+Další informace o zásadách přístupu souvisejících s certifikátem najdete v tématu [informace o Azure Key Vaultch certifikátech](./about-certificates.md#certificate-access-control).
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>Jak můžu vyřešit typ chyby: konflikt při vytváření certifikátu?
     
-Každý název certifikátu musí být jedinečný. Certifikát se stejným názvem může být ve stavu odstraněno. Také, v závislosti na [složení certifikátu](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)se při vytvoření nového certifikátu vytvoří adresovatelný tajný klíč se stejným názvem, takže pokud je v trezoru klíčů jiný klíč nebo tajný klíč se stejným názvem, jako je ten, který se pokoušíte zadat pro váš certifikát, vytvoření certifikátu se nezdaří a bude nutné odebrat tento klíč nebo tajný klíč nebo použít jiný název certifikátu. 
+Každý název certifikátu musí být jedinečný. Certifikát se stejným názvem může být ve stavu odstraněno. Také, v závislosti na [složení certifikátu](./about-certificates.md#composition-of-a-certificate)se při vytvoření nového certifikátu vytvoří adresovatelný tajný klíč se stejným názvem, takže pokud je v trezoru klíčů jiný klíč nebo tajný klíč se stejným názvem, jako je ten, který se pokoušíte zadat pro váš certifikát, vytvoření certifikátu se nezdaří a bude nutné odebrat tento klíč nebo tajný klíč nebo použít jiný název certifikátu. 
 
-Další informace najdete v tématu [získání operace odstranění certifikátu](https://docs.microsoft.com/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
+Další informace najdete v tématu [získání operace odstranění certifikátu](/rest/api/keyvault/getdeletedcertificate/getdeletedcertificate).
 
 ### <a name="why-am-i-getting-error-type-char-length-is-too-long"></a>Proč se mi zobrazuje text "typ chyby: délka znaků je moc dlouhá?"
 Tato chyba může být způsobena jednou ze dvou důvodů:    
@@ -83,4 +83,4 @@ Pokud jste certifikát importovali úspěšně, měli byste ho potvrdit tak, že
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Key Vault certifikátů](/azure/key-vault/certificates/about-certificates)
+- [Azure Key Vault certifikátů](./about-certificates.md)

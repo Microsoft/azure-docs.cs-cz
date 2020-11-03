@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426584"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286540"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrace služby Key Vault se službou Azure Private Link
 
@@ -23,7 +23,7 @@ Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukr
 
 Další informace najdete v tématu [co je privátní propojení Azure?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K integraci trezoru klíčů s privátním propojením Azure budete potřebovat následující:
 
@@ -67,7 +67,7 @@ Teď budete moct zobrazit nakonfigurovaný soukromý koncový bod. Teď máte mo
 
 Pokud už máte Trezor klíčů, můžete vytvořit připojení k privátnímu propojení pomocí následujících kroků:
 
-1. Přihlaste se k portálu Azure. 
+1. Přihlaste se k webu Azure Portal. 
 1. Na panelu hledání zadejte "trezory klíčů".
 1. V seznamu vyberte Trezor klíčů, do kterého chcete přidat privátní koncový bod.
 1. V části nastavení vyberte kartu "sítě".
@@ -243,14 +243,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Ověřte, že máte prostředek zóny Privátní DNS. 
     1. Musíte mít prostředek zóny Privátní DNS s přesným názvem: privatelink.vaultcore.azure.net. 
-    2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Další informace o tom, jak tento postup nastavit, najdete na následujícím odkazu. [Privátní DNS zóny](../../dns/private-dns-privatednszone.md)
     
 * Zkontrolujte, jestli zóna privátního DNS není propojená s virtuální sítí. To může být problém, pokud se vám stále vrátí veřejná IP adresa. 
     1. Pokud DNS privátní zóny není propojena s virtuální sítí, dotaz DNS pocházející z virtuální sítě vrátí veřejnou IP adresu trezoru klíčů. 
     2. Přejděte do prostředku zóny Privátní DNS v Azure Portal a klikněte na možnost odkazy virtuální sítě. 
     4. Musí být uvedena virtuální síť, která provede volání do trezoru klíčů. 
     5. Pokud tam není, přidejte ho. 
-    6. Podrobný postup najdete v následujícím dokumentu [Virtual Network odkaz na privátní DNS Zone](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+    6. Podrobný postup najdete v následujícím dokumentu [Virtual Network odkaz na privátní DNS Zone](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network)
 
 * Ověřte, že v zóně Privátní DNS chybí záznam A pro Trezor klíčů. 
     1. Přejděte na stránku Privátní DNS zóna. 
@@ -270,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, pošlete prosím e-mail na adresu akv-privatelink@microsoft.com . Tyto žádosti schválíme na základě případu.
 
-**Ceny**: informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
+**Ceny** : informace o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Omezení**: privátní koncový bod pro Azure Key Vault je k dispozici jenom ve veřejných oblastech Azure.
+**Omezení** : privátní koncový bod pro Azure Key Vault je k dispozici jenom ve veřejných oblastech Azure.
 
-**Maximální počet privátních koncových bodů na Key Vault**: 64.
+**Maximální počet privátních koncových bodů na Key Vault** : 64.
 
-**Výchozí počet trezorů klíčů s privátními koncovými body na předplatné**: 400.
+**Výchozí počet trezorů klíčů s privátními koncovými body na předplatné** : 400.
 
 Další informace najdete v tématu [Služba privátního propojení Azure: omezení](../../private-link/private-link-service-overview.md#limitations)
 

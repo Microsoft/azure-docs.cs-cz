@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761256"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286065"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrace několika virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek popisuje, jak pomocí rutiny PowerShellu hromadně zaregistrovat vaše SQL Server virtuální počítače v Azure pomocí poskytovatele prostředků virtuálního počítače SQL `Register-SqlVMs` .
+Tento článek popisuje, jak pomocí rutiny PowerShellu hromadně zaregistrovat vaše SQL Server virtuální počítače v Azure pomocí poskytovatele prostředků virtuálního počítače SQL `Register-SqlVMs` . Když se zaregistrujete do poskytovatele prostředků virtuálního počítače SQL, nainstaluje se [rozšíření agenta SQL IaaS](sql-server-iaas-agent-extension-automate-management.md).
 
 V tomto článku se naučíte hromadně registrovat SQL Server virtuálních počítačů. Případně můžete zaregistrovat [všechny SQL Server virtuální počítače automaticky](sql-vm-resource-provider-automatic-registration.md) nebo [jednotlivé virtuální počítače SQL Server](sql-vm-resource-provider-register.md). 
 
@@ -33,14 +33,14 @@ V tomto článku se naučíte hromadně registrovat SQL Server virtuálních po�
 
 Proces registrace nevede k žádnému riziku bez výpadků a nerestartuje SQL Server ani virtuální počítač. 
 
-Další informace o poskytovateli prostředků najdete v tématu [poskytovatel prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
+Další informace najdete v tématu [poskytovatel prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
 
 - [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](sql-vm-resource-provider-register.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Server. 
-- Přihlašovací údaje klienta použité k registraci virtuálních počítačů existují v kterékoli z následujících rolí Azure: přispěvatel, **Přispěvatel**nebo **vlastník** **virtuálního počítače**. 
+- Přihlašovací údaje klienta použité k registraci virtuálních počítačů existují v kterékoli z následujících rolí Azure: přispěvatel, **Přispěvatel** nebo **vlastník** **virtuálního počítače**. 
 - Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
 - Nejnovější verzi [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
@@ -227,7 +227,7 @@ Chyby se zaznamenávají do souboru protokolu s názvem `VMsNotRegisteredDueToEr
 
 Když zaregistrujete SQL Server virtuálních počítačů pomocí poskytovatele prostředků pomocí poskytnutého skriptu, vezměte v úvahu následující skutečnosti:
 
-- Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](sql-vm-resource-provider-register.md#management-modes).
+- Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](sql-server-iaas-agent-extension-automate-management.md#management-modes).
 - K překonání transparentních chyb je integrovaná logika opakování. Pokud je virtuální počítač úspěšně zaregistrován, jedná se o rychlou operaci. Pokud se ale registrace nezdaří, bude se každý virtuální počítač opakovat.  V takovém případě byste měli pro dokončení procesu registrace poskytnout značnou dobu – i když je požadavek na skutečný čas závislý na typu a počtu chyb. 
 
 ## <a name="full-script"></a>Celý skript

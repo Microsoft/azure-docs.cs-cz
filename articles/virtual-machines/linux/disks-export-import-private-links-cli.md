@@ -8,16 +8,16 @@ ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 66c331a79a4da7b8fb397e7d0209b24e00645783
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20b2f74b33ae57016188ee66af29570f7ec1b529
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741714"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289274"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI – omezení přístupu pro import/export u spravovaných disků s privátními odkazy
 
-Podpora privátních odkazů se službou Managed disks je aktuálně ve verzi Preview. Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
+Pomocí [privátních koncových bodů](../../private-link/private-endpoint-overview.md) můžete omezit export a import spravovaných disků a bezpečně přistupovat k datům přes [soukromé propojení](../../private-link/private-link-overview.md) z klientů ve službě Azure Virtual Network. Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro službu Managed disks. Síťový provoz mezi klienty ve své virtuální síti a spravovanými disky se přesměruje jenom přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
 Pokud chcete používat privátní odkazy pro export a import spravovaných disků, nejdřív vytvořte prostředek pro přístup k disku a propojte ho s virtuální sítí ve stejném předplatném vytvořením privátního koncového bodu. Pak přidružte disk nebo snímek k instanci přístupu k disku. Nakonec nastavte vlastnost NetworkAccessPolicy disku nebo snímku na `AllowPrivate` . Tím se omezí přístup k vaší virtuální síti. 
 

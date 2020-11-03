@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441364"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285850"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -28,7 +28,7 @@ V závislosti na potřebách zvát organizace může být uživatel spolupráce 
 - Stav 1: domů v externí instanci Azure AD a reprezentovaný jako uživatel typu Host v hostitelské organizaci. V tomto případě se uživatel B2B přihlásí pomocí účtu Azure AD, který patří k pozvanému tenantovi. Pokud partnerská organizace nepoužívá službu Azure AD, je uživatel typu Host ve službě Azure AD stále vytvořen. Požadavky jsou v tom, že uplatní svou pozvánku a Azure AD ověří svou e-mailovou adresu. Toto uspořádání se také nazývá nájem JIT (just-in-time) nebo "virová".
 
    > [!IMPORTANT]
-   > **Od 31. března 2021**přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
+   > **Od 31. března 2021** přestane společnost Microsoft podporovat uplatnění pozvánky tím, že pro scénáře spolupráce B2B vytvoří nespravované účty a klienty Azure AD. V přípravě doporučujeme zákazníkům, aby se přihlásili k [e-mailu ověřování jednorázovým heslem](one-time-passcode.md). Uvítáme vaše názory na tuto funkci Public Preview a zajímáme si vytváření ještě více způsobů, jak spolupracovat.
 
 - Stav 2: domů v Microsoft nebo jiném účtu, který je reprezentován jako uživatel typu Host v organizaci hostitele. V takovém případě se uživatel typu Host přihlásí pomocí účet Microsoft nebo účtu v sociální síti (google.com nebo podobný). Identita pozvaného uživatele je vytvořena jako účet Microsoft v adresáři rezvaníing vaší organizace během uplatnění nabídky.
 
@@ -59,7 +59,7 @@ Pro uživatele typu Host ve stavu 2 je **zdrojem** **účet Microsoft**.
 
 ![Stav 2 uživatel typu Host po uplatnění nabídky](media/user-properties/after-redemption-state2.png)
 
-Pro uživatele typu Host ve stavu 3 a 4 je vlastnost **source** nastavena na **Azure Active Directory** nebo **Windows Server Active Directory**, jak je popsáno v následující části.
+Pro uživatele typu Host ve stavu 3 a 4 je vlastnost **source** nastavena na **Azure Active Directory** nebo **Windows Server Active Directory** , jak je popsáno v následující části.
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Klíčové vlastnosti uživatele spolupráce Azure AD B2B
 ### <a name="usertype"></a>UserType
@@ -70,6 +70,8 @@ Tato vlastnost označuje vztah uživatele k hostitelské architektuře. Tato vla
 
   > [!NOTE]
   > UserType nemá žádný vztah k tomu, jak se uživatel přihlásí, role adresáře uživatele atd. Tato vlastnost jednoduše označuje vztah uživatele k hostitelské organizaci a umožňuje organizaci vyhovět zásadám, které jsou závislé na této vlastnosti.
+
+Podrobnosti o cenách najdete v referenčních [Azure Active Directory cenách](https://azure.microsoft.com/pricing/details/active-directory).
 
 ### <a name="source"></a>Zdroj
 Tato vlastnost určuje, jak se uživatel přihlásí.

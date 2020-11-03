@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 11/02/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89647473"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289691"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
@@ -29,15 +29,17 @@ Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.mic
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-Využijte [analýzu mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co lidé považují za vaši značku nebo téma, a to tak, že budou v textu popsány kladné nebo záporné mínění. Tato funkce rozhraní API vrací mínění skóre mezi 0 a 1 pro každý dokument, kde 1 je to nejvíc kladné.
+Využijte [analýzu mínění](how-tos/text-analytics-how-to-sentiment-analysis.md) a zjistěte, co lidé považují za vaši značku nebo téma, a to tak, že budou v textu popsány kladné nebo záporné mínění. 
+
+Tato funkce poskytuje popisky mínění (například "negativní", "neutrální" a "pozitivní") na základě nejvyššího skóre spolehlivosti zjištěného službou ve větě a na úrovni dokumentu. Tato funkce také vrátí skóre spolehlivosti mezi 0 a 1 pro každý dokument & větě v rámci něj pro pozitivní, neutrální a negativní mínění. Službu můžete také spustit místně [pomocí kontejneru](how-tos/text-analytics-how-to-install-containers.md).
 
 Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza mínění. Tato funkce také označovaná jako Analýza mínění založená na aspektech při zpracování přirozeného jazyka (NLP). Tato funkce poskytuje podrobnější informace o stanoviscích souvisejících s aspekty (jako jsou atributy produktů nebo služeb) v textu.
 
-## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
+## <a name="key-phrase-extraction"></a>extrakce klíčových frází,
 
 Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
-## <a name="language-detection"></a>Rozpoznávání jazyka
+## <a name="language-detection"></a>rozpoznávání jazyka,
 
 Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 

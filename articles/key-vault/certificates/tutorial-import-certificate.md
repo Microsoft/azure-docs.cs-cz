@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: b58f402766e369894fcf014836ab9f24c231c489
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927494"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289725"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Kurz: Import certifikátu v Azure Key Vault
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Než začnete, přečtěte si téma [Key Vault Basic koncepty](../general/basic-concepts.md). 
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -41,21 +41,21 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
-1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek** .
-2. Do vyhledávacího pole zadejte **Key Vault** .
-3. V seznamu výsledků zvolte **Key Vault** .
-4. V části Key Vault zvolte **Vytvořit** .
+1. V nabídce Azure Portal nebo na **domovské** stránce vyberte **vytvořit prostředek**.
+2. Do vyhledávacího pole zadejte **Key Vault**.
+3. V seznamu výsledků zvolte **Key Vault**.
+4. V části Key Vault zvolte **Vytvořit**.
 5. V části **Vytvořit trezor klíčů** zadejte následující informace:
-    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor** . 
+    - **Název:** Je potřeba zadat jedinečný název. V tomto rychlém startu používáme **příklad – trezor**. 
     - **Předplatné:** Zvolte předplatné.
     - V části **Skupina prostředků** vyberte **vytvořit novou** a zadejte název skupiny prostředků.
     - V rozevírací nabídce **Umístění** zvolte umístění.
     - U ostatních možností ponechte jejich výchozí hodnoty.
-6. Po zadání výše uvedených informací vyberte **Vytvořit** .
+6. Po zadání výše uvedených informací vyberte **Vytvořit**.
 
 Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru** : v tomto příkladu je to **příklad – trezor** . Tento název budete používat pro další kroky.
+* **Název trezoru** : v tomto příkladu je to **příklad – trezor**. Tento název budete používat pro další kroky.
 * **Identifikátor URI trezoru:** V tomto příkladu je to https://example-vault.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět operace s tímto novým trezorem.
@@ -64,21 +64,21 @@ V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět
 
 ## <a name="import-a-certificate-to-key-vault"></a>Import certifikátu do Key Vault
 
-Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate** .
+Pokud chcete importovat certifikát do trezoru, musíte mít soubor certifikátu PEM nebo PFX, který bude na disku. V tomto případě naimportujeme certifikát s názvem souboru s názvem **ExampleCertificate**.
 
 > [!IMPORTANT]
 > Ve službě Azure Key Vault se podporují certifikáty ve formátu PFX a PEM. 
 > - Formát souboru. pem obsahuje jeden nebo více souborů certifikátu x509.
 > - Formát souboru. PFX je formát archivního souboru pro ukládání několika kryptografických objektů do jednoho souboru, tj. certifikát serveru (vydaný pro vaši doménu), odpovídajícího privátního klíče a volitelně může zahrnovat zprostředkující certifikační autoritu.  
 
-1. Na stránkách Key Vault vlastnosti vyberte **certifikáty** .
-2. Klikněte na **Vygenerovat/importovat** .
+1. Na stránkách Key Vault vlastnosti vyberte **certifikáty**.
+2. Klikněte na **Vygenerovat/importovat**.
 3. Na obrazovce **vytvořit certifikát** vyberte následující hodnoty:
     - **Metoda vytvoření certifikátu** : import.
     - **Název certifikátu** : ExampleCertificate.
     - **Nahrát soubor certifikátu** : vyberte soubor certifikátu z disku.
     - **Heslo** : Pokud nahráváte soubor certifikátu chráněný heslem, zadejte toto heslo sem. V opačném případě ponechte prázdné. Po úspěšném importu souboru certifikátu odstraní Trezor klíčů toto heslo.
-4. Klikněte na **Vytvořit** .
+4. Klikněte na **Vytvořit**.
 
 ![Vlastnosti certifikátu](../media/certificates/tutorial-import-cert/cert-import.png)
 
@@ -104,9 +104,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-Přečtěte si další informace o [parametrech](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
+Přečtěte si další informace o [parametrech](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import).
 
-Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) .
+Po importu certifikátu si můžete certifikát zobrazit pomocí [zobrazení certifikátu](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) .
 
 
 ```azurecli
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-Přečtěte si další informace o [parametrech](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
+Přečtěte si další informace o [parametrech](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -144,14 +144,14 @@ Další rychlé starty a kurzy týkající se služby Key Vault vycházejí z to
 Až nebudete prostředky potřebovat, odstraňte jejich skupinu. Tím odstraníte Key Vault i související prostředky. Odstranění skupiny prostředků přes portál:
 
 1. Do pole Hledat v horní části portálu zadejte název vaší skupiny prostředků. Jakmile se ve výsledcích hledání zobrazí skupina prostředků použitá v tomto rychlém startu, vyberte ji.
-2. Vyberte **Odstranit skupinu prostředků** .
-3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit** .
+2. Vyberte **Odstranit skupinu prostředků**.
+3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili Key Vault a importovali do něj certifikát. Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)
+- Přečtěte si další informace o [správě vytváření certifikátů v Azure Key Vault](./create-certificate-scenarios.md)
 - Podívejte se na příklady [importu certifikátů pomocí rozhraní REST API](/rest/api/keyvault/importcertificate/importcertificate) .
 - Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)
