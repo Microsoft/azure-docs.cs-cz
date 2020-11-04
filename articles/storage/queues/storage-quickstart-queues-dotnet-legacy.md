@@ -9,16 +9,16 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425883"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345614"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty
 
-V tomto rychlém startu se dozvíte, jak pomocí Azure Storage klientské knihovny verze 11 pro .NET vytvořit frontu a přidat do ní zprávy. V dalším kroku se dozvíte, jak číst a zpracovávat zprávy z fronty. 
+V tomto rychlém startu se dozvíte, jak pomocí Azure Storage klientské knihovny verze 11 pro .NET vytvořit frontu a přidat do ní zprávy. V dalším kroku se dozvíte, jak číst a zpracovávat zprávy z fronty.
 
 > [!NOTE]
 > V tomto rychlém startu se používá starší verze klientské knihovny Azure Queue Storage. Pokud chcete začít používat nejnovější verzi, přečtěte si téma [rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET](storage-quickstart-queues-dotnet.md).
@@ -32,7 +32,7 @@ Dále stáhněte a nainstalujte .NET Core 2.0 pro váš operační systém. Poku
 ### <a name="windows"></a>Windows
 
 - Nainstalujte [.NET Core pro Windows](https://www.microsoft.com/net/download/windows) nebo [.NET Framework](https://www.microsoft.com/net/download/windows) (ten je součástí sady Visual Studio pro Windows).
-- Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). Pokud používáte .NET Core, instalace sady Visual Studio je volitelná.  
+- Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). Pokud používáte .NET Core, instalace sady Visual Studio je volitelná.
 
 Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr mezi .NET Core a .NET Framework pro serverové aplikace](/dotnet/standard/choosing-core-framework-server).
 
@@ -50,13 +50,13 @@ Informace o výběru mezi .NET Core a .NET Framework najdete v tématu [Výběr 
 
 Ukázková aplikace použitá v tomto rychlém startu je základní konzolová aplikace. Ukázkovou aplikaci můžete prozkoumat na [GitHubu](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart).
 
-Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojového prostředí. 
+Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojového prostředí.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Tento příkaz naklonuje úložiště do vaší místní složky gitu. Chcete-li otevřít řešení sady Visual Studio, vyhledejte složku *Storage-Queues-dotnet-Starter* , otevřete ji a dvakrát klikněte na *Storage-Queues-dotnet-quickstart. sln*. 
+Tento příkaz naklonuje úložiště do vaší místní složky gitu. Chcete-li otevřít řešení sady Visual Studio, vyhledejte složku *Storage-Queues-dotnet-Starter* , otevřete ji a dvakrát klikněte na *Storage-Queues-dotnet-quickstart. sln*.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -72,7 +72,7 @@ Po zkopírování připojovacího řetězce ho zapište do nové proměnné pros
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
-Po přidání proměnné prostředí možná bude nutné restartovat všechny spuštěné programy, které budou potřebovat číst tuto proměnnou prostředí, a to včetně okna konzoly. Pokud například jako editor používáte sadu Visual Studio, před spuštěním ukázky sadu Visual Studio restartujte. 
+Po přidání proměnné prostředí možná bude nutné restartovat všechny spuštěné programy, které budou potřebovat číst tuto proměnnou prostředí, a to včetně okna konzoly. Pokud například jako editor používáte sadu Visual Studio, před spuštěním ukázky sadu Visual Studio restartujte.
 
 ### <a name="linux"></a>Linux
 
@@ -98,7 +98,7 @@ Ukázková aplikace vytvoří frontu a přidá do ní zprávu. Aplikace nejprve 
 
 ### <a name="windows"></a>Windows
 
-Pokud jako editor používáte sadu Visual Studio, můžete ukázku spustit stisknutím **F5**. 
+Pokud jako editor používáte sadu Visual Studio, můžete ukázku spustit stisknutím **F5**.
 
 Jinak, přejděte do adresáře aplikace a spusťte aplikaci příkazem `dotnet run`.
 
@@ -161,7 +161,7 @@ string storageConnectionString = Environment.GetEnvironmentVariable("storageconn
 if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
 {
     // If the connection string is valid, proceed with calls to Azure Queues here.
-    ...    
+    ...
 }
 else
 {
@@ -174,11 +174,11 @@ else
 
 ### <a name="create-the-queue"></a>Vytvoření fronty
 
-Nejprve ukázka vytvoří frontu a přidá do ní zprávu. 
+Nejprve ukázka vytvoří frontu a přidá do ní zprávu.
 
 ```csharp
-// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name 
-// is unique in your storage account. 
+// Create a queue called 'quickstartqueues' and append a GUID value so that the queue name
+// is unique in your storage account.
 queue = cloudQueueClient.GetQueueReference("quickstartqueues-" + Guid.NewGuid().ToString());
 await queue.CreateAsync();
 
@@ -188,7 +188,7 @@ Console.WriteLine();
 
 ### <a name="add-a-message"></a>Přidat zprávu
 
-V dalším kroku přidá ukázka zprávu do pozadí fronty. 
+V dalším kroku přidá ukázka zprávu do pozadí fronty.
 
 Zpráva musí být ve formátu, který může být součástí požadavku XML s kódováním UTF-8 a může mít velikost až 64 KB. Pokud zpráva obsahuje binární data, doporučujeme, abyste zprávu zakódovat ve formátu base64.
 
@@ -215,8 +215,8 @@ await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null)
 Ukázka ukazuje, jak prohlížet zprávu z fronty. Po prohlížení zprávy si můžete přečíst obsah zprávy. Tato zpráva ale zůstane viditelná pro ostatní klienty, takže ji může následně načítat a zpracovávat i jiný klient.
 
 ```csharp
-// Peek at the message at the front of the queue. Peeking does not alter the message's 
-// visibility, so that another client can still retrieve and process it. 
+// Peek at the message at the front of the queue. Peeking does not alter the message's
+// visibility, so that another client can still retrieve and process it.
 CloudQueueMessage peekedMessage = await queue.PeekMessageAsync();
 
 // Display the ID and contents of the peeked message.
@@ -231,7 +231,7 @@ Ukázka také ukazuje, jak vyřadit zprávu z fronty. Když vyřadíte zprávu z
 Pokud kód nedokáže zpracovat zprávu z důvodu chyby hardwaru nebo softwaru, bude zpráva po uplynutí doby neviditelnosti opět viditelná. Jiný klient může získat stejnou zprávu a zkusit to znovu.
 
 ```csharp
-// Retrieve the message at the front of the queue. The message becomes invisible for 
+// Retrieve the message at the front of the queue. The message becomes invisible for
 // a specified interval, during which the client attempts to process it.
 CloudQueueMessage retrievedMessage = await queue.GetMessageAsync();
 
@@ -267,8 +267,8 @@ Podívejte se na tyto další zdroje informací o vývoji pro .NET pomocí front
 ### <a name="binaries-and-source-code"></a>Binární soubory a zdrojový kód
 
 - Stažení balíčků NuGet pro nejnovější verzi [Azure Storage klientské knihovny pro .NET](/dotnet/api/overview/azure/storage)
-    - [Společné](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-    - [Fronty](https://www.nuget.org/packages/Azure.Storage.Queues/)
+  - [Společné](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [Fronty](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Prohlédněte si [zdrojový kód klientské knihovny pro .NET](https://github.com/Azure/azure-storage-net) na GitHubu.
 
 ### <a name="client-library-reference-and-samples"></a>Klientská knihovna – referenční informace a ukázky
@@ -278,7 +278,7 @@ Podívejte se na tyto další zdroje informací o vývoji pro .NET pomocí front
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak přidat zprávy do fronty, prohlížet zprávy z fronty a vyřadit zprávy z fronty a zpracovávat je pomocí .NET. 
+V tomto rychlém startu jste zjistili, jak přidat zprávy do fronty, prohlížet zprávy z fronty a vyřadit zprávy z fronty a zpracovávat je pomocí .NET.
 
 > [!div class="nextstepaction"]
 > [Komunikace mezi aplikacemi pomocí Azure Queue Storage](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)

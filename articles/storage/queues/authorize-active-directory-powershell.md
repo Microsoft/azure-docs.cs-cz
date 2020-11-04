@@ -10,12 +10,12 @@ ms.date: 09/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: queues
-ms.openlocfilehash: 6937f3aa136ee4d5b906492c3f8cffc86acbc2e5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785659"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346022"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Spuštění příkazů PowerShellu s přihlašovacími údaji Azure AD pro přístup k datům ve frontě
 
@@ -27,7 +27,7 @@ Pomocí řízení přístupu na základě role Azure (Azure RBAC) můžete při�
 
 Rozšíření Azure Storage jsou podporovaná pro operace s daty ve frontě. Operace, které můžete volat, závisí na oprávněních udělených objektu zabezpečení služby Azure AD, se kterým se přihlašujete k PowerShellu. Oprávnění pro Azure Storage fronty jsou přiřazena prostřednictvím Azure RBAC. Pokud jste například přiřadili roli **čtečka dat fronty** , můžete spustit skriptovací příkazy, které čtou data z fronty. Pokud jste přiřadili roli **Přispěvatel dat fronty** , můžete spustit skriptovací příkazy, které čtou, zapisují nebo odstraňují frontu nebo data, která obsahují.
 
-Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage ve frontě najdete v tématu [volání operací úložiště s tokeny OAuth](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Podrobnosti o oprávněních potřebných pro jednotlivé operace Azure Storage ve frontě najdete v tématu [volání operací úložiště s tokeny OAuth](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 
 ## <a name="call-powershell-commands-using-azure-ad-credentials"></a>Volání příkazů PowerShellu pomocí přihlašovacích údajů Azure AD
 
@@ -45,7 +45,7 @@ Následující příklad ukazuje, jak vytvořit frontu v novém účtu úložiš
 
     Další informace o přihlášení k Azure pomocí PowerShellu najdete v tématu věnovaném [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-1. Vytvořte skupinu prostředků Azure voláním [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
+1. Vytvořte skupinu prostředků Azure voláním [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"

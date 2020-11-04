@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93304978"
+ms.locfileid: "93347603"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -48,7 +48,7 @@ Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení
 
 Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro předávání syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
  
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že počítač se systémem Linux, který používáte jako službu pro překládání protokolů, používá jeden z následujících operačních systémů:
 
@@ -57,7 +57,7 @@ Ujistěte se, že počítač se systémem Linux, který používáte jako služb
   - Amazon Linux 2017,09
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 a 8, včetně dílčích verzí (ne 6)
-  - Debian GNU/Linux 8, 9 a 10
+  - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
   - SUSE Linux Enterprise Server 12, 15
 
@@ -65,7 +65,7 @@ Ujistěte se, že počítač se systémem Linux, který používáte jako služb
   - CentOS 7 a 8, včetně dílčích verzí (ne 6)
   - Oracle Linux 7
   - Red Hat Enterprise Linux (RHEL) Server 7 a 8, včetně dílčích verzí (ne 6)
-  - Debian GNU/Linux 8, 9 a 10
+  - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS a 16,04 LTS
  
 - Verze démona

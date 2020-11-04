@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: f81b6dabbd9053a69ff60d1a3c71d03fff38f627
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129758"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346430"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI
 
@@ -19,7 +19,7 @@ ms.locfileid: "93129758"
 
 V tomto článku se dozvíte, jak povolit spravovanou identitu pro Power BI výstupy Stream Analytics úlohy prostřednictvím Azure Portal a prostřednictvím nasazení Azure Resource Manager.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K použití této funkce jsou potřeba následující:
 
@@ -29,13 +29,13 @@ K použití této funkce jsou potřeba následující:
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Vytvoření Stream Analytics úlohy pomocí Azure Portal
 
-1. Vytvořte novou Stream Analytics úlohu nebo otevřete existující úlohu v Azure Portal. Z řádku nabídek umístěného na levé straně obrazovky vyberte **spravovaná identita** umístěná v části **Konfigurovat** . Ujistěte se, že je vybraná možnost použít spravovanou identitu přiřazenou systémem, a potom v dolní části obrazovky vyberte tlačítko **Uložit** .
+1. Vytvořte novou Stream Analytics úlohu nebo otevřete existující úlohu v Azure Portal. Z řádku nabídek umístěného na levé straně obrazovky vyberte **spravovaná identita** umístěná v části **Konfigurovat**. Ujistěte se, že je vybraná možnost použít spravovanou identitu přiřazenou systémem, a potom v dolní části obrazovky vyberte tlačítko **Uložit** .
 
    ![Konfigurace Stream Analytics spravované identity](./media/common/stream-analytics-enable-managed-identity.png)
 
 2. Před konfigurací výstupu udělte úloze Stream Analytics přístup k pracovnímu prostoru Power BI podle pokynů v části [poskytnutí přístupu ke službě Stream Analytics k pracovnímu prostoru Power BI](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) tohoto článku.
 
-3. Přejděte do části **výstupy** úlohy analýzy streamu, vyberte **+ Přidat** a pak zvolte **Power BI** . Pak vyberte tlačítko **autorizovat** a přihlaste se pomocí účtu Power BI.
+3. Přejděte do části **výstupy** úlohy analýzy streamu, vyberte **+ Přidat** a pak zvolte **Power BI**. Pak vyberte tlačítko **autorizovat** a přihlaste se pomocí účtu Power BI.
 
    ![Autorizovat pomocí Power BI účtu](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
@@ -45,7 +45,7 @@ K použití této funkce jsou potřeba následující:
 
 ## <a name="azure-resource-manager-deployment"></a>Nasazení podle modelu Azure Resource Manager
 
-Azure Resource Manager umožňuje plně automatizovat nasazení Stream Analytics úlohy. Šablony Správce prostředků můžete nasadit pomocí Azure PowerShell nebo rozhraní příkazového [řádku Azure](/cli/azure/?view=azure-cli-latest). Níže uvedené příklady používají rozhraní příkazového řádku Azure CLI.
+Azure Resource Manager umožňuje plně automatizovat nasazení Stream Analytics úlohy. Šablony Správce prostředků můžete nasadit pomocí Azure PowerShell nebo rozhraní příkazového [řádku Azure](/cli/azure/). Níže uvedené příklady používají rozhraní příkazového řádku Azure CLI.
 
 
 1. Pomocí spravované identity můžete vytvořit prostředek **Microsoft. StreamAnalytics/streamingjobs** , a to tak, že do oddílu prostředků v šabloně správce prostředků zadáte následující vlastnost:

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083537"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347637"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -146,9 +146,9 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 V dotazu se používá modul pro návrhy. Po vytvoření modulu pro vytváření výsledků volejte jedno z následujících rozhraní API pro vyhledávání, jako je například:
 
-+ [REST API návrhů](/rest/api/searchservice/suggestions) 
-+ [REST API automatického dokončování](/rest/api/searchservice/autocomplete) 
-+ [Metoda SuggestWithHttpMessagesAsync] (/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?
++ [REST API návrhů](/rest/api/searchservice/suggestions)
++ [REST API automatického dokončování](/rest/api/searchservice/autocomplete)
++ [Metoda SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
 + [Metoda AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 V aplikaci vyhledávání by měl klientský kód využít knihovnu, jako je například [Automatické dokončování uživatelského rozhraní jQuery](https://jqueryui.com/autocomplete/) , ke shromáždění částečného dotazu a zadání shody. Další informace o této úloze najdete v tématu [Přidání automatického dokončování nebo navrhovaných výsledků do klientského kódu](search-autocomplete-tutorial.md).
@@ -166,8 +166,6 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 ## <a name="sample-code"></a>Ukázka kódu
 
 + [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka konstrukce, navrhovaných dotazů, automatického dokončování a vymezené navigace pro návrhy. Tato ukázka kódu běží na službě izolovaného prostoru Azure Kognitivní hledání a používá předem načtený index hotelů, takže ke spuštění aplikace stačí stisknout klávesu F5. Není nutné žádné předplatné ani přihlášení.
-
-+ [DotNetHowToAutocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) je starší ukázka obsahující kód C# i Java. Ukazuje také vytváření návrhů, navrhované dotazy, automatické dokončování a omezující navigaci. Tato ukázka kódu používá ukázková data hostovaného [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) . 
 
 ## <a name="next-steps"></a>Další kroky
 

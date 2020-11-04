@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 6005e56982d6adad937586c6a1b364fab09603ec
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 58143bde757a44cde4e4237715823c8556ac5e12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242309"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348436"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Porozumění změnám v kořenové CA se mění Azure Database for MySQL
 
@@ -31,10 +31,10 @@ Nový certifikát se použije od 15. února 2021 (02/15/2021). Pokud při připo
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>Návody informace o tom, jestli se má tato databáze týkat?
 
 Všechny aplikace, které používají protokol SSL/TLS a ověřují kořenový certifikát, musí aktualizovat kořenový certifikát. Můžete zjistit, jestli vaše připojení ověřují kořenový certifikát, a to tak, že zkontrolujete připojovací řetězec.
--   Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-identity` , musíte aktualizovat certifikát.
--   Pokud váš připojovací řetězec obsahuje `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` nebo `sslmode=require` , nemusíte aktualizovat certifikáty. 
+-    Pokud váš připojovací řetězec obsahuje `sslmode=verify-ca` nebo `sslmode=verify-identity` , musíte aktualizovat certifikát.
+-    Pokud váš připojovací řetězec obsahuje `sslmode=disable` , `sslmode=allow` , `sslmode=prefer` nebo `sslmode=require` , nemusíte aktualizovat certifikáty. 
 -  Pokud používáte konektory Java a váš připojovací řetězec zahrnuje useSSL = false nebo vlastnost requireSSL = false, nemusíte aktualizovat certifikáty.
--   Pokud v připojovacím řetězci neurčíte sslmode, nemusíte aktualizovat certifikáty.
+-    Pokud v připojovacím řetězci neurčíte sslmode, nemusíte aktualizovat certifikáty.
 
 Pokud používáte klienta, který vyabstrakce připojovací řetězec, přečtěte si dokumentaci klienta, abyste zjistili, zda ověřuje certifikáty.
 Pokud chcete pochopit Azure Database for MySQL sslmode, přečtěte si téma [popisy režimu SSL](concepts-ssl-connection-security.md#ssl-default-settings).
@@ -80,19 +80,19 @@ Pokud se chcete vyhnout přerušení dostupnosti vaší aplikace z důvodu neoč
  </br>-----UKONČIT-----CERTIFIKÁTU
 
 *   Nahraďte soubor PEM původní kořenové certifikační autority souborem kombinované kořenové certifikační autority a restartujte aplikaci nebo klienta.
-*   Po nasazení nového certifikátu na straně serveru můžete v budoucnu změnit soubor PEM certifikační autority na DigiCertGlobalRootG2. CRT. pem.
+*    Po nasazení nového certifikátu na straně serveru můžete v budoucnu změnit soubor PEM certifikační autority na DigiCertGlobalRootG2. CRT. pem.
 
 ## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>Co může být důsledkem neaktualizace certifikátu?
 Pokud používáte certifikát vydaný Azure Database for MySQL, jak je uvedeno zde, může dojít k přerušení dostupnosti vaší aplikace, protože databáze nebude dostupná. V závislosti na vaší aplikaci můžete obdržet nejrůznější chybové zprávy, mezi které patří mimo jiné:
-*   Neplatný certifikát nebo odvolaný certifikát
-*   Vypršel časový limit připojení
+*    Neplatný certifikát nebo odvolaný certifikát
+*    Vypršel časový limit připojení
 
 > [!NOTE]
 > **Baltimore certifikát** prosím neodstraňujte ani neměňte, dokud se neprovede změna certifikátu. Až se změna dokončí, pošle se vám komunikace, po jejímž uplynutí se certifikát Baltimore bezpečně vyřadí. 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. Pokud nepoužíváte protokol SSL/TLS, musím pořád aktualizovat kořenovou certifikační autoritu?
+###    <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. Pokud nepoužíváte protokol SSL/TLS, musím pořád aktualizovat kořenovou certifikační autoritu?
 Pokud nepoužíváte protokol SSL/TLS, nejsou vyžadovány žádné akce. 
 
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. Pokud používám protokol SSL/TLS, je nutné restartovat server databáze a aktualizovat tak kořenovou certifikační autoritu?
@@ -104,7 +104,7 @@ Pokud kořenový certifikát neaktualizujete dřív než 15. února 2021 (02/15/
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. Jaký je dopad při použití App Service s Azure Database for MySQL?
 V případě Azure App Services můžeme mít Azure Database for MySQL k dispozici dva možné scénáře a závisí na tom, jak používáte protokol SSL s vaší aplikací.
 *   Tento nový certifikát se přidal do App Service na úrovni platformy. Pokud používáte certifikáty SSL obsažené na platformě App Service v aplikaci, není nutné provádět žádnou akci.
-*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát. Dobrým příkladem tohoto scénáře je použití vlastních kontejnerů v App Service jako sdílené v [dokumentaci k App Service](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)
+*   Pokud explicitně zadáte cestu k souboru certifikátu SSL v kódu, budete muset stáhnout nový certifikát a aktualizovat kód, aby používal nový certifikát. Dobrým příkladem tohoto scénáře je použití vlastních kontejnerů v App Service jako sdílené v [dokumentaci k App Service](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. Jaký je dopad použití služeb Azure Kubernetes Services (AKS) s Azure Database for MySQL?
 Pokud se pokoušíte připojit k Azure Database for MySQL pomocí služeb Azure Kubernetes Services (AKS), bude se podobat přístupu z hostitelského prostředí s vyhrazenými zákazníky. Postup najdete [tady](../aks/ingress-own-tls.md).
@@ -123,13 +123,13 @@ Vzhledem k tomu, že klienti, kteří se používají pro připojení k serveru,
 ### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. když po 15. únoru 2021 (02/15/2021) vytvořím nový server, bude to mít vliv?
 Pro servery vytvořené po 15. únoru 2021 (02/15/2021) můžete použít nově vydaný certifikát pro vaše aplikace k připojení pomocí protokolu SSL.
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
+###    <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. jak často Microsoft aktualizuje svoje certifikáty nebo jaké jsou zásady vypršení platnosti?
 Certifikáty používané službou Azure Database for MySQL poskytují důvěryhodné certifikační autority (CA). Proto je podpora těchto certifikátů na Azure Database for MySQL vázaná na podporu těchto certifikátů certifikační autoritou. V takovém případě ale můžou být v těchto předdefinovaných certifikátech nepředvídatelné chyby, které je potřeba vyřešit nejstarší.
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. Pokud používám repliky pro čtení, musím tuto aktualizaci provést pouze na zdrojovém serveru nebo v replikách pro čtení?
+###    <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. Pokud používám repliky pro čtení, musím tuto aktualizaci provést pouze na zdrojovém serveru nebo v replikách pro čtení?
 Vzhledem k tomu, že se jedná o změnu na straně klienta, pokud klient používá ke čtení dat ze serveru repliky, budete muset změny použít i pro tyto klienty.
 
-### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Pokud používám replikaci dat, potřebuji provést jakoukoli akci?
+###    <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. Pokud používám replikaci dat, potřebuji provést jakoukoli akci?
 Pokud pro připojení k Azure Database for MySQL používáte [replikaci dat](concepts-data-in-replication.md) , je potřeba vzít v úvahu dvě věci:
 *   Pokud je replikace dat z virtuálního počítače (Prem nebo virtuálního počítače Azure) na Azure Database for MySQL, musíte ověřit, jestli se k vytvoření repliky používá protokol SSL. Spusťte příkaz **Zobrazit stav podřízeného** a ověřte následující nastavení.  
 
@@ -152,5 +152,5 @@ Chcete-li ověřit, zda používáte připojení SSL pro připojení k serveru, 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. je vyžadována akce, pokud již mám v souboru certifikátu DigiCertGlobalRootG2?
 Ne. Pokud soubor certifikátu již má **DigiCertGlobalRootG2** , není nutná žádná akce.
 
-### <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
+###    <a name="15-what-if-i-have-further-questions"></a>15. co když mám další dotazy?
 Pokud máte nějaké otázky, Získejte odpovědi od expertů komunity v [Microsoft Q&A](mailto:AzureDatabaseforMySQL@service.microsoft.com). Pokud máte plán podpory a potřebujete technickou pomoc, [kontaktujte nás](mailto:AzureDatabaseforMySQL@service.microsoft.com).

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e72a98ddd5219662c8850326b4f43b25e545177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595833"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348147"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -124,7 +124,7 @@ Přidejte naslouchací procesy, které jsou potřeba ke směrování provozu pom
 
 >[!NOTE]
 > Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
->Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure CLI, je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `--host-names "*.contoso.com,*.fabrikam.com"`.
+>Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure CLI, je nutné použít `--host-names` místo `--host-name` . U názvů hostitelů můžete jako hodnoty oddělené mezerami uvést až pět názvů hostitelů. Například `--host-names "*.contoso.com *.fabrikam.com"`.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -175,7 +175,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy v aplikační bráně. Vytvořené škálovací sady se budou jmenovat *myvmss1* , *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

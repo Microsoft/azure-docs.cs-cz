@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a2f1229ab8a292b06dfc43b95d9047ed8d233523
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791133"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345699"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provádění operací Azure Queue Storage s využitím Azure PowerShellu
 
@@ -22,12 +22,12 @@ Azure Queue Storage je služba pro ukládání velkého počtu zpráv, ke který
 
 > [!div class="checklist"]
 >
-> * Vytvoření fronty
-> * Načtení fronty
-> * Přidat zprávu
-> * Přečíst zprávu
-> * Odstranění zprávy
-> * Odstranění fronty
+> - Vytvoření fronty
+> - Načtení fronty
+> - Přidat zprávu
+> - Přečíst zprávu
+> - Odstranění zprávy
+> - Odstranění fronty
 
 Tento postup vyžaduje Azure PowerShell modul AZ verze 0,7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Načíst seznam umístění
 
-Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použije **eastus** . Uložte ho do **umístění** proměnné pro budoucí použití.
+Pokud nevíte, jaké umístění máte použít, můžete vypsat všechna dostupná umístění. Po zobrazení seznamu vyhledejte umístění, které chcete použít. Toto cvičení použije **eastus**. Uložte ho do **umístění** proměnné pro budoucí použití.
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -127,13 +127,13 @@ Pokud používáte [Průzkumník služby Azure Storage](https://storageexplorer.
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>Přečtěte si zprávu z fronty a pak ji odstraňte.
 
-Zprávy jsou čteny nejlépe při prvním prvním vyzkoušení. To není zaručeno. Když si přečtete zprávu z fronty, bude se neviditelná pro všechny ostatní procesy, které prohlíží ve frontě. Tím je zajištěno, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a opakovat akci.  
+Zprávy jsou čteny nejlépe při prvním prvním vyzkoušení. To není zaručeno. Když si přečtete zprávu z fronty, bude se neviditelná pro všechny ostatní procesy, které prohlíží ve frontě. Tím je zajištěno, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a opakovat akci.
 
 Tento **časový limit neviditelnosti** definuje, jak dlouho zpráva zůstane neviditelná, než se znovu zpřístupní pro zpracování. Výchozí hodnota je 30 sekund.
 
 Kód přečte zprávu z fronty ve dvou krocích. Když zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) , dostanete další zprávu ve frontě. Zpráva vrácená metodou **GetMessage** se stane neviditelnou pro jakýkoli jiný kód, který čte zprávy z této fronty. Chcete-li dokončit odebrání zprávy z fronty, zavoláte metodu [Microsoft. Azure. Storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) .
 
-V následujícím příkladu si přečtete tři zprávy fronty a pak počkáte 10 sekund (časový limit neviditelnosti). Pak znovu přečtete tři zprávy a po jejich přečtení je zavoláte pomocí **DeleteMessage** . Pokud se po odstranění zpráv pokusíte tuto frontu přečíst, $queueMessage bude vrácena jako NULL.
+V následujícím příkladu si přečtete tři zprávy fronty a pak počkáte 10 sekund (časový limit neviditelnosti). Pak znovu přečtete tři zprávy a po jejich přečtení je zavoláte pomocí **DeleteMessage**. Pokud se po odstranění zpráv pokusíte tuto frontu přečíst, $queueMessage bude vrácena jako NULL.
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -185,17 +185,17 @@ V tomto článku se seznámíte se základní správou úložiště front pomoc�
 
 > [!div class="checklist"]
 >
-> * Vytvoření fronty
-> * Načtení fronty
-> * Přidat zprávu
-> * Přečtěte si další zprávu.
-> * Odstranění zprávy
-> * Odstranění fronty
+> - Vytvoření fronty
+> - Načtení fronty
+> - Přidat zprávu
+> - Přečtěte si další zprávu.
+> - Odstranění zprávy
+> - Odstranění fronty
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Microsoft Azure PowerShell rutiny úložiště
 
-* [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)
+- [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
 
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
+- [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

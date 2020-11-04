@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 8f0df92eadc4db132d567e708abe6e28e82642d6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129554"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346039"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -27,7 +27,7 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Předpoklady 
+### <a name="prerequisites"></a>Požadavky 
 - Ujistěte se, že máte Azure CLI verze 2.9.0 nebo novější.
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `aks-preview` nainstalovanou [příponu CLI][az-extension-add] v 0.4.55 nebo novější verzi.
@@ -72,7 +72,6 @@ az extension update --name aks-preview
 - Vyžaduje [spravovanou integraci služby Azure AD](managed-aad.md).
 - V rámci verze Preview nemůžete integrovat Azure RBAC pro autorizaci Kubernetes do existujících clusterů, ale budete mít k dispozici obecné dostupnosti (GA).
 - Použijte [kubectl v 1.18.3 +][az-aks-install-cli].
-- Během období Preview můžete přidat jenom oprávnění na *úrovni oboru názvů* prostřednictvím Azure CLI.
 - Pokud máte CRDs a vytváříte vlastní definice rolí, jediným způsobem, jak pokrýt CRDs dnes, je poskytnout `Microsoft.ContainerService/managedClusters/*/read` . AKS pracuje na poskytování podrobnějších oprávnění pro CRDs. Pro zbývající objekty můžete použít konkrétní skupiny rozhraní API, například: `Microsoft.ContainerService/apps/deployments/read` .
 - Nové přiřazení rolí může trvat až 5 minut, než se rozšíří a aktualizuje autorizační Server.
 - Vyžaduje, aby byl tenant Azure AD nakonfigurovaný pro ověřování stejný jako tenant u předplatného, které obsahuje cluster AKS. 

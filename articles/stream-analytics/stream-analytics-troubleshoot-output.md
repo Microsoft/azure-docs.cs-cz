@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122619"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346107"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s výstupy Azure Stream Analytics
 
@@ -67,7 +67,7 @@ V průběhu běžné operace úlohy může výstup trvat déle a delší dobu la
 * Bez ohledu na to, jestli je nadřazený zdroj omezený
 * Určuje, jestli je logika zpracování v dotazu náročná na výpočetní výkon.
 
-Chcete-li zobrazit podrobnosti výstupu, vyberte úlohu streamování v Azure Portal a pak vyberte **diagram úlohy** . Pro každý vstup existuje metrika události nevyřízených položek na oddíl. Pokud se metrika stále zvyšuje, je indikátorem, že systémové prostředky jsou omezené. Zvýšení je potenciálně v důsledku omezení výstupní jímky nebo vysokého využití procesoru. Další informace najdete v tématu [ladění řízené daty pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
+Chcete-li zobrazit podrobnosti výstupu, vyberte úlohu streamování v Azure Portal a pak vyberte **diagram úlohy**. Pro každý vstup existuje metrika události nevyřízených položek na oddíl. Pokud se metrika stále zvyšuje, je indikátorem, že systémové prostředky jsou omezené. Zvýšení je potenciálně v důsledku omezení výstupní jímky nebo vysokého využití procesoru. Další informace najdete v tématu [ladění řízené daty pomocí diagramu úloh](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Upozornění na porušení klíče s výstupem Azure SQL Database
 
@@ -91,7 +91,7 @@ Když Stream Analytics úloha s výstupem SQL obdrží první dávku událostí,
 2. Úloha načte schéma cílové tabulky.
 3. Úloha ověřuje názvy a typy sloupců oproti schématu cílové tabulky.
 4. Úloha připraví tabulku dat v paměti z výstupních záznamů v dávce.
-5. Úloha zapisuje tabulku dat do SQL pomocí rozhraní BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1).
+5. Úloha zapisuje tabulku dat do SQL pomocí rozhraní BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver).
 
 V průběhu těchto kroků může výstup SQL zacházet z následujících typů chyb:
 

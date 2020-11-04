@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e4e5f4c1a50c814174dbbd5d419fe24b2e9f88e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336676"
+ms.locfileid: "93345495"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -39,7 +39,7 @@ Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici
 Úlohy dávkového přepisu jsou plánovány na základě optimálního úsilí.
 Nemůžete odhadnout, kdy se úloha změní do běžícího stavu, ale v rámci normálního zatížení systému by se měla vyskytnout během několika minut. Ve spuštěném stavu dojde k přepisu rychleji než rychlost přehrávání zvukového běhu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](overview.md#try-the-speech-service-for-free)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
@@ -49,7 +49,7 @@ Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pom
 Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akustické přizpůsobení](how-to-customize-acoustic-models.md) a [přizpůsobení jazyka](how-to-customize-language-model.md). Pokud chcete v dávkovém přepisu použít vytvořené modely, budete potřebovat jejich umístění modelu. Umístění modelu lze načíst při kontrole podrobností modelu ( `self` vlastnost). Pro službu Batch přepisu není *potřebný* nasazený vlastní koncový bod.
 
 >[!NOTE]
-> V rámci REST API má Batch přepis sadu [kvót a omezení](speech-services-quotas-and-limits.md#speech-to-text-quotas-and-limits-per-speech-resource), které doporučujeme zkontrolovat. Aby bylo možné efektivně přepisovat velký počet zvukových souborů, doporučujeme vždy odeslat více souborů na požadavek nebo přejít na kontejner Blob Storage se zvukovými soubory přepisovat. Služba bude přepisovat soubory současně zkrátit dobu vyřízení. Použití více souborů v jednom požadavku je velmi jednoduché a jednoduché – viz [konfigurační](#configuration) oddíl. 
+> V rámci REST API má Batch přepis sadu [kvót a omezení](speech-services-quotas-and-limits.md#batch-transcription), které doporučujeme zkontrolovat. Aby bylo možné efektivně přepisovat velký počet zvukových souborů, doporučujeme vždy odeslat více souborů na požadavek nebo přejít na kontejner Blob Storage se zvukovými soubory přepisovat. Služba bude přepisovat soubory současně zkrátit dobu vyřízení. Použití více souborů v jednom požadavku je velmi jednoduché a jednoduché – viz [konfigurační](#configuration) oddíl. 
 
 ## <a name="batch-transcription-api"></a>Rozhraní API pro dávkové Přepisy
 

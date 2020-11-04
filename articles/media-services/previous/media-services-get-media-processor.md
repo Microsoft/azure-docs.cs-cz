@@ -3,7 +3,7 @@ title: Jak vytvořit procesor médií pomocí sady Azure Media Services SDK pro 
 description: Naučte se vytvořit komponentu procesoru médií ke kódování, převedení formátu, šifrování nebo dešifrování mediálního obsahu pro Azure Media Services. Ukázky kódu jsou napsané v jazyce C# a používají sadu Media Services SDK pro .NET.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: dbf9496f-c6f0-42a7-aa36-70f89dcb8ea2
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 11/03/2020
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df89acb7d3686a478c87c12bbf8a42962597dca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3215eef337ca1c9a84f2f4d917dbea8ea2e090f0
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269382"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346685"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Postupy: získání instance procesoru multimédií
 
@@ -29,18 +29,17 @@ ms.locfileid: "89269382"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
 
 ## <a name="overview"></a>Přehled
+
 V Media Services procesor médií je komponenta, která zpracovává konkrétní úlohu zpracování, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Procesor médií se obvykle vytváří při vytváření úlohy pro kódování, šifrování nebo převod formátu mediálního obsahu.
 
-## <a name="azure-media-processors"></a>Procesory médií Azure 
+## <a name="azure-media-processors"></a>Procesory médií Azure
 
 V následujícím tématu najdete seznam procesorů médií:
 
-* [Kódovací procesory médií](scenarios-and-availability.md#encoding-media-processors)
-* [Analytické procesory médií](scenarios-and-availability.md#analytics-media-processors)
+* [Kódovací procesory médií](scenarios-and-availability.md)
+* [Analytické procesory médií](scenarios-and-availability.md)
 
 ## <a name="get-media-processor"></a>Získat procesor médií
 
@@ -59,13 +58,14 @@ private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcess
 }
 ```
 
-
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
+
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Další kroky
-Když teď víte, jak získat instanci procesoru médií, přečtěte si téma [Postup kódování assetu](media-services-dotnet-encode-with-media-encoder-standard.md) , ve kterém se dozvíte, jak použít Media Encoder Standard ke kódování assetu.
 
+Když teď víte, jak získat instanci procesoru médií, přečtěte si téma [Postup kódování assetu](media-services-dotnet-encode-with-media-encoder-standard.md) , ve kterém se dozvíte, jak použít Media Encoder Standard ke kódování assetu.

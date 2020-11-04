@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: dde6cf40e7609e902540e08fcaff65d9fe32c85c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289644"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348249"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Zápis auditu do účtu úložiště za virtuální sítí a branou firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,7 +33,7 @@ Další informace o konceptech virtuální sítě, osvědčených postupech a mn
 
 Další informace o tom, jak vytvořit virtuální síť, najdete v tématu [rychlý Start: vytvoření virtuální sítě pomocí Azure Portal](../../virtual-network/quick-create-portal.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Aby mohl audit zapisovat do účtu úložiště za virtuální sítí nebo bránou firewall, vyžadují se tyto požadavky:
 
@@ -114,6 +114,7 @@ Konfigurace auditu SQL pro zápis událostí do účtu úložiště za virtuáln
      "administratorLoginPassword": "<complex password>",
      "version": "12.0",
      "state": "Ready"
+     }
    }
    ```
 

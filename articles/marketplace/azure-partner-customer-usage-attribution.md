@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125168"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348334"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -74,7 +74,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
    * Partneři můžou registrovat víc identifikátorů GUID.
    * Partneři můžou registrovat GUID pro šablony řešení mimo Marketplace a nabídky.
 
-1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře** .
+1. V pravém horním rohu vyberte ikonu ozubeného kola nastavení a pak vyberte **Nastavení vývojáře**.
 
 1. Na **stránce nastavení účtu** vyberte **Přidat identifikátor GUID sledování.**
 
@@ -82,7 +82,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager šablon. Pokud máte šablonu Správce prostředků, která je k dispozici v Azure Marketplace, na GitHubu nebo jako rychlý Start, proces změny šablony tak, aby bylo možné označení zákaznického využívání rovného dopřed.
@@ -102,7 +102,7 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 
 1. Přidejte do hlavního souboru šablony nový prostředek typu [Microsoft. Resources/Deployments](/azure/templates/microsoft.resources/deployments) . Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
-1. Jako název prostředku zadejte hodnotu GUID za `pid-` předponou. Pokud je například identifikátor GUID eb7927c8-dd66-43e1-b0cf-c346a422063, název prostředku bude _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_ .
+1. Jako název prostředku zadejte hodnotu GUID za `pid-` předponou. Pokud je například identifikátor GUID eb7927c8-dd66-43e1-b0cf-c346a422063, název prostředku bude _PID-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
 1. V šabloně vyhledejte případné chyby.
 
@@ -159,7 +159,7 @@ Pro Python použijte atribut **config** . Atribut lze přidat pouze k vlastnosti
 
 #### <a name="example-the-net-sdk"></a>Příklad: sada .NET SDK
 
-V případě .NET nezapomeňte nastavit agenta pro uživatele. Knihovna [Microsoft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) se dá použít k nastavení uživatelského agenta s následujícím kódem (příklad v jazyce C#):
+V případě .NET nezapomeňte nastavit agenta pro uživatele. Knihovna [Microsoft. Azure. Management. Fluent](/dotnet/api/microsoft.azure.management.fluent) se dá použít k nastavení uživatelského agenta s následujícím kódem (příklad v jazyce C#):
 
 ```csharp
 

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 77c35ae4b9e845cd3c0f638407c0d71c36fcf9f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289680"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345937"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Jak používat službu Azure Queue Storage z Node.js
 
@@ -44,13 +44,13 @@ Pokud chcete vytvořit prázdnou Node.js aplikaci, přečtěte si téma [Vytvoř
 
 1. Do příkazového okna zadejte **npm Install \@ Azure/Storage-Queue** .
 
-1. Ověřte, že se vytvořila složka ** \_ modulů uzlů** . V této složce najdete balíček ** \@ Azure/Storage – Queue** , který obsahuje klientskou knihovnu, kterou potřebujete pro přístup k úložišti.
+1. Ověřte, že se vytvořila složka **\_ modulů uzlů** . V této složce najdete balíček **\@ Azure/Storage – Queue** , který obsahuje klientskou knihovnu, kterou potřebujete pro přístup k úložišti.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
 1. Do příkazového okna zadejte **npm install azure-storage**.
 
-1. Ověřte, že se vytvořila složka ** \_ modulů uzlů** . V této složce najdete balíček **Azure-Storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
+1. Ověřte, že se vytvořila složka **\_ modulů uzlů** . V této složce najdete balíček **Azure-Storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
 
 ---
 
@@ -82,7 +82,7 @@ Pokud fronta již existuje, je vyvolána výjimka.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Modul Azure přečte proměnné prostředí `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_ACCESS_KEY` nebo `AZURE_STORAGE_CONNECTION_STRING` pro informace požadované pro připojení k účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, je nutné při volání **createQueueService**zadat informace o účtu.
+Modul Azure přečte proměnné prostředí `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_ACCESS_KEY` nebo `AZURE_STORAGE_CONNECTION_STRING` pro informace požadované pro připojení k účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, je nutné při volání **createQueueService** zadat informace o účtu.
 
 Následující kód vytvoří objekt **QueueService** , který vám umožní pracovat s frontami.
 
@@ -160,13 +160,13 @@ Následující příklad aktualizuje text zprávy.
 
 # <a name="javascript-v12"></a>[JavaScriptový V12](#tab/javascript)
 
-Změňte obsah zprávy na místě ve frontě tak, že zavoláte [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-). 
+Změňte obsah zprávy na místě ve frontě tak, že zavoláte [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-).
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Změňte obsah zprávy na místě ve frontě tak, že zavoláte **updateMessage**. 
+Změňte obsah zprávy na místě ve frontě tak, že zavoláte **updateMessage**.
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -222,7 +222,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 });
 ```
 
-Ve výchozím nastavení je zpráva po dobu 30 sekund skrytá. Po 30 sekundách je uvidí ostatní klienti. Pomocí `options.visibilityTimeout` se **GetMessages**můžete zadat jinou hodnotu.
+Ve výchozím nastavení je zpráva po dobu 30 sekund skrytá. Po 30 sekundách je uvidí ostatní klienti. Pomocí `options.visibilityTimeout` se **GetMessages** můžete zadat jinou hodnotu.
 
 Když ve frontě nejsou žádné zprávy, nevrátí se žádná chybová **zpráva** . Nebudou ale vráceny žádné zprávy.
 
@@ -234,8 +234,8 @@ Když ve frontě nejsou žádné zprávy, nevrátí se žádná chybová **zprá
 
 Existují dva způsoby, jak lze přizpůsobit načtení zprávy z fronty:
 
-* [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) – načtení dávky zpráv (až do 32.)
-* [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) – nastaví delší nebo kratší časový limit neviditelnosti.
+- [Options. numberOfMessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) – načtení dávky zpráv (až do 32.)
+- [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) – nastaví delší nebo kratší časový limit neviditelnosti.
 
 Následující příklad používá metodu **receiveMessages** k získání pěti zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. U všech zpráv vrácených touto metodou nastaví také časový limit neviditelnosti na pět minut.
 
@@ -245,8 +245,8 @@ Následující příklad používá metodu **receiveMessages** k získání pět
 
 Existují dva způsoby, jak lze přizpůsobit načtení zprávy z fronty:
 
-* `options.numOfMessages` -Načíst dávku zpráv (až 32.)
-* `options.visibilityTimeout` – Nastavte delší nebo kratší časový limit pro neviditelnost.
+- `options.numOfMessages` -Načíst dávku zpráv (až 32.)
+- `options.visibilityTimeout` – Nastavte delší nebo kratší časový limit pro neviditelnost.
 
 Následující příklad používá metodu **GetMessages** k získání 15 zpráv v jednom volání. Pak každou zprávu zpracuje pomocí `for` smyčky. U všech zpráv vrácených touto metodou nastaví také časový limit neviditelnosti na pět minut.
 
@@ -347,8 +347,8 @@ Chcete-li vymazat všechny zprávy z fronty bez jejich odstranění, zavolejte n
 
 Teď, když jste se naučili základní informace o službě Queue Storage, získáte další informace o složitějších úlohách úložiště pomocí těchto odkazů.
 
-* Navštivte [Blog týmu Azure Storage][Azure Storage Team Blog] , kde se dozvíte, co je nového.
-* Navštivte [Azure Storage klientskou knihovnu pro úložiště JavaScriptu][Azure Storage client library for JavaScript] na GitHubu.
+- Navštivte [Blog týmu Azure Storage][Azure Storage Team Blog] , kde se dozvíte, co je nového.
+- Navštivte [Azure Storage klientskou knihovnu pro úložiště JavaScriptu][Azure Storage client library for JavaScript] na GitHubu.
 
 [Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

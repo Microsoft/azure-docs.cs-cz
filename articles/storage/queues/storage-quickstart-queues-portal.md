@@ -8,18 +8,18 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213475"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347195"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Rychlý Start: vytvoření fronty a přidání zprávy s Azure Portal
 
 V tomto rychlém startu se dozvíte, jak pomocí [Azure Portal](https://portal.azure.com/) vytvořit frontu v Azure Storage a přidat a vyřadit zprávy z fronty.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -55,9 +55,9 @@ Po přidání zprávy Azure Portal zobrazí seznam všech zpráv ve frontě. Mů
 
 ## <a name="dequeue-a-message"></a>Odstranění zprávy z fronty
 
-Z Azure Portal můžete vyřadit zprávu z fronty před frontou. Když vyřadíte zprávu z fronty, zpráva se odstraní. 
+Z Azure Portal můžete vyřadit zprávu z fronty před frontou. Když vyřadíte zprávu z fronty, zpráva se odstraní.
 
-Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve frontě. 
+Při zrušení zařazení do fronty se vždy odebere nejstarší zpráva ve frontě.
 
 ![Snímek obrazovky ukazující, jak vyřadit z fronty zprávu z portálu](media/storage-quickstart-queues-portal/dequeue-message.png)
 

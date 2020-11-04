@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b36a71899be43f40ec16c76b5e53c8c3e7fb3552
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2ea92ad2e9c81b568e11ff97d7b6a88eeb4f188e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124522"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346566"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure PowerShell
 
@@ -28,7 +28,7 @@ Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Vstupní dat
 
 * Tento rychlý Start vyžaduje modul Azure PowerShell. Pomocí příkazu `Get-Module -ListAvailable Az` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
-* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.70 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) a použijte `az extension add --name azure-iot` k instalaci rozšíření IoT.
+* Některé akce IoT Hub nejsou podporované Azure PowerShell a musí se dokončit pomocí Azure CLI verze 2.0.70 nebo novějšího a rozšíření IoT pro Azure CLI. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli) a použijte `az extension add --name azure-iot` k instalaci rozšíření IoT.
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -68,9 +68,9 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
 
 Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstupních dat vyžadovaných úlohou. Prohlédněte si jednotlivé části a seznamte se s kódem.
 
-1. V okně PowerShellu spuštěním příkazu [AZ Login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) se přihlaste ke svému účtu Azure.
+1. V okně PowerShellu spuštěním příkazu [AZ Login](/cli/azure/authenticate-azure-cli) se přihlaste ke svému účtu Azure.
 
-    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že jste nahradili `<your subscription name>` názvem vašeho předplatného.
+    Po úspěšném přihlášení Azure CLI vrátí seznam vašich předplatných. Zkopírujte předplatné, které používáte pro tento rychlý Start, a spuštěním příkazu [AZ Account set](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription) vyberte toto předplatné. V prostředí PowerShell vyberte stejné předplatné, které jste vybrali v předchozí části. Ujistěte se, že jste nahradili `<your subscription name>` názvem vašeho předplatného.
 
     ```azurecli
     az login
@@ -78,19 +78,19 @@ Následující blok kódu Azure CLI provede mnoho příkazů pro přípravu vstu
     az account set --subscription "<your subscription>"
     ```
 
-2. Pomocí příkazu [AZ IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) vytvořte IoT Hub. Tento příklad vytvoří IoT Hub s názvem **MyASAIoTHub** . Vzhledem k tomu, že názvy IoT Hub jsou jedinečné, je třeba se s vlastním názvem IoT Hub. Nastavte SKU na F1 na použití bezplatné úrovně, pokud je k dispozici v rámci vašeho předplatného. Pokud ne, vyberte nejbližší nejnižší úroveň.
+2. Pomocí příkazu [AZ IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) vytvořte IoT Hub. Tento příklad vytvoří IoT Hub s názvem **MyASAIoTHub**. Vzhledem k tomu, že názvy IoT Hub jsou jedinečné, je třeba se s vlastním názvem IoT Hub. Nastavte SKU na F1 na použití bezplatné úrovně, pokud je k dispozici v rámci vašeho předplatného. Pokud ne, vyberte nejbližší nejnižší úroveň.
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
+    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. Pomocí příkazu [AZ iothub Device-identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) přidejte zařízení, které chcete IoT Hub. Tento příklad vytvoří zařízení s názvem **MyASAIoTDevice** .
+3. Pomocí příkazu [AZ iothub Device-identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) přidejte zařízení, které chcete IoT Hub. Tento příklad vytvoří zařízení s názvem **MyASAIoTDevice**.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -304,7 +304,7 @@ New-AzStreamAnalyticsTransformation `
 
 2. Zástupný text na řádku 15 nahraďte celým připojovacím řetězcem zařízení Azure IoT Hub, který jste uložili v předchozí části.
 
-3. Klikněte na **Spustit** . Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
+3. Klikněte na **Spustit**. Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
 
     ![Online simulátor Raspberry Pi Azure IoT](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

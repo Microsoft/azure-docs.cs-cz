@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 362c16a87e5a24c35b3aa637171b6a3f77aa62a6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129741"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346328"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
@@ -35,7 +35,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **Dělená tabulka a indexy** – použití [dělené](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
+- **Dělená tabulka a indexy** – použití [dělené](/sql/relational-databases/partitions/partitioned-tables-and-indexes) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](/sql/t-sql/statements/create-partition-function-transact-sql) a [schéma oddílu](/sql/t-sql/statements/create-partition-scheme-transact-sql) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
 
 - **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [Ignorovat \_ \_ klíč duplicity](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
 
@@ -52,6 +52,6 @@ Pokud je míra příchozích událostí nízká, může snadno vytvořit velikos
 
 K dalšímu takovému scénáři dochází při psaní do neclusterovaných indexů columnstore (NCCI), kde menší hromadné vložení může vytvořit příliš mnoho segmentů, což může způsobit selhání indexu. V takovém případě doporučujeme místo toho použít clusterovaný index columnstore.
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V souhrnu se funkce děleného výstupu v Azure Stream Analytics pro výstup SQL zarovnala paralelnímu využití úlohy s dělenou tabulkou v SQL Azure by vám mělo poskytnout významné vylepšení propustnosti. Využití Azure Data Factory pro orchestraci přesunu dat z tabulky In-Memory do tabulek založených na disku může mít za způsob nárůstu propustnosti velikosti. Pokud je to proveditelné, vylepšení hustoty zpráv může být také významným faktorem při zvyšování celkové propustnosti.

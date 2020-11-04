@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129877"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348385"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Výstup front Service Bus z Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Na [úrovni kompatibility 1,2](stream-analytics-compatibility-level.md)Azure Str
 
 V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vytvoření výstupu fronty.
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup |Popisný název, který se používá v dotazech k přesměrování výstupu dotazu do této Service Bus fronty. |
 | Obor názvů Service Bus |Kontejner pro sadu entit zasílání zpráv. |
@@ -32,7 +32,7 @@ V následující tabulce jsou uvedeny názvy vlastností a jejich popisy pro vyt
 | Název zásad fronty |Když vytvoříte frontu, můžete také vytvořit zásady sdíleného přístupu na kartě **Konfigurace** fronty. Každá zásada sdíleného přístupu má název, oprávnění, která jste nastavili, a přístupové klíče. |
 | Klíč zásad fronty |Sdílený přístupový klíč, který se používá k ověření přístupu k oboru názvů Service Bus. |
 | Formát serializace události |Formát serializace pro výstupní data. Podporují se JSON, CSV a Avro. |
-| Encoding |V případě CSV a JSON je v tuto chvíli jediným podporovaným formátem kódování UTF-8. |
+| Kódování |V případě CSV a JSON je v tuto chvíli jediným podporovaným formátem kódování UTF-8. |
 | Oddělovač |Platí pouze pro serializaci CSV. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárka, středník, mezera, tabulátor a svislá čára. |
 | Formát |Platí pouze pro typ JSON. **Oddělený řádek** určuje, že výstup je formátován tak, že má každý objekt JSON oddělený novým řádkem. Pokud vyberete možnost **oddělený řádek** , bude JSON číst jeden objekt současně. Celý obsah samotný by nepředstavoval platný formát JSON. **Pole** určuje, že výstup je formátován jako pole objektů JSON. |
 | Sloupce vlastností | Nepovinný parametr. Sloupce oddělené čárkami, které je třeba připojit jako vlastnosti uživatele odchozí zprávy namísto datové části. Další informace o této funkci najdete v části [vlastní vlastnosti metadat pro výstup](#custom-metadata-properties-for-output). |
@@ -66,13 +66,13 @@ V následujícím příkladu `DeviceId` jsou pole a `DeviceStatus` přidána do 
 
 Následující obrázek má očekávané vlastnosti výstupní zprávy, které byly zkontrolovány v centru EventHub pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer).
 
-:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Sloupce vlastností":::
+:::image type="content" source="media/service-bus-queues-output/custom-properties.png" alt-text="Vlastní vlastnosti události":::
 
 ## <a name="system-properties"></a>Systémové vlastnosti
 
-Sloupce dotazu můžete připojit jako [systémové vlastnosti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) do odchozí fronty služby Service Bus nebo do zpráv tématu.
+Sloupce dotazu můžete připojit jako [systémové vlastnosti](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) do odchozí fronty služby Service Bus nebo do zpráv tématu.
 
-Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true) hodnotami sloupce dotazu.
+Tyto sloupce neobsahují datovou část, místo toho se naplní odpovídající [vlastnost BrokeredMessage systému](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) hodnotami sloupce dotazu.
 Tyto vlastnosti systému jsou podporovány – `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc` .
 
 Řetězcové hodnoty těchto sloupců se analyzují jako odpovídající typ hodnoty vlastnosti systému a jakékoli selhání při analýze se považují za chyby dat.

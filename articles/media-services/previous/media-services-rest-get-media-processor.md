@@ -3,7 +3,7 @@ title: Jak získat instanci procesoru médií pomocí REST | Microsoft Docs
 description: Naučte se vytvořit komponentu procesoru médií ke kódování, převedení formátu, šifrování nebo dešifrování mediálního obsahu pro Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: ba625aa048360a4c201b91b4a5a4a7ca4dd6277b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: e1ac2a2408e16c3f8057c49c69c354ebb1e377c7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269501"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348487"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>Jak získat instanci procesoru multimédií
 
@@ -28,18 +28,18 @@ ms.locfileid: "89269501"
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
-> 
-> 
+
 
 ## <a name="overview"></a>Přehled
-Procesory médií jsou součástí, která zpracovává konkrétní úlohu zpracování videa nebo zvuku, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Všechny úlohy odeslané do Media Services vyžadují, aby procesor médií mohl kódování, šifrování nebo převod zvukového nebo zvukového obsahu. 
 
-## <a name="azure-media-processors"></a>Procesory médií Azure 
+Procesory médií jsou součástí, která zpracovává konkrétní úlohu zpracování videa nebo zvuku, jako je například kódování, převod formátu, šifrování nebo dešifrování mediálního obsahu. Všechny úlohy odeslané do Media Services vyžadují, aby procesor médií mohl kódování, šifrování nebo převod zvukového nebo zvukového obsahu.
+
+## <a name="azure-media-processors"></a>Procesory médií Azure
 
 V následujícím tématu najdete seznam procesorů médií:
 
-* [Kódovací procesory médií](scenarios-and-availability.md#encoding-media-processors)
-* [Analytické procesory médií](scenarios-and-availability.md#analytics-media-processors)
+* [Kódovací procesory médií](scenarios-and-availability.md)
+* [Analytické procesory médií](scenarios-and-availability.md)
 
 >[!NOTE]
 >Při přístupu k entitám v Media Services musíte nastavit konkrétní pole a hodnoty hlaviček v požadavcích HTTP. Další informace najdete v tématu [instalace Media Services REST APIm vývoji](media-services-rest-how-to-use.md).
@@ -51,7 +51,7 @@ Informace o tom, jak se připojit k rozhraní API AMS, najdete v tématu [přís
 
 ## <a name="get-a-media-processor"></a>Získat procesor médií
 
-Následující volání REST ukazuje, jak získat instance procesoru médií podle názvu (v tomto případě **Media Encoder Standard**). 
+Následující volání REST ukazuje, jak získat instance procesoru médií podle názvu (v tomto případě **Media Encoder Standard** ). 
 
 Požadavek:
 

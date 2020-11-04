@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345529"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Kurz: práce s frontami úložiště Azure v .NET
 
@@ -95,6 +95,8 @@ Vytvořte aplikaci .NET Core s názvem **QueueApp**. Pro zjednodušení bude tat
    C:\Tutorials\QueueApp>_
    ```
 
+<!-- markdownlint-disable MD023 -->
+
 ## <a name="add-the-azure-client-libraries"></a>Přidání klientských knihoven Azure
 
 1. Do projektu přidejte Azure Storage klientské knihovny pomocí `dotnet add package` příkazu.
@@ -160,7 +162,7 @@ Přidejte připojovací řetězec do aplikace, aby mohl získat přístup k úč
 
 1. Přepněte zpátky na Visual Studio Code.
 
-1. V metodě **Main**  nahraďte `Console.WriteLine("Hello World!");` kód následujícím řádkem, který získá připojovací řetězec z proměnné prostředí.
+1. V metodě **Main** nahraďte `Console.WriteLine("Hello World!");` kód následujícím řádkem, který získá připojovací řetězec z proměnné prostředí.
 
    # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -180,7 +182,7 @@ Přidejte připojovací řetězec do aplikace, aby mohl získat přístup k úč
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="insert-messages-into-the-queue"></a>Vložit zprávy do fronty
 
@@ -214,7 +216,7 @@ Vytvořte novou metodu pro odeslání zprávy do fronty.
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 Zpráva fronty musí být ve formátu kompatibilním s požadavkem XML pomocí kódování UTF-8. Zpráva může mít velikost až 64 KB. Pokud zpráva obsahuje binární data, zpráva se [zakóduje ve formátu base64](/dotnet/api/system.convert.tobase64string) .
 
@@ -238,7 +240,7 @@ Vytvořte novou metodu pro načtení zprávy z fronty. Po úspěšném přijetí
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="delete-an-empty-queue"></a>Odstraní prázdnou frontu.
 
@@ -254,7 +256,7 @@ Je to osvědčený postup na konci projektu k určení, zda stále potřebujete 
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="check-for-command-line-arguments"></a>Vyhledat argumenty příkazového řádku
 
@@ -274,7 +276,7 @@ Nakonec před ukončením počkejte na vstup uživatele voláním **Console. Rea
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
-1. Uložte soubor.
+1. Soubor uložte.
 
 ## <a name="complete-code"></a>Celý kód
 

@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305539"
+ms.locfileid: "93346872"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -24,7 +24,11 @@ Při auditování Linuxu konfigurace hosta využívá [Chef InSpec](https://www.
 Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ověření stavu počítače s Azure nebo mimo Azure.
 
 > [!IMPORTANT]
+> Vlastní definice zásad s konfigurací hosta v prostředích Azure Government a Azure Čína jsou funkcí ve verzi Preview.
+>
 > Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v rámci všech počítačů se systémem Linux, přiřaďte následující definici zásady: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Nepoužívejte tajné klíče ani důvěrné informace v balíčcích vlastního obsahu.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -49,7 +53,9 @@ Operační systémy, ve kterých se modul dá nainstalovat:
 - Windows
 
 > [!NOTE]
-> Rutina ' test-GuestConfigurationPackage ' vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI. To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
+> Rutina `Test-GuestConfigurationPackage` vyžaduje OpenSSL verze 1,0 z důvodu závislosti na OMI. To způsobí chybu v jakémkoli prostředí s OpenSSL 1,1 nebo novějším.
+>
+> Spuštění rutiny `Test-GuestConfigurationPackage` se podporuje jenom ve Windows pro 2.1.0 verze modulu Konfigurace hosta.
 
 Modul prostředků konfigurace hosta vyžaduje následující software:
 
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 
-K vydání aktualizace definice zásady existují dvě pole, která vyžadují pozornost.
+Pro vydání aktualizace do definice zásady existují tři pole, která vyžadují pozornost.
 
-- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta, aby agent rozpoznal aktualizovaný balíček.
+> [!NOTE]
+> `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
+
+- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
+- **contentUri** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
 - **contentHash** : Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtrování zásad konfigurace hostů pomocí značek
 

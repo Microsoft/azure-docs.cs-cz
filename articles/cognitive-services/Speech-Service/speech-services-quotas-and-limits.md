@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567158"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345393"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kvóty a omezení služeb Speech
 
@@ -24,20 +24,35 @@ Tento článek obsahuje stručný přehled a **podrobný popis** kvót a omezen�
 ## <a name="quotas-and-limits-quick-reference"></a>Rychlé reference k kvótám a omezením
 Přejít k [kvótám a omezením pro převod textu na řeč](#text-to-speech-quotas-and-limits-per-speech-resource)
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kvóty a omezení pro Převod řeči na text pro prostředek služby Speech
-V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny cenové úrovně nastavitelované.
+V tabulkách **níže jsou parametry bez "měnitelného** " řádku pro všechny cenové úrovně nastavitelované.
+
+#### <a name="online-transcription"></a>Online přepis
 
 | Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
 |--|--|--|
-| **Limit souběžných požadavků online přepisu (základní a vlastní modely)** |  |  |
-| Výchozí hodnota | 1 | 20 |
+| **Limit souběžných požadavků (základní a vlastní modely)** | 1 | 20 (výchozí hodnota) |
 | Měnitelný | Ne<sup>2</sup> | Ano<sup>2</sup> |
-| **Limit počtu žádostí REST API (koncové body[API Management](../../api-management/api-management-key-concepts.md) )** | 100 požadavků za 10 sekund | 100 požadavků za 10 sekund |
-| **Maximální velikost souboru datové sady pro import dat** | 2 GB | 2 GB |
-| **Maximální velikost vstupního objektu BLOB pro Batch přepisu** | Není k dispozici | 2,5 GB |
-| **Maximální velikost kontejneru objektů BLOB pro dávkový přepis** | Není k dispozici | 5 GB |
-| **Maximální počet objektů blob na kontejner pro dávku přepisu** | Není k dispozici | 10000 |
-| **Maximální počet souborů na žádost o přepis pro dávku přepisu (při použití více adres URL obsahu jako vstupu)** | Není k dispozici | 1000  |
-| **Maximální počet souběžně spuštěných úloh pro Batch přepisu** | Není k dispozici | 2000  |
+
+#### <a name="batch-transcription"></a>Přepis Batch
+| Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
+|--|--|--|
+| Omezení REST API | Batch přepis není pro F0 k dispozici. | 300 požadavků za minutu |
+| Maximální velikost zvukového vstupního souboru | – | 1 GB |
+| Maximální velikost vstupního objektu BLOB (může obsahovat více než jeden soubor, například v archivu zip, nezapomeňte si uvědomit výše uvedený limit velikosti souboru) | – | 2,5 GB |
+| Maximální velikost kontejneru objektů BLOB | – | 5 GB |
+| Maximální počet objektů blob na kontejner | – | 10000 |
+| Maximální počet souborů na žádost o přepis (při použití více adres URL obsahu jako vstupu) | – | 1000  |
+| Maximální počet souběžně spuštěných úloh | – | 2000  |
+
+#### <a name="model-customization"></a>Přizpůsobení modelu
+| Kvóta | Zdarma (F0)<sup>1</sup> | Standardní (S0) |
+|--|--|--|
+| Omezení REST API | 300 požadavků za minutu | 300 požadavků za minutu |
+| Maximální počet datových sad pro řeč | 2 | 500 |
+| Maximální velikost zvukové datové sady pro import dat | 2 GB | 2 GB |
+| Maximální velikost souboru datové sady pro import dat | 200 MB | 1,5 GB |
+| Maximální velikost souboru datové sady výslovnosti pro import dat | 1 kB | 1 MB |
+| Maximální velikost textu při použití `text` parametru v žádosti o [Vytvoření](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/) rozhraní API modelu | 200 KB | 500 kB |
 
 <sup>1</sup> **bezplatná (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>
 <sup>2</sup> . [Další](#detailed-description-quota-adjustment-and-best-practices)informace najdete v tématu vysvětlení, [osvědčené postupy](#general-best-practices-to-mitigate-throttling-during-autoscaling)a [pokyny k úpravám](#speech-to-text-increasing-online-transcription-concurrent-request-limit).<br/> 
@@ -57,7 +72,7 @@ V tabulce níže jsou parametry bez řádku " **Nastaviteled** " pro všechny ce
 | **Kvóty specifické pro protokol WebSocket** |  |  |
 |Maximální délka zvuku vytvořená pro zapnutí | 10 min | 10 min |
 |Maximální velikost zprávy SSML na hodnotu Turn |64 kB |64 kB |
-| **Omezení REST APIch požadavků** | 20 požadavků za minutu | 25 požadavků za 5 sekund |
+| **Omezení REST API** | 20 požadavků za minutu | 25 požadavků za 5 sekund |
 
 
 <sup>3</sup> **zdarma (F0)** cenová úroveň najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)také měsíční náhrady.<br/>
@@ -92,22 +107,22 @@ Hodnota pro souběžný parametr limitu požadavků **se nezobrazuje prostředni
 >[Kontejnery řeči](speech-container-howto.md) nevyžadují zvýšení limitu souběžných požadavků, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.
 
 #### <a name="have-the-required-information-ready"></a>Připravte požadované informace:
-- Pro **základní model**:
+- Pro **základní model** :
   - ID prostředku pro rozpoznávání řeči
   - Oblast
-- Pro **vlastní model**: 
+- Pro **vlastní model** : 
   - Oblast
   - ID vlastního koncového bodu
 
-- **Jak získat informace (základní model)**:  
+- **Jak získat informace (základní model)** :  
   - Přejít na [Azure Portal](https://portal.azure.com/)
   - Vyberte prostředek řeči, pro který chcete zvýšit limit počtu požadavků na souběžnost.
-  - Vybrat *vlastnosti* (skupina*pro správu prostředků* ) 
+  - Vybrat *vlastnosti* (skupina *pro správu prostředků* ) 
   - Zkopírujte a uložte hodnoty následujících polí:
     - **ID prostředku**
     - **Umístění** (vaše koncová oblast)
 
-- **Jak získat informace (vlastní model)**:
+- **Jak získat informace (vlastní model)** :
   - Přejít na portál [Speech Studio](https://speech.microsoft.com/)
   - V případě potřeby se přihlaste.
   - Přejít na Custom Speech
@@ -124,7 +139,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
 - Ujistěte se, že máte [požadované informace](#have-the-required-information-ready) .
 - Přejít na [Azure Portal](https://portal.azure.com/)
 - Vyberte prostředek řeči, pro který chcete zvýšit (nebo zda chcete kontrolu) limitu požadavků na souběžnost.
-- Výběr *nové žádosti o podporu* (*Podpora a skupina řešení potíží* ) 
+- Výběr *nové žádosti o podporu* ( *Podpora a skupina řešení potíží* ) 
 - Zobrazí se nové okno s automaticky vyplněnými informacemi o vašem předplatném Azure a prostředku Azure.
 - Zadejte *Souhrn* (například zvýšení limitu požadavků na STT Concurrency).
 - V části *typ problému* vyberte možnost problémy s kvótou nebo předplatným.
@@ -176,7 +191,7 @@ Zahajte zvýšení limitu souběžných požadavků pro váš prostředek nebo v
 - Ujistěte se, že máte [požadované informace](#prepare-the-required-information) .
 - Přejít na [Azure Portal](https://portal.azure.com/)
 - Vyberte prostředek řeči, pro který chcete zvýšit (nebo zda chcete kontrolu) limitu požadavků na souběžnost.
-- Výběr *nové žádosti o podporu* (*Podpora a skupina řešení potíží* ) 
+- Výběr *nové žádosti o podporu* ( *Podpora a skupina řešení potíží* ) 
 - Zobrazí se nové okno s automaticky vyplněnými informacemi o vašem předplatném Azure a prostředku Azure.
 - Zadat *Souhrn* (například "zvýšit počet požadavků na souběžnost vlastního koncového bodu TTS")
 - V části *typ problému* vyberte možnost problémy s kvótou nebo předplatným.

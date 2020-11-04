@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: bbeb1248fef846afbd1641a668c6db3be4870ca6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082092"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348453"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -42,9 +42,9 @@ Zálohování transakčních protokolů probíhá každých pět minut.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>Servery úložiště pro obecné účely s úložištěm až 16 TB
 
-V podmnožině [oblastí Azure](/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](/azure/mysql/concepts-pricing-tiers#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
+V podmnožině [oblastí Azure](/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
 
-V podmnožině [oblastí Azure](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](/concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
+V podmnožině [oblastí Azure](concepts-pricing-tiers.md#storage)můžou všechny nově zřízené servery podporovat úložiště pro obecné účely až do 16 TB úložišť. Jinými slovy je úložiště s úložištěm až 16 TB výchozím úložištěm pro obecné účely pro všechny [oblasti](concepts-pricing-tiers.md#storage) , kde je podpora podporovaná. Zálohy na těchto 16 TB úložných serverech jsou založené na snímcích. První úplné zálohování snímků je naplánované okamžitě po vytvoření serveru. Tato první úplná záloha snímku se uchová jako základní záloha serveru. Další zálohování snímků je pouze rozdílové.
 
 Rozdílové zálohování snímků se provádí alespoň jednou denně. Rozdílové zálohování snímků se neprovádí podle pevně daného plánu. Rozdílové zálohování snímků probíhá každých 24 hodin, pokud transakční protokol (binlog v MySQL) překračuje 50 GB od poslední rozdílové zálohy. Každý den je možné provést rozdílové zálohování snímků maximálně šestkrát.
 
@@ -69,7 +69,7 @@ Azure Database for MySQL poskytuje flexibilitu při výběru místně redundantn
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>Přechod z místně redundantní do geograficky redundantního úložiště zálohování
 
-Konfigurace místně redundantního nebo geograficky redundantního úložiště pro zálohování je povolená jenom během vytváření serveru. Po zřízení serveru nemůžete změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, je jedinou podporovanou možností vytvoření nového serveru a migrace dat pomocí [výpisu paměti a obnovení](concepts-migrate-dump-restore.md) .
+Místně redundantní nebo geograficky redundantní úložiště zálohování je možné nakonfigurovat pouze při vytváření serveru. Po zřízení serveru není možné změnit možnost redundance úložiště zálohování. Aby bylo možné přesunout úložiště záloh z místně redundantního úložiště do geograficky redundantního úložiště, je jedinou podporovanou možností vytvoření nového serveru a migrace dat pomocí [výpisu paměti a obnovení](concepts-migrate-dump-restore.md) .
 
 ### <a name="backup-storage-cost"></a>Náklady na úložiště zálohování
 

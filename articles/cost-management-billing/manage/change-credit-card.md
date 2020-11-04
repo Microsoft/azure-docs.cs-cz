@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
 ms.openlocfilehash: f773c964d900c45a51eac433c3616a6e4b8978ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92131135"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Přidání nebo aktualizace platební karty pro Azure
@@ -41,29 +41,29 @@ Jako výchozí platební kartu pro předplatné Azure můžete zadat novou plate
 Výchozí platební kartu předplatného můžete změnit na novou pomocí následujících kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte položku **Správa nákladů a fakturace** .  
+1. Vyhledejte položku **Správa nákladů a fakturace**.  
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
 1. Vyberte předplatné, ke kterému chcete přidat platební kartu.
-1. Vyberte **Způsoby platby** .  
+1. Vyberte **Způsoby platby**.  
     ![Snímek obrazovky s vybranou možností Spravovat způsoby platby](./media/change-credit-card/payment-methods-blade-x.png)
 1. V levém horním rohu vyberte + a přidejte kartu. Na pravé straně se zobrazí formulář platební karty.
 1. Zadejte údaje platební karty.  
     ![Snímek obrazovky znázorňující přidávání nové karty](./media/change-credit-card/sub-add-new-x.png)
-1. Pokud chcete tuto kartu nastavit jako aktivní způsob platby, zaškrtněte nad formulářem políčko vedle možnosti **Nastavit tento způsob platby jako aktivní** . Tato karta se stane aktivním platebním nástrojem pro všechna předplatná využívající stejnou kartu jako vybrané předplatné.
-1. Vyberte **Další** .
+1. Pokud chcete tuto kartu nastavit jako aktivní způsob platby, zaškrtněte nad formulářem políčko vedle možnosti **Nastavit tento způsob platby jako aktivní**. Tato karta se stane aktivním platebním nástrojem pro všechna předplatná využívající stejnou kartu jako vybrané předplatné.
+1. Vyberte **Další**.
 
 ### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Změna platební karty pro předplatné (použití už uložené platební karty)
 
 Výchozí platební kartu vašeho předplatného můžete také změnit na kartu, kterou jste si už ve vašem účtu uložili, a to pomocí následujících kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte položku **Správa nákladů a fakturace** .  
+1. Vyhledejte položku **Správa nákladů a fakturace**.  
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
 1. Vyberte předplatné, ke kterému chcete přidat platební kartu.
-1. Vyberte **Způsoby platby** .
+1. Vyberte **Způsoby platby**.
     ![Snímek obrazovky s vybranou možností Spravovat způsoby platby](./media/change-credit-card/payment-methods-blade-x.png)
 1. Zaškrtněte políčko vedle karty, kterou chcete nastavit jako aktivní způsob platby.
-1. Vyberte **Nastavit jako aktivní** .
+1. Vyberte **Nastavit jako aktivní**.
     ![Snímek obrazovky znázorňující vybranou platební kartu a její nastavení jako aktivní](./media/change-credit-card/sub-change-active-x.png)
 
 ### <a name="edit-credit-card-details"></a>Zadání údajů platební karty
@@ -71,14 +71,14 @@ Výchozí platební kartu vašeho předplatného můžete také změnit na kartu
 Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné, můžete aktualizovat údaje stávající platební karty, jako je datum vypršení platnosti. Pokud se číslo vaší karty změní, třeba z důvodu ztráty, krádeže nebo vypršení platnosti karty, postupujte podle návodu v části [Přidání platební karty jako způsobu platby](#addcard). Kód CVV není nutné aktualizovat.
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
-1. Vyhledejte položku **Správa nákladů a fakturace** .
+1. Vyhledejte položku **Správa nákladů a fakturace**.
     ![Snímek obrazovky znázorňující hledání](./media/change-credit-card/search.png)
-1. Vyberte **Způsoby platby** .
+1. Vyberte **Způsoby platby**.
     ![Snímek obrazovky s vybranou možností Spravovat způsoby platby](./media/change-credit-card/payment-methods-blade-x.png)
 1. Vyberte platební kartu, kterou chcete upravit. Na pravé straně se zobrazí formulář platební karty.
     ![Snímek obrazovky s vybranou platební kartou](./media/change-credit-card/edit-card-x.png)
 1. Aktualizujte údaje platební karty.
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
 ## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Správa platebních karet pro smlouvu se zákazníkem Microsoftu
 
@@ -93,14 +93,14 @@ Pokud chcete jako výchozí způsob platby pro váš fakturační profil nastavi
 Pokud chcete změnit platební kartu, postupujte podle následujících kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace** .
-1. V nabídce nalevo vyberte **Fakturační profily** .
+1. Vyhledejte **Cost Management a fakturace**.
+1. V nabídce nalevo vyberte **Fakturační profily**.
 1. Vyberte fakturační profil.
-1. V nabídce na levé straně vyberte **Způsoby platby** .  
+1. V nabídce na levé straně vyberte **Způsoby platby**.  
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
-1. V části **Výchozí způsob platby** vyberte **Nahradit** .  
+1. V části **Výchozí způsob platby** vyberte **Nahradit**.  
     :::image type="content" source="./media/change-credit-card/change-payment-method-mca.png" alt-text="Snímek obrazovky s možností nahrazení" :::
-1. V nové oblasti napravo buď vyberte existující kartu z rozevíracího seznamu, nebo přidejte novou výběrem modrého odkazu **Přidat nový způsob platby** .
+1. V nové oblasti napravo buď vyberte existující kartu z rozevíracího seznamu, nebo přidejte novou výběrem modrého odkazu **Přidat nový způsob platby**.
 
 ### <a name="edit-a-credit-card"></a>Úprava platební karty
 
@@ -109,15 +109,15 @@ Podrobnosti o platební kartě (například aktualizace data vypršení platnost
 Pokud chcete upravit platební kartu, postupujte podle následujících kroků:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyhledejte **Cost Management a fakturace** .
-1. V nabídce nalevo vyberte **Fakturační profily** .
+1. Vyhledejte **Cost Management a fakturace**.
+1. V nabídce nalevo vyberte **Fakturační profily**.
 1. Vyberte fakturační profil.
-1. V nabídce na levé straně vyberte **Způsoby platby** .  
+1. V nabídce na levé straně vyberte **Způsoby platby**.  
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
 1. V části **Vaše platební karty** vyhledejte platební kartu, kterou chcete upravit.
 1. Vyberte tři tečky (`...`) na konci příslušného řádku.  
-    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Snímek obrazovky s možností nahrazení" :::
-1. Pokud chcete upravovat podrobnosti platební karty, v místní nabídce vyberte **Upravit** .
+    :::image type="content" source="./media/change-credit-card/edit-delete-credit-card-mca.png" alt-text="Snímek obrazovky ukazující tři tečky" :::
+1. Pokud chcete upravovat podrobnosti platební karty, v místní nabídce vyberte **Upravit**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -143,7 +143,7 @@ Pokud [platíte pomocí faktury](pay-by-invoice.md), zašlete svoji platbu na ad
 
 ### <a name="how-do-i-change-the-tax-id"></a>Jak změním DIČ?
 
-Pokud chcete přidat nebo aktualizovat DIČ, aktualizujte svůj profil na webu [Azure Portal](https://portal.azure.com) a vyberte **Daňové záznamy** . Toto DIČ slouží k výpočtu slevy na dani a zobrazí se na vaší faktuře.
+Pokud chcete přidat nebo aktualizovat DIČ, aktualizujte svůj profil na webu [Azure Portal](https://portal.azure.com) a vyberte **Daňové záznamy**. Toto DIČ slouží k výpočtu slevy na dani a zobrazí se na vaší faktuře.
 
 ## <a name="check-the-type-of-your-account"></a>Ověření typu účtu
 

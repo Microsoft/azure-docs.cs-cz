@@ -2,24 +2,24 @@
 title: Povolení Azure Automation Update Management z virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak povolit Update Management z virtuálního počítače Azure.
 services: automation
-ms.date: 09/16/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 2d81b822986f641e64b9211300f83e3b254f316d
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 1ed4ad3e1bae34b5007d13c7d092f46e972ac8a8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222378"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347076"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Povolení Update Managementu z virtuálního počítače Azure
 
-Tento článek popisuje, jak můžete pomocí virtuálního počítače Azure povolit funkci [Update Management](overview.md) v jiných počítačích. Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač pomocí Update Management.
+Tento článek popisuje, jak můžete funkci [Update Management](overview.md) povolit na jednom nebo několika virtuálních počítačích Azure (VM). Pokud chcete povolit virtuální počítače Azure ve velkém měřítku, musíte povolit existující virtuální počítač Azure pomocí Update Management.
 
 > [!NOTE]
 > Při povolování Update Management jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../index.yml) pro správu počítačů.
@@ -35,7 +35,7 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Vyberte virtuální počítač, pro který chcete povolit Update Management. Virtuální počítače můžou existovat v libovolné oblasti bez ohledu na umístění vašeho účtu Automation. Vy
 
-3. Na stránce virtuální počítač v části **operace**vyberte **Host + aktualizace hostitelů**.
+3. Na stránce virtuální počítač v části **operace** vyberte **Host + aktualizace hostitelů**.
 
     ![V levém podokně vyberte aktualizace hosta + hostitel.](media/enable-from-vm/select-guest-and-os-updates.png)
 

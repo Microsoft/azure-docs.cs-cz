@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f1c88e721419bf944207b9c748b9250a25f428
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348062"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytváření smyček opakujících akce pracovních postupů nebo zpracovávajících pole v Azure Logic Apps
 
-Chcete-li zpracovat pole ve vaší aplikaci logiky, můžete vytvořit [smyčku "foreach"](#foreach-loop). Tato smyčka opakuje jednu nebo více akcí u každé položky v poli. Omezení počtu položek pole, které můžou smyčky "foreach" zpracovat, najdete v tématu [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li zpracovat pole ve vaší aplikaci logiky, můžete vytvořit [smyčku "foreach"](#foreach-loop). Tato smyčka opakuje jednu nebo více akcí u každé položky v poli. Pro omezení počtu položek pole, které může smyčka "foreach" zpracovat, viz [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
-Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můžete vytvořit [smyčku "do"](#until-loop). Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje. Pro omezení počtu "až" smyček v běhu aplikace logiky si přečtěte část [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můžete vytvořit [smyčku "do"](#until-loop). Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje. Pro omezení počtu "až" cyklů, kdy může aplikace logiky běžet, si přečtěte část [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 > [!TIP]
-> Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
+> Pokud máte aktivační událost, která přijímá pole a chcete pro každou položku pole Spustit pracovní postup, můžete toto pole v *dávce* [ **SplitOn** vlastností triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,9 @@ Chcete-li opakovat akce, dokud není splněna podmínka nebo změny stavu, můž
 
 ## <a name="foreach-loop"></a>Smyčka foreach
 
-"Foreach Loop" opakuje jednu nebo více akcí u každé položky pole a funguje pouze pro pole. Zde jsou některé okolnosti použití smyček "foreach":
+Smyčka "foreach" opakuje jednu nebo více akcí u každé položky pole a funguje pouze pro pole. Zde jsou některé okolnosti použití smyček "foreach":
+
+* Smyčka foreach může zpracovat omezený počet položek pole. Pro toto omezení viz [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 * Ve výchozím nastavení se iterace ve smyčce "foreach" spouští ve stejnou dobu, nebo paralelně. Toto chování se liší od [Automatizace napájení u **všech** cyklů](/power-automate/apply-to-each) , kde jsou iterace spouštěny po jednom, nebo sekvenčně. Můžete ale [nastavit sekvenční iterace smyčky "foreach"](#sequential-foreach-loop). Například pokud chcete pozastavit další iteraci ve smyčce "foreach" pomocí [akce zpoždění](../connectors/connectors-native-delay.md), je nutné nastavit smyčku tak, aby běžela sekvenčně.
 
@@ -122,11 +124,11 @@ Pokud pracujete v zobrazení kódu aplikace logiky, můžete `Foreach` místo to
 
 Ve výchozím nastavení se cyklická smyčka "foreach" spouští paralelně. Chcete-li každý cyklus spustit postupně, nastavte možnost **sekvenční** smyčky. Smyčky "foreach" musí běžet sekvenčně, pokud máte vnořené smyčky nebo proměnné uvnitř smyček, kde očekáváte předvídatelné výsledky. 
 
-1. V pravém horním rohu smyčky vyberte **tři tečky** (**...**) > **Nastavení**.
+1. V pravém horním rohu smyčky vyberte **tři tečky** ( **...** ) > **Nastavení**.
 
    ![Na smyčce "foreach" vyberte možnost "..." > "nastavení".](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. V části **řízení souběžnosti**přepněte nastavení **řízení souběžnosti** na **zapnuto**. Přesuňte posuvník **stupeň paralelismus** na **1**a potom vyberte **Hotovo**.
+1. V části **řízení souběžnosti** přepněte nastavení **řízení souběžnosti** na **zapnuto**. Přesuňte posuvník **stupeň paralelismus** na **1** a potom vyberte **Hotovo**.
 
    ![Zapnout řízení souběžnosti](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
@@ -150,7 +152,7 @@ Pokud pracujete s definicí JSON vaší aplikace logiky, můžete použít `Sequ
 
 ## <a name="until-loop"></a>Smyčka "do"
   
-Chcete-li spustit a opakovat akce, dokud není splněna podmínka, nebo dojde ke změně stavu, vložte tyto akce do smyčky "do". Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje.
+Chcete-li spustit a opakovat akce, dokud není splněna podmínka, nebo dojde ke změně stavu, vložte tyto akce do smyčky "do". Vaše aplikace logiky nejdřív spustí všechny akce uvnitř smyčky a pak zkontroluje podmínku nebo stav. Pokud je podmínka splněna, smyčka se zastaví. V opačném případě se smyčka opakuje. Pro omezení počtu "až" cyklů, kdy může aplikace logiky běžet, si přečtěte část [omezení souběžnosti, smyček a dedávkování](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
 
 Tady je několik běžných scénářů, kde můžete použít smyčku "do":
 
@@ -213,7 +215,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
    ![Přidat akci pro přírůstkovou proměnnou](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-1. Jako **název**vyberte proměnnou **omezení** . Jako **hodnotu**zadejte "1". 
+1. Jako **název** vyberte proměnnou **omezení** . Jako **hodnotu** zadejte "1". 
 
      ![Přírůstek "limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
@@ -232,7 +234,7 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
       | Vlastnost | Hodnota | Popis |
       | -------- | ----- | ----------- | 
-      | **Záměr** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
+      | **Schopn** | *\<email-address\@domain>* | E-mailová adresa příjemce Pro účely testování použijte svoji vlastní e-mailovou adresu. | 
       | **Předmět** | Aktuální hodnota pro omezení je **limit** . | Zadejte předmět e-mailu. V tomto příkladu se ujistěte, že jste zahrnuli **mezní** proměnnou. | 
       | **Text** | <*e-mail – obsah*> | Zadejte obsah e-mailové zprávy, kterou chcete odeslat. V tomto příkladu zadejte libovolný text, který chcete. | 
       |||| 
@@ -247,9 +249,9 @@ Počínaje 8:00 ráno každý den Tato ukázková aplikace logiky zvýší prom�
 
 Smyčka "do" má výchozí omezení, která zastaví provádění, pokud nastane kterákoli z těchto podmínek:
 
-| Vlastnost | Výchozí hodnota | Description | 
+| Vlastnost | Výchozí hodnota | Popis | 
 | -------- | ------------- | ----------- | 
-| **Počet** | 60 | Nejvyšší počet cyklů, které jsou spuštěny před ukončením smyčky. Výchozí hodnota je 60 cyklů. | 
+| **Výpočtu** | 60 | Nejvyšší počet cyklů, které jsou spuštěny před ukončením smyčky. Výchozí hodnota je 60 cyklů. | 
 | **Prodlev** | PT1H | Maximální doba, po kterou se má spustit smyčka před ukončením smyčky. Výchozí hodnota je jedna hodina a je zadána ve formátu ISO 8601. <p>Hodnota časového limitu se vyhodnocuje pro každý cyklus smyčky. Pokud akce ve smyčce trvá déle, než je časový limit, aktuální cyklus se nezastaví. Další cyklus se ale nespustí, protože podmínka limitu není splněná. | 
 |||| 
 
@@ -333,7 +335,7 @@ V tomto příkladu "dokud" smyčka volá koncový bod HTTP, který vytvoří pro
 }
 ```
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 * Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, [Azure Logic Apps Web zpětné vazby uživatelů](https://aka.ms/logicapps-wish).

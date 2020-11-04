@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315806"
+ms.locfileid: "93347518"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Správa veřejného obsahu pomocí Azure Container Registry
 
@@ -28,7 +28,7 @@ Bez správných ovládacích prvků, které mají závislosti na obsahu veřejn�
 V prvním kroku, pokud v rámci pracovního postupu sestavení nebo nasazení aktuálně vystavíte veřejné image z Docker Hub, doporučujeme místo vytváření anonymní žádosti o přijetí změn provést [ověření pomocí účtu Docker Hub](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
 
 > [!NOTE]
-> Od 2. listopadu 2020 se [limity četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit) vztahují na anonymní a ověřené požadavky na dokovací centrum z účtů bezplatného plánu Docker a vynutila IP adresa a ID Docker, respecitively. 
+> Od 2. listopadu 2020 se [limity četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit) vztahují na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a jsou vyhodnoceny podle IP adresy a ID Docker v uvedeném pořadí. 
 >
 > Při odhadování počtu žádostí o přijetí změn Vezměte v úvahu, že při použití služeb poskytovatele cloudu nebo při práci za podnikovým překladem adres (NAT) bude k dispozici více uživatelů, kteří mají v souhrnu k dispozici jako podmnožinu IP adres. Přidání ověřování placeného účtu Docker do požadavků odeslaných do služby Docker Hub se vyhnete potenciálním přerušením služeb z důvodu omezení četnosti.
 >

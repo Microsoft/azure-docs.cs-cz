@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7cf3caa0e309c1640db6ca2817a91f9db71c5110
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 03655e88d4d4c9183bff71e04bf447f470fcf557
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129911"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348402"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Základní hodnoty zabezpečení Azure pro Stream Analytics
 
@@ -238,9 +238,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Doprovodné** materiály: Azure AD má předdefinované role, které se musí explicitně přiřadit. K rolím se dá dotázat, aby se zjistilo členství. Pomocí modulu Azure AD PowerShell můžete provádět ad hoc dotazy a zjišťovat účty, které jsou členy skupin pro správu.
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -542,7 +542,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 * [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription)
 
 * [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -682,7 +682,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Pokyny** : použijte aliasy Azure Policy v oboru názvů "Microsoft. StreamAnalytics" k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace Azure Stream Analytics. Můžete také využít integrované definice zásad související s vaším Azure Stream Analytics, například:-diagnostické protokoly v Azure Stream Analytics by měly být povolené.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Azure Policy předdefinované definice zásad](../governance/policy/samples/built-in-policies.md)
 
@@ -724,7 +724,7 @@ Kromě toho použijte Azure Resource Graph k dotazování nebo zjišťování pr
 
 **Doprovodné** materiály: Používejte Azure Repos k bezpečnému ukládání a správě kódu, včetně vlastních zásad Azure, šablon Azure Resource Manager, požadovaných skriptů konfigurace stavu, uživatelsky definovaných funkcí a dotazů. Pokud chcete získat přístup k prostředkům, které spravujete v Azure DevOps, můžete udělit nebo odepřít oprávnění konkrétním uživatelům, vestavěným skupinám zabezpečení nebo skupinám definovaným v Azure Active Directory (Azure AD), pokud jsou integrované s Azure DevOps, nebo Active Directory, pokud je integrovaná se sadou TFS.
 
-* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
 * [O oprávněních a skupinách v Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -880,7 +880,7 @@ Aby bylo možné zálohovat data z podporovaných služeb účtu úložiště, j
 
 Klíče spravované zákazníkem a poskytnuté klíče je možné zálohovat v rámci služby Azure Key Vault pomocí rozhraní příkazového řádku Azure CLI nebo PowerShellu.
 
-* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Monitorování Azure Security Center** : aktuálně není k dispozici.
 

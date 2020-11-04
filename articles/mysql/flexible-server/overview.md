@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927970"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348283"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – flexibilní Server (Preview)
 
@@ -50,7 +50,7 @@ Pokud je nakonfigurovaná vysoká dostupnost zóny, služba zřídí a udržuje 
 
 Další podrobnosti najdete v tématu [Koncepty vysoké dostupnosti](concepts-high-availability.md) .
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Koncepční diagram vysoké dostupnosti jedné zóny"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Koncepční diagram redundantní vysoké dostupnosti zóny"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatizované opravy pomocí spravovaného časového období údržby
 
@@ -66,7 +66,7 @@ Další informace najdete v tématu [Koncepty zálohování](concepts-backup-res
 
 ## <a name="network-isolation"></a>Izolace sítě
 
-Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for MySQL flexibilnímu serveru. Možnosti jsou **privátní přístup (Integration VNET)** a **veřejný přístup (povolených IP adres)** . 
+Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for MySQL flexibilnímu serveru. Možnosti jsou **privátní přístup (Integration VNET)** a **veřejný přístup (povolených IP adres)**. 
 
 * **Privátní přístup (Integration VNET)** – flexibilní Server můžete nasadit do [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md). Virtuální sítě Azure poskytují soukromou a zabezpečenou síťovou komunikaci. Prostředky ve virtuální síti můžou komunikovat prostřednictvím privátních IP adres.
 
@@ -75,7 +75,7 @@ Máte dvě možnosti sítě, které se připojí k vašemu Azure Database for My
    * Pomocí VPN nebo ExpressRoute se připojte z jiných prostředků než Azure k flexibilnímu serveru.
    * Žádný veřejný koncový bod
 
-* **Veřejný přístup (povolené IP adresy)** – flexibilní Server můžete nasadit pomocí veřejného koncového bodu. Veřejný koncový bod je veřejně přeložitelný adresa DNS. Fráze "povolené IP adresy" odkazuje na rozsah IP adres, které se rozhodnete udělit oprávnění k přístupu k serveru. Tato oprávnění se nazývají **pravidla brány firewall** .
+* **Veřejný přístup (povolené IP adresy)** – flexibilní Server můžete nasadit pomocí veřejného koncového bodu. Veřejný koncový bod je veřejně přeložitelný adresa DNS. Fráze "povolené IP adresy" odkazuje na rozsah IP adres, které se rozhodnete udělit oprávnění k přístupu k serveru. Tato oprávnění se nazývají **pravidla brány firewall**.
 
 Další informace najdete v tématu [Koncepty sítě](concepts-networking.md) .
 
@@ -89,9 +89,9 @@ Další informace najdete v tématu [Koncepty služby COMPUTE and Storage](conce
 
 MySQL je jedním z oblíbených databázových modulů pro provozování webových a mobilních aplikací v internetovém měřítku. Spousta našich zákazníků ji používá pro svoje online vzdělávací služby, služby streamování videí, digitální platební řešení, platformy elektronického obchodování, herní služby, diskusní portály, státní správu a weby zdravotnictví. Tyto služby jsou nutné k obsluze a škálování při zvyšování provozu webové nebo mobilní aplikace.
 
-Na straně aplikace je aplikace obvykle vyvinutá v jazyce Java nebo php a migrována do provozu na [Azure Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview.md)   nebo v [Azure App Services](/azure/app-service/overview.md)   nebo je kontejnerem pro spuštění ve [službě Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md). Pomocí sady škálování virtuálních počítačů, App Service nebo AKS jako základní infrastruktury, se škálování aplikace zjednodušuje okamžitým zřizováním nových virtuálních počítačů a replikací bezstavových komponent aplikací do zařízení do systému stravování až po požadavky, ale databáze ukončí kritické body jako centralizované stavové součásti.
+Na straně aplikace je aplikace obvykle vyvinutá v jazyce Java nebo php a migrována do provozu na [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/overview.md)   nebo v [Azure App Services](../../app-service/overview.md)   nebo je kontejnerem pro spuštění ve [službě Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md). Pomocí sady škálování virtuálních počítačů, App Service nebo AKS jako základní infrastruktury, se škálování aplikace zjednodušuje okamžitým zřizováním nových virtuálních počítačů a replikací bezstavových komponent aplikací do zařízení do systému stravování až po požadavky, ale databáze ukončí kritické body jako centralizované stavové součásti.
 
-Funkce replika čtení umožňuje replikovat data z Azure Database for MySQL flexibilního serveru do serveru jen pro čtení. Můžete replikovat ze zdrojového serveru do až **10 replik** . Repliky se asynchronně aktualizují pomocí [technologie replikace nativního binárního protokolu (binlog)](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)modulu MySQL. Řešení proxy serveru pro vyrovnávání zatížení, jako je [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) , můžete využít k bezproblémovému škálování úlohy aplikace na čtení replik bez jakýchkoli nákladů refaktoringu aplikací. 
+Funkce replika čtení umožňuje replikovat data z Azure Database for MySQL flexibilního serveru do serveru jen pro čtení. Můžete replikovat ze zdrojového serveru do až **10 replik**. Repliky se asynchronně aktualizují pomocí [technologie replikace nativního binárního protokolu (binlog)](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)modulu MySQL. Řešení proxy serveru pro vyrovnávání zatížení, jako je [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) , můžete využít k bezproblémovému škálování úlohy aplikace na čtení replik bez jakýchkoli nákladů refaktoringu aplikací. 
 
 Další informace najdete v tématu věnovaném [konceptům repliky pro čtení](concepts-read-replicas.md) . 
 

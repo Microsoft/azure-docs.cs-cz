@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 57fc0ebc10158b41539d4802aa6a8ebdd466dd90
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50f15d041f9bcea66400eda0877e9d7914335d74
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783296"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345716"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python
 
@@ -21,26 +21,26 @@ Začněte s klientskou knihovnou Azure Queue Storage verze 12 pro Python. Azure 
 
 Použijte klientskou knihovnu Azure Queue Storage V12 pro Python:
 
-* Vytvoření fronty
-* Přidání zpráv do fronty
-* Prohlížet zprávy ve frontě
-* Aktualizace zprávy ve frontě
-* Přijímání zpráv z fronty
-* Odstranění zpráv z fronty
-* Odstranění fronty
+- Vytvoření fronty
+- Přidání zpráv do fronty
+- Prohlížet zprávy ve frontě
+- Aktualizace zprávy ve frontě
+- Přijímání zpráv z fronty
+- Odstranění zpráv z fronty
+- Odstranění fronty
 
 Další prostředky:
 
-* [Referenční dokumentace k rozhraní API](/python/api/azure-storage-queue/index)
-* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
-* [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-queue/)
-* [Ukázky](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [Referenční dokumentace k rozhraní API](/python/api/azure-storage-queue/index)
+- [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+- [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-queue/)
+- [ukázky](../common/storage-samples-python.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
-* [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7, 3,5 nebo novější
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Účet úložiště Azure – [Vytvoření účtu úložiště](../common/storage-account-create.md)
+- [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7, 3,5 nebo novější
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -48,7 +48,7 @@ Tato část vás provede přípravou projektu pro práci s klientskou knihovnou 
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvoření aplikace v Pythonu s názvem *Queues-Start-V12* .
+Vytvoření aplikace v Pythonu s názvem *Queues-Start-V12*.
 
 1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro projekt.
 
@@ -101,9 +101,9 @@ Tento příkaz nainstaluje klientskou knihovnu Azure Queue Storage pro balíček
 
 Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Zpráva fronty může mít velikost až 64 KB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště. Fronty se běžně používají k vytváření nevyřízených položek pro asynchronní zpracování. Queue Storage nabízí tři typy prostředků:
 
-* Účet úložiště
-* Fronta v účtu úložiště
-* Zprávy ve frontě
+- Účet úložiště
+- Fronta v účtu úložiště
+- Zprávy ve frontě
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
@@ -111,22 +111,22 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
-* [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
+- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
+- [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+- [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
 Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou Azure Queue Storage pro Python:
 
-* [Získání připojovacího řetězce](#get-the-connection-string)
-* [Vytvoření fronty](#create-a-queue)
-* [Přidání zpráv do fronty](#add-messages-to-a-queue)
-* [Prohlížet zprávy ve frontě](#peek-at-messages-in-a-queue)
-* [Aktualizace zprávy ve frontě](#update-a-message-in-a-queue)
-* [Přijímání zpráv z fronty](#receive-messages-from-a-queue)
-* [Odstranění zpráv z fronty](#delete-messages-from-a-queue)
-* [Odstranění fronty](#delete-a-queue)
+- [Získání připojovacího řetězce](#get-the-connection-string)
+- [Vytvoření fronty](#create-a-queue)
+- [Přidání zpráv do fronty](#add-messages-to-a-queue)
+- [Prohlížet zprávy ve frontě](#peek-at-messages-in-a-queue)
+- [Aktualizace zprávy ve frontě](#update-a-message-in-a-queue)
+- [Přijímání zpráv z fronty](#receive-messages-from-a-queue)
+- [Odstranění zpráv z fronty](#delete-messages-from-a-queue)
+- [Odstranění fronty](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
@@ -316,5 +316,5 @@ Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 > [!div class="nextstepaction"]
 > [Azure pro vývojáře v Pythonu](/azure/python/)
 
-* Další informace najdete v tématu [knihovny Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
-* Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte na [ukázky V12 knihovny klienta Python pro Azure Queue Storage](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples).
+- Další informace najdete v tématu [knihovny Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
+- Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte na [ukázky V12 knihovny klienta Python pro Azure Queue Storage](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples).

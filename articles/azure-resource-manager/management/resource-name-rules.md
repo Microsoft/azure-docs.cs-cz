@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653362"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347790"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -494,6 +494,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | firewallPolicies | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | firewallPolicies / ruleGroups | Zásady brány firewall | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | frontDoors | global | 5-64 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | frontdoorWebApplicationFirewallPolicies | skupina prostředků | 1-128 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 > | loadBalancers | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | loadBalancers/inboundNatRules | Load Balancer | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | localNetworkGateways | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
@@ -543,7 +544,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

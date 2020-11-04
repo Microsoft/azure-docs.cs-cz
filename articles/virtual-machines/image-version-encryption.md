@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333460"
+ms.locfileid: "93347705"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,7 +23,7 @@ Pro šifrování vašich imagí můžete spoléhat na klíče spravované platfo
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento článek vyžaduje, abyste již v každé oblasti, do které chcete image replikovat, nastavili šifrovací disk.
 
@@ -134,7 +134,7 @@ V případě datových disků je nutné přidat `-DiskEncryptionSetId $setID` pa
 
 ## <a name="cli"></a>Rozhraní příkazového řádku 
 
-Ve verzi Public Preview musíte nejprve zaregistrovat funkci.
+V rámci verze Public Preview se nejdřív musíte zaregistrovat u této funkce. Registrace trvá přibližně 30 minut.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption

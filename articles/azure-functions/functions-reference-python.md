@@ -4,18 +4,22 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108418"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346311"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
 Tento článek představuje úvod k vývoji Azure Functions s využitím Pythonu. Níže uvedený obsah předpokládá, že už jste si přečetli [příručku pro vývojáře Azure Functions](functions-reference.md).
 
-Ukázkové projekty samostatné funkce v Pythonu najdete v [ukázkách funkcí Pythonu](/samples/browse/?products=azure-functions&languages=python).
+Jako vývojář v Pythonu se může také zajímat jedna z následujících článků:
+
+| Začínáme | Koncepty| Scénáře/ukázky |
+| -- | -- | -- | 
+| <ul><li>[Funkce Pythonu používající Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Funkce Pythonu s terminálem/Command Prompt](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Klasifikace obrázků s využitím PyTorchu](machine-learning-pytorch.md)</li><li>[Ukázka Azure Automation](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Machine learning s TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Procházet ukázky v Pythonu](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programovací model
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python) pro svázání vstupu a výstupů s vašimi metodami.
+Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions. *](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) pro svázání vstupu a výstupů s vašimi metodami.
 
 ## <a name="alternate-entry-point"></a>Alternativní vstupní bod
 
@@ -83,19 +87,19 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
 ```
 Hlavní složka projektu ( \_ \_ aplikace \_ \_ ) může obsahovat následující soubory:
 
-* *local.settings.jsv*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
-* *host.js*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
-* *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
-* *Souboru Dockerfile*: (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
+* *local.settings.jsv* : používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt* : obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
+* *host.js* : obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
+* *. funcignore* : (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
+* *Souboru Dockerfile* : (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json).
 
-Když nasadíte projekt do aplikace Function App v Azure, celý obsah hlavní složky projektu (* \_ \_ App \_ \_ *) by měl být součástí balíčku, ale ne samotné složky. V tomto příkladu doporučujeme udržovat testy ve složce oddělené od složky projektu `tests` . Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
+Když nasadíte projekt do aplikace Function App v Azure, celý obsah hlavní složky projektu ( *\_ \_ App \_ \_* ) by měl být součástí balíčku, ale ne samotné složky. V tomto příkladu doporučujeme udržovat testy ve složce oddělené od složky projektu `tests` . Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
 
 ## <a name="import-behavior"></a>Chování při importu
 
-Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci aplikace Function App. * \_ \_ \_ \_ \_ první \_ funkce \\ _ \_ init \_ \_ . py*:
+Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci aplikace Function App. *\_ \_ \_ \_ \_ první \_ funkce \\ _ \_ init \_ \_ . py* :
 
 ```python
 from . import example #(explicit relative)
@@ -127,7 +131,7 @@ from example import some_helper_code
 import shared_code
 ```
 
-Sdílený kód by měl být uložený v samostatné složce * \_ \_ aplikace \_ \_ *. Chcete-li odkazovat na moduly ve složce *sdíleného \_ kódu* , můžete použít následující syntaxi:
+Sdílený kód by měl být uložený v samostatné složce *\_ \_ aplikace \_ \_*. Chcete-li odkazovat na moduly ve složce *sdíleného \_ kódu* , můžete použít následující syntaxi:
 
 ```python
 from __app__.shared_code import my_first_helper_function
@@ -194,7 +198,7 @@ Výstup může být vyjádřen v návratové hodnotě i v parametrech Output. Po
 
 Chcete-li použít vrácenou hodnotu funkce jako hodnotu výstupní vazby, `name` vlastnost vazby by měla být nastavena na hodnotu `$return` v `function.json` .
 
-Chcete-li vytvořit více výstupů, použijte `set()` metodu poskytnutou [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) rozhraním pro přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
+Chcete-li vytvořit více výstupů, použijte `set()` metodu poskytnutou [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) rozhraním pro přiřazení hodnoty k vazbě. Například následující funkce může odeslat zprávu do fronty a také vrátit odpověď HTTP.
 
 ```json
 {
@@ -310,7 +314,7 @@ Klíčem ke zlepšení výkonu je porozumění způsobu, jakým vaše aplikace p
 
 Výchozí konfigurace jsou vhodné pro většinu Azure Functionsch aplikací. Můžete ale zvýšit výkon propustnosti vašich aplikací tím, že použijete konfigurace na základě vašeho profilu zatížení. Prvním krokem je pochopení typu úlohy, kterou používáte.
 
-|| Vstupně-výstupní úlohy vázané na vstup/výstup | Zatížení vázané na procesor |
+|&nbsp;| Vstupně-výstupní úlohy vázané na vstup/výstup | Zatížení vázané na procesor |
 |--| -- | -- |
 |Vlastnosti aplikace Function App| <ul><li>Aplikace potřebuje zpracovat mnoho souběžných volání.</li> <li> Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk.</li> </ul>| <ul><li>Aplikace provádí dlouhotrvající výpočty, jako je například změna velikosti obrázku.</li> <li>Aplikace provádí transformaci dat.</li> </ul> |
 |Příklady| <ul><li>Webová rozhraní API</li><ul> | <ul><li>Zpracování dat</li><li> Odvození strojového učení</li><ul>|
@@ -381,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 ## <a name="context"></a>Kontext
 
-Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) do jejího podpisu argument.
+Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) do jejího podpisu argument.
 
 Například:
 
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python) má následující atributy řetězce:
+Třída [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) má následující atributy řetězce:
 
 `function_directory` Adresář, ve kterém je funkce spuštěná.
 
@@ -746,7 +750,7 @@ Všechny známé problémy a žádosti o funkce jsou sledovány pomocí seznamu 
 
 Další informace naleznete v následujících zdrojích:
 
-* [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Dokumentace k rozhraní API balíčku Azure Functions](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Vazby úložiště objektů BLOB](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ Další informace naleznete v následujících zdrojích:
 * [Trigger časovače](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

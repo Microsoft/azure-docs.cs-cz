@@ -3,12 +3,12 @@ title: Kurz nepřetržitého nahrávání videa do cloudu a přehrávání z clo
 description: V tomto kurzu se naučíte používat Azure Live video Analytics na Azure IoT Edge k nepřetržitému nahrávání videa do cloudu a streamování libovolné části tohoto videa pomocí Azure Media Services.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774024"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346362"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Kurz: nepřetržité nahrávání videa do cloudu a přehrávání z cloudu
 
@@ -33,7 +33,7 @@ Než začnete, přečtěte si tyto články:
 * [Koncepty Media graphu](media-graph-concept.md) 
 * [Scénáře nepřetržitého nahrávání videí](continuous-video-recording-concept.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předpoklady pro tento kurz:
 
@@ -74,8 +74,8 @@ Než začnete, ověřte, že jste dokončili třetí odrážku v části [požad
 
 Z zájmu tohoto kurzu jsou soubory:
 
-* **~/clouddrive/lva-Sample/Edge-Deployment/.env**: obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
-* **~/clouddrive/lva-sample/appsettings.json**: používá Visual Studio Code ke spuštění ukázkového kódu.
+* **~/clouddrive/lva-Sample/Edge-Deployment/.env** : obsahuje vlastnosti, které Visual Studio Code používá k nasazení modulů do hraničního zařízení.
+* **~/clouddrive/lva-sample/appsettings.json** : používá Visual Studio Code ke spuštění ukázkového kódu.
 
 Budete potřebovat soubory pro tyto kroky:
 
@@ -93,7 +93,7 @@ Budete potřebovat soubory pro tyto kroky:
     Připojovací řetězec IoT Hub umožňuje používat Visual Studio Code k posílání příkazů do hraničních modulů přes Azure IoT Hub.
     
 1. Potom přejděte do složky src/Edge a vytvořte soubor s názvem **. env**.
-1. Zkopírujte obsah ze souboru ~/clouddrive/lva-Sample/.env. Text by měl vypadat takto:
+1. Zkopírujte obsah ze souboru ~/clouddrive/lva-Sample/Edge-Deployment/.env. Text by měl vypadat takto:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -114,14 +114,14 @@ Budete potřebovat soubory pro tyto kroky:
 
 V Visual Studio Code otevřete src/Edge/deployment.template.jsna. Tato šablona definuje, které moduly Edge nasadíte do hraničního zařízení (virtuální počítač Azure Linux). V části **modulů** jsou dvě položky s následujícími názvy:
 
-* **lvaEdge**: Toto je Live video Analytics v modulu IoT Edge.
-* **rtspsim**: Toto je simulátor RTSP.
+* **lvaEdge** : Toto je Live video Analytics v modulu IoT Edge.
+* **rtspsim** : Toto je simulátor RTSP.
 
 Pak přejděte do složky src/Cloud-to-Device-Console-App Tady se zobrazí appsettings.jsv souboru, který jste vytvořili společně s několika dalšími soubory:
 
-* **C2D-Console-App. csproj**: soubor projektu pro Visual Studio Code.
-* **operations.js**: Tento soubor obsahuje seznam různých operací, které byste spustili.
-* **Program.cs**: vzorový programový kód, který:
+* **C2D-Console-App. csproj** : soubor projektu pro Visual Studio Code.
+* **operations.js** : Tento soubor obsahuje seznam různých operací, které byste spustili.
+* **Program.cs** : vzorový programový kód, který:
     * Načte nastavení aplikace.
     * Vyvolá přímé metody vystavené živým analýzou videa v modulu IoT Edge. Pomocí modulu můžete analyzovat živé datové proudy videa vyvoláním jeho [přímých metod](direct-methods.md).
     * Pozastaví, abyste prozkoumali výstup programu v okně **terminálu** a události generované modulem v okně **výstup** .
@@ -143,8 +143,8 @@ Manifest nasazení definuje, které moduly jsou nasazeny do hraničního zaříz
    ![Vytvoření nasazení pro jedno zařízení](./media/quickstarts/create-deployment-single-device.png)
 1. Pak budete požádáni o **Výběr zařízení IoT Hub**. V rozevíracím seznamu vyberte lva-Sample-Device.
 1. V přibližně 30 sekundách aktualizujte Azure IoT Hub v části vlevo dole. Mělo by se zobrazit hraniční zařízení s nasazenými následujícími moduly:
-    * Live video Analytics na IoT Edge (název modulu **lvaEdge**)
-    * Simulátor RTSP (název modulu **rtspsim**)
+    * Live video Analytics na IoT Edge (název modulu **lvaEdge** )
+    * Simulátor RTSP (název modulu **rtspsim** )
  
     ![IoT Hub](./media/continuous-video-recording-tutorial/iot-hub.png)
 
@@ -164,11 +164,63 @@ Při použití nástroje Live video Analytics v modulu IoT Edge k nahrání stre
 1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Graf médií":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Nastavení rozšíření":::
 1. Vyhledejte a povolte možnost zobrazit podrobnou zprávu.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Graf médií"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Zobrazit podrobnou zprávu":::
+1. <!--In Visual Studio Code, go-->V systému použijte src/Cloud-to-Device-Console-App/operations.js.
+1. V uzlu **GraphTopologySet** upravte následující položky:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. V dalším kroku v uzlech **GraphInstanceSet** a **GraphTopologyDelete** zajistěte, aby hodnota vlastnosti **topologického** odpovídala hodnotě vlastnosti **Name** v předchozí topologii grafu:
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. Otevřete [topologii](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) v prohlížeči a podívejte se na assetNamePattern. Abyste se ujistili, že máte Asset s jedinečným názvem, můžete změnit název instance grafu v operations.jssouboru (z výchozí hodnoty Sample-Graph-1).
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. Spusťte ladicí relaci výběrem F5. V okně **terminálu** se zobrazí zprávy, které se vytisknou.
+1. operations.jsv souboru začíná s voláními GraphTopologyList a GraphInstanceList. Pokud jste vyčistili prostředky po předchozích rychlých startech nebo kurzech, tato akce vrátí prázdné seznamy a potom se pozastaví, abyste vybrali **ENTER** , jak je znázorněno níže:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. Po výběru **ENTER** v okně **terminálu** se provede další sada přímých volání metody:
+   * Volání GraphTopologySet pomocí předchozího topologyUrlu
+   * Volání GraphInstanceSet pomocí následujícího textu
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }

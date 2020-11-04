@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339709"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346515"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Použití adaptivních řízení aplikací k omezení ploch útoků počítačů
 
@@ -54,7 +54,7 @@ Definováním seznamů známých aplikací v bezpečí a generování výstrah v
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Podporované počítače:|![](./media/icons/yes-icon.png)Počítače Azure a jiné než Azure se systémem Windows a Linux<br>![Počítače s ](./media/icons/yes-icon.png) [obloukem Azure ARC](../azure-arc/index.yml)|
 |Požadované role a oprávnění:|Role **Čtenář zabezpečení** a **Čtenář** můžou zobrazovat skupiny i seznamy známých aplikací, které jsou v bezpečí.<br>Role **Přispěvatel** a **Správce zabezpečení** můžou upravovat skupiny i seznamy známých aplikací, které jsou v bezpečí.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -135,7 +135,7 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 
       ![Přidat vlastní pravidlo](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
-   1. Pokud definujete známou bezpečnou cestu, změňte **Typ pravidla** na ' path '. V cestě můžete zadat zástupné znaky.
+   1. Pokud definujete známou bezpečnou cestu, změňte **Typ pravidla** na ' path ' a zadejte jednu cestu. V cestě můžete zadat zástupné znaky.
    
       > [!TIP]
       > Některé scénáře, které mohou být užitečné pro zástupné znaky v cestě:
@@ -156,12 +156,12 @@ Můžete se rozhodnout upravit seznam povolených počítačů pro skupinu poč�
 
     V tomto podokně se zobrazuje název skupiny (kterou lze upravit), typ operačního systému, umístění a další relevantní podrobnosti.
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="Stránka nastavení skupiny pro Adaptivní řízení aplikací" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
     > [!IMPORTANT]
     > Možnost **vyhovět** v nastavení režim ochrany typu souboru je ve **všech** scénářích šedá. V tuto chvíli nejsou k dispozici žádné možnosti vynucování. 
     >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Otevření adaptivních řízení aplikací z řídicího panelu Azure":::
+    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="Režim vymáhání pro ochranu souborů je trvale šedý. Nejsou k dispozici žádné možnosti vynucení.":::
 
 1. Volitelně můžete změnit název skupiny nebo režimy ochrany typu souboru.
 

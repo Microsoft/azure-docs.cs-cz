@@ -3,7 +3,7 @@ title: Vytvoření účtu Azure Media Services pomocí webu Azure Portal | Dokum
 description: Tento kurz vás provede kroky pro vytvoření účtu služby Azure Media Services pomocí webu Azure Portal.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: 2f8718b108ca5af0034d4d70c10422d6ac73e892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: 2ca47e49af06ab0a6dffc1f4011d7dceb58830be
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260845"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348504"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>Vytvoření účtu Media Services pomocí Azure Portal
 
@@ -35,11 +35,11 @@ Azure Portal nabízí rychlou možnost vytvoření účtu Azure Media Services (
 V tomto článku se dozvíte, jak vytvořit účet Media Services pomocí Azure Portal.
 
 > [!NOTE]
-> Informace o dostupnosti funkcí služby Azure Media Services v různých oblastech najdete v tématu popisujícím [dostupnost funkcí AMS v datových centrech](scenarios-and-availability.md#availability).
+> Informace o dostupnosti funkcí Azure Media Services v různých oblastech naleznete v tématu [funkce AMS napříč oblastmi](availability-regions-v-2.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
+K dokončení tohoto kurzu potřebujete mít účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-an-ams-account"></a>Vytvoření účtu AMS
 
@@ -54,11 +54,11 @@ Postup v této části ukazuje, jak vytvořit účet AMS.
    3. V poli **Skupina prostředků** vyberte nový nebo existující prostředek.  Skupina prostředků je kolekce prostředků, které sdílejí životní cyklus, oprávnění a zásady. Další informace najdete [tady](../../azure-resource-manager/management/overview.md#resource-groups).
    4. V poli **Umístění** vyberte zeměpisnou oblast, která se bude používat k ukládání médií a záznamů metadat pro váš účet Media Services. Tato oblast se bude používat ke zpracování a streamování vašeho média. V rozevíracím seznamu se vám zobrazí pouze ty oblasti Media Services, které jsou dostupné. 
    5. V poli **Účet úložiště** vyberte účet úložiště, který bude sloužit jako úložiště objektů blob mediálního obsahu z vašeho účtu Media Services. Můžete vybrat existující účet úložiště ve stejné zeměpisné oblasti jako váš účet Media Services, nebo můžete vytvořit účet úložiště. Nový účet úložiště bude vytvořen ve stejné oblasti. Pro názvy účtů úložiště platí stejná pravidla jako pro názvy účtů Media Services.
-      
+
        Další informace o ukládání a úložištích najdete [tady](../../storage/common/storage-introduction.md).
-   6. Zaškrtněte **Připnout na řídicí panel**, abyste viděli průběh nasazení účtu.
+   6. Zaškrtněte **Připnout na řídicí panel** , abyste viděli průběh nasazení účtu.
 4. Klikněte na tlačítko **Vytvořit** dole na formuláři.
-   
+
     Po úspěšném vytvoření účtu se načte stránka s přehledem. V tabulce koncových bodů streamování bude účet mít výchozí koncový bod streamování ve stavu **Zastaveno**. 
 
     >[!NOTE]
@@ -66,7 +66,7 @@ Postup v této části ukazuje, jak vytvořit účet AMS.
    
 ## <a name="to-manage-your-ams-account"></a>Správa účtu AMS
 
-Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. V **Nastavení** přejděte do některého z dostupných oken (například: **Přístup k rozhraní API**, **Prostředky**, **Úlohy** nebo **Ochrana obsahu**).
+Pokud chcete spravovat svůj účet AMS (například připojit se prostřednictvím kódu programu k rozhraní API pro AMS, nahrát videa, kódovat prostředky, konfigurovat ochranu obsahu nebo monitorovat průběh úloh), vyberte **Nastavení** na levé straně portálu. V **Nastavení** přejděte do některého z dostupných oken (například: **Přístup k rozhraní API** , **Prostředky** , **Úlohy** nebo **Ochrana obsahu** ).
 
 ## <a name="next-steps"></a>Další kroky
 

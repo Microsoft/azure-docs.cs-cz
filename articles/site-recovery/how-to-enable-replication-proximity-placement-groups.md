@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3abdad427e038bb4a853cb6222174dd090cb6b2
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87827669"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348419"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replikace virtuálních počítačů Azure spuštěných ve skupinách umístění bezkontaktní komunikace do jiné oblasti
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 V typickém scénáři můžete mít virtuální počítače běžící ve skupině umístění s blízkostí, abyste se vyhnuli latenci sítě mezi různými úrovněmi vaší aplikace. I když to může zajistit optimální latenci sítě, chcete tyto aplikace ochránit pomocí Site Recovery pro jakékoli selhání úrovně oblasti. Site Recovery replikuje data z jedné oblasti do jiné oblasti Azure a v případě převzetí služeb při selhání zobrazí počítače v oblasti zotavení po havárii.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 - Nejlepším úsilím pro převzetí služeb při selhání a navrácení služeb po obnovení z provozu do skupiny umístění s blízkými akcemi. Pokud se ale virtuální počítač nemůže během převzetí služeb při selhání nebo navrácení služeb po obnovení přenést do umístění blízkosti, pak se virtuální počítače vytvoří mimo skupinu umístění blízkosti.
 -  Pokud je skupina dostupnosti připnuté do skupiny umístění blízkosti a během virtuálních počítačů s podporou převzetí služeb při selhání/navrácení služeb po obnovení mají v sadě dostupnosti omezení přidělení, vytvoří se virtuální počítače mimo skupinu dostupnosti a umístění blízkosti.
@@ -88,6 +88,13 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
+
+Při povolování zóny pro replikaci zóny pomocí PPG se příkaz ke spuštění replikace vymění pomocí rutiny PowerShellu.
+
+```azurepowershell
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id -RecoveryAvailabilityZone "2"
+```
+
 Po úspěšném dokončení operace spuštění replikace se data virtuálního počítače replikují do oblasti obnovení.
 
 Proces replikace začíná prvním vynásobením kopie replikačních disků virtuálního počítače v oblasti obnovení. Tato fáze se nazývá fáze počáteční replikace.
