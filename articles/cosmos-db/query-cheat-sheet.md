@@ -3,15 +3,16 @@ title: Azure Cosmos DB tahák dotazů PDF
 description: Tisknutelné taháky PDF, které vám pomůžou Azure Cosmos DB používat rozhraní API pro SQL, MongoDB, Graph a Table k dotazování na data
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 0e9010ba79e4253d7569a0bba79fa05423e1a1ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081752"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339644"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB tahák dotazů
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Pokud se chystáte tisknout na papír ve velikosti Letter (8,5 "x 11"), [Azure C
 ## <a name="oversized-cheat-sheets"></a>Tahák tabulky s příliš velikostí
 Pokud chcete tisknout pomocí plotru nebo rozsáhlé tiskárny na papír ve formátu A3 (11,7 "x 16,5"), Stáhněte si [listy tahák dotazů Azure Cosmos DB na velikost a3](https://go.microsoft.com/fwlink/?linkid=870413) .
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB dotazování tahák listů – velikost písmen, SQL API, JavaScript, MongoDB, Gremlin a rozhraní API pro tabulky dotazy a funkce" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB dotazů tahák dotazů – velikost a3, pomocí rozhraní SQL API, JavaScriptu, MongoDB, Gremlin a rozhraní API pro tabulky dotazů a funkcí" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 Další nápovědu k zápisu dotazů naleznete v následujících článcích:

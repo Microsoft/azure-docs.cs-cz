@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 161d1c95507d366ce00f75580a100fd2607675d9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c43f1ea81bbc29817e6a2509c9967bf3b5782c9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544014"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337281"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí Azure CLI
 
@@ -62,7 +62,7 @@ Zde jsou uvedeny podrobnosti o argumentech výše:
 name | mydemoserver | Zadejte jedinečný název serveru Azure Database for MySQL. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí se skládat ze 3 až 63 znaků.
 resource-group | myresourcegroup | Zadejte název skupiny prostředků Azure.
 location | westus | Lokace Azure pro server.
-admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public** .
+admin-user | myadmin | Uživatelské jméno pro přihlášení správce. Nemůže být **azure_superuser** , **admin** , **administrátor** , **root** , **host** nebo **public**.
 admin-password | *bezpečné heslo* | Heslo uživatele, který je správcem. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 sku-name|GP_Gen5_2|Zadejte název cenové úrovně a konfiguraci výpočtů. Postupuje podle konvence {cenové úrovně} _{COMPUTE_ } {virtuální jádra} ve zkráceném znění. Další informace najdete v [cenové úrovni](./concepts-pricing-tiers.md) .
 
@@ -91,7 +91,7 @@ Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a 
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin** .
+Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -143,6 +143,4 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
->[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/tutorial-php-mysql-app.md) 
-> [Sestavení aplikace PHP v systému Linux pomocí MySQL](../app-service/tutorial-php-mysql-app.md?pivots=platform-linux%253fpivots%253dplatform-linux) 
-> [Sestavení jarní aplikace založené na jazyce Java pomocí MySQL](/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)
+>[Vytvoření aplikace v PHP ve Windows pomocí MySQL](../app-service/tutorial-php-mysql-app.md)

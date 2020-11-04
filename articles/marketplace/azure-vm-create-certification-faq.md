@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677911"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339529"
 ---
 # <a name="vm-certification-troubleshooting"></a>Řešení potíží s certifikacemi virtuálních počítačů
 
@@ -47,15 +47,15 @@ Zkontrolujte, jestli vaše image podporuje rozšíření virtuálních počíta�
 Pokud chcete povolit rozšíření virtuálních počítačů, udělejte toto:
 
 1. Vyberte virtuální počítač se systémem Linux.
-1. Přejít na **nastavení diagnostiky** .
+1. Přejít na **nastavení diagnostiky**.
 1. Pomocí aktualizace **účtu úložiště** povolte základní matice.
-1. Vyberte **Uložit** .
+1. Vyberte **Uložit**.
 
    ![Povolení sledování na úrovni hosta](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 Pokud chcete ověřit, jestli jsou rozšíření virtuálních počítačů správně aktivované, udělejte toto:
 
-1. Na virtuálním počítači vyberte kartu **rozšíření virtuálního počítače** a pak ověřte stav **rozšíření Linux Diagnostics** .
+1. Na virtuálním počítači vyberte kartu **rozšíření virtuálního počítače** a pak ověřte stav **rozšíření Linux Diagnostics**.
 1. 
     * Pokud je stav *zřizování úspěšné* , předává testovací případ rozšíření.  
     * Pokud se stav *zřizování nezdařil* , testový případ rozšíření se nezdařil a je nutné nastavit zpřísněný příznak.
@@ -70,7 +70,7 @@ Ujistěte se, že jste před odesláním nabídky ověřili, že jste provedli p
 
 Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 
-|Scénář|Chybová|Důvod|Řešení|
+|Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
 |1|Neplatný virtuální pevný disk (VHD)|Pokud je zadaná hodnota souboru cookie v zápatí VHD nesprávná, bude virtuální pevný disk považován za neplatný.|Znovu vytvořte bitovou kopii a odešlete žádost.|
 |2|Neplatný typ objektu BLOB|Zřizování virtuálního počítače se nezdařilo, protože použitý blok je typ objektu BLOB místo typu stránky.|Znovu vytvořte bitovou kopii a odešlete žádost.|
@@ -81,6 +81,45 @@ Problémy zřizování můžou zahrnovat tyto scénáře selhání:
 > Další informace o generalizaci virtuálních počítačů najdete v těchto tématech:
 > - [Dokumentace pro Linux](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Dokumentace k Windows](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>Specifikace VHD
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix soubor cookie a další specifikace VHD
+Řetězec ' conectix ' je součástí specifikace VHD a je definován jako 8 bajtů ' cookie ' v zápatí VHD níže, které identifikuje tvůrce souboru. Tento soubor cookie mají všechny soubory VHD vytvořené Microsoftem. 
+
+Objekt BLOB ve formátu VHD by měl mít 512 bajt; Toto je formát zápatí VHD:
+
+|Pole zápatí pevného disku|Velikost (v bajtech)|
+|---|---|
+Soubor|8
+Funkce|4
+Verze formátu souboru|4
+Posun dat|8
+Časové razítko|4
+Aplikace autora|4
+Verze Tvůrce|4
+Tvůrce hostitelského operačního systému|4
+Původní velikost|8
+Aktuální velikost|8
+Geometrie disku|4
+Typ disku|4
+Kontrolní součet|4
+Jedinečné ID|16
+Uložený stav|1
+Vyhrazené|427
+
+
+### <a name="vhd-specifications"></a>Specifikace VHD
+Aby se zajistilo bezproblémové prostředí pro publikování, ujistěte se, že **virtuální pevný disk splňuje následující kritéria:**
+* Soubor cookie musí obsahovat řetězec "conectix".
+* Typ disku musí být pevný.
+* Virtuální disk VHD má minimálně 20MB
+* Virtuální pevný disk je zarovnán (tj. virtuální velikost musí být násobkem 1 MB).
+* Délka objektu BLOB VHD = virtuální velikost + délka zápatí VHD (512)
+
+Specifikaci VHD si můžete stáhnout [tady.](https://www.microsoft.com/download/details.aspx?id=23850)
+
 
 ## <a name="software-compliance-for-windows"></a>Kompatibilita softwaru pro Windows
 
@@ -119,12 +158,12 @@ V následující tabulce jsou uvedeny testovací případy pro Linux, které sad
 
 V následující tabulce jsou uvedeny běžné chyby, které byly nalezeny při provádění předchozích testovacích případů:
  
-|Scénář|Testovací případ|Chybová|Řešení|
+|Scénář|Testovací případ|Chyba|Řešení|
 |---|---|---|---|
 |1|Testovací případ verze agenta pro Linux|Minimální verze agenta pro Linux je 2.2.41 nebo novější. Tento požadavek byl povinný od 1. května 2020.|Aktualizujte prosím verzi agenta pro Linux a měla by být 2,241 nebo novější. Další informace najdete na [stránce aktualizace verze agenta pro Linux](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).|
 |2|Testovací případ historie bash|Pokud je velikost historie bash v odeslaném obrázku větší než 1 kilobajt (KB), zobrazí se chyba. Velikost je omezená na 1 KB, aby se zajistilo, že v souboru historie bash nejsou zachyceny žádné potenciálně citlivé informace.|Pokud chcete tento problém vyřešit, připojte VHD k jakémukoli jinému pracovnímu virtuálnímu počítači a proveďte požadované změny (například odstraňte soubory historie *. bash* ), aby se snížila velikost menší nebo rovna 1 KB.|
-|3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0** . Kontrolou spusťte následující příkaz:<br>`cat /proc/cmdline`|Nastavte hodnotu **Console** na **ttyS0** a odešlete požadavek znovu.|
-|4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval** .|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a potom požadavek odešlete znovu.|
+|3|Požadovaný parametr jádra pro testovací případ|Tato chyba se zobrazí, pokud hodnota pro **konzolu** není nastavená na **ttyS0**. Kontrolou spusťte následující příkaz:<br>`cat /proc/cmdline`|Nastavte hodnotu **Console** na **ttyS0** a odešlete požadavek znovu.|
+|4|Testovací případ intervalu ClientAlive|Pokud výsledek sady nástrojů poskytne neúspěšný výsledek pro tento testovací případ, existuje nevhodná hodnota pro **ClientAliveInterval**.|Nastavte hodnotu parametru **ClientAliveInterval** na hodnotu menší nebo rovnou hodnotě 235 a potom požadavek odešlete znovu.|
 
 ### <a name="windows-test-cases"></a>Testovací případy Windows
 
@@ -283,7 +322,7 @@ Pokud chcete odeslat žádost s imagí zakázaného procesu SSH pro certifikaci,
     
 V následující tabulce najdete případné problémy, které vznikají při stahování image virtuálního počítače pomocí adresy URL sdíleného přístupového podpisu (SAS).
 
-|Scénář|Chybová|Důvod|Řešení|
+|Scénář|Chyba|Důvod|Řešení|
 |---|---|---|---|
 |1|Objekt BLOB se nenašel.|Virtuální pevný disk může být buď odstraněn, nebo přesunut ze zadaného umístění.|| 
 |2|Používaný objekt BLOB|VHD používá jiný interní proces.|Virtuální pevný disk by měl být v používaném stavu, když ho stáhnete pomocí adresy URL SAS.|
@@ -391,7 +430,7 @@ Vždy zajistěte, aby se výchozí pověření neodesílala u odeslaného virtu�
   
 ## <a name="datadisk-mapped-incorrectly"></a>Nesprávně mapované datadisk
 
-Pokud je žádost odeslána s více datovými disky, ale jejich pořadí není v pořadí, považuje se za problém s mapováním. Například pokud existují tři datové disky, pořadí číslování musí být *0, 1, 2* . Jakékoli jiné pořadí se považuje za problém s mapováním.
+Pokud je žádost odeslána s více datovými disky, ale jejich pořadí není v pořadí, považuje se za problém s mapováním. Například pokud existují tři datové disky, pořadí číslování musí být *0, 1, 2*. Jakékoli jiné pořadí se považuje za problém s mapováním.
 
 Odešlete žádost znovu se správným pořadím datových disků.
 
@@ -415,7 +454,7 @@ Další informace o tomto nástroji najdete v tématu [Přehled nástroje pro p�
 
 Pro řešení chyb souvisejících s datovým diskem použijte následující tabulku:
 
-|Chybová|Důvod|Řešení|
+|Chyba|Důvod|Řešení|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|K této chybě mohlo dojít z důvodu neplatného čísla logické jednotky (LUN) při odeslání nabídky.|Ověřte, že je pořadí čísel LUN pro datový disk v partnerském centru.|
 |`DataDisk- NotFound:`|K této chybě může dojít kvůli tomu, že datový disk není umístěný na zadané adrese URL SAS.|Ověřte, že je datový disk umístěný na adrese URL SAS, která je zadaná v požadavku.|
@@ -501,36 +540,36 @@ K poskytnutí pevné image virtuálního počítače, která by nahradila image 
 K provedení těchto kroků budete potřebovat připravit technické prostředky pro image virtuálního počítače, kterou chcete přidat. Další informace najdete v tématu [Vytvoření virtuálního počítače pomocí schválené základny](azure-vm-create-using-approved-base.md) nebo [Vytvoření virtuálního počítače pomocí vlastní image](azure-vm-create-using-own-image.md)a [vygenerování identifikátoru URI SAS pro vaši image virtuálního počítače](azure-vm-get-sas-uri.md).
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled** .
+2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
 3. Ve sloupci **alias nabídky** vyberte nabídku.
 4. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán, do kterého chcete virtuální počítač přidat.
-5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače** .
+5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vyberte **+ Přidat image virtuálního počítače**.
 
 > [!NOTE]
 > V jednom okamžiku můžete přidat jenom jednu image virtuálního počítače do jednoho plánu. Pokud chcete přidat víc imagí virtuálních počítačů, před přidáním další image virtuálního počítače publikujte nejdřív jednu živou.
 
 6. V zobrazených oknech zadejte novou verzi disku a image virtuálního počítače.
-7. Vyberte **Uložit koncept** .
+7. Vyberte **Uložit koncept**.
 
 Pokračujte další částí níže a odstraňte image virtuálního počítače s chybou zabezpečení.
 
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>Odebrání image virtuálního počítače s chybou zabezpečení nebo zneužitím
 
 1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled** .
+2. V navigační nabídce vlevo vyberte **obchodní Marketplace**  >  **Přehled**.
 3. Ve sloupci **alias nabídky** vyberte nabídku.
 4. Na kartě **Přehled plánu** ve sloupci **název** vyberte plán s virtuálním počítačem, který chcete odebrat.
-5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vedle image virtuálního počítače, kterou chcete odebrat, vyberte **Odebrat image virtuálního počítače** .
-6. V dialogovém okně, které se zobrazí, vyberte **pokračovat** .
-7. Vyberte **Uložit koncept** .
+5. Na kartě **Technická konfigurace** v části **image virtuálních počítačů** vedle image virtuálního počítače, kterou chcete odebrat, vyberte **Odebrat image virtuálního počítače**.
+6. V dialogovém okně, které se zobrazí, vyberte **pokračovat**.
+7. Vyberte **Uložit koncept**.
 
 Pokračujte další částí níže, aby se nabídka znovu publikovala.
 
 #### <a name="republish-the-offer"></a>Opětovné publikování nabídky
 
-1. Vyberte možnost **zkontrolovat a publikovat** .
+1. Vyberte možnost **zkontrolovat a publikovat**.
 2. Pokud potřebujete poskytnout certifikačnímu týmu nějaké informace, přidejte ho do pole **poznámky pro certifikaci** .
-3. Vyberte **Publikovat** .
+3. Vyberte **Publikovat**.
 
 Chcete-li dokončit proces publikování, přečtěte si téma [Revize a publikování nabídek](review-publish-offer.md).
 

@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667465"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337689"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
@@ -25,7 +25,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 
 - V zobrazení analýzy závislostí nemůžete aktuálně přidat nebo odebrat server ze skupiny.
 - Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
-- Shromažďování dat závislostí lze pro servery 1000 nastavit současně. Můžete analyzovat větší počet serverů pomocí sekvenceování v dávkách 1000.
+- V Azure Migrate projektu lze shromažďování dat závislostí nastavit současně pro servery 1000. Můžete analyzovat větší počet serverů pomocí sekvenceování v dávkách 1000.
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -48,8 +48,8 @@ Přidejte uživatelský účet do zařízení.
 
 1. Otevřete aplikaci pro správu zařízení. 
 2. Přejděte na panel **poskytnout podrobnosti vCenter** .
-3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích**klikněte na **Přidat přihlašovací údaje** .
-3. Vyberte **operační systém**, zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
+3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích** klikněte na **Přidat přihlašovací údaje** .
+3. Vyberte **operační systém** , zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
 6. Klikněte na **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
 
@@ -59,7 +59,7 @@ Přidejte uživatelský účet do zařízení.
 
 Vyberte počítače, u kterých chcete povolit zjišťování závislostí. 
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
 3. Klikněte na **Přidat servery**.
 4. Na stránce **Přidat servery** vyberte zařízení, které zjišťuje příslušné počítače.
@@ -72,7 +72,7 @@ Po spuštění zjišťování závislostí můžete vizualizovat závislosti př
 
 ## <a name="visualize-dependencies"></a>Vizualizace závislostí
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Vyhledejte počítač, který chcete zobrazit.
 3. Ve sloupci **závislosti** klikněte na **Zobrazit závislosti.**
 4. Změňte časové období, pro které chcete zobrazit mapu pomocí rozevíracího seznamu doba **Trvání** .
@@ -93,7 +93,7 @@ Po spuštění zjišťování závislostí můžete vizualizovat závislosti př
 
 ## <a name="export-dependency-data"></a>Exportovat data závislostí
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
 3. Klikněte na **exportovat závislosti aplikací**.
 4. Na stránce **exportovat závislosti aplikací** vyberte zařízení, které zjišťuje příslušné počítače.
@@ -127,7 +127,7 @@ Cílový port | Číslo portu na cílovém počítači
 
 Vyberte počítače, u kterých chcete zastavit zjišťování závislostí. 
 
-1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+1. V **Azure Migrate: vyhodnocování serveru** klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
 3. Klikněte na **odebrat servery**.
 3. Na stránce **odebrat servery** vyberte **zařízení** , které zjišťuje virtuální počítače, na kterých jste se vyhledali zjišťování závislostí.

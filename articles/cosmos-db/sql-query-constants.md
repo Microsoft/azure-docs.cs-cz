@@ -3,15 +3,16 @@ title: Konstanty SQL v Azure Cosmos DB
 description: Přečtěte si, jak se konstanty dotazů SQL v Azure Cosmos DB používají k vyjádření konkrétní hodnoty dat.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b0973dca980b65b85ac66cc1b3c9ed45f0f9c779
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100860"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339194"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB konstanty dotazů SQL  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,11 +25,11 @@ ms.locfileid: "93100860"
 |-|-|  
 |**Nedefinované**|Jedna hodnota: **Nedefinováno**|  
 |**Null**|Jedna hodnota: **null**|  
-|**Datového**|Hodnoty: **false** , **true** .|  
+|**Logická hodnota**|Hodnoty: **false** , **true**.|  
 |**Číselná**|Číslo s plovoucí desetinnou čárkou a dvojitou přesností, Standard IEEE 754.|  
 |**Řetězec**|Sekvence nula nebo více znaků Unicode. Řetězce musí být uzavřeny v jednoduchých nebo dvojitých uvozovkách.|  
-|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného** .|  
-|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného** .|  
+|**Skupin**|Sekvence nula nebo více prvků. Každý prvek může být hodnota jakéhokoli skalárního datového typu, s výjimkou **nedefinovaného**.|  
+|**Předmětů**|Neuspořádaná sada nula nebo více párů název/hodnota. Název je řetězec Unicode, hodnota může být jakýkoli skalární datový typ, s výjimkou **nedefinovaného**.|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>Syntax
   
@@ -68,7 +69,7 @@ ms.locfileid: "93100860"
   
 * `<null_constant>; null`  
   
-  Reprezentuje hodnotu **null** typu s hodnotou **null** .  
+  Reprezentuje hodnotu **null** typu s hodnotou **null**.  
   
 * `<boolean_constant>`  
   

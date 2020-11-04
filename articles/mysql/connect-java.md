@@ -1,5 +1,5 @@
 ---
-title: Použití jazyků Java a JDBC s Azure Database for MySQL
+title: 'Rychlý Start: použití jazyků Java a JDBC s Azure Database for MySQL'
 description: Naučte se používat Java a JDBC s databází Azure Database for MySQL.
 author: jdubois
 ms.author: judubois
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745269"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337435"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>Použití jazyků Java a JDBC s Azure Database for MySQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Rychlý Start: použití jazyků Java a JDBC s Azure Database for MySQL
 
 Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for MySQL](./index.yml).
 
@@ -493,7 +493,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for MySQL.
 

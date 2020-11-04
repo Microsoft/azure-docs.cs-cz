@@ -3,15 +3,16 @@ title: Správa prostředků rozhraní API pro Azure Cosmos DB Core (SQL) pomocí
 description: Spravujte prostředky rozhraní API pro Azure Cosmos DB Core (SQL) pomocí Azure CLI.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e5e5a057d6c88e0963ab674aa7dbf2d420ff21b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e4b112b93a552ff62b08c102e710cd914265ba5c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083915"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339321"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Správa prostředků rozhraní API pro Azure Cosmos Core (SQL) pomocí Azure CLI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

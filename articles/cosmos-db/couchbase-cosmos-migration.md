@@ -2,17 +2,18 @@
 title: Migrace z CouchBase do Azure Cosmos DB SQL API
 description: Podrobné pokyny pro migraci z CouchBase do Azure Cosmos DB SQL API
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097545"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339506"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrace z CouchBase do Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -312,7 +313,7 @@ Toto je jednoduchý typ úlohy, ve které můžete vyhledávat místo dotazů. P
 
 1. Zvažte možnost "/ID" jako primární klíč, což zajistí, že můžete provádět operace vyhledávání přímo v konkrétním oddílu. Vytvořte kolekci a jako klíč oddílu zadejte "/ID".
 
-1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat** vyberte svou **databázi** a **kontejner** . Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování** . V současné době indexování zásad vypadá takto:
+1. Úplné vypínání indexu. Vzhledem k tomu, že budete provádět operace vyhledávání, neexistuje žádný bod pro zaznamenání zátěže. Pokud chcete indexování vypnout, přihlaste se Azure Portal, přejít Azure Cosmos DB účet. Otevřete **Průzkumník dat** vyberte svou **databázi** a **kontejner**. Otevřete kartu **nastavení & škálování** a vyberte  **zásadu indexování**. V současné době indexování zásad vypadá takto:
     
    ```json
    {

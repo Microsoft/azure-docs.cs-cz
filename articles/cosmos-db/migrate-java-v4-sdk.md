@@ -5,15 +5,16 @@ author: anfeldma-ms
 ms.custom: devx-track-java
 ms.author: anfeldma
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: eb2553346881bc2e8de631988bd11642b85aa847
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099636"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339753"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,7 +68,7 @@ Níže jsou uvedené změny úrovně rozhraní API v Azure Cosmos DB Java SDK 4.
 
   * **Java SDK 3. x. x** : všechny třídy patří do ASYNCHRONNÍHO rozhraní API, pokud není název třídy připojen pomocí `Async` After `Cosmos` .
 
-  * **Async Java SDK 2. x. x** : názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async* .
+  * **Async Java SDK 2. x. x** : názvy tříd jsou podobné synchronizaci sady Java SDK 2. x. x, ale název začíná na *Async*.
 
 ### <a name="hierarchical-api-structure"></a>Hierarchická struktura rozhraní API
 

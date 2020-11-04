@@ -4,16 +4,15 @@ description: Přečtěte si, jak nastavit výstrahy pro Azure Cosmos DB pomocí 
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 1042638dc622e6675c997bc6db8df1d072824816
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e29db7e31438bc7f6ac609384d0d9b92c275e813
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099908"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339525"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Vytváření upozornění pro Azure Cosmos DB pomocí Azure Monitor
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +33,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
 1. Přihlaste se k [Azure Portal.](https://portal.azure.com/)
 
-1. V levém navigačním panelu vyberte **monitor** a vyberte **výstrahy** .
+1. V levém navigačním panelu vyberte **monitor** a vyberte **výstrahy**.
 
 1. Kliknutím na tlačítko nové pravidlo výstrahy otevřete podokno vytvořit pravidlo výstrahy.  
 
@@ -48,27 +47,27 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * **Umístění** vašeho účtu Azure Cosmos.
 
-   * Po vyplnění podrobností se zobrazí seznam účtů Azure Cosmos ve vybraném oboru. Zvolte jednu z nich, pro kterou chcete nakonfigurovat výstrahy, a vyberte **Hotovo** .
+   * Po vyplnění podrobností se zobrazí seznam účtů Azure Cosmos ve vybraném oboru. Zvolte jednu z nich, pro kterou chcete nakonfigurovat výstrahy, a vyberte **Hotovo**.
 
 1. Vyplňte část **Podmínka** :
 
    * Otevřete podokno **vybrat podmínku** a otevřete stránku **Konfigurovat logiku signálu** a proveďte následující konfiguraci:
 
-   * Vyberte signál. **Typ signálu** může být **metrika** nebo **Protokol aktivit** . Pro tento scénář vyberte **metriky** . Vzhledem k tomu, že chcete zobrazit výstrahu v případě, že jsou v celkovém počtu jednotek požadavků problémy s omezením četnosti.
+   * Vyberte signál. **Typ signálu** může být **metrika** nebo **Protokol aktivit**. Pro tento scénář vyberte **metriky** . Vzhledem k tomu, že chcete zobrazit výstrahu v případě, že jsou v celkovém počtu jednotek požadavků problémy s omezením četnosti.
 
    * Vybrat **vše** pro **monitorovací službu**
 
-   * Vyberte **Název signálu** . Pokud chcete zobrazit výstrahu pro stavové kódy HTTP, vyberte signál **Celkový počet jednotek žádostí** .
+   * Vyberte **Název signálu**. Pokud chcete zobrazit výstrahu pro stavové kódy HTTP, vyberte signál **Celkový počet jednotek žádostí** .
 
    * Na další kartě můžete definovat logiku pro aktivaci výstrahy a pomocí grafu zobrazit trendy svého účtu Azure Cosmos. Metrika **celkových jednotek požadavků** podporuje dimenze. Tyto dimenze umožňují filtrovat metriky. Pokud nevyberete žádnou dimenzi, tato hodnota se ignoruje.
 
    * Jako **název dimenze** vyberte **StatusCode** . Vyberte **Přidat vlastní hodnotu** a nastavte stavový kód na 429.
 
-   * V **logice výstrahy** nastavte **prahovou hodnotu** na **static** . Statická prahová hodnota používá pro vyhodnocení pravidla uživatelsky definovanou prahovou hodnotu, zatímco dynamické prahové hodnoty používají předdefinované algoritmy strojového učení, které se průběžně učí vzor chování metriky a automaticky vypočítávají prahové hodnoty.
+   * V **logice výstrahy** nastavte **prahovou hodnotu** na **static**. Statická prahová hodnota používá pro vyhodnocení pravidla uživatelsky definovanou prahovou hodnotu, zatímco dynamické prahové hodnoty používají předdefinované algoritmy strojového učení, které se průběžně učí vzor chování metriky a automaticky vypočítávají prahové hodnoty.
 
-   * Nastavte **operátor** na hodnotu **větší než** , **typ agregace** na hodnotu **Total** a **prahovou hodnotu** **100** . Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
+   * Nastavte **operátor** na hodnotu **větší než** , **typ agregace** na hodnotu **Total** a **prahovou hodnotu** **100**. Pokud se v této logice klient zobrazuje více než 100 požadavků, které mají kód stavu 429, výstraha se aktivuje. Můžete také nakonfigurovat typ agregace, členitost agregace a frekvenci vyhodnocení podle vašeho požadavku.
 
-   * Po vyplnění formuláře vyberte **Hotovo** . Následující snímek obrazovky ukazuje podrobnosti logiky výstrah:
+   * Po vyplnění formuláře vyberte **Hotovo**. Následující snímek obrazovky ukazuje podrobnosti logiky výstrah:
 
      :::image type="content" source="./media/create-alerts/configure-alert-logic.png" alt-text="Konfigurace logiky pro příjem výstrah v případě požadavků s omezeným/429":::
 
@@ -84,7 +83,7 @@ V této části se dozvíte, jak vytvořit výstrahu, když obdržíte stavový 
 
    * Zadejte název akce a jako **typ akce** vyberte **zpráva e-mail/SMS/odeslat/hlas** . Následující snímek obrazovky ukazuje podrobnosti typu akce:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Konfigurace logiky pro příjem výstrah v případě požadavků s omezeným/429":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Nakonfigurujte typ akce, například e-mailové oznámení pro příjem výstrahy.":::
 
 1. Vyplňte část **Podrobnosti pravidla výstrahy** :
 

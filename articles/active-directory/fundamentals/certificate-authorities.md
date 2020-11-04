@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 887e76fb1fa3dc630b12862c49689b3fa923b656
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7cc92c8bfb7dd9cb0328820009828ed0dd22e2a1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795155"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339457"
 ---
 # <a name="certificate-authorities-used-by-azure-active-directory"></a>Certifikační autority, které používá Azure Active Directory
 
@@ -31,7 +31,7 @@ Certifikační autority je možné klasifikovat do kořenových certifikačních
 
 ## <a name="cas-used-in-azure-public-and-azure-us-government-clouds"></a>CAs používané v cloudech Azure Public a Azure US pro státní správu
 
-Různé služby můžou používat jiné kořenové nebo zprostředkující certifikační autority.
+Různé služby můžou používat jiné kořenové nebo zprostředkující certifikační autority. Proto mohou být požadovány všechny níže uvedené položky.
 
 ### <a name="digicert-global-root-g2"></a>Globální kořenový adresář G2 DigiCert
 
@@ -78,9 +78,8 @@ Různé služby můžou používat jiné kořenové nebo zprostředkující cert
 | Vydání a zprostředkující certifikační autorita| Sériové číslo| Datum vypršení platnosti data vydání| Kryptografický otisk SHA1| Identifikátory URI |
 | - | - | - | - | - |
 | DigiCert SHA2, certifikační autorita zabezpečeného serveru| 01fda3eb6eca75c 888438b724bcfbc91| 8. března 2013, 8. března 2023| 1fb86b1168ec743154062 e8c9cc5b171a4b7ccb4| [AIA](http://cacerts.digicert.com/DigiCertSHA2SecureServerCA.crt)<br>[BOD](http://crl3.digicert.com/ssca-sha2-g6.crl)<br>[ZAMÍTNUT](http://ocsp.digicert.com/) |
+| DigiCert SHA2, certifikační autorita zabezpečeného serveru |02742eaa17ca8e21 c717bb1ffcfd0ca0 |22. září 2020<br>22. září 2030|626d44e704d1ceabe3bf 0d53397464ac8080142c|[AIA](http://cacerts.digicert.com/DigiCertSHA2SecureServerCA-2.crt)<br>[BOD](http://crl3.digicert.com/DigiCertSHA2SecureServerCA.crl)<br>[ZAMÍTNUT](http://ocsp.digicert.com/)|
 
-
- 
 
 ## <a name="cas-used-in-azure-china-21vianet-cloud"></a>CAs používané v cloudu Azure Čína 21Vianet
 

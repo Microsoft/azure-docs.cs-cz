@@ -4,15 +4,16 @@ description: 'Kurz: Naučte se používat vestavěné notebooky Jupyter k import
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 24ef78d44a1a632b86bf62e309960dd74b609c81
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e16a738264e64e37cfa42722832dac7e34fee899
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088807"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339491"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,13 +30,13 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
 1. Přejděte k účtu Azure Cosmos a otevřete **Průzkumník dat.**
 
-1. Přejít na kartu **poznámkové bloky** , vyberte `…` vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok** . Jako výchozí jádro vyberte **Python 3** .
+1. Přejít na kartu **poznámkové bloky** , vyberte `…` vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok**. Jako výchozí jádro vyberte **Python 3** .
 
-   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Vytvoření nového poznámkového bloku":::
 
 1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
 
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo" a kontejnerem s názvem "WebsiteData", do kterých budou uložena maloobchodní data. /CartID můžete použít jako klíč oddílu. Zkopírujte následující kód a vložte ho do nové buňky v poznámkovém bloku a spusťte ho:
+1. V dalším kroku vytvoříte databázi s názvem "RetailDemo" a kontejnerem s názvem "WebsiteData", do kterých budou uložena maloobchodní data. /CartID můžete použít jako klíč oddílu. Zkopírujte následující kód a vložte ho do nové buňky v poznámkovém bloku a spusťte ho:
 
    ```python
    import azure.cosmos
@@ -50,11 +51,7 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
    Chcete-li spustit buňku, vyberte `Shift + Enter` nebo vyberte buňku a zvolte možnost **spustit aktivní buňku** na navigačním panelu Průzkumníka dat.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Spustit aktivní buňku":::
 
    Databáze a kontejner se vytvoří v aktuálním účtu Azure Cosmos. Kontejner se zřídí s 400 RU/s. Po vytvoření databáze a kontejneru se zobrazí následující výstup. 
 
@@ -65,11 +62,23 @@ V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete ma
 
    Kartu **data** můžete také aktualizovat a zobrazit nově vytvořené prostředky:
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Aktualizujte kartu data, aby se zobrazil nový kontejner.":::
 
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
+1. Dále naimportujete ukázková maloobchodní data do kontejneru Azure Cosmos. Tady je formát položky z maloobchodních dat:
 
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo"
+   ```json
+    {
+       "CartID":5399,
+       "Action":"Viewed",
+       "Item":"Cosmos T-shirt",
+       "Price":350,
+       "UserName":"Demo.User10",
+       "Country":"Iceland",
+       "EventDate":"2015-06-25T00:00:00",
+       "Year":2015,"Latitude":-66.8673,
+       "Longitude":-29.8214,
+       "Address":"852 Modesto Loop, Port Ola, Iceland",
+       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
     }
    ```
 
@@ -128,11 +137,7 @@ V nové buňce poznámkového bloku spusťte následující kód, který přečt
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Spustit dotaz pro získání prvních 10 položek":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Spouštění dotazů a analýza dat
 
@@ -145,11 +150,7 @@ V této části budete spouštět některé dotazy na načtená data.
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Výstup celkového výnosu prodeje":::
 
 * **Query2:** Chcete-li získat seznam pěti nejvyšších nakupovaných položek, otevřete novou buňku s poznámkovým blokem a spusťte následující kód:
 
@@ -160,11 +161,7 @@ V této části budete spouštět některé dotazy na načtená data.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Pět hlavních nakupovaných položek":::
 
 ## <a name="visualize-your-data"></a>Vizualizace dat  
 
@@ -240,11 +237,7 @@ V této části budete spouštět některé dotazy na načtená data.
 
    Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země nebo oblasti s nejvyšším výnosem nejnižším výnosem.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Vizualizace rozvržení výnosů zemí/oblastí":::
 
 1. Pojďme se podívat na další případ vizualizace dat. Kontejner WebsiteData obsahuje záznam o uživatelích, kteří si prohlíželi položku, přidali do svého košíku a koupili položku. Pojďme vykreslit míru konverze položek, které byly koupeny. Spusťte následující kód v nové buňce pro vizualizaci míry převodu pro každou položku:
 
@@ -295,11 +288,7 @@ V této části budete spouštět některé dotazy na načtená data.
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Vytvoření nového poznámkového bloku&quot;:::
-
-1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
-
-1. V dalším kroku vytvoříte databázi s názvem &quot;RetailDemo":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Míra převodu nákupu vizualizace":::
 
 ## <a name="next-steps"></a>Další kroky
 

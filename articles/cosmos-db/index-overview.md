@@ -3,15 +3,16 @@ title: Indexování ve službě Azure Cosmos DB
 description: Seznamte se s tím, jak indexování funguje v Azure Cosmos DB, různé druhy indexů, jako je rozsah, prostorové a složené indexy.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: acb0396ece32c568a4d8c384bebcbabd7480eb09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101455"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339749"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexování ve službě Azure Cosmos DB – přehled
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -181,7 +182,7 @@ Cesty extrahované při indexování dat usnadňují vyhledání indexu při zpr
 
 Zvažte například následující dotaz: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . Predikát dotazu (filtrování položek, kde jakékoli umístění má "Francie" jako země nebo oblast) by odpovídala cestě zvýrazněné červeně:
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Předchozí položka reprezentovaná jako strom" border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Odpovídá konkrétní cestě v rámci stromu." border="false":::
 
 > [!NOTE]
 > `ORDER BY`Klauzule, která má ORDER by jedna vlastnost, *vždy* potřebuje index rozsahu a nezdaří se, pokud cesta, na kterou odkazuje, nemá jednu. Podobně dotaz, `ORDER BY` který ORDER by má více vlastností, *vždy* potřebuje složený index.

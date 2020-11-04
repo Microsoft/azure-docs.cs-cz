@@ -3,16 +3,17 @@ title: Vytvoření kontejnerů Azure Cosmos s velkým klíčem oddílu
 description: Naučte se, jak vytvořit kontejner ve Azure Cosmos DB s velkým klíčem oddílu pomocí Azure Portal a různých sad SDK.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a93bf4fe92cc7b2240a7411b093a7bab5a1a275e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ad26d63ca06f5a46a4a1f77d329d04896e96c52
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098820"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339287"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Vytváření kontejnerů s velkým klíčem oddílu
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

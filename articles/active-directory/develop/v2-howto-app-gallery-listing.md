@@ -1,5 +1,5 @@
 ---
-title: Publikování aplikace v galerii aplikací Azure AD
+title: Publikování aplikace v galerii aplikací Azure Active Directory
 description: Naučte se, jak zobrazit seznam aplikací, které podporují jednotné přihlašování v galerii aplikací Azure Active Directory.
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275714"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339426"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -60,11 +60,28 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 5. Odešlete svoji aplikaci.
 6. Připojte se k programu Microsoft Partner Network.
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Co je galerie aplikací Azure AD?
+
+- Zákazníci hledají nejlepší možné možnosti jednotného přihlašování.
+- Konfigurace aplikace je jednoduchá a minimální.
+- Rychlé hledání najde vaši aplikaci v galerii.
+- Zákazníci Azure AD, kteří jsou zdarma, Basic a Premium, můžou tuto integraci využívat.
+- Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
+- Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
 ## <a name="prerequisites"></a>Předpoklady
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
+- Pro federované aplikace (otevřené ID a SAML/WS) musí aplikace podporovat model software jako služba (SaaS), aby mohl být uvedený v galerii aplikací Azure AD. Aplikace podnikové Galerie musí podporovat více zákaznických konfigurací a ne žádného konkrétního zákazníka.
+- Pro otevřené ID Connect musí být aplikace víceklientské a musí být pro aplikaci správně implementovaná [Architektura souhlasu služby Azure AD](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) . Uživatel může odeslat žádost o přihlášení ke společnému koncovému bodu, aby každý zákazník mohl poskytnout souhlas k aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavního názvu uživatele (UPN) přijatého v tokenu.
+- V případě SAML 2.0/WS je nutné, aby vaše aplikace měla schopnost provádět integraci jednotného přihlašování SAML/WS v režimu SP nebo IDP. Před odesláním žádosti zajistěte, aby tato funkce fungovala správně.
+- V případě jednotného přihlašování k heslu se ujistěte, že vaše aplikace podporuje ověřování prostřednictvím formuláře, aby bylo možné provést jednotné přihlašování, aby bylo možné pracovat s jednotným přihlašováním podle očekávání.
+- Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
+
+**Jak získat Azure AD pro vývojáře?**
+
+Můžete získat bezplatný zkušební účet se všemi funkcemi služby Azure AD Premium – 90 dní zdarma a prodloužit platnost, pokud s ním budete pracovat: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Krok 1 – výběr pravého jednotného přihlašování pro aplikaci
 
@@ -161,7 +178,7 @@ Jakmile budete mít tenanta, musíte povolit a otestovat přístup pro jednotné
 
 V **případě aplikací OIDC nebo Oath** [Zaregistrujte svoji aplikaci](quickstart-register-app.md) jako víceklientské aplikace. V části Podporované typy účtů vyberte účty v možnosti organizační adresář a osobní účet Microsoft.
 
-**Pro aplikace založené na SAML a WS-based**můžete [nakonfigurovat jednotné přihlašování založené na SAML](../manage-apps/configure-saml-single-sign-on.md) pomocí obecné šablony SAML v Azure AD.
+**Pro aplikace založené na SAML a WS-based** můžete [nakonfigurovat jednotné přihlašování založené na SAML](../manage-apps/configure-saml-single-sign-on.md) pomocí obecné šablony SAML v Azure AD.
 
 V případě potřeby můžete také [převést aplikaci s jedním klientem na více tenantů](howto-convert-app-to-be-multi-tenant.md) .
 
@@ -256,6 +273,16 @@ Existující aplikaci Galerie můžete aktualizovat nebo odebrat na [portálu Mi
 
 > [!NOTE]
 > Pokud máte s přístupem nějaké problémy, přečtěte si předchozí část vytvoření účtu. Pokud to nepomůže, obraťte se na [integrační tým jednotného přihlašování služby Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+### <a name="list-requests-by-customers"></a>Vypsat žádosti od zákazníků
+
+Zákazníci můžou odeslat žádost o seznam aplikací tak, že si vyberou **žádosti o aplikace od zákazníků**  >  **Odeslat novou žádost**.
+
+![Zobrazuje dlaždici aplikace požadované zákazníky.](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Tady je postup pro aplikace vyžadované zákazníky.
+
+![Zobrazuje tok aplikací požadovaných zákazníkem.](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>Časové osy

@@ -3,15 +3,16 @@ title: Informace o správě účtů databáze ve službě Azure Cosmos DB
 description: Naučte se spravovat Azure Cosmos DB prostředky pomocí šablon Azure Portal, PowerShellu, CLI a Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d8763a794d2fb96d0c464fb1249b9eb400fd23e7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086444"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339865"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +49,7 @@ Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využi
 
 1. Chcete-li odebrat oblasti, zrušte zaškrtnutí jedné nebo více oblastí z mapy tak, že vyberete modré šestiúhelníky se značkami zaškrtnutí. Nebo vyberte ikonu "wastebasket" ( 🗑 ) vedle oblasti na pravé straně.
 
-1. Pokud chcete změny uložit, vyberte **OK** .
+1. Pokud chcete změny uložit, vyberte **OK**.
 
    :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
 
@@ -70,7 +71,7 @@ Podívejte se prosím na téma [Přidání nebo odebrání oblastí pomocí Powe
 
 Otevřete kartu **replikace dat globálně** a výběrem **Povolit** povolte zápisy ve více oblastech. Po povolení zápisů ve více oblastech se všechny oblasti čtení, které v daném účtu aktuálně máte, stanou oblastmi pro čtení a zápis.
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Účet Azure Cosmos konfiguruje snímek obrazovky s zápisy ve více oblastech.":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -148,15 +149,15 @@ Možnost automatického převzetí služeb při selhání umožňuje Azure Cosmo
 
 1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
 
-2. V horní části podokna vyberte **automatické převzetí služeb při selhání** .
+2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Globální replikace dat":::
 
-3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto** . 
+3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**. 
 
-4. Vyberte **Uložit** .
+4. Vyberte **Uložit**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Nabídka portálu Automatické převzetí služeb při selhání":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -177,17 +178,17 @@ Po nakonfigurování účtu Cosmos pro automatické převzetí služeb při selh
 
 1. Z účtu Azure Cosmos otevřete podokno **globálně replikovat data** .
 
-2. V horní části podokna vyberte **automatické převzetí služeb při selhání** .
+2. V horní části podokna vyberte **automatické převzetí služeb při selhání**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Globální replikace dat":::
 
-3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto** .
+3. V podokně **automatické převzetí služeb při selhání** ověřte, že je **možnost povolit automatické převzetí služeb při** selhání nastavena na **zapnuto**.
 
 4. Pokud chcete změnit prioritu převzetí služeb při selhání, přetáhněte oblasti čtení přes tři tečky na levé straně řádku, která se zobrazí, když na ně najedete myší.
 
-5. Vyberte **Uložit** .
+5. Vyberte **Uložit**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Nabídka portálu Automatické převzetí služeb při selhání":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -211,15 +212,15 @@ Proces ručního převzetí služeb při selhání zahrnuje změnu oblasti zápi
 
 1. Přejděte k účtu Azure Cosmos a otevřete nabídku **replikovat data globálně** .
 
-2. V horní části nabídky vyberte **ruční převzetí služeb při selhání** .
+2. V horní části nabídky vyberte **ruční převzetí služeb při selhání**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Nabídka Globální replikace dat":::
 
 3. V nabídce **ruční převzetí služeb při selhání** vyberte novou oblast pro zápis. Zaškrtnutím políčka označíte, že pochopení této možnosti mění vaši oblast zápisu.
 
-4. Pokud chcete převzetí služeb při selhání aktivovat, vyberte **OK** .
+4. Pokud chcete převzetí služeb při selhání aktivovat, vyberte **OK**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Nabídka Přidat nebo odebrat oblasti":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Nabídka portálu Ruční převzetí služeb při selhání":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

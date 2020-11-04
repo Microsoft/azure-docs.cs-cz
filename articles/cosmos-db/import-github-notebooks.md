@@ -4,14 +4,15 @@ description: Naučte se připojit k GitHubu a importovat poznámkové bloky z ú
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8315369d2100036a50aae770267aa04bceb2dfb0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101472"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339797"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>Import poznámkových bloků z úložiště GitHub do Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +29,7 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Vyberte položku nabídky **připojit k GitHubu** .
 
-1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým** úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup** . Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
+1. Otevře se karta, kde se můžete rozhodnout, že se chcete připojit pouze k **veřejným** úložištím nebo **veřejným a soukromým** úložištím.  Po výběru požadované možnosti vyberte **autorizovat přístup**. Pro Azure Cosmos DB přístupu k úložištím ve vašem účtu GitHub se vyžaduje autorizace.
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
 
@@ -38,13 +39,13 @@ Můžete se připojit k vlastním úložištím GitHubu nebo k jiným veřejným
 
 1. Jakmile vyberete požadované úložiště, položka úložiště se přesune z oddílu **nepřipnutých úložišť** do **připnutých úložišť** . V případě potřeby můžete také zvolit konkrétní větev úložiště, ze které se mají importovat poznámkové bloky.
 
-   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="Výběr úložiště a větve":::
 
 1. Kliknutím na **tlačítko OK** dokončete operaci importu. Všechny poznámkové bloky dostupné ve vybrané větvi úložiště se importují do svého účtu Azure Cosmos.
 
 Po integraci s účtem GitHubu uvidíte jenom seznam úložišť a poznámkových bloků v účtu Azure Cosmos. Tento příkaz platí i v případě, že se k účtu Azure Cosmos DB přihlašuje více uživatelů a přidáte vlastní účty. Jinými slovy, více uživatelů může použít stejný účet Azure Cosmos k připojení pracovního prostoru poznámkového bloku k GitHubu. Každý uživatel ale uvidí jenom seznam úložišť a poznámkových bloků, které naimportovali. Poznámkové bloky importované jinými uživateli nejsou pro vás vidět.
 
-Pokud chcete odpojit svůj účet GitHubu z pracovního prostoru poznámkových bloků, otevřete kartu **Průzkumník dat** , vyberte možnost `…` vedle **úložišť GitHub** a vyberte **Odpojit od GitHubu** .
+Pokud chcete odpojit svůj účet GitHubu z pracovního prostoru poznámkových bloků, otevřete kartu **Průzkumník dat** , vyberte možnost `…` vedle **úložišť GitHub** a vyberte **Odpojit od GitHubu**.
 
 ## <a name="edit-a-notebook-and-push-changes-to-github"></a>Úprava poznámkového bloku a vložení změn do GitHubu
 
@@ -54,7 +55,7 @@ Po úpravě existujícího poznámkového bloku vyberte **Save (Uložit** ). Ote
 
 V normálním toku GitHub po potvrzení změn se obvykle dokončí změny do vzdáleného. V takovém případě ale možnost potvrzení slouží jako "fázování, potvrzování a" doručování "vašich aktualizací do GitHubu.
 
-:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Autorizovat Azure Cosmos DB k přístupu k úložištím GitHubu":::
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="Upravit poznámkové bloky a potvrdit změny do GitHubu":::
 
 ## <a name="next-steps"></a>Další kroky
 

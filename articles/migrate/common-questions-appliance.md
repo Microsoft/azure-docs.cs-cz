@@ -3,12 +3,12 @@ title: Nejčastější dotazy k Azure Migrate zařízením
 description: Získejte odpovědi na běžné otázky týkající se zařízení Azure Migrate.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314778"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337587"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Zařízení Azure Migrate: běžné otázky
 
@@ -42,12 +42,13 @@ Zařízení se dá nasadit takto:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Jak se zařízení připojuje k Azure?
 
-Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute. Ujistěte se, že jsou tyto [adresy URL](./migrate-appliance.md#url-access) schválené pro připojení zařízení k Azure.
+Zařízení se může připojit přes Internet nebo pomocí Azure ExpressRoute. 
 
-- Pokud chcete používat Azure ExpressRoute pro Azure Migrate provozu replikace, vyžaduje se partnerský vztah Microsoftu nebo existující veřejný partnerský vztah (veřejný partnerský vztah je zastaralý pro nové vytváření ER).
-- Replikace přes Azure ExpressRoute jenom s povoleným privátním partnerským vztahem není podporovaná.
+- Ujistěte se, že se zařízení může připojit k těmto [adresám URL Azure](./migrate-appliance.md#url-access). 
+- ExpressRoute můžete použít s partnerským vztahem Microsoftu.  Veřejný partnerský vztah je zastaralý a není k dispozici pro nové okruhy ExpressRoute.
+- Pouze privátní partnerské vztahy se nepodporují.
 
-Azure ExpressRoute s nakonfigurovaným partnerským vztahem Microsoftu je doporučená doména směrování pro provoz replikace.
+
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Má analýza zařízení vliv na výkon?
 
@@ -65,9 +66,9 @@ Zařízení potřebuje přístup k adresám URL Azure. [Zkontrolujte](migrate-ap
 
 Informace o datech, která Azure Migrate zařízení shromažďuje na virtuálních počítačích, najdete v následujících článcích:
 
-- **Virtuální počítač VMware**: [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
-- **Virtuální počítač Hyper-V**: [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
-- **Fyzické nebo virtuální servery**:[Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
+- **Virtuální počítač VMware** : [Projděte si](migrate-appliance.md#collected-data---vmware) shromážděná data.
+- **Virtuální počítač Hyper-V** : [Projděte si](migrate-appliance.md#collected-data---hyper-v) shromážděná data.
+- **Fyzické nebo virtuální servery** : [Prohlédněte si](migrate-appliance.md#collected-data---physical) shromážděná data.
 
 ## <a name="how-is-data-stored"></a>Jak se data ukládají?
 
