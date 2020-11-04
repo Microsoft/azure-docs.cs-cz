@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 339273c091a1bcfc4f2de66ef2f79ea8cebbc49b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026045"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321879"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
 Tento článek popisuje, jak pomocí dotazů na podregistru snížit data uložená v tabulkách podregistru Azure HDInsight a zmenšit tak jejich lepší správu pro účely analýzy. Pokrývá tři oblíbené metody vzorkování:
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí dotazů na podregistru snížit data ulože
 **Proč vzorkovat data?**
 Pokud je datová sada, kterou plánujete analyzovat, rozsáhlá, je obvykle vhodné ji vyvzorkovat, aby se snížila na menší, ale jenom se zástupcem a více spravovatelnými velikostmi. Vypínání vzorků usnadňuje porozumění datům, průzkumům a inženýrům funkcí. Jejím úkolem v rámci vědeckého zpracování týmových dat je povolit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol vzorkování je krok v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml).
 
 ## <a name="how-to-submit-hive-queries"></a>Odeslání dotazů na podregistr
 Dotazy na podregistr je možné odeslat z konzoly Hadoop Command-Line v hlavním uzlu clusteru Hadoop.  Přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu Hadoop Command-Line a z ní odešlete dotazy na podregistr. Pokyny k odesílání dotazů na podregistr v konzole Command-Line Hadoop najdete v tématu [odeslání dotazů na podregistr](move-hive-tables.md#submit).
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Zde `<sample rate, 0-1>` Určuje poměr záznamů, které uživatelé chtějí vzorkovat.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Náhodné vzorkování podle skupin
-Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" (*stav*), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
+Při vzorkování dat kategorií můžete chtít zahrnout nebo vyloučit všechny instance pro určitou hodnotu proměnné kategorií. Tento druh vzorkování se nazývá "vzorkování podle skupin". Například pokud máte kategorií proměnnou "State" ( *stav* ), která má hodnoty jako NY, MA, CA, NEWARKU a PA, budete chtít záznamy z každého stavu společně bez ohledu na to, zda jsou vzorky nebo nikoli.
 
 Tady je příklad dotazu, který ukázky seskupují:
 
@@ -105,4 +105,3 @@ where state_rank <= state_cnt*'${hiveconf:sampleRate}'
 ```
 
 Informace o pokročilejších metodách vzorkování, které jsou k dispozici v podregistru, najdete v tématu [vzorkování LanguageManual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Sampling).
-

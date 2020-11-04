@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0be75b3b0a7b9b5aaec0da1d9f41f67a7108e77a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bf1c5856276c4c7ee0e37ed4ef2120d1d93d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085306"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322043"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
 V tomto dokumentu se dozvíte, jak vygenerovat funkce pro data uložená v SQL Serverm VIRTUÁLNÍm počítači v Azure, které pomůžou z dat efektivněji učit algoritmy. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou znázorněné tady.
 
-Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Tento úkol je krok v rámci [vědeckého zpracování týmových dat (TDSP)](./index.yml).
 
 > [!NOTE]
 > Pro praktický příklad si můžete projít [datovou sadu taxislužby NYC](https://www.andresmh.com/nyctaxitrips/) a odkazovat na IPNB s názvem [NYC data tahání pomocí poznámkového bloku IPython a SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) pro ucelený návod.
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
@@ -99,12 +99,12 @@ Tyto funkce založené na umístění je možné dále využít ke generování 
 
 > [!TIP]
 > Záznamy můžete programově vkládat pomocí vámi zvoleného jazyka. Možná budete muset vložit data do bloků dat, aby se zlepšila efektivita zápisu. [Tady je příklad, jak to provést pomocí pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> Další možností je vkládat data do databáze pomocí [nástroje BCP](https://msdn.microsoft.com/library/ms162802.aspx) .
+> Další možností je vkládat data do databáze pomocí [nástroje BCP](/sql/tools/bcp-utility) .
 > 
 > 
 
 ### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>Připojování k Azure Machine Learning
-Nově vygenerovanou funkci lze přidat jako sloupec do existující tabulky nebo Uložit do nové tabulky a spojit s původní tabulkou pro strojové učení. Funkce se dají vygenerovat nebo zobrazit, pokud už se vytvořily, pomocí modulu [Import dat](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) v Azure ml, jak je znázorněno níže:
+Nově vygenerovanou funkci lze přidat jako sloupec do existující tabulky nebo Uložit do nové tabulky a spojit s původní tabulkou pro strojové učení. Funkce se dají vygenerovat nebo zobrazit, pokud už se vytvořily, pomocí modulu [Import dat](/azure/machine-learning/studio-module-reference/import-data) v Azure ml, jak je znázorněno níže:
 
 ![Čtenáři Azure ML](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
@@ -126,5 +126,4 @@ conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>
 data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 ```
 
-Nyní můžete pracovat s datovým rámcem PANDAS, jak je popsáno v tématech [vytváření funkcí pro data služby Azure Blob Storage pomocí programu Panda](create-features-blob.md).
-
+Nyní můžete pracovat s datovým rámcem PANDAS, jak je popsáno v tématech [vytváření funkcí pro data služby Azure Blob Storage pomocí programu Panda](./explore-data-blob.md).

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 5e84a3930d350ec45cef7119342e3e4d2d5daaee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250653"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322029"
 ---
 # <a name="feature-engineering-in-data-science"></a>Strojírenství funkcí v oblasti datových věd
 
 V tomto článku se seznámíte s technologickými postupy a jejími rolemi v tématu zvyšování dat ve službě Machine Learning. Naučte se z ilustrované příklady vypracované z [Azure Machine Learning Studio (klasické)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experimenty. 
 
-* **Inženýrské funkce**: proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
-* **Výběr funkcí**: proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
+* **Inženýrské funkce** : proces vytváření nových funkcí z nezpracovaných dat za účelem zvýšení prediktivního výkonu výukového algoritmu. Inženýrské funkce by měly zachytit Další informace, které nejsou v původní sadě funkcí snadno zjevné.
+* **Výběr funkcí** : proces výběru klíčové sady funkcí k omezení dimenzionálního problému při školení.
 
 Obvykle se pro generování dalších funkcí používá technologický **inženýr** , který vygeneruje další funkce a potom se provede **Výběr funkcí** , aby se vyloučily nepodstatné, redundantní nebo vysoce korelační funkce.
 
@@ -60,7 +60,7 @@ Kromě sady funkcí A, která již existuje v původních nezpracovaných datech
 
 ### <a name="feature-engineering-using-studio-classic"></a>Strojírenství funkcí pomocí studia (Classic)
 
-V experimentu studia (Classic) se tyto čtyři datové sady školení vytvoří prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou první větve obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) , ve kterém jsou vytvořeny a připojeny odvozené funkce (funkce, B, C a D) k importované datové sadě.
+V experimentu studia (Classic) se tyto čtyři datové sady školení vytvoří prostřednictvím čtyř větví z předem zpracované vstupní datové sady. S výjimkou první větve obsahuje každá z těchto větví modul [spuštění skriptu jazyka R](/azure/machine-learning/studio-module-reference/execute-r-script) , ve kterém jsou vytvořeny a připojeny odvozené funkce (funkce, B, C a D) k importované datové sadě.
 
 Následující obrázek ukazuje skript R, který se používá k vytvoření sady funkcí B ve druhé levé větvi.
 
@@ -80,9 +80,9 @@ V úlohách souvisejících s dolováním textu, jako je klasifikace dokumentů 
 
 ### <a name="feature-hashing"></a>Hodnoty hash funkcí
 
-K dosažení této úlohy se použije technika označovaná jako [hodnota hash funkcí](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) pro efektivní zapnutí libovolných textových funkcí v indexech. Namísto přidružování každé textové funkce (slova/fráze) k určitému indexu Tato metoda aplikuje funkci hash na funkce a pomocí jejich hodnot hash jako indexy přímo.
+K dosažení této úlohy se použije technika označovaná jako [hodnota hash funkcí](/azure/machine-learning/studio-module-reference/feature-hashing) pro efektivní zapnutí libovolných textových funkcí v indexech. Namísto přidružování každé textové funkce (slova/fráze) k určitému indexu Tato metoda aplikuje funkci hash na funkce a pomocí jejich hodnot hash jako indexy přímo.
 
-V nástroji Studio (Classic) je modul pro [vytřídění hodnoty hash](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/feature-hashing) , který snadno vytváří funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: kniha ohodnocená od 1 do 5 a skutečný obsah kontroly. Cílem tohoto modulu je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
+V nástroji Studio (Classic) je modul pro [vytřídění hodnoty hash](/azure/machine-learning/studio-module-reference/feature-hashing) , který snadno vytváří funkce slov/fráze. Následující obrázek ukazuje příklad použití tohoto modulu. Vstupní datová sada obsahuje dva sloupce: kniha ohodnocená od 1 do 5 a skutečný obsah kontroly. Cílem tohoto modulu je načíst řadu nových funkcí, které znázorňují četnost výskytů odpovídajících slov (/Phrase) v rámci určité recenze knihy. Chcete-li použít tento modul, proveďte následující kroky:
 
 * Nejprve vyberte sloupec, který obsahuje vstupní text (v tomto příkladu "col2").
 * Potom nastavte "hashing bitsize" na 8, což znamená, že se vytvoří 2 ^ 8 = 256 funkcí. Ve slově nebo ve všech textech bude hodnota hash na 256 indexy. Parametr "hashing bitsize" je v rozsahu od 1 do 31. Pokud je nastavení nastavené na větší číslo, může být v těchto slovnících (/Phrase) hodnota hash na stejný index.
