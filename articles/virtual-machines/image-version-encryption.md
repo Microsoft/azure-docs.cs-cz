@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f6bf436110e9822d687419b74a8a22bad7a6d700
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048079"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333460"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -23,9 +23,9 @@ Pro šifrování vašich imagí můžete spoléhat na klíče spravované platfo
 
 Šifrování na straně serveru pomocí klíčů spravovaných zákazníkem používá Azure Key Vault. Můžete buď importovat [klíče RSA](../key-vault/keys/hsm-protected-keys.md) do svého Key Vault, nebo vygenerovat nové klíče rsa v Azure Key Vault.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
-Tento článek vyžaduje, abyste už měli k dispozici sadu Encryption disk pro použití pro vaši image.
+Tento článek vyžaduje, abyste již v každé oblasti, do které chcete image replikovat, nastavili šifrovací disk.
 
 - Pokud chcete použít jenom klíč spravovaný zákazníkem, přečtěte si téma **Povolení klíčů spravovaných zákazníkem pomocí šifrování na straně serveru** pomocí [Azure Portal](./disks-enable-customer-managed-keys-portal.md) nebo [PowerShellu](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
@@ -125,7 +125,7 @@ New-AzGalleryImageVersion `
    -TargetRegion $targetRegion
 ```
 
-### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
+### <a name="create-a-vm"></a>Vytvořit virtuální počítač
 
 Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí klíčů spravovaných zákazníkem zašifrovat disky. Syntaxe je stejná jako vytvoření [zobecněného](vm-generalized-image-version-powershell.md) nebo [specializovaného](vm-specialized-image-version-powershell.md) virtuálního počítače z image, musíte použít rozšířenou sadu parametrů a přidat `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` ji do konfigurace virtuálního počítače.
 
@@ -210,7 +210,7 @@ Když vytvoříte verzi image na portálu, můžete použít kartu **šifrován�
 
 
 1. Na stránce **vytvořit verzi image** vyberte kartu **šifrování** .
-2. V části **typ šifrování**vyberte místně **zašifrované šifrování pomocí klíče spravovaného zákazníkem** nebo **dvojitým šifrováním pomocí klíčů spravovaných platformou a zákazníkem**. 
+2. V části **typ šifrování** vyberte místně **zašifrované šifrování pomocí klíče spravovaného zákazníkem** nebo **dvojitým šifrováním pomocí klíčů spravovaných platformou a zákazníkem**. 
 3. Pro každý disk v imagi vyberte v rozevíracím seznamu možnost použít **šifrování disku** . 
 
 ### <a name="create-the-vm"></a>Vytvoření virtuálního počítače

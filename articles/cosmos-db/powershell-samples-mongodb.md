@@ -3,15 +3,16 @@ title: Ukázky Azure PowerShell pro rozhraní Azure Cosmos DB API pro MongoDB
 description: Získání ukázek Azure PowerShell k provádění běžných úloh v rozhraní Azure Cosmos DB API pro MongoDB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6b2ff9371feab1de942f5e3a7de5ff02ada883b0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3b401aec29da8702e262e0e8e9467454e77bc16d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096219"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332929"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-api-for-mongodb"></a>Ukázky Azure PowerShell pro rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -20,7 +21,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="common-samples"></a>Běžné ukázky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Aktualizace účtu](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje výchozí úroveň konzistence účtu Cosmos DB. |
 |[Aktualizace oblastí účtu](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje oblasti účtu Cosmos DB. |
@@ -31,7 +32,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="mongo-db-api-samples"></a>Ukázky rozhraní API pro Mongo DB
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu, databáze a kolekce](scripts/powershell/mongodb/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a kolekci. |
 |[Vytvoření účtu, databáze a kolekce pomocí automatického škálování](scripts/powershell/mongodb/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a kolekci s použitím automatického škálování. |

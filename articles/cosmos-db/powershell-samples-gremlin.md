@@ -3,15 +3,16 @@ title: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
 description: Získání ukázek Azure PowerShell k provádění běžných úloh v rozhraní API pro Azure Cosmos DB Gremlin
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0785b8e0428e4f6dc4b49d24e9cc53a36f8ba4f5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c406ea58bfba0128a31489aa7b834c6a586d74d3
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096236"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332946"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Gremlin
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -20,7 +21,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="common-samples"></a>Běžné ukázky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Aktualizace účtu](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje výchozí úroveň konzistence účtu Cosmos DB. |
 |[Aktualizace oblastí účtu](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje oblasti účtu Cosmos DB. |
@@ -31,7 +32,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="gremlin-api-samples"></a>Ukázky rozhraní API pro Gremlin
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu, databáze a grafu](scripts/powershell/gremlin/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf. |
 |[Vytvoření účtu, databáze a grafu pomocí automatického škálování](scripts/powershell/gremlin/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, databázi a graf s možností automatického škálování. |

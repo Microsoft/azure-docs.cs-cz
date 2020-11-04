@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1ddc8c2b9531dd78c1c6746e28b8ff5864af563e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488023"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331943"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Rychlý Start: vytvoření serveru Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure
 
@@ -61,9 +61,9 @@ Zde jsou uvedeny podrobnosti o předchozích argumentech:
 name | mydemoserver | Jedinečný název, který identifikuje váš Azure Database for PostgreSQL Server. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí obsahovat 3 až 63 znaků. Další informace najdete v tématu [Azure Database for PostgreSQL pravidla pro pojmenování](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql).
 resource-group | myresourcegroup | Název skupiny prostředků Azure.
 location | westus | Umístění Azure pro server.
-admin-user | myadmin | Uživatelské jméno pro přihlášení správce Nemůže to být **azure_superuser**, **admin**, **Administrator**, **root**, **Guest**ani **Public**.
+admin-user | myadmin | Uživatelské jméno pro přihlášení správce Nemůže to být **azure_superuser** , **admin** , **Administrator** , **root** , **Guest** ani **Public**.
 admin-password | *bezpečné heslo* | Heslo uživatele správce. Musí obsahovat 8 až 128 znaků ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
-sku-name|GP_Gen5_2| Název cenové úrovně a konfigurace výpočtů. V zkrácených způsobech použijte konvenci {cenová úroveň}_{COMPUTE_} {virtuální jádra}. Další informace najdete v tématu [Azure Database for PostgreSQL ceny](https://azure.microsoft.com/pricing/details/postgresql/server/).
+sku-name|GP_Gen5_2| Název cenové úrovně a konfigurace výpočtů. V zkrácených způsobech použijte konvenci {cenová úroveň} _{COMPUTE_ } {virtuální jádra}. Další informace najdete v tématu [Azure Database for PostgreSQL ceny](https://azure.microsoft.com/pricing/details/postgresql/server/).
 
 >[!IMPORTANT] 
 >- Výchozí verze PostgreSQL serveru je 9,6. Pokud chcete zobrazit všechny podporované verze, přečtěte si článek [podporované hlavní verze PostgreSQL](./concepts-supported-versions.md).
@@ -123,7 +123,7 @@ Výsledek je ve formátu JSON. Poznamenejte si hodnoty **administratorLogin** a 
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Připojení k Azure Database for PostgreSQL serveru pomocí psql
-Klient [psql](https://www.postgresql.org/docs/current/static/app-psql.html) je oblíbená volba pro připojení k serverům PostgreSQL. K serveru se můžete připojit pomocí psql s [Azure Cloud Shell](../cloud-shell/overview.md). Pokud máte k dispozici psql, můžete použít i v místním prostředí. Prázdná databáze **Postgres**se automaticky vytvoří pomocí nového serveru PostgreSQL. Tuto databázi můžete použít pro připojení k psql, jak je znázorněno v následujícím kódu. 
+Klient [psql](https://www.postgresql.org/docs/current/static/app-psql.html) je oblíbená volba pro připojení k serverům PostgreSQL. K serveru se můžete připojit pomocí psql s [Azure Cloud Shell](../cloud-shell/overview.md). Pokud máte k dispozici psql, můžete použít i v místním prostředí. Prázdná databáze **Postgres** se automaticky vytvoří pomocí nového serveru PostgreSQL. Tuto databázi můžete použít pro připojení k psql, jak je znázorněno v následujícím kódu. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
@@ -153,7 +153,3 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Migrace databáze pomocí exportu a importu](./howto-migrate-using-export-and-import.md)
-> 
-> [Nasazení webové aplikace v Django s PostgreSQL](../app-service/tutorial-python-postgresql-app.md)
->
-> [Připojení k aplikaci Node.JS](./connect-nodejs.md)

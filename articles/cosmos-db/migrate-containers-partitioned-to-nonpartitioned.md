@@ -3,16 +3,17 @@ title: Migrace kontejnerů Azure Cosmos, které nejsou rozdělené na oddíly, d
 description: Naučte se migrovat všechny existující nerozdělitelné kontejnery do dělených kontejnerů.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ffd1ff6d18769998dd3a168992566a376ea1cd27
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: edb6114406922d55c439ae7426a2be933bba4aee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080069"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334082"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrace kontejnerů mimo oddíly na dělené kontejnery
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

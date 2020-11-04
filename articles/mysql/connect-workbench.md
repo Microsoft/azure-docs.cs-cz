@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57bd8348977270de9b0e445e0a40c006b65d8392
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90896326"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332036"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití aplikace MySQL Workbench k připojení a dotazování dat v Azure Database for MySQL
 
@@ -35,7 +35,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
-2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
+2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver** ).
 
 3. Klikněte na název serveru.
 
@@ -49,7 +49,7 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
 2.    V dialogovém okně pro **nastavení nového připojení** zadejte na kartě **Parametry** následující informace:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Název serveru Azure Database for MySQL":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nastavení nového připojení":::
 
 | **Nastavení** | **Navrhovaná hodnota** | **Popis pole** |
 |---|---|---|
@@ -103,13 +103,23 @@ Připojení k serveru Azure MySQL pomocí nástroje s grafickým uživatelským 
 
     Snímek obrazovky ukazuje příklad kódu SQL v aplikaci MySQL Workbench a výstup po jeho spuštění.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Název serveru Azure Database for MySQL":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Karta SQL aplikace MySQL Workbench pro spuštění vzorového kódu SQL":::
 
 2. Pokud chcete spustit ukázkový kód SQL, klikněte na ikonu blesku na panelu nástrojů karty **Soubor SQL**.
 3. Všimněte si výsledků na třech kartách v části **Mřížka výsledků** uprostřed stránky. 
 4. Všimněte si seznamu **Výstup** v dolní části stránky. V něm se zobrazí stavy jednotlivých příkazů. 
 
 Nyní jste se připojili ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench a s využitím jazyka SQL jste dotázali data.
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]

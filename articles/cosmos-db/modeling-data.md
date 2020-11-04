@@ -5,14 +5,15 @@ description: Přečtěte si o modelování dat v databázích NoSQL, rozdílech 
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 0868b0d3e917b857d09c89e3a35d03872c42a23e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a141177846def9c94216684c1083d0d336eeda1e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096644"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93333235"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,7 +37,7 @@ V případě porovnání si nejdřív projdeme, jak můžeme modelovat data v re
 
 :::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Model relační databáze" border="false":::
 
-Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business* .
+Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business*.
 
 Základní GUID při normalizaci dat je **vyhnout se ukládání redundantních dat** u každého záznamu a místo toho je třeba odkazovat na data. Chcete-li v tomto příkladu číst osobu se všemi kontaktními údaji a adresami kontaktů, je nutné použít spojení k efektivnímu psaní (nebo denormalizaci) dat v době běhu.
 
@@ -86,9 +87,9 @@ V obecném případě použijte vložené datové modely v těchto případech:
 
 * Mezi entitami je **obsažena** relace.
 * Mezi entitami existuje relace **1:1** .
-* K dispozici jsou vložená data, která se **mění zřídka** .
-* Existují vložená data, která se nezvětšují **bez vazby** .
-* K dispozici jsou vložená data, která se **často dotazují** .
+* K dispozici jsou vložená data, která se **mění zřídka**.
+* Existují vložená data, která se nezvětšují **bez vazby**.
+* K dispozici jsou vložená data, která se **často dotazují**.
 
 > [!NOTE]
 > Typicky denormalizované datové modely poskytují lepší výkon při **čtení** .
@@ -242,8 +243,8 @@ Obecně používejte normalizované datové modely v těchto případech:
 
 * Reprezentace vztahů **1: n** .
 * Reprezentace vztahů **m:n** .
-* Změny souvisejících dat jsou **často časté** .
-* Odkazovaná data by mohla být **neohraničená** .
+* Změny souvisejících dat jsou **často časté**.
+* Odkazovaná data by mohla být **neohraničená**.
 
 > [!NOTE]
 > Obvykle normalizace poskytuje lepší výkon **zápisu** .
@@ -300,7 +301,7 @@ Ve výše uvedeném příkladu jsme zrušili nevázanou kolekci v dokumentu vyda
 V relačních databázích *mnoho: mnoho* relací je často modelů s spojovacími tabulkami, které slouží pouze k propojení záznamů z jiných tabulek.
 
 
-:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Model relační databáze" border="false":::
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Spojování tabulek" border="false":::
 
 Můžete se rozhodnout, že budete replikovat stejnou věc s použitím dokumentů a vytvořit datový model, který vypadá podobně jako následující.
 
@@ -403,7 +404,7 @@ Ujistěte se, že pokud se změnil název autora nebo chce aktualizovat fotograf
 
 V tomto příkladu jsou **předem vypočtené agregované** hodnoty pro ukládání nákladného zpracování operace čtení. V příkladu jsou některá data vložená v dokumentu autora data počítána za běhu. Pokaždé, když se publikuje nová kniha, vytvoří se dokument knihy **a** pole countOfBooks se nastaví na vypočtenou hodnotu na základě počtu dokumentů knihy, které existují pro určitého autora. Tato optimalizace by byla dobrá pro čtení těžkých systémů, kde můžeme pro účely optimalizace čtení provádět výpočty na zápisy.
 
-Možnost mít model s předem vypočítanými poli je možná, protože Azure Cosmos DB podporuje transakce s **více dokumenty** . Mnoho úložišť NoSQL nemůže dělat transakce napříč dokumenty a proto rozhodování o návrhu, jako je "vždy vkládat vše", z důvodu tohoto omezení. Pomocí Azure Cosmos DB můžete použít triggery na straně serveru nebo uložené procedury, které v rámci transakce s kyselým obsahem vloží všechny knihy a tvůrci aktualizací. Teď **nemusíte** vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
+Možnost mít model s předem vypočítanými poli je možná, protože Azure Cosmos DB podporuje transakce s **více dokumenty**. Mnoho úložišť NoSQL nemůže dělat transakce napříč dokumenty a proto rozhodování o návrhu, jako je "vždy vkládat vše", z důvodu tohoto omezení. Pomocí Azure Cosmos DB můžete použít triggery na straně serveru nebo uložené procedury, které v rámci transakce s kyselým obsahem vloží všechny knihy a tvůrci aktualizací. Teď **nemusíte** vkládat vše do jednoho dokumentu, abyste měli jistotu, že vaše data zůstanou konzistentní.
 
 ## <a name="distinguishing-between-different-document-types"></a>Odlišení mezi různými typy dokumentů
 

@@ -3,15 +3,16 @@ title: Azure PowerShell ukázky pro Azure Cosmos DB rozhraní API pro tabulky
 description: Získání ukázek Azure PowerShell k provádění běžných úloh v Azure Cosmos DB rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4594f1d3f33f3fc20bfc5582f58945e5382a7db8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: be0fd7db7b28ea9801e065f1327596021b3e31b1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096168"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332895"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-table-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB rozhraní API pro tabulky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -20,7 +21,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="common-samples"></a>Běžné ukázky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Aktualizace účtu](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje výchozí úroveň konzistence účtu Cosmos DB. |
 |[Aktualizace oblastí účtu](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje oblasti účtu Cosmos DB. |
@@ -31,7 +32,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="table-api-samples"></a>Ukázky rozhraní API pro tabulky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu a tabulky](scripts/powershell/table/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a tabulku. |
 |[Vytvoření účtu a tabulky pomocí automatického škálování](scripts/powershell/table/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos a automatické škálování tabulky. |

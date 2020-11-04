@@ -3,15 +3,16 @@ title: Překlad LINQ to SQL v Azure Cosmos DB
 description: Seznamte se s podporovanými operátory LINQ a způsobem, jak jsou dotazy LINQ mapovány na dotazy SQL v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38d37d03c99bd3a39b00276da110ea0ef6bb962e
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075397"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93332368"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ to SQL překlad
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -84,7 +85,7 @@ Zprostředkovatel LINQ zahrnutý v sadě SQL .NET SDK podporuje následující o
 - **Kde** : filtry se překládají na [WHERE](sql-query-where.md)a podporují překlad mezi `&&` , a `||` `!` operátory SQL
 - **Operátor SelectMany** : umožňuje odvinutí polí do klauzule [Join](sql-query-join.md) . Použijte k řetězení nebo vnořování výrazů k filtrování prvků pole.
 - **OrderBy** a **OrderByDescending** : PŘELOŽÍ na [pořadí pomocí](sql-query-order-by.md) ASC nebo DESC.
-- **Count** , **Sum** , **min** , **Max** a **Average** operátory pro [agregaci](sql-query-aggregates.md)a jejich asynchronní ekvivalenty **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** a **AverageAsync** .
+- **Count** , **Sum** , **min** , **Max** a **Average** operátory pro [agregaci](sql-query-aggregates.md)a jejich asynchronní ekvivalenty **CountAsync** , **SumAsync** , **MinAsync** , **MaxAsync** a **AverageAsync**.
 - **CompareTo** : přeloží porovnávání rozsahů. Běžně se používá pro řetězce, protože nejsou srovnatelné v rozhraní .NET.
 - **Přeskočte** a **proveďte** následující kroky: přeloží se na [posun a omezení](sql-query-offset-limit.md) pro omezení výsledků dotazu a stránkování.
 - **Matematické funkce** : podporuje překlad z rozhraní .NET,,,,, `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` , `Exp` , `Floor` ,, `Log` `Log10` , `Pow` , `Round` , `Sign` , `Sin` , `Sqrt` , `Tan` a `Truncate` na ekvivalentní [integrované matematické funkce](sql-query-mathematical-functions.md).

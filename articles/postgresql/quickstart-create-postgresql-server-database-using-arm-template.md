@@ -1,18 +1,18 @@
 ---
 title: 'Rychlý Start: Vytvoření šablony Azure DB pro PostgreSQL – ARM'
-description: V tomto článku se dozvíte, jak vytvořit Azure Database for PostgreSQL jediný server pomocí šablony Azure Resource Manager.
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Database for PostgreSQL jediný server pomocí šablony Azure Resource Manager.
 author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: bf53b6673da57428b648c0043a1454560f64e4bb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 9b022f83ed2a4e3a23165cc6bda298a53c008c7c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042925"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93331637"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure** . Šablona se otevře v prostředí Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení do Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
@@ -70,21 +70,21 @@ Vyberte následující odkaz pro nasazení šablony Azure Database for PostgreSQ
 
 Na stránce **nasadit Azure Database for PostgreSQL se sítí VNET** :
 
-1. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK** .
+1. V poli **Skupina prostředků** vyberte **vytvořit novou** , zadejte název nové skupiny prostředků a vyberte **OK**.
 
 2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
 
-3. Zadejte **název serveru** , **přihlašovací jméno správce** a **přihlašovací heslo správce** .
+3. Zadejte **název serveru** , **přihlašovací jméno správce** a **přihlašovací heslo správce**.
 
-    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Nasazení do Azure":::
+    :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-arm-template/deploy-azure-database-for-postgresql-with-vnet.png" alt-text="Nasazení Azure Database for PostgreSQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal":::
 
 4. Pokud chcete, změňte další výchozí nastavení:
 
     * **Předplatné** : předplatné Azure, které chcete použít pro server.
-    * **Kapacita SKU** : kapacita Vcore, která může být *2* (výchozí), *4* , *8* , *16* , *32* nebo *64* .
-    * **Název SKU** : Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1* , *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32* .
+    * **Kapacita SKU** : kapacita Vcore, která může být *2* (výchozí), *4* , *8* , *16* , *32* nebo *64*.
+    * **Název SKU** : Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1* , *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
     * **Velikost SKU MB** : velikost úložiště pro Azure Database for PostgreSQL Server (standardně *51200* ) v megabajtech.
-    * **Úroveň SKU** : vrstva nasazení, jako je například *Basic* , *GeneralPurpose* (výchozí), nebo *MemoryOptimized* .
+    * **Úroveň SKU** : vrstva nasazení, jako je například *Basic* , *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
     * **Rodina SKU** : *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
     * **Verze PostgreSQL** : verze serveru PostgreSQL, která se má nasadit, například *9,5* , *9,6* , *10* nebo *11* (výchozí).
     * **Dny uchovávání záloh** : požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7* ).
@@ -95,9 +95,9 @@ Na stránce **nasadit Azure Database for PostgreSQL se sítí VNET** :
     * **Předpona adresy virtuální** sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16* ).
     * **Předpona podsítě** : Předpona adresy pro podsíť (výchozí *10.0.0.0/16* ).
 
-5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními** .
+5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
 
-6. Vyberte **Koupit** .
+6. Vyberte **Koupit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
@@ -148,7 +148,7 @@ read -p "Press [ENTER] to continue: "
 
 Pomocí těchto kroků můžete zobrazit přehled nového serveru Azure Database for PostgreSQL:
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for PostgreSQL servery** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for PostgreSQL servery**.
 
 2. V seznamu databáze vyberte nový server. Zobrazí se stránka s **přehledem** nového serveru Azure Database for PostgreSQL.
 
@@ -181,13 +181,13 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků** .
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
 
 2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
 
-3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků** .
+3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
 
-4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit** .
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
