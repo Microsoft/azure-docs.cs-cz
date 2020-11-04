@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 658d18ed3c9eefeedffd82bbccedbde0621fe748
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145515"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307768"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -36,7 +36,7 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 - [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
-- [Azure SQL Database a Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
+- [Azure SQL Database a Azure synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
 - Dynamics CRM Online
 - Analýzy Microsoft Application Insights
 - [Microsoft Azure Information Protection](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
@@ -98,7 +98,7 @@ Klíčové aplikace, které jsou součástí klientské aplikace Office 365:
 
 Aplikace pro správu Microsoft Azure zahrnuje několik základních služeb. 
 
-   - portál Azure
+   - Azure Portal
    - Poskytovatel Azure Resource Manager
    - Rozhraní API modelu nasazení Classic
    - Azure PowerShell
@@ -125,7 +125,7 @@ Kromě aplikací Microsoftu můžou správci přidat do zásad podmíněného p�
 
 ## <a name="user-actions"></a>Akce uživatele
 
-Akce uživatele jsou úkoly, které může provést uživatel. Jediná aktuálně podporovaná akce je **Registrace informací o zabezpečení**, která umožňuje vyhovět zásadám podmíněného přístupu, když se uživatelům, kteří mají povolený pokus o registraci v rámci kombinované registrace, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
+Akce uživatele jsou úkoly, které může provést uživatel. Jediná aktuálně podporovaná akce je **Registrace informací o zabezpečení** , která umožňuje vyhovět zásadám podmíněného přístupu, když se uživatelům, kteří mají povolený pokus o registraci v rámci kombinované registrace, pokusí zaregistrovat své bezpečnostní údaje. Další informace najdete v článku [o registraci kombinovaných bezpečnostních údajů](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Další kroky
 

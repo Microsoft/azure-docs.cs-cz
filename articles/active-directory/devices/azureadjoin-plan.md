@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3587ef6be9d6c9969dff5d1af2181ed51aea7d29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083282"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308276"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: plánování implementace služby Azure AD JOIN
 
@@ -119,7 +119,7 @@ Existují dva způsoby, jak spravovat zařízení připojená k Azure AD:
 - **Jenom MDM** – zařízení se spravuje výhradně přes poskytovatele MDM, jako je Intune. Všechny zásady se doručují jako součást procesu registrace MDM. Pro zákazníky Azure AD Premium nebo EMS je automatický krok, který je součástí služby Azure AD JOIN.
 - **Společná správa** – zařízení spravuje poskytovatel MDM a SCCM. V tomto postupu se agent SCCM nainstaluje na zařízení spravované MDM za účelem správy určitých aspektů.
 
-Pokud používáte zásady skupiny, vyhodnoťte paritu zásad MDM pomocí [Nástroje pro analýzu migrace MDM (mmat)](https://github.com/WindowsDeviceManagement/MMAT). 
+Pokud používáte zásady skupiny, vyhodnoťte svůj objekt zásad skupiny a paritu zásad MDM pomocí [analýzy zásady skupiny](/mem/intune/configuration/group-policy-analytics) ve službě Microsoft Endpoint Manager. 
 
 Zkontrolujte podporované a nepodporované zásady, abyste zjistili, jestli můžete místo zásad skupiny použít řešení MDM. U nepodporovaných zásad Vezměte v úvahu následující skutečnosti:
 
@@ -199,11 +199,11 @@ Toto je srovnání těchto tří přístupů.
  
 | Prvek | Instalace samoobslužných služeb | Windows Autopilot | Hromadná registrace |
 | --- | --- | --- | --- |
-| Vyžadovat nastavení interakce s uživatelem | Yes | Yes | No |
-| Vyžadovat úsilí IT | No | Yes | Ano |
+| Vyžadovat nastavení interakce s uživatelem | Ano | Ano | Ne |
+| Vyžadovat úsilí IT | Ne | Ano | Ano |
 | Použitelné postupy | Nastavení & OOBE | Jen prostředí prvního spuštění počítače | Jen prostředí prvního spuštění počítače |
 | Práva místního správce udělená primárnímu uživateli | Ano, ve výchozím nastavení | Konfigurovatelné | Ne |
-| Vyžadovat podporu OEM zařízení | No | Yes | No |
+| Vyžadovat podporu OEM zařízení | Ne | Ano | Ne |
 | Podporované verze | 1511 + | 1709 + | 1703 + |
  
 Vyberte si v tabulce výše svůj přístup k nasazení nebo přístupy a Projděte si následující skutečnosti, které vám pomají při přijímání obou přístupů:  
@@ -246,7 +246,7 @@ Než budete moct nakonfigurovat nastavení mobility, možná budete muset nejdř
 **Postup přidání poskytovatele MDM** :
 
 1. Na **stránce Azure Active Directory** v části **Spravovat** klikněte na `Mobility (MDM and MAM)` . 
-1. Klikněte na **Přidat aplikaci** .
+1. Klikněte na **Přidat aplikaci**.
 1. Ze seznamu vyberte poskytovatele MDM.
 
    :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="Snímek obrazovky Azure Active Directory přidat stránku aplikace V seznamu je uvedeno několik poskytovatelů M D M." border="false":::
@@ -272,7 +272,7 @@ Existují tři adresy URL, které souvisejí s konfigurací MDM:
 - Adresa URL zjišťování MDM 
 - Adresa URL s předpisy služby MDM
 
-:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Snímek obrazovky Azure Active Directory přidat stránku aplikace V seznamu je uvedeno několik poskytovatelů M D M." border="false":::
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="Snímek obrazovky části konfiguračního oddílu Azure Active Directory M D m s poli U R L pro podmínky použití, zjišťování a dodržování předpisů v R L." border="false":::
 
 Každá adresa URL má předdefinovanou výchozí hodnotu. Pokud jsou tato pole prázdná, požádejte prosím o další informace svého poskytovatele MDM.
 

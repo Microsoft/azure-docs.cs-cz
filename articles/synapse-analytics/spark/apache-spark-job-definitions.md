@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738186"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307171"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Kurz: vytvoření definice úlohy Apache Spark v synapse studiu
 
-Tento kurz ukazuje, jak pomocí Azure synapse studia vytvořit definice úloh Apache Spark a pak je odeslat do fondu Apache Spark.
+V tomto kurzu se dozvíte, jak pomocí Azure synapse studia vytvořit definice úloh Apache Spark a pak je odeslat do fondu Apache Spark bez serveru.
 
 Tento kurz se zabývá následujícími úkony:
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Tento kurz se zabývá následujícími úkony:
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
 * Pracovní prostor analýzy Azure synapse. Pokyny najdete v tématu [Vytvoření pracovního prostoru Azure synapse Analytics](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
-* Fond Apache Spark.
+* Apache Spark fond bez serveru.
 * ADLS Gen2 účet úložiště. Musíte být **vlastníkem dat objektu BLOB úložiště** adls Gen2 systému souborů, se kterým chcete pracovat. Pokud ne, budete muset oprávnění přidat ručně.
 * Pokud nechcete používat výchozí úložiště pracovního prostoru, propojte požadovaný účet úložiště ADLS Gen2 v synapse studiu. 
 
@@ -93,7 +93,7 @@ V této části vytvoříte definici úlohy Apache Spark pro Apache Spark (Scala
  
      ![Příprava struktury Scala](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark** .)
+ 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark**.)
 
  5. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **Spark (Scala)** .
 
@@ -133,7 +133,7 @@ V této části vytvoříte definici úlohy Apache Spark pro .NET Spark (C#/F #)
  
      ![Příprava struktury dotnet](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark** .)
+ 4. Vyberte **vytvořit** centrum, vyberte ikonu + a výběrem **definice úlohy Spark** vytvořte novou definici úlohy Spark. (Vzorová Image je stejná jako v kroku 4 **Vytvoření definice Apache Spark úlohy (Python) pro PySpark**.)
 
  5. V rozevíracím seznamu jazyk v hlavním okně Definice úlohy Apache Spark vyberte **.NET Spark (C#/f #)** .
 
@@ -197,7 +197,7 @@ V této části přidáte do kanálu definici úlohy Apache Spark.
 
  1. Otevřete existující definici úlohy Apache Spark.
 
- 2. Vyberte ikonu v pravém horním rohu definice úlohy Apache Spark, zvolte **existující kanál** nebo **Nový kanál** . Další informace najdete na stránce kanálu.
+ 2. Vyberte ikonu v pravém horním rohu definice úlohy Apache Spark, zvolte **existující kanál** nebo **Nový kanál**. Další informace najdete na stránce kanálu.
 
      ![Přidat do pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Kopírovat synapse odkaz na data Azure Cosmos DB do fondu SQL pomocí Apache Spark
-description: Načtěte data do datového rámce Spark, nahrajte data a načtěte je do tabulky fondu SQL.
+title: Kopírovat synapse odkaz na data Azure Cosmos DB do vyhrazeného fondu SQL pomocí Apache Spark
+description: Načtěte data do datového rámce Spark, nahrajte data a načtěte je do vyhrazené tabulky fondu SQL.
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,35 +9,35 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13891f9614e658be39adbb69fed1503a0c66d5e4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287846"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309216"
 ---
-# <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do fondu SQL pomocí Apache Spark
+# <a name="copy-data-from-azure-cosmos-db-into-a-dedicated-sql-pool-using-apache-spark"></a>Kopírování dat z Azure Cosmos DB do vyhrazeného fondu SQL pomocí Apache Spark
 
 Odkaz na Azure synapse pro Azure Cosmos DB umožňuje uživatelům spouštět analýzy v reálném čase nad provozními daty v Azure Cosmos DB. Existují však situace, kdy je potřeba agregovat a rozšířit některá data pro poskytování uživatelů datového skladu. Data odkazů synapse se dají dělat v poznámkovém bloku a exportovat je jenom v několika buňkách.
 
 ## <a name="prerequisites"></a>Předpoklady
 * [Zřídit pracovní prostor synapse](../quickstart-create-workspace.md) s:
-    * [Fond Spark](../quickstart-create-apache-spark-pool-studio.md)
-    * [Fond SQL](../quickstart-create-sql-pool-studio.md)
+    * [Fond Apache Spark bez serveru](../quickstart-create-apache-spark-pool-studio.md)
+    * [vyhrazený fond SQL](../quickstart-create-sql-pool-studio.md)
 * [Zřízení účtu Cosmos DB s využitím kontejneru HTAP s daty](../../cosmos-db/configure-synapse-link.md)
 * [Připojení kontejneru Azure Cosmos DB HTAP k pracovnímu prostoru](./how-to-connect-synapse-link-cosmos-db.md)
-* [Správné nastavení pro import dat do fondu SQL ze Sparku](../spark/synapse-spark-sql-pool-import-export.md)
+* [Správné nastavení pro import dat do vyhrazeného fondu SQL z Sparku](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Postup
 V tomto kurzu se připojíte ke službě analytické úložiště, takže nebude mít žádný dopad na transakční úložiště (nespotřebovává žádné jednotky žádostí). Projděte si následující kroky:
 1. Načtení kontejneru Cosmos DB HTAP do datového rámce Spark
 2. Agregace výsledků v novém dataframe
-3. Ingestování dat do fondu SQL
+3. Ingestování dat do vyhrazeného fondu SQL
 
 [![Kroky pro Spark na SQL 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Data
-V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je součástí propojené služby s názvem **ConnectedData**a má následující schéma:
+V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je součástí propojené služby s názvem **ConnectedData** a má následující schéma:
 * _rid: řetězec (Nullable = true)
 * _ts: Long (Nullable = true)
 * logQuantity: Double (Nullable = true)
@@ -50,7 +50,7 @@ V tomto příkladu používáme kontejner HTAP s názvem **RetailSales**. Je sou
 * weekStarting: Long (Nullable = true)
 * _etag: řetězec (Nullable = true)
 
-Pro účely generování sestav agregujeme prodej (*množství*, *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec tato data exportujeme do tabulky fondu SQL s názvem **dbo. ProductSales**.
+Pro účely generování sestav agregujeme prodej ( *množství* , *výnosy* (cena × množství) podle hodnoty *productCode* a *weekStarting* . Nakonec tato data exportujeme do vyhrazené tabulky fondu SQL s názvem **dbo. ProductSales**.
 
 ## <a name="configure-a-spark-notebook"></a>Konfigurace poznámkového bloku Spark
 Vytvořte notebook Spark s Scala jako Spark (Scala) jako hlavní jazyk. Pro relaci používáme výchozí nastavení poznámkového bloku.
@@ -67,7 +67,7 @@ val df_olap = spark.read.format("cosmos.olap").
 
 ## <a name="aggregate-the-results-in-a-new-dataframe"></a>Agregace výsledků v novém dataframe
 
-Ve druhé buňce spustíme transformaci a agregace potřebné pro nový datový rámec předtím, než je načtete do databáze fondu SQL.
+Ve druhé buňce spustíme transformaci a agregace potřebné pro nový datový rámec předtím, než je načtete do vyhrazené databáze fondu SQL.
 
 ```java
 // Select relevant columns and create revenue
@@ -77,12 +77,12 @@ val df_olap_aggr = df_olap_step1.groupBy("productCode","weekStarting").agg(sum("
     withColumn("AvgPrice",col("Sum_revenue")/col("Sum_quantity"))
 ```
 
-## <a name="load-the-results-into-a-sql-pool"></a>Načtení výsledků do fondu SQL
+## <a name="load-the-results-into-a-dedicated-sql-pool"></a>Načíst výsledky do vyhrazeného fondu SQL
 
-Do třetí buňky načteme data do fondu SQL. Automaticky se vytvoří dočasná externí tabulka, externí zdroj dat a formát externího souboru, který se po dokončení úlohy odstraní.
+Do třetí buňky načteme data do vyhrazeného fondu SQL. Automaticky se vytvoří dočasná externí tabulka, externí zdroj dat a formát externího souboru, který se po dokončení úlohy odstraní.
 
 ```java
-df_olap_aggr.write.sqlanalytics("arnaudpool.dbo.productsales", Constants.INTERNAL)
+df_olap_aggr.write.sqlanalytics("userpool.dbo.productsales", Constants.INTERNAL)
 ```
 
 ## <a name="query-the-results-with-sql"></a>Dotazování výsledků pomocí SQL

@@ -10,20 +10,20 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5604e42c2c27463e10c136ccd18c3c21846fc5a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79477319"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309144"
 ---
 # <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Bezpečné ukládání přihlašovacích údajů pro přístup k Data Science Virtual Machine Azure
 
 Pro kód v cloudových aplikacích je běžné, že obsahuje přihlašovací údaje pro ověřování ve službě Cloud Services. Postup při správě a zabezpečení těchto přihlašovacích údajů je dobře známou výzvou při vytváření cloudových aplikací. V ideálním případě by se přihlašovací údaje neměly nikdy zobrazovat na pracovních stanicích pro vývojáře nebo se vrátit se změnami do správy zdrojového kódu.
 
-Funkce [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.
+Funkce [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
-Jedním ze způsobů zabezpečení přihlašovacích údajů je použití Instalační služba systému Windows (MSI) v kombinaci s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), spravovaná služba Azure pro bezpečné ukládání tajných klíčů a kryptografických klíčů. K trezoru klíčů můžete přistupovat pomocí spravované identity a pak z trezoru klíčů načíst autorizované tajné klíče a kryptografické klíče.
+Jedním ze způsobů zabezpečení přihlašovacích údajů je použití Instalační služba systému Windows (MSI) v kombinaci s [Azure Key Vault](../../key-vault/index.yml), spravovaná služba Azure pro bezpečné ukládání tajných klíčů a kryptografických klíčů. K trezoru klíčů můžete přistupovat pomocí spravované identity a pak z trezoru klíčů načíst autorizované tajné klíče a kryptografické klíče.
 
 Dokumentace ke spravovaným identitám pro prostředky Azure a Key Vault obsahuje ucelený prostředek pro podrobné informace o těchto službách. Zbývající část tohoto článku vás provede základními použití MSI a Key Vault na Data Science Virtual Machine (DSVM) pro přístup k prostředkům Azure. 
 

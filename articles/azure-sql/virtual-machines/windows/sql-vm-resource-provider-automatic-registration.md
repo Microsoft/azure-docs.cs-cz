@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: 23ecc3bdfb0ca85caf219fc262348937923f53c3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286121"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308356"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatická registrace pomocí poskytovatele prostředků virtuálních počítačů SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,7 +38,7 @@ Po povolení automatické registrace u předplatného se všechny aktuální a b
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/)
+- [Předplatné Azure](https://azure.microsoft.com/free/) a minimální oprávnění [role přispěvatele](../../../role-based-access-control/built-in-roles.md#all) .
 - Model prostředků Azure [Windows Server 2008 R2 (nebo novější)](../../../virtual-machines/windows/quick-create-portal.md) , který je [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) nasazený do veřejného nebo Azure Government cloudu. Systém Windows Server 2008 není podporován. 
 
 

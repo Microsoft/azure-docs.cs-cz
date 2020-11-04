@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí služby Advisor
 description: Využijte doporučení k výkonu v Azure Advisor ke zlepšení rychlosti a odezvy vašich důležitých podnikových aplikací.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 44252171a714acec0a9c0e83c9272b2f845560b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077809"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308685"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor identifikuje profily Traffic Manager, u kterých je nakonfigurovan
 
 ## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Zvýšení výkonu databáze pomocí SQL Database Advisor (dočasně zakázáno)
 
-Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s SQL Database Advisor a dává vám doporučení pro zlepšení výkonu databází.SQL Database Advisor vyhodnocuje výkon vašich databází analýzou historie využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typického zatížení databáze.
+Azure Advisor poskytuje konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s SQL Database Advisor a dává vám doporučení pro zlepšení výkonu databází. SQL Database Advisor vyhodnocuje výkon vašich databází analýzou historie využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typického zatížení databáze.
 
 > [!NOTE]
 > Než budete moct získat doporučení, je nutné, aby se databáze používala přibližně týden a v tomto týdnu musí být konzistentní aktivita. SQL Database Advisor se dá snadněji optimalizovat pro konzistentní vzory dotazů, než pro náhodné nárůsty aktivity.
@@ -108,7 +108,7 @@ Služba Advisor detekuje, jestli můžete zvýšit výkon a propustnost zatíže
 
 ## <a name="co-locate-the-storage-account-in-the-same-region-to-minimize-latency-when-loading"></a>Společně umístit účet úložiště ve stejné oblasti, aby se minimalizovala latence při načítání
 
-Advisor detekuje, jestli načítáte z oblasti, která se liší od vašeho fondu SQL. Zvažte načtení z účtu úložiště, který je ve stejné oblasti jako váš fond SQL, abyste minimalizovali latenci při načítání dat. Tato změna vám pomůže minimalizovat latenci a zvýšit výkon zatížení.
+Advisor detekuje, jestli načítáte z oblasti, která se liší od vyhrazeného fondu SQL. Zvažte načtení z účtu úložiště, který je ve stejné oblasti jako vyhrazený fond SQL, aby se minimalizovala latence při načítání dat. Tato změna vám pomůže minimalizovat latenci a zvýšit výkon zatížení.
 
 ## <a name="use-a-supported-kubernetes-version"></a>Použít podporovanou verzi Kubernetes
 
@@ -120,17 +120,17 @@ Advisor detekuje nepodporované verze Kubernetes.
 Vysoké využití procesoru po delší dobu může způsobit pomalý výkon pro vaše úlohy. Zvýšení velikosti procesoru vám pomůže optimalizovat modul runtime databázových dotazů a zvýšit celkový výkon. Advisor identifikuje servery s vysokým využitím procesoru, které by zřejmě běžely s využitím procesoru s omezenou kapacitou, a doporučuje škálovat výpočetní výkon.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Snížení omezení paměti na vašich Azure Database for MySQL, Azure Database for PostgreSQL a Azure Database for MariaDB serverech nebo přesun do paměťově optimalizované SKU
-Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Tato podmínka může být způsobena nesprávným plánem dotazů nebo úlohou náročnými na paměť. Oprava plánu dotazů nebo [zvýšení paměti](../postgresql/concepts-pricing-tiers.md) Azure Database for PostgreSQL, Azure Database for MySQL nebo Azure Database for MariaDB Server, pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné touto vysokou změnou fondu vyrovnávací paměti. Doporučuje se provést jednu z následujících akcí: 
+Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Tato podmínka může být způsobena nesprávným plánem dotazů nebo úlohou náročnými na paměť. Oprava plánu dotazů nebo [zvýšení paměti](../postgresql/concepts-pricing-tiers.md) Azure Database for PostgreSQL, Azure Database for MySQL nebo Azure Database for MariaDB Server, pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné touto vysokou změnou fondu vyrovnávací paměti. Doporučuje se provést jednu z následujících akcí: 
 - Oprava plánu dotazu
 - Přejít na SKU, která má více paměti 
 - Zvyšte velikost úložiště a získejte více IOPS.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Použití Azure Database for MySQL nebo Azure Database for PostgreSQL čtení repliky k horizontálnímu navýšení kapacity pro úlohy náročné na čtení
-Advisor používá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru během posledních sedmi dnů, pro identifikaci úloh náročných na čtení. Azure Database for PostgreSQL nebo Azure Database for MySQL prostředek s vysokým poměrem pro čtení a zápis může vést ke vzniku kolizí s PROCESORem nebo pamětí a vést k zpomalení výkonu dotazů. Přidání [repliky](../postgresql/howto-read-replicas-portal.md) pomůže škálovat čtení na server repliky a zabránit omezením na procesor nebo paměť na primárním serveru. Poradce identifikuje servery s úlohami náročnými na čtení a doporučuje přidat [repliku čtení](../postgresql/concepts-read-replicas.md)   pro přesměrování některých úloh čtení.
+Advisor používá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru během posledních sedmi dnů, pro identifikaci úloh náročných na čtení. Azure Database for PostgreSQL nebo Azure Database for MySQL prostředek s vysokým poměrem pro čtení a zápis může vést ke vzniku kolizí s PROCESORem nebo pamětí a vést k zpomalení výkonu dotazů. Přidání [repliky](../postgresql/howto-read-replicas-portal.md) pomůže škálovat čtení na server repliky a zabránit omezením na procesor nebo paměť na primárním serveru. Poradce identifikuje servery s úlohami náročnými na čtení a doporučuje přidat [repliku čtení](../postgresql/concepts-read-replicas.md) pro přesměrování některých úloh čtení.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálování Azure Database for MySQL, Azure Database for PostgreSQL nebo Azure Database for MariaDB serveru na vyšší SKLADOVOU položku, aby nedocházelo k omezením připojení
-Každé nové připojení k vašemu databázovému serveru zabírá paměť. Pokud dojde k selhání připojení k serveru z důvodu [horního limitu](../postgresql/concepts-limits.md) paměti, výkon databázového serveru se sníží. Azure Advisor identifikuje servery běžící s mnoha selháními připojení. Doporučuje se upgradovat limity pro připojení vašeho serveru a poskytnout tak více paměti serveru tím, že provedete jednu z následujících akcí:
+Každé nové připojení k vašemu databázovému serveru zabírá paměť. Pokud dojde k selhání připojení k serveru z důvodu [horního limitu](../postgresql/concepts-limits.md) paměti, výkon databázového serveru se sníží. Azure Advisor identifikuje servery běžící s mnoha selháními připojení. Doporučuje se upgradovat limity pro připojení vašeho serveru a poskytnout tak více paměti serveru tím, že provedete jednu z následujících akcí:
 - Horizontální navýšení kapacity 
 - Používejte paměťově optimalizované skladové položky, které mají více výpočetních prostředků na jádro.
 

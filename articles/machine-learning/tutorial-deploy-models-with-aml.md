@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0d78fc55ca60fa883c742885acf2fa98ede61ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc048a523fabdd70c57cb5d75442d440a1753a79
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896585"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309560"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: nasazení modelu klasifikace imagí v Azure Container Instances
 
@@ -35,7 +35,7 @@ Container Instances je skvělé řešení pro testování a porozumění pracovn
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí sady Azure Machine Learning SDK 1.0.83 verze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete spustit Poznámkový blok, nejdřív dokončete školení modelu v [kurzu (část 1): výuka modelu klasifikace imagí](tutorial-train-models-with-aml.md).   Pak otevřete Poznámkový blok  *img-Classification-Část2-Deploy. ipynb* v naklonovaných *kurzech/složce image-Classification-mnist ručně zapsaných-data* .
 
@@ -188,7 +188,7 @@ mnist_file_dataset.download(data_folder, overwrite=True)
 
 ### <a name="load-test-data"></a>Načtení testovacích dat
 
-Načtěte testovací data z adresáře **./data/**, který se vytvořil během kurzu věnovaného trénování.
+Načtěte testovací data z adresáře **./data/** , který se vytvořil během kurzu věnovaného trénování.
 
 
 ```python
@@ -358,6 +358,6 @@ service.delete()
 
 + Přečtěte si o všech [možnostech nasazení Azure Machine Learning](how-to-deploy-and-where.md).
 + Naučte se [vytvářet klienty pro webovou službu](how-to-consume-web-service.md).
-+  [Provádějte asynchronní předpovědi velké množství dat](how-to-use-parallel-run-step.md) .
++  [Provádějte asynchronní předpovědi velké množství dat](./tutorial-pipeline-batch-scoring-classification.md) .
 + Monitorujte Azure Machine Learning modely pomocí [Application Insights](how-to-enable-app-insights.md).
-+ Vyzkoušejte kurz pro [Automatický výběr algoritmu](tutorial-auto-train-models.md) . 
++ Vyzkoušejte kurz pro [Automatický výběr algoritmu](tutorial-auto-train-models.md) .

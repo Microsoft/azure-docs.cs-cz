@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: a8a04d9e1b17c7e65be946cb51bfc41019e0706d
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309078"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Správa a zvýšení kvót pro prostředky pomocí Azure Machine Learning
 
@@ -52,7 +52,7 @@ V této části se dozvíte o výchozích a maximálních limitech kvóty pro n�
 + Azure Storage
 
 > [!IMPORTANT]
-> Omezení se mohou změnit. Nejnovější informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) pro všechny služby Azure.
+> Omezení se mohou změnit. Nejnovější informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md) pro všechny služby Azure.
 
 ### <a name="virtual-machines"></a>Virtuální počítače
 Každé předplatné Azure má omezený počet virtuálních počítačů napříč všemi službami. Jádra virtuálních počítačů mají omezení regionálního součtu a místní omezení na každou velikost řady. Obě omezení se vynutily samostatně.
@@ -100,7 +100,7 @@ Následující tabulka uvádí další omezení, která nemůžete překročit.
 
 ### <a name="container-instances"></a>Container Instances
 
-Další informace najdete v tématu [omezení Container Instances](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits).
+Další informace najdete v tématu [omezení Container Instances](../azure-resource-manager/management/azure-subscription-service-limits.md#container-instances-limits).
 
 ### <a name="storage"></a>Úložiště
 Azure Storage má limit 250 účtů úložiště na oblast v rámci jednoho předplatného. Tento limit zahrnuje účty úložiště úrovně Standard i Premium.
@@ -115,7 +115,7 @@ Pomocí kvót na úrovni pracovního prostoru můžete spravovat Azure Machine L
 Ve výchozím nastavení všechny pracovní prostory sdílí stejnou kvótu jako kvóta na úrovni předplatného pro rodiny virtuálních počítačů. V rámci předplatného ale můžete nastavit maximální kvótu pro jednotlivé rodiny virtuálních počítačů v pracovních prostorech. To vám umožní sdílet kapacitu a vyhnout se problémům s kolize prostředků.
 
 1. Přejít na libovolný pracovní prostor ve vašem předplatném.
-1. V levém podokně vyberte **využití a kvóty** .
+1. V levém podokně vyberte **využití a kvóty**.
 1. Vyberte kartu **Konfigurace kvót** pro zobrazení kvót.
 1. Rozbalte rodinu virtuálních počítačů.
 1. Nastavte limit kvóty pro libovolný pracovní prostor uvedený v části Tato rodina virtuálních počítačů.
@@ -156,7 +156,7 @@ Omezení nad maximální hodnoty uvedenými v předchozích tabulkách nelze vyv
 Když požadujete zvýšení kvóty, vyberte službu, na kterou jste se přihlásili. Vyberte například Azure Machine Learning, Container Instances nebo úložiště. V případě Azure Machine Learning COMPUTE můžete vybrat tlačítko **kvóta žádosti** a při zobrazení kvóty v předchozích krocích.
 
 > [!NOTE]
-> [Bezplatné zkušební odběry](https://azure.microsoft.com/offers/ms-azr-0044p) nejsou způsobilé pro zvýšení limitu nebo kvóty. Pokud máte bezplatné zkušební předplatné, můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade bezplatné zkušební verze Azure na](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) Nejčastější dotazy týkající se průběžných plateb a [bezplatného účtu Azure](https://azure.microsoft.com/free/free-account-faq).
+> [Bezplatné zkušební odběry](https://azure.microsoft.com/offers/ms-azr-0044p) nejsou způsobilé pro zvýšení limitu nebo kvóty. Pokud máte bezplatné zkušební předplatné, můžete upgradovat na předplatné s průběžnými [platbami](https://azure.microsoft.com/offers/ms-azr-0003p/) . Další informace najdete v tématu [upgrade bezplatné zkušební verze Azure na](../cost-management-billing/manage/upgrade-azure-subscription.md) Nejčastější dotazy týkající se průběžných plateb a [bezplatného účtu Azure](https://azure.microsoft.com/free/free-account-faq).
 
 ## <a name="private-endpoint-and-private-dns-quota-increases"></a>Navýšení kvóty privátních koncových bodů a privátního DNS
 
@@ -172,7 +172,7 @@ Azure Machine Learning vytvoří prostředky v rámci předplatného (zákazník
 
 Pokud chcete požádat o povolení těchto scénářů, použijte následující postup:
 
-1. [Vytvořte žádost o podporu Azure](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) a v části __základy__ vyberte následující možnosti:
+1. [Vytvořte žádost o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) a v části __základy__ vyberte následující možnosti:
 
     | Pole | Výběr |
     | ----- | ----- |

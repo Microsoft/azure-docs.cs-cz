@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)'
-description: V tomto kurzu se dozvíte, jak snadno provádět analýzu průzkumného data s kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání (Preview) a vizualizovat výsledky v Azure synapse studiu.
+title: 'Kurz: použití fondu SQL bez serveru (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)'
+description: V tomto kurzu se dozvíte, jak snadno provést analýzu průzkumného data s kombinací různých otevřených datových sad Azure s využitím fondu SQL bez serveru (Preview) a vizualizace výsledků v Azure synapse studiu.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539516"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309279"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Kurz: použití SQL na vyžádání k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Kurz: použití fondu SQL bez serveru k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu
 
-V tomto kurzu se dozvíte, jak provádět analýzu průzkumnéch dat kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání a pak vizualizace výsledků v Azure synapse studiu.
+V tomto kurzu zjistíte, jak provádět analýzu průzkumnéch dat kombinací různých otevřených datových sad Azure pomocí neserverového fondu SQL a pak vizualizace výsledků v Azure synapse studiu.
 
 Konkrétně analyzujete [datovou sadu taxislužby New York City (NYC)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , která zahrnuje:
 
@@ -102,7 +102,7 @@ Následující fragment kódu ukazuje výsledek pro roční počet taxislužby j
 
 ![Roční počet fragmentů výsledku taxislužby jezdí](./media/tutorial-data-analyst/4.png)
 
-Data je možné vizuálně zobrazit v synapse studiu přepnutím z **tabulky** do zobrazení **grafu** . Můžete si vybrat mezi různými typy grafů, jako je **oblast**, **pruhový**, **sloupcový**, **spojnicový**, **výsečový**a **bodový**. V takovém případě znázorněte **sloupcový** graf se sloupcem **kategorie** nastaveným na **current_year**:
+Data je možné vizuálně zobrazit v synapse studiu přepnutím z **tabulky** do zobrazení **grafu** . Můžete si vybrat mezi různými typy grafů, jako je **oblast** , **pruhový** , **sloupcový** , **spojnicový** , **výsečový** a **bodový**. V takovém případě znázorněte **sloupcový** graf se sloupcem **kategorie** nastaveným na **current_year** :
 
 ![Sloupcový graf zobrazující jezdí za rok](./media/tutorial-data-analyst/5.png)
 
@@ -213,9 +213,9 @@ Výsledky dotazu označují, že odkládací hodnota taxislužby jezdía vznikla
 - Byla studena (teplota byla nižší než 0 stupňů Celsia).
 - Došlo k větru (~ 10 m/s).
 
-V tomto kurzu jsme si ukázali, jak může analytik dat rychle provádět analýzu dat průzkumné, snadno kombinovat různé datové sady pomocí SQL na vyžádání a vizualizovat výsledky pomocí Azure synapse studia.
+V tomto kurzu jsme si ukázali, jak může analytik dat rychle provádět analýzu dat, snadno kombinovat různé datové sady s využitím fondu SQL bez serveru a vizualizovat výsledky pomocí Azure synapse studia.
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak připojit SQL na vyžádání pro Power BI Desktop a vytváření sestav, najdete v tématu [připojení SQL na vyžádání pro Power BI Desktop a vytváření sestav](tutorial-connect-power-bi-desktop.md).
+Informace o tom, jak připojit fond SQL bez serveru pro Power BI Desktop a vytváření sestav, najdete v tématu [připojení fondu SQL bez serveru pro Power BI Desktop a vytváření sestav](tutorial-connect-power-bi-desktop.md).
  

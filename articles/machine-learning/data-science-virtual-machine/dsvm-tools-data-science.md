@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012402"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309117"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine Learning a nástroje pro datové vědy na Azure Data věda Virtual Machines
 Azure Data věda Virtual Machines (DSVMs) mají bohatou sadu nástrojů a knihoven pro strojové učení, které jsou dostupné v oblíbených jazycích, jako je Python, R nebo Helena.
@@ -24,7 +24,7 @@ Tady jsou některé z nástrojů pro strojové učení a knihovny v DSVMs.
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Sada Azure Machine Learning SDK pro Python
 
-Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
+Podívejte se na kompletní odkaz na [sadu SDK Azure Machine Learning pro Python](../overview-what-is-azure-ml.md).
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
@@ -89,7 +89,7 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Co to je?   |  Kolekce algoritmů strojového učení pro úlohy dolování dat. Algoritmy mohou být buď aplikovány přímo na sadu dat, nebo volány z vlastního kódu Java. Weka obsahuje nástroje pro předběžné zpracování dat, klasifikaci, regresi, clusteringu, pravidla přidružení a vizualizaci. |
 | Podporované edice     | Windows, Linux     |
 | Typická použití      | Obecný nástroj pro strojové učení     |
-| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj**aplikací  >  **weka**. |
+| Jak ji použít nebo spustit      | Ve Windows vyhledejte weka v nabídce **Start** . V systému Linux se přihlaste pomocí X2Go a pak navštivte **aplikace**  >  **vývoj** aplikací  >  **weka**. |
 | Odkaz na ukázky      | [Ukázky weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Související nástroje      |LightGBM, Rattle, XGBoost   |
 
@@ -113,5 +113,3 @@ K dispozici je několik dalších knihoven strojového učení v DSVMs, jako je 
 | Typická použití      |  Pro průzkum místních dat bez nutnosti extrakce, transformace, načítání (ETL). Dotazování různých zdrojů dat a formátů, včetně sdílených svazků clusteru, formátu JSON, relačních tabulek a Hadoop.     |
 | Jak použít a spustit      | Zástupce na ploše  <br/> [Začínáme s procházením za 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Související nástroje na DSVM      |   Rattle, weka, SQL Server Management Studio      |
-
-

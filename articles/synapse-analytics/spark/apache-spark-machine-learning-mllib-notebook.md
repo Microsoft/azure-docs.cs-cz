@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b723c77b193b499286a692bd5145131a904a7f07
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369331"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306969"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Kurz: Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -31,9 +31,9 @@ MLlib je základní knihovna Sparku, která poskytuje řadu nástrojů, které j
 
 ## <a name="understand-classification-and-logistic-regression"></a>Pochopení klasifikace a logistické regrese
 
-*Klasifikace*, oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit *popisky* k určeným vstupním datům. Můžete si například představit algoritmus strojového učení, který přijímá skladové informace jako vstup a vydělí akcie na dvě kategorie: akcie, které byste měli prodávat, a zásoby, které byste měli zachovat.
+*Klasifikace* , oblíbená úloha strojového učení, je proces řazení vstupních dat do kategorií. Je to úloha klasifikačního algoritmu k tomu, abyste zjistili, jak přiřadit *popisky* k určeným vstupním datům. Můžete si například představit algoritmus strojového učení, který přijímá skladové informace jako vstup a vydělí akcie na dvě kategorie: akcie, které byste měli prodávat, a zásoby, které byste měli zachovat.
 
-*Logistická regrese* je algoritmus, který můžete použít pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci*nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
+*Logistická regrese* je algoritmus, který můžete použít pro klasifikaci. Rozhraní API pro logistické regrese Spark je užitečné pro *binární klasifikaci* nebo pro klasifikaci vstupních dat do jedné ze dvou skupin. Další informace o logistických regresích najdete v tématu [Wikipedii](https://en.wikipedia.org/wiki/Logistic_regression).
 
 V souhrnu proces logistické regrese vytváří *logistické funkce* , které lze použít k předpovědi pravděpodobnosti, že vstupní vektor patří do jedné nebo druhé skupiny.
 
@@ -49,7 +49,7 @@ V následujících krocích vyvíjíte model, který předpovídá, jestli konkr
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Machine Learning v Apache Spark MLlib
 
 1. Pomocí jádra PySpark vytvořte Poznámkový blok. Pokyny najdete v tématu [vytvoření poznámkového bloku](../quickstart-apache-spark-notebook.md#create-a-notebook).
-2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesy **SHIFT + ENTER**nebo buňku spusťte pomocí ikony modrého přehrání nalevo od kódu.
+2. Importujte typy požadované pro tuto aplikaci. Zkopírujte a vložte následující kód do prázdné buňky a stiskněte klávesy **SHIFT + ENTER** nebo buňku spusťte pomocí ikony modrého přehrání nalevo od kódu.
 
     ```python
     import matplotlib.pyplot as plt
@@ -71,7 +71,7 @@ V následujících krocích vyvíjíte model, který předpovídá, jestli konkr
 
 Vzhledem k tomu, že nezpracovaná data jsou ve formátu Parquet, můžete pomocí kontextu Spark načíst soubor do paměti jako datový rámec přímo. Zatímco následující kód používá výchozí možnosti, je možné vynutit mapování datových typů a dalších atributů schématu v případě potřeby.
 
-1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. To načte data prostřednictvím rozhraní API Open DataSet. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Spark (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. Následující příklad kódu používá start_date a end_date k použití filtru, který vrací jeden měsíc dat.
+1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. To načte data prostřednictvím rozhraní API Open DataSet. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Apache Spark bez serveru (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. Následující příklad kódu používá start_date a end_date k použití filtru, který vrací jeden měsíc dat.
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -193,7 +193,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Vytvoření modelu logistické regrese
 
-Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků*, kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a se `weekdayString` musí převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding*, což je běžný přístup.
+Posledním úkolem je převést označené údaje do formátu, který lze analyzovat logistickou regresí. Vstup do algoritmu logistické regrese musí být sada *vektorových dvojic popisků* , kde je *vektor funkce* vektor čísel reprezentujících vstupní bod. Proto musíme sloupce kategorií převést na čísla. `trafficTimeBins`Sloupce a se `weekdayString` musí převést na celočíselné reprezentace. K převodu je k dispozici několik přístupů, ale přístup v tomto příkladu je *OneHotEncoding* , což je běžný přístup.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -278,7 +278,7 @@ plt.show()
 
 Po dokončení používání aplikace vypněte Poznámkový blok a uvolněte ho tak, že zavřete kartu nebo v dolní části poznámkového bloku vyberete **ukončit relaci** ze stavového panelu.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Přehled: Apache Spark ve službě Azure synapse Analytics](apache-spark-overview.md)
 

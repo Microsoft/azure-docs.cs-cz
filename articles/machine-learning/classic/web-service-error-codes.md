@@ -11,16 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: c48c59db2d9b830367276d39a82bc7fc8fdc34d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24e0fa530b370782af730a2383df1240bbf5c859
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357246"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308660"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Kódy chyb REST API Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Následující chybové kódy by mohly být vráceny operací na webové službě Azure Machine Learning Studio (Classic).
@@ -252,4 +252,3 @@ Operaci nelze dokončit v povoleném čase.
 | ---------- |--------------|
 | BackendInitializationTimeout | Inicializace webové služby se nedala dokončit v povoleném čase. |
 | BackendScoreTimeout | Spuštění požadavku webové služby nebylo v povoleném čase dokončeno. |
- 

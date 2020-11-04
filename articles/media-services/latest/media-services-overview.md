@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: c7bdf3e0300bffaffb7191aea019bed719cdc6fa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220614"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308955"
 ---
 # <a name="azure-media-services-v3-overview"></a>Přehled služby Azure Media Services v3
 
@@ -59,12 +59,12 @@ Media Services umožňuje vytvářet různé pracovní postupy pro média v clou
 * Pomocí Azure Media Services společně se službou [Azure rozhraní API služeb Cognitive Services](../../index.yml?pivot=products&panel=ai) můžete přidat titulky a titulky do videí do služby stravování pro širší cílovou skupinu (například lidem s postižením sluchu nebo lidem, kteří chtějí načítat v jiném jazyce).
 * Umožněte Azure CDN dosáhnout velkého měřítka, aby bylo možné lépe zvládnout okamžité vysoké zátěže (například začátek události spuštění produktu).
 
-## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3? 
+## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
 
 Naučte se kódovat a zabalit obsah, streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services V3. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 
 > [!TIP]
-> Než začnete s vývojem, přečtěte si:<br/>* [Základní koncepty](concepts-overview.md) (zahrnuje důležité koncepty, jako je balení, kódování a ochrana)<br/>* [Vývoj s využitím rozhraní Media Services V3 API](media-services-apis-overview.md) (zahrnuje informace o přístupu k rozhraním API, konvencím pojmenování atd.)
+> Než začnete s vývojem, Projděte si téma: [základní koncepty](concepts-overview.md) , které zahrnují důležité koncepty, jako je balení, kódování a ochrana, a [vývoj s rozhraními API Media Services V3](media-services-apis-overview.md) , která obsahují informace o přístupu k rozhraním API, konvencím pojmenování atd.
 
 ### <a name="sdks"></a>Sady SDK
 

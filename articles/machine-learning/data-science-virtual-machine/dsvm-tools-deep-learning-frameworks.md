@@ -11,12 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 29f1949cbe9998ac569b0389986023a72e7845b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8c6ee3d5eecc02ac921d7b10f2394380af684c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070912"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309027"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -76,7 +76,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Keras je nainstalovaný v Pythonu 3,6 ve Windows a v Pythonu 3,5u v systému Linux. |
 | Jak ji spustit      | Aktivujte správné prostředí v terminálu a pak spusťte Python. |
 
-## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](/cognitive-toolkit/)
 
 | Kategorie | Hodnota |
 | ------------- | ------------- |
@@ -110,7 +110,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované edice DSVM      | Windows Server 2019<br>Ubuntu 18.04<br> Systém Windows 2016<br> Ubuntu 16.04   |
 | K čemu slouží? | Nástroj NVIDIA pro dotazování aktivity GPU |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `nvidia-smi` je v systémové cestě. |
-| Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem**otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte příkaz `nvidia-smi` . |
+| Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem** otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte příkaz `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
@@ -146,5 +146,5 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | ------------- | ------------- |
 | Podporované verze | 1.0.3 |
 | Podporované edice DSVM      | Ubuntu 16.04 |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  |Theano je nainstalován v Pythonu 2,7 (_root_) a v prostředí Python 3,5 (_py35_). |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  |Theano je nainstalován v Pythonu 2,7 ( _root_ ) a v prostředí Python 3,5 ( _py35_ ). |
 | Jak ji spustit      |  Terminál: aktivujte požadovanou verzi Pythonu (root nebo py35), spusťte Python a pak importujte Theano.<br/>* Jupyter: vyberte jádro Python 2,7 nebo 3,5 a pak importujte Theano.  <br/>Chcete-li vyřešit poslední chybu MKL (Math kernel Library), musíte nejprve nastavit vrstvu vláken MKL následujícím způsobem:<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

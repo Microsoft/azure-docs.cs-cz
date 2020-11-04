@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 21821bbb41126a53c2b137bf1f5e5684ff1ae267
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096276"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308846"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,16 +40,16 @@ Pro Linux a jiné nepodporované platformy, kde ServiceInterop.dll není k dispo
 
 Čtyři uvedené typy aplikací používají ve výchozím nastavení 32 hostitelského zpracování. Chcete-li změnit zpracování hostitele na 64 zpracování pro typ aplikace, postupujte následovně:
 
-- **Pro spustitelné aplikace** : v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64** .
+- **Pro spustitelné aplikace** : v okně **Vlastnosti projektu** v podokně **sestavení** nastavte [cíl platformy](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) na hodnotu **x64**.
 
-- **Pro projekty testů založené na VSTest** : v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu** a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64** .
+- **Pro projekty testů založené na VSTest** : v nabídce **test** sady Visual Studio vyberte nastavení **test**  >  **testu** a pak nastavte **výchozí architekturu procesoru** na hodnotu **x64**.
 
-- **Pro lokálně nasazené webové aplikace v ASP.NET** : vyberte **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** a potom vyberte **použít 64 verze IIS Express pro weby a projekty** .
+- **Pro lokálně nasazené webové aplikace v ASP.NET** : vyberte **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** a potom vyberte **použít 64 verze IIS Express pro weby a projekty**.
 
 - **Pro webové aplikace ASP.NET nasazené v Azure** : v **nastavení aplikace** vyberte v Azure Portal části nastavení aplikace **64** platformu.
 
 > [!NOTE] 
-> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor** . Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86** . Projekt, který je nastavený na **Libovolný procesor** , se může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
+> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor**. Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86**. Projekt, který je nastavený na **Libovolný procesor** , se může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
 > Soubor ServiceInterop.dll musí být ve složce, ze které je spuštěna knihovna DLL sady SDK. To by mělo být obavy pouze v případě, že knihovny DLL ručně kopírujete nebo máte vlastní systémy sestavení nebo nasazení.
     
 **Zapnout shromažďování paměti na straně serveru**

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 141cc47adb398cbd5730fbe33bcd90fece809ed3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2597aa1f0589fea75af0a3ac41244e3718d5eb3e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91543462"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307956"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v synapse
 
@@ -60,7 +60,7 @@ V tomto kroku se vytvoří nový instanční objekt. Pokud chcete použít exist
 
 ## <a name="create-a-linked-service"></a>Vytvoření propojené služby
 
-1. V pracovním prostoru synapse, kde chcete vytvořit novou propojenou službu Azure Machine Learning, přejít na **Management**  ->  **propojenou službu**Správa a vytvořte novou propojenou službu s typem "Azure Machine Learning".
+1. V pracovním prostoru synapse, kde chcete vytvořit novou propojenou službu Azure Machine Learning, přejít na **Management**  ->  **propojenou službu** Správa a vytvořte novou propojenou službu s typem "Azure Machine Learning".
 
    ![Vytvořit propojenou službu](media/quickstart-integrate-azure-machine-learning/quickstart-integrate-azure-machine-learning-create-linked-service-00a.png)
 
@@ -79,5 +79,5 @@ V tomto kroku se vytvoří nový instanční objekt. Pokud chcete použít exist
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Průvodce bodování modelu Machine Learning – fond SQL](tutorial-sql-pool-model-scoring-wizard.md)
+- [Kurz: Průvodce bodování modelu Machine Learning – vyhrazený fond SQL](tutorial-sql-pool-model-scoring-wizard.md)
 - [Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)](what-is-machine-learning.md)

@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790878"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308332"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -82,7 +82,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 - Udělte serveru nebo spravované instanci přístup k trezoru klíčů (Get, wrapKey, unwrapKey) pomocí jeho Azure Active Directory identity. Při použití Azure Portal se identita Azure AD automaticky vytvoří. Při použití PowerShellu nebo rozhraní příkazového řádku musí být identita Azure AD explicitně vytvořená a měla by se ověřit její dokončení. Podrobné pokyny při používání PowerShellu najdete v tématu [Konfigurace TDE s BYOK](transparent-data-encryption-byok-configure.md) a [Konfigurace TDE s BYOK pro spravovanou instanci SQL](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 
-- Pokud používáte bránu firewall s integrace, musíte povolit možnost povolit *důvěryhodným službám Microsoftu obejít bránu firewall* .
+- Pokud používáte bránu firewall s integrace, musíte povolit možnost povolit *důvěryhodným službám Microsoftu obejít bránu firewall*.
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Požadavky na konfiguraci ochrany TDE
 
@@ -95,7 +95,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 - Pokud importujete existující klíč do trezoru klíčů, nezapomeňte ho zadat v podporovaných formátech souborů (. pfx,. BYOK nebo. Backup).
 
 > [!NOTE]
-> Azure SQL teď podporuje použití klíče RSA uloženého ve spravovaném HSM jako ochrany TDE. Tato funkce je ve **verzi Public Preview** . Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM úrovně 3 ve standardu FIPS 140-2. Přečtěte si další informace o [spravovaných HSM](../../key-vault/managed-hsm/index.yml).
+> Azure SQL teď podporuje použití klíče RSA uloženého ve spravovaném HSM jako ochrany TDE. Tato funkce je ve **verzi Public Preview**. Azure Key Vault spravovaný modul HSM je plně spravovaná cloudová služba s vysokou dostupností, která vyhovuje standardům, která vám umožní chránit kryptografické klíče pro vaše cloudové aplikace, a to pomocí ověřené HSM úrovně 3 ve standardu FIPS 140-2. Přečtěte si další informace o [spravovaných HSM](../../key-vault/managed-hsm/index.yml).
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>Doporučení při konfiguraci TDE spravovaného zákazníkem
@@ -126,7 +126,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 ## <a name="inaccessible-tde-protector"></a>Nedostupné ochrany TDE
 
-Pokud je transparentní šifrování dat nakonfigurované tak, aby používalo klíč spravovaný zákazníkem, vyžaduje se nepřetržitý přístup k ochraně TDE, aby databáze zůstala online. Pokud server ztratí přístup k ochraně TDE spravovaného zákazníkem v integrace, během až 10 minut databáze spustí odepření všech připojení k příslušné chybové zprávě a změní její stav na *nepřístupný* . Jediná akce povolená u databáze v nepřístupovém stavu ji odstraňuje.
+Pokud je transparentní šifrování dat nakonfigurované tak, aby používalo klíč spravovaný zákazníkem, vyžaduje se nepřetržitý přístup k ochraně TDE, aby databáze zůstala online. Pokud server ztratí přístup k ochraně TDE spravovaného zákazníkem v integrace, během až 10 minut databáze spustí odepření všech připojení k příslušné chybové zprávě a změní její stav na *nepřístupný*. Jediná akce povolená u databáze v nepřístupovém stavu ji odstraňuje.
 
 > [!NOTE]
 > Pokud je databáze nepřístupná z důvodu přerušovaného výpadku sítě, není nutná žádná akce a databáze se vrátí zpět online automaticky.
@@ -135,7 +135,7 @@ Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět onli
 
 - Pokud se přístup k klíči obnoví do 8 hodin, bude databáze automaticky zacelená během příští hodiny.
 
-- Pokud se přístup ke klíči obnoví za více než 8 hodin, automatická oprava není možná a vrácení databáze vyžaduje provedení dalších kroků na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena** . Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
+- Pokud se přístup ke klíči obnoví za více než 8 hodin, automatická oprava není možná a vrácení databáze vyžaduje provedení dalších kroků na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
 
 Níže je uveden seznam dalších kroků požadovaných na portálu, které nepřístupné databáze vrátí zpět do online režimu.
 
@@ -156,7 +156,7 @@ Může dojít k tomu, že někdo s dostatečným oprávněním pro přístup k t
 
 - Odstraňuje se spravovaná identita serveru v Azure Active Directory.
 
-Přečtěte si další informace o [běžných příčinách, proč databáze nebude přístupná](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible).
+Přečtěte si další informace o [běžných příčinách, proč databáze nebude přístupná](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible).
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>Monitorování TDE spravovaného zákazníkem
 
@@ -179,7 +179,7 @@ Pokud klíč potřebný k obnovení zálohy již není cílovým serverem k disp
 
 Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 
-Další informace o obnovení záloh pro SQL Database najdete v tématu [obnovení databáze v SQL Database](recovery-using-backups.md). Další informace o obnovení zálohy pro fond SQL najdete v tématu [obnovení fondu SQL](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Nativní zálohování a obnovování SQL Server pomocí spravované instance SQL najdete v tématu [rychlý Start: obnovení databáze do spravované instance SQL.](../managed-instance/restore-sample-database-quickstart.md)
+Další informace o obnovení záloh pro SQL Database najdete v tématu [obnovení databáze v SQL Database](recovery-using-backups.md). Další informace o obnovení záloh pro vyhrazený fond SQL ve službě Azure synapse Analytics najdete v tématu [obnovení vyhrazeného fondu SQL](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Nativní zálohování a obnovování SQL Server pomocí spravované instance SQL najdete v tématu [rychlý Start: obnovení databáze do spravované instance SQL.](../managed-instance/restore-sample-database-quickstart.md)
 
 Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávají šifrované s původní ochranu TDE, i když byla otočená a databáze teď používá nové ochrany TDE.  V době obnovení budou pro obnovení databáze nutné oba klíče.  Pokud soubor protokolu používá ochranu TDE, která je uložená v Azure Key Vault, bude tento klíč potřeba v době obnovení, a to i v případě, že se databáze změnila tak, aby mezitím používala TDE spravovanou službou.
 

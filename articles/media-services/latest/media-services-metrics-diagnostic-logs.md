@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: c03950d64c9ead17dfa5c07ef70ab2b7ee0e90bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296647"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309061"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Monitorovat metriky Media Services a diagnostické protokoly přes Azure Monitor
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Monitorování Media Services metrik a diagnostických protokolů pomocí Azure Monitor
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -44,7 +44,7 @@ Media Services podporuje monitorování metrik pro následující prostředky:
 
 Můžete monitorovat následující metriky účtu.
 
-|Název metriky|Zobrazované jméno|Description|
+|Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
 |AssetCount|Počet assetů|Prostředky ve vašem účtu.|
 |AssetQuota|Kvóta prostředků|Kvóta prostředků ve vašem účtu.|
@@ -62,13 +62,15 @@ Měli byste taky zkontrolovat [kvóty a omezení účtu](limits-quotas-constrain
 
 Jsou podporovány následující Media Services metriky [koncových bodů streamování](/rest/api/media/streamingendpoints) :
 
-|Název metriky|Zobrazované jméno|Description|
+|Název metriky|Zobrazované jméno|Popis|
 |---|---|---|
 |Žádosti|Žádosti|Poskytuje celkový počet požadavků HTTP poskytovaných koncovým bodem streamování.|
 |Výchozí přenos dat|Výchozí přenos dat|Celkový počet odchozích bajtů za minutu na koncový bod streamování.|
 |SuccessE2ELatency|Koncová latence úspěch|Doba trvání od okamžiku, kdy koncový bod streamování přijal požadavek na odeslání posledního bajtu odpovědi.|
+|Využití procesoru| Využití procesoru pro koncové body streamování Premium Tato data nejsou k dispozici pro standardní koncové body streamování. |
+|Šířka pásma pro výstup | Šířka pásma pro odchozí přenosy v bitech za sekundu|
 
-### <a name="why-would-i-want-to-use-metrics"></a>Proč bych chtěl použít metriky?
+### <a name="metrics-are-useful"></a>Metriky jsou užitečné
 
 Tady jsou příklady, jak vám monitorování Media Services metriky můžou porozumět tomu, jak vaše aplikace provádí. Některé otázky, které je možné řešit pomocí Media Services metriky:
 
@@ -79,6 +81,8 @@ Tady jsou příklady, jak vám monitorování Media Services metriky můžou por
 * Jak zjistím, že se nedaří rozčlenění požadavků a co způsobuje selhání?
 * Jak můžu zjistit, kolik požadavků na HLS nebo POMLČKu se z tohoto balíčku vyřazuje?
 * Návody nastavit výstrahu, která ví, že se dosáhlo prahové hodnoty # neúspěšných požadavků?
+
+Souběžnost se bude týkat počtu koncových bodů streamování používaných v jednom účtu v průběhu času. Musíte mít na paměti vztah mezi počtem souběžných streamů s komplexními parametry publikování, jako je dynamické balení do více protokolů, více šifrování DRM atd. Každý další publikovaný živý stream přičítá k procesoru a výstupní šířku pásma na koncovém bodu streamování. Pamatujte na to, že byste měli použít Azure Monitor k rychlému sledování využití koncového bodu streamování (kapacita procesoru a odchozího přenosu), abyste se ujistili, že budete patřičně škálovat (nebo rozdělit provoz mezi několik koncových bodů streamování, pokud se přiblížíte k velmi vysoké souběžnosti).
 
 ### <a name="example"></a>Příklad
 

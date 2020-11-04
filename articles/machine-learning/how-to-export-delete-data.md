@@ -11,12 +11,12 @@ ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e847f62c2ae3d1d68c39685a38b67e1d0ada8c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251010"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308127"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Export nebo odstranění dat pracovního prostoru služby Machine Learning
 
@@ -50,7 +50,7 @@ Tyto prostředky je možné odstranit tak, že je vyberete ze seznamu a zvolíte
 
 Dokumenty historie spuštění, které mohou obsahovat osobní informace o uživateli, jsou uloženy v účtu úložiště v úložišti objektů BLOB v podsložkách `/azureml` . Data můžete stáhnout a odstranit z portálu.
 
-:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Snímek obrazovky portálu se zvýrazněnou ikonou odstranit":::
+:::image type="content" source="media/how-to-export-delete-data/storage-account-folders.png" alt-text="Snímek obrazovky adresáře AzureML v účtu úložiště v rámci portálu":::
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>Export a odstranění prostředků strojového učení pomocí Azure Machine Learning studia
 
@@ -62,7 +62,7 @@ Datové sady je možné odregistrovat a experimenty lze archivovat, ale tyto ope
 
 Registrovaný model si můžete stáhnout tak, že přejdete na požadovaný **model** a zvolíte **Stáhnout**. 
 
-:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Snímek obrazovky portálu se zvýrazněnou ikonou odstranit":::
+:::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="Snímek stránky modelu studia se zvýrazněnou možností stažení":::
 
 ## <a name="export-and-delete-resources-using-the-python-sdk"></a>Export a odstranění prostředků pomocí sady Python SDK
 
@@ -84,8 +84,7 @@ Následující prostředky strojového učení je možné odstranit pomocí sady
 
 | Typ | Volání funkce | Poznámky | 
 | --- | --- | --- |
-| `Workspace` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Použijte `delete-dependent-resources` k kaskádové odstranění |
-| `Model` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | | 
-| `ComputeTarget` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) | |
-| `WebService` | [`delete`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true) | | 
-
+| `Workspace` | [`delete`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete-delete-dependent-resources-false--no-wait-false-) | Použijte `delete-dependent-resources` k kaskádové odstranění |
+| `Model` | [`delete`](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | | 
+| `ComputeTarget` | [`delete`](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) | |
+| `WebService` | [`delete`](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py) | |

@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342075"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307486"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 
@@ -45,7 +45,7 @@ V tomto prvním videu budeme mluvit o "5 otázek pro datové vědy".
 
 Pro účely předpovědi odpovědí na otázky používá datová věda čísla a názvy (označují se také jako kategorie nebo popisky).
 
-Může se stát, že vám to neklade, ale *jenom pět otázek, na které data vědy odpovídá*:
+Může se stát, že vám to neklade, ale *jenom pět otázek, na které data vědy odpovídá* :
 
 * Je to A nebo B?
 * Je tento divné?
@@ -136,4 +136,4 @@ Takže to je 5 otázek, na které se data vědy může zodpovědět.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
-* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Seznámení s Machine Learningem Microsoft Azure](../overview-what-is-azure-ml.md)

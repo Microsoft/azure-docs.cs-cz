@@ -8,16 +8,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 186289826273e85c9faa7f972b6f48d34e38416f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5c9e27e894541d71986fe929cbc5d6fde31bc18
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357365"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308814"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Správa životního cyklu aplikací v Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Azure Machine Learning Studio (Classic) je nástroj pro vývoj experimentů strojového učení, které jsou provozované na cloudové platformě Azure. Vypadá to, že integrované vývojové prostředí (IDE) sady Visual Studio a Škálovatelná cloudová služba se sloučí do jediné platformy. Můžete začlenit standardní postupy správy životního cyklu aplikací (ALM) od různých prostředků k automatizovanému spouštění a nasazování do Azure Machine Learning Studio (Classic). Tento článek popisuje některé z možností a přístupů.
@@ -46,7 +46,7 @@ Snímky historie spuštění udržují neproměnlivou verzi experimentu v Azure 
 Soubor JSON je textová reprezentace grafu experimentu, která může obsahovat odkaz na prostředky v pracovním prostoru, jako je například datová sada nebo trained model. Neobsahuje serializovanou verzi assetu. Pokud se pokusíte importovat dokument JSON zpátky do pracovního prostoru, musí již existovat odkazované prostředky se stejnými ID assetů, na které se odkazuje v experimentu. V opačném případě nemůžete získat přístup k importovanému experimentu.
 
 ## <a name="versioning-trained-model"></a>Model vyškolený pro správu verzí
-Vyškolený model v Azure Machine Learning Studio (Classic) je serializován do formátu označovaného jako soubor iLearner ( `.iLearner` ) a je uložen v účtu služby Azure Blob Storage, který je přidružený k pracovnímu prostoru. Jedním ze způsobů, jak získat kopii souboru iLearner, je prostřednictvím rozhraní API pro přeškolení. [Tento článek](/azure/machine-learning/studio/retrain-machine-learning-model) vysvětluje, jak funguje rozhraní API pro přeškolení. Postup vysoké úrovně:
+Vyškolený model v Azure Machine Learning Studio (Classic) je serializován do formátu označovaného jako soubor iLearner ( `.iLearner` ) a je uložen v účtu služby Azure Blob Storage, který je přidružený k pracovnímu prostoru. Jedním ze způsobů, jak získat kopii souboru iLearner, je prostřednictvím rozhraní API pro přeškolení. [Tento článek](./retrain-machine-learning-model.md) vysvětluje, jak funguje rozhraní API pro přeškolení. Postup vysoké úrovně:
 
 1. Nastavte experiment pro školení.
 2. Přidejte výstupní port webové služby do modulu výuka modelu nebo modul, který vytváří trained model, jako je například předparametr ladění modelu nebo vytvoření modelu R.
@@ -78,7 +78,7 @@ V průběhu času může být ve stejné webové službě vytvořeno mnoho konco
 Můžete také vytvořit mnoho identických koncových bodů webové služby a poté opravit různé verze souboru iLearner do koncového bodu, abyste dosáhli podobného efektu. [Tento článek](create-models-and-endpoints-with-powershell.md) podrobně vysvětluje, jak to provést.
 
 ### <a name="new-web-service"></a>Nová webová služba
-Pokud vytvoříte novou Azure Resource Manager webovou službu, konstrukce koncového bodu již nebude k dispozici. Místo toho můžete vygenerovat soubory WSD (Web Service Definition) ve formátu JSON z prediktivního experimentu pomocí rutiny [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell rutiny nebo pomocí rutiny [*Export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell rutiny z nasazené webové služby založené na správce prostředků.
+Pokud vytvoříte novou Azure Resource Manager webovou službu, konstrukce koncového bodu již nebude k dispozici. Místo toho můžete vygenerovat soubory WSD (Web Service Definition) ve formátu JSON z prediktivního experimentu pomocí rutiny [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell rutiny nebo pomocí rutiny [*Export-AzMlWebservice*](/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell rutiny z nasazené webové služby založené na správce prostředků.
 
 Až budete mít exportovaný soubor WSD a správu verzí, můžete ho nasadit taky jako novou webovou službu v jiném plánu webové služby v jiné oblasti Azure. Stačí se ujistit, že jste zadali správnou konfiguraci účtu úložiště i nové ID plánu Web Service. Chcete-li opravit v různých souborech iLearner, můžete upravit soubor WSD a aktualizovat odkaz na umístění pro vyškolený model a nasadit ho jako novou webovou službu.
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e337cef9121dc5992f87b9996cfd01d16d9cc188
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285228"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309367"
 ---
 # <a name="azure-resource-provider-operations"></a>Operace poskytovatele prostředků Azure
 
@@ -4100,7 +4100,7 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), Azure [SQL
 > | Microsoft. SQL/servery/databáze/dataMaskingPolicies/Rules/DELETE | Odstraní pravidlo zásad maskování dat pro danou databázi. |
 > | Microsoft. SQL/servery/databáze/dataWarehouseQueries/Read | Vrátí informace o distribučním dotazu datového skladu pro vybrané ID dotazu. |
 > | Microsoft. SQL/servery/databáze/dataWarehouseQueries/dataWarehouseQuerySteps/Read | Vrátí informace o kroku distribuovaného dotazu dotazu datového skladu pro vybrané ID kroku. |
-> | Microsoft. SQL/servery/databáze/dataWarehouseUserActivities/Read | Načte aktivity uživatelů SQL Data Warehouse instance, která zahrnuje běžící a pozastavené dotazy. |
+> | Microsoft. SQL/servery/databáze/dataWarehouseUserActivities/Read | Načte aktivity uživatelů vyhrazeného fondu SQL Azure synapse, který zahrnuje spouštění a pozastavené dotazy. |
 > | Microsoft. SQL/servery/databáze/extendedAuditingSettings/Read | Načte podrobnosti o rozšířených zásadách auditování objektů BLOB konfigurovaných pro danou databázi. |
 > | Microsoft. SQL/servery/databáze/extendedAuditingSettings/Write | Změna zásad auditování rozšířeného objektu BLOB pro danou databázi |
 > | Microsoft. SQL/servery/databáze/rozšíření/čtení | Získá kolekci rozšíření pro databázi. |

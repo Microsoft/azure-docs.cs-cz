@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 09/15/2020
-ms.openlocfilehash: 813f229d414ab911169f404dfc6b3cbf93fa96b3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780780"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308829"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Omezení prostředků pro Azure SQL Database a Azure synapse Analytics Server
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -131,7 +131,7 @@ Zásady správného řízení prostředků Azure SQL Database jsou hierarchické
 
 Řízení v/v data je proces v Azure SQL Database slouží k omezení fyzické vstupně-výstupní operace čtení i zápisu proti datovým souborům databáze. Omezení IOPS se nastavují pro každou úroveň služby, aby se minimalizoval účinek "hlučného souseda", aby se zajistilo přidělení prostředků v rámci víceklientské služby a bylo možné zůstat v rámci schopností základního hardwaru a úložiště.
 
-U izolovaných databází se limity skupin úloh použijí pro všechny vstupně-výstupní operace v databázi, zatímco limity fondu zdrojů se vztahují na všechny datové v/v služby úložiště ve stejném fondu SQL, včetně `tempdb` databáze. U elastických fondů se limity skupin úloh vztahují na každou databázi ve fondu, zatímco limit fondu zdrojů platí pro celý elastický fond, včetně `tempdb` databáze, která je sdílená mezi všemi databázemi ve fondu. Obecně platí, že omezení fondu zdrojů nemusí být pro úlohy dosažitelná v databázi (buď samostatně nebo ve fondu), protože limity skupin úloh jsou nižší než limity fondu zdrojů a omezují IOPS/propustnost dřív. Limity fondu ale můžou být dostupné v rámci kombinovaného zatížení s více databázemi ve stejném fondu.
+U izolovaných databází se limity skupin úloh použijí na všechny vstupně-výstupní operace úložiště s databází, zatímco limity fondu zdrojů se vztahují na všechny vstupně-výstupní operace úložiště pro všechny databáze ve stejném vyhrazeném fondu SQL, včetně `tempdb` databáze. U elastických fondů se limity skupin úloh vztahují na každou databázi ve fondu, zatímco limit fondu zdrojů platí pro celý elastický fond, včetně `tempdb` databáze, která je sdílená mezi všemi databázemi ve fondu. Obecně platí, že omezení fondu zdrojů nemusí být pro úlohy dosažitelná v databázi (buď samostatně nebo ve fondu), protože limity skupin úloh jsou nižší než limity fondu zdrojů a omezují IOPS/propustnost dřív. Limity fondu ale můžou být dostupné v rámci kombinovaného zatížení s více databázemi ve stejném fondu.
 
 Pokud dotaz například vygeneruje 1000 IOPS bez zásad správného řízení prostředků v/v, ale hodnota maximálního počtu IOPS pro skupinu úloh je nastavena na 900 IOPS, dotaz nebude moci generovat více než 900 IOPS. Pokud je ale limit počtu IOPS pro fond zdrojů nastavený na 1500 IOPS a celkový počet vstupně-výstupních operací ze všech skupin úloh přidružených ke fondu zdrojů překračuje 1500 IOPS, pak se v/v v případě stejného dotazu může snížit pod limit pracovní skupiny 900 IOPS.
 

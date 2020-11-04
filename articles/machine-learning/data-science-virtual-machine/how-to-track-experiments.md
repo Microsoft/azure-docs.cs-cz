@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 205aed1811c3d9d21a10be7bc4f01c73eb7295b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89254761"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307443"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Sledovat experimenty a nasazovat modely v Azure Machine Learning
 
@@ -24,13 +24,13 @@ Následující diagram znázorňuje, že se sledováním MLflow sledujete metrik
 
 ![sledovat experimenty](./media/how-to-track-experiments/mlflow-diagram-track.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Musíte [zřídit pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)
+* Musíte [zřídit pracovní prostor Azure Machine Learning](../how-to-manage-workspace.md#create-a-workspace)
 
 ## <a name="create-a-new-notebook"></a>Vytvoření nového poznámkového bloku
 
-Sada Azure Machine Learning a sada MLFlow SDK jsou předem nainstalovány v Data Science VM a lze k nim přistupovat v prostředí **azureml_py36_ \* ** conda. V Jupyterlab klikněte na spouštěč a vyberte následující jádro:
+Sada Azure Machine Learning a sada MLFlow SDK jsou v Data Science VM předem nainstalovány a lze k nim přistupovat v prostředí * *azureml_py36_ \** _ conda. V Jupyterlab klikněte na spouštěč a vyberte následující jádro:
 
 ![Výběr jádra](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -137,7 +137,7 @@ V nabídce vlevo v části [AzureML Studio](https://ml.azure.com) klikněte na _
 
 V podokně __nové odvození clusterů__ zadejte podrobnosti pro:
 
-* Název výpočtu
+_ COMPUTE název
 * Služba Kubernetes – vyberte vytvořit novou.
 * Vyberte oblast.
 * Vyberte velikost virtuálního počítače (pro účely tohoto kurzu je výchozí hodnota Standard_D3_v2 dostatečná).
@@ -165,7 +165,7 @@ Pokud chcete nasadit model diabetes, přejděte do nabídky vlevo v [Azure Machi
 
 Potom v podokně Podrobnosti modelu klikněte na tlačítko __nasadit__ :
 
-![Nasadit](./media/how-to-track-experiments/mlflow-experiments-4.png)
+![Nasazení](./media/how-to-track-experiments/mlflow-experiments-4.png)
 
 Tento model nasadíme do clusteru odvození (Azure Kubernetes Service), který jsme vytvořili v kroku 1. Vyplňte níže uvedené podrobnosti zadáním názvu služby a názvu AKS výpočetního clusteru (vytvořeného v kroku 1). Doporučujeme také zvýšit __kapacitu kapacity procesoru__ na 1 (od 0,1) a __rezervu paměti__ na 1 (od 0,5) – Toto zvýšení můžete udělat kliknutím na __Upřesnit__ a vyplněním podrobností. Pak klikněte na __nasadit__.
 
@@ -204,4 +204,4 @@ Odstraňte výpočetní prostředky, které jste vytvořili v kroku 1, abyste se
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [nasazování modelů v AzureML](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)
+* Další informace o [nasazování modelů v AzureML](../how-to-deploy-and-where.md)
