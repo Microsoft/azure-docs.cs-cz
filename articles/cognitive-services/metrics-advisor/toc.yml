@@ -5,12 +5,14 @@
   items:
     - name: Co je Metrics Advisor?
       href: overview.md
+    - name: Co je nového?
+      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: Použití webového portálu
       href: quickstarts/web-portal.md
-    - name: Použití rozhraní REST API
-      href: quickstarts/rest-api.md
+    - name: Použití rozhraní REST API nebo klientských knihoven
+      href: quickstarts/rest-api-and-client-library.md
 - name: Postupy
   items:
     - name: Onboarding dat
