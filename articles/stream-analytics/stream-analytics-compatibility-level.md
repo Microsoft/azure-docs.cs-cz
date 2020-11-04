@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129809"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348929"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -33,13 +33,13 @@ Když vytváříte novou Stream Analytics úlohu, je osvědčeným postupem, jak
 
 ## <a name="set-the-compatibility-level"></a>Nastavení úrovně kompatibility
 
-Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](./stream-analytics-quick-create-portal.md).
+Úroveň kompatibility pro úlohu Stream Analytics můžete nastavit v Azure Portal nebo pomocí [volání funkce vytvořit úlohu REST API](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel).
 
 Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
 1. K vyhledání Stream Analytics úlohy použijte [Azure Portal](https://portal.azure.com) .
 2. Před aktualizací úrovně kompatibility úlohu **zastavte** . Úroveň kompatibility nejde aktualizovat, pokud je vaše úloha ve spuštěném stavu.
-3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility** .
+3. V části **Konfigurovat** záhlaví vyberte **úroveň kompatibility**.
 4. Vyberte hodnotu úrovně kompatibility, kterou chcete.
 5. V dolní části stránky vyberte **Save (Uložit** ).
 
@@ -75,15 +75,15 @@ Další informace najdete v tématu [aktualizace geoprostorových funkcí v Azur
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>Nativní integrace rozhraní API s využitím výstupu CosmosDB
 
-**Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno* .
+**Předchozí úrovně:** Chování Upsert bylo *vloženo nebo sloučeno*.
 
 **úroveň 1,2:** Nativní integrace rozhraní API s využitím výstupu CosmosDB maximalizuje propustnost a efektivně zpracovává požadavky na omezování. Další informace najdete [na stránce Azure Stream Analytics výstup do Azure Cosmos DB](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12).
 
-Chování Upsert je *vloženo nebo nahrazeno* .
+Chování Upsert je *vloženo nebo nahrazeno*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>DateTimeOffset při zápisu do výstupu SQL
 
-**Předchozí úrovně:** typy [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) byly upraveny na čas UTC.
+**Předchozí úrovně:** typy [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) byly upraveny na čas UTC.
 
 **úroveň 1,2:** DateTimeOffset již není upravován.
 

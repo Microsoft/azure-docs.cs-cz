@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336006"
+ms.locfileid: "93348912"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -223,8 +223,8 @@ Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, de
 **Příčina** : ID prostředku sady šifrování disku používaného v imagi datového disku používá neplatný formát.  
 **Řešení** : Zajistěte, aby ID prostředku sady šifrování disku bylo/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.COMPUTE/<diskEncryptionSetName \> .
 
-*Hodnota parametru galleryArtifactVersion. Properties. publishingProfile. targetRegions. Encryption. osDiskImage. diskEncryptionSetId není platná.* 
- **Příčina** : ID prostředku sady šifrování disku použité v imagi disku operačního systému používá neplatný formát.  
+*Hodnota parametru galleryArtifactVersion. Properties. publishingProfile. targetRegions. Encryption. osDiskImage. diskEncryptionSetId není platná.*  
+**Příčina** : ID prostředku sady šifrování disku použité v imagi disku operačního systému používá neplatný formát.  
 **Řešení** : Zajistěte, aby ID prostředku sady šifrování disku bylo/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.COMPUTE/<diskEncryptionSetName \> .
 
 *Nelze zadat novou logickou jednotku (LUN) pro šifrování dat na disku [<číslo \> ] se sadou Disk Encryption nastavenou v oblasti [<oblast \> ] pro požadavek verze Image Galerie aktualizace. Chcete-li aktualizovat tuto verzi, odeberte novou logickou jednotku (LUN). Pokud potřebujete změnit nastavení šifrování bitové kopie dat, musíte vytvořit novou verzi image galerie se správnými nastaveními.*  

@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a800a176315dd3066a48f813c1bee84d2f1eb696
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 52c07861fcd3db5f9a53c4bd6730f89925b11ae6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781868"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348946"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Monitorování úložiště Azure Queue
 
@@ -28,7 +28,8 @@ Pokud máte důležité aplikace a obchodní procesy, které spoléhají na pros
 Stránka **Přehled** v Azure Portal pro každý prostředek úložiště fronty obsahuje stručný přehled využití prostředků, jako jsou požadavky a hodinová fakturace. Tyto informace jsou užitečné, ale k dispozici je jenom malé množství dat monitorování. Některá z těchto dat jsou shromažďována automaticky a jsou k dispozici pro analýzu ihned po vytvoření prostředku. Můžete povolit další typy shromažďování dat s určitou konfigurací.
 
 ## <a name="what-is-azure-monitor"></a>Co je Azure Monitor?
-Azure Queue Storage vytváří data monitorování pomocí [Azure monitor](../../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků a prostředků Azure v jiných cloudech a v místním prostředí. 
+
+Azure Queue Storage vytváří data monitorování pomocí [Azure monitor](../../azure-monitor/overview.md), což je plná služba monitorování zásobníku v Azure. Azure Monitor poskytuje kompletní sadu funkcí pro monitorování prostředků a prostředků Azure v jiných cloudech a v místním prostředí.
 
 Začněte s článkem [monitorování prostředků Azure pomocí Azure monitor](../../azure-monitor/insights/monitor-azure-resource.md) , který popisuje následující informace:
 
@@ -42,7 +43,7 @@ Následující části jsou uvedené v tomto článku, které popisují konkrét
 
 ## <a name="monitoring-data"></a>Data monitorování
 
-Azure Queue Storage shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsané v tématu [monitorování dat z prostředků Azure](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data). 
+Azure Queue Storage shromažďuje stejné typy dat monitorování jako jiné prostředky Azure, které jsou popsané v tématu [monitorování dat z prostředků Azure](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data).
 
 Podrobné informace o metrikách a protokolech, které vytváří Azure Queue Storage, najdete v referenčních informacích k [datům monitorování Azure Queue Storage](monitor-queue-storage-reference.md) .
 
@@ -52,9 +53,9 @@ Pokud chcete, můžete i nadále používat klasické metriky a protokoly. Klasi
 
 ## <a name="collection-and-routing"></a>Shromažďování a směrování
 
-Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale mohou být směrovány do jiných umístění pomocí diagnostického nastavení. 
+Metriky platforem a protokol aktivit jsou shromažďovány automaticky, ale mohou být směrovány do jiných umístění pomocí diagnostického nastavení.
 
-Chcete-li shromáždit protokoly prostředků, je nutné vytvořit nastavení diagnostiky. Když vytvoříte nastavení, vyberte možnost **fronta** jako typ úložiště, pro který chcete povolit protokoly. Pak zadejte jednu z následujících kategorií operací, pro které chcete shromažďovat protokoly. 
+Chcete-li shromáždit protokoly prostředků, je nutné vytvořit nastavení diagnostiky. Když vytvoříte nastavení, vyberte možnost **fronta** jako typ úložiště, pro který chcete povolit protokoly. Pak zadejte jednu z následujících kategorií operací, pro které chcete shromažďovat protokoly.
 
 | Kategorie | Popis |
 |:---|:---|
@@ -64,7 +65,7 @@ Chcete-li shromáždit protokoly prostředků, je nutné vytvořit nastavení di
 
 ## <a name="creating-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
 
-Nastavení diagnostiky můžete vytvořit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo šablony Azure Resource Manager. 
+Nastavení diagnostiky můžete vytvořit pomocí Azure Portal, PowerShellu, rozhraní příkazového řádku Azure nebo šablony Azure Resource Manager.
 
 Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -77,14 +78,14 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 2. Přejděte na svůj účet úložiště.
 
-3. V části **monitorování** klikněte na **nastavení diagnostiky (Preview)** .
+3. V části **monitorování** klikněte na **nastavení diagnostiky (Preview)**.
 
    > [!div class="mx-imgBorder"]
-   > ![portál – diagnostické protokoly](media/monitor-queue-storage/diagnostic-logs-settings-pane.png)   
+   > ![portál – diagnostické protokoly](media/monitor-queue-storage/diagnostic-logs-settings-pane.png)
 
 4. Jako typ úložiště, pro který chcete povolit protokoly, vyberte **Queue** .
 
-5. Klikněte na **Přidat nastavení diagnostiky** .
+5. Klikněte na **Přidat nastavení diagnostiky**.
 
    > [!div class="mx-imgBorder"]
    > ![portál – protokoly prostředků – přidání nastavení diagnostiky](media/monitor-queue-storage/diagnostic-logs-settings-pane-2.png)
@@ -98,32 +99,32 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
-1. Zaškrtněte políčko **archivovat do účtu úložiště** a pak klikněte na tlačítko **Konfigurovat** .
+1. Zaškrtněte políčko **archivovat do účtu úložiště** a pak vyberte tlačítko **Konfigurovat** .
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Archivní úložiště stránky nastavení diagnostiky](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete archivovat protokoly, klikněte na tlačítko **OK** a potom klikněte na tlačítko **Uložit** .
+2. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete archivovat protokoly, klikněte na tlačítko **OK** a pak vyberte tlačítko **Uložit** .
 
    > [!NOTE]
-   > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) a pochopení požadavků v účtu úložiště.
+   > Než zvolíte účet úložiště jako cíl exportu, přečtěte si téma [archivace protokolů prostředků Azure](/azure/azure-monitor/platform/resource-logs-collect-storage) a pochopení požadavků v účtu úložiště.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamování protokolů do Azure Event Hubs
 
 1. Zaškrtněte políčko **datový proud do centra událostí** a pak klikněte na tlačítko **Konfigurovat** .
 
-2. V podokně **Vyberte centrum událostí** zvolte obor názvů, název a název zásady centra událostí, do kterého chcete protokoly streamovat. 
+2. V podokně **Vyberte centrum událostí** zvolte obor názvů, název a název zásady centra událostí, do kterého chcete protokoly streamovat.
 
    > [!div class="mx-imgBorder"]
    > ![Centrum událostí stránky nastavení diagnostiky](media/monitor-queue-storage/diagnostic-logs-settings-pane-event-hub.png)
 
-3. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **Uložit** .
+3. Klikněte na tlačítko **OK** a pak vyberte tlačítko **Uložit** .
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Odeslat protokoly do Azure Log Analytics
 
-1. Zaškrtněte políčko **Odeslat do Log Analytics** , vyberte pracovní prostor Log Analytics a pak klikněte na tlačítko **Uložit** .
+1. Zaškrtněte políčko **Odeslat do Log Analytics** , vyberte pracovní prostor Log Analytics a pak vyberte tlačítko **Uložit** .
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Stránka nastavení diagnostiky Log Analytics](media/monitor-queue-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -142,7 +143,7 @@ Obecné pokyny najdete v tématu [Vytvoření nastavení diagnostiky pro shroma�
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell spolu s `StorageAccountId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -156,11 +157,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
+Popis jednotlivých parametrů najdete v tématu [archivace protokolů prostředků Azure prostřednictvím Azure PowerShell](/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `EventHubAuthorizationRuleId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -170,11 +171,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs pomocí rutin PowerShellu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs pomocí rutin PowerShellu](/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets).
 
 #### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
-Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
+Povolte protokoly pomocí rutiny [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) prostředí PowerShell s `WorkspaceId` parametrem.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -184,11 +185,11 @@ Tady je příklad:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/queueServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Nejdřív otevřete [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](https://docs.microsoft.com/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
+1. Nejdřív otevřete [Azure Cloud Shell](/azure/cloud-shell/overview), nebo pokud jste rozhraní příkazového řádku Azure [nainstalovali](/cli/azure/install-azure-cli) místně, otevřete konzolovou aplikaci, například Windows PowerShell.
 
 2. Pokud je vaše identita přidružená k více než jednomu předplatnému, nastavte své aktivní předplatné na předplatné účtu úložiště, pro který chcete povolit protokoly.
 
@@ -200,7 +201,7 @@ Další informace najdete v tématu [streamování protokolů prostředků Azure
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivace protokolů do účtu úložiště
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -214,11 +215,11 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
+Popis jednotlivých parametrů najdete v tématu [archivní protokoly prostředků přes Azure CLI](/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamování protokolů do centra událostí
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -228,11 +229,11 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs přes rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
+Popis jednotlivých parametrů najdete v tématu [streamovaná data, která se Event Hubs přes rozhraní příkazového řádku Azure CLI](/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli).
 
 #### <a name="send-logs-to-log-analytics"></a>Odesílání protokolů do Log Analytics
 
-Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Protokol povolte pomocí příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -242,18 +243,17 @@ Tady je příklad:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
+ Další informace najdete v tématu [streamování protokolů prostředků Azure do Log Analytics pracovního prostoru v Azure monitor](/azure/azure-monitor/platform/diagnostic-logs-stream-log-store).
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
+Chcete-li zobrazit šablonu Azure Resource Manager, která vytvoří nastavení diagnostiky, přečtěte si téma [nastavení diagnostiky pro Azure Storage](/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage).
 
 ---
 
-
 ## <a name="analyzing-metrics"></a>Analýza metrik
 
-Metriky můžete analyzovat pro Azure Storage s využitím metrik z jiných služeb Azure pomocí Průzkumník metrik. Otevřete Průzkumník metrik tím, že v nabídce **Azure monitor** vyberete **metriky** . Podrobnosti o používání tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md). 
+Metriky můžete analyzovat pro Azure Storage s využitím metrik z jiných služeb Azure pomocí Průzkumník metrik. Otevřete Průzkumník metrik tím, že v nabídce **Azure monitor** vyberete **metriky** . Podrobnosti o používání tohoto nástroje najdete v tématu [Začínáme s Azure Průzkumník metrik](../../azure-monitor/platform/metrics-getting-started.md).
 
 Tento příklad ukazuje, jak zobrazit **transakce** na úrovni účtu.
 
@@ -265,13 +265,12 @@ Pro metriky, které podporují dimenze, můžete metriku filtrovat pomocí poža
 
 Úplný seznam dimenzí, které Azure Storage podporuje, najdete v tématu věnovaném [dimenzím metrik](monitor-queue-storage-reference.md#metrics-dimensions).
 
-Metriky pro Azure Queue Storage jsou v těchto oborech názvů: 
+Metriky pro Azure Queue Storage jsou v těchto oborech názvů:
 
 - Microsoft. Storage/storageAccounts
 - Microsoft. Storage/storageAccounts/queueServices
 
 Seznam Azure Monitor všech metrik podpory, které zahrnují metriky Azure Queue Storage, najdete v článku [Azure monitor podporované metriky](../../azure-monitor/platform/metrics-supported.md).
-
 
 ### <a name="accessing-metrics"></a>Přístup k metrikám
 
@@ -284,7 +283,7 @@ Seznam Azure Monitor všech metrik podpory, které zahrnují metriky Azure Queue
 
 Můžete vypsat definici metriky svého účtu úložiště nebo služby úložiště front. Použijte rutinu [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) .
 
-V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby fronty úložiště.  Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
+V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby fronty úložiště. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -305,7 +304,7 @@ Můžete číst hodnoty metriky na úrovni účtu účtu úložiště nebo služ
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
 Můžete vypsat definici metriky svého účtu úložiště nebo služby úložiště front. Použijte příkaz [AZ monitor Metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
- 
+
 V tomto příkladu nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo ID prostředku služby fronty úložiště. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
 ```azurecli-interactive
@@ -323,10 +322,10 @@ Můžete si přečíst hodnoty metrik svého účtu úložiště nebo služby Qu
 ### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure Monitor poskytuje [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) pro čtení definice metrik a hodnot. [Vzorový kód](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) ukazuje, jak použít sadu SDK s různými parametry. `0.18.0-preview`Pro metriky úložiště je nutné použít nebo novější verzi.
- 
+
 V těchto příkladech nahraďte `<resource-ID>` zástupný symbol ID prostředku celého účtu úložiště nebo služby Queue Storage. Tato ID prostředků najdete na stránkách **vlastností** svého účtu úložiště v Azure Portal.
 
-Nahraďte `<subscription-ID>` proměnnou číslem ID vašeho předplatného. Pokyny k získání hodnot pro `<tenant-ID>` , `<application-ID>` a `<AccessKey>` najdete v tématu [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Nahraďte `<subscription-ID>` proměnnou číslem ID vašeho předplatného. Pokyny k získání hodnot pro `<tenant-ID>` , `<application-ID>` a `<AccessKey>` najdete v tématu [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="list-the-account-level-metric-definition"></a>Výpis definice metriky na úrovni účtu
 
@@ -340,7 +339,6 @@ Následující příklad ukazuje, jak zobrazit definici metriky na úrovni účt
         var tenantId = "<tenant-ID>";
         var applicationId = "<application-ID>";
         var accessKey = "<AccessKey>";
-
 
         MonitorManagementClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
         IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
@@ -459,9 +457,11 @@ Následující příklad ukazuje, jak číst data metriky v metrikě podporujíc
     }
 
 ```
+
 ### <a name="template"></a>[Šablona](#tab/template)
 
-<a name="na"></a>Není k dispozici.
+Není k dispozici.
+
 ---
 
 ## <a name="analyzing-logs"></a>Analýza protokolů
@@ -509,7 +509,7 @@ Tady je příklad:
 
 ### <a name="accessing-logs-in-an-event-hub"></a>Přístup k protokolům v centru událostí
 
-Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale můžete ověřit, že centrum událostí obdrželo informace protokolu. V Azure Portal přejdete do centra událostí a ověříte, že počet **příchozích zpráv** je větší než nula. 
+Protokoly odeslané do centra událostí nejsou uloženy jako soubor, ale můžete ověřit, že centrum událostí obdrželo informace protokolu. V Azure Portal přejdete do centra událostí a ověříte, že počet **příchozích zpráv** je větší než nula.
 
 ![Protokoly auditu](media/monitor-queue-storage/event-hub-log.png)
 
@@ -521,7 +521,7 @@ K protokolům odesílaným do Log Analytics pracovního prostoru můžete přist
 
 Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](../../azure-monitor/log-query/get-started-portal.md).
 
-Data se ukládají do tabulky **StorageQueueLogs** .  
+Data se ukládají do tabulky **StorageQueueLogs** .
 
 #### <a name="sample-kusto-queries"></a>Ukázkové dotazy Kusto
 
@@ -532,7 +532,7 @@ Tady jsou některé dotazy, které můžete zadat do panelu **hledání protokol
 
 Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
 
-* K vypsání deseti nejběžnějších chyb za poslední tři dny.
+- K vypsání deseti nejběžnějších chyb za poslední tři dny.
 
     ```Kusto
     StorageQueueLogs
@@ -540,7 +540,8 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | summarize count() by StatusText
     | top 10 by count_ desc
     ```
-* K vypsání prvních 10 operací, které způsobily nejvíce chyb za poslední tři dny.
+
+- K vypsání prvních 10 operací, které způsobily nejvíce chyb za poslední tři dny.
 
     ```Kusto
     StorageQueueLogs
@@ -548,7 +549,8 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | summarize count() by OperationName
     | top 10 by count_ desc
     ```
-* K vypsání prvních 10 operací s nejdelší koncovou latencí za poslední tři dny.
+
+- K vypsání prvních 10 operací s nejdelší koncovou latencí za poslední tři dny.
 
     ```Kusto
     StorageQueueLogs
@@ -556,28 +558,33 @@ Tyto dotazy vám pomůžou monitorovat účty Azure Storage:
     | top 10 by DurationMs desc
     | project TimeGenerated, OperationName, DurationMs, ServerLatencyMs, ClientLatencyMs = DurationMs - ServerLatencyMs
     ```
-* K vypsání všech operací, které v posledních třech dnech způsobily chyby omezení na straně serveru.
+
+- K vypsání všech operací, které v posledních třech dnech způsobily chyby omezení na straně serveru.
 
     ```Kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
     ```
-* K vypsání všech žádostí s anonymním přístupem za poslední tři dny.
+
+- K vypsání všech žádostí s anonymním přístupem za poslední tři dny.
 
     ```Kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
     ```
-* K vytvoření výsečového grafu operací používaných za poslední tři dny.
+
+- K vytvoření výsečového grafu operací používaných za poslední tři dny.
+
     ```Kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName
-    | sort by count_ desc 
+    | sort by count_ desc
     | render piechart
     ```
+
 ## <a name="faq"></a>Nejčastější dotazy
 
 **Podporuje Azure Storage metriky pro Managed Disks nebo nespravované disky?**

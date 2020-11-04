@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126223"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348768"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -71,19 +71,19 @@ Před definováním Stream Analytics úlohy připravte data, která se používa
 
 Následující bloky kódu Azure CLI jsou příkazy, které připravují vstupní data požadovaná úlohou. Prohlédněte si jednotlivé části a seznamte se s kódem.
 
-1. Pomocí příkazu [AZ IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) vytvořte IoT Hub. Tento příklad vytvoří IoT Hub s názvem **MyASAIoTHub** . Vzhledem k tomu, že názvy IoT Hub jsou jedinečné, je třeba se s vlastním názvem IoT Hub. Nastavte SKU na F1 na použití bezplatné úrovně, pokud je k dispozici v rámci vašeho předplatného. Pokud ne, vyberte nejbližší nejnižší úroveň.
+1. Pomocí příkazu [AZ IoT Hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) vytvořte IoT Hub. Tento příklad vytvoří IoT Hub s názvem **MyASAIoTHub**. Vzhledem k tomu, že názvy IoT Hub jsou jedinečné, je třeba se s vlastním názvem IoT Hub. Nastavte SKU na F1 na použití bezplatné úrovně, pokud je k dispozici v rámci vašeho předplatného. Pokud ne, vyberte nejbližší nejnižší úroveň.
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub?view=azure-cli-latest) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
+    Po vytvoření centra IoT Získejte připojovací řetězec IoT Hub pomocí příkazu [AZ IoT Hub show-Connection-String](/cli/azure/iot/hub) . Zkopírujte celý připojovací řetězec a uložte ho pro při přidání IoT Hub jako vstupu do úlohy Stream Analytics.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. Pomocí příkazu [AZ iothub Device-identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) přidejte zařízení, které chcete IoT Hub. Tento příklad vytvoří zařízení s názvem **MyASAIoTDevice** .
+2. Pomocí příkazu [AZ iothub Device-identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) přidejte zařízení, které chcete IoT Hub. Tento příklad vytvoří zařízení s názvem **MyASAIoTDevice**.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
@@ -138,7 +138,7 @@ Následující bloky kódu Azure CLI vytvoří účet Blob Storage, který se po
 
 Následující bloky kódu Azure CLI vytvoří úlohu Stream Analytics. Přečtěte si oddíly, abyste porozuměli kódu
 
-1. Vytvořte Stream Analyticsovou úlohu pomocí příkazu [AZ Stream-Analytics Create](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-create) .
+1. Vytvořte Stream Analyticsovou úlohu pomocí příkazu [AZ Stream-Analytics Create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) .
 
 ```azurecli
 az stream-analytics job create \
@@ -154,7 +154,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>Konfigurace vstupu do úlohy
 
-Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
+Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
 
 Na místním počítači vytvořte soubor s názvem `datasource.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu v `sharedAccessPolicyKey` `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
 
@@ -196,7 +196,7 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>Konfigurace výstupu do úlohy
 
-Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
+Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
 
 Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu pro `accountKey` přístupový klíč účtu úložiště, který je hodnotou uloženou v $storageAccountKey Value.
 
@@ -231,7 +231,7 @@ az stream-analytics output create
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
-Přidejte transformaci úlohy pomocí rutiny [AZ Stream-Analytics Transform Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-transformation-create) . Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. 
+Přidejte transformaci úlohy pomocí rutiny [AZ Stream-Analytics Transform Create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) . Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. 
 
 Spusťte `az stream-analytics transformation create` rutinu.
 
@@ -249,13 +249,13 @@ az stream-analytics transformation create
 
 2. Zástupný text na řádku 15 nahraďte celým připojovacím řetězcem zařízení Azure IoT Hub, který jste uložili v předchozí části.
 
-3. Klikněte na **Spustit** . Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
+3. Klikněte na **Spustit**. Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
 
     ![Online simulátor Raspberry Pi Azure IoT](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-Spusťte úlohu pomocí rutiny [AZ Stream-Analytics Start](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-start) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`.
+Spusťte úlohu pomocí rutiny [AZ Stream-Analytics Start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) . Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`.
 
 Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu `True`, pokud se úloha spustí. V kontejneru úložiště se vytvoří výstupní složku s transformovanými daty.
 

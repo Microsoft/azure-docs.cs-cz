@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307547"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348725"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure s využitím Azure PowerShellu
 
@@ -249,6 +249,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>Prostředky infrastruktury a vytváření kontejnerů při povolování replikace zóny do zóny
+
+Při povolování zóny na replikaci zóny se vytvoří jenom jeden prostředek infrastruktury. Ale budou existovat dva kontejnery. Za předpokladu, že je oblast Západní Evropa, použijte k získání primárních a ochranných kontejnerů následující příkazy:
+
+```azurepowershell
+$primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
+$recoveryPprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-t-container"
+```
+
 ### <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
 ```azurepowershell
@@ -287,6 +296,14 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>Vytvoření mapování kontejneru ochrany při povolování replikace zóny do zóny
+
+Při povolování zóny pro replikaci zóny použijte následující příkaz k vytvoření mapování kontejneru ochrany. Za předpokladu, že je oblast Západní Evropa, bude příkaz –
+
+```azurepowershell
+$protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
+```
+
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Vytvořit mapování kontejneru ochrany pro navrácení služeb po obnovení (reverzní replikace po převzetí služeb při selhání)
 
 Po převzetí služeb při selhání budete moct po převzetí služeb při selhání virtuální počítač přenést zpátky do původní oblasti Azure a provést navrácení služeb po obnovení. Pro navrácení služeb po obnovení je virtuální počítač, který převezme služby při selhání, zpětně replikován z oblasti převzetí služeb při selhání do původní oblasti. Pro zpětnou replikaci role v části původní oblast a přepínač oblasti obnovení. Původní oblast se teď stala novou oblastí obnovení a původní oblast obnovení se teď stal primární oblastí. Mapování kontejneru ochrany pro zpětnou replikaci představuje přepínací role původních oblastí a oblasti obnovení.
@@ -316,7 +333,7 @@ $WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-U virtuálních počítačů, které **nepoužívají spravované disky**, je cílovým účtem úložiště účet úložiště v oblasti obnovení, na které se replikují disky virtuálního počítače. Cílový účet úložiště může být buď účet standardního úložiště, nebo účet Premium Storage. Vyberte druh účtu úložiště vyžadovaný v závislosti na rychlosti změny dat (rychlost zápisu v/v) pro disky a Azure Site Recovery podporovaná omezení změn pro typ úložiště.
+U virtuálních počítačů, které **nepoužívají spravované disky** , je cílovým účtem úložiště účet úložiště v oblasti obnovení, na které se replikují disky virtuálního počítače. Cílový účet úložiště může být buď účet standardního úložiště, nebo účet Premium Storage. Vyberte druh účtu úložiště vyžadovaný v závislosti na rychlosti změny dat (rychlost zápisu v/v) pro disky a Azure Site Recovery podporovaná omezení změn pro typ úložiště.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account

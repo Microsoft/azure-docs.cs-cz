@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130778"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348980"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Vysvětlení vstupů pro Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Stream Analytics má při první třídě integraci se čtyřmi druhy prostředk
 
 Tyto vstupní prostředky můžou být živé ve stejném předplatném Azure jako vaše Stream Analyticsová úloha nebo z jiného předplatného.
 
-Pomocí [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), rozhraní [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](./stream-analytics-define-inputs.md)a sady [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) můžete vytvářet, upravovat a testovat Stream Analytics úlohy.
+Pomocí [Azure Portal](stream-analytics-quick-create-portal.md#configure-job-input),  [Azure PowerShell](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput), rozhraní [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST API](/rest/api/streamanalytics/2016-03-01/inputs)a sady [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) můžete vytvářet, upravovat a testovat Stream Analytics úlohy.
 
 ## <a name="stream-and-reference-inputs"></a>Vstupy datových proudů a odkazů
 Při vložení dat do zdroje dat je tato data spotřebována úlohou Stream Analytics a zpracovávána v reálném čase. Vstupy se dělí na dva typy: vstupy streamů a vstupy referenčních dat.
@@ -37,7 +37,7 @@ Datový proud je neohraničená posloupnost událostí v průběhu času. Úlohy
 Další informace o datových vstupech streamování najdete v tématu [streamování dat jako vstup do Stream Analytics](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Referenční datové vstupy
-Stream Analytics podporuje také vstup známý jako *referenční data* . Referenční data jsou buď zcela statická, nebo se mění pomalu. Obvykle se používá k provádění korelace a vyhledávání. Například můžete spojit data datového proudu s daty v referenčních datech, podobně jako byste provedli příkaz SQL JOIN k vyhledání statických hodnot. Úložiště objektů BLOB v Azure, Azure Data Lake Storage Gen2 a Azure SQL Database se v současné době podporují jako vstupní zdroje pro referenční data. Velikost objektů BLOB zdroje referenčních dat má limit až 300 MB, v závislosti na složitosti dotazu a přidělených jednotkách streamování (Další informace najdete v části [omezení velikosti](stream-analytics-use-reference-data.md#size-limitation) v dokumentaci referenčních dat).
+Stream Analytics podporuje také vstup známý jako *referenční data*. Referenční data jsou buď zcela statická, nebo se mění pomalu. Obvykle se používá k provádění korelace a vyhledávání. Například můžete spojit data datového proudu s daty v referenčních datech, podobně jako byste provedli příkaz SQL JOIN k vyhledání statických hodnot. Úložiště objektů BLOB v Azure, Azure Data Lake Storage Gen2 a Azure SQL Database se v současné době podporují jako vstupní zdroje pro referenční data. Velikost objektů BLOB zdroje referenčních dat má limit až 300 MB, v závislosti na složitosti dotazu a přidělených jednotkách streamování (Další informace najdete v části [omezení velikosti](stream-analytics-use-reference-data.md#size-limitation) v dokumentaci referenčních dat).
 
 Další informace o vstupech referenčních dat naleznete [v tématu použití referenčních dat pro vyhledávání v Stream Analytics](stream-analytics-use-reference-data.md)
 

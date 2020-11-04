@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320638"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348759"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Monitorování protokolů a metrik Azure Firewallu
 
@@ -45,7 +45,7 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 
 3. Vyberte **Přidat nastavení diagnostiky**. Stránka **Nastavení diagnostiky** obsahuje nastavení diagnostických protokolů.
 5. V tomto příkladu protokoly Azure Monitor ukládá do protokolů, takže jako název zadáte **Log Analytics pro firewall** .
-6. V části **protokol**vyberte **AzureFirewallApplicationRule**, **AzureFirewallNetworkRule**, **AzureFirewallThreatIntelLog**a **AzureFirewallDnsProxy** , aby se protokoly shromáždily.
+6. V části **protokol** vyberte **AzureFirewallApplicationRule** , **AzureFirewallNetworkRule** , **AzureFirewallThreatIntelLog** a **AzureFirewallDnsProxy** , aby se protokoly shromáždily.
 7. Vyberte **Odeslat pro Log Analytics** ke konfiguraci pracovního prostoru.
 8. Vyberte své předplatné.
 9. Vyberte **Uložit**.
@@ -56,11 +56,11 @@ Protokolování aktivit je u každého prostředku Správce prostředků povolen
 
 Protokolování diagnostiky zapnete následovně:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> *.
+1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>*.
 
    Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal na stránce **vlastností** prostředku.
 
-2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\> *.
+2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>*.
 
    Tuto informaci najdete pomocí webu Azure Portal.
 
@@ -75,13 +75,57 @@ Protokolování diagnostiky zapnete následovně:
 > [!TIP]
 >Diagnostické protokoly vlastí účet úložiště nevyžadují. Za používání úložiště k protokolování přístupu a výkonu se účtují poplatky.
 
+## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Povolení protokolování diagnostiky pomocí Azure CLI
+
+Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Abyste mohli začít shromažďovat data dostupná prostřednictvím těchto protokolů, musíte zapnout protokolování diagnostiky.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
+
+Pomocí následujících příkazů Povolte protokolování diagnostiky.
+
+1. Spuštěním příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) Povolte protokolování diagnostiky:
+
+   ```azurecli
+   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
+     --resource Firewall07 --storage-account MyStorageAccount
+   ```
+
+   Spuštěním příkazu [AZ monitor Diagnostic-Settings list](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) zobrazíte nastavení diagnostiky pro prostředek:
+
+   ```azurecli
+   az monitor diagnostic-settings list --resource Firewall07
+   ```
+
+   Pomocí možnosti [AZ monitor Diagnostic-Settings show](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) Zobrazte aktivní nastavení diagnostiky pro prostředek:
+
+   ```azurecli
+   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+1. Spusťte příkaz [AZ monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) a aktualizujte nastavení.
+
+   ```azurecli
+   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
+   ```
+
+   Pomocí příkazu [AZ monitor Diagnostic-Settings Delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) odstraňte nastavení diagnostiky.
+
+   ```azurecli
+   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+> [!TIP]
+>Diagnostické protokoly vlastí účet úložiště nevyžadují. Za používání úložiště k protokolování přístupu a výkonu se účtují poplatky.
+
 ## <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
 Data protokolu aktivit si můžete zobrazit použitím jedné z následujících metod:
 
-* **Nástroje Azure**: Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/management/view-activity-logs.md).
-* **Power BI**: Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
-* **Azure Sentinel**: můžete připojit protokoly Azure firewall ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytvoření vlastních výstrah a začlenit je do lepšího šetření. Konektor dat Azure Firewall v Azure Sentinel je aktuálně ve verzi Public Preview. Další informace najdete v tématu [připojení dat z Azure firewall](../sentinel/connect-azure-firewall.md).
+* **Nástroje Azure** : Načtěte informace z protokolu aktivit prostřednictvím Azure PowerShellu, Azure CLI, rozhraní Azure REST API nebo webu Azure Portal. Podrobné pokyny k jednotlivým metodám najdete v článku o [operacích s protokoly aktivit ve Správci prostředků](../azure-resource-manager/management/view-activity-logs.md).
+* **Power BI** : Pokud ještě účet [Power BI](https://powerbi.microsoft.com/pricing) nemáte, můžete ho vyzkoušet zdarma. Díky [balíčku obsahu protokoly aktivit Azure pro Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) můžete svá data analyzovat pomocí předkonfigurovaných řídicích panelů, které můžete použít okamžitě nebo si je upravit.
+* **Azure Sentinel** : můžete připojit protokoly Azure firewall ke službě Azure Sentinel a umožnit vám zobrazovat data protokolu v sešitech, použít je k vytvoření vlastních výstrah a začlenit je do lepšího šetření. Konektor dat Azure Firewall v Azure Sentinel je aktuálně ve verzi Public Preview. Další informace najdete v tématu [připojení dat z Azure firewall](../sentinel/connect-azure-firewall.md).
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Zobrazení a analyzování protokolů pravidel sítě a aplikace
 

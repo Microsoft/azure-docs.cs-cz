@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130693"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348963"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zastavení nebo odstranění úlohy Azure Stream Analytics
 
@@ -26,7 +26,7 @@ Azure Stream Analytics úlohy je možné snadno zastavit nebo odstranit pomocí 
 
 Po zastavení úlohy dojde ke zrušení zřízení prostředků a zastavení zpracování událostí. Poplatky související s touto úlohou se také zastaví. Veškerá vaše konfigurace je ale zachovaná a později ji můžete restartovat. 
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 
 2. Vyhledejte spuštěnou úlohu Stream Analytics a vyberte ji.
 
@@ -57,8 +57,8 @@ K zastavení úlohy pomocí prostředí PowerShell použijte rutinu [stop-AzStre
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Zastavení nebo odstranění úlohy pomocí sady Azure SDK pro .NET
 
-K zastavení úlohy pomocí sady Azure SDK pro .NET použijte metodu [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) . Odstranění úlohy pomocí sady Azure SDK pro .NET, [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet)
+K zastavení úlohy pomocí sady Azure SDK pro .NET použijte metodu [StreamingJobsOperationsExtensions. BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop) . Odstranění úlohy pomocí sady Azure SDK pro .NET, [StreamingJobsOperationsExtensions. BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete)
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>Zastavení nebo odstranění úlohy pomocí REST API
 
-Chcete-li zastavit úlohu pomocí REST API, přečtěte si metodu [stop](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) . Pokud chcete úlohu odstranit pomocí REST API, přečtěte si metodu [Delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) .
+Chcete-li zastavit úlohu pomocí REST API, přečtěte si metodu [stop](/rest/api/streamanalytics/2016-03-01/streamingjobs/stop) . Pokud chcete úlohu odstranit pomocí REST API, přečtěte si metodu [Delete](/rest/api/streamanalytics/2016-03-01/streamingjobs/delete) .

@@ -3,25 +3,25 @@ title: Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho smě
 description: Přečtěte si, jak převést Zásady skupiny ze směrného plánu zabezpečení Windows serveru 2019 do definice zásady.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: dce22885981ab01fe37fac8588899d12a5afb87d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893369"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348640"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Jak vytvořit definice zásad konfigurace hostů z Zásady skupinyho směrného plánu pro Windows
 
 Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst informace o koncepčním přehledu v tématu [Azure Policy konfigurace hostů](../concepts/guest-configuration.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Linux najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md). Další informace o vytváření vlastních definic zásad konfigurace hostů pro Windows najdete v tématu [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md).
 
-Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud vyhodnocení konfigurace **nedodržuje předpisy**, aktivuje se *auditIfNotExists* účinek zásad.
+Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud vyhodnocení konfigurace **nedodržuje předpisy** , aktivuje se *auditIfNotExists* účinek zásad.
 [Azure Policy konfigurace hostů](../concepts/guest-configuration.md) jenom auditují nastavení v počítačích.
 
 > [!IMPORTANT]
-> Vlastní definice zásad s konfigurací hosta je funkce ve verzi Preview.
->
 > Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure. Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad:
 > - [Nasaďte požadavky pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> Nepoužívejte tajné klíče ani důvěrné informace v balíčcích vlastního obsahu.
 
 Komunita DSC publikovala [modul BaselineManagement](https://github.com/microsoft/BaselineManagement) k převedení exportovaných šablon zásady skupiny do formátu DSC. V kombinaci s rutinou GuestConfiguration vytvoří modul BaselineManagement v Zásady skupiny obsahu Azure Policy konfigurační balíček hosta pro Windows. Podrobnosti o používání modulu BaselineManagement naleznete v článku [rychlý Start: převod zásady skupiny do DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
@@ -29,7 +29,7 @@ V této příručce Vás provedeme procesem vytvoření Azure Policy konfigurač
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Stáhněte si základní hodnoty zabezpečení Windows serveru 2019 a nainstalujte související moduly PowerShellu.
 
-Instalace rozhraní **DSC**, **GuestConfiguration**, **správy standardních hodnot**a souvisejících modulů Azure v prostředí PowerShell:
+Instalace rozhraní **DSC** , **GuestConfiguration** , **správy standardních hodnot** a souvisejících modulů Azure v prostředí PowerShell:
 
 1. Z příkazového řádku PowerShellu spusťte následující příkaz:
 
@@ -87,78 +87,12 @@ V dalším kroku převede stažený směrný plán serveru 2019 na konfiguračn�
 
 ## <a name="create-azure-policy-guest-configuration"></a>Vytvořit Azure Policy konfiguraci hosta
 
-Dalším krokem je publikování souboru do Azure Blob Storage. 
-
-1. Následující skript obsahuje funkci, kterou můžete použít k automatizaci této úlohy. Všimněte si, že příkazy používané ve `publish` funkci vyžadují `Az.Storage` modul.
+1. Dalším krokem je publikování souboru do Azure Blob Storage. Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. Vytvořte parametry, které definují jedinečnou skupinu prostředků, účet úložiště a kontejner. 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. K publikování konfiguračního balíčku hosta na veřejné Blob Storage použijte funkci publikovat s přiřazenými parametry.
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. Po vytvoření a nahrání balíčku vlastní zásady konfigurace hosta se vytvoří definice zásady konfigurace hosta. Pomocí `New-GuestConfigurationPolicy` rutiny vytvořte konfiguraci hosta.
 
    ```azurepowershell-interactive

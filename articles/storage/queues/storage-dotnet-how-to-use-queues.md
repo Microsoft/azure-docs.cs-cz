@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b59c7d2af33efd82f27af9e13fc9c1f36ca788ee
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787461"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348589"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 
@@ -30,7 +30,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 **Odhadovaný čas dokončení:** 45 minut
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Účet úložiště Azure](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -39,7 +39,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
+## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
 Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli připraveni vyzkoušet příklady kódů z této příručky.
 
@@ -50,9 +50,9 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 1. Vybrat **soubor**  >  **Nový**  >  **projekt**
 2. Vybrat **Platform**  >  **okna** platformy
 3. Vybrat **konzolovou aplikaci (.NET Framework)**
-4. Vyberte **Další** .
+4. Vyberte **Další**.
 5. Do pole **název projektu** zadejte název vaší aplikace.
-6. Vyberte **Vytvořit** .
+6. Vyberte **Vytvořit**.
 
 Všechny příklady kódu v tomto kurzu můžete přidat do metody **Main ()** souboru **program.cs** vaší konzolové aplikace.
 
@@ -69,9 +69,9 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující čtyři b
 - [Knihovna front Azure Storage pro .NET](https://www.nuget.org/packages/Azure.Storage.Queues/): Tento balíček umožňuje pracovat s Služba frontem Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Knihovna Configuration Manager pro .NET](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Tento balíček poskytuje přístup ke konfiguračním souborům pro klientské aplikace.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
+K získání těchto balíčků můžete použít NuGet. Postupujte takto:
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
 1. Vyhledejte v online režimu "Azure. Storage. Queues" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se také nainstalují knihovny Azure. Storage. Common a Azure. Core, které jsou závislé na knihovně fronty.
 1. Hledejte online System.Configuration.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager.
@@ -84,9 +84,9 @@ Abyste mohli dokončit tento kurz, musíte odkazovat na následující tři bal�
 - [Knihovna Microsoft Azure Storage Queue Library pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/): Tato Klientská knihovna umožňuje pracovat s služba front Microsoft Azure Storage pro ukládání zpráv, ke kterým může klient přicházet.
 - [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-K získání těchto balíčků můžete použít NuGet. Postupujte následovně:
+K získání těchto balíčků můžete použít NuGet. Postupujte takto:
 
-1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet** .
+1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte možnost **Spravovat balíčky NuGet**.
 1. Vyberte **Procházet** .
 1. Online vyhledejte "Microsoft. Azure. Storage. Queue" a vyberte **nainstalovat** a nainstalujte tak knihovnu klienta úložiště a její závislosti. Tím se nainstaluje také knihovna Microsoft. Azure. Storage. Common, což je závislost knihovny front.
 1. Hledejte online Microsoft.Azure.ConfigurationManager a vyberte **nainstalovat** a nainstalujte Configuration Manager Azure.
@@ -113,7 +113,7 @@ Ukázkový kód potřebuje autorizovat přístup k vašemu účtu úložiště. 
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyhledejte svůj účet úložiště.
-3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče** . Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
+3. V části **Nastavení** v přehledu účtu úložiště vyberte **Přístupové klíče**. Zobrazí se přístupové klíče vašeho účtu a také úplný připojovací řetězec pro jednotlivé klíče.
 4. V části **key1** vyhledejte hodnotu **Připojovací řetězec** a kliknutím na tlačítko **Kopírovat** zkopírujte připojovací řetězec. V dalším kroku přidáte hodnotu připojovacího řetězce do proměnné prostředí.
 
     ![Snímek obrazovky ukazující zkopírování připojovacího řetězce z webu Azure Portal](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)

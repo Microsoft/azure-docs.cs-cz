@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098446"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348606"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Navrhnout funkci
 
-Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](./search-howto-dotnet-sdk.md).
+Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](search-howto-dotnet-sdk.md).
 
 `InitSearch`Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Vlastnosti třídy [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) určují, která pole se prohledávají a vrátí ve výsledcích, počet shod a zda se používá přibližná shoda. 
 
@@ -181,7 +181,7 @@ Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet
 
 ## <a name="autocomplete"></a>Automatické dokončování
 
-V tomto případě byl kód uživatelského rozhraní hledání na základě návrhů na střed. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského rozhraní XDSoft jQuery, která předá požadavek na automatické dokončování Azure Kognitivní hledání. Stejně jako u návrhů v aplikaci jazyka C#, kód, který podporuje interakci s uživatelem, přechází do **indexu. cshtml** .
+V tomto případě byl kód uživatelského rozhraní hledání na základě návrhů na střed. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského rozhraní XDSoft jQuery, která předá požadavek na automatické dokončování Azure Kognitivní hledání. Stejně jako u návrhů v aplikaci jazyka C#, kód, který podporuje interakci s uživatelem, přechází do **indexu. cshtml**.
 
 ```javascript
 $(function () {
@@ -253,4 +253,3 @@ Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demons
 
 + [Kurz: Vytvoření první aplikace v jazyce C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
 + [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [Ukázka C# a JavaScriptu se ZBYTKem kódu pro souběžné navýšení](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

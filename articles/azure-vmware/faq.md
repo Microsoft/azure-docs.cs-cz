@@ -4,12 +4,12 @@ description: Obsahuje odpovědi na některé běžné dotazy týkající se ře�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 68eee2d55e3c22b502d17a91f4ba4509c292c31c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1ca50e1e1374b5e819c9355be1a48e2b7c3e536
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288671"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349082"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Nejčastější dotazy týkající se řešení Azure VMware
 
@@ -59,13 +59,7 @@ Aktualizace provedené v samotné službě budou následovat po standardním pro
 
 Díky novému řešení Azure VMware mají Microsoft a VMware přímé partnerství s poskytovatelem cloudu. Nové řešení je výhradně navržené, sestavené a podporované společností Microsoft a schválené VMware. Tato řešení jsou v souladu s architekturou technologie VMware, která běží na vyhrazené infrastruktuře Azure.
 
-#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Jsou řešení Red Hat podporovaná v řešení Azure VMware?
 
-Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory, který poskytuje jednotný kontaktní bod pro ekosystémy Red Hat běžící na platformě Azure.  Podobně jako jiné služby platformy Azure, které pracují s Red Hat Enterprise Linux, spadají řešení Azure VMware do cloudového přístupu a integrované podpory a Red Hat Enterprise Linux se podporuje pro provoz v rámci řešení Azure VMware v Azure.
-
-#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Je k dispozici VMware HCX Enterprise Edition, a pokud ano, jak spousta stojí?
-
-VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Protože řešení VMware HCX EE pro Azure VMware je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Službu můžete odpínat nebo odhlásit.
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Můžou se virtuální počítače řešení Azure VMware spravovat pomocí VMRC?
 Ano, pokud je systém, na kterém je nainstalován, má přístup k privátnímu cloudu vCenter a používá veřejnou službu DNS k překladu názvů ESXi.
@@ -236,6 +230,14 @@ Microsoft poskytuje podporu pro řešení Azure VMware. [Žádost o podporu](htt
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Jaké účty potřebuji k vytvoření privátního cloudu řešení Azure VMware?
 
 Budete potřebovat účet Azure v předplatném Azure.
+
+#### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Jsou řešení Red Hat podporovaná v řešení Azure VMware?
+
+Microsoft a Red Hat sdílejí integrovaný, společně umístěný tým podpory, který poskytuje jednotný kontaktní bod pro ekosystémy Red Hat běžící na platformě Azure.  Podobně jako jiné služby platformy Azure, které pracují s Red Hat Enterprise Linux, spadají řešení Azure VMware do cloudového přístupu a integrované podpory a Red Hat Enterprise Linux se podporuje pro provoz v rámci řešení Azure VMware v Azure.
+
+#### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>Je k dispozici VMware HCX Enterprise Edition, a pokud ano, jak spousta stojí?
+
+VMware HCX Enterprise Edition (EE) je k dispozici v rámci řešení Azure VMware jako funkce nebo služby ve *verzi Preview* . Protože řešení VMware HCX EE pro Azure VMware je ve verzi Preview, je to bezplatná funkce nebo služba a podléhá podmínkám a ujednáním služby ve verzi Preview. Jakmile se služba VMware HCX EE dostane do GA, dostanete 30denní oznámení o tom, že účtování přepíná. Službu můžete odpínat nebo odhlásit.
 
 #### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Jak Návody požádat o zvýšení kvóty hostitele pro řešení Azure VMware?
 

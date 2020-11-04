@@ -8,18 +8,18 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322166"
+ms.locfileid: "93349048"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
 Načtěte si Ubuntu 18,04 Data Science Virtual Machine a spusťte ho.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete vytvořit Data Science Virtual Machine 18,04 Ubuntu, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
 
@@ -121,12 +121,16 @@ Ubuntu DSVM spouští [JupyterHub](https://github.com/jupyterhub/jupyterhub), v�
 
    1. Z místního počítače otevřete webový prohlížeč a přejděte na https: \/ /Your-VM-IP: 8000 a nahraďte "Your-VM-IP" IP adresou, kterou jste si poznamenali dříve.
    1. Váš prohlížeč vám pravděpodobně znemožní otevřít stránku přímo a oznamuje vám, že došlo k chybě certifikátu. DSVM zajišťuje zabezpečení prostřednictvím certifikátu podepsaného svým držitelem. Většina prohlížečů vám po tomto upozornění umožní kliknout na. Mnoho prohlížečů bude nadále poskytovat určitý druh vizuálního upozornění na certifikát v rámci vaší webové relace.
+
+      >[!NOTE]
+      > Pokud se `ERR_EMPTY_RESPONSE` v prohlížeči zobrazí chybová zpráva, ujistěte se, že k počítači přistupujete explicitně pomocí protokolu *https* , a ne pomocí *protokolu HTTP* nebo pouze webové adresy. Pokud zadáte webovou adresu bez na `https://` adresní lince, bude se ve výchozím nastavení většina prohlížečů `http` zobrazovat a zobrazí se tato chyba.
+
    1. Zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače, a přihlaste se. 
 
       ![Zadejte Jupyter přihlášení.](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
->[!NOTE]
-> Pokud v této fázi obdržíte chybu 500, je pravděpodobně v uživatelském jménu použita velká písmena. Jedná se o známou interakci mezi Jupyter centrem a PAMAuthenticator, kterou používá. Pokud se zobrazí chyba "nelze se spojit s touto stránkou", je pravděpodobně nutné upravit oprávnění skupiny zabezpečení sítě. V Azure Portal vyhledejte prostředek skupiny zabezpečení sítě v rámci vaší skupiny prostředků. Pokud chcete získat přístup k JupyterHub z veřejného Internetu, musíte mít otevřený port 8000. (Obrázek ukazuje, že tento virtuální počítač je nakonfigurovaný pro přístup za běhu, což se důrazně doporučuje. Přečtěte si téma [zabezpečení portů pro správu pomocí přístupu za běhu](../../security-center/security-center-just-in-time.md).) ![Konfigurace skupiny zabezpečení sítě](./media/dsvm-ubuntu-intro/nsg-permissions.png)
+      >[!NOTE]
+      > Pokud v této fázi obdržíte chybu 500, je pravděpodobně v uživatelském jménu použita velká písmena. Jedná se o známou interakci mezi Jupyter centrem a PAMAuthenticator, kterou používá. Pokud se zobrazí chyba "nelze se spojit s touto stránkou", je pravděpodobně nutné upravit oprávnění skupiny zabezpečení sítě. V Azure Portal vyhledejte prostředek skupiny zabezpečení sítě v rámci vaší skupiny prostředků. Pokud chcete získat přístup k JupyterHub z veřejného Internetu, musíte mít otevřený port 8000. (Obrázek ukazuje, že tento virtuální počítač je nakonfigurovaný pro přístup za běhu, což se důrazně doporučuje. Přečtěte si téma [zabezpečení portů pro správu pomocí přístupu za běhu](../../security-center/security-center-just-in-time.md).) ![Konfigurace skupiny zabezpečení sítě](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Projděte si mnoho dostupných ukázkových poznámkových bloků.
 

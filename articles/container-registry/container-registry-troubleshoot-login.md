@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148448"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348895"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -77,10 +77,11 @@ Související odkazy:
 Ověřte platnost přihlašovacích údajů, které jste ve svém scénáři použili, nebo vám poskytl vlastník registru. Některé možné problémy:
 
 * Pokud používáte instanční objekt služby Active Directory, ujistěte se, že používáte správné přihlašovací údaje v tenantovi služby Active Directory:
-  * Uživatelské jméno – ID aplikace instančního objektu (označuje se také jako *ID klienta*)
-  * Heslo – hlavní heslo služby (označuje se taky jako *tajný klíč klienta*)
+  * Uživatelské jméno – ID aplikace instančního objektu (označuje se také jako *ID klienta* )
+  * Heslo – hlavní heslo služby (označuje se taky jako *tajný klíč klienta* )
 * Pokud k registru přistupujete pomocí služby Azure, jako je služba Azure Kubernetes nebo Azure DevOps, potvrďte konfiguraci registru pro vaši službu.
 * Pokud jste spustili `az acr login` s `--expose-token` možností, která umožňuje přihlášení do registru bez použití démona Docker, ujistěte se, že jste s uživatelským jménem ověřili `00000000-0000-0000-0000-000000000000` .
+* Pokud je váš registr nakonfigurovaný pro [anonymní přístup s přístupem k přístupu](container-registry-faq.md#how-do-i-enable-anonymous-pull-access), může anonymní přístup zabránit existujícím přihlašovacím údajům z doku uložených z předchozího přihlášení k dokovacímu zařízení. Spusťte `docker logout` před pokusem o anonymní operaci Pull v registru.
 
 Související odkazy:
 

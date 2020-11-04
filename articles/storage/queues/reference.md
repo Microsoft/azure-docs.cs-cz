@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ad975840a2eab0ca51dd0a219e5d86c1bd1835c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781613"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348861"
 ---
 # <a name="azure-queue-storage-reference"></a>Referenční informace ke službě Azure Queue Storage
 
@@ -23,7 +23,7 @@ Vyhledejte Reference k rozhraní API služby Azure Queue Storage, balíčky knih
 
 Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API .NET pro Azure Queue Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Obor názvů Azure. Storage. Queues](/dotnet/api/azure.storage.queues) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro .NET](./storage-quickstart-queues-dotnet.md) |
 | 11. x | [Obor názvů Microsoft. Azure. Storage. Queue](/dotnet/api/microsoft.azure.storage.queue) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/) | [Rychlý Start: použití sady Azure Storage SDK V11 pro .NET ke správě fronty](./storage-quickstart-queues-dotnet-legacy.md) |
@@ -48,7 +48,7 @@ V následující tabulce jsou uvedeny referenční dokumentace pro Azure Storage
 
 Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API Java služby Azure Queue Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Klientská knihovna Azure Storage Queue pro Java](/java/api/overview/azure/storage-queue-readme) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro jazyk Java](./storage-quickstart-queues-java.md) |
 | 8.x | [com. Microsoft. Azure. Storage. Queue](/java/api/com.microsoft.azure.storage.queue) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK](../blobs/storage-quickstart-blobs-java-legacy.md) |
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny referenční dokumentace k rozhraním API 
 
 Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API Pythonu pro službu Azure Queue Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Azure Storage klientské knihovny V12 pro Python](/azure/developer/python/sdk/storage/overview) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python](./storage-quickstart-queues-python.md) |
 | 2.x | [Azure Storage klientských knihoven v2 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2&preserve-view=true) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-queue/2.1.0/) | [Jak používat Azure Queue Storage v 2.1 z Pythonu](./storage-python-how-to-use-queue-storage.md) |
@@ -74,7 +74,7 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 
 Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API JavaScriptu pro Azure Queue Storage.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Klientská knihovna Azure Storage Queue pro JavaScript](/javascript/api/overview/azure/storage-queue-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue) | [Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro JavaScript](./storage-quickstart-queues-nodejs.md) |
 | 10. x | [@azure/storage-queue](/javascript/api/@azure/storage-queue/?view=azure-node-legacy&preserve-view=true) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-queue/v/10.3.0) | [Použití služby Azure Queue Service k vytváření a odstraňování front z Node.js](./storage-nodejs-how-to-use-queues.md) |
@@ -89,7 +89,7 @@ Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhran
 
 ### <a name="other-rest-reference"></a>Další odkazy REST
 
-- [REST API importu a exportu Azure Storage ](/rest/api/storageimportexport/) pomáhá spravovat úlohy importu a exportu pro přenos dat do nebo z úložiště objektů BLOB.
+- [REST API importu a exportu Azure Storage](/rest/api/storageimportexport/) pomáhá spravovat úlohy importu a exportu pro přenos dat do nebo z úložiště objektů BLOB.
 
 ## <a name="other-languages-and-platforms"></a>Jiné jazyky a platformy
 

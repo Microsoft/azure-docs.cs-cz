@@ -2,15 +2,15 @@
 title: Povolit Azure Automation Update Management z účtu Automation
 description: V tomto článku se dozvíte, jak povolit Update Management z účtu Automation.
 services: automation
-ms.date: 10/26/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669898"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348827"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Povolení Update Managementu z účtu Automation
 
@@ -19,15 +19,15 @@ Tento článek popisuje, jak můžete účet Automation použít k povolení fun
 > [!NOTE]
 > Při povolování Update Management jsou podporovány pouze určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](../index.yml) pro správu počítačů.
-* [Virtuální počítač Azure](../../virtual-machines/windows/quick-create-portal.md)nebo virtuální počítač nebo server zaregistrovaný u serverů s povoleným ARC (Preview). Virtuální počítače nebo servery mimo Azure musí mít nainstalovaného [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) pro Windows nebo Linux a vytváření sestav k pracovnímu prostoru, který je propojený s účtem Automation Update Management je povolený v. Doporučujeme nainstalovat agenta Log Analytics pro Windows nebo Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinované zásady pro [nasazení agenta Log Analytics pro počítače se systémem *Linux* nebo *Windows* Azure](../../governance/policy/samples/built-in-policies.md#monitoring) . Pokud plánujete taky monitorovat počítače s Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
+* [Virtuální počítač Azure](../../virtual-machines/windows/quick-create-portal.md)nebo virtuální počítač nebo server zaregistrovaný u serverů s podporou ARC. Virtuální počítače nebo servery mimo Azure musí mít nainstalovaného [agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) pro Windows nebo Linux a vytváření sestav k pracovnímu prostoru, který je propojený s účtem Automation Update Management je povolený v. Doporučujeme nainstalovat agenta Log Analytics pro Windows nebo Linux, a to tak, že nejprve připojíte počítač k [serverům s podporou ARC Azure](../../azure-arc/servers/overview.md)a pak pomocí Azure Policy přiřadíte předdefinovanou zásadu pro [nasazení agenta Log Analytics pro počítače se systémem *Linux* nebo *Windows* Azure](../../governance/policy/samples/built-in-policies.md#monitoring) . Případně, pokud plánujete monitorovat počítače pomocí Azure Monitor pro virtuální počítače, použijte raději iniciativu [Enable Azure monitor pro virtuální počítače](../../governance/policy/samples/built-in-initiatives.md#monitoring) .
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-update-management"></a>Povolení řešení Update Management
 
@@ -53,7 +53,7 @@ Počítače, které nejsou v Azure, se musí přidat ručně.
 
 1. Z účtu Automation v části **Správa aktualizací** vyberte **Správa aktualizací** .
 
-2. Vyberte **Přidat jiný počítač než Azure** . Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/platform/log-analytics-agent.md) , aby mohl počítač začít vytvářet sestavy pro Update Management. Pokud povolíte počítač, který je aktuálně spravovaný pomocí Operations Manager, nový agent se nevyžaduje. Informace o pracovním prostoru jsou přidány do konfigurace agenti.
+2. Vyberte **Přidat jiný počítač než Azure**. Tato akce otevře nové okno prohlížeče s [pokyny k instalaci a konfiguraci agenta Log Analytics pro systém Windows](../../azure-monitor/platform/log-analytics-agent.md) , aby mohl počítač začít vytvářet sestavy pro Update Management. Pokud povolíte počítač, který je aktuálně spravovaný pomocí Operations Manager, nový agent se nevyžaduje. Informace o pracovním prostoru jsou přidány do konfigurace agenti.
 
 ## <a name="enable-machines-in-the-workspace"></a>Povolit počítače v pracovním prostoru
 
@@ -61,13 +61,13 @@ Ručně nainstalované počítače nebo počítače, které už hlásí do vaše
 
 1. Z účtu Automation v části **Správa aktualizací** vyberte **Správa aktualizací** .
 
-2. Vyberte **spravovat počítače** . Tlačítko **spravovat počítače** může být zobrazeno šedě, pokud jste předtím zvolili možnost **Povolit na všech dostupných a budoucích počítačích** .
+2. Vyberte **spravovat počítače**. Tlačítko **spravovat počítače** může být zobrazeno šedě, pokud jste předtím zvolili možnost **Povolit na všech dostupných a budoucích počítačích** .
 
     ![Uložená hledání](media/enable-from-automation-account/managemachines.png)
 
 3. Pokud chcete povolit Update Management pro všechny dostupné počítače, které se hlásí do pracovního prostoru, vyberte **Povolit na všech dostupných počítačích** na stránce Správa počítačů. Tato akce zakáže ovládacímu prvku přidat počítače jednotlivě a přidá všechny počítače, které nastavují sestavy do pracovního prostoru, do uloženého vyhledávacího dotazu skupiny počítačů `MicrosoftDefaultComputerGroup` . Když se tato akce vybere, zakáže se možnost **spravovat počítače** .
 
-4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích** . Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a umožní, aby funkce zahrnovala všechny počítače s Azure a mimo Azure, které aktuálně nebo v budoucnu, nahlásily do pracovního prostoru. Když se tato akce vybere, zakáže možnost **spravovat počítače** trvale, protože není dostupná žádná konfigurace oboru.
+4. Pokud chcete funkci povolit pro všechny dostupné počítače a budoucí počítače, vyberte **Povolit na všech dostupných a budoucích počítačích**. Tato možnost odstraní uloženou konfiguraci hledání a rozsahu z pracovního prostoru a umožní, aby funkce zahrnovala všechny počítače s Azure a mimo Azure, které aktuálně nebo v budoucnu, nahlásily do pracovního prostoru. Když se tato akce vybere, zakáže možnost **spravovat počítače** trvale, protože není dostupná žádná konfigurace oboru.
 
     > [!NOTE]
     > Vzhledem k tomu, že tato možnost odstraní uloženou konfiguraci hledání a rozsahu v rámci Log Analytics, je důležité před výběrem této možnosti odebrat všechna zámky pro odstranění v pracovním prostoru Log Analytics. Pokud to neuděláte, možnost odebrání konfigurací neproběhne a je nutné je odebrat ručně.

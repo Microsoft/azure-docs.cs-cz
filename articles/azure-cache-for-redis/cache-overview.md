@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131628"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349099"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure cache pro Redis poskytuje úložiště dat v paměti založené na softwaru [Redis](https://redis.io/) . Redis vylepšuje výkon a škálovatelnost aplikace, která se používá v úložištích back-end dat. Může zpracovávat velké objemy žádostí o aplikace tím, že udržuje často používaná data v paměti serveru, na kterou je možné zapisovat a číst rychleji. Redis přináší pro moderní aplikace kritická řešení pro úložiště dat s nízkou latencí a vysokou propustností.
@@ -23,7 +23,7 @@ Mezipaměť Azure pro Redis se dá použít jako distribuovaná data nebo mezipa
 ## <a name="key-scenarios"></a>Klíčové scénáře
 Azure cache pro Redis vylepšuje výkon aplikace tím, že podporuje běžné vzory architektury aplikací. Mezi nejběžnější případy použití patří:
 
-| Vzor      | Description                                        |
+| Vzor      | Popis                                        |
 | ------------ | -------------------------------------------------- |
 | [Mezipaměť dat](cache-web-app-cache-aside-leaderboard.md) | Databáze jsou často příliš velké, aby se načetly přímo do mezipaměti. Je běžné použít model doplňování [mezipaměti](/azure/architecture/patterns/cache-aside) k načtení dat do mezipaměti, jak je potřeba. Když systém provede změny dat, může systém aktualizovat také mezipaměť, která je poté distribuována jiným klientům. Kromě toho může systém nastavit vypršení platnosti dat nebo použít zásadu vyřazení k aktivaci aktualizací dat do mezipaměti.|
 | [Mezipaměť obsahu](cache-aspnet-output-cache-provider.md) | Mnoho webových stránek se generuje ze šablon, které používají statický obsah, jako jsou záhlaví, zápatí a bannery. Tyto statické položky by se neměly často měnit. Použití mezipaměti v paměti poskytuje rychlý přístup ke statickému obsahu v porovnání s úložištěm dat back-endu. Tento model zkracuje dobu zpracování a zatížení serveru, což umožňuje webovým serverům rychlejší odezvu. Umožňuje snížit počet serverů potřebných ke zpracování zatížení. Azure cache pro Redis poskytuje poskytovateli výstupní mezipaměti Redis pro podporu tohoto vzoru s ASP.NET.|
@@ -35,17 +35,14 @@ Azure cache pro Redis vylepšuje výkon aplikace tím, že podporuje běžné vz
 
 Azure cache pro Redis podporuje OSS Redis verze 4. x a jako verzi Preview 6,0. Provedli jsme rozhodnutí přeskočit Redis 5,0, které vám umožní dostat se k nejnovější verzi. Dřív mezipaměť Azure pro Redis udržovala jenom jednu verzi Redis. V rámci tohoto postupu bude k dispozici novější hlavní upgrade pro vydání a alespoň jednu starší stabilní verzi. Můžete [zvolit, která verze](cache-how-to-version.md) bude pro vaši aplikaci fungovat nejlépe.
 
-> [!NOTE]
-> Redis 6,0 je teď ve verzi Preview – Pokud vás zajímáte, [kontaktujte nás](mailto:azurecache@microsoft.com) . Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="service-tiers"></a>Úrovně služby
 Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
-| Úroveň | Description |
+| Úroveň | Popis |
 |---|---|
 | Základní | Mezipaměť OSS Redis spuštěná na jednom virtuálním počítači. Tato úroveň nemá smlouvu o úrovni služeb (SLA) a je ideální pro vývoj a testování a méně důležité úlohy. |
-| Standardní | Mezipaměť OSS Redis spuštěná na dvou virtuálních počítačích v replikované konfiguraci. |
+| Standard | Mezipaměť OSS Redis spuštěná na dvou virtuálních počítačích v replikované konfiguraci. |
 | Premium | Vysoce výkonné Redis mezipaměti OSS. Tato úroveň nabízí vyšší propustnost, nižší latenci, lepší dostupnost a další funkce. Mezipaměti úrovně Premium se nasazují na výkonnější virtuální počítače ve srovnání se základními a standardními mezipaměťmi. |
 | Enterprise | Vysoce výkonné mezipaměti založené na Redis podnikovém softwaru Redis Labs. Tato vrstva podporuje Redis moduly, včetně RediSearch, RedisBloom a RedisTimeSeries. Kromě toho nabízí ještě vyšší dostupnost než úroveň Premium. |
 | Podnikový přehrávač | Nákladově efektivní velké mezipaměti využívající software Redis Labs "Redis Enterprise software. Tato vrstva rozšiřuje Redis úložiště dat do nestálé paměti, která je levnější než DRAM na virtuálním počítači. Snižuje celkové náklady na GB paměti. |
@@ -60,7 +57,7 @@ Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 | [Izolace sítě](cache-how-to-premium-vnet.md) |✔|✔|✔|✔|✔|
 | [Škálování](cache-how-to-scale.md) |✔|✔|✔|✔|✔|
 | [Zónová redundance](cache-how-to-zone-redundancy.md) |-|-|✔|✔|✔|
-| [Geografická replikace](cache-how-to-geo-replication.md) |-|-|✔|-|-|
+| [Geografickou replikací](cache-how-to-geo-replication.md) |-|-|✔|-|-|
 | [Trvalost dat](cache-how-to-premium-persistence.md) |-|-|✔|-|-|
 | [Cluster OSS](cache-how-to-premium-clustering.md) |-|-|✔|✔|✔|
 | [Moduly](https://redis.io/modules) |-|-|-|✔|-|
@@ -93,7 +90,7 @@ Podnikové úrovně spoléhají na Redis Enterprise, což je komerční verze Re
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření mezipaměti Azure pro instanci Redis](quickstart-create-redis.md)
-* [Vytvoření mezipaměti podnikové úrovně](quickstart-create-redis-enterprise.md)
+* [Vytvoření mezipaměti úrovně Enterprise](quickstart-create-redis-enterprise.md)
 * [Použití mezipaměti Azure pro Redis ve webové aplikaci v ASP.NET](cache-web-app-howto.md)
 * [Použití mezipaměti Azure pro Redis v .NET Core](cache-dotnet-core-quickstart.md)
 * [Použití mezipaměti Azure pro Redis v .NET Framework](cache-dotnet-how-to-use-azure-redis-cache.md)

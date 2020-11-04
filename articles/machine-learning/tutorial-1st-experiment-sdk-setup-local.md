@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2e01721b4b414455b47a394087192696e1ecb025
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892730"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349065"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí (část 1 ze 4)
 
@@ -34,9 +34,9 @@ V části 1 této série kurzů budete:
 > [!NOTE]
 > Tato série kurzů se zaměřuje na Azure Machine Learning koncepty *založené* na úlohách strojového učení v Pythonu, které jsou náročné na výpočetní výkon a/nebo vyžadují reprodukovatelnost. Pokud máte více zajímat se o průzkumné pracovní postup, můžete místo toho použít [Jupyter nebo RStudio na instanci služby compute Azure Machine Learning](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Zkuste [Azure Machine Learning](https://aka.ms/AMLFree).
 - Seznamte se s koncepty Pythonu a [Machine Learning](concept-azure-machine-learning-architecture.md). Mezi příklady patří prostředí, školení a bodování.
 - Místní vývojové prostředí, například Visual Studio Code, Jupyter nebo PyCharm.
 - Python (verze 3,5 až 3,7).
@@ -140,7 +140,9 @@ try:
     print('Found existing cluster, use it.')
 except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                           idle_seconds_before_scaledown=2400)
+                                                           idle_seconds_before_scaledown=2400,
+                                                           min_nodes=0,
+                                                           max_nodes=4)
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
 cpu_cluster.wait_for_completion(show_output=True)

@@ -3,12 +3,12 @@ title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542858"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348878"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
@@ -16,15 +16,19 @@ Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst info
  
 Další informace o vytváření zásad konfigurace hostů pro Linux najdete na stránce [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md) .
 
-Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující** .
+Při auditování Windows konfigurace hosta k vytvoření konfiguračního souboru využívá modul prostředků DSC ([Desired State Configuration](/powershell/scripting/dsc/overview/overview)). Konfigurace DSC definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
 Pomocí následujících akcí můžete vytvořit vlastní konfiguraci pro ověření stavu počítače s Azure nebo mimo Azure.
 
 > [!IMPORTANT]
+> Vlastní definice zásad s konfigurací hosta v prostředích Azure Government a Azure Čína jsou funkcí ve verzi Preview.
+>
 > Rozšíření konfigurace hosta se vyžaduje k provádění auditů na virtuálních počítačích Azure.
 > Pokud chcete nasadit rozšíření v celém počítači s Windows, přiřaďte následující definice zásad: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> Nepoužívejte tajné klíče ani důvěrné informace v balíčcích vlastního obsahu.
 
 ## <a name="install-the-powershell-module"></a>Instalace modulu PowerShellu
 
@@ -92,13 +96,13 @@ Parametry v Azure Policy, které předávají hodnoty přiřazení konfigurace h
 
 Funkce `Get-TargetResource` má zvláštní požadavky na konfiguraci hosta, která není potřebná pro konfiguraci požadovaného stavu Windows.
 
-- Vrácená zatřiďovací tabulka musí zahrnovat vlastnost s názvem **důvody** .
+- Vrácená zatřiďovací tabulka musí zahrnovat vlastnost s názvem **důvody**.
 - Vlastnost důvody musí být pole.
-- Každá položka v poli musí být zatřiďovací tabulka s klíči s názvem **Code** a **frází** .
+- Každá položka v poli musí být zatřiďovací tabulka s klíči s názvem **Code** a **frází**.
 
 Vlastnost důvody používá služba ke standardizaci způsobu, jakým jsou informace zobrazeny, když je počítač nekompatibilní. Jednotlivé položky si můžete představit z důvodů, proč prostředek není kompatibilní. Vlastnost je pole, protože prostředek může být nekompatibilní s více než jedním důvodem.
 
-Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **fráze** . **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se používá k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit, dokud bude výstup vrácen jako řetězcová hodnota pro vlastnost **fráze** .
+Služba očekává **kód** a **frázi** vlastností. Při vytváření vlastního prostředku nastavte text (obvykle STDOUT), který chcete zobrazit jako důvod, proč prostředek není kompatibilní jako hodnota **fráze**. **Kód** má specifické požadavky na formátování, takže hlášení může jasně zobrazit informace o prostředku, který se používá k provedení auditu. Toto řešení zajišťuje rozšiřitelnou konfiguraci hostů. Libovolný příkaz lze spustit, dokud bude výstup vrácen jako řetězcová hodnota pro vlastnost **fráze** .
 
 - **Code** (String): název prostředku, opakuje a pak krátký název bez mezer jako identifikátor z důvodu. Tyto tři hodnoty by měly být odděleny dvojtečkami bez mezer.
   - Příkladem může být `registry:registry:keynotpresent`
@@ -140,7 +144,7 @@ Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
 
-Vývojáři, kteří chtějí urychlit proces Začínáme a práci z ukázkového kódu, mohou nainstalovat projekt komunity s názvem **projekt konfigurace hosta** . Projekt nainstaluje šablonu pro modul PowerShellu pro [sádru](https://github.com/powershell/plaster) . Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu. Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
+Vývojáři, kteří chtějí urychlit proces Začínáme a práci z ukázkového kódu, mohou nainstalovat projekt komunity s názvem **projekt konfigurace hosta**. Projekt nainstaluje šablonu pro modul PowerShellu pro [sádru](https://github.com/powershell/plaster) . Tento nástroj lze použít k vytvoření uživatelského rozhraní projektu, včetně pracovní konfigurace a ukázkového prostředku, a sady testů [platformy pester](https://github.com/pester/pester) pro ověření projektu. Šablona obsahuje také Spouštěče úloh pro Visual Studio Code pro automatizaci vytváření a ověřování konfiguračního balíčku hosta. Další informace najdete v [projektu konfigurace hosta](https://github.com/microsoft/guestconfigurationproject)projektu GitHubu.
 
 Další informace o práci s konfiguracemi obecně naleznete v tématu [Write, Compile a Apply Configuration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
@@ -274,7 +278,7 @@ Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a 
 
 Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny. Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
 
-K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků** .
+K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -325,7 +329,7 @@ Příklad fragmentu definice zásady, která filtruje značky, je uveden níže.
 
 Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr** . Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a vytvoří požadované oddíly každého souboru používaného pro definici Azure Policy.
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a vytvoří požadované oddíly každého souboru používaného pro definici Azure Policy.
 
 Následující příklad vytvoří definici zásady pro audit služby, kde uživatel vybere ze seznamu v okamžiku přiřazení zásady.
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad
 
-Pokud chcete vydat aktualizaci zásady, existují dvě pole, která vyžadují pozornost.
+Pokud chcete vydat aktualizaci zásady, existují tři pole, která vyžadují pozornost.
 
-- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované. Vlastnost aktualizuje verzi přiřazení konfigurace hosta, aby agent rozpoznal aktualizovaný balíček.
+> [!NOTE]
+> `version`Vlastnost přiřazení konfigurace hosta má jenom balíčky, které hostuje Microsoft. Osvědčeným postupem pro správu verzí vlastního obsahu je zahrnutí verze do názvu souboru.
+
+- **Verze** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat číslo verze, které je větší než aktuálně publikované.
+- **contentUri** : když spustíte `New-GuestConfigurationPolicy` rutinu, musíte zadat identifikátor URI do umístění balíčku. Zahrnutí verze balíčku do názvu souboru zajistí, že se hodnota této vlastnosti změní v každé vydané verzi.
 - **contentHash** : Tato vlastnost je automaticky aktualizována `New-GuestConfigurationPolicy` rutinou. Jedná se o hodnotu hash balíčku, kterou vytvořil `New-GuestConfigurationPackage` . Vlastnost musí být správná pro `.zip` soubor, který publikujete. Pokud se aktualizuje jenom vlastnost **contentUri** , rozšíření nepřijme balíček obsahu.
 
 Nejjednodušším způsobem, jak vydat aktualizovaný balíček, je opakovat postup popsaný v tomto článku a zadat aktualizované číslo verze. Tento proces zaručuje, že všechny vlastnosti jsou správně aktualizované.

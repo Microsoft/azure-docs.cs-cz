@@ -3,7 +3,7 @@ title: Přehled služby Azure Media Services | Dokumentace Microsoftu
 description: Microsoft Azure Media Services je rozšiřitelná cloudová platforma, která vývojářům umožňuje vytvářet škálovatelné aplikace pro správu a doručování médií. Tento článek poskytuje přehled Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261151"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348740"
 ---
 # <a name="azure-media-services-overview"></a>Přehled služby Azure Media Services
 
@@ -86,13 +86,12 @@ Informace o konceptech Azure Media Services najdete v článku [Koncepty](media-
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Podporované scénáře a dostupnost služby Media Services v datových centrech
 
-Podrobné informace najdete v tématu [Scénáře a dostupnost funkcí a služeb AMS v datových centrech](scenarios-and-availability.md).
+Další informace o běžných scénářích Azure najdete v tématu věnovaném [scénářům AMS](scenarios-and-availability.md).
+Informace o regionální dostupnosti najdete v tématu [dostupnost služby Media Service](availability-regions-v-2.md).
 
 ## <a name="service-level-agreement-sla"></a>Smlouvy o úrovni služeb (SLA)
 
 Další informace najdete v článku [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/).
-
-Informace o dostupnosti v datových centrech najdete v části [Dostupnost](scenarios-and-availability.md#availability).
 
 ## <a name="support"></a>Podpora
 
