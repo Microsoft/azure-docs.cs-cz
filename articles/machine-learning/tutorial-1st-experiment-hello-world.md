@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895881"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322728"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
@@ -99,7 +99,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) se připojuje k vašemu pracovnímu prostoru Azure Machine Learning, abyste mohli komunikovat s prostředky Azure Machine Learning.
+      [Pracovní prostor](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) se připojuje k vašemu pracovnímu prostoru Azure Machine Learning, abyste mohli komunikovat s prostředky Azure Machine Learning.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Experimentování](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) nabízí jednoduchý způsob, jak uspořádat více spuštění pod jedním názvem. Později uvidíte, jak experimenty usnadňují porovnávání metrik mezi spoustami spuštění.
+      [Experimentování](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) nabízí jednoduchý způsob, jak uspořádat více spuštění pod jedním názvem. Později uvidíte, jak experimenty usnadňují porovnávání metrik mezi spoustami spuštění.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) zabalí váš `hello.py` kód a předá ho do vašeho pracovního prostoru. Jak název navrhuje, můžete tuto třídu použít ke _konfiguraci_ způsobu, jakým se má _skript_ _spouštět_ v Azure Machine Learning. Také určuje, na jaký cíl výpočtů se skript spustí. V tomto kódu je cílem výpočetní cluster, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) zabalí váš `hello.py` kód a předá ho do vašeho pracovního prostoru. Jak název navrhuje, můžete tuto třídu použít ke _konfiguraci_ způsobu, jakým se má _skript_ _spouštět_ v Azure Machine Learning. Také určuje, na jaký cíl výpočtů se skript spustí. V tomto kódu je cílem výpočetní cluster, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Odešle váš skript. Toto odeslání se nazývá [spuštění](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true). Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
+       Odešle váš skript. Toto odeslání se nazývá [spuštění](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py). Spuštění zapouzdřuje jedno spuštění kódu. Pomocí spuštění můžete monitorovat průběh skriptu, zachytit výstup, analyzovat výsledky, vizualizovat metriky a další.
    :::column-end:::
 :::row-end:::
 :::row:::

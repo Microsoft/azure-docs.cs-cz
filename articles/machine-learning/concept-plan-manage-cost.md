@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233744"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322986"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -53,11 +53,11 @@ Další informace najdete v tématu [Azure Machine Learning ceny](https://azure.
 
 ## <a name="get-cost-alerts"></a>Získat nákladové výstrahy
 
-Vytvářejte [rozpočty](../cost-management/tutorial-acm-create-budgets.md) , které budou spravovat náklady, a vytvářejte [výstrahy](../cost-management/cost-mgt-alerts-monitor-usage-spending.md) , které automaticky upozorňují na nepravidelnosti útraty a rizika přetrávit. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. Rozpočty a výstrahy ale můžou mít omezené funkce pro správu jednotlivých nákladů na službu Azure, protože jsou navržené tak, aby sledovaly náklady na vyšší úrovni.
+Vytvářejte [rozpočty](../cost-management-billing/costs/tutorial-acm-create-budgets.md) , které budou spravovat náklady, a vytvářejte [výstrahy](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md) , které automaticky upozorňují na nepravidelnosti útraty a rizika přetrávit. Upozornění jsou založena na porovnání útraty s rozpočtem a prahovými hodnotami nákladů. Rozpočty a výstrahy se vytvářejí pro předplatná Azure a skupiny prostředků, takže jsou užitečné v rámci celkové strategie monitorování nákladů. Rozpočty a výstrahy ale můžou mít omezené funkce pro správu jednotlivých nákladů na službu Azure, protože jsou navržené tak, aby sledovaly náklady na vyšší úrovni.
 
 ## <a name="monitor-costs"></a>Sledovat náklady
 
-Při používání prostředků s Azure Machine Learning se účtují náklady. Náklady na jednotku využívání prostředků Azure se liší podle časových intervalů (sekundy, minuty, hodiny a dny) nebo podle využití jednotek žádosti. Jakmile Azure Machine Learning začne, náklady budou účtovány. Tyto náklady si prohlédněte v podokně [Analýza nákladů](../cost-management/quick-acm-cost-analysis.md) v Azure Portal.
+Při používání prostředků s Azure Machine Learning se účtují náklady. Náklady na jednotku využívání prostředků Azure se liší podle časových intervalů (sekundy, minuty, hodiny a dny) nebo podle využití jednotek žádosti. Jakmile Azure Machine Learning začne, náklady budou účtovány. Tyto náklady si prohlédněte v podokně [Analýza nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md) v Azure Portal.
 
 Náklady můžete zobrazit v grafech a tabulkách v různých časových intervalech. Můžete také zobrazit náklady na rozpočty a předpokládané náklady. Přepnutím na delší zobrazení v průběhu času můžete identifikovat trendy útraty a zjistit, kde došlo k nadměrnému útratě. Pokud jste vytvořili rozpočty, přečtěte si téma kde byly překročeny.  
 
@@ -86,7 +86,7 @@ Můžete také nakonfigurovat, jak dlouho je uzel nečinný, než se horizontál
 + Pokud provedete méně iterativní experimenty, zkraťte tuto dobu na úsporu nákladů.
 + Pokud provádíte vysoce iterativní experimenty při vývoji a testování, možná budete muset čas prodloužit, abyste za každou změnu v školicím skriptu nebo prostředí nemuseli platit za konstantního škálování.
 
-Clustery AmlCompute se dají nakonfigurovat pro vaše měnící se požadavky na úlohy v Azure Portal pomocí [třídy AMLCOMPUTE SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true) [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)s [rozhraními REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
+Clustery AmlCompute se dají nakonfigurovat pro vaše měnící se požadavky na úlohy v Azure Portal pomocí [třídy AMLCOMPUTE SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)s [rozhraními REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

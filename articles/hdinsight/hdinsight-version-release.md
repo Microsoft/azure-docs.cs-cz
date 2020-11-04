@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749182"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322382"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -102,5 +102,9 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Průvodce migrací pro HBA](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
+* [Průvodce migrací z registru](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
+* [Průvodce migrací Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
+* [Příručka k migraci Spark](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
 * [Dokumentace ke službě Azure HDInsight](index.yml)
 * [Zpráva k vydání verze](hdinsight-release-notes.md)

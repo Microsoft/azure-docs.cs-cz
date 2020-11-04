@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: aa58ad09a6db212633e51b89c390ff0330943131
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: be625d99d1b57ff3c66528b8af6fa0273d013ebe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279840"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325468"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
-Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu SQL v Azure synapse, můžete si vybrat z široké škály špičkových nástrojů. Tento článek popisuje partnerské společnosti Microsoftu s oficiálními řešeními pro integraci dat, která podporují Azure synapse.
+Pokud chcete vytvořit řešení datového skladu pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics, můžete si vybrat z široké škály špičkových nástrojů. Tento článek popisuje partnerské společnosti Microsoftu s oficiálními řešeními pro integraci dat, která podporují Azure synapse.
 
 ## <a name="data-integration-partners"></a>Partneři pro integraci dat
 

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia'
-description: Pomocí postupu v této příručce vytvořte nový fond Apache Spark s využitím synapse studia.
+title: 'Rychlý Start: Vytvoření fondu Apache Spark bez serveru (Preview) pomocí synapse studia'
+description: Pomocí kroků v této příručce vytvořte Apache Spark fond bez serveru s využitím synapse studia.
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c497b9974ad2d6fdd9482ae673de5807669d8ff5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748287"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324182"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia
+# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru (Preview) pomocí synapse studia
 
 Azure synapse Analytics nabízí různé analytické moduly, které vám pomůžou ingestovat, transformovat, modelovat, analyzovat a obsluhovat vaše data. Fond Apache Spark nabízí Open Source výpočetní funkce pro velké objemy dat. Po vytvoření fondu Apache Spark ve vašem pracovním prostoru synapse se data dají načíst, namodelovat, zpracovávat a zpracovávat, abyste získali přehledy.  
 
@@ -41,13 +41,13 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 1. Přejděte do pracovního prostoru synapse, kde se vytvoří fond Apache Spark zadáním názvu služby (nebo názvu prostředku přímo) do panelu hledání.
 
     ![Azure Portal panel hledání s pracovními prostory synapse zadanými v.](media/quickstart-create-sql-pool/create-sql-pool-00a.png)
-1. V seznamu pracovních prostorů zadejte název (nebo část názvu) pracovního prostoru, který chcete otevřít. V tomto příkladu použijeme pracovní prostor s názvem **contosoanalytics** .
+1. V seznamu pracovních prostorů zadejte název (nebo část názvu) pracovního prostoru, který chcete otevřít. V tomto příkladu použijeme pracovní prostor s názvem **contosoanalytics**.
 
     ![Seznam pracovních prostorů synapse filtrovaných k zobrazení těch, které obsahují název contoso.](media/quickstart-create-sql-pool/create-sql-pool-00b.png)
 
 ## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio 
 
-V přehledu pracovního prostoru vyberte **Spustit synapse Studio** a otevřete tak umístění, kde se vytvoří fond Apache Spark. Zadejte název služby nebo název prostředku přímo do panelu hledání.
+V přehledu pracovního prostoru vyberte **adresu URL webu pracovního prostoru** a otevřete synapse Studio.
 
 ![Azure Portal synapse pracovní prostor – Přehled s zvýrazněnou možností spustit synapse Studio.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-20.png)
 
@@ -79,9 +79,9 @@ V přehledu pracovního prostoru vyberte **Spustit synapse Studio** a otevřete 
 
 1. Na další kartě (další nastavení) ponechte všechna nastavení výchozí.
 
-1. Nepřidáme teď žádné značky, takže vyberte **zkontrolovat + vytvořit** .
+1. Nepřidáme teď žádné značky, takže vyberte **zkontrolovat + vytvořit**.
 
-1. Na kartě **Revize + vytvořit** se ujistěte, že podrobnosti vypadají správně na základě dříve zadaného obsahu, a pak stiskněte **vytvořit** . 
+1. Na kartě **Revize + vytvořit** se ujistěte, že podrobnosti vypadají správně na základě dříve zadaného obsahu, a pak stiskněte **vytvořit**. 
 
     ![Vytvořit nový fond Apache Spark synapse Studio](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-26.png)
 
@@ -104,7 +104,7 @@ Pokud chcete fond Apache Spark odstranit, postupujte takto:
 
     ![Výpis fondů Apache Spark s vybraným nedávno vytvořeným fondem.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 
-1. Stiskněte klávesu **Delete** .
+1. Stiskněte klávesu **Delete**.
 1. Potvrďte odstranění a stiskněte tlačítko **Odstranit** .
 1. Po úspěšném dokončení procesu již nebude fond Apache Spark uveden v prostředcích pracovního prostoru. 
 

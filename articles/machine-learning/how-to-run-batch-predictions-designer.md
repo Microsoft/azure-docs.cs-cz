@@ -10,12 +10,12 @@ author: likebupt
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 21dad66670da7a538039ae795d6be87cc4dbce96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f070cfc1fd9b4326c5a80ce31f6263aadbe8e8bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883083"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325439"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Spuštění dávkového předpovědi pomocí návrháře Azure Machine Learning
 
@@ -29,9 +29,9 @@ V tomto postupu se naučíte, jak provádět následující úlohy:
 > * Využití koncového bodu kanálu
 > * Správa verzí koncových bodů
 
-Informace o tom, jak pomocí sady SDK nastavit služby vyhodnocování služby Batch, najdete v doprovodném [postupu](how-to-run-batch-predictions.md).
+Informace o tom, jak pomocí sady SDK nastavit služby vyhodnocování služby Batch, najdete v doprovodném [postupu](./tutorial-pipeline-batch-scoring-classification.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento postup předpokládá, že už máte školicí kanál. Úvod do návrháře s průvodcem najdete v [části první kurz návrháře](tutorial-designer-automobile-price-train-score.md). 
 
@@ -51,7 +51,7 @@ Aby bylo možné vytvořit kanál Inferencing, musí být váš školicí kanál
 
 Teď, když je kanál školení spuštěný, můžete vytvořit kanál odvození dávky.
 
-1. Vedle **Odeslat**, vyberte Nový rozevírací seznam **vytvořit odvození kanálu**.
+1. Vedle **Odeslat** , vyberte Nový rozevírací seznam **vytvořit odvození kanálu**.
 
 1. Vyberte **kanál odvození dávky**.
 
@@ -80,7 +80,7 @@ Teď jste připraveni nasadit kanál odvození. Tím se kanál nasadí a zpřís
 
 1. Vyberte tlačítko **Publikovat**.
 
-1. V dialogovém okně, které se zobrazí, rozbalte rozevírací seznam pro **PipelineEndpoint**a vyberte **Nový PipelineEndpoint**.
+1. V dialogovém okně, které se zobrazí, rozbalte rozevírací seznam pro **PipelineEndpoint** a vyberte **Nový PipelineEndpoint**.
 
 1. Zadejte název koncového bodu a volitelný popis.
 

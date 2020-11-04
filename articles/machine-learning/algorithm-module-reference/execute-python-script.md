@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092989"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323762"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -61,7 +61,7 @@ if spec is None:
 > Modul excute Python Script nepodporuje instalaci balíčků, které jsou závislé na dalších nativních knihovnách, a to pomocí příkazu "apt-get", jako je Java, PyODBC a atd. Důvodem je to, že se tento modul spouští v jednoduchém prostředí s předem nainstalovaným Pythonem a s oprávněními bez oprávnění správce.  
 
 ## <a name="upload-files"></a>Nahrání souborů
-Modul spuštění skriptu Python podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
+Modul spuštění skriptu Python podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-).
 
 Následující příklad ukazuje, jak nahrát soubor obrázku do modulu spouštění skriptu Pythonu:
 
@@ -110,17 +110,17 @@ Modul spuštění skriptu Pythonu obsahuje ukázkový kód Pythonu, který můž
 
 1. Přidejte modul **spuštění skriptu Pythonu** do vašeho kanálu.
 
-2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1** .
+2. Přidejte a připojte se k **DataSet1.** datových sad z návrháře, který chcete použít pro vstup. Odkazujte tuto datovou sadu ve skriptu Pythonu jako **DataFrame1**.
 
     Použití datové sady je volitelné. Použijte ho, pokud chcete generovat data pomocí Pythonu, nebo použijte kód Pythonu k importu dat přímo do modulu.
 
-    Tento modul podporuje přidání druhé datové sady na **Dataset2** . Odkaz na druhou datovou sadu ve skriptu Pythonu jako **DataFrame2** .
+    Tento modul podporuje přidání druhé datové sady na **Dataset2**. Odkaz na druhou datovou sadu ve skriptu Pythonu jako **DataFrame2**.
 
     Datové sady uložené v Azure Machine Learning se při načtení s tímto modulem automaticky převedou na datové rámce PANDAS.
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, připojte soubor zip, který obsahuje tyto vlastní prostředky, na port **sady skriptu** . Nebo pokud je váš skript větší než 16 KB, zabraňte **chybám, jako** je *příkazový řádek, vyšší než maximální počet 16597 znaků* . 
+4. Pokud chcete zahrnout nové balíčky nebo kód Pythonu, připojte soubor zip, který obsahuje tyto vlastní prostředky, na port **sady skriptu** . Nebo pokud je váš skript větší než 16 KB, zabraňte **chybám, jako** je *příkazový řádek, vyšší než maximální počet 16597 znaků*. 
 
     
     1. Vytvořte balíček skriptu a dalších vlastních prostředků do souboru ZIP.
@@ -315,4 +315,4 @@ Předinstalované balíčky jsou:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

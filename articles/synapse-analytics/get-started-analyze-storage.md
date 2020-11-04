@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: c4c7b8da659fa7fe8879ae92c4947b7f0867274c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2a22174fb23a4f0f7bebd58e276a6778e986ce9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173502"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322916"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>Analýza dat v účtu úložiště
 
@@ -46,7 +46,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. Přejít na **účty úložiště**  >  **MyWorkspace (Primary-contosolake)**.
 1. Vyberte možnost **Uživatelé (primární)**. Měla by se zobrazit složka **NYCTaxi** . Uvnitř byste měli vidět dvě složky s názvem **PassengerCountStats.csv** a **PassengerCountStats. Parquet**.
 1. Otevřete složku **PassengerCountStats. Parquet** . Uvnitř se zobrazí soubor Parquet s názvem, jako je `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` .
-1. Klikněte pravým tlačítkem na **. Parquet**a pak vyberte **Nový Poznámkový blok**. Vytvoří Poznámkový blok, který má podobné buňky:
+1. Klikněte pravým tlačítkem na **. Parquet** a pak vyberte **Nový Poznámkový blok**. Vytvoří Poznámkový blok, který má podobné buňky:
 
     ```py
     %%pyspark
@@ -65,7 +65,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
     ) AS [r];
     ```
 
-    V okně skriptu je pole **připojit k** **na vyžádání**nastaveno na hodnotu SQL.
+    V okně skript se pole **připojit k** nastaví na **fond SQL bez serveru**.
 
 1. Spusťte skript.
 

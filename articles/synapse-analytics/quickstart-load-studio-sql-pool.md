@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: hromadné načtení dat pomocí Synapseu Čt'
-description: Hromadné načítání dat v synapse SQL pomocí synapse studia
+title: 'Rychlý Start: hromadné načtení dat s vyhrazeným fondem SQL'
+description: Pomocí nástroje synapse Studio můžete hromadně načítat data do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
@@ -9,28 +9,29 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4dd0455c73395b3f3b883032d25160f0ea299cea
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2a4740699d70601591645aa0d3183531a6687be6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090620"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324931"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Rychlý Start: hromadné načítání pomocí synapse SQL
 
-Načítání dat nebylo nikdy snazší při použití Průvodce hromadným zatížením v nástroji synapse Studio. Tento průvodce vás provede vytvořením skriptu T-SQL s [příkazem Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro hromadné načtení dat. 
+Načítání dat nebylo nikdy snazší při použití Průvodce hromadným zatížením v nástroji synapse Studio. Tento průvodce vás provede vytvořením skriptu T-SQL s [příkazem Copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) pro hromadné načtení dat. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Vstupní body Průvodce hromadnou zátěží
 
-Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše tak, že kliknete pravým tlačítkem na následující oblasti v rámci synapse studia:
+Teď můžete snadno hromadně načítat data pomocí vyhrazených fondů SQL, a to jednoduše tak, že kliknete pravým tlačítkem na následující oblasti v rámci synapse studia:
 
 - Soubor nebo složka z účtu služby Azure Storage připojeného k vašemu pracovnímu prostoru ![ kliknutím pravým tlačítkem myši na soubor nebo složku z účtu úložiště](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2.
+- Tento průvodce vygeneruje příkaz COPY, který používá předávací službu Azure AD pro ověřování. Váš [uživatel Azure AD musí mít přístup](
+./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md#d-azure-active-directory-authentication) k pracovnímu prostoru, který má aspoň roli Azure data BLOB úložiště pro účet adls Gen2. 
 
-- Pokud vytváříte novou tabulku, do které se načítají, musíte mít požadovaná [oprávnění pro použití příkazu Kopírovat](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) a oprávnění k vytváření tabulek.
+- Pokud vytváříte novou tabulku, do které se načítají, musíte mít požadovaná [oprávnění pro použití příkazu Kopírovat](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) a oprávnění k vytváření tabulek.
 
 - Propojená služba přidružená k účtu adls Gen2 **musí mít přístup ke** / **složce** souborů, která se má načíst. Pokud má například mechanismus ověřování propojených služeb spravovanou identitu, musí mít spravovaná identita v pracovním prostoru aspoň oprávnění čtenář objektů BLOB úložiště v účtu úložiště.
 
@@ -46,7 +47,7 @@ Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše
 
 3. Můžete vybrat možnost Ukázková data, abyste viděli, jak příkaz COPY analyzuje soubor, abyste mohli nakonfigurovat nastavení formátu souboru. Vyberte možnost Ukázková data pokaždé, když změníte nastavení formátu souboru, abyste viděli, jak příkaz COPY bude analyzovat soubor s aktualizovaným nastavením: ![ Náhled dat](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
-4. Vyberte fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Vyberte vyhrazený fond SQL, který používáte k načtení, včetně toho, jestli bude zatížení pro existující tabulku nebo novou tabulku: ![ Výběr cílového umístění.](./sql/media/bulk-load/bulk-load-target-location.png)
 
 5. Vyberte konfigurovat mapování sloupce a ujistěte se, že máte vhodné mapování sloupce. Pro nové tabulky je konfigurace mapování sloupce kritická pro aktualizaci datových typů cílového sloupce: ![ Konfigurace mapování sloupce](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
@@ -54,5 +55,5 @@ Teď můžete snadno hromadně načíst data pomocí fondů SQL, a to jednoduše
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o možnostech kopírování najdete v článku o [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) .
-- Podívejte se na článek [Přehled načítání dat](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) .
+- Další informace o možnostech kopírování najdete v článku o [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) .
+- Podívejte se na článek [Přehled načítání dat](./sql-data-warehouse/design-elt-data-loading.md#what-is-elt) .

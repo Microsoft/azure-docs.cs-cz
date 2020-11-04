@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7ec62e4a6a864ca37011014341a2d059615873d5
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131934"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325423"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Přehled izolace a ochrany osobních údajů virtuální sítě
 
@@ -31,10 +31,10 @@ Tady jsou další články v této sérii:
 ## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti s následujícími tématy:
-+ [Virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-+ [Síť IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
++ [Virtuální sítě Azure](../virtual-network/virtual-networks-overview.md)
++ [Síť IP](../virtual-network/public-ip-addresses.md)
 + [Azure Private Link](how-to-configure-private-link.md)
-+ [Skupiny zabezpečení sítě (NSG)](../virtual-network/security-overview.md)
++ [Skupiny zabezpečení sítě (NSG)](../virtual-network/network-security-groups-overview.md)
 + [Síťové brány firewall](../firewall/overview.md)
 
 ## <a name="example-scenario"></a>Ukázkový scénář

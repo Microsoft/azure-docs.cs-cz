@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 228fa18fef0f681437fd2c0c87e3114d14977a49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e2f82ecd80579d19f3a8793db64f6b8a17a440
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462645"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323609"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -29,9 +29,9 @@ Otázka: Co se stalo s Azure SQL Data Warehouse?
 
 A. Azure synapse se Azure SQL Data Warehouse vyvinul. Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-Otázka: Co je synapse fond SQL?
+Otázka: Co je vyhrazený fond SQL?
 
-A. Synapse fond SQL odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Vyhrazený fond SQL odkazuje na funkce podnikových datových skladů, které jsou všeobecně dostupné v Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Návody začít s Azure synapse?
 
@@ -49,7 +49,7 @@ Otázka: Můžu se Power BI připojit?
 
 A. Ano! I když Power BI podporuje přímý dotaz s Azure synapse, není určený pro velký počet uživatelů nebo dat v reálném čase. Pokud chcete optimalizovat Power BI výkon, zvažte použití Power BI nad Azure Analysis Services nebo Analysis Service IaaS.
 
-Otázka: Co jsou synapse limity kapacity fondu SQL?
+Otázka: Jaké jsou omezení kapacity vyhrazených fondů SQL?
 
 A. Podívejte se na naše aktuální [omezení kapacity](sql-data-warehouse-service-capacity-limits.md) .
 
@@ -83,15 +83,15 @@ A. Je podporováno mnoho funkcí. Funkce, které nejsou podporované, najdete v 
 
 ## <a name="tooling-and-administration"></a>Nástroje a Správa
 
-Otázka: Podporuje synapse fond SQL rozhraní REST API?
+Otázka: Podporuje vyhrazený fond SQL rozhraní REST API?
 
-A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je k dispozici také v synapse fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
+A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je dostupná taky u vyhrazeného fondu SQL. Informace o rozhraní API najdete v rámci stránek nebo [databází](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)v dokumentaci k REST.
 
-## <a name="loading"></a>Načítá
+## <a name="loading"></a>Načítá se
 
 Otázka: Jaké ovladače klienta podporujete?
 
-A. Podporu ovladačů pro synapse fond SQL najdete na stránce [připojovací řetězce](../sql/connection-strings.md) .
+A. Podporu ovladačů vyhrazeného fondu SQL najdete na stránce [připojovací řetězce](../sql/connection-strings.md) .
 
 Otázka: Jaké formáty souborů podporuje základová databáze?
 
@@ -107,7 +107,7 @@ Odpověď: Ne, základová databáze komunikuje pouze s součástmi úložiště
 
 Otázka: je možné se připojit k HDI?
 
-Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do synapse fondu SQL. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů.
+Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do vyhrazeného fondu SQL. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů.
 
 ## <a name="next-steps"></a>Další kroky
 

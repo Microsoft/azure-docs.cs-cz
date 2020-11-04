@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131152"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324219"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Úroveň Premium pro Azure Data Lake Storage
 
@@ -103,3 +103,12 @@ Toto nastavení se zobrazuje na stránce **vytvořit účet úložiště** na n�
 |Austrálie – východ|LRS, ZRS|
 |Austrálie – jihovýchod|LRS|
 |Brazil South|LRS|
+
+## <a name="next-steps"></a>Další kroky
+
+Použijte úroveň Premium pro Azure Data Lake Storage s vaší oblíbenou analytickou službou, jako je Azure Databricks, Azure HDInsight a Azure synapse Analytics. 
+
+- [Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark](data-lake-storage-use-databricks-spark.md) 
+- [Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight aktuálně podporuje účet, který používá úroveň výkonu Premium, spolu s clusterem HBA, který má povolené urychlené zápisy.
+- [Rychlý Start: vytvoření pracovního prostoru synapse](../../synapse-analytics/quickstart-create-workspace.md)
+

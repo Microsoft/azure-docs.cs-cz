@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c02abf095beefdd131a5835d015175d56a63de47
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342331"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322815"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
 
@@ -98,7 +98,7 @@ K zodpovězení naší otázky jsme Eyeball 1,35 carats a nakreslili svislou č�
 ![Najít odpověď na modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Vytvoření intervalu spolehlivosti
-Je přirozenější, aby na tom, jak přesně je tato předpověď. Je vhodné zjistit, zda bude 1,35 kosočtverce kosočtverec velmi blízko $10 000 nebo vyšší nebo nižší. K tomuto obrázku nakreslíme obálku kolem regresní přímky, která obsahuje většinu teček. Tato obálka se označuje jako náš *interval spolehlivosti*: máme v podstatě jistotu, že ceny spadají do této obálky, protože v minulosti většina z nich. Můžeme vykreslit dvě další vodorovné čáry, ze kterých 1,35 kosočtverce řádek protíná horní a dolní část této obálky.
+Je přirozenější, aby na tom, jak přesně je tato předpověď. Je vhodné zjistit, zda bude 1,35 kosočtverce kosočtverec velmi blízko $10 000 nebo vyšší nebo nižší. K tomuto obrázku nakreslíme obálku kolem regresní přímky, která obsahuje většinu teček. Tato obálka se označuje jako náš *interval spolehlivosti* : máme v podstatě jistotu, že ceny spadají do této obálky, protože v minulosti většina z nich. Můžeme vykreslit dvě další vodorovné čáry, ze kterých 1,35 kosočtverce řádek protíná horní a dolní část této obálky.
 
 ![Interval spolehlivosti](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
@@ -109,7 +109,7 @@ Provedli jsme to, co se pro odborníky přes data vyplatilo, a my jsme ho práv�
 
 * Položili jsme otázku, že můžeme odpovědět na data.
 * Sestavili jsme *model* pomocí *lineární regrese* .
-* Provedli jsme *předpovědi*a dokončili jste *interval spolehlivosti* .
+* Provedli jsme *předpovědi* a dokončili jste *interval spolehlivosti* .
 
 A k tomu jsme nepoužili matematické ani počítače.
 
@@ -129,4 +129,4 @@ Nezapomeňte se podívat na další videa v oblasti "data vědy pro začátečn�
 
 ## <a name="next-steps"></a>Další kroky
 * [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
-* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)
+* [Seznámení s Machine Learningem Microsoft Azure](../overview-what-is-azure-ml.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: 9405eb01dbe2d7ea9d4a9e64bf7dd79ca356e9f5
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9abf5a17330566aee2414b8499f228d297880cbf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926984"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323786"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -30,11 +30,11 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 
 > [!TIP]
-> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) od EdX. 
+> Pokud s hodnocením modelu začínáte, doporučujeme, aby se série videí Dr. Stephen Elston jako součást [strojového učení](/archive/blogs/machinelearning/new-edx-course-data-science-machine-learning-essentials) od EdX. 
 
 
 ## <a name="how-to-use-evaluate-model"></a>Jak používat model vyhodnocení
-1. Připojte výstup skóre výsledné **sady** výsledků [modelu skóre](./score-model.md) nebo výstup výsledné sady [dat ke clusterům](./assign-data-to-clusters.md) k levému vstupnímu portu pro **vyhodnocení modelu** . 
+1. Připojte výstup skóre výsledné **sady** výsledků [modelu skóre](./score-model.md) nebo výstup výsledné sady [dat ke clusterům](./assign-data-to-clusters.md) k levému vstupnímu portu pro **vyhodnocení modelu**. 
     > [!NOTE] 
     > Pokud k výběru části vstupní datové sady používáte moduly, jako je "vybrat sloupce v sadě dat", zajistěte, aby byl pro výpočet metriky, jako je AUC, přesnost pro binární klasifikaci nebo detekci anomálií k dispozici sloupec s popiskem skóre
     > Pro výpočet metriky pro klasifikaci a regresi ve více třídách existuje skutečný sloupec popisku, sloupec označené skóre.
@@ -48,7 +48,7 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
     > + Pro úlohu více klasifikací musí mít datová sada, která se má vyhodnotit, jeden sloupec s názvem `Multi Class Scored Labels` , který představuje popisky skóre.
     > Pokud výstupy nadřazeného modulu tyto sloupce nemají, je nutné upravit podle výše uvedených požadavků.
 
-2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu** . Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
+2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
     > [!NOTE]
     > Typ algoritmu odkazuje na třídu "klasifikace dvou tříd", "klasifikace s více třídami", "regrese", "clusteringu" pod "Machine Learning algoritmy". 
@@ -142,4 +142,4 @@ Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

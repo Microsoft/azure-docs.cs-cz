@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3c1b61cb4f799b79ca00fc92ffadc2374a61c03
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: fb4c7f8ba49cf701ef13cb57ab2b323a94c928cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132461"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323822"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Připojení k synapse SQL pomocí Azure Data Studio (Preview)
 
@@ -28,13 +28,13 @@ ms.locfileid: "92132461"
 
 K připojení a dotazování SQL synapse v Azure synapse Analytics můžete použít [Azure Data Studio (Preview)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . 
 
-## <a name="connect"></a>Připojit
+## <a name="connect"></a>Připojení
 
 Pokud se chcete připojit k synapse SQL, otevřete Azure Data Studio a vyberte **nové připojení**.
 
 ![Otevřít Azure Data Studio](./media/get-started-azure-data-studio/1-start.png)
 
-Jako **Typ připojení**vyberte **Microsoft SQL Server** .
+Jako **Typ připojení** vyberte **Microsoft SQL Server** .
 
 Připojení vyžaduje následující parametry:
 
@@ -42,15 +42,15 @@ Připojení vyžaduje následující parametry:
 * **Databáze:** Název databáze
 
 > [!NOTE]
-> Pokud chcete použít **SQL na vyžádání (Preview)** , adresa URL by měla vypadat takto:
+> Chcete-li použít **fond SQL bez serveru (Preview)** , adresa URL by měla vypadat takto:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >
-> Pokud byste chtěli použít **fond SQL** , adresa URL by měla vypadat takto:
+> Pokud byste chtěli použít **vyhrazený fond SQL** , adresa URL by měla vypadat takto:
 >
 > - `<Azure Synapse workspace name>`. sql.azuresynapse.net
 
-Jako **typ ověřování**vyberte možnost **ověřování systému Windows**, **Azure Active Directory**nebo **přihlášení SQL** .
+Jako **typ ověřování** vyberte možnost **ověřování systému Windows** , **Azure Active Directory** nebo **přihlášení SQL** .
 
 Pokud chcete jako typ ověřování použít **přihlášení SQL** , přidejte parametry uživatelského jména a hesla:
 
@@ -61,11 +61,11 @@ Chcete-li použít Azure Active Directory, je nutné vybrat požadovaný typ ov�
 
 ![Ověřování AAD](./media/get-started-azure-data-studio/3-aad-auth.png)
 
-Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ověřování systému Windows**:
+Následující snímek obrazovky ukazuje **Podrobnosti o připojení** pro **ověřování systému Windows** :
 
 ![Ověřování systému Windows](./media/get-started-azure-data-studio/3-windows-auth.png)
 
-Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL**:
+Následující snímek obrazovky ukazuje **Podrobnosti připojení** pomocí **přihlášení SQL** :
 
 ![Přihlášení k SQL](./media/get-started-azure-data-studio/2-database-details.png)
 
@@ -77,7 +77,7 @@ Po připojení můžete dotazovat synapse SQL pomocí podporovaných příkazů 
 
 ![Nový dotaz](./media/get-started-azure-data-studio/5-new-query.png)
 
-Například můžete použít následující příkaz Transact-SQL k [dotazování souborů Parquet](query-parquet-files.md) pomocí SQL na vyžádání:
+Například můžete použít následující příkaz Transact-SQL k [dotazování souborů Parquet](query-parquet-files.md) pomocí fondu SQL bez serveru:
 
 ```sql
 SELECT COUNT(*)

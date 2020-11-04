@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 5256db4547f8c19960a6f470ce3c84b2eef25e24
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776608"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324685"
 ---
 # <a name="getting-started"></a>Začínáme
 
@@ -35,15 +35,15 @@ Cloudové Cognitive Services jsou inteligentní algoritmy hostované v Azure. Ty
 
 ### <a name="containerized-services-optional"></a>Kontejnerové služby (volitelné)
 
-Pokud vaše aplikace nebo úloha používá extrémně velké datové sady, vyžaduje privátní sítě nebo nemůže kontaktovat Cloud, nemusí být komunikace se službou Cloud Services možná. V takové situaci mají kontejnery Cognitive Services tyto výhody:
+Pokud vaše aplikace nebo úloha používá velké datové sady, vyžaduje privátní sítě nebo nemůže kontaktovat Cloud, nemusí být komunikace s Cloud Services možná. V takové situaci mají kontejnery Cognitive Services tyto výhody:
 
-* **Nízká konektivita**: Cognitive Services s využitím kontejnerů můžete nasadit v jakémkoli výpočetním prostředí, a to jak v cloudu, tak i na off. Pokud vaše aplikace nemůže kontaktovat Cloud, zvažte nasazení Cognitive Services kontejnerů ve vaší aplikaci.
+* **Nízká konektivita** : Cognitive Services s využitím kontejnerů můžete nasadit v jakémkoli výpočetním prostředí, a to jak v cloudu, tak i na off. Pokud vaše aplikace nemůže kontaktovat Cloud, zvažte nasazení Cognitive Services kontejnerů ve vaší aplikaci.
 
-* **Nízká latence**: vzhledem k tomu, že kontejnery služeb nevyžadují komunikaci s přenosovou cestou do cloudu nebo z něj, jsou odpovědi vraceny s mnohem nižší latencí.
+* **Nízká latence** : vzhledem k tomu, že kontejnery služeb nevyžadují komunikaci s přenosovou cestou do cloudu nebo z něj, jsou odpovědi vraceny s mnohem nižší latencí.
 
-* **Ochrana osobních údajů a zabezpečení dat**: do privátních sítí můžete nasazovat kontejnery služby, aby citlivá data nezůstala síť.
+* **Ochrana osobních údajů a zabezpečení dat** : do privátních sítí můžete nasazovat kontejnery služby, aby citlivá data nezůstala síť.
 
-* **Vysoká škálovatelnost**: kontejnerové služby nemají omezení přenosové rychlosti a spouštějí se na počítačích spravovaných uživatelem. Takže můžete škálovat Cognitive Services bez ukončení pro zpracování mnohem větších úloh.
+* **Vysoká škálovatelnost** : kontejnerové služby nemají omezení přenosové rychlosti a spouštějí se na počítačích spravovaných uživatelem. Takže můžete škálovat Cognitive Services bez ukončení pro zpracování mnohem větších úloh.
 
 Podle [této příručky](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) vytvořte službu pro vyvnímání z kontejneru.
 
@@ -70,7 +70,7 @@ Azure Databricks je analytická platforma založená na Apache Spark s nastaven�
 Volitelně můžete pomocí synapse Analytics vytvořit cluster Spark. Azure synapse Analytics přináší dohromady podnikové datové sklady a analýzy velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím škálovatelných nebo zřízených prostředků na vyžádání bez serveru. Pokud chcete začít používat synapse Analytics, postupujte takto:
 
 1. [Vytvořte pracovní prostor synapse (Preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Pomocí Azure Portal vytvořte nový fond Apache Spark (Preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Pomocí Azure Portal vytvořte nový fond Apache Spark bez serveru (Preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
 
 V synapse Analytics se ve výchozím nastavení nainstalují velké objemy dat pro Cognitive Services.
 
@@ -100,7 +100,7 @@ Nejprve můžeme vytvořit Poznámkový blok v Azure Databricks. Pro jiné posky
 
     Vyberte **Vytvořit**.
 
-1. Vložte tento fragment kódu níže do nového poznámkového bloku.
+1. Vložte tento fragment kódu do nového poznámkového bloku.
 
 ```python
 from mmlspark.cognitive import *

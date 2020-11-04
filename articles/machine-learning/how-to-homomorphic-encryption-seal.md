@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 21c57257f9ce5a33585f151d38c16736f94a166c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998689"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325512"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Nasazení šifrované webové služby Inferencing (Preview)
 
-Naučte se nasadit model klasifikace imagí jako šifrovanou webovou službu Inferencing v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI). Webová služba je image kontejneru Docker, která obsahuje logiku modelu a bodování.
+Naučte se nasadit model klasifikace imagí jako šifrovanou webovou službu Inferencing v [Azure Container Instances](../container-instances/index.yml) (ACI). Webová služba je image kontejneru Docker, která obsahuje logiku modelu a bodování.
 
 V této příručce použijete službu Azure Machine Learning k těmto akcím:
 
@@ -30,11 +30,11 @@ V této příručce použijete službu Azure Machine Learning k těmto akcím:
 > * Nastavit šifrované předpovědi
 > * Vyčištění prostředků
 
-ACI je skvělé řešení pro testování a porozumění pracovnímu postupu nasazení modelu. Pro škálovatelná produkční nasazení zvažte použití Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
+ACI je skvělé řešení pro testování a porozumění pracovnímu postupu nasazení modelu. Pro škálovatelná produkční nasazení zvažte použití Azure Kubernetes Service. Další informace naleznete v tématu [Jak nasadit a kde](./how-to-deploy-and-where.md).
 
 Metoda šifrování použitá v této ukázce je [homomorphic šifrování](https://github.com/Microsoft/SEAL#homomorphic-encryption). Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto průvodci se předpokládá, že máte v Azure Machine Learning zaregistrovaný model klasifikace imagí. Pokud ne, zaregistrujte model pomocí předvedeného [modelu](https://github.com/Azure/MachineLearningNotebooks/raw/master/tutorials/image-classification-mnist-data/sklearn_mnist_model.pkl) nebo si vytvořte vlastní tím, že zadáte [model klasifikace obrázků pomocí Azure Machine Learning kurzu](tutorial-train-models-with-aml.md).
 

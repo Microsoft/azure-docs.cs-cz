@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d34748a2b9f46bde187b4f003e210ffdaecd93e2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8888393cdbc738525b89ace1cf6f5864b7aa3b6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675688"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324810"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -26,14 +26,14 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
     | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Typický způsob, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. V konfiguraci spuštění můžete zadat školicí skript, cíl výpočtů a prostředí Azure ML a spustit školicí úlohu. |
-    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování** . Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
-    | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků** , které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení a spouštějí konfiguraci k výuce modelů. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle** . Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
+    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
+    | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků** , které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení a spouštějí konfiguraci k výuce modelů. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
 
 + Sada [sdk Azure Machine Learning pro r (Preview)](#r-sdk-preview): sada SDK pro jazyk r používá balíček reticulate k vytvoření vazby na sadu Azure Machine Learning SDK pro Python. To umožňuje přístup k základním objektům a metodám implementovaným v sadě Python SDK z jakéhokoli prostředí jazyka R.
 
 + **Návrhář** : Azure Machine Learning Designer poskytuje snadnou vstupní bod do strojového učení pro vytváření důkazů konceptů nebo pro uživatele s malým prostředím kódování. Umožňuje naučit modely pomocí webového uživatelského rozhraní přetažení. V rámci návrhu můžete použít kód Pythonu nebo modely výuky bez psaní kódu.
 
-+ **CLI** : rozhraní příkazového řádku Machine Learning poskytuje příkazy pro běžné úlohy s Azure Machine Learning a často se používá pro **skriptování a automatizaci úloh** . Když jste například vytvořili školicí skript nebo kanál, můžete použít rozhraní příkazového řádku ke spuštění školicího programu podle plánu nebo při aktualizaci datových souborů použitých pro školení. Pro školicí modely poskytuje příkazy, které odesílají školicí úlohy. Může odesílat úlohy pomocí konfigurací spuštění nebo kanálů.
++ **CLI** : rozhraní příkazového řádku Machine Learning poskytuje příkazy pro běžné úlohy s Azure Machine Learning a často se používá pro **skriptování a automatizaci úloh**. Když jste například vytvořili školicí skript nebo kanál, můžete použít rozhraní příkazového řádku ke spuštění školicího programu podle plánu nebo při aktualizaci datových souborů použitých pro školení. Pro školicí modely poskytuje příkazy, které odesílají školicí úlohy. Může odesílat úlohy pomocí konfigurací spuštění nebo kanálů.
 
 Každá z těchto metod školení může pro školení použít různé typy výpočetních prostředků. Souhrnně se tyto prostředky označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.
 
@@ -41,13 +41,13 @@ Každá z těchto metod školení může pro školení použít různé typy vý
 
 Sada SDK Azure Machine Learning pro Python umožňuje sestavovat a spouštět pracovní postupy strojového učení s Azure Machine Learning. Můžete komunikovat se službou z interaktivní relace Pythonu, poznámkových bloků Jupyter, Visual Studio Code nebo jiného integrovaného vývojového prostředí (IDE).
 
-* [Co je sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
-* [Instalace/aktualizace sady SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)
+* [Co je sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+* [Instalace/aktualizace sady SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
 * [Konfigurace vývojového prostředí pro Azure Machine Learning](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>Konfigurace spuštění
 
-Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true). Pak se použije konfigurace spuštění skriptu spolu se školicími skripty k výuce modelu na výpočetním cíli.
+Úlohu obecného školení s Azure Machine Learning lze definovat pomocí [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py). Pak se použije konfigurace spuštění skriptu spolu se školicími skripty k výuce modelu na výpočetním cíli.
 
 Můžete začít s konfigurací spuštění pro místní počítač a pak v případě potřeby přejít na jeden pro cloudový cíl výpočtů. Když měníte cíl výpočtů, změníte jenom konfiguraci spuštění, kterou použijete. Spuštění také zaznamená informace o úloze školení, jako jsou vstupy, výstupy a protokoly.
 
@@ -90,8 +90,8 @@ Kanály strojového učení můžou používat dřív uvedené metody školení.
 1. Sestavování nebo stahování souboru Dockerfile do výpočetního uzlu 
     1. Systém vypočítá hodnotu hash: 
         - Základní obrázek 
-        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
-        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+        - Vlastní kroky Docker (viz [nasazení modelu pomocí vlastního Docker Base image](./how-to-deploy-custom-docker-image.md))
+        - Definice conda YAML (viz téma [vytvoření & použití softwarových prostředí v Azure Machine Learning](./how-to-use-environments.md))
     1. Systém používá tuto hodnotu hash jako klíč při vyhledávání Azure Container Registry pracovního prostoru (ACR).
     1. Pokud se nenajde, vyhledá shodu v globálním ACR
     1. Pokud není nalezen, systém vytvoří novou bitovou kopii (která bude uložena do mezipaměti a bude registrována v pracovním prostoru ACR).
@@ -101,7 +101,7 @@ Kanály strojového učení můžou používat dřív uvedené metody školení.
 1. Ukládání protokolů, souborů modelů a dalších souborů zapsaných do `./outputs` účtu úložiště přidruženého k pracovnímu prostoru
 1. Snížení kapacity výpočetních prostředků, včetně odebrání dočasného úložiště 
 
-Pokud se rozhodnete, že budete na svém místním počítači ("konfigurovat jako místní běh"), nemusíte používat Docker. Pokud si zvolíte (příklad najdete v části [Konfigurace kanálu ml](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) ), můžete použít Docker lokálně.
+Pokud se rozhodnete, že budete na svém místním počítači ("konfigurovat jako místní běh"), nemusíte používat Docker. Pokud si zvolíte (příklad najdete v části [Konfigurace kanálu ml](./how-to-debug-pipelines.md) ), můžete použít Docker lokálně.
 
 ## <a name="r-sdk-preview"></a>R SDK (Preview)
 

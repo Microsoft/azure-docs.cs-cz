@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6b453b11c892b5d81c41cac9451b07be69aa4d3
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325337"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí pro odvozování služby Azure Machine Learning s využitím virtuálních sítí
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak zabezpečit následující Inferencing prostř
     - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
     - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
 
-    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
+    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](../role-based-access-control/built-in-roles.md#networking) .
 
 <a id="aksvnet"></a>
 
@@ -86,7 +86,7 @@ Pokud chcete do svého pracovního prostoru přidat AKS ve virtuální síti, po
     Pokud chcete najít IP adresu koncového bodu bodování, podívejte se na identifikátor URI pro vyhodnocování nasazené služby. Informace o zobrazení identifikátoru URI pro vyhodnocování najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md#connection-information).
 
    > [!IMPORTANT]
-   > Ponechte výchozí odchozí pravidla pro NSG. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+   > Ponechte výchozí odchozí pravidla pro NSG. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](../virtual-network/network-security-groups-overview.md#default-security-rules).
 
    [![Příchozí pravidlo zabezpečení](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
@@ -170,7 +170,7 @@ Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k
     ```azurecli-interactive
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
-Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
+Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](../aks/internal-lb.md).
 
 #### <a name="enable-private-load-balancer"></a>Povolit privátní Nástroj pro vyrovnávání zatížení
 
@@ -220,7 +220,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 > [!IMPORTANT]
 > Pomocí rozhraní příkazového řádku můžete vytvořit cluster AKS s interním nástrojem pro vyrovnávání zatížení. Neexistuje žádný příkaz AZ ml pro upgrade stávajícího clusteru tak, aby používal interní nástroj pro vyrovnávání zatížení.
 
-Další informace najdete v tématu [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
+Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
 ---
 
@@ -261,7 +261,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
     > [!IMPORTANT]
     > Při povolování delegování použijte `Microsoft.ContainerInstance/containerGroups` jako hodnotu __pro podsíť delegáta na službu__ .
 
-2. Nasaďte model pomocí [AciWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
+2. Nasaďte model pomocí [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
 ## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Omezení odchozího připojení z virtuální sítě
 

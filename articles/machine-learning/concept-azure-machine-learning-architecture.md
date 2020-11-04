@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96263b5d40d4f6a4904a6da3d40ad98ac81f030
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276080"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322303"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -36,7 +36,7 @@ Pracovní prostor je centralizované místo pro:
   * [Kanály](#ml-pipelines)
   * [Datové sady](#datasets-and-datastores)
   * [Modely](#models)
-  * [Koncové body](#endpoints)
+  * [Bod](#endpoints)
 
 Pracovní prostor obsahuje další prostředky Azure, které používá pracovní prostor:
 
@@ -53,9 +53,9 @@ Pracovní prostor můžete sdílet s ostatními.
 
 Azure Machine Learning zavádí dva plně spravované cloudové virtuální počítače, které jsou nakonfigurované pro úlohy strojového učení:
 
-* <a name="compute-instance"></a>**Instance COMPUTE**: výpočetní instance je virtuální počítač, který obsahuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Primární použití výpočetní instance je pro vaši vývojovou pracovní stanici.  Můžete začít používat ukázkové poznámkové bloky bez nutnosti instalace. Výpočetní instanci lze také použít jako cíl výpočtů pro školení a Inferencing úlohy.
+* <a name="compute-instance"></a>**Instance COMPUTE** : výpočetní instance je virtuální počítač, který obsahuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Primární použití výpočetní instance je pro vaši vývojovou pracovní stanici.  Můžete začít používat ukázkové poznámkové bloky bez nutnosti instalace. Výpočetní instanci lze také použít jako cíl výpočtů pro školení a Inferencing úlohy.
 
-* **Výpočetní clustery**: výpočetní clustery jsou cluster virtuálních počítačů s možnostmi škálování na více uzlů. Výpočetní clustery jsou lépe vhodné pro výpočetní cíle pro velké úlohy a produkci.  Při odeslání úlohy se cluster automaticky škáluje.  Použijte jako školicí cíl výpočetní služby nebo pro nasazení pro vývoj a testování.
+* **Výpočetní clustery** : výpočetní clustery jsou cluster virtuálních počítačů s možnostmi škálování na více uzlů. Výpočetní clustery jsou lépe vhodné pro výpočetní cíle pro velké úlohy a produkci.  Při odeslání úlohy se cluster automaticky škáluje.  Použijte jako školicí cíl výpočetní služby nebo pro nasazení pro vývoj a testování.
 
 Další informace o školicích cílech výpočtů najdete v tématu [školení výpočetních cílů](concept-compute-target.md#train).  Další informace o výpočetních cílech nasazení najdete v tématu [cíle nasazení](concept-compute-target.md#deploy).
 
@@ -102,7 +102,7 @@ Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění m
 
 [Pracovní prostor](#workspace)  >  [Experimenty](#experiments)  >  [Spustit příkaz](#runs)  >  **Konfigurace spuštění**
 
-Konfigurace spuštění definuje, jak by se měl skript spustit v zadaném výpočetním cíli. Pomocí konfigurace můžete zadat skript, cíl výpočtů a prostředí Azure ML, na kterém budou spouštěny všechny distribuované konfigurace specifické pro danou úlohu a některé další vlastnosti. Další informace o kompletní sadě konfigurovatelných možností pro spuštění najdete v tématu [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+Konfigurace spuštění definuje, jak by se měl skript spustit v zadaném výpočetním cíli. Pomocí konfigurace můžete zadat skript, cíl výpočtů a prostředí Azure ML, na kterém budou spouštěny všechny distribuované konfigurace specifické pro danou úlohu a některé další vlastnosti. Další informace o kompletní sadě konfigurovatelných možností pro spuštění najdete v tématu [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
 
 Konfigurace spuštění může být trvalá do souboru v adresáři, který obsahuje školicí skript.   Nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
 
@@ -204,7 +204,7 @@ Pokud jste povolili monitorování, Azure shromáždí data telemetrie z modelu 
 Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízení, které ho hostuje. 
 ## <a name="automation"></a>Automation
 
-### <a name="azure-machine-learning-cli"></a>Azure Machine Learning CLI 
+### <a name="azure-machine-learning-cli"></a>Rozhraní CLI služby Azure Machine Learning 
 
 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) je rozšíření Azure CLI, rozhraní příkazového řádku pro více platforem pro platformu Azure. Toto rozšíření poskytuje příkazy pro automatizaci aktivit strojového učení.
 
@@ -233,10 +233,10 @@ Nástroj Studio také umožňuje přístup k interaktivním nástrojům, které 
 > Nástroje označené (Preview) jsou momentálně ve verzi Public Preview.
 > Verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-+  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
++  Spolupracovat se službou v jakémkoli prostředí Pythonu s [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 + Interakci se službou v jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (Preview).
 + Použijte [návrháře Azure Machine Learning](concept-designer.md) k provedení kroků pracovního postupu bez psaní kódu. 
-+ Pro automatizaci použijte [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) .
++ Pro automatizaci použijte [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) .
 + [Mnohé modely řešení](https://aka.ms/many-models) (Preview) jsou sestavené na Azure Machine Learning a umožňují výuku, provozování a správu stovek nebo dokonce tisíců modelů strojového učení.
 
 ## <a name="next-steps"></a>Další kroky

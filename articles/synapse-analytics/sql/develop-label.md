@@ -11,21 +11,23 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289068"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324457"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Použití popisků dotazů v synapse SQL
+
 V tomto článku jsou uvedené základní tipy pro používání popisků dotazů v synapse SQL.
 
 > [!NOTE]
-> SQL na vyžádání (Preview) nepodporuje dotazy na označování.
+> Fond SQL bez serveru (Preview) nepodporuje dotazy na označování.
 
 ## <a name="what-are-query-labels"></a>Co jsou popisky dotazů
-Fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
+
+Vyhrazený fond SQL podporuje koncept nazvaný popisky dotazů. Než se pustíte do jakékoli hloubky, Podívejme se na příklad:
 
 ```sql
 SELECT *

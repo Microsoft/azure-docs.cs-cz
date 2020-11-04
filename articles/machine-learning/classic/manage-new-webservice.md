@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37f10cc8eb3d606d99eb5b3f821a486e9e4ea2fe
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322345"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Správa webové služby pomocí portálu Web Services Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Pomocí portálu Microsoft Azure Machine Learning Web Services můžete spravovat Machine Learning nové a klasické webové služby. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.
@@ -155,5 +155,3 @@ Můžete aktualizovat tyto vlastnosti:
 * **Popis** umožňuje zadat popis webové služby. Popis je povinné pole.
 * **Protokolování** umožňuje povolit nebo zakázat protokolování chyb u koncového bodu. Další informace o protokolování najdete v tématu Povolení [protokolování pro Machine Learning webové služby](web-services-logging.md).
 * **Možnost Povolit ukázková data** vám umožní poskytnout ukázková data, která můžete použít k otestování služby Request-Response. Pokud jste vytvořili webovou službu v Machine Learning Studio (Classic), budou se ukázková data pořízena z dat, která jste použili pro výuku modelu. Pokud jste službu vytvořili programově, data jsou přijímána z ukázkových dat, která jste zadali jako součást balíčku JSON.
-
-

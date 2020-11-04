@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: edd2b3e02c1a768b1f18a62faaf9b59539b92774
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: be8d6ca79a43ddd2bd709390dd476cb9dcfa7b29
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739146"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323950"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Referenční informace k datům monitorování Azure Machine Learning
 
@@ -22,7 +22,7 @@ Seznamte se s daty a prostředky shromažďovanými nástrojem Azure Monitor z p
 
 ## <a name="metrics"></a>Metriky
 
-V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](/azure/azure-monitor/platform/metrics-supported#microsoftmachinelearningservicesworkspaces).
+V této části jsou uvedené všechny automaticky shromážděné metriky platforem pro Azure Machine Learning. Poskytovatel prostředků pro tyto metriky je [Microsoft. MachineLearningServices/Workspaces](../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces).
 
 **Model**
 
@@ -73,7 +73,7 @@ Informace o spuštěných školicích kurzech.
 
 ## <a name="metric-dimensions"></a>Dimenze metriky
 
-Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Další informace o tom, jaké dimenze metriky jsou, najdete v tématu multidimenzionální [metriky](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 Azure Machine Learning má k jeho metrikám přidružené následující dimenze.
 
@@ -87,7 +87,7 @@ Azure Machine Learning má k jeho metrikám přidružené následující dimenze
 | NodeId | ID uzlu, který byl vytvořen v případě běhu úlohy. K dispozici pouze pro CpuUtilization a GpuUtilization. |
 | RunId | ID běhu/úlohy K dispozici pouze pro CpuUtilization a GpuUtilization. |
 | ComputeType | Typ výpočtu, který se používá. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
-| PipelineStepType | Typ [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) použitý v běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
+| PipelineStepType | Typ [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) použitý v běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 | PublishedPipelineId | ID publikovaného kanálu používaného v běhu K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 | RunType | Typ běhu. K dispozici pouze pro dokončená spuštění, neúspěšná spuštění a spuštěná spuštění. |
 
@@ -116,7 +116,7 @@ V následující tabulce jsou uvedeny operace týkající se Azure Machine Learn
 
 V této části jsou uvedené typy protokolů prostředků, které můžete shromažďovat pro Azure Machine Learning pracovní prostor.
 
-Poskytovatel prostředků a typ: [Microsoft. MachineLearningServices/Workspace](/azure/azure-monitor/platform/resource-logs-categories#microsoftmachinelearningservicesworkspaces).
+Poskytovatel prostředků a typ: [Microsoft. MachineLearningServices/Workspace](../azure-monitor/platform/resource-logs-categories.md#microsoftmachinelearningservicesworkspaces).
 
 | Kategorie | Zobrazovaný název |
 | ----- | ----- |
@@ -228,7 +228,7 @@ Následující schémata používá Azure Machine Learning
 | TotalE2ETimeInSeconds | Celkový čas aktivního uzlu |
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - Popis Azure Machine Learning monitorování najdete v tématu [monitorování Azure Machine Learning](monitor-azure-machine-learning.md) .
-- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) .
+- Podrobnosti o monitorování prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) .

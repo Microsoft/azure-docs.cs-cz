@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791320"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325012"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -83,7 +83,7 @@ Pro Azure SQL Database funkce pravidla virtuální sítě má následující ome
 
 - V bráně firewall se rozsahy IP adres vztahují na následující síťové položky, ale pravidla virtuální sítě ne:
   - [Virtuální privátní síť (VPN) typu Site-to-Site (S2S)][vpn-gateway-indexmd-608y]
-  - Místně prostřednictvím [ExpressRoute][expressroute-indexmd-744v]
+  - Místně prostřednictvím [ExpressRoute](../../expressroute/index.yml)
 
 ### <a name="considerations-when-using-service-endpoints"></a>Pokyny k použití koncových bodů služby
 
@@ -136,7 +136,7 @@ Základ a příkaz COPY se běžně používá k načtení dat do služby Azure 
    > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](../../storage/common/storage-account-upgrade.md).
    > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role** . Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem služby Azure synapse Analytics, kterou jste zaregistrovali v Azure Active Directory (AAD) jako v kroku #1.
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. Přiřaďte roli Azure **Přispěvatel dat objektů BLOB úložiště** k serveru, který je hostitelem služby Azure synapse Analytics, kterou jste zaregistrovali v Azure Active Directory (AAD) jako v kroku #1.
 
    > [!NOTE]
    > Tento krok můžou provést jenom členové s oprávněním vlastníka v účtu úložiště. Informace o různých předdefinovaných rolích Azure najdete v tomto [Průvodci](../../role-based-access-control/built-in-roles.md).
@@ -210,7 +210,7 @@ Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě* , jak je u
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portál může vytvořit pravidlo virtuální sítě
 
-Tato část ukazuje, jak můžete pomocí [Azure Portal][http-azure-portal-link-ref-477t] vytvořit *pravidlo virtuální sítě* v databázi nástroje v Azure SQL Database. Pravidlo instruuje vaši databázi, aby přijímala komunikaci z konkrétní podsítě, která byla označena jako *koncový bod služby Virtual Network* .
+Tato část ukazuje, jak můžete pomocí [Azure Portal][http-azure-portal-link-ref-477t] vytvořit *pravidlo virtuální sítě* v databázi nástroje v Azure SQL Database. Pravidlo instruuje vaši databázi, aby přijímala komunikaci z konkrétní podsítě, která byla označena jako *koncový bod služby Virtual Network*.
 
 > [!NOTE]
 > Pokud máte v úmyslu přidat koncový bod služby pro pravidla brány firewall virtuální sítě vašeho serveru, zajistěte, aby byla pro podsíť zapnutá koncová bodu služby.
@@ -231,16 +231,16 @@ Rutiny PowerShellu pro akce virtuální sítě SQL volají interně volání roz
 
 Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *typu* koncového bodu služby, který je relevantní pro Azure SQL Database.
 
-- Odpovídajícím názvem typu koncového bodu je **Microsoft. SQL** .
+- Odpovídajícím názvem typu koncového bodu je **Microsoft. SQL**.
 - Pokud vaše podsíť nemusí být označená názvem typu, přečtěte si téma [ověření, že je podsíť koncovým bodem][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
-1. Přihlaste se k webu [Azure Portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se k [portálu Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě** .
+2. Vyhledejte a vyberte **SQL servery** a pak vyberte svůj server. V části **zabezpečení** vyberte možnost **brány firewall a virtuální sítě**.
 
 3. Nastavte řízení **Povolení přístupu ke službám Azure** na vypnuto.
 
@@ -255,7 +255,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 
     > [!TIP]
     > Je nutné zadat správnou **předponu adresy** pro vaši podsíť. Tuto hodnotu můžete najít na portálu.
-    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuálních sítí** . Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě** . Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
+    > Přejděte na **všechny prostředky** &gt; **všechny typy** &gt; **virtuálních sítí**. Filtr zobrazuje vaše virtuální sítě. Klikněte na svou virtuální síť a potom klikněte na **podsítě**. Sloupec **Rozsah adres** obsahuje předponu adresy, kterou potřebujete.
 
     ![Vyplňte pole pro nové pravidlo.][image-portal-firewall-create-update-vnet-rule-20-png]
 

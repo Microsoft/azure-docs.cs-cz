@@ -1,6 +1,6 @@
 ---
-title: Jak používat OPENROWSET na vyžádání SQL (Preview)
-description: Tento článek popisuje syntaxi OPENROWSET v SQL na vyžádání (Preview) a vysvětluje, jak používat argumenty.
+title: Použití funkce OPENROWSET ve fondu SQL bez serveru (Preview)
+description: Tento článek popisuje syntaxi OPENROWSET ve fondu SQL bez serveru (Preview) a vysvětluje, jak používat argumenty.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ef09fd81aaeca92e87be2a0fddbc9be16ebac1d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242037"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324404"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
 
-`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET` funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku SQL na vyžádání (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
+`OPENROWSET(BULK...)`Funkce umožňuje přístup k souborům v Azure Storage. `OPENROWSET` funkce přečte obsah vzdáleného zdroje dat (například soubor) a vrátí obsah jako sadu řádků. V rámci prostředku fondu SQL bez serveru (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
 
 Na `OPENROWSET` funkci lze odkazovat v `FROM` klauzuli dotazu, jako by šlo o název tabulky `OPENROWSET` . Podporuje hromadné operace prostřednictvím integrovaného HROMADNÉho poskytovatele, který umožňuje číst data ze souboru a vracet je jako sadu řádků.
 
@@ -131,12 +131,12 @@ Unstructured_data_path, která vytváří cestu k datům, může být absolutní
 Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population* :  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Pokud zadáte unstructured_data_path jako složku, dotaz na vyžádání SQL načte soubory z této složky. 
+Pokud zadáte unstructured_data_path jako složku, dotaz na fond SQL bez serveru načte soubory z této složky. 
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Na rozdíl od Hadoop a báze SQL na vyžádání vrátí také soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrací podsložky. I na rozdíl od Hadoop a báze SQL bez serveru vrátí soubory, pro které název souboru začíná podtržením (_) nebo tečku (.).
 
-Pokud se v následujícím příkladu unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz SQL na vyžádání vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
+V následujícím příkladu, pokud unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz fondu SQL bez serveru vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-openrowset/folder-traversal.png)
 

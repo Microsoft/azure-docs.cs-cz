@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 tags: connectors
-ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823618"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324236"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -41,6 +41,8 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 
 ## <a name="limits"></a>Omezení
 
+* Konektor SFTP-SSH podporuje buď ověřování privátního klíče, nebo ověřování hesla, nikoli obojí.
+
 * Protokol SFTP – akce SSH, které podporují [dělení na bloky dat](../logic-apps/logic-apps-handle-large-messages.md) , můžou zpracovávat soubory o velikosti až 1 GB, zatímco akce SFTP-SSH, které nepodporují dělení na bloky dat, můžou zpracovávat soubory až do 50 MB. I když je výchozí velikost bloku 15 MB, může se tato velikost dynamicky měnit, počínaje 5 MB a postupně zvyšovat až 50 MB, a to na základě faktorů, jako je latence sítě, doba odezvy serveru a tak dále.
 
   > [!NOTE]
@@ -53,12 +55,12 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
   |--------|------------------|-----------------------------|
   | **Kopírovat soubor** | Ne | Nelze použít |
-  | **Vytvořit soubor** | Yes | Yes |
+  | **Vytvořit soubor** | Ano | Ano |
   | **Vytvořit složku** | Nelze použít | Nelze použít |
   | **Odstranit dlaždici** | Nelze použít | Nelze použít |
   | **Extrakce archivu do složky** | Nelze použít | Nelze použít |
-  | **Získat obsah souboru** | Yes | Yes |
-  | **Získání obsahu souboru pomocí cesty** | Yes | Yes |
+  | **Získat obsah souboru** | Ano | Ano |
+  | **Získání obsahu souboru pomocí cesty** | Ano | Ano |
   | **Získat metadata souboru** | Nelze použít | Nelze použít |
   | **Získat metadata souboru pomocí cesty** | Nelze použít | Nelze použít |
   | **Zobrazit seznam souborů ve složce** | Nelze použít | Nelze použít |
@@ -84,9 +86,9 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
 
 * Poskytuje akci **Přejmenovat soubor** , která přejmenuje soubor na serveru SFTP.
 
-* Uloží připojení do serveru SFTP *po dobu až 1 hodiny*, což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
+* Uloží připojení do serveru SFTP *po dobu až 1 hodiny* , což zvyšuje výkon a snižuje počet pokusů o připojení k serveru. Pokud chcete nastavit dobu trvání tohoto chování při ukládání do mezipaměti, upravte vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) v konfiguraci SSH na vašem serveru SFTP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -96,16 +98,16 @@ Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP
   >
   > Konektor SFTP-SSH podporuje *pouze* tyto formáty privátních klíčů, algoritmy a otisky prstů:
   >
-  > * **Formáty privátních klíčů**: klíče RSA (Rivest Shamir Adleman) a DSA (Digital Signature Algorithm) ve formátech OpenSSH a SSH.com. Pokud je váš privátní klíč ve formátu výstupního souboru (. ppk), nejprve [převeďte klíč na formát souboru OpenSSH (. pem)](#convert-to-openssh).
+  > * **Formáty privátních klíčů** : klíče RSA (Rivest Shamir Adleman) a DSA (Digital Signature Algorithm) ve formátech OpenSSH a SSH.com. Pokud je váš privátní klíč ve formátu výstupního souboru (. ppk), nejprve [převeďte klíč na formát souboru OpenSSH (. pem)](#convert-to-openssh).
   >
-  > * **Algoritmy šifrování**: des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
+  > * **Algoritmy šifrování** : des-EDE3-CBC, des-EDE3-CFB, des-CBC, AES-128-CBC, AES-192-CBC a AES-256-CBC
   >
-  > * **Otisk prstu**: MD5
+  > * **Otisk prstu** : MD5
   >
-  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Když pro toto připojení zadáte privátní klíč SSH, ***nemusíte ručně zadávat ani upravovat klíč***, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte ***zkopírovat klíč*** ze souboru privátního klíče SSH a ***Vložit*** tento klíč do podrobností o připojení. 
+  > Po přidání triggeru SFTP-SSH nebo akce, kterou chcete použít pro vaši aplikaci logiky, je nutné zadat informace o připojení pro váš server SFTP. Pokud pro toto připojení zadáte privátní klíč SSH, * *_ručně nezadejte ani neupravujte klíč_* _, což by mohlo způsobit selhání připojení. Místo toho nezapomeňte _*_zkopírovat klíč_*_ ze souboru privátního klíče SSH a _*_Vložit_*_ tento klíč do podrobností o připojení. 
   > Další informace najdete v části [připojení k SFTP s](#connect) protokolem SSH dále v tomto článku.
 
-* Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+_ Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Aplikace logiky, ke které chcete získat přístup k vašemu účtu SFTP. Pokud chcete začít s triggerem SFTP-SSH, [vytvořte prázdnou aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akci SFTP-SSH, spusťte aplikaci logiky s jinou triggerovou procedurou, například Trigger **opakování** .
 
@@ -116,7 +118,7 @@ SFTP – SSH spouští dotazování systému souborů SFTP a hledání všech so
 | Klient SFTP | Akce |
 |-------------|--------|
 | WinSCP | Přejít na **Možnosti**  >  **Předvolby**  >  **přenos**  >  **Upravit**  >  **zachovat časové razítko**  >  **Zakázat** |
-| FileZilly | Přejít na **přenos**–  >  zachovat zablokovaná**Časová razítka přenesených souborů**  >  **Disable** |
+| FileZilly | Přejít na **přenos** –  >  zachovat zablokovaná **Časová razítka přenesených souborů**  >  **Disable** |
 |||
 
 Pokud aktivační událost najde nový soubor, aktivační událost zkontroluje, jestli je nový soubor hotový, a ne částečně napsaný. Soubor může mít například probíhající změny, když aktivační událost kontroluje souborový server. Aby nedošlo k vrácení částečně napsaného souboru, aktivační událost zapisuje časové razítko pro soubor, který má poslední změny, ale tento soubor okamžitě nevrátí. Aktivační událost vrátí soubor pouze při opakovaném dotazování serveru. V některých případech může toto chování způsobit zpoždění až dvojnásobku intervalu dotazování triggeru.
@@ -157,7 +159,7 @@ Pokud je váš privátní klíč ve formátu výstupního souboru, který použ�
 
 1. Uložte soubor privátního klíče s `.pem` příponou názvu souboru.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Tato část popisuje pokyny ke kontrole triggerů a akcí tohoto konektoru.
 
@@ -197,9 +199,9 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
    1. Vyberte **Upravit**  >  **kopii**.
 
-   1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  ***Nezapomeňte klíč vložit*** . ***Klíč nezadejte ručně ani neupravujte***.
+   1. V aktivační události SFTP-SSH nebo v akci, kterou jste přidali, vložte *úplný* klíč, který jste zkopírovali do vlastnosti **privátního klíče SSH** , který podporuje více řádků.  *Ujistěte se, *_že jste vložili_* klíč. _*_Klíč nezadejte ručně ani neupravujte_*_.
 
-1. Až skončíte s zadáním podrobností o připojení, vyberte **vytvořit**.
+1. Až skončíte s zadáním podrobností o připojení, vyberte _ * vytvořit * *.
 
 1. Teď zadejte potřebné podrobnosti pro vybraný Trigger nebo akci a pokračujte v vytváření pracovního postupu aplikace logiky.
 
@@ -209,11 +211,11 @@ Pokud chcete vytvořit soubor na vašem serveru SFTP, můžete použít akci SFT
 
 Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, můžete zadat konstantní velikost bloku od 5 MB do 50 MB.
 
-1. V pravém horním rohu akce vyberte tlačítko se třemi tečkami (**...**) a pak vyberte **Nastavení**.
+1. V pravém horním rohu akce vyberte tlačítko se třemi tečkami ( **...** ) a pak vyberte **Nastavení**.
 
    ![Otevření nastavení SFTP-SSH](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. V části **přenos obsahu**zadejte do vlastnosti **velikost bloku** Integer hodnotu `5` `50` , například: 
+1. V části **přenos obsahu** zadejte do vlastnosti **velikost bloku** Integer hodnotu `5` `50` , například: 
 
    ![Místo toho zadejte velikost bloku, která se má použít.](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
@@ -227,7 +229,7 @@ Chcete-li přepsat výchozí adaptivní chování, které využívá bloky dat, 
 
 Tato aktivační událost spustí pracovní postup aplikace logiky při přidání nebo změně souboru na serveru SFTP. Můžete například přidat podmínku, která zkontroluje obsah souboru a získá obsah na základě toho, jestli obsah splňuje zadanou podmínku. Pak můžete přidat akci, která získá obsah souboru, a tento obsah vložit do složky na serveru SFTP.
 
-**Podnikový příklad**: tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
+**Podnikový příklad** : tuto aktivační událost můžete použít k monitorování složky SFTP pro nové soubory, které reprezentují objednávky zákazníků. Pak můžete použít akci SFTP, například **získat obsah souboru** , abyste získali obsah objednávky pro další zpracování a uložení tohoto pořadí v databázi objednávek.
 
 <a name="get-content"></a>
 
@@ -253,21 +255,23 @@ Pokud se soubor nemůžete vyhnout nebo chcete-li ho odložit, můžete přesko�
 
 1. Pokud tato metadata souboru budete potřebovat později, můžete použít akci **získat metadata souboru** .
 
+<a name="connection-attempt-failed"></a>
+
 ### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 chyba: pokus o připojení se nezdařil, protože připojená strana nereagovala správně po uplynutí určité doby nebo navázáno připojení selhalo, protože připojení hostitele nedokázalo reagovat nebo požadavek na server SFTP trval více než 00:00:30 sekund.
 
-K této chybě může dojít, když aplikace logiky nemůže úspěšně navázat spojení se serverem SFTP. Může existovat řada různých důvodů a doporučujeme problém vyřešit z následujících aspektů. 
+K této chybě může dojít, když aplikace logiky nemůže úspěšně navázat spojení se serverem SFTP. K tomuto problému může dojít z různých důvodů, proto zkuste tyto možnosti řešení potíží:
 
-1. Časový limit připojení je 20 sekund. Ujistěte se prosím, že server SFTP má dobrý výkon a že zařízení intermidiate, jako je brána firewall, nezvyšuje spoustu režie. 
+* Časový limit připojení je 20 sekund. Ověřte, že váš server SFTP má dobrý výkon a středně pokročilá zařízení, jako jsou brány firewall, nepřidává režii. 
 
-2. Pokud je brána firewall zapojená, ujistěte se, že se do seznamu schválených přidaly **IP adresy spravovaného konektoru** . Tyto IP adresy můžete najít v oblasti aplikace logiky [**zde**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+* Pokud máte nastavenou bránu firewall, nezapomeňte přidat **IP adresy spravovaného konektoru** do seznamu schválených. Pokud chcete najít IP adresy pro oblast vaší aplikace logiky, přečtěte si téma [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses).
 
-3. Pokud se jedná o občasný problém, otestujte prosím nastavení opakování, abyste viděli, jestli vám může pomáhat vyšší počet opakování, než je výchozí 4.
+* Pokud k této chybě dochází občas, změňte nastavení **zásad opakování** u akce SFTP-SSH na počet opakovaných pokusů, který je vyšší než výchozí čtyři pokusy.
 
-4. Zkontrolujte prosím, jestli server SFTP omezuje počet připojení z každé IP adresy. Pokud ano, možná budete muset omezit počet souběžných instancí aplikace logiky. 
+* Ověřte, zda server SFTP omezuje počet připojení z každé IP adresy. Pokud existuje limit, možná budete muset omezit počet souběžných instancí aplikace logiky.
 
-5. Zvýšením vlastnosti [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) na serveru SFTP na 1 hodinu v konfiguraci SSH snížíte náklady na připojení.
+* Chcete-li snížit náklady na připojení, zvyšte v konfiguraci SSH pro váš server SFTP vlastnost [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) na přibližně jednu hodinu.
 
-6. Můžete ověřit protokol serveru SFTP a zjistit, zda požadavek z aplikace logiky byl někdy dosažen se serverem SFTP. V bráně firewall a vašem serveru SFTP můžete také sledovat trasování sítě, abyste se mohli dig k problémům s připojením.
+* Zkontrolujte protokol serveru SFTP a zkontrolujte, zda požadavek z aplikace logiky dosáhl serveru SFTP. Pokud chcete získat další informace o problému s připojením, můžete také spustit síťové trasování na bráně firewall a serveru SFTP.
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

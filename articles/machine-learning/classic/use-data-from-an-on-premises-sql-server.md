@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 279c07ff892cb261c8bda1937c6e9f8f1b6c6793
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357484"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325705"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analýza pomocí SQL Server databáze pomocí Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) nyní podporuje čtení dat z databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
@@ -91,7 +91,7 @@ Prvním krokem je vytvoření a nastavení brány pro přístup k databázi SQL.
     ![Stažení a registrace brány dat](./media/use-data-from-an-on-premises-sql-server/download-and-register-data-gateway.png)
 6. <span id="note-1" class="anchor"></span>Pokud jste ještě nestáhli a nainstalovali bránu Microsoft Správa dat Gateway, klikněte na **Stáhnout bránu pro správu dat**. Tím přejdete na Microsoft Download Center, kde můžete vybrat požadovanou verzi brány, stáhnout ji a nainstalovat ji. Podrobné informace o požadavcích na instalaci, krocích instalace a tipů pro řešení potíží najdete v části úvodní části článku [přesun dat mezi místními zdroji a cloudem pomocí služby Správa dat Gateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 7. Po instalaci brány se otevře Configuration Manager brány Správa dat a zobrazí se dialogové okno **zaregistrovat bránu** . Vložte **registrační klíč brány** , který jste zkopírovali do schránky, a klikněte na **zaregistrovat**.
-8. Pokud už máte bránu nainstalovanou, spusťte Configuration Manager Správa dat brány. Klikněte na **změnit klíč**, vložte **registrační klíč brány** , který jste zkopírovali do schránky v předchozím kroku, a klikněte na **OK**.
+8. Pokud už máte bránu nainstalovanou, spusťte Configuration Manager Správa dat brány. Klikněte na **změnit klíč** , vložte **registrační klíč brány** , který jste zkopírovali do schránky v předchozím kroku, a klikněte na **OK**.
 9. Po dokončení instalace se zobrazí dialogové okno **zaregistrovat bránu** pro bránu Microsoft Správa dat gateway Configuration Manager. Vložte registrační klíč brány, který jste zkopírovali do schránky v předchozím kroku, a klikněte na **zaregistrovat**.
 
     ![Registrace brány](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-register-gateway.png)
@@ -134,7 +134,7 @@ Po nastavení brány můžete přidat modul **importu dat** do experimentu, kter
 5. Vyberte **bránu dat** , kterou jste nainstalovali a zaregistrovali. Jinou bránu můžete nastavit tak, že vyberete (Přidat novou bránu dat).
 
    ![Vybrat bránu dat pro modul import dat](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
-6. Zadejte **název serveru SQL Database** a **název databáze**společně s **dotazem SQL Database** , který chcete spustit.
+6. Zadejte **název serveru SQL Database** a **název databáze** společně s **dotazem SQL Database** , který chcete spustit.
 7. V části **uživatelské jméno a heslo** klikněte na **zadat hodnoty** a zadejte svoje přihlašovací údaje do databáze. V závislosti na tom, jak je SQL Server nakonfigurovaná, můžete použít integrované ověřování systému Windows nebo SQL Server ověřování.
 
    ![Zadat přihlašovací údaje databáze](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)

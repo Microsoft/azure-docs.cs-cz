@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6947c567ee2ffd70fdb3a1dfc17a641f63124ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 946435175ea5cd366103bc1254bae0d9afe0926e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348473"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325809"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Kurz 1: předpověď úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -65,7 +65,7 @@ Po vytvoření pracovního prostoru otevřete Machine Learning Studio (Classic) 
 > [!TIP]
 > Pokud jste vlastníkem pracovního prostoru, můžete nasdílet experimenty, na kterých právě pracujete, a to tak, že v pracovním prostoru vyzvete ostatní. To můžete provést v Machine Learning Studio (Classic) na stránce **Nastavení** . Pro každého uživatele potřebujete pouze účet účet Microsoft nebo organizace.
 > 
-> Na stránce **Nastavení** klikněte na **Uživatelé**a potom v dolní části okna klikněte na **pozvat další uživatele** .
+> Na stránce **Nastavení** klikněte na **Uživatelé** a potom v dolní části okna klikněte na **pozvat další uživatele** .
 > 
 
 ## <a name="upload-existing-data"></a><a name="upload"></a>Nahrání existujících dat
@@ -75,7 +75,7 @@ Pro vývoj prediktivního modelu pro úvěrové riziko budete potřebovat data, 
 
 Použijete soubor s názvem **němčina. data**. Stáhněte si tento soubor na svůj místní pevný disk.  
 
-**Němčina. data** DataSet obsahuje řádky 20 proměnných pro 1000 minulých žadatelů pro kredit. Tyto 20 proměnných představují sadu funkcí datové sady ( *vektor funkce*), která poskytuje identifikovatelné charakteristiky pro jednotlivé kandidáty na kredit. Další sloupec v každém řádku představuje vypočtené úvěrové riziko žadatele s 700 žadateli, kteří se identifikovali jako nízké úvěrové riziko a 300 jako vysoké riziko.
+**Němčina. data** DataSet obsahuje řádky 20 proměnných pro 1000 minulých žadatelů pro kredit. Tyto 20 proměnných představují sadu funkcí datové sady ( *vektor funkce* ), která poskytuje identifikovatelné charakteristiky pro jednotlivé kandidáty na kredit. Další sloupec v každém řádku představuje vypočtené úvěrové riziko žadatele s 700 žadateli, kteří se identifikovali jako nízké úvěrové riziko a 300 jako vysoké riziko.
 
 Web UCI poskytuje popis atributů vektoru funkce pro tato data. Tato data zahrnují finanční informace, historii kreditů, stav zaměstnanosti a osobní údaje. Pro každého žadatele bylo uvedeno binární hodnocení, které označuje, zda se jedná o nízké nebo vysoké úvěrové riziko. 
 
@@ -119,7 +119,7 @@ Jakmile budou data převedena do formátu CSV, je nutné ji odeslat do Machine L
 
 1. Otevřete domovskou stránku Machine Learning Studio (Classic) ( [https://studio.azureml.net](https://studio.azureml.net) ). 
 
-2. ![ ](./media/tutorial-part1-credit-risk/menu.png) V levém horním rohu okna klikněte na nabídku nabídky, klikněte na **Azure Machine Learning**, vyberte **Studio**a přihlaste se.
+2. ![ ](./media/tutorial-part1-credit-risk/menu.png) V levém horním rohu okna klikněte na nabídku nabídky, klikněte na **Azure Machine Learning** , vyberte **Studio** a přihlaste se.
 
 3. V dolní části okna klikněte na **+ Nový** .
 
@@ -154,7 +154,7 @@ Další informace o importování dalších typů dat do experimentu najdete v t
 Dalším krokem v tomto kurzu je vytvořit experiment v Machine Learning Studio (Classic), který používá datovou sadu, kterou jste nahráli.  
 
 1. V nástroji Studio (Classic) klikněte v dolní části okna na **+ Nový** .
-1. Vyberte **experiment**a potom vyberte "prázdný experiment". 
+1. Vyberte **experiment** a potom vyberte "prázdný experiment". 
 
     ![Vytvoření nového experimentu](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -179,7 +179,7 @@ Dalším krokem v tomto kurzu je vytvořit experiment v Machine Learning Studio 
 
 Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kroužek v dolní části) a vyberte **vizualizovat**.  
 
-Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.*). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
+Vzhledem k tomu, že datový soubor nepřišel se záhlavími sloupců, Studio (Classic) poskytuje obecné nadpisy (Sloupec1, col2 *atd.* ). Dobré nadpisy nejsou nezbytné pro vytváření modelu, ale usnadňují práci s daty v experimentu. I když nakonec tento model publikujete ve webové službě, budou hlavičky identifikovat sloupce pro uživatele služby.  
 
 Záhlaví sloupců můžete přidat pomocí modulu [Upravit metadata][edit-metadata] .
 
@@ -313,6 +313,6 @@ Nyní jste připraveni vyškolit a vyhodnocovat modely pro tato data.
 > [Kurz 2 – výuka modelů a jejich vyhodnocování](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
-[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
-[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: /azure/machine-learning/studio-module-reference/edit-metadata
+[split]: /azure/machine-learning/studio-module-reference/split-data

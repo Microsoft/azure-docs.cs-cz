@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f55d65b215c03769caa7c812dcda138f8e83595
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322455"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Monitorování aplikací Apache Spark pomocí nástroje synapse Studio
 
@@ -29,21 +29,21 @@ Tento kurz se zabývá následujícími úkony:
 * Zobrazit zrušenou Apache Spark aplikaci
 * Ladění Apache Spark aplikace selhalo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
 
 - Pracovní prostor synapse Studio. Pokyny najdete v tématu [Vytvoření pracovního prostoru synapse Studio](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
 
-- Fond Apache Spark.
+- Apache Spark fond bez serveru.
 
 ## <a name="monitor-running-apache-spark-application"></a>Monitorování běžící Apache Spark aplikace
 
-Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o spuštěných aplikacích Apache Spark, vyberte odeslání aplikace Apache Spark a zobrazte podrobnosti. Pokud je aplikace Apache Spark stále spuštěná, můžete monitorovat průběh.
+Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o spuštěných aplikacích Apache Spark, vyberte odeslání aplikace Apache Spark a zobrazte podrobnosti. Pokud je aplikace Apache Spark stále spuštěná, můžete monitorovat průběh.
 
   ![vybrat spuštěnou úlohu](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. Zkontroluje **dokončené úkoly**, **stav**a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
 
 2. Zrušte Apache Spark aplikaci.
 
@@ -59,15 +59,15 @@ Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li z
 
 ## <a name="view-completed-apache-spark-application"></a>Zobrazení dokončené Apache Spark aplikace
 
-Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o dokončených Apache Spark aplikacích, vyberte aplikaci Apache Spark a zobrazte podrobnosti.
+Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o dokončených Apache Spark aplikacích, vyberte aplikaci Apache Spark a zobrazte podrobnosti.
 
   ![Výběr dokončené úlohy](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. Zkontroluje **dokončené úkoly**, **stav**a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
 
 2. Aktualizuje dotaz protokolu.
 
-3. Kliknutím na položku Server **Historie Spark**otevřete odkaz server pro Apache Spark historie.
+3. Kliknutím na položku Server **Historie Spark** otevřete odkaz server pro Apache Spark historie.
 
 4. Podívejte se na **souhrnné** informace kliknutím na ikonu v grafu.
 
@@ -107,15 +107,15 @@ Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li z
 
 ## <a name="view-canceled-apache-spark-application"></a>Zobrazit zrušenou Apache Spark aplikaci
 
-Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o stornovaných Apache Spark aplikacích, vyberte aplikaci Apache Spark a Prohlédněte si podrobnosti.
+Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Chcete-li zobrazit podrobnosti o stornovaných Apache Spark aplikacích, vyberte aplikaci Apache Spark a Prohlédněte si podrobnosti.
 
  ![vybrat zrušenou úlohu](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. Zkontroluje **dokončené úkoly**, **stav**a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
 
 2. Aktualizujte dotaz protokolu.
 
-3. Kliknutím na **Historie serveru Spark**otevřete odkaz serveru pro historii Apache.
+3. Kliknutím na **Historie serveru Spark** otevřete odkaz serveru pro historii Apache.
 
 4. Zobrazit graf
 
@@ -127,15 +127,15 @@ Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Chcete-li z
 
 ## <a name="debug-failed-apache-spark-application"></a>Ladění Apache Spark aplikace selhalo.
 
-Otevřete **monitorování**a pak vyberte **Apache Spark aplikace**. Pokud chcete zobrazit podrobnosti o aplikacích, které selhaly Apache Spark, vyberte aplikaci Apache Spark a Prohlédněte si podrobnosti.
+Otevřete **monitorování** a pak vyberte **Apache Spark aplikace**. Pokud chcete zobrazit podrobnosti o aplikacích, které selhaly Apache Spark, vyberte aplikaci Apache Spark a Prohlédněte si podrobnosti.
 
 ![vybrat neúspěšnou úlohu](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. Zkontroluje **dokončené úkoly**, **stav**a **celkovou dobu trvání**.
+1. Zkontroluje **dokončené úkoly** , **stav** a **celkovou dobu trvání**.
 
 2. Aktualizuje dotaz protokolu.
 
-3. Kliknutím na položku Server **Historie Spark**otevřete odkaz server pro Apache Spark historie.
+3. Kliknutím na položku Server **Historie Spark** otevřete odkaz server pro Apache Spark historie.
 
 4. Zobrazit graf
 

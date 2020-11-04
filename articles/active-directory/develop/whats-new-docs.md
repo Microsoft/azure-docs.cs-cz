@@ -1,25 +1,50 @@
 ---
 title: Co je nového v Microsoft Identity Platform docs
+titleSuffix: Microsoft identity platform
 description: Nová a aktualizovaná dokumentace platformy Microsoft Identity Platform.
-ms.date: 10/09/2020
+services: active-directory
+author: mmacy
+manager: CelesteDG
+ms.date: 11/03/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-services: active-directory
-author: mmacy
-manager: CelesteDG
-ms.openlocfilehash: e6b1e16666188b21926d7547d80bda87303bc0f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979484"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322558"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform Docs: co je nového
 
 Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace.
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="new-articles"></a>Nové články
+
+- [Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování](quickstart-v2-nodejs-webapp-msal.md)
+- [Postupy: povolení jednotného přihlašování mezi aplikacemi na Androidu pomocí MSAL](msal-android-single-sign-on.md)
+- [Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte](mobile-sso-support-overview.md)
+- Microsoft Identity Platform Docs: co je nového (Tento článek)
+- [Kurz: přihlášení uživatelů a volání chráněného rozhraní API z aplikace Blazor WebAssembly](tutorial-blazor-webassembly.md)
+- [Microsoft Identity web Authentication Library](microsoft-identity-web.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Konfigurovatelné životnosti tokenů v platformě Microsoft Identity Platform (Preview)](active-directory-configurable-token-lifetimes.md)
+- [Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty](howto-convert-app-to-be-multi-tenant.md)
+- [Rychlý Start: Změna účtů podporovaných aplikací](quickstart-modify-supported-accounts.md)
+- [Videa k platformě Microsoft Identity Platform](identity-videos.md)
+- [Příručka k migraci ADAL do MSAL pro Android](migrate-android-adal-msal.md)
+- [Rychlý Start: volání webového rozhraní API ASP.NET, které je chráněné technologií Microsoft Identity Platform](quickstart-v2-dotnet-native-aspnet.md)
+- [Přihlašovací údaje ověřovacího certifikátu aplikace Microsoft Identity Platform](active-directory-certificate-credentials.md)
+- [Kurz: přihlášení uživatelů a volání Microsoft Graph z aplikace pro iOS nebo macOS](tutorial-v2-ios.md)
+- [Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).](tutorial-v2-javascript-spa.md)
+- [Kurz: použití režimu sdíleného zařízení v aplikaci pro Android](tutorial-v2-shared-device-mode.md)
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -62,27 +87,3 @@ Vítají vás novinky v dokumentaci k platformě Microsoft Identity Platform. V 
 - [Rychlý Start: Konfigurace aplikace k vystavení webového rozhraní API](quickstart-configure-app-expose-web-apis.md)
 - [Videa k platformě Microsoft Identity Platform](identity-videos.md)
 - [Rychlý Start: volání webového rozhraní API ASP.NET chráněného technologií Microsoft Identity Platform](quickstart-v2-dotnet-native-aspnet.md)
-
-## <a name="july-2020"></a>Červenec 2020
-
-### <a name="new-articles"></a>Nové články
-
-- [Přidání aplikace do Galerie aplikací Azure Active Directory](v2-howto-app-gallery-listing.md)
-- [Získání AppSource certifikace pro Azure Active Directory](v2-howto-get-appsource-certified.md)
-
-### <a name="updated-articles"></a>Aktualizované články
-
-- [Microsoft Identity Platform a OAuth 2,0 s tokem za chodu](v2-oauth2-on-behalf-of-flow.md)
-- [Omezení pro adresu URL odpovědi / identifikátor URI přesměrování](reply-url.md)
-- [Chráněné webové rozhraní API: Konfigurace kódu](scenario-protected-web-api-app-configuration.md)
-- [Chráněné webové rozhraní API: ověření oborů a rolí aplikací](scenario-protected-web-api-verification-scope-app-roles.md)
-- [Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.](scenario-web-api-call-api-acquire-token.md)
-- [Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu](scenario-web-api-call-api-app-configuration.md)
-- [Webová aplikace, která volá webová rozhraní API: Získá token pro aplikaci.](scenario-web-app-call-api-acquire-token.md)
-- [Webová aplikace, která podepisuje uživatele: Konfigurace kódu](scenario-web-app-sign-user-app-configuration.md)
-- [Přehled platformy Microsoft identity](v2-overview.md)
-- [Videa k platformě Microsoft Identity Platform](identity-videos.md)
-- [Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu](quickstart-v2-java-webapp.md)
-- [Toky ověřování](msal-authentication-flows.md)
-- [Volání rozhraní Microsoft Graph API z aplikace Univerzální platforma Windows (XAML)](tutorial-v2-windows-uwp.md)
-- [Inicializace klientských aplikací pomocí MSAL.js](msal-js-initializing-client-applications.md)

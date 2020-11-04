@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: 64665c0b1e32970f29233f5abdd6b2d2d020a6b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a1a63893e6e2988fc5f21e84f21c74315d856b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897509"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325473"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Zvýšit odolnost Azure Machine Learning
 
@@ -32,19 +32,19 @@ Azure Machine Learning závisí na několika službách Azure a má několik vrs
 
 Služby Azure zahrnují:
 
-* **Azure Machine Learning infrastruktura**: prostředí spravované Microsoftem pro Azure Machine Learning pracovní prostor.
+* **Azure Machine Learning infrastruktura** : prostředí spravované Microsoftem pro Azure Machine Learning pracovní prostor.
 
-* **Přidružené prostředky**: prostředky zřízené ve vašem předplatném během vytváření pracovního prostoru Azure Machine Learning. Mezi tyto prostředky patří Azure Storage, Azure Key Vault, Azure Container Registry a Application Insights. Zodpovídáte za konfiguraci nastavení vysoké dostupnosti pro tyto prostředky.
+* **Přidružené prostředky** : prostředky zřízené ve vašem předplatném během vytváření pracovního prostoru Azure Machine Learning. Mezi tyto prostředky patří Azure Storage, Azure Key Vault, Azure Container Registry a Application Insights. Zodpovídáte za konfiguraci nastavení vysoké dostupnosti pro tyto prostředky.
   * Výchozí úložiště obsahuje data, jako je model, školení a data protokolů a datovou sadu.
   * Key Vault má přihlašovací údaje pro úložiště Azure Storage, Container Registry a data.
   * Container Registry má image Docker pro školení a Inferencing prostředí.
   * Application Insights slouží k monitorování Azure Machine Learning.
 
-* **Výpočetní prostředky**: prostředky, které vytvoříte po nasazení pracovního prostoru. Můžete například vytvořit výpočetní instanci nebo výpočetní cluster pro výuku Machine Learningho modelu.
+* **Výpočetní prostředky** : prostředky, které vytvoříte po nasazení pracovního prostoru. Můžete například vytvořit výpočetní instanci nebo výpočetní cluster pro výuku Machine Learningho modelu.
   * Výpočetní instance a výpočetní cluster: prostředí pro vývoj modelů spravovaných Microsoftem.
   * Další materiály: výpočetní prostředky Microsoftu, které se dají připojit k Azure Machine Learning, jako je Azure Kubernetes Service (AKS), Azure Databricks, Azure Container Instances a Azure HDInsight. Zodpovídáte za konfiguraci nastavení vysoké dostupnosti pro tyto prostředky.
 
-* **Další úložiště dat**: Azure Machine Learning můžou připojit další úložiště dat, jako jsou Azure Storage, Azure Data Lake Storage a Azure SQL Database pro školení dat.  Tato úložiště dat se zřídí v rámci vašeho předplatného. Zodpovídáte za konfiguraci jejich nastavení vysoké dostupnosti.
+* **Další úložiště dat** : Azure Machine Learning můžou připojit další úložiště dat, jako jsou Azure Storage, Azure Data Lake Storage a Azure SQL Database pro školení dat.  Tato úložiště dat se zřídí v rámci vašeho předplatného. Zodpovídáte za konfiguraci jejich nastavení vysoké dostupnosti.
 
 Následující tabulka uvádí, které služby Azure spravuje Microsoft, které spravujete vy a které jsou ve výchozím nastavení vysoce dostupné.
 
@@ -71,34 +71,34 @@ Zbývající část tohoto článku popisuje akce, které je třeba provést, ab
 
 Nezapomeňte nakonfigurovat nastavení vysoké dostupnosti každého prostředku, a to tak, že odkazujete na následující dokumentaci:
 
-* **Azure Storage**: Konfigurace nastavení s vysokou dostupností najdete v tématu [Azure Storage redundance](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
-* **Key Vault**: Key Vault ve výchozím nastavení poskytuje vysokou dostupnost a nevyžaduje žádnou akci uživatele.  Viz [dostupnost a redundance Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
-* **Container Registry**: pro geografickou replikaci vyberte možnost registru Premium. Podívejte [se na geografickou replikaci v Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication).
-* **Application Insights**: Application Insights neposkytuje nastavení vysoké dostupnosti. Pokud chcete upravit dobu uchovávání dat a podrobnosti, přečtěte si téma [shromažďování, uchovávání a ukládání dat v Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#how-long-is-the-data-kept).
+* **Azure Storage** : Konfigurace nastavení s vysokou dostupností najdete v tématu [Azure Storage redundance](../storage/common/storage-redundancy.md).
+* **Key Vault** : Key Vault ve výchozím nastavení poskytuje vysokou dostupnost a nevyžaduje žádnou akci uživatele.  Viz [dostupnost a redundance Azure Key Vault](../key-vault/general/disaster-recovery-guidance.md).
+* **Container Registry** : pro geografickou replikaci vyberte možnost registru Premium. Podívejte [se na geografickou replikaci v Azure Container Registry](../container-registry/container-registry-geo-replication.md).
+* **Application Insights** : Application Insights neposkytuje nastavení vysoké dostupnosti. Pokud chcete upravit dobu uchovávání dat a podrobnosti, přečtěte si téma [shromažďování, uchovávání a ukládání dat v Application Insights](../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept).
 
 ## <a name="compute-resources"></a>Výpočetní prostředky
 
 Nezapomeňte nakonfigurovat nastavení vysoké dostupnosti každého prostředku, a to tak, že odkazujete na následující dokumentaci:
 
-* **Služba Azure Kubernetes**: Podívejte se na [osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure KUBERNETES Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) a [vytvořte cluster služby Azure Kubernetes (AKS), který používá zóny dostupnosti](https://docs.microsoft.com/azure/aks/availability-zones). Pokud byl cluster AKS vytvořen pomocí Azure Machine Learning Studio, sady SDK nebo rozhraní příkazového řádku, vysoká dostupnost mezi oblastmi není podporována.
-* **Azure Databricks**: Přečtěte si téma [místní zotavení po havárii pro clustery Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/howto-regional-disaster-recovery).
-* **Container Instances**: za převzetí služeb při selhání zodpovídá Orchestrator. Viz [Azure Container Instances a orchestrace kontejnerů](https://docs.microsoft.com/azure/container-instances/container-instances-orchestrator-relationship).
-* **HDInsight**: viz [služby vysoké dostupnosti podporované službou Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-components).
+* **Služba Azure Kubernetes** : Podívejte se na [osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure KUBERNETES Service (AKS)](../aks/operator-best-practices-multi-region.md) a [vytvořte cluster služby Azure Kubernetes (AKS), který používá zóny dostupnosti](../aks/availability-zones.md). Pokud byl cluster AKS vytvořen pomocí Azure Machine Learning Studio, sady SDK nebo rozhraní příkazového řádku, vysoká dostupnost mezi oblastmi není podporována.
+* **Azure Databricks** : Přečtěte si téma [místní zotavení po havárii pro clustery Azure Databricks](/azure/databricks/scenarios/howto-regional-disaster-recovery).
+* **Container Instances** : za převzetí služeb při selhání zodpovídá Orchestrator. Viz [Azure Container Instances a orchestrace kontejnerů](../container-instances/container-instances-orchestrator-relationship.md).
+* **HDInsight** : viz [služby vysoké dostupnosti podporované službou Azure HDInsight](../hdinsight/hdinsight-high-availability-components.md).
 
 ## <a name="additional-data-stores"></a>Další úložiště dat
 
 Nezapomeňte nakonfigurovat nastavení vysoké dostupnosti každého prostředku, a to tak, že odkazujete na následující dokumentaci:
 
-* **Kontejner objektů blob Azure/soubory Azure/Data Lake Storage Gen2**: stejné jako výchozí úložiště
-* **Data Lake Storage Gen1**: Další informace najdete v tématu [o zásadách vysoké dostupnosti a zotavení po havárii pro data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
-* **SQL Database**: Přečtěte si informace [o vysoké dostupnosti pro Azure SQL Database a SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability).
-* **Azure Database for PostgreSQL**: viz [Koncepty vysoké dostupnosti v Azure Database for PostgreSQL na jednom serveru](https://docs.microsoft.com/azure/postgresql/concepts-high-availability).
-* **Azure Database for MySQL**: Přečtěte si [vysvětlení kontinuity podnikových aplikací v Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-business-continuity).
-* **Azure Databricks systém souborů**: Přečtěte si téma [místní zotavení po havárii pro Azure Databricks clustery](https://docs.microsoft.com/azure/azure-databricks/howto-regional-disaster-recovery).
+* **Kontejner objektů blob Azure/soubory Azure/Data Lake Storage Gen2** : stejné jako výchozí úložiště
+* **Data Lake Storage Gen1** : Další informace najdete v tématu [o zásadách vysoké dostupnosti a zotavení po havárii pro data Lake Storage Gen1](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
+* **SQL Database** : Přečtěte si informace [o vysoké dostupnosti pro Azure SQL Database a SQL Managed instance](../azure-sql/database/high-availability-sla.md).
+* **Azure Database for PostgreSQL** : viz [Koncepty vysoké dostupnosti v Azure Database for PostgreSQL na jednom serveru](../postgresql/concepts-high-availability.md).
+* **Azure Database for MySQL** : Přečtěte si [vysvětlení kontinuity podnikových aplikací v Azure Database for MySQL](../mysql/concepts-business-continuity.md).
+* **Azure Databricks systém souborů** : Přečtěte si téma [místní zotavení po havárii pro Azure Databricks clustery](/azure/databricks/scenarios/howto-regional-disaster-recovery).
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Pokud zadáte vlastní klíč spravovaný zákazníkem k nasazení Azure Machine Learning pracovního prostoru, Azure Cosmos DB se taky zřídí v rámci vašeho předplatného. V takovém případě zodpovídáte za konfiguraci nastavení vysoké dostupnosti. Podívejte [se na vysokou dostupnost pomocí Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/high-availability).
+Pokud zadáte vlastní klíč spravovaný zákazníkem k nasazení Azure Machine Learning pracovního prostoru, Azure Cosmos DB se taky zřídí v rámci vašeho předplatného. V takovém případě zodpovídáte za konfiguraci nastavení vysoké dostupnosti. Podívejte [se na vysokou dostupnost pomocí Azure Cosmos DB](../cosmos-db/high-availability.md).
 
 ## <a name="next-steps"></a>Další kroky
 

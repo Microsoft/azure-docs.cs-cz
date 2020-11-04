@@ -2,16 +2,16 @@
 title: Řešení potíží s Azure Automation Runbook
 description: Tento článek popisuje, jak řešit problémy s Azure Automation Runbooky a řešit problémy.
 services: automation
-ms.date: 07/28/2020
+ms.date: 11/03/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e173e76b80717d6685e9a6b383ee98eddf910f5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904798"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323488"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -42,7 +42,7 @@ Když při spuštění sady Runbook v Azure Automation dojde k chybám, můžete
     * [Obnovte certifikát](../manage-runas-account.md#cert-renewal) , pokud vypršela platnost účtu Spustit jako.
     * [Obnovte Webhook](../automation-webhooks.md#renew-a-webhook) , pokud se pokoušíte použít Webhook, jehož platnost vypršela, aby se Runbook spustil.
     * [Zkontrolujte stav úlohy](../automation-runbook-execution.md#job-statuses) a určete aktuální stavy Runbooku a některé možné příčiny problému.
-    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#monitor-message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
+    * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#working-with-message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
     * [Zpracujte všechny výjimky](../automation-runbook-execution.md#exceptions) , které jsou vyvolány vaší úlohou.
 
 1. Tento krok proveďte, pokud úloha sady Runbook nebo prostředí na Hybrid Runbook Worker nereaguje.
@@ -201,7 +201,7 @@ K této chybě může dojít, pokud:
 Pomocí těchto kroků zjistíte, jestli jste se ověřili do Azure a máte přístup k předplatnému, které se pokoušíte vybrat:
 
 1. Abyste se ujistili, že váš skript funguje samostatně, otestujte ho mimo Azure Automation.
-1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) `Select-*` .
+1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) `Select-*` .
 1. Přidejte `Disable-AzContextAutosave –Scope Process` na začátek Runbooku. Tato rutina zajišťuje, že se jakékoli přihlašovací údaje použijí pouze pro spuštění aktuální sady Runbook.
 1. Pokud se chybová zpráva zobrazuje stále, upravte kód přidáním `AzContext` parametru pro `Connect-AzAccount` a poté spusťte kód.
 
@@ -291,7 +291,7 @@ Tato chyba může být způsobena používáním zastaralých modulů Azure.
 
 Tuto chybu můžete vyřešit tak, že aktualizujete moduly Azure na nejnovější verzi:
 
-1. V účtu Automation vyberte **moduly**a pak vyberte **aktualizovat moduly Azure**.
+1. V účtu Automation vyberte **moduly** a pak vyberte **aktualizovat moduly Azure**.
 1. Tato aktualizace trvá přibližně 15 minut. Po dokončení spusťte znovu sadu Runbook, která selhala.
 
 Další informace o aktualizaci modulů najdete v tématu [aktualizace modulů Azure v Azure Automation](../automation-update-azure-modules.md).
@@ -398,7 +398,7 @@ Pokud datový proud obsahuje objekty, `Start-AzAutomationRunbook` nezpracovává
 
 ### <a name="resolution"></a>Řešení
 
-Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) načtěte výstup. Ukázka této logiky je definována zde:
+Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) načtěte výstup. Ukázka této logiky je definována zde:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -476,14 +476,14 @@ Při spuštění rutiny se zobrazí následující chybová zpráva `Get-AzAutom
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#monitor-verbose-stream).
+K této chybě může dojít při načítání výstupu úlohy z Runbooku, který má mnoho [podrobných streamů](../automation-runbook-output-and-messages.md#write-output-to-verbose-stream).
 
 ### <a name="resolution"></a>Řešení
 
 Chcete-li vyřešit tuto chybu, proveďte jednu z následujících akcí:
 
 * Upravte sadu Runbook a snižte počet datových proudů úloh, které vygeneruje.
-* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) , aby se načetly jenom výstupní datové proudy. 
+* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) , aby se načetly jenom výstupní datové proudy. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Scénář: úloha Runbooku se nezdařila, protože byla překročena přidělená kvóta
 
@@ -505,7 +505,7 @@ Pokud chcete použít více než 500 minut zpracování za měsíc, změňte př
 
 1. Přihlaste se ke svému předplatnému Azure.
 1. Vyberte účet Automation, který chcete upgradovat.
-1. Vyberte **Nastavení**a pak vyberte **ceny**.
+1. Vyberte **Nastavení** a pak vyberte **ceny**.
 1. Vyberte **Povolit** na stránce dole a upgradujte svůj účet na úroveň Basic.
 
 ## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>Scénář: výstupní datový proud Runbooku větší než 1 MB
@@ -576,7 +576,7 @@ Tato chyba může znamenat, že Runbooky, které běží v izolovaném prostoru 
 
 Tuto chybu můžete vyřešit dvěma způsoby:
 
-* Místo použití funkce [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)použijte příkaz [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a spusťte sadu Runbook.
+* Místo použití funkce [Start-Job](/powershell/module/microsoft.powershell.core/start-job)použijte příkaz [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) a spusťte sadu Runbook.
 * Zkuste spustit Runbook na Hybrid Runbook Worker.
 
 Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md).
@@ -605,8 +605,8 @@ Dalším řešením je optimalizovat sadu Runbook vytvořením [podřízených r
 
 Rutiny PowerShellu, které umožňují podřízený scénář sady Runbook:
 
-* [Start – AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Tato rutina vám umožní spustit runbook a předat do něj parametry.
-* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
+* [Start – AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook). Tato rutina vám umožní spustit runbook a předat do něj parametry.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Scénář: Chyba v datových proudech úlohy týkající se metody get_SerializationSettings
 
@@ -642,7 +642,7 @@ Když se váš Runbook nebo aplikace pokusí spustit v izolovaném prostoru Azur
 
 ### <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver.exe). 
+K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver.exe).
 
 ### <a name="resolution"></a>Řešení
 

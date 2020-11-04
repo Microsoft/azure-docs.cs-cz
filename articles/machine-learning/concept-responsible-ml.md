@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2ece76ef3594cadfa1fcda89259ee18eb1f9084
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829386"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324843"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Co je zodpovědný strojové učení? (Preview)
 
@@ -73,7 +73,7 @@ V tradičním cloudovém úložišti a výpočtovém řešení potřebuje Cloud 
 
 Homomorphic šifrování umožňuje provádět výpočty na šifrovaných datech bez nutnosti přístupu ke tajnému (dešifrovacímu) klíči. Výsledky výpočtů jsou zašifrované a dají se odhalet jenom vlastníkem tajného klíče. Při použití šifrování homomorphic nemají operátoři cloudu nikdy zašifrovaný přístup k datům, která ukládá a výpočetní výkon. Výpočty se provádějí přímo v šifrovaných datech. Ochrana osobních údajů dat se spoléhá na špičkovou kryptografii a vlastník dat kontroluje všechny verze informací. Další informace o šifrování homomorphic v Microsoftu najdete v tématu [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
 
-Pokud chcete začít se šifrováním homomorphic v Azure Machine Learning, použijte k [Microsoft zapečetit](https://github.com/microsoft/SEAL)vazby Pythonu, která je [zašifrovaná](https://pypi.org/project/encrypted-inference/) . Microsoft SEAL je open source knihovna šifrování homomorphic, která umožňuje provádět přidávání a násobení u šifrovaných celých čísel nebo reálných čísel. Další informace o Microsoft SEAL najdete na stránce [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) nebo [projektu Microsoft Research](https://www.microsoft.com/research/project/microsoft-seal/).
+Pokud chcete začít se šifrováním homomorphic v Azure Machine Learning, použijte k [Microsoft zapečetit](https://github.com/microsoft/SEAL)vazby Pythonu, která je [zašifrovaná](https://pypi.org/project/encrypted-inference/) . Microsoft SEAL je open source knihovna šifrování homomorphic, která umožňuje provádět přidávání a násobení u šifrovaných celých čísel nebo reálných čísel. Další informace o Microsoft SEAL najdete na stránce [cetrum architektury Azure](/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) nebo [projektu Microsoft Research](https://www.microsoft.com/research/project/microsoft-seal/).
 
 V následující ukázce se dozvíte, [Jak nasadit šifrovanou webovou službu Inferencing v Azure Machine Learning](how-to-homomorphic-encryption-seal.md).
 
@@ -94,7 +94,7 @@ Některé informace o modelu, které byste mohli chtít dokumentovat jako souč�
 
 V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learning k implementaci [datových listů pro modely](https://github.com/microsoft/MLOps/blob/master/pytorch_with_datasheet/model_with_datasheet.ipynb).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
-- Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/) .
+- Další informace o osvědčených postupech najdete v [příslušné sadě nástrojů pro inovace](/azure/architecture/guide/responsible-innovation/) .
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

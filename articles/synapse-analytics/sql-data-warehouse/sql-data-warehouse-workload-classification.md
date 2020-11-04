@@ -11,18 +11,18 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212373"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323877"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Klasifikace úloh Azure synapse Analytics
 
-Tento článek vysvětluje proces klasifikace úloh přiřazení skupiny úloh a důležitosti pro příchozí žádosti s synapse fondy SQL v Azure synapse.
+Tento článek vysvětluje proces klasifikace úloh přiřazení skupiny úloh a důležitosti pro příchozí požadavky na vyhrazené fondy SQL ve službě Azure synapse.
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klasifikace
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
@@ -36,7 +36,7 @@ Ne všechny příkazy jsou klasifikovány, protože nevyžadují prostředky neb
 
 ## <a name="classification-process"></a>Proces klasifikace
 
-Klasifikace pro synapse fond SQL ve službě Azure synapse se dosáhla v dnešní době přiřazením uživatelů k roli, která má přiřazenou odpovídající třídu prostředků pomocí [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Možnost charakterizovat požadavky nad rámec přihlášení k třídě prostředků je omezená touto funkcí. K dispozici je širší metoda klasifikace, která je teď dostupná pomocí syntaxe pro [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  Pomocí této syntaxe mohou uživatelé synapse ve fondu SQL přiřadit důležitost a množství systémových prostředků, které jsou k žádosti přiřazeny přes `workload_group` parametr.
+Klasifikace vyhrazeného fondu SQL ve službě Azure synapse se dosáhla v dnešní době přiřazením uživatelů k roli, která má přiřazenou odpovídající třídu prostředků pomocí [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Možnost charakterizovat požadavky nad rámec přihlášení k třídě prostředků je omezená touto funkcí. K dispozici je širší metoda klasifikace, která je teď dostupná pomocí syntaxe pro [Vytvoření třídění úloh](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) .  S touto syntaxí můžou uživatelé s vyhrazeným fondem SQL přiřadit důležitost a množství systémových prostředků, které jsou k žádosti přiřazené přes `workload_group` parametr.
 
 > [!NOTE]
 > Klasifikace se vyhodnocuje na základě jednotlivých požadavků. Více požadavků v jedné relaci lze klasifikovat odlišně.

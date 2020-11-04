@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 059b521461969d8148ced90cb3ceffd14a00c4bb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883122"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322251"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Co je Azure Machine Learning Designer? 
 
@@ -98,9 +98,9 @@ Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kan�
 
 Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
-## <a name="deploy"></a>Nasadit
+## <a name="deploy"></a>Nasazení
 
-Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném**čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
+Chcete-li provést Inferencing v reálném čase, je nutné nasadit kanál jako **koncový bod v reálném** čase. Koncový bod v reálném čase vytvoří rozhraní mezi externí aplikací a modelem bodování. Volání koncového bodu v reálném čase vrátí výsledky předpovědi do aplikace v reálném čase. Pro volání koncového bodu v reálném čase předáte klíč rozhraní API, který byl vytvořen při nasazení koncového bodu. Koncový bod je založený na REST, oblíbené architektuře, která je vhodná pro projekty webového programování.
 
 Koncové body v reálném čase musí být nasazeny do clusteru služby Azure Kubernetes.
 
@@ -114,7 +114,7 @@ Publikované kanály jsou flexibilní, dají se využít ke školení a reučen�
 
 Publikovaný kanál běží na výpočetních prostředcích, které definujete v konceptu kanálu pro každý modul.
 
-Návrhář vytvoří stejný objekt [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py&preserve-view=true) jako sadu SDK.
+Návrhář vytvoří stejný objekt [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) jako sadu SDK.
 
 ## <a name="next-steps"></a>Další kroky
 

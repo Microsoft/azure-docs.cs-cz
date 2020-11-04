@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac6055029b8fc7bbba11a8e3b789df3b6b1622e2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864226"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322745"
 ---
 # <a name="team-data-science-process-project-planning"></a>Plánování projektu vědeckého zpracování týmových dat
 
@@ -30,7 +30,7 @@ Vědecké zpracování týmových dat (TDSP) poskytuje životní cyklus pro stru
 - Nasazení
 - Přijetí zákazníkovi
 
-Popisy každé z těchto fází naleznete v [životním cyklu vědeckého zpracování dat týmu](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle).
+Popisy každé z těchto fází naleznete v [životním cyklu vědeckého zpracování dat týmu](./lifecycle.md).
 
  
 ## <a name="microsoft-project-template"></a>Šablona projektu Microsoft
@@ -60,5 +60,4 @@ Pomocí tohoto [úložiště šablon projektu](https://github.com/Azure/Azure-TD
 
 [Agilní vývoj projektů pro datové vědy](agile-development.md) V tomto dokumentu je popsána systematická, řízená a týmová verze projektu pro datové vědy s využitím vědeckého procesu týmového zpracování dat.
 
-K dispozici jsou také návody, které ukazují všechny kroky v procesu pro **konkrétní scénáře** . Jsou uvedeny a propojeny s popisy miniatur v článku [příklad návodu](walkthroughs.md) . Ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
-
+K dispozici jsou také návody, které ukazují všechny kroky v procesu pro **konkrétní scénáře** . Jsou uvedeny a propojeny s popisy miniatur v článku [příklad návodu](walkthroughs.md) . Ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci.

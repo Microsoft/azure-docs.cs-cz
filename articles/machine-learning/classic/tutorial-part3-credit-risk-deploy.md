@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 148a3deb23219036f2fd9d8fe4dad93e9fb96b9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d723a18bfe764b4e1459f72b00fa81db716dcdb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348420"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325652"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Kurz 3: nasazení modelu úvěrového rizika – Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 V tomto kurzu se podíváme na proces vývoje řešení prediktivní analýzy. V Machine Learning Studio (Classic) vyvíjíte jednoduchý model.  Model pak nasadíte jako Azure Machine Learning webovou službu.  Tento nasazený model může vytvářet předpovědi s využitím nových dat. Tento kurz je **třetí částí série kurzů s třemi částmi**.
@@ -42,19 +42,19 @@ V této části kurzu:
 > * Správa webové služby
 > * Nastavení přístupu k webové službě
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyplňte [druhou část kurzu](tutorial-part2-credit-risk-train.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
 Pokud chcete ostatním umožnit používání prediktivního modelu, který jste vytvořili v tomto kurzu, můžete ho nasadit jako webovou službu v Azure.
 
-Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z ***školicího*** experimentu na ***prediktivní*** experiment. 
+Až do tohoto okamžiku jste se seznámili s školením našeho modelu. Nicméně nasazená služba již neprovádí školení – vygeneruje nové předpovědi vyhodnocením vstupu uživatele na základě našeho modelu. Provedeme si ale nějaké přípravy na převod tohoto experimentu z experimentu * **školení** _ na _*_prediktivní_*_ experiment. 
 
 Příprava na nasazení je proces tří kroků:  
 
 1. Odebrat jeden z modelů
-1. Převod *experimentu školení* , který jste vytvořili, do *prediktivního experimentu*
+1. Převedení _training experimentu *, který jste vytvořili, do *prediktivního experimentu*
 1. Nasazení prediktivního experimentu jako webové služby
 
 ### <a name="remove-one-of-the-models"></a>Odebrat jeden z modelů
@@ -93,9 +93,9 @@ Můžete to provést ručně, ale naštěstí všechny tři kroky můžete prov�
 > [!TIP]
 > Pokud potřebujete další podrobnosti o tom, co se stane, když převedete školicí experiment na prediktivní experiment, přečtěte si téma [Příprava modelu pro nasazení v Azure Machine Learning Studio (Classic)](deploy-a-machine-learning-web-service.md).
 
-Když kliknete na **nastavit webovou službu**, stane se několik věcí:
+Když kliknete na **nastavit webovou službu** , stane se několik věcí:
 
-* Vycvičený model se převede na jeden modul **trained model** a uloží se do palety modulu nalevo od plátna experimentu (můžete ho najít v části **trained Models**).
+* Vycvičený model se převede na jeden modul **trained model** a uloží se do palety modulu nalevo od plátna experimentu (můžete ho najít v části **trained Models** ).
 * Moduly, které se použily pro školení, se odeberou. určen
   * [Posílený rozhodovací strom se dvěma třídami][two-class-boosted-decision-tree]
   * [Trénování modelu][train-model]
@@ -105,7 +105,7 @@ Když kliknete na **nastavit webovou službu**, stane se několik věcí:
 * Jsou přidány výstupní moduly **webové služby** a **výstupní webové služby** (které určují, kde budou data uživatele zadávat model a jaká data se vrátí, když je webová služba dostupná).
 
 > [!NOTE]
-> Na kartách, které byly přidány v horní části plátna experimentu, vidíte, že je experiment uložený ve dvou částech. Původní školicí experiment je pod **experimentem školení**na kartě a nově vytvořený prediktivní experiment je v rámci **prediktivního experimentu**. Prediktivní experiment je ten, který nasadíte jako webovou službu.
+> Na kartách, které byly přidány v horní části plátna experimentu, vidíte, že je experiment uložený ve dvou částech. Původní školicí experiment je pod **experimentem školení** na kartě a nově vytvořený prediktivní experiment je v rámci **prediktivního experimentu**. Prediktivní experiment je ten, který nasadíte jako webovou službu.
 
 v rámci tohoto konkrétního experimentu je třeba provést jeden další krok.
 Přidali jste dva moduly [spuštění skriptu R][execute-r-script] , které poskytují funkci váhy dat. To bylo pouze štych, které jste potřebovali pro školení a testování, takže tyto moduly můžete vzít v konečném modelu.
@@ -130,7 +130,7 @@ Spusťte experiment jednou, a to tak, že kliknete na **Spustit**. Pokud chcete 
 Experiment můžete nasadit jako klasickou webovou službu nebo jako novou webovou službu založenou na Azure Resource Manager.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Nasazení jako klasické webové služby
-Pokud chcete nasadit klasickou webovou službu odvozenou z našeho experimentu, klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [Classic]**. Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu (**Zobrazit snímek** nebo **Zobrazit nejnovější**) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
+Pokud chcete nasadit klasickou webovou službu odvozenou z našeho experimentu, klikněte na **nasadit webovou službu** pod plátno a vyberte **nasadit webovou službu [Classic]**. Machine Learning Studio (Classic) nasadí experiment jako webovou službu a přejde na řídicí panel pro tuto webovou službu. Na této stránce se můžete vrátit do experimentu ( **Zobrazit snímek** nebo **Zobrazit nejnovější** ) a spustit jednoduchý test webové služby (viz **testování webové služby** níže). Zde najdete také informace pro vytváření aplikací, které mají přístup k webové službě (Další informace najdete v dalším kroku tohoto kurzu).
 
 ![Řídicí panel webové služby](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 
@@ -151,7 +151,7 @@ Nasazení nové webové služby odvozené z našeho experimentu:
 
 1. Zadejte název webové služby. 
 
-1. V případě **cenového plánu**můžete vybrat existující Cenový tarif nebo vybrat vytvořit nové a zadat název nového plánu a vybrat možnost měsíčního plánu. Plány plánu se ve výchozím nastavení naplánují pro výchozí oblast a vaše webová služba se v této oblasti nasadí.
+1. V případě **cenového plánu** můžete vybrat existující Cenový tarif nebo vybrat vytvořit nové a zadat název nového plánu a vybrat možnost měsíčního plánu. Plány plánu se ve výchozím nastavení naplánují pro výchozí oblast a vaše webová služba se v této oblasti nasadí.
 
 1. Klikněte na **Deploy** (Nasadit).
 
@@ -162,7 +162,7 @@ Službu můžete nakonfigurovat kliknutím na kartu **Konfigurovat** . Tady mů�
 Chcete-li otestovat webovou službu, klikněte na kartu **test** (viz **Test webové služby** níže). Informace o vytváření aplikací, které mají přístup k webové službě, získáte tak, že kliknete na kartu **spotřebování** (další krok v tomto kurzu se zobrazí podrobněji).
 
 > [!TIP]
-> Webovou službu můžete po nasazení aktualizovat. Například pokud chcete změnit svůj model, můžete upravit experiment pro školení, upravit parametry modelu a kliknout na **nasadit webovou službu**, vybrat **nasadit webovou službu [Classic]** nebo **nasadit webovou službu [New]**. Když znovu nasadíte experiment, nahradí se tím webová služba, která teď používá aktualizovaný model.  
+> Webovou službu můžete po nasazení aktualizovat. Například pokud chcete změnit svůj model, můžete upravit experiment pro školení, upravit parametry modelu a kliknout na **nasadit webovou službu** , vybrat **nasadit webovou službu [Classic]** nebo **nasadit webovou službu [New]**. Když znovu nasadíte experiment, nahradí se tím webová služba, která teď používá aktualizovaný model.  
 > 
 > 
 
@@ -232,7 +232,7 @@ Webová služba je webová služba Azure, která může přijímat a vracet data
 > [!NOTE]
 > Názvy sloupců funkcí v studiu (Classic) rozlišují **velká a malá písmena**. Ujistěte se, že vstupní data pro vyvolání webové služby mají stejné názvy sloupců jako v datové sadě školení.
 
-Další informace o přístupu a používání webové služby najdete v tématu věnovaném [využívání Azure Machine Learning webové služby pomocí šablony webové aplikace](/azure/machine-learning/studio/consume-web-services).
+Další informace o přístupu a používání webové služby najdete v tématu věnovaném [využívání Azure Machine Learning webové služby pomocí šablony webové aplikace](./consume-web-services.md).
 
 
 
@@ -257,13 +257,13 @@ Můžete také vyvinout vlastní aplikaci pro přístup k webové službě pomoc
 > [Využívání webové služby Azure Machine Learning](consume-web-services.md)
 
 <!-- Module References -->
-[evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[metadata-editor]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[normalize-data]: https://msdn.microsoft.com/library/azure/986df333-6748-4b85-923d-871df70d6aaf/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-[train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
-[two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
-[two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[metadata-editor]: /azure/machine-learning/studio-module-reference/edit-metadata
+[normalize-data]: /azure/machine-learning/studio-module-reference/normalize-data
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[split]: /azure/machine-learning/studio-module-reference/split-data
+[train-model]: /azure/machine-learning/studio-module-reference/train-model
+[two-class-boosted-decision-tree]: /azure/machine-learning/studio-module-reference/two-class-boosted-decision-tree
+[two-class-support-vector-machine]: /azure/machine-learning/studio-module-reference/two-class-support-vector-machine
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset

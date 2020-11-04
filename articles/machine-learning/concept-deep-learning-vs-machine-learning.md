@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d462ed4627254275703d88cadbaf5d55a106da55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330124"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324874"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Obsáhlý Learning a strojové učení v Azure Machine Learning
 
 V tomto článku se dozvíte o hloubkovém učení vs. strojové učení a o tom, jak se vejdou do širší kategorie umělé logiky. Přečtěte si o řešeních pro hloubkové učení, která můžete vytvářet Azure Machine Learning, jako je odhalování podvodů, rozpoznávání hlasu a obličeje, analýza mínění a prognózování časových řad.
 
-Pokyny k výběru algoritmů pro vaše řešení najdete v [tahákm listu s algoritmem Machine Learning](algorithm-cheat-sheet.md).
+Pokyny k výběru algoritmů pro vaše řešení najdete v [tahákm listu s algoritmem Machine Learning](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri).
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Obsáhlý Learning, strojové učení a AI
 
@@ -73,7 +73,7 @@ Obsáhlý Learning se použil v mnoha případech použití detekce objektů. De
 
 Detekce objektů se už používá v oborech, jako jsou hry, maloobchodní prodej, cestovní ruch a osobní automobily.
 
-Naučte se používat model klasifikace obrázků z open-source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri) .
+Naučte se používat model klasifikace obrázků z open-source architektury v Azure Machine Learning: [klasifikaci imagí pomocí modelu Pytorch](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri) .
 
 ### <a name="image-caption-generation"></a>Generování titulku obrázku
 
@@ -93,7 +93,7 @@ Analýza textu založená na metodách hloubkového učení zahrnuje analýzu ve
 
 Společnosti využívají k analýze textu v rámci hloubkového učení k detekci obchodování zasvěcených osob a dodržování předpisů pro státní správu. Dalším běžným příkladem je pojišťovací podvod: Text Analytics se často používá k analýze velkých objemů dokumentů, aby se zjistilo, že se poškodí pojistka pojistného pojištění. 
 
-Naučte se používat TensorFlow model v Azure Machine Learning: [klasifikace rukou psaných číslic pomocí modelu TensorFlow](https://docs.microsoft.com/azure/machine-learning/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+Naučte se používat TensorFlow model v Azure Machine Learning: [klasifikace rukou psaných číslic pomocí modelu TensorFlow](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
 
 ## <a name="artificial-neural-networks"></a>Umělé sítě neuronové
 
@@ -117,8 +117,8 @@ Sítě konvoluční neuronové se používaly v oblastech, jako je rozpoznáván
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujících článcích se dozvíte víc možností, jak používat Open Source modely hloubkového učení v [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/?WT.mc_id=docs-article-lazzeri):
+V následujících článcích se dozvíte víc možností, jak používat Open Source modely hloubkového učení v [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri):
 
-- [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](https://docs.microsoft.com/azure/machine-learning/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+- [Klasifikace rukou psaných číslic pomocí TensorFlow Estimator a Keras](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
+- [Klasifikace rukou psaných číslic pomocí modelu zřetězení](./how-to-set-up-training-targets.md)

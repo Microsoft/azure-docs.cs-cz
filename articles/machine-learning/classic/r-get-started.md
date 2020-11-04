@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344485"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325025"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 <!-- Stephen F Elston, Ph.D. -->
@@ -144,7 +144,7 @@ Začneme tak, že soubor **csdairydata.csv** načteme do Machine Learning Studio
 
 1. Spusťte prostředí Machine Learning Studio (Classic).
 1. V levém dolním rohu obrazovky vyberte **+ Nový** a vyberte **datová sada**.
-1. Vyberte **z místního souboru**a potom vyberte **Procházet** a vyberte soubor.
+1. Vyberte **z místního souboru** a potom vyberte **Procházet** a vyberte soubor.
 1. Ujistěte se, že jste jako typ pro datovou sadu vybrali **obecný soubor CSV s hlavičkou (. csv)** .
 1. Zaškrtněte políčko.
 1. Po nahrání datové sady byste měli po výběru karty datové **sady** zobrazit novou datovou sadu.
@@ -159,7 +159,7 @@ Teď, když máme nějaká data v Machine Learning Studio (Classic), musíme vyt
 1. Přetáhněte do experimentu **csdairydata.csv datovou sadu** .
 1. V poli **Hledat položky experimentu** v horní části levého podokna zadejte příkaz [Spustit skript jazyka R][execute-r-script]. Modul se zobrazí v seznamu hledání.
 1. Přetáhněte na paletu modul [spuštění skriptu jazyka R][execute-r-script] .
-1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo (**DataSet1.**) [skriptu Execute jazyka R][execute-r-script].
+1. Připojte výstup **csdairydata.csv datové sady** ke vstupu úplně vlevo ( **DataSet1.** ) [skriptu Execute jazyka R][execute-r-script].
 1. Vyberte **Uložit**.
 
 V tomto okamžiku by experiment měl vypadat podobně jako v tomto příkladu.
@@ -169,7 +169,7 @@ V tomto okamžiku by experiment měl vypadat podobně jako v tomto příkladu.
 
 #### <a name="check-on-the-data"></a>Kontrolovat data
 
-Pojďme se podívat na data, která jsme načetli do našeho experimentu. V experimentu vyberte výstup **cadairydata.csv datové sady**a vyberte **vizualizovat**. Mělo by se zobrazit něco jako v tomto souhrnu.
+Pojďme se podívat na data, která jsme načetli do našeho experimentu. V experimentu vyberte výstup **cadairydata.csv datové sady** a vyberte **vizualizovat**. Mělo by se zobrazit něco jako v tomto souhrnu.
 
 ![Snímek obrazovky, který zobrazuje souhrn cadairydata.csv datové sady.](./media/r-quickstart/fig4.png)
 
@@ -1029,10 +1029,10 @@ Tato funkce generuje následující výstup.
 ##
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
-## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 ***
-## Time              1.63e-09   1.72e-10    9.47   <2e-16 ***
+## (Intercept)       6.33e+00   1.45e-01   43.60   <2e-16 **_
+## Time              1.63e-09   1.72e-10    9.47   <2e-16 _*_
 ## I(Month.Count^2) -1.71e-06   4.89e-06   -0.35    0.726
-## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 *  
+## I(Month.Count^3) -3.24e-08   1.49e-08   -2.17    0.031 _  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
@@ -1062,10 +1062,10 @@ Tato funkce generuje následující výstup.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## (Intercept)       6.38e+00   4.07e-02   156.6   <2e-16 ***
-## Time              1.57e-09   4.32e-11    36.3   <2e-16 ***
-## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 ***
+## Time              1.57e-09   4.32e-11    36.3   <2e-16 **_
+## I(Month.Count^3) -3.76e-08   2.50e-09   -15.1   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0417 on 213 degrees of freedom
 ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
@@ -1113,21 +1113,21 @@ Tato funkce generuje následující výstup.
 ## Coefficients:
 ##                   Estimate Std. Error t value Pr(>|t|)
 ## Time              1.57e-09   2.72e-11    57.7   <2e-16 ***
-## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 ***
-## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 ***
-## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 ***
-## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 ***
-## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 ***
-## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 ***
-## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 ***
-## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 ***
-## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 ***
-## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 ***
-## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 ***
-## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 ***
-## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 ***
+## I(Month.Count^3) -3.74e-08   1.57e-09   -23.8   <2e-16 **_
+## MonthApr          6.40e+00   2.63e-02   243.3   <2e-16 _*_
+## MonthAug          6.38e+00   2.63e-02   242.2   <2e-16 _*_
+## MonthDec          6.38e+00   2.64e-02   241.9   <2e-16 _*_
+## MonthFeb          6.31e+00   2.63e-02   240.1   <2e-16 _*_
+## MonthJan          6.39e+00   2.63e-02   243.1   <2e-16 _*_
+## MonthJul          6.39e+00   2.63e-02   242.6   <2e-16 _*_
+## MonthJun          6.38e+00   2.63e-02   242.4   <2e-16 _*_
+## MonthMar          6.42e+00   2.63e-02   244.2   <2e-16 _*_
+## MonthMay          6.43e+00   2.63e-02   244.3   <2e-16 _*_
+## MonthNov          6.34e+00   2.63e-02   240.6   <2e-16 _*_
+## MonthOct          6.37e+00   2.63e-02   241.8   <2e-16 _*_
+## MonthSep          6.34e+00   2.63e-02   240.6   <2e-16 _*_
 ## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '_*_' 0.001 '_*' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ##
 ## Residual standard error: 0.0263 on 202 degrees of freedom
 ## Multiple R-squared:     1,    Adjusted R-squared:     1
@@ -1276,9 +1276,9 @@ Z těchto výsledků vidíte, že přidání sezónních faktorů do modelu sni�
 
 RStudio je dobře zdokumentováná. Tady jsou některé odkazy na klíčové oddíly dokumentace k RStudio, které vám pomohou začít.
 
-* **Vytváření projektů**: pomocí RStudio můžete organizovat a spravovat kód R v projektech. Další informace naleznete v tématu [using Projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Postupujte podle těchto pokynů a vytvořte projekt pro příklady kódu R v tomto článku.
-* **Upravit a spustit kód r**: RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Další informace naleznete v tématu [Editing and vykonávající Code](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Ladění**: RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích naleznete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Vytváření projektů** : pomocí RStudio můžete organizovat a spravovat kód R v projektech. Další informace naleznete v tématu [using Projects](https://support.rstudio.com/hc/articles/200526207-Using-Projects). Postupujte podle těchto pokynů a vytvořte projekt pro příklady kódu R v tomto článku.
+* **Upravit a spustit kód r** : RStudio poskytuje integrované prostředí pro úpravy a spouštění kódu r. Další informace naleznete v tématu [Editing and vykonávající Code](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Ladění** : RStudio zahrnuje výkonné funkce ladění. Další informace o těchto funkcích naleznete v tématu [ladění pomocí RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio). Informace o funkcích řešení potíží s zarážkou najdete v tématu [řešení potíží s zarážkou](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
 
 ## <a name="further-reading"></a><a id="appendixb"></a>Další čtení
 

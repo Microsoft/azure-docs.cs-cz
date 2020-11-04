@@ -11,23 +11,23 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542087"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325388"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Partneři pro správu dat ve službě Azure synapse Analytics
 
 Tento článek popisuje partnerské společnosti Microsoftu s nástroji pro správu dat a řešeními podporujícími Azure synapse.
 
 ## <a name="data-management-partners"></a>Partneři pro správu dat
-| Partner | Description | Odkaz na web/produkt |
+| Partner | Popis | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity je nástroj pro vývoj analýz, který přináší celou sílu synapse platformy Microsoftu v rukou analytiků a inženýrů. Bohatá a intuitivní prostředí SQL pro vývoj umožňuje členům týmu připojit se k více než desítkovým špičkovým analytickým platformám, ingestovat data v nejrůznějších formátech a rychle sestavovat složitý výpočet, který poskytuje výsledky do Business Intelligence a Machine Learning případy použití. Celá aplikace je postavená kolem centrálního katalogu, který umožňuje spolupráci napříč týmem analýzy a sofistikované možnosti správy a jemně odstupňované zabezpečení, které Breeze zásad správného řízení. |[Stránka produktu](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation Data Catalog výrazně zlepšuje produktivitu, zvyšuje přesnost a zaznamená si, že pro analytiky zaznamená rozhodování na základě dat. Alation Data Catalog umožňuje všem uživatelům ve vaší organizaci vyhledávat, rozumět a řídit data. |[Stránka produktu](https://www.alation.com/product/data-catalog/)<br> |
-| ![Datové sklady ve formátu COFF](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Datové sklady ve formátu COFF**<br>Datové sklady ve formátu COFF poskytují Nexus chameleon, což je nástroj s 10 lety návrhu vyhrazeným pro dotazy na systémy. Nexus je k dispozici jako dotazovací Nástroj pro fond Azure synapse SQL. Nexus slouží k dotazování interních a cloudových počítačů a spojování dat napříč různými platformami. Klikněte na položku sestava. |[Stránka produktu](https://www.coffingdw.com/software/nexus/)<br> |
+| ![Datové sklady ve formátu COFF](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Datové sklady ve formátu COFF**<br>Datové sklady ve formátu COFF poskytují Nexus chameleon, což je nástroj s 10 lety návrhu vyhrazeným pro dotazy na systémy. Nexus je k dispozici jako dotazovací Nástroj pro vyhrazený fond SQL ve službě Azure synapse Analytics. Nexus slouží k dotazování interních a cloudových počítačů a spojování dat napříč různými platformami. Klikněte na položku sestava. |[Stránka produktu](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD poskytuje nástroje, které potřebujete k vytvoření přesného datového modelu, k omezení redundance dat, zvýšení produktivity a ke sledování standardů. Pomocí svého uživatelského rozhraní, které bylo vyvinuto na základě rozsáhlého uživatelského prostředí, může Modelátor pracovat na modelech databáze snadno a pohodlně. Můžete nepřetržitě využívat nové a vylepšené funkce MicroERD prostřednictvím vylepšení funkcí a aktualizací. |[Stránka produktu](http://microerd.com/)<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |**Infolibrarian (Server pro správu metadat)**<br>InfoLibrarian katalogy, obchody a spravuje metadata, které vám pomůžou vyřešit klíčové body správy dat. Infolibrarian poskytuje řešení pro správu metadat, řízení dat a správu prostředků pro správu a publikování metadat z nejrůznějších nástrojů a technologií. |[Stránka produktu](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
 | ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |**Kyligence**<br>Kyligence je na základě tvůrců Apache Kylin na poslání, aby urychlila produktivitu svých zákazníků tím, že automatizuje správu dat, zjišťování, interakci a generování Insight – to vše bez překážek. Kyligence Cloud umožňuje nasazení clusteru, vylepšuje přístup k datům a významně zrychluje analýzu dat. Platforma pro správu velkých objemů dat v Kyligence AI přináší často náročný úkol na vytváření datových laků na podnikové úrovni v rychlém a snadném měřítku.|[Stránka produktu](https://kyligence.io/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |

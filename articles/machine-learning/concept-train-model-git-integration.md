@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f13773a8e3e78451dfb587e55c40a20d1b4b385c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275961"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324760"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
 
@@ -39,7 +39,7 @@ Další informace o klonování najdete v příručce k použití rozhraní př�
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>Ověření účtu Git pomocí SSH
 ### <a name="generate-a-new-ssh-key"></a>Vygenerovat nový klíč SSH
-1) [Otevřete okno terminálu](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) na kartě Poznámkový blok Azure Machine Learning.
+1) [Otevřete okno terminálu](./how-to-run-jupyter-notebooks.md#terminal) na kartě Poznámkový blok Azure Machine Learning.
 
 2) Níže vložte text a nahraďte svou e-mailovou adresu.
 
@@ -89,7 +89,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
 
-+ [DevOps Azure](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Začněte v **kroku 2**.
++ [DevOps Azure](/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Začněte v **kroku 2**.
 
 + [Bitbucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Začněte v **kroku 4**.
 
@@ -115,7 +115,7 @@ Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of know
 
 SSH může zobrazit otisk prstu serveru SSH a požádat ho o ověření. Měli byste ověřit, že zobrazený otisk prstu odpovídá jednomu otisku prstu na stránce veřejných klíčů SSH.
 
-SSH zobrazí tento otisk prstu, když se připojí k neznámému hostiteli, aby vás chránil před [útoky](https://technet.microsoft.com/library/cc959354.aspx)prostředníkem. Až přijměte otisk prstu hostitele, SSH se znovu nezobrazí, pokud se otisk prstu nezmění.
+SSH zobrazí tento otisk prstu, když se připojí k neznámému hostiteli, aby vás chránil před [útoky](/previous-versions/windows/it-pro/windows-2000-server/cc959354(v=technet.10))prostředníkem. Až přijměte otisk prstu hostitele, SSH se znovu nezobrazí, pokud se otisk prstu nezmění.
 
 3) Až se zobrazí dotaz, jestli chcete pokračovat v připojování, zadejte `yes` . Git naklonuje úložiště a nastaví počáteční vzdálenou aplikaci pro připojení k SSH pro budoucí příkazy Gitu.
 
@@ -123,7 +123,7 @@ SSH zobrazí tento otisk prstu, když se připojí k neznámému hostiteli, aby 
 
 Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
@@ -150,12 +150,12 @@ Pokud vaše školicí soubory nejsou umístěny v úložišti Git ve vašem výv
 
 Informace Git se ukládají do vlastností pro školicí běh. Tyto informace můžete zobrazit pomocí Azure Portal, sady Python SDK a rozhraní příkazového řádku. 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Na [portálu Studio](https://ml.azure.com)vyberte svůj pracovní prostor.
-1. Vyberte __experimenty__a pak vyberte jeden z experimentů.
+1. Vyberte __experimenty__ a pak vyberte jeden z experimentů.
 1. Vyberte jedno z běhů ze sloupce __číslo běhu__ .
-1. Vyberte možnost __výstupy + protokoly__a potom rozbalte položku __protokoly__ a položky __AzureML__ . Vyberte odkaz, který začíná na __ ### \_ Azure__.
+1. Vyberte možnost __výstupy + protokoly__ a potom rozbalte položku __protokoly__ a položky __AzureML__ . Vyberte odkaz, který začíná na __### \_ Azure__.
 
 Protokolované informace obsahují text podobný následujícímu formátu JSON:
 
@@ -178,13 +178,13 @@ Protokolované informace obsahují text podobný následujícímu formátu JSON:
 
 ### <a name="python-sdk"></a>Python SDK
 
-Po odeslání školicího běhu se vrátí objekt [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) . `properties`Atribut tohoto objektu obsahuje protokolované informace Gitu. Například následující kód načte hodnotu hash potvrzení:
+Po odeslání školicího běhu se vrátí objekt [Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) . `properties`Atribut tohoto objektu obsahuje protokolované informace Gitu. Například následující kód načte hodnotu hash potvrzení:
 
 ```python
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 `az ml run`Příkaz CLI lze použít k načtení vlastností z běhu. Například následující příkaz vrátí vlastnosti posledního spuštění v experimentu s názvem `train-on-amlcompute` :
 
@@ -192,7 +192,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Další informace najdete v referenční dokumentaci [AZ ml Run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) reference.
+Další informace najdete v referenční dokumentaci [AZ ml Run](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest) reference.
 
 ## <a name="next-steps"></a>Další kroky
 

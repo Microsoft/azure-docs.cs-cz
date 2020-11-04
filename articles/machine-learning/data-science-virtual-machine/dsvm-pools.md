@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789c6c36def21bfe1c2acc8797c1847455a5c86c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708964"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324399"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu Virtual Machines pro datové vědy
 
@@ -27,7 +27,7 @@ K vytvoření fondu DSVMs můžete použít spoustu metod a technologií. Tento 
 
 Fond interaktivních virtuálních počítačů, které jsou sdíleny celým týmem AI nebo pro datové vědy, umožňuje uživatelům přihlásit se k dostupné instanci DSVM místo toho, aby měli vyhrazenou instanci pro každou skupinu uživatelů. Tato instalace umožňuje lepší dostupnost a efektivnější využití prostředků.
 
-K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) . Sady škálování můžete použít k vytvoření a správě skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatického škálování.
+K vytvoření interaktivního fondu virtuálních počítačů použijete technologii [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) . Sady škálování můžete použít k vytvoření a správě skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatického škálování.
 
 Uživatel se přihlásí k IP adrese nebo adrese DNS hlavního fondu. Sada škálování automaticky směruje relaci k dostupnému DSVM v sadě škálování. Vzhledem k tomu, že uživatelé chtějí konzistentní a známé prostředí bez ohledu na virtuální počítač, ke kterému se přihlásí, všechny instance virtuálního počítače v sadě škálování připojí sdílenou síťovou jednotku, třeba sdílenou složku služby soubory Azure nebo sdílenou složku NFS (Network File System). Sdílený pracovní prostor uživatele je obvykle uložen ve sdíleném úložišti souborů, které je připojeno ke každé z těchto instancí.
 
@@ -53,7 +53,7 @@ Předchozí šablona umožňuje, aby se protokol SSH a JupyterHub z front-endov�
 
 [Skript, který připojuje sdílenou složku služby soubory Azure,](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) je také k dispozici v úložišti Azure DataScienceVM na GitHubu. Skript připojí sdílenou složku souborů Azure v zadaném přípojném bodu v souboru parametrů. Skript také vytvoří v domovském adresáři počátečního uživatele předběžné odkazy na připojenou jednotku. Adresář notebooků konkrétního uživatele ve sdílené složce služby soubory Azure je podmíněně propojený s `$HOME/notebooks/remote` adresářem, aby uživatelé mohli přistupovat k Jupyter notebookům a jejich spouštění a ukládat je. Stejnou konvenci můžete použít při vytváření dalších uživatelů na virtuálním počítači, aby odkazovaly na pracovní prostor Jupyter jednotlivých uživatelů na sdílenou složku služby soubory Azure.
 
-Sada škálování virtuálních počítačů podporuje automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Můžete například snížit kapacitu na nulové instance a ušetřit tak náklady na cloudové využití hardwaru v případě, že se virtuální počítače vůbec nepoužívají. Stránky dokumentace sady Virtual Machine Scale Sets poskytují podrobné kroky pro automatické [škálování](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Sada škálování virtuálních počítačů podporuje automatické škálování. Můžete nastavit pravidla, kdy vytvořit další instance a kdy se má škálovat instance. Můžete například snížit kapacitu na nulové instance a ušetřit tak náklady na cloudové využití hardwaru v případě, že se virtuální počítače vůbec nepoužívají. Stránky dokumentace sady Virtual Machine Scale Sets poskytují podrobné kroky pro automatické [škálování](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

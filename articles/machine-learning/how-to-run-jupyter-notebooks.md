@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628673"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325417"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Spouštění poznámkových bloků Jupyter ve vlastním pracovním prostoru
 
@@ -32,7 +32,7 @@ Podívejte se, jak můžete:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://aka.ms/AMLFree), ještě než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a> Vytvoření poznámkových bloků
@@ -42,7 +42,7 @@ V pracovním prostoru Azure Machine Learning vytvořte nový Poznámkový blok J
 Vytvoření nového poznámkového bloku: 
 
 1. Otevřete pracovní prostor v [Azure Machine Learning Studiu](https://ml.azure.com).
-1. Na levé straně vyberte **poznámkové bloky** . 
+1. Na levé straně vyberte **poznámkové bloky**. 
 1. Vyberte ikonu  **vytvořit nový soubor** nad seznamem **uživatelských souborů** v části **Moje soubory** .
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Create new file":::
@@ -50,7 +50,7 @@ Vytvoření nového poznámkového bloku:
 1. Pojmenujte soubor. 
 1. Pro Jupyter Notebook soubory vyberte jako typ souboru **Poznámkový blok** .
 1. Vyberte adresář souborů.
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
 Můžete také vytvořit textové soubory.  Jako typ souboru vyberte **text** a rozšíření přidejte k názvu (například myfile.py nebo myfile.txt).  
 
@@ -75,16 +75,16 @@ Ke všem operacím Git můžete přistupovat pomocí okna terminálu. Všechny s
 Přístup k terminálu:
 
 1. Otevřete pracovní prostor v [Azure Machine Learning Studiu](https://ml.azure.com).
-1. Na levé straně vyberte **poznámkové bloky** .
+1. Na levé straně vyberte **poznámkové bloky**.
 1. Vyberte libovolný Poznámkový blok umístěný v části **soubory uživatelů** na levé straně.  Pokud tam nemáte žádné poznámkové bloky, [vytvořte nejdřív Poznámkový blok](#create) .
 1. Vyberte **výpočetní** cíl nebo vytvořte nový a počkejte, než se spustí.
 1. Vyberte ikonu **otevřeného terminálu** .
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Create new file":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Otevření terminálu":::
 
-1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál** .
+1. Pokud ikonu nevidíte, vyberte **...** napravo od cíle výpočtů a pak vyberte **otevřít terminál**.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Create new file":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Otevřít terminál z...":::
 
 
 Přečtěte si další informace o [klonování úložišť Git do systému souborů pracovního prostoru](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
@@ -116,7 +116,7 @@ Pomocí detailního režimu můžete rozšířit aktuální zobrazení, abyste s
 1. Na panelu nástrojů okna terminálu vyberte **detailní režim** pro zapnutí detailního režimu. V závislosti na šířce okna se to může nacházet pod položkou nabídky **...** na panelu nástrojů.
 1. V detailním režimu se po výběru **standardního zobrazení** vraťte do standardního zobrazení.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Create new file":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="Přepnout detailní režim nebo standardní zobrazení":::
 
 
 ### <a name="use-intellisense"></a>Používání technologie IntelliSense
@@ -136,7 +136,7 @@ V průběhu vytváření poznámkového bloku obvykle skončíte s buňkami, kte
 1. Spusťte všechny buňky v poznámkovém bloku.
 1. Vyberte buňku obsahující kód, který chcete spustit pro nový Poznámkový blok. Například kód, který odesílá experiment, nebo možná kód, který registruje model.
 1. Vyberte ikonu **shromáždit** , která se zobrazí na panelu nástrojů buňky.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Create new file":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Snímek obrazovky: výběr ikony shromáždění":::
 1. Zadejte název nového poznámkového bloku "shromážděného".  
 
 Nový Poznámkový blok obsahuje jenom buňky kódu se všemi buňkami, které jsou potřebné k vytvoření stejných výsledků jako buňky, kterou jste vybrali pro shromažďování.
@@ -147,7 +147,7 @@ Azure Machine Learning vytvoří soubor kontrolního bodu při vytváření soub
 
 Na panelu nástrojů poznámkového bloku vyberte nabídku a pak **soubor &gt; uložte a kontrolní bod** , abyste ručně uložili Poznámkový blok a přidali do něj soubor kontrolního bodu, který je přidružený k poznámkovému bloku.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Create new file":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Snímek obrazovky s nástrojem pro uložení v panelu nástrojů Poznámkový blok":::
 
 Každý Poznámkový blok se automaticky uloží každých 30 sekund. Automatické ukládání aktualizuje pouze počáteční soubor *ipynb* , nikoli soubor kontrolního bodu.
  
@@ -180,15 +180,15 @@ Poznámkové bloky **uživatelských souborů** *můžete* odstranit některým 
 Chcete-li spustit experiment z poznámkového bloku, nejprve se připojíte ke spuštěné [výpočetní instanci](concept-compute-instance.md). Pokud nemáte výpočetní instanci, vytvořte ji pomocí těchto kroků: 
 
 1. Vyberte **+** na panelu nástrojů Poznámkový blok. 
-2. Pojmenujte výpočetní prostředky a vyberte **Velikost virtuálního počítače** . 
-3. Vyberte **Vytvořit** .
+2. Pojmenujte výpočetní prostředky a vyberte **Velikost virtuálního počítače**. 
+3. Vyberte **Vytvořit**.
 4. Instance služby COMPUTE se automaticky připojí k poznámkovému bloku a vy teď můžete spouštět své buňky.
 
 Pouze můžete zobrazit a použít výpočetní instance, které vytvoříte.  Vaše **uživatelské soubory** jsou uložené odděleně od virtuálního počítače a sdílí se mezi všemi výpočetními instancemi v pracovním prostoru.
 
 ### <a name="view-logs-and-output"></a>Zobrazit protokoly a výstup
 
-Pomocí [widgetů poznámkového bloku](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
+Pomocí [widgetů poznámkového bloku](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) můžete zobrazit průběh běhu a protokolů. Pomůcka je asynchronní a poskytuje aktualizace až do dokončení školení. Pomůcky Azure Machine Learning jsou také podporovány v Jupyter a JupterLab.
 
 ## <a name="change-the-notebook-environment"></a>Změna prostředí poznámkového bloku
 

@@ -1,6 +1,6 @@
 ---
 title: Použití transakcí
-description: Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
+description: Tipy pro implementaci transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics pro vývoj řešení
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: de36d1eda21903480eee986df72c5274e1aa6dff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288609"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323844"
 ---
-# <a name="use-transactions-in-sql-pool"></a>Použít transakce ve fondu SQL
+# <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Použití transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics
 
-Tipy pro implementaci transakcí ve fondu SQL (datový sklad) pro vývoj řešení
+Tipy pro implementaci transakcí s vyhrazeným fondem SQL ve službě Azure synapse Analytics pro vývoj řešení
 
 ## <a name="what-to-expect"></a>Co očekávat
 
-Jak byste očekávali, fond SQL podporuje transakce jako součást úlohy datového skladu. Pokud ale chcete mít jistotu, že se výkon fondu SQL udržuje v měřítku, některé funkce jsou v porovnání s SQL Server omezené. Tento článek popisuje rozdíly a seznam ostatních.
+Jak očekáváte, vyhrazený fond SQL podporuje transakce jako součást úlohy datového skladu. Pokud ale chcete mít jistotu, že se výkon vyhrazeného fondu SQL zachová, jsou v porovnání s SQL Server omezeny některé funkce. Tento článek popisuje rozdíly a seznam ostatních.
 
 ## <a name="transaction-isolation-levels"></a>Úrovně izolace transakce
 
@@ -92,7 +92,7 @@ Chcete-li optimalizovat a minimalizovat množství dat zapsaných do protokolu, 
 Fond SQL používá funkci XACT_STATE () k ohlášení neúspěšné transakce pomocí hodnoty 2. Tato hodnota znamená, že transakce se nezdařila a je označena pouze pro vrácení zpět.
 
 > [!NOTE]
-> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. Ale fond SQL to neumožňuje. Pokud dojde k chybě uvnitř transakce fondu SQL, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
+> Použití-2 funkcí XACT_STATE k označení neúspěšné transakce představuje jiné chování pro SQL Server. SQL Server používá hodnotu-1 pro reprezentaci transakce nesvěřené. SQL Server může tolerovat některé chyby v transakci, aniž by bylo nutné je označit jako nepotvrzené. Například `SELECT 1/0` by došlo k chybě, ale nevynucují transakci do nepotvrzeného stavu. SQL Server také povoluje čtení v nesvěřené transakci. Vyhrazený fond SQL ho ale neumožňuje. Pokud dojde k chybě uvnitř vyhrazené transakce fondu SQL, automaticky vstoupí do stavu-2 a dokud se příkaz nevrátí zpět, nebude možné provést žádné další příkazy SELECT. Je proto důležité zkontrolovat, zda kód aplikace používá XACT_STATE (), protože může být nutné provést úpravy kódu.
 
 Například v SQL Server se může zobrazit transakce, která vypadá takto:
 
@@ -138,7 +138,7 @@ Msg 111233, úroveň 16, stav 1, řádek 1 111233; Aktuální transakce byla př
 
 Výstup funkcí ERROR_ * se nezobrazuje.
 
-V rámci fondu SQL je nutné kód mírně změnit:
+V vyhrazeném fondu SQL musí být kód mírně pozměněn:
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ Všechny, které se změnily, je, že vrácení transakce se musí nacházet př
 
 ## <a name="error_line-function"></a>Error_Line () – funkce
 
-Také je třeba poznamenat, že fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tuto funkci v kódu, je nutné ji odebrat, aby byla kompatibilní s fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další informace najdete v článku s [popisem](develop-label.md) .
+Také je třeba poznamenat, že vyhrazený fond SQL neimplementuje ani nepodporuje funkci ERROR_LINE (). Pokud máte tuto funkci v kódu, je nutné ji odebrat, aby byla kompatibilní s vyhrazeným fondem SQL. Místo toho použijte pro implementaci ekvivalentních funkcí popisky dotazů ve svém kódu. Další informace najdete v článku s [popisem](develop-label.md) .
 
 ## <a name="use-of-throw-and-raiserror"></a>Použití THROW a RAISERROR
 
-THROW je moderní implementace pro vyvolávání výjimek ve fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
+THROW je moderní implementace pro vyvolávání výjimek ve vyhrazeném fondu SQL, ale je také podporována příkaz RAISERROR. Existuje několik rozdílů, které jsou pro vás za platební pozornost.
 
 * Uživatelem definované chybové zprávy nemohou být v rozsahu 100 000-150 000 pro THROW
 * Chybové zprávy RAISERROR jsou opraveny na 50 000
@@ -204,4 +204,4 @@ Fond SQL má několik dalších omezení týkajících se transakcí. Jsou to ty
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL na vyžádání (Preview)](best-practices-sql-on-demand.md).
+Další informace o optimalizaci transakcí naleznete v tématu [osvědčené postupy pro transakce](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). K dispozici jsou i další Příručky k osvědčeným postupům pro [fond SQL](best-practices-sql-pool.md) a [SQL Server bez serveru (Preview)](best-practices-sql-on-demand.md).

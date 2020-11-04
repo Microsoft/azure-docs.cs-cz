@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012754"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323015"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX a Azure Machine Learning: vytváření a zrychlení modelů ML
 
@@ -29,9 +29,9 @@ Společnost Microsoft a komunitní partneři vytvořili ONNX jako open standard 
 [ONNX runtime](https://onnxruntime.ai) je vysoce výkonný modul odvození pro nasazení modelů ONNX do produkčního prostředí. Je optimalizovaný pro Cloud i Edge a funguje v systémech Linux, Windows a Mac. Napsaný v jazyce C++ obsahuje také rozhraní API jazyka C, Python, C#, Java a JavaScriptu (Node.js) pro použití v různých prostředích. ONNX runtime podporuje modely DNN a tradiční ML a integruje se s akcelerátory na jiném hardwaru, jako je TensorRT v GPU GPU, OpenVINO na procesorech Intel, DirectML ve Windows a dalších. Pomocí modulu runtime ONNX můžete využívat rozsáhlé Optimalizace produkčních funkcí, testování a průběžná vylepšení.
 
 ONNX runtime se používá v vysoce škálovatelných službách Microsoftu, jako je Bing, Office a Azure Cognitive Services. Zvýšení výkonu závisí na několika faktorech, ale tyto služby společnosti Microsoft viděli __průměrně dvojnásobný výkon na procesoru__. Kromě Azure Machine Learning služeb běží modul runtime ONNX také v dalších produktech, které podporují Machine Learning úlohy, včetně:
-+ Windows: modul runtime je integrovaný do Windows jako součást [windows Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) a běží na stovkách milionů zařízení. 
-+ Produktová řada Azure SQL: Spusťte nativní hodnocení dat ve [službě Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) a [spravované instanci Azure SQL](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview).
-+ ML.NET: [spouštějte modely ONNX v ml.NET](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx).
++ Windows: modul runtime je integrovaný do Windows jako součást [windows Machine Learning](/windows/ai/windows-ml/) a běží na stovkách milionů zařízení. 
++ Produktová řada Azure SQL: Spusťte nativní hodnocení dat ve [službě Azure SQL Edge](../azure-sql-edge/onnx-overview.md) a [spravované instanci Azure SQL](../azure-sql/managed-instance/machine-learning-services-overview.md).
++ ML.NET: [spouštějte modely ONNX v ml.NET](/dotnet/machine-learning/tutorials/object-detection-onnx).
 
 
 [![ONNX Flow diagram znázorňující školení, převaděče a nasazení](./media/concept-onnx/onnx.png)](././media/concept-onnx/onnx.png#lightbox)
@@ -42,7 +42,7 @@ Modely ONNX můžete získat několika způsoby:
 + Výuka nového modelu ONNX v Azure Machine Learning (podívejte se na příklady na konci tohoto článku) nebo pomocí [automatických funkcí Machine Learning](concept-automated-ml.md#automl--onnx)
 + Převést existující model z jiného formátu na ONNX (viz [kurzy](https://github.com/onnx/tutorials)) 
 + Získání předem připraveného modelu ONNX z modelu ONNX ve službě | [zoologického](https://github.com/onnx/models) navýšení
-+ Generování přizpůsobeného modelu ONNX ze [služby Azure Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Generování přizpůsobeného modelu ONNX ze [služby Azure Custom Vision](../cognitive-services/custom-vision-service/index.yml) 
 
 Mnoho modelů, včetně klasifikace obrázků, detekce objektů a zpracování textu, lze znázornit jako ONNX modely. Pokud narazíte na problém s modelem, který nelze úspěšně převést, uveďte problém na GitHubu příslušného převaděče, který jste použili. Existující model formátu můžete dál používat, dokud se problém nevyřeší.
 
@@ -98,5 +98,3 @@ Další informace o **ONNX** nebo přispívání do projektu:
 Další informace o **modulu runtime ONNX** nebo o přispívání do projektu:
 + [Web projektu modulu runtime ONNX](https://onnxruntime.ai)
 + [Úložiště GitHub pro ONNX runtime](https://github.com/Microsoft/onnxruntime)
-
-

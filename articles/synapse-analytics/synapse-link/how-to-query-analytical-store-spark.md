@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287725"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322582"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interakce s Azure Cosmos DB pomocí Apache Spark v propojení Azure synapse (Preview)
 
@@ -39,7 +39,7 @@ Při **načítání do datového rámce Sparku** jsou načtená metadata uložen
 
 V případě **vytvoření tabulky Sparku** se metadata o stavu analytického úložiště neukládají do mezipaměti Sparku, ale znovu se načtou při každém spuštění dotazu SparkSQL do tabulky Sparku.
 
-Můžete si tedy vybrat, jestli načtete datový rámec Sparku nebo vytvoříte tabulku Sparku podle toho, jestli chcete k vyhodnocení analýzy Sparku použít pevně daný snímek analytického úložiště nebo jeho nejnovější snímek.
+Můžete si tedy vybrat, jestli načtete datový rámec Sparku, nebo vytvoříte tabulku Sparku podle toho, jestli chcete k vyhodnocení analýzy Sparku použít pevně daný snímek analytického úložiště nebo jeho nejnovější snímek.
 
 > [!NOTE]
 > Pokud chcete zadat dotaz na rozhraní Azure Cosmos DB API účtů Mongo DB, přečtěte si další informace o [úplném vyjádření schématu přesnosti](../../cosmos-db/analytical-store-introduction.md#analytical-schema) v analytickém úložišti a o rozšířených názvech vlastností, které se mají použít.
@@ -209,7 +209,7 @@ V tomto příkladu se dozvíte, jak odkazovat na externí knihovny ze souborů J
     ]
 }
 ```
-Pokud chcete odesílat definice vzdálených úloh Sparku do fondu Spark synapse, můžete se dozvědět, jak odkazovat na externí knihovny pomocí tohoto [kurzu](../spark/apache-spark-job-definitions.md).
+Pokud chcete odesílat definice vzdálených úloh Sparku do fondu Apache Spark bez serveru, můžete se dozvědět, jak odkazovat na externí knihovny pomocí tohoto [kurzu](../spark/apache-spark-job-definitions.md).
 
 ## <a name="next-steps"></a>Další kroky
 

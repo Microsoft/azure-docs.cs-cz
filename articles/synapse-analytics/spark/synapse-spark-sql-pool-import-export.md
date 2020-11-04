@@ -1,6 +1,6 @@
 ---
-title: Import a export dat mezi fondy Spark (Preview) a fondy SQL
-description: Tento článek poskytuje informace o tom, jak používat vlastní konektor pro přesouvání dat mezi fondy SQL a fondy Spark (Preview).
+title: Import a export dat mezi servery Apache Spark fondy bez serveru (Preview) a fondy SQL
+description: Tento článek poskytuje informace o tom, jak používat vlastní konektor pro přesun dat mezi vyhrazenými fondy SQL a fondy bez serveru Apache Spark (Preview).
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91259913"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323892"
 ---
 # <a name="introduction"></a>Úvod
 
-Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Spark (Preview) a fondy SQL ve službě Azure synapse. Služba Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na fondech SQL, ale nefunguje s SQL na vyžádání.
+Azure synapse Apache Spark pro synapse SQL Connector je navržený tak, aby efektivně přenesl data mezi fondy Apache Spark serverů bez serveru (Preview) a fondy SQL ve službě Azure synapse. Azure synapse Apache Spark pro synapse SQL Connector funguje jenom na vyhrazených fondech SQL, ale nefunguje s fondem SQL bez serveru.
 
 ## <a name="design"></a>Návrh
 
 Přenos dat mezi fondy Spark a fondy SQL se dá provést pomocí JDBC. Nicméně u dvou distribuovaných systémů, jako jsou Spark a SQL, je JDBC kritickým bodem pro přenos dat pomocí sériového přenosu dat.
 
-Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen2 a základnu v fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL synapse.
+Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen2 a základnu ve vyhrazených fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL synapse.
 
 ![Architektura konektoru](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -32,7 +32,7 @@ Azure synapse Apache Spark fond až synapse SQL Connector je implementace zdroje
 
 Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Služba tokenů se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu.
 
-Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
+Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je služba Azure AD-Auth nakonfigurovaná na účtu úložiště a na serveru datového skladu. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
 
 ## <a name="constraints"></a>Omezení
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí poznámkového bloku.
 
-### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL připojeného k pracovnímu prostoru
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-attached-within-the-workspace"></a>Přenos dat do nebo z vyhrazeného fondu SQL připojeného v pracovním prostoru
 
 > [!NOTE]
 > **V prostředí poznámkových blocích nejsou importy nutné.**
@@ -91,12 +91,12 @@ Výše uvedené rozhraní API bude fungovat pro interní (spravované) i extern�
 df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-Rozhraní Write API vytvoří tabulku ve fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve fondu SQL nebo může být vrácena chyba oznamující, že objekt s názvem již existuje...
+Rozhraní Write API vytvoří tabulku ve vyhrazeném fondu SQL a potom vyvolá základ, aby data načetla.  Tabulka nesmí existovat ve vyhrazeném fondu SQL, jinak se vrátí chyba oznamující, že objekt s názvem již existuje...
 
 Hodnoty TableType
 
-- Konstanty. interní spravovaná tabulka ve fondu SQL
-- Konstanty. EXTERNAL – externí tabulka ve fondu SQL
+- Konstanty. interní spravovaná tabulka ve vyhrazeném fondu SQL
+- Konstanty. EXTERNAL – externí tabulka ve vyhrazeném fondu SQL
 
 Tabulka spravovaná fondem SQL
 
@@ -106,10 +106,10 @@ df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 
 Externí tabulka fondu SQL
 
-Aby bylo možné zapisovat do externí tabulky fondu SQL, externí zdroj dat a externí formát souboru musí existovat ve fondu SQL.  Další informace najdete v [tématu Vytvoření externího zdroje dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a [formátů externích souborů](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ve fondu SQL.  Níže jsou uvedeny příklady pro vytvoření externího zdroje dat a formátů externích souborů ve fondu SQL.
+Chcete-li zapisovat do vyhrazené externí tabulky fondu SQL, externí zdroj dat a externí formát souboru musí existovat ve vyhrazeném fondu SQL.  Další informace najdete v [tématu Vytvoření externího zdroje dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) a [externích formátů souborů](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ve vyhrazeném fondu SQL.  Níže jsou uvedeny příklady pro vytvoření externího zdroje dat a externích formátů souborů ve vyhrazeném fondu SQL.
 
 ```sql
---For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+--For an external table, you need to pre-create the data source and file format in dedicated SQL pool using SQL queries:
 CREATE EXTERNAL DATA SOURCE <DataSourceName>
 WITH
   ( LOCATION = 'abfss://...' ,
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL mimo pracovní prostor
+### <a name="transfer-data-to-or-from-a-dedicated-sql-pool-or-database-outside-the-workspace"></a>Přenos dat do nebo z vyhrazeného fondu nebo databáze SQL mimo pracovní prostor
 
 > [!NOTE]
 > V prostředí poznámkových blocích nejsou importy nutné.
@@ -160,11 +160,11 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-sql-auth-instead-of-aad"></a>Místo AAD použít ověřování SQL
+### <a name="use-sql-auth-instead-of-azure-ad"></a>Použití ověřování SQL místo Azure AD
 
 #### <a name="read-api"></a>Rozhraní API pro čtení
 
-V současné době konektor nepodporuje ověřování na základě tokenů pro fond SQL, který je mimo pracovní prostor. Budete muset použít ověřování SQL.
+V současné době konektor nepodporuje ověřování na základě tokenů pro vyhrazený fond SQL, který je mimo pracovní prostor. Budete muset použít ověřování SQL.
 
 ```scala
 val df = spark.read.
@@ -227,7 +227,7 @@ V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být
 
 - Měli byste být schopni se připojit k seznamu všech složek z "synapse" a dolů od Azure Portal. Pro kořenovou složku "/" seznamu ACL postupujte podle následujících pokynů.
 
-- Připojení k účtu úložiště připojenému k pracovnímu prostoru z Průzkumník služby Storage pomocí AAD
+- Připojení k účtu úložiště připojenému k pracovnímu prostoru z Průzkumník služby Storage pomocí Azure AD
 - Vyberte svůj účet a zadejte adresu URL ADLS Gen2 a výchozí systém souborů pro pracovní prostor.
 - Jakmile uvidíte účet úložiště, který je uvedený v seznamu, klikněte pravým tlačítkem na pracovní prostor výpisu a vyberte spravovat přístup.
 - Přidejte uživatele do složky/a s oprávněním "spustit" přístup. Vyberte OK.
@@ -237,5 +237,5 @@ V účtu úložiště ADLS Gen2 připojeném k pracovnímu prostoru musíte být
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření fondu SQL pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Vytvoření vyhrazeného fondu SQL pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Vytvoření nového fondu Apache Spark pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

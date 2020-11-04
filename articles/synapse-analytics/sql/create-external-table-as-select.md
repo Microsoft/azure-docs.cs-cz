@@ -1,6 +1,6 @@
 ---
-title: Ukládání výsledků dotazů do úložiště
-description: V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
+title: Uložení výsledků dotazu z neserverového fondu SQL
+description: V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí neserverového fondu SQL (Preview).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5fda5e7a5caf72df3d4c80e37a684232ca5541
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50897d81ed5ef2fc33e458bd46d9229f6184fea8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289357"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322610"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Uložení výsledků dotazu do úložiště pomocí SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
+# <a name="store-query-results-to-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Ukládání výsledků dotazu do úložiště pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
+V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí neserverového fondu SQL (Preview).
 
 ## <a name="prerequisites"></a>Předpoklady
 

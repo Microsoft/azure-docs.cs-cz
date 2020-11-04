@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: d356bd43e5e09dfce96a801732e79d2efe8c08bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440333"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324736"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -97,7 +97,7 @@ K dispozici je také skript R, který vám umožní nainstalovat [horní 20 bal�
 
 ## <a name="python"></a>Python
 
-Anaconda Python se instaluje s prostředími Python 2,7 a 3,5. Prostředí 2,7 se nazývá _root_a prostředí 3,5 se nazývá _py35_. Tato distribuce obsahuje základní Python spolu s přibližně 300 z nejoblíbenějších matematických, inženýrských a analytických balíčků.
+Anaconda Python se instaluje s prostředími Python 2,7 a 3,5. Prostředí 2,7 se nazývá _root_ a prostředí 3,5 se nazývá _py35_. Tato distribuce obsahuje základní Python spolu s přibližně 300 z nejoblíbenějších matematických, inženýrských a analytických balíčků.
 
 Výchozím nastavením je prostředí py35. Pokud chcete aktivovat kořenové prostředí (2,7), použijte tento příkaz:
 
@@ -148,7 +148,7 @@ K serveru Jupyter Poznámkový blok můžete přistupovat z libovolného hostite
 > [!NOTE]
 > Po zřízení virtuálního počítače se ve výchozím nastavení v bráně firewall otevře port 8000. 
 
-Máme balíčky ukázkových poznámkových bloků – jeden v Pythonu a druhý v R. Odkaz na ukázky na domovské stránce poznámkového bloku se zobrazí po ověření do poznámkového bloku Jupyter pomocí místního uživatelského jména a hesla systému Linux. Nový Poznámkový blok můžete vytvořit tak, že vyberete **nové**a pak vyberete příslušné jádro jazyka. Pokud tlačítko **Nový** nevidíte, vyberte v levém horním rohu ikonu **Jupyter** a přejděte na domovskou stránku serveru poznámkového bloku.
+Máme balíčky ukázkových poznámkových bloků – jeden v Pythonu a druhý v R. Odkaz na ukázky na domovské stránce poznámkového bloku se zobrazí po ověření do poznámkového bloku Jupyter pomocí místního uživatelského jména a hesla systému Linux. Nový Poznámkový blok můžete vytvořit tak, že vyberete **nové** a pak vyberete příslušné jádro jazyka. Pokud tlačítko **Nový** nevidíte, vyberte v levém horním rohu ikonu **Jupyter** a přejděte na domovskou stránku serveru poznámkového bloku.
 
 ## <a name="apache-spark-standalone"></a>Apache Spark samostatný
 
@@ -206,13 +206,13 @@ Další informace najdete v tématu [SQUIRREL SQL](http://squirrel-sql.sourcefor
 
 Balíček ovladačů rozhraní ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
 
-- **BCP**: nástroj BCP hromadně kopíruje data mezi instancí Microsoft SQL Server a datovým souborem v uživatelsky definovaném formátu. Pomocí nástroje BCP můžete importovat velký počet nových řádků do SQL Server tabulky nebo exportovat data z tabulek do datových souborů. Chcete-li importovat data do tabulky, je nutné použít formátový soubor vytvořený pro tuto tabulku. Nebo, musíte pochopit strukturu tabulky a typy dat, které jsou pro své sloupce platné.
+- **BCP** : nástroj BCP hromadně kopíruje data mezi instancí Microsoft SQL Server a datovým souborem v uživatelsky definovaném formátu. Pomocí nástroje BCP můžete importovat velký počet nových řádků do SQL Server tabulky nebo exportovat data z tabulek do datových souborů. Chcete-li importovat data do tabulky, je nutné použít formátový soubor vytvořený pro tuto tabulku. Nebo, musíte pochopit strukturu tabulky a typy dat, které jsou pro své sloupce platné.
 
-  Další informace najdete v tématu [připojení pomocí BCP](https://msdn.microsoft.com/library/hh568446.aspx).
+  Další informace najdete v tématu [připojení pomocí BCP](/sql/connect/odbc/linux-mac/connecting-with-bcp).
 
-- **Sqlcmd**: pomocí nástroje Sqlcmd můžete zadat příkazy jazyka Transact-SQL. Do příkazového řádku můžete také zadat systémové procedury a soubory skriptu. Tento nástroj používá rozhraní ODBC ke spouštění dávek Transact-SQL.
+- **Sqlcmd** : pomocí nástroje Sqlcmd můžete zadat příkazy jazyka Transact-SQL. Do příkazového řádku můžete také zadat systémové procedury a soubory skriptu. Tento nástroj používá rozhraní ODBC ke spouštění dávek Transact-SQL.
 
-  Další informace najdete v tématu [připojení pomocí nástroje Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
+  Další informace najdete v tématu [připojení pomocí nástroje Sqlcmd](/sql/connect/odbc/linux-mac/connecting-with-sqlcmd).
 
   > [!NOTE]
   > Mezi platformami Linux a Windows jsou rozdíly v tomto nástroji. Podrobnosti najdete v dokumentaci.
@@ -228,13 +228,13 @@ Knihovny jsou k dispozici v R a Pythonu pro přístup k databázi:
 
 Na virtuálním počítači jsou nainstalované následující nástroje Azure:
 
-* **Azure CLI**: rozhraní příkazového řádku v Azure můžete použít k vytváření a správě prostředků Azure pomocí příkazů prostředí. Pokud chcete otevřít nástroje Azure, zadejte **Azure Help**. Další informace najdete na [stránce dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Průzkumník služby Azure Storage**: Průzkumník služby Azure Storage je grafický nástroj, pomocí kterého můžete procházet objekty, které jste uložili v účtu úložiště Azure, a nahrávat a stahovat data do a z objektů blob Azure. K Průzkumník služby Storage můžete přistupovat pomocí ikony zástupce na ploše. Můžete ho také otevřít z příkazového řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
-* **Knihovny Azure**: Níže jsou uvedené některé z předem nainstalovaných knihoven.
+* **Azure CLI** : rozhraní příkazového řádku v Azure můžete použít k vytváření a správě prostředků Azure pomocí příkazů prostředí. Pokud chcete otevřít nástroje Azure, zadejte **Azure Help**. Další informace najdete na [stránce dokumentace k Azure CLI](/cli/azure/get-started-with-az-cli2).
+* **Průzkumník služby Azure Storage** : Průzkumník služby Azure Storage je grafický nástroj, pomocí kterého můžete procházet objekty, které jste uložili v účtu úložiště Azure, a nahrávat a stahovat data do a z objektů blob Azure. K Průzkumník služby Storage můžete přistupovat pomocí ikony zástupce na ploše. Můžete ho také otevřít z příkazového řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
+* **Knihovny Azure** : Níže jsou uvedené některé z předem nainstalovaných knihoven.
   
-  * **Python**: knihovny související s Azure v Pythonu jsou *Azure*, *AzureML*, *pydocumentdb*a *pyodbc*. Pomocí prvních tří knihoven můžete přistupovat ke službám Azure Storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtá knihovna pyodbc (spolu s ovladačem Microsoft ODBC Driver for SQL Server) umožňuje přístup k SQL Server, Azure SQL Database a Azure synapse Analytics z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Nezapomeňte spustit tento příkaz v prostředí Python 2,7 a 3,5.
-  * **R**: knihovny související s Azure v jazyce R jsou AZUREML a RODBC.
-  * **Java**: seznam knihoven Azure Java najdete v adresáři/DSVM/SDK/AZURESDKJAVA na virtuálním počítači. Knihovny klíčů jsou služby Azure Storage a API pro správu, Azure Cosmos DB a ovladače JDBC pro SQL Server.  
+  * **Python** : knihovny související s Azure v Pythonu jsou *Azure* , *AzureML* , *pydocumentdb* a *pyodbc*. Pomocí prvních tří knihoven můžete přistupovat ke službám Azure Storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtá knihovna pyodbc (spolu s ovladačem Microsoft ODBC Driver for SQL Server) umožňuje přístup k SQL Server, Azure SQL Database a Azure synapse Analytics z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Nezapomeňte spustit tento příkaz v prostředí Python 2,7 a 3,5.
+  * **R** : knihovny související s Azure v jazyce R jsou AZUREML a RODBC.
+  * **Java** : seznam knihoven Azure Java najdete v adresáři/DSVM/SDK/AZURESDKJAVA na virtuálním počítači. Knihovny klíčů jsou služby Azure Storage a API pro správu, Azure Cosmos DB a ovladače JDBC pro SQL Server.  
 
 K [Azure Portal](https://portal.azure.com) můžete přistupovat z předinstalovaného prohlížeče Firefox. Na Azure Portal můžete vytvářet, spravovat a monitorovat prostředky Azure.
 
@@ -246,21 +246,21 @@ Až se přihlásíte k Azure Machine Learning studiu, můžete k vytvoření log
 
 Zprovoznění modely strojového učení, které jste vytvořili, jejich zabalením do rozhraní webové služby. Modely strojového učení zprovozňování umožňují klientům napsaným v jakémkoli jazyce vyvolat předpovědi z těchto modelů. Další informace najdete v dokumentaci k [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Můžete také sestavit modely v R nebo Pythonu na virtuálním počítači a pak je nasadit v produkčním prostředí na Azure Machine Learning. Pro povolení této funkce jsme nainstalovali knihovny v R (**AzureML**) a Pythonu (**AzureML**).
+Můžete také sestavit modely v R nebo Pythonu na virtuálním počítači a pak je nasadit v produkčním prostředí na Azure Machine Learning. Pro povolení této funkce jsme nainstalovali knihovny v R ( **AzureML** ) a Pythonu ( **AzureML** ).
 
 > [!NOTE]
 > Tyto pokyny byly napsány pro verzi Data Science Virtual Machine Windows. Informace, které jsou k dispozici na nasazení modelů pro Azure Machine Learning, se vztahují i na virtuální počítač se systémem Linux.
 
 ## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
 
-Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Tady jsou některé z nich:
+Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Mezi ně patří:
 
-* **Pro dostupné**: rychlý online algoritmus pro učení.
-* **xgboost**: nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
-* **Rattle**: grafický nástroj založený na jazyce R pro snadné zkoumání a modelování dat.
-* **Python**: Anaconda Python přichází do sady s algoritmy strojového učení s knihovnami, jako je Scikit – učení. Další knihovny můžete nainstalovat pomocí `pip install` příkazu.
-* **LightGBM**: rychlé, distribuované a vysoce výkonné přechodové prostředí s vysokým výkonem na základě algoritmů rozhodovacího stromu.
-* **R**: rozsáhlá knihovna funkcí strojového učení je k dispozici pro R. předem nainstalované knihovny zahrnují LM, GLM, randomForest a rpart. Další knihovny můžete nainstalovat spuštěním tohoto příkazu:
+* **Pro dostupné** : rychlý online algoritmus pro učení.
+* **xgboost** : nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
+* **Rattle** : grafický nástroj založený na jazyce R pro snadné zkoumání a modelování dat.
+* **Python** : Anaconda Python přichází do sady s algoritmy strojového učení s knihovnami, jako je Scikit – učení. Další knihovny můžete nainstalovat pomocí `pip install` příkazu.
+* **LightGBM** : rychlé, distribuované a vysoce výkonné přechodové prostředí s vysokým výkonem na základě algoritmů rozhodovacího stromu.
+* **R** : rozsáhlá knihovna funkcí strojového učení je k dispozici pro R. předem nainstalované knihovny zahrnují LM, GLM, randomForest a rpart. Další knihovny můžete nainstalovat spuštěním tohoto příkazu:
 
     ```r
     install.packages(<lib name>)
@@ -316,7 +316,7 @@ Další informace o xgboost najdete na [stránce dokumentace xgboost](https://xg
 
 ### <a name="rattle"></a>Rattle
 
-Rattle ( **R** **a**nalytická **T**OOL **t**o **L**získat **E**asily) používá zkoumání a modelování dat na základě grafického uživatelského rozhraní. Představuje statistické a vizuální souhrny dat, transformuje data, která je možné snadno modelovat a sestavovat v nich jak modely pod dohledem, tak i pod dohledem, prezentují výkon modelů a vychází z nových datových sad. Také generuje kód R, který replikuje operace v uživatelském rozhraní, které lze spustit přímo v R nebo použít jako výchozí bod pro další analýzu.
+Rattle ( **R** **a** nalytická **T** OOL **t** o **L** získat **E** asily) používá zkoumání a modelování dat na základě grafického uživatelského rozhraní. Představuje statistické a vizuální souhrny dat, transformuje data, která je možné snadno modelovat a sestavovat v nich jak modely pod dohledem, tak i pod dohledem, prezentují výkon modelů a vychází z nových datových sad. Také generuje kód R, který replikuje operace v uživatelském rozhraní, které lze spustit přímo v R nebo použít jako výchozí bod pro další analýzu.
 
 Pokud chcete spustit Rattle, musíte být v přihlašovací relaci grafického klienta. V terminálu zadejte **r** a otevřete prostředí r. Na příkazovém řádku R zadejte následující příkazy:
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázky Azure Analysis Services kódu, projektu a databáze | Microsoft Docs
+title: Ukázky Azure Analysis Services kódu, projektu a databáze
 description: Tento článek popisuje zdroje informací o ukázkách kódu, projektu a databáze pro Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b63581b5192c93a8377a642c21eacbd291579b22
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013674"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324381"
 ---
 # <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
@@ -28,7 +28,7 @@ Následující ukázkové materiály vám pomůžou naučit se a testovat Analys
 
 ## <a name="sample-database-on-azure"></a>Ukázková databáze v Azure
 
-Azure synapse Analytics (SQL Data Warehouse) poskytuje ukázkovou databázi AdventureWorksDW, kterou je možné zahrnout do zřízeného prostředku. Další informace najdete v tématu [rychlý Start: vytvoření a dotazování fondu SQL Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
+Azure synapse Analytics (dříve SQL Data Warehouse) poskytuje ukázkovou databázi AdventureWorksDW, kterou je možné zahrnout do zřízeného prostředku. Další informace najdete v tématu [rychlý Start: vytvoření a dotazování vyhrazeného fondu SQL ve službě Azure synapse Analytics ](/azure/sql-data-warehouse/create-data-warehouse-portal).
 
 ## <a name="sample-databases-on-github"></a>Ukázkové databáze na GitHubu
 
@@ -40,7 +40,7 @@ Tyto ukázkové databáze na GitHubu je možné použít k vytváření a testov
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Vzorový model Internet Sales pro Adventure Works v Azure Portal
 
-Pokud máte Server Analysis Services v Azure Portal, můžete rychle a snadno vytvořit ukázkový model. Na stránce s přehledem na serveru v Azure Portal klikněte na **Nový model**a potom v části **Zvolte zdroj dat**vyberte **ukázková data**.
+Pokud máte Server Analysis Services v Azure Portal, můžete rychle a snadno vytvořit ukázkový model. Na stránce s přehledem na serveru v Azure Portal klikněte na **Nový model** a potom v části **Zvolte zdroj dat** vyberte **ukázková data**.
 
 
 

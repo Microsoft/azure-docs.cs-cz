@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: c0a55780687b4c03d6809d1d740bf0b0afcd63fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908098"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323778"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
@@ -187,7 +187,7 @@ Také ověřte, zda byl odstraněn účet, kontejner nebo objekt BLOB. Pomocí j
 
 Azure Machine Learning nepodporuje některé novější typy účtů. Například nové typy úložiště Hot nebo studeno nelze použít pro strojové učení. Účty úložiště Classic i účty úložiště vytvořené jako "obecné účely" fungují správně.
 
-Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána jako **Container/BLOB**a zda v účtu existují oba kontejnery i objekty blob.  
+Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána jako **Container/BLOB** a zda v účtu existují oba kontejnery i objekty blob.  
 
  Cesta by neměla obsahovat počáteční lomítko. Například **/Container/BLOB** je nesprávný a měl by být zadán jako **kontejner nebo objekt BLOB**.  
 
@@ -713,7 +713,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 **Řešení:** Tato chyba je způsobená mnoha podmínkami a neexistuje žádná zvláštní náprava.  
  Následující tabulka obsahuje obecné zprávy pro tuto chybu, za kterými následuje konkrétní popis podmínky. 
 
- Pokud nejsou k dispozici žádné podrobnosti, [aplikace Microsoft Q&stránku s otázkou pro odeslání zpětné vazby](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html) a poskytuje informace o modulech, které generovaly chybu a související podmínky.
+ Pokud nejsou k dispozici žádné podrobnosti, [aplikace Microsoft Q&stránku s otázkou pro odeslání zpětné vazby](/answers/topics/azure-machine-learning-studio-classic.html) a poskytuje informace o modulech, které generovaly chybu a související podmínky.
 
 |Zprávy výjimek|
 |------------------------|
@@ -862,7 +862,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 
  K této chybě v Azure Machine Learning dochází, pokud klíč používaný pro přístup k účtu služby Azure Storage není správný. Tato chyba se může zobrazit například v případě, že klíč úložiště Azure byl po zkopírování a vložení zkrácen nebo pokud byl použit nesprávný klíč.  
 
- Další informace o tom, jak získat klíč pro účet úložiště Azure, najdete v tématu [zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](https://azure.microsoft.com/documentation/articles/storage-create-storage-account-classic-portal/).  
+ Další informace o tom, jak získat klíč pro účet úložiště Azure, najdete v tématu [zobrazení, kopírování a opětovné vygenerování přístupových klíčů k úložišti](../../storage/common/storage-account-create.md).  
 
 **Řešení:** Přečtěte si modul a ověřte, jestli je pro účet správný klíč úložiště Azure. v případě potřeby Zkopírujte klíč znovu z portálu Azure Classic.  
 
@@ -1083,9 +1083,9 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 
-+ [Vytváření tabulek podregistru a načítání dat z Azure Blob Storage](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-move-hive-tables)
-+ [Prozkoumat data v tabulkách pomocí dotazů na podregistry](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-explore-data-hive-tables)
-+ [Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hivu](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-create-features-hive)
++ [Vytváření tabulek podregistru a načítání dat z Azure Blob Storage](../team-data-science-process/move-hive-tables.md)
++ [Prozkoumat data v tabulkách pomocí dotazů na podregistry](../team-data-science-process/explore-data-hive-tables.md)
++ [Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hivu](../team-data-science-process/create-features-hive.md)
 + [Podregistr pro uživatele SQL list tahák (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   
@@ -1106,8 +1106,8 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
  Přihlaste se k databázovému serveru přímo a spuštěním dotazu, abyste ověřili, že dotaz funguje správně mimo Azure ML.  
 
  Pokud dojde k vygenerování zprávy generované modulem SQL, proveďte akci na základě hlášené chyby. Chybové zprávy například někdy obsahují konkrétní pokyny o pravděpodobnou chybu:
-+ *Neexistuje žádný takový sloupec nebo chybějící databáze*, což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
-+ *Chyba logiky SQL \<SQL keyword\> poblíž *, což znamená, že před zadaným klíčovým slovem může být chyba syntaxe.
++ *Neexistuje žádný takový sloupec nebo chybějící databáze* , což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
++ *Chyba logiky SQL \<SQL keyword\> poblíž* , což znamená, že před zadaným klíčovým slovem může být chyba syntaxe.
 
   
 |Zprávy výjimek|
@@ -1164,7 +1164,7 @@ K této chybě v Azure Machine Learning dochází při pokusu o data z přihrád
 
 Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azure Machine Learning, která umožňovala další přizpůsobení metod binningu. Všechny metody binningu jsou v současné době založené na výběru z rozevíracího seznamu, a proto by tato chyba neměla být možná.
 
- <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
+ <!--If you get this error when using the [Group Data into Bins](group-data-into-bins.md) module, consider reporting the issue in the [Microsoft Q&A question page for Azure Machine Learning](/answers/topics/azure-machine-learning-studio-classic.html), providing the data types, parameter settings, and the exact error message.  -->
 
 |Zprávy výjimek|
 |------------------------|
@@ -1201,7 +1201,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 
  K této chybě v Azure Machine Learning dochází, pokud je název kontejneru úložiště Azure zadaný nesprávně. Tato chyba se zobrazí, pokud jste při zápisu do Azure Blob Storage neurčili jak kontejner, tak i název objektu BLOB (soubor) s použitím **cesty k objektu BLOB** , který začíná na kontejneru.  
 
-**Řešení:** Přečtěte si modul [Export dat](export-data.md) a ověřte, zda zadaná cesta k objektu BLOB obsahuje kontejner i název souboru ve formátu **kontejner/název**souboru.  
+**Řešení:** Přečtěte si modul [Export dat](export-data.md) a ověřte, zda zadaná cesta k objektu BLOB obsahuje kontejner i název souboru ve formátu **kontejner/název** souboru.  
 
 |Zprávy výjimek|
 |------------------------|
@@ -1516,11 +1516,10 @@ Interní výjimka knihovny
 
 Tato chyba je k dispozici pro zachycení v jiných nezpracovaných chybách interního motoru. Proto se příčina této chyby může lišit v závislosti na modulu, který chybu generoval.  
 
-Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu doprovází tuto chybu do [fóra Azure Machine Learning](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)společně s popisem scénáře, včetně dat, která se používají jako vstupy. Tato zpětná vazba nám pomůže určit prioritu chyb a zjistit nejdůležitější problémy pro další práci.  
+Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu doprovází tuto chybu do [fóra Azure Machine Learning](/answers/topics/azure-machine-learning.html)společně s popisem scénáře, včetně dat, která se používají jako vstupy. Tato zpětná vazba nám pomůže určit prioritu chyb a zjistit nejdůležitější problémy pro další práci.  
 
 |Zprávy výjimek|
 |------------------------|
 |Výjimka knihovny|
 |Výjimka knihovny: {Exception}.|
 |Neznámá výjimka knihovny: {Exception} {customer_support_guidance}.|
-

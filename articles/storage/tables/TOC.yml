@@ -1,12 +1,12 @@
 - name: Dokumentace ke službě Azure Table Storage
-  href: /azure/storage/tables/
+  href: ./index.yml
 - name: Přehled
   expanded: true
   items:
     - name: Přehled služby Azure Table Storage
       href: table-storage-overview.md
     - name: Volba Table Storage nebo Table API
-      href: /azure/cosmos-db/table-support
+      href: ../../cosmos-db/table-support.md
       maintainContext: true
 - name: Rychlé starty
   items:
@@ -15,31 +15,31 @@
 - name: ukázky
   items:
     - name: .NET
-      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      href: ../../cosmos-db/tutorial-develop-table-dotnet.md
       maintainContext: true
     - name: F#
-      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
       maintainContext: true
     - name: Java
-      href: /azure/cosmos-db/table-storage-how-to-use-java
+      href: ../../cosmos-db/table-storage-how-to-use-java.md
       maintainContext: true
     - name: Node.js
-      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      href: ../../cosmos-db/table-storage-how-to-use-nodejs.md
       maintainContext: true
     - name: C++
-      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      href: ../../cosmos-db/table-storage-how-to-use-c-plus.md
       maintainContext: true
     - name: PHP
-      href: /azure/cosmos-db/table-storage-how-to-use-php
+      href: ../../cosmos-db/table-storage-how-to-use-php.md
       maintainContext: true
     - name: Python
-      href: /azure/cosmos-db/table-storage-how-to-use-python
+      href: ../../cosmos-db/table-storage-how-to-use-python.md
       maintainContext: true
     - name: Ruby
-      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      href: ../../cosmos-db/table-storage-how-to-use-ruby.md
       maintainContext: true
     - name: PowerShell
-      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      href: ./table-storage-how-to-use-powershell.md
       maintainContext: true
 - name: Koncepty
   items:
@@ -90,7 +90,7 @@
     - name: Upgrade účtu úložiště
       href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Použití emulátoru úložiště
-      href: /azure/storage/common/storage-use-emulator?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      href: ../common/storage-use-emulator.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json
       maintainContext: true
     - name: Zabezpečení dat tabulek
       items:
@@ -153,9 +153,9 @@
     - name: Přenos dat
       items:
         - name: AzCopy ve Windows (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
+          href: /previous-versions/azure/storage/storage-use-azcopy
         - name: AzCopy v Linuxu (v8)
-          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
+          href: /previous-versions/azure/storage/storage-use-azcopy-linux
     - name: Řešení potíží
       items:
         - name: Problémy s latencí
@@ -165,7 +165,7 @@
     - name: Aktualizace Azure
       href: 'https://azure.microsoft.com/updates/?product=storage'
     - name: Table Storage na webu Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-table-storage.html'
+      href: /answers/topics/azure-table-storage.html
     - name: Table Storage na webu Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-table-storage'
     - name: Ceny služby Table Storage
@@ -185,5 +185,5 @@
         - name: Poskytovatel prostředků úložiště
           href: ../common/scalability-targets-resource-provider.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Rozhraní REST API služby Table Storage
-      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      href: /rest/api/storageservices/table-service-rest-api
       maintainContext: true

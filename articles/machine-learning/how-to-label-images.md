@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897562"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325552"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
-Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (Public Preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
+Poté, co správce projektu [vytvoří projekt označování](./how-to-create-labeling-projects.md#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (Public Preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
 
 > [!div class="checklist"]
 > * Jak získat přístup k projektům označování
@@ -82,7 +82,7 @@ Model strojového učení, který je zvláště zpočátku v rámci označován�
 
 Pokud je váš projekt typu "Multi-Class klasifikace obrázku", přiřadíte k celému obrázku jednu značku. Pokud si chcete projít pokyny kdykoli, navštivte stránku s **pokyny** a vyberte **Zobrazit podrobné pokyny**.
 
-Pokud si myslíte, že jste po přiřazení značky k imagi udělali chybu, můžete ji opravit. Vyberte**X**na popisku, který je zobrazený pod obrázkem, a vymažte značku. Případně vyberte obrázek a zvolte jinou třídu. Nově vybraná hodnota nahradí dřív použitou značku.
+Pokud si myslíte, že jste po přiřazení značky k imagi udělali chybu, můžete ji opravit. Vyberte **X** na popisku, který je zobrazený pod obrázkem, a vymažte značku. Případně vyberte obrázek a zvolte jinou třídu. Nově vybraná hodnota nahradí dřív použitou značku.
 
 ## <a name="tag-images-for-multi-label-classification"></a>Označování obrázků pro účely klasifikace s více popisky
 
@@ -96,7 +96,7 @@ Vyberte obrázek, který chcete označit, a pak vyberte značku. Tato značka se
 
 ![Animace znázorňuje tok s více štítky](./media/how-to-label-images/multilabel.gif)
 
-Chcete-li opravit chybu, klikněte na "**X**", chcete-li vymazat jednotlivou značku, nebo vybrat obrázky a pak vybrat značku, která vymaže značku ze všech vybraných imagí. Tento scénář je uvedený tady. Když kliknete na možnost půda, tato značka se z obou vybraných imagí vymaže.
+Chcete-li opravit chybu, klikněte na " **X** ", chcete-li vymazat jednotlivou značku, nebo vybrat obrázky a pak vybrat značku, která vymaže značku ze všech vybraných imagí. Tento scénář je uvedený tady. Když kliknete na možnost půda, tato značka se z obou vybraných imagí vymaže.
 
 ![Snímek obrazovky znázorňující více odvýběrů](./media/how-to-label-images/multiple-deselection.png)
 
@@ -131,9 +131,8 @@ Po vytvoření ohraničujících polí pro obrázek vyberte **Odeslat** a uložt
 
 Když odešlete stránku s tagovanými daty, Azure vám z pracovní fronty přiřadí nová neoznačená data. Pokud nejsou k dispozici žádná další neoznačená data, zobrazí se zpráva s odkazem na domovskou stránku portálu.
 
-Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portálu pro označování a pak vyberte **Odhlásit**se. Pokud se odhlásíte, nakonec Azure vyprší časový limit a přiřadíte data jinému popisku.
+Až budete s popiskem hotovi, vyberte své jméno v pravém horním rohu portálu pro označování a pak vyberte **Odhlásit** se. Pokud se odhlásíte, nakonec Azure vyprší časový limit a přiřadíte data jinému popisku.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte se naučit [modely klasifikace imagí v Azure](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) .
-
+* Naučte se naučit [modely klasifikace imagí v Azure](./tutorial-train-models-with-aml.md) .

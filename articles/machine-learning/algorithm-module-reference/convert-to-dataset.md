@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9b2d003ef4938681229317b625aae4526787ac15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898710"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323051"
 ---
 # <a name="convert-to-dataset"></a>Převod na datovou sadu
 
@@ -25,7 +25,7 @@ Ve většině případů není převod vyžadován. Azure Machine Learning impli
 Pokud jste provedli určitý druh normalizace nebo čištění na sadě dat a chcete zajistit, aby se změny použily v jiných kanálech, doporučujeme ukládat data do formátu datové sady.  
   
 > [!NOTE]
-> Převod na datovou sadu mění pouze formát dat. Neuloží novou kopii dat v pracovním prostoru. Datovou sadu uložte dvojitým kliknutím na výstupní port, vyberte **Uložit jako datovou sadu**a zadejte nový název.  
+> Převod na datovou sadu mění pouze formát dat. Neuloží novou kopii dat v pracovním prostoru. Datovou sadu uložte dvojitým kliknutím na výstupní port, vyberte **Uložit jako datovou sadu** a zadejte nový název.  
   
 ## <a name="how-to-use-convert-to-dataset"></a>Jak použít převod na datovou sadu  
 
@@ -35,18 +35,18 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
 
 2. Připojte ho ke všem modulům, které výstupují datovou sadu.   
 
-    Pokud jsou data [tabulková](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
+    Pokud jsou data [tabulková](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py), můžete je převést na datovou sadu. To zahrnuje data načtená pomocí [importu dat](import-data.md), data vytvořená prostřednictvím [ručního zadání dat](enter-data-manually.md)nebo datové sady [transformované pomocí transformace použít](apply-transformation.md).
 
 3.  V rozevíracím seznamu **Akce** určete, zda chcete provést čištění dat před uložením datové sady:  
   
-    - **Žádné**: použijte data tak, jak je.  
+    - **Žádné** : použijte data tak, jak je.  
   
-    - **SetMissingValue**: nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost  **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu**, všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
+    - **SetMissingValue** : nastavte určitou hodnotu na chybějící hodnotu v datové sadě. Výchozí zástupný symbol je znak otazníku (?), ale můžete použít možnost  **vlastní chybějící hodnota** a zadat jinou hodnotu. Pokud například zadáte **taxislužby** pro **vlastní chybějící hodnotu** , všechny instance **taxislužby** v datové sadě budou změněny na chybějící hodnotu.
   
-    - **ReplaceValues**: tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
+    - **ReplaceValues** : tuto možnost použijte, pokud chcete zadat jedinou hodnotu, která se má nahradit jakoukoliv jinou přesnou hodnotu. Chybějící hodnoty nebo vlastní hodnoty můžete nahradit nastavením metody **Replace** :
 
-      - **Chybějící**: tuto možnost vyberte, pokud chcete nahradit chybějící hodnoty vstupní datovou sadou. V poli **Nová hodnota**zadejte hodnotu pro nahrazení chybějících hodnot.
-      - **Vlastní**: tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota**zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte `obs` . Pro **novou hodnotu**zadejte novou hodnotu, kterou má původní řetězec nahradit.
+      - **Chybějící** : tuto možnost vyberte, pokud chcete nahradit chybějící hodnoty vstupní datovou sadou. V poli **Nová hodnota** zadejte hodnotu pro nahrazení chybějících hodnot.
+      - **Vlastní** : tuto možnost vyberte, pokud chcete nahradit vlastní hodnoty vstupní datovou sadou. Do pole **vlastní hodnota** zadejte hodnotu, kterou chcete najít. Pokud například data obsahují řetězec `obs` použitý jako zástupný symbol pro chybějící hodnoty, zadáte `obs` . Pro **novou hodnotu** zadejte novou hodnotu, kterou má původní řetězec nahradit.
   
     Všimněte si, že operace **ReplaceValues** se vztahuje pouze na přesné shody. Například tyto řetězce nebudou ovlivněny: `obs.` , `obsolete` .  
  
@@ -70,4 +70,4 @@ Než použijete převod na datovou sadu, doporučujeme použít modul [Upravit m
   
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

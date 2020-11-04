@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e042fd62d99c9fdf88a144c93739bf1f3f08a78c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530670"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325580"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktivní ladění pomocí Visual Studio Code
 
@@ -26,7 +26,7 @@ Naučte se, jak interaktivně ladit Azure Machine Learning experimenty, kanály 
 
 Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloudu ověřit, spustit a ladit experimenty ve strojovém učení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Rozšíření Azure Machine Learning VS Code (Preview). Další informace najdete v tématu [nastavení rozšíření Azure Machine Learning vs Code](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
@@ -38,7 +38,7 @@ Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloud
 > V systému Windows se ujistěte, že jste [nakonfigurovali Docker pro použití kontejnerů systému Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 > [!TIP]
-> U Windows, i když to není nutné, se důrazně doporučuje [použít Docker v subsystému Windows pro Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+> U Windows, i když to není nutné, se důrazně doporučuje [použít Docker v subsystému Windows pro Linux (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
 
 > [!IMPORTANT]
 > Před místním spuštěním experimentu se ujistěte, že je Docker spuštěný.
@@ -58,7 +58,7 @@ Pomocí rozšíření Azure Machine Learning můžete před odesláním do cloud
     1. Zadejte název skriptu, který chcete spustit. Cesta je relativní vzhledem k adresáři otevřenému v VS Code.
     1. Vyberte, zda chcete použít Azure Machine Learning datovou sadu. Pomocí rozšíření můžete vytvořit [Azure Machine Learning datové sady](how-to-manage-resources-vscode.md#create-dataset) .
     1. Debugpy se vyžaduje, aby se ladicí program připojil ke kontejneru, na kterém běží experiment. Pokud chcete přidat debugpy jako závislost, vyberte **Přidat debugpy**. V opačném případě vyberte **Přeskočit**. Nepřidání debugpy jako závislost spustí experiment bez připojení k ladicímu programu.
-    1. V editoru se otevře konfigurační soubor, který obsahuje nastavení konfigurace spuštění. Pokud jste s nastavením spokojeni, vyberte **Odeslat experiment**. Alternativně otevřete paletu příkazů (**zobrazení > paleta příkazů**) z řádku nabídek a zadejte `Azure ML: Submit experiment` příkaz do textového pole.
+    1. V editoru se otevře konfigurační soubor, který obsahuje nastavení konfigurace spuštění. Pokud jste s nastavením spokojeni, vyberte **Odeslat experiment**. Alternativně otevřete paletu příkazů ( **zobrazení > paleta příkazů** ) z řádku nabídek a zadejte `Azure ML: Submit experiment` příkaz do textového pole.
 1. Po odeslání experimentu se vytvoří image Docker obsahující váš skript a konfigurace zadané v konfiguraci spuštění.
 
     Když se spustí proces sestavení image Docker, obsah `60_control_log.txt` datového proudu souboru do výstupní konzoly v vs Code.
@@ -84,7 +84,7 @@ Podobně jako u vzdálených experimentů můžete rozšířit uzel spuštění 
 
 V některých případech možná budete muset interaktivně ladit kód Pythonu, který se používá v kanálu ML. Pomocí VS Code a debugpy se můžete ke kódu připojit při jeho spuštění ve školicím prostředí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * __Azure Machine Learning pracovní prostor__ , který je nakonfigurován pro použití __Virtual Network Azure__.
 * __Kanál Azure Machine Learning__ , který jako součást postupu kanálu používá skripty Pythonu. Například PythonScriptStep.
@@ -339,7 +339,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
 V některých případech možná budete muset interaktivně ladit kód Pythonu obsažený v nasazení modelu. Například pokud se skript vstupu nezdařil a důvod nelze určit pomocí dalšího protokolování. Pomocí VS Code a debugpy můžete připojit k kódu běžícímu uvnitř kontejneru Docker.
 
 > [!IMPORTANT]
-> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Tato metoda ladění nefunguje při použití `Model.deploy()` a `LocalWebservice.deploy_configuration` k nasazení modelu místně. Místo toho je nutné vytvořit bitovou kopii pomocí metody [model. Package ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Nasazení místních webových služeb vyžaduje pracovní instalaci do dokovacího prostředí v místním systému. Další informace o používání Docker najdete v [dokumentaci k Docker](https://docs.docker.com/). Všimněte si, že při práci s výpočetními instancemi je Docker již nainstalován.
 

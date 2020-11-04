@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a5206ed55dfe2632c7f6604c4f3d8e3199e23b99
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792017"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325532"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -36,7 +36,7 @@ Podívejte se na další články v této sérii:
 
 
 > [!IMPORTANT]
-> Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__ , například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete použít poznámkové bloky Jupyter z výpočetní instance. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
+> Pokud je váš pracovní prostor v rámci __svrchovaného cloudu__ , například Azure Government nebo Azure Čína 21Vianet, integrované poznámkové bloky _nepodporují použití_ úložiště, které je ve virtuální síti. Místo toho můžete na výpočetní instanci použít poznámkové bloky Jupyter. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) .
 
 
 ## <a name="prerequisites"></a>Předpoklady
@@ -53,7 +53,7 @@ Podívejte se na další články v této sérii:
 
 Pokud k studiu přistupujete z prostředku uvnitř virtuální sítě (například výpočetní instance nebo virtuální počítač), musíte z této virtuální sítě pro Studio dovolit odchozí přenosy. 
 
-Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. front-end__ .
+Pokud například používáte skupiny zabezpečení sítě (NSG) k omezení odchozího provozu, přidejte pravidlo do cíle __značky služby__ __AzureFrontDoor. front-end__.
 
 ## <a name="access-data-using-the-studio"></a>Přístup k datům pomocí studia
 
@@ -71,7 +71,7 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 * Azure Blob
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
-* Databáze Azure SQL
+* Azure SQL Database
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Udělení přístupu ke spravované identitě spravovanému pracovnímu __prostoru k__ privátnímu odkazu na úložiště
 
@@ -81,13 +81,13 @@ Tento krok se vyžaduje jenom v případě, že jste do virtuální sítě přid
 
 Azure Machine Learning používá [úložiště dat](concept-data.md#datastores) pro připojení k účtům úložiště. Pomocí následujících kroků můžete nakonfigurovat úložiště dat tak, aby používalo spravovanou identitu. 
 
-1. V nástroji Studio vyberte __úložiště dat__ .
+1. V nástroji Studio vyberte __úložiště dat__.
 
-1. Pokud chcete vytvořit nové úložiště dat, vyberte __+ nové úložiště dat__ .
+1. Pokud chcete vytvořit nové úložiště dat, vyberte __+ nové úložiště dat__.
 
-    Pokud chcete aktualizovat existující úložiště dat, vyberte úložiště dat a vyberte __Aktualizovat přihlašovací údaje__ .
+    Pokud chcete aktualizovat existující úložiště dat, vyberte úložiště dat a vyberte __Aktualizovat přihlašovací údaje__.
 
-1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__ .
+1. V nastavení úložiště dat vyberte __Ano__ , pokud  __chcete, aby služba Azure Machine Learning měla přístup k úložišti pomocí identity spravované pracovním prostorem__.
 
 
 Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ službu úložiště pomocí řízení přístupu na základě prostředků Azure (Azure RBAC). Přístup __Čtenář__ umožňuje pracovnímu prostoru načíst nastavení brány firewall a zajistit, aby data nezůstala virtuální síť.
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen1 podporuje jenom seznamy řízení přístupu ve sty
 
 Pokud chcete získat přístup k datům uloženým v Azure SQL Database pomocí spravované identity, musíte vytvořit uživatele obsahující SQL, který se mapuje na spravovanou identitu. Další informace o tom, jak vytvořit uživatele z externího poskytovatele, najdete v tématu [Vytvoření obsažených uživatelů mapovaných na identity Azure AD](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities).
 
-Po vytvoření uživatele s omezením SQL udělte mu oprávnění pomocí [příkazu Grant T-SQL](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql).
+Po vytvoření uživatele s omezením SQL udělte mu oprávnění pomocí [příkazu Grant T-SQL](/sql/t-sql/statements/grant-object-permissions-transact-sql).
 
 ### <a name="azure-machine-learning-designer-default-datastore"></a>Výchozí úložiště dat návrháře Azure Machine Learning
 
@@ -128,15 +128,15 @@ Návrhář používá účet úložiště připojený k vašemu pracovnímu pros
 Nastavení nového výchozího úložiště pro kanál:
 
 1. V konceptu kanálu vyberte **ikonu ozubeného kolečka pro nastavení** vedle názvu vašeho kanálu.
-1. Vyberte **možnost vybrat výchozí úložiště dat** .
+1. Vyberte **možnost vybrat výchozí úložiště dat**.
 1. Zadejte nové úložiště dat.
 
 Výchozí úložiště dat můžete také přepsat na základě jednotlivých modulů. Díky tomu budete mít kontrolu nad umístěním úložiště pro každý jednotlivý modul.
 
 1. Vyberte modul, jehož výstup chcete zadat.
 1. Rozbalte část **Nastavení výstupu** .
-1. Vyberte **přepsat výchozí nastavení výstupu** .
-1. Vyberte **nastavit výstupní nastavení** .
+1. Vyberte **přepsat výchozí nastavení výstupu**.
+1. Vyberte **nastavit výstupní nastavení**.
 1. Zadejte nové úložiště dat.
 
 ## <a name="next-steps"></a>Další kroky

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/09/2020
-ms.openlocfilehash: 2e597299c9b157d79a5317c97550fc30820636d6
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8abcbc74506599e7896ad6d41b9444e946172283
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324899"
 ---
 # <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
@@ -49,7 +49,7 @@ Tento článek popisuje, jak použít modul adresář pro převod do bitové kop
 
     Pro účely bodování musí složka sady dat image obsahovat jenom neklasifikované image.
 
-1. [Zaregistrujte datovou sadu obrázku jako datovou sadu](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) v pracovním prostoru, protože vstup pro modul adresáře pro převod do bitové kopie musí být **Souborová sada**.
+1. [Zaregistrujte datovou sadu obrázku jako datovou sadu](../how-to-create-register-datasets.md) v pracovním prostoru, protože vstup pro modul adresáře pro převod do bitové kopie musí být **Souborová sada**.
 
 1. Přidejte do plátna datovou sadu registrovaných obrázků. Registrovanou datovou sadu můžete najít v kategorii **DataSets** v seznamu modul v levé části plátna. Aktuálně Návrhář nepodporuje sadu dat vizualizace obrázku.
 
@@ -82,4 +82,4 @@ Výstup modulu **pro výpis adresářů imagí** je ve formátu **adresáře obr
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

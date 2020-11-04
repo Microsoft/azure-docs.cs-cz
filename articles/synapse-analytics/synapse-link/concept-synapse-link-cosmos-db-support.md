@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127007"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322604"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Odkaz na Azure synapse (Preview) pro Azure Cosmos DB podporované funkce
 
@@ -40,7 +40,7 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
 | **Psal**   | Dá se použít modul runtime Azure Synapse k zápisu dat do kontejneru Azure Cosmos DB. | Ano | Ne |
 
 * Pokud zapisujete data do kontejneru Azure Cosmos DB ze Sparku, k tomuto procesu dochází v transakčním úložišti Azure Cosmos DB. Bude to mít vliv na transakční výkon Azure Cosmos DB díky využívání jednotek žádosti.
-* Integrace fondů SQL prostřednictvím externích tabulek není v současné době podporovaná.
+* Vyhrazená integrace fondu SQL prostřednictvím externích tabulek není v současné době podporovaná.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Podporované akce generované kódem pro Spark
 
@@ -64,4 +64,4 @@ K kontejneru Azure Cosmos DB se můžete připojit bez povolení odkazu synapse.
 ## <a name="next-steps"></a>Další kroky
 
 * [Azure Cosmos DB odkazu pro připojení k synapse](../quickstart-connect-synapse-link-cosmos-db.md)
-* [Naučte se dotazovat analytické úložiště pomocí Sparku.](how-to-query-analytical-store-spark.md)
+* [Naučte se, jak zadávat dotazy na Cosmos DB analytické úložiště pomocí Sparku.](how-to-query-analytical-store-spark.md)

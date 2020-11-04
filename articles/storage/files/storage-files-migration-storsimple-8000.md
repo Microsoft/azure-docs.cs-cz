@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4aec299e15964d45ad949034ba02729ff43934de
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043188"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322213"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Migrace StorSimple 8100 a 8600 do Azure File Sync
 
@@ -76,7 +76,7 @@ Pokud klíče ve svých záznamech nemůžete najít, můžete ho načíst ze za
 >
 > * Připojení prostřednictvím relace HTTPS je nejbezpečnější a doporučuje se možnost.
 > * Přímé připojení ke konzole sériového portu zařízení je zabezpečené, ale připojení ke konzole sériového portu přes síťové přepínače není.
-> * Připojení relace HTTP je možnost, ale nejsou *šifrovaná* . Nedoporučují se, pokud se nepoužívají v uzavřené a důvěryhodné síti.
+> * Připojení relace HTTP je možnost, ale nejsou *šifrovaná*. Nedoporučují se, pokud se nepoužívají v uzavřené a důvěryhodné síti.
 
 ### <a name="storsimple-volume-backups"></a>Zálohy svazků StorSimple
 
@@ -119,7 +119,7 @@ Na konci fáze 1:
 * Máte plán, ve kterém se musí migrovat svazky a také jak namapovat svazky na příslušný počet sdílených složek Azure a účtů úložiště.
 
 > [!CAUTION]
-> Pokud potřebujete migrovat zálohy ze StorSimple svazků, **zastavte se sem** .
+> Pokud potřebujete migrovat zálohy ze StorSimple svazků, **zastavte se sem**.
 >
 > Tento postup migrace spoléhá na nové funkce služby transformace dat, které v současné době nemůžou migrovat zálohy. Podpora migrace zálohy přijde na konec 2020. Teď můžete migrovat jenom živá data. Pokud jste teď začali, nemůžete své zálohy "aktivovat" později. Zálohy musí být přehrávají se ke sdíleným složkám Azure od nejstarší po nejnovější a k živým datům, a to pomocí snímků sdílené složky Azure mezi.
 
@@ -165,7 +165,7 @@ Pořád si nejste jisti?
 
 #### <a name="account-kind"></a>Druh účtu
 
-* Pro úložiště Standard klikněte na *StorageV2 (obecné účely v2)* .
+* Pro úložiště Standard klikněte na *StorageV2 (obecné účely v2)*.
 * V případě sdílených složek Premium vyberte *úložiště* souborů.
 
 #### <a name="replication"></a>Replikace
@@ -174,13 +174,13 @@ K dispozici je několik nastavení replikace. Přečtěte si další informace o
 
 Vyberte jenom jednu z následujících dvou možností:
 
-* *Místně redundantní úložiště (LRS)* .
+* *Místně redundantní úložiště (LRS)*.
 * *Redundantní úložiště zóny (ZRS)* , které není k dispozici ve všech oblastech Azure.
 
 > [!NOTE]
 > Pouze LRS a ZRS typy redundance jsou kompatibilní s velkými 100-TiB sdílenými sdílenými složkami Azure.
 
-Globálně redundantní úložiště (GRS) ve všech variacích se v tuto chvíli nepodporuje. Typ redundance můžete přepnout později a přejít na GRS, když se na něj podpora dorazí v Azure.
+Geograficky redundantní úložiště (GRS) ve všech variacích se momentálně nepodporuje. Typ redundance můžete přepnout později a přejít na GRS, když se na něj podpora dorazí v Azure.
 
 #### <a name="enable-100-tib-capacity-file-shares"></a>Povolit 100 – TiB sdílené složky kapacity
 
@@ -206,16 +206,16 @@ Po vytvoření účtů úložiště přejdete do části **sdílení souborů** 
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Obrázek znázorňující kartu Upřesnit v Azure Portal pro vytvoření účtu úložiště.":::
+        :::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-share.png" alt-text="Azure Portal snímek obrazovky s novým uživatelským rozhraním pro sdílení souborů.":::
     :::column-end:::
     :::column:::
-        </br>**Název**</br>Podporují se malá písmena, číslice a spojovníky.</br></br>**Kvóta**</br>Kvóta je tady srovnatelná s vynucenou kvótou SMB v instanci Windows serveru. Osvědčeným postupem je nenastavit kvótu, protože migrace a další služby selžou po dosažení kvóty.</br></br>**Úrovně**</br>Vyberte **transakci optimalizovanou** pro novou sdílenou složku. Během migrace proběhne spousta transakcí. Je cenově výhodnější změnit úroveň později na úroveň, která je nejvhodnější pro vaše zatížení.
+        </br>**Název**</br>Podporují se malá písmena, číslice a spojovníky.</br></br>**Kvóta**</br>Kvóta je tady srovnatelná s vynucenou kvótou SMB v instanci Windows serveru. Osvědčeným postupem je nenastavit kvótu, protože migrace a další služby selžou po dosažení kvóty.</br></br>**Úrovně**</br>Vyberte **transakci optimalizovanou** pro novou sdílenou složku. Během migrace proběhne spousta transakcí. Cenově výhodnější je později změnit úroveň na úroveň, která nejlépe vyhovuje vašim úlohám.
     :::column-end:::
 :::row-end:::
 
 ### <a name="storsimple-data-manager"></a>Správce dat StorSimple
 
-Prostředek Azure, který bude obsahovat vaše úlohy migrace, se nazývá **StorSimple data Manager** . Vyberte **nový prostředek** a vyhledejte ho. Potom vyberte **Vytvořit** .
+Prostředek Azure, který bude obsahovat vaše úlohy migrace, se nazývá **StorSimple data Manager**. Vyberte **nový prostředek** a vyhledejte ho. Potom vyberte **Vytvořit**.
 
 Tento dočasný prostředek se používá pro orchestraci. Až se migrace dokončí, můžete ji zrušit. Měl by se nasadit do stejného předplatného, skupiny prostředků a oblasti jako účet úložiště StorSimple.
 
@@ -232,7 +232,7 @@ Na konci fáze 2 jste nasadili účty úložiště a všechny sdílené složky 
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>Fáze 3: vytvoření a spuštění úlohy migrace
 
-Tato část popisuje, jak nastavit úlohu migrace a pečlivě namapovat adresáře na svazku StorSimple, které by se měly zkopírovat do cílové sdílené složky Azure, kterou vyberete. Začněte tím, že přejdete do StorSimple Data Manager, v nabídce vyhledáte **Definice úloh** a vyberete **+ definice úlohy** . Cílový typ úložiště je výchozí **sdílená složka Azure** .
+Tato část popisuje, jak nastavit úlohu migrace a pečlivě namapovat adresáře na svazku StorSimple, které by se měly zkopírovat do cílové sdílené složky Azure, kterou vyberete. Začněte tím, že přejdete do StorSimple Data Manager, v nabídce vyhledáte **Definice úloh** a vyberete **+ definice úlohy**. Cílový typ úložiště je výchozí **sdílená složka Azure**.
 
 ![Typy úloh migrace řady StorSimple 8000](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "Snímek obrazovky s definicemi úloh Azure Portal s otevřeným dialogovým oknem definice úlohy, který se zeptá na typ úlohy: kopírování do sdílené složky nebo do kontejneru objektů BLOB.")
 
@@ -270,21 +270,21 @@ Mapování je vyjádřeno zleva doprava: [\Source cesta] \> [cesta \target].
 |Sémantický znak          | Význam  |
 |:---------------------------|:---------|
 | **\\**                     | Indikátor kořenové úrovně       |
-| **\>**                     | [Zdroj] a [operátor mapování cíle.     |
+| **\>**                     | [Source] a [target-Mapping] operátor.     |
 |**\|** nebo RETURN (nový řádek) | Oddělovač dvou instrukcí pro mapování složky </br>Alternativně můžete tento znak vynechat a vybrat **ENTER** a získat tak další mapovací výraz na svém vlastním řádku.        |
 
 ### <a name="examples"></a>Příklady
 Přesune obsah *uživatelských dat* složky do kořenového adresáře cílové sdílené složky:
 ``` console
-\User data > \\
+\User data > \
 ```
 Přesune celý obsah svazku do nové cesty na cílové sdílené složce:
 ``` console
-\ \> \Apps\HR tracker
+\ > \Apps\HR tracker
 ```
 Přesune obsah zdrojové složky do nové cesty na cílové sdílené složce:
 ``` console
-\HR resumes-Backup \> \Backups\HR\resumes
+\HR resumes-Backup > \Backups\HR\resumes
 ```
 Seřadí několik zdrojových umístění do nové adresářové struktury:
 ``` console
@@ -296,7 +296,7 @@ Seřadí několik zdrojových umístění do nové adresářové struktury:
 ### <a name="semantic-rules"></a>Sémantická pravidla
 
 * Vždy zadejte cesty ke složkám relativně k kořenové úrovni.
-* Zahajte každou cestu ke složce se indikátorem kořenové úrovně " \" .
+* Zahajte každou cestu ke složce se indikátorem kořenové úrovně " \\ ".
 * Nepoužívejte písmena jednotek.
 * Při zadávání více cest se zdrojové nebo cílové cesty nesmí překrývat:</br>
    Neplatný příklad překrytí zdrojové cesty:</br>
@@ -413,7 +413,7 @@ Tento přístup k migraci vyžaduje pro uživatele a aplikace nějaké výpadky.
 
 Když pro sdílenou složku Azure použijete Azure File Sync, je důležité, abyste *před* spuštěním jakékoli místní složky Robocopy zjistili, že jste dokončili stahování celého oboru názvů na server. Doba potřebná ke stažení vašeho oboru názvů závisí na počtu položek ve sdílené složce Azure. Existují dva způsoby, jak určit, zda byl váš obor názvů plně doručen na server.
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pomocí Azure Portal můžete zobrazit, kdy váš obor názvů plně dorazil.
 
@@ -425,12 +425,12 @@ Po provedení změn na cokoli, ale na **počáteční synchronizaci** , se Váš
 
 Můžete také použít Prohlížeč událostí v instanci systému Windows Server k oznámení, že obor názvů byl zcela doručen.
 
-1. Otevřete **Prohlížeč událostí** a pokračujte na **aplikace a služby** .
-1. Přejít na a otevřít **Microsoft\FileSync\Agent\Telemetry** .
+1. Otevřete **Prohlížeč událostí** a pokračujte na **aplikace a služby**.
+1. Přejít na a otevřít **Microsoft\FileSync\Agent\Telemetry**.
 1. Vyhledejte nejnovější **událost 9102** , která odpovídá dokončené relaci synchronizace.
-1. Vyberte **Podrobnosti** a potvrďte, že se díváte na událost, kde je hodnota **SyncDirection** **stažena** .
-1. V době, kdy byl váš obor názvů dokončen ke stažení na server, bude existovat jediná událost se **scénářem** , hodnotou **FullGhostedSync** a **HRESULT**  =  **0** .
-1. Pokud jste tuto událost nezjistili, můžete také vyhledat další **události 9102** s **SyncDirection**  =  **stažením** a **scénářem**  =  **"RegularSync"** . Hledání jedné z těchto událostí také znamená, že obor názvů se dokončil stahování a synchronizace v pravidelných relacích synchronizace, ať už v tuto chvíli existuje cokoli k synchronizaci.
+1. Vyberte **Podrobnosti** a potvrďte, že se díváte na událost, kde je hodnota **SyncDirection** **stažena**.
+1. V době, kdy byl váš obor názvů dokončen ke stažení na server, bude existovat jediná událost se **scénářem** , hodnotou **FullGhostedSync** a **HRESULT**  =  **0**.
+1. Pokud jste tuto událost nezjistili, můžete také vyhledat další **události 9102** s **SyncDirection**  =  **stažením** a **scénářem**  =  **"RegularSync"**. Hledání jedné z těchto událostí také znamená, že obor názvů se dokončil stahování a synchronizace v pravidelných relacích synchronizace, ať už v tuto chvíli existuje cokoli k synchronizaci.
 
 ### <a name="a-final-robocopy"></a>Poslední příkaz Robocopy
 
@@ -518,7 +518,7 @@ Pozadí
    :::column-end:::
 :::row-end:::
 
-Když nakonfigurujete zdrojové a cílové umístění příkazu Robocopy, ujistěte se, že jste provedli kontrolu struktury zdroje a cíle, abyste se ujistili, že se shodují. Pokud jste použili funkci mapování adresáře úlohy migrace, struktura kořenového adresáře se může lišit od struktury StorSimple svazku. V takovém případě budete možná potřebovat více úloh Robocopy, jednu pro každý podadresář.
+Když nakonfigurujete zdrojové a cílové umístění příkazu Robocopy, ujistěte se, že jste provedli kontrolu struktury zdroje a cíle, abyste se ujistili, že se shodují. Pokud jste použili funkci mapování adresáře úlohy migrace, struktura kořenového adresáře se může lišit od struktury StorSimple svazku. V takovém případě budete možná potřebovat více úloh Robocopy, jednu pro každý podadresář. Pokud si nejste jistí, jestli příkaz bude fungovat podle očekávání, můžete použít parametr */l* , který bude simulovat příkaz, aniž by ve skutečnosti prováděla žádné změny.
 
 Tento příkaz Robocopy používá/MIR, takže nebude přesouvat soubory, které jsou stejné (vrstvené soubory, např.). Pokud ale nechybí zdrojovou a cílovou cestu,/MIR také vyprázdní adresářové struktury ve vaší instanci Windows serveru nebo sdílené složce Azure, které nejsou přítomné ve zdrojové cestě StorSimple. Musí přesně odpovídat úloze Robocopy, aby dosáhli zamýšleného cíle aktualizace migrovaného obsahu s nejnovějšími změnami provedenými v době, kdy migrace probíhá.
 
@@ -547,7 +547,7 @@ Při zrušení zřízení prostředku ztratíte přístup ke konfiguraci tohoto 
 Než začnete, je osvědčeným postupem, jak v průběhu provozu sledovat nové nasazení Azure File Sync v produkčním prostředí. Tato doba vám dává možnost opravit případné problémy, se kterými se můžete setkat. Po dokončení nasazení Azure File Sync po dobu nejméně několika dnů můžete začít v tomto pořadí zrušit zřízení prostředků:
 
 1. Zrušení zřízení StorSimple Data Managerho prostředku prostřednictvím Azure Portal. Budou odstraněny všechny úlohy služby DTS. Protokoly kopírování nebudete moct snadno načíst. Pokud jsou důležité pro vaše záznamy, načtěte je před zrušením zřízení.
-1. Ujistěte se, že jsou vaše fyzická zařízení StorSimple migrována, a pak je zrušte. Pokud si nejste jistí, že se migrují, nepokračujte. Pokud zrušíte zřízení těchto prostředků, i když jsou pořád potřebná, nebudete moct data obnovit nebo jejich konfiguraci.
+1. Ujistěte se, že jsou vaše fyzická zařízení StorSimple migrována, a pak je zrušte. Pokud si nejste jistí, že se migrují, nepokračujte. Pokud zrušíte zřízení těchto prostředků, i když jsou pořád potřebná, nebudete moct data obnovit nebo jejich konfiguraci.<br>Volitelně můžete zrušit zřízení prostředku svazku StorSimple, který vymaže data na zařízení. Tato **Akce** může trvat několik dní a nebude Forensically data na zařízení vynulovat. Pokud je to pro vás důležité, zpracujte na disku nezávisle na zrušení zřízení prostředku a podle vašich zásad.
 1. Pokud se v StorSimple Device Manager neodešlou žádná další registrovaná zařízení, můžete pokračovat v odebírání tohoto Device Manager prostředku.
 1. Nyní je čas odstranit StorSimple účet úložiště v Azure. Znovu zastavte a potvrďte, že je migrace dokončená a že žádná a žádná z nich nezávisí na těchto datech, než budete pokračovat.
 1. Odpojte fyzické zařízení StorSimple z datového centra.

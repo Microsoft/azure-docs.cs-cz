@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 18f9af0198c7a89b607630c686fbf8dafdd01a50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72cdfe2ebe79abb9649ac497a6ecddda8918b951
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841937"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322270"
 ---
-# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning?
+# <a name="what-are-compute-targets-in-azure-machine-learning"></a>Co jsou cílové výpočetní objekty ve službě Azure Machine Learning?
 
 *Cíl výpočetní* služby je určený výpočetní prostředek nebo prostředí, kde spustíte školicí skript nebo nakonfigurujete nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek. Použití výpočetních cílů vám usnadňuje později změnit výpočetní prostředí, aniž byste museli měnit kód.
 
@@ -54,7 +54,7 @@ Při vykonávání odvození Azure Machine Learning vytvoří kontejner Docker, 
 
 * Jako koncový bod _odvození dávky_ , který slouží k pravidelnému zpracování dávek dat. Odvození dávky využívají [Azure Machine Learning výpočetních clusterů](how-to-create-attach-compute-cluster.md).
 
-* Do _zařízení IoT_ (Preview). Nasazení do zařízení IoT spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure IoT Edge. Další informace najdete v tématu [nasazení jako modulu IoT Edge (Preview)](/azure/iot-edge/tutorial-deploy-machine-learning).
+* Do _zařízení IoT_ (Preview). Nasazení do zařízení IoT spoléhá jenom na Azure Machine Learning k sestavení kontejneru Docker. Odtud je nasazena pomocí Azure IoT Edge. Další informace najdete v tématu [nasazení jako modulu IoT Edge (Preview)](../iot-edge/tutorial-deploy-machine-learning.md).
 
 Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](how-to-deploy-and-where.md).
 
@@ -89,7 +89,7 @@ Po vytvoření budou tyto výpočetní prostředky automaticky součástí praco
 
 ### <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
 
-Když v Azure Machine Learning vyberete velikost uzlu spravovaného výpočetního prostředku, můžete si vybrat z výběru velikostí virtuálních počítačů dostupných v Azure. Azure nabízí řadu velikostí pro Linux a Windows pro různé úlohy. Další informace najdete v tématu [typy a velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Když v Azure Machine Learning vyberete velikost uzlu spravovaného výpočetního prostředku, můžete si vybrat z výběru velikostí virtuálních počítačů dostupných v Azure. Azure nabízí řadu velikostí pro Linux a Windows pro různé úlohy. Další informace najdete v tématu [typy a velikosti virtuálních počítačů](../virtual-machines/sizes.md).
 
 Pro výběr velikosti virtuálního počítače je k dispozici několik výjimek a omezení:
 
@@ -133,7 +133,7 @@ K aktuálním nabídkám izolovaného virtuálního počítače patří:
 
 *Podpora RDMA
 
-Další informace o izolaci najdete v tématu věnovaném [izolaci ve veřejném cloudu Azure](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
+Další informace o izolaci najdete v tématu věnovaném [izolaci ve veřejném cloudu Azure](../security/fundamentals/isolation-choices.md).
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 

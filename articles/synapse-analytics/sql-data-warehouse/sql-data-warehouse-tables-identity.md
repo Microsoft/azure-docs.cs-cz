@@ -1,6 +1,6 @@
 ---
 title: Použití IDENTITY k vytváření náhradních klíčů
-description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
+description: Doporučení a příklady použití vlastnosti IDENTITY k vytvoření náhradních klíčů v tabulkách ve vyhrazeném fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8b4e9aa73a959bcaac18df38f975331ecbf6b034
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 96e81b3d7781f1c6f7bf5743a083e9640dd6c831
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876001"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323590"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Použití IDENTITY k vytváření náhradních klíčů v synapse fondu SQL
+# <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>Použití IDENTITY k vytváření náhradních klíčů pomocí vyhrazeného fondu SQL v AzureSynapse Analytics
 
-V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v synapse fondu SQL.
+V tomto článku najdete doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách ve vyhrazeném fondu SQL.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
@@ -31,7 +31,7 @@ Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každ
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
-Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
+Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity ve všech distribucích ve vyhrazeném fondu SQL, aniž by to ovlivnilo výkon zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
 
 Můžete definovat tabulku, která má vlastnost IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
 
@@ -53,7 +53,7 @@ Tato zbývající část této části popisuje drobné odlišnosti implementace
 
 ### <a name="allocation-of-values"></a>Přidělení hodnot
 
-Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou náhradní hodnoty přiděleny z důvodu distribuované architektury datového skladu. Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity napříč všemi distribucemi v synapse fondu SQL bez ovlivnění výkonu zatížení. 
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou náhradní hodnoty přiděleny z důvodu distribuované architektury datového skladu. Vlastnost IDENTITY je navržená pro horizontální navýšení kapacity ve všech distribucích ve vyhrazeném fondu SQL, aniž by to ovlivnilo výkon zatížení. 
 
 Následující příklad je ilustrace:
 
@@ -103,7 +103,7 @@ CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-Synapse fond SQL podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
+Vyhrazený fond SQL podporuje `SET IDENTITY_INSERT <your table> ON|OFF` syntaxi. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
 
 Řada datových modelů, jako je například použití předdefinovaných záporných hodnot pro určité řádky v jejich dimenzích. Příkladem je řádek-1 nebo "Neznámý člen".
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem identity.
 >
 
-Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro Synapseový fond SQL](design-elt-data-loading.md) a  [načítání osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro vyhrazený fond SQL](design-elt-data-loading.md) a  [načítání osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
@@ -198,7 +198,7 @@ Vlastnost IDENTITY se nedá použít:
 - Pokud je sloupec také distribučním klíčem
 - Když je tabulka externí tabulkou
 
-V synapse fondu SQL se nepodporují následující související funkce:
+Následující související funkce nejsou ve vyhrazeném fondu SQL podporovány:
 
 - [IDENTITA ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

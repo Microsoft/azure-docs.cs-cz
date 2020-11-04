@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691458"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324610"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
-Tento recept ukazuje, jak můžete používat Azure synapse Analytics a Cognitive Services v Sparku pro prediktivní údržbu zařízení IoT. Budeme postupovat spolu s ukázkou [odkazů CosmosDB a synapse](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) . Aby se v tomto receptu zachovaly věci jednoduché, přečtěte si data přímo ze souboru CSV, ale nebudete moct data streamovat prostřednictvím odkazu CosmosDB a synapse. Důrazně doporučujeme, abyste si prohledali ukázku odkazu na synapse.
+Tento recept ukazuje, jak můžete používat Azure synapse Analytics a Cognitive Services v Apache Spark pro prediktivní údržbu zařízení IoT. Budeme postupovat spolu s ukázkou [odkazů CosmosDB a synapse](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) . Aby se v tomto receptu zachovaly věci jednoduché, přečtěte si data přímo ze souboru CSV, ale nebudete moct data streamovat prostřednictvím odkazu CosmosDB a synapse. Důrazně doporučujeme, abyste si prohledali ukázku odkazu na synapse.
 
 ## <a name="hypothetical-scenario"></a>Hypotetický scénář
 
@@ -28,10 +28,10 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Spark](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
+* [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Apache Spark bez serveru](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
 
 ## <a name="setup"></a>Nastavení
 
@@ -98,7 +98,7 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 Tato buňka by měla vracet výsledek, který vypadá takto:
 
-| časové razítko           |   value | deviceId   | Anomálie   |
+| časové razítko           |   hodnota | deviceId   | Anomálie   |
 |:--------------------|--------:|:-----------|:------------|
 | 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Nepravda       |
 | 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Nepravda       |

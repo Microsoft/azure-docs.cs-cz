@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 66216cc21101f133281f9adbda96d395661dcbfe
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280482"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324563"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -329,7 +329,7 @@ K tomu použijete funkci *ProcessDTRoutedData* Azure k aktualizaci vlákna v *m�
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Výňatek z celého scénáře sestavování grafického zvýraznění – šipka C, prvky po digitálních událostech Azure: Event Grid a druhá funkce Azure":::
 
 Tady jsou akce, které dokončíte pro nastavení tohoto toku dat:
-1. Vytvoření koncového bodu digitálních vláken Azure, který připojuje instanci k Event Grid
+1. Vytvoření koncového bodu Event Grid v digitálních událostech Azure, které připojují instanci k Event Grid
 2. Nastavení trasy v rámci digitálních vláken Azure pro posílání dvojitých událostí změny vlastností do koncového bodu
 3. Nasaďte aplikaci Azure Functions, která na koncovém bodu naslouchá (prostřednictvím [Event Grid](../event-grid/overview.md)), a odpovídajícím způsobem aktualizuje další vlákna.
 4. Spuštění simulovaného zařízení a dotazování digitálních vláken Azure na výsledky zobrazení živých výsledků
@@ -354,7 +354,7 @@ az eventgrid topic create -g <your-resource-group> --name <name-for-your-event-g
 
 Výstupem tohoto příkazu jsou informace o tématu, které jste vytvořili.
 
-V dalším kroku vytvořte koncový bod digitálních vláken Azure, který odkazuje na téma Event gridu. Použijte následující příkaz, podle potřeby vyplňte pole zástupné symboly:
+Dále vytvořte koncový bod Event Grid v digitálních událostech Azure, které budou vaši instanci připojovat k tématu Event gridu. Použijte následující příkaz, podle potřeby vyplňte pole zástupné symboly:
 
 ```azurecli-interactive
 az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --eventgrid-resource-group <your-resource-group> --eventgrid-topic <your-event-grid-topic> --endpoint-name <name-for-your-Azure-Digital-Twins-endpoint>
@@ -372,11 +372,11 @@ Vyhledejte `provisioningState` pole ve výstupu a zkontrolujte, zda je hodnota "
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="Výsledek dotazu koncového bodu zobrazující koncový bod s provisioningStateem úspěšného":::
 
-Uložte názvy, které jste zadali do svého tématu Event gridu, a koncový bod digitálních vláken Azure. Později je budete používat.
+Uložte názvy, které jste zadali do svého tématu Event gridu, a Event Grid koncový bod v části digitální vlákna Azure. Později je budete používat.
 
 ### <a name="set-up-route"></a>Nastavení trasy
 
-Dále vytvořte trasu digitálních vláken Azure, která odesílá události do koncového bodu digitálních vláken Azure, který jste právě vytvořili.
+Dále vytvořte trasu digitálních vláken Azure, která odešle události do Event Gridho koncového bodu, který jste právě vytvořili.
 
 ```azurecli-interactive
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>

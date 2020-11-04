@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: a86c0b115ef866453e457ad528dd694ed7b49b48
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330389"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323748"
 ---
 # <a name="execute-r-script-module"></a>Spustit modul skriptu R
 
@@ -121,7 +121,7 @@ Po dokončení spuštění kanálu můžete zobrazit náhled obrázku v pravém 
 
 ## <a name="access-to-registered-dataset"></a>Přístup k registrované datové sadě
 
-Můžete se podívat na následující vzorový kód pro [přístup k registrovaným datovým sadám](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script) v pracovním prostoru:
+Můžete se podívat na následující vzorový kód pro [přístup k registrovaným datovým sadám](../how-to-create-register-datasets.md) v pracovním prostoru:
 
 ```R
         azureml_main <- function(dataframe1, dataframe2){
@@ -147,11 +147,11 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 
 1. Připojte všechny vstupy, které skript potřebuje. Vstupy jsou volitelné a můžou obsahovat data a další kód R.
 
-    * **DataSet1.**: odkazuje na první vstup jako `dataframe1` . Vstupní datová sada musí být naformátovaná jako soubor CSV, TSV nebo ARFF. Můžete také připojit Azure Machine Learning datovou sadu.
+    * **DataSet1.** : odkazuje na první vstup jako `dataframe1` . Vstupní datová sada musí být naformátovaná jako soubor CSV, TSV nebo ARFF. Můžete také připojit Azure Machine Learning datovou sadu.
 
-    * **Dataset2**: odkázat na druhý vstup jako `dataframe2` . Tato datová sada musí být také naformátovaná jako soubor CSV, TSV nebo ARFF nebo jako datová sada Azure Machine Learning.
+    * **Dataset2** : odkázat na druhý vstup jako `dataframe2` . Tato datová sada musí být také naformátovaná jako soubor CSV, TSV nebo ARFF nebo jako datová sada Azure Machine Learning.
 
-    * **Sada skriptů**: třetí vstup přijímá soubory. zip. Soubor ZIP může obsahovat více souborů a více typů souborů.
+    * **Sada skriptů** : třetí vstup přijímá soubory. zip. Soubor ZIP může obsahovat více souborů a více typů souborů.
 
 1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 
@@ -216,7 +216,7 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
     }
     ```
 
-1.  V případě **náhodného osazení**zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
+1.  V případě **náhodného osazení** zadejte hodnotu, která se má použít v prostředí jazyka R, jako náhodná hodnota počáteční hodnoty. Tento parametr je ekvivalentní volání `set.seed(value)` v kódu R.  
 
 1. Odešlete kanál.  
 
@@ -237,7 +237,7 @@ Existuje mnoho způsobů, jak svůj kanál rozšíříte pomocí vlastních skri
 
 Modul spuštění skriptu jazyka R podporuje jako vstupy libovolné soubory skriptu R. Pokud je chcete použít, musíte je do svého pracovního prostoru nahrát jako součást souboru. zip.
 
-1. Pokud chcete nahrát soubor. zip, který obsahuje kód R, do svého pracovního prostoru, otevřete stránku Asset **Sets** . Vyberte **vytvořit datovou sadu**a pak vyberte možnost **z místního souboru** a typ datové sady **souborů** .  
+1. Pokud chcete nahrát soubor. zip, který obsahuje kód R, do svého pracovního prostoru, otevřete stránku Asset **Sets** . Vyberte **vytvořit datovou sadu** a pak vyberte možnost **z místního souboru** a typ datové sady **souborů** .  
 
 1. Ověřte, že se soubor zip objevuje ve **složce** DataSets v kategorii **datové sady** ve stromu vlevo.
 
@@ -505,4 +505,4 @@ V současné době jsou k dispozici následující předinstalované balíčky j
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 18bbecbe811a9f0bc6a56194830c7e92d8770979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 401398da4d71f32973f720dd0ca5cc9b550892e8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890176"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323041"
 ---
 # <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Možnosti přijímání dat pro pracovní postupy Azure Machine Learning
 
@@ -33,7 +33,7 @@ Přijímání dat je proces, při kterém se nestrukturovaná data extrahují z 
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) nabízí nativní podporu pro monitorování zdrojů dat a triggery pro kanály přijímání dat.  
+[Azure Data Factory](../data-factory/introduction.md) nabízí nativní podporu pro monitorování zdrojů dat a triggery pro kanály přijímání dat.  
 
 Následující tabulka shrnuje specialisty a nevýhody použití Azure Data Factory pro pracovní postupy pro přijímání dat.
 
@@ -41,11 +41,11 @@ Následující tabulka shrnuje specialisty a nevýhody použití Azure Data Fact
 ---|---
 Konkrétně sestavená k extrakci, načtení a transformaci dat.|V současné době nabízí omezená sada Azure Data Factorych úloh kanálu. 
 Umožňuje vytvářet pracovní postupy řízené daty pro orchestraci přesunu a transformace dat ve velkém měřítku.|Nákladné pro sestavování a údržbu. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) Azure Data Factory.
-Integrace s různými nástroji Azure, jako je [Azure Databricks](https://docs.microsoft.com/azure/data-factory/transform-data-using-databricks-notebook) a [Azure Functions](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity) | Nespouští skripty nativně, místo toho se spoléhá na samostatné výpočetní prostředky pro spuštění skriptu. 
+Integrace s různými nástroji Azure, jako je [Azure Databricks](../data-factory/transform-data-using-databricks-notebook.md) a [Azure Functions](../data-factory/control-flow-azure-function-activity.md) | Nespouští skripty nativně, místo toho se spoléhá na samostatné výpočetní prostředky pro spuštění skriptu. 
 Nativně podporuje příjem dat aktivované zdrojem dat| 
 Procesy přípravy dat a školicích procesů jsou oddělené.|
 Možnost vloženého datového řádku pro Azure Data Factory datové toky|
-Poskytuje [uživatelské rozhraní](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal) s nízkou úrovní kódu pro neskriptovací přístupy. |
+Poskytuje [uživatelské rozhraní](../data-factory/quickstart-create-data-factory-portal.md) s nízkou úrovní kódu pro neskriptovací přístupy. |
 
 Tyto kroky a následující diagram znázorňují pracovní postup pro přijímání dat Azure Data Factory.
 
@@ -60,7 +60,7 @@ Naučte se, jak vytvořit kanál pro příjem dat pro Machine Learning s využit
 
 ## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
-Pomocí [sady Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)můžete do kroku [Azure Machine Learningého kanálu](how-to-create-your-first-pipeline.md) začlenit úkoly přijímání dat.
+Pomocí [sady Python SDK](/python/api/overview/azure/ml)můžete do kroku [Azure Machine Learningého kanálu](how-to-create-your-first-pipeline.md) začlenit úkoly přijímání dat.
 
 Následující tabulka shrnuje profesionály a con pro použití sady SDK a postupu kanálu ML pro úlohy přijímání dat.
 

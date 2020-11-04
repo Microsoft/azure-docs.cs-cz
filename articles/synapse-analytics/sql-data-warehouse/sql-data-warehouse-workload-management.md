@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e54e0ed1a3292cee400774d02f61514f54370151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761976741bf794a21182e8f962b274ae32925060
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208531"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324477"
 ---
 # <a name="what-is-workload-management"></a>Co je Správa úloh?
 
@@ -42,7 +42,7 @@ V minulosti pro synapse SQL v Azure synapse jste spravovali výkon dotazů prost
 
 Například udělení členství role uživatele ad hoc, aby smallrc povoleno, aby tento uživatel mohl využívat 100% paměti v systému.  S třídami prostředků neexistuje žádný způsob, jak rezervovat a zajistit dostupnost prostředků pro kritické úlohy.
 
-Správa úloh synapse fondu SQL ve službě Azure synapse se skládá ze tří konceptů na nejvyšší úrovni: [klasifikace úloh](sql-data-warehouse-workload-classification.md), [důležité úlohy](sql-data-warehouse-workload-importance.md)a [izolace úloh](sql-data-warehouse-workload-isolation.md).  Tyto funkce poskytují větší kontrolu nad tím, jak vaše zatížení využívají systémové prostředky.
+Vyhrazená Správa úloh fondu SQL ve službě Azure synapse se skládá ze tří konceptů na nejvyšší úrovni: [klasifikace úloh](sql-data-warehouse-workload-classification.md), [důležité úlohy](sql-data-warehouse-workload-importance.md)a [izolace úloh](sql-data-warehouse-workload-isolation.md).  Tyto funkce poskytují větší kontrolu nad tím, jak vaše zatížení využívají systémové prostředky.
 
 Klasifikace úloh je koncept přiřazení žádosti do skupiny úloh a nastavení úrovní důležitosti.  Historicky bylo toto přiřazení provedeno prostřednictvím členství role pomocí [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Tuto akci teď můžete udělat pomocí [CLASSIFERu vytvořit úlohu](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Funkce klasifikace poskytuje bohatou sadu možností, jako je například popisek, relace a čas pro klasifikaci požadavků.
 

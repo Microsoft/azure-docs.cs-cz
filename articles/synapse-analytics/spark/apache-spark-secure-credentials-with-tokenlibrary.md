@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 90e7297236994650e0820e883c94a98b29c49fb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249412"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324945"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>Zabezpečení přihlašovacích údajů prostřednictvím propojených služeb pomocí TokenLibrary
 Přístup k datům z externích zdrojů je běžným vzorem. Pokud externí zdroj dat nepovoluje anonymní přístup, je nutné zabezpečit připojení pomocí přihlašovacích údajů, tajného klíče nebo připojovacího řetězce.  
@@ -122,5 +122,5 @@ print(accountKey)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Zapsat do fondu SQL](./synapse-spark-sql-pool-import-export.md)
+- [Zapsat do vyhrazeného fondu SQL](./synapse-spark-sql-pool-import-export.md)
 

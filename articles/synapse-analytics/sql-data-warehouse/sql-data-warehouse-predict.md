@@ -11,19 +11,19 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ef56274e0bda3f1a9d494852520a77ecdfc25799
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048002"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325382"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Skóre modelů strojového učení s předpovídat
 
 Synapse SQL nabízí možnost skóre modelů strojového učení pomocí známého jazyka T-SQL. Pomocí jazyka T- [SQL můžete](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)přenést stávající modely strojového učení s historickými daty a určit jejich skóre v rámci zabezpečených hranic datového skladu. Funkce PREDIKTIVNÍho přebírá model [ONNX (Open neuronové Network Exchange)](https://onnx.ai/) a data jako vstupy. Tato funkce eliminuje krok přesunu cenných dat mimo datový sklad pro účely bodování. Cílem je umožnit odborníkům v oblasti dat snadno nasadit modely strojového učení pomocí známého rozhraní T-SQL a zároveň bez problémů spolupracovat s odborníky přes data, kteří pracují se správnou architekturou pro jejich úkoly.
 
 > [!NOTE]
-> Tato funkce se v tuto chvíli v SQL na vyžádání nepodporuje.
+> Tato funkce není v současnosti podporovaná v SQL fondu bez serveru.
 
 Tato funkce vyžaduje, aby byl model vyškolený mimo synapse SQL. Jakmile model sestavíte, načtěte ho do datového skladu a Zastavte ho pomocí syntaxe pro předpověď T-SQL, abyste získali přehledy z dat.
 

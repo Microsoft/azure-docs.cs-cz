@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6f03a1e44fdb62570b693753f5e01c7ab0f53e78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302413"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324827"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -71,6 +71,9 @@ Registrované modely se identifikují prostřednictvím názvu a verze. Vždy, k
 Registrovaný model, který se používá v aktivním nasazení, se nedá odstranit.
 Další informace naleznete v části model registru v tématu [nasazení modelů](how-to-deploy-and-where.md#registermodel).
 
+> [!IMPORTANT]
+> Když použijete možnost filtrovat podle `Tags` na stránce modely na Azure Machine Learning Studio, místo použití `TagName : TagValue` zákazníků by se měla použít `TagName=TagValue` (bez mezer).
+
 ### <a name="profile-models"></a>Modely profilů
 
 Azure Machine Learning vám může pomáhat pochopit požadavky na procesor a paměť služby, která se vytvoří při nasazení modelu. Profilace testuje službu, která spouští váš model, a vrací informace, jako je využití CPU, využití paměti a latence odezvy. Poskytuje taky doporučení pro procesor a paměť na základě využití prostředků.
@@ -106,7 +109,7 @@ Poskytujete také konfiguraci cílové platformy, na kterou model nasazujete. Na
 Do vytvořené image se dále přidají komponenty, které vyžaduje Azure Machine Learning. Může jít třeba o prostředky potřebné ke spuštění webové služby a interakci s IoT Edge.
 
 #### <a name="batch-scoring"></a>Dávkové vyhodnocování
-Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](how-to-use-parallel-run-step.md)objemy dat.
+Dávkové vyhodnocování je podporováno prostřednictvím kanálů ML. Další informace najdete v tématu [Dávková předpovědi pro velké](./tutorial-pipeline-batch-scoring-classification.md)objemy dat.
 
 #### <a name="real-time-web-services"></a>Webové služby v reálném čase
 
@@ -142,7 +145,7 @@ Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.
 
 ### <a name="analytics"></a>Analýzy
 
-Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](/power-bi/service-machine-learning-integration).
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Zaznamenání dat zásad správného řízení potřebných pro zachycení kompletního životního cyklu ML
 
@@ -158,7 +161,7 @@ Služba Azure ML poskytuje možnost sledovat kompletní záznam auditu všech pr
 > [!TIP]
 > I když jsou některé informace o modelech a datových sadách automaticky zachyceny, můžete přidat další informace pomocí __značek__. Při hledání registrovaných modelů a datových sad v pracovním prostoru můžete použít značky jako filtr.
 >
-> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true) Class reference.
+> Přidružení datové sady k registrovanému modelu je volitelný krok. Informace o odkazování na datovou sadu při registraci modelu naleznete v tématu [model](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py) Class reference.
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML

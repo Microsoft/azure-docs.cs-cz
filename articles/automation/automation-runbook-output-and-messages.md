@@ -1,27 +1,27 @@
 ---
-title: Monitorování výstupu Runbooku v Azure Automation
-description: Tento článek popisuje, jak monitorovat výstup a zprávy Runbooku.
+title: Konfigurace výstupu Runbooku a datových proudů zpráv
+description: V tomto článku se dozvíte, jak implementovat logiku zpracování chyb a popisuje výstupní a výstupní proudy zpráv v Azure Automation Runbooky.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2018
+ms.date: 11/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185972"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324419"
 ---
-# <a name="monitor-runbook-output"></a>Monitorování výstupu runbooků
+# <a name="configure-runbook-output-and-message-streams"></a>Konfigurace výstupu Runbooku a datových proudů zpráv
 
 Většina sad Runbook Azure Automation má nějaký formu výstupu. Tento výstup může obsahovat chybovou zprávu pro uživatele nebo složitý objekt určený k použití s jinou sadou Runbook. Prostředí Windows PowerShell poskytuje [více datových proudů](/powershell/module/microsoft.powershell.core/about/about_redirection) pro odeslání výstupu ze skriptu nebo pracovního postupu. Azure Automation funguje s každým z těchto datových proudů odlišně. Při vytváření Runbooku byste měli postupovat podle osvědčených postupů pro použití datových proudů.
 
-Následující tabulka stručně popisuje každý datový proud s chováním v Azure Portal publikovaných runbooků a při [testování sady Runbook](./manage-runbooks.md). Výstupní datový proud je hlavní datový proud, který se používá pro komunikaci mezi sadami Runbook. Ostatní datové proudy jsou klasifikovány jako datové proudy zpráv určené k sdělování informací uživateli. 
+Následující tabulka stručně popisuje každý datový proud s chováním v Azure Portal publikovaných runbooků a při [testování sady Runbook](./manage-runbooks.md). Výstupní datový proud je hlavní datový proud, který se používá pro komunikaci mezi sadami Runbook. Ostatní datové proudy jsou klasifikovány jako datové proudy zpráv určené k sdělování informací uživateli.
 
-| Datový proud | Description | Publikováno | Test |
+| Datový proud | Popis | Publikováno | Test |
 |:--- |:--- |:--- |:--- |
 | Chyba |Chybová zpráva určená pro uživatele. Na rozdíl od s výjimkou, sada Runbook ve výchozím nastavení pokračuje i po chybové zprávě. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
-| Ladit |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
+| Ladění |Zprávy určené pro interaktivního uživatele. Neměl by se používat v sadách Runbook. |Nepíše se do historie úlohy. |Nezobrazuje se v podokně výstup testu. |
 | Výstup |Objekty, které mají zpracovávat jiné Runbooky. |Zapsáno do historie úlohy |Zobrazuje se v podokně výstup testu. |
 | Průběh |Záznamy automaticky generované před a po každé aktivitě v Runbooku. Runbook by se neměl pokoušet vytvořit vlastní záznamy o průběhu, protože jsou určené pro interaktivního uživatele. |Zapsáno do historie úlohy pouze v případě, že je protokolování průběhu zapnuto pro sadu Runbook |Nezobrazuje se v podokně výstup testu. |
 | Verbose |Zprávy, které poskytují obecné nebo ladicí informace. |Zapsáno do historie úlohy pouze v případě, že je pro sadu Runbook zapnuto podrobné protokolování |Zobrazuje se v podokně výstup testu pouze v případě, že `VerbosePreference` je proměnná nastavena na pokračovat v sadě Runbook. |
@@ -29,9 +29,9 @@ Následující tabulka stručně popisuje každý datový proud s chováním v A
 
 ## <a name="use-the-output-stream"></a>Použití výstupního datového proudu
 
-Výstupní datový proud se používá pro výstup objektů vytvořených skriptem nebo pracovním postupem, pokud je správně spuštěn. Azure Automation primárně používá tento datový proud pro objekty, které mají být spotřebovány nadřazenými Runbooky, které volají [aktuální sadu Runbook](automation-child-runbooks.md). Když nadřazený objekt [volá vloženou sadu Runbook](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), podřízená položka vrátí data z výstupního datového proudu do nadřazeného. 
+Výstupní datový proud se používá pro výstup objektů vytvořených skriptem nebo pracovním postupem, pokud je správně spuštěn. Azure Automation primárně používá tento datový proud pro objekty, které mají být spotřebovány nadřazenými Runbooky, které volají [aktuální sadu Runbook](automation-child-runbooks.md). Když nadřazený objekt [volá vloženou sadu Runbook](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), podřízená položka vrátí data z výstupního datového proudu do nadřazeného.
 
-Sada Runbook používá výstupní datový proud ke sdělování obecných informací klientovi pouze v případě, že není nikdy volána jinou sadou Runbook. Osvědčeným postupem je však, že Runbooky by obvykle měly použít [podrobný datový proud](#monitor-verbose-stream) ke sdělování obecných informací uživateli.
+Sada Runbook používá výstupní datový proud ke sdělování obecných informací klientovi pouze v případě, že není nikdy volána jinou sadou Runbook. Osvědčeným postupem je však, že Runbooky by obvykle měly použít [podrobný datový proud](#write-output-to-verbose-stream) ke sdělování obecných informací uživateli.
 
 Zapište svůj Runbook do výstupního datového proudu pomocí [Write-Output](/powershell/module/microsoft.powershell.utility/write-output). Alternativně můžete objekt umístit do svého samostatného řádku ve skriptu.
 
@@ -117,19 +117,19 @@ Sada Runbook obsahuje typ výstupu `Microsoft.Azure.Commands.Profile.Models.PSAz
 
 I když je tato sada Runbook jednoduchá, existuje jedna položka konfigurace, kterou můžete zavolat. Poslední aktivita spustí `Write-Output` rutinu pro zápis dat profilu do proměnné pomocí výrazu PowerShellu pro `Inputobject` parametr. Tento parametr je vyžadován pro `Write-Output` .
 
-Druhá sada Runbook v tomto příkladu s názvem **test-ChildOutputType**jednoduše definuje dvě aktivity.<br> ![Příklad podřízeného typu výstupu Runbooku](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
+Druhá sada Runbook v tomto příkladu s názvem **test-ChildOutputType** jednoduše definuje dvě aktivity.<br> ![Příklad podřízeného typu výstupu Runbooku](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-První aktivita volá Runbook **AuthenticateTo-Azure** . Druhá aktivita spustí `Write-Verbose` rutinu se **zdrojem dat** nastaveným na **výstup aktivity**. Také **cesta k poli** je nastavená na **Context. Subscription. Subscription**, výstup kontextu z Runbooku **AuthenticateTo-Azure** .<br> ![Zdroj dat parametru rutiny Write-verbose](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+První aktivita volá Runbook **AuthenticateTo-Azure** . Druhá aktivita spustí `Write-Verbose` rutinu se **zdrojem dat** nastaveným na **výstup aktivity**. Také **cesta k poli** je nastavená na **Context. Subscription. Subscription** , výstup kontextu z Runbooku **AuthenticateTo-Azure** .<br> ![Zdroj dat parametru rutiny Write-verbose](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Výsledný výstup je název předplatného.<br> ![Výsledky Test-ChildOutputType sady Runbook](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-## <a name="monitor-message-streams"></a>Monitorování datových proudů zpráv
+## <a name="working-with-message-streams"></a>Práce s datovými proudy zpráv
 
 Na rozdíl od výstupního datového proudu zpráva vysílá uživatelům informace o komunikaci. Existuje více datových proudů zpráv pro různé druhy informací a Azure Automation zpracovává každý datový proud jinak.
 
-### <a name="monitor-warning-and-error-streams"></a>Monitorování datových proudů upozornění a chyb
+### <a name="write-output-to-warning-and-error-streams"></a>Zápis výstupu do datových proudů upozornění a chyb
 
-Upozornění a chyby streamují problémy, ke kterým dochází v Runbooku. Azure Automation zapisuje tyto datové proudy do historie úlohy při spuštění Runbooku. Automatizace zahrnuje streamy v podokně výstup testu v Azure Portal při testování Runbooku. 
+Upozornění a chyby streamují problémy, ke kterým dochází v Runbooku. Azure Automation zapisuje tyto datové proudy do historie úlohy při spuštění Runbooku. Automatizace zahrnuje streamy v podokně výstup testu v Azure Portal při testování Runbooku.
 
 Ve výchozím nastavení se sada Runbook pokračuje v provádění po upozornění nebo chybě. Můžete určit, že se má sada Runbook pozastavit na upozornění nebo chyby tím, že sada Runbook před vytvořením zprávy napředá sadu [předvoleb](#work-with-preference-variables) . Například chcete-li, aby se sada Runbook mohla pozastavit na chybu, protože má výjimku, nastavte `ErrorActionPreference` proměnnou na hodnotu zastavit.
 
@@ -143,13 +143,51 @@ Write-Warning –Message "This is a warning message."
 Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 ```
 
-### <a name="monitor-debug-stream"></a>Monitorovat Stream ladění
+### <a name="write-output-to-debug-stream"></a>Zapsat výstup do ladicího streamu
 
-Azure Automation používá pro interaktivní uživatele Stream zpráv ladění. Neměl by se používat v sadách Runbook.
+Azure Automation používá pro interaktivní uživatele Stream zpráv ladění. Ve výchozím nastavení Azure Automation nezachycují žádná data streamu ladění, budou zachycena pouze data o výstupech, chybách a upozorněních, pokud je sada Runbook nakonfigurována k jejímu zachycení.
 
-### <a name="monitor-verbose-stream"></a>Sledovat podrobný Stream
+Aby bylo možné zachytit data streamu ladění, je třeba provést dvě akce v sadách Runbook:
 
-Podrobný datový proud zpráv podporuje obecné informace o operaci sady Runbook. Vzhledem k tomu, že datový proud ladění není pro sadu Runbook k dispozici, by měl Runbook použít podrobné zprávy pro ladicí informace. 
+1. Nastavte proměnnou `$GLOBAL:DebugPreference="Continue"` , která oznamuje, že prostředí PowerShell bude pokračovat pokaždé, když se objeví zpráva ladění.  **$Global:** část oznamuje prostředí PowerShell, aby to provedl v globálním rozsahu, nikoli v době, kdy je tento skript spuštěný.
+
+1. Přesměrujte Stream ladění, který nezachycujeme do datového proudu, který zachytíme jako *výstup*. To se provádí nastavením přesměrování prostředí PowerShell na příkaz, který se má provést. Další informace o přesměrování prostředí PowerShell najdete v tématu [o přesměrování](/powershell/module/microsoft.powershell.core/about/about_redirection).
+
+#### <a name="examples"></a>Příklady
+
+V tomto příkladu je sada Runbook nakonfigurována pomocí `Write-Output` `Write-Debug` rutin a s úmyslem umístit dva různé datové proudy.
+
+```powershell
+Write-Output "This is an output message." 
+Write-Debug "This is a debug message."
+```
+
+Pokud by tato sada Runbook byla vykonána tak, jak je, bude podokno výstup pro úlohu sady Runbook obsahovat datový proud následujícího výstupu:
+
+```output
+This is an output message.
+```
+
+V tomto příkladu je sada Runbook nakonfigurované podobně jako v předchozím příkladu s výjimkou příkazu, který `$GLOBAL:DebugPreference="Continue"` je součástí sčítání `5>&1` na konci `Write-Debug` příkazu.
+
+```powershell
+Write-Output "This is an output message." 
+$GLOBAL:DebugPreference="Continue" 
+Write-Debug "This is a debug message." 5>&1
+```
+
+Pokud by se tato sada Runbook spustila, má podokno výstup pro úlohu Runbooku následující výstup:
+
+```output
+This is an output message.
+This is a debug message.
+```
+
+K tomu dochází `$GLOBAL:DebugPreference="Continue"` , protože příkaz oznamuje prostředí PowerShell, aby zobrazoval zprávy ladění a přidání `5>&1` na konec `Write-Debug` příkazu instruuje prostředí PowerShell k přesměrování streamu 5 (ladění) na datový proud 1 (výstup).
+
+### <a name="write-output-to-verbose-stream"></a>Zapsat výstup do podrobného datového proudu
+
+Podrobný datový proud zpráv podporuje obecné informace o operaci sady Runbook. Vzhledem k tomu, že datový proud ladění není pro sadu Runbook k dispozici, by měl Runbook použít podrobné zprávy pro ladicí informace.
 
 Ve výchozím nastavení historie úlohy neukládá podrobné zprávy z publikovaných runbooků z důvodů výkonu. Chcete-li uložit podrobné zprávy, použijte kartu Azure Portal **Konfigurace** s nastavením **podrobné záznamy protokolu** pro konfiguraci publikovaných runbooků pro protokolování podrobných zpráv. Tuto možnost zapněte jenom pro vyřešení problémů nebo ladění Runbooku. Ve většině případů byste měli zachovat výchozí nastavení neprotokolování podrobných záznamů.
 
@@ -165,7 +203,7 @@ Write-Verbose –Message "This is a verbose message."
 
 ## <a name="handle-progress-records"></a>Zpracování záznamů o průběhu
 
-Pomocí karty **konfigurace** Azure Portal můžete nakonfigurovat Runbook, aby protokolovat záznamy o průběhu. Výchozí nastavení znamená, že se záznamy neprotokolují, aby se maximalizoval výkon. Ve většině případů byste měli zachovat výchozí nastavení. Tuto možnost zapněte jenom pro vyřešení problémů nebo ladění Runbooku. 
+Pomocí karty **konfigurace** Azure Portal můžete nakonfigurovat Runbook, aby protokolovat záznamy o průběhu. Výchozí nastavení znamená, že se záznamy neprotokolují, aby se maximalizoval výkon. Ve většině případů byste měli zachovat výchozí nastavení. Tuto možnost zapněte jenom pro vyřešení problémů nebo ladění Runbooku.
 
 Pokud povolíte protokolování záznamů průběhu, sada Runbook zapíše záznam do historie úlohy před a po spuštění každé aktivity. Testování Runbooku nezobrazuje zprávy o průběhu ani v případě, že je sada Runbook nakonfigurovaná tak, aby protokolovat záznamy o průběhu.
 
@@ -194,11 +232,11 @@ V následující tabulce jsou uvedeny vlastnosti pro hodnoty proměnných předv
 
 ### <a name="retrieve-runbook-output-and-messages-in-azure-portal"></a>Načíst výstup a zprávy Runbooku v Azure Portal
 
-Podrobnosti o úloze Runbooku můžete zobrazit v Azure Portal pomocí karty **úlohy** pro sadu Runbook. V souhrnu úlohy se zobrazí vstupní parametry a [výstupní datový proud](#use-the-output-stream), kromě obecných informací o úloze a všech výjimkách, ke kterým došlo. Historie úlohy obsahuje zprávy z výstupního datového proudu a [Upozornění a chybových proudů](#monitor-warning-and-error-streams). Obsahuje taky zprávy z [podrobného datového proudu](#monitor-verbose-stream) a [záznamů o průběhu](#handle-progress-records) , pokud je sada Runbook nakonfigurovaná tak, aby Protokolovat podrobné záznamy a záznamy o průběhu.
+Podrobnosti o úloze Runbooku můžete zobrazit v Azure Portal pomocí karty **úlohy** pro sadu Runbook. V souhrnu úlohy se zobrazí vstupní parametry a [výstupní datový proud](#use-the-output-stream), kromě obecných informací o úloze a všech výjimkách, ke kterým došlo. Historie úlohy obsahuje zprávy z výstupního datového proudu a [Upozornění a chybových proudů](#write-output-to-warning-and-error-streams). Obsahuje taky zprávy z [podrobného datového proudu](#write-output-to-verbose-stream) a [záznamů o průběhu](#handle-progress-records) , pokud je sada Runbook nakonfigurovaná tak, aby Protokolovat podrobné záznamy a záznamy o průběhu.
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Načtení výstupu a zpráv Runbooku v prostředí Windows PowerShell
 
-V prostředí Windows PowerShell můžete načíst výstup a zprávy z Runbooku pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) . Tato rutina vyžaduje ID úlohy a má parametr nazvaný, `Stream` ve kterém se má zadat datový proud, který se má načíst. Pro tento parametr můžete zadat hodnotu any, aby se načetly všechny datové proudy pro úlohu.
+V prostředí Windows PowerShell můžete načíst výstup a zprávy z Runbooku pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput) . Tato rutina vyžaduje ID úlohy a má parametr nazvaný, `Stream` ve kterém se má zadat datový proud, který se má načíst. Pro tento parametr můžete zadat hodnotu any, aby se načetly všechny datové proudy pro úlohu.
 
 V následujícím příkladu se spouští vzorový Runbook a pak se čeká na jeho dokončení. Jakmile sada Runbook dokončí provádění, skript shromáždí výstupní datový proud Runbooku z úlohy.
 
@@ -239,9 +277,9 @@ Nicméně pokud nepožadujete, aby tyto informace sledovaly průběh Runbooku p�
 1. Na webu Azure Portal otevřete účet Automation.
 2. V části **Automatizace procesu** vyberte **Runbooky** a otevřete seznam runbooků.
 3. Na stránce sady Runbook vyberte grafický Runbook ze seznamu sad Runbook.
-4. V části **Nastavení**klikněte na **protokolování a trasování**.
-5. Na stránce protokolování a trasování v části **Protokolovat podrobné záznamy**klikněte na **zapnuto** , aby se povolilo podrobné protokolování.
-6. V části **trasování na úrovni aktivity**změňte úroveň trasování na **základní** nebo **podrobnou**na základě úrovně trasování, které požadujete.<br>
+4. V části **Nastavení** klikněte na **protokolování a trasování**.
+5. Na stránce protokolování a trasování v části **Protokolovat podrobné záznamy** klikněte na **zapnuto** , aby se povolilo podrobné protokolování.
+6. V části **trasování na úrovni aktivity** změňte úroveň trasování na **základní** nebo **podrobnou** na základě úrovně trasování, které požadujete.<br>
 
    ![Stránka protokolování a trasování grafického vytváření](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
@@ -260,5 +298,5 @@ Další informace o konfiguraci integrace s protokoly Azure Monitor ke shromáž
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o práci se sadami Runbook najdete [v tématu Správa runbooků v Azure Automation](manage-runbooks.md).
-* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](/powershell/scripting/overview).
-* * Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Pokud neznáte skriptování prostředí PowerShell, přečtěte si dokumentaci [PowerShellu](/powershell/scripting/overview) .
+* Referenční informace k rutině Azure Automation PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation).

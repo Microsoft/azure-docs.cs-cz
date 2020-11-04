@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 444cb6a7819fa72f5987a21807fc707e0ba8b396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907913"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323725"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
-Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
 ## <a name="what-is-feature-hashing"></a>Co je funkce hashing funkcí?
 
@@ -39,7 +39,7 @@ Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění sk
 
 Interně modul hashování funkcí vytvoří slovník n-gramů. Například seznam bigrams pro tuto datovou sadu by byl podobný tomuto:
 
-|Termín (bigrams)|Frequency|
+|Termín (bigrams)|Frekvence|
 |------------|---------------|
 |Tato kniha|3|
 |Jsem blízký|1|
@@ -48,7 +48,7 @@ Interně modul hashování funkcí vytvoří slovník n-gramů. Například sezn
 
 Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
-|Termín (unigrams)|Frequency|
+|Termín (unigrams)|Frekvence|
 |------------|---------------|
 |účetních|3|
 |I|3|
@@ -90,7 +90,7 @@ Funkce hashing funkcí umožňuje reprezentovat textové dokumenty s proměnlivo
     
     Výchozí bitová velikost je 10. V případě mnoha problémů je tato hodnota dostačující. Je možné, že budete potřebovat více místa, abyste se vyhnuli kolizím, v závislosti na velikosti slovníku n gramů v školicím textu.
     
-1. U **n-gramů**zadejte číslo definující maximální délku N-gramů, které se mají přidat do školicího slovníku. N-gram je sekvence *n* slov, která je považována za jedinečnou jednotku.
+1. U **n-gramů** zadejte číslo definující maximální délku N-gramů, které se mají přidat do školicího slovníku. N-gram je sekvence *n* slov, která je považována za jedinečnou jednotku.
 
     Pokud například zadáte 3, unigrams, bigrams a trigrams, vytvoří se.
 
@@ -131,4 +131,4 @@ Optimální sada metod předběžného zpracování, která se má použít v ja
 
 ## <a name="next-steps"></a>Další kroky
             
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning

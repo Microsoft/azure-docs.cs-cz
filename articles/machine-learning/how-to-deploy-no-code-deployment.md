@@ -1,7 +1,7 @@
 ---
 title: Žádné nasazení kódu (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se nasadit model bez vstupního skriptu.
+description: Žádné nasazení kódu vám neumožňuje nasadit model jako webovou službu, aniž by bylo nutné ručně vytvořit skript pro zadávání.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 32b2afe036b443846199b5e9d74e690859fb581d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998854"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324918"
 ---
 # <a name="preview-no-code-model-deployment"></a>Tisk Nasazení modelu bez kódu
 
@@ -63,7 +63,7 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-Chcete-li určit skóre modelu, přečtěte si téma věnované [využívání modelu Azure Machine Learning nasazeného jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service). Mnoho projektů ONNX používá soubory protobuf k komprimaci dat o školeních a ověřováních, což může být obtížné zjistit, co formát dat očekávala služba. Jako vývojář modelů byste měli dokument pro vaše vývojáře:
+Chcete-li určit skóre modelu, přečtěte si téma věnované [využívání modelu Azure Machine Learning nasazeného jako webové služby](./how-to-consume-web-service.md). Mnoho projektů ONNX používá soubory protobuf k komprimaci dat o školeních a ověřováních, což může být obtížné zjistit, co formát dat očekávala služba. Jako vývojář modelů byste měli dokument pro vaše vývojáře:
 
 * Vstupní formát (JSON nebo binární)
 * Vstupní datový tvar a typ (například pole plovoucích tvarů [100100, 3])

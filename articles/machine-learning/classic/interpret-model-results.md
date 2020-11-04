@@ -8,23 +8,23 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: e422c1a7b333254ed49b53bcdf2d10e65f2846e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfdeaee863c8e11a76ac5842ae6c35d370e2ae2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322551"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
 
 Existují čtyři hlavní druhy modelů strojového učení v Azure Machine Learning Studio (Classic):
 
-* Classification
+* Klasifikace
 * Clustering
 * Regrese
 * Doporučené systémy
@@ -41,7 +41,7 @@ Informace o tom, jak vyhodnotit modely, najdete v tématu [jak vyhodnotit výkon
 
 Pokud se ML Studio (Classic) nezačínáte, [Naučte se vytvářet jednoduchý experiment](create-experiment.md).
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klasifikace
 Existují dvě podkategorie problémů s klasifikací:
 
 * Problémy s pouze dvěma třídami (klasifikace se dvěma třídami nebo binární)
@@ -80,7 +80,7 @@ Po pochopení a posouzení výsledků předpovědi můžete experiment publikova
 
 Obrázek 3: Bodování problému s klasifikací dvou tříd Iris
 
-Nyní je třeba nastavit vstup a výstup webové služby. Vstup je správným vstupním portem [modelu skóre][score-model], který je vstupem funkcí Iris pro květ. Volba výstupu závisí na tom, jestli vás zajímá předpokládanou třídu (popisek s skóre), pravděpodobnost skóre nebo obojí. V tomto příkladu se předpokládá, že máte zájem na obě. Chcete-li vybrat požadované výstupní sloupce, použijte [možnost vybrat sloupce v modulu datové sady][select-columns] . Klikněte na [Vybrat sloupce v datové sadě][select-columns], klikněte na **Spustit selektor sloupců**a vyberte **popisy skóre** a **pravděpodobnost skóre**. Po nastavení výstupní port [vybraných sloupců v sadě dat][select-columns] a jeho opětovném spuštění byste měli být připravení publikovat experiment pro bodování jako webovou službu kliknutím na **publikovat webovou službu**. Konečný experiment vypadá jako obrázek 4.
+Nyní je třeba nastavit vstup a výstup webové služby. Vstup je správným vstupním portem [modelu skóre][score-model], který je vstupem funkcí Iris pro květ. Volba výstupu závisí na tom, jestli vás zajímá předpokládanou třídu (popisek s skóre), pravděpodobnost skóre nebo obojí. V tomto příkladu se předpokládá, že máte zájem na obě. Chcete-li vybrat požadované výstupní sloupce, použijte [možnost vybrat sloupce v modulu datové sady][select-columns] . Klikněte na [Vybrat sloupce v datové sadě][select-columns], klikněte na **Spustit selektor sloupců** a vyberte **popisy skóre** a **pravděpodobnost skóre**. Po nastavení výstupní port [vybraných sloupců v sadě dat][select-columns] a jeho opětovném spuštění byste měli být připravení publikovat experiment pro bodování jako webovou službu kliknutím na **publikovat webovou službu**. Konečný experiment vypadá jako obrázek 4.
 
 ![Experiment klasifikace dvou tříd Iris](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ Ve školicích datech je více funkcí extrahováno z písemně psaných dopisů
 
 Obrázek 6. Řešení potíží s klasifikací s rozpoznáváním více tříd – experiment
 
-Vizualizace výsledků z modulu [skóre modelu][score-model] kliknutím na výstupní port modulu určení [skóre modelu][score-model] a následným kliknutím na **vizualizovat**by se měl zobrazit obsah, jak je znázorněno na obrázku 7.
+Vizualizace výsledků z modulu [skóre modelu][score-model] kliknutím na výstupní port modulu určení [skóre modelu][score-model] a následným kliknutím na **vizualizovat** by se měl zobrazit obsah, jak je znázorněno na obrázku 7.
 
 ![Výsledky modelu skóre](./media/interpret-model-results/7.png)
 
@@ -247,7 +247,7 @@ Obrázek 20. Doporučený systém experimentů
 
 **Předpověď hodnocení pro daného uživatele a položku**
 
-Výběrem **předpovědi hodnocení** v části **doporučený druh předpovědi**si vyžádáte, aby systém doporučení předpovídat hodnocení pro daného uživatele a položku. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 21.
+Výběrem **předpovědi hodnocení** v části **doporučený druh předpovědi** si vyžádáte, aby systém doporučení předpovídat hodnocení pro daného uživatele a položku. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 21.
 
 ![Výsledek skóre pro odhad systému doporučeného pro hodnocení systému](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ První dva sloupce jsou páry uživatelských položek poskytované vstupními d
 
 **Doporučit položky pro daného uživatele**
 
-Výběrem **doporučení položky** v části **doporučený druh předpovědi**si vyžádáte doporučit systém, aby doporučil položky pro daného uživatele. Jako poslední parametr pro výběr v tomto scénáři se *doporučuje vybrat položku*. Možnost **z hodnocených položek (pro vyhodnocení modelu)** je primárně určena pro vyhodnocení modelu během procesu školení. Pro tuto fázi předpovědi si vybíráme **všechny položky**. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 22.
+Výběrem **doporučení položky** v části **doporučený druh předpovědi** si vyžádáte doporučit systém, aby doporučil položky pro daného uživatele. Jako poslední parametr pro výběr v tomto scénáři se *doporučuje vybrat položku*. Možnost **z hodnocených položek (pro vyhodnocení modelu)** je primárně určena pro vyhodnocení modelu během procesu školení. Pro tuto fázi předpovědi si vybíráme **všechny položky**. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 22.
 
 ![Výsledek skóre pro doporučení pro systém a položku](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ První z šesti sloupců představuje daná ID uživatele, která doporučují p
 
 **Vyhledání uživatelů souvisejících s daným uživatelem**
 
-Výběrem **Možnosti příbuzní uživatelé** v části **doporučený druh předpovědi**si vyžádáte, aby se k danému uživateli našeli uživatelé s doporučením. Související uživatelé jsou uživatelé, kteří mají podobné předvolby. Posledním parametrem, který si zvolíte v tomto scénáři, je *Výběr souvisejícího uživatele*. Možnost **od uživatelů, kteří hodnotili položky (pro vyhodnocení modelu),** je primárně určena pro vyhodnocení modelu během procesu školení. Vyberte **všechny uživatele** pro tuto fázi předpovědi. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 23.
+Výběrem **Možnosti příbuzní uživatelé** v části **doporučený druh předpovědi** si vyžádáte, aby se k danému uživateli našeli uživatelé s doporučením. Související uživatelé jsou uživatelé, kteří mají podobné předvolby. Posledním parametrem, který si zvolíte v tomto scénáři, je *Výběr souvisejícího uživatele*. Možnost **od uživatelů, kteří hodnotili položky (pro vyhodnocení modelu),** je primárně určena pro vyhodnocení modelu během procesu školení. Vyberte **všechny uživatele** pro tuto fázi předpovědi. Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 23.
 
 ![Výsledek skóre pro uživatele s doporučeními pro systém](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ První ze šesti sloupců zobrazuje zadaná ID uživatelů potřebná k vyhledá
 
 **Najít položky související s danou položkou**
 
-Výběrem **možnosti související položky** v části **doporučený druh předpovědi**si vyžádáte systém doporučení, aby na danou položku našli související položky. Související položky jsou položky, které nejpravděpodobněji stejný uživatel nelíbí. Poslední parametr pro výběr v tomto scénáři je *Výběr související položky*. Možnost **z hodnocených položek (pro vyhodnocení modelu)** je primárně určena pro vyhodnocení modelu během procesu školení. Pro tuto fázi předpovědi si vybíráme **všechny položky** . Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 24.
+Výběrem **možnosti související položky** v části **doporučený druh předpovědi** si vyžádáte systém doporučení, aby na danou položku našli související položky. Související položky jsou položky, které nejpravděpodobněji stejný uživatel nelíbí. Poslední parametr pro výběr v tomto scénáři je *Výběr související položky*. Možnost **z hodnocených položek (pro vyhodnocení modelu)** je primárně určena pro vyhodnocení modelu během procesu školení. Pro tuto fázi předpovědi si vybíráme **všechny položky** . Vizualizace výstupu [doporučeného pro skóre Matchbox][score-matchbox-recommender] vypadá jako obrázek 24.
 
 ![Výsledek skóre pro doporučené systémové položky](./media/interpret-model-results/24.png)
 
@@ -304,10 +304,10 @@ V případě spuštění webové služby vypadá vrácený výsledek jako obráz
 Obrázek 26. Výsledek webové služby – problém s doporučením pro restaurace
 
 <!-- Module References -->
-[assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[score-matchbox-recommender]: https://msdn.microsoft.com/library/azure/55544522-9a10-44bd-884f-9a91a9cec2cd/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
-[train-clustering-model]: https://msdn.microsoft.com/library/azure/bb43c744-f7fa-41d0-ae67-74ae75da3ffd/
-[train-matchbox-recommender]: https://msdn.microsoft.com/library/azure/fa4aa69d-2f1c-4ba4-ad5f-90ea3a515b4c/
+[assign-to-clusters]: /azure/machine-learning/studio-module-reference/assign-data-to-clusters
+[execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[score-matchbox-recommender]: /azure/machine-learning/studio-module-reference/score-matchbox-recommender
+[score-model]: /azure/machine-learning/studio-module-reference/score-model
+[train-clustering-model]: /azure/machine-learning/studio-module-reference/train-clustering-model
+[train-matchbox-recommender]: /azure/machine-learning/studio-module-reference/train-matchbox-recommender

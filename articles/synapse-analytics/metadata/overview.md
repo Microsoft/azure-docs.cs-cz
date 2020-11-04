@@ -1,6 +1,6 @@
 ---
 title: Model sdílených metadat
-description: Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Spark (Preview), modulem SQL na vyžádání (Preview) a fondy SQL.
+description: Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Apache Spark serverů bez serveru (Preview), neserverovým fondem SQL (Preview) a vyhrazenými fondy SQL.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87387332"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324663"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Sdílená metadata Azure synapse Analytics
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Spark (Preview) a modulem SQL na vyžádání (Preview).
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky mezi svými fondy Apache Spark serverů bez serveru (Preview) a SQL fondem bez serveru (Preview).
 
 [!INCLUDE [preview](../includes/note-preview.md)]
 
@@ -32,7 +32,7 @@ Model Shared metadata podporuje následující vzor pro moderní datové sklady 
 
 2. Vytvořené databáze Sparku a všechny jejich tabulky se budou zobrazovat ve všech instancích fondu Azure synapse v pracovním prostoru Spark a dají se použít z kterékoli úlohy Sparku. Tato funkce podléhá [oprávněním](#security-model-at-a-glance) , protože všechny fondy Spark v pracovním prostoru sdílejí stejné základní úložiště metadat katalogu.
 
-3. Vytvořené databáze Sparku a jejich Parquet tabulky se budou zobrazovat v modulu SQL na vyžádání v pracovním prostoru. [Databáze](database.md) se vytvářejí automaticky v metadatech na vyžádání SQL a [externí i spravované tabulky](table.md) vytvořené pomocí úlohy Sparku jsou dostupné jako externí tabulky v metadatech SQL na vyžádání ve `dbo` schématu odpovídající databáze. 
+3. Vytvořené databáze Sparku a jejich Parquet tabulky se budou zobrazovat ve fondu SQL bez serveru v pracovním prostoru. [Databáze](database.md) se vytvářejí automaticky v metadatech fondu SQL bez serveru a [externí i spravované tabulky](table.md) vytvořené pomocí úlohy Sparku budou přístupné jako externí tabulky v metadatech fondu SQL bez serveru ve `dbo` schématu odpovídající databáze. 
 
 <!--[INSERT PICTURE]-->
 
@@ -52,7 +52,7 @@ Další informace najdete v tématu [sdílená databáze Azure synapse Analytics
 
 ## <a name="change-maintenance"></a>Změna údržby
 
-Pokud se objekt metadat odstraní nebo změní pomocí Sparku, změny se vybírají a rozšíří na modul SQL na vyžádání. Synchronizace je asynchronní a změny se projeví v modulu SQL po krátké prodlevě.
+Pokud se objekt metadat odstraní nebo změní pomocí Sparku, změny se vybírají a rozšíří do fondu SQL bez serveru. Synchronizace je asynchronní a změny se projeví v modulu SQL po krátké prodlevě.
 
 ## <a name="next-steps"></a>Další kroky
 

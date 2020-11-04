@@ -1,6 +1,6 @@
 ---
-title: Zobrazení T-SQL s využitím synapse SQL
-description: Tipy pro použití zobrazení T-SQL a vývoj řešení pomocí synapse SQL
+title: Zobrazení T-SQL s využitím fondů SQL
+description: Tipy pro použití zobrazení T-SQL a vývoj řešení s vyhrazeným fondem SQL a bez serveru SQL (ve verzi Preview) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,15 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e416974d1326415e9a459e39d7bdea8e3fd8a84c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032720"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323816"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>Zobrazení T-SQL s využitím synapse SQL
-V tomto článku najdete tipy pro použití zobrazení T-SQL a vývoj řešení pomocí synapse SQL. 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>Zobrazení T-SQL s vyhrazeným fondem SQL a SQL fondem bez serveru (Preview) ve službě Azure synapse Analytics
+
+V tomto článku najdete tipy pro použití zobrazení T-SQL a vývoj řešení s využitím vyhrazeného fondu SQL a SQL serveru bez serveru (Preview) ve službě Azure synapse Analytics.
 
 ## <a name="why-use-views"></a>Proč používat zobrazení
 
@@ -26,12 +27,7 @@ Zobrazení lze použít mnoha různými způsoby ke zlepšení kvality řešení
 ### <a name="sql-pool---create-view"></a>Fond SQL – vytvoření zobrazení
 
 > [!NOTE]
-> **Fond SQL**: syntaxe pro zobrazení pro vytváření není popsána v tomto článku. Další informace najdete v dokumentaci k [vytváření zobrazení](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
-
-### <a name="sql-on-demand-preview---create-view"></a>SQL na vyžádání (Preview) – vytvořit zobrazení
-
-> [!NOTE]
-> **SQL na vyžádání**: syntaxe pro zobrazení pro vytváření není popsána v tomto článku. Další informace najdete v dokumentaci k [vytváření zobrazení](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
+> V tomto článku není popsána syntaxe pro zobrazení pro vytváření. Další informace najdete v dokumentaci k [vytváření zobrazení](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="architectural-abstraction"></a>Abstrakce architektury
 
@@ -54,7 +50,6 @@ FROM   dbo.DimDate_stg AS stg
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
-
 ```
 
 Mějte na paměti, že tento přístup může mít za následek, že se tabulky zobrazují a zmizí ze zobrazení uživatele a zobrazí se výzva "tabulka neexistuje". Zobrazení lze použít k poskytnutí konzistentní prezentační vrstvy, zatímco jsou přejmenovány podkladové objekty.

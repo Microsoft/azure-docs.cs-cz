@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: f5e999e50818ab6374ce09dd6920cb5dc3dabc82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f860a52691d4d7fe72cbd7c8989277b224214064
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362431"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322765"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Azure Machine Learning Studio (klasický) pomocí Azure Resource Manager
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Použití šablony nasazení Azure Resource Manager vám ušetří čas tím, že vám poskytne škálovatelný způsob, jak nasadit propojené komponenty pomocí mechanismu ověřování a opakování. Chcete-li nastavit pracovní prostory Azure Machine Learning Studio (klasické), například je třeba nejprve nakonfigurovat účet služby Azure Storage a potom tento pracovní prostor nasadit. Představte si to ručně pro stovky pracovních prostorů. Jednodušší alternativou je použití šablony Azure Resource Manager k nasazení pracovního prostoru studia (Classic) a všech jeho závislostí. Tento článek vás provede jednotlivými kroky tohoto postupu. Skvělé přehledy Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](../../azure-resource-manager/management/overview.md).
 
@@ -116,7 +116,7 @@ $rg
 Ověřte, zda je skupina prostředků správně zřízena. **ProvisioningState** by měla být "úspěšná".
 Název skupiny prostředků se používá v šabloně k vygenerování názvu účtu úložiště. Název účtu úložiště musí být dlouhý 3 až 24 znaků a obsahovat jenom číslice a malá písmena.
 
-![Resource Group](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
+![Skupina prostředků](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
 
 * Pomocí nasazení skupiny prostředků nasaďte nový pracovní prostor Machine Learning.
 
@@ -145,6 +145,6 @@ Po zřízení pracovního prostoru můžete automatizovat řadu Azure Machine Le
 * Přečtěte si další informace o [vytváření šablon Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md).
 * Podívejte se na [úložiště šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates).
 * Podívejte se na toto video o [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
-* Viz Referenční informace k [šabloně správce prostředků](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
+* Viz Referenční informace k [šabloně správce prostředků](/azure/templates/microsoft.machinelearning/allversions)
 
 <!--Link references-->

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065484"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323200"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Vytvoření spravovaného privátního koncového bodu ke zdroji dat (Preview)
 
@@ -21,12 +21,11 @@ Tento článek vás seznámí s postupem vytvoření spravovaného privátního 
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>Krok 1: otevřete pracovní prostor Azure synapse v Azure Portal
 
-Můžete vytvořit spravovaný privátní koncový bod ke zdroji dat z Azure synapse studia. Vyberte kartu **Přehled** v Azure Portal a vyberte **Spustit synapse Studio**.
-![Spustit Azure synapse Studio](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Můžete vytvořit spravovaný privátní koncový bod ke zdroji dat z Azure synapse studia. Vyberte kartu **Přehled** v Azure Portal a v části Začínáme vyberte **otevřít** na kartě otevřít synapse Studio.
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>Krok 2: přechod na kartu spravované virtuální sítě v synapse studiu
 
-V Azure synapse studiu v levém navigačním panelu vyberte kartu **Spravovat** . Vyberte **spravované virtuální sítě** a pak vyberte **+ Nová**.
+V Azure synapse studiu v levém navigačním panelu vyberte kartu **Spravovat** . Vyberte **spravované privátní koncové body** a pak vyberte **+ Nová**.
 ![Vytvoření nového spravovaného privátního koncového bodu](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>Krok 3: Vyberte typ zdroje dat

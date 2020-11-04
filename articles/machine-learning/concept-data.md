@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446685"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322246"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure Machine Learning usnadňuje připojení k datům v cloudu.  Poskytuje abst
     
 ## <a name="data-workflow"></a>Pracovní postup dat
 
-Až budete připraveni použít data v cloudovém řešení úložiště, doporučujeme následující pracovní postup doručování dat. Tento pracovní postup předpokládá, že máte [účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) a data v cloudové službě úložiště v Azure. 
+Až budete připraveni použít data v cloudovém řešení úložiště, doporučujeme následující pracovní postup doručování dat. Tento pracovní postup předpokládá, že máte [účet úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal) a data v cloudové službě úložiště v Azure. 
 
 1. Vytvořte [úložiště dat Azure Machine Learning](#datastores) , abyste mohli ukládat informace o připojení do služby Azure Storage.
 
@@ -81,9 +81,9 @@ Datové sady je možné vytvořit z místních souborů, veřejných adres URL, 
 
 Existují dva typy datových sad: 
 
-+ [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py&preserve-view=true) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Pokud jsou vaše data už vyčištěná a připravená k použití ve školicích experimentech, můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které se odkazuje pomocí datových sad, do svého cíle výpočetní služby.
++ [Datová sada](/python/api/azureml-core/azureml.data.file_dataset.filedataset?preserve-view=true&view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Pokud jsou vaše data už vyčištěná a připravená k použití ve školicích experimentech, můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které se odkazuje pomocí datových sad, do svého cíle výpočetní služby.
 
-+ [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do datového rámce PANDAS nebo Spark pro další manipulaci a čištění. Úplný seznam formátů dat, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
++ [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do datového rámce PANDAS nebo Spark pro další manipulaci a čištění. Úplný seznam formátů dat, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory).
 
 Další možnosti datových sad najdete v následující dokumentaci:
 
@@ -100,7 +100,7 @@ S datovými sadami můžete provádět řadu úloh strojového učení prostřed
      + [Návrhář](tutorial-designer-automobile-price-train-score.md#import-data)
      + [poznámkových bloků](how-to-train-with-datasets.md)
      + [Azure Machine Learning kanály](how-to-create-your-first-pipeline.md)
-+ Přístup k datovým sadám pro bodování pomocí [dávkového odvozování](how-to-use-parallel-run-step.md) v [kanálech strojového učení](how-to-create-your-first-pipeline.md).
++ Přístup k datovým sadám pro bodování pomocí [dávkového odvozování](./tutorial-pipeline-batch-scoring-classification.md) v [kanálech strojového učení](how-to-create-your-first-pipeline.md).
 + Nastavte monitorování datových sad pro detekci [posunu dat](#drift) .
 
 <a name="label"></a>

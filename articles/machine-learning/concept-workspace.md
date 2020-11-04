@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 1076b49a101d5657397ef12b8fac672d37e477b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495720"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324802"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Co je pracovní prostor služby Azure Machine Learning?
 
 Pracovní prostor je prostředek nejvyšší úrovně pro Azure Machine Learning, který poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning.  Pracovní prostor uchovává historii všech školicích běhů, včetně protokolů, metrik, výstupu a snímků vašich skriptů. Pomocí těchto informací určíte, který školicí běh vytváří nejlepší model.  
 
@@ -52,9 +52,9 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 + Na webu:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Návrhář služby Azure Machine Learning](concept-designer.md) 
-+ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true).
++ V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 + V jakémkoli prostředí R s [Azure Machine Learning SDK pro R (Preview)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
++ Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md)
 + [Rozšíření Azure Machine Learning VS Code](how-to-manage-resources-vscode.md#workspaces)
 
 
@@ -74,7 +74,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | Rozhraní příkazového řádku        | VS Code
+| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | CLI        | VS Code
 |---------------------------|---------|---------|------------|------------|------------|
 | Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    ||
@@ -103,7 +103,7 @@ Když vytvoříte nový pracovní prostor, automaticky se vytvoří několik pro
 + [Azure Storage účet](https://azure.microsoft.com/services/storage/): slouží jako výchozí úložiště dat pro pracovní prostor.  Jupyter poznámkové bloky používané s vašimi výpočetními instancemi Azure Machine Learning jsou také uloženy. 
   
   > [!IMPORTANT]
-  > Ve výchozím nastavení je účet úložiště účet pro obecné účely v1. Po vytvoření pracovního prostoru můžete [tuto verzi upgradovat na obecné účely verze 2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) . Po upgradu na obecné účely v2 nepovolujte v účtu úložiště hierarchický obor názvů.
+  > Ve výchozím nastavení je účet úložiště účet pro obecné účely v1. Po vytvoření pracovního prostoru můžete [tuto verzi upgradovat na obecné účely verze 2](../storage/common/storage-account-upgrade.md) . Po upgradu na obecné účely v2 nepovolujte v účtu úložiště hierarchický obor názvů.
 
   Pokud chcete použít existující účet Azure Storage, nemůže to být účet Premium (Premium_LRS a Premium_GRS). Nemůže mít také hierarchický obor názvů (používá se s Azure Data Lake Storage Gen2). V rámci _výchozího_ účtu úložiště pracovního prostoru nejsou podporovány ani úrovně Premium Storage ani hierarchické obory názvů. Můžete použít Storage úrovně Premium nebo hierarchický obor názvů s účty úložiště, _které nejsou výchozí_ .
   
@@ -135,5 +135,5 @@ Pokud chcete začít s Azure Machine Learning, přečtěte si:
 + [Kurz: Začínáme s Azure Machine Learning ve vývojovém prostředí](tutorial-1st-experiment-sdk-setup-local.md)
 + [Kurz: Začínáme s vytvářením prvního experimentu ML na výpočetní instanci](tutorial-1st-experiment-sdk-setup.md)
 + [Kurz: Začínáme s Azure Machine Learning s využitím sady R SDK](tutorial-1st-r-experiment.md)
-+ [Kurz: vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) 
++ [Kurz: Vytvoření prvního modelu klasifikace pomocí automatizovaného strojového učení](tutorial-first-experiment-automated-ml.md) 
 + [Kurz: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)

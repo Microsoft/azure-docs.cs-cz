@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbd82f856213bb36e71625eabc8bce9999ccd53f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 532ada430e7ff2ae76eb0cfbc389792bb0d98209
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91289391"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322648"
 ---
 # <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
 Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
+## <a name="supported-tools-for-serverless-sql-pool-preview"></a>Podporované nástroje pro fond SQL bez serveru (Preview)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
@@ -31,12 +31,12 @@ Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 
-Název serveru pro fond SQL v následujícím příkladu: showdemoweu.sql.azuresynapse.net.
-Název serveru pro SQL na vyžádání v následujícím příkladu: showdemoweu-ondemand.sql.azuresynapse.net.
+Název serveru pro vyhrazený fond SQL v následujícím příkladu: showdemoweu.sql.azuresynapse.net.
+Název serveru pro fond SQL bez serveru v následujícím příkladu: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Vyberte v **pracovních prostorech synapse**.
 3. Vyberte pracovní prostor, ke kterému se chcete připojit.
 4. Přejít na přehled
@@ -46,9 +46,9 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
 ![Úplný název serveru](./media/connect-overview/server-connect-example.png)
 
-## <a name="sql-on-demand"></a>**SQL na vyžádání**
+## <a name="serverless-sql-pool"></a>**fond SQL bez serveru**
 
-![Úplný název serveru SQL na vyžádání](./media/connect-overview/server-connect-example-sqlod.png)
+![Úplný fond SQL bez názvového serveru](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
 Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Pokud chcete najít nejnovější verzi a dokumentaci, vyberte jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, vyberte v předchozím příkladu **Zobrazit databázové připojovací řetězce** . Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
@@ -92,7 +92,7 @@ Synapse SQL v rámci připojení a vytváření objektů standardizace některá
 
 ## <a name="recommendations"></a>Doporučení
 
-Pro spouštění dotazů **na vyžádání SQL** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
+Pro spouštění dotazů na **fond SQL bez serveru** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
 
 ## <a name="next-steps"></a>Další kroky
 Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Další informace o možnostech ověřování najdete v tématu [ověřování pro synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
