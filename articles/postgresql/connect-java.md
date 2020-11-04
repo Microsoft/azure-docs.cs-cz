@@ -1,6 +1,6 @@
 ---
-title: Použití jazyků Java a JDBC s Azure Database for PostgreSQL
-description: Naučte se používat Java a JDBC s Azure Database for PostgreSQL.
+title: 'Rychlý Start: použití jazyků Java a JDBC s Azure Database for PostgreSQL'
+description: V tomto rychlém startu se naučíte používat Java a JDBC s Azure Database for PostgreSQL.
 author: jdubois
 ms.author: judubois
 ms.service: postgresql
@@ -8,14 +8,14 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: 402e69606196ecb1030023c49fa5afefd31b9e94
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92734978"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341412"
 ---
-# <a name="use-java-and-jdbc-with-azure-database-for-postgresql"></a>Použití jazyků Java a JDBC s Azure Database for PostgreSQL
+# <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Rychlý Start: použití jazyků Java a JDBC s Azure Database for PostgreSQL
 
 Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure Database for PostgreSQL](./index.yml).
 
@@ -485,7 +485,7 @@ Spuštění hlavní třídy by nyní mělo mít následující výstup:
 [INFO   ] Closing database connection 
 ```
 
-## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Blahopřejeme vám. Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat z Azure Database for PostgreSQL.
 

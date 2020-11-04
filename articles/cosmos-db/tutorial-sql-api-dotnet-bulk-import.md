@@ -4,16 +4,17 @@ description: Naučte se importovat nebo ingestovat data Azure Cosmos DB vytvoře
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e80a67890dcf76d115464ea62c0729aedd444667
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099216"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341229"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +34,7 @@ Tento kurz zahrnuje:
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
-* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Aktivní účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -45,7 +46,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
 
 ## <a name="step-2-set-up-your-net-project"></a>Krok 2: nastavení projektu .NET
 
-Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu. Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem *Hromadná ukázka-import-demo* . `--langVersion`Parametr nastaví vlastnost *langversion –* v souboru vytvořeného projektu.
+Otevřete příkazový řádek systému Windows nebo okno terminálu z místního počítače. Všechny příkazy v dalších částech budete spouštět z příkazového řádku nebo terminálu. Spusťte následující příkaz dotnet New a vytvořte novou aplikaci s názvem *Hromadná ukázka-import-demo*. `--langVersion`Parametr nastaví vlastnost *langversion –* v souboru vytvořeného projektu.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -83,7 +84,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 

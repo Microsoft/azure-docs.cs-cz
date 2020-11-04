@@ -3,16 +3,17 @@ title: Jak převést formáty tokenů relací v sadě .NET SDK – Azure Cosmos 
 description: Přečtěte si, jak převést formáty tokenů relace, aby se zajistila kompatibilita mezi různými verzemi sady .NET SDK.
 author: vinhms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7ed06eeb7330989b4a251dc77e516eb8ac578bff
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101659"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342041"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>Převod formátů tokenů relací v sadě .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +28,7 @@ Tento článek vysvětluje, jak převádět mezi různými formáty tokenů rela
 
 ## <a name="session-token-formats"></a>Formáty tokenů relace
 
-Existují dva formáty tokenů relace: **jednoduchý** a **vektorový** .  Tyto dva formáty nejsou zaměnitelné, takže při předávání do klientské aplikace s různými verzemi by měl být tento formát převeden.
+Existují dva formáty tokenů relace: **jednoduchý** a **vektorový**.  Tyto dva formáty nejsou zaměnitelné, takže při předávání do klientské aplikace s různými verzemi by měl být tento formát převeden.
 - Rozhraní .NET SDK V1 používá k použití **jednoduchého** formátu tokenu relace (Microsoft.Azure.DocumentDB verze 1. x).
 - Formát tokenu **vektorové** relace používá sada .NET SDK V2 (Microsoft.Azure.DocumentDB verze 2. x).
 

@@ -3,17 +3,17 @@ title: Ukázky v Azure CLI pro rozhraní Azure Cosmos DB API pro MongoDB
 description: Ukázky v Azure CLI pro rozhraní Azure Cosmos DB API pro MongoDB
 author: markjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41943a30f78bd906d314d6ec10fa01866708f534
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b17d3b0072d893751586f87d9a4ceb7ac8607416
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073042"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342092"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-api-for-mongodb"></a>Ukázky v Azure CLI pro rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -26,7 +26,7 @@ Tyto ukázky vyžadují Azure CLI verze 2.12.1 nebo novější. Verzi zjistíte 
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -37,7 +37,7 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="mongodb-api-samples"></a>Ukázky rozhraní API pro MongoDB
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a kolekce](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a kolekci pro rozhraní API MongoDB. |
 | [Vytvoření účtu Azure Cosmos, databáze s možností automatického škálování a dvou kolekcí se sdílenou propustností](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi s možností automatického škálování a dvě kolekce se sdílenou propustností pro rozhraní MongoDB API. |

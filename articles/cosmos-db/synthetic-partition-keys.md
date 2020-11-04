@@ -2,21 +2,22 @@
 title: Vytvoření klíče syntetického oddílu v Azure Cosmos DB
 description: Naučte se používat syntetické klíče oddílů v kontejnerech Azure Cosmos k distribuci dat a zatížení rovnoměrně napříč klíči oddílů.
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6b8bc44f1ba5624c37620205aaa574e618ef395f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098021"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340647"
 ---
 # <a name="create-a-synthetic-partition-key"></a>Vytvoření syntetického klíče oddílu
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot, jako jsou stovky nebo tisíce. Cílem je distribuovat vaše data a zatížení napříč položkami přidruženými k těmto hodnotám klíče oddílu. Pokud taková vlastnost ve vašich datech neexistuje, můžete vytvořit *syntetický klíč oddílu* . Tento dokument popisuje několik základních postupů pro generování syntetického klíče oddílu pro váš Cosmos kontejner.
+Osvědčeným postupem je klíč oddílu s velkým množstvím různých hodnot, jako jsou stovky nebo tisíce. Cílem je distribuovat vaše data a zatížení napříč položkami přidruženými k těmto hodnotám klíče oddílu. Pokud taková vlastnost ve vašich datech neexistuje, můžete vytvořit *syntetický klíč oddílu*. Tento dokument popisuje několik základních postupů pro generování syntetického klíče oddílu pro váš Cosmos kontejner.
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>Zřetězení více vlastností položky
 

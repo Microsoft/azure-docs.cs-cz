@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 76b82d3c008ede99e69f3a19a56911fbfecd5642
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 54193c9333c75fd8b973ebe33470fca3617e2f2d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148773"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341837"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegování registrace uživatelů a předplatného produktu
 
@@ -52,18 +52,18 @@ Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést n�
    
     Parametry dotazu pro případ přihlášení/přihlášení:
    
-   * **operace**: Určuje, který typ požadavku na delegování je. v takovém případě se může **Přihlásit** pouze v tomto případě.
-   * **ReturnUrl**: adresa URL stránky, na které se uživatel kliknul na přihlášení nebo odkaz pro registraci
-   * **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-   * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
+   * **operace** : Určuje, který typ požadavku na delegování je. v takovém případě se může **Přihlásit** pouze v tomto případě.
+   * **ReturnUrl** : adresa URL stránky, na které se uživatel kliknul na přihlášení nebo odkaz pro registraci
+   * **Salt** : speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
+   * **SIG** : vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
 2. Ověřte, že požadavek přichází z Azure API Management (volitelné, ale důrazně se doporučuje pro zabezpečení).
    
-   * Vypočítat hodnotu hash HMAC-SHA512 řetězce na základě parametrů dotazu **ReturnUrl** a **Salt** ([vzorový kód uvedený níže]):
+   * Vypočítat hodnotu hash HMAC-SHA512 řetězce na základě parametrů dotazu **ReturnUrl** a **Salt** ( [vzorový kód uvedený níže]):
      
-     > HMAC (**sůl** + ' \n ' + **ReturnUrl**)
+     > HMAC ( **sůl** + ' \n ' + **ReturnUrl** )
 
    * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
-3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven na "Signing" (přihlásit**se).**
+3. Ověřte, že jste obdrželi žádost o přihlášení nebo přihlášení: parametr dotazu **operace** bude nastaven na "Signing" (přihlásit **se).**
 4. Prezentovat uživatele s uživatelským ROZHRANÍm pro přihlášení nebo registraci
 5. Pokud se uživatel přihlásí, musíte pro ně vytvořit odpovídající účet v API Management. [Vytvoří uživatele] s REST APIem API Management. Když to uděláte, ujistěte se, že jste nastavili ID uživatele na stejnou hodnotu jako ve vašem úložišti uživatelů nebo na ID, které můžete sledovat.
 6. Po úspěšném ověření uživatele:
@@ -71,7 +71,7 @@ Nyní je třeba vytvořit **koncový bod delegování**. Je potřeba provést n�
    * [Vyžádání sdíleného přístupového tokenu] přes API Management REST API
    * Přidejte parametr dotazu returnUrl k adrese URL jednotného přihlašování, kterou jste dostali z volání rozhraní API výše:
      
-     > například `https://customer.portal.azure-api.net/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
+     > například `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
      
    * Přesměruje uživatele na výše vytvořenou adresu URL.
 
@@ -84,10 +84,10 @@ Kromě operace **přihlášení** můžete také provádět správu účtů podl
 
 Pro operace správy účtů musíte předat následující parametry dotazu.
 
-* **operace**: Určuje, který typ požadavku na delegování je (ChangePassword, ChangeProfile nebo CloseAccount).
-* **userId**: ID uživatele účtu, který se má spravovat
-* **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-* **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
+* **operace** : Určuje, který typ požadavku na delegování je (ChangePassword, ChangeProfile nebo CloseAccount).
+* **userId** : ID uživatele účtu, který se má spravovat
+* **Salt** : speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
+* **SIG** : vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Delegování předplatného produktu
 
@@ -108,21 +108,21 @@ Dále zajistěte, aby koncový bod delegování provede následující akce:
    
     Parametry dotazu pro případ odběru produktu:
    
-   * **operace**: Určuje, jaký typ požadavku na delegování je. U předplatného produktu si vyžádá platné možnosti:
+   * **operace** : Určuje, jaký typ požadavku na delegování je. U předplatného produktu si vyžádá platné možnosti:
      * "Předplatné": žádost o přihlášení uživatele k danému produktu se zadaným ID (viz níže)
      * "Zrušit odběr": požadavek na zrušení odběru uživatele z produktu
      * "Prodloužit": požadavek na obnovení předplatného (například může vypršet platnost)
-   * **ProductID**: po *přihlášení k odběru* – ID produktu, který uživatel požádal o přihlášení k odběru
-   * **SubscriptionId**: při *zrušení odběru* a *obnovení* – ID předplatného produktu
-   * **userId**: on *předplatné* – ID uživatele, pro který se žádost vytvořila
-   * **Salt**: speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
-   * **SIG**: vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
+   * **ProductID** : po *přihlášení k odběru* – ID produktu, který uživatel požádal o přihlášení k odběru
+   * **SubscriptionId** : při *zrušení odběru* a *obnovení* – ID předplatného produktu
+   * **userId** : on *předplatné* – ID uživatele, pro který se žádost vytvořila
+   * **Salt** : speciální řetězec Salt používaný k výpočtu hodnoty hash zabezpečení
+   * **SIG** : vypočítaná hodnota hash zabezpečení, která se má použít pro porovnání s vámi vypočítanou hodnotou hash
 
 2. Ověřte, že požadavek přichází z Azure API Management (volitelné, ale důrazně se doporučuje pro zabezpečení).
    
-   * Vypočítat HMAC-SHA512 řetězce na základě parametrů dotazu **ProductID**, **userId**a **Salt** :
+   * Vypočítat HMAC-SHA512 řetězce na základě parametrů dotazu **ProductID** , **userId** a **Salt** :
      
-     > HMAC (**sůl** + ' \n ' + **ProductID** + ' \n ' + **userId**)
+     > HMAC ( **sůl** + ' \n ' + **ProductID** + ' \n ' + **userId** )
      > 
      > 
    * Porovná výše vypočítanou hodnotu hash s hodnotou parametru dotazu **SIG** . Pokud se dvě hodnoty hash shodují, přejděte k dalšímu kroku, jinak zakažte požadavek.
@@ -133,7 +133,7 @@ Dále zajistěte, aby koncový bod delegování provede následující akce:
 
 Tyto ukázky kódu ukazují, jak:
 
-* Pořídit *klíč pro ověření delegování*, který je nastavený na obrazovce delegování na portálu vydavatele
+* Pořídit *klíč pro ověření delegování* , který je nastavený na obrazovce delegování na portálu vydavatele
 * Vytvořte HMAC, který se pak použije k ověření podpisu a určení platnosti úspěšného returnUrl.
 
 Stejný kód funguje pro productId a userId s mírnou úpravou.

@@ -3,16 +3,17 @@ title: VÝKON v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o výkonu funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 41c5cc1a6032a0aee16f1922fc59349449c65b55
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39db52223feea63a4e3afbd4775f884acbbca548
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091919"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341684"
 ---
 # <a name="power-azure-cosmos-db"></a>NAPÁJENÍ (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    Je numerický výraz.  
   
 *numeric_expr2*  
-   Je mocninou, kterou chcete vyvolat *numeric_expr1* .  
+   Je mocninou, kterou chcete vyvolat *numeric_expr1*.  
   
 ## <a name="return-types"></a>Návratové typy
   

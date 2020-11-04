@@ -3,17 +3,18 @@ title: Práce s integrovaným rozhraním API dotazů v jazyce JavaScript v Azure
 description: V tomto článku se seznámíte s koncepty rozhraní API pro integrované dotazy jazyka JavaScript k vytváření uložených procedur a triggerů v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 116253e783595cf0e169c6a5774944dfd89f890e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082942"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340970"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Rozhraní API pro dotazování v jazyce JavaScript v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

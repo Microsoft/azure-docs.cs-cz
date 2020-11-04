@@ -3,15 +3,16 @@ title: Elastické škálování pomocí rozhraní API Cassandra v Azure Cosmos D
 description: Přečtěte si o dostupných možnostech škálování Azure Cosmos DB rozhraní API Cassandra účtu a jejich výhodách a nevýhodách.
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aad2e80598146be7b45a8a7b8a02cfe050163102
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088671"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340936"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -63,7 +64,7 @@ Výhodou tohoto přístupu je, že vám umožní reagovat na požadavky na šká
 
 Kromě standardního (ručního) nebo programového způsobu zřizování propustnosti můžete nakonfigurovat také kontejnery Azure Cosmos v propustnosti zřízené pomocí automatického škálování. Automatické škálování automaticky a okamžitě se škáluje podle potřeb spotřeby v zadaném rozsahu RU bez narušení SLA. Další informace najdete v článku [Vytvoření kontejnerů a databází Azure Cosmos v tématu věnovaném automatickému škálování](provision-throughput-autoscale.md) .
 
-Výhodou tohoto přístupu je, že je nejjednodušší způsob, jak spravovat požadavky na škálování ve vašem systému. Neuplatní se tak omezení četnosti **v rámci konfigurovaných rozsahů ru** . Nevýhodou je, že pokud jsou v systému předvídatelné požadavky na škálování, může být automatické škálování méně nákladově efektivním způsobem, jakým je potřeba zpracovat požadavky na škálování, než na základě výše uvedených přístupů na úrovni ovládacího prvku Bespoke nebo úrovně SDK.
+Výhodou tohoto přístupu je, že je nejjednodušší způsob, jak spravovat požadavky na škálování ve vašem systému. Neuplatní se tak omezení četnosti **v rámci konfigurovaných rozsahů ru**. Nevýhodou je, že pokud jsou v systému předvídatelné požadavky na škálování, může být automatické škálování méně nákladově efektivním způsobem, jakým je potřeba zpracovat požadavky na škálování, než na základě výše uvedených přístupů na úrovni ovládacího prvku Bespoke nebo úrovně SDK.
 
 Pokud chcete nastavit nebo změnit maximální propustnost (ru) pro automatické škálování pomocí CQL, použijte následující postup (podle toho, jak se má odpovídajícím způsobem nahradit místo nebo název tabulky):
 

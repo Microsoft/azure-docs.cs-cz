@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 66d09503f5db95811f807aa7faa83b92facca992
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6923f0a1d568cc695b86d1538ba55a3eb3444da
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543691"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341480"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Kurz: zřízení Azure Database for MySQL serveru pomocí šablony Azure Resource Manager
 
 [Azure Database for MySQL REST API](/rest/api/mysql/) umožňuje technikům DevOps automatizovat a integrovat zřizování, konfiguraci a operace spravovaných serverů a databází MySQL v Azure.  Rozhraní API umožňuje vytvořit, vyčíslit, spravovat a odstranit servery a databáze MySQL ve službě Azure Database for MySQL.
 
-Azure Resource Manager využít základní REST API k deklarování a programování prostředků Azure potřebných pro nasazení ve velkém měřítku, a to v souladu s infrastrukturou jako koncept kódu. Šablona parameterizes název prostředku Azure, SKU, síť, konfiguraci brány firewall a nastavení, což umožňuje, aby se vytvořila jednorázově a použila se víckrát.  Šablony Azure Resource Manager lze snadno vytvořit pomocí [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) nebo [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Umožňují vytváření balíčků, standardizace a nasazení aplikací, které lze integrovat do kanálu CI/CD DevOps.  Pokud například chcete rychle nasadit webovou aplikaci s Azure Database for MySQL back-end, můžete provést kompletní nasazení pomocí této [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) z Galerie GitHub.
+Azure Resource Manager využívá základní REST API k deklarování a programovému naprogramování prostředků Azure potřebných pro nasazení ve velkém měřítku, které se zarovnává s infrastrukturou jako koncept kódu. Šablona parameterizes název prostředku Azure, SKU, síť, konfiguraci brány firewall a nastavení, což umožňuje, aby se vytvořila jednorázově a použila se víckrát.  Šablony Azure Resource Manager lze snadno vytvořit pomocí [Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) nebo [Visual Studio Code](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=CLI). Umožňují vytváření balíčků, standardizace a nasazení aplikací, které lze integrovat do kanálu CI/CD DevOps.  Pokud například chcete rychle nasadit webovou aplikaci s Azure Database for MySQL back-end, můžete provést kompletní nasazení pomocí této [šablony pro rychlý Start](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) z Galerie GitHub.
 
 V tomto kurzu se naučíte, jak používat šablonu Azure Resource Manager a další nástroje:
 
@@ -29,6 +29,8 @@ V tomto kurzu se naučíte, jak používat šablonu Azure Resource Manager a dal
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
+
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -115,7 +117,7 @@ Pokud se chcete připojit k serveru, budete muset zadat informace o hostiteli a 
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin** .
+Výsledek je ve formátu JSON. Poznamenejte si **fullyQualifiedDomainName** a **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -199,13 +201,47 @@ Při načtení dat se řádek příslušným způsobem aktualizuje.
 SELECT * FROM inventory;
 ```
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní prostředky ve skupině prostředků.
+
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+
+2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
+
+3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL s koncovým bodem služby virtuální sítě pomocí šablony Azure Resource Manager
-> * Vytvoření databáze pomocí [Nástroje pro příkazový řádek MySQL](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+> * Vytvoření databáze pomocí nástroje pro příkazový řádek mysql
 > * Načtení ukázkových dat
 > * Dotazování dat
 > * Aktualizace dat
-> 
+
+> [!div class="nextstepaction"]
 > [Postup připojení aplikací k Azure Database for MySQL](./howto-connection-string.md)

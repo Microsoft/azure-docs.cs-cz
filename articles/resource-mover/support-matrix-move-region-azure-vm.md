@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b59bc33698be516ec5a2e289b52dafcb9e9efcbe
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521301"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341854"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Podpora pro přesun virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -101,7 +101,7 @@ SUSE Linux Enterprise Server 15 a 15 SP1 |  Podporují se všechny jádra SUSE 1
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Velikost | Všechny velikosti virtuálních počítačů Azure s alespoň dvěma jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/sizes-general.md).
-Skupiny dostupnosti | Aktuálně se nepodporuje. | Pokud přidáte virtuální počítač Azure s nastavenou skupinou dostupnosti do kolekce přesunů s výchozími možnostmi, proces přípravy se nezdařil. Můžete buď přesunout virtuální počítač do zóny dostupnosti, nebo ho přesunout jako virtuální počítač s jednou instancí. Tato nastavení můžete změnit na stránce Upravit vlastnosti cíle.
+Skupiny dostupnosti | Podporováno | Podporuje se.
 Zóny dostupnosti | Podporováno | Podporuje se v závislosti na podpoře cílové oblasti.
 Image Galerie Azure (publikované Microsoftem) | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
 Image Galerie Azure (Publikováno třetí stranou)  | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
@@ -122,7 +122,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučený z procesu přípravy.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md#temporary-disk).
 Maximální velikost datového disku | 8192 GB pro Managed disks
 Minimální velikost datového disku |  2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.

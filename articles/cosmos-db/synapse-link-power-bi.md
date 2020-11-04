@@ -6,16 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305181"
+ms.locfileid: "93342245"
 ---
-# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a neserverového fondu SQL k analýze dat Azure Cosmos DB pomocí odkazu synapse (Preview)
-
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse fondu SQL bez serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 V tomto článku se dozvíte, jak vytvořit databázi fondu SQL bez serveru a zobrazení přes synapse odkaz pro Azure Cosmos DB. Provedete dotaz na kontejnery Azure Cosmos DB a potom sestavíte model pomocí Power BI nad těmito zobrazeními, aby odrážely dotaz.
 

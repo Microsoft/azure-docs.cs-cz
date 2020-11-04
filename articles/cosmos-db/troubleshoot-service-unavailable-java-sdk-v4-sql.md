@@ -3,18 +3,20 @@ title: Řešení potíží s nedostupnými výjimkami služby Azure Cosmos DB po
 description: Naučte se diagnostikovat a opravovat nedostupné výjimky služby Azure Cosmos DB pomocí sady Java v4 SDK.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: bba6465b8978b58fa3ef7be2a7575018828eabb2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 03c899307b00010ca87b279ed720b92946d3673c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102886"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340055"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-service-unavailable-exceptions"></a>Diagnostika a řešení potíží s nedostupnými výjimkami služby SDK pro Azure Cosmos DB Java v4
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 Sada Java v4 SDK se nemohla připojit k Azure Cosmos DB.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží

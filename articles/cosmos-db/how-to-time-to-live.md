@@ -3,16 +3,17 @@ title: Konfigurace a Správa času do provozu v Azure Cosmos DB
 description: Naučte se, jak nakonfigurovat a spravovat dobu provozu na kontejneru a položku v Azure Cosmos DB
 author: anfeldma-ms
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2ddba95f9ccc25d536638dbc68c41027d26e71c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085883"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341004"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurace času na živé v Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +26,7 @@ V Azure Cosmos DB můžete nastavit hodnotu TTL (Time to Live) na úrovni kontej
 
 Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez vypršení platnosti. Tuto možnost povolte, pokud chcete, aby hodnota TTL mohla být přepsána na úrovni položky. Hodnotu TTL můžete nastavit také zadáním nenulové hodnoty pro sekundy.
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -34,7 +35,7 @@ Pomocí následujících kroků můžete povolit dobu provozu na kontejneru bez 
 4. Vyberte existující kontejner, rozbalte jej a upravte následující hodnoty:
 
    * Otevřete okno **nastavení & škálování** .
-   * V části **Nastavení** najít, **Doba do provozu** .
+   * V části **Nastavení** najít, **Doba do provozu**.
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL.
    * Kliknutím na **Uložit** uložte změny.
 
@@ -209,7 +210,7 @@ Kromě nastavení výchozí hodnoty TTL (Time to Live) na kontejneru můžete na
 
 Chcete-li povolit dobu provozu na položce, použijte následující postup:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -218,11 +219,11 @@ Chcete-li povolit dobu provozu na položce, použijte následující postup:
 4. Vyberte existující kontejner, rozbalte jej a upravte následující hodnoty:
 
    * Otevřete okno **nastavení & škálování** .
-   * V části **Nastavení** najít, **Doba do provozu** .
+   * V části **Nastavení** najít, **Doba do provozu**.
    * Vyberte **zapnuto (žádné výchozí)** nebo **Vyberte a nastavte** hodnotu TTL. 
    * Kliknutím na **Uložit** uložte změny.
 
-5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte `ttl` vlastnost a vyberte **aktualizovat** . 
+5. V dalším kroku přejděte na položku, pro kterou chcete nastavit hodnotu TTL (Time to Live), přidejte `ttl` vlastnost a vyberte **aktualizovat**. 
 
    ```json
    {

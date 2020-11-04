@@ -4,15 +4,16 @@ description: Přečtěte si o konceptech řízení přístupu v Azure Cosmos DB,
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68f3fd34081868884782e007885befff59fa05da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096117"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340902"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +91,7 @@ Tady je typický vzor návrhu, který umožňuje vyžádat, vygenerovat a doruč
 7. Aplikace pro telefon může i nadále používat token prostředku k přímému přístupu k prostředkům Cosmos DB s oprávněními definovanými tokenem prostředku a v intervalu povoleném tokenem prostředku.
 8. Po vypršení platnosti tokenu prostředku obdrží další požadavky 401 neoprávněnou výjimku.  V tuto chvíli aplikace pro telefon znovu naváže identitu a požádá o nový token prostředku.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Základní střídání klíčů v Azure Portal – demonstrace zabezpečení databáze NoSQL" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Pracovní postup Azure Cosmos DB tokenů prostředků" border="false":::
 
 Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST najdete v tématu [Access Control v Cosmos DBch prostředcích](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) nebo [ sadu SDKNode.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 
@@ -157,12 +158,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Chcete-li přidat ke svému uživatelskému účtu přístup ke čtečce účtu Azure Cosmos DB, požádejte vlastníka předplatného o provedení následujících kroků v Azure Portal.
 
 1. Otevřete Azure Portal a vyberte svůj účet Azure Cosmos DB.
-2. Klikněte na kartu **řízení přístupu (IAM)** a pak klikněte na  **+ Přidat přiřazení role** .
-3. V podokně **Přidat přiřazení role** v poli **role** vyberte **Cosmos DB role čtecího modulu účtu** .
-4. V **poli přiřadit přístup k** vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD** .
+2. Klikněte na kartu **řízení přístupu (IAM)** a pak klikněte na  **+ Přidat přiřazení role**.
+3. V podokně **Přidat přiřazení role** v poli **role** vyberte **Cosmos DB role čtecího modulu účtu**.
+4. V **poli přiřadit přístup k** vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD**.
 5. V adresáři vyberte uživatele, skupinu nebo aplikaci, ke kterým chcete udělit přístup.  Můžete hledat v adresáři podle zobrazovaného jména, e-mailové adresy nebo identifikátorů objektů.
     Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybrané členy.
-6. Klikněte na **Uložit** .
+6. Klikněte na **Uložit**.
 
 Entita může nyní číst prostředky Azure Cosmos DB.
 

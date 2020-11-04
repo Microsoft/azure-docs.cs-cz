@@ -3,23 +3,24 @@ title: Systémové funkce v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o integrovaných a uživatelsky definovaných funkcích systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fc8473f1caf4a17aea926d2729e7db7918db40d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b8883d7040ad5c73a376838f7cb1aaa1b558bfbd
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094043"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340819"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Systémové funkce (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  Cosmos DB poskytuje mnoho vestavěných funkcí SQL. Kategorie integrovaných funkcí jsou uvedené níže.  
   
-|Skupina funkcí|Description|Operace|  
+|Skupina funkcí|Popis|Operace|  
 |--------------|-----------------|-----------------| 
 |[Funkce pro práci s poli](sql-query-array-functions.md)|Funkce pole provádí operaci u vstupní hodnoty pole a vrací číselnou, logickou nebo hodnotu pole. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md) [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Funkce pro datum a čas](sql-query-date-time-functions.md)|Funkce data a času vám umožní získat aktuální datum a čas UTC ve dvou formách. číselné časové razítko, jehož hodnota je epocha systému UNIX v milisekundách nebo jako řetězec, který odpovídá formátu ISO 8601. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |

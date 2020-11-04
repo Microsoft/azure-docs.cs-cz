@@ -3,23 +3,24 @@ title: Funkce pro kontrolu typu v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o kontrole typů funkcí systému SQL v Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bafc599ddb502d5714b08ff58ed942e9c17557a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 96fea7cb53c89c02583a6dba8434cd33641d6a09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093754"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341497"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Funkce pro kontrolu typů (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Funkce pro kontrolu typů umožňují kontrolovat typ výrazu v rámci dotazu SQL. Můžete použít funkce pro ověřování typu k určení typů vlastností v rámci položek za běhu, když jsou proměnné nebo neznámé. 
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
 Tady je tabulka podporovaných integrovaných funkcí pro kontrolu typů:
 

@@ -3,15 +3,16 @@ title: Šablony Azure Resource Manager pro Azure Cosmos DB Core (SQL API)
 description: K vytvoření a konfiguraci Azure Cosmos DB použijte šablony Azure Resource Manager.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7c060b20920ec17e5de0d10ec74b5619b1575ae2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52fa5957cdbc3ae73ebc4b36e04582741199414a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079389"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340596"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Šablony Azure Resource Manageru pro službu Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

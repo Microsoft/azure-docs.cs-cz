@@ -2,14 +2,14 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 10/20/2020
+ms.date: 11/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3830c7e78cf3cc607c7abfca63e6ae74f89b7aff
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 57b4fecd0293c714dfd910ae2ad4866397646ce8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281740"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340137"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -24,7 +24,7 @@ Když použijete zámek v nadřazeném oboru, všechny prostředky v tomto oboru
 
 Na rozdíl od řízení přístupu na základě role slouží zámky správy k nastavení daného omezení u všech uživatelů a rolí. Další informace o nastavení oprávnění pro uživatele a role najdete v tématu [řízení přístupu na základě role v Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md).
 
-Zámky služby Resource Manager se vztahují jen na operace, které probíhají v rovině správy, tedy operace odesílané na `https://management.azure.com`. Tyto zámky nijak neomezují, jak prostředky vykonávají své vlastní funkce. Omezené jsou změny prostředků, ale ne jejich operace. Například zámek jen pro čtení na SQL Database zabrání v odstranění nebo změně databáze. Nebrání ve vytváření, aktualizování nebo odstraňování dat v databázi. Datové transakce jsou povolené, protože tyto operace se neodesílají na `https://management.azure.com`.
+Zámky služby Resource Manager se vztahují jen na operace, které probíhají v rovině správy, tedy operace odesílané na `https://management.azure.com`. Tyto zámky nijak neomezují, jak prostředky vykonávají své vlastní funkce. Omezené jsou změny prostředků, ale ne jejich operace. Například zámek jen pro čtení na SQL Database logický server vám znemožní odstranit nebo upravit Server. Nebrání v vytváření, aktualizaci nebo odstraňování dat v databázích na daném serveru. Datové transakce jsou povolené, protože tyto operace se neodesílají na `https://management.azure.com`.
 
 ## <a name="considerations-before-applying-locks"></a>Předpoklady před použitím zámků
 
@@ -76,12 +76,12 @@ Chcete-li odstranit vše pro službu včetně uzamčené skupiny prostředků in
 
 Při použití šablony Správce prostředků k nasazení zámku použijte v závislosti na rozsahu zámku jiné hodnoty pro název a typ.
 
-Při použití zámku na **prostředek**použijte následující formáty:
+Při použití zámku na **prostředek** použijte následující formáty:
 
 * název `{resourceName}/Microsoft.Authorization/{lockName}`
 * textový `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-Při použití zámku u **skupiny prostředků** nebo **předplatného**použijte následující formáty:
+Při použití zámku u **skupiny prostředků** nebo **předplatného** použijte následující formáty:
 
 * název `{lockName}`
 * textový `Microsoft.Authorization/locks`

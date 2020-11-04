@@ -3,16 +3,17 @@ title: Testování výkonu a škálování pomocí Azure Cosmos DB
 description: Naučte se, jak provádět testování rozsahu a výkonu pomocí Azure Cosmos DB. Pak můžete vyhodnotit funkčnost Azure Cosmos DB pro vysoce výkonné aplikace.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: b89c48b5040c198cb1b4a6ce383baed51dfac19e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097409"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341769"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování výkonu a škálování pomocí Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

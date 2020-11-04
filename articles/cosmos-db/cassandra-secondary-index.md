@@ -3,16 +3,17 @@ title: Indexování v účtu Azure Cosmos DB rozhraní API Cassandra
 description: Přečtěte si, jak funguje sekundární indexování v Azure Azure Cosmos DB rozhraní API Cassandram účtu.
 author: TheovanKraay
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 98e8f713ad2e4eef47e40d89a23dbf49a98ad67c
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092360"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339884"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Sekundární indexování v Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]

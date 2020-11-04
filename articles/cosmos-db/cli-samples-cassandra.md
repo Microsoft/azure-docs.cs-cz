@@ -3,17 +3,17 @@ title: Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API Cassandra
 description: Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9de87341f57c42aa6a4fa39465c9311887056075
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2dbae196b981b792b47e6c12e500398f772d8451
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074025"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342126"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -26,7 +26,7 @@ Tyto ukázky vyžadují Azure CLI verze 2.12.1 nebo novější. Verzi zjistíte 
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -37,7 +37,7 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="cassandra-api-samples"></a>Ukázky rozhraní API Cassandra
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, místa a tabulky](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, prostor a tabulku pro rozhraní API Cassandra. |
 | [Vytvoření účtu Azure Cosmos, místa a tabulky s použitím automatického škálování](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří Azure Cosmos DB účet, prostor a tabulku s AutoScale rozhraní API Cassandra. |

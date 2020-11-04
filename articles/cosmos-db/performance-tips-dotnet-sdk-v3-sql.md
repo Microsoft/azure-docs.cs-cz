@@ -3,16 +3,17 @@ title: Tipy pro výkon Azure Cosmos DB pro .NET SDK V3
 description: Seznamte se s možnostmi konfigurace klienta, které vám pomůžou vylepšit Azure Cosmos DB výkonu sady .NET V3 SDK
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: 8c042032fb12e63ae32eb5a51b06e07386e5fbfc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308846"
+ms.locfileid: "93341735"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

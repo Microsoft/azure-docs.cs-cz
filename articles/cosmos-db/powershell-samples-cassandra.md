@@ -3,15 +3,16 @@ title: Azure PowerShell ukázky pro Azure Cosmos DB rozhraní API Cassandra
 description: Získání ukázek Azure PowerShell k provádění běžných úloh v Azure Cosmos DB rozhraní API Cassandra
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 87263946715119bc3cf93efbbadf39cde0f4f26b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4f3166693de0365af387f4b6005a4a309f17bb5b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342279"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-cassandra-api"></a>Azure PowerShell ukázky pro Azure Cosmos DB rozhraní API Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -20,7 +21,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="common-samples"></a>Běžné ukázky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Aktualizace účtu](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje výchozí úroveň konzistence účtu Cosmos DB. |
 |[Aktualizace oblastí účtu](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje oblasti účtu Cosmos DB. |
@@ -31,7 +32,7 @@ Následující tabulka obsahuje odkazy na běžně používané Azure PowerShell
 
 ## <a name="cassandra-api-samples"></a>Ukázky rozhraní API Cassandra
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu, místa a tabulky](scripts/powershell/cassandra/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostor a tabulku. |
 |[Vytvoření účtu, prostoru a tabulky pomocí automatického škálování](scripts/powershell/cassandra/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří účet Azure Cosmos, prostor a tabulku s AutoScale. |

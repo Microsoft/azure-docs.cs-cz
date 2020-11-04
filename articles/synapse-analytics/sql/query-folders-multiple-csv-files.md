@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310837"
+ms.locfileid: "93340984"
 ---
 # <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
 
@@ -29,7 +29,7 @@ Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy
 K provedení ukázkových dotazů použijete složku *CSV/taxislužby* . Obsahuje NYC taxislužby – žlutá Taxislužbyová cesta zaznamenává data z července 2016 do června 2018. Soubory ve *formátu CSV/taxislužby* se pojmenují po rocích a měsících pomocí následujícího vzoru: yellow_tripdata_ <year> - <month> . csv.
 
 ## <a name="read-all-files-in-folder"></a>Číst všechny soubory ve složce
-    
+
 Následující příklad přečte všechny NYC žluté taxislužby datové soubory ze složky *CSV/taxislužby* a vrátí celkový počet cestujících a jezdí za rok. Zobrazuje také využití agregačních funkcí.
 
 ```sql
@@ -180,6 +180,49 @@ ORDER BY
 > Všechny soubory, které jsou k dispozici s jednou OPENROWSET, musí mít stejnou strukturu (tj. počet sloupců a jejich datové typy).
 
 Vzhledem k tomu, že máte pouze jednu složku, která odpovídá kritériím, je výsledek dotazu stejný jako [čtení všech souborů ve složce](#read-all-files-in-folder).
+
+## <a name="traverse-folders-recursively"></a>Rekurzivní procházení složek
+
+Fond SQL bez serveru může rekurzivně Procházet složky, pokud zadáte/* * na konci cesty. Následující dotaz načte všechny soubory ze všech složek a podsložek umístěných ve složce *CSV* .
+
+```sql
+SELECT
+    YEAR(pickup_datetime) as [year],
+    SUM(passenger_count) AS passengers_total,
+    COUNT(*) AS [rides_total]
+FROM OPENROWSET(
+        BULK 'csv/taxi/**', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+        pickup_datetime DATETIME2, 
+        dropoff_datetime DATETIME2,
+        passenger_count INT,
+        trip_distance FLOAT,
+        rate_code INT,
+        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
+        pickup_location_id INT,
+        dropoff_location_id INT,
+        payment_type INT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT
+    ) AS nyc
+GROUP BY
+    YEAR(pickup_datetime)
+ORDER BY
+    YEAR(pickup_datetime);
+```
+
+> [!NOTE]
+> Všechny soubory, které jsou k dispozici s jednou OPENROWSET, musí mít stejnou strukturu (tj. počet sloupců a jejich datové typy).
 
 ## <a name="multiple-wildcards"></a>Několik zástupných znaků
 

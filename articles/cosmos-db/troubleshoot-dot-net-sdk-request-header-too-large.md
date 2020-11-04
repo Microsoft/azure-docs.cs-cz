@@ -3,17 +3,18 @@ title: Řešení potíží s chybou "zpráva" je příliš velká "nebo 400 Chyb
 description: Naučte se diagnostikovat a opravovat příliš velkou výjimku v hlavičce požadavku.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: fff9bc55b324875601a2c4e68835a17c61c3769b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a14503bc56777563b6360143efaa86a136b22278
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079253"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340511"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Diagnostika a řešení potíží Azure Cosmos DB zpráva "moc velká hlavička" žádosti
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

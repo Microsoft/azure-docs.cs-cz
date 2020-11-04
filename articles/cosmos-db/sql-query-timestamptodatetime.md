@@ -3,16 +3,17 @@ title: TimestampToDateTime v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o TimestampToDateTime funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: c4a37206187d4b042bb69c065310f3a55fd51e37
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: af5e0eeb808835fd4f36a0eda79618f831248ad9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93093822"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340766"
 ---
 # <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +36,7 @@ Podepsaná číselná hodnota, aktuální počet milisekund, které uplynuly od 
 
 Vrátí hodnotu řetězce data UTC a Time ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Description|
+  |Formát|Popis|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|

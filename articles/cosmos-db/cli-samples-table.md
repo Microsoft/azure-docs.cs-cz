@@ -3,17 +3,17 @@ title: Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API pro tabulky
 description: Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API pro tabulky
 author: markjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b11b715dfc4c4fa90f9827f0f52101a5bae35e90
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c9ed8c6547429d21d0a4da9c02b3a0d72581f25a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93072101"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342058"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-table-api"></a>Ukázky v Azure CLI pro Azure Cosmos DB rozhraní API pro tabulky
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ Tyto ukázky vyžadují Azure CLI verze 2.12.1 nebo novější. Verzi zjistíte 
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -37,7 +37,7 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="table-api-samples"></a>Ukázky rozhraní API pro tabulky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos a tabulky](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku pro rozhraní API pro tabulky. |
 | [Vytvoření účtu Azure Cosmos a tabulky pomocí automatického škálování](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB a tabulku s automatickém škálováním pro rozhraní API pro tabulky. |

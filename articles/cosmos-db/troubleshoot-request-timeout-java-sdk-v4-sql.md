@@ -3,18 +3,21 @@ title: Řešení potíží s Azure Cosmos DB HTTP 408 nebo vyžádat problémy s
 description: Naučte se diagnostikovat a opravovat výjimky pro časový limit požadavku Java SDK pomocí sady Java v4 SDK.
 author: kushagrathapar
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 45452109582be40f007ae57a00c2a151f216bdb8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 442d6638e88462b1dc87e9321dc631fe0a4f3a10
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102890"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340066"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DBmi výjimkami časového limitu požadavku sady Java v4 SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 K chybě HTTP 408 dojde v případě, že sada SDK nemohla dokončit požadavek předtím, než došlo k vypršení časového limitu.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží

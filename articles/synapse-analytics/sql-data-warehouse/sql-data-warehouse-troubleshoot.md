@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fe20304341d6e99eb77ad2818e675b0063efd693
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319528"
+ms.locfileid: "93340273"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Řešení potíží s synapse SQL ve službě Azure synapse Analytics
 
@@ -32,7 +32,7 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 | Blokováno bránou firewall                                          | vyhrazené fondy SQL jsou chráněné branami firewall, aby se zajistil přístup k databázi jenom známým IP adresám. Brány firewall jsou ve výchozím nastavení zabezpečené, což znamená, že před připojením musíte explicitně povolit a IP adresu nebo rozsah adres.  Pokud chcete bránu firewall nakonfigurovat pro přístup, postupujte podle pokynů v tématu [Konfigurace přístupu k bráně firewall serveru pro IP adresu vašeho klienta](create-data-warehouse-portal.md) v [pokynech k zřizování](create-data-warehouse-portal.md). |
 | Nejde se připojit pomocí nástroje nebo ovladače.                           | Vyhrazený fond SQL doporučuje používat [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [SSDT pro Visual Studio](sql-data-warehouse-install-visual-studio.md)nebo [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) k dotazování na data. Další informace o ovladačích a připojení k Azure synapse najdete v tématu [ovladače pro Azure synapse](sql-data-warehouse-connection-strings.md) a [připojení k Azure synapse](sql-data-warehouse-connect-overview.md) articles. |
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 | Problém                                                        | Řešení                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
@@ -67,8 +67,6 @@ V tomto článku jsou uvedené běžné problémy s odstraňováním problémů 
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nepodporované funkce SQL Database     | Viz [nepodporované funkce tabulky](sql-data-warehouse-tables-overview.md#unsupported-table-features). |
 | Nepodporované datové typy SQL Database   | Zobrazit [nepodporované datové typy](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
-| ODSTRANĚNÍ a aktualizace – omezení         | Pokud [chcete pracovat s nepodporovanou syntaxí aktualizace a odstranění](sql-data-warehouse-develop-ctas.md), přečtěte si téma [aktualizace řešení](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements), [odstranění alternativních řešení](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) a použití CTAS. |
-| Příkaz MERGE není podporován.      | Viz [alternativní řešení sloučení](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Omezení uložených procedur          | V tématu [omezení uložených procedur](sql-data-warehouse-develop-stored-procedures.md#limitations) můžete pochopit některá omezení uložených procedur. |
 | UDF nepodporují příkazy SELECT | Toto je aktuální omezení našich Udfů.  Podrobnější informace najdete v tématu věnovaném [Vytvoření funkce](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) . |
 

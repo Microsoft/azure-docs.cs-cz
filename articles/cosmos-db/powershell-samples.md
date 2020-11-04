@@ -3,15 +3,16 @@ title: Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Core (SQL)
 description: Získání ukázek Azure PowerShell pro provádění běžných úloh v rozhraní API pro jádro (SQL) Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: e9ec15f757b6d798a8adf3eb6970321cec112afe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 95b3bdf7c0f232655b4f64f3700579f3672eb3b8
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096151"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341973"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-core-sql-api"></a>Ukázky Azure PowerShell pro rozhraní API pro Azure Cosmos DB Core (SQL)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +23,7 @@ Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShe
 
 ## <a name="common-samples"></a>Běžné ukázky
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Aktualizace účtu](scripts/powershell/common/account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje výchozí úroveň konzistence účtu Cosmos DB. |
 |[Aktualizace oblastí účtu](scripts/powershell/common/update-region.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Aktualizuje oblasti účtu Cosmos DB. |
@@ -33,7 +34,7 @@ Rutiny PowerShellu pro další rozhraní API najdete v tématu [ukázky PowerShe
 
 ## <a name="core-sql-api-samples"></a>Core (SQL) – ukázky rozhraní API
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 |[Vytvoření účtu, databáze a kontejneru](scripts/powershell/sql/create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos DB, databázi a kontejner. |
 |[Vytvoření účtu, databáze a kontejneru pomocí automatického škálování](scripts/powershell/sql/autoscale.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvořte účet Azure Cosmos DB, databázi a kontejner s možností automatického škálování. |

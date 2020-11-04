@@ -3,15 +3,16 @@ title: Nejčastější dotazy týkající se rozhraní API pro tabulky v Azure C
 description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API pro tabulky v Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: b2aab6579f9cc78e44454407f1f4ddeed605086b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096100"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341228"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API pro tabulky v Azure Cosmos DB
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -196,7 +197,7 @@ Ano, Azure Cosmos DB rozhraní API pro tabulky poskytuje automatické indexován
 
 Ano, zásady indexování můžete změnit zadáním definice indexu. Musíte správně zakódovat a napřed nastavit řídicí.
 
-V případě sad non-.NET SDK se dá zásada indexování nastavit jenom na portálu na **Průzkumník dat** , přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte do části **škálování & nastavení** – >zásadu indexování, proveďte požadovanou změnu a pak ji **uložte** .
+V případě sad non-.NET SDK se dá zásada indexování nastavit jenom na portálu na **Průzkumník dat** , přejděte na konkrétní tabulku, kterou chcete změnit, a potom přejděte do části **škálování & nastavení** – >zásadu indexování, proveďte požadovanou změnu a pak ji **uložte**.
 
 Ze sady .NET SDK je možné odeslat soubor app.config:
 

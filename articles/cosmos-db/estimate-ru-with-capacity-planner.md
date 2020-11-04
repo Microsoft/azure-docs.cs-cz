@@ -3,15 +3,16 @@ title: Odhad nákladů pomocí plánovače kapacity Azure Cosmos DB
 description: Plánovač kapacity Azure Cosmos DB umožňuje odhadnout propustnost (RU/s) požadované a náklady na vaše zatížení. Tento článek popisuje, jak používat novou verzi plánovače kapacity k odhadu propustnosti a potřebných nákladů.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 460f47ce453f183821ec0f49c38865c44b15ba9f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 017aeaaa24e8ac2d493d0de81a7abb655bae5611
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096712"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342075"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Odhad RU/s pomocí plánovače kapacity Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +41,7 @@ Pokud chcete získat rychlý odhad vašich úloh pomocí režimu Basic, přejdě
 |Počet čtení za sekundu na oblast|Počet očekávaných čtení za sekundu |
 |Počet zápisů za sekundu na oblast|Počet očekávaných zápisů za sekundu |
 
-Po vyplnění požadovaných podrobností vyberte **Vypočítat** . Karta **odhad nákladů** zobrazuje celkové náklady na úložiště a zřízenou propustnost. Kliknutím na odkaz **Zobrazit podrobnosti** na této kartě můžete získat rozpis propustnosti požadované pro požadavky na čtení a zápis. Pokaždé, když změníte hodnotu libovolného pole, vyberte **Vypočítat** a přepočítejte odhadované náklady. 
+Po vyplnění požadovaných podrobností vyberte **Vypočítat**. Karta **odhad nákladů** zobrazuje celkové náklady na úložiště a zřízenou propustnost. Kliknutím na odkaz **Zobrazit podrobnosti** na této kartě můžete získat rozpis propustnosti požadované pro požadavky na čtení a zápis. Pokaždé, když změníte hodnotu libovolného pole, vyberte **Vypočítat** a přepočítejte odhadované náklady. 
 
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode.png" alt-text="Základní režim plánovače kapacity":::
 
@@ -63,7 +64,7 @@ Po přihlášení uvidíte další pole v porovnání s poli v základním reži
 
 K stažení souboru CSV obsahujícího aktuální odhad můžete použít také tlačítko **Uložit odhad** . 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Základní režim plánovače kapacity":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="Rozšířený režim plánovače kapacity":::
 
 Ceny uvedené v Plánovači kapacity Azure Cosmos DB jsou odhadované na základě sazeb za veřejné ceny pro propustnost a úložiště. Všechny ceny jsou uvedeny v amerických dolarech. Pokud chcete zobrazit všechny sazby podle oblasti, přečtěte si [stránku s cenami Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) .  
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5059b051b16107ac7508e509d319159651de11e3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324404"
+ms.locfileid: "93341327"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -96,6 +96,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , DATA_COMPRESSION = 'data_compression_method' ]
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
+[ , DATAFILETYPE = { 'char' | 'widechar' } ]
 ```
 
 ## <a name="arguments"></a>Argumenty
@@ -112,7 +113,7 @@ Unstructured_data_path, která vytváří cestu k datům, může být absolutní
 - Absolutní cesta ve formátu \<prefix> :// \<storage_account_path> / \<storage_path> umožňuje uživateli přímo číst soubory.
 - Relativní cesta ve formátu ' <storage_path> ', která musí být použita s `DATA_SOURCE` parametrem a popisuje vzor souboru v umístění <storage_account_path>, které je definováno v `EXTERNAL DATA SOURCE` . 
 
- Níže najdete relevantní <storage account path> hodnoty, které budou propojeny s konkrétním externím zdrojem dat. 
+Níže najdete relevantní <storage account path> hodnoty, které budou propojeny s konkrétním externím zdrojem dat. 
 
 | Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
@@ -125,16 +126,18 @@ Unstructured_data_path, která vytváří cestu k datům, může být absolutní
 
 '\<storage_path>'
 
- Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
+Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
 
- Můžete použít zástupné znaky k zacílení na více souborů nebo složek. Je povoleno použití více zástupných znaků nejdoucích po sobě.
+Můžete použít zástupné znaky k zacílení na více souborů nebo složek. Je povoleno použití více zástupných znaků nejdoucích po sobě.
 Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population* :  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Pokud zadáte unstructured_data_path jako složku, dotaz na fond SQL bez serveru načte soubory z této složky. 
 
+SQL fondu bez serveru můžete dát pokyn k procházení složek zadáním/* na konci cesty jako v příkladu: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
+
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL bez serveru nevrací podsložky. I na rozdíl od Hadoop a báze SQL bez serveru vrátí soubory, pro které název souboru začíná podtržením (_) nebo tečku (.).
+> Na rozdíl od Hadoop a báze SQL bez serveru nevrátí podsložky, pokud nezadáte/* * na konci cesty. I na rozdíl od Hadoop a báze SQL bez serveru vrátí soubory, pro které název souboru začíná podtržením (_) nebo tečku (.).
 
 V následujícím příkladu, pokud unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz fondu SQL bez serveru vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
@@ -222,6 +225,10 @@ HEADER_ROW = {TRUE | CHYBNÉ
 
 Určuje, zda soubor CSV obsahuje řádek záhlaví. Výchozí hodnota je FALSE. Podporováno v PARSER_VERSION = ' 2.0 '. Pokud má hodnotu TRUE, názvy sloupců se načtou z prvního řádku podle argumentu FIRSTROW.
 
+Datatyp_souboru = {' char ' | ' widechar '}
+
+Určuje kódování: char se používá pro UTF8, widechar se používá pro soubory UTF16.
+
 ## <a name="fast-delimited-text-parsing"></a>Analýza textu s rychlým oddělovačem
 
 Existují dvě verze analyzátoru s oddělovači textu, které můžete použít. Analyzátor CSV verze 1,0 je výchozí a funkce bohatá, zatímco analyzátor verze 2,0 je sestaven pro výkon. Vylepšení výkonu v analyzátoru 2,0 pochází z pokročilých technik analýzy a multithreading. Rozdíl v rychlosti bude při zvětšování velikosti souboru větší.
@@ -235,7 +242,7 @@ Soubory Parquet obsahují metadata sloupců, která se budou číst, mapování 
 Názvy sloupců pro soubory CSV lze číst z řádku záhlaví. Můžete určit, zda řádek záhlaví existuje pomocí argumentu HEADER_ROW. Pokud HEADER_ROW = FALSE, použijí se názvy obecných sloupců: C1, C2,... CN, kde n je počet sloupců v souboru. Datové typy budou odvozeny z prvních 100 datových řádků. Kontroluje [čtení souborů CSV bez zadání schématu](#read-csv-files-without-specifying-schema) pro ukázky.
 
 > [!IMPORTANT]
-> Existují případy, kdy se vhodný datový typ nedá odvodit z důvodu nedostatku informací a místo toho se použije větší datový typ. To přináší nároky na výkon a je zvláště důležité pro sloupce znaků, které budou odvozeny jako varchar (8000). V případě, že máte v souborech sloupce znaků a použijete odvození schématu, pro zajištění optimálního výkonu [Zkontrolujte odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) a [použijte příslušné datové typy](best-practices-sql-on-demand.md#use-appropriate-data-types).
+> Existují případy, kdy se vhodný datový typ nedá odvodit z důvodu nedostatku informací a místo toho se použije větší datový typ. To přináší nároky na výkon a je zvláště důležité pro sloupce znaků, které budou odvozeny jako varchar (8000). Pro zajištění optimálního výkonu [Zkontrolujte odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) a [použijte příslušné datové typy](best-practices-sql-on-demand.md#use-appropriate-data-types).
 
 ### <a name="type-mapping-for-parquet"></a>Mapování typů pro Parquet
 

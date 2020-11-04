@@ -3,16 +3,17 @@ title: Řešení potíží s Azure Cosmos DB nenalezenými výjimkami
 description: Naučte se diagnostikovat a opravovat nenalezené výjimky.
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 94aebd768987a9e56baf31967c13135031172ac5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081395"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340120"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DB nenalezenými výjimkami
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

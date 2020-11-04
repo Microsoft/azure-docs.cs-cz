@@ -3,16 +3,17 @@ title: Práce s uloženými procedurami, triggery a UDF v Azure Cosmos DB
 description: V tomto článku se seznámíte s koncepty, jako jsou uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0bd572da9bba9048e2c8b9c4b426056620c4c265
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101302"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340698"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,7 +43,7 @@ Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí (UDF
 
 ## <a name="transactions"></a>Transakce
 
-Transakce v typické databázi může být definována jako posloupnost operací prováděná jako jediná logická jednotka práce. Každá transakce poskytuje **záruky vlastností kyselosti** . KYSELost je známý akronym, **který představuje: tomicity,** **C** onsistency, **I** solation a **D** urability. 
+Transakce v typické databázi může být definována jako posloupnost operací prováděná jako jediná logická jednotka práce. Každá transakce poskytuje **záruky vlastností kyselosti**. KYSELost je známý akronym, **který představuje: tomicity,** **C** onsistency, **I** solation a **D** urability. 
 
 * Nedělitelnost zaručuje, že všechny operace provedené uvnitř transakce jsou považovány za jednu jednotku a všechny z nich jsou potvrzeny nebo žádné z nich. 
 

@@ -6,15 +6,15 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 30f139c92fe426369c609dabd826a7bff1617e72
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098038"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341282"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Nejčastější dotazy k Azure Synapse Linku pro Azure Cosmos DB
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Odkaz na Azure synapse pro Azure Cosmos DB vytvoří těsnou integraci mezi Azure Cosmos DB a analýzou Azure synapse. Umožňuje zákazníkům provozovat analýzy téměř v reálném čase prostřednictvím jejich provozních dat s plnou izolací výkonu ze svých transakčních úloh a bez kanálu ETL. Tento článek odpovídá na nejčastější dotazy k Synapse Linku pro Azure Cosmos DB.
 
@@ -157,7 +157,7 @@ Azure Cosmos DB kontejner povolený pomocí analytického úložiště má násl
 
 Kontejner transakčního úložiště bude reprezentován následující ikonou:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB kontejner povolený pomocí analytického úložiště – ikona":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB kontejner povolen s transakčním úložištěm – ikona":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Jak předáte Azure Cosmos DB přihlašovací údaje ze služby Azure synapse Studio?
 

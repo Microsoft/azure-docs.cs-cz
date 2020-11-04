@@ -3,16 +3,17 @@ title: Migrace dat z Cassandra do Azure Cosmos DB rozhraní API Cassandra pomoc�
 description: Naučte se migrovat data z databáze Apache Cassandra do Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz.
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c26d21e74e9808fe65890b7f4eba31ee742552a4
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092411"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339981"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrace dat z Cassandra na účet Azure Cosmos DB rozhraní API Cassandra pomocí Blitzz
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -55,7 +56,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Soubory Blitzz replicant":::
 
 1. V terminálu CLI nastavte konfiguraci zdrojové databáze. Otevřete konfigurační soubor pomocí **`vi conf/conn/cassandra.yml`** příkazu a přidejte čárkami oddělený seznam IP adres uzlů Cassandra, číslo portu, uživatelské jméno, heslo a další požadované podrobnosti. Následuje příklad obsahu v konfiguračním souboru:
 
@@ -72,9 +73,9 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    ```
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/open-connection-editor-cassandra.png" alt-text="Otevřít Editor připojení Cassandra":::
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-connection-configuration.png" alt-text="Konfigurace připojení Cassandra":::
 
    Po vyplnění podrobností konfigurace soubor uložte a zavřete.
 
@@ -93,7 +94,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
 1. Před migrací dat zvyšte propustnost kontejneru na množství potřebné k rychlé migraci vaší aplikace. Můžete například zvýšit propustnost na 100000 ru. Škálování propustnosti před zahájením migrace vám pomůže s migrací dat za kratší dobu.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="Škálování Cosmos kontejneru Azure v celém":::
 
    Snižte propustnost po dokončení migrace. Na základě množství uložených dat a ru vyžadovaných pro jednotlivé operace můžete odhadnout propustnost vyžadovanou po migraci dat. Další informace o tom, jak odhadovat požadované ru, najdete v tématech [zřízení propustnosti pro kontejnery a databáze](set-throughput.md) a [odhad ru/s pomocí článků Azure Cosmos DB kapacity pro plánování](estimate-ru-with-capacity-planner.md) .
 
@@ -129,7 +130,7 @@ Tato část popisuje kroky potřebné k nastavení Blitzz a migraci dat z datab�
 
    Uživatelské rozhraní replicant zobrazuje průběh replikace. Po dokončení operace migrace schématu a snímku se zobrazí průběh 100%. Po dokončení migrace můžete ověřit data v cílové databázi Azure Cosmos.
 
-   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Stažení nástroje Blitzz replicant Tool":::
+   :::image type="content" source="./media/cassandra-migrate-cosmos-db-blitzz/cassandra-data-migration-output.png" alt-text="Výstup migrace dat Cassandra":::
 
 
 1. Vzhledem k tomu, že jste použili úplný režim migrace, můžete provádět operace, jako je například vložení, aktualizace nebo odstranění dat ve zdrojové databázi Apache Cassandra. Později ověřte, jestli jsou replikované v reálném čase v cílové databázi Azure Cosmos. Po dokončení migrace nezapomeňte snížit propustnost nakonfigurovanou pro váš kontejner Azure Cosmos.

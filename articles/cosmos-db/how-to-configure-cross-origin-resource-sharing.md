@@ -3,15 +3,16 @@ title: Sdílení prostředků mezi zdroji (CORS) v Azure Cosmos DB
 description: Tento článek popisuje, jak v Azure Cosmos DB nakonfigurovat sdílení prostředků mezi zdroji (CORS) pomocí šablon Azure Portal a Azure Resource Manager.
 author: deborahc
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: eba49ff45ba9ab1f5cfaa1d75973d656ac32ca6a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086410"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339887"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>Konfigurace sdílení prostředků mezi zdroji (CORS)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Pomocí následujících kroků můžete povolit sdílení prostředků mezi zdr
 
 1. Přejděte k účtu služby Azure Cosmos DB. Otevřete okno **CORS** .
 
-2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například,, `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com` . Můžete také použít zástupný znak \* "" pro povolení všech původu a vybrat **Odeslat** . 
+2. Zadejte čárkami oddělený seznam počátek, který může provádět volání mezi zdroji Azure Cosmos DB účtu. Například,, `https://www.mydomain.com` `https://mydomain.com` `https://api.mydomain.com` . Můžete také použít zástupný znak \* "" pro povolení všech původu a vybrat **Odeslat**. 
 
    > [!NOTE]
    > V současné době nemůžete použít zástupné znaky jako součást názvu domény. Například `https://*.mydomain.net` formát není dosud podporován. 

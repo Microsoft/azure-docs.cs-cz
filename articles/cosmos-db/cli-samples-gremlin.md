@@ -3,17 +3,17 @@ title: Ukázky v Azure CLI pro rozhraní Azure Cosmos DB Gremlin API
 description: Ukázky v Azure CLI pro rozhraní Azure Cosmos DB Gremlin API
 author: markjbrown
 ms.service: cosmos-db
-ms.subservice: cosmosdb-sql
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bb992b81318c33e9b06637f8e3ad52f63fa8ed33
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 63ff557e5ca0769b68cb74f4b790e3678da7c3c7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073157"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342109"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>Ukázky v Azure CLI pro rozhraní Azure Cosmos DB Gremlin API
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,7 +26,7 @@ Tyto ukázky vyžadují Azure CLI verze 2.12.1 nebo novější. Verzi zjistíte 
 
 Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Oblasti přidání nebo převzetí služeb při selhání](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Přidání oblasti, změna priority převzetí služeb při selhání, aktivace ručního převzetí služeb při selhání|
 | [Klíče účtu a připojovací řetězce](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Vypíše klíče účtu, klíče jen pro čtení, znovu vygeneruje klíče a seznam připojovacích řetězců.|
@@ -37,7 +37,7 @@ Tyto ukázky se vztahují na všechna rozhraní Azure Cosmos DB API.
 
 ## <a name="gremlin-api-samples"></a>Ukázky rozhraní API pro Gremlin
 
-|Úloha | Popis |
+|Úkol | Popis |
 |---|---|
 | [Vytvoření účtu Azure Cosmos, databáze a grafu](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf pro rozhraní Gremlin API. |
 | [Vytvoření účtu Azure Cosmos, databáze a grafu pomocí automatického škálování](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Vytvoří účet Azure Cosmos DB, databázi a graf s možností automatického škálování pro rozhraní Gremlin API. |
