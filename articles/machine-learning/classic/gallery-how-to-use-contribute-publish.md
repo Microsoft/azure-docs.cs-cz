@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342524"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309877"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -28,7 +28,7 @@ Galerie má řadu prostředků, které můžete použít k vývoji vlastních an
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Co můžu najít v galerii?
 
-Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Tady jsou některé z nich:
+Azure AI Gallery obsahuje řadu různých prostředků, které přispěla společnost Microsoft a členové komunity pro vědu v oblasti dat. Mezi ně patří:
 
 * **Experimenty** – galerie obsahuje širokou škálu experimentů, které byly vyvinuty v Azure Machine Learning Studio (Classic). Tyto experimenty jsou z rychlých experimentů v rámci konceptu, které ukazují konkrétní technika strojového učení, k plně vyvinutým řešením pro složité problémy strojového učení.
 * **Kurzy** – k dispozici je řada kurzů, které vás provedou pomocí technologií a konceptů strojového učení, případně popisují pokročilé metody řešení různých problémů strojového učení.
@@ -48,24 +48,24 @@ Můžete dokonce sdílet prostředek s přáteli nebo kolegy pomocí možností 
 
 Když se přihlásíte, stanete se členem komunity galerie. To vám umožňuje stahovat prostředky nebo přispívat k vlastním položkám galerie, aby ostatní mohli využívat řešení, která jste zjistili.
 
-Můžete si stáhnout **experimenty**, **vlastní moduly** pro použití při vývoji vlastních analytických řešení.
-Do galerie můžete přispívat **experimenty**, **kurzy**a **kolekce** .
+Můžete si stáhnout **experimenty** , **vlastní moduly** pro použití při vývoji vlastních analytických řešení.
+Do galerie můžete přispívat **experimenty** , **kurzy** a **kolekce** .
 
 ## <a name="download-experiments-modules"></a>Stáhnout experimenty, moduly
 
-**Experimenty**a **vlastní moduly** si můžete stáhnout do vlastního pracovního prostoru Machine Learning Studio (klasický) a použít ho při vývoji vlastních řešení.
+**Experimenty** a **vlastní moduly** si můžete stáhnout do vlastního pracovního prostoru Machine Learning Studio (klasický) a použít ho při vývoji vlastních řešení.
 
 Stažení prostředku z Galerie AI:
 
 1. Otevřete prostředek v galerii AI.
-1. **V nástroji Studio**klikněte na otevřít.
+1. **V nástroji Studio** klikněte na otevřít.
 
 ![Otevření položky z Galerie AI](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
 Stažení prostředku z aplikace Studio (Classic):
 
 1. V nástroji Studio (Classic) vyberte **Nový**.
-1. Vyberte **modul**, **experiment**nebo **Poznámkový blok**.
+1. Vyberte **modul** , **experiment** nebo **Poznámkový blok**.
 1. Vyhledejte prostředek Galerie procházením nebo hledáním.
 1. Najeďte ukazatelem myši na prostředek a potom vyberte **otevřít v aplikaci Studio**.
     ![Otevřít experiment z galerie v rámci Machine Learning Studio (Classic)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
@@ -75,7 +75,7 @@ Jakmile je prostředek ve vašem pracovním prostoru, můžete ho přizpůsobit 
 Použití importovaného vlastního modulu:
 
 1. Vytvořte experiment nebo otevřete existující experiment.
-1. Pokud chcete rozšířit seznam vlastních modulů v pracovním prostoru, vyberte v paletě modul **Custom (vlastní**). Paleta modulu je nalevo od plátna experimentu.
+1. Pokud chcete rozšířit seznam vlastních modulů v pracovním prostoru, vyberte v paletě modul **Custom (vlastní** ). Paleta modulu je nalevo od plátna experimentu.
 1. Vyberte modul, který jste naimportovali, a přetáhněte ho do experimentu.
 
 ## <a name="contribute-experiments"></a>Experimenty přispívání
@@ -108,7 +108,7 @@ A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dost�
 
 1. Na stránce **Výběr obrázku** vyberte miniaturu obrázku pro svůj experiment. Obrázek miniatury se zobrazí v horní části stránky s podrobnostmi experimentu a na dlaždici experiment. Ostatním uživatelům se při procházení Galerie uvidí obrázek miniatury. Můžete nahrát obrázek z počítače nebo vybrat uloženou image z galerie.
 
-1. Na stránce **Nastavení** v části **viditelnost**vyberte, jestli se má obsah publikovat veřejně (**veřejný**), nebo jestli má být přístupný jenom uživatelům, kteří mají odkaz na stránku (bez**seznamu**).
+1. Na stránce **Nastavení** v části **viditelnost** vyberte, jestli se má obsah publikovat veřejně ( **veřejný** ), nebo jestli má být přístupný jenom uživatelům, kteří mají odkaz na stránku (bez **seznamu** ).
 
    > [!TIP]
    > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
@@ -125,13 +125,13 @@ Jakékoli z následujících informací můžete pro svůj experiment změnit p�
 * Shrnutí nebo popis
 * Značky
 * Image
-* Nastavení viditelnosti (**Veřejná** nebo **nerozevírací**)
+* Nastavení viditelnosti ( **Veřejná** nebo **nerozevírací** )
 
 Můžete také odstranit experiment z galerie.
 
 Tyto změny můžete provést nebo odstranit experiment, na stránce s podrobnostmi experimentu nebo na stránce vašeho profilu v galerii.
 
-* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránka podrobností vstupuje do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu**Public** (veřejné **nebo**neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
+* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránka podrobností vstupuje do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu **Public** (veřejné **nebo** neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
 
 * Na stránce profil vyberte šipku dolů pro experiment a pak vyberte **Upravit**. Tím přejdete na stránku podrobností pro váš experiment v režimu úprav. Až změny dokončíte, vyberte **Hotovo**. Chcete-li experiment odstranit z Galerie, vyberte možnost **Odstranit**.
 
@@ -152,11 +152,11 @@ Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení neb
 
 1. Vyberte **New Item** (Nová položka).
 
-1. Na stránce **Popis** pro **typ položky**vyberte **kurz** nebo **kolekce**. Zadejte název, stručný souhrn, podrobný popis a všechny značky, které by vám mohly pomoci ostatním uživatelům najít váš příspěvek. Potom klikněte na **Další**.
+1. Na stránce **Popis** pro **typ položky** vyberte **kurz** nebo **kolekce**. Zadejte název, stručný souhrn, podrobný popis a všechny značky, které by vám mohly pomoci ostatním uživatelům najít váš příspěvek. Potom klikněte na **Další**.
 
 1. Na stránce **Výběr obrázku** vyberte obrázek, který se zobrazí spolu s vaším příspěvkem. Můžete nahrát vlastní soubor obrázku nebo vybrat uloženou bitovou kopii. Vyberte si obrázek, který může pomoci uživatelům identifikovat obsah a účel vašeho příspěvku. Potom klikněte na **Další**.
 
-1. Na stránce **Nastavení** pro **viditelnost**vyberte, jestli je váš příspěvek **veřejný** (kdokoli ho může zobrazit) nebo není v **seznamu** (jenom lidé s přímým odkazem ho můžou zobrazit).
+1. Na stránce **Nastavení** pro **viditelnost** vyberte, jestli je váš příspěvek **veřejný** (kdokoli ho může zobrazit) nebo není v **seznamu** (jenom lidé s přímým odkazem ho můžou zobrazit).
 
    > [!TIP]
    > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
@@ -169,11 +169,11 @@ Váš příspěvek je teď v Azure AI Gallery. Vaše příspěvky jsou uvedené 
 
 Položky do kolekce můžete přidat dvěma způsoby:
 
-* Otevřete kolekci, vyberte **Upravit**a pak vyberte **Přidat položku**. Můžete přidat položky, které jste přispěli do galerie, nebo můžete vyhledat položky, které chcete přidat do galerie. Po výběru položek, které chcete přidat, klikněte na tlačítko **Přidat**.
+* Otevřete kolekci, vyberte **Upravit** a pak vyberte **Přidat položku**. Můžete přidat položky, které jste přispěli do galerie, nebo můžete vyhledat položky, které chcete přidat do galerie. Po výběru položek, které chcete přidat, klikněte na tlačítko **Přidat**.
 
 * Pokud najdete položku, kterou chcete přidat při procházení galerie, otevřete položku a vyberte **Přidat do kolekce**. Vyberte kolekci, do které chcete položku Přidat.
 
-Kliknutím na **Upravit**můžete položky v kolekci upravit.
+Kliknutím na **Upravit** můžete položky v kolekci upravit.
 
 * Můžete změnit souhrn, popis nebo značky pro kolekci.
 * Pořadí položek v kolekci můžete změnit pomocí šipek vedle položky.
@@ -204,4 +204,4 @@ Chceme, aby Galerie byla řízena našimi uživateli a pro naše uživatele. Pou
 
 ![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT NA >>GALERIE ](https://gallery.azure.ai)**
+**[PŘEJÍT NA >>GALERIE](https://gallery.azure.ai)**

@@ -1,6 +1,6 @@
 ---
 title: Dotazování na data Azure Cosmos DB pomocí SQL fondu bez serveru v odkazu Azure synapse (Preview)
-description: V tomto článku se naučíte, jak zadat dotaz na Azure Cosmos DB pomocí SQL na vyžádání v tématu připojení Azure synapse (Preview).
+description: V tomto článku se naučíte, jak zadávat dotazy na Azure Cosmos DB s využitím fondu SQL bez serveru ve službě Azure synapse Link (Preview).
 services: synapse analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b1af6fa5b0ccb95476c4ae169481e4aaa15f4f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737829"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310299"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Dotazování na data Azure Cosmos DB ve fondu SQL bez serveru v odkazu Azure synapse (Preview)
 
 Synapse fond SQL bez serveru umožňuje analyzovat data v kontejnerech Azure Cosmos DB, které jsou povolené pomocí [Azure synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) v téměř reálném čase, aniž by to ovlivnilo výkon transakčních úloh. Nabízí známou syntaxi T-SQL pro dotazování dat z [analytického úložiště](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a integrovaného připojení k široké škále nástrojů pro dotazování BI a ad-hoc, a to prostřednictvím rozhraní T-SQL.
 
-Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-sql-on-demand). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
+Pro dotazování Azure Cosmos DB je dostupná plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) plochy prostřednictvím funkce [OpenRowset](develop-openrowset.md) , včetně většiny [funkcí a operátorů SQL](overview-features.md). Můžete také uložit výsledky dotazu, který čte data z Azure Cosmos DB společně s daty v Azure Blob Storage nebo Azure Data Lake Storage pomocí příkazu [vytvořit externí tabulku jako SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool). V současné době nemůžete ukládat výsledky dotazu fondu SQL bez serveru do Azure Cosmos DB pomocí CETAS. 
 
 V tomto článku se dozvíte, jak napsat dotaz s neserverovým fondem SQL, který bude dotazovat data z Azure Cosmos DB kontejnerů s povoleným odkazem synapse. Pak si můžete přečíst další informace o vytváření zobrazení fondu SQL bez serveru nad kontejnery Azure Cosmos DB a jejich propojením s Power BI modely v [tomto](./tutorial-data-analyst.md) kurzu. 
 
@@ -343,7 +343,7 @@ V tomto příkladu je počet případů uložen buď jako `int32` , `int64` nebo
 
 Možné chyby a akce při řešení potíží jsou uvedené v následující tabulce:
 
-| Chybová | Původní příčina |
+| Chyba | Původní příčina |
 | --- | --- |
 | Chyby syntaxe:<br/> – Nesprávná syntaxe v blízkosti položky OpenRowset<br/> - `...` není rozpoznaná možnost HROMADNÉho poskytovatele OPENROWSET.<br/> – Nesprávná syntaxe poblíž textu `...` | Možné hlavní příčiny<br/> -Nepoužívá se jako první parametr ' CosmosDB ',<br/> -Použití řetězcového literálu místo identifikátoru ve třetím parametru<br/> -Nespecifikuje se třetí parametr (název kontejneru). |
 | V připojovacím řetězci CosmosDB došlo k chybě. | – Účet, databáze, klíč není zadaný. <br/> -V připojovacím řetězci existuje možnost, která není rozpoznána.<br/> – Středník `;` je umístěný na konci připojovacího řetězce. |
@@ -358,6 +358,6 @@ Návrhy a problémy můžete nahlásit na [stránce s názory na Azure synapse](
 
 Další informace najdete v následujících článcích:
 
-- [Použití Power BI a synapse fondu SQL bez serveru s propojením Azure synapse](../../cosmos-db/synapse-link-power-bi.md)
-- [Postup vytvoření a používání zobrazení v SQL na vyžádání](create-use-views.md) 
-- [Kurz k sestavování zobrazení SQL na vyžádání přes Azure Cosmos DB a jejich propojení s Power BI modely prostřednictvím DirectQuery](./tutorial-data-analyst.md)
+- [Použití Power BI a neserverového fondu SQL s propojením Azure synapse](../../cosmos-db/synapse-link-power-bi.md)
+- [Postupy: vytváření a používání zobrazení ve fondu SQL bez serveru](create-use-views.md) 
+- [Kurz týkající se vytváření zobrazení fondu SQL bez serveru přes Azure Cosmos DB a jejich propojení s Power BI modely prostřednictvím DirectQuery](./tutorial-data-analyst.md)

@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440446"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311042"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Použití spravovaných identit s Azure Machine Learningm (Preview)
 
-[Spravované identity](/azure/active-directory/managed-identities-azure-resources/overview) umožňují nakonfigurovat pracovní prostor s *minimálními požadovanými oprávněními pro přístup k prostředkům*. 
+[Spravované identity](../active-directory/managed-identities-azure-resources/overview.md) umožňují nakonfigurovat pracovní prostor s *minimálními požadovanými oprávněními pro přístup k prostředkům*. 
 
 Když konfigurujete Azure Machine Learning pracovní prostor v rámci důvěryhodných způsobů, je důležité zajistit, aby různé služby přidružené k pracovnímu prostoru měly správnou úroveň přístupu. Pracovní prostor Machine Learning například potřebuje přístup k Azure Container Registry (ACR) pro Image Docker a účty úložiště pro školení dat. 
 
@@ -33,20 +33,20 @@ V tomto článku se dozvíte, jak používat spravované identity k těmto akcí
 > [!IMPORTANT]
 > Použití spravovaných identit k řízení přístupu k prostředkům pomocí Azure Machine Learning je aktuálně ve verzi Preview. Funkce ve verzi Preview je poskytována tak, jak je, bez záruky podpory nebo smlouvy o úrovni služeb. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 - [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md)
-- [Sada SDK Azure Machine Learning Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-- Aby bylo možné přiřadit role, přihlášení k předplatnému Azure musí mít roli [spravovaného operátora identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo jinou roli, která uděluje požadované akce (například __vlastník__).
-- Musíte být obeznámeni s vytvářením a práci se [spravovanými identitami](/azure/active-directory/managed-identities-azure-resources/overview).
+- [Sada SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/intro?view=azure-ml-py).
+- Aby bylo možné přiřadit role, přihlášení k předplatnému Azure musí mít roli [spravovaného operátora identity](../role-based-access-control/built-in-roles.md#managed-identity-operator) nebo jinou roli, která uděluje požadované akce (například __vlastník__ ).
+- Musíte být obeznámeni s vytvářením a práci se [spravovanými identitami](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="configure-managed-identities"></a>Konfigurace spravovaných identit
 
 V některých situacích je nutné zakázat přístup uživatelů správce k Azure Container Registry. Například ACR může být sdílená a vy budete muset zakázat přístup správce jiným uživatelům. Nebo vytvoření ACR s povoleným správcem na úrovni předplatného je zakázané zásadami na úrovni předplatného.
 
 > [!IMPORTANT]
-> Při použití Azure Machine Learning pro odvození v Azure Container instance (ACI) se __vyžaduje__přístup uživatelů správce na ACR. Nepovolujte ji, pokud plánujete nasazovat modely do ACI pro odvození.
+> Při použití Azure Machine Learning pro odvození v Azure Container instance (ACI) se __vyžaduje__ přístup uživatelů správce na ACR. Nepovolujte ji, pokud plánujete nasazovat modely do ACI pro odvození.
 
 Když vytváříte ACR bez povolení přístupu pro uživatele, spravované identity se používají pro přístup k ACR k vytváření a vyžádání imagí Docker.
 
@@ -56,10 +56,10 @@ Při vytváření pracovního prostoru můžete přenést vlastní ACR s uživat
 
 Pokud je uživatel s rolí správce ACR zakázaný zásadami předplatného, měli byste nejdřív vytvořit ACR bez uživatele s oprávněními správce a pak ho přidružit k pracovnímu prostoru. Pokud už máte ACR se zakázaným správcem, můžete ho připojit k pracovnímu prostoru.
 
-[Vytvořte ACR z Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli) bez nastavení ```--admin-enabled``` argumentu nebo z Azure Portal bez povolení uživatele s oprávněními správce. Při vytváření pracovního prostoru Azure Machine Learning zadejte ID prostředku Azure pro ACR. Následující příklad ukazuje vytvoření nového pracovního prostoru Azure ML, který používá stávající ACR:
+[Vytvořte ACR z Azure CLI](../container-registry/container-registry-get-started-azure-cli.md) bez nastavení ```--admin-enabled``` argumentu nebo z Azure Portal bez povolení uživatele s oprávněními správce. Při vytváření pracovního prostoru Azure Machine Learning zadejte ID prostředku Azure pro ACR. Následující příklad ukazuje vytvoření nového pracovního prostoru Azure ML, který používá stávající ACR:
 
 > [!TIP]
-> Hodnotu parametru získáte tak `--container-registry` , že pomocí příkazu [AZ ACR show](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az_acr_show) zobrazíte informace pro svůj ACR. `id`Pole obsahuje ID prostředku pro vaši ACR.
+> Hodnotu parametru získáte tak `--container-registry` , že pomocí příkazu [AZ ACR show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) zobrazíte informace pro svůj ACR. `id`Pole obsahuje ID prostředku pro vaši ACR.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -106,7 +106,7 @@ Pokud chcete získat přístup k pracovnímu prostoru ACR, vytvořte výpočetn�
 
 # <a name="python"></a>[Python](#tab/python)
 
-Při vytváření výpočetního clusteru s [AmlComputeProvisioningConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)použijte `identity_type` parametr pro nastavení spravovaného typu identity.
+Při vytváření výpočetního clusteru s [AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py)použijte `identity_type` parametr pro nastavení spravovaného typu identity.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -190,7 +190,7 @@ V tomto scénáři Azure Machine Learning služba sestaví školicí nebo odvozu
 
         ID prostředku UAI je ID prostředku Azure přiřazené identitě uživatele ve formátu `/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` .
 
-1. V připojeních pracovního prostoru zadejte externí ACR a ID klienta __spravované identity přiřazené uživatelem__ pomocí [metody Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
+1. V připojeních pracovního prostoru zadejte externí ACR a ID klienta __spravované identity přiřazené uživatelem__ pomocí [metody Workspace.set_connection](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-):
 
     ```python
     workspace.set_connection(
@@ -210,7 +210,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-Volitelně můžete zadat adresu URL spravovaného prostředku identity a ID klienta v samotné definici prostředí pomocí [RegistryIdentity](https://docs.microsoft.com/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Pokud použijete identitu registru explicitně, potlačí všechna připojení k pracovnímu prostoru, která jste zadali dříve:
+Volitelně můžete zadat adresu URL spravovaného prostředku identity a ID klienta v samotné definici prostředí pomocí [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py). Pokud použijete identitu registru explicitně, potlačí všechna připojení k pracovnímu prostoru, která jste zadali dříve:
 
 ```python
 from azureml.core.container_registry import RegistryIdentity

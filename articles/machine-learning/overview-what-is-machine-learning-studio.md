@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495996"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310174"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co je Azure Machine Learning Studio?
 
@@ -61,7 +61,7 @@ Spravujte své prostředky strojového učení přímo v prohlížeči. Prostře
 - Notebooks
 - Experimenty
 - Spustit protokoly
-- Pipelines 
+- Kanály 
 - Koncové body kanálu
 
 I v případě, že jste zkušený vývojář, může Studio zjednodušit správu prostředků pracovního prostoru.
@@ -74,16 +74,16 @@ Vydaná v 2015. první, **ml Studio (Classic)** , byla prvním přetahováním t
 
 **Azure Machine Learning Studio** je webový portál *v* Azure Machine Learning, který obsahuje možnosti s nízkým kódem a bez kódu pro vytváření projektů a správu prostředků. 
 
-Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro poslední rozsah nástrojů pro datové vědy zvolili možnost **Azure Machine Learning**místo ml Studio (Classic).
+Pro nejnovější škálu nástrojů pro datové vědy doporučujeme, aby si pro poslední rozsah nástrojů pro datové vědy zvolili možnost **Azure Machine Learning** místo ml Studio (Classic).
 
 ### <a name="feature-comparison"></a>Porovnání funkcí
 
 Následující tabulka shrnuje hlavní rozdíly mezi ML Studio (Classic) a Azure Machine Learning.
 
-| Funkce | ML Studio (klasický) | Azure Machine Learning |
+| Příznak | ML Studio (klasický) | Azure Machine Learning |
 |---| --- | --- |
 | Rozhraní přetažení | Klasické prostředí | Aktualizované prostředí – [návrhář Azure Machine Learning](concept-designer.md)| 
-| Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |
+| Sady SDK kódu | Nepodporované | Plně integrovaná s [Azure Machine Learning Python](/python/api/overview/azure/ml/) a [R](tutorial-1st-r-experiment.md) SDK |
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
 | Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |
@@ -103,4 +103,3 @@ Navštivte [Studio](https://ml.azure.com)nebo si prozkoumejte různé možnosti 
   + [Použití poznámkových bloků Jupyter na výpočetní instanci ke školení & nasazení modelů](tutorial-1st-experiment-sdk-setup.md)
   + [Použití automatizovaného strojového učení k výuce & nasazení modelů](tutorial-first-experiment-automated-ml.md)  
   + [Použití návrháře ke školení & nasazení modelů](tutorial-designer-automobile-price-train-score.md)
-

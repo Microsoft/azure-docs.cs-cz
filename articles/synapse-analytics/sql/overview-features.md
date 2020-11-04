@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f159e38eb66e1758feaf743c32d8de30c614b234
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe30a2a0885e1a579eb32ad84ef467f7162febe4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288507"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310326"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Funkce jazyka Transact-SQL podporované v Azure synapse SQL
 
@@ -37,7 +37,7 @@ Modely spotřeby v synapse SQL umožňují použití různých databázových ob
 | **Triggery** | Ne | Ne |
 | **Externí tabulky** | [Ano](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Viz Podporované [formáty dat](#data-formats). | [Ano](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true). Viz Podporované [formáty dat](#data-formats). |
 | **Ukládání dotazů do mezipaměti** | Ano, více forem (ukládání do mezipaměti založené na SSD, ukládání do mezipaměti sady výsledků v paměti). Kromě toho se podporují materializované zobrazení. | Ne |
-| **Proměnné tabulky** | [Ne](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), použít dočasné tabulky | Ne |
+| **Proměnné tabulek** | [Ne](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), použít dočasné tabulky | Ne |
 | **[Distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | Ano | Ne |
 | **[Indexy tabulek](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Ano | Ne |
 | **[Oddíly tabulky](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Ano | Ne |
@@ -79,8 +79,8 @@ Synapse SQL vám umožní používat integrované funkce zabezpečení k zabezpe
 | **Uživatelé** |  Není k dispozici (databáze podporuje pouze obsažené uživatele) | Ano |
 | **[Uživatelé s omezením](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | Ano. **Poznámka:** správce může být bez omezení jenom u jednoho uživatele Azure AD. | Ano |
 | **Ověřování uživatelského jména a hesla SQL**| Ano | Ano |
-| **Ověřování Azure Active Directory (AAD)**| Ano, uživatelé Azure AD | Ano, přihlášení a uživatelé Azure AD |
-| **Předávací ověřování pro úložiště Azure Active Directory (AAD)** | Ano | Ano |
+| **Ověřování Azure Active Directory (Azure AD)**| Ano, uživatelé Azure AD | Ano, přihlášení a uživatelé Azure AD |
+| **Předávací ověřování pro službu Storage Azure Active Directory (Azure AD)** | Ano | Ano |
 | **Ověřování tokenu SAS úložiště** | Ne | Ano, použití [přihlašovacích údajů s rozsahem databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) v [externím zdroji dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) nebo [přihlašovacích údajích](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)na úrovni instance. |
 | **Ověřování přístupového klíče k úložišti** | Ano, použití [přihlašovacích údajů v oboru databáze](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) v [EXTERNÍm zdroji dat](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Ne |
 | **Ověřování [identity spravovaného](../security/synapse-workspace-managed-identity.md) úložištěm** | Ano, pomocí [Identita spravované služby přihlašovací údaje](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Ano, pomocí `Managed Identity` přihlašovacích údajů. |
@@ -94,16 +94,16 @@ Synapse SQL vám umožní používat integrované funkce zabezpečení k zabezpe
 | **&amp;Funkce identity zabezpečení** | Některé funkce a operátory zabezpečení jazyka Transact-SQL:  `CURRENT_USER` , `HAS_DBACCESS` , `IS_MEMBER` , `IS_ROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` , `OPEN/CLOSE MASTER KEY` | Některé funkce a operátory zabezpečení jazyka Transact-SQL:  `CURRENT_USER` , `HAS_DBACCESS` , `HAS_PERMS_BY_NAME` , `IS_MEMBER', 'IS_ROLEMEMBER` , `IS_SRVROLEMEMBER` , `SESSION_USER` , `SUSER_NAME` , `SUSER_SNAME` , `SYSTEM_USER` , `USER` , `USER_NAME` , `EXECUTE AS` a `REVERT` . Funkce zabezpečení nelze použít k dotazování na externí data (uložení výsledku do proměnné, kterou lze použít v dotazu).  |
 | **POVĚŘENÍ V OBORU DATABÁZE** | Ano | Ano |
 | **PŘIHLAŠOVACÍ ÚDAJE V OBORU SERVERU** | Ne | Ano |
-| **Zabezpečení na úrovni řádků** | [Ano](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | Ne |
+| **Zabezpečení na úrovni řádku** | [Ano](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | Ne |
 | **Transparentní šifrování dat** | [Ano](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | Ne | 
 | **Zjišťování a klasifikace dat** | [Ano](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ne |
 | **Posouzení ohrožení zabezpečení** | [Ano](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ne |
 | **Advanced Threat Protection** | [Ano](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 | **Auditování** | [Ano](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ne |
 | **[Pravidla brány firewall](../security/synapse-workspace-ip-firewall.md)**| Ano | Ano |
-| **[Soukromý koncový bod](../security/synapse-workspace-managed-private-endpoints.md)**| Ano | Ano |
+| **[Privátní koncový bod](../security/synapse-workspace-managed-private-endpoints.md)**| Ano | Ano |
 
-SQL fond a SQL na vyžádání používají standardní jazyk Transact-SQL k dotazování dat. Podrobné rozdíly najdete v [referenčních informacích k jazyku Transact-SQL](/sql/t-sql/language-reference).
+Vyhrazený fond SQL a SQL Server bez serveru používají standardní jazyk Transact-SQL k dotazování dat. Podrobné rozdíly najdete v [referenčních informacích k jazyku Transact-SQL](/sql/t-sql/language-reference).
 
 ## <a name="tools"></a>nástroje
 
@@ -118,7 +118,7 @@ Můžete použít různé nástroje pro připojení k synapse SQL k dotazování
 | **SQL Server Management Studio** | Ano | Ano, verze 18,5 nebo vyšší |
 
 > [!NOTE]
-> SSMS můžete použít pro připojení k SQL na vyžádání (Preview) a dotazování. Od verze 18,5 se tato podpora částečně podporuje a můžete ji použít jenom pro připojení a dotazování.
+> Pomocí SSMS se můžete připojit k fondu SQL bez serveru (Preview) a dotazům. Od verze 18,5 se tato podpora částečně podporuje a můžete ji použít jenom pro připojení a dotazování.
 
 Většina aplikací používá standardní jazyk Transact-SQL, který může dotazovat jak zřízené, tak i neserverové modely spotřeby synapse SQL.
 
@@ -140,7 +140,7 @@ Data, která se analyzují, se dají ukládat v různých formátech úložišt�
 |   | Zřízené | Bez serveru |
 | --- | --- | --- |
 | **Oddělených** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [Ano](query-single-csv-file.md) |
-| **Formát** | Ano (oddělovače s více znaky se nepodporují.) | [Ano](query-single-csv-file.md) |
+| **CSV** | Ano (oddělovače s více znaky se nepodporují.) | [Ano](query-single-csv-file.md) |
 | **Parquet** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | [Ano](query-parquet-files.md), včetně souborů s [vnořenými typy](query-parquet-nested-types.md) |
 | **ORC podregistru** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Ne |
 | **Podregistr RC** | [Ano](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | Ne |
@@ -150,7 +150,7 @@ Data, která se analyzují, se dají ukládat v různých formátech úložišt�
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Ne | No |
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o osvědčených postupech pro fond SQL a SQL na vyžádání najdete v následujících článcích:
+Další informace o osvědčených postupech pro vyhrazený fond SQL a SQL Server bez serveru najdete v následujících článcích:
 
-- [Osvědčené postupy pro fond SQL](best-practices-sql-pool.md)
-- [Osvědčené postupy pro SQL na vyžádání](best-practices-sql-on-demand.md)
+- [Osvědčené postupy pro vyhrazený fond SQL](best-practices-sql-pool.md)
+- [Osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md)

@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 7f21d3ed3d5e71c2f87777316e7584011490043a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fad51f5c8ec426792c74b1a14ea80ab47c2d892
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757771"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312297"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Vytvoření a zkoumání Azure Machine Learning datové sady s popisky
 
@@ -24,11 +24,11 @@ V tomto článku se dozvíte, jak exportovat popisky dat z Azure Machine Learnin
 
 Odkazujeme na Azure Machine Learning datových sad s popisky jako s označenými datovými sadami. Tyto konkrétní typy datových sad s označenými datovými sadami jsou vytvořeny pouze jako výstup Azure Machine Learning projektů pro označování dat. Pomocí [těchto kroků](how-to-create-labeling-projects.md)vytvořte projekt pro označování dat. Machine Learning podporuje popisky dat pro klasifikaci obrázků, a to buď s více popisky, nebo s více třídami, a identifikacemi objektů společně s ohraničenými poli.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
-* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
-    * Instalace balíčku [Azure-contrib-DataSet](https://docs.microsoft.com/python/api/azureml-contrib-dataset/?view=azure-ml-py&preserve-view=true)
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
+    * Instalace balíčku [Azure-contrib-DataSet](/python/api/azureml-contrib-dataset/?preserve-view=true&view=azure-ml-py)
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 * Přístup k Azure Machine Learning projektu popisků dat. Pokud nemáte projekt s popisem, vytvořte ho pomocí [těchto kroků](how-to-create-labeling-projects.md).
 
@@ -52,7 +52,7 @@ Načtěte vaše označené datové sady do PANDAS dataframe nebo Torchvision Dat
 
 ### <a name="pandas-dataframe"></a>PANDAS – datový rámec
 
-Můžete načíst označené datové sady do PANDAS dataframe pomocí [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metody z `azureml-contrib-dataset` třídy. Nainstalujte třídu pomocí následujícího příkazu prostředí: 
+Můžete načíst označené datové sady do PANDAS dataframe pomocí [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metody z `azureml-contrib-dataset` třídy. Nainstalujte třídu pomocí následujícího příkazu prostředí: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -87,7 +87,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision datové sady
 
-Pomocí metody [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueto-torchvision--) lze z třídy načítat datové sady s popisky do datové sady Torchvision `azureml-contrib-dataset` . Pokud chcete použít tuto metodu, musíte mít nainstalovanou [PyTorch](https://pytorch.org/) . 
+Pomocí metody [to_torchvision ()](/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueto-torchvision--) lze z třídy načítat datové sady s popisky do datové sady Torchvision `azureml-contrib-dataset` . Pokud chcete použít tuto metodu, musíte mít nainstalovanou [PyTorch](https://pytorch.org/) . 
 
 V následujícím kódu `animal_labels` je datová sada výstupem z projektu označování, který byl dříve uložen do pracovního prostoru.
 

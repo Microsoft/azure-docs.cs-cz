@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08981ad21c15b6fc375e2e0733564c40d54932ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708250"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311591"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
@@ -302,7 +302,7 @@ Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model
 
 Následující vykreslení poskytují celkový přehled o škole modelu spolu s jeho předpovědi a vysvětleními.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
 |Globální důležitost|Agreguje hodnoty důležitosti funkcí jednotlivých datapoints k zobrazení celkových důležitých funkcí modelu (konfigurovatelné K). Pomáhá pochopit celkové chování základního modelu.|
@@ -316,7 +316,7 @@ Následující vykreslení poskytují celkový přehled o škole modelu spolu s 
 
 Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v některém z celkových vykreslení.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Místní důležitost|Zobrazuje horních K (konfigurovatelné K) důležité funkce pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Průzkum Perturbation (citlivostní analýza)|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|
@@ -354,7 +354,7 @@ Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v 
    [![Důležitost místní funkce řídicího panelu vizualizace v nástroji AzureML Studio v experimentech](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Podokno **modely**
-  1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where), můžete v levém podokně vybrat **modely** a zobrazit je.
+  1. Pokud jste svůj původní model zaregistrovali pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](./how-to-deploy-and-where.md), můžete v levém podokně vybrat **modely** a zobrazit je.
   1. Vyberte model a pak kartu **vysvětlení** pro zobrazení řídicího panelu vizualizace.
 
 ## <a name="interpretability-at-inference-time"></a>Výklad v době odvození
@@ -419,7 +419,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 
 1. Nasaďte bitovou kopii na cíl výpočtů pomocí následujících kroků:
 
-   1. V případě potřeby Zaregistrujte původní model předpovědi pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
+   1. V případě potřeby Zaregistrujte původní model předpovědi pomocí postupu v části [nasazení modelů pomocí Azure Machine Learning](./how-to-deploy-and-where.md).
 
    1. Vytvořte soubor bodování.
 
@@ -553,4 +553,3 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 [Další informace o interpretaci modelu](how-to-machine-learning-interpretability.md)
 
 [Podívejte se na ukázkové poznámkové bloky Azure Machine Learning interpretace](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

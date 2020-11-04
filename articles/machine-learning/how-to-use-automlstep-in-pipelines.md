@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 9cde7fe32d1b7b13c5f95bf3d99497926f68c88e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494916"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311198"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Použití automatizovaného ML v kanálu Azure Machine Learning v Pythonu
 
@@ -25,7 +25,7 @@ Funkce automatizovaného škálování na základě Azure Machine Learning vám 
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).  
 
@@ -41,9 +41,9 @@ Upřednostňovaným způsobem, jak zpočátku přesunout data _do_ kanálu ml, j
 
 
 > [!TIP]
-> Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) a [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) .  Tyto třídy jsou [experimentální](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true#&preserve-view=truestable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
+> Vylepšené prostředí pro předávání dočasných dat mezi kroky kanálu je k dispozici ve třídách veřejné verze Preview  [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) a [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) .  Tyto třídy jsou [experimentální](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) funkce ve verzi Preview a můžou se kdykoli změnit.
 
-`AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
+`AutoMLStep`Je nakonfigurován prostřednictvím `AutoMLConfig` objektu. `AutoMLConfig` je flexibilní třída, jak je popsáno v tématu [Konfigurace automatizované experimenty ml v Pythonu](./how-to-configure-auto-train.md#configure-your-experiment-settings). 
 
 `Pipeline`Spuštění v `Experiment` . Kanál `Run` má pro každý krok podřízenou položku `StepRun` . Výstupy automatizovaného ML `StepRun` jsou metriky školení a model nejvyšší výkon.
 
@@ -106,7 +106,7 @@ compute_target = ws.compute_targets[compute_name]
 
 Mezilehlá data mezi přípravou dat a krokem automatizovaného ML se dají uložit do výchozího úložiště dat v pracovním prostoru, takže nepotřebujeme volat `get_default_datastore()` `Workspace` objekt. 
 
-Potom kód zkontroluje, zda již existuje cíl výpočtu AML `'cpu-cluster'` . Pokud ne, určíme, že chceme použít malý výpočetní cíl založený na procesoru. Pokud máte v úmyslu používat funkce hloubkového učení automatizovaného programu ML (například text featurization s podporou DNN), měli byste zvolit výpočetní výkon pomocí silné podpory GPU, jak je popsáno v tématu [velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)s podporou GPU. 
+Potom kód zkontroluje, zda již existuje cíl výpočtu AML `'cpu-cluster'` . Pokud ne, určíme, že chceme použít malý výpočetní cíl založený na procesoru. Pokud máte v úmyslu používat funkce hloubkového učení automatizovaného programu ML (například text featurization s podporou DNN), měli byste zvolit výpočetní výkon pomocí silné podpory GPU, jak je popsáno v tématu [velikosti virtuálních počítačů](../virtual-machines/sizes-gpu.md)s podporou GPU. 
 
 Bloky kódu až do zřízení cíle a pak vytisknou nějaké podrobnosti o právě vytvořeném cílovém výpočetním cíli. Nakonec se pojmenovaný cíl výpočtů načte z pracovního prostoru a přiřadí se k `compute_target` . 
 
@@ -137,7 +137,7 @@ else:
         pin_sdk_version=False)
 ```
 
-Výše uvedený kód ukazuje dvě možnosti pro zpracování závislostí. Jak je uvedeno v `USE_CURATED_ENV = True` , je Konfigurace založená na spravovaném prostředí. Prebakedá prostředí jsou "" s běžnými nezávislými knihovnami a můžou být výrazně rychlejší pro uvedení do online režimu. Ve spravovaném prostředí jsou předem připravené image Docker v [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner). Cesta, která se bere v případě, že se změní, `USE_CURATED_ENV` se `False` zobrazí jako způsob explicitního nastavení závislostí. V takovém scénáři se vytvoří nová vlastní image Docker, která se zaregistruje v Azure Container Registry v rámci vaší skupiny prostředků (viz [Úvod do registrů kontejnerů privátního Docker v Azure](https://docs.microsoft.com/azure/container-registry/container-registry-intro)). Sestavení a registrace tohoto obrázku může trvat několik minut. 
+Výše uvedený kód ukazuje dvě možnosti pro zpracování závislostí. Jak je uvedeno v `USE_CURATED_ENV = True` , je Konfigurace založená na spravovaném prostředí. Prebakedá prostředí jsou "" s běžnými nezávislými knihovnami a můžou být výrazně rychlejší pro uvedení do online režimu. Ve spravovaném prostředí jsou předem připravené image Docker v [Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner). Cesta, která se bere v případě, že se změní, `USE_CURATED_ENV` se `False` zobrazí jako způsob explicitního nastavení závislostí. V takovém scénáři se vytvoří nová vlastní image Docker, která se zaregistruje v Azure Container Registry v rámci vaší skupiny prostředků (viz [Úvod do registrů kontejnerů privátního Docker v Azure](../container-registry/container-registry-intro.md)). Sestavení a registrace tohoto obrázku může trvat několik minut. 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>Příprava dat pro automatizované Machine Learning
 
@@ -251,11 +251,11 @@ dataprep_step = PythonScriptStep(
 `prepped_data_path`Objekt je typu `PipelineOutputFileDataset` . Všimněte si, že je zadáno v obou `arguments` `outputs` argumentech a. Pokud provedete předchozí krok, uvidíte, že v rámci kódu pro přípravu dat je hodnota argumentu `'--output_path'` cesta k souboru, do kterého byl soubor Parquet zapsán. 
 
 > [!TIP]
-> Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) . Příklad kódu, který používá `OutputFileDatasetConfig` třídu, najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+> Vylepšené prostředí pro předávání mezilehlých dat mezi kroky kanálu je k dispozici s třídou Public Preview [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Příklad kódu, který používá `OutputFileDatasetConfig` třídu, najdete v tématu Postup [vytvoření dvou kroků kanálu ml](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
 
 ## <a name="train-with-automlstep"></a>Výuka pomocí AutoMLStep
 
-Konfigurace postupu automatizovaného kanálu se provádí s `AutoMLConfig` třídou. Tato flexibilní třída je popsaná v tématu [Konfigurace automatizované experimenty ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Vstupní a výstupní data jsou jediné aspekty konfigurace, které vyžadují zvláštní pozornost v kanálu ML. Vstupní a výstupní `AutoMLConfig` informace pro v kanálech jsou podrobněji popsány níže. Kromě dat je výhodou kanálů ML možnost použít pro různé kroky různé výpočetní cíle. Můžete se rozhodnout, že budete používat výkonnější `ComputeTarget` jenom pro proces automatizovaného ml. Uděláte to jednoduše tak, že přiřadíte výkonnějšímu `RunConfiguration` `AutoMLConfig` `run_configuration` parametru objektu.
+Konfigurace postupu automatizovaného kanálu se provádí s `AutoMLConfig` třídou. Tato flexibilní třída je popsaná v tématu [Konfigurace automatizované experimenty ml v Pythonu](./how-to-configure-auto-train.md). Vstupní a výstupní data jsou jediné aspekty konfigurace, které vyžadují zvláštní pozornost v kanálu ML. Vstupní a výstupní `AutoMLConfig` informace pro v kanálech jsou podrobněji popsány níže. Kromě dat je výhodou kanálů ML možnost použít pro různé kroky různé výpočetní cíle. Můžete se rozhodnout, že budete používat výkonnější `ComputeTarget` jenom pro proces automatizovaného ml. Uděláte to jednoduše tak, že přiřadíte výkonnějšímu `RunConfiguration` `AutoMLConfig` `run_configuration` parametru objektu.
 
 ### <a name="send-data-to-automlstep"></a>Odeslat data do `AutoMLStep`
 
@@ -270,7 +270,7 @@ prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 Výše uvedený fragment kódu vytvoří vysoké provádění `PipelineOutputTabularDataset` z `PipelineOutputFileDataset` výstupu kroku Příprava dat.
 
 > [!TIP]
-> Třída Public Preview, [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) , obsahuje metodu [read_delimited_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) , která převádí na a `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?view=azure-ml-py&preserve-view=true) pro spotřebu v AutoML spuštění.
+> Třída Public Preview, [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) , obsahuje metodu [read_delimited_files ()](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py#&preserve-view=trueread-delimited-files-include-path-false--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none--path-glob-none--set-column-types-none-) , která převádí na a `OutputFileDatasetConfig` [`OutputTabularDatasetConfig`](/python/api/azureml-core/azureml.data.output_dataset_config.outputtabulardatasetconfig?preserve-view=true&view=azure-ml-py) pro spotřebu v AutoML spuštění.
 
 Další možností je použít `Dataset` objekty registrované v pracovním prostoru:
 
@@ -315,7 +315,7 @@ Výše uvedený fragment kódu vytvoří dva `PipelineData` objekty pro metriky 
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>Konfigurace a vytvoření kroku pro kanál automatizovaného kanálu
 
-Jakmile jsou vstupy a výstupy definovány, je čas vytvořit `AutoMLConfig` a `AutoMLStep` . Podrobnosti o konfiguraci budou záviset na vaší úloze, jak je popsáno v tématu [Konfigurace automatizovaných experimentů ml v Pythonu](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Pro úlohu klasifikace přežití Titanic ukazuje následující fragment kódu jednoduchou konfiguraci.
+Jakmile jsou vstupy a výstupy definovány, je čas vytvořit `AutoMLConfig` a `AutoMLStep` . Podrobnosti o konfiguraci budou záviset na vaší úloze, jak je popsáno v tématu [Konfigurace automatizovaných experimentů ml v Pythonu](./how-to-configure-auto-train.md). Pro úlohu klasifikace přežití Titanic ukazuje následující fragment kódu jednoduchou konfiguraci.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -353,7 +353,7 @@ Fragment kódu ukazuje idiom, který se běžně používá s `AutoMLConfig` . A
 - `task` je nastaven na `classification` pro tento příklad. Další platné hodnoty jsou `regression` a `forecasting`
 - `path` a `debug_log` popište cestu k projektu a místní soubor, do kterého budou zapsány informace o ladění. 
 - `compute_target` je dříve definovaná `compute_target` , to znamená, že v tomto příkladu je levný počítač založený na procesoru. Pokud používáte zařízení s hloubkovým učením v AutoML, měli byste změnit cíl výpočetní služby na bázi GPU.
-- `featurization` je nastaven na `auto` . Další podrobnosti najdete v části [Featurization dat](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) v dokumentu konfigurace AUTOMATIZOVANÉho ml. 
+- `featurization` je nastaven na `auto` . Další podrobnosti najdete v části [Featurization dat](./how-to-configure-auto-train.md#data-featurization) v dokumentu konfigurace AUTOMATIZOVANÉho ml. 
 - `label_column_name` Určuje, který sloupec má zajímat předpověď. 
 - `training_data` je nastaven na `PipelineOutputTabularDataset` objekty vytvořené z výstupu kroku Příprava dat. 
 
@@ -525,4 +525,4 @@ Nakonec se aktuální metriky a model stáhnou do místního počítače, jak by
 - Spusťte tento Jupyter Poznámkový blok, který ukazuje [kompletní příklad automatizovaného ml v kanálu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) , který používá regresi k předvídání taxislužby tarifů.
 - [Vytváření automatizovaných experimentů ML bez psaní kódu](how-to-use-automated-ml-for-ml-models.md)
 - Prozkoumejte celou řadu [poznámkových bloků Jupyter, které demonstrují automatizované ml](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning) .
-- Přečtěte si informace o integraci kanálu do aplikace až po koncovou [MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) nebo prozkoumejte [úložiště GitHub MLOps](https://github.com/Microsoft/MLOpspython) . 
+- Přečtěte si informace o integraci kanálu do aplikace až po koncovou [MLOps](./concept-model-management-and-deployment.md#automate-the-ml-lifecycle) nebo prozkoumejte [úložiště GitHub MLOps](https://github.com/Microsoft/MLOpspython) .

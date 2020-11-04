@@ -1,7 +1,7 @@
 ---
 title: Model s vysokým výkonem obsluhující s Triton (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se nasadit model s odvozeným Triton serverem v Azure Machine Learning
+description: Naučte se nasadit model pomocí serveru NVIDIA Triton odvozování v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92428346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309708"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Vysoce výkonná obsluha s odvozeným serverem Triton (Preview) 
 
@@ -32,11 +32,11 @@ Triton je rozhraní *optimalizované pro odvození*. Poskytuje lepší využití
 > [!TIP]
 > Fragmenty kódu v tomto dokumentu jsou pro ilustrativní účely a nemusí zobrazovat kompletní řešení. Pro pracovní příklad kódu si přečtěte [kompletní ukázky Triton v tématu Azure Machine Learning](https://github.com/Azure/azureml-examples/tree/main/tutorials).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 * Znalost [toho, jak a kde nasadit model](how-to-deploy-and-where.md) s Azure Machine Learning.
-* [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **nebo** rozšíření [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a [Machine Learning](reference-azure-machine-learning-cli.md).
+* [Sada SDK Azure Machine Learning pro Python](/python/api/overview/azure/ml/?view=azure-ml-py) **nebo** rozšíření [Azure CLI](/cli/azure/?view=azure-cli-latest) a [Machine Learning](reference-azure-machine-learning-cli.md).
 * Pracovní instalace Docker pro místní testování. Informace o instalaci a ověření Docker najdete v dokumentaci k Docker [v dokumentaci k instalaci.](https://docs.docker.com/get-started/)
 
 ## <a name="architectural-overview"></a>Přehled architektury
@@ -58,7 +58,7 @@ Než se pokusíte použít Triton pro svůj vlastní model, je důležité pocho
 * Triton zpracovává požadavky v dávkách k maximalizaci využití GPU.
 * Klient používá k vytvoření požadavků __identifikátor URI pro vyhodnocování__ . Například, `https://myserevice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Diagram architektury pro nasazení Normal, non-Triton,":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Nasazení Inferenceconfig s Triton":::
 
 Pracovní postup pro použití Triton pro nasazení modelu:
 
@@ -228,7 +228,7 @@ Odvozená konfigurace umožňuje používat vstupní skript i proces nasazení A
 > [!IMPORTANT]
 > Je nutné zadat toto `AzureML-Triton` [prostředí](./resource-curated-environments.md).
 >
-> Příklad kódu Pythonu se klonuje `AzureML-Triton` do jiného prostředí s názvem `My-Triton` . I toto prostředí používá kód Azure CLI. Další informace o klonování prostředí naleznete v tématu [prostředí. Clone ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#clone-new-name-) reference.
+> Příklad kódu Pythonu se klonuje `AzureML-Triton` do jiného prostředí s názvem `My-Triton` . I toto prostředí používá kód Azure CLI. Další informace o klonování prostředí naleznete v tématu [prostředí. Clone ()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-) reference.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,7 +283,7 @@ az ml model deploy -n triton-densenet-onnx \
 
 ---
 
-Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
+Po dokončení nasazení se zobrazí identifikátor URI pro vyhodnocování. Pro toto místní nasazení bude `http://localhost:6789/score` . Pokud nasadíte do cloudu, můžete pomocí příkazu [AZ ml Service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) CLI získat identifikátor URI pro vyhodnocování.
 
 Informace o tom, jak vytvořit klienta, který odesílá požadavky na odvození do identifikátoru URI pro vyhodnocování, najdete v tématu [Spotřeba modelu nasazeného jako webové služby](how-to-consume-web-service.md).
 

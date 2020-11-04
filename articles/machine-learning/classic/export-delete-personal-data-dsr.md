@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 6bd86dc855e5a312550abe050603aeaf45b075ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 550603b9315c1abaa025aac804afc4fe674159d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362346"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310009"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Exportovat a odstranit data uživatelů v produktu z Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -78,4 +78,4 @@ Použijte PowerShell k exportu všech informací do přenosného formátu z Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-Dokumentaci týkající se fakturace za webové služby a plán závazku najdete v tématu [Azure Machine Learning Studio (Classic) REST API Reference](https://docs.microsoft.com/rest/api/machinelearning/). 
+Dokumentaci týkající se fakturace za webové služby a plán závazku najdete v tématu [Azure Machine Learning Studio (Classic) REST API Reference](/rest/api/machinelearning/).

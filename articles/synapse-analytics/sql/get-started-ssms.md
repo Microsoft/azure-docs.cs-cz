@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288779"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311122"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Připojení k synapse SQL pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "91288779"
 > 
 > 
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) můžete použít k připojení a dotazování synapse SQL ve službě Azure synapse Analytics prostřednictvím SQL na vyžádání (Preview) nebo prostředků fondu SQL. 
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) můžete použít k připojení a dotazování synapse SQL ve službě Azure synapse Analytics prostřednictvím neserverového fondu SQL (Preview) nebo vyhrazených prostředků fondu SQL. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
+### <a name="supported-tools-for-serverless-sql-pool-preview"></a>Podporované nástroje pro fond SQL bez serveru (Preview)
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) se plně podporuje od verze 1.18.0. SSMS je částečně podporovaná od verze 18,5, můžete ji použít jenom pro připojení a dotazování.
 
@@ -40,42 +40,42 @@ ms.locfileid: "91288779"
 Než začnete, ujistěte se, že máte následující požadavky:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Pro fond SQL potřebujete existující datový sklad. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření fondu SQL](../quickstart-create-sql-pool-portal.md). V případě SQL na vyžádání je ve vašem pracovním prostoru v době vytváření již jedna zřízená. 
+* Pro vyhrazený fond SQL potřebujete existující datový sklad. Pokud ho chcete vytvořit, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-portal.md). Pro fond SQL bez serveru je už ve vašem pracovním prostoru v době vytváření zřízen vestavěný název. 
 * Plně kvalifikovaný název SQL Server. Tento název najdete v tématu [připojení k synapse SQL](connect-overview.md).
 
-## <a name="connect"></a>Připojit
+## <a name="connect"></a>Připojení
 
-### <a name="sql-pool"></a>Fond SQL
+### <a name="dedicated-sql-pool"></a>Vyhrazený fond SQL
 
-Pokud se chcete připojit k synapse SQL pomocí fondu SQL, postupujte podle těchto kroků: 
+Pokud se chcete připojit k SQL synapse pomocí vyhrazeného fondu SQL, postupujte podle těchto kroků: 
 
 1. Otevřete SQL Server Management Studio (SSMS). 
-1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
+1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit** : 
   
     ![Připojit k serveru 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
-   * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**.
-   * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
+   * **Název serveru** : zadejte **název serveru** , který jste předtím identifikovali.
+   * **Ověřování** : Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**.
+   * **Uživatelské jméno** a **heslo** : pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
 
 1. Rozšiřte SQL Server Azure v **Průzkumník objektů**. Můžete zobrazit databáze přidružené k serveru, jako je například ukázková databáze AdventureWorksDW. Chcete-li zobrazit tabulky, můžete rozšířit databázi:
    
     ![Prozkoumat AdventureWorksDW 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL na vyžádání (Preview)
+### <a name="serverless-sql-pool-preview"></a>Neserverový fond SQL (Preview)
 
-Pokud se chcete připojit k synapse SQL pomocí SQL na vyžádání, postupujte následovně: 
+Pokud se chcete připojit k synapse SQL pomocí neserveru SQL fondu, postupujte takto: 
 
 1. Otevřete SQL Server Management Studio (SSMS).
-1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit**: 
+1. V dialogovém okně **připojit k serveru** vyplňte pole a pak vyberte **připojit** : 
    
     ![Připojit k serveru 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Název serveru**: zadejte **název serveru** , který jste předtím identifikovali.
-   * **Ověřování**: Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory**:
-   * **Uživatelské jméno** a **heslo**: pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
-   * Vyberte **Připojit**.
+   * **Název serveru** : zadejte **název serveru** , který jste předtím identifikovali.
+   * **Ověřování** : Vyberte typ ověřování, například **SQL Server ověřování** nebo **integrované ověřování služby Active Directory** :
+   * **Uživatelské jméno** a **heslo** : pokud jste výše vybrali SQL Server ověřování, zadejte své uživatelské jméno a heslo.
+   * Vyberte **Connect** (Připojit).
 
 4. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalením *ukázky* zobrazíte obsah ve vzorové databázi.
    
@@ -84,7 +84,7 @@ Pokud se chcete připojit k synapse SQL pomocí SQL na vyžádání, postupujte 
 
 ## <a name="run-a-sample-query"></a>Spuštění ukázkového dotazu
 
-### <a name="sql-pool"></a>Fond SQL
+### <a name="dedicated-sql-pool"></a>Vyhrazený fond SQL
 
 Teď, když je navázáno připojení k databázi, můžete zadávat dotazy na data.
 
@@ -104,7 +104,7 @@ Teď, když je navázáno připojení k databázi, můžete zadávat dotazy na d
    
     ![Výsledky dotazu 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
-### <a name="sql-on-demand"></a>SQL na vyžádání
+### <a name="serverless-sql-pool"></a>Fond SQL bez serveru
 
 Teď, když jste navázali připojení k databázi, můžete zadávat dotazy na data.
 

@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186616"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312045"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview) 
 
@@ -92,7 +92,7 @@ Pracovní prostor synapse potřebuje přístup k STG1 a CNT1, aby mohl spouště
   - Pokud se vám přiřazení nezobrazuje, přiřaďte ho.
   - Soubor MSI má stejný název jako pracovní prostor. V takovém případě by se &quot; WS1 &quot; .
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>Krok 5: Konfigurace přístupu správce pro fondy SQL
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>Krok 5: Konfigurace přístupu správce pro synapse SQL
 
 - Otevřete Azure Portal.
 - Přejít na WS1
@@ -114,11 +114,11 @@ Uživatelé v každé roli musí provést následující kroky:
 | Číslo | Krok | Správci pracovního prostoru | Správci Spark | Správci SQL |
 | --- | --- | --- | --- | --- |
 | 1 | Nahrání souboru Parquet do CNT1 | ANO | ANO | ANO |
-| 2 | Přečtěte si soubor Parquet pomocí SQL na vyžádání. | ANO | NO | ANO |
-| 3 | Vytvoření fondu Spark | ANO [1] | ANO [1] | NO  |
+| 2 | Přečtěte si soubor Parquet s využitím fondu SQL bez serveru. | ANO | NO | ANO |
+| 3 | Vytvoření fondu Apache Spark bez serveru | ANO [1] | ANO [1] | NO  |
 | 4 | Přečte soubor Parquet pomocí poznámkového bloku. | ANO | ANO | NO |
 | 5 | Vytvoření kanálu z poznámkového bloku a aktivace kanálu, který se má spustit hned | ANO | NO | NO |
-| 6 | Vytvořte fond SQL a spusťte skript SQL, jako je například &quot; Vyberte 1.&quot; | ANO [1] | NO | ANO [1] |
+| 6 | Vytvořte vyhrazený fond SQL a spusťte skript SQL, jako je například &quot; Vyberte 1.&quot; | ANO [1] | NO | ANO [1] |
 
 > [!NOTE]
 > [1] Chcete-li vytvořit fondy SQL nebo Spark, musí mít uživatel alespoň roli Přispěvatel v pracovním prostoru synapse.
@@ -148,8 +148,8 @@ Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Někter�
 | Data hub/viz propojené ADLS Gen2 účty a kontejnery | ANO [1] | ANO [1] | ANO [1] |
 | Data hub/viz databáze | ANO | ANO | ANO |
 | Data hub/zobrazit objekty v databázích | ANO | ANO | ANO |
-| Data hub/přístup k datům v databázích fondů SQL | ANO   | NO   | ANO   |
-| Data hub/přístup k datům v databázích SQL na vyžádání | ANO [2]  | NO  | ANO [2]  |
+| Data hub/přístup k datům v databázích SQL synapse | ANO   | NO   | ANO   |
+| Data hub/přístup k datům v databázích fondu SQL bez serveru | ANO [2]  | NO  | ANO [2]  |
 | Data hub/přístup k datům v databázích Spark | ANO [2] | ANO [2] | ANO [2] |
 | Použití centra pro vývoj | ANO | ANO | ANO |
 | Vývoj a vytváření skriptů SQL na střed | ANO | NO | ANO |
@@ -159,7 +159,7 @@ Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Někter�
 | Použití centra Orchestration | ANO | ANO | ANO |
 | Orchestrace centra/použití kanálů | ANO | NO | NO |
 | Použití centra pro správu | ANO | ANO | ANO |
-| Správa fondů hub/SQL | ANO | NO | ANO |
+| Správa centra/synapse SQL | ANO | NO | ANO |
 | Správa hub a fondů Spark | ANO | ANO | NO |
 | Spravovat centrum a triggery | ANO | NO | NO |
 | Správa hub/propojených služeb | ANO | ANO | ANO |

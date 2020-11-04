@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 69eefce50cefe9f54ed931c96ccbe94b2057cae4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb87afcc6edc02d241dca763aff9ecdd594e4711
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310089"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Aplikace Excel usnadňuje volání webových služeb přímo bez nutnosti psát jakýkoli kód.
@@ -38,7 +38,7 @@ Aplikace Excel usnadňuje volání webových služeb přímo bez nutnosti psát 
     ![Vybrat webovou službu](./media/excel-add-in-for-web-services/image1.png)
 3. Tím přejdete do části **předpověď** .  Tento sešit už obsahuje ukázková data, ale u prázdného sešitu můžete vybrat buňku v Excelu a kliknout na **použít vzorová data**.
 4. Vyberte data se záhlavími a klikněte na ikonu rozsah vstupních dat.  Ujistěte se, že je zaškrtnuté políčko moje data obsahují záhlaví.
-5. V části **výstup**zadejte číslo buňky, kde má být výstup, například "H1".
+5. V části **výstup** zadejte číslo buňky, kde má být výstup, například "H1".
 6. Klikněte na **předpověď**. Pokud zaškrtnete políčko automaticky vypovědět, všechny změny ve vybraných oblastech (které jsou zadané jako Input) spustí požadavek a aktualizuje výstupní buňky, aniž by bylo nutné stisknout tlačítko předpověď.
    
     ![Oddíl předpověď](./media/excel-add-in-for-web-services/image1.png)
@@ -65,7 +65,7 @@ Získejte klíč rozhraní API pro webovou službu. Kde tuto akci provedete, zá
 
 **Použít novou webovou službu**
 
-1. Na portálu [Azure Machine Learning Web Services](https://services.azureml.net) klikněte na možnost **webové služby**a pak vyberte webovou službu. 
+1. Na portálu [Azure Machine Learning Web Services](https://services.azureml.net) klikněte na možnost **webové služby** a pak vyberte webovou službu. 
 2. Klikněte na možnost **spotřebovat**.
 3. Vyhledejte část **základní informace o spotřebě** . Zkopírujte a uložte **primární klíč** a adresu URL **požadavku-odpovědi** .
 
@@ -88,4 +88,4 @@ Získejte klíč rozhraní API pro webovou službu. Kde tuto akci provedete, zá
 ## <a name="sharing-your-workbook"></a>Sdílení sešitu
 Pokud sešit uložíte, uloží se taky rozhraní API/primární klíč pro webové služby, které jste přidali. To znamená, že byste měli sešit sdílet jenom s jednotlivci, kterým důvěřujete.
 
-Požádejte o všechny otázky v následující části komentáře nebo na našem [fóru](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).
+Požádejte o všechny otázky v následující části komentáře nebo na našem [fóru](/answers/topics/azure-machine-learning.html).

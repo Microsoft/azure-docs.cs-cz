@@ -15,6 +15,10 @@
       href: virtual-wan-expressroute-portal.md
 - name: Koncepty
   items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Práce na dálku
       items:
         - name: Podpora pro práci na dálku

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260372"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312248"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Připojení k pracovnímu prostoru Azure synapse pomocí privátních odkazů (Preview)
 
@@ -23,11 +23,14 @@ Tento článek vás seznámí s postupem vytvoření privátního koncového bod
 
 Pokud jste to ještě neudělali, zaregistrujte poskytovatele síťových prostředků. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Po [registraci](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)vyberte v seznamu poskytovatelů prostředků možnost *Microsoft. Network* . Pokud je poskytovatel síťových prostředků již zaregistrován, přejděte ke kroku 2.
 
-
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>Krok 2: otevřete pracovní prostor Azure synapse v Azure Portal
 
-V části **zabezpečení** vyberte **připojení privátního koncového bodu** a pak vyberte **+ privátní koncový bod**.
+V části **zabezpečení** vyberte **připojení privátního koncového bodu** . 
 ![Otevřete pracovní prostor Azure synapse v Azure Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
+
+Na další obrazovce vyberte **+ soukromý koncový bod**.
+
+![Otevřít privátní koncový bod v Azure Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1a.png)
 
 ## <a name="step-3-select-your-subscription-and-region-details"></a>Krok 3: Vyberte si podrobnosti o předplatném a oblasti.
 
@@ -40,7 +43,7 @@ V podsíti jsou vytvořeny privátní koncové body. U předplatného, skupiny p
 
 V části adresář na kartě **prostředek** vyberte **připojit k prostředku Azure** . Vyberte **předplatné** , které obsahuje váš pracovní prostor Azure synapse. **Typ prostředku** pro vytváření privátních koncových bodů do pracovního prostoru Azure synapse je *Microsoft. synapse/Workspaces*.
 
-Jako **prostředek**vyberte pracovní prostor Azure synapse. Každý pracovní prostor Azure synapse má tři **cílové dílčí prostředky** , které můžete vytvořit pomocí privátního koncového bodu: SQL, SqlOnDemand a dev.
+Jako **prostředek** vyberte pracovní prostor Azure synapse. Každý pracovní prostor Azure synapse má tři **cílové dílčí prostředky** , které můžete vytvořit pomocí privátního koncového bodu: SQL, SqlOnDemand a dev.
 
 Vyberte **Další: konfigurační>** , které chcete přejít k další části instalace.
 ![Výběr podrobností o předplatném a oblasti 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)

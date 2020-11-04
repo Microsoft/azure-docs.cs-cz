@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7770e929e51ee51b09060e4247c5f92b27d1035
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195066"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311863"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získávání dat a porozumění fázi vědeckého zpracování týmových dat
 
@@ -67,8 +67,8 @@ V této fázi vyvíjíte architekturu řešení datového kanálu. Kanál vyvíj
 V této fázi jsou následující dodávky:
 
    * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje souhrny dat, vztahy mezi jednotlivými atributy a cíli, hodnocení proměnných a další. Nástroj [designu](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) , který je součástí TDSP, může rychle vygenerovat tuto sestavu na jakékoli tabulkové datové sadě, jako je třeba soubor CSV nebo relační tabulka. 
-   * **Architektura řešení**: Architektura řešení může být diagramem nebo popisem datového kanálu, který používáte ke spuštění bodování nebo předpovědi s novými daty po vytvoření modelu. Obsahuje také kanál, který umožňuje přeškolit model na základě nových dat. Uložte dokument do adresáře [projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) , když použijete šablonu struktury adresáře TDSP.
-   * **Rozhodnutí kontrolního bodu**: než začnete pracovat s funkcemi a vytvářením modelů, můžete projekt znovu vyhodnotit, abyste zjistili, jestli je očekávaná hodnota dostačující pro pokračování v provádění. Můžete být například připravení pokračovat, potřebovat shromažďovat další data nebo opustit projekt, protože data neexistují pro zodpovězení otázky.
+   * **Architektura řešení** : Architektura řešení může být diagramem nebo popisem datového kanálu, který používáte ke spuštění bodování nebo předpovědi s novými daty po vytvoření modelu. Obsahuje také kanál, který umožňuje přeškolit model na základě nových dat. Uložte dokument do adresáře [projektu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) , když použijete šablonu struktury adresáře TDSP.
+   * **Rozhodnutí kontrolního bodu** : než začnete pracovat s funkcemi a vytvářením modelů, můžete projekt znovu vyhodnotit, abyste zjistili, jestli je očekávaná hodnota dostačující pro pokračování v provádění. Můžete být například připravení pokračovat, potřebovat shromažďovat další data nebo opustit projekt, protože data neexistují pro zodpovězení otázky.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -82,4 +82,4 @@ Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
 Poskytujeme kompletní návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning]().

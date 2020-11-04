@@ -1,6 +1,6 @@
 ---
-title: Dotazování dat v úložišti pomocí SQL na vyžádání (Preview)
-description: Tento článek popisuje, jak zadat dotaz na službu Azure Storage pomocí prostředku SQL na vyžádání (Preview) v rámci služby Azure synapse Analytics.
+title: Dotazování na úložiště dat s neserverovým fondem SQL (Preview)
+description: Tento článek popisuje, jak zadat dotaz na Azure Storage pomocí prostředku (Preview) bez serveru ve službě Azure synapse Analytics.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,27 +9,27 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0ac54eb5d6350cc234eb7036a3a1dc97a4f1b083
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288371"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310958"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
+# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů úložiště s SQL fondem bez serveru (Preview) ve službě Azure synapse Analytics
 
-SQL na vyžádání (Preview) umožňuje dotazovat data v Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
+Neserverový fond SQL (Preview) umožňuje dotazovat data v Data Lake. Nabízí oblast dotazu T-SQL, která se vejde na částečně strukturované a nestrukturované datové dotazy. Pro dotazování jsou podporovány následující aspekty T-SQL:
 
 - Celý [Výběr](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) oblasti plochy, včetně většiny [funkcí a operátorů SQL](overview-features.md)
 - Možnost vytvořit externí tabulku jako SELECT ([CETAS](develop-tables-cetas.md)) vytvoří [externí tabulku](develop-tables-external-tables.md) a potom exportuje paralelně výsledky příkazu SELECT jazyka Transact-SQL pro Azure Storage.
 
-Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled na vyžádání SQL](on-demand-workspace-overview.md) nebo v následujících článcích:
+Další informace o tom, co je vs. v současné době není podporováno, najdete v článku [Přehled fondu SQL bez serveru](on-demand-workspace-overview.md) nebo v následujících článcích:
 - [Vývoj přístupu k úložišti](develop-storage-files-overview.md) , kde se dozvíte, jak používat [externí tabulku](develop-tables-external-tables.md) a funkci [OpenRowset](develop-openrowset.md) ke čtení dat ze služby Storage.
 - [Řízení přístupu k úložišti](develop-storage-files-storage-access-control.md) , kde se dozvíte, jak povolit synapse SQL pro přístup k úložišti pomocí ověřování SAS nebo spravované identity pracovního prostoru.
 
 ## <a name="overview"></a>Přehled
 
-Za účelem podpory hladkého prostředí pro účely dotazování na data umístěná v Azure Storage soubory používá SQL na vyžádání funkci [OpenRowset](develop-openrowset.md) s dalšími možnostmi:
+Aby byla zajištěna podpora hladkého prostředí pro místo na místě dotazování na data umístěná v Azure Storage soubory, fond SQL bez serveru používá funkci [OpenRowset](develop-openrowset.md) s dalšími možnostmi:
 
 - [Dotazování na více souborů nebo složek](#query-multiple-files-or-folders)
 - [Formát souboru PARQUET](#query-parquet-files)
@@ -65,7 +65,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 K dispozici jsou některé další možnosti, které lze použít k úpravě pravidel analýzy na vlastní formát CSv:
 - ESCAPE_CHAR = char určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován jinou hodnotou než samotnou nebo kteroukoli z hodnot oddělovače, je řídicí znak při čtení hodnoty vynechán.
 Parametr ESCAPE_CHAR bude použit bez ohledu na to, jestli je FIELDQUOTE nebo není povolený. Nepoužije se k řídicímu znaku pro uvozovky. Znak Quota musí být uvozen jiným znakem pro quotování. Znak quotace se může objevit v rámci hodnoty sloupce jenom v případě, že je hodnota zapouzdřená pomocí znaků quote.
-- FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka (**,**).
+- FIELDTERMINATOR = ' field_terminator ' Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka ( **,** ).
 - ROWTERMINATOR = ' row_terminator ' Určuje ukončovací znak řádku, který má být použit. Výchozí ukončovací znak řádku je znak nového řádku: **\r\n**.
 
 ## <a name="file-schema"></a>Schéma souboru
@@ -146,7 +146,7 @@ Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu v
 
 ## <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami
 
-Aby bylo možné zapnout hladké prostředí s daty uloženými ve vnořených nebo opakovaných datových typech, jako jsou například v souborech [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) , přidávají se následující rozšíření SQL na vyžádání.
+Aby bylo možné zapnout hladké prostředí s daty uloženými ve vnořených nebo opakovaných datových typech, jako jsou například soubory [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) , přidají se následující rozšíření do fondu SQL bez serveru.
 
 #### <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakující se data projektu
 

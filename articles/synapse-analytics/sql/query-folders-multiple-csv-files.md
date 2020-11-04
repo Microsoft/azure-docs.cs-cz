@@ -1,6 +1,6 @@
 ---
-title: Složky dotazů a více souborů pomocí SQL na vyžádání (Preview)
-description: SQL na vyžádání (Preview) podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows.
+title: Složky dotazů a více souborů pomocí neserverového fondu SQL (Preview)
+description: Fond SQL bez serveru (Preview) podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54ef116878dee2ed1c351fac3dacdf359abbe574
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71ed590440a8c7e37a071b4eadfc09977ef91d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288337"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310837"
 ---
 # <a name="query-folders-and-multiple-files"></a>Dotazování složek a několika souborů  
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve verzi Preview) ve službě Azure synapse Analytics.
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics.
 
-SQL na vyžádání podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows. Větší flexibilita je však k dispozici, protože je povoleno více zástupných znaků.
+Fond SQL bez serveru podporuje čtení více souborů nebo složek pomocí zástupných znaků, které jsou podobné zástupným znakům používaným v operačním systému Windows. Větší flexibilita je však k dispozici, protože je povoleno více zástupných znaků.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -138,7 +138,7 @@ ORDER BY
 Je možné číst soubory z více složek pomocí zástupného znaku. Následující dotaz načte všechny soubory ze všech složek umístěných ve složce *CSV* , jejichž názvy začínají na *t* a končí na *i*.
 
 > [!NOTE]
-> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast; * .
+> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast;* .
 
 ```sql
 SELECT
@@ -186,7 +186,7 @@ Vzhledem k tomu, že máte pouze jednu složku, která odpovídá kritériím, j
 Na různých úrovních cesty můžete použít více zástupných znaků. Můžete například rozšířit předchozí dotaz a číst soubory pouze s 2017 daty ze všech složek, jejichž názvy začínají na *t* a končí na *i*.
 
 > [!NOTE]
-> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast; * .
+> Všimněte si existence/na konci cesty v následujícím dotazu. Označuje složku. Pokud je hodnota/vynechána, dotaz bude místo toho cílen na soubory s názvem *t &ast;* .
 > Maximální počet zástupných znaků na jeden dotaz je 10.
 
 ```sql

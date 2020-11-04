@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8a3a82e091791b39ddf36e39987590dcddea320f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897505"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309662"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Shromažďování souborů protokolu kanálu Machine Learning v Application Insights pro výstrahy a ladění
 
@@ -24,7 +24,7 @@ Knihovna Pythonu [OpenCensus](https://opencensus.io/quickstart/python/) se dá p
 
 V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k dispozici historii výjimek a chybových zpráv. Vzhledem k tomu, že Application Insights se integruje s výstrahami Azure, můžete také vytvořit výstrahy na základě Application Insights dotazů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Podle pokynů vytvořte pracovní prostor [Azure Machine Learning](./how-to-manage-workspace.md) a [vytvořte svůj první kanál](./how-to-create-your-first-pipeline.md) .
 * [Nakonfigurujte vývojové prostředí](./how-to-configure-environment.md) pro instalaci sady Azure Machine Learning SDK.
@@ -38,7 +38,7 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
 
 V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
 
-Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py&preserve-view=true) se závislostí na opencensus-EXT-Azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
+Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) se závislostí na opencensus-EXT-Azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -153,7 +153,7 @@ Výsledek v Application Insights zobrazí zprávu protokolu a úroveň, cestu k 
 
 ### <a name="additional-helpful-queries"></a>Další užitečné dotazy
 
-Některé z následujících dotazů používají ' customDimensions. Level '. Tyto úrovně závažnosti odpovídají úrovni, pomocí které byl protokol Python původně odeslán. Další informace o dotazech najdete v tématu [Azure monitor dotazů protokolu](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Některé z následujících dotazů používají ' customDimensions. Level '. Tyto úrovně závažnosti odpovídají úrovni, pomocí které byl protokol Python původně odeslán. Další informace o dotazech najdete v tématu [Azure monitor dotazů protokolu](/azure/data-explorer/kusto/query/).
 
 | Případ použití                                                               | Dotaz                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -166,4 +166,4 @@ Některé z následujících dotazů používají ' customDimensions. Level '. T
 
 Jakmile budete mít v instanci Application Insights protokoly, dají se použít k nastavení [Azure monitor výstrahy](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) na základě výsledků dotazu.
 
-Můžete také přidat výsledky z dotazů na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query) pro další přehledy.
+Můžete také přidat výsledky z dotazů na [řídicí panel Azure](../azure-monitor/learn/tutorial-app-dashboards.md#add-logs-query) pro další přehledy.

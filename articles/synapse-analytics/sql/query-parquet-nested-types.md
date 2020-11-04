@@ -1,6 +1,6 @@
 ---
-title: Dotazování na vnořené typy Parquet pomocí SQL na vyžádání (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na vnořené typy Parquet pomocí SQL na vyžádání (Preview).
+title: Dotazování vnořených typů Parquet pomocí neserverového fondu SQL (Preview)
+description: V tomto článku se naučíte, jak zadávat dotazy na vnořené typy Parquet pomocí neserverového fondu SQL (Preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288252"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312007"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování vnořených typů v souborech Parquet a JSON pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics. Dotaz načte vnořené typy Parquet.
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics. Dotaz načte vnořené typy Parquet.
 Vnořené typy jsou komplexní struktury, které představují objekty nebo pole. Vnořené typy mohou být uloženy v: 
 - [Parquet](query-parquet-files.md), kde můžete mít více složitých sloupců, které obsahují pole a objekty.
 - Hierarchické [soubory JSON](query-json-files.md), kde můžete číst SLOŽITÝ dokument JSON jako jeden sloupec.
 - Kolekce Azure Cosmos DB (aktuálně v rámci ověřované verze Public Preview), kde každý dokument může obsahovat komplexní vnořené vlastnosti.
 
-Služba Azure synapse SQL na vyžádání formátuje všechny vnořené typy jako objekty JSON a pole. Můžete tedy [extrahovat nebo upravit složité objekty pomocí funkcí JSON](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) nebo [analyzovat data JSON pomocí funkce OPENJSON](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Fond SQL bez serveru formátuje všechny vnořené typy jako objekty JSON a pole. Můžete tedy [extrahovat nebo upravit složité objekty pomocí funkcí JSON](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) nebo [analyzovat data JSON pomocí funkce OPENJSON](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Tady je příklad dotazu, který extrahuje hodnoty skalárních hodnot a objektů z [COVID souboru JSON pro zdroj dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) , který obsahuje vnořené objekty: 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > V tomto příkladu se používá soubor z otevřené datové sady COVID-19. [Tady si můžete prohlédnout licenci a strukturu dat](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je vytvoření databáze, ve které se vytvoří zdroj dat. Pak inicializujete objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v databázi. Skript instalačního programu vytvoří zdroje dat, přihlašovací údaje v rozsahu databáze a formáty externích souborů, které jsou použity v ukázkách.
 

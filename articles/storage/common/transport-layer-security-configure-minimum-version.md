@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289460"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312030"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Vynutila minimální požadovanou verzi protokolu TLS (Transport Layer Security) pro požadavky na účet úložiště.
 
@@ -89,7 +89,7 @@ Pokud jste si jisti, že provoz od klientů používajících starší verze pro
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurace minimální verze protokolu TLS pro účet úložiště
 
-Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager ve veřejném cloudu Azure nebo v cloudech Azure Government. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
+Pokud chcete nakonfigurovat minimální verzi TLS pro účet úložiště, nastavte pro tento účet verzi **MinimumTlsVersion** . Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace o modelu nasazení Azure Resource Manager najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
 
 Vlastnost **MinimumTlsVersion** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte.  Pokud má vlastnost hodnotu **null** , bude účet úložiště umožňovat požadavky odeslané protokolem TLS verze 1,0 nebo vyšší.
 

@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487190"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312378"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Udělení oprávnění pro spravovanou identitu pracovního prostoru (Preview)
 
-V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k fondům SQL v pracovním prostoru a ADLS Gen2 účtu úložiště prostřednictvím Azure Portal.
+V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k vyhrazeným fondům SQL v pracovním prostoru a ADLS Gen2 účtu úložiště prostřednictvím Azure Portal.
 
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Udělení oprávnění ke spravovaným identitám pro fond SQL
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>Udělit spravovanému fondu SQL oprávnění spravovaných identit
 
-Spravovaná identita uděluje oprávnění k fondům SQL v pracovním prostoru. S udělenými oprávněními můžete orchestrovat kanály, které provádějí aktivity související se fondem SQL. Když vytvoříte pracovní prostor Azure synapse pomocí Azure Portal, můžete pro fondy SQL udělit oprávnění řízení spravovaných identit.
+Spravovaná identita uděluje oprávnění k vyhrazeným fondům SQL v pracovním prostoru. S udělenými oprávněními můžete orchestrovat kanály, které provádějí vyhrazené aktivity související s fondem SQL. Když vytvoříte pracovní prostor Azure synapse pomocí Azure Portal, můžete udělit oprávnění spravovat spravovaná řízení identit na vyhrazené fondy SQL.
 
-Když vytváříte pracovní prostor Azure synapse, vyberte **zabezpečení a sítě** . Pak vyberte **udělit řízení spravované identitě pracovního prostoru v rámci fondů SQL**.
+Při vytváření pracovního prostoru Azure synapse vyberte **zabezpečení** . Pak **pro přístup k fondům SQL vyberte možnost povoluje kanálům (spouštěným jako identitu přiřazené systémem v pracovním prostoru)**.
 
-![ŘÍZENÍ oprávnění pro fondy SQL](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![ŘÍZENÍ oprávnění pro vyhrazené fondy SQL](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Udělení oprávnění spravovaných identit ADLS Gen2 účtu úložiště
 
@@ -40,7 +40,7 @@ Služba Azure synapse se pokusí udělit roli Přispěvatel dat objektů BLOB ú
 
 ![Karta základy v toku vytváření pracovního prostoru](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-V poli **název účtu** a **název systému souborů**vyberte adls Gen2 účet úložiště a systém souborů.
+V poli **název účtu** a **název systému souborů** vyberte adls Gen2 účet úložiště a systém souborů.
 
 ![Poskytnutí podrobností o ADLS Gen2 účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 

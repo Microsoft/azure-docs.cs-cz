@@ -1,7 +1,7 @@
 ---
 title: Výuka modelu pomocí vlastní image Docker
 titleSuffix: Azure Machine Learning
-description: Naučte se naučit modely s vlastními imagemi Docker v Azure Machine Learning.
+description: Naučte se, jak používat vlastní image Docker nebo jaké jsou od Microsoftu, k učení modelů v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6ce0885cce1861b27d6230c3807350831603684b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 23b59c80c8e44cf6473a2de9be9807eaf8a756c6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329113"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310548"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Výuka modelu pomocí vlastní image Docker
 
@@ -32,8 +32,8 @@ Spusťte kód v některém z těchto prostředí:
   * V úložišti s [Příklady](https://github.com/Azure/azureml-examples)Azure Machine Learning Najděte dokončený Poznámkový blok tak, že v adresáři **Poznámkový blok**  >  **fastai**  >  **výuka resnet34. ipynb** . 
 * Váš vlastní server Jupyter Notebook:
   * Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
-  * Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-  * Vytvořte službu [Azure Container Registry](/azure/container-registry) nebo jiný registr Docker, který je k dispozici na internetu.
+  * Nainstalujte [sadu Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). 
+  * Vytvořte službu [Azure Container Registry](../container-registry/index.yml) nebo jiný registr Docker, který je k dispozici na internetu.
 
 ## <a name="set-up-a-training-experiment"></a>Nastavení experimentu školení
 
@@ -41,7 +41,7 @@ V této části nastavíte experiment pro školení inicializací pracovního pr
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) objektu.
 
 Vytvořte `Workspace` objekt z config.jsv souboru, který jste vytvořili jako [požadavek](#prerequisites).
 
@@ -163,7 +163,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning spouští školicí skripty zkopírováním celého zdrojového adresáře. Pokud máte citlivá data, která nechcete nahrávat, použijte [soubor. Ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) nebo ho nezahrnujte do zdrojového adresáře. Místo toho přístup k datům pomocí [úložiště](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py&preserve-view=true)dat.
+> Azure Machine Learning spouští školicí skripty zkopírováním celého zdrojového adresáře. Pokud máte citlivá data, která nechcete nahrávat, použijte [soubor. Ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) nebo ho nezahrnujte do zdrojového adresáře. Místo toho přístup k datům pomocí [úložiště](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)dat.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste proškolei model pomocí vlastní image Docker. Další informace o Azure Machine Learning najdete v těchto článcích:

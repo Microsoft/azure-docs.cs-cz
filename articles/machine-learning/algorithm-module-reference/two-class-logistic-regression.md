@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907695"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309987"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul Two-Class logistické regrese
 
@@ -40,13 +40,13 @@ Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" 
   
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
+    -   **Jediný parametr** : Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.  
 
-    -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
+    -   **Rozsah parametrů** : Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
   
-3.  V případě **tolerance optimalizace**zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
+3.  V případě **tolerance optimalizace** zadejte mezní hodnotu, která se má použít při optimalizaci modelu. Pokud vylepšení mezi iteracemi klesne pod zadanou prahovou hodnotu, je algoritmus považován za sblížený v řešení a školení se zastaví.  
   
-4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2**zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
+4.  Pro **váhu regulárních hodnot L1** a **váhu pravidelného použití L2** zadejte hodnotu, která se má použít pro parametry pro pravidelnost L1 a L2. Pro obojí se doporučuje nenulová hodnota.  
      *Pravidelná* metoda představuje způsob, jak zabránit přeložení pomocí postihu modelů s hodnotami extrémního součinitele. Pravidelnou práci můžete provést přidáním pokuty, která je spojená s hodnotami koeficientu, na chybu hypotézy. Přesný model s hodnotami extrémních koeficientů by tedy byl potrestánější, ale méně přesný model s více konzervativními hodnotami by byl méně trestný.  
   
      Pravidelná L1 a L2 mají různé účinky a použití.  
@@ -58,24 +58,24 @@ Sloupec popisku může být například [hlasovalo] s možnými hodnotami "Ano" 
      Tento algoritmus podporuje lineární kombinaci hodnot L1 a L2 pro účely depravidelnosti: to znamená, že pokud <code>x = L1</code> a <code>y = L2</code> , pak <code>ax + by = c</code> definuje lineární rozpětí regulárních podmínek.  
   
     > [!NOTE]
-    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak mají vliv na model, s ukázkami kódu pro logistické regrese a síťové modely:  [L1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Chcete získat další informace o L1 a propravidelnosti L2? Následující článek poskytuje diskuzi o tom, jak se v proneuronovéch L1 a L2 liší a jak mají vliv na model, s ukázkami kódu pro logistické regrese a síťové modely:  [L1 a L2 pro Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning)  
     >
     > Pro logistické regresní modely byly navrženy různé lineární kombinace L1 a L2: například [elastické čisté](https://wikipedia.org/wiki/Elastic_net_regularization)účely. Doporučujeme, abyste na tyto kombinace odkazovali a definovali lineární kombinaci, která je v modelu platná.
       
-5.  Pro **velikost paměti pro l-BFGS**určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
+5.  Pro **velikost paměti pro l-BFGS** určete velikost paměti, která se má použít pro optimalizaci *l-BFGS* .  
   
      L-BFGS představuje "omezené paměťové Broyden-Fletcher-Goldfarb-Shanno". Jedná se o optimalizační algoritmus, který je oblíbený pro odhad parametru. Tento parametr určuje počet minulých pozic a přechodů, které se mají uložit pro výpočet dalšího kroku.  
   
      Tento parametr optimalizace omezuje velikost paměti, která se používá k výpočtu dalšího kroku a směru. Když zadáte méně paměti, školení je rychlejší, ale je méně přesné.  
   
-6.  V případě **náhodného čísla**zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné přes více spuštění stejného kanálu.  
+6.  V případě **náhodného čísla** zadejte celočíselnou hodnotu. Definování počáteční hodnoty je důležité, pokud chcete, aby byly výsledky reprodukovatelné přes více spuštění stejného kanálu.  
   
   
 8. Přidejte do kanálu datovou sadu s popiskem a vytvořte si model:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 
@@ -97,4 +97,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

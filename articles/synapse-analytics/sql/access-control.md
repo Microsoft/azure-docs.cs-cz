@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a0fbcab194b90bbe89948fee1efb604266dbbb0f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503279"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311741"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
@@ -64,7 +64,7 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 
 1. Přejít do [ **webového uživatelského rozhraní Azure synapse**](https://web.azuresynapse.net)
 2. Přejít na **Správa**   >  **Security**  >  **řízení přístupu** zabezpečení
-3. Vyberte **přidat správce**a vyberte `Synapse_WORKSPACENAME_Admins`
+3. Vyberte **přidat správce** a vyberte `Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
@@ -94,21 +94,21 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data La
 Řízení přístupu k podkladovým datům je rozděleno na tři části:
 
 - Přístup k účtu úložiště (už je nakonfigurovaný výše v kroku 2) – rovina dat
-- Přístup k databázím SQL (pro fondy SQL i SQL na vyžádání) datové roviny
-- Vytvoření přihlašovacích údajů pro databáze SQL na vyžádání přes účet úložiště
+- Přístup k databázím SQL (pro vyhrazené fondy SQL i pro SQL fond bez serveru) prostřednictvím datové roviny
+- Vytváření přihlašovacích údajů pro databáze fondu SQL bez serveru přes účet úložiště
 
 ## <a name="access-control-to-sql-databases"></a>Řízení přístupu k databázím SQL
 
 > [!TIP]
 > Níže uvedené kroky musí být spuštěny pro **každou** databázi SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL s výjimkou [oprávnění na úrovni serveru](#server-level-permission) , kde můžete přiřadit uživatele k roli sysadmin.
 
-### <a name="sql-on-demand"></a>SQL na vyžádání
+### <a name="serverless-sql-pool"></a>Fond SQL bez serveru
 
 V této části najdete příklady, jak udělit uživateli oprávnění ke konkrétní databázi nebo úplnému oprávnění serveru.
 
 #### <a name="database-level-permission"></a>Oprávnění na úrovni databáze
 
-Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžádání, postupujte podle kroků v tomto příkladu:
+Chcete-li udělit uživateli přístup k **jediné** databázi fondu SQL bez serveru, postupujte podle kroků v tomto příkladu:
 
 1. Vytvořit přihlašovací údaje
 
@@ -140,16 +140,16 @@ Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžád�
 
 #### <a name="server-level-permission"></a>Oprávnění na úrovni serveru
 
-Pokud chcete uživateli udělit úplný přístup ke **všem** databázím SQL na vyžádání, postupujte podle kroků v tomto příkladu:
+Chcete-li uživateli udělit úplný přístup ke **všem** databázím fondu SQL bez serveru, postupujte podle kroků v tomto příkladu:
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
 ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
-### <a name="sql-pools"></a>Fondy SQL
+### <a name="dedicated-sql-pool"></a>Vyhrazený fond SQL
 
-Chcete-li uživateli udělit přístup k **jednomu** SQL Database, postupujte podle následujících kroků:
+Pokud chcete uživateli udělit přístup k **jedné** databázi SQL, postupujte takto:
 
 1. Vytvořte uživatele v databázi tak, že spustíte následující příkaz, který cílí na požadovanou databázi v selektor kontextu (rozevírací seznam pro výběr databází):
 
@@ -167,18 +167,18 @@ Chcete-li uživateli udělit přístup k **jednomu** SQL Database, postupujte po
 
 > [!IMPORTANT]
 > *db_datareader* a *db_datawriter* mohou fungovat pro oprávnění ke čtení a zápisu, pokud udělení oprávnění *db_owner* není žádoucí.
-> Aby mohl uživatel Spark číst a zapisovat přímo z Sparku do nebo z fondu SQL, vyžaduje se *db_owner* oprávnění.
+> Aby mohl uživatel Spark číst a zapisovat přímo z Spark do nebo z vyhrazeného fondu SQL, je nutné mít *db_owner* oprávnění.
 
-Po vytvoření uživatelů ověřte, jestli se SQL na vyžádání může dotazovat na účet úložiště.
+Po vytvoření uživatelů ověřte, že se můžete dotazovat na účet úložiště pomocí serveru SQL bez serveru.
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>Řízení přístupu k běhu kanálu pracovního prostoru
 
 ### <a name="workspace-managed-identity"></a>Identita spravovaná pracovním prostorem
 
 > [!IMPORTANT]
-> Aby bylo možné úspěšně spustit kanály, které zahrnují datové sady nebo aktivity odkazující na fond SQL, je nutné identitám pracovního prostoru udělit přímý přístup ke fondu SQL.
+> Aby bylo možné úspěšně spustit kanály zahrnující datové sady nebo aktivity, které odkazují na vyhrazený fond SQL, musí být identitám pracovního prostoru udělen přímý přístup ke fondu SQL.
 
-Spuštěním následujících příkazů v každém z fondů SQL umožněte, aby identita spravovaná pracovním prostorem spouštěla kanály v databázi fondu SQL:
+Spuštěním následujících příkazů v každém vyhrazeném fondu SQL umožněte, aby identita spravovaná pracovním prostorem spouštěla kanály v databázi fondu SQL:
 
 ```sql
 --Create user in DB

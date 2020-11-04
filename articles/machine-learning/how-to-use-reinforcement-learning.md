@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 6221b36263b55f54faef18d6596f97c5b3798d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf4b321425ccaae877c2ff5c9b54f429d95a3515
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541709"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312304"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak:
 
 Tento článek je založený na [příkladu RLlib pong](https://aka.ms/azureml-rl-pong) , který najdete v [úložišti GitHubu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md)poznámkového bloku Azure Machine Learning.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abyste si vyzkoušeli Azure Machine Learning výpočetní instance pro nejrychlejší úvodní prostředí. K dispozici jsou ukázkové poznámkové bloky pro rychlé klonování a spouštění Azure Machine Learning výpočetní instance.
 
@@ -49,8 +49,8 @@ Tento kód spusťte v jednom z následujících prostředí. Doporučujeme, abys
  
  - Váš vlastní server Jupyter Notebook
 
-    - Nainstalujte [sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-    - Nainstalujte [sadu Azure Machine Learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&preserve-view=true): `pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Nainstalujte [sadu Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+    - Nainstalujte [sadu Azure Machine Learning RL SDK](/python/api/azureml-contrib-reinforcementlearning/?preserve-view=true&view=azure-ml-py): `pip install --upgrade azureml-contrib-reinforcementlearning`
     - Vytvořte [konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - Spusťte [Poznámkový blok instalace](https://aka.ms/azure-rl-env-setup) virtuální sítě a otevřete tak síťové porty, které se používají pro distribuované výztuže při výuce.
 
@@ -107,7 +107,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-reinforcement-learning-experiment"></a>Vytvořit výztužný experiment při výuce
 
-Vytvořte [experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) , který sleduje školicí běh. V Azure Machine Learning experimenty jsou logické kolekce souvisejících zkušebních verzí, které slouží k uspořádání protokolů spuštění, historie, výstupů a dalších.
+Vytvořte [experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) , který sleduje školicí běh. V Azure Machine Learning experimenty jsou logické kolekce souvisejících zkušebních verzí, které slouží k uspořádání protokolů spuštění, historie, výstupů a dalších.
 
 ```python
 experiment_name='rllib-pong-multi-node'
@@ -131,7 +131,7 @@ V tomto příkladu se používají samostatné výpočetní cíle pro uzly paprs
 
 V tomto příkladu se používá hlavní cluster s podporou GPU k optimalizaci výkonu hloubkového učení. Hlavní uzel nakládá neuronové síť, kterou agent používá k rozhodování. Hlavní uzel také shromažďuje datové body z pracovních uzlů pro další vzdělávání sítě neuronové.
 
-Hlavní výpočetní prostředí používá jeden [ `STANDARD_NC6` virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/nc-series) (VM). Má 6 virtuálních procesorů, což znamená, že může distribuovat práci mezi 6 funkčních procesorů.
+Hlavní výpočetní prostředí používá jeden [ `STANDARD_NC6` virtuální počítač](../virtual-machines/nc-series.md) (VM). Má 6 virtuálních procesorů, což znamená, že může distribuovat práci mezi 6 funkčních procesorů.
 
 
 ```python
@@ -173,7 +173,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Cluster Computing Worker
 
-Tento příklad používá pro výpočetní cíl pro pracovní proces čtyři [ `STANDARD_D2_V2` virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/nc-series) . Každý pracovní uzel má 2 dostupné procesory, celkem 8 dostupných procesorů, které paralelizovat práci.
+Tento příklad používá pro výpočetní cíl pro pracovní proces čtyři [ `STANDARD_D2_V2` virtuální počítače](../virtual-machines/nc-series.md) . Každý pracovní uzel má 2 dostupné procesory, celkem 8 dostupných procesorů, které paralelizovat práci.
 
 GPU nejsou pro pracovní uzly nutné, protože neprovádějí důkladné učení. Pracovníci spouštějí simulace her a shromažďují data.
 
@@ -213,7 +213,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Vytvoření posílení výukového Estimator
 
-V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&preserve-view=true) odeslat školicí úlohu Azure Machine Learning.
+V této části se dozvíte, jak pomocí [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) odeslat školicí úlohu Azure Machine Learning.
 
 Azure Machine Learning používá třídy Estimator k zapouzdření informací o konfiguraci spuštění. To vám umožní snadno určit, jak se má nakonfigurovat provádění skriptu. 
 
@@ -248,7 +248,7 @@ Skript vstupu `pong_rllib.py` přijímá seznam parametrů, které definují, ja
 
 Určením správného nastavení `num_workers` bude vaše úsilí na maximum na maximum. Nastavte počet pracovních procesů na stejný jako počet dostupných procesorů. V tomto příkladu to můžete vypočítat následujícím způsobem:
 
-Hlavní uzel je [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) s 6 vCPU. Pracovní cluster má 4 [Standard_D2_V2 virtuálních počítačů](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs#dv2-series) se dvěma procesory (celkem 8 procesorů). Je ale potřeba odečíst 1 procesor od počtu pracovních procesů, protože 1 se musí vyhradit roli hlavního uzlu. 6 procesorů + 8 procesorů – 1 hlavní procesor = 13 současných pracovních procesů. Azure Machine Learning využívá hlavní a pracovní clustery k odlišení výpočetních prostředků. Ray ale nerozlišuje mezi vedoucími a pracovními procesy a všechny procesory jsou dostupné CPU pro provádění pracovních vláken.
+Hlavní uzel je [Standard_NC6](../virtual-machines/nc-series.md) s 6 vCPU. Pracovní cluster má 4 [Standard_D2_V2 virtuálních počítačů](../cloud-services/cloud-services-sizes-specs.md#dv2-series) se dvěma procesory (celkem 8 procesorů). Je ale potřeba odečíst 1 procesor od počtu pracovních procesů, protože 1 se musí vyhradit roli hlavního uzlu. 6 procesorů + 8 procesorů – 1 hlavní procesor = 13 současných pracovních procesů. Azure Machine Learning využívá hlavní a pracovní clustery k odlišení výpočetních prostředků. Ray ale nerozlišuje mezi vedoucími a pracovními procesy a všechny procesory jsou dostupné CPU pro provádění pracovních vláken.
 
 
 ```python
@@ -399,7 +399,7 @@ def on_train_result(info):
 
 ## <a name="submit-a-run"></a>Odeslat běh
 
-[Spustit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) zpracovává historii spuštění probíhajících nebo dokončených úloh. 
+[Spustit](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) zpracovává historii spuštění probíhajících nebo dokončených úloh. 
 
 ```python
 run = exp.submit(config=rl_estimator)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 991e81c46a0cd6c587ac3366b63ba4da6a07f7e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336509"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312339"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití clusterů Azure HDInsight Hadoop
 V tomto návodu použijeme [TDSP (Team data Sciences)](overview.md) v uceleném scénáři. Pro ukládání, prozkoumávání a inženýrské údaje z veřejně dostupné datové sady [taxislužby pro NYC](https://www.andresmh.com/nyctaxitrips/) a pro data ukázek používáme [cluster Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) . Pro zpracování binárních a regresních klasifikací a regresních prediktivních úkolů sestavíme modely dat s Azure Machine Learning. 
@@ -59,14 +59,14 @@ Data o cestách NYC taxislužby jsou přibližně 20 GB komprimovaných souborů
 Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z těchto polí: Medallion, napadená \_ licence a data a času vyzvednutí \_ . Chcete-li získat všechny podrobnosti týkající se konkrétní cesty, stačí se připojit k těmto třem klíčům.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Příklady úkolů předpovědi
-Určete druh předpovědi, který chcete vytvořit na základě analýzy dat, abyste mohli vyjasnit požadované úlohy procesu. Tady jsou tři příklady problémů s předpovědí, které řešíme v tomto návodu, a to vše na základě * \_ výše uvedené hodnoty Tip*:
+Určete druh předpovědi, který chcete vytvořit na základě analýzy dat, abyste mohli vyjasnit požadované úlohy procesu. Tady jsou tři příklady problémů s předpovědí, které řešíme v tomto návodu, a to vše na základě *\_ výše uvedené hodnoty Tip* :
 
-- **Binární klasifikace**: předpověď bez ohledu na to, zda byl pro cestu zaplacen Tip. To znamená, že * \_ hodnota tipu* , která je větší než $0, je pozitivním příkladem, zatímco * \_ hodnota tipu* $0 je negativním příkladem.
+- **Binární klasifikace** : předpověď bez ohledu na to, zda byl pro cestu zaplacen Tip. To znamená, že *\_ hodnota tipu* , která je větší než $0, je pozitivním příkladem, zatímco *\_ hodnota tipu* $0 je negativním příkladem.
 
   - Třída 0: tip_amount = $0
   - Třída 1: tip_amount > $0
 
-- **Klasifikace s více třídami**: předpověď rozsahu částek v tipu placených pro danou cestu. * \_ Velikost tipu* rozdělíme na pět tříd:
+- **Klasifikace s více třídami** : předpověď rozsahu částek v tipu placených pro danou cestu. *\_ Velikost tipu* rozdělíme na pět tříd:
 
   - Třída 0: tip_amount = $0
   - Třída 1: tip_amount > $0 a tip_amount <= $5
@@ -74,7 +74,7 @@ Určete druh předpovědi, který chcete vytvořit na základě analýzy dat, ab
   - Třída 3: tip_amount > $10 a tip_amount <= $20
   - Třída 4: tip_amount > $20
 
-- **Regresní úloha**: předpověď množství tipu placeného pro cestu.  
+- **Regresní úloha** : předpověď množství tipu placeného pro cestu.  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>Nastavení clusteru HDInsight Hadoop pro pokročilou analýzu
 > [!NOTE]
@@ -85,7 +85,7 @@ Určete druh předpovědi, který chcete vytvořit na základě analýzy dat, ab
 Prostředí Azure pro pokročilou analýzu, která využívá cluster HDInsight, můžete nastavit v třech krocích:
 
 1. [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md): Tento účet úložiště se používá k ukládání dat v úložišti objektů BLOB v Azure. Data používaná v clusterech HDInsight se taky nacházejí v tomto umístění.
-2. [Přizpůsobte Azure HDInsight Hadoop clusterů pro proces a technologii pokročilé analýzy](customize-hadoop-cluster.md). Tento krok vytvoří cluster systému Hadoop HDInsight s 64 Anaconda Python 2,7 nainstalovaný na všech uzlech. Existují dva důležité kroky, které byste si měli pamatovat při přizpůsobování clusteru HDInsight.
+2. [Přizpůsobte Azure HDInsight Hadoop clusterů pro proces a technologii pokročilé analýzy](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Tento krok vytvoří cluster systému Hadoop HDInsight s 64 Anaconda Python 2,7 nainstalovaný na všech uzlech. Existují dva důležité kroky, které byste si měli pamatovat při přizpůsobování clusteru HDInsight.
    
    * Nezapomeňte propojit účet úložiště vytvořený v kroku 1 s clusterem HDInsight při jeho vytváření. Tento účet úložiště přistupuje k datům zpracovávaným v rámci clusteru.
    * Po vytvoření clusteru Povolte vzdálený přístup k hlavnímu uzlu clusteru. Přejděte na kartu **Konfigurace** a vyberte **Povolit vzdálenou**. Tento krok určuje přihlašovací údaje uživatele používané pro vzdálené přihlášení.
@@ -99,7 +99,7 @@ Prostředí Azure pro pokročilou analýzu, která využívá cluster HDInsight,
 
 Pokud chcete zkopírovat datovou sadu [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) na váš počítač ze svého veřejného umístění, použijte kteroukoli z metod popsaných v tématu [přesun dat do a z úložiště objektů BLOB v Azure](move-azure-blob.md).
 
-Tady popisujeme, jak použít AzCopy k přenosu souborů obsahujících data. Pokud chcete stáhnout a nainstalovat AzCopy, postupujte podle pokynů v tématu [Začínáme s nástrojem příkazového řádku AzCopy](../../storage/common/storage-use-azcopy.md).
+Tady popisujeme, jak použít AzCopy k přenosu souborů obsahujících data. Pokud chcete stáhnout a nainstalovat AzCopy, postupujte podle pokynů v tématu [Začínáme s nástrojem příkazového řádku AzCopy](../../storage/common/storage-use-azcopy-v10.md).
 
 1. V okně příkazového řádku spusťte následující příkazy AzCopy a nahraďte *\<path_to_data_folder>* požadované místo:
 
@@ -117,23 +117,23 @@ Tady popisujeme, jak použít AzCopy k přenosu souborů obsahujících data. Po
 
 V následujících příkazech AzCopy nahraďte následující parametry skutečnými hodnotami, které jste zadali při vytváření clusteru Hadoop, a rozzipovává datových souborů.
 
-* ***\<path_to_data_folder>*** Adresář (spolu s cestou) na počítači, který obsahuje soubory s nekomprimovanými daty.  
-* ***\<storage account name of Hadoop cluster>*** Účet úložiště přidružený k vašemu clusteru HDInsight.
-* ***\<default container of Hadoop cluster>*** Výchozí kontejner používaný clusterem. Název výchozího kontejneru má obvykle stejný název jako samotný cluster. Pokud má například cluster název "abc123.azurehdinsight.net", výchozí kontejner je abc123.
-* ***\<storage account key>*** Klíč pro účet úložiště používaný clusterem
+* ***\<path_to_data_folder>** _ Adresář (spolu s cestou) na počítači, který obsahuje soubory s nekomprimovanými daty.  
+_ * **\<storage account name of Hadoop cluster>** _ Účet úložiště přidružený k vašemu clusteru HDInsight.
+_ * **\<default container of Hadoop cluster>** _ Výchozí kontejner používaný clusterem. Název výchozího kontejneru má obvykle stejný název jako samotný cluster. Pokud má například cluster název "abc123.azurehdinsight.net", výchozí kontejner je abc123.
+_ * **\<storage account key>** _ Klíč pro účet úložiště používaný clusterem.
 
 Z příkazového řádku nebo okna Windows PowerShellu spusťte následující dva příkazy AzCopy.
 
-Tento příkaz nahraje data pro cestu do adresáře ***nyctaxitripraw*** ve výchozím kontejneru clusteru Hadoop.
+Tento příkaz nahraje data pro cestu do adresáře _*_nyctaxitripraw_*_ ve výchozím kontejneru clusteru Hadoop.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
 ```
 
-Tento příkaz nahraje data tarifů do adresáře ***nyctaxifareraw*** ve výchozím kontejneru clusteru Hadoop.
+Tento příkaz nahraje data tarifů do adresáře * **nyctaxifareraw** _ ve výchozím kontejneru clusteru Hadoop.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
 ```
 
 Data by teď měla být v úložišti objektů BLOB a připravená k využití v clusteru HDInsight.
@@ -144,7 +144,7 @@ Data by teď měla být v úložišti objektů BLOB a připravená k využití v
 > 
 > 
 
-Pokud chcete získat přístup k hlavnímu uzlu clusteru pro průzkumné analýzy dat a vzorkování dat dolů, postupujte podle kroků uvedených v části [přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
+Pokud chcete získat přístup k hlavnímu uzlu clusteru pro průzkumné analýzy dat a vzorkování dat dolů, postupujte podle kroků uvedených v části [přístup k hlavnímu uzlu clusteru Hadoop](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 
 V tomto návodu primárně používáme dotazy napsané v [podregistru](https://hive.apache.org/), dotazovací jazyk, který je typu SQL, k provádění předběžných průzkumných dat. Dotazy na podregistr se ukládají do souborů. HQL. Následně dolů – ukázková data se použijí v rámci Machine Learning pro vytváření modelů.
 
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-Tyto dva příkazy stáhnou všechny soubory '. HQL ' potřebné v tomto návodu do místního adresáře ***C:\temp&#92;*** do hlavního uzlu.
+Tyto dva příkazy stáhnou všechny soubory '. HQL ' potřebné v tomto návodu do místního adresáře * **C:\temp&#92;** _ do hlavního uzlu.
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Vytvoření databáze podregistru a tabulek dělených za měsíc
 > [!NOTE]
@@ -182,7 +182,7 @@ Z příkazového řádku adresáře podregistr spusťte následující příkaz 
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-Tady je obsah ** \_ podregistru C:\temp\sample \_ Create \_ DB \_ a \_ Tables. HQL** , který vytváří podregistr Database **nyctaxidb**a tabulky **TRIPS** a **jízdné**.
+Tady je obsah *\_ podregistru _ C:\temp\sample \_ Create \_ DB \_ a \_ Tables. HQL* *, který vytváří podregistr Database **nyctaxidb** a tabulky **TRIPS** a **jízdné**.
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -447,7 +447,7 @@ Celkový počet záznamů v obou tabulkách je také stejný a poskytuje druhé 
 > 
 > 
 
-Tento příklad identifikuje medallions (taxislužby čísla) s více než 100 TRIPS během daného časového období. Dotaz je výhodou z přístupu k dělenému tabulce, protože je podmíněna proměnnou month za **měsíc**. Výsledky dotazu jsou zapsány do místního souboru **queryoutput. TSV**v `C:\temp` hlavní uzel.
+Tento příklad identifikuje medallions (taxislužby čísla) s více než 100 TRIPS během daného časového období. Dotaz je výhodou z přístupu k dělenému tabulce, protože je podmíněna proměnnou month za **měsíc**. Výsledky dotazu jsou zapsány do místního souboru **queryoutput. TSV** v `C:\temp` hlavní uzel.
 
 ```console
 hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
@@ -491,7 +491,7 @@ hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.
 
 Při zkoumání datové sady často chceme prozkoumat distribuce skupin hodnot. V této části najdete příklad toho, jak provést tuto analýzu pro kabiny a ovladače.
 
-**Ukázkový \_ Počet cest k podregistru \_ \_ \_ podle \_ Medallion \_ License. HQL** seskupuje datovou sadu tarifů v **Medallion** a **hack_license**a vrátí počty jednotlivých kombinací. Tady jsou jeho obsah:
+**Ukázkový \_ Počet cest k podregistru \_ \_ \_ podle \_ Medallion \_ License. HQL** seskupuje datovou sadu tarifů v **Medallion** a **hack_license** a vrátí počty jednotlivých kombinací. Tady jsou jeho obsah:
 
 ```hiveql
 SELECT medallion, hack_license, COUNT(*) as trip_count
@@ -575,7 +575,7 @@ hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
 > 
 > 
 
-V případě problému s více třídami, který je popsaný v části [příklady úkolů předpovědi](hive-walkthrough.md#mltasks) , se tato datová sada také přímo zaplní do přirozené klasifikace pro předpověď množství předaných tipů. K definování rozsahů tipů v dotazu můžeme použít přihrádky. Chcete-li získat distribuce tříd pro různé rozsahy tipů, použijte soubor ** \_ \_ \_ \_ . HQL s ukázkovým koncem podregistru** . Tady je jeho obsah.
+V případě problému s více třídami, který je popsaný v části [příklady úkolů předpovědi](hive-walkthrough.md#mltasks) , se tato datová sada také přímo zaplní do přirozené klasifikace pro předpověď množství předaných tipů. K definování rozsahů tipů v dotazu můžeme použít přihrádky. Chcete-li získat distribuce tříd pro různé rozsahy tipů, použijte soubor **\_ \_ \_ \_ . HQL s ukázkovým koncem podregistru** . Tady je jeho obsah.
 
 ```hiveql
 SELECT tip_class, COUNT(*) AS tip_freq
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-Výsledky dotazu jsou zapisovány do devíti objektů blob Azure (**queryoutputdir/000000 \_ 0** do  **queryoutputdir/000008 \_ 0**) ve výchozím kontejneru clusteru Hadoop.
+Výsledky dotazu jsou zapisovány do devíti objektů blob Azure ( **queryoutputdir/000000 \_ 0** do  **queryoutputdir/000008 \_ 0** ) ve výchozím kontejneru clusteru Hadoop.
 
 Chcete-li zobrazit velikost jednotlivých objektů blob, spusťte následující příkaz na příkazovém řádku adresáře podregistr:
 
@@ -647,7 +647,7 @@ Chcete-li zobrazit velikost jednotlivých objektů blob, spusťte následující
 hdfs dfs -ls wasb:///queryoutputdir
 ```
 
-Pokud chcete zobrazit obsah daného souboru, řekněme, že **000000 \_ 0**, použijte příkaz Hadoop `copyToLocal` .
+Pokud chcete zobrazit obsah daného souboru, řekněme, že **000000 \_ 0** , použijte příkaz Hadoop `copyToLocal` .
 
 ```hiveql
 hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
@@ -669,7 +669,7 @@ Klíčovou výhodou toho, aby se tato data nacházela v objektu blob Azure, je t
 Po fázi analýzy průzkumného testování teď jsme připraveni k vyvzorkování dat pro vytváření modelů v Machine Learning. V této části ukážeme, jak používat dotaz na podmnožinu dat. Machine Learning pak k němu přistupuje z modulu [Import dat][import-data] .
 
 ### <a name="down-sampling-the-data"></a>Vypnutí vzorkování dat
-Tento postup obsahuje dva kroky. Nejdřív se připojte k tabulkám **nyctaxidb. Trip** a **nyctaxidb. tarif** na třech klíčích, které jsou přítomné ve všech záznamech: **Medallion**, oprávnění k **napadení \_ **a **data a \_ času vyzvednutí**. Pak vygenerujeme popisek binární **klasifikace, nezobrazený a popisek**klasifikace s více třídami, ** \_ Třída Tip**.
+Tento postup obsahuje dva kroky. Nejdřív se připojte k tabulkám **nyctaxidb. Trip** a **nyctaxidb. tarif** na třech klíčích, které jsou přítomné ve všech záznamech: **Medallion** , oprávnění k **napadení \_** a **data a \_ času vyzvednutí**. Pak vygenerujeme popisek binární **klasifikace, nezobrazený a popisek** klasifikace s více třídami, **\_ Třída Tip**.
 
 Aby bylo možné používat data z rozevíracího seznamu přímo z modulu [Import dat][import-data] v Machine Learning, uložte výsledky předchozího dotazu do interní tabulky podregistru. V následujícím příkladu vytvoříme interní tabulku podregistru a naplníme její obsah s připojenými a postupnými ukázkovými daty.
 
@@ -813,24 +813,24 @@ Chcete-li spustit tento dotaz z adresáře podregistr:
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-Teď máme interní tabulku, **nyctaxidb.nyctaxi_downsampled_dataset**, ke které se dá dostat pomocí modulu [Import dat][import-data] z Machine Learning. Kromě toho můžeme použít tuto datovou sadu pro vytváření Machine Learningch modelů.  
+Teď máme interní tabulku, **nyctaxidb.nyctaxi_downsampled_dataset** , ke které se dá dostat pomocí modulu [Import dat][import-data] z Machine Learning. Kromě toho můžeme použít tuto datovou sadu pro vytváření Machine Learningch modelů.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>Použití modulu import dat v Machine Learning k získání přístupu k datům, která mají nižší vzorek
 K vydávání dotazů na podregistr v modulu Machine Learning [importu dat][import-data] potřebujete přístup k pracovnímu prostoru Machine Learning. Potřebujete také přístup k přihlašovacím údajům ke clusteru a k přidruženému účtu úložiště.
 
 Zde jsou některé podrobnosti o modulu [Import dat][import-data] a parametry, které je potřeba zadat:
 
-**Identifikátor URI serveru HCatalog**: Pokud je název clusteru **abc123**, pak použijte: https: \/ /abc123.azurehdinsight.NET.
+**Identifikátor URI serveru HCatalog** : Pokud je název clusteru **abc123** , pak použijte: https: \/ /abc123.azurehdinsight.NET.
 
-**Název uživatelského účtu Hadoop**: uživatelské jméno zvolené pro cluster (nikoli uživatelské jméno vzdáleného přístupu).
+**Název uživatelského účtu Hadoop** : uživatelské jméno zvolené pro cluster (nikoli uživatelské jméno vzdáleného přístupu).
 
-**Heslo uživatelského účtu Hadoop**: heslo zvolené pro cluster (nikoli heslo vzdáleného přístupu).
+**Heslo uživatelského účtu Hadoop** : heslo zvolené pro cluster (nikoli heslo vzdáleného přístupu).
 
-**Umístění výstupních dat**: zvolené pro Azure.
+**Umístění výstupních dat** : zvolené pro Azure.
 
-**Azure Storage název účtu**: název výchozího účtu úložiště přidruženého ke clusteru.
+**Azure Storage název účtu** : název výchozího účtu úložiště přidruženého ke clusteru.
 
-**Název kontejneru Azure**: výchozí název kontejneru pro cluster, který je obvykle stejný jako název clusteru. Pro cluster s názvem **abc123**je název abc123.
+**Název kontejneru Azure** : výchozí název kontejneru pro cluster, který je obvykle stejný jako název clusteru. Pro cluster s názvem **abc123** je název abc123.
 
 > [!IMPORTANT]
 > Každá tabulka, kterou chceme použít k dotazování pomocí modulu [Import dat][import-data] v Machine Learning, musí být interní tabulkou.
@@ -858,11 +858,11 @@ Datovou sadu teď můžete použít jako výchozí bod pro vytváření Machine 
 ### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>Modely sestavení v Machine Learning
 Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learning](https://studio.azureml.net). Data jsou připravená na použití při řešení problémů s předpovědí zjištěných dříve:
 
-- **Binární klasifikace**: pro předpověď, zda byl pro cestu zaplacen Tip.
+- **Binární klasifikace** : pro předpověď, zda byl pro cestu zaplacen Tip.
 
   **Použil se učí:** Logistická regrese dvou tříd
 
-  a. Pro tento problém je popisek cíl (nebo třída) na stejném **řádku.** Původní datová sada v ukázce má několik sloupců, které jsou nevrácenými cíli pro tento experiment klasifikace. Konkrétně ** \_ Třída Tip**, ** \_ hodnota Tip**a **Celková \_ Částka** odhalují informace o cílovém popisku, který není k dispozici v době testování. Tyto sloupce odebereme z úvahy pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
+  a. Pro tento problém je popisek cíl (nebo třída) na stejném **řádku.** Původní datová sada v ukázce má několik sloupců, které jsou nevrácenými cíli pro tento experiment klasifikace. Konkrétně **\_ Třída Tip** , **\_ hodnota Tip** a **Celková \_ Částka** odhalují informace o cílovém popisku, který není k dispozici v době testování. Tyto sloupce odebereme z úvahy pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
 
   Následující diagram znázorňuje náš experiment, který předpovídá, zda byl pro danou cestu zaplacen Tip:
 
@@ -878,11 +878,11 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
 
   ![Graf hodnoty AUC](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Třídy s více třídami**: pro předpověď rozsahu částek v rámci této cesty, které jsou vyplaceny pro danou cestu, pomocí dříve definovaných tříd.
+- **Třídy s více třídami** : pro předpověď rozsahu částek v rámci této cesty, které jsou vyplaceny pro danou cestu, pomocí dříve definovaných tříd.
 
   **Použil se učí:** Mikrotřída logistické regrese
 
-  a. Pro tento problém je naším cílem (nebo třídou) popisek ** \_ Třída**, která může mít jednu z pěti hodnot (0, 1, 2, 3, 4). Stejně jako v případě binárního klasifikačního případu máme pro tento experiment několik sloupců, které jsou nevrácenými cíli. Konkrétně množství informací o cílovém **popisku, který**není k ** \_ ** dispozici v době testování. ** \_ ** Tyto sloupce odebereme pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
+  a. Pro tento problém je naším cílem (nebo třídou) popisek **\_ Třída** , která může mít jednu z pěti hodnot (0, 1, 2, 3, 4). Stejně jako v případě binárního klasifikačního případu máme pro tento experiment několik sloupců, které jsou nevrácenými cíli. Konkrétně množství informací o cílovém **popisku, který** není k **\_** dispozici v době testování. **\_** Tyto sloupce odebereme pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
 
   Následující diagram znázorňuje experiment, ve kterém je možné předpovědět, který z nich je pravděpodobný. Tyto přihrádky jsou: Class 0: Tip = $0, třída 1: Tip > $0 a Tip <= $5, třída 2: Tip > $5 a Tip <= $10, třída 3: Tip > $10 a Tip <= $20 a třída 4: Tip > $20.
 
@@ -898,11 +898,11 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
 
   I když je třída přesností na předaných třídách dobrá, model není dobrým úkolem "učení" na třídách rarer.
 
-- **Regresní úloha**: pro předpověď množství tipu placeného pro cestu.
+- **Regresní úloha** : pro předpověď množství tipu placeného pro cestu.
 
   **Použil se učí:** Zesílený rozhodovací strom
 
-  a. Pro tento problém je popisek cíl (nebo třída) ** \_ hodnota špičky**. Cílové nevracení v tomto případě jsou: **šikmé**, ** \_ Třída Tip**a **Celková \_ Částka**. Všechny tyto proměnné odhalují informace o velikosti tipu, která je obvykle k dispozici v době testování. Tyto sloupce odebereme pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
+  a. Pro tento problém je popisek cíl (nebo třída) **\_ hodnota špičky**. Cílové nevracení v tomto případě jsou: **šikmé** , **\_ Třída Tip** a **Celková \_ Částka**. Všechny tyto proměnné odhalují informace o velikosti tipu, která je obvykle k dispozici v době testování. Tyto sloupce odebereme pomocí modulu [Výběr sloupců v datové sadě][select-columns] .
 
   Následující diagram znázorňuje experiment pro předpověď množství daného tipu:
 
@@ -922,7 +922,7 @@ Nyní můžete přejít k sestavení modelu a nasazení modelu v [Machine Learni
 ## <a name="license-information"></a>Informace o licenci
 Tento ukázkový návod a jeho doprovodné skripty sdílí Microsoft v rámci licence MIT. Další informace najdete v souboru **LICENSE.txt** v adresáři ukázkového kódu na GitHubu.
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 •    [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
 •    [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 •    [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
@@ -935,5 +935,5 @@ Tento ukázkový návod a jeho doprovodné skripty sdílí Microsoft v rámci li
 [15]: ./media/hive-walkthrough/amlreader.png
 
 <!-- Module References -->
-[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[select-columns]: /azure/machine-learning/studio-module-reference/select-columns-in-dataset
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

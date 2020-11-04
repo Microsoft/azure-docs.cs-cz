@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab3f3765a0e988c7e93cca5782b47b3f2d32aef4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897156"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312545"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning 
 
-V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning pracovní prostory**](concept-workspace.md) pro [Azure Machine Learning](overview-what-is-azure-ml.md)pomocí Azure Portal nebo [sady SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) .
+V tomto článku vytvoříte, zobrazíte a odstraníte [**Azure Machine Learning pracovní prostory**](concept-workspace.md) pro [Azure Machine Learning](overview-what-is-azure-ml.md)pomocí Azure Portal nebo [sady SDK pro Python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) .
 
 Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete také vytvořit a odstranit pracovní prostory [pomocí rozhraní](reference-azure-machine-learning-cli.md)příkazového řádku nebo [pomocí rozšíření vs Code](tutorial-setup-vscode-extension.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
-* Pokud používáte sadu SDK Python, [nainstalujte sadu SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Pokud používáte sadu SDK Python, [nainstalujte sadu SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -46,7 +46,7 @@ Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete tak�
     ```
     Nastavte `create_resource_group` na hodnotu false, pokud máte existující skupinu prostředků Azure, kterou chcete použít pro pracovní prostor.
 
-* <a name="create-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity** .
+* <a name="create-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity**.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -62,7 +62,7 @@ Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete tak�
                 )
     ```
 
-* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)** . Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
+* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)**. Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -78,7 +78,7 @@ Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete tak�
                 )
     ```
 
-* **Použijte existující prostředky Azure** .  Můžete také vytvořit pracovní prostor, který používá existující prostředky Azure s formátem ID prostředku Azure. V Azure Portal nebo v sadě SDK najdete konkrétní ID prostředků Azure. Tento příklad předpokládá, že skupina prostředků, účet úložiště, Trezor klíčů, App Insights a Registry kontejneru již existují.
+* **Použijte existující prostředky Azure**.  Můžete také vytvořit pracovní prostor, který používá existující prostředky Azure s formátem ID prostředku Azure. V Azure Portal nebo v sadě SDK najdete konkrétní ID prostředků Azure. Tento příklad předpokládá, že skupina prostředků, účet úložiště, Trezor klíčů, App Insights a Registry kontejneru již existují.
 
    ```python
    import os
@@ -105,7 +105,7 @@ Jak se vaše potřeby mění nebo jsou požadavky na automatizaci, můžete tak�
                              exist_ok=False)
    ```
 
-Další informace najdete v tématu [referenční informace k sadě SDK pracovního prostoru](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true).
+Další informace najdete v tématu [referenční informace k sadě SDK pracovního prostoru](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py).
 
 Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy a](how-to-setup-authentication.md)také [ověřování v](https://aka.ms/aml-notebook-auth) poznámkovém bloku Azure Machine Learning.
 
@@ -113,13 +113,13 @@ Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nast
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí přihlašovacích údajů předplatného Azure. 
 
-1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek** .
+1. V levém horním rohu Azure Portal vyberte **+ vytvořit prostředek**.
 
       ![Vytvoření nového prostředku](./media/how-to-manage-workspace/create-workspace.gif)
 
 1. K vyhledání **Machine Learning** použijte panel hledání.
 
-1. Vyberte **Machine Learning** .
+1. Vyberte **Machine Learning**.
 
 1. V podokně **Machine Learning** vyberte **vytvořit** a začněte.
 
@@ -127,23 +127,23 @@ Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nast
 
    Pole|Popis 
    ---|---
-   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS** . Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli. V názvu pracovního prostoru se nerozlišují malá a velká písmena.
+   Název pracovního prostoru |Zadejte jedinečný název, který identifikuje váš pracovní prostor. V tomto příkladu používáme **docs-WS**. Názvy musí být v rámci skupiny prostředků jedinečné. Použijte název, který se dá snadno vyvolat a odlišit z pracovních prostorů vytvořených jinými uživateli. V názvu pracovního prostoru se nerozlišují malá a velká písmena.
    Předplatné |Vyberte předplatné Azure, které chcete použít.
-   Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML** . Chcete-li použít existující skupinu prostředků, potřebujete roli *Přispěvatel* nebo *vlastník* .  Další informace o přístupu najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
+   Skupina prostředků | Použijte stávající skupinu prostředků, kterou máte v předplatném, nebo zadejte název a vytvořte novou skupinu prostředků. Skupina prostředků obsahuje související prostředky pro řešení Azure. V tomto příkladu používáme **docs-AML**. Chcete-li použít existující skupinu prostředků, potřebujete roli *Přispěvatel* nebo *vlastník* .  Další informace o přístupu najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
    Oblast | Vyberte oblast Azure, která je nejblíže vašim uživatelům a datovým prostředkům k vytvoření pracovního prostoru.
 
     ![Konfigurace pracovního prostoru](./media/how-to-manage-workspace/create-workspace-form.png)
 
-1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit** . Volitelně můžete pomocí oddílů [sítě](#networking) a [Upřesnit](#advanced) nakonfigurovat další nastavení pracovního prostoru.
+1. Po dokončení konfigurace pracovního prostoru vyberte **zkontrolovat + vytvořit**. Volitelně můžete pomocí oddílů [sítě](#networking) a [Upřesnit](#advanced) nakonfigurovat další nastavení pracovního prostoru.
 
-1. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete s nastavením spokojeni, vyberte **vytvořit** .
+1. Zkontrolujte nastavení a proveďte další změny nebo opravy. Až budete s nastavením spokojeni, vyberte **vytvořit**.
 
    > [!Warning] 
    > Vytvoření pracovního prostoru v cloudu může trvat několik minut.
 
    Po dokončení procesu se zobrazí zpráva o úspěšném nasazení. 
  
- 1. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku** .
+ 1. Pokud chcete zobrazit nový pracovní prostor, vyberte **Přejít k prostředku**.
  
 ---
 
@@ -155,7 +155,7 @@ Pokud máte problémy s přístupem k předplatnému, přečtěte si téma [nast
 
 # <a name="python"></a>[Python](#tab/python)
 
-Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py&preserve-view=true) , která se dá použít s [pracovním prostorem. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) k vytvoření pracovního prostoru s privátním koncovým bodem. Tato třída vyžaduje existující virtuální síť.
+Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) , která se dá použít s [pracovním prostorem. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) k vytvoření pracovního prostoru s privátním koncovým bodem. Tato třída vyžaduje existující virtuální síť.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -165,7 +165,7 @@ Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig]
 
 1. Ve formuláři __Vytvoření privátního koncového bodu__ nastavte umístění, název a virtuální síť, které se mají použít. Pokud chcete použít koncový bod se zónou Privátní DNS, vyberte možnost __integrovat s privátní zónou DNS__ a vyberte zónu pomocí pole __privátní DNS zóna__ . Vyberte __OK__ a vytvořte koncový bod.   
 
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Výběr privátního koncového bodu":::   
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Vytvoření privátního koncového bodu":::   
 
 1. Po dokončení konfigurace sítě můžete vybrat možnost __zkontrolovat + vytvořit__ nebo přejít k volitelné __Rozšířené__ konfiguraci.
 
@@ -180,14 +180,14 @@ Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig]
 Při vytváření privátního koncového bodu se vytvoří nová zóna Privátní DNS s názvem __privatelink.API.AzureML.MS__ . Obsahuje odkaz na virtuální síť. Pokud vytvoříte více pracovních prostorů s privátními koncovými body ve stejné skupině prostředků, může být do zóny DNS přidána pouze virtuální síť pro první privátní koncový bod. Chcete-li přidat položky pro virtuální sítě používané dalšími koncovými body nebo soukromými koncovými body, použijte následující postup:
 
 1. V [Azure Portal](https://portal.azure.com)vyberte skupinu prostředků, která obsahuje pracovní prostor. Pak vyberte prostředek zóny Privátní DNS s názvem __privatelink.API.AzureML.MS__
-2. V __Nastavení__ vyberte __odkazy virtuální sítě__ .
-3. Vyberte __Přidat__ . Na stránce __Přidat virtuální síť__ zadejte jedinečný __název odkazu__ a potom vyberte __virtuální síť__ , kterou chcete přidat. Kliknutím na __tlačítko OK__ přidejte síťové propojení.
+2. V __Nastavení__ vyberte __odkazy virtuální sítě__.
+3. Vyberte __Add__ (Přidat). Na stránce __Přidat virtuální síť__ zadejte jedinečný __název odkazu__ a potom vyberte __virtuální síť__ , kterou chcete přidat. Kliknutím na __tlačítko OK__ přidejte síťové propojení.
 
-Další informace najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](/azure/private-link/private-endpoint-dns).
+Další informace najdete v tématu [Konfigurace DNS privátního koncového bodu Azure](../private-link/private-endpoint-dns.md).
 
 ### <a name="vulnerability-scanning"></a>Kontrola ohrožení zabezpečení
 
-Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste Azure Security Center, abyste mohli kontrolovat prostředky a dodržovat doporučení. Další informace najdete v tématu  [Azure Container Registry prověřování imagí Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration) a [Azure Kubernetes Services integration with Security Center](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration).
+Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste Azure Security Center, abyste mohli kontrolovat prostředky a dodržovat doporučení. Další informace najdete v tématu  [Azure Container Registry prověřování imagí Security Center](../security-center/defender-for-container-registries-introduction.md) a [Azure Kubernetes Services integration with Security Center](../security-center/defender-for-kubernetes-introduction.md).
 
 ### <a name="advanced"></a>Upřesnit
 
@@ -210,7 +210,7 @@ K poskytnutí vlastního klíče použijte následující postup:
 > Před provedením tohoto postupu je třeba nejprve provést následující akce:   
 >
 > 1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.  
-> 1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:
+> 1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](../cosmos-db/how-to-setup-cmk.md) na:
 >     * Registrace poskytovatele Azure Cosmos DB
 >     * Vytvoření a konfigurace Azure Key Vault
 >     * Vygenerovat klíč
@@ -238,13 +238,13 @@ from azureml.core import Workspace
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Vyberte __klíče spravované zákazníkem__ a pak vyberte __možnost kliknutím vyberte klíč__ .
+1. Vyberte __klíče spravované zákazníkem__ a pak vyberte __možnost kliknutím vyberte klíč__.
 
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Výběr privátního koncového bodu":::
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Klíče spravované zákazníkem":::
 
 1. Na Azure Key Vault ve formuláři __Vyberte klíč__ vyberte existující Azure Key Vault, klíč, který obsahuje, a verzi klíče. Tento klíč slouží k šifrování dat uložených v Azure Cosmos DB. Nakonec k použití tohoto klíče použijte tlačítko __Vybrat__ .
 
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Výběr privátního koncového bodu":::
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Vyberte klíč.":::
 
 ---
 
@@ -280,7 +280,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-* <a name="connect-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity** .
+* <a name="connect-multi-tenant"></a>**Více tenantů.**  Pokud máte více účtů, přidejte ID tenanta Azure Active Directory, který chcete použít.  Vyhledejte ID tenanta z [Azure Portal](https://portal.azure.com) v části **Azure Active Directory, externí identity**.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -290,7 +290,7 @@ ws = Workspace.from_config()
     ws = Workspace.from_config(auth=interactive_auth)
     ```
 
-* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)** . Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
+* **[Svrchovaný Cloud](reference-machine-learning-cloud-parity.md)**. Pokud pracujete v rámci svrchovaného cloudu, budete potřebovat další kód pro ověření v Azure.
 
     ```python
     from azureml.core.authentication import InteractiveLoginAuthentication
@@ -318,11 +318,11 @@ Workspace.list('<subscription-id>')
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Do pole nejvyšší hledání zadejte **Machine Learning** .  
+1. Do pole nejvyšší hledání zadejte **Machine Learning**.  
 
-1. Vyberte **Machine Learning** .
+1. Vyberte **Machine Learning**.
 
    ![Vyhledat Azure Machine Learning pracovní prostor](./media/how-to-manage-workspace/find-workspaces.png)
 
@@ -351,7 +351,7 @@ Výchozí akcí není odstranit prostředky přidružené k pracovnímu prostoru
 
 V [Azure Portal](https://portal.azure.com/)v horní části pracovního prostoru, který chcete odstranit, vyberte **Odstranit**  .
 
-:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Výběr privátního koncového bodu":::
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Odstranit pracovní prostor":::
 
 ---
 

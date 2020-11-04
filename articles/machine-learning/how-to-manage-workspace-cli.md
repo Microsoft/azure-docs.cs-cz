@@ -1,7 +1,7 @@
 ---
 title: Vytváření pracovních prostorů pomocí Azure CLI
 titleSuffix: Azure Machine Learning
-description: Naučte se používat rozhraní příkazového řádku Azure a vytvořit nový pracovní prostor Azure Machine Learning.
+description: Naučte se používat rozšíření Azure CLI pro Machine Learning k vytvoření nového pracovního prostoru Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 42f47ad61c0d90752928a8273872b734574e02c3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740799"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312480"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak vytvořit pracovní prostor Azure Machine Lear
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí** , potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí** , potřebujete [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
     Použijete-li [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), k rozhraní příkazového řádku se dostanete v prohlížeči a v cloudu.
 
@@ -45,7 +45,7 @@ Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, ud
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="install-the-machine-learning-extension"></a>Instalace rozšíření Machine Learning
 
@@ -103,7 +103,7 @@ Odpověď z tohoto příkazu je podobná následujícímu kódu JSON:
 }
 ```
 
-Další informace o práci se skupinami prostředků najdete v tématu [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true).
+Další informace o práci se skupinami prostředků najdete v tématu [AZ Group](//cli/azure/group?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="automatically-create-required-resources"></a>Automaticky vytvářet požadované prostředky
 
@@ -163,7 +163,7 @@ Místo používání klíče spravovaného společností Microsoft můžete pou�
 Před použitím `--cmk-keyvault` parametrů a je `--resource-cmk-uri` třeba nejprve provést následující akce:
 
 1. Autorizaci __aplikace Machine Learning__ (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
-1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](/azure/cosmos-db/how-to-setup-cmk) na:
+1. Postupujte podle kroků v části [konfigurace klíčů spravovaných zákazníkem](../cosmos-db/how-to-setup-cmk.md) na:
     * Registrace poskytovatele Azure Cosmos DB
     * Vytvoření a konfigurace Azure Key Vault
     * Vygenerovat klíč
@@ -226,7 +226,7 @@ Pokud chcete vytvořit pracovní prostor, který používá stávající prostř
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > V registru kontejneru musí být povolen [účet správce](/azure/container-registry/container-registry-authentication#admin-account) , aby jej bylo možné použít s pracovním prostorem Azure Machine Learning.
+    > V registru kontejneru musí být povolen [účet správce](../container-registry/container-registry-authentication.md#admin-account) , aby jej bylo možné použít s pracovním prostorem Azure Machine Learning.
 
 Jakmile budete mít ID prostředků, které chcete používat s pracovním prostorem, použijte základní `az workspace create -w <workspace-name> -g <resource-group-name>` příkaz a přidejte parametry a ID pro existující prostředky. Například následující příkaz vytvoří pracovní prostor, který používá existující registr kontejnerů:
 
@@ -282,7 +282,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 ]
 ```
 
-Další informace najdete v dokumentaci [AZ ml Workspace list](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-list) .
+Další informace najdete v dokumentaci [AZ ml Workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) .
 
 ## <a name="get-workspace-information"></a>Získat informace o pracovním prostoru
 
@@ -315,7 +315,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Další informace najdete v tématu o tom, jak [zobrazit dokumentaci AZ ml Workspace](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-show) .
+Další informace najdete v tématu o tom, jak [zobrazit dokumentaci AZ ml Workspace](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) .
 
 ## <a name="update-a-workspace"></a>Aktualizovat pracovní prostor
 
@@ -348,7 +348,7 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Další informace najdete v dokumentaci [AZ ml Workspace Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-update) .
+Další informace najdete v dokumentaci [AZ ml Workspace Update](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) .
 
 ## <a name="share-a-workspace-with-another-user"></a>Sdílení pracovního prostoru s jiným uživatelem
 
@@ -360,7 +360,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Další informace o řízení přístupu na základě role Azure (Azure RBAC) s Azure Machine Learning najdete v tématu [Správa uživatelů a rolí](how-to-assign-roles.md).
 
-Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) .
+Další informace najdete v dokumentaci ke [sdílení pracovního prostoru AZ ml](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) .
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synchronizace klíčů pro závislé prostředky
 
@@ -372,7 +372,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Další informace o změně klíčů najdete v tématu [obnovení přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
 
-Další informace najdete v dokumentaci [AZ ml pracovní prostor Sync-Keys](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
+Další informace najdete v dokumentaci [AZ ml pracovní prostor Sync-Keys](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 
@@ -391,7 +391,7 @@ Můžete také odstranit skupinu prostředků, která odstraní pracovní prosto
 az group delete -g <resource-group-name>
 ```
 
-Další informace najdete v tématu [AZ ml Workspace Delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) Document.
+Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -412,4 +412,4 @@ Azure Machine Learning pracovní prostor používá pro některé operace Azure 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) .
+Další informace o rozšíření Azure CLI pro Machine Learning najdete v dokumentaci [AZ ml](/cli/azure/ext/azure-cli-ml/ml?preserve-view=true&view=azure-cli-latest) .

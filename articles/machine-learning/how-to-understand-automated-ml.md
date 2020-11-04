@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2
-ms.openlocfilehash: d66c5001d94d0c2d28ae3c55b468fbaf45871c98
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311475"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
@@ -28,7 +28,7 @@ Například AutoML poskytuje různé grafy pro klasifikace a regresní modely.
 |---|---|
 |<li> [Konfuzní matice](#confusion-matrix) <li>[Přesnost – graf odvolání](#precision-recall-chart) <li> [Provozní charakteristiky přijímače (nebo ROC)](#roc) <li> [Zvednutí křivky](#lift-curve)<li> [Křivka zisků](#gains-curve)<li> [Graf kalibrace](#calibration-plot) | <li> [Předpověď oproti hodnotě true](#pvt) <li> [Histogram zbytků](#histo)|
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -41,7 +41,7 @@ Například AutoML poskytuje různé grafy pro klasifikace a regresní modely.
 
 Po dokončení automatizovaného experimentu machine learningu můžete v pracovním prostoru Machine Learning najít historii běhů prostřednictvím služby [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md). 
 
-V případě experimentů sady SDK můžete stejné výsledky zobrazit během spuštění, když použijete `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true).
+V případě experimentů sady SDK můžete stejné výsledky zobrazit během spuštění, když použijete `RunDetails` [widget Jupyter](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py).
 
 Následující kroky a animace ukazují, jak zobrazit historii spuštění a metriky výkonu a grafy konkrétního modelu v studiu.
 

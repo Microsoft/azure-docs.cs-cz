@@ -1,7 +1,7 @@
 ---
 title: Modely balíčků
 titleSuffix: Azure Machine Learning
-description: Zabalení modelu jako souboru Dockerfile
+description: Zabalit model. Modely lze zabalit jako image Docker, kterou si můžete stáhnout, nebo můžete vytvořit souboru Dockerfile a použít ji k sestavení image.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.date: 07/31/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: edaae4f4c06f038d12267e35a2c356af430e1555
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 299eb316b534ddc9d5eee934cc15eae841276038
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998816"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312640"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Jak zabalit registrovaný model pomocí Docker
 
 Tento článek ukazuje, jak zabalit registrovaný Azure Machine Learning model pomocí Docker.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento článek předpokládá, že jste už v pracovním prostoru machine learningu provedli školení a zaregistrovali model. Pokud se chcete dozvědět, jak naučit a registrovat model scikit-učení, [postupujte podle tohoto kurzu](how-to-train-scikit-learn.md).
 
@@ -54,7 +54,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Například: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

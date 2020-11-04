@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 27cf60f09a8c0f149aec16dd81da0e7ce0707a15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fc9f082a012922a8595c2726764e84be038a26
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302090"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312231"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 
@@ -28,11 +28,11 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
-- [Sada Azure Machine Learning SDK pro Python je nainstalována](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). Tato sada SDK obsahuje balíček [AzureML-DataSets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py&preserve-view=true) .
+- [Sada Azure Machine Learning SDK pro Python je nainstalována](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py). Tato sada SDK obsahuje balíček [AzureML-DataSets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) .
     
 - [Pracovní prostor Azure Machine Learning](concept-workspace.md). Načtěte existující kód spuštěním následujícího kódu nebo [vytvořte nový pracovní prostor](how-to-manage-workspace.md).
 
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>Načíst datovou sadu podle názvu
 
-Ve výchozím nastavení metoda [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
+Ve výchozím nastavení metoda [get_by_name ()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) `Dataset` třídy vrací nejnovější verzi datové sady registrované v pracovním prostoru. 
 
 Následující kód Získá verzi 1 `titanic_ds` datové sady.
 
@@ -158,7 +158,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím `Run` objektu experiment.
 
-Následující kód používá [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
+Následující kód používá [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
 
 ```Python
 # get input datasets

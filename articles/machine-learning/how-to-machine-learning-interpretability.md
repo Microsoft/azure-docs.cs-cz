@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: d063af3ba3b9261100af5e48a2c507a80ac76d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f98e18abb8ba06ea632ee9c63c1a726879e825d2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322355"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311517"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Interpretace modelu v Azure Machine Learning (Náhled)
 
@@ -39,7 +39,7 @@ Povolení funkce vysvětlení modelu strojového učení je důležité během d
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Třídy interpretace jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true))
+Třídy interpretace jsou zpřístupněny prostřednictvím následujícího balíčku sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py))
 
 * `azureml.interpret`obsahuje funkce podporované Microsoftem.
 
@@ -53,7 +53,7 @@ Pomocí tříd a metod v sadě SDK můžete:
 + Pomocí interaktivního řídicího panelu vizualizace můžete vyhledat vzory v datech a vysvětlení v době školení.
 
 
-Ve strojovém učení jsou **funkcemi** datová pole, která slouží k předpovědi cílového datového bodu. Například pro předpověď úvěrového rizika je možné použít datová pole pro stáří, velikost účtu a stáří účtu. V tomto případě jsou **funkce**stáří, velikost účtu a stáří účtu. Důležitost funkcí vysvětluje, jak každé datové pole ovlivnilo předpovědi modelu. Například věk může být v předpovědi silně využíván, zatímco velikost účtu a stáří neovlivňují hodnoty předpovědi významně. Tento proces umožňuje datovým vědcům vysvětlit výsledné předpovědi, aby zúčastněné strany měly přehled o tom, jaké funkce jsou v modelu nejdůležitější.
+Ve strojovém učení jsou **funkcemi** datová pole, která slouží k předpovědi cílového datového bodu. Například pro předpověď úvěrového rizika je možné použít datová pole pro stáří, velikost účtu a stáří účtu. V tomto případě jsou **funkce** stáří, velikost účtu a stáří účtu. Důležitost funkcí vysvětluje, jak každé datové pole ovlivnilo předpovědi modelu. Například věk může být v předpovědi silně využíván, zatímco velikost účtu a stáří neovlivňují hodnoty předpovědi významně. Tento proces umožňuje datovým vědcům vysvětlit výsledné předpovědi, aby zúčastněné strany měly přehled o tom, jaké funkce jsou v modelu nejdůležitější.
 
 Přečtěte si o podporovaných technikách interpretace, podporovaných modelech strojového učení a podporovaných prostředích pro spuštění.
 
@@ -62,11 +62,11 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
  `azureml-interpret` používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
 
-|Technika interpretace|Description|Typ|
+|Technika interpretace|Popis|Typ|
 |--|--|--------------------|
 |SHAP stromové struktury| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
 |SHAP hluboký vysvětlující| Na základě vysvětlení z SHAP je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|
-|SHAP lineární vysvětlující| Lineární SHAPý vysvětlení vypočítá SHAP hodnoty pro **lineární model**, volitelně také účetní pro korelace mezi funkcemi.|Specifické pro model|
+|SHAP lineární vysvětlující| Lineární SHAPý vysvětlení vypočítá SHAP hodnoty pro **lineární model** , volitelně také účetní pro korelace mezi funkcemi.|Specifické pro model|
 |Vysvětlující SHAP jádra| SHAP vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro **libovolný model**.|Model – nezávislá|
 |Napodobit vysvětlení (globální náhrada)| Nevhodnější je vycházet z nápadu pro školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) pro napodobování Blackbox modelů. Globální náhradní model je vnitřně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi **model černého pole** . Vědečtí data mohou interpretovat náhradní model, aby vykreslili závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).|Model – nezávislá|
 |Vysvětlení důležitosti funkce permutace (PFI)| Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce. PFI může vysvětlit celkové chování **jakéhokoli podkladového modelu** , ale nevysvětluje jednotlivé předpovědi. |Model – nezávislá|
