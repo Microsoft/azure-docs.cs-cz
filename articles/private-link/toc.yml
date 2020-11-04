@@ -39,6 +39,8 @@
           href: tutorial-private-endpoint-sql-portal.md
         - name: Připojení k serveru SQL – PowerShell
           href: tutorial-private-endpoint-sql-powershell.md
+        - name: Připojení k serveru SQL – Azure CLI
+          href: tutorial-private-endpoint-sql-cli.md
 - name: Koncepty
   items:
     - name: Privátní koncový bod

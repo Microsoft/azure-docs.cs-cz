@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458328"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316181"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Kontrolní seznam pro výkon a škálovatelnost pro úložiště tabulek
 
@@ -153,7 +153,7 @@ Před otevřením připojení nastavte limit připojení.
 
 Další programovací jazyky najdete v dokumentaci k příslušnému jazyku, kde zjistíte, jak nastavit limit připojení.  
 
-Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+Další informace najdete v blogovém příspěvku [webové služby: souběžná připojení](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>Zvýšení minimálního počtu vláken
 
@@ -171,7 +171,7 @@ I když paralelismus může být ideální pro výkon, buďte opatrní v použí
 
 ## <a name="client-libraries-and-tools"></a>Klientské knihovny a nástroje
 
-Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu. Další informace najdete v [dokumentaci Azure Storage reference](/azure/storage/#reference).
+Nejlepšího výkonu dosáhnete, když budete vždycky používat nejnovější klientské knihovny a nástroje poskytované Microsoftem. Azure Storage klientské knihovny jsou k dispozici pro nejrůznější jazyky. Azure Storage podporuje taky PowerShell a Azure CLI. Microsoft aktivně vyvíjí tyto klientské knihovny a nástroje s ohledem na výkon, udržuje je aktuální s nejnovějšími verzemi služby a zajišťuje interní zpracování mnoha osvědčených postupů výkonu.
 
 ## <a name="handle-service-errors"></a>Zpracování chyb služby
 
@@ -197,7 +197,7 @@ V této části jsou uvedena několik nastavení rychlých konfigurací, která 
 
 Počínaje službou Storage verze 2013-08-15 podporuje Table service pro přenos dat tabulky místo formátu AtomPub založeného na jazyce XML použití JSON. Použití formátu JSON může snížit velikost datových vytížení až o 75% a může významně zlepšit výkon aplikace.
 
-Další informace najdete v [tabulkách post Microsoft Azure: Úvod](https://docs.microsoft.com/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) do formátu JSON a [datové části pro operace služby Table Service](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Další informace najdete v [tabulkách post Microsoft Azure: Úvod](/archive/blogs/windowsazurestorage/windows-azure-tables-introducing-json) do formátu JSON a [datové části pro operace služby Table Service](/rest/api/storageservices/Payload-Format-for-Table-Service-Operations).
 
 ### <a name="disable-nagle"></a>Zakázat Nagle
 
@@ -243,7 +243,7 @@ Tato část popisuje osvědčené postupy pro dotazování na Table service.
 
 Existuje několik způsobů, jak zadat rozsah entit pro dotaz. Následující seznam popisuje jednotlivé možnosti pro obor dotazů.
 
-- **Dotazy na body:**– dotaz na bod načte přesně jednu entitu zadáním klíče oddílu a klíče řádku entity, která se má načíst. Tyto dotazy jsou efektivní a měli byste je používat všude, kde je to možné.
+- **Dotazy na body:** – dotaz na bod načte přesně jednu entitu zadáním klíče oddílu a klíče řádku entity, která se má načíst. Tyto dotazy jsou efektivní a měli byste je používat všude, kde je to možné.
 - **Dotazy na oddíly:** Dotaz na oddíl je dotaz, který načte sadu dat, která sdílí společný klíč oddílu. Obvykle dotaz určuje rozsah hodnot klíčů řádků nebo rozsah hodnot pro některé vlastnosti entity kromě klíče oddílu. Tyto dotazy jsou méně efektivní než dotazy na body a měly by se používat jenom zřídka.
 - **Dotazy tabulky:** Dotaz na tabulku je dotaz, který načte sadu entit, které nesdílejí společný klíč oddílu. Tyto dotazy nejsou efektivní a je třeba se jim vyhnout, pokud je to možné.
 
@@ -273,10 +273,10 @@ Transakce Batch se označují jako transakce skupin entit v Azure Storage. Všec
 
 #### <a name="upsert"></a>Upsert
 
-Pokud je to možné, používejte **Upsert** operace tabulky. Existují dva typy **Upsert**, z nichž obě můžou být efektivnější než tradiční operace **vkládání** a **aktualizace** :  
+Pokud je to možné, používejte **Upsert** operace tabulky. Existují dva typy **Upsert** , z nichž obě můžou být efektivnější než tradiční operace **vkládání** a **aktualizace** :  
 
-- **InsertOrMerge**: tuto operaci použijte, pokud chcete nahrát podmnožinu vlastností entity, ale nevíte, zda entita již existuje. Pokud entita existuje, toto volání aktualizuje vlastnosti zahrnuté v operaci **Upsert** a ponechá všechny existující vlastnosti tak, jak jsou, pokud entita neexistuje, vloží novou entitu. To se podobá použití projekce v dotazu, v tom, že potřebujete pouze nahrát vlastnosti, které se mění.
-- **InsertOrReplace**: tuto operaci použijte, chcete-li nahrát zcela novou entitu, ale nejste si jisti, zda již existuje. Tuto operaci použijte, pokud víte, že nově nahraná entita je zcela správná, protože zcela přepíše starou entitu. Například chcete aktualizovat entitu, která uchovává aktuální umístění uživatele bez ohledu na to, zda aplikace dříve uložila data o umístění pro daného uživatele. nová entita umístění je dokončena a z žádné předchozí entity nepotřebujete žádné informace.
+- **InsertOrMerge** : tuto operaci použijte, pokud chcete nahrát podmnožinu vlastností entity, ale nevíte, zda entita již existuje. Pokud entita existuje, toto volání aktualizuje vlastnosti zahrnuté v operaci **Upsert** a ponechá všechny existující vlastnosti tak, jak jsou, pokud entita neexistuje, vloží novou entitu. To se podobá použití projekce v dotazu, v tom, že potřebujete pouze nahrát vlastnosti, které se mění.
+- **InsertOrReplace** : tuto operaci použijte, chcete-li nahrát zcela novou entitu, ale nejste si jisti, zda již existuje. Tuto operaci použijte, pokud víte, že nově nahraná entita je zcela správná, protože zcela přepíše starou entitu. Například chcete aktualizovat entitu, která uchovává aktuální umístění uživatele bez ohledu na to, zda aplikace dříve uložila data o umístění pro daného uživatele. nová entita umístění je dokončena a z žádné předchozí entity nepotřebujete žádné informace.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Ukládání datových řad do jedné entity
 

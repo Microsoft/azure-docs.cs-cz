@@ -116,6 +116,8 @@
           items:
             - name: Zálohování a obnovení
               href: backup-restore-postgresql-hyperscale.md
+            - name: Změna portu PostgreSQL
+              href: change-postgresql-port.md
             - name: Konfigurace a škálování
               items:
                 - name: Zobrazení konfigurace

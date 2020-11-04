@@ -406,6 +406,8 @@
           href: backup-encryption.md
         - name: Šifrování s využitím klíčů spravovaných zákazníky
           href: encryption-at-rest-with-cmk.md
+        - name: Protokol TLS (Transport Layer Security)
+          href: transport-layer-security.md
         - name: Mechanismy zabezpečení služby Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

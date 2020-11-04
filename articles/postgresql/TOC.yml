@@ -23,6 +23,9 @@
         - name: Migrace s minimem výpadků pomocí DMS
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+    - name: Zásady správy verzí
+      href: concepts-version-policy.md
+      displayName: 'version, postgresql'
 - name: Jeden server
   expanded: true
   items:
@@ -382,6 +385,8 @@
           items:
             - name: portál Azure
               href: howto-move-regions-portal.md
+        - name: Upgrady hlavní verze
+          href: how-to-upgrade-using-dump-and-restore.md
 - name: Flexibilní server (Preview)
   expanded: true
   items:

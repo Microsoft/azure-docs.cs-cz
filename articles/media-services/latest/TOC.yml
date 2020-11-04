@@ -437,5 +437,7 @@
       href: limits-quotas-constraints.md
     - name: Oblasti a cloudy Azure
       href: azure-clouds-regions.md
+    - name: Regionální kódové názvy a koncové body
+      href: azure-regions-code-names.md
     - name: Aktualizace dokumentace
       href: docs-release-notes.md

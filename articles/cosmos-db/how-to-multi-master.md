@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2c91b330f52733a91fbceb1dc9ca2309c0d10547
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100129"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317120"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurace zápisů ve více oblastech v aplikacích, které používají Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,6 +21,22 @@ Jakmile je účet vytvořený s povoleným více oblastmi zápisu, musíte ve sv
 
 > [!Note]
 > Účty Cosmos s počáteční konfigurací s jednou oblastí zápisu můžou být nakonfigurované na více oblastí zápisu s nulovým časem. Další informace najdete v tématu [Konfigurace oblastí s vícenásobným zápisem](how-to-manage-database-account.md#configure-multiple-write-regions) .
+
+## <a name="azure-portal"></a><a id="portal"></a> Azure Portal
+
+Pomocí následujících kroků povolte zápisy ve více oblastech z Azure Portal:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+1. Přejděte k účtu Azure Cosmos a v nabídce otevřete podokno **replikace dat globálně** .
+
+1. V možnosti **zápisy ve více oblastech** vyberte **Povolit**. Automaticky přidá existující oblasti do oblastí pro čtení a zápis.
+
+1. Můžete přidat další oblasti tak, že vyberete ikony na mapě nebo vyberete tlačítko **Přidat oblast** . Všechny oblasti, které přidáte, budou mít povolený čtení i zápis.
+
+1. Po aktualizaci seznamu oblast vyberte **Uložit** , aby se změny projevily.
+
+   :::image type="content" source="./media/how-to-multi-master/enable-multi-region-writes.png" alt-text="Snímek obrazovky umožňující zápis ve více oblastech pomocí Azure Portal" lightbox="./media/how-to-multi-master/enable-multi-region-writes.png":::
 
 ## <a name="net-sdk-v2"></a><a id="netv2"></a>Sada .NET SDK v2
 

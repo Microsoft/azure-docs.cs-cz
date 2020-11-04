@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee2280aba99606d9e31a0e565a67cd6202df3c2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333864"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317014"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 
@@ -36,14 +36,14 @@ S Azure Machine Learning monitory datových sad (Preview) můžete:
 
 K vytvoření monitorování se používá [datová sada Azure Machine Learning](how-to-create-register-datasets.md) . Datová sada musí zahrnovat sloupec časového razítka.
 
-Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Machine Learning Studiu.  K dispozici jsou další metriky a přehledy prostřednictvím prostředku [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) přidruženého k pracovnímu prostoru Azure Machine Learning.
+Metriky pro posun dat můžete zobrazit pomocí sady Python SDK nebo v Azure Machine Learning Studiu.  K dispozici jsou další metriky a přehledy prostřednictvím prostředku [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) přidruženého k pracovnímu prostoru Azure Machine Learning.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
-* [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která zahrnuje balíček AzureML-DataSet Sets.
+* [Nainstalovaná sada Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
 
 ## <a name="what-is-data-drift"></a>Co je posun dat?
@@ -73,7 +73,7 @@ Pomocí monitoru datových sad můžete:
 
 Algoritmus posunu dat poskytuje celkové množství změn v datech a uvádí, které funkce jsou zodpovědné za další šetření. Monitory datových sad vytvoří řadu dalších metrik pomocí profilování nových dat v `timeseries` datové sadě. 
 
-Vlastní upozorňování je možné nastavit na všech metrikách vygenerovaných monitorováním prostřednictvím [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Monitory datových sad lze použít k rychlému zachycení problémů s daty a ke zkrácení času pro ladění problému tím, že identifikují pravděpodobná příčiny.  
+Vlastní upozorňování je možné nastavit na všech metrikách vygenerovaných monitorováním prostřednictvím [Azure Application Insights](../azure-monitor/app/app-insights-overview.md). Monitory datových sad lze použít k rychlému zachycení problémů s daty a ke zkrácení času pro ladění problému tím, že identifikují pravděpodobná příčiny.  
 
 V koncepčním případě existují tři primární scénáře nastavení monitorování datových sad v Azure Machine Learning.
 
@@ -85,12 +85,12 @@ Proveďte analýzu minulých dat. | Tento scénář se dá použít k pochopení
 
 Monitory datových sad závisí na následujících službách Azure.
 
-|Služba Azure  |Description  |
+|Služba Azure  |Popis  |
 |---------|---------|
-| *Datová sada* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
+| *Integrován* | Při načítání školicích dat a porovnávání dat pro školení modelů posun používá Machine Learning datové sady.  Generování profilu dat se používá ke generování některých hlášených metrik, jako jsou minimální, maximální a jedinečné hodnoty, počet jedinečných hodnot. |
 | *Kanál a výpočetní prostředí pro AzureML* | Úloha výpočtu posunu je hostovaná v kanálu AzureML.  Úloha se aktivuje na vyžádání nebo podle plánu, aby běžela na výpočetním prostředí nakonfigurovaném v době vytváření odchodu sledování.
 | *Application Insights*| Posun vygeneruje metriky pro Application Insights patřící do pracovního prostoru Machine Learning.
-| *Úložiště objektů BLOB v Azure*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
+| *Azure Blob Storage*| Posun vygeneruje metriky ve formátu JSON do úložiště objektů BLOB v Azure.
 
 ## <a name="how-dataset-monitors-data"></a>Jak datová sada monitoruje data
 
@@ -102,7 +102,7 @@ Cílová datová sada musí mít `timeseries` nastavenou vlastnost zadáním slo
 
 ### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
 
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Metoda třídy [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definuje sloupec časového razítka pro datovou sadu.
+[`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Metoda třídy [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) definuje sloupec časového razítka pro datovou sadu.
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,7 +129,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Úplný příklad použití `timeseries` vlastnosti datových sad naleznete v dokumentaci k [ukázkovému poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) nebo [sadě SDK datových sad](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+Úplný příklad použití `timeseries` vlastnosti datových sad naleznete v dokumentaci k [ukázkovému poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) nebo [sadě SDK datových sad](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
 ### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
 
@@ -145,7 +145,7 @@ V nastavení **schématu** zadejte sloupec časového razítka z virtuálního n
 
 Pokud jsou data rozdělená do oddílů podle data, jak je uvedeno v tomto případě, můžete také zadat partition_timestamp.  To umožňuje efektivnější zpracování dat.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Časové razítko oddílu":::
 
 
 ## <a name="create-dataset-monitors"></a>Vytváření monitorování datových sad
@@ -213,7 +213,7 @@ monitor = monitor.enable_schedule()
 
 1. Klikněte na tlačítko **+ vytvořit monitorování** a pokračujte v průvodci kliknutím na tlačítko **Další**.  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Průvodce vytvořením monitorování":::
 
 * **Vyberte cílovou datovou sadu**.  Cílová datová sada je tabulková sada se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat. Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datová sada, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data.
 
@@ -223,24 +223,24 @@ monitor = monitor.enable_schedule()
 
     | Nastavení | Popis | Tipy | Měnitelné | 
     | ------- | ----------- | ---- | ------- |
-    | Name | Název monitorování datové sady | | No |
-    | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nepoužívejte funkce, které se přirozeně odunášeny v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Yes | 
-    | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Yes | 
-    | Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Yes | 
-    | Frequency | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Každé spuštění porovná data v cílové datové sadě podle četnosti: <li>Denně: porovnat poslední dokončený den v cílové datové sadě se směrným plánem <li>Týdně: porovnat poslední dokončený týden (pondělí-neděle) v cílové datové sadě se směrným plánem <li>Month: Compare poslední dokončený měsíc v cílové datové sadě se směrným plánem | No | 
-    | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | No | 
-    | e-mailové adresy, | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Yes | 
-    | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Yes |
+    | Název | Název monitorování datové sady | | Ne |
+    | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nepoužívejte funkce, které se přirozeně odunášeny v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
+    | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
+    | Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
+    | Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Každé spuštění porovná data v cílové datové sadě podle četnosti: <li>Denně: porovnat poslední dokončený den v cílové datové sadě se směrným plánem <li>Týdně: porovnat poslední dokončený týden (pondělí-neděle) v cílové datové sadě se směrným plánem <li>Month: Compare poslední dokončený měsíc v cílové datové sadě se směrným plánem | Ne | 
+    | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
+    | e-mailové adresy, | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
+    | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano |
 
 Po dokončení průvodce se v seznamu zobrazí výsledné monitorování datových sad. Vyberte ji a přejdete na stránku podrobností tohoto monitorování.
 
 ## <a name="understand-data-drift-results"></a>Vysvětlení výsledků posunu dat
 
-V této části se dozvíte, jaké výsledky monitorují datovou sadu **Datasets**, které najdete na stránce pro  /  **monitorování datové sady datových** sad v Azure studiu.  Můžete aktualizovat nastavení a analyzovat existující data pro konkrétní časové období na této stránce.  
+V této části se dozvíte, jaké výsledky monitorují datovou sadu **Datasets** , které najdete na stránce pro  /  **monitorování datové sady datových** sad v Azure studiu.  Můžete aktualizovat nastavení a analyzovat existující data pro konkrétní časové období na této stránce.  
 
 Seznamte se s přehledem vysoké úrovně, který je na velikosti posunu dat, a zvýrazněné funkce, které se mají dále prozkoumat.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Přehled posunu":::
 
 
 | Metrika | Popis | 
@@ -253,7 +253,7 @@ Seznamte se s přehledem vysoké úrovně, který je na velikosti posunu dat, a 
 
 Podívejte se, jak se datová sada liší od cílové datové sady v zadaném časovém období.  Čím blíž k 100%, tím více dvou datových sad se liší.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Trend velikosti posunu":::
 
 ### <a name="drift-magnitude-by-features"></a>Posunování velikosti podle funkcí
 
@@ -263,7 +263,7 @@ Cílová datová sada je také profilovaná v průběhu času. Statistická vzd�
 
 V Azure Machine Learning Studiu kliknutím na pruh v grafu zobrazíte podrobnosti o úrovni funkcí tohoto data. Ve výchozím nastavení se zobrazí distribuce datové sady standardních hodnot a poslední distribuce stejné funkce.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Posunování velikosti podle funkcí":::
 
 Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metrics()` metody `DataDriftDetector` objektu.
 
@@ -271,7 +271,7 @@ Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metric
 
 Nakonec se posuňte dolů a zobrazte podrobnosti o jednotlivých funkcích.  Pomocí rozevíracích seznamů nad grafem vyberte funkci a dále vyberte metriku, kterou chcete zobrazit.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Graf číselné funkce a porovnání":::
 
 Metriky v grafu závisí na typu funkce.
 
@@ -288,16 +288,16 @@ Metriky v grafu závisí na typu funkce.
     
     | Metrika | Popis |  
     | ------ | ----------- |  
-    | Euclidian vzdálenost     |  Vypočítáno pro kategorií sloupce.Euclideaná vzdálenost se počítá na dvou vektorech vygenerovaných z empirické distribuce stejného kategorií sloupce ze dvou datových sad.0 znamená, že v empirických distribucích není žádný rozdíl.Tím větší je odchylka od 0, více tohoto sloupce se posune.Trendy je možné pozorovat z grafu časové řady této metriky a mohou být užitečné při zjištění, že se funkce posunuje.  |
+    | Euclidian vzdálenost     |  Vypočítáno pro kategorií sloupce. Euclideaná vzdálenost se počítá na dvou vektorech vygenerovaných z empirické distribuce stejného kategorií sloupce ze dvou datových sad. 0 znamená, že v empirických distribucích není žádný rozdíl.  Tím větší je odchylka od 0, více tohoto sloupce se posune. Trendy je možné pozorovat z grafu časové řady této metriky a mohou být užitečné při zjištění, že se funkce posunuje.  |
     | Jedinečné hodnoty | Počet jedinečných hodnot (mohutnosti) funkce |
 
 V tomto grafu vyberte jedno datum pro porovnání distribuce funkcí mezi cílem a tímto datem zobrazené funkce. U číselných funkcí zobrazuje dvě distribuce pravděpodobnosti.  Pokud je funkce numerická, zobrazí se pruhový graf.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Nastavit časové razítko":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Vyberte datum, které se má porovnat s cílem.":::
 
 ## <a name="metrics-alerts-and-events"></a>Metriky, výstrahy a události
 
-Do prostředku [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) přidruženého k pracovnímu prostoru Machine Learning se dají dotázat metriky. Máte přístup ke všem funkcím aplikace Application Insights, včetně nastavení vlastních pravidel výstrah a skupin akcí, které aktivují akci, jako je například E-mail/SMS/Push/Voice nebo funkce Azure Functions. Podrobnosti najdete v dokumentaci k kompletním Application Insights. 
+Do prostředku [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) přidruženého k pracovnímu prostoru Machine Learning se dají dotázat metriky. Máte přístup ke všem funkcím aplikace Application Insights, včetně nastavení vlastních pravidel výstrah a skupin akcí, které aktivují akci, jako je například E-mail/SMS/Push/Voice nebo funkce Azure Functions. Podrobnosti najdete v dokumentaci k kompletním Application Insights. 
 
 Začněte tím, že přejdete na [Azure Portal](https://portal.azure.com) a vyberete stránku s **přehledem** pracovního prostoru.  Přidružený prostředek Application Insights je na pravé straně:
 
@@ -322,6 +322,6 @@ Můžete použít existující skupinu akcí nebo vytvořit novou, abyste mohli 
 ## <a name="next-steps"></a>Další kroky
 
 * Přejděte na [Azure Machine Learning studia](https://ml.azure.com) nebo [poznámkového bloku Python](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) a nastavte monitor DataSet.
-* Přečtěte si, jak nastavit posun dat na [modelech nasazených do služby Azure Kubernetes](how-to-monitor-data-drift.md).
+* Přečtěte si, jak nastavit posun dat na [modelech nasazených do služby Azure Kubernetes](./how-to-enable-data-collection.md).
 * Nastavte monitorování posunu datové sady pomocí [Event gridu](how-to-use-event-grid.md). 
 * Pokud máte problémy, podívejte se na tyto běžné [tipy k odstraňování potíží](resource-known-issues.md#data-drift) .

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 1dc7c343087e4fc11aef20e95bc9cafea20a99b4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672856"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316692"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho pracovního prostoru pomocí virtuálních sítí
 
@@ -48,7 +48,7 @@ V tomto článku se dozvíte, jak povolit následující prostředky v pracovní
     - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
     - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
 
-    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
+    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](../role-based-access-control/built-in-roles.md#networking) .
 
 
 ## <a name="secure-the-workspace-with-private-endpoint"></a>Zabezpečení pracovního prostoru pomocí privátního koncového bodu
@@ -66,7 +66,7 @@ Azure Machine Learning podporuje účty úložiště nakonfigurované pro použi
 >
 > Výchozí účet úložiště se automaticky zřídí při vytváření pracovního prostoru.
 >
-> U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
+> U jiných než výchozích účtů úložiště `storage_account` vám parametr ve [ `Workspace.create()` funkci](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true) umožní zadat vlastní účet úložiště podle ID prostředku Azure.
 
 Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuální síti, použijte následující postup:
 
@@ -74,12 +74,12 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
 
    [![Úložiště, které je připojené k pracovnímu prostoru Azure Machine Learning](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Na stránce účet služby úložiště vyberte __brány firewall a virtuální sítě__ .
+1. Na stránce účet služby úložiště vyberte __brány firewall a virtuální sítě__.
 
    ![Oblast brány firewall a virtuální sítě na stránce Azure Storage v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. Na stránce __brány firewall a virtuální sítě__ proveďte následující akce:
-    1. Vyberte __Vybrané sítě__ .
+    1. Vyberte __Vybrané sítě__.
     1. V části __virtuální sítě__ vyberte odkaz __Přidat existující virtuální síť__ . Tato akce přidá virtuální síť, ve které se nachází vaše výpočetní výkon (viz krok 1).
 
         > [!IMPORTANT]
@@ -95,7 +95,7 @@ Pokud chcete použít účet úložiště Azure pro pracovní prostor ve virtuá
     > [!IMPORTANT]
     > Při práci s Azure Machine Learning SDK musí být vaše vývojové prostředí schopné se připojit k účtu Azure Storage. Pokud je účet úložiště ve virtuální síti, musí brána firewall umožňovat přístup z IP adresy vývojového prostředí.
     >
-    > Pokud chcete povolit přístup k účtu úložiště, přejděte na téma __brány firewall a virtuální sítě__ pro účet úložiště *z webového prohlížeče ve vývojovém klientovi* . Pak pomocí zaškrtávacího políčka __Přidat IP adresu klienta__ přidejte IP adresu klienta do __rozsahu adres__ . Můžete také použít pole __Rozsah adres__ k ručnímu zadání IP adresy vývojového prostředí. Po přidání IP adresy pro klienta bude mít přístup k účtu úložiště pomocí sady SDK.
+    > Pokud chcete povolit přístup k účtu úložiště, přejděte na téma __brány firewall a virtuální sítě__ pro účet úložiště *z webového prohlížeče ve vývojovém klientovi*. Pak pomocí zaškrtávacího políčka __Přidat IP adresu klienta__ přidejte IP adresu klienta do __rozsahu adres__. Můžete také použít pole __Rozsah adres__ k ručnímu zadání IP adresy vývojového prostředí. Po přidání IP adresy pro klienta bude mít přístup k účtu úložiště pomocí sady SDK.
 
    [![Podokno brány firewall a virtuální sítě v Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -128,7 +128,7 @@ Ve výchozím nastavení Azure Machine Learning provádí kontrolu platnosti dat
 - Azure Blob Storage
 - Sdílená složka Azure
 - PostgreSQL
-- Databáze Azure SQL
+- Azure SQL Database
 
 Následující ukázka kódu vytvoří nové úložiště a sady dat objektů BLOB v Azure `skip_validation=True` .
 
@@ -175,12 +175,12 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 1. Přejít na Key Vault, která je přidružená k pracovnímu prostoru.
 
-1. Na stránce __Key Vault__ v levém podokně vyberte __síť__ .
+1. Na stránce __Key Vault__ v levém podokně vyberte __síť__.
 
 1. Na kartě __brány firewall a virtuální sítě__ proveďte následující akce:
-    1. V části __povolený přístup ze__ vyberte __privátní koncový bod a vybrané sítě__ .
+    1. V části __povolený přístup ze__ vyberte __privátní koncový bod a vybrané sítě__.
     1. V části __virtuální sítě__ vyberte __Přidat existující virtuální sítě__ a přidejte tak virtuální síť, ve které se nachází vaše výpočetní služby experimentování.
-    1. V části __umožněte důvěryhodným službám Microsoftu obejít tuto bránu firewall?__ vyberte __Ano__ .
+    1. V části __umožněte důvěryhodným službám Microsoftu obejít tuto bránu firewall?__ vyberte __Ano__.
 
    [![Část "brány firewall a virtuální sítě" v podokně Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
@@ -188,7 +188,7 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 
 Chcete-li použít Azure Container Registry v rámci virtuální sítě, je nutné splnit následující požadavky:
 
-* Vaše Azure Container Registry musí být verze Premium. Další informace o upgradu najdete v tématu [Změna SKU](/azure/container-registry/container-registry-skus#changing-skus).
+* Vaše Azure Container Registry musí být verze Premium. Další informace o upgradu najdete v tématu [Změna SKU](../container-registry/container-registry-skus.md#changing-tiers).
 
 * Vaše Azure Container Registry musí být ve stejné virtuální síti a podsíti jako účet úložiště a cíle výpočtů používané pro školení nebo odvození.
 
@@ -233,7 +233,7 @@ Po splnění těchto požadavků můžete Azure Container Registry povolit pomoc
     > [!IMPORTANT]
     > Váš účet úložiště, výpočetní cluster a Azure Container Registry musí být všechny ve stejné podsíti virtuální sítě.
     
-    Další informace najdete v referenčních informacích k metodě [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) .
+    Další informace najdete v referenčních informacích k metodě [Update ()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) .
 
 1. Použijte následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR.
 
@@ -289,7 +289,7 @@ Po splnění těchto požadavků můžete Azure Container Registry povolit pomoc
 
     Tato šablona vytvoří _privátní koncový bod_ pro přístup k síti z pracovního prostoru k vašemu ACR. Níže uvedený snímek obrazovky ukazuje příklad tohoto privátního koncového bodu.
 
-    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Azure Container Registry pracovního prostoru":::
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="Nastavení privátního koncového bodu ACR":::
 
     > [!IMPORTANT]
     > Tento koncový bod neodstraňujte. Pokud jej omylem odstraníte, můžete znovu použít šablonu v tomto kroku a vytvořit novou.

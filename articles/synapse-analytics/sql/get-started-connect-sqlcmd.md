@@ -1,6 +1,6 @@
 ---
 title: Připojení k synapse SQL pomocí sqlcmd
-description: Pomocí nástroje příkazového řádku Sqlcmd se můžete připojit a dotazovat SQL na vyžádání (Preview) a fondu SQL.
+description: Použijte nástroj příkazového řádku Sqlcmd pro připojení a dotazování fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1af42a838463132a241447c11b90bfb489f879ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 10f15ec2108e897164206543358d7a9e7bd40f64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87059450"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316488"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Připojení k synapse SQL pomocí sqlcmd
 
@@ -25,7 +25,7 @@ ms.locfileid: "87059450"
 > * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Nástroj příkazového řádku [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k připojení a dotazování SQL na vyžádání (Preview) a fondu SQL v synapse SQL.  
+Nástroj příkazového řádku [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) můžete použít k připojení a dotazování fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL v synapse SQL.  
 
 ## <a name="1-connect"></a>1. připojení
 Chcete-li začít s nástrojem [Sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), otevřete příkazový řádek a zadejte příkaz **Sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL synapse. Připojovací řetězec bude muset mít následující parametry:
@@ -41,13 +41,13 @@ Chcete-li použít ověřování SQL Server, je nutné přidat parametry uživat
 
 Připojovací řetězec může vypadat jako v následujícím příkladu:
 
-**SQL na vyžádání**
+**Fond SQL bez serveru**
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
 ```
 
-**Fond SQL**
+**Vyhrazený fond SQL**
 
 ```
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -59,13 +59,13 @@ Chcete-li používat integrované ověřování v Azure Active Directory, je tř
 
 Připojovací řetězec může vypadat jako v následujících příkladech:
 
-**SQL na vyžádání**
+**Fond SQL bez serveru**
 
 ```
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -G -I
 ```
 
-**Fond SQL**
+**Vyhrazený fond SQL**
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ## <a name="2-query"></a>2. dotaz
 
-### <a name="use-sql-pool"></a>Použít fond SQL
+### <a name="use-dedicated-sql-pool"></a>Použít vyhrazený fond SQL
 
 Po připojení můžete z instance vydat všechny podporované příkazy [jazyka Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL). V tomto příkladu jsou dotazy odesílány v interaktivním režimu:
 
@@ -87,7 +87,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-V případě fondu SQL vám následující příklady poukazují, jak spustit dotazy v dávkovém režimu pomocí možnosti-Q nebo rozdávat SQL do Sqlcmd:
+V následujících příkladech se pro vyhrazený fond SQL ukáže, jak spouštět dotazy v dávkovém režimu pomocí možnosti-Q nebo rozdávat SQL do Sqlcmd:
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -97,7 +97,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-### <a name="use-sql-on-demand"></a>Používání SQL na vyžádání
+### <a name="use-serverless-sql-pool"></a>Použít fond SQL bez serveru
 
 Po připojení můžete z instance vydat všechny podporované příkazy [jazyka Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL).  V následujícím příkladu jsou dotazy odesílány v interaktivním režimu:
 
@@ -108,7 +108,7 @@ C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Her
 3> QUIT
 ```
 
-V následujících příkladech se pro SQL na vyžádání ukáže, jak spustit dotazy v dávkovém režimu pomocí možnosti-Q nebo rozdávat SQL do Sqlcmd:
+V níže uvedených příkladech se dozvíte, jak spouštět dotazy v dávkovém režimu, a to pomocí možnosti-Q nebo rozdávat SQL do Sqlcmd:
 
 ```sql
 sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P 'Enter_Your_Password_Here' -I -Q "SELECT COUNT(*) FROM  OPENROWSET(BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet', FORMAT='PARQUET')"

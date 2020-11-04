@@ -1,5 +1,5 @@
 ---
-title: Systémová zobrazení podporovaná ve verzi Preview SQL synapse v pracovních prostorech
+title: Systémová zobrazení podporovaná v synapse SQL
 description: Obsahuje odkazy na dokumentaci pro systémová zobrazení podporovaná v synapse SQL.
 author: filippopovic
 ms.service: synapse-analytics
@@ -8,20 +8,21 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7079bbcf3bd7cb7f6073b132cd558386744f6884
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317330"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Systémová zobrazení podporovaná v synapse SQL
+
 Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v synapse SQL.
 
 > [!NOTE]
-> Synapse SQL na vyžádání SQL Server podporuje jenom zobrazení katalogu.  
+> Synapse fond SQL bez serveru SQL Server podporuje jenom zobrazení katalogu.  
 
-## <a name="sql-pool-catalog-views"></a>Zobrazení katalogu fondu SQL
+## <a name="dedicated-sql-pool-and-serverless-sql-pool-catalog-views"></a>Vyhrazené fondy SQL adres a zobrazení katalogu bez serveru SQL
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -47,7 +48,7 @@ Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v synapse SQL.
 * [Sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview)
 * [Sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Preview)
 
-## <a name="sql-pool-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy fondu SQL (zobrazení dynamické správy)
+## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy vyhrazeného fondu SQL (zobrazení dynamické správy)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -69,9 +70,9 @@ Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v synapse SQL.
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-sql-pool"></a>SQL Server zobrazení dynamické správy vztahující se k fondu SQL
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>SQL Server zobrazení dynamické správy vztahující se k vyhrazenému fondu SQL
 
-Následující zobrazení dynamické správy platí pro fond SQL, ale musí být spuštěny připojením k **Hlavní** databázi.
+Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale je nutné ho spustit připojením k **Hlavní** databázi.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -151,16 +152,16 @@ Následující zobrazení dynamické správy platí pro fond SQL, ale musí být
 * [sys. Types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [zobrazení sys. views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-sql-pool"></a>SQL Server zobrazení dynamické správy k dispozici ve fondu SQL
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>SQL Server zobrazení dynamické správy k dispozici ve vyhrazeném fondu SQL
 
-Fond SQL zpřístupňuje mnoho SQL Serverch zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení, při dotazování ve fondu SQL, hlásí stav databází SQL spuštěných v distribucích.
+Fond SQL zpřístupňuje mnoho SQL Serverch zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení, při dotazování ve vyhrazeném fondu SQL, hlásí stav databází SQL spuštěných v distribucích.
 
 PDW (Parallel Data Warehouse) fondu SQL a analytického systému platformy se stejnou systémovou zobrazení používají. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetní uzel.
 
 > [!NOTE]
 > Chcete-li použít tato zobrazení, vložte do názvu ' pdw_nodes_ ', jak je znázorněno v následující tabulce:
 
-| Název DMV ve fondu SQL | SQL Server článek Transact-SQL|
+| DMV název ve vyhrazeném fondu SQL | SQL Server článek Transact-SQL|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -222,9 +223,9 @@ PDW (Parallel Data Warehouse) fondu SQL a analytického systému platformy se st
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-pool"></a>SQL Server 2016 zobrazení dynamické správy je k dispozici ve fondu SQL
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 zobrazení dynamické správy je k dispozici ve vyhrazeném fondu SQL
 
-Následující zobrazení dynamické správy platí pro fond SQL, ale musí být spuštěny připojením k **Hlavní** databázi.
+Následující zobrazení dynamické správy platí pro vyhrazený fond SQL, ale je nutné ho spustit připojením k **Hlavní** databázi.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

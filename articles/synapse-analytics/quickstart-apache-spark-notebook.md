@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web'
-description: V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark ve službě Azure synapse Analytics a spustit dotaz Spark SQL.
+title: 'Rychlý Start: Vytvoření fondu Apache Spark bez serveru pomocí webových nástrojů'
+description: V tomto rychlém startu se dozvíte, jak pomocí webových nástrojů vytvořit fond Apache Spark bez serveru ve službě Azure synapse Analytics a jak spustit dotaz Spark SQL.
 services: synapse-analytics
 author: euangMS
 ms.author: euang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742566"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316131"
 ---
-# <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark ve službě Azure synapse Analytics pomocí nástrojů pro web
+# <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark bez serveru ve službě Azure synapse Analytics pomocí nástrojů pro web
 
-V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark (ve verzi Preview) ve službě Azure synapse pomocí webových nástrojů. Pak se naučíte připojit se ke fondu Apache Spark a spouštět dotazy Spark SQL proti souborům a tabulkám. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku ve službě Azure synapse najdete v tématu [Přehled: Apache Spark v Azure synapse](./spark/apache-spark-overview.md).
+V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark bez serveru (Preview) ve službě Azure synapse pomocí webových nástrojů. Pak se naučíte připojit se ke fondu Apache Spark a spouštět dotazy Spark SQL proti souborům a tabulkám. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku ve službě Azure synapse najdete v tématu [Přehled: Apache Spark v Azure synapse](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Faktura za instance Spark se účtuje poměrnou rychlostí za minutu, ať už je používáte, nebo ne. Ujistěte se, že jste instanci Spark po dokončení používání vypnuli, nebo nastavte krátký časový limit. Další informace najdete v části **Vyčištění prostředků** tohoto článku.
@@ -29,11 +29,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)
-- [Fond Apache Spark](quickstart-create-apache-spark-pool-studio.md)
+- [Fond Apache Spark bez serveru](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -41,16 +41,16 @@ Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný úče
 
 Poznámkový blok je interaktivní prostředí, které podporuje různé programovací jazyky. Poznámkový blok vám umožní pracovat s daty, kombinovat kód s Markdownu, textem a provádět jednoduché vizualizace.
 
-1. V zobrazení Azure Portal pracovního prostoru Azure synapse, který chcete použít, vyberte **Spustit synapse Studio** .
-2. Po spuštění synapse studia vyberte **vývoj** . Pak vyberte **+** ikonu pro přidání nového prostředku.
-3. Odtud vyberte **Poznámkový blok** . Vytvoří se nový Poznámkový blok, který se otevře s automaticky generovaným názvem.
+1. V zobrazení Azure Portal pracovního prostoru Azure synapse, který chcete použít, vyberte **Spustit synapse Studio**.
+2. Po spuštění synapse studia vyberte **vývoj**. Pak vyberte **+** ikonu pro přidání nového prostředku.
+3. Odtud vyberte **Poznámkový blok**. Vytvoří se nový Poznámkový blok, který se otevře s automaticky generovaným názvem.
  
      ![Nový Poznámkový blok](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Nový Poznámkový blok")
 
 4. V okně **vlastnosti** zadejte název poznámkového bloku.
-5. Na panelu nástrojů klikněte na **publikovat** .
+5. Na panelu nástrojů klikněte na **publikovat**.
 6. Pokud je ve vašem pracovním prostoru jenom jeden Apache Spark fond, pak je vybraný ve výchozím nastavení. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
-7. Klikněte na **přidat kód** . Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná. Další podporované jazyky jsou Scala a .NET pro Spark.
+7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark` . Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná. Další podporované jazyky jsou Scala a .NET pro Spark.
 8. Dále vytvoříte jednoduchý objekt Spark dataframe pro manipulaci. V tomto případě jej vytvoříte z kódu. Existují tři řádky a tři sloupce:
 
    ```python
@@ -61,7 +61,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
 9. Nyní spusťte buňku pomocí jedné z následujících metod:
 
-   - Stiskněte **SHIFT + ENTER** .
+   - Stiskněte **SHIFT + ENTER**.
    - Vyberte modrou ikonu přehrávání vlevo od buňky.
    - Na panelu nástrojů vyberte tlačítko **Spustit vše** .
 
@@ -114,13 +114,13 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
 
     ![Dotaz na výstup v Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Dotaz na výstup v Azure synapse Spark")
 
-3. V přepínači **zobrazení** vyberte možnost **graf** .
+3. V přepínači **zobrazení** vyberte možnost **graf**.
 4. Vyberte ikonu **Možnosti zobrazení** ze zcela pravé strany.
 5. V poli **typ grafu** vyberte "pruhový graf".
 6. V poli sloupce osy X vyberte "State" (stav).
 7. V poli sloupce osy Y vyberte "mzda".
 8. V poli **agregace** vyberte "AVG".
-9. Vyberte **Použít** .
+9. Vyberte **Použít**.
 
    ![Výstup grafu ve službě Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Výstup grafu ve službě Azure synapse Spark")
 
@@ -130,11 +130,14 @@ Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce použ
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. Každá z dříve spuštěných buněk měla možnost přejít na **Server historie** a **monitorovat** . Kliknutím na odkazy přejdete do různých částí uživatelského prostředí.
+11. Každá z dříve spuštěných buněk měla možnost přejít na **Server historie** a **monitorovat**. Kliknutím na odkazy přejdete do různých částí uživatelského prostředí.
+
+> [!NOTE]
+> Některá z [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/) se spoléhá na použití konzoly Spark, která není v synapse Spark dostupná. Místo toho používejte [Poznámkový blok](quickstart-apache-spark-notebook.md) nebo [IntelliJ](./spark/intellij-tool-synapse.md) .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Azure synapse ukládá vaše data v Azure Data Lake Storage. Pokud se instance Sparku nepoužívá, můžete ji bezpečně nechat vypnout. Účtuje se vám Apache Spark fond Azure synapse, pokud je spuštěný, i když se nepoužívá. 
+Azure synapse ukládá vaše data v Azure Data Lake Storage. Pokud se instance Sparku nepoužívá, můžete ji bezpečně nechat vypnout. Účtuje se vám Apache Spark fond bez serveru, pokud je spuštěný, i když se nepoužívá. 
 
 Vzhledem k tomu, že se poplatky za fond mnohokrát účtují více než poplatky za úložiště, má ekonomický smysl, aby instance Sparku byly vypnuté, když se nepoužívají.
 
@@ -142,11 +145,10 @@ Pokud chcete zajistit, aby se instance Spark vypnula, ukončete všechny připoj
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit fond Apache Spark Azure synapse a spustit základní dotaz Spark SQL.
+V tomto rychlém startu jste zjistili, jak vytvořit fond Apache Spark bez serveru a spustit základní dotaz Spark SQL.
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [Dokumentace k rozhraní .NET pro Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Apache Spark oficiální dokumentace](https://spark.apache.org/docs/latest/)
 
->[!NOTE]
-> Některé oficiální dokumentace Apache Spark spoléhá na použití konzoly Spark, která není v Azure synapse Spark dostupná. Místo toho používejte [Poznámkový blok](quickstart-apache-spark-notebook.md) nebo [IntelliJ](./spark/intellij-tool-synapse.md) .
+
+

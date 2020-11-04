@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 5e422b5292f77150e2755cb5963e2cd95d148654
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939099"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316092"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Funkce Machine Learning ve službě Azure synapse Analytics (verze Preview pro pracovní prostory)
 
@@ -81,4 +81,4 @@ Modely, které byly vyškoleny buď v Azure synapse nebo mimo Azure synapse, se 
 * [Začínáme s Azure synapse Analytics](../get-started.md)
 * [Vytvoření pracovního prostoru](../get-started-create-workspace.md)
 * [Rychlý Start: vytvoření nové propojené služby Azure Machine Learning v synapse](quickstart-integrate-azure-machine-learning.md)
-* [Kurz: Průvodce bodování modelu Machine Learning – fond SQL](tutorial-sql-pool-model-scoring-wizard.md)
+* [Kurz: Průvodce bodování modelu Machine Learning – vyhrazený fond SQL](tutorial-sql-pool-model-scoring-wizard.md)

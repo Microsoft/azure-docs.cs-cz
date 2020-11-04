@@ -9,22 +9,22 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 394521156d6192d25c3a4d254ac2c9b94c6231f5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093544"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318402"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse využití prostředků SQL
 
 Tento článek popisuje modely spotřeby prostředků synapse SQL (Preview).
 
-## <a name="sql-on-demand"></a>SQL na vyžádání
+## <a name="serverless-sql-pool"></a>Fond SQL bez serveru
 
-SQL na vyžádání je platba za službu pro dotaz, která nevyžaduje, abyste vybrali správnou velikost. Systém se automaticky přizpůsobí podle vašich požadavků a uvolňuje vám od správy infrastruktury a vybírá správnou velikost pro vaše řešení.
+Fond SQL bez serveru je platíte za službu Query Service, která nevyžaduje, abyste vybrali správnou velikost. Systém se automaticky přizpůsobí podle vašich požadavků a uvolňuje vám od správy infrastruktury a vybírá správnou velikost pro vaše řešení.
 
-## <a name="sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Fond SQL – jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
+## <a name="dedicated-sql-pool---data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Vyhrazený fond SQL – jednotky datového skladu (DWU) a jednotky datového skladu COMPUTE (cDWUs)
 
 Doporučení pro výběr ideálního počtu jednotek datového skladu (DWU) pro optimalizaci ceny a výkonu a změnu počtu jednotek.
 
@@ -50,12 +50,12 @@ Zvyšování DWU:
 
 Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 se měří v jednotkách služby COMPUTE Data Warehouse (cDWU), například DW2000c. Úrovně služeb Gen1 se měří v DWU, například DW2000.
 
-Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro Gen2 fond SQL se měří v jednotkách datového skladu (DWU), například DW2000c.
+Cíl úrovně služeb (SLO) je nastavení škálovatelnosti, které určuje náklady a úroveň výkonu datového skladu. Úrovně služeb pro vyhrazený fond SQL Gen2 se měří v jednotkách datového skladu (DWU), například DW2000c.
 
 > [!NOTE]
 > Azure synapse Analytics Gen2 nedávno přidaly další možnosti škálování pro podporu výpočetních úrovní, které jsou nízké jako 100 cDWU. Stávající datové sklady, které jsou aktuálně na Gen1, které vyžadují nižší výpočetní úrovně, teď můžou upgradovat na Gen2 v oblastech, které jsou momentálně dostupné bez dalších nákladů.  Pokud vaše oblast ještě není podporovaná, můžete i nadále upgradovat na podporovanou oblast. Další informace najdete v tématu [upgrade na Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro váš fond SQL.
+V T-SQL nastavení SERVICE_OBJECTIVE určuje úroveň služby a úroveň výkonu pro vyhrazený fond SQL.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -121,13 +121,13 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Změnit jednotky datového skladu
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Postup změny DWU:
 
 1. Otevřete [Azure Portal](https://portal.azure.com), otevřete databázi a vyberte možnost **škálovat**.
 
-2. V části **škálovat**přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
+2. V části **škálovat** přesuňte posuvník doleva nebo doprava, abyste změnili nastavení DWU.
 
 3. Vyberte **Uložit**. Zobrazí se potvrzovací zpráva. Kliknutím na tlačítko **Ano** potvrďte nebo **ne** .
 
@@ -204,7 +204,7 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Tento DMV vrací informace o různých operacích správy ve vašem fondu SQL, jako je například operace a stav operace, který je buď IN_PROGRESS nebo dokončeno.
+Tento DMV vrací informace o různých operacích správy vyhrazeného fondu SQL, jako je například operace a stav operace, který je buď IN_PROGRESS nebo dokončen.
 
 ### <a name="the-scaling-workflow"></a>Pracovní postup škálování
 

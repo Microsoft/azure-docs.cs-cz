@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30979f49a48954280942d786af7e7ff592089062
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521063"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317093"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Import Runbooku
 
-Můžete importovat skript PowerShellu nebo PowerShellového pracovního postupu (**. ps1**), grafický Runbook (**. graphrunbook**) nebo skript Python 2 (**. py**), abyste mohli vytvořit vlastní Runbook. Je nutné zadat [typ Runbooku](automation-runbook-types.md) , který se vytvoří během importu, přičemž vezme v úvahu následující skutečnosti.
+Můžete importovat skript PowerShellu nebo PowerShellového pracovního postupu ( **. ps1** ), grafický Runbook ( **. graphrunbook** ) nebo skript Python 2 ( **. py** ), abyste mohli vytvořit vlastní Runbook. Je nutné zadat [typ Runbooku](automation-runbook-types.md) , který se vytvoří během importu, přičemž vezme v úvahu následující skutečnosti.
 
 * Soubor **. ps1** , který neobsahuje pracovní postup, můžete importovat buď do [Runbooku PowerShellu](automation-runbook-types.md#powershell-runbooks) , nebo do [Runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks). Pokud ho naimportujete do Runbooku pracovního postupu PowerShellu, převede se na pracovní postup. V tomto případě jsou komentáře součástí Runbooku a popisují provedené změny.
 
@@ -228,7 +228,7 @@ Použití vlastního skriptu:
 
 ## <a name="test-a-runbook"></a>Testování runbooku
 
-Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#use-the-output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#monitor-message-streams) se zobrazí v podokně výstup testu. Zprávy do [podrobného datového proudu](automation-runbook-output-and-messages.md#monitor-message-streams) se zobrazí v podokně výstup pouze v případě, že je proměnná [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) nastavena na hodnotu `Continue` .
+Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#use-the-output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#working-with-message-streams) se zobrazí v podokně výstup testu. Zprávy do [podrobného datového proudu](automation-runbook-output-and-messages.md#write-output-to-verbose-stream) se zobrazí v podokně výstup pouze v případě, že je proměnná [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) nastavena na hodnotu `Continue` .
 
 I když je verze konceptu spuštěna, sada Runbook se stále provádí normálně a provede všechny akce s prostředky v prostředí. Z tohoto důvodu byste měli testovat pouze Runbooky na neprodukčních prostředcích.
 
@@ -270,7 +270,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 Po publikování Runbooku můžete naplánovat jeho operaci:
 
 1. Otevřete Runbook v Azure Portal.
-2. V části **prostředky**vyberte **plány** .
+2. V části **prostředky** vyberte **plány** .
 3. Vyberte **Přidat plán**.
 4. V podokně naplánovat Runbook vyberte **připojit plán k sadě Runbook**.
 5. V podokně plán vyberte **vytvořit nový plán** .
@@ -298,7 +298,7 @@ Seznam úloh můžete filtrovat výběrem možnosti **filtrovat úlohy**. Vyfilt
 
 Případně můžete zobrazit souhrn podrobností úlohy pro konkrétní Runbook tak, že na stránce sady Runbook v účtu Automation vyberete tuto sadu Runbook a pak vyberete **úlohy**. Tato akce zobrazí stránku úlohy. Odtud můžete kliknutím na záznam úlohy zobrazit jeho podrobnosti a výstup.
 
-:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Snímek obrazovky stránky úlohy":::
+:::image type="content" source="./media/manage-runbooks/automation-runbook-job-summary-blade.png" alt-text="Snímek stránky úlohy se zvýrazněným tlačítkem chyby":::
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Načtení stavů úloh pomocí PowerShellu
 

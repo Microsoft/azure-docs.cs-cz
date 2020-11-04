@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a21cee6806c4200a73b35afba73cf04d7ca60308
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 33571283b876506e419ed675dde0988974c3841e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279991"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317864"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure synapse Analytics business intelligence partneři
 
@@ -41,7 +41,7 @@ Pokud chcete vytvořit řešení datového skladu, můžete si vybrat z různýc
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Samoobslužná analýza Tableau umožňuje komukoli zobrazit a pochopit svá data napříč mnoha druhy dat z plochých souborů až po databáze. Tableau má nativní optimalizovaný konektor na synapse fond SQL, který podporuje živá data i analýzu v paměti. |[Stránka produktu](https://www.tableau.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tableau.tableau-server)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (rozhodovací sada)**<br>Targit Decision Suite poskytuje platformu BI, která poskytuje řídicí panely v reálném čase, samoobslužnou analýzu, uživatelsky přívětivou tvorbu sestav, poutavé mobilní funkce a jednoduchou technologii zjišťování dat. Všechno v jediném soudržném řešení. Targit poskytuje společnostem, které doporučuje jednat. |[Stránka produktu](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/targit.targit-decision-suite)<br> |
 | ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Pomocí služby Search můžete získat podrobné přehledy z miliard řádků nebo si poznamenat, že se z otázek, na které jste asi nemysleli, odhalí přehledy. ThoughtSpot pomáhá businesspeople najít přehledy ve svých firemních datech v řádu sekund. Pomocí služby Search můžete analyzovat data a získávat automatizované přehledy, když je potřebujete.|[Stránka produktu](https://www.thoughtspot.com)<br>|
-| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin je nejvyšší hodnocený dodavatel cloudu BI pro _ad hoc_ generování sestav a řídicích panelů pomocí BARC; Průzkum BI. Připojovat se k synapse fondu SQL a pak Vytvářejte a sdílejte působivé sestavy a řídicí panely s oceněnými funkcemi pro spolupráci BI a umístění. |[Stránka produktu](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
+| ![Yellowfin](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Yellowfin**<br>Yellowfin je nejvyšší hodnocený dodavatel cloudu BI pro _ad hoc_ generování sestav a řídicích panelů pomocí BARC; Průzkum BI. Přihlaste se k vyhrazenému fondu SQL ve službě Azure synapse Analytics a pak Vytvářejte a sdílejte působivé sestavy a řídicí panely s oceněnými funkcemi pro spolupráci v oblasti BI a Intelligence. |[Stránka produktu](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/yellowfin.yellowfin-for-azure-byol) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->
 

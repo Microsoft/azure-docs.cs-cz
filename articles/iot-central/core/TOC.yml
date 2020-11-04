@@ -221,6 +221,8 @@
           href: ../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
     - name: Reference k rozhraní API služby IoT Central
       href: /rest/api/iotcentral/
+    - name: Rezidence zákaznických dat
+      href: iot-central-customer-data-residency.md
     - name: Požadavky na zákaznická data
       href: iot-central-customer-data-requests.md
     - name: Podporované prohlížeče

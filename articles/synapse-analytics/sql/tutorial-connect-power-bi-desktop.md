@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: připojení SQL na vyžádání k Power BI Desktop & vytvoření sestavy'
-description: V tomto kurzu se naučíte připojit SQL na vyžádání v Azure synapse Analytics a Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
+title: 'Kurz: připojení fondu SQL bez serveru k Power BI Desktop & vytvoření sestavy'
+description: V tomto kurzu se dozvíte, jak připojit fond SQL bez serveru ve službě Azure synapse Analytics k Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539550"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317188"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Kurz: použití SQL na vyžádání pomocí Power BI Desktop & vytvoření sestavy
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Kurz: použití fondu SQL bez serveru s Power BI Desktop & vytvoření sestavy
 
 V tomto kurzu se naučíte:
 
@@ -24,10 +24,10 @@ V tomto kurzu se naučíte:
 >
 > - Vytvořit ukázkovou databázi
 > - Vytvořit zobrazení použité pro sestavu
-> - Připojení Power BI Desktop k SQL na vyžádání
+> - Připojit Power BI Desktop k fondu SQL bez serveru
 > - Vytvořit sestavu na základě zobrazení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
@@ -42,8 +42,8 @@ Hodnoty pro následující parametry:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení úložiště používaného v ukázkách. |
+| Adresa koncového bodu služby fondu SQL bez serveru    | Používá se jako název serveru.                                   |
+| Oblast koncového bodu služby fondu SQL bez serveru     | Slouží k určení úložiště používaného v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
 | Databáze, kterou použijete k vytvoření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2. vytvoření zdroje dat
 
-Zdroj dat je nezbytný pro službu SQL na vyžádání pro přístup k souborům v úložišti. Vytvořte zdroj dat pro účet úložiště, který se nachází ve stejné oblasti jako váš koncový bod. Přestože SQL na vyžádání má přístup k účtům úložiště z různých oblastí, má úložiště a koncový bod ve stejné oblasti lepší výkon.
+Zdroj dat je nezbytný pro službu fondu SQL bez serveru pro přístup k souborům v úložišti. Vytvořte zdroj dat pro účet úložiště, který se nachází ve stejné oblasti jako váš koncový bod. I když fond SQL bez serveru má přístup k účtům úložiště z různých oblastí, má úložiště a koncový bod ve stejné oblasti lepší výkon.
 
 Vytvořte zdroj dat spuštěním následujícího skriptu Transact-SQL (T-SQL):
 

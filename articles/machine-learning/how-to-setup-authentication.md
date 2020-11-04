@@ -1,7 +1,7 @@
 ---
 title: Nastavení ověřování
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak nastavit a nakonfigurovat ověřování pro různé prostředky a pracovní postupy v Azure Machine Learning. Existuje několik způsobů, jak nakonfigurovat a používat ověřování v rámci služby, od jednoduchých ověřování založeného na uživatelském rozhraní pro účely vývoje nebo testování, až po úplné Azure Active Directory ověřování instančního objektu.
+description: Naučte se, jak nastavit a nakonfigurovat ověřování pro různé prostředky a pracovní postupy v Azure Machine Learning.
 services: machine-learning
 author: cjgronlund
 ms.author: cgronlun
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125763"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318533"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 
@@ -38,7 +38,7 @@ Bez ohledu na použitý typ ověřování se používá řízení přístupu na 
 ## <a name="interactive-authentication"></a>Interaktivní ověřování
 
 > [!IMPORTANT]
-> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks).
+> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md).
 
 Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřování. Například při použití sady SDK jsou k dispozici dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní:
 
@@ -77,7 +77,7 @@ Chcete-li použít ověřování instančního objektu (SP), musíte nejprve vyt
 >
 > Důvodem pro udělení minimálního přístupu je, že instanční objekt používá k ověření heslo a heslo může být uloženo jako součást skriptu automatizace. Pokud je heslo nedostupné, má minimální přístup vyžadovaný pro konkrétní úkoly minimalizovat škodlivé použití SP.
 
-Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovnímu prostoru, je použití [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). K vytvoření instančního objektu a udělení přístupu k vašemu pracovnímu prostoru použijte následující postup:
+Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovnímu prostoru, je použití [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest). K vytvoření instančního objektu a udělení přístupu k vašemu pracovnímu prostoru použijte následující postup:
 
 > [!NOTE]
 > K provedení všech těchto kroků musíte být správcem předplatného.
@@ -92,7 +92,7 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-    Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true).
+    Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 1. Nainstalujte Azure Machine Learning rozšíření:
 
@@ -190,11 +190,11 @@ ws.get_details()
 
 ### <a name="use-a-service-principal-from-the-azure-cli"></a>Použití instančního objektu ze služby Azure CLI
 
-Pro příkazy rozhraní příkazového řádku Azure můžete použít instanční objekt. Další informace najdete v tématu [přihlášení pomocí instančního objektu](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest&preserve-view=true#sign-in-using-a-service-principal).
+Pro příkazy rozhraní příkazového řádku Azure můžete použít instanční objekt. Další informace najdete v tématu [přihlášení pomocí instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?preserve-view=true&view=azure-cli-latest#sign-in-using-a-service-principal).
 
 ### <a name="use-a-service-principal-with-the-rest-api-preview"></a>Použití instančního objektu s REST API (Preview)
 
-Instanční objekt se dá použít taky k ověření Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (Preview). Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu i Node.js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0.
+Instanční objekt se dá použít taky k ověření Azure Machine Learning [REST API](/rest/api/azureml/) (Preview). Použijete [tok udělení přihlašovacích údajů klienta](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](../active-directory/azuread-dev/active-directory-authentication-libraries.md) v Pythonu i Node.js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0.
 
 > [!NOTE]
 > MSAL.js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta s MSAL.js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
@@ -375,7 +375,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-Chcete-li načíst klíče ověřování, použijte `aci_service.get_keys()` . Chcete-li znovu vygenerovat klíč, použijte `regen_key()` funkci a předejte ji buď **primární** , nebo **sekundární** .
+Chcete-li načíst klíče ověřování, použijte `aci_service.get_keys()` . Chcete-li znovu vygenerovat klíč, použijte `regen_key()` funkci a předejte ji buď **primární** , nebo **sekundární**.
 
 ```python
 aci_service.regen_key("Primary")
@@ -391,7 +391,7 @@ Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé mu
 
 * Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
 * Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
-* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů** .
+* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů**.
 
 K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení:
 

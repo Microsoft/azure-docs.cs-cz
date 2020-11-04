@@ -1,6 +1,6 @@
 ---
-title: Ingestování dat do fondu SQL
-description: Naučte se ingestovat data do fondu SQL ve službě Azure synapse Analytics.
+title: Ingestování dat do vyhrazeného fondu SQL
+description: Naučte se ingestovat data do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 40f8834a69101682abaaa7eac8ec9cafe8ef3d9e
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279363"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317784"
 ---
-# <a name="ingest-data-into-a-sql-pool"></a>Ingestování dat do fondu SQL
+# <a name="ingest-data-into-a-dedicated-sql-pool"></a>Ingestování dat do vyhrazeného fondu SQL
 
-V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do fondu SQL pomocí Azure synapse Analytics.
+V tomto článku se dozvíte, jak ingestovat data z Azure Data Lake účtu úložiště Gen 2 do vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure** : Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet úložiště Azure** : Azure Data Lake Storage Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
-* **Azure synapse Analytics** : jako úložiště dat *jímky* použijete fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [Vytvoření fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
+* **Azure synapse Analytics** : jako úložiště dat *jímky* použijete vyhrazený fond SQL. Pokud nemáte instanci Azure synapse Analytics, přečtěte si téma [vytvoření vyhrazeného fondu SQL](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , kde najdete kroky pro jeho vytvoření.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
@@ -39,7 +39,7 @@ V Azure synapse Analytics je propojená služba, kde můžete definovat informac
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen2 do fondu SQL.
+Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen2 do vyhrazeného fondu SQL.
 
 1. Přejít na kartu **integrace** . Vyberte ikonu plus vedle záhlaví kanály a vyberte **kanál**.
 1. V části **přesunout a transformovat** v podokně aktivity přetáhněte **Kopírovat data** na plátno kanálu.
@@ -68,7 +68,7 @@ V tomto kroku ručně aktivujete kanál publikovaný v předchozím kroku.
 1. Vyberte **Přidat aktivační událost** na panelu nástrojů a pak vyberte **aktivovat nyní**. Na stránce **Spuštění kanálu** vyberte **Dokončit**.  
 1. Přejít na kartu **monitorování** umístěnou na levém bočním panelu. Zobrazí se stav ručně aktivovaného spuštění kanálu. Pomocí odkazů ve sloupci **Akce** můžete zobrazit podrobnosti o aktivitě a spustit kanál znovu.
 1. Pokud se chcete podívat na spuštění aktivit, která souvisí se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. V tomto příkladu je k dispozici pouze jedna aktivita, takže se v seznamu zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Vyberte možnost **spuštění kanálu** v horní části a vraťte se do zobrazení spuštění kanálu. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
-1. Ověřte, že vaše data jsou ve fondu SQL správně napsaná.
+1. Ověřte, že vaše data jsou správně napsaná ve vyhrazeném fondu SQL.
 
 
 ## <a name="next-steps"></a>Další kroky

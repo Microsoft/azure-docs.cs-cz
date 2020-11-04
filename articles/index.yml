@@ -13,12 +13,12 @@ metadata:
   ms.date: 09/25/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 8dd08112bbfd56ddccb14cef1123b10ed7907a95
-  ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+  ms.openlocfilehash: b29654a0eb305d2e20dcc8aed5c60d96b7ca3268
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/21/2020
-  ms.locfileid: "92329201"
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93313256"
 highlightedContent:
   items:
   - title: Úvodní příručka pro vývojáře v Azure
@@ -643,7 +643,7 @@ productDirectory:
     - developer-tools
     url: azure-app-configuration/index.yml
   - title: Azure Data Studio
-    summary: Jednoduchý editor, který může na vyžádání spouštět dotazy SQL a výsledky zobrazovat a ukládat jako text, JSON nebo Excel.
+    summary: Jednoduchý editor, který může spouštět dotazy bezserverových fondů SQL a výsledky zobrazovat a ukládat jako text, JSON nebo Excel.
     imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
     azureCategories:
     - developer-tools

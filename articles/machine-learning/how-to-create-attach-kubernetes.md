@@ -1,7 +1,7 @@
 ---
 title: Vytvoření a připojení služby Azure Kubernetes
 titleSuffix: Azure Machine Learning
-description: Službu Azure Kubernetes Service (AKS) je možné použít k nasazení modelu Machine Learning jako webové služby. Naučte se vytvořit nový cluster AKS prostřednictvím Azure Machine Learning. Naučíte se také, jak připojit existující cluster AKS k pracovnímu prostoru Azure Machine Learning.
+description: Naučte se, jak vytvořit nový cluster služby Azure Kubernetes prostřednictvím Azure Machine Learning, nebo jak připojit existující cluster AKS k vašemu pracovnímu prostoru.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 1126798bdf07f54811c83b932af9928f3e3115dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b14ba12c9f9b679d1d63008d31825647f42619d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792000"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318052"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Vytvoření a připojení clusteru služby Azure Kubernetes
 
@@ -26,25 +26,25 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
+- [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
-- Pokud plánujete pomocí Virtual Network Azure zabezpečit komunikaci mezi pracovním prostorem Azure ML a clusterem AKS, přečtěte si [izolaci sítě během školení & článku o odvozování](how-to-enable-virtual-network.md) .
+- Pokud plánujete pomocí Virtual Network Azure zabezpečit komunikaci mezi pracovním prostorem Azure ML a clusterem AKS, přečtěte si [izolaci sítě během školení & článku o odvozování](./how-to-network-security-overview.md) .
 
 ## <a name="limitations"></a>Omezení
 
 - Pokud v clusteru potřebujete nasadit **Standard Load Balancer (SLB)** místo základního Load BALANCER (BLB), vytvořte cluster na portálu AKS/CLI/SDK a pak ho **Připojte** k pracovnímu prostoru AML.
 
-- Pokud máte Azure Policy, která omezuje vytváření veřejných IP adres, vytvoření clusteru AKS se nezdaří. AKS vyžaduje veřejnou IP adresu pro [odchozí přenosy](/azure/aks/limit-egress-traffic). Článek o odchozím provozu taky poskytuje pokyny pro uzamknutí odchozího provozu z clusteru prostřednictvím veřejné IP adresy s výjimkou několika plně kvalifikovaných názvů domén. Existují dva způsoby, jak povolit veřejnou IP adresu:
+- Pokud máte Azure Policy, která omezuje vytváření veřejných IP adres, vytvoření clusteru AKS se nezdaří. AKS vyžaduje veřejnou IP adresu pro [odchozí přenosy](../aks/limit-egress-traffic.md). Článek o odchozím provozu taky poskytuje pokyny pro uzamknutí odchozího provozu z clusteru prostřednictvím veřejné IP adresy s výjimkou několika plně kvalifikovaných názvů domén. Existují dva způsoby, jak povolit veřejnou IP adresu:
     - Cluster může používat veřejnou IP adresu vytvořenou ve výchozím nastavení s BLB nebo SLB nebo
-    - Cluster se dá vytvořit bez veřejné IP adresy a pak je u veřejné IP adresy nakonfigurovaná brána firewall s trasou definovanou uživatelem. Další informace najdete v tématu [přizpůsobení výstupů clusteru pomocí uživatelsky definovaného postupu](/azure/aks/egress-outboundtype).
+    - Cluster se dá vytvořit bez veřejné IP adresy a pak je u veřejné IP adresy nakonfigurovaná brána firewall s trasou definovanou uživatelem. Další informace najdete v tématu [přizpůsobení výstupů clusteru pomocí uživatelsky definovaného postupu](../aks/egress-outboundtype.md).
     
     Rovina ovládacího prvku AML nehovoří s touto veřejnou IP adresou. Mluví s rovinou ovládacího prvku AKS pro nasazení. 
 
-- Pokud **připojíte** cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](/azure/aks/api-server-authorized-ip-ranges), povolte rozsahy IP adres řídicí plochy AML pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí odvození lusků do clusteru AKS. Bez přístupu k serveru rozhraní API nejde nasadit odvozené lusky. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/download/confirmation.aspx?id=56519) pro obě [spárované oblasti](/azure/best-practices-availability-paired-regions) .
+- Pokud **připojíte** cluster AKS, který má [povolený povolený rozsah IP adres pro přístup k serveru rozhraní API](../aks/api-server-authorized-ip-ranges.md), povolte rozsahy IP adres řídicí plochy AML pro cluster AKS. Rovina ovládacího prvku AML se nasadí mezi spárované oblasti a nasadí odvození lusků do clusteru AKS. Bez přístupu k serveru rozhraní API nejde nasadit odvozené lusky. Při povolování rozsahů IP adres v clusteru AKS použijte [rozsahy IP adres](https://www.microsoft.com/download/confirmation.aspx?id=56519) pro obě [spárované oblasti](../best-practices-availability-paired-regions.md) .
 
     Rozsahy autorizovaných IP adres fungují jenom s Standard Load Balancer.
 
-- Pokud chcete použít privátní cluster AKS (pomocí privátního odkazu Azure), musíte nejdřív vytvořit cluster a pak ho **připojit** k pracovnímu prostoru. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](/azure/aks/private-clusters).
+- Pokud chcete použít privátní cluster AKS (pomocí privátního odkazu Azure), musíte nejdřív vytvořit cluster a pak ho **připojit** k pracovnímu prostoru. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
 
 - Název COMPUTE pro cluster AKS musí být jedinečný v rámci pracovního prostoru Azure ML.
     - Název je povinný a musí mít délku 3 až 24 znaků.
@@ -54,12 +54,12 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
    
  - Pokud chcete nasadit modely do uzlů **GPU** nebo **FPGAch** uzlů (nebo jakékoli konkrétní SKU), musíte vytvořit cluster s konkrétní SKU. Neexistuje žádná podpora pro vytváření fondu sekundárních uzlů v existujícím clusteru a nasazování modelů do fondu sekundárních uzlů.
  
-- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__ , __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__ . Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
+- Při vytváření nebo připojování clusteru můžete vybrat, jestli se má cluster vytvořit pro __vývoj a testování__ nebo pro __produkční__ prostředí. Pokud chcete vytvořit cluster AKS pro __vývoj__ , __ověřování__ a __testování__ namísto produkčního prostředí, nastavte __účel clusteru__ na __dev-test__. Pokud neurčíte účel clusteru, vytvoří se __produkční__ cluster. 
 
     > [!IMPORTANT]
     > Cluster pro __vývoj a testování__ není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
 
-- Pokud se cluster bude používat pro __produkční__ prostředí, musí mít při vytváření nebo připojení clusteru aspoň 12 __virtuálních procesorů__ . Počet virtuálních procesorů se dá vypočítat vynásobením __počtu uzlů__ v clusteru __počtem jader__ poskytovaných vybranou velikostí virtuálního počítače. Pokud například použijete velikost virtuálního počítače "Standard_D3_v2", který má 4 virtuální jádra, měli byste vybrat 3 nebo vyšší jako počet uzlů.
+- Pokud se cluster bude používat pro __produkční__ prostředí, musí mít při vytváření nebo připojení clusteru aspoň 12 __virtuálních procesorů__. Počet virtuálních procesorů se dá vypočítat vynásobením __počtu uzlů__ v clusteru __počtem jader__ poskytovaných vybranou velikostí virtuálního počítače. Pokud například použijete velikost virtuálního počítače "Standard_D3_v2", který má 4 virtuální jádra, měli byste vybrat 3 nebo vyšší jako počet uzlů.
 
     V případě clusteru pro __vývoj a testování__ budeme znovu zadarmo aspoň 2 virtuální procesory.
 
@@ -70,7 +70,7 @@ Azure Machine Learning můžou nasazovat školicí modely strojového učení do
 
 ## <a name="azure-kubernetes-service-version"></a>Verze služby Azure Kubernetes
 
-Služba Azure Kubernetes umožňuje vytvářet clustery s využitím nejrůznějších verzí Kubernetes. Další informace o dostupných verzích najdete v tématu [podporované verze Kubernetes ve službě Azure Kubernetes Service](/azure/aks/supported-kubernetes-versions).
+Služba Azure Kubernetes umožňuje vytvářet clustery s využitím nejrůznějších verzí Kubernetes. Další informace o dostupných verzích najdete v tématu [podporované verze Kubernetes ve službě Azure Kubernetes Service](../aks/supported-kubernetes-versions.md).
 
 Při **vytváření** clusteru služby Azure Kubernetes pomocí jedné z následujících metod nemusíte *ve verzi* vytvořeného clusteru volit tyto možnosti:
 
@@ -124,7 +124,7 @@ Result
 1.16.13
 ```
 
-Pokud byste chtěli **programově kontrolovat dostupné verze** , použijte [orchestraci seznamu klient-seznam klienta služby Container Service](https://docs.microsoft.com/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
+Pokud byste chtěli **programově kontrolovat dostupné verze** , použijte [orchestraci seznamu klient-seznam klienta služby Container Service](/rest/api/container-service/container%20service%20client/listorchestrators) REST API. Pokud chcete zjistit dostupné verze, podívejte se na položky, kde `orchestratorType` je `Kubernetes` . Přidružené `orchestrationVersion` položky obsahují dostupné verze, které je možné **připojit** k vašemu pracovnímu prostoru.
 
 Pokud chcete najít výchozí verzi, která se používá při **vytváření** clusteru prostřednictvím Azure Machine Learning, Najděte položku, kde `orchestratorType` je `Kubernetes` a `default` `true` . Přidružená `orchestratorVersion` hodnota je výchozí verze. Následující fragment kódu JSON ukazuje příklad položky:
 
@@ -183,10 +183,10 @@ aks_target.wait_for_completion(show_output = True)
 
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
 * [AksCompute.provisioning_configuration](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [ComputeTarget. Create](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#create-workspace--name--provisioning-configuration-)
-* [ComputeTarget.wait_for_completion](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#wait-for-completion-show-output-false-)
+* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#wait-for-completion-show-output-false-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -194,7 +194,7 @@ Další informace o třídách, metodách a parametrech použitých v tomto př�
 az ml computetarget create aks -n myaks
 ```
 
-Další informace najdete v tématu [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
+Další informace najdete v tématu [AZ ml computetarget Create AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-aks) reference.
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -215,12 +215,12 @@ Pokud už máte cluster AKS ve svém předplatném Azure a verze 1,17 nebo niž�
 > [!WARNING]
 > Nevytvářejte více souběžných příloh ke stejnému AKS clusteru z vašeho pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
 >
-> Pokud chcete cluster AKS znovu připojit, například pokud chcete změnit nastavení TLS nebo jiné konfigurace clusteru, musíte nejdřív odebrat existující přílohu pomocí [AksCompute. detach ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#detach--).
+> Pokud chcete cluster AKS znovu připojit, například pokud chcete změnit nastavení TLS nebo jiné konfigurace clusteru, musíte nejdřív odebrat existující přílohu pomocí [AksCompute. detach ()](/python/api/azureml-core/azureml.core.compute.akscompute?preserve-view=true&view=azure-ml-py#detach--).
 
 Další informace o vytvoření clusteru AKS pomocí Azure CLI nebo portálu najdete v následujících článcích:
 
-* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest&preserve-view=true#az-aks-create)
-* [Vytvoření clusteru AKS (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest&preserve-view=true)
+* [Vytvoření clusteru AKS (rozhraní příkazového řádku)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [Vytvoření clusteru AKS (portál)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [Vytvoření clusteru AKS (šablona ARM v šablonách rychlého startu Azure)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 Následující příklad ukazuje, jak připojit existující cluster AKS k vašemu pracovnímu prostoru:
@@ -248,8 +248,8 @@ aks_target.wait_for_completion(show_output = True)
 Další informace o třídách, metodách a parametrech použitých v tomto příkladu naleznete v následujících referenčních dokumentech:
 
 * [AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)
-* [AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py&preserve-view=true)
-* [AksCompute. Attach](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computetarget?view=azure-ml-py&preserve-view=true#attach-workspace--name--attach-configuration-)
+* [AksCompute.ClusterPurpose](/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?preserve-view=true&view=azure-ml-py)
+* [AksCompute. Attach](/python/api/azureml-core/azureml.core.compute.computetarget?preserve-view=true&view=azure-ml-py#attach-workspace--name--attach-configuration-)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -271,7 +271,7 @@ Pokud chcete připojit existující cluster k pracovnímu prostoru, použijte n�
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
+Další informace najdete v referenčních informacích [AZ ml computetarget Attach AKS](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-attach-aks) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -284,7 +284,7 @@ Informace o připojení clusteru AKS na portálu najdete v tématu [Vytvoření 
 Pokud chcete odpojit cluster od pracovního prostoru, použijte jednu z následujících metod:
 
 > [!WARNING]
-> Pomocí sady Azure Machine Learning Studio, sady SDK nebo rozšíření Azure CLI pro Machine Learning k odpojení clusteru AKS **neodstraňujte cluster AKS** . Pokud chcete cluster odstranit, přečtěte si téma [použití Azure CLI se službou AKS](/azure/aks/kubernetes-walkthrough#delete-the-cluster).
+> Pomocí sady Azure Machine Learning Studio, sady SDK nebo rozšíření Azure CLI pro Machine Learning k odpojení clusteru AKS **neodstraňujte cluster AKS**. Pokud chcete cluster odstranit, přečtěte si téma [použití Azure CLI se službou AKS](../aks/kubernetes-walkthrough.md#delete-the-cluster).
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení databáze
-description: Tipy pro zabezpečení databáze a vývoj řešení v prostředku fondu synapse SQL
+description: Tipy pro zabezpečení vyhrazeného fondu SQL a vývoj řešení ve službě Azure synapse Analytics.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,14 +11,14 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f6c1370cab573926183a937b8e749ef490c19334
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516879"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317706"
 ---
-# <a name="secure-a-database-in-azure-synapse"></a>Zabezpečení databáze v Azure synapse
+# <a name="secure-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Zabezpečení vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
 > [!div class="op_single_selector"]
 >
@@ -27,7 +27,7 @@ ms.locfileid: "92516879"
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
-Tento článek vás provede základy zabezpečení synapse fondu SQL. Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranou dat a monitorováním aktivit v databázi zřízené pomocí fondu SQL.
+Tento článek vás provede základy zabezpečení vyhrazeného fondu SQL. Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit pomocí vyhrazeného fondu SQL.
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 
@@ -35,15 +35,15 @@ Zabezpečení připojení spočívá v použití pravidel brány firewall a šif
 
 Pravidla brány firewall jsou používána [logickým serverem SQL](../../azure-sql/database/logical-servers.md) i jeho databázemi k zamítnutí pokusů o připojení z IP adres, které nebyly explicitně schváleny. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu.
 
-V souladu s osvědčeným postupem byste měli omezit rozsahy IP adres povolené přes bránu firewall na úrovni serveru co nejvíce.  Pokud chcete získat přístup k fondu SQL z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
+V souladu s osvědčeným postupem byste měli omezit rozsahy IP adres povolené přes bránu firewall na úrovni serveru co nejvíce.  Pokud chcete získat přístup k vyhrazenému fondu SQL z místního počítače, ujistěte se, že brána firewall v síti a místní počítač umožňují odchozí komunikaci na portu TCP 1433.  
 
 Azure synapse Analytics používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu věnovaném [Azure SQL Database pravidlům brány firewall](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-Připojení k vašemu fondu SQL jsou ve výchozím nastavení zašifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
+Připojení k vyhrazenému fondu SQL jsou ve výchozím nastavení šifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
 
 ## <a name="authentication"></a>Authentication
 
-Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje SQL Server ověřování s uživatelským jménem a heslem a s Azure Active Directory.
+Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Vyhrazený fond SQL aktuálně podporuje SQL Server ověřování s uživatelským jménem a heslem a s Azure Active Directory.
 
 Při vytváření serveru pro vaši databázi jste zadali přihlašovací jméno správce serveru pomocí uživatelského jména a hesla. Pomocí těchto přihlašovacích údajů se můžete na tomto serveru ověřit jako vlastník databáze nebo "dbo" prostřednictvím SQL Server ověřování.
 
@@ -57,7 +57,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Pak se připojte k **databázi fondu SQL** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
+Pak se připojte k **vyhrazené databázi fondu SQL** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
 
 ```sql
 -- Connect to the database and create a database user
@@ -104,4 +104,4 @@ Databázi můžete šifrovat pomocí [Azure Portal](sql-data-warehouse-encryptio
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k fondu SQL](../sql/connect-overview.md).
+Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k vyhrazenému fondu SQL](../sql/connect-overview.md).

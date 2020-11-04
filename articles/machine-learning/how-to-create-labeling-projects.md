@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601434628258b8af3fb5fb9336f701be72441c64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776115"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318121"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -30,7 +30,7 @@ Můžete spustit a zastavit projekt a řídit průběh označování. Můžete z
 > [!Important]
 > V současné době jsou podporovány pouze projekty klasifikace obrázků a označení identifikace objektu. Kromě toho musí být image dat dostupné v úložišti dat objektů BLOB v Azure. (Pokud nemáte existující úložiště dat, můžete při vytváření projektu nahrávat obrázky.)
 
-V tomto článku se dozvíte, jak:
+V tomto článku se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření projektu
@@ -39,12 +39,12 @@ V tomto článku se dozvíte, jak:
 > * Export popisků
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
 * Pokyny pro označování.
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://aka.ms/AMLFree).
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
@@ -76,9 +76,9 @@ V mnoha případech je přesně možné pouze nahrávat místní soubory. [Průz
 
 Chcete-li vytvořit datovou sadu z dat, která již byla uložena v úložišti objektů BLOB v Azure:
 
-1. Vyberte **vytvořit datovou sadu**  >  **z úložiště**dat.
+1. Vyberte **vytvořit datovou sadu**  >  **z úložiště** dat.
 1. Přiřaďte k datové sadě **název** .
-1. Jako **Typ datové sady**vyberte **soubor** .  Jsou podporovány pouze typy datových sad souborů.
+1. Jako **Typ datové sady** vyberte **soubor** .  Jsou podporovány pouze typy datových sad souborů.
 1. Vyberte úložiště dat.
 1. Pokud jsou vaše data v podsložce v úložišti objektů blob, zvolte **Procházet** a vyberte cestu.
     * Přidejte do cesty znak "/* *", chcete-li zahrnout všechny soubory do podsložek vybrané cesty.
@@ -94,7 +94,7 @@ Přímé nahrání dat:
 
 1. Vyberte **vytvořit datovou sadu**  >  **z místních souborů**.
 1. Přiřaďte k datové sadě **název** .
-1. Jako **Typ datové sady**vyberte "soubor".
+1. Jako **Typ datové sady** vyberte "soubor".
 1. *Volitelné:* Vyberte **Upřesnit nastavení** a přizpůsobte úložiště dat, kontejner a cestu k datům.
 1. Vyberte **Procházet** a vyberte místní soubory, které se mají nahrát.
 1. Zadejte popis datové sady.
@@ -152,7 +152,7 @@ Vyberte možnost *Povolit popisky na základě ml s asistencí* a určete GPU, k
 * Clustering
 * Předznačení
 
-Přesný počet imagí označených popiskem, které jsou nutné ke spuštění s asistencí, není pevným číslem.  To se může výrazně lišit od jednoho popisku projektu k jinému. U některých projektů je někdy možné, že se po 300 imagí, které jsou označeny ručně, zobrazí předznačení nebo úkoly clusteru. Označování s asistencí ML používá techniku nazývanou *učení přenosu*, která používá předem připravený model k tomu, abyste mohli začít školicí proces. Pokud jsou třídy vaší datové sady podobné těm v předškolených modelech, mohou být před popisky dostupné až po několika stovkách, které jsou ručně označené. Pokud se vaše datová sada významně liší od dat používaných k předběžnému učení modelu, může to trvat mnohem déle.
+Přesný počet imagí označených popiskem, které jsou nutné ke spuštění s asistencí, není pevným číslem.  To se může výrazně lišit od jednoho popisku projektu k jinému. U některých projektů je někdy možné, že se po 300 imagí, které jsou označeny ručně, zobrazí předznačení nebo úkoly clusteru. Označování s asistencí ML používá techniku nazývanou *učení přenosu* , která používá předem připravený model k tomu, abyste mohli začít školicí proces. Pokud jsou třídy vaší datové sady podobné těm v předškolených modelech, mohou být před popisky dostupné až po několika stovkách, které jsou ručně označené. Pokud se vaše datová sada významně liší od dat používaných k předběžnému učení modelu, může to trvat mnohem déle.
 
 Vzhledem k tomu, že závěrečné popisky stále spoléhají na vstup od štítku, tato technologie se někdy označuje jako *člověk v označení smyčky* .
 
@@ -189,7 +189,7 @@ Pokud chcete pozastavit nebo restartovat projekt, přepněte stav **spuštění*
 
 Karta **řídicí panel** zobrazuje průběh úlohy označování.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Průvodce vytvořením projektu s popisem":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Řídicí panel pro popisky dat":::
 
 Graf průběhu ukazuje, kolik položek bylo označeno a kolik ještě není hotovo.  Nevyřízené položky mohou být:
 
@@ -260,4 +260,4 @@ Soubor díky Coco se vytvoří ve výchozím úložišti objektů BLOB v pracovn
 
 * [Kurz: vytvoření prvního projektu označování klasifikace imagí](tutorial-labeling.md).
 * Obrázky popisků pro [klasifikaci obrázku nebo detekci objektů](how-to-label-images.md)
-* Další informace o [Azure Machine Learning a Machine Learning Studio (Classic)](compare-azure-ml-to-studio-classic.md)
+* Další informace o [Azure Machine Learning a Machine Learning Studio (Classic)](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 1c8958062c7430f98db0925c2b3996887bfe5548
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637356"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318245"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -79,7 +79,7 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Vytvoření propojené služby Azure synapse Analytics
 
-1. Pokud chcete přidat propojenou službu Azure synapse Analytics, opakujte stejný postup. Na kartě připojení klikněte na **Nový** . Vyberte dlaždici **Azure synapse Analytics (dříve SQL DW)** a klikněte na pokračovat.
+1. Pokud chcete přidat propojenou službu Azure synapse Analytics, opakujte stejný postup. Na kartě připojení klikněte na **Nový**. Vyberte dlaždici **Azure synapse Analytics (dříve SQL DW)** a klikněte na pokračovat.
 
     ![Portál – konfigurace 6](media/lab-data-flow-data-share/configure6.png)
 1. V podokně Konfigurace propojené služby zadejte jako název propojené služby ' SQLDW '. Zadejte přihlašovací údaje, aby se data Factory mohla připojit k vaší databázi. Pokud používáte ověřování SQL, zadejte název serveru, databázi, uživatelské jméno a heslo. Kliknutím na **Testovat připojení** můžete ověřit, jestli jsou informace o připojení správné. Po dokončení klikněte na **vytvořit** .
@@ -88,7 +88,7 @@ V Azure Data Factory propojené služby definují informace o připojení k exte
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Vytvoření propojené služby Azure Data Lake Storage Gen2
 
-1. Poslední propojená služba potřebná pro toto testovací prostředí je Azure Data Lake Storage Gen2.  Na kartě připojení klikněte na **Nový** . Vyberte dlaždici **Azure Data Lake Storage Gen2** a klikněte na pokračovat.
+1. Poslední propojená služba potřebná pro toto testovací prostředí je Azure Data Lake Storage Gen2.  Na kartě připojení klikněte na **Nový**. Vyberte dlaždici **Azure Data Lake Storage Gen2** a klikněte na pokračovat.
 
     ![Portál – konfigurace 8](media/lab-data-flow-data-share/configure8.png)
 1. V podokně Konfigurace propojené služby zadejte jako název propojené služby ' ADLSGen2 '. Pokud používáte ověřování pomocí klíče účtu, vyberte účet úložiště ADLS Gen2 v rozevíracím seznamu **název účtu úložiště** . Kliknutím na **Testovat připojení** můžete ověřit, jestli jsou informace o připojení správné. Po dokončení klikněte na **vytvořit** .
@@ -111,7 +111,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 
 ### <a name="create-a-pipeline-with-a-copy-activity"></a>Vytvoření kanálu s aktivitou kopírování
 
-1. V podokně prostředky továrny kliknutím na ikonu Plus otevřete nabídku nový prostředek. Vyberte **kanál** .
+1. V podokně prostředky továrny kliknutím na ikonu Plus otevřete nabídku nový prostředek. Vyberte **kanál**.
 
     ![Kopie na portálu 1](media/lab-data-flow-data-share/copy1.png)
 1. Na kartě **Obecné** na plátně kanálu pojmenujte svůj kanál s popisným názvem, jako je například "IngestAndTransformTaxiData".
@@ -123,13 +123,13 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 
 ### <a name="configure-azure-sql-db-source-dataset"></a>Konfigurace zdrojové datové sady Azure SQL DB
 
-1. Klikněte na kartu **zdroj** aktivity kopírování. Chcete-li vytvořit novou datovou sadu, klikněte na tlačítko **Nový** . Zdroj bude tabulka dbo. TripData ' umístěný v ' SQLDB ' propojené službě ' ' byl nakonfigurován dříve.
+1. Klikněte na kartu **zdroj** aktivity kopírování. Chcete-li vytvořit novou datovou sadu, klikněte na tlačítko **Nový**. Zdroj bude tabulka dbo. TripData ' umístěný v ' SQLDB ' propojené službě ' ' byl nakonfigurován dříve.
 
     ![Kopie portálu 4](media/lab-data-flow-data-share/copy4.png)
 1. Vyhledejte **Azure SQL Database** a klikněte na pokračovat.
 
     ![Kopie portálu 5](media/lab-data-flow-data-share/copy5.png)
-1. Zavolejte svou datovou sadu ' TripData '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripData ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště** . Po dokončení klikněte na OK.
+1. Zavolejte svou datovou sadu ' TripData '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripData ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště**. Po dokončení klikněte na OK.
 
     ![Kopie portálu 6](media/lab-data-flow-data-share/copy6.png)
 
@@ -137,7 +137,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 
 ### <a name="configure-adls-gen2-sink-dataset"></a>Konfigurovat datovou sadu jímky ADLS Gen2
 
-1. Klikněte na kartu **jímka** aktivity kopírování. Chcete-li vytvořit novou datovou sadu, klikněte na tlačítko **Nový** .
+1. Klikněte na kartu **jímka** aktivity kopírování. Chcete-li vytvořit novou datovou sadu, klikněte na tlačítko **Nový**.
 
     ![Kopie portálu 7](media/lab-data-flow-data-share/copy7.png)
 1. Vyhledejte **Azure Data Lake Storage Gen2** a klikněte na pokračovat.
@@ -146,7 +146,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 1. V podokně vybrat formát vyberte **DelimitedText** při zápisu do souboru CSV. Klikněte na pokračovat.
 
     ![Portál – kopie 9](media/lab-data-flow-data-share/copy9.png)
-1. Pojmenujte datovou sadu jímky ' TripDataCSV '. Jako propojená služba vyberte ADLSGen2. Zadejte, kam chcete zapisovat do souboru CSV. Můžete například zapsat data do souboru `trip-data.csv` v kontejneru `staging-container` . Nastavte **první řádek jako záhlaví** na true, protože chcete, aby výstupní data měla záhlaví. Vzhledem k tomu, že v cíli ještě neexistuje žádný soubor, nastavte **schéma pro import** na **none** . Po dokončení klikněte na OK.
+1. Pojmenujte datovou sadu jímky ' TripDataCSV '. Jako propojená služba vyberte ADLSGen2. Zadejte, kam chcete zapisovat do souboru CSV. Můžete například zapsat data do souboru `trip-data.csv` v kontejneru `staging-container` . Nastavte **první řádek jako záhlaví** na true, protože chcete, aby výstupní data měla záhlaví. Vzhledem k tomu, že v cíli ještě neexistuje žádný soubor, nastavte **schéma pro import** na **none**. Po dokončení klikněte na OK.
 
     ![Kopie na portálu 10](media/lab-data-flow-data-share/copy10.png)
 
@@ -176,7 +176,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. V podokně aktivity plátna kanálu otevřete možnost **přesunutí a transformace** a přetáhněte aktivitu **toku dat** na plátno.
 
     ![Tok dat portálu 1](media/lab-data-flow-data-share/dataflow1.png)
-1. V bočním podokně, které se otevře, vyberte **vytvořit nový tok dat** a zvolte **mapování toku dat** . Klikněte na **OK** .
+1. V bočním podokně, které se otevře, vyberte **vytvořit nový tok dat** a zvolte **mapování toku dat**. Klikněte na **OK**.
 
     ![Datový tok portálu 2](media/lab-data-flow-data-share/dataflow2.png)
 1. Budete přesměrováni na plátno toku dat, kde budete vytvářet logiku transformace. Na kartě Obecné pojmenujte datový tok ' JoinAndAggregateData '.
@@ -191,7 +191,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. Pojmenujte zdroj "TripDataCSV" a z rozevíracího seznamu zdroj vyberte datovou sadu "TripDataCSV". Pokud si pamatujete, při vytváření této datové sady jste neimportovali schéma, protože zde nejsou žádná data. Vzhledem `trip-data.csv` k tomu, že teď existuje, klikněte na **Upravit** a přejděte na kartu nastavení datové sady.
 
     ![Tok dat portálu 5](media/lab-data-flow-data-share/dataflow5.png)
-1. Přejděte ke **schématu** tabulátoru a klikněte na **importovat schéma** . Vyberte možnost **připojení/obchod** pro import přímo z úložiště souborů. mělo by se zobrazit 14 sloupců typu řetězec.
+1. Přejděte ke **schématu** tabulátoru a klikněte na **importovat schéma**. Vyberte možnost **připojení/obchod** pro import přímo z úložiště souborů. mělo by se zobrazit 14 sloupců typu řetězec.
 
     ![Tok dat portálu 6](media/lab-data-flow-data-share/dataflow6.png)
 1. Vraťte se zpět do toku dat ' JoinAndAggregateData '. Pokud byl váš ladicí cluster spuštěn (označen zeleným kroužkem vedle posuvníku ladění), můžete získat snímek dat na kartě **Náhled dat** . Kliknutím na **aktualizovat** načtete náhled dat.
@@ -209,10 +209,10 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. Pojmenujte tento zdroj ' TripFaresSQL '. Kliknutím na **Nový** vedle pole zdrojová datová sada vytvořte novou datovou sadu SQL DB.
 
     ![Datový tok portálu 9](media/lab-data-flow-data-share/dataflow9.png)
-1. Vyberte dlaždici **Azure SQL Database** a klikněte na pokračovat. *Poznámka: Možná si všimnete, že mnoho konektorů ve službě Data Factory není v toku dat mapování podporováno. Pokud chcete transformovat data z jednoho z těchto zdrojů, ingestujte je do podporovaného zdroje pomocí aktivity kopírování* .
+1. Vyberte dlaždici **Azure SQL Database** a klikněte na pokračovat. *Poznámka: Možná si všimnete, že mnoho konektorů ve službě Data Factory není v toku dat mapování podporováno. Pokud chcete transformovat data z jednoho z těchto zdrojů, ingestujte je do podporovaného zdroje pomocí aktivity kopírování*.
 
     ![Tok dat portálu 10](media/lab-data-flow-data-share/dataflow10.png)
-1. Zavolejte svou datovou sadu ' TripFares '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripFares ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště** . Po dokončení klikněte na OK.
+1. Zavolejte svou datovou sadu ' TripFares '. Jako propojená služba vyberte SQLDB. Vyberte název tabulky dbo. TripFares ' v rozevíracím seznamu název tabulky. Importujte schéma **z připojení/úložiště**. Po dokončení klikněte na OK.
 
     ![Datový tok portálu 11](media/lab-data-flow-data-share/dataflow11.png)
 1. Chcete-li ověřit data, načtěte náhled dat na kartě **Náhled dat** .
@@ -221,7 +221,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 
 ### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>Vnitřní spojení TripDataCSV a TripFaresSQL
 
-1. Chcete-li přidat novou transformaci, klikněte na ikonu Plus v pravém dolním rohu ' TripDataCSV '. V části **více vstupů/výstupů** vyberte **připojit** .
+1. Chcete-li přidat novou transformaci, klikněte na ikonu Plus v pravém dolním rohu ' TripDataCSV '. V části **více vstupů/výstupů** vyberte **připojit**.
 
     ![Spojení s portálem 1](media/lab-data-flow-data-share/join1.png)
 1. Pojmenujte transformaci JOIN ' InnerJoinWithTripFares '. V rozevíracím seznamu pravý datový proud vyberte ' TripFaresSQL '. Jako typ spojení vyberte **vnitřní** . Další informace o různých typech spojení v mapování toku dat najdete v tématu [typy spojení](./data-flow-join.md#join-types).
@@ -248,12 +248,12 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     Nejprve vytvoříte výraz Průměrná tarify. Do textového pole s názvem **Přidat nebo vybrat sloupec** zadejte ' average_fare '.
 
     ![Portál AGG 3](media/lab-data-flow-data-share/agg3.png)
-1. Chcete-li zadat agregační výraz, klikněte na modrý rámeček označený **výrazem ENTER** . Tím se otevře Tvůrce výrazů toku dat, který slouží k vizuálnímu vytváření výrazů toku dat pomocí vstupního schématu, integrovaných funkcí a operací a uživatelsky definovaných parametrů. Další informace o možnostech Tvůrce výrazů naleznete v [dokumentaci k tvůrci výrazů](./concepts-data-flow-expression-builder.md).
+1. Chcete-li zadat agregační výraz, klikněte na modrý rámeček označený **výrazem ENTER**. Tím se otevře Tvůrce výrazů toku dat, který slouží k vizuálnímu vytváření výrazů toku dat pomocí vstupního schématu, integrovaných funkcí a operací a uživatelsky definovaných parametrů. Další informace o možnostech Tvůrce výrazů naleznete v [dokumentaci k tvůrci výrazů](./concepts-data-flow-expression-builder.md).
 
     K získání průměrného tarifu použijte agregační `avg()` funkci pro agregaci `total_amount` přetypování sloupce na celé číslo pomocí `toInteger()` . V jazyce výrazu toku dat je tato definice definována jako `avg(toInteger(total_amount))` . Až budete hotovi, klikněte na **Uložit a dokončit** .
 
     ![Portál AGG 4](media/lab-data-flow-data-share/agg4.png)
-1. Chcete-li přidat další agregační výraz, klikněte na ikonu plus vedle pole `average_fare` . Vyberte **Přidat sloupec** .
+1. Chcete-li přidat další agregační výraz, klikněte na ikonu plus vedle pole `average_fare` . Vyberte **Přidat sloupec**.
 
     ![AGG na portálu 5](media/lab-data-flow-data-share/agg5.png)
 1. Do textového pole s názvem **Přidat nebo vybrat sloupec** zadejte ' total_trip_distance '. Jako v posledním kroku otevřete Tvůrce výrazů, který zadáte do výrazu.
@@ -310,7 +310,7 @@ Právě jste dokončili část Data Factory tohoto testovacího prostředí. Pok
 
 V této části se dozvíte, jak nastavit novou sdílenou složku pomocí Azure Portal. Tato akce zahrnuje vytvoření nové sdílené složky, která bude obsahovat datové sady z Azure Data Lake Store Gen2 a Azure synapse Analytics (dřív SQL Data Warehouse). Potom nakonfigurujete plán snímků, který poskytne spotřebitelům dat možnost automaticky aktualizovat data, která jsou s nimi sdílená. Potom budete pozvat příjemce do sdílené složky dat. 
 
-Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemcem dat* . Jako příjemce dat provedete postup přijetí pozvánky ke sdílení dat a nakonfigurujete, kam chcete data přijímat a mapování datových sad na jiná umístění úložiště. Potom budete aktivovat snímek, který bude kopírovat data, která s vámi sdílí, do zadaného cíle. 
+Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemcem dat*. Jako příjemce dat provedete postup přijetí pozvánky ke sdílení dat a nakonfigurujete, kam chcete data přijímat a mapování datových sad na jiná umístění úložiště. Potom budete aktivovat snímek, který bude kopírovat data, která s vámi sdílí, do zadaného cíle. 
 
 ### <a name="sharing-data-data-provider-flow"></a>Sdílení dat (tok Zprostředkovatel dat)
 
@@ -320,7 +320,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Inzeráty na portál](media/lab-data-flow-data-share/portal-ads.png)
 
-1. V názvu vyberte účet pro sdílení dat se zprostředkovatelem. Například **DataProvider0102** . 
+1. V názvu vyberte účet pro sdílení dat se zprostředkovatelem. Například **DataProvider0102**. 
 
 1. Vyberte možnost **začít sdílet data** .
 
@@ -336,7 +336,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Sdílet podrobnosti](media/lab-data-flow-data-share/ads-details.png)
 
-1. Vyberte **Pokračovat** . 
+1. Vyberte **Pokračovat**. 
 
 1. Vyberte **přidat datové sady** . 
 
@@ -346,8 +346,6 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Přidat datovou sadu SQL](media/lab-data-flow-data-share/add-dataset-sql.png)
 
-> [!NOTE]
-> SQL Data Warehouse se teď označuje jako Azure synapse Analytics.
 
 1. Abyste mohli pokračovat, budete mít k skript, který se má spustit. Zadaný skript vytvoří uživatele v databázi SQL, který umožní vašemu jménem sdílet službu Azure Data Shares MSI. 
 
@@ -372,9 +370,9 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Přidat datovou sadu adls](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. Vyberte **Další** .
+1. Vyberte **Další**.
 
-1. Rozbalte *wwtaxidata* . Rozbalte položku *Boston taxislužby data* . Všimněte si, že můžete sdílet až na úrovni souboru. 
+1. Rozbalte *wwtaxidata*. Rozbalte položku *Boston taxislužby data*. Všimněte si, že můžete sdílet až na úrovni souboru. 
 
 1. Výběrem složky *dat Boston taxislužby* přidejte celou složku do sdílené složky dat. 
 
@@ -382,7 +380,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
 1. Zkontrolujte datové sady, které byly přidány. Do sdílené složky dat byste měli mít přidanou tabulku SQL a složku ADLS Gen2. 
 
-1. Vyberte **Pokračovat** .
+1. Vyberte **Pokračovat**.
 
 1. Na této obrazovce můžete přidat příjemce do sdílené složky dat. Příjemci, které přidáte, budou dostávat pozvánky do sdílené složky dat. Pro účely tohoto testovacího prostředí musíte přidat dvě e-mailové adresy:
 
@@ -396,11 +394,11 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
 1. Pomocí rozevíracího seznamu *opakování* proveďte kontrolu **plánu snímků** a nakonfigurujte hodinovou aktualizaci dat.  
 
-1. Vyberte **Vytvořit** .
+1. Vyberte **Vytvořit**.
 
     Teď máte aktivní sdílení dat. Umožňuje zkontrolovat, co můžete vidět jako poskytovatele dat při vytváření sdílené složky dat. 
 
-1. Vyberte sdílenou složku dat, kterou jste vytvořili, s názvem **DataProvider** . Můžete na ni přejít tak, že vyberete **odeslané sdílené složky** ve **sdílení dat** . 
+1. Vyberte sdílenou složku dat, kterou jste vytvořili, s názvem **DataProvider**. Můžete na ni přejít tak, že vyberete **odeslané sdílené složky** ve **sdílení dat**. 
 
 1. Klikněte na plán snímku. Plán snímků můžete zakázat, pokud zvolíte. 
 
@@ -428,21 +426,21 @@ V e-mailu, který byste měli přijmout, klikněte na Zobrazit > pozvánky. V tu
 
 Může se zobrazit výzva k výběru předplatného. Ujistěte se, že jste vybrali předplatné, ve kterém jste v tomto testovacím prostředí pracovali. 
 
-1. Klikněte na pozvánku s názvem *DataProvider* . 
+1. Klikněte na pozvánku s názvem *DataProvider*. 
 
 1. Na této obrazovce pozvánky si všimnete různých podrobností o sdílené složce dat, kterou jste nakonfigurovali dříve jako poskytovatel dat. Pokud je k dispozici, přečtěte si podrobnosti a přijměte podmínky použití.
 
 1. Vyberte předplatné a skupinu prostředků, které už pro testovací prostředí existují. 
 
-1. V případě **účtu sdílení dat** vyberte **DataConsumer** . Můžete také vytvořit nový účet pro sdílení dat. 
+1. V případě **účtu sdílení dat** vyberte **DataConsumer**. Můžete také vytvořit nový účet pro sdílení dat. 
 
-1. Vedle **položky přijatý název sdílené složky** si všimnete, že výchozí název sdílené složky je název, který byl zadán poskytovatelem dat. Poskytněte sdílené složce popisný název, který popisuje data, která se chystáte přijmout, například **TaxiDataShare** .
+1. Vedle **položky přijatý název sdílené složky** si všimnete, že výchozí název sdílené složky je název, který byl zadán poskytovatelem dat. Poskytněte sdílené složce popisný název, který popisuje data, která se chystáte přijmout, například **TaxiDataShare**.
 
     ![Pozvánka je přijímána](media/lab-data-flow-data-share/consumer-accept.png)
 
-1. Můžete zvolit, že se má **přijmout a nakonfigurovat** , nebo **přijmout a nakonfigurovat později** . Pokud se rozhodnete přijmout a nakonfigurovat teď, zadejte účet úložiště, do kterého se mají kopírovat všechna data. Pokud se rozhodnete přijmout a nakonfigurovat později, datové sady ve sdílené složce se odmapují a budete je muset ručně namapovat. Později vám to vyžádáme. 
+1. Můžete zvolit, že se má **přijmout a nakonfigurovat** , nebo **přijmout a nakonfigurovat později**. Pokud se rozhodnete přijmout a nakonfigurovat teď, zadejte účet úložiště, do kterého se mají kopírovat všechna data. Pokud se rozhodnete přijmout a nakonfigurovat později, datové sady ve sdílené složce se odmapují a budete je muset ručně namapovat. Později vám to vyžádáme. 
 
-1. Vyberte **přijmout a konfigurovat později** . 
+1. Vyberte **přijmout a konfigurovat později**. 
 
     Při konfiguraci této možnosti se vytvoří předplatné Shared, ale pro data, která se mají namapovat, se nikde. 
 
@@ -456,7 +454,7 @@ Může se zobrazit výzva k výběru předplatného. Ujistěte se, že jste vybr
 
     ![nemapované datové sady](media/lab-data-flow-data-share/unmapped.png)
 
-1. Vyberte tabulku Azure synapse Analytics a pak vyberte **+ Mapa k cíli** .
+1. Vyberte tabulku Azure synapse Analytics a pak vyberte **+ Mapa k cíli**.
 
 1. Na pravé straně obrazovky vyberte rozevírací seznam **cílový datový typ** . 
 
@@ -480,7 +478,7 @@ Může se zobrazit výzva k výběru předplatného. Ujistěte se, že jste vybr
 
 1. Otevřete novou kartu Azure Portal. Nezavírejte stávající kartu, protože se k ní budete muset později vrátit. 
 
-1. Na nové kartě, kterou jste otevřeli, přejděte na **databáze SQL** .
+1. Na nové kartě, kterou jste otevřeli, přejděte na **databáze SQL**.
 
 1. Vyberte databázi SQL (v předplatném by měla být jen jedna). Dejte pozor, abyste nevybrali datový sklad. 
 
@@ -492,7 +490,7 @@ Může se zobrazit výzva k výběru předplatného. Ujistěte se, že jste vybr
 
     Tento příkaz umožňuje službě sdílení dat Azure používat spravované identity pro služby Azure k ověření SQL Server, aby bylo možné do ní kopírovat data. 
 
-1. Vraťte se na původní kartu a vyberte **mapovat na cíl** .
+1. Vraťte se na původní kartu a vyberte **mapovat na cíl**.
 
 1. Potom vyberte složku Azure Data Lake Gen2, která je součástí datové sady, a namapujte ji na účet Azure Blob Storage. 
 
@@ -502,7 +500,7 @@ Může se zobrazit výzva k výběru předplatného. Ujistěte se, že jste vybr
 
     ![mapovaný](media/lab-data-flow-data-share/all-mapped.png)
     
-1. Vyberte **Podrobnosti** . 
+1. Vyberte **Podrobnosti**. 
 
     Všimněte si, že **snímek triggeru** už není šedý, protože sdílená složka má teď cíle na kopírování.
 

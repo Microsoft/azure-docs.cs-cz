@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635775"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317070"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory spravované Virtual Network (Preview)
 
@@ -51,7 +51,7 @@ Spravované privátní koncové body jsou privátní koncové body vytvořené v
 
 ![Nový spravovaný privátní koncový bod](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (PaaS) (například Azure Storage, Azure Cosmos DB, Azure synapse Analytics (dříve Azure SQL Data Warehouse)).
+Azure Data Factory podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (PaaS) (například Azure Storage, Azure Cosmos DB, Azure synapse Analytics (dříve SQL Data Warehouse)).
 
 Když použijete privátní propojení, přenosy mezi úložišti dat a spravovaným Virtual Network procházejí výhradně přes páteřní síť Microsoftu. Soukromé propojení chrání před riziky exfiltrace dat. Vytvořením privátního koncového bodu vytvoříte privátní odkaz na prostředek.
 
@@ -81,7 +81,7 @@ Níže jsou podporovány zdroje dat pro připojení prostřednictvím privátní
 - Soubory Azure
 - Azure Data Lake Gen2
 - Azure SQL Database (nezahrnuje spravovanou instanci SQL Azure)
-- Azure Synapse Analytics (dříve Azure SQL Data Warehouse)
+- Azure Synapse Analytics (dříve SQL Data Warehouse)
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Služba privátního propojení Azure

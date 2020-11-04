@@ -1,6 +1,6 @@
 ---
 title: Připojení k synapse SQL pomocí Power BI Professional
-description: V tomto kurzu provedeme kroky, jak připojit Power BI Desktop k SQL na vyžádání (Preview).
+description: V tomto kurzu provedeme kroky, jak připojit Power BI Desktop k fondu SQL bez serveru (Preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 97b611c449302c95d4b24c305ce50ee7683e85ea
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899113"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316470"
 ---
-# <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Připojení k synapse SQL pomocí Power BI Professional
+# <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Připojení k fondu SQL bez serveru pomocí Power BI Professional
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "92899113"
 > - [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-V tomto kurzu provedeme kroky pro připojení Power BI plochy k SQL na vyžádání (Preview).
+V tomto kurzu provedeme kroky pro připojení Power BIho desktopu k fondu SQL bez serveru (Preview).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -43,17 +43,17 @@ Parametry:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Bude použito jako název serveru.                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Použije se k určení, jaké úložiště se bude používat v ukázkách. |
+| Adresa koncového bodu služby fondu SQL bez serveru    | Bude použito jako název serveru.                                   |
+| Oblast koncového bodu služby fondu SQL bez serveru     | Použije se k určení, jaké úložiště se bude používat v ukázkách. |
 | Uživatelské jméno a heslo pro přístup ke koncovému bodu | Bude použito pro přístup ke koncovému bodu                               |
-| Databáze, kterou použijete k vytvoření zobrazení     | Tato databáze se použije jako výchozí bod v ukázkách.       |
+| Databáze, kterou použijete k vytvoření zobrazení       | Tato databáze se použije jako výchozí bod v ukázkách.       |
 
 ## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
 Před použitím ukázek jsou k dispozici dva kroky:
 
 1. Vytvoření databáze pro zobrazení
-2. Vytvoření přihlašovacích údajů, které budou používat SQL na vyžádání pro přístup k souborům v úložišti
+2. Vytvoření přihlašovacích údajů, které bude používat fond SQL bez serveru pro přístup k souborům v úložišti
 
 ### <a name="create-database"></a>Vytvoření databáze
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Vytvořit pověření
 
-Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tento přihlašovací údaj bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
+Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tato pověření budou používána službou fondu SQL bez serveru pro přístup k souborům v úložišti.
 
 > [!NOTE]
-> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když může SQL na vyžádání získat přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
+> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když fond SQL bez serveru má přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
 
 **Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání** , spusťte:
 
@@ -98,7 +98,7 @@ Otevřete Power BI desktopovou aplikaci a vyberte možnost **získat data** .
 
 ### <a name="step-1---select-data-source"></a>Krok 1 – Výběr zdroje dat
 
-V nabídce vyberte **Azure** a pak **Azure SQL Database** .
+V nabídce vyberte **Azure** a pak **Azure SQL Database**.
 ![Vyberte zdroj dat.](./media/get-started-power-bi-professional/step-1-select-data-source.png)
 
 ### <a name="step-2---select-database"></a>Krok 2 – Výběr databáze
@@ -108,5 +108,4 @@ Napište adresu URL pro databázi a název databáze, ve které se zobrazení na
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejděte k [souborům úložiště dotazů](get-started-azure-data-studio.md) a Naučte se, jak se připojit k SQL na vyžádání pomocí Azure Data Studio.
- 
+Přejděte k [souborům úložiště dotazů](get-started-azure-data-studio.md) a Naučte se, jak se připojit k fondu SQL bez serveru pomocí Azure Data Studio.

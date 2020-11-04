@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285960"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93316686"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
 
@@ -58,7 +58,7 @@ Po dokončení běhu se již na této stránce nebude zobrazovat. Chcete-li zobr
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Monitorování běhů pomocí widgetu pro Poznámkový blok Jupyter
 
-Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
+Když použijete metodu **ScriptRunConfig** k odeslání spuštění, můžete sledovat průběh běhu pomocí [widgetu Jupyter](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Podobně jako odeslání spuštění je tento widget asynchronní a poskytuje průběžné aktualizace každých 10 až 15 sekund, dokud se úloha nedokončí.
 
 Zobrazit widget Jupyter při čekání na dokončení běhu.
     
@@ -134,4 +134,3 @@ Pokud se chcete dozvědět, jak používat Azure Machine Learning, zkuste tyto d
 * Naučte se [sledovat experimenty a protokoly povolit v návrháři Azure Machine Learning](how-to-track-designer-experiments.md).
 
 * Příklad postupu při registraci nejvhodnějšího modelu a jeho nasazení najdete v kurzu [Trénování modelu klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
-
