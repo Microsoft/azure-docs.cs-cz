@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3ba5751e7a0c2369d505535896bbb4ff7523c02
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369956"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314575"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Kurz: výuka prvního modelu strojového učení (část 3 ze 4)
 
@@ -38,7 +38,7 @@ V tomto kurzu jste:
 > * Protokoluje metriky pro Azure Machine Learning.
 > * Podívejte se na vaše metriky v cloudu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [části 2](tutorial-1st-experiment-hello-world.md) série.
 * Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
@@ -98,7 +98,7 @@ trainset = torchvision.datasets.CIFAR10(
     transform=torchvision.transforms.ToTensor(),
 )
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=4, shuffle=True, num_workers=2
+    trainset, batch_size=4, shuffle=True
 )
 
 if __name__ == "__main__":
@@ -220,7 +220,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning poskytuje koncept [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) , které představuje reprodukovatelné prostředí Pythonu ve verzi pro spouštění experimentů. Je snadné vytvořit prostředí z místního prostředí conda nebo PIP.
+      Azure Machine Learning poskytuje koncept [prostředí](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) , které představuje reprodukovatelné prostředí Pythonu ve verzi pro spouštění experimentů. Je snadné vytvořit prostředí z místního prostředí conda nebo PIP.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -228,7 +228,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      Přidá prostředí do [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true).
+      Přidá prostředí do [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).
    :::column-end:::
 :::row-end:::
 
@@ -406,7 +406,7 @@ Tentokrát, když navštívíte Studio, přejděte na kartu **metriky** , kde se
 
 V této relaci jste upgradovali ze základního "Hello World!" skript do realističtějšího školicího skriptu, který vyžadoval spuštění konkrétního prostředí Pythonu. Zjistili jste, jak převzít místní prostředí conda do cloudu pomocí Azure Machine Learningch prostředí. Nakonec jste viděli, jak v několika řádcích kódu můžete protokolovat metriky pro Azure Machine Learning.
 
-Existují i jiné způsoby vytváření Azure Machine Learning prostředí, včetně souboru [pip requirements.txt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-pip-requirements-name--file-path-) nebo [ze stávajícího místního prostředí conda](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#from-existing-conda-environment-name--conda-environment-name-).
+Existují i jiné způsoby vytváření Azure Machine Learning prostředí, včetně souboru [pip requirements.txt](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-) nebo [ze stávajícího místního prostředí conda](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-).
 
 V další relaci uvidíte, jak pracovat s daty v Azure Machine Learning nahráním datové sady CIFAR10 do Azure.
 

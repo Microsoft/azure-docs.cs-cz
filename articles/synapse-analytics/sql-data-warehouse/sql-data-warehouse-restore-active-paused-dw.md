@@ -1,6 +1,6 @@
 ---
-title: Obnovení stávajícího datového skladu
-description: Návod pro obnovení existujícího fondu SQL.
+title: Obnovení existujícího vyhrazeného fondu SQL
+description: Návod pro obnovení existujícího vyhrazeného fondu SQL.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: dead71d08b5a7a16871816580107c8aed8a0a77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5ced43e1277ffbb1c9988af08ee032ab93a15e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405101"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313496"
 ---
-# <a name="restore-an-existing-sql-pool"></a>Obnovit existující fond SQL
+# <a name="restore-an-existing-dedicated-sql-pool-in-azure-synapse-analytics"></a>Obnovení existujícího vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak obnovit existující fond SQL ve službě Azure synapse Analytics pomocí Azure Portal a PowerShellu.
+V tomto článku se dozvíte, jak obnovit existující vyhrazený fond SQL ve službě Azure synapse Analytics pomocí Azure Portal a PowerShellu.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ V tomto článku se dozvíte, jak obnovit existující fond SQL ve službě Azur
 1. Nezapomeňte [nainstalovat Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Máte existující bod obnovení, ze kterého chcete obnovit. Pokud chcete vytvořit nové obnovení, přečtěte si [kurz vytvoření nového bodu obnovení definovaného uživatelem](sql-data-warehouse-restore-points.md).
 
-## <a name="restore-an-existing-sql-pool-through-powershell"></a>Obnovení existujícího fondu SQL pomocí PowerShellu
+## <a name="restore-an-existing-dedicated-sql-pool-through-powershell"></a>Obnovení existujícího vyhrazeného fondu SQL prostřednictvím PowerShellu
 
-Pokud chcete obnovit existující fond SQL z bodu obnovení, použijte rutinu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell.
+Pokud chcete obnovit existující vyhrazený fond SQL z bodu obnovení, použijte rutinu [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell.
 
 1. Otevřete PowerShell.
 
@@ -41,18 +41,18 @@ Pokud chcete obnovit existující fond SQL z bodu obnovení, použijte rutinu [R
 
 3. Vyberte předplatné, které obsahuje databázi, kterou chcete obnovit.
 
-4. Vypíše body obnovení pro fond SQL.
+4. Vypíše body obnovení pro vyhrazený fond SQL.
 
 5. Vyberte požadovaný bod obnovení pomocí RestorePointCreationDate.
 
-6. Obnovte fond SQL na požadovaný bod obnovení pomocí rutiny [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell.
+6. Pomocí rutiny [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell obnovte vyhrazený fond SQL pro požadovaný bod obnovení.
 
-    1. Chcete-li obnovit fond SQL na jiný server, nezapomeňte zadat jiný název serveru.  Tento server může být také v jiné skupině prostředků a oblasti.
+    1. Pro obnovení vyhrazeného fondu SQL na jiný server Nezapomeňte zadat jiný název serveru.  Tento server může být také v jiné skupině prostředků a oblasti.
     2. K obnovení do jiného předplatného použijte tlačítko přesunout a přesuňte server do jiného předplatného.
 
-7. Ověřte, zda je obnovený fond SQL online.
+7. Ověřte, jestli je obnovený vyhrazený fond SQL online.
 
-8. Po dokončení obnovení můžete po obnovení nakonfigurovat obnovený fond SQL pomocí [Konfigurace databáze](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
+8. Po dokončení obnovení můžete nakonfigurovat obnovený vyhrazený fond SQL po [obnovení po obnovení po obnovení konfigurace databáze](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 
@@ -89,19 +89,19 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Obnovte stávající fond SQL prostřednictvím Azure Portal
+## <a name="restore-an-existing-dedicated-sql-pool-through-the-azure-portal"></a>Obnovení existujícího vyhrazeného fondu SQL prostřednictvím Azure Portal
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
-2. Přejděte do fondu SQL, ze kterého chcete obnovit.
+2. Přejděte na vyhrazené, ze kterého chcete obnovit.
 3. V horní části okna Přehled vyberte **obnovit**.
 
     ![ Obnovení – přehled](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud fond SQL neobsahuje žádné body automatického obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. U User-Defined bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru**můžete vybrat server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
+4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud vyhrazený fond SQL neobsahuje žádné automatické body obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. U User-Defined bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru** můžete vybrat server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
 
     ![Automatické body obnovení](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovení odstraněného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
-- [Obnovení z fondu SQL geografického zálohování](sql-data-warehouse-restore-from-geo-backup.md)
+- [Obnovení odstraněného vyhrazeného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
+- [Obnovení z vyhrazeného fondu SQL geografického zálohování](sql-data-warehouse-restore-from-geo-backup.md)

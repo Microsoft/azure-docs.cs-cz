@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick,
-ms.openlocfilehash: da4cef50610b219689e2271e9f70fd1adb1a235f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540502"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313627"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Kurz: spouštění experimentů pomocí automatizovaného ML a Apache Spark
 
@@ -29,13 +29,16 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 - Vypočítat přesnost modelu
 
 ### <a name="before-you-begin"></a>Než začnete
-- Pomocí [kurzu Vytvoření fondu Apache Spark](../quickstart-create-apache-spark-pool-studio.md)vytvořte fond Apache Spark.
+
+- Vytvořte fond Apache Spark bez serveru, a to pomocí [rychlého startu vytvoření fondu Apache Spark bez serveru](../quickstart-create-apache-spark-pool-studio.md).
 - Pokud nemáte existující pracovní prostor Azure Machine Learning, dokončete [kurz nastavení Azure Machine Learning pracovního prostoru](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup) . 
 
 ### <a name="understand-regression-models"></a>Pochopení modelů regrese
+
 *Regresní modely* předpovídá číselné výstupní hodnoty na základě nezávislých předpovídat. V regresi je cílem přispět k navázání vztahu mezi těmito nezávislými proměnnými proměnných odhadem toho, jak jedna proměnná má vliv na ostatní.  
 
 ### <a name="regression-analysis-example-on-the-nyc-taxi-data"></a>Příklad regresní analýzy v datech taxislužby NYC
+
 V tomto příkladu budete pomocí Sparku provádět určitou analýzu dat taxislužby Trips z New York. Data jsou dostupná prostřednictvím [Azure Open DataSet](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Tato podmnožina DataSet obsahuje informace o žluté taxislužby TRIPS, včetně informací o jednotlivých cestách, počátečním a koncovém času a umístěních, nákladech a dalších zajímavých atributů.
 
 > [!IMPORTANT]
@@ -143,7 +146,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Převod datového rámce na Azure Machine Learning datovou sadu
-Abychom mohli odeslat vzdálený experiment, bude nutné převést naši datovou sadu na Azure Machine Learning ```TabularDatset``` . [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
+Abychom mohli odeslat vzdálený experiment, bude nutné převést naši datovou sadu na Azure Machine Learning ```TabularDatset``` . [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) představuje data v tabulkovém formátu tím, že analyzuje zadané soubory.
 
 Následující kód získá existující pracovní prostor a výchozí Azure Machine Learning výchozí úložiště dat. Pak předá do parametru Path úložiště dat a umístění souborů a vytvoří nový ```TabularDataset``` . 
 
@@ -165,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 
 ![Obrázek nahrané datové sady](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
 
-## <a name="submit-an-auto-ml-experiment"></a>Odeslat experiment s automatickým ML
+## <a name="submit-an-automl-experiment"></a>Odeslat experiment AutoML
 
 #### <a name="define-training-settings"></a>Definování nastavení školení
 

@@ -1,6 +1,6 @@
 ---
 title: Použití uložených procedur
-description: Tipy pro implementaci uložených procedur v synapse SQL pro vývoj řešení
+description: Tipy pro implementaci uložených procedur pomocí SQL synapse ve službě Azure synapse Analytics pro vývoj řešení.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 607060851a8afa48b9570dfcb17732279a3629ee
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3940d762dbc249e0303ddf905acbeeed7f96aa4f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286661"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315552"
 ---
-# <a name="use-stored-procedures-in-synapse-sql"></a>Použití uložených procedur v synapse SQL
+# <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Uložené procedury využívající synapse SQL ve službě Azure synapse Analytics
 
 Synapse SQL zřízené a fondy bez serveru umožňují umístit komplexní logiku zpracování dat do uložených procedur SQL. Uložené procedury jsou skvělým způsobem, jak zapouzdřit kód SQL a uložit ho blízko k datům v datovém skladu. Uložené procedury usnadňují vývojářům naplánovat modularizaci jejich řešení zapouzdřením kódu do spravovatelných jednotek a usnadněním větší využitelnosti kódu. Každý uložený postup může také přijímat parametry, aby byly ještě flexibilnější.
 V tomto článku najdete pár tipů pro implementaci uložených procedur v synapse fondu SQL pro vývoj řešení.
@@ -27,7 +27,7 @@ V tomto článku najdete pár tipů pro implementaci uložených procedur v syna
 Synapse SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení. V tomto článku se dozvíte o funkcích, které můžete umístit do uložených procedur.
 
 > [!NOTE]
-> V těle procedury můžete použít pouze funkce, které jsou podporovány v oblasti synapse SQL Surface. Přečtěte si [Tento článek](overview-features.md) a Identifikujte objekty, příkazy, které lze použít v uložených procedurách. V příkladech těchto článků se používají obecné funkce, které jsou dostupné v oblasti bez serveru i zřízené plochy. Další [omezení najdete v části zřízené a synapse fondy SQL serveru](#limitations) na konci tohoto článku.
+> V těle procedury můžete použít pouze funkce, které jsou podporovány v oblasti synapse SQL Surface. Přečtěte si [Tento článek](overview-features.md) a Identifikujte objekty, příkazy, které lze použít v uložených procedurách. Příklady v těchto článcích používají obecné funkce, které jsou k dispozici v neserveru i v oblasti vyhrazené plochy. Další [omezení najdete v části zřízené a synapse fondy SQL serveru](#limitations) na konci tohoto článku.
 
 Aby bylo možné zachovat rozsah a výkon fondu SQL, existují také některé funkce a funkce, které mají rozdíly v chování a jiné, které nejsou podporovány.
 

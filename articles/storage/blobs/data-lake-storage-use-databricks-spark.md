@@ -9,18 +9,18 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: b5f1d0712098e4fe331607860f6e0ed488d29c1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 394e735be5da65ffa75e10200589a4adb4e7cad2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848788"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313928"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
 V tomto kurzu se dozvíte, jak připojit cluster Azure Databricks k datům uloženým v účtu úložiště Azure, který má povolený Azure Data Lake Storage Gen2. Toto připojení umožňuje nativně spouštět dotazy a analýzy z vašeho clusteru na vašich datech.
 
-V tomto kurzu provedete následující:
+V tomto kurzu:
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
@@ -29,11 +29,11 @@ V tomto kurzu provedete následující:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte účet Azure Data Lake Storage Gen2.
 
-  Viz [Vytvoření účtu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md).
+  Přečtěte si téma [Vytvoření účtu úložiště pro použití s Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
 * Ujistěte se, že váš uživatelský účet má přiřazenou [roli Přispěvatel dat objektů BLOB úložiště](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) .
 
@@ -70,7 +70,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
-2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
+2. V části **Azure Databricks služba** zadejte následující hodnoty pro vytvoření služby datacihly:
 
     |Vlastnost  |Popis  |
     |---------|---------|
@@ -195,7 +195,7 @@ from pyspark.sql import SQLContext
 display(dbutils.fs.ls("/mnt/flightdata"))
 ```
 
-Pokud chcete vytvořit nový soubor a zobrazit seznam souborů ve složce *parquet/flights*, spusťte tento skript:
+Pokud chcete vytvořit nový soubor a zobrazit seznam souborů ve složce *parquet/flights* , spusťte tento skript:
 
 ```python
 dbutils.fs.put("/mnt/flightdata/1.txt", "Hello, World!", True)
@@ -206,7 +206,7 @@ Na těchto vzorových kódech jste prozkoumali hierarchickou povahu systému sou
 
 ## <a name="query-the-data"></a>Vytváření dotazů na data
 
-Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého účtu úložiště. Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter**, abyste spustili skript Pythonu.
+Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého účtu úložiště. Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter** , abyste spustili skript Pythonu.
 
 Chcete-li vytvořit datové rámce pro zdroje dat, spusťte následující skript:
 

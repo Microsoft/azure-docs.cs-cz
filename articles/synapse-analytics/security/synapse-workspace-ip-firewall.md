@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00b4f38f4a2a44b88718224db2b2442033816f83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313888"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Pravidla brány firewall protokolu IP pro Azure synapse Analytics (Preview)
 
@@ -21,7 +21,7 @@ Tento článek vysvětluje pravidla brány firewall protokolu IP a naučíte se,
 
 ## <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
 
-Pravidla brány firewall protokolu IP udělují nebo zamítají přístup k vašemu pracovnímu prostoru synapse na základě zdrojové IP adresy jednotlivých požadavků. Pro svůj pracovní prostor můžete nakonfigurovat pravidla brány firewall protokolu IP. Pravidla brány firewall protokolu IP nakonfigurovaná na úrovni pracovního prostoru se vztahují na všechny veřejné koncové body pracovního prostoru (fondy SQL, SQL na vyžádání a vývoj).
+Pravidla brány firewall protokolu IP udělují nebo zamítají přístup k vašemu pracovnímu prostoru synapse na základě zdrojové IP adresy jednotlivých požadavků. Pro svůj pracovní prostor můžete nakonfigurovat pravidla brány firewall protokolu IP. Pravidla brány firewall protokolu IP nakonfigurovaná na úrovni pracovního prostoru se vztahují na všechny veřejné koncové body pracovního prostoru (vyhrazené fondy SQL, fond SQL bez serveru a vývoj).
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>Vytvoření a Správa pravidel brány firewall protokolu IP
 
@@ -37,7 +37,7 @@ Po vytvoření pracovního prostoru můžete také přidat pravidla firewallu pr
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>Připojení ke službě Synapse z vlastní sítě
 
-K pracovnímu prostoru synapse se můžete připojit pomocí synapse studia. Můžete také použít SQL Server Management Studio (SSMS) pro připojení k prostředkům SQL (fondy SQL a SQL na vyžádání) ve vašem pracovním prostoru.
+K pracovnímu prostoru synapse se můžete připojit pomocí synapse studia. Můžete také použít SQL Server Management Studio (SSMS) pro připojení k prostředkům SQL (vyhrazené fondy SQL a fond SQL bez serveru) ve vašem pracovním prostoru.
 
 Ujistěte se, že brána firewall v síti a místní počítač umožňují odchozí komunikaci na portech TCP 80, 443 a 1443 pro synapse Studio.
 

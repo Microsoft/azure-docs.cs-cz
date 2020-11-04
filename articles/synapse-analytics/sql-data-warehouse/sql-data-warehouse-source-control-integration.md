@@ -1,6 +1,6 @@
 ---
 title: Integrace správy zdrojového kódu
-description: Prostředí DevOps (Enterprise-Class Database) pro fond SQL s integrací nativní správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
+description: DevOps prostředí databáze podnikové třídy pro vyhrazený fond SQL s integrací nativní správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 84abfea39cb7311e7cd60346d936c08c28c334d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89441289"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313300"
 ---
-# <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
+# <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Integrace správy zdrojového kódu pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
-V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Data Tools) se správou zdrojových kódů.  Integrace správy zdrojového kódu je prvním krokem při sestavování kanálu průběžné integrace a nasazování pomocí prostředku fondu SQL ve službě Azure synapse Analytics.
+V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Data Tools) se správou zdrojových kódů.  Integrace správy zdrojového kódu je prvním krokem při sestavování kanálu průběžné integrace a nasazování s vyhrazeným prostředkem fondu SQL ve službě Azure synapse Analytics.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -37,12 +37,12 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
    ![Spravovat připojení](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Spravovat připojení")
 
-3. Připojte se k projektu výběrem možnosti **Spravovat připojení**a pak **se připojte k projektu**.
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Připojit")
+3. Připojte se k projektu výběrem možnosti **Spravovat připojení** a pak **se připojte k projektu**.
+ ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Připojení")
 
 
 4. Vyhledejte projekt, který jste vytvořili v kroku One, a vyberte **připojit**.
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Připojit")
+![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Připojení")
 
 
 3. Naklonujte úložiště Azure DevOps z vašeho projektu na svůj místní počítač.
@@ -85,8 +85,8 @@ Další informace o propojení projektů pomocí sady Visual Studio naleznete v 
 
    ![Ověřit](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Ověření změn")
 
-4. (**Volitelné**) Použijte porovnání schématu a aktualizujte změny svého cílového datového skladu pomocí SSDT, abyste zajistili, že definice objektů v úložišti úložiště Azure a místní úložiště odráží váš datový sklad.
+4. ( **Volitelné** ) Použijte porovnání schématu a aktualizujte změny svého cílového datového skladu pomocí SSDT, abyste zajistili, že definice objektů v úložišti úložiště Azure a místní úložiště odráží váš datový sklad.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vývoj pro fond SQL](sql-data-warehouse-overview-develop.md)
+- [Vývoj pro vyhrazený fond SQL](sql-data-warehouse-overview-develop.md)

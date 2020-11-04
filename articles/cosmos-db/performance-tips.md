@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-dotnet, contperfq2
+ms.openlocfilehash: a1c986663c42b87e7e5d4530b26200d48fe612cb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080715"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314267"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tipy pro zvýšení výkonu pro službu Azure Cosmos DB a sadu .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,12 +47,12 @@ Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského syst�
 
 - U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test** že  >  v nabídce Test sady Visual Studio vyberete **možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
 
-- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty** .
+- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty**.
 
 - Pro webové aplikace ASP.NET nasazené v Azure můžete změnit zpracování hostitele tak, že v **nastavení aplikace** v Azure Portal vyberete platformu **64** .
 
 > [!NOTE] 
-> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor** . Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86** . Projekt nastavený na **Libovolný procesor** může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
+> Ve výchozím nastavení jsou nové projekty sady Visual Studio nastaveny na **Libovolný procesor**. Doporučujeme, abyste projekt nastavili na **x64** , takže se nepřepne na **x86**. Projekt nastavený na **Libovolný procesor** může snadno přepnout na **x86** , pokud se přidá závislost jenom pro procesory x86.<br/>
 > ServiceInterop.dll musí být ve složce, ze které je spuštěna knihovna DLL sady SDK. To by mělo být obavy jenom v případě, že knihovny DLL ručně kopírujete nebo máte vlastní systémy sestavení/nasazení.
     
 **Zapnout uvolňování paměti na straně serveru (GC)**

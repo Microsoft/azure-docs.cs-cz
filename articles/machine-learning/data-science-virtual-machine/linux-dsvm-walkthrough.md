@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
-ms.openlocfilehash: 65a627cc009699660de0897ce853acaa78381f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0ee83cdf3ea710974ce6985db3fc8ce8782351c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275978"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315804"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Datové vědy s Ubuntu Data Science Virtual Machine v Azure
 
@@ -22,15 +22,15 @@ V tomto návodu se dozvíte, jak dokončit několik běžných úloh pro datové
 
 V tomto návodu analyzujeme datovou sadu [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase je sada e-mailů, které jsou označené buď spam, nebo HAM (nikoli spam). Spambase také obsahuje statistiku o obsahu e-mailů. V tomto návodu budeme mluvit o statistice později.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct použít DSVM pro Linux, musíte mít následující požadavky:
 
 * **Předplatné Azure**. Pokud chcete získat předplatné Azure, přečtěte si téma [Vytvoření bezplatného účtu Azure ještě dnes](https://azure.microsoft.com/free/).
 
-* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine Ubuntu](linux-dsvm-intro.md).
-* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](linux-dsvm-intro.md#x2go).
-* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Další informace](https://support.mozilla.org/questions/981140).
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Informace o zřizování virtuálního počítače najdete v tématu [zřízení Data Science Virtual Machine Ubuntu](./release-notes.md).
+* V počítači je nainstalovaná [**X2Go**](https://wiki.x2go.org/doku.php) s otevřenou relací desktop Xfce. Další informace najdete v tématu [instalace a konfigurace klienta X2Go](dsvm-ubuntu-intro.md#x2go).
+* Chcete-li plynulejší posouvání, přepněte ve webovém prohlížeči DSVM na prohlížeč Firefox `gfx.xrender.enabled` příznaku `about:config` . [Přečtěte si další informace](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Zvažte také nastavení `mousewheel.enable_pixel_scrolling` na `False` . [Přečtěte si další informace](https://support.mozilla.org/questions/981140).
 
 ## <a name="download-the-spambase-dataset"></a>Stáhnout datovou sadu spambase
 
@@ -62,11 +62,11 @@ mv headers spambaseHeaders.data
 
 Datová sada obsahuje několik typů statistik pro každý e-mail:
 
-* Sloupce jako **wordové \_ frekvence \_ _WORD_ ** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **slovo \_ frekvence \_ ** nastavené na **1**, pak se v e-mailu *provedlo*1% všech slov.
-* Sloupce jako **char \_ frekvence \_ _CHAR_ ** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
-* ** \_ \_ \_ nejdelší délka běhu** v rámci kapitálu je nejdelší délka posloupnosti velkých písmen.
-* ** \_ \_ \_ Průměrná délka běhu pro velká** písmena je průměrná délka všech velkých písmen.
-* **hodnota \_ \_ délka běhu \_ ** na základě velkých písmen je celková délka všech sekvencí velkých písmen.
+* Sloupce jako **wordové \_ frekvence \_ _WORD_** označují procento slov v e-mailu, které odpovídají *Wordu*. Pokud je například **slovo \_ frekvence \_** nastavené na **1** , pak se v e-mailu *provedlo* 1% všech slov.
+* Sloupce jako **char \_ frekvence \_ _CHAR_** znaků označují procento všech znaků v e-mailu, které jsou typu *char*.
+* **\_ \_ \_ nejdelší délka běhu** v rámci kapitálu je nejdelší délka posloupnosti velkých písmen.
+* **\_ \_ \_ Průměrná délka běhu pro velká** písmena je průměrná délka všech velkých písmen.
+* **hodnota \_ \_ délka běhu \_** na základě velkých písmen je celková délka všech sekvencí velkých písmen.
 * **spam** označuje, zda byl e-mail považován za spam nebo ne (1 = spam, 0 = Nevyžádaná pošta).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Prozkoumat datovou sadu pomocí jazyka R Open
@@ -213,7 +213,7 @@ Kromě ukázek založených na rozhraní je k dispozici také sada komplexních 
 
 - [Průvodce vytvořením kompletního řešení pro detekci produktů v obrázcích](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce obrázku je technika, která dokáže vyhledat a klasifikovat objekty v rámci imagí. Technologie nabízí možnost přinést velké výhody v mnoha obchodních doménách, které jsou v reálném čase. Maloobchodní prodejci můžou například pomocí této techniky určit, který produkt si zákazník vybral z poličky. Tyto informace pomáhají v úložištích spravovat inventář produktů. 
 
-- [Obsáhlý Learning pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): v tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://urbansounddataset.weebly.com/). Tento kurz poskytuje přehled o tom, jak pracovat se zvukovými daty.
+- [Obsáhlý Learning pro zvuk](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): v tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://urbansounddataset.weebly.com/). Tento kurz poskytuje přehled o tom, jak pracovat se zvukovými daty.
 
 - [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak sestavit a vytvořit výuku dvou různých neuronovéch síťových architektur: hierarchická síťová pozornost a dlouhodobá krátkodobá paměť (LSTM). Tyto sítě neuronové používají rozhraní Keras API pro obsáhlý Learning ke klasifikaci textových dokumentů. Keras je front-end pro tři nejoblíbenější architektury hloubkového učení: Microsoft Cognitive Toolkit, TensorFlow a Theano.
 
@@ -315,7 +315,7 @@ V DSVM je již nainstalováno několik ukázkových poznámkových bloků:
 
 ### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalytická *T*OOL *t*o *L*získat *E*asily) je grafický nástroj R pro dolování dat. Rattle má intuitivní rozhraní, které usnadňuje načítání, prozkoumávání a transformaci dat a vytváření a vyhodnocování modelů. [Rattle: grafické rozhraní dolování dat pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje funkce Rattle.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) ( *R* *A* nalytická *T* OOL *t* o *L* získat *E* asily) je grafický nástroj R pro dolování dat. Rattle má intuitivní rozhraní, které usnadňuje načítání, prozkoumávání a transformaci dat a vytváření a vyhodnocování modelů. [Rattle: grafické rozhraní dolování dat pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje funkce Rattle.
 
 Nainstalujte a spusťte Rattle spuštěním těchto příkazů:
 
@@ -328,12 +328,12 @@ rattle()
 > [!NOTE]
 > Nemusíte instalovat Rattle na DSVM. Při otevření Rattle se ale může zobrazit výzva k instalaci dalších balíčků.
 
-Rattle používá rozhraní založené na kartách. Většina karet odpovídá krokům v rámci [vědeckého zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumání dat. Zpracování datové vědy vede zleva doprava prostřednictvím karet. Poslední karta obsahuje protokol příkazů jazyka R, které byly spuštěny pomocí Rattle.
+Rattle používá rozhraní založené na kartách. Většina karet odpovídá krokům v rámci [vědeckého zpracování týmových dat](../team-data-science-process/index.yml), jako je načítání dat nebo zkoumání dat. Zpracování datové vědy vede zleva doprava prostřednictvím karet. Poslední karta obsahuje protokol příkazů jazyka R, které byly spuštěny pomocí Rattle.
 
 Načtení a konfigurace datové sady:
 
 1. Chcete-li načíst soubor, vyberte kartu **data** .
-1. Zvolte selektor vedle **filename**a pak vyberte **spambaseHeaders. data**.
+1. Zvolte selektor vedle **filename** a pak vyberte **spambaseHeaders. data**.
 1. Pro načtení souboru. Vyberte **provést**. Měl by se zobrazit shrnutí každého sloupce, včetně jeho identifikovaného datového typu. bez ohledu na to, zda se jedná o vstup, cíl nebo jiný typ proměnné; a počet jedinečných hodnot.
 1. Rattle správně identifikovala sloupec **spam** jako cíl. Vyberte sloupec **spam** a pak nastavte **cílový datový typ** na **Categoric**.
 
@@ -346,18 +346,18 @@ Prozkoumat data:
 Můžete také použít kartu **prozkoumat** k vygenerování přehlednéch ploch. Vykreslení histogramu dat:
 
 1. Vyberte **distribuce**.
-1. Pro **word_freq_remove** a **word_freq_you**vyberte **histogram**.
+1. Pro **word_freq_remove** a **word_freq_you** vyberte **histogram**.
 1. Vyberte **Execute** (Provést). V jednom okně grafu _by se měla_ zobrazit jak zobrazení hustoty, kde je jasné, že se v e-mailech zdá mnohem častěji, než je třeba _Odebrat_.
 
 Tato **korelace** je také zajímavá. Vytvoření grafu:
 
-1. Jako **typ**vyberte **korelace**.
+1. Jako **typ** vyberte **korelace**.
 1. Vyberte **Execute** (Provést).
 1. Rattle vás upozorní, že doporučuje maximálně 40 proměnných. Vyberte **Ano** pro zobrazení grafu.
 
-Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_, například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
+Existují některé zajímavé korelace, které se přidávají: _technologie_ se silně korelují se _HP_ a _Labs_ , například. Také se silně koreluje s _650_ , protože kód oblasti dárce datové sady je 650.
 
-Číselné hodnoty pro korelace mezi slovy jsou k dispozici v okně **prozkoumat** . Je zajímavá Poznámka, například tato _technologie_ se negativně koreluje s _vašimi_ _peníze_a.
+Číselné hodnoty pro korelace mezi slovy jsou k dispozici v okně **prozkoumat** . Je zajímavá Poznámka, například tato _technologie_ se negativně koreluje s _vašimi_ _peníze_ a.
 
 Rattle může transformovat datovou sadu, aby zpracovávala některé běžné problémy. Může například měnit škálování funkcí, imputace chybějících hodnot, zpracovávat odlehlé hodnoty a odstraňovat proměnné nebo pozorování, které mají chybějící data. Rattle může také identifikovat pravidla přidružení mezi pozorováními a proměnnými. Tyto karty nejsou pokryté v tomto úvodním návodu.
 
@@ -374,20 +374,20 @@ Rattle také může spustit analýzu clusteru. Pojďme vyloučíme některé fun
 * word_freq_business
 * spam
 
-Vraťte se na kartu **clusteru** . Vyberte **KMeans**a pak nastavte **počet clusterů** na **4**. Vyberte **Execute** (Provést). Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_a je pravděpodobně legitimním podnikovým e-mailem.
+Vraťte se na kartu **clusteru** . Vyberte **KMeans** a pak nastavte **počet clusterů** na **4**. Vyberte **Execute** (Provést). Výsledky se zobrazí v okně výstup. Jeden cluster má vysokou frekvenci _Jiří_ a _HP_ a je pravděpodobně legitimním podnikovým e-mailem.
 
 Postup sestavení základního modelu Machine Learning pro rozhodovací strom:
 
 1. Vyberte kartu **model** .
-1. Pro **typ**vyberte **strom**.
+1. Pro **typ** vyberte **strom**.
 1. Vyberte **Spustit** pro zobrazení stromu v textovém formuláři v okně výstup.
 1. Vyberte tlačítko **Kreslení** pro zobrazení grafické verze. Rozhodovací strom vypadá podobně jako strom, který jsme dříve získali pomocí rpart.
 
 Užitečnou funkcí Rattle je schopnost spustit několik metod strojového učení a rychle je vyhodnotit. Tady je postup:
 
-1. Jako **typ**vyberte **vše**.
+1. Jako **typ** vyberte **vše**.
 1. Vyberte **Execute** (Provést).
-1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM**, a zobrazit výsledky.
+1. Po dokončení běhu Rattle můžete vybrat libovolnou hodnotu **typu** , jako je **SVM** , a zobrazit výsledky.
 1. Můžete také porovnat výkon modelů v sadě ověřování pomocí karty **vyhodnocení** . Například výběr **matice chyb** ukazuje záměnu, celkovou chybu a průměrnou chybu třídy pro každý model v sadě ověřování. Můžete také kreslit křivky ROC, spustit analýzu citlivosti a provádět další typy vyhodnocení modelu.
 
 Po dokončení vytváření modelů vyberte kartu **protokol** . zobrazí se kód R, který byl spuštěn Rattle během vaší relace. Můžete vybrat tlačítko **exportovat** a uložit ho.
@@ -416,7 +416,7 @@ host    all             all             127.0.0.1/32            ident
 host    all             all             ::1/128                 ident
 ```
 
-Změňte řádek **místních připojení IPv4** tak, aby používal **MD5** místo **Ident**, abyste se mohli přihlásit pomocí uživatelského jména a hesla:
+Změňte řádek **místních připojení IPv4** tak, aby používal **MD5** místo **Ident** , abyste se mohli přihlásit pomocí uživatelského jména a hesla:
 
 ```
 # IPv4 local connections:
@@ -467,20 +467,20 @@ Začněte tím, že v nabídce **aplikace** otevřete SQuirreL SQL. Postup nasta
 1. Vyberte možnost **Windows**  >  **View Drivers**.
 1. Klikněte pravým tlačítkem na **PostgreSQL** a vyberte **Upravit ovladač**.
 1. Vyberte **Další cesta ke třídě**  >  **Přidat**.
-1. Jako **název souboru**zadejte **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
+1. Jako **název souboru** zadejte **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
 1. Vyberte **Otevřít**.
-1. Vyberte možnost **seznam ovladačů**. Jako **název třídy**vyberte **org. PostgreSQL. Driver**a pak vyberte **OK**.
+1. Vyberte možnost **seznam ovladačů**. Jako **název třídy** vyberte **org. PostgreSQL. Driver** a pak vyberte **OK**.
 
 Nastavení připojení k místnímu serveru:
 
 1. Vyberte možnost **Windows**  >  **View aliasy.**
 1. Kliknutím na **+** tlačítko vytvořte nový alias. Jako název nového aliasu zadejte **Nevyžádaná databáze**. 
-1. V případě **ovladače**vyberte **PostgreSQL**.
+1. V případě **ovladače** vyberte **PostgreSQL**.
 1. Nastavte adresu URL na **JDBC: PostgreSQL://localhost/spam**.
 1. Zadejte uživatelské jméno a heslo.
 1. Vyberte **OK**.
 1. Okno **připojení** otevřete dvojitým kliknutím na alias **databáze spamu** .
-1. Vyberte **Připojit**.
+1. Vyberte **Connect** (Připojit).
 
 Spuštění některých dotazů:
 
@@ -494,7 +494,7 @@ Existuje mnoho dalších dotazů, které můžete použít k prozkoumání těch
 SELECT avg(word_freq_make), spam from data group by spam;
 ```
 
-Nebo, jaké jsou charakteristiky e-mailu, které často obsahují *3D*?
+Nebo, jaké jsou charakteristiky e-mailu, které často obsahují *3D* ?
 
 ```SQL
 SELECT * from data order by word_freq_3d desc;
@@ -538,5 +538,3 @@ GO
 ```
 
 Můžete také zadat dotaz pomocí SQuirreL SQL. Použijte postup podobný PostgreSQL pomocí ovladače SQL Server JDBC. Ovladač JDBC je ve složce/usr/share/Java/jdbcdrivers/sqljdbc42.jar.
-
-

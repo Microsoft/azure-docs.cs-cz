@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deedfacc4ff9caa7a8d8e4559cb29b8c34c2868a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742991"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314463"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow se škálováním modelů pomocí Azure Machine Learning
 
@@ -25,7 +25,7 @@ V tomto příkladu se navlacích a registruje TensorFlow model pro klasifikaci p
 
 Bez ohledu na to, jestli vyvíjíte model TensorFlow z provozu nebo přenášíte [existující model](how-to-deploy-existing-model.md) do cloudu, můžete použít Azure Machine Learning k horizontálnímu navýšení kapacity Open-Source školicích úloh pro sestavování, nasazování, správu a monitorování modelů produkčního prostředí.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Spusťte tento kód v jednom z těchto prostředí:
 
@@ -36,7 +36,7 @@ Spusťte tento kód v jednom z těchto prostředí:
  
  - Váš vlastní server Jupyter Notebook
 
-    - [Nainstalujte sadu Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.15.0).
+    - [Nainstalujte sadu Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.15.0).
     - [Vytvořte konfigurační soubor pracovního prostoru](how-to-configure-environment.md#workspace).
     - [Stažení ukázkových souborů skriptu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` ani `utils.py`
      
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>Inicializovat pracovní prostor
 
-[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) objektu.
+[Azure Machine Learning pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro službu. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte. V sadě Python SDK máte přístup k artefaktům pracovního prostoru vytvořením [`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) objektu.
 
 Vytvořte objekt pracovního prostoru ze `config.json` souboru vytvořeného v [části požadavky](#prerequisites).
 
@@ -75,7 +75,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-file-dataset"></a>Vytvoření datové sady souborů
 
-`FileDataset`Objekt odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejných adresách URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením vytvoříte `FileDataset` odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete v průvodci [vytvořením](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset` balíčku.
+`FileDataset`Objekt odkazuje na jeden nebo více souborů v úložišti dat pracovního prostoru nebo veřejných adresách URL. Soubory mohou být libovolného formátu a třída poskytuje možnost stahovat nebo připojovat soubory do výpočtů. Vytvořením vytvoříte `FileDataset` odkaz na umístění zdroje dat. Pokud jste v sadě dat použili jakékoli transformace, budou uloženy i v datové sadě. Data zůstanou ve svém stávajícím umístění, takže se neúčtují žádné dodatečné náklady na úložiště. Další informace najdete v průvodci [vytvořením](./how-to-create-register-datasets.md) `Dataset` balíčku.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -193,7 +193,7 @@ Další informace o vytváření a používání prostředí najdete v tématu [
 
 ### <a name="create-a-scriptrunconfig"></a>Vytvoření ScriptRunConfig
 
-Vytvořte objekt [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Jakékoli argumenty školicího skriptu budou předány prostřednictvím příkazového řádku, pokud je zadáno v `arguments` parametru.
+Vytvořte objekt [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) a zadejte podrobnosti o konfiguraci školicí úlohy, včetně vašeho školicího skriptu, prostředí, které se má použít, a výpočetní cíl, který se má spustit. Jakékoli argumenty školicího skriptu budou předány prostřednictvím příkazového řádku, pokud je zadáno v `arguments` parametru.
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -221,7 +221,7 @@ Další informace o konfiguraci úloh pomocí ScriptRunConfig najdete v tématu 
 
 ### <a name="submit-a-run"></a>Odeslat běh
 
-[Objekt Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
+[Objekt Run](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) poskytuje rozhraní k historii spuštění, když je úloha spuštěná a po jejím dokončení.
 
 ```Python
 run = Experiment(workspace=ws, name='tf-mnist').submit(src)
@@ -230,13 +230,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Co se stane při spuštění
 Po spuštění se spustí v následujících fázích:
 
-- **Příprava**: image Docker se vytvoří podle definovaného prostředí. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu. Pokud je místo toho zadáno spravované prostředí, bude použit obrázek uložený v mezipaměti, který bude toto prostředí obsahovat.
+- **Příprava** : image Docker se vytvoří podle definovaného prostředí. Obrázek se nahraje do registru kontejneru v pracovním prostoru a v mezipaměti pro pozdější spuštění. Protokoly se také streamují do historie spuštění a dají se zobrazit ke sledování průběhu. Pokud je místo toho zadáno spravované prostředí, bude použit obrázek uložený v mezipaměti, který bude toto prostředí obsahovat.
 
-- **Škálování**: cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
+- **Škálování** : cluster se pokusí o horizontální navýšení kapacity, pokud Batch AI cluster vyžaduje více uzlů pro spuštění běhu, než je aktuálně k dispozici.
 
-- **Spuštěno**: všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a `script` spustí se. Výstupy z stdout a složky **./logs** se streamují do historie spuštění a dají se použít k monitorování běhu.
+- **Spuštěno** : všechny skripty ve složce skriptu se nahrají do cílového výpočetního prostředí, úložiště dat se připojí nebo zkopírují a `script` spustí se. Výstupy z stdout a složky **./logs** se streamují do historie spuštění a dají se použít k monitorování běhu.
 
-- **Následné zpracování**: složka **./Outputs** se v běhu kopíruje do historie spuštění.
+- **Následné zpracování** : složka **./Outputs** se v běhu kopíruje do historie spuštění.
 
 ## <a name="register-or-download-a-model"></a>Registrace nebo stažení modelu
 
@@ -290,7 +290,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Aby bylo možné spustit distribuovanou úlohu pomocí MPI/Horovod v Azure ML, je nutné zadat [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Níže uvedený kód nakonfiguruje distribuovanou úlohu se dvěma uzly se spuštěným jedním procesem na jeden uzel. Pokud chcete spustit více procesů na jeden uzel (tj. Pokud má SKU clusteru více GPU), zadejte také `process_count_per_node` parametr v MpiConfiguration (výchozí nastavení je `1` ).
+Aby bylo možné spustit distribuovanou úlohu pomocí MPI/Horovod v Azure ML, je nutné zadat [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Níže uvedený kód nakonfiguruje distribuovanou úlohu se dvěma uzly se spuštěným jedním procesem na jeden uzel. Pokud chcete spustit více procesů na jeden uzel (tj. Pokud má SKU clusteru více GPU), zadejte také `process_count_per_node` parametr v MpiConfiguration (výchozí nastavení je `1` ).
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -310,7 +310,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 Pokud používáte [nativní distribuované TensorFlow](https://www.tensorflow.org/guide/distributed_training) v kódu školení, např. TensorFlow 2. x `tf.distribute.Strategy` rozhraní API, můžete také spustit distribuovanou úlohu prostřednictvím Azure ml. 
 
-Provedete to tak, že zadáte [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Pokud používáte `tf.distribute.experimental.MultiWorkerMirroredStrategy` , zadejte `worker_count` v TensorflowConfiguration odpovídající počtu uzlů pro vaši úlohu školení.
+Provedete to tak, že zadáte [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) do `distributed_job_config` parametru konstruktoru ScriptRunConfig. Pokud používáte `tf.distribute.experimental.MultiWorkerMirroredStrategy` , zadejte `worker_count` v TensorflowConfiguration odpovídající počtu uzlů pro vaši úlohu školení.
 
 ```python
 import os

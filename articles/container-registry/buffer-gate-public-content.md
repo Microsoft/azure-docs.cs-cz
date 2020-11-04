@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bb185e7d5803219135fddf421b7d6a89edd296b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130846"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315806"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Správa veřejného obsahu pomocí Azure Container Registry
 
@@ -25,16 +25,14 @@ Bez správných ovládacích prvků, které mají závislosti na obsahu veřejn�
 
 ## <a name="authenticate-with-docker-hub"></a>Ověřování pomocí Docker Hub
 
-V prvním kroku, pokud v rámci pracovního postupu sestavení nebo nasazení aktuálně vystavíte veřejné image z Docker Hub, doporučujeme místo vytváření anonymní žádosti o přijetí změn provést ověření pomocí účtu Docker Hub.
+V prvním kroku, pokud v rámci pracovního postupu sestavení nebo nasazení aktuálně vystavíte veřejné image z Docker Hub, doporučujeme místo vytváření anonymní žádosti o přijetí změn provést [ověření pomocí účtu Docker Hub](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
 
 > [!NOTE]
-> Od 2. listopadu 2020 se limity četnosti stahování vztahují na anonymní a ověřené požadavky na Docker Hub z účtů bezplatného plánu Docker a vynutila IP adresa. 
+> Od 2. listopadu 2020 se [limity četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit) vztahují na anonymní a ověřené požadavky na dokovací centrum z účtů bezplatného plánu Docker a vynutila IP adresa a ID Docker, respecitively. 
 >
-> Při odhadování počtu žádostí o přijetí změn Vezměte v úvahu, že při použití služeb poskytovatele cloudu nebo při práci za podnikovým překladem adres (NAT) bude k dispozici více uživatelů, kteří mají v souhrnu k dispozici jako podmnožinu IP adres.  Přidání ověřování placeného účtu Docker do požadavků odeslaných do služby Docker Hub se vyhnete potenciálním přerušením služeb z důvodu omezení četnosti.
+> Při odhadování počtu žádostí o přijetí změn Vezměte v úvahu, že při použití služeb poskytovatele cloudu nebo při práci za podnikovým překladem adres (NAT) bude k dispozici více uživatelů, kteří mají v souhrnu k dispozici jako podmnožinu IP adres. Přidání ověřování placeného účtu Docker do požadavků odeslaných do služby Docker Hub se vyhnete potenciálním přerušením služeb z důvodu omezení četnosti.
 >
 > Podrobnosti najdete v tématu [ceny a předplatné Docker](https://www.docker.com/pricing) a [podmínek služby Docker](https://www.docker.com/legal/docker-terms-service).
-
-Příklady a scénáře ověřování najdete v tématu [Omezení četnosti stahování](https://docs.docker.com/docker-hub/download-rate-limit/).
 
 ### <a name="docker-hub-access-token"></a>Přístupový token Docker Hub
 

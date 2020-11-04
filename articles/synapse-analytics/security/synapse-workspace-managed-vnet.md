@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 06b535b25df19e5062d16184f4469d9e9253b9c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87042610"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313704"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure synapse Analytics Managed Virtual Network (Preview)
 
@@ -30,11 +30,11 @@ Managed Virtual Network pracovního prostoru poskytuje hodnoty čtyřmi způsoby
 - Nemusíte vytvářet podsíť pro clustery Spark na základě špičky zatížení.
 - Spravovaný pracovní prostor Virtual Network spolu se spravovanými soukromými koncovými body chrání před exfiltrace dat. V pracovním prostoru můžete vytvářet jenom spravované privátní koncové body, které mají ke spravovanému pracovnímu prostoru Virtual Network přidružené.
 
-Vytvoření pracovního prostoru se spravovaným pracovním prostorem Virtual Network přidruženým k tomu zajišťuje, že je váš pracovní prostor v síti izolovaný od ostatních pracovních prostorů. Azure synapse nabízí různé analytické funkce v pracovním prostoru: integraci dat, Apache Spark, fond SQL a SQL na vyžádání.
+Vytvoření pracovního prostoru se spravovaným pracovním prostorem Virtual Network přidruženým k tomu zajišťuje, že je váš pracovní prostor v síti izolovaný od ostatních pracovních prostorů. Azure synapse nabízí různé analytické možnosti v pracovním prostoru: integraci dat, fond Apache Spark bez serveru, vyhrazený fond SQL a fond SQL bez serveru.
 
 Pokud má váš pracovní prostor spravovaný pracovní prostor Virtual Network, jsou v něm nasazené prostředky pro integraci dat a Spark. Spravovaný pracovní prostor Virtual Network také poskytuje izolaci na úrovni uživatele pro aktivity Sparku, protože každý cluster Spark je ve vlastní podsíti.
 
-Fond SQL a SQL na vyžádání jsou možnosti víceklientské architektury, a proto se nachází mimo spravovaný pracovní prostor Virtual Network. Komunikace uvnitř pracovního prostoru s fondem SQL a SQL na vyžádání používá privátní odkazy Azure. Tyto privátní odkazy se automaticky vytvoří, když vytvoříte pracovní prostor se spravovaným pracovním prostorem Virtual Network k němu přidružená.
+Vyhrazený fond SQL a SQL Server bez serveru jsou možnosti víceklientské architektury, takže se nachází mimo spravovaný pracovní prostor Virtual Network. Komunikace uvnitř pracovního prostoru s vyhrazeným fondem SQL a fondem SQL bez serveru používá privátní odkazy Azure. Tyto privátní odkazy se automaticky vytvoří, když vytvoříte pracovní prostor se spravovaným pracovním prostorem Virtual Network k němu přidružená.
 
 >[!IMPORTANT]
 >Po vytvoření pracovního prostoru už tuto konfiguraci pracovního prostoru nemůžete změnit. Například nemůžete znovu nakonfigurovat pracovní prostor, který nemá spravovaný pracovní prostor Virtual Network k němu přidružen a přidružit k němu Virtual Network. Podobně nemůžete znovu nakonfigurovat pracovní prostor se spravovaným pracovním prostorem Virtual Network k němu přidružené a zrušit jeho přidružení Virtual Network.
@@ -43,7 +43,7 @@ Fond SQL a SQL na vyžádání jsou možnosti víceklientské architektury, a pr
 
 Pokud jste to ještě neudělali, zaregistrujte poskytovatele síťových prostředků. Když zaregistrujete poskytovatele prostředků, nakonfigurujete vaše předplatné, aby fungovalo s poskytovatelem prostředků. Po [registraci](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)vyberte v seznamu poskytovatelů prostředků možnost *Microsoft. Network* .
 
-Pokud chcete vytvořit pracovní prostor Azure synapse s přidruženým spravovaným pracovním prostorem Virtual Network, vyberte kartu **zabezpečení + sítě** v Azure Portal a zaškrtněte políčko **Povolit spravovanou virtuální síť** .
+Pokud chcete vytvořit pracovní prostor Azure synapse s přidruženým spravovaným pracovním prostorem Virtual Network, vyberte kartu **síť** v Azure Portal a zaškrtněte políčko **Povolit spravovanou virtuální síť** .
 
 Pokud políčko nezaškrtnete, nebude mít k pracovnímu prostoru přidruženou Virtual Network.
 

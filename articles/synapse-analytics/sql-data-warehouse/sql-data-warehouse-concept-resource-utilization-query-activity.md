@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 334d37ad36336d1aa737894482fd8f66e929c822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077690"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314445"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
@@ -26,13 +26,13 @@ Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure 
 
 V Azure Portal pro synapse SQL jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
-| Název metriky             | Description                                                  | Typ agregace |
+| Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
 | Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
 | Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | AVG, min, Max   |
-| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Sum              |
-| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Sum              |
+| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Součet              |
+| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Součet              |
 | Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Sum, Count       |
 | Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Sum, Count       |
 | Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
@@ -53,7 +53,7 @@ Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 
 Pro programové prostředí při monitorování synapse SQL prostřednictvím T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
 
-Pokud chcete zobrazit seznam zobrazení dynamické správy, které platí pro synapse SQL, přečtěte si tuto [dokumentaci](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
+Pokud chcete zobrazit seznam zobrazení dynamické správy, které platí pro synapse SQL, přečtěte si tuto [dokumentaci](../sql/reference-tsql-system-views.md#dedicated-sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování 
 

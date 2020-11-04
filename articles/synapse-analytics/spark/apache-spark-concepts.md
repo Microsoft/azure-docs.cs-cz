@@ -1,6 +1,6 @@
 ---
 title: Apache Spark základní koncepty
-description: Seznámení s Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
+description: Seznámení se základními koncepty pro Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480475"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313403"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark v základních konceptech služby Azure synapse Analytics
 
@@ -24,7 +24,7 @@ Azure synapse usnadňuje vytváření a konfiguraci možností Sparku v Azure. A
 
 ## <a name="spark-pools-preview"></a>Fondy Sparku (Preview)
 
-Ve Azure Portal se vytvoří fond Spark (Preview). Je to definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata a žádné prostředky se nespotřebovává, neúčtují ani neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark. Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
+V Azure Portal se vytvoří Apache Spark fond bez serveru (Preview). Je to definice fondu Spark, který při vytvoření instance slouží k vytvoření instance Sparku, která zpracovává data. Když se vytvoří fond Sparku, existuje jenom jako metadata a žádné prostředky se nespotřebovává, neúčtují ani neúčtují. Fond Spark má řadu vlastností, které řídí charakteristiky instance Spark. Tyto vlastnosti zahrnují, ale nejsou omezené na název, velikost, chování škálování, doba do živého.
 
 Protože se k vytváření fondů Sparku nevztahují žádné dolary nebo náklady na prostředky, je možné jakékoli číslo vytvořit s libovolným počtem různých konfigurací. Oprávnění lze také použít na fondy Spark, které uživatelům umožňují mít přístup pouze k některým a jiným uživatelům.
 

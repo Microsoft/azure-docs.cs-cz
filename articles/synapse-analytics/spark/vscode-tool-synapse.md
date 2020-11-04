@@ -1,6 +1,6 @@
 ---
 title: Kurz – nástroje Spark & podregistr pro VSCode (aplikace Spark)
-description: Kurz – použití nástrojů pro podregistr Spark & pro VSCode k vývoji aplikací Spark, které jsou napsané v Pythonu, a jejich odeslání do fondu Apache Spark (Preview).
+description: Kurz – použití nástrojů pro podregistr Spark & pro VSCode k vývoji aplikací Spark, které jsou napsané v Pythonu, a jejich odeslání do fondu Apache Spark bez serveru (Preview).
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 6778d78ff5e342d97c1c9bc477c1a88eca42a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91348375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315658"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí VSCode pomocí pracovního prostoru synapse
 
@@ -22,11 +22,11 @@ Naučte se používat nástroje Apache Spark & podregistr pro Visual Studio Code
 
 Nástroje Spark & podregistr je možné nainstalovat na platformy, které Visual Studio Code podporuje. Všimněte si následujících požadavků pro různé platformy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku jsou vyžadovány následující položky:
 
-- Fond Apache Spark. Pokud chcete vytvořit fond Apache Spark, přečtěte si téma [Vytvoření fondu Apache Spark pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
+- Apache Spark fond bez serveru. Pokud chcete vytvořit fond Apache Spark bez serveru, přečtěte si téma [Vytvoření fondu Apache Spark pomocí Azure Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono se vyžaduje jenom pro Linux a macOS.
 - [PySpark interaktivní prostředí pro Visual Studio Code](../../hdinsight/set-up-pyspark-interactive-environment.md).
@@ -42,7 +42,7 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 3. Do vyhledávacího pole zadejte **Spark & podregistr**.
 
-4. Z výsledků hledání vyberte **Spark & nástroje pro podregistr** a pak vyberte **instalovat**:
+4. Z výsledků hledání vyberte **Spark & nástroje pro podregistr** a pak vyberte **instalovat** :
 
      ![Podregistr Spark & pro instalaci Visual Studio Code Pythonu](./media/vscode-tool-synapse/install-hdInsight-plugin.png)
 
@@ -52,7 +52,7 @@ Po splnění požadavků můžete nainstalovat nástroje Spark & pro Visual Stud
 
 Chcete-li otevřít pracovní složku a vytvořit soubor v Visual Studio Code, postupujte podle následujících kroků:
 
-1. V řádku nabídek přejděte do **File**  >  **složky otevřít soubor...**  >  **C:\HD\Synaseexample**a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
+1. V řádku nabídek přejděte do **File**  >  **složky otevřít soubor...**  >  **C:\HD\Synaseexample** a pak vyberte tlačítko **Vybrat složku** . Složka se zobrazí v zobrazení **Průzkumník** na levé straně.
 
 2. V zobrazení **Průzkumník** vyberte složku **Synaseexample** a pak vyberte ikonu **nového souboru** vedle pracovní složky:
 
@@ -68,7 +68,7 @@ Přihlaste se k předplatnému Azure a připojte se k vašim fondům Spark.
 
 Pomocí těchto kroků se připojte k Azure:
 
-1. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** a zadejte **Azure: přihlásit**se:
+1. V řádku nabídek přejděte k **zobrazení**  >  **paleta příkazů...** a zadejte **Azure: přihlásit** se:
 
      ![Nástroje pro podregistr Spark & pro přihlášení Visual Studio Code](./media/vscode-tool-synapse/hdinsight-for-vscode-extension-login.png)
 
@@ -130,7 +130,7 @@ for (word, count) in sortedCollection:
 
      ![nainstalovat jádro pyspark](./media/vscode-tool-synapse/install-the-pyspark-kernel.png)
 
-5. Pokud ho potřebujete nainstalovat později, můžete přejít na **File**  >  **Preference**  >  **Nastavení**předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
+5. Pokud ho potřebujete nainstalovat později, můžete přejít na **File**  >  **Preference**  >  **Nastavení** předvoleb souborů a pak zrušit kontrolu **HDInsight: Povolit v nastavení Přeskočit instalaci Pyspark** . 
     
      ![Povolit instalaci Skip pyspark](./media/vscode-tool-synapse/enable-skip-pyspark-installation.png)
 
@@ -156,9 +156,9 @@ for (word, count) in sortedCollection:
 
      ![interaktivní kontextová nabídka pyspark](./media/vscode-tool-synapse/pyspark-interactive-right-click.png)
 
-12. Vyberte fond Spark, pokud jste nezadali výchozí fond Spark. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **synapse PySpark**, potom znovu odešlete vybraný kód a kód se úspěšně spustí. Nástroje také umožňují odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
+12. Vyberte fond Spark, pokud jste nezadali výchozí fond Spark. Po chvíli se **interaktivní výsledky Pythonu** zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **synapse PySpark** , potom znovu odešlete vybraný kód a kód se úspěšně spustí. Nástroje také umožňují odeslat blok kódu namísto celého souboru skriptu pomocí místní nabídky:
 
-     ![Interaktivní](./media/vscode-tool-synapse/pyspark-interactive-python-interactive-window.png)
+     ![interaktivit](./media/vscode-tool-synapse/pyspark-interactive-python-interactive-window.png)
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>Provést interaktivní dotaz v souboru PY pomocí komentáře #%%
 
@@ -166,7 +166,7 @@ for (word, count) in sortedCollection:
 
      ![Přidat #%%](./media/vscode-tool-synapse/run-cell.png)
 
-2. Klikněte na **buňku Run (spustit**). Po chvíli se interaktivní výsledky Pythonu zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **synapse PySpark**, potom klikněte na znovu **Spustit buňku** a kód se úspěšně spustí. 
+2. Klikněte na **buňku Run (spustit** ). Po chvíli se interaktivní výsledky Pythonu zobrazí na nové kartě. Kliknutím na PySpark přepněte jádro na **synapse PySpark** , potom klikněte na znovu **Spustit buňku** a kód se úspěšně spustí. 
 
      ![spuštění výsledků buňky](./media/vscode-tool-synapse/run-cell-get-results.png)
 
@@ -178,7 +178,7 @@ for (word, count) in sortedCollection:
 
      ![nastavit výchozí fond Spark a znovu načíst](./media/vscode-tool-synapse/set-the-default-spark-pool-and-reload.png)
 
-3. Kliknutím na PySpark přepnete jádro do **synapse PySpark**a potom po chvíli klikněte na **buňka Run (spustit**). zobrazí se výsledek.
+3. Kliknutím na PySpark přepnete jádro do **synapse PySpark** a potom po chvíli klikněte na **buňka Run (spustit** ). zobrazí se výsledek.
 
      ![spuštění výsledků ipynb](./media/vscode-tool-synapse/run-ipynb-file-results.png)
 
@@ -238,7 +238,7 @@ V Azure Exploreru můžete provádět různé operace v prostředí Spark &ch n�
 
 ### <a name="launch-workspace"></a>Spustit pracovní prostor
 
-1. V Průzkumníku Azure přejděte na **synapse**, rozbalte ji a zobrazte seznam předplatných synapse.
+1. V Průzkumníku Azure přejděte na **synapse** , rozbalte ji a zobrazte seznam předplatných synapse.
 
      ![Průzkumník synapse](./media/vscode-tool-synapse/synapse-explorer.png)
 
@@ -252,19 +252,19 @@ V Azure Exploreru můžete provádět různé operace v prostředí Spark &ch n�
 
 4. Rozbalte pracovní prostor, zobrazí se **výchozí úložiště** a **fondy Sparku** .
 
-5. Klikněte pravým tlačítkem na **výchozí úložiště**, zobrazí se **Úplná cesta kopírování** a **otevřená v synapse studiu** . 
+5. Klikněte pravým tlačítkem na **výchozí úložiště** , zobrazí se **Úplná cesta kopírování** a **otevřená v synapse studiu** . 
 
      ![Klikněte pravým tlačítkem na výchozí úložiště.](./media/vscode-tool-synapse/right-click-on-default-storage.png)
 
      - Klikněte na **Kopírovat úplnou cestu**. adresa URL primárního adls Gen2 účtu se zkopíruje, takže ji můžete vložit tam, kde potřebujete Marketplace.
 
-     - V **synapse studiu**klikněte na otevřít. primární účet úložiště se otevře v synapse studiu.
+     - V **synapse studiu** klikněte na otevřít. primární účet úložiště se otevře v synapse studiu.
 
      ![Výchozí úložiště v synapse studiu](./media/vscode-tool-synapse/default-storage-in-synapse-studio.png)
 
-6. Rozbalte **výchozí úložiště**a zobrazí se primární účet úložiště.
+6. Rozbalte **výchozí úložiště** a zobrazí se primární účet úložiště.
 
-7. Rozbalte **fondy Sparku**, zobrazí se všechny fondy Spark v pracovním prostoru.
+7. Rozbalte **fondy Sparku** , zobrazí se všechny fondy Spark v pracovním prostoru.
 
      ![Rozbalit fond úložiště](./media/vscode-tool-synapse/expand-storage-pool.png)
 

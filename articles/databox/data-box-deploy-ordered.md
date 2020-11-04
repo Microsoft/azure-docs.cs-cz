@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 400c5bd4dd31daaf826ed63ada75266d4ab3099c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206734"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313215"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Kurz: Objednání Azure Data Boxu
 
@@ -227,7 +227,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
     |---------|---------|
     |Typ přenosu     | Vyberte **Importovat do Azure**.        |
     |Předplatné     | Vyberte pro službu Data Box předplatné se smlouvou Enterprise, předplatné CSP nebo předplatné Azure Sponsorship. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
-    |Resource Group | Vyberte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
+    |Skupina prostředků | Vyberte existující skupinu prostředků. Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
     |Zdrojová země/oblast    |    Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.         |
     |Cílová oblast Azure     |     Vyberte oblast Azure, do které chcete data přenést. <br> Další informace najdete v části věnované [dostupnosti v oblastech](data-box-overview.md#region-availability).            |
 
@@ -237,7 +237,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     ![Snímek obrazovky s různými velikostmi dat, které jsou dostupné pro výběr: Data Box Disk 40 terabajty, Data Box 100 terabajty, Data Box Heavy, 1000 terabajty a poslat vlastní disky 1 terabajt.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
-6. V **uvedeném pořadí**přejdete na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová Data>**.
+6. V **uvedeném pořadí** přejdete na kartu **základy** . Zadejte nebo vyberte následující informace a vyberte **Další: cílová Data>**.
 
     |Nastavení  |Hodnota  |
     |---------|---------|
@@ -255,7 +255,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
     ![Azure Data Box cíl dat](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
+    Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. Data Box je možné propojit až s 10 účty úložiště. Můžete si také vytvořit nový účet **Pro obecné účely v1** , **Pro obecné účely v2** nebo **účet úložiště objektů blob**.
 
     Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu Postup [přidání Azure Data box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).
 
@@ -285,13 +285,13 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
    ![Rozšířené možnosti vlastního hesla pro Data Box pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
-   - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení**, vyberte **použít vlastní heslo**a zadejte heslo, které splňuje požadavky na zabezpečení.
+   - Pokud chcete pro nové zařízení použít vlastní heslo, napřed **nastavte předvolby pro heslo zařízení** , vyberte **použít vlastní heslo** a zadejte heslo, které splňuje požadavky na zabezpečení.
    
      ![Obrazovka zabezpečení pro import Data Box, možnosti pro používání vlastního hesla zařízení](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
    - Použití vlastních hesel ke sdíleným složkám:
 
-     1. Nastavením **Předvolby pro hesla pro sdílení**vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
+     1. Nastavením **Předvolby pro hesla pro sdílení** vyberte **použít vlastní hesla** a pak **Vyberte hesla pro sdílené složky**.
      
         ![Obrazovka zabezpečení pro Data Box import, možnosti pro použití vlastních hesel pro sdílení](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
@@ -301,9 +301,9 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
      
         ![Obrazovka pro zadávání hesel pro sdílení Data Boxho pořadí importu](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
 
-       Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení změn hesel** .
+       Na obrazovce **zabezpečení** můžete měnit hesla pomocí **zobrazení nebo změny hesel** .
 
-1. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení**možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
+1. Pokud chcete povolit šifrování na základě softwaru, rozbalte v části **zabezpečení** možnost **dvojité šifrování (pro vysoce zabezpečená prostředí)** a **pro objednávku vyberte Povolit dvojité šifrování**.
 
    ![Obrazovka zabezpečení pro Data Box import a povolení softwarového šifrování pro Data Boxou objednávku](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
@@ -314,7 +314,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
    Chcete-li pokračovat, vyberte možnost **Další: kontaktní údaje** .
 
-8. V **podrobnostech kontaktu**vyberte **+ Přidat dodací adresu**.
+8. V **podrobnostech kontaktu** vyberte **+ Přidat dodací adresu**.
 
     ![Snímek obrazovky s průvodcem objednávkou znázorňující krok průvodce s podrobnostmi o kontaktu s možností přidat dodací adresu s názvem.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
@@ -326,7 +326,7 @@ Chcete-li zařízení objednat, proveďte následující kroky v Azure Portal.
 
 10. Po úspěšném ověření podrobností o expedici vyberte **Přidat dodací adresu** . Vrátíte se na kartu **Podrobnosti o kontaktu** .
 
-11. Až se vrátíte k **podrobnostem kontaktu**, přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
+11. Až se vrátíte k **podrobnostem kontaktu** , přidejte jednu nebo víc e-mailových adres. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky.
 
     Doporučujeme použít skupinový e-mail, abyste oznámení mohli dostávat i tehdy, když odejde správce skupiny.
 

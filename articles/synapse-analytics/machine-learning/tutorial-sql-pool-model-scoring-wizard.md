@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Průvodce bodování modelu Machine Learning pro fondy SQL'
-description: Kurz použití Průvodce bodování modelu Machine Learning k rozšíření dat v synapse fondech SQL
+title: 'Kurz: Průvodce bodování modelu Machine Learning pro vyhrazené fondy SQL'
+description: Kurz týkající se použití Průvodce bodování modelu Machine Learning k rozšíření dat ve vyhrazených fondech SQL.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,29 +9,29 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 8e92ff75bb6a9757c06de3561a385cbcbb7f75ba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019966"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314040"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-synapse-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning pro synapse fondy SQL
+# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Kurz: Průvodce bodování modelu Machine Learning pro vyhrazené fondy SQL
 
-Naučte se, jak snadno rozšířit vaše data ve fondech SQL pomocí prediktivních modelů strojového učení.  Modely, které vaše datové specialisty vytvářejí, jsou teď snadno dostupné pro odborníky na data pro prediktivní analýzy. Data Professional v synapse můžete jednoduše vybrat model z registru Azure Machine Learning modelu pro nasazení v synapse fondech SQL a spustit předpovědi pro rozšíření dat.
+Naučte se snadno rozšířit data ve vyhrazených fondech SQL pomocí prediktivních modelů strojového učení.  Modely, které vaše datové specialisty vytvářejí, jsou teď snadno dostupné pro odborníky na data pro prediktivní analýzy. Data Professional v synapse můžete jednoduše vybrat model z registru Azure Machine Learning modelu pro nasazení v synapse fondech SQL a spustit předpovědi pro rozšíření dat.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > - Výuka prediktivního modelu strojového učení a registrace modelu v registru Azure Machine Learningho modelu
-> - Použití Průvodce bodování SQL ke spuštění předpovědi ve fondu synapse SQL
+> - Použití Průvodce bodování SQL ke spuštění předpovědi ve vyhrazeném fondu SQL
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Pracovní prostor synapse Analytics](../get-started-create-workspace.md) s účtem úložiště adls Gen2 nakonfigurovaný jako výchozí úložiště. Musíte být **přispěvatelem dat objektů BLOB úložiště** adls Gen2 systému souborů, se kterými pracujete.
-- Synapse fond SQL ve vašem pracovním prostoru analýzy synapse. Podrobnosti najdete v tématu [Vytvoření synapse fondu SQL](../quickstart-create-sql-pool-studio.md).
+- Vyhrazený fond SQL ve vašem pracovním prostoru synapse Analytics. Podrobnosti najdete v tématu [vytvoření vyhrazeného fondu SQL](../quickstart-create-sql-pool-studio.md).
 - V pracovním prostoru synapse Analytics Azure Machine Learning propojenou službu. Podrobnosti najdete v tématu [vytvoření propojené služby Azure Machine Learning v synapse](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
@@ -62,7 +62,7 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
 1. Poznámkový blok vytvoří model ONNX a zaregistruje ho pomocí MLFlow. Pokud chcete zjistit, jestli je nový model správně zaregistrovaný, otevřete **model** .
    ![Model v registru](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00c.png)
 
-1. Spuštění poznámkového bloku taky exportujte testovací data do souboru CSV. Stáhněte soubor CSV do místního systému. Později naimportujete soubor CSV do fondu SQL a pomocí dat otestujete model.
+1. Spuštění poznámkového bloku taky exportujte testovací data do souboru CSV. Stáhněte soubor CSV do místního systému. Později naimportujete soubor CSV do vyhrazeného fondu SQL a pomocí dat otestujete model.
 
    Soubor CSV se vytvoří ve stejné složce jako soubor poznámkového bloku. Pokud ho nevidíte hned, klikněte na aktualizovat v Průzkumníkovi souborů.
 
@@ -76,7 +76,7 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
 
    ![Nahrání dat](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00a.png)
 
-1. Přejít na **vývoj**  ->  **skriptů SQL**. Vytvořte nový skript SQL, který se nahraje `test_data.csv` do vašeho fondu SQL.
+1. Přejít na **vývoj**  ->  **skriptů SQL**. Vytvořte nový skript SQL, který se nahraje `test_data.csv` do vyhrazeného fondu SQL.
 
    > [!NOTE]
    > Před spuštěním aktualizujte adresu URL souboru na tomto skriptu.
@@ -117,9 +117,9 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
    GO
    ```
 
-   ![Načtení dat do fondu SQL](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
+   ![Načíst data do vyhrazeného fondu SQL](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. Přejít na **Data**  ->  **pracovní prostor**dat. Otevřete Průvodce bodování SQL tak, že kliknete pravým tlačítkem na tabulku fondu SQL. Vyberte **Machine Learning**  ->  **obohacení s existujícím modelem**.
+1. Přejít na **Data**  ->  **pracovní prostor** dat. Otevřete Průvodce bodování SQL tak, že kliknete pravým tlačítkem na vyhrazenou tabulku fondu SQL. Vyberte **Machine Learning**  ->  **obohacení s existujícím modelem**.
 
    > [!NOTE]
    > Možnost strojového učení se nezobrazí, pokud nemáte vytvořenou propojenou službu pro Azure Machine Learning (viz **požadavky** na začátku tohoto kurzu).
@@ -138,7 +138,7 @@ Před spuštěním všech buněk v poznámkovém bloku ověřte, zda je instance
 
    ![Mapování tabulky na model](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
-1. Generovaný kód T-SQL je zabalen do uložené procedury. K tomu je potřeba zadat název uložené procedury. Binární soubor modelu včetně metadat (verze, popis atd.) bude fyzicky zkopírován z Azure Machine Learning do tabulky fondu SQL. Proto je třeba určit, na kterou tabulku se má model Uložit. Můžete zvolit možnost použít existující tabulku nebo vytvořit novou tabulku. Po dokončení klikněte na **nasadit model + otevřít Editor** a nasaďte model a vygenerujte prediktivní skript T-SQL.
+1. Generovaný kód T-SQL je zabalen do uložené procedury. K tomu je potřeba zadat název uložené procedury. Binární soubor modelu včetně metadat (verze, popis atd.) bude fyzicky zkopírován z Azure Machine Learning do vyhrazené tabulky fondu SQL. Proto je třeba určit, na kterou tabulku se má model Uložit. Můžete zvolit možnost použít existující tabulku nebo vytvořit novou tabulku. Po dokončení klikněte na **nasadit model + otevřít Editor** a nasaďte model a vygenerujte prediktivní skript T-SQL.
 
    ![Vytvořit proceduru](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00f.png)
 

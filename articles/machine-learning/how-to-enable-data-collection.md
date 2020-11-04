@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5a04e5a7136ac1a33766bf543a27ff7794498c26
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: be2afad7e7cb08d9c677e589846f3d67cf43e708
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996368"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314235"
 ---
 # <a name="collect-data-from-models-in-production"></a>Shromažďování dat z modelů v produkčním prostředí
 
@@ -67,11 +67,11 @@ Cesta k výstupním datům v objektu BLOB se řídí touto syntaxí:
 
 - Potřebujete cluster AKS. Informace o tom, jak vytvořit a nasadit do něj, najdete v tématu [Jak nasadit a kde](how-to-deploy-and-where.md).
 
-- [Nastavte prostředí](how-to-configure-environment.md) a nainstalujte [sadu Azure Machine Learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+- [Nastavte prostředí](how-to-configure-environment.md) a nainstalujte [sadu Azure Machine Learning monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="enable-data-collection"></a>Povolení shromažďování dat
 
-[Shromažďování dat](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py&preserve-view=true) můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
+[Shromažďování dat](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py) můžete povolit bez ohledu na model, který nasazujete prostřednictvím Azure Machine Learning nebo jiných nástrojů.
 
 Chcete-li povolit shromažďování dat, je třeba:
 
@@ -153,11 +153,11 @@ Pro analýzu dat shromažďovaných v úložišti objektů blob můžete zvolit 
 
 1. Stáhněte a otevřete [Power BI Desktop](https://www.powerbi.com).
 
-1. Vyberte **získat data** a vyberte [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+1. Vyberte **získat data** a vyberte [**Azure Blob Storage**](/power-bi/desktop-data-sources).
 
     [![Nastavení objektu BLOB Power BI](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že **Settings**  >  v objektu BLOB vyberete nastavení**přístupové klíče** .
+1. Přidejte název svého účtu úložiště a zadejte svůj klíč úložiště. Tyto informace můžete najít tak, že **Settings**  >  v objektu BLOB vyberete nastavení **přístupové klíče** .
 
 1. Vyberte kontejner **dat modelu** a vyberte **Upravit**.
 
@@ -187,7 +187,7 @@ Pro analýzu dat shromažďovaných v úložišti objektů blob můžete zvolit 
 
 ### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a> Analýza dat modelu pomocí Azure Databricks
 
-1. Vytvořte [pracovní prostor Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+1. Vytvořte [pracovní prostor Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 
 1. Přejdete do pracovního prostoru datacihly.
 

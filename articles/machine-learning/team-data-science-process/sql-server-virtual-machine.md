@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8be878cf40967356d68e9be0765e898c81b5ba0a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314625"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Zpracování dat na virtuálním počítači s SQL Serverem v Azure
 Tento dokument popisuje, jak prozkoumat data a generovat funkce pro data uložená v SQL Serverm VIRTUÁLNÍm počítači v Azure. Tento cíl může dokončit data tahání pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
@@ -98,7 +98,7 @@ Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji 
 * Pátý počet desetinných míst je až 1,1 m: rozliší stromy od sebe navzájem. Přesnost na tuto úroveň u komerčních jednotek GPS se dá dosáhnout jenom s rozdílovou korekcí.
 * Šest desetinných míst je rovno 0,11 m: můžete použít tuto možnost pro vytváření podrobných struktur pro navrhování krajiny a vytváření silnic. Mělo by být dostatečně dobré pro sledování pohybů Glaciers a řek. Toho je možné dosáhnout tím, že vezmete painstaking míry pomocí GPS, jako je rozdílově korigovaný GPS.
 
-Informace o umístění může být natrénuje takto, oddělit informace o oblasti, umístění a městech. Můžete také zavolat koncový bod REST, jako je například rozhraní API služby Bing Maps, které je k dispozici v [umístění, kde](https://msdn.microsoft.com/library/ff701710.aspx) získáte informace o oblasti a oblasti.
+Informace o umístění může být natrénuje takto, oddělit informace o oblasti, umístění a městech. Můžete také zavolat koncový bod REST, jako je například rozhraní API služby Bing Maps, které je k dispozici v [umístění, kde](/bingmaps/rest-services/locations/find-a-location-by-point) získáte informace o oblasti a oblasti.
 
 ```sql
 select 
@@ -116,7 +116,7 @@ from <tablename>
 Tyto funkce založené na umístění je možné dále využít ke generování dalších funkcí Count, jak je popsáno výše. 
 
 > [!TIP]
-> Záznamy můžete programově vkládat pomocí vámi zvoleného jazyka. Možná budete muset vložit data do bloků dat, abyste vylepšili efektivitu zápisu (příklad toho, jak to udělat pomocí pyodbc) najdete v [ukázce Hello pro přístup k SQLServer pomocí Pythonu](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python). Další možností je vkládat data do databáze pomocí [nástroje BCP](https://msdn.microsoft.com/library/ms162802.aspx).
+> Záznamy můžete programově vkládat pomocí vámi zvoleného jazyka. Možná budete muset vložit data do bloků dat, abyste vylepšili efektivitu zápisu (příklad toho, jak to udělat pomocí pyodbc) najdete v [ukázce Hello pro přístup k SQLServer pomocí Pythonu](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python). Další možností je vkládat data do databáze pomocí [nástroje BCP](/sql/tools/bcp-utility).
 > 
 > 
 
@@ -152,5 +152,4 @@ Podrobný příklad procesu Azure Data vědu pomocí veřejné datové sady najd
 
 
 <!-- Module References -->
-[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
-
+[import-data]: /azure/machine-learning/studio-module-reference/import-data

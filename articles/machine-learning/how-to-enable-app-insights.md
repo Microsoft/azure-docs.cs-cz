@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a36f69c9956dd05c5fbd85d7e37b90c0b1e4c21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09eeafa99c14984f74f8807014f646379c7507f0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897646"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314224"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 
@@ -32,7 +32,7 @@ Poznámkový blok [Enable-App-Insights-in-produkční-Service. ipynb](https://gi
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – Vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -204,9 +204,9 @@ Pokud chcete protokolovat informace o žádosti webové služby, přidejte `prin
 ## <a name="export-data-for-retention-and-processing"></a>Exportovat data pro uchovávání a zpracování
 
 >[!Important]
-> Azure Application Insights podporuje jenom exporty do úložiště objektů BLOB. Další informace o omezeních této implementace najdete v tématu [Export telemetrie z App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
+> Azure Application Insights podporuje jenom exporty do úložiště objektů BLOB. Další informace o omezeních této implementace najdete v tématu [Export telemetrie z App Insights](../azure-monitor/app/export-telemetry.md#continuous-export-advanced-storage-configuration).
 
-Pokud chcete exportovat data do účtu úložiště BLOB, kde můžete definovat nastavení uchovávání, použijte Application Insights [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) . Application Insights exportuje data ve formátu JSON. 
+Pokud chcete exportovat data do účtu úložiště BLOB, kde můžete definovat nastavení uchovávání, použijte Application Insights [průběžný export](../azure-monitor/app/export-telemetry.md) . Application Insights exportuje data ve formátu JSON. 
 
 :::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="Průběžný export":::
 
@@ -215,8 +215,8 @@ Pokud chcete exportovat data do účtu úložiště BLOB, kde můžete definovat
 V tomto článku jste zjistili, jak povolit protokolování a zobrazit protokoly pro koncové body webové služby. Další kroky si můžete vyzkoušet v těchto článcích:
 
 
-* [Postup nasazení modelu do clusteru AKS](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
+* [Postup nasazení modelu do clusteru AKS](./how-to-deploy-azure-kubernetes-service.md)
 
-* [Postup nasazení modelu pro Azure Container Instances](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-container-instance)
+* [Postup nasazení modelu pro Azure Container Instances](./how-to-deploy-azure-container-instance.md)
 
-* [MLOps: můžete spravovat, nasazovat a monitorovat modely pomocí Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment) a získat další informace o využití dat shromážděných z modelů v produkčním prostředí. Tato data vám můžou pomoci při neustálém vylepšování procesu strojového učení.
+* [MLOps: můžete spravovat, nasazovat a monitorovat modely pomocí Azure Machine Learning](./concept-model-management-and-deployment.md) a získat další informace o využití dat shromážděných z modelů v produkčním prostředí. Tato data vám můžou pomoci při neustálém vylepšování procesu strojového učení.

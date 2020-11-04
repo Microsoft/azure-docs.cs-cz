@@ -1,6 +1,6 @@
 ---
-title: Omezení kapacity – Azure synapse Analytics (dřív SQL DW)
-description: Maximální počet povolených hodnot pro různé komponenty synapse fondu SQL ve službě Azure synapse.
+title: Omezení kapacity pro vyhrazený fond SQL
+description: Maximální povolené hodnoty pro různé komponenty vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dac2a60b6b9db082a10d2473eb22b86d8097eee0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742468"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313141"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Omezení kapacity Azure synapse Analytics (dříve SQL DW)
+# <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Omezení kapacity pro vyhrazený fond SQL ve službě Azure synapse Analytics
 
-Maximální povolené hodnoty pro různé součásti Azure synapse
+Maximální povolené hodnoty pro různé komponenty vyhrazeného fondu SQL ve službě Azure synapse Analytics.
 
 ## <a name="workload-management"></a>Správa úloh
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jednu jednotku fondu SQL (datový sklad) | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54 000<br></br>Ve výchozím nastavení má každý SQL Server (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit tak, že [vytvoříte lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) a jako typ žádosti vyberete *kvótu* .  Chcete-li vypočítat potřebné DTU, vynásobte hodnotu 7,5 celkovým DWU, nebo vynásobte 9,5 celkovým počtem potřebných cDWU. Příklad:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti SQL serveru na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
+| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální DWU pro jednu vyhrazenou skupinu SQL (datový sklad) | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí DTU na server |54 000<br></br>Ve výchozím nastavení má každý SQL Server (například myserver.database.windows.net) kvótu DTU 54 000, což umožňuje až DW5000c. Tato kvóta je jednoduše bezpečnostní omezení. Kvótu můžete zvýšit tak, že [vytvoříte lístek podpory](sql-data-warehouse-get-started-create-support-ticket.md) a jako typ žádosti vyberete *kvótu* .  Chcete-li vypočítat potřebné DTU, vynásobte hodnotu 7,5 celkovým DWU, nebo vynásobte 9,5 celkovým počtem potřebných cDWU. Například:<br></br>DW6000 x 7,5 = 45 000 DTU<br></br>DW5000c x 9,5 = 47 500 DTU.<br></br>Aktuální spotřebu DTU můžete zobrazit z možnosti SQL serveru na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
 | Připojení k databázi |Maximální počet souběžných otevřených relací |1024<br/><br/>Počet souběžných otevřených relací se bude lišit v závislosti na vybrané DWU. DWU600c a vyšší podporují maximálně 1024 otevřených relací. DWU500c a níže podporují maximální počet souběžných otevřených relací 512. Všimněte si, že počet dotazů, které mohou být spuštěny současně, je omezen. Pokud je překročen limit souběžnosti, požadavek přejde do interní fronty, ve které čeká na zpracování. |
 | Připojení k databázi |Maximální velikost paměti pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |128<br/><br/>  Vykoná se maximálně 128 souběžných dotazů a zbývající dotazy budou zařazeny do fronty.<br/><br/>Počet souběžných dotazů se může snížit, když jsou uživatelé přiřazeni k vyšším třídám prostředků nebo když je nastavení [jednotky datového skladu](memory-concurrency-limits.md) snížené. Některé dotazy, například dotazy DMV, vždy umožňují spuštění a nemají vliv na souběžný limit dotazu. Další informace o souběžném provádění dotazů naleznete v článku [Maximum](memory-concurrency-limits.md) souběžnosti. |
@@ -38,7 +38,7 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
+| databáze |Maximální velikost | Gen1: na disku je komprimováno 240 TB. Toto místo je nezávislé na tempdb nebo v prostoru protokolu, a proto je toto místo vyhrazeno pro trvalé tabulky.  Clusterovaná komprese columnstore je odhadnuta na pětinásobné.  Tato komprese umožňuje databázi zvětšit na přibližně 1 PB, pokud jsou všechny tabulky clusterovaný cluster columnstore (výchozí typ tabulky). <br/><br/> Gen2: neomezené úložiště pro tabulky columnstore.  Rowstore část databáze je na disku stále omezená na 240 TB. |
 | Tabulka |Maximální velikost |Neomezená velikost tabulek columnstore. <br>60 TB pro tabulky rowstore komprimované na disku. |
 | Tabulka |Tabulky na databázi | 100 000 |
 | Tabulka |Sloupce na tabulku |sloupce 1024 |
@@ -62,7 +62,7 @@ Maximální povolené hodnoty pro různé součásti Azure synapse
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Základní načtení |MB na řádek |1<br/><br/>Základ databáze načítá řádky, které jsou menší než 1 MB. Načítání datových typů LOB do tabulek s clusterovaným indexem columnstore (Ski) není podporováno.<br/> |
-|Základní načtení|Celkový počet souborů|1 000 000<br/><br/>Základní načtení nemůže být větší než 1 milion souborů. Může dojít k následující chybě: **operace se nezdařila, protože počet rozdělení přesahuje horní mez 1000000** .|
+|Základní načtení|Celkový počet souborů|1 000 000<br/><br/>Základní načtení nemůže být větší než 1 milion souborů. Může dojít k následující chybě: **operace se nezdařila, protože počet rozdělení přesahuje horní mez 1000000**.|
 
 ## <a name="queries"></a>Dotazy
 

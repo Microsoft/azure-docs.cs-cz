@@ -10,18 +10,18 @@ author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: df9447160fe6a0aa2a3ae001ad8a337c3ff488f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97d0f822e63bb6eb32b1cd2f211621af8ad1c4b8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275939"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313999"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
 
 V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Můžete zvolit vytvoření plánu na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -66,7 +66,7 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
 
-`ScheduleRecurrence`Konstruktor má povinný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "hour", "Day", "Week" nebo "Month". Také vyžaduje celočíselný `interval` argument určující, kolik `frequency` jednotek by měl uplynout mezi začátkem plánu. Volitelné argumenty vám umožní podrobnější informace o počátečních časech, jak je popsáno v [dokumentaci k sadě SDK pro ScheduleRecurrence](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py&preserve-view=true).
+`ScheduleRecurrence`Konstruktor má povinný `frequency` argument, který musí být jeden z následujících řetězců: "Minute", "hour", "Day", "Week" nebo "Month". Také vyžaduje celočíselný `interval` argument určující, kolik `frequency` jednotek by měl uplynout mezi začátkem plánu. Volitelné argumenty vám umožní podrobnější informace o počátečních časech, jak je popsáno v [dokumentaci k sadě SDK pro ScheduleRecurrence](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?preserve-view=true&view=azure-ml-py).
 
 Vytvořte `Schedule` , který začíná běžet každých 15 minut:
 
@@ -83,11 +83,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Kanály aktivované změnami souborů můžou být efektivnější než plány založené na čase. Například můžete chtít provést krok předzpracování při změně souboru nebo při přidání nového souboru do datového adresáře. Můžete sledovat všechny změny v úložišti dat nebo změny v rámci určitého adresáře v úložišti dat. Pokud monitorete konkrétní adresář, změny v podadresářích tohoto adresáře nebudou _aktivovat běh_ .
 
-Chcete-li vytvořit soubor – reaktivní `Schedule` , musíte nastavit `datastore` parametr ve volání metody [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li monitorovat složku, nastavte `path_on_datastore` argument.
+Chcete-li vytvořit soubor – reaktivní `Schedule` , musíte nastavit `datastore` parametr ve volání metody [Schedule. Create](/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Chcete-li monitorovat složku, nastavte `path_on_datastore` argument.
 
 `polling_interval`Argument umožňuje zadat, v minutách četnosti změn, ve kterých je úložiště dat kontrolováno.
 
-Pokud byl kanál vytvořen pomocí [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py&preserve-view=true) [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py&preserve-view=true), můžete tuto proměnnou nastavit na název změněného souboru nastavením `data_path_parameter_name` argumentu.
+Pokud byl kanál vytvořen pomocí [DataPath](/python/api/azureml-core/azureml.data.datapath.datapath?preserve-view=true&view=azure-ml-py) [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py), můžete tuto proměnnou nastavit na název změněného souboru nastavením `data_path_parameter_name` argumentu.
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -153,4 +153,3 @@ Další informace naleznete v tématech:
 
 * Další informace o [kanálech](concept-ml-pipelines.md)
 * Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)
-

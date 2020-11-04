@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93f23cdcfb3fb7107e3b1838b48b3e58ccc2d028
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315073"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
-Pokud chcete dokončit následující úlohy, můžete použít možnost vytvořit externí tabulku jako SELECT (CETAS) ve fondu SQL nebo na vyžádání SQL (Preview):  
+Můžete použít možnost vytvořit externí tabulku jako SELECT (CETAS) ve vyhrazeném fondu SQL nebo ve fondu SQL bez serveru (Preview) k dokončení následujících úloh:  
 
 - Vytvoření externí tabulky
 - Exportujte paralelně výsledky příkazu SELECT jazyka Transact-SQL pro:
@@ -27,13 +27,13 @@ Pokud chcete dokončit následující úlohy, můžete použít možnost vytvoř
   - Azure Storage Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>CETAS ve fondu SQL
+## <a name="cetas-in-dedicated-sql-pool"></a>CETAS ve vyhrazeném fondu SQL
 
-V případě fondu SQL, použití a syntaxe CETAS zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) článek. Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
+V případě vyhrazeného fondu SQL CETAS použití a syntaxe zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) článek. Další informace o pokynech k CTAS s využitím vyhrazeného fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) .
 
-## <a name="cetas-in-sql-on-demand"></a>CETAS v SQL na vyžádání
+## <a name="cetas-in-serverless-sql-pool"></a>CETAS ve fondu SQL bez serveru
 
-Při použití SQL na vyžádání se CETAS používá k vytvoření externí tabulky a exportu výsledků dotazu pro Azure Storage Blob nebo Azure Data Lake Storage Gen2.
+Pokud používáte fond SQL bez serveru, CETAS se používá k vytvoření externí tabulky a k exportu výsledků dotazu pro Azure Storage Blob nebo Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -56,7 +56,7 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 *[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *TABLE_NAME**
 
-Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky ukládá SQL na vyžádání pouze metadata tabulky. V SQL na vyžádání se nepřesunou ani neukládají žádná skutečná data.
+Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky je ve fondu SQL bez serveru uloženo pouze metadata tabulky. Ve fondu SQL bez serveru nejsou přesunutá ani uložená žádná skutečná data.
 
 LOCATION = *' path_to_folder '*
 

@@ -10,19 +10,19 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 9124bbfc7300f3a5116c572d569b41e15356ab8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08d0f1be166630d9cf4b0b9236d78228fd78aae
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983840"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312803"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformace dat v Návrháři Azure Machine Learning
 
 
 V tomto článku se naučíte, jak transformovat a ukládat datové sady v Návrháři Azure Machine Learning, abyste mohli připravit vlastní data pro strojové učení.
 
-K přípravě dvou datových sad použijete ukázkovou datovou sadu [binárních hodnot řazení pro dospělé](sample-designer-datasets.md) : jednu datovou sadu, která obsahuje informace o sestavách dospělého jenom z USA, a další datovou sadu, která obsahuje sčítání informací od jiných než USA.
+K přípravě dvou datových sad použijete ukázkovou datovou sadu [binárních hodnot řazení pro dospělé](./samples-designer.md) : jednu datovou sadu, která obsahuje informace o sestavách dospělého jenom z USA, a další datovou sadu, která obsahuje sčítání informací od jiných než USA.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -74,7 +74,7 @@ V této části použijete [modul rozdělit data](algorithm-module-reference/spl
 
 1. V podokně podrobností modulu napravo od plátna nastavte **rozdělovací režim** na **regulární výraz**.
 
-1. Zadejte **regulární výraz**: `\"native-country" United-States` .
+1. Zadejte **regulární výraz** : `\"native-country" United-States` .
 
     Režim **regulárního výrazu** testuje jeden sloupec pro hodnotu. Další informace o modulu Split data najdete na [referenční stránce modulu souvisejícího algoritmu](algorithm-module-reference/split-data.md).
 
@@ -97,36 +97,36 @@ Teď, když je váš kanál nastavený pro rozdělení dat, je potřeba určit, 
 
     ![Snímek obrazovky ukazující, jak propojit moduly exportu dat](media/how-to-designer-transform-data/export-data-pipeline.png).
 
-1. Vyberte modul **exportovat data** , který je připojen k portu nejvíce *vlevo*modulu **rozdělit data** .
+1. Vyberte modul **exportovat data** , který je připojen k portu nejvíce *vlevo* modulu **rozdělit data** .
 
     Pořadí výstupních portů pro modul **rozdělit data** První výstupní port obsahuje řádky, ve kterých je regulární výraz pravdivý. V takovém případě první port obsahuje řádky pro příjem na bázi USA a druhý port obsahuje řádky pro příjem nezaložených na USA.
 
 1. V podokně podrobností modulu napravo od plátna nastavte následující možnosti:
     
-    **Typ úložiště dat**: Azure Blob Storage
+    **Typ úložiště dat** : Azure Blob Storage
 
-    **Úložiště dat**: Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
+    **Úložiště dat** : Vyberte existující úložiště dat, nebo vyberte nové úložiště dat, abyste ho mohli teď vytvořit.
 
-    **Cesta**: `/data/us-income`
+    **Cesta** : `/data/us-income`
 
-    **Formát souboru**: CSV
+    **Formát souboru** : CSV
 
     > [!NOTE]
     > V tomto článku se předpokládá, že máte přístup k úložišti dat registrovanému v aktuálním pracovním prostoru Azure Machine Learning. Pokyny, jak nastavit úložiště dat, najdete v tématu [připojení ke službám Azure Storage](how-to-connect-data-ui.md#create-datastores).
 
     Pokud úložiště dat nemáte, můžete si ho vytvořit teď. V tomto článku se například uloží datové sady do výchozího účtu služby Blob Storage přidruženého k pracovnímu prostoru. Datové sady se uloží do `azureml` kontejneru v nové složce s názvem `data` .
 
-1.  Vyberte modul **exportovat data** připojený k *pravému*portu modulu **rozdělit data** .
+1.  Vyberte modul **exportovat data** připojený k *pravému* portu modulu **rozdělit data** .
 
 1. V podokně podrobností modulu napravo od plátna nastavte následující možnosti:
     
-    **Typ úložiště dat**: Azure Blob Storage
+    **Typ úložiště dat** : Azure Blob Storage
 
-    **Úložiště dat**: vyberte stejné úložiště dat jako výše.
+    **Úložiště dat** : vyberte stejné úložiště dat jako výše.
 
-    **Cesta**: `/data/non-us-income`
+    **Cesta** : `/data/non-us-income`
 
-    **Formát souboru**: CSV
+    **Formát souboru** : CSV
 
 1. Potvrďte, že je v modulu **Export data** připojené k levému portu **rozdělených dat** **cesta** `/data/us-income` .
 

@@ -11,25 +11,25 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/30/2020
-ms.openlocfilehash: 89bad470d5ead43b79e3691343b53fff796f7abc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: cfa6dcb0b1fc173bdf3612308227b8309491e9fa
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172777"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312739"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning
 
 V tomto dokumentu se dozvíte, jak pomocí privátního propojení Azure s vaším pracovním prostorem Azure Machine Learning. Informace o vytvoření virtuální sítě pro Azure Machine Learning najdete v tématu [Přehled izolace a ochrany osobních údajů virtuální sítě](how-to-network-security-overview.md) .
 
-Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v rámci vaší virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se nacházet jenom přes privátní IP adresy. Soukromý odkaz pomáhá snižovat riziko exfiltrace dat. Další informace o privátních koncových bodech najdete v článku věnovaném [privátním odkazům Azure](/azure/private-link/private-link-overview) .
+Privátní odkaz Azure umožňuje připojit se k pracovnímu prostoru pomocí privátního koncového bodu. Soukromý koncový bod je sada privátních IP adres v rámci vaší virtuální sítě. Přístup k pracovnímu prostoru pak můžete omezit tak, aby se nacházet jenom přes privátní IP adresy. Soukromý odkaz pomáhá snižovat riziko exfiltrace dat. Další informace o privátních koncových bodech najdete v článku věnovaném [privátním odkazům Azure](../private-link/private-link-overview.md) .
 
 > [!IMPORTANT]
 > Privátní propojení Azure neovlivňuje plochu ovládacího prvku Azure (operace správy), jako je například odstranění pracovního prostoru nebo Správa výpočetních prostředků. Například vytvoření, aktualizace nebo odstranění cíle služby Compute. Tyto operace se provádějí na veřejném Internetu jako normální. Operace roviny dat, jako je například použití Azure Machine Learning studia, rozhraní API (včetně publikovaných kanálů) nebo sady SDK, používají privátní koncový bod.
 >
 > Pokud používáte Mozilla Firefox, může dojít k potížím při pokusu o přístup k privátnímu koncovému bodu pro váš pracovní prostor. Tento problém může souviset s DNS přes HTTPS v Mozilla. Jako alternativní řešení doporučujeme používat Microsoft Edge Google Chrome.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud plánujete použít pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem, musíte požádat o tuto funkci pomocí lístku podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
@@ -39,14 +39,14 @@ Použití Azure Machine Learningho pracovního prostoru s privátním odkazem ne
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Vytvoření pracovního prostoru, který používá privátní koncový bod
 
-K vytvoření pracovního prostoru s privátním koncovým bodem použijte jednu z následujících metod. Každá z těchto metod __vyžaduje existující virtuální síť__:
+K vytvoření pracovního prostoru s privátním koncovým bodem použijte jednu z následujících metod. Každá z těchto metod __vyžaduje existující virtuální síť__ :
 
 > [!TIP]
 > Pokud chcete současně vytvořit pracovní prostor, privátní koncový bod a virtuální síť, přečtěte si téma [použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning](how-to-create-workspace-template.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
-Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) , která se dá použít s [pracovním prostorem. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) k vytvoření pracovního prostoru s privátním koncovým bodem. Tato třída vyžaduje existující virtuální síť.
+Sada Azure Machine Learning Python SDK poskytuje třídu [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) , která se dá použít s [pracovním prostorem. Create ()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) k vytvoření pracovního prostoru s privátním koncovým bodem. Tato třída vyžaduje existující virtuální síť.
 
 ```python
 from azureml.core import Workspace
@@ -64,7 +64,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) . Následující parametry tohoto příkazu lze použít k vytvoření pracovního prostoru s privátní sítí, ale vyžaduje existující virtuální síť:
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml Workspace Create](/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_create) . Následující parametry tohoto příkazu lze použít k vytvoření pracovního prostoru s privátní sítí, ale vyžaduje existující virtuální síť:
 
 * `--pe-name`: Název privátního koncového bodu, který je vytvořen.
 * `--pe-auto-approval`: Zda mají být připojení privátního koncového bodu k pracovnímu prostoru automaticky schválena.
@@ -101,11 +101,11 @@ ws = Workspace.from_config()
 ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approval=True, show_output=True)
 ```
 
-Další informace o třídách a metodách, které se používají v tomto příkladu, naleznete v tématu [PrivateEndpointConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) a [Workspace.add_private_endpoint](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
+Další informace o třídách a metodách, které se používají v tomto příkladu, naleznete v tématu [PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?view=azure-ml-py) a [Workspace.add_private_endpoint](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#add-private-endpoint-private-endpoint-config--private-endpoint-auto-approval-true--location-none--show-output-true--tags-none-).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru přidat](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru přidat](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) .
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -115,8 +115,8 @@ az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint
 
 Z pracovního prostoru Azure Machine Learning na portálu vyberte __připojení privátních koncových bodů__ a pak vyberte __+ privátní koncový bod__. Použijte pole k vytvoření nového privátního koncového bodu.
 
-* Při výběru __oblasti__vyberte stejnou oblast jako vaše virtuální síť. 
-* Při výběru __typu prostředku__použijte __Microsoft. MachineLearningServices/Workspaces__. 
+* Při výběru __oblasti__ vyberte stejnou oblast jako vaše virtuální síť. 
+* Při výběru __typu prostředku__ použijte __Microsoft. MachineLearningServices/Workspaces__. 
 * Nastavte __prostředek__ na název vašeho pracovního prostoru.
 
 Nakonec vyberte __vytvořit__ k vytvoření privátního koncového bodu.
@@ -129,7 +129,7 @@ K odebrání privátního koncového bodu z pracovního prostoru použijte jednu
 
 # <a name="python"></a>[Python](#tab/python)
 
-Pro odebrání privátního koncového bodu použijte [Workspace.delete_private_endpoint_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) .
+Pro odebrání privátního koncového bodu použijte [Workspace.delete_private_endpoint_connection](/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#delete-private-endpoint-connection-private-endpoint-connection-name-) .
 
 ```python
 from azureml.core import Workspace
@@ -142,11 +142,11 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
+[Rozšíření Azure CLI pro Machine Learning](reference-azure-machine-learning-cli.md) poskytuje příkaz [AZ ml v rámci privátního koncového bodu v pracovním prostoru](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint?view=azure-cli-latest#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) .
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-Z pracovního prostoru Azure Machine Learning na portálu vyberte __připojení privátního koncového bodu__a pak vyberte koncový bod, který chcete odebrat. Nakonec vyberte __Odebrat__.
+Z pracovního prostoru Azure Machine Learning na portálu vyberte __připojení privátního koncového bodu__ a pak vyberte koncový bod, který chcete odebrat. Nakonec vyberte __Odebrat__.
 
 ---
 
@@ -157,7 +157,7 @@ Vzhledem k tomu, že komunikace s pracovním prostorem je povolená jenom z virt
 > [!IMPORTANT]
 > Aby nedošlo k dočasnému přerušení připojení, společnost Microsoft doporučuje po povolení privátního odkazu vyprázdnit mezipaměť DNS na počítačích, které se připojují k pracovnímu prostoru. 
 
-Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Machines](/azure/virtual-machines/).
+Informace o službě Azure Virtual Machines najdete v [dokumentaci k Virtual Machines](../virtual-machines/index.yml).
 
 
 ## <a name="next-steps"></a>Další kroky

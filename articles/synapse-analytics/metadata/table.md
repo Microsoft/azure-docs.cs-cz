@@ -1,6 +1,6 @@
 ---
 title: Sdílené tabulky metadat
-description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém se vytvoří tabulka v Apache Spark bude přístupná z jeho modulů SQL na vyžádání (Preview) a fondů SQL serveru, aniž by bylo třeba duplikovat data.
+description: Azure synapse Analytics poskytuje sdílený model metadat, ve kterém při vytváření tabulky v neserverovém fondu Apache Spark bude přístupný z fondu SQL bez serveru (Preview) a vyhrazeného fondu SQL bez duplikování dat.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d19376d21081d899d8ff7226c6d7c5b76267fabf
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314538"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Sdílené tabulky metadat Azure synapse Analytics
 
 [!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi svými Apache Spark fondy (Preview) a SQL na vyžádání (Preview).
+Azure synapse Analytics umožňuje různým výpočetním modulům pracovních prostorů sdílet databáze a tabulky založené na Parquet mezi jeho fondy Apache Spark (Preview) a SQL fondem bez serveru (Preview).
 
 Jakmile se databáze vytvoří pomocí úlohy Sparku, můžete v ní vytvářet tabulky pomocí Sparku, která jako formát úložiště používá Parquet. Tyto tabulky budou okamžitě k dispozici pro dotazování pomocí všech fondů Sparku v pracovním prostoru Azure synapse. Lze je také použít ze všech úloh Spark podléhajících oprávněním.
 
-Vytvořené, spravované a externí tabulky Spark jsou také k dispozici jako externí tabulky se stejným názvem v odpovídající synchronizované databázi v SQL na vyžádání. Vystavení [tabulky Spark v SQL](#expose-a-spark-table-in-sql) poskytuje další podrobnosti o synchronizaci tabulek.
+Vytvořené, spravované a externí tabulky Spark jsou také k dispozici jako externí tabulky se stejným názvem v odpovídající synchronizované databázi ve fondu SQL bez serveru. Vystavení [tabulky Spark v SQL](#expose-a-spark-table-in-sql) poskytuje další podrobnosti o synchronizaci tabulek.
 
-Vzhledem k tomu, že se tabulky synchronizují na vyžádání SQL asynchronně, dojde k prodlevě, dokud se nezobrazí.
+Vzhledem k tomu, že jsou tabulky synchronizovány do fondu SQL bez serveru asynchronně, dojde k prodlevě, dokud nebudou zobrazeny.
 
 ## <a name="manage-a-spark-created-table"></a>Spravovat tabulku vytvořenou v Sparku
 
-Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho například odstranit pomocí úlohy fondu Spark a vytvořit v něm tabulky z Sparku.
+Pomocí Sparku můžete spravovat databáze Spark vytvořené. Můžete ho například odstranit pomocí úlohy fondu Apache Spark bez serveru a vytvořit v něm tabulky ze Sparku.
 
-Pokud vytvoříte objekty v takové databázi z SQL na vyžádání nebo zkusíte databázi odpojit, operace bude úspěšná, ale původní databáze Spark se nemění.
+Při vytváření objektů v takové databázi z fondu SQL bez serveru nebo při pokusu o vyřazení databáze bude operace úspěšná, ale původní databáze Spark se nemění.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Vystavení tabulky Spark v SQL
 
@@ -95,9 +95,9 @@ Další informace o tom, jak nastavit oprávnění pro složky a soubory, najdet
 
 ## <a name="examples"></a>Příklady
 
-### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Vytvoření spravované tabulky založené na Parquet ve Sparku a dotazování z SQL na vyžádání
+### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Vytvoření spravované tabulky s použitím Parquet ve Sparku a dotazem z fondu SQL bez serveru
 
-V tomto scénáři máte databázi Spark s názvem `mytestdb` . Přečtěte si téma [Vytvoření a připojení k databázi Spark pomocí SQL na vyžádání](database.md#create-and-connect-to-spark-database-with-sql-on-demand).
+V tomto scénáři máte databázi Spark s názvem `mytestdb` . Přečtěte si téma [Vytvoření a připojení k databázi Spark s fondem SQL bez serveru](database.md#create-and-connect-to-spark-database-with-serverless-sql-pool).
 
 Spuštěním následujícího příkazu vytvořte spravovanou tabulku Spark pomocí SparkSQL:
 
@@ -105,7 +105,7 @@ Spuštěním následujícího příkazu vytvořte spravovanou tabulku Spark pomo
     CREATE TABLE mytestdb.myParquetTable(id int, name string, birthdate date) USING Parquet
 ```
 
-Tento příkaz vytvoří tabulku `myParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Tento příkaz vytvoří tabulku `myParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v neserveru SQL fondu. Například spusťte následující příkaz z fondu SQL bez serveru.
 
 ```sql
     USE mytestdb;
@@ -140,7 +140,7 @@ var df = spark.CreateDataFrame(data, schema);
 df.Write().Mode(SaveMode.Append).InsertInto("mytestdb.myParquetTable");
 ```
 
-Teď můžete data z SQL na vyžádání přečíst následujícím způsobem:
+Nyní můžete číst data z fondu SQL bez serveru, a to následujícím způsobem:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myParquetTable WHERE name = 'Alice';
@@ -154,7 +154,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>Vytvoření externí tabulky založené na Parquet ve Sparku a dotazování z SQL na vyžádání
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-serverless-sql-pool"></a>Vytvoření externí tabulky s použitím Parquet ve Sparku a dotazem z fondu SQL bez serveru
 
 V tomto příkladu vytvořte externí tabulku Spark přes Parquet datové soubory, které byly vytvořeny v předchozím příkladu pro spravovanou tabulku.
 
@@ -168,7 +168,7 @@ CREATE TABLE mytestdb.myExternalParquetTable
 
 Zástupný text nahraďte `<fs>` názvem systému souborů, který je výchozím systémem souborů v pracovním prostoru, a zástupným symbolem `<synapse_ws>` s názvem synapse pracovního prostoru, který používáte ke spuštění tohoto příkladu.
 
-Předchozí příklad vytvoří tabulku `myExtneralParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v SQL na vyžádání. Například spusťte následující příkaz z SQL na vyžádání.
+Předchozí příklad vytvoří tabulku `myExtneralParquetTable` v databázi `mytestdb` . Po krátké prodlevě uvidíte tabulku v neserveru SQL fondu. Například spusťte následující příkaz z fondu SQL bez serveru.
 
 ```sql
 USE mytestdb;
@@ -177,7 +177,7 @@ SELECT * FROM sys.tables;
 
 Ověřte, že `myExternalParquetTable` je součástí výsledků.
 
-Teď můžete data z SQL na vyžádání přečíst následujícím způsobem:
+Nyní můžete číst data z fondu SQL bez serveru, a to následujícím způsobem:
 
 ```sql
 SELECT * FROM mytestdb.dbo.myExternalParquetTable WHERE name = 'Alice';

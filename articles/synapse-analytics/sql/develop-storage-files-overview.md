@@ -1,6 +1,6 @@
 ---
-title: Přístup k souborům v úložišti na vyžádání SQL (Preview)
-description: Popisuje dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v rámci synapse SQL.
+title: Přístup k souborům v úložišti v neserverovém fondu SQL (Preview)
+description: Popisuje dotazování souborů úložiště pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 73a5414a979742c4a7df16dcd2a5edda3748abef
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91288983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315935"
 ---
-# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
+# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Přístup k externímu úložišti pomocí neserverového fondu SQL (Preview) ve službě Azure synapse Analytics
 
-Tento dokument popisuje, jak může uživatel číst data ze souborů uložených na Azure Storage v synapse SQL (na vyžádání). Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
+Tento dokument popisuje, jak můžou uživatelé číst data ze souborů uložených na Azure Storage ve fondu SQL bez serveru. Uživatelé mají k dispozici následující možnosti pro přístup k úložišti:
 
 - Funkce [OpenRowset](develop-openrowset.md) , která umožňuje provádět dotazy ad-hoc přes soubory v Azure Storage.
 - [Externí tabulka](develop-tables-external-tables.md) , která je předdefinovanou datovou strukturou založenou na sadě externích souborů.
@@ -27,7 +27,7 @@ Uživatel může použít [jiné metody ověřování](develop-storage-files-sto
 
 ## <a name="query-files-using-openrowset"></a>Dotazování souborů pomocí OPENROWSET
 
-OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě Azure Storage, pokud mají přístup k úložišti. Uživatel, který je připojený k Synapsemu koncovému bodu SQL na vyžádání, by měl použít následující dotaz ke čtení obsahu souborů v Azure Storage:
+OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě Azure Storage, pokud mají přístup k úložišti. Uživatel, který je připojený k fondu SQL bez serveru, by měl použít následující dotaz ke čtení obsahu souborů v Azure Storage:
 
 ```sql
 SELECT * FROM

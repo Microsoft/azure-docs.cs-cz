@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737992"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313532"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
-Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich fondů Spark (Preview). Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
+Knihovny poskytují opakovaně použitelný kód, který můžete chtít zahrnout do svých programů nebo projektů. Pokud chcete vašim aplikacím zpřístupnit třetí stranu nebo místně sestavený kód, můžete knihovnu nainstalovat na jeden z vašich Apache Spark fondů bez serveru (Preview). Jakmile je knihovna nainstalována pro fond Spark, je k dispozici pro všechny relace používající stejný fond. 
 
 ## <a name="default-installation"></a>Výchozí instalace
 Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md). 
@@ -68,7 +68,7 @@ Aktualizace nebo přidání dalších knihoven do fondu Spark (Preview) na port�
    
 2.  Spusťte pracovní prostor Azure synapse Analytics z Azure Portal.
 
-3.  V hlavním navigačním panelu vyberte **Spravovat** a pak vyberte **fondy Apache Spark** .
+3.  V hlavním navigačním panelu vyberte **Spravovat** a pak vyberte **fondy Apache Spark**.
    
 4. Vyberte jeden fond Spark a nahrajte konfigurační soubor prostředí pomocí voliče souborů v části  **Packages (balíčky** ) stránky.
 
@@ -106,7 +106,7 @@ Aktualizace nebo odinstalace knihovny:
 
 3. Přejděte do části **Packages (balíčky** ) a nahrajte nový soubor konfigurace prostředí.
    
-4. Po uložení změn bude nutné ukončit aktivní relace a nechat fond restartovat. Volitelně můžete aktivní relace vynutit tak, že zaškrtnutím políčka **vynutíte nová nastavení** .
+4. Po uložení změn bude nutné ukončit aktivní relace a nechat fond restartovat. Volitelně můžete aktivní relace vynutit tak, že zaškrtnutím políčka **vynutíte nová nastavení**.
 
     ![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "Přidat knihovny Pythonu")
    

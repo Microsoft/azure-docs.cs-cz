@@ -80,23 +80,23 @@
       href: environment-setup.md
       items:
         - name: Účty služby Azure Storage
-          href: /azure/storage/common/storage-create-storage-account?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../../storage/common/storage-account-create.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: Platformy a nástroje
           href: platforms-and-tools.md
         - name: R a Python v clusterech HDInsight
           items:
             - name: Představujeme Spark ve službě HDInsight
-              href: /azure/hdinsight/spark/apache-spark-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Vytvoření clusteru Apache Spark ve službě Azure HDInsight
-              href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Jádra PySpark pro poznámkový blok Jupyter
-              href: /azure/hdinsight/spark/apache-spark-jupyter-notebook-kernels?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: R Server v HDInsightu
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Začínáme používat R Server ve službě HDInsight
-              href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
         - name: Pracovní prostor Machine Learning Studio (classic)
-          href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
+          href: ../classic/create-workspace.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: Analýza obchodních potřeb
       items:
         - name: Určení scénáře
@@ -115,9 +115,9 @@
                 - name: Použití Storage Exploreru
                   href: move-data-to-azure-blob-using-azure-storage-explorer.md
                 - name: Použití AzCopy
-                  href: 'https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10'
+                  href: ../../storage/common/storage-use-azcopy-v10.md
                 - name: Použití Pythonu
-                  href: /azure/storage/blobs/storage-python-how-to-use-blob-storage?context=azure/machine-learning/team-data-science-process/context/ml-context
+                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
                 - name: Použití SSIS
                   href: move-data-to-azure-blob-using-ssis.md
             - name: Přechod na SQL na virtuálním počítači
@@ -185,15 +185,15 @@
         - name: Vytvoření a trénování modelů
           items:
             - name: Volba algoritmů
-              href: /azure/machine-learning/how-to-select-algorithms?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../how-to-select-algorithms.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
             - name: Tahák s algoritmy
-              href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/team-data-science-process/context/ml-context
+              href: ../algorithm-cheat-sheet.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
     - name: Nasazení modelů v produkčním prostředí
       href: deploy-models-in-production.md
 - name: Související
   items:
     - name: Cognitive Services
-      href: 'https://docs.microsoft.com/azure/cognitive-services/'
+      href: ../../cognitive-services/index.yml
     - name: Detekce anomálií
       href: apps-anomaly-detection-api.md
     - name: Prediktivní údržba
@@ -215,7 +215,7 @@
     - name: Související prostředky Microsoftu
       items:
         - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning-studio-classic.html'
+          href: /answers/topics/azure-machine-learning-studio-classic.html
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
         - name: Videa

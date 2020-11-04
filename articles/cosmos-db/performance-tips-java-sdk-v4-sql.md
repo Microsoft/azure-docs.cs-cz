@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c65cd4012d29146061183ea13749a0f42c03b1eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091272"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314339"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy pro zvýšení výkonu pro sadu Java SDK v4 služby Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 * **Režim připojení: použít přímý režim**
 <a id="direct-connection"></a>
     
-    Výchozí režim připojení sady Java SDK je přímý. Režim připojení můžete nakonfigurovat v Tvůrci klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument ( *DirectConnectionConfig* pro *directMode ()* ,  *GatewayConnectionConfig* pro *gatewayMode ()* .). Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
+    Výchozí režim připojení sady Java SDK je přímý. Režim připojení můžete nakonfigurovat v Tvůrci klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument ( *DirectConnectionConfig* pro *directMode ()* ,  *GatewayConnectionConfig* pro *gatewayMode ()*.). Další informace o různých možnostech připojení najdete v článku [režimy připojení](sql-sdk-connection-modes.md) .
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Sada Java v4 SDK
 
@@ -107,7 +107,7 @@ Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-v
 
 * **Použijte nejnižší úroveň konzistence požadovanou pro vaši aplikaci.**
 
-    Když vytvoříte *CosmosClient* , použije se výchozí konzistence, pokud není explicitně nastavená *relace* . Pokud vaše logika aplikace nevyžaduje konzistenci *relace* , nastavte *konzistenci* na hodnotu *ne.* Poznámka: doporučuje se používat minimálně konzistenci *relací* v aplikacích, které používají procesor Azure Cosmos DB Change feed.
+    Když vytvoříte *CosmosClient* , použije se výchozí konzistence, pokud není explicitně nastavená *relace*. Pokud vaše logika aplikace nevyžaduje konzistenci *relace* , nastavte *konzistenci* na hodnotu *ne.* Poznámka: doporučuje se používat minimálně konzistenci *relací* v aplikacích, které používají procesor Azure Cosmos DB Change feed.
 
 * **Použití asynchronního rozhraní API k překročení zajištěné propustnosti**
 
@@ -151,7 +151,7 @@ Další podrobnosti najdete v pokynech pro [Windows](../virtual-network/create-v
 
     * ***Přehled přímého režimu** _
 
-        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
+        :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
 
         Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _ *kanálů* * na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 

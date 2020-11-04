@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0cc367b86507d6d819608795851052e8a0c1c73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d17af4f615907ca50b27ce8fa26973e5869608
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890301"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314254"
 ---
 # <a name="score-model"></a>Určení skóre modelu
 
@@ -48,8 +48,8 @@ Skóre nebo předpokládaná hodnota může být v mnoha různých formátech v 
 
 ## <a name="publish-scores-as-a-web-service"></a>Publikování skóre jako webové služby
 
-Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v [tomto kurzu](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) o nasazení koncového bodu v reálném čase na základě kanálu v Návrháři Azure Machine Learning.
+Běžné použití bodování je vrácení výstupu v rámci prediktivní webové služby. Další informace najdete v [tomto kurzu](../tutorial-designer-automobile-price-deploy.md) o nasazení koncového bodu v reálném čase na základě kanálu v Návrháři Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

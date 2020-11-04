@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 7ea0cbfb8ddfa2991e2a362bcb321418428cb16b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288124"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313978"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Konfigurace anonymního veřejného přístupu pro čtení pro kontejnery a objekty blob
 
@@ -51,7 +51,7 @@ Nepovolení veřejného přístupu pro účet úložiště zabraňuje anonymním
 > [!IMPORTANT]
 > Nepovolení veřejného přístupu pro účet úložiště přepíše nastavení veřejného přístupu pro všechny kontejnery v tomto účtu úložiště. Pokud pro účet úložiště není povolený veřejný přístup, všechny budoucí anonymní požadavky na daný účet selžou. Před změnou tohoto nastavení nezapomeňte pochopit dopad na klientské aplikace, které můžou přistupovat k datům ve vašem účtu úložiště anonymně. Další informace najdete v tématu [zabránění anonymnímu veřejnému přístupu pro čtení kontejnerů a objektů BLOB](anonymous-read-access-prevent.md).
 
-Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager ve veřejném cloudu Azure nebo v cloudech Azure Government. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
+Pokud chcete povolit nebo zakázat veřejný přístup k účtu úložiště, nakonfigurujte vlastnost **AllowBlobPublicAccess** účtu. Tato vlastnost je k dispozici pro všechny účty úložiště, které jsou vytvořeny pomocí modelu nasazení Azure Resource Manager. Další informace najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md).
 
 Vlastnost **AllowBlobPublicAccess** není nastavena ve výchozím nastavení a nevrací hodnotu, dokud ji explicitně nenastavíte. Účet úložiště povoluje veřejný přístup, pokud je hodnota vlastnosti buď **null** , nebo **true**.
 

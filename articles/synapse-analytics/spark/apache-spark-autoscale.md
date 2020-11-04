@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f34bcfa8b743fbee6ee3b78fc1a042d1df0abfde
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500347"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313645"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatické škálování Apache Sparkch fondů Azure synapse Analytics
 
@@ -49,7 +49,7 @@ Pro horizontální navýšení kapacity na základě počtu prováděcích modul
 
 ## <a name="get-started"></a>Začínáme
 
-### <a name="create-a-spark-pool-with-autoscaling"></a>Vytvoření fondu Spark s automatickým škálováním
+### <a name="create-a-serverless-apache-spark-pool-with-autoscaling"></a>Vytvoření fondu Apache Spark bez serveru s automatickým škálováním
 
 Pokud chcete povolit funkci automatického škálování, proveďte v rámci procesu normálního vytváření fondu následující kroky:
 

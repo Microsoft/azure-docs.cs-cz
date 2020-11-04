@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 232260ada4d810127584e675480f91d0213e3953
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091493"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314161"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Zabezpečení Azure Machine Learningho školicího prostředí s využitím virtuálních sítí
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak zabezpečit následující výpočetní prost�
     - "Microsoft. Network/virtualNetworks/JOIN/Action" na prostředku virtuální sítě.
     - "Microsoft. Network/virtualNetworks/podsíť/JOIN/Action" na prostředku podsítě.
 
-    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](/azure/role-based-access-control/built-in-roles#networking) .
+    Další informace o RBAC v Azure s využitím sítě najdete v tématu [předdefinované role sítě](../role-based-access-control/built-in-roles.md#networking) .
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Výpočetní clustery & instance 
@@ -61,17 +61,17 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning _
 > * Pokud hodláte do jedné virtuální sítě umístit víc výpočetních instancí nebo clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
 > * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning výpočetní instance nebo cluster. 
 > * Aby funkce COMPUTE instance Jupyter fungovala, ujistěte se, že komunikace webového soketu není zakázána. Ujistěte se prosím, že vaše síť povoluje připojení pomocí protokolu WebSocket k *. instances.azureml.net a *. instances.azureml.ms. 
-> * Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se k ní dostat jenom z virtuální sítě. Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro `<instance-name>.<region>.instances.azureml.ms` s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns) .
+> * Když je instance služby COMPUTE nasazená v pracovním prostoru privátního propojení, dá se k ní dostat jenom z virtuální sítě. Pokud používáte vlastní soubor DNS nebo hostitele, přidejte položku pro `<instance-name>.<region>.instances.azureml.ms` s privátní IP adresou privátního koncového bodu pracovního prostoru. Další informace najdete v článku o [vlastním serveru DNS](./how-to-custom-dns.md) .
     
 > [!TIP]
-> Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky __ve skupině prostředků, která obsahuje virtuální síť__ . Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
+> Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky __ve skupině prostředků, která obsahuje virtuální síť__. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
 > 
 > * Jedna skupina zabezpečení sítě
 > * Jedna veřejná IP adresa
 > * Jeden nástroj pro vyrovnávání zatížení
 > 
 > V případě clusterů těchto prostředků se odstraní (a znovu vytvoří), když se cluster škáluje na 0 uzlů, ale u instance, na kterou se prostředky ukládají, ale do úplného odstranění instance (zastavování neodebere prostředky). 
-> Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) předplatného.
+> Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a> Požadované porty
@@ -80,7 +80,7 @@ Pokud plánujete zabezpečit virtuální síť tím, že omezíte síťový prov
 
 Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě) na úrovni síťových rozhraní (nic) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
 
-- Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__ .
+- Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__.
 
     ![Příchozí pravidlo, které používá značku služby BatchNodeManagement](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -90,7 +90,7 @@ Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě)
 
 - Odchozí provoz do internetu na jakémkoli portu.
 
-- Pro příchozí provoz TCP pro výpočetní instance na portu 44224 ze __značky služby__ __AzureMachineLearning__ .
+- Pro příchozí provoz TCP pro výpočetní instance na portu 44224 ze __značky služby__ __AzureMachineLearning__.
 
 > [!IMPORTANT]
 > Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE nastaví stav výpočetních uzlů na nepoužitelné.
@@ -112,8 +112,8 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
 - V případě __výpočetní instance__ nebo __výpočetního clusteru__ omezte odchozí provoz na následující položky:
-   - Azure Storage pomocí __označení služby__ __Storage. RegionName__ . Kde `{RegionName}` je název oblasti Azure.
-   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. RegionName__ . Kde `{RegionName}` je název oblasti Azure.
+   - Azure Storage pomocí __označení služby__ __Storage. RegionName__. Kde `{RegionName}` je název oblasti Azure.
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. RegionName__. Kde `{RegionName}` je název oblasti Azure.
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
    - Azure Resource Manager pomocí __označení služby__ __AzureResourceManager__
    - Azure Active Directory pomocí __označení služby__ __azureactivedirectory selhala__
@@ -154,17 +154,17 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku
 
 ### <a name="forced-tunneling"></a>Vynucené tunelování
 
-Pokud používáte [vynucené tunelování](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) s využitím Azure Machine Learning COMPUTE, musíte z podsítě, která obsahuje výpočetní prostředky, umožňovat komunikaci s veřejným internetem. Tato komunikace se používá pro plánování úloh a přístup k Azure Storage.
+Pokud používáte [vynucené tunelování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) s využitím Azure Machine Learning COMPUTE, musíte z podsítě, která obsahuje výpočetní prostředky, umožňovat komunikaci s veřejným internetem. Tato komunikace se používá pro plánování úloh a přístup k Azure Storage.
 
 Můžete to provést dvěma způsoby:
 
 * Použijte [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md). Brána NAT poskytuje odchozí připojení k Internetu pro jednu nebo více podsítí ve vaší virtuální síti. Informace najdete v tématu [navrhování virtuálních sítí s využitím prostředků brány NAT](../virtual-network/nat-gateway-resource.md).
 
-* Přidejte [uživatelsky definované trasy (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsítě, která obsahuje výpočetní prostředek. Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
+* Přidejte [uživatelsky definované trasy (udr)](../virtual-network/virtual-networks-udr-overview.md) do podsítě, která obsahuje výpočetní prostředek. Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
 
     * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v něm soubor `BatchNodeManagement.<region>` a `AzureMachineLearning.<region>` , kde `<region>` je vaše oblast Azure.
 
-    * Informace si můžete stáhnout pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti:
+    * Informace si můžete stáhnout pomocí [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) . Následující příklad stáhne informace o IP adrese a odfiltruje informace o Východní USA 2 oblasti:
 
         ```azurecli-interactive
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -177,7 +177,7 @@ Můžete to provést dvěma způsoby:
         > * [Rozsahy IP adres a značek služeb Azure pro Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
         > * [Rozsahy IP adres a značky služeb Azure pro Azure Čína](https://www.microsoft.com//download/details.aspx?id=57062)
     
-    Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__ . Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
+    Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
 
     ![Příklad UDR pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
 
@@ -253,7 +253,7 @@ Po dokončení procesu vytváření můžete model pomocí clusteru v experiment
 
 Pokud používáte poznámkové bloky ve službě Azure COMPUTE instance, musíte zajistit, aby váš Poznámkový blok běžel na výpočetním prostředku za stejnou virtuální sítí a podsítí jako vaše data. 
 
-Instanci služby COMPUTE musíte nakonfigurovat tak, aby byla ve stejné virtuální síti během vytváření v části **Upřesnit nastavení**  >  **Konfigurace služby Virtual Network** . Existující výpočetní instanci nemůžete přidat do virtuální sítě.
+Instanci služby COMPUTE musíte nakonfigurovat tak, aby byla ve stejné virtuální síti během vytváření v části **Upřesnit nastavení**  >  **Konfigurace služby Virtual Network**. Existující výpočetní instanci nemůžete přidat do virtuální sítě.
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -278,31 +278,31 @@ V této části se dozvíte, jak používat virtuální počítač nebo cluster 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>Vytvoření virtuálního počítače nebo clusteru HDInsight
 
 Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v následujících článcích:
-* [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+* [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](../virtual-machines/linux/tutorial-virtual-network.md)
 
-* [Rozšiřování HDInsight pomocí virtuální sítě Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
+* [Rozšiřování HDInsight pomocí virtuální sítě Azure](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
 
 ### <a name="configure-network-ports"></a>Konfigurace síťových portů 
 
 Povolí Azure Machine Learning komunikaci s portem SSH na virtuálním počítači nebo v clusteru, nakonfigurujte položku zdroje pro skupinu zabezpečení sítě. Port SSH je obvykle port 22. Pokud chcete povolit přenos z tohoto zdroje, proveďte následující akce:
 
-1. V rozevíracím seznamu __zdroj__ vyberte možnost __značka služby__ .
+1. V rozevíracím seznamu __zdroj__ vyberte možnost __značka služby__.
 
-1. V rozevíracím seznamu __značka zdrojové služby__ vyberte možnost __AzureMachineLearning__ .
+1. V rozevíracím seznamu __značka zdrojové služby__ vyberte možnost __AzureMachineLearning__.
 
     ![Příchozí pravidla pro experimentování na virtuálním počítači nebo clusteru HDInsight ve virtuální síti](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
 1. V rozevíracím seznamu __rozsahy zdrojových portů__ vyberte __*__ .
 
-1. V rozevíracím seznamu __cíl__ vyberte možnost __libovolný__ .
+1. V rozevíracím seznamu __cíl__ vyberte možnost __libovolný__.
 
-1. V rozevíracím seznamu __rozsahy cílových portů__ vyberte __22__ .
+1. V rozevíracím seznamu __rozsahy cílových portů__ vyberte __22__.
 
-1. V části __protokol__ vyberte __libovolný__ .
+1. V části __protokol__ vyberte __libovolný__.
 
-1. V části __Akce__ vyberte možnost __povoleno__ .
+1. V části __Akce__ vyberte možnost __povoleno__.
 
-Ponechte výchozí odchozí pravidla pro skupinu zabezpečení sítě. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules).
+Ponechte výchozí odchozí pravidla pro skupinu zabezpečení sítě. Další informace najdete v tématu výchozí pravidla zabezpečení ve [skupinách zabezpečení](../virtual-network/network-security-groups-overview.md#default-security-rules).
 
 Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí přístup k virtuální síti, přečtěte si část [omezení odchozího připojení z virtuální sítě](#limiting-outbound-from-vnet) .
 
