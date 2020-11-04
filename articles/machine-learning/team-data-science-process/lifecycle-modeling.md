@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336441"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305606"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Fáze modelování životního cyklu procesu vědeckého zpracování dat týmu
 
@@ -41,8 +41,8 @@ Tady je vizuální znázornění životního cyklu TDSP:
 ## <a name="how-to-do-it"></a>Jak to provést
 V této fázi jsou řešeny tři hlavní úlohy:
 
-  * **Technické funkce**: vytváření datových funkcí z nezpracovaných dat pro usnadnění školení modelů.
-  * **Školení modelů**: Najděte model, který přesně odpovídá otázce, porovnáním jejich metrik úspěšnosti.
+  * **Technické funkce** : vytváření datových funkcí z nezpracovaných dat pro usnadnění školení modelů.
+  * **Školení modelů** : Najděte model, který přesně odpovídá otázce, porovnáním jejich metrik úspěšnosti.
   * Zjistěte, jestli je model **vhodný pro produkční prostředí.**
 
 ### <a name="feature-engineering"></a>Příprava atributů
@@ -59,11 +59,11 @@ Proces pro školení modelů zahrnuje následující kroky:
 
    * Náhodné **rozdělení vstupních dat** pro modelování do sady dat školení a testovací sady dat.
    * **Sestavujte modely** pomocí sady školicích dat.
-   * **Vyhodnoťte** školení a sadu testovacích dat. Používejte řadu konkurenčních algoritmů strojového učení spolu s různými přidruženými parametry ladění (označovanými jako *úklid parametrů*), které jsou zaměřené na zodpovězení otázky zájmu s aktuálními daty.
+   * **Vyhodnoťte** školení a sadu testovacích dat. Používejte řadu konkurenčních algoritmů strojového učení spolu s různými přidruženými parametry ladění (označovanými jako *úklid parametrů* ), které jsou zaměřené na zodpovězení otázky zájmu s aktuálními daty.
    * **Určete nejlepší řešení** pro zodpovězení otázky porovnáním metrik úspěšnosti mezi alternativními metodami.
 
 > [!NOTE]
-> **Vyhněte se únikům**: únik dat můžete způsobit, pokud zahrnete data mimo sadu školicích dat, která umožňuje model nebo algoritmus strojového učení, aby se nerealisticky předpovědi. Netěsnost je běžným důvodem pro to, proč se datové odborníky dostanou do nervu, když získají prediktivní výsledky, které se jeví jako nepravdivé. Tyto závislosti můžou být obtížné detekovat. Aby se zabránilo úniku často, je třeba provést iteraci mezi sestavením sady dat analýzy, vytvořením modelu a vyhodnocením přesnosti výsledků. 
+> **Vyhněte se únikům** : únik dat můžete způsobit, pokud zahrnete data mimo sadu školicích dat, která umožňuje model nebo algoritmus strojového učení, aby se nerealisticky předpovědi. Netěsnost je běžným důvodem pro to, proč se datové odborníky dostanou do nervu, když získají prediktivní výsledky, které se jeví jako nepravdivé. Tyto závislosti můžou být obtížné detekovat. Aby se zabránilo úniku často, je třeba provést iteraci mezi sestavením sady dat analýzy, vytvořením modelu a vyhodnocením přesnosti výsledků. 
 > 
 > 
 
@@ -74,7 +74,7 @@ Artefakty vytvořené v této fázi zahrnují:
 
    * [Sady funkcí](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): funkce vyvinuté pro modelování jsou popsané v části **sady funkcí** sestavy **definice dat** . Obsahuje ukazatele na kód pro generování funkcí a popis způsobu, jakým byla funkce vygenerována.
    * [Sestava modelu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): pro každý vyzkoušený model je vytvořena standardní sestava založená na šablonách, která poskytuje podrobnosti o každém experimentu.
-   * **Rozhodnutí kontrolního bodu**: Vyhodnoťte, jestli model funguje dostatečně pro produkční prostředí. Některé klíčové otázky vám pomohou:
+   * **Rozhodnutí kontrolního bodu** : Vyhodnoťte, jestli model funguje dostatečně pro produkční prostředí. Některé klíčové otázky vám pomohou:
      * Odpovídá model otázce dostatečná důvěra na data testů? 
      * Měli byste vyzkoušet jakékoli alternativní přístupy? Měli byste shromažďovat další data, dělat další funkce a experimentovat s jinými algoritmy?
 
@@ -90,4 +90,4 @@ Tady jsou odkazy na jednotlivé kroky v životním cyklu TDSP:
 
 Poskytujeme kompletní podrobné návody, které znázorňují všechny kroky v procesu pro konkrétní scénáře. Článek [příklad návodů](walkthroughs.md) obsahuje seznam scénářů s odkazy a popisy miniatur. Návody ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci. 
 
-Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Příklady, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio, naleznete v tématu [použití TDSP s Azure Machine Learning](./index.yml).

@@ -8,14 +8,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 6b475e34c01ca26abd3d8ab1d904521de19f941b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 01efb5736d7becf1b46c7c2898c22648b0421dd1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946830"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305823"
 ---
-# <a name="create-and-delete-jobs-in-an-azure-stream-analytics-cluster"></a>Vytváření a odstraňování úloh v clusteru Azure Stream Analytics
+# <a name="add-and-remove-jobs-in-an-azure-stream-analytics-cluster"></a>Přidávání a odebírání úloh v clusteru Azure Stream Analytics
 
 V clusteru Stream Analytics můžete spustit více Azure Stream Analytics úloh. Spuštění úloh v clusteru je jednoduchý proces se dvěma kroky: Přidání úlohy do clusteru a spuštění úlohy. V tomto článku se dozvíte, jak přidat a odebrat úlohy z existujícího clusteru. Pomocí rychlého startu [vytvořte cluster Stream Analytics](create-cluster.md) , pokud ho ještě nemáte.
 
@@ -25,7 +25,7 @@ Do clusterů se dají přidat jenom existující úlohy Stream Analytics. Postup
 
 1. V Azure Portal Najděte cluster Stream Analytics a vyberte ho.
 
-1. V části **Nastavení**vyberte **Stream Analytics úlohy**. Pak vyberte **Přidat existující úlohu**.
+1. V části **Nastavení** vyberte **Stream Analytics úlohy**. Pak vyberte **Přidat existující úlohu**.
 
 1. Vyberte předplatné a Stream Analytics úlohu, kterou chcete přidat do clusteru. Do clusteru je možné přidat pouze úlohy Stream Analytics, které jsou ve stejné oblasti jako cluster.
 
@@ -41,7 +41,7 @@ Aby bylo možné úlohy Stream Analytics odebrat z clusteru, je nutné, aby byly
 
 1. Vyhledejte a vyberte svůj cluster Stream Analytics.
 
-1. V části **Nastavení**vyberte **Stream Analytics úlohy**.
+1. V části **Nastavení** vyberte **Stream Analytics úlohy**.
 
 1. Vyberte úlohy, které chcete z clusteru odebrat, a pak vyberte **Odebrat**.
 

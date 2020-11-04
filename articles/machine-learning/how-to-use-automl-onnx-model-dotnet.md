@@ -10,18 +10,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to
-ms.openlocfilehash: eb1a3c1f306b6941987d0981967cf5d096a68735
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cb4e57cfe8b7494b7d5c38869f83190bff76ef2a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133568"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305774"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Vytvoření předpovědi s modelem ONNX AutoML v .NET
 
 V tomto článku se dozvíte, jak pomocí automatizovaného modelu AutoML (neuronové Network Exchange) vytvořit předpovědi v konzolové aplikaci .NET Core v C# s ML.NET.
 
-[Ml.NET](https://docs.microsoft.com/dotnet/machine-learning/) je open source architektura pro strojové učení pro ekosystém .NET, která umožňuje vytvářet vlastní modely strojového učení pomocí přístupu k prvnímu kódu v jazyce C# nebo F # a také prostřednictvím nástrojů s nízkým kódem, jako je [tvůrce modelů](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-model-builder) a [ml.NET CLI](https://docs.microsoft.com/dotnet/machine-learning/automate-training-with-cli). Rozhraní je také rozšiřitelné a umožňuje využít další oblíbené architektury strojového učení, jako je TensorFlow a ONNX.
+[Ml.NET](/dotnet/machine-learning/) je open source architektura pro strojové učení pro ekosystém .NET, která umožňuje vytvářet vlastní modely strojového učení pomocí přístupu k prvnímu kódu v jazyce C# nebo F # a také prostřednictvím nástrojů s nízkým kódem, jako je [tvůrce modelů](/dotnet/machine-learning/automate-training-with-model-builder) a [ml.NET CLI](/dotnet/machine-learning/automate-training-with-cli). Rozhraní je také rozšiřitelné a umožňuje využít další oblíbené architektury strojového učení, jako je TensorFlow a ONNX.
 
 ONNX je open source formát pro modely AI. ONNX podporuje interoperabilitu mezi platformami. To znamená, že můžete model vytvořit v jedné z mnoha oblíbených rozhraní pro strojové učení, jako je PyTorch, převést ho do formátu ONNX a spotřebovat model ONNX v jiném rozhraní jako ML.NET. Další informace najdete na [webu ONNX](https://onnx.ai/).
 
@@ -34,7 +34,7 @@ ONNX je open source formát pro modely AI. ONNX podporuje interoperabilitu mezi 
 
 ## <a name="create-a-c-console-application"></a>Vytvoření konzolové aplikace v jazyce C#
 
-V této ukázce použijete .NET Core CLI k sestavení aplikace, ale můžete provádět stejné úlohy pomocí sady Visual Studio. Přečtěte si další informace o [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/).
+V této ukázce použijete .NET Core CLI k sestavení aplikace, ale můžete provádět stejné úlohy pomocí sady Visual Studio. Přečtěte si další informace o [.NET Core CLI](/dotnet/core/tools/).
 
 1. Otevřete terminál a vytvořte novou konzolovou aplikaci C# .NET Core. V tomto příkladu je název aplikace `AutoMLONNXConsoleApp` . Vytvoří se adresář se stejným názvem a obsahem vaší aplikace.
 
@@ -71,7 +71,7 @@ V této ukázce použijete .NET Core CLI k sestavení aplikace, ale můžete pro
 
 ## <a name="add-a-reference-to-the-onnx-model"></a>Přidat odkaz na model ONNX
 
-Způsob, jak Konzolová aplikace přistupovat k ONNX modelu, je přidat do výstupního adresáře sestavení.  Další informace o běžných položkách MSBuild najdete v [Průvodci MSBuild](https://docs.microsoft.com/visualstudio/msbuild/common-msbuild-project-items).
+Způsob, jak Konzolová aplikace přistupovat k ONNX modelu, je přidat do výstupního adresáře sestavení.  Další informace o běžných položkách MSBuild najdete v [Průvodci MSBuild](/visualstudio/msbuild/common-msbuild-project-items).
 
 Do vaší aplikace přidejte odkaz na soubor modelu ONNX.
 
@@ -86,7 +86,7 @@ Do vaší aplikace přidejte odkaz na soubor modelu ONNX.
     </ItemGroup>
     ```
 
-    V tomto případě je název souboru modelu ONNX *automl-model. ONNX* .
+    V tomto případě je název souboru modelu ONNX *automl-model. ONNX*.
 
 1. Otevřete soubor *program.cs* a přidejte do třídy následující řádek `Program` .
 
@@ -161,7 +161,7 @@ Každá z vlastností je mapována na sloupec v datové sadě. Vlastnosti jsou d
   
 Pro číselné hodnoty ML.NET funguje pouze na [`Single`](xref:System.Single) hodnotových typech. Původní datový typ některých sloupců je však celých čísel. [`OnnxMapType`](xref:Microsoft.ML.Transforms.Onnx.OnnxMapTypeAttribute)Atribut mapuje typy mezi ONNX a ml.NET.
 
-Další informace o atributech dat naleznete v [příručce ml.NET Load data Guide](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/load-data-ml-net).
+Další informace o atributech dat naleznete v [příručce ml.NET Load data Guide](/dotnet/machine-learning/how-to-guides/load-data-ml-net).
 
 ### <a name="define-model-output-schema"></a>Definování schématu výstupu modelu
 
@@ -179,7 +179,7 @@ Podobně jako u `OnnxInput` použijte [`ColumnName`](xref:Microsoft.ML.Data.Colu
 
 ## <a name="define-a-prediction-pipeline"></a>Definování kanálu předpovědi
 
-Kanál v ML.NET je obvykle série zřetězených transformací, které pracují se vstupními daty, aby vznikl výstup. Další informace o transformaci dat najdete v [příručce k transformaci dat ml.NET](https://docs.microsoft.com/dotnet/machine-learning/resources/transforms).
+Kanál v ML.NET je obvykle série zřetězených transformací, které pracují se vstupními daty, aby vznikl výstup. Další informace o transformaci dat najdete v [příručce k transformaci dat ml.NET](/dotnet/machine-learning/resources/transforms).
 
 1. Vytvoří novou metodu volanou `GetPredictionPipeline` uvnitř `Program` třídy.
 
@@ -226,7 +226,7 @@ Kanál v ML.NET je obvykle série zřetězených transformací, které pracují 
     [`Fit`](xref:Microsoft.ML.IEstimator%601.Fit%2A)Metoda očekává [`IDataView`](xref:Microsoft.ML.IDataView) jako vstup k provedení operací. [`IDataView`](xref:Microsoft.ML.IDataView)Je způsob, jak znázornit data v ml.NET pomocí tabulkového formátu. Vzhledem k tomu, že se v tomto případě kanál používá jenom pro předpovědi, můžete zadat prázdné a [`IDataView`](xref:Microsoft.ML.IDataView) poskytnout tak [`ITransformer`](xref:Microsoft.ML.ITransformer) potřebné informace o schématu vstupu a výstupu. [`ITransformer`](xref:Microsoft.ML.ITransformer)Pak se vrátí k dalšímu použití ve vaší aplikaci.
 
     > [!TIP]
-    > V této ukázce je kanál definován a používán ve stejné aplikaci. Doporučuje se ale použít samostatné aplikace k definování a použití kanálu k vytvoření předpovědi. V ML.NET mohou být vaše kanály serializovány a uloženy pro další použití v jiných aplikacích pro koncové uživatele .NET. ML.NET podporuje různé cíle nasazení, jako jsou desktopové aplikace, webové služby, aplikace WebAssembly * a spousta dalších. Další informace o ukládání kanálů najdete v [průvodci ml.NET Uložit a načíst vyškolené modely](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
+    > V této ukázce je kanál definován a používán ve stejné aplikaci. Doporučuje se ale použít samostatné aplikace k definování a použití kanálu k vytvoření předpovědi. V ML.NET mohou být vaše kanály serializovány a uloženy pro další použití v jiných aplikacích pro koncové uživatele .NET. ML.NET podporuje různé cíle nasazení, jako jsou desktopové aplikace, webové služby, aplikace WebAssembly * a spousta dalších. Další informace o ukládání kanálů najdete v [průvodci ml.NET Uložit a načíst vyškolené modely](/dotnet/machine-learning/how-to-guides/save-load-machine-learning-models-ml-net).
     >
     > * WebAssembly se podporuje jenom v .NET Core 5 nebo novějších.
 
@@ -284,9 +284,9 @@ Teď, když máte kanál, je čas ho použít k vytvoření předpovědi. ML.NET
     Predicted Fare: 15.621523
     ```
 
-Další informace o tom, jak vytvářet předpovědi v ML.NET, najdete v tématu [použití modelu k vytvoření příručky předpovědi](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net).
+Další informace o tom, jak vytvářet předpovědi v ML.NET, najdete v tématu [použití modelu k vytvoření příručky předpovědi](/dotnet/machine-learning/how-to-guides/machine-learning-model-predictions-ml-net).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nasazení modelu jako ASP.NET Core webového rozhraní API](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
-- [Nasazení modelu jako bez serveru Azure Functions .NET](https://docs.microsoft.com/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)
+- [Nasazení modelu jako ASP.NET Core webového rozhraní API](/dotnet/machine-learning/how-to-guides/serve-model-web-api-ml-net)
+- [Nasazení modelu jako bez serveru Azure Functions .NET](/dotnet/machine-learning/how-to-guides/serve-model-serverless-azure-functions-ml-net)

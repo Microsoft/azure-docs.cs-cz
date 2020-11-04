@@ -1,7 +1,7 @@
 ---
 title: Nasazení modelu pro použití se službou Cognitive Search
 titleSuffix: Azure Machine Learning
-description: V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model pro použití s Azure Kognitivní hledání. Kognitivní hledání můžou používat modely nasazené pomocí Azure Machine Learning jako vlastní dovednost k rozšíření možností vyhledávání.
+description: Naučte se používat Azure Machine Learning k nasazení modelu pro použití s Kognitivní hledání. Model se používá jako vlastní dovednost k rozšíření možností vyhledávání.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998906"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305924"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>Nasazení modelu pro použití se službou Cognitive Search
 
@@ -25,7 +25,7 @@ V tomto článku se naučíte, jak pomocí Azure Machine Learning nasadit model 
 
 Kognitivní hledání provádí zpracování obsahu prostřednictvím obsahu heterogenní, aby Queryable lidi a aplikace. Tento proces se dá zvýšit pomocí modelu nasazeného z Azure Machine Learning.
 
-Azure Machine Learning může nasadit školený model jako webovou službu. Webová služba je pak vložena do Kognitivní hledání _dovednosti_, která se stal součástí kanálu zpracování.
+Azure Machine Learning může nasadit školený model jako webovou službu. Webová služba je pak vložena do Kognitivní hledání _dovednosti_ , která se stal součástí kanálu zpracování.
 
 > [!IMPORTANT]
 > Informace v tomto článku jsou specifické pro nasazení modelu. Poskytuje informace o podporovaných konfiguracích nasazení, které umožňují použití modelu Kognitivní hledání.
@@ -42,11 +42,11 @@ Když nasazujete model pro použití s Azure Kognitivní hledání, nasazení mu
 * Vstupní skript musí také přijmout data JSON jako vstup a generovat jako výstup JSON.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).  
+* Prostředí pro vývoj v Pythonu s nainstalovanou sadou Azure Machine Learning SDK. Další informace najdete v tématu [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).  
 
 * Registrovaný model. Pokud model nemáte, použijte vzorový Poznámkový blok na adrese [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) .
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
 
-**Časový odhad**: přibližně 20 minut.
+**Časový odhad** : přibližně 20 minut.
 
 Cluster Kubernetes je sada instancí virtuálních počítačů (nazývaných uzly), které se používají ke spouštění kontejnerových aplikací.
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-Další informace najdete v referenční dokumentaci k [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true).
+Další informace najdete v referenční dokumentaci k [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py).
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true).
+Další informace najdete v referenční dokumentaci k [modelu](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py).
 
 ## <a name="issue-a-sample-query-to-your-service"></a>Vydat vzorový dotaz do vaší služby
 

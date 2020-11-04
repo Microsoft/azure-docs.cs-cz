@@ -1,6 +1,6 @@
 ---
-title: Dotazování souborů Parquet pomocí SQL na vyžádání (Preview)
-description: V tomto článku se naučíte, jak zadávat dotazy na soubory Parquet pomocí SQL na vyžádání (Preview).
+title: Dotazy na soubory Parquet s využitím fondu SQL bez serveru (Preview)
+description: V tomto článku se naučíte, jak zadávat dotazy na soubory Parquet pomocí neserverového fondu SQL (Preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242428"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306856"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL fondu bez serveru (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (Preview), který načte soubory Parquet.
+V tomto článku se dozvíte, jak napsat dotaz pomocí neserverového fondu SQL (Preview), který načte soubory Parquet.
 
 ## <a name="quickstart-example"></a>Příklad rychlého startu
 
@@ -70,7 +70,7 @@ from openrowset(
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů PARQUET.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** se zdrojem dat, který odkazuje na účet úložiště [NYC Yellow taxislužby](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) . Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
@@ -111,7 +111,7 @@ Při čtení souborů Parquet není nutné používat klauzuli OPENROWSET WITH. 
 Následující ukázka ukazuje možnosti automatického odvození schématu pro soubory Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě dotazovací služba SQL na vyžádání bude používat metadata v souboru Parquet a sváže sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě služba dotazů na SQL fond bez serveru použije metadata v souboru Parquet a sváže sloupce podle názvu.
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 Datová sada uvedená v této ukázce je rozdělená (rozdělená do oddílů) na samostatné podsložky. Pomocí funkce FilePath můžete cílit na konkrétní oddíly. V tomto příkladu se zobrazuje množství tarifů podle roku, měsíce a payment_type v prvních třech měsících od 2017.
 
 > [!NOTE]
-> Dotaz SQL na vyžádání je kompatibilní se schématem dělení na oddíly/Hadoop.
+> Dotaz na fond SQL bez serveru je kompatibilní se schématem dělení na oddíly/Hadoop.
 
 ```sql
 SELECT

@@ -4,12 +4,12 @@ description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro L
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676631"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305539"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Postup vytváření zásad konfigurace hosta pro Linux
 
@@ -17,7 +17,7 @@ Než začnete vytvářet vlastní zásady, přečtěte si informace v přehledu 
  
 Další informace o vytváření zásad konfigurace hostů pro Windows najdete na stránce [Postup vytvoření zásad konfigurace hostů pro Windows](./guest-configuration-create.md) .
 
-Při auditování Linuxu konfigurace hosta využívá [Chef InSpec](https://www.inspec.io/). Profil InSpec definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující** .
+Při auditování Linuxu konfigurace hosta využívá [Chef InSpec](https://www.inspec.io/). Profil InSpec definuje stav, ve kterém by počítač měl být. Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
 
@@ -160,7 +160,7 @@ Podpůrné soubory musí být zabaleny dohromady. Dokončený balíček použív
 - **Název** : název konfiguračního balíčku hosta.
 - **Konfigurace** : úplná cesta k kompilované konfiguraci dokumentu.
 - **Cesta** : cesta ke výstupní složce. Tento parametr je volitelný. Pokud není zadaný, balíček se vytvoří v aktuálním adresáři.
-- **ChefProfilePath** : úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
+- **ChefInspecProfilePath** : úplná cesta k profilu INSPEC. Tento parametr je podporován pouze při vytváření obsahu pro audit systému Linux.
 
 Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace uvedené v předchozím kroku:
 
@@ -191,7 +191,7 @@ Test-GuestConfigurationPackage `
 Rutina podporuje také vstup z kanálu PowerShellu. Přesměrování výstupu `New-GuestConfigurationPackage` rutiny do `Test-GuestConfigurationPackage` rutiny.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 Dalším krokem je publikování souboru do Azure Blob Storage.  Příkaz `Publish-GuestConfigurationPackage` vyžaduje `Az.Storage` modul.
@@ -235,7 +235,7 @@ Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a 
 
 Nakonec publikujte definice zásad pomocí `Publish-GuestConfigurationPolicy` rutiny. Rutina má pouze parametr **path** , který odkazuje na umístění souborů JSON, které vytvořil `New-GuestConfigurationPolicy` .
 
-K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků** .
+K provedení příkazu Publikovat budete potřebovat přístup k vytváření zásad v Azure. Konkrétní autorizační požadavky jsou zdokumentovány na stránce [přehled Azure Policy](../overview.md) . Nejlepší integrovanou rolí je **Přispěvatel zásad prostředků**.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -271,7 +271,7 @@ describe file(attr_path) do
 end
 ```
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr** . Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr přebírá zatřiďovací tabulku, včetně všech podrobností o jednotlivých parametrech, a automaticky vytvoří všechny požadované oddíly souborů, pomocí kterých se vytvoří každá definice Azure Policy.
 
 Následující příklad vytvoří definici zásady pro audit cesty k souboru, kde uživatel zadá cestu v době přiřazení zásady.
 

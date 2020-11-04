@@ -4,12 +4,12 @@ description: 'Kurz: popisuje, jak pomocí Azure Event Grid a Event Hubs migrovat
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270543"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305278"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
 Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V [ukázce Event Hubs a Event Grid Integration Sample](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob do služby Azure synapse Analytics (dříve SQL Data Warehouse).
@@ -34,13 +34,13 @@ V tomto článku proveďte následující kroky:
 > * Spusťte aplikaci, která odesílá data do centra událostí.
 > * Zobrazení migrovaných dat v datovém skladu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 K dokončení tohoto kurzu potřebujete:
 
-* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/).
 * [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a vývoj webů Node.js, vývoj a vývoj v Pythonu
 * Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
 
@@ -59,11 +59,11 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
-    ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
+    ![Azure Portal](media/event-grid-event-hubs-integration/azure-portal.png)
 3. V dolní části prohlížeče se zobrazí Cloud Shell otevřít.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Pokud se v Cloud Shell zobrazí možnost výběru mezi **bash** a **PowerShellem**, vyberte **bash**. 
+4. Pokud se v Cloud Shell zobrazí možnost výběru mezi **bash** a **PowerShellem** , vyberte **bash**. 
 5. Pokud Cloud Shell používáte poprvé, vytvořte účet úložiště tak, že vyberete **vytvořit úložiště**. Azure Cloud Shell vyžaduje účet úložiště Azure pro ukládání některých souborů. 
 
     ![Snímek obrazovky, který zobrazuje dialogové okno nemáte připojené k úložišti, s vybraným tlačítkem vytvořit úložiště](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
@@ -165,7 +165,7 @@ Kliknutím na tlačítko **Cloud Shell** na portálu (nebo) na tlačítko **X** 
 ### <a name="create-a-table-in-azure-synapse-analytics"></a>Vytvoření tabulky ve službě Azure synapse Analytics
 Vytvořte tabulku v datovém skladu spuštěním skriptu [CreateDataWarehouseTable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) . Chcete-li spustit skript, můžete použít aplikaci Visual Studio nebo Editor dotazů na portálu. Následující kroky ukazují, jak používat Editor dotazů: 
 
-1. V seznamu prostředků ve skupině prostředků vyberte svůj **synapse fond SQL (datový sklad)**. 
+1. V seznamu prostředků ve skupině prostředků vyberte **vyhrazený fond SQL**. 
 2. Na stránce Azure synapse Analytics v levé nabídce vyberte **Editor dotazů (Preview)** . 
 
     ![Stránka analýzy Azure synapse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
@@ -210,7 +210,7 @@ Vytvořte tabulku v datovém skladu spuštěním skriptu [CreateDataWarehouseTab
 4. Pokud se zobrazí následující obrazovka, vyberte **Spustit**. 
 
    ![Snímek obrazovky, který zobrazuje Visual studia s tlačítkem Start v oddílu Publish.](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. V dialogovém okně **publikovat** vyberte **Azure** pro **cíl**a vyberte **Další**. 
+5. V dialogovém okně **publikovat** vyberte **Azure** pro **cíl** a vyberte **Další**. 
 
    ![Tlačítko pro spuštění publikování](media/event-grid-event-hubs-integration/publish-select-azure.png)
 6. Vyberte **Azure Function App (Windows)** a vyberte **Další**. 
@@ -248,7 +248,7 @@ Po publikování funkce můžete začít událost odebírat.
 8. Na stránce **vytvořit Event Grid předplatné** proveďte následující akce: 
     1. Na stránce **Podrobnosti odběru události** zadejte název předplatného (například: captureEventSub) a vyberte **vytvořit**. 
     2. V části **Podrobnosti o tématu** proveďte následující akce:
-        1. Pro **typy témat**vyberte **Event Hubs obory názvů** . 
+        1. Pro **typy témat** vyberte **Event Hubs obory názvů** . 
         2. Vyberte své předplatné Azure.
         2. Vyberte skupinu prostředků Azure.
         3. Vyberte svůj obor názvů Event Hubs.

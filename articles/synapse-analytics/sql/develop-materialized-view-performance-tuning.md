@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474763"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305097"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>Ladění výkonu s využitím materializovaných zobrazení
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Optimalizace výkonu s materializovaná zobrazeními pomocí vyhrazeného fondu SQL ve službě Azure synapse Analytics
 
-V synapse fondu SQL poskytuje materializovaná zobrazení metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
+V vyhrazeném fondu SQL poskytuje materializovaná zobrazení metodu údržby pro složité analytické dotazy, aby se zajistil rychlý výkon bez jakýchkoli změn dotazů. Tento článek popisuje obecné pokyny k používání materializovaná zobrazení.
 
 ## <a name="materialized-views-vs-standard-views"></a>Materializovaná zobrazení vs. standardní zobrazení
 
@@ -27,7 +27,7 @@ Fond SQL podporuje standardní i materializovaná zobrazení.  Obě jsou virtuá
 
 Standardní zobrazení vypočítá data při každém použití zobrazení.  Na disku nejsou uložená žádná data. Lidé obvykle používají standardní zobrazení jako nástroj, který pomáhá organizovat logické objekty a dotazy v databázi.  Chcete-li použít standardní zobrazení, dotaz musí na něj vytvořit přímý odkaz.
 
-Materializované zobrazení předběžně počítá, ukládá a udržuje data ve fondu SQL stejně jako tabulka.  Při každém použití materializované zobrazení není potřeba recompute.  To je důvod, proč dotazy, které používají všechny nebo podmnožiny dat v materializovaná zobrazení, mohou získat rychlejší výkon.  I lepší, dotazy mohou používat materializovaná zobrazení bez přímého odkazu na něj, takže není nutné měnit kód aplikace.  
+Materializované zobrazení předběžně počítá, ukládá a uchovává jeho data ve vyhrazeném fondu SQL stejně jako tabulka.  Při každém použití materializované zobrazení není potřeba recompute.  To je důvod, proč dotazy, které používají všechny nebo podmnožiny dat v materializovaná zobrazení, mohou získat rychlejší výkon.  I lepší, dotazy mohou používat materializovaná zobrazení bez přímého odkazu na něj, takže není nutné měnit kód aplikace.  
 
 Většina standardních požadavků zobrazení se pořád vztahuje na materializované zobrazení. Podrobnosti o syntaxi materializované zobrazení a dalších požadavcích najdete v tématu věnovaném [Vytvoření materializované zobrazení jako příkazu SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
@@ -46,19 +46,19 @@ Správně navržené materializované zobrazení přináší následující výh
 
 - Zkrácená doba provádění složitých dotazů s spojeními a agregačními funkcemi. Čím složitější je dotaz, tím vyšší je potenciál při ukládání. Nejvíc výhod se získá, když jsou náklady na výpočet dotazu vysoké a výsledná datová sada je malá.  
 
-- Optimalizátor ve fondu SQL může automaticky použít nasazená vyhodnocená zobrazení ke zlepšení plánů spouštění dotazů.  Tento proces je transparentní pro uživatele, kteří poskytují rychlejší výkon dotazů a nevyžadují dotazy, aby přímo odkazovaly na materializovaná zobrazení.
+- Optimalizátor dotazů ve vyhrazeném fondu SQL může automaticky použít nasazená zobrazení s vyhodnocenými výrazy ke zlepšení plánů spouštění dotazů.  Tento proces je transparentní pro uživatele, kteří poskytují rychlejší výkon dotazů a nevyžadují dotazy, aby přímo odkazovaly na materializovaná zobrazení.
 
 - Vyžaduje nízkou údržbu zobrazení.  Materializované zobrazení ukládá data na dvou místech, clusterovaný index columnstore pro počáteční data v čase vytvoření zobrazení a rozdílové úložiště pro změny přírůstkových dat.  Všechny změny dat ze základních tabulek jsou automaticky přidány do rozdílového úložiště synchronním způsobem.  Proces na pozadí (pracovní postup řazené kolekce členů) pravidelně přesouvá data z rozdílového úložiště do indexu columnstore zobrazení.  Tento návrh umožňuje dotazování na materializovaná zobrazení, aby vracela stejná data jako přímo dotaz na základní tabulky.
 - Data v materializované zobrazení je možné distribuovat jinak než základní tabulky.  
 - Data v materializovaná zobrazení mají stejné výhody vysoké dostupnosti a odolnosti jako data v běžných tabulkách.  
 
-Ve srovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná ve fondu SQL také tyto další výhody:
+Ve srovnání s jinými poskytovateli datového skladu poskytují materializovaná zobrazení implementovaná ve vyhrazeném fondu SQL také tyto další výhody:
 
 - Automatická a synchronní aktualizace dat se změnami dat v základních tabulkách Není vyžadována žádná akce uživatele.
 - Podpora široké agregační funkce Viz téma [Vytvoření materializované zobrazení jako Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 - Podpora doporučení pro materializované zobrazení pro konkrétní dotazy  Viz [vysvětlení (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="common-scenarios"></a>Typické scénáře  
+## <a name="common-scenarios"></a>Obvyklé scénáře  
 
 Materializovaná zobrazení se obvykle používají v následujících scénářích:
 
@@ -151,7 +151,7 @@ Aby se zabránilo snížení výkonu dotazů, je vhodné spustit [příkaz DBCC 
 
 **Materializované zobrazení a ukládání sad výsledků do mezipaměti**
 
-Tyto dvě funkce jsou představené ve fondu SQL zhruba po stejnou dobu pro ladění výkonu dotazů. Ukládání sady výsledků do mezipaměti se používá pro dosažení vysokého počtu souběžných a rychlé odezvy z opakujících se dotazů na statická data.  
+Tyto dvě funkce jsou zavedeny ve vyhrazeném fondu SQL zhruba stejnou dobu jako při ladění výkonu dotazů. Ukládání sady výsledků do mezipaměti se používá pro dosažení vysokého počtu souběžných a rychlé odezvy z opakujících se dotazů na statická data.  
 
 Chcete-li použít výsledek uložený v mezipaměti, musí být ve formátu mezipaměti požadující dotaz odpovídající dotazu, který vytvořil mezipaměť.  Kromě toho musí výsledek uložený v mezipaměti platit pro celý dotaz.  
 

@@ -8,17 +8,17 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e643a7ce5ccf4aa5107df1e505d90a0767517350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070407"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306904"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Provádění operací úložiště Azure Table pomocí Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage je NoSQL úložiště dat, které můžete použít k ukládání a dotazování rozsáhlých sad strukturovaných, nerelačních dat. Hlavními komponentami služby jsou tabulky, entity a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název-hodnota. V tomto článku se předpokládá, že už jste obeznámeni s koncepty služby Azure Table Storage. Podrobné informace najdete v tématu [Princip datového modelu služby Table Service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s úložištěm Azure Table pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Azure Table Storage je NoSQL úložiště dat, které můžete použít k ukládání a dotazování rozsáhlých sad strukturovaných, nerelačních dat. Hlavními komponentami služby jsou tabulky, entity a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název-hodnota. V tomto článku se předpokládá, že už jste obeznámeni s koncepty služby Azure Table Storage. Podrobné informace najdete v tématu [Princip datového modelu služby Table Service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) a [Začínáme s úložištěm Azure Table pomocí rozhraní .NET](../../cosmos-db/tutorial-develop-table-dotnet.md).
 
 Tento článek s návody popisuje běžné operace úložišť tabulek Azure. Získáte informace o těchto tématech: 
 
@@ -38,7 +38,7 @@ Příklady vyžadují AZ PowerShell modules `Az.Storage (1.1.0 or greater)` a `A
 > Použití této funkce Azure z PowerShellu vyžaduje, abyste `Az` modul nainstalovali. Aktuální verze nástroje `AzTable` není kompatibilní s starším modulem AzureRM.
 > V případě potřeby použijte [nejnovější pokyny k instalaci pro instalaci AZ Module](/powershell/azure/install-az-ps) .
 
-Po instalaci nebo aktualizaci Azure PowerShell je nutné nainstalovat modul **AzTable**, který obsahuje příkazy pro správu entit. Pokud chcete tento modul nainstalovat, spusťte PowerShell jako správce a použijte příkaz **install-Module** .
+Po instalaci nebo aktualizaci Azure PowerShell je nutné nainstalovat modul **AzTable** , který obsahuje příkazy pro správu entit. Pokud chcete tento modul nainstalovat, spusťte PowerShell jako správce a použijte příkaz **install-Module** .
 
 > [!IMPORTANT]
 > V případě důvodů kompatibility s názvem modulu stále publikujete stejný modul pod starým názvem `AzureRmStorageTables` v Galerie prostředí PowerShell. Tento dokument bude odkazovat pouze na nový název.
@@ -90,7 +90,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-new-table"></a>Vytvořit novou tabulku
+## <a name="create-a-new-table"></a>Vytvoření nové tabulky
 
 Chcete-li vytvořit tabulku, použijte rutinu [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . V tomto příkladu je volána tabulka `pshtesttable` .
 
@@ -120,7 +120,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 > [!IMPORTANT]
 > Při práci s modulem PowerShellu pro **AzTable** je použití cloudové části povinné. Chcete-li získat odkaz na tento objekt, zavolejte příkaz **Get-AzStorageTable** . Tento příkaz také vytvoří tabulku, pokud ještě neexistuje.
 
-K provádění operací s tabulkou pomocí **AzTable**potřebujete odkaz na vlastnost cloudu konkrétní tabulky.
+K provádění operací s tabulkou pomocí **AzTable** potřebujete odkaz na vlastnost cloudu konkrétní tabulky.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable

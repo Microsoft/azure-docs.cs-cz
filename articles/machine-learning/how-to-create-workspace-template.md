@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631036"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305482"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -30,7 +30,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 * **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
 * Některé scénáře vyžadují, abyste otevřeli lístek podpory. Mezi tyto scénáře patří:
 
@@ -69,7 +69,7 @@ Ukázková šablona má dva **požadované** parametry:
 > [!TIP]
 > Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Ten se vytvoří při provedení operace, která vyžaduje Registry kontejneru. Například školení nebo nasazení modelu.
 >
-> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager. Používaný registr kontejneru ale musí mít povolený __účet správce__ . Informace o povolení účtu správce najdete v tématu [účet správce](/azure/container-registry/container-registry-authentication#admin-account).
+> Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager. Používaný registr kontejneru ale musí mít povolený __účet správce__ . Informace o povolení účtu správce najdete v tématu [účet správce](../container-registry/container-registry-authentication.md#admin-account).
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -77,7 +77,7 @@ Další informace o šablonách najdete v následujících článcích:
 
 * [Vytváření šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 * [Nasazení aplikace pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md)
-* [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Typy prostředků Microsoft. MachineLearningServices](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>Nasazení šablony
 
@@ -219,7 +219,7 @@ __Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_
 
 Pokud chcete povolit použití zákaznických klíčů, nastavte při nasazování šablony následující parametry:
 
-* **Encryption_status** **Povolit** .
+* **Encryption_status** **Povolit**.
 * **cmk_keyvault** na `cmk_keyvault` hodnotu získanou v předchozích krocích.
 * **resource_cmk_uri** na `resource_cmk_uri` hodnotu získanou v předchozích krocích.
 
@@ -254,7 +254,7 @@ New-AzResourceGroupDeployment `
 
 Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-enterprise-security.md#encryption-at-rest).
 
-Další konfigurací, kterou můžete pro data poskytnout, je nastavení parametru **confidential_data** na **hodnotu true** . Uděláte to takto:
+Další konfigurací, kterou můžete pro data poskytnout, je nastavení parametru **confidential_data** na **hodnotu true**. Uděláte to takto:
 
 * Spustí šifrování místního pomocného disku pro Azure Machine Learning výpočetních clusterů, takže jste nevytvořili žádné předchozí clustery v rámci vašeho předplatného. Pokud jste předtím vytvořili cluster v rámci předplatného, otevřete lístek podpory, který bude mít povolený šifrovací disk pro vaše výpočetní clustery.
 * Vyčistí místní poškrábaný disk mezi spuštěním.
@@ -541,7 +541,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Až přijdete na obrazovku __Vybrat šablonu__ , v rozevíracím seznamu vyberte šablonu **201-Machine-Learning-Advanced** .
+1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Až přijdete na obrazovku __Vybrat šablonu__ , v rozevíracím seznamu vyberte šablonu **201-Machine-Learning-Advanced** .
 1. Vyberte __možnost vybrat šablonu__ a šablonu použijte. V závislosti na scénáři nasazení zadejte následující požadované informace a všechny další parametry.
 
    * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
@@ -549,8 +549,8 @@ New-AzResourceGroupDeployment `
    * Oblast: Vyberte oblast Azure, ve které se budou prostředky vytvářet.
    * Název pracovního prostoru: název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
    * Umístění: vyberte umístění, kde se budou prostředky vytvářet.
-1. Vyberte __Zkontrolovat a vytvořit__ .
-1. Na obrazovce __Revize + vytvořit__ vyjádřete souhlas s uvedenými podmínkami a ujednáními a vyberte __vytvořit__ .
+1. Vyberte __Zkontrolovat a vytvořit__.
+1. Na obrazovce __Revize + vytvořit__ vyjádřete souhlas s uvedenými podmínkami a ujednáními a vyberte __vytvořit__.
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -576,7 +576,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    Další informace o použití `accessPolicies` části šablony naleznete v tématu [AccessPolicyEntry Object reference](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
+    Další informace o použití `accessPolicies` části šablony naleznete v tématu [AccessPolicyEntry Object reference](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
 
 * Ověřte, zda prostředek Key Vault již existuje. Pokud tomu tak není, nevytvářejte ho znovu prostřednictvím šablony. Chcete-li například použít existující Key Vault místo vytvoření nové, proveďte následující změny šablony:
 
@@ -655,7 +655,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>Virtuální síť není propojená s privátní zónou DNS.
 
-Při vytváření pracovního prostoru s privátním koncovým bodem vytvoří šablona Privátní DNS zónu s názvem __privatelink.API.AzureML.MS__ . __Propojení virtuální sítě__ je automaticky přidáno do této privátní zóny DNS. Odkaz se přidá jenom pro první pracovní prostor a soukromý koncový bod, který vytvoříte ve skupině prostředků. Pokud vytvoříte jinou virtuální síť a pracovní prostor s privátním koncovým bodem ve stejné skupině prostředků, druhá virtuální síť se nemusí přidat do privátní zóny DNS.
+Při vytváření pracovního prostoru s privátním koncovým bodem vytvoří šablona Privátní DNS zónu s názvem __privatelink.API.AzureML.MS__. __Propojení virtuální sítě__ je automaticky přidáno do této privátní zóny DNS. Odkaz se přidá jenom pro první pracovní prostor a soukromý koncový bod, který vytvoříte ve skupině prostředků. Pokud vytvoříte jinou virtuální síť a pracovní prostor s privátním koncovým bodem ve stejné skupině prostředků, druhá virtuální síť se nemusí přidat do privátní zóny DNS.
 
 Pokud chcete zobrazit odkazy virtuální sítě, které už existují pro privátní zónu DNS, použijte následující příkaz rozhraní příkazového řádku Azure:
 

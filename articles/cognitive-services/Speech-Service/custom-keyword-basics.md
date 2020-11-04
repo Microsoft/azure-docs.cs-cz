@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166450"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305860"
 ---
 # <a name="get-started-with-custom-keyword"></a>Začínáme se službou Vlastní klíčové slovo
 
@@ -38,7 +39,7 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 1. Na stránce [vlastní klíčové slovo](https://aka.ms/sdsdk-wakewordportal) vytvořte **Nový projekt**. 
 
-1. Zadejte **název**, volitelný **Popis**a vyberte jazyk. Potřebujete jeden projekt na jazyk a podpora je aktuálně omezená na `en-US` jazyk.
+1. Zadejte **název** , volitelný **Popis** a vyberte jazyk. Potřebujete jeden projekt na jazyk a podpora je aktuálně omezená na `en-US` jazyk.
 
     ![Popis projektu s klíčovým slovem](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -48,7 +49,7 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 1. Pokud chcete vytvořit nový model klíčových slov, klikněte na **výuka model**.
 
-1. Zadejte **název** modelu, volitelný **Popis**a **klíčové slovo** podle vlastního výběru a pak klikněte na **Další**. Přečtěte si [pokyny](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) pro výběr efektivního klíčového slova.
+1. Zadejte **název** modelu, volitelný **Popis** a **klíčové slovo** podle vlastního výběru a pak klikněte na **Další**. Přečtěte si [pokyny](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) pro výběr efektivního klíčového slova.
 
     ![Zadejte své klíčové slovo](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -64,25 +65,17 @@ Než budete moct použít vlastní klíčové slovo, musíte vytvořit klíčov�
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>Použití modelu klíčového slova se sadou SDK
 
-Nejprve načtěte soubor modelu klíčových slov pomocí `FromFile()` statické funkce, která vrátí `KeywordRecognitionModel` . Použijte cestu k `.table` souboru, který jste stáhli ze sady Speech Studio. Kromě toho se vytvoří `AudioConfig` pomocí výchozího mikrofonu a pak se vytvoří instance nového `KeywordRecognizer` pomocí konfigurace zvuku.
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
-
-V dalším kroku je spuštění rozpoznávání klíčového slova provedeno s jedním voláním metody `RecognizeOnceAsync()` předáním objektu modelu. Tím spustíte relaci rozpoznávání klíčových slov, která trvá, dokud nebude klíčové slovo rozpoznáno. Tento vzor návrhu se proto obecně používá v aplikacích s více vlákny nebo v případech použití, kde můžete počkat na neomezenou dobu probuzení slova.
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> Příklad, který je zde znázorněn, používá místní rozpoznávání klíčového slova, protože nevyžaduje `SpeechConfig` objekt pro kontext ověřování a nekontaktuje back-end. Rozpoznávání klíčových slov a ověřování však můžete spustit [pomocí nepřetržitého back-endu připojení](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword).
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: dd055eecaef00a2f3b555034f44f3c04684a1722
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2857989fb09555ecd808bfdba95bcf58e4444594
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171859"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304904"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Prozkoumejte centrum synapse Knowledge Center
 
@@ -37,9 +37,9 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 * **Ukázka dostupná v prohlížeči** Tato možnost umožňuje propojit ukázkové sady dat a přidat vzorový kód ve formě skriptů SQL, poznámkových bloků a kanálů.
 * **Projděte si synapse Studio**. Tato možnost vás provede krátkou prohlídku základních částí synapse studia. To je užitečné, pokud jste ještě nikdy nepoužili synapse Studio.
 
-## <a name="exploring-blob-storage-with-sql-on-demand"></a>Zkoumání BLOB Storage pomocí SQL na vyžádání
+## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Prozkoumávání služby Blob Storage s neserverovým fondem SQL
 
-1. **Centrum znalostí**, klikněte na **použít ukázky hned**
+1. **Centrum znalostí** , klikněte na **použít ukázky hned**
 1. Vybrat **data dotazu pomocí SQL** 
 1. Kliknout na **použít ukázky hned**
 1. Vytvoří se nový skript SQL.
@@ -47,10 +47,10 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 1. Klikněte na Spustit. Spustí se vybraný text.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Načítají se další data taxislužby NYC.
-1. **Centrum znalostí**klikněte na **Procházet dostupné ukázky** . 
+1. **Centrum znalostí** klikněte na **Procházet dostupné ukázky** . 
 1. Vyberte kartu **skripty SQL** v horní části.
 1. Vyberte **načíst datovou sadu taxislužby města New York** .
-1. V části **vstupy**zvolte **Vybrat existující fond** a pak vyberte **SQLDB1** .
+1. V části **vstupy** zvolte **Vybrat existující fond** a pak vyberte **SQLDB1** .
 1. Klikněte na **otevřít skript** .
 1. Zobrazí se nový skript SQL.
 1. Klikněte na **Spustit** .
@@ -60,4 +60,4 @@ Vyberte jednu z metod a otevřete **Centrum znalostí**.
 
 * [Začínáme s Azure synapse Analytics](get-started.md)
 * [Vytvoření pracovního prostoru](quickstart-create-workspace.md)
-* [Používání SQL na vyžádání](quickstart-sql-on-demand.md)
+* [Použít fond SQL bez serveru](quickstart-sql-on-demand.md)

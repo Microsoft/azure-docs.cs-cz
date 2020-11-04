@@ -270,7 +270,7 @@
         - name: Správa připojení
           href: manage-connections.md
           displayName: best practice
-        - name: Zpracování chyb
+        - name: Zpracování chyb a opakování
           href: functions-bindings-error-pages.md
         - name: Ruční spuštění funkce neaktivované protokolem HTTP
           href: functions-manually-run-non-http.md

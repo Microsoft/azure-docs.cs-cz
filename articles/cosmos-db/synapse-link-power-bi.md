@@ -1,22 +1,23 @@
 ---
-title: Power BI a synapse fond SQL bez serveru pro analýzu Azure Cosmos DB dat pomocí propojení synapse
-description: Naučte se, jak vytvořit databázi synapse fondu SQL a zobrazení prostřednictvím odkazu synapse pro Azure Cosmos DB, zadat dotaz na kontejnery Azure Cosmos a pak vytvořit model pomocí Power BI nad těmito zobrazeními.
+title: Power BI a neserverový fond SQL pro analýzu Azure Cosmos DB dat pomocí odkazu synapse
+description: Naučte se, jak vytvořit synapse databázi bez SQL serveru a zobrazení prostřednictvím odkazu synapse pro Azure Cosmos DB, dotazování kontejnerů Azure Cosmos DB a následné sestavení modelu pomocí Power BI těchto zobrazení.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098055"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305181"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a synapse fondu SQL bez serveru k analýze dat Azure Cosmos DB pomocí propojení synapse (Preview) 
+# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Použití Power BI a neserverového fondu SQL k analýze dat Azure Cosmos DB pomocí odkazu synapse (Preview)
+
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
-V tomto článku se dozvíte, jak vytvořit synapse fond SQL bez serveru (který se dříve odkazoval na databázi a zobrazení **SQL na vyžádání** ) prostřednictvím odkazu na Synapse pro Azure Cosmos DB. Budete dotazováni na kontejnery Azure Cosmos a pak sestavíte model pomocí Power BI přes tato zobrazení, aby odrážely dotaz.
+V tomto článku se dozvíte, jak vytvořit databázi fondu SQL bez serveru a zobrazení přes synapse odkaz pro Azure Cosmos DB. Provedete dotaz na kontejnery Azure Cosmos DB a potom sestavíte model pomocí Power BI nad těmito zobrazeními, aby odrážely dotaz.
 
 V tomto scénáři použijete zástupné údaje o prodeji na Surface produktů v partnerském prodejnovém obchodě. Výnosy za obchod budete analyzovat na základě blízkosti velkých domácností a dopadu reklamy na konkrétní týden. V tomto článku vytvoříte dvě zobrazení s názvem **RetailSales** a **StoreDemographics** a dotaz mezi nimi. Z tohoto úložiště [GitHubu](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) můžete získat ukázková data produktu.
 
@@ -32,19 +33,19 @@ Než začnete, nezapomeňte vytvořit tyto prostředky:
 
 * Načtěte data produktů do kontejnerů Azure Cosmos, jak je popsáno v tomto poznámkovém bloku pro příjem [dat služby Batch](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) .
 
-* [Vytvořte pracovní prostor synapse](../synapse-analytics/quickstart-create-workspace.md) s názvem **SynapseLinkBI** .
+* [Vytvořte pracovní prostor synapse](../synapse-analytics/quickstart-create-workspace.md) s názvem **SynapseLinkBI**.
 
 * [Připojte databázi Azure Cosmos k pracovnímu prostoru synapse](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json).
 
 ## <a name="create-a-database-and-views"></a>Vytvoření databáze a zobrazení
 
-V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL** .
+V pracovním prostoru synapse otevřete kartu **vývoj** , vyberte **+** ikonu a vyberte **skript SQL**.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
 
-Každý pracovní prostor přichází s koncovým bodem SQL bez serveru. Po vytvoření skriptu SQL na panelu nástrojů v horní části se připojte k **SQL na vyžádání** .
+Každý pracovní prostor přichází s koncovým bodem SQL bez serveru. Po vytvoření skriptu SQL na panelu nástrojů v horní části se připojte k **předdefinovanému**.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Povolit skriptu SQL používat koncový bod SQL bez serveru v pracovním prostoru":::
 
 Vytvoří novou databázi s názvem **RetailCosmosDB** a zobrazení SQL nad kontejnery s povoleným odkazem synapse. Následující příkaz ukazuje, jak vytvořit databázi:
 
@@ -104,17 +105,17 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Vyberte **příkaz Spustit** , který jako výsledek poskytne následující tabulku:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Výsledky dotazu po spojení zobrazení StoreDemographics a RetailSales":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>Zobrazení modelu přes kontejnery pomocí Power BI
 
 Potom otevřete Power BI plochu a připojte se k koncovému bodu SQL bez serveru pomocí následujících kroků:
 
-1. Otevřete aplikaci Power BI Desktop. Vyberte **získat data** a vyberte **Další** .
+1. Otevřete aplikaci Power BI Desktop. Vyberte **získat data** a vyberte **Další**.
 
 1. V seznamu možností připojení vyberte **Azure synapse Analytics (SQL DW)** .
 
-1. Zadejte název koncového bodu SQL, kde se nachází databáze. `SynapseLinkBI-ondemand.sql.azuresynapse.net`Do pole **Server** zadejte. V tomto příkladu je  **SynapseLinkBI** název pracovního prostoru. Pokud jste přidali jiný název k pracovnímu prostoru, nahraďte ho. Vyberte možnost **přímý dotaz** pro režim připojení dat a pak klikněte na **tlačítko OK** .
+1. Zadejte název koncového bodu SQL, kde se nachází databáze. `SynapseLinkBI-ondemand.sql.azuresynapse.net`Do pole **Server** zadejte. V tomto příkladu je  **SynapseLinkBI** název pracovního prostoru. Pokud jste přidali jiný název k pracovnímu prostoru, nahraďte ho. Vyberte možnost **přímý dotaz** pro režim připojení dat a pak klikněte na **tlačítko OK**.
 
 1. Vyberte upřednostňovanou metodu ověřování, například Azure AD.
 
@@ -130,7 +131,7 @@ Potom otevřete Power BI plochu a připojte se k koncovému bodu SQL bez serveru
 
 Teď přejděte do okna **sestavy** a vytvořte sestavu s cílem porovnat relativní důležitost velikosti domácnosti s průměrnou tržbou na obchod na základě bodové reprezentace výnosů a indexu LargeHH:
 
-1. Vyberte **bodový graf** .
+1. Vyberte **bodový graf**.
 
 1. Přetáhněte **LargeHH** ze zobrazení **StoreDemographics** na osu X.
 
@@ -139,10 +140,10 @@ Teď přejděte do okna **sestavy** a vytvořte sestavu s cílem porovnat relati
 1. Přetažením pole **productCode** ze zobrazení **RetailSales** do legendy vyberte konkrétní produktovou řadu.
 Po výběru těchto možností by se měl zobrazit graf podobný následujícímu snímku obrazovky:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Přidání skriptu SQL do pracovního prostoru analýzy synapse":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Sestava, která porovnává relativní důležitost velikosti domácnosti s průměrnou tržbou na obchod":::
 
 ## <a name="next-steps"></a>Další kroky
 
 [Použití T-SQL k dotazování na data Azure Cosmos DB pomocí odkazu Azure synapse](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
-Použití synapse fondu SQL bez serveru k [analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu](../synapse-analytics/sql/tutorial-data-analyst.md)
+Použití fondu SQL bez serveru k [analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse studiu](../synapse-analytics/sql/tutorial-data-analyst.md)

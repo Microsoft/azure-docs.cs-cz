@@ -1,28 +1,28 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 10/05/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e7cea1d03b0a236b9a485c2e640d7bf3f4e8e7e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5f9a110247d4ec93c8f3fb95fc9ed61eb6806787
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132478"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305155"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
-Azure Policy stanoví konvence pro prostředky. Definice zásad popisují [podmínky](#conditions) dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. Podmínka porovnává [pole](#fields) vlastností prostředku s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí [aliasů](#aliases). Pole vlastností prostředku je buď pole s jednou hodnotou, nebo [pole](#understanding-the--alias) s více hodnotami. Vyhodnocení podmínky se liší u polí.
+Azure Policy stanoví konvence pro prostředky. Definice zásad popisují [podmínky](#conditions) dodržování předpisů prostředků a efekt, který se má provést, pokud je splněna podmínka. Podmínka porovnává [pole](#fields) vlastností prostředku nebo [hodnotu](#value) s požadovanou hodnotou. K polím vlastností prostředku se dostanete pomocí [aliasů](#aliases). Pokud je pole vlastnosti prostředku pole, lze použít speciální [alias pole](#understanding-the--alias) , který umožňuje vybrat hodnoty ze všech členů pole a použít podmínku na každou z nich.
 Přečtěte si další informace o [podmínkách](#conditions).
 
 Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby prostředky měly konkrétní značku. Přiřazení zásad se dědí prostřednictvím podřízených prostředků. Pokud se pro skupinu prostředků použije přiřazení zásady, vztahuje se na všechny prostředky v této skupině prostředků.
 
-_PolicyRule_ schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+_PolicyRule_ schéma definice zásad najdete tady: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
 - zobrazované jméno
-- Popis
+- description
 - režim
 - zprostředkovatele identity
 - parameters
@@ -75,7 +75,7 @@ Azure Policy předdefinované a vzory jsou v [Azure Policy Samples](../samples/i
 K identifikaci definice zásad a zadání kontextu, kdy se má použít, můžete použít **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
 
 > [!NOTE]
-> Během vytváření nebo aktualizace definice zásady, **ID**, **typu**a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID**, **typu**a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
+> Během vytváření nebo aktualizace definice zásady, **ID** , **typu** a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID** , **typu** a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
 
 ## <a name="type"></a>Typ
 
@@ -83,9 +83,9 @@ I když nelze nastavit vlastnost **typu** , existují tři hodnoty, které jsou 
 
 - `Builtin`: Tyto definice zásad poskytuje a udržuje společnost Microsoft.
 - `Custom`: Tato hodnota obsahuje všechny definice zásad vytvořené zákazníky.
-- `Static`: Označuje definici zásady [dodržování předpisů pro zákonné](./regulatory-compliance.md) **vlastnictví s vlastnictvím**Microsoftu. Výsledky dodržování předpisů pro tyto definice zásad jsou výsledky auditů třetích stran v infrastruktuře Microsoftu. V Azure Portal se tato hodnota někdy zobrazuje jako **spravovaná Microsoftem**. Další informace najdete v tématu [sdílená odpovědnost v cloudu](../../../security/fundamentals/shared-responsibility.md).
+- `Static`: Označuje definici zásady [dodržování předpisů pro zákonné](./regulatory-compliance.md) **vlastnictví s vlastnictvím** Microsoftu. Výsledky dodržování předpisů pro tyto definice zásad jsou výsledky auditů třetích stran v infrastruktuře Microsoftu. V Azure Portal se tato hodnota někdy zobrazuje jako **spravovaná Microsoftem**. Další informace najdete v tématu [sdílená odpovědnost v cloudu](../../../security/fundamentals/shared-responsibility.md).
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>Režim
 
 **Režim** je nakonfigurován v závislosti na tom, zda je zásada cílena na vlastnost Azure Resource Manager nebo vlastnost poskytovatele prostředků.
 
@@ -106,9 +106,9 @@ Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny d
 
 Následující režim poskytovatele prostředků je plně podporovaný:
 
-- `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_, _Deny_a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) je _zastaralé_.
+- `Microsoft.Kubernetes.Data` pro správu clusterů Kubernetes v systému Azure nebo mimo něj. Definice používající tento režim poskytovatele prostředků používají účinky _audit_ , _Deny_ a _disabled_. Použití efektu [EnforceOPAConstraint](./effects.md#enforceopaconstraint) je _zastaralé_.
 
-V současné době jsou podporovány následující režimy poskytovatele prostředků ve **verzi Preview**:
+V současné době jsou podporovány následující režimy poskytovatele prostředků ve **verzi Preview** :
 
 - `Microsoft.ContainerService.Data` pro správu pravidel kontroleru přístupu pro [službu Azure Kubernetes](../../../aks/intro-kubernetes.md). Definice používající tento režim poskytovatele prostředků **musí** používat efekt [EnforceRegoPolicy](./effects.md#enforceregopolicy) . Tento režim je _zastaralý_.
 - `Microsoft.KeyVault.Data` pro správu trezorů a certifikátů v [Azure Key Vault](../../../key-vault/general/overview.md). Další informace o těchto definicích zásad najdete v tématu věnovaném [integraci Azure Key Vault s Azure Policy](../../../key-vault/general/azure-policy.md).
@@ -128,7 +128,7 @@ Volitelná `metadata` vlastnost ukládá informace o definici zásady. Zákazní
 - `deprecated` (Boolean): příznak True nebo false pro, pokud byla definice zásad označena jako _zastaralá_.
 
 > [!NOTE]
-> Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**. Další informace o způsobu, jakým jsou předdefinované verze Azure Policy, najdete v tématu [Vestavěná správa verzí](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+> Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_ , jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**. Další informace o způsobu, jakým jsou předdefinované verze Azure Policy, najdete v tématu [Vestavěná správa verzí](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -143,7 +143,7 @@ Parametry fungují stejným způsobem při vytváření zásad. Zahrnutím param
 Parametr má následující vlastnosti, které se používají v definici zásady:
 
 - `name`: Název vašeho parametru. Používá se `parameters` funkcí nasazení v rámci pravidla zásad. Další informace najdete v tématu [použití hodnoty parametru](#using-a-parameter-value).
-- `type`: Určuje, zda je parametr typu **řetězec**, **pole**, **objekt**, **Boolean**, **Integer**, **float**nebo **DateTime**.
+- `type`: Určuje, zda je parametr typu **řetězec** , **pole** , **objekt** , **Boolean** , **Integer** , **float** nebo **DateTime**.
 - `metadata`: Definuje podvlastnost primárně používané Azure Portal k zobrazení uživatelsky přívětivých informací:
   - `description`: Vysvětlení použití parametru pro. Dá se použít k zadání příkladů přijatelných hodnot.
   - `displayName`: Popisný název zobrazený na portálu pro parametr.
@@ -189,7 +189,7 @@ Tento příklad odkazuje na parametr **allowedLocations** , který byl prokázá
 
 ### <a name="strongtype"></a>strongType
 
-V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType**, použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například, `Microsoft.Network/virtualNetworks/subnets`.
+V rámci `metadata` vlastnosti můžete použít **strongType** k poskytnutí seznamu možností s vícenásobným výběrem v rámci Azure Portal. **strongType** může být podporovaný _typ prostředku_ nebo povolená hodnota. Chcete-li zjistit, zda je _typ prostředku_ platný pro **strongType** , použijte [příkaz Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider). Formát pro _typ prostředku_ **strongType** je `<Resource Provider>/<Resource Type>` . Například, `Microsoft.Network/virtualNetworks/subnets`.
 
 Některé _typy prostředků_ , které nejsou vraceny **Get-AzResourceProvider** , jsou podporovány. Tyto typy jsou:
 
@@ -284,16 +284,16 @@ Podmínka vyhodnocuje, zda **pole** nebo **hodnota** přistupující objekty spl
   `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-Pro **méně**, **lessOrEquals**, **větší**a **greaterOrEquals**, pokud typ vlastnosti neodpovídá typu podmínky, je vyvolána chyba. Porovnávání řetězců je provedeno pomocí `InvariantCultureIgnoreCase` .
+Pro **méně** , **lessOrEquals** , **větší** a **greaterOrEquals** , pokud typ vlastnosti neodpovídá typu podmínky, je vyvolána chyba. Porovnávání řetězců je provedeno pomocí `InvariantCultureIgnoreCase` .
 
 Při použití podmínek **Like** a **notLike** zadáte v hodnotě zástupný znak `*` .
 Hodnota by neměla mít více než jeden zástupný znak `*` .
 
 Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly číslici, `?` pro písmeno, `.` aby odpovídaly jakémukoli znaku a jakémukoliv jinému znaku, aby odpovídaly tomuto skutečnému znaku. Zatímco **Match** a **notMatch** rozlišují velká a malá písmena, všechny ostatní podmínky, které vyhodnocují _StringValue_ , rozlišují malá a velká písmena. Alternativy nerozlišující velká a malá písmena jsou k dispozici v **matchInsensitively** a **notMatchInsensitively**.
 
-V hodnotě pole ** \[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace najdete v tématu [vyhodnocení \[ \* \] aliasu](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+V hodnotě pole **\[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
-### <a name="fields"></a>Pole
+### <a name="fields"></a>Fields (Pole)
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
 
@@ -456,12 +456,14 @@ Struktura výrazu **Count** je:
 }
 ```
 
-Pro **počet**se používají tyto vlastnosti:
+Pro **počet** se používají tyto vlastnosti:
 
 - **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
 - **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není k dispozici, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
   [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
 - **\<condition\>** (povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
+
+Další informace o tom, jak pracovat s vlastnostmi pole v Azure Policy, včetně podrobného vysvětlení způsobu vyhodnocení výrazu Count, naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="count-examples"></a>Příklady počtu
 
@@ -548,17 +550,32 @@ Příklad 5: Ověřte, že aspoň jeden člen pole odpovídá více vlastnostem 
 }
 ```
 
+Příklad 6: použití `field()` funkce v `where` podmínkách pro přístup k hodnotě literálu aktuálně vyhodnoceného člena pole. Tato podmínka kontroluje, že neexistují žádná pravidla zabezpečení s hodnotou sudé s číslem _priority_ .
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
+          "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Účinek
 
 Azure Policy podporuje následující typy účinku:
 
-- **Připojit**: přidá do žádosti definovanou sadu polí.
-- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale požadavek neselže.
-- **AuditIfNotExists**: vygeneruje událost upozornění v protokolu aktivit, pokud neexistuje související prostředek.
-- **Deny**: vygeneruje událost v protokolu aktivit a neuspěje požadavek.
-- **DeployIfNotExists**: nasadí související prostředek, pokud ještě neexistuje.
-- **Zakázáno**: nevyhodnotí prostředky pro dodržování předpisů pro pravidlo zásad.
-- **Upravit**: Přidání, aktualizace nebo odebrání definovaných značek z prostředku
+- **Připojit** : přidá do žádosti definovanou sadu polí.
+- **Audit** : vygeneruje událost upozornění v protokolu aktivit, ale požadavek neselže.
+- **AuditIfNotExists** : vygeneruje událost upozornění v protokolu aktivit, pokud neexistuje související prostředek.
+- **Deny** : vygeneruje událost v protokolu aktivit a neuspěje požadavek.
+- **DeployIfNotExists** : nasadí související prostředek, pokud ještě neexistuje.
+- **Zakázáno** : nevyhodnotí prostředky pro dodržování předpisů pro pravidlo zásad.
+- **Upravit** : Přidání, aktualizace nebo odebrání definovaných značek z prostředku
 - **EnforceOPAConstraint** (zastaralé): konfiguruje Open Controller agent admissioning Controller s gatekeeper v3 pro samoobslužně spravované clustery Kubernetes v Azure.
 - **EnforceRegoPolicy** (zastaralé): konfiguruje správce otevřeného agenta zásad přístupu s gatekeeper v2 ve službě Azure Kubernetes.
 
@@ -589,10 +606,10 @@ Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od pou
 Následující funkce jsou dostupné jenom v pravidlech zásad:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. FFFFFFFZ'
-  - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
+  - **DateTime** : [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. FFFFFFFZ'
+  - **numberOfDaysToAdd** : [povinné] celé číslo-počet dnů k přidání
 - `field(fieldName)`
-  - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
+  - **FieldName** : [required] řetězec-název [pole](#fields) , které se má načíst
   - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.
   - `field` se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** pro odkazování na pole v prostředku, který je vyhodnocován. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
@@ -612,8 +629,8 @@ Následující funkce jsou dostupné jenom v pravidlech zásad:
 
 
 - `ipRangeContains(range, targetRange)`
-    - **Range**: [required] řetězec-řetězec určující rozsah IP adres.
-    - **targetRange**: [povinný] řetězec – řetězec určující rozsah IP adres.
+    - **Range** : [required] řetězec-řetězec určující rozsah IP adres.
+    - **targetRange** : [povinný] řetězec – řetězec určující rozsah IP adres.
 
     Vrátí, zda daný rozsah IP adres obsahuje cílový rozsah IP adres. Prázdné rozsahy nebo kombinování mezi rodinami IP adres není povoleno a vede k selhání vyhodnocení.
 
@@ -718,30 +735,20 @@ Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (n
 
 Alias ' Normal ' představuje pole jako jedinou hodnotu. Toto pole je určeno pro přesné scénáře porovnání shody, pokud celá sada hodnot musí být přesně definovaná, a ne více a méně.
 
-**\[\*\]** Alias umožňuje porovnání s hodnotou každého prvku v poli a konkrétní vlastnosti každého prvku. Tento přístup umožňuje porovnat vlastnosti elementu pro ' Pokud žádný z ', ', pokud je to u všech scénářů ', ', ', '. U složitějších scénářů použijte výraz podmínky [Count](#count) . Pomocí ** \[ \* ipRules \] **může příklad ověřit, že každá _Akce_ je _Zamítnutá_, ale nemusí se obávat, kolik pravidel existuje nebo jaká je _hodnota_ IP.
-Toto ukázkové pravidlo vyhledá všechny shody **hodnoty ipRules \[ \* \] . Value** to **10.0.4.1** a použije **effectType** pouze v případě, že nenajde alespoň jednu shodu:
+**\[\*\]** Alias představuje kolekci hodnot vybraných z prvků vlastnosti prostředku pole. Například:
 
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "10.0.4.1"
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+| Alias | Vybrané hodnoty |
+|:---|:---|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | Prvky `ipRules` pole. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | Hodnoty `action` vlastnosti z každého elementu `ipRules` pole. |
 
-Další informace najdete v tématu [vyhodnocení \* aliasu []](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+Při použití v podmínce [pole](#fields) umožňují aliasy pole porovnat jednotlivé prvky pole s cílovou hodnotou. Při použití s výrazem [Count](#count) je možné:
+
+- Ověřte velikost pole.
+- Zkontroluje, jestli all\any\none prvků pole splňují komplexní podmínku.
+- Zkontroluje, jestli přesně ***n*** prvků pole neodpovídají složitou podmínku.
+
+Další informace a příklady naleznete v tématu [odkazující na vlastnosti prostředku pole](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 ## <a name="next-steps"></a>Další kroky
 

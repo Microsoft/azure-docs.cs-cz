@@ -1,7 +1,7 @@
 ---
 title: Parita mezi veřejnými a svrchovanými regiony
 titleSuffix: Azure Machine Learning
-description: Některé funkce Azure Machine Learning, jako jsou funkce Public Preview, můžou být dostupné jenom v oblastech veřejného cloudu. V tomto článku najdete seznam funkcí, které jsou dostupné i v oblastech Azure Government, Azure Německo a Azure Čína 21Vianet.
+description: Tento článek obsahuje seznam parity funkcí mezi veřejným cloudem a oblastmi Azure Government, Azure Německo a Azure Čína 21Vianet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426530"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305754"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Parita cloudu Azure Machine Learning svrchovan
 
@@ -34,7 +34,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-government"></a>Azure Government 
 
-| Funkce | Stav veřejného cloudu  | US-Virginia | US-Arizona| 
+| Příznak | Stav veřejného cloudu  | US-Virginia | US-Arizona| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** | | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA                   | ANO                | ANO         |
@@ -56,7 +56,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Notebook a sdílení souborů v pracovním prostoru                                        | GA                   | ANO                | ANO         |
 | Podpora R a Pythonu                                                       | GA                   | ANO                | ANO         |
 | Podpora virtuální sítě                                                    | Public Preview       | NO                 | NO          |
-| **Instance COMPUTE** |   |  | | 
+| **Instance služby Compute** |   |  | | 
 | Spravované výpočetní instance pro integrované poznámkové bloky                         | GA                   | ANO                | ANO         |
 | Integrace Jupyter, JupyterLab                                            | GA                   | ANO                | ANO         |
 | Podpora Virtual Network (VNet)                                             | Public Preview       | ANO                | ANO         |
@@ -104,7 +104,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | **Odvození** |   | | |
 | Batch Inferencing                                                          | GA                   | ANO                | ANO         |
 | Data Box Edge s FPGA                                                    | Public Preview       | NO                 | NO          |
-| **Další** |   | | |
+| **Jiné** |   | | |
 | Open Datasets                                                              | Public Preview       | ANO                | ANO         |
 | Vlastní Kognitivní hledání                                                    | Public Preview       | ANO                | ANO         |
 | Mnoho modelů                                                                | Public Preview       | NO                 | NO          |
@@ -147,7 +147,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 
 ## <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet 
 
-| Funkce                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
+| Příznak                                       | Stav veřejného cloudu | CH – východ – 2 | CH-sever-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizované strojové učení** |    | | |
 | Vytváření a spouštění experimentů v poznámkových blocích                                    | GA               | ANO       | –        |
@@ -169,7 +169,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | Notebook a sdílení souborů v pracovním prostoru                                        | GA               | ANO       | –        |
 | Podpora R a Pythonu                                                       | GA               | ANO       | –        |
 | Podpora virtuální sítě                                                    | Public Preview   | NO        | –        |
-| **Instance COMPUTE** |    | | |
+| **Instance služby Compute** |    | | |
 | Spravované výpočetní instance pro integrované poznámkové bloky                         | GA               | NO        | –        |
 | Integrace Jupyter, JupyterLab                                            | GA               | ANO       | –        |
 | Podpora Virtual Network (VNet)                                             | Public Preview   | ANO       | –        |
@@ -217,7 +217,7 @@ Cílem je poskytnout maximální paritu mezi veřejným cloudem a oblastmi svrch
 | **Odvození** |   | | |
 | Batch Inferencing                                                          | GA               | ANO       | –        |
 | Data Box Edge s FPGA                                                    | Public Preview   | NO        | –        |
-| **Další** |    | | |
+| **Jiné** |    | | |
 | Open Datasets                                                              | Public Preview   | ANO       | –        |
 | Vlastní Kognitivní hledání                                                    | Public Preview   | ANO       | –        |
 | Mnoho modelů                                                                | Public Preview   | NO        | –        |

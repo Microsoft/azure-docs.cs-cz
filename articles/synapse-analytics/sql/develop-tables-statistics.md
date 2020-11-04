@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 6d59d64c861b74610e82b962ddd5db2331d3db64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148248"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305018"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistika v synapse SQL
 
-V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů pomocí prostředků SQL synapse: SQL Pool a SQL na vyžádání (Preview).
+V tomto článku najdete doporučení a příklady pro vytváření a aktualizaci statistik pro optimalizaci dotazů pomocí prostředků SQL synapse: vyhrazený fond SQL a SQL Server bez serveru (Preview).
 
-## <a name="statistics-in-sql-pool"></a>Statistika ve fondu SQL
+## <a name="statistics-in-dedicated-sql-pool"></a>Statistika ve vyhrazeném fondu SQL
 
 ### <a name="why-use-statistics"></a>Proč používat statistiku
 
-Čím více prostředků fondu SQL ví o vašich datech, tím rychlejší může provádět dotazy. Po načtení dat do fondu SQL je shromažďování statistických údajů o vašich datech jedním z nejdůležitějších věcí, které můžete provést pro optimalizaci dotazů.  
+Čím více vyhrazený fond SQL ví o vašich datech, tím rychlejší může provádět dotazy. Po načtení dat do vyhrazeného fondu SQL je shromažďování statistických údajů o vašich datech jedním z nejdůležitějších věcí, které můžete udělat pro optimalizaci dotazů.  
 
-Optimalizátor dotazů na fond SQL je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji.
+Optimalizátor dotazů na vyhrazený fond SQL je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji.
 
 Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, bude zvolit jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 
-Pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na hodnotu, bude fond SQL analyzovat příchozí dotazy uživatelů pro chybějící statistiky `ON` .  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. 
+Vyhrazený modul SQL pool bude analyzovat příchozí dotazy uživatelů pro chybějící statistiky, pokud je možnost databáze AUTO_CREATE_STATISTICS nastavena na hodnotu `ON` .  Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo v podmínce připojení. 
 
 Tato funkce slouží ke zlepšení odhadů mohutnosti pro plán dotazu.
 
@@ -166,7 +166,7 @@ Tyto příklady ukazují, jak používat různé možnosti vytváření statisti
 #### <a name="create-single-column-statistics-with-default-options"></a>Vytváření statistik s jedním sloupcem s výchozími možnostmi
 
 Chcete-li vytvořit statistiku pro sloupec, zadejte název objektu statistiky a název sloupce.
-Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení je při vytváření statistik v rámci fondu SQL Samples **20%** tabulky.
+Tato syntaxe používá všechny výchozí možnosti. Ve výchozím nastavení vyhradí fond SQL Samples **20%** tabulky při vytváření statistik.
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -245,7 +245,7 @@ Chcete-li vytvořit objekt statistiky s více sloupci, použijte předchozí př
 > [!NOTE]
 > Histogram, který se používá k odhadu počtu řádků ve výsledku dotazu, je k dispozici pouze pro první sloupec uvedený v definici objektu statistice.
 
-V tomto příkladu je histogram v *\_ kategorii produktu* . Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů* :
+V tomto příkladu je histogram v *\_ kategorii produktu*. Statistiky mezi sloupci se počítají podle *\_ kategorií produktů* a *\_ sub_category produktů* :
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -430,7 +430,7 @@ Příkaz Aktualizovat STATISTIKu je snadno použitelný. Stačí si pamatovat, �
 Pokud výkon není problémem, je tato metoda nejjednodušší a nejucelenější způsob, jak zaručit, že statistiky jsou aktuální.
 
 > [!NOTE]
-> Při aktualizaci všech statistik v tabulce provede modul SQL kontrolu vzorkování tabulky pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
+> Při aktualizaci všech statistik v tabulce provede vyhrazený fond SQL kontrolu na vzorové tabulce pro každý objekt statistiky. Pokud je tabulka velká a má mnoho sloupců a mnoho statistik, může být efektivnější aktualizovat jednotlivé statistiky podle potřeby.
 
 Implementaci `UPDATE STATISTICS` procedury najdete v tématu [dočasné tabulky](develop-tables-temporary.md). Metoda implementace je mírně odlišná od předchozího `CREATE STATISTICS` postupu, ale výsledek je stejný.
 Úplnou syntaxi naleznete v tématu [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
@@ -443,7 +443,7 @@ K dispozici je několik systémových zobrazení a funkcí, které můžete pou�
 
 Tato systémová zobrazení obsahují informace o statistice:
 
-| Zobrazení katalogu | Description |
+| Zobrazení katalogu | Popis |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý sloupec. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Jeden řádek pro každý objekt v databázi. |
@@ -457,7 +457,7 @@ Tato systémová zobrazení obsahují informace o statistice:
 
 Tyto systémové funkce jsou užitečné pro práci s statistikami:
 
-| Systémová funkce | Description |
+| Systémová funkce | Popis |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Datum poslední aktualizace objektu statistiky |
 | [PŘÍKAZ DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) |Souhrnná úroveň a podrobné informace o distribuci hodnot, které přirozuměl objektům statistiky. |
@@ -512,7 +512,7 @@ Příkaz DBCC SHOW_STATISTICS () zobrazuje data uchovávaná v rámci objektu st
 
 Záhlaví je metadata o statistice. Histogram zobrazí distribuci hodnot v prvním klíčovém sloupci objektu statistiky. 
 
-Vektor hustoty měří korelaci mezi sloupci. Fond SQL počítá odhady mohutnosti s libovolnými daty v objektu statistiky.
+Vektor hustoty měří korelaci mezi sloupci. Vyhrazený fond SQL vypočítává odhady mohutnosti s libovolnými daty v objektu statistiky.
 
 #### <a name="show-header-density-and-histogram"></a>Zobrazit záhlaví, hustotu a histogram
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>Rozdíly DBCC SHOW_STATISTICS ()
 
-`DBCC SHOW_STATISTICS()` je ve srovnání s SQL Server ve fondu SQL striktně implementované:
+`DBCC SHOW_STATISTICS()` ve srovnání s SQL Server je ve vyhrazeném fondu SQL striktní implementace:
 
 - Nedokumentované funkce se nepodporují.
 - Nelze použít Stats_stream.
@@ -556,25 +556,22 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - K identifikaci objektů statistiky nelze použít názvy sloupců.
 - Vlastní chyba 2767 není podporována.
 
-### <a name="next-steps"></a>Další kroky
 
-Další vylepšení výkonu dotazů najdete v tématu [Monitorování úloh](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
-
-## <a name="statistics-in-sql-on-demand-preview"></a>Statistika v SQL na vyžádání (Preview)
+## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistika ve fondu SQL bez serveru (Preview)
 
 Statistiky se pro konkrétní datovou sadu (cestu v úložišti) vytvoří na konkrétní sloupec.
 
 ### <a name="why-use-statistics"></a>Proč používat statistiku
 
-Čím více SQL na vyžádání (ve verzi Preview) ví o vašich datech, tím rychleji můžete na něj provádět dotazy. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. 
+Čím více bez serveru SQL (Preview) ví o vašich datech, tím rychleji může na něm provádět dotazy. Shromažďování statistických údajů o vašich datech je jedním z nejdůležitějších věcí, které můžete udělat k optimalizaci vašich dotazů. 
 
-Optimalizátor dotazů SQL na vyžádání je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji. 
+Optimalizátor dotazů fondu SQL bez serveru je modul pro optimalizaci na základě nákladů. Porovnává náklady na různé plány dotazů a pak zvolí plán s nejnižšími náklady. Ve většině případů si zvolí plán, který se spustí nejrychleji. 
 
 Například pokud Optimalizátor odhadne, že datum, na kterém dotaz vyfiltruje, vrátí jeden řádek, ve kterém se vybere jeden plán. Pokud se odhaduje, že vybrané datum vrátí 1 000 000 řádků, vrátí se jiný plán.
 
 ### <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 
-SQL na vyžádání analyzuje příchozí dotazy uživatelů pro chybějící statistiky. Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo podmínky spojení ke zvýšení odhadů mohutnosti pro plán dotazu.
+Neserverový fond SQL analyzuje příchozí dotazy uživatelů na chybějící statistiky. Pokud Statistika chybí, vytvoří Optimalizátor dotazů statistiku pro jednotlivé sloupce v predikátu dotazu nebo podmínky spojení ke zvýšení odhadů mohutnosti pro plán dotazu.
 
 Příkaz SELECT spustí automatické vytváření statistik.
 
@@ -585,7 +582,7 @@ Automatické vytváření statistik je prováděno synchronně, takže pokud ve 
 
 ### <a name="manual-creation-of-statistics"></a>Ruční vytváření statistik
 
-SQL na vyžádání umožňuje vytvořit statistiku ručně. Pro soubory CSV je nutné vytvořit statistiku ručně, protože automatické vytváření statistik není pro soubory CSV zapnuté. 
+Neserverový fond SQL umožňuje ruční vytváření statistik. Pro soubory CSV je nutné vytvořit statistiku ručně, protože automatické vytváření statistik není pro soubory CSV zapnuté. 
 
 Pokyny k ručnímu vytváření statistik najdete v následujících příkladech.
 
@@ -593,7 +590,7 @@ Pokyny k ručnímu vytváření statistik najdete v následujících příkladec
 
 Změny dat v souborech, odstraňování a přidávání souborů způsobují změnu distribuce dat a zajišťují jejich statistiku. V takovém případě je třeba aktualizovat statistiku.
 
-SQL na vyžádání automaticky znovu vytvoří statistiku, pokud se data významně mění. Pokaždé, když se automaticky vytvoří statistiky, aktuální stav datové sady se taky uloží: cesty k souborům, velikosti, data poslední úpravy.
+Fond SQL bez serveru automaticky znovu vytvoří statistiku, pokud se data významně mění. Pokaždé, když se automaticky vytvoří statistiky, aktuální stav datové sady se taky uloží: cesty k souborům, velikosti, data poslední úpravy.
 
 Když jsou statistiky zastaralé, vytvoří se nové. Algoritmus prochází daty a porovnává je s aktuálním stavem datové sady. Pokud je velikost změn větší než konkrétní prahová hodnota, pak jsou staré statistiky odstraněny a znovu se vytvoří nad novou datovou sadou.
 
@@ -650,7 +647,7 @@ Argumenty: [ @stmt =] N ' statement_text ' – Určuje příkaz Transact-SQL, kt
 
 Chcete-li vytvořit statistiku pro sloupec, zadejte dotaz, který vrátí sloupec, pro který budete potřebovat statistiku.
 
-Pokud neurčíte jinak, bude SQL na vyžádání ve výchozím nastavení při vytváření statistik používat 100% dat v datové sadě.
+Ve výchozím nastavení, pokud neurčíte jinak, fond SQL bez serveru používá 100% dat poskytnutých v datové sadě při vytváření statistik.
 
 Chcete-li například vytvořit statistiku s výchozími možnostmi (FULLSCAN) pro sloupec Year datové sady na základě souboru population.csv:
 
@@ -816,4 +813,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>Další kroky
 
-Další vylepšení výkonu dotazů najdete v tématu [osvědčené postupy pro fond SQL](best-practices-sql-pool.md#maintain-statistics).
+Další vylepšení výkonu dotazů pro vyhrazený fond SQL najdete v tématu [Monitorování úloh](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a [osvědčených postupů pro vyhrazený fond SQL](best-practices-sql-pool.md#maintain-statistics).
+
+Další vylepšení výkonu dotazů pro fond SQL bez serveru najdete v tématu [osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md) .

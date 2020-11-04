@@ -1,6 +1,6 @@
 ---
 title: Připojení dat CEF k Azure Sentinel Preview | Microsoft Docs
-description: Připojte externí řešení, které pošle zprávy CEF (Common Event Format) do Azure Sentinel pomocí počítače se systémem Linux jako proxy serveru.
+description: Připojení externího řešení, které odesílá zprávy CEF (Common Event Format) do Azure Sentinel pomocí počítače se systémem Linux jako služby pro přeposílání protokolů.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747906"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304978"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -50,40 +50,49 @@ Pokud chcete používat komunikaci TLS mezi zdrojem syslog a službou pro před�
  
 ## <a name="prerequisites"></a>Předpoklady
 
-Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
+Ujistěte se, že počítač se systémem Linux, který používáte jako službu pro překládání protokolů, používá jeden z následujících operačních systémů:
 
 - 64bitová
-  - CentOS 7 a dílčí verze a vyšší (ne 6)
+  - CentOS 7 a 8, včetně dílčích verzí (ne 6)
   - Amazon Linux 2017,09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 a dílčí verze a vyšší (ne 6)
-  - Debian GNU/Linux 8 a 9
+  - Red Hat Enterprise Linux (RHEL) Server 7 a 8, včetně dílčích verzí (ne 6)
+  - Debian GNU/Linux 8, 9 a 10
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12, 15
+
 - 32bitová
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 a 9
-   - Ubuntu Linux 14,04 LTS a 16,04 LTS
+  - CentOS 7 a 8, včetně dílčích verzí (ne 6)
+  - Oracle Linux 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 a 8, včetně dílčích verzí (ne 6)
+  - Debian GNU/Linux 8, 9 a 10
+  - Ubuntu Linux 14,04 LTS a 16,04 LTS
  
- - Verze démona
-   - Syslog-ng: 2,1-3.22.1
-   - Rsyslog: V8
+- Verze démona
+  - Syslog-ng: 2,1-3.22.1
+  - Rsyslog: V8
   
- - Podporované specifikace RFC syslog
-   - Protokol syslog RFC 3164
-   - Protokol syslog RFC 5424
+- Podporované specifikace RFC syslog
+  - Protokol syslog RFC 3164
+  - Protokol syslog RFC 5424
  
 Ujistěte se, že váš počítač splňuje i následující požadavky: 
+
 - Oprávnění
-    - Na počítači musíte mít zvýšená oprávnění (sudo). 
+  - Na počítači musíte mít zvýšená oprávnění (sudo). 
+
 - Požadavky na software
-    - Ujistěte se, že je v počítači spuštěný Python 2,7.
+  - Ujistěte se, že je v počítači spuštěný Python 2,7.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak připojit zařízení CEF ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
+V tomto dokumentu jste zjistili, jak Azure Sentinel shromažďuje protokoly CEF z řešení zabezpečení a zařízení. Informace o tom, jak připojit vaše řešení ke službě Azure Sentinel, najdete v následujících článcích:
+
+- Krok 1: [připojení CEF nasazením protokolu syslog/CEF pro přeposílání](connect-cef-agent.md)
+- Krok 2: [provedení kroků specifických pro řešení](connect-cef-solution-config.md)
+- Krok 3: [ověření připojení](connect-cef-verify.md)
+
+Další informace o tom, co dělat s daty, která jste shromáždili v Azure Sentinel, najdete v následujících článcích:
 - Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
 - Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats.md).
 

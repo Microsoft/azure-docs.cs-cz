@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 04c315f593b90204faaeaec562c18e9e4be301d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b3bec9c4d4476b95279e35953ff89177f4488d4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90881902"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305835"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Výstup služby Azure synapse Analytics z Azure Stream Analytics
 
 [Azure synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) (dříve SQL Data Warehouse) je bezlimitní analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. 
 
-Úlohy Azure Stream Analytics můžou ve službě Azure synapse Analytics nastavovat výstup do tabulky fondů SQL a můžou zpracovat míry propustnosti až do 200 MB/s. Tato funkce podporuje nejvíce náročné analýzy v reálném čase a zpracování dat za provozu pro úlohy, jako je vytváření sestav a řídicí panel.  
+Úlohy Azure Stream Analytics můžou ve službě Azure synapse Analytics nastavovat výstup do vyhrazené tabulky fondu SQL a můžou zpracovat propustnost až do 200 MB/s. Tato funkce podporuje nejvíce náročné analýzy v reálném čase a zpracování dat za provozu pro úlohy, jako je vytváření sestav a řídicí panel.  
 
-Aby bylo možné přidat jako výstup do úlohy Stream Analytics, musí existovat tabulka fondu SQL. Schéma tabulky musí odpovídat polím a jejich typům ve výstupu vaší úlohy. 
+Aby bylo možné přidat jako výstup do úlohy Stream Analytics, musí existovat vyhrazená tabulka fondu SQL. Schéma tabulky musí odpovídat polím a jejich typům ve výstupu vaší úlohy. 
 
 Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl účet úložiště nakonfigurovaný. Přejděte do nastavení účtu úložiště a nakonfigurujte účet úložiště. Povolují se jenom typy účtů úložiště, které podporují tabulky: obecné účely v2 a obecné účely v1. Vyberte pouze úroveň Standard. Úroveň Premium se nepodporuje.
 
@@ -28,10 +28,10 @@ Pokud chcete jako výstup použít Azure synapse, musíte zajistit, aby byl úč
 
 V následující tabulce jsou uvedené názvy vlastností a jejich popisy pro vytváření výstupu Azure synapse Analytics.
 
-|Název vlastnosti|Description|
+|Název vlastnosti|Popis|
 |-|-|
 |Alias pro výstup |Popisný název, který se používá v dotazech k směrování výstupu dotazu do této databáze. |
-|databáze |Název fondu SQL, kam posíláte výstup. |
+|databáze |vyhrazený název fondu SQL, kam posíláte výstup. |
 |Název serveru |Název serveru Azure synapse.  |
 |Uživatelské jméno |Uživatelské jméno, které má přístup pro zápis do databáze. Stream Analytics podporuje pouze ověřování SQL. |
 |Heslo |Heslo pro připojení k databázi. |

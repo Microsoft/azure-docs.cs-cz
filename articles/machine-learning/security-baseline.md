@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c473955dbc2b41f434267e12f7983f19d4a0e4c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ccc9f7c2521f846529642c644e70654d17ae54ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100955"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305724"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Základní hodnoty zabezpečení Azure pro Azure Machine Learning
 
@@ -21,7 +21,7 @@ Základní plán zabezpečení Azure pro Microsoft Azure Machine Learning obsahu
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
@@ -71,11 +71,11 @@ Povolte protokolování toku skupin zabezpečení sítě a odešlete protokoly d
 
 Nasaďte Azure Firewall na všech hranicích sítě organizace s povoleným filtrováním na základě hrozeb a nakonfigurovanými na "výstrahy a zamítnutí" pro škodlivý síťový provoz.
 
-- [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
+- [Jak nakonfigurovat DDoS Protection](../ddos-protection/manage-ddos-protection.md)
 
 - [Použít pracovní prostor za Azure Firewall Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
-- [Další informace o Azure Security Center detekci hrozeb](/azure/security-center/security-center-alerts-service-layer)
+- [Další informace o Azure Security Center detekci hrozeb](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -145,7 +145,7 @@ Služba Azure Machine Learning documentuje seznam značek služeb pro výpočetn
 
 Pro prostředek ve vaší virtuální síti Azure Machine Learning, který podporuje pole Popis, ho použijte k dokumentaci pravidel, která umožňují provoz do/ze sítě.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -155,7 +155,7 @@ Pro prostředek ve vaší virtuální síti Azure Machine Learning, který podpo
 
 **Pokyny** : pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s Azure Machine Learning. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-- [Jak zobrazit a načíst události protokolu aktivit Azure](/azure/azure-monitor/platform/activity-log-view)
+- [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -165,7 +165,7 @@ Pro prostředek ve vaší virtuální síti Azure Machine Learning, který podpo
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -197,7 +197,7 @@ Pro účely zabezpečení a dodržování předpisů můžete také korelovat pr
 
 - [Principy protokolování a různých typů protokolů v Azure](../azure-monitor/platform/platform-logs-overview.md)
 
-- [Povolit přihlašování Azure Machine Learning](/azure/machine-learning/how-to-enable-logging)
+- [Povolit přihlašování Azure Machine Learning](./how-to-track-experiments.md)
 
 - [Azure Machine Learning monitorování](monitor-azure-machine-learning.md)
 
@@ -237,7 +237,7 @@ Případně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třet�
 
 - [Postup provádění dotazů pro Azure Machine Learning v pracovních prostorech Log Analytics](monitor-azure-machine-learning.md#analyzing-log-data)
 
-- [Povolit přihlašování Azure Machine Learning](/azure/machine-learning/how-to-enable-logging)
+- [Povolit přihlašování Azure Machine Learning](./how-to-track-experiments.md)
 
 - [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -299,7 +299,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -311,7 +311,7 @@ K vyhledání účtů, které jsou členy skupin pro správu, můžete také pou
 
 - [Pochopení řízení přístupu na základě role v Azure v Azure Machine Learning](how-to-assign-roles.md)
 
-- [Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Postup získání role adresáře v Azure Active Directory pomocí prostředí PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -333,7 +333,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure A
 
 - [Další informace Machine Learning výchozích rolích](how-to-assign-roles.md#default-roles)
 
-- [Další informace o Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [Další informace o Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -377,7 +377,7 @@ Můžete také povolit přístup za běhu k účtům pro správu pomocí Azure A
 
 **Doprovodné** materiály: použití sestav a monitorování zabezpečení Azure Active Directory k detekci, kdy dojde k podezřelé nebo nebezpečné aktivitě v prostředí. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -417,11 +417,11 @@ Přístup k rolím může být v Azure omezený na více úrovní. V případě 
  
 Použijte Azure Active Directory (Azure AD) Privileged Identity Management (PIM) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě.
 
-- [Pochopení sestav Azure AD](/azure/active-directory/reports-monitoring)
+- [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
 - [Jak používat kontroly identity a přístupu v Azure AD](../active-directory/governance/access-reviews-overview.md)
 
-- [Nasazení Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Nasazení Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -434,7 +434,7 @@ Použijte Azure Active Directory (Azure AD) Privileged Identity Management (PIM)
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
  
  
-- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Jak integrovat protokoly aktivit Azure pomocí Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -444,7 +444,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny** : pomocí Azure AD identity Protectionch funkcí můžete nakonfigurovat automatizované odezvy na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
  
-- [Jak zobrazit rizikové přihlašování Azure AD](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
  
 - [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
  
@@ -464,13 +464,13 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [srovnávací testy zabezpečení Azure: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné** materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
  
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -480,11 +480,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Pokyny** : Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím Azure RBAC.
  
-- [Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-- [Vytvoření skupin pro správu](../governance/management-groups/create.md)
+- [Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
  
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -554,7 +554,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Machine Learning a 
 
 - [Vysvětlení šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md)
 
-- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../storage/common/storage-encryption-keys-portal.md)
+- [Postup konfigurace šifrovacích klíčů spravovaných zákazníkem](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -572,7 +572,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Machine Learning a 
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](/azure/security/benchmarks/security-control-vulnerability-management).*
+*Další informace najdete v článku [Srovnávací test zabezpečení Azure: Správa ohrožení zabezpečení](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -580,7 +580,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Machine Learning a 
 
 Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, postupujte podle doporučení Azure Security Center pro provedení posouzení ohrožení zabezpečení na virtuálních počítačích Azure, imagí kontejneru a SQL serverech.
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -592,9 +592,9 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U všech výpočetních prostředků, které vlastní vaše organizace, použijte Azure Automation Update Management a ujistěte se, že na virtuálních počítačích s Windows a Linuxem jsou nainstalované nejnovější aktualizace zabezpečení. U virtuálních počítačů s Windows ověřte, že je povolená možnost web Windows Update a že se nastaví automatické aktualizace.
 
-- [Jak nakonfigurovat Update Management pro virtuální počítače v Azure](/azure/automation/update-management/overview)
+- [Jak nakonfigurovat Update Management pro virtuální počítače v Azure](../automation/update-management/overview.md)
 
-- [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/security-center-policy-definitions.md)
+- [Porozumění zásadám zabezpečení Azure monitorovaným Security Center](../security-center/policy-reference.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -612,7 +612,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 **Doprovodné** materiály: Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, použijte doporučení od Azure Security Center pro provedení posouzení ohrožení zabezpečení na virtuálních počítačích Azure, imagí kontejneru a SQL serverech. Exportovat výsledky kontroly v konzistentních intervalech a porovnat výsledky s předchozími kontrolami a ověřit tak, že chyby zabezpečení byly opraveny. Pokud používáte doporučení ke správě ohrožení zabezpečení, kterou navrhla Azure Security Center, můžete se na portál vybraného řešení překlopit a zobrazit historická data kontroly.
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -628,7 +628,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [testování výkonnosti Azure Security: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -638,7 +638,7 @@ I když se klasické prostředky Azure dají zjistit pomocí Průzkumníka Azure
 
 - [Jak vytvářet dotazy pomocí Průzkumníka Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-- [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
@@ -650,7 +650,7 @@ I když se klasické prostředky Azure dají zjistit pomocí Průzkumníka Azure
 
 **Doprovodné** materiály: použití značek pro prostředky Azure a přidání metadat k logickému uspořádání podle taxonomie.
 
-- [Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -662,15 +662,15 @@ I když se klasické prostředky Azure dají zjistit pomocí Průzkumníka Azure
  
  
  
-- [ Vytvoření dalších předplatných Azure](/azure/billing/billing-create-subscription)
+- [ Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
  
  
  
-- [ Vytvoření skupin pro správu](../governance/management-groups/create.md)
+- [ Vytvoření skupin pro správu](../governance/management-groups/create-management-group-portal.md)
  
  
  
-- [ Vytváření a používání značek](/azure/azure-resource-manager/resource-group-using-tags)
+- [ Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -784,7 +784,7 @@ Implementujte řešení třetí strany, pokud adaptivní ovládací prvky aplika
 
 **Doprovodné** materiály: Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, v závislosti na typu skriptů můžete pomocí konfigurací specifických pro operační systém nebo prostředků třetích stran omezit schopnost uživatelů spouštět skripty ve výpočetních prostředcích Azure.  Můžete také použít Azure Security Center Adaptivní řízení aplikací, abyste zajistili, že se spustí jenom autorizovaný software, a veškerý neautorizovaný software bude zablokovaný na Azure Virtual Machines.
 
-- [Řízení spouštění skriptu PowerShellu v prostředích Windows](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Řízení spouštění skriptu PowerShellu v prostředích Windows](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 - [Jak používat Azure Security Center Adaptivní řízení aplikací](../security-center/security-center-adaptive-application.md)
 
@@ -802,7 +802,7 @@ Implementujte řešení třetí strany, pokud adaptivní ovládací prvky aplika
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [Konfigurace zabezpečení Azure Security test: zabezpečení](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -814,7 +814,7 @@ Můžete také použít doporučení z Azure Security Center jako standardní ho
 
 Azure Machine Learning plně podporuje úložiště Git pro sledování práce; úložiště můžete klonovat přímo do sdíleného systému souborů pracovních prostorů, použít Git na místní pracovní stanici a zajistit, aby se v rámci vašeho Machine Learning prostředí používaly zabezpečené konfigurace pro prostředky kódu.
 
-- [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [Kurz: vytvoření a Správa zásad pro vymáhání dodržování předpisů](../governance/policy/tutorials/create-and-manage.md)
 
@@ -870,7 +870,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 Všimněte si, že Azure Marketplace image virtuálních počítačů publikované Microsoftem jsou spravované a udržované společností Microsoft. 
 
-- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Implementace doporučení pro posouzení ohrožení zabezpečení Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 - [Jak vytvořit virtuální počítač Azure ze šablony ARM](../virtual-machines/windows/ps-template.md)
 
@@ -892,9 +892,9 @@ Všimněte si, že Azure Marketplace image virtuálních počítačů publikovan
 
 Azure Machine Learning plně podporuje úložiště Git pro sledování práce; úložiště můžete klonovat přímo do sdíleného systému souborů pracovních prostorů, použít Git na místní pracovní stanici a zajistit, aby se v rámci vašeho Machine Learning prostředí používaly zabezpečené konfigurace pro prostředky kódu.
 
-- [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -958,7 +958,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 Azure Machine Learning má různou podporu napříč různými výpočetními prostředky a dokonce i s vašimi vlastními výpočetními prostředky. U výpočetních prostředků, které vlastní vaše organizace, použijte Azure Security Center výpočetní &amp; aplikace a použijte doporučení pro virtuální počítače a servery a kontejnery.
 
-- [Porozumění doporučení týkajících se kontejnerů Azure Security Center](/azure/security-center/security-center-container-recommendations)
+- [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/container-security.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -978,11 +978,11 @@ Pomocí Azure Key Vault můžete předávat tajné kódy do vzdáleného spoušt
 
 - [Jak používat spravované identity pro prostředky Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [Vytvoření Key Vault](/azure/key-vault/quick-create-portal)
+- [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [Ověření Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+- [Ověření Key Vault](../key-vault/general/authentication.md)
 
-- [Postup přiřazení zásady přístupu Key Vault](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+- [Postup přiřazení zásady přístupu Key Vault](../key-vault/general/assign-access-policy-portal.md)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -1013,7 +1013,7 @@ Pomocí Azure Key Vault můžete předávat tajné kódy do vzdáleného spoušt
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: obrana proti malwaru](/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [Srovnávací test zabezpečení Azure: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8,1: Používejte centrálně spravovaný antimalwarový software
 
@@ -1023,7 +1023,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 - [Jak nakonfigurovat Microsoft Antimalware pro Azure](../security/fundamentals/antimalware.md)
 
-- [Ochrana před hrozbami v Azure Security Center](../security-center/threat-protection.md)
+- [Ochrana před hrozbami v Azure Security Center](../security-center/azure-defender.md)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -1053,7 +1053,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v článku [srovnávací testy zabezpečení Azure: obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -1070,7 +1070,7 @@ Azure Machine Learning má různou podporu napříč různými výpočetními pr
 **Pokyny** : zálohování dat ve službě Machine Learning je prostřednictvím správy dat v připojených úložištích dat. Povolte Azure Backup pro virtuální počítače a nakonfigurujte požadovanou frekvenci a dobu uchování. Zálohujte klíče spravované zákazníkem v Azure Key Vault.
 
 - [Postup obnovení souborů ze zálohy virtuálního počítače Azure](../backup/backup-azure-restore-files-from-vm.md)
-- [Postup obnovení klíčů Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Postup obnovení klíčů Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -1095,9 +1095,9 @@ Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, ab
  
 - [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
-- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Jak povolit ochranu před odstraněním a vyprázdněním v Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Obnovitelné odstranění pro Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Obnovitelné odstranění pro Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center** : nelze použít
 
@@ -1105,7 +1105,7 @@ Povolí v Key Vault ochranu před náhodným odstraněním a vyprázdněním, ab
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v odpovědi na [incidenty Azure Security test:](/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v odpovědi na [incidenty Azure Security test:](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1129,7 +1129,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 - [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Používání značek k uspořádání prostředků Azure](/azure/azure-resource-manager/resource-group-using-tags)
+- [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center** : Ano
 
@@ -1179,7 +1179,7 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [testy zabezpečení Azure – testování průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -1195,5 +1195,5 @@ Navíc můžete označit odběry pomocí značek a vytvořit systém pojmenován
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e210c1683d5f14181bc0549e73a892eb91d2e746
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087159"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305702"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rozhraní API pro detekci anomálií
 
@@ -28,9 +28,9 @@ ms.locfileid: "86087159"
 
 Toto rozhraní API dokáže detekovat následující typy neobvyklé vzorů v datech časových řad:
 
-* **Pozitivní a negativní trendy**: například při monitorování využití paměti při výpočtu stoupajících trendů může být důležité, aby bylo možné vyhodnotit nevracení paměti.
-* **Změny v dynamickém rozsahu hodnot**: například při monitorování výjimek vyvolaných cloudovou službou mohou všechny změny v dynamickém rozsahu hodnot indikovat nestabilitu ve stavu služby a
-* **Špičky a**nedodržení: například při monitorování počtu selhání přihlášení ve službě nebo počtu rezervací na webu elektronického obchodování může špičky nebo DIP znamenat neobvyklé chování.
+* **Pozitivní a negativní trendy** : například při monitorování využití paměti při výpočtu stoupajících trendů může být důležité, aby bylo možné vyhodnotit nevracení paměti.
+* **Změny v dynamickém rozsahu hodnot** : například při monitorování výjimek vyvolaných cloudovou službou mohou všechny změny v dynamickém rozsahu hodnot indikovat nestabilitu ve stavu služby a
+* **Špičky a** nedodržení: například při monitorování počtu selhání přihlášení ve službě nebo počtu rezervací na webu elektronického obchodování může špičky nebo DIP znamenat neobvyklé chování.
 
 Tyto detektory strojového učení sledují takové změny v hodnotách v průběhu času a oznamují průběžné změny v jejich hodnotách jako skóre anomálií. Nevyžadují optimalizaci prahové hodnoty ad hoc a jejich skóre se dá použít k řízení kladné míry. Rozhraní API pro detekci anomálií je užitečné v několika scénářích, jako je monitorování služby, sledováním klíčových ukazatelů výkonu v průběhu času, monitorování využití prostřednictvím metrik, jako je třeba počet hledání, počet kliknutí, sledování výkonu prostřednictvím čítačů, jako je například paměť, procesor, čtení souborů atd. v průběhu času.
 
@@ -46,13 +46,13 @@ Nabídka detekce anomálií je dodávána s užitečnými nástroji, které vám
 -->
 
 ## <a name="api-deployment"></a>Nasazení rozhraní API
-Aby bylo možné používat rozhraní API, je nutné ho nasadit do předplatného Azure, kde bude hostovat jako webová služba Azure Machine Learning.  Můžete to provést z [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Tím dojde k nasazení dvou Azure Machine Learning Studio (klasických) webových služeb (a jejich souvisejících prostředků) do předplatného Azure – jeden pro detekci anomálií s detekcí sezónnost a druhý bez detekce sezónnost.  Po dokončení nasazení budete moci spravovat vaše rozhraní API ze stránky [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Na této stránce budete moct najít umístění koncových bodů, klíče rozhraní API a ukázkový kód pro volání rozhraní API.  Podrobnější pokyny jsou k dispozici [zde](/azure/machine-learning/studio/manage-new-webservice).
+Aby bylo možné používat rozhraní API, je nutné ho nasadit do předplatného Azure, kde bude hostovat jako webová služba Azure Machine Learning.  Můžete to provést z [Azure AI Gallery](https://gallery.azure.ai/MachineLearningAPI/Anomaly-Detection-2).  Tím dojde k nasazení dvou Azure Machine Learning Studio (klasických) webových služeb (a jejich souvisejících prostředků) do předplatného Azure – jeden pro detekci anomálií s detekcí sezónnost a druhý bez detekce sezónnost.  Po dokončení nasazení budete moci spravovat vaše rozhraní API ze stránky [Azure Machine Learning Studio (klasické) webové služby](https://services.azureml.net/webservices/) .  Na této stránce budete moct najít umístění koncových bodů, klíče rozhraní API a ukázkový kód pro volání rozhraní API.  Podrobnější pokyny jsou k dispozici [zde](../classic/manage-new-webservice.md).
 
 ## <a name="scaling-the-api"></a>Škálování rozhraní API
 Ve výchozím nastavení bude mít vaše nasazení bezplatný fakturační plán pro vývoj/testování, který zahrnuje 1 000 transakcí za měsíc a 2 výpočetní hodiny/měsíc.  V rámci svých potřeb můžete upgradovat na jiný plán.  Podrobnosti o cenách různých plánů [najdete v části](https://azure.microsoft.com/pricing/details/machine-learning/) "ceny produkčního webového rozhraní API".
 
 ## <a name="managing-aml-plans"></a>Správa plánů AML
-Svůj fakturační plán můžete spravovat [tady](https://services.azureml.net/plans/).  Název plánu bude založen na názvu skupiny prostředků, který jste zvolili při nasazování rozhraní API, a navíc k řetězci, který je pro vaše předplatné jedinečný.  Pokyny, jak upgradovat plán, [najdete](/azure/machine-learning/studio/manage-new-webservice) v části Správa fakturačních plánů.
+Svůj fakturační plán můžete spravovat [tady](https://services.azureml.net/plans/).  Název plánu bude založen na názvu skupiny prostředků, který jste zvolili při nasazování rozhraní API, a navíc k řetězci, který je pro vaše předplatné jedinečný.  Pokyny, jak upgradovat plán, [najdete](../classic/manage-new-webservice.md) v části Správa fakturačních plánů.
 
 ## <a name="api-definition"></a>Definice rozhraní API
 Webová služba poskytuje rozhraní API založené na REST prostřednictvím protokolu HTTPS, které lze spotřebovat různými způsoby, včetně webové nebo mobilní aplikace, R, Pythonu, Excelu atd.  Data časové řady odešlete do této služby prostřednictvím volání REST API a spustí se kombinace tří typů anomálií popsaných níže.
@@ -115,7 +115,7 @@ Následující obrázek ukazuje příklad anomálií, které může rozhraní AP
 ### <a name="detectors"></a>Detektory
 Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kategoriích. Podrobnosti o specifických vstupních parametrech a výstupech pro jednotlivé detektory najdete v následující tabulce.
 
-| Kategorie detektoru | Detectoru | Description | Vstupní parametry | Výstupy |
+| Kategorie detektoru | Detectoru | Popis | Vstupní parametry | Výstupy |
 | --- | --- | --- | --- | --- |
 | Detektory špičky |Detektor TSpike |Detekovat špičky a neshodné hodnoty na základě toho, co se týče hodnot od první a třetího Kvartily |*tspikedetector. Citlivost:* přebírá celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot tím, že budou méně citlivé. |TSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
 | Detektory špičky | Detektor ZSpike |Detekovat špičky a nezávisle na tom, jak daleko jsou v databodech ze střední hodnoty |*zspikedetector. Citlivost:* přebírat celočíselnou hodnotu v rozsahu 1-10, výchozí hodnota: 3; Vyšší hodnoty zachytí více extrémních hodnot, takže jsou méně citlivé. |ZSpike: binární hodnoty – ' 1 ', pokud je detekována špička/DIP, ' 0 ' jinak |
@@ -125,7 +125,7 @@ Rozhraní API pro detekci anomálií podporuje detektory ve třech hlavních kat
 ### <a name="parameters"></a>Parametry
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |integer |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
@@ -133,12 +133,12 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 | trenddetector. Citlivost |Citlivost pro pozitivní detektor trendu |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
 | tspikedetector. Citlivost |Citlivost pro detektor TSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |– |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Description |
+| Výstupy | Popis |
 | --- | --- |
 | Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | Data |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
@@ -161,11 +161,11 @@ Detektory v koncovém bodu sezónnost jsou podobné těm, které jsou v nesezón
 
 Podrobnější informace o těchto vstupních parametrech jsou uvedeny v následující tabulce:
 
-| Vstupní parametry | Description | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
+| Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navrhovaný rozsah |
 | --- | --- | --- | --- | --- | --- |
 | předzpracování. aggregationInterval |Interval agregace v sekundách pro agregaci vstupních časových řad |0 (není provedena žádná agregace) |integer |0: přeskočit agregaci > 0 jinak |5 minut až 1 den, časová řada závislá |
-| předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |Není k dispozici |
-| předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |Není k dispozici |
+| předzpracování. aggregationFunc |Funkce používaná pro agregaci dat do zadaného AggregationInterval |mean |Výčtový |střední hodnota, suma, délka |– |
+| předzpracování. replaceMissing |Hodnoty, které slouží k imputaci chybějících dat |LKV (Poslední známá hodnota) |Výčtový |nula, LKV, střední hodnota |– |
 | detektory. historywindow |Historie (v počtu datových bodů) použitá pro výpočet skóre anomálií |500 |integer |10-2000 |Závislá na časové řadě |
 | detektory. spikesdips | Určuje, jestli se mají detekovat jenom špičky, jenom vyhrazené nebo obojí. |Obojí |Výčtový |Obě, špičky, DIP |Obojí |
 | bileveldetector. Citlivost |Citlivost pro detektor se změnou úrovně obousměrné komunikace |3.25 |double |Žádné |3,25-5 (méně hodnoty znamená citlivější) |
@@ -175,13 +175,13 @@ Podrobnější informace o těchto vstupních parametrech jsou uvedeny v násled
 | zspikedetector. Citlivost |Citlivost pro detektor ZSpike |3 |integer |1-10 |3-5 (méně hodnot znamená citlivější) |
 | sezónnost. Enable |Zda má být provedena analýza sezónnost |true |boolean |true, false |Závislá na časové řadě |
 | sezónnost. numSeasonality |Maximální počet pravidelných cyklů, které se mají zjistit |1 |integer |1, 2 |1-2 |
-| sezónnost. Transform |Zda mají být před použitím detekce anomálií odebrány sezónní (a) komponenty trendu |odsezóny |Výčtový |None, resezóny, deseasontrend |Není k dispozici |
-| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |Není k dispozici |
+| sezónnost. Transform |Zda mají být před použitím detekce anomálií odebrány sezónní (a) komponenty trendu |odsezóny |Výčtový |None, resezóny, deseasontrend |– |
+| postprocess.tailRows |Počet nejnovějších datových bodů, které mají být zachovány ve výstupních výsledcích |0 |integer |0 (zachovat všechny datové body) nebo zadat počet bodů, které mají být uchovávány ve výsledcích |– |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre anomálií a binární indikátory špičky pro každý bod v čase. V tabulce níže jsou uvedeny výstupy z rozhraní API.
 
-| Výstupy | Description |
+| Výstupy | Popis |
 | --- | --- |
 | Čas |Časová razítka z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
 | OriginalData |Hodnoty z nezpracovaných dat nebo agregovaná (a/nebo) imputované data v případě, že se používá agregace (a/nebo) chybějící imputace dat |
@@ -197,4 +197,3 @@ Rozhraní API spustí všechny detektory dat časových řad a vrátí skóre an
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-
