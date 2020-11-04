@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86026181"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321376"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
-V tomto článku se dozvíte, jak používat Scala pro dohled nad úkoly strojového učení s balíčky Spark Scalable MLlib a Spark ML na Azure HDInsight Sparkm clusteru. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Mezi modely v tomto článku patří logistická a lineární regrese, náhodné doménové struktury a stromy se zesílenými GBTsmi, kromě dvou běžných úloh pod dohledem strojového učení:
+V tomto článku se dozvíte, jak používat Scala pro dohled nad úkoly strojového učení s balíčky Spark Scalable MLlib a Spark ML na Azure HDInsight Sparkm clusteru. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](./index.yml): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Mezi modely v tomto článku patří logistická a lineární regrese, náhodné doménové struktury a stromy se zesílenými GBTsmi, kromě dvou běžných úloh pod dohledem strojového učení:
 
 * Problém regrese: předpověď míry špičky ($) pro cestu taxislužby
 * Binární klasifikace: předpověď tipu nebo No Tip (1/0) pro taxislužby cestu
@@ -39,7 +39,7 @@ Postup nastavení a kód v tomto článku jsou pro Azure HDInsight 3,4 Spark 1,6
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Mít předplatné Azure. Pokud ho ještě nemáte, [Získejte bezplatnou zkušební verzi Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * K provedení následujících postupů potřebujete cluster Azure HDInsight 3,4 Spark 1,6. Pokud chcete vytvořit cluster, přečtěte si pokyny v tématu [Začínáme: vytvoření Apache Spark ve službě Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). V nabídce **Vybrat typ clusteru** nastavte typ a verzi clusteru.
 
@@ -52,7 +52,7 @@ Postup nastavení a kód v tomto článku jsou pro Azure HDInsight 3,4 Spark 1,6
 Popis údajů o cestách NYC taxislužby a pokyny, jak spustit kód z poznámkového bloku Jupyter v clusteru Spark, najdete v příslušných oddílech v tématu [Přehled vědeckého zpracování dat pomocí Sparku v Azure HDInsight](spark-overview.md).  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spouštění kódu Scala z poznámkového bloku Jupyter na clusteru Spark
-Z Azure Portal můžete spustit Poznámkový blok Jupyter. Na řídicím panelu najděte cluster Spark a kliknutím na něj zadejte stránku správy pro svůj cluster. V dalším kroku klikněte na **řídicí panely clusteru**a potom kliknutím na **Jupyter notebook** otevřete Poznámkový blok přidružený ke clusteru Spark.
+Z Azure Portal můžete spustit Poznámkový blok Jupyter. Na řídicím panelu najděte cluster Spark a kliknutím na něj zadejte stránku správy pro svůj cluster. V dalším kroku klikněte na **řídicí panely clusteru** a potom kliknutím na **Jupyter notebook** otevřete Poznámkový blok přidružený ke clusteru Spark.
 
 ![Řídicí panely clusteru a poznámkové bloky Jupyter](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | po obskládkované |
 | --- | --- | --- | --- |
-|        13,5 |1,0 |2.9 |1,0 |
-|        16,0 |2,0 |3.4 |1,0 |
-|        10,5 |2,0 |1,0 |1,0 |
+|        13,5 |1.0 |2.9 |1.0 |
+|        16,0 |2.0 |3.4 |1.0 |
+|        10,5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Zkoumání a vizualizace dat
 Po převedení dat do Sparku je dalším krokem v procesu zpracování dat, jak získat hlubší porozumění datům prostřednictvím průzkumu a vizualizace. V této části prohlížíte taxislužby data pomocí dotazů SQL. Pak importujte výsledky do datového rámce a vyznázorněte cílové proměnné a funkce pro vizuální kontrolu pomocí funkce Automatické vizualizace Jupyter.
@@ -353,7 +353,7 @@ Pro funkce modelování založené na stromové struktuře z Spark ML a MLlib je
 1. Vytvořte novou funkci tím, že **binningu** hodiny do časových intervalů provozu.
 2. Použijte **indexování a kódování One-Hot** k kategorií funkcím.
 3. **Ukázková a rozdělená datová sada** do školicích a testovacích frakcí.
-4. **Zadejte školicí proměnnou a funkce**a pak vytvořte indexované nebo jednosměrně zakódované školení a testování vstupních datových sad, které jsou označené jako "RDD", nebo datových rámců.
+4. **Zadejte školicí proměnnou a funkce** a pak vytvořte indexované nebo jednosměrně zakódované školení a testování vstupních datových sad, které jsou označené jako "RDD", nebo datových rámců.
 5. Automatické **kategorizace a vektorizovaná funkcí a cílů** pro použití jako vstupů pro modely strojového učení.
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Vytvoření nové funkce binningu hodinami v časových intervalech provozu
@@ -922,7 +922,7 @@ V této části použijete nástroje strojového učení, které vývojáři ča
 * Optimalizujte model pomocí křížového ověřování a přechodu s použitím technologie Hyper-parametr pomocí funkce CrossValidator Spark ML (binární klasifikace).
 * Optimalizujte model pomocí vlastního kódu pro křížové ověřování a nastavování parametrů pro použití libovolné funkce machine learningu a sady parametrů (lineární regrese).
 
-**Křížové ověřování** je technika, která posuzuje, jak dobře je model vyhodnocený na známou sadu dat generalizuje, aby předpovídá funkce datových sad, na kterých nebyla vyškolená. Obecný nápad za tímto postupem je, že model je vyškolen na datové sadě známých dat a pak je přesnost jeho předpovědi testována na nezávislou datovou sadu. Společná implementace je rozdělit datovou sadu na skládání *k*--a poté vytvořit model v kruhovém dotazování pro všechny kromě jednoho ze skládání.
+**Křížové ověřování** je technika, která posuzuje, jak dobře je model vyhodnocený na známou sadu dat generalizuje, aby předpovídá funkce datových sad, na kterých nebyla vyškolená. Obecný nápad za tímto postupem je, že model je vyškolen na datové sadě známých dat a pak je přesnost jeho předpovědi testována na nezávislou datovou sadu. Společná implementace je rozdělit datovou sadu na skládání *k* --a poté vytvořit model v kruhovém dotazování pro všechny kromě jednoho ze skládání.
 
 **Optimalizace parametrů technologie Hyper-** v je problém, který vybírá sadu Hyper-Parameters pro vzdělávací algoritmus, obvykle s cílem optimalizace míry výkonu algoritmu v nezávislé sadě dat. Parametr Hyper-v je hodnota, kterou je nutné zadat mimo postup při výuce modelu. Předpoklady týkající se hodnot parametrů technologie Hyper-v mohou ovlivnit flexibilitu a přesnost modelu. Rozhodovací stromy mají parametry typu Hyper-v, například požadovanou hloubku a počet listů ve stromu. Je nutné nastavit termín penalizace netřídění na počítač pro vektorový vektor (SVM).
 
@@ -1135,9 +1135,8 @@ val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 Čas, kdy se má buňka spustit: 61 sekund
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Automatické využívání modelů strojového učení pomocí Sparku s Scala
-Přehled témat, která vás provedou úkoly, které se týkají procesu datové vědy v Azure, najdete v tématu věnovaném [vědeckému zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Přehled témat, která vás provedou úkoly, které se týkají procesu datové vědy v Azure, najdete v tématu věnovaném [vědeckému zpracování týmových dat](./index.yml).
 
 [Návody pro vědecké zpracování týmových dat](walkthroughs.md) popisují další komplexní návody, které ukazují kroky v procesu vědeckého zpracování týmových dat pro konkrétní scénáře. Návody také ilustrují, jak sloučit cloudové a místní nástroje a služby do pracovního postupu nebo kanálu a vytvořit tak inteligentní aplikaci.
 
 [Skóre Sparkem vytvořených modelů strojového učení](spark-model-consumption.md) se dozvíte, jak používat Scala kód k automatickému načítání a hodnocení nových datových sad pomocí modelů strojového učení sestavených v Sparku a uložených v úložišti objektů BLOB v Azure. Můžete postupovat podle zde uvedených pokynů a jednoduše nahradit kód Pythonu pomocí kódu Scala v tomto článku pro automatizovanou spotřebu.
-

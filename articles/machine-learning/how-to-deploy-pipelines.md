@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: ae20b339ae3eec694140621b14db26606c9d5ab3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dea38705dbb6c2b7abd8a9786ef9adb66ad56ad7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320443"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publikování a sledování kanálů strojového učení
 
@@ -38,7 +38,7 @@ Kanály strojového učení jsou opakovaně použitelnými pracovními postupy p
 
 Jakmile budete mít kanál v provozu, můžete publikovat kanál, aby běžel s různými vstupy. Pro koncový bod REST již publikovaného kanálu pro příjem parametrů je nutné nakonfigurovat kanál tak, aby používal `PipelineParameter` objekty pro argumenty, které se budou lišit.
 
-1. Chcete-li vytvořit parametr kanálu, použijte objekt [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py&preserve-view=true) s výchozí hodnotou.
+1. Chcete-li vytvořit parametr kanálu, použijte objekt [PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?preserve-view=true&view=azure-ml-py) s výchozí hodnotou.
 
    ```python
    from azureml.pipeline.core.graph import PipelineParameter
@@ -76,7 +76,7 @@ Všechny publikované kanály mají koncový bod REST. Pomocí koncového bodu k
 > [!IMPORTANT]
 > Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service).
 
-K vyvolání běhu předchozího kanálu potřebujete Azure Active Directory token hlavičky ověřování. Získání takového tokenu je popsané v referenčních informacích [třídy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py&preserve-view=true) a v tématu [ověřování v](https://aka.ms/pl-restep-auth) poznámkovém bloku Azure Machine Learning.
+K vyvolání běhu předchozího kanálu potřebujete Azure Active Directory token hlavičky ověřování. Získání takového tokenu je popsané v referenčních informacích [třídy AzureCliAuthentication](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) a v tématu [ověřování v](https://aka.ms/pl-restep-auth) poznámkovém bloku Azure Machine Learning.
 
 ```python
 from azureml.pipeline.core import PublishedPipeline
@@ -90,7 +90,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`Argument žádosti post musí pro `ParameterAssignments` klíč obsahovat slovník obsahující parametry kanálu a jejich hodnoty. Kromě toho `json` argument může obsahovat následující klíče:
 
-| Klíč | Description |
+| Klíč | Popis |
 | --- | --- | 
 | `ExperimentName` | Název experimentu přidruženého k tomuto koncovému bodu |
 | `Description` | Text volného tvaru popisující koncový bod | 
@@ -343,9 +343,9 @@ Můžete také spustit publikovaný kanál z studia:
 
 1. [Zobrazení pracovního prostoru](how-to-manage-workspace.md#view)
 
-1. Na levé straně vyberte **koncové body** .
+1. Na levé straně vyberte **koncové body**.
 
-1. V horní části vyberte **koncové body kanálu** .
+1. V horní části vyberte **koncové body kanálu**.
  ![Seznam publikovaných kanálů ve strojovém učení](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. Vyberte konkrétní kanál, který se má spustit, spotřebovat nebo zkontrolovat výsledky předchozích spuštění koncového bodu kanálu.
@@ -360,10 +360,10 @@ p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
-Můžete ho znovu povolit pomocí `p.enable()` . Další informace naleznete v tématu [PublishedPipeline Class Reference třídy](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py&preserve-view=true) .
+Můžete ho znovu povolit pomocí `p.enable()` . Další informace naleznete v tématu [PublishedPipeline Class Reference třídy](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) .
 
 ## <a name="next-steps"></a>Další kroky
 
 - Pomocí [těchto poznámkových bloků Jupyter na GitHubu](https://aka.ms/aml-pipeline-readme) můžete dále prozkoumat kanály strojového učení.
-- Podívejte se na referenční nápovědu sady SDK pro balíček [AzureML-Pipelines-Core](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py&preserve-view=true) a balíček [AzureML-Pipelines-Steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py&preserve-view=true) .
+- Podívejte se na referenční nápovědu sady SDK pro balíček [AzureML-Pipelines-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) a balíček [AzureML-Pipelines-Steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) .
 - Tipy k ladění kanálů a řešení potíží najdete v tématu [postupy](how-to-debug-pipelines.md) .

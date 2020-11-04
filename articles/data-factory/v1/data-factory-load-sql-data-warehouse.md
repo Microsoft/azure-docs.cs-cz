@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb0138603cad52c40b3471c60104f091367e88e9
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636897"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321098"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure synapse Analytics za 15 minut s Data Factory
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92636897"
 
 [Azure synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, a to jak v relačních, tak i i v nerelačních.  Azure synapse Analytics je postavená na výkonné paralelní zpracování (MPP) a je optimalizovaná pro úlohy podnikového datového skladu.  Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
 
-Začínáme se službou Azure synapse Analytics je teď snazší než kdykoli dřív, pomocí **Azure Data Factory** .  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, která se dá použít k naplnění Azure synapse Analytics daty z vašeho stávajícího systému a šetří vám tak cenné časy při vyhodnocování Azure synapse Analytics a vytváření analytických řešení. Tady jsou klíčové výhody načítání dat do služby Azure synapse Analytics pomocí Azure Data Factory:
+Začínáme se službou Azure synapse Analytics je teď snazší než kdykoli dřív, pomocí **Azure Data Factory**.  Azure Data Factory je plně spravovaná cloudová služba pro integraci dat, která se dá použít k naplnění Azure synapse Analytics daty z vašeho stávajícího systému a šetří vám tak cenné časy při vyhodnocování Azure synapse Analytics a vytváření analytických řešení. Tady jsou klíčové výhody načítání dat do služby Azure synapse Analytics pomocí Azure Data Factory:
 
 * **Snadné nastavení** : 5 – intuitivní průvodce bez nutnosti skriptování.
 * **Bohatá Podpora úložiště dat** : Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat.
@@ -65,7 +65,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
   >
   >
 
-    Chcete-li vytvořit synapse fond SQL s 6 000 DWU, přesuňte posuvník výkon napravo:
+    Chcete-li vytvořit vyhrazený fond SQL s 6 000 DWU, přesuňte posuvník výkon napravo:
 
     ![Posuvník výkonu](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
@@ -112,7 +112,7 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
 
 ## <a name="launch-copy-wizard"></a>Spuštění průvodce kopírováním
 1. Přihlaste se k [Azure Portal](https://portal.azure.com).
-2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics** a pak klikněte na **Data Factory** .
+2. V levém horním rohu klikněte na **vytvořit prostředek** , klikněte na **Intelligence + Analytics** a pak klikněte na **Data Factory**.
 3. V podokně **Nová datová továrna** :
 
    1. Jako **název** zadejte **LoadIntoSQLDWDataFactory** .
@@ -123,14 +123,14 @@ Tento článek poskytuje podrobné pokyny pro přesouvání dat do služby Azure
       2. Vyberte možnost **Vytvořit nový** a zadejte název pro skupinu prostředků.
    4. Vyberte **umístění** pro příslušný objekt pro vytváření dat.
    5. Zaškrtněte políčko **Připnout na řídicí panel** v dolní části okna.  
-   6. Klikněte na **Vytvořit** .
+   6. Klikněte na **Vytvořit**.
 4. Po dokončení vytváření se zobrazí okno **Data Factory** , jak je znázorněno na následujícím obrázku:
 
    ![Domovská stránka objektu pro vytváření dat](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Na domovské stránce objektu pro vytváření dat klikněte na dlaždici **Kopírovat data** . Spustí se **průvodce kopírováním** .
+5. Na domovské stránce objektu pro vytváření dat klikněte na dlaždici **Kopírovat data**. Spustí se **průvodce kopírováním**.
 
    > [!NOTE]
-   > Pokud zjistíte, že se webový prohlížeč zasekl ve fázi „Autorizace…“, zakažte / zrušte zaškrtnutí políčka **Block third party cookies and site data** (Blokovat data souborů cookie a webů třetích stran) nebo nechte toto nastavení povolené a vytvořte výjimku pro **login.microsoftonline.com** . Potom zkuste průvodce znovu spustit.
+   > Pokud zjistíte, že se webový prohlížeč zasekl ve fázi „Autorizace…“, zakažte / zrušte zaškrtnutí políčka **Block third party cookies and site data** (Blokovat data souborů cookie a webů třetích stran) nebo nechte toto nastavení povolené a vytvořte výjimku pro **login.microsoftonline.com**. Potom zkuste průvodce znovu spustit.
    >
    >
 
@@ -148,15 +148,15 @@ Na stránce **Vlastnosti** :
 ## <a name="step-2-configure-source"></a>Krok 2: Konfigurace zdroje
 V této části se dozvíte, jak nakonfigurovat zdroj: Azure BLOB obsahující soubory položek řádků TPC-H 1 TB.
 
-1. Jako úložiště dat vyberte **Azure Blob Storage** a klikněte na **Další** .
+1. Jako úložiště dat vyberte **Azure Blob Storage** a klikněte na **Další**.
 
     ![Průvodce kopírováním – výběr zdrojové stránky](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Vyplňte informace o připojení pro účet úložiště objektů BLOB v Azure a klikněte na **Další** .
+2. Vyplňte informace o připojení pro účet úložiště objektů BLOB v Azure a klikněte na **Další**.
 
     ![Průvodce kopírováním – informace o zdrojovém připojení](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Vyberte **složku** obsahující soubory položky TPC-H a klikněte na tlačítko **Další** .
+3. Vyberte **složku** obsahující soubory položky TPC-H a klikněte na tlačítko **Další**.
 
     ![Průvodce kopírováním-výběr vstupní složky](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
@@ -167,19 +167,19 @@ V této části se dozvíte, jak nakonfigurovat zdroj: Azure BLOB obsahující s
 ## <a name="step-3-configure-destination"></a>Krok 3: Konfigurace cíle
 V této části se dozvíte, jak nakonfigurovat cíl: `lineitem` tabulka v databázi Azure synapse Analytics.
 
-1. Jako cílové úložiště vyberte **Azure synapse Analytics** a klikněte na **Další** .
+1. Jako cílové úložiště vyberte **Azure synapse Analytics** a klikněte na **Další**.
 
     ![Průvodce kopírováním – výběr cílového úložiště dat](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Vyplňte informace o připojení pro Azure synapse Analytics.  Ujistěte se, že jste zadali uživatele, který je členem role `xlargerc` (podrobné pokyny najdete v části **požadavky** ), a klikněte na **Další** .
+2. Vyplňte informace o připojení pro Azure synapse Analytics.  Ujistěte se, že jste zadali uživatele, který je členem role `xlargerc` (podrobné pokyny najdete v části **požadavky** ), a klikněte na **Další**.
 
     ![Průvodce kopírováním – informace o cílovém připojení](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Vyberte cílovou tabulku a klikněte na **Další** .
+3. Vyberte cílovou tabulku a klikněte na **Další**.
 
     ![Průvodce kopírováním – stránka mapování tabulek](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. Na stránce mapování schématu ponechte nezaškrtnuté políčko použít mapování sloupců a klikněte na **Další** .
+4. Na stránce mapování schématu ponechte nezaškrtnuté políčko použít mapování sloupců a klikněte na **Další**.
 
 ## <a name="step-4-performance-settings"></a>Krok 4: nastavení výkonu
 

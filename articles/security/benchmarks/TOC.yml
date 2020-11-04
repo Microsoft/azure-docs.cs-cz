@@ -127,6 +127,8 @@
       href: ../../web-application-firewall/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
       href: ../../batch/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro cloudové služby
+      href: ../../cloud-services/security-baseline.md
     - name: Standardní nastavení zabezpečení pro Cloud Shell
       href: ../../cloud-shell/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cognitive Services
@@ -177,5 +179,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro virtuální síť
       href: ../../virtual-network/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Virtual WAN
+      href: ../../virtual-wan/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro VPN Gateway
       href: ../../vpn-gateway/security-baseline.md

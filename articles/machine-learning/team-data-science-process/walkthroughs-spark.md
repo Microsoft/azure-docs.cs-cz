@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1662af6cd3499fdf851d4e1bd8a0db48da7635b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864141"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320137"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Návody pro datové vědy pro HDInsight Spark využívající PySpark a Scala v Azure
 
@@ -40,12 +40,11 @@ Podívejte [se na téma pokročilé zkoumání a modelování dat pomocí Sparku
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Předpověď tipů taxislužby pomocí Scala ve službě Azure Spark
 
-Návod [použít Scala s Sparkem v Azure](scala-walkthrough.md) předpovídá, jestli je Tip placená, a rozsah částek, které mají být placené. Ukazuje, jak používat Scala pro dohled nad úkoly strojového učení s balíčky Spark Machine Learning Library (MLlib) a SparkML v clusteru Azure HDInsight Spark. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Sestavené modely zahrnují logistické a lineární regrese, náhodné doménové struktury a barevné zesílené stromy.
+Návod [použít Scala s Sparkem v Azure](scala-walkthrough.md) předpovídá, jestli je Tip placená, a rozsah částek, které mají být placené. Ukazuje, jak používat Scala pro dohled nad úkoly strojového učení s balíčky Spark Machine Learning Library (MLlib) a SparkML v clusteru Azure HDInsight Spark. Provede vás úkoly, které tvoří [proces vědeckého zpracování dat](./index.yml): přijímání a zkoumání dat, vizualizace, strojírenství funkcí, modelování a využití modelu. Sestavené modely zahrnují logistické a lineární regrese, náhodné doménové struktury a barevné zesílené stromy.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Přehled vědeckého zpracování týmových dat najdete v tématu [Přehled procesu vědeckého zpracování](overview.md)týmových dat.
 
-Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
-
+Diskuzi o životním cyklu vědeckého zpracování týmových dat najdete v tématu [životní cyklus procesu vědeckého zpracování dat týmu](lifecycle.md). Tento životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění.

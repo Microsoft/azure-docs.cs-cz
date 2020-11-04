@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369008"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321349"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -86,7 +86,7 @@ Vzhledem k privátnímu cloudu Azure a SDDC maximálnímu limitu doporučujeme a
 
 Připojení z Azure Virtual Network k privátním cloudům Azure nebo SDDCs by se mělo konfigurovat s ExpressRoute FastPath. Následující diagram znázorňuje základní nasazení horizontu pod.
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Obvyklé horizonty pod nasazením pomocí rychlé cesty ExpressPath" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>Síťové připojení ke škále horizontálního škálování v řešení Azure VMware
 
@@ -94,7 +94,7 @@ V této části se dozvíte, jak vytvořit architekturu sítě na vysoké úrovn
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Jeden horizont pod v řešení Azure VMware
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Jeden horizont pod v řešení Azure VMware" border="false":::
 
 Jeden horizont je nejrovnější scénář nasazení, protože v USA – východ oblasti nasadíte pouze jeden horizont.  Vzhledem k tomu, že každý privátní cloud a SDDC jsou odhadované na zpracování 4 000 relací pro stolní počítače, nasadíte maximální velikost v rozsahu pod.  Nasazení můžete naplánovat až na tři privátní cloudy nebo SDDCs.
 
@@ -112,7 +112,7 @@ Variantou základního příkladu může být podpora připojení k místním pr
 
 Diagram ukazuje, jak podporovat možnosti připojení k místním prostředkům. Pokud se chcete připojit k podnikové síti k Azure Virtual Network, budete potřebovat okruh ExpressRoute.  Také budete muset připojit podnikovou síť ke každému privátnímu cloudu a SDDCs pomocí ExpressRoute Global Reach.  Umožňuje připojení z SDDC k okruhu ExpressRoute a místním prostředkům. 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="Připojení podnikové sítě k Azure Virtual Network" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Několik horizontů na řešení Azure VMware v různých oblastech
 
@@ -120,9 +120,9 @@ Dalším scénářem je horizontální škálování v různých luskech.  V tom
 
 Azure Virtual Network v každé oblasti připojíte k privátním cloudům/SDDCs v jiné oblasti. Umožňuje, aby se servery připojení Horizon v rámci federace CPA připojily ke všem plochám v rámci správy. Přidání dalších privátních cloudů/SDDCs do této konfigurace vám umožní škálovat na celkem 24 000 relací. 
 
-Stejné zásady platí i v případě, že ve stejné oblasti nasadíte dvě lusky.  V *samostatném Virtual Network Azure*je třeba nasadit druhý horizont. Stejně jako v případě jednoho z nich můžete k tomuto příkladu typu multi-pod a oblastí připojit svou podnikovou síť a místní, a to pomocí ExpressRoute a Global Reach. 
+Stejné zásady platí i v případě, že ve stejné oblasti nasadíte dvě lusky.  V *samostatném Virtual Network Azure* je třeba nasadit druhý horizont. Stejně jako v případě jednoho z nich můžete k tomuto příkladu typu multi-pod a oblastí připojit svou podnikovou síť a místní, a to pomocí ExpressRoute a Global Reach. 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Horizont pro cloud řešení Azure VMware a Horizontal v Azure" border="false":::
+:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text=" Několik horizontů na řešení Azure VMware v různých oblastech" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Velikost hostitelů řešení Azure VMware pro nasazení v horizontu 
 
@@ -211,3 +211,6 @@ V závislosti na standardní architektuře nasazení se virtuální počítače 
 | Sdílená složka systému Windows               | D4sv3          |         | *Volitelné*                               |
 
 Náklady na virtuální počítač infrastruktury se \$ 0,36 na uživatele za měsíc pro nasazení 2 000-desktopu v předchozím příkladu. V tomto příkladu se používá USA – východ ceny Azure instance z června 2020. Ceny se můžou lišit v závislosti na oblasti, vybraných volbách a časování.
+
+## <a name="next-steps"></a>Další kroky
+Další informace o VMware Horizon pro řešení Azure VMware najdete v [nejčastějších dotazech ke horizontu](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)VMware.

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: dbc00d37b912ce7efb250aade0ea6790a1a227eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296752"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320715"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -26,13 +26,13 @@ Naučte se, jak změnit přístupové klávesy pro účty Azure Storage použív
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
 > [!IMPORTANT]
-> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
+> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 
-* [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+* [Sada Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 * [Rozšíření Azure Machine Learning CLI](reference-azure-machine-learning-cli.md).
 
@@ -110,7 +110,7 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
         Tento příkaz automaticky synchronizuje nové klíče pro účet služby Azure Storage, který používá pracovní prostor.
 
 1. Úložiště dat, která používají účet úložiště, můžete znovu zaregistrovat pomocí sady SDK nebo [Azure Machine Learning studia](https://ml.azure.com).
-    1. **Chcete-li znovu zaregistrovat úložiště dat prostřednictvím sady Python SDK**, použijte hodnoty z oddílu [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem. 
+    1. **Chcete-li znovu zaregistrovat úložiště dat prostřednictvím sady Python SDK** , použijte hodnoty z oddílu [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem. 
     
         Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
     
@@ -132,13 +132,13 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
         
         ```
     
-    1. Pokud **Chcete úložiště dat znovu zaregistrovat přes Studio**, vyberte **úložiště dat** v levém podokně studia. 
+    1. Pokud **Chcete úložiště dat znovu zaregistrovat přes Studio** , vyberte **úložiště dat** v levém podokně studia. 
         1. Vyberte úložiště dat, které chcete aktualizovat.
         1. V levém horním rohu vyberte tlačítko pro **aktualizaci přihlašovacích údajů** . 
         1. Pomocí nového přístupového klíče z kroku 1 Naplňte formulář a klikněte na **Uložit**.
         
-            Pokud aktualizujete přihlašovací údaje pro vaše **výchozí úložiště dat**, proveďte tento krok a opakujte krok 2b a znovu synchronizujte nový klíč s výchozím úložištěm dat pracovního prostoru. 
+            Pokud aktualizujete přihlašovací údaje pro vaše **výchozí úložiště dat** , proveďte tento krok a opakujte krok 2b a znovu synchronizujte nový klíč s výchozím úložištěm dat pracovního prostoru. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o registraci úložišť dat najdete v [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py&preserve-view=true) odkazu na třídu.
+Další informace o registraci úložišť dat najdete v [`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) odkazu na třídu.

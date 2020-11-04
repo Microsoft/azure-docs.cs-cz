@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: b570968a66a0cfd60ac4d6ce6dd7dc31a1003240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440452"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320956"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Datové vědy s Data Science Virtual Machine Windows
 
@@ -40,7 +40,7 @@ V tomto článku se dozvíte, jak používat DSVM k provádění úkolů s datov
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Potřebujete předplatné Azure. Můžete si [zaregistrovat bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 * Pokyny pro zřízení Data Science Virtual Machine v Azure Portal jsou k dispozici v [tématu Vytvoření virtuálního počítače](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
@@ -58,7 +58,7 @@ Po spuštění Jupyter přejděte do `/notebooks` adresáře, kde najdete ukázk
 
 * Vyberte Poznámkový blok pro zobrazení kódu.
 * Spusťte každou buňku výběrem SHIFT + ENTER.
-* Spusťte celý Poznámkový blok **Cell**výběrem možnosti  >  **spuštění**buněk.
+* Spusťte celý Poznámkový blok **Cell** výběrem možnosti  >  **spuštění** buněk.
 * Vytvořte nový Poznámkový blok tak, že vyberete ikonu Jupyter (v levém horním rohu), kliknete na tlačítko **Nový** a pak zvolíte jazyk poznámkového bloku (označovaný také jako jádra).   
 
 > [!NOTE]
@@ -75,13 +75,13 @@ Pro R můžete použít IDE, jako je RStudio, který najdete v nabídce Start ne
 
 Pro Python můžete použít integrované vývojové prostředí (IDE), jako je Visual Studio Community Edition, které má předinstalované rozšíření Python Tools for Visual Studio (PTVS). Ve výchozím nastavení je v PTVS nakonfigurovaná jenom Python 3,6, kořenové prostředí conda. Pokud chcete povolit Anaconda Python 2,7, proveďte následující kroky:
 
-1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje**  >  **Python Tools**  >  **Python prostředí**a potom v edici Visual Studio Community Edition vyberete **+ Custom** .
+1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje**  >  **Python Tools**  >  **Python prostředí** a potom v edici Visual Studio Community Edition vyberete **+ Custom** .
 1. Zadejte popis a nastavte cestu k předponě prostředí jako **c:\anaconda\envs\python2** pro anaconda Python 2,7.
-1. **Auto Detect**  >  Chcete-li uložit prostředí, vyberte možnost automaticky zjišťovat**použití** .
+1. **Auto Detect**  >  Chcete-li uložit prostředí, vyberte možnost automaticky zjišťovat **použití** .
 
-Další podrobnosti o tom, jak vytvářet prostředí Pythonu, najdete v [dokumentaci k PTVS](https://aka.ms/ptvsdocs) .
+Další podrobnosti o tom, jak vytvářet prostředí Pythonu, najdete v [dokumentaci k PTVS](/visualstudio/python/) .
 
-Teď jste nastavili vytvoření nového projektu v Pythonu. Přejít na **soubor**  >  **Nový**  >  **projekt**  >  **Python** a vyberte typ aplikace Python, kterou vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2,7 nebo 3,6) tak, že kliknete pravým tlačítkem na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Další informace o práci s PTVS najdete v [dokumentaci k produktu](https://aka.ms/ptvsdocs).
+Teď jste nastavili vytvoření nového projektu v Pythonu. Přejít na **soubor**  >  **Nový**  >  **projekt**  >  **Python** a vyberte typ aplikace Python, kterou vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2,7 nebo 3,6) tak, že kliknete pravým tlačítkem na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Další informace o práci s PTVS najdete v [dokumentaci k produktu](/visualstudio/python/).
 
 
 
@@ -91,7 +91,7 @@ DSVM vám neumožňuje vytvářet řešení pro analýzu místně na virtuální
 Ke správě předplatného Azure a cloudových prostředků máte dvě možnosti:
 + Použijte svůj prohlížeč a pokračujte na [Azure Portal](https://portal.azure.com).
 
-+ Použijte skripty prostředí PowerShell. Spusťte Azure PowerShell z zástupce na ploše nebo z nabídky **Start** . Úplné podrobnosti najdete v [dokumentaci k Microsoft Azure PowerShell](../../powershell-azure-resource-manager.md) . 
++ Použijte skripty prostředí PowerShell. Spusťte Azure PowerShell z zástupce na ploše nebo z nabídky **Start** . Úplné podrobnosti najdete v [dokumentaci k Microsoft Azure PowerShell](../../azure-resource-manager/management/manage-resources-powershell.md) . 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>Rozšiřování úložiště pomocí sdílených systémů souborů
 Vědečtí data mohou sdílet velké datové sady, kód nebo jiné prostředky v rámci týmu. DSVM má k dispozici přibližně 45 GB volného místa. Pokud chcete úložiště zvětšit, můžete použít soubory Azure a buď je připojit na jednu nebo více instancí DSVM nebo k nim přistupovat pomocí REST API. Můžete také použít [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) nebo pomocí [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) přidat další vyhrazené datové disky. 
@@ -156,13 +156,13 @@ Další informace o tom, jak pomocí Gitu pracovat s úložištěm GitHubu, najd
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložiště pro velké a malé objemy dat. Tato část popisuje, jak můžete přesouvat data do úložiště objektů BLOB a přistupovat k datům uloženým v objektu blob Azure.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte účet Azure Blob Storage z [Azure Portal](https://portal.azure.com).
 
    ![Snímek obrazovky procesu vytváření účtu úložiště v Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Potvrďte, že je nástroj příkazového řádku AzCopy předem nainstalován: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . Adresář, který obsahuje azcopy.exe, již je ve vaší proměnné prostředí PATH, takže se můžete vyhnout psaní úplné cesty k příkazu při spuštění tohoto nástroje. Další informace o nástroji AzCopy najdete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md).
+* Potvrďte, že je nástroj příkazového řádku AzCopy předem nainstalován: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . Adresář, který obsahuje azcopy.exe, již je ve vaší proměnné prostředí PATH, takže se můžete vyhnout psaní úplné cesty k příkazu při spuštění tohoto nástroje. Další informace o nástroji AzCopy najdete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy-v10.md).
 * Spusťte Nástroj Průzkumník služby Azure Storage. Můžete si ho stáhnout z  [webové stránky Průzkumník služby Storage](https://storageexplorer.com/). 
 
    ![Snímek obrazovky Průzkumník služby Azure Storage přístupu k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -197,7 +197,7 @@ Po spuštění příkazu AzCopy ke zkopírování do objektu blob Azure se soubo
 Data z místního souboru na VIRTUÁLNÍm počítači můžete také nahrát pomocí Průzkumník služby Azure Storage:
 
 * Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a vyberte tlačítko **nahrát** . ![ Snímek obrazovky s tlačítkem nahrát v Průzkumník služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
-* Vyberte tři tečky (**...**) napravo od pole **soubory** , vyberte jeden nebo více souborů, které se mají nahrát ze systému souborů, a vyberte **nahrát** a začněte nahrávat soubory. ![ Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Vyberte tři tečky ( **...** ) napravo od pole **soubory** , vyberte jeden nebo více souborů, které se mají nahrát ze systému souborů, a vyberte **nahrát** a začněte nahrávat soubory. ![ Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Čtení dat z objektu blob Azure: Python ODBC
 
@@ -255,7 +255,7 @@ Data jsou čtena jako datový rámec:
 ### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure synapse Analytics (dříve SQL DW) a databáze
 Azure synapse Analytics (dřív SQL DW) je Elastický datový sklad jako služba s využitím SQL Server na podnikové úrovni.
 
-Analýzy Azure synapse můžete zřídit podle pokynů v [tomto článku](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md). Po zřízení Azure synapse Analytics můžete pomocí [tohoto návodu](../team-data-science-process/sqldw-walkthrough.md) provádět nahrávání, zkoumání a modelování dat pomocí dat v rámci služby Azure synapse Analytics.
+Analýzy Azure synapse můžete zřídit podle pokynů v [tomto článku](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md). Po zřízení Azure synapse Analytics můžete pomocí [tohoto návodu](../team-data-science-process/sqldw-walkthrough.md) provádět nahrávání, zkoumání a modelování dat pomocí dat v rámci služby Azure synapse Analytics.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB je databáze NoSQL v cloudu. Můžete ji použít k práci s dokumenty, jako je JSON, a k ukládání a dotazování dokumentů.
@@ -269,7 +269,7 @@ Pro přístup k Azure Cosmos DB z DSVM použijte následující požadované kro
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
-Po importu dat můžete přejít na Jupyter a otevřít poznámkový blok s názvem *DocumentDBSample*. Obsahuje kód Pythonu pro přístup k Azure Cosmos DB a provede základní dotazování. Další informace o Azure Cosmos DB najdete na [stránce dokumentace](https://docs.microsoft.com/azure/cosmos-db/)ke službě.
+Po importu dat můžete přejít na Jupyter a otevřít poznámkový blok s názvem *DocumentDBSample*. Obsahuje kód Pythonu pro přístup k Azure Cosmos DB a provede základní dotazování. Další informace o Azure Cosmos DB najdete na [stránce dokumentace](../../cosmos-db/index.yml)ke službě.
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Použití sestav Power BI a řídicích panelů 
 Soubor JSON Volcano můžete vizualizovat z předchozího Azure Cosmos DB příkladu v Power BI Desktop a získat tak vizuální přehledy o datech. Podrobné pokyny jsou k dispozici v [článku Power BI](../../cosmos-db/powerbi-visualize.md). Tady je postup vysoké úrovně:
@@ -326,10 +326,9 @@ Kromě ukázek založených na rozhraní můžete získat sadu komplexních náv
 
 - Návod, [jak sestavit ucelené řešení pro detekci produktů v rámci imagí](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce obrázku je technika, která dokáže vyhledat a klasifikovat objekty v rámci imagí. Tato technologie umožňuje přinést velké výhody v mnoha obchodních doménách v reálném čase. Maloobchodní prodejci můžou například pomocí této techniky určit, který produkt si zákazník vybral z poličky. Tyto informace pomáhají v úložištích spravovat inventář produktů. 
 
-- [Obsáhlý Learning pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): v tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Poskytuje také přehled o tom, jak pracovat se zvukovými daty.
+- [Obsáhlý Learning pro zvuk](/archive/blogs/machinelearning/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure): v tomto kurzu se dozvíte, jak vytvořit model hloubkového učení pro detekci zvukových událostí v [datové sadě městských zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Poskytuje také přehled o tom, jak pracovat se zvukovými daty.
 
 - [Klasifikace textových dokumentů](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvořit a vyškolit dvě neuronové síťové architektury: hierarchická síť s upozorněním a dlouhodobě krátkodobá paměť (LSTM). Tyto sítě neuronové používají rozhraní Keras API pro obsáhlý Learning ke klasifikaci textových dokumentů. 
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Tento článek popisuje některé z věcí, které můžete provádět na Data Science Virtual Machine Microsoftu. Existuje mnoho dalších věcí, které můžete využít k tomu, aby DSVM efektivní analytické prostředí.
-

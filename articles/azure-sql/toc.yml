@@ -993,6 +993,8 @@
                   href: virtual-machines/windows/application-patterns-development-strategies.md
             - name: Správa
               items:
+                - name: Rozšíření agenta SQL IaaS
+                  href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
                 - name: Vyhrazený hostitel
                   href: virtual-machines/windows/dedicated-host.md
                 - name: Rozšíření podpory pro SQL 2008 a R2
@@ -1021,12 +1023,14 @@
                   href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
+                - name: Automatizované opravy
+                  href: virtual-machines/windows/automated-patching.md
                 - name: Integrace se službou Azure Key Vault
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrace úložiště do UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: Registrace s využitím SQL VM RP
-                  displayName: 'resource provider, registration'
+                - name: Instalace rozšíření agenta SQL IaaS
+                  displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: Automatická registrace
                       href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
@@ -1034,12 +1038,6 @@
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Hromadná registrace několika virtuálních počítačů
                       href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
-                - name: Automatizace úloh správy
-                  items:
-                    - name: Použití rozšíření agenta SQL Server IaaS
-                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
-                    - name: Automatizované opravy
-                      href: virtual-machines/windows/automated-patching.md
             - name: Migrace
               items:
                 - name: Databáze SQL Serveru do virtuálního počítače

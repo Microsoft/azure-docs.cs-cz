@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a0804ae5ee2dbffaa57fc967fda29701562ab44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ee92a9eaf9316cbd453ea1ec4def58bb543a5a6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085697"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321140"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat v úložišti objektů BLOB v Azure pomocí PANDAS
 
@@ -24,11 +24,11 @@ Tento článek popisuje, jak prozkoumat data uložená v kontejneru objektů BLO
 
 Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Vaše data se ukládají v účtu služby Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
+* Vaše data se ukládají v účtu služby Azure Blob Storage. Pokud potřebujete pokyny, přečtěte si téma [přesun dat do a z Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do PANDAS dataframe
 Chcete-li prozkoumat a manipulovat s datovou sadou, je nutné ji nejprve stáhnout ze zdroje objektu blob do místního souboru, který lze poté načíst do PANDAS dataframe. Postup je následující:

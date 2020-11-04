@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 37931aee24e2dbcab03bca400d58f236601c87e5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788600"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321419"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>Otočení ochrany transparentní šifrování dat (TDE)
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ Tento článek popisuje střídání klíčů pro [Server](logical-servers.md) p
 Tato příručka popisuje dvě možnosti, jak na serveru otočit ochranu TDE.
 
 > [!NOTE]
-> Pozastavený fond SQL Azure synapse Analytics musí být před otočením klíče obnoven.
+> Pozastavený vyhrazený fond SQL ve službě Azure synapse Analytics se musí před otočením klíčů obnovit.
 
 > [!IMPORTANT]
 > Po přecházení neodstraňujte předchozí verze klíče. Když se převezmou klíče, některá data se zašifrují s předchozími klíči, jako je třeba starší zálohy databáze.

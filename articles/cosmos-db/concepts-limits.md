@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 070c1ef4eeec2b4ed15f2f4720d9fbd8494fca0f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319826"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -133,7 +133,6 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 | Maximální délka hodnoty klíče oddílu | 2048 bajtů |
 | Maximální délka hodnoty ID | 1023 bajtů |
 | Maximální počet vlastností na položku | Žádné praktické omezení |
-| Maximální hloubka vnořování | Žádné praktické omezení |
 | Maximální délka názvu vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty vlastnosti | Žádné praktické omezení |
 | Maximální délka hodnoty řetězcové vlastnosti | Žádné praktické omezení |

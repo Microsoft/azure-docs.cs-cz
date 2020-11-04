@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7234a8c45c20c64dddb43a52a099aa92f2d297d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085663"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321126"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Zkoumání dat v tabulkách Hivu pomocí dotazů Hivu
 
@@ -24,13 +24,13 @@ Tento článek popisuje ukázkové skripty v podregistru, které se používají
 
 Tento úkol je krok v rámci [vědeckého procesu týmového zpracování dat](overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte následující:
 
 * Vytvořili jste účet úložiště Azure. Pokud potřebujete pokyny, přečtěte si téma [Vytvoření účtu Azure Storage](../../storage/common/storage-account-create.md) .
-* Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight. Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](customize-hadoop-cluster.md).
+* Byl zřízen přizpůsobený cluster Hadoop se službou HDInsight. Pokud potřebujete pokyny, přečtěte si téma [přizpůsobení Azure HDInsight Hadoop clusterů pro pokročilou analýzu](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 * Data byla nahrána do tabulek podregistru v clusterech Azure HDInsight Hadoop. Pokud tomu tak není, postupujte podle pokynů v části [Vytvoření a načtení dat do tabulek podregistru](move-hive-tables.md) a nahrajte data do tabulek podregistru.
-* Povolen vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](customize-hadoop-cluster.md).
+* Povolen vzdálený přístup ke clusteru. Pokud potřebujete pokyny, přečtěte si téma [přístup k hlavnímu uzlu clusteru Hadoop](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md).
 * Pokud potřebujete pokyny k odeslání dotazů na podregistr, přečtěte si téma [odeslání dotazů na podregistr](move-hive-tables.md#submit) .
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Ukázkové skripty pro dotaz na podregistr pro zkoumání dat
@@ -72,4 +72,3 @@ V tomto článku se předpokládá, že máte následující:
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Další skripty pro dotazy pro scénáře taxislužby data Trip
 Příklady dotazů, které jsou specifické pro scénáře [NYC dat TRIPS taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) , jsou také k dispozici v [úložišti GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Tyto dotazy již mají zadané schéma dat a jsou připraveny k odeslání ke spuštění.
-

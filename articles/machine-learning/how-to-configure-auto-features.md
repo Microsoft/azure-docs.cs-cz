@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 229bcbb8c8c429b7fe4e5878b0e57e74dd828b72
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756547"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320655"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
+# <a name="featurization-in-automated-machine-learning"></a>Návrh funkcí v automatizovaném strojovém učení
 
 
 
@@ -27,9 +27,9 @@ V této příručce se naučíte:
 - Jaká nastavení featurization Azure Machine Learning nabídky.
 - Přizpůsobení těchto funkcí pro [automatizované experimenty strojového učení](concept-automated-ml.md).
 
-*Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *AutoML*experimenty.
+*Inženýrské funkce* je proces využití dat v doméně k vytváření funkcí, které usnadňují používání algoritmů strojového učení (ml) k lepšímu učení. V Azure Machine Learning se pro usnadnění vývoje funkcí používají techniky pro škálování dat a normalizaci. Souhrnně tyto techniky a technické funkce se nazývají *featurization* v automatizovaném strojovém učení nebo v *AutoML* experimenty.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už víte, jak nakonfigurovat AutoML experiment. Informace o konfiguraci najdete v následujících článcích:
 
@@ -38,7 +38,7 @@ V tomto článku se předpokládá, že už víte, jak nakonfigurovat AutoML exp
 
 ## <a name="configure-featurization"></a>Konfigurace featurization
 
-V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují [Automatické škálování a normalizační techniky](#featurization) . Tyto techniky jsou typy featurization, které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Můžete ale také povolit další featurization, jako je například imputace, *kódování*a *transformace* *chybějících hodnot*.
+V každém automatizovaném experimentu machine learningu se pro vaše data ve výchozím nastavení aplikují [Automatické škálování a normalizační techniky](#featurization) . Tyto techniky jsou typy featurization, které usnadňují *určité* algoritmy, které jsou citlivé na funkce v různých měřítkech. Můžete ale také povolit další featurization, jako je například imputace, *kódování* a *transformace* *chybějících hodnot*.
 
 > [!NOTE]
 > Kroky pro automatizované featurization strojového učení (například normalizace funkcí, zpracování chybějících dat nebo převod textu na číslo) se stanou součástí základního modelu. Při použití modelu pro předpovědi se na vstupní data automaticky aplikují stejné kroky featurization, které se použijí během školení.
@@ -47,7 +47,7 @@ U experimentů, které nakonfigurujete pomocí sady Python SDK, můžete povolit
 
 V následující tabulce jsou uvedena přijímaná nastavení pro `featurization` ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Konfigurace Featurization | Description|
+|Konfigurace Featurization | Popis|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou [kroky guardrails dat a featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
 |`"featurization": 'off'`| Určuje, že kroky featurization se nemají automaticky provádět.|
@@ -62,13 +62,13 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 > [!NOTE]
 > Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Featurization &nbsp; kroky| Description |
+|Featurization &nbsp; kroky| Popis |
 | ------------- | ------------- |
-|**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
-|**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
-|**Generování dalších funkcí*** |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> *Pro úlohy předpovědi* jsou vytvořeny tyto další funkce DateTime: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, dop. odp. (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 hodin).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
-|**Transformace a kódování***|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
-|**Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
+|**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky** _ |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
+|_*Imputace – chybějící hodnoty**_ |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
+|_*Generování dalších funkcí**_ |Pro funkce DateTime: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodina, minuta, sekunda.<br><br> _For prognózování úloh, * tyto další funkce DateTime jsou vytvořeny: ISO year, pololetí, kalendářní měsíc jako řetězec, týden, den v týdnu jako řetězec, den čtvrtletí, den v roce, dop. odp. (0, pokud je hodina v hodnotě poledne (12 ODP), 1 jinak), AM/PM jako řetězec, hodina dne (12 hodin).<br/><br/>Pro funkce textu: četnost termínů založená na unigrams, bigrams a trigrams. Přečtěte si další informace o [tom, jak to uděláte pomocí Bert.](#bert-integration)|
+|**Transformovat a kódovat** _|Transformujte číselné funkce, které mají v kategorií funkce několik jedinečných hodnot.<br/><br/>Pro funkce kategorií s nízkou mohutnou se používá kódování One-Hot. Kódování One-Hot-hash se používá pro funkce kategorií s vysokou mohutnosti.|
+|_ *Vkládání slov**|Text featurizer převede vektory textových tokenů na vektory vět pomocí předem připraveného modelu. Vektory vložení každého slova v dokumentu jsou agregovány s využitím zbytku pro vytvoření vektoru funkce dokumentu.|
 |**Cílová kódování**|V případě funkcí kategorií tento krok mapuje každou kategorii s průměrnou cílovou hodnotou pro regresní problémy a pravděpodobností třídy pro jednotlivé třídy pro problémy s klasifikací. Pro snížení přeložení mapování a šumu způsobených kategoriemi zhuštěných dat se aplikují váhy založené na kmitočtech a k skládání k.|
 |**Kódování cílového textu**|V případě textového vstupu se pro generování pravděpodobnosti každé třídy používá skládaný lineární model s použitím typu penalta-slova.|
 |**Váha důkazů (WoE)**|Vypočítá WoE jako míru korelace kategorií sloupců do cílového sloupce. WoE se počítá jako protokol poměru mezi třídou a pravděpodobnosti mimo třídu. Tento krok vytvoří jeden sloupec číselné funkce na každou třídu a odstraní nutnost explicitně imputace chybějících hodnot a izolované zpracování.|
@@ -80,8 +80,8 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 
 Data guardrails se používají:
 
-- **Pro experimenty sady SDK**: když `"featurization": 'auto'` jsou parametry nebo `validation=auto` zadány v `AutoMLConfig` objektu.
-- **Experimenty studia**: když je povolený automatický featurization
+- **Pro experimenty sady SDK** : když `"featurization": 'auto'` jsou parametry nebo `validation=auto` zadány v `AutoMLConfig` objektu.
+- **Experimenty studia** : když je povolený automatický featurization
 
 Můžete zkontrolovat guardrails dat pro svůj experiment:
 
@@ -105,18 +105,18 @@ V následující tabulce jsou popsány aktuálně podporované guardrails dat a 
 
 Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 ---|---|---
-**Chybějící hodnoty funkcí imputace** |Předaný <br><br><br> Hotovo| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve školicích datech se zjistily chybějící hodnoty funkcí a byly imputované.
+**Chybějící hodnoty funkcí imputace** |Předaný <br><br><br> Hotovo| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> Ve školicích datech se zjistily chybějící hodnoty funkcí a byly imputované.
 **Zpracování funkcí vysoké mohutnosti** |Předaný <br><br><br> Hotovo| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
-**Zpracování děleného ověřování** |Hotovo| Konfigurace ověření byla nastavena na `'auto'` a školicí data obsahovala *méně než 20 000 řádků*. <br> Každá iterace proučeného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> Konfigurace ověření byla nastavena na hodnotu `'auto'` a školicí data obsahují *více než 20 000 řádků*. <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
-**Detekce vyrovnávání tříd** |Předaný <br><br><br><br>Upozorněni <br><br><br>Hotovo | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyrovnanou, pokud každá třída má dobrou reprezentaci v datové sadě, jak je měřeno počtem a poměr vzorků. <br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).<br><br> Ve vašich vstupech se zjistily nevyvážené třídy a v této logice se určilo použití vyrovnávání.
-**Detekce problémů paměti** |Předaný <br><br><br><br> Hotovo |<br> Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)časových řad. <br><br><br>Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.
-**Detekce četnosti** |Předaný <br><br><br><br> Hotovo |<br> Časová řada byla analyzována a všechny datové body jsou zarovnány s zjištěnou frekvencí. <br> <br> Časová řada byla analyzována a byly zjištěny datové body, které neodpovídají zjištěné četnosti. Tyto datové body byly z datové sady odebrány. Další informace o [přípravě dat pro prognózování časových řad](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
+**Zpracování děleného ověřování** |Hotovo| Konfigurace ověření byla nastavena na `'auto'` a školicí data obsahovala *méně než 20 000 řádků*. <br> Každá iterace proučeného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech](./how-to-configure-auto-train.md#training-validation-and-test-data). <br><br> Konfigurace ověření byla nastavena na hodnotu `'auto'` a školicí data obsahují *více než 20 000 řádků*. <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
+**Detekce vyrovnávání tříd** |Předaný <br><br><br><br>Upozorněni <br><br><br>Hotovo | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyrovnanou, pokud každá třída má dobrou reprezentaci v datové sadě, jak je měřeno počtem a poměr vzorků. <br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> Ve vašich vstupech se zjistily nevyvážené třídy a v této logice se určilo použití vyrovnávání.
+**Detekce problémů paměti** |Předaný <br><br><br><br> Hotovo |<br> Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](./how-to-auto-train-forecast.md#configuration-settings)časových řad. <br><br><br>Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.
+**Detekce četnosti** |Předaný <br><br><br><br> Hotovo |<br> Časová řada byla analyzována a všechny datové body jsou zarovnány s zjištěnou frekvencí. <br> <br> Časová řada byla analyzována a byly zjištěny datové body, které neodpovídají zjištěné četnosti. Tyto datové body byly z datové sady odebrány. Další informace o [přípravě dat pro prognózování časových řad](./how-to-auto-train-forecast.md#preparing-data).
 
 ## <a name="customize-featurization"></a>Přizpůsobení featurization
 
 Nastavení featurization můžete přizpůsobit tak, aby se zajistilo, že data a funkce, které se použijí k tomu, aby využívaly svůj model ML, budou relevantní předpovědi.
 
-Chcete-li přizpůsobit featurizations, zadejte  `"featurization": FeaturizationConfig` v `AutoMLConfig` objektu. Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Postup přizpůsobení featurization pro prognózy typů úloh najdete v tématu Postup při [Prognózování](how-to-auto-train-forecast.md#customize-featurization).
+Chcete-li přizpůsobit featurizations, zadejte `"featurization": FeaturizationConfig` v `AutoMLConfig` objektu. Pokud pro váš experiment používáte Azure Machine Learning Studio, přečtěte si článek s [postupem](how-to-use-automated-ml-for-ml-models.md#customize-featurization). Postup přizpůsobení featurization pro prognózy typů úloh najdete v tématu Postup při [Prognózování](how-to-auto-train-forecast.md#customize-featurization).
 
 Mezi podporovaná přizpůsobení patří:
 
@@ -318,7 +318,7 @@ AutoML provede následující kroky pro BERT.
 
 1. **Předzpracování a tokenizace všech textových sloupců**. Například "transformátor" StringCast "můžete najít v souhrnu featurization finálního modelu. Příklad, jak vystavit souhrn featurization modelu, najdete v [tomto poznámkovém bloku](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
-2. **Zřetězí všechny textové sloupce do jednoho textového sloupce**, takže `StringConcatTransformer` v konečném modelu. 
+2. **Zřetězí všechny textové sloupce do jednoho textového sloupce** , takže `StringConcatTransformer` v konečném modelu. 
 
     Naše implementace BERT omezuje celkovou délku textu školicích ukázek na 128 tokeny. To znamená, že všechny textové sloupce, pokud jsou zřetězené, by ideálně měly mít maximálně 128 tokenů. Pokud je k dispozici více sloupců, je nutné vyřadit každý sloupec, aby byl tento stav splněn. V opačném případě se pro zřetězené sloupce délky >128 tokeny provádějících tokenizaci úrovně BERT zkrátí tento vstup na 128 tokeny.
 

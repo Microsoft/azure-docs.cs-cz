@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372561"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320090"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Kurz: použití vlastních dat (část 4 ze 4)
 
@@ -37,7 +37,7 @@ V tomto kurzu jste:
 > * Odešlete a spusťte školicí skript.
 > * Zobrazte si výstup kódu v cloudu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Dokončení [třetí části](tutorial-1st-experiment-sdk-train.md) série.
 * Úvodní znalost jazyka Pythonu a pracovních postupů strojového učení.
@@ -202,7 +202,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 `target_path`Hodnota určuje cestu k úložišti dat, kam budou odeslána data CIFAR10.
 
 >[!TIP] 
-> Když používáte Azure Machine Learning k nahrávání dat, můžete k nahrání souborů ad hoc použít [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) . Pokud potřebujete nástroj ETL, můžete k ingestování dat do Azure použít [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) .
+> Když používáte Azure Machine Learning k nahrávání dat, můžete k nahrání souborů ad hoc použít [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) . Pokud potřebujete nástroj ETL, můžete k ingestování dat do Azure použít [Azure Data Factory](../data-factory/introduction.md) .
 
 Spusťte soubor Pythonu pro nahrání dat. (Nahrávání by mělo být rychlé, méně než 60 sekund.)
 
@@ -271,7 +271,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) se používá k odkazování na data, která jste nahráli do Azure Blob Storage. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
+      [Datová sada](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) se používá k odkazování na data, která jste nahráli do Azure Blob Storage. Datové sady jsou abstraktní vrstva nad daty, která jsou navržena pro zlepšení spolehlivosti a věrohodnosti.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,7 +279,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) se upraví tak, aby zahrnoval seznam argumentů, které se budou předávat do `train.py` . `dataset.as_named_input('input').as_mount()`Argument znamená, že zadaný adresář bude _připojen_ k cíli služby Compute.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) se upraví tak, aby zahrnoval seznam argumentů, které se budou předávat do `train.py` . `dataset.as_named_input('input').as_mount()`Argument znamená, že zadaný adresář bude _připojen_ k cíli služby Compute.
    :::column-end:::
 :::row-end:::
 

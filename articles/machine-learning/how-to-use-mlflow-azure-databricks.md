@@ -11,18 +11,18 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342591"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319030"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Sledování experimentů Azure Databricks ML pomocí MLflow a Azure Machine Learning (Preview)
 
 V tomto článku se dozvíte, jak povolit sledování identifikátorů URI a protokolovacího rozhraní API pro MLflow, které je souhrnně známé jako [MLflow Tracking](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), aby se připojovaly vaše experimenty Azure DATABRICKS (ADB), MLflow a Azure Machine Learning.
 
-[MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu. Přečtěte si další informace o [Azure Databricks a MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/). 
+[MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu. Přečtěte si další informace o [Azure Databricks a MLflow](/azure/databricks/applications/mlflow/). 
 
 Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v tématu [sledování experimentů a vytváření koncových bodů pomocí MLflow a Azure Machine Learning](how-to-use-mlflow.md) .
 
@@ -32,11 +32,11 @@ Další informace o integraci funkcí MLflow a Azure Machine Learning najdete v 
 > [!TIP]
 > Informace v tomto dokumentu jsou primárně určené pro odborníky přes data a vývojáře, kteří chtějí monitorovat proces školení modelu. Pokud jste správcem a chcete monitorovat využití prostředků a události z Azure Machine Learning, jako jsou kvóty, dokončené školicí běhy nebo dokončená nasazení modelu, přečtěte si téma [monitorování Azure Machine Learning](monitor-azure-machine-learning.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte balíček `azureml-mlflow`. 
-    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
-* [Azure Databricks pracovní prostor a cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+    * Tento balíček automaticky přinese `azureml-core` [sadu SDK Azure Machine Learning Pythonu](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), která poskytuje možnosti připojení pro MLflow k vašemu pracovnímu prostoru.
+* [Azure Databricks pracovní prostor a cluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="track-azure-databricks-runs"></a>Sledování spuštění Azure Databricks
@@ -156,9 +156,9 @@ Po vyškolení modelu můžete své modely zaznamenat a zaregistrovat na serveru
 
 Serverem pro sledování back-endu je ve výchozím nastavení Azure Databricks pracovní prostor. Pokud jste nezvolili [Nastavení sledování MLflow jenom na sledování v pracovním prostoru Azure Machine Learning](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace), je server pro sledování back-endu Azure Machine Learning pracovním prostorem.   
 
-* **Pokud registrovaný model s názvem neexistuje**, zaregistruje metoda nový model, vytvoří verzi 1 a vrátí objekt ModelVersion MLflow. 
+* **Pokud registrovaný model s názvem neexistuje** , zaregistruje metoda nový model, vytvoří verzi 1 a vrátí objekt ModelVersion MLflow. 
 
-* **Pokud registrovaný model s tímto názvem již existuje**, metoda vytvoří novou verzi modelu a vrátí objekt verze. 
+* **Pokud registrovaný model s tímto názvem již existuje** , metoda vytvoří novou verzi modelu a vrátí objekt verze. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -234,4 +234,4 @@ Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prosto
 
 * [Spravujte své modely](concept-model-management-and-deployment.md).
 * [Sledování experimentů a vytváření koncových bodů pomocí MLflow a Azure Machine Learning](how-to-use-mlflow.md). 
-* Přečtěte si další informace o [Azure Databricks a MLflow](https://docs.microsoft.com/azure/databricks/applications/mlflow/).
+* Přečtěte si další informace o [Azure Databricks a MLflow](/azure/databricks/applications/mlflow/).

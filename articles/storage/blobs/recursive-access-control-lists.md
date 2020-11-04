@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56a797864b70cb1be4a1bc5d4b79c44348d43dae
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c0323bed627fd622471724b20677914736c564d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144422"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319919"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -433,7 +433,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** . Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true** . 
+Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
 
 Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má nastavit výchozí seznam řízení přístupu. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Položky seznamu řízení přístupu poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině jenom oprávnění ke čtení a spouštění a všem ostatním uživatelům se neudělí žádný přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
 
@@ -475,7 +475,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool is
 
 Nastavte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. setAccessControlRecursive** . Předá tuto metodu [seznam](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) objektů [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) . Každý [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) definuje položku seznamu ACL. 
 
-Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), můžete zavolat metodu **setDefaultScope** [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true** . 
+Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), můžete zavolat metodu **setDefaultScope** [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true**. 
 
 Tento příklad nastaví seznam řízení přístupu k adresáři s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má nastavit výchozí seznam řízení přístupu. Tento parametr se používá v každém volání metody **SetDefaultScope** [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html). Položky seznamu řízení přístupu poskytují oprávnění ke čtení, zápisu a spouštění vlastnícího uživatele, přidělí skupině jenom oprávnění ke čtení a spouštění a všem ostatním uživatelům se neudělí žádný přístup. Poslední položka seznamu ACL v tomto příkladu poskytuje konkrétního uživatele s ID objektu "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" oprávnění číst a spustit.
 
@@ -620,7 +620,7 @@ az storage fs access update-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** .  Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true** . 
+Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
 
 Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má aktualizovat výchozí seznam ACL. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
@@ -651,7 +651,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, boo
 
 Aktualizujte seznam ACL rekurzivně voláním metody **DataLakeDirectoryClient. updateAccessControlRecursive** .  Předá tuto metodu [seznam](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) objektů [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) . Každý [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) definuje položku seznamu ACL. 
 
-Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), můžete **setDefaultScope** metodu [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true** . 
+Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), můžete **setDefaultScope** metodu [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true**. 
 
 Tento příklad aktualizuje položku seznamu řízení přístupu (ACL) s oprávněním k zápisu. Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda se má aktualizovat výchozí seznam ACL. Tento parametr se používá při volání metody **SetDefaultScope** [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html). 
 
@@ -755,7 +755,7 @@ az storage fs access remove-recursive --acl "user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 
 Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** . Předá tuto metodu [seznam](/dotnet/api/system.collections.generic.list-1) [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem). Každý [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) definuje položku seznamu ACL. 
 
-Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true** . 
+Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), můžete vlastnost [PathAccessControlItem. DefaultScope platná](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) [nastavit na](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) **hodnotu true**. 
 
 Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda má být položka odebrána z výchozího seznamu ACL. Tento parametr se používá v konstruktoru třídy [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem).
 
@@ -783,7 +783,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isD
 
 Odeberte položky seznamu ACL voláním metody **DataLakeDirectoryClient. removeAccessControlRecursive** . Předá tuto metodu [seznam](https://docs.oracle.com/javase/8/docs/api/java/util/List.html) objektů [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) . Každý [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) definuje položku seznamu ACL. 
 
-Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), můžete **setDefaultScope** metodu [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true** .  
+Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), můžete **setDefaultScope** metodu [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předat hodnotu **true**.  
 
 Tento příklad odebere položku seznamu řízení přístupu z seznamu řízení přístupu (ACL) adresáře s názvem `my-parent-directory` . Tato metoda přijímá logický parametr s názvem `isDefaultScope` , který určuje, zda má být položka odebrána z výchozího seznamu ACL. Tento parametr se používá při volání metody **SetDefaultScope** [PathAccessControlEntry](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html).
 
@@ -847,19 +847,40 @@ Může dojít k chybám za běhu nebo oprávnění. V případě chyb běhového
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Vrátí výsledky do proměnné. Neúspěšné položky kanálu pro formátovanou tabulku
+Tento příklad nastavuje seznamy ACL v dávkách. Každé volání metody **set-AzDataLakeGen2AclRecursive** vrátí token pro pokračování, dokud nebudou nastaveny všechny seznamy řízení přístupu. Tento příklad nastaví proměnnou s názvem `$ContinueOnFailure` na `$false` k označení, že proces by neměl pokračovat v nastavování seznamů ACL v případě chyby oprávnění. Token pokračování je uložen do `&token` proměnné. V případě selhání se tento token dá použít k obnovení procesu z bodu selhání.
 
 ```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-$result
-$result.FailedEntries | ft 
-```
+$ContinueOnFailure = $false
 
-Na základě výstupu tabulky můžete opravit všechny chyby oprávnění a potom pokračovat v provádění pomocí tokenu pro pokračování.
+$token = $null
+$TotalDirectoriesSuccess = 0
+$TotalFilesSuccess = 0
+$totalFailure = 0
+$FailedEntries = New-Object System.Collections.Generic.List[System.Object]
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
+echo "[Result Summary]"
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
 
-```powershell
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl -ContinuationToken $result.ContinuationToken
-$result
 
 ```
 
@@ -970,23 +991,41 @@ Pokud chcete, aby byl proces dokončen bez přerušení pomocí chyb oprávněn�
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Tento příklad nastavuje rekurzivní položky seznamů ACL. Pokud tento kód narazí na chybu oprávnění, zaznamená toto selhání a pokračuje v provádění. Tento příklad vytiskne výsledky (včetně počtu selhání) do konzoly. 
+Tento příklad nastaví `$ContinueOnFailure` proměnnou na `$true` k označení toho, že proces by měl pokračovat v nastavení seznamů ACL v případě chyby oprávnění. 
 
 ```powershell
 $ContinueOnFailure = $true
 
+$token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0
 $totalFailure = 0
 $FailedEntries = New-Object System.Collections.Generic.List[System.Object]
-
-$result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
-
+do
+{
+    if ($ContinueOnFailure)
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 -ContinueOnFailure
+    }
+    else
+    {
+        $result = Set-AzDataLakeGen2AclRecursive -Context $ctx2 -FileSystem $filesystemName -Path dir0 -Acl $acl1  -BatchSize 2  -ContinuationToken $token -MaxBatchCount 2 
+    }
+    echo $result
+    $TotalFilesSuccess += $result.TotalFilesSuccessfulCount
+    $TotalDirectoriesSuccess += $result.TotalDirectoriesSuccessfulCount
+    $totalFailure += $result.TotalFailureCount
+    $FailedEntries += $result.FailedEntries
+    $token = $result.ContinuationToken
+} while (($token -ne $null) -and (($ContinueOnFailure) -or ($result.TotalFailureCount -eq 0)))
+echo ""
 echo "[Result Summary]"
-echo "TotalDirectoriesSuccessfulCount: `t$($result.TotalFilesSuccessfulCount)"
-echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount)"
-echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
-echo "FailedEntries:"$($result.FailedEntries | ft) 
+echo "TotalDirectoriesSuccessfulCount: `t$($TotalDirectoriesSuccess)"
+echo "TotalFilesSuccessfulCount: `t`t`t$($TotalFilesSuccess)"
+echo "TotalFailureCount: `t`t`t`t`t$($totalFailure)"
+echo "FailedEntries:"$($FailedEntries | ft)
+
+
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -1028,7 +1067,7 @@ public async Task ContinueOnFailureAsync(DataLakeServiceClient serviceClient,
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Chcete-li zajistit, že proces bude dokončen bez přerušení, zavolejte metodu **setContinueOnFailure** objektu [PathSetAccessControlRecursiveOptions](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předejte hodnotu **true** .
+Chcete-li zajistit, že proces bude dokončen bez přerušení, zavolejte metodu **setContinueOnFailure** objektu [PathSetAccessControlRecursiveOptions](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.3.0-beta.1/index.html) a předejte hodnotu **true**.
 
 Tento příklad nastavuje rekurzivní položky seznamů ACL. Pokud tento kód narazí na chybu oprávnění, zaznamená toto selhání a pokračuje v provádění. Tento příklad vytiskne počet selhání konzoly. 
 
@@ -1120,7 +1159,7 @@ K běhové chybě může dojít z mnoha důvodů (například při výpadku nebo
 
 Pokud při spuštění rekurzivního procesu seznamu ACL narazíte na výjimku řízení přístupu, váš [objekt zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) služby AD nemusí mít dostatečná oprávnění k použití seznamu ACL pro jednu nebo více podřízených položek v hierarchii adresáře. Pokud dojde k chybě oprávnění, proces se zastaví a poskytne se token pro pokračování. Opravte problém s oprávněním a pak použijte token pro pokračování ke zpracování zbývající datové sady. Adresáře a soubory, které již byly úspěšně zpracovány, nemusí být zpracovány znovu. Můžete také zvolit restartování rekurzivního procesu seznamu ACL. Seznamy řízení přístupu (ACL) lze znovu použít na položky, aniž by došlo k negativnímu dopadu. 
 
-#### <a name="credentials"></a>Credentials 
+#### <a name="credentials"></a>Přihlašovací údaje 
 
 Doporučujeme zřídit objekt zabezpečení služby Azure AD, kterému byla přiřazena role [vlastníka dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) v oboru cílového účtu úložiště nebo kontejneru. 
 
@@ -1138,7 +1177,7 @@ Maximální počet seznamů řízení přístupu, které můžete použít u adr
 
 Můžete zadat svůj názor nebo ohlásit problém na  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) .
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Řízení přístupu ve službě Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 - [Známé problémy](data-lake-storage-known-issues.md)

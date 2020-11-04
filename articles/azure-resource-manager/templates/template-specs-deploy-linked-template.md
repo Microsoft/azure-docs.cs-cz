@@ -2,19 +2,19 @@
 title: Nasazení specifikace šablony jako propojené šablony
 description: Přečtěte si, jak nasadit stávající specifikaci šablony v propojeném nasazení.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369106"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321572"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Kurz: nasazení specifikace šablony jako propojené šablony (Náhled)
 
 Přečtěte si, jak nasadit stávající [specifikaci šablony](template-specs.md) pomocí [propojeného nasazení](linked-templates.md#linked-template). Pomocí specifikací šablon můžete sdílet šablony ARM s ostatními uživateli ve vaší organizaci. Po vytvoření specifikace šablony můžete nasadit specifikaci šablony pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Můžete také nasadit specifikaci šablony jako součást řešení pomocí propojené šablony.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -160,7 +160,10 @@ New-AzResourceGroup `
 
 New-AzResourceGroupDeployment `
   -ResourceGroupName webRG `
-  -TemplateFile "c:\Templates\deployTS\azuredeploy.json"
+  -TemplateFile "c:\Templates\deployTS\azuredeploy.json" `
+  -tsResourceGroup templateSpecRg `
+  -tsName storageSpec `
+  -tsVersion 1.0
 ```
 
 # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/azure-cli)
@@ -172,8 +175,8 @@ az group create \
 
 az deployment group create \
   --resource-group webRG \
-  --template-file "c:\Templates\deployTS\azuredeploy.json"
-
+  --template-file "c:\Templates\deployTS\azuredeploy.json" \
+  --parameters tsResourceGroup=templateSpecRG tsName=storageSpec tsVersion=1.0
 ```
 
 ---

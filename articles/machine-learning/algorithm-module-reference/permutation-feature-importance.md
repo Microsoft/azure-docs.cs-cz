@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: ecf739ea838ad3742612eab7a1b42ac8c8ac455a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905261"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319397"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
@@ -24,7 +24,7 @@ V tomto modulu jsou hodnoty funkcí náhodně přemístěné, vždy v jednom slo
 
 Skóre, které modul vrací, představuje *změnu* výkonu pro vyškolený model po permutaci. Důležité funkce jsou obvykle citlivější na proces náhodného zpracování, takže budou mít výsledek vyšší důležitost. 
 
-Tento článek poskytuje přehled funkce permutace, její teoretickou a její aplikace ve službě Machine Learning: [důležitost funkce permutace](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Tento článek poskytuje přehled funkce permutace, její teoretickou a její aplikace ve službě Machine Learning: [důležitost funkce permutace](/archive/blogs/machinelearning/permutation-feature-importance).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Použití funkce permutace důležitost
 
@@ -36,15 +36,15 @@ Generování sady výsledků funkcí vyžaduje, abyste měli už vyškolený mod
 
 3.  U správného vstupu připojte datovou sadu. V takovém případě vyberte, který se liší od datové sady, kterou jste použili pro školení modelu. Tato datová sada se používá pro hodnocení na základě trained model. Používá se také k vyhodnocení modelu po změně hodnot vlastností.  
 
-4.  V případě **náhodného osazení**zadejte hodnotu, která se má použít jako počáteční hodnota pro náhodnost. Pokud zadáte 0 (výchozí), vygeneruje se číslo na základě systémových hodin.
+4.  V případě **náhodného osazení** zadejte hodnotu, která se má použít jako počáteční hodnota pro náhodnost. Pokud zadáte 0 (výchozí), vygeneruje se číslo na základě systémových hodin.
 
      Hodnota počáteční hodnoty je volitelná, ale měli byste zadat hodnotu, pokud chcete reprodukovatelnost napříč běhy stejného kanálu.  
 
-5.  Pro **metriku pro měření výkonu**vyberte jednu metriku, která se má použít, když počítáte kvalitu modelu po permutaci.  
+5.  Pro **metriku pro měření výkonu** vyberte jednu metriku, která se má použít, když počítáte kvalitu modelu po permutaci.  
 
      Azure Machine Learning Designer podporuje následující metriky v závislosti na tom, zda vyhodnocujete model klasifikace nebo regrese:  
 
-    -   **Classification**
+    -   **Klasifikace**
 
         Přesnost, přesnost, odvolání  
 
@@ -69,4 +69,4 @@ Důvodem rozdílu je, že důležitost funkcí permutace neměří přidružení
   
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

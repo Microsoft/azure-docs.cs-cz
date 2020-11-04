@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: a1a09357c7f80d4af0198a33a2e0007782ef232f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905248"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319418"
 ---
 # <a name="poisson-regression"></a>Poissonova regrese
 
@@ -29,7 +29,7 @@ Tento modul slouží k vytvoření Poissonova regresního modelu v kanálu. Funk
 - Poissonova rozdělení je diskrétní distribuce; proto nemá smysl použít tuto metodu s neúplnými čísly.
 
 > [!TIP]
-> Pokud Váš cíl není počet, je pravděpodobné, že funkce POISSON regrese není vhodnou metodou. Vyzkoušejte [v Návrháři jiné moduly regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference#machine-learning-algorithms). 
+> Pokud Váš cíl není počet, je pravděpodobné, že funkce POISSON regrese není vhodnou metodou. Vyzkoušejte [v Návrháři jiné moduly regrese](./module-reference.md#machine-learning-algorithms). 
 
 Po nastavení metody regrese je nutné proškolit model pomocí datové sady obsahující příklady hodnoty, kterou chcete předpovědět. K vytvoření předpovědi se pak dá použít trained model.
 
@@ -49,7 +49,7 @@ Vzhledem k tomu, že proměnná Response má Poissonova rozdělení, model vytv�
 
 ## <a name="how-to-configure-poisson-regression"></a>Jak nakonfigurovat funkce POISSON regrese
 
-1. Přidejte modul **Poissonova regrese** do vašeho kanálu v návrháři. Tento modul můžete najít v části **Machine Learning algoritmy**v kategorii **regrese** .
+1. Přidejte modul **Poissonova regrese** do vašeho kanálu v návrháři. Tento modul můžete najít v části **Machine Learning algoritmy** v kategorii **regrese** .
 
 2. Přidejte datovou sadu, která obsahuje školicí data správného typu. 
 
@@ -57,13 +57,13 @@ Vzhledem k tomu, že proměnná Response má Poissonova rozdělení, model vytv�
 
 3. V pravém podokně modulu **Poissonova regrese** určete, jak chcete, aby byl model vyškolený, nastavením možnosti **vytvořit Trainer režim** .  
   
-    - **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, poskytněte konkrétní sadu hodnot jako argumenty.
+    - **Jediný parametr** : Pokud víte, jak chcete model konfigurovat, poskytněte konkrétní sadu hodnot jako argumenty.
   
-    - **Rozsah parametrů**: Pokud si nejste jistí, co nejlépe vyhovuje parametrům, udělejte s použitím modulu [ladění modelu](tune-model-hyperparameters.md) modulů parametrů. Trainer projde více hodnot, které zadáte, abyste našli optimální konfiguraci.
+    - **Rozsah parametrů** : Pokud si nejste jistí, co nejlépe vyhovuje parametrům, udělejte s použitím modulu [ladění modelu](tune-model-hyperparameters.md) modulů parametrů. Trainer projde více hodnot, které zadáte, abyste našli optimální konfiguraci.
   
-4. **Tolerance optimalizace**: zadejte hodnotu, která definuje interval tolerance během optimalizace. Čím nižší hodnota, tím pomalejší a přesnější přizpůsobení.
+4. **Tolerance optimalizace** : zadejte hodnotu, která definuje interval tolerance během optimalizace. Čím nižší hodnota, tím pomalejší a přesnější přizpůsobení.
 
-5. **Váha pravidelného využití L1** a **váha pro pravidelnosti L2**: hodnoty typu, které se mají použít pro práci s L1 a L2. Při provádění se *přidávají omezení* algoritmu týkající se aspektů modelu, které jsou nezávisle na školicích datech. Často se používá k tomu, aby se zabránilo přebudování. 
+5. **Váha pravidelného využití L1** a **váha pro pravidelnosti L2** : hodnoty typu, které se mají použít pro práci s L1 a L2. Při provádění se *přidávají omezení* algoritmu týkající se aspektů modelu, které jsou nezávisle na školicích datech. Často se používá k tomu, aby se zabránilo přebudování. 
 
     - Pravidelnáace L1 je užitečná v případě, že cílem je mít model, který je co možná zhuštěný.
 
@@ -73,9 +73,9 @@ Vzhledem k tomu, že proměnná Response má Poissonova rozdělení, model vytv�
 
     V tomto modulu můžete použít kombinaci L1 a L2 regularizations. Kombinováním L1 a L2 můžete na základě velikosti hodnot parametrů ukládat pokutu. Tento nástroj se snaží minimalizovat pokutu při kompromisech s minimalizací ztráty.
 
-    Dobré diskuzi o L1 a L2 najdete v tématu [L1 a L2 pro Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx).
+    Dobré diskuzi o L1 a L2 najdete v tématu [L1 a L2 pro Machine Learning](/archive/msdn-magazine/2015/february/test-run-l1-and-l2-regularization-for-machine-learning).
 
-6. **Velikost paměti pro L-BFGS**: zadejte velikost paměti, která se má vyhradit pro přizpůsobení modelu a optimalizaci.
+6. **Velikost paměti pro L-BFGS** : zadejte velikost paměti, která se má vyhradit pro přizpůsobení modelu a optimalizaci.
 
      L-BFGS je specifická metoda pro optimalizaci založená na algoritmu Broyden – Fletcher – Goldfarb-Shanno (BFGS). Metoda používá k výpočtu směru dalšího kroku omezené množství paměti (L).
 
@@ -83,9 +83,9 @@ Vzhledem k tomu, že proměnná Response má Poissonova rozdělení, model vytv�
 
 7. Připojte datovou sadu školení a nevýukový model k jednomu z školicích modulů: 
 
-    - Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, použijte modul [vlakového modelu](train-model.md) .
+    - Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , použijte modul [vlakového modelu](train-model.md) .
 
-    - Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, použijte modul [ladit model s parametry](tune-model-hyperparameters.md) .
+    - Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , použijte modul [ladit model s parametry](tune-model-hyperparameters.md) .
 
     > [!WARNING]
     > 
@@ -105,4 +105,4 @@ Po dokončení školení:
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning.

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 462cf6cf850885b31588123bac46ff99bf319ee8
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93243135"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319631"
 ---
 # <a name="regional-code-names-and-endpoints"></a>Regionální názvy kódu a koncové body
 
@@ -49,7 +49,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Ověřování | `https://login.microsoftonline.com/` |
+| Authentication | `https://login.microsoftonline.com/` |
 | Cílová skupina tokenů | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
@@ -57,17 +57,20 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Ověřování | `https://login.microsoftonline.us/` |
+| Authentication | `https://login.microsoftonline.us/` |
 | Cílová skupina tokenů | `https://management.core.usgovcloudapi.net/` |
 
 [!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 ### <a name="azure-germany"></a>Azure (Německo)
 
+> [!NOTE]
+> Koncové body Azure Německo platí jenom pro cloudy Svrchovan v Německu.
+
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Ověřování | `https://login.microsoftonline.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
 | Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet
@@ -75,7 +78,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Služba | Koncový bod |
 | ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Ověřování | `https://login.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
 | Cílová skupina tokenů |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Viz také:

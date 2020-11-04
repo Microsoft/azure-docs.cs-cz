@@ -1,7 +1,7 @@
 ---
 title: Paměť modelu profilu a využití CPU
 titleSuffix: Azure Machine Learning
-description: Naučte se profilovat paměť modelů a využití CPU
+description: Přečtěte si, jak model před nasazením profilovat. Profilace Určuje využití paměti a procesoru v modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,18 +12,18 @@ ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 95f35c2734e0a8dbc39d409847976b8b31716f81
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: b9ae40b3d2673961f9b84ed702f18b25b79b6d0c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998780"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320407"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Profilace modelu a určení využití prostředků
 
 V tomto článku se dozvíte, jak profilovat strojové učení s modelem, abyste zjistili, kolik CPU a paměti budete potřebovat pro model při jeho nasazování jako webové služby.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste provedli školení a zaregistrovali model pomocí Azure Machine Learning. Příklad školení a registrace modelu scikit-učení s Azure Machine Learning najdete v tomto [ukázkovém kurzu](how-to-train-scikit-learn.md) .
 

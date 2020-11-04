@@ -74,7 +74,7 @@
           href: tutorial-routing-view-message-routing-results.md
     - name: Obohacení zpráv
       href: tutorial-message-enrichments.md
-    - name: Použití metrik a diagnostických protokolů
+    - name: Použití metrik a protokolů
       href: tutorial-use-metrics-and-diags.md
     - name: Provedení ručního převzetí služeb při selhání
       href: tutorial-manual-failover.md

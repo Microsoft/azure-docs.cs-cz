@@ -10,18 +10,18 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: d57de4d52ccf3a029a8dd1350635fb65dd3ac829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828445"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320974"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Upgrade prostředí Data Science Virtual Machine na Ubuntu 18.04
 
 Pokud máte Data Science Virtual Machine, na kterém běží starší verze, jako je například Ubuntu 16,04 nebo CentOS, měli byste migrovat DSVM na Ubuntu 18,04. Při migraci se zajistí, že získáte nejnovější opravy operačního systému, ovladače, předinstalovaný software a verze knihoven. V tomto dokumentu se dozvíte, jak migrovat z dřívějších verzí Ubuntu nebo z CentOS. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Znalost pomocí SSH a příkazového řádku pro Linux
 
@@ -38,9 +38,9 @@ V Azure Portal vyhledejte funkce **snímků** pomocí panelu hledání.
 
 :::image type="content" source="media/ubuntu_upgrade/azure-portal-search-bar.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
 
-1. Vyberte možnost **Přidat**, která vás převezme na stránku **vytvořit snímek** . Vyberte předplatné a skupinu prostředků virtuálního počítače. V poli **oblast**vyberte stejnou oblast, ve které existuje cílové úložiště. Vyberte disk úložiště DSVM a další možnosti zálohování. **HDD úrovně Standard** je vhodný typ úložiště pro tento scénář zálohování.
+1. Vyberte možnost **Přidat** , která vás převezme na stránku **vytvořit snímek** . Vyberte předplatné a skupinu prostředků virtuálního počítače. V poli **oblast** vyberte stejnou oblast, ve které existuje cílové úložiště. Vyberte disk úložiště DSVM a další možnosti zálohování. **HDD úrovně Standard** je vhodný typ úložiště pro tento scénář zálohování.
 
-:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/create-snapshot-options.png" alt-text="Snímek obrazovky znázorňující možnosti vytvoření snímku":::
 
 2. Až budou všechny podrobnosti vyplněny a ověření platnosti, vyberte **zkontrolovat + vytvořit** a ověřte a vytvořte snímek. Po úspěšném dokončení snímku se zobrazí zpráva s oznámením, že nasazení je hotové.
 
@@ -65,9 +65,14 @@ Dokončení procesu upgradu bude chvíli trvat. Po převzetí služeb při selh�
 
 Až se váš virtuální počítač Upgradoval a restartuje, pokusí se k němu znovu získat přístup přes SSH. IP adresa se mohla během restartování změnit, proto ji před pokusem o připojení potvrďte.
 
-Pokud se zobrazí chyba **Identifikace vzdáleného hostitele se změnila**, budete muset znovu vygenerovat přihlašovací údaje SSH.
+Pokud se zobrazí chyba **Identifikace vzdáleného hostitele se změnila** , budete muset znovu vygenerovat přihlašovací údaje SSH.
 
-:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *"
+:::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="Snímek obrazovky PowerShellu ukazující upozornění na změnu identifikace vzdáleného hostitele":::
+
+Provedete to tak, že na svém místním počítači spustíte příkaz:
+
+```bash
+ssh-keygen -R "your server hostname or ip"
 ```
 
 Nyní byste měli být schopni se připojit pomocí SSH. Pokud stále dochází k potížím, na stránce **připojit** použijte odkaz pro **řešení potíží s připojením SSH**.
@@ -100,17 +105,17 @@ Pokud jste ještě nevytvořili snímek virtuálního počítače, jak je popsá
 
 1. V Azure Portal vyhledejte **disky** a vyberte **Přidat**. tím otevřete stránku **disku** .
 
-:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/portal-disks-search.png" alt-text="Snímek obrazovky Azure Portal stránky pro hledání disků a tlačítkem Přidat":::
 
-2. Nastavte **předplatné**, **skupinu prostředků**a **oblast** na hodnoty snímku virtuálního počítače. Vyberte **název** disku, který se má vytvořit.
+2. Nastavte **předplatné** , **skupinu prostředků** a **oblast** na hodnoty snímku virtuálního počítače. Vyberte **název** disku, který se má vytvořit.
 
-3. Jako **snímek** vyberte **typ zdroje** a jako **zdrojový snímek**vyberte snímek virtuálního počítače. Zkontrolujte a vytvořte disk. 
+3. Jako **snímek** vyberte **typ zdroje** a jako **zdrojový snímek** vyberte snímek virtuálního počítače. Zkontrolujte a vytvořte disk. 
 
-:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/disk-create-options.png" alt-text="Snímek obrazovky s dialogovým oknem vytvoření disku zobrazujícím možnosti":::
 
 ### <a name="create-a-new-ubuntu-data-science-virtual-machine"></a>Vytvořit nový Data Science Virtual Machine Ubuntu
 
-Vytvořte nový Data Science Virtual Machine Ubuntu pomocí [Azure Portal](https://portal.azure.com) nebo [šablony ARM](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager). 
+Vytvořte nový Data Science Virtual Machine Ubuntu pomocí [Azure Portal](https://portal.azure.com) nebo [šablony ARM](./dsvm-tutorial-resource-manager.md). 
 
 ### <a name="recreate-user-accounts-on-your-new-data-science-virtual-machine"></a>Opětovné vytvoření uživatelských účtů na novém Data Science Virtual Machine
 
@@ -118,7 +123,7 @@ Vzhledem k tomu, že budete jenom kopírovat data ze starého počítače, budet
 
 Linux je dostatečně flexibilní, aby bylo možné přizpůsobit adresáře a cesty v nové instalaci, aby se mohla pořídit starý počítač. Obecně je ale snazší použít preferované rozložení moderního Ubuntu a upravit uživatelské prostředí a skripty pro přizpůsobení.
 
-Další informace najdete v tématu [rychlý Start: nastavení data Science Virtual Machine pro Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+Další informace najdete v tématu [rychlý Start: nastavení data Science Virtual Machine pro Linux (Ubuntu)](./dsvm-ubuntu-intro.md).
 
 ### <a name="mount-the-disk-of-the-snapshotted-vm-as-a-data-disk-on-your-new-data-science-virtual-machine"></a>Připojte disk virtuálního počítače snapshotted jako datový disk na novém Data Science Virtual Machine
 
@@ -128,7 +133,7 @@ Další informace najdete v tématu [rychlý Start: nastavení data Science Virt
 
 3. V rozevíracím seznamu **název disku** vyberte disk, který jste vytvořili z snímku starého virtuálního počítače.
 
-:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/attach-data-disk.png" alt-text="Snímek obrazovky se stránkou možností DSVM zobrazujících možnosti pro přílohy disku":::
 
 4. Vyberte **Uložit** a aktualizujte svůj virtuální počítač.
 
@@ -147,7 +152,7 @@ Další informace najdete v tématu [rychlý Start: nastavení data Science Virt
     
     Výsledky by měly vypadat přibližně jako na následujícím obrázku. Na obrázku je disk `sda1` připojený k kořenovému adresáři a `sdb2` jedná se o `/mnt` pomocného disku. Datový disk vytvořený z snímku starého virtuálního počítače je označený jako `sdc1` , ale ještě není k dispozici, jak je doloženo chybějícím umístěním připojení. Vaše výsledky mohou mít různé identifikátory, ale měl by se zobrazit podobný model.
     
-    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+    :::image type="content" source="media/ubuntu_upgrade/lsblk-results.png" alt-text="Snímek obrazovky s výstupem lsblk zobrazujícím nepřipojenou datovou jednotku":::
     
 3. Pro přístup k datové jednotce vytvořte umístění a připojte ho. Nahraďte `/dev/sdc1` příslušnou hodnotou vrácenou `lsblk` :
 
@@ -157,7 +162,7 @@ Další informace najdete v tématu [rychlý Start: nastavení data Science Virt
     
 4. Nyní `/datadrive` obsahuje adresáře a soubory starého data Science Virtual Machine. Přesuňte nebo zkopírujte adresáře nebo soubory z datové jednotky k novému virtuálnímu počítači, podle kterého chcete.
 
-Další informace najdete v tématu [použití portálu k připojení datového disku k virtuálnímu počítači se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk).
+Další informace najdete v tématu [použití portálu k připojení datového disku k virtuálnímu počítači se systémem Linux](../../virtual-machines/linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 ## <a name="connect-and-confirm-version-upgrade"></a>Připojit a potvrdit upgrade verze
 
@@ -169,13 +174,13 @@ cat /etc/os-release
 
 Měli byste vidět, že používáte Ubuntu 18,04.
 
-:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/ssh-os-release.png" alt-text="Snímek obrazovky terminálu Ubuntu znázorňující data verze operačního systému":::
 
 Změna verze je také zobrazena v Azure Portal.
 
-:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Snímek obrazovky znázorňující Azure Portal a panel hledání se zvýrazněnými * * snímky * *":::
+:::image type="content" source="media/ubuntu_upgrade/portal-showing-os-version.png" alt-text="Snímek obrazovky portálu zobrazující vlastnosti DSVM včetně verze operačního systému":::
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Datové vědy s Ubuntum počítačem pro datové vědy v Azure](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough)
-- [Jaké nástroje jsou součástí Azure Data Science Virtual Machine?](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/tools-included)
+- [Datové vědy s Ubuntum počítačem pro datové vědy v Azure](./linux-dsvm-walkthrough.md)
+- [Jaké nástroje jsou součástí Azure Data Science Virtual Machine?](./tools-included.md)

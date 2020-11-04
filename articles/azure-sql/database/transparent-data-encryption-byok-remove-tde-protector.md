@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791371"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321401"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "92791371"
 Toto téma popisuje, jak reagovat na potenciálně ohroženou TDE ochranu pro Azure SQL Database nebo Azure synapse Analytics, která používá TDE s klíči spravovanými zákazníky v podpoře Azure Key Vault-Bring Your Own Key (BYOK). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-overview.md).
 
 > [!CAUTION]
-> Postupy popsané v tomto článku by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si pečlivě tyto kroky, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí, že **databáze nebude k dispozici** .
+> Postupy popsané v tomto článku by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si pečlivě tyto kroky, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí, že **databáze nebude k dispozici**.
 
 Pokud dojde k ohrožení bezpečnosti nějakého klíče, aby služba nebo uživatel měli k klíči neoprávněný přístup, je nejlepší klíč odstranit.
 
@@ -34,8 +34,8 @@ Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 mi
 
 Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po napadené reakci na incidenty:
 
-- Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné** .
-- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné** .
+- Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
+- Aby databáze v Azure SQL Database nebo Azure Azure synapse Analytics (dříve SQL Data Warehouse) **nepřístupné**.
 
 ## <a name="prerequisites"></a>Předpoklady
 

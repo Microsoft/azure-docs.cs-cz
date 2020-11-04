@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: a13bec5fa557bed1b9ce84836588e6a3e501ddf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ca0f1e82b81c8aad53938a5475f1ece68c0e33
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906702"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321560"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code (Preview)
 
@@ -91,13 +91,13 @@ Postup vytvoření cíle výpočtů:
 1. Na řádku Visual Studio Code aktivity vyberte ikonu **Azure** . Zobrazí se zobrazení Azure Machine Learning. 
 1. Rozbalte uzel předplatného. 
 1. Rozbalte uzel **TeamWorkspace** . 
-1. Pod uzlem pracovní prostor klikněte pravým tlačítkem na uzel **COMPUTE clustery** a vyberte **vytvořit výpočetní**prostředky. 
+1. Pod uzlem pracovní prostor klikněte pravým tlačítkem na uzel **COMPUTE clustery** a vyberte **vytvořit výpočetní** prostředky. 
 
     > [!div class="mx-imgBorder"]
     > ![Vytvořit cíl výpočtů](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. Vyberte **Azure Machine Learning COMPUTE (AmlCompute)**. Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit jeden nebo více uzlů, které se dají použít s ostatními uživateli v pracovním prostoru.
-1. Vyberte velikost virtuálního počítače. V seznamu možností vyberte **Standard_F2s_v2** . Velikost virtuálního počítače má vliv na dobu potřebnou k učení vašich modelů. Další informace o velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+1. Vyberte velikost virtuálního počítače. V seznamu možností vyberte **Standard_F2s_v2** . Velikost virtuálního počítače má vliv na dobu potřebnou k učení vašich modelů. Další informace o velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](../virtual-machines/sizes.md).
 1. Pojmenujte svůj COMPUTE "TeamWkspc-com" a stisknutím klávesy **ENTER** vytvořte výpočetní výkon.
 
     Soubor se zobrazí v VS Code s obsahem podobným následujícímu:
@@ -414,4 +414,3 @@ V tuto chvíli se k nasazení webové služby pošle žádost do Azure. Tento pr
 
 * Návod, jak naučit se Azure Machine Learning mimo Visual Studio Code, najdete v tématu [kurz: výuka modelů pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 * Návod, jak upravovat, spouštět a ladit kód místně, najdete v [kurzu Python Hello World](https://code.visualstudio.com/docs/Python/Python-tutorial).
-

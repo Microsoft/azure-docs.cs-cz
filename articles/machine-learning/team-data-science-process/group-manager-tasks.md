@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4262d0190084064103aeabe48bec806213ea7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76721349"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321223"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Úlohy správce skupin procesů týmu pro data vědeckého zpracování
 
@@ -43,7 +43,7 @@ Následující kurz vás provede podrobnými kroky.
    
    ![Přihlaste se ke svému účet Microsoft](./media/group-manager-tasks/signinvs.png)
    
-   Pokud nemáte účet Microsoft, vyberte **zaregistrovat**se a vytvořte účet Microsoft a přihlaste se pomocí tohoto účtu. Pokud má vaše organizace předplatné sady Visual Studio, přihlaste se pomocí přihlašovacích údajů k tomuto předplatnému.
+   Pokud nemáte účet Microsoft, vyberte **zaregistrovat** se a vytvořte účet Microsoft a přihlaste se pomocí tohoto účtu. Pokud má vaše organizace předplatné sady Visual Studio, přihlaste se pomocí přihlašovacích údajů k tomuto předplatnému.
    
 1. Po přihlášení klikněte v pravém horním rohu na stránce Azure DevOps vyberte **vytvořit novou organizaci**.
    
@@ -53,7 +53,7 @@ Následující kurz vás provede podrobnými kroky.
    
 1. V dialogovém okně přihlášení pojmenujte organizaci Azure DevOps a přijměte přiřazení oblasti hostitele, nebo rozevírací seznam vyberte jinou oblast. Potom vyberte **Pokračovat**. 
 
-1. V části **vytvořit projekt pro**začátek zadejte *GroupCommon*a pak vyberte **vytvořit projekt**. 
+1. V části **vytvořit projekt pro** začátek zadejte *GroupCommon* a pak vyberte **vytvořit projekt**. 
    
    ![Vytvoření projektu](./media/group-manager-tasks/create-project.png)
 
@@ -65,9 +65,9 @@ Otevře se stránka **Souhrn** projektu **GroupCommon** . Adresa URL stránky je
 
 Azure Repos hostuje následující typy úložišť pro skupinu:
 
-- **Seskupit společná úložiště**: úložiště pro obecné účely, které může pro mnoho projektů pro datové vědy přijmout více týmů v rámci datové vědy. 
-- **Týmová úložiště**: úložiště pro konkrétní týmy v rámci datové vědy jednotky. Tato úložiště jsou specifická pro potřeby týmu a můžou se používat pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné, aby je bylo možné používat v rámci více týmů v rámci datové vědy jednotky.
-- Úložiště **projektů**: úložiště pro konkrétní projekty. Taková úložiště nemusí být dostatečně všeobecně pro více projektů v rámci týmu nebo pro jiné týmy v datové vědy jednotce.
+- **Seskupit společná úložiště** : úložiště pro obecné účely, které může pro mnoho projektů pro datové vědy přijmout více týmů v rámci datové vědy. 
+- **Týmová úložiště** : úložiště pro konkrétní týmy v rámci datové vědy jednotky. Tato úložiště jsou specifická pro potřeby týmu a můžou se používat pro více projektů v rámci tohoto týmu, ale nejsou dostatečně obecné, aby je bylo možné používat v rámci více týmů v rámci datové vědy jednotky.
+- Úložiště **projektů** : úložiště pro konkrétní projekty. Taková úložiště nemusí být dostatečně všeobecně pro více projektů v rámci týmu nebo pro jiné týmy v datové vědy jednotce.
 
 Chcete-li nastavit společné úložiště skupin ve vašem projektu, postupujte takto: 
 - Přejmenujte výchozí úložiště **GroupCommon** na **GroupProjectTemplate** .
@@ -75,7 +75,7 @@ Chcete-li nastavit společné úložiště skupin ve vašem projektu, postupujte
 
 ### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Přejmenujte výchozí úložiště projektu na GroupProjectTemplate.
 
-Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **GroupProjectTemplate**:
+Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **GroupProjectTemplate** :
 
 1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště**. Tato akce přejde do výchozího úložiště **GroupCommon** projektu GroupCommon, který je aktuálně prázdný.
    
@@ -83,11 +83,11 @@ Chcete-li přejmenovat výchozí úložiště projektu **GroupCommon** na **Grou
    
    ![Spravovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. Na stránce **nastavení projektu** vyberte **...** vedle **GroupCommon**a pak vyberte **Přejmenovat úložiště**. 
+1. Na stránce **nastavení projektu** vyberte **...** vedle **GroupCommon** a pak vyberte **Přejmenovat úložiště**. 
    
    ![Vybrat... a pak vyberte Přejmenovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. V místní nabídce **přejmenování úložiště GroupCommon** zadejte *GroupProjectTemplate*a pak vyberte **Přejmenovat**. 
+1. V místní nabídce **přejmenování úložiště GroupCommon** zadejte *GroupProjectTemplate* a pak vyberte **Přejmenovat**. 
    
    ![Přejmenovat úložiště](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
@@ -101,7 +101,7 @@ Vytvoření úložiště **GroupUtilities** :
    
    ![Vybrat nové úložiště](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. V dialogovém okně **vytvořit nové úložiště** jako **typ**vyberte **Git** , jako **název úložiště**zadejte *GroupUtilities* a pak vyberte **vytvořit**.
+1. V dialogovém okně **vytvořit nové úložiště** jako **typ** vyberte **Git** , jako **název úložiště** zadejte *GroupUtilities* a pak vyberte **vytvořit**.
    
    ![Vytvořit úložiště GroupUtilities](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
@@ -121,13 +121,13 @@ Import úložišť týmu TDSP:
    
    ![Vybrat Import](./media/group-manager-tasks/import-repo.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a jako **adresu URL klonu**zadejte *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.Git* . Pak vyberte **importovat**. Obsah úložiště Microsoft TDSP Team ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje** vyberte **Git** a jako **adresu URL klonu** zadejte *https: \/ /GitHub.com/Azure/Azure-TDSP-ProjectTemplate.Git* . Pak vyberte **importovat**. Obsah úložiště Microsoft TDSP Team ProjectTemplate se importuje do úložiště GroupProjectTemplate. 
    
    ![Importovat týmový úložiště Microsoft TDSP](./media/group-manager-tasks/import-repo-2.png)
    
 1. V horní části stránky **úložišť** rozbalte rozevírací seznam a vyberte úložiště **GroupUtilities** .
    
-1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.Git*, do úložiště **GroupUtilities** . 
+1. Opakujte proces importu pro import obsahu úložiště nástrojů Microsoft TDSP Team **Utility** , *https: \/ /GitHub.com/Azure/Azure-TDSP-Utilities.Git* , do úložiště **GroupUtilities** . 
    
 Každé ze dvou úložišť skupin teď obsahuje všechny soubory kromě těch, které jsou v adresáři *. Git* , z odpovídajícího úložiště týmu Microsoft TDSP. 
 
@@ -149,7 +149,7 @@ Postup přizpůsobení obsahu úložiště:
      
      ![Vytvořit nový soubor](./media/group-manager-tasks/new-file.png)
      
-   - Chcete-li odeslat soubory, vyberte možnost **nahrát**soubory. 
+   - Chcete-li odeslat soubory, vyberte možnost **nahrát** soubory. 
      
      ![Nahrání souborů](./media/group-manager-tasks/upload-files.png)
      
@@ -167,13 +167,13 @@ Pokud chcete provádět změny pomocí místního počítače nebo DSVM a vloži
 
 - Předplatné Azure, pokud chcete vytvořit DSVM.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
-- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 
 Nejdřív zkopírujte nebo *naklonujte* úložiště do místního počítače. 
    
-1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště a v**horní části stránky vyberte úložiště, které chcete klonovat.
+1. Na stránce **Souhrn** projektu **GroupCommon** **Vyberte úložiště a v** horní části stránky vyberte úložiště, které chcete klonovat.
    
 1. Na stránce úložiště vyberte **klonovat** v pravém horním rohu.
    
@@ -229,7 +229,7 @@ Přidání členů do skupiny:
 
 1. V Azure DevOps na domovské stránce projektu **GroupCommon** v levém navigačním panelu vyberte **nastavení projektu** . 
    
-1. V **nastavení projektu** vlevo navigace vyberte **týmy**a pak na stránce **týmy** vyberte **tým GroupCommon**. 
+1. V **nastavení projektu** vlevo navigace vyberte **týmy** a pak na stránce **týmy** vyberte **tým GroupCommon**. 
    
    ![Konfigurace týmů](./media/group-manager-tasks/teams.png)
    
@@ -248,7 +248,7 @@ Konfigurace oprávnění pro členy:
    
 1. Na stránce **oprávnění** vyberte skupinu, do které chcete přidat členy. 
    
-1. Na stránce pro tuto skupinu vyberte **členy**a pak vyberte **Přidat**. 
+1. Na stránce pro tuto skupinu vyberte **členy** a pak vyberte **Přidat**. 
    
 1. V místní nabídce **pozvat členy** vyhledejte a vyberte členy, které chcete přidat do skupiny, a pak vyberte **Uložit**. 
    

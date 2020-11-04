@@ -11,25 +11,26 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 0d9d28bacac02326ee781ca56309b7a72e921960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d160040620fcaa60a8adc955efcc54ac3ca2609e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289165"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321443"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>SESKUPENÍ podle možností v synapse SQL
+
 Synapse SQL umožňuje vývoj řešení implementací různých možností pro skupinu. 
 
-## <a name="what-does-group-by-do"></a>Co dělá GROUP BY
+## <a name="what-group-by-does"></a>Co dělá GROUP BY
 
 Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL agreguje data na souhrnnou sadu řádků.
 
-SQL na vyžádání podporuje celou škálu možností GROUP BY. Fond SQL podporuje omezený počet skupin podle možností.
+Fond SQL bez serveru podporuje celou škálu možností GROUP BY. Vyhrazený fond SQL podporuje omezený počet skupin podle možností.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>Možnosti seskupení podle podporované ve fondu SQL
+## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>Možnost seskupit podle je podporovaná ve vyhrazeném fondu SQL.
 
-Seskupit podle obsahuje některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
+Seskupit podle obsahuje některé možnosti, které vyhrazený fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
 
 * Seskupit podle se SOUHRNem
 * SADY SESKUPENÍ

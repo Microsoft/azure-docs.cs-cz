@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: a6612f3df5fba834dff8fc60e90c359ceff4cbe1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743102"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320483"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí pro Azure Machine Learning
 
@@ -55,7 +55,7 @@ Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě
 
 Tento soubor JSON musí být ve struktuře adresáře, která obsahuje vaše skripty Pythonu nebo Jupyter Poznámkový blok. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML* nebo v nadřazeném adresáři.
 
-Chcete-li použít tento soubor z kódu, použijte [`Workspace.from_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metodu. Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
+Chcete-li použít tento soubor z kódu, použijte [`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) metodu. Tento kód načte informace ze souboru a připojí se k vašemu pracovnímu prostoru.
 
 Vytvořte konfigurační soubor pracovního prostoru jedním z následujících způsobů:
 
@@ -67,7 +67,7 @@ Vytvořte konfigurační soubor pracovního prostoru jedním z následujících 
 
 * Azure Machine Learning Python SDK
 
-    Vytvořte skript pro připojení k Azure Machine Learningmu pracovnímu prostoru a použijte [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metodu k vygenerování souboru a uložte ho jako *. azureml/config.jsna* . Nezapomeňte nahradit `subscription_id` , `resource_group` a `workspace_name` vlastníky.
+    Vytvořte skript pro připojení k Azure Machine Learningmu pracovnímu prostoru a použijte [`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) metodu k vygenerování souboru a uložte ho jako *. azureml/config.jsna*. Nezapomeňte nahradit `subscription_id` , `resource_group` a `workspace_name` vlastníky.
 
     ```python
     from azureml.core import Workspace
@@ -97,7 +97,7 @@ Konfigurace místního vývojového prostředí (což může být také vzdálen
     > Pokud pracujete v systému Linux nebo macOS a používáte jiné prostředí než bash (například ZSH), může dojít k chybám při spuštění některých příkazů. Pokud chcete tento problém obejít, pomocí `bash` příkazu spusťte nové prostředí bash a spusťte příkazy tam.
 
 1. Aktivujte nově vytvořené virtuální prostředí Python.
-1. Nainstalujte [sadu Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
+1. Nainstalujte [sadu Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 1. Pokud chcete nakonfigurovat místní prostředí tak, aby používalo pracovní prostor Azure Machine Learning, [vytvořte konfigurační soubor pracovního prostoru](#workspace) nebo použijte existující.
 
 Teď, když máte nastavené místní prostředí, jste připraveni začít pracovat s Azure Machine Learning. Začínáme najdete v [příručce Začínáme v Azure Machine Learning Pythonu](tutorial-1st-experiment-sdk-setup-local.md) .
@@ -223,7 +223,7 @@ Jak Azure Databricks pracuje s Azure Machine Learning:
 
 ### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru datacihly
 
-Vytvořte [cluster datacihly](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
+Vytvořte [cluster datacihly](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
 **Vytvoření clusteru bude trvat několik minut.**
 
 Použijte tato nastavení:
@@ -243,7 +243,7 @@ Než budete pokračovat, počkejte, dokud cluster neběží.
 
 Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru. Pro automatizované ML přejděte na [sadu SDK pro datacihly s využitím automatizovaného oddílu strojového učení](#sdk-for-databricks-with-automated-machine-learning).
 
-1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit**  >  **knihovnu** .
+1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit**  >  **knihovnu**.
 
 1. Vyberte následující možnost (není podporována žádná jiná instalace sady SDK.)
 
@@ -254,15 +254,15 @@ Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-gu
    > [!Warning]
    > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte pouze možnost [ `databricks` ].
 
-   * Nevybírejte možnost **Připojit automaticky ke všem clusterům** .
+   * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
    * Vedle názvu clusteru vyberte  **připojit** .
 
 1. Monitoruje chyby, dokud se změny stavu **nepřipojí** , což může trvat několik minut.  Pokud tento krok neproběhne úspěšně:
 
    Zkuste cluster restartovat pomocí:
-   1. V levém podokně vyberte **clustery** .
+   1. V levém podokně vyberte **clustery**.
    1. V tabulce vyberte název vašeho clusteru.
-   1. Na kartě **knihovny** vyberte **restartovat** .
+   1. Na kartě **knihovny** vyberte **restartovat**.
 
    Zvažte také:
    + V AutoML config při použití Azure Databricks přidejte následující parametry:
@@ -297,4 +297,4 @@ Vyzkoušet:
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
-- Referenční informace o sadě [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)
+- Referenční informace o sadě [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)

@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy načítání dat
-description: Doporučení a optimalizace výkonu pro načítání dat do synapse SQL
+description: Doporučení a optimalizace výkonu pro načítání dat do vyhrazeného fondu SQL Azure synapse Analytics.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289227"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321513"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Osvědčené postupy načítání dat do vyhrazeného fondu SQL Azure synapse Analytics
 
 V tomto článku najdete doporučení a optimalizace výkonu pro načítání dat.
 
 ## <a name="prepare-data-in-azure-storage"></a>Příprava dat v Azure Storage
 
-K minimalizaci latence Najděte vrstvu úložiště a datový sklad.
+Pokud chcete minimalizovat latenci, najděte vrstvu úložiště a vyhrazený fond SQL.
 
 Při exportu dat do formátu souboru ORC může dojít k chybám s nedostatkem paměti Java, pokud se zde nacházejí velké textové sloupce. Toto omezení můžete obejít tím, že importujete jen podmnožinu sloupců.
 
@@ -36,7 +36,7 @@ Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
 ## <a name="run-loads-with-enough-compute"></a>Spuštění zátěže s dostatečnými výpočetními prostředky
 
-Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
+Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velkou úlohu načítání, zvažte, zda před zatížením škálovat vyhrazený fond SQL.
 
 Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání do konkrétní třídy prostředku nebo skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
 

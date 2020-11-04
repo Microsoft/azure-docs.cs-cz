@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864277"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321197"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Úlohy týmu vedoucích k týmovému zpracování týmových dat
 
@@ -49,7 +49,7 @@ Následující kurz vás provede podrobnými kroky.
 > [!NOTE] 
 > Tento článek používá Azure DevOps a DSVM k nastavení týmového prostředí TDSP, protože to je způsob implementace TDSP v Microsoftu. Pokud váš tým používá jiné hostování kódu nebo vývojové platformy, úkoly vedoucí týmu jsou stejné, ale způsob jejich dokončení může být jiný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že [správce skupiny](group-manager-tasks.md)nastavil následující prostředky a oprávnění:
 
@@ -61,7 +61,7 @@ Abyste mohli klonovat úložiště a upravovat svůj obsah na vašem místním p
 
 - Předplatné Azure.
 - V počítači je nainstalovaný Git. Pokud používáte DSVM, Git se předem nainstaluje. V opačném případě si přečtěte článek věnované [platformám a nástrojům](platforms-and-tools.md#appendix).
-- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](/azure/machine-learning/data-science-virtual-machine/).
+- Pokud chcete použít DSVM, Windows nebo Linux DSVM vytvořeného a nakonfigurovaného v Azure. Další informace a pokyny najdete v dokumentaci k [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
 - Pro Windows DSVM se na vašem počítači nainstaluje [Správce přihlašovacích údajů Git (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . V souboru *Readme.MD* se posuňte dolů k části **Stažení a instalace** a vyberte **nejnovější instalační program**. Stáhněte instalační program *. exe* z instalační stránky a spusťte ho. 
 - Pro Linux DSVM se v DSVM nastavil veřejný klíč SSH a přidal se do Azure DevOps. Další informace a pokyny najdete v části **vytvoření veřejného klíče SSH** v [příloze platformy a nástroje](platforms-and-tools.md#appendix). 
 
@@ -77,7 +77,7 @@ Názvy zadané pro úložiště a adresáře v tomto kurzu předpokládají, že
 - Malá skupina pro datové vědy, která nemá více týmů pro datové vědy. 
 - Širší skupina pro datové vědy s více týmy pro datové vědy, které si ale přeje optimalizovat spolupráci s aktivitami, jako je plánování sprintů na úrovni skupiny. 
 
-Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako je * \<TeamName> Šablona* a * \<TeamName> nástroje*. Např.: *TeamATemplate* a *TeamAUtilities*. 
+Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako je *\<TeamName> Šablona* a *\<TeamName> nástroje*. Např.: *TeamATemplate* a *TeamAUtilities*. 
 
 V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby věděli, které šablony a úložiště nástrojů se mají nastavit a klonovat. Vedoucí projektu by měli postupovat podle [úkolů vedoucího týmu pro datové vědy](project-lead-tasks.md) k vytváření úložišť projektů, ať už v samostatných projektech nebo v jednom projektu. 
 
@@ -85,17 +85,17 @@ V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby v�
 
 Vytvoření samostatného projektu pro váš tým:
 
-1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps, na adrese URL *https: \/ / \<server name> / \<organization name> *a vyberte **Nový projekt**. 
+1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps, na adrese URL *https: \/ / \<server name> / \<organization name>* a vyberte **Nový projekt**. 
    
    ![Vybrat nový projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. V dialogovém okně **vytvořit projekt** zadejte do pole **název projektu**název svého týmu, například *myTeam*, a pak vyberte **Upřesnit**. 
+1. V dialogovém okně **vytvořit projekt** zadejte do pole **název projektu** název svého týmu, například *myTeam* , a pak vyberte **Upřesnit**. 
    
-1. V části **Správa verzí**vyberte **Git**a v části **proces pracovní položky**vyberte **agilní**. Potom vyberte **Vytvořit**. 
+1. V části **Správa verzí** vyberte **Git** a v části **proces pracovní položky** vyberte **agilní**. Potom vyberte **Vytvořit**. 
    
    ![Vytvoření projektu](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Otevře se stránka s **přehledem** týmového projektu s adresou URL stránky *https: \/ / \<server name> / \<organization name> / \<team name> *.
+Otevře se stránka s **přehledem** týmového projektu s adresou URL stránky *https: \/ / \<server name> / \<organization name> / \<team name>*.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Přejmenujte výchozí úložiště MyTeam na TeamUtilities
 
@@ -110,7 +110,7 @@ Otevře se stránka s **přehledem** týmového projektu s adresou URL stránky 
    
    ![Vybrat přejmenovat úložiště](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. V místní nabídce **přejmenování úložiště myTeam** zadejte *TeamUtilities*a pak vyberte **Přejmenovat**. 
+1. V místní nabídce **přejmenování úložiště myTeam** zadejte *TeamUtilities* a pak vyberte **Přejmenovat**. 
 
 ### <a name="create-the-teamtemplate-repository"></a>Vytvoření úložiště TeamTemplate
 
@@ -120,7 +120,7 @@ Otevře se stránka s **přehledem** týmového projektu s adresou URL stránky 
    
    Nebo v levém navigačním panelu na stránce **Souhrn** projektu **myTeam** **Vyberte úložiště** , v horní části stránky vyberte úložiště a v rozevíracím seznamu vyberte **nové úložiště** .
    
-1. V dialogovém okně **vytvořit nové úložiště** se ujistěte, že je v části **typ**zaškrtnuté políčko **Git** . Do **pole název úložiště**zadejte *TeamTemplate* a pak vyberte **vytvořit**.
+1. V dialogovém okně **vytvořit nové úložiště** se ujistěte, že je v části **typ** zaškrtnuté políčko **Git** . Do **pole název úložiště** zadejte *TeamTemplate* a pak vyberte **vytvořit**.
    
    ![Vytvořit úložiště](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
    
@@ -140,7 +140,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
    ![Vybrat Import](./media/team-lead-tasks/import-repo.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https: \/ / \<server name> / \<organization name> /_git/ \<repository name> *. Příklad: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje** vyberte **Git** a v části **Adresa URL klonu** zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https: \/ / \<server name> / \<organization name> /_git/ \<repository name>*. Příklad: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Vyberte **Importovat**. Obsah úložiště šablony skupiny se importuje do vašeho týmového úložiště šablony. 
    
@@ -148,7 +148,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
 1. V horní části stránky **úložišť** projektu rozbalte rozevírací seznam a vyberte úložiště **TeamUtilities** .
    
-1. Opakujte proces importu pro import obsahu společného úložiště nástrojů pro vaše skupiny, například *GroupUtilities*, do úložiště **TeamUtilities** . 
+1. Opakujte proces importu pro import obsahu společného úložiště nástrojů pro vaše skupiny, například *GroupUtilities* , do úložiště **TeamUtilities** . 
    
 Každé ze dvou úložišť týmu teď obsahuje soubory z příslušného společného úložiště skupiny. 
 
@@ -168,7 +168,7 @@ Postup úpravy, nahrávání nebo vytváření souborů nebo složek přímo v A
      
      ![Vytvořit nový soubor](./media/team-lead-tasks/new-file.png)
      
-   - Chcete-li odeslat soubory, vyberte možnost **nahrát**soubory. 
+   - Chcete-li odeslat soubory, vyberte možnost **nahrát** soubory. 
      
      ![Nahrání souborů](./media/team-lead-tasks/upload-files.png)
      
@@ -184,11 +184,11 @@ Pokud chcete pracovat s úložišti na místním počítači nebo DSVM, nejdří
 
 Klonování úložišť:
 
-1. Na stránce **Souhrn** projektu **myTeam** **Vyberte úložiště a v**horní části stránky vyberte úložiště, které chcete klonovat.
+1. Na stránce **Souhrn** projektu **myTeam** **Vyberte úložiště a v** horní části stránky vyberte úložiště, které chcete klonovat.
    
 1. Na stránce úložiště vyberte **klonovat** v pravém horním rohu.
    
-1. V dialogu **úložiště klonování** v části **příkazový řádek**vyberte **https** pro připojení HTTP nebo **SSH** pro připojení SSH a zkopírujte adresu URL klonování do schránky.
+1. V dialogu **úložiště klonování** v části **příkazový řádek** vyberte **https** pro připojení HTTP nebo **SSH** pro připojení SSH a zkopírujte adresu URL klonování do schránky.
    
    ![Kopírovat adresu URL klonování](./media/team-lead-tasks/clone.png)
    
@@ -240,7 +240,7 @@ Chcete-li přidat členy do týmu:
 
 1. V Azure DevOps na domovské stránce projektu **myTeam** v levém navigačním panelu vyberte **nastavení projektu** . 
    
-1. V **nastavení projektu** vlevo navigace vyberte **týmy**a pak na stránce **týmy** vyberte **tým myTeam**. 
+1. V **nastavení projektu** vlevo navigace vyberte **týmy** a pak na stránce **týmy** vyberte **tým myTeam**. 
    
    ![Konfigurace týmů](./media/team-lead-tasks/teams.png)
    
@@ -259,7 +259,7 @@ Konfigurace oprávnění pro členy týmu:
    
 1. Na stránce **oprávnění** vyberte skupinu, do které chcete přidat členy. 
    
-1. Na stránce pro tuto skupinu vyberte **členy**a pak vyberte **Přidat**. 
+1. Na stránce pro tuto skupinu vyberte **členy** a pak vyberte **Přidat**. 
    
 1. V místní nabídce **pozvat členy** vyhledejte a vyberte členy, které chcete přidat do skupiny, a pak vyberte **Uložit**. 
    
@@ -296,7 +296,7 @@ Informace o sdílení dalších prostředků s týmem, například Azure HDInsig
    
 1. Vyberte účet úložiště, který se má použít, nebo vytvořte nové v rámci vybraného předplatného. Pro název služby Azure File Storage můžete použít malá písmena, číslice a spojovníky.
    
-1. Pokud chcete usnadnit připojení a sdílení úložiště, stiskněte ENTER nebo ENTER *Y* a uložte informace o službě Azure File Storage do textového souboru v aktuálním adresáři. Můžete vrátit tento textový soubor do úložiště **TeamTemplate** , v ideálním případě v **Docs\DataDictionaries**, aby k němu měli přístup všechny projekty ve vašem týmu. K připojení úložiště Azure File Storage k Azure DSVM v další části budete potřebovat taky informace o souboru. 
+1. Pokud chcete usnadnit připojení a sdílení úložiště, stiskněte ENTER nebo ENTER *Y* a uložte informace o službě Azure File Storage do textového souboru v aktuálním adresáři. Můžete vrátit tento textový soubor do úložiště **TeamTemplate** , v ideálním případě v **Docs\DataDictionaries** , aby k němu měli přístup všechny projekty ve vašem týmu. K připojení úložiště Azure File Storage k Azure DSVM v další části budete potřebovat taky informace o souboru. 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Připojení úložiště souborů Azure na místním počítači nebo DSVM
 
@@ -318,7 +318,7 @@ Informace o sdílení dalších prostředků s týmem, například Azure HDInsig
    
 1. Pokud chcete pokračovat, pokud jste v předchozím kroku uložili soubor s informacemi o službě Azure File Storage, stiskněte ENTER nebo ENTER *Y* . Zadejte úplnou cestu a název souboru, který jste vytvořili. 
    
-   Pokud nemáte soubor s informacemi o službě Azure File Storage, zadejte *n*a podle pokynů zadejte své předplatné, účet Azure Storage a informace o službě Azure File Storage.
+   Pokud nemáte soubor s informacemi o službě Azure File Storage, zadejte *n* a podle pokynů zadejte své předplatné, účet Azure Storage a informace o službě Azure File Storage.
    
 1. Zadejte název místního nebo TDSP jednotky pro připojení sdílené složky. Na obrazovce se zobrazí seznam existujících názvů jednotek. Zadejte název jednotky, který ještě neexistuje.
    

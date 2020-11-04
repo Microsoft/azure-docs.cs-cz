@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8789050257b8bc67649233760baefe7e2ee9adf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75864090"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320153"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server návody pro datové vědy pomocí jazyků R, Python a T-SQL
 
@@ -32,21 +32,21 @@ Návod k [použití SQL Server](sql-walkthrough.md) ukazuje, jak sestavit a nasa
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Předpovídání tipů taxislužby pomocí Microsoft R s SQL Server 
 
-Návod k [použití SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) ukazuje, jak sestavit a nasadit model R pro SQL Server. Tento návod je navržený tak, aby vývojářům R předvedl služby R (v databázi).
+Návod k [použití SQL Server R Services](/sql/machine-learning/tutorials/walkthrough-data-science-end-to-end-walkthrough) ukazuje, jak sestavit a nasadit model R pro SQL Server. Tento návod je navržený tak, aby vývojářům R předvedl služby R (v databázi).
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Předvídání tipů taxislužby pomocí R z T-SQL nebo uložených procedur pomocí SQL Server
 
-[Návod pro datové vědy pro R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) poskytuje programátorům v jazyce SQL zkušenosti s vytvářením řešení pro pokročilé analýzy pomocí jazyka Transact-SQL s využitím SQL Server R Services k zprovozněníí řešení R. 
+[Návod pro datové vědy pro R a SQL Server](/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) poskytuje programátorům v jazyce SQL zkušenosti s vytvářením řešení pro pokročilé analýzy pomocí jazyka Transact-SQL s využitím SQL Server R Services k zprovozněníí řešení R. 
 
 
 ## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Předpověď tipů taxislužby pomocí Pythonu v SQL Server uložených procedurách
 
-Návod k [používání služby T-SQL s SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) poskytuje programátorům SQL zkušenosti s vytvářením řešení strojového učení v SQL Server. Ukazuje, jak začlenit Python do aplikace přidáním kódu Pythonu do uložených procedur.
+Návod k [používání služby T-SQL s SQL Server Python Services](/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) poskytuje programátorům SQL zkušenosti s vytvářením řešení strojového učení v SQL Server. Ukazuje, jak začlenit Python do aplikace přidáním kódu Pythonu do uložených procedur.
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Diskuzi o klíčových součástech, které se skládají z vědeckého zpracování týmových dat, najdete v tématu [Přehled procesu vědeckého zpracování týmových dat](overview.md).
 
-Diskuzi o životním cyklu vědeckého zpracování týmových dat, které můžete použít ke strukturování projektů pro datové vědy, najdete v tématu [životní cyklus procesů týmového zpracování dat](lifecycle.md). Životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění. 
+Diskuzi o životním cyklu vědeckého zpracování týmových dat, které můžete použít ke strukturování projektů pro datové vědy, najdete v tématu [životní cyklus procesů týmového zpracování dat](lifecycle.md). Životní cyklus popisuje kroky od začátku do konce, které projekty obvykle následují při jejich spuštění.

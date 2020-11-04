@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287743"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321028"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Řešení potíží s Azure synapse Studio (Preview)
 
 Tato příručka pro řešení potíží poskytuje pokyny, které poskytují informace o tom, co je potřeba při otevření lístku podpory při potížích s připojením k síti. Se správnými informacemi můžeme pravděpodobně problém vyřešit rychleji.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Problém s připojením služby SQL na vyžádání (Preview)
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Problém s připojením služby SQL Server bez serveru (Preview)
 
 ### <a name="symptom-1"></a>Příznak 1
 
-Možnost "SQL na vyžádání" je v rozevíracím seznamu připojit k zobrazena šedě.
+Možnost fond SQL bez serveru se v rozevíracím seznamu připojit k zobrazí šedě.
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Příznak 2
 
-Spuštění dotazu s "SQL na vyžádání" vám poskytne chybovou zprávu "vytvoření připojení k serveru" se nezdařilo.
+Spuštění dotazu s "fondem SQL bez serveru" vám poskytne chybovou zprávu "vytvoření připojení k serveru" se nezdařilo.
 
 ![příznak 2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ Otevřete panel diagnostické informace, vyberte tlačítko "Stáhnout diagnosti
 
 Pokud chcete začít řešit potíže, zkuste operaci, kterou jste provedli v Azure synapse studiu.
 
-- V případě příznaku 1 vyberte tlačítko Aktualizovat napravo od rozevíracího seznamu použít databázi na kartě skript SQL a zkontrolujte, jestli se vám zobrazí text SQL na vyžádání.
+- V případě příznaku 1 vyberte tlačítko Aktualizovat napravo od rozevíracího seznamu použít databázi na kartě skript SQL a zkontrolujte, jestli se vám zobrazuje "fond SQL bez serveru".
 - V případě příznaku 2 zkuste spustit dotaz znovu, abyste viděli, jestli se úspěšně spustil.
 
 Pokud problém stále existuje, otevřete stisknutím klávesy F12 v prohlížeči Vývojářské nástroje (DevTools).
@@ -61,7 +61,7 @@ Vyhledejte položku, jejíž sloupec URL odpovídá následujícímu vzoru:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Kde [*A*] je název vašeho pracovního prostoru a "-OnDemand" může být "-sqlod" a kde [*B*] by měl být název databáze, například "Master". Mělo by existovat nejvíce dvou položek se stejnou hodnotou adresy URL, ale s různými hodnotami metod; MOŽNOSTI a POST. Ověřte, zda tyto dvě položky mají ve sloupci Stav hodnotu "200" nebo "20krát", kde "x" může být jakákoli jedna číslice.
+Kde [ *A* ] je název vašeho pracovního prostoru a "-OnDemand" může být "-sqlod" a kde [ *B* ] by měl být název databáze, například "Master". Mělo by existovat nejvíce dvou položek se stejnou hodnotou adresy URL, ale s různými hodnotami metod; MOŽNOSTI a POST. Ověřte, zda tyto dvě položky mají ve sloupci Stav hodnotu "200" nebo "20krát", kde "x" může být jakákoli jedna číslice.
 
 Pokud jeden z nich má jinou hodnotu než "20krát" a:
 
@@ -71,7 +71,7 @@ Pokud jeden z nich má jinou hodnotu než "20krát" a:
 
     - Pokud vidíte ERR_NAME_NOT_RESOLVED a pracovní prostor jste vytvořili během 10 minut, počkejte 10 minut a zkuste zjistit, jestli problém stále existuje.
     - Pokud vidíte ERR_INTERNET_DISCONNECTED nebo ERR_NETWORK_CHANGED, může to znamenat, že vaše síťové připojení k počítači má problémy. Ověřte připojení k síti a zkuste operaci zopakovat.
-    - Pokud vidíte ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR nebo jiné chybové kódy obsahující "SSL", může to znamenat, že vaše místní konfigurace SSL má problémy, nebo správce sítě zablokoval přístup k serveru SQL na vyžádání. Otevřete lístek podpory a v popisu připojte kód chyby.
+    - Pokud vidíte ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR nebo jiné chybové kódy obsahující "SSL", může to znamenat, že vaše místní konfigurace SSL má problémy, nebo správce sítě zablokoval přístup k serveru fondu SQL bez serveru. Otevřete lístek podpory a v popisu připojte kód chyby.
     - Pokud vidíte ERR_NETWORK_ACCESS_DENIED, může být nutné, abyste se u správce zkontrolovali, jestli vaše místní zásady brány firewall zablokovaly přístup k doméně *. database.windows.net nebo vzdálenému portu 1443.
     - Volitelně zkuste stejnou operaci hned na jiném počítači nebo v síťovém prostředí, abyste si vyzkoušeli problém s konfigurací sítě v počítači.
 

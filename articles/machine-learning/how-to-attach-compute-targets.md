@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cc4256ae0591e9fc82dcdce7c66514710fad3f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711248"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320821"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Nastavení cílových výpočetních prostředků pro školení a nasazení modelu
 
@@ -39,11 +39,11 @@ Pokud chcete použít výpočetní cíle spravované pomocí Azure Machine Learn
 * [Azure Machine Learning výpočetní cluster](how-to-create-attach-compute-cluster.md)
 * [Cluster služby Azure Kubernetes](how-to-create-attach-kubernetes.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
-* [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
+* [Rozšíření Azure CLI pro službu Machine Learning](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)nebo [rozšíření Azure Machine Learning Visual Studio Code](tutorial-setup-vscode-extension.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -58,9 +58,9 @@ Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších mat
 
 ## <a name="local-computer"></a><a id="local"></a>Místní počítač
 
-Pokud používáte místní počítač pro **školení**, není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
+Pokud používáte místní počítač pro **školení** , není nutné vytvářet cíl výpočtů.  Stačí jenom [Odeslat školicí běh](how-to-set-up-training-targets.md) z místního počítače.
 
-Použijete-li místní počítač pro **odvození**, je nutné mít nainstalovaný Docker. K provedení nasazení použijte [LocalWebservice.deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-port-none-) k definování portu, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
+Použijete-li místní počítač pro **odvození** , je nutné mít nainstalovaný Docker. K provedení nasazení použijte [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) k definování portu, který bude webová služba používat. Pak použijte normální proces nasazení, jak je popsáno v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>Vzdálené virtuální počítače
 
@@ -68,16 +68,16 @@ Azure Machine Learning také podporuje uvedení vlastního výpočetního prost�
 
 Můžete použít systémem sestavené prostředí Conda, již existující prostředí Pythonu nebo kontejner Docker. Aby bylo možné provést v kontejneru Docker, je nutné mít na virtuálním počítači spuštěný modul Docker. Tato funkce je užitečná hlavně v případě, že chcete pružně flexibilní prostředí pro vývoj a experimentování v cloudu než na vašem místním počítači.
 
-Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako virtuální počítač Azure s možností výběru. Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm).
+Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako virtuální počítač Azure s možností výběru. Tento virtuální počítač je předem konfigurovaným vývojovým prostředím pro datové vědy a AI v Azure. Virtuální počítač nabízí uspořádané možnosti nástrojů a platforem pro vývoj v rámci služby Machine Learning pro celou dobu životního cyklu. Další informace o tom, jak používat DSVM s Azure Machine Learning, najdete v tématu [Konfigurace vývojového prostředí](./how-to-configure-environment.md#dsvm).
 
-1. **Vytvořit**: Vytvořte DSVM ještě před tím, než ho použijete ke školení svého modelu. Pokud chcete tento prostředek vytvořit, přečtěte si téma [zřízení Data Science Virtual Machine pro Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Vytvořit** : Vytvořte DSVM ještě před tím, než ho použijete ke školení svého modelu. Pokud chcete tento prostředek vytvořit, přečtěte si téma [zřízení Data Science Virtual Machine pro Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning podporuje jenom virtuální počítače, které spouštějí **Ubuntu**. Když vytváříte virtuální počítač nebo zvolíte existující virtuální počítač, musíte vybrat virtuální počítač, který používá Ubuntu.
     > 
     > Azure Machine Learning také vyžaduje, aby virtuální počítač měl __veřejnou IP adresu__.
 
-1. **Připojit**: Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat ID prostředku, uživatelské jméno a heslo pro virtuální počítač. ID prostředku virtuálního počítače se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu virtuálního počítače pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Připojit** : Chcete-li připojit existující virtuální počítač jako cíl služby COMPUTE, je nutné zadat ID prostředku, uživatelské jméno a heslo pro virtuální počítač. ID prostředku virtuálního počítače se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu virtuálního počítače pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
     > [!WARNING]
     > Nevytvářejte více souběžných příloh stejného DSVM z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
-1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby DSVM Compute. Docker a conda slouží k vytvoření a konfiguraci školicího prostředí na DSVM.
+1. **Konfigurace** : Vytvořte konfiguraci spuštění pro cíl služby DSVM Compute. Docker a conda slouží k vytvoření a konfiguraci školicího prostředí na DSVM.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Pro tento scénář použijte Azure Data Science Virtual Machine (DSVM) jako vir
 
 Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platforma poskytuje Apache Spark, které je možné použít ke školení modelu.
 
-1. **Vytvořit**: Vytvořte cluster HDInsight předtím, než ho použijete ke školení svého modelu. Informace o vytvoření clusteru Spark v HDInsight najdete [v tématu Vytvoření clusteru Spark v HDInsight](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
+1. **Vytvořit** : Vytvořte cluster HDInsight předtím, než ho použijete ke školení svého modelu. Informace o vytvoření clusteru Spark v HDInsight najdete [v tématu Vytvoření clusteru Spark v HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning vyžaduje, aby cluster HDInsight měl __veřejnou IP adresu__.
@@ -137,7 +137,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
     
     Po vytvoření clusteru se k němu připojte pomocí \<clustername> názvu hostitele – SSH.azurehdinsight.NET, kde \<clustername> je název, který jste zadali pro cluster. 
 
-1. **Připojit**: Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat ID prostředku, uživatelské jméno a heslo pro cluster HDInsight. ID prostředku clusteru HDInsight se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu clusteru HDInsight pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **Připojit** : Pokud chcete připojit cluster HDInsight jako cíl výpočetní služby, musíte zadat ID prostředku, uživatelské jméno a heslo pro cluster HDInsight. ID prostředku clusteru HDInsight se dá vytvořit pomocí ID předplatného, názvu skupiny prostředků a názvu clusteru HDInsight pomocí následujícího formátu řetězce: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight je oblíbená platforma pro analýzu velkých objemů dat. Platf
     > [!WARNING]
     > Nevytvářejte více souběžných příloh ke stejné službě HDInsight z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
-1. **Konfigurace**: Vytvořte konfiguraci spuštění pro cíl služby HDI Compute. 
+1. **Konfigurace** : Vytvořte konfiguraci spuštění pro cíl služby HDI Compute. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch se používá ke efektivnímu spouštění rozsáhlých paralelních
 
 Chcete-li připojit Azure Batch jako cíl výpočtů, je nutné použít sadu Azure Machine Learning SDK a zadat následující informace:
 
--    **Azure Batch výpočetní název**: popisný název, který se má použít pro výpočetní prostředky v pracovním prostoru.
--    **Azure Batch název účtu**: název účtu Azure Batch
--    **Skupina prostředků**: Skupina prostředků, která obsahuje účet Azure Batch.
+-    **Azure Batch výpočetní název** : popisný název, který se má použít pro výpočetní prostředky v pracovním prostoru.
+-    **Azure Batch název účtu** : název účtu Azure Batch
+-    **Skupina prostředků** : Skupina prostředků, která obsahuje účet Azure Batch.
 
 Následující kód ukazuje, jak připojit Azure Batch jako cíl výpočtů:
 
@@ -219,15 +219,15 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Dá se použít jako cíl služby COMPUTE s kanálem Azure Machine Learning.
 
-Před použitím vytvořte pracovní prostor Azure Databricks. Pokud chcete vytvořit prostředek pracovního prostoru, přečtěte si téma [spuštění úlohy Spark v dokumentu Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) .
+Před použitím vytvořte pracovní prostor Azure Databricks. Pokud chcete vytvořit prostředek pracovního prostoru, přečtěte si téma [spuštění úlohy Spark v dokumentu Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) .
 
 Pokud chcete připojit Azure Databricks jako cíl výpočetních prostředků, zadejte následující informace:
 
-* __Výpočetní název datacihly__: název, který chcete přiřadit k tomuto výpočetnímu prostředku.
-* __Název pracovního prostoru datacihly__: název pracovního prostoru Azure Databricks.
-* __Přístupový token datacihly__: přístupový token, který se používá k ověření Azure Databricks. Přístup k vygenerování přístupového tokenu najdete v dokumentu [ověřování](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) .
+* __Výpočetní název datacihly__ : název, který chcete přiřadit k tomuto výpočetnímu prostředku.
+* __Název pracovního prostoru datacihly__ : název pracovního prostoru Azure Databricks.
+* __Přístupový token datacihly__ : přístupový token, který se používá k ověření Azure Databricks. Přístup k vygenerování přístupového tokenu najdete v dokumentu [ověřování](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) .
 
-Následující kód ukazuje, jak připojit Azure Databricks jako výpočetní cíl se sadou Azure Machine Learning SDK (__pracovní prostor datacihly musí být přítomen ve stejném předplatném jako váš pracovní prostor AML__):
+Následující kód ukazuje, jak připojit Azure Databricks jako výpočetní cíl se sadou Azure Machine Learning SDK ( __pracovní prostor datacihly musí být přítomen ve stejném předplatném jako váš pracovní prostor AML__ ):
 
 ```python
 import os
@@ -275,13 +275,13 @@ Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka
 
 Azure Data Lake Analytics je platforma pro analýzu velkých objemů dat v cloudu Azure. Dá se použít jako cíl služby COMPUTE s kanálem Azure Machine Learning.
 
-Před použitím vytvořte účet Azure Data Lake Analytics. Informace o vytvoření tohoto prostředku najdete v dokumentu [Začínáme s Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) .
+Před použitím vytvořte účet Azure Data Lake Analytics. Informace o vytvoření tohoto prostředku najdete v dokumentu [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) .
 
 Chcete-li připojit Data Lake Analytics jako cíl výpočtů, je nutné použít sadu Azure Machine Learning SDK a zadat následující informace:
 
-* __Název výpočtu__: název, který chcete přiřadit k tomuto výpočetnímu prostředku.
-* __Skupina prostředků__: Skupina prostředků, která obsahuje účet Data Lake Analytics.
-* __Název účtu__: název Data Lake Analytics účtu.
+* __Název výpočtu__ : název, který chcete přiřadit k tomuto výpočetnímu prostředku.
+* __Skupina prostředků__ : Skupina prostředků, která obsahuje účet Data Lake Analytics.
+* __Název účtu__ : název Data Lake Analytics účtu.
 
 Následující kód ukazuje, jak připojit Data Lake Analytics jako cíl výpočtů:
 
@@ -325,7 +325,7 @@ Podrobnější příklad najdete v [ukázkovém poznámkovém bloku](https://aka
 > Nevytvářejte více souběžných příloh stejného ADLA z vašeho pracovního prostoru. Každá nová příloha zruší předchozí existující přílohy.
 
 > [!TIP]
-> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py&preserve-view=true) ke zkopírování dat před školeními.
+> Kanály Azure Machine Learning můžou pracovat jenom s daty uloženými ve výchozím úložišti dat účtu Data Lake Analytics. Pokud jsou data, se kterými pracujete, v nevýchozím úložišti, můžete použít [`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) ke zkopírování dat před školeními.
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Instance kontejneru Azure
 
@@ -350,4 +350,4 @@ Příklady školení s různými cíli výpočtů najdete v těchto poznámkový
 * [Kurz: výuka modelu](tutorial-train-models-with-aml.md) používá ke školení modelu spravovaný výpočetní cíl.
 * Naučte se [efektivně ladit parametry](how-to-tune-hyperparameters.md) pro vytváření lepších modelů.
 * Jakmile budete mít školený model, zjistěte, [jak a kde nasadit modely](how-to-deploy-and-where.md).
-* [Použití Azure Machine Learning s Azure Virtual Networks](how-to-enable-virtual-network.md)
+* [Použití Azure Machine Learning s Azure Virtual Networks](./how-to-network-security-overview.md)

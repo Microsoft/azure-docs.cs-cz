@@ -1,6 +1,6 @@
 ---
-title: Dotazování na soubory CSV pomocí SQL na vyžádání (Preview)
-description: V tomto článku se dozvíte, jak zadávat dotazy na samostatné soubory CSV s různými formáty souborů pomocí SQL na vyžádání (Preview).
+title: Dotazování na soubory CSV pomocí neserverového fondu SQL (Preview)
+description: V tomto článku se dozvíte, jak zadávat dotazy na samostatné soubory CSV s různými formáty souborů pomocí SQL fondu bez serveru (Preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f8a30503e14e647cbc9151ebcea7efa000ca07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e5a64a75ca6cde4172e49eb77dde42a44c06d5e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288286"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321463"
 ---
 # <a name="query-csv-files"></a>Dotazování souborů CSV
 
-V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
+V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
 
 - S a bez řádku záhlaví
 - Hodnoty oddělené čárkami a tabulátory
@@ -93,7 +93,7 @@ from openrowset(
 
 V následujících částech se můžete podívat, jak se dotazovat na různé typy souborů CSV.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Prvním krokem je **Vytvoření databáze** , ve které budou vytvořeny tabulky. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 

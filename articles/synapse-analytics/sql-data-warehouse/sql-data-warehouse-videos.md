@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213784"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321006"
 ---
-# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure synapse Analytics – videa o fondech SQL
+# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Videa ke službě Azure synapse Analytics – vyhrazená videa ke fondu SQL
 
-Podívejte se na nejnovější videa ke fondu SQL Azure synapse a seznamte se s novými funkcemi a vylepšeními výkonu. 
+Podívejte se na nejnovější videa o vyhrazeném fondu SQL a seznamte se s novými funkcemi a vylepšeními výkonu. 
 
-Pokud chcete začít, podívejte se na následující video s přehledem, kde se dozvíte o nových aktualizacích fondu SQL Azure synapse. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
+Začněte tím, že vyberete níže uvedené video s přehledem, kde se dozvíte o nových aktualizacích vyhrazeného fondu SQL. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

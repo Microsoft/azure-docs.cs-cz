@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cb49fc33567b13065351a28a557232212c6adc4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479336"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93319649"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architektura Azure synapse Analytics (dříve SQL DW)
 
@@ -25,8 +25,8 @@ Azure Synapse je neomezená analytická služba, která spojuje podnikové sklad
 
 - Synapse SQL: kompletní analýzy založené na T-SQL
 
-  - Fond SQL (placený za DWU zřízený) – všeobecně dostupné
-  - SQL na vyžádání (platba za TB zpracovaná) – (Preview)
+  - Vyhrazený fond SQL (placený za DWU zřízený) – všeobecně dostupné
+  - Fond SQL bez serveru (placený za TB zpracovaných) – (Preview)
 - Spark: hluboce integrované Apache Spark (Preview)
 - Integrace dat: integrace hybridních dat (Preview)
 - Studio: jednotné uživatelské prostředí.  (Preview)
@@ -35,7 +35,7 @@ Azure Synapse je neomezená analytická služba, která spojuje podnikové sklad
 
 ## <a name="synapse-sql-architecture-components"></a>Komponenty architektury synapse SQL
 
-[Synapse SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) využívá architekturu pro horizontální navýšení kapacity k distribuci výpočetního zpracování dat napříč více uzly. Jednotka škálování je abstrakce výpočetního výkonu, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Výpočetní prostředky jsou oddělené od úložiště, což umožňuje škálovat výpočetní prostředky nezávisle na datech v systému.
+[Synapse SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) využívá architekturu pro horizontální navýšení kapacity k distribuci výpočetního zpracování dat napříč více uzly. Jednotka škálování je abstrakce výpočetního výkonu, který se označuje jako [jednotka datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Výpočetní prostředky jsou oddělené od úložiště, což umožňuje škálovat výpočetní prostředky nezávisle na datech v systému.
 
 ![Architektura Synapse SQL](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 

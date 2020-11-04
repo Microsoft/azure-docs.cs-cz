@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e94288b49cd57b59c126c95ca507477f1c56946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913275"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321522"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Kurz: použití R k vytvoření modelu Machine Learning (Preview)
 
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -50,7 +50,7 @@ Existuje mnoho způsobů, jak [vytvořit pracovní prostor](how-to-manage-worksp
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> Poznamenejte si svůj **pracovní prostor** a **předplatné** . Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
+> Poznamenejte si svůj **pracovní prostor** a **předplatné**. Budete je potřebovat, abyste se ujistili, že vytvoříte experiment na správném místě. 
 
 
 ## <a name="open-rstudio"></a><a name="open"></a>Otevřít RStudio
@@ -74,13 +74,13 @@ Naklonujte https://github.com/Azure/azureml-sdk-for-r úložiště GitHub pro ko
 
 1. Spusťte `git clone https://github.com/Azure/azureml-sdk-for-r` v terminálu a naklonujte úložiště.
 
-1. V RStudio přejděte do složky *Vignettes* naklonované složky *AzureML-SDK-for-r* .  V části *Vignettes* vyberte možnost *výuka a nasazení-First-model. RMD* soubor k vyhledání Vignette používané v tomto kurzu. Další soubory používané pro Vignette jsou umístěné v podsložce s *výukou a nasazením prvního modelu* . Po otevření Vignette nastavte pracovní adresář na umístění souboru prostřednictvím **relace > nastavte pracovní adresář > na umístění zdrojového souboru** . 
+1. V RStudio přejděte do složky *Vignettes* naklonované složky *AzureML-SDK-for-r* .  V části *Vignettes* vyberte možnost *výuka a nasazení-First-model. RMD* soubor k vyhledání Vignette používané v tomto kurzu. Další soubory používané pro Vignette jsou umístěné v podsložce s *výukou a nasazením prvního modelu* . Po otevření Vignette nastavte pracovní adresář na umístění souboru prostřednictvím **relace > nastavte pracovní adresář > na umístění zdrojového souboru**. 
 
 > [!Important]
 > Zbývající část tohoto článku obsahuje stejný obsah, jak vidíte v tématu *výuka a nasazení-First-model. Soubor RMD* Pokud máte zkušenosti s RMarkdown, můžete použít kód z tohoto souboru.  Nebo můžete zkopírovat nebo vložit fragmenty kódu z nebo z tohoto článku do skriptu R nebo příkazového řádku. 
 
 
-## <a name="set-up-your-development-environment"></a>Nastavíte vývojové prostředí
+## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 Nastavení pro vývojovou práci v tomto kurzu zahrnuje následující akce:
 
 * Instalace požadovaných balíčků
@@ -188,7 +188,7 @@ Pro tento kurz si nahráli model logistické regrese pro nahraná data pomocí v
 
 * Školicí skript přebírá argument `-d` pro vyhledání adresáře, který obsahuje školicí data. Při pozdějším definování a odeslání úlohy odkazujete na úložiště dat pro tento argument. Služba Azure ML připojí složku úložiště ke vzdálenému clusteru pro úlohu školení.
 * Školicí skript zaznamená konečnou přesnost jako metriku pro záznam spuštění v Azure ML pomocí `log_metric_to_run()` . Sada Azure ML SDK poskytuje sadu protokolovacích rozhraní API pro protokolování různých metrik během školicích běhů. Tyto metriky se zaznamenávají a ukládají v záznamu experimentálního spuštění. Metriky je pak možné kdykoli otevřít nebo zobrazit na stránce Podrobnosti o spuštění v nástroji [Studio](https://ml.azure.com). Úplnou sadu metod protokolování najdete v [referenčních informacích](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()` .
-* Školicí skript uloží model do adresáře s názvem **výstupy** . `./outputs`Složka přijímá zvláštní zacházení pomocí Azure ml. Během školení se soubory zapsané do `./outputs` automaticky odešlou do záznamu o spuštění pomocí Azure ml a trvale se uloží jako artefakty. Uložením školicího modelu do nástroje budete `./outputs` moci získat přístup k souboru modelu a načíst ho i po skončení běhu a už nebudete mít přístup ke vzdálenému školicímu prostředí.
+* Školicí skript uloží model do adresáře s názvem **výstupy**. `./outputs`Složka přijímá zvláštní zacházení pomocí Azure ml. Během školení se soubory zapsané do `./outputs` automaticky odešlou do záznamu o spuštění pomocí Azure ml a trvale se uloží jako artefakty. Uložením školicího modelu do nástroje budete `./outputs` moci získat přístup k souboru modelu a načíst ho i po skončení běhu a už nebudete mít přístup ke vzdálenému školicímu prostředí.
 
 ### <a name="create-an-estimator"></a>Vytvoření estimátoru
 
@@ -212,7 +212,7 @@ est <- estimator(source_directory = "train-and-deploy-first-model",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>Odešlete úlohu ve vzdáleném clusteru.
 
-Nakonec odešlete úlohu ke spuštění v clusteru. `submit_experiment()` Vrátí objekt Run, který pak použijete k rozhraní v běhu. V celkovém případě trvá první spuštění **přibližně 10 minut** . Ale pro pozdější spuštění se stejná image Docker použije znovu, dokud se závislosti skriptů nezmění.  V tomto případě je obrázek uložen do mezipaměti a čas spuštění kontejneru je mnohem rychlejší.
+Nakonec odešlete úlohu ke spuštění v clusteru. `submit_experiment()` Vrátí objekt Run, který pak použijete k rozhraní v běhu. V celkovém případě trvá první spuštění **přibližně 10 minut**. Ale pro pozdější spuštění se stejná image Docker použije znovu, dokud se závislosti skriptů nezmění.  V tomto případě je obrázek uložen do mezipaměti a čas spuštění kontejneru je mnohem rychlejší.
 
 ```R
 run <- submit_experiment(exp, est)
@@ -289,7 +289,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Nasazení jako webové služby
 
-Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte Azure ML k nasazení modelu jako předpovědi služby. V tomto kurzu nasadíte webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI).
+Pomocí modelu můžete předpovědět nebezpečí smrti proti kolizi. Použijte Azure ML k nasazení modelu jako předpovědi služby. V tomto kurzu nasadíte webovou službu v [Azure Container Instances](../container-instances/index.yml) (ACI).
 
 ### <a name="register-the-model"></a>Registrace modelu
 
@@ -329,7 +329,7 @@ V tomto kurzu nasadíte službu, která bude ACI. Tento kód zřídí jeden kont
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-Nyní model nasadíte jako webovou službu. Nasazení **může trvat několik minut** . 
+Nyní model nasadíte jako webovou službu. Nasazení **může trvat několik minut**. 
 
 ```R
 aci_service <- deploy_model(ws, 
@@ -392,7 +392,7 @@ delete_compute(compute)
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit** .
+Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2da8bd0b36b553a4b5f85b6f79987ab1a7b8d5a7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286570"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321719"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -28,7 +28,7 @@ Azure Data CLI ( `azdata` ) číslo verze: 20.2.3. Stáhnout v [https://aka.ms/a
 
 Tato verze přináší následující zásadní změny: 
 
-* Soubory PostgreSQL vlastní definice prostředků (CRD) nahradí pojem `shards` přejmenování na `workers` . Tato podmínka ( `workers` ) odpovídá názvu parametru příkazového řádku.
+* V definici vlastních prostředků PostgreSQL (CRD) se pojem `shards` přejmenuje na `workers` . Tato podmínka ( `workers` ) odpovídá názvu parametru příkazového řádku.
 
 * `azdata arc postgres server delete` před odstraněním instance Postgres se zobrazí výzva k potvrzení.  Použijte `--force` k přeskočení výzvy.
 
@@ -50,15 +50,15 @@ Tato verze přináší následující zásadní změny:
 
    * Pokud se do Azure nezavedla žádná data, zobrazí se výzva k jejímu pokusu.
 
-* `azdata arc dc debug copy-logs` nyní také čte ze `/var/opt/controller/log` složky a shromažďuje protokoly Postgres.
+* `azdata arc dc debug copy-logs` nyní také čte ze `/var/opt/controller/log` složky a shromažďuje protokoly PostgreSQL Engine v systému Linux.
 
-*   Zobrazit pracovní indikátor během Postgres vytváření a obnovování zálohy.
+*   Zobrazit pracovní indikátor během vytváření a obnovování zálohy s PostgreSQL s měřítkem.
 
 * `azdata arc postrgres backup list` nyní obsahuje informace o velikosti zálohy.
 
 * Do pravého sloupce okna přehledu v Azure Portal byla přidána vlastnost název správce spravované instance SQL.
 
-* Azure Data Studio podporuje konfiguraci počtu pracovních uzlů, vCore a nastavení paměti pro skupinu serverů. 
+* Azure Data Studio podporuje konfiguraci počtu pracovních uzlů, vCore a nastavení paměti pro PostgreSQL s měřítkem. 
 
 * Preview podporuje zálohování a obnovení pro Postgres verze 11 a 12.
 
@@ -80,9 +80,7 @@ Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview
 - Prozatím, pokud používáte systém souborů NFS, musíte `allowRunAsRoot` `true` před vytvořením řadiče dat ARC Azure nastavit v souboru profilu nasazení.
 - Ověřování SQL a PostgreSQL přihlášení.  Žádná podpora pro Azure Active Directory ani službu Active Directory.
 - Vytvoření kontroleru dat v OpenShift vyžaduje odlehčené omezení zabezpečení.  Podrobnosti najdete v dokumentaci.
-- Škálování počtu PostgresSQL _pracovních uzlů v_ rámci škálování na více systému se nepodporuje.
 - Pokud používáte Azure Kubernetes Service Engine (AKS Engine) v Azure Stack hub s řadiči dat a instancemi databáze Azure ARC, upgrade na novější verzi Kubernetes není podporován. Před upgradem clusteru Kubernetes odinstalujte řadič dat ARC Azure a všechny instance databáze.
-- Verze Preview nepodporuje modul zálohování a obnovení pro Postgres verze 11. (Vyřešeno v říjnu, 2020) Podporuje jenom zálohování a obnovení pro Postgres verze 12.
 - Služba Azure Kubernetes Service (AKS), clustery, které mají [více zón dostupnosti](../../aks/availability-zones.md) , se v současné době pro datové služby s podporou ARC Azure nepodporují. Chcete-li se tomuto problému vyhnout, při vytváření clusteru AKS v Azure Portal vyberte oblast, ve které jsou zóny k dispozici, a zrušte zaškrtnutí všech zón v ovládacím prvku výběr. Viz následující obrázek:
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="Zrušte zaškrtnutí políček u jednotlivých zón a určete možnost žádná.":::
@@ -90,10 +88,11 @@ Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview
 
 ### <a name="known-issues-for-azure-arc-enabled-postgresql-hyperscale"></a>Známé problémy s povoleným PostgreSQLm škálováním pro Azure ARC   
 
+- Verze Preview nepodporuje modul zálohování a obnovení pro PostgreSQL verze 11. Podporuje jenom zálohování a obnovení pro PostgreSQL verze 12.
+- `azdata arc dc debug copy-logs` nnezachytí není shromažďovat protokoly PostgreSQL Engine v systému Windows.
 - Opětovné vytvoření skupiny serverů s názvem skupiny serverů, kterou jste právě odstranili, může selhat nebo zablokovat. 
    - **Alternativní řešení** Nepoužívejte stejný název při opětovném vytvoření skupiny serverů nebo počkejte na Vyrovnávání zatížení/externí službu dříve odstraněné skupiny serverů. Za předpokladu, že název skupiny serverů, kterou jste odstranili `postgres01` a která byla hostována v oboru názvů `arc` , než znovu vytvoříte skupinu serverů se stejným názvem, počkejte, dokud `postgres01-external-svc` se nezobrazuje ve výstupu příkazu kubectl `kubectl get svc -n arc` .
- 
-- Načítání stránky s přehledem a konfigurace služby COMPUTE + úložiště v Azure Data Studio je pomalé. 
+ - Načítání stránky s přehledem a konfigurace služby COMPUTE + úložiště v Azure Data Studio je pomalé. 
 
 
 

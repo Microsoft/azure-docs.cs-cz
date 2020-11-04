@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c024b12210d408fe2a9987cba56a08e4b660ae1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027541"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321332"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
-V tomto návodu se používá HDInsight Spark k provádění zkoumání dat a výukového modelu binární klasifikace a regrese s využitím křížového ověřování a optimalizace pomocí parametrů pro ukázku NYC datové sady taxislužby TRIPS a tarif 2013. Provede vás jednotlivými kroky [procesu pro datové vědy](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)a koncovým účelem použití clusteru HDInsight Spark ke zpracování a objektů BLOB v Azure k ukládání dat a modelů. Tento proces zkoumá a vizualizuje data převedená z Azure Storage Blob a potom připraví data k sestavení prediktivních modelů. Python se použil k zakódování řešení a k zobrazení relevantních ploch. Tyto modely jsou sestavené pomocí sady nástrojů Spark MLlib k provádění binární klasifikace a regresní úlohy modelování. 
+V tomto návodu se používá HDInsight Spark k provádění zkoumání dat a výukového modelu binární klasifikace a regrese s využitím křížového ověřování a optimalizace pomocí parametrů pro ukázku NYC datové sady taxislužby TRIPS a tarif 2013. Provede vás jednotlivými kroky [procesu pro datové vědy](./index.yml)a koncovým účelem použití clusteru HDInsight Spark ke zpracování a objektů BLOB v Azure k ukládání dat a modelů. Tento proces zkoumá a vizualizuje data převedená z Azure Storage Blob a potom připraví data k sestavení prediktivních modelů. Python se použil k zakódování řešení a k zobrazení relevantních ploch. Tyto modely jsou sestavené pomocí sady nástrojů Spark MLlib k provádění binární klasifikace a regresní úlohy modelování. 
 
 * V rámci úlohy **binární klasifikace** je předpovědět, zda je pro danou cestu placen Tip. 
 * **Regresní** úlohou je předpovědět množství tipů na základě dalších funkcí Tip. 
@@ -119,7 +119,7 @@ Jádra PySpark, která jsou poskytována pomocí poznámkových bloků Jupyter, 
 Jádro PySpark poskytuje některé předdefinované "MAGICS", což jsou speciální příkazy, které můžete volat pomocí%%. Existují dva takové příkazy, které jsou použity v těchto ukázkách kódu.
 
 * **%% místní** Určuje, že kód v následných řádcích má být proveden místně. Kód musí být platný kód Pythonu.
-* **%% SQL-o \<variable name> ** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
+* **%% SQL-o \<variable name>** Spustí dotaz na podregistr pro kontext SqlContext. Pokud je předán parametr-o, výsledek dotazu je trvalý v kontextu%% Local Python jako PANDAS dataframe.
 
 Další informace o jádrech pro Jupyter poznámkových blocích a předdefinovaných "Magic" najdete v tématu [jádra dostupná pro poznámkové bloky Jupyter s clustery HDInsight Spark Linux v HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -202,7 +202,7 @@ Až se data přenesou do Sparku, další krok v rámci vědeckého zpracování 
 Tento kód a následné fragmenty kódu používají SQL Magic k dotazování na ukázku a místní Magic k vykreslení dat.
 
 * **SQL Magic ( `%%sql` )** jádro HDInsight PySpark podporuje jednoduché vložené dotazy HiveQL proti kontext SqlContext. Argument (-o VARIABLE_NAME) uchovává výstup dotazu SQL jako PANDAS dataframe na serveru Jupyter. To znamená, že je k dispozici v místním režimu.
-* ** `%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` Magic po `%%sql -o` použití Magic pro spuštění dotazu. Parametr-o by zachoval výstup dotazu SQL místně. Potom `%%local` Magic spustí další sadu fragmentů kódu, aby běžela lokálně na výstupu dotazů SQL, které byly trvale uložené v místním prostředí. Výstup je automaticky vizuálů po spuštění kódu.
+* **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavnímu uzlu clusteru HDInsight. Obvykle použijete `%%local` Magic po `%%sql -o` použití Magic pro spuštění dotazu. Parametr-o by zachoval výstup dotazu SQL místně. Potom `%%local` Magic spustí další sadu fragmentů kódu, aby běžela lokálně na výstupu dotazů SQL, které byly trvale uložené v místním prostředí. Výstup je automaticky vizuálů po spuštění kódu.
 
 Tento dotaz načte počet cest podle počtu cestujících. 
 
@@ -764,7 +764,7 @@ Doba potřebná k provedení výše v buňce: 2,67 sekund
 
 **Znázorněte křivku ROC.**
 
-*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results*v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
+*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results* v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
 
 ```python
 # QUERY RESULTS                              
@@ -895,7 +895,7 @@ Doba potřebná k provedení výše v buňce: 107,98 sekund
 
 **Znázorněte křivku ROC.**
 
-*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results*v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
+*PredictionAndLabelsDF* je registrován jako tabulka, *tmp_results* v předchozí buňce. *tmp_results* lze použít k provádění dotazů a výstupních výsledků do sqlResults dat – rámec pro vykreslení. Zde je kód.
 
 ```python
 # QUERY RESULTS
@@ -1508,4 +1508,3 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Teď, když jste vytvořili regresní a klasifikační modely pomocí Spark MlLib, jste připraveni zjistit, jak tyto modely hodnotit a vyhodnocovat.
 
 **Spotřeba modelu:** Informace o tom, jak hodnotit a hodnotit modely klasifikace a regrese vytvořené v tomto tématu, najdete v tématu [skóre a vyhodnocení modelů strojového učení s využitím Sparku](spark-model-consumption.md).
-

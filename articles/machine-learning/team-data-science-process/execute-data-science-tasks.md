@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5fe11b20ff8e96bc4b0d997c49201aafdd2e2cac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbe822b75368a1ab72bcd7f73419770b291d2508
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320519"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321155"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Provádění úloh pro datové vědy: průzkum, modelování a nasazení
 
 Mezi typické úlohy pro datové vědy patří zkoumání, modelování a nasazení dat. V tomto článku se dozvíte, jak používat interaktivní nástroje pro **zkoumání a analýzu dat a vytváření sestav (** **AMAR)** k dokončení několika běžných úloh vědeckého zpracování dat, jako jsou interaktivní zkoumání dat, analýza dat, generování sestav a vytváření modelů. Možnosti nasazení modelu do produkčního prostředí můžou zahrnovat:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL Server se službami ML](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
+- [SQL Server se službami ML](/sql/advanced-analytics/r/r-services)
+- [Microsoft Machine Learning Server](/machine-learning-server/what-is-machine-learning-server)
 
 
 ## <a name="1--exploration"></a>1. <a name='DataQualityReportUtility-1'></a> průzkum 
@@ -76,7 +76,7 @@ Po vytvoření více modelů je obvykle potřeba mít systém pro registraci a s
 1. [Azure Machine Learning – služba správy modelů](../index.yml)
 2. [ModelDB od MIT](http://modeldb.csail.mit.edu:3000/projects) 
 3. [SQL Server jako systém správy modelů](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
-4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+4. [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 ## <a name="3--deployment"></a>3. <a name='Deployment-3'></a> nasazení
 
@@ -87,8 +87,8 @@ Existují různé přístupy a platformy pro vložení modelů do produkčního 
 
 
 - [Nasazení modelu v Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Nasazení modelu v systému SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [Nasazení modelu v systému SQL Server](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
 > Před nasazením musí mít jeden z nich jistotu, že latence modelu je pro použití v produkčním prostředí dostatečně nízká.
