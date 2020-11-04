@@ -9,23 +9,23 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 0064509c1158d8b016413046cb528bfd125b5f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 158541d34568b7ea02ea82dbfe90f5801824716f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362312"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325786"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
 
-**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Přeškolení modelů strojového učení je jedním ze způsobů, jak zajistit, aby byly přesné a na základě nejdůležitějších dostupných dat. V tomto článku se dozvíte, jak přeškolit webovou službu klasického studia (Classic). Návod, jak přeškolit novou webovou službu studia (Classic), najdete v [tomto článku s postupem.](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
+V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](./retrain-machine-learning-model.md) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
      
 ## <a name="add-a-new-endpoint"></a>Přidat nový koncový bod
 
@@ -76,7 +76,7 @@ Stránka s informacemi o opravě obsahuje adresu URL opravy, kterou je nutné po
 
 Nyní můžete použít trained model pro aktualizaci koncového bodu, který jste vytvořili dříve.
 
-Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *RelativeLocation*, *SasBlobToken*a patch aktualizovat koncový bod.
+Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation* , *RelativeLocation* , *SasBlobToken* a patch aktualizovat koncový bod.
 
 ```csharp
 private async Task OverwriteModel()

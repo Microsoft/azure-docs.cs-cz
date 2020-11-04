@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 8aad0d9fde30a235903364d57a73c1c53f08ecce
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145782"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325764"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -85,7 +85,7 @@ Pomocí projekce můžete zvolit, které sloupce bude dotaz vracet.
 >[!NOTE]
 >V současné době nejsou složité vlastnosti podporovány. Chcete-li zajistit, aby vlastnosti projekce byly platné, zkombinujte projekce s `IS_PRIMITIVE` kontrolou.
 
-Tady je příklad dotazu, který pomocí projekce vrací vlákna a vztahy. Následující dotaz projektuje *spotřebitel* , *továrnu* a *hranu* z scénáře, kdy *továrna* s ID *ABC* souvisí s *příjemcem* prostřednictvím vztahu *Factory. Customer.* tento vztah je zobrazený jako *okraj* .
+Tady je příklad dotazu, který pomocí projekce vrací vlákna a vztahy. Následující dotaz projektuje *spotřebitel* , *továrnu* a *hranu* z scénáře, kdy *továrna* s ID *ABC* souvisí s *příjemcem* prostřednictvím vztahu *Factory. Customer.* tento vztah je zobrazený jako *okraj*.
 
 ```sql
 SELECT Consumer, Factory, Edge
@@ -94,7 +94,7 @@ JOIN Consumer RELATED Factory.customer Edge
 WHERE Factory.$dtId = 'ABC'
 ```
 
-Můžete také použít projekci k vrácení vlastnosti vlákna. Následující dotaz projektuje vlastnost *Name* pro *uživatele* , kteří se vztahují k *továrně* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer* .
+Můžete také použít projekci k vrácení vlastnosti vlákna. Následující dotaz projektuje vlastnost *Name* pro *uživatele* , kteří se vztahují k *továrně* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer*.
 
 ```sql
 SELECT Consumer.name
@@ -104,7 +104,7 @@ WHERE Factory.$dtId = 'ABC'
 AND IS_PRIMITIVE(Consumer.name)
 ```
 
-Můžete také použít projekci a vrátit vlastnost vztahu. Podobně jako v předchozím příkladu následující dotaz projektuje vlastnost *Name* *příjemců* souvisejících s *objektem Factory* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer.* nyní ale vrátí také dvě vlastnosti vztahu, *Prop1* a *prop2* . Provádí pojmenování *hraničních* vztahů a shromáždění jeho vlastností.  
+Můžete také použít projekci a vrátit vlastnost vztahu. Podobně jako v předchozím příkladu následující dotaz projektuje vlastnost *Name* *příjemců* souvisejících s *objektem Factory* s ID *ABC* prostřednictvím vztahu objektu *Factory. Customer.* nyní ale vrátí také dvě vlastnosti vztahu, *Prop1* a *prop2*. Provádí pojmenování *hraničních* vztahů a shromáždění jeho vlastností.  
 
 ```sql
 SELECT Consumer.name, Edge.prop1, Edge.prop2, Factory.area
@@ -151,7 +151,7 @@ AND T.Temperature = 70
 > [!TIP]
 > ID digitálního vlákna se dotazuje pomocí pole metadata `$dtId` .
 
-Můžete také získat vlákna na základě **toho, zda je definována určitá vlastnost** . Tady je dotaz, který vrací vlákna, která mají definovanou vlastnost *Location* :
+Můžete také získat vlákna na základě **toho, zda je definována určitá vlastnost**. Tady je dotaz, který vrací vlákna, která mají definovanou vlastnost *Location* :
 
 ```sql
 SELECT *
@@ -164,7 +164,7 @@ To vám může přispět k získání vláken podle jejich vlastností *značek*
 select * from digitaltwins where is_defined(tags.red)
 ```
 
-Můžete také získat vlákna na základě **typu vlastnosti** . Tady je dotaz, který získá vlákna, jejichž vlastnost *teploty* je číslo:
+Můžete také získat vlákna na základě **typu vlastnosti**. Tady je dotaz, který získá vlákna, jejichž vlastnost *teploty* je číslo:
 
 ```sql
 SELECT * FROM DIGITALTWINS T
@@ -175,39 +175,41 @@ WHERE IS_NUMBER(T.Temperature)
 
 `IS_OF_MODEL`Operátor lze použít k filtrování na základě [**modelu**](concepts-models.md)vlákna.
 
-Uvažuje o [dědičnosti](concepts-models.md#model-inheritance) a [pořadí řazení verzí](how-to-manage-model.md#update-models) a vyhodnotí se jako splněné pro danou dvojitou podmínku, pokud je **splněna** jedna z těchto podmínek:
+Bere v úvahu [Dědičnost](concepts-models.md#model-inheritance) a [správu verzí](how-to-manage-model.md#update-models)modelů a vyhodnocuje hodnotu true pro danou dvojitou podmínku, pokud je **splněna** jedna z těchto podmínek:
 
 * Vlákna přímo implementuje model poskytovaný do `IS_OF_MODEL()` a číslo verze modelu na vlákna je *větší nebo rovno* číslu verze poskytnutého modelu.
 * Zdvojený implementuje model, který *rozšiřuje* daný model `IS_OF_MODEL()` a číslo verze rozšířeného modelu je *větší než nebo rovno* číslu verze poskytnutého modelu.
 
-Tato metoda má několik možností přetížení.
+Pokud například použijete dotaz na vlákna v modelu `dtmi:example:widget;4` , dotaz vrátí všechny vlákna založené na **verzi 4 nebo vyšší** modelu **widgetu** a také vytvoří vlákna na základě verze **4 nebo vyšší** z **modelů, které dědí z widgetu**.
+
+`IS_OF_MODEL` může mít několik různých parametrů a zbytek této části je vyhrazen pro různé možnosti přetížení.
 
 Nejjednodušší použití `IS_OF_MODEL` přebírá pouze `twinTypeName` parametr: `IS_OF_MODEL(twinTypeName)` .
 Tady je příklad dotazu, který předává hodnotu v tomto parametru:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1')
 ```
 
 Chcete-li zadat dvojitou kolekci, která bude prohledána, je-li použit více než jeden (například při `JOIN` použití), přidejte `twinCollection` parametr: `IS_OF_MODEL(twinCollection, twinTypeName)` .
 Tady je příklad dotazu, který přidá hodnotu pro tento parametr:
 
 ```sql
-SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1')
 ```
 
 Chcete-li provést přesnou shodu, přidejte `exact` parametr: `IS_OF_MODEL(twinTypeName, exact)` .
 Tady je příklad dotazu, který přidá hodnotu pro tento parametr:
 
 ```sql
-SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:example:thing;1', exact)
 ```
 
 Můžete také předat všechny tři argumenty společně: `IS_OF_MODEL(twinCollection, twinTypeName, exact)` .
 Tady je příklad dotazu, který určuje hodnotu pro všechny tři parametry:
 
 ```sql
-SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:example:thing;1', exact)
 ```
 
 ### <a name="query-based-on-relationships"></a>Dotaz na základě relací
@@ -242,7 +244,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>Dotazování vlastností relace
 
-Podobně jako digitální vlákna mají vlastnosti, které jsou popsány prostřednictvím DTDL, mohou mít relace také vlastnosti. Můžete se dotazovat na vlákna na **základě vlastností jejich vztahů** .
+Podobně jako digitální vlákna mají vlastnosti, které jsou popsány prostřednictvím DTDL, mohou mít relace také vlastnosti. Můžete se dotazovat na vlákna na **základě vlastností jejich vztahů**.
 Jazyk dotazů digitálních vláken Azure umožňuje filtrování a projekci vztahů přiřazením aliasu k relaci v rámci `JOIN` klauzule.
 
 Můžete například zvážit vztah *servicedBy* , který má vlastnost *reportedCondition* . V níže uvedeném dotazu je tomuto vztahu přiřazen alias R, aby odkazoval na jeho vlastnost.
@@ -277,7 +279,7 @@ AND Room.$dtId IN ['room1', 'room2']
 
 Můžete **zkombinovat** libovolný z výše uvedených typů dotazu pomocí operátorů kombinace pro zahrnutí více podrobností v jednom dotazu. Tady jsou některé další příklady složených dotazů, které dotazují na více než jeden typ zdvojeného popisovače najednou.
 
-| Description | Dotaz |
+| Popis | Dotaz |
 | --- | --- |
 | Ze zařízení, která jsou v *místnosti 123* , se vrátí zařízení MxChip, která obsluhují roli operátora. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Získejte vlákna, která mají relaci s názvem, *obsahuje* další nevlákenný identifikátor *ID1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
@@ -297,11 +299,11 @@ Podporovány jsou následující operátory:
 | Porovnání |=,! =, <, >, <=, >= |
 | Contains | V NZA |
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 
 Podporují se následující funkce kontroly a přetypování typů:
 
-| Funkce | Description |
+| Funkce | Popis |
 | -------- | ----------- |
 | IS_DEFINED | Vrátí logickou hodnotu, která znamená, zda byla vlastnost přiřazena hodnota. To je podporováno pouze v případě, že je hodnota primitivního typu. Primitivní typy zahrnují řetězec, Boolean, Numeric nebo `null` . Hodnoty DateTime, typy objektů a pole nejsou podporovány. |
 | IS_OF_MODEL | Vrátí logickou hodnotu, která označuje, jestli zadaný typ vlákna odpovídá zadanému typu modelu. |
@@ -314,14 +316,14 @@ Podporují se následující funkce kontroly a přetypování typů:
 
 Podporovány jsou následující řetězcové funkce:
 
-| Funkce | Description |
+| Funkce | Popis |
 | -------- | ----------- |
 | STARTSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz začíná druhým. |
 | ENDSWITH (x, y) | Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým. |
 
 ## <a name="run-queries-with-an-api-call"></a>Spouštění dotazů pomocí volání rozhraní API
 
-Jakmile se rozhodnete pro řetězec dotazu, provedete to tak, že zavoláte **rozhraní API pro dotazy** .
+Jakmile se rozhodnete pro řetězec dotazu, provedete to tak, že zavoláte **rozhraní API pro dotazy**.
 Následující fragment kódu znázorňuje toto volání z klientské aplikace:
 
 ```csharp
@@ -373,7 +375,7 @@ Níže najdete několik tipů pro dotazování pomocí digitálních vláken Azu
 
 * Zvažte vzor dotazu během fáze návrhu modelu. Pokuste se zajistit, aby relace, které musí být zodpovězeny v jednom dotazu, byly modelovány jako relace s jednou úrovní.
 * Navrhněte vlastnosti tak, aby se předešlo velkým sadám výsledků z procházení grafů.
-* Můžete významně snížit počet dotazů, které potřebujete, vytvořením pole dvojitých vláken a dotazování pomocí `IN` operátoru. Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a *podlahu* , obsahují *místnosti* . Pokud chcete hledat místnosti v rámci budovy, která je horká, můžete:
+* Můžete významně snížit počet dotazů, které potřebujete, vytvořením pole dvojitých vláken a dotazování pomocí `IN` operátoru. Představte si například scénář, ve kterém *budovy* obsahují *podlahu* a *podlahu* , obsahují *místnosti*. Pokud chcete hledat místnosti v rámci budovy, která je horká, můžete:
 
     1. Nalezení podlahových poschodí v rámci vytváření na základě `contains` vztahu
 

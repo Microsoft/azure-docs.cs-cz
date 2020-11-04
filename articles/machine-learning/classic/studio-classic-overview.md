@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 24b7679c92b8f69b9406677ebe6355c0e1e51f55
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1aadf1fe59c5300a4f16ea96b1e1d7a5fbcbdd6d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91348952"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325734"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>Co se dá dělat s Machine Learning Studio (Classic)?
 
-**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Ano ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ bez ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -30,16 +30,16 @@ Machine Learning Studio (Classic) je nástroj pro přetahování, který můžet
 
 Chcete-li vytvořit model prediktivní analýzy, obvykle používáte data z jednoho nebo více zdrojů, transformovat a analyzovat tato data prostřednictvím různých funkcí pro manipulaci s daty a statistické funkce a vygenerujeme sadu výsledků. Vývoj podobného modelu, jako je tento, je iterativní proces. Úpravou různých funkcí a jejich parametrů se výsledky zpřesňují, až budete mít trénovaný a účinný model, se kterým budete spokojeni.
 
-Machine Learning Studio (Classic) poskytuje interaktivní a vizuální pracovní prostor pro snadné sestavování, testování a iteraci v modelu prediktivní analýzy. ***Datové sady*** a ***moduly*** pro analýzu můžete přetahovat na interaktivní plátno, čímž je spojíte dohromady, abyste mohli vytvořit ***experiment***, který spustíte v Machine Learning Studio (Classic). Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Až budete připraveni, můžete ***výukový experiment*** převést na ***prediktivní experiment*** a publikovat jej jako ***webovou službu***, aby k vašemu modelu měli přístup i jiní uživatelé.
+Machine Learning Studio (Classic) poskytuje interaktivní a vizuální pracovní prostor pro snadné sestavování, testování a iteraci v modelu prediktivní analýzy. Moduly můžete přetahovat * *_datové sady_* _ a analytické _*_moduly_*_ na interaktivní plátno a spojit je s ní a vytvořit _*_experiment_*_ , který spustíte v Machine Learning Studio (Classic). Iterace návrhu modelu probíhá tak, že experiment upravíte, v případě potřeby uložíte kopii, a spustíte jej znovu. Až budete připraveni, můžete převést svůj _*_školicí experiment_*_ na _*_prediktivní experiment_*_ a pak ho publikovat jako _*_webovou službu_*_ , aby k vašemu modelu měli přístup jiní uživatelé.
 
 Není nutné žádné programování, vizuálně propojit datové sady a moduly a vytvořit model prediktivní analýzy.
 
 ![Diagram Machine Learning Studio (klasický): vytvářet experimenty, číst data pro mnoho zdrojů, zapisovat data s skóre a zapisovat modely.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 ## <a name="download-the-ml-studio-classic-overview-diagram"></a>Stáhnout diagram s přehledem ML Studio (Classic)
-Stáhněte si diagram s **přehledem možností Microsoft ml Studio (Classic)** a Získejte podrobný přehled možností Machine Learning Studio (Classic). Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
+Stáhněte si *Přehled funkcí _ Microsoft ml Studio (Classic)* * diagram a Získejte podrobný přehled možností Machine Learning Studio (Classic). Pokud ho chcete mít po ruce, můžete si ho vytisknout ve velikosti tabloid (11 × 17 palců).
 
-**Diagram si můžete stáhnout tady: [Přehled](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf) ** 
+**Diagram si můžete stáhnout tady: [Přehled](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
  ![ možností Microsoft Machine Learning Studio (Classic). Přehled možností Microsoft Machine Learning Studio (Classic)](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 
@@ -90,7 +90,7 @@ Jakmile je model prediktivní analýzy připravený, můžete ho nasadit jako we
 Seznamte se se základy prediktivní analýzy a strojového učení s využitím [podrobných rychlých](create-experiment.md) a [sestavování ukázek](sample-experiments.md).
 
 <!-- Module References -->
-[convert-to-arff]: https://msdn.microsoft.com/library/azure/62d2cece-d832-4a7a-a0bd-f01f03af0960/
-[elementary-statistics]: https://msdn.microsoft.com/library/azure/3086b8d4-c895-45ba-8aa9-34f0c944d4d3/
-[linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-[score-model]: https://msdn.microsoft.com/library/azure/401b4f92-e724-4d5a-be81-d5b0ff9bdb33/
+[convert-to-arff]: /azure/machine-learning/studio-module-reference/convert-to-arff
+[elementary-statistics]: /azure/machine-learning/studio-module-reference/compute-elementary-statistics
+[linear-regression]: /azure/machine-learning/studio-module-reference/linear-regression
+[score-model]: /azure/machine-learning/studio-module-reference/score-model

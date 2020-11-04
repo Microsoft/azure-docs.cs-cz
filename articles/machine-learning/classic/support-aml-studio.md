@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 434115ce6da775c4c8719081ad149e436de03b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c49437db6bc3651d27181ef8e8f5248b5785e089
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362278"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325669"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získání podpory a školení pro Azure Machine Learning Studio (Classic)
 
-**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne.](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Zelená značka zaškrtnutí. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasický) ![ X značí ne. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -27,8 +27,8 @@ Tento článek poskytuje informace o tom, jak získat další informace o Azure 
 ## <a name="learn-more-about-studio-classic"></a>Další informace o studiu (klasické)
 
 Podívejte se na naše studijní materiály:
-+ [Kurzy a články s postupy](../studio/index.yml) 
-+ [Videa pro začátečníky pro datové vědy](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
++ [Kurzy a články s postupy](./index.yml) 
++ [Videa pro začátečníky pro datové vědy](./data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 
 ## <a name="submit-doc-feedback"></a>Odeslat názor na dokument
 
@@ -38,10 +38,10 @@ Podívejte se na naše studijní materiály:
 
 Podívejte se na tyto prostředky podpory:
 
-+ **Technická podpora pro zákazníky Azure**: [odesílat a spravovat žádosti o podporu](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) prostřednictvím Azure Portal.
++ **Technická podpora pro zákazníky Azure** : [odesílat a spravovat žádosti o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md) prostřednictvím Azure Portal.
 
-+ **Fórum uživatele**: Položte otázky, odpovězte na otázky a připojte se k ostatním uživatelům ve [fóru podpory Azure Machine Learning Studio (Classic)](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).
++ **Fórum uživatele** : Položte otázky, odpovězte na otázky a připojte se k ostatním uživatelům ve [fóru podpory Azure Machine Learning Studio (Classic)](/answers/topics/azure-machine-learning.html).
 
-+ **Stack Overflow**: Navštivte komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) , která je označená jako Azure-Machine-Learning.
++ **Stack Overflow** : Navštivte komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) , která je označená jako Azure-Machine-Learning.
 
 + **Sdílejte návrhy produktů** a žádosti o funkce v našem [kanálu Azure Machine Learning Feedback](https://feedback.azure.com/forums/257792-machine-learning). Pokud chcete svůj názor sdílet, vyberte na konci každého článku tlačítko **Zpětná vazba produktu** .

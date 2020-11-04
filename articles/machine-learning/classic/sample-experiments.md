@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: d62b958189ac01f1beabdbf17ee5cc6a08481e23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfee8a32c54bff5aecb1e298db8b4814255418b0
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362295"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325752"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Vytváření Azure Machine Learning Studio (klasických) experimentů z pracovních příkladů v Azure AI Gallery
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -35,7 +35,7 @@ Abyste se dozvěděli, jak používat galerii, podívejte se na tříminutové v
 Pokud se chcete podívat, jaké experimenty jsou k dispozici, přejděte do [Galerie](https://gallery.azure.ai/) a klikněte na **Experimenty** v horní části stránky.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>Nalezení nejnovějších nebo nejoblíbenějších experimentů
-Na této stránce si můžete zobrazit **naposled přidané** experimenty, přechodem dolů se podívat, **co je oblíbené**, nebo si prohlédnout nejnovější **populární experimenty Microsoftu**.
+Na této stránce si můžete zobrazit **naposled přidané** experimenty, přechodem dolů se podívat, **co je oblíbené** , nebo si prohlédnout nejnovější **populární experimenty Microsoftu**.
 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>Vyhledání experimentu, který splňuje určité požadavky
 Procházení všech experimentů:
@@ -45,7 +45,7 @@ Procházení všech experimentů:
 3. Experimenty, které splňují vaše požadavky, můžete najít několika různými způsoby:
    * **Vyberte filtry na levé straně.** Pokud chcete například procházet experimenty, které používají algoritmus detekce anomálií založený na PCA, klikněte na **Experiment** v části **Kategorie**. Potom v části **použitých algoritmů** klikněte na **Zobrazit vše** a v dialogovém okně zvolte **Detekce anomálií založená na PCA**. Možná si budete muset posunout zobrazení, abyste tuto možnost viděli.<br></br>
      ![Výběr filtrů](./media/sample-experiments/choose-an-algorithm.png)
-   * **Použijte vyhledávací pole.** Pokud chcete například najít experimenty, kterými přispěl Microsoft, které se týkají rozpoznávaní číslic a které používají algoritmus podpůrného vektorového stroje se dvěma třídami, zadejte do vyhledávacího pole „digit recognition“. Pak vyberte filtry **experiment**, **Microsoft Content Only**a **Two-Class support Vector Machine**:<br></br>
+   * **Použijte vyhledávací pole.** Pokud chcete například najít experimenty, kterými přispěl Microsoft, které se týkají rozpoznávaní číslic a které používají algoritmus podpůrného vektorového stroje se dvěma třídami, zadejte do vyhledávacího pole „digit recognition“. Pak vyberte filtry **experiment** , **Microsoft Content Only** a **Two-Class support Vector Machine** :<br></br>
      ![Použití vyhledávacího pole](./media/sample-experiments/search-for-experiments.png)
 4. Kliknutím na experiment o něm zobrazíte více informací.
 5. Pokud chcete experiment spustit nebo upravit, klikněte na stránce experimentu na **Open in Studio** (Otevřít v nástroji Studio). <br></br>

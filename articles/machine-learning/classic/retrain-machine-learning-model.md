@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 2f115313b17ed159973d2545b947e2ff031508eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff0378871139a038f096a44b9ee0c6af2cb67d73
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362329"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325826"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
 
-**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**platí pro:** ![ Platí pro. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (Classic) ![ neplatí pro. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Rekurze je jedním ze způsobů, jak zajistit, aby modely strojového učení byly přesné a založené na nejdůležitějších dostupných datech. Tento článek ukazuje, jak převádět a nasazovat model strojového učení jako novou webovou službu v nástroji Studio (Classic). Pokud chcete přeškolit klasickou webovou službu, Projděte si [článek s postupem.](retrain-classic-web-service.md)
@@ -35,7 +35,7 @@ Pomocí těchto kroků můžete znovu naučit a nasazovat novou webovou službu 
 
 ## <a name="deploy-the-retraining-web-service"></a>Nasazení webové služby retraining
 
-Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby**  k **modelu vlaků**, zkušební experiment vyprodukuje nový model, který můžete použít.
+Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby**  k **modelu vlaků** , zkušební experiment vyprodukuje nový model, který můžete použít.
 
 K nasazení webové služby retraining použijte následující postup:
 
@@ -61,7 +61,7 @@ V tomto příkladu používáme jazyk C# k vytvoření opětovného školení ap
 
 K volání rozhraní API pro přeškolení použijte následující postup:
 
-1. Vytvoření konzolové aplikace v jazyce C# v aplikaci Visual Studio: **Nová**aplikace  >  **Project**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Console (.NET Framework)**.
+1. Vytvoření konzolové aplikace v jazyce C# v aplikaci Visual Studio: **Nová** aplikace  >  **Project**  >  **Visual C#**  >  **Windows Classic Desktop**  >  **Console (.NET Framework)**.
 1. Přihlaste se k portálu Machine Learning Web Services.
 1. Klikněte na webovou službu, se kterou právě pracujete.
 1. Klikněte na možnost **spotřebovat**.
@@ -89,14 +89,14 @@ V části **informace o základní spotřebě** **stránky využívání** Najd�
 Vzorový kód BES nahraje soubor z místního disku (například "C:\temp\CensusInput.csv") pro Azure Storage, zpracuje ho a zapíše výsledky zpět do Azure Storage.
 
 1. Přihlášení k webu Azure Portal
-1. V levém navigačním sloupci klikněte na **Další služby**, vyhledejte **účty úložiště**a vyberte je.
+1. V levém navigačním sloupci klikněte na **Další služby** , vyhledejte **účty úložiště** a vyberte je.
 1. V seznamu účtů úložiště vyberte jednu pro uložení převýukového modelu.
 1. V levém navigačním sloupci klikněte na **přístupové klíče**.
 1. Zkopírujte a uložte **Primární přístupový klíč**.
 1. V levém navigačním sloupci klikněte na **objekty blob**.
 1. Vyberte existující kontejner, nebo vytvořte nový a uložte název.
 
-Vyhledejte deklarace *StorageAccountName*, *StorageAccountKey*a *StorageContainerName* a aktualizujte hodnoty, které jste uložili na portálu.
+Vyhledejte deklarace *StorageAccountName* , *StorageAccountKey* a *StorageContainerName* a aktualizujte hodnoty, které jste uložili na portálu.
 
 ```csharp
 const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
@@ -130,11 +130,11 @@ Tady je příklad přeškolení pro výstup:
 
 Při spuštění aplikace obsahuje výstup token adresy URL a sdíleného přístupového podpisu, který je nezbytný pro přístup k výsledkům vyhodnocení.
 
-Výsledky předaného modelu můžete zobrazit kombinací *BaseLocation*, *RelativeLocation*a *SasBlobToken* z výstupních výsledků pro *output2* a vložením celé adresy URL do adresního řádku prohlížeče.
+Výsledky předaného modelu můžete zobrazit kombinací *BaseLocation* , *RelativeLocation* a *SasBlobToken* z výstupních výsledků pro *output2* a vložením celé adresy URL do adresního řádku prohlížeče.
 
 Zkontrolujte výsledky a zjistěte, jestli je nově vyškolený model vyšší než stávající.
 
-Z výstupních výsledků uložte *BaseLocation*, *RelativeLocation*a *SasBlobToken* .
+Z výstupních výsledků uložte *BaseLocation* , *RelativeLocation* a *SasBlobToken* .
 
 ## <a name="update-the-predictive-experiment"></a>Aktualizace prediktivního experimentu
 
@@ -144,7 +144,7 @@ Nejdřív se přihlaste ke svému účtu Azure v prostředí PowerShell pomocí 
 
 ### <a name="get-the-web-service-definition-object"></a>Získat objekt definice webové služby
 
-Dále získejte objekt definice webové služby voláním rutiny [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) .
+Dále získejte objekt definice webové služby voláním rutiny [Get-AzMlWebService](/powershell/module/az.machinelearning/get-azmlwebservice) .
 
 ```azurepowershell
 $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
@@ -167,7 +167,7 @@ Případně chcete-li zjistit název skupiny prostředků existující webové s
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>Exportovat objekt definice webové služby jako JSON
 
-Chcete-li upravit definici vyškolených modelů pro použití nově vyškolený model, je nutné nejprve použít rutinu [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) k jeho exportu do souboru formátu JSON.
+Chcete-li upravit definici vyškolených modelů pro použití nově vyškolený model, je nutné nejprve použít rutinu [Export-AzMlWebService](/powershell/module/az.machinelearning/export-azmlwebservice) k jeho exportu do souboru formátu JSON.
 
 ```azurepowershell
 Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
@@ -194,7 +194,7 @@ V části assets (prostředky) vyhledejte [trained model], aktualizujte hodnotu 
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>Import JSON do objektu definice webové služby
 
-Pomocí rutiny [Import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) převeďte upravený soubor JSON zpátky do objektu definice webové služby, který můžete použít k aktualizaci experimentu predicative.
+Pomocí rutiny [Import-AzMlWebService](/powershell/module/az.machinelearning/import-azmlwebservice) převeďte upravený soubor JSON zpátky do objektu definice webové služby, který můžete použít k aktualizaci experimentu predicative.
 
 ```azurepowershell
 $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
@@ -202,7 +202,7 @@ $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>Aktualizace webové služby
 
-Nakonec pomocí rutiny [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) aktualizujte prediktivní experiment.
+Nakonec pomocí rutiny [Update-AzMlWebService](/powershell/module/az.machinelearning/update-azmlwebservice) aktualizujte prediktivní experiment.
 
 ```azurepowershell
 Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'

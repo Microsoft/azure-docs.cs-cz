@@ -7,13 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.custom: devx-track-java
-ms.openlocfilehash: 53171fedac23401b7d696a9e611c53da86b1bb60
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: devx-track-java, contperfq2
+ms.openlocfilehash: c1dec2c8451ddd1feb4b5b0dac9c82e1716079b7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078063"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325841"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 * **Režim připojení: použít přímý režim**
     
-  Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména z hlediska latence na straně klienta. *ConnectionMode* je klíčovým nastavením konfigurace, které je k dispozici pro konfiguraci klienta *ConnectionPolicy* . Pro Azure Cosmos DB Async Java SDK v2 jsou k dispozici dvě dostupné ConnectionModes:  
+  Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména z hlediska latence na straně klienta. *ConnectionMode* je klíčovým nastavením konfigurace, které je k dispozici pro konfiguraci klienta *ConnectionPolicy*. Pro Azure Cosmos DB Async Java SDK v2 jsou k dispozici dvě dostupné ConnectionModes:  
       
   * [Brána (výchozí)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
   * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
@@ -87,7 +87,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
   * ***Přehled přímého režimu** _
 
-  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Obrázek zásad Azure Cosmos DBho připojení" border="false":::
+  :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Ilustrace architektury přímého režimu" border="false":::
   
   Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 _ *kanálů* * na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby** repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
