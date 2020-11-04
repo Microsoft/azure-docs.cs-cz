@@ -8,33 +8,25 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: d2ea7233ee923881ee430aba8d8c23a37c29da7c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 70441c3a1953fa1b6ebd69ef9cdb324d6cc04a5b
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027716"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336431"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume-using-an-arm-template"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS pomocí šablony ARM
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Rychlý Start: nastavení Azure NetApp Files a vytvoření svazku NFS
 
-V tomto článku se dozvíte, jak rychle nastavit Azure NetApp Files a vytvořit svazek pomocí šablony Azure Resource Manager (šablona ARM).
-
-[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+V tomto článku se dozvíte, jak rychle nastavit Azure NetApp Files a vytvořit svazek.
 
 V tomto rychlém startu vytvoříte následující položky:
 
-- Registrace pro poskytovatele prostředků Azure NetApp Files a NetApp.
-- Účet NetApp.
-- Fond kapacit.
-- Svazek systému souborů NFS pro Azure NetApp Files.
+- Registrace pro poskytovatele prostředků Azure NetApp Files a NetApp
+- Účet NetApp
+- Fond kapacit
+- Svazek NFS pro Azure NetApp Files
 
-Pokud vaše prostředí splňuje požadavky, dokončili jste část [před zahájením](#before-you-begin) a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v prostředí Azure Portal.
-
-[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-anf-nfs-volume%2Fazuredeploy.json)
-
-## <a name="prerequisites"></a>Požadavky
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -43,24 +35,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-anf-nfs-volume).
-
- Chcete-li zobrazit šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json).
-
-V šabloně je definováno několik prostředků:
-
-- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts)
-- [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools)
-- [Microsoft. NetApp/netAppAccounts/capacityPools/svazky](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes)
-
-## <a name="deploy-the-template"></a>Nasazení šablony
-
 ---
 
-### <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Registrace pro poskytovatele prostředků Azure NetApp Files a NetApp
+## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Registrace pro poskytovatele prostředků Azure NetApp Files a NetApp
 
 > [!NOTE]
 > Dokončení procesu registrace může trvat delší dobu.
@@ -100,7 +77,7 @@ Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](
 
 ---
 
-### <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
+## <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -115,7 +92,7 @@ Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](
 3. V okně Nový účet NetApp zadejte následující informace:
    1. Jako název účtu zadejte **myaccount1** .
    2. Vyberte své předplatné.
-   3. Vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název skupiny prostředků zadejte **myRG1** . Klikněte na **OK** .
+   3. Vyberte **vytvořit novou** a vytvořte novou skupinu prostředků. Jako název skupiny prostředků zadejte **myRG1** . Klikněte na **OK**.
    4. Vyberte umístění svého účtu.
 
       ![Okno nového účtu NetApp](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)
@@ -185,9 +162,9 @@ Další informace najdete v tématu věnovaném [registraci Azure NetApp Files](
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně ARM pomocí prostředku [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně Azure Resource Manager (šablona ARM) pomocí prostředku [Microsoft. NetApp/netAppAccounts](/azure/templates/microsoft.netapp/netappaccounts) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
 
@@ -195,7 +172,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
 
 ---
 
-### <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
+## <a name="set-up-a-capacity-pool"></a>Nastavení fondu kapacity
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -203,11 +180,11 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
 
     ![Vybrat účet NetApp](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)
 
-2. V okně Správa Azure NetApp Files účtu NetApp klikněte na **fondy kapacit** .
+2. V okně Správa Azure NetApp Files účtu NetApp klikněte na **fondy kapacit**.
 
     ![Klikněte na fondy kapacit](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)
 
-3. Klikněte na **+ Přidat fondy** .
+3. Klikněte na **+ Přidat fondy**.
 
     ![Klikněte na Přidat fondy.](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
@@ -217,7 +194,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
     * Jako velikost fondu zadejte **4 (TIB)** .
     * Použijte typ **auto** QoS.
 
-5. Klikněte na **Vytvořit** .
+5. Klikněte na **Vytvořit**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -261,7 +238,7 @@ Následující fragment kódu ukazuje, jak vytvořit účet NetApp v šabloně A
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně ARM pomocí prostředku [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně Azure Resource Manager (šablona ARM) pomocí prostředku [Microsoft. NetApp/netAppAccounts/capacityPools](/azure/templates/microsoft.netapp/netappaccounts/capacitypools) . Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
 
@@ -269,15 +246,15 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně AR
 
 ---
 
-### <a name="create-nfs-volume-for-azure-netapp-files"></a>Vytvořit svazek systému souborů NFS pro Azure NetApp Files
+## <a name="create-nfs-volume-for-azure-netapp-files"></a>Vytvořit svazek systému souborů NFS pro Azure NetApp Files
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V okně Správa Azure NetApp Files účtu NetApp klikněte na **svazky** .
+1. V okně Správa Azure NetApp Files účtu NetApp klikněte na **svazky**.
 
     ![Klikněte na Svazky](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)
 
-2. Klikněte na **+ Přidat svazek** .
+2. Klikněte na **+ Přidat svazek**.
 
     ![Klikněte na Přidat svazky.](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)
 
@@ -306,11 +283,11 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně AR
 
     ![Zadat protokol NFS pro rychlý Start](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. Klikněte na **Zkontrolovat a vytvořit** .
+5. Klikněte na **Zkontrolovat a vytvořit**.
 
     ![Zkontrolovat a vytvořit okno](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
 
-6. Zkontrolujte informace o svazku a pak klikněte na **vytvořit** .
+6. Zkontrolujte informace o svazku a pak klikněte na **vytvořit**.
     Vytvořený svazek se zobrazí v okně svazky.
 
     ![Svazek vytvořen](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)
@@ -410,7 +387,7 @@ Následující fragment kódu ukazuje, jak vytvořit fond kapacit v šabloně AR
 
 <!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
 
-Následující fragmenty kódu ukazují, jak nastavit virtuální síť a vytvořit Azure NetApp Files svazek v šabloně ARM. Instalace virtuální sítě používá prostředek [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) . Vytvoření svazku používá prostředek [Microsoft. NetApp/netAppAccounts/capacityPools/](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) Volumes. Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
+Následující fragmenty kódu ukazují, jak nastavit virtuální síť a vytvořit Azure NetApp Files svazek v šabloně Azure Resource Manager (šablona ARM). Instalace virtuální sítě používá prostředek [Microsoft. Network/virtualNetworks](/azure/templates/Microsoft.Network/virtualNetworks) . Vytvoření svazku používá prostředek [Microsoft. NetApp/netAppAccounts/capacityPools/](/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) Volumes. Pokud chcete spustit kód, Stáhněte si [úplnou šablonu ARM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) z našeho úložiště GitHub.
 
 :::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
 
@@ -438,13 +415,13 @@ Až budete hotovi, a pokud chcete, můžete odstranit skupinu prostředků. Akce
     ![Navigace do skupin prostředků](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
 
 
-3. Na stránce skupina prostředků klikněte na **Odstranit skupinu prostředků** .
+3. Na stránce skupina prostředků klikněte na **Odstranit skupinu prostředků**.
 
     ![Snímek obrazovky, který zvýrazní tlačítko Odstranit skupinu prostředků.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png)
 
     Otevře se okno s upozorněním týkajícím se prostředků, které budou odstraněny s vybranou skupinou prostředků.
 
-4. Zadejte název skupiny prostředků (myRG1), abyste potvrdili, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní, a pak klikněte na **Odstranit** .
+4. Zadejte název skupiny prostředků (myRG1), abyste potvrdili, že chcete trvale odstranit skupinu prostředků a všechny prostředky v ní, a pak klikněte na **Odstranit**.
 
     ![Potvrďte odstranění skupiny prostředků.](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png )
 

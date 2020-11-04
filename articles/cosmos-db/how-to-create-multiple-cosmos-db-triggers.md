@@ -3,16 +3,17 @@ title: Vytvoření více nezávislých triggerů Azure Functions pro Cosmos DB
 description: Naučte se konfigurovat více nezávislých Azure Functions triggerů, které Cosmos DB k vytváření architektur řízených událostmi.
 author: ealsur
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101540"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336669"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Vytvoření více triggerů Azure Functions pro Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +30,7 @@ Při sestavování toků bez serveru založeného na událostech pomocí [Azure 
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>Optimalizace kontejnerů pro vícenásobné triggery
 
-Vzhledem k *požadavkům* Azure Functions triggeru pro Cosmos DB potřebujeme druhý kontejner pro uložení stavu, který se také označuje jako *kontejner zapůjčení* . Znamená to, že pro každou funkci Azure potřebujete samostatný kontejner zapůjčení?
+Vzhledem k *požadavkům* Azure Functions triggeru pro Cosmos DB potřebujeme druhý kontejner pro uložení stavu, který se také označuje jako *kontejner zapůjčení*. Znamená to, že pro každou funkci Azure potřebujete samostatný kontejner zapůjčení?
 
 Tady máte dvě možnosti:
 

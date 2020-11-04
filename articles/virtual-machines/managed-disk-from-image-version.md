@@ -6,27 +6,24 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 10/06/2020
+ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 35edcfb4bdb0715245f4a3190fb22638b1162429
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370980"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336057"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Vytvoření spravovaného disku z verze image
 
-Pokud potřebujete, můžete vytvořit spravovaný disk z verze Image uložené v galerii sdílených imagí.
+V případě potřeby můžete exportovat operační systém nebo jeden datový disk z verze Image jako spravovaný disk z verze Image uložené v galerii sdílených imagí.
 
 
 ## <a name="cli"></a>Rozhraní příkazového řádku
 
-Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk#az_disk_create) vytvořte spravovaný disk. 
-
-
-Verze obrázků v seznamu můžete zobrazit pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
+Vypište verze imagí v galerii pomocí [seznamu AZ SIG Image-Version list](/cli/azure/sig/image-version.md#az_sig_image_version_list). V tomto příkladu hledáme všechny verze imagí, které jsou součástí definice image *myImageDefinition* v galerii imagí *myGallery* .
 
 ```azurecli-interactive
 az sig image-version list \
@@ -36,28 +33,37 @@ az sig image-version list \
    -o table
 ```
 
+Nastavte `source` proměnnou na ID verze image a pak pomocí [AZ disk Create](/cli/azure/disk.md#az_disk_create) vytvořte spravovaný disk. 
 
-V tomto příkladu vytvoříme spravovaný disk s názvem *myManagedDisk*v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
+V tomto příkladu exportujeme disk s operačním systémem verze image pro vytvoření spravovaného disku s názvem *myManagedOSDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
 
 ```azurecli-interactive
 source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
 
-az disk create --resource-group myResourceGroup --location EastUS --name myManagedDisk --gallery-image-reference $source 
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedOSDisk --gallery-image-reference $source 
 ```
 
-Pokud je disk datovým diskem, přidejte `--gallery-image-reference-lun` ho a zadejte logickou jednotku (LUN).
+
+
+Pokud chcete exportovat datový disk z verze image, přidejte, `--gallery-image-reference-lun` abyste určili umístění logické jednotky (LUN) datového disku, který se má exportovat. 
+
+V tomto příkladu exportujeme datový disk umístěný na logické adrese 0 verze image k vytvoření spravovaného disku s názvem *myManagedDataDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
+
+```azurecli-interactive
+source="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<galleryName>/images/<galleryImageDefinition>/versions/<imageVersion>"
+
+az disk create --resource-group myResourceGroup --location EastUS --name myManagedDataDisk --gallery-image-reference $source --gallery-image-reference-lun 0
+``` 
 
 ## <a name="powershell"></a>PowerShell
 
-Všechny verze imagí můžete vypsat pomocí [Get-AzResource](/powershell/module/az.resources/get-azresource). 
+Vypíše verze imagí v galerii pomocí [Get-AzResource](/powershell/module/az.resources/get-azresource). 
 
 ```azurepowershell-interactive
 Get-AzResource `
    -ResourceType Microsoft.Compute/galleries/images/versions | `
    Format-Table -Property Name,ResourceId,ResourceGroupName
 ```
-
-
 
 Jakmile budete mít všechny potřebné informace, můžete použít [příkaz Get-AzGalleryImageVersion](/powershell/module/az.compute/get-azgalleryimageversion) k získání verze zdrojového obrázku, kterou chcete použít, a přiřadit ji k proměnné. V tomto příkladu získáváme `1.0.0` verzi image z `myImageDefinition` definice v `myGallery` galerii zdrojů ve `myResourceGroup` skupině prostředků.
 
@@ -69,29 +75,44 @@ $sourceImgVer = Get-AzGalleryImageVersion `
    -Name 1.0.0
 ```
 
-Nastavte některé proměnné pro informace o disku.
+Po nastavení `source` proměnné na ID verze image použijte [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) k vytvoření konfigurace disku a [New-AzDisk](/powershell/module/az.compute/new-azdisk) k vytvoření disku. 
 
-```azurepowershell-interactive
-$location = "East US"
-$resourceGroup = "myResourceGroup"
-$diskName = "myDisk"
-```
+V tomto příkladu exportujeme disk s operačním systémem verze image pro vytvoření spravovaného disku s názvem *myManagedOSDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
 
-Vytvořte konfiguraci disku a pak disk s použitím ID verze zdrojového obrázku. V případě je `-GalleryImageReference` logická jednotka (LUN) nutná pouze v případě, že zdrojem je datový disk.
-
+Vytvořte konfiguraci disku.
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
-   -Location $location `
+   -Location EastUS `
    -CreateOption FromImage `
-   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=1}
+   -GalleryImageReference @{Id = $sourceImgVer.Id}
 ```
 
 Vytvořte disk.
 
 ```azurepowershell-interactive
 New-AzDisk -Disk $diskConfig `
-   -ResourceGroupName $resourceGroup `
-   -DiskName $diskName
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedOSDisk
+```
+
+Pokud chcete exportovat datový disk v imagi verze, přidejte do konfigurace disku ID logické jednotky (LUN), abyste určili umístění logické jednotky (LUN) datového disku, který se má exportovat. 
+
+V tomto příkladu exportujeme datový disk umístěný na logické adrese 0 verze image k vytvoření spravovaného disku s názvem *myManagedDataDisk* v oblasti *EastUS* ve skupině prostředků s názvem *myResourceGroup*. 
+
+Vytvořte konfiguraci disku.
+```azurepowershell-interactive
+$diskConfig = New-AzDiskConfig `
+   -Location EastUS `
+   -CreateOption FromImage `
+   -GalleryImageReference @{Id = $sourceImgVer.Id; Lun=0}
+```
+
+Vytvořte disk.
+
+```azurepowershell-interactive
+New-AzDisk -Disk $diskConfig `
+   -ResourceGroupName myResourceGroup `
+   -DiskName myManagedDataDisk
 ```
 
 ## <a name="next-steps"></a>Další kroky

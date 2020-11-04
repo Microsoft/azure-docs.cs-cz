@@ -3,16 +3,17 @@ title: Definování jedinečných klíčů pro kontejner Azure Cosmos
 description: Naučte se definovat jedinečné klíče pro kontejner Azure Cosmos pomocí Azure Portal, PowerShellu, .NET, Java a různých dalších sad SDK.
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: b814100097897aff6047b8b6d6cc0e8ebaa409ba
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101523"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336618"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,13 +22,13 @@ Tento článek nabízí různé způsoby definování [jedinečných klíčů](u
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) nebo vyberte nějaký existující.
 
 1. Otevřete podokno **Průzkumník dat** a vyberte kontejner, na kterém chcete pracovat.
 
-1. Klikněte na **Nový kontejner** .
+1. Klikněte na **Nový kontejner**.
 
 1. V dialogovém okně **Přidat kontejner** kliknutím na **+ přidat jedinečný klíč** přidejte jedinečnou položku klíče.
 

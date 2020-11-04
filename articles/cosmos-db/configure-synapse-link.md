@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 98b8d8222ed87eebc24e97caccf3414a11c168a2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319881"
+ms.locfileid: "93334530"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Konfigurace a použití odkazu na Azure synapse pro Azure Cosmos DB (Preview)
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 [Odkaz na Azure synapse pro Azure Cosmos DB](synapse-link.md) je cloudová funkce hybridního transakčního a analytického zpracování (HTAP), která umožňuje spouštět analýzy téměř v reálném čase nad provozními daty v Azure Cosmos DB. Synapse Link vytvoří úzkou plynulou integraci mezi Azure Cosmos DB a Azure synapse Analytics.
 
@@ -33,7 +33,7 @@ Odkaz Azure synapse je k dispozici pro Azure Cosmos DB kontejnery rozhraní API 
 
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>Povolit Azure synapse Link pro účty Azure Cosmos DB
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
@@ -61,7 +61,7 @@ Analytické úložiště můžete zapnout v kontejneru Azure Cosmos při vytvá�
 > [!NOTE]
 > V současné době můžete pro **nové** kontejnery povolit analytické úložiště (v nových i stávajících účtech). Data z kontejnerů identita existující můžete migrovat do nových kontejnerů pomocí [nástrojů pro migraci Azure Cosmos DB.](cosmosdb-migrationchoices.md)
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) nebo ke [službě Azure Cosmos Explorer](https://cosmos.azure.com/).
 
@@ -167,7 +167,7 @@ except exceptions.CosmosResourceExistsError:
 
 Po povolení analytického úložiště s konkrétní hodnotou TTL můžete tuto hodnotu později aktualizovat na jinou platnou hodnotu. Tuto hodnotu můžete aktualizovat pomocí webu Azure Portal nebo sad SDK. Informace o různých možnostech konfigurace analytického standardu TTL najdete v článku věnovaném [hodnotám analytického TTL](analytical-store-introduction.md#analytical-ttl) .
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 
 Pokud jste vytvořili kontejner analytického úložiště s povoleným Azure Portal, obsahuje výchozí analytickou hodnotu TTL-1. Tuto hodnotu můžete aktualizovat pomocí následujících kroků:
 

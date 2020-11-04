@@ -3,16 +3,17 @@ title: Rozfloor v Azure Cosmos DB dotazovací jazyk
 description: Přečtěte si o funkci Dílenské SQL systému v Azure Cosmos DB a vraťte největší celé číslo menší nebo rovno zadanému numerickému výrazu.
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2a1862355495986e9910c48cf3b8e1337e4c7fb0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4696b90531b63a01fd4bd9260b24b9af5c6bbd93
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100231"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335598"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

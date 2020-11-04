@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cbe3ef7080397b135ea0fb17cd50de9b1ccfdf09
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367733"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336115"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a správa skupin akcí na webu Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -20,9 +20,9 @@ V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí v Azure Po
 
 Každá akce se skládá z následujících vlastností:
 
-* **Typ**: oznámení nebo akce provedena. Mezi příklady patří odesílání hlasových hovorů, SMS, e-mailu; nebo spouštějí různé typy automatizovaných akcí. Další informace najdete v části typy dále v tomto článku.
-* **Název**: jedinečný identifikátor v rámci skupiny akcí.
-* **Podrobnosti**: odpovídající podrobnosti, které se liší podle *typu*.
+* **Typ** : oznámení nebo akce provedena. Mezi příklady patří odesílání hlasových hovorů, SMS, e-mailu; nebo spouštějí různé typy automatizovaných akcí. Další informace najdete v části typy dále v tomto článku.
+* **Název** : jedinečný identifikátor v rámci skupiny akcí.
+* **Podrobnosti** : odpovídající podrobnosti, které se liší podle *typu*.
 
 Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí naleznete v tématu [Group action správce prostředků Templates](./action-groups-create-resource-manager-template.md).
 
@@ -30,21 +30,21 @@ Informace o použití šablon Azure Resource Manager ke konfiguraci skupin akcí
 
 1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **monitor**. Podokno **monitorování** slučuje všechna nastavení monitorování a data v jednom zobrazení.
 
-1. Vyberte **výstrahy**a pak vyberte **Spravovat akce**.
+1. Vyberte **výstrahy** a pak vyberte **Spravovat akce**.
 
     ![Tlačítko pro správu akcí](./media/action-groups/manage-action-groups.png)
     
-1. Vyberte **Přidat skupinu akcí**a vyplňte příslušná pole v prostředí průvodce.
+1. Vyberte **Přidat skupinu akcí** a vyplňte příslušná pole v prostředí průvodce.
 
     ![Příkaz Přidat skupinu akcí](./media/action-groups/add-action-group.PNG)
 
 ### <a name="configure-basic-action-group-settings"></a>Konfigurovat základní nastavení skupiny akcí
 
-V části **Podrobnosti o projektu**:
+V části **Podrobnosti o projektu** :
 
 Vyberte **předplatné** a **skupinu prostředků** , ve které se skupina akcí uloží.
 
-V části **Podrobnosti instance**:
+V části **Podrobnosti instance** :
 
 1. Zadejte **název skupiny akcí**.
 
@@ -59,15 +59,15 @@ V části **Podrobnosti instance**:
 
 1. Umožňuje definovat seznam oznámení, která se mají odeslat, když se aktivuje výstraha. Pro každé oznámení zadejte následující:
 
-    a. **Typ oznámení**: Vyberte typ oznámení, které chcete odeslat. Dostupné jsou tyto možnosti:
+    a. **Typ oznámení** : Vyberte typ oznámení, které chcete odeslat. Dostupné jsou následující možnosti:
       * Role e-mailu Azure Resource Manager – odešle e-mail uživatelům, kteří jsou přiřazeni k určitým rolím ARM na úrovni předplatného.
       * E-mail/SMS/nabízený/hlas – odešlete tyto typy oznámení konkrétním příjemcům.
     
-    b. **Název**: Zadejte jedinečný název pro oznámení.
+    b. **Název** : Zadejte jedinečný název pro oznámení.
 
-    c. **Podrobnosti**: na základě vybraného typu oznámení zadejte e-mailovou adresu, telefonní číslo atd.
+    c. **Podrobnosti** : na základě vybraného typu oznámení zadejte e-mailovou adresu, telefonní číslo atd.
     
-    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah** : můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
 
     ![Karta oznámení](./media/action-groups/action-group-2-notifications.png)
     
@@ -77,13 +77,13 @@ V části **Podrobnosti instance**:
 
 1. Umožňuje definovat seznam akcí, které se aktivují při aktivaci výstrahy. Pro každou akci zadejte následující:
 
-    a. **Typ akce**: vyberte Runbook automatizace, funkce Azure, ITSM, aplikaci logiky, zabezpečený Webhook, Webhook.
+    a. **Typ akce** : vyberte Runbook automatizace, funkce Azure, ITSM, aplikaci logiky, zabezpečený Webhook, Webhook.
     
-    b. **Název**: Zadejte jedinečný název pro akci.
+    b. **Název** : Zadejte jedinečný název pro akci.
 
-    c. **Podrobnosti**: na základě typu akce zadejte identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
+    c. **Podrobnosti** : na základě typu akce zadejte identifikátor URI Webhooku, aplikaci Azure, připojení ITSM nebo Runbook Automation. Pro akci ITSM zadejte také **pracovní položku** a další pole, které nástroj ITSM vyžaduje.
     
-    d. **Běžné schéma výstrah**: můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
+    d. **Běžné schéma výstrah** : můžete si vybrat, že se má povolit [společné schéma výstrah](./alerts-common-schema.md), které poskytuje jedinou rozšiřitelnou a Sjednocenou datovou část pro všechny služby výstrah v Azure monitor.
     
     ![Karta akce](./media/action-groups/action-group-3-actions.png)
 
@@ -135,7 +135,7 @@ E-mail s oznámením se pošle jenom na *primární e-mailovou* adresu.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./alerts-rate-limiting.md) .
 
-### <a name="function"></a>Function
+### <a name="function"></a>Funkce
 Zavolá existující koncový bod HTTP triggeru v [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 Ve skupině akcí můžete mít omezený počet akcí funkce.
@@ -287,7 +287,9 @@ Chcete-li dostávat aktualizace o změnách těchto IP adres, doporučujeme nako
 
 Ve skupině akcí můžete mít omezený počet akcí Webhooku.
 
-### <a name="service-tag"></a>Značka služby
+Časté aktualizace zdrojových IP adres můžou ve Webhooku trvat poměrně dlouho. Použití **značky služby pro službu** *Action* Service pomáhá minimalizovat složitost častých aktualizací IP adres ručně. Zdrojové IP adresy: předpony rozsahu sdílené výše jsou automaticky spravovány společností Microsoft, včetně **označení služby**.
+
+#### <a name="service-tag"></a>Značka služby
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě pro danou akci.
 
 1. V Azure Portal v části služby Azure vyhledejte *skupinu zabezpečení sítě*.
@@ -311,8 +313,6 @@ Značka služby představuje skupinu předpon IP adres z dané služby Azure. Sp
     1.  Klikněte na **Přidat**.
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="Příklad přidání značky služby"border="true":::
-
-Použití **značky služby pro službu Action Service** pomáhá minimalizovat složitost častých aktualizací IP adres.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](./alerts-sms-behavior.md).  

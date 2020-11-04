@@ -3,15 +3,16 @@ title: Dotazování kontejnerů ve službě Azure Cosmos DB
 description: Naučte se dotazovat kontejnery v Azure Cosmos DB pomocí dotazů v oddílu a mezi oddíly.
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086053"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335887"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Dotazování kontejneru Azure Cosmos
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

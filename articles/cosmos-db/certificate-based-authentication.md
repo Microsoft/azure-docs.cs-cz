@@ -3,16 +3,17 @@ title: Ověřování na základě certifikátů pomocí Azure Cosmos DB a služb
 description: Naučte se konfigurovat identitu Azure AD pro ověřování pomocí certifikátů pro přístup k klíčům z Azure Cosmos DB.
 author: voellm
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: a25cd2c0a9205dc184640e95f122c770b29cf24a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e0913351d40cd75da17d16cca119b4ad5ce20de0
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073243"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93334697"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Ověřování pomocí certifikátu pro identitu Azure AD pro přístup k klíčům z Azure Cosmos DB účtu
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +32,7 @@ V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služb
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace** . 
+1. Otevřete podokno Azure **Active Directory** , přejdete na **Registrace aplikací** podokno a vyberte **Nová registrace**. 
 
    :::image type="content" source="./media/certificate-based-authentication/new-app-registration.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
 
@@ -41,13 +42,13 @@ V tomto kroku zaregistrujete ukázkovou webovou aplikaci do svého účtu služb
    * **Podporované typy účtů** – vyberte **účty v tomto adresáři organizace (výchozí adresář)** , aby se pro přístup k této aplikaci povolily prostředky v aktuálním adresáři. 
    * **Adresa URL pro přesměrování** – vyberte aplikaci typu **Web** a zadejte adresu URL, kde je vaše aplikace hostovaná, může to být libovolná adresa URL. V tomto příkladu můžete zadat testovací URL, jako je to v `https://sampleApp.com` pořádku i v případě, že aplikace neexistuje.
 
-   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
+   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Registrace ukázkové webové aplikace":::
 
 1. Po vyplnění formuláře vyberte **Registrovat** .
 
-1. Po zaregistrování aplikace si poznamenejte **ID aplikace (ID klienta)** a **ID objektu** . Tyto podrobnosti budete používat v dalších krocích. 
+1. Po zaregistrování aplikace si poznamenejte **ID aplikace (ID klienta)** a **ID objektu**. Tyto podrobnosti budete používat v dalších krocích. 
 
-   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
+   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Získat ID aplikace a objektu":::
 
 ## <a name="install-the-azuread-module"></a>Instalace modulu AzureAD
 
@@ -100,7 +101,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovky:
 
-:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
+:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Výstup vytváření přihlašovacích údajů založený na certifikátech":::
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Konfigurace účtu Azure Cosmos pro použití nové identity
 
@@ -108,9 +109,9 @@ Výše uvedený příkaz vede výstup podobný následujícímu snímku obrazovk
 
 1. Přejděte k účtu Azure Cosmos, otevřete okno **řízení přístupu (IAM)** .
 
-1. Vyberte **Přidat** a **Přidat přiřazení role** . Přidejte dotazů, který jste vytvořili v předchozím kroku, s rolí **přispěvatele** , jak je znázorněno na následujícím snímku obrazovky:
+1. Vyberte **Přidat** a **Přidat přiřazení role**. Přidejte dotazů, který jste vytvořili v předchozím kroku, s rolí **přispěvatele** , jak je znázorněno na následujícím snímku obrazovky:
 
-   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
+   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Konfigurace účtu Azure Cosmos pro použití nové identity":::
 
 1. Po vyplnění formuláře vyberte **Save (Uložit** ).
 
@@ -124,9 +125,9 @@ V registraci aplikace Azure pro klientskou aplikaci:
 
 1. Otevřete podokno Azure **Active Directory** , v podokně **Registrace aplikací** a otevřete ukázkovou aplikaci, kterou jste vytvořili v předchozím kroku. 
 
-1. Vyberte **certifikáty & tajných** kódů a pak **Nahrajte certifikát** . Vyhledejte soubor certifikátu, který jste vytvořili v předchozím kroku, a nahrajte ho.
+1. Vyberte **certifikáty & tajných** kódů a pak **Nahrajte certifikát**. Vyhledejte soubor certifikátu, který jste vytvořili v předchozím kroku, a nahrajte ho.
 
-1. Vyberte **Přidat** . Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
+1. Vyberte **Add** (Přidat). Po nahrání certifikátu se zobrazí miniatura, datum zahájení a hodnoty vypršení platnosti.
 
 ## <a name="access-the-keys-from-powershell"></a>Přístup k klíčům z PowerShellu
 
@@ -151,7 +152,7 @@ V tomto kroku se přihlásíte k Azure pomocí aplikace a vytvořeného certifik
 
 V předchozím příkazu se zobrazí primární a sekundární primární klíč vašeho účtu Azure Cosmos. Můžete zobrazit protokol aktivit účtu Azure Cosmos a ověřit, zda požadavek GET Keys byl úspěšný a událost je iniciována aplikací "dotazů".
 
-:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Nová registrace aplikace ve službě Active Directory":::
+:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Ověření volání Get Keys ve službě Azure AD":::
 
 ## <a name="access-the-keys-from-a-c-application"></a>Přístup k klíčům z aplikace v C# 
 
@@ -239,7 +240,9 @@ namespace TodoListDaemonWithCert
 
 Tento skript vytvoří výstup primárních a sekundárních primárních klíčů, jak je znázorněno na následujícím snímku obrazovky:
 
-:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="Nová registrace aplikace ve službě Active Directory" iniciuje událost žádosti o získání klíčů. 
+:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="výstup aplikace CSharp":::
+
+Podobně jako v předchozí části si můžete zobrazit protokol aktivit účtu Azure Cosmos a ověřit, že aplikace "dotazů" iniciuje událost žádosti o získání klíčů. 
 
 
 ## <a name="next-steps"></a>Další kroky

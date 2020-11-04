@@ -3,32 +3,19 @@ title: Povolení rozšíření virtuálního počítače pomocí rozhraní pří
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí Azure CLI.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8f09914f246635f07b3c51c682bd67591c706732
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 99504c86046c1ef34eeab500a703b9a028cb46fb
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462906"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336724"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Povolení rozšíření virtuálních počítačů Azure pomocí Azure CLI
 
 V tomto článku se dozvíte, jak nasadit a odinstalovat rozšíření virtuálních počítačů Azure, které podporují servery s podporou ARC Azure, na hybridní počítač se systémem Linux nebo Windows pomocí Azure CLI.
 
 [!INCLUDE [Azure CLI Prepare your environment](../../../includes/azure-cli-prepare-your-environment.md)]
-
-## <a name="prerequisites"></a>Požadavky
-
-[Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
-
-Před použitím rozhraní příkazového řádku Azure ke správě rozšíření virtuálních počítačů na hybridním serveru, který spravuje servery s podporou ARC, je potřeba nainstalovat `ConnectedMachine` rozšíření CLI. Na serveru s povoleným ARC spusťte následující příkaz:
-
-```azurecli
-az extension add connectedmachine
-```
-
-Po dokončení instalace se vrátí následující zpráva:
-
-`The installed extension `connectedmachine` is experimental and not covered by customer support. Please use with discretion.`
 
 ## <a name="enable-extension"></a>Povolit rozšíření
 

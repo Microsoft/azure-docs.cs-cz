@@ -3,16 +3,17 @@ title: DateTimeFromParts v jazyce pro dotaz na Azure Cosmos DB
 description: Přečtěte si o DateTimeFromParts funkcí SQL systému v Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a897c5d08abd71fcda380363e3f26304bc69f876
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: da992715b5cf624592db72cacefd35c9513ac43f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095805"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93335768"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +48,7 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 Vrátí hodnotu řetězce data a času STANDARDu ISO 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Description|
+  |Formát|Popis|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|
