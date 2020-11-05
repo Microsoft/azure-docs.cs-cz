@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: f90d84b5897175dbda0a24591893c4e41a06822a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d7d232ada814d5d3c30e7b012c6289f847d641f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973576"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395083"
 ---
 # <a name="deploy-azure-sql-edge"></a>Nasazení Edge Azure SQL 
 
@@ -50,9 +50,9 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
    |IoT Hub   |  Název IoT Hub, kde je IoT Edge zařízení zaregistrované, a pak vyberte možnost nasadit do zařízení.|
    |Název zařízení IoT Edge  |  Název zařízení IoT Edge, kde by byl nasazený SQL Edge |
 
-4. Na stránce **nastavit moduly na zařízení:** klikněte v části **IoT Edge moduly**na modul Azure SQL Edge. Výchozí název modulu je nastavený na *AzureSQLEdge*. 
+4. Na stránce **nastavit moduly na zařízení:** klikněte v části **IoT Edge moduly** na modul Azure SQL Edge. Výchozí název modulu je nastavený na *AzureSQLEdge*. 
 
-5. V části *nastavení modulu* v okně **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro *název IoT Edge modulu*, *zásady restartování* a *požadovaný stav*. 
+5. V části *nastavení modulu* v okně **aktualizovat IoT Edge modul** zadejte požadované hodnoty pro *název IoT Edge modulu* , *zásady restartování* a *požadovaný stav*. 
 
    > [!IMPORTANT]    
    > Neměňte ani neaktualizujte nastavení **identifikátoru URI image** v modulu.
@@ -112,7 +112,7 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 
 ## <a name="connect-to-azure-sql-edge"></a>Připojení k Edge SQL Azure
 
-V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd**v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
+V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd** v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
 
 > [!NOTE]      
 > Nástroje příkazového řádku SQL (Sqlcmd) nejsou k dispozici v rámci ARM64 verze kontejnerů Azure SQL Edge.
@@ -212,7 +212,7 @@ Nyní spusťte dotaz, který vrátí data z `Inventory` tabulky.
 
 ## <a name="connect-from-outside-the-container"></a>Připojení mimo kontejner
 
-Můžete připojit a spustit dotazy SQL pro vaši instanci Azure SQL Edge ze všech externích nástrojů pro Linux, Windows nebo macOS, které podporují připojení SQL. Další informace o připojení k kontejneru SQL Edge z vnějšku najdete v tématu [připojení a dotazování Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/connect).
+Můžete připojit a spustit dotazy SQL pro vaši instanci Azure SQL Edge ze všech externích nástrojů pro Linux, Windows nebo macOS, které podporují připojení SQL. Další informace o připojení k kontejneru SQL Edge z vnějšku najdete v tématu [připojení a dotazování Azure SQL Edge](./connect.md).
 
 V tomto rychlém startu jste nasadili modul SQL Edge na zařízení IoT Edge. 
 

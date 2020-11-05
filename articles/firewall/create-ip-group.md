@@ -7,28 +7,29 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: c3ae62bf5b4f0b4796cac2e7079c8a09116d4895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53b35351108717c7b597e052a66e9902be5ec6c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85602529"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394522"
 ---
 # <a name="create-ip-groups"></a>Vytváření skupin IP adres
 
 Skupiny IP adres umožňují seskupovat a spravovat IP adresy pro pravidla Azure Firewall. Můžou mít jednu IP adresu, víc IP adres nebo jeden nebo víc rozsahů IP adres.
 
-## <a name="create-an-ip-group"></a>Vytvoření skupiny IP adres
+## <a name="create-an-ip-group---azure-portal"></a>Vytvoření skupiny IP adres – Azure Portal
+
+Vytvoření skupiny IP adres pomocí Azure Portal:
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
-2. Do textového pole hledání zadejte **skupiny IP adres** a pak vyberte **skupiny IP adres**.
-3. Vyberte **Vytvořit**.
-4. Vyberte své předplatné.
-5. Vyberte skupinu prostředků nebo vytvořte novou.
-6. Zadejte jedinečný název pro vaši skupinu IP adres a pak vyberte oblast.
-
-6. Vyberte **Další: IP adresy**.
-7. Zadejte IP adresu, více IP adres nebo rozsahy IP adres.
+1. Do vyhledávacího pole zadejte **skupiny IP adres** a pak vyberte **skupiny IP adres**.
+1. Vyberte **Vytvořit**.
+1. Vyberte své předplatné.
+1. Vyberte skupinu prostředků nebo vytvořte novou.
+1. Zadejte jedinečný název pro vaši skupinu IP adres a pak vyberte oblast.
+1. Vyberte **Další: IP adresy**.
+1. Zadejte IP adresu, více IP adres nebo rozsahy IP adres.
 
    Existují dva způsoby, jak zadat IP adresy:
    - Můžete je zadat ručně.
@@ -38,9 +39,35 @@ Skupiny IP adres umožňují seskupovat a spravovat IP adresy pro pravidla Azure
 
    Když zadáte IP adresu, portál ji ověří, aby zkontrolovala, jestli nedošlo k překrývání, duplicitám a formátování.
 
-5. Po dokončení vyberte **zkontrolovat + vytvořit**.
-6. Vyberte **Vytvořit**.
+1. Po dokončení vyberte **zkontrolovat + vytvořit**.
+1. Vyberte **Vytvořit**.
 
+## <a name="create-an-ip-group---azure-powershell"></a>Vytvoření skupiny IP adres – Azure PowerShell
+
+Tento příklad vytvoří skupinu IP adres s předponou adresy a IP adresou pomocí Azure PowerShell:
+
+```azurepowershell
+$ipGroup = @{
+    Name              = 'ipGroup'
+    ResourceGroupName = 'ipGroupRG'
+    Location          = 'West US'
+    IpAddress         = @('10.0.0.0/24', '192.168.1.10') 
+}
+
+New-AzIpGroup @ipGroup
+```
+
+## <a name="create-an-ip-group---azure-cli"></a>Vytvoření skupiny IP adres – Azure CLI
+
+Tento příklad vytvoří skupinu IP adres s předponou adresy a IP adresou pomocí Azure CLI:
+
+```azurecli-interactive
+az network ip-group create \
+    --name ipGroup \ 
+    --resource-group ipGroupRG \
+    --location westus \
+    --ip-addresses '10.0.0.0/24' '192.168.1.10'
+```
 
 ## <a name="next-steps"></a>Další kroky
 

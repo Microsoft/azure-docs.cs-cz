@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e34cd0907320f96f2846c1f424e678555381cccc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74e12a5e9bdd2dfdbc6ac07b66798e517f6f426
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907122"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395066"
 ---
 # <a name="what-is-azure-sql-edge"></a>Co je Azure SQL Edge?
 
 Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazení IoT a IoT Edge. Poskytuje funkce pro vytváření vysoce výkonných vrstev pro ukládání a zpracování dat pro aplikace a řešení IoT. Azure SQL Edge poskytuje možnosti pro streamování, zpracování a analýzu relačních a nerelačních dat, jako jsou data JSON, Graph a Time-Series, což dává správné možnosti pro nejrůznější moderní aplikace IoT.
 
-Azure SQL Edge je založený na nejnovějších verzích [SQL Server databázového stroje](/sql/sql-server/sql-server-technical-documentation), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako [SQL Server](/sql/sql-server/sql-server-technical-documentation) a [Azure SQL](https://docs.microsoft.com/azure/azure-sql/), poskytuje stejnou oblast programování v jazyce Transact-SQL (T-SQL), která usnadňuje a urychluje vývoj aplikací nebo řešení, a zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
+Azure SQL Edge je založený na nejnovějších verzích [SQL Server databázového stroje](/sql/sql-server/sql-server-technical-documentation), který poskytuje špičkové možnosti výkonu, zabezpečení a zpracování dotazů. Vzhledem k tomu, že je Azure SQL Edge postaven na stejném stroji jako [SQL Server](/sql/sql-server/sql-server-technical-documentation) a [Azure SQL](../azure-sql/index.yml), poskytuje stejnou oblast programování v jazyce Transact-SQL (T-SQL), která usnadňuje a urychluje vývoj aplikací nebo řešení, a zajišťuje přenositelnost aplikace mezi IoT Edgemi zařízeními, datovými centry a cloudem.
 
 Co je video Azure SQL Edge na Channel 9:
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-SQL-Edge/player]

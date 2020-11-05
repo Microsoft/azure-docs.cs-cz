@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325532"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392992"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Použití Azure Machine Learning studia ve službě Azure Virtual Network
 
@@ -97,7 +97,10 @@ Tyto kroky přidají identitu spravovanou pracovním prostorem jako __čtecí__ 
 
 ## <a name="technical-notes-for-managed-identity"></a>Technické poznámky ke spravované identitě
 
-Použití spravované identity pro přístup ke službám úložiště má vliv na některé z hlediska zabezpečení. Tyto požadavky jsou jedinečné pro typ účtu úložiště, ke kterému přistupujete. Tato část popisuje změny pro každý typ účtu úložiště.
+Použití spravované identity pro přístup ke službám úložiště má vliv na některé z hlediska zabezpečení. Tato část popisuje změny pro každý typ účtu úložiště.
+
+> [!IMPORTANT]
+> Tyto požadavky jsou jedinečné pro __typ účtu úložiště__ , ke kterému přistupujete.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

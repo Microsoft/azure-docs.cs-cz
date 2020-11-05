@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 47c040b0fad0211af413141a5b16b587d41d3b08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc3d44ac4396897fd43831d51ee628bb06048cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907140"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392057"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-edge"></a>Machine Learning a AI s ONNX v SQL Edge
 
@@ -28,7 +28,7 @@ Pokud chcete odvodit modely strojového učení ve službě Azure SQL Edge, bude
 
 Postup získání modelu ve formátu ONNX:
 
-- **Služby pro vytváření modelů**: služby, jako je například [funkce automatizovaného Machine Learning v Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) a [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) podporují přímý export výukového modelu ve formátu ONNX.
+- **Služby pro vytváření modelů** : služby, jako je například [funkce automatizovaného Machine Learning v Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) a [Azure Custom Vision Service](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) podporují přímý export výukového modelu ve formátu ONNX.
 
 - [**Převod a export stávajících modelů**](https://github.com/onnx/tutorials#converting-to-onnx-format): několik platforem školení (např. [PyTorch](https://pytorch.org/docs/stable/onnx.html), chainer a Caffe2) podporují NATIVNÍ funkce exportu na ONNX, což vám umožní uložit vyškolený model do konkrétní verze formátu ONNX. Pro architektury, které nepodporují nativní export, jsou k dispozici samostatné balíčky ONNX Converter, které umožňují převod modelů vyškolených z různých architektur strojového učení do formátu ONNX.
 
@@ -36,19 +36,19 @@ Postup získání modelu ve formátu ONNX:
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
    * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit – informace](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
     Úplný seznam podporovaných rozhraní a příkladů najdete v tématu [Převod do formátu ONNX](https://github.com/onnx/tutorials#converting-to-onnx-format).
 
 ## <a name="limitations"></a>Omezení
 
-V současné době nejsou všechny modely ONNX podporovány serverem Azure SQL Edge. Podpora je omezená na modely s **číselnými datovými typy**:
+V současné době nejsou všechny modely ONNX podporovány serverem Azure SQL Edge. Podpora je omezená na modely s **číselnými datovými typy** :
 
-- [int a bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
-- [reálné číslo a float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql).
+- [int a bigint](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
+- [reálné číslo a float](/sql/t-sql/data-types/float-and-real-transact-sql).
   
-Jiné číselné typy lze převést na podporované typy pomocí funkce [cast a Convert](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql).
+Jiné číselné typy lze převést na podporované typy pomocí funkce [cast a Convert](/sql/t-sql/functions/cast-and-convert-transact-sql).
 
 Vstupy modelu by měly být strukturované, aby každý vstup do modelu odpovídal jednomu sloupci v tabulce. Například pokud používáte PANDAS dataframe pro výuku modelu, pak každý vstup by měl být samostatným sloupcem pro model.
 

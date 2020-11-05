@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0abffc9bfb1a0c6511af331d1e8dbc10cff455
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026526"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395389"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Správa jednotek pro správu v Azure Active Directory
 
@@ -31,9 +31,9 @@ Pro přesnější administrativní řízení v Azure Active Directory (Azure AD)
 
     a. V Azure Portal přejdete do služby Azure AD. 
     
-    b. V seznamu aplikace vyberte **Průzkumník grafů** .
+    b. V seznamu aplikace vyberte **Průzkumník grafů**.
     
-    c. V podokně **oprávnění** vyberte **udělit souhlas správce pro Průzkumník grafů** .
+    c. V podokně **oprávnění** vyberte **udělit souhlas správce pro Průzkumník grafů**.
 
     ![Snímek obrazovky s odkazem "udělení souhlasu správce k Průzkumníku Graph".](./media/admin-units-manage/select-graph-explorer.png)
 
@@ -46,7 +46,7 @@ Jednotku pro správu můžete přidat pomocí Azure Portal nebo PowerShellu.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete do služby Azure AD. Pak v levém podokně vyberte **jednotky pro správu** .
+1. V Azure Portal přejdete do služby Azure AD. Pak v levém podokně vyberte **jednotky pro správu**.
 
     ![Snímek obrazovky s odkazem "administrativní jednotky" v Azure AD.](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -85,9 +85,9 @@ V Azure AD můžete odebrat jednotku pro správu, kterou už nebudete potřebova
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal otevřete **službu Azure AD** a vyberte **jednotky pro správu** . 
-1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit** . 
-1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano** . Jednotka pro správu se odstraní.
+1. V Azure Portal otevřete **službu Azure AD** a vyberte **jednotky pro správu**. 
+1. Vyberte jednotku pro správu, kterou chcete odstranit, a pak vyberte **Odstranit**. 
+1. Chcete-li potvrdit, že chcete jednotku pro správu odstranit, vyberte možnost **Ano**. Jednotka pro správu se odstraní.
 
 ![Snímek obrazovky s tlačítkem pro odstranění jednotky pro správu a potvrzovacím oknem](./media/admin-units-manage/select-admin-unit-to-delete.png)
 

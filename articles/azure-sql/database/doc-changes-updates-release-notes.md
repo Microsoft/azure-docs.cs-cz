@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791031"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391972"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ V tomto článku jsou uvedené Azure SQL Database a funkce spravované instance 
 
 ## <a name="whats-new"></a>Co je nového?
 
-Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena do samostatných oddílů. Aktualizovali jsme také, jak odkazujeme na spravovanou instanci z *Azure SQL Database spravované instance* do *Azure SQL Managed instance* .
+Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena do samostatných oddílů. Aktualizovali jsme také, jak odkazujeme na spravovanou instanci z *Azure SQL Database spravované instance* do *Azure SQL Managed instance*.
 
 Provedli jsme to proto, že některé funkce a funkce se výrazně liší mezi izolovanou databází a spravovanou instancí a je stále náročnější vysvětlovat komplexní drobné odlišnosti mezi Azure SQL Database a Azure SQL Managed instance v jednotlivých sdílených článcích.
 
@@ -41,14 +41,14 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 |**Spravovaná instance Azure SQL** | Azure SQL Database *spravovaná instance*| Azure SQL Managed instance je vlastní produkt v rámci řady Azure SQL, nikoli jenom možnost nasazení v rámci Azure SQL Database. | 
 |**Azure SQL Database**|Azure SQL Database *samostatná databáze*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu. |
 |**Azure SQL Database**|Azure SQL Database *elastický fond*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu.  |
-|**Azure SQL Database** |Databáze Azure SQL | I když termín zůstává stejný, vztahuje se nyní jenom na nasazení s izolovanými databázemi a elastickými fondy a nezahrnuje spravovanou instanci. |
-| **Azure SQL**| Není k dispozici | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
+|**Azure SQL Database** |Azure SQL Database | I když termín zůstává stejný, vztahuje se nyní jenom na nasazení s izolovanými databázemi a elastickými fondy a nezahrnuje spravovanou instanci. |
+| **Azure SQL**| – | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Doporučené | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
 | Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a Azure synapse Analytics data discovery & klasifikací](data-discovery-and-classification-overview.md).|
@@ -62,7 +62,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 
-| Doporučené | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | <a href="/azure/azure-sql/database/elastic-transactions-overview">Distribuované transakce</a> | Distribuované transakce napříč spravovanými instancemi. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
@@ -104,7 +104,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené následující
 |[Instanční objekt nemá přístup k Azure AD a integrace](#service-principal-cannot-access-azure-ad-and-akv)|Srpna 2020|Má alternativní řešení||
 |[Obnovení ručního zálohování bez KONTROLNÍho SOUČTu může selhat](#restoring-manual-backup-without-checksum-might-fail)|Květen 2020|Vyřešeno|Červen 2020|
 |[Agent přestane reagovat při úpravách, zakázání nebo povolování stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Vyřešeno|Červen 2020|
-|[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci SQL.](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Únor 2020|Má alternativní řešení||
+|[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci SQL.](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Únor 2020|Vyřešeno|Listopadu 2020|
 |[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má alternativní řešení||
 |[Role agenta SQL musí mít explicitní oprávnění SPUSTIT pro jiná přihlášení než správce systému](#in-memory-oltp-memory-limits-are-not-applied)|DEC 2019|Má alternativní řešení||
 |[Úlohy agenta SQL je možné přerušit restartováním procesu agenta.](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|DEC 2019|Vyřešeno|Březen 2020|

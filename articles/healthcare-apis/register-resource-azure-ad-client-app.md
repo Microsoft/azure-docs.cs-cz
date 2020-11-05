@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975854"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393383"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrace aplikace prostředků v Azure Active Directory
 
@@ -43,7 +43,7 @@ Pokud používáte Open Source Server FHIR pro Azure, použijte následující p
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**.
 
-2. V okně **Azure Active Directory** klikněte na **Registrace aplikací**:
+2. V okně **Azure Active Directory** klikněte na **Registrace aplikací** :
 
     ![Azure Portal. Registrace nové aplikace](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -71,9 +71,9 @@ Aplikace prostředků má identifikátor URI identifikátoru (identifikátor URI
 
 ### <a name="define-application-roles"></a>Definování aplikačních rolí
 
-Rozhraní Azure API pro FHIR a server OSS FHIR pro Azure používají pro řízení přístupu na základě role [Azure Active Directory aplikační role](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) . Pro definování rolí, které by měly být k dispozici pro rozhraní API serveru FHIR, otevřete [manifest](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/)aplikace prostředků:
+Rozhraní Azure API pro FHIR a server OSS FHIR pro Azure používají pro řízení přístupu na základě role [Azure Active Directory aplikační role](/azure/architecture/multitenant-identity/app-roles) . Pro definování rolí, které by měly být k dispozici pro rozhraní API serveru FHIR, otevřete [manifest](/azure/active-directory/active-directory-application-manifest/)aplikace prostředků:
 
-1. Klikněte na **manifest**:
+1. Klikněte na **manifest** :
 
     ![Aplikační role](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: c8dcddcd3d928758557074bf01d92e4bcc57ee1d
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 1bb2b7ca22896ed279c8aac215109b7f7bc7854c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279441"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394267"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -100,11 +100,11 @@ U počítačů se systémem Linux je nutné změnit použití číslo_portu ruč
 
 Skript vytvoří klíče registru vyžadované řešením. Vytvoří také pravidla brány Windows Firewall, která agentům umožní vytvářet připojení TCP mezi sebou. Klíče registru vytvořené skriptem určují, jestli se mají protokolovat protokoly ladění a cesta k souboru protokolů. Skript také definuje port TCP agenta, který se používá pro komunikaci. Hodnoty těchto klíčů jsou automaticky nastaveny pomocí skriptu. Tyto klíče neměňte ručně. Ve výchozím nastavení je port otevřený 8084. Vlastní port můžete použít zadáním parametru číslo_portu ke skriptu. Použijte stejný port na všech počítačích, na kterých se skript spouští. 
 
-    >[!NOTE]
-    > The script configures only Windows Firewall locally. If you have a network firewall, make sure that it allows traffic destined for the TCP port used by Network Performance Monitor.
+   >[!NOTE]
+   > Skript nakonfiguruje pouze místní bránu firewall systému Windows. Pokud máte bránu firewall sítě, ujistěte se, že umožňuje provoz určený pro port TCP používaný Network Performance Monitor.
 
-    >[!NOTE]
-    > You don't need to run the [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell script for Service Connectivity Monitor.
+   >[!NOTE]
+   > Pro monitorování připojení služby nemusíte spouštět skript prostředí [EnableRules.ps1](https://aka.ms/npmpowershellscript ) PowerShell.
 
     
 

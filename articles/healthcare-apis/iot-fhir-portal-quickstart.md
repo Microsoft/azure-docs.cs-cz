@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b6db74d637ac17ef5d09e1d9c5d3dac30ba8ba9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e3101c8abcaef52c0ae9aaafef36b23aa45b586
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89594369"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394505"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>Rychlý Start: nasazení konektoru Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal
 
@@ -163,16 +163,16 @@ Zachovat tento připojovací řetězec, který se má použít v pozdějším kr
 
 Azure nabízí rozsáhlou sadu produktů IoT pro připojení a správu vašich zařízení IoT. Pomocí služby Azure IoT Hub můžete vytvořit vlastní řešení založené na PaaS nebo začít s platformou spravovat aplikace IoT pomocí Azure IoT Central. V tomto kurzu budeme využívat Azure IoT Central, který obsahuje šablony řešení zaměřené na obor, které vám pomůžou začít.
 
-Nasaďte [šablonu aplikace pro monitorování nepřetržitého pacienta](https://docs.microsoft.com/azure/iot-central/healthcare/tutorial-continuous-patient-monitoring#create-an-application-template). Tato šablona obsahuje dvě simulovaná zařízení, která vytvářejí data v reálném čase, která vám pomůžou začít: **inteligentní** a **inteligentní kolenum**.
+Nasaďte [šablonu aplikace pro monitorování nepřetržitého pacienta](../iot-central/healthcare/tutorial-continuous-patient-monitoring.md#create-an-application-template). Tato šablona obsahuje dvě simulovaná zařízení, která vytvářejí data v reálném čase, která vám pomůžou začít: **inteligentní** a **inteligentní kolenum**.
 
 > [!NOTE]
-> Až budou vaše skutečná zařízení připravená, můžete pomocí stejné aplikace IoT Central připojit [zařízení](https://docs.microsoft.com/azure/iot-central/core/howto-set-up-template) a vyměnit simulátory zařízení. Data zařízení se automaticky začnou přesměrovat do FHIR. 
+> Až budou vaše skutečná zařízení připravená, můžete pomocí stejné aplikace IoT Central připojit [zařízení](../iot-central/core/howto-set-up-template.md) a vyměnit simulátory zařízení. Data zařízení se automaticky začnou přesměrovat do FHIR. 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>Připojení dat IoT k Azure IoT Connectoru pro FHIR (Preview)
 > [!WARNING]
 > Šablona mapování zařízení uvedená v této příručce je navržená pro práci s exportem dat (starší verze) v rámci IoT Central.
 
-Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím služby Azure IoT Connector pro FHIR. Chcete-li exportovat data IoT do služby Azure IoT Connector pro FHIR, chceme [v rámci IoT Central nastavit průběžný export dat](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-legacy). Na stránce průběžné exportu dat:
+Po nasazení IoT Central aplikace začnou vaše dvě předem připravená simulovaná zařízení generovat telemetrii. V tomto kurzu budeme ingestovat telemetrii z *inteligentního* simulátoru opravy do FHIR prostřednictvím služby Azure IoT Connector pro FHIR. Chcete-li exportovat data IoT do služby Azure IoT Connector pro FHIR, chceme [v rámci IoT Central nastavit průběžný export dat](../iot-central/core/howto-export-data-legacy.md). Na stránce průběžné exportu dat:
 - Jako cíl exportu vyberte *Azure Event Hubs* .
 - Vyberte *použít hodnotu připojovacího řetězce* pro **Event Hubs pole obor názvů** .
 - Poskytněte konektor Azure IoT Connector pro připojovací řetězec FHIR, který jste získali v předchozím kroku pro pole **připojovací řetězec** .

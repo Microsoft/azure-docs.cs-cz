@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfae813f01d3e7a08e18cde76e5c26ca253a371f
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026594"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393434"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Přiřazení vymezených rolí k jednotce pro správu
 
@@ -52,7 +52,7 @@ Můžete přiřadit vymezenou roli pomocí Azure Portal, PowerShellu nebo Micros
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete do **služby Azure AD** .
+1. V Azure Portal přejdete do **služby Azure AD**.
 
 1. Vyberte **jednotky pro správu** a potom vyberte jednotku správy, ke které chcete přiřadit obor role uživatele. 
 
@@ -60,7 +60,7 @@ Můžete přiřadit vymezenou roli pomocí Azure Portal, PowerShellu nebo Micros
 
    ![Snímek obrazovky s podoknem role a správci pro výběr jednotky pro správu, jejíž rozsah role chcete přiřadit.](./media/admin-units-assign-roles/select-role-to-scope.png)
 
-1. Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení** . 
+1. Vyberte roli, kterou chcete přiřadit, a pak vyberte **Přidat přiřazení**. 
 
 1. V podokně **Přidat přiřazení** vyberte jednoho nebo více uživatelů, kteří mají být přiřazeni k roli.
 
@@ -105,7 +105,7 @@ Seznam správců s vymezeným oborem můžete zobrazit pomocí Azure Portal, Pow
 
 V [části jednotky pro správu Azure AD](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)můžete zobrazit všechna přiřazení rolí vytvořená s oborem jednotky pro správu. 
 
-1. V Azure Portal přejdete do **služby Azure AD** .
+1. V Azure Portal přejdete do **služby Azure AD**.
 
 1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku pro správu seznamu přiřazení rolí, která chcete zobrazit. 
 

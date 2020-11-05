@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284478"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395032"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Poznámky k verzi Azure SQL Edge 
 
@@ -37,9 +37,9 @@ Tento článek popisuje, co je nového a co se změnilo u každého nového buil
    - Povolit scénáře paralelního provádění
 6. Vylepšení úspory energie v režimu snížené spotřeby
 7. Podpora streamování nových funkcí 
-   - [Snímky oken](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) : nový typ okna umožňující seskupit podle událostí přicházejících ve stejnou dobu. 
-   - Povolí [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) a [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) jako analytickou funkci. to umožňuje vracet záznamy seřazené podle sloupce podle vašeho výběru, aniž by bylo nutné být součástí okna. 
-   - Vylepšení [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
+   - [Snímky oken](/stream-analytics-query/snapshot-window-azure-stream-analytics) : nový typ okna umožňující seskupit podle událostí přicházejících ve stejnou dobu. 
+   - Povolí [TopOne](/stream-analytics-query/topone-azure-stream-analytics) a [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) jako analytickou funkci. to umožňuje vracet záznamy seřazené podle sloupce podle vašeho výběru, aniž by bylo nutné být součástí okna. 
+   - Vylepšení [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Opravy
 1. Další chybové zprávy a podrobnosti pro řešení potíží s operacemi streamování TSQL. 

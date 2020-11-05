@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513365"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394862"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Tok dat konektoru Azure IoT pro FHIR (Preview)
 
@@ -26,7 +26,7 @@ Diagram výše znázorňuje běžné toky dat pomocí Azure IoT Connector pro FH
 Níže jsou uvedeny různé fáze, kterými data procházejí po přijetí službou Azure IoT Connector pro FHIR.
 
 ## <a name="ingest"></a>Ingestování
-Ingestuje se první fáze, kdy se data zařízení přijímají do služby Azure IoT Connector pro FHIR. Koncový bod přijímání dat zařízení je hostovaný v [centru událostí Azure](https://docs.microsoft.com/azure/event-hubs/). Platforma Azure Event hub podporuje vysoké škálování a propustnost s možností přijímat a zpracovávat miliony zpráv za sekundu. Umožňuje taky službě Azure IoT Connector pro FHIR spotřebovávat zprávy asynchronně a odebrat nutnost čekat na zpracování dat ze zařízení.
+Ingestuje se první fáze, kdy se data zařízení přijímají do služby Azure IoT Connector pro FHIR. Koncový bod přijímání dat zařízení je hostovaný v [centru událostí Azure](../event-hubs/index.yml). Platforma Azure Event hub podporuje vysoké škálování a propustnost s možností přijímat a zpracovávat miliony zpráv za sekundu. Umožňuje taky službě Azure IoT Connector pro FHIR spotřebovávat zprávy asynchronně a odebrat nutnost čekat na zpracování dat ze zařízení.
 
 > [!NOTE]
 > Formát JSON je v tuto chvíli jediným podporovaným formátem pro data zařízení.

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bee7bede0219f41d9d5e56214a6dc1b94977cb5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322728"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393214"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Kurz: spuštění "Hello World!" Skript Pythonu (část 2 ze 4)
 
@@ -138,6 +138,14 @@ Tady je popis toho, jak skript ovládacího prvku funguje:
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>Odeslání a spuštění kódu v cloudu
 
 Spusťte skript ovládacího prvku, který zase běží `hello.py` na výpočetním clusteru, který jste vytvořili v [kurzu instalace](tutorial-1st-experiment-sdk-setup-local.md).
+
+První spuštění bude trvat 5-10 minut. Důvodem je, že dojde k následujícímu:
+
+* Image Docker je vestavěná v cloudu.
+* Velikost výpočetního clusteru je změněná z 0 na 1 uzel.
+* Image Docker se stáhne do výpočetního prostředí. 
+
+Další spuštění jsou mnohem rychlejší (přibližně 15 sekund), protože image Docker se ukládá do mezipaměti ve výpočetním prostředí – můžete to otestovat opětovným odesláním kódu uvedeného níže po dokončení prvního spuštění.
 
 ```bash
 python 03-run-hello.py

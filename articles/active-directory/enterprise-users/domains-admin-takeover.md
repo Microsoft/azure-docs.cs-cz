@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/04/2020
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375667"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393621"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzetí nespravovaného adresáře v roli správce v Azure Active Directory
 
@@ -67,7 +67,7 @@ Po dokončení předchozích kroků teď jste globálním správcem čtvrté ká
   
 6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
   
-7. Vyberte **vlastní názvy domén**a pak přidejte název domény. Aby bylo možné ověřit vlastnictví názvu domény, budete muset zadat záznamy TXT DNS. 
+7. Vyberte **vlastní názvy domén** a pak přidejte název domény. Aby bylo možné ověřit vlastnictví názvu domény, budete muset zadat záznamy TXT DNS. 
   
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
@@ -100,7 +100,7 @@ Mezi podporované plány služby patří:
 
 Převzetí externích správců se nepodporuje u žádné služby, která obsahuje plány služeb, které zahrnují SharePoint, OneDrive nebo Skype pro firmy. například prostřednictvím bezplatného předplatného Office. 
 
-Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravované organizace a její ověření v požadované organizaci. 
+Volitelně můžete použít [možnost **ForceTakeover**](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravované organizace a její ověření v požadované organizaci. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Další informace o RMS pro jednotlivce
 
@@ -144,12 +144,12 @@ rutiny | Využití
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Příklad:
+    Například:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Příklad:
+4. Zkopírujte hodnotu (Challenge), která se vrátí z tohoto příkazu. Například:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -160,7 +160,7 @@ rutiny | Využití
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Příklad:
+   Například:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
@@ -174,7 +174,7 @@ rutiny | Využití
 * [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/)
 * [Azure PowerShell](/powershell/azure/)
 * [Referenční informace k rutinám Azure](/powershell/azure/get-started-azureps)
-* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0&preserve-view=true)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png

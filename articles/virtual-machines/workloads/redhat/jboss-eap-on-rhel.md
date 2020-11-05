@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: d97148393d3158e38f9740d4a8f8e17dd04326d5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cfd465476aa8963de6093bccd5d4821ea2b29338
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135347"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395814"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Nasazení podnikových aplikací v jazyce Java do Azure pomocí protokolu JBoss EAP na Red Hat Enterprise Linux
 
@@ -23,13 +23,13 @@ Tyto šablony pro rychlý Start vám ukáže, jak nasadit [JBoss EAP](https://ww
 
 * Účet Azure s aktivním předplatným. Pokud chcete získat předplatné Azure, aktivujte si své [kredity Azure pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [vytvořte účet zdarma](https://azure.microsoft.com/pricing/free-trial).
 
-* Instalace protokolu JBoss EAP – musíte mít účet Red Hat s nárokem RHSM (Red Hat Subscription Management) pro JBoss EAP. Tato oprávnění vám umožní stáhnout verzi protokolu EAP s testováním Red Hat testovánou a certifikovaným JBoss.  Pokud nemáte nárok na protokol EAP, Získejte před zahájením [zkušební předplatné JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) . Pokud chcete vytvořit nové předplatné Red Hat, navštivte [zákaznický portál Red Hat](https://access.redhat.com/) a nastavte účet.
-F
+* Instalace protokolu JBoss EAP – musíte mít účet Red Hat s nárokem RHSM (Red Hat Subscription Management) pro JBoss EAP. Tato oprávnění vám umožní stáhnout verzi protokolu EAP s Red Hat testovánou a certifikovaným JBoss.  Pokud nemáte nárok na protokol EAP, Získejte před zahájením [zkušební předplatné JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) . Pokud chcete vytvořit nové předplatné Red Hat, navštivte [zákaznický portál Red Hat](https://access.redhat.com/) a nastavte účet.
+
 * [Rozhraní Azure Command-Line](https://docs.microsoft.com/cli/azure/overview).
 
 * RHEL možnosti – můžete si vybrat mezi průběžnými platbami (PAYG) nebo Přineste si vlastní předplatné (BYOS). V BYOS je před nasazením šablony pro rychlé zprovoznění nutné aktivovat image [Red Hat Cloud Access](https://access.redhat.com/) RHEL Gold.
 
-## <a name="java-ee--jakarata-ee-application-migration"></a>Migrace aplikací v jazyce Java EE/Jakarata et
+## <a name="java-ee--jakarta-ee-application-migration"></a>Migrace aplikací z Java EE/Jakarta EE
 
 ### <a name="migrate-to-jboss-eap"></a>Migrace na JBoss EAP
 JBoss EAP 7,2 a 7,3 jsou certifikované implementace Java Enterprise Edition (Java EE) 8 a Jakarta EE 8 specifikací. JBoss EAP poskytuje předkonfigurované možnosti pro funkce, jako je Clustering s vysokou dostupností (HA), zasílání zpráv a distribuované ukládání do mezipaměti. Umožňuje také uživatelům psát, nasazovat a spouštět aplikace s využitím různých rozhraní API a služeb, které poskytuje JBoss EAP.  Další informace o protokolu EAP JBoss najdete v [úvodu k JBoss protokolu eap 7,2](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html-single/introduction_to_jboss_eap/index) nebo [Úvod do JBoss EAP 7,3](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/introduction_to_jboss_eap/index).
@@ -77,7 +77,7 @@ Architektura řešení pro tyto šablony zahrnuje:
 * JBoss EAP cluster pomocí sady škálování virtuálních počítačů Azure
 
 #### <a name="linux-workload-migration-for-jboss-eap"></a>Migrace úloh Linux pro JBoss EAP
-Azure pro sestavovatele úloh zjednodušuje proces ověření koncepce, vyhodnocení a migrace místních aplikací Java do Azure. Tvůrce úloh se integruje s nástrojem pro zjišťování Azure Migrate k identifikaci serverů EAP s JBoss. Pak bude dynamicky generovat Ansible PlayBook pro nasazení serveru JBoss EAP. Pomocí nástroje pro Red Hat MTA migrujete servery z jiných aplikačních serverů na JBoss EAP. Mezi kroky pro zjednodušení migrace patří:
+Azure pro sestavovatele úloh zjednodušuje proces ověření koncepce, vyhodnocení a migrace místních aplikací Java do Azure. Tvůrce úloh se integruje s nástrojem pro zjišťování Azure Migrate k identifikaci serverů EAP s JBoss. Pak bude dynamicky generovat Ansible PlayBook pro nasazení serveru JBoss EAP. Využívá nástroj pro Red Hat MTA k migraci serverů z jiných aplikačních serverů na JBoss EAP. Mezi kroky pro zjednodušení migrace patří:
 * Vyhodnocení – clustery EAP s JBoss s využitím virtuálního počítače Azure nebo sady škálování virtuálních počítačů
 * Posouzení – prohledává aplikace a infrastrukturu.
 * Konfigurace infrastruktury – vytvoří profil úlohy.
@@ -86,7 +86,7 @@ Azure pro sestavovatele úloh zjednodušuje proces ověření koncepce, vyhodnoc
 
 ## <a name="server-configuration-choice"></a>Volba konfigurace serveru
 
-Pro nasazení virtuálního počítače s RHEL můžete zvolit buď PAYG, nebo BYOS. Obrázky z [Azure Marketplace](https://azuremarketplace.microsoft.com) standardně PAYG. Pokud máte vlastní image RHEL OS, nasaďte virtuální počítač typu BYOS RHEL. Před nasazením virtuálních počítačů nebo sady škálování virtuálních počítačů zkontrolujte, jestli má váš účet RHSM nárok na BYOS nárok prostřednictvím cloudového přístupu F.
+Pro nasazení virtuálního počítače s RHEL můžete zvolit buď PAYG, nebo BYOS. Obrázky z [Azure Marketplace](https://azuremarketplace.microsoft.com) standardně PAYG. Pokud máte vlastní image RHEL OS, nasaďte virtuální počítač typu BYOS RHEL. Než nasadíte virtuální počítače nebo sadu škálování virtuálního počítače, ujistěte se, že váš účet RHSM má oprávnění BYOS přes cloudový přístup.
 
 JBoss EAP obsahuje výkonné možnosti správy a poskytuje funkce a rozhraní API aplikacím. Tyto možnosti správy se liší v závislosti na použitém operačním režimu ke spuštění protokolu JBoss EAP. Podporuje se na RHEL a ve Windows serveru. JBoss EAP nabízí samostatný serverový operační režim pro správu diskrétních instancí. Nabízí také operační režim spravované domény pro správu skupin instancí z jednoho řídicího bodu. Poznámka: domény spravované JBoss EAP nejsou v Microsoft Azure podporované, protože funkce vysoké dostupnosti (HA) je spravovaná službami infrastruktury Azure. Proměnná prostředí s názvem *EAP_HOME* slouží k označení cesty k instalaci protokolu EAP JBoss.
 
@@ -120,7 +120,7 @@ Podrobnosti o cenách PAYG virtuálních počítačů najdete v [cenách Red Hat
 
 #### <a name="using-rhel-os-with-byos-model"></a>Použití operačního systému RHEL s modelem BYOS
 
-Pokud chcete používat BYOS pro RHEL operační systém, musíte mít platné předplatné Red Hat s nároky na používání RHEL operačního systému v Azure. Před nasazením této šablony pro rychlé zprovoznění proveďte následující předpoklady:
+Pokud chcete používat BYOS pro RHEL operační systém, musíte mít platné předplatné Red Hat s nároky na používání RHEL operačního systému v Azure. Před nasazením operačního systému RHEL s modelem BYOS proveďte následující předpoklady:
 
 1. Ujistěte se, že máte oprávnění RHEL pro operační systém a JBoss EAP připojené k vašemu předplatnému Red Hat.
 2. Ověřte ID předplatného Azure, abyste mohli používat image RHEL BYOS. Dokončete proces pomocí [dokumentace správy předplatných Red Hat (RHSM)](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) , která zahrnuje tyto kroky:

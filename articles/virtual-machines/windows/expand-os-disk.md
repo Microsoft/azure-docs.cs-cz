@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927681"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393825"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
@@ -39,18 +39,18 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Změna velikosti spravovaného disku v Azure Portal
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do virtuálního počítače, ve kterém chcete disk rozbalit. Kliknutím na tlačítko **zastavit zrušíte** přidělení virtuálního počítače.
-2. Po zastavení virtuálního počítače v nabídce vlevo v části **Nastavení** vyberte **disky** .
+2. Po zastavení virtuálního počítače v nabídce vlevo v části **Nastavení** vyberte **disky**.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
 
  
 3. V části **název disku** vyberte disk, u kterého chcete změnit velikost.
 
-    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
+    :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Snímek obrazovky, který zobrazuje podokno disky s vybraným názvem disku":::
 
-4. V nabídce vlevo v části **Nastavení** vyberte **Konfigurace** .
+4. V nabídce vlevo v části **Nastavení** vyberte **Konfigurace**.
 
-    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
+    :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Snímek obrazovky, který zobrazuje možnost konfigurace zvolená v části nastavení v nabídce":::
 
 5. V části **Velikost (GIB)** vyberte požadovanou velikost disku.
    
@@ -58,11 +58,11 @@ Při vytváření nového virtuálního počítače ve skupině prostředků nas
    > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2 048 GB pro disky s operačním systémem. (Objekt BLOB VHD můžete rozšířit i po této velikosti, ale operační systém funguje jenom s prvním 2 048 GB místa.)
    > 
 
-    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
+    :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Snímek obrazovky, který zobrazuje podokno konfigurace se zvolenou velikostí disku.":::
 
-6. Vyberte **Uložit** .
+6. Vyberte **Uložit**.
 
-    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Snímek obrazovky, který zobrazuje možnost disky vybrané v části nastavení v nabídce":::
+    :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Snímek obrazovky, který zobrazuje podokno konfigurace s vybraným tlačítkem Uložit.":::
 
 
 ## <a name="resize-a-managed-disk-by-using-powershell"></a>Změna velikosti spravovaného disku pomocí prostředí PowerShell
@@ -226,16 +226,16 @@ Podobně můžete odkazovat na jiné datové disky připojené k virtuálnímu p
 **Nespravovaný disk**
 
 ```powershell
-($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
+($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).DiskSizeGB = 1023
 ```
 
 ## <a name="expand-the-volume-within-the-os"></a>Rozšířit svazek v operačním systému
 
-Po rozbalení disku pro virtuální počítač musíte přejít do operačního systému a rozšířit svazek tak, aby zahrnoval nové místo. Existuje několik způsobů, jak rozšířit oddíl. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP, které umožňuje rozšířit oddíl pomocí **nástroje DiskPart** .
+Po rozbalení disku pro virtuální počítač musíte přejít do operačního systému a rozšířit svazek tak, aby zahrnoval nové místo. Existuje několik způsobů, jak rozšířit oddíl. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP, které umožňuje rozšířit oddíl pomocí **nástroje DiskPart**.
 
 1. Otevřete připojení RDP k vašemu VIRTUÁLNÍmu počítači.
 
-2. Otevřete příkazový řádek a zadejte příkaz **DiskPart** .
+2. Otevřete příkazový řádek a zadejte příkaz **DiskPart**.
 
 3. Do příkazového řádku **DiskPart** zadejte `list volume` . Poznamenejte si svazek, který chcete zvětšit.
 

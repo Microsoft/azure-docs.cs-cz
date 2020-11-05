@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886476"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394916"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
 
@@ -36,29 +36,29 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
 1. Přejděte do služby IoT Hub, která byla vytvořena ve vaší skupině prostředků.
 
-2. V části **IoT Edge** v části **Automatická správa zařízení**klikněte na **ID zařízení**. V tomto kurzu je ID `IronOrePredictionDevice` .
+2. V části **IoT Edge** v části **Automatická správa zařízení** klikněte na **ID zařízení**. V tomto kurzu je ID `IronOrePredictionDevice` .
 
 3. Vyberte část **set modules** .
 
-4. V části **Container Registry přihlašovací údaje**zadejte následující hodnoty:
+4. V části **Container Registry přihlašovací údaje** zadejte následující hodnoty:
 
    _Pole_|_Hodnota_
    -------|-------
-   Název|Název registru
+   Name|Název registru
    Adresa|Přihlašovací server
    Uživatelské jméno|Uživatelské jméno
    Heslo|Heslo
   
 ## <a name="deploy-the-data-generator-module"></a>Nasazení modulu generátoru dat
 
-1. V části **IoT Edge** v části **Automatická správa zařízení**klikněte na **ID zařízení**. Pro tento kurz je ID `IronOrePredictionDevice` a pak klikněte na **nastavit moduly**.
+1. V části **IoT Edge** v části **Automatická správa zařízení** klikněte na **ID zařízení**. Pro tento kurz je ID `IronOrePredictionDevice` a pak klikněte na **nastavit moduly**.
 
 2.  V části **IoT Edge moduly** na stránce **nastavit moduly na zařízení:** klikněte na **+ Přidat** a vyberte **IoT Edge modul**.
 
 3. Zadejte platný název a identifikátor URI image pro modul IoT Edge.
-   Identifikátor URI image najdete v registru kontejnerů ve skupině prostředků vytvořené v první části tohoto kurzu. V části **služby**vyberte část **úložiště** . Pro tento kurz vyberte úložiště s názvem `silicaprediction` . Vyberte příslušnou značku. Identifikátor URI image bude ve formátu:
+   Identifikátor URI image najdete v registru kontejnerů ve skupině prostředků vytvořené v první části tohoto kurzu. V části **služby** vyberte část **úložiště** . Pro tento kurz vyberte úložiště s názvem `silicaprediction` . Vyberte příslušnou značku. Identifikátor URI image bude ve formátu:
 
-   *přihlašovací server containerregistry* / *název úložiště*:*název značky*
+   *přihlašovací server containerregistry* / *název úložiště* : *název značky*
 
    Například:
 
@@ -77,7 +77,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
 2. V okně **IoT Edge modulu Marketplace** vyhledejte *Azure SQL Edge* a vyberte *Azure SQL Edge Developer*. 
 
-3. Kliknutím na nově přidaný modul *Azure SQL Edge* v části **IoT Edge moduly** nakonfigurujte modul Azure SQL Edge. Další informace o možnostech konfigurace najdete v tématu [nasazení Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
+3. Kliknutím na nově přidaný modul *Azure SQL Edge* v části **IoT Edge moduly** nakonfigurujte modul Azure SQL Edge. Další informace o možnostech konfigurace najdete v tématu [nasazení Azure SQL Edge](./deploy-portal.md).
 
 4. Přidejte `MSSQL_PACKAGE` proměnnou prostředí do nasazení modulu *Azure SQL Edge* a zadejte adresu URL souboru DACPAC databáze vytvořeného v kroku 8 první [části](tutorial-deploy-azure-resources.md) tohoto kurzu.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: yelevin
-ms.openlocfilehash: 54c10d7941e053bec928f8f43310218d89124f9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50b88b4af6ea8479097b88b51fe7acfbea355ab8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461727"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392312"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -62,7 +62,17 @@ Můžete auditovat následující podporované operace.
 Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do služby Azure Sentinel, kde pak můžete na svém základě provádět výzkum a analýzu.
 
 1. Připojte zdroj dat o [aktivitě Azure](connect-azure-activity.md) . Po provedení tohoto postupu se události auditu streamují do nové tabulky na obrazovce **protokoly** s názvem AzureActivity.
-2. Pak Dotazujte data pomocí KQL, stejně jako u jakékoli jiné tabulky.
+
+1. Pak Dotazujte data pomocí KQL, stejně jako u jakékoli jiné tabulky.
+
+    Chcete-li například zjistit, kdo byl posledním uživatelem pro úpravu konkrétního analytického pravidla, použijte následující dotaz (nahraďte `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` ID pravidla pravidla, které chcete ověřit):
+
+    ```kusto
+    AzureActivity
+    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
+    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    | project Caller , TimeGenerated , Properties
+    ```
 
 
 
@@ -70,7 +80,7 @@ Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do sl
 
 | **Dodavatel**  | **Použít incident v Azure Sentinel** | **Propojit**|
 |----|----|----|
-| GitHubu| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
+| GitHub| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kurz dotazovacího jazyka Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 

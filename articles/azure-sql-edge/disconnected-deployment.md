@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ff14f8a9f236701889aea95911f2a1e381eabf83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946836"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392074"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Nasazení Azure SQL Edge s Docker
 
@@ -28,7 +28,7 @@ Tato image se skládá z Azure SQL Edge na základě Ubuntu 18,04. Dá se použ�
 - Ovladač úložiště Docker **overlay2** . Toto je výchozí nastavení pro většinu uživatelů. Pokud zjistíte, že nepoužíváte tohoto poskytovatele úložiště a potřebujete ho změnit, přečtěte si pokyny a upozornění v [dokumentaci k Docker pro konfiguraci overlay2](https://docs.docker.com/storage/storagedriver/overlayfs-driver/#configure-docker-with-the-overlay-or-overlay2-storage-driver).
 - Minimálně 10 GB místa na disku.
 - Minimálně 1 GB paměti RAM.
-- [Požadavky na hardware pro Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/features#hardware-support).
+- [Požadavky na hardware pro Azure SQL Edge](./features.md#hardware-support).
 
 
 ## <a name="pull-and-run-the-container-image"></a>Vyžádání a spuštění image kontejneru
@@ -70,7 +70,7 @@ Předchozí příkaz vyžádá nejnovější image kontejneru Azure SQL Edge. Po
     | Parametr | Popis |
     |-----|-----|
     | **-e "ACCEPT_EULA = Y"** |  Nastavte proměnnou **ACCEPT_EULA** na libovolnou hodnotu pro potvrzení souhlasu s [licenční smlouvou s koncovým uživatelem](https://go.microsoft.com/fwlink/?linkid=2139274). Požadované nastavení pro obrázek Azure SQL Edge. |
-    | **-e "MSSQL_SA_PASSWORD = yourStrong (!) Zadáno** | Zadejte vlastní silné heslo, které má aspoň 8 znaků a splňuje požadavky na [heslo pro Edge Azure SQL](https://docs.microsoft.com/sql/relational-databases/security/password-policy). Požadované nastavení pro obrázek Azure SQL Edge. |
+    | **-e "MSSQL_SA_PASSWORD = yourStrong (!) Zadáno** | Zadejte vlastní silné heslo, které má aspoň 8 znaků a splňuje požadavky na [heslo pro Edge Azure SQL](/sql/relational-databases/security/password-policy). Požadované nastavení pro obrázek Azure SQL Edge. |
     | **-p 1433:1433** | Namapujte port TCP v hostitelském prostředí (první hodnota) pomocí portu TCP v kontejneru (druhá hodnota). V tomto příkladu Azure SQL Edge naslouchá na TCP 1433 v kontejneru a je vystavený portu 1433 na hostiteli. |
     | **--Name azuresqledge** | Zadejte vlastní název kontejneru, nikoli náhodně generovaný. Pokud spustíte více než jeden kontejner, nelze znovu použít stejný název. |
     | **-d** | Spuštění kontejneru na pozadí (démon) |
@@ -83,7 +83,7 @@ Předchozí příkaz vyžádá nejnovější image kontejneru Azure SQL Edge. Po
     sudo docker ps -a
    ```
 
-4. Pokud se ve sloupci **stav** zobrazuje stav **zapnuto**, pak je v kontejneru spuštěno Azure SQL Edge a naslouchá na portu zadaném ve sloupci **porty** . Pokud se ve sloupci **stav** pro váš kontejner Azure SQL Edge zobrazuje jako **ukončené**, přečtěte si část věnované řešení potíží v dokumentaci k Azure SQL Edge.
+4. Pokud se ve sloupci **stav** zobrazuje stav **zapnuto** , pak je v kontejneru spuštěno Azure SQL Edge a naslouchá na portu zadaném ve sloupci **porty** . Pokud se ve sloupci **stav** pro váš kontejner Azure SQL Edge zobrazuje jako **ukončené** , přečtěte si část věnované řešení potíží v dokumentaci k Azure SQL Edge.
 
     `-h`Parametr (název hostitele) je také užitečný, ale v tomto kurzu se pro jednoduchost nepoužívá. Tím se změní interní název kontejneru na vlastní hodnotu. Název, který se zobrazí, se vrátí v následujícím dotazu Transact-SQL:
 
@@ -114,7 +114,7 @@ Předchozí příkaz vyžádá nejnovější image kontejneru Azure SQL Edge. Po
 
 ## <a name="connect-to-azure-sql-edge"></a>Připojení k Edge SQL Azure
 
-V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd**v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
+V následujících krocích se připojíte k Edge SQL serveru Azure pomocí nástroje příkazového řádku **Sqlcmd** v rámci služby Azure SQL Edge, který se nachází uvnitř kontejneru.
 
 > [!NOTE]
 > Nástroj Sqlcmd není k dispozici ve verzi ARM64 kontejnerů SQL Edge.

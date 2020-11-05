@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 35985404d5ac97940c324c3ad7f7d46c959b4902
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02f22883a0989714d8b74f778cacf1ba2c65d0b4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936739"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392006"
 ---
 # <a name="performance-best-practices-and-configuration-guidelines"></a>Osvědčené postupy a pokyny pro konfiguraci výkonu
 
@@ -28,13 +28,13 @@ Azure SQL Edge ve výchozím nastavení vytvoří v rámci inicializace kontejne
 
 ### <a name="use-clustered-columnstore-indexes-where-possible"></a>Používejte clusterované indexy columnstore tam, kde je to možné
 
-Zařízení IoT a Edge obvykle generují velké objemy dat, která jsou obvykle agregována za určité časové období pro účely analýzy. Jednotlivé datové řádky se u jakékoli analýzy zřídka používají. Indexy columnstore jsou ideální pro ukládání a dotazování těchto velkých datových sad. Tento index využívá úložiště dat založené na sloupcích a zpracování dotazů, aby bylo možné získat zisky až do deseti dob výkonu dotazů v tradičním orientovaném úložišti. Pro komprimaci dat v nekomprimovaných datech můžete také dosáhnout nárůstu až desetkrát. Další informace najdete v tématu [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) .
+Zařízení IoT a Edge obvykle generují velké objemy dat, která jsou obvykle agregována za určité časové období pro účely analýzy. Jednotlivé datové řádky se u jakékoli analýzy zřídka používají. Indexy columnstore jsou ideální pro ukládání a dotazování těchto velkých datových sad. Tento index využívá úložiště dat založené na sloupcích a zpracování dotazů, aby bylo možné získat zisky až do deseti dob výkonu dotazů v tradičním orientovaném úložišti. Pro komprimaci dat v nekomprimovaných datech můžete také dosáhnout nárůstu až desetkrát. Další informace najdete v tématu [indexy columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview) .
 
 Kromě toho další funkce Azure SQL Edge, jako je streamování dat a ukládání dat, z optimalizace columnstore při vkládání a odstraňování dat. 
 
 ### <a name="simple-recovery-model"></a>Jednoduchý model obnovení
 
-Vzhledem k tomu, že úložiště může být omezené na hraničních zařízeních, všechny uživatelské databáze ve službě Azure SQL Edge ve výchozím nastavení používají jednoduchý model obnovení. Jednoduchý model obnovení automaticky znovu přihlásí místo v protokolu, aby byly požadavky na místo malé, a v podstatě eliminují nutnost spravovat místo transakčního protokolu. To může být užitečné u hraničních zařízení s dostupným omezeným úložištěm. Další informace o jednoduchém modelu obnovení a dalších dostupných modelech obnovení najdete v tématu [modely obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) .
+Vzhledem k tomu, že úložiště může být omezené na hraničních zařízeních, všechny uživatelské databáze ve službě Azure SQL Edge ve výchozím nastavení používají jednoduchý model obnovení. Jednoduchý model obnovení automaticky znovu přihlásí místo v protokolu, aby byly požadavky na místo malé, a v podstatě eliminují nutnost spravovat místo transakčního protokolu. To může být užitečné u hraničních zařízení s dostupným omezeným úložištěm. Další informace o jednoduchém modelu obnovení a dalších dostupných modelech obnovení najdete v tématu [modely obnovení](/sql/relational-databases/backup-restore/recovery-models-sql-server) .
 
 Operace, jako je přesouvání protokolu a obnovení k bodu v čase, které vyžadují zálohování transakčního protokolu, nejsou podporovány jednoduchým modelem obnovení.  
 
@@ -56,16 +56,9 @@ Transakce ve službě Azure SQL Edge můžou být buď plně trvanlivé, SQL Ser
 
 Plně trvalá potvrzení transakcí jsou synchronní a nahlásí potvrzení jako úspěšné a vrátí řízení klientovi až poté, co jsou záznamy protokolu pro transakci zapisovány na disk. Opožděná trvalá potvrzení transakcí jsou asynchronní a zapisují potvrzení jako úspěšné předtím, než se záznamy protokolu pro transakci zapisují na disk. Zápis položek protokolu transakcí na disk je nutný, aby transakce byla trvalá. Zpožděné trvalé transakce se stanou netrvanlivé, když jsou položky transakčního protokolu vyprázdněny na disk. 
 
-V nasazeních, u kterých je možné tolerovat **určitou ztrátu dat** nebo na hraničních zařízeních s pomalým úložištěm, je možné použít odloženou odolnost k optimalizaci přijímání dat a vyčištění na základě uchovávání dat. Další informace naleznete v tématu [řízení odolnosti transakce](https://docs.microsoft.com/sql/relational-databases/logs/control-transaction-durability).
+V nasazeních, u kterých je možné tolerovat **určitou ztrátu dat** nebo na hraničních zařízeních s pomalým úložištěm, je možné použít odloženou odolnost k optimalizaci přijímání dat a vyčištění na základě uchovávání dat. Další informace naleznete v tématu [řízení odolnosti transakce](/sql/relational-databases/logs/control-transaction-durability).
 
 
 ### <a name="linux-os-configurations"></a>Konfigurace operačního systému Linux 
 
-Zvažte použití následujících nastavení [Konfigurace operačního systému Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) k dosažení nejlepšího výkonu pro instalaci SQL.
-
-
-
-
-
-
-
+Zvažte použití následujících nastavení [Konfigurace operačního systému Linux](/sql/linux/sql-server-linux-performance-best-practices#linux-os-configuration) k dosažení nejlepšího výkonu pro instalaci SQL.

@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558529"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394233"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Šablony mapování konektoru Azure IoT pro FHIR (Preview)
 Tento článek podrobně popisuje, jak nakonfigurovat Azure IoT Connector pro FHIR * pomocí mapovacích šablon.
@@ -254,7 +254,7 @@ JsonPathContentTemplate umožňuje porovnání a extrakci hodnot z zprávy centr
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
 IotJsonPathContentTemplate je podobný jako JsonPathContentTemplate s výjimkou DeviceIdExpression a TimestampExpression není vyžadováno.
 
-Předpokladem použití této šablony jsou vyhodnocené zprávy pomocí [sad SDK pro zařízení Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks). Pokud používáte tyto sady SDK, je identita zařízení (za předpokladu, že je identifikátor zařízení z Azure IoT Hub/Central registrovaný jako identifikátorem pro prostředek zařízení na cílovém serveru FHIR) a že se říká časové razítko zprávy. Pokud používáte sady SDK pro zařízení IoT Hub Azure, ale používáte vlastní vlastnosti v textu zprávy pro časové razítko pro identitu zařízení nebo měření, můžete i nadále používat JsonPathContentTemplate.
+Předpokladem použití této šablony jsou vyhodnocené zprávy pomocí [sad SDK pro zařízení Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks). Pokud používáte tyto sady SDK, je identita zařízení (za předpokladu, že je identifikátor zařízení z Azure IoT Hub/Central registrovaný jako identifikátorem pro prostředek zařízení na cílovém serveru FHIR) a že se říká časové razítko zprávy. Pokud používáte sady SDK pro zařízení IoT Hub Azure, ale používáte vlastní vlastnosti v textu zprávy pro časové razítko pro identitu zařízení nebo měření, můžete i nadále používat JsonPathContentTemplate.
 
 *Poznámka: při použití IotJsonPathContentTemplate by měl TypeMatchExpression překládat na celou zprávu jako na JToken. Podívejte se na následující příklady.* 
 ##### <a name="examples"></a>Příklady

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 78dec9180da2a78903ae5d5e87bca515b212f167
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 12635979d90dcc4be5b45bf7d64ceb602119faf7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87843432"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394760"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Co je Azure API pro FHIR &reg; ?
 
@@ -24,7 +24,7 @@ Azure API for FHIR umožňuje rychlou výměnu dat prostřednictvím rozhraní A
 - Vysoký výkon, nízká latence
 - Zabezpečená správa chráněných dat o stavu (FÍ) v kompatibilním cloudovém prostředí
 - Inteligentní na FHIR pro mobilní a webové implementace
-- Správa vlastních dat ve velkém měřítku s využitím Access Control na základě rolí (RBAC)
+- Správa vlastních dat ve velkém měřítku pomocí Role-Based Access Control (RBAC)
 - Sledování protokolu auditu pro přístup, vytváření, úpravy a čtení v rámci každého úložiště dat
 
 Azure API pro FHIR umožňuje vytvořit a nasadit službu FHIR během několika minut a využít tak Elastické škálování cloudu.  Platíte jenom za propustnost a úložiště, které potřebujete. Služby Azure, které Power Azure API for FHIR jsou navržené tak, aby bez ohledu na velikost datových sad, které spravujete, byly navrženy pro zajištění rychlého výkonu.
@@ -53,7 +53,7 @@ Použití rozhraní API Azure pro FHIR umožňuje připojit se k libovolnému sy
 
 ### <a name="control-data-access-at-scale"></a>Řízení přístupu k datům ve velkém měřítku
 
-Data se řídí. Access Control na základě rolí (RBAC) umožňuje spravovat způsob ukládání a přístupu k datům.  Zajištění zvýšeného zabezpečení a snížení administrativních úloh, určíte, kdo má přístup k datovým sadám, které vytvoříte, na základě definic rolí, které vytvoříte pro vaše prostředí.  
+Data se řídí. Role-Based Access Control (RBAC) umožňuje spravovat způsob ukládání a přístupu k datům.  Zajištění zvýšeného zabezpečení a snížení administrativních úloh, určíte, kdo má přístup k datovým sadám, které vytvoříte, na základě definic rolí, které vytvoříte pro vaše prostředí.  
 
 ### <a name="audit-logs-and-tracking"></a>Protokoly a sledování auditu 
 
@@ -86,7 +86,7 @@ Pro případy použití, které vyžadují rozšíření nebo přizpůsobení se
 
 Azure IoT Connector pro FHIR * je volitelná funkce Azure API pro FHIR, která poskytuje schopnost ingestovat data ze zařízení s IoMT (internetem lékařských věcí). Internet lékařských věcí je kategorie zařízení IoT, která zachycují a vyměňují si stav & wellness data s jinými systémy IT v oblasti zdravotnictví přes síť. Mezi příklady zařízení IoMT patří vhodnost a klinické wearables, sledovací senzory, sledování aktivit, veřejné terminály nebo dokonce inteligentní klid. Funkce konektoru Azure IoT pro FHIR vám umožňuje rychle nastavit službu pro ingestování IoMT dat do Azure API pro FHIR ve škálovatelném, zabezpečeném a kompatibilním způsobem.
 
-Azure IoT Connector pro FHIR může přijmout jakékoli zprávy založené na JSON, které zařízení IoMT odesílá. Tato data se nejdřív transformují na příslušné FHIR prostředky pro [pozorování](https://www.hl7.org/fhir/observation.html) a pak se uloží do Azure API pro FHIR. Logika transformace dat je definována pomocí páru mapování nakonfigurovaných šablon na základě schématu zprávy a FHIR požadavků. Data zařízení je možné přímo do Azure IoT Connectoru nabízet FHIR nebo bez problémů používat ve vzájemné součinnosti s dalšími řešeními Azure IoT ([azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) a [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)). Azure IoT Connector pro FHIR poskytuje zabezpečený datový kanál a současně umožňuje řešení Azure IoT spravovat zřizování a údržbu fyzických zařízení.
+Azure IoT Connector pro FHIR může přijmout jakékoli zprávy založené na JSON, které zařízení IoMT odesílá. Tato data se nejdřív transformují na příslušné FHIR prostředky pro [pozorování](https://www.hl7.org/fhir/observation.html) a pak se uloží do Azure API pro FHIR. Logika transformace dat je definována pomocí páru mapování nakonfigurovaných šablon na základě schématu zprávy a FHIR požadavků. Data zařízení je možné přímo do Azure IoT Connectoru nabízet FHIR nebo bez problémů používat ve vzájemné součinnosti s dalšími řešeními Azure IoT ([azure IoT Hub](../iot-hub/index.yml) a [Azure IoT Central](../iot-central/index.yml)). Azure IoT Connector pro FHIR poskytuje zabezpečený datový kanál a současně umožňuje řešení Azure IoT spravovat zřizování a údržbu fyzických zařízení.
 
 ### <a name="applications-of-azure-iot-connector-for-fhir-preview"></a>Aplikace Azure IoT Connector pro FHIR (Preview)
 

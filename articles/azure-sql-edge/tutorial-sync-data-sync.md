@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5659ce5fa6f99463f58a33662563d768248fd8cb
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904121"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394896"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Kurz: synchronizace dat z Edge SQL na Azure SQL Database pomocí Synchronizace dat SQL
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte používat *skupinu synchronizace* Azure synchronizac
 
 Vzhledem k tomu, že je SQL Edge postaven na nejnovějších verzích [databázového stroje SQL Server](/sql/sql-server/sql-server-technical-documentation/), můžete k synchronizaci dat do nebo z instance SQL Edge běžící na hraničním zařízení použít také jakýkoliv mechanismus synchronizace dat, který je použitelný pro instanci SQL Server.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz vyžaduje počítač se systémem Windows nakonfigurovaný s [agentem synchronizace dat pro Azure synchronizace dat SQL](../azure-sql/database/sql-data-sync-agent-overview.md).
 
@@ -55,7 +55,7 @@ Další informace o Synchronizace dat SQL najdete v těchto článcích:
 
 * [Osvědčené postupy](../azure-sql/database/sql-data-sync-best-practices.md) a [řešení potíží s Azure synchronizace dat SQL](../azure-sql/database/sql-data-sync-troubleshoot.md)
 
-* [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](../azure-sql/database/sql-data-sync-monitor-sync.md)
+* [Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor](../azure-sql/database/monitor-tune-overview.md)
 
 * [Aktualizace schématu synchronizace pomocí jazyka Transact-SQL](../azure-sql/database/sql-data-sync-update-sync-schema.md) nebo [PowerShell](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md)
 

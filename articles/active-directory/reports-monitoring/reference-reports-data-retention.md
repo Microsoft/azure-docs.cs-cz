@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5deb84cdc2dee61474c9f2bd1f93311d89f8918
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308886"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393451"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Jak dlouho jsou data sestav služby Azure AD Store?
 
@@ -51,12 +51,6 @@ Pokud již máte data o aktivitách s bezplatnou licencí, můžete ji okamžit�
 
 ---
 
-### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
-
-Pokud jste nedávno přešli na verzi Premium (včetně zkušební verze), můžete nejdřív zobrazit data až 7 dní. Po shromáždění dat můžete zobrazit data za posledních 30 dní.
-
----
-
 ### <a name="when-does-azure-ad-start-collecting-security-signal-data"></a>Kdy Azure AD začne shromažďovat data bezpečnostních signálů?  
 
 Pro bezpečnostní signály se proces shromažďování spustí, když se přihlásíte k používání **centra ochrany identit**. 
@@ -81,5 +75,11 @@ Data aktivity auditu a přihlašování můžete uchovávat déle než výchozí
 | :--            | :--           | :--                 | :--                 |
 | Ohrožení uživatelé  | 7 dní        | 30 dní             | 90 dnů             |
 | Riziková přihlášení | 7 dní        | 30 dní             | 90 dnů             |
+
+---
+
+### <a name="can-i-see-last-months-data-after-getting-an-azure-ad-premium-license"></a>Můžu zobrazit data z posledního měsíce po získání licence Azure AD Premium?
+
+**Ne** , nemůžete. Azure ukládá až sedm dní dat o aktivitách pro bezplatnou verzi. To znamená, že když přepnete ze bezplatné verze na verzi Premium, zobrazí se vám jenom 7 dní dat.
 
 ---

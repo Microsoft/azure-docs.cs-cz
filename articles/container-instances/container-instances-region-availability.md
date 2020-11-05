@@ -4,12 +4,12 @@ description: Dostupnost výpočetních a paměťových prostředků pro službu 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1ed3f50198c0410d9c893fe87523fa214ca03d88
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521454"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395865"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -37,19 +37,20 @@ Následující oblasti a maximální prostředky jsou k dispozici pro skupiny ko
 | Indie – střed | 4 | 16 | N/A | N/A | 50 | V100 |
 | Střední USA | 4 | 16 | 4 | 16 | 50 | – |
 | Východní Asie | 4 | 16 | 4 | 16 | 50 | – |
-| USA – východ | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA – východ 2 | 4 | 16 | 4 | 16 | 50 | – |
-| Japonsko – východ | 2 | 8 | 4 | 16 | 50 | – |
+| Francie – střed | 4 | 16 | 4 | 16 | 50 | – |
+| Japan East | 2 | 8 | 4 | 16 | 50 | – |
 | Jižní Korea – střed | 4 | 16 | N/A | N/A | 50 | – |
-| USA – středosever | 2 | 3,5 | 4 | 16 | 50 | – |
+| USA – středosever | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Severní Evropa | 4 | 16 | 4 | 16 | 50 | K80 |
 | Středojižní USA | 4 | 16 | 4 | 16 | 50 | – |
 | Southeast Asia | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indie – jih | 4 | 16 | N/A | N/A | 50 | – |
 | Spojené království – jih | 4 | 16 | 4 | 16 | 50 | – |
-| USA – středozápad| 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| USA – středozápad| 4 | 16 | 4 | 16 | 50 | – |
 | West Europe | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA – západ | 4 | 16 | 2 | 4 | 16| – |
+| USA – západ | 4 | 16 | 4 | 16 | 50 | – |
 | Západní USA 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující maximální prostředky.
@@ -67,29 +68,63 @@ Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md
 
 Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s [podporovanými a náhledem](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnerů Windows serveru.
 
-| Oblast | Maximální využití procesoru Windows serveru 2016 | Windows Server 2016 max. paměť (GB) | Windows Server 2019 LTSC Max CPU | Windows Server 2019 LTSC Max paměť (GB) | Úložiště (GB) |
+###  <a name="windows-server-2016"></a>Windows Server 2016
+
+> [!NOTE]
+> Další informace o hostitelích 1B, 2B a 3B najdete v tématu [Kompatibilita verzí hostitelů a kontejnerů](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
+
+| Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Austrálie – východ | 2 | 3,5 | 4 | 16 | 20 |
+| Austrálie – východ | 2 | 8 | 2 | 3,5 | 20 |
 | Brazil South | 4 | 16 | 4 | 16 | 20 |
-| Střední Kanada | 2 | 3,5 | 4 | 16 | 20 |
-| Indie – střed | 2 | 3,5 | 4 | 16 | 20 |
-| Střední USA | 2 | 3,5 | 4 | 16 | 20 |
-| Východní Asie | 2 | 3,5 | 4 | 16 | 20 |
-| USA – východ | 2 | 8 | 4 | 16 | 20 |
-| USA – východ 2 | 2 | 3,5 | 2 | 3,5 | 20 |
-| Francie – střed | 4 | 16 | 4 | 16 | 20 |
-| Japonsko – východ | 4 | 16 | 4 | 16 | 20 |
+| Střední Kanada | 2 | 3,5 | 2 | 3,5 | 20 |
+| Indie – střed | 2 | 3,5 | 2 | 3,5 | 20 |
+| Střední USA | 2 | 3,5 | 2 | 3,5 | 20 |
+| Východní Asie | 2 | 3,5 | 2 | 3,5 | 20 |
+| East US | 4 | 16 | 2 | 8 | 20 |
+| USA – východ 2 | 2 | 3,5 | 4 | 16 | 20 |
+| Japan East | 4 | 16 | 4 | 16 | 20 |
 | Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
-| USA – středosever | 2 | 3,5 | 4 | 16 | 20 |
-| Severní Evropa | 2 | 3,5 | 4 | 16 | 20 |
-| Středojižní USA | 2 | 3,5 | 4 | 16 | 20 |
-| Indie – jih | 2 | 3,5 | 4 | 16 | 20 |
-| Southeast Asia | 2 | 3,5 | 4 | 16 | 20 |
-| Spojené království – jih | 2 | 3,5 | 4 | 16 | 20 |
+| USA – středosever | 4 | 16 | 4 | 16 | 20 |
+| Severní Evropa | 2 | 3,5 | 2 | 8 | 20 |
+| Středojižní USA | 2 | 3,5 | 2 | 3,5 | 20 |
+| Southeast Asia | N/A | N/A | 2 | 3,5 | 20 |
+| Indie – jih | 2 | 3,5 | 2 | 3,5 | 20 |
+| Spojené království – jih | 2 | 8 | 2 | 3,5 | 20 |
 | USA – středozápad | 4 | 16 | 4 | 16 | 20 |
 | West Europe | 4 | 16 | 4 | 16 | 20 |
-| USA – západ | 4 | 14 | N/A | N/A | 20 |
+| USA – západ | 4 | 16 | 2 | 8 | 20 |
 | Západní USA 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+
+
+### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
+
+> [!NOTE]
+> Další informace o hostitelích 1B, 2B a 3B najdete v tématu [Kompatibilita verzí hostitelů a kontejnerů](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility) .
+
+| Oblast | Maximální využití procesoru 1B/2B | Maximální velikost paměti 1B/2B (GB) |Maximální využití procesoru 3B | Maximální velikost paměti 3B (v GB) | Úložiště (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| Austrálie – východ | 4 | 16 | 4 | 16 | 20 |
+| Brazil South | 4 | 16 | 4 | 16 | 20 |
+| Střední Kanada | 4 | 16 | 4 | 16 | 20 |
+| Indie – střed | 4 | 16 | 4 | 16 | 20 |
+| Střední USA | 4 | 16 | 4 | 16 | 20 |
+| Východní Asie | 4 | 16 | 4 | 16 | 20 |
+| East US | 4 | 16 | 4 | 16 | 20 |
+| USA – východ 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| Francie – střed | 4 | 16 | 4 | 16 | 20 |
+| Japan East | N/A | Není k dispozici | 4 | 16 | 20 |
+| Jižní Korea – střed | 4 | 16 | 4 | 16 | 20 |
+| USA – středosever | 4 | 16 | 4 | 16 | 20 |
+| Severní Evropa | 4 | 16 | 4 | 16 | 20 |
+| Středojižní USA | 4 | 16 | 4 | 16 | 20 |
+| Southeast Asia | 4 | 16 | 4 | 16 | 20 |
+| Indie – jih | 4 | 16 | 4 | 16 | 20 |
+| Spojené království – jih | 4 | 16 | 4 | 16 | 20 |
+| USA – středozápad | 4 | 16 | 4 | 16 | 20 |
+| West Europe | 4 | 16 | 4 | 16 | 20 |
+| USA – západ | 4 | 16 | 4 | 16 | 20 |
+| Západní USA 2 | 2 | 8 | 4 | 16 | 20 |
 
 ## <a name="next-steps"></a>Další kroky
 

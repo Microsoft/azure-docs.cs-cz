@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 646ce94587a9aa1bb8fd20a28b84658994b25cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886530"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392023"
 ---
 # <a name="supported-features-of-azure-sql-edge"></a>Podporované funkce Edge SQL Azure 
 
 Azure SQL Edge je založený na nejnovější verzi modulu SQL Database. Kromě některých funkcí, které nejsou v současnosti podporované nebo dostupné v SQL Server 2019 na Linux (nebo v SQL Server ve Windows) podporuje také podmnožinu funkcí podporovaných v SQL Server 2019 na Linux.
 
-Úplný seznam funkcí podporovaných v SQL Server on Linux najdete v tématu [edice a podporované funkce SQL Server 2019 na platformě Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019). Edice a podporované funkce SQL Server ve Windows najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15).
+Úplný seznam funkcí podporovaných v SQL Server on Linux najdete v tématu [edice a podporované funkce SQL Server 2019 na platformě Linux](/sql/linux/sql-server-linux-editions-and-components-2019). Edice a podporované funkce SQL Server ve Windows najdete v tématu [edice a podporované funkce SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15).
 
 ## <a name="azure-sql-edge-editions"></a>Edice Azure SQL Edge
 

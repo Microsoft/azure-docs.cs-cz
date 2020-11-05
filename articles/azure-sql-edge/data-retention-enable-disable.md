@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: ee2d65d66caef5cd9405d6e3d0e094de2e30ae87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9408aaa8fd5b677f012392ef4bd51c8826650eee
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902504"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395151"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>Povolit a zakázat zásady uchovávání dat
 
@@ -22,7 +22,7 @@ Toto téma popisuje, jak povolit a zakázat zásady uchovávání dat pro datab�
 
 ## <a name="enable-data-retention-for-a-database"></a>Povolení uchovávání dat pro databázi
 
-Následující příklad ukazuje, jak povolit uchovávání dat pomocí [příkazu ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options).
+Následující příklad ukazuje, jak povolit uchovávání dat pomocí [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
 ```sql
 ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  ON;
@@ -38,9 +38,9 @@ FROM sys.databases;
 
 ## <a name="enable-data-retention-for-a-table"></a>Povolení uchovávání dat pro tabulku
 
-Pro každou tabulku, pro kterou chcete automaticky vyprázdnit data, musí být povoleno uchovávání dat. Pokud je v databázi a tabulce povolené uchovávání dat, úloha systému na pozadí bude pravidelně kontrolovat tabulku, aby identifikovala a odstranila všechny zastaralé (zastaralé) řádky. Uchovávání dat lze v tabulce povolit buď [při vytvoření tabulky, nebo pomocí](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) [příkazu ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+Pro každou tabulku, pro kterou chcete automaticky vyprázdnit data, musí být povoleno uchovávání dat. Pokud je v databázi a tabulce povolené uchovávání dat, úloha systému na pozadí bude pravidelně kontrolovat tabulku, aby identifikovala a odstranila všechny zastaralé (zastaralé) řádky. Uchovávání dat lze v tabulce povolit buď [při vytvoření tabulky, nebo pomocí](/sql/t-sql/statements/create-table-transact-sql) [příkazu ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).
 
-Následující příklad ukazuje, jak povolit uchovávání dat pro tabulku pomocí funkce [vytvořit tabulku](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql). 
+Následující příklad ukazuje, jak povolit uchovávání dat pro tabulku pomocí funkce [vytvořit tabulku](/sql/t-sql/statements/create-table-transact-sql). 
 
 ```sql
 CREATE TABLE [dbo].[data_retention_table] 
@@ -63,7 +63,7 @@ CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_cod
     - DateTimeOffset
 - RETENTION_PERIOD – celočíselná hodnota následovaná popisovačem jednotky. Povolené jednotky jsou den, dny, týden, týdny, měsíc, měsíce, rok a roky.
 
-Následující příklad ukazuje, jak povolit uchovávání dat pro tabulku pomocí [příkazu ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).  
+Následující příklad ukazuje, jak povolit uchovávání dat pro tabulku pomocí [příkazu ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).  
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -101,7 +101,7 @@ Nastavení uchovávání dat v databázi a tabulce se používají ve spojení s
 
 ## <a name="disable-data-retention-on-a-table"></a>Zakázat uchovávání dat v tabulce 
 
-Uchovávání dat lze v tabulce zakázat pomocí [příkazu ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql). Následující příkaz lze použít k zakázání uchovávání dat v tabulce.
+Uchovávání dat lze v tabulce zakázat pomocí [příkazu ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql). Následující příkaz lze použít k zakázání uchovávání dat v tabulce.
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -110,7 +110,7 @@ Set (DATA_DELETION = OFF)
 
 ## <a name="disable-data-retention-on-a-database"></a>Zakázání uchovávání dat v databázi
 
-Uchovávání dat lze v tabulce zakázat pomocí [příkazu ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options). Následující příkaz lze použít k zakázání uchovávání dat v databázi.
+Uchovávání dat lze v tabulce zakázat pomocí [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options). Následující příkaz lze použít k zakázání uchovávání dat v databázi.
 
 ```sql
 ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;

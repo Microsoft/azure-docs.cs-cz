@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cadfad445c76726b1b825b131de4016a57979fa
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839907"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391836"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Konfigurace služby Azure RBAC pro FHIR 
 
-V tomto článku se dozvíte, jak pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) přiřadit přístup k rozhraní Azure API pro rovinu dat FHIR. Azure RBAC je preferované metody pro přiřazení přístupu k rovině dat, když se uživatelé roviny dat spravují v tenantovi Azure Active Directory přidruženého k vašemu předplatnému Azure. Pokud používáte externího tenanta Azure Active Directory, přečtěte si [odkaz na místní přiřazení RBAC](configure-local-rbac.md).
+V tomto článku se dozvíte, jak pomocí [řízení přístupu založeného na rolích Azure (Azure RBAC)](../role-based-access-control/index.yml) přiřadit přístup k rozhraní Azure API pro rovinu dat FHIR. Azure RBAC je preferované metody pro přiřazení přístupu k rovině dat, když se uživatelé roviny dat spravují v tenantovi Azure Active Directory přidruženého k vašemu předplatnému Azure. Pokud používáte externího tenanta Azure Active Directory, přečtěte si [odkaz na místní přiřazení RBAC](configure-local-rbac.md).
 
 ## <a name="confirm-azure-rbac-mode"></a>Potvrďte režim Azure RBAC
 
@@ -29,13 +29,13 @@ Pokud chcete používat službu Azure RBAC, musí být vaše rozhraní API Azure
 
 ## <a name="assign-roles"></a>Přiřazení rolí
 
-Pokud chcete udělit uživatelům, instančním objektům nebo skupinám přístup k rovině dat FHIR, klikněte na **řízení přístupu (IAM)**, pak na **přiřazení rolí** a klikněte na **+ Přidat**:
+Pokud chcete udělit uživatelům, instančním objektům nebo skupinám přístup k rovině dat FHIR, klikněte na **řízení přístupu (IAM)** , pak na **přiřazení rolí** a klikněte na **+ Přidat** :
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Potvrďte režim Azure RBAC":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Přidat přiřazení role Azure":::
 
 V části Výběr **role** vyhledejte jednu z předdefinovaných rolí pro rovinu dat FHIR:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Potvrďte režim Azure RBAC":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Předdefinované role FHIR dat":::
 
 Můžete si vybrat mezi:
 
@@ -44,7 +44,7 @@ Můžete si vybrat mezi:
 * FHIR data Exportér: může číst a exportovat ( `$export` operátor) data.
 * Přispěvatel dat FHIR: může provádět všechny operace roviny dat.
 
-Pokud tyto role pro vaše potřeby nestačí, můžete také [vytvořit vlastní role](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell).
+Pokud tyto role pro vaše potřeby nestačí, můžete také [vytvořit vlastní role](../role-based-access-control/tutorial-custom-role-powershell.md).
 
 V poli **Vybrat** vyhledejte uživatele, instanční objekt nebo skupinu, ke kterým chcete přiřadit roli.
 

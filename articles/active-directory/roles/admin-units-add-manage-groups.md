@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
-ms.date: 10/07/2020
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026730"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394743"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Přidávání a Správa skupin v jednotce pro správu v Azure Active Directory
 
@@ -37,23 +37,23 @@ Jednotce pro správu můžete přiřadit pouze jednotlivé skupiny. Neexistuje m
 
 * Z podokna **skupiny** :
 
-  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V Azure Portal přejdete do **služby Azure AD**.
   1. Vyberte **skupiny** a pak vyberte skupinu, kterou chcete přiřadit k jednotce pro správu. 
   1. V levém podokně vyberte **jednotky pro správu** a zobrazte seznam jednotek pro správu, ke kterým je skupina přiřazená. 
 
      ![Snímek obrazovky s odkazem "přiřadit k jednotce správy" v podokně "jednotky pro správu".](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
-  1. Vyberte **přiřadit k jednotce pro správu** .
+  1. Vyberte **přiřadit k jednotce pro správu**.
   1. V pravém podokně vyberte jednotku pro správu.
 
 * V podokně všechny skupiny **jednotek pro správu**  >  **All Groups** :
 
-  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V Azure Portal přejdete do **služby Azure AD**.
   
-  1. V levém podokně vyberte **jednotky pro správu** a pak vyberte **všechny skupiny** . 
+  1. V levém podokně vyberte **jednotky pro správu** a pak vyberte **všechny skupiny**. 
      V pravém podokně se zobrazí všechny skupiny, které jsou už přiřazené k jednotce pro správu. 
 
-  1. V podokně **skupiny** vyberte **Přidat** .
+  1. V podokně **skupiny** vyberte **Přidat**.
     V pravém podokně se zobrazí všechny dostupné skupiny v organizaci Azure AD. 
 
      ![Snímek obrazovky s tlačítkem Přidat pro přidání skupiny do jednotky pro správu](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
@@ -97,11 +97,11 @@ Příklad:
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete do **služby Azure AD** .
+1. V Azure Portal přejdete do **služby Azure AD**.
 
 1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku pro správu, jejíž skupiny chcete zobrazit. Ve výchozím nastavení se v levém podokně vybere možnost **Všichni uživatelé** . 
 
-1. V levém podokně vyberte **skupiny** . V pravém podokně se zobrazí seznam skupin, které jsou členy vybrané jednotky pro správu.
+1. V levém podokně vyberte **skupiny**. V pravém podokně se zobrazí seznam skupin, které jsou členy vybrané jednotky pro správu.
 
    ![Snímek obrazovky s podoknem skupiny zobrazující seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
@@ -141,7 +141,7 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. V Azure Portal přejdete do **služby Azure AD** .
+1. V Azure Portal přejdete do **služby Azure AD**.
 
 1. V levém podokně vyberte **skupiny** a zobrazte seznam skupin.
 
@@ -175,19 +175,19 @@ Skupinu můžete z jednotky pro správu v Azure Portal odebrat jedním ze dvou z
 
 - Odebrání z přehledu skupiny:
 
-  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V Azure Portal přejdete do **služby Azure AD**.
   1. V levém podokně vyberte **skupiny** a pak otevřete profil pro skupinu, kterou chcete odebrat z jednotky pro správu.
   1. V levém podokně vyberte **jednotky pro správu** a uveďte všechny jednotky pro správu, ke kterým je skupina přiřazená. 
-  1. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu** .
+  1. Vyberte jednotku správy, ze které chcete skupinu odebrat, a pak vyberte **Odebrat z jednotky pro správu**.
 
      ![Snímek obrazovky s podoknem "administrativní jednotky" a zobrazení seznamu skupin přiřazených vybrané jednotce pro správu.](./media/admin-units-add-manage-groups/group-au-remove.png)
 
 - Odebrat z jednotky pro správu:
 
-  1. V Azure Portal přejdete do **služby Azure AD** .
+  1. V Azure Portal přejdete do **služby Azure AD**.
   1. V levém podokně vyberte **jednotky pro správu** a potom vyberte jednotku správy, ke které je skupina přiřazená.
   1. V levém podokně vyberte **skupiny** a uveďte všechny skupiny, které jsou přiřazené jednotce pro správu.
-  1. Vyberte skupinu, kterou chcete odebrat, a pak vyberte **odebrat skupiny** .
+  1. Vyberte skupinu, kterou chcete odebrat, a pak vyberte **odebrat skupiny**.
 
     ![Snímek obrazovky s podoknem skupiny, kde se zobrazí seznam skupin v jednotce pro správu](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Export metrik Azure IoT Connectoru pro FHIR (Preview) prostřednictvím nastavení diagnostiky
+title: Export metrik konektoru Azure IoT pro FHIR (Preview) přes nastavení diagnostiky
 description: Tento článek vysvětluje, jak exportovat službu Azure IoT Connector pro FHIR (Preview) metriky prostřednictvím nastavení diagnostiky.
 services: healthcare-apis
 author: msjasteppe
@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322355"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394250"
 ---
-# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Export metrik Azure IoT Connectoru pro FHIR (Preview) prostřednictvím nastavení diagnostiky
+# <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Export metrik konektoru Azure IoT pro FHIR (Preview) přes nastavení diagnostiky
 
-V tomto článku se dozvíte, jak exportovat protokoly metrik služby Azure IoT Connector pro FHIR *. Funkce, která umožňuje protokolování metrik, je [**nastavení diagnostiky**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) v Azure Portal. 
+V tomto článku se dozvíte, jak exportovat protokoly metrik služby Azure IoT Connector pro FHIR *. Funkce, která umožňuje protokolování metrik, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
 
 > [!TIP]
 > Podle pokynů v části [Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR a Azure IoT Connector pro FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir) nastavte protokolování auditu.
@@ -48,7 +48,7 @@ V tomto článku se dozvíte, jak exportovat protokoly metrik služby Azure IoT 
 > [!Note] 
 > Může trvat až 15 minut, než se první protokoly metrik zobrazí v úložišti dle vašeho výběru.  
  
-Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview) .
+Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) .
 
 ## <a name="conclusion"></a>Závěr 
 Přístup k protokolům metrik je nezbytný pro monitorování a řešení potíží.  Azure IoT Connector pro FHIR umožňuje provádět tyto akce prostřednictvím protokolů metrik. 

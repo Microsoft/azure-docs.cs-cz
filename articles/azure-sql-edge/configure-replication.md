@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a748bf977e76357c710518e608c12ad19a8cd0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b424ece9207328d87068160f78ebc78a3bd1a8d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888416"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395219"
 ---
 # <a name="configure-replication-to-azure-sql-edge"></a>Konfigurace replikace na Edge Azure SQL 
 
@@ -24,8 +24,8 @@ Můžete nakonfigurovat instanci Azure SQL Edge jako předplatitel nabízených 
   
 - Instance Azure SQL Edge musí být předplatitelem nabízených oznámení pro vydavatele.
 - Vydavatel a distributor můžou mít jednu z těchto akcí:
-   - Instance SQL Server spuštěná v místním prostředí nebo instance SQL Server spuštěná na virtuálním počítači Azure. Další informace najdete v tématu [přehled SQL Server v Azure Virtual Machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/). Instance SQL Server musí používat verzi novější než SQL Server 2016.
-   - Instance spravované instance Azure SQL Spravovaná instance SQL může hostovat databáze vydavatelů, distributorů a předplatitelů. Další informace najdete v tématu [replikace s SQL Database Managed instance](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/).
+   - Instance SQL Server spuštěná v místním prostředí nebo instance SQL Server spuštěná na virtuálním počítači Azure. Další informace najdete v tématu [přehled SQL Server v Azure Virtual Machines](../azure-sql/virtual-machines/index.yml). Instance SQL Server musí používat verzi novější než SQL Server 2016.
+   - Instance spravované instance Azure SQL Spravovaná instance SQL může hostovat databáze vydavatelů, distributorů a předplatitelů. Další informace najdete v tématu [replikace s SQL Database Managed instance](/azure/sql-database/replication-with-sql-database-managed-instance/).
 
 - Distribuční databáze a agenti replikace nejde umístit do instance Azure SQL Edge.  
 
@@ -36,7 +36,7 @@ Můžete nakonfigurovat instanci Azure SQL Edge jako předplatitel nabízených 
 
 Při konfiguraci replikace je důležité pochopit následující požadavky a osvědčené postupy:
 
-- Replikaci můžete nakonfigurovat pomocí [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Můžete to provést také tak, že spustíte příkazy jazyka Transact-SQL na vydavateli pomocí SQL Server Management Studio nebo [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio).
+- Replikaci můžete nakonfigurovat pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms). Můžete to provést také tak, že spustíte příkazy jazyka Transact-SQL na vydavateli pomocí SQL Server Management Studio nebo [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio).
 - Chcete-li provést replikaci do instance Azure SQL Edge, je nutné se přihlásit pomocí SQL Server ověřování.
 - Replikované tabulky musí mít primární klíč.
 - Jedna publikace na SQL Server může podporovat Azure SQL Edge i SQL Server (místně i SQL Server ve virtuálních počítačích Azure).  
@@ -82,15 +82,13 @@ Pro odběry Azure SQL Edge nejsou podporované následující možnosti:
 
 Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématech:
   
-- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Edge a IP adresy jako předplatitele (například **myEdgeinstance, 1433**) a názvu databáze v instanci Azure SQL Edge jako cílovou databázi (například **AdventureWorks**).  
+- [Vytvoření publikace](/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvořte nabízený odběr](/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru Azure SQL Edge a IP adresy jako předplatitele (například **myEdgeinstance, 1433** ) a názvu databáze v instanci Azure SQL Edge jako cílovou databázi (například **AdventureWorks** ).  
 
 ## <a name="next-steps"></a>Další kroky  
 
-- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Vytvoření nabízeného odběru](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [Monitorování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [Inicializovat předplatné](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
-
-
+- [Vytvoření publikace](/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvoření nabízeného odběru](/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typy replikace](/sql/relational-databases/replication/types-of-replication)
+- [Monitorování (replikace)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Inicializovat předplatné](/sql/relational-databases/replication/initialize-a-subscription)

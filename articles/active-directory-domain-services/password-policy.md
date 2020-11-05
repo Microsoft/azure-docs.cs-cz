@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967963"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393162"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Active Directory Domain Services spravované domény
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Zásady hesel a uzamčení účtů v Azure Active Directory Domain Services spravované domény
 
 Pokud chcete spravovat zabezpečení uživatelů v Azure Active Directory Domain Services (Azure služba AD DS), můžete definovat podrobné zásady pro hesla, které řídí nastavení uzamčení účtu nebo minimální délku hesla a složitost. Na všech uživatelích ve spravované doméně Azure služba AD DS se vytvoří a použije výchozí jemně odstupňované zásady hesel. Pro zajištění podrobného řízení a splnění konkrétních potřeb obchodu nebo dodržování předpisů je možné vytvořit další zásady a použít je u konkrétních skupin uživatelů.
 
@@ -117,7 +117,7 @@ Pokud chcete vytvořit vlastní zásady pro hesla, použijte nástroje pro sprá
 
     ![Vyberte uživatele a skupiny, pro které chcete zásady hesel použít.](./media/password-policy/fgpp-applies-to.png)
 
-1. Zásady hesel se dají použít jenom u skupin. V dialogovém okně **umístění** rozbalte název domény, například *aaddscontoso.com*, a pak vyberte organizační jednotku, například **uživatele AADDC**. Pokud máte vlastní organizační jednotku obsahující skupinu uživatelů, kterou chcete použít, vyberte tuto organizační jednotku.
+1. Zásady hesel se dají použít jenom u skupin. V dialogovém okně **umístění** rozbalte název domény, například *aaddscontoso.com* , a pak vyberte organizační jednotku, například **uživatele AADDC**. Pokud máte vlastní organizační jednotku obsahující skupinu uživatelů, kterou chcete použít, vyberte tuto organizační jednotku.
 
     ![Vyberte organizační jednotku, do které skupina patří.](./media/password-policy/fgpp-container.png)
 

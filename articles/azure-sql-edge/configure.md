@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446952"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392329"
 ---
 # <a name="configure-azure-sql-edge"></a>Konfigurace Edge Azure SQL
 
@@ -32,7 +32,7 @@ Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, kter
 
 Následující nové proměnné prostředí se přidaly do Azure SQL Edge. 
 
-| Proměnná prostředí | Description | Hodnoty |     
+| Proměnná prostředí | Popis | Hodnoty |     
 |-----|-----| ---------- | 
 | **PlanId** | Určuje skladovou jednotku Azure SQL Edge, která se má použít při inicializaci. Tato proměnná prostředí se vyžaduje jenom v případě, že nasazujete Azure SQL Edge pomocí Azure IoT Edge. | **asde – Developer-on-IoT-Edge** nebo **asde-Premium-on-IoT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Povolí nebo zakáže shromažďování dat o využití a diagnostice. | TRUE nebo FALSE |  
@@ -42,7 +42,7 @@ Následující nové proměnné prostředí se přidaly do Azure SQL Edge.
 
 Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
-| Proměnná prostředí | Description |
+| Proměnná prostředí | Popis |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 
@@ -95,11 +95,11 @@ Následující možnosti MSSQL. conf se nevztahují na SQL Edge:
 |**Názory zákazníků** | Vyberte, zda SQL Server odesílá zpětnou vazbu společnosti Microsoft. |
 |**Profil databázového e-mailu** | Nastavte výchozí profil databázového e-mailu pro SQL Server on Linux. |
 |**Vysoká dostupnost** | Povolte skupiny dostupnosti. |
-|**DTC (Distributed Transaction Coordinator) Microsoftu** | Konfigurace a řešení potíží s koordinátorem MSDTC v systému Linux. Další možnosti konfigurace související s distribuovanými transakcemi nejsou podporované pro SQL Edge. Další informace o těchto dalších možnostech konfigurace najdete v tématu [Konfigurace MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**DTC (Distributed Transaction Coordinator) Microsoftu** | Konfigurace a řešení potíží s koordinátorem MSDTC v systému Linux. Další možnosti konfigurace související s distribuovanými transakcemi nejsou podporované pro SQL Edge. Další informace o těchto dalších možnostech konfigurace najdete v tématu [Konfigurace MSDTC](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
 |**Smlouvy EULA ke službám ML** | Přijměte smlouvy EULA jazyka R a Python pro balíčky Azure Machine Learning. Platí jenom pro SQL Server 2019.|
 |**outboundnetworkaccess** |Povolí odchozí síťový přístup pro rozšíření [Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python a Java.|
 
-Následující ukázkový soubor MSSQL. conf funguje pro SQL Edge. Další informace o formátu souboru MSSQL. conf najdete v tématu [Formát MSSQL. conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Následující ukázkový soubor MSSQL. conf funguje pro SQL Edge. Další informace o formátu souboru MSSQL. conf najdete v tématu [Formát MSSQL. conf](/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]

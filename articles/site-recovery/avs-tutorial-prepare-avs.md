@@ -1,5 +1,5 @@
 ---
-title: Příprava na zotavení po havárii virtuálního počítače řešení Azure VMware pomocí Azure Site Recovery
+title: Příprava řešení Azure VMware na zotavení po havárii na Azure Site Recovery
 description: Naučte se připravit servery řešení Azure VMware pro zotavení po havárii do Azure pomocí služby Azure Site Recovery.
 author: Harsha-CS
 manager: rochakm
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
-ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e77ede7b04c95bfd6b6b8f660c8d811e7434c0f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91814563"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395440"
 ---
-# <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>Příprava serverů řešení Azure VMware na zotavení po havárii do Azure
+# <a name="prepare-azure-vmware-solution-for-disaster-recovery-to-azure-site-recovery"></a>Příprava řešení Azure VMware na zotavení po havárii na Azure Site Recovery
 
 Tento článek popisuje, jak připravit servery řešení Azure VMware pro zotavení po havárii do Azure pomocí služby [Azure Site Recovery](site-recovery-overview.md) Services. 
 
@@ -52,7 +52,7 @@ Vytvořte účet následujícím způsobem:
 
 ### <a name="vmware-account-permissions"></a>Oprávnění účtu VMware
 
-**Úloha** | **Role/oprávnění** | **Podrobnosti**
+**Úkol** | **Role/oprávnění** | **Podrobnosti**
 --- | --- | ---
 **Zjišťování virtuálních počítačů** | Alespoň uživatel jen pro čtení<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Read-only | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.
 **Úplná replikace, převzetí služeb při selhání a navrácení služeb po obnovení** |  Vytvořte roli (Azure_Site_Recovery) s požadovanými oprávněními a pak ji přiřaďte uživateli nebo skupině VMware.<br/><br/> Objekt datového centra –> Rozšířit na podřízený objekt, role=Azure_Site_Recovery<br/><br/> Úložiště dat –> Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, aktualizovat soubory virtuálního počítače<br/><br/> Síť –> Přiřazení sítě<br/><br/> Prostředek –> Přiřadit virtuální počítač k fondu prostředků, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač<br/><br/> Úlohy –> Vytvořit úlohu, aktualizovat úlohu<br/><br/> Virtuální počítač –> Konfigurace<br/><br/> Virtuální počítač –> Interakce –> zodpovědět dotazy, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware<br/><br/> Virtuální počítač –> Inventář –> Vytvořit, zaregistrovat, zrušit registraci<br/><br/> Virtuální počítač –> Zřizování –> Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače<br/><br/> Virtuální počítač –> Snímky –> Odebrat snímky | Uživatel přiřazený na úrovni datacentra s přístupem ke všem objektům v datacentru.<br/><br/> Chcete-li omezit přístup, přiřaďte podřízeným objektům (hostitelé vSphere, úložiště dat, virtuální počítače a sítě) roli **bez přístupu** s **podřízeným objektem rozšířit do podřízeného** objektu.
@@ -68,8 +68,8 @@ Připravte účet následujícím způsobem:
 
 Připravte účet domény nebo místní účet s oprávněními k instalaci na virtuální počítač.
 
-- **Virtuální počítače s Windows**: Pokud chcete instalaci provést na virtuální počítače s Windows a nepoužíváte účet domény, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
-- **Virtuální počítače s Linuxem**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
+- **Virtuální počítače s Windows** : Pokud chcete instalaci provést na virtuální počítače s Windows a nepoužíváte účet domény, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
+- **Virtuální počítače s Linuxem** : Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
 
 
 ## <a name="check-vmware-requirements"></a>Kontrola požadavků na VMware
@@ -92,12 +92,12 @@ Po převzetí služeb při selhání se můžete chtít připojit k virtuálním
 Pokud se po převzetí služeb při selhání chcete připojit k virtuálním počítačům s Windows pomocí protokolu RDP, postupujte následovně:
 
 - **Přístup k Internetu**. Před převzetím služeb při selhání Povolte protokol RDP na virtuálním počítači řešení Azure VMware. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.
-- **Přístup k S2S (Site-to-site) VPN**:
+- **Přístup k S2S (Site-to-site) VPN** :
     - Před převzetím služeb při selhání Povolte protokol RDP na virtuálním počítači řešení Azure VMware.
     - Protokol RDP by měl být povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.
-    - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).
+    - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135).
 - Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
-- Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění** , kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Pokud se po převzetí služeb při selhání chcete připojit k virtuálním počítačům s Linuxem pomocí protokolu SSH, postupujte následovně:
 
@@ -105,7 +105,7 @@ Pokud se po převzetí služeb při selhání chcete připojit k virtuálním po
 - Zkontrolujte, že pravidla brány firewall umožňují připojení SSH.
 - Po převzetí služeb při selhání na virtuálním počítači Azure povolte příchozí připojení k portu SSH pro pravidla skupiny na virtuálním počítači, u kterého proběhlo převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.
 - [Přidejte veřejnou IP adresu](./site-recovery-monitor-and-troubleshoot.md) pro tento virtuální počítač.
-- Můžete zkontrolovat **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače.
+- Můžete zkontrolovat **diagnostiku spuštění** , kde se zobrazí snímek obrazovky virtuálního počítače.
 
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení

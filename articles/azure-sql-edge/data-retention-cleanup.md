@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547f0b3219889b54364c4805c2dd5b183a9861a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888127"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392363"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Správa historických dat pomocí zásad uchovávání informací
 
@@ -66,7 +66,7 @@ Vynikající komprese dat a efektivní vyčištění pro uchovávání informac�
 
 ## <a name="monitoring-data-retention-cleanup"></a>Vyčištění uchovávání dat monitorování
 
-Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozšířených událostí (XEvents) ve službě Azure SQL Edge. Další informace o rozšířených událostech najdete v tématu [XEvents Overview](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events). 
+Operace čištění zásad uchovávání dat se dají monitorovat pomocí rozšířených událostí (XEvents) ve službě Azure SQL Edge. Další informace o rozšířených událostech najdete v tématu [XEvents Overview](/sql/relational-databases/extended-events/extended-events). 
 
 Následující šest rozšířených událostí vám pomůžou sledovat stav operací čištění. 
 

@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ca22b3d2c00bfef128455df4ad6b9bb6411f8a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900568"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392108"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Streamování dat ve službě Azure SQL Edge
 
-Azure SQL Edge poskytuje nativní implementaci funkcí streamování dat, které se nazývají streamování T-SQL. Poskytuje streamování dat, analýzu a zpracování událostí v reálném čase k analýze a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Streamování T-SQL se sestavuje pomocí stejného vysoce výkonného streamu, který způsobil [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) v Microsoft Azure. Tato funkce podporuje podobnou sadu funkcí, které nabízí Azure Stream Analytics běžící na hraničních zařízeních.
+Azure SQL Edge poskytuje nativní implementaci funkcí streamování dat, které se nazývají streamování T-SQL. Poskytuje streamování dat, analýzu a zpracování událostí v reálném čase k analýze a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Streamování T-SQL se sestavuje pomocí stejného vysoce výkonného streamu, který způsobil [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) v Microsoft Azure. Tato funkce podporuje podobnou sadu funkcí, které nabízí Azure Stream Analytics běžící na hraničních zařízeních.
 
 Stejně jako u Stream Analytics se streamování T-SQL rozpoznává vzory a vztahy v informacích extrahovaných z řady vstupních zdrojů IoT, včetně zařízení, senzorů a aplikací. Pomocí těchto vzorů můžete aktivovat akce a iniciovat pracovní postupy. Můžete například vytvořit upozornění, informace o informačním kanálu do řešení pro vytváření sestav nebo vizualizace nebo ukládat data pro pozdější použití. 
 
@@ -31,25 +31,25 @@ Streamování T-SQL vám může pomáhat:
 
 ## <a name="how-does-t-sql-streaming-work"></a>Jak funguje streamování T-SQL?
 
-Streamování T-SQL funguje stejným způsobem jako [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction#how-does-stream-analytics-work). Například používá koncept *úloh* streamování pro zpracování streamování dat v reálném čase. 
+Streamování T-SQL funguje stejným způsobem jako [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md#how-does-stream-analytics-work). Například používá koncept *úloh* streamování pro zpracování streamování dat v reálném čase. 
 
 Úloha Stream Analytics se skládá z těchto:
 
-- **Vstup z datového proudu**: Tato definice definuje připojení ke zdroji dat, ze kterého se má datový proud číst. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
+- **Vstup z datového proudu** : Tato definice definuje připojení ke zdroji dat, ze kterého se má datový proud číst. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
     - Hraniční centrum
     - Kafka (podpora pro vstupy Kafka je v tuto chvíli dostupná jenom pro verze Intel/AMD64 Azure SQL Edge.)
 
-- **Výstup datového proudu**: definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
+- **Výstup datového proudu** : definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
     - Hraniční centrum
     - SQL (výstup SQL může být místní databáze v rámci instance Azure SQL Edge nebo vzdálené SQL Server nebo Azure SQL Database.) 
 
-- **Dotaz na datový proud**: definuje transformaci, agregace, filtrování, řazení a spojení, které mají být aplikovány na vstupní datový proud, před zápisem do výstupu datového proudu. Dotaz na datový proud vychází ze stejného dotazovacího jazyka, který používá Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+- **Dotaz na datový proud** : definuje transformaci, agregace, filtrování, řazení a spojení, které mají být aplikovány na vstupní datový proud, před zápisem do výstupu datového proudu. Dotaz na datový proud vychází ze stejného dotazovacího jazyka, který používá Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
-> Streamování T-SQL, na rozdíl od Stream Analytics, v současné době nepodporuje [použití referenčních dat pro vyhledávání](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data) nebo [použití systému souborů UDF a Uda v úloze streamu](https://docs.microsoft.com/azure/stream-analytics/streaming-technologies#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
+> Streamování T-SQL, na rozdíl od Stream Analytics, v současné době nepodporuje [použití referenčních dat pro vyhledávání](../stream-analytics/stream-analytics-use-reference-data.md) nebo [použití systému souborů UDF a Uda v úloze streamu](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
 
 > [!NOTE]
-> Služba T-SQL streaming podporuje pouze podmnožinu oblasti jazykového povrchu, kterou podporuje Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+> Služba T-SQL streaming podporuje pouze podmnožinu oblasti jazykového povrchu, kterou podporuje Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](/stream-analytics-query/stream-analytics-query-language-reference).
 
 ## <a name="limitations-and-restrictions"></a>Omezení a omezení
 

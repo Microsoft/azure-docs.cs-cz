@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7bb5d58e0c11ef65a6839383f79d32def4fa67a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887471"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392091"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>Nasazení modelu ML na Edge Azure SQL pomocí ONNX 
 
@@ -135,7 +135,7 @@ Do poznámkového bloku Azure Data Studio zadejte následující kód Pythonu a 
    df.describe()
    ```
 
-1. Spusťte experiment AzureML, který vyhledá a vyškolí nejlepší algoritmus. V tomto případě testujete se všemi regresními algoritmy s primární metrikou normalizované střední chyby (NRMSE). Další informace najdete v části [experimenty Azure ml – primární metrika](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#primary-metric). Následující kód spustí místní běh experimentu ML.
+1. Spusťte experiment AzureML, který vyhledá a vyškolí nejlepší algoritmus. V tomto případě testujete se všemi regresními algoritmy s primární metrikou normalizované střední chyby (NRMSE). Další informace najdete v části [experimenty Azure ml – primární metrika](../machine-learning/how-to-configure-auto-train.md#primary-metric). Následující kód spustí místní běh experimentu ML.
 
    ```python
    ## Define the X_train and the y_train data sets for the AutoML experiments. X_Train are the inputs or the features, while y_train is the outcome or the prediction result. 

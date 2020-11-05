@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31a454c93ad5192f387306a8ec557c4e4d3ae991
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90946486"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395287"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Nasazení kontejneru Edge Azure SQL v Kubernetes
 
@@ -43,12 +43,12 @@ V následujícím diagramu `azure-sql-edge` se nezdařil uzel hostující kontej
 
 ![Azure SQL Edge v clusteru Kubernetes po selhání uzlu](media/deploy-kubernetes/kubernetes-sql-edge-after-node-fail.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Cluster Kubernetes**
    - Tento kurz vyžaduje cluster Kubernetes. Postup ke správě clusteru pomocí [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) . 
 
-   - Pro účely tohoto kurzu budeme používat službu Azure Kubernetes k nasazení Edge Azure SQL. Další informace najdete v tématu [nasazení clusteru Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster) , který umožňuje vytvořit a připojit se k clusteru Kubernetes s jedním uzlem v AKS `kubectl` . 
+   - Pro účely tohoto kurzu budeme používat službu Azure Kubernetes k nasazení Edge Azure SQL. Další informace najdete v tématu [nasazení clusteru Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-deploy-cluster.md) , který umožňuje vytvořit a připojit se k clusteru Kubernetes s jedním uzlem v AKS `kubectl` . 
 
    >[!NOTE]
    >Pro ochranu proti selhání uzlu vyžaduje cluster Kubernetes více než jeden uzel.
@@ -108,7 +108,7 @@ Konfigurace [trvalého svazku](https://kubernetes.io/docs/concepts/storage/persi
          storage: 8Gi
    ```
 
-   Uložte soubor (například **PVC. yaml**).
+   Uložte soubor (například **PVC. yaml** ).
 
 2. Vytvořte v Kubernetes deklaraci trvalého svazku.
 
@@ -241,7 +241,7 @@ spec:
    >[!NOTE]
    >Pomocí `LoadBalancer` typu služby je instance Azure SQL Edge přístupná vzdáleně (přes Internet) na portu 1433.
 
-   Uložte soubor (například **sqledgedeploy. yaml**).
+   Uložte soubor (například **sqledgedeploy. yaml** ).
 
 2. Vytvořte nasazení.
 
@@ -305,7 +305,7 @@ Chcete-li ověřit selhání a obnovení, můžete odstranit pole pod. Proveďte
 
 Kubernetes automaticky znovu vytvoří objekt pod a obnoví instanci Azure SQL Edge a připojí se k trvalému úložišti. Použijte `kubectl get pods` k ověření, že je nasazen nový pod. Použijte `kubectl get services` k ověření, že IP adresa nového kontejneru je stejná. 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto kurzu jste zjistili, jak nasadit kontejnery Azure SQL Edge do clusteru Kubernetes pro zajištění vysoké dostupnosti. 
 
@@ -318,8 +318,7 @@ V tomto kurzu jste zjistili, jak nasadit kontejnery Azure SQL Edge do clusteru K
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úvod do Kubernetes](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Úvod do Kubernetes](../aks/intro-kubernetes.md)
 - [Machine Learning a uměle inteligentní informace s ONNXem v SQL Edge](onnx-overview.md).
 - [Vytvoření kompletního řešení IoT pomocí SQL Edge pomocí IoT Edge](tutorial-deploy-azure-resources.md).
 - [Streamování dat ve službě Azure SQL Edge](stream-data.md)
-

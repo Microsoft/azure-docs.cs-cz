@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: e9c8c58c6be8d2c2a85e56690903e6b54f0e4a0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bd0eda16f9f96dd356eef900369ab25854e9f9
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293896"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392244"
 ---
 # <a name="sql-database-dacpac-and-bacpac-packages-in-sql-edge"></a>SQL Database DACPAC a BACPAC balíčky v SQL Edge
 
 Azure SQL Edge je optimalizovaný relační databázový stroj pro nasazování do IoT a na hraniční zařízení. Je postaven na nejnovějších verzích modulu Microsoft SQL Database Engine, který poskytuje špičkové možnosti pro výkon, zabezpečení a zpracování dotazů. Spolu s špičkovými možnostmi správy relačních databází SQL Server poskytuje Azure SQL Edge integrované možnosti streamování pro analýzy v reálném čase a složité zpracování událostí.
 
-Azure SQL Edge poskytuje nativní mechanismus, který vám umožní nasadit balíček [SQL Database DACPAC a BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) během nebo po nasazení Edge SQL.
+Azure SQL Edge poskytuje nativní mechanismus, který vám umožní nasadit balíček [SQL Database DACPAC a BacPac](/sql/relational-databases/data-tier-applications/data-tier-applications) během nebo po nasazení Edge SQL.
 
 Balíčky SQL Database DACPAC a BacPac lze nasadit do SQL Edge pomocí `MSSQL_PACKAGE` proměnné prostředí. Proměnná prostředí se dá nakonfigurovat pomocí kterékoli z následujících možností.  
 - Umístění místní složky v rámci kontejneru SQL obsahujícího soubory DACPAC a BacPac. Tuto složku lze namapovat na svazek hostitele pomocí přípojných bodů nebo kontejnerů datových svazků. 
@@ -35,7 +35,7 @@ Pokud chcete nasadit (nebo importovat) SQL Database balíček DAC `(*.dacpac)` n
 
 1. Vytvořte nebo rozbalte balíček DAC nebo exportujte soubor BacPac pomocí mechanismu uvedeného níže. 
     - Vytvoření nebo extrakce SQL Database balíčku DAC Informace o tom, jak vygenerovat balíček DAC pro existující SQL Server databázi, najdete v tématu [extrakce DAC z databáze](/sql/relational-databases/data-tier-applications/extract-a-dac-from-a-database/) .
-    - Exportování nasazeného balíčku DAC nebo databáze. Informace o tom, jak vygenerovat soubor BacPac pro existující databázi SQL Server, najdete v tématu [Export aplikace na datové vrstvě](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) .
+    - Exportování nasazeného balíčku DAC nebo databáze. Informace o tom, jak vygenerovat soubor BacPac pro existující databázi SQL Server, najdete v tématu [Export aplikace na datové vrstvě](/sql/relational-databases/data-tier-applications/export-a-data-tier-application/) .
 
 2. Zip `*.dacpac` `*.bacpac` soubor nebo soubor a nahrajte ho do účtu služby Azure Blob Storage. Další informace o nahrávání souborů do úložiště objektů BLOB v Azure najdete v tématu [nahrání, stažení a výpis objektů BLOB pomocí Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 

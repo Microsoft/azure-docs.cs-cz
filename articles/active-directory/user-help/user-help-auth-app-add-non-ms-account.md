@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015966"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392573"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Přidání jiných účtů než do aplikace Microsoft Authenticator
 
@@ -36,7 +36,7 @@ Obecně platí, že u všech osobních účtů je třeba:
     >[!Note]
     >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
-Tento proces poskytujeme pro vaše účty Facebook, Google, GitHub a Amazon, ale tento postup je stejný pro všechny ostatní aplikace, jako je Instagramu, Netflix nebo Adobe.
+Tento proces poskytujeme pro účty Facebook, Google, GitHub a Amazon, ale proces je stejný i pro jiné aplikace, jako je Instagramu a Adobe.
 
 ## <a name="add-your-google-account"></a>Přidat účet Google
 
@@ -44,7 +44,7 @@ Přidejte svůj účet Google tím, že zapnete dvojúrovňové ověřování a 
 
 ### <a name="turn-on-two-factor-verification"></a>Zapnout dvojúrovňové ověřování
 
-1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a **Get Started**pak ověřte svoji identitu.
+1. V počítači klikněte na https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome , vyberte Začínáme a **Get Started** pak ověřte svoji identitu.
 
 2. Postupujte podle pokynů na stránce, abyste zapnuli dvoustupňové ověřování pro váš osobní účet Google.
 
@@ -159,7 +159,7 @@ Přidejte svůj účet Amazon tím, že zapnete dvojúrovňové ověřování a 
 
 1. V počítači otevřete službu Amazon, vyberte rozevírací nabídku **seznam & účtu** a pak vyberte **svůj účet**.
 
-2. Vyberte **zabezpečení přihlášení &**, přihlaste se ke svému účtu Amazon a potom v oblasti **Upřesnit nastavení zabezpečení** vyberte **Upravit** .
+2. Vyberte **zabezpečení přihlášení &** , přihlaste se ke svému účtu Amazon a potom v oblasti **Upřesnit nastavení zabezpečení** vyberte **Upravit** .
 
     Zobrazí se stránka **Upřesnit nastavení zabezpečení** .
 

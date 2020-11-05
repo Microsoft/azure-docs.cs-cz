@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740170"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393366"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Tokeny přístupu Microsoft Identity Platform
 
@@ -33,7 +33,7 @@ V následujících částech se dozvíte, jak může prostředek ověřit a pou�
 > [!IMPORTANT]
 > Přístupové tokeny se vytvářejí na základě *cílové skupiny* tokenu, což znamená aplikaci, která vlastní obory v tokenu.  To je způsob, jakým nastavení prostředku `accessTokenAcceptedVersion` v [manifestu aplikace](reference-app-manifest.md#manifest-reference) `2` umožňuje klientovi, aby zavolala koncový bod verze 1.0, aby získal přístupový token verze 2.0.  Podobně to znamená, že změna [volitelných deklarací](active-directory-optional-claims.md) přístupového tokenu pro vašeho klienta nemění přístupový token přijatý při vyžádání tokenu `user.read` , který je vlastníkem prostředku.
 >
-> Ze stejného důvodu při testování klientské aplikace pomocí rozhraní Microsoft API, které podporuje osobní účet (například hotmail.com nebo outlook.com), zjistíte, že přístupový token přijatý vaším klientem je neprůhledný řetězec. Důvodem je skutečnost, že k prostředku, který je k dispozici, používá šifrované tokeny a nelze je porozumět klientovi.  To je očekávané a nemělo by se jednat o problém pro vaši aplikaci – klientské aplikace by nikdy neměly mít závislost na formátu přístupového tokenu. 
+> Ze stejného důvodu při testování klientské aplikace pomocí rozhraní Microsoft API, které podporuje osobní účet (například hotmail.com nebo outlook.com), zjistíte, že přístupový token přijatý vaším klientem je neprůhledný řetězec. Důvodem je skutečnost, že k prostředku, který je k dispozici, používá šifrované tokeny a nelze je porozumět klientovi.  To je očekávané a nemělo by se jednat o problém pro vaši aplikaci – klientské aplikace by nikdy neměly mít závislost na formátu přístupového tokenu.
 
 ## <a name="sample-tokens"></a>Ukázkové tokeny
 
@@ -178,7 +178,7 @@ Poskytujeme knihovny a ukázky kódu, které ukazují, jak zpracovat ověření 
 
 ### <a name="validating-the-signature"></a>Ověřování podpisu
 
-Token JWT obsahuje tři segmenty, které jsou odděleny `.` znakem. První segment je označován jako **záhlaví** , druhý jako **tělo** a třetí jako **podpis** . Segment podpisu lze použít k ověření pravosti tokenu, aby mohl být vaší aplikací důvěryhodný.
+Token JWT obsahuje tři segmenty, které jsou odděleny `.` znakem. První segment je označován jako **záhlaví** , druhý jako **tělo** a třetí jako **podpis**. Segment podpisu lze použít k ověření pravosti tokenu, aby mohl být vaší aplikací důvěryhodný.
 
 Tokeny vydané službou Azure AD jsou podepsané pomocí standardních asymetrických šifrovacích algoritmů, jako je RS256. Záhlaví tokenu JWT obsahuje informace o klíči a metodě šifrování použité k podepsání tokenu:
 
@@ -245,7 +245,7 @@ Aktualizace tokenů se u různých důvodů může odhlásit nebo odvolat kdykol
 
 ### <a name="token-timeouts"></a>Vypršení časového limitu tokenů
 
-Pomocí [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)můžete změnit životnost tokenů aktualizace.  Je normální a očekává se, že některé tokeny mají jít bez použití (například uživatel neotevře aplikaci po dobu 3 měsíců), a proto vyprší.  V aplikacích dojde k situacím, kdy přihlašovací server odmítne obnovovací token z důvodu jeho stáří. 
+Pomocí [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)můžete změnit životnost tokenů aktualizace.  Je normální a očekává se, že některé tokeny mají jít bez použití (například uživatel neotevře aplikaci po dobu 3 měsíců), a proto vyprší.  V aplikacích dojde k situacím, kdy přihlašovací server odmítne obnovovací token z důvodu jeho stáří.
 
 * MaxInactiveTime: Pokud se obnovovací token nepoužil v čase, který určí MaxInactiveTime, obnovovací token už nebude platný.
 * MaxSessionAge: Pokud jsou MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor nastavené na jinou hodnotu než výchozí (před odvoláním), pak se opětovné ověření bude vyžadovat po uplynutí doby nastavené v MaxAgeSession *.
@@ -255,7 +255,7 @@ Pomocí [Konfigurace životnosti tokenů](active-directory-configurable-token-li
 
 ### <a name="revocation"></a>Odvolání
 
-Aktualizační tokeny může server odvolat z důvodu změny přihlašovacích údajů, nebo v důsledku použití nebo akce správce.  Aktualizovat tokeny spadají do dvou tříd – těch vydaných důvěrným klientům (sloupec nejvíce vpravo) a těch vydaných pro veřejné klienty (všechny ostatní sloupce).   
+Aktualizační tokeny může server odvolat z důvodu změny přihlašovacích údajů, nebo v důsledku použití nebo akce správce.  Aktualizovat tokeny spadají do dvou tříd – těch vydaných důvěrným klientům (sloupec nejvíce vpravo) a těch vydaných pro veřejné klienty (všechny ostatní sloupce).
 
 | Změnit | Soubor cookie založený na hesle | Token založený na hesle | Soubory cookie nezaložené na heslech | Token založený na jiných heslech | Důvěrný token klienta |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,12 +275,12 @@ Přihlášení *bez hesla* je jeden z nich, kdy uživatel nezadal heslo pro jeho
 - FIDO2 klíč
 - SMS
 - Hlas
-- PIN 
+- PIN
 
 > [!NOTE]
 > Primární obnovovací tokeny (PRT) ve Windows 10 jsou oddělené na základě přihlašovacích údajů. Například Windows Hello a heslo mají své odpovídající PRTs, které jsou izolované od sebe. Když se uživatel přihlásí pomocí přihlašovacích údajů Hello (PIN nebo biometrika) a pak změní heslo, bude odvolaný PRT založený na hesle, který jste dříve získali. Při opětovném přihlášení pomocí hesla se zruší platnost starého PRT a vyžádá se nový.
 >
-> Při použití k načtení nového přístupového tokenu a obnovení tokenu se tokeny pro aktualizaci neověřují nebo odvolají.  Vaše aplikace by ale měla staré zrušit, jakmile se použije, a nahradit ji novým, protože nový token má nový čas vypršení platnosti. 
+> Při použití k načtení nového přístupového tokenu a obnovení tokenu se tokeny pro aktualizaci neověřují nebo odvolají.  Vaše aplikace by ale měla staré zrušit, jakmile se použije, a nahradit ji novým, protože nový token má nový čas vypršení platnosti.
 
 ## <a name="next-steps"></a>Další kroky
 

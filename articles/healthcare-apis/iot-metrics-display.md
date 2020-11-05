@@ -1,5 +1,5 @@
 ---
-title: Zobrazení a konfigurace služby Azure IoT Connector pro metriky FHIR (Preview)
+title: Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview)
 description: V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro FHIR (Preview) metriky.
 services: healthcare-apis
 author: msjasteppe
@@ -8,19 +8,19 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: jasteppe
-ms.openlocfilehash: 76166fc5c525d36474a585179472e93b22dad647
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cdae789b8286be408735fff92e2de46e28ce514
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133542"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394284"
 ---
-# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace služby Azure IoT Connector pro metriky FHIR (Preview) 
+# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview) 
 
 V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro metriky FHIR *. 
 
 > [!TIP]
-> Postupujte podle pokynů v tématu [Export služby Azure IoT Connector pro FHIR (Preview) metriky prostřednictvím nastavení diagnostiky](https://docs.microsoft.com/azure/healthcare-apis/iot-metrics-diagnostics-export) a Naučte se, jak nastavit export dat metrik.
+> Postupujte podle pokynů v tématu [Export služby Azure IoT Connector pro FHIR (Preview) metriky prostřednictvím nastavení diagnostiky](./iot-metrics-diagnostics-export.md) a Naučte se, jak nastavit export dat metrik.
 
 ## <a name="view-metrics-for-azure-iot-connector-for-fhir-preview"></a>Zobrazit metriky pro Azure IoT Connector pro FHIR (Preview)
 1. Pokud chcete zobrazit metriky pro konektory IoT, vyberte v Azure Portal službu Azure API pro službu FHIR. 
@@ -33,14 +33,14 @@ V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Co
 
 4. Vyberte konektor IoT, pro který chcete zobrazit metriky (například: k tomuto rozhraní Azure API pro službu FHIR jsou přidružené konektory IoT).
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT connector1" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
 
 > [!NOTE]
 > **Vlastní** karta umožňuje vytvořit konkrétní kombinace data a času pro zobrazení metrik konektoru IoT.
 
 5. Vyberte časové období metrik konektoru IoT, které se má zobrazit (například 1 hodina, 24 hodin, 7 dní nebo vlastní).
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT connector1" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT Connector3" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
 ## <a name="metrics-types-for-azure-iot-connector-for-fhir-preview"></a>Typy metrik pro Azure IoT Connector pro FHIR (Preview) 
 Zobrazené metriky IoT Connectoru jsou následující:
@@ -59,11 +59,11 @@ V tomto příkladu se zaměříme na **Počet příchozích zpráv** o metrikác
 
 1. Vyberte bod v čase, na který se chcete zaměřit.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT connector1" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT Connector4" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
 
 2. Z této obrazovky můžete **Přidat metriku** , **Přidat filtr** a **použít rozdělení** pro další úpravy. 
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT connector1" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT Connector5" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
 
 ## <a name="conclusion"></a>Závěr 
 Přístup k metrikám roviny dat je zásadní pro monitorování a řešení potíží.  Azure IoT Connector pro FHIR vám pomůže provádět tyto akce prostřednictvím metrik. 

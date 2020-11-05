@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 737c7e61a7ae0573ca6de0d6daa8288313f70741
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201898"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394947"
 ---
 # <a name="securing-azure-sql-edge"></a>Zabezpečení Edge Azure SQL
 
@@ -34,24 +34,24 @@ Implementace zabezpečení platformy se spouští s udržováním neautorizovan�
 - Určení a omezení portů hostitele, které se používají pro Azure SQL Edge
 - Ujistěte se, že se na všechny datové svazky, které hostují data Azure SQL Edge, aplikuje správné řízení přístupu. 
 
-Další informace o síťových protokolech Azure SQL Edge a koncových bodech TDS najdete v těchto [síťových protokolech a koncových bodech TDS](https://docs.microsoft.com//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
+Další informace o síťových protokolech Azure SQL Edge a koncových bodech TDS najdete v těchto [síťových protokolech a koncových bodech TDS](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
 
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace 
 
 ### <a name="authentication"></a>Authentication  
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Edge aktuálně podporuje jenom `SQL Authentication` mechanismus.
 
-- *Ověřování SQL*:
+- *Ověřování SQL* :
 
     Ověřování SQL odkazuje na ověření uživatele při připojování k Edge SQL Azure pomocí uživatelského jména a hesla. Heslo pro přihlášení k SQL **SA** je potřeba zadat během nasazování SQL Edge. Potom může správce serveru vytvořit další přihlášení a uživatele SQL, která uživatelům umožňují připojit se pomocí uživatelského jména a hesla.
 
-    Další informace o vytváření a správě přihlašovacích údajů a uživatelů v rámci SQL Edge najdete v tématu [Vytvoření přihlášení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) a [Vytvoření uživatele databáze](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-database-user).
+    Další informace o vytváření a správě přihlašovacích údajů a uživatelů v rámci SQL Edge najdete v tématu [Vytvoření přihlášení](/sql/relational-databases/security/authentication-access/create-a-login) a [Vytvoření uživatele databáze](/sql/relational-databases/security/authentication-access/create-a-database-user).
 
 ### <a name="authorization"></a>Autorizace   
 
-Autorizace odkazuje na oprávnění přiřazená uživateli v rámci databáze ve službě Azure SQL Edge a určuje, co může uživatel dělat. Oprávnění jsou řízena přidáním uživatelských účtů do [databázových rolí](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) a přiřazením oprávnění na úrovni databáze k těmto rolím nebo tím, že uživatel udělí určitá [oprávnění na úrovni objektu](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlášení a uživatelé](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage).
+Autorizace odkazuje na oprávnění přiřazená uživateli v rámci databáze ve službě Azure SQL Edge a určuje, co může uživatel dělat. Oprávnění jsou řízena přidáním uživatelských účtů do [databázových rolí](/sql/relational-databases/security/authentication-access/database-level-roles) a přiřazením oprávnění na úrovni databáze k těmto rolím nebo tím, že uživatel udělí určitá [oprávnění na úrovni objektu](/sql/relational-databases/security/permissions-database-engine). Další informace najdete v tématu [přihlášení a uživatelé](../azure-sql/database/logins-create-manage.md).
 
-Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidejte uživatele do role s nejnižšími oprávněními potřebnými k provedení jejich pracovní funkce. Nepřiřazujte oprávnění přímo uživatelům. Účet správce serveru je členem předdefinované role db_owner, která má rozsáhlá oprávnění a měla by být udělována pouze malým uživatelům s administrativními cly. Pro aplikace použijte příkaz [Spustit jako](https://docs.microsoft.com/sql/t-sql/statements/execute-as-clause-transact-sql) a určete kontext spuštění volaného modulu nebo použijte [aplikační role](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že aplikace, která se připojuje k databázi, má nejnižší oprávnění, která aplikace potřebuje. Tyto osvědčené postupy také podporují oddělení povinností.
+Osvědčeným postupem je v případě potřeby vytvořit vlastní role. Přidejte uživatele do role s nejnižšími oprávněními potřebnými k provedení jejich pracovní funkce. Nepřiřazujte oprávnění přímo uživatelům. Účet správce serveru je členem předdefinované role db_owner, která má rozsáhlá oprávnění a měla by být udělována pouze malým uživatelům s administrativními cly. Pro aplikace použijte příkaz [Spustit jako](/sql/t-sql/statements/execute-as-clause-transact-sql) a určete kontext spuštění volaného modulu nebo použijte [aplikační role](/sql/relational-databases/security/authentication-access/application-roles) s omezenými oprávněními. Tento postup zajišťuje, že aplikace, která se připojuje k databázi, má nejnižší oprávnění, která aplikace potřebuje. Tyto osvědčené postupy také podporují oddělení povinností.
 
 ## <a name="database-object-security"></a>Zabezpečení databázových objektů
 
@@ -59,8 +59,8 @@ Objekty zabezpečení jsou jednotlivci, skupiny a procesy s uděleným přístup
 
 |Pro informace o|Seznamte se s |  
 |---------------------------|---------|  
-|Uživatelé, role a procesy serveru a databáze|[Databázový stroj objektů zabezpečení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)|  
-|Zabezpečení serveru a databázových objektů|[Migrovány zabezpečitelné objekty](https://docs.microsoft.com/sql/relational-databases/security/securables)|
+|Uživatelé, role a procesy serveru a databáze|[Databázový stroj objektů zabezpečení](/sql/relational-databases/security/authentication-access/principals-database-engine)|  
+|Zabezpečení serveru a databázových objektů|[Migrovány zabezpečitelné objekty](/sql/relational-databases/security/securables)|
 | &nbsp; | &nbsp; |
 
 ### <a name="encryption-and-certificates"></a>Šifrování a certifikáty  
@@ -69,47 +69,46 @@ Objekty zabezpečení jsou jednotlivci, skupiny a procesy s uděleným přístup
   
 |Pro informace o|Seznamte se s |  
 |---------------------------|---------|  
-|Implementace zabezpečených připojení|[Šifrování připojení](https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections)|  
-|Funkce šifrování|[Kryptografické funkce &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/functions/cryptographic-functions-transact-sql)|
-|Šifrování dat v klidovém umístění|[Transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption)|
-|Funkce Always Encrypted|[Funkce Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
+|Implementace zabezpečených připojení|[Šifrování připojení](/sql/linux/sql-server-linux-encrypted-connections)|  
+|Funkce šifrování|[Kryptografické funkce &#40;Transact-SQL&#41;](/sql/t-sql/functions/cryptographic-functions-transact-sql)|
+|Šifrování dat v klidovém umístění|[Transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption)|
+|Funkce Always Encrypted|[Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|
 | &nbsp; | &nbsp; |
 
 > [!NOTE]
-> Omezení zabezpečení popsaná pro [SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-security-overview) platí i pro Azure SQL Edge. 
+> Omezení zabezpečení popsaná pro [SQL Server on Linux](/sql/linux/sql-server-linux-security-overview) platí i pro Azure SQL Edge. 
 
 
 > [!NOTE]
 > Azure SQL Edge nezahrnuje nástroj MSSQL-conf. Všechny konfigurace, včetně konfigurace související s šifrováním, se musí provádět prostřednictvím [souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file) nebo [proměnných prostředí](configure.md#configure-by-using-environment-variables). 
 
 
-Podobně jako u Azure SQL a Microsoft SQL Server poskytuje Azure SQL Edge stejný mechanismus pro vytváření a používání certifikátů ke zvýšení zabezpečení objektů a připojení. Další informace najdete v tématu [Vytvoření certifikátu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql).
+Podobně jako u Azure SQL a Microsoft SQL Server poskytuje Azure SQL Edge stejný mechanismus pro vytváření a používání certifikátů ke zvýšení zabezpečení objektů a připojení. Další informace najdete v tématu [Vytvoření certifikátu (Transact-SQL)](/sql/t-sql/statements/create-certificate-transact-sql).
 
 
 ## <a name="application-security"></a>Zabezpečení aplikací
 
 ### <a name="client-programs"></a>Klientské programy
 
-Mezi osvědčené postupy zabezpečení Azure SQL Edge patří vytváření zabezpečených klientských aplikací. Další informace o tom, jak lépe zabezpečit klientské aplikace v síťové vrstvě, najdete v tématu [Konfigurace sítě klienta](https://docs.microsoft.com/sql/database-engine/configure-windows/client-network-configuration).
+Mezi osvědčené postupy zabezpečení Azure SQL Edge patří vytváření zabezpečených klientských aplikací. Další informace o tom, jak lépe zabezpečit klientské aplikace v síťové vrstvě, najdete v tématu [Konfigurace sítě klienta](/sql/database-engine/configure-windows/client-network-configuration).
 
 ### <a name="security-catalog-views-and-functions"></a>Zobrazení a funkce katalogu zabezpečení  
 Informace o zabezpečení jsou zpřístupněny v několika zobrazeních a funkcích, které jsou optimalizovány pro výkon a nástroj. Následující tabulka obsahuje informace o zobrazení a funkcích zabezpečení v Azure SQL Edge.  
   
 |Funkce a zobrazení|Odkazy|  
 |---------------------------|---------|  
-|Zobrazení katalogu zabezpečení, které vrací informace o oprávněních na úrovni databáze a na úrovni serveru, objektech zabezpečení, rolích atd. K dispozici jsou také Katalogová zobrazení, která poskytují informace o šifrovacích klíčích, certifikátech a přihlašovacích údajích.|[Zobrazení katalogu zabezpečení &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)|  
-|Funkce zabezpečení, které vracejí informace o aktuálním uživateli, oprávněních a schématech.|[Funkce zabezpečení &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/t-sql/functions/security-functions-transact-sql)|  
-|Zobrazení dynamické správy zabezpečení|[Zobrazení a funkce dynamické správy související se zabezpečením &#40;Transact-SQL&#41;](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/security-related-dynamic-management-views-and-functions-transact-sql)|  
+|Zobrazení katalogu zabezpečení, které vrací informace o oprávněních na úrovni databáze a na úrovni serveru, objektech zabezpečení, rolích atd. K dispozici jsou také Katalogová zobrazení, která poskytují informace o šifrovacích klíčích, certifikátech a přihlašovacích údajích.|[Zobrazení katalogu zabezpečení &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)|  
+|Funkce zabezpečení, které vracejí informace o aktuálním uživateli, oprávněních a schématech.|[Funkce zabezpečení &#40;Transact-SQL&#41;](/sql/t-sql/functions/security-functions-transact-sql)|  
+|Zobrazení dynamické správy zabezpečení|[Zobrazení a funkce dynamické správy související se zabezpečením &#40;Transact-SQL&#41;](/sql/relational-databases/system-dynamic-management-views/security-related-dynamic-management-views-and-functions-transact-sql)|  
 | &nbsp; | &nbsp; |
 
 ### <a name="auditing"></a>Auditování 
 
-Azure SQL Edge nabízí stejné mechanismy auditování jako SQL Server. Další informace najdete v tématu [SQL Server Audit (databázový stroj)](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine).
+Azure SQL Edge nabízí stejné mechanismy auditování jako SQL Server. Další informace najdete v tématu [SQL Server Audit (databázový stroj)](/sql/relational-databases/security/auditing/sql-server-audit-database-engine).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Začínáme s funkcemi zabezpečení](https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started)
+- [Začínáme s funkcemi zabezpečení](/sql/linux/sql-server-linux-security-get-started)
 - [Spuštění Azure SQL Edge jako nerootový uživatel](configure.md#run-azure-sql-edge-as-non-root-user)
-- [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/overview)
-
+- [Azure Security Center pro IoT](../defender-for-iot/overview.md)
