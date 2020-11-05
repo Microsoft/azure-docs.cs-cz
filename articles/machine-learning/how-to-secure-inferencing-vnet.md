@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325337"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361161"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Zabezpečení prostředí pro odvozování služby Azure Machine Learning s využitím virtuálních sítí
 
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak zabezpečit následující Inferencing prostř
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 + Přečtěte si článek [Přehled zabezpečení sítě](how-to-network-security-overview.md) , který vám pomůže pochopit běžné scénáře virtuální sítě a celkovou architekturu virtuální sítě.
 
@@ -115,35 +115,10 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Po dokončení procesu vytváření můžete spustit odvození nebo model bodování v clusteru AKS za virtuální sítí. Další informace najdete v tématu [Jak nasadit do AKS](how-to-deploy-and-where.md).
 
-## <a name="secure-vnet-traffic"></a>Zabezpečený provoz virtuální sítě
-
-Existují dva přístupy k izolaci provozu do a z clusteru AKS do virtuální sítě:
-
-* __Privátní cluster AKS__ : Tento přístup používá privátní propojení Azure k zabezpečení komunikace s clusterem pro operace nasazení a správy.
-* __Interní nástroj pro vyrovnávání zatížení AKS__ : Tento přístup nakonfiguruje koncový bod pro vaše nasazení, aby AKS používal privátní IP adresu v rámci virtuální sítě.
-
-> [!WARNING]
-> Interní nástroj pro vyrovnávání zatížení nepracuje s clusterem AKS, který používá kubenet. Pokud chcete současně používat interní nástroj pro vyrovnávání zatížení a privátní cluster AKS, nakonfigurujte svůj privátní cluster AKS pomocí rozhraní CNI (Azure Container Networking Interface). Další informace najdete v tématu [Konfigurace sítě Azure CNI ve službě Azure Kubernetes](../aks/configure-azure-cni.md).
-
-### <a name="private-aks-cluster"></a>Privátní cluster AKS
-
-Ve výchozím nastavení mají clustery AKS řídicí plochu nebo Server API s veřejnými IP adresami. AKS můžete nakonfigurovat tak, aby používala privátní rovinu ovládacího prvku vytvořením privátního clusteru AKS. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
-
-Po vytvoření privátního clusteru AKS [Připojte cluster k virtuální síti](how-to-create-attach-kubernetes.md) , která se má používat s Azure Machine Learning.
+## <a name="network-contributor-role"></a>Role Přispěvatel sítě
 
 > [!IMPORTANT]
-> Předtím, než použijete AKS cluster s podporou privátního propojení s Azure Machine Learning, je nutné pro povolení této funkce otevřít incident podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
-
-### <a name="internal-aks-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení AKS
-
-Ve výchozím nastavení používají nasazení AKS [veřejný Nástroj pro vyrovnávání zatížení](../aks/load-balancer-standard.md). V této části se dozvíte, jak nakonfigurovat AKS pro používání interního nástroje pro vyrovnávání zatížení. Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení se používá v případě, že jsou jako front-endu povoleny pouze privátní IP adresy. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu ve virtuální síti.
-
-Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
-
-#### <a name="network-contributor-role"></a>Role Přispěvatel sítě
-
-> [!IMPORTANT]
-> Pokud vytvoříte nebo připojíte cluster AKS tím, že zadáte dříve vytvořenou virtuální síť, musíte instančnímu objektu (SP) nebo spravované identitě pro svůj cluster AKS udělit roli _Přispěvatel sítě_ do skupiny prostředků, která obsahuje virtuální síť. Tato operace se musí provést předtím, než se pokusíte změnit interní nástroj pro vyrovnávání zatížení na soukromou IP adresu.
+> Pokud vytvoříte nebo připojíte cluster AKS tím, že zadáte dříve vytvořenou virtuální síť, musíte instančnímu objektu (SP) nebo spravované identitě pro svůj cluster AKS udělit roli _Přispěvatel sítě_ do skupiny prostředků, která obsahuje virtuální síť.
 >
 > Chcete-li přidat identitu jako Přispěvatel sítě, použijte následující postup:
 
@@ -171,6 +146,31 @@ Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
 Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](../aks/internal-lb.md).
+
+## <a name="secure-vnet-traffic"></a>Zabezpečený provoz virtuální sítě
+
+Existují dva přístupy k izolaci provozu do a z clusteru AKS do virtuální sítě:
+
+* __Privátní cluster AKS__ : Tento přístup používá privátní propojení Azure k zabezpečení komunikace s clusterem pro operace nasazení a správy.
+* __Interní nástroj pro vyrovnávání zatížení AKS__ : Tento přístup nakonfiguruje koncový bod pro vaše nasazení, aby AKS používal privátní IP adresu v rámci virtuální sítě.
+
+> [!WARNING]
+> Interní nástroj pro vyrovnávání zatížení nepracuje s clusterem AKS, který používá kubenet. Pokud chcete současně používat interní nástroj pro vyrovnávání zatížení a privátní cluster AKS, nakonfigurujte svůj privátní cluster AKS pomocí rozhraní CNI (Azure Container Networking Interface). Další informace najdete v tématu [Konfigurace sítě Azure CNI ve službě Azure Kubernetes](../aks/configure-azure-cni.md).
+
+### <a name="private-aks-cluster"></a>Privátní cluster AKS
+
+Ve výchozím nastavení mají clustery AKS řídicí plochu nebo Server API s veřejnými IP adresami. AKS můžete nakonfigurovat tak, aby používala privátní rovinu ovládacího prvku vytvořením privátního clusteru AKS. Další informace najdete v tématu [Vytvoření privátního clusteru služby Azure Kubernetes](../aks/private-clusters.md).
+
+Po vytvoření privátního clusteru AKS [Připojte cluster k virtuální síti](how-to-create-attach-kubernetes.md) , která se má používat s Azure Machine Learning.
+
+> [!IMPORTANT]
+> Předtím, než použijete AKS cluster s podporou privátního propojení s Azure Machine Learning, je nutné pro povolení této funkce otevřít incident podpory. Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+### <a name="internal-aks-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení AKS
+
+Ve výchozím nastavení používají nasazení AKS [veřejný Nástroj pro vyrovnávání zatížení](../aks/load-balancer-standard.md). V této části se dozvíte, jak nakonfigurovat AKS pro používání interního nástroje pro vyrovnávání zatížení. Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení se používá v případě, že jsou jako front-endu povoleny pouze privátní IP adresy. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu ve virtuální síti.
+
+Privátní Nástroj pro vyrovnávání zatížení je povolen konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
 
 #### <a name="enable-private-load-balancer"></a>Povolit privátní Nástroj pro vyrovnávání zatížení
 

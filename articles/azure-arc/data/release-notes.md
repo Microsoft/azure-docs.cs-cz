@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321719"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359812"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Poznámky k verzi – datové služby s podporou ARC Azure (Preview)
 
@@ -90,7 +90,7 @@ Pokyny najdete v tématu [co jsou datové služby s podporou ARC Azure](overview
 
 - Verze Preview nepodporuje modul zálohování a obnovení pro PostgreSQL verze 11. Podporuje jenom zálohování a obnovení pro PostgreSQL verze 12.
 - `azdata arc dc debug copy-logs` nnezachytí není shromažďovat protokoly PostgreSQL Engine v systému Windows.
-- Opětovné vytvoření skupiny serverů s názvem skupiny serverů, kterou jste právě odstranili, může selhat nebo zablokovat. 
+- Opětovné vytvoření skupiny serverů s názvem skupiny serverů, kterou jste právě odstranili, může selhat nebo přestat reagovat. 
    - **Alternativní řešení** Nepoužívejte stejný název při opětovném vytvoření skupiny serverů nebo počkejte na Vyrovnávání zatížení/externí službu dříve odstraněné skupiny serverů. Za předpokladu, že název skupiny serverů, kterou jste odstranili `postgres01` a která byla hostována v oboru názvů `arc` , než znovu vytvoříte skupinu serverů se stejným názvem, počkejte, dokud `postgres01-external-svc` se nezobrazuje ve výstupu příkazu kubectl `kubectl get svc -n arc` .
  - Načítání stránky s přehledem a konfigurace služby COMPUTE + úložiště v Azure Data Studio je pomalé. 
 

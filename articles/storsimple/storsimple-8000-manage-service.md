@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66244bd8e24ff62be41df72f7a39c0ce0ed13135
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249548"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360670"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
 
@@ -58,7 +58,7 @@ Chcete-li vytvořit službu, proveďte následující kroky.
 Pro každou službu StorSimple Device Manager existují následující atributy:
 
 * **Název** – název, který byl přiřazen službě StorSimple Device Manager při vytvoření. **Po vytvoření služby se název služby nedá změnit. Platí to taky pro jiné entity, jako jsou zařízení, svazky, kontejnery svazků a zásady zálohování, které se nedají přejmenovat v Azure Portal.**
-* **Stav** – stav služby, který může být **aktivní**, **vytváří**nebo je **online**.
+* **Stav** – stav služby, který může být **aktivní** , **vytváří** nebo je **online**.
 * **Location (umístění** ) – zeměpisné umístění, ve kterém bude nasazeno zařízení StorSimple.
 * **Předplatné** – fakturační předplatné, které je přidružené k vaší službě.
 
@@ -103,9 +103,9 @@ Registrační klíč služby je nutné znovu vygenerovat, pokud potřebujete pro
 K opětovnému vygenerování registračního klíče služby proveďte následující kroky.
 
 ### <a name="to-regenerate-the-service-registration-key"></a>Opětovné vygenerování registračního klíče služby
-1. V okně **StorSimple Device Manager** otevřete okno **klíče**pro **správu &gt; ** .
+1. V okně **StorSimple Device Manager** otevřete okno **klíče** pro **správu &gt;** .
     
-    ![Okno Klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
+    ![Přejít k oknu klíče](./media/storsimple-8000-manage-service/regenregkey2.png)
 
 2. V okně **klíče** klikněte na **znovu vygenerovat**.
 

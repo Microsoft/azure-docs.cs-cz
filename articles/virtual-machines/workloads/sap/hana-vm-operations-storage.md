@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 99c94528c13228e07327b529782f211ec92a08ea
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670670"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359846"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -44,7 +44,7 @@ Minimální SAP HANA certifikované podmínky pro různé typy úložišť:
 
 - Služba Azure Premium Storage podporuje službu Azure Premium Storage – **/hana/log** [akcelerátor zápisu](../../how-to-enable-write-accelerator.md). Svazek **/Hana/data** může být umístěný na Premium Storage bez použití Azure akcelerátor zápisu nebo na disku Ultra.
 - Azure Ultra disk alespoň pro svazek **/Hana/log** . Svazek **/Hana/data** můžete umístit do úložiště Premium Storage bez použití Azure akcelerátor zápisu nebo za účelem dosažení rychlejšího restartování Ultra disk
-- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data** . Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
+- Svazky **systému souborů NFS v 4.1** nad Azure NetApp Files **/Hana/log a/Hana/data**. Svazek/Hana/Shared může používat protokol NFS v3 nebo NFS verze 4.1.
 
 Některé typy úložišť lze kombinovat. Například je možné umístit **/Hana/data** do služby Premium Storage a **/Hana/log** je možné umístit do úložiště Ultra disk, aby se dosáhlo požadované nízké latence. Pokud používáte svazek založený na ANF pro **/Hana/data** , musí být  **/Hana/log** svazek založen na systému souborů NFS nad ANF. Použití systému souborů NFS nad ANF pro jeden ze svazků (jako je/Hana/data) a Azure Premium Storage nebo Ultra disk pro ostatní svazky (jako **/Hana/log** **) se nepodporuje.**
 
@@ -93,7 +93,7 @@ Doporučení pro ukládání do mezipaměti pro disky Azure Premium níže jsou 
 - **Disk s operačním systémem** – neměňte výchozí ukládání do mezipaměti, které se nastavuje v Azure v době vytváření virtuálního počítače.
 
 
-Pokud používáte LVM nebo mdadm k sestavování sad Stripe Sets na několika discích Azure Premium, je potřeba definovat velikosti pruhů. Tyto velikosti se liší mezi **/Hana/data** a **/Hana/log** . **Doporučení: jako velikost pruhů se má doporučení použít:**
+Pokud používáte LVM nebo mdadm k sestavování sad Stripe Sets na několika discích Azure Premium, je potřeba definovat velikosti pruhů. Tyto velikosti se liší mezi **/Hana/data** a **/Hana/log**. **Doporučení: jako velikost pruhů se má doporučení použít:**
 
 - 256 KB pro **/Hana/data**
 - 64 KB pro **/Hana/log**
@@ -179,8 +179,8 @@ U ostatních svazků by konfigurace vypadala takto:
 
 | Skladová položka virtuálního počítače | Paměť RAM | Max. VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/shared | Rozsah/root | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MB/s | 1 × P20 | 1 × P6 | 1 × P6 |
-| M32ls | 256 GB | 500 MB/s |  1 × P20 | 1 × P6 | 1 × P6 |
+| M32ts | 192 GiB | 500 MB/s | 1 × P15 | 1 × P6 | 1 × P6 |
+| M32ls | 256 GB | 500 MB/s |  1 × P15 | 1 × P6 | 1 × P6 |
 | M64ls | 512 GiB | 1000 MB/s | 1 × P20 | 1 × P6 | 1 × P6 |
 | M64s | 1 000 GiB | 1 000 MB/s | 1 × P30 | 1 × P6 | 1 × P6 |
 | M64ms | 1 750 GiB | 1 000 MB/s | 1 × P30 | 1 × P6 | 1 × P6 | 

@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 11/02/2020
+ms.openlocfilehash: 47aada0abe2520ba81689ca8fa17787fde847d83
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147217"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360240"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -71,11 +71,13 @@ Následující video vysvětluje řadu různých možností jímky pro typy soub
 
 **Použít databázi tempdb:** Ve výchozím nastavení Data Factory použije globální dočasnou tabulku k ukládání dat v rámci procesu načítání. Případně můžete zrušit možnost použít databázi TempDB a místo toho požádat Data Factory uložit dočasnou tabulku do uživatelské databáze nacházející se v databázi, která se používá pro tuto jímku.
 
-![Databáze](media/data-flow/tempdb.png "Databáze")
+![Použít dočasnou databázi](media/data-flow/tempdb.png "Použít dočasnou databázi")
 
 ## <a name="cache-sink"></a>Jímka mezipaměti
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
  
-*Jímka mezipaměti* je v případě, že tok dat zapisuje data do mezipaměti Spark místo do úložiště dat. V části mapování toků dat můžete na tato data v rámci stejného toku odkazovat vícekrát pomocí vyhledávání v *mezipaměti* . To je užitečné, pokud chcete odkazovat na data jako součást výrazu, ale nechcete, aby k nim explicitně připojila sloupce. Běžné příklady, kde může jímka mezipaměti pomáhat při hledání maximální hodnoty v úložišti dat a porovnání kódů chyb s databází chybových zpráv. 
+*Jímka mezipaměti* je v případě, že tok dat zapisuje data do mezipaměti Spark místo do úložiště dat. V části mapování toků dat můžete na tato data v rámci stejného toku odkazovat vícekrát pomocí vyhledávání v *mezipaměti*. To je užitečné, pokud chcete odkazovat na data jako součást výrazu, ale nechcete, aby k nim explicitně připojila sloupce. Běžné příklady, kde může jímka mezipaměti pomáhat při hledání maximální hodnoty v úložišti dat a porovnání kódů chyb s databází chybových zpráv. 
 
 Chcete-li zapisovat do jímky mezipaměti, přidejte transformaci jímky a jako typ jímky vyberte **mezipaměť** . Na rozdíl od jiných typů jímky nemusíte vybírat datovou sadu nebo propojenou službu, protože nepíšete do externího úložiště. 
 
@@ -92,7 +94,7 @@ Pokud například zadáte jeden klíčový sloupec `column1` v jímky cache s n�
 
 ## <a name="field-mapping"></a>Mapování pole
 
-Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce se budou zapisovat, na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto chování se označuje jako *automapping* .
+Podobně jako u transformace Select se můžete rozhodnout, které příchozí sloupce se budou zapisovat, na kartě **mapování** jímky. Ve výchozím nastavení jsou namapovány všechny vstupní sloupce, včetně unášených sloupců. Toto chování se označuje jako *automapping*.
 
 Po vypnutí automatického mapování můžete přidat buď pevná mapování na základě sloupců, nebo mapování na základě pravidel. Pomocí mapování založeného na pravidlech můžete psát výrazy s porovnáváním vzorů. Pevné mapování mapuje logické a fyzické názvy sloupců. Další informace o mapování na základě pravidel najdete v tématu [vzory sloupců v části mapování toku dat](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
 
@@ -101,6 +103,11 @@ Po vypnutí automatického mapování můžete přidat buď pevná mapování na
 Ve výchozím nastavení jsou data zapisována do více umyvadel v nedeterministickém pořadí. Spouštěcí modul zapisuje data paralelně jako logiku transformace a řazení jímky se může u každého spuštění lišit. Chcete-li určit přesné řazení jímky, povolte **vlastní řazení jímky** na kartě **Obecné** v toku dat. Pokud je tato možnost povolena, jsou jímky zapisovány postupně ve vzestupném pořadí.
 
 ![Snímek obrazovky, který ukazuje vlastní řazení jímky.](media/data-flow/custom-sink-ordering.png "Snímek obrazovky, který ukazuje vlastní řazení jímky.")
+
+> [!NOTE]
+> Při použití [vyhledávání uložených v mezipaměti](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder#cached-lookup)se ujistěte, že vaše řazení jímky má jímky uložené v mezipaměti nastavené na 0.
+
+![Vlastní řazení jímky](media/data-flow/cache-2.png "Vlastní řazení jímky")
 
 ## <a name="data-preview-in-sink"></a>Náhled dat v jímky
 

@@ -1,7 +1,7 @@
 ---
 title: Monitorování a zobrazování protokolů spuštění ML & metriky
 titleSuffix: Azure Machine Learning
-description: Sledujte experimenty Azure ML a zobrazte metriky spuštění, abyste vylepšili proces vytváření modelů. Pomocí widgetů a portálu Studio můžete prozkoumat stav spuštění a zobrazit záznamy spuštění.
+description: Sledujte své experimenty ML a zobrazte metriky spuštění pomocí widgetů Jupyter a Azure Machine Learning studia.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316686"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360594"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Monitorování a zobrazování protokolů a metrik spuštění ML
-
-
 
 V tomto článku se naučíte monitorovat Azure Machine Learning spouštění a zobrazovat jejich protokoly. Než budete moct zobrazit protokoly, musíte je nejdřív povolit. Další informace najdete v tématu [Povolení protokolování ve zkušebních běhůch Azure ml](how-to-track-experiments.md).
 

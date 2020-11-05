@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – WildFly v CentOS
+title: Rychlé zprovoznění – WildFly v CentOS
 description: Nasazení aplikací Java pro WildFly na virtuálním počítači s CentOS
 author: Theresa-Nguyen
 ms.author: bicnguy
@@ -8,18 +8,18 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 875d04751475d1d5236e9f15fbca585cdc9b1ab0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897681"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359914"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Rychlý Start: WildFly na CentOS 8
 
 V tomto rychlém startu se dozvíte, jak nasadit samostatný uzel WildFly virtuálního počítače CentOS 8. Je ideální pro vývoj a testování podnikových aplikací v jazyce Java v Azure. K nasazení tohoto rychlého startu není předplatné aplikačního serveru nutné.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. Pokud nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) nebo si [účet zdarma vytvořit](https://azure.microsoft.com/pricing/free-trial).
 
@@ -49,7 +49,9 @@ K zahájení samostatného serveru WildFly s jinou poskytnutou konfigurací pou�
 
 Chcete-li například použít platformu Jakarta EE Platform 8 s možnostmi clusteringu, použijte následující příkaz:
 
-`./standalone.sh --server-config=standalone-full-ha.xml`
+```
+./standalone.sh --server-config=standalone-full-ha.xml
+```
 
 Další informace o konfiguracích najdete v [příručce WildFly Začínáme](https://docs.wildfly.org/18/Getting_Started_Guide.html#wildfly-10-configurations).
 
@@ -63,15 +65,23 @@ Image Azure CentOS 8 je image virtuálního počítače s průběžnými platbam
 
 - Použití PowerShellu – nasaďte šablonu spuštěním následujících příkazů: (informace o instalaci a konfiguraci Azure PowerShell najdete v [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) ).
 
-    `New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
     
 - Použití rozhraní příkazového řádku Azure – Nasaďte tuto šablonu spuštěním následujících příkazů: (podrobnosti o instalaci a konfiguraci Command-Line rozhraní Azure pro víc platforem najdete v části [příkazový řádek Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli) ).
 
-    `az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment`
+    ```
+    az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
+    ```
 
-    `az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json`
+    ```
+    az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
+    ```
 
 - Použijte Azure Portal – nasaďte šablonu kliknutím <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwildfly-standalone-centos8%2Fazuredeploy.json" target="_blank">sem</a> a přihlaste se k Azure Portal.
 
@@ -81,7 +91,7 @@ Image Azure CentOS 8 je image virtuálního počítače s průběžnými platbam
 
 ## <a name="resource-links"></a>Odkazy na prostředky
 
-* Další informace o [WildFly 18](https://wildfly.org/18)
+* Další informace o [WildFly 18](https://docs.wildfly.org/18/)
 * Další informace o [distribucích systému Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
 * [Dokumentace k Azure pro vývojáře v jazyce Java](https://github.com/JasonFreeberg/jboss-on-app-service)
 

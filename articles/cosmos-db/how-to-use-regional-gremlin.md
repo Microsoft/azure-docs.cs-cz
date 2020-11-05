@@ -1,19 +1,19 @@
 ---
 title: Místní koncové body pro databázi Azure Cosmos DB Graph
 description: Zjistěte, jak se připojit k nejbližšímu koncovému bodu databáze grafu pro vaši aplikaci.
-author: jasonwhowell
-ms.author: jasonh
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085764"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361783"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionální koncové body pro účet Azure Cosmos DB Graph
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -30,7 +30,7 @@ Požadavek na zaplnění **dat** se dosáhne nastavením Azure Resource Manager 
 
 Databázový stroj Cosmos DBového grafu je spuštěný v několika oblastech, z nichž každý obsahuje více clusterů. Každý cluster má stovky počítačů. Cosmos DB grafu účtu DNS CNAME *AccountName.Gremlin.Cosmos.Azure.com* se přeloží na záznam DNS clusteru. Jedna IP adresa nástroje pro vyrovnávání zatížení skrývá interní topologii clusteru.
 
-Pro každou oblast účtu Cosmos DB Graph se vytvoří místní záznam DNS CNAME. Formát místního koncového bodu je *AccountName-region.Gremlin.Cosmos.Azure.com* . Segment oblasti regionálního koncového bodu se získá odebráním všech mezer z názvu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions) . Například `"East US 2"` oblast pro `"contoso"` účet globální databáze by měla *Contoso-eastus2.Gremlin.Cosmos.Azure.com* DNS CNAME
+Pro každou oblast účtu Cosmos DB Graph se vytvoří místní záznam DNS CNAME. Formát místního koncového bodu je *AccountName-region.Gremlin.Cosmos.Azure.com*. Segment oblasti regionálního koncového bodu se získá odebráním všech mezer z názvu [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions) . Například `"East US 2"` oblast pro `"contoso"` účet globální databáze by měla *Contoso-eastus2.Gremlin.Cosmos.Azure.com* DNS CNAME
 
 Klient TinkerPop Gremlin je navržený tak, aby fungoval s jediným serverem. Aplikace může pro přenos dat pro čtení a zápis použít globální zapisovatelný záznam DNS. Aplikace s podporou oblastí by měly pro čtení provozu používat místní koncový bod. Použijte místní koncový bod pro zápis do provozu pouze v případě, že je konkrétní oblast nakonfigurována pro příjem zápisu. 
 

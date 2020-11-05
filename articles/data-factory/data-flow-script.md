@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 69cc835b37d2405e15638d85309dc89d51c6d043
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91598098"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360271"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
@@ -218,6 +218,17 @@ Toto je fragment kódu, který můžete vložit do toku dat a obecně kontrolova
 ```
 split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>AutoMap schématu se posunem k výběru
+Pokud potřebujete načíst existující schéma databáze z neznámé nebo dynamické sady příchozích sloupců, je nutné namapovat sloupce na pravé straně v transformaci jímky. To je nutné pouze v případě, že načítáte existující tabulku. Přidejte tento fragment kódu před jímku, aby se vytvořila možnost automatického mapování sloupců. Ponechte mapování jímky na automatickou mapu.
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
 ```
 
 ## <a name="next-steps"></a>Další kroky

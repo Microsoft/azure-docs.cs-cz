@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312793"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359863"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Připojení k datům pomocí Azure Machine Learning studia
 
@@ -35,7 +35,7 @@ Pro prostředí prvního kódu si přečtěte následující články, které po
 * [Připojte se ke službám úložiště Azure s úložištěm dat](how-to-access-data.md). 
 * [Vytvořte Azure Machine Learning datové sady](how-to-create-register-datasets.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -50,8 +50,6 @@ Pro prostředí prvního kódu si přečtěte následující články, které po
 
 Z [těchto řešení Azure Storage](how-to-access-data.md#matrix)můžete vytvořit úložiště dat. **Pro Nepodporovaná řešení úložišť** a za účelem úspory nákladů na výstup dat během EXPERIMENTů ml je nutné [přesunout data](how-to-access-data.md#move) do podporovaného řešení úložiště Azure. [Přečtěte si další informace o úložišti dat](how-to-access-data.md). 
 
-
-
 V několika krocích se Azure Machine Learning Studiu vytvoří nové úložiště dat.
 
 > [!IMPORTANT]
@@ -60,7 +58,7 @@ V několika krocích se Azure Machine Learning Studiu vytvoří nové úložišt
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat** vyberte **úložiště** .
 1. Vyberte **+ nové úložiště dat**.
-1. Vyplňte formulář pro nové úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k naplnění tohoto formuláře.
+1. Vyplňte formulář pro vytvoření a registraci nového úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro typ úložiště Azure a typ ověřování. V [části přístup k úložišti a oprávněním](#access-validation) se dozvíte, kde najít přihlašovací údaje pro ověřování, které potřebujete k naplnění tohoto formuláře.
 
 Následující příklad ukazuje, jak formulář vypadá při vytváření **úložiště dat objektů BLOB v Azure** :
 
@@ -157,11 +155,15 @@ Klíč účtu, token SAS a informace o instančním objektu najdete na svém [Az
     * Jeho odpovídající stránka **přehledu** bude obsahovat požadované informace, jako je ID TENANTA a ID klienta.
 
 > [!IMPORTANT]
-> Z bezpečnostních důvodů možná budete muset změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS). V takovém případě nezapomeňte nové přihlašovací údaje synchronizovat s vaším pracovním prostorem a úložištěm dat, která jsou k němu připojená. Přečtěte si, jak [synchronizovat aktualizované přihlašovací údaje](how-to-change-storage-access-key.md).
+> * Pokud potřebujete změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS), nezapomeňte synchronizovat nové přihlašovací údaje s vaším pracovním prostorem a úložiště dat, která jsou k němu připojená. Přečtěte si, jak [synchronizovat aktualizované přihlašovací údaje](how-to-change-storage-access-key.md). <br> <br>
+> * Pokud zrušíte registraci a znovu zaregistrujete úložiště dat se stejným názvem, ale Azure Key Vault pro váš pracovní prostor nemusí mít povolené obnovitelné odstranění. Ve výchozím nastavení je obnovitelné odstranění povoleno pro instanci trezoru klíčů vytvořenou v pracovním prostoru, ale nemusí být povolená, pokud jste použili existující Trezor klíčů nebo máte pracovní prostor vytvořený před 15. října 2020. Informace o tom, jak povolit obnovitelné odstranění, najdete v tématu [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ### <a name="permissions"></a>Oprávnění
 
-V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
+V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Výchozí token SAS účtu nemá žádná oprávnění. 
+* Pro **přístup ke čtení** dat musí mít přihlašovací údaje pro ověřování minimální oprávnění seznam a čtení pro kontejnery a objekty. 
+
+* Pro **přístup k zápisu** dat se vyžadují taky oprávnění zapisovat a přidat.
 
 ## <a name="train-with-datasets"></a>Trénování s datovými sadami
 

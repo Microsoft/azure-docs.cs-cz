@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: 87532876551cacbd4da03b95b10c41600989a947
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186582"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359710"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -62,7 +62,7 @@ Nespravované disky virtuálních počítačů nejsou podporované v účtech, k
 
 ## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Podpora pro rekurzivní nastavení seznamů řízení přístupu (ACL)
 
-Možnost použít rekurzivní změny seznamů ACL z nadřazeného adresáře na podřízené položky je ve [verzi Public Preview](recursive-access-control-lists.md). V aktuální verzi této funkce můžete použít změny seznamů ACL pomocí PowerShellu, sady .NET SDK a sady Python SDK. Podpora není ještě dostupná pro sadu Java SDK, Azure CLI, Azure Portal nebo Průzkumník služby Azure Storage.
+Možnost použít rekurzivní změny seznamů ACL z nadřazeného adresáře na podřízené položky je všeobecně dostupná. V aktuální verzi této funkce můžete použít změny seznamů ACL pomocí PowerShellu, rozhraní příkazového řádku Azure a sady .NET, Java a Python SDK. Podpora není ještě k dispozici pro Azure Portal ani Průzkumník služby Azure Storage.
 
 <a id="known-issues-tools"></a>
 

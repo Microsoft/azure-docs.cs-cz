@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f439fcd8b2aa1c75e1aff2c6b775921beabbcddf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cf9d0aea9ab9e79a5f184a42e1bb785b6fb870a7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340545"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360084"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Hodnota TTL (Time to Live) ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ S hodnotou **Time to Live** nebo TTL Azure Cosmos DB poskytuje možnost automati
 
 Odstraněním položek, jejichž platnost vypršela, je úloha na pozadí, která využívá [jednotky žádostí o](request-units.md)převzetí služeb při selhání. Jedná se o jednotky požadavků, které nevyužily požadavky uživatelů. I po vypršení platnosti TTL dojde v případě přetížení kontejneru v případě požadavků a v případě, že není k dispozici dostatek RU, odstranění dat je zpožděno. Data se odstraní, jakmile je k dispozici dostatek ru k provedení operace odstranění. I když je odstranění dat zpožděno, data se po vypršení hodnoty TTL nevrátí žádným dotazům (pomocí rozhraní API).
 
-> Tento obsah se týká Azure Cosmos DB hodnoty TTL transakčního úložiště. Pokud hledáte hodnotu TTL pro analitycal Store, která umožňuje scénáře NoETL HTAP prostřednictvím [odkazu Azure synapse](./synapse-link.md), klikněte prosím [sem](./analytical-store-introduction.md#analytical-ttl).
+> Tento obsah se týká Azure Cosmos DB hodnoty TTL transakčního úložiště. Pokud hledáte hodnotu TTL analytického úložiště, která umožňuje scénáře NoETL HTAP prostřednictvím [odkazu Azure synapse](./synapse-link.md), klikněte [sem](./analytical-store-introduction.md#analytical-ttl).
 
 ## <a name="time-to-live-for-containers-and-items"></a>Doba provozu pro kontejnery a položky
 
@@ -34,7 +34,7 @@ Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako r
 
    - Je-li k dispozici a hodnota nastavená na "-1", bude rovna hodnotě nekonečno a položky ve výchozím nastavení nevyprší.
 
-   - Pokud je tato hodnota nastavená na nějaké číslo *"n"* , vyprší *"n"* sekund po datu poslední změny.
+   - Je-li k dispozici a hodnota je nastavena na *nenulové* číslo *"n"* – položky vyprší za *"n"* sekund po datu poslední změny.
 
 2. **Doba, po kterou se má položka** (nastavit pomocí) na živé `ttl` :
 
@@ -44,11 +44,11 @@ Hodnota TTL (Time to Live) je nastavena v sekundách a je interpretována jako r
 
 ## <a name="time-to-live-configurations"></a>Doba do živých konfigurací
 
-* Pokud je hodnota TTL nastavena na *"n"* na kontejneru, pak položky v tomto kontejneru vyprší po *n* sekundách.  Pokud jsou ve stejném kontejneru nějaké položky, které mají svůj vlastní čas v reálném čase, nastavte na hodnotu-1 (což znamená, že nevyprší platnost), nebo pokud některé položky přepsaly nastavení čas na živé s jiným číslem, vyprší platnost těchto položek na základě vlastní nakonfigurované hodnoty TTL. 
+- Pokud je hodnota TTL nastavena na *"n"* na kontejneru, pak položky v tomto kontejneru vyprší po *n* sekundách.  Pokud jsou ve stejném kontejneru nějaké položky, které mají svůj vlastní čas v reálném čase, nastavte na hodnotu-1 (což znamená, že nevyprší platnost), nebo pokud některé položky přepsaly nastavení čas na živé s jiným číslem, vyprší platnost těchto položek na základě vlastní nakonfigurované hodnoty TTL.
 
-* Pokud hodnota TTL není nastavena u kontejneru, nemá čas na živé položky v tomto kontejneru žádný vliv. 
+- Pokud hodnota TTL není nastavena u kontejneru, nemá čas na živé položky v tomto kontejneru žádný vliv.
 
-* Pokud je hodnota TTL u kontejneru nastavená na hodnotu-1, vyprší platnost položky v tomto kontejneru, která má hodnotu TTL nastavenou na n. po dobu n sekund vyprší platnost a zbývající položky nebudou vypršet.
+- Pokud je hodnota TTL u kontejneru nastavená na hodnotu-1, vyprší platnost položky v tomto kontejneru, která má hodnotu TTL nastavenou na n. po dobu n sekund vyprší platnost a zbývající položky nebudou vypršet.
 
 ## <a name="examples"></a>Příklady
 
@@ -60,10 +60,9 @@ Hodnota TTL u kontejneru je nastavená na hodnotu null (DefaultTimeToLive = null
 
 |Hodnota TTL u položky| Výsledek|
 |---|---|
-|TTL = null|    Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet (výchozí nastavení).|
-|TTL =-1   |Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet.|
-|TTL = 2000 |Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet.|
-
+|TTL = null|Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet (výchozí nastavení).|
+|TTL =-1|Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet.|
+|TTL = 2000|Hodnota TTL je zakázána. Platnost položky nebude nikdy vypršet.|
 
 ### <a name="example-2"></a>Příklad 2
 
@@ -71,10 +70,9 @@ Hodnota TTL u kontejneru je nastavená na-1 (DefaultTimeToLive =-1).
 
 |Hodnota TTL u položky| Výsledek|
 |---|---|
-|TTL = null |Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet (výchozí nastavení).|
-|TTL =-1   |Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet.|
-|TTL = 2000 |Hodnota TTL je povolena. Platnost položky vyprší po 2000 sekundách.|
-
+|TTL = null|Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet (výchozí nastavení).|
+|TTL =-1|Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet.|
+|TTL = 2000|Hodnota TTL je povolena. Platnost položky vyprší po 2000 sekundách.|
 
 ### <a name="example-3"></a>Příklad 3
 
@@ -82,12 +80,12 @@ Hodnota TTL u kontejneru je nastavená na 1000 (DefaultTimeToLive = 1000).
 
 |Hodnota TTL u položky| Výsledek|
 |---|---|
-|TTL = null|    Hodnota TTL je povolena. Platnost položky vyprší po 1000 sekundách (výchozí nastavení).|
-|TTL =-1   |Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet.|
-|TTL = 2000 |Hodnota TTL je povolena. Platnost položky vyprší po 2000 sekundách.|
+|TTL = null|Hodnota TTL je povolena. Platnost položky vyprší po 1000 sekundách (výchozí nastavení).|
+|TTL =-1|Hodnota TTL je povolena. Platnost položky nebude nikdy vypršet.|
+|TTL = 2000|Hodnota TTL je povolena. Platnost položky vyprší po 2000 sekundách.|
 
 ## <a name="next-steps"></a>Další kroky
 
 Naučte se konfigurovat dobu v provozu v následujících článcích:
 
-* [Jak nakonfigurovat dobu provozu](how-to-time-to-live.md)
+- [Jak nakonfigurovat dobu provozu](how-to-time-to-live.md)

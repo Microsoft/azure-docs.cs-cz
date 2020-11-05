@@ -4,12 +4,12 @@ description: Naučte se používat servery s podporou ARC Azure ke správě serv
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 11/04/2020
 ms.topic: overview
-ms.openlocfilehash: 2c92d7c73ab17bd5a7bba980e20baa181899eb4e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9d38b2395d922e3e2a7daec654cd73de7267ee1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349150"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360577"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Co jsou servery s podporou služby Azure Arc?
 
@@ -32,7 +32,7 @@ Když počítač připojíte k serverům s podporou ARC Azure, umožní vám pro
 - Použití [Update Management](../../automation/update-management/update-mgmt-overview.md) v Azure Automation ke správě aktualizací operačního systému pro servery s Windows a Linux
 
     > [!NOTE]
-    > V tuto chvíli není podporována povolení Update Management z vybraného serveru s povoleným ARC. V tématu [povolení Update Management ze svého účtu Automation](../../automation/update-management/enable-from-automation-account.md) můžete pochopit požadavky a povolit server.
+    > V tuto chvíli není podporována povolení Update Management přímo ze serveru s podporou ARC. V tématu [povolení Update Management ze svého účtu Automation](../../automation/update-management/enable-from-automation-account.md) můžete pochopit požadavky a povolit server.
 
 - Zahrňte servery mimo Azure pro detekci hrozeb a proaktivně monitorujte potenciální bezpečnostní hrozby pomocí [Azure Security Center](../../security-center/security-center-introduction.md).
 

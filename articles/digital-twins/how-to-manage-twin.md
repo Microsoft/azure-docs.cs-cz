@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280391"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360067"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -32,7 +32,7 @@ Tento článek se zaměřuje na správu digitálních vláken; Chcete-li pracova
 Chcete-li vytvořit dvojitou hodnotu, použijte `CreateOrReplaceDigitalTwinAsync()` metodu na klientovi služby, například:
 
 ```csharp
-await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
 ```
 
 K vytvoření digitálního vlákna musíte zadat:
@@ -55,12 +55,7 @@ Můžete inicializovat vlastnosti vlákna v době, kdy je vytvořena dvojitá vl
 
 Rozhraní API pro vytvoření vlákna přijímá objekt, který je serializován do platného popisu JSON vlastností. V tématu [*Koncepty: digitální vlákna a Dvojitá graf*](concepts-twins-graph.md) pro Popis formátu JSON pro dvojitou hodnotu. 
 
-Nejprve můžete vytvořit datový objekt, který bude představovat vlákna a jeho data vlastností, například takto:
-
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
-```
-Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
+Nejprve můžete vytvořit datový objekt, který bude představovat vlákna a data vlastností. Můžete vytvořit objekt parametru buď ručně, nebo pomocí poskytnuté pomocné třídy. Tady je příklad každé z nich.
 
 #### <a name="create-twins-using-manually-created-data"></a>Vytváření dvojitých vláken pomocí ručně vytvořených dat
 
@@ -87,7 +82,7 @@ Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Příklad:
+> `BasicDigitalTwin` objekty jsou dodávány s `Id` polem. Toto pole můžete nechat prázdné, ale pokud přidáte hodnotu ID, musí se shodovat s parametrem ID předaným `CreateOrReplaceDigitalTwinAsync()` volání. Například:
 >
 >```csharp
 >twin.Id = "myRoomId";

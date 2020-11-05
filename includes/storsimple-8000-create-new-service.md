@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507611"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360669"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 
@@ -19,9 +19,9 @@ ms.locfileid: "87507611"
 
     ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na Azure Portal **+** a potom v části **úložiště**klikněte na **řada fyzických zařízení StorSimple**.
+    Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně klikněte na Azure Portal **+** a potom v části **úložiště** klikněte na **řada fyzických zařízení StorSimple**.
 
-    ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman11.png)
+    ![Vytvoření StorSimple Device Manager 2](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
 3. V okně **Správce zařízení StorSimple** proveďte následující kroky:
 
@@ -42,8 +42,8 @@ ms.locfileid: "87507611"
 
    7. Kliknutím na **Vytvořit** vytvořte Správce zařízení StorSimple.
 
-       ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman2.png)
+       ![Vytvoření StorSimple Device Manager 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 
 Vytvoření služby trvá několik minut. Po úspěšném vytvoření služby se zobrazí oznámení a otevře se okno nové služby.
 
-![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman5.png)
+![Vytvoření StorSimple Device Manager 4](./media/storsimple-8000-create-new-service/createssdevman5.png)

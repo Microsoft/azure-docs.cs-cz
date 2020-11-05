@@ -1,7 +1,7 @@
 ---
 title: Příjem dat s využitím Azure Data Factory
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak vytvořit kanál pro příjem dat pomocí Azure Data Factory.
+description: Seznamte se s dostupnými možnostmi pro vytvoření kanálu pro příjem dat pomocí Azure Data Factory a výhod každého z nich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8cf0abdeaf3a7fe71213b6fa4f78f057bf2f92eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: 73850d8022618dd6544d19564e425288aff09771
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307369"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360628"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Příjem dat s využitím Azure Data Factory
 
-V tomto článku se dozvíte, jak vytvořit kanál pro příjem dat pomocí Azure Data Factory (ADF). Tento kanál slouží k ingestování dat pro použití s Azure Machine Learning. Azure Data Factory umožňuje snadno extrahovat, transformovat a načítat data (ETL). Jakmile se data transformují a načtou do úložiště, dají se využít ke studiu vašich modelů strojového učení.
+V tomto článku se seznámíte s dostupnými možnostmi pro vytvoření kanálu pro příjem dat pomocí Azure Data Factory (ADF). Tento kanál slouží k ingestování dat pro použití s Azure Machine Learning. Azure Data Factory umožňuje snadno extrahovat, transformovat a načítat data (ETL). Jakmile se data transformují a načtou do úložiště, dají se využít ke studiu vašich modelů strojového učení.
 
 Jednoduchou transformaci dat je možné zpracovat pomocí nativních aktivit ADF a nástrojů, jako je [tok dat](../data-factory/control-flow-execute-data-flow-activity.md). Pokud se to týče složitějších scénářů, můžete data zpracovat pomocí nějakého vlastního kódu. Například kód Python nebo R.
 

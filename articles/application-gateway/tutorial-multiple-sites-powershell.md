@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: dd73dc69fc2d40a0b4c24739dca6ad8174ad1047
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c5c5be89f8a318de8690430d4d248817961fc2
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595836"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360305"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 :::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Application Gateway více lokalit":::
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -127,7 +127,7 @@ Vytvořte první naslouchací proces pomocí [New-AzApplicationGatewayHttpListen
 
 >[!NOTE]
 > Pomocí Application Gateway nebo WAF v2 SKU můžete také nakonfigurovat až 5 názvů hostitelů na naslouchací proces a v názvu hostitele můžete použít zástupné znaky. Další informace najdete [v tématu názvy hostitelů se zástupnými znaky v naslouchací](multiple-site-overview.md#wildcard-host-names-in-listener-preview) službě.
->Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure PowerShell, je nutné použít `-HostNames` místo `-HostName` . S názvy hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `-HostNames "*.contoso.com,*.fabrikam.com"`.
+>Chcete-li použít více názvů hostitelů a zástupných znaků v naslouchací službě pomocí Azure PowerShell, je nutné použít `-HostNames` místo `-HostName` . S názvy hostitelů můžete uvést až 5 názvů hostitelů jako hodnoty oddělené čárkami. Například `-HostNames "*.contoso.com","*.fabrikam.com"`.
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `

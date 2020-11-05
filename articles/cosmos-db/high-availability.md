@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak Azure Cosmos DB poskytuje vysokou dost
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/04/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2fb8b24d5d44ced8f9e363008354acf5bc2fde40
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 58507703ca3440e73dbc41757e0bc70f56e886c3
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081871"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360152"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Jak Azure Cosmos DB poskytovat vysokou dostupnost
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -74,7 +74,7 @@ Ve výjimečných případech regionálního výpadku Azure Cosmos DB zajišťuj
 * Jakmile se výše ovlivněné oblasti zápisu napřed mění, bude automaticky dostupná jako oblast pro čtení. Můžete přejít zpátky do obnovené oblasti jako oblast zápisu. Oblasti můžete přepínat pomocí [PowerShellu, rozhraní příkazového řádku Azure nebo Azure Portal](how-to-manage-database-account.md#manual-failover). Neexistují **žádná data ani ztráta dostupnosti** před, během nebo po přepnutí oblasti zápisu a aplikace bude dál vysoce dostupná.
 
 > [!IMPORTANT]
-> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání** . Ruční převzetí služeb při selhání vyžaduje připojení mezi sekundární a primární oblastí pro zápis k dokončení kontroly konzistence, aby při převzetí služeb při selhání nedošlo ke ztrátě dat. Pokud není primární oblast k dispozici, tato kontrola konzistence nemůže být dokončena a ruční převzetí služeb při selhání nebude úspěšné, což vede ke ztrátě dostupnosti zápisu po dobu trvání regionu v oblasti výpadku.
+> Důrazně doporučujeme, abyste nakonfigurovali účty Azure Cosmos používané pro produkční úlohy, aby se **povolilo automatické převzetí služeb při selhání**. Ruční převzetí služeb při selhání vyžaduje připojení mezi sekundární a primární oblastí pro zápis k dokončení kontroly konzistence, aby při převzetí služeb při selhání nedošlo ke ztrátě dat. Pokud není primární oblast k dispozici, tato kontrola konzistence nemůže být dokončena a ruční převzetí služeb při selhání nebude úspěšné, což vede ke ztrátě dostupnosti zápisu po dobu trvání regionu v oblasti výpadku.
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Účty s více oblastmi s jednou oblastí zápisu (nevýpadek oblasti čtení)
 
@@ -100,9 +100,7 @@ Díky podpoře zón dostupnosti Azure Cosmos DB zajistí, aby se repliky v rámc
 
 Redundance zóny je *doplňková schopnost* [replikace v rámci funkce zápisu ve více oblastech](how-to-multi-master.md) . Na redundanci zóny se nedá spoléhat, aby bylo možné dosáhnout místní odolnosti. Například v případě místního výpadku nebo přístupu s nízkou latencí v rámci oblastí doporučujeme mít kromě redundance zóny více oblastí pro zápis.
 
-Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete se odhlásit k redundanci zóny bez dalších poplatků. V opačném případě se podívejte na následující poznámku týkající se cen pro podporu redundance zóny. Redundanci zóny můžete povolit ve stávající oblasti svého účtu Azure Cosmos tak, že odstraníte oblast a přidáte ji zpátky s povolenou redundancí zóny.
-
-Tato funkce je dostupná v těchto oblastech: *Velká Británie – jih, jihovýchodní Asie, východní USA, východní USA 2, střed USA, západní Evropa, západní USA 2, Japonsko – východ, Severní Evropa, Francie – střed, Austrálie – východ, východní USA 2 oblasti EUAP* .
+Když konfigurujete zápisy ve více oblastech pro účet Azure Cosmos, můžete se odhlásit k redundanci zóny bez dalších poplatků. V opačném případě se podívejte na následující poznámku týkající se cen pro podporu redundance zóny. Redundanci zóny můžete povolit ve stávající oblasti svého účtu Azure Cosmos tak, že odstraníte oblast a přidáte ji zpátky s povolenou redundancí zóny. Seznam oblastí, ve kterých se podporují zóny dostupnosti, najdete v dokumentaci [zón dostupnosti](../availability-zones/az-region.md) .
 
 Následující tabulka shrnuje schopnost vysoké dostupnosti u různých konfigurací účtu:
 

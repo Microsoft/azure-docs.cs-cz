@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: zpracování dokumentů
-ms.openlocfilehash: 287315440199c4dc3ded1298532167d37d89a877
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976143"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360866"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -24,7 +24,7 @@ V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s u
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
 
@@ -32,11 +32,19 @@ K dokončení tohoto rychlého startu musíte mít:
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" vytvořte prostředek pro rozpoznávání formulářů "  target="_blank"> vytvořením prostředku pro rozpoznávání formulářů <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro rozpoznávání formulářů budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip*). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
+* Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) (stažení a extrakci *sample_data.zip* ). Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage úrovně Standard-Performance.
 
 ## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
+
+## <a name="try-it-out"></a>Vyzkoušet
+
+Pokud si chcete vyzkoušet, jak se na nástroji pro rozpoznávání formulářů přejít online, navštivte [Web FOTT](https://fott-preview.azurewebsites.net/).
+
+> [!div class="nextstepaction"]
+> [Nástroj pro označování ukázek pro rozpoznávání formulářů](https://fott-preview.azurewebsites.net/)
+
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
 
@@ -122,7 +130,7 @@ Vyplňte pole následujícími hodnotami:
 
 * **Zobrazovaný název** – zobrazovaný název připojení.
 * **Popis** – Popis projektu.
-* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst**, **zapisovat**, **Odstranit**a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Adresa URL SAS** – adresa URL sdíleného přístupového podpisu (SAS) vašeho kontejneru Azure Blob Storage. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Nastavte čas vypršení platnosti na dobu, kdy už službu nebudete používat. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** , **zapisovat** , **Odstranit** a **seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tento formát: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
 
@@ -139,7 +147,7 @@ V nástroji pro označování ukázkových popisků se v projektech ukládají v
 * **Klíč rozhraní API** – klíč předplatného pro rozpoznávání formulářů
 * **Popis** -volitelné – Popis projektu
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Nová stránka projektu s ukázkovým nástrojem pro označování":::
 
 ## <a name="label-your-forms"></a>Popisek formulářů
 
@@ -155,7 +163,7 @@ Kliknutím na možnost **spustit optické rozpoznávání znaků u všech soubor
 
 Zobrazí také, které tabulky byly automaticky extrahovány. Extrahovanou tabulku zobrazíte kliknutím na ikonu tabulky nebo mřížky na levé straně dokumentu. V tomto rychlém startu, protože obsah tabulky se automaticky extrahuje, nebudeme označovat obsah tabulky, ale místo toho se spoléháme na automatizovanou extrakci.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Vizualizace tabulky v nástroji ukázka popisků":::
 
 ### <a name="apply-labels-to-text"></a>Použít popisky na text
 
@@ -201,7 +209,7 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Okno hlavního editoru nástroje pro ukázkové označování":::
 
 
 Postupujte podle výše uvedených kroků a označte alespoň pět vašich forem.
@@ -256,7 +264,7 @@ Kliknutím na ikonu výuka v levém podokně otevřete stránku školení. Potom
 * Seznam značek a předpokládaná přesnost na značku.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Školicí zobrazení.":::
 
 Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud je nízká, měli byste přidat další vstupní dokumenty a opakovat výše uvedené kroky. Již označené dokumenty zůstanou v indexu projektu.
 
@@ -275,7 +283,7 @@ S využitím funkce Model Compose můžete vytvořit až 100 modelů s jedním I
 
 Chcete-li vytvořit modely v nástroji pro označování ukázkových popisků, klikněte na ikonu vytvořit model (šipka vlevo) na levé straně. Na levé straně vyberte modely, které chcete vytvořit dohromady. Modely s ikonou šipky jsou již vytvořeny jako modely. Klikněte na tlačítko "vytvořit". V překryvném okně pojmenujte nový složený model a klikněte na "vytvořit". Po dokončení operace by se nový sestavený model měl zobrazit v seznamu. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Nastavení připojení nástroje Sample labeling Tool":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Zobrazení uživatelského rozhraní pro vytváření modelů.":::
 
 ---
 

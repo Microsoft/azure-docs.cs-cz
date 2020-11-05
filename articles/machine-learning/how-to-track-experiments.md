@@ -1,7 +1,7 @@
 ---
 title: Protokolování metrik a experimentů strojového učení
 titleSuffix: Azure Machine Learning
-description: Monitorujte vaše experimenty Azure ML a metriky spouštění a vylepšete proces vytváření modelů. K doplnění protokolování do trénovacího skriptu můžete použít run.log, Run.start_logging nebo ScriptRunConfig.
+description: Povolte protokolování na vaše běhy školení na ML, abyste mohli monitorovat metriky spuštění v reálném čase a pomáhat diagnostikovat chyby a upozornění.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318425"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361059"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Povolení protokolování v trénovacích spuštěních Azure ML
+# <a name="enable-logging-in-ml-training-runs"></a>Povolit protokolování zkušebních běhů v ML
 
 
 Sada SDK Azure Machine Learning Pythonu umožňuje protokolovat informace v reálném čase s využitím výchozího balíčku protokolování Pythonu a funkcí specifických pro tuto sadu. Můžete protokolovat místně a odesílat protokoly do svého pracovního prostoru na portálu.

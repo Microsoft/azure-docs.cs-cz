@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: eb784d02ec4c380d72438a1c000290fe3a4eea78
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 764342f237452d9322d44c86ebdb41691b44495d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360713"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -27,6 +27,9 @@ V tomto kurzu se naučíte, jak integrovat Amazon Web Services (AWS) s Azure Act
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+
+> [!Note]
+> Azure AD nepodporuje integraci jednotného přihlašování s AWS SSO, jedná se o jiný produkt od AWS. I když [zde](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)AWS zmiňujeme, Azure AD doporučuje zákazníkům používat integraci AWS IAM místo toho, aby bylo možné dosáhnout lepších bezpečnostních mechanismů, které používají zásady podmíněného přístupu na jednotlivých účtech, a také lépe řídit tyto aplikace.
 
 ![Diagram vztahu Azure AD a AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -49,7 +52,7 @@ Tento postup doporučujeme z následujících důvodů:
 > [!Note]
 > Ujistěte se, že používáte jenom aplikaci Galerie.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -343,7 +346,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     b. Do pole **token tajného klíče** zadejte tajný klíč uživatele AWS.
 
-    c. Vyberte **Test připojení**.
+    c. Vyberte **Testovat připojení**.
 
     d. Uložte nastavení výběrem možnosti **Uložit**.
 

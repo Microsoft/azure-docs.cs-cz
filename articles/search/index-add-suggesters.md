@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/21/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8959bf84e2b5629e03c2571fa494b96cec4f8e9
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8ae25c63e9c6e3bf6ad363cde9eb641703562811
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347637"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360015"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
-V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování* , které dokončuje částečný vstup pro celý dotaz, a *návrhy* , které vás přejdou na konkrétní shodu. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
+V Azure Kognitivní hledání je vyhledávání "Search-as-Type" povolené prostřednictvím konstrukce **návrhového** modulu přidaného do [indexu vyhledávání](search-what-is-an-index.md). Modul pro návrhy podporuje dvě prostředí: *Automatické dokončování* , které dokončuje částečný vstup pro celý dotaz na určitý termín, a *návrhy* , které pozvaní na kliknutí do konkrétní shody. Automatické dokončování vytvoří dotaz. Návrhy vytvoří vyhovující dokument.
 
 Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce C#](tutorial-csharp-type-ahead-and-suggestions.md) ilustruje obě. Automatické dokončování předpokládá potenciální termín a dokončuje "TW" s "in". Návrhy jsou zkrácené výsledky hledání, kde pole jako název hotelu představuje odpovídající dokument hledání hotelu z indexu. V případě návrhů můžete Surface libovolného pole, které poskytuje popisné informace.
 
@@ -44,6 +44,8 @@ Chcete-li vytvořit modul pro návrh, přidejte ho do [schématu indexu](/rest/a
 
 + Použijte výchozí standardní analyzátor Lucene ( `"analyzer": null` ) nebo [analyzátor jazyka](index-add-language-analyzers.md) (například `"analyzer": "en.Microsoft"` ) v poli.
 
+Pokud se pokusíte vytvořit modul pro návrh pomocí již existujících polí, rozhraní API ho zakáže. Při indexování jsou generovány předpony, pokud jsou částečné výrazy ve dvou nebo více kombinacích znaků spolu s celými čísly. Vzhledem k tomu, že existující pole již mají tokeny, bude nutné index znovu sestavit, pokud je chcete přidat do nástroje pro návrhy. Další informace najdete v tématu [Postup opětovného sestavení indexu služby Azure kognitivní hledání](search-howto-reindex.md).
+
 ### <a name="choose-fields"></a>Zvolit pole
 
 I když má modul pro návrhy několik vlastností, je primárně kolekce polí řetězců, pro které povolujete vyhledávání s možností vyhledávání. Pro každý index je k dispozici jeden modul pro návrhy, takže seznam modulu pro návrhy musí zahrnovat všechna pole, která přispívají k obsahu pro návrhy i automatické dokončování.
@@ -64,12 +66,6 @@ Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md)
 
 > [!NOTE]
 > Pokud potřebujete obejít omezení analyzátoru, například pokud potřebujete klíčové slovo nebo ngram Analyzer pro určité scénáře dotazování, měli byste pro stejný obsah použít dvě samostatná pole. Tím umožníte, aby jedno z polí mělo možnost navrhovat, zatímco druhá je možné nastavit pomocí vlastní konfigurace analyzátoru.
-
-### <a name="when-to-create-a-suggester"></a>Kdy vytvořit modul pro návrhy
-
-Nejlepším časem, jak vytvořit modul pro navrhování, je, že vytváříte také vlastní definici pole.
-
-Pokud se pokusíte vytvořit modul pro návrh pomocí již existujících polí, rozhraní API ho zakáže. Při indexování jsou generovány předpony, pokud jsou částečné výrazy ve dvou nebo více kombinacích znaků spolu s celými čísly. Vzhledem k tomu, že existující pole již mají tokeny, bude nutné index znovu sestavit, pokud je chcete přidat do nástroje pro návrhy. Další informace najdete v tématu [Postup opětovného sestavení indexu služby Azure kognitivní hledání](search-howto-reindex.md).
 
 ## <a name="create-using-rest"></a>Vytvoření pomocí REST
 
