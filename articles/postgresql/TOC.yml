@@ -1,4 +1,4 @@
-- name: Dokumentace k Azure DB for PostgreSQL
+- name: Dokumentace ke službě Azure Database for PostgreSQL
   href: index.yml
 - name: Přehled
   items:
@@ -227,7 +227,7 @@
               displayName: 'scale server, reset password'
         - name: Restartování serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
@@ -235,7 +235,7 @@
               href: howto-restart-server-powershell.md
         - name: Pravidla brány firewall
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-manage-firewall-using-portal.md
               displayName: 'firewall, portal, rules'
             - name: Azure CLI
@@ -255,6 +255,9 @@
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
               displayName: 'restore, georestore, geo-restore, outage'
+            - name: Obnovení vyřazeného serveru
+              href: howto-restore-dropped-server.md
+              displayName: 'restore server,dropped, recover'
         - name: Povolit ověřování
           items:
             - name: Vytvoření uživatelů
@@ -287,7 +290,7 @@
           displayName: 'application development, TLS'
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI
@@ -298,7 +301,7 @@
               displayName: 'application development, server parameters'
         - name: Automatické zvětšení úložiště
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-auto-grow-storage-portal.md
               displayName: 'business continuity, scale , storage'
             - name: Azure CLI
@@ -309,7 +312,7 @@
               displayName: 'business continuity, scale , storage'
         - name: Protokoly přístupu
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-logs-in-portal.md
               displayName: 'access logs, monitor'
             - name: Azure CLI
@@ -486,7 +489,7 @@
                   href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: flexible-server/howto-configure-server-parameters-using-portal.md
               displayName: 'application development, server parameters'
             - name: Azure CLI

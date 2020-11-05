@@ -147,8 +147,6 @@
       items:
         - name: Publikování na App Service
           href: howto-get-appsource-certified.md
-        - name: Publikování v galerii aplikací Azure AD
-          href: howto-app-gallery-listing.md
         - name: Publikování na řídicí panel prodejce Office 365
           href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure Access Control Service

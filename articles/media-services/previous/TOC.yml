@@ -3,8 +3,10 @@
 - name: Přehled
   href: media-services-overview.md
   items:
-    - name: Scénáře a dostupnost
+    - name: Obvyklé scénáře
       href: scenarios-and-availability.md
+    - name: Regionální dostupnost
+      href: availability-regions-v-2.md
     - name: Koncepty
       href: media-services-concepts.md
 - name: Začínáme

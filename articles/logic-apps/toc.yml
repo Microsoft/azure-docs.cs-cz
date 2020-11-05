@@ -147,6 +147,7 @@
       items:
         - name: Vytvoření účtu integrace
           href: logic-apps-enterprise-integration-create-integration-account.md
+          displayName: 'Azure CLI, az logic integration-account create, integration-account'
         - name: Obchodní partneři
           href: logic-apps-enterprise-integration-partners.md
         - name: Smlouvy

@@ -558,7 +558,7 @@
     - name: Zabezpečení virtuálních počítačů
       items:
         - name: Doporučení
-          href: security-recommendations.md
+          href: ../security-recommendations.md
         - name: Přístup za běhu
           href: ../../security-center/security-center-just-in-time.md
         - name: Použití Bastionu
@@ -666,7 +666,7 @@
         - name: Agent virtuálního počítače Azure
           href: ../extensions/agent-windows.md
         - name: Omezení spekulativního spouštění
-          href: mitigate-se.md
+          href: ../mitigate-se.md
         - name: Monitorování metadat
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
@@ -959,7 +959,7 @@
         - name: Použití akcelerovaných síťových služeb
           href: ../../virtual-network/create-vm-accelerated-networking-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Přiřazení veřejného názvu DNS
-          href: portal-create-fqdn.md
+          href: ../create-fqdn.md
         - name: Překlad DNS
           href: ../../dns/dns-for-azure-services.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Konfigurace spravovaných identit

@@ -1,4 +1,4 @@
-- name: Dokumentace k Azure DB for MySQL
+- name: Dokumentace k Azure Database for MySQL
   href: index.yml
 - name: Přehled
   items:
@@ -224,7 +224,7 @@
               displayName: 'manage, reset password, scale'
             - name: Pravidla brány firewall
               items:
-                - name: Azure Portal
+                - name: portál Azure
                   href: howto-manage-firewall-using-portal.md
                   displayName: firewall
                 - name: Azure CLI
@@ -240,7 +240,7 @@
               displayName: 'managed identity, msi'
         - name: Obnovení serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
             - name: Azure CLI
@@ -271,7 +271,7 @@
               displayName: 'development, redirection , php'
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-server-parameters.md
               displayName: server parameters
             - name: Azure CLI
@@ -286,7 +286,7 @@
               href: how-to-stop-start-server.md
         - name: Automatické zvětšení úložiště
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
             - name: Azure CLI
@@ -297,7 +297,7 @@
               displayName: 'storage, business continuity , downtime, powershell'
         - name: Protokoly pomalých dotazů
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
             - name: Azure CLI
@@ -305,7 +305,7 @@
               displayName: 'debug, slow query log , performance'
         - name: Protokoly auditu
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
             - name: Azure CLI
@@ -357,7 +357,7 @@
               displayName: 'atp, advanced thread, security'
             - name: Virtual Network
               items:
-                - name: Azure Portal
+                - name: portál Azure
                   href: howto-manage-vnet-using-portal.md
                   displayName: 'vnet, virtual network, service endpoint'
                 - name: Azure CLI
@@ -394,7 +394,7 @@
               displayName: 'security, public access'
         - name: Restartování serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: howto-restart-server-portal.md
               displayName: restart
             - name: Azure CLI
@@ -522,7 +522,7 @@
                   href: flexible-server/how-to-connect-tls-ssl.md
         - name: Konfigurace parametrů serveru
           items:
-            - name: Azure Portal
+            - name: portál Azure
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
             - name: Azure CLI
