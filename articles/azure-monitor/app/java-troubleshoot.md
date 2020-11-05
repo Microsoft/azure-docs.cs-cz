@@ -4,14 +4,18 @@ description: Průvodce odstraňováním potíží – monitorování živých ap
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372514"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379532"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Řešení potíží a otázky a odpovědi pro Application Insights pro Java SDK
+
+> [!IMPORTANT]
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
 
 ## <a name="build-errors"></a>Chyby sestavení
@@ -85,7 +89,7 @@ Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 **Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?**
 
 * [Získejte klíč instrumentace nového prostředku.][java]
-* Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure**, **nakonfigurujte Application Insights**a změňte klíč.
+* Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure** , **nakonfigurujte Application Insights** a změňte klíč.
 * Pokud jste klíč instrumentace nakonfigurovali jako proměnnou prostředí, aktualizujte hodnotu proměnné prostředí pomocí New iKey.
 * V opačném případě aktualizujte klíč v ApplicationInsights.xml ve složce Resources v projektu.
 

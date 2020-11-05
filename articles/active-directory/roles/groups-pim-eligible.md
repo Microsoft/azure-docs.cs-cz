@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23243de192683a4811eb569b17425701381c4cd1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375973"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379158"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Přiřazení role ke skupině pomocí Privileged Identity Management
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak můžete přiřadit roli Azure Active Directory (Az
 
 1. Přihlaste se k [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) jako správce privilegované role nebo globální správce ve vaší organizaci.
 
-1. Vyberte **Privileged Identity Management**  >  **role Azure AD**role  >  **Roles**  >  **Přidat přiřazení** .
+1. Vyberte **Privileged Identity Management**  >  **role Azure AD** role  >  **Roles**  >  **Přidat přiřazení** .
 
 1. Vyberte roli a potom vyberte skupinu. Zobrazují se jenom skupiny, které mají nárok na přiřazení role (skupiny s přiřazením rolí), ne všechny skupiny.
 
@@ -41,7 +41,7 @@ Tento článek popisuje, jak můžete přiřadit roli Azure Active Directory (Az
 
     ![Vyberte uživatele, kterému přiřadíte roli.](./media/groups-pim-eligible/set-assignment-settings.png)
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 ### <a name="download-the-azure-ad-preview-powershell-module"></a>Stažení modulu Azure AD Preview PowerShell
 
@@ -103,7 +103,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
 - [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](groups-faq-troubleshooting.md)
 - [Konfigurace nastavení role správce Azure AD v Privileged Identity Management](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [Přiřazení rolí prostředků Azure v Privileged Identity Management](../privileged-identity-management/pim-resource-roles-assign-roles.md)

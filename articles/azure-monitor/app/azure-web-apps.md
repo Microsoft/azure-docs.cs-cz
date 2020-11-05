@@ -4,12 +4,12 @@ description: Sledování výkonu aplikací pro Azure App Services. Zatížení g
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875599"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377798"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -100,7 +100,8 @@ V App Service webové aplikace v části **Nastavení**  >  **Vyberte Applicatio
 
 # <a name="java"></a>[Java](#tab/java)
 
-Webové aplikace založené na jazyce Java App Service aktuálně nepodporují monitorování na základě automatického agenta nebo rozšíření. Chcete-li povolit monitorování aplikace v jazyce Java, je nutné [aplikaci ručně instrumentovat](./java-get-started.md).
+Postupujte podle pokynů pro [Application Insights agenta java 3,0](./java-in-process-agent.md) a povolte tak automatickou instrumentaci pro aplikace v jazyce Java, aniž byste museli měnit kód.
+Automatická integrace ještě není k dispozici pro App Service.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -115,7 +116,7 @@ Webové aplikace založené na Pythonu App Service v současné době nepodporuj
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
 * **Nastavení** **>** **Konfigurace**
-   * V části nastavení aplikace vytvořte **nové nastavení aplikace**:
+   * V části nastavení aplikace vytvořte **nové nastavení aplikace** :
 
      Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -127,12 +128,12 @@ Chcete-li zakázat monitorování na straně klienta, buď z nastavení aplikace
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí**bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
+Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí** bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
 
 Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
 * **Nastavení** **>** **Konfigurace**
-   * V části nastavení aplikace vytvořte **nové nastavení aplikace**:
+   * V části nastavení aplikace vytvořte **nové nastavení aplikace** :
 
      Jméno: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -350,7 +351,8 @@ Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
 > [!NOTE]
-> Aplikace Java se podporují jenom v Azure App Services prostřednictvím ruční instrumentace založené na sadě SDK, a proto se tyto kroky nevztahují na tyto scénáře.
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+
 
 1. Ověřte, že je aplikace monitorována prostřednictvím `ApplicationInsightsAgent` .
     * Ověřte, že `ApplicationInsightsAgent_EXTENSION_VERSION` nastavení aplikace je nastavené na hodnotu ~ 2.

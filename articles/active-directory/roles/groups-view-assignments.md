@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e578c90a05085df33c2d547402256cfc38229aa3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f8fdfd99b2ef5c1578bc9e87534461d68398c9f6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375955"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378274"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>Zobrazit role přiřazené ke skupině v Azure Active Directory
 
@@ -32,7 +32,7 @@ Tato část popisuje, jak můžete zobrazit role přiřazené ke skupině pomoc�
 
    ![Zobrazit všechny role přiřazené k vybrané skupině](./media/groups-view-assignments/view-assignments.png)
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 ### <a name="get-object-id-of-the-group"></a>Získat ID objektu skupiny
 
@@ -62,5 +62,5 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
 - [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](groups-faq-troubleshooting.md)

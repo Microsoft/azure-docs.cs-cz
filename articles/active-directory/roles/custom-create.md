@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097987"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379243"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -31,11 +31,11 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Vytvoření nové vlastní role pro udělení přístupu pro správu registrací aplikací
 
 1. Přihlaste se do [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
-1. Vyberte **Azure Active Directory**  >  **role a správci**  >  **novou vlastní roli** .
+1. Vyberte **Azure Active Directory**  >  **role a správci**  >  **novou vlastní roli**.
 
    ![Vytvoření nebo úprava rolí na stránce role a správci](./media/custom-create/new-custom-role.png)
 
-1. Na kartě **základy** zadejte název a popis role a pak klikněte na **Další** .
+1. Na kartě **základy** zadejte název a popis role a pak klikněte na **Další**.
 
    ![zadání názvu a popisu vlastní role na kartě základy](./media/custom-create/basics-tab.png)
 
@@ -44,8 +44,8 @@ Vlastní role se dají vytvořit na kartě [role a správci](https://portal.azur
 
       ![Na kartě oprávnění vyberte oprávnění pro vlastní roli.](./media/custom-create/permissions-tab.png)
 
-   1. Potom na panelu hledání zadejte "základní", vyberte `microsoft.directory/applications/basic/update` oprávnění a pak klikněte na **Další** .
-1. Na kartě **Revize + vytvořit** Zkontrolujte oprávnění a vyberte **vytvořit** .
+   1. Potom na panelu hledání zadejte "základní", vyberte `microsoft.directory/applications/basic/update` oprávnění a pak klikněte na **Další**.
+1. Na kartě **Revize + vytvořit** Zkontrolujte oprávnění a vyberte **vytvořit**.
 
 Vaše vlastní role se zobrazí v seznamu dostupných rolí, které se mají přiřadit.
 
@@ -169,12 +169,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 Podobně jako předdefinované role jsou vlastní role ve výchozím rozsahu přiřazeny ve výchozím oboru pro udělení oprávnění k přístupu ke všem registrům aplikací ve vaší organizaci. Ale na rozdíl od integrovaných rolí se můžou vlastní role přiřadit taky v oboru jednoho prostředku Azure AD. To vám umožní dát uživateli oprávnění aktualizovat přihlašovací údaje a základní vlastnosti pro jednu aplikaci, aniž by museli vytvořit druhou vlastní roli.
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí oprávnění vývojáře aplikace v organizaci Azure AD.
-1. Vyberte **Registrace aplikací** .
+1. Vyberte **Registrace aplikací**.
 1. Vyberte registraci aplikace, ke které udělujete přístup pro správu. Možná budete muset vybrat **všechny aplikace** , abyste viděli úplný seznam registrací aplikací ve vaší organizaci Azure AD.
 
     ![Vyberte registraci aplikace jako obor prostředku pro přiřazení role.](./media/custom-create/appreg-all-apps.png)
 
-1. V části registrace aplikace vyberte **role a správci** . Pokud jste ho ještě nevytvořili, postupujte podle pokynů v [předchozím postupu](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
+1. V části registrace aplikace vyberte **role a správci**. Pokud jste ho ještě nevytvořili, postupujte podle pokynů v [předchozím postupu](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations).
 
 1. Výběrem role otevřete stránku **přiřazení** .
 1. Vyberte **Přidat přiřazení** a přidejte uživatele. Uživateli se udělí jakákoli oprávnění jenom pro vybranou registraci aplikace.

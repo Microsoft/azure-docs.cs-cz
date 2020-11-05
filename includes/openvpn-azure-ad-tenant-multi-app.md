@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: df3d1c34fe0fc045e829c2ea9166664f06fd3127
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116785"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375814"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. vytvoření tenanta Azure AD
 
@@ -47,7 +47,7 @@ Zaregistrujte klienta VPN v tenantovi Azure AD.
 
 4. Pak poskytněte souhlas správce. Zkopírujte a vložte adresu URL, která se vztahuje k umístění vašeho nasazení, do adresního řádku v prohlížeči:
 
-    Public
+    Veřejná
 
     ```
     https://login.microsoftonline.com/common/oauth2/authorize?client_id=41b23e61-6c1e-4545-b367-cd054e0ed4b4&response_type=code&redirect_uri=https://portal.azure.com&nonce=1234&prompt=admin_consent
@@ -77,13 +77,13 @@ Zaregistrujte klienta VPN v tenantovi Azure AD.
 
 5. Pokud se zobrazí výzva, vyberte **globální účet správce** .
 
-    ![ID adresáře](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
+    ![ID adresáře 2](./media/openvpn-azure-ad-tenant-multi-app/pick.png)
 
 6. Po zobrazení výzvy vyberte **přijmout** .
 
     ![Snímek obrazovky se zobrazeným oknem s oprávněním pro zprávy, které se požaduje, přijměte vaší organizaci a informace o žádosti.](./media/openvpn-azure-ad-tenant-multi-app/accept.jpg)
 
-7. V rámci Azure AD se v **podnikových aplikacích**zobrazí uvedená služba **Azure VPN** .
+7. V rámci Azure AD se v **podnikových aplikacích** zobrazí uvedená služba **Azure VPN** .
 
      ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azure-vpn.png)
 
@@ -93,11 +93,11 @@ V tomto kroku zaregistrujete další aplikace pro různé uživatele a skupiny.
 
 1. V Azure Active Directory klikněte na **Registrace aplikací** a pak na **+ Nová registrace**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
+    ![Azure VPN 2](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
 
-2. Na stránce **zaregistrovat aplikaci** zadejte **název**. Vyberte požadované **typy účtů**a pak klikněte na **zaregistrovat**.
+2. Na stránce **zaregistrovat aplikaci** zadejte **název**. Vyberte požadované **typy účtů** a pak klikněte na **zaregistrovat**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
+    ![Azure VPN 3](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
 
 3. Po registraci nové aplikace klikněte v okně aplikace na **vystavení rozhraní API** .
 
@@ -105,13 +105,13 @@ V tomto kroku zaregistrujete další aplikace pro různé uživatele a skupiny.
 
 5. Ponechte výchozí **identifikátor URI ID aplikace**. Klikněte na **Uložit a pokračujte**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
+    ![Azure VPN 4](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
 6. Vyplňte požadovaná pole a zajistěte, aby byl **stav** **povolen**. Klikněte na **Přidat obor**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
+    ![Azure VPN 5](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 
-7. Klikněte na **zveřejnit rozhraní API** a potom na **+ Přidat klientskou aplikaci**.  V poli **ID klienta**zadejte v závislosti na cloudu následující hodnoty:
+7. Klikněte na **zveřejnit rozhraní API** a potom na **+ Přidat klientskou aplikaci**.  V poli **ID klienta** zadejte v závislosti na cloudu následující hodnoty:
 
     - Zadejte **41b23e61-6c1e-4545-B367-cd054e0ed4b4** pro Azure **Public** .
     - Zadejte **51bb15d4-3a4f-4ebf-9dca-40096fe32426** pro **vládu** Azure.
@@ -120,11 +120,11 @@ V tomto kroku zaregistrujete další aplikace pro různé uživatele a skupiny.
 
 8. Klikněte na **Přidat aplikaci**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app5.png)
+    ![Azure VPN 6](./media/openvpn-azure-ad-tenant-multi-app/app5.png)
 
 9. Zkopírujte **ID aplikace (klienta)** ze stránky **Přehled** . Tyto informace budete potřebovat ke konfiguraci bran sítě VPN.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app6.png)
+    ![Azure VPN 7](./media/openvpn-azure-ad-tenant-multi-app/app6.png)
 
 10. Opakujte postup v části [registrace dalších aplikací](#register-apps) a vytvořte tolik aplikací, které jsou potřeba pro váš požadavek na zabezpečení. Každá aplikace bude přidružena k bráně VPN a může mít jinou skupinu uživatelů. K bráně může být přidružená jenom jedna aplikace.
 
@@ -132,14 +132,14 @@ V tomto kroku zaregistrujete další aplikace pro různé uživatele a skupiny.
 
 Přiřaďte uživatele k vašim aplikacím.
 
-1. V části **Azure AD – > podnikové aplikace**vyberte nově registrovanou aplikaci a klikněte na **vlastnosti**. Zajistěte, aby bylo **přiřazení uživatele vyžadováno?** je nastaveno na **Ano**. Klikněte na **Uložit**.
+1. V části **Azure AD – > podnikové aplikace** vyberte nově registrovanou aplikaci a klikněte na **vlastnosti**. Zajistěte, aby bylo **přiřazení uživatele vyžadováno?** je nastaveno na **Ano**. Klikněte na **Uložit**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
+    ![Azure VPN 8](./media/openvpn-azure-ad-tenant-multi-app/user2.png)
 
-2. Na stránce aplikace klikněte na **Uživatelé a skupiny**a pak klikněte na **+ Přidat uživatele**.
+2. Na stránce aplikace klikněte na **Uživatelé a skupiny** a pak klikněte na **+ Přidat uživatele**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
+    ![Azure VPN 9](./media/openvpn-azure-ad-tenant-multi-app/user3.png)
 
-3. V části **Přidat přiřazení**klikněte na **Uživatelé a skupiny**. Vyberte uživatele, kterým chcete mít přístup k této aplikaci VPN. Klikněte na **Vybrat**.
+3. V části **Přidat přiřazení** klikněte na **Uživatelé a skupiny**. Vyberte uživatele, kterým chcete mít přístup k této aplikaci VPN. Klikněte na **Vybrat**.
 
-    ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)
+    ![Azure VPN 10](./media/openvpn-azure-ad-tenant-multi-app/user4.png)

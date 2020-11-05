@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427325"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377135"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
@@ -28,8 +28,8 @@ ITSMC používá přihlašovací údaje uživatelského jména a hesla. Zabezpe�
 
 Architektura zabezpečeného exportu zavádí následující nové funkce:
 
-* **Nová skupina akcí**: výstrahy se odesílají do nástroje ITSM prostřednictvím skupiny akcí zabezpečeného Webhooku místo skupiny akcí ITSM, kterou ITSMC používá.
-* **Ověřování Azure AD**: ověřování probíhá přes Azure AD místo přihlašovacích údajů uživatelského jména a hesla.
+* **Nová skupina akcí** : výstrahy se odesílají do nástroje ITSM prostřednictvím skupiny akcí zabezpečeného Webhooku místo skupiny akcí ITSM, kterou ITSMC používá.
+* **Ověřování Azure AD** : ověřování probíhá přes Azure AD místo přihlašovacích údajů uživatelského jména a hesla.
 
 ## <a name="secure-export-data-flow"></a>Tok dat zabezpečeného exportu
 
@@ -49,9 +49,9 @@ Postup pro tok dat zabezpečeného exportu je následující:
 
 Hlavní výhodou integrace jsou tyto:
 
-* **Lepší ověřování**: Azure AD poskytuje bezpečnější ověřování bez časových limitů, které se běžně vyskytují v ITSMC.
-* **Upozornění vyřešená v nástroji ITSM**: výstrahy metrik implementují stavy "Trigger" a "Vyřešeno". Při splnění podmínky je stav výstrahy "aktivováno". Pokud podmínka není splněna, stav výstrahy bude "Vyřešeno". V ITSMC se výstrahy nedají automaticky vyřešit. V případě zabezpečeného exportu převedený stav vyřešen do nástroje ITSM, a proto je automaticky aktualizován.
-* **[Běžné schéma výstrah](./alerts-common-schema.md)**: v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu existuje společné schéma pro všechny typy výstrah. Toto společné schéma obsahuje CI pro všechny typy výstrah. Všechny typy výstrah budou moci navazovat svou CI pomocí CMDB.
+* **Lepší ověřování** : Azure AD poskytuje bezpečnější ověřování bez časových limitů, které se běžně vyskytují v ITSMC.
+* **Upozornění vyřešená v nástroji ITSM** : výstrahy metrik implementují stavy "Trigger" a "Vyřešeno". Při splnění podmínky je stav výstrahy "aktivováno". Pokud podmínka není splněna, stav výstrahy bude "Vyřešeno". V ITSMC se výstrahy nedají automaticky vyřešit. V případě zabezpečeného exportu převedený stav vyřešen do nástroje ITSM, a proto je automaticky aktualizován.
+* **[Běžné schéma výstrah](./alerts-common-schema.md)** : v ITSMC se schéma datové části výstrahy liší v závislosti na typu výstrahy. V zabezpečeném exportu existuje společné schéma pro všechny typy výstrah. Toto společné schéma obsahuje CI pro všechny typy výstrah. Všechny typy výstrah budou moci navazovat svou CI pomocí CMDB.
 
 Začněte používat nástroj konektoru ITSM s těmito kroky:
 
@@ -60,6 +60,7 @@ Začněte používat nástroj konektoru ITSM s těmito kroky:
 3. Nakonfigurujte své partnerské prostředí. 
 
 Zabezpečený export podporuje připojení pomocí následujících ITSM nástrojů:
+* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
 * [Helix BMC](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Zaregistrovat s Azure Active Directory
@@ -102,11 +103,31 @@ Konfigurace obsahuje 2 kroky:
 1. Získejte identifikátor URI pro definici zabezpečeného exportu.
 2. Definice podle toku nástroje ITSM
 
+
+### <a name="connect-servicenow-to-azure-monitor"></a>Připojení ServiceNow k Azure Monitor
+
+Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow a zabezpečený export v Azure.
+
+### <a name="prerequisites"></a>Předpoklady
+
+Ujistěte se, že jste splnili následující požadavky:
+
+* Služba Azure AD je zaregistrovaná.
+* Máte podporovanou verzi ServiceNow Event Management-ITOM (verze Orlandu nebo novější).
+
+### <a name="configure-the-servicenow-connection"></a>Konfigurace připojení ServiceNow
+
+1. <instance name> pro definici zabezpečeného exportu použijte odkaz <https://. service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor> identifikátor URI.
+
+2. Postupujte podle pokynů podle verze:
+   * [Paříž](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlandu](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>Připojení řadiče pro správu základní desky Helix k Azure Monitor
 
 V následujících částech najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Ujistěte se, že jste splnili následující požadavky:
 
@@ -135,15 +156,18 @@ Ujistěte se, že jste splnili následující požadavky:
    4. Vyberte **Konfigurace**.
    5. Vyberte **Přidat konfiguraci nového připojení** .
    6. Vyplňte informace pro konfigurační oddíl:
-      - **Název**: Udělejte si vlastní.
-      - **Typ autorizace**: **žádné**
-      - **Popis**: Udělejte si vlastní.
-      - **Lokalita**: **Cloud**
-      - **Počet instancí**: **2**, výchozí hodnota.
-      - Pokud chcete povolit použití, **zaškrtněte políčko**: výchozí.
+      - **Název** : Udělejte si vlastní.
+      - **Typ autorizace** : **žádné**
+      - **Popis** : Udělejte si vlastní.
+      - **Lokalita** : **Cloud**
+      - **Počet instancí** : **2** , výchozí hodnota.
+      - Pokud chcete povolit použití, **zaškrtněte políčko** : výchozí.
       - ID tenanta Azure a ID aplikace Azure jsou pořízené z aplikace, kterou jste definovali dříve.
 
 ![Snímek obrazovky, který zobrazuje konfiguraci řadiče pro správu základní desky.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
+
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

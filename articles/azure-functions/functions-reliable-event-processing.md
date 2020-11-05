@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287234"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379583"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
@@ -50,7 +50,7 @@ Azure Functions spotřebovává události centra událostí při procházení n�
 
 Toto chování odhalí několik důležitých bodů:
 
-- *Neošetřené výjimky mohou způsobit ztrátu zpráv.* Spuštění, které způsobí výjimku, bude pokračovat v průběhu ukazatele.  Nastavení [zásady opakování](./functions-bindings-error-pages.md#retry-policies) bude zpozdit průběh ukazatele, dokud nebude vyhodnocena celá zásada opakování.
+- *Neošetřené výjimky mohou způsobit ztrátu zpráv.* Spuštění, které způsobí výjimku, bude pokračovat v průběhu ukazatele.  Nastavení [zásady opakování](./functions-bindings-error-pages.md#retry-policies-preview) bude zpozdit průběh ukazatele, dokud nebude vyhodnocena celá zásada opakování.
 - *Funkce garantuje alespoň jedno doručení.* Váš kód a závislé systémy budou pravděpodobně potřebovat [účet pro skutečnost, že stejnou zprávu lze přijmout dvakrát](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Zpracování výjimek
@@ -59,7 +59,7 @@ Obecně platí, že každá funkce by měla obsahovat [blok try/catch](./functio
 
 ### <a name="retry-mechanisms-and-policies"></a>Mechanismy a zásady opakování
 
-Některé výjimky jsou přechodným charakterem a po opakovaném pokusu o operaci později se nezobrazují. Z tohoto důvodu je prvním krokem vždy opakování operace.  Můžete využít [zásady opakování](./functions-bindings-error-pages.md#retry-policies) aplikace Function App nebo vytvořit logiku opakování v rámci provádění funkce.
+Některé výjimky jsou přechodným charakterem a po opakovaném pokusu o operaci později se nezobrazují. Z tohoto důvodu je prvním krokem vždy opakování operace.  Můžete využít [zásady opakování](./functions-bindings-error-pages.md#retry-policies-preview) aplikace Function App nebo vytvořit logiku opakování v rámci provádění funkce.
 
 Zavedení chování pro zpracování chyb do vašich funkcí vám umožní definovat základní i pokročilé zásady opakování. Můžete například implementovat zásadu, která následuje za pracovním postupem, a to podle následujících pravidel:
 

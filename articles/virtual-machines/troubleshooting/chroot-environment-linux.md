@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.date: 05/05/2020
 ms.author: kaib
-ms.openlocfilehash: 5d803acc7f2287d0b88791d85fa876f89e4a0955
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 0d8a030061ef6aa848344152edaa3267ad916e2a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332181"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377934"
 ---
 # <a name="chroot-environment-in-a-linux-rescue-vm"></a>Prostředí chroot na záchranném virtuálním počítači se systémem Linux
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -53,17 +53,17 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount /dev/sdc1 /rescue
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/sdc1 /rescue
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -71,16 +71,16 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -101,7 +101,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -120,17 +120,17 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -138,16 +138,16 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -171,7 +171,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -190,9 +190,9 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujícího příkazu aktivujte skupinu logických svazků:
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk`K načtení názvů LVM použijte příkaz:
@@ -221,23 +221,23 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/mapper/rootvg-optlv /rescue/opt
-      #mount /dev/sdc2 /rescue/boot/
-      #mount /dev/sdc1 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/mapper/rootvg-optlv /rescue/opt
+      mount /dev/sdc2 /rescue/boot/
+      mount /dev/sdc1 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -245,22 +245,22 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue/opt
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue/opt
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -284,7 +284,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -303,9 +303,9 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujícího příkazu aktivujte skupinu logických svazků:
 
       ```
-      #vgscan --mknodes
-      #vgchange -ay
-      #lvscan
+      vgscan --mknodes
+      vgchange -ay
+      lvscan
       ```
 
    1. `lsblk`K načtení názvů LVM použijte příkaz:
@@ -333,22 +333,22 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount /dev/mapper/rootvg-rootlv /rescue
-      #mount /dev/mapper/rootvg-varlv /rescue/var
-      #mount /dev/mapper/rootvg-homelv /rescue/home
-      #mount /dev/mapper/rootvg-usrlv /rescue/usr
-      #mount /dev/mapper/rootvg-tmplv /rescue/tmp
-      #mount /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount /dev/mapper/rootvg-rootlv /rescue
+      mount /dev/mapper/rootvg-varlv /rescue/var
+      mount /dev/mapper/rootvg-homelv /rescue/home
+      mount /dev/mapper/rootvg-usrlv /rescue/usr
+      mount /dev/mapper/rootvg-tmplv /rescue/tmp
+      mount /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -356,21 +356,21 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue/home
-      #umount /rescue/var
-      #umount /rescue/usr
-      #umount /rescue/tmp
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue/home
+      umount /rescue/var
+      umount /rescue/usr
+      umount /rescue/tmp
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -391,7 +391,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -410,18 +410,18 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc2 /rescue
-      #mount -o nouuid /dev/sdc1 /rescue/boot/
-      #mount /dev/sdc15 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc2 /rescue
+      mount -o nouuid /dev/sdc1 /rescue/boot/
+      mount /dev/sdc15 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      ##chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -429,17 +429,17 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]
@@ -460,7 +460,7 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
 
    1. K VIRTUÁLNÍmu počítači se dostanete jako uživatel root pomocí následujícího příkazu:
 
-      `#sudo su -`
+      `sudo su -`
 
    1. Najděte disk pomocí `dmesg` (metoda, kterou použijete ke zjištění nového disku, se může lišit). Následující příklad používá **dmesg** k filtrování na discích **SCSI** :
 
@@ -479,18 +479,18 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pro přístup k prostředí chroot použijte následující příkazy:
 
       ```
-      #mkdir /rescue
-      #mount -o nouuid /dev/sdc4 /rescue
-      #mount -o nouuid /dev/sdc3 /rescue/boot/
-      #mount /dev/sdc2 /rescue/boot/efi
-      #cd /rescue
+      mkdir /rescue
+      mount -o nouuid /dev/sdc4 /rescue
+      mount -o nouuid /dev/sdc3 /rescue/boot/
+      mount /dev/sdc2 /rescue/boot/efi
+      cd /rescue
 
-      #mount -t proc proc proc
-      #mount -t sysfs sys sys/
-      #mount -o bind /dev dev/
-      #mount -o bind /dev/pts dev/pts/
-      #mount -o bind /run run/
-      #chroot /rescue
+      mount -t proc proc proc
+      mount -t sysfs sys sys/
+      mount -o bind /dev dev/
+      mount -o bind /dev/pts dev/pts/
+      mount -o bind /run run/
+      chroot /rescue
       ```
 
    1. Řešení potíží s prostředím chroot
@@ -498,17 +498,17 @@ Tento článek popisuje, jak řešit potíže s prostředím chroot v záchrann�
    1. Pomocí následujících příkazů ukončete prostředí chroot:
 
       ```
-      #exit
+      exit
 
-      #umount /rescue/proc/
-      #umount /rescue/sys/
-      #umount /rescue/dev/pts
-      #umount /rescue/dev/
-      #umount /rescue/run
-      #cd /
-      #umount /rescue/boot/efi
-      #umount /rescue/boot
-      #umount /rescue
+      umount /rescue/proc/
+      umount /rescue/sys/
+      umount /rescue/dev/pts
+      umount /rescue/dev/
+      umount /rescue/run
+      cd /
+      umount /rescue/boot/efi
+      umount /rescue/boot
+      umount /rescue
       ```
 
       > [!NOTE]

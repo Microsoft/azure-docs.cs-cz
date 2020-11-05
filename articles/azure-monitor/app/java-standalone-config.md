@@ -1,29 +1,32 @@
 ---
-title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insights
-description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
+title: Možnosti konfigurace-Azure Monitor Application Insights Java
+description: Možnosti konfigurace pro Azure Monitor Application Insights Java
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 36f2add41457d1d82b0efd6c6804496018c85225
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 710347061f072fe66987d88852045986c00812c8
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215259"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377679"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
+# <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Možnosti konfigurace pro Azure Monitor Application Insights Java
 
-
+> [!WARNING]
+> **Pokud upgradujete z verze 3,0 Preview**
+>
+> Přečtěte si pečlivě všechny níže uvedené možnosti konfigurace, protože se úplně změnila struktura JSON, kromě samotného názvu souboru, který všechno byl malý.
 
 ## <a name="connection-string-and-role-name"></a>Připojovací řetězec a název role
 
+Mezi nejběžnějším nastavením potřebnými k tomu, aby bylo možné začít, je připojovací řetězec a název role:
+
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -34,14 +37,14 @@ Další podrobnosti a další možnosti konfigurace najdete níže.
 
 ## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje a že se `ApplicationInsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.5.jar` .
+Ve výchozím nastavení Application Insights Java 3,0 očekává, že se konfigurační soubor pojmenuje a že se `applicationinsights.json` nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0.jar` .
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` Proměnná prostředí nebo
-* `applicationinsights.configurationFile` Systémová vlastnost Java
+* `applicationinsights.configuration.file` Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.5.jar` se nachází.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -52,9 +55,7 @@ To je povinné. Připojovací řetězec najdete v prostředku Application Insigh
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
-  }
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
 }
 ```
 
@@ -70,10 +71,8 @@ Pokud chcete nastavit název cloudové role:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {   
-      "roleName": "my cloud role name"
-    }
+  "role": {   
+    "name": "my cloud role name"
   }
 }
 ```
@@ -90,43 +89,118 @@ Pokud chcete nastavit instanci cloudové role na jinou hodnotu než název poč�
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleInstance": "my cloud role instance"
-    }
+  "role": {
+    "name": "my cloud role name",
+    "instance": "my cloud role instance"
   }
 }
 ```
 
 Instanci cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_INSTANCE` .
 
-## <a name="application-log-capture"></a>Zachycení protokolu aplikace
+## <a name="sampling"></a>Vzorkování
 
-Application Insights Java 3,0 Preview automaticky zachycuje protokolování aplikací prostřednictvím log4j, Logback a Java. util. Logging.
+Vzorkování je užitečné, pokud potřebujete snížit náklady.
+Vzorkování se provádí jako funkce na ID operace (označované také jako ID trasování), takže stejné ID operace bude mít vždycky stejné rozhodnutí o vzorkování. Tím zajistíte, že nebudete mít k disukázce části distribuované transakce v době, kdy ostatní části jsou ukázkové.
 
-Ve výchozím nastavení bude zachytávání veškerého protokolování provedené na `INFO` úrovni nebo výše.
+Pokud například nastavíte vzorkování na 10%, zobrazí se vám pouze 10% vašich transakcí, ale každá z těchto 10% bude mít kompletní podrobnosti transakce na konci.
 
-Pokud chcete změnit tuto prahovou hodnotu:
+Tady je příklad, jak nastavit vzorkování pro zachycení přibližně **1/3 všech transakcí** – Ujistěte se prosím, že jste nastavili vzorkovací frekvenci, která je pro váš případ použití správná:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "logging": {
-          "threshold": "WARN"
-        }
-      }
+  "sampling": {
+    "percentage": 33.333
+  }
+}
+```
+
+Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
+
+> [!NOTE]
+> Pro procento vzorkování vyberte procento, které je blízko 100/N, kde N je celé číslo. V současné době vzorkování nepodporují jiné hodnoty.
+
+## <a name="jmx-metrics"></a>JMX metriky
+
+Pokud chcete shromáždit některé další JMX metriky:
+
+```json
+{
+  "jmxMetrics": [
+    {
+      "name": "JVM uptime (millis)",
+      "objectName": "java.lang:type=Runtime",
+      "attribute": "Uptime"
+    },
+    {
+      "name": "MetaSpace Used",
+      "objectName": "java.lang:type=MemoryPool,name=Metaspace",
+      "attribute": "Usage.used"
+    }
+  ]
+}
+```
+
+`name` je název metriky, který se přiřadí této JMX metriky (může být cokoli).
+
+`objectName` je [název objektu](https://docs.oracle.com/javase/8/docs/api/javax/management/ObjectName.html) JMX MBean, který chcete shromáždit.
+
+`attribute` je název atributu uvnitř JMX MBean, který chcete shromáždit.
+
+Hodnoty metriky numeric a Boolean JMX jsou podporované. Logické JMX metriky jsou namapovány na `0` hodnotu false a `1` na hodnotu true.
+
+[//]: # "Poznámka: tady se nedokumentuje APPLICATIONINSIGHTS_JMX_METRICS"
+[//]: # "var Embedded ve formátu ENV je v podkladu a měl by se zdokumentovat jenom pro scénář připojení bez kódu."
+
+## <a name="custom-dimensions"></a>Vlastní rozměry
+
+Pokud chcete přidat vlastní dimenze do všech telemetrie:
+
+```json
+{
+  "customDimensions": {
+    "mytag": "my value",
+    "anothertag": "${ANOTHER_VALUE}"
+  }
+}
+```
+
+`${...}` dá se použít ke čtení hodnoty ze zadané proměnné prostředí při spuštění.
+
+## <a name="telemetry-processors-preview"></a>Procesory telemetrie (Preview)
+
+Tato funkce je ve verzi Preview.
+
+Umožňuje konfigurovat pravidla, která budou použita pro telemetrii požadavků, závislostí a trasování, např.
+ * Maskovat citlivá data
+ * Podmíněné přidání vlastních dimenzí
+ * Aktualizace názvu telemetrie používaného pro agregaci a zobrazení
+
+Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalone-telemetry-processors.md) .
+
+## <a name="auto-collected-logging"></a>Automaticky shromážděné protokolování
+
+Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí.
+
+Ve výchozím nastavení se protokolování shromáždí jenom v případě, že se protokolování provádí na `INFO` úrovni nebo výše.
+
+Pokud chcete změnit tuto úroveň kolekce:
+
+```json
+{
+  "instrumentation": {
+    "logging": {
+      "level": "WARN"
     }
   }
 }
 ```
 
-Prahovou hodnotu protokolování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_LOGGING_THRESHOLD` .
+Prahovou hodnotu můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` .
 
-Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationInsights.json` souboru a jak odpovídají úrovním protokolování napříč různými architekturami protokolování:
+Jedná se o platné `level` hodnoty, které můžete zadat v `applicationinsights.json` souboru, a způsob, jakým odpovídají úrovně protokolování v různých protokolovacích rozhraních:
 
-| prahová hodnota   | Log4j  | Logback | JUL     |
+| úroveň             | Log4j  | Logback | JUL     |
 |-------------------|--------|---------|---------|
 | OFF               | OFF    | OFF     | OFF     |
 | ZÁVAŽNÁ             | ZÁVAŽNÁ  | CHYBA   | VÁŽNOU  |
@@ -139,53 +213,19 @@ Jedná se o platné `threshold` hodnoty, které můžete zadat v `ApplicationIns
 | TRACE (nebo nejlepší) | TRACE  | TRACE   | Nejlepší  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="jmx-metrics"></a>JMX metriky
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automaticky shromážděná metrika mikroměřiče (včetně metriky pohánějícího spouštěcího zařízení)
 
-Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
+Pokud vaše aplikace používá [mikroměřiče](https://micrometer.io), pak se automaticky shromažďují metriky, které jsou odesílány do globálního registru mikroměřiče.
 
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "jmxMetrics": [
-        {
-          "objectName": "java.lang:type=Runtime",
-          "attribute": "Uptime",
-          "display": "JVM uptime (millis)"
-        },
-        {
-          "objectName": "java.lang:type=MemoryPool,name=Metaspace",
-          "attribute": "Usage.used",
-          "display": "MetaSpace Used"
-        }
-      ]
-    }
-  }
-}
-```
+Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), budou se také automaticky shromažďovat metriky nakonfigurované pomocí pružinového spouštěcího válce.
 
-Hodnoty metriky numeric a Boolean JMX jsou podporované. Logické JMX metriky jsou namapovány na `0` hodnotu false a `1` na hodnotu true.
-
-[//]: # "Poznámka: tady se nedokumentuje APPLICATIONINSIGHTS_JMX_METRICS"
-[//]: # "var Embedded ve formátu ENV je v podkladu a měl by se zdokumentovat jenom pro scénář připojení bez kódu."
-
-## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikroměřič (včetně metrik ze pružinového spouštěcího válce)
-
-Pokud vaše aplikace používá [mikroměřič](https://micrometer.io), Application Insights 3,0 (počínaje verzí Preview. 2) nyní zachycuje metriky odesílané do globálního registru mikroměřiče.
-
-Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), Application Insights 3,0 (počínaje verzí Preview. 4) nyní zachycuje metriky nakonfigurované pomocí pružinového spouštěcího limitu (který používá mikroměřiče, ale nepoužívá globální Registry mikroměřiče).
-
-Pokud chcete zakázat tyto funkce:
+Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohánějícího spouštěcích procesorů):
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "instrumentation": {
-        "micrometer": {
-          "enabled": false
-        }
-      }
+  "instrumentation": {
+    "micrometer": {
+      "enabled": false
     }
   }
 }
@@ -193,16 +233,12 @@ Pokud chcete zakázat tyto funkce:
 
 ## <a name="heartbeat"></a>Tep
 
-Ve výchozím nastavení Application Insights Java 3,0 Preview pošle metriku prezenčního signálu každých 15 minut. Pokud používáte metriku prezenčního signálu k aktivaci výstrah, můžete zvýšit frekvenci tohoto prezenčního signálu:
+Ve výchozím nastavení Application Insights Java 3,0 pošle metriku prezenčního signálu každých 15 minut. Pokud používáte metriku prezenčního signálu k aktivaci výstrah, můžete zvýšit frekvenci tohoto prezenčního signálu:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "heartbeat": {
-        "intervalSeconds": 60
-      }
-    }
+  "heartbeat": {
+    "intervalSeconds": 60
   }
 }
 ```
@@ -210,86 +246,63 @@ Ve výchozím nastavení Application Insights Java 3,0 Preview pošle metriku pr
 > [!NOTE]
 > Frekvence tohoto prezenčního signálu se nedá snížit, protože data prezenčního signálu se také používají ke sledování využití Application Insights.
 
-## <a name="sampling"></a>Vzorkování
-
-Vzorkování je užitečné, pokud potřebujete snížit náklady.
-Vzorkování se provádí jako funkce na ID operace (označované také jako ID trasování), takže stejné ID operace bude mít vždycky stejné rozhodnutí o vzorkování. Tím zajistíte, že nebudete mít k disukázce části distribuované transakce v době, kdy ostatní části jsou ukázkové.
-
-Pokud například nastavíte vzorkování na 10%, zobrazí se vám pouze 10% vašich transakcí, ale každá z těchto 10% bude mít kompletní podrobnosti transakce na konci.
-
-Tady je příklad, jak nastavit vzorkování na **10% všech transakcí** – Ujistěte se prosím, že jste nastavili vzorkovací frekvenci, která je pro váš případ použití správná:
-
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10
-        }
-      }
-    }
-  }
-}
-```
-
-Procentuální hodnotu vzorkování můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` .
-
 ## <a name="http-proxy"></a>Proxy server HTTP
 
-Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy, které používá Application Insights](./ip-addresses.md)), můžete nakonfigurovat Application Insights Java 3,0 Preview pro použití proxy serveru http:
+Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Application Insights (viz [IP adresy, které používá Application Insights](./ip-addresses.md)), můžete nakonfigurovat Application Insights Java 3,0 k používání proxy serveru http:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "httpProxy": {
-        "host": "myproxy",
-        "port": 8080
-      }
-    }
+  "proxy": {
+    "host": "myproxy",
+    "port": 8080
   }
 }
 ```
+
+[//]: # "Poznamenejte si podporu OpenTelemetry, dokud nepodporujeme 0.10.0, která má obrovské zásadní změny od 0.9.0"
+
+[//]: # "Podpora # # pro verze OpenTelemetry API starší než 1,0"
+
+[//]: # "Podpora pro verze OpenTelemetry API v předběžných 1,0 je výslovný souhlas, protože rozhraní OpenTelemetry API ještě není stabilní."
+[//]: # "takže každá verze agenta podporuje jenom konkrétní verze OpenTelemetry API, které jsou starší než 1,0."
+[//]: # "(Toto omezení se nepoužije po vydání rozhraní OpenTelemetry API 1,0)."
+
+[//]: # "formát JSON"
+[//]: # "{"
+[//]: # "  \"Náhled \" : {"
+[//]: # "    \"openTelemetryApiSupport \" : true"
+[//]: # "  }"
+[//]: # "}"
+[//]: # "```"
 
 ## <a name="self-diagnostics"></a>Samoobslužná Diagnostika
 
-"Samoobslužná Diagnostika" odkazuje na interní protokolování z Application Insights Java 3,0 Preview.
+"Samoobslužná Diagnostika" odkazuje na interní protokolování z Application Insights Java 3,0.
 
 To může být užitečné pro hledání a diagnostikování problémů Application Insights sebe sama.
 
-Ve výchozím nastavení se protokoluje do konzoly s úrovní `warn` odpovídající této konfiguraci:
+Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `INFO` souboru `applicationinsights.log` i konzole, které odpovídají této konfiguraci:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "console",
-        "level": "WARN"
-      }
+  "selfDiagnostics": {
+    "destination": "file+console",
+    "level": "INFO",
+    "file": {
+      "path": "applicationinsights.log",
+      "maxSizeMb": 5,
+      "maxHistory": 1
     }
   }
 }
 ```
 
-Platné úrovně jsou `OFF` , `ERROR` , `WARN` , `INFO` , a `DEBUG` `TRACE` .
+`destination` může to být jedna z `file` , `console` nebo `file+console` .
 
-Pokud se chcete přihlásit k souboru místo protokolování do konzoly:
+`level` může to být jedna z `OFF` ,,,, `ERROR` `WARN` `INFO` `DEBUG` nebo `TRACE` .
 
-```json
-{
-  "instrumentationSettings": {
-    "preview": {
-      "selfDiagnostics": {
-        "destination": "file",
-        "directory": "/var/log/applicationinsights",
-        "level": "WARN",
-        "maxSizeMB": 10
-      }
-    }
-  }
-}
-```
+`path` může být absolutní nebo relativní cesta. Relativní cesty jsou vyřešeny v adresáři, kde `applicationinsights-agent-3.0.0.jar` je umístěn.
 
-Při použití protokolování souborů se po každém `maxSizeMB` pokusu o soubor změní a zachová se kromě aktuálního souboru protokolu jenom poslední dokončený soubor protokolu.
+`maxSizeMb` je maximální velikost souboru protokolu před tím, než se vrátí.
+
+`maxHistory` je počet převedených souborů protokolu, které jsou zachovány (kromě aktuálního souboru protokolu).

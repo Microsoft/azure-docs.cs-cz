@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/13/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837750d7eeef9bc7a133a54b23a0c52c847364eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375992"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377730"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Řešení potíží s rolemi přiřazenými ke cloudovým skupinám
 
@@ -32,9 +32,9 @@ Tady jsou některé běžné dotazy a tipy pro řešení potíží při přiřaz
 
 **A:** Ve výchozím nastavení pouze správce privilegovaných rolí a globální správce spravují členství skupiny, která je přiřazena rolím, ale můžete delegovat správu skupin s možností přiřazení role přidáním vlastníků skupin.
 
-**Otázka**: jsem správcem helpdesku v mé organizaci, ale nemohu aktualizovat heslo uživatele, který je čtečkou adresářů. Proč k tomu dochází?
+**Otázka** : jsem správcem helpdesku v mé organizaci, ale nemohu aktualizovat heslo uživatele, který je čtečkou adresářů. Proč k tomu dochází?
 
-Odpověď **: uživatel**může narazit na čtečku adresářů pomocí skupiny přiřazení role. Všechny členy a vlastníci skupin, které lze přiřadit k rolím, jsou chráněni. Přihlašovací údaje pro chráněného uživatele můžou resetovat jenom uživatelé v rolích správce privilegovaného ověřování nebo globální správce.
+Odpověď **: uživatel** může narazit na čtečku adresářů pomocí skupiny přiřazení role. Všechny členy a vlastníci skupin, které lze přiřadit k rolím, jsou chráněni. Přihlašovací údaje pro chráněného uživatele můžou resetovat jenom uživatelé v rolích správce privilegovaného ověřování nebo globální správce.
 
 **Otázka:** Nemohu aktualizovat heslo uživatele. Nemají přiřazenou žádnou vyšší privilegovanou roli. Proč se to děje?
 
@@ -89,7 +89,7 @@ Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pou
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) a otevřete **Azure Active Directory**.
 1. Vyberte uživatelé a otevřete profil uživatele.
-1. Vyberte **přiřazené role**a potom:
+1. Vyberte **přiřazené role** a potom:
 
     - V Azure AD Premium licencovaných organizacích P1: vyberte ikonu ozubeného kolečka. Otevře se podokno, které může tyto informace poskytnout.
     - V Azure AD Premium licencovaných organizacích: ve sloupci **členství** najdete přímo a zděděné informace o licencích.
@@ -100,5 +100,5 @@ Uživatel | Vlastník katalogu | Pouze v případě, že vlastník skupiny | Pou
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
 - [Vytvoření skupiny s možností přiřazení rolí](groups-create-eligible.md)

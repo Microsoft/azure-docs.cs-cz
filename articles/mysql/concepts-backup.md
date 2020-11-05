@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 00cd5a76a52e1b58bc2f01315dd3a1a859074a58
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 283befd08c7802a9df6d2fca78465d50cfb2ba7b
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348453"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376812"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení v Azure Database for MySQL
 
@@ -115,7 +115,12 @@ Server můžete obnovit do jiné oblasti Azure, kde je služba k dispozici, poku
 
 Geografické obnovení je výchozí možností obnovení v případě, že server není k dispozici z důvodu incidentu v oblasti, kde je server hostován. Pokud má velký incident v oblasti nedostupnost vaší databázové aplikace, můžete obnovit server z geograficky redundantní zálohy na server v jakékoli jiné oblasti. Geografické obnovení využívá nejnovější zálohu serveru. Doba mezi vytvořením zálohy a při replikaci do jiné oblasti trvá zpoždění. Tato prodleva může trvat až jednu hodinu, takže pokud dojde k havárii, může dojít ke ztrátě dat o hodinu.
 
+> [!IMPORTANT]
+>Pokud se u nově vytvořeného serveru provede geografické obnovení, může počáteční synchronizace zálohování trvat více než 24 hodin v závislosti na velikosti dat, protože počáteční kopie úplného zálohování snímku je mnohem vyšší. Následné zálohy snímků jsou přírůstkové kopírování, takže obnovení jsou rychlejší po 24 hodinách vytváření serveru. Pokud vyhodnocujete geografické obnovení, abyste definovali RTO, doporučujeme, abyste počkali a vyhodnotili geografické obnovení **jenom po 24 hodinách** vytváření serveru pro lepší odhady.
+
 Během geografického obnovení můžou konfigurace serveru, které je možné změnit, zahrnovat výpočetní generování, vCore, dobu uchování záloh a možnosti redundance zálohování. Změna cenové úrovně (Basic, Pro obecné účely nebo paměťově optimalizovaná) nebo velikosti úložiště během geografického obnovení není podporovaná.
+
+Odhadovaná doba obnovení závisí na několika faktorech, včetně velikostí databází, velikosti transakčního protokolu, šířky pásma sítě a celkového počtu databází obnovování ve stejné oblasti ve stejnou dobu. Doba obnovení je obvykle méně než 12 hodin.
 
 ### <a name="perform-post-restore-tasks"></a>Provádění úloh po obnovení
 

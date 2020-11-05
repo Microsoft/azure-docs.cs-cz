@@ -3,12 +3,12 @@ title: Řešení potíží s přihlášením k registru
 description: Příznaky, příčiny a řešení běžných potíží při přihlašování do služby Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348895"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379498"
 ---
 # <a name="troubleshoot-registry-login"></a>Řešení potíží s přihlášením k registru
 
@@ -98,7 +98,9 @@ Související odkazy:
 
 Potvrďte oprávnění registru, která jsou přidružená k přihlašovacím údajům, jako je například `AcrPull` role Azure pro vyžádání imagí z registru nebo `AcrPush` role pro vložení imagí. 
 
-Přístup k registru v portálu nebo správě registru pomocí rozhraní příkazového řádku Azure CLI vyžaduje aspoň `Reader` roli k provádění operací Azure Resource Manager.
+Přístup k registru v portálu nebo správě registru pomocí rozhraní příkazového řádku Azure CLI vyžaduje aspoň `Reader` roli nebo ekvivalentní oprávnění k provádění operací Azure Resource Manager.
+
+Pokud se vaše oprávnění v nedávné době změnila tak, aby povolovala přístup k registru i přes portál, možná budete muset v prohlížeči vyzkoušet anonymním nebo soukromou relaci, aby nedocházelo k zastaralým mezipaměťm prohlížeče nebo souborům cookie
 
 K přidání nebo odebrání přiřazení rolí musí mít vlastník v rámci předplatného dostatečná oprávnění.
 

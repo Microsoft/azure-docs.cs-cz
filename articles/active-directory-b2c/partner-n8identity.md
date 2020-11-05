@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294276"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376880"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Kurz pro konfiguraci nástroje pro správu TheAccessHub pomocí Azure Active Directory B2C
 
@@ -102,7 +102,7 @@ Pokud chcete pro přístup k adresáři autorizovat Nástroj pro správu TheAcce
 
 5. Postupujte podle zobrazených výzev a vyberte **přijmout** a udělte tak nástroji Správce TheAccessHub požadovaná oprávnění.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>Konfigurace nového uživatele CSR/helpdesku pomocí podnikové identity
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>Konfigurace nového uživatele CSR pomocí vaší podnikové identity
 
 Vytvořte uživatele CSR/helpdesku, který přistupuje k nástroji pro správu TheAccessHub pomocí svých stávajících přihlašovacích údajů pro podnikové Azure Active Directory.
 
@@ -126,7 +126,7 @@ Pokud chcete nakonfigurovat uživatele CSR/helpdesku pomocí jednotného přihla
 
 6. Vyberte **Odeslat**.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>Konfigurace nového uživatele CSR/helpdesku pomocí nové identity
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Konfigurace nového uživatele CSR pomocí nové identity
 
 Vytvořte uživatele CSR/helpdesku, který bude mít přístup k nástroji pro správu TheAccessHub s novým místním přihlašovacím údajem, který je jedinečný pro nástroj TheAccessHub admin. Budou se používat hlavně organizacím, které pro svůj podnik nepoužívají službu Azure AD.
 
@@ -150,7 +150,7 @@ Pokud chcete [nastavit uživatele CSR/helpdesku](https://youtu.be/iOpOI2OpnLI) b
 
 7. Vybrat **Odeslat**
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>Konfigurace oddělení IT/správy helpdesku
+## <a name="configure-partitioned-csr-administration"></a>Konfigurace rozdělené správy CSR
 
 Oprávnění ke správě uživatelů a oddělení služeb zákazníkům a helpdesku v nástroji pro správu TheAccessHub se spravují pomocí hierarchie organizace. Všichni kolegové a zákazníci mají domovskou organizaci, kde se nacházejí. Konkrétní kolegy nebo skupiny kolegů se dají přiřadit jako vlastníci organizací.  Vlastníci organizace můžou spravovat (dělat změny) kolegů a zákazníků v organizacích nebo podorganizacích, které vlastní. Pokud chcete více kolegům dovolit spravovat skupinu uživatelů, je možné vytvořit skupinu s mnoha členy. Skupinu je pak možné přiřadit jako vlastník organizace a všichni členové skupiny můžou spravovat kolegy a zákazníky v organizaci.
 
@@ -324,7 +324,7 @@ Pomocí nástroje pro správu TheAccessHub můžete importovat data z různých 
 
 18. Pokud bude záznam **synchronizace dat** ve fázi zatížení 100%, budou inicializovány všechny změny, které byly výsledkem zatížení. Zákazníci by měli začít zobrazovat nebo přijímat změny v Azure AD B2C.
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Synchronizace zákaznických dat Azure AD B2C do nástroje pro správu TheAccessHub
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Synchronizovat zákaznická data Azure AD B2C 
 
 Nástroj pro správu TheAccessHub může v rámci jednorázové nebo průběžné operace synchronizovat všechny informace o zákaznících z Azure AD B2C do nástroje pro správu TheAccessHub. Tím se zajistí, že se správcům oddělení technické podpory a helpdesku zobrazují aktuální informace o zákaznících.
 
@@ -356,7 +356,7 @@ Synchronizace dat z Azure AD B2C do nástroje pro správu TheAccessHub:
 
 13. Pokud bude záznam **synchronizace dat** ve fázi zatížení 100%, budou inicializovány všechny změny, které byly výsledkem zatížení.
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>Konfigurace zásad Azure AD B2C pro volání nástroje pro správu TheAccessHub
+## <a name="configure-azure-ad-b2c-policies"></a>Konfigurace zásad Azure AD B2C
 
 Občas synchronizování nástroje pro správu TheAccessHub je omezené jeho schopnost udržovat svůj stav aktuální Azure AD B2C. K informování TheAccessHub nástrojů pro správu TheAccessHub můžete využít zásady rozhraní API a Azure AD B2C nástroje pro správu. Toto řešení vyžaduje technické znalosti [Azure AD B2C vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20). V další části vám poskytneme ukázkový postup a zabezpečený certifikát pro oznamování TheAccessHub nástroje pro správu nových účtů v Sign-Up vlastních zásadách.
 

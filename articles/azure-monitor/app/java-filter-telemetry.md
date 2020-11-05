@@ -4,14 +4,17 @@ description: Zmenšení provozu telemetrie filtrováním událostí, které nepo
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f07a530a584a14d5312631ec977773e70af29
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761001"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378189"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
+
+> [!IMPORTANT]
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
 
 Filtry poskytují způsob, jak vybrat telemetrii, kterou vaše [Webová aplikace v jazyce Java odesílá Application Insights](java-get-started.md). K dispozici jsou některé předem připravené filtry, které můžete použít, a můžete také napsat vlastní filtry.
 

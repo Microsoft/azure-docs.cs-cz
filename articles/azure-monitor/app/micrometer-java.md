@@ -6,17 +6,20 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 16f4cfd70cf4dbeaeb1376368787b3fa0e4b9a52
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 434d978f6a228bad9b142738767500d639017032
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994031"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378869"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Použití mikroměřiče s Azure Application Insights Java SDK
 
+> [!IMPORTANT]
+> Doporučený postup pro monitorování aplikací Java je použití automatické instrumentace beze změny kódu. Postupujte prosím podle pokynů pro [Application Insights agenta Java 3,0](./java-in-process-agent.md).
+
 > [!NOTE]
-> Sada SDK Application Insights Java nepodporuje jarní webtokem. 
+> Sada Application Insights Java SDK nepodporuje místo toho [Application Insights agenta java 3,0](./java-in-process-agent.md) . 
 >
 > V [Application Insights agenta Java 3,0](./java-on-premises.md) , který nevyžaduje instrumentaci, se podporuje webtokem i mikroměřiče. 
 

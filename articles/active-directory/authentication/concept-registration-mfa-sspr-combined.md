@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424564"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378002"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Souhrnné informace o registraci informací o zabezpečení pro Azure Active Directory
 
@@ -53,16 +53,16 @@ Kombinovaná registrace podporuje následující metody ověřování a akce:
 
 | Metoda | Registrovat | Změnit | Odstranit |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Ano (maximálně 5) | Ne | Ano |
-| Jiná ověřovací aplikace | Ano (maximálně 5) | Ne | Ano |
-| Hardwarový token | Ne | Ne | Ano |
-| Rozložení | Ano | Ano | Ano |
-| Alternativní telefon | Ano | Ano | Ano |
-| Telefon do kanceláře | Ne | Ne | Ne |
-| E-mail | Ano | Ano | Ano |
-| Bezpečnostní otázky | Ano | Ne | Ano |
-| Hesla aplikací | Ano | Ne | Ano |
-| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Ano | Ano | Ano |
+| Microsoft Authenticator | Ano (maximálně 5) | No | Yes |
+| Jiná ověřovací aplikace | Ano (maximálně 5) | No | Yes |
+| Hardwarový token | No | No | Yes |
+| Rozložení | Yes | Yes | Yes |
+| Alternativní telefon | Yes | Yes | Yes |
+| Telefon do kanceláře | Yes | Yes | Yes |
+| E-mail | Yes | Yes | Yes |
+| Bezpečnostní otázky | Yes | No | Yes |
+| Hesla aplikací | Yes | No | Yes |
+| FIDO2 klíče zabezpečení<br />*Spravovaný režim pouze ze stránky [bezpečnostní údaje](https://mysignins.microsoft.com/security-info)*| Yes | Yes | Yes |
 
 > [!NOTE]
 > Hesla aplikací jsou k dispozici pouze pro uživatele, kteří byli vynutili Multi-Factor Authentication. Hesla aplikací nejsou k dispozici uživatelům, kteří jsou povoleni pro Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu.

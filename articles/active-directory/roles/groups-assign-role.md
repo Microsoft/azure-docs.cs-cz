@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28df0e420183239eae21aa18c807bb82b4ec7649
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376015"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379141"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Přiřazení role ke cloudové skupině v Azure Active Directory
 
@@ -30,9 +30,9 @@ Přiřazení skupiny k roli Azure AD se podobá přiřazení uživatelů a insta
 
 1. Přihlaste se do [centra pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 
-1. Vyberte **Azure Active Directory**  >  **role a správci**a vyberte roli, kterou chcete přiřadit.
+1. Vyberte **Azure Active Directory**  >  **role a správci** a vyberte roli, kterou chcete přiřadit.
 
-1. Na stránce ** _název role_*_ vyberte > _* přidat přiřazení**.
+1. Na stránce **_název role_*_ vyberte > _* přidat přiřazení**.
 
    ![Přidat přiřazení nové role](./media/groups-assign-role/add-assignment.png)
 
@@ -40,11 +40,11 @@ Přiřazení skupiny k roli Azure AD se podobá přiřazení uživatelů a insta
 
     [![Pro nové přiřazení role se zobrazí pouze skupiny, které jsou přiřaditelné.](./media/groups-assign-role/eligible-groups.png "Pro nové přiřazení role se zobrazí pouze skupiny, které jsou přiřaditelné.")](./media/groups-assign-role/eligible-groups.png#lightbox)
 
-1. Vyberte **Přidat**.
+1. Vyberte **Add** (Přidat).
 
 Další informace o přiřazování oprávnění role najdete v tématu [přiřazení rolí správců a uživatelů bez oprávnění správce](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Vytvoření skupiny, kterou je možné přiřadit roli
 
@@ -101,5 +101,5 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
 - [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](groups-faq-troubleshooting.md)

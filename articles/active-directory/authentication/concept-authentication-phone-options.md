@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165501"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377747"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Metody ověřování v Azure Active Directory Možnosti telefonu
 
@@ -23,7 +23,7 @@ Pro přímé ověřování pomocí textové zprávy můžete [nakonfigurovat a p
 
 Uživatelé se také můžou sami ověřit pomocí mobilního telefonu nebo telefonu v kanceláři jako sekundární formulář ověřování, který se používá během Multi-Factor Authentication Azure nebo Samoobslužné resetování hesla (SSPR).
 
-Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber*, například *+ 1 4251234567*.
+Aby telefonní čísla fungovala správně, musí být ve formátu *+ CountryCode PhoneNumber* , například *+ 1 4251234567*.
 
 > [!NOTE]
 > Musí existovat mezera mezi kódem země/oblasti a telefonním číslem.
@@ -49,8 +49,6 @@ Při ověřování pomocí textové zprávy během SSPR nebo Azure Multi-Factor 
 Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
 
 ## <a name="office-phone-verification"></a>Ověřování pro telefon do kanceláře
-
-Atribut Office Phone spravuje správce Azure AD a nemůže být zaregistrovaný uživatelem.
 
 Při ověřování pomocí telefonního hovoru během SSPR nebo Azure Multi-Factor Authentication se na telefonním čísle zaregistrovaného uživatelem přivede automatizované hlasové volání. K dokončení procesu přihlašování se uživateli zobrazí výzva k zadání čísla PIN kódu, na kterém následuje znak # na své klávesnici.
 
@@ -81,7 +79,7 @@ Další informace o konceptech SSPR najdete v tématu [Jak funguje Samoobslužn�
 
 Další informace o principech vícefaktorového ověřování najdete v tématu [Jak funguje Azure Multi-Factor Authentication][concept-mfa].
 
-Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Přečtěte si další informace o konfiguraci metod ověřování pomocí [Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true).
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

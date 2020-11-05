@@ -4,12 +4,12 @@ description: Naučte se škálovat webovou aplikaci prostředků, cloudovou slu�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d37a33ea575bbb8481d7d50dad8eab0f9ce0899d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361198"
+ms.locfileid: "93377016"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s automatické škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování pro váš prostředek v portál Microsoft Azure.
@@ -59,7 +59,7 @@ Teď si projdeme jednoduchý podrobný návod k vytvoření vašeho prvního nas
    ![Škálování na základě procesoru][8]
 1. Klikněte na **Uložit**.
 
-Blahopřejeme vám. Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
+Blahopřejeme! Úspěšně jste vytvořili první nastavení škálování pro automatické škálování webové aplikace na základě využití procesoru.
 
 > [!NOTE]
 > Stejné kroky jsou použitelné pro zahájení práce se sadou škálování virtuálních počítačů nebo s rolí cloudové služby.
@@ -132,6 +132,9 @@ Vývojové týmy ve velkých podnicích často potřebují splňovat požadavky 
 ### <a name="behavior"></a>Chování
 
 Po zadání cesty pro kontrolu stavu App Service otestuje cestu k cestě všech instancí. Pokud kód úspěšné odpovědi po 5 příkazech otestuje neobdrží, považuje se tato instance za "není v pořádku". Z rotace nástroje pro vyrovnávání zatížení budou vyloučeny instance, které nejsou v pořádku. V nastavení aplikace můžete nakonfigurovat požadovaný počet neúspěšných příkazů testu pro příkazy typu test `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Toto nastavení aplikace může být nastaveno na celé číslo mezi 2 a 10. Pokud je to například nastaveno na `2` , instance budou odebrány z nástroje pro vyrovnávání zatížení po dvou nezdařených příkazech pro ověření. Při horizontálním navýšení nebo zmenšení kapacity App Service otestuje cestu pro kontrolu stavu, aby se zajistilo, že nové instance budou připravené na žádosti před jejich přidáním do nástroje pro vyrovnávání zatížení.
+
+> [!NOTE]
+> Pamatujte, že váš plán App Service musí být škálované na 2 nebo více instancí, aby mohlo dojít k vyloučení nástroje pro vyrovnávání zatížení. Pokud máte jenom 1 instanci, neodebere se z nástroje pro vyrovnávání zatížení, i když není v pořádku. 
 
 Zbývající instance v pořádku můžou vyskytnout zvýšené zatížení. Aby nedošlo k zahlcení zbývajících instancí, nebudou vyloučeny žádné více než polovina instancí. Pokud je například plán App Service škálované na 4 instance a 3 z nich není v pořádku, bude při rotaci nástroje pro vyrovnávání zatížení vyloučeno maximálně 2. Ostatní 2 instance (1 v pořádku a 1 poškozený) budou i nadále přijímat požadavky. V nejhorším případě, kdy nejsou všechny instance v pořádku, se nevylučují žádné. Pokud chcete toto chování přepsat, můžete `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` nastavení aplikace nastavit na hodnotu mezi `0` a `100` . Nastavení této hodnoty na vyšší znamená, že se odeberou víc instancí, které nejsou v pořádku (výchozí hodnota je 50).
 

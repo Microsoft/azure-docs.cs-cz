@@ -3,12 +3,12 @@ title: host.jsna referenci pro Azure Functions 2. x
 description: Referenční dokumentace pro Azure Functions host.jsv souboru s modulem runtime v2.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284501"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377118"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referenční informace k souboru host.json pro Azure Functions 2.x a novější 
 
@@ -357,7 +357,7 @@ Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty ú
 
 ## <a name="retry"></a>retry
 
-Řídí možnosti [zásad opakování](./functions-bindings-error-pages.md#retry-policies) pro všechna spuštění v aplikaci.
+Řídí možnosti [zásad opakování](./functions-bindings-error-pages.md#retry-policies-preview) pro všechna spuštění v aplikaci.
 
 ```json
 {

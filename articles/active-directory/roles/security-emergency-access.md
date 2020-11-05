@@ -5,20 +5,20 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376231"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378750"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Správa účtů pro nouzový přístup v Azure AD
 
@@ -87,34 +87,34 @@ Organizace by měly monitorovat aktivitu přihlášení a auditu z mimořádnýc
 ### <a name="create-an-alert-rule"></a>Vytvoření pravidla upozornění
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu přiřazeného k roli Přispěvatel monitorování v Azure monitor.
-1. Vyberte **všechny služby**, do Hledat zadejte Log Analytics a pak vyberte **Log Analytics pracovní prostory**.
+1. Vyberte **všechny služby** , do Hledat zadejte Log Analytics a pak vyberte **Log Analytics pracovní prostory**.
 1. Vyberte pracovní prostor.
 1. V pracovním prostoru vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
-    1. V části **prostředek**ověřte, že se jedná o předplatné, se kterým chcete pravidlo výstrahy přidružit.
-    1. V části **Podmínka**vyberte **Přidat**.
-    1. V části **Název signálu**vyberte **vlastní prohledávání protokolu** .
-    1. V části **vyhledávací dotaz**zadejte následující dotaz, který vloží ID objektů obou účtů.
+    1. V části **prostředek** ověřte, že se jedná o předplatné, se kterým chcete pravidlo výstrahy přidružit.
+    1. V části **Podmínka** vyberte **Přidat**.
+    1. V části **Název signálu** vyberte **vlastní prohledávání protokolu** .
+    1. V části **vyhledávací dotaz** zadejte následující dotaz, který vloží ID objektů obou účtů.
         > [!NOTE]
         > Pro každý další účet pro oddělitelné sklo, který chcete zahrnout, přidejte do dotazu další (nebo UserId = = "ObjectGuid").
 
         ![Přidání ID objektu pro účty s oddělovači do pravidla výstrahy](./media/security-emergency-access/query-image1.png)
 
-    1. V části **logika výstrahy**zadejte toto:
+    1. V části **logika výstrahy** zadejte toto:
 
         - Podle: počet výsledků
         - Operátor: je větší než
         - Prahová hodnota: 0
 
-    1. Pod položkou **vyhodnoceno na základě**vyberte **dobu (v minutách)** , po kterou se má dotaz spouštět, a **frekvence (v minutách)** , jak často chcete dotaz spouštět. Frekvence by měla být menší než nebo stejná jako perioda.
+    1. Pod položkou **vyhodnoceno na základě** vyberte **dobu (v minutách)** , po kterou se má dotaz spouštět, a **frekvence (v minutách)** , jak často chcete dotaz spouštět. Frekvence by měla být menší než nebo stejná jako perioda.
 
         ![logika výstrahy](./media/security-emergency-access/alert-image2.png)
 
     1. Vyberte **Hotovo**. Nyní můžete zobrazit Odhadované měsíční náklady na tuto výstrahu.
 1. Vyberte skupinu akcí, které má výstraha informovat. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření skupiny akcí](#create-an-action-group).
 1. Chcete-li upravit e-mailové oznámení odeslané členům skupiny akcí, vyberte akce v části **vlastní akce**.
-1. V části **Podrobnosti o výstraze**zadejte název pravidla výstrahy a přidejte volitelný popis.
+1. V části **Podrobnosti o výstraze** zadejte název pravidla výstrahy a přidejte volitelný popis.
 1. Nastavte **úroveň závažnosti** události. Doporučujeme, abyste ji nastavili na **kritickou (závažnost 0)**.
-1. V části **Povolit pravidlo při vytváření**ponechte nastavenou **hodnotu Ano**.
+1. V části **Povolit pravidlo při vytváření** ponechte nastavenou **hodnotu Ano**.
 1. Chcete-li vypnout výstrahy pro určitou dobu, zaškrtněte políčko **potlačit výstrahy** a zadejte dobu čekání před opětovným odesláním výstrahy a potom vyberte **Uložit**.
 1. Klikněte na **Vytvořit pravidlo upozornění**.
 

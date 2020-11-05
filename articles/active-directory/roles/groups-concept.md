@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 08/11/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34c3c20b277a768ba27016f1c76bd782ef05dc36
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376003"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379073"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Použití skupin cloudů ke správě přiřazení rolí v Azure Active Directory (Preview)
 
@@ -59,7 +59,7 @@ Následující scénáře se teď nepodporují:
 ## <a name="known-issues"></a>Známé problémy
 
 - Funkce **povolit dvoufázové zavedení pro funkci přihlašování spravovaného uživatele** nepodporuje přiřazování přes skupinu.
-- *Jenom licencovaní zákazníci Azure AD P2*: nepřiřazujte skupinu jako aktivní k roli prostřednictvím Azure AD a PRIVILEGED Identity Management (PIM). Konkrétně nepřiřazujte roli skupině přiřazení role, když se vytváří *, a* přiřaďte ji ke skupině pomocí Správce cloudu později. To povede k problémům, kde uživatelé nevidí jejich aktivní přiřazení role v PIM a zároveň neumožňují odebrání tohoto přiřazení PIM. V tomto scénáři nejsou ovlivněna oprávněná přiřazení. Pokud se pokusíte toto přiřazení provést, může se zobrazit neočekávané chování, například:
+- *Jenom licencovaní zákazníci Azure AD P2* : nepřiřazujte skupinu jako aktivní k roli prostřednictvím Azure AD a PRIVILEGED Identity Management (PIM). Konkrétně nepřiřazujte roli skupině přiřazení role, když se vytváří *, a* přiřaďte ji ke skupině pomocí Správce cloudu později. To povede k problémům, kde uživatelé nevidí jejich aktivní přiřazení role v PIM a zároveň neumožňují odebrání tohoto přiřazení PIM. V tomto scénáři nejsou ovlivněna oprávněná přiřazení. Pokud se pokusíte toto přiřazení provést, může se zobrazit neočekávané chování, například:
   - Čas ukončení přiřazení role se může zobrazit nesprávně.
   - Na portálu PIM můžou **Moje role** zobrazovat jenom jedno přiřazení role bez ohledu na to, kolik metod má přiřazení uděleno (přes jednu nebo víc skupin a přímo).
 - *Jenom licencovaní zákazníci Azure AD P2* I po odstranění skupiny se stále zobrazuje oprávněný člen role v uživatelském rozhraní PIM. Funkční není žádný problém. je to jen problém s mezipamětí v Azure Portal.  

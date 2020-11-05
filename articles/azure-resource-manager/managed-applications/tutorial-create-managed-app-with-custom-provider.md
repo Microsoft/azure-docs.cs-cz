@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a92382f397eee5e0315dda73d33f968dafa4b496
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041713"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379549"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Kurz: vytvoření spravované aplikace s vlastními akcemi a prostředky
 
@@ -41,7 +41,7 @@ K dokončení tohoto kurzu potřebujete znát tyto informace:
 
 V tomto kurzu vytvoříte spravovanou aplikaci a její spravovanou skupinu prostředků, která bude obsahovat vlastní instanci poskytovatele, účet úložiště a funkci. Funkce Azure použitá v tomto příkladu implementuje rozhraní API, které zpracovává vlastní operace poskytovatele pro akce a prostředky. Účet Azure Storage se používá jako základní úložiště pro prostředky vlastního zprostředkovatele.
 
-Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v *createUIDefinition.js* :
+Definice uživatelského rozhraní pro vytvoření instance spravované aplikace zahrnuje `funcname` a `storagename` vstupní prvky. Název a název funkce účtu úložiště musí být globálně jedinečné. Ve výchozím nastavení se soubory funkcí nasazují z [balíčku ukázkové funkce](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip), ale můžete ho změnit přidáním elementu Input pro odkaz na balíček v *createUiDefinition.js* :
 
 ```json
 {
@@ -74,7 +74,7 @@ Definice uživatelského rozhraní pro vytvoření instance spravované aplikace
 }
 ```
 
-a výstup v *createUIDefinition.js* :
+a výstup v *createUiDefinition.js* :
 
 ```json
   "funcname": "[steps('applicationSettings').funcname]",
@@ -82,13 +82,13 @@ a výstup v *createUIDefinition.js* :
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-Kompletní *createUIDefinition.jspro* ukázku lze nalézt v [referenci: artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
+Kompletní *createUiDefinition.jspro* ukázku lze nalézt v [referenci: artefakty prvků uživatelského rozhraní](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Šablona s vlastním zprostředkovatelem
 
 Chcete-li vytvořit instanci spravované aplikace s vlastním poskytovatelem, je třeba definovat prostředek vlastního zprostředkovatele s názvem **Public** a do svého **mainTemplate.js** zadat **Microsoft. CustomProviders/resourceProviders** . V tomto prostředku definujete typy prostředků a akce pro vaši službu. Pro nasazení funkce Azure functions a Azure Storage instance účtů definují prostředky typu `Microsoft.Web/sites` a `Microsoft.Storage/storageAccounts` v uvedeném pořadí.
 
-V tomto kurzu vytvoříte jeden `users` typ prostředku, `ping` vlastní akci a `users/contextAction` vlastní akci, která se provede v kontextu `users` vlastního prostředku. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem, který je zadaný v [createUIDefinition.js](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
+V tomto kurzu vytvoříte jeden `users` typ prostředku, `ping` vlastní akci a `users/contextAction` vlastní akci, která se provede v kontextu `users` vlastního prostředku. Pro každý typ prostředku a akci zadejte koncový bod, který odkazuje na funkci s názvem, který je zadaný v [createUiDefinition.js](#user-interface-definition). Zadejte **routingType** jako `Proxy,Cache` pro typy prostředků a `Proxy` pro akce:
 
 ```json
 {
@@ -247,8 +247,8 @@ az managedapp definition create \
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V Azure Portal vyberte **všechny služby** . V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum** .
-2. V **centru spravovaných aplikací** vyberte **definice aplikace katalogu služeb** a klikněte na **Přidat** . 
+1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum**.
+2. V **centru spravovaných aplikací** vyberte **definice aplikace katalogu služeb** a klikněte na **Přidat**. 
     
     ![Přidat katalog služeb](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
@@ -260,15 +260,15 @@ az managedapp definition create \
 
     ![Zadat hodnoty](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
 
-4. Až se dostanete do části ověřování a úroveň zámku, vyberte **Přidat autorizaci** .
+4. Až se dostanete do části ověřování a úroveň zámku, vyberte **Přidat autorizaci**.
 
     ![Přidat autorizaci](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
 
-5. Vyberte skupinu Azure Active Directory pro správu prostředků a vyberte **OK** .
+5. Vyberte skupinu Azure Active Directory pro správu prostředků a vyberte **OK**.
 
    ![Přidat skupinu autorizací](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
 
-6. Pokud jste zadali všechny hodnoty, vyberte **vytvořit** .
+6. Pokud jste zadali všechny hodnoty, vyberte **vytvořit**.
 
    ![Vytvořit definici spravované aplikace](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
 
@@ -303,12 +303,12 @@ az managedapp create \
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. V Azure Portal vyberte **všechny služby** . V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum** .
-2. V **centru spravovaných aplikací** vyberte **aplikace katalogu služeb** a klikněte na **Přidat** . 
+1. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte a vyberte **spravované aplikace Centrum**.
+2. V **centru spravovaných aplikací** vyberte **aplikace katalogu služeb** a klikněte na **Přidat**. 
 
     ![Přidat spravovanou aplikaci](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
-3. Na stránce **aplikace katalogu služeb** zadejte do vyhledávacího pole název zobrazení definice katalogu služby. Vyberte definici vytvořenou v předchozím kroku a klikněte na **vytvořit** .
+3. Na stránce **aplikace katalogu služeb** zadejte do vyhledávacího pole název zobrazení definice katalogu služby. Vyberte definici vytvořenou v předchozím kroku a klikněte na **vytvořit**.
 
     ![Výběr katalogu služeb](./media/tutorial-create-managed-app-with-custom-provider/select-service-catalog-definition.png)
 
@@ -327,7 +327,7 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Vlastní akce a prostředky
 
-Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina prostředků `applicationGroup` obsahuje instanci spravované aplikace, druhá skupina prostředků obsahuje `managedResourceGroup` prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele** .
+Po nasazení instance aplikace katalogu služeb máte dvě nové skupiny prostředků. První skupina prostředků `applicationGroup` obsahuje instanci spravované aplikace, druhá skupina prostředků obsahuje `managedResourceGroup` prostředky pro spravovanou aplikaci, včetně **vlastního poskytovatele**.
 
 ![Skupiny prostředků aplikace](./media/tutorial-create-managed-app-with-custom-provider/application-resource-groups.png)
 

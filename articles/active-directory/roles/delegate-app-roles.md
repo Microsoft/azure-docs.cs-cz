@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8139dca2896610b8a3a52f1446255bea0031dc11
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9ad21e15d33dabba74d338b339e4b2fdc25df52e
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376273"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379209"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -89,10 +89,10 @@ Postupujte podle pokynů v tématu [přiřazení rolí uživatelům pomocí prů
 
 Vytváření vlastních rolí a přiřazování vlastních rolí je samostatné kroky:
 
-- [Vytvořte vlastní *definici role* ](custom-create.md) a [přidejte do ní oprávnění z přednastaveného seznamu](custom-available-permissions.md). Jedná se o stejná oprávnění, která se používají ve vestavěných rolích.
-- [Vytvořte *přiřazení role* ](custom-assign-powershell.md) , abyste přiřadili vlastní roli.
+- [Vytvořte vlastní *definici role*](custom-create.md) a [přidejte do ní oprávnění z přednastaveného seznamu](custom-available-permissions.md). Jedná se o stejná oprávnění, která se používají ve vestavěných rolích.
+- [Vytvořte *přiřazení role*](custom-assign-powershell.md) , abyste přiřadili vlastní roli.
 
-Toto oddělení vám umožní vytvořit jednu definici role a pak ji v různých *oborech*přiřadit mnohokrát. Vlastní roli je možné přiřadit v oboru v rámci organizace nebo ji můžete přiřadit v oboru, pokud je jeden objekt Azure AD. Příkladem oboru objektu je jediná registrace aplikace. V různých oborech je možné přiřadit stejnou definici role Sallyům přes všechny registrace aplikací v organizaci a pak Naveen jenom přes registraci aplikace se sestavami výdajů společnosti Contoso.
+Toto oddělení vám umožní vytvořit jednu definici role a pak ji v různých *oborech* přiřadit mnohokrát. Vlastní roli je možné přiřadit v oboru v rámci organizace nebo ji můžete přiřadit v oboru, pokud je jeden objekt Azure AD. Příkladem oboru objektu je jediná registrace aplikace. V různých oborech je možné přiřadit stejnou definici role Sallyům přes všechny registrace aplikací v organizaci a pak Naveen jenom přes registraci aplikace se sestavami výdajů společnosti Contoso.
 
 Tipy při vytváření a používání vlastních rolí pro delegování správy aplikací:
 - Vlastní role udělují přístup jenom v aktuálních oknech pro registraci aplikací na portálu Azure AD. Neudělují přístup v okně registrace starší verze aplikace.

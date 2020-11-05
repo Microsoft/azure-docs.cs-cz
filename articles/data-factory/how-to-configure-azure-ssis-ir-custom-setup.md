@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 10/13/2020
-ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 1885dd76a94a7a4a6b91c67735103350c473ba44
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636319"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378427"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -76,15 +76,15 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR se standardními v
 
 1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
-   a. V části **(místní a připojené)** klikněte pravým tlačítkem na **účty úložiště** a pak vyberte **připojit k Azure Storage** .
+   a. V části **(místní a připojené)** klikněte pravým tlačítkem na **účty úložiště** a pak vyberte **připojit k Azure Storage**.
 
       ![Připojení ke službě Azure Storage](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
-   b. Vyberte **použít název a klíč účtu úložiště** a pak vyberte **Další** .
+   b. Vyberte **použít název a klíč účtu úložiště** a pak vyberte **Další**.
 
       ![Použití názvu a klíče účtu úložiště](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image2.png)
 
-   c. Zadejte název a klíč účtu služby Azure Storage, klikněte na tlačítko **Další** a pak vyberte **připojit** .
+   c. Zadejte název a klíč účtu služby Azure Storage, klikněte na tlačítko **Další** a pak vyberte **připojit**.
 
       ![Zadejte název a klíč účtu úložiště.](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
 
@@ -96,7 +96,7 @@ Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR se standardními v
 
       ![Nahrání souborů do kontejneru objektů BLOB](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
-   f. Klikněte pravým tlačítkem na kontejner a pak vyberte **získat sdílený přístupový podpis** .
+   f. Klikněte pravým tlačítkem na kontejner a pak vyberte **získat sdílený přístupový podpis**.
 
       ![Získání sdíleného přístupového podpisu pro kontejner](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
@@ -135,31 +135,31 @@ Pokud pro vlastní instalaci Express vyberete typ **proměnné prostředí** , m
 
 #### <a name="installing-azure-powershell"></a>Instalace Azure PowerShell
 
-Pokud pro vlastní instalaci Express vyberete typ **instalace Azure PowerShell** , můžete do Azure-SSIS IR nainstalovat modul AZ Module prostředí PowerShell. Uděláte to tak, že v [seznamu podporovaných šablon](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)zadáte příkaz AZ Module verze Number (x. y. z). To vám umožní spouštět Azure PowerShell rutiny nebo skripty v balíčcích pro správu prostředků Azure, například [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md).
+Pokud pro vlastní instalaci Express vyberete typ **instalace Azure PowerShell** , můžete do Azure-SSIS IR nainstalovat modul AZ Module prostředí PowerShell. Uděláte to tak, že v [seznamu podporovaných šablon](https://www.powershellgallery.com/packages/az)zadáte příkaz AZ Module verze Number (x. y. z). To vám umožní spouštět Azure PowerShell rutiny nebo skripty v balíčcích pro správu prostředků Azure, například [Azure Analysis Services (AAS)](../analysis-services/analysis-services-powershell.md).
 
 #### <a name="installing-licensed-components"></a>Instalace licencovaných komponent
 
 Pokud vyberete možnost **instalovat licencovaný typ součásti** pro aplikaci Express Custom, pak můžete vybrat integrovanou součást z našich partnerů ISV v rozevíracím seznamu **název součásti** :
 
-   * Pokud vyberete součást **Task Factory pro SentryOne** , můžete na Azure-SSIS IR nainstalovat sadu funkcí [Factory úloh](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) z SentryOne. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020.1.3** .
+   * Pokud vyberete součást **Task Factory pro SentryOne** , můžete na Azure-SSIS IR nainstalovat sadu funkcí [Factory úloh](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) z SentryOne. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020.1.3**.
 
-   * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Vstupně-výstupní operace](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) s daty/čisticí součást z oh22 na vašich Azure-SSIS IR. K tomu je potřeba nejdřív zakoupit službu. Aktuální integrovaná verze je **1.0.14** .
+   * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Vstupně-výstupní operace](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) s daty/čisticí součást z oh22 na vašich Azure-SSIS IR. K tomu je potřeba nejdřív zakoupit službu. Aktuální integrovaná verze je **1.0.14**.
 
-   * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat komponentu [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/Matching z oh22 na svém Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **1.0.45** .
+   * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat komponentu [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) Data Quality/Matching z oh22 na svém Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **1.0.45**.
 
-   * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, atd. z KingswaySoft na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020,1** .
+   * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, atd. z KingswaySoft na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **2020,1**.
 
-   * Pokud vyberete komponentu **SSIS produktivního balíku KingswaySoft** , můžete nainstalovat sadu funkcí pro [SSIS produktivní](https://www.kingswaysoft.com/products/ssis-productivity-pack) sadu komponent z KingswaySoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **20,1** .
+   * Pokud vyberete komponentu **SSIS produktivního balíku KingswaySoft** , můžete nainstalovat sadu funkcí pro [SSIS produktivní](https://www.kingswaysoft.com/products/ssis-productivity-pack) sadu komponent z KingswaySoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **20,1**.
 
-   * Pokud vyberete **Xtrahovat software Theobald** , můžete nainstalovat [xtrahovat je](https://theobald-software.com/en/xtract-is/) sada konektorů pro systémy SAP (ERP, s/4HANA, černobílý) od Theobald softwaru na vašich Azure-SSIS IR. Provedete to tak, že přetáhnete & přetáhněte nebo nahrajte soubor licence produktu, který jste si z nich koupili, do vstupního pole **soubor s licencí** . Aktuální integrovaná verze je **6.1.1.3** .
+   * Pokud vyberete **Xtrahovat software Theobald** , můžete nainstalovat [xtrahovat je](https://theobald-software.com/en/xtract-is/) sada konektorů pro systémy SAP (ERP, s/4HANA, černobílý) od Theobald softwaru na vašich Azure-SSIS IR. Provedete to tak, že přetáhnete & přetáhněte nebo nahrajte soubor licence produktu, který jste si z nich koupili, do vstupního pole **soubor s licencí** . Aktuální integrovaná verze je **6.1.1.3**.
 
-   * Pokud vyberete součást **integrační služby AecorSoft** , můžete [nainstalovat sadu](https://www.aecorsoft.com/en/products/integrationservice) konektorů konektorů pro systémy SAP a Salesforce z AecorSoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **3.0.00** .
+   * Pokud vyberete součást **integrační služby AecorSoft** , můžete [nainstalovat sadu](https://www.aecorsoft.com/en/products/integrationservice) konektorů konektorů pro systémy SAP a Salesforce z AecorSoft na své Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **3.0.00**.
 
-   * Vyberete-li **standardní součást balíčku CDATA SSIS** , můžete nainstalovat sadu [SSIS Standard](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) pro nejoblíbenější součásti z CDATA, například konektory služby Microsoft SharePoint, na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354** .
+   * Vyberete-li **standardní součást balíčku CDATA SSIS** , můžete nainstalovat sadu [SSIS Standard](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) pro nejoblíbenější součásti z CDATA, například konektory služby Microsoft SharePoint, na Azure-SSIS IR. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354**.
 
-   * Pokud vyberete součást **balíčku CDATA Extended Package SSIS** , můžete na svém Azure-SSIS IR nainstalovat sadu [SSIS Extended Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) pro všechny komponenty z CDATA, například Microsoft Dynamics 365 Business Central Connectors a další komponenty v jejich **standardním balíčku SSIS** . Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354** . Vzhledem k velké velikosti, aby nedocházelo k vypršení časového limitu instalace, zajistěte, aby měl váš Azure-SSIS IR aspoň 4 jádra procesoru na jeden uzel.
+   * Pokud vyberete součást **balíčku CDATA Extended Package SSIS** , můžete na svém Azure-SSIS IR nainstalovat sadu [SSIS Extended Package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) pro všechny komponenty z CDATA, například Microsoft Dynamics 365 Business Central Connectors a další komponenty v jejich **standardním balíčku SSIS**. Provedete to tak, že do textového pole **licenční klíč** zakoupíte předem zakoupený licenční kód produktu. Aktuální integrovaná verze je **19,7354**. Vzhledem k velké velikosti, aby nedocházelo k vypršení časového limitu instalace, zajistěte, aby měl váš Azure-SSIS IR aspoň 4 jádra procesoru na jeden uzel.
 
-Přidaná expresní vlastní nastavení se zobrazí na stránce **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit** .
+Přidaná expresní vlastní nastavení se zobrazí na stránce **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -273,7 +273,7 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
 
 1. Připojte se k našemu Public Preview kontejneru pomocí Průzkumník služby Azure Storage.
 
-   a. V části **(místní a připojená)** klikněte pravým tlačítkem na **účty úložiště** , vyberte **připojit k Azure Storage** , vyberte **Použít připojovací řetězec nebo identifikátor URI sdíleného přístupového podpisu** a pak vyberte **Další** .
+   a. V části **(místní a připojená)** klikněte pravým tlačítkem na **účty úložiště** , vyberte **připojit k Azure Storage** , vyberte **Použít připojovací řetězec nebo identifikátor URI sdíleného přístupového podpisu** a pak vyberte **Další**.
 
       ![Připojení ke službě Azure Storage pomocí sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image9.png)
 
@@ -283,13 +283,13 @@ Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastníc
 
       ![Zadejte sdílený přístupový podpis pro kontejner.](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
-   c. Vyberte **Další** a pak vyberte **připojit** .
+   c. Vyberte **Další** a pak vyberte **připojit**.
 
    d. V levém podokně vyberte připojený kontejner **publicpreview** a dvakrát klikněte na složku *CustomSetupScript* . V této složce jsou následující položky:
 
       * *Ukázková* složka, která obsahuje vlastní instalaci pro instalaci základní úlohy do každého uzlu vašeho Azure-SSIS IR. Úkol neprovede žádnou akci, ale během několika sekund režim spánku. Složka obsahuje taky složku *Gacutil* , jejíž celý obsah ( *gacutil.exe* , *gacutil.exe.config* a *1033\gacutlrc.dll* ) se dá zkopírovat jako do vašeho kontejneru.
 
-      * Složka *UserScenarios* , která obsahuje několik vlastních ukázek instalace ze scénářů reálných uživatelů.
+      * Složka *UserScenarios* , která obsahuje několik vlastních ukázek instalace ze scénářů reálných uživatelů. Pokud chcete do svého Azure-SSIS IR nainstalovat více ukázek, můžete zkombinovat vlastní instalační soubory skriptu ( *Main. cmd* ) do jednoho a nahrát ho do kontejneru pomocí všech přidružených souborů.
 
         ![Obsah kontejneru verze Public Preview](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 

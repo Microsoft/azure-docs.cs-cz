@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5013f8b7dd88340e397fd3d4d4cd93d4b911fbbb
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007076"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378223"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -101,7 +101,7 @@ Azure RBAC je autorizačním systémem postaveným na [Azure Resource Manager](.
 
  Služba Azure RBAC je navržená tak, aby fungovala s prostředky v rámci vašeho předplatného Azure, zatímco Kubernetes RBAC je navržená pro práci na Kubernetesch prostředcích v rámci 
 
-Pomocí Azure RBAC můžete vytvořit *definici role* , která bude mít přehled o oprávněních, která se mají použít. Uživateli nebo skupině se pak přiřadí tato definice role prostřednictvím *přiřazení role* pro konkrétní *obor*, což může být individuální prostředek, skupina prostředků nebo celé předplatné.
+Pomocí Azure RBAC můžete vytvořit *definici role* , která bude mít přehled o oprávněních, která se mají použít. Uživateli nebo skupině se pak přiřadí tato definice role prostřednictvím *přiřazení role* pro konkrétní *obor* , což může být individuální prostředek, skupina prostředků nebo celé předplatné.
 
 Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)?][azure-rbac]
 
@@ -143,7 +143,7 @@ AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integ
 | Správce RBAC služby Azure Kubernetes  | Povoluje přístup správce, který má být udělen v rámci oboru názvů. Umožňuje přístup pro čtení a zápis většiny prostředků v oboru názvů (nebo oboru clusteru), včetně možnosti vytvářet role a vazby rolí v rámci oboru názvů. Tato role nepovoluje přístup pro zápis k kvótě prostředků nebo samotnému oboru názvů. |
 | Správce clusteru RBAC služby Azure Kubernetes  | Umožňuje přístupu super uživatele k provedení jakékoli akce u libovolného prostředku. Poskytuje plnou kontrolu nad všemi prostředky v clusteru a ve všech oborech názvů. |
 
-**[Tady](manage-azure-rbac.md)najdete informace o tom, jak využít Azure RBAC pro autorizaci Kubernetes.**
+**Pokud chcete zjistit, jak povolit Azure RBAC pro autorizaci Kubernetes, [Přečtěte si sem](manage-azure-rbac.md).**
 
 ## <a name="next-steps"></a>Další kroky
 

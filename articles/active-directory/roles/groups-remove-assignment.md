@@ -6,19 +6,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f441930d9d99f35c2e53bb040b0db0a427659
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d58465c56be310d3f9d500ab551c7d2b19ffaa83
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375968"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378376"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>Odebrat přiřazení rolí ze skupiny v Azure Active Directory
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak může správce IT odebrat role Azure AD přiřazen
 
 1. Přihlaste se do [centra pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí oprávnění správce privilegované role nebo globální správce v organizaci Azure AD.
 
-1. Vyberte **role a správci** > **_název role_*_.
+1. Vyberte **role a správci** > * *_název role_* _.
 
 1. Vyberte skupinu, ze které chcete odebrat přiřazení role, a vyberte _ * odebrat přiřazení * *.
 
@@ -36,7 +36,7 @@ Tento článek popisuje, jak může správce IT odebrat role Azure AD přiřazen
 
 1. Po zobrazení výzvy k potvrzení akce vyberte **Ano**.
 
-## <a name="using-powershell"></a>Pomocí prostředí PowerShell
+## <a name="using-powershell"></a>Použití PowerShellu
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>Vytvoření skupiny, kterou je možné přiřadit roli
 
@@ -107,5 +107,5 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Použití skupin cloudů ke správě přiřazení rolí](groups-concept.md)
+- [Využití cloudových skupin ke správě přiřazení rolí](groups-concept.md)
 - [Řešení potíží s rolemi přiřazenými ke cloudovým skupinám](groups-faq-troubleshooting.md)

@@ -1,16 +1,16 @@
 ---
-title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor Application Insights
-description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
+title: Azure Monitor Application Insights Java
+description: Monitorování výkonu aplikací pro aplikace v jazyce Java spuštěné v jakémkoli prostředí bez nutnosti změny kódu. Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 1182813c0b79d43c2c264482629ad97f23683a49
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07be6a4ff08700ee9407fbf39946b7c24abbc01a
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215276"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377033"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
 Monitorování aplikací bez kódu Java je vše o jednoduchosti – neexistují žádné změny kódu, agent Java může být povolený jenom v několika změnách konfigurace.
 
@@ -26,15 +26,20 @@ Agent 3,0 podporuje jazyk Java 8 a vyšší.
 
 **1. Stáhněte agenta.**
 
-Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 7. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.7/applicationinsights-agent-3.0.0-PREVIEW.7.jar)
+> [!WARNING]
+> **Pokud upgradujete z verze 3,0 Preview**
+>
+> Přečtěte si pečlivě všechny [Možnosti konfigurace](./java-standalone-config.md) , protože se úplně změnila struktura JSON, kromě samotného názvu souboru, který všechno byl malý.
+
+Stáhnout [ApplicationInsights-agent-3.0.0. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar)
 
 **2. Nasměrujte JVM na agenta.**
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.7.jar` do ARGUMENTŮ JVM vaší aplikace
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` do ARGUMENTŮ JVM vaší aplikace
 
 Typické argumenty JVM zahrnují `-Xmx512m` a `-XX:+UseG1GC` . Takže pokud víte, kam je přidat, pak už víte, kam je přidat.
 
-Další nápovědu ke konfiguraci argumentů JVM vaší aplikace najdete v článku [3,0 Preview: Tipy pro aktualizaci ARGUMENTŮ JVM](./java-standalone-arguments.md).
+Další nápovědu ke konfiguraci argumentů JVM vaší aplikace najdete v [tipech pro aktualizaci ARGUMENTŮ JVM](./java-standalone-arguments.md).
 
 **3. Nasměrujte agenta na prostředek Application Insights**
 
@@ -46,7 +51,7 @@ Najeďte agentem na prostředek Application Insights, a to nastavením proměnn�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Nebo vytvořením konfiguračního souboru s názvem `ApplicationInsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.0-PREVIEW.7.jar` s následujícím obsahem:
+Nebo vytvořením konfiguračního souboru s názvem `applicationinsights.json` a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.0.jar` s následujícím obsahem:
 
 ```json
 {
@@ -70,19 +75,21 @@ Nyní spusťte aplikaci a přejděte do svého prostředku Application Insights 
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-V `ApplicationInsights.json` souboru můžete také nakonfigurovat:
+V `applicationinsights.json` souboru můžete také nakonfigurovat:
 
 * Název cloudové role
 * Instance cloudové role
-* Zachycení protokolu aplikace
-* JMX metriky
-* Mikrometr
-* Tep
 * Vzorkování
+* JMX metriky
+* Vlastní rozměry
+* Procesory telemetrie
+* Automaticky shromážděné protokolování
+* Automaticky shromážděná metrika mikroměřiče (včetně metriky pohánějícího spouštěcího zařízení)
+* Tep
 * Proxy server HTTP
-* Automatická diagnostika
+* Samoobslužná Diagnostika
 
-Podrobnosti najdete v článku [3,0 Public Preview: možnosti konfigurace](./java-standalone-config.md).
+Úplné podrobnosti najdete v tématu [Možnosti konfigurace](./java-standalone-config.md) .
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autoshromáždit požadavky, závislosti, protokoly a metriky
 
@@ -134,13 +141,13 @@ Následující tabulka představuje aktuálně podporované vlastní typy teleme
 
 |                     | Mikrometr | Log4j, logback, červenec | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Vlastní události**   |            |                     |  Ano    |
-| **Vlastní metriky**  |  Ano       |                     |  Ano    |
-| **Závislosti**    |            |                     |  Ano    |
-| **Výjimky**      |            |  Ano                |  Ano    |
-| **Page Views**      |            |                     |  Ano    |
-| **Žádosti**        |            |                     |  Ano    |
-| **Trasování**          |            |  Ano                |  Ano    |
+| **Vlastní události**   |            |                     |  Yes    |
+| **Vlastní metriky**  |  Yes       |                     |  Yes    |
+| **Závislosti**    |            |                     |  Yes    |
+| **Výjimky**      |            |  Yes                |  Yes    |
+| **Page Views**      |            |                     |  Yes    |
+| **Žádosti**        |            |                     |  Yes    |
+| **Trasování**          |            |  Yes                |  Yes    |
 
 V tuto chvíli neplánujeme vydání sady SDK pomocí Application Insights 3,0.
 
@@ -226,9 +233,14 @@ Můžete také použít Application Insights Java SDK 2. x:
 
 ## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgrade z Application Insights Java SDK 2. x
 
-Pokud v aplikaci již používáte Application Insights Java SDK 2. x, není nutné ji odebrat. Agent Java 3,0 ho detekuje a zachytí a koreluje se všemi vlastními telemetriemi, které posíláte prostřednictvím sady Java SDK 2. x, a zároveň potlačí všechny kolekce, které provádí Java SDK 2. x, aby se zabránilo duplicitnímu zachycení.
+Pokud v aplikaci již používáte Application Insights Java SDK 2. x, není nutné ji odebrat.
+Agent Java 3,0 ho detekuje a zachytí a koreluje se všemi vlastními telemetriemi, které posíláte prostřednictvím sady Java SDK 2. x, a přitom potlačí všechny automatické kolekce, které provádí Java SDK 2. x, aby nedocházelo k duplicitní telemetrii.
 
 Pokud jste používali agenta Application Insights 2. x, je nutné odebrat `-javaagent:` JVM arg, která odkazovala na agenta 2. x.
 
 > [!NOTE]
-> Poznámka: Java SDK 2. x TelemetryInitializers a TelemetryProcessors se při použití agenta 3,0 nespustí.
+> Sada Java SDK 2. x TelemetryInitializers a TelemetryProcessors se při použití agenta 3,0 nespustí.
+> Mnohé z případů použití, které se dřív vyžadovaly, je možné vyřešit v 3,0 konfigurací [vlastních dimenzí](./java-standalone-config.md#custom-dimensions) nebo konfigurací [procesorů telemetrie](./java-standalone-telemetry-processors.md).
+
+> [!NOTE]
+> 3,0 v jednom JVM ještě nepodporuje více klíčů instrumentace.

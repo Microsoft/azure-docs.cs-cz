@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294257"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376849"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
 
@@ -65,13 +65,11 @@ V následujícím diagramu architektury se zobrazuje implementace.
 | 4. | IdP vyzve uživatele k zadání přihlašovacích údajů. V závislosti na IdP může uživatel vyžadovat službu Multi-Factor Authentication (MFA).|
 | 5. | IdP odesílá odpověď ověřování zpět na Azure AD B2C. V případě potřeby může uživatel během tohoto kroku vytvořit místní účet v adresáři Azure AD B2C.|
 | 6. | Azure AD B2C odešle požadavek uživatele na koncový bod zadaný během registrace aplikace Orchestrator v tenantovi Azure AD B2C.|
-| 7. | Nástroj Orchestrator vyhodnotí zásady přístupu a vypočte hodnoty atributů, které se mají zahrnout do hlaviček HTTP předaných do aplikace. Během tohoto kroku může nástroj Orchestrator zavolat na další poskytovatele atributů a načíst informace potřebné k tomu, aby byly správně nastaveny hodnoty hlaviček.|
-| 8. | Nástroj Orchestrator nastaví hodnoty hlaviček a odešle požadavek do aplikace.|
-| 9. | Uživatel je teď ověřený a má přístup k aplikaci.|
+| 7. | Nástroj Orchestrator vyhodnotí zásady přístupu a vypočte hodnoty atributů, které se mají zahrnout do hlaviček HTTP předaných do aplikace. Během tohoto kroku může nástroj Orchestrator zavolat na další poskytovatele atributů a načíst informace potřebné k tomu, aby byly správně nastaveny hodnoty hlaviček. Nástroj Orchestrator nastaví hodnoty hlaviček a odešle požadavek do aplikace.|
+| 8. | Uživatel je teď ověřený a má přístup k aplikaci.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Získat Maverics identity Orchestrator
 
-Pokud chcete získat software, který budete používat k integraci své starší verze místní aplikace s Azure AD B2C, obraťte se na [vrstvy](https://www.strata.io/contact/). Po získání softwaru postupujte podle následujících kroků a určete požadavky na produkt Orchestrator a proveďte požadované kroky instalace a konfigurace.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Konfigurace tenanta Azure AD B2C
 

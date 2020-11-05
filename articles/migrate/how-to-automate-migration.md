@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: 5541d5c3b9beea86f5c76747dd13ffeff1b12d97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133538"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377951"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Škálování migrace virtuálních počítačů VMware 
 
 Tento článek vám pomůže pochopit, jak používat skripty k migraci velkého počtu virtuálních počítačů VMware pomocí metody bez agenta. Pokud chcete škálovat migrace, použijte [Azure Migrate modul PowerShellu](https://aka.ms/azuremigratepowershellvmware). 
 
-Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke stažení v úložišti [Azure PowerShell Samples] https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware do Azure pomocí metody migrace bez agenta. Následující příkazy Azure Migrate PowerShellu používané v těchto skriptech jsou popsané [tady](https://aka.ms/azuremigratepowershellvmware).
+Azure Migrate skripty pro automatizaci migrace VMware jsou k dispozici ke stažení na webu pro [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware do Azure pomocí metody migrace bez agenta. Následující příkazy Azure Migrate PowerShellu používané v těchto skriptech jsou popsané [tady](https://aka.ms/azuremigratepowershellvmware).
 
 ## <a name="current-limitations"></a>Aktuální omezení
 - Tyto skripty podporují migraci virtuálních počítačů VMware se všemi disky. Skripty můžete aktualizovat, pokud chcete selektivně replikovat disky připojené k virtuálnímu počítači VMware. 

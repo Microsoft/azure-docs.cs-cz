@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 3474a97f4b05fd1f944e18abebcef927232453e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89087666"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376110"
 ---
 Pokud Průzkumník služby Storage používáte poprvé, musíte provést následující kroky.
 
@@ -24,11 +24,11 @@ Pomocí těchto kroků se připojte k účtu úložiště a ověřte připojení
 
 1. V Průzkumník služby Storage vyberte účty úložiště. Klikněte pravým tlačítkem a vyberte možnost **připojit k Azure Storage** . 
 
-    ![Konfigurace Průzkumník služby Storage](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
+    ![Konfigurace Průzkumník služby Storage 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-2.png)
 
 2. V dialogovém okně **připojit k Azure Storage** vyberte **použít název a klíč účtu úložiště**.
 
-    ![Konfigurace Průzkumník služby Storage](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
+    ![Konfigurace Průzkumník služby Storage 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-3.png)
 
 2. V dialogovém okně **připojit s názvem a klíčem** proveďte následující kroky:
 
@@ -39,11 +39,11 @@ Pomocí těchto kroků se připojte k účtu úložiště a ověřte připojení
     5. Políčko při přenosu **použít možnost protokolu HTTP** je přes *protokol HTTP*. 
     6. Vyberte **Další**.
 
-    ![Konfigurace Průzkumník služby Storage](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
+    ![Konfigurace Průzkumník služby Storage 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
-3. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Připojit**.
+3. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Connect** (Připojit).
 
-    ![Konfigurace Průzkumník služby Storage](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
+    ![Konfigurace Průzkumník služby Storage 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-5.png)
 
 4. Účet, který jste úspěšně přidali, se zobrazí v levém podokně Průzkumník služby Storage s (externí, jiný) připojeným k názvu. Vyberte **kontejnery objektů BLOB** pro zobrazení kontejneru.
 
@@ -59,27 +59,27 @@ Provedením následujících kroků načtete data do svého účtu úložiště 
 
 2. V dialogovém okně **nahrát soubory** přejděte na a vyberte soubory, které chcete nahrát. Vyberte **Další**.
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
+    ![Ověření přenosu dat 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 
 3. Ověřte, že se soubory nahrály. Nahrané soubory se zobrazí v kontejneru.
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
+    ![Ověření přenosu dat 3](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-3.png)
 
 4. V dalším kroku se připojíte k účtu Azure Storage namapovanému na tento účet úložiště Edge. Všechna data, která se nahrají na hraniční účet úložiště, by se měla automaticky navrstvit na účet Azure Storage. 
     
     Připojovací řetězec pro účet Azure Storage získáte tak, že přejdete na **účet Azure Storage > přístupové klíče** a zkopírujete připojovací řetězec.
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
+    ![Ověření přenosu dat 4](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-5.png)
 
     Použijte připojovací řetězec pro připojení k Azure Storagemu účtu.  
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
+    ![Ověření přenosu dat 5](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-4.png)
 
 
-5. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Připojit**.
+5. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Connect** (Připojit).
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
+    ![Ověření přenosu dat 6](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-6.png)
 
 6. Uvidíte, že soubory, které jste nahráli v účtu úložiště Edge, se přenesly na účet Azure Storage.
 
-    ![Ověření přenosu dat](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)
+    ![Ověření přenosu dat 7](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-7.png)

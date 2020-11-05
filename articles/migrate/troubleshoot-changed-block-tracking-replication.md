@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: da1f7ce1474513fd9de286495f59aca63d8628b6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314734"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377200"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Řešení potíží s replikací v migraci virtuálních počítačů VMware bez agenta
 
@@ -29,11 +29,16 @@ Občas se může zobrazit selhání replikačních cyklů pro virtuální počí
 K monitorování stavu replikace virtuálních počítačů použijte následující postup:
 
   1. Přejít na stránku servery v Azure Migrate na Azure Portal.
-  2. Kliknutím na replikace serverů na dlaždici migrace serveru přejděte na stránku replikace počítačů.
-  3. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota "kritická" nebo "Warning" ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
-  4. Kliknutím na nedávné události zobrazíte předchozí selhání cyklu replikace pro virtuální počítač. Na stránce události vyhledejte nejnovější událost typu "cyklus replikace selhala" nebo "cyklus replikace pro disk" virtuálního počítače "selhal.
-  5. Kliknutím na událost pochopíte možné příčiny chyby a doporučené kroky k nápravě. Použijte informace, které jsou k dispozici k řešení potíží, a opravte chybu.
-    
+  ![Obrázek 1](./media/troubleshoot-changed-block-tracking-replication/image0.png)
+  1. Kliknutím na replikace serverů na dlaždici migrace serveru přejděte na stránku replikace počítačů.
+  ![Obrázek 2](./media/troubleshoot-changed-block-tracking-replication/image1.png)
+  1. Zobrazí se seznam replikačních serverů spolu s dalšími informacemi, jako je stav, stav, čas poslední synchronizace atd. Sloupec Health (stav) indikuje aktuální stav replikace virtuálního počítače. Hodnota "kritická" nebo "Warning" ve sloupci Stav obvykle označuje, že předchozí cyklus replikace pro virtuální počítač se nezdařil. Pokud chcete získat další informace, klikněte pravým tlačítkem na virtuální počítač a vyberte podrobnosti o chybě. Stránka Podrobnosti o chybě obsahuje informace o chybě a další podrobnosti o tom, jak řešit potíže. Zobrazí se také odkaz nedávné události, který se dá použít k přechodu na stránku události pro daný virtuální počítač.
+  ![Obrázek 3](./media/troubleshoot-changed-block-tracking-replication/image2.png)
+  1. Kliknutím na nedávné události zobrazíte předchozí selhání cyklu replikace pro virtuální počítač. Na stránce události vyhledejte nejnovější událost typu "cyklus replikace selhala" nebo "cyklus replikace pro disk" virtuálního počítače "selhal.
+  ![Obrázek 4](./media/troubleshoot-changed-block-tracking-replication/image3.png)
+  1. Kliknutím na událost pochopíte možné příčiny chyby a doporučené kroky k nápravě. Použijte informace, které jsou k dispozici k řešení potíží, a opravte chybu.
+ ![Obrázek 5](./media/troubleshoot-changed-block-tracking-replication/image4.png)
+
 ## <a name="common-replication-errors"></a>Běžné chyby replikace
 
 Tato část popisuje některé běžné chyby a jejich řešení.
@@ -54,7 +59,7 @@ Když portál vytvoří Trezor klíčů, přidá taky zásadu přístupu uživat
 
 - Druhý případ, kdy k tomu může dojít, nastane, když se jeden uživatel (uživatel1) pokusil nastavit replikaci zpočátku a narazil na chybu, ale Trezor klíčů už je vytvořený (a zásady přístupu uživatele jsou správně přiřazené tomuto uživateli). Nyní se teď jiný uživatel (uživatel2) pokusí nastavit replikaci, ale operace konfigurace spravovaného účtu úložiště nebo vygenerování definice SAS se nezdařila, protože neexistují žádné zásady přístupu uživatele, které by v trezoru klíčů odpovídaly.
 
-**Řešení**: Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
+**Řešení** : Pokud chcete tento problém vyřešit, vytvořte zásadu přístupu uživatele pro uživatel2 v trezoru klíčů udělující oprávnění uživatel2 ke konfiguraci spravovaného účtu úložiště a generování definic SAS. Uživatel2 to může udělat z Azure PowerShell pomocí níže uvedených rutin:
 
 $userPrincipalId = $ (Get-AzureRmADUser-UserPrincipalName "user2_email_address"). Účet
 
@@ -134,7 +139,7 @@ Komponenta, která se pokouší replikovat data do Azure, je buď nefunkční, n
     
     Tento příkaz se pokusí o připojení TCP a vrátí výstup.
     
-     - Ve výstupu vyhledejte pole "_TcpTestSucceeded_". Pokud je hodnota "_true_", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
+     - Ve výstupu vyhledejte pole " _TcpTestSucceeded_ ". Pokud je hodnota " _true_ ", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
     
     **Řešení:** Pokud tento test neproběhne úspěšně, dojde k problémům s připojením mezi Azure Migrate zařízením a Azure Key Vault. Zapojte svůj místní síťový tým, aby zkontroloval problémy s připojením. Obvykle se může jednat o některá nastavení brány firewall, která způsobují selhání.
     
@@ -220,7 +225,7 @@ Mezi možné příčiny patří:
     
     Tento příkaz se pokusí o připojení TCP a vrátí výstup.
     
-    1. Ve výstupu vyhledejte pole "_TcpTestSucceeded_". Pokud je hodnota "_true_", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
+    1. Ve výstupu vyhledejte pole " _TcpTestSucceeded_ ". Pokud je hodnota " _true_ ", nedochází k žádnému problému s připojením mezi Azure Migrate zařízením a Azure Key Vault. Pokud je hodnota false, dojde k problému s připojením.
     
     **Řešení:** Pokud tento test neproběhne úspěšně, dojde k problémům s připojením mezi Azure Migrate zařízením a Azure Key Vault. Zapojte svůj místní síťový tým, aby zkontroloval problémy s připojením. Obvykle se může jednat o některá nastavení brány firewall, která způsobují selhání.
     
@@ -271,7 +276,7 @@ Pokud máte virtuální počítač s více disky, může dojít k této chybě p
 
 K tomuto problému dochází, když generování snímků přestane reagovat. Když k tomuto problému dojde, můžete vidět, že se úloha vytvoření snímku zastaví na 95% nebo v 99%. Pokud chcete tento problém vyřešit, přečtěte si tento [článek o VMware KB](https://go.microsoft.com/fwlink/?linkid=2138969) .
 
-### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_]
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Chybová zpráva: došlo k vnitřní chybě. [Nepovedlo se konsolidovat disky na virtuálním počítači _[důvody]_ ]
 
 Když konsolidujeme disky na konci replikačního cyklu, operace se nezdařila. Postupujte podle pokynů v nástroji [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138970) výběrem vhodného _důvodu_ k vyřešení problému.
 
