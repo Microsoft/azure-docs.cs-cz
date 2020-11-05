@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60087dc23b804dac6644dc09cddc031526fb0f8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 930c1f94446eb145a093bf7a8706485d40eec210
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313777"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379655"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Spravované privátní koncové body synapse (Preview)
 
@@ -45,11 +45,11 @@ Pouze spravovaný privátní koncový bod ve schváleném stavu může odesílat
 
 ## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Spravované soukromé koncové body pro vyhrazený fond SQL a SQL Server bez serveru
 
-vyhrazený fond SQL a fond SQL bez serveru jsou analytické možnosti v pracovním prostoru Azure synapse. Tyto možnosti využívají víceklientské infrastruktury, která není nasazená do [spravovaného pracovního prostoru Virtual Network](./synapse-workspace-managed-vnet.md).
+Vyhrazený fond SQL a fond SQL bez serveru jsou analytické možnosti v pracovním prostoru Azure synapse. Tyto možnosti využívají víceklientské infrastruktury, která není nasazená do [spravovaného pracovního prostoru Virtual Network](./synapse-workspace-managed-vnet.md).
 
 Po vytvoření pracovního prostoru vytvoří Azure synapse dva spravované privátní koncové body v pracovním prostoru, jednu pro vyhrazený fond SQL a jednu pro fond SQL bez serveru. 
 
-Tyto dva spravované privátní koncové body jsou uvedené v Azure synapse studiu. V levém navigačním panelu vyberte **Spravovat** a potom v nástroji Studio vyberte **spravované virtuální sítě** .
+Tyto dva spravované privátní koncové body jsou uvedeny v synapse studiu. V levém navigačním panelu vyberte **Spravovat** a potom vyberte **spravované privátní koncové body** , které se zobrazí v studiu.
 
 Spravovaný soukromý koncový bod, který cílí na fond SQL, se nazývá *synapse-WS- \<workspacename\> SQL--* a ten, který cílí na SQL fond bez serveru, se nazývá *synapse- \<workspacename\> WS-sqlOnDemand--*.
 
