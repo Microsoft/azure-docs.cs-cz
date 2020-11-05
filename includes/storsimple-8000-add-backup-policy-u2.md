@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bff61cfbf89aee3566d677ccf593b102cff36d
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175197"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375992"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>Přidání zásady zálohování StorSimple
 
@@ -27,11 +27,11 @@ ms.locfileid: "67175197"
        
    3. Pokud chcete k této zásadě zálohování přiřadit svazky, vyberte **Přidat svazky** a potom v tabulkovém výpisu svazků zaškrtnutím políček přiřaďte této zásadě zálohování jeden nebo několik svazků.
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
+       ![Přidání zásady zálohování 2](./media/storsimple-8000-add-backup-policy-u2/addbupol2.png)
 
    4. Pokud chcete pro tuto zásadu zálohování nadefinovat plán, klikněte na **První plán** a potom upravte následující parametry:
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
+       ![Přidání zásady zálohování 3](./media/storsimple-8000-add-backup-policy-u2/addbupol3.png)
 
        1. Jako **Typ snímku** vyberte **Cloud** nebo **Místní**.
 
@@ -45,9 +45,9 @@ ms.locfileid: "67175197"
 
    5. Kliknutím na **Vytvořit** vytvořte zásadu zálohování.
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
+       ![Přidání zásady zálohování 4](./media/storsimple-8000-add-backup-policy-u2/addbupol4.png)
    
    6. Po vytvoření zásady zálohování se zobrazí oznámení. Nově přidaná zásada se zobrazí v tabulkovém zobrazení v okně **Zásady zálohování**.
 
-       ![Přidání zásady zálohování](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
+       ![Přidání zásady zálohování 5](./media/storsimple-8000-add-backup-policy-u2/addbupol7.png)
 

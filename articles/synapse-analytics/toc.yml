@@ -529,6 +529,8 @@
       items:
         - name: Načtení dat do fondů SQL pomocí aktivity kopírování
           href: quickstart-copy-activity-load-sql-pool.md
+        - name: Transformace dat s využitím mapování toků dat
+          href: quickstart-data-flow.md
     - name: Koncepty
       items:
         - name: Kanál a aktivita

@@ -4,18 +4,18 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f1c30b303bd1fe02e0685c7d848be92073ca2f6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175070"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375894"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>Přidání přihlašovacích údajů účtu úložiště ve stejném předplatném Azure, jako je služba Správce zařízení StorSimple
 
 1. Přejděte do služby Správce zařízení StorSimple. V části **Konfigurace** klikněte na **Přihlašovací údaje účtu úložiště**.
 
-    ![Přihlašovací údaje účtu úložiště](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
+    ![Přejít na přihlašovací údaje účtu úložiště](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct1.png)
 
 2. V okně **Přihlašovací údaje účtu úložiště** klikněte na **+ Přidat**.
 
@@ -39,5 +39,5 @@ ms.locfileid: "67175070"
 
 Nově vytvořené přihlašovací údaje účtu úložiště se zobrazí v seznamu **Přihlašovací údaje účtu úložiště**.
 
-![Seznam přihlašovacích údajů účtu úložiště](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
+![Výpis přihlašovacích údajů účtu úložiště](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct6.png)
 

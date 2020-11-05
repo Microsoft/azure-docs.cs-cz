@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d2df7388018c463ba58b57be46945915210b84b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9832a961562930e61e94b28ed78976fd9f8c6f78
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175205"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376196"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Instalace aktualizace z webu Azure Portal
 
@@ -23,11 +23,11 @@ ms.locfileid: "67175205"
 
 2. Pokud jsou k dispozici nové aktualizace, zobrazí se oznámení. Případně můžete v okně **aktualizace zařízení** kliknout na **Vyhledat aktualizace**. Vytvoří se úloha vyhledávání dostupných aktualizací. Po úspěšném dokončení úlohy se zobrazí zpráva.
 
-    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update5-via-portal/update3.png)
+    ![Klikněte na aktualizace zařízení 2.](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
 3. Doporučujeme, abyste si před instalací aktualizace na zařízení prošli poznámky k verzi. Chcete-li použít aktualizace, klikněte na tlačítko **instalovat aktualizace**. V okně **Potvrdit běžné aktualizace** si přečtěte předpoklady, které je potřeba provést před instalací aktualizací. Zaškrtnutím políčka označíte, že jste připraveni aktualizovat zařízení, a pak klikněte na **nainstalovat**.
 
-    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update5-via-portal/update4.png)
+    ![Klikněte na aktualizace zařízení 3](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
 6. Spustí se sada kontrol požadavků. Mezi tyto kontroly patří:
    
@@ -45,11 +45,11 @@ ms.locfileid: "67175205"
 
 9. Dokončení aktualizace trvá několik hodin. Podrobnosti o úloze můžete kdykoli zobrazit výběrem úlohy aktualizace a kliknutím na **Podrobnosti**.
 
-    ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update5-via-portal/update8.png)
+    ![Aktualizovat vytvoření úlohy 2](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
      Můžete také monitorovat průběh úlohy aktualizace z **nastavení zařízení > úloh**. V okně **úlohy** vidíte průběh aktualizace.
 
-     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update5-via-portal/update7.png)
+     ![Aktualizovat vytvoření úlohy 3](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
 10. Po dokončení úlohy přejděte do **nastavení zařízení > aktualizace zařízení**. Verze softwaru by se teď měla aktualizovat.
 

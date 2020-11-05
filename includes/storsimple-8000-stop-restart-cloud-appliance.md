@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c10482029e6cfce7063d205161fed54030919c48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a01f91a81629800d3f03b907c65f05433b6163e6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175065"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375835"
 ---
 #### <a name="to-stop-and-start-a-cloud-appliance"></a>Zastavení a spuštění cloudového zařízení
 
@@ -18,19 +18,19 @@ ms.locfileid: "67175065"
 
 2. Na panelu příkazů klikněte na **Zastavit**.
 
-    ![Virtuální počítač s řešením StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
+    ![StorSimple Cloud Appliance virtuální počítač 2](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart2.png)
 
 3. Po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![Virtuální počítač s řešením StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
+    ![StorSimple Cloud Appliance virtuální počítač 3](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart3.png)
 
 4. Když zastavíte virtuální počítač, dojde k jeho uvolnění. Během zastavování cloudového zařízení je jeho stav **Uvolňování**. Po zastavení cloudového zařízení je jeho stav **Zastaveno (uvolněno)**.
 
-    ![Virtuální počítač s řešením StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
+    ![StorSimple Cloud Appliance virtuální počítač 4](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart4.png)
 
 5. Po zastavení virtuálního počítače ho můžete spustit kliknutím na **Spustit** (tlačítko se stane dostupným). Po spuštění cloudového zařízení je jeho stav **Spuštěno**.
 
-    ![Virtuální počítač s řešením StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
+    ![StorSimple Cloud Appliance virtuální počítač 5](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart5.png)
 
 K zastavení a spuštění cloudového zařízení slouží následující rutiny.
 
@@ -42,7 +42,7 @@ K zastavení a spuštění cloudového zařízení slouží následující rutin
 
 Pokud chcete restartovat cloudové zařízení, přejděte do virtuálního počítače pro cloudové zařízení. Na panelu příkazů klikněte na **Restartovat**. Po zobrazení výzvy potvrďte restartování. Když je cloudové zařízení připravené k použití, jeho stav je **Spuštěno**.
 
-![Virtuální počítač s řešením StorSimple Cloud Appliance](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
+![StorSimple Cloud Appliance virtuálního počítače 6](./media/storsimple-8000-stop-restart-cloud-appliance/sca-stop-restart6.png)
 
 K restartování cloudového zařízení slouží následující rutina.
 

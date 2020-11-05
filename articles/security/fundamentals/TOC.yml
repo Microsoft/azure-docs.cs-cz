@@ -68,6 +68,8 @@
   items:
     - name: Antimalware od Microsoftu
       href: antimalware.md
+    - name: Ukázky kódu pro Microsoft Antimalware
+      href: antimalware-code-samples.md
     - name: Přehled zabezpečení virtuálních počítačů
       href: virtual-machines-overview.md
     - name: Osvědčené postupy – úlohy IaaS

@@ -13,7 +13,7 @@
       href: quickstart-powershell.md
 - name: Kurzy
   items:
-    - name: Vytvoření a podepsání zásad ověřování identity
+    - name: Vytvoření zásad ověřování identity
       href: author-sign-policy.md
     - name: Ukázky kódu ověřování identity SGX
       href: /samples/browse/?expanded=azure&terms=attestation
@@ -47,5 +47,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.Azure.DCAP/'
     - name: Knihovna Azure DCAP pro Linux
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
+    - name: Řešení potíží
+      href: troubleshoot-guide.md
     - name: Protokol ověření identity VBS
       href: virtualization-based-security-protocol.md

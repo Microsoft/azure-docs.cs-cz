@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d1ca6d37d6133786aff7ad3156fea2a0c22dfb97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175071"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375765"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>Vytvoření cloudového zařízení
 
@@ -18,7 +18,7 @@ ms.locfileid: "67175071"
     ![Vytvoření cloudového zařízení StorSimple](./media/storsimple-8000-create-cloud-appliance-u2/sca-create1.png)
 3. V okně **Vytvořit cloudové zařízení** zadejte následující podrobnosti.
    
-    ![Vytvoření cloudového zařízení StorSimple](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
+    ![StorSimple vytvořit cloudové zařízení 2](./media/storsimple-8000-create-cloud-appliance-u2/sca-create2m.png)
    
    1. **Název** – Jedinečný název cloudového zařízení.
    2. **Model** – Zvolte model cloudového zařízení. Zařízení 8010 nabízí službu Storage úrovně Standard s 30 TB úložiště, zatímco zařízení 8020 má službu Premium Storage s 64 TB úložiště. Pokud chcete nasadit scénáře načítání souborů ze záloh na úrovni položek, zadejte 8010. Pokud chcete nasadit vysoce výkonné úlohy s nízkou latencí nebo pro použití jako sekundární zařízení pro zotavení po havárii, vyberte 8020.

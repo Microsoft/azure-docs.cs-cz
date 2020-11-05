@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f423d30dd10930d593bb1d5d39b46ed8914146e7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175196"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376163"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>Přidání nebo úprava plánu zálohování StorSimple
 
@@ -21,9 +21,9 @@ ms.locfileid: "67175196"
 
 3. V okně **Přidat plán** upravte typ snímku, četnost zálohování, uchování a datum a čas spuštění. Klikněte na **Přidat**.
 
-    ![spravovat plány](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
+    ![spravovat plány 2](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
 4. Po dokončení vytvoření zásady zálohování se zobrazí oznámení. Seznam zásad zálohování je také aktualizovaný.
 
-    ![spravovat plány](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
+    ![spravovat plány 3](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

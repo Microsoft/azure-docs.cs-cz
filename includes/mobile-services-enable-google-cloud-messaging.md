@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b32ff0926aa2b797bdb8dfcbb01cf845080a0ce9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67175599"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376169"
 ---
 1. Přejděte na [Google Cloud Console](https://console.developers.google.com/cloud-resource-manager) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google. 
 2. Na panelu nástrojů vyberte **Vytvořit projekt**. 
@@ -43,7 +43,7 @@ ms.locfileid: "67175599"
     ![Tlačítko pro vytvoření přihlašovacích údajů](./media/mobile-services-enable-google-cloud-messaging/create-credentials-button.png)
 11. Na stránce **Add credentials to your project** (Přidání přihlašovacích údajů k vašemu projektu) vyberte odkaz **API key** (Klíč rozhraní API). 
 
-    ![Tlačítko pro vytvoření přihlašovacích údajů](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
+    ![Přidat přihlašovací údaje](./media/mobile-services-enable-google-cloud-messaging/api-key-button.png)    
 12. Na stránce **API key** (Klíč rozhraní API) vyberte **Create/Save** (Vytvořit nebo Uložit). V následujícím příkladu je vybraná možnost **IP addresses** (IP adresy) a pro povolené IP adresy je zadaná hodnota **0.0.0.0/0**. Klíč rozhraní API byste měli vhodným způsobem omezit. 
 
     ![Klíč rozhraní API – tlačítko pro vytvoření](./media/mobile-services-enable-google-cloud-messaging/api-key-create-button.png)
