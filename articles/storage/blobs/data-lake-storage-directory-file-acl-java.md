@@ -9,12 +9,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 94696eacd9a75129f493a97bca201ad5ffb3456c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 2526f8a79cb9f9bc312c6338e3a005244a4a901c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131560"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359132"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adr
 
 [Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  |  Reference k rozhraní [API](/java/api/overview/azure/storage-file-datalake-readme)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -399,11 +399,15 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 }
 ```
 
+### <a name="set-an-acl-recursively"></a>Rekurzivní nastavení seznamu ACL
+
+Seznamy ACL můžete přidat, aktualizovat a odebrat rekurzivně na existujících podřízených položkách nadřazeného adresáře bez nutnosti provádět tyto změny jednotlivě pro každou podřízenou položku. Další informace najdete v tématu [rekurzivní nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2](recursive-access-control-lists.md).
+
 ## <a name="see-also"></a>Viz také
 
 * [Referenční dokumentace k rozhraní API](/java/api/overview/azure/storage-file-datalake-readme)
 * [Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)
-* [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
+* [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

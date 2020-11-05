@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7b26c88bcbd303f00dc6163dd0323b07cbb83dcf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073821"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358707"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Vysvětlení informací na faktuře za službu Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -103,11 +103,11 @@ Pokud zvýšíte zřízenou propustnost pro kontejner nebo sadu kontejnerů v 9:
 
 * Za měsíc 720 hodin, pokud po dobu 300 hodin zřídila 120 propustnost-K RU/s a 420 zbývající hodin zajištěné propustnosti byly 155-K RU/s, bude vaše měsíční vyúčtování obsahovat: 300 x $9.60/Hour + 420 × $12.40/Hour = $2 880 + $5 208 = $8088/měsíc. 
 
-:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Příklad vyhrazené faktury za propustnost":::
+:::image type="content" source="./media/understand-your-bill/bill-example2.png" alt-text="Příklad sdílené propustnosti na faktuře":::
 
-## <a name="billing-examples-with-geo-replication-and-multi-region-writes"></a>Příklady účtování s použitím geografických replikací a zápisů ve více oblastech  
+## <a name="billing-examples-with-geo-replication"></a>Příklady fakturace s geografickou replikací  
 
-Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého účtu databáze Azure Cosmos. Propustnost, kterou jste nakonfigurovali pro různé databáze a kontejnery Azure Cosmos, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je součet zřízené propustnosti (RU/s) nakonfigurovaný napříč všemi databázemi a kontejnery v rámci účtu databáze Azure Cosmos (zřízený za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, celková zajištěná propustnost pro danou hodinu pro účet databáze Azure Cosmos (a) nakonfigurovaná s jednou oblastí zápisu se rovná T x N RU/s a (b) nakonfigurovaným se všemi oblastmi, které jsou schopné zpracovávat zápisy, se rovná T x (N + 1) RU/s. Zajištěná propustnost (jedna oblast zápisu) cost $0.008/Hour za 100 RU/s a zřízená propustnost s několika oblastmi s možností zápisu (konfigurace zápisů s více oblastmi) náklady $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
+Oblasti Azure kdekoli na světě můžete kdykoli přidat nebo odebrat do svého účtu databáze Azure Cosmos. Propustnost, kterou jste nakonfigurovali pro různé databáze a kontejnery Azure Cosmos, se vyhrazuje v každé oblasti Azure přidružené k vašemu účtu databáze Azure Cosmos. Pokud je celková zřízená propustnost (RU/s) nakonfigurovaná napříč všemi databázemi a kontejnery v rámci vašeho účtu databáze Azure Cosmos (zřízené za hodinu) a počet oblastí Azure přidružených k vašemu databázovému účtu je N, pak je celková zajištěná propustnost za danou hodinu pro účet databáze Azure Cosmos rovna T x N RU/s. Zajištěná propustnost (jedna oblast zápisu) cost $0.008/Hour za 100 RU/s a zřízená propustnost s několika oblastmi s možností zápisu (konfigurace zápisů s více oblastmi) náklady $0,016/za hodinu za 100 RU/s (viz [stránku s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)). Bez ohledu na to, jestli má jedna oblast pro zápis nebo do více oblastí pro zápis, Azure Cosmos DB umožňuje číst data z libovolné oblasti.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Příklad fakturace: účet Azure Cosmos s více oblastmi, zápisy v jedné oblasti
 
@@ -193,7 +193,7 @@ Pojďme vzít v úvahu následující příklad, kde máme účet Azure Cosmos s
 
 Vizuálně na následujícím obrázku vidíte změny v celkové zřízené propustnosti během 720 hodin v měsíci: 
 
-:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Příklad vyhrazené faktury za propustnost":::
+:::image type="content" source="./media/understand-your-bill/bill-example3.png" alt-text="Příklad reálného života":::
 
 Celková fakturovaná částka bude (za za 30 dní/720 hodin za měsíc) se vypočítává takto:
 

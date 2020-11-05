@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976925"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357466"
 ---
 # <a name="quickstart-handle-sms-events"></a>Rychlý Start: zpracování událostí serveru SMS
 
@@ -26,7 +26,7 @@ Začínáme s komunikačními službami Azure pomocí Azure Event Grid k obsluze
 
 [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) je cloudová služba pro pokládání událostí. V tomto článku se dozvíte, jak se přihlásit k odběru událostí [služby Communication Service](../../concepts/event-handling.md)a aktivovat událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. V tomto článku pošleme události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Prostředek služby Azure Communication Service. Další podrobnosti najdete v rychlém startu [Vytvoření zdroje komunikace Azure](../create-communication-resource.md) .
 - Telefonní číslo s povoleným SMS. [Získejte telefonní číslo](./get-phone-number.md).
@@ -41,11 +41,11 @@ Na webu Azure Portal:
 
 1. V nabídce vlevo vyberte **odběry** .
 2. Vyberte předplatné, které používáte pro službu Event Grid.
-3. V nabídce vlevo v části **Nastavení**vyberte **poskytovatelé prostředků**.
+3. V nabídce vlevo v části **Nastavení** vyberte **poskytovatelé prostředků**.
 4. Vyhledejte **Microsoft.EventGrid**.
 5. Pokud prostředek není zaregistrovaný, vyberte **Zaregistrovat**. 
 
-Dokončení registrace může chvíli trvat. Stav můžete aktualizovat kliknutím na **Aktualizovat**. Jakmile se **Stav** změní na **Zaregistrováno**, můžete pokračovat.
+Dokončení registrace může chvíli trvat. Stav můžete aktualizovat kliknutím na **Aktualizovat**. Jakmile se **Stav** změní na **Zaregistrováno** , můžete pokračovat.
 
 ### <a name="event-grid-viewer-deployment"></a>Nasazení Event Grid Vieweru
 
@@ -63,21 +63,23 @@ Na stránce **vytvořit odběr události** zadejte **název** odběru události.
 
 Můžete se přihlásit k odběru konkrétních událostí a sdělit Event Grid, které události serveru SMS chcete sledovat a kam se mají události odesílat. Z rozevírací nabídky vyberte události, k jejichž odběru se chcete přihlásit. V případě serveru SMS máte možnost zvolit možnosti `SMS Received` a `SMS Delivery Report Received` . 
 
+Pokud se zobrazí výzva k zadání **názvu systémového tématu** , můžete si bez obav zadat jedinečný identifikátor, který můžete volitelně použít k filtrování událostí po jejich vygenerování.
+
 Podívejte se na úplný seznam událostí, které [podporuje komunikační služby Azure](../../concepts/event-handling.md).
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Snímek obrazovky s informacemi o přijetí služby SMS a oznámením o doručení SMS přijal vybrané typy událostí.":::
 
 Vyberte **webový Hook** pro **Typ koncového bodu**. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Snímek obrazovky s polem typu koncového bodu nastaveným na webový Hook":::
 
-V části **koncový bod**klikněte na **Vybrat koncový bod**a zadejte adresu URL vaší webové aplikace.
+V části **koncový bod** klikněte na **Vybrat koncový bod** a zadejte adresu URL vaší webové aplikace.
 
 V tomto případě použijeme adresu URL z [ukázky Azure Event Grid Viewer](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) , kterou jsme nastavili dříve v rychlém startu. Adresa URL pro ukázku bude ve formátu: `https://{{site-name}}.azurewebsites.net/api/updates`
 
 Pak vyberte **potvrdit výběr**.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Snímek obrazovky, který ukazuje potvrzení koncového bodu webového zavěšení":::
 
 ## <a name="viewing-sms-events"></a>Zobrazení událostí serveru SMS
 
@@ -94,9 +96,9 @@ Podívejte se na úplný seznam událostí, které [podporuje komunikační slu�
 
 Jakmile dokončíte jednu akci výše, všimnete si, že `SMS Received` se `SMS Delivery Report Received` do vašeho koncového bodu odesílají události a. Tyto události se zobrazí v [ukázce Azure Event Grid Vieweru](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) , kterou jsme nastavili na začátku. Můžete stisknout ikonu oka vedle události a zobrazit celou datovou část. Události budou vypadat takto:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Snímek obrazovky znázorňující Event Grid schéma pro událost přijatou serverem SMS":::
 
-:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Snímek obrazovky s výběrem tlačítka pro odběr události v rámci stránky události prostředku":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Snímek obrazovky znázorňující Event Grid schéma pro událost sestavy doručení SMS.":::
 
 Přečtěte si další informace o [schématech událostí a dalších konceptech událostí](../../concepts/event-handling.md).
 

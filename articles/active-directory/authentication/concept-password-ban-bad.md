@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fd367b337a0f26323411111ea7eb1120bf6d75d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c4da1066166a3384ffb5f0f94599452829faed1b
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965178"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356582"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Eliminujte chybná hesla pomocí Azure Active Directory ochrany heslem.
 
@@ -202,7 +202,7 @@ Pojďme se podívat na trochu odlišný příklad, který ukazuje, jak může da
 > [!IMPORTANT]
 > Algoritmus zakázaného hesla spolu s globálním seznamem zakázaných hesel může a v Azure kdykoli měnit, a to na základě průběžné analýzy zabezpečení a výzkumu.
 >
-> Pro místní službu agenta řadiče domény v hybridních scénářích se aktualizované algoritmy projeví až po opětovné instalaci softwaru agenta DC.
+> Pro místní službu agenta řadiče domény v hybridních scénářích se aktualizované algoritmy projeví až po upgradu softwaru agenta DC.
 
 ## <a name="what-do-users-see"></a>Co vidí uživatelé
 

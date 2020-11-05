@@ -10,25 +10,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311475"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359081"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Vyhodnotit automatizované výsledky experimentování ve strojovém učení
 
-V tomto článku se dozvíte, jak zobrazit a vyhodnotit výsledky automatizovaného strojového učení, AutoML a experimentů. Tyto experimenty se skládají z několika spuštění, kde každé spuštění vytvoří model. Pro usnadnění vyhodnocení každého modelu AutoML automaticky generuje metriky výkonu a grafy specifické pro váš typ experimentu. 
+V tomto článku se dozvíte, jak zobrazit a vyhodnotit výsledky automatizovaného strojového učení, automatizovaného ML a experimentů. Tyto experimenty se skládají z několika spuštění, kde každé spuštění vytvoří model. Pro usnadnění vyhodnocení jednotlivých modelů automaticky generuje automatizovaná ML metriky výkonu a grafy specifické pro váš typ experimentu. 
 
-Například AutoML poskytuje různé grafy pro klasifikace a regresní modely. 
+Například automatizované ML poskytuje různé grafy pro klasifikace a regresní modely. 
 
-|Klasifikace|Regrese
+|Classification|Regrese
 |---|---|
 |<li> [Konfuzní matice](#confusion-matrix) <li>[Přesnost – graf odvolání](#precision-recall-chart) <li> [Provozní charakteristiky přijímače (nebo ROC)](#roc) <li> [Zvednutí křivky](#lift-curve)<li> [Křivka zisků](#gains-curve)<li> [Graf kalibrace](#calibration-plot) | <li> [Předpověď oproti hodnotě true](#pvt) <li> [Histogram zbytků](#histo)|
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -61,7 +61,7 @@ Zobrazení historie spuštění a metriky výkonu modelu a grafů v studiu:
 
 ## <a name="classification-performance-metrics"></a>Metriky výkonu klasifikace
 
-Následující tabulka shrnuje metriky výkonu modelu, které AutoML vypočte pro každý model klasifikace vygenerovaný pro váš experiment. 
+Následující tabulka shrnuje metriky výkonu modelu, které automatizované ML vypočítá pro každý model klasifikace vygenerovaný pro váš experiment. 
 
 Metrika|Popis|Výpočet|Další parametry
 --|--|--|--
@@ -88,7 +88,7 @@ weighted_accuracy|Vážená přesnost je přesnost, při které se váha předan
 
 ### <a name="binary-vs-multiclass-metrics"></a>Binární a vícevrstvé metriky
 
-AutoML nerozlišuje mezi binárními a mi metrikami. Stejné metriky ověřování jsou hlášeny, zda má datová sada dvě třídy nebo více než dvě třídy. Některé metriky jsou však určeny pro klasifikaci s více třídami. Při použití na binární datovou sadu tyto metriky nepovažují žádnou třídu za `true` třídu, jak je možné očekávat. Metriky, které jsou jasně určeny pro více tříd, jsou s příponou `micro` , `macro` nebo `weighted` . Mezi příklady patří,,, `average_precision_score` `f1_score` `precision_score` `recall_score` a `AUC` .
+Automatizované ML nerozlišuje mezi binárními a více třídami metriky. Stejné metriky ověřování jsou hlášeny, zda má datová sada dvě třídy nebo více než dvě třídy. Některé metriky jsou však určeny pro klasifikaci s více třídami. Při použití na binární datovou sadu tyto metriky nepovažují žádnou třídu za `true` třídu, jak je možné očekávat. Metriky, které jsou jasně určeny pro více tříd, jsou s příponou `micro` , `macro` nebo `weighted` . Mezi příklady patří,,, `average_precision_score` `f1_score` `precision_score` `recall_score` a `AUC` .
 
 Například namísto výpočtu odvolání jako `tp / (tp + fn)` je průměrně vyvolaná hodnota ve více třídách ( `micro` , `macro` nebo `weighted` ) v obou třídách binární datové sady klasifikace. To je ekvivalentní k výpočtu odvolání pro `true` třídu a `false` třídu samostatně a pak přebírání průměru dvou.
 
@@ -209,7 +209,7 @@ Dobře kalibrovaný model zarovnává se čárou y = x, kde správně předpoví
 
 ## <a name="regression-performance-metrics"></a>Metriky výkonu regrese
 
-Následující tabulka shrnuje metriky výkonu modelu, které AutoML vypočítá pro každou regresi nebo model prognózy, který je vygenerován pro váš experiment. 
+Následující tabulka shrnuje metriky výkonu modelu, které automatizované ML vypočítá pro každou regresi nebo model prognózy, který je vygenerovaný pro váš experiment. 
 
 |Metrika|Popis|Výpočet|Další parametry
 --|--|--|--|

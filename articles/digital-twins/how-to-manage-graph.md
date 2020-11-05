@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 947a0c9a0af3c38d6c4d6f66da691d62530a69e7
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 82c5c7b2d221cdf10c69e0a8921eef6e6d85e554
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279511"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356327"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Správa grafu digitálních vláken pomocí vztahů
 
@@ -32,7 +32,7 @@ Tento článek se zaměřuje na správu vztahů a grafu jako celku. Chcete-li pr
 
 Vztahy popisují, jak jsou vzájemně propojeny různé digitální vazby, které tvoří základ pro dvojitou graf.
 
-Vztahy se vytvářejí pomocí `CreateRelationship()` volání. 
+Vztahy se vytvářejí pomocí `CreateOrReplaceRelationshipAsync()` volání. 
 
 Chcete-li vytvořit relaci, je nutné zadat následující:
 * Zdrojové ID vlákna ( `srcId` ve vzorovém kódu níže): ID vlákna, kde vztah pochází.
@@ -57,7 +57,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
+                await client.CreateOrReplaceRelationshipAsync<BasicRelationship>(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)
@@ -351,7 +351,7 @@ namespace minimal
             try
             {
                 string relId = $"{srcId}-{relName}->{targetId}";
-                await client.CreateOrReplaceRelationshipAsync(srcId, relId, relationship);
+                await client.CreateOrReplaceRelationshipAsync<BasicRelationship>(srcId, relId, relationship);
                 Console.WriteLine($"Created {relName} relationship successfully");
             }
             catch (RequestFailedException rex)

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266285"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358163"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu 
 
@@ -47,7 +47,7 @@ Pokud plánujete použít Azure PowerShell příklady v tomto článku, nainstal
 
 Klientská aplikace může pro přístup k danému prostředku požádat o spravované identity [jenom přístupového tokenu](../develop/developer-glossary.md#access-token) pro prostředky Azure. Token je [založený na spravovaných identitách pro objekt služby Azure Resources](overview.md#managed-identity-types). V takovém případě není nutné, aby se klient zaregistroval k získání přístupového tokenu v rámci vlastního instančního objektu. Token je vhodný k použití jako nosný token ve [voláních služby-služba vyžadujících pověření klienta](../develop/v2-oauth2-client-creds-grant-flow.md).
 
-| Odkaz | Description |
+| Odkaz | Popis |
 | -------------- | -------------------- |
 | [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Podrobnosti protokolu pro spravované identity pro koncový bod tokenu prostředků Azure |
 | [Získání tokenu pomocí knihovny Microsoft. Azure. Services. AppAuthentication pro .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Příklad použití knihovny Microsoft. Azure. Services. AppAuthentication z klienta .NET
@@ -64,7 +64,7 @@ Klientská aplikace může pro přístup k danému prostředku požádat o sprav
 
 Základní rozhraní pro získání přístupového tokenu je založené na REST, které je dostupné pro všechny klientské aplikace spuštěné na virtuálním počítači, které můžou provádět volání HTTP REST. To se podobá programovacímu modelu Azure AD s tím rozdílem, že klient používá koncový bod na virtuálním počítači (oproti koncovému bodu Azure AD).
 
-Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service ( *doporučeno)*:
+Ukázková žádost s použitím koncového bodu Azure Instance Metadata Service ( *doporučeno)* :
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Volitelné Parametr řetězce dotazu, který označuje client_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
 | `mi_res_id` | Volitelné Parametr řetězce dotazu, který označuje mi_res_id (ID prostředku Azure) spravované identity, pro kterou chcete token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem. |
 
-Ukázková žádost s použitím spravovaných identit pro Azure Resources Endpoint Extension *(plánované pro vyřazení v lednu 2019)*:
+Ukázková žádost s použitím spravovaných identit pro Azure Resources Endpoint Extension *(plánované pro vyřazení v lednu 2019)* :
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1

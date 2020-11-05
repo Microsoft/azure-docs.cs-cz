@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348555"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358622"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps pro kanál příjmu dat
 
@@ -211,18 +211,18 @@ Hodnoty v souboru JSON jsou výchozí hodnoty konfigurované v definici kanálu.
 
 Proces průběžného doručování přebírá artefakty a nasadí je do prvního cílového prostředí. Zajišťuje, že řešení funguje spuštěním testů. V případě úspěchu pokračuje k dalšímu prostředí. 
 
-Kanál Azure pro CD se skládá z několika fází, které představují prostředí. Každá fáze obsahuje [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) a [úlohy](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) , které provádějí následující kroky:
+Kanál Azure pro CD se skládá z několika fází, které představují prostředí. Každá fáze obsahuje [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) a [úlohy](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) , které provádějí následující kroky:
 
 _ Nasazení poznámkového bloku Pythonu do pracovního prostoru Azure Databricks
 * Nasazení kanálu Azure Data Factory 
 * Spuštění kanálu
 * Zkontroluje výsledek příjmu dat.
 
-Fáze zřetězení se dají nakonfigurovat pomocí [schválení](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) a [vratek](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) , které poskytují další kontrolu nad tím, jak se proces nasazení vyvíjí prostřednictvím řetězce prostředí.
+Fáze zřetězení se dají nakonfigurovat pomocí [schválení](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) a [vratek](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) , které poskytují další kontrolu nad tím, jak se proces nasazení vyvíjí prostřednictvím řetězce prostředí.
 
 ### <a name="deploy-a-python-notebook"></a>Nasazení poznámkového bloku Pythonu
 
-Následující fragment kódu definuje [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) kanálu Azure, které kopíruje Poznámkový blok Python do clusteru datacihly:
+Následující fragment kódu definuje [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) kanálu Azure, které kopíruje Poznámkový blok Python do clusteru datacihly:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ Následující fragment kódu definuje [nasazení](/azure/devops/pipelines/proce
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-Artefakty vytvořené službou CI jsou automaticky zkopírovány do agenta nasazení a jsou k dispozici ve `$(Pipeline.Workspace)` složce. V takovém případě úloha nasazení odkazuje na artefakt, který `di-notebooks` obsahuje Poznámkový blok Python. Toto [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) používá [rozšíření datacihly Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) ke zkopírování souborů poznámkových bloků do pracovního prostoru datacihly.
+Artefakty vytvořené službou CI jsou automaticky zkopírovány do agenta nasazení a jsou k dispozici ve `$(Pipeline.Workspace)` složce. V takovém případě úloha nasazení odkazuje na artefakt, který `di-notebooks` obsahuje Poznámkový blok Python. Toto [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) používá [rozšíření datacihly Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) ke zkopírování souborů poznámkových bloků do pracovního prostoru datacihly.
 
 `Deploy_to_QA`Fáze obsahuje odkaz na `devops-ds-qa-vg` skupinu proměnných definovanou v projektu Azure DevOps. Kroky v této fázi odkazují na proměnné z této skupiny proměnných (například `$(DATABRICKS_URL)` a `$(DATABRICKS_TOKEN)` ). Nápad je, že další fáze (například `Deploy_to_UAT` ) bude pracovat se stejnými názvy proměnných, které jsou definovány ve vlastní skupině proměnných UAT.
 
@@ -339,7 +339,7 @@ Poslední úkol v úloze kontroluje výsledek spuštění poznámkového bloku. 
     * Nasazení na datacihly + nasazení na ADF
     * Test integrace
 
-Obsahuje několik fází **nasazení** _, které odpovídají počtu cílových prostředí, které máte. Každá fáze _*_nasazení_*_ obsahuje dvě [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) , která běží paralelně, a [úlohu](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops) , která se po nasazení spustí za účelem testování řešení v prostředí.
+Obsahuje několik fází **nasazení** _, které odpovídají počtu cílových prostředí, které máte. Každá fáze _*_nasazení_*_ obsahuje dvě [nasazení](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) , která běží paralelně, a [úlohu](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true) , která se po nasazení spustí za účelem testování řešení v prostředí.
 
 Ukázková implementace kanálu je sestavena v následujícím fragmentu _*_YAML_*_ :
 

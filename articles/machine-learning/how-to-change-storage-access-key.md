@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320715"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357942"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 
@@ -26,9 +26,10 @@ Naučte se, jak změnit přístupové klávesy pro účty Azure Storage použív
 Z bezpečnostních důvodů možná budete muset změnit přístupové klávesy pro účet Azure Storage. Po opětovném vygenerování přístupového klíče je nutné aktualizovat Azure Machine Learning, aby používala nový klíč. Azure Machine Learning může používat účet úložiště pro úložiště modelů i jako úložiště dat.
 
 > [!IMPORTANT]
-> Přihlašovací údaje registred s úložištěm dat se ukládají do vašich Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte u svého Key Vault povolené [obnovitelné odstranění](../key-vault/general/soft-delete-overview.md) , nezapomeňte při aktualizaci přihlašovacích údajů postupovat podle tohoto článku. Zrušení registrace úložiště dat a jeho opětovné registrace za stejným názvem se nezdaří.
 
-## <a name="prerequisites"></a>Předpoklady
+> Přihlašovací údaje registrované pro úložiště dat se ukládají do Azure Key Vault přidružených k pracovnímu prostoru. Pokud máte v Key Vault povoleno [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) , v tomto článku najdete pokyny k aktualizaci přihlašovacích údajů. Pokud zrušíte registraci úložiště dat a pokusíte se ho znovu zaregistrovat pod stejným názvem, tato akce se nezdaří. Pokud chcete v tomto scénáři povolit obnovitelné odstranění, přečtěte si téma [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) .
+
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
 

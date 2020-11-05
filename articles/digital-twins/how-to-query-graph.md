@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325764"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358146"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Dotazování na vyzdvojený graf digitálních vláken Azure
 
@@ -154,21 +154,19 @@ AND T.Temperature = 70
 Můžete také získat vlákna na základě **toho, zda je definována určitá vlastnost**. Tady je dotaz, který vrací vlákna, která mají definovanou vlastnost *Location* :
 
 ```sql
-SELECT *
-FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
 To vám může přispět k získání vláken podle jejich vlastností *značek* , jak je popsáno v tématu [Přidání značek do digitálních vláken](how-to-use-tags.md). Tady je dotaz, který získá všechny vlákna označené *červeně* :
 
 ```sql
-select * from digitaltwins where is_defined(tags.red)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
 ```
 
 Můžete také získat vlákna na základě **typu vlastnosti**. Tady je dotaz, který získá vlákna, jejichž vlastnost *teploty* je číslo:
 
 ```sql
-SELECT * FROM DIGITALTWINS T
-WHERE IS_NUMBER(T.Temperature)
+SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>Dotaz podle modelu
@@ -299,7 +297,7 @@ Podporovány jsou následující operátory:
 | Porovnání |=,! =, <, >, <=, >= |
 | Contains | V NZA |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funkce
 
 Podporují se následující funkce kontroly a přetypování typů:
 

@@ -10,13 +10,13 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 21fc9f082a012922a8595c2726764e84be038a26
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, data4ml
+ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312231"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358333"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 
@@ -28,7 +28,7 @@ Typické scénáře správy verzí:
 * Když jsou nová data dostupná pro přeškolení
 * Při použití různých přístupů k přípravě dat nebo technickému řízení funkcí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento kurz potřebujete:
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339426"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356344"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publikování aplikace v galerii aplikací Azure AD
 
@@ -69,7 +69,7 @@ Postup publikování aplikace v galerii aplikací Azure AD:
 - Mezi vzájemné zákazníky získáte Podrobný kurz konfigurace.
 - Zákazníci, kteří používají systém pro správu identit mezi doménami ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)), můžou použít zřizování pro stejnou aplikaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat trvalý účet pro testování s alespoň dvěma registrovanými uživateli.
 
@@ -97,6 +97,7 @@ V následující tabulce jsou porovnávány hlavní standardy: Otevřete ověřo
 | Jednotné odhlašování pomocí mobilních zařízení| √| √* |
 | Zásady podmíněného přístupu pro mobilní aplikace| √| × |
 | Bezproblémové možnosti vícefaktorového ověřování pro mobilní aplikace| √| × |
+| Zřizování SCIM| √| √ |
 | Přístup Microsoft Graph| √| × |
 
 *, Ale Microsoft neposkytuje ukázky ani doprovodné materiály.
@@ -261,7 +262,7 @@ Pokud chcete přidat aplikaci do seznamu v galerii pomocí jednotného přihlaš
 
 ![Výpis aplikace pro jednotné přihlašování do galerie](./media/howto-app-gallery-listing/passwordsso.png)
 
-Pokud implementujete koncový bod SCIM 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. 
+Pokud implementujete koncový bod [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0 pro zřizování uživatelů, vyberte možnost, jak je zobrazeno. 
 
    ![Požadavek na zřizování uživatelů](./media/howto-app-gallery-listing/user-provisioning.png)
 

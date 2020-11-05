@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 7a4b2a778fc3d520c0ce85bed5bec0b49fc14384
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341905"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356616"
 ---
 # <a name="getting-started-with-sql-queries"></a>Začínáme s příkazy jazyka SQL
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,26 +21,35 @@ V Azure Cosmos DB účty rozhraní SQL API existují dva způsoby, jak číst da
 
 **Čtení bodů** – vyhledávání klíč/hodnota můžete provést na základě *ID jedné položky* a klíče oddílu. Kombinace *ID položky* a klíče oddílu je klíč a samotná položka je hodnota. V případě dokumentu s 1 KBm čte bod obvykle náklady 1 [jednotka požadavku](request-units.md) s latencí pod 10 ms. Čtení bodů vrátí jednu položku.
 
-**Dotazy SQL** – můžete zadávat dotazy na data zápisem dotazů pomocí jazyk SQL (Structured Query Language) (SQL) jako dotazovacího jazyka JSON. Dotazy mají vždycky náklady minimálně 2,3 jednotek žádostí a obecně budou mít větší a větší latenci, než je čtení bodů. Dotazy mohou vracet mnoho položek.
-
-Většina úloh pro čtení v Azure Cosmos DB využívá kombinaci obou čtení bodů i dotazů SQL. Pokud potřebujete jen číst jednu položku, jsou čtení bodů levnější a rychlejší než dotazy. Čtení bodů není nutné používat dotazovací modul pro přístup k datům a může přímo číst data. Samozřejmě to není možné, aby všechny úlohy výhradně četly data pomocí čtení bodů, takže podpora SQL jako dotazovacího jazyka a [nezávislá indexování](index-overview.md) nabízí pružnější způsob, jak získat přístup k datům.
-
-Tady je několik příkladů, jak číst body pomocí jednotlivých SDK:
+Tady je několik příkladů, jak **číst body** pomocí jednotlivých SDK:
 
 - [.NET SDK](/dotnet/api/microsoft.azure.cosmos.container.readitemasync?preserve-view=true&view=azure-dotnet)
 - [Java SDK](/java/api/com.azure.cosmos.cosmoscontainer.readitem?preserve-view=true&view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
 - [Node.js SDK](/javascript/api/@azure/cosmos/item?preserve-view=true&view=azure-node-latest#read-requestoptions-)
 - [Python SDK](/python/api/azure-cosmos/azure.cosmos.containerproxy?preserve-view=true&view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
+**Dotazy SQL** – můžete zadávat dotazy na data zápisem dotazů pomocí jazyk SQL (Structured Query Language) (SQL) jako dotazovacího jazyka JSON. Dotazy mají vždycky náklady minimálně 2,3 jednotek žádostí a obecně budou mít větší a větší latenci, než je čtení bodů. Dotazy mohou vracet mnoho položek.
+
+Většina úloh pro čtení v Azure Cosmos DB využívá kombinaci obou čtení bodů i dotazů SQL. Pokud potřebujete jen číst jednu položku, jsou čtení bodů levnější a rychlejší než dotazy. Čtení bodů není nutné používat dotazovací modul pro přístup k datům a může přímo číst data. Samozřejmě to není možné, aby všechny úlohy výhradně četly data pomocí čtení bodů, takže podpora SQL jako dotazovacího jazyka a [nezávislá indexování](index-overview.md) nabízí pružnější způsob, jak získat přístup k datům.
+
+Tady je několik příkladů, jak provádět **dotazy SQL** pomocí každé sady SDK:
+
+- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
+- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
+- [Node.js SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
+- [Python SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+
 Zbývající část tohoto dokumentu ukazuje, jak začít psát dotazy SQL v Azure Cosmos DB. Dotazy SQL je možné spouštět buď pomocí sady SDK, nebo Azure Portal.
 
 ## <a name="upload-sample-data"></a>Nahrání ukázkových dat
 
-Ve vašem účtu Cosmos DB API SQL vytvořte kontejner s názvem `Families` . Vytvořte v kontejneru dvě jednoduché položky JSON. Většinu ukázkových dotazů můžete spustit v dokumentaci k Azure Cosmos DB dotazování pomocí této datové sady.
+Ve vašem účtu Cosmos DB API SQL otevřete [Průzkumník dat](https://docs.microsoft.com/azure/cosmos-db/data-explorer) a vytvořte kontejner s názvem `Families` . Po vytvoření je můžete pomocí prohlížeče datových struktur vyhledat a otevřít. Ve vašem `Families` kontejneru se zobrazí `Items` možnost vpravo pod názvem kontejneru. Tuto možnost otevřete a v řádku nabídek uprostřed obrazovky se zobrazí tlačítko pro vytvoření nové položky. Tato funkce slouží k vytvoření položek JSON níže.
 
 ### <a name="create-json-items"></a>Vytvoření položek JSON
 
-Následující kód vytvoří dvě jednoduché položky JSON o rodinách. K jednoduchým položkám JSON pro rodiny Andersen a Wakefieldů patří rodiče, děti a jejich domácí, adresa a registrační informace. První položka obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti.
+Následující dvě položky JSON jsou dokumenty o rodinách Andersen a Wakefieldů. Zahrnují rodiče, podřízené položky a jejich domácí, adresu a registrační informace. 
+
+První položka obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti:
 
 ```json
 {
@@ -64,7 +73,7 @@ Následující kód vytvoří dvě jednoduché položky JSON o rodinách. K jedn
 }
 ```
 
-Druhá položka používá `givenName` a `familyName` místo `firstName` a `lastName` .
+Druhá položka používá `givenName` a `familyName` místo `firstName` a `lastName` :
 
 ```json
 {

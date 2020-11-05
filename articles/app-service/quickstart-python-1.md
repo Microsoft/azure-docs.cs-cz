@@ -5,19 +5,20 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: eef0a4f24ba65fea4bb33c68f7e7d15f592e808d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+adobe-target: true
+ms.openlocfilehash: 9262d9674aa8100e3cfc52ee2834d3e8224f36f5
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92917040"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359030"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
 V tomto rychlém startu nasadíte webovou aplikaci v Pythonu, která se [App Service v systému Linux](overview.md#app-service-on-linux), vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Pomocí místního [rozhraní příkazového řádku Azure (CLI)](/cli/azure/install-azure-cli) na počítači se systémem Mac, Linux nebo Windows nasadíte ukázku s použitím této baňky nebo Djangoch architektur. Webová aplikace, kterou nakonfigurujete, využívá bezplatnou App Serviceovou úroveň, takže v tomto článku nebudete mít žádné náklady.
 
 > [!TIP]
-> Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma **[nasazení aplikací Python pro App Service z Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** .
+> Pokud dáváte přednost nasazení aplikací prostřednictvím integrovaného vývojového prostředí (IDE), přečtěte si téma **[nasazení aplikací Python pro App Service z Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.
 
 ## <a name="set-up-your-initial-environment"></a>Nastavení počátečního prostředí
 
@@ -151,7 +152,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
     
     Ve výchozím nastavení server předpokládá, že je modul vstupu aplikace v *App.py* , jak se používá v ukázce. (Pokud použijete jiný název modulu, nastavte `FLASK_APP` proměnnou prostředí na tento název.)
 
-1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:5000/` . Aplikace zobrazí zprávu **Hello, World!** .
+1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:5000/` . Aplikace zobrazí zprávu **Hello, World!**.
 
     ![Místní spuštění ukázkové aplikace v Pythonu](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -189,7 +190,7 @@ Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrovan
 
     ---    
 
-1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:8000/` . Aplikace zobrazí zprávu **Hello, World!** .
+1. Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:8000/` . Aplikace zobrazí zprávu **Hello, World!**.
 
     ![Místní spuštění ukázkové aplikace v Pythonu](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
@@ -260,7 +261,7 @@ Chcete-li zastavit streamování protokolů kdykoli, stiskněte klávesu **CTRL*
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Vyhledejte a vyberte **App Services** .
+Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> . Vyhledejte a vyberte **App Services**.
 
 ![Přejděte na App Services v Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

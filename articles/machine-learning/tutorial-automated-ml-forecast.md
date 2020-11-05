@@ -10,12 +10,13 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 07/10/2020
-ms.openlocfilehash: 6ad3e0f3077e6f65642496d4da097fa713bddd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: automl
+ms.openlocfilehash: 5577a0d9270f3e4566bf57876b8abc3d1a3ae4be
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979073"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356497"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 
@@ -33,7 +34,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 > * Prozkoumejte výsledky experimentů.
 > * Nasaďte nejlepší model.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md). 
 
@@ -59,7 +60,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
 
 1. Ve formuláři **Vybrat datovou sadu** vyberte z rozevíracího seznamu **+ vytvořit sadu** možnost **z místních souborů** . 
 
-    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Typ datové sady by měl být výchozí pro **tabelární**, protože automatizované ML v Azure Machine Learning Studiu aktuálně podporuje jenom tabelární datové sady.
+    1. Ve formuláři **základní informace** zadejte název datové sady a zadejte volitelný popis. Typ datové sady by měl být výchozí pro **tabelární** , protože automatizované ML v Azure Machine Learning Studiu aktuálně podporuje jenom tabelární datové sady.
     
     1. V levém dolním rohu vyberte **Další** .
 
@@ -79,7 +80,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
-        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
@@ -142,9 +143,9 @@ Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machin
     Další &nbsp; Konfigurace|Popis|Hodnota &nbsp; pro &nbsp; kurz
     ------|---------|---
     Primární metrika| Metrika vyhodnocení, podle které se algoritmus strojového učení měří.|Normalizovaný průměrný střední znak – chyba
-    Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolit
+    Vysvětlete nejlepší model| Automaticky zobrazuje vysvětlení nejlepšího modelu vytvořeného pomocí automatizovaného ML.| Povolení
     Blokované algoritmy | Algoritmy, které chcete vyloučit z úlohy školení| Extrémní náhodné stromy
-    Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_: Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. | <br><br>&nbsp;Prodlevy cíle prognózy &nbsp; : žádné <br> Cílová &nbsp; Velikost návratového &nbsp; okna &nbsp; : žádné
+    Další nastavení prognózování| Tato nastavení vám pomůžou zlepšit přesnost modelu. <br><br> _**Předpověď Target prodlevy:**_ jak daleko dozadu chcete vytvořit prodlevy cílové proměnné <br> _**Cílové posuvné okno**_ : Určuje velikost posuvných oken, na které se budou generovat funkce, například *Max, min* a *Sum*. | <br><br>&nbsp;Prodlevy cíle prognózy &nbsp; : žádné <br> Cílová &nbsp; Velikost návratového &nbsp; okna &nbsp; : žádné
     Výstupní kritérium| Pokud je splněno kritérium, úloha školení se zastaví. |&nbsp;Čas úlohy školení &nbsp; (hodiny): 3 <br> &nbsp;Prahová hodnota skóre metriky &nbsp; : žádné
     Ověřování | Vyberte typ křížového ověření a počet testů.|Typ ověřování:<br>&nbsp;k skládání &nbsp; křížového ověřování <br> <br> Počet ověření: 5
     Souběžnost| Maximální počet paralelních iterací provedených na iteraci| Maximální počet &nbsp; souběžných &nbsp; iterací: 6

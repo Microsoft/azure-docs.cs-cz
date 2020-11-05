@@ -8,14 +8,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
+ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: b708d85e94782ea264432ae3780b2b1f0d240396
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320806"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358112"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatické učení modelu prognózy časových řad
 
@@ -33,7 +33,7 @@ Pro používání s nízkým kódem si přečtěte [kurz: Předpověď poptávky
 
 Na rozdíl od metod klasických časových řad jsou v automatizovaných ML hodnotách časových řad "pivoted", aby se do regresory staly další dimenze společně s jinými koproměnnými. Tento přístup zahrnuje během školení více kontextových proměnných a jejich vztah mezi sebou. Vzhledem k tomu, že předpověď může ovlivnit několik faktorů, tato metoda se dobře zarovnává s scénáři reálného vývoje. Například při prognózování prodeje, interakcí s historickými trendy, směnného kurzu a ceny budou všechny společně řídit výsledek prodeje. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro tento článek potřebujete, 
 

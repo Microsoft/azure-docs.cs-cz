@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425794"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356701"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Sada Batch Processing Kit pro kontejnery řeči
 
@@ -106,7 +106,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 `ONESHOT` režim transcribes jednu dávku zvukových souborů (ze vstupního adresáře a volitelného seznamu souborů) do výstupní složky.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Diagram znázorňující příklad pracovního postupu kontejneru Batch-Kit.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru Batch-Kit v režimu OneShot":::
 
 1. Zadejte koncové body kontejneru řeči, které bude klient Batch používat v `config.yaml` souboru. 
 2. Umístěte zvukové soubory pro přepis do vstupního adresáře.  
@@ -121,7 +121,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 `DAEMON` režim transcribes stávající soubory v dané složce a průběžně transcribes nové zvukové soubory při jejich přidání.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Diagram znázorňující příklad pracovního postupu kontejneru Batch-Kit.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru sady Batch-Kit v režimu démona.":::
 
 1. Zadejte koncové body kontejneru řeči, které bude klient Batch používat v `config.yaml` souboru. 
 2. Vyvolá kontejner ve vstupním adresáři. Klient služby Batch spustí monitorování adresáře pro příchozí soubory. 
@@ -134,7 +134,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 `REST` režim je režim serveru rozhraní API, který poskytuje základní sadu koncových bodů HTTP pro odeslání dávky zvukového souboru, kontrolu stavu a dlouhé cyklické dotazování. Také umožňuje programovou spotřebu pomocí rozšíření modulu Pythonu nebo importu jako dílčí modul.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Diagram znázorňující příklad pracovního postupu kontejneru Batch-Kit.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Diagram znázorňující soubory zpracování kontejneru Batch-Kit v režimu REST":::
 
 1. Zadejte koncové body kontejneru řeči, které bude klient Batch používat v `config.yaml` souboru. 
 2. Odešle požadavek na požadavek HTTP na jeden z koncových bodů serveru API. 
@@ -151,7 +151,7 @@ Sada Batch Processing Kit nabízí tři režimy pomocí `--run-mode` parametru.
 
 ---
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 > [!NOTE]
 > Klient Batch může soubor *Run. log* pravidelně přepsat, pokud je příliš velký.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c62d1a0b17fda2531a963c292fbd16aaf3a551b3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145986"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356382"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -31,7 +31,7 @@ Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci 
 
 Vlákna se připojují k dvojitým grafům podle jejich vztahů. Vztahy, které mohou být zdvojeny, jsou definovány jako součást modelu.  
 
-Modelová *podlaha* například může *definovat relaci,* která cílí na vlákna typu *Room* . V této definici vám digitální vlákna Azure umožní vytvořit *obsahuje* vztahy z libovolného vlákna na *podlaze* pro všechny místnosti s dvojitou *místností* (včetně vláken, která jsou podtypy *místnosti* ). 
+Modelová *podlaha* například může *definovat relaci,* která cílí na vlákna typu *Room*. V této definici vám digitální vlákna Azure umožní vytvořit *obsahuje* vztahy z libovolného vlákna na *podlaze* pro všechny místnosti s dvojitou *místností* (včetně vláken, která jsou podtypy *místnosti* ). 
 
 Výsledkem tohoto procesu je sada uzlů (digitální vlákna) propojená přes hrany (jejich vztahy) v grafu.
 
@@ -43,20 +43,20 @@ V této části se dozvíte, co vypadá při vytváření digitálních vláken 
 
 ### <a name="create-digital-twins"></a>Vytváření digitálních vláken
 
-Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření instance vlákna typu *pokoj* .
+Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření instance vlákna typu *pokoj*.
 
 Můžete inicializovat vlastnosti vlákna, když je vytvořen, nebo je nastavit později. Chcete-li vytvořit dvojitě spuštěný s inicializovanými vlastnostmi, vytvořte dokument JSON, který bude poskytovat nezbytné inicializační hodnoty.
 
 [!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
 
-Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložení polí vlastností do "" vlákna "objektu, a to více přímo jako alternativu k použití slovníku. Další informace o pomocné třídě a příkladech jejich použití naleznete v části [*vytvoření digitálního vlákna*](how-to-manage-twin.md#create-a-digital-twin) v tématu *Postupy: Správa digitálních vláken* .
+Můžete také použít pomocnou třídu nazvanou `BasicDigitalTwin` pro uložení polí vlastností do "" vlákna "objektu, a to více přímo jako alternativu k použití slovníku. Další informace o pomocné třídě a příkladech jejich použití naleznete v části [*vytvoření digitálního vlákna*](how-to-manage-twin.md#create-a-digital-twin) v tématu *Postupy: Správa digitálních vláken*.
 
 >[!NOTE]
 >I když jsou zdvojené vlastnosti považovány za volitelné, takže není nutné je inicializovat, musí být při vytvoření vlákna nastaveny všechny [komponenty](concepts-models.md#elements-of-a-model) **na vlákna.** Můžou to být prázdné objekty, ale samotné komponenty musí existovat.
 
 ### <a name="create-relationships"></a>Vytvoření relací
 
-Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu mezi digitálním *typem podlahového* typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe* .
+Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](/rest/api/digital-twins/dataplane/twins) k vytvoření vztahu mezi digitálním *typem podlahového* typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
 
 ```csharp
 // Create Twins, using functions similar to the previous sample
@@ -71,7 +71,7 @@ var relationship = new BasicRelationship
 try
 {
     string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync("GroundFloor", relId, relationship);
+    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
 } catch(ErrorResponseException e)
 {
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
@@ -86,7 +86,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |
@@ -153,7 +153,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$etag` | Standardní pole HTTP přiřazené webovým serverem |

@@ -1,7 +1,7 @@
 ---
 title: Spuštění, monitorování a zrušení školicích běhů v Pythonu
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak začít, nastavit stav, označit a uspořádat experimenty pro strojové učení.
+description: Naučte se spouštět, nastavovat a spravovat experimenty ve službě Machine Learning pomocí Azure Machine Learning Python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0baee1646d2346a411b3b7bdb8efc90e9aeb7a4a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316880"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357976"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 
@@ -30,7 +30,7 @@ Tento článek ukazuje příklady následujících úloh:
 * Vytvoření podřízených spuštění.
 * Označení a hledání spuštění.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat následující položky:
 

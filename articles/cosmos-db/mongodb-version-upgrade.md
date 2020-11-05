@@ -1,18 +1,18 @@
 ---
 title: Upgrade verze Mongo rozhraní API vašeho Azure Cosmos DB pro účet MongoDB
 description: Postup upgradu verze MongoDB drát-Protocol pro stávající rozhraní API Azure Cosmos DB pro účty MongoDB bez problémů
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
-ms.author: jasonh
-ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 9ce444e41d19ece984071d0f62e705a09d5f23c9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096304"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356446"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Upgrade verze MongoDB přenosového protokolu rozhraní API vašeho Azure Cosmos DB pro účet MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -38,7 +38,7 @@ Níže jsou uvedené nové funkce, které jsou součástí verze 3,6:
 
 ### <a name="changes-from-version-32"></a>Změny ze verze 3,2
 
-- Byly **odebrány RequestRateIsLarge chyby** . Žádosti z klientské aplikace již nevrátí 16500 chyb. Místo toho budou požadavky pokračovat, dokud nebudou dokončeny nebo nesplní časový limit.
+- Byly **odebrány RequestRateIsLarge chyby**. Žádosti z klientské aplikace již nevrátí 16500 chyb. Místo toho budou požadavky pokračovat, dokud nebudou dokončeny nebo nesplní časový limit.
 - Na časový limit žádosti se nastaví na 60 sekund.
 - Kolekce MongoDB vytvořené v nové verzi přenosového protokolu budou mít `_id` ve výchozím nastavení indexovanou vlastnost.
 
@@ -50,7 +50,7 @@ Pro upgrade na verzi 3,6 bude přípona koncového bodu účtu databáze aktuali
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích, které se připojují k tomuto účtu databáze. **Pouze připojení, která používají nový koncový bod, budou mít přístup k funkcím v MongoDB verze 3,6** . Předchozí koncový bod by měl mít příponu `.documents.azure.com` .
+Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích, které se připojují k tomuto účtu databáze. **Pouze připojení, která používají nový koncový bod, budou mít přístup k funkcím v MongoDB verze 3,6**. Předchozí koncový bod by měl mít příponu `.documents.azure.com` .
 
 >[!Note]
 > Tento koncový bod může mít mírné rozdíly v případě, že byl váš účet vytvořen v cloudu pro svrchované, státní nebo omezené cloudové prostředí Azure.
@@ -63,27 +63,27 @@ Existující koncový bod musíte nahradit ve svých aplikacích a ovladačích,
 
 2. Z možností na levé straně vyberte okno `Features` . Tím se odhalí funkce na úrovni účtu, které jsou k dispozici pro váš databázový účet.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal s přehledem účtu MongoDB s zvýrazněným oknem funkcí" border="false":::
 
 3. Klikněte na `Upgrade to Mongo server version 3.6` řádek. Pokud tuto možnost nevidíte, váš účet možná nebude mít nárok na tento upgrade. Pokud se jedná o tento případ, uveďte [lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Okno funkcí s možnostmi." border="false":::
 
 4. Projděte si informace o tomto konkrétním upgradu. Všimněte si, že upgrade bude dokončen, dokud vaše aplikace nepoužijí aktualizovaný koncový bod, jak je zvýrazněno v této části. `Enable`Až budete připraveni zahájit proces, klikněte na zapnuto.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Rozšířené pokyny k upgradu." border="false":::
 
 5. Po spuštění procesu se v `Features` nabídce zobrazí stav upgradu. Stav bude přejít z `Pending` , do `In Progress` , do `Upgraded` . Tento proces nebude mít vliv na existující funkce nebo operace databázového účtu.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="Stav upgradu po zahájení." border="false":::
 
 6. Po dokončení upgradu se stav zobrazí jako `Upgraded` . Kliknutím na něj zobrazíte další informace o dalších krocích a akcích, které musíte provést k dokončení procesu. Pokud při zpracování vaší žádosti došlo k potížím, obraťte se prosím na [podporu](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="Stav upgradovaného účtu" border="false":::
 
 7. **Chcete-li začít používat upgradovanou verzi vašeho databázového účtu** , vraťte se do okna `Overview` a zkopírujte nový připojovací řetězec, který chcete použít ve své aplikaci. Jakmile se aplikace připojí k novému koncovému bodu, začnou tuto upgradovanou verzi používat. Existující připojení nebudou přerušená a bude možné je aktualizovat na pohodlí. Aby se zajistilo konzistentní prostředí, musí všechny vaše aplikace používat nový koncový bod.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Azure Portal s přehledem účtu MongoDB" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Nové okno s přehledem" border="false":::
 
 ## <a name="next-steps"></a>Další kroky
 

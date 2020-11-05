@@ -1,7 +1,7 @@
 ---
 title: Použití AutoML k vytvoření modelů & nasazení
 titleSuffix: Azure Machine Learning
-description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning.
+description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning studia.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, automl
+ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311279"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358894"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 
@@ -29,7 +29,7 @@ Příklad koncového na konci najdete v [kurzu Vytvoření modelu klasifikace po
 
 V případě prostředí Pythonu založeného na kódu můžete pomocí sady Azure Machine Learning SDK [nakonfigurovat experimenty automatizovaného strojového učení](how-to-configure-auto-train.md) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -76,7 +76,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Encoding| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
     

@@ -1,7 +1,7 @@
 ---
 title: 'Kurz regrese: automatizované ML'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte generovat model strojového učení pomocí automatizovaného strojového učení. Azure Machine Learning může při automatizovaném způsobu provádět předběžné zpracování dat, výběr algoritmu a výběr parametrů.
+description: Vytvořte automatizovaný experiment strojového učení, který pro vás vygeneruje regresní model na základě školicích dat a nastavení konfigurace, která zadáte.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 731c6c743b103111a699074e10d8ba43a353d8e6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317995"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358605"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Kurz: Využití automatizovaného strojového učení k predikci ceny jízdy taxíkem
 
@@ -34,7 +34,7 @@ V tomto kurzu se seznámíte s následujícími úlohami:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze](https://aka.ms/AMLFree) Azure Machine Learning dnes
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, dokončete [kurz instalace](tutorial-1st-experiment-sdk-setup.md) .
 * Po dokončení kurzu instalace otevřete Poznámkový blok *kurzy/Regression-automl-NYC-taxi-data/Regression-Automated-ml. ipynb* pomocí stejného serveru poznámkového bloku.

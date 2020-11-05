@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754741"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357619"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Řešení potíží v komunikačních službách Azure
 
-Tento dokument vám pomůže shromáždit informace, které potřebujete k řešení problémů s řešením komunikačních služeb.
+Tento dokument vám pomůže řešit problémy, se kterými se můžete setkat v rámci řešení komunikačních služeb. Pokud řešíte řešení potíží s SMS, můžete [Povolit vytváření sestav doručení pomocí Event Grid](../quickstarts/telephony-sms/handle-sms-events.md) pro zachycení podrobností o doručení SMS.
 
 ## <a name="getting-help"></a>Získání nápovědy
 
@@ -33,6 +33,8 @@ Pro usnadnění odstraňování určitých typů problémů se může zobrazit v
 * **MS-CV ID** : Toto ID se používá k odstraňování potíží s voláními a zprávami. 
 * **ID volání** : Toto ID slouží k identifikaci volání komunikačních služeb.
 * **ID zprávy SMS** : Toto ID slouží k identifikaci zpráv SMS.
+* **Protokoly volání** : tyto protokoly obsahují podrobné informace, které lze použít k řešení problémů s voláním a sítí.
+
 
 ## <a name="access-your-ms-cv-id"></a>Přístup k vašemu ID MS-CV
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>Povolení a přístup k protokolům volání
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Následující kód lze použít ke konfiguraci `AzureLogger` pro výstup protokolů do konzoly pomocí klientské knihovny JavaScriptu:
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+Při vývoji pro iOS se protokoly ukládají do `.blog` souborů. Mějte na paměti, že protokoly nemůžete zobrazit přímo, protože jsou zašifrované.
+
+K nim lze přistupovat otevřením Xcode. V zařízeních s Windows > a simulátorech > zařízení. Vyberte své zařízení. V části nainstalované aplikace vyberte svou aplikaci a klikněte na Stáhnout kontejner. 
+
+To vám poskytne `xcappdata` soubor. Klikněte pravým tlačítkem na tento soubor a vyberte Zobrazit obsah balíčku. Pak uvidíte `.blog` soubory, které pak můžete připojit k žádosti o podporu Azure.
+
+# <a name="android"></a>[Android](#tab/android)
+
+Při vývoji pro Android se protokoly ukládají do `.blog` souborů. Mějte na paměti, že protokoly nemůžete zobrazit přímo, protože jsou zašifrované.
+
+V Android Studio přejděte do Průzkumníka souborů zařízení tak, že vyberete Zobrazit > nástrojů Windows > Průzkumník souborů zařízení z simulátoru i ze zařízení. `.blog`Soubor se bude nacházet v adresáři vaší aplikace, který by měl vypadat nějak takto `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` . Tento soubor můžete připojit k žádosti o podporu. 
+   
+
+---
+
 
 ## <a name="related-information"></a>Související informace
 - [Protokoly a diagnostika](logging-and-diagnostics.md)

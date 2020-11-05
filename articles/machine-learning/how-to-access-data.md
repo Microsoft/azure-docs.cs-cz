@@ -1,5 +1,5 @@
 ---
-title: Připojení k službám úložiště Azure
+title: Připojení ke službám úložiště v Azure
 titleSuffix: Azure Machine Learning
 description: Naučte se používat úložiště dat k zabezpečenému připojení ke službám Azure Storage během školení pomocí Azure Machine Learning
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: f60d864bd367b5f44869abc9ccac4e4cc266075a
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320862"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358095"
 ---
-# <a name="connect-to-azure-storage-services"></a>Připojení k službám úložiště Azure
+# <a name="connect-to-storage-services-azure"></a>Připojení k Azure Storage Services
 
-V tomto článku se dozvíte, jak se **připojit ke službám úložiště Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](how-to-connect-data-ui.md) .
+V tomto článku se dozvíte, jak se **připojit ke službám úložiště v Azure prostřednictvím Azure Machine Learning úložiště dat**. DataStore se bezpečně připojují ke službě Azure Storage bez nutnosti zadat přihlašovací údaje pro ověřování a integritu původního zdroje dat. Ukládají informace o připojení, například ID předplatného a autorizaci tokenu v [Key Vault](https://azure.microsoft.com/services/key-vault/) přidružené k pracovnímu prostoru, takže můžete bezpečně přistupovat k úložišti, aniž byste je museli zakódovat ve svých skriptech. K vytvoření a registraci úložišť dat můžete použít [sadu SDK Azure Machine Learning Python](#python) nebo [Azure Machine Learning Studio](how-to-connect-data-ui.md) .
 
 Pokud dáváte přednost vytváření a správě úložiště dat pomocí rozšíření Azure Machine Learning VS Code; Další informace najdete v tématu [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#datastores) .
 
@@ -28,7 +28,7 @@ Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat.
 
 Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního postupu pro přístup k datům v Azure Machine Learning, najdete v článku [zabezpečený přístup k datům](concept-data.md#data-workflow) .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
@@ -109,11 +109,13 @@ Klíč účtu, token SAS a informace o instančním objektu najdete na svém [Az
     * Jeho odpovídající stránka **přehledu** bude obsahovat požadované informace, jako je ID TENANTA a ID klienta.
 
 > [!IMPORTANT]
-> Z bezpečnostních důvodů možná budete muset změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS). V takovém případě nezapomeňte nové přihlašovací údaje synchronizovat s vaším pracovním prostorem a úložištěm dat, která jsou k němu připojená. Přečtěte si, jak [synchronizovat aktualizované přihlašovací údaje](how-to-change-storage-access-key.md). 
-
+> * Pokud potřebujete změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS), nezapomeňte synchronizovat nové přihlašovací údaje s vaším pracovním prostorem a úložiště dat, která jsou k němu připojená. Přečtěte si, jak [synchronizovat aktualizované přihlašovací údaje](how-to-change-storage-access-key.md). 
 ### <a name="permissions"></a>Oprávnění
 
-V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Výchozí token SAS účtu nemá žádná oprávnění. Pro přístup ke čtení dat musí mít přihlašovací údaje pro ověřování minimální oprávnění seznam a čtení pro kontejnery a objekty. Pro přístup k zápisu dat se vyžadují taky oprávnění zapisovat a přidat.
+V případě kontejneru objektů blob Azure a Azure Data Lake úložiště Gen 2 se ujistěte, že přihlašovací údaje mají přístup ke **čtečce dat objektů BLOB úložiště** . Přečtěte si další informace o [čtečce dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Výchozí token SAS účtu nemá žádná oprávnění. 
+* Pro **přístup ke čtení** dat musí mít přihlašovací údaje pro ověřování minimální oprávnění seznam a čtení pro kontejnery a objekty. 
+
+* Pro **přístup k zápisu** dat se vyžadují taky oprávnění zapisovat a přidat.
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ V této části jsou příklady, jak vytvořit a zaregistrovat úložiště dat 
  Chcete-li vytvořit úložiště dat pro jiné podporované služby úložiště, přečtěte si [referenční dokumentaci pro příslušné `register_azure_*` metody](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods).
 
 Pokud dáváte přednost prostředí s nízkým kódem, přečtěte si téma [připojení k datům pomocí Azure Machine Learning studia](how-to-connect-data-ui.md).
+>[!IMPORTANT]
+> Pokud zrušíte registraci a znovu zaregistrujete úložiště dat se stejným názvem, ale Azure Key Vault pro váš pracovní prostor nemusí mít povolené obnovitelné odstranění. Ve výchozím nastavení je obnovitelné odstranění povoleno pro instanci trezoru klíčů vytvořenou v pracovním prostoru, ale nemusí být povolená, pokud jste použili existující Trezor klíčů nebo máte pracovní prostor vytvořený před 15. října 2020. Informace o tom, jak povolit obnovitelné odstranění, najdete v tématu [Zapnutí obnovitelného odstranění pro existující Trezor klíčů]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 > [!NOTE]
 > Název úložiště dat by měl obsahovat jenom malá písmena, číslice a podtržítka. 
