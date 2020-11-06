@@ -1,14 +1,14 @@
 ---
 title: Ukázka nasazení ISO 27001 podrobného plánu
 description: Nasaďte kroky pro samostatnou ukázku ISO 27001 podrobného plánu včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75403710ecbfb0cc7046804b45c2da042531e98b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006802"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420276"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Nasazení ukázky ISO 27001 details
 
@@ -33,8 +33,8 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky ISO 27001 details.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky ISO 27001 details.
+   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
@@ -52,7 +52,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -64,11 +64,11 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
@@ -82,7 +82,7 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
      Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-     - **Povolené umístění pro prostředky a skupiny prostředků**: hodnota, která označuje povolená umístění pro skupiny prostředků a prostředky.
+     - **Povolené umístění pro prostředky a skupiny prostředků** : hodnota, která označuje povolená umístění pro skupiny prostředků a prostředky.
 
    - Parametry artefaktů
 
@@ -108,7 +108,7 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 |\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásady|Log Analytics pracovní prostor pro virtuální počítače s Windows|Pokud je tento pracovní prostor mimo rozsah přiřazení, je nutné ručně udělit oprávnění "Log Analytics přispěvatele" (nebo podobné) ID objektu zabezpečení přiřazení zásad.|
 |\[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows|Přiřazení zásady|Volitelné: seznam imagí virtuálních počítačů s podporovaným operačním systémem Windows, který se má přidat do oboru|Prázdné pole se dá použít k označení žádných volitelných parametrů: \[\]|
 |Povolené skladové položky účtu úložiště|Přiřazení zásady|Seznam povolených SKU úložiště|Seznam SKU, které lze zadat pro účty úložiště.|
-|Povolené SKU virtuálních počítačů|Přiřazení zásady|Seznam povolených SKU virtuálních počítačů|Seznam SKU, které lze zadat pro virtuální počítače.|
+|Povolené skladové položky virtuálních počítačů|Přiřazení zásady|Seznam povolených SKU virtuálních počítačů|Seznam SKU, které lze zadat pro virtuální počítače.|
 |Plán iniciativy pro ISO 27001|Přiřazení zásady|Seznam typů prostředků, které by měly mít povolené diagnostické protokoly|Seznam typů prostředků, které se mají auditovat v případě, že nastavení diagnostického protokolu není povolené. Přijatelné hodnoty najdete v [Azure monitor schématech diagnostických protokolů](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,7 +1,7 @@
 ---
 title: Využijte modul & hloubkového vzdělávání pro vlaky na světě.
 titleSuffix: Azure Machine Learning
-description: Naučte se používat kvalitní modul pro výuku & vysokého modulu pro výuku k vytvoření doporučení modelu.
+description: Naučte se používat v nástroji Azure Machine Learning Designer modul pro vlakovou škálu & hluboko, který vám umožní vytvořit doporučení modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: a548a1aa6b7c6382d00e218f1b61347002df2b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce713167272c9e97754fdf6f6d065519aaea3d15
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907779"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421171"
 ---
 # <a name="train-wide--deep-recommender"></a>Pro vlak v široké & Doporučené
 Tento článek popisuje, jak v nástroji Azure Machine Learning Designer využít integrovaný modul pro **vlakovou škálu &** , který vám umožní naučit model doporučení. Tento modul je založený na širokém & hlubokou výuku, který navrhuje Google.
@@ -28,7 +28,7 @@ Hlavním cílem systému doporučení je doporučit *uživatelům* systému jedn
 Existují dva hlavní přístupy ke doporučeným systémům. 
 
 + Prvním je přístup **založený na obsahu** , který využívá funkce pro uživatele a položky. Uživatelé mohou být popsáni pomocí vlastností, jako jsou věk a pohlaví, a položky mohou být popsány pomocí vlastností, jako je autor a výrobce. Typické příklady systémů doporučení založených na obsahu najdete na sociálních sítích Matchmaking. 
-+ Druhý přístup je **filtrování spolupráce**, které používá pouze identifikátory uživatelů a položek a získává implicitní informace o těchto entitách z matice (zhuštěného) matice hodnocení, které jsou dány uživateli k položkám. Můžeme se dozvědět o uživateli z položek, které ohodnotili, a od jiných uživatelů, kteří mají stejné položky.  
++ Druhý přístup je **filtrování spolupráce** , které používá pouze identifikátory uživatelů a položek a získává implicitní informace o těchto entitách z matice (zhuštěného) matice hodnocení, které jsou dány uživateli k položkám. Můžeme se dozvědět o uživateli z položek, které ohodnotili, a od jiných uživatelů, kteří mají stejné položky.  
 
 Širší &, který doporučuje, kombinuje tyto přístupy pomocí filtrování spolupráce s přístupem založeným na obsahu. Proto se považuje za **hybridního doporučit**. 
 
@@ -77,7 +77,7 @@ Datová sada funkcí položky musí v prvním sloupci obsahovat identifikátory 
 
 Například typická sada funkcí položek může vypadat takto:  
 
-|MovieId|Nadpis|Původní jazyk|Žánry|Year|
+|MovieId|Nadpis|Původní jazyk|Žánry|Year (Rok)|
 |-------------|-------------|-------------------|-----------|---------------|
 |68646|Godfather|Angličtina|Drama|1972|
 |31381|Pryč s vítr|Angličtina|Historie|1939|
@@ -88,50 +88,50 @@ Například typická sada funkcí položek může vypadat takto:
   
 2. Pokud máte samostatnou datovou sadu uživatelských funkcí nebo funkcí položek, připojte je ke vlakovému modulu pro zajištění **širokého a hloubkového** nástroje.  
   
-    - **Datová sada uživatelských funkcí**: Připojte datovou sadu, která popisuje uživatele pro druhý vstup.
-    - **Datová sada funkcí položky**: Připojte datovou sadu, která popisuje položky třetího vstupu.  
+    - **Datová sada uživatelských funkcí** : Připojte datovou sadu, která popisuje uživatele pro druhý vstup.
+    - **Datová sada funkcí položky** : Připojte datovou sadu, která popisuje položky třetího vstupu.  
     
-3.  **Epochs**: Určete, kolikrát by měl algoritmus zpracovat veškerá data školení. 
+3.  **Epochs** : Určete, kolikrát by měl algoritmus zpracovat veškerá data školení. 
 
     Čím vyšší je toto číslo, tím lépe vyhovuje školení. školení ale ještě víc času a může způsobit přeložení.
 
-4. **Velikost dávky**: zadejte počet příkladů cvičení využívaných v jednom kroku školení. 
+4. **Velikost dávky** : zadejte počet příkladů cvičení využívaných v jednom kroku školení. 
 
      Tento parametr může mít vliv na rychlost školení. Vyšší velikost dávky vede k epocha méně času, ale může prodloužit dobu konvergence. A pokud je dávka příliš velká, aby odpovídala GPU nebo procesoru, může se vyvolaná Chyba paměti.
 
-5.  Nástroj pro **optimalizaci na nejrůznějších součástech**: vyberte jeden Optimalizátor, aby se přechody na rozsáhlou část modelu projevily.
+5.  Nástroj pro **optimalizaci na nejrůznějších součástech** : vyberte jeden Optimalizátor, aby se přechody na rozsáhlou část modelu projevily.
 
-6.  **Rychlost učení pro celý**Nástroj pro optimalizaci: zadejte číslo mezi 0,0 a 2,0, které definuje výukový kurz pro optimalizaci na nejrůznějších částech.
+6.  **Rychlost učení pro celý** Nástroj pro optimalizaci: zadejte číslo mezi 0,0 a 2,0, které definuje výukový kurz pro optimalizaci na nejrůznějších částech.
 
     Tento parametr představuje velikost kroku v každém výukovém kroku při přesunu směrem k funkci minimální ztráty. Příliš velká míra učení může způsobit, že se bude přecházet na minima, zatímco příliš malá rychlost učení může způsobit problémy s konvergencí.
 
-7.  **Dimenze překřížených funkcí**: zadejte dimenzi zadáním požadovaných ID uživatelů a funkcí ID položek. 
+7.  **Dimenze překřížených funkcí** : zadejte dimenzi zadáním požadovaných ID uživatelů a funkcí ID položek. 
 
     Ve výchozím nastavení provádí v rámci široké škály & ve výchozím nastavení transformaci mezi produkty přes ID uživatele a funkce ID položek. Výsledkem překročení výsledku bude hodnota hash podle tohoto čísla, aby se zajistila dimenze.
 
-8.  **Optimalizátor hlubokých částí**: vyberte jeden Optimalizátor, abyste mohli přechody použít na hlubokou část modelu.
+8.  **Optimalizátor hlubokých částí** : vyberte jeden Optimalizátor, abyste mohli přechody použít na hlubokou část modelu.
 
-9.  **Rychlost učení hloubkového optimalizace**: zadejte číslo mezi 0,0 a 2,0, které definuje výukovou rychlost Optimalizátoru hlubokých částí.
+9.  **Rychlost učení hloubkového optimalizace** : zadejte číslo mezi 0,0 a 2,0, které definuje výukovou rychlost Optimalizátoru hlubokých částí.
 
-10.  **Dimenze vložení uživatele**: Zadejte celé číslo pro určení dimenze vkládání ID uživatele.
+10.  **Dimenze vložení uživatele** : Zadejte celé číslo pro určení dimenze vkládání ID uživatele.
 
      V rámci široké škály &, který doporučuje, se vytváří vložení ID sdíleného uživatele a vkládání ID položek pro rozsáhlou a hlubokou část.
 
-11.  **Dimenze vložení položky**: Zadejte celé číslo pro určení dimenze vkládání ID položky.
+11.  **Dimenze vložení položky** : Zadejte celé číslo pro určení dimenze vkládání ID položky.
 
-12.  **Dimenze vkládání funkcí kategorií**: Zadejte celé číslo a určete rozměry vkládání funkcí kategorií.
+12.  **Dimenze vkládání funkcí kategorií** : Zadejte celé číslo a určete rozměry vkládání funkcí kategorií.
 
      V hluboké součásti širokého nástroje pro hloubkové &, který doporučuje, se vkládání vektoru učí pro každou funkci kategorií. A tyto vektory pro vložení sdílejí stejnou dimenzi.
 
-13.  **Skryté jednotky**: zadejte počet skrytých uzlů hluboké součásti. Počet uzlů v každé vrstvě je oddělen čárkami. Například podle typu "1 000 500 100" zadáte hloubkovou komponentu má tři vrstvy s první vrstvou na poslední v uvedeném pořadí má 1000 uzlů, 500 uzly a 100 uzly.
+13.  **Skryté jednotky** : zadejte počet skrytých uzlů hluboké součásti. Počet uzlů v každé vrstvě je oddělen čárkami. Například podle typu "1 000 500 100" zadáte hloubkovou komponentu má tři vrstvy s první vrstvou na poslední v uvedeném pořadí má 1000 uzlů, 500 uzly a 100 uzly.
 
-14.  **Aktivační funkce**: vyberte jednu funkci aktivace použitou pro každou vrstvu, výchozí hodnota je ReLU.
+14.  **Aktivační funkce** : vyberte jednu funkci aktivace použitou pro každou vrstvu, výchozí hodnota je ReLU.
 
-15.  **Dropout**: zadejte číslo mezi 0,0 a 1,0 k určení pravděpodobnosti, během školení budou výstupy vyhozeny v jednotlivých vrstvách.
+15.  **Dropout** : zadejte číslo mezi 0,0 a 1,0 k určení pravděpodobnosti, během školení budou výstupy vyhozeny v jednotlivých vrstvách.
 
      Dropout je metoda, která zabraňuje přebudování sítí neuronové. Jedním z běžných rozhodnutí pro tuto hodnotu je začít s 0,5, což se jeví jako optimální pro nejrůznější sítě a úlohy.
 
-16.  **Normalizace dávek**: tuto možnost vyberte, pokud chcete použít normalizaci dávky za každou skrytou vrstvu v hluboké součásti.
+16.  **Normalizace dávek** : tuto možnost vyberte, pokud chcete použít normalizaci dávky za každou skrytou vrstvu v hluboké součásti.
 
      Normalizace dávek je technika k boji při výuce interních potíží s covariate SHIFT během školení sítí. Obecně vám může pomoci zlepšit rychlost, výkon a stabilitu sítí. 
 

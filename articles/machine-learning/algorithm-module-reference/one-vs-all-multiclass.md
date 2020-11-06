@@ -1,7 +1,7 @@
 ---
 title: 1-versus-all Multiclass
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul 1-versus-all Multiclass v Azure Machine Learning k vytvoření modelu klasifikace s více třídami ze sady binárních modelů klasifikace.
+description: Naučte se používat modul 1-versus-all Multiclass v Návrháři Azure Machine Learning k vytvoření kompletu binárních modelů klasifikace.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898495"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420678"
 ---
 # <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
 
@@ -40,7 +40,7 @@ Binární model připojíte k modulu 1-versus-all Multiclass. Potom provedete sa
 
 Při kombinaci modelů 1-versus-all Multiclass vytvoří více binárních klasifikačních modelů, optimalizuje algoritmus pro každou třídu a poté sloučí modely. Modul provádí tyto úlohy i v případě, že datová sada školení může mít více hodnot třídy.
 
-1. Přidejte modul 1-versus-all Multiclass do kanálu v návrháři. Tento modul můžete najít v části **Machine Learning-Initialize**v kategorii **klasifikace** .
+1. Přidejte modul 1-versus-all Multiclass do kanálu v návrháři. Tento modul můžete najít v části **Machine Learning-Initialize** v kategorii **klasifikace** .
 
    Klasifikátor 1-versus-all Multiclass nemá vlastní konfigurovatelné parametry. Jakékoli vlastní nastavení musí být provedeno v binárním klasifikačním modelu, který je zadán jako vstup.
 

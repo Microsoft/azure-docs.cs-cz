@@ -1,7 +1,7 @@
 ---
 title: Rozdělení adresáře obrázků
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul adresáře rozdělené bitové kopie v Návrháři Azure Machine Learning (Preview) k rozdělení imagí adresáře obrázků do dvou různých sad.
+description: Naučte se používat modul adresáře rozdělené bitové kopie v Návrháři k rozdělení imagí adresáře obrázků do dvou různých sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448679"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421188"
 ---
 # <a name="split-image-directory"></a>Rozdělení adresáře obrázků
 
@@ -35,19 +35,19 @@ Tento modul je zvláště užitečný v případě, že potřebujete oddělit ob
 
 ### <a name="expected-inputs"></a>Očekávané vstupy
 
-| Název                  | Typ           | Description              |
+| Název                  | Typ           | Popis              |
 | --------------------- | -------------- | ------------------------ |
 | Adresář vstupní bitové kopie | ImageDirectory | Adresář obrázku, který se má rozdělit |
 
 ### <a name="module-parameters"></a>Parametry modulu
 
-| Název                                   | Typ  | Rozsah | Volitelné | Description                            | Výchozí |
+| Název                                   | Typ  | Rozsah | Volitelné | Popis                            | Výchozí |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Zlomek obrázků v prvním výstupu | Float | 0-1   | Vyžadováno | Zlomek obrázků v prvním výstupu | 0,9     |
 
 ### <a name="outputs"></a>Výstupy
 
-| Název                    | Typ           | Description                              |
+| Název                    | Typ           | Popis                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Výstupní image directory1 | ImageDirectory | Adresář imagí obsahující vybrané image |
 | Výstupní image directory2 | ImageDirectory | Adresář imagí, který obsahuje všechny ostatní image |

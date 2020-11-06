@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4446e5b8abf9ac308a5eb32cadf31eddfcb9d9a1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 507ef55a6fa3976475dbf08f88ee36cd1977464d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379243"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421018"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Vytvoření a přiřazení vlastní role v Azure Active Directory
 
@@ -183,4 +183,4 @@ Podobně jako předdefinované role jsou vlastní role ve výchozím rozsahu př
 
 - Můžete s námi sdílet na [fóru role pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - Další informace o rolích a přiřazení rolí správců najdete v tématu [přiřazení rolí správce](permissions-reference.md).
-- Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](/azure/active-directory/fundamentals/users-default-permissions).
+- Pro výchozí uživatelská oprávnění si přečtěte téma [Porovnání výchozích oprávnění typu Host a uživatel](/azure/active-directory/fundamentals/users-default-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).

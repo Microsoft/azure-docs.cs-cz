@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2190079cb97e37318bd1c6a32dfb2b9b309a8d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f337a66f50338692508ab2e5b4b7d489c735aa20
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276952"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420478"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Tento článek popisuje požadavky a požadavky na hardware pro službu Azure Active Directory (Azure AD) Connect.
@@ -42,8 +42,8 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 
 ### <a name="on-premises-active-directory"></a>Místní služby Active Directory
 * Úroveň funkčnosti schématu Active Directory a doménové struktury musí být Windows Server 2003 nebo novější. Řadiče domény můžou spouštět libovolnou verzi, pokud jsou splněné verze schématu a požadavky na úrovni doménové struktury.
-* Pokud máte v úmyslu použít *zpětný zápis hesla*k funkci, musí být řadiče domény v systému Windows Server 2008 R2 nebo novějším.
-* Řadič domény, který používá Azure AD, musí být zapisovatelný. Použití řadiče domény jen pro čtení (RODC) *není podporované*a Azure AD Connect nedodržují žádné přesměrování zápisu.
+* Pokud plánujete použít *zpětný zápis hesla* , musí být řadiče domény v systému Windows Server 2012 nebo novějším.
+* Řadič domény, který používá Azure AD, musí být zapisovatelný. Použití řadiče domény jen pro čtení (RODC) *není podporované* a Azure AD Connect nedodržují žádné přesměrování zápisu.
 * Použití místních doménových struktur nebo domén pomocí teček (název obsahuje tečku ".") Názvy rozhraní NetBIOS *nejsou podporovány*.
 * Doporučujeme [Povolit složku Koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
 
@@ -106,7 +106,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
   * Pokud používáte Cloud Microsoftu v Německu nebo Microsoft Azure Government cloudu, přečtěte si téma [informace o Azure AD Connect synchronizace instancí služby](reference-connect-instances.md) pro adresy URL.
 * Azure AD Connect (verze 1.1.614.0 a After) ve výchozím nastavení používá protokol TLS 1,2 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud není v podkladovém operačním systému k dispozici protokol TLS 1,2, Azure AD Connect přírůstkové ke starším protokolům (TLS 1,1 a TLS 1,0).
 * Před verzí 1.1.614.0 Azure AD Connect ve výchozím nastavení používá TLS 1,0 pro šifrování komunikace mezi synchronizačním modulem a službou Azure AD. Pokud chcete přejít na TLS 1,2, postupujte podle kroků v části [Povolení TLS 1,2 pro Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Pokud používáte pro připojení k Internetu odchozí proxy server, je nutné pro Průvodce instalací přidat následující nastavení **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** souboru a Azure AD Connect synchronizovat, aby bylo možné se připojit k Internetu a službě Azure AD. Tento text musí být zadaný na konci souboru. V tomto kódu * &lt; PROXYADDRESS &gt; * představuje skutečnou IP adresu proxy serveru nebo název hostitele.
+* Pokud používáte pro připojení k Internetu odchozí proxy server, je nutné pro Průvodce instalací přidat následující nastavení **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** souboru a Azure AD Connect synchronizovat, aby bylo možné se připojit k Internetu a službě Azure AD. Tento text musí být zadaný na konci souboru. V tomto kódu *&lt; PROXYADDRESS &gt;* představuje skutečnou IP adresu proxy serveru nebo název hostitele.
 
     ```
         <system.net>
@@ -140,7 +140,7 @@ Doporučujeme, abyste Server Azure AD Connect, abyste snížili plochu pro útok
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 Volitelné: k ověření synchronizace použijte účet testovacího uživatele.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti
@@ -180,7 +180,7 @@ Při použití Azure AD Connect k nasazení AD FS nebo proxy webové aplikace (W
   * V počítači, na kterém je spuštěný Průvodce (Pokud cílový počítač není připojený k doméně nebo se jedná o nedůvěryhodnou doménu):
     * V okně příkazového řádku PowerShellu se zvýšenými oprávněními použijte příkaz `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` .
     * Ve Správci serveru:
-      * Přidejte hostitele WAP DMZ do fondu počítačů. Ve Správci serveru vyberte **Spravovat**  >  **Přidat servery**a pak použijte kartu **DNS** .
+      * Přidejte hostitele WAP DMZ do fondu počítačů. Ve Správci serveru vyberte **Spravovat**  >  **Přidat servery** a pak použijte kartu **DNS** .
       * Na kartě **Správce serveru všechny servery** klikněte pravým tlačítkem na server WAP a vyberte **Spravovat jako**. Zadejte místní (nedoménová) pověření pro počítač WAP.
       * Pokud chcete ověřit vzdálené připojení k PowerShellu, na kartě **Správce serveru všechny servery** klikněte pravým tlačítkem na server WAP a vyberte **Windows PowerShell**. Měla by se otevřít Vzdálená relace PowerShellu, která zajistí, že se můžou vytvořit vzdálené relace PowerShellu.
 

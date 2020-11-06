@@ -1,14 +1,14 @@
 ---
 title: Ukázka předmocného pomocného kódu ISO 27001/úlohy SQL
 description: Nasaďte kroky ukázkového plánu úloh ISO 27001 App Service Environment/SQL Database, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b05015c05799625bf720096e70551eae7ff4d01
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072882"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420389"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázka ISO 27001 App Service Environment/SQL Database úlohy podrobný plán
 
@@ -41,8 +41,8 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázkového plánu úloh přidaných na základě ISO 27001/SQL úlohy.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázkového plánu úloh přidaných na základě ISO 27001/SQL úlohy.
+   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
@@ -60,7 +60,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -72,11 +72,11 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 
@@ -90,11 +90,11 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
      Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-     - **Název organizace**: zadejte krátký název vaší organizace. Tato vlastnost se primárně používá pro pojmenování prostředků.
-     - **ID předplatného sdílené služby**: ID předplatného, ke kterému je přiřazený ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) .
-     - **Výchozí předpona adresy podsítě**: zápis CIDR pro výchozí podsíť virtuální sítě.
+     - **Název organizace** : zadejte krátký název vaší organizace. Tato vlastnost se primárně používá pro pojmenování prostředků.
+     - **ID předplatného sdílené služby** : ID předplatného, ke kterému je přiřazený ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) .
+     - **Výchozí předpona adresy podsítě** : zápis CIDR pro výchozí podsíť virtuální sítě.
        Výchozí hodnota je _10.1.0.0/16_.
-     - **Umístění úlohy**: Určuje umístění, do kterého byly artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech umístěních. Artefakty, které nasazují takové služby, poskytují možnost parametru pro umístění, do kterého se tento artefakt má nasadit.
+     - **Umístění úlohy** : Určuje umístění, do kterého byly artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech umístěních. Artefakty, které nasazují takové služby, poskytují možnost parametru pro umístění, do kterého se tento artefakt má nasadit.
 
    - Parametry artefaktů
 
@@ -111,12 +111,12 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Description|
 |-|-|-|-|
-|Log Analytics skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Log Analytics skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Log Analytics|Šablona Resource Manageru|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
-|Skupina síťových prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Skupina síťových prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Skupina síťových prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona skupiny zabezpečení sítě|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Privátní IP adresa brány Azure firewall|Nakonfiguruje privátní IP adresu [brány firewall Azure](../../../../firewall/overview.md). By měl být součástí zápisu CIDR definovaného v _ISO 27001:_ parametr artefaktu sdílených služeb **Azure firewall předpony adresy podsítě**. Výchozí hodnota je _10.0.4.4_.|
@@ -124,21 +124,21 @@ Následující tabulka uvádí seznam parametrů artefaktů podrobného plánu:
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Předpona Virtual Network adresy|Zápis CIDR pro virtuální síť. Výchozí hodnota je _10.1.0.0/16_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Výchozí předpona adresy podsítě|Zápis CIDR pro výchozí podsíť virtuální sítě. Výchozí hodnota je _10.1.0.0/16_.|
 |Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Přidá IP adresu|IP adresa prvního přidání virtuálního počítače Tato hodnota se používá jako vlastní virtuální síť DNS.|
-|Key Vault skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-kv-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Key Vault skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-workload-kv-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Key Vault skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
-|Šablona Key Vault|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci Key Vault. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
+|Šablona Key Vault|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci Key Vault. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_ vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
 |Šablona Key Vault|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 |Šablona Key Vault|Šablona Resource Manageru|SKU Key Vault|Určuje SKLADOVOU položku Key Vault, která je vytvořena. Výchozí hodnota je _Premium_.|
 |Šablona Key Vault|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno použité pro přístup k Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Azure SQL Database**. Výchozí hodnota je _SQL-Admin-User_.|
-|Azure SQL Database skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-azsql-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Azure SQL Database skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-workload-azsql-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |Azure SQL Database skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno pro Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Key Vault**. Výchozí hodnota je _SQL-Admin-User_.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Heslo správce Azure SQL Server (ID prostředku Key Vault)|ID prostředku Key Vault. Použijte "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" a nahraďte `{subscriptionId}` ID vašeho předplatného a `{orgName}` parametrem **název organizace** podrobný plán.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Heslo správce Azure SQL Server (název Key Vault tajného klíče)|Uživatelské jméno správce SQL Server. Musí odpovídat hodnotě v **Key Vault** vlastnosti šablony **uživatelské jméno správce Azure SQL Server**.|
 |Šablona Azure SQL Database|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona Azure SQL Database|Šablona Resource Manageru|ID objektu Správce AAD|ID objektu AAD uživatele, který se přiřadí jako správce služby Active Directory. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
-|Šablona Azure SQL Database|Šablona Resource Manageru|Přihlášení správce AAD|V současné době se účty Microsoft (například live.com nebo outlook.com) nedají nastavit jako správci. Pouze uživatelé a skupiny zabezpečení v rámci vaší organizace lze nastavit jako správce. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ zkopírujte _uživatelské jméno_.|
-|App Service Environment skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-ase-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|ID objektu Správce AAD|ID objektu AAD uživatele, který se přiřadí jako správce služby Active Directory. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_ vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Přihlášení správce AAD|V současné době se účty Microsoft (například live.com nebo outlook.com) nedají nastavit jako správci. Pouze uživatelé a skupiny zabezpečení v rámci vaší organizace lze nastavit jako správce. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_ vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ zkopírujte _uživatelské jméno_.|
+|App Service Environment skupina prostředků|Skupina prostředků|Name|**Uzamkl** – zřetězí **název organizace** s `-workload-ase-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
 |App Service Environment skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
 |Šablona App Service Environment|Šablona Resource Manageru|Název domény|Název adresáře služby Active Directory vytvořeného ukázkou. Výchozí hodnota je _contoso.com_.|
 |Šablona App Service Environment|Šablona Resource Manageru|Umístění pomocného mechanismu|App Service Environment umístění. Výchozí hodnota je _západní USA 2_.|

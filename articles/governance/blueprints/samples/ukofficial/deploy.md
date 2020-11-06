@@ -1,14 +1,14 @@
 ---
 title: Nasazení OFICIÁLNÍch ukázek pro Spojené království & NHS UK
 description: Nasaďte kroky pro oficiální Spojené království a ukázky pro Spojené království (NHS), včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 07/13/2020
+ms.date: 11/02/2020
 ms.topic: sample
-ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14e832397c21f183c94720bc71f06530d9caaf14
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521441"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420321"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Nasazení ukázek pro Spojené království a ukázky pro Spojené království NHS podrobný plán
 
@@ -33,8 +33,8 @@ Nejprve implementujte ukázku podrobného plánu tak, že z ukázky vytvoříte 
 
 1. Zadejte _základní informace_ o ukázce podrobného plánu:
 
-   - **Název**podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu.
-   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
+   - **Název** podrobného plánu: zadejte název vaší kopie ukázky podrobného plánu.
+   - **Umístění definice** : použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
 1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** dole na stránce.
 
@@ -52,7 +52,7 @@ V prostředí máte teď vytvořenou kopii ukázky podrobného plánu. Kopie je 
 
 ## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
 
-Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
+Po úspěšném **publikování** kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku zadáte parametry pro každé nasazení kopie ukázky podrobného plánu.
 
 1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **Podrobné plány**.
 
@@ -64,11 +64,11 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
 
    - Základy
 
-     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
-     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+     - **Předplatná** : vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každé z nich pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení** : název je předem vyplněný na základě názvu podrobného plánu.
        Podle potřeby ho změňte nebo ponechte.
-     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
+     - **Umístění** : Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice** podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
    - Zamknout přiřazení
 

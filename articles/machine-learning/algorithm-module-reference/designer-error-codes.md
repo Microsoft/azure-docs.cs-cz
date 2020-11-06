@@ -1,7 +1,7 @@
 ---
 title: Řešení chyb modulu návrháře
 titleSuffix: Azure Machine Learning
-description: Řešení potíží s kódy chyb modulu v Návrháři Azure Machine Learning
+description: Přečtěte si, jak můžete číst a řešit potíže s kódy automatizovaných chyb modulu v Návrháři Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323778"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420831"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Výjimky a kódy chyb pro návrháře
 
@@ -1079,7 +1079,7 @@ Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže
 + Ověřte, že dotaz funguje správně mimo Azure Machine Learning tím, že se přihlásí do konzoly podregistru clusteru Hadoop a spustí se dotaz.  
 + Zkuste umístit komentáře do skriptu v podregistru do samostatného řádku, a to na rozdíl v kombinování spustitelných příkazů a komentářů na jednom řádku.  
 
-### <a name="resources"></a>Zdroje a prostředky
+### <a name="resources"></a>Prostředky
 
 Nápovědu k dotazům na podregistr pro strojové učení najdete v následujících článcích:
 

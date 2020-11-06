@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: ab1c07bd7814afb054bb20b77bbc84c1ee9df017
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 30d8fdf99da7a4854db0985bed6256ecd6f7a366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046787"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420916"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Postupy: Konfigurace výstrah a získání oznámení pomocí zavěšení
 
@@ -28,7 +28,7 @@ Poradce pro metriky podporuje tři různé typy zavěšení: zapojování e-mail
 ### <a name="email-hook"></a>E-mail háček
 
 > [!Note]
-> Správci prostředků Advisoru musí nakonfigurovat nastavení e-mailu a zadat informace související s protokolem SMTP do poradce metriky, než se můžou výstrahy na anomálii odeslat. Správce skupiny prostředků nebo správce předplatného musí na kartě řízení přístupu v prostředku Advisoru metriky přiřadit alespoň jednu roli *správce Poradce pro Cognitive Services metriky* . 
+> Správci prostředků Advisoru musí nakonfigurovat nastavení e-mailu a zadat informace související s protokolem SMTP do poradce metriky, než se můžou výstrahy na anomálii odeslat. Správce skupiny prostředků nebo správce předplatného musí na kartě řízení přístupu v prostředku Advisoru metriky přiřadit alespoň jednu roli *správce Poradce pro Cognitive Services metriky* . [Přečtěte si další informace o konfiguraci nastavení e-mailu](../faq.md#how-to-set-up-email-settings-and-enable-alerting-by-email).
 
 K vytvoření e-mailového zavěšení jsou k dispozici následující parametry: 
 
@@ -41,7 +41,7 @@ E-mail Hookem je kanál pro výstrahy anomálií, který se pošle e-mailovým a
 | Externí odkaz | Volitelné pole, které umožňuje přizpůsobené přesměrování, například při odstraňování poznámek. |
 | Název vlastní výstrahy anomálií | Šablona nadpisu podporuje `${severity}` , `${alertSettingName}` , `${datafeedName}` , `${metricName}` , `${detectConfigName}` , `${timestamp}` , `${topDimension}` , `${incidentCount}` , `${anomalyCount}`
 
-Po kliknutí na **OK**se vytvoří e-mailový háček. Můžete ji použít v jakémkoli nastavení výstrahy a získat tak výstrahy anomálií. 
+Po kliknutí na **OK** se vytvoří e-mailový háček. Můžete ji použít v jakémkoli nastavení výstrahy a získat tak výstrahy anomálií. 
 
 ### <a name="web-hook"></a>Webový Hook
 
@@ -86,17 +86,17 @@ Pokud chcete vytvořit službu Azure DevOps Hook, budete muset přidat následuj
 ## <a name="add-or-edit-alert-settings"></a>Přidat nebo upravit nastavení výstrah
 
 Přejít na stránku podrobností metriky, kde najdete část **Nastavení výstrah** v levém dolním rohu stránky s podrobnostmi metrik. Obsahuje seznam všech nastavení výstrah, která se vztahují na vybranou konfiguraci zjišťování. Při vytvoření nové konfigurace detekce není k dispozici žádné nastavení výstrahy a nebudou odeslány žádné výstrahy.  
-K úpravě nastavení výstrah můžete použít ikony **Přidat**, **Upravit** a **Odstranit** .
+K úpravě nastavení výstrah můžete použít ikony **Přidat** , **Upravit** a **Odstranit** .
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="okno pro vytvoření webového zavěšení.":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Položka nabídky nastavení výstrah":::
 
 Kliknutím na tlačítka **Přidat** nebo **Upravit** zobrazíte okno pro přidání nebo úpravu nastavení výstrah.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="okno pro vytvoření webového zavěšení.":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Přidat nebo upravit nastavení výstrah":::
 
-**Název nastavení výstrahy**: název tohoto nastavení výstrahy. Zobrazí se v nadpisu e-mailu s výstrahou.
+**Název nastavení výstrahy** : název tohoto nastavení výstrahy. Zobrazí se v nadpisu e-mailu s výstrahou.
 
-**Zavěšení**: seznam háčků, na které se mají odesílat výstrahy.
+**Zavěšení** : seznam háčků, na které se mají odesílat výstrahy.
 
 Oddíl označený na snímku obrazovky výše je nastavení pro zjišťování konfigurace. Můžete nastavit různá nastavení výstrah pro různé konfigurace detekce. Vyberte cílovou konfiguraci pomocí třetího rozevíracího seznamu v tomto okně. 
 
@@ -106,16 +106,16 @@ Níže jsou uvedené nastavení filtru pro jednu konfiguraci detekce.
 
 **Výstraha pro** má 4 možnosti pro filtrování anomálií:
 
-* **Anomálie ve všech řadách**: všechny anomálie budou zahrnuty do výstrahy.         
-* **Anomálie ve skupině řad**: filtrovat řady podle hodnot dimenzí. Nastavte konkrétní hodnoty pro některé dimenze. Anomálie budou zahrnuty do výstrahy pouze v případě, že řada odpovídá zadané hodnotě.       
-* **Anomálie v oblíbených řadách**: v této výstraze bude obsažena pouze řada označená jako oblíbená.        |
-* **Anomálie v horní části N všech řad**: Tento filtr je určen pro případ, že se o řadě, jejichž hodnota je v horní části n, zajímá. Podíváme se na některá časová razítka a zkontrolujeme, jestli je hodnota řady v tomto časovém razítku v horní části N. Pokud je počet "v horním n" větší než zadané číslo, bude tato anomálie obsažena v upozornění.        |
+* **Anomálie ve všech řadách** : všechny anomálie budou zahrnuty do výstrahy.         
+* **Anomálie ve skupině řad** : filtrovat řady podle hodnot dimenzí. Nastavte konkrétní hodnoty pro některé dimenze. Anomálie budou zahrnuty do výstrahy pouze v případě, že řada odpovídá zadané hodnotě.       
+* **Anomálie v oblíbených řadách** : v této výstraze bude obsažena pouze řada označená jako oblíbená.        |
+* **Anomálie v horní části N všech řad** : Tento filtr je určen pro případ, že se o řadě, jejichž hodnota je v horní části n, zajímá. Podíváme se na některá časová razítka a zkontrolujeme, jestli je hodnota řady v tomto časovém razítku v horní části N. Pokud je počet "v horním n" větší než zadané číslo, bude tato anomálie obsažena v upozornění.        |
 
 **Možnost filtrovat anomálie** je dalším filtrem s následujícími možnostmi:
 
 - **závažnost** : anomálie bude zahrnutá jenom v případě, že závažnost anomálií spadá do zadaného rozsahu.
 - **Připomenout** : dočasně zastavit výstrahy pro anomálie v dalších N bodech (tečka), když se aktivuje v rámci výstrahy.
-    - **typ odložení** : když se nastaví na **řady**, aktivovaná anomálie odsadí jenom svou řadu. V případě **metriky**bude jedna aktivovaná anomálií odložit všechny řady v této metrikě.
+    - **typ odložení** : když se nastaví na **řady** , aktivovaná anomálie odsadí jenom svou řadu. V případě **metriky** bude jedna aktivovaná anomálií odložit všechny řady v této metrikě.
     - **číslo odložení** : počet bodů (period), které se mají znovu připomenout.
     - **resetovat po neúspěšné** : Pokud je vybraná, aktivovaná anomálie se odsadí jenom u dalších n úspěšných anomálií. Pokud jeden z následujících datových bodů není anomálií, odložení bude od tohoto bodu resetováno. Pokud není vybraná, jedna z aktivovaných anomálií bude připomenout další n bodů (tečka), a to i v případě, že po sobě jdoucí datové body neanomálií.
 - **hodnota** (volitelné): filtrovat podle hodnoty. Budou zahrnuty pouze hodnoty bodů, které splňují podmínku, anomálie. Pokud použijete odpovídající hodnotu jiné metriky, názvy dimenzí obou metrik by měly být konzistentní.
@@ -134,7 +134,7 @@ Selektor **operátoru** je logický vztah jednotlivých sekcí, aby bylo možné
 |A     | Odeslat výstrahu pouze v případě, že řada odpovídá jednotlivým částem výstrahy a všechny datové body jsou anomálie. Pokud mají metriky různé názvy dimenzí, výstraha se nikdy neaktivuje.         |
 |NEBO     | Odeslat výstrahu, pokud alespoň jedna část obsahuje anomálie.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="okno pro vytvoření webového zavěšení.":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Operator pro více oddílů nastavení výstrahy":::
 
 ## <a name="next-steps"></a>Další kroky
 

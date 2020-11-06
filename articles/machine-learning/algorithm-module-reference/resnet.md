@@ -1,7 +1,7 @@
 ---
 title: ResNet
 titleSuffix: Azure Machine Learning
-description: Naučte se vytvářet model klasifikace obrázků pomocí algoritmu ResNet.
+description: Naučte se, jak vytvořit model klasifikace obrázků v Návrháři Azure Machine Learning pomocí algoritmu ResNet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: bd0431a8e503605c6137d948cf207c1bd2fa45b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442037"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421205"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -34,9 +34,9 @@ Další podrobnosti o ResNet najdete v [tomto dokumentu](https://pytorch.org/doc
 
 1.  Přidejte modul **ResNet** do kanálu v návrháři.  
 
-2.  V části **název modelu**zadejte název určité struktury ResNet a můžete vybrat z podporovaných ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 \_ 32x4d ', ' resnext101 32x8d ', ' \_ wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 '.
+2.  V části **název modelu** zadejte název určité struktury ResNet a můžete vybrat z podporovaných ResNet: ' resnet18 ', ' resnet34 ', ' resnet50 ', ' resnet101 ', ' resnet152 ', ' resnet152 ', ' resnext50 \_ 32x4d ', ' resnext101 32x8d ', ' \_ wide_resnet50 \_ 2 ', ' wide_resnet101 \_ 2 '.
 
-3.  Pro **předvlaky**určete, jestli se má používat model předběžně vyškolený v ImageNet. Pokud je tato možnost vybraná, můžete model vyladit podle vybraného předem připraveného modelu. Pokud je tento výběr nevybraný, můžete vytvářet sestavy od začátku.
+3.  Pro **předvlaky** určete, jestli se má používat model předběžně vyškolený v ImageNet. Pokud je tato možnost vybraná, můžete model vyladit podle vybraného předem připraveného modelu. Pokud je tento výběr nevybraný, můžete vytvářet sestavy od začátku.
 
 4.  Propojte výstup modulu **DenseNet** , školení a sady dat image ověřování v [modelu Pytorch pro analýzu](train-pytorch-model.md). 
 
@@ -50,15 +50,15 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name       | Rozsah | Typ    | Výchozí           | Description                              |
+| Name       | Rozsah | Typ    | Výchozí           | Popis                              |
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
-| Název modelu | Všechny   | Mode    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
-| Předvlakované | Všechny   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
+| Název modelu | Libovolný   | Režim    | resnext101 \_ 32x8d | Název určité struktury ResNet       |
+| Předvlakované | Libovolný   | Logická hodnota | Ano              | Jestli se má používat model předučený na ImageNet |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>Výstup  
 
-| Název            | Typ                    | Description                              |
+| Název            | Typ                    | Popis                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nevlakový model | UntrainedModelDirectory | Nevlakový model ResNet, který se dá připojit ke Pytorch modelu výuky. |
 

@@ -1,7 +1,7 @@
 ---
 title: 'Permutace – funkce důležitost: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak používat modul důležitost funkcí permutace v Azure Machine Learning k výpočtu skóre důležitosti funkcí funkcí, s ohledem na vyškolený model a testovací datovou sadu.
+description: Naučte se používat modul důležitost funkcí permutace v Návrháři k výpočtu skóre důležitosti funkcí v rámci proměnných funkcí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319397"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421239"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
@@ -44,7 +44,7 @@ Generování sady výsledků funkcí vyžaduje, abyste měli už vyškolený mod
 
      Azure Machine Learning Designer podporuje následující metriky v závislosti na tom, zda vyhodnocujete model klasifikace nebo regrese:  
 
-    -   **Klasifikace**
+    -   **Classification**
 
         Přesnost, přesnost, odvolání  
 

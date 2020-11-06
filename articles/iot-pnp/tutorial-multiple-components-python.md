@@ -1,18 +1,18 @@
 ---
-title: Připojení ukázkového kódu zařízení v Pythonu technologie Plug and Play k IoT Hub | Microsoft Docs
-description: Sestavte a spouštějte ukázkový kód zařízení Python technologie Plug and Play, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Kurz – připojení ukázkových kódů zařízení v Pythonu technologie Plug and Play k Azure IoT Hub | Microsoft Docs
+description: Kurz – Sestavte a spouštějte ukázkový kód zařízení Python technologie Plug and Play, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b329206dcc41d8f7fcb3874da037f5b57142722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a4130688d479902f7836ae09c4006bb36fc16d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613658"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421392"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-python"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Python)
 
@@ -20,7 +20,7 @@ ms.locfileid: "91613658"
 
 V tomto kurzu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení pomocí komponent, připojit ji k centru IoT a pomocí nástroje Azure IoT Explorer zobrazit informace, které posílá do centra. Ukázková aplikace je napsaná v Pythonu a je obsažená v sadě SDK pro zařízení Azure IoT pro Python. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -93,7 +93,7 @@ Otevřete soubor *temp_controller_with_thermostats. py* v editoru dle vašeho v�
     - Aktualizuje čitelné vlastnosti pro své komponenty voláním `patch_twin_reported_properties` .
 
     - Spustí naslouchání žádostí o příkazy pomocí `execute_command_listener` funkce. Funkce nastaví naslouchací proces pro požadavky příkazu ze služby. Při nastavování naslouchacího procesu můžete zadat `method_name` , `user_command_handler` a volitelné `create_user_response_handler` jako parametry.
-        - `method_name`Definuje požadavek příkazu. V této ukázce model definuje příkazy pro **restartování**a **getMaxMinReport**.
+        - `method_name`Definuje požadavek příkazu. V této ukázce model definuje příkazy pro **restartování** a **getMaxMinReport**.
         - `user_command_handler`Funkce definuje, co by mělo zařízení dělat při přijetí příkazu.
         - `create_user_response_handler`Funkce vytvoří odpověď, která se odešle do služby IoT Hub, když se příkaz úspěšně spustí. Tuto odpověď můžete zobrazit na portálu. Pokud tato funkce není k dispozici, je službě odeslána obecná odpověď.
 

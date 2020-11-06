@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442333"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421086"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Kurz: ochrana a udělení přístupu k Node.js webovému rozhraní API z jednostránkové aplikace s Azure AD B2C
 
@@ -34,7 +34,7 @@ V [prvním kurzu](tutorial-single-page-app.md) této série jste stáhli ukázku
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky a požadavky v [kurzu: povolení ověřování v aplikaci s jednou stránkou s Azure AD B2C](tutorial-single-page-app.md)
 * [Visual Studio Code](https://code.visualstudio.com/) nebo jiný Editor kódu
@@ -56,11 +56,11 @@ Poznamenejte si hodnotu **Scopes** `demo.read` rozsah, který se má použít v 
 
 Chcete-li volat chráněné webové rozhraní API z jiné aplikace, je třeba udělit oprávnění aplikace webovému rozhraní API.
 
-V kurzu požadavků jste vytvořili webovou aplikaci s názvem *WebApp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *webapi1*.
+V kurzu požadavků jste vytvořili jednostránkovou aplikaci s názvem *spaapp1*. V tomto kurzu nakonfigurujete tuto aplikaci tak, aby volala webové rozhraní API, které jste vytvořili v předchozí části, *spaapp1*.
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Vaše webová aplikace s jednou stránkou má teď udělená oprávnění k chráněnému webovému rozhraní API pro zadané obory. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace používá tok udělení autorizace pro přístup k chráněnému webovému rozhraní API s přístupovým tokenem vráceným Azure AD B2C.
+Vaše webová aplikace s jednou stránkou má teď udělená oprávnění k chráněnému webovému rozhraní API pro zadané obory. Uživatel se ověřuje pomocí Azure AD B2C pro použití jednostránkové aplikace. Jednostránkové aplikace získá přístupový token z Azure AD B2C pro přístup k chráněnému webovému rozhraní API.
 
 ## <a name="configure-the-sample"></a>Konfigurace ukázky
 
@@ -137,7 +137,7 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-nodejs-web-api"></a>Spuštění Node.js webového rozhraní API
 
-1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Příklad:
+1. Otevřete okno konzoly a přejděte do adresáře obsahujícího ukázku Node.js webového rozhraní API. Například:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -158,10 +158,10 @@ I když jsou obě aplikace spuštěné v tomto kurzu místně, jste je nakonfigu
 
 ### <a name="run-the-single-page-app"></a>Spuštění jednostránkové aplikace
 
-1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Příklad:
+1. Otevřete jiné okno konzoly a přejděte do adresáře, který obsahuje ukázku kódu JavaScript SPA. Například:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Spusťte následující příkazy:

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 362d5f2046ff4e9ba52dd2e73433cc39e80f7a50
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934952"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420593"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Škálování pro výkon v Azure Kognitivní hledání
 
@@ -30,7 +30,7 @@ Než budete mít větší úsilí na nasazení, ujistěte se, že víte, jak vyp
 
 1. Začněte s nízkým počtem dotazů za sekundu (QPS) a pak postupně zvyšujte počet provedených v testu, dokud latence dotazu neklesne pod předdefinovaný cíl. Toto je důležitý srovnávací test, který vám pomůže při plánování škálování, protože vaše aplikace roste v používání.
 
-1. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Kognitivní hledání .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
+1. Pokud je to možné, znovu použijte připojení HTTP. Pokud používáte sadu Azure Kognitivní hledání .NET SDK, znamená to, že byste měli znovu použít instanci nebo instanci [SearchClient](/dotnet/api/azure.search.documents.searchclient) a pokud používáte REST API, měli byste znovu použít jeden HttpClient.
 
 1. Lišící se v závislosti na požadavcích na dotazy, takže vyhledávání probíhá přes různé části indexu. Variace je důležitá, protože pokud průběžně spouštíte stejné požadavky na hledání, zahájí ukládání dat do mezipaměti lepší výkon, než může s více různými množinami dotazů.
 
@@ -43,7 +43,7 @@ Při vytváření těchto testovacích úloh jsou k dispozici některé charakte
 + Azure Kognitivní hledání nespouští úlohy indexování na pozadí. Pokud vaše služba současně zpracovává úlohy dotazů a indexování, vezměte tuto možnost v úvahu tím, že zavedete indexování úloh do testů dotazů nebo prozkoumáte možnosti spouštění úloh indexování v době mimo špičku.
 
 > [!Tip]
-> Můžete simulovat reálné zatížení dotazů pomocí nástrojů pro zátěžové testování. Vyzkoušejte [zátěžové testování pomocí Azure DevOps](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) nebo použijte některou z těchto [alternativ](/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
+> Můžete simulovat reálné zatížení dotazů pomocí nástrojů pro zátěžové testování. Vyzkoušejte [zátěžové testování pomocí Azure DevOps](/azure/devops/test/load-test/get-started-simple-cloud-load-test) nebo použijte některou z těchto [alternativ](/azure/devops/test/load-test/overview#alternatives).
 
 ## <a name="scale-for-high-query-volume"></a>Škálování pro velký objem dotazů
 

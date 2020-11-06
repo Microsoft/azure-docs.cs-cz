@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544830"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417584"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Oznámení o plánované údržbě v Azure Database for MySQL – jeden server
 
@@ -46,14 +46,14 @@ Můžete buď zaškrtnout oznámení o plánované údržbě Azure Portal nebo n
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Kontrolovat oznámení o plánované údržbě z Azure Portal
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Service Health** .
+1. V [Azure Portal](https://portal.azure.com)vyberte **Service Health**.
 2. Vybrat kartu **plánované údržby**
-3. Vyberte **předplatné** , * * oblast a **službu** , pro kterou chcete kontrolovat oznámení o plánované údržbě. 
+3. Vyberte **předplatné** , **oblast** a **službu** , pro které chcete kontrolovat oznámení o plánované údržbě. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Příjem plánovaného oznámení o údržbě
 
-1. Na [portálu](https://portal.azure.com)vyberte **Service Health** .
-2. V části **výstrahy** vyberte výstrahy týkající se **stavu** .
+1. Na [portálu](https://portal.azure.com)vyberte **Service Health**.
+2. V části **výstrahy** vyberte výstrahy týkající se **stavu**.
 3. Vyberte **+ Přidat upozornění na stav služby** a vyplňte pole.
 4. Vyplňte požadovaná pole. 
 5. Zvolte **Typ události** , vyberte **plánovaná údržba** nebo **Vybrat vše** .

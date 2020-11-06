@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class Averageed Perceptron: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí modulu Two-Class Averageed Perceptron v Azure Machine Learning vytvořit model strojového učení založený na průměrném algoritmu Perceptron.
+description: Naučte se, jak pomocí modulu Two-Class Averageed Perceptron Module v Návrháři vytvořit binární klasifikátor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1161dc99b84026bcc830c08b63b95d0bf3b0994
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907753"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421137"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Two-Class Averageed – modul Perceptron
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model strojového učení na základě průměrného Perceptron algoritmu.  
   
-Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje *datovou sadu s příznakem*, která obsahuje sloupec popisku. Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro [vlakový model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
+Tento algoritmus klasifikace je metoda učení pod dohledem a vyžaduje *datovou sadu s příznakem* , která obsahuje sloupec popisku. Model můžete proškolit poskytnutím modelu a tagované datové sady jako vstupu pro [vlakový model](./train-model.md). K předpovědi hodnot pro nové příklady vstupu je pak možné použít trained model.  
 
 ### <a name="about-averaged-perceptron-models"></a>Průměrné modely Perceptron
 
@@ -36,25 +36,25 @@ Jednodušší modely Perceptron jsou vhodné pro učení lineárních oddělitel
 
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, poskytněte konkrétní sadu hodnot jako argumenty.
+    -   **Jediný parametr** : Pokud víte, jak chcete model konfigurovat, poskytněte konkrétní sadu hodnot jako argumenty.
 
-    -   **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
+    -   **Rozsah parametrů** : tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
   
-3.  Do pole **rychlost učení**zadejte hodnotu *studijní frekvence*. Hodnoty studijních kurzů určují velikost kroku, který se používá v stochastického přechodu při každém testování a opravování modelu.
+3.  Do pole **rychlost učení** zadejte hodnotu *studijní frekvence*. Hodnoty studijních kurzů určují velikost kroku, který se používá v stochastického přechodu při každém testování a opravování modelu.
   
      Tím, že se rychlost zmenší, otestujete model častěji s rizikem, že se můžete zablokovat v místních stabilní úrovně. Tím, že krok provedete větší, můžete provést sblížení rychleji a na riziko překročení skutečných minimálních minim.
   
-4.  V poli **maximální počet iterací**zadejte počet pokusů, kolikrát chcete, aby algoritmus kontroloval školicí data.  
+4.  V poli **maximální počet iterací** zadejte počet pokusů, kolikrát chcete, aby algoritmus kontroloval školicí data.  
   
      Brzy se často zastavuje lepší generalizace. Zvýšení počtu opakování zlepšuje přizpůsobení při riziku přebudování.
   
-5.  V případě **náhodného čísla počáteční**hodnota zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota. Použití počáteční hodnoty se doporučuje, pokud chcete zajistit reprodukovatelnost kanálu napříč běhy.  
+5.  V případě **náhodného čísla počáteční** hodnota zadejte celočíselnou hodnotu, která se má použít jako počáteční hodnota. Použití počáteční hodnoty se doporučuje, pokud chcete zajistit reprodukovatelnost kanálu napříč běhy.  
   
 1.  Připojte školicí datovou sadu a Vyškolte model:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

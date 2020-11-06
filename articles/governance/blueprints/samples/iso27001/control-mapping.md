@@ -1,20 +1,20 @@
 ---
 title: Kontrola ukázkových ovládacích prvků ISO 27001
 description: Mapování ovládacího prvku ukázka ISO 27001. Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: 6e72f8ca25939b1cad8b2a5dc5bd3fc5fc286027
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 04e9863cd52c272cf74e2656df207f4ced7b4286
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931950"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420225"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>Mapování ovládacího prvku ukázka ISO 27001
 
 Následující článek podrobně popisuje, jak ukázka mapování Azure modrotisky ISO 27001 na ovládací prvky ISO 27001. Další informace o ovládacích prvcích naleznete v tématu [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
-Následující mapování jsou pro ovládací prvky **ISO 27001:2013** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte kontrolní seznam ** \[ \] Audit ISO 27001:2013 a nasaďte konkrétní rozšíření virtuálního počítače pro podporu požadavků na** integrovanou iniciativu zásad pro audit.
+Následující mapování jsou pro ovládací prvky **ISO 27001:2013** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte kontrolní seznam **\[ \] Audit ISO 27001:2013 a nasaďte konkrétní rozšíření virtuálního počítače pro podporu požadavků na** integrovanou iniciativu zásad pro audit.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md).
@@ -65,7 +65,6 @@ Tento podrobný plán přiřadí tři [Azure Policy](../../../policy/overview.md
 - Pro účty s oprávněním ke čtení vašeho předplatného by se měla povolit vícefaktorové ověřování.
 - Pro účty s oprávněními k zápisu v předplatném by se mělo povolit MFA.
 - Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, u kterých není oprávnění k souboru passwd nastaveno na 0644
-- Nasaďte požadavky pro audit virtuálních počítačů Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
 
 ## <a name="a925-review-of-user-access-rights"></a>A. 9.2.5 Kontrola přístupových práv uživatele
 
@@ -100,11 +99,6 @@ Tento podrobný plán vám pomůže vynutilit silná hesla přiřazením 10 [Azu
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
-- Nasaďte požadavky pro audit virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dnů.
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den
-- Nasaďte požadavky pro audit virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
 
 ## <a name="a1011-policy-on-the-use-of-cryptographic-controls"></a>Zásady. 10.1.1 pro použití kryptografických ovládacích prvků
 
@@ -113,7 +107,6 @@ Tento podrobný plán vám pomůže vyhovět zásadám používání ovládacíc
 - Function App by měl být přístupný jenom přes HTTPS
 - Webová aplikace by měla být přístupná jen přes protokol HTTPS
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 - Na virtuálních počítačích by se mělo použít šifrování disku
 - Proměnné účtu Automation by se měly šifrovat.

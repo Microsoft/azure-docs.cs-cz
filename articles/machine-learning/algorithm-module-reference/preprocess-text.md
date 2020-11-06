@@ -1,7 +1,7 @@
 ---
 title: 'Text předběžného zpracování: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul textu předzpracování v Azure Machine Learning k vyčištění a zjednodušení textu.
+description: Naučte se používat modul textu předzpracování v Návrháři Azure Machine Learning k vyčištění a zjednodušení textu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4112d26d6a21ac800e20bb67ce24a35ca9d09a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d512a691b76cb7cbc72b4cbcb1fc821e928ea1b0
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905230"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421222"
 ---
 # <a name="preprocess-text"></a>Předzpracování textu
 
@@ -39,47 +39,47 @@ Modul pro **zpracování textu** v současné době podporuje pouze angličtinu.
 
 1. V rozevíracím seznamu **jazyk** vyberte jazyk.
 
-1. **Sloupec text, který se má vyčistit**: vyberte sloupec, který chcete předzpracovat.
+1. **Sloupec text, který se má vyčistit** : vyberte sloupec, který chcete předzpracovat.
 
-1. **Odebrat slova stop**: tuto možnost vyberte, pokud chcete použít předdefinovaný seznam stopslovo do textového sloupce. 
+1. **Odebrat slova stop** : tuto možnost vyberte, pokud chcete použít předdefinovaný seznam stopslovo do textového sloupce. 
 
     Seznamy stopslovo jsou závislé na jazyku a přizpůsobitelné.
 
-1. **Lemmatizátor nebo předzpracování**: tuto možnost vyberte, pokud chcete, aby se slova reprezentují v kanonickém tvaru. Tato možnost je užitečná pro snížení počtu jedinečných výskytů jiných podobných textových tokenů.
+1. **Lemmatizátor nebo předzpracování** : tuto možnost vyberte, pokud chcete, aby se slova reprezentují v kanonickém tvaru. Tato možnost je užitečná pro snížení počtu jedinečných výskytů jiných podobných textových tokenů.
 
     Proces lemmatizátor nebo předzpracování je velmi závislý na jazyku...
 
-1. **Zjistit věty**: tuto možnost vyberte, pokud chcete, aby modul při provádění analýzy vkládal značku ohraničení věty.
+1. **Zjistit věty** : tuto možnost vyberte, pokud chcete, aby modul při provádění analýzy vkládal značku ohraničení věty.
 
     Tento modul používá sérii tří znaků kanálu `|||` , které reprezentují zakončení věty.
 
 1. Provádět volitelné operace hledání a nahrazení pomocí regulárních výrazů.
 
-    * **Vlastní regulární výraz**: Definujte text, který hledáte.
-    * **Vlastní řetězec nahrazení**: Definujte jedinou nahrazující hodnotu.
+    * **Vlastní regulární výraz** : Definujte text, který hledáte.
+    * **Vlastní řetězec nahrazení** : Definujte jedinou nahrazující hodnotu.
 
-1. **Normalizovat velikost písmen na malá písmena**: tuto možnost vyberte, pokud chcete převést znaky ASCII znaků na jejich tvary malých písmen.
+1. **Normalizovat velikost písmen na malá písmena** : tuto možnost vyberte, pokud chcete převést znaky ASCII znaků na jejich tvary malých písmen.
 
     Pokud nejsou znaky normalizovány, stejné slovo velkými a malými písmeny je považováno za dvě odlišná slova.
 
 1. Z zpracovaného výstupního textu můžete také odebrat následující typy znaků nebo sekvence znaků:
 
-    * **Odebrat čísla**: tuto možnost vyberte, pokud chcete odebrat všechny číselné znaky pro zadaný jazyk. Identifikační čísla jsou závislá na doméně a závislé na jazyku. Pokud jsou číselné znaky integrální součástí známého slova, číslo se nemusí odebrat.
+    * **Odebrat čísla** : tuto možnost vyberte, pokud chcete odebrat všechny číselné znaky pro zadaný jazyk. Identifikační čísla jsou závislá na doméně a závislé na jazyku. Pokud jsou číselné znaky integrální součástí známého slova, číslo se nemusí odebrat.
     
-    * **Odebrat speciální znaky**: tuto možnost použijte, pokud chcete odebrat jakékoli jiné než alfanumerické speciální znaky.
+    * **Odebrat speciální znaky** : tuto možnost použijte, pokud chcete odebrat jakékoli jiné než alfanumerické speciální znaky.
     
-    * **Odebrat duplicitní znaky**: tuto možnost vyberte, pokud chcete odebrat nadbytečné znaky v jakékoli sekvenci, která se opakuje více než dvakrát. Například sekvence jako "AAAAA" by se snížila na "AA".
+    * **Odebrat duplicitní znaky** : tuto možnost vyberte, pokud chcete odebrat nadbytečné znaky v jakékoli sekvenci, která se opakuje více než dvakrát. Například sekvence jako "AAAAA" by se snížila na "AA".
     
-    * **Odebrat e-mailové adresy**: tuto možnost vyberte, pokud chcete odebrat jakoukoli sekvenci formátu `<string>@<string>` .  
-    * **Odebrat adresy URL**: tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy URL: `http` , `https` , `ftp` , `www`
+    * **Odebrat e-mailové adresy** : tuto možnost vyberte, pokud chcete odebrat jakoukoli sekvenci formátu `<string>@<string>` .  
+    * **Odebrat adresy URL** : tuto možnost vyberte, pokud chcete odebrat všechny sekvence obsahující následující PŘEDPONY adresy URL: `http` , `https` , `ftp` , `www`
     
-1. **Rozbalit kontrakty operací**: Tato možnost platí jenom pro jazyky, které používají kontrakty operací. v současné době pouze v angličtině. 
+1. **Rozbalit kontrakty operací** : Tato možnost platí jenom pro jazyky, které používají kontrakty operací. v současné době pouze v angličtině. 
 
     Když například vyberete tuto možnost, můžete *nahradit frázi. nezůstane tam* , kde *se nachází.*
 
-1. **Normalizovat zpětná lomítka na lomítka**: tuto možnost vyberte, pokud chcete namapovat všechny instance `\\` na `/` .
+1. **Normalizovat zpětná lomítka na lomítka** : tuto možnost vyberte, pokud chcete namapovat všechny instance `\\` na `/` .
 
-1. **Rozdělit tokeny na speciální znaky**: tuto možnost vyberte, pokud chcete rozdělit slova na znaky, například `&` , `-` a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
+1. **Rozdělit tokeny na speciální znaky** : tuto možnost vyberte, pokud chcete rozdělit slova na znaky, například `&` , `-` a tak dále. Tato možnost může také snížit speciální znaky, pokud se opakuje více než dvakrát. 
 
     Například řetězec `MS---WORD` by byl rozdělen na tři tokeny,, `MS` `-` a `WORD` .
 

@@ -1,7 +1,7 @@
 ---
 title: Reference k modulům hash funkcí
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul hashování funkcí v Azure Machine Learning k zpracování textových dat.
+description: Naučte se používat modul hashování funkcí v Návrháři Azure Machine Learning k zpracování textových dat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323725"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420780"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
-Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Funkce hash funkcí uvedená v tomto modulu vychází z rozhraní nimbusml. Další informace naleznete v tématu [Třída NgramHash](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true).
 
 ## <a name="what-is-feature-hashing"></a>Co je funkce hashing funkcí?
 

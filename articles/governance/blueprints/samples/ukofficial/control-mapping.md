@@ -1,20 +1,20 @@
 ---
 title: Ukázkové ovládací prvky NHS podrobného plánu pro Spojené království – oficiální &
 description: Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království Každý ovládací prvek je namapován na jednu nebo více Azure Policy definic, které pomáhají s posouzením.
-ms.date: 07/13/2020
+ms.date: 11/05/2020
 ms.topic: sample
-ms.openlocfilehash: b798ac98e057b85cce0faa835575dbb0d50f9c8c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 352ba30a21c638c68401e2f8e471096a777fbde9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931268"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420253"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Mapování ovládacího prvku OFICIÁLNÍch a NHS podrobných plánů pro Spojené království
 
 Následující článek podrobně popisuje, jak jsou vzorky ÚŘEDNÍch a NHS podrobných plánů pro Spojené království mapovány na oficiální a britský NHS ovládací prvky. Další informace o ovládacích prvcích najdete v článku [úředník pro Spojené království](https://www.gov.uk/government/publications/government-security-classifications).
 
-Následující mapování jsou pro **oficiální** a britský ovládací prvky **NHS** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost ** \[ Preview \] Auditovat oficiální a britský NHS ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit** integrovaných iniciativ zásad.
+Následující mapování jsou pro **oficiální** a britský ovládací prvky **NHS** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost **\[ Preview \] Auditovat oficiální a britský NHS ovládací prvky a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit** integrovaných iniciativ zásad.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. Nicméně často není jedna nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md).
@@ -26,7 +26,6 @@ Podrobný plán vám pomůže zajistit, aby přenos informací se službami Azur
 - Měla by být povolená jenom zabezpečená připojení k vašemu Redis Cache.
 - Měl by se povolit zabezpečený přenos do účtů úložiště
 - Zobrazit výsledky auditu z webových serverů Windows, které nepoužívají protokoly zabezpečené komunikace
-- Nasazení požadavků pro audit webových serverů Windows, které nepoužívají zabezpečené komunikační protokoly
 - Webová aplikace by měla být přístupná jen přes protokol HTTPS
 - Function App by měl být přístupný jenom přes HTTPS
 - Aplikace API by měla být přístupná jen přes protokol HTTPS
@@ -55,19 +54,19 @@ Tento podrobný plán vám pomůže spravovat chyby zabezpečení informací o s
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
-- Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
+- Na spravované instanci SQL by mělo být povolené posouzení ohrožení zabezpečení
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
+- Na spravované instanci SQL by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
 ## <a name="53-protective-monitoring"></a>Monitorování ochrany 5,3
 
 Tento podrobný plán vám pomůže chránit prostředky systémových prostředků přiřazením [Azure Policy](../../../policy/overview.md) definice, které poskytují ochranu při neomezeném přístupu, povolení aktivity seznamu a hrozby.
 
-- Auditování neomezeného síťového přístupu k účtům úložiště
-- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
+- Účty úložiště by měly omezovat síťový přístup
+- V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.
 - Auditovat virtuální počítače bez nakonfigurovaného zotavení po havárii
-- Měla by být povolená DDoS Protection Standard.
+- Měla by být povolená Azure DDoS Protection Standard.
 - V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
 - V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
 - Nasazení detekce hrozeb na SQL serverech
@@ -115,11 +114,6 @@ Tento podrobný plán také přiřadí definici Azure Policy, která Audituje op
 
 Tento podrobný plán vám pomůže vymáhat silná hesla přiřazením Azure Policy definic, které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Dostupnost virtuálních počítačů v rozporu s zásadami síly hesla vám pomůže provést nápravné akce, které zajistí, že hesla pro všechny uživatelské účty virtuálních počítačů jsou kompatibilní se zásadami.
 
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
-- Nasaďte požadavky pro audit virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dnů.
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den
-- Nasaďte požadavky pro audit virtuálních počítačů s Windows, které neomezují minimální délku hesla na 14 znaků.
-- Nasazení požadavků pro audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které nemají maximální stáří hesla 70 dní
 - Zobrazit výsledky auditu z virtuálních počítačů s Windows, které nemají minimální stáří hesla 1 den
@@ -128,8 +122,6 @@ Tento podrobný plán vám pomůže vymáhat silná hesla přiřazením Azure Po
 
 Tento podrobný plán vám také pomůže řídit přístup k prostředkům Azure přiřazením Azure Policy definice. Tyto zásady auditují použití typů prostředků a konfigurací, které by mohly umožňovat více opravňující přístup k prostředkům. Principy prostředků, které jsou v rozporu s těmito zásadami, vám pomůžou podniknout nápravné akce, které zajistí, že přístup k prostředkům Azure bude omezený na autorizované uživatele.
 
-- Nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
-- Nasazení požadavků pro audit virtuálních počítačů Linux, které umožňují vzdálená připojení z účtů bez hesel
 - Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které mají účty bez hesla
 - Zobrazit výsledky auditu z virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel
 - Účty úložiště by se měly migrovat na nové prostředky Azure Resource Manager.
@@ -141,15 +133,15 @@ Tento podrobný plán vám také pomůže řídit přístup k prostředkům Azur
 Kromě používání více než 25 zásad pro příslušnou zabezpečenou správu uživatelů tento plán vám pomůže chránit rozhraní služeb před neoprávněným přístupem tím, že přiřazuje definici [Azure Policy](../../../policy/overview.md) , která monitoruje neomezený účet úložiště.
 Účty úložiště s neomezeným přístupem můžou umožňovat neúmyslný přístup k informacím obsaženým v informačním systému. Tento podrobný plán také přiřadí zásadu, která umožňuje Adaptivní řízení aplikací na virtuálních počítačích.
 
-- Auditování neomezeného síťového přístupu k účtům úložiště
-- Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.
+- Účty úložiště by měly omezovat síťový přístup
+- V počítačích by měly být povolené Adaptivní řízení aplikací pro definování bezpečných aplikací.
 - Přístup přes internetový koncový bod by měl být omezený.
 - Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
 - Řešení ochrany koncových bodů by se mělo nainstalovat na Virtual Machine Scale Sets.
-- Na virtuálních počítačích by se mělo používat řízení přístupu k síti podle potřeby
-- Vzdálené ladění by mělo být pro Function App vypnuté.
-- Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.
-- Pro aplikaci API by mělo být vypnuto vzdálené ladění.
+- Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu
+- Pro aplikace Function app by mělo být vypnuto vzdálené ladění.
+- Vzdálené ladění by mělo být pro webové aplikace vypnuté.
+- Vzdálené ladění by mělo být pro API Apps vypnuté.
 
 ## <a name="13-audit-information-for-users"></a>13 informací o auditu pro uživatele
 
@@ -161,6 +153,7 @@ Přiřazená zásada taky Audituje, pokud virtuální počítače neodesílají 
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
 - \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Při vytváření virtuálních sítí nasadit sledovací proces sítě
+
 
 ## <a name="next-steps"></a>Další kroky
 

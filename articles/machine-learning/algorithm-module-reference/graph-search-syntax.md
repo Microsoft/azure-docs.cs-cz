@@ -1,7 +1,7 @@
 ---
 title: Syntaxe dotazů prohledávání grafů
 titleSuffix: Azure Machine Learning
-description: Naučte se používat syntaxi vyhledávacího dotazu k vyhledání uzlů v v diagramu kanálu.
+description: Naučte se používat syntaxi vyhledávacích dotazů v Návrháři Azure Machine Learning k hledání uzlů v v grafu kanálu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 762581ea5b3183d62913e9ea6935bf7e4c4ae67f
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290496"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420763"
 ---
 # <a name="graph-search-query-syntax"></a>Syntaxe dotazů prohledávání grafů
 
@@ -36,7 +36,7 @@ Při vyhledávání v grafu se jako syntaxe fulltextového vyhledávání v uzlu
 
  
 - A/NEBO
-- Shoda se zástupnými znaky **?** a **\*** operátory.
+- Shoda se zástupnými znaky **?** a * *\** _ operátory.
 
 ### <a name="examples"></a>Příklady
 
@@ -49,7 +49,7 @@ Při vyhledávání v grafu se jako syntaxe fulltextového vyhledávání v uzlu
  
 - Shoda se zástupnými znaky: 
     - `machi?e learning`
-    - `mach*ing`
+    - `mach_ing`
  
 >[!NOTE]
 > Nelze spustit dotaz Lucene se znakem "*".

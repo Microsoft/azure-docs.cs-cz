@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class neuronové Network: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak pomocí síťového modulu Two-Class neuronové v Azure Machine Learning vytvořit model sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
+description: Naučte se, jak pomocí síťového modulu Two-Class neuronové v Azure Machine Learning vytvořit binární klasifikátor.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 2ad4fc575a6e9d07e4e24c2d570f68edbbea46c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907686"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421154"
 ---
 # <a name="two-class-neural-network-module"></a>Two-Class síťový modul neuronové
 
@@ -22,7 +22,7 @@ Tento článek popisuje modul v Návrháři Azure Machine Learning.
 
 Pomocí tohoto modulu můžete vytvořit model sítě neuronové, který se dá použít k předpovědi cíle, který má jenom dvě hodnoty.
 
-Klasifikace pomocí sítě neuronové je metoda učení pod dohledem a proto vyžaduje *tagované datové sady*, která obsahuje sloupec popisku. Tento model sítě neuronové můžete použít například k předpovědi binárních výsledků, jako je například to, zda pacient má určitou chorobu nebo zda je počítač v zadaném časovém období pravděpodobně neúspěšný.  
+Klasifikace pomocí sítě neuronové je metoda učení pod dohledem a proto vyžaduje *tagované datové sady* , která obsahuje sloupec popisku. Tento model sítě neuronové můžete použít například k předpovědi binárních výsledků, jako je například to, zda pacient má určitou chorobu nebo zda je počítač v zadaném časovém období pravděpodobně neúspěšný.  
 
 Po definování modelu můžete ho vytvořit pomocí tagované datové sady a modelu jako vstupu pro [vlakový model](./train-model.md). K předpovědi hodnot pro nové vstupy pak můžete použít trained model.
 
@@ -38,17 +38,17 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
   
 ## <a name="how-to-configure"></a>Jak nakonfigurovat
 
-1.  Přidejte do svého kanálu **síťový modul neuronové pro dva třídy** . Tento modul můžete najít v části **Machine Learning**, **Initialize**, v kategorii **klasifikace** .  
+1.  Přidejte do svého kanálu **síťový modul neuronové pro dva třídy** . Tento modul můžete najít v části **Machine Learning** , **Initialize** , v kategorii **klasifikace** .  
   
 2.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jeden parametr**: tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.
+    -   **Jeden parametr** : tuto možnost vyberte, pokud už víte, jak chcete model nakonfigurovat.
 
-    -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.  
+    -   **Rozsah parametrů** : Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.  
 
-3.  V případě **specifikace skryté vrstvy**vyberte typ síťové architektury, která se má vytvořit.  
+3.  V případě **specifikace skryté vrstvy** vyberte typ síťové architektury, která se má vytvořit.  
   
-    -   **Plně připojený případ**: používá výchozí neuronové síťovou architekturu definovanou pro neuronové sítě se dvěma třídami, jak je znázorněno níže:
+    -   **Plně připojený případ** : používá výchozí neuronové síťovou architekturu definovanou pro neuronové sítě se dvěma třídami, jak je znázorněno níže:
   
         -   Má jednu skrytou vrstvu.
   
@@ -60,25 +60,25 @@ Chcete-li vypočítat výstup sítě pro konkrétní vstup, hodnota je vypočít
   
         -   Počet uzlů se rovná počtu tříd. Pro neuronové síť se dvěma třídami to znamená, že všechny vstupy musí být namapovány na jeden ze dvou uzlů ve výstupní vrstvě.
 
-5.  V případě **studijních kurzů**definujte velikost kroku provedeného v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
+5.  V případě **studijních kurzů** definujte velikost kroku provedeného v každé iteraci před opravou. Větší hodnota pro studijní kurzy může způsobit, že se model konverguje rychleji, ale může vyhodnotit místní minima.
 
-6.  Pro **počet iterací učení**určete maximální počet pokusů, kolikrát by měl algoritmus zpracovat školicí případy.
+6.  Pro **počet iterací učení** určete maximální počet pokusů, kolikrát by měl algoritmus zpracovat školicí případy.
 
-7.  Pro **průměr počátečních vah pro studium**určete tloušťku uzlů na začátku procesu učení.
+7.  Pro **průměr počátečních vah pro studium** určete tloušťku uzlů na začátku procesu učení.
 
-8.  Pro **potenciál**zadejte váhu, která se má použít při učení na uzly z předchozích iterací.  
+8.  Pro **potenciál** zadejte váhu, která se má použít při učení na uzly z předchozích iterací.  
 
 10. Vyberte možnost **náhodné příklady** pro náhodné případy mezi iteracemi. Pokud zrušíte výběr této možnosti, jsou případy zpracovávány přesně stejným způsobem pokaždé, když spustíte kanál.
   
-11. Pro **počáteční číslo semen**zadejte hodnotu, která se má použít jako počáteční hodnota.
+11. Pro **počáteční číslo semen** zadejte hodnotu, která se má použít jako počáteční hodnota.
   
      Zadání počáteční hodnoty je užitečné, pokud chcete zajistit opakování v rámci spuštění stejného kanálu.  Jinak se jako počáteční hodnota použije systémová časová hodnota, která může při každém spuštění kanálu způsobit mírně odlišné výsledky.
   
 13. Přidejte do kanálu datovou sadu s popiskem a vytvořte si model:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

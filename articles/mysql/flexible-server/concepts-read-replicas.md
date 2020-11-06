@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 6f3482bdc608d97e4adba5f99393e74f2e6c7cde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795151"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420882"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Čtení replik v Azure Database for MySQL-flexibilním serveru
 
@@ -61,7 +61,7 @@ Naučte se [vytvořit repliku pro čtení v Azure Portal](how-to-read-replicas-p
 
 ## <a name="connect-to-a-replica"></a>Připojení k replice
 
-Při vytváření repliky zdědí metodu připojení zdrojového serveru. Nelze změnit metodu připojení repliky. Například pokud má zdrojový server **privátní přístup (Integration VNET)** , replika nemůže být ve **veřejném přístupu (povolených IP adres)** .
+Při vytváření repliky zdědí metodu připojení zdrojového serveru. Nelze změnit metodu připojení repliky. Například pokud má zdrojový server **privátní přístup (Integration VNET)** , replika nemůže být ve **veřejném přístupu (povolených IP adres)**.
 
 Replika dědí účet správce ze zdrojového serveru. Všechny uživatelské účty na zdrojovém serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na zdrojovém serveru.
 
@@ -117,6 +117,7 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 | Scénář | Omezení/zvážení |
 |:-|:-|
 | Replika na serveru s povolenou úrovní dostupnosti v zóně – redundantní | Nepodporováno |
+| Replikace čtení mezi oblastmi | Nepodporováno |
 | Ceny | Náklady na spuštění serveru repliky jsou založené na oblasti, ve které je spuštěný server repliky. |
 | Restart zdrojového serveru | Když vytvoříte repliku pro zdroj, který nemá žádné existující repliky, zdroj se nejdřív restartuje, aby se připravil pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku. |
 | Nové repliky | Replika pro čtení je vytvořená jako nový Azure Database for MySQL flexibilní Server. Existující server nelze vytvořit do repliky. Nemůžete vytvořit repliku jiné repliky pro čtení. |
@@ -125,7 +126,7 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 | Odstraněné zdrojové a samostatné servery | Po odstranění zdrojového serveru se replikace zastaví na všechny repliky čtení. Tyto repliky se automaticky změní na samostatné servery a můžou přijímat operace čtení i zápisu. Samotný zdrojový server se odstraní. |
 | Uživatelské účty | Uživatelé na zdrojovém serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na zdrojovém serveru. |
 | Parametry serveru | Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci. <br> Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. <br> Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky. |
-| Ostatní | -Vytvoření repliky repliky není podporováno. <br> – Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.<br>– Projděte si úplný seznam omezení replikace MySQL v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) . |
+| Jiné | -Vytvoření repliky repliky není podporováno. <br> – Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.<br>– Projděte si úplný seznam omezení replikace MySQL v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) . |
 
 ## <a name="next-steps"></a>Další kroky
 

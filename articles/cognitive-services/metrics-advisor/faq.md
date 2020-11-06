@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893573"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420953"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Nejčastější dotazy k metrickým nástrojům
 
@@ -88,7 +88,7 @@ Nezapomeňte pro vaši časovou řadu použít správnou členitost. Pro hodinov
 
 Všimněte si, že tyto dotazy vrací data pouze v jednom časovém razítku a obsahují všechny kombinace dimenzí, které budou ingestovat pomocí Poradce pro metriky. 
 
-:::image type="content" source="media/query-result.png" alt-text="Zpráva, když už existuje prostředek F0" lightbox="media/query-result.png":::
+:::image type="content" source="media/query-result.png" alt-text="Výsledek dotazu s jedním časovým razítkem" lightbox="media/query-result.png":::
 
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Návody detekovat špičky & jako anomálie?
@@ -104,6 +104,19 @@ Inteligentní zjišťování se může naučit vzor vašich dat, včetně sezón
 
 Pokud jsou vaše data obvykle poměrně nestabilní a výkyvují velkou část a chcete, aby se zobrazila výstraha, když se změní příliš stabilní nebo se změní na plochý řádek, je možné nastavit prahovou hodnotu "Změna prahové hodnoty" na detekci takových datových bodů, když je změna příliš malá.
 Podrobnosti najdete v tématu [konfigurace detekce anomálií](how-tos/configure-metrics.md#anomaly-detection-methods) .
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>Jak nastavit nastavení e-mailu a povolit upozorňování e-mailem?
+
+1.  Uživatel s oprávněním správce předplatného nebo správce skupiny prostředků musí přejít na prostředek poradce metriky, který se vytvořil v Azure Portal, a vybrat kartu **řízení přístupu (IAM)** . 
+2.  Vyberte **Přidat přiřazení rolí** .
+3.  Vyberte roli **správce Poradce pro Cognitive Services metriky** , vyberte svůj účet jako na obrázku níže.
+4.  Klikněte na tlačítko **Uložit** a pak jste úspěšně přidali jako správce prostředku Advisory metrik. Všechny výše uvedené akce musíte provést správcem předplatného nebo správcem skupiny prostředků. 
+
+:::image type="content" source="media/access-control.png" alt-text="Na stránce nabídky pro řízení přístupu (IAM) s vybraným přidáním přiřazení role následovaný polem s přiřazením přístupu k vybranému uživateli, který je zobrazený s rolí přístupu Cognitive Services správce Poradce pro metriky, a následným tlačítkem uložit v uživatelském rozhraní, které se vybere k ilustraci kroků hledání uživatele a přidání určité úrovně oprávnění k přístupu." lightbox="media/access-control.png":::
+
+
+5.  Může trvat až jednu minutu, než se oprávnění rozšíří. Pak vyberte svůj pracovní prostor Poradce pro metriky a v levém navigačním panelu vyberte možnost **Nastavení e-mailu** . Vyplňte požadované položky, zejména informace týkající se protokolu SMTP. 
+6.  Vyberte **Save (Uložit** ) a pak se nastaví Konfigurace e-mailu. U upozornění téměř v reálném čase můžete vytvořit nové háky a přihlásit se k odběru metrik metriky. 
 
 ## <a name="advanced-concepts"></a>Pokročilé koncepty
 
@@ -127,7 +140,7 @@ Od celku `Response latency` můžeme přejít k podrobnostem metriky podle `Serv
 
 V rámci metrického poradce můžou uživatelé zadat libovolnou cestu, kterou chtějí přejít k podrobnostem nebo souhrnům z jednoho uzlu hierarchické topologie. Hierarchická topologie je přesnější a je to místo stromové struktury směrná acyklického graf. Existuje úplná hierarchická topologie, která se skládá ze všech potenciálních kombinací dimenzí, například takto: 
 
-:::image type="content" source="media/dimension-combinations-view.png" alt-text="Zpráva, když už existuje prostředek F0" lightbox="media/dimension-combinations-view.png":::
+:::image type="content" source="media/dimension-combinations-view.png" alt-text="Diagram hierarchické topologie skládající se z několika rozpojování vrcholů a hran s více dimenzemi označenými S, DC a M s odpovídajícími čísly od 1 do 6" lightbox="media/dimension-combinations-view.png":::
 
 Teoreticky platí, že pokud má dimenze odlišné hodnoty, `Service` `Ls` `Data center` má dimenze `Ldc` odlišné hodnoty a dimenze `Machine` má `Lm` odlišné hodnoty, pak existují `(Ls + 1) * (Ldc + 1) * (Lm + 1)` kombinace dimenzí v hierarchické topologii. 
 

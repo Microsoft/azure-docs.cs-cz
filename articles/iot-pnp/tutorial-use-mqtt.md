@@ -1,26 +1,26 @@
 ---
-title: Použití MQTT k vytvoření klienta zařízení IoT technologie Plug and Play | Microsoft Docs
-description: Použití protokolu MQTT přímo k vytvoření klienta zařízení IoT technologie Plug and Play bez použití sad SDK pro zařízení Azure IoT
+title: Kurz – použití MQTT k vytvoření klienta zařízení Azure IoT technologie Plug and Play | Microsoft Docs
+description: Kurz – použití protokolu MQTT přímo k vytvoření klienta zařízení IoT technologie Plug and Play bez použití sad SDK pro zařízení Azure IoT
 author: ericmitt
 ms.author: ericmitt
 ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d0ac0f000b6a096ae3de1f4f00a17b64f1948c1e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 6852b0532b23e46c7b986926b21cd0b7e9f9736d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046277"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421375"
 ---
-# <a name="use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
+# <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>Kurz – použití MQTT ke zřízení klienta zařízení IoT technologie Plug and Play
 
 Pokud je to možné, měli byste použít jednu ze sad SDK pro zařízení Azure IoT k vytváření technologie Plug and Play klientů zařízení IoT. Ve scénářích, jako je například použití paměťově omezeného zařízení, možná budete muset ke komunikaci se službou IoT Hub použít knihovnu MQTT.
 
 Ukázka v tomto kurzu používá [Mosquitto](http://mosquitto.org/) Library MQTT a Visual Studio. Kroky v tomto kurzu předpokládají, že používáte Windows na vašem vývojovém počítači.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -37,8 +37,8 @@ Pomocí nástroje *Azure IoT Explorer* přidejte do svého IoT Hub nové zaříz
 1. Na stránce **zařízení** vyberte **+ Nový**.
 1. Vytvořte zařízení s názvem *My-MQTT-Device* , které používá automaticky generovaný symetrický klíč.
 1. Na stránce **Identita zařízení** rozbalte **připojovací řetězec s tokenem SAS**.
-1. Zvolte **primární klíč** , který chcete použít jako **symetrický klíč**, nastavte čas vypršení platnosti na 60 minut a vyberte **Generovat**.
-1. Zkopírujte vygenerovaný **připojovací řetězec tokenu SAS**, použijte tuto hodnotu později v tomto kurzu.
+1. Zvolte **primární klíč** , který chcete použít jako **symetrický klíč** , nastavte čas vypršení platnosti na 60 minut a vyberte **Generovat**.
+1. Zkopírujte vygenerovaný **připojovací řetězec tokenu SAS** , použijte tuto hodnotu později v tomto kurzu.
 
 ## <a name="clone-sample-repo"></a>Klonovat ukázkové úložiště
 
@@ -80,7 +80,7 @@ Než sestavíte a spustíte, aktualizujte kód s podrobnostmi služby IoT Hub a 
 
 Chcete-li zobrazit ukázkový kód v aplikaci Visual Studio, otevřete soubor řešení *MQTTWin32. sln* ve složce *IoTMQTTSample\src\Windows* .
 
-V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **TelemetryMQTTWin32** a vyberte **nastavit jako spouštěný projekt**.
+V **Průzkumník řešení** klikněte pravým tlačítkem na projekt **TelemetryMQTTWin32** a vyberte **nastavit jako spouštěný projekt**.
 
 V projektu **TelemetryMQTTWin32** otevřete zdrojový soubor **MQTT_Mosquitto. cpp** . Aktualizujte definice informací o připojení s podrobnostmi o zařízení, které jste si poznamenali dříve. Nahraďte zástupné symboly řetězce tokenu pro:
 
@@ -96,7 +96,7 @@ Spuštění aplikace (CTRL + F5) po několika sekundách vidíte výstup, který
 
 V Azure IoT Exploreru vidíte, že zařízení není technologie Plug and Play zařízení IoT:
 
-:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Výstup z ukázkové aplikace MQTT":::
+:::image type="content" source="media/tutorial-use-mqtt/non-pnp-iot-explorer.png" alt-text="Zařízení bez technologie Plug and Play IoT v Azure IoT Exploreru":::
 
 ### <a name="make-the-device-an-iot-plug-and-play-device"></a>Nastavení zařízení jako technologie Plug and Play IoT
 
@@ -117,11 +117,11 @@ Znovu sestavte a spusťte ukázku.
 
 V zařízení se teď bude jednat o ID modelu:
 
-:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="Výstup z ukázkové aplikace MQTT":::
+:::image type="content" source="media/tutorial-use-mqtt/model-id-iot-explorer.png" alt-text="Zobrazení ID modelu v Azure IoT Exploreru":::
 
 Teď můžete přejít na součást technologie Plug and Play IoT:
 
-:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Výstup z ukázkové aplikace MQTT":::
+:::image type="content" source="media/tutorial-use-mqtt/components-iot-explorer.png" alt-text="Zobrazit součásti v Azure IoT Exploreru":::
 
 Teď můžete změnit kód zařízení, abyste implementovali telemetrii, vlastnosti a příkazy definované v modelu. Pokud chcete zobrazit ukázkovou implementaci zařízení termostata pomocí knihovny Mosquitto, přečtěte si téma [použití MQTT PNP s Azure IoTHub bez sady IoT SDK ve Windows](https://github.com/Azure-Samples/IoTMQTTSample/tree/master/src/Windows/PnPMQTTWin32) na GitHubu.
 

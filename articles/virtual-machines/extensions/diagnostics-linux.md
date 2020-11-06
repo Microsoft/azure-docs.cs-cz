@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893399"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421069"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -70,10 +70,33 @@ Podporované distribuce a verze:
 
 ### <a name="prerequisites"></a>Předpoklady
 
-* **Agent Azure Linux verze 2.2.0 nebo novější** . Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
+* **Agent Azure Linux verze 2.2.0 nebo novější**. Většina imagí z Galerie virtuálních počítačů Azure pro Linux zahrnuje verzi 2.2.7 nebo novější. Spusťte `/usr/sbin/waagent -version` a potvrďte verzi nainstalovanou na virtuálním počítači. Pokud na virtuálním počítači běží starší verze agenta hosta, aktualizujte ho podle [těchto pokynů](./update-linux-agent.md) .
 * Rozhraní příkazového **řádku Azure** Nastavte na svém počítači prostředí [Azure CLI](/cli/azure/install-azure-cli) .
 * Příkaz wget, pokud ho ještě nemáte: Spusťte `sudo apt-get install wget` .
 * Existující předplatné Azure a existující účet úložiště pro obecné účely, ve kterém se budou ukládat data.  Účty úložiště pro obecné účely podporují úložiště tabulek, které je povinné.  Účet Blob Storage nebude fungovat.
+* Python 2
+
+### <a name="python-requirement"></a>Požadavek Pythonu
+
+Diagnostické rozšíření pro Linux vyžaduje Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.    
+
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE `zypper install -y python2`
+
+Spustitelný soubor python2 musí mít alias na *Python*. Následuje jedna metoda, kterou můžete použít k nastavení tohoto aliasu:
+
+1. Spuštěním následujícího příkazu odeberte všechny existující aliasy.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Spusťte následující příkaz pro vytvoření aliasu.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>Ukázková instalace
 
@@ -175,7 +198,7 @@ Po změně chráněných nebo veřejných nastavení je můžete nasadit do virt
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>Migrace z předchozích verzí rozšíření
 
-Nejnovější verze rozšíření je **3,0** . **Všechny staré verze (2. x) jsou zastaralé a mohou být publikovány od 31. července 2018 nebo po ní** .
+Nejnovější verze rozšíření je **3,0**. **Všechny staré verze (2. x) jsou zastaralé a mohou být publikovány od 31. července 2018 nebo po ní**.
 
 > [!IMPORTANT]
 > Toto rozšíření přináší zásadní změny v konfiguraci rozšíření. Tato změna byla provedena za účelem zlepšení zabezpečení rozšíření. v důsledku toho nelze zachovat zpětnou kompatibilitu s 2. x. Také Vydavatel rozšíření pro toto rozšíření je jiný než Vydavatel pro verze 2. x.
@@ -205,7 +228,7 @@ Tato sada informací o konfiguraci obsahuje citlivé informace, které by měly 
 }
 ```
 
-Název | Hodnota
+Name | Hodnota
 ---- | -----
 storageAccountName | Název účtu úložiště, ve kterém se má rozšíření zapsat data
 storageAccountEndPoint | volitelné Koncový bod identifikující Cloud, ve kterém existuje účet úložiště. Pokud toto nastavení chybí, LAD se výchozí nastavení pro veřejný cloud Azure, `https://core.windows.net` . Pokud chcete použít účet úložiště v Azure Německo, Azure Government nebo Azure Čína, nastavte tuto hodnotu odpovídajícím způsobem.
@@ -789,7 +812,7 @@ Data odesílaná do jímky JsonBlob se ukládají v objektech blob v účtu úlo
 Kromě toho můžete použít tyto nástroje uživatelského rozhraní pro přístup k datům v Azure Storage:
 
 * Průzkumník serveru sady Visual Studio.
-* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Průzkumník služby Azure Storage").
+* [Snímek obrazovky ukazuje kontejnery a tabulky v Průzkumník služby Azure Storage.](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer").
 
 Tento snímek relace Průzkumník služby Microsoft Azure Storage zobrazuje vygenerované Azure Storage tabulky a kontejnery ze správně nakonfigurovaného rozšíření LAD 3,0 na testovacím virtuálním počítači. Obrázek se přesně neshoduje s [ukázkovou konfigurací LAD 3,0](#an-example-lad-30-configuration).
 

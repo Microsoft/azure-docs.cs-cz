@@ -6,18 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c4836ad48426bc5f2c8c18b888f0c296a90f222
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84337695"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417686"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
 Azure Database for MySQL bylo vyvinuto z [verze MySQL Community Edition](https://www.mysql.com/products/community/)pomocí modulu InnoDB.
 
 MySQL používá schéma pojmenování X. Y. Z. X je hlavní verze, Y je dílčí verze a verze Z je oprava chyby. Další informace o schématu najdete v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
+
 
 > [!NOTE]
 > V rámci služby se k přesměrování připojení na instance serveru používá brána. Po navázání připojení se v klientovi MySQL zobrazí verze MySQL nastavená v bráně, a ne verze skutečně spuštěná na instanci serveru MySQL. Pokud chcete zjistit verzi instance serveru MySQL, na příkazovém řádku MySQL spusťte příkaz `SELECT VERSION();`.
@@ -49,4 +50,5 @@ Upgrady dílčích a hlavních verzí se v současné době nepodporují. Např�
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby**najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
+- Podrobnosti o Azure Database for MySQL zásad správy verzí najdete v [tomto dokumentu](concepts-version-policy.md).
+- Informace o konkrétních kvótách prostředků a omezeních založených na vaší **úrovni služby** najdete v tématu [úrovně služeb](./concepts-pricing-tiers.md) .
