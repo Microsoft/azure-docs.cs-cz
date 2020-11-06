@@ -161,6 +161,8 @@
           href: spatial-analysis-zone-line-placement.md
         - name: Umístění kamery
           href: spatial-analysis-camera-placement.md
+    - name: Dokumentace ke kontejnerům Cognitive Services
+      href: ../containers/index.yml
 - name: Návody
   items:
     - name: Volání rozhraní API pro počítačové zpracování obrazu

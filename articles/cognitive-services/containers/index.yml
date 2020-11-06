@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Kontejnery Azure Cognitive Services
+summary: Služba Azure Cognitive Services nabízí několik kontejnerů pro použití AI v místním prostředí. Kontejnery vám poskytnou možnost přenést Cognitive Services blíž k vašim datům kvůli dodržování předpisů, zabezpečení nebo jiným provozním důvodům.
+metadata:
+  title: Kontejnery Azure Cognitive Services
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.topic: landing-page
+  ms.date: 10/27/2020
+  ms.author: aahi
+  ms.openlocfilehash: 28eb8450201280e58e24dd5ad9b8826165b614c3
+  ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/04/2020
+  ms.locfileid: "93328068"
+landingContent:
+- title: Informace o kontejnerech Cognitive Services
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co jsou kontejnery Cognitive Services?
+      url: ../cognitive-services-container-support.md
+    - text: Nejčastější dotazy
+      url: container-faq.md
+    - text: Značky imagí kontejnerů
+      url: container-image-tags.md
+- title: Návody ke kontejnerům
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Postup opakovaného využití kontejnerů
+      url: container-reuse-recipe.md
+    - text: Nasazení v Azure Container Instances
+      url: azure-container-instance-recipe.md
+    - text: Nasazení v Kubernetes
+      url: azure-kubernetes-recipe.md
+    - text: Nasazení s využitím Docker Compose
+      url: azure-kubernetes-recipe.md
+- title: Kontejnery zpracování obrazu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../computer-vision/computer-vision-how-to-install-containers.md
+      text: Čtení OCR
+    - url: ../computer-vision/spatial-analysis-container.md
+      text: Prostorová analýza
+    - url: ../face/face-how-to-install-containers.md
+      text: Tvář
+    - url: ../form-recognizer/form-recognizer-container-howto.md
+      text: Rozpoznávání formulářů
+- title: Jazykové kontejnery
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
+      text: Analýza mínění
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
+      text: extrakce klíčových frází,
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
+      text: Rozpoznávání jazyka textu
+    - url: ../text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare
+      text: Analýza textu pro zdravotnictví
+    - url: ../luis/luis-container-howto.md
+      text: Kontejner LUIS
+- title: Kontejnery služby Speech
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../speech-service/speech-container-howto.md?tabs=stt
+      text: Řeč na text
+    - url: ../speech-service/speech-container-howto.md?tabs=cstt
+      text: Vlastní převod řeči na text
+    - url: ../speech-service/speech-container-howto.md?tabs=tts
+      text: Text na řeč
+    - url: ../speech-service/speech-container-howto.md?tabs=ctts
+      text: Vlastní převod textu na řeč
+    - url: ../speech-service/speech-container-howto.md?tabs=ntts
+      text: Neurální převod textu na řeč
+    - url: ../speech-service/speech-container-howto.md?tabs=lid
+      text: Rozpoznávání mluveného jazyka
+- title: Rozhodovací kontejner
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - url: ../anomaly-detector/anomaly-detector-container-howto.md
+      text: Detektor anomálií

@@ -39,8 +39,6 @@
           href: how-to-automatic-language-detection.md
         - name: Použití rozhraní API pro dávkový přepis
           href: batch-transcription.md
-        - name: Posouzení výslovnosti
-          href: how-to-pronunciation-assessment.md
     - name: Kurzy
       items:
         - name: Rozpoznávání řeči uložené v úložišti objektů blob
@@ -500,7 +498,7 @@
           href: 'https://speech.microsoft.com'
         - name: Vytvoření aplikace Vlastní příkazy s využitím sady Speech Studio
           href: quickstart-custom-speech-commands-create-new.md
-- name: Nasadit
+- name: Nasazení
   items:
     - name: Povolit protokolování
       href: how-to-use-logging.md
@@ -530,6 +528,8 @@
           href: deploy-speech-on-container-instances.md
         - name: Nejčastější dotazy ke kontejnerům
           href: speech-container-faq.md
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
 - name: Zařízení
   items:
     - name: Dokumentace ke Speech Devices

@@ -69,6 +69,8 @@
           href: face-resource-container-config.md
         - name: Použití instancí kontejneru
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
+        - name: Dokumentace ke kontejnerům Cognitive Services
+          href: ../containers/index.yml
 - name: Referenční informace
   items:
     - name: Rozhraní API pro rozpoznávání tváře
