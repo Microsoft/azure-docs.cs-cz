@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Java) | Microsoft Docs
-description: Pomocí Java se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
+title: Rychlý Start – interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Java) | Microsoft Docs
+description: Rychlý Start – pomocí Java se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/17/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7229eedc82dfa7b76ae4a22d095f20c41f102e16
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046481"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421528"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Java)
 
@@ -21,13 +21,13 @@ ms.locfileid: "92046481"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka Java připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 K dokončení tohoto rychlého startu ve Windows nainstalujte do svého místního prostředí Windows následující software:
 
-* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)v části **Dlouhodobá podpora**vyberte **Java 8**.
+* Java SE Development Kit 8. V [dlouhodobé podpoře jazyka Java pro Azure a Azure Stack](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)v části **Dlouhodobá podpora** vyberte **Java 8**.
 * [Apache Maven 3](https://maven.apache.org/download.cgi).
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Naklonujte úložiště sady SDK pomocí ukázkového kódu.
@@ -70,8 +70,8 @@ Zařízení je teď připravené přijmout příkazy a aktualizace vlastností a
 
 V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
 
-* **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 V tomto rychlém startu použijete ukázkové řešení IoT napsané v jazyce Java k interakci s ukázkovým zařízením, které jste právě nastavili.
 

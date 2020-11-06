@@ -1,5 +1,5 @@
 ---
-title: Použití Time Series Insights k ukládání a analýze telemetrie technologie Plug and Play v zařízeních IoT | Microsoft Docs
+title: Použití Time Series Insights k ukládání a analýze telemetrie zařízení technologie Plug and Play Azure IoT | Microsoft Docs
 description: Nastavte Time Series Insights prostředí a připojte IoT Hub, abyste mohli zobrazit a analyzovat telemetrii ze zařízení IoT technologie Plug and Play.
 author: lyrana
 ms.author: lyhughes
@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0d4c24ed771b4d112a448ceec0e9fc2f9e8ac359
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: aa99b9059fe8e3cd5b0dfe6f7e62bd02012fd144
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146365"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422259"
 ---
 # <a name="tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Kurz: vytvoření a připojení k Time Series Insights Gen2 k ukládání, vizualizaci a analýze telemetrie technologie Plug and Play zařízení IoT
 
@@ -98,7 +98,7 @@ Dále přeložíte model zařízení DTDL na model Asset Service v Azure Time Se
 
 ### <a name="define-your-types"></a>Definování typů
 
-Můžete začít ingestovat data do Azure Time Series Insights Gen2, aniž byste museli předem definovat model. Když telemetrie dorazí, TSI se pokusí automaticky vyřešit instance časových řad na základě hodnoty vlastnosti TS ID. Všem instancím se přiřadí *výchozí typ* . Budete muset ručně vytvořit nový typ, který bude představovat vaše modely. Následující obrázek znázorňuje jednoduchou metodu synchronizace modelu DTDL a typu TSM:
+Můžete začít ingestovat data do Azure Time Series Insights Gen2, aniž byste museli předem definovat model. Když telemetrie dorazí, TSI se pokusí automaticky vyřešit instance časových řad na základě hodnoty vlastnosti TS ID. Všem instancím se přiřadí *výchozí typ*. Budete muset ručně vytvořit nový typ, který bude představovat vaše modely. Následující obrázek znázorňuje jednoduchou metodu synchronizace modelu DTDL a typu TSM:
 
 ![DTDL do TSM typu](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
 
@@ -156,7 +156,7 @@ Měl by se zobrazit nově definovaný typ termostatu.
 
 Volitelně můžete vytvořit hierarchii pro uspořádání dvou částí termostatu v rámci své TemeraptureController nadřazené položky.
 
-Klikněte na *hierarchie* a vyberte *Přidat hierarchii* . `Device Fleet`Jako název zadejte a vytvořte jednu úroveň s názvem `Device Name` a pak klikněte na *Uložit* .
+Klikněte na *hierarchie* a vyberte *Přidat hierarchii*. `Device Fleet`Jako název zadejte a vytvořte jednu úroveň s názvem `Device Name` a pak klikněte na *Uložit*.
 
 ![Přidat hierarchii](./media/tutorial-configure-tsi/add-hierarchy.png)
 
@@ -172,7 +172,7 @@ Klikněte na rozevírací seznam typ a vyberte `Thermostat` .
 
 ![Změnit typ instance](./media/tutorial-configure-tsi/change-type.png)
 
-Pokud jste vytvořili hierarchii, vyberte *pole instance* a zaškrtněte `Device Fleet` políčko. Zadejte `Temperature Controller` hodnotu svého nadřazeného zařízení a pak klikněte na *Uložit* .
+Pokud jste vytvořili hierarchii, vyberte *pole instance* a zaškrtněte `Device Fleet` políčko. Zadejte `Temperature Controller` hodnotu svého nadřazeného zařízení a pak klikněte na *Uložit*.
 
 ![Přiřadit k hierarchii](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
 
@@ -182,7 +182,7 @@ Opakujte výše uvedené kroky pro druhý termostat.
 
 Přejděte zpátky do podokna pro vytváření grafů a rozbalte položku loďstva a TemperatureController zařízení. Klikněte na thermostat1, vyberte `Temperature` proměnnou a pak klikněte na *Přidat* , aby se vybrala hodnota grafu. Totéž udělejte pro thermostat2.
 
-![Změnit typ instance](./media/tutorial-configure-tsi/charting-values.png)
+![Změnit typ instance pro thermostat2](./media/tutorial-configure-tsi/charting-values.png)
 
 ## <a name="next-steps"></a>Další kroky
 

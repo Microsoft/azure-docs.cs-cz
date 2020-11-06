@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: b57d55e91918ba612ad42acd5e6059ae0dbd0090
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538783"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422446"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -35,7 +35,7 @@ Tento přístup je flexibilnější než model Pull, protože můžete nahrávat
 Pomocí následujících rozhraní API můžete do indexu načíst jeden nebo několik dokumentů:
 
 + [Přidávání, aktualizace a odstraňování dokumentů (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [Třída indexAction](/dotnet/api/microsoft.azure.search.models.indexaction) nebo [třída indexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch) 
++ Třída [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction) nebo [Třída IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) 
 
 Vkládání dat prostřednictvím portálu není aktuálně podporováno.
 
@@ -52,7 +52,7 @@ V REST API vystavte žádosti HTTP POST s texty požadavku JSON na adresu URL ko
 V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure kognitivní hledání, jakou akci má tento dokument dělat. Příklad kódu naleznete v tématu [rychlý Start pro C#](search-get-started-dotnet.md).
 
 
-| @search.action | Description | Potřebná pole pro každý dokument | Poznámky |
+| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
 | `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. V sadě .NET SDK obsahuje pole typu `DataType.Collection(DataType.String)` . V REST API obsahuje pole typu `Collection(Edm.String)` . Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
@@ -63,7 +63,7 @@ V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Za
 
 Existují dva způsoby [vyhledávání v indexu pomocí REST API](/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
-Pro POST i GET musíte zadat *název služby*, *název indexu*a *verzi rozhraní API* v adrese URL požadavku. 
+Pro POST i GET musíte zadat *název služby* , *název indexu* a *verzi rozhraní API* v adrese URL požadavku. 
 
 U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
 
@@ -75,19 +75,18 @@ Formát pro POST je stejný, ale `api-version` v parametrech řetězce dotazu.
 
 ## <a name="pulling-data-into-an-index"></a>Přetáhnutí dat do indexu
 
-Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do vašeho indexu. V Azure Kognitivní hledání je tato schopnost implementovaná prostřednictvím *indexerů*, které jsou aktuálně dostupné pro tyto platformy:
+Model Pull prochází podporovaný zdroj dat a automaticky nahrává data do vašeho indexu. V Azure Kognitivní hledání je tato schopnost implementovaná prostřednictvím *indexerů* , které jsou aktuálně dostupné pro tyto platformy:
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, spravovaná instance SQL a SQL Server na virtuálních počítačích Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
-Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu. 
-
+Indexery propojují index se zdrojem dat (obvykle tabulka, zobrazení nebo ekvivalentní struktura) a mapují pole zdroje na odpovídající pole v indexu. Během provádění je sada řádků automaticky převedena na formát JSON a načtena do určeného indexu. Všechny indexery podporují plánování, takže můžete určit, jak často se data budou aktualizovat. Většina indexerů umožňuje sledování změn dat, pokud ho zdroj dat podporuje. Indexery sledují změny a odstranění ve stávajících dokumentech a rozpoznávají nové dokumenty, a díky tomu není potřeba aktivně spravovat data v indexu.
 
 ### <a name="how-to-pull-data-into-an-azure-cognitive-search-index"></a>Jak načíst data do indexu služby Azure Kognitivní hledání
 
-Funkce indexeru jsou přístupné pomocí webu [Azure Portal](search-import-data-portal.md), rozhraní [REST API](/rest/api/searchservice/Indexer-operations) a sady [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions). 
+Funkce indexeru jsou přístupné pomocí webu [Azure Portal](search-import-data-portal.md), rozhraní [REST API](/rest/api/searchservice/Indexer-operations) a sady [.NET SDK](/dotnet/api/azure.search.documents.indexes.searchindexerclient).
 
 Výhodou používání portálu je, že Azure Kognitivní hledání může obvykle vygenerovat výchozí schéma indexu pro vás tím, že si přečte metadata zdrojové datové sady. Vygenerovaný index můžete upravit až do zpracování indexu. Poté jsou povoleny jen takové změny schématu, které nevyžadují přeindexování. Pokud provedené změny přímo ovlivní schéma indexu, bude nutné index znovu sestavit. 
 

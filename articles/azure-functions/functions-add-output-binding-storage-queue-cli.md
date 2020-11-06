@@ -5,20 +5,39 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87852629"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422858"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Připojení Azure Functions k Azure Storage pomocí nástrojů příkazového řádku
 
-V tomto článku integrujete frontu Azure Storage pomocí funkce a účtu úložiště, který jste vytvořili v [předchozím rychlém](functions-create-first-azure-function-azure-cli.md)startu. Tuto integraci dosáhnete pomocí *výstupní vazby* , která zapisuje data z požadavku HTTP do zprávy ve frontě. Po dokončení tohoto článku se neúčtují žádné další náklady nad několik centů za USD předchozího rychlého startu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
+V tomto článku integrujete frontu Azure Storage pomocí funkce a účtu úložiště, který jste vytvořili v předchozím článku rychlý Start. Tuto integraci dosáhnete pomocí *výstupní vazby* , která zapisuje data z požadavku HTTP do zprávy ve frontě. Po dokončení tohoto článku se neúčtují žádné další náklady nad několik centů za USD předchozího rychlého startu. Další informace o vazbách naleznete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
-Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](functions-create-first-azure-function-azure-cli.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku][previous-quickstart]. Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.
+
+::: zone pivot="programming-language-csharp"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-csharp.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-node.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end   
+::: zone pivot="programming-language-java"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-java.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end   
+::: zone pivot="programming-language-typescript"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-typescript.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end   
+::: zone pivot="programming-language-python"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-python.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end   
+::: zone pivot="programming-language-powershell"  
+Než začnete, musíte dokončit článek, [rychlý Start: vytvoření Azure Functions projektu z příkazového řádku](create-first-function-cli-powershell.md). Pokud jste již vyčistili prostředky na konci tohoto článku, Projděte kroky znovu a znovu vytvořte aplikaci funkcí a související prostředky v Azure.  
+::: zone-end   
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
@@ -107,7 +126,7 @@ mvn azure-functions:deploy
 
     # <a name="curl"></a>[Curl](#tab/curl)
     
-    Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
+    Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání** a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
     
     ![Výstup funkce se spouští v Azure pomocí KUDRLINKOU.](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 
@@ -129,33 +148,41 @@ Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do f
 
 + [Práce s Azure Functions Core Tools](functions-run-local.md)  
 
++ [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
+
 ::: zone pivot="programming-language-csharp"  
 + [Příklady kompletních projektů funkcí v jazyce C#](/samples/browse/?products=azure-functions&languages=csharp).
 
 + [Referenční informace pro vývojáře v jazyce C# Azure Functions](functions-dotnet-class-library.md)  
+
+[previous-quickstart]: create-first-function-cli-csharp.md
+
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
 + [Příklady kompletních projektů funkcí v JavaScriptu](/samples/browse/?products=azure-functions&languages=javascript).
 
 + [Azure Functions příručka pro vývojáře JavaScriptu](functions-reference-node.md)  
+
+[previous-quickstart]: create-first-function-cli-javascript.md
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 + [Příklady kompletních projektů funkcí v TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
 
 + [Azure Functions příručka pro vývojáře TypeScript](functions-reference-node.md#typescript)  
+
+[previous-quickstart]: create-first-function-cli-typescript.md
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 + [Příklady kompletních projektů funkcí v Pythonu](/samples/browse/?products=azure-functions&languages=python)
 
 + [Příručka pro vývojáře Azure Functions Pythonu](functions-reference-python.md)  
+
+[previous-quickstart]: create-first-function-cli-python.md
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 + [Příklady kompletních projektů funkcí v prostředí PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
 
 + [Azure Functions příručka pro vývojáře PowerShellu](functions-reference-powershell.md) 
+
+[previous-quickstart]: create-first-function-cli-powershell.md
 ::: zone-end
-+ [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
-
-+ [Stránka s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/)
-
-+ [Odhad nákladů na plán spotřeby](functions-consumption-costs.md) 

@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (C#) | Microsoft Docs
-description: Pomocí jazyka C# se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
+title: Rychlý Start – interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (C#) | Microsoft Docs
+description: Rychlý Start – pomocí C# se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 09/21/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 018edea9a013df55b32ee22020be7226eab27319
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945372"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421545"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play, které je připojené k vašemu řešení (C#)
 
@@ -21,7 +21,7 @@ ms.locfileid: "91945372"
 
 IoT technologie Plug and Play zjednodušuje IoT tím, že vám umožní pracovat s funkcemi zařízení bez znalosti základní implementace zařízení. V tomto rychlém startu se dozvíte, jak pomocí jazyka C# připojit a řídit zařízení IoT technologie Plug and Play, které je připojené k vašemu řešení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -48,7 +48,7 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -64,8 +64,8 @@ V tomto rychlém startu použijete ukázkové termostatické zařízení, které
 
 V [části nastavení prostředí pro iot technologie Plug and Play rychlé starty a kurzy](set-up-environment.md) , které jste vytvořili dvě proměnné prostředí pro konfiguraci ukázky pro připojení ke službě IoT Hub a zařízení:
 
-* **IOTHUB_CONNECTION_STRING**: připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_CONNECTION_STRING** : připojovací řetězec ke službě IoT Hub jste si poznamenali dříve.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"` .
 
 V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k interakci s ukázkovým zařízením, které jste právě nastavili.
 
@@ -73,7 +73,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v jazyce C# k intera
 
 1. V aplikaci Visual Studio přejděte na **Vlastnosti projektu > termostatu > ladit**. Pak do projektu přidejte následující proměnné prostředí:
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | Moje zařízení – PnP-Device |
     | IOTHUB_CONNECTION_STRING | Hodnota, na kterou jste si poznamenali, když jste [nastavili prostředí](set-up-environment.md) |

@@ -1,0 +1,31 @@
+---
+title: Konfigurace aplikací Azure REST API – ověřování HMAC
+description: Použití HMAC k autorizaci pro konfiguraci aplikací Azure pomocí REST API
+author: lisaguthrie
+ms.author: lcozzens
+ms.service: azure-app-configuration
+ms.topic: reference
+ms.date: 08/17/2020
+ms.openlocfilehash: 8d1f8a17f51711cc5c10567797e1224f96eb7630
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93424003"
+---
+# <a name="hmac-authorization---rest-api-reference"></a>Ověřování HMAC – REST API Reference
+
+Je-li použito ověřování HMAC, operace spadají do jedné ze dvou kategorií, čtení nebo zápis. Přístupové klíče pro čtení i zápis udělují oprávnění k volání všech operací. Přístupové klíče jen pro čtení udělují oprávnění k volání pouze operací čtení. Zda je přístupová klávesa jen pro čtení nebo čtení i zápis, závisí na její `readOnly` Vlastnosti. Všechny pokusy o vytvoření žádosti o zápis pomocí přístupového klíče jen pro čtení budou mít za následek neoprávněnou žádost.
+
+## <a name="obtaining-access-keys"></a>Získání přístupových klíčů
+
+Specifikace popisů přístupových klíčů a rozhraní API používaných k jejich získání je podrobně popsána v tématu Specifikace poskytovatele prostředků konfigurace aplikace Azure [zde](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2019-10-01/appconfiguration.json). Přístupové klíče se získávají prostřednictvím operace "ConfigurationStores_ListKeys".
+
+## <a name="errors"></a>Chyby
+
+```http
+HTTP/1.1 403 Forbidden
+```
+
+**Důvod:** Přístupový klíč, který se používá k ověření žádosti, neposkytuje požadovaná oprávnění k provedení požadované operace.
+**Řešení:** Získejte přístupový klíč, který poskytuje oprávnění k provedení požadované operace a jeho použití k ověření žádosti.

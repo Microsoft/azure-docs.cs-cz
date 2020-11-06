@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876934"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422894"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Běžné kódy chyb pro Azure Key Vault
 
@@ -22,7 +22,7 @@ Kódy chyb, které jsou uvedené v následující tabulce, můžou být vrácen�
 
 | Kód chyby | Zpráva uživatele |
 |--|--|
-| VaultAlreadyExists |  Zadaný Trezor klíčů už existuje (v nepodmíněném odstranění nebo v jiném předplatném). |
+| VaultAlreadyExists |  Pokus o vytvoření nového trezoru klíčů se zadaným názvem se nezdařil, protože název se už používá. Pokud jste nedávno odstranili Trezor klíčů s tímto názvem, může být stále ve stavu tichého odstranění. [Zde](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) můžete ověřit, jestli existuje v případě tichého odstranění. |
 | VaultNameNotValid |  Název trezoru by měl být 24 znaků, alfanumerický znak a začínat abecedou. |
 | AccessDenied |  V zásadách přístupu možná chybí oprávnění k provedení této operace. |
 | ForbiddenByFirewall |  Adresa klienta není autorizována a volající není důvěryhodná služba. |

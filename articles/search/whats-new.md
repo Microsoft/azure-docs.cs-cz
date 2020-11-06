@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518921"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422667"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -42,7 +42,7 @@ Vytvořte v Azure Active Directory identitu pro vyhledávací službu a pak pomo
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
-| [ Klientská knihovnaAzure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store, geoprostorové typy ani [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>Další informace najdete v tématu  [rychlý Start: vytvoření indexu](search-get-started-dotnet.md) a [upgrade na Azure.Search.Documents (V11)](search-dotnet-sdk-migration-version-11.md). | Všeobecně k dispozici. </br> Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
+| [ Klientská knihovnaAzure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) | Sada Azure SDK pro .NET | Klientská knihovna .NET vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami .NET. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30, ale zatím nepodporuje znalostní bázi Knowledge Store ani geoprostorové typy. <br/><br/>Další informace najdete v tématu  [rychlý Start: vytvoření indexu](search-get-started-dotnet.md) a [upgrade na Azure.Search.Documents (V11)](search-dotnet-sdk-migration-version-11.md). | Všeobecně k dispozici. </br> Nainstalujte [ balíčekAzure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) z NuGet. |
 | [ Klientská knihovnaazure.search.documents](/python/api/overview/azure/search-documents-readme)  | Azure SDK pro Python| Klientská knihovna Python vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami Pythonu. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [balíček Azure-Search-Documents](https://pypi.org/project/azure-search-documents/) z PyPI. |
 | [@azure/search-documents Klientská knihovna](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK for JavaScript | Klientská knihovna pro JavaScript vydaná týmem Azure SDK navržená tak, aby byla konzistentní s jinými klientskými knihovnami JavaScript. <br/><br/>Verze 11 cílí na rozhraní REST API pro hledání verze = 2020-06-30. | Všeobecně k dispozici. </br> Nainstalujte [ @azure/search-documents balíček](https://www.npmjs.com/package/@azure/search-documents) z npm. |
 

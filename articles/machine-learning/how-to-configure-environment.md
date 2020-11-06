@@ -1,5 +1,5 @@
 ---
-title: Nastavení vývojového prostředí | Python
+title: Nastavení vývojového prostředí v jazyce Python
 titleSuffix: Azure Machine Learning
 description: Naučte se nastavit prostředí pro vývoj v Pythonu pro Azure Machine Learning. Používejte prostředí Conda, vytvářejte konfigurační soubory a nakonfigurujete svůj vlastní cloudový server, Poznámkový blok Jupyter, Azure Databricks, IDEs, editory kódu a Data Science Virtual Machine.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 7e189885fbf7befcaea3f63148a42c81dc1da03e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320483"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422889"
 ---
-# <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí pro Azure Machine Learning
+# <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Nastavení vývojového prostředí v Pythonu pro Azure Machine Learning
 
 Naučte se konfigurovat vývojové prostředí Python pro Azure Machine Learning.
 
@@ -27,9 +27,9 @@ Následující tabulka uvádí každé vývojové prostředí popsané v tomto �
 | Prostředí | Výhody | Nevýhody |
 | --- | --- | --- |
 | [Místní prostředí](#local) | Úplná kontrola nad vývojovým prostředím a závislostmi. Spusťte s libovolným nástrojem sestavení, prostředím nebo IDE dle vašeho výběru. | Začne trvat déle. Musí být nainstalované potřebné balíčky sady SDK a prostředí, pokud ho ještě nemáte, musí být nainstalované i v případě, že ho ještě nemáte. |
-| [Výpočetní instance Azure Machine Learningu](#compute-instance) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
-| [Azure Databricks](#aml-databricks) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobně jako u cloudové výpočetní instance (Python a SDK jsou předem nainstalované), ale mají předem nainstalované i další oblíbené datové vědy a nástroje pro strojové učení. Snadné škálování a kombinování s dalšími vlastními nástroji a pracovními postupy. | V porovnání s cloudovou výpočetní instancí je pomalejší prostředí Začínáme. |
+| [Výpočetní instance Azure Machine Learningu](#compute-instance) | Nejjednodušší způsob, jak začít. Celá sada SDK je už ve vašem VIRTUÁLNÍm počítači pracovního prostoru nainstalovaná a kurzy poznámkových bloků jsou předem naklonované a připravené ke spuštění. | Nedostatečná kontrola nad vývojovým prostředím a závislostmi. Dodatečné náklady vzniklé pro virtuální počítač Linux (virtuální počítač se dá zastavit, pokud se nepoužívá), aby se předešlo poplatkům. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Azure Databricks](how-to-configure-databricks-automl-environment.md) | Ideální pro spouštění vysoce škálovatelných pracovních postupů strojového učení na škálovatelné Apache Spark platformě. | Přehnaně důkladné se na experimentální strojové učení nebo experimenty s menším rozsahem a pracovní postupy. Dodatečné náklady vzniklé za Azure Databricks. Podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/databricks/). |
 
 Tento článek také nabízí další tipy k používání následujících nástrojů:
 
@@ -39,9 +39,9 @@ Tento článek také nabízí další tipy k používání následujících nás
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Azure Machine Learning pracovní prostor. Pokud ho nemáte, můžete vytvořit Azure Machine Learning pracovní prostor prostřednictvím šablon [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)a [Azure Resource Manager](how-to-create-workspace-template.md).
+* Azure Machine Learning pracovní prostor. Pokud ho ještě nemáte, můžete vytvořit Azure Machine Learning pracovní prostor prostřednictvím šablon [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)a [Azure Resource Manager](how-to-create-workspace-template.md).
 
-### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (Jenom místní a DSVM) Vytvoření konfiguračního souboru pracovního prostoru
+### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> Pouze místní a DSVM: vytvoření konfiguračního souboru pracovního prostoru
 
 Konfigurační soubor pracovního prostoru je soubor JSON, který oznamuje sadě SDK, jak komunikovat s vaším pracovním prostorem Azure Machine Learning. Soubor má název *config.jsv* a má následující formát:
 
@@ -84,9 +84,11 @@ Vytvořte konfigurační soubor pracovního prostoru jedním z následujících 
         print('Workspace not found')
     ```
 
-## <a name="local-computer"></a><a id="local"></a>Místní počítač
+## <a name="local-computer-or-remote-vm-environment"></a><a id="local"></a>Místní počítač nebo prostředí vzdáleného virtuálního počítače
 
-Konfigurace místního vývojového prostředí (což může být také vzdálený virtuální počítač, například Azure Machine Learning výpočetní instance nebo DSVM):
+Prostředí můžete nastavit v místním počítači nebo vzdáleném virtuálním počítači, jako je například Azure Machine Learning výpočetní instance nebo Data Science VM. 
+
+Konfigurace místního vývojového prostředí nebo vzdáleného virtuálního počítače:
 
 1. Vytvořte virtuální prostředí Python (virtualenv, conda).
 
@@ -153,7 +155,7 @@ Pomocí rozšíření Azure Machine Learning Visual Studio Code můžete také [
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Virtuální počítač pro datové vědy
 
-DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro práci v oblasti datových vědy, která je předem nakonfigurované nástroje a software, jako je:
+Data Science VM je přizpůsobená image virtuálního počítače (VM), kterou můžete použít jako vývojové prostředí. Je navržená pro práci v oblasti datových vědy, která je předem nakonfigurované nástroje a software, jako je:
 
   - Balíčky jako TensorFlow, PyTorch, Scikit-učení, XGBoost a sada SDK pro Azure Machine Learning
   - Oblíbené nástroje pro datové vědy, jako je Spark Standalone a procházení
@@ -161,23 +163,23 @@ DSVM je přizpůsobená image virtuálního počítače (VM). Je navržená pro 
   - Integrovaná vývojová prostředí (IDEs), například Visual Studio Code a PyCharm
   - Server Jupyter Notebook
 
-Komplexnější seznam nástrojů najdete v [příručce k nástrojům zahrnutým v DSVM](data-science-virtual-machine/tools-included.md).
+Komplexnější seznam nástrojů najdete v [příručce k nástrojům pro data Science VM](data-science-virtual-machine/tools-included.md).
 
 > [!IMPORTANT]
-> Pokud plánujete používat DSVM jako [výpočetní cíl](concept-compute-target.md) pro úlohy školení nebo Inferencing, je podporována pouze podpora Ubuntu.
+> Pokud plánujete použít Data Science VM jako [výpočetní cíl](concept-compute-target.md) pro úlohy školení nebo Inferencing, podporuje se jenom Ubuntu.
 
-Použití DSVM jako vývojového prostředí
+Použití Data Science VM jako vývojového prostředí:
 
-1. Vytvořte DSVM pomocí jedné z následujících metod:
+1. Vytvořte Data Science VM pomocí jedné z následujících metod:
 
     * K vytvoření [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) nebo [Windows](data-science-virtual-machine/provision-vm.md) DSVM použijte Azure Portal.
-    * [Vytvořte DSVM pomocí šablon ARM](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
+    * [Vytvořte data Science VM pomocí šablon ARM](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
     * Použití Azure CLI
 
-        Chcete-li vytvořit Ubuntu DSVM, použijte následující příkaz:
+        Pokud chcete vytvořit Data Science VM Ubuntu, použijte následující příkaz:
 
         ```azurecli-interactive
-        # create a Ubuntu DSVM in your resource group
+        # create a Ubuntu Data Science VM in your resource group
         # note you need to be at least a contributor to the resource group in order to execute this command successfully
         # If you need to create a new resource group use: "az group create --name YOUR-RESOURCE-GROUP-NAME --location YOUR-REGION (For example: westus2)"
         az vm create --resource-group YOUR-RESOURCE-GROUP-NAME --name YOUR-VM-NAME --image microsoft-dsvm:linux-data-science-vm-ubuntu:linuxdsvmubuntu:latest --admin-username YOUR-USERNAME --admin-password YOUR-PASSWORD --generate-ssh-keys --authentication-type password
@@ -193,108 +195,26 @@ Použití DSVM jako vývojového prostředí
 
 1. Aktivujte prostředí conda obsahující sadu SDK Azure Machine Learning.
 
-    * Pro Ubuntu DSVM:
+    * Pro Ubuntu Data Science VM:
 
         ```bash
         conda activate py36
         ```
 
-    * Pro Windows DSVM:
+    * Pro Windows Data Science VM:
 
         ```bash
         conda activate AzureML
         ```
 
-1. Pokud chcete nakonfigurovat DSVM pro použití vašeho pracovního prostoru Azure Machine Learning, [vytvořte konfigurační soubor pracovního prostoru](#workspace) nebo použijte existující.
+1. Chcete-li nakonfigurovat Data Science VM k používání pracovního prostoru Azure Machine Learning, [vytvořte konfigurační soubor pracovního prostoru](#workspace) nebo použijte existující.
 
 Podobně jako u místních prostředí můžete k interakci s Azure Machine Learning používat Visual Studio Code a [rozšíření Azure Machine Learning Visual Studio Code](#vscode) .
 
 Další informace najdete v tématu [Virtual Machines pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
-## <a name="azure-databricks"></a><a name="aml-databricks"></a> Azure Databricks
-
-Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Nabízí prostředí založené na poznámkovém bloku s PROCESORem nebo výpočetním clusterem založeným na GPU.
-
-Jak Azure Databricks pracuje s Azure Machine Learning:
-
-+ Model můžete vytvořit pomocí Spark MLlib a model nasadit do ACI/AKS v rámci Azure Databricks.
-+ [Automatické funkce strojového učení](concept-automated-ml.md) můžete použít také ve speciální sadě SDK pro Azure ML s Azure Databricks.
-+ Azure Databricks můžete použít jako cíl pro výpočetní prostředky z [kanálu Azure Machine Learning](concept-ml-pipelines.md).
-
-### <a name="set-up-your-databricks-cluster"></a>Nastavení clusteru datacihly
-
-Vytvořte [cluster datacihly](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Některá nastavení platí jenom v případě, že nainstalujete sadu SDK pro automatizované Machine Learning na datacihly.
-**Vytvoření clusteru bude trvat několik minut.**
-
-Použijte tato nastavení:
-
-| Nastavení |Platí pro| Hodnota |
-|----|---|---|
-| Název clusteru |stál| yourclustername |
-| Modul runtime Databricks |stál|Běhový modul bez ML 7,1 (Scala 2,21, Spark 3.0.0) |
-| Verze Pythonu |stál| 3 |
-| Pracovníků |stál| 2 nebo vyšší |
-| Typy virtuálních počítačů uzlu pracovního procesu <br>(určuje maximální počet souběžných iterací) |Automatizované strojové učení<br>pouze| Preferovaný virtuální počítač pro optimalizaci paměti |
-| Povolit automatické škálování |Automatizované strojové učení<br>pouze| Zrušte zaškrtnutí políčka  |
-
-Než budete pokračovat, počkejte, dokud cluster neběží.
-
-### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Nainstalujte správnou sadu SDK do knihovny datacihly.
-
-Po spuštění clusteru [vytvořte knihovnu](https://docs.databricks.com/user-guide/libraries.html#create-a-library) , která připojí příslušný balíček sady Azure Machine Learning SDK k vašemu clusteru. Pro automatizované ML přejděte na [sadu SDK pro datacihly s využitím automatizovaného oddílu strojového učení](#sdk-for-databricks-with-automated-machine-learning).
-
-1. Klikněte pravým tlačítkem na složku aktuální pracovní prostor, kam chcete uložit knihovnu. Vyberte **vytvořit**  >  **knihovnu**.
-
-1. Vyberte následující možnost (není podporována žádná jiná instalace sady SDK.)
-
-   |&nbsp;Doplňky balíčku sady SDK &nbsp;|Zdroj|&nbsp;Název PyPI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
-   |----|---|---|
-   |Pro datacihly| Nahrát vejce Pythonu nebo PyPI | AzureML-SDK [datacihly]|
-
-   > [!Warning]
-   > Nelze nainstalovat žádné další doplňky sady SDK. Vyberte pouze možnost [ `databricks` ].
-
-   * Nevybírejte možnost **Připojit automaticky ke všem clusterům**.
-   * Vedle názvu clusteru vyberte  **připojit** .
-
-1. Monitoruje chyby, dokud se změny stavu **nepřipojí** , což může trvat několik minut.  Pokud tento krok neproběhne úspěšně:
-
-   Zkuste cluster restartovat pomocí:
-   1. V levém podokně vyberte **clustery**.
-   1. V tabulce vyberte název vašeho clusteru.
-   1. Na kartě **knihovny** vyberte **restartovat**.
-
-   Zvažte také:
-   + V AutoML config při použití Azure Databricks přidejte následující parametry:
-       1. ```max_concurrent_iterations``` vychází z počtu pracovních uzlů v clusteru.
-        2. ```spark_context=sc``` je založen na výchozím kontextu Sparku.
-   + Nebo, pokud máte starou verzi sady SDK, zrušte výběr z nainstalovaného knihovny clusteru a přesuňte se do koše. Nainstalujte novou verzi sady SDK a restartujte cluster. Pokud po restartování dojde k problému, odpojte a znovu připojte svůj cluster.
-
-Pokud byla instalace úspěšná, importovaná knihovna by měla vypadat jako jedna z následujících:
-
-#### <a name="sdk-for-databricks"></a>Sada SDK pro datacihly
-![Sada SDK Azure Machine Learning pro datacihly](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
-
-#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>Sada SDK pro datacihly pomocí automatizovaného strojového učení
-Pokud byl cluster vytvořen s datacihly, které nejsou ML Runtime 7,1 nebo vyšší, spusťte následující příkaz v první buňce poznámkového bloku a nainstalujte sadu AML SDK.
-
-```
-%pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
-```
-Pro datacihly, které neobsahují modul runtime 7,0 a nižší, nainstalujte sadu SDK AML pomocí [skriptu init](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
-
-
-### <a name="start-exploring"></a>Zahájení průzkumu
-
-Vyzkoušet:
-+ I když je k dispozici mnoho ukázkových poznámkových bloků, **fungují pouze [Tyto ukázkové poznámkové bloky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) s Azure Databricks.**
-
-+ Tyto ukázky importujte přímo z pracovního prostoru. Viz níže: ![ Vyberte importovat ](./media/how-to-configure-environment/azure-db-screenshot.png)
- ![ panel importu.](./media/how-to-configure-environment/azure-db-import.png)
-
-+ Naučte se [vytvářet kanály s datacihlami jako výpočetní](how-to-create-your-first-pipeline.md)prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Výuka modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s využitím datové sady mnist ručně zapsaných
-- Referenční informace o sadě [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
+- [Výuku modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning s datovou sadou mnist ručně zapsaných
+- Referenční informace o [sadě Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)najdete v tématu. 

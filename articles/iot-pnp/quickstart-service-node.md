@@ -1,19 +1,19 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Node.js) | Microsoft Docs
-description: Pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s ním.
+title: Rychlý Start – interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Node.js) | Microsoft Docs
+description: Rychlý Start – pomocí Node.js se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s ním.
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 814221997bc927cf411e531b523d693f3ef5854c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736000"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421511"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Node.js)
 
@@ -164,7 +164,7 @@ V tomto rychlém startu použijete ukázkové řešení IoT v Node.js k interakc
 V tomto scénáři výstup IT `Model Id: dtmi:com:example:Thermostat;1` .
 
 > [!NOTE]
-> Tyto ukázky služeb používají třídu **registru** z **klienta služby IoT Hub** . Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
+> Tyto ukázky služeb používají třídu **registru** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
 
 ### <a name="update-a-writable-property"></a>Aktualizovat vlastnost s možností zápisu
 

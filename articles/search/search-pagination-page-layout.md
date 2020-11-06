@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934918"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421715"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
 Tento článek vysvětluje, jak získat odpověď na dotaz, který se vrátí s celkovým počtem vyhovujících dokumentů, stránkovaných výsledků, seřazených výsledků a podmínek zvýrazněných na začátku.
 
-Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) .
+Struktura odpovědi je určena parametry v dotazu: [vyhledat dokument](/rest/api/searchservice/Search-Documents) v REST API nebo v sadě .NET SDK [searchResults](/dotnet/api/azure.search.documents.models.searchresults-1) .
 
 ## <a name="result-composition"></a>Složení výsledku
 
@@ -52,7 +52,7 @@ Chcete-li vrátit jiný počet vyhovujících dokumentů, `$top` přidejte `$ski
 + Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15: `$top=15&$skip=30`
 
 V případě změny podkladového indexu není zaručeno, že výsledky stránkovaných dotazů nebudou stabilní. Stránkování změní hodnotu `$skip` pro každou stránku, ale každý dotaz je nezávislý a pracuje s aktuálním zobrazením dat v indexu v době dotazu (jinými slovy, není ukládání do mezipaměti nebo snímku výsledků, jako jsou například ty, které se nacházejí v databázi pro obecné účely).
- 
+ 
 Následuje příklad, jak můžete získat duplicity. Předpokládat index se čtyřmi dokumenty:
 
 ```text
@@ -61,21 +61,21 @@ Následuje příklad, jak můžete získat duplicity. Předpokládat index se č
 { "id": "3", "rating": 2 }
 { "id": "4", "rating": 1 }
 ```
- 
+ 
 Nyní předpokládejme, že výsledky byly vráceny dvakrát v čase seřazené podle hodnocení. Tento dotaz provedete tak, aby získal první stránku výsledků: `$top=2&$skip=0&$orderby=rating desc` a vygeneroval následující výsledky:
 
 ```text
 { "id": "1", "rating": 5 }
 { "id": "2", "rating": 3 }
 ```
- 
+ 
 Ve službě se předpokládá, že se do indexu přidá pátý dokument mezi voláními dotazu: `{ "id": "5", "rating": 4 }` .  Krátce potom spustíte dotaz k načtení druhé stránky: `$top=2&$skip=2&$orderby=rating desc` a získáte tyto výsledky:
 
 ```text
 { "id": "2", "rating": 3 }
 { "id": "3", "rating": 2 }
 ```
- 
+ 
 Všimněte si, že dokument 2 je načten dvakrát. Je to proto, že nový dokument 5 má větší hodnotu hodnocení, takže seřadí před dokument 2 a na první stránce. I když toto chování může být neočekávané, je typický způsob, jakým se chová vyhledávací web.
 
 ## <a name="ordering-results"></a>Řazení výsledků
@@ -84,7 +84,7 @@ U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazené p
 
 Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu porovnávání ve srovnání s ostatními dokumenty ve stejné sadě výsledků. Skóre nejsou vždy konzistentní od jednoho dotazu k dalšímu, takže při práci s dotazy si můžete všimnout malých nedostatků při řazení dokumentů pro hledání. K tomu může dojít z několika vysvětlení.
 
-| Příčina | Description |
+| Příčina | Popis |
 |-----------|-------------|
 | Nestálost dat | Obsah indexu se při přidávání, upravování a odstraňování dokumentů liší. Termínové kmitočty se změní, protože aktualizace indexu jsou zpracovávány v průběhu času, což má vliv na výsledky hledání u vyhovujících dokumentů. |
 | Více replik | Pro služby, které používají více replik, jsou dotazy vydávány paralelně pro každou repliku. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky a výsledky se sloučily a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadlově navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Například jedna replika mohla odstranit dokumenty přispívající do jejich statistik, které byly sloučeny mimo jiné repliky. Rozdíly v statistikách pro jednotlivé repliky jsou obvykle patrné v menších indexech. |

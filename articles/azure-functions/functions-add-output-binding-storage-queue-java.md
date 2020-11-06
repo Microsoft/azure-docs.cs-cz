@@ -7,24 +7,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: faa4df8633c34b23703a3fe9fa405bad959ec894
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b4381c4acbea8a3b7d86d9c32aaf9cea24cf15fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167198"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422650"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
+V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](./create-first-function-cli-java.md?tabs=bash,browser) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser).
+Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./create-first-function-cli-java.md?tabs=bash,browser).
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 

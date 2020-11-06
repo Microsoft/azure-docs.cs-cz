@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 9f189d1889f3ca3a3aa3234432452b1b3d696c04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7b672b7e2c3004eba4a38bd659965b7dee24db6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935088"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422480"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Správa služby Azure Kognitivní hledání pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Lin
 
 V některých případech se otázky týkají úkolů, které *nejsou* uvedené na seznamu výše. V současné době nemůžete použít modul **AZ. Search** ani REST API správy ke změně názvu serveru, oblasti nebo vrstvy. Vyhrazené prostředky jsou přiděleny při vytvoření služby. Například změna základního hardwaru (umístění nebo typu uzlu) vyžaduje novou službu. Podobně nejsou k dispozici žádné nástroje ani rozhraní API pro přenos obsahu, jako je například index, z jedné služby do jiné.
 
-V rámci služby je vytváření a Správa obsahu prostřednictvím [Search Service REST API](/rest/api/searchservice/) nebo [.NET SDK](/dotnet/api/?term=microsoft.azure.search). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá rozhraní REST nebo rozhraní .NET API k vytváření a načítání indexů.
+V rámci služby je vytváření a Správa obsahu prostřednictvím [Search Service REST API](/rest/api/searchservice/) nebo [.NET SDK](/dotnet/api/overview/azure/search.documents-readme). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá rozhraní REST nebo rozhraní .NET API k vytváření a načítání indexů.
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +90,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>Seznam služeb v předplatném
 
-Následující příkazy jsou z [**AZ. Resources**](/powershell/module/az.resources/?view=azps-1.4.0#resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
+Následující příkazy jsou z [**AZ. Resources**](/powershell/module/az.resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
 
 První příkaz vrátí všechny vyhledávací služby.
 
@@ -116,7 +116,7 @@ ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroup
 
 ## <a name="import-azsearch"></a>Import AZ. Search
 
-Příkazy z [**AZ. Search**](/powershell/module/az.search/?view=azps-1.4.0#search) nejsou k dispozici, dokud nenačtete modul.
+Příkazy z [**AZ. Search**](/powershell/module/az.search) nejsou k dispozici, dokud nenačtete modul.
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -148,7 +148,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 
 ## <a name="get-search-service-information"></a>Získat informace o službě Search
 
-Po naimportování **AZ. Search** , který znáte skupinu prostředků obsahující vaši vyhledávací službu, spusťte příkaz [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) , který vrátí definici služby, včetně názvu, oblasti, úrovně a počtu replik a oddílů.
+Po naimportování **AZ. Search** , který znáte skupinu prostředků obsahující vaši vyhledávací službu, spusťte příkaz [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) , který vrátí definici služby, včetně názvu, oblasti, úrovně a počtu replik a oddílů.
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>Vytvoření nebo odstranění služby
 
-[**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k [Vytvoření nové vyhledávací služby](search-create-service-portal.md).
+[**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey) se používá k [Vytvoření nové vyhledávací služby](search-create-service-portal.md).
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -191,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>Znovu vygenerovat klíče správce
 
-[**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
+[**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
 
 V jednom okamžiku můžete znovu vygenerovat jenom jednu, zadanou buď jako `primary` klíč nebo `secondary` . U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
 
@@ -213,7 +213,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Vytvoření nebo odstranění klíčů dotazů
 
-[**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup jen pro čtení z klientských aplikací do indexu služby Azure kognitivní hledání. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
+[**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey) se používá k vytváření [klíčů rozhraní API](search-security-api-keys.md) pro dotazování pro přístup jen pro čtení z klientských aplikací do indexu služby Azure kognitivní hledání. Klíče dotazů se používají k ověření pro konkrétní index pro účely načítání výsledků hledání. Klíče dotazů neudělují přístup jen pro čtení k ostatním položkám ve službě, jako je index, zdroj dat nebo indexer.
 
 Nemůžete poskytnout klíč pro použití Azure Kognitivní hledání. Služba vygeneruje klíče rozhraní API.
 
@@ -223,7 +223,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>Škálování replik a oddílů
 
-[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) se používá ke [zvýšení nebo snížení počtu replik a oddílů a](search-capacity-planning.md) k úpravě fakturovatelných prostředků v rámci služby. Zvýšením replik nebo oddílů se přidá do vašeho účtu, který má za pevnou i variabilní poplatky. Pokud máte dočasnou potřebu pro další výpočetní výkon, můžete zvýšit repliky a oddíly pro zpracování úloh. Oblast monitorování na stránce portálu přehledu obsahuje dlaždice pro latenci dotazů, dotazy za sekundu a omezování, které označují, jestli je aktuální kapacita adekvátní.
+[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice) se používá ke [zvýšení nebo snížení počtu replik a oddílů a](search-capacity-planning.md) k úpravě fakturovatelných prostředků v rámci služby. Zvýšením replik nebo oddílů se přidá do vašeho účtu, který má za pevnou i variabilní poplatky. Pokud máte dočasnou potřebu pro další výpočetní výkon, můžete zvýšit repliky a oddíly pro zpracování úloh. Oblast monitorování na stránce portálu přehledu obsahuje dlaždice pro latenci dotazů, dotazy za sekundu a omezování, které označují, jestli je aktuální kapacita adekvátní.
 
 Přidání nebo odebrání rezdrojového může nějakou dobu trvat. Úpravy kapacity se vyskytují na pozadí, což umožňuje, aby existující úlohy pokračovaly. Další kapacita se používá pro příchozí požadavky, jakmile je připravená, a nevyžaduje žádnou další konfiguraci. 
 

@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530064"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423024"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Kurz: vytvoření přístupu k privátnímu webu Azure Functions
 
@@ -53,7 +53,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
 
 1. Vyberte tlačítko **vytvořit prostředek** .
 
-1. Do vyhledávacího pole zadejte **Windows Server**a ve výsledcích hledání vyberte **Windows Server** .
+1. Do vyhledávacího pole zadejte **Windows Server** a ve výsledcích hledání vyberte **Windows Server** .
 
 1. V seznamu možností Windows serveru vyberte **Windows server 2019 Datacenter** a klikněte na tlačítko **vytvořit** .
 
@@ -67,7 +67,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
     | _Předplatné_ | Vaše předplatné | Předplatné, ve kterém se vaše prostředky vytvářejí. |
     | [_Skupina prostředků_](../azure-resource-manager/management/overview.md) | myResourceGroup | Vyberte skupinu prostředků, která bude obsahovat všechny prostředky pro tento kurz.  Použití stejné skupiny prostředků usnadňuje vyčištění prostředků v případě, že jste s tímto kurzem hotovi. |
     | _Název virtuálního počítače_ | myVM | Název virtuálního počítače musí být ve skupině prostředků jedinečný. |
-    | [_Oblast_](https://azure.microsoft.com/regions/) | VYLEPŠENÍ Střed USA – sever | Vyberte oblast poblíž nebo poblíž funkcí, ke kterým se chcete dostat. |
+    | [_Věřitel_](https://azure.microsoft.com/regions/) | VYLEPŠENÍ Střed USA – sever | Vyberte oblast poblíž nebo poblíž funkcí, ke kterým se chcete dostat. |
     | _Veřejné příchozí porty_ | Žádné | Pokud chcete zajistit, aby virtuální počítač neobsahoval žádné příchozí připojení z Internetu, vyberte možnost **žádné** . Vzdálený přístup k virtuálnímu počítači se nakonfiguruje prostřednictvím služby Azure bastionu. |
 
 1. Zvolte kartu _síť_ a vyberte **vytvořit novou** a nakonfigurujte novou virtuální síť.
@@ -75,7 +75,7 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
     >[!div class="mx-imgBorder"]
     >![Snímek obrazovky, který zobrazuje kartu "sítě" se zvýrazněnou akcí vytvořit novou v oddílu "virtuální síť".](./media/functions-create-private-site-access/create-vm-networking.png)
 
-1. V části _vytvořit virtuální síť_použijte nastavení v tabulce pod obrázkem:
+1. V části _vytvořit virtuální síť_ použijte nastavení v tabulce pod obrázkem:
 
     >[!div class="mx-imgBorder"]
     >![Vytvořit novou virtuální síť pro nový virtuální počítač](./media/functions-create-private-site-access/create-vm-vnet-1.png)
@@ -84,13 +84,13 @@ Prvním krokem v tomto kurzu je vytvoření nového virtuálního počítače ve
     | ------------ | ---------------- | ---------------- |
     | _Název_ | myResourceGroup – VNet | Můžete použít výchozí název vygenerovaný pro vaši virtuální síť. |
     | _Rozsah adres_ | 10.10.0.0/16 | Pro virtuální síť použijte jeden rozsah adres. |
-    | _Název podsítě_ | Tutoriál | Název podsítě. |
+    | _Název podsítě_ | Kurz | Název podsítě. |
     | _Rozsah adres_ (podsíť) | 10.10.1.0/24 | Velikost podsítě určuje, kolik rozhraní lze do podsítě přidat. Tuto podsíť používá virtuální počítač. Podsíť a/24 poskytuje 254 adres hostitelů. |
 
 1. Vyberte **OK** a vytvořte virtuální síť.
 1. Zpátky na kartě _sítě_ zkontrolujte, jestli není vybraná **možnost žádná** pro _veřejnou IP adresu_.
-1. Zvolte kartu _Správa_ a potom v části _účet diagnostického úložiště_zvolte **vytvořit novou** a vytvořte nový účet úložiště.
-1. Ponechte výchozí hodnoty pro oddíly _identity_, _automatického vypínání_a _zálohování_ .
+1. Zvolte kartu _Správa_ a potom v části _účet diagnostického úložiště_ zvolte **vytvořit novou** a vytvořte nový účet úložiště.
+1. Ponechte výchozí hodnoty pro oddíly _identity_ , _automatického vypínání_ a _zálohování_ .
 1. Vyberte _Zkontrolovat a vytvořit_. Po dokončení ověření vyberte **vytvořit**. Proces vytvoření virtuálního počítače trvá několik minut.
 
 ## <a name="configure-azure-bastion"></a>Konfigurace Azure bastionu
@@ -145,7 +145,7 @@ Dalším krokem je vytvoření aplikace Function App v Azure s využitím [plán
     | _Oblast_ | USA – středosever | Vyberte [oblast](https://azure.microsoft.com/regions/) poblíž nebo poblíž dalších služeb, ke kterým máte přístup. |
 
     Vyberte tlačítko **Další: hostování >** .
-1. V části _hostování_ vyberte správný _účet úložiště_, _operační systém_a _plán_ , jak je popsáno v následující tabulce.
+1. V části _hostování_ vyberte správný _účet úložiště_ , _operační systém_ a _plán_ , jak je popsáno v následující tabulce.
 
     | Nastavení      | Navrhovaná hodnota  | Popis      |
     | ------------ | ---------------- | ---------------- |
@@ -165,7 +165,7 @@ Přístup k [privátní lokalitě](functions-networking-options.md#private-site-
 1. Stránka _síť_ je výchozím bodem, ve kterém se konfigurují přední dveře Azure, Azure CDN a také omezení přístupu.
 1. Vyberte **konfigurovat omezení přístupu** pro konfiguraci přístupu k privátní lokalitě.
 1. Na stránce _omezení přístupu_ se zobrazí pouze výchozí omezení. Ve výchozím nastavení se neumísťují žádná omezení přístupu do aplikace Function App.  Vyberte **Přidat pravidlo** a vytvořte konfiguraci omezení přístupu k privátní lokalitě.
-1. V podokně _Přidat omezení přístupu_ zadejte _název_, _prioritu_a _Popis_ nového pravidla.
+1. V podokně _Přidat omezení přístupu_ zadejte _název_ , _prioritu_ a _Popis_ nového pravidla.
 1. V rozevíracím seznamu _typ_ vyberte **Virtual Network** , vyberte dříve vytvořenou virtuální síť a potom vyberte podsíť **kurzu** . 
     > [!NOTE]
     > Povolení koncového bodu služby může trvat několik minut.
@@ -185,7 +185,7 @@ Přístup k [privátní lokalitě](functions-networking-options.md#private-site-
 1. Vraťte se do skupiny prostředků a vyberte dříve vytvořený virtuální počítač. Aby bylo možné získat přístup k webu z virtuálního počítače, musíte se k virtuálnímu počítači připojit prostřednictvím služby Azure bastionu.
 1. Vyberte **připojit** a pak zvolte **bastionu**.
 1. Zadejte požadované uživatelské jméno a heslo pro přihlášení k virtuálnímu počítači.
-1. Vyberte **Připojit**. Otevře se nové okno prohlížeče, které vám umožní pracovat s virtuálním počítačem.
+1. Vyberte **Connect** (Připojit). Otevře se nové okno prohlížeče, které vám umožní pracovat s virtuálním počítačem.
 K webu je možné přistupovat z webového prohlížeče na virtuálním počítači, protože virtuální počítač přistupuje k webu přes virtuální síť.  I když je web dostupný jenom v rámci určené virtuální sítě, zůstane veřejná položka DNS.
 
 ## <a name="create-a-function"></a>Vytvoření funkce
@@ -197,7 +197,7 @@ Dalším krokem v tomto kurzu je vytvoření funkce Azure aktivované službou H
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Příkazový řádek](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Když publikujete projekt Azure Functions, vyberte prostředek Function App, který jste vytvořili dříve v tomto kurzu.
 1. Ověřte, že je funkce nasazená.

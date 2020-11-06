@@ -1,6 +1,6 @@
 ---
-title: Interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Python) | Microsoft Docs
-description: Pomocí Pythonu se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
+title: Rychlý Start – interakce se zařízením IoT technologie Plug and Play připojeným k řešení Azure IoT (Python) | Microsoft Docs
+description: Rychlý Start – pomocí Pythonu se můžete připojit k zařízení IoT technologie Plug and Play, které je připojené k řešení Azure IoT, a pracovat s nimi.
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 681568c3aee88483c7f9c813529f0eb500a59e93
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741485"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421494"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Rychlý Start: interakce se zařízením IoT technologie Plug and Play připojeným k vašemu řešení (Python)
 
@@ -80,7 +80,7 @@ V tomto rychlém startu použijete v Pythonu ukázkové řešení IoT, které v�
 1. Otevřete soubor *registry_manager_pnp_sample. py* a Prohlédněte si kód. V této ukázce se dozvíte, jak používat třídu **IoTHubRegistryManager** k interakci se zařízením IoT technologie Plug and Play.
 
 > [!NOTE]
-> Tyto ukázky služeb používají třídu **IoTHubRegistryManager** z **klienta služby IoT Hub** . Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
+> Tyto ukázky služeb používají třídu **IoTHubRegistryManager** z **klienta služby IoT Hub**. Další informace o rozhraních API, včetně rozhraní Digital props API, najdete v [příručce pro vývojáře služby](concepts-developer-guide-service.md).
 
 ### <a name="get-the-device-twin"></a>Získat zdvojené zařízení
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: cf3c07f32f15ff176974219bd8143a1ea315c945
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629336"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423041"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -21,9 +21,14 @@ Tento přehled popisuje možnosti, které Azure Database for PostgreSQL poskytuj
 
 Při vývoji plánu provozní kontinuity je potřeba pochopit maximální přijatelnou dobu, než aplikace plně obnoví po přerušení události – to je vaše plánovaná doba obnovení (RTO). Také je potřeba pochopit maximální množství nedávných aktualizací dat (časový interval), které může aplikace tolerovat při obnovování po přerušení události – to je váš cíl bodu obnovení (RPO).
 
-Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují geograficky redundantní zálohy s možností iniciovat geografické obnovení a nasazovat repliky pro čtení v jiné oblasti. Každý má různé charakteristiky pro čas obnovení a možnou ztrátu dat. Díky funkci [geografického obnovení](concepts-backup.md) se vytvoří nový server pomocí zálohovaných dat, která se replikují z jiné oblasti. Celková doba potřebná k obnovení a obnovení závisí na velikosti databáze a množství protokolů, které se mají obnovit. Celková doba vytvoření serveru se liší od několika minut až po několik hodin. V případě [replik čtení](concepts-read-replicas.md)jsou protokoly transakcí z primární služby asynchronně přenášeny do repliky. Prodleva mezi primární a replikou závisí na latenci mezi lokalitami a také na množství dat, která se mají přenést. V případě selhání primární lokality, jako je například Chyba zóny dostupnosti, poskytuje povýšení repliky kratší RTO a omezenou ztrátu dat. 
+Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které zahrnují geograficky redundantní zálohy s možností iniciovat geografické obnovení a nasazovat repliky pro čtení v jiné oblasti. Každý má různé charakteristiky pro čas obnovení a možnou ztrátu dat. Díky funkci [geografického obnovení](concepts-backup.md) se vytvoří nový server pomocí zálohovaných dat, která se replikují z jiné oblasti. Celková doba potřebná k obnovení a obnovení závisí na velikosti databáze a množství protokolů, které se mají obnovit. Celková doba vytvoření serveru se liší od několika minut až po několik hodin. V případě [replik čtení](concepts-read-replicas.md)jsou protokoly transakcí z primární služby asynchronně přenášeny do repliky. V případě výpadku primární databáze z důvodu chyby na úrovni zóny nebo na úrovni oblasti, převzetí služeb při selhání do repliky poskytuje kratší RTO a omezenou ztrátu dat.
 
-Následující tabulka porovnává RTO a RPO v typickém scénáři:
+> [!NOTE]
+> Prodleva mezi primárním serverem a replikou závisí na latenci mezi lokalitami, na množství dat, která se mají přenést, a nejdůležitějším způsobem na úlohy zápisu primárního serveru. Úlohy s velkým objemem zápisu můžou způsobit významné prodlevy. 
+>
+> Z důvodu asynchronního charakteru replikace, která se používá pro repliky pro čtení, **by se neměla** považovat za řešení vysoké dostupnosti (ha), protože vyšší prodlevy může znamenat vyšší RTO a RPO. V případě úloh, u kterých zůstává prodleva menší než v době špičky a mimo špičku úlohy, mohou repliky čtení fungovat jako alternativa HA. V opačném případě jsou repliky čtení určené pro vysoce škálovatelné úlohy a pro scénáře zotavení po havárii, které jsou pro vás připravené.
+
+Následující tabulka porovnává RTO a RPO v **typickém scénáři úlohy** :
 
 | **Funkce** | **Basic** | **Obecné použití** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
@@ -31,7 +36,7 @@ Následující tabulka porovnává RTO a RPO v typickém scénáři:
 | Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | RTO – různé <br/>RPO < 1 h | RTO – různé <br/>RPO < 1 h |
 | Čtení replik | RTO – minuty * <br/>RPO < 5 min * | RTO – minuty * <br/>RPO < 5 min *| RTO – minuty * <br/>RPO < 5 min *|
 
-\* RTO a RPO můžou být v některých případech mnohem vyšší v závislosti na různých faktorech, včetně úloh primární databáze a latence mezi oblastmi. 
+ \* RTO a RPO **můžou být** v některých případech mnohem vyšší v závislosti na různých faktorech, mezi které patří latence mezi lokalitami, množství dat, která se mají přenést, a důležité úlohy zápisu do primární databáze. 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Obnovení serveru po chybě uživatele nebo aplikace
 
@@ -56,9 +61,9 @@ Funkce geografického obnovení obnoví Server pomocí geograficky redundantníc
 > Geografické obnovení je možné pouze v případě, že jste zřídili Server s geograficky redundantním úložištěm záloh. Pokud chcete přepnout z místně redundantního na geograficky redundantní zálohy pro existující server, musíte použít výpis pg_dump stávajícího serveru a obnovit ho na nově vytvořený server nakonfigurovaný pomocí geograficky redundantních záloh.
 
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
-Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
+Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL a můžou se odčítat primárním serverem. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 ### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Kam se Azure Database for PostgreSQL ukládají zákaznická data?
 Ve výchozím nastavení Azure Database for PostgreSQL nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
 

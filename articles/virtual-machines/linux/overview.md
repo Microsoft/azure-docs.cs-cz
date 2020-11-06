@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b205665a0e5fc06fdc784efa91036f26da5d3cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71de48c8ac0f74ed4afbe0fafcdbfdf3f34d6654
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654340"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422412"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -30,7 +30,7 @@ Virtuální počítače Azure lze použít různými způsoby. Tady je několik 
 Počet virtuálních počítačů, které vaše aplikace používá, lze vertikálně nebo horizontálně navýšit pro splnění vašich požadavků.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co je třeba zvážit před vytvořením virtuálního počítače?
-Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](/azure/architecture/reference-architectures/n-tier/windows-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
+Při sestavování infrastruktury aplikace v Azure vždy existuje velké množství [aspektů návrhu](/azure/architecture/reference-architectures/n-tier/linux-vm). Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
 
 * Názvy prostředků vaší aplikace
 * Umístění, kam se ukládají prostředky
@@ -47,7 +47,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 
 | Metoda | Popis |
 | --- | --- |
-| portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
+| Azure Portal |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
 | REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
 | Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
@@ -74,24 +74,24 @@ Spravované disky se na pozadí starají o vytvoření a správu účtu služby 
 V jednom účtu úložiště na oblast Azure můžete také spravovat vlastní image a vytvářet pomocí nich stovky virtuálních počítačů v rámci stejného předplatného. Další informace o spravovaných discích najdete v tématu [Přehled služby Managed Disks](../managed-disks-overview.md).
 
 ## <a name="distributions"></a>Distribuce 
-Microsoft Azure podporuje spouštění mnoha oblíbených distribucí Linuxu, které poskytuje a udržuje řada partnerů.  Na webu Azure Marketplace najdete distribuce, jako jsou Red Hat Enterprise, CentOS, SUSE Linux Enterprise, Debian, Ubuntu, CoreOS, RancherOS, FreeBSD a další. Microsoft aktivně spolupracuje s různými komunitami okolo Linuxu s cílem ještě více rozšířit seznam [distribucí Linuxu schválených pro Azure](endorsed-distros.md).
+Microsoft Azure podporuje spouštění mnoha oblíbených distribucí Linuxu, které poskytuje a udržuje řada partnerů.  Dostupná distribuce můžete najít v Azure Marketplace. Microsoft aktivně spolupracuje s různými komunitami okolo Linuxu s cílem ještě více rozšířit seznam [distribucí Linuxu schválených pro Azure](endorsed-distros.md).
 
 Pokud vaše upřednostňovaná distribuce Linuxu aktuálně není v galerii, můžete pro virtuální počítač použít vlastní distribuci Linuxu tak, že [vytvoříte a nahrajete VHD s Linuxem v Azure](create-upload-generic.md).
 
-Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimalizace dostupných imagí pro modul runtime Azure.  Další informace o partnerech Azure najdete na následujících odkazech:
+Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimalizace dostupných imagí pro modul runtime Azure.  Další informace o nabídkách partnerů Azure najdete na následujících odkazech:
 
 * Linux v Azure – [Schválené distribuce](endorsed-distros.md)
-* SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
-* Red Hat- [Azure Marketplace-Red Hat Enterprise Linux 8,1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=suse)
+* Red Hat- [Azure Marketplace-Red Hat Enterprise Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Red%20Hat%20Enterprise%20Linux)
 * Kanonický [Azure Marketplace – Server s Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
-* Debian –[Azure Marketplace – Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
-* FreeBSD- [Azure Marketplace-FreeBSD 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS- [Azure Marketplace-Container Linux podle CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* Debian- [Azure Marketplace-Debian](https://azuremarketplace.microsoft.com/marketplace/apps?search=Debian&page=1)
+* FreeBSD- [Azure Marketplace-FreeBSD](https://azuremarketplace.microsoft.com/marketplace/apps?search=freebsd&page=1)
+* Flatcar- [Azure Marketplace-Flatcar kontejner Linux](https://azuremarketplace.microsoft.com/marketplace/apps?search=Flatcar&page=1)
 * RancherOS – [Azure Marketplace – RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami – [Knihovna Bitnami pro Azure](https://azure.bitnami.com/)
 * Mesosphere – [Azure Marketplace – Mesosphere DC/OS v Azure](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
 * Image Docker- [Azure Marketplace-Docker](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
-* Jenkins – [Azure Marketplace – Platforma CloudBees Jenkins](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
+* Jenkins – [Azure Marketplace – Platforma CloudBees Jenkins](https://azuremarketplace.microsoft.com/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 
 ## <a name="cloud-init"></a>Cloud-init 
@@ -99,7 +99,7 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když je veškerá infrastruktura v kódu, můžete ji snadno vytvořit znovu.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
 
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](../extensions/vmaccess.md)
+* [Azure `VMaccess`](../extensions/vmaccess.md)
 
 Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Linux distribuce, která ho podporují.  Aktivně spolupracujeme s našimi distribuce partnery se systémem Linux, aby byly k dispozici image s povoleným cloudovým inicializacím na webu Azure Marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů.
 

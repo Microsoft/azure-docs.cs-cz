@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: d045014cd92df084e4dd409012fdb668d312de1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f9a5197b982958fe0a0ff21c4b442142beb38882
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442316"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422463"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je Azure Cognitive Search?
 
@@ -28,7 +28,7 @@ Služba vyhledávání v architektuře je mezi externími úložišti dat, kter�
 
 Tyto dvě primární úlohy vyhledávací služby se *indexují* a *dotazují*.
 
-+ Indexování přináší do vyhledávací služby text a umožňuje prohledávat. Interně se příchozí text zpracovává do tokenů a ukládá se do obrácených indexů pro rychlé prověřování. Při indexování máte možnost Přidat *dovednosti v rozpoznávání*, buď předdefinované od společnosti Microsoft, nebo vlastní dovednosti, které vytvoříte. Následná analýza a transformace můžou mít za následek nové informace a struktury, které dříve neexistovaly, a poskytují tak vysoký výkon pro mnoho scénářů vyhledávání a vědomostí o dolování.
++ Indexování přináší do vyhledávací služby text a umožňuje prohledávat. Interně se příchozí text zpracovává do tokenů a ukládá se do obrácených indexů pro rychlé prověřování. Při indexování máte možnost Přidat *dovednosti v rozpoznávání* , buď předdefinované od společnosti Microsoft, nebo vlastní dovednosti, které vytvoříte. Následná analýza a transformace můžou mít za následek nové informace a struktury, které dříve neexistovaly, a poskytují tak vysoký výkon pro mnoho scénářů vyhledávání a vědomostí o dolování.
 
 + Po naplnění indexu pomocí prohledávatelných dat pošle klientská aplikace dotazy požadavky na vyhledávací službu a zpracuje odpovědi. Všechny provádění dotazů se provádí pomocí vyhledávacího indexu, který vytvoříte, vlastníte a uložíte v rámci služby. V klientské aplikaci jsou možnosti vyhledávání definované pomocí rozhraní API z Azure Kognitivní hledání a můžou zahrnovat vyladění relevance, automatické dokončování, porovnávání synonym, přibližné porovnávání, porovnávání vzorů, filtrování a řazení.
 
@@ -78,7 +78,7 @@ Model vyžádané replikace načte data ze zdrojů v Azure a pošle je do indexu
 
 ### <a name="step-4-send-queries-and-handle-responses"></a>Krok 4: odeslání dotazů a zpracování odpovědí
 
-Po naplnění indexu můžete [vydávat vyhledávací dotazy](search-query-overview.md) pro koncový bod služby pomocí jednoduchých požadavků HTTP s [REST API](/rest/api/searchservice/Search-Documents) nebo [sadou .NET SDK](/dotnet/api/microsoft.azure.search.idocumentsoperations).
+Po naplnění indexu můžete [vydávat vyhledávací dotazy](search-query-overview.md) pro koncový bod služby pomocí jednoduchých požadavků HTTP s [REST API](/rest/api/searchservice/Search-Documents) nebo [sadou .NET SDK](/dotnet/api/azure.search.documents.searchclient.search).
 
 Projděte si [vytvořením první vyhledávací aplikace](tutorial-csharp-create-first-app.md) , kterou vytvoříte a pak rozšíříte webovou stránku, která shromažďuje uživatelský vstup a zpracovává výsledky. K dotazování existujícího indexu můžete použít také [metodu post pro interaktivní volání REST](search-get-started-postman.md) nebo integrované [Průzkumník služby Search](search-explorer.md) v nástroji Azure Portal.
 

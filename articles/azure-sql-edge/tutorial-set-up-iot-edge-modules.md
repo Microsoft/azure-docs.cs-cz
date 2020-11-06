@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: a8c5b20f833ab09463e1ae8b5bd3825c7c23f85e
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394916"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422123"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
 
@@ -49,27 +49,30 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
    Uživatelské jméno|Uživatelské jméno
    Heslo|Heslo
   
-## <a name="deploy-the-data-generator-module"></a>Nasazení modulu generátoru dat
+## <a name="build-push-and-deploy-the-data-generator-module"></a>Sestavení, vložení a nasazení modulu generátoru dat
 
-1. V části **IoT Edge** v části **Automatická správa zařízení** klikněte na **ID zařízení**. Pro tento kurz je ID `IronOrePredictionDevice` a pak klikněte na **nastavit moduly**.
-
-2.  V části **IoT Edge moduly** na stránce **nastavit moduly na zařízení:** klikněte na **+ Přidat** a vyberte **IoT Edge modul**.
-
-3. Zadejte platný název a identifikátor URI image pro modul IoT Edge.
-   Identifikátor URI image najdete v registru kontejnerů ve skupině prostředků vytvořené v první části tohoto kurzu. V části **služby** vyberte část **úložiště** . Pro tento kurz vyberte úložiště s názvem `silicaprediction` . Vyberte příslušnou značku. Identifikátor URI image bude ve formátu:
-
-   *přihlašovací server containerregistry* / *název úložiště* : *název značky*
-
-   Například:
-
+1. Naklonujte [soubory projektu](https://github.com/microsoft/sqlsourabh/tree/main/SQLEdgeSamples/IoTEdgeSamples/IronOreSilica) na svůj počítač.
+2. Otevřete soubor **IronOre_Silica_Predict. sln** pomocí sady Visual Studio 2019
+3. Aktualizujte podrobnosti registru kontejneru v **deployment.template.js** . 
+   ```json
+   "registryCredentials":{
+        "RegistryName":{
+            "username":"",
+            "password":""
+            "address":""
+        }
+    }
    ```
-   ASEdemocontregistry.azurecr.io/silicaprediction:amd64
+4. Aktualizace **modules.jsv** souboru k určení cílového registru kontejneru (nebo úložiště pro modul)
+   ```json
+   "image":{
+        "repository":"samplerepo.azurecr.io/ironoresilicapercent",
+        "tag":
+    }
    ```
-
-4. Ponechejte *zásady restartování* a *požadovaná pole stavu* tak, jak jsou.
-
-5. Klikněte na **Přidat**.
-
+5. Spusťte projekt v režimu ladění nebo vydání, aby se zajistilo, že projekt bude běžet bez problémů. 
+6. Nahrajte projekt do registru kontejneru tak, že kliknete pravým tlačítkem myši na název projektu a pak vyberete **sestavování a nabízených IoT Edge modulů**.
+7. Nasaďte modul data Generator jako modul IoT Edge do hraničního zařízení. 
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Nasazení modulu Edge Azure SQL
 

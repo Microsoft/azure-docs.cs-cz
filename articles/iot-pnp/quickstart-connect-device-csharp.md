@@ -1,18 +1,18 @@
 ---
-title: Připojte si ukázkový kód zařízení v jazyce C# technologie Plug and Play k IoT Hub | Microsoft Docs
-description: Sestavte a spouštějte ukázkový kód zařízení technologie Plug and Play IoT v systému Windows, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Rychlý Start – připojení ukázkového kódu zařízení v jazyce C# technologie Plug and Play k Azure IoT Hub | Microsoft Docs
+description: Rychlý Start – sestavení a spuštění služby IoT technologie Plug and Play ukázkový kód zařízení ve Windows, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: da1ac77ad2716abf964c835634d049895fe88654
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 01e87b08f8d0abcf3659e0d7bfe081fd3516ff08
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044543"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421613"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play zařízení běžící v systému Windows k IoT Hub (C#)
 
@@ -20,7 +20,7 @@ ms.locfileid: "92044543"
 
 V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení, jak ji připojit k centru IoT a použít nástroj Azure IoT Explorer k zobrazení telemetrie, kterou posílá. Ukázková aplikace je napsaná v jazyce C# a je součástí ukázek Azure IoT pro C#. Tvůrce řešení může pomocí nástroje Azure IoT Explorer pochopit možnosti zařízení technologie Plug and Play IoT, aniž by bylo nutné zobrazovat kód zařízení.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 

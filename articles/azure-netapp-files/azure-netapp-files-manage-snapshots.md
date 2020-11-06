@@ -1,6 +1,6 @@
 ---
 title: Správa snímků pomocí Azure NetApp Files | Microsoft Docs
-description: Popisuje, jak vytvořit a spravovat snímky pomocí Azure NetApp Files.
+description: Popisuje, jak vytvářet, spravovat a používat snímky pomocí Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/04/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e9f2a1f9125d25caa9506e954cab3b94dfcb5c24
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d7839b11e48e3e260f4d6b1323d1831e28222de
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932273"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421859"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Správa snímků s využitím služby Azure NetApp Files
 
-Azure NetApp Files podporuje vytváření snímků na vyžádání a použití zásad snímku k naplánování automatického vytváření snímků.  Můžete také obnovit snímek na nový svazek nebo obnovit jeden soubor pomocí klienta.  
+Azure NetApp Files podporuje vytváření snímků na vyžádání a použití zásad snímku k naplánování automatického vytváření snímků. Můžete také obnovit snímek na nový svazek, obnovit jeden soubor pomocí klienta nebo vrátit existující svazek pomocí snímku.
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Vytvoření snímku na vyžádání pro svazek
 
@@ -49,7 +49,7 @@ Pomocí zásad snímku můžete naplánovat, aby se snímky svazků automaticky 
 
 ### <a name="register-the-feature"></a>Zaregistrujte funkci.
 
-Funkce **zásad snímku** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, budete ji muset nejdřív zaregistrovat. 
+Funkce **zásad snímku** je aktuálně ve verzi Preview. Pokud tuto funkci používáte poprvé, musíte ji nejprve zaregistrovat. 
 
 1. Zaregistrujte funkci: 
 
@@ -77,7 +77,7 @@ Zásady snímků vám umožní určit četnost vytváření snímků v hodinách
 
 2.  V okně zásady snímku nastavte stav zásady na **povoleno**. 
 
-3.  Klikněte na kartu **hodinové**, **denní**, **týdenní**nebo **měsíční** a vytvořte si hodinové, denní, týdenní nebo měsíční zásady pro snímky. Zadejte **počet snímků, které mají být zachovány**.  
+3.  Klikněte na kartu **hodinové** , **denní** , **týdenní** nebo **měsíční** a vytvořte si hodinové, denní, týdenní nebo měsíční zásady pro snímky. Zadejte **počet snímků, které mají být zachovány**.  
 
     V tématu [omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md) o maximálním počtu povolených snímků pro svazek. 
 
@@ -112,7 +112,7 @@ Pokud chcete, aby svazek používal zásadu snímku, kterou jste vytvořili, mus
 
     ![Místní nabídka – svazky kliknutím pravým tlačítkem](../media/azure-netapp-files/volume-right-cick-menu.png) 
 
-2.  V okně Upravit v části **zásada snímku**vyberte zásadu, která se má pro svazek použít.  Zásadu aplikujete kliknutím na **OK** .  
+2.  V okně Upravit v části **zásada snímku** vyberte zásadu, která se má pro svazek použít.  Zásadu aplikujete kliknutím na **OK** .  
 
     ![Úprava zásad snímku](../media/azure-netapp-files/snapshot-policy-edit.png) 
 
@@ -215,9 +215,40 @@ Pokud jste při vytváření svazku zaškrtli políčko Skrýt cestu ke snímku,
 
     ![Vložit soubor pro obnovení](../media/azure-netapp-files/snapshot-paste-file-restore.png) 
 
-4. Můžete také kliknout pravým tlačítkem na nadřazený adresář, vybrat **vlastnosti**, kliknout na kartu **předchozí verze** a zobrazit tak seznam snímků a vybrat **obnovit** pro obnovení souboru.  
+4. Můžete také kliknout pravým tlačítkem na nadřazený adresář, vybrat **vlastnosti** , kliknout na kartu **předchozí verze** a zobrazit tak seznam snímků a vybrat **obnovit** pro obnovení souboru.  
 
     ![Vlastnosti předchozích verzí](../media/azure-netapp-files/snapshot-properties-previous-version.png) 
+
+## <a name="revert-a-volume-using-snapshot-revert"></a>Obnovení svazku pomocí vrácení snímku
+
+Funkce obnovení snímku umožňuje rychle vrátit svazek do stavu, ve kterém byl proveden určitý snímek. Ve většině případů je vrácení svazku mnohem rychlejší než obnovení jednotlivých souborů ze snímku do aktivního systému souborů. V porovnání s obnovením snímku na nový svazek je také více místa. 
+
+Možnost vrátit svazek můžete najít v nabídce snímky svazku. Po výběru snímku pro reverzi Azure NetApp Files obnoví svazek na data a časová razítka, která obsahovala při pořízení vybraného snímku. 
+
+> [!IMPORTANT]
+> Aktivní systémová data a snímky, které byly provedeny po pořízení vybraného snímku, budou ztraceny. Operace vrátit se změnami snímku nahradí *všechna* data v cílovém svazku daty ve vybraném snímku. Při výběru snímku byste měli věnovat pozornost obsahu snímku a datu vytvoření. Operaci vrácení snímku nelze vrátit zpět.
+
+1. Přejděte do nabídky **snímky** svazku.  Klikněte pravým tlačítkem na snímek, který chcete použít pro operaci vrácení zpět. Vyberte možnost **vrátit svazek**. 
+
+    ![Snímek obrazovky s popisem nabídky, která se zobrazí po kliknutí pravým tlačítkem na snímek](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. V okně vrátit svazek do snímku zadejte název svazku a klikněte na tlačítko **obnovit**.   
+
+    Svazek je nyní obnoven do bodu v čase vybraného snímku.
+
+    ![Snímek obrazovky s oknem vrátit svazek do snímku](../media/azure-netapp-files/snapshot-revert-volume.png) 
+
+## <a name="delete-snapshots"></a>Odstranit snímky  
+
+Snímky, které už nepotřebujete zachovat, můžete odstranit. 
+
+1. Přejděte do nabídky **snímky** svazku. Klikněte pravým tlačítkem na snímek, který chcete odstranit. Vyberte **Odstranit**.
+
+    ![Snímek obrazovky s popisem nabídky, která se zobrazí po kliknutí pravým tlačítkem na snímek](../media/azure-netapp-files/snapshot-right-click-menu.png) 
+
+2. V okně Odstranit snímek potvrďte, že chcete odstranit snímek kliknutím na **Ano**. 
+
+    ![Snímek obrazovky s potvrzením odstranění snímku](../media/azure-netapp-files/snapshot-confirm-delete.png)  
 
 ## <a name="next-steps"></a>Další kroky
 

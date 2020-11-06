@@ -1,6 +1,6 @@
 ---
-title: Připojení kódu IoT technologie Plug and Play ukázkového zařízení v Pythonu do Azure IoT Hub | Microsoft Docs
-description: Pomocí Pythonu můžete sestavovat a spouštět ukázkový kód zařízení technologie Plug and Play IoT, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Rychlý Start – připojení ukázkového kódu zařízení v Pythonu technologie Plug and Play k Azure IoT Hub | Microsoft Docs
+description: Rychlý Start – použití Pythonu k sestavení a spuštění ukázkového kódu zařízení technologie Plug and Play IoT, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 38c6b835f0a3ddaaf4c049ca6ea3aeb484ad3280
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737301"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421562"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play zařízení k IoT Hub (Python)
 

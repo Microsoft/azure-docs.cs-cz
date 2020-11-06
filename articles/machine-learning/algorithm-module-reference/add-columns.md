@@ -1,7 +1,7 @@
 ---
 title: 'Přidat sloupce: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul přidat sloupce v Azure Machine Learning k zřetězení dvou datových sad.
+description: Naučte se, jak pomocí modulu Přidat sloupce v Návrháři Azure Machine Learning přetahovat na zřetězení dvou datových sad.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 17882581c4548996c9a8b2a8670b5f720e64da1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36de827dff239dbeebc66e330a76b7a65fefb909
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899000"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421953"
 ---
 # <a name="add-columns-module"></a>Modul přidat sloupce
 

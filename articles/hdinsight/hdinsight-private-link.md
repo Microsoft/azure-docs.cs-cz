@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3c6bee570312009af5fbdf42a018ad2b387662d9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547414"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422293"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Zabezpečte a izolujte clustery Azure HDInsight pomocí privátního propojení (Preview).
 
@@ -29,9 +29,9 @@ Ve výchozím nastavení používá HDInsight RP *příchozí* připojení ke cl
 
 Základní nástroje pro vyrovnávání zatížení používané ve výchozí architektuře virtuální sítě automaticky poskytují veřejné NAT (překlad síťových adres) pro přístup k požadovaným odchozím závislostem, jako je například HDInsight RP. Pokud chcete omezit odchozí připojení k veřejnému Internetu, můžete [nakonfigurovat bránu firewall](./hdinsight-restrict-outbound-traffic.md), ale nejedná se o požadavek.
 
-Konfigurace `resourceProviderConnection` pro odchozí připojení taky umožňuje přístup k prostředkům specifickým pro cluster, jako je Azure Data Lake Storage Gen2 nebo externí metaúložiště, pomocí privátních koncových bodů. Před vytvořením clusteru HDInsight musíte nakonfigurovat privátní koncové body a položky DNS. Při vytváření clusteru doporučujeme vytvořit a poskytnout všechny externí databáze SQL, které potřebujete, jako je Apache Ranger, Ambari, Oozie a podregistr metaúložiště.
+Konfigurace `resourceProviderConnection` pro odchozí připojení taky umožňuje přístup k prostředkům specifickým pro cluster, jako je Azure Data Lake Storage Gen2 nebo externí metaúložiště, pomocí privátních koncových bodů. Používání privátních koncových bodů pro tyto prostředky není mandetory, ale pokud máte v úmyslu mít pro tyto prostředky privátní koncové body, musíte nakonfigurovat privátní koncové body a položky DNS, `before` které vytvoříte cluster HDInsight. V době vytváření clusteru doporučujeme vytvořit a poskytnout všechny externí databáze SQL, které potřebujete, jako je Apache Ranger, Ambari, Oozie a podregistr metaúložiště. Požadavek znamená, že všechny tyto prostředky musí být přístupné zevnitř podsítě clusteru, a to buď prostřednictvím vlastního privátního koncového bodu, nebo jinak.
 
-Soukromé koncové body pro Azure Key Vault nejsou podporovány. Pokud používáte Azure Key Vault pro šifrování CMK v klidovém prostředí, musí být koncový bod Azure Key Vault dostupný z podsítě HDInsight bez privátního koncového bodu.
+Používání privátních koncových bodů pro Azure Key Vault se nepodporuje. Pokud používáte Azure Key Vault pro šifrování CMK v klidovém prostředí, musí být koncový bod Azure Key Vault dostupný z podsítě HDInsight bez privátního koncového bodu.
 
 Následující diagram znázorňuje, jak může vypadat možná architektura virtuální sítě HDInsight, například když `resourceProviderConnection` je nastavená na odchozí:
 
@@ -52,7 +52,7 @@ Pro přístup ke clusteru pomocí plně kvalifikovaných názvů domény cluster
 
 ## <a name="enable-private-link"></a>Povolit privátní propojení
 
-Privátní odkaz, který je ve výchozím nastavení zakázán, vyžaduje rozsáhlou znalost sítě pro nastavení tras definovaných uživatelem (UDR) a pravidla brány firewall, aby bylo možné vytvořit cluster správně. Přístup k tomuto clusteru prostřednictvím privátního propojení je k dispozici pouze v případě, že `resourceProviderConnection` je vlastnost síť nastavena na *odchozí* , jak je popsáno v předchozí části.
+Privátní odkaz, který je ve výchozím nastavení zakázán, vyžaduje rozsáhlou znalost sítě pro nastavení tras definovaných uživatelem (UDR) a pravidla brány firewall, aby bylo možné vytvořit cluster správně. Použití tohoto nastavení je volitelné, ale je k dispozici pouze v případě, že `resourceProviderConnection` je vlastnost síť nastavena na *odchozí* , jak je popsáno v předchozí části.
 
 Když `privateLink` je nastavená možnost *Povolit* , vytvoří se interní standardní nástroj pro [Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) (SLB) a pro každý SLB se zřídí služba Azure Private Link. Služba privátního propojení umožňuje přístup ke clusteru HDInsight z privátních koncových bodů.
 
@@ -64,11 +64,11 @@ Pro successgfull vytváření služeb privátních propojení musíte explicitn�
 
 Následující diagram ukazuje příklad konfigurace sítě, která je potřeba před vytvořením clusteru. V tomto příkladu musí být veškerý odchozí provoz [nuceně](../firewall/forced-tunneling.md) Azure firewall pomocí udr a před vytvořením clusteru by měly být v bráně firewall povolené požadované odchozí závislosti. U Balíček zabezpečení podniku clusterů může být připojení k síti Azure Active Directory Domain Services dostupné pomocí partnerského vztahu virtuální sítě.
 
-:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Diagram architektury HDInsight s použitím připojení odchozího poskytovatele prostředků":::
+:::image type="content" source="media/hdinsight-private-link/before-cluster-creation.png" alt-text="Diagram prostředí privátního propojení před vytvořením clusteru":::
 
 Po nastavení sítě můžete vytvořit cluster s připojením odchozího poskytovatele prostředků a s povoleným privátním odkazem, jak je znázorněno na následujícím obrázku. V této konfiguraci nejsou žádné veřejné IP adresy a služba privátního propojení se zřizuje pro každý nástroj pro vyrovnávání zatížení úrovně Standard.
 
-:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Diagram architektury HDInsight s použitím připojení odchozího poskytovatele prostředků":::
+:::image type="content" source="media/hdinsight-private-link/after-cluster-creation.png" alt-text="Diagram prostředí privátního propojení po vytvoření clusteru":::
 
 ### <a name="access-a-private-cluster"></a>Přístup k privátnímu clusteru
 
@@ -84,7 +84,7 @@ Soukromé položky odkazů vytvořené ve veřejné zóně DNS spravované v Azu
 
 Následující obrázek ukazuje příklad privátních záznamů DNS potřebných pro přístup ke clusteru z virtuální sítě, která není v partnerském vztahu, nebo nemá přímý přístup ke službě Vyrovnávání zatížení clusteru. Pomocí privátní zóny Azure můžete přepsat `*.privatelink.azurehdinsight.net` plně kvalifikované názvy domény a vyřešit je na vlastní IP adresy privátních koncových bodů.
 
-:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagram architektury HDInsight s použitím připojení odchozího poskytovatele prostředků":::
+:::image type="content" source="media/hdinsight-private-link/access-private-clusters.png" alt-text="Diagram architektury privátního propojení":::
 
 ## <a name="arm-template-properties"></a>Vlastnosti šablony ARM
 

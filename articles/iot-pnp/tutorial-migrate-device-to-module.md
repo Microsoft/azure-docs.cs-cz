@@ -1,18 +1,18 @@
 ---
-title: Připojení generického modulu IoT technologie Plug and Play | Microsoft Docs
-description: Použijte vzorový kód zařízení v C# technologie Plug and Play v obecném modulu.
+title: Kurz – připojení obecného modulu Azure IoT technologie Plug and Play | Microsoft Docs
+description: Kurz – použijte ukázkový kód zařízení v C# technologie Plug and Play v obecném modulu.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426938"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421460"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Kurz: připojení modulu IoT technologie Plug and Play (C#)
 
@@ -22,7 +22,7 @@ Zařízení je technologie Plug and Play IoT, pokud při připojení ke službě
 
 V tomto kurzu se dozvíte, jak implementovat modul IoT technologie Plug and Play, v tomto kurzu se dozvíte, jak převést vzorek termostatu pro zařízení C# na obecný modul.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
@@ -33,11 +33,11 @@ Pro dokončení tohoto kurzu ve Windows nainstalujte do svého místního prost�
 
 Pomocí nástroje Azure IoT Explorer přidejte do služby IoT Hub nové zařízení s názvem **Moje modul – zařízení** .
 
-Přidejte modul s názvem **My-Module** do **složky Moje modul – zařízení**:
+Přidejte modul s názvem **My-Module** do **složky Moje modul – zařízení** :
 
 1. V nástroji Azure IoT Explorer přejděte do zařízení **Moje modul – zařízení** .
 
-1. Vyberte možnost **Identita modulu**a pak vyberte **+ Přidat**.
+1. Vyberte možnost **Identita modulu** a pak vyberte **+ Přidat**.
 
 1. Jako název identity modulu zadejte **Moje modul** a vyberte **Uložit**.
 

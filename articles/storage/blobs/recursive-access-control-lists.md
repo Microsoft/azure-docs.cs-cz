@@ -9,12 +9,12 @@ ms.date: 11/03/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 38699f94ae446295332deb9529a0da80d6df4301
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d61942155e46792f95091957925523381a5a9cda
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356859"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422616"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Nastavení seznamů řízení přístupu (ACL) pro Azure Data Lake Storage Gen2 rekurzivně
 
@@ -22,11 +22,11 @@ Dědičnost seznamů ACL je již k dispozici pro nové podřízené položky, kt
 
 [Knihovny](#libraries)  |  [Ukázky](#code-samples)  |  [Osvědčené postupy](#best-practice-guidelines)  |  [Sdělte nám svůj názor](#provide-feedback)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-- Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
+- Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](create-data-lake-storage-account.md) pokynů.
 
 - Správná oprávnění ke spuštění rekurzivního procesu seznamu ACL. Správné oprávnění zahrnuje jednu z následujících možností: 
 
@@ -413,6 +413,8 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 > [!NOTE]
 > Pokud chcete nastavit **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
+Pokud chcete zobrazit příklad, který rekurzivně nastavuje seznam ACL v dávkách zadáním velikosti dávky, přečtěte si článek s odkazem [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) .
+
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Rekurzivní nastavení seznamu ACL pomocí příkazu [AZ Storage FS Access set-rerecursive](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) .
@@ -467,6 +469,8 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool is
 }
 
 ```
+
+Příklad, který v dávkách nastavuje rekurzivní seznamy ACL zadáním velikosti dávky, najdete v [ukázce](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0).NET.
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -570,6 +574,8 @@ def set_permission_recursively(is_default_scope):
      print(e)
 ```
 
+Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním velikosti dávky, najdete v [ukázce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)Pythonu.
+
 ---
 
 ## <a name="update-an-acl-recursively"></a>Rekurzivní aktualizace seznamu ACL
@@ -599,6 +605,8 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 
 > [!NOTE]
 > Pokud chcete aktualizovat **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+
+Pokud chcete zobrazit příklad, který provede rekurzivní aktualizaci seznamů ACL v dávkách zadáním velikosti dávky, přečtěte si článek Referenční dokumentace [Update-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/update-azdatalakegen2aclrecursive) .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -643,6 +651,8 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, boo
 
 }
 ```
+
+Pokud chcete zobrazit příklad, který provede rekurzivní aktualizaci seznamů ACL v dávkách zadáním velikosti dávky, přečtěte si [ukázku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0).NET.
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -709,6 +719,8 @@ def update_permission_recursively(is_default_scope):
      print(e)
 ```
 
+Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním velikosti dávky, najdete v [ukázce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)Pythonu.
+
 ---
 
 ## <a name="remove-acl-entries-recursively"></a>Rekurzivní odebrání položek seznamu ACL
@@ -734,6 +746,8 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 
 > [!NOTE]
 > Pokud chcete odebrat **výchozí** položku seznamu řízení přístupu (ACL), použijte při spuštění příkazu **set-AzDataLakeGen2ItemAclObject** parametr **-DefaultScope platná** . Příklad: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
+
+Příklad, který v dávkách odebírá rekurzivní seznamy ACL zadáním velikosti dávky, najdete v článku reference [Remove-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2aclrecursive) .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -775,6 +789,8 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isD
 
 }
 ```
+
+Pokud chcete zobrazit příklad, který v dávkách odebírá rekurzivní seznamy ACL zadáním velikosti dávky, přečtěte si [ukázku](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0).NET.
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -836,6 +852,8 @@ def remove_permission_recursively(is_default_scope):
      print(e)
 ```
 
+Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním velikosti dávky, najdete v [ukázce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)Pythonu.
+
 ---
 
 ## <a name="recover-from-failures"></a>Obnovit po selhání
@@ -859,6 +877,8 @@ $result = Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemNa
 $result
 
 ```
+
+Pokud chcete zobrazit příklad, který rekurzivně nastavuje seznam ACL v dávkách zadáním velikosti dávky, přečtěte si článek s odkazem [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -900,6 +920,8 @@ public async Task<string> ResumeAsync(DataLakeServiceClient serviceClient,
 
 }
 ```
+
+Příklad, který v dávkách nastavuje rekurzivní seznamy ACL zadáním velikosti dávky, najdete v [ukázce](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0).NET.
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -961,6 +983,8 @@ def resume_set_acl_recursive(continuation_token):
      return continuation_token
 ```
 
+Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním velikosti dávky, najdete v [ukázce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)Pythonu.
+
 ---
 
 Pokud chcete, aby byl proces dokončen bez přerušení pomocí chyb oprávnění, můžete zadat.
@@ -984,6 +1008,8 @@ echo "TotalFilesSuccessfulCount: `t`t`t$($result.TotalDirectoriesSuccessfulCount
 echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
 echo "FailedEntries:"$($result.FailedEntries | ft) 
 ```
+
+Pokud chcete zobrazit příklad, který rekurzivně nastavuje seznam ACL v dávkách zadáním velikosti dávky, přečtěte si článek s odkazem [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -1021,6 +1047,8 @@ public async Task ContinueOnFailureAsync(DataLakeServiceClient serviceClient,
         counters.FailedChangesCount.ToString());
 }
 ```
+
+Příklad, který v dávkách nastavuje rekurzivní seznamy ACL zadáním velikosti dávky, najdete v [ukázce](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0).NET.
 
 ### <a name="java"></a>[Java](#tab/java)
 
@@ -1080,9 +1108,11 @@ def continue_on_failure():
      print(e)
 ```
 
+Příklad, který zpracovává seznam ACL rekurzivně v dávkách zadáním velikosti dávky, najdete v [ukázce](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)Pythonu.
+
 ---
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 Tato část obsahuje odkazy na knihovny a ukázky kódu.
 

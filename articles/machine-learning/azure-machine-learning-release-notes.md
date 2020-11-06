@@ -9,18 +9,27 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: a60ca64113bb3f2700e9f521f65780dc8ffbcc54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 44afcf6883298eb36cd1219e6d60a8444a487412
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307743"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423007"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Poznámky k verzi Azure Machine Learning
 
 V tomto článku se dozvíte o Azure Machine Learning verzích.  Úplný referenční obsah sady SDK najdete na referenční stránce Azure Machine Learning [**hlavní sadě SDK pro Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) .
 
 Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde se dozvíte o známých chybách a alternativním řešení.
+
+## <a name="2020-11-05"></a>2020-11-05
+
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>Popisky dat pro segmentaci instancí imagí (anotace mnohoúhelníku) (Preview)
+
+Typ projektu segmentace instancí obrázku (poznámky mnohoúhelníku) v popiskech dat je nyní k dispozici, takže uživatelé mohou nakreslit a opatřit poznámkami mnohoúhelníky kolem obrysu objektů v obrázcích. Uživatelé budou moci přiřadit třídu a mnohoúhelník každému objektu, který je v obrázku v zájmu.
+
+Přečtěte si další informace o [označování segmentace instancí imagí](how-to-label-images.md).
+
 
 ## <a name="2020-10-26"></a>2020-10-26
 
@@ -48,7 +57,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Přidejte podporu pro vytvoření, výpis a získání plánu kanálu na základě jednoho koncového bodu kanálu.
     +  Vylepšená dokumentace k PipelineData.as_dataset s neplatným příkladem použití – použití PipelineData.as_dataset nesprávně bude nyní mít za následek vyValueExceptionení.
     + Poznámkový blok kanálů HyperDriveStep byl změněn tak, aby registroval nejlepší model v rámci PipelineStep přímo po spuštění HyperDriveStep.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + Poznámkový blok kanálů HyperDriveStep byl změněn tak, aby registroval nejlepší model v rámci PipelineStep přímo po spuštění HyperDriveStep.
   + **azureml-train-automl-client**
     + Opravili jsme problém, kdy get_output může vyvolávat XGBoostError.
@@ -152,7 +161,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšili dokumentaci metod PipelineOutputFileDataset.parse_ *.
     + Nový Kusto Step a Kusto Target Compute.
     + Poskytnutá vlastnost Swaggerurl pro entitu koncového bodu kanálu (kanálu) prostřednictvím tohoto uživatele může zobrazit definici schématu pro publikovaný koncový bod kanálu.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + Nový Kusto Step a Kusto Target Compute.
   + **azureml-telemetry**
     + Popis aktualizace stránky s přehledem balíčku pro PyPI.
@@ -254,7 +263,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
     + Vylepšená chybová zpráva při pokusu o stažení nebo připojení nesprávného typu datové sady.
   + **azureml-pipeline-core**
     + Opravila se chyba při deserializaci grafu kanálu, který obsahuje registrované datové sady.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + RScriptStep podporuje RSection z AzureML. Core. Environment.
     + Z veřejného rozhraní API se odebral parametr passthru_automl_config `AutoMLStep` a převedl ho na jenom interní parametr.
   + **azureml-train-automl-client**
@@ -507,7 +516,7 @@ Podívejte [se na seznam známých problémů](resource-known-issues.md) , kde s
   + **azureml-pipeline-core**
     + Tato změna umožňuje uživateli při volání modulu poskytnout volitelné RunConfig k moduleVersion. Publish_python_script.
     + Možnost povolit účet uzlu může být parametrem kanálu v ParallelRunStep v AzureML. Pipeline. Steps.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + Tato změna umožňuje uživateli při volání modulu poskytnout volitelné RunConfig k moduleVersion. Publish_python_script.
   + **azureml-train-automl-client**
     + Přidejte podporu pro různé jazyky pro modely Transformer pro obsáhlý Learning, jako je například BERT v automatizovaných ML.
@@ -1909,7 +1918,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
     + Přesuňte AzureML-contrib-opendatasets do AzureML-opendatasets.
     + Povolí registraci tříd otevřených datových sad do pracovního prostoru Azure Machine Learning a bezproblémové využití AML datových sad funkcí.
     + Výrazně Zvyšte výkon NoaaIsdWeather obohacení ve verzi mimo SPARK.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + Úložiště dat DBFS se teď podporuje pro vstupy a výstupy v DatabricksStep.
     + Aktualizovaná dokumentace pro Azure Batch krok s ohledem na vstupy a výstupy.
     + V AzureBatchStep se změnila *delete_batch_job_after_finish* výchozí hodnota na *true (pravda* ).
@@ -1981,7 +1990,7 @@ V době této verze se podporují následující prohlížeče: Chrome, Firefox,
   + **azureml-pipeline-core**
     + Parametr hash_paths pro všechny kroky kanálu je zastaralý a v budoucnu se odebere. Ve výchozím nastavení je obsah source_directory hash (s výjimkou souborů uvedených v `.amlignore` nebo `.gitignore` ).
     + Pokračující zlepšování modulu a ModuleStep pro podporu modulů výpočetních typů, přípravu na RunConfiguration integraci a další změny pro odemčení využití modulu specifického pro výpočet typu v kanálech.
-  + **azureml-pipeline-steps**
+  + **AzureML-Pipeline – kroky**
     + AzureBatchStep: Vylepšená dokumentace s ohledem na vstupy a výstupy.
     + AzureBatchStep: výchozí hodnota delete_batch_job_after_finish hodnotu true.
   + **azureml-train-core**

@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927511"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422514"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -19,7 +19,7 @@ Pokud se Azure Functions vývojářům v jazyce Java, zvažte prosím, že si ne
 
 | Začínáme | Koncepty| 
 | -- | -- |  
-| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
+| <ul><li>[Funkce jazyka Java pomocí Visual Studio Code](./create-first-function-vs-code-java.md)</li><li>[Funkce Java/Maven s terminálem nebo příkazovým řádkem](./create-first-function-cli-java.md)</li><li>[Funkce jazyka Java s použitím Gradle](functions-create-first-java-gradle.md)</li><li>[Funkce jazyka Java pomocí zatmění](functions-create-maven-eclipse.md)</li><li>[Funkce jazyka Java využívající IntelliJ nápad](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Základní informace o funkcích jazyka Java
 
@@ -55,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
+Pokud chcete začít s tímto Archetype, přečtěte si [rychlý Start Java](./create-first-function-cli-java.md).
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -153,7 +153,7 @@ Verzi Java, která cílí na Maven Archetype, můžete řídit pomocí `-DjavaVe
 
 Maven Archetype vygeneruje pom.xml, která cílí na zadanou verzi Java. Následující prvky v pom.xml označují verzi jazyka Java, která se má použít:
 
-| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Description |
+| Prvek |  Hodnota Java 8 | Hodnota Java 11 | Popis |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Verze jazyka Java, kterou používá modul Maven-Compiler-plugin. |
 | **`JavaVersion`** | 8 | 11 | Verze Java hostovaná aplikací Function App v Azure |
@@ -202,7 +202,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 

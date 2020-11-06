@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104865"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422803"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Vytvoření a publikování funkce v Azure pomocí Java a Gradle
 
 V tomto článku se dozvíte, jak sestavit a publikovat projekt funkce jazyka Java pro Azure Functions pomocí nástroje příkazového řádku Gradle. Jakmile budete hotovi, váš kód funkce se spustí v Azure v [plánu hostování bez serveru](functions-scale.md#consumption-plan) a spustí se požadavkem http. 
 
 > [!NOTE]
-> Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
+> Pokud Gradle není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](./create-first-function-cli-java.md), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [vs Code](./create-first-function-vs-code-java.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -127,7 +127,7 @@ Tím se v Azure vytvoří následující prostředky na základě hodnot v soubo
 + Skupina prostředků. Pojmenovaná se _zdrojem_ prostředků, kterou jste zadali.
 + Účet úložiště. Požadováno funkcemi. Název se vygeneruje náhodně na základě požadavků na název účtu úložiště.
 + App Service plán. Plán spotřeby bez serveru hostuje pro vaši aplikaci Function App v zadaném _appRegion_. Název se vygeneruje náhodně.
-+ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_a je připojen s náhodně generovaným číslem. 
++ Aplikace Function App Function App je jednotka pro nasazení a spouštění pro vaše funkce. Název je vaše _AppName_ a je připojen s náhodně generovaným číslem. 
 
 Nasazení také zabalí soubory projektu a nasadí je do nové aplikace Function App pomocí [nasazení zip](functions-deployment-technologies.md#zip-deploy)s povoleným režimem spuštění z balíčku.
 
@@ -142,7 +142,7 @@ Můžete získat adresu URL potřebnou k aktivaci vaší funkce s klíčem funkc
 
 1. Přejděte na [Azure Portal], přihlaste se **, do horní** části stránky zadejte _AppName_ vaší aplikace Function App a stiskněte klávesu ENTER.
  
-1. Ve vaší aplikaci Function App vyberte **funkce**, zvolte funkci a pak klikněte na **</> získat adresu URL funkce** v pravém horním rohu. 
+1. Ve vaší aplikaci Function App vyberte **funkce** , zvolte funkci a pak klikněte na **</> získat adresu URL funkce** v pravém horním rohu. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopírování adresy URL funkce z webu Azure Portal":::
 

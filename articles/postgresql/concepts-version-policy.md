@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/05/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b88d42071beba0ddd5a5627cefbe50229b4d27eb
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f92864cea4332157b0bf8b171a9d88b34f79a5ac
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294270"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422106"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Zásady správy verzí Azure Database for PostgreSQL
 
@@ -47,15 +47,15 @@ Následující tabulka uvádí podrobnosti o vyřazení hlavních verzí Postgre
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Funkce](https://www.postgresql.org/docs/11/release-11.html) | 24. července 2019  | 9. listopadu 2023
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Funkce](https://www.postgresql.org/docs/12/release-12.html) | Září 22, 2020  | 14. listopadu 2024
 
-## <a name="retired-postgresql-engine-versions-not-supported-in-azure-postgresql"></a>Vyřazené verze PostgreSQL Engine nejsou v Azure PostgreSQL podporované
+## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Vyřazené verze modulu PostgreSQL nejsou podporované v Azure Database for PostgreSQL
 
 Po datu vyřazení pro každou verzi databáze PostgreSQL můžete v případě, že nadále používáte vystaralou verzi, počítat s následujícími omezeními:
 - Vzhledem k tomu, že komunita neuvolňuje žádné další opravy chyb ani opravy zabezpečení, nebude Azure pro PostgreSQL opravovat vyřazený databázový stroj pro všechny chyby a problémy se zabezpečením nebo jinak přijímat bezpečnostní opatření s ohledem na vyřazený databázový stroj. V důsledku toho může docházet k chybám zabezpečení nebo jiným problémům. Azure ale bude i nadále provádět pravidelná údržba a opravy pro hostitele, operační systém, kontejnery a jakékoli další součásti související se službou.
-- Pokud dojde k potížím s podporou v souvislosti s databází PostgreSQL, nemůžeme vám poskytnout podporu. V takových případech budete muset upgradovat databázi, abychom vám mohli poskytnout veškerou podporu.
+- Pokud máte problémy s podporou, ke kterým může docházet v souvislosti s databází PostgreSQL, můžeme vám poskytnout podporu. V takových případech budete muset upgradovat databázi, abychom vám mohli poskytnout veškerou podporu.
 - Pro vyřazenou verzi nebudete moct vytvářet nové databázové servery. Budete ale moci provádět obnovování v čase a vytvářet repliky pro čtení pro vaše stávající servery.
 - Nové funkce služby vyvinuté v Azure Database for PostgreSQL můžou být dostupné jenom pro podporované verze databázového serveru.
 - Doba provozu SLA bude platit výhradně pro Azure Database for PostgreSQL problémy související se službou a nikoli na výpadky způsobené chybami souvisejícími s databázovým strojem.  
-- V případě závažné chyby zabezpečení databáze zjištěné v vyřazené verzi databáze může Azure zvolit automatickou aktualizaci databáze na vyšší verzi.
+- V extrémní události vážné hrozby pro službu, která je způsobená chybou zabezpečení databázového stroje PostgreSQL identifikovanou v vyřazené verzi databáze, se může Azure rozhodnout zastavit výpočetní uzel vašeho databázového serveru a zabezpečit službu. V takovém případě se může stát, že před přepnutím serveru do režimu online budete upozorněni na upgrade serveru.
 
 ## <a name="postgresql-version-syntax"></a>Syntaxe verze PostgreSQL
 Před verzí PostgreSQL verze 10 se [zásady správy verzí PostgreSQL](https://www.postgresql.org/support/versioning/) považují za upgradované na _hlavní verzi_ , aby se zvýšila první _nebo_ druhé číslo. Například 9,5 až 9,6 byl považován za upgrade _Hlavní_ verze. Od verze 10 se jako upgrade hlavní verze považuje jenom změna v prvním čísle. Například 10,0 až 10,1 je _dílčí_ upgrade pro vydání. Upgrade _Hlavní_ verze je od verze 10 do 11.

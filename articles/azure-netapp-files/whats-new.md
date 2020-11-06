@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 56ae3ac1331ed054a1fb808ae06e990b67c06bae
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932409"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421698"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Co je nového v Azure NetApp Files
 
 Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn nejnovějších nových funkcí a vylepšení. 
+
+## <a name="november-2020"></a>Listopad 2020
+
+* [Obnovení snímku](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+
+    Funkce obnovení snímku umožňuje rychle vrátit svazek do stavu, ve kterém byl proveden určitý snímek. Ve většině případů je vrácení svazku mnohem rychlejší než obnovení jednotlivých souborů ze snímku do aktivního systému souborů. V porovnání s obnovením snímku na nový svazek je také více místa.
 
 ## <a name="september-2020"></a>Září 2020
 
@@ -46,10 +52,10 @@ Azure NetApp Files se pravidelně aktualizují. Tento článek obsahuje souhrn n
 * Nové [metriky](azure-netapp-files-metrics.md):   
 
     * Nové metriky svazků: 
-        * *Velikost přiděleného svazku*: zřízená velikost svazku
+        * *Velikost přiděleného svazku* : zřízená velikost svazku
     * Metriky nového fondu: 
-        * *Velikost přiděleného fondu*: zřízená velikost fondu 
-        * *Celková velikost snímku pro fond*: součet velikosti snímku ze všech svazků ve fondu
+        * *Velikost přiděleného fondu* : zřízená velikost fondu 
+        * *Celková velikost snímku pro fond* : součet velikosti snímku ze všech svazků ve fondu
 
 ## <a name="july-2020"></a>Červenec 2020
 

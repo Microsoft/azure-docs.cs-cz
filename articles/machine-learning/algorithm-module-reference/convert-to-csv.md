@@ -1,7 +1,7 @@
 ---
 title: 'Převést na sdílený svazek clusteru: odkaz na modul'
 titleSuffix: Azure Machine Learning
-description: Naučte se používat modul převést do sdíleného svazku clusteru v Azure Machine Learning k převodu datové sady do formátu CSV, který se dá stáhnout, exportovat nebo sdílet s moduly R nebo Python Script.
+description: Naučte se používat modul převést do sdíleného svazku clusteru v Návrháři Azure Machine Learning k převodu datové sady na soubor CSV, který se dá později znovu použít.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 3b7c781717952765941acd4ea4aa47593d4b8a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898784"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421919"
 ---
 # <a name="convert-to-csv-module"></a>Převést na modul CSV
 
@@ -46,11 +46,11 @@ Když datovou sadu převedete na CSV, uloží se sdílený svazek clusteru do pr
 ### <a name="results"></a>Výsledky
   
 
-Vyberte kartu **výstupy** v pravém panelu **převést na sdílený svazek clusteru**a v části **výstupy portů**vyberte jednu z těchto ikon.  
+Vyberte kartu **výstupy** v pravém panelu **převést na sdílený svazek clusteru** a v části **výstupy portů** vyberte jednu z těchto ikon.  
 
-+ **Registrovat datovou sadu**: vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
++ **Registrovat datovou sadu** : vyberte ikonu a uložte soubor CSV zpátky do pracovního prostoru Azure ml jako samostatnou datovou sadu. Datovou sadu můžete najít jako modul ve stromu modulu pod částí **Moje datové sady** .
 
- + **Zobrazit výstup**: vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
+ + **Zobrazit výstup** : vyberte ikonu oka a postupujte podle pokynů pro procházení složky **Results_dataset** a stáhněte data.csv soubor.
 
 ## <a name="next-steps"></a>Další kroky
 

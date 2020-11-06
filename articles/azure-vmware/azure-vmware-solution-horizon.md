@@ -3,12 +3,12 @@ title: Nasazení horizontu v řešení VMware Azure
 description: Přečtěte si, jak nasadit VMware Horizon do řešení Azure VMware.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321349"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423098"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Nasazení horizontu v řešení VMware Azure 
 
@@ -127,6 +127,18 @@ Stejné zásady platí i v případě, že ve stejné oblasti nasadíte dvě lus
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Velikost hostitelů řešení Azure VMware pro nasazení v horizontu 
 
 Metodologie změny velikosti v hostiteli běžícím v řešení Azure VMware je jednodušší než v místním prostředí.  Důvodem je to, že hostitel řešení Azure VMware je standardizovaný.  Přesná velikost hostitele pomáhá určit počet hostitelů potřebných k podpoře požadavků vaší infrastruktury virtuálních klientských počítačů.  Je střední pro určení nákladů na Desktop.
+
+### <a name="sizing-tables"></a>Změna velikosti tabulek
+
+V tabulkách jsou uvedeny běžné úlohy pro přihlašovací úlohy a úlohy pracovního procesu VSI pro přihlášení a pracovní procesy Power Worker.
+
+#### <a name="knowledge-worker-workloads"></a>Pracovní procesy ve znalostní bázi
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Tabulka běžných profilů VDI pro úlohy VSI ve znalostní bázi pro přihlášení k programu VMware Horizon" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Pracovní procesy Power Worker
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabulka běžných profilů VDI pro služby VMware Horizon pro přihlašovací úlohy Power Worker VSI" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Instance hostitele řešení Azure VMware
 

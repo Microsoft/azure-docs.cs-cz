@@ -1,76 +1,86 @@
 ---
-title: Ladění rozhraní API s využitím trasování požadavků ve službě Azure API Management | Microsoft Docs
-description: Pomocí kroků v tomto kurzu se naučíte zkoumat kroky zpracování ve službě Azure API Management.
+title: Kurz – ladění rozhraní API v Azure API Management pomocí trasování požadavků
+description: Postupujte podle kroků v tomto kurzu a Povolte trasování a kontrolu kroků zpracování požadavků v Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a101de408b506fb5375b5f16c1deff4f67532d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75768519"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421979"
 ---
-# <a name="debug-your-apis-using-request-tracing"></a>Ladění rozhraní API s využitím trasování požadavků
+# <a name="tutorial-debug-your-apis-using-request-tracing"></a>Kurz: ladění rozhraní API pomocí trasování požadavků
 
-Tento kurz popisuje postup zkoumání zpracování požadavků, který vám pomůže s laděním a řešením potíží s rozhraním API. 
+V tomto kurzu se dozvíte, jak kontrolovat (sledovat) zpracování žádostí ve službě Azure API Management, které vám pomůžou ladit a řešit potíže s rozhraním API. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Trasování volání
+> * Trasovat ukázkové volání
+> * Kontrola kroků zpracování žádostí
 
-![Nástroj pro inspekci rozhraní API](media/api-management-howto-api-inspector/api-inspector001.PNG)
+:::image type="content" source="media/api-management-howto-api-inspector/api-inspector-001.png" alt-text="Nástroj pro inspekci rozhraní API":::
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
-+ Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
++ Dokončete následující kurz: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
+
+## <a name="verify-allow-tracing-setting"></a>Ověřit nastavení povolení trasování 
+
+Musí být povolené nastavení **Povolit trasování** pro předplatné používané pro vaše rozhraní API. Pokud používáte integrované předplatné s přístupem All-Access, je ve výchozím nastavení povoleno. Pokud chcete na portálu ověřit, přejděte na instanci API Management a vyberte **předplatná**.
+
+   :::image type="content" source="media/api-management-howto-api-inspector/allow-tracing.png" alt-text="Povolení trasování pro odběr":::
 
 ## <a name="trace-a-call"></a>Trasování volání
 
-![Trasování rozhraní API](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
-
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)a přejděte k instanci API Management.
 1. Vyberte **Rozhraní API**.
-2. V seznamu rozhraní API klikněte na **Demo Conference API**.
-3. Přepněte na kartu **Test**.
-4. Vyberte operaci **GetSpeakers**.
-5. Nezapomeňte zahrnout hlavičku HTTP **Ocp-Apim-Trace** s hodnotou nastavenou na **true**.
+1. V seznamu rozhraní API vyberte  **ukázková konferenční konference API** .
+1. Vyberte kartu **Test**.
+1. Vyberte operaci **GetSpeakers**.
+1. Potvrďte, že Hlavička požadavku HTTP zahrnuje **OCP-admin-trace: true** a platnou hodnotu pro **OCP-admin-Subscription-Key**. Pokud není, vyberte **+ Přidat hlavičku** a přidejte záhlaví.
+1. Vyberte **Odeslat** pro volání rozhraní API.
 
-   > [!NOTE]
-   > * Pokud nedojde k automatickému doplnění hodnoty Ocp-Apim-Subscription-Key, můžete ji získat tak, že přejdete na portál pro vývojáře a zveřejníte klíče na stránce profilu.
-   > * Chcete-li získat trasování při použití hlavičky OCP-APIM-Trace protokolu HTTP, musí být povoleno nastavení **Povolit trasování** pro klíč předplatného. Chcete-li nakonfigurovat nastavení **Povolení trasování** , v části **API Management** v nabídce vlevo vyberte možnost **předplatná**.
-   >   ![Povolení trasování v podokně předplatná API Management](media/api-management-howto-api-inspector/allowtracing.png)
+  :::image type="content" source="media/api-management-howto-api-inspector/06-debug-your-apis-01-trace-call.png" alt-text="Konfigurace trasování rozhraní API":::
 
-6. Kliknutím na **Odeslat** vytvořte volání rozhraní API. 
-7. Počkejte na dokončení volání. 
-8. V **konzole rozhraní API** přejděte na kartu **Trasování**. Kliknutím na některý z následujících odkazů můžete přejít k podrobným informacím o trasování: **příchozí**, **back-end**, **odchozí**.
+> [!TIP]
+> Pokud se **OCP-APIM-Subscription-Key** v požadavku HTTP nevyplní automaticky, můžete ho načíst na portálu. Vyberte **předplatná** a otevřete místní nabídku ( **...** ) pro předplatného. Vyberte **Zobrazit/skrýt klíče**. V případě potřeby můžete také znovu vygenerovat klíče. Pak do záhlaví přidejte klíč.
 
-    V části **příchozí** se zobrazí původní požadavek, který služba API Management přijala od volajícího, a všechny zásady aplikované na požadavek, včetně zásad omezení četnosti a nastavení hlaviček, které jsme přidali v kroku 2:
+## <a name="review-trace-information"></a>Kontrola informací o trasování
 
-    V části **back-end** se zobrazí požadavky, které služba API Management odeslala do back-endu rozhraní API, a přijaté odpovědi.
+1. Po dokončení volání přejdete na kartu **trasování** v **odpovědi HTTP**.
+1. Vyberte některý z následujících odkazů pro přechod na podrobné informace o trasování: **příchozí** , **back-end** , **odchozí**.
 
-    V části **odchozí** se zobrazí všechny zásady aplikované na odpověď před jejím odesláním volajícímu.
+     :::image type="content" source="media/api-management-howto-api-inspector/response-trace.png" alt-text="Zkontrolovat trasování odpovědi":::
+
+    * **Příchozí** – zobrazí původní požadavek API Management přijatý od volajícího a zásady použité pro požadavek. Pokud jste například přidali zásady v [kurzu: Transformujte a Chraňte své rozhraní API](transform-api.md), zobrazí se tady.
+
+    * **Back-end** – zobrazuje požadavky API Management odeslané do back-endu rozhraní API a odpověď, kterou přijal.
+
+    * **Odchozí** – zobrazí zásady použité pro odpověď před odesláním zpět volajícímu.
 
     > [!TIP]
     > Každý krok také ukazuje uplynulý čas od přijetí požadavku službou API Management.
 
+1. Na kartě **zpráva** zobrazuje záhlaví **OCP-APIM-Trace-Location** umístění dat trasování uložených ve službě Azure Blob Storage. V případě potřeby pro načtení trasování přejít do tohoto umístění.
+
+     :::image type="content" source="media/api-management-howto-api-inspector/response-message.png" alt-text="Umístění trasování v Azure Storage":::
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Trasování volání
+> * Trasovat ukázkové volání
+> * Kontrola kroků zpracování žádostí
 
 Přejděte k dalšímu kurzu:
 

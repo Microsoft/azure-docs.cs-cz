@@ -1,7 +1,7 @@
 ---
 title: Co je nového v Azure Active Directory Správa aplikací
 description: Nová a aktualizovaná dokumentace pro Azure Active Directory správu aplikací.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428017"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422599"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Správa aplikací: co je nového
 
 Vítá vás novinky v Azure Active Directory dokumentaci správy aplikací. V tomto článku jsou uvedené nové dokumenty, které se přidaly, a ty, které měly v posledních třech měsících významné aktualizace. Další informace o tom, co je nového ve službě správy aplikací, najdete v tématu [novinky v Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="new-articles"></a>Nové články
+
+- [Azure Active Directory Správa aplikací: co je nového](whats-new-docs.md)
+- [Pochopení jednotného přihlašování založeného na OIDC](configure-oidc-single-sign-on.md)
+- [Konfigurace klasifikací oprávnění](configure-permission-classifications.md)
+- [Konfigurace souhlasu vlastníka skupiny u aplikací, které přistupují k datům skupiny](configure-user-consent-groups.md)
+- [Správa zásad souhlasu pro aplikace](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>Aktualizované články
+
+- [Problémy s přihlašováním k aplikacím nakonfigurovaným pomocí jednotného přihlašování založené na SAML](application-sign-in-problem-federated-sso-gallery.md)
+- [Potíže při instalaci konektoru agenta proxy aplikací](application-proxy-connector-installation-problem.md)
+- [Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>Září 2020
 

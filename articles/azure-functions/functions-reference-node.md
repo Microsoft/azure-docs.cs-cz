@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 5b9ffdec83fb613b7df0b5a3227ca66c55e54fe9
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043102"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422548"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -20,7 +20,7 @@ Jako Express.js, Node.js nebo vývojář JavaScriptu, pokud jste Azure Functions
 
 | Začínáme | Koncepty| Učení s asistencí |
 | -- | -- | -- | 
-| <ul><li>[Node.js funkce pomocí Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[Node.js funkce pomocí Visual Studio Code](./create-first-function-vs-code-node.md)</li><li>[Node.js funkce pomocí terminálu/příkazového řádku](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Příručka pro vývojáře](functions-reference.md)</li><li>[Možnosti hostování](functions-scale.md)</li><li>[Funkce TypeScriptu](#typescript)</li><li>[Požadavky na výkon &nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[Vytváření bezserverových aplikací](/learn/paths/create-serverless-applications/)</li><li>[Refaktoring rozhraní API bez serveru Node.js a Express](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>Základy funkcí JavaScriptu
 
@@ -107,13 +107,13 @@ V jazyce JavaScript jsou [vazby](functions-triggers-bindings.md) konfigurovány 
 
 ### <a name="inputs"></a>Vstupy
 Vstup je rozdělen do dvou kategorií v Azure Functions: jeden je vstup triggeru a druhý je další vstup. Trigger a další vstupní vazby (vazby `direction === "in"` ) mohou být čteny funkcí třemi způsoby:
- - **_[Doporučeno]_ Jako parametry předané do vaší funkce.** Jsou předány do funkce ve stejném pořadí, v jakém jsou definovány v *function.js* . `name`Vlastnost definovaná v *function.js* se nemusí shodovat s názvem vašeho parametru, i když by měla být.
+ - **_[Doporučeno]_ Jako parametry předané do vaší funkce.** Jsou předány do funkce ve stejném pořadí, v jakém jsou definovány v *function.js*. `name`Vlastnost definovaná v *function.js* se nemusí shodovat s názvem vašeho parametru, i když by měla být.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Jako členové [`context.bindings`](#contextbindings-property) objektu.** Každý člen je pojmenován `name` vlastností definovanými v *function.js* .
+ - **Jako členové [`context.bindings`](#contextbindings-property) objektu.** Každý člen je pojmenován `name` vlastností definovanými v *function.js*.
  
    ```javascript
    module.exports = async function(context) { 
@@ -138,7 +138,7 @@ Výstupy (vazby `direction === "out"` ) mohou být do funkce zapisovány pomocí
 
 Do výstupních vazeb můžete přiřadit data jedním z následujících způsobů (tyto metody nekombinovat):
 
-- **_[Doporučeno pro více výstupů]_ Vrácení objektu.** Pokud používáte funkci vracející asynchronní nebo příslib, můžete vrátit objekt s přiřazenými výstupními daty. V následujícím příkladu jsou výstupní vazby pojmenovány "httpResponse" a "queueOutput" v *function.jsna* .
+- **_[Doporučeno pro více výstupů]_ Vrácení objektu.** Pokud používáte funkci vracející asynchronní nebo příslib, můžete vrátit objekt s přiřazenými výstupními daty. V následujícím příkladu jsou výstupní vazby pojmenovány "httpResponse" a "queueOutput" v *function.jsna*.
 
   ```javascript
   module.exports = async function(context) {
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 Kontext předaný do funkce zpřístupňuje `executionContext` vlastnost, což je objekt s následujícími vlastnostmi:
 
-| Název vlastnosti  | Typ  | Description |
+| Název vlastnosti  | Typ  | Popis |
 |---------|---------|---------|
 | `invocationId` | Řetězec | Poskytuje jedinečný identifikátor pro konkrétní vyvolání funkce. |
 | `functionName` | Řetězec | Poskytuje název běžící funkce. |
@@ -358,7 +358,7 @@ Chcete-li nastavit prahovou hodnotu pro všechna trasování zapsaná do protoko
 }  
 ```
 
-Hodnoty **consoleLevel** odpovídají názvům `context.log` metod. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** na _off_ . Další informace najdete v tématu [host.jsv odkazu v1. x](functions-host-json-v1.md).
+Hodnoty **consoleLevel** odpovídají názvům `context.log` metod. Chcete-li zakázat veškeré protokolování trasování do konzoly, nastavte **consoleLevel** na _off_. Další informace najdete v tématu [host.jsv odkazu v1. x](functions-host-json-v1.md).
 
 ---
 
@@ -545,12 +545,12 @@ Existují dva způsoby, jak nainstalovat balíčky do Function App:
 ### <a name="using-kudu"></a>Použití Kudu
 1. Přejděte na `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klikněte na **ladit konzolu**  >  **cmd** .
+2. Klikněte na **ladit konzolu**  >  **cmd**.
 
 3. Přejít na `D:\home\site\wwwroot` a poté přetáhněte package.jsdo souboru do složky **wwwroot** v horní polovině stránky.  
     Soubory můžete do aplikace Function App nahrávat i jiným způsobem. Další informace najdete v tématu [Postup aktualizace souborů aplikace Function App](functions-reference.md#fileupdate). 
 
-4. Po nahrání package.jsv souboru spusťte `npm install` příkaz v **konzole vzdáleného spuštění Kudu** .  
+4. Po nahrání package.jsv souboru spusťte `npm install` příkaz v **konzole vzdáleného spuštění Kudu**.  
     Tato akce stáhne balíčky uvedené v package.jsv souboru a restartuje aplikaci Function App.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
@@ -651,7 +651,7 @@ Ve verzi 1. x nebude nastavení `languageWorkers:node:arguments` fungovat. Port 
 
 ## <a name="typescript"></a>TypeScript
 
-Když cílíte na verzi 2. x modulu runtime Functions, [Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md) a [Azure Functions Core Tools](functions-run-local.md) vám umožní vytvářet aplikace funkcí pomocí šablony, která podporuje projekty aplikace funkcí TypeScript. Šablona generuje `package.json` a vytvoří `tsconfig.json` soubory projektu, které usnadňují přeorientaci, spouštění a publikování funkcí jazyka JavaScript z kódu TypeScript pomocí těchto nástrojů.
+Když cílíte na verzi 2. x modulu runtime Functions, [Azure Functions pro Visual Studio Code](./create-first-function-cli-typescript.md) a [Azure Functions Core Tools](functions-run-local.md) vám umožní vytvářet aplikace funkcí pomocí šablony, která podporuje projekty aplikace funkcí TypeScript. Šablona generuje `package.json` a vytvoří `tsconfig.json` soubory projektu, které usnadňují přeorientaci, spouštění a publikování funkcí jazyka JavaScript z kódu TypeScript pomocí těchto nástrojů.
 
 Vygenerovaný `.funcignore` soubor se používá k určení, které soubory jsou vyloučeny při publikování projektu do Azure.  
 

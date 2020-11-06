@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 796aca02e6f70da8f5b94f6bbdbd2fd1d535bd77
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108469"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422531"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -20,7 +20,7 @@ Funkce PowerShellu Azure (Function) je reprezentovaná jako PowerShellový skrip
 
 Podobně jako u jiných druhů funkcí mají funkce skriptu PowerShellu parametry, které odpovídají názvům všech vstupních vazeb definovaných v `function.json` souboru. `TriggerMetadata`Předává se i parametr, který obsahuje další informace o triggeru, který tuto funkci spustil.
 
-V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) .
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](./create-first-function-vs-code-powershell.md) .
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -53,7 +53,7 @@ V kořenovém adresáři projektu je k dispozici sdílený [`host.json`](functio
 
 Některé vazby vyžadují přítomnost `extensions.csproj` souboru. Rozšíření vazby, které vyžaduje [verze 2. x a novější verze](functions-versions.md) modulu runtime Functions, jsou v souboru definovány se `extensions.csproj` skutečnými soubory knihoven ve `bin` složce. Při vývoji místně je nutné [zaregistrovat rozšíření vazby](functions-bindings-register.md#extension-bundles). Při vývoji funkcí v Azure Portal se tato registrace provede za vás.
 
-Ve funkcích aplikace PowerShell Functions můžete volitelně mít, `profile.ps1` která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít znovu spustit](#cold-start)*). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
+Ve funkcích aplikace PowerShell Functions můžete volitelně mít, `profile.ps1` která se spustí, když se spustí aplikace Function App (jinak ví, jak *[začít znovu spustit](#cold-start)* ). Další informace najdete v tématu [profil PowerShellu](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definování skriptu PowerShellu jako funkce
 
@@ -233,7 +233,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 
 | Úroveň protokolování funkcí | Rutina protokolování |
 | ------------- | -------------- |
-| Chyba | **`Write-Error`** |
+| Chybová | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
 | Ladění | **`Write-Debug`** |
@@ -418,7 +418,7 @@ Pomocí následujících kroků můžete změnit verzi prostředí PowerShell, k
 
 1. V [Azure Portal](https://portal.azure.com)přejděte do aplikace Function App.
 
-1. V části **Nastavení**vyberte **Konfigurace**. Na kartě **Obecné nastavení** vyhledejte **verzi prostředí PowerShell**. 
+1. V části **Nastavení** vyberte **Konfigurace**. Na kartě **Obecné nastavení** vyhledejte **verzi prostředí PowerShell**. 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="Zvolit verzi prostředí PowerShell, kterou používá aplikace Function App"::: 
 
@@ -525,7 +525,7 @@ PowerShell Language Worker obvykle používá několik modulů. Tyto moduly jsou
 Aktuální seznam modulů je následující:
 
 * [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): modul používaný pro práci s archivy, jako `.zip` je, `.nupkg` a další.
-* **ThreadJob**: implementace rozhraní API úlohy PowerShellu založené na vláknech.
+* **ThreadJob** : implementace rozhraní API úlohy PowerShellu založené na vláknech.
 
 Ve výchozím nastavení funkce používají nejnovější verzi těchto modulů. Pokud chcete použít konkrétní verzi modulu, vložte tuto specifickou verzi do `Modules` složky aplikace Function App.
 

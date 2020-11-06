@@ -1,19 +1,19 @@
 ---
-title: Připojení ukázky IoT technologie Plug and Play Node.js kódu zařízení do služby Azure IoT Hub | Microsoft Docs
-description: Pomocí Node.js můžete sestavovat a spouštět ukázkový kód zařízení technologie Plug and Play IoT, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Rychlý Start – připojení ukázky IoT technologie Plug and Play Node.js kódu zařízení do služby Azure IoT Hub | Microsoft Docs
+description: Rychlý Start – použití Node.js k sestavení a spuštění služby IoT technologie Plug and Play ukázkový kód zařízení, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/10/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2342577fdd7e42f4b21d1f47348c39e3ed4a46e3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 24f6cc1e9656957d6894ecb6b7c3e0476b233cf6
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747247"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421579"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-nodejs"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play zařízení k IoT Hub (Node.js)
 

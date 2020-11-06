@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: e90bdcfe22828d85ebeeb74314617fc6eac81385
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094816"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421749"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Rychlý Start: nasazení a zprovoznění snímače
 
@@ -39,7 +39,7 @@ Senzory připojování vám umožní:
 |------ | ----------- |
 | **Definovat název snímače** | Pojmenujte senzor, který se chystáte připojit, a přidružte ho k IoT Hub nebo předplatnému.<br /><br />Další informace najdete v tématu **senzory zprovoznění** .|
 |**Zvolit předplatné a počet potvrzených zařízení**|Vyberte předplatné a počet zařízení zahrnutých v rámci předplatného. Zadejte číslo v přírůstcích po 1000.|
-| **Definování režimu správy senzorů** | Určete, kde se zobrazí Asset, výstraha a další informace zjištěné senzorem. To se určuje na základě vámi definovaného **režimu správy senzorů** .<br /><br />**Místně spravovaný režim**: informace zjištěné senzorem se zobrazí v konzole senzorů. Informace o detekci se také sdílí s místní konzolou pro správu, pokud je senzor připojený k němu.<br /><br />**Režim Cloud Managed**: informace zjištěné senzorem se zobrazí v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím IoT Hub a mohou být sdíleny s ostatními službami Azure, například pomocí Azure Sentinel.<br />Další informace najdete v tématu **senzor zprovoznění** . |
+| **Definování režimu správy senzorů** | Určete, kde se zobrazí Asset, výstraha a další informace zjištěné senzorem. To se určuje na základě vámi definovaného **režimu správy senzorů** .<br /><br />**Místně spravovaný režim** : informace zjištěné senzorem se zobrazí v konzole senzorů. Informace o detekci se také sdílí s místní konzolou pro správu, pokud je senzor připojený k němu.<br /><br />**Režim Cloud Managed** : informace zjištěné senzorem se zobrazí v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím IoT Hub a mohou být sdíleny s ostatními službami Azure, například pomocí Azure Sentinel.<br />Další informace najdete v tématu **senzor zprovoznění** . |
 | **Získání aktivačního souboru senzoru** | Pro **místně spravované** senzory se ke správě autorizovaných dob aktivace senzoru používá aktivační soubor.<br /><br />Pro **cloudy spravované** senzory se jako propojení mezi senzorem a IoT Hub používá aktivační soubor. Další informace najdete v tématu **senzory zprovoznění**. |
 | **Nahrání aktivačního souboru na senzor** | Aktivační soubory musí být nahrány do vašich podnikových senzorů. Monitorování sítě a přístup k funkcím konzoly snímače nebudou k dispozici, dokud nebude odeslán aktivační soubor. Další informace najdete v tématu **nahrání aktivačních souborů snímače**. |
 | **Aktualizovat parametry sítě senzorů před aktivací** | Parametry aktualizace definované při instalaci senzoru Další informace najdete v tématu **Chyba. Zdroj odkazu nebyl nalezen**.|
@@ -57,11 +57,11 @@ Senzory připojování vám umožní:
 
 4. Vyberte možnost získání senzoru.
 
-   ![Zobrazení síťového sektoru Azure Defenderu pro IoT](media/updates/image6.png)
+   ![Zobrazení síťového snímače Azure Defenderu pro IoT](media/updates/image6.png)
 
-  - **Koupit předkonfigurovaný senzor**: Společnost Microsoft a šipka mají partnerství, aby poskytovaly předem nakonfigurované senzory. Chcete-li zakoupit předkonfigurovaný senzor, šipka kontaktu na adrese: <hardware.sales@arrow.com> . Senzor se doručí do vašeho zařízení. Je nainstalovaná nejnovější verze.
+  - **Koupit předkonfigurovaný senzor** : Společnost Microsoft a šipka mají partnerství, aby poskytovaly předem nakonfigurované senzory. Chcete-li zakoupit předkonfigurovaný senzor, šipka kontaktu na adrese: <hardware.sales@arrow.com> . Senzor se doručí do vašeho zařízení. Je nainstalovaná nejnovější verze.
 
-  - **Přineste si vlastní zařízení (instalace ISO)**: řešení běží na certifikovaných zařízeních. Při nákupu certifikovaného zařízení použijte [Průvodce specifikacemi hardwaru pro Azure Defender pro IoT](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) .
+  - **Přineste si vlastní zařízení (instalace ISO)** : řešení běží na certifikovaných zařízeních. Při nákupu certifikovaného zařízení použijte [Průvodce specifikacemi hardwaru pro Azure Defender pro IoT](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) .
 
     - V nabídce **vybrat verzi** vyberte verzi.
 

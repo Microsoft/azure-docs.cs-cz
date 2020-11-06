@@ -1,19 +1,19 @@
 ---
-title: Připojení ukázky IoT technologie Plug and Play Node.js kódu zařízení komponenty do IoT Hub | Microsoft Docs
-description: Sestavte a spouštějte ukázkový technologie Plug and Play IoT Node.js kód zařízení, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
+title: Kurz – připojení ukázkového technologie Plug and Play pro IoT Node.js kódu zařízení do Azure IoT Hub | Microsoft Docs
+description: Kurz – sestavování a spouštění technologie Plug and Play IoT ukázka Node.js kódu zařízení, který používá více komponent a připojuje se ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte nástroj Azure IoT Explorer.
 author: olivakar
 ms.author: olkar
 ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-js
+ms.openlocfilehash: 70fa10f5319de072ee8ea7dad4e73c58d4bdeede
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736051"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421413"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>Kurz: připojení ukázkové aplikace IoT technologie Plug and Play více aplikací zařízení k IoT Hub (Node.js)
 
@@ -105,7 +105,7 @@ Otevřete soubor *pnpTemperatureController.js* v editoru kódu dle vašeho výb�
 
   - Nástroj používá `desiredPropertyPatchListener` k naslouchání aktualizacím vlastností.
 
-  - Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q** .
+  - Zakáže všechny naslouchací procesy a úlohy a ukončí smyčku po stisknutí **q** nebo **q**.
 
 [!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
 

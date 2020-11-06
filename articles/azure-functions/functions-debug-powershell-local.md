@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 0c37c8f108e9bcbb827c05242d8863994dfc64cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89177087"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422956"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Místní ladění Azure Functions PowerShellu
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Tato aplikace Function App je podobná té, kterou dostanete po dokončení [rychlého startu PowerShellu](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
+Tato aplikace Function App je podobná té, kterou dostanete po dokončení [rychlého startu PowerShellu](./create-first-function-vs-code-powershell.md).
 
 Kód funkce `run.ps1` vypadá podobně jako tento skript:
 
@@ -95,10 +95,10 @@ Ladění začíná v `if` příkazu.
 Chcete-li ladit funkce prostředí PowerShell v Visual Studio Code, je nutné mít nainstalované následující:
 
 * [Rozšíření PowerShellu pro Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
-* [Rozšíření Azure Functions pro Visual Studio Code](functions-create-first-function-vs-code.md)
+* [Rozšíření Azure Functions pro Visual Studio Code](./create-first-function-cli-powershell.md)
 * [PowerShell Core 6,2 nebo vyšší](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Po instalaci těchto závislostí Načtěte existující projekt funkcí PowerShellu nebo [vytvořte svůj první projekt funkcí PowerShellu](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
+Po instalaci těchto závislostí Načtěte existující projekt funkcí PowerShellu nebo [vytvořte svůj první projekt funkcí PowerShellu](./create-first-function-vs-code-powershell.md).
 
 >[!NOTE]
 > Pokud váš projekt nemá potřebné konfigurační soubory, budete vyzváni k jeho přidání.
@@ -111,7 +111,7 @@ PowerShell Core se nainstaluje souběžně s Windows PowerShellem. Nastavte Powe
 
 1. Vyberte **PowerShell: Zobrazit nabídku relace**.
 
-1. Pokud **aktuální relace** není **PowerShell Core 6**, vyberte **Přepnout na: PowerShell Core 6**.
+1. Pokud **aktuální relace** není **PowerShell Core 6** , vyberte **Přepnout na: PowerShell Core 6**.
 
 Když máte otevřený soubor PowerShellu, zobrazí se verze zobrazená zeleně v pravém dolním rohu okna. Výběrem tohoto textu se zobrazí také nabídka relace. Další informace najdete v tématu [Výběr verze prostředí PowerShell, která se má použít s příponou](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
