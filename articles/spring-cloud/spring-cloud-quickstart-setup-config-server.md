@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2f6051277f1ddb89e67ce8013c78571a2a7314b7
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 55e47b09ac4a6256a125a75c8a0f856e867e7c0e
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089124"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337767"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Rychlý Start: nastavení serveru pro konfiguraci jarního cloudu Azure
 
@@ -21,7 +21,7 @@ Azure jarní cloudový konfigurační server je centralizovaná služba Konfigur
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete předchozí rychlý Start v této sérii: [zřízení Azure jaře Cloud Service](spring-cloud-quickstart-provision-service-instance.md).
 
@@ -40,7 +40,7 @@ Tento příkaz oznamuje konfiguračnímu serveru, aby vyhledal konfigurační da
 ::: zone pivot="programming-language-java"
 Azure pružinový konfigurační server pro Cloud je centralizovaná služba Konfigurace distribuovaných systémů. Používá připojenou vrstvu úložiště, která aktuálně podporuje místní úložiště, Git a podverzi.  Nastavte konfigurační server pro nasazení aplikací mikroslužeb do jarního cloudu Azure.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalovat JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Registrace předplatného Azure](https://azure.microsoft.com/free/)
@@ -70,9 +70,33 @@ Nastavte konfiguraci – server s umístěním úložiště Git pro projekt:
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
-
 ---
 ::: zone-end
+
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Řešení potíží s konfiguračním serverem cloudu Azure na jaře
+
+Následující postup vysvětluje, jak řešit potíže s nastavením konfiguračního serveru.
+
+1. V Azure Portal přejdete na stránku **Přehled** služby a vyberte **protokoly**. 
+1. Vyberte **dotazy** a **Zobrazte protokoly aplikací, které obsahují "Error" nebo "Exception" terms**. 
+1. Klikněte na **Spustit**. 
+1. Pokud v protokolech zjistíte chybu **Java. lang. illegalStateException** , znamená to, že jarní cloudová služba nemůže najít vlastnosti z konfiguračního serveru.
+
+    [![Spustit dotaz na ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) portálu ASC](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+
+1. Přejít na stránku **Přehled** služby.
+1. Vyberte **Diagnostikovat a řešit problémy**. 
+1. Vyberte možnost detektor **konfiguračního serveru** .
+
+    [![Problémy s ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) diagnostikou portálu ASC](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+
+3. Klikněte na tlačítko **kontrolu stavu konfiguračního serveru**.
+
+    [![Genie ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) portálu ASC](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+
+4. Kliknutím na **stav konfiguračního serveru** zobrazíte další podrobnosti z detektoru.
+
+    [![Stav ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) portálu ASC](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
 ## <a name="next-steps"></a>Další kroky
 

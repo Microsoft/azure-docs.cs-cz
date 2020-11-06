@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e7713239391b49663328a7a058f8f6fd5b444335
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341327"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337742"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Použití funkce OPENROWSET s použitím fondu SQL bez serveru (Preview) ve službě Azure synapse Analytics
 
@@ -261,12 +261,12 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | TVARU |UTF |varchar \* (řazení UTF8) |
 | TVARU |ŘETEZCE |varchar \* (řazení UTF8) |
 | TVARU |VYTVÁŘENÍ|varchar \* (řazení UTF8) |
-| TVARU |IDENTIFIKÁTOR |uniqueidentifier |
+| FIXED_LEN_BYTE_ARRAY |IDENTIFIKÁTOR |uniqueidentifier |
 | TVARU |NOTACI |decimal |
-| TVARU |JSON |varchar (max) \* (kolace UTF8) |
-| TVARU |BSON |varbinary (max) |
+| TVARU |JSON |varchar (8000) \* (kolace UTF8) |
+| TVARU |BSON | Nepodporováno |
 | FIXED_LEN_BYTE_ARRAY |NOTACI |decimal |
-| BYTE_ARRAY |DOBA |varchar (max), serializováno do standardizovaného formátu |
+| BYTE_ARRAY |DOBA | Nepodporováno |
 | UVEDENA |INT (8, true) |smallint |
 | UVEDENA |INT (16, true) |smallint |
 | UVEDENA |INT (32, true) |int |
@@ -279,10 +279,10 @@ Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabul
 | INT64 |INT (64; true) |bigint |
 | INT64 |INT (64, false) |desetinné číslo (20, 0) |
 | INT64 |NOTACI |decimal |
-| INT64 |ČAS (MIKROČASU A NANO) |time |
-|INT64 |ČASOVÉ RAZÍTKO (LISOVNY//NANO) |datetime2 |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (max), serializováno do formátu JSON |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (max), serializováno do formátu JSON |
+| INT64 |ČAS (MIKRO) |časový čas (NANO) není podporován. |
+|INT64 |ČASOVÉ RAZÍTKO (LISOVNY/MIKROORGANISMY) |datetime2 – časové RAZÍTKo (NANO) není podporované. |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (8000), serializováno do formátu JSON |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (8000), serializováno do formátu JSON |
 
 ## <a name="examples"></a>Příklady
 

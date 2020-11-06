@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91739931"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337710"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box
 
@@ -47,48 +47,48 @@ Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volit
 
     ![Okno s přehledem Data Boxho pořadí](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-1.png)
 
-2. Přejít na **nastavení > šifrování**. V části **typ šifrování**můžete zvolit, jak chcete chránit klíč odemknutí zařízení. Ve výchozím nastavení se k ochraně vašeho hesla pro odemknutí zařízení používá spravovaný klíč společnosti Microsoft. 
+2. Přejít na **nastavení > šifrování**. V části **typ šifrování** můžete zvolit, jak chcete chránit klíč odemknutí zařízení. Ve výchozím nastavení se k ochraně vašeho hesla pro odemknutí zařízení používá spravovaný klíč společnosti Microsoft. 
 
     ![Zvolit možnost šifrování](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-2.png)
 
-3. Jako **spravovaný klíč zákazníka**vyberte typ šifrování. Po výběru klíče spravovaného zákazníkem **Vyberte Trezor klíčů a klíč**.
+3. Jako **spravovaný klíč zákazníka** vyberte typ šifrování. Po výběru klíče spravovaného zákazníkem **Vyberte Trezor klíčů a klíč**.
 
     ![Vybrat klíč spravovaný zákazníkem](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. V okně **Vybrat klíč z Azure Key Vault** se předplatné automaticky vyplní. V případě **trezoru klíčů**můžete v rozevíracím seznamu vybrat existující Trezor klíčů.
+4. V okně **Vybrat klíč z Azure Key Vault** se předplatné automaticky vyplní. V případě **trezoru klíčů** můžete v rozevíracím seznamu vybrat existující Trezor klíčů.
 
-    ![Vytvořit nový Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![Vybrat existující Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
-    Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů**zadejte skupinu prostředků a název trezoru klíčů. Ujistěte se, že je povolená ochrana proti **odstranění** a **vyprázdnění** . Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
+    Můžete také vybrat **vytvořit nové** a vytvořit nový trezor klíčů. V okně **vytvořit Trezor klíčů** zadejte skupinu prostředků a název trezoru klíčů. Ujistěte se, že je povolená ochrana proti **odstranění** a **vyprázdnění** . Přijměte všechny ostatní výchozí hodnoty. Vyberte **zkontrolovat + vytvořit**.
 
-    ![Vytvořit nový Azure Key Vault 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Kontrola a vytváření Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
+5. Zkontrolujte informace spojené s vaším trezorem klíčů a vyberte **vytvořit**. Počkejte pár minut, než se vytváření trezoru klíčů dokončí.
 
-    ![Vytvořit Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![Vytvoření Azure Key Vault s nastavením](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. V poli **Vybrat klíč z Azure Key Vault**můžete vybrat klíč v existující trezoru klíčů.
+6. V poli **Vybrat klíč z Azure Key Vault** můžete vybrat klíč v existující trezoru klíčů.
 
-    ![Vytvořit nový klíč v Azure Key Vault 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Vyberte klíč z Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. Pokud chcete vytvořit nový klíč, vyberte **vytvořit nový** a vytvořte klíč. Velikost klíče RSA může být 2048 nebo vyšší.
+7. Pokud chcete vytvořit nový klíč, vyberte **vytvořit nový** a vytvořte klíč. Velikost klíče RSA může být 2048 nebo vyšší.
 
-    ![Vytvořit nový klíč v Azure Key Vault 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Vytvořit nový klíč v Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**. 
+8. Zadejte název pro svůj klíč, Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
 
-    ![Vytvořit nový klíč](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![Nový klíč s názvem](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. Zobrazí se oznámení o vytvoření klíče v trezoru klíčů. Vyberte **verzi** a pak zvolte **Vybrat**.
+9. Zobrazí se oznámení o vytvoření klíče v trezoru klíčů. Vyberte **verzi** a pak zvolte **Vybrat**.
 
-    ![Nový klíč vytvořený v trezoru klíčů](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![Vybrat verzi pro nový klíč](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. V podokně **typ šifrování** uvidíte Trezor klíčů a klíč vybraný pro klíč spravovaný zákazníkem.
+10. V podokně **typ šifrování** uvidíte Trezor klíčů a klíč vybraný pro klíč spravovaný zákazníkem.
 
     ![Klíč a trezor klíčů pro klíč spravovaný zákazníkem](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. Uložte klíč. 
+11. Uložte klíč. 
 
     ![Uložit klíč spravovaný zákazníkem](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 

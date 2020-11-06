@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: dbce9019e33c07dd4faa91ffd490eba4d313c675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e810a31fab4457e47329e37f54b16e6f488c9da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630606"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337623"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Řešení běžných potíží se směrováním
 
@@ -103,5 +103,26 @@ U tohoto příznaku existuje několik možných příčin:
             * *Přijaté protokoly* jsou HTTP a HTTPS. *Protokol předávání* je http. Požadavek shody nebude fungovat, protože HTTPS je povolený protokol, a pokud požadavek nacházel jako HTTPS, přední dveře se pokusí o přeposlání pomocí protokolu HTTPS.
 
             * *Přijaté protokoly* jsou http. *Protokol předávání* buď odpovídá požadavku, nebo http.
-
     - *Přepsání adresy URL* je ve výchozím nastavení zakázáno. Toto pole se používá pouze v případě, že chcete zúžit rozsah prostředků hostovaných v hostovaném prostředí, které mají být k dispozici. Pokud je tato akce zakázána, předá přední dveře stejnou cestu požadavku, kterou obdrží. Toto pole je možné nakonfigurovat nesprávně. Takže pokud přední dveře požaduje prostředek z back-endu, který není dostupný, vrátí stavový kód HTTP 404.
+
+## <a name="request-to-frontend-host-name-returns-411-status-code"></a>Požadavek na front-end název hostitele vrátí stavový kód 411.
+
+### <a name="symptom"></a>Příznak
+
+Vytvořili jste přední dvířka a nakonfigurovali hostitele front-endu, back-end fond s alespoň jedním back-end serverem a pravidlo směrování, které připojuje hostitele front-end k back-endovému fondu. Váš obsah nemusí být k dispozici při odesílání žádosti do nakonfigurovaného hostitele front-endu, protože je vrácen stavový kód HTTP 411.
+
+Odpovědi na tyto požadavky mohou také obsahovat chybovou stránku HTML v těle odpovědi, která obsahuje vysvětlující příkaz. Příklad: `HTTP Error 411. The request must be chunked or have a content length`
+
+### <a name="cause"></a>Příčina
+
+U tohoto příznaku existuje několik možných příčin; Celkový důvod je však, že váš požadavek HTTP není plně kompatibilní se specifikací RFC. 
+
+Příkladem nedodržení předpisů je `POST` požadavek odeslaný bez `Content-Length` `Transfer-Encoding` hlavičky (například pomocí `curl -X POST https://example-front-door.domain.com` ). Tato žádost nesplňuje požadavky uvedené v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.3.2) a vaše přední dvířka zablokovala odpověď HTTP 411.
+
+Toto chování je oddělené od WAF funkcí front-dveří. V současné době neexistuje žádný způsob, jak toto chování zakázat. Všechny požadavky HTTP musí splňovat požadavky, a to i v případě, že se funkce WAF nepoužívá.
+
+### <a name="troubleshooting-steps"></a>Postup při řešení potíží
+
+- Ověřte, že požadavky jsou v dodržování požadavků stanovených v nezbytných dokumentech RFC.
+
+- Poznamenejte si text zprávy HTML, který se vrátí v reakci na vaši žádost, protože často vysvětluje přesně to, *jak* vaše žádost nedodržuje předpisy.

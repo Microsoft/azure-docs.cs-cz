@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 30eb19e418292e74989be81d94ed684c917f6971
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a78aec8c18f3b89629bbf696de3a097397ac59bc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088631"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337912"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
@@ -22,20 +22,24 @@ Pomocí nástrojů pro distribuované trasování v Azure jarním cloudu můžet
 ::: zone pivot="programming-language-csharp"
 V tomto článku se dozvíte, jak povolit aplikaci .NET Core Steeltoe k použití distribuovaného trasování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle těchto postupů, potřebujete aplikaci Steeltoe, která je už [připravená pro nasazení do služby Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md).
 
 ## <a name="dependencies"></a>Závislosti
 
-Nainstalujte následující balíčky NuGet.
+Pro Steeltoe 2.4.4 přidejte následující balíčky NuGet:
 
 * [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
 * [Steeltoe. Management. ExporterCore](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/)
 
+Pro Steeltoe 3.0.0 přidejte následující balíček NuGet:
+
+* [Steeltoe. Management. TracingCore](https://www.nuget.org/packages/Steeltoe.Management.TracingCore/)
+
 ## <a name="update-startupcs"></a>Aktualizovat Startup.cs
 
-1. V `ConfigureServices` metodě zavolejte `AddDistributedTracing` `AddZipkinExporter` metody a.
+1. Pro Steeltoe 2.4.4 volejte `AddDistributedTracing` a `AddZipkinExporter` v `ConfigureServices` metodě.
 
    ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -45,14 +49,29 @@ Nainstalujte následující balíčky NuGet.
    }
    ```
 
-1. V `Configure` metodě zavolejte `UseTracingExporter` metodu.
+   Pro Steeltoe 3.0.0 volejte `AddDistributedTracing` v `ConfigureServices` metodě.
+
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddDistributedTracing(Configuration, builder => builder.UseZipkinWithTraceOptions(services));
+   }
+   ```
+
+1. Pro Steeltoe 2.4.4 volejte `UseTracingExporter` v `Configure` metodě.
 
    ```csharp
    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
         app.UseTracingExporter();
    }
    ```
+
+   Pro Steeltoe 3.0.0 nejsou v metodě vyžadovány žádné změny `Configure` .
 
 ## <a name="update-configuration"></a>Aktualizovat konfiguraci
 
@@ -60,7 +79,7 @@ Přidejte do zdroje konfigurace následující nastavení, která se použijí p
 
 1. Nastavte `management.tracing.alwaysSample` na true.
 
-2. Pokud chcete zobrazit trasování mezi serverem Eureka, konfiguračním serverem a uživatelskými aplikacemi: nastavte `management.tracing.egressIgnorePattern` na/API/v2/spans |/v2/Apps/.* /Permissions |/Eureka/.*| /oauth/.*".
+2. Pokud chcete zobrazit trasování mezi serverem Eureka, konfiguračním serverem a uživatelskými aplikacemi: nastavte `management.tracing.egressIgnorePattern` na/API/v2/spans |/v2/Apps/. */Permissions |/Eureka/.* | /oauth/.*".
 
 Například *appsettings.js* by měl obsahovat následující vlastnosti:
  
@@ -84,7 +103,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Zobrazte mapy závislostí pro vaše aplikace mikroslužeb.
 > * Vyhledávejte data trasování pomocí různých filtrů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete průvodce [nasazením prvního jarního cloudu aplikace na platformě Azure](spring-cloud-quickstart.md) , abyste zřídili a spustili službu jarní cloudu Azure.
 
@@ -157,7 +176,7 @@ Application Insights poskytuje kromě funkcí mapa aplikace a funkce hledání i
 ## <a name="disable-application-insights"></a>Zakázat Application Insights
 
 1. V Azure Portal přejdete na stránku služby jarní cloud Azure.
-1. V **monitorování**vyberte **distribuované trasování**.
+1. V **monitorování** vyberte **distribuované trasování**.
 1. Pokud chcete zakázat Application Insights, vyberte **Zakázat** .
 
 ## <a name="next-steps"></a>Další kroky

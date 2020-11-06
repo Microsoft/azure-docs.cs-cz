@@ -3,12 +3,12 @@ title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d5875287c7af905579397164029ef0504d6b9dc
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627104"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337946"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout podporu operací pro prostředky
 
@@ -1433,7 +1433,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | privatednszones / virtualnetworklinks | Yes | Yes |
 > | privatednszonesinternal | No | No |
 > | privateendpointredirectmaps | No | No |
-> | privateendpoints | Yes | Yes |
+> | privateendpoints | No | No |
 > | privatelinkservices | No | No |
 > | publicipaddresses | Ano – základní SKU<br>Ano – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
 > | publicipprefixes | Yes | Yes |

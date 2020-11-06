@@ -1,105 +1,140 @@
 ---
-title: Jak vytvořit a spravovat protokol DHCP
-description: Tento článek vysvětluje, jak spravovat protokol DHCP v řešení Azure VMware.
-ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: cb74ed4474cc14081e59142f2f60915fccd47559
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+title: Správa DHCP pro řešení Azure VMware
+description: Naučte se vytvářet a spravovat protokol DHCP pro privátní cloud řešení Azure VMware.
+ms.topic: how-to
+ms.date: 11/09/2020
+ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461052"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335931"
 ---
-# <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>Jak vytvořit a spravovat DHCP v řešení Azure VMware
+# <a name="manage-dhcp-for-azure-vmware-solution"></a>Správa DHCP pro řešení Azure VMware
 
-NSX-T poskytuje možnost konfigurovat protokol DHCP pro váš privátní cloud. Pokud k hostování serveru DHCP používáte NSX-T, přečtěte si téma [vytvoření serveru DHCP](#create-dhcp-server). V opačném případě, pokud máte v síti externí server DHCP třetí strany, přečtěte si téma [Vytvoření předávací služby DHCP](#create-dhcp-relay-service).
+Aplikace a úlohy běžící v prostředí privátního cloudu vyžadují služby DHCP pro přiřazování IP adres.  V tomto článku se dozvíte, jak vytvořit a spravovat DHCP v řešení Azure VMware dvěma způsoby:
 
-## <a name="create-dhcp-server"></a>Vytvořit server DHCP
+- Pokud k hostování serveru DHCP používáte NSX-T, budete muset [vytvořit server DHCP](#create-a-dhcp-server) a [předat ho k tomuto serveru](#create-dhcp-relay-service). Když vytvoříte server DHCP, přidáte také segment sítě a zadáte rozsah IP adres DHCP.   
 
-Pomocí následujících kroků můžete nakonfigurovat server DHCP v NSX-T.
+- Pokud v síti používáte externí server DHCP třetí strany, budete muset [vytvořit předávací službu DHCP](#create-dhcp-relay-service). Když vytvoříte předávání na server DHCP, ať už k hostování serveru DHCP pomocí NSX-T nebo třetí strany, budete muset zadat rozsah IP adres DHCP.
 
-1. V NSX Manageru přejděte na kartu **sítě** a vyberte **DHCP**. 
-1. Vyberte **Přidat server** a pak zadejte název a IP adresu serveru. 
-1. Vyberte **Uložit**.
+>[!IMPORTANT]
+>Pokud je server DHCP v místním datovém centru, nefunguje protokol DHCP u virtuálních počítačů v síti VMware HCX L2 Stretch.  NSX ve výchozím nastavení blokuje všechny požadavky DHCP před roztažením hodnoty L2. Řešení najdete v tématu [odeslání požadavků DHCP na místní server DHCP](#send-dhcp-requests-to-the-on-premises-dhcp-server) .
 
-:::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="Přidat server DHCP" border="true":::
 
-### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>Připojte server DHCP k bráně úrovně 1.
+## <a name="create-a-dhcp-server"></a>Vytvoření serveru DHCP
 
-1. Vyberte možnost **brány vrstvy 1**, bránu ze seznamu a pak vyberte **Upravit**.
+Pokud chcete server DHCP hostovat pomocí NSX-T, vytvoříte server DHCP. Pak přidáte segment sítě a zadáte rozsah IP adres DHCP.
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Přidat server DHCP" border="true":::
+1. Ve Správci NSX-T vyberte **síť**  >  **DHCP** a pak vyberte **Přidat server**.
+
+1. Jako **Typ serveru** vyberte **DHCP** , zadejte název a IP adresu serveru a pak vyberte **Uložit**.
+
+   :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="Přidat server DHCP" border="true":::
+
+1. Vyberte **brány vrstvy 1** , vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
+
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Vyberte bránu, kterou chcete použít." border="true":::
 
 1. Vyberte možnost **bez nastavení přidělení IP adres** pro přidání podsítě.
 
-   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="Přidat server DHCP" border="true":::
+   :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="Přidat podsíť" border="true":::
 
-1. Jako **typ**vyberte **místní server DHCP** . 
+1. Jako **typ** vyberte **místní server DHCP**. 
+   
 1. Pro **Server DHCP** vyberte **výchozí DHCP** a pak vyberte **Uložit**.
 
-
-1. V okně **brány vrstvy 1** vyberte **Uložit**. 
-1. Vyberte **Zavřít úpravy** a dokončete.
+1. Vyberte **Uložit** znovu a pak vyberte **Zavřít úpravy**.
 
 ### <a name="add-a-network-segment"></a>Přidat segment sítě
 
-Po vytvoření serveru DHCP budete muset do něj přidat segmenty sítě.
+[!INCLUDE [add-network-segment-steps](includes/add-network-segment-steps.md)]
 
-1. V NSX-T vyberte kartu **síť** a v části **připojení**vyberte **segmenty** . 
-1. Vyberte **Přidat segment** a pojmenujte segment a připojení k bráně úrovně 1. 
-1. Vyberte **nastavit podsítě** pro konfiguraci nové podsítě. 
-
-   :::image type="content" source="./media/manage-dhcp/add-segment.png" alt-text="Přidat server DHCP" border="true":::
-
-1. V okně **nastavit podsítě** vyberte **Přidat podsíť**. 
-1. Zadejte IP adresu brány a rozsah DHCP a vyberte **Přidat** a potom **použít** .
-
-1. Vyberte **Uložit** a přidejte nový segment sítě.
 
 ## <a name="create-dhcp-relay-service"></a>Vytvořit předávací službu DHCP
 
-1. Vyberte kartu **síť** a v části **Správa IP adres**vyberte **DHCP**. 
-1. Vyberte **Přidat server**. 
-1. Jako **Typ serveru** vyberte předávání DHCP a zadejte název a IP adresu serveru pro přenos. 
-1. Vyberte **Uložit**.
+Pokud chcete použít externí server DHCP třetí strany, budete muset vytvořit předávací službu DHCP. Určíte také rozsah IP adres DHCP ve Správci NSX-T. 
 
-   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="Přidat server DHCP" border="true":::
+1. Ve Správci NSX-T vyberte **síť**  >  **DHCP** a pak vyberte **Přidat server**.
 
-1. V části **připojení**vyberte **brány úrovně 1** . 
-1. V bráně vrstvy 1 vyberte svislá výpustka a vyberte **Upravit**.
+1. Jako **Typ serveru** vyberte **předávání DHCP** , zadejte název a IP adresu serveru a pak vyberte **Uložit**.
 
-   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Přidat server DHCP" border="true":::
+   :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="vytvořit předávací službu DHCP" border="true":::
+
+1. Vyberte **brány vrstvy 1** , vyberte svislé tři tečky u brány vrstvy 1 a pak vyberte **Upravit**.
+
+   :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Úprava brány vrstvy 1" border="true":::
 
 1. Vyberte možnost **bez nastavení přidělení IP** adres pro definování přidělování IP adres.
 
-   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="Přidat server DHCP" border="true":::
+   :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="Upravit přidělování IP adres" border="true":::
 
-1. Jako **typ**vyberte **předávací server DHCP** .
-1. Vyberte předávací server DHCP pro **předávání DHCP**. 
-1. Vyberte **Uložit**.
+1. Jako **typ** vyberte **Server DHCP**. 
+   
+1. Pro **Server DHCP** vyberte možnost **předávání DHCP** a pak vyberte **Uložit**.
+
+1. Vyberte **Uložit** znovu a pak vyberte **Zavřít úpravy**.
 
 
-## <a name="specify-a-dhcp-range-ip-on-a-segment"></a>Zadejte IP adresu rozsahu DHCP v segmentu.
+## <a name="specify-the-dhcp-ip-address-range"></a>Zadejte rozsah IP adres DHCP.
 
-> [!NOTE]
-> Tato konfigurace je nutná ke realizaci funkcí přenosu DHCP v segmentu klienta DHCP. 
+1. Ve Správci NSX-T vyberte **Networking**  >  **segmenty** sítě. 
+   
+1. V názvu segmentu vyberte svislá výpustka a vyberte **Upravit**.
+   
+1. Vyberte možnost **nastavit podsítě** a určete IP adresu DHCP pro podsíť. 
+   
+   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="segmenty sítě" border="true":::
+      
+1. V případě potřeby upravte IP adresu brány a zadejte IP adresu rozsahu DHCP. 
+      
+   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="Upravit podsítě" border="true":::
+      
+1. Vyberte **použít** a pak **Uložit**. Segmentu je přiřazen fond serverů DHCP.
+      
+   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="Fond serverů DHCP přiřazený k segmentu" border="true":::
 
-1. V části **připojení**vyberte **segmenty**. 
-1. Vyberte svislé elipsy a vyberte **Upravit**. 
 
-   >[!TIP]
-   >Pokud chcete přidat nový segment, vyberte **Přidat segment**.
+## <a name="send-dhcp-requests-to-the-on-premises-dhcp-server"></a>Odeslání požadavků DHCP na místní server DHCP
 
-1. Přidejte podrobnosti o segmentu. 
-1. Vyberte hodnotu v části **nastavit podsítě** a přidejte nebo upravte podsíť.
+Pokud chcete odesílat požadavky DHCP z virtuálních počítačů řešení Azure VMware v rozšířeném segmentu L2 na místní server DHCP, vytvoříte profil segmentu zabezpečení. 
 
-   :::image type="content" source="./media/manage-dhcp/network-segments.png" alt-text="Přidat server DHCP" border="true":::
+1. Přihlaste se k místnímu serveru vCenter a v části **Domů** vyberte **HCX**.
 
-1. Vyberte svislé elipsy a zvolte **Upravit**. Pokud potřebujete vytvořit novou podsíť, vyberte **Přidat podsíť** a vytvořte bránu a NAKONFIGURUJTE rozsah DHCP. 
-1. Zadejte rozsah fondu IP adres a vyberte **použít**a pak vyberte **Uložit** .
+1. V části **služby** vyberte **rozšíření sítě** .
 
-   :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="Přidat server DHCP" border="true":::
+1. Vyberte rozšíření sítě, které má podporovat požadavky DHCP z řešení Azure VMware do místního prostředí. 
 
-   K segmentu je přiřazen fond serverů DHCP.
+1. Poznamenejte si název cílové sítě.  
 
-   :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="Přidat server DHCP" border="true":::
+   :::image type="content" source="media/manage-dhcp/hcx-find-destination-network.png" alt-text="Snímek obrazovky s rozšířením sítě v klientovi VMware vSphere" lightbox="media/manage-dhcp/hcx-find-destination-network.png":::
+
+1. Ve Správci řešení Azure VMware NSX-T vyberte **sítě**  >  **Segments**  >  **profily segment segmentů segmentů**. 
+
+1. Vyberte **Přidat profil segmentu** a pak **segment zabezpečení**.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile.png" alt-text="Snímek obrazovky s postupem, jak přidat profil segmentu v NSX-T" lightbox="media/manage-dhcp/add-segment-profile.png":::
+
+1. Zadejte název a značku a pak nastavte přepínač **filtru BPDU** na zapnuto a všechny přepínače DHCP jsou vypnuté.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png" alt-text="Snímek obrazovky, na kterém je zobrazený filtr BPDU, a DHCP se vypíná." lightbox="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png":::
+
+1. V **seznamu povolených filtrů BPDU** odeberte všechny adresy Mac, pokud existují.  Pak vyberte **Uložit**.
+
+   :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-allow-list.png" alt-text="Snímek obrazovky se adresami MAC v seznamu povolených filtrů BPDU":::
+
+1. V části segmentace segmentů **sítě**  >  **Segments**  >  **Segments** v oblasti hledání zadejte název definice sítě.
+
+   :::image type="content" source="media/manage-dhcp/networking-segments-search.png" alt-text="Snímek obrazovky s polem filtru segmentů > sítě":::
+
+1. V názvu segmentu vyberte svislá výpustka a vyberte **Upravit**.
+
+   :::image type="content" source="media/manage-dhcp/edit-network-segment.png" alt-text="Snímek obrazovky s tlačítkem upravit pro segment" lightbox="media/manage-dhcp/edit-network-segment.png":::
+
+1. Změňte **zabezpečení segmentu** na profil segmentu, který jste vytvořili dříve.
+
+   :::image type="content" source="media/manage-dhcp/edit-segment-security.png" alt-text="Snímek obrazovky s polem zabezpečení segmentu" lightbox="media/manage-dhcp/edit-segment-security.png":::
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o [údržbě hostitelů a správě životního cyklu](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).

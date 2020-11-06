@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 978d1de158f93b06d08ff93605405573000b6b6e
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123711"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336378"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
@@ -34,11 +34,11 @@ Když chcete zrušit objednávku, postupujte následovně.
 
 1.  Přejděte na **Přehled > Zrušit**.
 
-    ![Zrušení objednávky 1](media/data-box-portal-admin/cancel-order1.png)
+    ![Příkaz Cancel na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
 2.  Zadejte důvod zrušení objednávky.  
 
-    ![Zrušení objednávky 2](media/data-box-portal-admin/cancel-order2.png)
+    ![Zrušit objednávku – dialogové okno](media/data-box-portal-admin/portal-admin-cancel-order-dbox.png)
 
 3.  Po zrušení objednávky se na portálu aktualizuje její stav na **Zrušeno**.
 
@@ -53,7 +53,7 @@ Provedením následujících kroků naklonujte pořadí importu.
 
 1.  Přejděte na **Přehled > Klonovat**. 
 
-    ![Klonování objednávky 1](media/data-box-portal-admin/clone-order1.png)
+    ![Příkaz Clone na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-clone-command.png)
 
 2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Vytvořit**.
 
@@ -70,7 +70,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
 2. Klikněte na objednávku, kterou chcete odstranit, a přejděte na **Přehled**. Na panelu příkazů klikněte na **Odstranit**.
 
-    ![Odstranění první objednávky Data Boxu](media/data-box-portal-admin/delete-order1.png)
+    ![Příkaz Odstranit na kartě Přehled pro objednávku](media/data-box-portal-admin/portal-admin-delete-command.png)
 
 3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
@@ -82,11 +82,11 @@ Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 
 1.  Přejděte na **Přehled > Stáhnout expediční štítek**. Tato možnost je dostupná teprve po odeslání zařízení. 
 
-    ![Stažení expedičního štítku](media/data-box-portal-admin/download-shipping-label.png)
+    ![Stažení expedičního štítku](media/data-box-portal-admin/portal-admin-download-shipping-label.png)
 
 2.  Tato akce stáhne následující zpětný expediční štítek. Uložte popisek a vytiskněte ho. Skládání a vložení popisku do prostého rukávu na zařízení. Ujistěte se, že je štítek vidět. Odstraňte všechny nálepky, které jsou na zařízení z předchozí expedice.
 
-    ![Ukázkový expediční štítek](media/data-box-portal-admin/example-shipping-label.png)
+    ![Ukázkový expediční štítek](media/data-box-portal-admin/portal-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Úprava dodací adresy
 
@@ -96,11 +96,11 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit dodací adresu**.
 
-    ![Úprava dodací adresy 1](media/data-box-portal-admin/edit-shipping-address1.png)
+    ![Upravit dodací adresu – příkaz v pořadí podrobností](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
 2. Upravte a zkontrolujte dodací adresu a pak uložte změny.
 
-    ![Úprava dodací adresy 2](media/data-box-portal-admin/edit-shipping-address2.png)
+    ![Dialogové okno Upravit dodací adresu](media/data-box-portal-admin/portal-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
@@ -110,11 +110,11 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit podrobnosti o oznámení**.
 
-    ![Úprava podrobností o oznámení 1](media/data-box-portal-admin/edit-notification-details1.png)
+    ![Upravit podrobnosti oznámení příkazu v podrobnostech objednávky](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
 2. Teď můžete upravit podrobnosti o oznámení a uložit změny.
  
-    ![Úprava podrobností o oznámení 2](media/data-box-portal-admin/edit-notification-details2.png)
+    ![Dialogové okno Upravit podrobnosti oznámení](media/data-box-portal-admin/portal-admin-edit-notification-details-dbox.png)
 
 
 ## <a name="download-order-history"></a>Stažení historie objednávky
@@ -125,7 +125,7 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
 1. Ve vaší objednávce Data Boxu přejděte do části **Přehled**. Ujistěte se, že je objednávka dokončená. Pokud je objednávka dokončená a zařízení vyčištěné, přejděte do části **Podrobnosti objednávky**. Máte k dispozici možnost **Stáhnout historii objednávky**.
 
-    ![Stažení historie objednávky](media/data-box-portal-admin/download-order-history-1.png)
+    ![Stažení historie objednávky](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
 2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Budou existovat dvě sady protokolů odpovídající dvěma uzlům na Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
@@ -198,11 +198,11 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
     Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
 
-![Protokoly v účtech úložiště](media/data-box-portal-admin/logs-in-storage-acct-2.png)
+   ![Protokoly kopírování pro účet úložiště](media/data-box-portal-admin/portal-admin-storage-account-copy-logs.png)
 
-Můžete také zobrazit řetězec protokolů opatrovnictví, mezi které patří protokoly auditu a soubory BOM.
+   Můžete si také prohlédnout řetěz protokolů pro úschovu, které zahrnují protokoly auditu a soubory KUSOVNÍKŮ.
 
-![Protokoly v účtech úložiště 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+   ![Řetěz protokolů úschovy pro účet úložiště](media/data-box-portal-admin/portal-admin-storage-account-chain-of-custody-logs.png)
 
 ## <a name="view-order-status"></a>Zobrazení stavu objednávky
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: cfe1b66662d73c18934ef9ecc884adee79493eb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92640998"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335243"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v rámci webové aplikace v uzlu pomocí toku kódu ověřování
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > [!IMPORTANT]
 > Uzel MSAL [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [vytvoření předplatného Azure zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
@@ -42,13 +42,13 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 > 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu a pak nastavte relaci portálu na tenanta Azure AD, kterého chcete použít.
 > 1. Vyberte [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908).
-> 1. Vyberte **Nová registrace** .
+> 1. Vyberte **Nová registrace**.
 > 1. Když se zobrazí stránka **Zaregistrovat aplikaci** , zadejte název pro vaši aplikaci.
-> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft** .
+> 1. V části **podporované typy účtů** vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 > 1. Nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/redirect` .
-> 1. Vyberte **Zaregistrovat** . 
+> 1. Vyberte **Zaregistrovat**. 
 > 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
-> 1. V části **certifikáty & tajné klíče** vyberte **nový tajný klíč klienta** .  Ponechte Popis prázdné a výchozí platnost a pak klikněte na **Přidat** .
+> 1. V části **certifikáty & tajné klíče** vyberte **nový tajný klíč klienta**.  Ponechte Popis prázdné a výchozí platnost a pak klikněte na **Přidat**.
 > 1. Poznamenejte si **hodnotu** **tajného klíče klienta** pro pozdější použití.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
@@ -66,8 +66,8 @@ V tomto rychlém startu se používá knihovna ověřování Microsoft pro Node.
 > #### <a name="step-3-configure-your-node-app"></a>Krok 3: Konfigurace aplikace Node
 >
 > Rozbalte projekt a otevřete složku *MS-identity-Node-Main* a pak otevřete soubor *index.js* .
-> Nastavte `clientID` s **ID aplikace (klienta)** .
-> Nastavte `clientSecret` s **hodnotou** **tajného klíče klienta** .
+> Nastavte `clientID` s **ID aplikace (klienta)**.
+> Nastavte `clientSecret` s **hodnotou** **tajného klíče klienta**.
 >
 >```javascript
 >const config = {
@@ -141,4 +141,4 @@ npm install @azure/msal-node
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání ověřování do existující webové aplikace – ukázka kódu na GitHubu >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code/readme.md)
+> [Přidání ověřování do existující webové aplikace – ukázka kódu na GitHubu >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code)

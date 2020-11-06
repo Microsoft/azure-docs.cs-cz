@@ -3,18 +3,18 @@ title: O úložištích & imagí
 description: Seznámení se základními koncepty Azure Container Registry, úložišť a imagí kontejnerů.
 ms.topic: article
 ms.date: 06/16/2020
-ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2f93c119817c722401f7290064894f3d39dac9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390444"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335890"
 ---
 # <a name="about-registries-repositories-and-images"></a>O registrech, úložištích a obrázcích
 
 Tento článek představuje klíčové koncepty registrů kontejnerů, úložišť a imagí kontejnerů a souvisejících artefaktů. 
 
-## <a name="registry"></a>Registry
+## <a name="registry"></a>Registr
 
 *Registr* kontejnerů je služba, která ukládá a distribuuje image kontejneru. Docker Hub je veřejný registr kontejnerů, který podporuje open source komunitu a slouží jako obecný katalog imagí. Azure Container Registry poskytuje uživatelům přímou kontrolu nad svými obrázky s integrovaným ověřováním, [geografickou replikací](container-registry-geo-replication.md) podporující globální distribuci a spolehlivost pro nasazení v rámci sítě, [konfiguraci virtuálních sítí a brány firewall](container-registry-vnet.md), [uzamykání značek](container-registry-image-lock.md)a mnoho dalších vylepšených funkcí. 
 
@@ -45,7 +45,7 @@ Podrobnosti o těchto prvcích najdete v následujících oddílech.
 - *ACR-HelloWorld: V1*
 - *ACR-HelloWorld: v2*
 
-Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují identifikovat související úložiště a vlastnictví artefaktů ve vaší organizaci pomocí názvů s oddělenými lomítky. Registr ale spravuje všechna úložiště nezávisle, nikoli jako hierarchii. Příklady:
+Názvy úložišť můžou zahrnovat taky [obory názvů](container-registry-best-practices.md#repository-namespaces). Obory názvů umožňují identifikovat související úložiště a vlastnictví artefaktů ve vaší organizaci pomocí názvů s oddělenými lomítky. Registr ale spravuje všechna úložiště nezávisle, nikoli jako hierarchii. Příklad:
 
 - *Marketing/campaign10-18/web: v2*
 - *Marketing/campaign10 – 18/API: V3*
@@ -73,7 +73,7 @@ Pravidla pro pojmenovávání značek najdete v [dokumentaci k Docker](https://d
 
 ### <a name="layer"></a>Vrstva
 
-Image kontejneru se skládají z jedné nebo více *vrstev*, z nichž každá odpovídá čáře v souboru Dockerfile, která definuje obrázek. Image v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může sdílet stejnou základní vrstvu systému Alpine Linux, ale v registru je uložena pouze jedna kopie této vrstvy.
+Image kontejneru se skládají z jedné nebo více *vrstev* , z nichž každá odpovídá čáře v souboru Dockerfile, která definuje obrázek. Image v registru sdílejí společné vrstvy a zvyšují efektivitu úložiště. Například několik imagí v různých úložištích může sdílet stejnou základní vrstvu systému Alpine Linux, ale v registru je uložena pouze jedna kopie této vrstvy.
 
 Sdílení vrstev také optimalizuje distribuci vrstev na uzly s více obrázky, které sdílejí společné vrstvy. Například pokud obrázek již na uzlu obsahuje jako základ vrstvu Alpine Linux, následné načtení jiného obrázku odkazujícího na stejnou vrstvu nepřenáší vrstvu do uzlu. Místo toho odkazuje na již existující vrstvu na uzlu.
 

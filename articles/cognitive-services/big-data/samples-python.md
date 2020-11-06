@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: caf492c2cd3940fd7f37e2a4462c8376a127f393
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a4fe2492433aa793d1a7e4be41c5f93043848a5
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86189813"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337861"
 ---
 # <a name="python-samples-for-cognitive-services-for-big-data"></a>Ukázky Pythonu pro Cognitive Services pro velké objemy dat
 
@@ -78,16 +78,16 @@ sentiment = (TextSentiment()
     .setLanguageCol("language"))
 
 # Show the results of your text query in a table format
-display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("score").alias("sentiment")))
+display(sentiment.transform(df).select("text", col("sentiment")[0].getItem("sentiment").alias("sentiment")))
 ```
 
 ### <a name="expected-result"></a>Očekávaný výsledek
 
 | text                                      | mínění                                             |
 |:------------------------------------------|:------------------------------------------------------|
-| Jsem si dnes spokojeni, Slunečné!           | 0.9789592027664185                                    |
-| Frustrovaní tento přenos nespěcháte hodin | 0.023795604705810547                                  |
-| Služba rozpoznávání na Spark aint je chybná.  | 0.8888956308364868                                    |
+| Jsem si dnes spokojeni, Slunečné!           | pozitivní                                              |
+| Frustrovaní tento přenos nespěcháte hodin | negativní                                              |
+| Služba rozpoznávání na Spark aint je chybná.  | pozitivní                                              |
 
 ## <a name="computer-vision-sample"></a>Ukázka Počítačové zpracování obrazu
 

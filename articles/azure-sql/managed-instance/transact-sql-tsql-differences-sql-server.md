@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2e07a54e20e6e60214b2905cf9321120484503eb
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790606"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337640"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objek
 - `TO URL`K dispozici je nová syntaxe, kterou můžete použít k zadání adresy URL kontejneru úložiště objektů BLOB v Azure, ve kterém `.xel` jsou soubory umístěné.
 - Syntaxe `TO FILE` není podporována, protože spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů systému Windows.
 
-Další informace naleznete v tématech: 
+Další informace najdete tady: 
 
 - [VYTVOŘIT AUDIT SERVERU](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -153,11 +153,13 @@ Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele 
 - Nastavení přihlašovacích údajů Azure AD namapované na skupinu Azure AD, protože vlastník databáze není podporovaný.
 - Je podporováno zosobnění objektů zabezpečení na úrovni serveru Azure AD pomocí jiných objektů zabezpečení Azure AD, jako je například klauzule [Execute as](/sql/t-sql/statements/execute-as-transact-sql) . Spustit jako omezení jsou:
 
-  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, že uživatel je vytvořen pomocí syntaxe CREATE USER [myAadUser] FROM LOGIN [ john@contoso.com ] a při pokusu o zosobnění se provádí pomocí příkazu EXEC jako uživatel = _myAadUser_ . Když vytváříte **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení), zadejte user_name jako stejný Login_name od **přihlášení** .
+  - Příkaz Spustit jako uživatel není podporován pro uživatele Azure AD, pokud se název liší od přihlašovacího jména. Příkladem je, že uživatel je vytvořen pomocí syntaxe CREATE USER [myAadUser] FROM LOGIN [ john@contoso.com ] a při pokusu o zosobnění se provádí pomocí příkazu EXEC jako uživatel = _myAadUser_. Když vytváříte **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení), zadejte user_name jako stejný Login_name od **přihlášení**.
   - Jenom objekty zabezpečení na úrovni SQL Server (přihlášení), které jsou součástí `sysadmin` role, můžou spouštět následující operace, které cílí na objekty zabezpečení Azure AD:
 
     - SPUSTIT JAKO UŽIVATEL
     - SPUSTIT JAKO PŘIHLAŠOVACÍ ÚDAJE
+
+  - K zosobnění uživatele pomocí příkazu Spustit jako musí být uživatel namapován přímo na objekt zabezpečení serveru Azure AD (přihlášení). Uživatelé, kteří jsou členy skupin Azure AD mapovaných na objekty zabezpečení Azure AD serveru, se nedají efektivně zosobnit pomocí příkazu Spustit jako, i když volající má pro zadané uživatelské jméno oprávnění k zosobnění.
 
 - Pro uživatele Azure AD ve spravované instanci SQL se podporuje export a import databáze pomocí souborů BacPac buď [SSMS v 18.4 nebo novější](/sql/ssms/download-sql-server-management-studio-ssms), nebo [SQLPackage.exe](/sql/tools/sqlpackage-download).
   - Následující konfigurace jsou podporovány pomocí souboru databáze BacPac: 
@@ -300,6 +302,7 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
   - Výstrahy ještě nejsou podporované.
   - Proxy servery nejsou podporovány.
 - Protokol událostí se nepodporuje.
+- Aby bylo možné vytvářet, upravovat nebo spouštět úlohy agenta SQL, musí být uživatel přímo namapován na objekt zabezpečení serveru Azure AD (přihlášení). Uživatelé, kteří nejsou přímo namapováni, například uživatelé, kteří patří do skupiny služby Azure AD s právy k vytváření, úpravám nebo provádění úloh agenta SQL, nebudou moci tyto akce provádět efektivně. Důvodem je zosobnění spravované instance a [spuštění jako omezení](#logins-and-users).
 
 Následující funkce agenta SQL momentálně nejsou podporované:
 

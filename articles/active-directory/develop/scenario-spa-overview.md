@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 11a295402c925f5b8244eb3294097ff2271b5d68
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675626"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335260"
 ---
 # <a name="scenario-single-page-application"></a>Scénář: jednostránkové aplikace
 
@@ -38,7 +38,7 @@ Platforma Microsoft Identity Platform nabízí **dvě** možnosti, jak přihlaš
 
 ![Jednostránkové aplikace – ověřování](./media/scenarios/spa-app-auth.svg)
 
-- [Implicitní tok OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Tok implicitního udělení umožňuje aplikaci získat **ID** a **přístupové** tokeny. Na rozdíl od toku autorizačního kódu nevrátí tok implicitního udělení **obnovovací token** .
+- [Implicitní tok OAuth 2,0](./v2-oauth2-implicit-grant-flow.md). Tok implicitního udělení umožňuje aplikaci získat **ID** a **přístupové** tokeny. Na rozdíl od toku autorizačního kódu nevrátí tok implicitního udělení **obnovovací token**.
 
 ![Jednostránkové aplikace – implicitní](./media/scenarios/spa-app.svg)
 
@@ -58,5 +58,4 @@ Chcete-li povolit tento scénář pro vaši aplikaci, budete potřebovat:
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Registrace aplikace](scenario-spa-app-registration.md)
+[Registrace aplikací](scenario-spa-app-registration.md)

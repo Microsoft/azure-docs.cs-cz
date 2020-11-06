@@ -9,12 +9,12 @@ ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 9da757e47308fe0fe1a96958e464b440d99f0984
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6fb7b7c2e9022b6b629a039a48bb559b36393f79
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324736"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334988"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -310,7 +310,7 @@ cd xgboostdemo
 xgboost mushroom.conf
 ```
 
-Soubor. model je zapsán do zadaného adresáře. Informace o tomto ukázkovém příkladu najdete [na GitHubu](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+Soubor. model je zapsán do zadaného adresáře. Informace o tomto ukázkovém příkladu najdete [na GitHubu](https://github.com/dmlc/xgboost/tree/master/demo/CLI/binary_classification).
 
 Další informace o xgboost najdete na [stránce dokumentace xgboost](https://xgboost.readthedocs.org/en/latest/) a v jejím [úložišti GitHub](https://github.com/dmlc/xgboost).
 

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88689673"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335754"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Zmírnění rovnosti v modelech strojového učení (Preview)
 
 Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může přispět k zmírnění problémů s spravedlivým používáním modelů strojového učení. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky.
 
-Následující souhrn [uživatelské příručky](https://fairlearn.github.io/user_guide/index.html) k Fairlearn Open Source balíčku popisuje, jak ho použít k vyhodnocení spravedlivého nastavování systémů AI.  Fairlearn Open Source balíček může také nabízet možnosti, které vám pomohou zmírnit a snižovat problémy.  V tématu [postupy](how-to-machine-learning-fairness-aml.md) a [ukázky poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) můžete v průběhu školení na Azure Machine Learning povolit posouzení nespravedlivosti systémů AI.
+Následující souhrn [uživatelské příručky](https://fairlearn.github.io/master/user_guide/index.html) k Fairlearn Open Source balíčku popisuje, jak ho použít k vyhodnocení spravedlivého nastavování systémů AI.  Fairlearn Open Source balíček může také nabízet možnosti, které vám pomohou zmírnit a snižovat problémy.  V tématu [postupy](how-to-machine-learning-fairness-aml.md) a [ukázky poznámkových bloků](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) můžete v průběhu školení na Azure Machine Learning povolit posouzení nespravedlivosti systémů AI.
 
 
 ## <a name="what-is-fairness-in-machine-learning-models"></a>Jaké jsou v modelech strojového učení spravedlivé?
@@ -51,7 +51,7 @@ Společně tyto komponenty umožňují odborníkům přes data a vedoucím praco
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>Posouzení spravedlivosti v modelech strojového učení
 
-V Fairlearnm Open Source balíčku se spravedlivě rozkládá i v případě, že se jedná o přizpůsobenou **skupinu**, na které se požádá: které skupiny jednotlivců jsou ohrožené poškozením? Příslušné skupiny, označované také jako podmnožiny, jsou definovány prostřednictvím **citlivých funkcí** nebo citlivých atributů. Citlivé funkce jsou předány do Estimator v Fairlearn Open Source balíčku jako vektor nebo matice s názvem  `sensitive_features` . Pojem naznačuje, že při posuzování spravedlnosti skupin by měl být System Designer citlivý na tyto funkce. 
+V Fairlearnm Open Source balíčku se spravedlivě rozkládá i v případě, že se jedná o přizpůsobenou **skupinu** , na které se požádá: které skupiny jednotlivců jsou ohrožené poškozením? Příslušné skupiny, označované také jako podmnožiny, jsou definovány prostřednictvím **citlivých funkcí** nebo citlivých atributů. Citlivé funkce jsou předány do Estimator v Fairlearn Open Source balíčku jako vektor nebo matice s názvem  `sensitive_features` . Pojem naznačuje, že při posuzování spravedlnosti skupin by měl být System Designer citlivý na tyto funkce. 
 
 Je třeba mít na vědomí, zda tyto funkce obsahují dopad na ochranu osobních údajů z důvodu soukromých dat. Ale slovo "citlivé" neznamená, že tyto funkce by neměly být použity pro předpovědi.
 
@@ -99,7 +99,7 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 - Snížení: tyto algoritmy přijímají standardní černý krabicový Estimator strojového učení (např. model LightGBM) a generují sadu předaných modelů pomocí sekvence převážených datových sad. Například uchazeči určitého pohlaví můžou být vážené nebo nižší, aby mohli předávat modely a snižovat rozdíly mezi různými skupinami pohlaví. Uživatelé pak mohou vybrat model, který poskytuje nejlepší kompromis mezi přesností (nebo jinou metrikou výkonu) a neparitou, což obecně musí být založeno na obchodních pravidlech a výpočtech nákladů.  
 - Následné zpracování: tyto algoritmy přebírají existující klasifikátor a citlivou funkci jako vstup. Pak odvozují transformaci předpovědi klasifikátoru, aby vynutila zadaná omezení rovnosti. Největší výhodou optimalizace prahové hodnoty je jednoduchost a flexibilita, protože není potřeba přeškolit model. 
 
-| Algoritmus | Description | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
+| Algoritmus | Popis | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | Přístup k černému poli, který je popsaný v [rámci snížení úrovně přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453) | Binární klasifikace | Kategorické | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |
 | `GridSearch` | Přístup k černému poli, který je popsaný v tématu [snižování přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)| Binární klasifikace | Binární | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |
@@ -108,6 +108,6 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/user_guide/index.html), [Příklady](https://fairlearn.github.io/auto_examples/)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
+- Přečtěte si, jak používat různé komponenty, na [GitHubu](https://github.com/fairlearn/fairlearn/), [uživatelské příručce](https://fairlearn.github.io/master/user_guide/index.html), [Příklady](https://fairlearn.github.io/master/auto_examples/)a [ukázkové poznámkové bloky](https://github.com/fairlearn/fairlearn/tree/master/notebooks)pro Fairlearn.
 - Naučte [se, jak](how-to-machine-learning-fairness-aml.md) v Azure Machine Learning povolit posouzení spravedlnosti pro modely strojového učení.
 - V [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) najdete další scénáře posouzení spravedlivosti v Azure Machine Learning. 

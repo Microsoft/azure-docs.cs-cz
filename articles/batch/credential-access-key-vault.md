@@ -4,12 +4,12 @@ description: Naučte se programově přistupovat k přihlašovacím údajům z K
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71e647c05a84c70fe61a66458801bf7390dcb653
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913207"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337487"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Zabezpečený přístup ke Key Vaultu s využitím služby Batch
 
@@ -46,7 +46,7 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Přístup k Key Vault je udělen buď **uživateli** , nebo **instančnímu objektu** . Pro přístup k Key Vault programově použijte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) s certifikátem, který jste vytvořili v předchozím kroku. Instanční objekt musí být ve stejném tenantovi služby Azure AD jako Key Vault.
+Přístup k Key Vault je udělen buď **uživateli** , nebo **instančnímu objektu**. Pro přístup k Key Vault programově použijte [instanční objekt](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) s certifikátem, který jste vytvořili v předchozím kroku. Instanční objekt musí být ve stejném tenantovi služby Azure AD jako Key Vault.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -67,7 +67,7 @@ Adresy URL pro aplikaci nejsou důležité, protože je používáme pro příst
 
 ## <a name="grant-rights-to-key-vault"></a>Udělit práva Key Vault
 
-Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím [Azure Portal](/key-vault/general/assign-access-policy-portal.md) , nebo pomocí příkazu PowerShellu níže.
+Instanční objekt vytvořený v předchozím kroku potřebuje oprávnění k načtení tajných kódů z Key Vault. Oprávnění lze udělit buď prostřednictvím [Azure Portal](/azure/key-vault/general/assign-access-policy-portal) , nebo pomocí příkazu PowerShellu níže.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -77,7 +77,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Vytvořte fond dávek a pak ve fondu klikněte na kartu certifikát a přiřaďte certifikát, který jste vytvořili. Certifikát je nyní na všech uzlech Batch.
 
-V dalším kroku přiřaďte certifikát k účtu Batch. Přiřazením certifikátu k účtu umožníte službě Batch přiřadit je ke fondům a potom k uzlům. Nejjednodušší způsob, jak to provést, je přejít na účet Batch na portálu, přejít na **certifikáty** a vybrat **Přidat** . Nahrajte `.pfx` soubor, který jste vygenerovali dříve, a zadejte heslo. Po dokončení se certifikát přidá do seznamu a tento kryptografický otisk můžete ověřit.
+V dalším kroku přiřaďte certifikát k účtu Batch. Přiřazením certifikátu k účtu umožníte službě Batch přiřadit je ke fondům a potom k uzlům. Nejjednodušší způsob, jak to provést, je přejít na účet Batch na portálu, přejít na **certifikáty** a vybrat **Přidat**. Nahrajte `.pfx` soubor, který jste vygenerovali dříve, a zadejte heslo. Po dokončení se certifikát přidá do seznamu a tento kryptografický otisk můžete ověřit.
 
 Když teď vytvoříte fond služby Batch, můžete přejít na **certifikáty** v rámci fondu a přiřadit certifikát, který jste vytvořili do tohoto fondu. Když to uděláte, ujistěte se, že jste pro umístění úložiště vybrali možnost **LocalMachine** . Certifikát je načtený na všech uzlech Batch ve fondu.
 

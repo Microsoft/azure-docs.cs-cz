@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e426962310417fdca56ea2f7d45a6ea820d41981
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449411"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335872"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Řešení pro správu Application Insights Connector (zastaralé)
 
@@ -42,7 +42,7 @@ Při použití řešení můžete:
 
 Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďována data pro Application Insights Connector agenti. Všechna data, která řešení používá, přichází přímo z Azure.
 
-| Připojený zdroj | Podporováno | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | [Agenti systému Windows](./agent-windows.md) | No | Řešení neshromažďuje informace od agentů systému Windows. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace od agentů systému Linux. |
@@ -57,9 +57,9 @@ Na rozdíl od většiny ostatních Log Analytics řešení nejsou shromažďová
 
 ## <a name="configuration"></a>Konfigurace
 
-1. Povolte řešení Azure Web Apps Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Log Analytics řešení z galerie řešení](../insights/solutions.md).
+1. Povolte řešení Azure Web Apps Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) nebo pomocí procesu popsaného v tématu [Přidání Log Analytics řešení z galerie řešení](../insights/solutions.md).
 2. Přejděte na [Azure Portal](https://portal.azure.com). Pro otevření Application Insights vyberte **všechny služby** . Pak vyhledejte Application Insights. 
-3. V části **předplatná**vyberte předplatné, které má Application Insights prostředky, a pak v části **název**vyberte jednu nebo více aplikací.
+3. V části **předplatná** vyberte předplatné, které má Application Insights prostředky, a pak v části **název** vyberte jednu nebo více aplikací.
 4. Klikněte na **Uložit**.
 
 Během přibližně 30 minut budou data k dispozici a Application Insights dlaždice se aktualizují daty, podobně jako na následujícím obrázku:
@@ -133,9 +133,9 @@ Komponenty perspektivy jsou aktualizovány v závislosti na vyhledávacím dotaz
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Překlopení do aplikace v Azure Portal
 
-Okna Application Insights Connector jsou navržená tak, aby vám *při použití Azure Portal*mohli na vybranou Application Insights aplikaci Překlopit. Řešení můžete použít jako platformu pro monitorování vysoké úrovně, která pomáhá řešit problémy s aplikací. Když se v některé z vašich připojených aplikací zobrazí potenciální problém, můžete k nim přejít v Log Analytics hledání nebo můžete přímo překlopit přímo do Application Insights aplikace.
+Okna Application Insights Connector jsou navržená tak, aby vám *při použití Azure Portal* mohli na vybranou Application Insights aplikaci Překlopit. Řešení můžete použít jako platformu pro monitorování vysoké úrovně, která pomáhá řešit problémy s aplikací. Když se v některé z vašich připojených aplikací zobrazí potenciální problém, můžete k nim přejít v Log Analytics hledání nebo můžete přímo překlopit přímo do Application Insights aplikace.
 
-Chcete-li vytvořit kontingenční tabulku, klikněte na tlačítko se třemi tečkami (**...**), které se zobrazí na konci každého řádku, a vyberte možnost **otevřít v Application Insights**.
+Chcete-li vytvořit kontingenční tabulku, klikněte na tlačítko se třemi tečkami ( **...** ), které se zobrazí na konci každého řádku, a vyberte možnost **otevřít v Application Insights**.
 
 >[!NOTE]
 >**Otevření v Application Insights** není k dispozici v Azure Portal.

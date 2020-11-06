@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 31e25fb8c67e3d271bc37eb4b0d28c67d94a664f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092796"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337606"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace pro nasazení v jarním cloudu Azure
 
@@ -30,15 +30,38 @@ Tento článek vysvětluje závislosti, konfiguraci a kód, které jsou nutné k
 Azure jarní Cloud podporuje:
 
 * .NET Core 3,1
-* Steeltoe 2,4
+* Steeltoe 2,4 a 3,0
 
 ## <a name="dependencies"></a>Závislosti
 
-Nainstalujte balíček [Microsoft. Azure. SpringCloud. Client](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) .
+Pro Steeltoe 2,4 přidejte do souboru projektu nejnovější balíček [Microsoft. Azure. SpringCloud. Client 1. x. x](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) :
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="1.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="2.4.4" />
+  <PackageReference Include="Steeltoe.Management.ExporterCore" Version="2.4.4" />
+</ItemGroup>
+```
+
+Pro Steeltoe 3,0 přidejte do souboru projektu nejnovější balíček [Microsoft. Azure. SpringCloud. Client 2. x. x](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) :
+
+```xml
+<ItemGroup>
+  <PackageReference Include="Microsoft.Azure.SpringCloud.Client" Version="2.0.0-preview.1" />
+  <PackageReference Include="Steeltoe.Discovery.ClientCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Extensions.Configuration.ConfigServerCore" Version="3.0.0" />
+  <PackageReference Include="Steeltoe.Management.TracingCore" Version="3.0.0" />
+</ItemGroup>
+```
 
 ## <a name="update-programcs"></a>Aktualizovat Program.cs
 
-V `Program.Main` metodě zavolejte `UseAzureSpringCloudService` metodu:
+V `Program.Main` metodě zavolejte `UseAzureSpringCloudService` metodu.
+
+Pro Steeltoe 2.4.4 volejte `UseAzureSpringCloudService` po a po volání metody, `ConfigureWebHostDefaults` `AddConfigServer` Pokud je volána:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -47,7 +70,21 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         {
             webBuilder.UseStartup<Startup>();
         })
+        .AddConfigServer()
         .UseAzureSpringCloudService();
+```
+
+Pro Steeltoe 3.0.0 volejte `UseAzureSpringCloudService` před `ConfigureWebHostDefaults` a před libovolným kódem konfigurace Steeltoe:
+
+```csharp
+public static IHostBuilder CreateHostBuilder(string[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .UseAzureSpringCloudService()
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        })
+        .AddConfigServer();
 ```
 
 ## <a name="enable-eureka-server-service-discovery"></a>Povolit zjišťování služby serveru Eureka

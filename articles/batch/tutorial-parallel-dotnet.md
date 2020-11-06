@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537578"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335651"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
 
@@ -29,13 +29,13 @@ V tomto kurzu pomocí open source nástroje [ffmpeg](https://ffmpeg.org/) parale
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)nebo [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) pro Linux, MacOS nebo Windows.
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch.
 
-* [Windows 64-bitová verze ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (. zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
+* [Windows 64-bitová verze ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (. zip). Stáhněte soubor zip na místní počítač. Pro tento kurz potřebujete pouze soubor zip. Soubor nemusíte rozbalovat ani ho místně instalovat.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -45,9 +45,9 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Pomocí webu Azure Portal přidejte do svého účtu Batch aplikaci ffmpeg jako [balíček aplikace](batch-application-packages.md). Balíčky aplikací pomáhají spravovat aplikace úkolů a jejich nasazení do výpočetních uzlů ve fondu. 
 
-1. V Azure Portal klikněte na **Další služby**  >  **účty Batch**a potom klikněte na název vašeho účtu Batch.
+1. V Azure Portal klikněte na **Další služby**  >  **účty Batch** a potom klikněte na název vašeho účtu Batch.
 3. Klikněte na **aplikace**  >  **Přidat**.
-4. Jako **ID aplikace** zadejte *ffmpeg*a verzi balíčku *4.3.1*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
+4. Jako **ID aplikace** zadejte *ffmpeg* a verzi balíčku *4.3.1*. Vyberte soubor zip s aplikací ffmpeg, který jste stáhli dříve, a pak klikněte na **OK**. Balíček aplikace ffmpeg se přidá do vašeho účtu Batch.
 
 ![Přidání balíčku aplikace](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Přejděte do adresáře, který obsahuje soubor řešení sady Visual Studio `BatchDotNetFfmpegTutorial.sln`.
 
-Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Například:
+Otevřete soubor řešení v sadě Visual Studio a aktualizujte řetězce přihlašovacích údajů v souboru `Program.cs` pomocí hodnot, které jste získali pro své účty. Příklad:
 
 ```csharp
 // Batch account credentials
@@ -124,7 +124,7 @@ Když jsou úkoly spuštěné, heat mapa vypadá přibližně takto:
 
 ![Heat mapa fondu](./media/tutorial-parallel-dotnet/pool.png)
 
-Obvyklá doba provádění je přibližně **10 minut**, když aplikaci spouštíte v její výchozí konfiguraci. Vytvoření fondu trvá nejdéle.
+Obvyklá doba provádění je přibližně **10 minut** , když aplikaci spouštíte v její výchozí konfiguraci. Vytvoření fondu trvá nejdéle.
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

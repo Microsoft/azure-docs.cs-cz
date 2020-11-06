@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 60326b0ba06e1642e2831814dd931c69f6a04f3b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.custom: seo-nov-2020
+ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330899"
+ms.locfileid: "94337402"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Co je Azure Cosmos DB analytické úložiště (Preview)?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -19,7 +20,9 @@ ms.locfileid: "94330899"
 > [!IMPORTANT]
 > Azure Cosmos DB analytické úložiště je momentálně ve verzi Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Další informace najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verze Preview.
 
-Azure Cosmos DB analytické úložiště je plně izolované úložiště sloupců, které umožňuje rozsáhlou analýzu před provozními daty v Azure Cosmos DB, aniž by to mělo dopad na vaše transakční úlohy. Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Tento článek popisuje podrobné informace o analytickém úložišti.
+Azure Cosmos DB analytické úložiště je plně izolované úložiště sloupců, které umožňuje rozsáhlou analýzu před provozními daty v Azure Cosmos DB, aniž by to mělo dopad na vaše transakční úlohy. 
+
+Azure Cosmos DB transakční úložiště je nezávislá schématu a umožňuje iterovat na transakčních aplikacích bez nutnosti zabývat se správou schématu nebo indexu. Na rozdíl od toho Azure Cosmos DB analytické úložiště optimalizuje výkon dotazů v analytických dotazech. Tento článek popisuje podrobné informace o analytickém úložišti.
 
 ## <a name="challenges-with-large-scale-analytics-on-operational-data"></a>Problémy s velkými objemy analýz provozních dat
 

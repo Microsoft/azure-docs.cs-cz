@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d5467537e105225541ffc501d345fd2fa57e0803
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 689de4d9fbd9eafeda54b8c157e5174d200c93da
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324563"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338252"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Kurz: sestavení kompletního řešení
 
@@ -286,8 +286,8 @@ V novém okně sady Visual Studio otevřete (ze stažené složky řešení) _si
 V podokně *Průzkumník řešení* v tomto novém okně sady Visual Studio vyberte možnost _DeviceSimulator/ **AzureIoTHub.cs**_ a otevřete ji v okně pro úpravy. Změňte následující hodnoty připojovacího řetězce na hodnoty, které jste shromáždili výše:
 
 ```csharp
-connectionString = <Iot-hub-connection-string>
-deviceConnectionString = <device-connection-string>
+iotHubConnectionString = <your-hub-connection-string>
+deviceConnectionString = <your-device-connection-string>
 ```
 
 Soubor uložte.

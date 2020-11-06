@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924749"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94338037"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Správa Data Box Disku pomocí webu Azure Portal
 
@@ -29,15 +29,15 @@ Když chcete zrušit objednávku, postupujte následovně.
 
 1.  Přejděte na **Přehled > Zrušit**. 
 
-    ![Zrušení objednávky 1](media/data-box-portal-ui-admin/cancel-order1.png)
+    ![Příkaz Cancel na kartě Přehled pro objednávku](media/data-box-portal-ui-admin/portal-ui-admin-cancel-command.png)
 
 2.  Zadejte důvod zrušení objednávky.  
 
-    ![Zrušení objednávky 2](media/data-box-portal-ui-admin/cancel-order2.png)
+    ![Důvod zrušení objednávky](media/data-box-portal-ui-admin/portal-ui-admin-cancel-order-reason.png)
 
 3.  Po zrušení objednávky se na portálu aktualizuje její stav na **Zrušeno**.
 
-    ![Zrušení objednávky 3](media/data-box-portal-ui-admin/cancel-order3.png)
+    ![Zrušené pořadí](media/data-box-portal-ui-admin/portal-ui-admin-canceled-order.png)
 
 Při zrušení objednávky nedostanete e-mailem oznámení.
 
@@ -49,13 +49,13 @@ Pokud chcete naklonovat objednávku, proveďte následující kroky.
 
 1.  Přejděte na **Přehled > Klonovat**. 
 
-    ![Klonování objednávky 1](media/data-box-portal-ui-admin/clone-order1.png)
+    ![Příkaz Clone na kartě Přehled pro objednávku](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
 2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Vytvořit**.    
 
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
-[![Pořadí klonování 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![Klonovaný pořadí](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png)](media/data-box-portal-ui-admin/portal-ui-admin-cloned-order.png#lightbox) 
 
 ## <a name="delete-order"></a>Odstranění objednávky
 
@@ -65,15 +65,15 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
 
 1. Přejděte na **Všechny prostředky**. Vyhledejte svoji objednávku.
 
-    ![Hledání objednávek Data Box Disku](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
+    ![Hledat objednávky](media/data-box-portal-ui-admin/portal-ui-admin-search-data-box-disk-orders.png)
 
 2. Klikněte na objednávku, kterou chcete odstranit, a přejděte na **Přehled**. Na panelu příkazů klikněte na **Odstranit**.
 
-    ![Odstranění objednávky Data Box Disku 1](media/data-box-portal-ui-admin/delete-order1.png)
+    ![Odstranění objednávky](media/data-box-portal-ui-admin/portal-ui-admin-delete-command.png)
 
 3. Po zobrazení výzvy k potvrzení odstranění objednávky zadejte název objednávky. Klikněte na **Odstranit**.
 
-     ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
+     ![Potvrdit odstranění objednávky](media/data-box-portal-ui-admin/portal-ui-admin-confirm-deletion.png)
 
 
 ## <a name="download-shipping-label"></a>Stažení expedičního štítku
@@ -83,11 +83,11 @@ Pokud se zpětný expediční štítek zaslaný s vašimi disky někam zatoulá 
 Pokud chcete stáhnout expediční štítek, proveďte následující kroky.
 1.  Přejděte na **Přehled > Stáhnout expediční štítek**. Tato možnost je dostupná teprve po odeslání disku. 
 
-    ![Stažení expedičního štítku](media/data-box-portal-ui-admin/download-shipping-label.png)
+    ![Stažení expedičního štítku](media/data-box-portal-ui-admin/portal-ui-admin-download-shipping-label.png)
 
 2.  Tato akce stáhne následující zpětný expediční štítek. Štítek uložte, vytiskněte ho a připojte ho ke zpětné zásilce.
 
-    ![Ukázkový expediční štítek](media/data-box-portal-ui-admin/example-shipping-label.png)
+    ![Ukázkový expediční štítek](media/data-box-portal-ui-admin/portal-ui-admin-example-shipping-label.png)
 
 ## <a name="edit-shipping-address"></a>Úprava dodací adresy
 
@@ -97,11 +97,11 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit dodací adresu**.
 
-    ![Úprava dodací adresy 1](media/data-box-portal-ui-admin/edit-shipping-address1.png)
+    ![Upravit dodací adresu – příkaz v pořadí podrobností](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-command.png)
 
 2. Teď můžete upravit dodací adresu a uložit změny.
 
-    ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
+    ![Dialogové okno Upravit dodací adresu](media/data-box-portal-ui-admin/portal-ui-admin-edit-shipping-address-dbox.png)
 
 ## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
 
@@ -111,15 +111,15 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 1. Přejděte na **Podrobnosti objednávky > Upravit podrobnosti o oznámení**.
 
-    ![Úprava podrobností o oznámení 1](media/data-box-portal-ui-admin/edit-notification-details1.png)
+    ![Upravit podrobnosti oznámení příkazu v podrobnostech objednávky](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-command.png)
 
 2. Teď můžete upravit podrobnosti o oznámení a uložit změny.
  
-    ![Úprava podrobností o oznámení 2](media/data-box-portal-ui-admin/edit-notification-details2.png)
+    ![Dialogové okno Upravit podrobnosti oznámení](media/data-box-portal-ui-admin/portal-ui-admin-edit-notification-details-dbox.png)
 
 ## <a name="view-order-status"></a>Zobrazení stavu objednávky
 
-|Stav objednávky |Description |
+|Stav objednávky |Popis |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br> Pokud disky nejsou k dispozici, obdržíte oznámení. <br>Pokud jsou disky dostupné, Microsoft určí disky k odeslání a připraví balíček s disky.        |
 |Zpracováno     | Proběhlo zpracování objednávky. <br> Během zpracování objednávky dochází k těmto akcím:<li>Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker. </li> <li>Data Box Disk se uzamkne, aby se zabránilo neoprávněnému přístupu.</li><li>Během tohoto procesu se vygeneruje klíč k odemknutí disků.</li>        |

@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 9d683f96f31d3b34ac311251f45456551148ca26
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ae73885016a40cd3cf79de968ca7c07c51f1400a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420882"
+ms.locfileid: "94336059"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Čtení replik v Azure Database for MySQL-flexibilním serveru
 
@@ -125,7 +125,7 @@ Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili p
 | Zastavené repliky | Pokud zastavíte replikaci mezi zdrojovým serverem a replikou pro čtení, zastavená replika se stane samostatným serverem, který přijímá čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky. |
 | Odstraněné zdrojové a samostatné servery | Po odstranění zdrojového serveru se replikace zastaví na všechny repliky čtení. Tyto repliky se automaticky změní na samostatné servery a můžou přijímat operace čtení i zápisu. Samotný zdrojový server se odstraní. |
 | Uživatelské účty | Uživatelé na zdrojovém serveru se replikují do replik pro čtení. K replice pro čtení se můžete připojit pouze pomocí uživatelských účtů, které jsou k dispozici na zdrojovém serveru. |
-| Parametry serveru | Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci. <br> Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. <br> Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky. |
+| Parametry serveru | Aby se při použití replik pro čtení zabránilo přerušení synchronizace dat a možné ztrátě nebo poškození dat, některé parametry serveru neumožňují aktualizaci. <br> Následující parametry serveru jsou uzamčené na zdrojovém serveru i na serverech repliky:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)Parametr je uzamčen na serverech repliky. <br> Pokud chcete na zdrojovém serveru aktualizovat jeden z výše uvedených parametrů, odstraňte prosím servery repliky, aktualizujte hodnotu parametru ve zdroji a znovu vytvořte repliky. |
 | Jiné | -Vytvoření repliky repliky není podporováno. <br> – Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie replikace MySQL. Další informace najdete v [referenční dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Zajistěte, aby tabulky zdrojového serveru měly primární klíče. Nedostatek primárních klíčů může způsobit latenci replikace mezi zdrojem a replikami.<br>– Projděte si úplný seznam omezení replikace MySQL v [dokumentaci k MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) . |
 
 ## <a name="next-steps"></a>Další kroky

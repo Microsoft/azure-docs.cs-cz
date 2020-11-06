@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 132c072ad4cbee5cc3ac49695aa34480dc827400
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565748"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337340"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -32,11 +32,11 @@ Data Box představuje bezpečné řešení pro přenos dat díky tomu, že prohl
 
 Následující diagram znázorňuje tok dat prostřednictvím Azure Data Box řešení z místního prostředí do Azure a různé funkce zabezpečení, které jsou k disřadě jako data v rámci řešení. Tento tok je určen pro pořadí importu Data Box.
 
-![Data Box import zabezpečení](media/data-box-security/data-box-security-2.png)
+![Data Box import zabezpečení](media/data-box-security/data-box-security-import.png)
 
 Následující diagram je určen pro pořadí exportu Data Box.
 
-![Data Box exportovat zabezpečení](media/data-box-security/data-box-security-3.png)
+![Data Box exportovat zabezpečení](media/data-box-security/data-box-security-export.png)
 
 Jak data přecházejí přes toto řešení, události se zaznamenávají a generují se protokoly. Další informace najdete tady:
 
@@ -106,7 +106,7 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 V zařízení Data Box jsou implementovány následující pokyny pro zabezpečení: 
 
-|Pokyn   |Description   |
+|Pokyn   |Popis   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Ochrana před vodou a prachem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Odolnost před nešetrným zacházením při přepravě          |

@@ -3,12 +3,12 @@ title: Koncepty – privátní cloudy a clustery
 description: Seznamte se s klíčovými možnostmi pro datové centra a vSphere clustery definovaná na základě softwaru řešení Azure VMware.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791014"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337317"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Koncepce privátního cloudu a clusteru řešení Azure VMware
 
@@ -52,9 +52,9 @@ Aktuální verze softwaru softwaru VMware používané v clusterech privátního
 
 | Software              |    Verze   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U2    | 
-| ESXi                  |    6,7 U2    | 
-| Síti vSAN                  |    6,7 U2    |
+| VCSA/vSphere/ESXi |    6,7 U3    | 
+| ESXi                  |    6,7 U3    | 
+| Síti vSAN                  |    6,7 U3    |
 | NSX-T                 |      2.5     |
 
 Pro všechny nové clustery v privátním cloudu odpovídá verze softwaru, co je aktuálně spuštěná. Pro všechny nové privátní cloudy v rámci předplatného se nainstaluje nejnovější verze softwarového zásobníku.

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39564a34eb7a57cbd20e37b90d064917d5bf3b7a
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286304"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337525"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Úvod do Linuxu na Azure
 Tento článek poskytuje přehled o spuštění virtuálního počítače s FreeBSD v Azure.
@@ -22,9 +22,9 @@ FreeBSD for Microsoft Azure je pokročilý počítačový operační systém, kt
 
 Microsoft Corporation zpřístupňuje image FreeBSD v Azure s předem nakonfigurovaným [agentem hosta virtuálního počítače Azure](https://github.com/Azure/WALinuxAgent/) . V současné době jsou k dispozici následující verze FreeBSD jako image od Microsoftu:
 
-- [FreeBSD 10,4 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-- [FreeBSD 11,2 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD112)
-- [FreeBSD 12,0 na Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD120)
+- FreeBSD 10,4 na Azure Marketplace
+- FreeBSD 11,2 na Azure Marketplace
+- FreeBSD 12,0 na Azure Marketplace
 
 Agent zodpovídá za komunikaci mezi virtuálním počítačem FreeBSD a prostředky infrastruktury Azure pro operace, jako je například zřízení virtuálního počítače při prvním použití (uživatelské jméno, heslo nebo klíč SSH, název hostitele atd.) a povolení funkcí pro selektivní rozšíření virtuálních počítačů.
 
@@ -33,22 +33,22 @@ Stejně jako v budoucích verzích FreeBSD je strategie aktuální a v krátké 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>Vytvoření virtuálního počítače s FreeBSD prostřednictvím rozhraní příkazového řádku Azure v FreeBSD
 Nejdřív je potřeba nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli) , i když na počítači FreeBSD tento příkaz
 
-```bash 
+```bash 
 curl -L https://aka.ms/InstallAzureCli | bash
 ```
 
-Pokud na vašem počítači FreeBSD není nainstalovaný bash, spusťte před instalací následující příkaz. 
+Pokud na vašem počítači FreeBSD není nainstalovaný bash, spusťte před instalací následující příkaz. 
 
 ```bash
 sudo pkg install bash
 ```
 
-Pokud Python není nainstalovaný na vašem počítači s FreeBSD, spusťte před instalací následující příkazy. 
+Pokud Python není nainstalovaný na vašem počítači s FreeBSD, spusťte před instalací následující příkazy. 
 
 ```bash
 sudo pkg install python35
-cd /usr/local/bin 
-sudo rm /usr/local/bin/python 
+cd /usr/local/bin 
+sudo rm /usr/local/bin/python 
 sudo ln -s /usr/local/bin/python3.5 /usr/local/bin/python
 ```
 
@@ -57,7 +57,7 @@ Během instalace se zobrazí výzva `Modify profile to update your $PATH and ena
 Nyní se můžete přihlásit k Azure a vytvořit virtuální počítač s FreeBSD. Níže je příklad vytvoření virtuálního počítače s FreeBSD 11,0. Můžete také přidat parametr `--public-ip-address-dns-name` s globálně jedinečným názvem DNS pro nově vytvořenou veřejnou IP adresu. 
 
 ```azurecli
-az login 
+az login 
 az group create --name myResourceGroup --location eastus
 az vm create --name myFreeBSD11 \
     --resource-group myResourceGroup \

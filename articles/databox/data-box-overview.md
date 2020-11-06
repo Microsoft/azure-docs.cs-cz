@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123558"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336677"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
 
@@ -90,12 +90,12 @@ Data Box má následující součásti:
 
 * **Zařízení Data Box** – fyzické zařízení, které poskytuje primární úložiště, spravuje komunikaci s cloudovým úložištěm a pomáhá zajistit zabezpečení a důvěrnost všech dat, která jsou v zařízení uložená. Použitelná kapacita zařízení Data Box je 80 TB. 
 
-    ![Přední a zadní plocha Data Boxu](media/data-box-overview/data-box-combined3.png)
+    ![Přední a zadní plocha Data Boxu](media/data-box-overview/data-box-combined.png)
 
     
 * **Služba Data Box** – rozšíření webu Azure Portal, které vám umožní spravovat zařízení Data Box z webového rozhraní, ke kterému můžete získat přístup z různých geografických umístění. Pomocí služby Data Box můžete zařízení Data Box spravovat každodenně. Mezi úlohy služby patří postup vytvoření a správy objednávek, zobrazení a správa výstrah a správa sdílených složek.  
 
-    ![Služba Data Box na webu Azure Portal](media/data-box-overview/data-box-service1.png)
+    ![Služba Data Box na webu Azure Portal](media/data-box-overview/data-box-service.png)
 
     Další informace najdete v tématu [Použití služby Data Box ke správě vašeho zařízení Data Box](data-box-portal-ui-admin.md).
 

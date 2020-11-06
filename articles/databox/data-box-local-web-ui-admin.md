@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127520"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337283"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -104,7 +104,7 @@ Než začnete, postupujte podle těchto kroků a Stáhněte soubory kusovníku n
     |---------|---------|---------|
     |utSAC1_202006051000_BlockBlob-BOM.txt     |Objekty blob bloku         |SMB/NFS         |
     |utSAC1_202006051000_PageBlob-BOM.txt     |Objekty blob stránky         |SMB/NFS         |
-    |utSAC1_202006051000_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |utsac1_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |utsac1_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
 
@@ -212,7 +212,7 @@ Povolení oprávnění operátora zálohování v zařízení Azure:
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
 
-   ![Otevřít nastavení Data Box](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![Otevřít nastavení Data Box-1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Povolit** Oprávnění operátora zálohování.
 
@@ -235,7 +235,7 @@ Povolení přenosu seznamů ACL pro soubory Azure:
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
 
-    ![Otevřít nastavení Data Box](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Otevřít nastavení Data Box – 2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Povolit** Seznamy ACL pro soubory Azure.
 
@@ -255,7 +255,7 @@ Povolení TLS 1,1 ve vašem zařízení Azure:
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení vyberte **Nastavení**.
 
-    ![Otevřít nastavení Data Box](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Otevřít nastavení Data Box-3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Povolit** TLS 1,1.
 

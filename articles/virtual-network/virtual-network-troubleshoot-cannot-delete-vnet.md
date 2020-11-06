@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 83afdf7e9dc50e50d747db99cd8439d75e6f7804
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167810"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335671"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepodařilo se odstranit virtuální síť v Azure.
 
@@ -31,10 +31,11 @@ Při pokusu o odstranění virtuální sítě v Microsoft Azure může docházet
 
 1. [Ověřte, jestli je ve virtuální síti spuštěná Brána virtuální sítě](#check-whether-a-virtual-network-gateway-is-running-in-the-virtual-network).
 2. [Ověřte, zda je ve virtuální síti spuštěna Aplikační brána](#check-whether-an-application-gateway-is-running-in-the-virtual-network).
-3. [Ověřte, jestli je ve virtuální síti povolená Azure Active Directory Doménová služba](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
-4. [Ověřte, jestli je virtuální síť připojená k jinému prostředku](#check-whether-the-virtual-network-is-connected-to-other-resource).
-5. [Ověřte, jestli virtuální počítač pořád běží ve virtuální síti](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
-6. [Ověřte, jestli je virtuální síť zablokovaná při migraci](#check-whether-the-virtual-network-is-stuck-in-migration).
+3. [Ověřte, jestli ve virtuální síti stále existují instance kontejnerů Azure](#check-whether-azure-container-instances-still-exist-in-the-virtual-network).
+4. [Ověřte, jestli je ve virtuální síti povolená Azure Active Directory Doménová služba](#check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network).
+5. [Ověřte, jestli je virtuální síť připojená k jinému prostředku](#check-whether-the-virtual-network-is-connected-to-other-resource).
+6. [Ověřte, jestli virtuální počítač pořád běží ve virtuální síti](#check-whether-a-virtual-machine-is-still-running-in-the-virtual-network).
+7. [Ověřte, jestli je virtuální síť zablokovaná při migraci](#check-whether-the-virtual-network-is-stuck-in-migration).
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
@@ -59,6 +60,19 @@ Přejít na stránku **Přehled** virtuální sítě. Ověřte **připojená za�
 ![Snímek obrazovky se seznamem připojených zařízení pro virtuální síť v Azure Portal. Application Gateway je v seznamu zvýrazněná.](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 Pokud je k dispozici brána Application Gateway, je nutné ji odebrat předtím, než budete moci odstranit virtuální síť.
+
+### <a name="check-whether-azure-container-instances-still-exist-in-the-virtual-network"></a>Ověřte, jestli ve virtuální síti pořád existují instance kontejnerů Azure.
+
+1. V Azure Portal přejdete na stránku **Přehled** skupiny prostředků.
+1. V záhlaví seznamu prostředků skupiny prostředků vyberte **Zobrazit skryté typy**. Typ profilu sítě je ve výchozím nastavení skrytý Azure Portal.
+1. Vyberte profil sítě, který souvisí se skupinami kontejnerů.
+1. Vyberte **Odstranit**.
+
+   ![Snímek obrazovky se seznamem skrytých profilů sítě](media/virtual-network-troubleshoot-cannot-delete-vnet/container-instances.png)
+
+1. Odstraňte podsíť nebo virtuální síť znovu.
+
+Pokud tyto kroky problém nevyřeší, pomocí těchto [příkazů Azure CLI](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources) vyčistěte prostředky. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Ověřte, jestli je ve virtuální síti povolená Azure Active Directory Doménová služba.
 

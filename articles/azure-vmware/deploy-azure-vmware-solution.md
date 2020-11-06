@@ -3,13 +3,13 @@ title: Nasazení a konfigurace řešení Azure VMware
 description: Naučte se používat informace shromážděné ve fázi plánování k nasazení privátního cloudu řešení Azure VMware.
 ms.topic: tutorial
 ms.author: tredavis
-ms.date: 10/02/2020
-ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 11/09/2020
+ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152022"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94336331"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Nasazení a konfigurace řešení Azure VMware
 
@@ -59,7 +59,7 @@ Pole s odkazem se nachází ve virtuální síti, ve které se řešení Azure V
 
 V seznamu efektivní trasy by se měly zobrazit sítě vytvořené jako součást nasazení řešení Azure VMware. Uvidíte několik sítí, které byly odvozeny od [ `/22` sítě, kterou jste definovali](production-ready-deployment-steps.md#ip-address-segment) během [postupu nasazení](#deploy-azure-vmware-solution) dříve v tomto článku.
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Vytvoření pole pro přechod řešení Azure VMware" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Ověřte síťové trasy inzerované z řešení Azure VMware do Azure Virtual Network" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
 V tomto příkladu byla během nasazení v síti 10.74.72.0/22 zadaná síť, která je odvozená od/24 sítí.  Pokud vidíte něco podobného, můžete se připojit k vCenter v řešení Azure VMware.
 
@@ -97,10 +97,10 @@ Vzhledem k tomu, že se vyžaduje DNS, určete, jaký server DNS chcete použít
 
 Pokud máte v úmyslu používat na segmentech NSX-T protokol DHCP, pokračujte v této části. V opačném případě přejděte na oddíl [Přidat virtuální počítač v části segment sítě NSX-T](#add-a-vm-on-the-nsx-t-network-segment) .  
 
-Teď, když jste vytvořili segment sítě NSX-T, můžete provést jeden z následujících způsobů:
+Teď, když jste vytvořili segment sítě NSX-T, můžete vytvořit a spravovat protokol DHCP v řešení Azure VMware dvěma způsoby:
 
-* Jako server DHCP pro vytvořené segmenty použijte NSX-T. Pro tuto možnost budete chtít [vytvořit server DHCP v NSX-T](manage-dhcp.md#create-dhcp-server) a [předat ho k tomuto serveru](manage-dhcp.md#create-dhcp-relay-service).
-* Přenášet požadavky DHCP od segmentů NSX-T na server DHCP jinde ve vašem prostředí. Pro tuto možnost [proveďte pouze konfiguraci přenosu](manage-dhcp.md#create-dhcp-relay-service).
+* Pokud k hostování serveru DHCP používáte NSX-T, budete muset [vytvořit server DHCP](manage-dhcp.md#create-a-dhcp-server) a [předat ho k tomuto serveru](manage-dhcp.md#create-dhcp-relay-service). 
+* Pokud v síti používáte externí server DHCP třetí strany, budete muset [vytvořit předávací službu DHCP](manage-dhcp.md#create-dhcp-relay-service).  Pro tuto možnost [proveďte pouze konfiguraci přenosu](manage-dhcp.md#create-dhcp-relay-service).
 
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>Přidání virtuálního počítače do segmentu sítě NSX-T
