@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 285c3bf37e9d6de042cb028745fc8b094d34c3a1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c0556350482e171234a3ff9dce0c16ed88d110
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284412"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406765"
 ---
 Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
 
@@ -23,15 +23,15 @@ Tyto osvědčené postupy při zpracování chyb jsou důležité, aby nedošlo 
 - [Povolit Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [Použití strukturovaného zpracování chyb](#use-structured-error-handling)
 - [Návrh pro idempotence](../articles/azure-functions/functions-idempotent.md)
-- [Implementujte zásady opakování](#retry-policies) (tam, kde je to vhodné).
+- [Implementujte zásady opakování](#retry-policies-preview) (tam, kde je to vhodné).
 
 ### <a name="use-structured-error-handling"></a>Použití strukturovaného zpracování chyb
 
 Zaznamenávání a protokolování chyb je klíčové pro monitorování stavu vaší aplikace. Nejvyšší úroveň každého kódu funkce by měla obsahovat blok try/catch. V bloku catch můžete zaznamenávat a protokolovat chyby.
 
-## <a name="retry-policies"></a>Zásady opakování
+## <a name="retry-policies-preview"></a>Zásady opakování (Preview)
 
-Zásady opakování se dají definovat u libovolné funkce pro libovolný typ triggeru ve vaší aplikaci Function App.  Zásada opakování znovu spustí funkci až do úspěšného provedení nebo do doby, než dojde k maximálnímu počtu opakovaných pokusů.  Zásady opakování lze definovat pro všechny funkce aplikace nebo pro jednotlivé funkce.  Ve výchozím nastavení aplikace Function App neopakuje zprávy (kromě [konkrétních triggerů, které mají ve zdroji triggeru zásady opakování](#trigger-specific-retry-support)).  Zásada opakování je vyhodnocena vždy, když je výsledkem spuštění nezachycená výjimka.  V rámci osvědčeného postupu byste měli zachytit všechny výjimky v kódu a znovu vyvolávat všechny chyby, které by měly mít za následek opakování.  Kontrolní body Event Hubs a Azure Cosmos DB nebudou zapsány, dokud zásady opakování pro spuštění nebudou dokončeny, což znamená, že průběh tohoto oddílu bude pozastaven až do dokončení aktuální dávky.
+Zásady opakování se dají definovat u libovolné funkce pro libovolný typ triggeru ve vaší aplikaci Function App.  Zásada opakování znovu spustí funkci až do úspěšného provedení nebo do doby, než dojde k maximálnímu počtu opakovaných pokusů.  Zásady opakování lze definovat pro všechny funkce aplikace nebo pro jednotlivé funkce.  Ve výchozím nastavení aplikace Function App neopakuje zprávy (kromě [konkrétních triggerů, které mají ve zdroji triggeru zásady opakování](#using-retry-support-on-top-of-trigger-resilience)).  Zásada opakování je vyhodnocena vždy, když je výsledkem spuštění nezachycená výjimka.  V rámci osvědčeného postupu byste měli zachytit všechny výjimky v kódu a znovu vyvolat všechny chyby, které by měly mít za následek opakování.  Kontrolní body Event Hubs a Azure Cosmos DB nebudou zapsány, dokud zásady opakování pro spuštění nebudou dokončeny, což znamená, že průběh tohoto oddílu bude pozastaven až do dokončení aktuální dávky.
 
 ### <a name="retry-policy-options"></a>Možnosti zásad opakování
 
@@ -57,6 +57,8 @@ Pro konkrétní funkci je možné definovat zásady opakování.  Konfigurace sp
 #### <a name="fixed-delay-retry"></a>Pevné zpoždění opakování
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Opakování vyžadují balíček NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -152,6 +154,8 @@ Tady jsou zásady opakování v *function.js* souboru:
 #### <a name="exponential-backoff-retry"></a>Exponenciální omezení rychlosti opakování
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+Opakování vyžadují balíček NuGet [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23
 
 ```csharp
 [FunctionName("EventHubTrigger")]
@@ -255,12 +259,27 @@ Tady jsou zásady opakování v *function.js* souboru:
 |minimumInterval|neuvedeno|Minimální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.|
 |maximumInterval|neuvedeno|Maximální prodleva při opakovaném pokusu při použití `exponentialBackoff` strategie.| 
 
-## <a name="trigger-specific-retry-support"></a>Podpora opakování specifická pro aktivační události
+### <a name="retry-limitations-during-preview"></a>Omezení počtu opakování během období Preview
 
-Některé triggery zajišťují opakované pokusy ve zdroji triggeru.  Tyto opakované pokusy lze použít společně s nebo jako náhrada pro zásady opakování hostitele aplikace Function App.  Pokud se požaduje pevný počet opakovaných pokusů, použijte zásady opakování specifické pro danou aktivační událost pomocí zásad obecného opakování hostitele.  Následující aktivační události podporují opakování ve zdroji triggeru:
+- Pro projekty .NET může být nutné ručně načíst ve verzi [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) >= 3.0.23.
+- V plánu spotřeby může být aplikace při opakovaném pokusu o ukončení poslední zprávy ve frontě škálovaná na nulu.
+- V plánu spotřeby může být aplikace při provádění opakování škálovaná.  Pro dosažení nejlepších výsledků vyberte interval opakování <= 00:01:00 a <= 5 opakování.
+
+## <a name="using-retry-support-on-top-of-trigger-resilience"></a>Použití podpory opakování na odolnost triggeru
+
+Zásada opakování aplikace Function App je nezávislá na jakýchkoli opakovaných pokusech nebo odolnosti, které aktivační událost poskytuje.  Zásady opakování funkce budou převrstvit na horním panelu opakovaného pokusu o spuštění.  Pokud například používáte Azure Service Bus, mají ve výchozím nastavení fronty počet doručování zpráv 10.  Výchozí počet doručení znamená po 10 pokusech o doručení zprávy fronty Service Bus nedoručené zprávě.  Můžete definovat zásady opakování pro funkci, která má aktivační událost Service Bus, ale opakované pokusy budou překryty na Service Bus pokusů o doručení.  
+
+Například pokud jste použili výchozí počet doručování Service Bus 10 a definovali jste zásady opakování funkce 5.  Zpráva by nejdřív vyřadí z fronty a zvyšuje účet pro doručení Service Bus na 1.  Pokud při každém spuštění nedošlo k chybě, po pěti pokusech o aktivaci stejné zprávy bude tato zpráva označena jako opuštěno.  Service Bus by zprávu hned znovu zařadila do fronty, aktivovala se funkce a zvýší se počet doručení na 2.  Nakonec, až 50 případné pokusy (10 doručení služby Service Bus * pět opakování funkce za doručení), zpráva bude opuštěna a spustí nedoručené oznámení na službě Service Bus.
+
+> [!WARNING]
+> U triggeru, jako je Service Bus front na 1, se nedoporučuje nastavovat počet doručení, což znamená, že se zpráva bude nedoručená ihned po opakovaném cyklu jedné funkce.  Důvodem je to, že triggery zajišťují odolnost proti opakovaným pokusům, zatímco zásady opakování funkce jsou nejlepší a můžou být menší, než je požadovaný celkový počet opakovaných pokusů.
+
+### <a name="triggers-with-additional-resiliency-or-retries"></a>Aktivační události s dodatečnou odolností nebo opakovanými pokusy
+
+Následující aktivační události podporují opakování ve zdroji triggeru:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (fronta/téma)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Ve výchozím nastavení se tyto triggery spustí znovu a požádá se o pět časů. Po pátém opakování se aktivační událost Azure Queue Storage i Azure Service Bus zapisují do [nepoškozené fronty](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages).
+Ve výchozím nastavení většina aktivačních událostí opakuje žádost až pětkrát. Po pátém opakování bude úložiště front Azure zapisovat zprávu do [fronty nezpracovatelných](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#poison-messages)zpráv.  Výchozí Service Bus fronty a zásady pro témata zapisují zprávu do [fronty nedoručených](../articles/service-bus-messaging/service-bus-dead-letter-queues.md) zpráv po 10 pokusech.

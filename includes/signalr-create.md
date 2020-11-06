@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: ba46d4dbe90b696398ed4c78383e127861c1a066
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86050443"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93406716"
 ---
 1. Pokud chcete vytvořit prostředek služby signalizace Azure, nejdřív se přihlaste k [Azure Portal](https://portal.azure.com). V levé horní části stránky vyberte **+ vytvořit prostředek**. Do textového pole **Hledat na Marketplace** zadejte **službu Signal**.
 
@@ -30,9 +30,11 @@ ms.locfileid: "86050443"
     | Cenová úroveň | Zadejte možnost pro *bezplatnou* SKU. | V současné době jsou dostupné **bezplatné** a **standardní** možnosti. |
     | Připnout na řídicí panel | ✔ | Toto políčko zaškrtněte, pokud chcete prostředek připnout na řídicí panel, aby bylo snazší ho najít. |
 
-4. Vyberte **Vytvořit**. Dokončení nasazení může trvat několik minut.
+4. Vyberte **Zkontrolovat a vytvořit**. Počkejte na dokončení ověření. 
 
-5. Až se nasazení dokončí, v části **Nastavení**vyberte **klíče** . Zkopírujte připojovací řetězec pro primární klíč. Pomocí tohoto řetězce později nakonfigurujete aplikaci tak, aby používala prostředek služby Azure Signal.
+5. Vyberte **Vytvořit**. Dokončení nasazení může trvat několik minut.
+
+6. Až se nasazení dokončí, v části **Nastavení** vyberte **klíče** . Zkopírujte připojovací řetězec pro primární klíč. Pomocí tohoto řetězce později nakonfigurujete aplikaci tak, aby používala prostředek služby Azure Signal.
 
     Připojovací řetězec bude mít následující formát:
     
