@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: 2dc8773dc41493e30f64c0602b4345a9491cd7b7
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379702"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331430"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -150,9 +150,9 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Využijte místní prostředí Integration runtime k podpoře integrace dat v rámci virtuální sítě Azure.
 - Považovat zdroj dat za místní zdroj dat, který je za bránou firewall, a to i v případě, že používáte Azure ExpressRoute. Pomocí místního prostředí Integration runtime připojte službu ke zdroji dat.
 - Využijte místní prostředí Integration runtime i v případě, že je úložiště dat v cloudu na virtuálním počítači infrastruktury Azure jako služba (IaaS).
-- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, zakažte na serveru šifrování standardu FIPS. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
+- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, máte dvě možnosti: uložení přihlašovacích údajů/tajných hodnot v Azure Key Vault nebo zakázání šifrování kompatibilního se standardem FIPS na serveru. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Podporované verze Windows jsou:
   + Windows 7 Service Pack 1

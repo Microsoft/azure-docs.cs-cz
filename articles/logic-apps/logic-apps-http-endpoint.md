@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 08/27/2020
-ms.openlocfilehash: 5032676848536f0b9498cf4beecf86277484a901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230802"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331970"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Volání, triggery nebo vnořování aplikací logiky pomocí koncových bodů HTTPS v Azure Logic Apps
 
@@ -23,7 +23,8 @@ Aby se aplikace logiky dokázala volat přes adresu URL a mohla přijímat pří
 
 Tento článek ukazuje, jak vytvořit volající koncový bod ve vaší aplikaci logiky pomocí triggeru žádosti a zavolat tento koncový bod z jiné aplikace logiky. Všechny zásady se vztahují stejným způsobem na jiné typy triggerů, které můžete použít pro příjem příchozích požadavků.
 
-Informace o šifrování, zabezpečení a autorizaci příchozích volání do vaší aplikace logiky, jako je například [TLS (Transport Layer Security)](https://en.wikipedia.org/wiki/Transport_Layer_Security), dříve označované jako SSL (Secure SOCKETS Layer) (SSL) nebo [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
+Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +34,7 @@ Informace o šifrování, zabezpečení a autorizaci příchozích volání do v
 
 ## <a name="create-a-callable-endpoint"></a>Vytvořit volatelné koncové body
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com). Vytvořte a otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V poli hledání vyberte **předdefinované**. Do vyhledávacího pole zadejte `request` jako filtr. V seznamu triggery vyberte, **kdy se přijme požadavek HTTP**.
 
@@ -125,7 +126,7 @@ Informace o šifrování, zabezpečení a autorizaci příchozích volání do v
 
 Ve výchozím nastavení očekává aktivační událost požadavek POST. Můžete zadat jinou metodu, která má být očekávána, ale pouze jediná metoda.
 
-1. V aktivační události žádosti otevřete seznam **Přidat nový parametr** a vyberte **metodu**, která do triggeru přidá tuto vlastnost.
+1. V aktivační události žádosti otevřete seznam **Přidat nový parametr** a vyberte **metodu** , která do triggeru přidá tuto vlastnost.
 
    ![Přidat vlastnost Method k triggeru](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
@@ -153,7 +154,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ### <a name="accept-values-through-get-parameters"></a>Přijmout hodnoty prostřednictvím parametrů GET
 
-1. V triggeru žádosti otevřete **seznam přidat nový parametr**, přidejte do triggeru vlastnost **Method** a vyberte metodu **Get** .
+1. V triggeru žádosti otevřete **seznam přidat nový parametr** , přidejte do triggeru vlastnost **Method** a vyberte metodu **Get** .
 
    Další informace najdete v tématu [Výběr očekávané metody žádosti](#select-method).
 
@@ -161,11 +162,11 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
    
-   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci** zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
 1. Chcete-li vytvořit `triggerOutputs()` výraz, který načte hodnotu parametru, postupujte takto:
 
-   1. Klikněte do vlastnosti **tělo** akce odpovědi, aby se zobrazil seznam dynamického obsahu a **výraz**SELECT.
+   1. Klikněte do vlastnosti **tělo** akce odpovědi, aby se zobrazil seznam dynamického obsahu a **výraz** SELECT.
 
    1. Do pole **výraz** zadejte tento výraz, nahraďte `parameter-name` názvem parametru a vyberte **OK**.
 
@@ -216,7 +217,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
 ### <a name="accept-values-through-a-relative-path"></a>Přijmout hodnoty pomocí relativní cesty
 
-1. V triggeru žádosti otevřete seznam **Přidat nový parametr** a vyberte **relativní cesta**, která přidá tuto vlastnost triggeru.
+1. V triggeru žádosti otevřete seznam **Přidat nový parametr** a vyberte **relativní cesta** , která přidá tuto vlastnost triggeru.
 
    ![Přidat vlastnost relativní cesty k triggeru](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
@@ -228,7 +229,7 @@ Pokud chcete přijmout hodnoty parametrů prostřednictvím adresy URL koncovéh
 
    1. V části Trigger žádosti vyberte **Nový krok**  >  **přidat akci**.
 
-   1. V části **zvolit akci**zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
+   1. V části **zvolit akci** zadejte do vyhledávacího pole `response` jako filtr. V seznamu akce vyberte akci **reakce** .
 
 1. Do vlastnosti **tělo** akce odpovědi přidejte token, který představuje parametr, který jste zadali v relativní cestě triggeru.
 
@@ -301,11 +302,11 @@ Například pokud přidáte další vlastnosti, například `"suite"` , do sché
 
 ## <a name="create-nested-logic-apps"></a>Vytváření vnořených aplikací logiky
 
-Pracovní postupy můžete v aplikaci logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto Logic Apps, postupujte takto:
+Pracovní postupy můžete do aplikace logiky vnořovat přidáním dalších aplikací logiky, které můžou přijímat požadavky. Pokud chcete zahrnout tyto Logic Apps, postupujte takto:
 
 1. V kroku, kde chcete zavolat jinou aplikaci logiky, vyberte **Nový krok**  >  **přidat akci**.
 
-1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `logic apps` jako filtr. V seznamu akce vyberte **možnost zvolit pracovní postup Logic Apps**.
+1. V části **zvolit akci** vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `logic apps` jako filtr. V seznamu akce vyberte **možnost zvolit pracovní postup Logic Apps**.
 
    ![Vnoření aplikace logiky do aktuální aplikace logiky](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
@@ -352,7 +353,7 @@ V těle odpovědi můžete zahrnout více hlaviček a libovolného typu obsahu. 
 
 Odpovědi mají tyto vlastnosti:
 
-| Property (zobrazení) | Property (JSON) | Description |
+| Property (zobrazení) | Property (JSON) | Popis |
 |--------------------|-----------------|-------------|
 | **Stavový kód** | `statusCode` | Stavový kód HTTPS, který se má použít v odpovědi na příchozí požadavek. Tento kód může být libovolný platný stavový kód, který začíná na 2xx, 4xx nebo 5xx. Nicméně stavové kódy 3xx nejsou povoleny. |
 | **Hlavičky** | `headers` | Jedna nebo více hlaviček, které mají být zahrnuty do odpovědi |
@@ -383,7 +384,7 @@ Pokud chcete zobrazit definici JSON pro akci odpovědi a kompletní definici JSO
 
 #### <a name="q-what-about-url-security"></a>Otázka: co je zabezpečení adresy URL?
 
-Odpověď **: Azure**bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
+Odpověď **: Azure** bezpečně generuje adresy URL zpětného volání aplikace logiky pomocí [sdíleného přístupového podpisu (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Tento podpis projde jako parametr dotazu a musí být ověřený předtím, než bude možné spustit aplikaci logiky. Azure vygeneruje signaturu pomocí jedinečné kombinace tajného klíče na aplikaci logiky, názvu triggeru a prováděné operace. Takže pokud nikdo nemá přístup k klíči tajné aplikace logiky, nemůže vygenerovat platný podpis.
 
 > [!IMPORTANT]
 > Pro produkční a vyšší systémy zabezpečení důrazně doporučujeme volat aplikaci logiky přímo z prohlížeče z těchto důvodů:
@@ -391,9 +392,11 @@ Odpověď **: Azure**bezpečně generuje adresy URL zpětného volání aplikace
 > * V adrese URL se zobrazí sdílený přístupový klíč.
 > * Nemůžete spravovat zásady obsahu zabezpečení kvůli sdíleným doménám mezi Azure Logic Apps zákazníky.
 
+Další informace o zabezpečení autorizace a šifrování příchozích volání do vaší aplikace logiky, jako je například TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)), dříve označované jako SSL (Secure SOCKETS Layer) (SSL), [Azure Active Directory otevřené ověřování (Azure AD OAuth)](../active-directory/develop/index.yml), vystavení vaší aplikace logiky pomocí služby Azure API Management nebo omezení IP adres, které pocházejí z příchozích volání, najdete v tématu [zabezpečený přístup a přístup k datům pro příchozí volání aktivačních událostí](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
+
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>Otázka: můžu dále konfigurovat nastavované koncové body?
 
-Odpověď **: Ano**, koncové body https podporují pokročilejší konfiguraci prostřednictvím [Azure API Management](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
+Odpověď **: Ano** , koncové body https podporují pokročilejší konfiguraci prostřednictvím [Azure API Management](../api-management/api-management-key-concepts.md). Tato služba také nabízí možnost konzistentně spravovat všechna vaše rozhraní API, včetně aplikací logiky, nastavení vlastních názvů domén, používání dalších metod ověřování a dalších, například:
 
 * [Změna metody Request](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [Změna segmentů adres URL žádosti](../api-management/api-management-transformation-policies.md#RewriteURL)
@@ -403,4 +406,4 @@ Odpověď **: Ano**, koncové body https podporují pokročilejší konfiguraci 
 ## <a name="next-steps"></a>Další kroky
 
 * [Příjem příchozích volání HTTPS a jejich reakce pomocí Azure Logic Apps](../connectors/connectors-native-reqres.md)
-* [Zabezpečený přístup a data v Azure Logic Apps – přístup k příchozím voláním aktivačních událostí na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
+* [Zabezpečený přístup a data v Azure Logic Apps – přístup pro příchozí volání na triggery na základě požadavků](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

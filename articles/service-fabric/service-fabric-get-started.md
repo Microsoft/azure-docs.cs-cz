@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8593858580da1358dc84d9c25420fe2a95680251
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316645"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330219"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -23,7 +23,7 @@ ms.locfileid: "92316645"
 
 Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 
@@ -53,12 +53,6 @@ Nástroje Service Fabric jsou součástí úlohy vývoje Azure v prostředí Vis
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
 
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
-
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Použití sady Visual Studio 2015 (vyžaduje Visual Studio 2015 Update 2 nebo novější)
-
-Pro sadu Visual Studio 2015 se nástroje Service Fabric nainstalují společně se sadou SDK a modulem runtime pomocí Instalace webové platformy:
-
-* [Instalace Microsoft Azure Service Fabric SDK a nástrojů][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Jenom instalace sady SDK
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d0805aaf694f1569e613ab74135c95e454adbdc0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: df0198ba77e1661bb18aa72285e100ca070966a8
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315073"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331732"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
@@ -68,7 +68,7 @@ Určuje název objektu externího zdroje dat, který obsahuje umístění, kde b
 
 FILE_FORMAT = *external_file_format_name*
 
-Určuje název objektu externího souboru formátu, který obsahuje formát pro externí datový soubor. Chcete-li vytvořit externí formát souboru, použijte příkaz [Create External File Format (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). V současné době se podporují jenom formáty externích souborů s FORMAT_TYPE = PARQUET a FORMAT_TYPE = DELIMITEDTEXT.
+Určuje název objektu externího souboru formátu, který obsahuje formát pro externí datový soubor. Chcete-li vytvořit externí formát souboru, použijte příkaz [Create External File Format (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). V současné době se podporují jenom formáty externích souborů s FORMAT_TYPE = PARQUET a FORMAT_TYPE = DELIMITEDTEXT. Komprese GZip pro formát DELIMITEDTEXT se nepodporuje.
 
 S *<common_table_expression>*
 
@@ -144,32 +144,30 @@ CETAS lze použít k uložení sad výsledků s následujícími datovými typy 
 - varbinary
 - char
 - varchar
+- nchar
+- nvarchar
+- smalldate
 - date
-- time
+- datetime
 - datetime2
+- DateTimeOffset
+- time
 - decimal
 - numerické
 - float
 - real
 - bigint
-- int
-- smallint
 - tinyint
+- smallint
+- int
+- bigint
 - bit
-
-> [!NOTE]
-> Objekty LOBs s se nedá použít s CETAS.
-
-V rámci vybrané části CETAS se nedají použít následující datové typy:
-
-- nchar
-- nvarchar
-- datetime
-- smalldatetime
-- DateTimeOffset
 - papír
 - smallmoney
 - uniqueidentifier
+
+> [!NOTE]
+> Objekty LOBs s větší než 1 MB nelze použít s CETAS.
 
 ## <a name="next-steps"></a>Další kroky
 

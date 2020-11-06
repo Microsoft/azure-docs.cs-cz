@@ -1,0 +1,44 @@
+---
+title: Vytvoření uživatelem definovaného bodu obnovení pro vyhrazený fond SQL
+description: Postup vytvoření bodu obnovení pro vyhrazený fond SQL
+services: synapse-analytics
+author: joannapea
+manager: igorstan
+ms.service: synapse-analytics
+ms.topic: how-to
+ms.subservice: sql
+ms.date: 10/29/2020
+ms.author: joanpo
+ms.reviewer: igorstan
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c0835fb48d00fe5277732f34fd6b0de1448f6a78
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94332080"
+---
+# <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
+
+V tomto článku se naučíte, jak vytvořit nový bod obnovení definovaný uživatelem pro vyhrazený fond SQL ve službě Azure synapse Analytics pomocí Azure Portal.
+
+## <a name="create-user-defined-restore-points-through-the-azure-portal"></a>Vytvoření bodů obnovení definovaných uživatelem pomocí Azure Portal
+
+Uživatelem definované body obnovení lze také vytvořit prostřednictvím Azure Portal.
+
+1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
+
+2. Přejděte do vyhrazeného fondu SQL, pro který chcete vytvořit bod obnovení.
+
+3. V levém podokně vyberte **Přehled** a vyberte **+ nový bod obnovení**. Pokud není vybráno tlačítko nový bod obnovení, ujistěte se, že vyhrazený fond SQL není pozastaven.
+
+    ![Nový bod obnovení](../media/sql-pools/create-sqlpool-restore-point-01.png)
+
+4. Zadejte název pro uživatelem definovaný bod obnovení a klikněte na **použít**. Uživatelem definované body obnovení mají výchozí dobu uchování sedm dní.
+
+    ![Název bodu obnovení](../media/sql-pools/create-sqlpool-restore-point-02.png)
+
+## <a name="next-steps"></a>Další kroky
+
+- [Obnovení existujícího vyhrazeného fondu SQL](restore-sql-pool.md)
+

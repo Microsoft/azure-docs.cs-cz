@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 523f28cdd32c5176160587a8531aa66c0621d5a7
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325053"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330669"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -148,7 +148,7 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
 | **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
@@ -207,7 +207,7 @@ Systémy správy verzí (označované také jako _Správa zdrojového_ kódu) um
 
 ### <a name="creating-feature-branches"></a>Vytváření větví funkcí
 
-Každé Azure Repos úložiště Git, které je přidružené k datové továrně, má větev pro spolupráci. ( `master` je výchozí branou pro spolupráci). Uživatelé můžou také vytvářet větve funkcí kliknutím na **+ Nová větev** v rozevíracím seznamu větev. Jakmile se zobrazí podokno nová větev, zadejte název vaší větve funkce.
+Každé Azure Repos úložiště Git, které je přidružené k datové továrně, má větev pro spolupráci. ( `main` je výchozí branou pro spolupráci). Uživatelé můžou také vytvářet větve funkcí kliknutím na **+ Nová větev** v rozevíracím seznamu větev. Jakmile se zobrazí podokno nová větev, zadejte název vaší větve funkce.
 
 ![Vytvořit novou větev](media/author-visually/new-branch.png)
 

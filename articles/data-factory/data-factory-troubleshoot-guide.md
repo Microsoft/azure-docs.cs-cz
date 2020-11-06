@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/01/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 3a195f9dd74353734ff65f0d5f210d861fa29a26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632579"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331375"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -522,79 +522,30 @@ Následující tabulka se vztahuje na Azure Batch.
  
 ## <a name="hdinsight"></a>HDInsight
 
-### <a name="error-code-200"></a>Kód chyby: 200
-
-- **Zpráva** : `Unexpected error happened: '%error;'.`
-
-- **Příčina** : došlo k internímu problému se službou.
-
-- **Doporučení** : obraťte se na podporu ADF a požádejte o další pomoc.
-
-### <a name="error-code-201"></a>Kód chyby: 201
-
-- **Zpráva** : `JobType %jobType; is not found.`
-
-- **Příčina** : existuje nový typ úlohy, který ADF nepodporuje.
-
-- **Doporučení** : pro další pomoc se obraťte na tým podpory ADF.
-
-### <a name="error-code-202"></a>Kód chyby: 202
-
-- **Zpráva** : `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Příčina** : chybová zpráva obsahuje podrobnosti o tom, co se pokazilo.
-
-- **Doporučení** : podrobnosti o chybové zprávě vám pomůžou při odstraňování problému. Pokud nemáte dostatek informací, obraťte se na podporu ADF a požádejte o další pomoc.
-
-### <a name="error-code-203"></a>Kód chyby: 203
-
-- **Zpráva** : `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
-
-- **Příčina** : chybová zpráva obsahuje podrobnosti o tom, co se pokazilo.
-
-- **Doporučení** : podrobnosti o chybové zprávě vám pomůžou při odstraňování problému. Pokud nemáte dostatek informací, obraťte se na podporu ADF a požádejte o další pomoc.
-
-### <a name="error-code-204"></a>Kód chyby: 204
-
-- **Zpráva** : `The resumption token is missing for runId '%runId;'.`
-
-- **Příčina** : došlo k internímu problému se službou.
-
-- **Doporučení** : obraťte se na podporu ADF a požádejte o další pomoc.
-
-### <a name="error-code-205"></a>Kód chyby: 205
-
-- **Zpráva** : `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
-
-- **Příčina** : při vytváření clusteru HDI na vyžádání došlo k chybě.
-
-- **Doporučení** : obraťte se na podporu ADF a požádejte o další pomoc.
-
 ### <a name="error-code-206"></a>Kód chyby: 206
 
-- **Zpráva** : `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+- **Zpráva** : `The batch ID for Spark job is invalid. Please retry your job.`
 
 - **Příčina** : došlo k vnitřnímu problému se službou, která způsobila tuto chybu.
 
-- **Doporučení** : Tento problém může být přechodný. Zkuste úlohu zopakovat. Pokud potíže potrvají, obraťte se na podporu ADF a požádejte o další pomoc.
+- **Doporučení** : Tento problém může být přechodný. Po nějaké době zkuste úlohu zopakovat.
 
 ### <a name="error-code-207"></a>Kód chyby: 207
 
-- **Zpráva** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+- **Zpráva** : `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI.`
 
 - **Příčina** : při pokusu o zjištění oblasti z primárního účtu úložiště došlo k vnitřní chybě.
 
-- **Doporučení** : zkuste jiné úložiště. Pokud tato možnost není přijatelné, obraťte se na tým podpory ADF a požádejte o další pomoc.
+- **Doporučení** : zkuste jiné úložiště. 
 
 ### <a name="error-code-208"></a>Kód chyby: 208
 
-- **Zpráva** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+- **Zpráva** : `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again.`
 
 - **Příčina** : při pokusu o čtení instančního objektu nebo při vytváření instancí ověřování MSI došlo k vnitřní chybě.
 
 - **Doporučení** : Zvažte poskytnutí instančního objektu, který má oprávnění k vytvoření clusteru HDInsight v zadaném předplatném, a zkuste to znovu. Ověřte, že je [správně nastavená Správa identit](../hdinsight/hdinsight-managed-identities.md).
 
-   Pokud tato možnost není přijatelné, obraťte se na tým podpory ADF a požádejte o další pomoc.
 
 ### <a name="error-code-2300"></a>Kód chyby: 2300
 
@@ -612,7 +563,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Doporučení** : Tento problém může být buď obecným připojením HDInsight, nebo připojením k síti. Nejdřív potvrďte, že je uživatelské rozhraní HDInsight Ambari dostupné z libovolného prohlížeče. Potom zkontrolujte, zda jsou vaše přihlašovací údaje stále platné.
    
-   Pokud používáte integrovaný modul runtime (IR) s místním hostováním, proveďte tento krok z virtuálního počítače nebo počítače, kde je nainstalováno prostředí IR pro místní hostování. Pak zkuste úlohu odeslat z Data Factory znovu. Pokud se to nepodaří, obraťte se na tým Data Factory pro podporu.
+   Pokud používáte integrovaný modul runtime (IR) s místním hostováním, proveďte tento krok z virtuálního počítače nebo počítače, kde je nainstalováno prostředí IR pro místní hostování. Pak zkuste úlohu odeslat z Data Factory znovu.
 
    Další informace najdete v tématu [webové uživatelské rozhraní pro Ambari](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui).
 
@@ -1009,7 +960,7 @@ Následující tabulka se vztahuje na Azure Batch.
 
 - **Příčina** : k tomuto problému dochází buď v důsledku připojení k síti, selhání DNS, ověření certifikátu serveru nebo vypršení časového limitu.
 
-- **Doporučení** : Ověřte, že koncový bod, který se snažíte dosáhnout, reaguje na požadavky. Můžete použít nástroje jako **Fiddler/post** .
+- **Doporučení** : Ověřte, že koncový bod, který se snažíte dosáhnout, reaguje na požadavky. Můžete použít nástroje jako **Fiddler/post**.
 
 ### <a name="error-code-2108"></a>Kód chyby: 2108
 
@@ -1024,17 +975,17 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Stáhněte, nainstalujte a otevřete [Fiddler](https://www.telerik.com/download/fiddler).
 
-1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **Tools**  >  **možnost nástroje Fiddler možnosti**  >  **https** .
+1. Pokud vaše webová aplikace používá protokol HTTPS, použijte **Tools**  >  **možnost nástroje Fiddler možnosti**  >  **https**.
 
-   1. Na kartě HTTPS vyberte obě **zachytávání https připojení** i **dešifrování přenosu HTTPS** .
+   1. Na kartě HTTPS vyberte obě **zachytávání https připojení** i **dešifrování přenosu HTTPS**.
 
       ![Fiddler možnosti](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Pokud vaše aplikace používá certifikáty TLS/SSL, přidejte do svého zařízení certifikát Fiddler.
 
-   Přejít na: **nástroje**  >  **Fiddler možnosti**  >  **https**  >  **Akce**  >  **exportovat kořenový certifikát do počítače** .
+   Přejít na: **nástroje**  >  **Fiddler možnosti**  >  **https**  >  **Akce**  >  **exportovat kořenový certifikát do počítače**.
 
-1. Vypněte zachytávání pomocí přechodu na **File**  >  **přenos** souborů. Nebo stiskněte klávesu **F12** .
+1. Vypněte zachytávání pomocí přechodu na **File**  >  **přenos** souborů. Nebo stiskněte klávesu **F12**.
 
 1. Vymažte mezipaměť prohlížeče, aby se odstranily všechny položky v mezipaměti, a je nutné je znovu stáhnout.
 
@@ -1050,7 +1001,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
 
 1. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
 
-1. Přejít na: **soubor**  >  **Uložit**  >  **všechny relace** .
+1. Přejít na: **soubor**  >  **Uložit**  >  **všechny relace**.
 
 Další informace najdete v tématu [Začínáme s Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 

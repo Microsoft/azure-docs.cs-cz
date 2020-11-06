@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a101afb2089e4ab1fa32bd0668c60b477039b566
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558727"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330576"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření účtu Video Indexer připojeného k Azure
 
@@ -53,9 +53,9 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 
 * Zaregistrujte poskytovatele prostředků EventGrid pomocí Azure Portal.
 
-    V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** -> [předplatné]-> **ResourceProviders** .
+    V [Azure Portal](https://portal.azure.com/)přejít na **předplatná** -> [předplatné]-> **ResourceProviders**.
 
-    Vyhledejte **Microsoft. Media** a **Microsoft. EventGrid** . Pokud není ve stavu registrováno, klikněte na **zaregistrovat** . Registrace může trvat několik minut.
+    Vyhledejte **Microsoft. Media** a **Microsoft. EventGrid**. Pokud není ve stavu registrováno, klikněte na **zaregistrovat**. Registrace může trvat několik minut.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -74,19 +74,19 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 1. Vyberte oblast Azure z podporovaných umístění: Západní USA 2, Severní Evropa nebo Východní Asie.
 1. V části **Azure Media Services účet** vyberte jednu z následujících možností:
 
-    * Pokud chcete vytvořit nový účet Media Services, vyberte **vytvořit novou skupinu prostředků** . Zadejte název vaší skupiny prostředků.
+    * Pokud chcete vytvořit nový účet Media Services, vyberte **vytvořit novou skupinu prostředků**. Zadejte název vaší skupiny prostředků.
 
         Azure vytvoří nový účet v předplatném, včetně nového účtu Azure Storage.  
-    * Pokud chcete použít existující účet Media Services, vyberte **použít existující prostředek** . V seznamu účty vyberte svůj účet.
+    * Pokud chcete použít existující účet Media Services, vyberte **použít existující prostředek**. V seznamu účty vyberte svůj účet.
 
         Váš účet Media Services musí mít stejnou oblast jako váš Video Indexer účet.
 
         > [!NOTE]
-        > Pro minimalizaci doby trvání indexování a nízké propustnosti se důrazně doporučuje upravit typ a počet [rezervovaných jednotek](../previous/media-services-scale-media-processing-overview.md ) v účtu Media Services na **10 jednotek rezervovaných v S3** . Pokud [chcete změnit rezervované jednotky](../previous/media-services-portal-scale-media-processing.md), přečtěte si téma použití portálu. Rezervované jednotky se účtují podle vašeho účtu, podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/media-services/#analytics).
+        > Pro minimalizaci doby trvání indexování a nízké propustnosti se důrazně doporučuje upravit typ a počet [rezervovaných jednotek](../previous/media-services-scale-media-processing-overview.md ) v účtu Media Services na **10 jednotek rezervovaných v S3**. Pokud [chcete změnit rezervované jednotky](../previous/media-services-portal-scale-media-processing.md), přečtěte si téma použití portálu. Rezervované jednotky se účtují podle vašeho účtu, podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/media-services/#analytics).
     * Pokud chcete připojení nakonfigurovat ručně, vyberte odkaz **Přepnout na ruční konfiguraci** .
 
         Podrobné informace najdete v části věnované [ručnímu připojení k Azure](#connect-to-azure-manually-advanced-option) (rozšířené možnosti) níže.
-1. Jakmile budete hotoví, vyberte **Vytvořit** . Tato operace může trvat až několik minut.
+1. Jakmile budete hotoví, vyberte **Vytvořit**. Tato operace může trvat až několik minut.
 
     Po připojení k Azure se nový účet Video Indexer zobrazí v seznamu účtů:
 
@@ -94,7 +94,7 @@ Pokud přecházíte ze *zkušební verze* na *placený* účet video indexer, m�
 1. Před přehráním videí ve webové aplikaci Video Indexer se ujistěte, že je koncový bod streamování účtu Media Services spuštěný (Pokud se jedná o zastavený stav, stiskněte klávesu Start).
 
 > [!TIP]
-> Pokud chcete, aby se Váš účet regenerujte, můžete přejít na **Nastavení** .
+> Pokud chcete, aby se Váš účet regenerujte, můžete přejít na **Nastavení**.
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Ruční připojení k Azure (rozšířená volba)
 
@@ -118,12 +118,12 @@ Pokud se připojení k Azure nepovedlo, můžete se pokusit problém vyřešit r
     Rezervované jednotky se účtují podle vašeho účtu, podívejte se na [Podrobnosti o cenách](https://azure.microsoft.com/pricing/details/media-services/#analytics). s
 1. Než budete moct videa přehrávat ve webové aplikaci Video Indexer, musíte spustit výchozí **koncový bod streamování** nového účtu Media Services.
 
-    V novém účtu Media Services vyberte **koncové body streamování** . Pak vyberte koncový bod streamování a stiskněte spustit.
+    V novém účtu Media Services vyberte **koncové body streamování**. Pak vyberte koncový bod streamování a stiskněte spustit.
 
     ![Koncové body streamování](./media/create-account/create-ams-account2.png)
 4. Aby bylo možné Video Indexer ověřit pomocí rozhraní Media Services API, je potřeba vytvořit aplikaci AD. Následující kroky vás provedou procesem ověřování Azure AD popsaným v tématu [Začínáme s ověřováním Azure AD pomocí Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
-    1. V novém Media Services účtu vyberte přístup přes **rozhraní API** .
+    1. V novém Media Services účtu vyberte přístup přes **rozhraní API**.
     2. Vyberte [metodu ověřování instančního objektu](../previous/media-services-portal-get-started-with-aad.md).
     3. Získat ID klienta a tajný klíč klienta
 
@@ -143,7 +143,7 @@ V dialogovém okně zadejte následující informace:
 |Nastavení|Popis|
 |---|---|
 |Oblast účtu Video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a snížení nákladů doporučujeme zadat název oblasti, kde se nachází Azure Media Services prostředek a Azure Storage účet. |
-|Tenant Azure AD|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi lze získat z Azure Portal. Umístěte ukazatel myši na jméno přihlášeného uživatele v pravém horním rohu. Vyhledá jméno napravo od **domény** .|
+|Tenant Azure AD|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi lze získat z Azure Portal. Umístěte ukazatel myši na jméno přihlášeného uživatele v pravém horním rohu. Vyhledá jméno napravo od **domény**.|
 |ID předplatného|Předplatné Azure, v rámci kterého se má vytvořit připojení ID předplatného se dá načíst z Azure Portal. Na levém panelu vyberte **všechny služby** a vyhledejte "předplatná". Vyberte **předplatná** a v seznamu předplatných vyberte požadované ID.|
 |Název skupiny prostředků Azure Media Services|Název skupiny prostředků, ve které jste vytvořili Media Services účet.|
 |Název prostředku služby Media Service|Název účtu Azure Media Services, který jste vytvořili v předchozí části.|
@@ -163,11 +163,11 @@ Možnost importu obsahu je platná pro automatizované i ruční postupy popsan�
 
 Pokud později chcete odstranit účet, můžete účet odstranit z webu Video Indexer. Pokud chcete účet odstranit, musíte být vlastníkem.
 
-Vyberte nastavení účtu-> **Settings**  ->  **Odstranit tento účet** . 
+Vyberte nastavení účtu-> **Settings**  ->  **Odstranit tento účet**. 
 
 Účet se trvale odstraní během 90 dnů.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Platí následující Azure Media Services související s požadavky:
 
@@ -184,6 +184,15 @@ Platí následující Azure Media Services související s požadavky:
 * Pokud se připojíte automaticky, Video Indexer nastaví **rezervované jednotky** médií na 10 jednotek S3:
 
     ![Rezervované jednotky Media Services](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>Automatizace vytváření Video Indexer účtu
+
+K automatizaci vytváření účtu se jedná o proces dvou kroků:
+ 
+1. Pomocí Azure Resource Manager můžete vytvořit účet Azure Media Services a aplikaci Azure AD.
+
+    Podívejte se na příklad [šablony pro vytvoření účtu Media Services](https://github.com/Azure-Samples/media-services-v3-arm-templates).
+1. [Pomocí Media Services a aplikace Azure AD zavolejte vytvořit účet](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
 ## <a name="next-steps"></a>Další kroky
 

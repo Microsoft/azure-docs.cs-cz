@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 75e24f9437257769a3d9bfd69980a9b8606d0563
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423984"
+ms.locfileid: "94331800"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Zásady správy verzí Azure Database for MySQL
 
@@ -48,12 +48,13 @@ Následující tabulka uvádí podrobnosti o vyřazení hlavních verzí MySQL. 
 ## <a name="retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql"></a>Vyřazené verze stroje MySQL nejsou v Azure Database for MySQL podporovány
 
 Po datu vyřazení každé verze databáze MySQL, pokud budete pokračovat v vyřazení verze, pamatujte na následující omezení:
-- Vzhledem k tomu, že komunita neuvolňuje žádné další opravy chyb ani opravy zabezpečení, Azure for MySQL neprovede opravu vyřazeného databázového stroje pro všechny chyby a problémy se zabezpečením nebo jinak neuplatní bezpečnostní opatření s ohledem na vyřazený databázový stroj. Azure ale bude i nadále provádět pravidelná údržba a opravy pro hostitele, operační systém, kontejnery a jakékoli další součásti související se službou.
+- Vzhledem k tomu, že komunita neuvolňuje žádné další opravy chyb ani opravy zabezpečení, Azure Database for MySQL nebude opravovat vyřazený databázový stroj pro všechny chyby nebo problémy se zabezpečením nebo jinak přijímat bezpečnostní opatření s ohledem na vyřazený databázový stroj. Azure ale bude i nadále provádět pravidelná údržba a opravy pro hostitele, operační systém, kontejnery a jakékoli další součásti související se službou.
 - Pokud máte problémy s podporou, ke kterým může dojít v souvislosti s databází MySQL, nemůžeme vám poskytnout podporu. V takových případech budete muset upgradovat databázi, abychom vám mohli poskytnout veškerou podporu.
 - Pro vyřazenou verzi nebudete moct vytvářet nové databázové servery. Budete ale moci provádět obnovování v čase a vytvářet repliky pro čtení pro vaše stávající servery.
 - Nové funkce služby vyvinuté v Azure Database for MySQL můžou být dostupné jenom pro podporované verze databázového serveru.
 - Doba provozu SLA bude platit výhradně pro Azure Database for MySQL problémy související se službou a nikoli na výpadky způsobené chybami souvisejícími s databázovým strojem.  
-- V extrémním případě vážné hrozby pro službu, která je způsobená chybou zabezpečení databázového stroje MySQL identifikovanou v vyřazené verzi databáze, se může Azure rozhodnout zastavit výpočetní uzel vašeho databázového serveru, aby se služba nejdřív zabezpečila. Před přepnutím serveru do režimu online se zobrazí výzva k upgradu serveru. Během procesu upgradu budou vaše data vždycky chráněná pomocí automatických záloh prováděných ve službě, kterou můžete v případě potřeby použít k obnovení zpět na starší verzi.
+- V extrémních událostech vážné hrozby pro službu způsobenou ohrožením zabezpečení databázového stroje MySQL zjištěným v vyřazené verzi databáze se může Azure rozhodnout zastavit výpočetní uzel vašeho databázového serveru a nejdřív zabezpečit službu. Před přepnutím serveru do režimu online se zobrazí výzva k upgradu serveru. Během procesu upgradu budou vaše data vždycky chráněná pomocí automatických záloh prováděných ve službě, kterou můžete v případě potřeby použít k obnovení zpět na starší verzi. 
+
 
 
 ## <a name="next-steps"></a>Další kroky

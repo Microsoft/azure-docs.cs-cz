@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: abnarain
-ms.openlocfilehash: 0b2831321c9f4d855a19605c1ce5ace9fa11c88b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79a8bc73f416c8d10d83e7ad94a727094f072b00
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596106"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331429"
 ---
-| Názvy domén                  | Odchozí porty | Description                              |
+| Názvy domén                  | Odchozí porty | Popis                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | Požadováno místním prostředím Integration runtime pro připojení k pohybovým službám dat v Azure Data Factory. |
+| `*.servicebus.windows.net`    | 443            | Vyžadováno místním prostředím Integration runtime pro interaktivní vytváření. |
 | `{datafactory}.{region}.datafactory.azure.net`<br> ani `*.frontend.clouddatahub.net` | 443            | Požadováno místním prostředím Integration runtime pro připojení ke službě Data Factory. <br>Pro nově vytvořená Data Factory prosím, najděte plně kvalifikovaný název domény z vašeho místně hostovaného Integration Runtime klíče, který je ve formátu {DataFactory}. {region}. DataFactory. Azure. NET. Pokud v případě staré datové továrny nevidíte plně kvalifikovaný název domény v integrovaném integračním klíči, použijte místo toho *. frontend.clouddatahub.net. |
 | `download.microsoft.com`    | 443            | Požadováno místním prostředím Integration runtime pro stahování aktualizací. Pokud jste zakázali automatickou aktualizaci, můžete tuto doménu přeskočit konfigurací. |
 | `*.core.windows.net`          | 443            | Používá se v místním prostředí Integration runtime pro připojení k účtu úložiště Azure při použití funkce [dvoufázové kopírování](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy) . |

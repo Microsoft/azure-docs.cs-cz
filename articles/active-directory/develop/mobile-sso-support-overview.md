@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740143"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331602"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Podpora jednotného přihlašování a zásad ochrany aplikací v mobilních aplikacích, které vyvíjíte
 
@@ -30,7 +30,7 @@ Tento článek vysvětluje, proč jednotné přihlašování a aplikace jsou dů
 
 Kromě toho povolení jednotného přihlašování ve vaší aplikaci odemkne nové mechanismy ověřování, které se dodávají s moderním ověřováním, jako třeba [přihlášení bez hesla](../authentication/concept-authentication-passwordless.md). Uživatelská jména a hesla představují jeden z nejoblíbenějších vektorů útoku na aplikace a povolení jednotného přihlašování umožňuje zmírnit toto riziko vynucením podmíněného přístupu nebo přihlášení bez hesla, která přidávají další zabezpečení nebo spoléhají na bezpečnější mechanismy ověřování. Nakonec povolení jednotného přihlašování umožňuje také [jednotné přihlašování](v2-protocols-oidc.md#single-sign-out). To je užitečné v situacích, jako jsou pracovní aplikace, které se budou používat na sdílených zařízeních.
 
-[Zásady ochrany aplikací (aplikace)](/mem/intune/apps/app-protection-policy) zajišťují, aby data organizace zůstala bezpečná a obsažená. Umožňují společnostem spravovat a chránit svá data v rámci aplikace a umožňují kontrolu nad tím, kdo má přístup k aplikaci a jejím datům. Implementace zásad ochrany aplikací umožňuje aplikaci připojit uživatele k prostředkům chráněným zásadami podmíněného přístupu a bezpečně přenášet data do a z jiných chráněných aplikací. Mezi scénáře odemknuté zásadami ochrany aplikací patří vyžadování PIN kódu pro otevření aplikace, řízení sdílení dat mezi aplikacemi a zabránění ukládání firemních dat do osobního umístění úložiště na zařízení.
+[Zásady ochrany aplikací (aplikace)](/mem/intune/apps/app-protection-policy) zajišťují, aby data organizace zůstala bezpečná a obsažená. Umožňují společnostem spravovat a chránit svá data v rámci aplikace a umožňují kontrolu nad tím, kdo má přístup k aplikaci a jejím datům. Implementace zásad ochrany aplikací umožňuje aplikaci připojit uživatele k prostředkům chráněným zásadami podmíněného přístupu a bezpečně přenášet data do a z jiných chráněných aplikací. Mezi scénáře odemknuté zásadami ochrany aplikací patří vyžadování PIN kódu pro otevření aplikace, řízení sdílení dat mezi aplikacemi a zabránění ukládání dat firemních aplikací do osobních umístění úložiště.
 
 ## <a name="implementing-single-sign-on"></a>Implementace jednotného přihlašování
 
@@ -68,7 +68,7 @@ Kromě toho musíte pro ověřování použít aplikaci zprostředkovatele. Zpro
 
 Nakonec přidejte do své aplikace [Intune SDK](/mem/intune/developer/app-sdk-get-started) , abyste mohli povolit zásady ochrany aplikací. Sada SDK pro většinu částí sleduje model zachycení a automaticky použije zásady ochrany aplikací k určení, jestli jsou povolené akce, které aplikace přijímá. K dispozici jsou také rozhraní API, která můžete volat ručně a sdělit aplikaci, pokud existují určitá omezení pro určité akce.
 
-## <a name="additional-resources"></a>Další zdroje informací
+## <a name="additional-resources"></a>Další materiály
 
 - [Plánování nasazení s jednotným přihlašováním Azure Active Directory](../manage-apps/plan-sso-deployment.md)
 - [Postupy: Konfigurace jednotného přihlašování v macOS a iOS](single-sign-on-macos-ios.md)

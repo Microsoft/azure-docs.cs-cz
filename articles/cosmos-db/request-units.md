@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 52d7bc9ed4068d6a2e697cece7ca6cd0b12876c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ddbfb08370b73ef8fa023816a7362f671b33d3a0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085441"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331001"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Jednotky žádostí ve službě Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB podporuje mnoho rozhraní API, například SQL, MongoDB, Cassandra, Gremlin a Table. Každé rozhraní API má svou vlastní sadu databázových operací. Tyto operace jsou v rozsahu od jednoduchých čtení a zápisů do složitých dotazů. Každá databázová operace spotřebovává systémové prostředky na základě složitosti operace.
 
-Náklady na všechny databázové operace jsou normalizovány Azure Cosmos DB a jsou vyjádřeny *jednotkami žádostí* (nebo ru, pro krátké). Ru si můžete představit jako měnu výkonu pro abstrakci systémových prostředků, jako jsou například CPU, IOPS a paměť, které jsou potřeba k provádění databázových operací, které Azure Cosmos DB podporuje.
+Azure Cosmos DB normalizuje náklady na všechny databázové operace a vyjadřuje je v jednotkách žádostí (zkráceně RU). Jednotka požadavku je výkon abstrakce systémových prostředků, jako jsou například CPU, IOPS a paměť, které jsou potřeba k provádění databázových operací, které Azure Cosmos DB podporuje.
 
 Náklady na čtení bodu (tj. načtení jedné položky podle jejího ID a hodnoty klíče oddílu) pro položku 1 KB je 1 jednotka žádosti (nebo 1 RU). Podobně jsou náklady v RU přiřazené ke všem ostatním databázovým operacím. Bez ohledu na to, jaké rozhraní API používáte k interakci s kontejnerem Azure Cosmos, se náklady vždy měří v jednotkách RU. Bez ohledu na to, jestli je databázová operace zápis, čtení z bodu nebo dotazování, se náklady vždycky měří v ru.
 
@@ -75,7 +75,7 @@ Při odhadování počtu ru spotřebovaných úlohami Vezměte v úvahu následu
 
 Pokud zřizujete *' r '* ru na kontejneru Cosmos (nebo databázi), Cosmos DB zajistí, že je v *každé* oblasti přidružené k vašemu účtu Cosmos k dispozici ru *r* . Ru nelze selektivně přiřadit ke konkrétní oblasti. Ru zřízené na kontejneru Cosmos (nebo databázi) se zřídí ve všech oblastech přidružených k vašemu účtu Cosmos.
 
-Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a je *N* oblastí přidružených k účtu Cosmos, celkový ru k dispozici globálně na kontejneru = *R* x *N* .
+Za předpokladu, že je kontejner Cosmos nakonfigurovaný pomocí *R* ru a je *N* oblastí přidružených k účtu Cosmos, celkový ru k dispozici globálně na kontejneru = *R* x *N*.
 
 Vaše volba [modelu konzistence](consistency-levels.md) má vliv také na propustnost. V porovnání s silnějšími úrovněmi konzistence můžete získat přibližně dvojnásobnou propustnost čtení pro příznivější úrovně konzistence *(například* *relace* , *konzistentní předpony* *a* konečná *konzistence* ).
 

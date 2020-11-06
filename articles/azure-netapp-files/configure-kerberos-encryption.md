@@ -12,18 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 11/05/2020
 ms.author: b-juche
-ms.openlocfilehash: edb084a3539f4ab25f328d4cc59ee4ef3279bf07
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: f4b485e79bfa89fe293c99fc4e84fc8c0729396a
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217044"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331885"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurace šifrování protokolu Kerberos NFSv 4.1 pro Azure NetApp Files
 
 Azure NetApp Files podporuje šifrování klienta NFS v režimech Kerberos (krb5, Krb5i a krb5p) pomocí šifrování AES-256. Tento článek popisuje požadované konfigurace pro použití svazku NFSv 4.1 s šifrováním protokolu Kerberos.
+
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
+
+* NFSv 4.1 svazky šifrování protokolu Kerberos v současné době nepodporují Azure Active Directory Domain Services (AADDS). 
 
 ## <a name="requirements"></a>Požadavky
 
@@ -40,7 +44,7 @@ Pro šifrování klientů NFSv 4.1 se platí následující požadavky:
 
 1.  Pokud chcete vytvořit svazek NFSv 4.1, postupujte podle kroků v části [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md) .   
 
-    Na stránce vytvořit svazek nastavte verzi NFS na **nfsv 4.1**a nastavte protokol Kerberos na **povoleno**.
+    Na stránce vytvořit svazek nastavte verzi NFS na **nfsv 4.1** a nastavte protokol Kerberos na **povoleno**.
 
     > [!IMPORTANT] 
     > Po vytvoření svazku již nelze změnit výběr povolení protokolu Kerberos.
@@ -61,7 +65,7 @@ Pro šifrování klientů NFSv 4.1 se platí následující požadavky:
 
     Protokol Kerberos vyžaduje, abyste ve službě Active Directory vytvořili aspoň jeden účet počítače. Informace o účtu, které poskytnete, se používají k vytváření účtů pro svazky Kerberos protokolu SMB *i* nfsv 4.1. Tento počítač je vytvořen automaticky během vytváření svazku.
 
-2.  V části **sféra protokolu Kerberos**zadejte **název serveru AD** a **IP** adresu služby KDC.
+2.  V části **sféra protokolu Kerberos** zadejte **název serveru AD** a **IP** adresu služby KDC.
 
     Server AD a IP adresa služby KDC můžou být na stejném serveru. Tyto informace slouží k vytvoření účtu počítače hlavního názvu služby, který používá Azure NetApp Files. Po vytvoření účtu počítače Azure NetApp Files použije záznamy DNS serveru k vyhledání dalších serverů služby KDC podle potřeby. 
 
@@ -89,7 +93,7 @@ Postupujte podle pokynů v části [Konfigurace klienta NFS pro Azure NetApp Fil
 
 2. Pokud chcete zobrazit pokyny, vyberte ze svazku **pokyny k připojení** .
 
-    Například: 
+    Příklad: 
 
     ![Pokyny pro připojení ke svazkům protokolu Kerberos](../media/azure-netapp-files/mount-instructions-kerberos-volume.png)  
 

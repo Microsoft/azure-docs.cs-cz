@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/18/2020
+ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 60d3607a543cac5b8ce71819eb60394d8b8827bf
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340256"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331108"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -28,6 +28,8 @@ Značka služby představuje skupinu předpon IP adres z dané služby Azure. Sp
 Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby, jako je například **ApiManagement** , v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 Pomocí značek služeb můžete zajistit izolaci sítě a chránit prostředky Azure před obecným internetem při přístupu ke službám Azure, které mají veřejné koncové body. Vytvořte pravidla skupiny zabezpečení příchozích a odchozích sítí pro zamítnutí provozu do a z **Internetu** a umožněte přenos do/z **AzureCloud** nebo jiných [dostupných značek služeb](#available-service-tags) pro konkrétní služby Azure.
+
+![Izolace sítě služeb Azure pomocí značek služeb](./media/service-tags-overview/service_tags.png)
 
 ## <a name="available-service-tags"></a>Dostupné značky služeb
 Následující tabulka obsahuje všechny značky služeb, které jsou k dispozici pro použití v pravidlech [skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .

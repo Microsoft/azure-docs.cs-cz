@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370025"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330933"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Vylepšení syntézy pomocí nástroje pro tvorbu zvukového obsahu
 
@@ -131,16 +131,16 @@ Pokud chce vytvoření zvukového obsahu použít více než jeden uživatel, m�
 
 Pomocí těchto kroků přidáte uživatele do prostředku rozpoznávání řeči, aby mohli používat vytvoření zvukového obsahu.
 
-1. V Azure Portal vyhledejte vyhledané **služby** , vyberte prostředek pro rozpoznávání řeči, do kterého chcete přidat uživatele.
+1. V [Azure Portal](https://portal.azure.com/)vyhledejte vyhledané **služby** , vyberte prostředek pro rozpoznávání řeči, do kterého chcete přidat uživatele.
 2. Klikněte na **Řízení přístupu (IAM)** . Kliknutím na kartu **Přiřazení rolí** zobrazte všechna přiřazení rolí pro toto předplatné.
-    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Diagram kroků, které jsou potřebné k doladění výstupů převodu textu na řeč":::
+    :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Karta přiřazení role":::
 1. Kliknutím na **Přidat** > **Přidat přiřazení role** otevřete podokno Přidat přiřazení role. V rozevíracím seznamu role vyberte roli **uživatele služba rozpoznávání** . Pokud chcete uživateli poskytnout vlastnictví tohoto prostředku řeči, můžete vybrat roli **vlastníka** .
 1. V seznamu vyberte uživatele. Pokud uživatele v seznamu nevidíte, můžete zadat do pole vybrat a vyhledat v adresáři zobrazovaná jména a e-mailové adresy. Pokud uživatel není v tomto adresáři, můžete zadat [účet Microsoft](https://account.microsoft.com/account) uživatele (což je důvěryhodný pro Azure Active Directory).
 1. Kliknutím na **Uložit** roli přiřaďte. Po chvíli se uživateli přiřadí role uživatele služba pro rozpoznávání řeči v oboru prostředků řeči.
 
-    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Diagram kroků, které jsou potřebné k doladění výstupů převodu textu na řeč":::
+    :::image source="media/audio-content-creation/add-role-first.png" alt-text="Dialog Přidat roli":::
 
-1. Uživatelé, které přidáte, budou dostávat e-mail s pozvánkou. Po kliknutí na **přijmout pozvánku**  >  **přijmout pro připojení k Azure**můžou použít [Vytvoření zvukového obsahu](https://aka.ms/audiocontentcreation).
+1. Uživatelé, které přidáte, budou dostávat e-mail s pozvánkou. Po kliknutí na **přijmout pozvánku**  >  **přijmout pro připojení k Azure** můžou použít [Vytvoření zvukového obsahu](https://aka.ms/audiocontentcreation).
 
 Uživatelé, kteří se nacházejí ve stejném prostředku řeči, uvidí práci v nástroji pro vytváření zvukového obsahu v studiu. Pokud chcete, aby měl každý jednotlivý uživatel jedinečné a soukromé pracoviště při vytváření zvukového obsahu, vytvořte si pro každého uživatele [nový prostředek řeči](#step-2---create-a-speech-resource) a každému uživateli udělte jedinečný přístup k prostředku řeči. 
 
@@ -148,13 +148,13 @@ Uživatelé, kteří se nacházejí ve stejném prostředku řeči, uvidí prác
 1. V Azure Portal vyhledejte vyhledané **služby** , vyberte prostředek pro rozpoznávání řeči, ze kterého chcete odebrat uživatele.
 2. Klikněte na **Řízení přístupu (IAM)** . Kliknutím na kartu **přiřazení rolí** zobrazíte všechna přiřazení rolí tohoto prostředku řeči.
 3. Vyberte uživatele, které chcete odebrat, a klikněte na tlačítko **Odebrat**  >  **OK**.
-    :::image source="media/audio-content-creation/remove-user.png" alt-text="Diagram kroků, které jsou potřebné k doladění výstupů převodu textu na řeč":::
+    :::image source="media/audio-content-creation/remove-user.png" alt-text="Tlačítko odebrat":::
 
 ### <a name="enable-users-to-grant-access"></a>Povolit uživatelům udělení přístupu
 Pokud chcete, aby jeden z uživatelů měl přístup k ostatním uživatelům, musíte dát uživateli roli vlastníka pro prostředek pro rozpoznávání řeči a nastavit uživatele jako čtečku adresáře Azure. 
 1. Přidejte uživatele jako vlastníka prostředku řeči. Přečtěte si téma [jak přidat uživatele do prostředku řeči](#add-users-to-a-speech-resource).
-    :::image source="media/audio-content-creation/add-role.png" alt-text="Diagram kroků, které jsou potřebné k doladění výstupů převodu textu na řeč":::
-1. Vyberte sbalenou nabídku v levém horním rohu. Klikněte na **Azure Active Directory**a potom klikněte na **Uživatelé**.
+    :::image source="media/audio-content-creation/add-role.png" alt-text="Pole vlastníka role":::
+1. Vyberte sbalenou nabídku v levém horním rohu. Klikněte na **Azure Active Directory** a potom klikněte na **Uživatelé**.
 1. Vyhledejte účet Microsoft uživatele a přejít na stránku s podrobnostmi uživatele. Klikněte na tlačítko **přiřazené role**.
 1. Klikněte na **Přidat úlohy**  ->  **čtenáři adresáře**.
 

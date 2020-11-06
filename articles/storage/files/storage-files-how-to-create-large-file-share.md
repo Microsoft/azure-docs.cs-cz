@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069132"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330304"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
-Když v účtu úložiště povolíte velké sdílené složky, sdílené složky se můžou škálovat až na 100 TiB. Toto škálování můžete povolit u svých stávajících účtů úložiště pro existující sdílené složky.
+Když ve svém účtu úložiště povolíte velké sdílené složky, sdílené složky se můžou škálovat až na 100 TiB a zároveň se zvýšily i omezení počtu vstupně-výstupních operací a propustnosti pro standardní sdílené složky. Toto škálování můžete taky povolit u svých stávajících účtů úložiště pro existující sdílené složky. Podrobnosti najdete v tématu [sdílení souborů a cíle pro škálování souborů](storage-files-scale-targets.md#azure-files-scale-targets) . 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,7 +35,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **účty úložiště**.
 1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.
@@ -56,8 +56,8 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
    |Druh účtu     |StorageV2 (obecné účely v2)         |
    |Úroveň přístupu     |Horká         |
 
-1. Vyberte **Upřesnit**a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
-1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
+1. Vyberte **Upřesnit** a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
+1. Vyberte **Zkontrolovat a vytvořit** , zkontrolujte nastavení účtu úložiště a vytvořte účet.
 
     ![Snímek obrazovky s přepínačem Enabled na novém účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
@@ -94,7 +94,7 @@ U stávajících účtů můžete také povolit velké sdílené složky. Pokud 
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a přejít na účet úložiště, ve kterém chcete povolit velké sdílené složky souborů.
 1. Otevřete účet úložiště a vyberte **Konfigurace**.
-1. Zaškrtněte políčko **povoleno** u **velkých sdílených složek**a pak vyberte **Uložit**.
+1. Zaškrtněte políčko **povoleno** u **velkých sdílených složek** a pak vyberte **Uložit**.
 1. Vyberte **Přehled** a vyberte **aktualizovat**.
 
 ![Výběr přepínače Enabled na existujícím účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)

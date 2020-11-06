@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a2b1ca8434c40eca610f95a3031e677782866e04
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 109ce54b48df0724c0d4ba64c02721088ed7ffad
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342001"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330627"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurace zápisů ve více oblastech v aplikacích, které používají Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,7 +25,7 @@ Jakmile je účet vytvořený s povoleným více oblastmi zápisu, musíte ve sv
 
 ## <a name="azure-portal"></a><a id="portal"></a> Azure Portal
 
-Pomocí následujících kroků povolte zápisy ve více oblastech z Azure Portal:
+Pokud chcete povolit zápisy ve více oblastech z Azure Portal, použijte následující postup:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 

@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a38c4bb18e16a814b626a6941d626b66311cd8ea
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755948"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329516"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -88,3 +88,7 @@ Relace by měla být iniciována pouze z Azure Portal. Přihlaste se k Azure Por
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Návody zvládnout selhání nasazení?
 
 Zkontrolujte všechny chybové zprávy a podle potřeby [vyvolejte požadavek na podporu v Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Selhání nasazení může vést k [omezením předplatného Azure, kvót a omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Konkrétně zákazníci mohou narazit na limit počtu veřejných IP adres povolených pro každé předplatné, které způsobí selhání nasazení služby Azure bastionu.
+
+### <a name="how-do-i-incorporate-azure-bastion-in-my-dr-plan"></a><a name="dr"></a>Návody do plánu DR zahrnout službu Azure bastionu?
+
+Vzhledem k tomu, že Azure bastionu je přidružený k oblasti Azure a je nasazená v virtuální sítě nebo peere virtuální sítě, zodpovídáte za nasazení Azure bastionu do virtuální sítě lokality pro zotavení po havárii (DR). V případě selhání oblasti Azure provedete u virtuálních počítačů operaci převzetí služeb při selhání, pak pomocí hostitele Azure bastionu, který je nasazený v oblasti zotavení po havárii, se připojte k virtuálním počítačům nasazeným v oblasti zotavení po havárii.

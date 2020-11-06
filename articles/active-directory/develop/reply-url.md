@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042908"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331851"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Omezení a omezení URI pro přesměrování (adresa URL odpovědi)
 
@@ -32,7 +32,7 @@ Identifikátor URI pro přesměrování nebo adresa URL odpovědi je umístění
 
 Tato tabulka uvádí maximální počet identifikátorů URI přesměrování, které můžete přidat do registrace aplikace na platformě Microsoft identity.
 
-| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Description |
+| Přihlášené účty | Maximální počet identifikátorů URI pro přesměrování | Popis |
 |--------------------------|---------------------------------|-------------|
 | Pracovní nebo školní účty Microsoftu v tenantovi Azure Active Directory v organizaci (Azure AD) | 256 | `signInAudience` pole v manifestu aplikace je nastaveno na hodnotu *AzureADMyOrg* nebo *AzureADMultipleOrgs* |
 | Osobní účty Microsoft a pracovní a školní účty | 100 | `signInAudience` pole v manifestu aplikace je nastaveno na *AzureADandPersonalMicrosoftAccount* |
@@ -62,7 +62,9 @@ V [bodech RFC 8252, 8,3](https://tools.ietf.org/html/rfc8252#section-8.3) a [7,3
 
 Z pohledu vývoje to znamená několik věcí:
 
-* Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` `spa` přesměrování typu).
+* Neregistrujte více identifikátorů URI přesměrování, přičemž se liší pouze port. Přihlašovací server vybere jednu z nich a použije chování spojené s tímto identifikátorem URI přesměrování (například bez ohledu na to, zda se jedná o `web` `native` přesměrování typu a, nebo `spa` ).
+
+    To je obzvláště důležité, pokud chcete použít různé toky ověřování ve stejné registraci aplikace, například udělení autorizačního kódu i implicitní tok. Aby bylo možné přidružit správné chování odpovědí každému identifikátoru URI přesměrování, musí mít přihlašovací server schopnost rozlišovat identifikátory URI pro přesměrování a nemůže tak učinit, pokud se liší pouze port.
 * Pokud potřebujete zaregistrovat více identifikátorů URI pro přesměrování na localhost pro testování různých toků během vývoje, rozlišit je pomocí komponenty *cesty* identifikátoru URI. Například `http://127.0.0.1/MyWebApp` neodpovídá `http://127.0.0.1/MyNativeApp` .
 * Adresa zpětné smyčky IPv6 ( `[::1]` ) se momentálně nepodporuje.
 * Pokud chcete zabránit tomu, aby se vaše aplikace přerušila pomocí nesprávně nakonfigurovaných bran firewall nebo přejmenovaných síťových rozhraní, místo použijte adresu zpětné smyčky IP adresy `127.0.0.1` v identifikátoru URI přesměrování `localhost` .

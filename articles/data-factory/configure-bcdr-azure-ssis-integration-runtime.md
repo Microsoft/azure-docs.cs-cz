@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/06/2020
+ms.openlocfilehash: 6b37a0df994546762abbcf3452d8e7b52dec6847
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635282"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331409"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration runtime pomocí SQL Database geografické replikace a převzetí služeb při selhání
 
@@ -31,31 +31,34 @@ Další informace o geografické replikaci a převzetí služeb při selhání p
 
 ## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance SQL
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
-Spravovaná instance Azure SQL používá k zabezpečení dat, přihlašovacích údajů a informací o připojení uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)* . 
+Spravovaná instance Azure SQL používá k zabezpečení dat, přihlašovacích údajů a informací o připojení uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)*. 
 
 SMK není replikována ve skupině převzetí služeb při selhání. Po převzetí služeb při selhání musíte do primární i sekundární instance přidat heslo pro dešifrování DMK.
 
 1. Spusťte následující příkaz pro SSISDB na primární instanci. Tento krok přidá nové šifrovací heslo.
 
-    ```sql
-    ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
-    ```
+   ```sql
+   ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
+   ```
 
 2. Vytvořte skupinu převzetí služeb při selhání na spravované instanci SQL.
 
 3. Spusťte **sp_control_dbmasterkey_password** na sekundární instanci pomocí nového šifrovacího hesla.
 
-    ```sql
-    EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB',   
-        @password = N'<password>', @action = N'add';  
-    GO
-    ```
+   ```sql
+   EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'<password>', @action = N'add';  
+   GO
+   ```
 
 ### <a name="scenario-1-azure-ssis-ir-is-pointing-to-a-readwrite-listener-endpoint"></a>Scénář 1: Azure-SSIS IR odkazuje na koncový bod naslouchacího procesu pro čtení a zápis
 
-Pokud chcete, aby Azure-SSIS IR odkazovala na koncový bod naslouchacího procesu pro čtení a zápis, musíte nejdřív nasměrovat na koncový bod primárního serveru. Po umístění SSISDB do skupiny převzetí služeb při selhání můžete přejít na koncový bod naslouchacího procesu pro čtení a zápis a restartovat Azure-SSIS IR.
+Pokud chcete, aby Azure-SSIS IR odkazovala na koncový bod naslouchacího procesu pro čtení a zápis, musíte nejdřív nasměrovat na koncový bod primárního serveru. Po umístění SSISDB do skupiny převzetí služeb při selhání můžete Azure-SSIS IR zastavit, změnit tak, aby odkazovaly na koncový bod naslouchacího procesu čtení/zápisu pomocí Azure PowerShell a znovu ho restartujte.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Managed Instance read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Řešení
 
@@ -65,12 +68,12 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 
 2. Upravte Azure-SSIS IR s informacemi o nové oblasti, virtuální síti a identifikátoru URI sdíleného přístupového podpisu (SAS) pro vlastní instalaci v sekundární instanci. Vzhledem k tomu, že Azure-SSIS IR odkazuje na naslouchací proces pro čtení a zápis a koncový bod je pro Azure-SSIS IR transparentní, nemusíte tento koncový bod upravovat.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Restartujte Azure-SSIS IR.
 
@@ -86,35 +89,35 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 
 2. Upravte Azure-SSIS IR o novou oblast, koncový bod a informace o virtuální síti pro sekundární instanci.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
-        ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
-3. Restart the Azure-SSIS IR.
+3. Restartujte Azure-SSIS IR.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
+### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-managed-instance"></a>Scénář 3: Azure-SSIS IR odkazuje na veřejný koncový bod spravované instance SQL
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+Tento scénář je vhodný, pokud Azure-SSIS IR odkazuje na veřejný koncový bod spravované instance SQL Azure a nepřipojí se k virtuální síti. Jediným rozdílem ze scénáře 2 je, že nemusíte upravovat informace o virtuální síti pro Azure-SSIS IR po převzetí služeb při selhání.
 
-#### Solution
+#### <a name="solution"></a>Řešení
 
-When failover occurs, take the following steps:
+Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 
-1. Stop the Azure-SSIS IR in the primary region.
+1. Zastavte Azure-SSIS IR v primární oblasti.
 
-2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
+2. Upravte Azure-SSIS IR s informacemi o nové oblasti a koncových bodech pro sekundární instanci.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database server endpoint" `
+      -CatalogAdminCredential "Azure SQL Database server admin credentials" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Restartujte Azure-SSIS IR.
 
@@ -133,43 +136,41 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
 
 2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z **\<new_data_factory_name\>** a **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Vytvořte novou datovou továrnu s názvem **\<new_data_factory_name\>** v nové oblasti.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                      -Location "new region"`
-                      -Name "<new_data_factory_name>"
-    ```
-    
-    Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
 
 4. Vytvoří nový Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure PowerShell.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
-
-    Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md).
-
-
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
+   
+   Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md).
 
 ## <a name="azure-ssis-ir-failover-with-sql-database"></a>Azure-SSIS IR převzetí služeb při selhání s SQL Database
 
@@ -180,7 +181,11 @@ Tento scénář je vhodný v těchto případech:
 - Azure-SSIS IR odkazuje na koncový bod naslouchacího procesu pro čtení/zápis skupiny převzetí služeb při selhání.
 - SQL Database Server *není nakonfigurován s* pravidlem pro koncový bod služby virtuální sítě.
 
-Pokud chcete, aby Azure-SSIS IR odkazovala na koncový bod naslouchacího procesu pro čtení a zápis, musíte nejdřív nasměrovat na koncový bod primárního serveru. Po umístění SSISDB do skupiny převzetí služeb při selhání můžete přejít na koncový bod naslouchacího procesu pro čtení a zápis a restartovat Azure-SSIS IR.
+Pokud chcete, aby Azure-SSIS IR odkazovala na koncový bod naslouchacího procesu pro čtení a zápis, musíte nejdřív nasměrovat na koncový bod primárního serveru. Po umístění SSISDB do skupiny převzetí služeb při selhání můžete Azure-SSIS IR zastavit, změnit tak, aby odkazovaly na koncový bod naslouchacího procesu čtení/zápisu pomocí Azure PowerShell a znovu ho restartujte.
+
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -CatalogServerEndpoint "Azure SQL Database read/write listener endpoint"
+```
 
 #### <a name="solution"></a>Řešení
 
@@ -201,14 +206,14 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 
 2. Upravte Azure-SSIS IR o novou oblast, koncový bod a informace o virtuální síti pro sekundární instanci.
 
-    ```powershell
-      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
-                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
-                        -VNetId "new VNet" `
-                        -Subnet "new subnet" `
-                        -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+      -CatalogServerEndpoint "Azure SQL Database endpoint" `
+      -CatalogAdminCredential "Azure SQL Database admin credentials" `
+      -VNetId "new VNet" `
+      -Subnet "new subnet" `
+      -SetupScriptContainerSasUri "new custom setup SAS URI"
+   ```
 
 3. Restartujte Azure-SSIS IR.
 
@@ -227,42 +232,41 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
 
 2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z **\<new_data_factory_name\>** a **\<new_integration_runtime_name\>** .
    
-    ```sql
-    EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
-    ```
+   ```sql
+   EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
+   ```
 
 3. Vytvořte novou datovou továrnu s názvem **\<new_data_factory_name\>** v nové oblasti.
 
-    ```powershell
-    Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
-                         -Location "new region"`
-                         -Name "<new_data_factory_name>"
-    ```
-    
-    Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
+   ```powershell
+   Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
+      -Location "new region"`
+      -Name "<new_data_factory_name>"
+   ```
+   
+   Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
 
 4. Vytvoří nový Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure PowerShell.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
-                                           -DataFactoryName "new data factory name" `
-                                           -Name "<new_integration_runtime_name>" `
-                                           -Description $AzureSSISDescription `
-                                           -Type Managed `
-                                           -Location $AzureSSISLocation `
-                                           -NodeSize $AzureSSISNodeSize `
-                                           -NodeCount $AzureSSISNodeNumber `
-                                           -Edition $AzureSSISEdition `
-                                           -LicenseType $AzureSSISLicenseType `
-                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                           -VnetId "new vnet" `
-                                           -Subnet "new subnet" `
-                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                           -CatalogPricingTier $SSISDBPricingTier
-    ```
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
+      -DataFactoryName "new data factory name" `
+      -Name "<new_integration_runtime_name>" `
+      -Description $AzureSSISDescription `
+      -Type Managed `
+      -Location $AzureSSISLocation `
+      -NodeSize $AzureSSISNodeSize `
+      -NodeCount $AzureSSISNodeNumber `
+      -Edition $AzureSSISEdition `
+      -LicenseType $AzureSSISLicenseType `
+      -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+      -VnetId "new vnet" `
+      -Subnet "new subnet" `
+      -CatalogServerEndpoint $SSISDBServerEndpoint `
+      -CatalogPricingTier $SSISDBPricingTier
+   ```
 
-    Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md).
-
+   Další informace o tomto příkazu PowerShellu najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](create-azure-ssis-integration-runtime.md).
 
 ## <a name="next-steps"></a>Další kroky
 

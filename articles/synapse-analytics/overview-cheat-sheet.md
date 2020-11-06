@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8ae47f89dcddd2253abd21239eb1a9bffee27c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b3ae2c958b479f5f131de871b64663c2754713b6
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307828"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330424"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Tabulka tahák analýzy Azure synapse
 
@@ -40,6 +40,7 @@ Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache
 | Pojem                         | Definice      |
 |:---                                 |:---                 |
 | **Požadavek SQL**  |   Operace, jako je třeba dotaz, se spouští prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL. |
+|**Skript SQL**| Sada příkazů SQL uložených v souboru. Skript SQL může obsahovat jeden nebo více příkazů SQL. Dá se použít ke spouštění požadavků SQL prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL.|
 
 ## <a name="spark-terminology"></a>Terminologie Spark
 | Pojem                         | Definice      |
@@ -48,17 +49,24 @@ Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache
 | **Fond Apache Spark**  | do pracovního prostoru můžete nasadit prostředky z 0 do N Spark zřízené pomocí jejich odpovídajících databází. Fond Spark se dá automaticky pozastavit, obnovit a škálovat.  |
 | **Aplikace Spark**  |   Skládá se z procesu ovladače a sady procesů prováděcího modulu. Aplikace Spark běží na fondu Spark bez serveru.            |
 | **Relace Spark**  |   Sjednocený vstupní bod aplikace Spark. Poskytuje způsob, jak pracovat s různými funkcemi Sparku a s menším počtem konstrukcí. Chcete-li spustit Poznámkový blok, je třeba vytvořit relaci. Relaci lze nakonfigurovat tak, aby běžela na určitém počtu prováděcích modulů určité velikosti. Výchozí konfigurace pro relaci poznámkového bloku se spouští ve dvou prováděcích modulech střední velikosti. |
-|**Integrace dat**| Poskytuje schopnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.| 
-|**Artifacts**| Pojem, který zapouzdřuje všechny objekty, které jsou nezbytné pro uživatele ke správě zdrojů dat, vývoji, Orchestrace a vizualizaci.|
 |**Poznámkový blok**| Interaktivní a znovu aktivní datové vědy a inženýrské rozhraní, které podporuje Scala, PySpark, C# a SparkSQL. |
 |**Definice úlohy Spark**|Rozhraní k odeslání úlohy Sparku pomocí sestavení jar obsahujícího kód a jeho závislosti.|
+
+## <a name="pipelines-terminology"></a>Terminologie kanálů
+| Pojem                         | Definice      |
+|:---                                 |:---                 |
+|**Integrace dat**| Poskytuje schopnost ingestovat data mezi různými zdroji a orchestrovat aktivity běžící v rámci pracovního prostoru nebo mimo pracovní prostor.| 
 |**Data Flow**|  Poskytuje plně vizuální prostředí bez nutnosti kódování, které by vyžadovalo transformaci velkých objemů dat. Veškerá optimalizace a provádění jsou zpracovávána způsobem bez serveru. |
-|**Skript SQL**| Sada příkazů SQL uložených v souboru. Skript SQL může obsahovat jeden nebo více příkazů SQL. Dá se použít ke spouštění požadavků SQL prostřednictvím vyhrazeného fondu SQL nebo bez serveru SQL.|
 |**Kanál**| Logické seskupení aktivit, které provádí úlohu společně.|
 |**Aktivita**| Definuje akce, které se mají provádět na datech, jako je kopírování dat, spuštění poznámkového bloku nebo skriptu SQL.|
 |**Trigger**| Spustí kanál. Dá se spustit ručně nebo automaticky (naplánování, zabubné okno nebo události).|
+|**Integrační datová sada**|  Pojmenované zobrazení dat, které jednoduše odkazuje na data, která se mají použít v aktivitě jako vstup a výstup. Patří do propojené služby.|
+
+## <a name="general-terminology"></a>Obecná terminologie
+| Pojem                         | Definice      |
+|:---                                 |:---                 |
+|**Artifacts**| Pojem, který zapouzdřuje všechny objekty, které jsou nezbytné pro uživatele ke správě zdrojů dat, vývoji, Orchestrace a vizualizaci.|
 |**Propojená služba**| Připojovací řetězce, které definují informace o připojení potřebné pro připojení k externím prostředkům v pracovním prostoru.|
-|**Integrován**|  Pojmenované zobrazení dat, které jednoduše odkazuje na data, která se mají použít v aktivitě jako vstup a výstup. Patří do propojené služby.|
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -66,5 +74,5 @@ Pokud chcete používat Spark Analytics, vytvořte a používejte **fondy Apache
 - [Použití sady Synapse Studio](quickstart-synapse-studio.md)
 - [Vytvoření vyhrazeného fondu SQL](quickstart-create-sql-pool-portal.md)
 - [Vytvoření fondu Apache Spark bez serveru](quickstart-create-apache-spark-pool-portal.md)
-- [Použít fond SQL bez serveru](quickstart-sql-on-demand.md)
+- [Použití bezserverového fondu SQL](quickstart-sql-on-demand.md)
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 0fd2312df31e61ae30f4c3fd04dc0991ac0f4675
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376849"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330321"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Kurz pro rozšíření Azure AD B2C k ochraně místních aplikací pomocí vrstev
 
@@ -29,7 +29,7 @@ Maverics identity Orchestrator rozšiřuje Azure AD B2C k ochraně místních ap
 
 - **Snadná konfigurace** : Azure AD B2C poskytuje jednoduché podrobné uživatelské rozhraní pro připojení konektorů Maverics identity Orchestrator nebo OIDC k Azure AD B2C.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli začít, budete potřebovat:
 
@@ -69,7 +69,7 @@ V následujícím diagramu architektury se zobrazuje implementace.
 | 8. | Uživatel je teď ověřený a má přístup k aplikaci.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Získat Maverics identity Orchestrator
-
+Pokud chcete získat software, který budete používat k integraci své starší verze místní aplikace s Azure AD B2C, obraťte se na [vrstvy](https://www.strata.io/contact/). Po získání softwaru postupujte podle následujících kroků a určete požadavky na produkt Orchestrator a proveďte požadované kroky instalace a konfigurace.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Konfigurace tenanta Azure AD B2C
 

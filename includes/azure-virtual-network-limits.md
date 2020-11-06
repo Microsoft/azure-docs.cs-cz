@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936091"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329528"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Omezení sítě – Azure Resource Manager
 Následující omezení platí pouze pro síťové prostředky spravované prostřednictvím **Azure Resource Manager** v jednotlivých oblastech na jedno předplatné. Naučte se, jak [Zobrazit aktuální využití prostředků proti limitům předplatného](../articles/networking/check-usage-against-limits.md).
@@ -55,6 +55,7 @@ Následující omezení platí pouze pro síťové prostředky spravované prost
 | Veřejné IP adresy<sup>1</sup> | 10 pro základní. | Obraťte se na podporu. |
 | Statické veřejné IP adresy<sup>1</sup> | 10 pro základní. | Obraťte se na podporu. |
 | Veřejné IP adresy standard<sup>1</sup> | 10 | Obraťte se na podporu. |
+| [Veřejné IP adresy na skupinu prostředků](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Obraťte se na podporu. | 
 | Předpony veřejných IP adres | omezeno počtem standardních veřejných IP adres v předplatném | Obraťte se na podporu. |
 | Délka předpony veřejné IP adresy | za 28 | Obraťte se na podporu. |
 
@@ -67,7 +68,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení         |
 |-----------------------------------------|-------------------------------|
-| Nástrojů pro vyrovnávání zatížení                          | 1 000                         |
+| Nástroje pro vyrovnávání zatížení                          | 1 000                         |
 | Pravidla na prostředek                      | 1 500                         |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                           |
 | Konfigurace IP adresy front-endu              | 600                           |
@@ -83,7 +84,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 
 | Prostředek                                | Omezení        |
 |-----------------------------------------|------------------------------|
-| Nástrojů pro vyrovnávání zatížení                          | 1 000                        |
+| Nástroje pro vyrovnávání zatížení                          | 1 000                        |
 | Pravidla na prostředek                      | 250                          |
 | Pravidla na síťový adaptér (u všech IP adres na síťovém adaptéru) | 300                          |
 | Konfigurace IP adresy front-endu              | 200                          |
@@ -106,6 +107,6 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Trasy definované uživatelem na směrovací tabulku |400 |400 |
 | Veřejné IP adresy (dynamické) |500 |500 |
 | Vyhrazené veřejné IP adresy |500 |500 |
-| Veřejné virtuální IP adresy na nasazení |5 |Kontaktování podpory |
-| Privátní VIP (interní vyrovnávání zatížení) na nasazení |1 |1 |
+| Veřejná IP adresa na nasazení |5 |Kontaktování podpory |
+| Privátní IP adresa (interní vyrovnávání zatížení) na nasazení |1 |1 |
 | Seznamy řízení přístupu (ACL) koncového bodu |50 |50 |

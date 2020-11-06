@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/18/2020
+ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 59f8148cf6e1d705094e8a6c4ee267b6c77ab7da
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518411"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Azure Active Directory integrace s Citrix ShareFile
 
@@ -27,10 +27,7 @@ Integrace Citrix ShareFile s Azure AD poskytuje následující výhody:
 * Uživatelům můžete povolit, aby se automaticky přihlásili k Citrix ShareFile (jednotné přihlašování) pomocí svých účtů Azure AD.
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Citrix ShareFile potřebujete následující položky:
 
@@ -42,13 +39,12 @@ Ke konfiguraci integrace služby Azure AD s Citrix ShareFile potřebujete násle
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
 * Citrix ShareFile podporuje jednotné přihlašování iniciované v **SP**
-* Jakmile nakonfigurujete Citrix ShareFile, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-citrix-sharefile-from-the-gallery"></a>Přidání Citrix ShareFile z Galerie
 
 Pokud chcete nakonfigurovat integraci Citrix ShareFile do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat Citrix ShareFile z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. Přihlaste se k Azure Portal pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -60,7 +56,7 @@ Pokud chcete nakonfigurovat integraci Citrix ShareFile do služby Azure AD, mus�
 V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Citrix ShareFile na základě testovacího uživatele s názvem **Britta Simon**.
 Aby se jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v systému Citrix ShareFile.
 
-Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Citrix ShareFile, musíte dokončit tyto stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Citrix ShareFile, proveďte následující kroky:
 
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
     
@@ -74,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Citrix ShareFile** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. V Azure Portal na stránce integrace aplikací **Citrix ShareFile** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
@@ -109,17 +105,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-    a. Přihlašovací adresa URL
-
-    b. Identifikátor Azure AD
-
-    c. Odhlašovací adresa URL
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory** , vyberte možnost **Uživatelé** a potom vyberte možnost **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
@@ -131,33 +121,31 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Citrix ShareFile.
 
-1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V Azure Portal vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte **Citrix ShareFile**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
-
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
-
-1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
-
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
-
+1. Vyberte **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+Pokud očekáváte, že role má být přiřazena uživatelům, můžete ji vybrat v rozevíracím seznamu **Vybrat roli** . Pokud pro tuto aplikaci není nastavená žádná role, zobrazí se vybraná role výchozí přístup.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurace Citrix ShareFile SSO
 
 1. V jiném okně webového prohlížeče se přihlaste k webu **Citrix ShareFile** společnosti jako správce.
 
-1. V nabídce na levé straně klikněte na **ikona nastavení ikona**  ->  **zabezpečení**  ->  **přihlášení & zásady zabezpečení**.
+1. Na **řídicím panelu** klikněte na **Nastavení** a vyberte **Nastavení správce** .
+
+    ![Správa](./media/sharefile-tutorial/settings.png)
+
+1. V nastavení pro správu přejdete **do části zabezpečení**  ->  **přihlášení & zásady zabezpečení**.
    
     ![Správa účtu](./media/sharefile-tutorial/settings-security.png "Správa účtu")
 
-1. Na stránce s **jednotným přihlašováním/konfigurací SAML 2,0** v části **základní nastavení**proveďte následující kroky:
+1. Na stránce s **jednotným přihlašováním/konfigurací SAML 2,0** v části **základní nastavení** proveďte následující kroky:
    
     ![Jednotné přihlašování](./media/sharefile-tutorial/saml-configuration.png "Jednotné přihlašování")
    
-    a. V části **Povolit SAML**vyberte **Ano** .
+    a. V části **Povolit SAML** vyberte **Ano** .
 
     b. Zkopírujte hodnotu **ID vystavitele nebo ID entity ShareFile** a vložte ji do pole **Adresa URL identifikátoru** v DIALOGOVÉM okně **základní konfigurace SAML** v Azure Portal.
     
@@ -185,7 +173,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
    
     a. Do textového pole **název** **Zadejte jméno** uživatele jako **Britta**.
    
-    b.  Do textového pole **příjmení** zadejte příjmení User as **Simon**( **jméno** uživatele).
+    b.  Do textového pole **příjmení** zadejte příjmení User as **Simon** ( **jméno** uživatele).
    
     c. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu Britta Simon jako **brittasimon \@ contoso.com**.
 
@@ -196,14 +184,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí následujících možností. 
 
-Po kliknutí na dlaždici Citrix ShareFile na přístupovém panelu byste měli být automaticky přihlášení k Citrix ShareFile, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
+1. Kliknutím na **test této aplikace** v Azure Portal. Tím se přesměruje na adresu URL pro přihlášení k Citrix ShareFile, kde můžete spustit tok přihlášení. 
 
-## <a name="additional-resources"></a>Další zdroje
+2. Přejít na adresu URL pro přihlášení k Citrix ShareFile přímo a zahájit tok přihlášení.
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](./tutorial-list.md)
+3. Můžete použít panel Microsoft Access. Po kliknutí na dlaždici Citrix ShareFile na přístupovém panelu se tato akce přesměruje na adresu URL pro přihlášení k Citrix ShareFile. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-- [Co je podmíněný přístup v Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Další kroky
+
+Jakmile nakonfigurujete Citrix ShareFile, můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
