@@ -7,15 +7,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 10/28/2020
 ms.author: banders
-ms.openlocfilehash: c24af5a9fb1367e00d9a014b1e10f750a38ad30b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e380aa1f4d50e6ced34254ceca9d899022142f6d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270895"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911286"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení faktury za Azure a dat o denním využití
 
@@ -41,7 +41,7 @@ U většiny předplatných si můžete fakturu stáhnout z webu Azure Portal. Po
 
     ![Snímek obrazovky znázorňující možnost Využití a fakturace](./media/download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. Pokud si chcete stáhnout kopii faktury ve formátu PDF, klikněte na tlačítko pro stažení si a potom vyberte **Stáhnout fakturu**. Pokud se zobrazí **Není k dispozici**, přečtěte si téma [Proč se mi nezobrazuje faktura za poslední fakturační období?](#noinvoice)
+3. Pokud si chcete stáhnout kopii faktury ve formátu PDF, klikněte na tlačítko pro stažení si a potom vyberte **Stáhnout fakturu**. Pokud se zobrazí **Není k dispozici** , přečtěte si téma [Proč se mi nezobrazuje faktura za poslední fakturační období?](#noinvoice)
 
     ![Snímek obrazovky ukazující fakturační období, možnost stažení a celkové poplatky za každé fakturační období](./media/download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
@@ -136,9 +136,7 @@ Pokud si chcete zobrazit a stáhnout data o využití jako zákazník se smlouvo
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte *Cost Management a fakturace*.
-
-    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
-
+1. Pokud máte přístup k více fakturačním účtům, vyberte rozsah fakturace pro váš fakturační účet EA.
 1. Vyberte **Využití a poplatky**.
 1. U měsíce, který chcete zobrazit, vyberte **Stáhnout**.
 
@@ -165,10 +163,6 @@ Můžete si taky stáhnout informace o využití od začátku měsíce za aktuá
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
-
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
-
-Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -662,6 +662,8 @@
               href: how-to-time-to-live.md
             - name: Definování jedinečných klíčů
               href: how-to-define-unique-keys.md
+            - name: Provádění transakčních dávkových operací
+              href: transactional-batch.md
         - name: Výkon
           items:
             - name: Dotaz
@@ -753,8 +755,6 @@
               href: create-sql-api-java-changefeed.md
         - name: Programování na straně serveru
           items:
-            - name: Provádění transakčních dávkových operací
-              href: transactional-batch.md
             - name: 'Zápis uložených procedur, triggerů a uživatelsky definovaných funkcí'
               href: how-to-write-stored-procedures-triggers-udfs.md
             - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy v JavaScriptu

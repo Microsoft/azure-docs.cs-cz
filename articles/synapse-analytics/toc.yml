@@ -14,8 +14,9 @@
     - name: "Poznámky k\_verzi"
       href: release-notes.md
 - name: Rychlé starty
+  expanded: true
   items:
-    - name: Úvod
+    - name: Začínáme
       href: get-started.md
       displayName: 'get, started, quickstart'
     - name: 1. Vytvoření pracovního prostoru Synapse
@@ -170,7 +171,9 @@
           href: sql/overview-features.md
         - name: Modely spotřeby prostředků
           href: sql/resource-consumption-models.md
-        - name: Osvědčené postupy pro bezserverové fondy SQL
+        - name: Zpracovaná data
+          href: sql/data-processed.md
+        - name: Osvědčené postupy pro SQL na vyžádání
           href: sql/best-practices-sql-on-demand.md
         - name: Osvědčené postupy pro vyhrazené fondy SQL
           href: sql/best-practices-sql-pool.md

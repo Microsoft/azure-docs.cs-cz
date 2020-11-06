@@ -179,7 +179,5 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro virtuální síť
       href: ../../virtual-network/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Virtual WAN
-      href: ../../virtual-wan/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro VPN Gateway
       href: ../../vpn-gateway/security-baseline.md

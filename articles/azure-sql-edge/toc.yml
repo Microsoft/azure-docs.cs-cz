@@ -47,7 +47,7 @@
         - name: Nasazení v Kubernetes
           href: deploy-kubernetes.md
         - name: Nasazení pomocí nástroje Azure Data Studio
-          href: 'https://docs.microsoft.com/sql/azure-data-studio/deploy-azure-sql-edge?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/azure-data-studio/deploy-azure-sql-edge?toc=%252fazure%252fazure-sql-edge%252ftoc.json
     - name: Strojové učení
       items:
         - name: Strojové učení a AI s využitím ONNX
@@ -91,9 +91,9 @@
         - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
         - name: FIRST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: LAST_VALUE (Transact-SQL)
-          href: 'https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Uchování a čištění dat
           items:
             - name: Přehled uchovávání dat
@@ -109,11 +109,11 @@
         - name: Přehled zabezpečení
           href: security-overview.md
         - name: Funkce zabezpečení
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-security-get-started?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-security-get-started?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Šifrování připojení
-          href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-encrypted-connections?toc=/azure/azure-sql-edge/toc.json'
+          href: /sql/linux/sql-server-linux-encrypted-connections?toc=%252fazure%252fazure-sql-edge%252ftoc.json
         - name: Azure Security Center for IoT
-          href: 'https://docs.microsoft.com/azure/asc-for-iot/overview?toc=/azure/azure-sql-edge/toc.json&bc=/azure/azure-sql-edge/breadcrumb/toc.json'
+          href: ../defender-for-iot/overview.md?bc=%252fazure%252fazure-sql-edge%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fazure-sql-edge%252ftoc.json
 - name: Postupy
   items:
     - name: Konfigurace SQL Edge
@@ -141,8 +141,8 @@
 - name: Referenční informace
   items:
     - name: Reference k jazyku Transact-SQL (T-SQL)
-      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
-- name: Zdroje a prostředky
+      href: /sql/t-sql/language-reference
+- name: Prostředky
   items:
     - name: Partneři
       items:

@@ -8,20 +8,20 @@ ms.technology: azure-cli
 ms.service: azure-cli
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f354a982cb134bbee032b2ea408bdbe127a5067c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: MT
+ms.openlocfilehash: 923eee619fdff7b128d9429f38cf713803cc6a13
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135964"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347385"
 ---
 ### <a name="prepare-your-environment-for-the-azure-cli"></a>Příprava prostředí pro rozhraní příkazového řádku Azure
 
-- Použijte [Azure Cloud Shell](/azure/cloud-shell/quickstart) s využitím prostředí bash.
+- Využijte [Azure Cloud Shell](/azure/cloud-shell/quickstart) s využitím prostředí Bash.
 
-   [![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)   
-- Pokud dáváte přednost, proveďte [místní instalaci](/cli/azure/install-azure-cli) Azure CLI pro spuštění příkazů odkazů CLI.
-   - Pokud používáte místní instalaci, přihlaste se pomocí Azure CLI pomocí příkazu [AZ Login](/cli/azure/reference-index#az-login) .  Dokončete proces ověřování podle kroků zobrazených v terminálu.  Další možnosti přihlašování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli) .
-  - Po zobrazení výzvy nainstalujte rozšíření Azure CLI při prvním použití.  Přečtěte si další informace o rozšířeních [využívajících rozšíření pomocí Azure CLI](/cli/azure/azure-cli-extensions-overview).
-  - Spuštěním [AZ Version](/cli/azure/reference-index?#az_version) vyhledejte verzi a závislé knihovny, které jsou nainstalovány. Pokud chcete upgradovat na nejnovější verzi, spusťte příkaz [AZ upgrade](/cli/azure/reference-index?#az_upgrade).
+   [![Vložené spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)   
+- Pokud tomu dáváte přednost, můžete [nainstalovat](/cli/azure/install-azure-cli) Azure CLI a spouštět referenční příkazy CLI.
+   - Pokud používáte místní instalaci, přihlaste se s Azure CLI pomocí příkazu [az login](/cli/azure/reference-index#az-login).  Pokud chcete dokončit proces ověřování, postupujte podle kroků zobrazených na terminálu.  Další možnosti přihlášení jsou popsané v tématu [Přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli).
+  - Po zobrazení výzvy nainstalujte rozšíření Azure CLI při prvním použití.  Další informace o rozšířeních najdete v tématu [Využití rozšíření v Azure CLI](/cli/azure/azure-cli-extensions-overview).
+  - Spuštěním příkazu [az version](/cli/azure/reference-index?#az_version) zjistěte verzi a závislé knihovny, které jsou nainstalované. Pokud chcete upgradovat na nejnovější verzi, spusťte [az upgrade](/cli/azure/reference-index?#az_upgrade).
 

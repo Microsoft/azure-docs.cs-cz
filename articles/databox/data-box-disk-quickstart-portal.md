@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fcc7c6ff74e17db2066d97597849c985f5a961e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 23615daf4a07e02b01bbd5a9cdf57ec9a81a2b76
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514064"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347386"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ Toto rychlé zprovoznění popisuje, jak nasadit Azure Data Box Disk pomocí web
 
 Podrobné pokyny k nasazení a sledování najdete v článku [Kurz: Objednání Azure Data Box Disku](data-box-disk-deploy-ordered.md). 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F&preserve-view=true).
 
 ::: zone-end
 
@@ -65,6 +65,8 @@ Přihlaste se k webu Azure Portal na adrese [https://aka.ms/azuredataboxfromdisk
 
 ## <a name="order"></a>Objednání
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Tento krok trvá přibližně 5 minut.
 
 1. Na webu Azure Portal vytvořte nový prostředek Azure Data Box. 
@@ -73,6 +75,74 @@ Tento krok trvá přibližně 5 minut.
 4. Zadejte podrobnosti objednávky a informace o dodání. Pokud je služba dostupná ve vaší oblasti, zadejte adresy pro poslání e-mailu s oznámením, zkontrolujte souhrn a vytvořte objednávku.
 
 Po vytvoření objednávky proběhne příprava disků k odeslání.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí těchto příkazů rozhraní příkazového řádku Azure můžete vytvořit úlohu Data Box Disk.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Spusťte příkaz [az group create](/cli/azure/group#az_group_create) a vytvořte skupinu prostředků, nebo použijte už existující skupinu prostředků:
+
+   ```azurecli
+   az group create --name databox-rg --location westus
+   ```
+
+1. Použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create) a vytvořte účet úložiště, nebo použijte už existující účet úložiště:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Spusťte příkaz [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) pro vytvoření úlohy Data Box se SKU DataBoxDisk:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxdisk-job \
+       --location westus --sku DataBoxDisk --contact-name "Jim Gan" --phone=4085555555 \
+       –-city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA \
+       --storage-account databoxtestsa --expected-data-size 1
+   ```
+
+1. Pro aktualizaci úlohy spusťte příkaz [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) jako v tomto příkladě, kde měníte e-mail a jméno kontaktu:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Pro získání informací o úloze spusťte [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show):
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Pro zobrazení všech úloh Data Box pro skupinu prostředků použijte příkaz [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list):
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Pro zrušení úlohy spusťte příkaz [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel):
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Pro odstranění úlohy spusťte příkaz [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete):
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Pro vypsání přihlašovacích údajů pro úlohu Data Box použijte příkaz [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials):
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Po vytvoření objednávky je zařízení připravené k odeslání.
+
+---
 
 ## <a name="unpack"></a>Vybalení
 
@@ -100,7 +170,7 @@ Tento krok trvá přibližně 5 minut.
 
 Doba trvání této operace závisí na množství dat.
 
-1. Jednotka obsahuje složky *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk* a *DataBoxDiskImport*. Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Data jako VHD/VHDX podobně zkopírujte do složky *PageBlob* a odpovídající data do složky *AzureFile*. Virtuální pevné disky, které chcete nahrát jako spravované disky, zkopírujte do složky ve složce *ManagedDisk*.
+1. Jednotka obsahuje složky *PageBlob* , *BlockBlob* , *AzureFile* , *ManagedDisk* a *DataBoxDiskImport*. Přetáhněte data ke kopírování, která chcete importovat jako objekty blob bloku, do složky *BlockBlob*. Data jako VHD/VHDX podobně zkopírujte do složky *PageBlob* a odpovídající data do složky *AzureFile*. Virtuální pevné disky, které chcete nahrát jako spravované disky, zkopírujte do složky ve složce *ManagedDisk*.
 
     V účtu služby Azure Storage se pro každou podsložku ve složkách *BlockBlob* a *PageBlob* vytvoří zvláštní kontejner. Pro podsložku ve složce *AzureFile* se vytvoří sdílená složka.
 
@@ -142,7 +212,7 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete objednávku zrušit, přejděte do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.  
 
-- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit.
+- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno** , můžete objednávku odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 

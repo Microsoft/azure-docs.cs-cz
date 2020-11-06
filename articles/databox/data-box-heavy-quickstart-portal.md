@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122819"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347418"
 ---
 ::: zone target = "docs"
 
@@ -60,6 +60,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="order"></a>Objednání
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Tento krok trvá přibližně 5 minut.
 
 1. Na webu Azure Portal vytvořte nový prostředek Azure Data Box.
@@ -68,6 +70,77 @@ Tento krok trvá přibližně 5 minut.
 4. Zadejte podrobnosti objednávky a informace o dodání. Pokud je služba dostupná ve vaší oblasti, zadejte adresy pro poslání e-mailu s oznámením, zkontrolujte souhrn a vytvořte objednávku.
 
 Po vytvoření objednávky je zařízení připravené k odeslání.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Pomocí těchto příkazů rozhraní příkazového řádku Azure můžete vytvořit úlohu Data Box Heavy.
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+1. Spusťte příkaz [az group create](/cli/azure/group#az_group_create) a vytvořte skupinu prostředků, nebo použijte už existující skupinu prostředků:
+
+   ```azurecli
+   az group create --name databox-rg --location westus 
+   ```
+
+1. Použijte příkaz [az storage account create](/cli/azure/storage/account#az_storage_account_create) a vytvořte účet úložiště, nebo použijte už existující účet úložiště:
+
+   ```azurecli
+   az storage account create --resource-group databox-rg --name databoxtestsa
+   ```
+
+1. Spusťte příkaz [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) pro vytvoření úlohy Data Box a nastavte **--sku** na hodnotu `DataBoxHeavy`:
+
+   ```azurecli
+   az databox job create --resource-group databox-rg --name databoxheavy-job \
+       --location westus --sku DataBoxHeavy --contact-name "Jim Gan" --phone 4085555555 \
+       --city Sunnyvale --email-list JimGan@contoso.com --street-address1 "1020 Enterprise Way" \
+       --postal-code 94089 --country US --state-or-province CA --storage-account databoxtestsa \
+       --staging-storage-account databoxtestsa --resource-group-for-managed-disk rg-for-md
+   ```
+
+   > [!NOTE]
+   > Ujistěte se, že vaše předplatné podporuje Data Box Heavy.
+
+1. Pro aktualizaci úlohy spusťte příkaz [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) jako v tomto příkladě, kde měníte e-mail a jméno kontaktu:
+
+   ```azurecli
+   az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
+   ```
+
+   Pro získání informací o úloze spusťte [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show):
+
+   ```azurecli
+   az databox job show --resource-group databox-rg --name databox-job
+   ```
+
+   Pro zobrazení všech úloh Data Box pro skupinu prostředků použijte příkaz [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list):
+
+   ```azurecli
+   az databox job list --resource-group databox-rg
+   ```
+
+   Pro zrušení úlohy spusťte příkaz [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel):
+
+   ```azurecli
+   az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
+   ```
+
+   Pro odstranění úlohy spusťte příkaz [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete):
+
+   ```azurecli
+   az databox job delete –resource-group databox-rg --name databox-job
+   ```
+
+1. Pro vypsání přihlašovacích údajů pro úlohu Data Box použijte příkaz [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials):
+
+   ```azurecli
+   az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"
+   ```
+
+Po vytvoření objednávky je zařízení připravené k odeslání.
+
+---
 
 ::: zone-end
 
@@ -161,7 +234,7 @@ Dokončení tohoto kroku trvá 2 až 3 minuty.
 
 - Před zpracováním objednávky můžete objednávku Data Boxu Heavy zrušit na webu Azure Portal. Po zpracování objednávky už se objednávka zrušit nedá. Průběh objednávky bude pokračovat až do fáze Dokončeno. Pokud chcete objednávku zrušit, přejděte do části **Přehled** a na panelu příkazů klikněte na **Zrušit**.
 
-- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno**, můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
+- Jakmile se na webu Azure Portal objeví stav **Dokončeno** nebo **Zrušeno** , můžete objednávku odstranit. Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
