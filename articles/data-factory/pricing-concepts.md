@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: a80e0f1b62257fdbce6598c9cc4088701cc2ae9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13a05089ae6365bb5d279105f8c010278bd0adb8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983610"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396001"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Seznámení s cenami služby Data Factory prostřednictvím příkladů
 
@@ -48,7 +48,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 načetly se záznamy spuštění monitorování (1 pro spuštění kanálu, 1 pro spuštění aktivit). |
 
 **Ceny za celkový scénář: $0,16811**
 
@@ -79,7 +79,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 3 spuštění aktivit (1 pro spuštění triggeru, 2 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 3 záznamy o spuštění sledování se opakovaly (1 pro spuštění kanálu, 2 pro spuštění aktivit). |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 3 načtené záznamy běhu monitorování (1 pro běh kanálu, 2 pro spuštění aktivit) |
 | Předpoklad aktivity datacihly: doba provádění = 10 min | 10 minut provádění externí aktivity kanálu |
 
 **Ceny za celkový scénář: $0,16916**
@@ -113,7 +113,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 4 spuštění aktivit (1 pro spuštění triggeru, 3 pro spuštění aktivit) |
 | Předpoklad Kopírování dat: doba provádění = 10 min | 10 \* 4 Azure Integration runtime (výchozí nastavení diú = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 4 pokus o sledování záznamů o spuštění (1 pro běh kanálu, 3 pro spuštění aktivit) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 4 načtené záznamy běhu monitorování (1 pro běh kanálu, 3 pro spuštění aktivit) |
 | Spustit předpoklad aktivity vyhledávání: doba provádění = 1 min. | 1 minimální spuštění aktivity kanálu |
 | Předpoklad aktivity datacihly: doba provádění = 10 min | 10 minut provádění externí aktivity kanálu |
 
@@ -160,7 +160,7 @@ Chcete-li dosáhnout tohoto scénáře, je nutné vytvořit kanál s následují
 | Získat kanál | 1 entita pro čtení a zápis |
 | Spustit kanál | 2 spuštění aktivit (1 pro spuštění triggeru, 1 pro spuštění aktivit) |
 | Předpoklady toku dat: doba provádění = 10 min + 10 min. TTL | 10 až 10 \* jader obecného výpočetních prostředků s hodnotou TTL z 10 |
-| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 pokus o sledování záznamů o spuštění (1 pro spuštění kanálu, 1 pro spuštění aktivity) |
+| Předpoklad monitorování kanálu: došlo k pouze 1 spuštění. | 2 načetly se záznamy spuštění monitorování (1 pro spuštění kanálu, 1 pro spuštění aktivit). |
 
 **Ceny za celkový scénář: $1,4631**
 
@@ -189,7 +189,7 @@ V tomto scénáři chcete odstranit původní soubory na Azure Blob Storage a ko
 | Spustit kanál | 6 spuštění aktivit (2 pro spuštění triggeru, 4 pro spuštění aktivit) |
 | Provést odstranění aktivity: každou dobu běhu = 5 min. Spuštění aktivity odstranit v prvním kanálu je od 10:00 do 10:05 UTC. Provedení aktivity odstranit v druhém kanálu je od 10:02 do 10:07 UTC.|Celkem 7 minut spuštění aktivity kanálu ve spravované virtuální síti Aktivita kanálu podporuje ve spravované virtuální síti až 50 souběžnosti. |
 | Předpoklad Kopírování dat: každá doba provádění = 10 min. Provedení kopírování v prvním kanálu je od 10:06 do 10:15 UTC. Provedení aktivity odstranit v druhém kanálu je od 10:08 do 10:17 UTC. | 10 * 4 Azure Integration Runtime (výchozí nastavení DIÚ = 4) Další informace o jednotkách integrace dat a optimalizaci výkonu kopírování najdete v [tomto článku](copy-activity-performance.md) . |
-| Předpokládá se sledování kanálu: narazilo se jenom na 2 běhy. | 6. pokus o sledování záznamů o spuštění (2 pro spuštění kanálu, 4 pro spuštění aktivit) |
+| Předpokládá se sledování kanálu: narazilo se jenom na 2 běhy. | 6 načtených záznamů sledovacích běhů (2 pro běh kanálu, 4 pro spuštění aktivit) |
 
 
 **Ceny za celkový scénář: $0,45523**

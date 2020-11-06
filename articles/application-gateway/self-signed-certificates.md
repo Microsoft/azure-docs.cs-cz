@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: de580d8f94292ae65769c696aa232f5b660bf414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e60aa9f072a447af97aa7cc66534e6e893fdbcf6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84806761"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396936"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak:
 - Vytvoření certifikátu podepsaného svým držitelem podepsaného vaší vlastní certifikační autoritou
 - Nahrajte kořenový certifikát podepsaný svým držitelem do Application Gateway k ověření serveru back-end.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **[OpenSSL](https://www.openssl.org/) na počítači se systémem Windows nebo Linux** 
 
@@ -133,7 +133,7 @@ Na webovém serveru nakonfigurujte TLS pomocí souborů Fabrikam. CRT a Fabrikam
 
 Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS najdete v tématu [Postup: instalace importovaných certifikátů na webový server ve Windows serveru 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Pokyny k vytvoření vazby TLS najdete v tématu [jak nastavit SSL na IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Pokyny k vytvoření vazby TLS najdete v tématu [jak nastavit SSL na IIS 7](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 Pokud chcete nahrát certifikát v Application Gateway, musíte exportovat certifikát. CRT do formátu. cer Base-64 Encoded. Vzhledem k tomu, že. CRT již obsahuje veřejný klíč ve formátu kódování Base-64, stačí přejmenovat příponu souboru z. CRT na. cer. 
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Důvěryhodný kořenový certifikát nahrajte z portálu tak, že vyberete **Nastavení http** a zvolíte protokol **https** .
 
@@ -273,4 +273,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o SSL\TLS v Application Gateway najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md).
-

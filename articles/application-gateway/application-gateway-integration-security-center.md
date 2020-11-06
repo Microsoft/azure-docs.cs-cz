@@ -9,16 +9,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.openlocfilehash: 2c6797a0f0f2d4d655bcdabe732f6b14c8f0f562
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1464c0c0b0d573711ed07332a76bb67e73dc0484
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131203"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397769"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Přehled integrace mezi Application Gateway a Azure Security Center
 
-Přečtěte si, jak Application Gateway a Security Center lépe chránit prostředky webových aplikací. Firewall webových aplikací služby Application Gateway (WAF) se integruje s [Security Center](../security-center/security-center-intro.md) , aby poskytoval bezproblémové zobrazení, které zabraňuje, detekuje a reaguje na hrozby nechráněných webových aplikací ve vašem prostředí.
+Přečtěte si, jak Application Gateway a Security Center lépe chránit prostředky webových aplikací. Firewall webových aplikací služby Application Gateway (WAF) se integruje s [Security Center](../security-center/security-center-introduction.md) , aby poskytoval bezproblémové zobrazení, které zabraňuje, detekuje a reaguje na hrozby nechráněných webových aplikací ve vašem prostředí.
 
 ## <a name="overview"></a>Přehled
 
@@ -30,7 +30,7 @@ Kliknutím na jakékoli doporučení týkající se brány firewall webových ap
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>Přidání firewallu webových aplikací do existujícího prostředku
 
-Přejděte na **všechny služby**  >  **zabezpečení a identita**  >  **Security Center** a v **Security Center – přehled**klikněte na **aplikace**. V **Security Centerch aplikacích**tabulka obsahuje seznam aplikací, které Security Center zjištěné ve vašem předplatném.
+Přejděte na **všechny služby**  >  **zabezpečení a identita**  >  **Security Center** a v **Security Center – přehled** klikněte na **aplikace**. V **Security Centerch aplikacích** tabulka obsahuje seznam aplikací, které Security Center zjištěné ve vašem předplatném.
 
 ![webové aplikace][3]
 
@@ -40,7 +40,7 @@ Kliknutím na webovou aplikaci s kritickým problémem získáte stránku **stav
 
 Kliknutím na **Přidat Firewall webových aplikací** v části **doporučení** otevřete stránku **Přidat Firewall webových aplikací** .
 
-Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klikněte na **vytvořit nové** a  **vytvořte novou bránu firewall webových aplikací**a klikněte na **Microsoft-Application Gateway**. Provede vás kroky k vytvoření aplikační brány. V tomto okamžiku je webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, zda je tento prostředek chráněn bránou firewall webových aplikací. Tím se nepřidá jako člen fondu back-end.
+Pokud nemáte existující Application Gateway nebo chcete vytvořit nový, klikněte na **vytvořit nové** a  **vytvořte novou bránu firewall webových aplikací** a klikněte na **Microsoft-Application Gateway**. Provede vás kroky k vytvoření aplikační brány. V tomto okamžiku je webová aplikace přidána jako chráněný prostředek, Security Center nyní sleduje, zda je tento prostředek chráněn bránou firewall webových aplikací. Tím se nepřidá jako člen fondu back-end.
 
 Pokud máte existující Aplikační bránu, můžete ji vybrat v části **použít existující řešení** .
 
@@ -50,7 +50,7 @@ Přidání webové aplikace do aplikační brány prostřednictvím Security Cen
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>Přidání prostředku do existující brány firewall webových aplikací
 
-Přejděte na **všechny služby**  >  **zabezpečení a identita**  >  **Security Center** a v **Security Center – přehled**klikněte na možnost **Partnerská řešení**. Existující brány Application Gateway, které používají Security Center, se zobrazí na stránce **Partnerská řešení** .
+Přejděte na **všechny služby**  >  **zabezpečení a identita**  >  **Security Center** a v **Security Center – přehled** klikněte na možnost **Partnerská řešení**. Existující brány Application Gateway, které používají Security Center, se zobrazí na stránce **Partnerská řešení** .
 
 ![Partnerská řešení][7]
 
@@ -76,7 +76,7 @@ Výběrem pravidla se zobrazí seznam výstrah pro pravidlo konkrétního WAF. K
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak povolit bránu firewall webových aplikací v existující aplikační bráně, najdete v tématu [Vytvoření nebo aktualizace Application Gateway Azure pomocí brány firewall webových aplikací](application-gateway-web-application-firewall-portal.md).
+Informace o tom, jak povolit bránu firewall webových aplikací v existující aplikační bráně, najdete v tématu [Vytvoření nebo aktualizace Application Gateway Azure pomocí brány firewall webových aplikací](../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md).
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

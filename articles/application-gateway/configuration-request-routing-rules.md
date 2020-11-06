@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 20a665eefbb73f062f1f036e17b16da891a43eef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047ce9b33836e2c23a37b1383942323d7c382485
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652986"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397531"
 ---
 # <a name="application-gateway-request-routing-rules"></a>Pravidla směrování žádostí Application Gateway
 
-Když vytvoříte Aplikační bránu pomocí Azure Portal, vytvoříte výchozí pravidlo (*rule1*). Toto pravidlo váže výchozí naslouchací proces (*appGatewayHttpListener*) s výchozím fondem back-end (*appGatewayBackendPool*) a výchozím nastavením back-endu http (*appGatewayBackendHttpSettings*). Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
+Když vytvoříte Aplikační bránu pomocí Azure Portal, vytvoříte výchozí pravidlo ( *rule1* ). Toto pravidlo váže výchozí naslouchací proces ( *appGatewayHttpListener* ) s výchozím fondem back-end ( *appGatewayBackendPool* ) a výchozím nastavením back-endu http ( *appGatewayBackendHttpSettings* ). Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
 
 ## <a name="rule-type"></a>Typ pravidla
 
-Když vytvoříte pravidlo, zvolíte mezi [ *základními* a *založenými na cestách*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
+Když vytvoříte pravidlo, zvolíte mezi [ *základními* a *založenými na cestách*](./application-gateway-components.md#request-routing-rules).
 
 - Pokud chcete před všemi požadavky na přiřazený naslouchací proces (například *blog <i></i> . contoso.com/ \* )* na jeden fond back-end, vyberte základní.
 - Pokud chcete směrovat požadavky od konkrétních cest URL ke konkrétním fondům back-endu, vyberte na základě cesty. Vzor cesty je použit pouze pro cestu k adrese URL, nikoli k parametrům dotazu.
@@ -57,7 +57,7 @@ Další informace o přesměrování najdete v tématu [Přehled přesměrován�
 
 ### <a name="redirection-type"></a>Typ přesměrování
 
-Vyberte typ požadovaného přesměrování: *trvalá (301)*, *dočasná (307)*, *Nalezeno (302*) nebo *jiný (303)*.
+Vyberte typ požadovaného přesměrování: *trvalá (301)* , *dočasná (307)* , *Nalezeno (302* ) nebo *jiný (303)*.
 
 ### <a name="redirection-target"></a>Cíl přesměrování
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f570f9f18f9c9d484a9bc9c1a5c64d42dbdc714
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335824"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397446"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Poznámky pro řadič Application Gateway pro příchozí přenos dat 
 
@@ -72,7 +72,7 @@ V předchozím příkladu jsme definovali prostředek příchozího přenosu `go
 
 ## <a name="tls-redirect"></a>Přesměrování TLS
 
-Application Gateway je [možné nakonfigurovat](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently` .
+Application Gateway je [možné nakonfigurovat](./redirect-overview.md) tak, aby automaticky přesměrovala adresy URL http na jejich protějšky https. Pokud je tato poznámka přítomná a protokol TLS je správně nakonfigurovaný, Kubernetes příchozí řadič vytvoří [pravidlo směrování s konfigurací přesměrování](./redirect-http-to-https-portal.md#add-a-routing-rule-with-a-redirection-configuration) a použije změny v Application Gateway. Vytvořené přesměrování bude HTTP `301 Moved Permanently` .
 
 ### <a name="usage"></a>Využití
 

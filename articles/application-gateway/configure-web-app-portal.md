@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
-ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323364"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397548"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
@@ -26,19 +26,19 @@ V tomto článku získáte informace o těchto tématech:
 - Upravte back-end fond a přidejte do něj App Service.
 - Upravit nastavení HTTP s povoleným přepínačem vybrat hostitele
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Application Gateway: Vytvořte Aplikační bránu bez cíle back-end fondu. Další informace najdete v tématu [rychlý Start: směrování webového provozu pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md)
 
-- App Service: Pokud nemáte existující službu App Service, přečtěte si téma [dokumentace ke službě App Service](https://docs.microsoft.com/azure/app-service/).
+- App Service: Pokud nemáte existující službu App Service, přečtěte si téma [dokumentace ke službě App Service](../app-service/index.yml).
 
 ## <a name="add-app-service-as-backend-pool"></a>Přidat službu App Service jako back-end fond
 
 1. V Azure Portal vyberte svou Aplikační bránu.
 
-2. V části **fondy back-endu**vyberte fond back-end.
+2. V části **fondy back-endu** vyberte fond back-end.
 
-4. V části **cílový typ**vyberte **App Services**.
+4. V části **cílový typ** vyberte **App Services**.
 
 5. V části **cíl** vyberte svůj App Service.
 
@@ -50,19 +50,19 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="edit-http-settings-for-app-service"></a>Upravit nastavení HTTP pro App Service
 
-1. V části **nastavení protokolu HTTP**vyberte existující nastavení http.
+1. V části **nastavení protokolu HTTP** vyberte existující nastavení http.
 
-2. V části **přepsat novým názvem hostitele**vyberte **Ano**.
-3. V části **přepsat název hostitele**vyberte vybrat **název hostitele z back-endu cíle**.
+2. V části **přepsat novým názvem hostitele** vyberte **Ano**.
+3. V části **přepsat název hostitele** vyberte vybrat **název hostitele z back-endu cíle**.
 4. Vyberte **Uložit**.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Back-end App Service":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Vyberte název hostitele z nastavení http back-endu.":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Další konfigurace v případě přesměrování na relativní cestu služby App Service
 
 Když služba App Service pošle klientovi odezvu přesměrování na přesměrování na jeho relativní cestu (například přesměrování z `contoso.azurewebsites.net/path1` na `contoso.azurewebsites.net/path2` ), používá stejný název hostitele v hlavičce umístění odpovědi jako ten v požadavku, který obdržel od služby Application Gateway. Proto klient provede požadavek přímo na místo průchodu `contoso.azurewebsites.net/path2` přes Aplikační bránu ( `contoso.com/path2` ). Obcházení aplikační brány není žádoucí.
 
-Pokud v případu použití existují situace, kdy bude služba App Service potřebovat poslat klientovi odezvu přesměrování, proveďte [Další kroky, abyste přepsali hlavičku umístění](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration).
+Pokud v případu použití existují situace, kdy bude služba App Service potřebovat poslat klientovi odezvu přesměrování, proveďte [Další kroky, abyste přepsali hlavičku umístění](./troubleshoot-app-service-redirection-app-service-url.md#sample-configuration).
 
 ## <a name="restrict-access"></a>Omezení přístupu
 
@@ -72,4 +72,4 @@ Jedním ze způsobů, jak omezit přístup k webovým aplikacím, je použít [A
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě App Service a dalších víceklientské podpoře k aplikační bráně najdete v tématu [Podpora víceklientské služby s aplikační bránou](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
+Další informace o službě App Service a dalších víceklientské podpoře k aplikační bráně najdete v tématu [Podpora víceklientské služby s aplikační bránou](./application-gateway-web-app-overview.md).

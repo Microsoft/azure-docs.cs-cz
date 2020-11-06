@@ -7,18 +7,18 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: 2850f831100533908d55c4aab372338e07b3807f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3fe4118a8ecf4479732ba4073b342d3ec9f941b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042486"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398194"
 ---
 # <a name="configure-database-settings"></a>Konfigurace nastavení databáze 
 
 Azure API pro FHIR používá k ukládání dat databázi. Výkon podkladové databáze závisí na počtu jednotek žádosti (RU) vybraných během zřizování služby nebo v nastavení databáze po zřízení služby.
 
-Rozhraní Azure API pro FHIR vypůjčuje koncept ru z Cosmos DB (v části [žádosti o přijetí v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/request-units)) se při nastavování výkonu podkladové databáze. 
+Rozhraní Azure API pro FHIR vypůjčuje koncept ru z Cosmos DB (v části [žádosti o přijetí v Azure Cosmos DB](../cosmos-db/request-units.md)) se při nastavování výkonu podkladové databáze. 
 
 Aby bylo zajištěno, že pro vaši databázi jsou neustále k dispozici dostatečné systémové prostředky, musí být zajištěna propustnost. Kolik ru potřebujete pro vaši aplikaci, závisí na operacích, které provádíte. Operace mohou být v rozsahu od jednoduchých čtení a zápisu až po složitější dotazy. 
 

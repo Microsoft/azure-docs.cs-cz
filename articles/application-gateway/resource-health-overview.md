@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
-ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e30a93f8270cfaf8910130cc1e2633bb80c2b8e
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67659499"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397168"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Přehled služby Azure Application Gateway Resource Health
 
@@ -61,4 +61,4 @@ Stav **Degraded** znamená, že brána zjistila ztrátu výkonu, i když je stá
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o řešení potíží s Application Gateway firewallu webových aplikací (WAF) najdete v tématu [řešení potíží s bránou firewall webových aplikací (WAF) pro Azure Application Gateway](web-application-firewall-troubleshoot.md).
+Další informace o řešení potíží s Application Gateway firewallu webových aplikací (WAF) najdete v tématu [řešení potíží s bránou firewall webových aplikací (WAF) pro Azure Application Gateway](../web-application-firewall/ag/web-application-firewall-troubleshoot.md).

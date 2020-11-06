@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: c1bd41587e4f56fb0a7f3eb8285d301751f558d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f53a8f93d4d51ec8f8fd91051496a46670f432
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668096"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397344"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Co je Application Gateway kontroler příchozího přenosu dat?
 AGIC) je Kubernetes aplikace, díky které můžou zákazníci [služby Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) využít Azure azure Native [Application Gateway](https://azure.microsoft.com/services/application-gateway/) (pro vyrovnávání zatížení L7) a zveřejnit tak cloudový software na Internet. Application Gateway AGIC monitoruje cluster Kubernetes, na kterém je hostovaný, a nepřetržitě aktualizuje Application Gateway, aby se vybrané služby zobrazovaly na internetu.
 
-Kontroler příchozího provozu je spuštěný pod AKS zákazníka. AGIC monitoruje podmnožinu prostředků Kubernetes pro změny. Stav clusteru AKS se převede na Application Gateway specifickou konfiguraci a použije se na [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+Kontroler příchozího provozu je spuštěný pod AKS zákazníka. AGIC monitoruje podmnožinu prostředků Kubernetes pro změny. Stav clusteru AKS se převede na Application Gateway specifickou konfiguraci a použije se na [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md).
 
 ## <a name="benefits-of-application-gateway-ingress-controller"></a>Výhody Application Gatewayho řadiče pro příchozí přenos dat
 AGIC pomáhá eliminovat nutnost mít další službu Vyrovnávání zatížení/veřejnou IP adresu před clusterem AKS a před požadavky na cluster AKS zabrání vícenásobnému směrování v DataPath. Application Gateway mluví s lusky pomocí jejich privátní IP adresy přímo a nevyžaduje služby NodePort nebo KubeProxy. Tím se také zvýší výkon pro vaše nasazení.
@@ -70,11 +70,10 @@ Následující tabulky popisují, ve kterých scénářích se aktuálně podpor
 |                  |1 Application Gateway |2 + aplikační brány |
 |------------------|---------|--------|
 |**1 AGIC**|N/A |N/A |
-|**2 + AGICs**|Musí používat sdílené funkce ProhibitedTarget |Není k dispozici |
+|**2 + AGICs**|Musí používat sdílené funkce ProhibitedTarget |– |
 
 ## <a name="next-steps"></a>Další kroky
 - [**Nasazení AKS Add-On bezserverová**](tutorial-ingress-controller-add-on-new.md): pokyny k instalaci doplňku AGIC, AKS a Application Gateway v infrastruktuře prázdná-SLAT.
 - [**Nasazení AKS Add-On brownfield**](tutorial-ingress-controller-add-on-existing.md): nainstalujte doplněk AGIC v clusteru AKS s existujícím Application Gateway.
 - [**Nasazení Helm bezserverová**](ingress-controller-install-new.md): Nainstalujte AGIC prostřednictvím Helm, nového AKS clusteru a nové Application Gateway v infrastruktuře s prázdným-.
 - [**Nasazení Helm brownfield**](ingress-controller-install-existing.md): nasaďte AGIC prostřednictvím Helm na stávajícím clusteru AKS a Application Gateway.
-

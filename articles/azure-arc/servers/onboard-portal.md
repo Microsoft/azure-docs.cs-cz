@@ -1,14 +1,14 @@
 ---
 title: Připojení hybridních počítačů k Azure z Azure Portal
 description: V tomto článku se dozvíte, jak nainstalovat agenta a připojit počítače k Azure pomocí serverů s podporou ARC Azure z Azure Portal.
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ca3c08acdef1b2a1f7c3774f5755967d472c93ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370147"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398024"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -113,9 +113,9 @@ Pokud se agent po dokončení instalace nepovede spustit, podívejte se do proto
 
 Agent připojeného počítače pro Linux je k dispozici v preferovaném formátu balíčku pro distribuci (. Ot./min. nebo. DEB), která je hostovaná v [úložišti balíčků](https://packages.microsoft.com/)Microsoftu. [ `Install_linux_azcmagent.sh` Sada skriptu prostředí](https://aka.ms/azcmagent) provádí následující akce:
 
-- Nakonfiguruje hostitelský počítač ke stažení balíčku agenta z packages.microsoft.com.
-- Nainstaluje balíček hybridního poskytovatele prostředků.
-- Registrace počítače pomocí ARC Azure
+* Nakonfiguruje hostitelský počítač ke stažení balíčku agenta z packages.microsoft.com.
+
+* Nainstaluje balíček hybridního poskytovatele prostředků.
 
 Volitelně můžete agenta nakonfigurovat s vašimi informacemi o proxy serveru, včetně `--proxy "{proxy-url}:{proxy-port}"` parametru.
 
@@ -131,15 +131,30 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-Chcete-li stáhnout a nainstalovat agenta, včetně `--proxy` parametru pro konfiguraci agenta pro komunikaci prostřednictvím proxy server, spusťte následující příkazy:
+1. Chcete-li stáhnout a nainstalovat agenta, včetně `--proxy` parametru pro konfiguraci agenta pro komunikaci prostřednictvím proxy server, spusťte následující příkazy:
 
-```bash
-# Download the installation package.
-wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
+    ```bash
+    # Download the installation package.
+    wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
-bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
-```
+    # Install the connected machine agent.
+    bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+    ```
+
+2. Po instalaci agenta je třeba ho nakonfigurovat, aby komunikoval se službou Azure ARC, a to spuštěním tohoto příkazu:
+
+    ```bash
+    azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --cloud "cloudName"
+    if [ $? = 0 ]; then echo "\033[33mTo view your onboarded server(s), navigate to https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.HybridCompute%2Fmachines\033[m"; fi
+    ```
+
+### <a name="install-with-the-scripted-method"></a>Instalace pomocí skriptované metody
+
+1. Přihlaste se k serveru pomocí účtu, který má root Access.
+
+1. Přejděte do složky nebo sdílené složky, do které jste zkopírovali skript, a spusťte ho na serveru spuštěním `./OnboardingScript.sh` skriptu.
+
+Pokud se agent po dokončení instalace nepovede spustit, podívejte se do protokolů, kde najdete podrobnější informace o chybě. Adresář protokolu je *var/opt/azcmagent/log*.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Ověření připojení k Azure Arcu
 

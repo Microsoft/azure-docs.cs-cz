@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168184"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397361"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
 
@@ -141,7 +141,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Jednu nebo více **služeb**s odkazem na lusky přes párové `selector` popisky.
+  2. Jednu nebo více **služeb** s odkazem na lusky přes párové `selector` popisky.
      Ověřte tuto z [Cloud Shell](https://shell.azure.com/) s `kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ Aby funkce AGIC fungovala podle očekávání, musí být na tomto místě:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Ingress**Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
+  3. **Ingress** Příchozí s poznámkami s `kubernetes.io/ingress.class: azure/application-gateway` odkazem na výše uvedenou službu ověřte tuto [Cloud Shell](https://shell.azure.com/) s`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -243,7 +243,7 @@ Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](
 |  5        | Zařazování objektů do protokolu; zobrazuje upravenou konfiguraci JSON použitou pro ARM. |
 
 
-Úrovně podrobností lze nastavit přes `verbosityLevel` proměnnou v souboru [Helm-config. yaml](#sample-helm-config-file) . Zvyšte úroveň podrobností na, `5` aby se získala konfigurace JSON odeslané do [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview):
+Úrovně podrobností lze nastavit přes `verbosityLevel` proměnnou v souboru [Helm-config. yaml](#sample-helm-config-file) . Zvyšte úroveň podrobností na, `5` aby se získala konfigurace JSON odeslané do [ARM](../azure-resource-manager/management/overview.md):
   - Přidat `verbosityLevel: 5` na sebe sebe v [Helm-config. yaml](#sample-helm-config-file) a znovu nainstalovat
   - získat protokoly pomocí `kubectl logs <pod-name>`
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

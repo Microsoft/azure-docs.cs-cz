@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808158"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397701"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení chyb Chybná brána ve službě Application Gateway
 
@@ -95,8 +95,8 @@ Následující tabulka uvádí hodnoty spojené s výchozím testem stavu:
 * Pokud BackendHttpSetting určuje jiný port než 80, měla by být výchozí lokalita nakonfigurována tak, aby naslouchala na tomto portu.
 * Volání metody `http://127.0.0.1:port` by mělo vracet kód výsledku HTTP 200. To by mělo být vráceno v průběhu 30 sekund časového limitu.
 * Ujistěte se, že je port nakonfigurovaný a že nejsou k dispozici žádná pravidla brány firewall nebo skupiny zabezpečení sítě Azure, které blokují příchozí nebo odchozí provoz na konfigurovaném portu.
-* Pokud se virtuální počítače Azure Classic nebo cloudová služba používají s plně kvalifikovaným názvem domény nebo veřejnou IP adresou, ujistěte se, že je otevřený odpovídající [koncový bod](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) .
-* Pokud je virtuální počítač nakonfigurovaný přes Azure Resource Manager a je mimo virtuální síť, ve které je nasazená Aplikační brána, musí být nakonfigurovaná [Skupina zabezpečení sítě](../virtual-network/security-overview.md) , aby se povolil přístup na požadovaném portu.
+* Pokud se virtuální počítače Azure Classic nebo cloudová služba používají s plně kvalifikovaným názvem domény nebo veřejnou IP adresou, ujistěte se, že je otevřený odpovídající [koncový bod](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json) .
+* Pokud je virtuální počítač nakonfigurovaný přes Azure Resource Manager a je mimo virtuální síť, ve které je nasazená Aplikační brána, musí být nakonfigurovaná [Skupina zabezpečení sítě](../virtual-network/network-security-groups-overview.md) , aby se povolil přístup na požadovaném portu.
 
 ## <a name="problems-with-custom-health-probe"></a>Problémy s vlastním sondou stavu
 
@@ -195,4 +195,3 @@ Ujistěte se, že jsou instance v pořádku a že je aplikace správně nakonfig
 ## <a name="next-steps"></a>Další kroky
 
 Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).
-

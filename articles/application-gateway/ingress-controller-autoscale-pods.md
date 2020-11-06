@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f015085baa8fffa6f208e9d8dd749e397c76c3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85125459"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397429"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatické škálování AKSch lusků pomocí Application Gatewaych metrik (beta verze)
 
@@ -23,7 +23,7 @@ V následujícím kurzu vyvysvětlíme, jak můžete použít `AvgRequestCountPe
 Budeme používat tyto dvě komponenty:
 
 * [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) – K vystavení metriky Application Gateway prostřednictvím serveru metrik budeme používat adaptér metriky. Adaptér metriky Azure Kubernetes je otevřený zdrojový projekt v Azure, podobně jako kontroler Application Gateway příchozího přenosu dat. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) – Použijeme HPA k použití metrik Application Gateway a cílem nasazení pro škálování.
+* [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) – Použijeme HPA k použití metrik Application Gateway a cílem nasazení pro škálování.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Nastavení adaptéru metriky Azure Kubernetes
 
@@ -92,7 +92,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 ## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Použití nové metriky k horizontálnímu navýšení kapacity nasazení
 
-Až bude možné vystavit `appgw-request-count-metric` prostřednictvím serveru metrik, můžeme použít [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) k horizontálnímu navýšení kapacity cílového nasazení.
+Až bude možné vystavit `appgw-request-count-metric` prostřednictvím serveru metrik, můžeme použít [`Horizontal Pod Autoscaler`](../aks/concepts-scale.md#horizontal-pod-autoscaler) k horizontálnímu navýšení kapacity cílového nasazení.
 
 V následujícím příkladu budeme cílit na ukázkové nasazení `aspnet` . Až `appgw-request-count-metric` do maximálního počtu lusků nasadíme > 200 na `10` .
 

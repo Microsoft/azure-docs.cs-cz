@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: b96720ead2c7b7bc942efca32a8510f57c2dbcad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48730d03e9a578fb26b691577fa033e5f7bb4d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85250244"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397480"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Podpora vysokého provozu služby Application Gateway
 
@@ -24,7 +24,7 @@ Pomocí Application Gateway s firewallem webových aplikací (WAF) můžete šk�
 Následující návrhy vám pomůžou nastavit Application Gateway s využitím WAF pro zpracování dalšího provozu.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Pro své možnosti automatického škálování a výhody výkonu použijte SKU verze V2 přes v1.
-SKU verze 2 nabízí automatické škálování, aby bylo zajištěno, že se vaše Application Gateway může vertikálně škálovat při zvyšování provozu. Nabízí taky další významné výkonnostní výhody, jako je pětinásobné lepší výkon při snižování zátěže TLS, rychlejší nasazení a časy aktualizace, redundance zóny a další v porovnání s v1. Další informace najdete v [dokumentaci ke v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 
+SKU verze 2 nabízí automatické škálování, aby bylo zajištěno, že se vaše Application Gateway může vertikálně škálovat při zvyšování provozu. Nabízí taky další významné výkonnostní výhody, jako je pětinásobné lepší výkon při snižování zátěže TLS, rychlejší nasazení a časy aktualizace, redundance zóny a další v porovnání s v1. Další informace najdete v [dokumentaci ke v2](./application-gateway-autoscaling-zone-redundant.md). 
 
 ## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Nastavit maximální počet instancí na maximální možnou hodnotu (125)
  
@@ -35,7 +35,7 @@ Za předpokladu, že máte SKU Application Gateway v2, nastavení maximálního 
 Za předpokladu, že máte SKU Application Gateway v2, bude automatické škálování trvat šest až sedm minut. S vyšším minimálním počtem instancí může Application Gateway lépe zpracovávat přenosy při zvýšení zatížení, protože špička v provozu nevyžaduje operaci automatického škálování.  
 
 ## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Výstraha, pokud určitá metrika překročí 75% průměrného využití hodnoty CU 
-Podrobné vysvětlení našich metrik a dalších návodů najdete v [dokumentaci k Application Gatewaym metrikám](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization) . 
+Podrobné vysvětlení našich metrik a dalších návodů najdete v [dokumentaci k Application Gatewaym metrikám](./application-gateway-metrics.md#metrics-visualization) . 
 
 ### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Příklad: nastavení výstrahy na 75% průměrného množství CU využití
 
@@ -51,13 +51,13 @@ V tomto příkladu se dozvíte, jak použít Azure Portal k nastavení upozorně
 > V závislosti na tom, jakým způsobem chcete mít k dispozici možnosti provozu, můžete nastavit, aby se tato výstraha nastavila na nižší nebo vyšší procento využití.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Nastavení WAF s využitím pro infiltrování a ochranu robota k zastavení útoků
-Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo oblasti nebo zemí/oblastí. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Pokud chcete před aplikací použít další vrstvu zabezpečení, použijte Application Gateway WAF_v2 SKU pro funkce WAF. SKLADOVOU položku v2 můžete nakonfigurovat tak, aby povolovala přístup pouze k vašim aplikacím z dané země nebo oblasti nebo zemí/oblastí. Nastavili jste vlastní pravidlo WAF k explicitnímu povolení nebo blokování provozu na základě geografického umístění. Další informace najdete v tématu věnovaném [infiltrování vlastních pravidel](../web-application-firewall/ag/geomatch-custom-rules.md) a [způsobu konfigurace vlastních pravidel pro Application Gateway WAF_v2 SKU prostřednictvím PowerShellu](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
-Povolí ochranu robotů blokující známé chybné roboty. To by mělo snížit objem provozu, který se bude připravovat do vaší aplikace. Další informace najdete v tématu [ochrana robota s pokyny k instalaci](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Povolí ochranu robotů blokující známé chybné roboty. To by mělo snížit objem provozu, který se bude připravovat do vaší aplikace. Další informace najdete v tématu [ochrana robota s pokyny k instalaci](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
 ## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>Zapnutí diagnostiky na Application Gateway a WAF
 
-Diagnostické protokoly umožňují zobrazit protokoly brány firewall, protokoly výkonu a protokoly přístupu. Pomocí těchto protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. Další informace najdete v naší [dokumentaci k diagnostice](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging). 
+Diagnostické protokoly umožňují zobrazit protokoly brány firewall, protokoly výkonu a protokoly přístupu. Pomocí těchto protokolů v Azure můžete spravovat a řešit potíže s aplikačními bránami. Další informace najdete v naší [dokumentaci k diagnostice](./application-gateway-diagnostics.md#diagnostic-logging). 
 
 ## <a name="set-up-an-tls-policy-for-extra-security"></a>Nastavení zásad TLS pro další zabezpečení
-Ujistěte se, že používáte nejnovější verzi zásad TLS ([AppGwSslPolicy20170401S](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)). Tím se vynutí TLS 1,2 a silnější šifry. Další informace najdete v tématu [Konfigurace verzí zásad TLS a šifrovacích sad přes PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell).
+Ujistěte se, že používáte nejnovější verzi zásad TLS ([AppGwSslPolicy20170401S](./application-gateway-ssl-policy-overview.md#appgwsslpolicy20170401s)). Tím se vynutí TLS 1,2 a silnější šifry. Další informace najdete v tématu [Konfigurace verzí zásad TLS a šifrovacích sad přes PowerShell](./application-gateway-configure-ssl-policy-powershell.md).

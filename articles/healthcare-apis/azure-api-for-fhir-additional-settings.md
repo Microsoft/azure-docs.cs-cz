@@ -8,12 +8,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9949ab4cfa42553e5a8d28244b8f621f09334d1
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845897"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398160"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Další nastavení pro Azure API pro FHIR
 
@@ -29,7 +29,7 @@ Další informace o tom, jak změnit výchozí nastavení, najdete v tématu [Ko
 
 ## <a name="access-control"></a>Řízení přístupu
 
-Rozhraní Azure API pro FHIR umožňuje autorizovaným uživatelům přistoupit k rozhraní FHIR API. Autorizované uživatele můžete nakonfigurovat pomocí dvou různých mechanismů. Primární a doporučený způsob, jak nakonfigurovat řízení přístupu, je použití [řízení přístupu na základě role Azure (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/), které je přístupné prostřednictvím okna **řízení přístupu (IAM)** . Azure RBAC funguje jenom v případě, že chcete zabezpečit přístup k rovině dat pomocí klienta Azure Active Directory přidruženého k vašemu předplatnému. Pokud chcete použít jiného tenanta, rozhraní API Azure pro FHIR nabízí mechanismus řízení přístupu místní roviny dat FHIR. Při použití místního mechanismu RBAC nejsou možnosti konfigurace tak bohatě formátované. Pro podrobnosti vyberte jednu z následujících možností:
+Rozhraní Azure API pro FHIR umožňuje autorizovaným uživatelům přistoupit k rozhraní FHIR API. Autorizované uživatele můžete nakonfigurovat pomocí dvou různých mechanismů. Primární a doporučený způsob, jak nakonfigurovat řízení přístupu, je použití [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/index.yml), které je přístupné prostřednictvím okna **řízení přístupu (IAM)** . Azure RBAC funguje jenom v případě, že chcete zabezpečit přístup k rovině dat pomocí klienta Azure Active Directory přidruženého k vašemu předplatnému. Pokud chcete použít jiného tenanta, rozhraní API Azure pro FHIR nabízí mechanismus řízení přístupu místní roviny dat FHIR. Při použití místního mechanismu RBAC nejsou možnosti konfigurace tak bohatě formátované. Pro podrobnosti vyberte jednu z následujících možností:
 
 * [Azure RBAC pro rovinu dat FHIR](configure-azure-rbac.md) Tato možnost je upřednostňovaná, když používáte klienta Azure Active Directory přidruženého k vašemu předplatnému.
 * [Řízení přístupu k rovině dat místních FHIR](configure-local-rbac.md). Tuto možnost použijte pouze v případě, že pro řízení přístupu k rovině dat potřebujete použít externího tenanta Azure Active Directory. 

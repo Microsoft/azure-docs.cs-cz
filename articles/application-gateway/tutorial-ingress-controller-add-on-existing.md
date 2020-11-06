@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285617"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397123"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Kurz: Povolení doplňku Application Gateway příchozího adaptéru pro existující cluster AKS s existujícím Application Gateway prostřednictvím Azure CLI (Preview)
 
@@ -37,17 +37,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat CLI místně, potřebujete k tomuto kurzu verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Pomocí příkazu [AZ Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. To je potřeba udělat jenom jednou pro každé předplatné, zatímco doplněk je stále ve verzi Preview:
+Pomocí příkazu [AZ Feature Register](/cli/azure/feature#az-feature-register) Zaregistrujte příznak funkce *AKS-IngressApplicationGatewayAddon* , jak je znázorněno v následujícím příkladu. To je potřeba udělat jenom jednou pro každé předplatné, zatímco doplněk je stále ve verzi Preview:
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
 ```
 
-Může to trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) :
+Může to trvat několik minut, než se stav zobrazí jako zaregistrované. Stav registrace můžete zjistit pomocí příkazu [AZ Feature list](/cli/azure/feature#az-feature-register) :
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) :
+Až budete připraveni, aktualizujte registraci poskytovatele prostředků Microsoft. ContainerService pomocí příkazu [AZ Provider Register](/cli/azure/provider#az-provider-register) :
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -74,17 +74,17 @@ az group create --name myResourceGroup --location canadacentral
 
 Nyní nasadíte nový cluster AKS, abyste simulovali existující cluster AKS, pro který chcete povolit doplněk AGIC pro.  
 
-V následujícím příkladu budete nasazovat nový cluster AKS s názvem *myCluster* pomocí [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) a [spravované identity](https://docs.microsoft.com/azure/aks/use-managed-identity) ve vámi vytvořené skupině prostředků *myResourceGroup*.    
+V následujícím příkladu budete nasazovat nový cluster AKS s názvem *myCluster* pomocí [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) a [spravované identity](../aks/use-managed-identity.md) ve vámi vytvořené skupině prostředků *myResourceGroup*.    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+Chcete-li nakonfigurovat další parametry pro `az aks create` příkaz, navštivte odkazy [zde](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Nasadit nový Application Gateway 
 
-Nyní nasadíte novou Application Gateway pro simulaci existující Application Gateway, kterou chcete použít k vyrovnávání zatížení provozu do clusteru AKS *myCluster*. Název Application Gateway bude *myApplicationGateway*, ale budete muset nejdřív vytvořit prostředek veřejné IP adresy s názvem *myPublicIp*a novou virtuální síť s názvem *myVnet* s adresním prostorem 11.0.0.0/8 a podsíť s adresním prostorem 11.1.0.0/16 nazvanou *MySubnet*a nasadit Application Gateway v *mySubnet* pomocí *myPublicIp*. 
+Nyní nasadíte novou Application Gateway pro simulaci existující Application Gateway, kterou chcete použít k vyrovnávání zatížení provozu do clusteru AKS *myCluster*. Název Application Gateway bude *myApplicationGateway* , ale budete muset nejdřív vytvořit prostředek veřejné IP adresy s názvem *myPublicIp* a novou virtuální síť s názvem *myVnet* s adresním prostorem 11.0.0.0/8 a podsíť s adresním prostorem 11.1.0.0/16 nazvanou *MySubnet* a nasadit Application Gateway v *mySubnet* pomocí *myPublicIp*. 
 
 Pokud používáte cluster AKS a Application Gateway v samostatných virtuálních sítích, nesmí se adresní prostory těchto dvou virtuálních sítí překrývat. Výchozím adresním prostorem, ve kterém se nasazuje cluster AKS, je 10.0.0.0/8, takže nastavíme předponu adresy Application Gateway virtuální sítě na 11.0.0.0/8. 
 
@@ -99,7 +99,7 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 
 ## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>Povolení doplňku AGIC v existujícím clusteru AKS s existujícím Application Gateway 
 
-Nyní povolíte doplněk AGIC v clusteru AKS, který jste vytvořili, *myCluster*a zadáte doplněk AGIC pro použití existujícího Application Gateway, který jste vytvořili, *myApplicationGateway*. Ujistěte se, že jste na začátku tohoto kurzu přidali nebo aktualizovali rozšíření AKS-Preview. 
+Nyní povolíte doplněk AGIC v clusteru AKS, který jste vytvořili, *myCluster* a zadáte doplněk AGIC pro použití existujícího Application Gateway, který jste vytvořili, *myApplicationGateway*. Ujistěte se, že jste na začátku tohoto kurzu přidali nebo aktualizovali rozšíření AKS-Preview. 
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cffc15974bf5a016a4584f5c5f3dcc8a185c9824
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85556166"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397327"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Povolení podpory více oborů názvů v clusteru AKS s Application Gatewaym řadičem příchozího přenosu dat
 
@@ -35,7 +35,7 @@ Po nasazení s možností sledovat více oborů názvů bude AGIC:
   - Vypsat prostředky příchozího přenosu ze všech přístupných oborů názvů
   - filtrovat na prostředky příchozího přenosu poznámek `kubernetes.io/ingress.class: azure/application-gateway`
   - Vytvoření kombinované [Application Gateway konfigurace](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)
-  - použít konfiguraci na přidružený Application Gateway přes [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)
+  - použít konfiguraci na přidružený Application Gateway přes [ARM](../azure-resource-manager/management/overview.md)
 
 ## <a name="conflicting-configurations"></a>Konfliktní konfigurace
 Několik [prostředků](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) příchozího přenosu dat by mohlo dát AGIC pokyn, aby vytvořila konfliktní konfigurace pro jednu Application Gateway. (Dvě příchozí přenosy vyžádají stejnou doménu pro instanci.)
@@ -99,7 +99,7 @@ Pokud jste například přidali jako `staging` první, AGIC nakonfiguruje Applic
 ## <a name="restrict-access-to-namespaces"></a>Omezení přístupu k oborům názvů
 Ve výchozím nastavení AGIC nakonfiguruje Application Gateway na základě poznámení s poznámkami v rámci libovolného oboru názvů. Chcete-li toto chování omezit, máte následující možnosti:
   - Omezte obory názvů tak, že explicitním definováním oborů názvů AGIC by měl sledovat `watchNamespace` klíč YAML v [Helm-config. yaml](#sample-helm-config-file)
-  - použití [role/RoleBinding](https://docs.microsoft.com/azure/aks/azure-ad-rbac) k omezení AGIC na konkrétní obory názvů
+  - použití [role/RoleBinding](../aks/azure-ad-rbac.md) k omezení AGIC na konkrétní obory názvů
 
 ## <a name="sample-helm-config-file"></a>Ukázkový konfigurační soubor Helm
 
@@ -155,4 +155,3 @@ Ve výchozím nastavení AGIC nakonfiguruje Application Gateway na základě poz
     aksClusterConfiguration:
         apiServerAddress: <aks-api-server-address>
 ```
-

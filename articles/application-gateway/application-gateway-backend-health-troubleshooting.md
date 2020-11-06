@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acf1b025a5943773821c8ab78de6288eb6bec2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132037"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397894"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -24,7 +24,7 @@ Ve výchozím nastavení služba Azure Application Gateway PROBE back-end server
 
 ### <a name="how-to-check-backend-health"></a>Postup kontroly stavu back-endu
 
-Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)nebo [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth).
+Pokud chcete zjistit stav back-endu, můžete na Azure Portal použít stránku **stavu back-endu** . Nebo můžete použít [Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)nebo [REST API](/rest/api/application-gateway/applicationgateways/backendhealth).
 
 Stav načtený některou z těchto metod může být kterýkoli z následujících:
 
@@ -91,7 +91,7 @@ Zpráva zobrazená ve sloupci **Podrobnosti** poskytuje podrobnější přehled 
 
 **Příčina:** Po Application Gateway odešle back-end serveru požadavek na test HTTP (S), čeká na odpověď serveru back-end po nakonfigurované období. Pokud back-end server nereaguje v rámci nakonfigurovaného období (hodnota časového limitu), označí se jako špatný, dokud znovu nezačne reagovat v nakonfigurovaném časovém limitu.
 
-**Řešení:** Ověřte, proč back-end Server nebo aplikace nereaguje v nakonfigurovaném časovém limitu, a také ověřte závislosti aplikací. Například ověřte, zda má databáze nějaké problémy, které mohou aktivovat zpoždění v reakci. Pokud víte o chování aplikace a chcete odpovědět jenom po hodnotě časového limitu, zvyšte hodnotu časového limitu z nastavení vlastního testu paměti. Pokud chcete změnit hodnotu časového limitu, musíte mít vlastní test. Informace o tom, jak nakonfigurovat vlastní test paměti, [najdete na stránce s dokumentací](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
+**Řešení:** Ověřte, proč back-end Server nebo aplikace nereaguje v nakonfigurovaném časovém limitu, a také ověřte závislosti aplikací. Například ověřte, zda má databáze nějaké problémy, které mohou aktivovat zpoždění v reakci. Pokud víte o chování aplikace a chcete odpovědět jenom po hodnotě časového limitu, zvyšte hodnotu časového limitu z nastavení vlastního testu paměti. Pokud chcete změnit hodnotu časového limitu, musíte mít vlastní test. Informace o tom, jak nakonfigurovat vlastní test paměti, [najdete na stránce s dokumentací](./application-gateway-create-probe-portal.md).
 
 K zvýšení hodnoty časového limitu použijte následující postup:
 
@@ -105,7 +105,7 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 #### <a name="dns-resolution-error"></a>Chyba rozlišení DNS
 
-**Zpráva:** Application Gateway nemohl pro tento back-end vytvořit test paměti. K tomu obvykle dochází v případě nesprávně zadaného plně kvalifikovaného názvu domény back-endu. 
+**Zpráva:** Application Gateway nemohl pro tento back-end vytvořit test paměti. K tomu obvykle dochází v případě nesprávně zadaného plně kvalifikovaného názvu domény back-endu. 
 
 **Příčina:** Pokud je back-end fond typu IP adresa nebo plně kvalifikovaný název domény nebo App Service, Application Gateway se přeloží na IP adresu plně kvalifikovaného názvu domény zadaného pomocí DNS (Domain Name System) (vlastní nebo výchozí Azure) a pokusí se připojit k serveru na portu TCP uvedeném v nastavení HTTP. Pokud se ale zobrazí tato zpráva, je navržena tak, že Application Gateway nedokázala úspěšně přeložit IP adresu zadaného plně kvalifikovaného názvu domény.
 
@@ -119,7 +119,7 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 1.  Pokud používáte výchozí DNS Azure, zaregistrujte se od svého registrátora názvu domény, jestli je dokončený záznam nebo mapování záznamů CNAME.
 
-1.  Pokud je doména soukromá nebo interní, zkuste ji vyřešit z virtuálního počítače ve stejné virtuální síti. Pokud je můžete vyřešit, restartujte Application Gateway a znovu se vraťte. Pokud chcete restartovat Application Gateway, musíte [zastavit](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) a [Spustit](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) pomocí příkazů PowerShellu popsaných v těchto propojených prostředcích.
+1.  Pokud je doména soukromá nebo interní, zkuste ji vyřešit z virtuálního počítače ve stejné virtuální síti. Pokud je můžete vyřešit, restartujte Application Gateway a znovu se vraťte. Pokud chcete restartovat Application Gateway, musíte [zastavit](/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) a [Spustit](/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) pomocí příkazů PowerShellu popsaných v těchto propojených prostředcích.
 
 #### <a name="tcp-connect-error"></a>Chyba připojení TCP
 
@@ -138,7 +138,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 1.  Pokud se na portu nemůžete připojit i z místního počítače, pak:
 
-    a.  Ověřte nastavení skupiny zabezpečení sítě (NSG) síťového adaptéru a podsítě back-end serveru a zda jsou povolená příchozí připojení k nakonfigurovanému portu. Pokud ne, vytvořte nové pravidlo, které povolí připojení. Informace o tom, jak vytvořit pravidla NSG, [najdete na stránce s dokumentací](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules).
+    a.  Ověřte nastavení skupiny zabezpečení sítě (NSG) síťového adaptéru a podsítě back-end serveru a zda jsou povolená příchozí připojení k nakonfigurovanému portu. Pokud ne, vytvořte nové pravidlo, které povolí připojení. Informace o tom, jak vytvořit pravidla NSG, [najdete na stránce s dokumentací](../virtual-network/tutorial-filter-network-traffic.md#create-security-rules).
 
     b.  Ověřte, zda nastavení NSG podsítě Application Gateway umožňují odchozí veřejné a soukromé přenosy, aby bylo možné vytvořit připojení. Další informace o vytváření pravidel NSG najdete na stránce dokumentu, která je k dispozici v kroku 3a.
     ```azurepowershell
@@ -185,13 +185,13 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 Pokud si myslíte, že odpověď je legitimní a chcete, aby Application Gateway přijímala další stavové kódy jako v pořádku, můžete vytvořit vlastní test. Tento přístup je užitečný v situacích, kdy back-end web potřebuje ověřování. Vzhledem k tomu, že požadavky sondy neobsahují žádné přihlašovací údaje uživatele, selžou, že back-end server vrátí stavový kód HTTP 401.
 
-Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
+Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](./application-gateway-create-probe-portal.md).
 
 #### <a name="http-response-body-mismatch"></a>Neshoda textu odpovědi HTTP
 
 **Zpráva:** Tělo odpovědi HTTP back-end \' s neodpovídá nastavení testu paměti. Přijatý text odpovědi neobsahuje {String}.
 
-**Příčina:** Když vytvoříte vlastní test, budete mít možnost označit back-end Server jako zdravý v závislosti na řetězci z těla odpovědi. Můžete například nakonfigurovat Application Gateway pro přijetí "neautorizovaného" jako řetězce, který se má shodovat. Pokud odpověď serveru back-end pro požadavek sondy obsahuje **neoprávněný**řetězec, bude označena jako v pořádku. V opačném případě bude tato zpráva označena jako poškozená.
+**Příčina:** Když vytvoříte vlastní test, budete mít možnost označit back-end Server jako zdravý v závislosti na řetězci z těla odpovědi. Můžete například nakonfigurovat Application Gateway pro přijetí "neautorizovaného" jako řetězce, který se má shodovat. Pokud odpověď serveru back-end pro požadavek sondy obsahuje **neoprávněný** řetězec, bude označena jako v pořádku. V opačném případě bude tato zpráva označena jako poškozená.
 
 **Řešení:** Chcete-li tento problém vyřešit, postupujte podle následujících kroků:
 
@@ -201,7 +201,7 @@ Pokud chcete vytvořit vlastní test paměti, postupujte podle [těchto kroků](
 
 1.  Pokud se neshodují, změňte konfiguraci sondy tak, aby bylo možné přijmout správnou hodnotu řetězce.
 
-Přečtěte si další informace o [Application Gateway shodě](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching).
+Přečtěte si další informace o [Application Gateway shodě](./application-gateway-probe-overview.md#probe-matching).
 
 >[!NOTE]
 > U všech chybových zpráv souvisejících s protokolem TLS si můžete přečíst další informace o chování SNI a rozdílech mezi SKU V1 a v2. Podívejte se na stránku [Přehled protokolu TLS](ssl-overview.md) .
@@ -232,13 +232,13 @@ Aby byl certifikát TLS/SSL důvěryhodný, musí být certifikát serveru back-
 
 1.  Otevřete stránku Application Gateway **Nastavení** protokolu HTTP v Azure Portal.
 
-1. Otevřete nastavení HTTP, vyberte **Přidat certifikát**a vyhledejte soubor certifikátu, který jste právě uložili.
+1. Otevřete nastavení HTTP, vyberte **Přidat certifikát** a vyhledejte soubor certifikátu, který jste právě uložili.
 
 1. Vyberte **Uložit** a uložte nastavení http.
 
 Alternativně můžete exportovat kořenový certifikát z klientského počítače přímým přístupem k serveru (obejít Application Gateway) prostřednictvím prohlížeče a exportem kořenového certifikátu z prohlížeče.
 
-Další informace o extrakci a nahrání důvěryhodných kořenových certifikátů v Application Gateway najdete v tématu [Export důvěryhodného kořenového certifikátu (pro SKU verze 2)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Další informace o extrakci a nahrání důvěryhodných kořenových certifikátů v Application Gateway najdete v tématu [Export důvěryhodného kořenového certifikátu (pro SKU verze 2)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 
 #### <a name="trusted-root-certificate-mismatch"></a>Neshoda důvěryhodného kořenového certifikátu
 
@@ -253,7 +253,7 @@ Certifikát, který byl nahrán do Application Gateway nastavení HTTP, se musí
 
 Při nahrávání správného důvěryhodného kořenového certifikátu do Application Gateway postupujte podle kroků 1-11 v předchozí metodě.
 
-Další informace o extrakci a nahrání důvěryhodných kořenových certifikátů v Application Gateway najdete v tématu [Export důvěryhodného kořenového certifikátu (pro SKU verze 2)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Další informace o extrakci a nahrání důvěryhodných kořenových certifikátů v Application Gateway najdete v tématu [Export důvěryhodného kořenového certifikátu (pro SKU verze 2)](./certificates-for-backend-authentication.md#export-trusted-root-certificate-for-v2-sku).
 > [!NOTE]
 > K této chybě může dojít také v případě, že back-end Server nemění úplný řetěz certifikátu, včetně kořenového > zprostředkujícího (Pokud je k dispozici) > list během metody handshake TLS. K ověření můžete použít příkazy OpenSSL z libovolného klienta a připojit se k back-end serveru pomocí nakonfigurovaných nastavení v Application Gateway PROBE.
 
@@ -308,7 +308,7 @@ Ve Windows:
 
 1.  Vyhledejte certifikát (obvykle v části `\Certificates - Current User\\Personal\\Certificates` ) a otevřete certifikát.
 
-1.  Na kartě **Podrobnosti** se podívejte na **Předmět**certifikátu.
+1.  Na kartě **Podrobnosti** se podívejte na **Předmět** certifikátu.
 
 1.  Ověřte CN certifikátu z podrobností a zadejte stejný název do pole název hostitele vlastního testu nebo v nastavení HTTP (Pokud je vybraná **možnost vybrat název hostitele z back-endu http** ). Pokud se nejedná o požadovaný název hostitele vašeho webu, musíte získat certifikát pro tuto doménu nebo zadat správný název hostitele v konfiguraci vlastního testu nebo nastavení protokolu HTTP.
 
@@ -331,7 +331,7 @@ Pro Linux pomocí OpenSSL:
 
 1.  Otevřete nastavení Application Gateway HTTP na portálu.
 
-1.  Vyberte nastavení, které má certifikát s vypršenou platností, vyberte **Přidat certifikát**a otevřete nový soubor certifikátu.
+1.  Vyberte nastavení, které má certifikát s vypršenou platností, vyberte **Přidat certifikát** a otevřete nový soubor certifikátu.
 
 1.  Odeberte starý certifikát pomocí ikony **Odstranit** vedle certifikátu a pak vyberte **Uložit**.
 
@@ -359,7 +359,7 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
 **Řešení:**
 
-1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu**:
+1.  Ověřte, jestli váš NSG blokuje přístup k portům 65503-65534 (v1 SKU) nebo 65200-65535 (SKU v2) z **Internetu** :
 
     a.  Na kartě **přehled** Application Gateway vyberte odkaz **Virtual Network/podsíť** .
 
@@ -371,17 +371,17 @@ K tomuto chování může dojít z některého z následujících důvodů:
 
     e.  V části **příchozí pravidla** přidejte příchozí pravidlo, které povoluje rozsah cílových portů 65503-65534 pro SKU v1 nebo 65200-65535 v2 SKU se **zdrojovou** sadou jako **libovolný** nebo **internetový**.
 
-    f.  Vyberte **Uložit** a ověřte, zda můžete zobrazit back-end jako v pořádku. Případně to můžete provést prostřednictvím [PowerShellu nebo](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)rozhraní příkazového řádku.
+    f.  Vyberte **Uložit** a ověřte, zda můžete zobrazit back-end jako v pořádku. Případně to můžete provést prostřednictvím [PowerShellu nebo](../virtual-network/manage-network-security-group.md)rozhraní příkazového řádku.
 
-1.  Ověřte, jestli váš UDR má výchozí trasu (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**:
+1.  Ověřte, jestli váš UDR má výchozí trasu (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet** :
     
     a.  K určení vaší podsítě postupujte podle kroků 1a a 1b.
 
     b.  Ověřte, jestli je nakonfigurované nějaké UDR. Pokud je, vyhledejte prostředek na panelu hledání nebo v části **všechny prostředky**.
 
-    c.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network**, musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
+    c.  Ověřte, jestli existují žádné výchozí trasy (0.0.0.0/0) s dalším segmentem směrování, který není nastavený jako **Internet**. Pokud je toto nastavení buď **virtuální zařízení** , nebo **Brána Virtual Network** , musíte zajistit, aby virtuální zařízení nebo místní zařízení správně směrovala paket zpět do cílového umístění v Internetu bez změny paketu.
 
-    d.  V opačném případě změňte další směrování na **Internet**, vyberte **Uložit**a ověřte stav back-endu.
+    d.  V opačném případě změňte další směrování na **Internet** , vyberte **Uložit** a ověřte stav back-endu.
 
 1.  Výchozí trasa inzerovaná připojením ExpressRoute/VPN k virtuální síti prostřednictvím protokolu BGP:
 
@@ -398,4 +398,4 @@ K tomuto chování může dojít z některého z následujících důvodů:
 <a name="next-steps"></a>Další kroky
 ----------
 
-Přečtěte si další informace o [diagnostice a protokolování Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
+Přečtěte si další informace o [diagnostice a protokolování Application Gateway](./application-gateway-diagnostics.md).

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f29b31b09c2532c336ef2a2d574fab5e000b3e4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e410218117aa0d21167b6d615a3835aeec470e7
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595864"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397106"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Správa webového provozu vytvořením aplikační brány v Azure PowerShellu
 
-Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Azure PowerShell můžete použít k vytvoření [aplikační brány](overview.md), která pro back-endové servery určené ke správě webového provozu používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Azure PowerShell můžete použít k vytvoření [aplikační brány](overview.md), která pro back-endové servery určené ke správě webového provozu používá [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/overview.md). V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -27,7 +27,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup provést pomocí [Azure CLI](tutorial-manage-web-traffic-cli.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -257,4 +257,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>Další kroky
 
-[Omezení webového provozu Firewallem webových aplikací](./tutorial-restrict-web-traffic-powershell.md)
+[Omezení webového provozu Firewallem webových aplikací](../web-application-firewall/ag/tutorial-restrict-web-traffic-powershell.md)

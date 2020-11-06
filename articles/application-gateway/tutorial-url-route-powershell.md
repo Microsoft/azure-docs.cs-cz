@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 37e76f54b9c4fe38c891f7cee7bc443d1b0b20f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a73208ef7014c1f21c78485fc613a26ce3bfc76
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596058"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397140"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Směrování webového provozu podle adresy URL pomocí Azure PowerShellu
 
-Pomocí Azure PowerShellu můžete nakonfigurovat směrování webového provozu na konkrétní škálovatelné fondy serverů podle adresy URL, přes kterou se přistupuje k vaší aplikaci. V tomto článku vytvoříte [Azure Application Gateway](application-gateway-introduction.md) se třemi back-end fondy pomocí [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Každý back-endový fond má určitý účel, třeba běžná data, obrázky nebo videa.  Směrování provozu na samostatné fondy zajistí, aby zákazníci získali požadované informace v okamžiku, kdy je potřebují.
+Pomocí Azure PowerShellu můžete nakonfigurovat směrování webového provozu na konkrétní škálovatelné fondy serverů podle adresy URL, přes kterou se přistupuje k vaší aplikaci. V tomto článku vytvoříte [Azure Application Gateway](./overview.md) se třemi back-end fondy pomocí [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md). Každý back-endový fond má určitý účel, třeba běžná data, obrázky nebo videa.  Směrování provozu na samostatné fondy zajistí, aby zákazníci získali požadované informace v okamžiku, kdy je potřebují.
 
-Pokud chcete směrování provozu povolit, vytvořte [pravidla směrování](application-gateway-url-route-overview.md) přiřazená naslouchacím procesům, které naslouchají na konkrétních portech. Tím zajistíte, že se webový provoz dostane na správné servery ve fondech.
+Pokud chcete směrování provozu povolit, vytvořte [pravidla směrování](./url-route-overview.md) přiřazená naslouchacím procesům, které naslouchají na konkrétních portech. Tím zajistíte, že se webový provoz dostane na správné servery ve fondech.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure CLI](tutorial-url-route-cli.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -185,7 +185,7 @@ V tomto okamžiku máte Aplikační bránu, která naslouchá provozu na portu 8
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Přidání back-endových fondů a portu pro obrázky a video
 
-Přidejte back-end fondy s názvem *imagesBackendPool* a *videoBackendPool* do služby Application Gateway[Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Port front-endu pro fondy přidejte pomocí [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Odešlete změny do aplikační brány pomocí [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
+Přidejte back-end fondy s názvem *imagesBackendPool* a *videoBackendPool* do služby Application Gateway [Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool). Port front-endu pro fondy přidejte pomocí [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport). Odešlete změny do aplikační brány pomocí [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway).
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -312,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1* , *myvmss2* a *myvmss3*. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `

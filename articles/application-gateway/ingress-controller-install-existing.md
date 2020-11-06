@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c11de2f1bc4143281d2859de7a38268932b13fba
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807103"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397395"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Instalace AGIC (příchozího adaptéru Application Gateway) pomocí existující Application Gateway
 
@@ -27,10 +27,10 @@ AGIC [sleduje prostředky](https://kubernetes.io/docs/concepts/services-networki
 - [Instalace kontroleru příchozího přenosu dat pomocí Helm](#install-ingress-controller-as-a-helm-chart)
 - [Více clusterů a sdílených Application Gateway](#multi-cluster--shared-application-gateway): Nainstalujte AGIC do prostředí, kde Application Gateway se sdílí mezi jedním nebo více clustery AKS a/nebo jinými součástmi Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto dokumentu se předpokládá, že už máte nainstalované tyto nástroje a infrastrukturu:
-- [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](https://docs.microsoft.com/azure/aks/configure-azure-cni)
-- [Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ve stejné virtuální síti jako AKS
+- [AKS](https://azure.microsoft.com/services/kubernetes-service/) s povolenými [pokročilými sítěmi](../aks/configure-azure-cni.md)
+- [Application Gateway v2](./tutorial-autoscale-ps.md) ve stejné virtuální síti jako AKS
 - [Identita AAD pod](https://github.com/Azure/aad-pod-identity) nainstalovanou v clusteru AKS
 - [Cloud Shell](https://shell.azure.com/) je prostředí Azure shell s `az` nainstalovaným rozhraním CLI, `kubectl` a `helm` . Tyto nástroje jsou vyžadovány pro následující příkazy.
 
@@ -40,11 +40,11 @@ Před instalací AGIC prosím __zálohujte konfiguraci Application Gateway__ :
 
 Stažený soubor zip bude mít šablony JSON, bash a PowerShellové skripty, které byste mohli použít k obnovení brány App Gateway, aby bylo nezbytné.
 
-## <a name="install-helm"></a>Nainstalovat Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku.
+## <a name="install-helm"></a>Instalace nástroje Helm
+[Helm](../aks/kubernetes-helm.md) je správce balíčků pro Kubernetes. Použijeme ji k instalaci `application-gateway-kubernetes-ingress` balíčku.
 K instalaci Helm použijte [Cloud Shell](https://shell.azure.com/) :
 
-1. Nainstalujte [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
+1. Nainstalujte [Helm](../aks/kubernetes-helm.md) a spusťte následující příkaz pro přidání `application-gateway-kubernetes-ingress` balíčku Helm:
 
     - *RBAC povolena* Cluster AKS
 
@@ -72,7 +72,7 @@ AGIC komunikuje se serverem rozhraní Kubernetes API a Azure Resource Manager. P
 
 ## <a name="set-up-aad-pod-identity"></a>Nastavení identity AAD pod
 
-[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme autorizaci pro AGIC pod, aby bylo možné požadavky HTTP na [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+[Identita AAD pod](https://github.com/Azure/aad-pod-identity) je kontroler, podobně jako AGIC, který se taky spouští na AKS. Naváže Azure Active Directory identity k Kubernetes luskům. Aby aplikace v Kubernetes pod mohla komunikovat s dalšími komponentami Azure, vyžaduje se identita. V takovém případě potřebujeme autorizaci pro AGIC pod, aby bylo možné požadavky HTTP na [ARM](../azure-resource-manager/management/overview.md).
 
 Postupujte podle [pokynů pro instalaci služby AAD pod](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra) , abyste přidali tuto komponentu do AKS.
 
@@ -323,7 +323,7 @@ Rozšířit AGIC oprávnění pomocí:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Povolit pro existující instalaci AGIC
-Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contosor.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](https://docs.microsoft.com/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
+Předpokládejme, že už máme v našem clusteru funkční AKS, Application Gateway a nakonfigurovaný AGIC. Máme příchozí `prod.contosor.com` data pro a úspěšně obsluhují provoz z AKS. Chceme přidat `staging.contoso.com` k naší existující Application Gateway, ale je potřeba ho hostovat na [virtuálním počítači](https://azure.microsoft.com/services/virtual-machines/). Znovu použijeme existující Application Gateway a ručně nakonfigurujete naslouchací proces a fond back-end pro `staging.contoso.com` . Ale ruční úprava Application Gateway konfigurace (prostřednictvím [portálu](https://portal.azure.com), [rozhraní API ARM](/rest/api/resources/) nebo [terraformu](https://www.terraform.io/)) je v konfliktu se předpoklady úplného vlastnictví AGIC. Krátce po použití změn se AGIC přepíše nebo odstraní.
 
 AGIC můžeme zabránit v provádění změn v podmnožině konfigurace.
 

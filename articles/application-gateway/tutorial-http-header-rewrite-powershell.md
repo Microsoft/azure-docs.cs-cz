@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: e18288dbc2a09c7e9dd5b0c0e96dfd04ec192596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595899"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396851"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Vytvořit Aplikační bránu a přepsat hlavičky HTTP
 
-Pomocí Azure PowerShell můžete nakonfigurovat [pravidla pro přepis hlaviček požadavků a odpovědí HTTP](rewrite-http-headers.md) při vytváření nového automatického [ŠKÁLOVÁNÍ a redundantní SKU aplikační brány Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) .
+Pomocí Azure PowerShell můžete nakonfigurovat [pravidla pro přepis hlaviček požadavků a odpovědí HTTP](rewrite-http-headers.md) při vytváření nového automatického [ŠKÁLOVÁNÍ a redundantní SKU aplikační brány Application Gateway](./application-gateway-autoscaling-zone-redundant.md) .
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -28,11 +28,11 @@ V tomto článku získáte informace o těchto tématech:
 * Vytvoření služby Application Gateway
 * Otestování aplikační brány
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek vyžaduje, abyste spustili Azure PowerShell místně. Musíte mít nainstalovanou verzi AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` vyhledejte verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+Tento článek vyžaduje, abyste spustili Azure PowerShell místně. Musíte mít nainstalovanou verzi AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` vyhledejte verzi. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -107,11 +107,11 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
 
 Nakonfigurujte nové objekty vyžadované pro přepsání hlaviček protokolu http:
 
-- **RequestHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky požadavku, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
-- **ResponseHeaderConfiguration**: Tento objekt slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
-- **ActionSet**: Tento objekt obsahuje konfigurace výše uvedených hlaviček požadavků a odpovědí. 
-- **RewriteRule**: Tento objekt obsahuje všechny *actionSets* uvedené výše. 
-- **RewriteRuleSet**– tento objekt obsahuje všechny *rewriteRules* a bude nutné ho připojit k pravidlu směrování požadavku – Basic nebo na základě cesty.
+- **RequestHeaderConfiguration** : Tento objekt slouží k zadání polí hlavičky požadavku, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ResponseHeaderConfiguration** : Tento objekt slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty, do které je třeba přepsat původní záhlaví.
+- **ActionSet** : Tento objekt obsahuje konfigurace výše uvedených hlaviček požadavků a odpovědí. 
+- **RewriteRule** : Tento objekt obsahuje všechny *actionSets* uvedené výše. 
+- **RewriteRuleSet** – tento objekt obsahuje všechny *rewriteRules* a bude nutné ho připojit k pravidlu směrování požadavku – Basic nebo na základě cesty.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"

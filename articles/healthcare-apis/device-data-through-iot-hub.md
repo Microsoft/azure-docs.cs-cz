@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee286540d4fd740c5e7c1f8bd693fddd625eeae2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308220"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398143"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Kurz: příjem dat ze zařízení prostřednictvím Azure IoT Hub
 
@@ -23,7 +23,7 @@ Azure IoT Connector pro FHIR * nabízí možnost ingestovat data ze zařízení 
 
 - Aktivní předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 - Azure API pro prostředek FHIR s minimálně jedním konektorem Azure IoT pro FHIR- [Deploy Azure IoT Connector pro FHIR (Preview) pomocí Azure Portal](iot-fhir-portal-quickstart.md)
-- Prostředek Azure IoT Hub připojený pomocí reálných nebo simulovaných zařízení – [vytvoření centra IoT pomocí Azure Portal](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- Prostředek Azure IoT Hub připojený pomocí reálných nebo simulovaných zařízení – [vytvoření centra IoT pomocí Azure Portal](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > Pokud používáte aplikaci simulovaného zařízení IoT Hub v Azure, můžete si vybrat aplikaci podle vlastního výběru mezi různými podporovanými jazyky a systémy.
@@ -36,15 +36,15 @@ Azure IoT Connector pro FHIR používá ke příjemi zpráv zařízení instanci
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Připojení Azure IoT Hub k Azure IoT Connectoru pro FHIR (Preview)
 
-Azure IoT Hub podporuje funkci [směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) , která poskytuje schopnost odesílat data zařízení do různých služeb Azure, jako je centrum událostí, účet úložiště a Service Bus. Azure IoT Connector pro FHIR využívá tuto funkci k připojení a posílání dat zařízení z Azure IoT Hub do koncového bodu centra událostí.
+Azure IoT Hub podporuje funkci [směrování zpráv](../iot-hub/iot-hub-devguide-messages-d2c.md) , která poskytuje schopnost odesílat data zařízení do různých služeb Azure, jako je centrum událostí, účet úložiště a Service Bus. Azure IoT Connector pro FHIR využívá tuto funkci k připojení a posílání dat zařízení z Azure IoT Hub do koncového bodu centra událostí.
 
 > [!NOTE] 
-> V tuto chvíli můžete k [Vytvoření směrování zpráv](https://docs.microsoft.com/azure/iot-hub/tutorial-routing) použít jenom příkaz PowerShellu nebo rozhraní příkazového řádku, protože Azure IoT Connector pro centrum událostí FHIR není hostovaný na předplatném zákazníka, takže se vám ho nebude zobrazovat prostřednictvím Azure Portal. Když se ale objekty pro směrování zpráv přidávají pomocí PowerShellu nebo rozhraní příkazového řádku, zobrazí se na Azure Portal a dají se z ní spravovat.
+> V tuto chvíli můžete k [Vytvoření směrování zpráv](../iot-hub/tutorial-routing.md) použít jenom příkaz PowerShellu nebo rozhraní příkazového řádku, protože Azure IoT Connector pro centrum událostí FHIR není hostovaný na předplatném zákazníka, takže se vám ho nebude zobrazovat prostřednictvím Azure Portal. Když se ale objekty pro směrování zpráv přidávají pomocí PowerShellu nebo rozhraní příkazového řádku, zobrazí se na Azure Portal a dají se z ní spravovat.
 
 Nastavení směrování zpráv se skládá ze dvou kroků.
 
 ### <a name="add-an-endpoint"></a>Přidání koncového bodu
-Tento krok definuje koncový bod, na který IoT Hub data směrovat. Vytvořte tento koncový bod pomocí příkazu PowerShellu [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) nebo [AZ IoT Hub Routing-Endpoint Create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) CLI na základě vaší předvolby.
+Tento krok definuje koncový bod, na který IoT Hub data směrovat. Vytvořte tento koncový bod pomocí příkazu PowerShellu [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) nebo [AZ IoT Hub Routing-Endpoint Create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) CLI na základě vaší předvolby.
 
 Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření koncového bodu:
 
@@ -59,7 +59,7 @@ Tady je seznam parametrů, které se mají použít s příkazem pro vytvoření
 |Vlastnosti|connection-string|Připojovací řetězec ke službě Azure IoT Connector pro FHIR. Použijte hodnotu, kterou jste získali v předchozím kroku.|
 
 ### <a name="add-a-message-route"></a>Přidat trasu zpráv
-Tento krok definuje trasu zpráv pomocí koncového bodu vytvořeného výše. Vytvořte trasu pomocí příkazu [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShellu nebo [AZ IoT Hub Route Create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI, a to na základě vaší předvolby.
+Tento krok definuje trasu zpráv pomocí koncového bodu vytvořeného výše. Vytvořte trasu pomocí příkazu [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShellu nebo [AZ IoT Hub Route Create](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI, a to na základě vaší předvolby.
 
 Tady je seznam parametrů, které se mají použít s příkazem pro přidání trasy zprávy:
 

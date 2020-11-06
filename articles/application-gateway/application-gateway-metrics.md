@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424388"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397735"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
-Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Application Gateway zveřejňuje datové body označované jako metriky, aby se [Azure monitor](../azure-monitor/overview.md) pro výkon instancí Application Gateway a back-endu. Tyto metriky jsou číselné hodnoty v seřazené sadě dat časových řad, které popisují nějaký aspekt aplikační brány v určitou dobu. Pokud jsou požadavky odesílány prostřednictvím Application Gateway, měří a odesílá své metriky v intervalech 60 – sekund. Pokud neexistují žádné požadavky na Application Gateway ani žádná data pro metriku, metrika není hlášena. Další informace najdete v tématu [Azure monitor metriky](../azure-monitor/platform/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Metriky podporované Application Gatewaymi SKU verze 2
 
@@ -40,7 +40,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
   Časový interval mezi začátky navázání připojení k back-endu serveru a příjem prvního bajtu hlavičky odpovědi 
 
-  To bude odpovídat součtu *času připojení back-endu*, času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
+  To bude odpovídat součtu *času připojení back-endu* , času, který požadavek přijal pro přístup k back-endu z Application Gateway, což je čas, který aplikace back-end zavedla k tomu, aby reagovala na Application Gateway z back-endu.
 
 - **Doba odezvy posledního bajtu back-endu**
 
@@ -52,7 +52,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
   Průměrná doba, kterou trvá, než se požadavek přijme, zpracuje a pošle odpověď. 
 
-  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu*, čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
+  Toto je interval od času, kdy Application Gateway obdrží první bajt požadavku HTTP na čas, kdy byl klientovi odeslán poslední bajt odpovědi. To zahrnuje dobu zpracování trvání Application Gateway, *čas odezvy back-endu posledního bajtu* , čas potřebný Application Gateway k odeslání všech odpovědí a času *odezvy klienta*.
 
 - **Čas odezvy klienta**
 
@@ -62,7 +62,7 @@ Application Gateway poskytuje několik vestavěných metrik časování vztahuj�
 
 Tyto metriky se dají použít k určení, jestli je pozorovaná zpomalení z důvodu klientské sítě, Application Gateway výkonu, back-end sítě a back-endu TCP zásobníku, výkonu aplikace back-endu nebo velikosti velkých souborů.
 
-Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu*, je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
+Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-endu* , ale trend *času připojení back-* endu je stabilní, pak je možné odvodit, že brána Application Gateway na latenci back-endu a čas potřebný k navázání připojení je stabilní, a špička je způsobena nárůstem doby odezvy back-end aplikace. Na druhé straně platí, že pokud je špička v *back-endu doba odezvy prvního bajtu* přidružená k odpovídajícímu špičku v *době připojení back-endu* , je možné odvodit, že síť mezi Application Gateway a back-end serverem nebo zásobníkem protokolu TCP back-end serveru byla sytost. 
 
 Pokud si všimnete špičky v *době, kdy uplynula doba odezvy back-endu* , ale *Doba odezvy prvního bajtu* je stabilní, je možné ji odvodit, protože se požaduje větší požadovaný soubor.
 
@@ -214,11 +214,11 @@ Následující příklad vás provede vytvořením pravidla upozornění, které
 
 2. Na stránce **Přidat pravidlo** vyplňte oddíly název, podmínka a Notify a vyberte **OK**.
 
-   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než**, **větší než nebo rovno**, **menší**nebo **rovno nebo menší než**.
+   * V selektoru **podmínky** vyberte jednu ze čtyř hodnot: **větší než** , **větší než nebo rovno** , **menší** nebo **rovno nebo menší než**.
 
    * V selektoru **období** vyberte období od pěti minut po 6 hodin.
 
-   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu**, může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
+   * Pokud vyberete možnost **vlastníci, přispěvatelé a čtenáři e-mailu** , může být e-mail dynamický v závislosti na uživatelích, kteří k tomuto prostředku mají přístup. Jinak můžete v poli **Další e-mailové zprávy správce** zadat čárkami oddělený seznam uživatelů.
 
    ![Přidat stránku pravidla][7]
 
@@ -230,7 +230,7 @@ Po vytvoření výstrahy metriky se zobrazí seznam výstrah. Poskytuje přehled
 
 ![Seznam výstrah a pravidel][9]
 
-Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)o výstrahách.
+Další informace o oznámeních výstrah najdete v tématu [přijímání oznámení](../azure-monitor/platform/alerts-overview.md)o výstrahách.
 
 Další informace o webhookech a o tom, jak je můžete používat s výstrahami, najdete [v tématu Konfigurace Webhooku na upozornění metriky Azure](../azure-monitor/platform/alerts-webhooks.md).
 

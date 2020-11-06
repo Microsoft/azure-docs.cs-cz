@@ -7,23 +7,23 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: f205b3a604aa38854969f6f62cbce44f46fa7d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84808256"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397911"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Přepsání hlaviček požadavků a odpovědí HTTP pomocí Azure Application Gateway-Azure PowerShell
 
-Tento článek popisuje, jak pomocí Azure PowerShell nakonfigurovat instanci [SKU Application Gateway v2](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
+Tento článek popisuje, jak pomocí Azure PowerShell nakonfigurovat instanci [SKU Application Gateway v2](./application-gateway-autoscaling-zone-redundant.md) , aby v žádostech a odpovědích přepsala hlavičky HTTP.
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Abyste mohli dokončit kroky v tomto článku, musíte spustit Azure PowerShell místně. Musíte také mít nainstalované AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` Určete verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
-- Musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps) .
+- Abyste mohli dokončit kroky v tomto článku, musíte spustit Azure PowerShell místně. Musíte také mít nainstalované AZ Module verze 1.0.0 nebo novější. Spusťte `Import-Module Az` a pak `Get-Module Az` Určete verzi, kterou jste nainstalovali. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzAccount`, abyste vytvořili připojení k Azure.
+- Musíte mít instanci SKU Application Gateway v2. Přepisování hlaviček není v SKU v1 podporováno. Pokud nemáte SKU verze 2, vytvořte před zahájením instanci [sku Application Gateway v2](./tutorial-autoscale-ps.md) .
 
 ## <a name="create-required-objects"></a>Vytvořit požadované objekty
 
@@ -31,23 +31,23 @@ Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provés
 
 1. Vytvořte objekty, které jsou požadovány pro přepsání hlaviček protokolu HTTP:
 
-   - **RequestHeaderConfiguration**: slouží k zadání polí hlavičky požadavku, která chcete přepsat, a nové hodnoty hlaviček.
+   - **RequestHeaderConfiguration** : slouží k zadání polí hlavičky požadavku, která chcete přepsat, a nové hodnoty hlaviček.
 
-   - **ResponseHeaderConfiguration**: slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty hlaviček.
+   - **ResponseHeaderConfiguration** : slouží k zadání polí hlavičky odpovědi, která mají být přepsána, a nové hodnoty hlaviček.
 
-   - **ActionSet**: obsahuje konfigurace dříve zadaných hlaviček požadavků a odpovědí.
+   - **ActionSet** : obsahuje konfigurace dříve zadaných hlaviček požadavků a odpovědí.
 
-   - **Podmínka**: volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
+   - **Podmínka** : volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
 
      Pokud k akci přiřadíte více než jednu podmínku, bude akce provedena pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická a operace.
 
-   - **RewriteRule**: obsahuje více kombinací podmínka pro přepis a akci přepsání.
+   - **RewriteRule** : obsahuje více kombinací podmínka pro přepis a akci přepsání.
 
-   - **RuleSequence**: volitelná konfigurace, která pomáhá určit pořadí, ve kterém se pravidla přepisu spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejnou hodnotu pořadí pravidel pro dvě pravidla přepisu, pořadí spuštění je nedeterministické.
+   - **RuleSequence** : volitelná konfigurace, která pomáhá určit pořadí, ve kterém se pravidla přepisu spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejnou hodnotu pořadí pravidel pro dvě pravidla přepisu, pořadí spuštění je nedeterministické.
 
      Pokud nezadáte RuleSequence explicitně, je nastavena výchozí hodnota 100.
 
-   - **RewriteRuleSet**: obsahuje více pravidel přepisu, která budou přidružena k pravidlu směrování požadavků.
+   - **RewriteRuleSet** : obsahuje více pravidel přepisu, která budou přidružena k pravidlu směrování požadavků.
 
 2. Připojte RewriteRuleSet k pravidlu směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
 
@@ -104,4 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Další informace o tom, jak nastavit některé běžné případy použití, najdete v tématu [běžné scénáře přepisování hlaviček](./rewrite-http-headers.md).

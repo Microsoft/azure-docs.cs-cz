@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 308098bd1ac49510afccf0a7964face726906332
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6ea6f348d796962141bd39ff858d891a29a2f6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84628674"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397684"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Podpora Application Gateway pro více tenantů back-end, jako je App Service
 
@@ -28,11 +28,11 @@ Služba Application Gateway nabízí uživatelům možnost přepsat hlavičku ho
 
 ## <a name="override-host-header-in-the-request"></a>Přepsat hlavičku hostitele v žádosti
 
-Možnost zadat přepsání hostitele je definovaná v [Nastavení http](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) a dá se použít pro libovolný fond back-end během vytváření pravidla. Podporovány jsou následující dva způsoby přepsání hlaviček hostitele a rozšíření SNI pro back-end s více klienty:
+Možnost zadat přepsání hostitele je definovaná v [Nastavení http](./configuration-overview.md#http-settings) a dá se použít pro libovolný fond back-end během vytváření pravidla. Podporovány jsou následující dva způsoby přepsání hlaviček hostitele a rozšíření SNI pro back-end s více klienty:
 
 - Možnost nastavit název hostitele na pevnou hodnotu explicitně zadaný v nastavení HTTP. Tato možnost zajistí, že se hlavička hostitele přepíše na tuto hodnotu pro veškerý provoz do fondu back-end, kde se používají konkrétní nastavení protokolu HTTP. Při použití koncového TLS se tento přepsaný název hostitele používá v rozšíření SNI. Tato možnost umožňuje scénářům, kdy skupina back-end fondu očekává hlavičku hostitele, která se liší od hlavičky příchozího hostitele zákazníka.
 
-- Schopnost odvodit název hostitele z IP adresy nebo plně kvalifikovaného názvu domény členů fondu back-end. Nastavení HTTP taky nabízí možnost dynamicky vybrat název hostitele z plně kvalifikovaného názvu domény člena fondu back-endu, pokud je nakonfigurovaný parametr s možností odvodit název hostitele od jednotlivých členů fondu back-end. Při použití koncového šifrování TLS je tento název hostitele odvozený od plně kvalifikovaného názvu domény a používá se v rozšíření SNI. Tato možnost umožňuje scénářům, kdy fond back-endu může mít dvě nebo víc PaaS služeb pro více tenantů, jako jsou webové aplikace Azure, a záhlaví hostitele žádosti pro každého člena obsahuje název hostitele odvozený z jeho plně kvalifikovaného názvu domény. V případě implementace tohoto scénáře používáme v nastavení protokolu HTTP přepínač s názvem [Vybrat název hostitele z back-endu adresy](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) , ve kterém bude dynamicky přepsána Hlavička hostitele v původní žádosti na tu, která je uvedena ve fondu back-end.  Pokud Váš plně kvalifikovaný název domény ve fondu back-end obsahuje například "contoso11.azurewebsites.net" a "contoso22.azurewebsites.net", Hlavička hostitele původní žádosti, která je contoso.com, bude přepsána na contoso11.azurewebsites.net nebo contoso22.azurewebsites.net při odeslání požadavku na příslušný back-end Server. 
+- Schopnost odvodit název hostitele z IP adresy nebo plně kvalifikovaného názvu domény členů fondu back-end. Nastavení HTTP taky nabízí možnost dynamicky vybrat název hostitele z plně kvalifikovaného názvu domény člena fondu back-endu, pokud je nakonfigurovaný parametr s možností odvodit název hostitele od jednotlivých členů fondu back-end. Při použití koncového šifrování TLS je tento název hostitele odvozený od plně kvalifikovaného názvu domény a používá se v rozšíření SNI. Tato možnost umožňuje scénářům, kdy fond back-endu může mít dvě nebo víc PaaS služeb pro více tenantů, jako jsou webové aplikace Azure, a záhlaví hostitele žádosti pro každého člena obsahuje název hostitele odvozený z jeho plně kvalifikovaného názvu domény. V případě implementace tohoto scénáře používáme v nastavení protokolu HTTP přepínač s názvem [Vybrat název hostitele z back-endu adresy](./configuration-http-settings.md#pick-host-name-from-back-end-address) , ve kterém bude dynamicky přepsána Hlavička hostitele v původní žádosti na tu, která je uvedena ve fondu back-end.  Pokud Váš plně kvalifikovaný název domény ve fondu back-end obsahuje například "contoso11.azurewebsites.net" a "contoso22.azurewebsites.net", Hlavička hostitele původní žádosti, která je contoso.com, bude přepsána na contoso11.azurewebsites.net nebo contoso22.azurewebsites.net při odeslání požadavku na příslušný back-end Server. 
 
   ![scénář webové aplikace](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -59,8 +59,8 @@ Můžou nastat scénáře, kdy název hostitele v odpovědi ze služby App Servi
 - Nakonfigurovali jste přesměrování na App Service. Přesměrování může být stejně jednoduché jako přidání koncového lomítka do požadavku.
 - Máte ověřování Azure AD, které způsobuje přesměrování.
 
-Pokud chcete tyto případy vyřešit, přečtěte si téma [řešení potíží s přesměrování do problému s adresou URL služby App Service](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url).
+Pokud chcete tyto případy vyřešit, přečtěte si téma [řešení potíží s přesměrování do problému s adresou URL služby App Service](./troubleshoot-app-service-redirection-app-service-url.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, jak nastavit Aplikační bránu s více klienty, jako je například webová aplikace služby Azure App Service jako člen fondu back-end, v tématu [konfigurace App Service webových aplikací pomocí Application Gateway](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)
+Naučte se, jak nastavit Aplikační bránu s více klienty, jako je například webová aplikace služby Azure App Service jako člen fondu back-end, v tématu [konfigurace App Service webových aplikací pomocí Application Gateway](./configure-web-app-portal.md)

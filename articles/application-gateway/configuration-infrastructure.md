@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: cd1dc953c35233010250bf7f959c94d1de50fe4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319788"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397616"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurace infrastruktury Application Gateway
 
@@ -55,15 +55,15 @@ V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zab
 V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application Gateway. V této prioritě vložte následující omezení podsítě:
 
 1. Povolí příchozí provoz ze zdrojové IP adresy nebo rozsahu IP adres s cílem jako celý rozsah adres podsítě Application Gateway a cílový port jako port pro příchozí přístup, například port 80 pro přístup HTTP.
-2. Povolí příchozí požadavky ze zdroje jako **GatewayManager** Service Tag a Destination jako **libovolný** a cílový port jako 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro 2 SKU pro [komunikaci stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez příslušných certifikátů nemohou externí entity zahájit změny těchto koncových bodů.
-3. Povolit příchozí testy Azure Load Balancer (značka*AzureLoadBalancer* ) a příchozí provoz virtuální sítě (značka*VirtualNetwork* ) ve [skupině zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
+2. Povolí příchozí požadavky ze zdroje jako **GatewayManager** Service Tag a Destination jako **libovolný** a cílový port jako 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro 2 SKU pro [komunikaci stavu back-endu](./application-gateway-diagnostics.md). Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez příslušných certifikátů nemohou externí entity zahájit změny těchto koncových bodů.
+3. Povolit příchozí testy Azure Load Balancer (značka *AzureLoadBalancer* ) a příchozí provoz virtuální sítě (značka *VirtualNetwork* ) ve [skupině zabezpečení sítě](../virtual-network/network-security-groups-overview.md).
 4. Zablokuje všechny ostatní příchozí přenosy pomocí pravidla odepřít – vše.
 5. Povolí odchozí provoz do Internetu pro všechny cíle.
 
 ## <a name="supported-user-defined-routes"></a>Podporované uživatelsky definované trasy 
 
 > [!IMPORTANT]
-> Použití udr v podsíti Application Gateway může způsobit, že se stav v [zobrazení stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) zobrazí jako **Neznámý**. Může to také způsobit selhání generování protokolů Application Gateway a metrik. Doporučujeme, abyste v Application Gateway podsíti nepoužívali udr, abyste mohli zobrazit stav back-endu, protokoly a metriky.
+> Použití udr v podsíti Application Gateway může způsobit, že se stav v [zobrazení stavu back-endu](./application-gateway-diagnostics.md#back-end-health) zobrazí jako **Neznámý**. Může to také způsobit selhání generování protokolů Application Gateway a metrik. Doporučujeme, abyste v Application Gateway podsíti nepoužívali udr, abyste mohli zobrazit stav back-endu, protokoly a metriky.
 
 - **V1**
 
@@ -78,7 +78,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
    > Nesprávná konfigurace směrovací tabulky by mohla vést k asymetrickému směrování ve Application Gateway v2. Zajistěte, aby se veškerý provoz na rovině správy a řízení odesílal přímo na Internet, a ne přes virtuální zařízení. Protokolování a metriky by taky mohly ovlivnit.
 
 
-  **Scénář 1**: udr pro zákaz šíření tras Border Gateway Protocol (BGP) do Application Gateway podsítě
+  **Scénář 1** : udr pro zákaz šíření tras Border Gateway Protocol (BGP) do Application Gateway podsítě
 
    Někdy je výchozí trasa brány (0.0.0.0/0) inzerována prostřednictvím bran ExpressRoute nebo VPN, které jsou přidružené k virtuální síti Application Gateway. Tím dojde k přerušení provozu roviny správy, což vyžaduje přímou cestu k Internetu. V takových scénářích se dá UDR použít k zakázání šíření tras protokolu BGP. 
 
@@ -90,11 +90,11 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
    Povolení UDR pro tento scénář by nemělo přerušit existující nastavení.
 
-  **Scénář 2**: udr k přímému nasměrování 0.0.0.0/0 na Internet
+  **Scénář 2** : udr k přímému nasměrování 0.0.0.0/0 na Internet
 
    Můžete vytvořit UDR pro odeslání provozu 0.0.0.0/0 přímo na Internet. 
 
-  **Scénář 3**: udr pro Azure Kubernetes Service s kubenet
+  **Scénář 3** : udr pro Azure Kubernetes Service s kubenet
 
   Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a Application Gateway řadič příchozího přenosu dat (AGIC), budete potřebovat směrovací tabulku, aby bylo možné provoz odeslaný do lusků z Application Gateway směrovat do správného uzlu. To nebude nutné v případě, že použijete Azure CNI. 
 
@@ -109,7 +109,7 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
     
   **V2 – nepodporované scénáře**
 
-  **Scénář 1**: udr pro virtuální zařízení
+  **Scénář 1** : udr pro virtuální zařízení
 
   Všechny scénáře, kdy musí být adresa 0.0.0.0/0 přesměrována prostřednictvím libovolného virtuálního zařízení, virtuální sítě typu hub/paprsek nebo místní (vynucené tunelové propojení), není pro v2 podporována.
 

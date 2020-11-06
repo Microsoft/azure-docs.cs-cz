@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e8eb79d519e2f7bfbf006b852f0c5294976b727
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248669"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397145"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsat hlavičky HTTP pomocí Application Gateway
 
@@ -22,7 +22,7 @@ Hlavičky protokolu HTTP umožňují klientovi a serveru předat další informa
 
 Když se pakety požadavků a odpovědí pohybují mezi klientem a back-endovými fondy, služba Application Gateway umožňuje přidat, odebrat nebo aktualizovat hlavičky požadavků a odpovědí HTTP. Umožňuje také přidat určité podmínky, které zajistí, že se zadané hlavičky přepíší pouze při splnění těchto podmínek.
 
-Application Gateway také podporuje několik [proměnných serveru](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) , které vám pomůžou ukládat Další informace o žádostech a odpovědích. To usnadňuje vytváření výkonných pravidel pro přepis.
+Application Gateway také podporuje několik [proměnných serveru](#server-variables) , které vám pomůžou ukládat Další informace o žádostech a odpovědích. To usnadňuje vytváření výkonných pravidel pro přepis.
 
 > [!NOTE]
 >
@@ -49,14 +49,14 @@ Podmínku můžete použít k vyhodnocení, zda je zadaná proměnná přítomna
 Akce přepisu slouží k zadání hlaviček žádosti a odpovědi, které chcete přepsat, a nové hodnoty hlaviček. Můžete buď vytvořit novou hlavičku, upravit hodnotu existující hlavičky nebo odstranit existující hlavičku. Hodnota nového záhlaví nebo existující záhlaví lze nastavit na tyto typy hodnot:
 
 - Textové.
-- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_*header*}.
-- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_*header*}.
-- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_*serverVariable*}.
+- Hlavička žádosti Chcete-li zadat hlavičku požadavku, je nutné použít syntaxi {http_req_ *header* }.
+- Hlavička odpovědi. Chcete-li zadat hlavičku odpovědi, je nutné použít syntaxi {http_resp_ *header* }.
+- Proměnná serveru. Pokud chcete zadat proměnnou serveru, musíte použít syntaxi {var_ *serverVariable* }.
 - Kombinace textu, hlavičky požadavku, hlavičky odpovědi a serverové proměnné.
 
 ## <a name="server-variables"></a>Serverové proměnné
 
-Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_*serverVariable*}.
+Application Gateway používá serverové proměnné k ukládání užitečných informací o serveru, připojení ke klientovi a aktuální žádosti o připojení. Příklady uložených informací zahrnují IP adresu klienta a typ webového prohlížeče. Proměnné serveru se dynamicky mění, například když se načte nová stránka nebo když se publikuje formulář. Tyto proměnné můžete použít k vyhodnocení podmínek přepisu a přepisu hlaviček. Aby bylo možné použít hodnotu proměnných serveru k přepsání hlaviček, bude nutné zadat tyto proměnné v syntaxi {var_ *serverVariable* }.
 
 Application Gateway podporuje tyto proměnné serveru:
 
@@ -91,25 +91,25 @@ Chcete-li nakonfigurovat přepsání hlaviček protokolu HTTP, je nutné provés
 
 1. Vytvořte objekty, které jsou požadovány pro přepsání hlaviček protokolu HTTP:
 
-   - **Akce přepisu**: slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
+   - **Akce přepisu** : slouží k zadání polí hlavičky Request a Request, která chcete přepsat, a nové hodnoty hlaviček. K akci přepsání můžete přidružit jednu nebo více podmínek přepsání.
 
-   - **Podmínka přepisu**: volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
+   - **Podmínka přepisu** : volitelná konfigurace. Podmínky přepisu vyhodnocují obsah požadavků a odpovědí HTTP (S). Akce přepisu nastane, pokud požadavek nebo odpověď HTTP (S) odpovídá podmínce přepsání.
 
      Pokud k akci přiřadíte více než jednu podmínku, bude akce provedena pouze v případě, že jsou splněny všechny podmínky. Jinými slovy, operace je logická a operace.
 
-   - **Pravidlo přepisu**: obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
+   - **Pravidlo přepisu** : obsahuje více kombinací podmínka pro akci přepisu nebo přepisu.
 
-   - **Pořadí pravidel**: pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejné pořadí pravidel ke dvěma pravidlům přepisu, pořadí spuštění je nedeterministické.
+   - **Pořadí pravidel** : pomáhá určit pořadí, ve kterém se pravidla přepsání spouštějí. Tato konfigurace je užitečná, když máte více pravidel pro přepsání v sadě přepsání. Jako první se spustí pravidlo pro přepsání s nižší hodnotou pořadí pravidel. Pokud přiřadíte stejné pořadí pravidel ke dvěma pravidlům přepisu, pořadí spuštění je nedeterministické.
 
-   - **Sada přepsání**: obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
+   - **Sada přepsání** : obsahuje více pravidel pro přepis, která budou přidružena k pravidlu směrování požadavků.
 
-2. Připojte sadu přepište (*rewriteRuleSet*) do pravidla směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
+2. Připojte sadu přepište ( *rewriteRuleSet* ) do pravidla směrování. Konfigurace přepsání je připojena ke zdroji naslouchání prostřednictvím pravidla směrování. Použijete-li pravidlo základního směrování, je konfigurace přepsání hlaviček přidružena ke zdrojovému naslouchacího procesu a je přepsána globální hlavičkou. Když použijete pravidlo směrování na základě cesty, konfigurace opětovného zápisu hlaviček se definuje na mapě cesty URL. V takovém případě platí pouze pro konkrétní oblast cesty lokality.
    > [!NOTE]
    > Přepsání adresy URL – změna hlaviček; nemění adresu URL pro cestu.
 
 Můžete vytvořit více sad pro přepsání hlaviček protokolu HTTP a použít každou sadu přepsání na více posluchačů. Můžete ale použít jenom jednu sadu přepsaného zápisu na konkrétní naslouchací proces.
 
-## <a name="common-scenarios"></a>Typické scénáře
+## <a name="common-scenarios"></a>Obvyklé scénáře
 
 Tady je několik běžných scénářů použití přepisu hlaviček.
 
@@ -168,5 +168,5 @@ Pro přítomnost záhlaví nebo serverové proměnné můžete vyhodnotit hlavi�
 
 Informace o tom, jak přepsat hlavičky HTTP, najdete tady:
 
-- [Přepsání hlaviček HTTP s využitím webu Azure Portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Přepsání hlaviček HTTP s využitím webu Azure Portal](./rewrite-http-headers-portal.md)
 - [Přepsat hlavičky HTTP pomocí Azure PowerShell](add-http-header-rewrite-rule-powershell.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: d6cfac7f0fb3939e57ce64f552556138ce9feacd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652975"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397667"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Application Gateway konfigurace front-endové IP adresy
 
@@ -32,11 +32,11 @@ Veřejná IP adresa není nutná pro interní koncový bod, který není vystave
 
 Podporovaná je jenom jedna veřejná IP adresa nebo jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
 
-- U veřejné IP adresy můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako Aplikační brána. Další informace najdete v tématu [statická a dynamická veřejná IP adresa](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- U veřejné IP adresy můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako Aplikační brána. Další informace najdete v tématu [statická a dynamická veřejná IP adresa](./application-gateway-components.md#static-versus-dynamic-public-ip-address).
 
-- U privátních IP adres můžete zadat privátní IP adresu z podsítě, ve které je Aplikační brána vytvořená. Pokud nezadáte žádnou hodnotu, z podsítě se automaticky vybere Libovolná IP adresa. Vybraný typ IP adresy (static nebo Dynamic) nelze později změnit. Další informace najdete v tématu [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+- U privátních IP adres můžete zadat privátní IP adresu z podsítě, ve které je Aplikační brána vytvořená. Pokud nezadáte žádnou hodnotu, z podsítě se automaticky vybere Libovolná IP adresa. Vybraný typ IP adresy (static nebo Dynamic) nelze později změnit. Další informace najdete v tématu [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení](./application-gateway-ilb-arm.md).
 
-Front-end IP adresa je přidružená k *naslouchacího procesu*, který kontroluje příchozí požadavky na front-endové IP adresu.
+Front-end IP adresa je přidružená k *naslouchacího procesu* , který kontroluje příchozí požadavky na front-endové IP adresu.
 
 ## <a name="next-steps"></a>Další kroky
 

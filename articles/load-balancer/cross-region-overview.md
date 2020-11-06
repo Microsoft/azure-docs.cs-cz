@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336526"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398007"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Nástroj pro vyrovnávání zatížení mezi oblastmi (Preview)
 
@@ -45,7 +45,7 @@ Konfigurace IP adresy front-endu pro nástroj pro vyrovnávání zatížení nap
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Diagram nástroje pro vyrovnávání zatížení mezi oblastmi" border="true":::
 
 > [!NOTE]
-> Port back-endu zátěžového pravidla pro vyrovnávání zatížení mezi oblastmi by měl odpovídat portu front-endu pravidla vyrovnávání zatížení nebo příchozího překladu adres NAT na regionálním standardním nástroji pro vyrovnávání zatížení. 
+> Port back-endu vašeho pravidla vyrovnávání zatížení v nástroji pro vyrovnávání zatížení mezi oblastmi se musí shodovat s portem front-endu pravidla vyrovnávání zatížení nebo příchozího překladu adres (NAT) na regionálním standardním nástroji 
 
 ### <a name="regional-redundancy"></a>Regionální redundance
 
@@ -55,7 +55,7 @@ Pokud dojde k výpadku jedné oblasti, provoz se směruje na další nejbližš�
 
 Sonda stavu nástroje pro vyrovnávání zatížení mezi oblastmi shromažďuje informace o dostupnosti každých 20 sekund. Pokud jeden místní Nástroj pro vyrovnávání zatížení pozastaví svou dostupnost na 0, nástroj pro vyrovnávání zatížení v různých oblastech tuto chybu detekuje. Místní Nástroj pro vyrovnávání zatížení se pak vybere mimo rotaci. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram nástroje pro vyrovnávání zatížení mezi oblastmi" border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Diagram zobrazení provozu v globální oblasti" border="true":::
 
 ### <a name="ultra-low-latency"></a>Extrémně nízká latence
 

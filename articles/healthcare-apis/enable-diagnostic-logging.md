@@ -9,16 +9,16 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
-ms.openlocfilehash: 948ca03b5bf503c884df5df56c61951b381874a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 262509df98b93c7902d83f90756872a16d84198f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871698"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398126"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Povolení protokolování diagnostiky v rozhraní Azure API pro FHIR®
 
-V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure API pro FHIR® a abyste mohli zkontrolovat některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR®, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) v Azure Portal. 
+V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure API pro FHIR® a abyste mohli zkontrolovat některé ukázkové dotazy pro tyto protokoly. Přístup k diagnostickým protokolům je nezbytný pro jakoukoli službu zdravotní péče, kde se musí jednat o dodržování zákonných požadavků (například HIPAA). Funkce v rozhraní Azure API pro FHIR®, která umožňuje diagnostické protokoly, je [**nastavení diagnostiky**](../azure-monitor/platform/diagnostic-settings.md) v Azure Portal. 
 
 ## <a name="enable-audit-logs"></a>Povolit protokoly auditu
 1. Pokud chcete povolit protokolování diagnostiky v Azure API pro FHIR®, vyberte rozhraní API Azure pro službu FHIR® v Azure Portal 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak povolit protokolování diagnostiky v Azure AP
 > [!Note] 
 > Zobrazení prvních protokolů v Log Analytics může trvat až 15 minut.  
  
-Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview) .
+Další informace o tom, jak pracovat s diagnostickými protokoly, najdete v [dokumentaci k protokolu prostředků Azure](../azure-monitor/platform/platform-logs-overview.md) .
 
 ## <a name="audit-log-details"></a>Podrobnosti protokolu auditu
 V tuto chvíli vrátí služba Azure API pro FHIR® v protokolu auditu následující pole: 
@@ -60,7 +60,7 @@ V tuto chvíli vrátí služba Azure API pro FHIR® v protokolu auditu následuj
 |OperationDuration|Int|Čas potřebný k dokončení této žádosti v řádu sekund
 |OperationName|Řetězec| Popisuje typ operace (například aktualizace, hledání typu).
 |RequestUri|Řetězec|Identifikátor URI žádosti 
-|ResultType|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny**, **úspěšné**nebo **neúspěšné** .
+|ResultType|Řetězec|Dostupné hodnoty jsou aktuálně **spuštěny** , **úspěšné** nebo **neúspěšné** .
 |StatusCode|Int|Stavový kód HTTP (např. 200) 
 |TimeGenerated|DateTime|Datum a čas události|
 |Vlastnosti|Řetězec| Popisuje vlastnosti fhirResourceType.
@@ -80,7 +80,7 @@ MicrosoftHealthcareApisAuditLogs
 | limit 100
 ```
 
-Spusťte tento dotaz, aby se seskupoval operace podle **typu prostředku FHIR**:
+Spusťte tento dotaz, aby se seskupoval operace podle **typu prostředku FHIR** :
 
 ```Application Insights
 MicrosoftHealthcareApisAuditLogs 

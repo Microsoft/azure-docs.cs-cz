@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: ff8ade938433e09c6b9ff9deffe64d8294d96b8c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0d0f344e60edfc83c8ac4f79ad18520307b790e3
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325552"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396621"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
@@ -126,6 +126,28 @@ Chcete-li upravit existující ohraničovací rámeček, použijte nástroj pro 
 Chcete-li odstranit *všechny* ohraničovací rámečky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
 
 Po vytvoření ohraničujících polí pro obrázek vyberte **Odeslat** a uložte svou práci, jinak se vaše Nedokončená práce nebude ukládat.
+
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>Tagování obrázků a určení mnohoúhelníků pro segmentaci obrázků 
+
+Pokud je váš projekt typu "segmentace instancí (mnohoúhelník)", zadáte jeden nebo více mnohoúhelníků v obrázku a použijete značku na každý mnohoúhelník. Obrázky mohou mít více ohraničujících mnohoúhelníků, z nichž každá má jednu značku. Použijte **Zobrazit podrobné pokyny** k určení, zda je v projektu použito více ohraničujících mnohoúhelníků.
+
+1. Vyberte značku mnohoúhelníku, kterou chcete vytvořit.
+1. Vyberte nástroj **roztažení oblasti mnohoúhelníku** panel pro ![ vykreslení oblasti mnohoúhelníku ](./media/how-to-label-images/polygon-tool.png) nebo vyberte "P".
+3. Klikněte na každý bod mnohoúhelníku.  Po dokončení tohoto tvaru poklikejte na tlačítko Dokončit.
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Vytváření mnohoúhelníků pro Cat a pes":::
+
+Chcete-li odstranit mnohoúhelník, klikněte na cíl ve tvaru X, který se po vytvoření zobrazí vedle mnohoúhelníku.
+
+Chcete-li změnit značku mnohoúhelníku, vyberte nástroj **přesunout oblast** , klikněte na mnohoúhelník a vyberte správnou značku.
+
+Můžete upravit existující mnohoúhelníky. Nástroj pro zamčení/odemčení **oblastí** nástroje ![ ](./media/how-to-label-images/lock-bounding-boxes-tool.png) nebo "L" přepíná toto chování. Pokud jsou oblasti zamčené, můžete změnit jenom tvar nebo umístění nového mnohoúhelníku.
+
+Chcete-li upravit existující mnohoúhelník, použijte nástroj pro práci s panelem nástrojů **Přidat nebo odebrat body mnohoúhelníku** ![ ](./media/how-to-label-images/add-remove-points-tool.png) nebo "U". Kliknutím na mnohoúhelník přidáte nebo odeberete bod. Pokud nemůžete upravit oblast, pravděpodobně jste přepnuli nástroj **oblasti uzamčení/odemknutí** .
+
+Chcete-li odstranit *všechny* mnohoúhelníky v aktuální imagi, vyberte nástroj **Odstranit všechny oblasti** nástroj ![ Odstranit oblasti ](./media/how-to-label-images/delete-regions-tool.png) .
+
+Po vytvoření mnohoúhelníků pro obrázek vyberte **Odeslat** a uložte svou práci, jinak se vaše Nedokončená práce nebude ukládat.
 
 ## <a name="finish-up"></a>Dokončení
 

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 66ea8692fd3d93b8de9740e145404a8db50ebfdf
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558563"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398092"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Nejčastější dotazy k rozhraní Azure API pro FHIR
 
@@ -52,7 +52,7 @@ Některé z toho, co se uvolňuje do rozhraní API Azure pro FHIR, najdete v čl
 
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Ve kterých oblastech je Azure API pro FHIR k dispozici?
 
-V současné době máme obecnou dostupnost pro veřejné i státní správu v [několika geografických oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Informace o cloudových službách pro státní správu v Microsoftu najdete v [FedRAMP služeb Azure](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope).
+V současné době máme obecnou dostupnost pro veřejné i státní správu v [několika geografických oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia). Informace o cloudových službách pro státní správu v Microsoftu najdete v [FedRAMP služeb Azure](../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Kde můžu zjistit, co se uvolňuje do rozhraní API Azure pro FHIR?
 
@@ -97,17 +97,17 @@ Níže jsou uvedeny některé příklady:
 
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Co je výchozí řazení při hledání prostředků v Azure API pro FHIR?
 
-Podporujeme řazení podle data poslední aktualizace: _sort = _lastUpdated. Další informace o dalších podporovaných parametrech hledání najdete na [stránce podporované funkce](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search).
+Podporujeme řazení podle data poslední aktualizace: _sort = _lastUpdated. Další informace o dalších podporovaných parametrech hledání najdete na [stránce podporované funkce](./fhir-features-supported.md#search).
 
 ### <a name="how-does-export-work"></a>Jak $export funguje?
 
-$export je součástí specifikace FHIR: https://hl7.org/fhir/uv/bulkdata/export/index.html . Pokud je u služby FHIR nakonfigurovaná spravovaná identita a účet úložiště, a pokud má spravovaná identita přístup k tomuto účtu úložiště, můžete jednoduše volat $export v rozhraní FHIR API a všechny prostředky FHIR se exportují do účtu úložiště. Další informace najdete [v našem článku o $export](https://docs.microsoft.com/azure/healthcare-apis/export-data).
+$export je součástí specifikace FHIR: https://hl7.org/fhir/uv/bulkdata/export/index.html . Pokud je u služby FHIR nakonfigurovaná spravovaná identita a účet úložiště, a pokud má spravovaná identita přístup k tomuto účtu úložiště, můžete jednoduše volat $export v rozhraní FHIR API a všechny prostředky FHIR se exportují do účtu úložiště. Další informace najdete [v našem článku o $export](./export-data.md).
 
 ## <a name="using-azure-api-for-fhir"></a>Používání Azure API pro FHIR
 
 ### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>Návody povolit Log Analytics pro Azure API pro FHIR?
 
-Povolujeme diagnostické protokolování a povolujeme prohlížení ukázkových dotazů pro tyto protokoly. Podrobnosti o povolování protokolů auditu a ukázkových dotazech najdete v [této části](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging). Pokud chcete do protokolů zahrnout další informace, podívejte se na [použití vlastních hlaviček protokolu HTTP](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers).
+Povolujeme diagnostické protokolování a povolujeme prohlížení ukázkových dotazů pro tyto protokoly. Podrobnosti o povolování protokolů auditu a ukázkových dotazech najdete v [této části](./enable-diagnostic-logging.md). Pokud chcete do protokolů zahrnout další informace, podívejte se na [použití vlastních hlaviček protokolu HTTP](./use-custom-headers.md).
 
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>Kde se můžu podívat na některé příklady použití rozhraní Azure API pro FHIR v rámci pracovního postupu?
 
@@ -121,7 +121,7 @@ Máme [stránku GitHubu architektury Health](https://github.com/microsoft/health
 
 ### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>Existuje způsob, jak šifrovat data pomocí mého osobního klíče, který není výchozím klíčem?
 
-Ano, Azure API for FHIR umožňuje konfiguraci klíčů spravovaných zákazníkem s využitím podpory od Cosmos DB. Další informace o šifrování dat pomocí osobního klíče najdete v [této části](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key).
+Ano, Azure API for FHIR umožňuje konfiguraci klíčů spravovaných zákazníkem s využitím podpory od Cosmos DB. Další informace o šifrování dat pomocí osobního klíče najdete v [této části](./customer-managed-key.md).
 
 ## <a name="azure-api-for-fhir-preview-features"></a>Azure API pro FHIR: funkce ve verzi Preview
 

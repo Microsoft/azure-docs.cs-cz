@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d55e7f29c9ecefa7cfcf98ef890d9982b044ef30
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378818"
+ms.locfileid: "93396511"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -90,7 +90,7 @@ Role [správce privilegovaného ověřování](#privileged-authentication-admini
 
 ### <a name="azure-devops-administrator"></a>[Správce Azure DevOps](#azure-devops-administrator-permissions)
 
-Uživatelé s touto rolí můžou spravovat zásady Azure DevOps a omezit tak nové vytváření organizací Azure DevOps na sadu konfigurovatelných uživatelů nebo skupin. Uživatelé v této roli mohou spravovat tuto zásadu prostřednictvím jakékoli organizace Azure DevOps, která je zálohovaná organizací Azure AD společnosti.
+Uživatelé s touto rolí můžou spravovat zásady Azure DevOps a omezit tak nové vytváření organizací Azure DevOps na sadu konfigurovatelných uživatelů nebo skupin. Uživatelé v této roli mohou spravovat tuto zásadu prostřednictvím jakékoli organizace Azure DevOps, která je zajištěna organizací Azure AD společnosti. Tato role neuděluje žádná další oprávnění specifická pro Azure DevOps (například správce kolekce projektů) ve všech organizacích Azure DevOps zajištěných organizací Azure AD společnosti.
 
 Všechny zásady Enterprise Azure DevOps můžou spravovat uživatelé v této roli.
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: ef2ff8924cd8a92c5d2d2e5dd9da6bb74fad1a14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f68e8cbca65e7b970944f7ca5ef1952140cc6b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652992"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397634"
 ---
 # <a name="application-gateway-listener-configuration"></a>Konfigurace naslouchacího procesu Application Gateway
 
@@ -20,13 +20,13 @@ ms.locfileid: "89652992"
 
 Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení pomocí portu, protokolu, hostitele a IP adresy. Při konfiguraci naslouchacího procesu je nutné zadat hodnoty, které odpovídají odpovídajícím hodnotám v příchozím požadavku na bráně.
 
-Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte také výchozí naslouchací proces zvolením protokolu a portu pro naslouchací proces. Můžete zvolit, jestli se má povolit podpora HTTP2 pro naslouchací proces. Po vytvoření aplikační brány můžete upravit nastavení tohoto výchozího naslouchacího procesu (*appGatewayHttpListener*) nebo vytvořit nové naslouchací procesy.
+Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte také výchozí naslouchací proces zvolením protokolu a portu pro naslouchací proces. Můžete zvolit, jestli se má povolit podpora HTTP2 pro naslouchací proces. Po vytvoření aplikační brány můžete upravit nastavení tohoto výchozího naslouchacího procesu ( *appGatewayHttpListener* ) nebo vytvořit nové naslouchací procesy.
 
 ## <a name="listener-type"></a>Typ naslouchacího procesu
 
-Při vytváření nového naslouchacího procesu si zvolíte mezi [ *základními* a *více lokalitami*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
+Při vytváření nového naslouchacího procesu si zvolíte mezi [ *základními* a *více lokalitami*](./application-gateway-components.md#types-of-listeners).
 
-- Pokud chcete, aby všechny vaše žádosti (pro libovolnou doménu) byly přijaty a předány do fondů back-endu, vyberte základní. Přečtěte si, [jak vytvořit Aplikační bránu s využitím základního naslouchacího procesu](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Pokud chcete, aby všechny vaše žádosti (pro libovolnou doménu) byly přijaty a předány do fondů back-endu, vyberte základní. Přečtěte si, [jak vytvořit Aplikační bránu s využitím základního naslouchacího procesu](./quick-create-portal.md).
 
 - Pokud chcete překládat požadavky na různé back-endové fondy na základě hlavičky *hostitele* nebo názvů hostitelů, zvolte možnost naslouchací proces pro více webů, kde musíte zadat také název hostitele, který se shoduje s příchozím požadavkem. Důvodem je to, že Application Gateway spoléhá na hlavičky hostitele HTTP 1,1 k hostování více než jednoho webu na stejné veřejné IP adrese a portu. Další informace najdete v tématu [hostování více lokalit pomocí Application Gateway](multiple-site-overview.md).
 
@@ -42,7 +42,7 @@ Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchací
 
 ## <a name="front-end-port"></a>Front-end port
 
-Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
+Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](./application-gateway-components.md#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
 ## <a name="protocol"></a>Protokol
 
@@ -50,7 +50,7 @@ Vyberte HTTP nebo HTTPS:
 
 - Pokud zvolíte protokol HTTP, přenosy mezi klientem a aplikační bránou nejsou šifrované.
 
-- Pokud chcete [ukončení TLS](features.md#secure-sockets-layer-ssltls-termination) nebo [komplexní šifrování TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview), vyberte https. Přenos dat mezi klientem a aplikační bránou je zašifrovaný. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od začátku do konce, musíte zvolit HTTPS a nakonfigurovat nastavení **back-endu http** . Tím se zajistí, že se provoz po přenosu z aplikační brány do back-endu znovu zašifruje.
+- Pokud chcete [ukončení TLS](features.md#secure-sockets-layer-ssltls-termination) nebo [komplexní šifrování TLS](./ssl-overview.md), vyberte https. Přenos dat mezi klientem a aplikační bránou je zašifrovaný. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od začátku do konce, musíte zvolit HTTPS a nakonfigurovat nastavení **back-endu http** . Tím se zajistí, že se provoz po přenosu z aplikační brány do back-endu znovu zašifruje.
 
 
 Chcete-li nakonfigurovat ukončení protokolu TLS a komplexní šifrování TLS, je nutné do naslouchacího procesu přidat certifikát, aby služba Application Gateway mohla odvodit symetrický klíč. To je určeno specifikací protokolu TLS. Symetrický klíč slouží k šifrování a dešifrování provozu, který je odeslán do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát vám umožní exportovat soukromý klíč, který brána používá k šifrování a dešifrování provozu.
@@ -79,17 +79,17 @@ Podpora protokolu WebSocket je ve výchozím nastavení povolená. Neexistuje ž
 
 ## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
-Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](./custom-error.md).
 
-![Kódy chyb Application Gateway](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
+![Kódy chyb Application Gateway](/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte si téma [Azure PowerShell Configuration](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
+Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte si téma [Azure PowerShell Configuration](./custom-error.md#azure-powershell-configuration).
 
 ## <a name="tls-policy"></a>Zásada TLS
 
-Můžete centralizovat správu certifikátů TLS/SSL a snížit režijní náklady na dešifrování pro back-endové serverové farmy. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované*nebo *vlastní* zásady TLS.
+Můžete centralizovat správu certifikátů TLS/SSL a snížit režijní náklady na dešifrování pro back-endové serverové farmy. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí* , *předdefinované* nebo *vlastní* zásady TLS.
 
-Zásady TLS se konfigurují pro řízení verzí protokolu TLS. Aplikační bránu můžete nakonfigurovat tak, aby používala minimální verzi protokolu pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway TLS](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Zásady TLS se konfigurují pro řízení verzí protokolu TLS. Aplikační bránu můžete nakonfigurovat tak, aby používala minimální verzi protokolu pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway TLS](./application-gateway-ssl-policy-overview.md).
 
 Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak jsou požadavky přijaté na naslouchací službě směrovány do back-endu.
 

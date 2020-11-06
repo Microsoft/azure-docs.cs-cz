@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6bc5761f4e629a90dacf06cd7503ca86a5448fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d0a130830c8b03fd1f47086b9a997f6fc3df9a4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595848"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396953"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Správa webového provozu pomocí aplikační brány a Azure CLI
 
-Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) , která používá [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end servery. V tomto příkladu sada škálování obsahuje dvě instance virtuálních počítačů. Sada škálování se přidá do výchozího back-endu fondu služby Application Gateway.
+Aplikační brána se používá ke správě a zabezpečení webového provozu spravovaných serverů. Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) , která používá [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md) pro back-end servery. V tomto příkladu sada škálování obsahuje dvě instance virtuálních počítačů. Sada škálování se přidá do výchozího back-endu fondu služby Application Gateway.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -27,7 +27,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
 
-Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet* , kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet). Pomocí příkazu [az network public-ip create](/cli/azure/network/public-ip) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -155,4 +155,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>Další kroky
 
-[Omezení webového provozu Firewallem webových aplikací](./tutorial-restrict-web-traffic-cli.md)
+[Omezení webového provozu Firewallem webových aplikací](../web-application-firewall/ag/tutorial-restrict-web-traffic-cli.md)

@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558891"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398211"
 ---
 # <a name="configure-private-link"></a>Konfigurace privátního odkazu
 
@@ -22,7 +22,7 @@ ms.locfileid: "92558891"
 
 Privátní odkaz vám umožní přístup k Azure API pro FHIR přes soukromý koncový bod, síťové rozhraní, které vás připojuje soukromě a bezpečně pomocí privátní IP adresy z vaší virtuální sítě. Pomocí privátního odkazu můžete bezpečně přistupovat k našim službám z vaší virtuální sítě jako služby First Service, aniž byste museli projít veřejnou službou DNS. Tento článek vás provede vytvořením, otestováním a správou privátního koncového bodu pro Azure API pro FHIR.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před vytvořením privátního koncového bodu jsou k dispozici některé prostředky Azure, které budete muset vytvořit jako první:
 
@@ -30,7 +30,7 @@ Před vytvořením privátního koncového bodu jsou k dispozici některé prost
 - Azure API pro FHIR – prostředek FHIR, který byste chtěli umístit za soukromý koncový bod.
 - Virtual Network – virtuální síť, ke které budou připojené vaše klientské služby a privátní koncový bod.
 
-Další informace najdete v [dokumentaci k privátnímu odkazu](https://docs.microsoft.com/azure/private-link/).
+Další informace najdete v [dokumentaci k privátnímu odkazu](../private-link/index.yml).
 
 ## <a name="disable-public-network-access"></a>Zakázat přístup k veřejné síti
 
@@ -40,7 +40,7 @@ Vytvořením privátního koncového bodu pro prostředek FHIR se do něj automa
 
 ## <a name="create-private-endpoint"></a>Vytvořit privátní koncový bod
 
-Pro vytvoření privátního koncového bodu může vývojář s oprávněními RBAC na prostředku FHIR používat Azure Portal, [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell)nebo [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli). Tento článek vás provede kroky k použití Azure Portal. Použití Azure Portal se doporučuje, protože automatizuje vytváření a konfiguraci Privátní DNS zóny. Další podrobnosti najdete na stránce s přehledem [rychlé zprovoznění privátních odkazů](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal) .
+Pro vytvoření privátního koncového bodu může vývojář s oprávněními RBAC na prostředku FHIR používat Azure Portal, [Azure PowerShell](../private-link/create-private-endpoint-powershell.md)nebo [Azure CLI](../private-link/create-private-endpoint-cli.md). Tento článek vás provede kroky k použití Azure Portal. Použití Azure Portal se doporučuje, protože automatizuje vytváření a konfiguraci Privátní DNS zóny. Další podrobnosti najdete na stránce s přehledem [rychlé zprovoznění privátních odkazů](../private-link/create-private-endpoint-portal.md) .
 
 Existují dva způsoby, jak vytvořit soukromý koncový bod. Tok automatického schvalování umožňuje uživateli, který má oprávnění RBAC pro prostředek FHIR, vytvořit soukromý koncový bod bez nutnosti schválení. Tok ručního schválení umožňuje uživateli bez oprávnění k FHIR prostředku požádat o schválení privátního koncového bodu vlastníky prostředku FHIR.
 
