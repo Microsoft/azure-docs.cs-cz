@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496118"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357109"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Instalace a spuštění kontejneru prostorové analýzy (Preview)
 
 Kontejner prostorových analýz vám umožňuje analyzovat streamování videa v reálném čase, abyste pochopili prostorové vztahy mezi lidmi, jejich pohybem a interakcemi s objekty ve fyzických prostředích. Kontejnery jsou skvělé pro splnění určitých požadavků na zabezpečení a zásady správného řízení dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
@@ -105,11 +105,11 @@ Prostorová analýza používá výpočetní funkce Azure Stackho okraje ke spu�
 
 ### <a name="set-up-an-edge-compute-role-and-create-an-iot-hub-resource"></a>Nastavení role hraničních výpočtů a vytvoření prostředku IoT Hub
 
-V [Azure Portal](https://portal.azure.com/)přejděte na prostředek Azure Stack Edge. Na stránce **Přehled** nebo v navigačním seznamu klikněte na tlačítko získat položku Edge COMPUTE – **Začínáme** . Na dlaždici **Konfigurace hraničních výpočtů**   klikněte na **Konfigurovat**. 
+V [Azure Portal](https://portal.azure.com/)přejděte na prostředek Azure Stack Edge. Na stránce **Přehled** nebo v navigačním seznamu klikněte na tlačítko získat položku Edge COMPUTE – **Začínáme** . Na dlaždici  **Konfigurace hraničních výpočtů**   klikněte na **Konfigurovat**. 
 
 ![Odkaz](media/spatial-analysis/configure-edge-compute-tile.png)
 
-Na stránce **Konfigurace výpočetních hraničních**zařízení   Vyberte existující IoT Hub nebo si vytvořte novou. Ve výchozím nastavení se k vytvoření IoT Hub prostředku používá cenová úroveň Standard (S1). Pokud chcete použít IoT Hub prostředek úrovně Free, vytvořte ho a pak ho vyberte. Prostředek IoT Hub používá stejné předplatné a skupinu prostředků, které používá prostředek Azure Stack Edge. 
+Na stránce **Konfigurace výpočetních hraničních** zařízení   Vyberte existující IoT Hub nebo si vytvořte novou. Ve výchozím nastavení se k vytvoření IoT Hub prostředku používá cenová úroveň Standard (S1). Pokud chcete použít IoT Hub prostředek úrovně Free, vytvořte ho a pak ho vyberte. Prostředek IoT Hub používá stejné předplatné a skupinu prostředků, které používá prostředek Azure Stack Edge. 
 
 Klikněte na **Vytvořit**. Vytváření prostředků IoT Hub může trvat několik minut. Po vytvoření prostředku IoT Hub se aktualizuje dlaždice **Konfigurace hraničních výpočtů** , aby se zobrazila nová konfigurace. Pokud chcete ověřit, jestli je role hraničního výpočtu nakonfigurovaná, vyberte **Zobrazit** na dlaždici **Konfigurovat výpočty**   .
 
@@ -178,7 +178,7 @@ Restartujte počítač a spusťte následující příkaz.
 nvidia-smi
 ```
 
-Měl by se zobrazit následující výstup.
+Měli byste vidět následující výstup.
 
 ![Výstup ovladače NVIDIA](media/spatial-analysis/nvidia-driver-output.png)
 
@@ -289,7 +289,7 @@ sudo apt-get update
 Instalace verze 1.0.9:
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 V dalším kroku Zaregistrujte hostitelský počítač jako zařízení IoT Edge ve vaší instanci IoT Hub pomocí [připojovacího řetězce](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal).
@@ -381,7 +381,7 @@ Můžete použít prostorovou analýzu s nahraným nebo živým videem. Pokud ch
     1. Změnit **zabezpečený přenos vyžadovaný** jako **zakázaný**
     2. Změnit **povolený** **veřejný přístup k objektu BLOB**
 
-Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použijte existující. Pak odešlete videosoubor do kontejneru. Rozbalte nastavení souboru pro nahraný soubor a vyberte **Generovat SAS**. Nezapomeňte nastavit **Datum vypršení platnosti** dostatečně dlouho na pokrytí období testování. Nastavte **Povolené protokoly** na *http* (*https* není podporované).
+Přejděte do části **Container** a buď vytvořte nový kontejner, nebo použijte existující. Pak odešlete videosoubor do kontejneru. Rozbalte nastavení souboru pro nahraný soubor a vyberte **Generovat SAS**. Nezapomeňte nastavit **Datum vypršení platnosti** dostatečně dlouho na pokrytí období testování. Nastavte **Povolené protokoly** na *http* ( *https* není podporované).
 
 Klikněte na **vygenerovat token SAS a adresu URL** a zkopírujte adresu URL SAS objektu BLOB. Nahraďte začínající `https` `http` a otestujte adresu URL v prohlížeči, který podporuje přehrávání videa.
 

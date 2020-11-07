@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329257"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358163"
 ---
 # <a name="public-ip-addresses"></a>Veřejné IP adresy
 
@@ -31,13 +31,15 @@ Veřejné IP adresy umožňují internetovým prostředkům příchozí komunika
 * Internetové nástroje pro vyrovnávání zatížení
 * VPN Gateway
 * brány Application Gateway.
-* Brána Azure Firewall
+* Azure Firewall
 
 ## <a name="ip-address-version"></a>Verze IP adresy
 
 Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. 
 
 ## <a name="sku"></a>SKU
+
+Další informace o upgradu SKU najdete v tématu [upgrade veřejné IP adresy](../virtual-network/virtual-network-public-ip-address-upgrade.md).
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
@@ -165,7 +167,7 @@ Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../
 * Přiřaďte konfiguraci front-endu služby Application Gateway v1 **dynamické** základní veřejné IP adresy. 
 * Přiřaďte **statickou** adresu Standard SKU pro konfiguraci front-endu v2.
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) umožňuje vytvářet, vysazovat a protokolovat zásady pro připojení aplikací a sítí napříč předplatnými a virtuálními sítěmi.
 
@@ -176,13 +178,13 @@ Pomocí brány firewall můžete přidružit pouze **statické** standardní ve�
 
 V následující tabulce je uvedena vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně a možné metody přidělení.
 
-| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Static |
+| Prostředek nejvyšší úrovně | Přidružení IP adresy | Dynamická | Statická |
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Yes |Yes |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Yes |Yes |
 | VPN Gateway |Konfigurace protokolu IP brány |Yes |No |
 | Application Gateway |Konfigurace front-endu |Ano (jenom V1) |Ano (jenom v2) |
-| Brána Azure Firewall | Konfigurace front-endu | No | Yes|
+| Azure Firewall | Konfigurace front-endu | No | Yes|
 
 ## <a name="limits"></a>Omezení
 

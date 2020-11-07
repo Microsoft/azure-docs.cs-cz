@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519550"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358367"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Nastavení připojení k účtu služby Azure Storage s využitím spravované identity
 
@@ -43,7 +43,7 @@ Po výběru možnosti **Uložit** se zobrazí ID objektu, které bylo přiřazen
 V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst data z vašeho účtu úložiště.
 
 1. V Azure Portal přejděte k účtu úložiště, který obsahuje data, která chcete indexovat.
-2. Výběr **řízení přístupu (IAM)**
+2. Vyberte **Řízení přístupu (IAM)** .
 3. Vyberte **Přidat** a pak **Přidat přiřazení role** .
 
     ![Přidat přiřazení role](./media/search-managed-identities/add-role-assignment-storage.png "Přidat přiřazení role")
@@ -65,7 +65,7 @@ V tomto kroku udělíte službě Azure Kognitivní hledání oprávnění číst
 
 ### <a name="3---create-the-data-source"></a>3. vytvoření zdroje dat
 
-[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
+[REST API](/rest/api/searchservice/create-data-source), Azure Portal a [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) podporují připojovací řetězec spravované identity. Níže je uveden příklad vytvoření zdroje dat pro indexaci dat z účtu úložiště pomocí [REST API](/rest/api/searchservice/create-data-source) a připojovacího řetězce spravované identity. Formát připojovacího řetězce spravované identity je stejný pro REST API, sadu .NET SDK a Azure Portal.
 
 Při indexování z účtu úložiště musí mít zdroj dat následující požadované vlastnosti:
 

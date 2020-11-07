@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850014"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358435"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Kurz: Konfigurace Oracle Fusion ERP pro Automatické zřizování uživatelů
 
@@ -54,13 +54,13 @@ Před konfigurací Oracle Fusion ERP pro Automatické zřizování uživatelů p
 
 1. Přihlaste se ke [konzole pro správu nástroje Oracle Fusion ERP](https://cloud.oracle.com/sign-in)
 
-2. Klikněte na navigátor v levém horním rohu. V části **nástroje**vyberte **Konzola zabezpečení**.
+2. Klikněte na navigátor v levém horním rohu. V části **nástroje** vyberte **Konzola zabezpečení**.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
 
 3. Přejděte na **uživatele**.
     
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Snímek obrazovky s panelem v konzole pro správu Oracle Fusion E R P Položka uživatele je zvýrazněna." border="false":::
 
 4. Uložte uživatelské jméno a heslo pro uživatelský účet správce, který použijete k přihlášení do konzoly pro správu nástroje Oracle Fusion ERP. Tyto hodnoty je třeba zadat do polí **uživatelské jméno** a **heslo** správce na kartě zřizování aplikace Oracle Fusion ERP v Azure Portal.
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat Azure Fusion ERP pro Automatické zřizování uživ
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat Azure Fusion ERP pro Automatické zřizování uživ
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Oracle Fusion ERP**a na panelu výsledků vyberte **Oracle Fusion ERP** .
+4. Do vyhledávacího pole zadejte **Oracle Fusion ERP** a na panelu výsledků vyberte **Oracle Fusion ERP** .
 
     ![Oracle Fusion ERP v seznamu výsledků](common/search-new-app.png)
 
@@ -116,7 +116,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` **adresu URL tenanta**. Zadejte uživatelské jméno a heslo správce dříve načtené do polí **uživatelské jméno** a **heslo** správce. Klikněte na **Testovat připojení** mezi Azure AD a Oracle Fusion ERP. 
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Snímek obrazovky oddílu přihlašovací údaje správce K dispozici je tlačítko Test Connection a pole pro klienta U R L, uživatelské jméno správce a heslo správce." border="false":::
 
 6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
@@ -126,11 +126,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele do Oracle Fusion ERP**.
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directory uživatelů do Oracle Fusion E R P viditelná." border="false":::
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Oracle Fusion ERP v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Oracle Fusion ERP pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Snímek stránky navigátoru v konzole pro správu Oracle Fusion E R P Nástroje a konzola zabezpečení jsou zvýrazněné." border="false":::
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Snímek obrazovky se stránkou mapování atributů. Tabulka obsahuje seznam atributů Azure Active Directory a Oracle Fusion E R P a Priorita porovnání." border="false":::
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Oracle Fusion ERP**.
 
@@ -164,7 +164,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 * Oracle Fusion ERP nepodporuje zřizování skupin.
 * Role v Oracle Fusion ERP se mapují na skupiny v Azure AD. Pokud chcete přiřadit role uživatelům ve službě Oracle Fusion ERP ze služby Azure AD, budete muset přiřadit uživatele k požadovaným skupinám Azure AD, které se pojmenují po rolích v Oracle Fusion ERP.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

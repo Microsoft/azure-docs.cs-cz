@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455416"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358207"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Kurz: Konfigurace Concur pro Automatické zřizování uživatelů
 
@@ -58,11 +58,11 @@ Aby bylo možné povolit aplikace ve službě výdaje, je nutné mít správné 
 
 Concur konzultanti nebo Správci klienta musí vytvořit odlišný profil správce webové služby a správce klienta musí použít tento profil pro funkce správce webových služeb (například povolení aplikací). Tyto profily musí být oddělené od správce klienta denní T&E (profil pro správu T&E by neměl mít přiřazenou roli WSAdmin).
 
-Když vytvoříte profil, který se má použít k povolení aplikace, zadejte do polí profil uživatele název správce klienta. Tím se přiřadí vlastnictví profilu. Po vytvoření jednoho nebo více profilů se musí klient přihlásit pomocí tohoto profilu a kliknout na tlačítko*Povolit*u Partnerské aplikace v nabídce webové služby.
+Když vytvoříte profil, který se má použít k povolení aplikace, zadejte do polí profil uživatele název správce klienta. Tím se přiřadí vlastnictví profilu. Po vytvoření jednoho nebo více profilů se musí klient přihlásit pomocí tohoto profilu a kliknout na tlačítko *Povolit* u Partnerské aplikace v nabídce webové služby.
 
 Z následujících důvodů by se tato akce neměla provádět s profilem, který používají pro správu normální T&E.
 
-* Klient musí být ten, který klikne na*Ano*v dialogovém okně, které se zobrazí po povolení aplikace. Kliknutím na toto tlačítko potvrdí, že má Partnerská aplikace přístup k datům, takže vy nebo partner nemůže kliknout na tlačítko Ano.
+* Klient musí být ten, který klikne na *Ano* v dialogovém okně, které se zobrazí po povolení aplikace. Kliknutím na toto tlačítko potvrdí, že má Partnerská aplikace přístup k datům, takže vy nebo partner nemůže kliknout na tlačítko Ano.
 
 * Pokud správce klienta, který povolil aplikaci pomocí profilu pro správu T&E odejde ze společnosti (výsledkem deaktivace profilu), nebudou všechny aplikace s tímto profilem fungovat, dokud se aplikace nepovolí s jiným aktivním profilem WS admin. Důvodem je, že byste měli vytvořit odlišné profily WS admin.
 
@@ -80,7 +80,7 @@ Z následujících důvodů by se tato akce neměla provádět s profilem, kter�
    
     ![Povolit partnerských aplikací](./media/concur-provisioning-tutorial/ic721730.png "Povolit partnerských aplikací")
 
-4. V seznamu **Povolit aplikaci** vyberte možnost **Azure Active Directory**a potom klikněte na tlačítko **Povolit**.
+4. V seznamu **Povolit aplikaci** vyberte možnost **Azure Active Directory** a potom klikněte na tlačítko **Povolit**.
    
     ![Microsoft Azure Active Directory](./media/concur-provisioning-tutorial/ic721731.png "Microsoft Azure Active Directory")
 
@@ -116,7 +116,7 @@ Z následujících důvodů by se tato akce neměla provádět s profilem, kter�
 
 Nyní můžete vytvořit testovací účet. Počkejte až 20 minut, než ověříte, že byl účet synchronizovaný do Concur.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -3,12 +3,13 @@ title: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure
 description: Naučte se používat Azure Custom Vision k vytvoření kontejnerového modelu, který dokáže detekovat nákladní automobil, a používání funkce rozšíření AI v Azure Live video Analytics na Azure IoT Edge k nasazení modelu na hraničních zařízeních za účelem zjištění hraček datových toků z živého streamu videa.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+zone_pivot_groups: ams-lva-edge-programming-languages
+ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171503"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358258"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Kurz: Analýza živého videa pomocí živé analýzy videí v IoT Edge a Azure Custom Vision
 
@@ -16,7 +17,13 @@ V tomto kurzu se naučíte, jak pomocí Azure [Custom Vision](https://azure.micr
 
 Ukážeme vám, jak spojit sílu Custom Vision k sestavování a výukového modelu počítačové vize nahráváním a popiskem několika imagí. Nepotřebujete žádné znalosti pro datové vědy, strojové učení ani AI. Dozvíte se taky o funkcích živé analýzy videí, abyste mohli snadno nasadit vlastní model jako kontejner na hranici a analyzovat simulovaný živý informační kanál.
 
-V tomto kurzu se používá virtuální počítač Azure jako zařízení IoT Edge a vychází z ukázkového kódu napsaného v jazyce C#. Informace v tomto kurzu se sestavují v rychlém startu [Najít pohyb a generovat události](detect-motion-emit-events-quickstart.md) .
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [header](includes/custom-vision-tutorial/csharp/header.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [header](includes/custom-vision-tutorial/python/header.md)]
+::: zone-end
 
 V tomto kurzu získáte informace o následujících postupech:
 
@@ -29,7 +36,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>Navrhované před čtením
+## <a name="suggested-pre-reading"></a>Navrhované před čtením  
 
 Než začnete, přečtěte si následující články:
 
@@ -44,21 +51,18 @@ Než začnete, přečtěte si následující články:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Předpoklady pro tento kurz:
 
-* [Visual Studio Code](https://code.visualstudio.com/) ve vývojovém počítači pomocí [nástrojů Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) a rozšíření [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) .
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
+::: zone-end
 
-    > [!TIP]
-    > Může se zobrazit výzva k instalaci Docker. Ignorovat tuto výzvu.
-* [Sada SDK .NET Core 3,1](https://dotnet.microsoft.com/download/dotnet-core/thank-you/sdk-3.1.201-windows-x64-installer) na vašem vývojovém počítači.
-* Ujistěte se, že máte:
-    
-    * [Nastavení prostředků Azure](detect-motion-emit-events-quickstart.md#set-up-azure-resources)
-    * [Nastavení vývojového prostředí](detect-motion-emit-events-quickstart.md#set-up-your-development-environment)
-
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
+::: zone-end
 ## <a name="review-the-sample-video"></a>Kontrola ukázkového videa
 
-V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte **CTRL + N**a pak vložte odkaz na [video o odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa si všimněte, že ve videu se zobrazí ve videu ve značce 36 – 2. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
+
+V tomto kurzu se k simulaci živého streamu používá soubor [videa pro odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) . Video můžete prošetřit pomocí aplikace, jako je [VLC Media Player](https://www.videolan.org/vlc/). Vyberte **CTRL + N** a pak vložte odkaz na [video o odvození auta](https://lvamedia.blob.core.windows.net/public/t2.mkv) , kde se má začít přehrávat. Při sledování videa si všimněte, že ve videu se zobrazí ve videu ve značce 36 – 2. Vlastní model byl vyškolen k detekci tohoto konkrétního nákladní automobilu. V tomto kurzu budete používat Live video Analytics na IoT Edge k detekci takových hraček a k publikování přidružených událostí odvození do centra IoT Edge.
 
 ## <a name="overview"></a>Přehled
 
@@ -69,7 +73,7 @@ Tento diagram znázorňuje způsob, jakým se v tomto kurzu Flow signalizují. [
 
 Uzel rozšíření HTTP hraje roli proxy serveru. Převede snímky videa na zadaný typ obrázku. Pak přenáší Image přes REST do jiného modulu Edge, který spouští model AI za koncovým bodem HTTP. V tomto příkladu je tento hraniční modul modelem automobilového rozpoznávání, sestavený pomocí Custom Vision. Uzel procesoru rozšíření HTTP shromáždí výsledky detekce a publikuje události do uzlu [jímky Azure IoT Hub](media-graph-concept.md#iot-hub-message-sink) . Uzel pak tyto události pošle do [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Sestavování a nasazování Custom Vision modelu detekce hraček
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Sestavení a nasazení modelu detekce Custom Vision hraček 
 
 Jak název Custom Vision navrhuje, můžete ho použít k sestavení vlastního detektoru nebo třídění vlastního objektu v cloudu. Poskytuje jednoduché, snadno použitelné a intuitivní rozhraní k vytváření Custom Visionch modelů, které se dají nasadit v cloudu nebo na hraničních zařízeních prostřednictvím kontejnerů.
 
@@ -83,7 +87,33 @@ Další poznámky:
 Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlačítka **exportovat** na kartě **výkon** . Ujistěte se, že jako typ kontejnerové platformy zvolíte možnost Linux. Jedná se o platformu, na které se kontejner spustí. Počítač, na který jste kontejner stáhli, může být buď Windows, nebo Linux. Následující pokyny byly založené na souboru kontejneru staženém na počítač s Windows.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Diagram, který zobrazuje přehled Custom Vision."   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Obrazovka, která zobrazuje souboru Dockerfile vybrané.":::
+ 
+1. Měli byste mít stažený soubor zip do místního počítače s názvem `<projectname>.DockerFile.Linux.zip` . 
+1. Ověřte, zda máte nainstalovaný Docker. V takovém případě nainstalujte [Docker](https://docs.docker.com/get-docker/) pro stolní počítače s Windows.
+1. Rozbalte stažený soubor v libovolném umístění. Pomocí příkazového řádku přejdete do adresáře odkomprimované složky.
+    
+    Spusťte následující příkazy:
+    
+    1. `docker build -t cvtruck` 
+    
+        Tento příkaz stáhne mnoho balíčků, vytvoří image Docker a označí ji jako `cvtruck:latest` .
+    
+        > [!NOTE]
+        > V případě úspěchu by se měly zobrazit následující zprávy: `Successfully built <docker image id>` a `Successfully tagged cvtruck:latest` . Pokud se příkaz Build nezdařil, zkuste to znovu. Někdy se balíčky závislostí nestahují poprvé.
+    1. `docker  image ls`
+
+        Tento příkaz zkontroluje, jestli je nová image v místním registru.
+    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+    
+        Tento příkaz by měl publikovat port vystaveného Docker (80) na portu místního počítače (80).
+    1. `docker container ls`
+    
+        Tento příkaz zkontroluje mapování portů a v případě úspěšného spuštění kontejneru Docker na vašem počítači. Výstup by měl být podobný tomuto:
+
+        ```
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -97,20 +127,15 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 
 ## <a name="examine-the-sample-files"></a>Kontrola ukázkových souborů
 
-1. V Visual Studio Code přejděte na src/Edge. Zobrazí se soubor. ENV, který jste vytvořili společně s několika soubory šablon nasazení.
 
-    Šablona nasazení odkazuje na manifest nasazení pro hraniční zařízení s některými zástupnými hodnotami. Soubor. env obsahuje hodnoty pro tyto proměnné.
-1. Pak přejděte do složky src/Cloud-to-Device-Console-App Tady se zobrazí appsettings.jsv souboru, který jste vytvořili společně s několika dalšími soubory:
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
+::: zone-end
 
-    * C2D-Console-App. csproj: Toto je soubor projektu pro Visual Studio Code.
-    * operations.js: Tento soubor obsahuje seznam různých operací, které má program spustit.
-    * Program.cs: Tento ukázkový kód programu:
+::: zone pivot="programming-language-python"
+[!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/python/examine-sample-files.md)]
+::: zone-end
 
-        * Načte nastavení aplikace.
-        * Vyvolá živou analýzu videa v přímých metodách modulu IoT Edge k vytvoření topologie, vytvoření instance grafu a aktivaci grafu.
-        * Pozastaví, abyste prozkoumali výstup grafu v okně **terminálu** a události odeslané do služby IoT Hub v okně **výstup** .
-        * Deaktivuje instanci grafu, odstraní instanci grafu a odstraní topologii grafu.
-        
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Generování a nasazení manifestu nasazení
 
 1. V Visual Studio Code v nástroji použijte src/Cloud-to-Device-Console-App/operations.js.
@@ -124,7 +149,7 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 1. Klikněte pravým tlačítkem myši na soubor src/Edge/deployment.customvision.template.jsv souboru a vyberte možnost **Generovat Manifest nasazení IoT Edge**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Diagram, který zobrazuje přehled Custom Vision.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Snímek obrazovky, který ukazuje vygenerování manifestu nasazení IoT Edge.":::
   
     Tato akce by měla vytvořit soubor manifestu ve složce src/Edge/config s názvem deployment.customvision.amd64.jsv.
 1. Otevřete soubor src/Edge/deployment.customvision.template.jsv souboru a vyhledejte `registryCredentials` blok JSON. V tomto bloku najdete adresu vašeho registru kontejneru Azure spolu s jeho uživatelským jménem a heslem.
@@ -146,11 +171,11 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 1. Nastavte připojovací řetězec IoT Hub tak, že v levém dolním rohu vyberete ikonu **Další akce** vedle PODOKNA **Azure IoT Hub** . Můžete zkopírovat řetězec z appsettings.jsv souboru. (Další doporučený postup je zajistit, aby bylo zajištěno, že máte v Visual Studio Code nakonfigurované správné centrum IoT pomocí [příkazu Select IoT Hub](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).)
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Diagram, který zobrazuje přehled Custom Vision.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Snímek obrazovky, který ukazuje nastavení připojovacího řetězce IoT Hub":::
 1. Potom klikněte pravým tlačítkem na src/Edge/config/deployment.customvision.amd64.jsna a vyberte **vytvořit nasazení pro jedno zařízení**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Diagram, který zobrazuje přehled Custom Vision.":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Snímek obrazovky, který ukazuje vytvoření nasazení pro jedno zařízení.":::
 1. Pak budete požádáni o výběr zařízení IoT Hub. V rozevíracím seznamu vyberte **lva-Sample-Device** .
 1. V přibližně 30 sekundách aktualizujte službu Azure IoT Hub v části vlevo dole. Měli byste mít hraniční zařízení s nasazenými následujícími moduly:
 
@@ -163,21 +188,52 @@ Až budete hotovi, můžete model exportovat do kontejneru Docker pomocí tlač�
 Klikněte pravým tlačítkem na zařízení Live video Analytics a vyberte **Spustit sledování předdefinovaného koncového bodu události**. Tento krok potřebujete, pokud chcete monitorovat události IoT Hub v okně **výstup** Visual Studio Code.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Diagram, který zobrazuje přehled Custom Vision.":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Snímek obrazovky, který ukazuje, jak začít monitorovat vestavěný koncový bod události.":::
 
 ## <a name="run-the-sample-program"></a>Spuštění ukázkového programu
 
 Pokud otevřete topologii grafu pro tento kurz v prohlížeči, uvidíte, že hodnota `inferencingUrl` je nastavená na `http://cv:80/image` . Toto nastavení znamená, že odvozený server vrátí výsledky po zjištění hraček nákladní auta, pokud existují, v živém videu.
 
-1. V Visual Studio Code otevřete kartu **rozšíření** (nebo vyberte **CTRL + SHIFT + X**) a vyhledejte IoT Hub Azure.
+1. V Visual Studio Code otevřete kartu **rozšíření** (nebo vyberte **CTRL + SHIFT + X** ) a vyhledejte IoT Hub Azure.
 1. Klikněte pravým tlačítkem a vyberte **nastavení rozšíření**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Diagram, který zobrazuje přehled Custom Vision.":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Snímek obrazovky zobrazující nastavení rozšíření":::
 1. Vyhledat a povolit **Zobrazit podrobnou zprávu**
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Diagram, který zobrazuje přehled Custom Vision."
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Snímek obrazovky, který ukazuje zobrazení podrobné zprávy":::
+1. Chcete-li spustit relaci ladění, vyberte klávesu **F5** . V okně **terminálu** se zobrazí zprávy tištěné.
+1. operations.jskódu začíná s voláními přímých metod `GraphTopologyList` a `GraphInstanceList` . Pokud jste vyčistili prostředky po dokončení předchozích rychlých startů, bude tento proces vracet prázdné seznamy a pak bude pozastaven. Chcete-li pokračovat, vyberte klávesu **ENTER** .
+    
+   V okně **terminálu** se zobrazí další sada volání přímých metod:
+    
+   * Volání `GraphTopologySet` , které používá předchozí `topologyUrl` .
+   * Volání `GraphInstanceSet` , které používá následující tělo:
+        
+   ```
+        {
+          "@apiVersion": "1.0",
+          "name": "Sample-Graph-1",
+          "properties": {
+            "topologyName": "CustomVisionWithHttpExtension",
+            "description": "Sample graph description",
+            "parameters": [
+              { 
+                "name": "inferencingUrl",
+                "value": "http://cv:80/image"
+              },
+              {
+                "name": "rtspUrl",
+                "value": "rtsp://rtspsim:554/media/t2.mkv"
+              },
+              {
+                "name": "rtspUserName",
+                "value": "testuser"
+              },
+              {
+                "name": "rtspPassword",
+                "value": "testpassword"
               }
             ]
           }

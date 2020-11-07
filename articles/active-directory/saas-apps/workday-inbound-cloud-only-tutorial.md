@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 7d47c21da1279271b12933a2e4642abcce622600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 197b7ff0a6c613a019007ba507d678b619c9afd4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015479"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358588"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
 Cílem tohoto kurzu je Ukázat kroky, které je třeba provést při zřizování pracovních dat z Workday do Azure Active Directory. 
@@ -95,11 +95,11 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace** a pak **všechny aplikace**.
 
-4. Vyberte **Přidat aplikaci**a pak vyberte kategorii **vše** .
+4. Vyberte **Přidat aplikaci** a pak vyberte kategorii **vše** .
 
-5. Vyhledejte v **Workday zřizování uživatelů Azure AD**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte v **Workday zřizování uživatelů Azure AD** a přidejte tuto aplikaci z galerie.
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
@@ -134,7 +134,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
 V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday Azure Active Directory jenom pro uživatele, kteří jsou jenom pro Cloud.
 
-1. Na kartě zřizování v části **mapování**klikněte na **synchronizovat pracovní procesy s Azure AD**.
+1. Na kartě zřizování v části **mapování** klikněte na **synchronizovat pracovní procesy s Azure AD**.
 
 2. V poli **obor zdrojového objektu** můžete vybrat, které sady uživatelů v Workday by měly být v oboru pro zřizování do Azure AD, a to definováním sady filtrů založených na atributech. Výchozí obor je "Všichni uživatelé v Workday". Příklady filtrů:
 

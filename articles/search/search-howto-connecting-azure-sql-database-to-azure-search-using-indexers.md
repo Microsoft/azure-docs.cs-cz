@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530557"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358622"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování obsahu Azure SQL pomocí indexeru Azure Kognitivní hledání
 
@@ -39,7 +39,7 @@ Jeden indexer může využívat pouze jednu tabulku nebo zobrazení, ale pokud c
 Můžete nastavit a nakonfigurovat indexer Azure SQL pomocí:
 
 * Průvodce importem dat v [Azure Portal](https://portal.azure.com)
-* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
+* Sada Azure Kognitivní hledání [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 * [REST API](/rest/api/searchservice/indexer-operations) kognitivní hledání Azure
 
 V tomto článku použijeme REST API k vytváření **indexerů** a **zdrojů dat**.
@@ -327,8 +327,8 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
 | smalldatetime, DateTime, datetime2, Date, DateTimeOffset |EDM. DateTimeOffset, Edm. String | |
 | uniqueidentifer |Edm.String | |
 | geografické |Edm.GeographyPoint |Podporují se jenom geografické instance typu POINT s SRID 4326 (což je výchozí nastavení). |
-| rowversion |Není k dispozici |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
-| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |Není k dispozici |Nepodporováno |
+| rowversion |– |Sloupce verze řádku nelze uložit do indexu hledání, ale lze je použít ke sledování změn. |
+| čas, TimeSpan, binární, varbinary, image, XML, geometrie, typy CLR |– |Nepodporováno |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
 SQL indexer zpřístupňuje několik nastavení konfigurace:
@@ -348,7 +348,7 @@ Tato nastavení se používají v `parameters.configuration` objektu v definici 
     }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka: můžu použít službu Azure SQL indexer s databázemi SQL běžícími na virtuálních počítačích s IaaS v Azure?**
 

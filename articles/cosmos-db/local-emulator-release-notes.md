@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: e87985154226369cd47cc6437fc82c59602a78d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6ffd5670a8b84f0f4a5b7d3dee8a7a5080be26f5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085574"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357313"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Emulátor Azure Cosmos – poznámky k verzi a informace ke stažení
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ Tento článek obsahuje poznámky k verzi emulátoru Azure Cosmos se seznamem ak
 |**Začínáme**|[Místní vývoj pomocí emulátoru Azure Cosmos](local-emulator.md)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2118-6-november-2020"></a>2.11.8 (6. listopadu 2020)
+
+ - Tato verze zahrnuje aktualizaci emulátoru Cosmos Průzkumník dat a opravuje problém, kdy se klienti TLS 1,3 pokoušejí otevřít Průzkumník dat.
 
 ### <a name="2116-6-october-2020"></a>2.11.6 (6. října 2020)
 

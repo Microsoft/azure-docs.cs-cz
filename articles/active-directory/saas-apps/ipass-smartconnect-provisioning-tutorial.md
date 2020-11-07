@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: bf779918dbfb9f7b95096f3a5efcc8e64f09c403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397aab743da25da3882c66d0fdf32c4c4d202586
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850494"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356990"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Kurz: Konfigurace iPass SmartConnect pro Automatické zřizování uživatelů
 
@@ -65,7 +65,7 @@ Pokud chcete nakonfigurovat iPass SmartConnect pro Automatické zřizování už
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat iPass SmartConnect pro Automatické zřizování už
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **IPASS SmartConnect**, na panelu výsledků vyberte **IPASS SmartConnect** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **IPASS SmartConnect** , na panelu výsledků vyberte **IPASS SmartConnect** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![iPass SmartConnect v seznamu výsledků](common/search-new-app.png)
 
@@ -118,7 +118,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do iPass SmartConnect v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v IPASS SmartConnect pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky oddílu mapování V části název je synchronizace Azure Active Directorych uživatelů na iPass SmartConnect viditelná." border="false":::
+    :::image type="content" source="media/ipass-smartconnect-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky se stránkou mapování atributů. V tabulce jsou uvedeny Azure Active Directory a iPass atributy SmartConnect a Priorita porovnání." border="false":::
 
 
 10. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -143,7 +143,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * iPass SmartConnect přijímá jenom uživatelská jména, která mají své domény zaregistrované v konzole pro správu iPass SmartConnect.  
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

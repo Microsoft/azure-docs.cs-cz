@@ -4,15 +4,15 @@ description: Naučte se, jak povolit InfiniBand na virtuálních počítačích 
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 11/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b5f4cbd2fc09b2c42c232eafd63edb1217e4dacb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 264cfd98e69ad7bdd2fb8d5f9f98eb1eb1fd8f6c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996316"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358350"
 ---
 # <a name="enable-infiniband"></a>Povolení sítí Infiniband
 
@@ -60,7 +60,7 @@ Pro Windows Stáhněte a nainstalujte [ovladače Mellanox OFED for Windows](http
 Pokud máte v plánu spouštět úlohy MPI, obvykle nepotřebujete IPoIB. Knihovna MPI bude používat rozhraní příkazů pro komunikaci IB (pokud explicitně nepoužíváte kanál TCP/IP knihovny MPI). Pokud ale máte aplikaci, která pro komunikaci používá protokol TCP/IP a chcete ji spustit přes IB, můžete IPoIB použít přes rozhraní IB. K povolení protokolu IP přes InfiniBand použijte následující příkazy (pro RHEL/CentOS).
 
 ```bash
-sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo sed -i -e 's/# OS.EnableRDMA=n/OS.EnableRDMA=y/g' /etc/waagent.conf
 sudo systemctl restart waagent
 ```
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: f60d73766d2f992faddd7d944436d9179ef18e19
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 43b20f2b286bdadbee33555abc1a19845092c64b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456132"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357500"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Kurz: Konfigurace Cinode pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 3. Přejděte na **tokeny** a vytvořte nový token.
 
-4. Zadejte jedinečný název **, vyberte jako cílovou https://api.cinode.app/scim/v2 ** skupinu a odpovídajícím způsobem nastavte datum vypršení platnosti.
+4. Zadejte jedinečný název **, vyberte jako cílovou https://api.cinode.app/scim/v2** skupinu a odpovídajícím způsobem nastavte datum vypršení platnosti.
 
 5. Klikněte na **vytvořit token**.
 
@@ -155,7 +155,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).  
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

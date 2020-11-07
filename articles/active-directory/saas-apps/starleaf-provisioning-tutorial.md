@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: bf75c4fe2053483b94c5f645816422909645854a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07c476c0de644ac63c577d466f4691b5cf415334
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285931"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357926"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Kurz: Konfigurace StarLeaf pro Automatické zřizování uživatelů
 
@@ -54,7 +54,7 @@ Před konfigurací StarLeaf pro Automatické zřizování uživatelů pomocí Az
 
     ![Snímek obrazovky s konzolou pro správu StarLeaf s integrací a přidáním možností integrace s názvem.](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Vyberte **typ** , který se má Microsoft Azure Active Directory. Do **názvu**zadejte vhodný název. Klikněte na **Použít**.
+2. Vyberte **typ** , který se má Microsoft Azure Active Directory. Do **názvu** zadejte vhodný název. Klikněte na **Použít**.
 
     ![Snímek obrazovky dialogového okna Přidat integraci s textovým polem typ a název s názvem.](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -72,7 +72,7 @@ Pokud chcete nakonfigurovat StarLeaf pro Automatické zřizování uživatelů p
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Pokud chcete nakonfigurovat StarLeaf pro Automatické zřizování uživatelů p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **StarLeaf**, na panelu výsledků vyberte **StarLeaf** .
+4. Do vyhledávacího pole zadejte **StarLeaf** , na panelu výsledků vyberte **StarLeaf** .
     ![StarLeaf v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Konfigurace automatického zřizování uživatelů na StarLeaf
@@ -146,7 +146,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * StarLeaf v současné době nepodporuje zřizování skupin. 
 * StarLeaf vyžaduje, aby hodnoty **e-mailu** a **uživatelského jména** měly stejnou zdrojovou hodnotu.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

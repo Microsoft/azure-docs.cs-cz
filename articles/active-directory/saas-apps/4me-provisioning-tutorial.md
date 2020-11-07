@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851284"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357585"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Kurz: Konfigurace 4me pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Před konfigurací 4me pro Automatické zřizování uživatelů se službou Azu
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Před konfigurací 4me pro Automatické zřizování uživatelů se službou Azu
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **4me**, na panelu výsledků vyberte **4me** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **4me** , na panelu výsledků vyberte **4me** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![4me v seznamu výsledků](common/search-new-app.png)
 
@@ -126,11 +126,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
     
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 4me pro operace aktualizace. Ujistěte se prosím, že [4me podporuje filtrování](https://developer.4me.com/v1/scim/users/) u odpovídajícího atributu, který jste zvolili. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Snímek obrazovky se stránkou mapování atributů. Tabulka obsahuje seznam atributů Azure Active Directory, odpovídající atributy FourMe a stav pro porovnání." border="false":::
     
 12. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do 4me**.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do FourMe." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Snímek obrazovky se stránkou mapování V části název se zvýrazní synchronizace skupin Azure Active Directory FourMe." border="false":::
     
 13. Zkontrolujte atributy skupiny synchronizované z Azure AD do 4me v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v 4me pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
@@ -160,7 +160,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * 4me vygenerované tajné tokeny mají datum vypršení platnosti v měsíci od generace.
 * 4me nepodporuje operace **odstranění** .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 37a446d721b7353c647d7d7e26de79e7038d1a3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299900"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357058"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Kurz: Konfigurace předvyhovujícího náborového softwaru pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Než nakonfigurujete vyhovující náborový software pro Automatické zřizová
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Než nakonfigurujete vyhovující náborový software pro Automatické zřizová
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte předaný **náborový software**, na panelu výsledků vyberte možnost **přeplnit náborový software** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte předaný **náborový software** , na panelu výsledků vyberte možnost **přeplnit náborový software** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Vyhovující náborový software v seznamu výsledků](common/search-new-app.png)
 
@@ -98,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 5. V části **přihlašovací údaje správce** zadejte **adresu URL tenanta** a **tajný token** vašeho účtu náborového softwaru, jak je popsáno v kroku 6.
 
-6. V konzole pro správu nástroje pro naplnění se [doplněním](https://app.comeet.co/)Nástroje přejděte do pole  **> nastavení > ověřování > Microsoft Azure**a zkopírujte **tajný token pro hodnotu vaší společnosti** do pole **tajného tokenu** v Azure AD.
+6. V konzole pro správu nástroje pro naplnění se [doplněním](https://app.comeet.co/)Nástroje přejděte do pole  **> nastavení > ověřování > Microsoft Azure** a zkopírujte **tajný token pro hodnotu vaší společnosti** do pole **tajného tokenu** v Azure AD.
 
     ![Vyhovující zřizování náborového softwaru](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 
@@ -112,7 +112,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 9. Klikněte na **Uložit**.
 
-10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů, aby splňovaly**podmínky.
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů, aby splňovaly** podmínky.
 
     ![Doplnění uživatelských mapování na nábor softwaru](media/comeet-recruiting-software-provisioning-tutorial/user-mappings.png)
 
@@ -142,7 +142,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * Prohlášený náborový software v současné době nepodporuje skupiny.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

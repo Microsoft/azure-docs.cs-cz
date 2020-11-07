@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: d92db526e0fa3f3f8898ac2ea264d0b8f37be071
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458315"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358684"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
 
@@ -53,7 +53,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 2. Přejděte na **SCIM**.
 
-      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Snímek obrazovky s konzolou pro správu Lucidchart Nabídka tým je zvýrazněná a otevřená. V části správce se zvýrazní integrace aplikací." border="false":::
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Snímek obrazovky s konzolou pro správu Lucidchart Ve velkém tlačítku S C I M se zvýrazní text S C I M a zobrazí se povolená banner." border="false":::
 
 3. Posuňte se dolů a zobrazte **token nosiče** a **základní adresu URL Lucidchart**. Zkopírujte a uložte **token nosiče**. Tato hodnota se zadá do pole **tajný token** * na kartě zřizování aplikace LucidChart ve Azure Portal. 
 
@@ -160,7 +160,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * 04/30/2020 – pro uživatele byla přidána podpora pro atribut Enterprise Extension a Custom Attribute "hodnoty CanEdit".
 * 06/15/2020 – obnovitelné odstraňování uživatelů je povoleno (podpora [aktivního](https://tools.ietf.org/html/rfc7643) atributu).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: 28d64f5d9d845c2a14f0277799213501e1d68010
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dafa2f231581ee7e7fa7a59a9c9320f6f2a67038
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421749"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357680"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Rychlý Start: nasazení a zprovoznění snímače
 
@@ -42,7 +42,7 @@ Senzory připojování vám umožní:
 | **Definování režimu správy senzorů** | Určete, kde se zobrazí Asset, výstraha a další informace zjištěné senzorem. To se určuje na základě vámi definovaného **režimu správy senzorů** .<br /><br />**Místně spravovaný režim** : informace zjištěné senzorem se zobrazí v konzole senzorů. Informace o detekci se také sdílí s místní konzolou pro správu, pokud je senzor připojený k němu.<br /><br />**Režim Cloud Managed** : informace zjištěné senzorem se zobrazí v konzole senzorů. Kromě toho jsou informace o výstrahách doručovány prostřednictvím IoT Hub a mohou být sdíleny s ostatními službami Azure, například pomocí Azure Sentinel.<br />Další informace najdete v tématu **senzor zprovoznění** . |
 | **Získání aktivačního souboru senzoru** | Pro **místně spravované** senzory se ke správě autorizovaných dob aktivace senzoru používá aktivační soubor.<br /><br />Pro **cloudy spravované** senzory se jako propojení mezi senzorem a IoT Hub používá aktivační soubor. Další informace najdete v tématu **senzory zprovoznění**. |
 | **Nahrání aktivačního souboru na senzor** | Aktivační soubory musí být nahrány do vašich podnikových senzorů. Monitorování sítě a přístup k funkcím konzoly snímače nebudou k dispozici, dokud nebude odeslán aktivační soubor. Další informace najdete v tématu **nahrání aktivačních souborů snímače**. |
-| **Aktualizovat parametry sítě senzorů před aktivací** | Parametry aktualizace definované při instalaci senzoru Další informace najdete v tématu **Chyba. Zdroj odkazu nebyl nalezen**.|
+| **Aktualizovat parametry sítě senzorů před aktivací** | Parametry aktualizace definované při instalaci senzoru Další informace najdete v tématu **nahrání aktivačních souborů snímače**.|
 
 
 **Postup nasazení snímače:**

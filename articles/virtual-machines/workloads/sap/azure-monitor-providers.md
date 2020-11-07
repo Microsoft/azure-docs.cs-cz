@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 235572cc4d697e7488765c464b12f9349c1e012b
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994163"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356446"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor pro poskytovatele řešení SAP (Preview)
 
 ## <a name="overview"></a>Přehled  
 
-V kontextu Azure Monitor pro řešení SAP odkazuje *Typ poskytovatele* na konkrétního *poskytovatele*. Například *SAP HANA*, který je nakonfigurován pro konkrétní součást v rámci technologie SAP na šířku, jako je SAP HANA databáze. Poskytovatel obsahuje informace o připojení pro odpovídající komponentu a pomáhá shromažďovat data telemetrie z této součásti. Jeden Azure Monitor pro prostředek řešení SAP (označovaný také jako prostředek monitorování SAP) je možné nakonfigurovat s více zprostředkovateli stejného typu nebo několika zprostředkovateli s více typy zprostředkovatelů.
+V kontextu Azure Monitor pro řešení SAP odkazuje *Typ poskytovatele* na konkrétního *poskytovatele*. Například *SAP HANA* , který je nakonfigurován pro konkrétní součást v rámci technologie SAP na šířku, jako je SAP HANA databáze. Poskytovatel obsahuje informace o připojení pro odpovídající komponentu a pomáhá shromažďovat data telemetrie z této součásti. Jeden Azure Monitor pro prostředek řešení SAP (označovaný také jako prostředek monitorování SAP) je možné nakonfigurovat s více zprostředkovateli stejného typu nebo několika zprostředkovateli s více typy zprostředkovatelů.
    
 Zákazníci si můžou zvolit konfiguraci různých typů zprostředkovatelů, které umožní shromažďování dat z odpovídající komponenty v jejich prostředí SAP. Zákazníci můžou například nakonfigurovat jednoho poskytovatele pro typ poskytovatele SAP HANA, jiného poskytovatele pro typ poskytovatele clusteru s vysokou dostupností a tak dále.  
 
@@ -53,13 +53,24 @@ Ve verzi Public Preview můžou zákazníci zobrazit následující data s posky
 
 ![Azure Monitor pro poskytovatele řešení SAP – cluster s vysokou dostupností](./media/azure-monitor-sap/azure-monitor-providers-pacemaker-cluster.png)
 
-Pokud chcete nakonfigurovat poskytovatele clusteru s vysokou dostupností, měli byste mít dva primární kroky: 
-1. Instalace [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) v *každém* uzlu v clusteru Pacemaker 
-    - Zákazníci můžou pomocí skriptů Azure Automation nasadit cluster s vysokou dostupností. Skripty se nainstalují [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) na každý uzel clusteru.  
-    - zákazníci můžou provádět ruční instalaci, a to podle pokynů na [této stránce](https://github.com/ClusterLabs/ha_cluster_exporter) . 
-2. Konfigurace poskytovatele clusteru s vysokou dostupností v *každém* uzlu v clusteru Pacemaker  
-  Pokud chcete nakonfigurovat poskytovatele clusteru s vysokou dostupností, Prometheus URL, název clusteru, název hostitele a ID systému, je potřeba.   
-  Zákazníkům se doporučuje nakonfigurovat jednoho poskytovatele na jeden uzel clusteru.   
+Ke konfiguraci poskytovatele clusteru s vysokou dostupností jsou zapojené dva primární kroky:
+
+1. Nainstalujte [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) do *každého* uzlu v clusteru Pacemaker.
+
+   Pro instalaci ha_cluster_exporter máte dvě možnosti:
+   
+   - Pomocí skriptů Azure Automation nasaďte cluster s vysokou dostupností. Skripty se nainstalují [ha_cluster_exporter](https://github.com/ClusterLabs/ha_cluster_exporter) na každý uzel clusteru.  
+   - Proveďte [ruční instalaci](https://github.com/ClusterLabs/ha_cluster_exporter#manual-clone--build). 
+
+2. Nakonfigurujte poskytovatele clusteru s vysokou dostupností pro *každý* uzel v rámci clusteru Pacemaker.
+
+   Pokud chcete nakonfigurovat poskytovatele clusteru s vysokou dostupností, vyžadují se tyto informace:
+   
+   - **Název:** Název tohoto poskytovatele. Měl by být jedinečný pro tento Azure Monitor instance řešení SAP.
+   - **Koncový bod Prometheus** Obvykle http \: // \<servername or ip address\> : 9664/metriky.
+   - **Identifikátor SID**. Pro systémy SAP použijte protokol SAP SID. Pro jiné systémy (například clustery NFS) použijte pro cluster název se třemi znaky. Identifikátor SID musí být odlišný od jiných monitorovaných clusterů.   
+   - **Název clusteru** Název clusteru, který se používá při vytváření clusteru. Název clusteru najdete ve vlastnosti clusteru `cluster-name` .
+   - **Název hostitele**. Název hostitele Linux virtuálního počítače.  
 
 ## <a name="provider-type-microsoft-sql-server"></a>Typ poskytovatele Microsoft SQL Server
 

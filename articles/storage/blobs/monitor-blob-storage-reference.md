@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: b51b219daec01d0bce3bbfb71c29e9374363665d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8caa39bea2d0d835a94bc95a747f1f870bae3b12
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711356"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357534"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Referenční informace k datům monitorování úložiště objektů BLOB v Azure
 
@@ -26,7 +26,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 ### <a name="capacity-metrics"></a>Kapacitní metriky
 
-Hodnoty metrik kapacity se odesílají do Azure Monitor každou hodinu. Hodnoty se aktualizují každý den. Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
+Hodnoty metrik kapacity se aktualizují každý den (až 24 hodin). Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
 
 Azure Storage poskytuje v Azure Monitor následující metriky kapacity.
 
@@ -40,8 +40,8 @@ Tato tabulka zobrazuje [metriky služby Blob Storage](https://docs.microsoft.com
 
 | Metrika | Popis |
 | ------------------- | ----------------- |
-| BlobCapacity | Celkem úložiště objektů BLOB použité v účtu úložiště. <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
-| BlobCount    | Počet objektů BLOB uložených v účtu úložiště. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType**a **BlobTier** ([definice](#metrics-dimensions)) |
+| BlobCapacity | Celkem úložiště objektů BLOB použité v účtu úložiště. <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType** a **BlobTier** ( [definice](#metrics-dimensions)) |
+| BlobCount    | Počet objektů BLOB uložených v účtu úložiště. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 <br/> Dimensions: **BlobType** a **BlobTier** ( [definice](#metrics-dimensions)) |
 | BlobProvisionedSize | Velikost úložiště zřízená v účtu úložiště. Tato metrika se vztahuje jenom na účty úložiště úrovně Premium. <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr |
 | ContainerCount    | Počet kontejnerů v účtu úložiště. <br/><br/> Jednotka: počet <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
 | IndexCapacity     | Velikost úložiště, kterou používá ADLS Gen2 hierarchický index <br/><br/> Jednotka: bajtů <br/> Typ agregace: průměr <br/> Příklad hodnoty: 1024 |
@@ -64,10 +64,10 @@ Azure Storage podporuje pro metriky v Azure Monitor následující dimenze.
 
 ### <a name="dimensions-specific-to-blob-storage"></a>Dimenze specifické pro úložiště objektů BLOB
 
-| Název dimenze | Description |
+| Název dimenze | Popis |
 | ------------------- | ----------------- |
-| **BlobType** | Typ objektu BLOB pouze pro metriky objektů BLOB Podporované hodnoty jsou **BlockBlob**, **PageBlob**a **Azure Data Lake Storage**. Doplňovací objekty blob jsou součástí **BlockBlob**. |
-| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Hot**: vrstva Hot</li> <li>**Studená**: studená vrstva</li> <li>**Archivace**: archivní vrstva</li> <li>**Premium**: úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standard**: typ vrstvy pro objekt blob stránky úrovně Standard</li> <li>**Nevrstvený**: typ vrstvy pro účet úložiště pro obecné účely v1</li> |
+| **BlobType** | Typ objektu BLOB pouze pro metriky objektů BLOB Podporované hodnoty jsou **BlockBlob** , **PageBlob** a **Azure Data Lake Storage**. Doplňovací objekty blob jsou součástí **BlockBlob**. |
+| **BlobTier** | Služba Azure Storage nabízí různé úrovně přístupu, které umožňují ukládat data objektů BLOB nejefektivnějším způsobem. Další informace najdete v [Azure Storage úrovni objektů BLOB](../blobs/storage-blob-storage-tiers.md). Mezi podporované hodnoty patří: <br/> <li>**Hot** : vrstva Hot</li> <li>**Studená** : studená vrstva</li> <li>**Archivace** : archivní vrstva</li> <li>**Premium** : úroveň Premium pro objekt blob bloku</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60** : typy vrstev pro objekt blob stránky úrovně Premium</li> <li>**Standard** : typ vrstvy pro objekt blob stránky úrovně Standard</li> <li>**Nevrstvený** : typ vrstvy pro účet úložiště pro obecné účely v1</li> |
 
 Pro metriky podporující dimenze je nutné zadat hodnotu dimenze, aby se zobrazily odpovídající hodnoty metrik. Například pokud se podíváte na hodnotu  **transakce** pro úspěšné odpovědi, je nutné filtrovat dimenzi **ResponseType** s **úspěchem**. Pokud se podíváte na **BlobCount** hodnotu pro objekt blob bloku, musíte filtrovat dimenzi **BlobType** pomocí **BlockBlob**.
 

@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: řešení potíží, aktualizace, chyba, Kinect, zpětná vazba, obnovení, protokolování, tipy
-ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277230"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356378"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Známé problémy s Azure Kinect a řešení potíží
 
-Tato stránka obsahuje známé problémy a tipy pro řešení potíží při používání sady snímač SDK se službou Azure Kinect DK. Problémy specifické pro produktovou hardwarovou podporu viz také [stránky podpory produktu](https://aka.ms/kinectsupport) .
+Tato stránka obsahuje známé problémy a tipy pro řešení potíží při používání sady snímač SDK se službou Azure Kinect DK. Problémy specifické pro produktovou hardwarovou podporu viz také [stránky podpory produktu](./index.yml) .
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -144,7 +144,7 @@ Volání ```k4a_device_set_color_control``` může dočasně vyvolat změny čas
 
 Pokud zařízení ve Správci zařízení nevytváří výčet, může být důvodem to, že je připojený k nepodporovanému USB3 řadiči. 
 
-Pro Azure Kinect DK v **systému Windows**jsou technologie Intel, **Texas Instrumentation (ČŘ)** a **reneseas** *jedinými hostitelskými řadiči, které jsou podporovány*. Sada Azure Kinect SDK na platformách Windows spoléhá na jednotné ID kontejneru a musí zahrnovat zařízení USB 2,0 a 3,0, aby sada SDK mohla najít hloubkovou, barevnou a zvukovou zařízení, která jsou fyzicky umístěná na stejném zařízení. V systému Linux může být podporováno více řadičů hostitele, protože tato platforma spoléhá na ID kontejneru a další informace o sériových číslech zařízení. 
+Pro Azure Kinect DK v **systému Windows** jsou technologie Intel, **Texas Instrumentation (ČŘ)** a **reneseas** *jedinými hostitelskými řadiči, které jsou podporovány*. Sada Azure Kinect SDK na platformách Windows spoléhá na jednotné ID kontejneru a musí zahrnovat zařízení USB 2,0 a 3,0, aby sada SDK mohla najít hloubkovou, barevnou a zvukovou zařízení, která jsou fyzicky umístěná na stejném zařízení. V systému Linux může být podporováno více řadičů hostitele, protože tato platforma spoléhá na ID kontejneru a další informace o sériových číslech zařízení. 
 
 Téma hostitelských řadičů USB získá ještě složitější, když má počítač nainstalovaný víc než jeden hostitelský řadič. Pokud jsou řadiče hostitele smíšené, může uživatel zaznamenat problémy, když některé porty fungují správně a jiné nefungují vůbec. V závislosti na tom, jak jsou porty kabelové, se můžou zobrazit všechny klientské porty s problémy s Azure Kinect.
 

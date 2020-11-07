@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: dffa8393dcfebf1cb73e3ab72890999cfa633b80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 80c3f9aa02680097276f966ce6aea02acf1e40fb
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532563"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358792"
 ---
 # <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Postup plánování indexerů v Azure Kognitivní hledání
 
@@ -30,8 +30,8 @@ Plánovač je integrovaná funkce Azure Kognitivní hledání. Nemůžete použ�
 ## <a name="define-schedule-properties"></a>Definovat vlastnosti plánu
 
 Plán indexeru má dvě vlastnosti:
-* **Interval**, který definuje dobu mezi plánovanými provádění indexerů. Nejmenší povolený interval je 5 minut a největší je 24 hodin.
-* **Čas spuštění (UTC)**, který označuje, že se má indexer spustit poprvé.
+* **Interval** , který definuje dobu mezi plánovanými provádění indexerů. Nejmenší povolený interval je 5 minut a největší je 24 hodin.
+* **Čas spuštění (UTC)** , který označuje, že se má indexer spustit poprvé.
 
 Při prvním vytváření indexeru můžete zadat plán nebo aktualizovat vlastnosti indexeru později. Plány indexeru se dají nastavit pomocí [portálu](#portal), [REST API](#restApi)nebo [sady .NET SDK](#dotNetSdk).
 
@@ -50,11 +50,11 @@ Pojďme tento příklad využít k tomu, aby to bylo konkrétnější. Předpokl
 
 ## <a name="schedule-in-the-portal"></a>Plán na portálu
 
-Průvodce importem dat na portálu umožňuje definovat plán pro indexer v okamžiku vytvoření. Výchozí nastavení plánu je **každou hodinu**, což znamená, že indexer se po vytvoření spustí znovu a spustí se znovu každou hodinu.
+Průvodce importem dat na portálu umožňuje definovat plán pro indexer v okamžiku vytvoření. Výchozí nastavení plánu je **každou hodinu** , což znamená, že indexer se po vytvoření spustí znovu a spustí se znovu každou hodinu.
 
 Nastavení plánu můžete změnit na **jednou** , pokud nechcete, aby indexer znovu běžel automaticky **nebo aby běžel jednou denně.** Nastavte ji na **vlastní** , pokud chcete zadat jiný interval nebo určitý čas spuštění v budoucnosti.
 
-Když nastavíte plán na **vlastní**, zobrazí se pole, která umožňují zadat **interval** a **čas spuštění (UTC)**. Nejkratší časový interval povolený v intervalu 5 minut a nejdelší je 1440 minut (24 hodin).
+Když nastavíte plán na **vlastní** , zobrazí se pole, která umožňují zadat **interval** a **čas spuštění (UTC)**. Nejkratší časový interval povolený v intervalu 5 minut a nejdelší je 1440 minut (24 hodin).
 
    ![Nastavení plánu indexeru v Průvodci importem dat](media/search-howto-schedule-indexers/schedule-import-data.png "Nastavení plánu indexeru v Průvodci importem dat")
 
@@ -92,28 +92,32 @@ Indexer můžete na vyžádání spustit kdykoli pomocí volání metody Run ind
 
 Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
 
-Následující příklad jazyka C# vytvoří indexer pomocí předdefinovaného zdroje dat a indexu a nastaví jeho plán, který se spustí jednou denně od 30 minut od této chvíle:
+Následující příklad jazyka C# vytvoří indexer Azure SQL Database s použitím předdefinovaného zdroje dat a indexu a nastaví jeho plán, který se spustí jednou denně, který začíná hned:
 
+```csharp
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+    StartTime = DateTimeOffset.Now
+};
+
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+    Description = "Data indexer",
+    Schedule = schedule
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
 ```
-    Indexer indexer = new Indexer(
-        name: "azure-sql-indexer",
-        dataSourceName: dataSource.Name,
-        targetIndexName: index.Name,
-        schedule: new IndexingSchedule(
-                        TimeSpan.FromDays(1), 
-                        new DateTimeOffset(DateTime.UtcNow.AddMinutes(30))
-                    )
-        );
-    await searchService.Indexers.CreateOrUpdateAsync(indexer);
-```
-Pokud je parametr **Schedule** vynechán, indexer se spustí pouze jednou ihned po jeho vytvoření.
+
+
+Pokud je vlastnost **Schedule** vynechána, indexer se spustí pouze jednou ihned po vytvoření.
 
 Parametr **StartTime** lze nastavit na čas v minulosti. V takovém případě je naplánováno první spuštění, jako kdyby indexer běžel nepřetržitě od daného **čas_spuštění**.
 
-Plán je definován pomocí třídy [IndexingSchedule](/dotnet/api/microsoft.azure.search.models.indexingschedule) . Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Minimální povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
+Plán je definován pomocí třídy [IndexingSchedule](/dotnet/api/azure.search.documents.indexes.models.indexingschedule) . Konstruktor **IndexingSchedule** vyžaduje parametr **intervalu** zadaný pomocí objektu **TimeSpan** . Minimální povolená hodnota intervalu je 5 minut a největší je 24 hodin. Druhý parametr **StartTime** , zadaný jako objekt **DateTimeOffset** , je volitelný.
 
-Sada .NET SDK umožňuje řídit operace indexeru pomocí třídy [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) a její vlastnosti [indexerů](/dotnet/api/microsoft.azure.search.searchserviceclient.indexers) , která implementuje metody z rozhraní **IIndexersOperations** . 
+Sada .NET SDK umožňuje řídit operace indexeru pomocí [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). 
 
-Indexer můžete na vyžádání spustit kdykoli pomocí jedné z metod [Run](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.run), [RunAsync](/dotnet/api/microsoft.azure.search.indexersoperationsextensions.runasync)nebo [RunWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.iindexersoperations.runwithhttpmessagesasync) .
+Indexer můžete na vyžádání spustit kdykoli pomocí jedné z metod [RunIndexer](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexer) nebo [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) .
 
-Další informace o vytváření, aktualizaci a spouštění indexerů najdete v tématu [IIindexersOperations](/dotnet/api/microsoft.azure.search.iindexersoperations).
+Další informace o vytváření, aktualizaci a spouštění indexerů najdete v tématu [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient).

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b4bfa7e9bf457d79c6c4a0b5255bce4fe36dff4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850417"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358673"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Kurz: Konfigurace Foodee pro Automatické zřizování uživatelů
 
@@ -57,13 +57,13 @@ Než nakonfigurujete Foodee pro Automatické zřizování uživatelů pomocí Az
 
     :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
 
-1. V části **Podnikový portál**vyberte **jednotné přihlašování**.
+1. V části **Podnikový portál** vyberte **jednotné přihlašování**.
 
     ![Nabídka Foodee Enterprise Portal v levém podokně](media/Foodee-provisioning-tutorial/scim.png)
 
 1. Zkopírujte hodnotu do pole **token rozhraní API** pro pozdější použití. Zadáte ho do pole **tajný token** na kartě **zřizování** aplikace Foodee ve Azure Portal.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Snímek obrazovky stránky na portálu Foodee Enterprise Hodnota tokenu P I je zvýrazněna." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Přidání Foodee z Galerie
 
@@ -83,7 +83,7 @@ Pokud chcete přidat Foodee z Galerie aplikací Azure AD, udělejte toto:
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Foodee**, v podokně výsledků vyberte **Foodee** a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **Foodee** , v podokně výsledků vyberte **Foodee** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![Foodee v seznamu výsledků](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce**postupujte takto:
+1. V části **přihlašovací údaje správce** postupujte takto:
 
    a. Do pole **Adresa URL tenanta** zadejte hodnotu **https: \/ /concierge.Food.ee/SCIM/v2** , kterou jste získali dříve.
 
@@ -128,22 +128,22 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
 1. Vyberte **Uložit**.
 
-1. V části **mapování**vyberte **synchronizovat Azure Active Directory uživatelé Foodee**.
+1. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Foodee**.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Snímek obrazovky oddílu mapování V části název je zvýrazněná položka synchronizovat Azure Active Directory uživatelů do Foodee." border="false":::
 
-1. V části **mapování atributů**zkontrolujte atributy uživatelů synchronizované z Azure AD do Foodee. Atributy, které jsou vybrány jako **odpovídající** vlastnosti, se používají k porovnání *uživatelských účtů* v Foodee pro operace aktualizace. 
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Foodee. Atributy, které jsou vybrány jako **odpovídající** vlastnosti, se používají k porovnání *uživatelských účtů* v Foodee pro operace aktualizace. 
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Snímek obrazovky se stránkou mapování atributů. V tabulce jsou uvedeny atributy Azure Active Directory a Foodee a Priorita porovnání." border="false":::
 
 1. Změny potvrďte tak, že vyberete **Uložit**.
-1. V části **mapování**vyberte **synchronizovat Azure Active Directory skupiny do Foodee**.
+1. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Foodee**.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Snímek obrazovky oddílu mapování V části název se zvýrazní synchronizace skupin Azure Active Directory Foodee." border="false":::
 
-1. V části **mapování atributů**zkontrolujte atributy uživatelů synchronizované z Azure AD do Foodee. Atributy, které jsou vybrány jako **odpovídající** vlastnosti, se používají ke spárování *skupinových účtů* v Foodee pro operace aktualizace.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do Foodee. Atributy, které jsou vybrány jako **odpovídající** vlastnosti, se používají ke spárování *skupinových účtů* v Foodee pro operace aktualizace.
 
-    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Snímek obrazovky hlavní nabídky portálu Foodee Enterprise V nabídce se zobrazí zástupný symbol ID tenanta." border="false":::
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Snímek obrazovky se stránkou mapování atributů. Tabulka obsahuje seznam atributů Azure Active Directory, atributů Foodee a priority pro porovnání." border="false":::
 
 1. Změny potvrďte tak, že vyberete **Uložit**.
 1. Nakonfigurujte filtry oborů. Informace o tom, jak postupovat, najdete v [kurzu o filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -152,7 +152,7 @@ Nakonfigurujte Automatické zřizování uživatelů pro Foodee ve službě Azur
 
     ![Přepínač stavu zřizování](common/provisioning-toggle-on.png)
 
-1. V části **Nastavení**v rozevíracím seznamu **obor** definujte uživatele nebo skupiny, které chcete zřídit pro Foodee.
+1. V části **Nastavení** v rozevíracím seznamu **obor** definujte uživatele nebo skupiny, které chcete zřídit pro Foodee.
 
     ![Rozevírací seznam rozsah zřizování](common/provisioning-scope.png)
 
@@ -164,7 +164,7 @@ Předchozí operace spustí počáteční synchronizaci uživatelů nebo skupin,
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Tato sestava popisuje všechny akce, které provádí služba zřizování Azure AD v Foodee. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

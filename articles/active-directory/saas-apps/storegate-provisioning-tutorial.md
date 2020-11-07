@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2019
 ms.author: Zhchia
-ms.openlocfilehash: cf71246caef377fb607a9ca7a765ec9ca5999744
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c984beff630ef90ea33a13e2fef1bca0189c2314
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285909"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357931"
 ---
 # <a name="tutorial-configure-storegate-for-automatic-user-provisioning"></a>Kurz: Konfigurace Storegate pro Automatické zřizování uživatelů
 
@@ -63,7 +63,7 @@ Před konfigurací Storegate pro Automatické zřizování uživatelů se služb
 
     ![Přepínací tlačítko Storegate](media/storegate-provisioning-tutorial/sso.png)
 
-3. Zkopírujte **adresu URL** a **token**klienta. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování aplikace Storegate ve Azure Portal. 
+3. Zkopírujte **adresu URL** a **token** klienta. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování aplikace Storegate ve Azure Portal. 
 
     ![Storegate vytvořit token](media/storegate-provisioning-tutorial/token.png)
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat Storegate pro Automatické zřizování uživatelů 
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat Storegate pro Automatické zřizování uživatelů 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Storegate**, na panelu výsledků vyberte **Storegate** . 
+4. Do vyhledávacího pole zadejte **Storegate** , na panelu výsledků vyberte **Storegate** . 
 
     ![Storegate v seznamu výsledků](common/search-new-app.png)
 
@@ -172,7 +172,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

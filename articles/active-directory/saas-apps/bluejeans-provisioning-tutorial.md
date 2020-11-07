@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d3aafe93c92a1c756358dfb60a2ca976036d8b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273666"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357636"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro Automatické zřizování uživatelů
 
@@ -46,7 +46,7 @@ Před konfigurací BlueJeans pro Automatické zřizování uživatelů se služb
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Před konfigurací BlueJeans pro Automatické zřizování uživatelů se služb
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **BlueJeans**, na panelu výsledků vyberte **BlueJeans** a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **BlueJeans** , na panelu výsledků vyberte **BlueJeans** a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![BlueJeans v seznamu výsledků](common/search-new-app.png)
 
@@ -81,7 +81,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro BlueJeans ve službě Azure AD:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **BlueJeans**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **podnikové aplikace** , vyberte **všechny aplikace** a pak vyberte **BlueJeans**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
@@ -97,7 +97,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek stránky zřizování s oddíly pro zřizování a přihlašovací údaje správce s názvem.](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **uživatelské jméno správce**a **heslo správce** účtu BlueJeans. Příklady těchto hodnot:
+5. V části **přihlašovací údaje správce** zadejte **uživatelské jméno správce** a **heslo správce** účtu BlueJeans. Příklady těchto hodnot:
 
    * V poli **uživatelské jméno správce** naplňte uživatelské jméno účtu správce v tenantovi BlueJeans. Příklad: admin@contoso.com.
 
@@ -143,7 +143,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * BlueJeans nepovoluje uživatelská jména, která překračují 30 znaků.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -5,15 +5,15 @@ services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 11/06/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: be098977ba51e529aaecfb5dc3b7a03444f55a7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341891"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357645"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Integrace dat ve službě Azure synapse Analytics versus Azure Data Factory
 
@@ -27,27 +27,26 @@ Pokud chcete zjistit, jestli se funkce Azure Data Factory nebo článek vztahuje
 
 V Azure Data Factory jsou k dispozici následující funkce, ale nejsou plánovány pro Azure synapse.
 
-* Možnost naSSIS balíčky a přesunout je na ně.
-* Snowflake jako jímku v aktivitě kopírování a toku dat mapování.
-* Nastavení času toku dat při namapování na živé prostředí Azure Integration runtime.
+* **SSIS balíčky pro životní cyklus a posunutí:** V Azure Data Factory máte možnost naSSIS balíčky a přesouvat je pomocí prostředí SSIS Integration runtime. V pracovních prostorech synapse nejsou k dispozici aktivity SSIS Integration runtime i SSIS pro spuštění balíčku. 
+* **Doba do provozu:** Hodnota TTL (Time to Live) je nastavení v prostředí Azure Integration runtime, které umožňuje clusteru Spark v mapování datových toků, *aby zůstaly* zaplněny po určitou dobu po dokončení toku dat. Tato funkce není k dispozici v pracovních prostorech synapse.
 
 ## <a name="azure-synapse-features-not-supported-in-azure-data-factory"></a>Funkce Azure synapse nejsou podporované v Azure Data Factory
 
 V Azure synapse jsou k dispozici následující funkce, ale nejsou plánovány pro Azure Data Factory.
 
-* Monitorování úloh Sparku toků mapování dat je k dispozici pouze v synapse. V synapse je modul Spark obsažený v předplatném uživatele, aby si uživatelé mohli zobrazit podrobné protokoly Sparku. V Azure Data Factory dojde k provádění úloh na clusteru Spark spravovaném Azure Data Factory. 
+* **Monitorování úloh Sparku pro mapování toků dat:** V synapse je modul Spark obsažený v předplatném uživatele, aby si uživatelé mohli zobrazit podrobné protokoly Sparku. V Azure Data Factory dojde k provádění úloh v clusteru Spark Azure Data Factory spravovaném a tyto informace nejsou k dispozici. 
 
 ## <a name="azure-data-factory-features-that-behave-differently-in-synapse"></a>Azure Data Factory funkce, které se chovají jinak v synapse
 
 Následující funkce se chovají odlišně nebo v současnosti neexistují v Azure synapse. 
 
-* Toky dat tahání
-* Galerie šablon řešení
-* Integrace Gitu a nativní řešení CI/CD
-* Integrace se službou Azure monitor
-* Přejmenování prostředků po publikování
-* Konfigurace hybridního prostředí Integration runtime v pracovním prostoru synapse Uživatel nemůže mít spravovanou virtuální síť IR i Azure IR.
-* Sdílení modulu runtime integrace mezi synapse pracovními prostory
+* **Toky dat tahání:** Aktivita toku dat tahání je v tuto chvíli dostupná jenom v Azure Data Factory.
+* **Galerie šablon řešení:** V Azure Data Factory můžou uživatelé najít šablony kanálu v galerii šablon řešení. V pracovních prostorech synapse obsahuje znalostní centrum jinou sadu šablon spolu s dalšími datovými sadami a skripty SQL. 
+* **Integrace Gitu a nativní řešení CI/CD:** V současné době se pracovní prostor synapse nemůže připojit k úložišti Git ani se neřídí stejným procesem nepřetržité integrace a doručování jako Azure Data Factory.
+* **Integrace se službou Azure monitor:** Pracovní prostory synapse se neintegrují s Azure Monitor jako Azure Data Factory.
+* **Konfigurace hybridního prostředí Integration Runtime:** V pracovním prostoru synapse nemůže uživatel mít spravovanou virtuální síť IR i Azure IR. Tato funkce je podporovaná v Azure Data Factory.
+* **Sdílení modulu runtime integrace:** Místní prostředí Integration runtime se nedají sdílet mezi synapse pracovními prostory. Tato funkce je podporovaná v Azure Data Factory.
+* **Prostředí Integration runtime pro různé oblasti pro toky dat:** Datové toky nemůžou běžet v prostředí Integration runtime v různých oblastech než synapse pracovní prostor. Tato funkce je podporovaná v Azure Data Factory.
 
 ## <a name="next-steps"></a>Další kroky
 

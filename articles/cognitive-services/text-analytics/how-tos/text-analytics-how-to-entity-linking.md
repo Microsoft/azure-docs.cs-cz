@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 94f863bd4f016ed1117fa236323b43515fd53797
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0ca0c4eacce88bfb53582f7969ed7acbfd75bb8a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165594"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358707"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -34,7 +34,7 @@ Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé en
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkce                                                         | NER v 3.0 | NER verze 3.1 – Preview. 2 |
+| Příznak                                                         | NER v 3.0 | NER verze 3.1 – Preview. 2 |
 |-----------------------------------------------------------------|--------|----------|
 | Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
 | Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
@@ -70,7 +70,7 @@ Vytvořte žádost POST. Můžete [použít post](text-analytics-how-to-call-api
 
 #### <a name="version-31-preview2"></a>[Verze 3,1-Preview. 2](#tab/version-3-preview)
 
-Rozpoznávání pojmenovaných entit `v3.1-preview.2` používá samostatné koncové body pro žádosti ner a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
+Rozpoznávání pojmenovaných entit `v3.1-preview.2` používá samostatné koncové body pro žádosti o propojení ner, PII a entit. V závislosti na vaší žádosti použijte formát adresy URL:
 
 Propojení entit
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
@@ -82,6 +82,7 @@ NER
 
 [Verze rozpoznávání pojmenovaných entit verze 3,1-Preview pro `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
 
+Identifikovatelné osobní údaje (PII)
 * Osobní ( `PII` ) informace – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
 
 `domain=phi`K detekci `PHI` informací o stavu () v textu můžete použít také volitelný parametr. 
@@ -291,7 +292,7 @@ Příklad obecné odpovědi NER:
 ---
 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit pomocí Analýza textu v Cognitive Services. Souhrn:
 

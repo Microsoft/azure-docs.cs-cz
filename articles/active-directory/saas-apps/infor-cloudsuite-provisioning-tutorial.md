@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a96f37d4c1e740e23cc766566d3c1756b6d08
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460181"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357432"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace informačního CloudSuiteu pro Automatické zřizování uživatelů
 
@@ -62,7 +62,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
     ![Účet informačního SCIM CloudSuite](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Kliknutím na ikonu Plus přidejte uživatele s právy pro správu. Zadejte **heslo SCIM** a do pole **Potvrdit heslo**zadejte stejné heslo. Klikněte na ikonu složky a uložte heslo. Zobrazí se **identifikátor uživatele** generovaný pro uživatele s právy pro správu.
+4.  Kliknutím na ikonu Plus přidejte uživatele s právy pro správu. Zadejte **heslo SCIM** a do pole **Potvrdit heslo** zadejte stejné heslo. Klikněte na ikonu složky a uložte heslo. Zobrazí se **identifikátor uživatele** generovaný pro uživatele s právy pro správu.
 
     ![Uživatel s oprávněními správce CloudSuite](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
@@ -72,7 +72,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 5. Pokud chcete vygenerovat nosný token, zkopírujte **identifikátor uživatele** a **heslo SCIM**. Vložte je do poznámkového bloku + + oddělené dvojtečkou. Zakódovat řetězcovou hodnotu tak, že přejdete na **moduly plug-in > nástroje MIME > Basic64 kódování**. 
 
-    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Snímek obrazovky s konzolou správce CloudSuite, která zobrazuje zvýrazněný řádek tabulky Tento řádek obsahuje identifikátor uživatele, hesla a časové razítko." border="false":::
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Snímek obrazovky s dokumentem Notepad + + V nabídce moduly plug-in se zvýrazní nástroje MIME. V nabídce nástroje MIME se zvýrazní kódování Base64." border="false":::
 
 3.  Zkopírujte token nosiče. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování aplikace CloudSuite, která se nachází v Azure Portal.
 
@@ -86,7 +86,7 @@ Před konfigurací informačního CloudSuiteu pro Automatické zřizování uži
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -94,7 +94,7 @@ Před konfigurací informačního CloudSuiteu pro Automatické zřizování uži
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **info CloudSuite**, vyberte **informační CloudSuite** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **info CloudSuite** , vyberte **informační CloudSuite** na panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Informace CloudSuite v seznamu výsledků](common/search-new-app.png)
 
@@ -170,7 +170,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

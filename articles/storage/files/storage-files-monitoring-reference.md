@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 11f89a0a42a42fd84d1dc0c8606128f5af9e751e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6f4b932bb8f16af3c0368ab219bd8a12bf2face
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711343"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357976"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Referenční informace o datech monitorování služby Azure Files
 
@@ -26,7 +26,7 @@ V následujících tabulkách jsou uvedeny metriky platforem shromážděné pro
 
 ### <a name="capacity-metrics"></a>Kapacitní metriky
 
-Hodnoty metrik kapacity se odesílají do Azure Monitor každou hodinu. Hodnoty se aktualizují každý den. Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
+Hodnoty metrik kapacity se aktualizují každý den (až 24 hodin). Časové rozpětí definuje časový interval, pro který jsou prezentovány hodnoty metrik. Podporovaná časová zrna pro všechny metriky kapacity je jedna hodina (PT1H).
 
 Služby soubory Azure poskytují v Azure Monitor následující metriky kapacity.
 
@@ -34,7 +34,7 @@ Služby soubory Azure poskytují v Azure Monitor následující metriky kapacity
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="azure-files"></a>Soubory Azure
+#### <a name="azure-files"></a>Azure Files
 
 Tato tabulka zobrazuje [metriky souborů Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices).
 

@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1f82cab1172e7293e2a5910d35280eefb30ed49e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456332"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357449"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Kurz: Konfigurace centrálního přivisionu pro Automatické zřizování uživatelů
 
@@ -92,7 +92,7 @@ Aby bylo možné zřídit uživatelské účty pro společnost "CERN", budete mu
 
    ![Centrální zřizování pro CERN](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9. Do následujících polí zadejte v části **přihlašovací údaje správce**:
+9. Do následujících polí zadejte v části **přihlašovací údaje správce** :
 
    * V poli **Adresa URL tenanta** zadejte adresu URL ve formátu níže a nahraďte "User-The-REALM-ID" ID sféry, kterou jste získali v kroku #4.
 
@@ -118,7 +118,7 @@ Tím se spustí počáteční synchronizace všech uživatelů nebo skupin při�
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [CERN – střed: publikování dat identity pomocí Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Kurz: Konfigurace služby CERN (střed) pro jednotné přihlašování pomocí Azure Active Directory](cernercentral-tutorial.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 46fe93a6ba823a7932d25dcc3fc8cf64cffb389e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: df1b3f81c1d8f9ead6d5773de6b6d1cd9517235e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516530"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357479"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Kurz: Konfigurace PureCloud podle Genesys pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v PureCloud pomocí Genesys
 > * Zřizování skupin a členství ve skupinách v PureCloud pomocí Genesys
 > * [Jednotné přihlašování](./purecloud-by-genesys-tutorial.md) do PureCloud podle Genesys (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -151,7 +151,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 09/10 – přidala se podpora pro atribut Enterprise "employeeNumber".
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: baa6e10d33d1c0a1a9c367baa8888fdfb5a47c01
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e0409f289289aaebc760473f1f74130b34fbdd39
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746218"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357721"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -123,7 +123,7 @@ Pomocí příkazu [AZ VM Encryption Enable](/cli/azure/vm/encryption#az-vm-encry
 Můžete povolit šifrování disku na existujícím nebo běžícím virtuálním počítači s IaaS s Windows v Azure pomocí [šablony Správce prostředků k šifrování spuštěného virtuálního počítače s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad).
 
 
-1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure** .
+1. V šabloně pro rychlý Start Azure klikněte na **nasadit do Azure**.
 
 2. Vyberte předplatné, skupinu prostředků, umístění, nastavení, právní smlouvy a smlouvu. Kliknutím na **koupit** povolíte šifrování na stávajícím nebo BĚŽÍCÍm virtuálním počítači s IaaS.
 
@@ -135,7 +135,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | keyVaultName | Název trezoru klíčů, do kterého se má klíč BitLocker nahrát Můžete ji získat pomocí rutiny `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` nebo příkazu rozhraní příkazového řádku Azure CLI. `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Název skupiny prostředků, která obsahuje Trezor klíčů|
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče ve formátu https:// &lt; trezoru klíčů-name &gt; . Vault.Azure.NET/Key/ &lt; &gt; . Pokud nechcete používat KEK, nechte toto pole prázdné. |
-| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_ , _data_ a _vše_ . 
+| volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_ , _data_ a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
 | location | Umístění pro všechny prostředky |
@@ -266,6 +266,7 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
 - Použití ADE na virtuální počítač, který obsahuje disky šifrované pomocí [šifrování na straně serveru s klíči spravovanými zákazníkem](disk-encryption.md) (SSE + CMK). Použití SSE + CMK na datový disk na virtuálním počítači zašifrovaném pomocí ADE je také nepodporovaný scénář.
 - Migrace virtuálního počítače, který je zašifrovaný pomocí ADE nebo který byl **někdy** ZAŠIFROVANÝ pomocí ADE, na [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
+- [Velikosti virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md); konkrétně dv4, Dsv4, Ev4 a Esv4.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15031a3e139265410179baa13db9ed3f1b41cf17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531799"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358605"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Kurz: konfigurace na návštěvu pro Automatické zřizování uživatelů
 
@@ -75,7 +75,7 @@ Pokud chcete přidat návštěvu z Galerie aplikací Azure AD, postupujte podle 
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete přidat návštěvu z Galerie aplikací Azure AD, postupujte podle 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte příkaz **navštívit**, v panelu výsledků vyberte možnost **navštívit** a přidejte aplikaci kliknutím na tlačítko **Přidat** .
+4. Do vyhledávacího pole zadejte příkaz **navštívit** , v panelu výsledků vyberte možnost **navštívit** a přidejte aplikaci kliknutím na tlačítko **Přidat** .
 
     ![Přejít do seznamu výsledků](common/search-new-app.png)
 
@@ -96,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro návštěvu ve službě Azure AD
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**  >  **všechny aplikace**.
 
     ![Všechny aplikace](common/enterprise-applications.png)
 
@@ -112,7 +112,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Režim zřizování nastavený na automatické](common/provisioning-automatic.png)
 
-5. V části přihlašovací údaje správce zadejte `https://api.visitly.io/v1/usersync/SCIM` hodnoty **klíčů rozhraní API** , které jste dříve načetli v **adrese URL tenanta** a **tajného tokenu**v uvedeném pořadí. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
+5. V části přihlašovací údaje správce zadejte `https://api.visitly.io/v1/usersync/SCIM` hodnoty **klíčů rozhraní API** , které jste dříve načetli v **adrese URL tenanta** a **tajného tokenu** v uvedeném pořadí. Vyberte **Test připojení** , aby se mohla služba Azure AD připojit k návštěvě. Pokud se připojení nepovede, ujistěte se, že má váš návštěvu oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -152,7 +152,7 @@ Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat p
 
 Při návštěvě není podporována Pevná odstranění. Všechno je jenom obnovitelné odstranění.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

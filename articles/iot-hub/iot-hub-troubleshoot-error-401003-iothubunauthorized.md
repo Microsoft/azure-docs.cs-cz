@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909637"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357245"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ Požadavky na IoT Hub selžou s jednou z následujících chybových zpráv:
 
 ### <a name="cause-1"></a>Příčina 1
 
-U MQTT se některé sady SDK spoléhají na IoT Hub k vydání odpojení, když vyprší platnost tokenu SAS, který ví, kdy se má obnovit. Proto: 
+U MQTT se některé sady SDK spoléhají na IoT Hub k vydání odpojení, když vyprší platnost tokenu SAS, který ví, kdy se má obnovit. Proto:
 
 1. Vyprší platnost tokenu SAS.
 1. IoT Hub si vyvšimla vypršení platnosti a odpojí zařízení s **401003 IoTHubUnauthorized**
@@ -58,9 +58,11 @@ IoT Hub nemůže ověřit záhlaví, pravidlo nebo klíč ověřování. To mů�
 
 ### <a name="solution-1"></a>Řešení 1
 
-Pokud používáte sadu IoT SDK pro připojení pomocí připojovacího řetězce zařízení, není nutná žádná akce. Sada IoT SDK znovu vygeneruje nový token pro opětovné připojení k vypršení platnosti tokenu SAS. 
+Pokud používáte sadu IoT SDK pro připojení pomocí připojovacího řetězce zařízení, není nutná žádná akce. Sada IoT SDK znovu vygeneruje nový token pro opětovné připojení k vypršení platnosti tokenu SAS.
 
-Pokud se jedná o problém, přepněte se na sadu C SDK, která před vypršením platnosti obnoví token SAS. Navíc pro AMQP se může token SAS aktualizovat bez odpojení.
+Výchozí životnost tokenu je 60 minut napříč sadami SDK. pro některé sady SDK ale je životnost tokenu a prahová hodnota pro obnovení tokenu ale konfigurovatelná. Kromě toho se v každé sadě SDK liší chyby vygenerované při odpojení zařízení a opětovné připojení k obnovení tokenu. Další informace o tom, jak určit, kterou sadu SDK vaše zařízení používá v protokolech, najdete v tématu [MQTT – chování odpojení zařízení pomocí sad Azure IoT SDK](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks).
+
+V případě vývojářů zařízení, pokud se jedná o problém, přepněte na sadu C SDK, která před vypršením platnosti obnoví token SAS. V případě AMQP se token SAS dá aktualizovat bez odpojení.
 
 ### <a name="solution-2"></a>Řešení 2
 

@@ -2,14 +2,14 @@
 title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: cc99a8c10ecefc063fdb89c61bdaeb0e686b1a82
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346311"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358044"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -69,72 +69,70 @@ Výchozí chování funkce můžete změnit volitelně určením `scriptFile` `e
 Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v následujícím příkladu:
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-Hlavní složka projektu ( \_ \_ aplikace \_ \_ ) může obsahovat následující soubory:
+Hlavní složka projektu (<project_root>) může obsahovat následující soubory:
 
 * *local.settings.jsv* : používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt* : obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
+* *requirements.txt* : obsahuje seznam balíčků Pythonu, které systém nainstaluje při publikování do Azure.
 * *host.js* : obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
-* *. funcignore* : (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
+* *. VSCode/* : (volitelné) obsahuje konfiguraci VSCode úložiště. Další informace najdete v tématu [Nastavení VSCode](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/* : (volitelné) obsahuje virtuální prostředí Pythonu, které používá místní vývoj.
 * *Souboru Dockerfile* : (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
+* *testy/* : (volitelné) obsahuje testovací případy vaší aplikace Function App.
+* *. funcignore* : (volitelné) deklaruje soubory, které by neměly být publikovány do Azure. Tento soubor obvykle obsahuje, chcete-li ignorovat `.vscode/` nastavení editoru, ignorovat `.venv/` místní virtuální prostředí Python, ignorovat `tests/` testovací případy a `local.settings.json` zabránit publikování nastavení místní aplikace.
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json).
 
-Když nasadíte projekt do aplikace Function App v Azure, celý obsah hlavní složky projektu ( *\_ \_ App \_ \_* ) by měl být součástí balíčku, ale ne samotné složky. V tomto příkladu doporučujeme udržovat testy ve složce oddělené od složky projektu `tests` . Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
+Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah složky hlavního projektu ( *<project_root>* ) do balíčku, ale ne samotné složky, což znamená, `host.json` že by měl být v kořenovém adresáři balíčku. V tomto příkladu doporučujeme udržovat testy ve složce společně s jinými funkcemi `tests/` . Další informace najdete v tématu [testování částí](#unit-testing).
 
 ## <a name="import-behavior"></a>Chování při importu
 
-Moduly v kódu funkce můžete importovat pomocí explicitních relativních i absolutních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci aplikace Function App. *\_ \_ \_ \_ \_ první \_ funkce \\ _ \_ init \_ \_ . py* :
+Můžete importovat moduly v kódu funkce pomocí absolutních i relativních odkazů. V závislosti na struktuře složky uvedené výše následující importy fungují v rámci souboru funkce *<project_root> \My \_ First \_ Function \\ _ \_ init \_ \_ . py* :
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  *Shared_code/* složka musí obsahovat \_ \_ \_ \_ soubor init. py pro označení jako balíček Pythonu při použití absolutní syntaxe importu.
+
+Následující \_ \_ Import aplikace \_ \_ a další relativní importy na nejvyšší úrovni jsou zastaralé, protože není podporován pro kontrolu statického typu a nepodporují se v testovacích architekturách Pythonu:
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-Následující importy *nefungují* v rámci stejného souboru:
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-Sdílený kód by měl být uložený v samostatné složce *\_ \_ aplikace \_ \_*. Chcete-li odkazovat na moduly ve složce *sdíleného \_ kódu* , můžete použít následující syntaxi:
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>Aktivační události a vstupy
@@ -319,7 +317,7 @@ Výchozí konfigurace jsou vhodné pro většinu Azure Functionsch aplikací. M�
 |Vlastnosti aplikace Function App| <ul><li>Aplikace potřebuje zpracovat mnoho souběžných volání.</li> <li> Aplikace zpracovává velký počet vstupně-výstupních událostí, jako jsou síťová volání a čtení a zápisy na disk.</li> </ul>| <ul><li>Aplikace provádí dlouhotrvající výpočty, jako je například změna velikosti obrázku.</li> <li>Aplikace provádí transformaci dat.</li> </ul> |
 |Příklady| <ul><li>Webová rozhraní API</li><ul> | <ul><li>Zpracování dat</li><li> Odvození strojového učení</li><ul>|
 
- 
+
 > [!NOTE]
 >  Jako úlohy Real World Functions většinou často nabízí kombinaci vstupně-výstupních operací a procesoru, doporučujeme profilovat úlohy v rámci reálných produkčních zatížení.
 
@@ -387,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) do jejího podpisu argument.
 
-Například:
+Příklad:
 
 ```python
 import azure.functions
@@ -539,12 +537,14 @@ Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
 Funkce napsané v Pythonu se dají testovat jako jiný kód Pythonu pomocí standardních testovacích architektur. U většiny vazeb je možné vytvořit objektový vstupní objekt vytvořením instance příslušné třídy z `azure.functions` balíčku. Vzhledem k [`azure.functions`](https://pypi.org/project/azure-functions/) tomu, že balíček není hned dostupný, nezapomeňte ho nainstalovat pomocí `requirements.txt` souboru, jak je popsáno výše v části [Správa balíčků](#package-management) .
 
-Následující příklad je vzorovým testem funkce aktivované protokolem HTTP:
+Postupujte *my_second_function* jako příklad, následuje vzorový test funkce aktivované protokolem http:
+
+Nejdřív musíme vytvořit *<project_root>/my_second_function/function.jsna* soubor a tuto funkci definovat jako Trigger http.
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -565,106 +565,72 @@ Následující příklad je vzorovým testem funkce aktivované protokolem HTTP:
 }
 ```
 
+Nyní můžeme implementovat rozhraní *my_second_function* a *shared_code. my _second_helper_function*.
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+Můžeme začít psát testovací případy pro náš Trigger http.
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-Tady je další příklad s funkcí aktivovanými ve frontě:
+V rámci vašeho `.venv` virtuálního prostředí Pythonu nainstalujte své oblíbené testovací rozhraní Pythonu (např. `pip install pytest` ). Stačí spustit `pytest tests` pro kontrolu výsledku testu.
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>Dočasné soubory
 
 `tempfile.gettempdir()`Metoda vrátí dočasnou složku, která je na systému Linux `/tmp` . Aplikace může pomocí tohoto adresáře ukládat dočasné soubory vygenerované a používané funkcemi během provádění.

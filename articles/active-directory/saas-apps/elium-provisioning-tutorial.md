@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: d9bb21ab4b5610c8318fe4ee869f1140faf55367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544226"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356736"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Kurz: Konfigurace Elium pro Automatické zřizování uživatelů
 
@@ -51,11 +51,11 @@ Když přiřadíte uživatele k Elium, musíte vybrat platnou roli specifickou p
 
 Před konfigurací Elium pro Automatické zřizování uživatelů se službou Azure AD musíte povolit systém pro zřizování SCIM (Domain Identity Management) na Elium. Postupujte takto:
 
-1. Přihlaste se k Elium a **My Profile**pokračujte na  >  **Nastavení**profilu.
+1. Přihlaste se k Elium a **My Profile** pokračujte na  >  **Nastavení** profilu.
 
     ![Položka nabídky nastavení v Elium](media/Elium-provisioning-tutorial/setting.png)
 
-1. V levém dolním rohu v části **Upřesnit**vyberte **zabezpečení**.
+1. V levém dolním rohu v části **Upřesnit** vyberte **zabezpečení**.
 
     ![Odkaz na zabezpečení v Elium](media/Elium-provisioning-tutorial/security.png)
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat Elium pro Automatické zřizování uživatelů pomo
 
     ![Položka nabídky Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
      ![Okno Azure AD Enterprise Applications](common/enterprise-applications.png)
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat Elium pro Automatické zřizování uživatelů pomo
 
     ![Odkaz na novou aplikaci](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Elium**, v seznamu výsledků vyberte **Elium** a pak vyberte **Přidat** , aby se aplikace přidala.
+1. Do vyhledávacího pole zadejte **Elium** , v seznamu výsledků vyberte **Elium** a pak vyberte **Přidat** , aby se aplikace přidala.
 
     ![Vyhledávací pole galerie](common/search-new-app.png)
 
@@ -92,7 +92,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 Pokud chcete nakonfigurovat automatické zřizování uživatelů pro Elium ve službě Azure AD, postupujte podle těchto kroků:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com), vyberte **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno Azure AD Enterprise Applications](common/enterprise-applications.png)
 
@@ -108,7 +108,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro Elium ve s
 
     ![Automatické nastavení pro režim zřizování](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce** zadejte do pole **Adresa URL klienta** ** \<tenantURL\> /SCIM/v2** . ( **TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Zadejte také hodnotu **tajného tokenu** Elium do pole **token tajného** kódu. Nakonec vyberte **Test připojení** , abyste ověřili, že se služba Azure AD může připojit k Elium. Pokud se připojení nepovede, ujistěte se, že má váš účet Elium oprávnění správce, a zkuste to znovu.
+1. V části **přihlašovací údaje správce** zadejte do pole **Adresa URL klienta** **\<tenantURL\> /SCIM/v2** . ( **TenantURL** je hodnota načtená dříve z konzoly pro správu Elium.) Zadejte také hodnotu **tajného tokenu** Elium do pole **token tajného** kódu. Nakonec vyberte **Test připojení** , abyste ověřili, že se služba Azure AD může připojit k Elium. Pokud se připojení nepovede, ujistěte se, že má váš účet Elium oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta a pole tajného tokenu v přihlašovacích údajích správce](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -144,7 +144,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů a skupin def
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování. Sestava aktivity zřizování popisuje všechny akce prováděné službou zřizování Azure AD v Elium. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

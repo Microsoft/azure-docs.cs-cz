@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848955"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358469"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dialpad pro Automatické zřizování uživatelů
 
@@ -58,9 +58,9 @@ Před konfigurací Dialpad pro Automatické zřizování uživatelů se službou
 
 2. Vygenerujte nový klíč kliknutím na **Přidat klíč** a nakonfigurujete vlastnosti tajného tokenu.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Snímek stránky klíče P I v konzole pro správu Dialpad Je zvýrazněna položka přidat klíč." border="false":::
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Snímek obrazovky s klíčem &quot;upravit klíč P I&quot; v konzole pro správu Dialpad Tlačítko Uložit je zvýrazněno." border="false":::
 
 3. Klikněte na tlačítko **kliknutím zobrazit hodnotu** pro nedávno vytvořený klíč rozhraní API a zkopírujte zobrazenou hodnotu. Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Dialpad ve Azure Portal. 
 
@@ -76,7 +76,7 @@ Pokud chcete nakonfigurovat Dialpad pro Automatické zřizování uživatelů po
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -84,24 +84,24 @@ Pokud chcete nakonfigurovat Dialpad pro Automatické zřizování uživatelů po
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Dialpad**, na panelu výsledků vyberte **Dialpad** .
+4. Do vyhledávacího pole zadejte **Dialpad** , na panelu výsledků vyberte **Dialpad** .
     ![Dialpad v seznamu výsledků](common/search-new-app.png)
 
 5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Snímek obrazovky se stránkou, která zobrazuje informace o aplikaci Dialpad V části U R L je adresa uvedena a je zvýrazněna." border="false":::
 
 6. V pravém horním rohu vyberte možnost **přihlásit > použijte Dialpad online**.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Snímek obrazovky webu Dialpad Přihlaste se a karta přihlášení je otevřená. Také se zvýrazní použití Dialpad online." border="false":::
 
 7. Dialpad je aplikace OpenIDConnect, která se rozhodne přihlásit k Dialpad pomocí pracovního účtu Microsoft.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Snímek stránky Začínáme s voláním na webu Dialpad Bude zvýrazněno tlačítko Přihlásit se pomocí Office 365." border="false":::
 
 8. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet Dialpad.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Snímek obrazovky s konzolou pro správu Dialpad s ikonou nastavení, se zvýrazněnou firmou, ověřováním a vybranými klíči P a vybranou společností" border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Snímek obrazovky s ověřovací stránkou Microsoftu s informacemi o tom, že aplikace Dialpad požádala o přístup k některým datům Je zvýrazněno tlačítko přijmout." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurace automatického zřizování uživatelů na Dialpad
 
@@ -163,7 +163,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 ##  <a name="connector-limitations"></a>Omezení konektoru
 * Dialpad v současné době nepodporuje přejmenování skupin. To znamená, že jakékoli změny **DisplayName** skupiny ve službě Azure AD nebudou aktualizovány a projeví se v Dialpad.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

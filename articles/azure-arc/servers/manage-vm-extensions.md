@@ -1,14 +1,14 @@
 ---
 title: Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 description: Servery s podporou ARC Azure můžou spravovat nasazení rozšíření virtuálních počítačů, která poskytují konfiguraci po nasazení a úlohy automatizace s virtuálními počítači mimo Azure.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9865761fd3e5897ee3f01cd3d6ca620d5ea2f4b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460882"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358027"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Správa rozšíření virtuálních počítačů pomocí serverů s podporou ARC Azure
 
@@ -33,6 +33,8 @@ Podpora rozšíření virtuálních počítačů serverů s podporou ARC Azure n
 
 - Stahovat a spouštět skripty na hybridních připojených počítačích pomocí rozšíření vlastních skriptů. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalaci softwaru nebo jakékoli jiné úlohy konfigurace nebo správy.
 
+- Automatické aktualizace certifikátů uložených v [Azure Key Vault](../../key-vault/general/overview.md).
+
 ## <a name="availability"></a>Dostupnost
 
 Funkce rozšíření virtuálních počítačů jsou k dispozici pouze v seznamu [podporovaných oblastí](overview.md#supported-regions). Ujistěte se, že jste počítač připojili do jedné z těchto oblastí.
@@ -47,10 +49,12 @@ V této verzi podporujeme následující rozšíření virtuálních počítač�
 |DSC |Windows |Microsoft. PowerShell|[Rozšíření Windows PowerShell DSC](../../virtual-machines/extensions/dsc-windows.md)|
 |Agent Log Analytics |Windows |Microsoft. EnterpriseCloud. Monitoring |[Log Analytics rozšíření virtuálního počítače pro Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Microsoft Dependency Agent | Windows |Microsoft.Compute | [Rozšíření pro virtuální počítače s agentem závislosti pro Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Key Vault | Windows | Microsoft.Compute | [Key Vault rozšíření virtuálního počítače pro Windows](../../virtual-machines/extensions/key-vault-windows.md) |
 |CustomScript|Linux |Microsoft. Azure. Extension |[Rozšíření vlastních skriptů pro Linux verze 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |DSC |Linux |Microsoft. OSTCExtensions |[Rozšíření PowerShell DSC pro Linux](../../virtual-machines/extensions/dsc-linux.md) |
 |Agent Log Analytics |Linux |Microsoft. EnterpriseCloud. Monitoring |[Rozšíření virtuálního počítače s Log Analytics pro Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Rozšíření pro virtuální počítače s agentem závislosti pro Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Key Vault | Linux | Microsoft.Compute | [Key Vault rozšíření virtuálního počítače pro Linux](../../virtual-machines/extensions/key-vault-linux.md) |
 
 Další informace o balíčku agenta připojeného počítače Azure a podrobnostech o komponentě agenta rozšíření najdete v tématu [Přehled agenta](agent-overview.md#agent-component-details).
 
@@ -63,7 +67,29 @@ Tato funkce závisí na následujících poskytovatelích prostředků Azure v r
 
 Pokud ještě nejsou zaregistrované, postupujte podle kroků v části [registrace poskytovatelů prostředků Azure](agent-overview.md#register-azure-resource-providers).
 
+### <a name="log-analytics-vm-extension"></a>Rozšíření virtuálního počítače Log Analytics
+
 Rozšíření virtuálního počítače agenta Log Analytics pro Linux vyžaduje Python 2. x na cílovém počítači.
+
+### <a name="azure-key-vault-vm-extension-preview"></a>Rozšíření virtuálního počítače Azure Key Vault (Preview)
+
+Rozšíření virtuálního počítače Key Vault (Preview) nepodporuje následující operační systémy Linux:
+
+- CentOS Linux 7 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
+
+Nasazení rozšíření virtuálního počítače Key Vault (Preview) se podporuje jenom pomocí:
+
+- Azure CLI
+- Azure PowerShell
+- Šablona Azure Resource Manageru
+
+Než rozšíření nasadíte, musíte provést následující:
+
+1. [Vytvořte trezor a certifikát](../../key-vault/certificates/quick-create-portal.md) (podepsaný držitelem nebo importovat).
+
+2. Udělte serveru s povolenou službou Azure ARC přístup k tajnému kódu certifikátu. Pokud používáte [verzi Preview služby RBAC](../../key-vault/general/rbac-guide.md), vyhledejte název prostředku ARC Azure a přiřaďte mu roli **Key Vault tajných klíčů uživatele (Preview)** . Pokud používáte [zásady přístupu Key Vault](../../key-vault/general/assign-access-policy-portal.md), přiřaďte k identitě přiřazené k systému prostředku ARC Azure oprávnění **získat** tajný klíč.
 
 ### <a name="connected-machine-agent"></a>Agent připojeného počítače
 
@@ -75,4 +101,4 @@ Pokud chcete upgradovat počítač na požadovanou verzi agenta, přečtěte si 
 
 ## <a name="next-steps"></a>Další kroky
 
-Rozšíření virtuálních počítačů můžete nasadit, spravovat a odebírat pomocí [Azure CLI](manage-vm-extensions-cli.md), [PowerShellu](manage-vm-extensions-powershell.md), z [Azure Portal](manage-vm-extensions-portal.md)nebo [šablon Azure Resource Manager](manage-vm-extensions-template.md).
+Rozšíření virtuálních počítačů můžete nasadit, spravovat a odebírat pomocí [Azure CLI](manage-vm-extensions-cli.md), [Azure PowerShell](manage-vm-extensions-powershell.md), ze [Azure Portal](manage-vm-extensions-portal.md)nebo [šablon Azure Resource Manager](manage-vm-extensions-template.md).

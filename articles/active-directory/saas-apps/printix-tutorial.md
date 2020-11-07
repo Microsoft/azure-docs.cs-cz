@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: de4962326a06080ff2bf81954cf85d3b6bbfefd5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dfde9bbbeb7f6b349ecbdc4c2da605d39a0708da
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104780"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Kurz: Azure Active Directory integrace s Printix
 
@@ -29,7 +29,7 @@ Integrace Printix s Azure AD poskytuje následující výhody:
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Printix potřebujete následující položky:
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat integraci Printix do služby Azure AD, musíte přid
 
     ![Snímek obrazovky ukazuje hledání Printix v dialogovém okně Přidat z galerie.](./media/printix-tutorial/tutorial_printix_search.png)
 
-1. Na panelu výsledků vyberte **Printix**a pak klikněte na **Přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Printix** a pak klikněte na **Přidat** tlačítko pro přidání aplikace.
 
     ![Snímek obrazovky zobrazuje vybranou možnost Printix.](./media/printix-tutorial/tutorial_printix_addfromgallery.png)
 
@@ -123,7 +123,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 1. Přihlaste se ke svému tenantovi Printix jako správce.
 
-1. V nabídce v horní části klikněte na ikonu v pravém horním rohu a vyberte**ověřování**.
+1. V nabídce v horní části klikněte na ikonu v pravém horním rohu a vyberte **ověřování**.
    
     ![Snímek obrazovky s vybraným ověřováním zobrazuje z nabídky.](./media/printix-tutorial/tutorial_printix_06.png)
 
@@ -131,19 +131,19 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
    
     ![Snímek obrazovky se zobrazí stránka Printix.net, kde můžete vybrat Povolit ověřování Azure/Office 365.](./media/printix-tutorial/tutorial_printix_07.png)
 
-1. Na kartě **Azure** zadejte adresu URL federačních metadat do textového pole**dokumentu federačních metadat**. 
+1. Na kartě **Azure** zadejte adresu URL federačních metadat do textového pole **dokumentu federačních metadat**. 
 
     Připojte soubor XML s metadaty, který jste stáhli z Azure AD do [Printix týmu podpory](mailto:support@printix.net). Pak nahrajte soubor XML a zadejte adresu URL federačních metadat.
    
     ![Snímek obrazovky se zobrazí stránka Printix.net, kde můžete zadat dokument federačních metadat.](./media/printix-tutorial/tutorial_printix_08.png)
    
-1. Klikněte na tlačítko**test**a po úspěšném dokončení testu klikněte na tlačítko**OK**.
+1. Klikněte na tlačítko **test** a po úspěšném dokončení testu klikněte na tlačítko **OK**.
    
      Po kliknutí na tlačítko **test** se zobrazí stránka Azure Active Directory. "Test byl úspěšný, sem znamená po zadání přihlašovacích údajů ke svému účtu Azure test se zobrazí zpráva" nastavení testováno OK ". Pak klikněte na tlačítko **OK** .
    
     ![Snímek obrazovky zobrazuje výsledky testu.](./media/printix-tutorial/tutorial_printix_09.png)
 
-1. Klikněte na tlačítko **Uložit** na stránce**ověřování**.
+1. Klikněte na tlačítko **Uložit** na stránce **ověřování**.
 
 
 > [!TIP]
@@ -157,7 +157,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 **Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V **Azure Portal**v levém navigačním podokně klikněte na ikonu **Azure Active Directory** .
+1. V **Azure Portal** v levém navigačním podokně klikněte na ikonu **Azure Active Directory** .
 
     ![Snímek obrazovky zobrazuje jméno a uživatelské jméno, které se má vytvořit.](./media/printix-tutorial/create_aaduser_01.png) 
 

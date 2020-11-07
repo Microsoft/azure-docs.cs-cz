@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850689"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356820"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Kurz: Konfigurace Looop pro Automatické zřizování uživatelů
 
@@ -57,9 +57,9 @@ Před konfigurací Looop pro Automatické zřizování uživatelů se službou A
 
     :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Snímek obrazovky s konzolou pro správu Looop Karta účtu je zvýrazněná a otevřená. V části nastavení účtu se zvýrazní ověřování." border="false":::
 
-2. Kliknutím na **resetovat token** v části **integrace SCIM**Vygenerujte nový token.
+2. Kliknutím na **resetovat token** v části **integrace SCIM** Vygenerujte nový token.
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Snímek obrazovky s konzolou pro správu Looop Karta účtu je zvýrazněná a otevřená. V části nastavení účtu se zvýrazní ověřování." border="false":::
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Snímek obrazovky S částí integrace S C/M na stránce v konzole pro správu Looop Je zvýrazněno tlačítko Resetovat token." border="false":::
 
 3. Zkopírujte **koncový bod SCIM** a **token**. Tyto hodnoty se zadají do polí **Adresa URL tenanta** a **tajného tokenu** na kartě zřizování vaší aplikace Looop ve Azure Portal. 
 
@@ -73,7 +73,7 @@ Pokud chcete nakonfigurovat Looop pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -81,7 +81,7 @@ Pokud chcete nakonfigurovat Looop pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Looop**, na panelu výsledků vyberte **Looop** . 
+4. Do vyhledávacího pole zadejte **Looop** , na panelu výsledků vyberte **Looop** . 
 
     ![Looop v seznamu výsledků](common/search-new-app.png)
 
@@ -163,7 +163,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850869"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357024"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Kurz: Konfigurace Figma pro Automatické zřizování uživatelů
 
@@ -57,19 +57,19 @@ Před konfigurací Figma pro Automatické zřizování uživatelů se službou A
 
 2. Přejděte na **obecné > aktualizace nastavení přihlášení**.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Snímek obrazovky s kartou Obecné v konzole pro správu Figma V části přihlášení a zřizování je zvýrazněná možnost aktualizovat nastavení přihlášení." border="false":::
 
 3. Zkopírujte **ID tenanta**. Tato hodnota se použije k vytvoření adresy URL koncového bodu SCIM, která se má zadat do pole **Adresa URL tenanta** na kartě zřizování vaší aplikace Figma v Azure Portal.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Snímek obrazovky S oddílem A M L S S O v konzole pro správu Figma Popisek ID tenanta a sousedící odkaz, který říká kopírování, se zvýrazní." border="false":::
 
 4. Posuňte se dolů a klikněte na **vygenerovat token rozhraní API**.
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Snímek obrazovky oddílu zřizování S C/M v konzole pro správu Figma Byl zvýrazněn odkaz, který vygeneroval token P I." border="false":::
 
 5. Zkopírujte hodnotu  **tokenu rozhraní API** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Figma ve Azure Portal. 
 
-    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Snímek obrazovky s konzolou pro správu Figma Je viditelný tenant s názvem a D SCIM test. Vedle klienta se zvýrazní ikona ozubeného kolečka." border="false":::
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Snímek obrazovky stránky v konzole pro správu Figma V rámci vašeho zřizování tokenu P I se zvýrazní zástupný symbol pro token." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Přidání Figma z Galerie
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat Figma pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -87,7 +87,7 @@ Pokud chcete nakonfigurovat Figma pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Figma**, na panelu výsledků vyberte **Figma** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Figma** , na panelu výsledků vyberte **Figma** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Figma v seznamu výsledků](common/search-new-app.png)
 
@@ -152,7 +152,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

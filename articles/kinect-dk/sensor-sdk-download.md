@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, stažení aktualizace, nejnovější, dostupná, instalace
-ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171784"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358501"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Stažení sady SDK pro sadu Azure Kinect snímače
 
@@ -39,7 +39,7 @@ Předchozí verze sady SDK a firmwaru pro Azure Kinect najdete na [GitHubu](http
 
 V současné době je jedinou podporovanou distribucí Ubuntu 18,04. Chcete-li požádat o podporu pro další distribuce, přečtěte si [tuto stránku](https://aka.ms/azurekinectfeedback).
 
-Nejdřív budete muset nakonfigurovat [úložiště balíčků Microsoftu](https://packages.microsoft.com/), a to podle pokynů uvedených [tady](https://docs.microsoft.com/windows-server/administration/linux-package-repository-for-microsoft-software).
+Nejdřív budete muset nakonfigurovat [úložiště balíčků Microsoftu](https://packages.microsoft.com/), a to podle pokynů uvedených [tady](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
 Nyní můžete nainstalovat potřebné balíčky. `k4a-tools`Balíček zahrnuje [Azure Kinect Viewer](azure-kinect-viewer.md), [zapisovač Azure Kinect](record-sensor-streams-file.md)a [nástroj Azure Kinect firmware](azure-kinect-firmware-tool.md). Pokud ho chcete nainstalovat, spusťte
 

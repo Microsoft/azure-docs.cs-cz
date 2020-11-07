@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 0a72ea413e7298c8e6cb622cb985e6516435b451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8238b9902aafcabc079c551a0eabc7170042209a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255775"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357619"
 ---
 # <a name="tutorial-configure-theorgwiki-for-automatic-user-provisioning"></a>Kurz: Konfigurace TheOrgWiki pro Automatické zřizování uživatelů
 
@@ -65,7 +65,7 @@ Před konfigurací TheOrgWiki pro Automatické zřizování uživatelů pomocí 
 
     ![Snímek obrazovky se stránkou s účty služby v konzole pro správu organizace na wikiwebu](media/theorgwiki-provisioning-tutorial/serviceaccount.png)
 
-4. Klikněte na **+ účet služby**. V části **typ účtu služby**vyberte **založené na tokenech**. Klikněte na **Uložit**.
+4. Klikněte na **+ účet služby**. V části **typ účtu služby** vyberte **založené na tokenech**. Klikněte na **Uložit**.
 
     ![Snímek obrazovky dialogového okna nový účet služby s typem účtu služby, založeným na tokenech a možnostmi Uložit.](media/theorgwiki-provisioning-tutorial/auth.png)
 
@@ -81,7 +81,7 @@ Pokud chcete nakonfigurovat TheOrgWiki pro Automatické zřizování uživatelů
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -89,7 +89,7 @@ Pokud chcete nakonfigurovat TheOrgWiki pro Automatické zřizování uživatelů
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **TheOrgWiki**, na panelu výsledků vyberte **TheOrgWiki** . 
+4. Do vyhledávacího pole zadejte **TheOrgWiki** , na panelu výsledků vyberte **TheOrgWiki** . 
 
     ![TheOrgWiki v seznamu výsledků](common/search-new-app.png)
 
@@ -175,7 +175,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v TheOrgWiki. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

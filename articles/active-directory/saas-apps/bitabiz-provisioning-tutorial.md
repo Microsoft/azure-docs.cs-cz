@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d17d4dd88e29440304989b8c37eaa81125d1812
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849295"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357551"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Kurz: Konfigurace BitaBIZ pro Automatické zřizování uživatelů
 
@@ -58,7 +58,7 @@ Před konfigurací BitaBIZ pro Automatické zřizování uživatelů pomocí Azu
 
 2.  Přejděte k **integraci**.
 
-    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Snímek obrazovky s konzolou pro správu BitaBIZ s zvýrazněným správcem instalace" border="false":::
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Snímek obrazovky s BitaBIZ konzolou pro správu se zvýrazněnou možností integrace" border="false":::
 
 2.  Přejděte na **Microsoft Azure AD zřizování**.  V případě automatického zřizování uživatelů vyberte **povoleno** . Zkopírujte hodnoty pro **adresu URL koncového bodu zřizování SCIM** a  **token nosiče**. Tyto hodnoty se zadají do polí Adresa URL tenanta a tajného tokenu na kartě zřizování vaší aplikace BitaBIZ ve Azure Portal.
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat BitaBIZ pro Automatické zřizování uživatelů po
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat BitaBIZ pro Automatické zřizování uživatelů po
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **BitaBIZ**, na panelu výsledků vyberte **BitaBIZ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **BitaBIZ** , na panelu výsledků vyberte **BitaBIZ** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![BitaBIZ v seznamu výsledků](common/search-new-app.png)
 
@@ -151,10 +151,10 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* BitaBIZ vyžaduje **uživatelské jméno**, **e-mail**, **FirstName** a **LastName** jako povinné atributy. 
+* BitaBIZ vyžaduje **uživatelské jméno** , **e-mail** , **FirstName** a **LastName** jako povinné atributy. 
 * BitaBIZ aktuálně nepodporuje pevné odstranění.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

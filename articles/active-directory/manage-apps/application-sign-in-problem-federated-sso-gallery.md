@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427376"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357908"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problémy s přihlašováním k aplikacím nakonfigurovaným pomocí jednotného přihlašování založené na SAML
 Chcete-li vyřešit potíže s přihlášením, doporučujeme následující postup, který vám umožní lépe diagnostikovat a automatizovat kroky řešení:
@@ -146,6 +146,23 @@ Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Dire
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 
 Na stránce konfigurace jednotného přihlašování založeného na SAML v části **Adresa URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+
+
+## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování.
+`Error: AADSTS75011 Authentication method by which the user authenticated with the service doesn't match requested authentication method 'AuthnContextClassRef'. `
+
+**Možná příčina**
+
+`RequestedAuthnContext`Je v žádosti SAML. To znamená, že aplikace očekává, že je určena parametrem `AuthnContext` `AuthnContextClassRef` . Uživatel však již před přístupem k aplikaci ověřil a `AuthnContext` (metoda ověřování) použitá pro toto předchozí ověřování se liší od požadavku, který je požadován. Například došlo k přístupu federovaného uživatele k MyApp a k WIA. `AuthnContextClassRef`Bude `urn:federation:authentication:windows` . AAD nebude provádět novou žádost o ověření, použije kontext ověřování, přes který ho předali služba IdP (AD FS nebo kterákoli z dalších federačních služeb v tomto případě). Proto dojde k neshodě, pokud aplikace požaduje jiné než `urn:federation:authentication:windows` . Další scénář je při použití vícefaktorového: `'X509, MultiFactor` .
+
+**Řešení**
+
+
+`RequestedAuthnContext` je volitelná hodnota. Pokud je to možné, požádejte aplikaci, aby ji odebral.
+
+Další možností je zajistit, aby se zajistilo, že bude `RequestedAuthnContext` dodržena. To se provede požadavkem na nové ověření. Když to uděláte, bude se při zpracování žádosti SAML provést nové ověřování a `AuthnContext` bude se akceptovat. Chcete-li požádat o nové ověření, požadavek SAML nejvíce obsahuje hodnotu `forceAuthn="true"` . 
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problém při přizpůsobení deklarací SAML odeslaných do aplikace
 Informace o tom, jak přizpůsobit deklarace atributů SAML odeslané do vaší aplikace, najdete [v tématu Mapování deklarací v Azure Active Directory](../develop/active-directory-claims-mapping.md).
