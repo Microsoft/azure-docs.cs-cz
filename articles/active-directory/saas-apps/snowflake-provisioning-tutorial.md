@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 881b1df00f8a962087f1e57b7141ac50f5cfa18b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514822"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355435"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Kurz: Konfigurace Snowflake pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v Snowflake a
 > * Zřizování skupin a členství ve skupinách v Snowflake
 > * [Jednotné přihlašování](./snowflake-tutorial.md) k Snowflake (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -164,7 +164,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * 07/21/2020: Obnovitelné odstranění pro všechny uživatele (prostřednictvím aktivního atributu).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

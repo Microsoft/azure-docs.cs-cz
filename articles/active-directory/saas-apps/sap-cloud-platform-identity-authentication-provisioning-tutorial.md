@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5a2a0c94dc4691c17eebe235055015a2853bacb4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f43d7b2a858c5047c40157429dc5c50b467c8efc
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677579"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353114"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Kurz: Konfigurace ověřování identity cloudové platformy SAP pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je Ukázat kroky, které je třeba provést v rámci ověřo
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -50,22 +50,22 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 ## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>Nastavení ověřování identity pro cloudovou platformu SAP pro zřizování
 
-1. Přihlaste se ke [konzole pro správu ověřování identity cloudové platformy SAP](https://sapmsftintegration.accounts.ondemand.com/admin). Přejděte na **uživatele & autorizací > správce** .
+1. Přihlaste se ke [konzole pro správu ověřování identity cloudové platformy SAP](https://sapmsftintegration.accounts.ondemand.com/admin). Přejděte na **uživatele & autorizací > správce**.
 
     ![Konzola pro správu ověřování identity cloudové platformy SAP](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
 2.  Kliknutím na tlačítko **+ Přidat** na levém panelu přidejte nového správce do seznamu. Vyberte **Přidat systém** a zadejte název systému.   
 
 > [!NOTE]
-> Uživatel pole v ověřování identity cloudové platformy SAP musí být typu **System** . Vytvoření normálního uživatele správce může vést k *neautorizovaným* chybám při zřizování.   
+> Uživatel pole v ověřování identity cloudové platformy SAP musí být typu **System**. Vytvoření normálního uživatele správce může vést k *neautorizovaným* chybám při zřizování.   
 
-3.  V části konfigurovat autorizace přepněte na přepínací tlačítko u **možnosti spravovat uživatele** a **Spravovat skupiny** .
+3.  V části konfigurovat autorizace přepněte na přepínací tlačítko u **možnosti spravovat uživatele** a **Spravovat skupiny**.
 
     ![Ověřování identity cloudové platformy SAP přidat SCIM](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/configurationauth.png)
 
-4. Po aktivaci účtu obdržíte e-mail a nastavíte heslo pro **službu ověřování identity cloudové platformy SAP** .
+4. Po aktivaci účtu obdržíte e-mail a nastavíte heslo pro **službu ověřování identity cloudové platformy SAP**.
 
-4.  Zkopírujte **ID uživatele** a **heslo** . Tyto hodnoty se zadají do polí uživatelské jméno správce a heslo správce v uvedeném pořadí na kartě zřizování aplikace ověřování identity cloudové platformy SAP v Azure Portal.
+4.  Zkopírujte **ID uživatele** a **heslo**. Tyto hodnoty se zadají do polí uživatelské jméno správce a heslo správce v uvedeném pořadí na kartě zřizování aplikace ověřování identity cloudové platformy SAP v Azure Portal.
 
 ## <a name="add-sap-cloud-platform-identity-authentication-from-the-gallery"></a>Přidání ověřování identity cloudové platformy SAP z Galerie
 
@@ -73,11 +73,11 @@ Před konfigurací ověřování identity cloudové platformy SAP pro Automatick
 
 **Pokud chcete přidat ověřování identity cloudové platformy SAP z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory** .
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace** .
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -98,33 +98,33 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro ověřování identity cloudové platformy SAP v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SAP Cloud Platform ověřování identity ověřování** .
+2. V seznamu aplikace vyberte **SAP Cloud Platform ověřování identity ověřování**.
 
     ![Odkaz na ověřování identity cloudové platformy SAP v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://<tenantID>.accounts.ondemand.com/service/scim ` **adresu URL tenanta** . Zadejte hodnoty **ID uživatele** a **hesla** načtené dříve v **uživatelském jménu správce** a v části **heslo správce** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ověřování identity cloudové platformy SAP. Pokud se připojení nepovede, ujistěte se, že váš účet pro ověřování identity cloudové platformy SAP má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://<tenantID>.accounts.ondemand.com/service/scim ` **adresu URL tenanta**. Zadejte hodnoty **ID uživatele** a **hesla** načtené dříve v **uživatelském jménu správce** a v části **heslo správce** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k ověřování identity cloudové platformy SAP. Pokud se připojení nepovede, ujistěte se, že váš účet pro ověřování identity cloudové platformy SAP má oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
-6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě** .
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-7. Klikněte na **Uložit** .
+7. Klikněte na **Uložit**.
 
-8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů pro ověřování identity cloudové platformy SAP** .
+8. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatelů pro ověřování identity cloudové platformy SAP**.
 
     ![Mapování uživatelů pro ověřování identity v cloudové platformě SAP](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
@@ -142,7 +142,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Jakmile budete připraveni na zřízení, klikněte na **Uložit** .
+13. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 

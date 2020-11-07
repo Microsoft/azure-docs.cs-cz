@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517138"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353590"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Kurz: Konfigurace MediusFlow pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v MediusFlow i Azure Active
 > * Zřizování skupin a členství ve skupinách v MediusFlow
 > * Jednotné přihlašování k MediusFlow (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Konfiguraci uložte.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow, která zobrazuje čtvrtý krok integrace. Tlačítko Uložit konfiguraci je zvýrazněné." border="false":::
 
 5. Vyberte zřizování uživatelů a klikněte na **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow, která zobrazuje Pátý krok integrace. Zvýrazní se tlačítka použít zřizování uživatelů a OK." border="false":::
 
 6. Klikněte na **vygenerovat tajný klíč**. Tuto hodnotu zkopírujte a uložte. Tato hodnota se zadá do pole **token tajného** kódu na kartě **zřizování** vaší aplikace MediusFLow ve Azure Portal.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Snímek obrazovky s kartou konfigurace zřizování uživatelů v konzole pro správu MediusFlow Zvýrazní se tlačítka generovat tajný klíč a kopírovat." border="false":::
 
 7. Klikněte na **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Snímek obrazovky s MediusFlow konzolou pro správu s oznámením, že uživatelé budou kliknutím na tlačítko OK vygenerovat nový tajný klíč. Je zvýrazněno tlačítko OK." border="false":::
 
 8. Pokud chcete, aby uživatelé naimportovali s předem definovanou sadou rolí, společností a dalšími obecnými konfiguracemi v MediusFlow, budete ji muset nejdřív nakonfigurovat. Začněte přidáním konfigurace kliknutím na **Přidat novou konfiguraci**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Snímek obrazovky s kartou konfigurace zřizování uživatelů v konzole pro správu MediusFlow Je zvýrazněno tlačítko Přidat novou konfiguraci." border="false":::
 
 9. Zadejte výchozí nastavení pro uživatele. V tomto zobrazení je možné nastavit výchozí atribut. Pokud jsou standardní nastavení v pořádku, stačí zadat jenom platný název společnosti. Vzhledem k tomu, že se tato nastavení konfigurace načítají z Mediusflow, musí být nejdřív nakonfigurovaná. Další informace najdete v části **požadavky** tohoto článku.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Snímek obrazovky s MediusFlowem přidat nové okno Konfigurace K dispozici je mnoho nastavení, včetně nastavení národního prostředí, filtru a uživatelských rolí." border="false":::
 
 10. Kliknutím na **Uložit** uložte konfiguraci uživatele.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Snímek obrazovky s kartou konfigurace zřizování uživatelů v konzole pro správu MediusFlow Tlačítko Uložit je zvýrazněno." border="false":::
 
 11. Pokud chcete získat odkaz pro zřizování uživatelů, klikněte na **odkaz Kopírovat SCIM**. Tuto hodnotu zkopírujte a uložte. Tato hodnota se zadá do pole **Adresa URL tenanta** na kartě **zřizování** aplikace MediusFLow ve Azure Portal.
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Snímek obrazovky s konzolou pro správu MediusFlow V prvním kroku integrace se zvýrazní pole název tenanta MediusFlow a tlačítko ověřit." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Snímek obrazovky s kartou konfigurace zřizování uživatelů v konzole pro správu MediusFlow Tlačítko pro kopírování S C I M je zvýrazněné." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání MediusFlow z Galerie aplikací Azure AD
 
@@ -201,7 +201,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

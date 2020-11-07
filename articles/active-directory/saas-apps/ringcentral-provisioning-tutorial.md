@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8bd7d3e5dc4c263ff2a2ff03c077b59196c3413b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 915133210c9797db7446bf30391635fd36b73bf0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520740"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352788"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v RingCentral i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a RingCentral
 > * [Jednotné přihlašování](./ringcentral-tutorial.md) k RingCentral (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -50,7 +50,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
     ![Konzola pro správu RingCentral](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  V části **vybrat poskytovatele adresářů**zvolte **SCIM** . (V budoucnu bude k dispozici možnost s názvem Azure Active Directory). Klikněte na **Povolit službu SCIM**.
+2.  V části **vybrat poskytovatele adresářů** zvolte **SCIM** . (V budoucnu bude k dispozici možnost s názvem Azure Active Directory). Klikněte na **Povolit službu SCIM**.
 
     ![RingCentral přidat SCIM](media/ringcentral-provisioning-tutorial/scim.png)
 
@@ -152,7 +152,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 
 * 09/10/2020 – byla odebrána podpora atributů DisplayName a Manager.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

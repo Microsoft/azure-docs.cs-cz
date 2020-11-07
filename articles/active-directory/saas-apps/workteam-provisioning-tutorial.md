@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3c2fba1cba2c06e07b262e37eac651afb5c102cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f465438a6be80a1b487a4df7d3ee8bd38be9c102
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317497"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354185"
 ---
 # <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Kurz: Konfigurace Workteam pro Automatické zřizování uživatelů
 
@@ -60,7 +60,7 @@ Před konfigurací Workteam pro Automatické zřizování uživatelů pomocí Az
 
     ![Snímek obrazovky dolní části oddílu nastavení s ikonou zřizování uživatelů S C I M, která se vyvolala](media/workteam-provisioning-tutorial/icon.png)
 
-3. Zkopírujte **základní adresu URL** a **nosný token**. Tyto hodnoty se zadají do pole **Adresa URL klienta**a **tajný token** na kartě zřizování vaší aplikace Workteam ve Azure Portal.
+3. Zkopírujte **základní adresu URL** a **nosný token**. Tyto hodnoty se zadají do pole **Adresa URL klienta** a **tajný token** na kartě zřizování vaší aplikace Workteam ve Azure Portal.
 
     ![Snímek obrazovky S dialogovým oknem nastavení S C I M se ZÁKLADNÍmi textovými poli TOKENu pro R L a NOSIČem](media/workteam-provisioning-tutorial/scim.png)
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat Workteam pro Automatické zřizování uživatelů p
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat Workteam pro Automatické zřizování uživatelů p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Workteam**, na panelu výsledků vyberte **Workteam** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Workteam** , na panelu výsledků vyberte **Workteam** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Workteam v seznamu výsledků](common/search-new-app.png)
 
@@ -148,7 +148,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Workteam. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

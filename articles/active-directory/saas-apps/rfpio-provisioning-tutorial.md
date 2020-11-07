@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278902"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352877"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Kurz: Konfigurace RFPIO pro Automatické zřizování uživatelů
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat RFPIO pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ Pokud chcete nakonfigurovat RFPIO pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **RFPIO**, na panelu výsledků vyberte **RFPIO** a potom kliknutím na tlačítko    **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **RFPIO** , na panelu výsledků vyberte **RFPIO** a potom kliknutím na tlačítko    **Přidat** přidejte aplikaci.
 
     ![RFPIO v seznamu výsledků](common/search-new-app.png)
 
@@ -159,7 +159,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * RFPIO aktuálně nepodporuje zřizování skupin.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

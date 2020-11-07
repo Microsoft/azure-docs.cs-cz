@@ -1,14 +1,14 @@
 ---
 title: Povolení rozšíření virtuálního počítače pomocí šablony Azure Resource Manager
 description: Tento článek popisuje, jak nasadit rozšíření virtuálních počítačů na servery s podporou ARC Azure běžícími v hybridních cloudových prostředích pomocí šablony Azure Resource Manager.
-ms.date: 10/22/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491202"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353862"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Povolení rozšíření virtuálních počítačů Azure pomocí šablony ARM
 
@@ -623,8 +623,85 @@ Chcete-li použít rozšíření agenta závislosti Azure Monitor, je k dispozic
 }
 ```
 
+## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Nasazení rozšíření virtuálního počítače Azure Key Vault (Preview)
+
+Následující JSON zobrazuje schéma pro rozšíření Key Vault VM (Preview). Přípona nevyžaduje chráněná nastavení – veškerá jeho nastavení se považují za veřejné informace. Přípona vyžaduje seznam monitorovaných certifikátů, četnost dotazování a cílové úložiště certifikátů. Konkrétně se jedná o tyto:
+
+### <a name="template-file-for-linux"></a>Soubor šablony pro Linux
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KeyVaultForLinux",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          }
+      }
+     }
+}
+```
+
+### <a name="template-file-for-windows"></a>Soubor šablony pro Windows
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KVVMExtensionForWindows",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+      }
+     }
+}
+```
+
+> [!NOTE]
+> Vaše sledované adresy URL certifikátů by měly být ve formátu `https://myVaultName.vault.azure.net/secrets/myCertName` .
+> 
+> Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](../../key-vault/general/about-keys-secrets-certificates.md) .
+
+Uložte soubor šablony na disk. Pak můžete rozšíření nainstalovat na všechny připojené počítače ve skupině prostředků pomocí následujícího příkazu.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-* Rozšíření můžete nasadit a odebrat pomocí Azure CLI nebo PowerShellu.
+* Rozšíření virtuálních počítačů můžete nasadit, spravovat a odebírat pomocí [Azure PowerShell](manage-vm-extensions-powershell.md), z [Azure Portal](manage-vm-extensions-portal.md)nebo pomocí [Azure CLI](manage-vm-extensions-cli.md).
 
 * Informace o řešení potíží najdete v [Průvodci pro řešení potíží s rozšířeními virtuálních počítačů](troubleshoot-vm-extensions.md).

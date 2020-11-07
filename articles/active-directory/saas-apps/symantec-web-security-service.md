@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7b4a5e76ec8dad66bf300cc3e1d55471383f83ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7e0db1b0bc1e7aef68ee06f3bdd5e5e0f83b73e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285791"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354695"
 ---
 # <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby WSS (Symantec Web Security Service) pro Automatické zřizování uživatelů
 
@@ -52,7 +52,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 Než začnete konfigurovat službu Symantec Web Security Service (WSS) pro Automatické zřizování uživatelů s Azure AD, budete muset povolit zřizování SCIM na službě Symantec Web Security Service (WSS).
 
-1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do **Solutions**  >  **služby**řešení.
+1. Přihlaste se ke [konzole pro správu služby zabezpečení webu Symantec](https://portal.threatpulse.com/login.jsp). Přejděte do **Solutions**  >  **služby** řešení.
 
     ![WSS (Symantec Web Security Service)](media/symantec-web-security-service/service.png)
 
@@ -64,7 +64,7 @@ Než začnete konfigurovat službu Symantec Web Security Service (WSS) pro Autom
 
     ![Snímek obrazovky s možností synchronizace skupin uživatelů třetích stran & skupin](media/symantec-web-security-service/third-party-users.png)
 
-4.  Zkopírujte **adresu URL** a **token**pro SCIM. Tyto hodnoty se zadají do pole **Adresa URL klienta** a **tajný token** na kartě zřizování aplikace služby Web Security (WSS) společnosti Symantec v Azure Portal.
+4.  Zkopírujte **adresu URL** a **token** pro SCIM. Tyto hodnoty se zadají do pole **Adresa URL klienta** a **tajný token** na kartě zřizování aplikace služby Web Security (WSS) společnosti Symantec v Azure Portal.
 
     ![Snímek obrazovky s dialogovým oknem nová integrace s textem S C I M U R L a textovými poli tokenu s názvem.](media/symantec-web-security-service/scim.png)
 
@@ -78,7 +78,7 @@ Pokud chcete nakonfigurovat službu WSS Web Security Service (WSS) pro Automatic
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat službu WSS Web Security Service (WSS) pro Automatic
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **společnost Symantec Web Security**, na panelu výsledků vyberte možnost **Symantec Web Security** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **společnost Symantec Web Security** , na panelu výsledků vyberte možnost **Symantec Web Security** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Symantec Web Security Service (WSS) v seznamu výsledků](common/search-new-app.png)
 
@@ -159,7 +159,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD na službě Symantec Web Security Service (WSS). Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

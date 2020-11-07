@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: d57afbe2ebdde7755eec659f56e402315a60ec7d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676615"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352723"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Kurz: Konfigurace zřizování SAP SuccessFactors pro uživatele služby Active Directory 
 Cílem tohoto kurzu je Ukázat kroky, které potřebujete k tomu, abyste uživatelům zřídili SuccessFactors zaměstnanci v rámci služby Active Directory (AD) a Azure AD s volitelným zpětným zápisem e-mailové adresy na SuccessFactors. 
@@ -97,30 +97,30 @@ Spolupracujte s týmem správce SuccessFactors nebo partnerem pro implementaci a
 * Přihlaste se k SAP SuccessFactors pomocí uživatelského účtu, který má přístup k centru pro správu.
 * Vyhledejte *možnosti spravovat role oprávnění* a pak ve výsledcích hledání vyberte **Spravovat role oprávnění** .
   ![Správa rolí oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* V seznamu role oprávnění klikněte na **vytvořit nový** .
+* V seznamu role oprávnění klikněte na **vytvořit nový**.
   > [!div class="mx-imgBorder"]
   > ![Vytvořit novou roli oprávnění](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
 * Přidejte název a **Popis** **role** nové role oprávnění. Název a popis by měl označovat, že role je určena pro oprávnění k použití rozhraní API.
   > [!div class="mx-imgBorder"]
   > ![Podrobnosti role oprávnění](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* V části nastavení oprávnění klikněte na **oprávnění...** , přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci** . Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování** .
+* V části nastavení oprávnění klikněte na **oprávnění...** , přejděte dolů na seznam oprávnění a klikněte na **spravovat nástroje pro integraci**. Zaškrtněte políčko, pokud **chcete, aby správce mohl přistupovat k rozhraní OData API prostřednictvím základního ověřování**.
   > [!div class="mx-imgBorder"]
   > ![Správa integračních nástrojů](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance** . Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
+* Posuňte se dolů ve stejném poli a vyberte **centrální rozhraní API pro zaměstnance**. Přidáním oprávnění, jak je vidět níže, můžete číst pomocí rozhraní ODATA API a upravit pomocí rozhraní ODATA API. Vyberte možnost upravit, pokud chcete použít stejný účet ke zpětnému zápisu do SuccessFactors scénáře. 
   > [!div class="mx-imgBorder"]
   > ![Oprávnění ke čtení zápisu](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
   >[!NOTE]
   >Úplný seznam atributů načtených touto zřizovací aplikací najdete v [referenčních informacích k atributům SuccessFactors](../app-provisioning/sap-successfactors-attribute-reference.md) .
 
-* Klikněte na **Hotovo** . Klikněte na **Save Changes** (Uložit změny).
+* Klikněte na **Hotovo**. Klikněte na **Save Changes** (Uložit změny).
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Vytvoření skupiny oprávnění pro uživatele rozhraní API
 
 * V centru pro správu SuccessFactors vyhledejte *možnosti spravovat skupiny oprávnění* a pak ve výsledcích hledání vyberte **Spravovat skupiny oprávnění** .
   > [!div class="mx-imgBorder"]
   > ![Správa skupin oprávnění](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* V okně Spravovat skupiny oprávnění klikněte na **vytvořit nový** .
+* V okně Spravovat skupiny oprávnění klikněte na **vytvořit nový**.
   > [!div class="mx-imgBorder"]
   > ![Přidat novou skupinu](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * Přidejte název skupiny pro novou skupinu. Název skupiny by měl označovat, že skupina je určena pro uživatele rozhraní API.
@@ -162,7 +162,7 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z SuccessFac
 
 2. V levém navigačním panelu vyberte **Azure Active Directory**
 
-3. Vyberte **podnikové aplikace** a pak **všechny aplikace** .
+3. Vyberte **podnikové aplikace** a pak **všechny aplikace**.
 
 4. Vyberte **Přidat aplikaci** a vyberte kategorii **vše** .
 
@@ -247,7 +247,7 @@ V tomto kroku navážeme připojení k SuccessFactors a službě Active Director
 
    * **Heslo správce –** Zadejte heslo uživatelského účtu rozhraní SuccessFactors API. 
 
-   * **Adresa URL tenanta –** Zadejte název koncového bodu SuccessFactors OData API Services. Zadejte pouze název hostitele serveru bez protokolu HTTP nebo HTTPS. Tato hodnota by měla vypadat takto: **<API-server-name>. SuccessFactors.com** .
+   * **Adresa URL tenanta –** Zadejte název koncového bodu SuccessFactors OData API Services. Zadejte pouze název hostitele serveru bez protokolu HTTP nebo HTTPS. Tato hodnota by měla vypadat takto: **<API-server-name>. SuccessFactors.com**.
 
    * **Doménová struktura služby Active Directory –** Název domény služby Active Directory, jak je zaregistrován u agenta. Pomocí rozevírací nabídky vyberte cílovou doménu pro zřizování. Tato hodnota je obvykle řetězec jako: *contoso.com*
 
@@ -270,7 +270,7 @@ V tomto kroku navážeme připojení k SuccessFactors a službě Active Director
 
 V této části nakonfigurujete, jak budou data uživatelů z SuccessFactors do služby Active Directory přetékat.
 
-1. Na kartě zřizování v části **mapování** klikněte na **synchronizovat uživatele SuccessFactors do místní služby Active Directory** .
+1. Na kartě zřizování v části **mapování** klikněte na **synchronizovat uživatele SuccessFactors do místní služby Active Directory**.
 
 1. V poli **obor zdrojového objektu** můžete vybrat, které sady uživatelů v SuccessFactors mají být v oboru pro zřizování služby AD, definováním sady filtrů založených na atributech. Výchozí obor je "Všichni uživatelé v SuccessFactors". Příklady filtrů:
 
@@ -340,9 +340,9 @@ Po dokončení konfigurace aplikace SuccessFactors Provisioning můžete službu
 > [!TIP]
 > Ve výchozím nastavení se při zapnutí služby zřizování spustí operace zřizování pro všechny uživatele v oboru. Pokud dojde k chybám při mapování nebo potížích s daty SuccessFactors, úloha zřizování může selhat a přejít do stavu karantény. Aby k tomu nedocházelo, doporučujeme nakonfigurovat filtr **oboru zdrojového objektu** a otestovat mapování atributů s několika testovacími uživateli před spuštěním úplné synchronizace pro všechny uživatele. Jakmile ověříte, že mapování funguje a poskytuje požadované výsledky, můžete buď odebrat filtr, nebo ho postupně rozšířit, aby zahrnoval více uživatelů.
 
-1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto** .
+1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na **Uložit** .
+2. Klikněte na **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi SuccessFactors. V indikátoru průběhu můžete sledovat průběh cyklu synchronizace. 
 

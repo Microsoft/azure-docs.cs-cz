@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: cc094376ed6d5a183b65a598ca9d0a55670be70e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7e3f8e5e975468b468712ae8907cdca0e80a5f9f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676726"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352604"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Kurz: Konfigurace izolovaného prostoru Salesforce pro Automatické zřizování uživatelů
 
@@ -61,7 +61,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 1. Vyberte instanci izolovaného prostoru (sandbox) Salesforce a pak vyberte kartu **zřizování** .
 
-1. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
+1. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Snímek obrazovky ukazuje stránku zřizování izolovaného prostoru (sandbox) s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
@@ -71,11 +71,11 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
    
     b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
 
-1. Pokud chcete získat token zabezpečení izolovaného prostoru Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce izolovaného prostoru (Salesforce). V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení** .
+1. Pokud chcete získat token zabezpečení izolovaného prostoru Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce izolovaného prostoru (Salesforce). V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení**.
 
      ![Snímek obrazovky se zobrazuje vybraný odkaz nastavení.](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
 
-1. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení** .
+1. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení**.
   
     ![Snímek obrazovky s vybraným osobním údajem resetování tokenu zabezpečení](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
 

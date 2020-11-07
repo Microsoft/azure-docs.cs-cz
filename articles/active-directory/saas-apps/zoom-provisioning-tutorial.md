@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 46312dc2037eb128908e743f29474b9b4e79a2a6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 280083ccbd732e95796013bf2b2c08e96564c24c
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519839"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354151"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Kurz: Konfigurace přiblížení pro Automatické zřizování uživatelů
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v rámci lupy i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a přiblížením
 > * [Jednotné přihlašování](./zoom-tutorial.md) pro přiblížení (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -101,7 +101,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://api.zoom.us/scim` **adresu URL tenanta**. Zadejte hodnotu **tokenu JWT** získanou dříve v **tokenu tajného**kódu. Klikněte na **Test připojení** a ujistěte se, že se může služba Azure AD připojit k přiblížení. Pokud se připojení nepovede, zajistěte, aby měl váš účet přiblížení oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://api.zoom.us/scim` **adresu URL tenanta**. Zadejte hodnotu **tokenu JWT** získanou dříve v **tokenu tajného** kódu. Klikněte na **Test připojení** a ujistěte se, že se může služba Azure AD připojit k přiblížení. Pokud se připojení nepovede, zajistěte, aby měl váš účet přiblížení oprávnění správce, a zkuste to znovu.
 
     ![Zřizování lupy](./media/zoom-provisioning-tutorial/provisioning.png)
 
@@ -154,7 +154,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * 05/14/2020 – byla přidána podpora operací aktualizace pro e-maily [Type EQ "Work"] Attribute.
 * 10/20/2020 – Přidali jsme podporu pro dvě nové role "licencované" a "on-Prem", která nahradí stávající role "pro" a "Corp". V budoucnu bude odebrána podpora pro role pro a Corp.
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

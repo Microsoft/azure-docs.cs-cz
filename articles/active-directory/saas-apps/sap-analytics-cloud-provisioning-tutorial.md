@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7d9f5792fe3da9f47dd1391d1e7cb0162fd36fad
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670843"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352944"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Kurz: Konfigurace cloudu SAP Analytics pro Automatické zřizování uživatelů
 
@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v cloudu SAP Analytics i Az
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a cloudem SAP Analytics
 > * [Jednotné přihlašování](sapboc-tutorial.md) ke službě SAP Analytics Cloud (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -52,11 +52,11 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 ## <a name="step-2-configure-sap-analytics-cloud-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace cloudu SAP Analytics pro podporu zřizování s Azure AD
 
-1. Přihlaste se ke [konzole správce zřizování SAP identity](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) pomocí účtu správce a pak vyberte **proxy systémy** .
+1. Přihlaste se ke [konzole správce zřizování SAP identity](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) pomocí účtu správce a pak vyberte **proxy systémy**.
 
    ![Systémy proxy SAP](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
 
-2. Vyberte **Vlastnosti** .
+2. Vyberte **Vlastnosti**.
 
    ![Vlastnosti systémů proxy SAP](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-properties.png)
 
@@ -80,7 +80,7 @@ Přidejte Cloud SAP Analytics z Galerie aplikací Azure AD a začněte spravovat
 
 Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Při přiřazování uživatelů a skupin ke cloudu SAP Analytics je nutné vybrat jinou roli než **výchozí přístup** . Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
+* Při přiřazování uživatelů a skupin ke cloudu SAP Analytics je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
 
 * Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -91,33 +91,33 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-analytics-cloud-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Cloud SAP Analytics v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **Cloud SAP Analytics** .
+2. V seznamu aplikace vyberte **Cloud SAP Analytics**.
 
     ![Odkaz na Cloud SAP Analytics v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Snímek obrazovky s možnostmi správy pomocí možnosti zřizování s názvem.](common/provisioning.png)
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte hodnotu adresy URL tenanta načtenou dříve v **adrese URL tenanta** . Zadejte hodnotu přístupového tokenu dříve získanou v **tajném tokenu** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k InVision. Pokud se připojení nepovede, ujistěte se, že váš cloudový účet SAP Analytics má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte hodnotu adresy URL tenanta načtenou dříve v **adrese URL tenanta**. Zadejte hodnotu přístupového tokenu dříve získanou v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k InVision. Pokud se připojení nepovede, ujistěte se, že váš cloudový účet SAP Analytics má oprávnění správce, a zkuste to znovu.
 
     ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
-6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem** .
+6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 
     ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-7. Vyberte **Uložit** .
+7. Vyberte **Uložit**.
 
-8. V části **mapování** vyberte možnost **zřídit Azure Active Directory uživatelé** .
+8. V části **mapování** vyberte možnost **zřídit Azure Active Directory uživatelé**.
 
 9. Zkontrolujte atributy uživatelů synchronizované z Azure AD až SAP Analytics Cloud v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v cloudu SAP Analytics pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), budete muset zajistit, aby cloudové rozhraní API SAP Analytics podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
@@ -140,11 +140,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-13. Jakmile budete připraveni na zřízení, klikněte na **Uložit** .
+13. Jakmile budete připraveni na zřízení, klikněte na **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení** . Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:

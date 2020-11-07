@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 894d1c4e80619887c52970065de9e143cf205bd1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5fd1f310d952873ed178a88b830ee979344143c8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453987"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355307"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Kurz: Konfigurace zástupné pro Automatické zřizování uživatelů
 
@@ -51,7 +51,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
     ![Integrace zástupné](media/envoy-provisioning-tutorial/envoy01.png)
 
-2. Pro **integraci Microsoft Azure SCIM**klikněte na **nainstalovat** .
+2. Pro **integraci Microsoft Azure SCIM** klikněte na **nainstalovat** .
 
     ![Instalace zástupné](media/envoy-provisioning-tutorial/envoy02.png)
 
@@ -98,7 +98,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://app.envoy.com/scim/v2` **adresu URL tenanta**. V **tokenu tajného**kódu se zaznamenala hodnota **tokenu Bearer OAuth** získaná dřív. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k zástupné. Pokud se připojení nepovede, ujistěte se, že má váš účet zástupné oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://app.envoy.com/scim/v2` **adresu URL tenanta**. V **tokenu tajného** kódu se zaznamenala hodnota **tokenu Bearer OAuth** získaná dřív. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k zástupné. Pokud se připojení nepovede, ujistěte se, že má váš účet zástupné oprávnění správce, a zkuste to znovu.
 
    ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/envoy-tutorial/provisioning.png)
 
@@ -167,7 +167,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 * Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

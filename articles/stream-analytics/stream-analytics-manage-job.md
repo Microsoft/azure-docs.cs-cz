@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/03/2019
-ms.openlocfilehash: a07fccc79c34509d9d5b7073b1c28b3f60fe8f61
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 10/30/2020
+ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123689"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354426"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Kurz: Analýza dat telefonního hovoru pomocí Stream Analytics a vizualizace výsledků v řídicím panelu Power BI
 
@@ -28,12 +28,12 @@ V tomto kurzu se naučíte:
 > * Testovat a spustit úlohu
 > * Vizualizovat výsledky v Power BI
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, proveďte následující akce:
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se na [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 * Stáhněte si aplikaci pro generování událostí telefonních hovorů [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Případně získejte zdrojový kód z [GitHubu](https://aka.ms/azure-stream-analytics-telcogenerator).
 * Budete potřebovat účet Power BI.
 
@@ -43,25 +43,26 @@ Než bude Stream Analytics moct analyzovat datový proud podvodných volání, m
 
 Pomocí následujícího postupu vytvořte centrum událostí a odešlete do něj data volání:
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
-2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Event Hubs**.
 
    ![Vytvoření centra událostí Azure na portálu](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. Vyplňte podokno **vytvořit obor názvů** s následujícími hodnotami:
 
    |**Nastavení**  |**Navrhovaná hodnota** |**Popis**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
+   |Název     | asaTutorialEventHub        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Your subscription\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
    |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
    |Umístění     |   USA – západ 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
 
-4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit** .
+4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **zkontrolovat + vytvořit**. Pak vyberte **vytvořit** a zahajte nasazení.
 
    ![Vytvořit obor názvů centra událostí v Azure Portal](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
-5. Po dokončení nasazení oboru názvů přejděte do části **Všechny prostředky** a v seznamu prostředků Azure vyhledejte *myEventHubsNS* . Výběrem oboru názvů *myEventHubsNS* ho otevřete.
-6. Pak vyberte **+ Centrum událostí** a jako **Název** zadejte *MyEventHub* nebo jiný název podle vašeho výběru. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit** . Potom počkejte na úspěšné dokončení nasazení.
+5. Po dokončení nasazení oboru názvů, přejít na **všechny prostředky** a najít *asaTutorialEventHub* v seznamu prostředků Azure. Vyberte *asaTutorialEventHub* a otevřete ji.
+
+6. Dále vyberte **+ centrum událostí** a zadejte **název** centra událostí. Nastavte **počet oddílů** na *2*.  Ve zbývajících nastaveních použijte výchozí možnosti a vyberte **vytvořit**. Potom počkejte na úspěšné dokončení nasazení.
 
    ![Konfigurace centra událostí v Azure Portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
@@ -69,13 +70,13 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
 
 Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí mít centrum událostí zásady, které povolí odpovídající přístup. Zásady přístupu vytváří připojovací řetězec, který obsahuje informace o autorizaci.
 
-1. Přejděte do centra událostí, které jste vytvořili v předchozím kroku, MyEventHub *. V části **Nastavení** vyberte **Zásady sdíleného přístupu** a pak vyberte **+ Přidat** .
+1. Přejděte do centra událostí, které jste vytvořili v předchozím kroku, a *MyEventHub*. V části **Nastavení** vyberte **Zásady sdíleného přístupu** a pak vyberte **+ Přidat**.
 
-2. Pojmenujte zásadu **MyPolicy** a ujistěte se, že je zaškrtnutá možnost **Spravovat** . Potom vyberte **Vytvořit** .
+2. Pojmenujte zásadu **MyPolicy** a ujistěte se, že je zaškrtnutá možnost **Spravovat**. Potom vyberte **Vytvořit**.
 
    ![Vytvoření zásad sdíleného přístupu k centru událostí](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
-3. Po vytvoření zásady ji výběrem otevřete a vyhledejte **Připojovací řetězec – primární klíč** . Vyberte modré tlačítko **kopírovat** vedle připojovacího řetězce.
+3. Po vytvoření zásady klikněte na název zásady a otevřete zásadu. Najděte **připojovací řetězec – primární klíč**. Vyberte tlačítko **Kopírovat** vedle připojovacího řetězce.
 
    ![Uložení připojovacího řetězce zásady sdíleného přístupu](media/stream-analytics-manage-job/save-connection-string.png)
 
@@ -85,21 +86,21 @@ Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>`
 
-   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint** , **SharedAccessKeyName** , **SharedAccessKey** a **EntityPath** .
+   Všimněte si, že připojovací řetězec obsahuje více párů klíč-hodnota oddělené středníky: **Endpoint** , **SharedAccessKeyName** , **SharedAccessKey** a **EntityPath**.
 
 ## <a name="start-the-event-generator-application"></a>Spuštění aplikace generátoru událostí
 
 Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, aby odesílala data do služby Azure Event Hubs, kterou jste vytvořili dříve.
 
 1. Extrahujte obsah souboru [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).
-2. Otevřete soubor `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` v textovém editoru podle vašeho výběru (existuje více než jeden soubor .config, proto se ujistěte, že otevíráte správný soubor).
+2. Otevřete `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` soubor v textovém editoru podle vašeho výběru (existuje více než jeden soubor. config, takže nezapomeňte otevřít správný soubor.)
 
 3. Aktualizujte element `<appSettings>` v konfiguračním souboru následujícím způsobem:
 
    * Nastavte hodnotu klíče *EventHubName* na hodnotu EntityPath v připojovacím řetězci.
    * Nastavte hodnotu klíče *Microsoft. ServiceBus. ConnectionString* na připojovací řetězec bez hodnoty EntityPath (Nezapomeňte odebrat středník, který ho předchází).
 
-4. Uložte soubor.
+4. Soubor uložte.
 5. Dále otevřete příkazové okno a přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator. Potom zadejte následující příkaz:
 
    ```cmd
@@ -113,7 +114,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 
    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí. Data telefonních hovorů obsahují následující pole:
 
-   |**Záznam**  |**Definice**  |
+   |**Záznam**  |**Definition**  |
    |---------|---------|
    |CallrecTime    |  Časové razítko pro počáteční čas volání.       |
    |SwitchNum     |  Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou přepínače řetězce reprezentující zemi nebo oblast původu (USA, Čína, Spojené království, Německo nebo Austrálie).       |
@@ -128,9 +129,9 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
 
 1. Pokud chcete vytvořit úlohu Stream Analytics, přejděte na web [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu** .
+2. Vyberte **vytvořit prostředek** a vyhledejte **Stream Analytics úlohy**. Vyberte dlaždici **Stream Analytics úlohy** a vyberte * vytvořit * *.
 
-3. Vyplňte podokno **Nová úloha Stream Analytics** následujícími hodnotami:
+3. Do formuláře **nové úlohy Stream Analytics** zadejte následující hodnoty:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -149,43 +150,49 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
 
 Dalším krokem je definování vstupního zdroje, ze kterého bude úloha číst data pomocí centra událostí, které jste vytvořili v předchozí části.
 
-1. Na webu Azure Portal otevřete podokno **Všechny prostředky** a vyhledejte úlohu Stream Analytics *ASATutorial* .
+1. V Azure Portal otevřete stránku **všechny prostředky** a vyhledejte úlohu Stream Analytics *s názvem asatutorial* .
 
-2. V podokně úlohy Stream Analytics v části **Topologie úlohy** vyberte možnost **Vstupy** .
+2. V části **topologie úlohy** Stream Analytics úlohy vyberte **vstupy**.
 
-3. Vyberte **+ Přidat vstup streamu** a **Centrum událostí** . Vyplňte podokno následujícími hodnotami:
+3. Vyberte **+ Přidat vstup streamu** a **Centrum událostí**. Vyplňte vstupní formulář s následujícími hodnotami:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
    |Alias vstupu     |  CallStream       |  Zadejte popisný název, který bude identifikovat váš vstup. Vstupní alias může obsahovat jenom alfanumerické znaky, spojovníky a podtržítka a musí být dlouhý 3 až 63 znaků.       |
    |Předplatné    |   \<Your subscription\>      |   Vyberte předplatné Azure, ve kterém jste vytvořili centrum událostí. Centrum událostí může být ve stejném předplatném jako úloha Stream Analytics, ale i v jiném.       |
-   |Obor názvů centra událostí    |  myEventHubsNS       |  Vyberte obor názvů centra událostí, který jste vytvořili v předchozí části. Všechny obory názvů centra událostí dostupné v aktuálním předplatném jsou uvedeny v rozevírací nabídce.       |
+   |Obor názvů centra událostí    |  asaTutorialEventHub       |  Vyberte obor názvů centra událostí, který jste vytvořili v předchozí části. Všechny obory názvů centra událostí dostupné v aktuálním předplatném jsou uvedeny v rozevírací nabídce.       |
    |Název centra událostí    |   MyEventHub      |  Vyberte centrum událostí, které jste vytvořili v předchozí části. Všechna centra událostí dostupná v aktuálním předplatném jsou uvedena v rozevírací nabídce.       |
    |Název zásad centra událostí   |  MyPolicy       |  Vyberte zásady sdíleného přístupu k centru událostí, které jste vytvořili v předchozí části. Všechny zásady centra událostí dostupné v aktuálním předplatném jsou uvedeny v rozevírací nabídce.       |
 
-4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Uložit** .
+4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Uložit**.
 
    ![Konfigurace vstupu Azure Stream Analytics](media/stream-analytics-manage-job/configure-stream-analytics-input.png)
 
 ## <a name="configure-job-output"></a>Konfigurace výstupu úlohy
 
-Posledním krokem je definování výstupní jímky pro úlohu, do které může zapisovat transformovaná data. V tomto kurzu data vypíšete a vizualizujete pomocí Power BI.
+Posledním krokem je definování výstupní jímky, kde úloha může zapisovat transformovaná data. V tomto kurzu data vypíšete a vizualizujete pomocí Power BI.
 
-1. Na webu Azure Portal otevřete podokno **Všechny prostředky** a pak úlohu Stream Analytics *ASATutorial* .
+1. Z Azure Portal otevřete **všechny prostředky** a vyberte úlohu Stream Analytics *s názvem asatutorial* .
 
-2. V podokně úlohy Stream Analytics v části **Topologie úlohy** vyberte možnost **Výstupy** .
+2. V části **topologie úlohy** Stream Analytics úlohy vyberte možnost **výstupy** .
 
-3. Vyberte **+ Přidat**  >  **Power BI** . Potom ve formuláři vyplňte následující podrobnosti a vyberte **Autorizovat** :
+3. Vyberte **+ Přidat**  >  **Power BI**. Potom vyberte **autorizovat** a postupujte podle výzev k ověření Power BI.
+
+:::image type="content" source="media/stream-analytics-manage-job/authorize-power-bi.png" alt-text="tlačítko pro autorizaci pro Power BI":::
+
+4. Vyplňte formulář výstupu s následujícími podrobnostmi a vyberte **Uložit** :
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
    |Alias pro výstup  |  MyPBIoutput  |
+   |Pracovní prostor skupiny| Můj pracovní prostor |
    |Název datové sady  |   ASAdataset  |
    |Název tabulky |  ASATable  |
+   | Režim ověřování | Token uživatele |
 
    ![Konfigurace výstupu Stream Analytics](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Když vyberete **Autorizovat** , otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit** . Pokud chcete použít spravovanou identitu, přečtěte si téma [použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI](powerbi-output-managed-identity.md).
+   V tomto kurzu se používá režim ověřování *tokenem uživatele* . Pokud chcete použít spravovanou identitu, přečtěte si téma [použití spravované identity k ověření Azure Stream Analytics úlohy pro Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definování dotazu pro analýzu vstupních dat
 
@@ -195,7 +202,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
 
 1. V Azure Portal otevřete podokno **všechny prostředky** a přejděte do úlohy služby **s názvem asatutorial** Stream Analytics, kterou jste vytvořili dříve.
 
-2. V podokně úlohy Stream Analytics v části **Topologie úlohy** vyberte možnost **Dotaz** . V okně dotazu se zobrazí vstupy a výstupy, které jsou pro úlohu nakonfigurované, a můžete v něm vytvořit dotaz, který transformuje vstupní stream.
+2. V části **topologie úlohy** Stream Analytics úlohy vyberte možnost **dotazu** . Okno dotazu obsahuje seznam vstupů a výstupů, které jsou pro úlohu nakonfigurované, a umožňuje vytvořit dotaz pro transformaci vstupního streamu.
 
 3. Nahraďte existující dotaz v editoru následujícím dotazem, který provádí spojení sama na sebe v 5sekundovém intervalu dat volání:
 
@@ -212,7 +219,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
 
    Při kontrole podvodných volání můžete ověřovat spojení sama na sebe ve streamovaných datech podle hodnoty `CallRecTime`. Pak můžete vyhledat záznamy volání `CallingIMSI` , kde hodnota (původní číslo) je stejná, ale `SwitchNum` hodnota (země/oblast původu) se liší. Když použijete operaci JOIN se streamovanými daty, musí spojení určit nějaké limity, jak daleko mohou být odpovídající řádky vzdáleny v čase. Protože streamování dat je nekonečné, jsou časové hranice pro relaci určené v klauzuli spojení **ON** pomocí funkce [DATEDIFF](/stream-analytics-query/datediff-azure-stream-analytics).
 
-   Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF** . Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
+   Tento dotaz je jako normální spojení SQL, kromě funkce **DATEDIFF**. Funkce **DATEDIFF** použitá v tomto dotazu je specifická pro Stream Analytics a musí se nacházet v rámci klauzule `ON...BETWEEN`.
 
 4. **Uložte** dotaz.
 
@@ -220,40 +227,32 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
 
 ## <a name="test-your-query"></a>Otestování dotazu
 
-Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestujte dotaz provedením následujících kroků:
+Dotaz můžete testovat z editoru dotazů. Otestujte dotaz provedením následujících kroků:
 
 1. Ujistěte se, že je aplikace TelcoGenerator spuštěná a vytváří záznamy telefonních hovorů.
 
-2. V podokně **Dotaz** vyberte tečky vedle vstupu *CallStream* a pak vyberte **Ukázková data ze vstupu** .
-
-3. V poli **Minuty** nastavte hodnotu 3 a vyberte **OK** . Ze vstupního streamu se pak vytvoří ukázka ze tří minut dat. Když jsou ukázková data připravená, zobrazí se vám upozornění. Stav vytváření ukázkových dat můžete sledovat v oznamovacím pruhu.
-
-   Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, ukázková data se zahodí, a pokud budete chtít provést testování, budete muset vytvořit novou sadu ukázkových dat. Alternativně můžete použít soubor JSON s ukázkovými daty z [GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) a potom tento soubor JSON nahrát a použít jako ukázková data pro vstup *CallStream* .
-
-   ![Vizuál, jak vzorkovat vstupní data pro Stream Analytics](media/stream-analytics-manage-job/sample-input-data-asa.png)
-
-4. Vyberte **Test** a otestujte dotaz. Měly by se zobrazit následující výsledky:
+2. Vyberte **Test** a otestujte dotaz. Měly by se zobrazit následující výsledky:
 
    ![Výstup z Stream Analytics testu dotazu](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>Spuštění úlohy a vizualizace výstupu
 
-1. Pokud chcete úlohu spustit, přejděte do podokna **Přehled** vaší úlohy a vyberte **Spustit** .
+1. Chcete-li spustit úlohu, přejděte do **přehledu** úlohy a vyberte možnost **Spustit**.
 
-2. Vyberte **Nyní** pro čas spuštění výstupu úlohy a vyberte **Spustit** . Stav úlohy můžete sledovat v oznamovacím pruhu.
+2. Vyberte **Nyní** pro čas spuštění výstupu úlohy a vyberte **Spustit**. Stav úlohy můžete sledovat v oznamovacím pruhu.
 
 3. Po úspěšném provedení úlohy přejděte do [Power BI](https://powerbi.com/) a přihlaste se pomocí svého pracovního nebo školního účtu. Pokud dotaz úlohy Stream Analytics vypisuje výsledky, na kartě **Datové sady** se zobrazí existující datová sada *ASAdataset* , kterou jste vytvořili.
 
-4. V pracovním prostoru Power BI vyberte **+ Vytvořit** a vytvořte nový řídicí panel *Podvodná volání* .
+4. V pracovním prostoru Power BI vyberte **+ Vytvořit** a vytvořte nový řídicí panel *Podvodná volání*.
 
-5. V horní části okna vyberte **Přidat dlaždici** . Potom vyberte **Vlastní streamovaná data** a **Další** . V části **Vaše datové sady** zvolte **ASAdataset** . V rozevíracím seznamu **typ vizualizace** vyberte **karta** a přidejte **falešná volání** do **polí** . Vyberte **Další** , zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.
+5. V horní části okna vyberte **Upravit** a **Přidat dlaždici**. Potom vyberte **Vlastní streamovaná data** a **Další**. V části **Vaše datové sady** zvolte **ASAdataset**. V rozevíracím seznamu **typ vizualizace** vyberte **karta** a přidejte **falešná volání** do **polí**. Vyberte **Další** , zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.
 
    ![Vytvoření dlaždic řídicího panelu Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
 6. Zopakujte krok 5 s následujícími možnostmi:
    * Jako typ vizualizace vyberte spojnicový graf.
-   * Přidejte osu a vyberte **windowend** .
-   * Přidejte hodnotu a vyberte **podvodnávolání** .
+   * Přidejte osu a vyberte **windowend**.
+   * Přidejte hodnotu a vyberte **podvodnávolání**.
    * Jako **časové okno pro zobrazení** vyberte posledních 10 minut.
 
 7. Po přidání obou dlaždic by váš řídicí panel měl vypadat jako v následujícím příkladu. Všimněte si, že pokud vaše aplikace pro odesílatele centra událostí a Stream Analytics běží, váš Power BI řídicí panel se pravidelně aktualizuje, protože dorazí na nová data.
@@ -269,9 +268,9 @@ Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vlo�
 
 1. Vyberte možnost **Přihlásit se k Power BI** , která aplikaci udělí přístup k řídicím panelům v účtu Power BI.
 
-2. Vyberte tlačítko **Získat řídicí panely** , které zobrazí tabulku s přehledem řídicích panelů ve vašem účtu. Vyhledejte název řídicího panelu **powerbi-embedded-dashboard** , který jste vytvořili dříve, a zkopírujte odpovídající hodnotu **EmbedUrl** .
+2. Vyberte tlačítko **Získat řídicí panely** , které zobrazí tabulku s přehledem řídicích panelů ve vašem účtu. Vyhledejte název řídicího panelu **powerbi-embedded-dashboard** , který jste vytvořili dříve, a zkopírujte odpovídající hodnotu **EmbedUrl**.
 
-3. Nakonec vložte hodnotu **EmbedUrl** do odpovídajícího textového pole a vyberte **Vložit řídicí panel** . Nyní můžete vidět stejný řídicí panel vložený do webové aplikace.
+3. Nakonec vložte hodnotu **EmbedUrl** do odpovídajícího textového pole a vyberte **Vložit řídicí panel**. Nyní můžete vidět stejný řídicí panel vložený do webové aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

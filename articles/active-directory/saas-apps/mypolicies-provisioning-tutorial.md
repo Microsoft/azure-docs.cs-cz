@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850485"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353474"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Kurz: Konfigurace myPolicies pro Automatické zřizování uživatelů
 
@@ -66,7 +66,7 @@ Pokud chcete nakonfigurovat myPolicies pro Automatické zřizování uživatelů
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat myPolicies pro Automatické zřizování uživatelů
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **myPolicies**, na panelu výsledků vyberte **myPolicies** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **myPolicies** , na panelu výsledků vyberte **myPolicies** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![myPolicies v seznamu výsledků](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 5. V části **přihlašovací údaje správce** zadejte `https://<myPoliciesCustomDomain>.mypolicies.com/scim` **adresu URL tenanta** , kde `<myPoliciesCustomDomain>` se nachází vaše myPolicies vlastní doména. Z adresy URL můžete načíst svoji doménu zákazníka myPolicies.
 Příklad: `<demo0-qa>` . mypolicies.com.
 
-6. V části **tajný token**zadejte hodnotu tokenu, která byla načtena dříve. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k myPolicies. Pokud se připojení nepovede, ujistěte se, že má váš účet myPolicies oprávnění správce, a zkuste to znovu.
+6. V části **tajný token** zadejte hodnotu tokenu, která byla načtena dříve. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k myPolicies. Pokud se připojení nepovede, ujistěte se, že má váš účet myPolicies oprávnění správce, a zkuste to znovu.
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -155,14 +155,14 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 ## <a name="connector-limitations"></a>Omezení konektoru
 
-* myPolicies vždy vyžaduje **uživatelské jméno**, **e-mail** a **externalId**.
+* myPolicies vždy vyžaduje **uživatelské jméno** , **e-mail** a **externalId**.
 * myPolicies nepodporuje pevné odstranění atributů uživatele.
 
 ## <a name="change-log"></a>Protokol změn
 
 * 09/15/2020 – pro uživatele byla přidána podpora pro atribut Country.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

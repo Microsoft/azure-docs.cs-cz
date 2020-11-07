@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f95d7ae38ece2a2ad939d2b3c829aed2c676d0f7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996481"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353998"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače s Linuxem 
 
@@ -47,6 +47,8 @@ Po dokončení procesu šifrování disku s operačním systémem u virtuálníc
 Azure Disk Encryption je k dispozici také pro virtuální počítače s Premium Storage.
 
 Azure Disk Encryption není k dispozici pro [virtuální počítače 2. generace](../generation-2.md#generation-1-vs-generation-2-capabilities) a [virtuální počítače řady Lsv2-Series](../lsv2-series.md). Další výjimky naleznete v tématu [Azure Disk Encryption: nepodporované scénáře](disk-encryption-linux.md#unsupported-scenarios).
+
+Azure Disk Encryption není k dispozici pro image virtuálních počítačů bez dočasných disků (dv4, Dsv4, Ev4 a Esv4).  Podívejte [se na velikost virtuálních počítačů Azure bez místního dočasného disku](../azure-vms-no-temp-disk.md).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 

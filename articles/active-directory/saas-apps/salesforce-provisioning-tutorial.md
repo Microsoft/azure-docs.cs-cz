@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a18984c441f5fe47f6ffd54cccff8c37cb57a038
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676743"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353100"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace Salesforce pro Automatické zřizování uživatelů
 
@@ -65,7 +65,7 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
 3. Vyberte instanci Salesforce a pak vyberte kartu **zřizování** .
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Snímek obrazovky se stránkou zřizování Salesforce s režimem zřizování nastaveným na automatické a jiné hodnoty, které můžete nastavit.](./media/salesforce-provisioning-tutorial/provisioning.png)
 
@@ -75,11 +75,11 @@ Cílem této části je vysvětlit, jak povolit uživatelům zřizování uživa
 
     b. Do textového pole **heslo správce** zadejte heslo pro tento účet.
 
-6. Pokud chcete získat token zabezpečení Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce Salesforce. V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení** .
+6. Pokud chcete získat token zabezpečení Salesforce, otevřete novou kartu a přihlaste se ke stejnému účtu správce Salesforce. V pravém horním rohu stránky klikněte na své jméno a pak klikněte na **Nastavení**.
 
     ![Snímek obrazovky se zobrazuje vybraný odkaz nastavení.](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Povolit automatické zřizování uživatelů")
 
-7. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení** .
+7. V levém navigačním podokně klikněte na **osobní informace** a rozbalte související část a potom klikněte na **resetovat můj token zabezpečení**.
   
     ![Snímek obrazovky s vybraným osobním údajem resetování tokenu zabezpečení](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Povolit automatické zřizování uživatelů")
 

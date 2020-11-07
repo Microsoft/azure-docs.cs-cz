@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2f694c5a089245a29aaf0e493542fc7f4fce46f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675450"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352995"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby SolarWinds Service Desk (dříve Samanage) pro Automatické zřizování uživatelů
 
@@ -24,16 +24,16 @@ Tento kurz popisuje kroky, které je třeba provést v rámci služby SolarWinds
 
 ## <a name="migrate-to-the-new-solarwinds-service-desk-application"></a>Migrace na novou aplikaci SolarWinds Service Desk
 
-Pokud máte existující integraci se službou SolarWinds, přečtěte si následující část o nadcházejících změnách. Pokud nastavujete službu SolarWinds Service Desk poprvé, můžete tuto část přeskočit a přejít na **podporované funkce** .
+Pokud máte existující integraci se službou SolarWinds, přečtěte si následující část o nadcházejících změnách. Pokud nastavujete službu SolarWinds Service Desk poprvé, můžete tuto část přeskočit a přejít na **podporované funkce**.
 
 #### <a name="whats-changing"></a>Co se mění?
 
-* Změny na straně Azure AD: autorizační metoda pro zřízení uživatelů v Samange má v **podstatě základní ověření** . Brzy uvidíte způsob, jakým se metoda autorizace změnila na **dlouhý tajný token** .
+* Změny na straně Azure AD: autorizační metoda pro zřízení uživatelů v Samange má v **podstatě základní ověření**. Brzy uvidíte způsob, jakým se metoda autorizace změnila na **dlouhý tajný token**.
 
 
 #### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Co potřebuji k migraci stávající vlastní integrace do nové aplikace?
 
-Pokud máte existující integraci služby SolarWinds Service Desk s platnými přihlašovacími údaji správce, **není nutná žádná akce** . Automaticky migrujeme zákazníky do nové aplikace. Tento proces se provádí kompletně na pozadí. Pokud vyprší platnost stávajících přihlašovacích údajů, nebo pokud potřebujete znovu autorizovat přístup k aplikaci, je potřeba vygenerovat dlouhodobě tajný token. Pokud chcete vygenerovat nový token, přečtěte si krok 2 tohoto článku.
+Pokud máte existující integraci služby SolarWinds Service Desk s platnými přihlašovacími údaji správce, **není nutná žádná akce**. Automaticky migrujeme zákazníky do nové aplikace. Tento proces se provádí kompletně na pozadí. Pokud vyprší platnost stávajících přihlašovacích údajů, nebo pokud potřebujete znovu autorizovat přístup k aplikaci, je potřeba vygenerovat dlouhodobě tajný token. Pokud chcete vygenerovat nový token, přečtěte si krok 2 tohoto článku.
 
 
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Jak zjistím, jestli je moje aplikace migrována? 
@@ -49,7 +49,7 @@ Když se vaše aplikace migruje, v části **přihlašovací údaje správce** s
 > * Zřizování skupin a členství ve skupinách v SolarWinds oddělení služeb
 > * [Jednotné přihlašování](./samanage-tutorial.md) do služby SolarWinds Service Desk (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -75,7 +75,7 @@ Přidejte desku SolarWinds Service z Galerie aplikací Azure AD a začněte spra
 
 Služba zřizování Azure AD umožňuje nastavit rozsah uživatelů, kteří se zřídí, na základě přiřazení k aplikaci nebo atributů jednotlivých uživatelů nebo skupin. Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí pro vaši aplikaci, na základě přiřazení, můžete k aplikaci přiřadit uživatele a skupiny pomocí následujících [kroků](../manage-apps/assign-user-or-group-access-portal.md). Pokud se rozhodnete nastavit rozsah uživatelů, kteří se zřídí, pouze na základě atributů jednotlivých uživatelů nebo skupin, můžete použít filtr rozsahu, jak je popsáno [tady](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* Při přiřazování uživatelů a skupin k SolarWinds oddělení služeb musíte vybrat jinou roli než **výchozí přístup** . Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
+* Při přiřazování uživatelů a skupin k SolarWinds oddělení služeb musíte vybrat jinou roli než **výchozí přístup**. Uživatelé s rolí Výchozí přístup jsou vyloučeni ze zřizování a v protokolech zřizování se označí příznakem neplatného nároku. Pokud je v aplikaci k dispozici pouze role Výchozí přístup, můžete [aktualizovat manifest aplikace](../develop/howto-add-app-roles-in-azure-ad-apps.md) a přidat další role. 
 
 * Začněte v malém. Než se pustíte do zavádění pro všechny, proveďte testování s malou skupinou uživatelů a skupin. Pokud je rozsah zřizování nastavený na přiřazené uživatele a skupiny, můžete testování provést tak, že k aplikaci přiřadíte jednoho nebo dva uživatele nebo skupiny. Pokud je rozsah nastavený na všechny uživatele a skupiny, můžete určit [filtr rozsahu na základě atributů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
@@ -86,37 +86,37 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-solarwinds-service-desk-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro oddělení služeb SolarWinds v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace** .
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **Podnikové aplikace** a pak vyberte **Všechny aplikace**.
 
     ![Okno Podnikové aplikace](common/enterprise-applications.png)
 
-2. V seznamu aplikace vyberte **SolarWinds Service Desk** .
+2. V seznamu aplikace vyberte **SolarWinds Service Desk**.
 
-3. Vyberte kartu **Zřizování** .
+3. Vyberte kartu **Zřizování**.
 
     ![Snímek obrazovky zobrazující kartu zřizování](common/provisioning.png)
 
-4. Nastavte **Režim zřizování** na hodnotu **Automaticky** .
+4. Nastavte **Režim zřizování** na hodnotu **Automaticky**.
 
     ![Snímek obrazovky, který ukazuje režim zřizování nastavený na automatické.](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `https://api.samanage.com` **adresu URL tenanta** .  Zadejte hodnotu tajného tokenu získanou dříve v **tajném tokenu** . Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k SolarWinds oddělení služeb. Pokud se připojení nepovede, ujistěte se, že váš účet služby SolarWinds má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://api.samanage.com` **adresu URL tenanta**.  Zadejte hodnotu tajného tokenu získanou dříve v **tajném tokenu**. Vyberte **Test připojení** , aby se služba Azure AD mohla připojit k SolarWinds oddělení služeb. Pokud se připojení nepovede, ujistěte se, že váš účet služby SolarWinds má oprávnění správce, a zkuste to znovu.
 
     ![Snímek obrazovky zobrazující vybrané tlačítko Test připojení](./media/samanage-provisioning-tutorial/provisioning.png)
 
-6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem** .
+6. Do pole **Oznamovací e-mail** zadejte e-mailovou adresu osoby nebo skupiny, na kterou by se měla odesílat oznámení o chybách zřizování, a zaškrtněte políčko **Když dojde k selhání, poslat oznámení e-mailem**.
 
     ![Oznamovací e-mail](common/provisioning-notification-email.png)
 
-7. Vyberte **Uložit** .
+7. Vyberte **Uložit**.
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé SolarWinds oddělení služeb** .
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé SolarWinds oddělení služeb**.
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do služby SolarWinds Service v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v oddělení služby SolarWinds pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](../app-provisioning/customize-application-attributes.md), budete muset zajistit, aby rozhraní API oddělení služeb SolarWinds podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
       ![Mapování uživatelů Samange](./media/samanage-provisioning-tutorial/user-attributes.png)
 
-10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do služby SolarWinds Service Desk** .
+10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do služby SolarWinds Service Desk**.
 
 11. Zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD do služby SolarWinds Service Desk v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v oddělení služby SolarWinds pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
@@ -132,11 +132,11 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni zřídit, vyberte **Uložit** .
+15. Až budete připraveni zřídit, vyberte **Uložit**.
 
     ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
 
-Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení** . Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+Tato operace zahájí cyklus počáteční synchronizace všech uživatelů a skupin definovaných v nabídce **Rozsah** v části **Nastavení**. Počáteční cyklus trvá déle než další cykly, které se provádějí přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
 Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomocí následujících prostředků:

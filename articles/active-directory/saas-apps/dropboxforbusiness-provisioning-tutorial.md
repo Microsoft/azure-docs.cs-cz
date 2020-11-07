@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: f1ad698ccacc2fee94c797a20a43744d4cafba76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91305634"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355409"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropboxu pro firmy pro Automatické zřizování uživatelů
 
@@ -46,7 +46,7 @@ Před konfigurací Dropboxu pro firmy pro Automatické zřizování uživatelů 
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -54,7 +54,7 @@ Před konfigurací Dropboxu pro firmy pro Automatické zřizování uživatelů 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Dropbox pro firmy**, na panelu výsledků vyberte **Dropbox pro firmy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Dropbox pro firmy** , na panelu výsledků vyberte **Dropbox pro firmy** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Dropbox pro firmy v seznamu výsledků](common/search-new-app.png)
 
@@ -153,7 +153,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
  
 * Dropbox nepodporuje pozastavení pozvaných uživatelů. Pokud je pozastavený uživatel pozastaven, tento uživatel se odstraní.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

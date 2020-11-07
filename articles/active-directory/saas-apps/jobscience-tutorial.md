@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 8dc4087d1a10b4c4af7477a02f397c5a2bc547c2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5a104dcd6ccf500c115359a1b72c67b85359a802
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459386"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Azure Active Directory integrace s Jobscience
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat integraci Jobscience do služby Azure AD, musíte p�
 
     ![Snímek obrazovky ukazuje přidání z galerie s Jobscience zadaným.](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
-1. Na panelu výsledků vyberte **Jobscience**a pak klikněte na **Přidat** tlačítko pro přidání aplikace.
+1. Na panelu výsledků vyberte **Jobscience** a pak klikněte na **Přidat** tlačítko pro přidání aplikace.
 
     ![Snímek obrazovky zobrazuje výsledky, které zahrnují Jobscience.](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
@@ -135,11 +135,11 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
    
    ![Moje doména](./media/jobscience-tutorial/ic767825.png "Moje doména")
 
-1. Pokud chcete ověřit, jestli je vaše doména nastavená správně, ujistěte se, že je v**kroku 4 nasazená pro uživatele**, a zkontrolujte**Nastavení moje doména**.
+1. Pokud chcete ověřit, jestli je vaše doména nastavená správně, ujistěte se, že je v **kroku 4 nasazená pro uživatele** , a zkontrolujte **Nastavení moje doména**.
 
     ![Doména nasazená pro uživatele](./media/jobscience-tutorial/ic784377.png "Doména nasazená pro uživatele")
 
-1. Na webu Jobscience společnosti klikněte na **ovládací prvky zabezpečení**a pak klikněte na **Nastavení jednoho Sign-On**.
+1. Na webu Jobscience společnosti klikněte na **ovládací prvky zabezpečení** a pak klikněte na **Nastavení jednoho Sign-On**.
     
     ![Snímek obrazovky ukazuje nastavení jednoho Sign-On vybrané z ovládacích prvků zabezpečení.](./media/jobscience-tutorial/ic784364.png "Zabezpečovací mechanismy")
 
@@ -157,19 +157,19 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     
     a. Do textového pole **název** zadejte název konfigurace.
 
-    b. Do textového pole **vystavitele** vložte hodnotu **ID entity SAML**, kterou jste zkopírovali z Azure Portal.
+    b. Do textového pole **vystavitele** vložte hodnotu **ID entity SAML** , kterou jste zkopírovali z Azure Portal.
 
     c. Do textového pole **ID entity** zadejte `https://salesforce-jobscience.com`
 
     d. Klikněte na **Procházet** a nahrajte svůj certifikát Azure AD.
 
-    e. Jako **typ identity SAML**vyberte **kontrolní výraz obsahuje ID federace z objektu User**.
+    e. Jako **typ identity SAML** vyberte **kontrolní výraz obsahuje ID federace z objektu User**.
 
-    f. Jako **umístění identity SAML**, vyberte **identita je v elementu NameIdentfier příkazu Subject**.
+    f. Jako **umístění identity SAML** , vyberte **identita je v elementu NameIdentfier příkazu Subject**.
 
-    například Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy url služby Single Sign-On služby SAML**, kterou jste zkopírovali z Azure Portal.
+    například Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy url služby Single Sign-On služby SAML** , kterou jste zkopírovali z Azure Portal.
 
-    h. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL**pro odhlášení, kterou jste zkopírovali z Azure Portal.
+    h. Do textového pole **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL** pro odhlášení, kterou jste zkopírovali z Azure Portal.
 
     i. Klikněte na **Uložit**.
 
@@ -202,7 +202,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
 **Chcete-li vytvořit testovacího uživatele ve službě Azure AD, proveďte následující kroky:**
 
-1. V **Azure Portal**v levém navigačním podokně klikněte na ikonu **Azure Active Directory** .
+1. V **Azure Portal** v levém navigačním podokně klikněte na ikonu **Azure Active Directory** .
 
     ![Snímek obrazovky ukazuje ikonu Azure A D v Azure Portal.](./media/jobscience-tutorial/create_aaduser_01.png) 
 
@@ -241,7 +241,7 @@ Aby se uživatelé Azure AD mohli přihlásit k Jobscience, musí se zřídit v 
 1. Přejít na nastavení.
    
    ![Snímek obrazovky se zobrazí položka nastavení.](./media/jobscience-tutorial/ic784358.png "Nastavení")
-1. Přejít na **Správa uživatelů \> **.
+1. Přejít na **Správa uživatelů \>**.
    
    ![Uživatelé](./media/jobscience-tutorial/ic784369.png "Uživatelé")
 1. Klikněte na **Nový uživatel**.
@@ -306,7 +306,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 Když na přístupovém panelu kliknete na dlaždici Jobscience, měli byste se automaticky přihlásili ke své aplikaci Jobscience.
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

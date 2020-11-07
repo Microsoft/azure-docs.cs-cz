@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1bc1d455e5597e86a3d5c8d1690fa2daa9097865
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85940418"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340962"
 ---
 Klientská knihovna Vyhledávání na webu Bingu usnadňuje integraci Vyhledávání na webu Bingu do vaší aplikace Python. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
 Chcete se rovnou podívat na kód? Ukázky pro [klientské knihovny vyhledávání Bingu pro Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) jsou k dispozici na GitHubu.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Sada SDK Bingu pro vyhledávání na webu je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6. Pro tento článek Rychlý start doporučujeme použít virtuální prostředí.
 
 * Python 2.7, 3.3, 3.4, 3.5 nebo 3.6
@@ -169,7 +169,7 @@ Pokud odpověď obsahuje webové stránky, obrázky, zprávy nebo videa, vytiskn
 
 1. Nahraďte `YOUR_ENDPOINT` adresou URL koncového bodu na portálu a odeberte část "Bing/v 7.0" z koncového bodu.
 
-1. Spustíte program. Například: `python your_program.py`.
+1. Spustíte program. Příklad: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Definice funkcí a filtrování výsledků
 
@@ -320,4 +320,4 @@ Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatn
 
 ## <a name="see-also"></a>Viz také
 
-* [Referenční informace k sadě Azure Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)
+* [Referenční informace k sadě Azure Python SDK](/python/api/azure-cognitiveservices-search-websearch/?view=azure-python)

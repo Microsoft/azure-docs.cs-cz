@@ -8,22 +8,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: ec0ffdcf86e67a7126a3100c1e20b6e5c3474e35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 51dcc0585117d2e3db97046a25a4fbae6cff0112
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "78252881"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94341099"
 ---
 Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Python. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py).
 
 Použití klientské knihovny Vlastní vyhledávání Bingu pro Python pro:
 * Vyhledá výsledky hledání na webu z vaší instance Vlastní vyhledávání Bingu.
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Referenční dokumentace](/python/api/azure-cognitiveservices-search-customsearch/?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](../../quick-start.md) .
 - Python [2. x nebo 3. x](https://www.python.org/) 

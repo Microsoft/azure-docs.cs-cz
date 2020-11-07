@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: fbed4b888c48a518d9f10a91ff0494aa7bdc1843
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdd4fb96a42d154ccd8b508950283978ddf58ef4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532360"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354899"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Kurz: Konfigurace VELPIC pro Automatické zřizování uživatelů
 
@@ -66,7 +66,7 @@ V této části se seznámíte s připojením k rozhraní API pro zřizování u
 
     ![Zřizování VELPIC](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa**  >  **Integrace**  >  **Modul plug-in**  >  **SCIM**)
+5. V části **přihlašovací údaje správce** zadejte **adresu URL klienta&tajného tokenu** VELPIC. (Tyto hodnoty najdete pod účtem VELPIC: **Správa**  >  **Integrace**  >  **Modul plug-in**  >  **SCIM** )
 
     ![Autorizační hodnoty](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -88,7 +88,7 @@ Tím se spustí počáteční synchronizace všech uživatelů nebo skupin při�
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

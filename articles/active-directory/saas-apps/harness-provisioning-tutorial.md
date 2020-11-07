@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2f8cafc0ec94e9254d42bf6718e796a256d128d4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445674"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353709"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>Kurz: Konfigurace funkce pro Automatické zřizování uživatelů
 
@@ -49,7 +49,7 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, rozhodn�
 
 ## <a name="set-up-harness-for-provisioning"></a>Nastavení rozpracovaného svazku pro zřizování
 
-1. Přihlaste se ke [konzole správce](https://app.harness.io/#/login)aplikace a pak přejděte na správu **nepřetržitého**  >  **přístupu**do zabezpečení.
+1. Přihlaste se ke [konzole správce](https://app.harness.io/#/login)aplikace a pak přejděte na správu **nepřetržitého**  >  **přístupu** do zabezpečení.
 
     ![Konzola správce ve více kabelech](media/harness-provisioning-tutorial/admin.png)
 
@@ -90,7 +90,7 @@ Než začnete konfigurovat funkci pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího **pole zadejte příkaz**Get, v seznamu výsledků vyberte možnost předaný **svazek** a potom přidejte aplikaci kliknutím na tlačítko **Přidat** .
+1. Do vyhledávacího **pole zadejte příkaz** Get, v seznamu výsledků vyberte možnost předaný **svazek** a potom přidejte aplikaci kliknutím na tlačítko **Přidat** .
 
     ![Využití svazku v seznamu výsledků](common/search-new-app.png)
 
@@ -122,7 +122,7 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
     ![Rozevírací seznam "režim zřizování"](common/provisioning-automatic.png)
 
-1. V části **přihlašovací údaje správce**postupujte takto:
+1. V části **přihlašovací údaje správce** postupujte takto:
 
     ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
  
@@ -136,29 +136,29 @@ Pokud chcete nakonfigurovat automatické zřizování uživatelů pro funkci ve 
 
 1. Vyberte **Uložit**.
 
-1. V části **mapování**vyberte možnost **synchronizovat Azure Active Directory uživatele**.
+1. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele**.
 
     ![Odkaz "synchronizace Azure Active Directory uživatelů na předaný svazek"](media/harness-provisioning-tutorial/usermappings.png)
 
-1. V části **mapování atributů**zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, a využijte je. Atributy vybrané jako *párování* se používají ke spárování uživatelských účtů v nástroji pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+1. V části **mapování atributů** zkontrolujte atributy uživatelů, které jsou synchronizované z Azure AD, a využijte je. Atributy vybrané jako *párování* se používají ke spárování uživatelských účtů v nástroji pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
     ![Podokno mapování atributů uživatele](media/harness-provisioning-tutorial/userattributes.png)
 
-1. V části **mapování**vyberte možnost **synchronizovat Azure Active Directory skupiny a využijte**.
+1. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny a využijte**.
 
     ![Odkaz "synchronizace skupin Azure Active Directory ke svazku"](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. V části **mapování atributů**zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD, a využijte je. Atributy vybrané jako *odpovídající* vlastnosti se používají ke spárování skupin ve svazku pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
+1. V části **mapování atributů** zkontrolujte atributy skupiny, které jsou synchronizované z Azure AD, a využijte je. Atributy vybrané jako *odpovídající* vlastnosti se používají ke spárování skupin ve svazku pro operace aktualizace. Vyberte **Uložit** a potvrďte všechny změny.
 
     ![Podokno mapování atributů pro skupinu kabelů](media/harness-provisioning-tutorial/groupattributes.png)
 
 1. Pokud chcete nakonfigurovat filtry oborů, přečtěte si téma [zřizování aplikace na základě atributů s filtry oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-1. V části **Nastavení**povolte službu zřizování Azure AD pro práci s přepínačem **stav zřizování** přepnout na **zapnuto**.
+1. V části **Nastavení** povolte službu zřizování Azure AD pro práci s přepínačem **stav zřizování** přepnout na **zapnuto**.
 
     ![Přepínač stavu zřizování přepnout na zapnuto](common/provisioning-toggle-on.png)
 
-1. V části **Nastavení**v rozevíracím seznamu **obor** vyberte, jakým způsobem chcete synchronizovat uživatele nebo skupiny, které chcete využívat.
+1. V části **Nastavení** v rozevíracím seznamu **obor** vyberte, jakým způsobem chcete synchronizovat uživatele nebo skupiny, které chcete využívat.
 
     ![Rozsah zřizování](common/provisioning-scope.png)
 
@@ -170,7 +170,7 @@ Tato operace spustí počáteční synchronizaci uživatelů nebo skupin, které
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [Sestava automatického zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 5b39e1988a798adde8a07a39d7724f50d7a4f851
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 69f492ad73e60f8478772dc8b5b22bc19a5fb0e4
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755746"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94340952"
 ---
 Začněte s knihovnou klienta Custom Vision pro Python. Pomocí těchto kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro vytvoření modelu klasifikace imagí. Vytvoříte projekt, přidáte značky, provedete projekt a použijete adresu URL koncového bodu předpovědi projektu pro programové testování. Tento příklad použijte jako šablonu pro vytvoření vlastní aplikace pro rozpoznávání imagí.
 
@@ -26,7 +26,7 @@ Použití klientské knihovny Custom Vision pro Python pro:
 
 [Referenční dokumentace](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision)  |  [Balíček (PyPi)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/)  |  [Ukázky](https://docs.microsoft.com/samples/browse/?products=azure&term=vision&terms=vision&languages=python)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Python 3.x](https://www.python.org/)
@@ -51,16 +51,16 @@ Vytvořte nový soubor Pythonu a importujte následující knihovny.
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs), který obsahuje příklady kódu v tomto rychlém startu.
+> Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py), který obsahuje příklady kódu v tomto rychlém startu.
 
 Vytvořte proměnné pro koncový bod a klíč předplatného prostředku Azure.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránce **klíčů a koncových bodů** prostředků v části **Správa prostředků** . Budete muset získat jak klíče pro školení, tak pro předpověď.
+> Přejděte na Azure Portal. Pokud Custom Vision prostředky, které jste vytvořili v části **předpoklady** , se úspěšně nasadily, klikněte v části **Další kroky** na tlačítko **Přejít k prostředku** . Klíče a koncový bod můžete najít na stránce **klíčů a koncových bodů** prostředků v části **Správa prostředků**. Budete muset získat jak klíče pro školení, tak pro předpověď.
 >
-> Hodnotu ID prostředku předpovědi najdete na kartě **Přehled** prostředku, která je uvedená jako **ID předplatného** .
+> Hodnotu ID prostředku předpovědi najdete na kartě **Přehled** prostředku, která je uvedená jako **ID předplatného**.
 >
 > Nezapomeňte odebrat klíče z kódu, až budete hotovi, a nikdy je nezveřejňujte. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
 
@@ -142,7 +142,7 @@ Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpo
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Spusťte *CustomVisionQuickstart.py* .
+Spusťte *CustomVisionQuickstart.py*.
 
 ```powershell
 python CustomVisionQuickstart.py
@@ -173,5 +173,5 @@ Nyní jste viděli, jak se každý krok procesu klasifikace obrázků dá prové
 > [Testování a přetrénování modelu](../../test-your-model.md)
 
 * [Co je Custom Vision?](../../overview.md)
-* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.cs) .
+* Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ImageClassification/CustomVisionQuickstart.py) .
 * [Referenční dokumentace k sadě SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)
