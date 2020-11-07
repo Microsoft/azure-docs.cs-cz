@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ea1ac064799b0cede1de82851a514a2b389f20aa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92499246"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94362731"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-### <a name="common-limits-for-all-tiers"></a>Společná omezení pro všechny úrovně
+## <a name="common-limits-for-all-tiers"></a>Společná omezení pro všechny úrovně
 Následující omezení jsou společná napříč všemi úrovněmi. 
 
 | Omezení |  Poznámky | Hodnota |
@@ -33,41 +33,41 @@ Následující omezení jsou společná napříč všemi úrovněmi.
 | Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | - | 128 | 
 
 
-### <a name="basic-and-standard-tiers"></a>Úrovně Basic a Standard
+## <a name="basic-vs-standard-tiers"></a>Úrovně Basic a Standard
 V následující tabulce jsou uvedena omezení, která se mohou lišit pro úrovně Basic a Standard. 
 
 | Omezení | Poznámky | Basic | Standard |
-| --- |  --- | -- | --- |
+|---|---|--|---|
 | Maximální velikost události Event Hubs| &nbsp; | 256 kB | 1 MB |
 | Počet skupin uživatelů na centrum událostí | &nbsp; |1 |20 |
 | Počet připojení AMQP na obor názvů | Následné žádosti o další připojení jsou odmítnuty a volající kód obdrží výjimku. |100 |5 000|
 | Maximální doba uchování dat události | &nbsp; |1 den |1-7 dní |
-| Maximální počet jednotek propustnosti |Překročení limitu jednotek propustnosti způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-portal/supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
+| Maximální počet jednotek propustnosti |Překročení tohoto limitu způsobí omezení vašich dat a vygeneruje [výjimku zaneprázdněnou serverem](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Pokud chcete požádat o větší počet jednotek propustnosti pro úroveň Standard, zaregistrujte [žádost o podporu](/azure/azure-portal/supportability/how-to-create-azure-support-request). [Další jednotky propustnosti](../articles/event-hubs/event-hubs-auto-inflate.md) jsou k dispozici v blocích po 20 na potvrzeném nákupu. |20 | 20 | 
 
-### <a name="dedicated-tier"></a>Vyhrazená úroveň
+## <a name="dedicated-tier-vs-standard-tier"></a>Vyhrazená úroveň vs. úroveň Standard
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
 V tomto [dokumentu](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) najdete informace o tom, jak vytvořit vyhrazený cluster Event Hubs pomocí Azure Portal.
 
-| Funkce | Omezení |
-| --- | ---|
-| Šířka pásma |  20 kapacitní jednotky |
-| Obory názvů | 50 za CU |
-| Event Hubs |  1000 na obor názvů |
-| Velikost zpráv | 1 MB |
-| Oddíly | 2000 za CU |
-| Skupiny uživatelů | Bez omezení na CU, 1000 na každé centrum událostí |
-| Zprostředkovaná připojení | zahrnuto 100 K |
-| Doba uchovávání zpráv | 90 dní, zahrnutých 10 TB za CU |
-| Události příchozího přenosu dat | Zahrnuje |
-| Zachytávání | Zahrnuje |
+| Příznak | Standard | Vyhrazená |
+| --- |:---|:---|
+| Šířka pásma | 20 počet propustnosti (až 40 počet propustnosti) | 20 kapacitní jednotky |
+| Obory názvů |  1 | 50 za CU |
+| Event Hubs |  10 na obor názvů | 1000 na obor názvů |
+| Události příchozího přenosu dat | Plaťte za milion událostí | Zahrnuje |
+| Velikost zprávy | 1 000 000 bajtů | 1 000 000 bajtů |
+| Oddíly | 32 na centrum událostí | 1024 na centrum událostí<br/>2000 za CU |
+| Skupiny uživatelů | 20 na centrum událostí | Bez omezení na CU, 1000 na každé centrum událostí |
+| Zprostředkovaná připojení | 1 000 zahrnutý, 5 000 max | 100 K zahrnutí a maximum |
+| Uchovávání zpráv | 7 dní, 84 GB zahrnutých za TU | 90 dní, zahrnutých 10 TB za CU |
+| Zachytávání | Platba za hodinu | Zahrnuje |
 
 
-### <a name="schema-registry-limitations"></a>Omezení registru schématu
+## <a name="schema-registry-limitations"></a>Omezení registru schématu
 
-#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro **standardní** a **vyhrazené** úrovně 
-| Funkce | Omezení | 
-| --- |  --- | -- |
+### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Omezení, která jsou stejná pro **standardní** a **vyhrazené** úrovně 
+| Příznak | Omezení | 
+|---|---|--|
 | Maximální délka názvu skupiny schémat | 50 |  
 | Maximální délka názvu schématu | 100 |    
 | Velikost v bajtech na schéma | 1 MB |   
@@ -76,12 +76,12 @@ V tomto [dokumentu](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedic
 | Velikost v bajtech na hodnotu vlastnosti skupiny | 1024 | 
 
 
-#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Omezení, která jsou odlišná na úrovni **Standard** a **vyhrazené** 
+### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Omezení, která jsou odlišná na úrovni **Standard** a **vyhrazené** 
 
 | Omezení | Standard | Vyhrazená | 
-| --- |  --- | -- | --- |
+|---|---|--|---|
 | Velikost registru schématu (obor názvů) v megabajtů bajtech | 25 |  1024 |
-| Počet skupin schémat v registru schématu (obor názvů)| 1 (Kromě výchozího nastavení) | 1000 |
+| Počet skupin schémat v registru schématu nebo oboru názvů | 1 – vyloučení výchozí skupiny | 1000 |
 | Počet verzí schématu napříč všemi skupinami schémat | 25 | 10000 |
 
 
