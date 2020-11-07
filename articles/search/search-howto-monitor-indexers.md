@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06a31e61583ac28218b34195dd6e5b7f92776dce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b10cf314bc9394f3297839d45d3497f9f5d3b0e0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541233"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358826"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
 
@@ -51,7 +51,7 @@ Aktuální stav všech indexerů můžete zobrazit v seznamu **indexerů** na st
 
    ![Seznam indexerů](media/search-monitor-indexers/indexers-list.png "Seznam indexerů")
 
-Při provádění indexeru se **v**seznamu zobrazí stav a hodnota **úspěšné dokumentace** zobrazuje počet zpracovaných dokumentů. Může trvat několik minut, než portál aktualizuje hodnoty stavu indexeru a počty dokumentů.
+Při provádění indexeru se **v** seznamu zobrazí stav a hodnota **úspěšné dokumentace** zobrazuje počet zpracovaných dokumentů. Může trvat několik minut, než portál aktualizuje hodnoty stavu indexeru a počty dokumentů.
 
 Indexer, jehož poslední spuštění bylo úspěšné, ukazuje **úspěch**. Spuštění indexeru může být úspěšné i v případě, že v jednotlivých dokumentech dojde k chybám, pokud je počet chyb menší, než je nastavení **maximálního počtu nezdařených položek** indexeru.
 
@@ -122,7 +122,7 @@ Historie spouštění obsahuje až 50 nejaktuálnějších běhů, které jsou s
 
 Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je pro indexer samotný. Stav indexeru **spuštěno** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale ne v současnosti je spuštěn.
 
-Každé spuštění indexeru má také svůj vlastní stav, který označuje, jestli je toto konkrétní spuštění probíhající (**spuštěné**), nebo jestli se už dokončilo se stavem **úspěch**, **transientFailure**nebo **persistentFailure** . 
+Každé spuštění indexeru má také svůj vlastní stav, který označuje, jestli je toto konkrétní spuštění probíhající ( **spuštěné** ), nebo jestli se už dokončilo se stavem **úspěch** , **transientFailure** nebo **persistentFailure** . 
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie spouštění se stavem **resetování** .
 
@@ -181,7 +181,7 @@ Latest run
 
 Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je stav indexeru, který je sám sebou. Stav indexeru je **spuštěný** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale není aktuálně spuštěn.
 
-Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétní spuštění probíhá (**spuštěno**), nebo bylo již dokončeno se stavem **úspěch** nebo **TransientError** . 
+Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétní spuštění probíhá ( **spuštěno** ), nebo bylo již dokončeno se stavem **úspěch** nebo **TransientError** . 
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie se stavem **resetování** .
 

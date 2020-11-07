@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.openlocfilehash: 9be2205ad0664d58c7a2ef0c07481b1c7aa02402
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273343"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359693"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Kurz: Konfigurace MerchLogix pro Automatické zřizování uživatelů
 
@@ -53,7 +53,7 @@ Před konfigurací MerchLogix pro Automatické zřizování uživatelů se služ
 
 4. Do vyhledávacího pole zadejte **MerchLogix**.
 
-5. Na panelu výsledků vyberte **MerchLogix**a potom kliknutím na tlačítko **Přidat** přidejte MerchLogix do seznamu aplikací SaaS.
+5. Na panelu výsledků vyberte **MerchLogix** a potom kliknutím na tlačítko **Přidat** přidejte MerchLogix do seznamu aplikací SaaS.
 
     ![Snímek obrazovky přidat z části sloupce s textovým polem pro zadání názvu s názvem.][4]
 
@@ -118,7 +118,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

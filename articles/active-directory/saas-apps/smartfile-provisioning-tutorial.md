@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 3f480cb0d478ca60555fa15849d5fcbed6cda684
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fca18a58ccb8d4e2f10b5db606ad01a97c2d5bac
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91286110"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359920"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>Kurz: Konfigurace SmartFile pro Automatické zřizování uživatelů
 
@@ -72,7 +72,7 @@ Pokud chcete nakonfigurovat SmartFile pro Automatické zřizování uživatelů 
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -80,7 +80,7 @@ Pokud chcete nakonfigurovat SmartFile pro Automatické zřizování uživatelů 
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SmartFile**, na panelu výsledků vyberte **SmartFile** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **SmartFile** , na panelu výsledků vyberte **SmartFile** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![SmartFile v seznamu výsledků](common/search-new-app.png)
 
@@ -157,7 +157,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 * SmartFile podporuje pouze pevné odstranění. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

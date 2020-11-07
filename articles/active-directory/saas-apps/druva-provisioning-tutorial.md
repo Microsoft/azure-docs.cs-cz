@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5579a9d96828caa1453547e7c2e11b8f0d717d2a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851148"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359302"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Kurz: Konfigurace Druva pro Automatické zřizování uživatelů
 
@@ -62,11 +62,11 @@ Před konfigurací Druva pro Automatické zřizování uživatelů pomocí Azure
 
 3.  Přejděte na **Nastavení**. Klikněte na **vygenerovat token**.
 
-    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Snímek obrazovky s konzolou pro správu Druva Správa je zvýrazněna a nabídka spravovat je viditelná. V této nabídce se v části nasazení zvýrazní uživatelé." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Snímek obrazovky stránky v konzole pro správu Druva Nastavení je zvýrazněno a karta nastavení je otevřená. Je zvýrazněno tlačítko generovat token." border="false":::
 
 4.  Zkopírujte hodnotu **tokenu ověřování** . Tato hodnota se zadá do pole **token tajného** kódu na kartě zřizování vaší aplikace Druva ve Azure Portal.
     
-    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky s konzolou pro správu Druva Správa je zvýrazněna a nabídka spravovat je viditelná. V této nabídce se v části nasazení zvýrazní uživatelé." border="false":::
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky se stránkou vytvořit token v konzole pro správu Druva Pro zkopírování hodnoty ověřovacího tokenu je k dispozici odkaz s popisem tokenu kopírování." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Přidání Druva z Galerie
 
@@ -78,7 +78,7 @@ Pokud chcete nakonfigurovat Druva pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ Pokud chcete nakonfigurovat Druva pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Druva**, na panelu výsledků vyberte **Druva** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Druva** , na panelu výsledků vyberte **Druva** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Druva v seznamu výsledků](common/search-new-app.png)
 
@@ -156,7 +156,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 * Druva vyžaduje **e-mail** jako povinný atribut. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

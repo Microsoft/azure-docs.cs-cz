@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851216"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359013"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Kurz: Konfigurace dynamického signálu pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Než začnete konfigurovat dynamický signál pro Automatické zřizování uži
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Než začnete konfigurovat dynamický signál pro Automatické zřizování uži
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **dynamický signál**, v panelu výsledků vyberte možnost **dynamický signál** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **dynamický signál** , v panelu výsledků vyberte možnost **dynamický signál** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Dynamický signál v seznamu výsledků](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     Zkopírujte **adresu URL rozhraní API SCIM** na **adresu URL tenanta**. Kliknutím na **vygenerovat nový token** vygenerujte **nosný token** a zkopírujte hodnotu do **tajného tokenu**.
 
-    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Snímek obrazovky s konzolou správce dynamického signálu V nabídce správce je zvýrazněna položka Upřesnit. Zobrazí se také nabídka Upřesnit se zvýrazněnou možností P." border="false":::
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Snímek obrazovky se stránkou s tokeny s C I M A P I U R L, vygenerujte nový token a zvýrazněný token nosiče a zástupný text v poli nosných tokenů." border="false":::
 
 7. Po vyplnění polí zobrazených v kroku 5 klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k dynamickému signálu. Pokud se připojení nepovede, ujistěte se, že váš účet dynamického signálu má oprávnění správce, a zkuste to znovu.
 
@@ -147,7 +147,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Dynamický signál nepodporuje trvalé odstranění uživatelů ze služby Azure AD. Chcete-li trvale odstranit uživatele v dynamickém signálu, je nutné operaci provést prostřednictvím uživatelského rozhraní konzoly správce dynamického signálu. 
 * Dynamický signál v současné době nepodporuje skupiny.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

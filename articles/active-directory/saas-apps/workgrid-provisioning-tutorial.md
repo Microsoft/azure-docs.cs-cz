@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5f7ed8a905aad873ecfc878979ac32af1e21730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee656f147bd27ff782121f088a239a7337d81075
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312222"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359761"
 ---
 # <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>Kurz: Konfigurace Workgrid pro Automatické zřizování uživatelů
 
@@ -56,7 +56,7 @@ Před konfigurací Workgrid pro Automatické zřizování uživatelů pomocí Az
 
     ![Snímek obrazovky Workgrid U I s možnostmi pro uživatele a zřizování uživatelů s názvem.](media/Workgrid-provisioning-tutorial/user.png)
 
-2. V části **rozhraní API pro správu účtů**klikněte na **vytvořit přihlašovací údaje**.
+2. V části **rozhraní API pro správu účtů** klikněte na **vytvořit přihlašovací údaje**.
 
     ![Snímek obrazovky se sekcí správy účtů A P s možností vytvořit pověření se nazývá.](media/Workgrid-provisioning-tutorial/scim.png)
 
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat Workgrid pro Automatické zřizování uživatelů p
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat Workgrid pro Automatické zřizování uživatelů p
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Workgrid**, na panelu výsledků vyberte **Workgrid** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Workgrid** , na panelu výsledků vyberte **Workgrid** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Workgrid v seznamu výsledků](common/search-new-app.png)
 
@@ -156,7 +156,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Workgrid. Další informace najdete v tématu o [kontrole stavu zřizování uživatelů](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Pokud si chcete přečíst protokoly zřizování Azure AD, přečtěte si téma [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

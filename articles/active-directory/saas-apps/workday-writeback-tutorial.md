@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: a1428a92857f48920c86ed7a3f0719fa42b38b24
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072029"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359727"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Kurz: Konfigurace zpětného zápisu atributu z Azure AD na Workday
 Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zpětném zápisu atributů z Azure AD do Workday. Aplikace pro zřizování zpětného zápisu do pracovního dne podporuje přiřazení hodnot k následujícím atributům Workday:
@@ -56,11 +56,11 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
-3. Vyberte **podnikové aplikace**a pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace** a pak **všechny aplikace**.
 
-4. Vyberte **Přidat aplikaci**a pak vyberte kategorii **vše** .
+4. Vyberte **Přidat aplikaci** a pak vyberte kategorii **vše** .
 
-5. Vyhledejte **zpětný zápis do Workday**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte **zpětný zápis do Workday** a přidejte tuto aplikaci z galerie.
 
 6. Až se aplikace přidá a zobrazí se obrazovka s podrobnostmi aplikace, vyberte **zřizování**.
 
@@ -82,7 +82,7 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
 V této části nakonfigurujete, jak atributy zpětného zápisu z Azure AD do Workday budou. 
 
-1. Na kartě zřizování v části **mapování**klikněte na název mapování.
+1. Na kartě zřizování v části **mapování** klikněte na název mapování.
 
 2. V poli **obor zdrojového objektu** můžete volitelně filtrovat, které sady uživatelů v Azure Active Directory by měly být součástí zpětného zápisu. Výchozí obor je "Všichni uživatelé v Azure AD".
 

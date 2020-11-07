@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01c3f6429d2a5c8443ac128d763033dc8c53cbc7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850863"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359404"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Kurz: Konfigurace hejna pro Automatické zřizování uživatelů
 
@@ -58,11 +58,11 @@ Před konfigurací hejna pro Automatické zřizování uživatelů pomocí Azure
 
 2. Vyberte **ověřování a zřizování**.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky s webem hejna Ikona nastavení je zvýrazněna a její místní nabídka je viditelná. V této nabídce je zvýrazněna volba spravovat váš tým." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Snímek obrazovky nabídky na webu hejna Položka ověřování a zřizování je zvýrazněna." border="false":::
 
 3. Zkopírujte **token rozhraní API**. Tyto hodnoty se zadají do pole **token tajného klíče** na kartě zřizování vaší aplikace v rámci vašeho hejna v Azure Portal.
 
-    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Snímek obrazovky s webem hejna Ikona nastavení je zvýrazněna a její místní nabídka je viditelná. V této nabídce je zvýrazněna volba spravovat váš tým." border="false":::
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Snímek obrazovky s kartou zřizování na webu hejna V tokenu P I je zvýrazněna hodnota. Vedle tokenu je tlačítko Kopírovat token." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Přidání hejna z Galerie
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat hejno pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Pokud chcete nakonfigurovat hejno pro Automatické zřizování uživatelů pomo
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **hejno**, v panelu výsledků vyberte **hejno** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **hejno** , v panelu výsledků vyberte **hejno** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Hejno v seznamu výsledků](common/search-new-app.png)
 
@@ -150,7 +150,7 @@ Pomocí oddílu **aktuální stav** můžete monitorovat průběh a postupovat p
 
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

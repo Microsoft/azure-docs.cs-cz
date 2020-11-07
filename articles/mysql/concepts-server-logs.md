@@ -5,29 +5,31 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 1e967c77bc41f0f91674fe55bc622adaf5046f6d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81271977"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358996"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokoly pomalých dotazů ve službě Azure Database for MySQL
 V Azure Database for MySQL je k dispozici pro uživatele protokol pomalých dotazů. Přístup k transakčnímu protokolu není podporován. Protokol pomalých dotazů se dá použít k identifikaci problémových míst výkonu pro řešení problémů.
 
 Další informace o protokolu pomalého dotazu MySQL najdete v [části protokol pomalých dotazů](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)v referenční příručce MySQL.
 
+Když je na serveru povolené [úložiště dotazů](concepts-query-store.md) , můžou se v `CALL mysql.az_procedure_collect_wait_stats (900, 30);` protokolech pomalých dotazů zobrazovat dotazy, jako je protokol. Toto chování je očekávané, protože funkce úložiště dotazů shromažďuje statistiku o vašich dotazech. 
+
 ## <a name="configure-slow-query-logging"></a>Konfigurace pomalého protokolování dotazů 
 Ve výchozím nastavení je protokol pomalého dotazu zakázán. Pokud ho chcete povolit, nastavte na `slow_query_log` zapnuto. Tato možnost se dá povolit pomocí Azure Portal nebo Azure CLI. 
 
 Mezi další parametry, které můžete upravit, patří:
 
-- **long_query_time**: Pokud dotaz trvá déle než long_query_time (v sekundách), dotaz se zaznamená do protokolu. Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements**: Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
-- **log_queries_not_using_indexes**: Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
-- **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
-- **log_output**: Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud ho nastavíte na hodnotu None (Žádné), protokoly pomalých dotazů se budou zapisovat pouze do diagnostických protokolů služby Azure Monitor. 
+- **long_query_time** : Pokud dotaz trvá déle než long_query_time (v sekundách), dotaz se zaznamená do protokolu. Výchozí hodnota je 10 sekund.
+- **log_slow_admin_statements** : Pokud on zahrnuje příkazy pro správu, jako je ALTER_TABLE a ANALYZE_TABLE v příkazech zapsaných do slow_query_log.
+- **log_queries_not_using_indexes** : Určuje, zda jsou dotazy, které nepoužívají indexy, protokolovány do slow_query_log
+- **log_throttle_queries_not_using_indexes** : Tento parametr omezuje počet neindexovaných dotazů, které lze zapsat do protokolu pomalých dotazů. Tento parametr se projeví, když je log_queries_not_using_indexes nastaveno na ZAPNUTo.
+- **log_output** : Pokud "File", nástroj umožňuje zapsat protokol pomalých dotazů do úložiště místního serveru i do Azure monitor diagnostických protokolů. Pokud ho nastavíte na hodnotu None (Žádné), protokoly pomalých dotazů se budou zapisovat pouze do diagnostických protokolů služby Azure Monitor. 
 
 > [!IMPORTANT]
 > Pokud nejsou tabulky indexovány, `log_queries_not_using_indexes` může nastavení parametrů a na hodnotu `log_throttle_queries_not_using_indexes` on ovlivnit výkon MySQL, protože všechny dotazy běžící proti těmto neindexovaným tabulkám budou zapsány do protokolu pomalého dotazu.<br><br>
@@ -143,4 +145,4 @@ Až budou protokoly pomalých dotazů směrované do Azure Monitor protokolů pr
     
 ## <a name="next-steps"></a>Další kroky
 - [Postup konfigurace protokolů pomalých dotazů z Azure Portal](howto-configure-server-logs-in-portal.md)
-- [Jak nakonfigurovat protokoly pomalých dotazů z Azure CLI](howto-configure-server-logs-in-cli.md).
+- [Jak nakonfigurovat protokoly pomalých dotazů z Azure CLI](howto-configure-server-logs-in-cli.md)

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ca7654d930247f70d85cbc20fbbeb961223f05f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851267"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359795"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Kurz: Konfigurace federovaného adresáře pro Automatické zřizování uživatelů
 
@@ -57,20 +57,20 @@ Před konfigurací federovaného adresáře pro Automatické zřizování uživa
 
 2. Přejděte do **složky adresáře > uživatelských adresářů** a vyberte svého tenanta. 
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Snímek obrazovky s konzolou pro správu federovaného adresáře s adresáři a adresářem Azure pro federované adresáře, který je zvýrazněný testem" border="false":::
 
 3.  Pokud chcete vygenerovat trvalý nosný token, přejděte k **klíčům adresáře > vytvořit nový klíč.** 
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Snímek obrazovky se stránkou klíčů adresáře v konzole správce federovaného adresáře. Tlačítko vytvořit nový klíč je zvýrazněné." border="false":::
 
 4. Vytvořte klíč adresáře. 
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Snímek obrazovky se stránkou klíče pro vytvoření adresáře konzoly správce federovaného adresáře s poli název a popis a tlačítkem vytvořit klíč" border="false":::
     
 
 5. Zkopírujte hodnotu **přístupového tokenu** . Tato hodnota se zadá do pole **token tajného klíče** na kartě zřizování aplikace federovaného adresáře v Azure Portal. 
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Snímek obrazovky stránky v konzole pro správu federovaného adresáře Zobrazí se zástupný symbol přístupového tokenu a název klíče, popis a vydavatel." border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>Přidat federovaný adresář z Galerie
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat federované adresáře pro Automatické zřizování
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -90,21 +90,21 @@ Pokud chcete nakonfigurovat federované adresáře pro Automatické zřizování
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **federovaný adresář**, na panelu výsledků vyberte **federovaný adresář** .
+4. Do vyhledávacího pole zadejte **federovaný adresář** , na panelu výsledků vyberte **federovaný adresář** .
 
     ![Federovaný adresář v seznamu výsledků](common/search-new-app.png)
 
 5. V samostatném prohlížeči přejděte na **adresu URL** zvýrazněnou níže. 
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Snímek obrazovky stránky v Azure Portal, která zobrazuje informace o federovaném adresáři. Hodnota U R L se zvýrazní." border="false":::
 
 6. Klikněte na **Přihlásit se**.
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Snímek obrazovky hlavní nabídky na webu federovaného adresáře. Tlačítko Přihlásit se zvýrazní." border="false":::
 
 7.  Jako federovaný adresář je aplikace pro OpenIDConnect, která umožňuje přihlášení ke federovanému adresáři pomocí pracovního účtu Microsoft.
     
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Snímek zkušební stránky S C I M A D na webu federovaného adresáře Přihlaste se pomocí účet Microsoft zvýrazní." border="false":::
  
 8. Po úspěšném ověření Přijměte výzvu k zadání souhlasu pro stránku souhlasu. Aplikace se pak automaticky přidá do vašeho tenanta a budete přesměrováni na svůj účet federovaného adresáře.
 
@@ -146,12 +146,12 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory uživatele do federovaného adresáře**.
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Snímek obrazovky oddílu mapování V části název se zvýrazní synchronizace Azure Active Directory uživatelů do federovaného adresáře." border="false":::
     
     
 11. Zkontrolujte atributy uživatele synchronizované z Azure AD do federovaného adresáře v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v federovaném adresáři pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Snímek obrazovky konzoly správce federovaného adresáře zobrazující pole pro zadání názvu společnosti K dispozici jsou také tlačítka pro přihlášení." border="false":::
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Snímek obrazovky se stránkou mapování atributů. Tabulka obsahuje Azure Active Directory a atributy federovaného adresáře a stav pro porovnání." border="false":::
     
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -171,7 +171,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. Část **Podrobnosti o synchronizaci** můžete použít ke sledování průběhu a následného odkazu na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD ve federovaném adresáři.
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md) .
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

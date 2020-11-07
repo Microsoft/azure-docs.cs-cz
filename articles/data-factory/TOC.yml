@@ -203,6 +203,8 @@
       href: concepts-roles-permissions.md
     - name: Pravidla pojmenování
       href: naming-rules.md
+    - name: Redundance dat
+      href: concepts-data-redundancy.md
 - name: Návody
   items:
     - name: Autor

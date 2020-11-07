@@ -1,16 +1,16 @@
 ---
-title: Návrh Azure Policy jako pracovní postupy kódu
+title: Návrh pracovních postupů pro Azure Policy jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320613"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359676"
 ---
-# <a name="design-azure-policy-as-code-workflows"></a>Návrh Azure Policy jako pracovní postupy kódu
+# <a name="design-azure-policy-as-code-workflows"></a>Návrh pracovních postupů pro Azure Policy jako kód
 
 Jak budete postupovat na cestě pomocí zásad správného řízení cloudu, budete chtít posunout z ruční správy každé definice zásad v Azure Portal nebo prostřednictvím různých sad SDK na něco mnohem spravovatelnou a opakovat v podnikovém měřítku. Mezi dva z převládajících přístupů ke správě systémů ve velkém měřítku v cloudu patří:
 
@@ -38,8 +38,6 @@ Příklady těchto formátů souborů jsou k dispozici v [Azure Policy úložiš
 
 - Definice zásad: [Přidání značky k prostředkům](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Definice iniciativy: [fakturační značky](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-Přečtěte si také téma [Export Azure Policy prostředky](../how-to/export-resources.md) a získejte existující definice a přiřazení do [GitHubu](https://www.github.com)prostředí pro správu zdrojového kódu.
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 
@@ -73,6 +71,8 @@ Definice zásad jsou vytvořeny pomocí formátu JSON a uloženy ve správě zdr
 ```
 
 Když se přidá nová zásada nebo se aktualizuje stávající, pracovní postup by měl tuto definici zásady v Azure automaticky aktualizovat. Testování nové nebo aktualizované definice zásad se nachází v pozdějším kroku.
+
+Přečtěte si také téma [Export Azure Policy prostředky](../how-to/export-resources.md) a získejte existující definice a přiřazení do [GitHubu](https://www.github.com)prostředí pro správu zdrojového kódu.
 
 ### <a name="create-and-update-initiative-definitions"></a>Vytvoření a aktualizace definic iniciativ
 
@@ -129,7 +129,7 @@ Při testování aktualizovaných výsledků hodnocení zásad a prostředí je 
 
 ### <a name="update-to-enforced-assignments"></a>Aktualizace k vynutilému přiřazení
 
-Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo _povoleno_používání **enforcementMode** . Doporučuje se tuto změnu zpočátku udělat ve stejném prostředí daleko z výroby. Jakmile se toto prostředí ověří podle očekávání, měla by být tato změna vymezená tak, aby zahrnovala další prostředí, a tak dále, dokud se tato zásada nenasazením do produkčních prostředků.
+Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo _povoleno_ používání **enforcementMode** . Doporučuje se tuto změnu zpočátku udělat ve stejném prostředí daleko z výroby. Jakmile se toto prostředí ověří podle očekávání, měla by být tato změna vymezená tak, aby zahrnovala další prostředí, a tak dále, dokud se tato zásada nenasazením do produkčních prostředků.
 
 ## <a name="process-integrated-evaluations"></a>Zpracování integrovaných vyhodnocení
 

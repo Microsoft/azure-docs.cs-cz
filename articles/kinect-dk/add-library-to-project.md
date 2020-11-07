@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, senzor, SDK, Visual Studio 2017, Visual Studio 2019, NuGet
-ms.openlocfilehash: b0395118481cbaecd5ad0b6a3a6b3e89cc29dfaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd71f0d327b8c828cc9ddac5810757cccdffbcea
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277162"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359608"
 ---
 # <a name="add-azure-kinect-library-to-your-visual-studio-project"></a>Přidání knihovny Azure Kinect do projektu sady Visual Studio
 
@@ -22,7 +22,7 @@ Tento článek vás provede procesem přidání balíčku NuGet Azure Kinect do 
 
 Postup instalace balíčku NuGet pro Azure Kinect:
 
-1. Podrobné pokyny pro instalaci balíčku NuGet v aplikaci Visual Studio najdete v tématu [rychlý Start: instalace a použití balíčku v aplikaci Visual Studio](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio).
+1. Podrobné pokyny pro instalaci balíčku NuGet v aplikaci Visual Studio najdete v tématu [rychlý Start: instalace a použití balíčku v aplikaci Visual Studio](/nuget/quickstart/install-and-use-a-package-in-visual-studio).
 2. Chcete-li přidat balíček, můžete použít uživatelské rozhraní Správce balíčků kliknutím pravým tlačítkem myši na odkazy a výběrem možnosti spravovat balíčky NuGet z Průzkumník řešení.
 3. Jako zdroj balíčku zvolte [NuGet.org](https://www.nuget.org) , vyberte Procházet kartu a vyhledejte `Microsoft.Azure.Kinect.Sensor` .
 4. Vyberte tento balíček ze seznamu a nainstalujte.

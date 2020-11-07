@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: Zhchia
-ms.openlocfilehash: b9b7a82d611743f2ba76e20f47670771e2e38904
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f1600dfc5705ca97f16e8966a796b54fc556d216
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448958"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359258"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHubu pro Automatické zřizování uživatelů
 
@@ -71,7 +71,7 @@ Tato část vás provede připojením k rozhraní API pro zřizování uživatel
 
     ![Snímek obrazovky se zobrazí přihlašovací stránka GitHubu.](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít **Settings**  >  **Organizations**).
+7. V Azure Portal zadejte **adresu URL klienta** a klikněte na **Test připojení** . tím zajistíte, aby se služba Azure AD mohla připojit k vaší aplikaci GitHub. Pokud se připojení nepovede, ujistěte se, že váš účet GitHub má oprávnění správce a **Adresa URL tenanta** je zavedená správně, a pak zkuste znovu provést krok autorizovat ( **můžete být v** `https://api.github.com/scim/v2/organizations/<Organization_name>` rámci svého účtu GitHubu, který můžete najít **Settings**  >  **Organizations** ).
 
     ![Snímek obrazovky se zobrazí stránka organizace v GitHubu.](./media/github-provisioning-tutorial/GitHub3.png)
 
@@ -91,7 +91,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

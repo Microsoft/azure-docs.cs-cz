@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8fdb89e4e85e18e00179b894f2587bcf4127dc22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d2a6f01e891a7fb1c14cde552d66679e474139
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255836"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359149"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>Kurz: Konfigurace Proxyclick pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Před konfigurací Proxyclick pro Automatické zřizování uživatelů se služ
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Před konfigurací Proxyclick pro Automatické zřizování uživatelů se služ
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Proxyclick**, na panelu výsledků vyberte **Proxyclick** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Proxyclick** , na panelu výsledků vyberte **Proxyclick** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Proxyclick v seznamu výsledků](common/search-new-app.png)
 
@@ -116,7 +116,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Zřizování uživatelů Proxyclick](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    V části **Nastavení**integrace by se teď mělo zobrazit příslušné uživatelské rozhraní konfigurace nastavení  >  **Integrations**. V části Azure AD vyberte **Nastavení** **(zřizování uživatelů)**.
+    V části **Nastavení** integrace by se teď mělo zobrazit příslušné uživatelské rozhraní konfigurace nastavení  >  **Integrations**. V části Azure AD vyberte **Nastavení** **(zřizování uživatelů)**.
 
     ![Proxyclick vytvořit](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -165,7 +165,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Proxyclick vyžaduje, aby **e-maily** a **uživatelské jméno** měly stejnou zdrojovou hodnotu. Jakékoli aktualizace obou atributů změní další hodnotu.
 * Proxyclick nepodporuje zřizování pro skupiny.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

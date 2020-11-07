@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934930"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359540"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Koncepty vysoké dostupnosti v Azure Database for PostgreSQL – flexibilní Server
 
@@ -43,7 +43,7 @@ Stav konfigurace vysoké dostupnosti se nepřetržitě monitoruje a oznamuje na 
 
 Klientské aplikace PostgreSQL jsou připojené k primárnímu serveru pomocí názvu DATABÁZOVÉho serveru. Čtení z aplikace se obsluhují přímo z primárního serveru, zatímco potvrzení a zápis se potvrdí do aplikace až po zachování dat na primárním serveru i v pohotovostní replice. Vzhledem k tomuto dodatečnému požadavku na zpáteční cestách můžou aplikace očekávat zvýšenou latenci pro zápisy a potvrzení. Stav vysoké dostupnosti můžete monitorovat na portálu.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="redundantní vysoká dostupnost zóny"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="redundantní vysoká dostupnost zóny – stálý stav"::: 
 
 1. Klienti se připojují k flexibilnímu serveru a provádějí operace zápisu.
 2. Změny se replikují do pohotovostní lokality.
@@ -64,7 +64,7 @@ Pro jiné operace iniciované uživatelem, jako je například škálování na 
 
 Neplánované výpadky zahrnují chyby softwaru nebo selhání součástí infrastruktury, které mají vliv na dostupnost databáze. V případě, že systém monitorování detekuje nedostupnost serveru, je replikace do pohotovostní repliky závažná a aktivuje se pohotovostní replika jako primární databázový server. Klienti se mohou znovu připojit k databázovému serveru pomocí stejného připojovacího řetězce a obnovit jejich operace. Očekává se, že celková doba převzetí služeb při selhání bude trvat 60 – 120s. V závislosti na aktivitě v primárním databázovém serveru v době převzetí služeb při selhání, jako jsou například velké transakce a doba obnovení, může převzetí služeb při selhání trvat déle.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="redundantní vysoká dostupnost zóny"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="redundantní vysoce dostupná zóna – převzetí služeb při selhání"::: 
 
 1. Primární databázový server je mimo provoz a klienti ztratí připojení k databázi. 
 2. Pohotovostní server je aktivovaný tak, aby se stal novým primárním serverem. Klient se připojí k novému primárnímu serveru pomocí stejného připojovacího řetězce. Klientská aplikace ve stejné zóně jako primární databázový server snižuje latenci a zvyšuje výkon.
@@ -112,6 +112,8 @@ Flexibilní servery, které mají nakonfigurovanou vysokou dostupnost, replikuj�
 -   Konfigurace úkolů správy iniciované zákazníky nemůže být naplánována během spravovaného časového období údržby.
 
 -   K plánovaným událostem, jako jsou škálování výpočetních prostředků nebo škálování úložiště, dochází nejprve na pohotovostním serveru a pak na primárním serveru. Nedojde k převzetí služeb při selhání služby. 
+
+-  Pokud je v případě převzetí služeb při selhání do pohotovostního serveru nakonfigurovaná logická dekódování nebo logická replikace s nakonfigurovaným flexibilním serverem s vysokou dostupností, nekopírují se na pohotovostní server tyto sloty logické replikace.  
 
 ## <a name="next-steps"></a>Další kroky
 

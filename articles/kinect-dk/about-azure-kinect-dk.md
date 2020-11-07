@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.topic: overview
 ms.date: 06/26/2019
 keywords: Azure, Kinect, přehled, dev Kit, DK, zařízení, Hloubka, sledování textu, rozpoznávání řeči, rozpoznávání služeb, sady SDK, sada SDK, firmware
-ms.openlocfilehash: 6b3215ba6761521214ebffa2a100c5a1a030ab4c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d188d37c0247aebb16f51b4404da81d469136468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85277948"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359649"
 ---
 # <a name="about-azure-kinect-dk"></a>Informace o Azure Kinect DK
 
@@ -86,7 +86,7 @@ Sada Speech SDK umožňuje služby řeči připojené ke službám Azure.
 >[!NOTE]
 >Azure Kinect DK nemá reproduktory.
 
-Další podrobnosti a informace najdete v [dokumentaci ke službě Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Další podrobnosti a informace najdete v [dokumentaci ke službě Speech](../cognitive-services/speech-service/index.yml).
 
 ## <a name="vision-services"></a>Služby Vision
 

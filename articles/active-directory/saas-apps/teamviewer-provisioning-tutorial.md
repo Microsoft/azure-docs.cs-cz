@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a2113130cdfb41152b03e87606b757a3fa61793f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521114"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359319"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Kurz: Konfigurace TeamVieweru pro Automatické zřizování uživatelů
 
@@ -30,7 +30,7 @@ Tento kurz popisuje kroky, které je třeba provést v TeamVieweru i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a TeamViewerem
 > * [Jednotné přihlašování](./teamviewer-tutorial.md) k TeamVieweru (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -97,7 +97,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Snímek obrazovky s rozevíracím seznamem režimu zřizování s možností automatického volání](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte `ttps://webapi.teamviewer.com/scim/v2`  do pole **Adresa URL pro dodržení** a zadejte token skriptu, který jste vytvořili dříve v **tokenu tajného**kódu. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k TeamVieweru. Pokud se připojení nepovede, ujistěte se, že váš účet TeamViewer má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `ttps://webapi.teamviewer.com/scim/v2`  do pole **Adresa URL pro dodržení** a zadejte token skriptu, který jste vytvořili dříve v **tokenu tajného** kódu. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k TeamVieweru. Pokud se připojení nepovede, ujistěte se, že váš účet TeamViewer má oprávnění správce, a zkuste to znovu.
 
     ![Snímek obrazovky se zobrazí v dialogovém okně přihlašovací údaje správce, kde můžete zadat svého tenanta U R L a tajného tokenu.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -140,7 +140,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 * Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 * Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

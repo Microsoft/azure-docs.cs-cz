@@ -31,14 +31,10 @@
       href: spring-cloud-tutorial-setup-autoscale.md
     - name: Upozornění a skupiny akcí
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: Použití IntelliJ k nasazení aplikací
-      href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Řídicí panel jističe
       href: spring-cloud-tutorial-circuit-breaker.md
     - name: Vlastní název DNS
       href: spring-cloud-tutorial-custom-domain.md
-    - name: Zřízení instance Azure Spring Cloudu s využitím Terraformu
-      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Použití spravované identity pro připojení Key Vaultu k aplikaci Azure Spring Cloud
       href: spring-cloud-tutorial-managed-identities-key-vault.md
     - name: Nasazení Azure Spring Cloudu ve virtuální síti
@@ -71,12 +67,14 @@
           href: spring-cloud-tutorial-config-server.md
         - name: Povolení registrace služeb
           href: spring-cloud-service-registration.md
-    - name: Nasadit
+    - name: Nasazení
       items:
         - name: Nastavení přípravného prostředí
           href: spring-cloud-howto-staging-environment.md
         - name: Spuštění aplikace v Javě ze zdrojového kódu
           href: spring-cloud-howto-launch-from-source.md
+        - name: Použití IntelliJ k nasazení aplikací
+          href: spring-cloud-tutorial-intellij-deploy-apps.md
     - name: Konfigurace
       items:
         - name: 'Spuštění, zastavení a odstranění aplikace'
@@ -115,6 +113,8 @@
           href: spring-cloud-howto-github-actions.md
         - name: Ověřování s využitím Key Vaultu v GitHub Actions
           href: spring-cloud-github-actions-key-vault.md
+        - name: Zřízení instance Azure Spring Cloudu s využitím Terraformu
+          href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
     - name: Řešení potíží
       items:
         - name: Samodiagnostika a řešení problémů

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 06fca39b1170d36f22040ccf48eb02f948e47e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fc5045643c9baf67b61d45188c8a2b6ccbc5c23
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304653"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359812"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Peakon pro Automatické zřizování uživatelů
 
@@ -74,7 +74,7 @@ Pokud chcete nakonfigurovat Peakon pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -82,7 +82,7 @@ Pokud chcete nakonfigurovat Peakon pro Automatické zřizování uživatelů pom
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Peakon**, na panelu výsledků vyberte **Peakon** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Peakon** , na panelu výsledků vyberte **Peakon** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Peakon v seznamu výsledků](common/search-new-app.png)
 
@@ -145,7 +145,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 
 * Všechny vlastní atributy uživatelů v Peakon musí být rozšířeny z vlastního uživatelského rozšíření SCIM z Peakon `urn:ietf:params:scim:schemas:extension:peakon:2.0:User` .
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

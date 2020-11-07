@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2fe0d8e6ad2056a244ec0d811f1b2dcb67e7bd84
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516799"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359897"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru meta Networks Connector pro Automatické zřizování uživatelů
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je předvést kroky, které je třeba provést v konektorech
 >
 > Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -68,7 +68,7 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 5.  Klikněte na **Přidat**. Zkopírujte **tajný klíč** a uložte ho tak, jak se to bude zobrazovat jenom v takovém případě. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování v aplikaci konektoru meta Networks v Azure Portal.
 
-    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Snímek obrazovky konzoly pro správu konektoru meta Networks s zvýrazněným názvem klíče P I a popisem hodnot v Azure a a klíčovým popisem p" border="false":::
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Snímek obrazovky okna oznamující uživatelům, že byl přidán klíč A P. Pole tajného kódu obsahuje nečitelné hodnoty a je zvýrazněno." border="false":::
 
 6.  IdP můžete přidat tak, že přejdete do **Nastavení správa > > IdP > vytvořit nový**.
 
@@ -98,7 +98,7 @@ Před konfigurací konektoru meta Networks pro Automatické zřizování uživat
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ Před konfigurací konektoru meta Networks pro Automatické zřizování uživat
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **konektor meta sítě**, vyberte na panelu výsledků položku **meta Networks Connector** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **konektor meta sítě** , vyberte na panelu výsledků položku **meta Networks Connector** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Konektor meta Networks v seznamu výsledků](common/search-new-app.png)
 
@@ -179,7 +179,7 @@ Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin 
 
 Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

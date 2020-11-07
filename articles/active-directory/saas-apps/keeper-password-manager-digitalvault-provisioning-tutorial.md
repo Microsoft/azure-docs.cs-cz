@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 26f12b18e2199fb45e6eb94f2a136d2af2b1576c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2670dc0cb56805a2afa966bee1d2aa52b6c8e46a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317578"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358971"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Kurz: Konfigurace Správce hesel & digitálního trezoru pro Automatické zřizování uživatelů
 
@@ -45,7 +45,7 @@ Než začnete konfigurovat Správce hesel a & digitálního trezoru pro Automati
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace** a pak vyberte **všechny aplikace**.
 
     ![Okno podnikové aplikace](common/enterprise-applications.png)
 
@@ -53,7 +53,7 @@ Než začnete konfigurovat Správce hesel a & digitálního trezoru pro Automati
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Keeper Password manager & Digital trezor**, v panelu výsledků vyberte možnost **správce hesel & digitální trezor** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Keeper Password manager & Digital trezor** , v panelu výsledků vyberte možnost **správce hesel & digitální trezor** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Správce hesel & digitálního trezoru v seznamu výsledků](common/search-new-app.png)
 
@@ -102,7 +102,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Konzola správce Keep](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-admin-console.png)
 
-    Vyberte **SCIM (systém pro správu identit mezi doménami**).
+    Vyberte **SCIM (systém pro správu identit mezi doménami** ).
 
     ![Přidání SCIM](media/keeper-password-manager-digitalvault-provisioning-tutorial/keeper-add-scim.png)
 
@@ -163,7 +163,7 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v t
 * Správce hesel služby & Digital trezor vyžaduje, aby **e-maily** a **uživatelské jméno** měly stejnou zdrojovou hodnotu, protože jakékoli aktualizace obou atributů změní jinou hodnotu.
 * Správce hesel služby & Digital trezor nepodporuje odstranění uživatelů, pouze zakázat. Zakázaní uživatelé se v uživatelském rozhraní konzoly správce uchovává jako uzamčené.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

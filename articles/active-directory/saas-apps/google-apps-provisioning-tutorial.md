@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: ebbcb8dd8c895c61858952fbd4498bd57e06d36b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448652"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359642"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro Automatické zřizování uživatelů
 
@@ -83,7 +83,7 @@ Před konfigurací G Suite pro Automatické zřizování uživatelů pomocí Azu
 
     ![Sada G Suite – přidat doménu](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
 
-    c. Vyberte **Přidat další doménu**a pak zadejte název domény, kterou chcete přidat.
+    c. Vyberte **Přidat další doménu** a pak zadejte název domény, kterou chcete přidat.
 
     ![G Suite přidat další](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
 
@@ -247,7 +247,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
       |e-mail|Řetězec|
       |Členové|Řetězec|
       |name|Řetězec|
-      |Popis|Řetězec|
+      |description|Řetězec|
 
 12. Pokud chcete nakonfigurovat filtry rozsahu, postupujte podle pokynů uvedených v [kurzu k filtrům rozsahu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -275,7 +275,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 2. Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 3. Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

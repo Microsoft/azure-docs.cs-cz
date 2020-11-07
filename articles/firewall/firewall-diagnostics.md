@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 2dd1b51c6bcdbc531661d9ecf45d3d0282eb5b45
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348759"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358843"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Monitorování protokolů a metrik Azure Firewallu
 
@@ -50,74 +50,55 @@ Než se data v protokolech po dokončení tohoto procesu zapnutí protokolován�
 8. Vyberte své předplatné.
 9. Vyberte **Uložit**.
 
-## <a name="enable-logging-with-powershell"></a>Povolení protokolování prostřednictvím PowerShellu
+## <a name="enable-diagnostic-logging-by-using-powershell"></a>Povolení protokolování diagnostiky pomocí PowerShellu
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Abyste mohli začít shromažďovat data dostupná prostřednictvím těchto protokolů, musíte zapnout protokolování diagnostiky.
 
-Protokolování diagnostiky zapnete následovně:
+Chcete-li povolit protokolování diagnostiky pomocí prostředí PowerShell, použijte následující postup:
 
-1. Poznamenejte si ID prostředku účtu úložiště, kam se data protokolu ukládají. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>*.
+1. Poznamenejte si ID prostředku pracovního prostoru Log Analytics, kde jsou uložená data protokolu. Tato hodnota je ve formátu: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>` .
 
-   Můžete použít libovolný účet úložiště z vašeho předplatného. Tuto informaci najdete pomocí webu Azure Portal na stránce **vlastností** prostředku.
+   V rámci svého předplatného můžete použít libovolný pracovní prostor. Tuto informaci najdete pomocí webu Azure Portal Informace najdete na stránce **vlastností** prostředku.
 
-2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota je ve formátu: */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>*.
+2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota je ve formátu: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
    Tuto informaci najdete pomocí webu Azure Portal.
 
-3. Protokolování diagnostiky zapnete pomocí následující rutiny PowerShellu:
+3. Povolte protokolování diagnostiky pro všechny protokoly a metriky pomocí následující rutiny PowerShellu:
 
-    ```powershell
-    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name> `
-   -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> `
-   -Enabled $true     
-    ```
+   ```powershell
+   $diagSettings = @{
+      Name = 'toLogAnalytics'
+      ResourceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      WorkspaceId = '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      Enabled = $true
+   }
+   Set-AzDiagnosticSetting  @diagSettings 
+   ```
 
-> [!TIP]
->Diagnostické protokoly vlastí účet úložiště nevyžadují. Za používání úložiště k protokolování přístupu a výkonu se účtují poplatky.
-
-## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>Povolení protokolování diagnostiky pomocí Azure CLI
+## <a name="enable-diagnostic-logging-by-using-the-azure-cli"></a>Povolení protokolování diagnostiky pomocí Azure CLI
 
 Protokolování aktivit je u každého prostředku Správce prostředků povolené automaticky. Abyste mohli začít shromažďovat data dostupná prostřednictvím těchto protokolů, musíte zapnout protokolování diagnostiky.
 
-[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+Pokud chcete povolit protokolování diagnostiky pomocí Azure CLI, použijte následující postup:
 
-### <a name="enable-diagnostic-logging"></a>Povolení protokolování diagnostiky
+1. Poznamenejte si ID prostředku pracovního prostoru Log Analytics, kde jsou uložená data protokolu. Tato hodnota je ve formátu: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-Pomocí následujících příkazů Povolte protokolování diagnostiky.
+   V rámci svého předplatného můžete použít libovolný pracovní prostor. Tuto informaci najdete pomocí webu Azure Portal Informace najdete na stránce **vlastností** prostředku.
 
-1. Spuštěním příkazu [AZ monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) Povolte protokolování diagnostiky:
+2. Poznamenejte si ID prostředku brány Firewall, který má zapnuté protokolování. Tato hodnota je ve formátu: `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>` .
 
-   ```azurecli
-   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
-     --resource Firewall07 --storage-account MyStorageAccount
+   Tuto informaci najdete pomocí webu Azure Portal.
+
+3. Povolte protokolování diagnostiky pro všechny protokoly a metriky pomocí následujícího příkazu Azure CLI:
+
+   ```azurecli-interactive
+   az monitor diagnostic-settings create -n 'toLogAnalytics'
+      --resource '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>'
+      --workspace '/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>'
+      --logs '[{\"category\":\"AzureFirewallApplicationRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallNetworkRule\",\"Enabled\":true}, {\"category\":\"AzureFirewallDnsProxy\",\"Enabled\":true}]' 
+      --metrics '[{\"category\": \"AllMetrics\",\"enabled\": true}]'
    ```
-
-   Spuštěním příkazu [AZ monitor Diagnostic-Settings list](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) zobrazíte nastavení diagnostiky pro prostředek:
-
-   ```azurecli
-   az monitor diagnostic-settings list --resource Firewall07
-   ```
-
-   Pomocí možnosti [AZ monitor Diagnostic-Settings show](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) Zobrazte aktivní nastavení diagnostiky pro prostředek:
-
-   ```azurecli
-   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-1. Spusťte příkaz [AZ monitor Diagnostic-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) a aktualizujte nastavení.
-
-   ```azurecli
-   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
-   ```
-
-   Pomocí příkazu [AZ monitor Diagnostic-Settings Delete](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) odstraňte nastavení diagnostiky.
-
-   ```azurecli
-   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
-   ```
-
-> [!TIP]
->Diagnostické protokoly vlastí účet úložiště nevyžadují. Za používání úložiště k protokolování přístupu a výkonu se účtují poplatky.
 
 ## <a name="view-and-analyze-the-activity-log"></a>Zobrazení a analýza protokolu aktivit
 
@@ -133,6 +114,8 @@ Data protokolu aktivit si můžete zobrazit použitím jedné z následujících
 
 Ukázkové dotazy Azure Firewall Log Analytics najdete v tématu [Azure firewall ukázek Log Analytics](log-analytics-samples.md).
 
+[Azure firewall sešit](firewall-workbook.md) nabízí flexibilní plátno pro Azure firewall analýzu dat. Můžete ho použít k vytvoření bohatých vizuálních sestav v rámci Azure Portal. Můžete klepnout na několik bran firewall nasazených v rámci Azure a kombinovat je do sjednocených interaktivních prostředí.
+
 Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON s protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést do formátu CSV a zobrazit si je v Excelu, Power BI nebo jiném nástroji s vizualizací dat.
 
 > [!TIP]
@@ -144,5 +127,7 @@ Přejděte k Azure Firewall v části **monitorování** vyberte **metriky**. Ch
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste nakonfigurovali bránu firewall pro shromažďování protokolů, můžete prozkoumat protokoly Azure Monitor a zobrazit vaše data.
+
+[Monitorování protokolů pomocí Azure Firewallho sešitu](firewall-workbook.md)
 
 [Řešení monitorování sítě v protokolech Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md)

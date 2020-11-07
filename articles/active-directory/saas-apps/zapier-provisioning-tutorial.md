@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 86cb23a25bb55bfebd126f02236d60166a289219
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d567985cba35647654d3ec47340979fcf9411132
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519048"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359455"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zapier pro Automatické zřizování uživatelů
 
@@ -31,7 +31,7 @@ Tento kurz popisuje kroky, které je třeba provést v Zapier i Azure Active Dir
 > * Zřizování skupin a členství ve skupinách v Zapier
 > * Jednotné přihlašování k Zapier (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -50,7 +50,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
     ![Konzola pro správu Zapier](media/zapier-provisioning-tutorial/admin.png)
 
-2. V části **nastavení společnosti**vyberte **zřizování uživatelů**.
+2. V části **nastavení společnosti** vyberte **zřizování uživatelů**.
 
     ![Zapier přidat SCIM](media/zapier-provisioning-tutorial/user.png)
 
@@ -148,7 +148,7 @@ Po dokončení konfigurace zřizování můžete své nasazení monitorovat pomo
 - Pokud chcete zjistit, jaký je stav cyklu zřizování a jak blízko je dokončení, zkontrolujte [indikátor průběhu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md).
 - Pokud se zdá, že konfigurace zřizování není v pořádku, aplikace přejde do karantény. Další informace o stavech karantény najdete [tady](../app-provisioning/application-provisioning-quarantine-status.md).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
