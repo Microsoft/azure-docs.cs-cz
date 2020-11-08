@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ce9f7e922b9a168205ea1d193830dd654691998a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6477432636db9592d9b0d9c1f90f5eee7d6e00db
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510806"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368997"
 ---
 # <a name="what-are-parallel-documents"></a>Co jsou paralelní dokumenty?
 
@@ -23,7 +23,7 @@ Nezáleží na tom, který jazyk je označený jako "zdroj" a který jazyk je oz
 
 ## <a name="requirements"></a>Požadavky
 
-Abyste mohli naučit systém, budete potřebovat minimálně 10 000 jedinečných zarovnaných a paralelních vět. Toto omezení je bezpečnostní síť, aby bylo zajištěno, že vaše paralelní věty obsahují dostatek jedinečného slovníku, aby bylo možné přeškolit model překladu. Osvědčeným postupem je průběžně přidávat více paralelních obsahu a přeškolovat se, aby se zlepšila kvalita vašeho systému překladu. Přečtěte si prosím [Zarovnání vět](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
+Abyste mohli naučit systém, budete potřebovat minimálně 10 000 jedinečných zarovnaných a paralelních vět. Toto omezení je bezpečnostní síť, aby bylo zajištěno, že vaše paralelní věty obsahují dostatek jedinečného slovníku, aby bylo možné přeškolit model překladu. Osvědčeným postupem je průběžně přidávat více paralelních obsahu a přeškolovat se, aby se zlepšila kvalita vašeho systému překladu. Přečtěte si prosím [Zarovnání vět](./sentence-alignment.md).
 
 Microsoft vyžaduje, aby dokumenty odeslané do vlastního překladatele nenarušily autorské právo nebo duševní vlastnictví třetí strany. Další informace najdete v tématu věnovaném [podmínkám použití](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 Nahrání dokumentu pomocí portálu nemění vlastnictví duševního vlastnictví v samotném dokumentu.

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757023"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368334"
 ---
 # <a name="how-to-manage-settings"></a>Správa nastavení
 
@@ -33,7 +33,7 @@ Ke školení nebo nasazení modelů potřebujete ke svému pracovnímu prostoru 
 
 Pokud předplatné nemáte, postupujte podle následujících kroků:
 
-1. Přihlaste se k odběru a vytvořte prostředek překladatele. Postupujte podle pokynů, [jak se zaregistrovat k odběru překladatelů](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) a získat klíč překladatele.
+1. Přihlaste se k odběru a vytvořte prostředek překladatele. Postupujte podle pokynů, [jak se zaregistrovat k odběru překladatelů](../translator-how-to-signup.md) a získat klíč překladatele.
 2. Poznamenejte si klíč k vašemu předplatnému překladatele. Obě Klíč1 nebo key2 jsou přijatelné.
 3. Přejděte zpátky na vlastní portál překladatelů.
 
@@ -52,7 +52,7 @@ Pokud předplatné nemáte, postupujte podle následujících kroků:
     ![Dialog vytvořit nový pracovní prostor](media/how-to/create-new-workspace-dialog.png)
 
 >[!Note]
->Vlastní Překladatel nepodporuje vytváření pracovních prostorů pro prostředek Translator Text API (označuje se také jako Klíč předplatného Azure), který byl vytvořen v rámci [povolené virtuální](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)sítě.
+>Vlastní Překladatel nepodporuje vytváření pracovních prostorů pro prostředek Translator Text API (označuje se také jako Klíč předplatného Azure), který byl vytvořen v rámci [povolené virtuální](../../../api-management/api-management-using-with-vnet.md)sítě.
 
 ### <a name="modify-existing-key"></a>Upravit existující klíč
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: db3836e6171d187539b8615efcb5ab782c368020
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88752399"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369558"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Rychlý Start: Vytvoření první statické webové aplikace
 
@@ -20,7 +20,7 @@ Služba Azure static Web Apps publikuje web do produkčního prostředí tím, �
 
 Pokud nemáte předplatné Azure, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet [GitHub](https://github.com)
 - Účet [Azure](https://portal.azure.com)
@@ -44,27 +44,27 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
 
 1. Umístěte myš nad popisek _Static Web Apps_ a vyberte **symbol plus**.
 
-    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="Název aplikace":::
 
 1. V horní části editoru se otevře příkaz akcemi a zobrazí se výzva k pojmenování aplikace.
 
     Zadejte název **my-first-static-web-app** a stiskněte **Enter**.
 
-    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Vytvoření statické webové aplikace":::
 
 1. Vyberte **Hlavní** větev a stiskněte klávesu **ENTER**.
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="Název větve":::
 
 1. **/** Jako umístění pro kód aplikace vyberte a stiskněte klávesu **ENTER**.
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Umístění kódu aplikace":::
 
 1. Rozšíření hledá umístění rozhraní API ve vaší aplikaci. Tento článek se nevěnuje implementaci rozhraní API.
 
     Vyberte **Skip for now** (Prozatím přeskočit) a stiskněte **Enter**.
 
-    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="Umístění rozhraní API":::
 
 1. Vyberte umístění, ve kterém se mají v aplikaci vytvářet soubory pro produkční prostředí.
 
@@ -72,39 +72,39 @@ Pak otevřete Visual Studio Code a přejít na **soubor > otevřít složku** a 
 
     Zrušte zaškrtnutí políčka a stiskněte klávesu **ENTER**.
 
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="Cesta k souborům aplikace":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
     Zadejte **DIST/úhlové základní** a stiskněte klávesu **ENTER**.
 
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Cesta k souborům aplikace Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 
     Zadejte **build** a stiskněte **Enter**.
 
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="Cesta k souborům aplikace React":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
     Zadejte **dist** a stiskněte **Enter**.
 
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Cesta k souborům aplikace Vue":::
 
     ---
 
 1. Vyberte nejbližší umístění a stiskněte **Enter**.
 
-    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-location.png" alt-text="Umístění prostředku":::
 
 1. Po vytvoření aplikace se ve Visual Studio Code zobrazí oznámení s potvrzením.
 
-    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="Potvrzení o vytvoření":::
 
-1. V okně Průzkumníka Visual Studio Code se vraťte do oddílu _Static Web Apps_ a klikněte pravým tlačítkem na **produkční** prostředí a výběrem **otevřít na portálu** zobrazte aplikaci v Azure Portal.
+1. V okně Průzkumníka Visual Studio Code přejděte na uzel, který má název vašeho předplatného a rozbalte ho. Všimněte si, že může trvat několik minut, než se nasazení dokončí. Pak se vraťte do oddílu static Web Apps a vyberte název aplikace a potom klikněte pravým tlačítkem na My-First-static-Web-App a vyberte otevřít na portálu. zobrazí se aplikace v Azure Portal.
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Logo Azure":::
+    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="Otevření na portálu":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -114,7 +114,7 @@ Pokud nebudete tuto aplikaci nadále používat, můžete pomocí rozšíření 
 
 V okně Průzkumníka Visual Studio Code se vraťte do oddílu _Static Web Apps_ a klikněte pravým tlačítkem na **My-First-static-Web-App** a vyberte **Odstranit**.
 
-:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Logo Azure":::
+:::image type="content" source="media/getting-started/extension-delete.png" alt-text="Odstranit aplikaci":::
 
 ## <a name="next-steps"></a>Další kroky
 

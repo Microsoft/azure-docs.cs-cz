@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ceaa04fdf8776d4fab1db4cfb1b3df4298f28de9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152293"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368776"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -60,7 +60,7 @@ Vytvoří a přiřadí trvalou proměnnou prostředí s ohledem na hodnotu.
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-V nové instanci **příkazového řádku**si přečtěte proměnnou prostředí.
+V nové instanci **příkazového řádku** si přečtěte proměnnou prostředí.
 
 ```CMD
 :: Prints the env var value
@@ -76,7 +76,7 @@ Vytvoří a přiřadí trvalou proměnnou prostředí s ohledem na hodnotu.
 [System.Environment]::SetEnvironmentVariable('ENVIRONMENT_VARIABLE_KEY', 'value', 'User')
 ```
 
-V nové instanci **Windows PowerShellu**si přečtěte proměnnou prostředí.
+V nové instanci **Windows PowerShellu** si přečtěte proměnnou prostředí.
 
 ```powershell
 # Prints the env var value
@@ -92,7 +92,7 @@ Vytvoří a přiřadí trvalou proměnnou prostředí s ohledem na hodnotu.
 echo export ENVIRONMENT_VARIABLE_KEY="value" >> /etc/environment && source /etc/environment
 ```
 
-V nové instanci rozhraní **bash**si přečtěte proměnnou prostředí.
+V nové instanci rozhraní **bash** si přečtěte proměnnou prostředí.
 
 ```Bash
 # Prints the env var value
@@ -201,17 +201,17 @@ NSString* value =
 
 Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 
-* Translator
+* Překladač
 
 Pro následující služby nebudou Microsoft technici přistupovat k žádným zákaznickým datům ve vrstvě E0: 
 
 * Language Understanding
-* Rozpoznávání tváře
+* Tvář
 * Content Moderator
 * Personalizace
 
 > [!IMPORTANT]
-> V případě nástroje pro **rozpoznávání formulářů**nebudou Microsoft technici přistupovat k žádným zákaznickým datům v prostředcích vytvořených po 10. červenci 2020.
+> V případě nástroje pro **rozpoznávání formulářů** nebudou Microsoft technici přistupovat k žádným zákaznickým datům v prostředcích vytvořených po 10. červenci 2020.
 
 Chcete-li požádat o možnost použití skladové položky E0, vyplňte a odešlete [formulář žádosti](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití skladové položky E0 s LUIS budete muset vytvořit nový prostředek z Azure Portal a vybrat E0 jako cenovou úroveň. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 
@@ -222,5 +222,5 @@ Služba Speech v současné době nepodporuje Customer Lockbox. Zákaznická dat
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte různé [Cognitive Services](welcome.md)
+* Prozkoumejte různé [Cognitive Services](./what-are-cognitive-services.md)
 * Další informace o [Cognitive Services virtuálních sítích](cognitive-services-virtual-networks.md)

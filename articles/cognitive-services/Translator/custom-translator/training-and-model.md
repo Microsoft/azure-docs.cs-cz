@@ -9,17 +9,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: swmachan
-ms.openlocfilehash: d8713d20503dc788175a408f5ec652505090396e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1765aaed3c0562da13c539845bfe19f6f85ed4ef
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510823"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369014"
 ---
 # <a name="what-are-trainings-and-models"></a>Co jsou kurzy a modely?
 
 Model je systém, který poskytuje překlad pro konkrétní dvojici jazyků.
-Výsledkem úspěšného školení je model. Při výuce modelu jsou vyžadovány tři vzájemně exkluzivní typy dokumentů: školení, optimalizace a testování. Je možné zadat také typ dokumentu slovníku. Přečtěte si prosím [Zarovnání vět](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+Výsledkem úspěšného školení je model. Při výuce modelu jsou vyžadovány tři vzájemně exkluzivní typy dokumentů: školení, optimalizace a testování. Je možné zadat také typ dokumentu slovníku. Přečtěte si prosím [Zarovnání vět](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 Pokud jsou při zařazování školení k dispozici jenom školicí údaje, vlastní Překladatel automaticky sestaví data optimalizace a testování. Použije náhodnou podmnožinu vět z školicích dokumentů a vyloučí tyto věty z vašich školicích dat.
 

@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: c4b02ef7bc833a7f5ab41e0203836637613244e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9e887d8f7579a90e7d4e8d54dcf28e1256269063
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101982"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368453"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Průvodce upgradem rozhraní API pro automatické návrhy
 
@@ -42,7 +42,7 @@ Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní 
 
 - Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|Kód|Podřízeného kódu|Description
+|Kód|Podřízeného kódu|Popis
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP je 410.
@@ -76,4 +76,4 @@ Blokované|InvalidRequest. Block
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na zobrazení a použití](./UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../bing-web-search/use-display-requirements.md)

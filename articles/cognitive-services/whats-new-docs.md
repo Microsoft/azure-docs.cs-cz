@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 11/03/2020
-ms.openlocfilehash: 715b02eec7b499afdcffa5e1f31d388e8bc930e7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 239a93c58edd1f02e5e34d974fdc864f3e1cf90f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305235"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369422"
 ---
 # <a name="cognitive-services-whats-new-in-docs-for-october-1-2020---october-31-2020"></a>Cognitive Services: Novinky v dokumentaci 1. října 2020 – 31. října 2020
 
@@ -34,39 +34,39 @@ Vítá vás, co je nového v Cognitive Services docs od 1. října 2020 do 31. �
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Použití nástroje Docker Compose k nasazení několika kontejnerů](/azure/cognitive-services/containers/docker-compose-recipe.md)
+- [Použití nástroje Docker Compose k nasazení několika kontejnerů](./containers/docker-compose-recipe.md)
 
 ## <a name="form-recognizer"></a>Rozpoznávání formulářů
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Co je nového ve službě Rozpoznávání formulářů?](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Co je nového ve službě Rozpoznávání formulářů?](./form-recognizer/whats-new.md)
 
 ## <a name="immersive-reader"></a>Asistivní čtečka
 
 ### <a name="new-articles"></a>Nové články
 
-- [Poznámky k verzi sady JavaScript pro moderní čtečku](/azure/cognitive-services/immersive-reader/release-notes.md)
+- [Poznámky k verzi sady JavaScript pro moderní čtečku](./immersive-reader/release-notes.md)
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Jak ukládat předvolby uživatele](/azure/cognitive-services/immersive-reader/how-to-store-user-preferences.md)
-- [Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
+- [Jak ukládat předvolby uživatele](./immersive-reader/how-to-store-user-preferences.md)
+- [Referenční dokumentace sady pro moderní čtečku JavaScript SDK (v 1.1)](./immersive-reader/reference.md)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky](/azure/cognitive-services/metrics-advisor/data-feeds-from-different-sources.md)
-- [Nejčastější dotazy k metrickým nástrojům](/azure/cognitive-services/metrics-advisor/faq.md)
+- [Přidání datových kanálů z různých zdrojů dat do Poradce pro metriky](./metrics-advisor/data-feeds-from-different-sources.md)
+- [Nejčastější dotazy k metrickým nástrojům](./metrics-advisor/faq.md)
 
 ## <a name="text-analytics"></a>Analýza textu
 
 ### <a name="updated-articles"></a>Aktualizované články
 
-- [Migrace na verzi 3. x z rozhraní API pro analýzu textu](/azure/cognitive-services/text-analytics/migration-guide.md)
-- [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
+- [Migrace na verzi 3. x z rozhraní API pro analýzu textu](./text-analytics/migration-guide.md)
+- [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu](./text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
 
 ## <a name="community-contributors"></a>Přispěvatelé komunity
 

@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: 8ef5d8e049ac4a779d5139945bf1073f38eb434c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0982f89d59f2ef9a282a46a93b98801b9df00a40
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017654"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368708"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Kurz: detekce anomálií pro streamovaná data pomocí Azure Databricks
 
@@ -47,7 +47,7 @@ Pokud nemáte [předplatné Azure](https://azure.microsoft.com/free/cognitive-se
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Obor názvů a centrum událostí pro [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) .
+- Obor názvů a centrum událostí pro [Azure Event Hubs](../../../event-hubs/event-hubs-create.md) .
 
 - [Připojovací řetězec](../../../event-hubs/event-hubs-get-connection-string.md) pro přístup k oboru názvů Event Hubs. Připojovací řetězec by měl mít podobný formát:
 
@@ -65,7 +65,7 @@ V této části vytvoříte Azure Databricks pracovní prostor pomocí [Azure Po
 
     ![Azure Databricks na portálu](../media/tutorials/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
-3. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly:
+3. V části **Azure Databricks služba** zadejte následující hodnoty pro vytvoření pracovního prostoru datacihly:
 
 
     |Vlastnost  |Popis  |
@@ -127,7 +127,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
    ![Dialogové okno Přidat knihovnu](../media/tutorials/databricks-add-library-option.png "Dialogové okno Přidat knihovnu")
 
-2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnice**zadejte souřadnici balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
+2. Na stránce Nová knihovna vyberte v části **zdroj** možnost **Maven**. Pro **souřadnice** zadejte souřadnici balíčku, který chcete přidat. Tady jsou souřadnice Maven pro knihovny použité v tomto kurzu:
 
    * Konektor služby Event Hubs pro Spark – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Rozhraní Twitter API – `org.twitter4j:twitter4j-core:4.0.7`
@@ -151,7 +151,7 @@ Na stránce Knihovna vyberte cluster, ve kterém chcete použít knihovnu, a pak
 
 V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive Services](../overview.md) ke spouštění detekce anomálií na streamu tweety téměř v reálném čase. Než použijete rozhraní API, musíte v Azure vytvořit prostředek detektoru anomálií a načíst přístupový klíč pro použití rozhraní API detektoru anomálií.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **+ Vytvořit prostředek**.
 
@@ -176,7 +176,7 @@ V tomto kurzu použijete rozhraní API pro detekci [anomálií v Azure Cognitive
 
     ![Zobrazit přístupové klíče](../media/tutorials/cognitive-services-get-access-keys.png "Zobrazit přístupové klíče")
 
-6. V části **klíče**vyberte ikonu kopírování na klíč, který chcete použít. Uložte přístupový klíč.
+6. V části **klíče** vyberte ikonu kopírování na klíč, který chcete použít. Uložte přístupový klíč.
 
     ![Kopírování přístupových klíčů](../media/tutorials/cognitive-services-copy-access-keys.png "Kopírování přístupových klíčů")
 

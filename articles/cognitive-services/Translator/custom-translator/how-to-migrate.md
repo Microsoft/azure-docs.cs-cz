@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 449d57579b802191434cda3e63e103e5f3ef4bc5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220869"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368280"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace pracovního prostoru centra a projektů do vlastního překladatele
 
@@ -27,7 +27,7 @@ Tyto akce se provádějí během migrace:
 * Skóre BLEU migrováno z školení centra můžete kdykoli najít na stránce TrainingDetails modelu v záhlaví "Bleu skóre v MT hub".
 
 > [!Note] 
-> Pro úspěšné školení vyžaduje vlastní Překladatel minimálně 10 000 jedinečných extrahovaných vět. Vlastní Překladatel nemůže provádět školení s méně než [navrhovaným minimem](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences).
+> Pro úspěšné školení vyžaduje vlastní Překladatel minimálně 10 000 jedinečných extrahovaných vět. Vlastní Překladatel nemůže provádět školení s méně než [navrhovaným minimem](./sentence-alignment.md#suggested-minimum-number-of-sentences).
 
 ## <a name="find-custom-translator-workspace-id"></a>Najít ID vlastního pracovního prostoru překladatele
 
@@ -122,7 +122,7 @@ Pokud potřebujete podrobnější zprávu o migraci týkající se vašich proje
 * Systémy s páry jazyka, které ještě nejsou dostupné ve vlastním překladateli, budou k dispozici jenom pro přístup k datům nebo jejich nasazení prostřednictvím vlastního překladatele. Tyto projekty budou na stránce projekty označeny jako "nedostupné". Jak povolíme nové páry jazyků s vlastním překladatelem, projekty se aktivují pro vlak a nasazení. 
 * Migrace projektu z centra na vlastní Překladatel nebude mít žádný vliv na školení nebo projekty vašeho centra. Během migrace neodstraňuji projekty ani dokumenty z centra a nebudeme nasazovat modely.
 * Pouze jednou pro každý projekt je povolena migrace. Pokud potřebujete opakovat migraci projektu, kontaktujte nás prosím.
-* Vlastní Překladatel podporuje páry jazyků NMT a z angličtiny. [Zobrazte úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Centrum nevyžaduje základní modely, a proto podporuje několik tisíc jazyků. Můžete migrovat nepodporovaný pár jazyků, ale provedeme pouze migraci dokumentů a definic projektů. Nový model nebudeme moct naučit. Kromě toho se tyto dokumenty a projekty zobrazí jako neaktivní, aby bylo možné určit, že v tuto chvíli nelze použít. Pokud je pro tyto projekty a/nebo dokumenty přidána podpora, stanou se aktivními a vlaky.
+* Vlastní Překladatel podporuje páry jazyků NMT a z angličtiny. [Zobrazte úplný seznam podporovaných jazyků](../language-support.md#customization). Centrum nevyžaduje základní modely, a proto podporuje několik tisíc jazyků. Můžete migrovat nepodporovaný pár jazyků, ale provedeme pouze migraci dokumentů a definic projektů. Nový model nebudeme moct naučit. Kromě toho se tyto dokumenty a projekty zobrazí jako neaktivní, aby bylo možné určit, že v tuto chvíli nelze použít. Pokud je pro tyto projekty a/nebo dokumenty přidána podpora, stanou se aktivními a vlaky.
 * Vlastní Překladatel v současné době nepodporuje monolingual školicí data. Podobně jako nepodporované páry jazyků můžete migrovat dokumenty monolingual, ale zobrazují se jako neaktivní, dokud se nepodporují data monolingual.
 * Vlastní překladač vyžaduje až 10 000 paralelních vět, aby bylo možné vlaky. Centrum Microsoftu může vytvořit menší sadu dat. Pokud je migrováno školení, které tento požadavek nesplňuje, nebude vyškolené.
 
@@ -130,14 +130,14 @@ Pokud potřebujete podrobnější zprávu o migraci týkající se vašich proje
 
 Tato tabulka porovnává funkce mezi centrem Microsoft Translator a vlastním překladatelem.
 
-| Funkce | Rozbočovač | Custom Translator |
+| Příznak | Rozbočovač | Custom Translator |
 | ------- | :-: | :---------------: |
 | Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
 | Verze textového rozhraní API    | V2     | Technologie  |
-| Přizpůsobení SMT    | Ano    | Ne |
-| Přizpůsobení NMT    | Ne    | Ano |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | Ne    | Ano |
-| Žádné trasování | Ano | Ano |
+| Přizpůsobení SMT    | Yes    | No |
+| Přizpůsobení NMT    | No    | Yes |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | No    | Yes |
+| Žádné trasování | Yes | Yes |
 
 ## <a name="new-languages"></a>Nové jazyky
 
@@ -146,4 +146,4 @@ Pokud jste komunitou nebo organizací, která pracuje na vytváření nového ja
 ## <a name="next-steps"></a>Další kroky
 
 - [Výuka modelu](how-to-train-model.md).
-- Začněte používat nasazený vlastní model překladu prostřednictvím [překladatele V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Začněte používat nasazený vlastní model překladu prostřednictvím [překladatele V3](../reference/v3-0-translate.md?tabs=curl).

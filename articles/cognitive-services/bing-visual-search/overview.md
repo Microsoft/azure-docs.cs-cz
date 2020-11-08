@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2eab79d79a287bc8a92133c6901c420dfaee2fd5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 50db66d54993a4b5ee8afb4756be6b1f4387a1d0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93082041"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369337"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co je rozhraní API pro vizuální vyhledávání Bingu?
 
@@ -35,7 +35,7 @@ Pokud použijete [rozhraní API Bingu pro vyhledávání obrázků](../bing-imag
 
 Pomocí Vizuální vyhledávání Bingu můžete zjistit následující přehledy:
 
-| Přehled                              | Description |
+| Přehled                              | Popis |
 |--------------------------------------|-------------|
 | Vizuálně podobné obrázky              | Seznam obrázků, které jsou vizuálně podobné vstupní imagi. |
 | Vizuálně podobné produkty            | Produkty, které jsou vizuálně podobné uvedenému produktu.            |
@@ -53,7 +53,7 @@ Výsledky Vizuální vyhledávání Bingu také obsahují ohraničující pole p
 
 Rozhraní API pro vizuální vyhledávání Bingu je webová služba RESTful, která usnadňuje volání ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON. Pro službu můžete použít buď REST API, nebo sadu SDK.
 
-1. Pro přístup k rozhraní API pro vyhledávání Bingu vytvořte [účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) . Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/cognitive-services/).
+1. Pro přístup k rozhraní API pro vyhledávání Bingu vytvořte [účet Cognitive Services](../cognitive-services-apis-create-account.md) . Pokud nemáte předplatné Azure, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/cognitive-services/).
 2. Odešle požadavek do rozhraní API platným vyhledávacím dotazem.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
@@ -74,8 +74,8 @@ Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start:
 
 ## <a name="see-also"></a>Viz také
 
-* Odkazy na [vizuální vyhledávání obrázky](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
+* Odkazy na [vizuální vyhledávání obrázky](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) popisují definice a informace o koncových bodech, hlavičkách požadavků, odpovědích a parametrech dotazů, které můžete použít k vyžádání výsledků hledání na základě bitové kopie.
 
 * [Požadavky na použití a zobrazení rozhraní api vyhledávání Bingu](../bing-web-search/use-display-requirements.md) určují přijatelné využití obsahu a informací získaných prostřednictvím rozhraní API pro vyhledávání Bingu.
 
-* Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.
+* Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/overview.md) a Prozkoumejte další dostupná rozhraní API.

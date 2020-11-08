@@ -8,14 +8,14 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 05d3ca7cf532b739b943e2a87d5ab29ae66cabd7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548513"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368793"
 ---
-# <a name="cognitive-services-development-options"></a>Cognitive Services možností vývoje
+# <a name="cognitive-services-development-options"></a>Možnosti vývoje služby Cognitive Services
 
 Tento dokument poskytuje podrobný přehled možností vývoje a nasazení, které vám pomůžou začít s Azure Cognitive Services.
 
@@ -69,7 +69,7 @@ Pokud chcete získat další informace o velkých objemech dat pro Cognitive Ser
 
 ### <a name="azure-functions-and-azure-service-web-jobs"></a>Webové úlohy služby Azure Functions a Azure
 
-[Webové úlohy](https://docs.microsoft.com/azure/app-service/) [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) a Azure App Service poskytují integrační služby pro první kód navržené pro vývojáře a jsou postavené na [Azure App Services](https://docs.microsoft.com/azure/app-service/). Tyto produkty poskytují infrastrukturu bez serveru pro psaní kódu. V tomto kódu můžete volat naše služby pomocí našich klientských knihoven a rozhraní REST API. 
+[Webové úlohy](../app-service/index.yml) [Azure Functions](../azure-functions/index.yml) a Azure App Service poskytují integrační služby pro první kód navržené pro vývojáře a jsou postavené na [Azure App Services](../app-service/index.yml). Tyto produkty poskytují infrastrukturu bez serveru pro psaní kódu. V tomto kódu můžete volat naše služby pomocí našich klientských knihoven a rozhraní REST API. 
 
 * **Cíloví uživatelé** : vývojáři a vědečtí data
 * **Výhody** : výpočetní služba bez serveru, která umožňuje spuštění kódu aktivovaného událostmi. 
@@ -78,7 +78,7 @@ Pokud chcete získat další informace o velkých objemech dat pro Cognitive Ser
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) sdílet stejné návrháře a konektory pracovních postupů, jako je Power Automate, ale poskytuje pokročilejší a řídicí prostředí, včetně integrace se sadou Visual Studio a DevOps. Power Automate usnadňuje integraci s vašimi prostředky služeb rozpoznávání prostřednictvím konektorů specifických pro služby, které poskytují proxy nebo obálku kolem rozhraní API. Jedná se o stejné konektory jako ty, které jsou k dispozici v Power automatu. 
+[Azure Logic Apps](../logic-apps/index.yml) sdílet stejné návrháře a konektory pracovních postupů, jako je Power Automate, ale poskytuje pokročilejší a řídicí prostředí, včetně integrace se sadou Visual Studio a DevOps. Power Automate usnadňuje integraci s vašimi prostředky služeb rozpoznávání prostřednictvím konektorů specifických pro služby, které poskytují proxy nebo obálku kolem rozhraní API. Jedná se o stejné konektory jako ty, které jsou k dispozici v Power automatu. 
 
 * **Cíloví uživatelé** : vývojáři, integrátory, IT specialisté, DevOps
 * **Výhody** : vývojový model Designer-First (deklarativní) poskytující pokročilé možnosti a integraci v řešení s nízkým kódem
@@ -87,7 +87,7 @@ Pokud chcete získat další informace o velkých objemech dat pro Cognitive Ser
 
 ### <a name="power-automate"></a>Power Automate 
 
-Power Automate je služba v [Power platformou](https://docs.microsoft.com/power-platform/) , která vám pomůže vytvářet automatizované pracovní postupy mezi aplikacemi a službami bez psaní kódu. Nabízíme několik konektorů, které usnadňují interakci s vaším prostředkem Cognitive Services v řešení Power Automate. Automatické automatizace je postavená na Logic Apps. 
+Power Automate je služba v [Power platformou](/power-platform/) , která vám pomůže vytvářet automatizované pracovní postupy mezi aplikacemi a službami bez psaní kódu. Nabízíme několik konektorů, které usnadňují interakci s vaším prostředkem Cognitive Services v řešení Power Automate. Automatické automatizace je postavená na Logic Apps. 
 
 * **Cíloví** uživatelé: obchodní uživatelé (analytici) a správci služby SharePoint
 * **Výhody** : automatizace opakujících se ručních úloh jednoduše pomocí nahrávání kliknutí myší, klávesových úhozů a zkopírování kroků vložení z plochy.
@@ -96,7 +96,7 @@ Power Automate je služba v [Power platformou](https://docs.microsoft.com/power-
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[Tvůrce AI](https://docs.microsoft.com/ai-builder/overview) je schopnost Microsoft Power Platform, kterou můžete využít ke zlepšení výkonu podniku automatizací procesů a předvídání výsledků. Tvůrce AI přináší výkon AI do vašich řešení prostřednictvím prostředí typu Point-to-Click. Mnoho služeb rozpoznávání, jako je například funkce pro rozpoznávání formulářů, Analýza textu a Počítačové zpracování obrazu, je přímo integrováno zde a nemusíte vytvářet vlastní Cognitive Services. 
+[Tvůrce AI](/ai-builder/overview) je schopnost Microsoft Power Platform, kterou můžete využít ke zlepšení výkonu podniku automatizací procesů a předvídání výsledků. Tvůrce AI přináší výkon AI do vašich řešení prostřednictvím prostředí typu Point-to-Click. Mnoho služeb rozpoznávání, jako je například funkce pro rozpoznávání formulářů, Analýza textu a Počítačové zpracování obrazu, je přímo integrováno zde a nemusíte vytvářet vlastní Cognitive Services. 
 
 * **Cíloví** uživatelé: obchodní uživatelé (analytici) a správci služby SharePoint
 * **Výhody** : řešení klíč, které přináší sílu AI prostřednictvím prostředí typu Point-to-Click. Nevyžaduje se žádné kódování ani dovednosti v oblasti datových věd.
@@ -124,24 +124,24 @@ Nástroje, které budete používat pro výuku a konfiguraci modelů, se liší 
 
 | Pilíř | Služba | Přizpůsobení uživatelského rozhraní | Rychlý start |
 |--------|---------|------------------|------------|
-| Obraz | Custom Vision | https://www.customvision.ai/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/quickstarts/image-classification?pivots=programming-language-csharp) | 
-| Obraz | Rozpoznávání formulářů | Ukázkový nástroj pro popisky | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool?tabs=v2-0) |
-| Rozhodnutí | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/human-in-the-loop) |
-| Rozhodnutí | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor/quickstarts/web-portal) |
-| Rozhodnutí | Personalizace | Uživatelské rozhraní je k dispozici v Azure Portal v rámci prostředku pro přizpůsobování. | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/personalizer/quickstart-personalizer-sdk) |
+| Obraz | Custom Vision | https://www.customvision.ai/ | [Rychlý start](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
+| Obraz | Rozpoznávání formulářů | Ukázkový nástroj pro popisky | [Rychlý start](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Rozhodnutí | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Rychlý start](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
+| Rozhodnutí | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Rychlý start](./metrics-advisor/quickstarts/web-portal.md) |
+| Rozhodnutí | Personalizace | Uživatelské rozhraní je k dispozici v Azure Portal v rámci prostředku pro přizpůsobování. | [Rychlý start](./personalizer/quickstart-personalizer-sdk.md) |
 | Jazyk | Language Understanding (LUIS) | https://www.luis.ai/ | |
-| Jazyk | QnA Maker | https://www.qnamaker.ai/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base) |
-| Jazyk | Překladatel nebo vlastní Překladatel | https://portal.customtranslator.azure.ai/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model) |
-| Řeč | Vlastní příkazy | https://speech.microsoft.com/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-commands) |
-| Řeč | Custom Speech | https://speech.microsoft.com/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech) |
-| Řeč | Vlastní hlas | https://speech.microsoft.com/ | [Rychlý start](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice) |  
+| Jazyk | QnA Maker | https://www.qnamaker.ai/ | [Rychlý start](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
+| Jazyk | Překladatel nebo vlastní Překladatel | https://portal.customtranslator.azure.ai/ | [Rychlý start](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
+| Řeč | Vlastní příkazy | https://speech.microsoft.com/ | [Rychlý start](./speech-service/custom-commands.md) |
+| Řeč | Custom Speech | https://speech.microsoft.com/ | [Rychlý start](./speech-service/how-to-custom-speech.md) |
+| Řeč | Vlastní hlas | https://speech.microsoft.com/ | [Rychlý start](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>Průběžná integrace a doručování s akcemi DevOps a GitHubu
 
 Language Understanding a služba rozpoznávání řeči nabízí řešení pro kontinuální integraci a průběžné nasazování, která využívají akce Azure DevOps a GitHubu. Tyto nástroje se používají pro automatizované školení, testování a správu verzí vlastních modelů. 
 
-* [CI/CD pro Custom Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-* [CI/CD pro LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-devops-automation)
+* [CI/CD pro Custom Speech](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
+* [CI/CD pro LUIS](./luis/luis-concept-devops-automation.md)
 
 ## <a name="on-prem-containers"></a>Kontejnery on-Prem 
 
@@ -150,4 +150,4 @@ Mnohé z Cognitive Services můžete nasadit v kontejnerech pro přístup k Prem
 ## <a name="next-steps"></a>Další kroky
 <!--
 * Learn more about low code development options for Cognitive Services -->
-* [Vytvoření prostředku Cognitive Services a zahájení sestavování](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Clinux)
+* [Vytvoření prostředku Cognitive Services a zahájení sestavování](./cognitive-services-apis-create-account.md?tabs=multiservice%252clinux)

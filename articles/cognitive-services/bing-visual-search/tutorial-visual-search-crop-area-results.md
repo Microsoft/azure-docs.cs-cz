@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d62ea00246123dedb386f168355cbf2834efc2ef
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 14b32e4d666a81b8cba0e23c99b5878b1d9d4351
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088790"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368062"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Kurz: oříznutí obrázku v sadě Vizuální vyhledávání Bingu SDK pro jazyk C #
 
@@ -37,7 +37,7 @@ Tento kurz ukazuje, jak:
 > * Přijmout a zpracovat odpověď
 > * Najde adresy URL položek akcí v odpovědi.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
@@ -119,4 +119,4 @@ Získání skutečné adresy URL obrázku vyžaduje přetypování, které čte 
 > [Vytvoření webové aplikace Vizuální vyhledávání jednostránkového stránkování](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>Viz také
-> [Co je rozhraní API pro vizuální vyhledávání Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [Co je rozhraní API pro vizuální vyhledávání Bingu?](./overview.md)

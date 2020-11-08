@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590634"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368810"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Názvy vlastních subdomén pro Cognitive Services
 
-Azure Cognitive Services pro každý prostředek vytvořený prostřednictvím [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)používá vlastní názvy subdomén. Na rozdíl od regionálních koncových bodů, které byly společné pro všechny zákazníky v konkrétní oblasti Azure, jsou názvy vlastních subdomén pro daný prostředek jedinečné. Pro povolení funkcí, jako je například Azure Active Directory (Azure AD) pro ověřování, jsou vyžadovány názvy vlastních subdomén.
+Azure Cognitive Services pro každý prostředek vytvořený prostřednictvím [Azure Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli)používá vlastní názvy subdomén. Na rozdíl od regionálních koncových bodů, které byly společné pro všechny zákazníky v konkrétní oblasti Azure, jsou názvy vlastních subdomén pro daný prostředek jedinečné. Pro povolení funkcí, jako je například Azure Active Directory (Azure AD) pro ověřování, jsou vyžadovány názvy vlastních subdomén.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Jak to ovlivní stávající prostředky?
 
@@ -70,7 +70,7 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 
 | Typ koncového bodu | Oblast | Koncový bod |
 |---------------|--------|----------|
-| Public | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
+| Veřejná | Globální (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazil South | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -86,10 +86,10 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
-| | Southeast Asia | `https://southeastasia.api.cognitive.microsoft.com` |
+| | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Spojené království – jih | `https://uksouth.api.cognitive.microsoft.com` |
 | | USA – středozápad | `https://westcentralus.api.cognitive.microsoft.com` |
-| | West Europe | `https://westeurope.api.cognitive.microsoft.com` |
+| | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA – západ | `https://westus.api.cognitive.microsoft.com` |
 | | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
@@ -98,5 +98,5 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 
 ## <a name="see-also"></a>Viz také
 
-* [Co je Cognitive Services?](Welcome.md)
+* [Co je Cognitive Services?](./what-are-cognitive-services.md)
 * [Authentication](authentication.md)

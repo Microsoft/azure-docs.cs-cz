@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100537"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367280"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání instance Vlastní vyhledávání Bingu z portálu
 
@@ -31,7 +31,7 @@ Po nakonfigurování vlastního vyhledávacího prostředí ho můžete otestova
 
 Po přihlášení k [portálu](https://customsearch.ai)vlastní vyhledávání Bingu vyberte svou instanci hledání a klikněte na kartu **Výroba** . V části **koncové body** vyberte koncový bod rozhraní API (například webové rozhraní API). Vaše předplatné určuje, jaké koncové body se zobrazí.
 
-Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v [referenčních](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) informacích k rozhraní API pro vlastní vyhledávání. Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
+Vyhledávací dotaz vytvoříte zadáním hodnot parametrů pro koncový bod. Všimněte si, že parametry zobrazené na portálu se můžou měnit v závislosti na koncovém bodu, který zvolíte. Další informace najdete v [referenčních](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) informacích k rozhraní API pro vlastní vyhledávání. Chcete-li změnit předplatné, které vaše instance vyhledávání používá, přidejte příslušný klíč předplatného a aktualizujte příslušné parametry trhu nebo jazyka.
 
 Níže jsou uvedeny některé důležité parametry:
 
@@ -65,4 +65,4 @@ Předplatné přidružené k vaší instanci Vlastní vyhledávání Bingu můž
 - [Volání vlastního zobrazení pomocí NodeJs](./call-endpoint-nodejs.md)
 - [Volání vlastního zobrazení pomocí Pythonu](./call-endpoint-python.md)
 
-- [Volání vlastního zobrazení pomocí sady C# SDK](./sdk-csharp-quick-start.md)
+- [Volání vlastního zobrazení pomocí sady C# SDK](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

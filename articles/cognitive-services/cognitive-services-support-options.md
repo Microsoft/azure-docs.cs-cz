@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: d99cfc8b50155eb4cb2aecb3cb770f71b927ce1d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 01e46ad8d139f2cab2fbb6499dc66c7af5ceb554
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148695"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368759"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Podpora a možnosti pomoci pro Azure Cognitive Services
 
@@ -32,39 +32,39 @@ Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azur
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
 
-Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](https://docs.microsoft.com/answers/products/azure?product=all), preferovaný cíl Azure pro podporu komunity.
+Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](/answers/products/azure?product=all), preferovaný cíl Azure pro podporu komunity.
 
 Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku do složky Microsoft Q&A. Když požádáte o svoji otázku, použijte jednu z následujících značek:
 
-* [Cognitive Services](https://docs.microsoft.com/answers/topics/azure-cognitive-services.html)
+* [Cognitive Services](/answers/topics/azure-cognitive-services.html)
 
 **Obraz**
 
-* [Počítačové zpracování obrazu](https://docs.microsoft.com/answers/topics/azure-computer-vision.html)
-* [Custom Vision](https://docs.microsoft.com/answers/topics/azure-custom-vision.html)
-* [Rozpoznávání tváře](https://docs.microsoft.com/answers/topics/azure-face.html)
-* [Rozpoznávání formulářů](https://docs.microsoft.com/answers/topics/azure-form-recognizer.html)
-* [Video Indexer](https://docs.microsoft.com/answers/topics/azure-media-services.html)
+* [Počítačové zpracování obrazu](/answers/topics/azure-computer-vision.html)
+* [Custom Vision](/answers/topics/azure-custom-vision.html)
+* [Rozpoznávání tváře](/answers/topics/azure-face.html)
+* [Rozpoznávání formulářů](/answers/topics/azure-form-recognizer.html)
+* [Video Indexer](/answers/topics/azure-media-services.html)
 
 **Jazyk**
 
-* [Asistivní čtečka](https://docs.microsoft.com/answers/topics/azure-immersive-reader.html)
-* [Language Understanding (LUIS)](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
-* [QnA Maker](https://docs.microsoft.com/answers/topics/azure-qna-maker.html)
-* [Analýza textu](https://docs.microsoft.com/answers/topics/azure-text-analytics.html)
-* [Translator](https://docs.microsoft.com/answers/topics/azure-translator.html)
+* [Asistivní čtečka](/answers/topics/azure-immersive-reader.html)
+* [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
+* [QnA Maker](/answers/topics/azure-qna-maker.html)
+* [Analýza textu](/answers/topics/azure-text-analytics.html)
+* [Překladač](/answers/topics/azure-translator.html)
 
 **Speech**
 
-* [Služba Speech](https://docs.microsoft.com/answers/topics/azure-speech.html)
+* [Služba Speech](/answers/topics/azure-speech.html)
 
 
 **Rozhodnutí**
 
-* [Detektor anomálií](https://docs.microsoft.com/answers/topics/azure-anomaly-detector.html) 
-* [Content Moderator](https://docs.microsoft.com/answers/topics/azure-content-moderator.html)
+* [Detektor anomálií](/answers/topics/azure-anomaly-detector.html) 
+* [Content Moderator](/answers/topics/azure-content-moderator.html)
 * [Metrics Advisor (Preview)]()
-* [Personalizace](https://docs.microsoft.com/answers/topics/azure-personalizer.html)
+* [Personalizace](/answers/topics/azure-personalizer.html)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Vystavení otázky pro Stack Overflow
 
@@ -92,7 +92,7 @@ Pokud odešlete novou otázku pro Stack Overflow, při vytváření otázky pros
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
 * [Analýza textu](https://stackoverflow.com/search?q=azure+text+analytics)
-* [Translator](https://stackoverflow.com/search?q=azure+translator+text)
+* [Překladač](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Speech**
 
@@ -116,7 +116,7 @@ Pokud chcete požádat o nové funkce, publikujte je na UserVoice. Sdílejte sv�
 | Služba                       | Adresa URL Cognitive Services UserVoice |
 |-------------------------------|---------------|
 | Detektor anomálií              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| Počítačové zpracování obrazu               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Tvář                          | https://cognitive.uservoice.com/forums/430315-face |
@@ -143,4 +143,4 @@ Zaznamenání informací o funkcích v nové verzi nebo novinkách na blogu Azur
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je Azure Cognitive Services?](welcome.md)
+> [Co je Azure Cognitive Services?](./what-are-cognitive-services.md)

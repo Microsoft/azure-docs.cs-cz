@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 9dcbfa8234aea2c558df107fc919dc74f7b4f39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324497"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368725"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Vytvoření prostředku pro moderní čtečku a konfigurace ověřování Azure Active Directory
 
@@ -29,7 +29,7 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
 
 ## <a name="set-up-powershell-environment"></a>Nastavení prostředí PowerShell
 
-1. Začněte otevřením [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ujistěte se, že je v rozevíracím seznamu vlevo nahoře nastavená Cloud Shell na PowerShell nebo když zadáte `pwsh` .
+1. Začněte otevřením [Azure Cloud Shell](../../cloud-shell/overview.md). Ujistěte se, že je v rozevíracím seznamu vlevo nahoře nastavená Cloud Shell na PowerShell nebo když zadáte `pwsh` .
 
 1. Zkopírujte a vložte následující fragment kódu do prostředí.
 
@@ -196,7 +196,3 @@ Skript je navržený tak, aby byl flexibilní. Nejprve bude vyhledán existujíc
 * Podívejte se na [kurz pro iOS](./tutorial-ios.md) , kde najdete další informace, které můžete dělat v sadě pro moderní čtečku pomocí SWIFT pro iOS.
 * Podívejte se na [kurz Pythonu](./tutorial-python.md) , abyste viděli, co dalšího můžete dělat se sadou moderní čtečky pomocí Pythonu.
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](./reference.md)
-
-
-
-

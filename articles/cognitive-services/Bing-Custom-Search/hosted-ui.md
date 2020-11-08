@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090558"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367382"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí pro hostované uživatelské rozhraní
 
@@ -37,7 +37,7 @@ Pokud chcete nakonfigurovat hostované uživatelské rozhraní pro vaše webové
   
 2. Vyberte instanci Vlastní vyhledávání Bingu.
 
-3. Klikněte na kartu **Hostované uživatelské rozhraní** .  
+3. Klikněte na kartu **Hostované uživatelské rozhraní**.  
   
 4. Vyberte rozložení.
 
@@ -45,7 +45,7 @@ Pokud chcete nakonfigurovat hostované uživatelské rozhraní pro vaše webové
     - Pouze výsledky: zobrazuje pouze výsledky hledání bez vyhledávacího pole. Při použití tohoto rozložení je nutné zadat vyhledávací dotaz ( `&q=<query string>` ). Přidejte parametr dotazu do adresy URL požadavku ve fragmentu kódu JavaScriptu nebo odkaz na koncový bod HTML.
     - Automaticky otevíraná okna: poskytuje vyhledávací pole a zobrazí výsledky hledání v posuvné překrytí.
 
-5. Vyberte barevný motiv. Barvy můžete přizpůsobit tak, aby odpovídaly vaší aplikaci, kliknutím na **Přizpůsobit motiv** . Chcete-li změnit barvu, buď zadejte HEXADECIMÁLNÍ hodnotu RGB barvy (například `#366eb8` ), nebo klikněte na Náhled barvy.
+5. Vyberte barevný motiv. Barvy můžete přizpůsobit tak, aby odpovídaly vaší aplikaci, kliknutím na **Přizpůsobit motiv**. Chcete-li změnit barvu, buď zadejte HEXADECIMÁLNÍ hodnotu RGB barvy (například `#366eb8` ), nebo klikněte na Náhled barvy.
 
    Můžete zobrazit náhled změn na pravé straně portálu. Kliknutím na **obnovit do výchozího nastavení** dojde k vrácení změn na výchozí barvy pro vybraný motiv.
 
@@ -54,7 +54,7 @@ Pokud chcete nakonfigurovat hostované uživatelské rozhraní pro vaše webové
 
 6. V části **Další konfigurace** zadejte odpovídající hodnoty pro vaši aplikaci. Tato nastavení jsou volitelná. Pokud chcete zobrazit efekt použití nebo odebrání, přečtěte si v podokně náhledu na pravé straně. K dispozici jsou následující možnosti konfigurace:  
 
-7. Zadejte klíč předplatného hledání nebo ho vyberte v rozevíracím seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Viz [Cognitive Services účet rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).  
+7. Zadejte klíč předplatného hledání nebo ho vyberte v rozevíracím seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Viz [Cognitive Services účet rozhraní API](../cognitive-services-apis-create-account.md).  
 
 8. Pokud jste povolili automatické návrhy, zadejte klíč předplatného pro automatické návrhy nebo ho vyberte z rozevíracího seznamu. Rozevírací seznam se naplní klíči z předplatných vašeho účtu Azure. Vlastní Automatický návrh vyžaduje konkrétní úroveň předplatného, viz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -82,7 +82,7 @@ Pro využití hostovaného uživatelského rozhraní:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Podle potřeby přidejte do adresy URL následující parametry dotazu. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) reference.
+  > Podle potřeby přidejte do adresy URL následující parametry dotazu. Informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) reference.
   >
   > - q
   > - mkt
@@ -153,4 +153,4 @@ Následující konfigurace platí pouze v případě, že používáte hostovan�
 ## <a name="next-steps"></a>Další kroky
 
 - [Zvýraznění textu pomocí dekoračních značek](../bing-web-search/hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+- [Stránkování webových stránek](../bing-web-search/paging-search-results.md)

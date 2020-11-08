@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 3519c9d6a62eaff036cf8f7006a0b443383f5131
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2579d24e1a1754e873c6591b6d86ec12dd0dfa60
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090490"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367314"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vlastní vyhledávání Bingu
 
@@ -26,11 +26,11 @@ ms.locfileid: "93090490"
 
 Rozhraní API pro vlastní vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem.
 
-I když je to volitelné, požadavek by měl specifikovat parametr dotazu [MKT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) , který identifikuje na trhu, ze kterého mají výsledky přijít. Seznam volitelných parametrů dotazu najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) .
+I když je to volitelné, požadavek by měl specifikovat parametr dotazu [MKT](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) , který identifikuje na trhu, ze kterého mají výsledky přijít. Seznam volitelných parametrů dotazu najdete v tématu [parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) .
 
 Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Zadáte-li zemi nebo oblast, je nutné zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce **trhy** .
 
-`Accept-Language`Záhlaví a `setLang` parametr dotazu se vzájemně vylučují – nespecifikují obojí. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language`Záhlaví a `setLang` parametr dotazu se vzájemně vylučují – nespecifikují obojí. Podrobnosti najdete v tématu [Accept-Language](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
 ## <a name="countriesregions"></a>Země nebo oblasti
 

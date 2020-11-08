@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 7248c82882d32ae0eb225a9ec4c3b48dff3b9fcb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360033"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369204"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informace o omezeních a konfiguraci pro Azure Logic Apps
 
@@ -137,13 +137,57 @@ Tady jsou omezení pro jednu definici aplikace logiky:
 
 | Název | Omezení | Poznámky |
 | ---- | ----- | ----- |
-| Akce: provádění za 5 minut | 100 000 je výchozí limit, ale 300 000 je maximální limit. | Pokud chcete změnit výchozí limit, přečtěte si téma [spuštění aplikace logiky v režimu vysoké propustnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), který je ve verzi Preview. Případně můžete distribuovat úlohy napříč více aplikacemi logiky podle potřeby. |
+| Akce: provádění za 5 minut | 100 000 je výchozí limit, ale 300 000 je maximální limit. | Chcete-li zvýšit výchozí omezení na maximum pro vaši aplikaci logiky, přečtěte si téma [spuštění v režimu vysoké propustnosti](#run-high-throughput-mode), který je ve verzi Preview. Případně můžete [distribuovat úlohy napříč více aplikacemi logiky](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) podle potřeby. |
 | Action: souběžná odchozí volání | ~2500 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
 | Koncový bod za běhu: souběžná příchozí volání | ~ 1 000 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
 | Koncový bod za běhu: čtení hovorů za 5 minut  | 60 000 | Toto omezení platí pro volání, která získávají nezpracované vstupy a výstupy z historie spuštění aplikace logiky. V případě potřeby můžete úlohy distribuovat napříč více než jednou aplikací. |
 | Koncový bod Runtime: vyvolání volání za 5 minut | 45 000 | V případě potřeby můžete distribuovat úlohy napříč více než jednou aplikací. |
 | Propustnost obsahu za 5 minut | 600 MB | V případě potřeby můžete distribuovat úlohy napříč více než jednou aplikací. |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>Spustit v režimu vysoké propustnosti
+
+Pro jednu definici aplikace logiky má počet akcí, které se spustí každých 5 minut, [výchozí limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Chcete-li zvýšit výchozí omezení na maximum pro vaši aplikaci logiky, můžete povolit režim vysoké propustnosti, který je ve verzi Preview. Případně můžete [distribuovat úlohy napříč více aplikacemi logiky](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) podle potřeby.
+
+1. V Azure Portal v nabídce aplikace logiky v části **Nastavení** vyberte **Nastavení pracovního postupu**.
+
+1. V části **Možnosti běhu**  >  s **vysokou propustností** změňte nastavení na **zapnuto**.
+
+   ![Snímek obrazovky, který zobrazuje nabídku aplikace logiky v Azure Portal s "nastavením pracovního postupu" a vysokou propustností "nastavenou na" on ".](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+Pokud chcete toto nastavení povolit v šabloně ARM pro nasazení aplikace logiky, přidejte do `properties` objektu pro definici prostředků vaší aplikace logiky `runtimeConfiguration` objekt s `operationOptions` vlastností nastavenou na `OptimizedForHighThroughput` :
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+Další informace o definici prostředků aplikace logiky najdete v tématu [Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition).
 
 ### <a name="integration-service-environment-ise"></a>Prostředí služby Integration Service (ISE)
 
@@ -261,7 +305,7 @@ Každé předplatné Azure má tento účet pro integraci:
   | SKU ISE | Limity účtu integrace |
   |---------|----------------------------|
   | **Nárok** | 20 Total – jenom [standardní](../logic-apps/logic-apps-pricing.md#integration-accounts) účty, včetně jednoho standardního účtu zdarma. Nejsou povoleny žádné bezplatné nebo základní účty. |
-  | **Vývojář** | 20 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtů (s omezením na 1 účet) a v kombinaci se [standardem](../logic-apps/logic-apps-pricing.md#integration-accounts) nebo všemi standardními účty. Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
+  | **Maximalizac** | 20 [bez](../logic-apps/logic-apps-pricing.md#integration-accounts) součtů (s omezením na 1 účet) a v kombinaci se [standardem](../logic-apps/logic-apps-pricing.md#integration-accounts) nebo všemi standardními účty. Nejsou povoleny žádné základní účty. Použijte [SKU pro vývojáře](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) pro experimentování, vývoj a testování, ale ne pro produkční nebo výkonnostní testování. |
   |||
 
 Další náklady se vztahují na účty pro integraci, které přidáte nad rámec účtů pro integraci, které jsou součástí ISE. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -396,13 +440,13 @@ V této části jsou uvedeny příchozí IP adresy pouze pro službu Azure Logic
 | Jižní Afrika – západ | 102.133.72.190, 102.133.72.145, 102.133.72.184, 102.133.72.173 |
 | Středojižní USA | 13.65.98.39, 13.84.41.46, 13.84.43.45, 40.84.138.132 |
 | Indie – jih | 52.172.9.47, 52.172.49.43, 52.172.51.140, 104.211.225.152 |
-| Southeast Asia | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
+| Jihovýchodní Asie | 52.163.93.214, 52.187.65.81, 52.187.65.155, 104.215.181.6 |
 | Švýcarsko – sever | 51.103.128.52, 51.103.132.236, 51.103.134.138, 51.103.136.209 |
 | Spojené arabské emiráty – střed | 20.45.75.193, 20.45.64.29, 20.45.64.87, 20.45.71.213 |
 | Spojené království – jih | 51.140.79.109, 51.140.78.71, 51.140.84.39, 51.140.155.81 |
 | Spojené království – západ | 51.141.48.98, 51.141.51.145, 51.141.53.164, 51.141.119.150 |
 | USA – středozápad | 52.161.26.172, 52.161.8.128, 52.161.19.82, 13.78.137.247 |
-| West Europe | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
+| Západní Evropa | 13.95.155.53, 52.174.54.218, 52.174.49.6 |
 | Západní Indie | 104.211.164.112, 104.211.165.81, 104.211.164.25, 104.211.157.237 |
 | USA – západ | 52.160.90.237, 138.91.188.137, 13.91.252.184, 157.56.160.212 |
 | Západní USA 2 | 13.66.224.169, 52.183.30.10, 52.183.39.67, 13.66.128.68 |
@@ -460,13 +504,13 @@ V této části jsou uvedeny odchozí IP adresy pro službu Azure Logic Apps a s
 | Jižní Afrika – západ | 102.133.72.98, 102.133.72.113, 102.133.75.169, 102.133.72.179, 102.133.72.37, 102.133.72.183, 102.133.72.132, 102.133.75.191 | 102.133.72.85, 102.133.75.194, 102.133.27.0 - 102.133.27.15, 102.37.64.0 - 102.37.64.31 |
 | Středojižní USA | 104.210.144.48, 13.65.82.17, 13.66.52.232, 23.100.124.84, 70.37.54.122, 70.37.50.6, 23.100.127.172, 23.101.183.225 | 13.65.86.57, 104.214.19.48 - 104.214.19.63, 104.214.70.191, 52.171.130.92, 13.73.244.224 - 13.73.244.255 |
 | Indie – jih | 52.172.50.24, 52.172.55.231, 52.172.52.0, 104.211.229.115, 104.211.230.129, 104.211.230.126, 104.211.231.39, 104.211.227.229 | 13.71.125.22, 40.78.194.240 - 40.78.194.255, 104.211.227.225, 13.71.127.26 |
-| Southeast Asia | 13.76.133.155, 52.163.228.93, 52.163.230.166, 13.76.4.194, 13.67.110.109, 13.67.91.135, 13.76.5.96, 13.67.107.128 | 13.67.8.240 - 13.67.8.255, 13.76.231.68, 52.187.68.19, 52.187.115.69, 13.67.15.32 - 13.67.15.63 |
+| Jihovýchodní Asie | 13.76.133.155, 52.163.228.93, 52.163.230.166, 13.76.4.194, 13.67.110.109, 13.67.91.135, 13.76.5.96, 13.67.107.128 | 13.67.8.240 - 13.67.8.255, 13.76.231.68, 52.187.68.19, 52.187.115.69, 13.67.15.32 - 13.67.15.63 |
 | Švýcarsko – sever | 51.103.137.79, 51.103.135.51, 51.103.139.122, 51.103.134.69, 51.103.138.96, 51.103.138.28, 51.103.136.37, 51.103.136.210 | 51.107.59.16 - 51.107.59.31, 51.107.60.224 - 51.107.60.255, 51.107.86.217, 51.103.142.22 |
 | Spojené arabské emiráty – střed | 20.45.75.200, 20.45.72.72, 20.45.75.236, 20.45.79.239, 20.45.67.170, 20.45.72.54, 20.45.67.134, 20.45.67.135 | 20.45.67.28, 20.45.67.45, 20.37.74.192 - 20.37.74.207, 40.120.8.0 - 40.120.8.31 |
 | Spojené království – jih | 51.140.74.14, 51.140.73.85, 51.140.78.44, 51.140.137.190, 51.140.153.135, 51.140.28.225, 51.140.142.28, 51.140.158.24 | 51.140.80.51, 51.140.148.0 - 51.140.148.15, 51.140.61.124, 51.140.74.150, 51.105.77.96 - 51.105.77.127 |
 | Spojené království – západ | 51.141.54.185, 51.141.45.238, 51.141.47.136, 51.141.114.77, 51.141.112.112, 51.141.113.36, 51.141.118.119, 51.141.119.63 | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.124.13, 51.141.52.185, 51.140.212.224 - 51.140.212.255 |
 | USA – středozápad | 52.161.27.190, 52.161.18.218, 52.161.9.108, 13.78.151.161, 13.78.137.179, 13.78.148.140, 13.78.129.20, 13.78.141.75 | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 13.78.132.82, 52.161.101.204, 13.71.199.192 - 13.71.199.223 |
-| West Europe | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118, 40.91.208.65, 52.166.78.89, 13.93.36.78, 13.69.71.192 - 13.69.71.223 |
+| Západní Evropa | 40.68.222.65, 40.68.209.23, 13.95.147.65, 23.97.218.130, 51.144.182.201, 23.97.211.179, 104.45.9.52, 23.97.210.126 | 13.69.64.208 - 13.69.64.223, 40.115.50.13, 52.174.88.118, 40.91.208.65, 52.166.78.89, 13.93.36.78, 13.69.71.192 - 13.69.71.223 |
 | Západní Indie | 104.211.164.80, 104.211.162.205, 104.211.164.136, 104.211.158.127, 104.211.156.153, 104.211.158.123, 104.211.154.59, 104.211.154.7 | 104.211.146.224 - 104.211.146.239, 104.211.161.203, 104.211.189.218, 104.211.189.124, 20.38.128.224 - 20.38.128.255 |
 | USA – západ | 52.160.92.112, 40.118.244.241, 40.118.241.243, 157.56.162.53, 157.56.167.147, 104.42.49.145, 40.83.164.80, 104.42.38.32 | 40.112.243.160 - 40.112.243.175, 104.40.51.248, 104.42.122.49, 40.112.195.87, 13.93.148.62, 13.86.223.32 - 13.86.223.63 |
 | Západní USA 2 | 13.66.210.167, 52.183.30.169, 52.183.29.132, 13.66.210.167, 13.66.201.169, 13.77.149.159, 52.175.198.132, 13.66.246.219 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 52.191.164.250, 13.66.164.219, 13.66.145.96 - 13.66.145.127 |

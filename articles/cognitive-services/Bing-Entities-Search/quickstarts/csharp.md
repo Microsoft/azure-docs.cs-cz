@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 52efd103bf510e7cca8a1e4a1d682948b498d64c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b0cac94ac3a0c8dff24cf154e4dd7ab7ddf4dd9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084846"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368419"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka C #
 
@@ -30,7 +30,7 @@ Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu
 I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 - Nebo pokud používáte Linux nebo MacOS, můžete postupovat podle tohoto rychlého startu pomocí [Visual Studio Code](https://code.visualstudio.com/) a [.NET Core](/dotnet/core/install/macos) .
@@ -44,7 +44,7 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 1. Vytvořte nové řešení konzoly C# v aplikaci Visual Studio. 
 1. Přidejte [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) do balíčku NuGet.
     1. V **Průzkumník řešení** klikněte pravým tlačítkem na svůj projekt.
-    2. Vyberte **Spravovat balíčky NuGet** .
+    2. Vyberte **Spravovat balíčky NuGet**.
     3. Vyhledejte a vyberte *Newtonsoft.Jsna* a pak balíček nainstalujte.
 1. Pak přidejte následující obory názvů do hlavního souboru kódu:
     
@@ -185,4 +185,4 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md )
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

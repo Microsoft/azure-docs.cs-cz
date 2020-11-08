@@ -5,36 +5,34 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 11/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 645d5beb19b738e2269c0ec9e5b84fb140c7deb8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0671e41703ecc4b8580c8439eec5bac954b4dbe0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359493"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368827"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
 
-V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl na klientském počítači nakonfigurovaný klient. Další informace o virtuální síti WAN najdete v tématu [Virtual WAN – přehled](virtual-wan-about.md)
+V tomto kurzu se dozvíte, jak se pomocí služby Virtual WAN připojit ke svým prostředkům v Azure přes připojení VPN IPsec/IKE (IKEv2) nebo OpenVPN. Tento typ připojení vyžaduje, aby byl klient VPN nakonfigurovaný v klientském počítači. Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření sítě WAN
+> * Vytvoření virtuální sítě WAN
 > * Vytvoření konfigurace P2S
-> * Vytvoření rozbočovače
+> * Vytvořit virtuální rozbočovač
 > * Zadat servery DNS
-> * Stáhnout profil klienta VPN
+> * Vygenerovat a nainstalovat balíček konfigurace profilu klienta VPN
 > * Zobrazení virtuální sítě WAN
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwanp2s.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před zahájením konfigurace ověřte, že splňujete následující kritéria:
-
-[!INCLUDE [Before you begin](../../includes/virtual-wan-before-include.md)]
+[!INCLUDE [Before beginning](../../includes/virtual-wan-before-include.md)]
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>Vytvoření virtuální sítě WAN
 
@@ -44,27 +42,27 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
 Konfigurace Point-to-Site (P2S) definuje parametry pro připojení vzdálených klientů.
 
-[!INCLUDE [Create client profiles](../../includes/virtual-wan-p2s-configuration-include.md)]
+[!INCLUDE [Create P2S configuration](../../includes/virtual-wan-p2s-configuration-include.md)]
 
-## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>Vytvoření centra s bránou Point-to-site
+## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>Vytvořit virtuální rozbočovač a bránu
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>Zadat server DNS
 
-Virtuální brány VPN uživatele sítě WAN umožňují zadat až 5 serverů DNS. Tuto možnost můžete nakonfigurovat během procesu vytváření centra nebo ji později změnit. Provedete to tak, že vyhledáte virtuální rozbočovač. V části **uživatelské rozhraní VPN (Point-to-site)** vyberte **Konfigurovat** a zadejte IP adresy serveru DNS do TEXTOVÉHO pole **vlastní servery DNS** .
+Toto nastavení můžete nakonfigurovat při vytváření centra nebo ho později změnit. Pokud ho chcete upravit, najděte virtuální rozbočovač. V části **uživatelské rozhraní VPN (Point-to-site)** vyberte **Konfigurovat** a zadejte IP adresy serveru DNS do TEXTOVÉHO pole **vlastní servery DNS** . Můžete zadat až 5 serverů DNS.
 
    :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="vlastní DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
 
-## <a name="download-vpn-profile"></a><a name="download"></a>Stažení profilu sítě VPN
+## <a name="generate-and-install-client-profile-package"></a><a name="download"></a>Vygenerovat a nainstalovat balíček profilů klienta
 
-Pomocí profilu sítě VPN nakonfigurujte své klienty.
+Vygenerujte balíček profilu klienta VPN pro konfiguraci klientů VPN.
 
 [!INCLUDE [Download profile](../../includes/virtual-wan-p2s-download-profile-include.md)]
 
-### <a name="configure-user-vpn-clients"></a>Konfigurace klientů VPN uživatelů
+### <a name="configure-vpn-clients"></a>Konfigurace klientů VPN
 
-Pomocí staženého profilu nakonfigurujte klienty pro vzdálený přístup. Postup pro každý operační systém je jiný, postupujte podle pokynů, které se vztahují k vašemu systému.
+Ke konfiguraci klientů VPN se vzdáleným přístupem použijte stažený profil. Postup pro každý operační systém se liší. Postupujte podle pokynů, které se vztahují k vašemu systému.
 
 [!INCLUDE [Configure clients](../../includes/virtual-wan-p2s-configure-clients-include.md)]
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760389"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369252"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Spravované zotavení po havárii modulu HSM
 
@@ -48,7 +48,7 @@ Pro vytvoření spravovaného prostředku HSM musíte zadat následující vstup
 - Umístění Azure.
 - Seznam počátečních správců.
 
-Následující příklad vytvoří modul HARDWAROVÉho zabezpečení s názvem **ContosoMHSM**ve skupině prostředků  **ContosoResourceGroup**umístěný v umístění **východní USA 2** s **aktuálně přihlášeným uživatelem** jako jediný správce.
+Následující příklad vytvoří modul HARDWAROVÉho zabezpečení s názvem **ContosoMHSM** ve skupině prostředků  **ContosoResourceGroup** umístěný v umístění **východní USA 2** s **aktuálně přihlášeným uživatelem** jako jediný správce.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 Výstup tohoto příkazu zobrazuje vlastnosti spravovaného modulu HSM, který jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
-* **název**: v tomto příkladu je název ContosoMHSM. Tento název použijete pro jiné Key Vault příkazy.
-* **hsmUri**: v tomto příkladu je identifikátor URI ' https://contosohsm.managedhsm.azure.net . ' Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
+* **název** : v tomto příkladu je název ContosoMHSM. Tento název použijete pro jiné Key Vault příkazy.
+* **hsmUri** : v tomto příkladu je identifikátor URI ' https://contosohsm.managedhsm.azure.net . ' Aplikace, které používají váš modul HARDWAROVÉho zabezpečení prostřednictvím REST API, musí používat tento identifikátor URI.
 
 Váš účet Azure je teď autorizovaný k provádění operací s tímto spravovaným modulem HSM. Od tohoto konce je nikdo jiný autorizovaný.
 
@@ -86,7 +86,7 @@ Pro tento krok budete potřebovat následující:
 - Vytvořte objekt BLOB pro odeslání domény zabezpečení zašifrovaný pomocí klíče pro výměnu domény zabezpečení, který jste stáhli v předchozím kroku, a potom
 - Aby bylo možné dokončit obnovení domény zabezpečení, nahrajte do modulu HSM objekt BLOB pro nahrání domény zabezpečení.
 
-V následujícím příkladu používáme doménu zabezpečení z **ContosoMHSM**, 2 odpovídajících privátních klíčů a nahrajeme ji do **ContosoMHSM2**, která čeká na přijetí domény zabezpečení. 
+V následujícím příkladu používáme doménu zabezpečení z **ContosoMHSM** , 2 odpovídajících privátních klíčů a nahrajeme ji do **ContosoMHSM2** , která čeká na přijetí domény zabezpečení. 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key
@@ -102,11 +102,12 @@ Pokud chcete vytvořit zálohu HSM, budete potřebovat následující:
 - Účet úložiště, do kterého se bude ukládat záloha
 - Kontejner úložiště objektů BLOB v tomto účtu úložiště, kde proces zálohování vytvoří novou složku pro uložení šifrované zálohy
 
-Příkaz se používá `az keyvault backup` pro zálohování HSM v kontejneru úložiště **mhsmbackupcontainer**, který je v **ContosoBackup** účtu úložiště pro níže uvedený příklad. Vytvoříme token SAS, který vyprší za 30 minut a poskytne spravovanému modulu HSM, který zapíše zálohu.
+Příkaz se používá `az keyvault backup` pro zálohování HSM v kontejneru úložiště **mhsmbackupcontainer** , který je v **ContosoBackup** účtu úložiště pro níže uvedený příklad. Vytvoříme token SAS, který vyprší za 30 minut a poskytne spravovanému modulu HSM, který zapíše zálohu.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
+az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
 az keyvault backup start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas
 

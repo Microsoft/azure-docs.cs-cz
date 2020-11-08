@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 13a2d887b17ff319fb3a0f2bb0d5d0ff04629088
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051589"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369099"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Rychlý Start: rozpoznávání digitálního inkoustu pomocí nástroje pro rozpoznávání rukopisu REST API a C #
 
@@ -32,7 +32,7 @@ Obvykle byste volali rozhraní API z digitální aplikace pro psaní rukou. V to
 
 Zdrojový kód pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2089502).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Libovolná edice sady [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
@@ -99,7 +99,7 @@ Spusťte aplikaci. Ve formátu JSON se vrátí úspěšná odpověď. Můžete t
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [REST API – referenční informace](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [REST API – referenční informace](/rest/api/cognitiveservices/inkrecognizer/inkrecognizer)
 
 
 Pokud chcete zjistit, jak funguje rozhraní API pro rozpoznávání rukopisu v digitální aplikaci pro rukopis, podívejte se na následující ukázkové aplikace na GitHubu:

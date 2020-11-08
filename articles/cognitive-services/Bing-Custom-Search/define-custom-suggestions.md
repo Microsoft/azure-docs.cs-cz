@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080970"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367586"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurace vlastního prostředí pro automatické návrhy
 
@@ -41,7 +41,7 @@ Chcete-li povolit návrhy Bingu, přepněte na pozici posuvník **automatických
 
 ## <a name="add-your-own-suggestions"></a>Přidání vlastních návrhů
 
-Chcete-li přidat vlastní návrhy řetězce dotazu, přidejte je do seznamu v části **uživatelsky definované návrhy** . Po přidání návrhu do seznamu stiskněte klávesu ENTER nebo klikněte na **+** ikonu. Návrh můžete zadat v libovolném jazyce. Můžete přidat maximálně 5 000 návrhů řetězce dotazu.
+Chcete-li přidat vlastní návrhy řetězce dotazu, přidejte je do seznamu v části **uživatelsky definované návrhy**. Po přidání návrhu do seznamu stiskněte klávesu ENTER nebo klikněte na **+** ikonu. Návrh můžete zadat v libovolném jazyce. Můžete přidat maximálně 5 000 návrhů řetězce dotazu.
 
 ## <a name="upload-suggestions"></a>Nahrávání návrhů
 
@@ -53,7 +53,7 @@ Chcete-li odebrat návrh řetězce dotazu, klikněte na ikonu odebrat vedle náv
 
 ## <a name="block-suggestions"></a>Zablokovat návrhy
 
-Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích dotazů, které nechcete, aby Bing vracel. Pokud chcete přidat blokované řetězce dotazů, klikněte na **Zobrazit blokované návrhy** . Přidejte řetězec dotazu do seznamu a stiskněte klávesu ENTER nebo klikněte na **+** ikonu. Můžete přidat maximálně 50 zablokovaných řetězců dotazů.
+Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích dotazů, které nechcete, aby Bing vracel. Pokud chcete přidat blokované řetězce dotazů, klikněte na **Zobrazit blokované návrhy**. Přidejte řetězec dotazu do seznamu a stiskněte klávesu ENTER nebo klikněte na **+** ikonu. Můžete přidat maximálně 50 zablokovaných řetězců dotazů.
 
 
 
@@ -65,7 +65,7 @@ Pokud zahrnete návrhy Bingu, můžete přidat seznam řetězců vyhledávacích
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Povolení automatické návrhy v hostovaném uživatelském rozhraní
 
-Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní** . Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu** vyberte možnost **zapnuto** pro možnost **Povolit automatický návrh** . Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
+Pokud chcete pro hostované uživatelské rozhraní povolit návrhy řetězce dotazu, klikněte na **hostované uživatelské rozhraní**. Přejděte dolů do části **Další konfigurační** oddíl. V části **vyhledávání na webu** vyberte možnost **zapnuto** pro možnost **Povolit automatický návrh**. Chcete-li povolit Automatický návrh, je nutné vybrat rozložení, které obsahuje vyhledávací pole.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Volání rozhraní API pro automatické návrhy
@@ -93,6 +93,6 @@ Pokud uživatel vybere navrhovaný řetězec dotazu z rozevíracího seznamu, po
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Získání vlastních návrhů](./get-custom-suggestions.md)
+- [Získání vlastních návrhů]()
 - [Hledání vlastní instance](./search-your-custom-view.md)
 - [Konfigurace a využívání vlastního hostovaného uživatelského rozhraní](./hosted-ui.md)

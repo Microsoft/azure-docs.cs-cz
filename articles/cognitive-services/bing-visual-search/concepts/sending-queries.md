@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095114"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369490"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Odesílání vyhledávacích dotazů na rozhraní API pro vizuální vyhledávání Bingu
 
@@ -28,7 +28,7 @@ Tento článek popisuje parametry a atributy požadavků odeslaných do rozhran�
 
 Přehledy o imagi můžete získat třemi způsoby:
 
-- Použití tokenu Insights, který dostanete z obrázku v předchozím volání do jednoho z [rozhraní API Bingu pro vyhledávání obrázkůch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) koncových bodů.
+- Použití tokenu Insights, který dostanete z obrázku v předchozím volání do jednoho z [rozhraní API Bingu pro vyhledávání obrázkůch](/rest/api/cognitiveservices/bing-images-api-v7-reference) koncových bodů.
 - Odesílá se adresa URL obrázku.
 - Nahrává se obrázek (v binárním formátu).
 
@@ -78,7 +78,7 @@ Požadavky se musí zasílat jenom jako požadavky HTTP POST.
 
 Následují parametry dotazu, které váš požadavek musí obsahovat. Měli byste aspoň zadat `mkt` parametr dotazu:
 
-| Name | Hodnota | Typ | Vyžadováno |
+| Název | Hodnota | Typ | Vyžadováno |
 | --- | --- | --- | --- |
 | <a name="cc"></a>cc  | Kód země se dvěma znaky, který představuje místo, odkud pocházejí výsledky.<br /><br /> Pokud tento parametr nastavíte, musíte zadat také hlavičku [Accept-Language](#acceptlanguage). Bing použije první podporovaný jazyk, který najde v seznamu jazyků, a zkombinuje ho se zadaným kódem země, aby určil trh, ze kterého má vrátit výsledky. Pokud seznam jazyků podporovaný jazyk neobsahuje, najde Bing nejbližší jazyk a trh, který požadavek podporuje. Nebo může místo zadaného trhu pro výsledky použít trh agregovaný nebo výchozí.<br /><br /> Tento parametr dotazu a parametr dotazu `Accept-Language` byste měli použít jenom v případě, že zadáte více jazyků. Jinak byste měli použít parametry dotazu `mkt` a `setLang`.<br /><br /> Tento parametr a parametr dotazu [mkt](#mkt) se vzájemně vylučují &mdash; nezadávejte oba. | Řetězec | No       |
 | <a name="mkt"></a>mkt   | Trh, odkud pochází výsledky. <br /><br /> **Poznámka:** Měli byste vždycky zadat trh, pokud je známý. Určení trhu pomáhá Bingu směrovat požadavek a vrátit odpovídající a optimální odpověď.<br /><br /> Tento parametr a parametr dotazu [cc](#cc) se vzájemně vylučují &mdash; nezadávejte oba. | Řetězec | Yes      |
@@ -89,7 +89,7 @@ Následují parametry dotazu, které váš požadavek musí obsahovat. Měli bys
 
 Následují hlavičky dotazu, které váš požadavek musí obsahovat. `Content-Type`Záhlaví a `Ocp-Apim-Subscription-Key` jsou jediná požadovaná záhlaví, ale měli byste také zahrnout,, `User-Agent` `X-MSEdge-ClientID` `X-MSEdge-ClientIP` a `X-Search-Location` .
 
-| Záhlaví | Description |
+| Záhlaví | Popis |
 | --- | --- |
 | <a name="acceptlanguage"></a>Accept-Language  | Nepovinná hlavička požadavku.<br /><br /> Čárkami oddělený seznam jazyků pro řetězce uživatelského rozhraní. Seznam je v sestupném pořadí podle priority. Další informace včetně očekávaného formátu najdete v [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Tato hlavička a parametr dotazu [setLang](#setlang) se vzájemně vylučují &mdash; nezadávejte obojí.<br /><br /> Pokud tuto hlavičku nastavíte, musíte zadat také parametr dotazu [cc](#cc). K určení trhu, pro který se mají vracet výsledky, Bing použije první podporovaný jazyk, který najde v seznamu, a zkombinuje ho s hodnotou parametru `cc`. Pokud seznam jazyků podporovaný jazyk neobsahuje, Bing najde nejbližší jazyk a trh, který požadavek podporuje, nebo pro výsledky použije agregovaný nebo výchozí trh. Chcete-li zjistit, jaký trh Bing používal, přečtěte si `BingAPIs-Market` hlavičku.<br /><br /> Tuto hlavičku a parametr dotazu `cc` použijte jenom v případě, že zadáte více jazyků. Jinak použijte parametry dotazu [mkt](#mkt) a [setLang](#setlang).<br /><br /> Řetězec uživatelského rozhraní je řetězec, který se používá jako popisek v uživatelském rozhraní. V objektech odpovědí JSON je několik řetězců uživatelského rozhraní. Zadaný jazyk použijí všechny odkazy na vlastnosti Bing.com v objektech odpovědi.  |
 | <a name="contenttype"></a>Content-Type  |     |

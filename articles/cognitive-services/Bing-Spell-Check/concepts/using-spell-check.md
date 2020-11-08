@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a02d5217cb051516e11d17730f31869618a2cfb0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098225"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369388"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Použití rozhraní API pro kontrolu pravopisu Bingu
 
@@ -49,14 +49,14 @@ Režim `Spell` je agresivnější a vrací lepší výsledky hledání. Režim `
 
 ## <a name="market-setting"></a>Nastavení trhu
 
-V žádosti by se měl zadat [kód na trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) s `mkt` parametrem dotazu. Rozhraní API bude jinak používat výchozí trh na základě IP adresy žádosti.
+V žádosti by se měl zadat [kód na trhu](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) s `mkt` parametrem dotazu. Rozhraní API bude jinak používat výchozí trh na základě IP adresy žádosti.
 
 
 ## <a name="http-post-and-get-support"></a>Podpora HTTP POST a GET
 
 Rozhraní API podporuje metodu HTTP POST i HTTP GET. Kterou použijete, závisí na délce textu, který chcete kontrolovat. Pokud jsou řetězce vždy kratší než 1500 znaků, můžete použít metodu GET. Pokud ale chcete podporovat řetězce dlouhé až 10000 znaků, použijete metodu POST. Textový řetězec může obsahovat jakýkoli platný znak kódování UTF-8.
 
-Následující příklad ukazuje požadavek POST na kontrolu pravopisu a gramatiky textového řetězce. Příklad pro úplnost obsahuje parametr dotazu [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) (může být vynechán, protože výchozí hodnota pro `mode` je Proof). Parametr dotazu [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) obsahuje řetězec, který má být zkontrolován.
+Následující příklad ukazuje požadavek POST na kontrolu pravopisu a gramatiky textového řetězce. Příklad pro úplnost obsahuje parametr dotazu [mode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode) (může být vynechán, protože výchozí hodnota pro `mode` je Proof). Parametr dotazu [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) obsahuje řetězec, který má být zkontrolován.
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -73,7 +73,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 Pokud používáte metodu HTTP GET, zahrnete parametr dotazu `text` do řetězce dotazu adresy URL.
   
-Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď obsahuje objekt [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck). 
+Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď obsahuje objekt [SpellCheck](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck). 
   
 ```json
 {  
@@ -117,7 +117,7 @@ Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď 
 }  
 ```  
   
-Pole [flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) obsahuje chyby pravopisu a gramatiky, které rozhraní API v řetězci [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) našlo. Pole `token` obsahuje slovo, které se má nahradit. K nalezení tokenu v řetězci `text` použijete offset se základem nula v poli `offset`. Potom nahradíte slovo na této pozici slovem v poli `suggestion`. 
+Pole [flaggedTokens](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) obsahuje chyby pravopisu a gramatiky, které rozhraní API v řetězci [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) našlo. Pole `token` obsahuje slovo, které se má nahradit. K nalezení tokenu v řetězci `text` použijete offset se základem nula v poli `offset`. Potom nahradíte slovo na této pozici slovem v poli `suggestion`. 
 
 Pokud pole `type` má hodnotu RepeatedToken, měli byste stále nahradit token obsahem pole `suggestion`, ale také bude pravděpodobně potřeba odebrat koncovou mezeru.
 
@@ -128,4 +128,4 @@ Pokud pole `type` má hodnotu RepeatedToken, měli byste stále nahradit token o
 ## <a name="next-steps"></a>Další kroky
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

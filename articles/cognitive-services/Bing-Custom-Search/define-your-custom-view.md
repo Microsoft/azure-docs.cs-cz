@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090813"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367552"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
@@ -30,7 +30,7 @@ Portál umožňuje vytvořit instanci hledání, která určuje řezy webu: dom�
 
 Při definování řezů webu použijte následující:
 
-| Název řezu | Description                                                                                                                                                                                                                                                                                                |
+| Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Doména     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com` , Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com` . |
 | Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
@@ -79,16 +79,16 @@ Po přidání webových řezů do **aktivního** seznamu vlastní vyhledávání
 
 ## <a name="search-for-images-and-videos"></a>Hledání obrázků a videí
 
-Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí [hostovaného uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
+Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí [hostovaného uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
 
-Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
+Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../bing-video-search/overview.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Otestování instance hledání pomocí podokna náhledu
 
 Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně portálu pro odeslání vyhledávacích dotazů a zobrazení výsledků. 
 
-1. Pod vyhledávacím polem vyberte **Moje instance** . Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing** . 
-2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+1. Pod vyhledávacím polem vyberte **Moje instance**. Výsledky hledání můžete porovnat s vyhledáváním v Bingu tak, že vyberete **Bing**. 
+2. Vyberte zabezpečený filtr hledání, který bude na trhu Hledat (viz [parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Zadejte dotaz a stisknutím klávesy ENTER nebo kliknutím na ikonu hledání zobrazte výsledky z aktuální konfigurace. Můžete změnit typ hledání, který provedete kliknutím na **Web** , **Obrázek** nebo **video** , abyste získali odpovídající výsledky. 
 
 <a name="adjustrank"></a>
@@ -97,7 +97,7 @@ Můžete testovat instanci hledání pomocí podokna náhledu na pravé straně 
 
 Portál umožňuje upravit pořadí hledání obsahu z konkrétních domén, podstránek a webových stránek. Po odeslání vyhledávacího dotazu v podokně náhledu obsahuje každý výsledek hledání seznam úprav, které můžete pro něj provést:  
 
-| Úpravu | Description |
+| Úpravu | Popis |
 |------------|-------------|
 | Blok      | Přesune doménu, podstránku nebo webovou stránku do seznamu blokovaných. Bing bude při zobrazení výsledků hledání vyloučit obsah z vybrané lokality.                    |
 | Boost      | Zvyšuje obsah z domény nebo podstránky tak, aby byl ve výsledcích hledání vyšší.                                                                                        |
@@ -125,7 +125,7 @@ Webovou stránku můžete připnout na začátek dvěma způsoby:
 
 * Na **připnuté** kartě zadejte adresu URL webové stránky, kterou chcete připnout k hornímu, a odpovídající dotaz.
 
-* V podokně **náhledu** zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Vyhledejte webovou stránku, kterou chcete pro svůj dotaz připnout, a klikněte na **Připnout na začátek** . Webová stránka a dotaz budou přidány do **připnutého** seznamu.
+* V podokně **náhledu** zadejte vyhledávací dotaz a klikněte na tlačítko Hledat. Vyhledejte webovou stránku, kterou chcete pro svůj dotaz připnout, a klikněte na **Připnout na začátek**. Webová stránka a dotaz budou přidány do **připnutého** seznamu.
 
 ### <a name="specify-the-pins-match-condition"></a>Zadejte podmínku shody PIN kódu.
 
@@ -165,4 +165,4 @@ Pokud jste se přihlásili k odběru vlastního vyhledávání na příslušné 
 - [Volání vlastního vyhledávání](./search-your-custom-view.md)
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
 - [Zvýraznění textu pomocí dekoračních značek](../bing-web-search/hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+- [Stránkování webových stránek](../bing-web-search/paging-search-results.md)

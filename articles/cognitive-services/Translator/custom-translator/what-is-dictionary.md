@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ff76e090e628a880290bb0e9f90026260de0c7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510755"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368980"
 ---
 # <a name="what-is-a-dictionary"></a>Co je slovník?
 
 Slovník je zarovnaný pár dokumentů, které určují seznam frází nebo vět a jejich odpovídající překlady. Použijte slovník ve školicím programu, pokud chcete, aby Microsoft Translator vždy přeložil všechny instance zdrojové fráze nebo věty pomocí překladu, který jste zadali ve slovníku. Slovníky jsou někdy označovány jako Glossaries nebo pojem základ. Slovník si můžete představit jako hrubou silou "zkopírovat a nahradit" pro všechny uvedené výrazy. Kromě toho služba vlastní překladatele Microsoftu sestaví a využívá vlastní slovníky pro obecné účely ke zlepšení kvality jeho překladu. Slovník poskytnutý zákazníkem má ale stejný předchůdce a bude prohledán jako první hledaná slova nebo věty.
 
-Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný model Microsoft General neuronové Network. [Zobrazte úplný seznam jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Slovníky fungují jenom pro projekty ve dvojicích jazyků, které mají plně podporovaný model Microsoft General neuronové Network. [Zobrazte úplný seznam jazyků](../language-support.md#customization).
 
 ## <a name="phrase-dictionary"></a>Slovník frází
 Slovník frází rozlišuje velká a malá písmena. Jedná se o přesné operace Find a nahrazování. Když zahrnete Frázový slovník do školicího modelu, všechna slova nebo fráze uvedená v seznamu se budou přeložit způsobem, který jste zadali. Zbytek věty je přeložen běžným způsobem. Pomocí slovníku frází můžete určit fráze, které by se neměly překládat, zadáním stejné nepřeložené fráze ve zdrojovém a cílovém souboru ve slovníku.

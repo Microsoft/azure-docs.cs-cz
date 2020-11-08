@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588611"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369507"
 ---
 # <a name="translator-v20"></a>Překladatel v 2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588611"
 Verze 2 překladatele se dá bez problémů integrovat do aplikací, webů, nástrojů nebo dalších řešení, která poskytují prostředí pro více jazyků. Můžete ji použít na libovolné hardwarové platformě a s jakýmkoli operačním systémem k provádění překladu jazyka a dalších úloh souvisejících s jazyky, jako je rozpoznávání textu a převod textu na řeč v souladu s oborovým standardem. Další informace najdete v tématu [Překladatel](../translator-info-overview.md).
 
 ## <a name="getting-started"></a>Začínáme
-Pokud chcete získat přístup ke překladateli, musíte se [zaregistrovat k Microsoft Azure](../translator-text-how-to-signup.md).
+Pokud chcete získat přístup ke překladateli, musíte se [zaregistrovat k Microsoft Azure](../translator-how-to-signup.md).
 
 ## <a name="authentication"></a>Authentication 
 Všechna volání překladatele vyžadují pro ověření klíč předplatného. Rozhraní API podporuje tři metody ověřování:
@@ -607,11 +607,11 @@ Tělo žádosti zahrnuje volitelný `TranslationOptions` objekt, který má tent
 
 * `Category`: Řetězec, který obsahuje kategorii (doménu) překladu. Výchozí formát je `general`.
 * `ContentType`: Jedinou podporovanou možností a výchozí hodnota je `text/plain` .
-* `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte vytváření umělých alternativ, plně integrovaných s rozhraním překladu spolupráce (CTF). Funkce umožňuje vracet alternativy pro věty, které nemají v CTF žádné překlady, přidáním umělých alternativ z *n*-nejlepších seznamů dekodéru.
+* `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte vytváření umělých alternativ, plně integrovaných s rozhraním překladu spolupráce (CTF). Funkce umožňuje vracet alternativy pro věty, které nemají v CTF žádné překlady, přidáním umělých alternativ z *n* -nejlepších seznamů dekodéru.
     - Hodnotící. Tato hodnocení se používají takto: 
          - Nejlepší automatický překlad má hodnocení 5.
        - Alternativy z CTF odráží oprávnění kontrolora. Jsou v rozsahu od-10 do + 10.
-       - Automaticky vygenerované alternativy*n*překladu mají hodnocení 0 a stupeň shody 100.
+       - Automaticky vygenerované alternativy *n* překladu mají hodnocení 0 a stupeň shody 100.
     - Počet alternativ Počet vrácených alternativ může být stejně vysoký jako hodnota zadaná v `maxTranslations` , ale může být nižší.
     - Páry jazyků. Tato funkce není v obou směrech k dispozici pro překlady mezi zjednodušenou čínskou a tradiční čínštinou. Je k dispozici pro všechny ostatní páry jazyků podporované Microsoft Translatorem.
 * `State`: Stav uživatele, který vám umožní sladit požadavek a odpověď. V odpovědi se vrátí stejný obsah.
@@ -719,11 +719,11 @@ Tady je formát textu žádosti:
 * `Options`Volitelné. `Options`Objekt, který obsahuje následující hodnoty. Jsou to všechna volitelná a výchozí nastavení pro nejběžnější nastavení. Zadané elementy musí být uvedeny v abecedním pořadí.
     - `Category`: Řetězec, který obsahuje kategorii (doménu) překladu. Výchozí formát je `general`.
     - `ContentType`: Jedinou podporovanou možností a výchozí hodnota je `text/plain` .
-    - `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte generaci umělých alternativ v překladu, která je plně integrovaná s architekturou CTF (spolupráce s překlady). Funkce umožňuje vracet alternativy pro věty, které nemají žádné alternativy v CTF, a to přidáním umělých alternativ ze seznamu *n*-nejlepších dekodéru.
+    - `IncludeMultipleMTAlternatives`: Příznak Boolean určující, zda má být vráceno více než jedna alternativa z jádra MT. Platné hodnoty jsou `true` a (rozlišují se malá a velká `false` písmena). Výchozí hodnota je `false` , která vrací jenom jednu alternativu. Nastavením příznaku `true` povolíte generaci umělých alternativ v překladu, která je plně integrovaná s architekturou CTF (spolupráce s překlady). Funkce umožňuje vracet alternativy pro věty, které nemají žádné alternativy v CTF, a to přidáním umělých alternativ ze seznamu *n* -nejlepších dekodéru.
         - Hodnocení hodnocení se používají takto:
           - Nejlepší automatický překlad má hodnocení 5.
           - Alternativy z CTF odráží oprávnění kontrolora. Jsou v rozsahu od-10 do + 10.
-          - Automaticky vygenerované alternativy*n*překladu mají hodnocení 0 a stupeň shody 100.
+          - Automaticky vygenerované alternativy *n* překladu mají hodnocení 0 a stupeň shody 100.
         - Počet alternativ Počet vrácených alternativ může být stejně vysoký jako hodnota zadaná v `maxTranslations` , ale může být nižší.
         - Páry jazyků. Tato funkce není v obou směrech k dispozici pro překlady mezi zjednodušenou čínskou a tradiční čínštinou. Je k dispozici pro všechny ostatní páry jazyků podporované Microsoft Translatorem.
 * `State`: Stav uživatele, který vám umožní sladit požadavek a odpověď. V odpovědi se vrátí stejný obsah.
@@ -804,5 +804,3 @@ Typ obsahu odpovědi: aplikace/XML
 
 > [!div class="nextstepaction"]
 > [Migrovat na Translator V3](../migrate-to-v3.md)
-
-

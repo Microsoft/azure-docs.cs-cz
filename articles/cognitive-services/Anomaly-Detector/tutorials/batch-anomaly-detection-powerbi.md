@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017620"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368640"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -48,7 +48,7 @@ V hlavním Power BI Desktop okně klikněte na pás karet **Domů** . Ve skupin�
 
 ![Obrázek tlačítka získat data v Power BI](../media/tutorials/power-bi-get-data-button.png)
 
-Po zobrazení dialogového okna přejděte do složky, do které jste stáhli soubor example. xlsx a vyberte ho. Po zobrazení dialogu **navigátor** klikněte na **List1**a pak na **Upravit**.
+Po zobrazení dialogového okna přejděte do složky, do které jste stáhli soubor example. xlsx a vyberte ho. Po zobrazení dialogu **navigátor** klikněte na **List1** a pak na **Upravit**.
 
 ![Obrázek obrazovky datového zdroje "navigátor" v Power BI](../media/tutorials/navigator-dialog-box.png)
 
@@ -112,20 +112,20 @@ V Rozšířený editor použijte následující fragment kódu Power Query M k e
  in results
 ```
 
-Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parametru**a kliknutím na **vyvolat**.
+Vyvolejte dotaz na datovou tabulku výběrem `Sheet1` níže uvedeného **parametru** a kliknutím na **vyvolat**.
 
 ![Obrázek funkce Invoke](../media/tutorials/invoke-function-screenshot.png)
 
 ## <a name="data-source-privacy-and-authentication"></a>Soukromí a ověřování zdroje dat
 
 > [!NOTE]
-> Uvědomte si zásady vaší organizace na ochranu osobních údajů a přístup k datům. Další informace najdete v tématu [Power BI Desktop úrovně ochrany osobních údajů](https://docs.microsoft.com/power-bi/desktop-privacy-levels) .
+> Uvědomte si zásady vaší organizace na ochranu osobních údajů a přístup k datům. Další informace najdete v tématu [Power BI Desktop úrovně ochrany osobních údajů](/power-bi/desktop-privacy-levels) .
 
 Při pokusu o spuštění dotazu se může zobrazit zpráva s upozorněním, že se používá externí zdroj dat.
 
 ![Obrázek ukazující upozornění vytvořené nástrojem Power BI](../media/tutorials/blocked-function.png)
 
-Pokud to chcete opravit, klikněte na **soubor**a vyberte **Možnosti a nastavení**. Pak klikněte na **Možnosti**. Pod **aktuálním souborem**vyberte možnost **soukromí**a **ignorujte úroveň ochrany osobních údajů a potenciálně Vylepšete výkon**.
+Pokud to chcete opravit, klikněte na **soubor** a vyberte **Možnosti a nastavení**. Pak klikněte na **Možnosti**. Pod **aktuálním souborem** vyberte možnost **soukromí** a **ignorujte úroveň ochrany osobních údajů a potenciálně Vylepšete výkon**.
 
 Kromě toho se může zobrazit zpráva s výzvou, abyste určili, jak se chcete připojit k rozhraní API.
 
@@ -137,7 +137,7 @@ Potom kliknutím na **zavřít & použít** na pásu karet **Domů** , aby se zm
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Vizualizace odpovědi rozhraní API detektoru anomálií
 
-Na hlavní obrazovce Power BI začněte používat dotazy vytvořené výše k vizualizaci dat. Nejprve vyberte **Spojnicový graf** v **vizualizacích**. Pak přidejte časové razítko z vyvolané funkce na **osu**čárového grafu. Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**.
+Na hlavní obrazovce Power BI začněte používat dotazy vytvořené výše k vizualizaci dat. Nejprve vyberte **Spojnicový graf** v **vizualizacích**. Pak přidejte časové razítko z vyvolané funkce na **osu** čárového grafu. Klikněte na něj pravým tlačítkem myši a vyberte **časové razítko**.
 
 ![Kliknutí pravým tlačítkem na hodnotu časového razítka](../media/tutorials/timestamp-right-click.png)
 
@@ -156,7 +156,7 @@ Po přidání polí klikněte na graf a změňte jeho velikost tak, aby se zobra
 
 ### <a name="display-anomaly-data-points"></a>Zobrazit datové body anomálií
 
-Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačítkem myši na **hodnotu** pod **vyvolaným dotazem funkce**a klikněte na možnost **Nová rychlá míra**.
+Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačítkem myši na **hodnotu** pod **vyvolaným dotazem funkce** a klikněte na možnost **Nová rychlá míra**.
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure.png)
 
@@ -164,7 +164,7 @@ Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet
 
 ![Druhý obrázek nové obrazovky rychlá míra](../media/tutorials/new-quick-measure-2.png)
 
-Po kliknutí na **OK**budete mít pole na konci `Value for True` seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
+Po kliknutí na **OK** budete mít pole na konci `Value for True` seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot** grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
 
 ![Obrázek formátu osy x](../media/tutorials/format-x-axis.png)
 

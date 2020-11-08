@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 1a76c753cdf22d2c9b8b56893017cdc3cee9c8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d987797c2c25f685a3c9250afeb17cec3ad3cb2e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527288"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369541"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
@@ -103,7 +103,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 Teď jste připraveni vytvořit vlastní funkci, která integruje Power BI s Analýzou textu. Funkce jako parametr přijímá text ke zpracování. Převede data do požadovaného formátu JSON (nebo z něj) a vytvoří požadavek HTTP do rozhraní API Klíčové fráze. Dále funkce parsuje odpověď z API a vrátí řetězec, který obsahuje seznam extrahovaných klíčových frází oddělených čárkou.
 
 > [!NOTE]
-> Vlastní funkce Power BI Desktopu se píší v [jazyce vzorců Power Query M](https://docs.microsoft.com/powerquery-m/power-query-m-reference) nebo zkráceně jenom M. M je funkcionální programovací jazyk založený na [F#](https://docs.microsoft.com/dotnet/fsharp/). Pro dokončení tohoto kurzu však nemusíte být programátor – požadovaný kód je uvedený níže.
+> Vlastní funkce Power BI Desktopu se píší v [jazyce vzorců Power Query M](/powerquery-m/power-query-m-reference) nebo zkráceně jenom M. M je funkcionální programovací jazyk založený na [F#](/dotnet/fsharp/). Pro dokončení tohoto kurzu však nemusíte být programátor – požadovaný kód je uvedený níže.
 
 V Power BI Desktopu se ujistěte, že jste v okně Editoru dotazů. Pokud v něm nejste, vyberte pás karet **Domů** a ve skupině **Externí data** klikněte na **Upravit dotazy**.
 
@@ -160,7 +160,7 @@ Po zavření dialogového okna Vyvolat vlastní funkci se může zobrazit banner
 
 ![[Banner s výzvou k zadání přihlašovacích údajů]](../media/tutorials/power-bi/credentials-banner.png)
 
-Klikněte na **Upravit přihlašovací údaje**, v dialogovém okně se ujistěte, že je vybraná možnost `Anonymous`, a pak klikněte na **Připojit**. 
+Klikněte na **Upravit přihlašovací údaje** , v dialogovém okně se ujistěte, že je vybraná možnost `Anonymous`, a pak klikněte na **Připojit**. 
 
 > [!NOTE]
 > Vybrali jste `Anonymous`, protože služba Analýza textu použije k vašemu ověření přístupový klíč, aby řešení Power BI nemuselo poskytovat přihlašovací údaje pro samotný požadavek HTTP.
@@ -185,12 +185,12 @@ Jakmile vyřešíte všechny zobrazené bannery, kliknutím na **Zavřít a pou�
 
 Power BI Desktopu chvíli trvá, než provede potřebné požadavky HTTP. Sloupec `keyphrases` pro každý řádek tabulky obsahuje klíčové fráze rozpoznané v textu rozhraním API pro klíčové fráze. 
 
-Teď tento sloupec použijete k vygenerování Word Cloudu. Začněte tím, že v hlavním okně Power BI Desktopu kliknete na tlačítko **Sestava**, které je nalevo od pracovního prostoru.
+Teď tento sloupec použijete k vygenerování Word Cloudu. Začněte tím, že v hlavním okně Power BI Desktopu kliknete na tlačítko **Sestava** , které je nalevo od pracovního prostoru.
 
 > [!NOTE]
 > Proč k vygenerování Word Cloudu použít extrahované klíčové fráze, a ne úplný text každého komentáře? Klíčové fráze nám poskytují *důležitá* slova z komentářů našich zákazníků, ne pouze *nejčastější* slova. Navíc nedojde ke zkreslení velikosti slov ve výsledném Cloudu častým používáním určitého slova v relativně malém počtu komentářů.
 
-Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu Vizualizace napravo od pracovního prostoru klikněte na tři tečky (**...**) a zvolte **Importovat ze Storu**. Vyhledejte „cloud“ a klikněte na tlačítko **Přidat** vedle vizuálu Word Cloud. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o úspěšné instalaci.
+Pokud ještě nemáte nainstalovaný vlastní vizuál Word Cloud, nainstalujte ho. Na panelu Vizualizace napravo od pracovního prostoru klikněte na tři tečky ( **...** ) a zvolte **Importovat ze Storu**. Vyhledejte „cloud“ a klikněte na tlačítko **Přidat** vedle vizuálu Word Cloud. Power BI nainstaluje vizuál Word Cloud a bude vás informovat o úspěšné instalaci.
 
 ![[Přidání vlastního vizuálu]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -296,7 +296,7 @@ Přečtěte si další informace o službě Analýza textu, jazyce vzorců Power
 > [Referenční informace k rozhraní API pro analýzu textu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0)
 
 > [!div class="nextstepaction"]
-> [Power Query M – referenční informace](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
+> [Power Query M – referenční informace](/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Dokumentace k Power BI](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

@@ -9,24 +9,24 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 73084f5116083b190b6fa31e504ffc5e8f6f39f6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636489"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368198"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Kurz: Vytvoření aplikace pro iOS, která spustí moderní čtečku s obsahem z fotky (SWIFT)
 
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-[Rozhraní API pro čtení Počítačové zpracování obrazu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) detekuje textový obsah v imagi pomocí nejnovějších modelů rozpoznávání od Microsoftu a převede identifikovaný text na datový proud znaků, který je strojově čitelný.
+[Rozhraní API pro čtení Počítačové zpracování obrazu Cognitive Services](../computer-vision/concept-recognizing-text.md) detekuje textový obsah v imagi pomocí nejnovějších modelů rozpoznávání od Microsoftu a převede identifikovaný text na datový proud znaků, který je strojově čitelný.
 
 V tomto kurzu vytvoříte aplikaci pro iOS od začátku a integrujete rozhraní API pro čtení a moderní čtečku s využitím sady moderní čtečky. Kompletní pracovní ukázka tohoto kurzu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
 * Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](./how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci ukázkových vlastností projektu budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
@@ -38,7 +38,7 @@ Vytvoří nový projekt v Xcode.
 
 ![Nový projekt](./media/ios/xcode-create-project.png)
 
-Vyberte **aplikaci s jedním zobrazením** .
+Vyberte **aplikaci s jedním zobrazením**.
 
 ![Nová aplikace s jedním zobrazením](./media/ios/xcode-single-view-app.png)
 

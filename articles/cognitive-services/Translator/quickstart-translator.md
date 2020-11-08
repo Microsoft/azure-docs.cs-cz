@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Překladatel, služba Translator, překlad textu, přepis textu, rozpoznávání jazyka
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322519"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369524"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Rychlý Start: Začínáme s překladatelem
 
@@ -29,7 +29,7 @@ V tomto rychlém startu se naučíte používat službu Translator přes REST. Z
 * [Vypočítat délku věty](#get-sentence-length)
 * [Získat alternativní překlady](#dictionary-lookup-alternate-translations) a [Příklady použití slov ve větě](#dictionary-examples-translations-in-context)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure, vytvořte v Azure Portal [prostředek překladatele](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) a Získejte svůj klíč a koncový bod. Po nasazení vyberte **Přejít k prostředku**.
@@ -105,7 +105,7 @@ Když zavoláte službu Translator přes REST, budete muset zajistit, aby každ�
   <th>Popis</th>
   <tr>
     <td>Ověřovací hlavičky (y)</td>
-    <td><em>Požadovaná hlavička žádosti</em><br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>Požadovaná hlavička žádosti, pokud se používá prostředek Cognitive Services. Volitelné, pokud používáte prostředek překladatele.</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Podívejte se <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
+    <td><em>Požadovaná hlavička žádosti</em><br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>Požadovaná hlavička žádosti, pokud se používá prostředek Cognitive Services. Volitelné, pokud používáte prostředek překladatele.</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Podívejte se <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">na dostupné možnosti ověřování</a>.</td>
   </tr>
   <tr>
     <td>Typ obsahu</td>
@@ -123,7 +123,7 @@ Když zavoláte službu Translator přes REST, budete muset zajistit, aby každ�
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Klíče a koncové body)
 
-Ukázky na této stránce využívají pevně zakódované klíče a koncové body pro jednoduchost. Nezapomeňte **odebrat klíč z kódu, až budete hotovi** , a **nikdy ho** zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) Cognitive Services.
+Ukázky na této stránce využívají pevně zakódované klíče a koncové body pro jednoduchost. Nezapomeňte **odebrat klíč z kódu, až budete hotovi** , a **nikdy ho** zveřejnit. V případě produkčního prostředí zvažte použití zabezpečeného způsobu ukládání a přístupu k vašim přihlašovacím údajům. Další informace najdete v článku o [zabezpečení](../cognitive-services-security.md) Cognitive Services.
 
 ## <a name="translate-text"></a>Přeložení textu 
 
@@ -686,7 +686,7 @@ Po úspěšném volání by se měla zobrazit následující odpověď:
 
 ### <a name="detect-source-language-without-translation"></a>Detekovat zdrojový jazyk bez překladu
 
-Je možné použít službu Translator k detekci jazyka zdrojového textu bez provádění překladu. K tomu použijete [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) koncový bod. 
+Je možné použít službu Translator k detekci jazyka zdrojového textu bez provádění překladu. K tomu použijete [`/detect`](./reference/v3-0-detect.md) koncový bod. 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -2675,7 +2675,7 @@ Pokud dochází k problémům s připojením, může to být tím, že vypršela
 * [Přečtěte si, jak rozhraní API počítá znaky.](character-counts.md)
 * [Přizpůsobení a zlepšení překladu](customization.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Reference k rozhraní API pro překladatele V3](reference/v3-0-reference.md)
 * [Podpora jazyků](language-support.md)

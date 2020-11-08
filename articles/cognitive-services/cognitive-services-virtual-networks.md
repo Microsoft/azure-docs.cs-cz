@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843137"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369371"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí služeb Azure Cognitive Services
 
@@ -44,7 +44,7 @@ Virtuální sítě (virtuální sítě) jsou podporované v [oblastech, kde jsou
 
 > [!div class="checklist"]
 > * Detektor anomálií
-> * Počítačové zpracování obrazu
+> * Computer Vision
 > * Content Moderator
 > * Custom Vision
 > * Tvář
@@ -88,7 +88,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
    ![Virtuální sítě – zamítnutí](media/vnet/virtual-network-deny.png)
 
-1. Vyberte **Uložit**, aby se tyto změny použily.
+1. Vyberte **Uložit** , aby se tyto změny použily.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -154,7 +154,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --default-action Allow
     ```
 
-***
+**_
 
 ## <a name="grant-access-from-a-virtual-network"></a>Udělení přístupu z virtuální sítě
 
@@ -166,7 +166,7 @@ Každý prostředek Cognitive Services podporuje až 100 pravidel virtuální s�
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-Chcete-li použít pravidlo virtuální sítě na prostředek Cognitive Services, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Požadovaná oprávnění je výchozí role *přispěvatele* nebo role *Přispěvatel Cognitive Services* . Pro vlastní definice rolí je možné přidat také požadovaná oprávnění.
+Chcete-li použít pravidlo virtuální sítě na prostředek Cognitive Services, musí mít uživatel příslušná oprávnění pro přidávané podsítě. Požadovaná oprávnění je výchozí role _Contributor * nebo role *přispěvatele Cognitive Services* . Pro vlastní definice rolí je možné přidat také požadovaná oprávnění.
 
 Cognitive Services prostředku a povolený přístup k virtuálním sítím může být v různých předplatných, včetně předplatných, která jsou součástí jiného tenanta Azure AD.
 
@@ -185,7 +185,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Chcete-li udělit přístup k virtuální síti s existujícím pravidlem sítě, vyberte v části **virtuální sítě**možnost **Přidat existující virtuální síť**.
+1. Chcete-li udělit přístup k virtuální síti s existujícím pravidlem sítě, vyberte v části **virtuální sítě** možnost **Přidat existující virtuální síť**.
 
    ![Přidat existující virtuální síť](media/vnet/virtual-network-add-existing.png)
 
@@ -210,7 +210,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
    ![Odebrat virtuální síť](media/vnet/virtual-network-remove.png)
 
-1. Vyberte **Uložit**, aby se tyto změny použily.
+1. Vyberte **Uložit** , aby se tyto změny použily.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -322,10 +322,10 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
         --subnet $subnetid
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
+> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na _ * odepřít * * nebo že Síťová pravidla nemají žádný vliv.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Udělení přístupu z rozsahu internetových IP adres
 
@@ -361,7 +361,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
 
 1. Ověřte, že jste vybrali povolení přístupu z **vybraných sítí**.
 
-1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části rozsah adres **firewallu**IP adresu nebo rozsah adres (ve [formátu CIDR](https://tools.ietf.org/html/rfc4632))  >  **Address Range**. Jsou přijímány pouze platné veřejné IP adresy (nerezervované).
+1. Pokud chcete udělit přístup k rozsahu IP adres Internetu, zadejte v části rozsah adres **firewallu** IP adresu nebo rozsah adres (ve [formátu CIDR](https://tools.ietf.org/html/rfc4632))  >  **Address Range**. Jsou přijímány pouze platné veřejné IP adresy (nerezervované).
 
    ![Přidat rozsah IP adres](media/vnet/virtual-network-add-ip-range.png)
 
@@ -369,7 +369,7 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
 
    ![Odstranit rozsah IP adres](media/vnet/virtual-network-delete-ip-range.png)
 
-1. Vyberte **Uložit**, aby se tyto změny použily.
+1. Vyberte **Uložit** , aby se tyto změny použily.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -472,10 +472,10 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
         --ip-address "16.17.18.0/24"
     ```
 
-***
+**_
 
 > [!IMPORTANT]
-> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
+> Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na _ * odepřít * * nebo že Síťová pravidla nemají žádný vliv.
 
 ## <a name="use-private-endpoints"></a>Použití privátních koncových bodů
 
@@ -497,7 +497,7 @@ V podsítích, které používají [koncové body služby](../virtual-network/vi
 
 Když vytvoříte privátní koncový bod pro prostředek Cognitive Services ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem prostředku Cognitive Services. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem prostředku, je tato žádost o souhlas automaticky schválena.
 
-Cognitive Services vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty*privátní koncové body*pro prostředek Cognitive Services v [Azure Portal](https://portal.azure.com).
+Cognitive Services vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty *privátní koncové body* pro prostředek Cognitive Services v [Azure Portal](https://portal.azure.com).
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 
@@ -519,7 +519,7 @@ Při použití privátních koncových bodů se službou Speech je nutné použ�
 
 ### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
-Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro prostředek Cognitive Services aktualizuje na alias v subdoméně s předponou '*privatelink*'. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../dns/private-dns-overview.md), která odpovídá subdoméně*privatelink*, a záznamy prostředků DNS pro privátní koncové body.
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro prostředek Cognitive Services aktualizuje na alias v subdoméně s předponou ' *privatelink* '. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../dns/private-dns-overview.md), která odpovídá subdoméně *privatelink* , a záznamy prostředků DNS pro privátní koncové body.
 
 Při překladu adresy URL koncového bodu mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod prostředku Cognitive Services. Při vyřešení z virtuální sítě hostující soukromý koncový bod adresa URL koncového bodu se přeloží na IP adresu privátního koncového bodu.
 
@@ -532,8 +532,8 @@ Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schop
 
 Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
 
-* [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-* [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Překlad názvů pro prostředky ve virtuálních sítích Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+* [Konfigurace DNS pro privátní koncové body](../private-link/private-endpoint-overview.md#dns-configuration)
 
 ### <a name="pricing"></a>Ceny
 
@@ -541,5 +541,5 @@ Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](ht
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte různé [Cognitive Services Azure](welcome.md)
+* Prozkoumejte různé [Cognitive Services Azure](./what-are-cognitive-services.md)
 * Další informace o [koncových bodech služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md)

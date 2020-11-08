@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546258"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369405"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -39,59 +39,59 @@ V následujících částech tohoto článku najdete seznam služeb, které jsou
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
-|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
-|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
-|[Rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů")|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
-|[Rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
-|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
+|[Počítačové zpracování obrazu](./computer-vision/index.yml "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům rozpoznávání pro zpracování imagí a vracení informací.|
+|[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
+|[Rozpoznávání tváře](./face/index.yml "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
+|[Rozpoznávání formulářů](./form-recognizer/index.yml "Rozpoznávání formulářů")|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
+|[Rozpoznávání rukopisu](./ink-recognizer/index.yml "Rozpoznávání rukopisu") (vyřazení z provozu)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
 
 ## <a name="speech-apis"></a>Rozhraní API pro rozpoznávání řeči
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči. Služba Speech zahrnuje různé možnosti, jako je převod řeči na text, převod textu na řeč, překlad řeči a mnoho dalšího.|
+|[Služba Speech](./speech-service/index.yml "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči. Služba Speech zahrnuje různé možnosti, jako je převod řeči na text, převod textu na řeč, překlad řeči a mnoho dalšího.|
 <!--
-|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
-|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
-|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
+|[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
+|[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
+|[Translator Speech](/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
 -->
 ## <a name="language-apis"></a>Rozhraní API pro jazyk
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí.|
-|[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker vám umožní vytvořit službu otázek a odpovědí z částečně strukturovaného obsahu.|
-|[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Analýza textu")| Analýza textu poskytuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a detekci jazyka.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
-| [Asistivní čtečka](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/ "Asistivní čtečka") | Moderní čtečka přidává do vašich aplikací možnosti čtení z obrazovky a porozumění. |
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí.|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker vám umožní vytvořit službu otázek a odpovědí z částečně strukturovaného obsahu.|
+|[Analýza textu](./text-analytics/index.yml "Analýza textu")| Analýza textu poskytuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a detekci jazyka.|
+|[Překladač](./translator/index.yml "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
+| [Asistivní čtečka](./immersive-reader/index.yml "Asistivní čtečka") | Moderní čtečka přidává do vašich aplikací možnosti čtení z obrazovky a porozumění. |
 
 ## <a name="decision-apis"></a>Rozhraní API pro rozhodování
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Detektor anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Detektor anomálií") |Detekce anomálií umožňuje monitorovat a detekovat anomálie v datech časových řad.|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování možného urážlivého, nežádoucího a rizikového obsahu.|
-|[Poradce pro metriky](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (Preview) | Poradce metrik nabízí přizpůsobitelnou detekci anomálií v datech variate časových řad a plně vybavený webový portál, který vám pomůže tuto službu používat.|
-|[Personalizace](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizace")|Přizpůsobování umožňuje vybrat nejlepší možnosti, které se uživatelům zobrazí, a naučit se jejich chování v reálném čase.|
+|[Detektor anomálií](./anomaly-detector/index.yml "Detektor anomálií") |Detekce anomálií umožňuje monitorovat a detekovat anomálie v datech časových řad.|
+|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator poskytuje monitorování možného urážlivého, nežádoucího a rizikového obsahu.|
+|[Poradce pro metriky](./metrics-advisor/index.yml) (Preview) | Poradce metrik nabízí přizpůsobitelnou detekci anomálií v datech variate časových řad a plně vybavený webový portál, který vám pomůže tuto službu používat.|
+|[Personalizace](./personalizer/index.yml "Personalizace")|Přizpůsobování umožňuje vybrat nejlepší možnosti, které se uživatelům zobrazí, a naučit se jejich chování v reálném čase.|
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
 
 > [!NOTE]
-> Hledáte [Azure kognitivní hledání](https://docs.microsoft.com/azure/search/)? I když používá Cognitive Services pro některé úkoly, jedná se o jinou technologii vyhledávání, která podporuje jiné scénáře.
+> Hledáte [Azure kognitivní hledání](../search/index.yml)? I když používá Cognitive Services pro některé úkoly, jedná se o jinou technologii vyhledávání, která podporuje jiné scénáře.
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Vyhledávání zpráv Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Vyhledávání zpráv Bingu")|Vyhledávání zpráv Bingu vrátí seznam článků s příspěvky, které byly pro dotaz uživatele relevantní.|
-|[Vyhledávání videí Bingu](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Vyhledávání videí Bingu")|Vvyhledávání videí Bingu vrátí seznam videí, které byly pro dotaz uživatele důležité.|
-|[Vyhledávání na webu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Vyhledávání na webu Bingu")|Vyhledávání na webu Bingu vrátí seznam výsledků hledání, které byly pro dotaz uživatele důležité.|
-|[Automatické návrhy Bingu](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Automatické návrhy Bingu")|Automatické návrhy Bingu umožňuje odeslat do Bingu výraz částečného vyhledávacího dotazu a vrátit se do seznamu navrhovaných dotazů.|
-|[Vlastní vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Vlastní vyhledávání Bingu")|Vlastní vyhledávání Bingu vám umožní vytvářet prostředí s přizpůsobeným vyhledáváním pro témata, o kterých se zajímáte.|
-|[Vyhledávání entit Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Vyhledávání entit Bingu")|Vyhledávání entit Bingu vrátí informace o entitách, které Bing určí pro dotaz uživatele.|
-|[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Vyhledávání obrázků Bingu")|Vyhledávání obrázků Bingu vrátí zobrazení obrázků, které byly pro dotaz uživatele důležité.|
-|[Vizuální vyhledávání Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Vizuální vyhledávání Bingu")|Vizuální vyhledávání Bingu poskytuje přehledy o imagi, jako jsou například vizuálně podobné obrázky, nákupy zdrojů pro produkty nalezené v imagi a související hledání.|
-|[Vyhledávání místních firem Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Vyhledávání místních firem Bingu")| Rozhraní API pro místní vyhledávání Bingu umožňuje vašim aplikacím najít kontaktní a umístění informací o místních firmách na základě vyhledávacích dotazů.|
-|[Kontrola pravopisu Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Kontrola pravopisu Bingu")|Kontrola pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrolu pravopisu.|
+|[Vyhledávání zpráv Bingu](/azure/cognitive-services/bing-news-search/ "Vyhledávání zpráv Bingu")|Vyhledávání zpráv Bingu vrátí seznam článků s příspěvky, které byly pro dotaz uživatele relevantní.|
+|[Vyhledávání videí Bingu](/azure/cognitive-services/Bing-Video-Search/ "Vyhledávání videí Bingu")|Vvyhledávání videí Bingu vrátí seznam videí, které byly pro dotaz uživatele důležité.|
+|[Vyhledávání na webu Bingu](./bing-web-search/index.yml "Vyhledávání na webu Bingu")|Vyhledávání na webu Bingu vrátí seznam výsledků hledání, které byly pro dotaz uživatele důležité.|
+|[Automatické návrhy Bingu](/azure/cognitive-services/Bing-Autosuggest "Automatické návrhy Bingu")|Automatické návrhy Bingu umožňuje odeslat do Bingu výraz částečného vyhledávacího dotazu a vrátit se do seznamu navrhovaných dotazů.|
+|[Vlastní vyhledávání Bingu](/azure/cognitive-services/bing-custom-search "Vlastní vyhledávání Bingu")|Vlastní vyhledávání Bingu vám umožní vytvářet prostředí s přizpůsobeným vyhledáváním pro témata, o kterých se zajímáte.|
+|[Vyhledávání entit Bingu](/azure/cognitive-services/bing-entities-search/ "Vyhledávání entit Bingu")|Vyhledávání entit Bingu vrátí informace o entitách, které Bing určí pro dotaz uživatele.|
+|[Vyhledávání obrázků Bingu](/azure/cognitive-services/bing-image-search "Vyhledávání obrázků Bingu")|Vyhledávání obrázků Bingu vrátí zobrazení obrázků, které byly pro dotaz uživatele důležité.|
+|[Vizuální vyhledávání Bingu](/azure/cognitive-services/bing-visual-search "Vizuální vyhledávání Bingu")|Vizuální vyhledávání Bingu poskytuje přehledy o imagi, jako jsou například vizuálně podobné obrázky, nákupy zdrojů pro produkty nalezené v imagi a související hledání.|
+|[Vyhledávání místních firem Bingu](/azure/cognitive-services/bing-local-business-search/ "Vyhledávání místních firem Bingu")| Rozhraní API pro místní vyhledávání Bingu umožňuje vašim aplikacím najít kontaktní a umístění informací o místních firmách na základě vyhledávacích dotazů.|
+|[Kontrola pravopisu Bingu](/azure/cognitive-services/bing-spell-check/ "Kontrola pravopisu Bingu")|Kontrola pravopisu Bingu umožňuje provádět kontextové gramatiky a kontrolu pravopisu.|
 
 ## <a name="development-options"></a>Možnosti vývoje 
 
@@ -111,7 +111,7 @@ Začněte tím, že vytvoříte prostředek Cognitive Services s praktickými ry
 * [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "portál Azure")
 * [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Klientské knihovny pro sadu Azure SDK](cognitive-services-apis-create-account-cli.md?tabs=windows "rozpoznávání služeb – rozhraní API – vytvoření-účet-klient-knihovna? pivots = program-Language-CSharp")
-* [Šablony Azure Resource Manageru (ARM)](resource-manager-template.md?tabs=portal "Šablony Azure Resource Manageru (ARM)")
+* [Šablony Azure Resource Manageru (ARM)](./create-account-resource-manager-template.md?tabs=portal "Šablony Azure Resource Manageru (ARM)")
 
 <!--
 ## Subscription management

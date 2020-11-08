@@ -4,15 +4,15 @@ description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell v
 services: private-link
 author: asudbring
 ms.service: private-link
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 11/02/2020
 ms.author: allensu
-ms.openlocfilehash: 147e646738df9d70355f379a9e64a52116e9f16f
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 7add424c23e430a8ca5059d45acd037fff8836ad
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233589"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368657"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí Azure PowerShell
 
@@ -153,8 +153,9 @@ V této části vytvoříte privátní koncový bod a připojení pomocí:
 * [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
 
 ```azurepowershell-interactive
-## Place web app into variable. Replace <your-webapp-name> with your server name ##
-$webapp = Get-AzWebApp -ResourceGroupName CreatePrivateEndpointQS-rg -Name <your-webapp-name>
+## Place web app into variable. Replace <webapp-resource-group-name> with the resource group of your webapp. ##
+## Replace <your-webapp-name> with your webapp name ##
+$webapp = Get-AzWebApp -ResourceGroupName <webapp-resource-group-name> -Name <your-webapp-name>
 
 ## Create private endpoint connection. ##
 $parameters1 = @{
@@ -235,11 +236,11 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
  
 2. V levém navigačním podokně vyberte **skupiny prostředků** .
 
-3. Vyberte **CreatePrivateEndpointQS-RG** .
+3. Vyberte **CreatePrivateEndpointQS-RG**.
 
-4. Vyberte **myVM** .
+4. Vyberte **myVM**.
 
-5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu** .
+5. Na stránce Přehled pro **myVM** vyberte **připojit** a pak **bastionu**.
 
 6. Vyberte tlačítko modrého **použití bastionu** .
 
@@ -263,13 +264,13 @@ V této části použijete virtuální počítač, který jste vytvořili v pře
 
 10. V připojení bastionu k **myVM** otevřete Internet Explorer.
 
-11. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET** .
+11. Zadejte adresu URL vaší webové aplikace, **https:// \<your-webapp-name> . azurewebsites.NET**.
 
 12. Pokud vaše aplikace nebyla nasazena, obdržíte výchozí stránku webové aplikace:
 
     :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Výchozí stránka webové aplikace" border="true":::
 
-13. Ukončete připojení k **myVM** .
+13. Ukončete připojení k **myVM**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 Po dokončení používání privátního koncového bodu a virtuálního počítače odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :

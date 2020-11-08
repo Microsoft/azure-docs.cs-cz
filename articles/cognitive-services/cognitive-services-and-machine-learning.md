@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132836"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368861"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
 Cognitive Services poskytuje možnosti strojového učení, které řeší Obecné problémy, jako je například analýza textu pro emocionálních mínění nebo analýza obrázků pro rozpoznávání objektů a tváře. Abyste mohli s těmito službami pracovat, nepotřebujete žádné speciální vědomosti o strojovém učení nebo datových vědách. 
 
-[Cognitive Services](welcome.md) je skupina služeb, z nichž každá podporuje různé Obecné možnosti předpovědi. Služby jsou rozdělené do různých kategorií, které vám pomůžou najít správnou službu. 
+[Cognitive Services](./what-are-cognitive-services.md) je skupina služeb, z nichž každá podporuje různé Obecné možnosti předpovědi. Služby jsou rozdělené do různých kategorií, které vám pomůžou najít správnou službu. 
 
 |Kategorie služby|Účel|
 |--|--|
@@ -44,7 +44,7 @@ Machine Learning je koncept, ve kterém spojíte data a algoritmus, abyste mohli
 
 Proces sestavování systému Machine Learning vyžaduje znalost strojového učení nebo vědeckého zpracování dat.
 
-Machine Learning se poskytuje pomocí [Azure Machine Learning (AML) produktů a služeb](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context).
+Machine Learning se poskytuje pomocí [Azure Machine Learning (AML) produktů a služeb](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context).
 
 ## <a name="what-is-a-cognitive-service"></a>Co je služba rozpoznávání?
 
@@ -90,10 +90,10 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |Služba rozpoznávání|Nevyžadují se žádné školicí údaje.|Poskytnete některá nebo všechna školicí data.|Shromažďování dat v reálném čase nebo téměř v reálném čase|
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
-|Vyhledávání Bingu |x|||
-|[Počítačové zpracování obrazu](./Computer-vision/Home.md)|x|||
+|Vyhledávání pomocí služby Bing |x|||
+|[Počítačové zpracování obrazu](./computer-vision/overview.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
-|[Custom Vision](./Custom-Vision-Service/home.md)||x||
+|[Custom Vision](./custom-vision-service/overview.md)||x||
 |[Rozpoznávání tváře](./Face/Overview.md)|x|x||
 |[Rozpoznávání formulářů](./form-recognizer/overview.md)||x||
 |[Asistivní čtečka](./immersive-reader/overview.md)|x|||
@@ -101,12 +101,12 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizace](./personalizer/what-is-personalizer.md)|znak|znak|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
-|[Nástroj pro rozpoznávání mluvčího](./speaker-recognition/home.md)||x||
+|[Nástroj pro rozpoznávání mluvčího](./speech-service/speaker-recognition-overview.md)||x||
 |[Převod textu na řeč hlasu (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Převod řeči na text (STT)](speech-service/speech-to-text.md)|x|x||
 |[Překlad řeči](speech-service/speech-translation.md)|x|||
 |[Analýza textu](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Překladač](./translator/translator-info-overview.md)|x|||
 |[Překladatel – vlastní Překladatel](./translator/custom-translator/overview.md)||x||
 
 * Přizpůsobený modul potřebuje jenom školicí data shromážděná službou (stejně jako v reálném čase) k vyhodnocení vašich zásad a dat. Přizpůsobování nepotřebuje velké historické datové sady pro školení předem nebo Batch. 
@@ -127,16 +127,16 @@ Cognitive Services, které poskytují exportované modely pro jiné nástroje pr
 
 |Služba rozpoznávání|Informace o modelu|
 |--|--|
-|[Custom Vision](./custom-vision-service/home.md)|[Export](./Custom-Vision-Service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
+|[Custom Vision](./custom-vision-service/overview.md)|[Export](./Custom-Vision-Service/export-model-python.md) pro Tensorflow pro Android, CoreML pro IOS11, ONNX pro Windows ml|
 
 ## <a name="learn-more"></a>Další informace
 
-* [Průvodce architekturou – Jaké jsou produkty pro strojové učení v Microsoftu?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [Průvodce architekturou – Jaké jsou produkty pro strojové učení v Microsoftu?](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine Learning – Úvod do hloubkového učení vs. Machine Learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vytvořte účet služby rozpoznávání v [Azure Portal](cognitive-services-apis-create-account.md) nebo pomocí [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli).
+* Vytvořte účet služby rozpoznávání v [Azure Portal](cognitive-services-apis-create-account.md) nebo pomocí [Azure CLI](./cognitive-services-apis-create-account-cli.md).
 * Přečtěte si, jak [ověřit](authentication.md) službu pro rozpoznávání.
 * Pro identifikaci a ladění problému použijte [protokolování diagnostiky](diagnostic-logging.md) . 
 * Nasaďte službu pro rozpoznávání do [kontejneru](cognitive-services-container-support.md)Docker.

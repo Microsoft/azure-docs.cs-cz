@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 9e1b666e8929309778fc7b72e034a425c841fc2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8d5352a79d2920701c96289f6162c1466f0f9f75
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095913"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367569"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Kurz: získání návrhů vyhledávání na webové stránce
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - Vytvoření jednoduchého dotazu na rozhraní API pro automatické návrhy Bingu
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného pro rozhraní API pro automatické návrhy Bingu. Pokud ho ještě nemáte, vytvořte v Azure Portal [prostředek automatické návrhy Bingu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7) .
 
@@ -238,7 +238,7 @@ Také ošetřete možné chybové události v objektu XMLHttpRequest.
     });
 ```
 
-Odešlete požadavek. Zavřete funkci bingAutosuggest, značku **script** a značku **head** .
+Odešlete požadavek. Zavřete funkci bingAutosuggest, značku **script** a značku **head**.
 
 ```html
     request.send();
@@ -272,7 +272,7 @@ Vytvořte formulář HTML s textovým polem. Zpracování `oninput` události a 
 </form>
 ```
 
-Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div** .
+Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
 
 ```html
 <h2>Results</h2>
@@ -285,11 +285,11 @@ Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. 
 </html>
 ```
 
-Uložte soubor.
+Soubor uložte.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 
-Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API pro automatické návrhy Bingu. Potom zadejte dotaz (zde v příkladu „sail“) do textového pole **Automatické návrhy** . Jak začnete psát, webová stránka se automaticky aktualizuje a zobrazuje výsledky pro automatické návrhy.
+Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API pro automatické návrhy Bingu. Potom zadejte dotaz (zde v příkladu „sail“) do textového pole **Automatické návrhy**. Jak začnete psát, webová stránka se automaticky aktualizuje a zobrazuje výsledky pro automatické návrhy.
 
 ```json
 {
@@ -358,4 +358,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../../bing-web-search/use-display-requirements.md)

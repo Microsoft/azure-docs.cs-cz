@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523991"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368929"
 ---
 # <a name="customize-your-text-translations"></a>Přizpůsobení překladů textu
 
 Vlastní Překladatel je funkcí služby Translator, která umožňuje uživatelům přizpůsobit pokročilý neuronové strojového překladu Microsoft translatoru při překladu textu pomocí překladatele (jenom verze 3).
 
-Tuto funkci můžete také použít k přizpůsobení překladu řeči při použití s [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Tuto funkci můžete také použít k přizpůsobení překladu řeči při použití s [Cognitive Services Speech](../speech-service/index.yml).
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -37,7 +37,7 @@ Přizpůsobený systém je pak k dispozici prostřednictvím pravidelného volá
 
 Vzhledem k odpovídajícímu typu a množství školicích dat není běžné očekávat zisky mezi 5 a 10 nebo ještě více BLEUch bodů v kvalitě překladu pomocí vlastního překladatele.
 
-Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelské příručce pro vlastní překladatele](https://aka.ms/CustomTranslatorDocs).
+Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelské příručce pro vlastní překladatele](./custom-translator/overview.md).
 
 
 ## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translator
@@ -64,4 +64,4 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nastavení přizpůsobeného jazykového systému pomocí vlastního překladatele](https://aka.ms/CustomTranslatorDocs)
+> [Nastavení přizpůsobeného jazykového systému pomocí vlastního překladatele](./custom-translator/overview.md)

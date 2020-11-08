@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: ff1899fbc89ab4a78bf793a133a7aa9a8f03dd2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337555"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369235"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Řešení potíží s fondy kapacity
 
@@ -34,6 +34,10 @@ Tento článek popisuje řešení problémů, ke kterým může dojít při spr�
 | Vytvoření nebo změna svazku se nezdařila s `Requested throughput not available` chybou | Dostupná propustnost svazku závisí na velikosti fondu kapacity a na úrovni služby. Pokud nemáte dostatek propustnosti, měli byste zvětšit velikost fondu nebo upravit stávající propustnost svazku. | 
 
 ## <a name="issues-moving-a-capacity-pool"></a>Problémy s přesunutím fondu kapacity 
+
+> [!IMPORTANT] 
+> [Dynamická Změna úrovně služby](dynamic-change-volume-service-level.md) pro registraci ve verzi Public Preview se podrží, dokud nebudete pokračovat.
+
 |     Chybový stav    |     Řešení    |
 |-|-|
 | Změna fondu kapacit pro svazek není povolená. | Je možné, že ještě nemáte oprávnění k použití této funkce. <br> Funkce pro přesunutí svazku do jiného fondu kapacity je momentálně ve verzi Preview. Pokud tuto funkci používáte poprvé, budete ji muset nejdřív zaregistrovat a nastavit `-FeatureName ANFTierChange` . Projděte si postup registrace v tématu [dynamické Změna úrovně služby svazku](dynamic-change-volume-service-level.md). |

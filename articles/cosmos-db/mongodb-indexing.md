@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 11/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 23e9b45c47cdbdb671146b772d16354b1ee3c31b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392567"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369286"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Správa indexování v rozhraní Azure Cosmos DB API pro MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -335,6 +335,51 @@ Při odebírání indexů a okamžitém spuštění dotazů mají filtry na vyř
 
 > [!NOTE]
 > [Průběh indexu můžete sledovat](#track-index-progress).
+
+## <a name="reindex-command"></a>Příkaz Reindexovat
+
+`reIndex`Příkaz znovu vytvoří všechny indexy v kolekci. Ve většině případů to není nutné. Nicméně ve výjimečných případech může výkon dotazů vylepšit po spuštění `reIndex` příkazu.
+
+Příkaz můžete spustit `reIndex` pomocí následující syntaxe:
+
+`db.runCommand({ reIndex: <collection> })`
+
+K ověření, zda potřebujete spustit příkaz, můžete použít následující syntaxi `reIndex` :
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+Ukázkový výstup:
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+Pokud `reIndex` je to nutné, **requiresReIndex** bude true. Pokud `reIndex` není potřeba, tato vlastnost se vynechá.
 
 ## <a name="migrate-collections-with-indexes"></a>Migrace kolekcí s indexy
 
