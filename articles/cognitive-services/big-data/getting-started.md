@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324685"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363336"
 ---
 # <a name="getting-started"></a>Začínáme
 
@@ -31,7 +31,7 @@ Aby bylo možné použít Cognitive Services pro velké objemy dat, je nutné ne
 
 ### <a name="cloud-services"></a>Cloud Services
 
-Cloudové Cognitive Services jsou inteligentní algoritmy hostované v Azure. Tyto služby jsou připravené k použití bez školení, ale potřebujete jenom připojení k Internetu. Službu pro [rozpoznávání se dá vytvořit v Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) nebo pomocí [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows).
+Cloudové Cognitive Services jsou inteligentní algoritmy hostované v Azure. Tyto služby jsou připravené k použití bez školení, ale potřebujete jenom připojení k Internetu. Službu pro [rozpoznávání se dá vytvořit v Azure Portal](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) nebo pomocí [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows).
 
 ### <a name="containerized-services-optional"></a>Kontejnerové služby (volitelné)
 
@@ -45,7 +45,7 @@ Pokud vaše aplikace nebo úloha používá velké datové sady, vyžaduje priv�
 
 * **Vysoká škálovatelnost** : kontejnerové služby nemají omezení přenosové rychlosti a spouštějí se na počítačích spravovaných uživatelem. Takže můžete škálovat Cognitive Services bez ukončení pro zpracování mnohem větších úloh.
 
-Podle [této příručky](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis) vytvořte službu pro vyvnímání z kontejneru.
+Podle [této příručky](../cognitive-services-container-support.md?tabs=luis) vytvořte službu pro vyvnímání z kontejneru.
 
 ## <a name="create-an-apache-spark-cluster"></a>Vytvoření clusteru Apache Spark
 
@@ -55,8 +55,8 @@ Podle [této příručky](https://docs.microsoft.com/azure/cognitive-services/co
 
 Azure Databricks je analytická platforma založená na Apache Spark s nastavením jedním kliknutím, zjednodušenými pracovními postupy a interaktivním pracovním prostorem. Často se používá ke spolupráci mezi odborníky přes data, inženýri a obchodními analytiky. Chcete-li použít Cognitive Services velkých objemů dat v Azure Databricks, postupujte takto:
 
-1. [Vytvoření pracovního prostoru Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Vytvoření clusteru Spark ve službě Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Vytvoření pracovního prostoru Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Vytvoření clusteru Spark ve službě Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. Instalace velkých objemů dat Cognitive Services
     * Vytvoření nové knihovny v pracovním prostoru datacihly  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ Azure Databricks je analytická platforma založená na Apache Spark s nastaven�
 
 Volitelně můžete pomocí synapse Analytics vytvořit cluster Spark. Azure synapse Analytics přináší dohromady podnikové datové sklady a analýzy velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím škálovatelných nebo zřízených prostředků na vyžádání bez serveru. Pokud chcete začít používat synapse Analytics, postupujte takto:
 
-1. [Vytvořte pracovní prostor synapse (Preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Pomocí Azure Portal vytvořte nový fond Apache Spark bez serveru (Preview)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Vytvořte pracovní prostor synapse (Preview)](../../synapse-analytics/quickstart-create-workspace.md).
+1. [Pomocí Azure Portal vytvořte nový fond Apache Spark bez serveru (Preview)](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
 V synapse Analytics se ve výchozím nastavení nainstalují velké objemy dat pro Cognitive Services.
 
@@ -80,9 +80,9 @@ Pokud používáte Cognitive Services s využitím kontejnerů, je jednou z obl�
 
 Pokud chcete začít pracovat se službou Azure Kubernetes, postupujte takto:
 
-1. [Nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Nasazení clusteru služby Azure Kubernetes (AKS) pomocí Azure Portal](../../aks/kubernetes-walkthrough-portal.md)
 1. [Instalace grafu Apache Spark 2.4.0 Helm](https://hub.helm.sh/charts/microsoft/spark)
-1. [Instalace kontejneru vnímání Service pomocí Helm](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Instalace kontejneru vnímání Service pomocí Helm](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>Try a sample
 

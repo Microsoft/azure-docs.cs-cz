@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1e14f13d0e9fba407a983fb182d25c77593e4d3c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fbe8f9f4c5354d5a1b68909fcb65597e8c03dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098395"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367161"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API Bingu pro vyhledávání zpráv
 
@@ -32,7 +32,7 @@ I když rozhraní API Bingu pro vyhledávání zpráv primárně najde a vrátí
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) ho zakódujte pomocí kódování URL. Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) ho zakódujte pomocí kódování URL. Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
 ## <a name="get-general-news"></a>Získat obecné novinky
 
@@ -50,13 +50,13 @@ Host: api.cognitive.microsoft.com
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Pokud chcete získat zprávy z konkrétní domény, použijte operátor dotazu [site:](https://msdn.microsoft.com/library/ff795613.aspx).
+Pokud chcete získat zprávy z konkrétní domény, použijte operátor dotazu [site:](/previous-versions/bing/search/ff795613(v=msdn.10)).
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Následující ukázka JSON znázorňuje odpověď na předchozí dotaz. V rámci požadavků na [použití a zobrazení](../useanddisplayrequirements.md) pro rozhraní API pro vyhledávání Bingu je nutné zobrazit všechny příspěvky v uvedeném pořadí v odpovědi. Pokud článek obsahuje články v clusteru, měli byste určit, že existují související články, a zobrazit je na vyžádání.
+Následující ukázka JSON znázorňuje odpověď na předchozí dotaz. V rámci požadavků na [použití a zobrazení](../../bing-web-search/use-display-requirements.md) pro rozhraní API pro vyhledávání Bingu je nutné zobrazit všechny příspěvky v uvedeném pořadí v odpovědi. Pokud článek obsahuje články v clusteru, měli byste určit, že existují související články, a zobrazit je na vyžádání.
 
 ```json
 {
@@ -104,9 +104,9 @@ Následující ukázka JSON znázorňuje odpověď na předchozí dotaz. V rámc
 }
 ```
 
-Odpověď [news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) (zprávy) vypíše zpravodajské články, které jsou podle Bingu k dotazu relevantní. Pole `totalEstimatedMatches` obsahuje odhadovaný počet článků, které je možné zobrazit. Informace o procházení článků po stránkách najdete v článku o [stránkování zpráv](../paging-news.md).
+Odpověď [news](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) (zprávy) vypíše zpravodajské články, které jsou podle Bingu k dotazu relevantní. Pole `totalEstimatedMatches` obsahuje odhadovaný počet článků, které je možné zobrazit. Informace o procházení článků po stránkách najdete v článku o [stránkování zpráv](../../bing-web-search/paging-search-results.md).
 
-Každý [zpravodajský článek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) v seznamu obsahuje název, popis a adresu URL článku na webu hostitele. Pokud článek obsahuje obrázek, zahrnuje objekt miniaturu obrázku. Pomocí `name` a `url` vytvořte hypertextový odkaz, který uživatele přenese na zpravodajský článek na webu hostitele. Pokud článek obsahuje obrázek, pomocí `url` umožněte, aby se na obrázek dalo kliknout. Nezapomeňte uvést zdroj článku pomocí `provider`.
+Každý [zpravodajský článek](/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) v seznamu obsahuje název, popis a adresu URL článku na webu hostitele. Pokud článek obsahuje obrázek, zahrnuje objekt miniaturu obrázku. Pomocí `name` a `url` vytvořte hypertextový odkaz, který uživatele přenese na zpravodajský článek na webu hostitele. Pokud článek obsahuje obrázek, pomocí `url` umožněte, aby se na obrázek dalo kliknout. Nezapomeňte uvést zdroj článku pomocí `provider`.
 
 Pokud Bing dokáže určit kategorii zpravodajského článku, obsahuje článek pole `category`.
 
@@ -140,7 +140,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Pomocí parametru dotazu [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) (kategorie) určete kategorii článků, které chcete získat. Seznam možných zpravodajských kategorií, které můžete určit, najdete ve [zpravodajských kategoriích podle trhu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market).
+Pomocí parametru dotazu [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) (kategorie) určete kategorii článků, které chcete získat. Seznam možných zpravodajských kategorií, které můžete určit, najdete ve [zpravodajských kategoriích podle trhu](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market).
 
 Odpověď pro získání zpráv podle kategorie je skoro stejná jako pro získání obecných zpráv. Články jsou ale všechny ze zadané kategorie.
 
@@ -158,11 +158,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Nezahrnujte parametr dotazu [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category).
+Nezahrnujte parametr dotazu [category](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category).
 
-Odpověď pro získání hlavních zpráv je skoro stejná jako pro získání dnešních nejčtenějších zpráv. Pokud je článek hlavním článkem, jeho pole `headline` je nastavené na **true** .
+Odpověď pro získání hlavních zpráv je skoro stejná jako pro získání dnešních nejčtenějších zpráv. Pokud je článek hlavním článkem, jeho pole `headline` je nastavené na **true**.
 
-Ve výchozím nastavení odpověď obsahuje až 12 hlavních článků. Pokud chcete počet hlavních článků k vrácení změnit, zadejte parametr dotazu [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount). Odpověď obsahuje také až čtyři nehlavní články v každé kategorii zpráv.
+Ve výchozím nastavení odpověď obsahuje až 12 hlavních článků. Pokud chcete počet hlavních článků k vrácení změnit, zadejte parametr dotazu [headlineCount](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount). Odpověď obsahuje také až čtyři nehlavní články v každé kategorii zpráv.
 
 Odpověď počítá shluky článků jako jeden článek. Protože shluk článků může obsahovat několik článků, může odpověď obsahovat více než 12 hlavních článků a více než čtyři nehlavní články v každé kategorii.
 
@@ -184,7 +184,7 @@ Host: api.cognitive.microsoft.com
 > [!NOTE]
 > Témata na vzestupu jsou dostupná jenom na americkém a čínském trhu.
 
-Odpovědí na předchozí požadavek je následující kód JSON. Každý zpravodajský článek na vzestupu obsahuje související obrázek, příznak mimořádné zprávy a adresu URL výsledků hledání článku na Bingu. Použijte adresu URL v poli `webSearchUrl` k přenesení uživatele na stránku s výsledky hledání Bingu. Nebo použijte text dotazu k volání [rozhraní API Bingu pro vyhledávání na webu](../../bing-web-search/search-the-web.md), abyste výsledky sami zobrazili.
+Odpovědí na předchozí požadavek je následující kód JSON. Každý zpravodajský článek na vzestupu obsahuje související obrázek, příznak mimořádné zprávy a adresu URL výsledků hledání článku na Bingu. Použijte adresu URL v poli `webSearchUrl` k přenesení uživatele na stránku s výsledky hledání Bingu. Nebo použijte text dotazu k volání [rozhraní API Bingu pro vyhledávání na webu](../../bing-web-search/overview.md), abyste výsledky sami zobrazili.
 
 ```json
 {
@@ -228,7 +228,7 @@ Odpovědí na předchozí požadavek je následující kód JSON. Každý zpravo
 
 ## <a name="getting-related-news"></a>Získání souvisejících zpráv
 
-Pokud existují další články, které se zpravodajským článkem souvisejí, může zpravodajský článek obsahovat pole [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles). Následuje ukázka článku se shlukem takových článků.
+Pokud existují další články, které se zpravodajským článkem souvisejí, může zpravodajský článek obsahovat pole [clusteredArticles](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles). Následuje ukázka článku se shlukem takových článků.
 
 ```json
     {
@@ -269,4 +269,4 @@ Pokud existují další články, které se zpravodajským článkem souvisejí,
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postup stránky Vyhledávání zpráv Bingu výsledky](../paging-news.md)
+> [Postup stránky Vyhledávání zpráv Bingu výsledky](../../bing-web-search/paging-search-results.md)

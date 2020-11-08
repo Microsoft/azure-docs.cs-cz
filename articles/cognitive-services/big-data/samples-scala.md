@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c47aa803774343b39efeabe3452f1b256cc64c0d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524959"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363268"
 ---
 # <a name="quick-examples"></a>Rychlé příklady
 
@@ -27,7 +27,7 @@ Tyto ukázky používají tyto Cognitive Services:
 - Zvukové soubory s mluveným převodem na text přepisovat k extrakci textových přepisů.
 - Detektor anomálií – zjištění anomálií v datech časové řady
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 1. Postupujte podle kroků uvedených v části [Začínáme](getting-started.md) s nastavením Azure Databricks a Cognitive Services prostředí. Tento kurz obsahuje postup instalace MMLSpark a postup vytvoření clusteru Spark v datacihlách.
 1. Po vytvoření nového poznámkového bloku v Azure Databricks zkopírujte níže **sdílený kód** a vložte ho do nové buňky v poznámkovém bloku.
@@ -49,7 +49,7 @@ val location = "eastus"
 
 ## <a name="text-analytics"></a>Analýza textu
 
-Služba [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre mezi `0.0` a `1.0` , kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění.  Následující ukázka používá tři jednoduché věty a vrací mínění skóre pro každé z nich.
+Služba [Analýza textu](../text-analytics/index.yml) poskytuje několik algoritmů pro extrakci inteligentních přehledů z textu. Můžete například najít mínění zadaného vstupního textu. Služba vrátí skóre mezi `0.0` a `1.0` , kde nízké skóre naznačují negativní mínění a vysoké skóre značí kladné mínění.  Následující ukázka používá tři jednoduché věty a vrací mínění skóre pro každé z nich.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -81,7 +81,7 @@ display(sentiment.transform(df).select(col("text"), col("sentiment")(0).getItem(
 
 ## <a name="computer-vision"></a>Computer Vision
 
-[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka.
+[Počítačové zpracování obrazu](../computer-vision/index.yml) analyzuje obrázky pro identifikaci struktury, jako jsou obličeje, objekty a popisy přirozeného jazyka.
 V této ukázce označíte seznam imagí. Značky jsou jedním z popisů textu v obrázku, jako jsou například rozpoznatelné objekty, lidé, krajin a akce.
 
 ```scala
@@ -118,7 +118,7 @@ display(analysis.transform(df).select(col("image"), col("results").getItem("tags
 
 ## <a name="bing-image-search"></a>Vyhledávání obrázků Bingu
 
-[Vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
+[Vyhledávání obrázků Bingu](../bing-image-search/overview.md) vyhledá web, aby se načetly obrázky související s dotazem přirozeného jazyka uživatele. V této ukázce používáme textový dotaz, který vyhledává obrázky s uvozovkami. Vrátí seznam adres URL obrázků, které obsahují fotografie související s naším dotazem.
 
 
 ```scala
@@ -163,7 +163,7 @@ display(pipeline.fit(df).transform(df))
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-Služba převod [řeči na text](https://docs.microsoft.com/azure/cognitive-services/speech-service/index-speech-to-text) převede datové proudy nebo soubory mluveného zvuku na text. V této ukázce jsme přepisovat dva zvukové soubory. První soubor je snadno srozumitelný a druhý je náročnější.
+Služba převod [řeči na text](../speech-service/index-speech-to-text.yml) převede datové proudy nebo soubory mluveného zvuku na text. V této ukázce jsme přepisovat dva zvukové soubory. První soubor je snadno srozumitelný a druhý je náročnější.
 
 ```scala
 import org.apache.spark.sql.functions.col
@@ -196,7 +196,7 @@ display(speechToText.transform(df).select(col("url"), col("text").getItem("Displ
 
 ## <a name="anomaly-detector"></a>Detektor anomálií
 
-Detekce [anomálií](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
+Detekce [anomálií](../anomaly-detector/index.yml) je ideální pro detekci nedovolených dat v datech časových řad. V této ukázce používáme službu k nalezení anomálií v celé časové řadě.
 
 ```scala
 import org.apache.spark.sql.functions.{col, lit}

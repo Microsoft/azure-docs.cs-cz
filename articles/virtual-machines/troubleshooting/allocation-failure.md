@@ -10,22 +10,27 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/06/2020
 ms.author: daberry
-ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79bc043a991404a3ee9da954b9639bf1a41f2c51
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509354"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365869"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s chybami přidělení při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
 
 Když vytvoříte virtuální počítač (VM), restartujete zastavené (navrácené) virtuální počítače nebo změníte velikost virtuálního počítače, Microsoft Azure přidělíte výpočetní prostředky vašemu předplatnému. Průběžně se investuje do další infrastruktury a funkcí, abyste měli jistotu, že všechny typy virtuálních počítačů jsou dostupné pro podporu zákaznických požadavků. Občas ale může dojít k selhání přidělení prostředků z důvodu nebývalého nárůstu poptávky pro služby Azure v určitých oblastech. K tomuto problému může dojít, když se pokusíte vytvořit nebo spustit virtuální počítače v oblasti, ale virtuální počítače zobrazí následující kód chyby a zprávu:
 
-**Kód chyby**: AllocationFailed nebo ZonalAllocationFailed
+**Kód chyby** : AllocationFailed nebo ZonalAllocationFailed
 
-**Chybová zpráva**: alokace se nezdařila. Pro požadovanou velikost virtuálního počítače v této oblasti nepotřebujeme dostatečnou kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěchu přidělení na https: \/ /aka.MS/Allocation-Guidance.
+**Chybová zpráva** : alokace se nezdařila. Pro požadovanou velikost virtuálního počítače v této oblasti nepotřebujeme dostatečnou kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěchu přidělení na https: \/ /aka.MS/Allocation-Guidance.
+
+> [!NOTE]
+> Pokud řešíte řešení potíží se sadou škálování virtuálních počítačů (VMSS), proces je stejný jako standardní virtuální počítač. Chcete-li tento problém vyřešit, postupujte podle pokynů v tomto článku.
+> 
+>**Chybová zpráva** : alokace se nezdařila. Pokud se pokoušíte přidat nový virtuální počítač do sady škálování virtuálního počítače s jedinou skupinou umístění nebo aktualizovat nebo změnit velikost stávajícího virtuálního počítače v sadě škálování virtuálního počítače s jedinou skupinou umístění, pamatujte na to, že toto přidělení je vymezeno na jeden cluster a že je možné, že cluster nemá kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěchu přidělení na adrese http: \/ /aka.MS/Allocation-Guidance.
 
 Tento článek vysvětluje příčiny některých běžných chyb přidělení a navrhuje možné nápravy.
 

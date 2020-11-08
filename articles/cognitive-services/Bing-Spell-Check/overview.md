@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 905ae56ab8d64f7342c4ee6b9f25d188c907710d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c0453fa99376cb6a5dba1e427cdc0deccb3e03de
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084183"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367042"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Co je rozhraní API pro kontrolu pravopisu Bingu?
 
@@ -49,4 +49,4 @@ Nejdřív Vyzkoušejte [interaktivní ukázku](https://azure.microsoft.com/servi
 
 Jakmile budete připraveni volat rozhraní API, vytvořte si [účet rozhraní API služby Cognitive Services](../../cognitive-services/cognitive-services-apis-create-account.md). Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/free/cognitive-services/).
 
-Můžete také navštívit [stránku centra rozhraní vyhledávání Bingu API](../bing-web-search/search-the-web.md) a prozkoumat další dostupná rozhraní API.
+Můžete také navštívit [stránku centra rozhraní vyhledávání Bingu API](../bing-web-search/overview.md) a prozkoumat další dostupná rozhraní API.

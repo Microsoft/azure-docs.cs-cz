@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: přizpůsobování, přizpůsobování v Azure, Machine Learning
-ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777237"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363897"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
@@ -29,14 +29,14 @@ Než začnete, můžete si vyzkoušet [přizpůsobování pomocí této interakt
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak přizpůsobuje výběr nejlepší položky obsahu?
 
-Přizpůsobování využívá **posílení učení** k výběru nejlepší položky (_Akce_) na základě kolektivního chování a odměňování výsledků napříč všemi uživateli. Akce jsou položky obsahu, jako jsou například články s novinkami, konkrétní filmy nebo produkty.
+Přizpůsobování využívá **posílení učení** k výběru nejlepší položky ( _Akce_ ) na základě kolektivního chování a odměňování výsledků napříč všemi uživateli. Akce jsou položky obsahu, jako jsou například články s novinkami, konkrétní filmy nebo produkty.
 
 Volání **pořadí** přijímá položku akce, společně s funkcemi akce a funkce kontextu pro výběr nejvyšší položky akce:
 
 * **Akce s funkcemi** – položky obsahu s funkcemi specifickými pro jednotlivé položky
 * **Kontextové funkce** – funkce uživatelů, jejich kontext nebo prostředí při použití vaší aplikace
 
-Volání pořadí vrátí ID, které položky obsahu, __Akce__, která se má uživateli zobrazit, v poli **ID akce odměna** .
+Volání pořadí vrátí ID, které položky obsahu, __Akce__ , která se má uživateli zobrazit, v poli **ID akce odměna** .
 
 __Akce__ zobrazená uživateli se volí pomocí modelů strojového učení, které se snaží maximalizovat celkovou částku v průběhu času.
 
@@ -50,14 +50,14 @@ Pojďme se podívat na několik scénářů, ve kterých se dá použít k výb�
 |Seznam filmů|1. `Star Wars` (1977, [akce, Adventure, virtuální aplikace], Jiří Lucas)<br>2. `Hoop Dreams` (1994, [dokumentace, Sport], Steve James<br>3. `Casablanca` (1942, [románské drama, války], Michael Curtiz)|Video ze zařízení se bude sledovat<br>Velikost obrazovky<br>Typ uživatele<br>|1. `Casablanca`|
 |Seznam produktů|i. `Product A` (3 kg, $ $ $ $, doručování za 24 hodin)<br>ii. `Product B` (20 kg, $ $, 2 týdny expedice s celním clem)<br>iii. `Product C` (3 kg, $ $ $, doručování za 48 hodin)|Nákupy zařízení se čtou z<br>Úroveň útraty uživatele<br>Měsíc nebo období|ii. `Product B`|
 
-Přizpůsobené přizpůsobování, pomocí kterého se dá vybrat jedna nejlepší akce, se označuje jako _ID akce_oddálení. Model Machine Learning používá: 
+Přizpůsobené přizpůsobování, pomocí kterého se dá vybrat jedna nejlepší akce, se označuje jako _ID akce_ oddálení. Model Machine Learning používá: 
 
 * Vyškolený model – informace dříve přijaté ze služby přizpůsobení používané ke zlepšení modelu Machine Learning
 * Aktuální akce specifické pro data s funkcemi a funkcemi kontextu
 
 ## <a name="when-to-use-personalizer"></a>Kdy použít přizpůsobeného přizpůsobování
 
-[Rozhraní API](https://go.microsoft.com/fwlink/?linkid=2092082) pro **řazení** přizpůsobeného objektu se volá pokaždé, když vaše aplikace prezentuje obsah. To se označuje jako **událost**zaznamenaná s _ID události_.
+[Rozhraní API](https://go.microsoft.com/fwlink/?linkid=2092082) pro **řazení** přizpůsobeného objektu se volá pokaždé, když vaše aplikace prezentuje obsah. To se označuje jako **událost** zaznamenaná s _ID události_.
 
 [Rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) pro **vlastní** nastavení se dá volat v reálném čase nebo opožděně, aby lépe vyhovovalo vaší infrastruktuře. Můžete určit skóre odměňování podle vašich obchodních potřeb. Skóre odměňování je mezi 0 a 1. To může být jedna hodnota, například 1 pro dobrý, a 0 pro chybné nebo číslo vytvořené algoritmem, který vytvoříte s ohledem na obchodní cíle a metriky.
 
@@ -87,14 +87,14 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
 
 1. Přidejte do aplikace, webu nebo systému individuální nastavení:
     1. Přidejte volání **pořadí** do přizpůsobené aplikace, webu nebo systému a určete nejlepší, jednotlivou položku _obsahu_ před zobrazením obsahu uživateli.
-    1. Zobrazí nejlepší, jednotlivou položku _obsahu_ , což je vráceno _ID akce odměna_pro uživatele.
+    1. Zobrazí nejlepší, jednotlivou položku _obsahu_ , což je vráceno _ID akce odměna_ pro uživatele.
     1. Použití _obchodní logiky_ na shromážděné informace o tom, jak se uživatel chová, aby bylo možné určit skóre **odměňování** , například:
 
     |Chování|Vypočtené skóre odměny|
     |--|--|
     |Uživatel zvolil nejlepší, jednu položku _obsahu_ (ID akce pro odměnu).|**1**|
     |Uživatel vybral jiný obsah.|**0**|
-    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0,5**|
+    |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0.5**|
 
     1. Přidejte volání **odměňování** , které posílá skóre odměňování od 0 do 1.
         * Hned po zobrazení obsahu
@@ -105,7 +105,7 @@ Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší p
 
 Nabízíme rychlé zprovoznění v jazycích C#, JavaScript a Python. Každý rychlý Start je navržený tak, aby vám poučení základních vzorů návrhu a abyste spustili kód za méně než 10 minut. 
 
-* [Rychlý Start: jak používat klientskou knihovnu pro přizpůsobování](sdk-learning-loop.md)
+* [Rychlý Start: jak používat klientskou knihovnu pro přizpůsobování](./quickstart-personalizer-sdk.md)
 
 Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejte si naše kurzy a Naučte se, jak používat přizpůsobení ve webových aplikacích, chat roboty nebo poznámkovém bloku Azure.
 
@@ -115,10 +115,10 @@ Až budete mít možnost začít se službou pro přizpůsobování, vyzkoušejt
 
 ## <a name="reference"></a>Referenční informace 
 
-* [Sada/.NET SDK pro přizpůsobení C#](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Sada/.NET SDK pro přizpůsobení C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
 * [Sada SDK pro přizpůsobování](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
-* [Sada přizpůsobování JavaScript SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [Sada SDK pro přizpůsobování Pythonu](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [Sada přizpůsobování JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
+* [Sada SDK pro přizpůsobování Pythonu](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>Další kroky

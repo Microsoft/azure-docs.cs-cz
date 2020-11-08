@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 6b715d4b801159b451957c30ee9ef7b406f3a2f4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ee31eac55298c86a7bdd784ea54c9a0c8caa47a4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095369"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364611"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co je vyhledávání v místním podnikání Bingu?
 
@@ -35,7 +35,7 @@ Rozhraní API pro místní vyhledávání Bingu je služba RESTful, která umož
 ## <a name="workflow"></a>Pracovní postup
 Volejte rozhraní API pro místní vyhledávání Bingu z libovolného programovacího jazyka, který může vytvářet požadavky HTTP a analyzovat odpovědi JSON. Tato služba je přístupná pomocí REST API.
  
-1. Vytvořte [účet Cognitive Services rozhraní API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).   
+1. Vytvořte [účet Cognitive Services rozhraní API](../cognitive-services-apis-create-account.md)  s přístupem k rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/cognitive-services/).   
 2. Adresa URL pro parametr dotazu zakóduje hledané výrazy `q=""` . Příkladem je `q=nearby+restaurant` nebo `q=nearby%20restaurant`. Nastavte také stránkování, pokud je to potřeba. 
 3. Odeslat [žádost do rozhraní API služby Bing pro hledání v místních obchodech](quickstarts/local-quickstart.md) 
 4. Analyzovat odpověď JSON 
@@ -49,4 +49,4 @@ Volejte rozhraní API pro místní vyhledávání Bingu z libovolného programov
 - [Dotaz a odpověď](local-search-query-response.md)
 - [Rychlý start hledání místních obchodních obchodů](quickstarts/local-quickstart.md)
 - [Referenční informace k rozhraní API pro místní obchodní vyhledávání](local-search-reference.md)
-- [Požadavky na zobrazení a použití](use-display-requirements.md)
+- [Požadavky na zobrazení a použití](../bing-web-search/use-display-requirements.md)

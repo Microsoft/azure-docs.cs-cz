@@ -10,37 +10,37 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b63c2e53f34ac86f8ddf5ad300c2465ee2d9f032
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084608"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365631"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Použití hodnocení k zobrazení výsledků hledání entit  
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Každá odpověď hledání entity obsahuje odpověď [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) , která určuje, jak je nutné zobrazit výsledky hledání vrácené rozhraní API Bingu pro vyhledávání entit. Skupiny odpovědí na řazení jsou výsledkem do pole, hlavní a obsahu bočního panelu. Výsledek pole je nejdůležitější nebo výrazný výsledek a měl by se zobrazit jako první. Pokud se zbývající výsledky nezobrazí v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu. 
+Každá odpověď hledání entity obsahuje odpověď [RankingResponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) , která určuje, jak je nutné zobrazit výsledky hledání vrácené rozhraní API Bingu pro vyhledávání entit. Skupiny odpovědí na řazení jsou výsledkem do pole, hlavní a obsahu bočního panelu. Výsledek pole je nejdůležitější nebo výrazný výsledek a měl by se zobrazit jako první. Pokud se zbývající výsledky nezobrazí v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu. 
   
-V rámci každé skupiny pole [položek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí vyskytovat. Každá položka poskytuje dva způsoby, jak identifikovat výsledek v odpovědi.  
+V rámci každé skupiny pole [položek](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí vyskytovat. Každá položka poskytuje dva způsoby, jak identifikovat výsledek v odpovědi.  
  
 
-|Pole | Description  |
+|Pole | Popis  |
 |---------|---------|
 |`answerType` a `resultIndex` | `answerType` Identifikuje odpověď (entitu nebo místo) a `resultIndex` identifikuje výsledek v rámci této odpovědi (například entity). Index začíná na 0.|
 |`value`    | `value` Obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí. |
   
-Použití `answerType` a `resultIndex` je proces se dvěma kroky. Nejprve použijte `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijte `resultIndex` k indexování výsledků této odpovědi, aby se zobrazil výsledek. ( `answerType` Hodnota je název pole v objektu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.
+Použití `answerType` a `resultIndex` je proces se dvěma kroky. Nejprve použijte `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijte `resultIndex` k indexování výsledků této odpovědi, aby se zobrazil výsledek. ( `answerType` Hodnota je název pole v objektu [SearchResponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.
 
 Použití ID vyžaduje, abyste se shodovali s ID hodnocení s ID odpovědi nebo jedním z jeho výsledků. Pokud objekt odpovědi obsahuje `id` pole, zobrazí se všechny výsledky odpovědi společně. Například pokud `Entities` objekt obsahuje `id` pole, Zobrazit všechny články dohromady. Pokud `Entities` objekt neobsahuje `id` pole, pak Každá entita obsahuje `id` pole a odpověď na řazení kombinuje entity s výsledky míst.  
   
 ## <a name="ranking-response-example"></a>Příklad odpovědi na řazení
 
-Následující příklad ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
+Následující příklad ukazuje příklad [RankingResponse](/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
   
 ```json
 {

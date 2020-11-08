@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291643"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365003"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Obsah komunitního externího & pro službu pro rozpoznávání Analýza textu
 
@@ -31,11 +31,11 @@ ms.locfileid: "87291643"
 
 + [Analýza mínění v aplikaci logiky pomocí SQL Server dat (blog TechNet)](https://social.technet.microsoft.com/wiki/contents/articles/36074.logic-apps-with-azure-cognitive-service.aspx)
 
-+ [Analýza mínění pomocí Dynamics 365 CRM Online (blog MSDN)](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
++ [Analýza mínění pomocí Dynamics 365 CRM Online (blog MSDN)](/archive/blogs/geoffreyinnis/sentiment-analysis-in-usd-with-cognitive-services-text-analytics) 
 
 + Power BI blog: extrakce klíčových frází z Facebooku zpráv: [část 1](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483) a [2. část](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
 
-+ [Identifikace mínění komentářů ve skupině Yammeru pomocí MS flow (technická komunita Microsoftu)](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
++ [Identifikace mínění komentářů ve skupině Yammeru pomocí MS flow (technická komunita Microsoftu)](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
 
 
 

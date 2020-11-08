@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086434"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366046"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Zpracování potíží s omezením (429-počet chybných požadavků) v Azure Logic Apps
 
@@ -22,7 +22,7 @@ V [Azure Logic Apps](../logic-apps/logic-apps-overview.md)vaše aplikace logiky 
 Tady jsou některé běžné typy omezení, které vaše aplikace logiky může mít:
 
 * [Aplikace logiky](#logic-app-throttling)
-* [Připojovací](#connector-throttling)
+* [Konektor](#connector-throttling)
 * [Cílová služba nebo systém](#destination-throttling)
 
 <a name="logic-app-throttling"></a>
@@ -35,9 +35,9 @@ Pokud chcete na této úrovni najít události omezování, podívejte se na pod
 
 1. V [Azure Portal](https://portal.azure.com)otevřete aplikaci logiky v návrháři aplikace logiky.
 
-1. V nabídce aplikace logiky v části **monitorování**vyberte **metriky**.
+1. V nabídce aplikace logiky v části **monitorování** vyberte **metriky**.
 
-1. V části **název grafu**vyberte **Přidat metriky** , abyste přidali další metriku do existující.
+1. V části **název grafu** vyberte **Přidat metriky** , abyste přidali další metriku do existující.
 
 1. V prvním řádku metriky v seznamu **metrika** vyberte **Akce omezené události**. V druhém řádku metriky v seznamu **metrika** vyberte **aktivační události s omezením**.
 
@@ -45,13 +45,13 @@ Chcete-li na této úrovni zvládnout omezování, máte tyto možnosti:
 
 * Omezte počet instancí aplikace logiky, které lze spustit současně.
 
-  Ve výchozím nastavení platí, že pokud je podmínka triggeru vaší aplikace logiky splněna více než jednou, spustí se *souběžně nebo paralelně*více instancí triggeru pro vaši aplikaci logiky. Toto chování znamená, že každá instance triggeru je aktivována před dokončením předchozí instance pracovního postupu.
+  Ve výchozím nastavení platí, že pokud je podmínka triggeru vaší aplikace logiky splněna více než jednou, spustí se *souběžně nebo paralelně* více instancí triggeru pro vaši aplikaci logiky. Toto chování znamená, že každá instance triggeru je aktivována před dokončením předchozí instance pracovního postupu.
 
   I když výchozí počet instancí triggerů, které mohou být souběžně spuštěny, je [neomezený](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits), můžete toto číslo omezit [zapnutím nastavení souběžnosti triggeru](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)a v případě potřeby vybrat jiný limit, než je výchozí hodnota.
 
 * Povolí režim vysoké propustnosti.
 
-  Aplikace logiky má [výchozí limit počtu akcí, které mohou běžet po dobu 5 minut](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Pokud chcete toto omezení zvýšit na maximální počet akcí, zapněte v aplikaci logiky [režim vysoké propustnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) .
+  Aplikace logiky má [výchozí limit počtu akcí, které mohou běžet po dobu 5 minut](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Pokud chcete toto omezení zvýšit na maximální počet akcí, zapněte v aplikaci logiky [režim vysoké propustnosti](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode) .
 
 * V aktivačních událostech zakažte chování při dedávkování pole (rozdělení na).
 
@@ -59,7 +59,7 @@ Chcete-li na této úrovni zvládnout omezování, máte tyto možnosti:
 
 * Refaktorujte akce do menších aplikací logiky.
 
-  Jak bylo zmíněno dříve, aplikace logiky je omezená na [výchozí počet akcí, které mohou běžet po dobu 5 minut](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). I když tento limit můžete zvýšit tím, že povolíte [režim vysoké propustnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), můžete také zvážit, jestli chcete rozdělit akce aplikace logiky na menší aplikace logiky, aby počet akcí, které se spouštějí v každé aplikaci logiky, zůstal v rámci limitu. Tímto způsobem snížíte zatížení jednoho prostředku aplikace logiky a rozšíříte zátěž napříč více aplikacemi logiky. Toto řešení funguje lépe pro akce, které zpracovávají velké datové sady, nebo se vytočí, takže mnoho souběžně běžících akcí, iterací smyčky nebo akcí uvnitř každé iterace smyčky, které překračují limit provádění akcí.
+  Jak bylo zmíněno dříve, aplikace logiky je omezená na [výchozí počet akcí, které mohou běžet po dobu 5 minut](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). I když tento limit můžete zvýšit tím, že povolíte [režim vysoké propustnosti](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode), můžete také zvážit, jestli chcete rozdělit akce aplikace logiky na menší aplikace logiky, aby počet akcí, které se spouštějí v každé aplikaci logiky, zůstal v rámci limitu. Tímto způsobem snížíte zatížení jednoho prostředku aplikace logiky a rozšíříte zátěž napříč více aplikacemi logiky. Toto řešení funguje lépe pro akce, které zpracovávají velké datové sady, nebo se vytočí, takže mnoho souběžně běžících akcí, iterací smyčky nebo akcí uvnitř každé iterace smyčky, které překračují limit provádění akcí.
 
   Tato aplikace logiky například provede veškerou práci k získání tabulek z databáze SQL Server a získá řádky z každé tabulky. **Pro každou** smyčku souběžně projde každou tabulku tak, aby akce **získat řádky** vrátila řádky pro každou tabulku. V závislosti na množství dat v těchto tabulkách můžou tyto akce překročit limit provádění akcí.
 
@@ -135,7 +135,7 @@ Chcete-li na této úrovni zvládnout omezování, máte tyto možnosti:
 
 I když má konektor své vlastní omezení omezování, může také cílová služba nebo systém, který je volaný konektorem, mít omezení omezování. Některá rozhraní API v systému Microsoft Exchange Server například mají přísnější omezení než konektor Office 365 Outlook.
 
-Ve výchozím nastavení běží *paralelně*instance aplikace logiky a všechny smyčky nebo větve uvnitř těchto instancí. Toto chování znamená, že více instancí může volat stejný koncový bod současně. Každá instance neví o existenci druhé instance, takže pokus o opakování neúspěšných akcí může vytvořit [Konflikty časování](https://en.wikipedia.org/wiki/Race_condition) , ve kterých se vícenásobné volání snaží spustit současně, ale aby bylo úspěšné, musí tato volání dorazit do cílové služby nebo systému, než začne dojít k omezení.
+Ve výchozím nastavení běží *paralelně* instance aplikace logiky a všechny smyčky nebo větve uvnitř těchto instancí. Toto chování znamená, že více instancí může volat stejný koncový bod současně. Každá instance neví o existenci druhé instance, takže pokus o opakování neúspěšných akcí může vytvořit [Konflikty časování](https://en.wikipedia.org/wiki/Race_condition) , ve kterých se vícenásobné volání snaží spustit současně, ale aby bylo úspěšné, musí tato volání dorazit do cílové služby nebo systému, než začne dojít k omezení.
 
 Předpokládejme například, že máte pole, které má 100 položek. Použijte smyčku For Each k iterování v poli a zapněte řízení souběžnosti smyčky, abyste mohli omezit počet paralelních iterací na 20 nebo na [aktuální výchozí omezení](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). V rámci této smyčky akce vloží položku z pole do databáze SQL Server, což povoluje pouze 15 volání za sekundu. Výsledkem tohoto scénáře je problém s omezením, protože nevyřízené položky opakování sestavení a nikdy se nespouštějí.
 

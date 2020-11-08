@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132768"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365512"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Funkce jsou informace o akcích a kontextu.
 
 Služba pro přizpůsobování funguje tak, že se naučí, co by aplikace měla zobrazit uživatelům v daném kontextu.
 
-Přizpůsobení používá **funkce**, které jsou informace o **aktuálním kontextu** pro výběr nejlepší **Akce**. Tyto funkce reprezentují všechny informace, které si myslíte, abyste mohli dosáhnout vyšší ceny. Funkce mohou být velmi obecné nebo specifické pro položku. 
+Přizpůsobení používá **funkce** , které jsou informace o **aktuálním kontextu** pro výběr nejlepší **Akce**. Tyto funkce reprezentují všechny informace, které si myslíte, abyste mohli dosáhnout vyšší ceny. Funkce mohou být velmi obecné nebo specifické pro položku. 
 
 Můžete mít například **funkci** o:
 
@@ -41,8 +41,8 @@ Přizpůsobení podporuje funkce typu String, numeric a Boolean.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Jak volba typu funkce ovlivní Machine Learning v přizpůsobování
 
-* **Řetězce**: u typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
-* **Číselná**hodnota: je třeba použít číselné hodnoty, pokud má číslo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
+* **Řetězce** : u typů řetězců každá kombinace klíče a hodnoty vytváří novou váhu v modelu strojového učení pro přizpůsobení. 
+* **Číselná** hodnota: je třeba použít číselné hodnoty, pokud má číslo proporcionálně ovlivnit výsledek přizpůsobení. To je velmi závislé na scénáři. Ve zjednodušeném příkladu, například při přizpůsobení maloobchodního prostředí, může být NumberOfPetsOwned funkce, která je numerická, protože může chtít, aby lidé se dvěma nebo 3 domácími osobami ovlivnili výsledek přizpůsobení dvakrát nebo třikrát, a to v rozsahu 1 PET. Funkce, které jsou založené na číselných jednotkách, ale u kterých není význam lineární – například stáří, teplota nebo výška osoby – jsou nejlépe kódované jako řetězce a kvalita funkcí se může obvykle zlepšit pomocí rozsahů. Například stáří může být kódováno jako "stáří": "0-5", "stáří": "6-10" atd.
 * **Logické** hodnoty odeslané s hodnotou false fungují jako v případě, že jste byly odeslány vůbec.
 
 Funkce, které nejsou k dispozici, by měly být z požadavku vynechány. Vyhněte se posílání funkcí s hodnotou null, protože se při výuce modelu zpracuje jako stávající a s hodnotou null.
@@ -144,7 +144,7 @@ Umělá logika a Cognitive Services připravená ke spuštění můžou být vel
 
 Díky předzpracování vašich položek pomocí umělých analytických služeb můžete automaticky extrahovat informace, které jsou pravděpodobně relevantní pro přizpůsobení.
 
-Například:
+Příklad:
 
 * Můžete spustit filmový soubor prostřednictvím [video indexer](https://azure.microsoft.com/services/media-services/video-indexer/) k extrakci elementů scény, text, mínění a mnoha dalších atributů. Tyto atributy je pak možné odrážet tak, aby odrážely vlastnosti, které původní metadata položky neobsahovaly. 
 * Image je možné spouštět pomocí detekce objektů, plošek až po mínění atd.
@@ -152,10 +152,10 @@ Například:
 
 Můžete použít několik dalších [Cognitive Services Azure](https://www.microsoft.com/cognitive-services), například
 
-* [Entity Linking](../entitylinking/home.md)
+* [Entity Linking](../text-analytics/index.yml)
 * [Analýza textu](../text-analytics/overview.md)
-* [Emoce](../emotion/home.md)
-* [Počítačové zpracování obrazu](../computer-vision/home.md)
+* [Emoce](../face/overview.md)
+* [Počítačové zpracování obrazu](../computer-vision/overview.md)
 
 ## <a name="actions-represent-a-list-of-options"></a>Akce reprezentují seznam možností.
 
@@ -322,4 +322,4 @@ Objekty JSON můžou zahrnovat vnořené objekty JSON a jednoduché vlastnosti n
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zpětnovazební učení](concepts-reinforcement-learning.md) 
+[Zpětnovazební učení](concepts-reinforcement-learning.md)

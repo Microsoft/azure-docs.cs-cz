@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 89bbb16f96d06d1861dabdf89cf690e69c10735c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348912"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364475"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>Řešení potíží s galeriemi sdílených imagí v Azure
 
@@ -153,7 +153,7 @@ Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, de
 
 *Změna vlastnosti ' galleryImageVersion. Properties. storageProfile. <diskImage \> . Source.ID ' není povolena.*  
 **Příčina** : ID zdroje verze Image Galerie nelze po vytvoření změnit.  
-**Alternativní řešení** : Zajistěte, aby ID zdroje bylo stejné jako již existující ID zdroje, nebo změňte číslo verze image.
+**Řešení** : Zajistěte, aby ID zdroje bylo stejné jako již existující ID zdroje, změňte číslo verze Image nebo odstraňte aktuální verzi image a zkuste to znovu.
 
 *V discích vstupních dat se zjistila duplicitní čísla logických jednotek (LUN). Číslo logické jednotky (LUN) musí být pro každý datový disk jedinečné.*  
 **Příčina** : při vytváření verze Image pomocí seznamu disků nebo snímků disku mají dva nebo víc disků nebo snímků na disku stejná čísla logické jednotky (LUN).  

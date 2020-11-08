@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73837127"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364934"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Nejčastější dotazy k službě Analýza textu pro rozpoznávání
 
@@ -29,11 +29,11 @@ V analýze mínění je vždy určitý stupeň nepřesnosti, ale model je nejuž
 
 ## <a name="can-i-add-my-own-training-data-or-models"></a>Můžu přidat vlastní školicí data a modely?
 
-Ne, modely jsou předvlakované. Jediné operace, které jsou k dispozici pro nahraná data, jsou bodování, extrakce klíčových frází a rozpoznání jazyka. Nehostují se vlastní modely. Pokud chcete vytvořit a hostovat vlastní modely strojového učení, zvažte [Možnosti strojového učení v Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
+Ne, modely jsou předvlakované. Jediné operace, které jsou k dispozici pro nahraná data, jsou bodování, extrakce klíčových frází a rozpoznání jazyka. Nehostují se vlastní modely. Pokud chcete vytvořit a hostovat vlastní modely strojového učení, zvažte [Možnosti strojového učení v Microsoft R Server](/r-server/r/concept-what-is-the-microsoftml-package).
 
 ## <a name="can-i-request-additional-languages"></a>Můžu si vyžádat další jazyky?
 
-Analýza mínění a extrakce klíčových frází jsou k dispozici pro [vybraný počet jazyků](text-analytics-supported-languages.md). Zpracování přirozeného jazyka je složité a vyžaduje zásadní testování, než bude možné uvolnit nové funkce. Z tohoto důvodu se vyhnete předem ohlášení podpory, takže nikdo neuplatní závislost na funkcích, které potřebují víc času na vyspělý čas. 
+Analýza mínění a extrakce klíčových frází jsou k dispozici pro [vybraný počet jazyků](./language-support.md). Zpracování přirozeného jazyka je složité a vyžaduje zásadní testování, než bude možné uvolnit nové funkce. Z tohoto důvodu se vyhnete předem ohlášení podpory, takže nikdo neuplatní závislost na funkcích, které potřebují víc času na vyspělý čas. 
 
 Abychom vám pomohli určit, které jazyky se mají dále pracovat, Hlasujte pro konkrétní jazyky v [uživatelském hlasu](https://cognitive.uservoice.com/forums/555922-text-analytics). 
 

@@ -11,27 +11,27 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 00026066c90520f59700c7c5ddc33557099b3e8a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 912434f20d00d276bde23803f4560ebd528872d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309009"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365121"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití Node.js k volání služby pro rozpoznávání Analýza textu  
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [Analýza textu rozhraní API](//go.microsoft.com/fwlink/?LinkID=759711)   s Node.JS.
+Tento článek vás seznámí s tím, jak [rozpoznat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction) a [identifikovat propojené entity](#Entities) pomocí [rozhraní API pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Node.js.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjištění jazyka
+## <a name="detect-language"></a>Rozpoznání jazyka
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
@@ -366,7 +366,7 @@ get_key_phrases(documents);
 
 ## <a name="identify-linked-entities"></a>Identifikace propojených entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location` , zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States` .  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](../how-tos/text-analytics-how-to-entity-linking.md) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location` , zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States` .  Následující příklad identifikuje entity pro anglické dokumenty.
 
 1. Vytvořte nový Node.JS projekt na svém oblíbeném integrovaném vývojovém prostředí (IDE) nebo ve složce na ploše.
 1. Přidejte níže uvedený kód do nového `.js` souboru.

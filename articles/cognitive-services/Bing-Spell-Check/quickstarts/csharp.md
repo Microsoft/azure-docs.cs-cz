@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 060b648a0d1ee963b44c25e45a7de2888f662335
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3229091a0effda7837b8e58fe8764910e3b6636d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084132"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366991"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Rychlý Start: Kontrola pravopisu pomocí Kontrola pravopisu Bingu REST API a C #
 
@@ -29,7 +29,7 @@ V tomto rychlém startu můžete provést první volání REST API Kontrola prav
 
 I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků. Zdrojový kód této aplikace je k dispozici na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/).
 * Newtonsoft.Jsna balíčku NuGet. 
@@ -37,7 +37,7 @@ I když je tato aplikace napsaná v jazyce C#, rozhraní API je webová služba 
    Instalace tohoto balíčku v aplikaci Visual Studio:
 
      1. V **Průzkumník řešení** klikněte pravým tlačítkem myši na soubor řešení.
-     1. Vyberte **Spravovat balíčky NuGet pro řešení** .
+     1. Vyberte **Spravovat balíčky NuGet pro řešení**.
      1. Vyhledejte *Newtonsoft.Js* a nainstalujte balíček.
 
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
@@ -205,4 +205,4 @@ Sestavte a spusťte projekt. Pokud používáte Visual Studio, můžete soubor l
 > [Vytvoření jednostránkové webové aplikace](../tutorials/spellcheck.md)
 
 - [Co je rozhraní API pro kontrolu pravopisu Bingu?](../overview.md)
-- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Odkaz na rozhraní API Bingu pro kontrolu pravopisu v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

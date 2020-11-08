@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0e31563b6a6e397f679042e441fd60348445de51
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe448fff6a8b1e56969b67e6f94237eb889db2e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084829"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365767"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Rychlý Start: odeslání žádosti o vyhledávání do Vyhledávání entit Bingu REST API pomocí jazyka Java
 
@@ -29,7 +29,7 @@ Tento rychlý Start použijte k provedení prvního volání rozhraní API Bingu
 
 I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/).
 * [Knihovna gson](https://github.com/google/gson)
@@ -227,4 +227,4 @@ I když je tato aplikace napsaná v jazyce Java, rozhraní API je webová služb
 > [Sestavení jednostránkové webové aplikace](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Co je rozhraní API Bingu pro vyhledávání entit?](../overview.md)
-* [Odkaz na rozhraní API Bingu pro vyhledávání entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Odkaz na rozhraní API Bingu pro vyhledávání entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

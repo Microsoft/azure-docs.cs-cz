@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acb32e2fe3dae45cc4a95cea1b9fa4ea01d576c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f68618c4387bc5105914eccc4e6149650119fd0f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102175"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366073"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Kurz: Vyhledání podobných imagí z předchozích hledání pomocí tokenu pro Image Insights
 
@@ -29,7 +29,7 @@ Klientská knihovna Vizuální vyhledávání umožňuje najít image online z p
 
 Úplný zdrojový kód pro tento kurz najdete v části Další zpracování chyb a poznámky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
@@ -44,7 +44,7 @@ Klientská knihovna Vizuální vyhledávání umožňuje najít image online z p
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Získat ImageInsightsToken z klientské knihovny Vyhledávání obrázků Bingu
 
-Tato aplikace využívá `ImageInsightsToken` získanou prostřednictvím [klientské knihovny vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové konzolové aplikaci v jazyce C# vytvořte klienta, který bude volat rozhraní API pomocí `ImageSearchClient()` . Pak použijte `SearchAsync()` s dotazem:
+Tato aplikace využívá `ImageInsightsToken` získanou prostřednictvím [klientské knihovny vyhledávání obrázků Bingu](../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp). V nové konzolové aplikaci v jazyce C# vytvořte klienta, který bude volat rozhraní API pomocí `ImageSearchClient()` . Pak použijte `SearchAsync()` s dotazem:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -129,7 +129,7 @@ Získání skutečných adres URL obrázků z typů akcí vyžaduje přetypován
     }
 ```
 
-Další informace o těchto typech dat najdete v článku [Obrázky – Vizuální vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
+Další informace o těchto typech dat najdete v článku [Obrázky – Vizuální vyhledávání](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
 
 ## <a name="returned-urls"></a>Vrácené adresy URL
 

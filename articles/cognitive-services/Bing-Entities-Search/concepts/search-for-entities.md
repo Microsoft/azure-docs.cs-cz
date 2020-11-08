@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 489a158c49bc6695a460fdef5b92606335a07ef6
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085118"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365988"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Hledání entit pomocí rozhraní API entity Bingu
 
@@ -28,9 +28,9 @@ ms.locfileid: "93085118"
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel* , nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel* .
+Jakmile uživatel zadá hledaný termín, před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) zakódujte termín s použitím kódování URL. Například, pokud uživatel zadá *Marcus Appel* , nastavte `q` k *Marcus + Appel* nebo *Marcus % 20Appel*.
 
-Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsahuje objekt[QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
+Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsahuje objekt[QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext). Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
 
 ```json
 "queryContext": {
@@ -43,15 +43,15 @@ Pokud hledaný výraz obsahuje chybu pravopisu, odpověď na vyhledávání obsa
 
 ## <a name="the-bing-entity-search-api-response"></a>Odpověď rozhraní API Bingu pro vyhledávání entit
 
-Odpověď rozhraní API obsahuje objekt [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) . Pokud Bing najde relevantní entitu nebo místo, obsahuje objekt pole `entities`, pole `places` nebo obojí. V opačném případě objekt odpovědi neobsahuje žádné pole.
+Odpověď rozhraní API obsahuje objekt [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) . Pokud Bing najde relevantní entitu nebo místo, obsahuje objekt pole `entities`, pole `places` nebo obojí. V opačném případě objekt odpovědi neobsahuje žádné pole.
 > [!NOTE]
 > Odpovědi na entity podporují různé trhy, ale odpovědi na místa podporují pouze obchodní místa v USA. 
 
-Pole `entities` je objekt [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference), který obsahuje seznam objektů[Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) (viz pole `value`). Seznam může obsahovat jednu dominantní entitu nebo více nejednoznačných entit nebo obojí. 
+Pole `entities` je objekt [EntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference), který obsahuje seznam objektů[Entity](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) (viz pole `value`). Seznam může obsahovat jednu dominantní entitu nebo více nejednoznačných entit nebo obojí. 
 
 Dominantní entita se vrátí, když Bing považuje za jedinou entitu, která požadavek splní (nejedná se o nejednoznačnost, jakou entita požadavek splňuje). Pokud může žádosti vyhovět více entit, seznam obsahuje více než jednu nejednoznačnou entitu. Například pokud požadavek používá obecný název filmové franšízy, seznam pravděpodobně obsahuje nejednoznačné entity. Pokud však požadavek specifikuje konkrétní název franšízy, seznam pravděpodobně obsahuje jednu dominantní entitu.
 
-Entity obsahují dobře známé osobnosti jako jsou zpěváci, herci, sportovci, modelky atd. Také obsahují místa a památky jako je Mount Rainier nebo Lincoln Memorial a věci jako banán, goldendoodle, kniha nebo název filmu. Pole [EntityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ entity. Například, jestli se jedná o osobu, film, zvíře nebo atrakci. Seznam možných typů najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
+Entity obsahují dobře známé osobnosti jako jsou zpěváci, herci, sportovci, modelky atd. Také obsahují místa a památky jako je Mount Rainier nebo Lincoln Memorial a věci jako banán, goldendoodle, kniha nebo název filmu. Pole [EntityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ entity. Například, jestli se jedná o osobu, film, zvíře nebo atrakci. Seznam možných typů najdete v tématu [typy entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -179,9 +179,9 @@ Při zobrazení informací o entitách (název, popis a obrázek), musíte taky 
 
 ## <a name="find-places"></a>Najít místa
 
-`places`Pole je objekt [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) , který obsahuje seznam objektů [místa](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) (Další informace najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ). Seznam obsahuje jeden nebo více místních entit, které vyhovují požadavku.
+`places`Pole je objekt [LocalEntityAnswer](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) , který obsahuje seznam objektů [místa](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) (Další informace najdete v tématu [typy entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) ). Seznam obsahuje jeden nebo více místních entit, které vyhovují požadavku.
 
-Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ místní entity. Seznam obsahuje seznam pomocných parametrů, jako je místo, místní firma nebo restaurace. Každý další použitý pomocný parametr zužuje možnosti typu entity. Seznam možných typů najdete v tématu [typy entit](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
+Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentationInfo](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) obsahuje pomocné parametry, které určují typ místní entity. Seznam obsahuje seznam pomocných parametrů, jako je místo, místní firma nebo restaurace. Každý další použitý pomocný parametr zužuje možnosti typu entity. Seznam možných typů najdete v tématu [typy entit](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
 ```json
 "entityPresentationInfo": {
@@ -194,7 +194,7 @@ Místa zahrnují restaurace, hotely nebo místní firmy. Pole [EntityPresentatio
 > [!NOTE]
 > Odpovědi na entity podporují různé trhy, ale odpovědi na místa podporují pouze obchodní místa v USA. 
 
-Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true** (pravda). 
+Dotazy na místní entity v okolí jako například *restaurace poblíž* vyžadují zadání polohy uživatele, aby mohly poskytnout přesné výsledky. K určení polohy uživatele byste měli pro své žádosti vždy využívat záhlaví X-Search-Location a X-MSEdge ClientIP. Pokud se Bing domnívá, že je pro dotaz výhodné určení polohy uživatele, nastaví `askUserForLocation` pole [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) na hodnotu **true** (pravda). 
 
 ```json
 {
@@ -295,7 +295,7 @@ V následujícím příkladu pravidlo`LinkAttribution` obsahuje pole `targetProp
 
 ### <a name="license-attribution"></a>Atribuce licencí
 
-Pokud obsahuje seznam smluvních pravidel pravidlo [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution), musíte uvést poznámku na řádek bezprostředně za obsah, na který se licence vztahuje. Pravidlo`LicenseAttribution` používá pole `targetPropertyName` k identifikaci služby, na kterou se licence vztahuje.
+Pokud obsahuje seznam smluvních pravidel pravidlo [LicenseAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#licenseattribution), musíte uvést poznámku na řádek bezprostředně za obsah, na který se licence vztahuje. Pravidlo`LicenseAttribution` používá pole `targetPropertyName` k identifikaci služby, na kterou se licence vztahuje.
 
 Následující příklad ukazuje použití pravidla`LicenseAttribution`.
 
@@ -305,7 +305,7 @@ Poznámky k licencím, které uvádíte, musí obsahovat hypertextový odkaz na 
 
 ### <a name="link-and-text-attribution"></a>Atribuce odkazu a textu
 
-Pravidla [LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) a [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) se obvykle používají k identifikaci zprostředkovatele dat. Pole `targetPropertyName` určuje pole, na které se pravidlo vztahuje.
+Pravidla [LinkAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#linkattribution) a [TextAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#textattribution) se obvykle používají k identifikaci zprostředkovatele dat. Pole `targetPropertyName` určuje pole, na které se pravidlo vztahuje.
 
 Pro určení zdroje zprostředkovatelů, vložte řádek bezprostředně za obsah,na který se určení zdroje vztahuje (například za cílové pole). Řádek by měl jasně označovat, že zdrojem dat jsou zprostředkovatelé. Například „Data z: contoso.com“. Pro pravidla `LinkAttribution` musíte vytvořit hypertextový odkaz na web zprostředkovatele.
 
@@ -315,7 +315,7 @@ Následující příklad ukazuje použití pravidel `LinkAttribution` a `TextAtt
 
 ### <a name="media-attribution"></a>Atribuce médií
 
-Pokud entita obsahuje image a vy ji zobrazujete, musíte zadat 	klikací odkaz na web zprostředkovatele. Pokud entita obsahuje pravidlo[MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution), použijte k vytvoření klikacího odkazu adresu URL pravidla. V opačném případě použijte k vytvoření klikacího odkazu adresu URL, která je v poli `provider` dané image.
+Pokud entita obsahuje image a vy ji zobrazujete, musíte zadat 	klikací odkaz na web zprostředkovatele. Pokud entita obsahuje pravidlo[MediaAttribution](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mediaattribution), použijte k vytvoření klikacího odkazu adresu URL pravidla. V opačném případě použijte k vytvoření klikacího odkazu adresu URL, která je v poli `provider` dané image.
 
 Tady je příklad, který obsahuje pole `provider` pro image a smluvní pravidla. Tento příklad zahrnuje smluvní pravidlo, a proto budete ignorovat pole `provider` image a použijete pravidlo `MediaAttribution`.
 

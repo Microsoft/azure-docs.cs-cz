@@ -9,20 +9,20 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85961230"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365495"
 ---
 # <a name="what-is-custom-translator"></a>Co je Custom Translator?
 
 [Vlastní Překladatel](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, která umožňuje společnostem překladatelů, vývojářům aplikací a poskytovatelům jazykových služeb vytvářet přizpůsobené systémy NMT (neuronové Machine Translation). Přizpůsobené systémy překladu se hladce integrují do stávajících aplikací, pracovních postupů a webů. [Vlastní Překladatel](https://portal.customtranslator.azure.ai/) nabízí podobné možnosti, které [centrum Microsoftu](https://hub.microsofttranslator.com/) používá pro statistickou strojový překlad (SMT), ale výhradně pro systémy NMT (neuronové Machine Translation).
 
-Překladatelské systémy vytvořené pomocí [vlastního překladatele](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejného cloudového, [zabezpečeného](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoce výkonného a vysoce škálovatelného rozhraní Microsoft Translator [text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), které každý den nakládá miliardám.
+Překladatelské systémy vytvořené pomocí [vlastního překladatele](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejného cloudového, [zabezpečeného](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoce výkonného a vysoce škálovatelného rozhraní Microsoft Translator [text API V3](../reference/v3-0-translate.md?tabs=curl), které každý den nakládá miliardám.
 
-Vlastní Překladatel podporuje více než tři desítkové jazyky a mapuje se přímo na jazyky, které jsou k dispozici pro NMT. Úplný seznam najdete v tématu  [Microsoft Translator languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+Vlastní Překladatel podporuje více než tři desítkové jazyky a mapuje se přímo na jazyky, které jsou k dispozici pro NMT. Úplný seznam najdete v tématu  [Microsoft Translator languages](../language-support.md#customization).
 
 ## <a name="features"></a>Funkce
 
@@ -34,7 +34,7 @@ Vlastní Překladatel poskytuje různé funkce pro sestavení vlastního systém
 |[Systémy sestavování, které znají vaši podnikovou terminologii](what-are-parallel-documents.md)     |  Přizpůsobte a vytvářejte překladatelské systémy pomocí paralelních dokumentů, které pochopí terminologií používané ve vašem podniku a v průmyslu.       |
 |[Použití slovníku k sestavení modelů](what-is-dictionary.md)     |   Pokud nemáte datovou sadu školicích dat, můžete vytvořit model s pouze daty ze slovníku.       |
 |[Spolupráce s ostatními](how-to-manage-settings.md#share-your-workspace)     |   Spolupracujte se svým týmem sdílením práce s různými lidmi.     |
-|[Přístup k vlastnímu modelu překladu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  K vašemu vlastnímu modelu překladu můžete kdykoli přistupovat pomocí stávajících aplikací nebo programů přes Microsoft Translator Text API v3.       |
+|[Přístup k vlastnímu modelu překladu](../reference/v3-0-translate.md?tabs=curl)     |  K vašemu vlastnímu modelu překladu můžete kdykoli přistupovat pomocí stávajících aplikací nebo programů přes Microsoft Translator Text API v3.       |
 
 ## <a name="get-better-translations"></a>Získat lepší překlady
 

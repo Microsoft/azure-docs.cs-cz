@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: aa650fe9cb7df64a6a7a948224be225ecfad9057
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324610"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366277"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktivní údržba s Cognitive Services pro velké objemy dat
 
@@ -28,16 +28,16 @@ Hypotetickým scénářem je napájecí závod, ve kterém zařízení IoT monit
 
 V datech v náhodných frekvencích by se mohlo jednat o odlehlé hodnoty. V těchto situacích budou hodnoty ot./min. až do vypínání a pro ochranu okruhu až MW. Nápadem je zobrazit data ve stejnou dobu, ale s různými signály.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services) .
-* [Pracovní prostor Azure synapse](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) nakonfigurovaný s [fondem Apache Spark bez serveru](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)
+* [Pracovní prostor Azure synapse](../../../synapse-analytics/quickstart-create-workspace.md) nakonfigurovaný s [fondem Apache Spark bez serveru](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 
 ## <a name="setup"></a>Nastavení
 
 ### <a name="create-an-anomaly-detector-resource"></a>Vytvoření prostředku detektoru anomálií
 
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro překladatele pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli). Můžete také:
+Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro překladatele pomocí [Azure Portal](../../cognitive-services-apis-create-account.md) nebo [Azure CLI](../../cognitive-services-apis-create-account-cli.md). Můžete také:
 
 - Zobrazení existujícího prostředku v  [Azure Portal](https://portal.azure.com/).
 
@@ -98,7 +98,7 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 Tato buňka by měla vracet výsledek, který vypadá takto:
 
-| časové razítko           |   hodnota | deviceId   | Anomálie   |
+| časové razítko           |   value | deviceId   | Anomálie   |
 |:--------------------|--------:|:-----------|:------------|
 | 2020-05-01 18:33:51 |    3174 | vývoj – 7      | Nepravda       |
 | 2020-05-01 18:33:52 |    2976 | vývoj – 7      | Nepravda       |

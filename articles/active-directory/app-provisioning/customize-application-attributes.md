@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 2f21e4f41814b47d8e630df72c255886ac2af53b
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233879"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364288"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -110,7 +110,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 - Pracovní den do Azure Active Directory služby Active Directory/pracovní den
 - SuccessFactors se ke službě Active Directory/SuccessFactors pro Azure Active Directory
 - Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
-- Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
+- Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643)
 - Pro Azure Active Directory zpětný zápis do Workday nebo SuccessFactors se podporuje aktualizace relevantních metadat pro podporované atributy (XPATH a JSONPath), ale nepodporují se přidávání nových atributů Workday nebo SuccessFactors nad rámec těch, které jsou zahrnuté ve výchozím schématu.
 
 
@@ -136,17 +136,17 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
 SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:
-   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace** , vyberte svou aplikaci a pak vyberte **zřizování** .
+   1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com), vyberte **podnikové aplikace** , vyberte svou aplikaci a pak vyberte **zřizování**.
    2. V části **mapování** vyberte objekt (uživatele nebo skupinu), pro který chcete přidat vlastní atribut.
-   3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti** .
-   4. Vyberte možnost **Upravit seznam atributů pro AppName** .
-   5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut** .
+   3. V dolní části stránky vyberte **Zobrazit upřesňující možnosti**.
+   4. Vyberte možnost **Upravit seznam atributů pro AppName**.
+   5. V dolní části seznamu atributů zadejte informace o vlastním atributu v zadaných polích. Pak vyberte **Přidat atribut**.
 
 Pro SCIM aplikace musí název atributu odpovídat vzoru, který je znázorněn v následujícím příkladu. "CustomExtensionName" a "CustomAttribute" je možné přizpůsobit podle požadavků vaší aplikace, například: urn: IETF: param: SCIM: schémata: rozšíření: CustomExtensionName: 2.0: uživatel: Atribut CustomAttribute 
 
 Tyto pokyny platí pouze pro aplikace s podporou SCIM. Aplikace jako ServiceNow a Salesforce nejsou integrovány se službou Azure AD pomocí SCIM, a proto při přidávání vlastního atributu nevyžadují tento konkrétní obor názvů.
 
-Vlastní atributy nemůžou být referenční atributy ani atributy s více hodnotami. Vlastní atributy rozšíření s více hodnotami se aktuálně podporují jenom pro aplikace v galerii.  
+Vlastní atributy nemůžou být referenční atributy, atributy více hodnot nebo komplexního typu. Vlastní atributy rozšíření s více hodnotami a komplexními typy se aktuálně podporují jenom pro aplikace v galerii.  
  
 **Příklad reprezentace uživatele s atributem rozšíření:**
 

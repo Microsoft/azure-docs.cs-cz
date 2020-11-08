@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: dolování textu, analýza míněníí, analýza textu
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289691"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365291"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Co je rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu je cloudová služba, která poskytuje funkce NLP (přirozený jazyk Processing) pro dolování textu a analýzu textu, včetně analýz mínění, dolování stanovisek, extrakce klíčových frází, rozpoznávání jazyka a rozpoznávání pojmenovaných entit.
 
-Rozhraní API je součástí služby [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
+Rozhraní API je součástí služby [Azure Cognitive Services](../index.yml), kolekce algoritmů strojového učení a AI v cloudu pro vývojové projekty. Tyto funkce můžete použít spolu s [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)nebo s [klientskou knihovnou](quickstarts/text-analytics-sdk.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -39,7 +39,7 @@ Počínaje verzí v 3.1 verze Preview je dolování stanovisek funkcí Analýza 
 
 Pomocí [extrakce klíčových frází](how-tos/text-analytics-how-to-keyword-extraction.md) můžete rychle identifikovat hlavní koncepty v textu. Například v textu "potravina byla Delicious a dostali jsme milované pracovníky", Extrakce klíčových frází vrátí hlavní body pro komunikaci: "jídla" a "milované pracovníky".
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Rozpoznání jazyka může [detekovat jazyk, ve kterém je vstupní text napsán](how-tos/text-analytics-how-to-language-detection.md) , a nahlásit jeden kód jazyka pro každý dokument odeslaný v žádosti v široké škále jazyků, variant, dialektů a některých regionálních/kulturních jazyků. Kód jazyka se spáruje s skóre spolehlivosti.
 
@@ -73,18 +73,18 @@ Můžete začít používat rozhraní API pro analýzu textu v procesech, a to i
 
 * Vyžaduje se minimální programování:
     * [Extrakce informací v Excelu pomocí Analýza textu a automatizace](tutorials/extract-excel-information.md)
-    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Použití rozhraní API pro analýzu textu a MS Flow k identifikaci mínění komentářů ve skupině Yammeru](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Integrace Power BI s rozhraní API pro analýzu textu k analýze názoru zákazníků](tutorials/tutorial-power-bi-key-phrases.md)
 * Doporučené programovací prostředí:
-    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Analýza mínění na streamovaných datech s využitím Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Sestavení aplikace v baňce pro překlad textu, analýza mínění a syntetizace řeči](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Podporované jazyky
 
-Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. V rozhraní API pro analýzu textu pro tento obsah se můžete podívat na [podporované jazyky](text-analytics-supported-languages.md) .
+Tato část byla přesunuta do samostatného článku pro lepší vyhledatelnost. V rozhraní API pro analýzu textu pro tento obsah se můžete podívat na [podporované jazyky](./language-support.md) .
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ Všechny koncové body rozhraní API pro analýzu textu přijímají data v podo
 
 ## <a name="unicode-encoding"></a>Kódování Unicode
 
-Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud použijete [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) k získání počtu znaků, použijete stejnou metodu, kterou používáme k měření velikosti dat.
+Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyjádření a kalkulaci počtu znaků. Požadavky je možné odesílat v kódování UTF-8 i UTF-16 bez měřitelných rozdílů v počtu znaků. Body kódu sady Unicode jsou použité jako heuristika délky znaků a jsou považovány za ekvivalentní ve smyslu datového omezení analýzy textu. Pokud použijete [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) k získání počtu znaků, použijete stejnou metodu, kterou používáme k měření velikosti dat.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -104,6 +104,6 @@ Rozhraní API pro analýzu textu používá kódování Unicode pro textové vyj
 
 + Další informace o nových verzích a funkcích najdete [v tématu Co je nového v rozhraní API pro analýzu textu](whats-new.md) .
 
-+ Dig se tento [kurz analýzy mínění](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) pomocí Azure Databricks trochu hlubší.
++ Dig se tento [kurz analýzy mínění](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) pomocí Azure Databricks trochu hlubší.
 
 + Podívejte se na náš seznam blogových příspěvků a další videa o použití rozhraní API pro analýzu textu s dalšími nástroji a technologiemi na naší [externí stránce obsahu komunity &](text-analytics-resource-external-community.md).

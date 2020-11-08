@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ee7272066dbd89e7c0053d51ba039b83fb494f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710596"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363812"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
@@ -44,8 +44,8 @@ V současné době můžete pro všechny operace Analýza textu odeslat stejné 
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
 |`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Vyžadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Vyžadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
-|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat vašemu `text` zadání. |
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Vyžadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../language-support.md). |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../language-support.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat vašemu `text` zadání. |
 
 Další informace o omezeních najdete v tématu [Analýza textu přehled >ch omezení dat](../overview.md#data-limits). 
 
@@ -107,9 +107,9 @@ Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post 
 5. Vložte je do některých dokumentů JSON ve formátu, který je platný pro zamýšlenou analýzu. Další informace o konkrétní analýze najdete v následujících tématech:
 
   + [Rozpoznávání jazyka](text-analytics-how-to-language-detection.md)  
-  + [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)  
+  + [extrakce klíčových frází,](text-analytics-how-to-keyword-extraction.md)  
   + [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)  
-  + [Rozpoznávání entit](text-analytics-how-to-entity-linking.md)  
+  + [rozpoznávání entit,](text-analytics-how-to-entity-linking.md)  
 
 
 6. Žádost odešlete kliknutím na **Odeslat** . Informace o počtu požadavků, které můžete poslat za minutu a sekundu, najdete v části [omezení dat](../overview.md#data-limits) v přehledu.
@@ -124,4 +124,4 @@ Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Zjistit jazyk](text-analytics-how-to-language-detection.md)
+> [Rozpoznání jazyka](text-analytics-how-to-language-detection.md)

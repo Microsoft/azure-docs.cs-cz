@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26ddbf4cf97f5b9161be8b6b4ac3c31f801e82a3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90532269"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365155"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Rychlý Start: použití jazyka Java k volání služby pro rozpoznávání služby Azure Analýza textu
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction)a [identifikovat propojené entity](#Entities) pomocí [rozhraní API analýza textu](//go.microsoft.com/fwlink/?LinkID=759711)v   jazyce Java.
+Tento článek vás seznámí s tím, jak [rozpoznat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction) a [identifikovat propojené entity](#Entities) pomocí [rozhraní API pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Javy.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -33,9 +33,9 @@ Dále musíte mít [koncový bod a přístupový klíč](../../cognitive-service
 
 <a name="Detect"></a>
 
-## <a name="detect-language"></a>Zjištění jazyka
+## <a name="detect-language"></a>Rozpoznání jazyka
 
-Rozhraní Rozpoznávání jazyka API detekuje jazyk textového dokumentu pomocí [metody zjišťování jazyka](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte třídu s názvem `DetectLanguage.java` .
 1. Přidejte níže uvedený kód do vaší třídy.
@@ -553,7 +553,7 @@ public class GetKeyPhrases {
 
 ## <a name="identify-entities"></a>Identifikace entit
 
-Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location` , zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States` .  Následující příklad identifikuje entity pro anglické dokumenty.
+Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entity](../how-tos/text-analytics-how-to-entity-linking.md) extrahují slova z textu, jako je například "USA", a potom vám poskytne typ a/nebo Wikipedii odkaz na toto slovo (y). Typ pro "USA" je `location` , zatímco odkaz na Wikipedii je `https://en.wikipedia.org/wiki/United_States` .  Následující příklad identifikuje entity pro anglické dokumenty.
 
 1. Vytvořte nový projekt Java v oblíbeném integrovaném vývojovém prostředí (nebo nové složce na ploše). Vytvořte v něm třídu s názvem `GetEntities.java` .
 1. Přidejte níže uvedený kód do vaší třídy.

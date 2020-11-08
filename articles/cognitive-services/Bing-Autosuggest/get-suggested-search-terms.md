@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101931"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364577"
 ---
 # <a name="what-is-bing-autosuggest"></a>Co jsou Automatické návrhy Bingu?
 
@@ -36,7 +36,7 @@ Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhled�
 
 Rozhraní API pro automatické návrhy Bingu je webová služba RESTful, která se dá snadno volat ze všech programovacích jazyků, které mohou provádět požadavky HTTP a analyzovat JSON.
 
-1. Vytvořte [účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/free/cognitive-services/).
+1. Vytvořte [účet rozhraní API služby Cognitive Services](../cognitive-services-apis-create-account.md) s přístupem k rozhraním API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si zdarma [vytvořit účet](https://azure.microsoft.com/free/cognitive-services/).
 2. Pokaždé, když uživatel do vyhledávacího pole aplikace zadá nový znak, pošle se mu požadavek na toto rozhraní API.
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
@@ -52,11 +52,11 @@ Když uživatel vybere návrh z rozevíracího seznamu, můžete ho použít k z
 
 Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [vytvoření prvního dotazu](quickstarts/csharp.md).
 
-Seznamte se s referenčními informacemi k [rozhraní API pro automatické návrhy Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference). Tyto referenční informace obsahují seznam koncových bodů, hlaviček a parametrů dotazů, které můžete použít při odesílání požadavků na navrhované výrazy dotazů, a definice objektů odpovědi.
+Seznamte se s referenčními informacemi k [rozhraní API pro automatické návrhy Bingu v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference). Tyto referenční informace obsahují seznam koncových bodů, hlaviček a parametrů dotazů, které můžete použít při odesílání požadavků na navrhované výrazy dotazů, a definice objektů odpovědi.
 
-Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/search-the-web.md) a Prozkoumejte další dostupná rozhraní API.
+Navštivte [stránku vyhledávání Bingu centrum rozhraní API](../bing-web-search/overview.md) a Prozkoumejte další dostupná rozhraní API.
 
 
-Naučte se hledat na webu pomocí [rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/search-the-web.md)a prozkoumat druhý[rozhraní API pro vyhledávání Bingu](../bing-web-search/index.yml).
+Naučte se hledat na webu pomocí [rozhraní API Bingu pro vyhledávání na webu](../bing-web-search/overview.md)a prozkoumat druhý[rozhraní API pro vyhledávání Bingu](../bing-web-search/index.yml).
 
-Nezapomeňte si přečíst [požadavky Bingu na zobrazení a použití](./useanddisplayrequirements.md), abyste neporušili žádná pravidla používání výsledků hledání.
+Nezapomeňte si přečíst [požadavky Bingu na zobrazení a použití](../bing-web-search/use-display-requirements.md), abyste neporušili žádná pravidla používání výsledků hledání.

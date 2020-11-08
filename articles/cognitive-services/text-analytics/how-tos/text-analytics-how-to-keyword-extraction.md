@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704374"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363629"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: jak extrahovat klíčové fráze pomocí Analýza textu
 
@@ -23,7 +23,7 @@ ms.locfileid: "91704374"
 
 Tato funkce je užitečná v případě, kdy potřebujete rychle identifikovat hlavní body v kolekci dokumentů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný), vrátí služba hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
-Další informace najdete v části o [podporovaných jazycích](../text-analytics-supported-languages.md).
+Další informace najdete v části o [podporovaných jazycích](../language-support.md).
 
 > [!TIP]
 > Analýza textu taky poskytuje pro extrakci klíčových frází image kontejneru Docker pro Linux, takže můžete [nainstalovat a spustit kontejner analýza textu](text-analytics-how-to-install-containers.md) blízko k datům.
@@ -76,7 +76,7 @@ Informace o definici požadavku naleznete v tématu [způsob volání rozhraní 
 
 + Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [klíčové rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). `/text/analytics/v3.0/keyPhrases`Do adresy URL musíte zahrnout. Například: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). `/text/analytics/v3.0/keyPhrases`Do adresy URL musíte zahrnout. Příklad: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 

@@ -11,23 +11,23 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084625"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366529"
 ---
 # <a name="tutorial-single-page-web-app"></a>Kurz: Jednostránková webová aplikace
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Rozhraní API Bingu pro vyhledávání entit umožňuje vyhledávat na webu informace o *entitách* a *místech.* Daným dotazem můžete požadovat jeden z druhů výsledku, nebo oba. Definice míst a entit jsou uvedeny níže.
 
-| Výsledek | Description |
+| Výsledek | Popis |
 |-|-|
 |Entity|Známí lidé, místa a věci, které najdete podle jména|
 |Zadá|Restaurace, hotely a další místní firmy, které najdete podle názvu *nebo* podle typu (italské restaurace)|
@@ -57,19 +57,19 @@ Ukázková aplikace předvádí, jak:
 
 Stránka kurzu je zcela samostatná. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
-V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojový kód je k dispozici na [samostatné stránce](tutorial-bing-entities-search-single-page-app-source.md). Zkopírujte a vložte tento kód do textového editoru a uložte ho jako `bing.html`.
+V tomto kurzu probereme jen vybrané části zdrojového kódu. Úplný zdrojový kód je k dispozici na [samostatné stránce](). Zkopírujte a vložte tento kód do textového editoru a uložte ho jako `bing.html`.
 
 > [!NOTE]
 > Tento kurz je velmi podobný [kurzu Jednostránková aplikace Bingu pro vyhledávání na webu](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), ale zabývá se jenom výsledky hledání entit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíče předplatného pro rozhraní Vyhledávání Bingu API a rozhraní API pro mapy Bing. 
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Jakmile budete mít předplatné Azure:
-  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
-  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Vytvořte prostředek Vyhledávání Bingu "  target="_blank"> vytvořte v Azure Portal prostředek vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> , abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * <a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="Vytvořte prostředek Počítačové zpracování obrazu "  target="_blank"> vytvořit prostředek mapy Bing <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal a získat tak klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 ## <a name="app-components"></a>Komponenty aplikace
 
@@ -147,7 +147,7 @@ Značka HTML `<body>` obsahuje atribut `onload`, který po dokončení načítá
 
 HTML formulář obsahuje následující ovládací prvky:
 
-| Řízení | Description |
+| Řízení | Popis |
 |-|-|
 |`where`|Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.|
 |`query`|Textové pole pro zadání hledaných termínů.|
@@ -405,7 +405,7 @@ Chyby se zpracovávají voláním `renderErrorMessage()` se všemi známými pod
 
 ## <a name="displaying-search-results"></a>Zobrazení výsledků hledání
 
-Rozhraní API Bingu pro vyhledávání entit [vyžaduje zobrazení výsledků v určeném pořadí](use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vracet dva různé druhy odpovědí, není nutné iterovat na nejvyšší úrovni `Entities` nebo `Places` kolekci v odpovědi JSON a zobrazovat tyto výsledky. (Pokud chcete jenom jeden typ výsledku, použijte parametr dotazu `responseFilter`.)
+Rozhraní API Bingu pro vyhledávání entit [vyžaduje zobrazení výsledků v určeném pořadí](../bing-web-search/use-display-requirements.md). Vzhledem k tomu, že rozhraní API může vracet dva různé druhy odpovědí, není nutné iterovat na nejvyšší úrovni `Entities` nebo `Places` kolekci v odpovědi JSON a zobrazovat tyto výsledky. (Pokud chcete jenom jeden typ výsledku, použijte parametr dotazu `responseFilter`.)
 
 Místo toho použijeme kolekci `rankingResponse` výsledků hledání k řazení výsledků pro zobrazení. Tento objekt odkazuje na položky v kolekcích `Entitiess` nebo `Places`.
 

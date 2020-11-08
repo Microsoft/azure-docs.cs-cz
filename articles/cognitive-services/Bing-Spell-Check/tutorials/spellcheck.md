@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7abd67ef072303b7f8156a18c2e3ac34758c03dd
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099857"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364730"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Kurz: Sestavení klienta pro kontrolu pravopisu na webové stránce
 
@@ -33,7 +33,7 @@ V tomto kurzu získáte informace o následujících postupech:
 > - vytvoření jednoduchého dotazu na rozhraní API Bingu pro kontrolu pravopisu,
 > - zobrazení výsledků dotazu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 
 Abyste mohli postupovat podle tohoto kurzu, potřebujete klíč předplatného k rozhraní API Bingu pro kontrolu pravopisu. Pokud ho nemáte, budete potřebovat:
@@ -242,7 +242,7 @@ Také ošetřete možné chybové události v objektu XMLHttpRequest.
     });
 ```
 
-Odešlete požadavek. Zavřete funkci bingSpellCheck, značku **script** a značku **head** .
+Odešlete požadavek. Zavřete funkci bingSpellCheck, značku **script** a značku **head**.
 
 ```html
     request.send();
@@ -276,7 +276,7 @@ Vytvořte formulář HTML s textovým polem. Zpracujte `onsubmit` událost a zav
 </form>
 ```
 
-Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div** .
+Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. Kód JavaScript, který jsme definovali dříve, odkazuje právě na tuto značku **div**.
 
 ```html
 <h2>Results</h2>
@@ -289,11 +289,11 @@ Přidejte značku HTML **div** , kterou používáme pro zobrazení výsledků. 
 </html>
 ```
 
-Uložte soubor.
+Soubor uložte.
 
 ## <a name="display-results"></a>Zobrazení výsledků
 
-Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API Bingu pro kontrolu pravopisu. Do textového pole **Kontrola pravopisu** zadejte dotaz (například „Hollo, wlrd!“) a stiskněte **Enter** . Webová stránka zobrazí výsledky dotazu.
+Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte klíč předplatného rozhraní API Bingu pro kontrolu pravopisu. Do textového pole **Kontrola pravopisu** zadejte dotaz (například „Hollo, wlrd!“) a stiskněte **Enter**. Webová stránka zobrazí výsledky dotazu.
 
 ```json
 {
@@ -332,4 +332,4 @@ Otevřete webovou stránku ve svém prohlížeči. Až budete vyzváni, zadejte 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Požadavky na zobrazení a použití](../UseAndDisplayRequirements.md)
+> [Požadavky na zobrazení a použití](../../bing-web-search/use-display-requirements.md)

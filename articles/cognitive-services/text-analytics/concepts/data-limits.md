@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258272"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363829"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ V tomto článku najdete omezení velikosti a tarify, které můžete použít k
 
 | Omezení | Hodnota |
 |------------------------|---------------|
-| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). Vztahuje se také na Analýza textu pro kontejner Health. |
+| Maximální velikost jednoho dokumentu | 5 120 znaků měřených pomocí [StringInfo. lengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements). Vztahuje se také na Analýza textu pro kontejner Health. |
 | Maximální velikost celého požadavku | 1 MB. Vztahuje se také na Analýza textu pro kontejner Health. |
 
 Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte.
@@ -41,7 +41,7 @@ Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti,
 V v3 rozhraní API se změnila následující omezení. Překročení následujících omezení vygeneruje kód chyby HTTP 400.
 
 
-| Funkce | Maximální počet dokumentů na požadavek | 
+| Příznak | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 10 |
@@ -51,7 +51,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení následuj�
 | Analýza textu pro kontejner stavu | 1000 |
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
-| Funkce | Maximální počet dokumentů na požadavek | 
+| Příznak | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 1000 |

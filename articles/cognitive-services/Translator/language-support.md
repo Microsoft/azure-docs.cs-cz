@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669631"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364415"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -347,7 +347,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Velština | `cy` |
 
 ## <a name="speech-translation"></a>Překlad řeči
-Překlad řeči je k dispozici pomocí překladatele se službou Cognitive Services Speech. V [dokumentaci ke službě Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) najdete další informace o použití překladu řeči a k zobrazení všech [dostupných jazykových možností](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+Překlad řeči je k dispozici pomocí překladatele se službou Cognitive Services Speech. V [dokumentaci ke službě Speech](../speech-service/index.yml) najdete další informace o použití překladu řeči a k zobrazení všech [dostupných jazykových možností](../speech-service/language-support.md).
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 Převod řeči na text, aby se přeložil do jazyka textu dle vašeho výběru. Převod řeči na text se používá pro převod řeči na text nebo pro překlad řeči na řeč při použití ve spojení s syntézou řeči.

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d1405bce6761b6702146418296cb7b47bb9124ee
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f270ac736bb5dbc429dc8659cc88e63d0b51a523
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357177"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366634"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Omezení Azure Database for PostgreSQL – flexibilní Server
 
@@ -78,7 +78,7 @@ Připojení PostgreSQL, dokonce nečinné, může zabírat přibližně 10 MB pa
 - Zone-Redundant HA se v tuto chvíli u serverů s vysokou dostupností nepodporuje.
 - IP adresa databázového serveru se změní, když dojde k převzetí služeb při selhání serveru do úsporného režimu HA. Ujistěte se, že místo IP adresy serveru použijete záznam DNS.
 - Pokud je logická replikace nakonfigurovaná pomocí flexibilního serveru s nakonfigurovaným HA, v případě převzetí služeb při selhání na pohotovostní server se logické replikační sloty nekopírují do pohotovostního serveru. 
-- Další omezení HA najdete na stránce s [dokumentací koncepty – ha](concepts-high-availability.md) .
+- Další podrobnosti o redundantním HA v zóně, včetně omezení, najdete na stránce s [dokumentací koncept – ha](concepts-high-availability.md) .
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 

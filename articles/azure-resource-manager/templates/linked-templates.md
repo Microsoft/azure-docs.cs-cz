@@ -2,19 +2,19 @@
 title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369310"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366331"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
 K nasazení složitých řešení můžete rozdělit šablonu na mnoho souvisejících šablon a pak je nasadit společně prostřednictvím hlavní šablony. Související šablony mohou být samostatné soubory nebo syntaxe šablony, která je vložena do hlavní šablony. V tomto článku se používá pojem **propojená šablona** pro odkazování na samostatný soubor šablony, na který se odkazuje pomocí odkazu z hlavní šablony. Používá termín **vnořená šablona** pro odkazování na vloženou syntaxi šablony v rámci hlavní šablony.
 
-Pro malá až středně střední řešení je jedinou šablonou snazší pochopení a udržování. Všechny prostředky a hodnoty můžete zobrazit v jednom souboru. V případě pokročilých scénářů umožňují propojené šablony rozdělit řešení na cílené součásti. Tyto šablony můžete snadno opakovaně použít pro jiné scénáře.
+U malých až středních řešení je jednodušší pochopit a spravovat jedinou šablonu. Všechny prostředky a hodnoty vidíte v jednom souboru. Ve složitějších scénářích umožňují propojené šablony rozdělit řešení do specializovaných komponent. Tyto šablony můžete snadno opakovaně použít pro jiné scénáře.
 
 Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./deployment-tutorial-linked-template.md).
 
@@ -96,7 +96,7 @@ Následující příklad nasadí účet úložiště prostřednictvím vnořené
 
 ### <a name="expression-evaluation-scope-in-nested-templates"></a>Rozsah vyhodnocení výrazu ve vnořených šablonách
 
-Při použití vnořené šablony můžete určit, zda jsou výrazy šablony vyhodnocovány v rámci rozsahu nadřazené šablony nebo vnořené šablony. Rozsah určuje, jak jsou řešeny parametry, proměnné a funkce jako [zdrojová](template-functions-resource.md#resourcegroup) a [odběrová](template-functions-resource.md#subscription) pole.
+Při použití vnořené šablony můžete zadat, jestli se výrazy šablony vyhodnotí v rozsahu nadřazené nebo vnořené šablony. Rozsah určuje, jak jsou řešeny parametry, proměnné a funkce jako [zdrojová](template-functions-resource.md#resourcegroup) a [odběrová](template-functions-resource.md#subscription) pole.
 
 Rozsah můžete nastavit pomocí `expressionEvaluationOptions` Vlastnosti. Ve výchozím nastavení `expressionEvaluationOptions` je vlastnost nastavena na hodnotu `outer` , což znamená, že používá nadřazený obor šablony. Nastavte hodnotu na, aby `inner` byly výrazy vyhodnoceny v rámci rozsahu vnořené šablony.
 
@@ -281,9 +281,9 @@ Následující příklad nasadí SQL Server a načte tajný klíč trezoru klí�
 >
 > Pokud je obor nastaven na hodnotu `outer` , nemůžete použít `reference` funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
 
-## <a name="linked-template"></a>Odkazovaná šablona
+## <a name="linked-template"></a>Propojená šablona
 
-Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do vlastnosti **templateLink** zadejte identifikátor URI šablony, která se má zahrnout. Následující příklad odkazuje na šablonu, která nasadí nový účet úložiště.
+Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasazení](/azure/templates/microsoft.resources/deployments) . Do vlastnosti **templateLink** zadejte identifikátor URI šablony, která se má zahrnout. Následující příklad odkazuje na šablonu v účtu úložiště.
 
 ```json
 {
@@ -310,13 +310,17 @@ Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasaz
 }
 ```
 
-Při odkazování na propojenou šablonu `uri` nemůže být hodnota nesmí být místním souborem nebo souborem, který je k dispozici pouze v místní síti. Je nutné zadat hodnotu identifikátoru URI, která se bude stahovat jako **http** nebo **https**.
+Když odkazujete na propojenou šablonu, hodnota `uri` nemůže být místní soubor nebo soubor, který je k dispozici pouze v místní síti. Azure Resource Manager musí být schopné získat přístup k šabloně. Zadejte hodnotu identifikátoru URI, která se bude stahovat jako **http** nebo **https**. 
 
-> [!NOTE]
->
-> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` : `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+Můžete odkazovat na šablony pomocí parametrů, které zahrnují **protokol HTTP** nebo **https**. Například běžným vzorem je použití `_artifactsLocation` parametru. Můžete nastavit propojenou šablonu pomocí výrazu jako:
 
-Správce prostředků musí být schopné získat přístup k šabloně. Jednou z možností je umístit propojenou šablonu do účtu úložiště a použít identifikátor URI pro tuto položku.
+```json
+"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
+```
+
+Pokud vytváříte odkaz na šablonu v GitHubu, použijte neupravenou adresu URL. Odkaz má formát: `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json` . Pokud chcete získat nezpracovaný odkaz, vyberte **nezpracované**.
+
+:::image type="content" source="./media/linked-templates/select-raw.png" alt-text="Vybrat hrubou adresu URL":::
 
 ### <a name="parameters-for-linked-template"></a>Parametry pro propojenou šablonu
 
@@ -371,7 +375,7 @@ Nemůžete použít vložené parametry ani odkaz na soubor parametrů. Nasazen�
 
 Místo udržování vašich propojených šablon v přístupném koncovém bodu můžete vytvořit [specifikaci šablony](template-specs.md) , která zabalí hlavní šablonu a její propojené šablony do jedné entity, kterou můžete nasadit. Specifikace šablony je prostředek ve vašem předplatném Azure. Usnadňuje bezpečné sdílení šablony s uživateli ve vaší organizaci. K udělení přístupu ke specifikaci šablony použijte řízení přístupu na základě role Azure (Azure RBAC). Tato funkce je aktuálně ve verzi Preview.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 - [Kurz: Vytvoření specifikace šablony s propojenými šablonami](./template-specs-create-linked.md).
 - [Kurz: nasazení specifikace šablony jako propojené šablony](./template-specs-deploy-linked-template.md).
@@ -384,7 +388,7 @@ Nemusíte zadávat `contentVersion` vlastnost pro `templateLink` `parametersLink
 
 Předchozí příklady ukázaly pevně kódované hodnoty adresy URL pro odkazy šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nefunguje dobře pro velkou sadu modulárních šablon. Místo toho můžete vytvořit statickou proměnnou, která bude ukládat základní adresu URL pro hlavní šablonu a pak dynamicky vytvořit adresy URL pro propojené šablony z této základní adresy URL. Výhodou tohoto přístupu je, že šablonu můžete snadno přesunout nebo rozvětvit, protože v hlavní šabloně potřebujete změnit jenom statickou proměnnou. Hlavní šablona projde správné identifikátory URI v rámci rozložené šablony.
 
-Následující příklad ukazuje, jak použít základní adresu URL pro vytvoření dvou adres URL pro propojené šablony (**sharedTemplateUrl** a **vmTemplate**).
+Následující příklad ukazuje, jak použít základní adresu URL pro vytvoření dvou adres URL pro propojené šablony ( **sharedTemplateUrl** a **vmTemplate** ).
 
 ```json
 "variables": {
@@ -799,7 +803,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Odkazovaná šablona |Description  |
+|Hlavní šablona  |Propojená šablona |Popis  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |

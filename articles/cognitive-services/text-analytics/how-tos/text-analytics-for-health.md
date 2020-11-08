@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173962"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363863"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Postupy: použití Analýza textu pro stav (Preview)
 
@@ -84,7 +84,7 @@ Vyplňte a odešlete [formulář žádosti o Cognitive Services kontejnery](http
 Existuje několik způsobů, jak můžete nainstalovat a spustit kontejner. 
 
 - Použijte [Azure Portal](text-analytics-how-to-install-containers.md?tabs=healthcare) k vytvoření prostředku analýza textu a k získání kontejneru použijte Docker.
-- K automatizaci konfigurace kontejneru nasazení prostředků použijte následující skripty PowerShell a [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
+- K automatizaci konfigurace kontejneru nasazení prostředků použijte následující skripty PowerShell a [Azure CLI](/cli/azure/?view=azure-cli-latest) .
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Instalace kontejneru pomocí Azure Web App for Containers
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 K jednoduššímu nasazení můžete použít také službu Azure Container instance (ACI). ACI je prostředek, který umožňuje spouštět kontejnery Docker na vyžádání ve spravovaném prostředí Azure bez serveru. 
 
 Postup nasazení prostředku ACI pomocí Azure Portal najdete v tématu [použití Azure Container Instances](text-analytics-how-to-use-container-instances.md) . Pomocí rozhraní příkazového řádku Azure můžete také použít skript prostředí PowerShell, který vytvoří ACI na vašem předplatném pomocí Image kontejneru.  Před odesláním první žádosti počkejte, než se skript dokončí (přibližně 25-30 minut).  V důsledku omezení maximálního počtu procesorů na prostředek ACI tuto možnost nevybírejte, pokud očekáváte, že budete odesílat více než 5 velkých dokumentů (přibližně 5000 znaků) na jednu žádost.
-Informace o dostupnosti najdete v článku věnovaném [místní podpoře ACI](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability) . 
+Informace o dostupnosti najdete v článku věnovaném [místní podpoře ACI](../../../container-instances/container-instances-region-availability.md) . 
 
 > [!NOTE] 
 > Azure Container Instances Nezahrnovat podporu protokolu HTTPS pro předdefinované domény. Pokud potřebujete protokol HTTPS, budete ho muset ručně nakonfigurovat, včetně vytvoření certifikátu a registrace domény. Pokyny k tomu, jak to udělat s NGINX, najdete níže.

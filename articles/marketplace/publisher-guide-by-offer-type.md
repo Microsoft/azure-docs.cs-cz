@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a2b41ac32f8c887d7a8ffd33d51baebaa0e2482e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146173"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366481"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -30,9 +30,8 @@ V následující tabulce jsou uvedeny typy nabídek z komerčního tržiště v 
 
 | **Typ nabídky**    | **Popis**  |
 | :------------------- | :-------------------|
-| [Aplikace Azure: **spravovaná aplikace**](marketplace-managed-apps.md) | Použijte aplikaci Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky: <br> <ul> <li>K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS. </li> <li>Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. </li> <ul> |
-| [Aplikace Azure: **Šablona řešení**](marketplace-solution-templates.md) | Použijte nabídku aplikace Azure: typ nabídky šablona řešení, když vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jeden virtuální počítač. Šablony řešení můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.  |
-  | [**Kontejner Azure**](marketplace-containers.md) | Pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service, použijte typ nabídky kontejneru Azure. |
+| [**Azure Application**](plan-azure-application-offer.md) | Existují dva druhy plánů aplikací Azure: _Šablona řešení_ a _spravovaná aplikace_. Oba typy plánů podporují automatizaci nasazení a konfigurace řešení mimo jeden virtuální počítač (VM). Proces poskytování více prostředků, včetně virtuálních počítačů, sítí a prostředků úložiště, můžete automatizovat, abyste mohli poskytovat složitá řešení, například IaaS řešení. Oba typy plánů můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.<ul><li>Plány **šablon řešení** jsou jedním z hlavních způsobů publikování řešení na komerčním webu Marketplace. Plány šablon řešení se nedají v komerčním tržišti použít, ale můžou se používat k nasazení placených nabídek virtuálních počítačů, které se účtují prostřednictvím komerčního tržiště. Typ plánu šablony řešení použijte, když zákazník bude spravovat řešení a transakce se účtují prostřednictvím jiného plánu.</li><br><li>Plány **spravovaných aplikací** umožňují snadno sestavovat a doručovat plně spravované aplikace klíč pro vaše zákazníky. Mají stejné možnosti jako plány šablon řešení s některými klíčovými rozdíly:</li><ul><li> Prostředky se nasazují do skupiny prostředků a spravují se vydavatelem aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele.</li><li>Jako vydavatel zadáte náklady na průběžnou podporu řešení a transakce se podporují prostřednictvím komerčního tržiště.</li></ul>Typ plánu spravované aplikace použijte, když vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem, nebo když nasadíte řešení založené na předplatném.</ul> |
+| [**Kontejner Azure**](marketplace-containers.md) | Pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service, použijte typ nabídky kontejneru Azure. |
 | [**Virtuální počítač Azure**](marketplace-virtual-machines.md) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
 | [**Konzultační služba**](consulting-services.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Můžete publikovat nabídky AppSource, které sestavují nebo rozšířily Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps a finance a provozní aplikace.|

@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38bf38f47e4430c847e54bd89f6bf3cd7be50527
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084201"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367076"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro kontrolu pravopisu
 
@@ -26,7 +26,7 @@ ms.locfileid: "93084201"
 
 Tyto jazyky jsou podporovány rozhraní API Bingu pro kontrolu pravopisu (pouze v `spell` režimu).
 
-Počítejte s tím, že pokud chcete pracovat s jiným jazykem `en-US` , než, `mkt` by měl být nastaven a buď, `Accept-Language` nebo `setLang` by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Počítejte s tím, že pokud chcete pracovat s jiným jazykem `en-US` , než, `mkt` by měl být nastaven a buď, `Accept-Language` nebo `setLang` by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
@@ -73,5 +73,5 @@ Počítejte s tím, že pokud chcete pracovat s jiným jazykem `en-US` , než, `
 
 ## <a name="see-also"></a>Viz také
 
-- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Stránka dokumentace ke službám Cognitive Services](../index.yml)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

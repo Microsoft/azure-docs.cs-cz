@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: b23c95ef0005c8246feb8dc32e4a07a0ae19b72f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c0d9b6042ae695caa73d926653f237b756bf4971
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359540"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366719"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Koncepty vysoké dostupnosti v Azure Database for PostgreSQL – flexibilní Server
 
@@ -101,17 +101,17 @@ Flexibilní servery, které mají nakonfigurovanou vysokou dostupnost, replikuj�
 -   Vysoká dostupnost je podporována pouze v oblastech, kde je k dispozici více zón.
 -   V důsledku synchronní replikace do jiné zóny dostupnosti můžou aplikace nacházet zvýšené latence zápisu a potvrzení.
 
--   Záložní repliku nelze použít pro dotazy jen pro čtení.
+-   Záložní repliku nelze použít pro čtení dotazů.
 
--   V závislosti na aktivitě na primárním serveru v době převzetí služeb při selhání může trvat až dvě minuty nebo déle, než se převzetí služeb při selhání dokončí.
+-   V závislosti na zatížení a aktivitě na primárním serveru může proces převzetí služeb při selhání trvat déle než 120 sekund.
 
--   Restartování primárního databázového serveru pro výběr změn statických parametrů také restartuje pohotovostní repliku.
+-   Restartování primárního databázového serveru také restartuje pohotovostní repliku. 
 
 -   Konfigurace dalších replik pro čtení není podporována.
 
 -   Konfigurace úkolů správy iniciované zákazníky nemůže být naplánována během spravovaného časového období údržby.
 
--   K plánovaným událostem, jako jsou škálování výpočetních prostředků nebo škálování úložiště, dochází nejprve na pohotovostním serveru a pak na primárním serveru. Nedojde k převzetí služeb při selhání služby. 
+-   K plánovaným událostem, jako jsou škálování výpočetních prostředků nebo škálování úložiště, dochází nejprve na pohotovostním serveru a pak na primárním serveru. U serveru se u těchto plánovaných operací neprovádí převzetí služeb při selhání. 
 
 -  Pokud je v případě převzetí služeb při selhání do pohotovostního serveru nakonfigurovaná logická dekódování nebo logická replikace s nakonfigurovaným flexibilním serverem s vysokou dostupností, nekopírují se na pohotovostní server tyto sloty logické replikace.  
 

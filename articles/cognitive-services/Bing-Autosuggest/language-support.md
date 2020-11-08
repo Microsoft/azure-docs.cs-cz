@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6156dbe4d189800172250f56ad3ab095bea17bb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101897"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364509"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Podpora jazyků a oblastí pro rozhraní API pro automatické návrhy Bingu
 
@@ -71,5 +71,5 @@ Následující seznam obsahuje jazyky podporované nástrojem rozhraní API pro 
 
 ## <a name="see-also"></a>Viz také
 
-- [Stránka dokumentace k Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Stránka dokumentace k Azure Cognitive Services](../index.yml)
 - [Stránka produktu Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

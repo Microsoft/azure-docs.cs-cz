@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166926"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366753"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -23,13 +23,13 @@ Funkce Analýza mínění rozhraní API pro analýzu textu vyhodnotí text a vr�
 
 Po odeslání požadavku na analýzu mínění vrátí rozhraní API popisky mínění (například "negativní", "neutrální" a "pozitivní") a hodnocení spolehlivosti na větě a na úrovni dokumentu.
 
-Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v části o [podporovaných jazycích](../text-analytics-supported-languages.md).
+Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Další informace najdete v části o [podporovaných jazycích](../language-support.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Analýza mínění verze a funkce
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkce                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
+| Příznak                                   | Analýza mínění V3 | Analýza mínění v 3.1 (Preview) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Metody pro jednotlivé a dávkové požadavky    | X                     | X                                 |
 | Mínění skóre a popisky             | X                     | X                                 |
@@ -40,7 +40,7 @@ Analýza mínění podporuje široké spektrum jazyků, ve verzi Preview. Dalš�
 
 Analýza mínění v v3 aplikuje popisky mínění na text, které se vrátí na úrovni věty a dokumentu s hodnocením spolehlivosti pro každý z nich. 
 
-Popisky jsou *kladné*, *záporné*a *neutrální*. Na úrovni dokumentu lze také vrátit *smíšený* popisek mínění. Mínění dokumentu je určena níže:
+Popisky jsou *kladné* , *záporné* a *neutrální*. Na úrovni dokumentu lze také vrátit *smíšený* popisek mínění. Mínění dokumentu je určena níže:
 
 | Mínění věty                                                                            | Popisek vráceného dokumentu |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -90,7 +90,7 @@ Vytvořte žádost POST. V následujících referenčních odkazech můžete [po
 
 ### <a name="request-endpoints"></a>Koncové body požadavku
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
@@ -99,7 +99,7 @@ Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza 
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
 
-Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Například:
+Chcete-li získat názory výsledků dolování, je nutné zahrnout `opinionMining=true` parametr. Příklad:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
 
@@ -146,7 +146,7 @@ Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která
 
 ### <a name="sentiment-analysis-v31-example-response"></a>Příklad odpovědi Analýza mínění v 3.1
 
-Analýza mínění v 3.1 nabízí kromě objektu Response na kartě **verze 3,0** i další názory a dolování. V níže uvedené reakci je věta, *že má restaurace skvělou stravu a že náš čekací chvilku byl srozumitelný* , má dva aspekty: *jídlo* a *čekací*služba. Vlastnost každého aspektu `relations` obsahuje `ref` hodnotu s odkazem na identifikátor URI na asociované `documents` objekty, `sentences` a `opinions` .
+Analýza mínění v 3.1 nabízí kromě objektu Response na kartě **verze 3,0** i další názory a dolování. V níže uvedené reakci je věta, *že má restaurace skvělou stravu a že náš čekací chvilku byl srozumitelný* , má dva aspekty: *jídlo* a *čekací* služba. Vlastnost každého aspektu `relations` obsahuje `ref` hodnotu s odkazem na identifikátor URI na asociované `documents` objekty, `sentences` a `opinions` .
 
 ```json
 {

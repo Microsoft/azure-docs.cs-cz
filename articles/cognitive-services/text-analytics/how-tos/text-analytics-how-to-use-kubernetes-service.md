@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b7a5953edd9aec96a7f75e747c39e8f07f7210bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243764"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366889"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Nasazení kontejneru Analýza textu do služby Azure Kubernetes
 
-Přečtěte si, jak nasadit image kontejneru Azure Cognitive Services [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) do služby Azure Kubernetes Service (AKS). Tento postup ukazuje, jak vytvořit prostředek Analýza textu, jak vytvořit přidružený obrázek analýzy mínění a jak tuto orchestraci těchto dvou způsobů vykonat z prohlížeče. Pomocí kontejnerů můžete posouvat pozornost od správy infrastruktury a místo toho se zaměřit na vývoj aplikací.
+Přečtěte si, jak nasadit image kontejneru Azure Cognitive Services [Analýza textu](./text-analytics-how-to-install-containers.md) do služby Azure Kubernetes Service (AKS). Tento postup ukazuje, jak vytvořit prostředek Analýza textu, jak vytvořit přidružený obrázek analýzy mínění a jak tuto orchestraci těchto dvou způsobů vykonat z prohlížeče. Pomocí kontejnerů můžete posouvat pozornost od správy infrastruktury a místo toho se zaměřit na vývoj aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
 
 * Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/cognitive-services).
 * Textový editor, například [Visual Studio Code](https://code.visualstudio.com/download).
-* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalované.
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) je nainstalované.
 * Rozhraní [CLI Kubernetes](https://kubernetes.io/docs/tasks/tools/install-kubectl/) je nainstalované.
 * Prostředek Azure se správnou cenovou úrovní. Ne všechny cenové úrovně v tomto kontejneru fungují:
     * **Azure analýza textu** prostředky s cenovou úrovní F0 nebo Standard.
@@ -55,9 +55,9 @@ Tento postup vyžaduje několik nástrojů, které je třeba nainstalovat a spus
 
 [!INCLUDE [Verify the Sentiment Analysis container instance](../includes/verify-sentiment-analysis-container.md)]
 
-***
+**_
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
-* Použití [připojené služby analýza textu](../vs-text-connected-service.md)
+_ Použít více [Cognitive Servicesch kontejnerů](../../cognitive-services-container-support.md)
+* Použití [připojené služby analýza textu](../index.yml)

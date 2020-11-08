@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6bf00d8b5327ddd539190b6e990c7edb35c876f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018385"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363639"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Osvědčené postupy pro používání rozhraní API detektoru anomálií
 
@@ -52,7 +52,7 @@ Níže je stejná datová sada používající detekci anomálií v dávce. Mode
 
 ## <a name="data-preparation"></a>Příprava dat
 
-Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definována jako sazba, na kterou jsou data Navzorkovaná. 
+Rozhraní API detektoru anomálií akceptuje data časové řady formátovaná do objektu žádosti JSON. Časová řada může být jakákoli číselná data zaznamenaná v průběhu času v sekvenčním pořadí. Můžete odesílat okna dat časových řad do koncového bodu rozhraní API detektoru anomálií, aby se zlepšil výkon rozhraní API. Minimální počet datových bodů, které můžete odeslat, je 12 a maximum je 8640 bodů. [Členitost](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) je definována jako sazba, na kterou jsou data Navzorkovaná. 
 
 Datové body odesílané do rozhraní API detektoru anomálií musí mít platný koordinovaný světový čas (UTC) a číselnou hodnotu. 
 

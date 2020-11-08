@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102200"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366124"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Kurz: nahrání obrázků do rozhraní API pro vizuální vyhledávání Bingu
 
@@ -36,7 +36,7 @@ Ukázková aplikace předvádí, jak:
 > * Zobrazení výsledků hledání obrázků ve webové aplikaci
 > * Prozkoumejte různé přehledy poskytované rozhraním API
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
@@ -477,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Zobrazit přehledy pro různé akce
 
-Následující funkce zobrazují přehledy o různých akcích. Funkce poskytují obrázek umožňující kliknutí nebo odkaz, který vás pošle na webovou stránku s dalšími informacemi o imagi. Tato stránka je buď hostovaná pomocí Bing.com, nebo původního webu image. V této aplikaci se nezobrazí všechna data Insights. Pokud chcete zobrazit všechna pole, která jsou k dispozici pro přehled, přečtěte si odkaz [obrázky – vizuální vyhledávání](https://aka.ms/bingvisualsearchreferencedoc) .
+Následující funkce zobrazují přehledy o různých akcích. Funkce poskytují obrázek umožňující kliknutí nebo odkaz, který vás pošle na webovou stránku s dalšími informacemi o imagi. Tato stránka je buď hostovaná pomocí Bing.com, nebo původního webu image. V této aplikaci se nezobrazí všechna data Insights. Pokud chcete zobrazit všechna pole, která jsou k dispozici pro přehled, přečtěte si odkaz [obrázky – vizuální vyhledávání](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) .
 
 > [!NOTE]
 > Existuje minimální množství přehledných informací, které je třeba zobrazit na stránce. Další informace najdete v tématu věnovaném [použití rozhraní API vyhledávání Bingu a zobrazení](../bing-web-search/use-display-requirements.md) .

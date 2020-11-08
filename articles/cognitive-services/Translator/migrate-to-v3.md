@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523974"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364271"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migrace překladatelů v2 na V3
 
@@ -37,7 +37,7 @@ Konec tohoto dokumentu obsahuje užitečné odkazy, které vám pomůžou získa
 * Přepis – do rozhraní API se přidala metoda přepisu. Tato metoda převede slova a věty v jednom skriptu (např. Arabština) do jiného skriptu (např. Latinka).
 * Jazyky – nová metoda "jazyky" poskytuje jazykové informace ve formátu JSON pro použití s metodami "přeložit", "Dictionary" a "přepsanými".
 * Novinka k překladu – k metodě ' přeložit ' byly přidány nové funkce, které podporují některé funkce, které byly v rozhraní v2 API, jako samostatné metody. Příkladem je TranslateArray.
-* Metoda speaking – text na řeč funkce se už v Microsoft translatoru nepodporuje. Funkce převod textu na řeč je k dispozici ve [službě Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
+* Metoda speaking – text na řeč funkce se už v Microsoft translatoru nepodporuje. Funkce převod textu na řeč je k dispozici ve [službě Microsoft Speech Service](../speech-service/text-to-speech.md).
 
 Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, které poskytují funkce dodávané s v2.
 
@@ -47,8 +47,8 @@ Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, kter
 | `TranslateArray`      | [Posunut](reference/v3-0-translate.md)        |
 | `GetLanguageNames`      | [Jazyky](reference/v3-0-languages.md)         |
 | `GetLanguagesForTranslate`     | [Jazyky](reference/v3-0-languages.md)       |
-| `GetLanguagesForSpeak`      | [Služba Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| `Speak`     | [Služba Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `GetLanguagesForSpeak`      | [Služba Microsoft Speech](../speech-service/language-support.md#text-to-speech)         |
+| `Speak`     | [Služba Microsoft Speech](../speech-service/text-to-speech.md)          |
 | `Detect`     | [Soustavy](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Soustavy](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Funkce už není podporovaná.       |

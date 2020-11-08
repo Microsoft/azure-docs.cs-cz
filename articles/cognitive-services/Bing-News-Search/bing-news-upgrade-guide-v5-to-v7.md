@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100197"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366413"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní Vyhledávání zpráv API
 
@@ -42,7 +42,7 @@ Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní 
 
 - Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|Kód|Podřízeného kódu|Description
+|Kód|Podřízeného kódu|Popis
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
@@ -75,24 +75,24 @@ Blokované|InvalidRequest. Block
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Pole se přidalo `contractualRules` do objektu [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `contractualRules`Pole obsahuje seznam pravidel, která je nutné dodržovat (například přidělení článku). Místo použití musíte použít zadané přidělení `contractualRules` `provider` . Článek obsahuje `contractualRules` jenom v případě, že odpověď [vyhledávání na webu API](../bing-web-search/search-the-web.md) obsahuje odpověď na zprávy.
+- Pole se přidalo `contractualRules` do objektu [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `contractualRules`Pole obsahuje seznam pravidel, která je nutné dodržovat (například přidělení článku). Místo použití musíte použít zadané přidělení `contractualRules` `provider` . Článek obsahuje `contractualRules` jenom v případě, že odpověď [vyhledávání na webu API](../bing-web-search/overview.md) obsahuje odpověď na zprávy.
 
 ## <a name="non-breaking-changes"></a>Neprůlomové změny
 
 ### <a name="query-parameters"></a>Parametry dotazů
 
-- Přidání produktů jako možné hodnoty, pro kterou můžete nastavit parametr dotazu [kategorie](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) . Podívejte se [na kategorie podle trhů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+- Přidání produktů jako možné hodnoty, pro kterou můžete nastavit parametr dotazu [kategorie](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) . Podívejte se [na kategorie podle trhů](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
 
-- Byl přidán parametr dotazu [sortby](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) , který vrátí témata pro trend seřazená podle data s nejnovějším prvním.
+- Byl přidán parametr dotazu [sortby](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) , který vrátí témata pro trend seřazená podle data s nejnovějším prvním.
 
-- Přidal se parametr [od](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) parametru Query, který vrátí témata trendů zjištěná bingem na nebo po zadaném časovém razítku epocha systému UNIX.
+- Přidal se parametr [od](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) parametru Query, který vrátí témata trendů zjištěná bingem na nebo po zadaném časovém razítku epocha systému UNIX.
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Pole se přidalo `mentions` do objektu [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `mentions`Pole obsahuje seznam entit (osob nebo míst), které byly nalezeny v článku.
+- Pole se přidalo `mentions` do objektu [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `mentions`Pole obsahuje seznam entit (osob nebo míst), které byly nalezeny v článku.
 
-- Pole se přidalo `video` do objektu [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `video`Pole obsahuje video, které se vztahuje k článku příspěvky. Video je buď \<iframe\> , který můžete vložit, nebo miniaturu pohybu.
+- Pole se přidalo `video` do objektu [NewsArticle](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) . `video`Pole obsahuje video, které se vztahuje k článku příspěvky. Video je buď \<iframe\> , který můžete vložit, nebo miniaturu pohybu.
 
-- Pole bylo přidáno `sort` do objektu [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) . V `sort` poli se zobrazí pořadí řazení článků. Například články jsou seřazené podle relevance (výchozí) nebo data.
+- Pole bylo přidáno `sort` do objektu [News](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) . V `sort` poli se zobrazí pořadí řazení článků. Například články jsou seřazené podle relevance (výchozí) nebo data.
 
-- Byl přidán objekt [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) , který definuje pořadí řazení. `isSelected`Pole označuje, zda odpověď použila pořadí řazení. Je-li **nastavena hodnota true** , odpověď použila pořadí řazení. Pokud `isSelected` je **hodnota false** , můžete použít adresu URL v `url` poli pro vyžádání jiného pořadí řazení.
+- Byl přidán objekt [SortValue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) , který definuje pořadí řazení. `isSelected`Pole označuje, zda odpověď použila pořadí řazení. Je-li **nastavena hodnota true** , odpověď použila pořadí řazení. Pokud `isSelected` je **hodnota false** , můžete použít adresu URL v `url` poli pro vyžádání jiného pořadí řazení.

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
 ms.date: 07/17/2020
-ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a62c7dc8238b642aeaa59a7b470266378832e26e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87133074"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363880"
 ---
 # <a name="whats-new-in-personalizer"></a>Co je nového v přizpůsobování
 
@@ -31,7 +31,7 @@ Zjistěte, co je nového ve službě. Tyto položky můžou zahrnovat poznámky 
 
 ### <a name="may-2020---build-conference"></a>Květen 2020 – konference Build
 
-V **Public Preview**jsou k dispozici následující:
+V **Public Preview** jsou k dispozici následující:
 
  * [Režim učně](concept-apprentice-mode.md) jako vzdělávací chování.
 
@@ -62,5 +62,5 @@ Následující funkce verze Preview byly vydané na konferenci Build 2019:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Rychlý Start: vytvoření smyčky zpětné vazby v jazyce C #](csharp-quickstart-commandline-feedback-loop.md)
+* [Rychlý Start: vytvoření smyčky zpětné vazby v jazyce C #](./quickstart-personalizer-sdk.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)
