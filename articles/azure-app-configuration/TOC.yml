@@ -140,8 +140,6 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
         - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-        - name: REST API
-          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Správa funkcí
       items:
         - name: Knihovna .NET Core
@@ -156,6 +154,52 @@
           href: /powershell/module/az.appconfiguration/
         - name: Terraform
           href: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
+    - name: REST API
+      items:
+        - name: Přehled
+          href: rest-api.md
+        - name: Prostředky
+          items:
+            - name: Klíče
+              href: ./rest-api-keys.md
+            - name: Páry klíč-hodnota
+              href: ./rest-api-key-value.md
+            - name: Popisky
+              href: ./rest-api-labels.md
+            - name: Zámky
+              href: ./rest-api-locks.md
+            - name: Revize
+              href: ./rest-api-revisions.md
+        - name: Protokol
+          items:
+            - name: Authentication
+              href: ./rest-api-authentication-index.md
+              items:
+                - name: Ověřování služby Azure Active Directory
+                  href: rest-api-authentication-azure-ad.md
+                - name: Ověřování HMAC
+                  href: rest-api-authentication-hmac.md
+            - name: Autorizace
+              href: ./rest-api-authorization-index.md
+              items:
+                - name: Autorizace Azure Active Directory
+                  href: rest-api-authorization-azure-ad.md
+                - name: Autorizace HMAC
+                  href: rest-api-authorization-hmac.md
+            - name: Model konzistence
+              href: ./rest-api-consistency.md
+            - name: Společné hlavičky
+              href: ./rest-api-headers.md
+            - name: Throttling
+              href: ./rest-api-throttling.md
+            - name: Správa verzí
+              href: ./rest-api-versioning.md
+        - name: Vývoj
+          items:
+            - name: Fiddler
+              href: ./rest-api-fiddler.md
+            - name: Postman
+              href: ./rest-api-postman.md
     - name: Integrované služby Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

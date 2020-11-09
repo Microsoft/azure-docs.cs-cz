@@ -95,6 +95,8 @@
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Nasazení na Azure Stack Edge
       href: deploy-azure-stack-edge-how-to.md
+    - name: Konfigurace brány pro signály
+      href: configure-signal-gate-how-to.md
     - name: Řešení potíží
       href: troubleshoot-how-to.md
 - name: Referenční informace

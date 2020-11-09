@@ -36,29 +36,31 @@
       href: tutorial-virtual-network.md
     - name: 9. Zálohování virtuálních počítačů
       href: tutorial-backup-vms.md
-    - name: 10. Správa virtuálních počítačů
+    - name: 10. Povolení zotavení po havárii
+      href: tutorial-disaster-recovery.md
+    - name: '11. Správa virtuálních počítačů:'
       href: tutorial-govern-resources.md
-    - name: 11. Sledování a aktualizace virtuálních počítačů
+    - name: 12. Sledování a aktualizace virtuálních počítačů
       href: tutorial-config-management.md
-    - name: 12. Monitorování virtuálních počítačů
+    - name: 13. Monitorování virtuálních počítačů
       href: tutorial-monitor.md
-    - name: 13. Správa zabezpečení virtuálních počítačů
+    - name: 14. Správa zabezpečení virtuálních počítačů
       href: tutorial-azure-security.md
-    - name: 14a. Sestavení s využitím Jenkinse
+    - name: 15a. Sestavení s využitím Jenkinse
       href: /azure/developer/jenkins/pipeline-with-github-and-docker
-    - name: 14b. Nasazení a integrace Jenkinse s Azure
+    - name: 15b. Integrace Jenkinse s Azure DevOps
       href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
-    - name: 15a. Konfigurace strategie postupného nasazování
+    - name: 16a. Konfigurace strategie postupného nasazování
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b. Konfigurace strategie testovacího nasazování
+    - name: 16b. Konfigurace strategie testovacího nasazování
       href: tutorial-azure-devops-canary-strategy.md
-    - name: 15c. Konfigurace strategie nasazování typu modrá/zelená
+    - name: 16c. Konfigurace strategie nasazování typu modrá/zelená
       href: tutorial-azure-devops-blue-green-strategy.md
-    - name: 15d. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
+    - name: 16d. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16. Vytvoření zásobníku LAMP
+    - name: 17. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md
-    - name: 17. Zabezpečení webového serveru pomocí SSL
+    - name: 18. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
 - name: ukázky
   items:
@@ -285,7 +287,7 @@
         - name: Rezervované instance
           items:
             - name: Předplacení pro virtuální počítače
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Předplacení pro služby Dedicated Host
               href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Co jsou rezervace Azure?

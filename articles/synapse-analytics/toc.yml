@@ -50,13 +50,13 @@
   items:
     - name: Rychlé starty
       items:
-        - name: Vytvoření pracovního prostoru Synapse s využitím webu Azure Portal
+        - name: Vytvoření pracovního prostoru s využitím webu Azure Portal
           href: quickstart-create-workspace.md
           displayName: quickstart
-        - name: Vytvoření pracovního prostoru Synapse s využitím Azure CLI
+        - name: Vytvoření pracovního prostoru s využitím Azure CLI
           href: quickstart-create-workspace-cli.md
           displayName: quickstart
-        - name: Vytvoření pracovního prostoru Synapse s využitím Azure PowerShellu
+        - name: Vytvoření pracovního prostoru s využitím Azure PowerShellu
           href: quickstart-create-workspace-powershell.md
           displayName: quickstart
         - name: Nasazení s využitím šablony
@@ -338,6 +338,12 @@
               displayname: 'workload, management'
     - name: Návody
       items:
+        - name: Zálohování a obnovení
+          items:
+            - name: Vytvoření bodů obnovení
+              href: ./backuprestore/sqlpool-create-restore-point.md
+            - name: Obnovení fondu Synapse SQL
+              href: ./backuprestore/restore-sql-pool.md
         - name: Správa a monitorování
           items:
             - name: Monitorování mezipaměti Gen2

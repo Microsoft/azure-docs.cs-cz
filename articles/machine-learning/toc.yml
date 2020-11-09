@@ -399,6 +399,9 @@
         - name: Použití vzdálených cílových výpočetních prostředí
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Použití automatizovaného strojového učení s Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Automatické trénování modelu prognóz
           displayName: time series
           href: how-to-auto-train-forecast.md

@@ -70,6 +70,8 @@
           href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Správa názvů domén
           href: domains-manage.md
+        - name: Ověření subdomén jako spravovaných
+          href: domains-verify-custom-subdomain.md
         - name: Odstranění adresáře
           href: directory-delete-howto.md
         - name: Několik adresářů

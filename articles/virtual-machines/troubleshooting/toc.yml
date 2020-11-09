@@ -109,6 +109,8 @@
           href: unresponsive-vm-apply-group-policy.md
         - name: Virtuální počítač nereaguje při použití zásad zabezpečení
           href: unresponsive-vm-apply-security-policy.md
+        - name: Virtuální počítač nereaguje při čekání na místního správce relací
+          href: vm-unresponsive-wait-local-session-manager.md
         - name: Chyba Správce spouštění systému Windows – hodnota hash image – neplatný stav
           href: windows-boot-error-invalid-image-hash.md
         - name: Chyba zastavení Windows – nesprávné informace konfigurace systému
@@ -117,6 +119,8 @@
           href: troubleshoot-windows-stop-error.md
         - name: Chyba zastavení Windows – ukončení systémového procesu
           href: windows-stop-error-system-process-terminated.md
+        - name: Chyba zastavení Windows – nezpracovaná výjimka vlákna systému
+          href: windows-stop-error-system-thread-exception-not-handled.md
 - name: Nejde se připojit k virtuálnímu počítači
   items:
     - name: Protokol RDP

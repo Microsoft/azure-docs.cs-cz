@@ -81,12 +81,36 @@
       href: publisher-guide-by-offer-type.md
     - name: Nabídky aplikací Azure
       items:
-        - name: Plánování nabídky šablon řešení
-          href: marketplace-solution-templates.md
-        - name: Plánování nabídky spravovaných aplikací
-          href: marketplace-managed-apps.md
+        - name: Plánování nabídek aplikací Azure
+          items:
+            - name: Plánování nabídky aplikací Azure
+              href: plan-azure-application-offer.md
+            - name: Plánování šablony řešení
+              href: plan-azure-app-solution-template.md
+            - name: Plánování spravované aplikace
+              href: plan-azure-app-managed-app.md
         - name: Vytvoření a publikování nabídky aplikací Azure
-          href: partner-center-portal/create-new-azure-apps-offer.md
+          items:
+            - name: Vytvoření nabídky aplikací Azure
+              href: create-new-azure-apps-offer.md
+            - name: Konfigurace vlastností nabídek aplikací Azure
+              href: create-new-azure-apps-offer-properties.md
+            - name: Konfigurace výpisu nabídek aplikací Azure
+              href: create-new-azure-apps-offer-listing.md
+            - name: Přidání cílové skupiny pro verzi Preview
+              href: create-new-azure-apps-offer-preview.md
+            - name: Přidání technických podrobností
+              href: create-new-azure-apps-offer-technical.md
+            - name: Vytváření plánů
+              href: create-new-azure-apps-offer-plans.md
+            - name: Vytvoření plánu šablony řešení
+              href: create-new-azure-apps-offer-solution.md
+            - name: Vytvoření plánu spravované aplikace
+              href: create-new-azure-apps-offer-managed.md
+            - name: Testování a publikování nabídky aplikací Azure
+              href: create-new-azure-apps-offer-test-publish.md
+        - name: Uvedení nabídky aplikací Azure na trh
+          href: create-new-azure-apps-offer-marketing.md
         - name: Fakturace aplikací Azure na základě měření
           href: partner-center-portal/azure-app-metered-billing.md
         - name: Zpracování zpětné vazby

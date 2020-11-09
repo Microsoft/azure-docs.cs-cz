@@ -120,6 +120,8 @@
           href: customize-branding.md
         - name: Konfigurace funkce Zachovat přihlášení
           href: keep-me-signed-in.md
+        - name: Jak zjistit ID tenanta
+          href: active-directory-how-to-find-tenant.md
         - name: Přidružení předplatného Azure
           href: active-directory-how-subscriptions-associated-directory.md
         - name: Přidání informací o ochraně osobních údajů

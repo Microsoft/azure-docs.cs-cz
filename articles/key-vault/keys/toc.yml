@@ -30,6 +30,10 @@
   items:
     - name: Ukázky kódu pro službu Key Vault
       href: /samples/browse/?expanded=azure&products=azure-key-vault
+- name: Koncepty
+  items:
+    - name: 'Klíčové typy, algoritmy a operace'
+      href: about-keys-details.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell
