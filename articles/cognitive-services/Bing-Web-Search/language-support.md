@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 998e18f8901dda3430d5289e0590ef8099b6fb8c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3ce1fdc0b52db2706f81950fff735cf7f95e52b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095454"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379676"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání na webu
 
@@ -26,7 +26,7 @@ ms.locfileid: "93095454"
 
 Rozhraní API Bingu pro vyhledávání na webu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem vám pomůže Upřesnit výsledky hledání na základě zájmů těchto zemí nebo oblastí. Výsledky můžou zahrnovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle konkrétní země nebo oblasti nebo jazyka.
 
-Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud je zadána země nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` hlavičkou](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). V [tabulce trhy](#markets) můžete zobrazit seznam jazyků podporovaných na jednotlivých trzích.
+Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud je zadána země nebo oblast, je nutné zadat jeden nebo více kódů jazyka s [ `Accept-Language` hlavičkou](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers). V [tabulce trhy](#markets) můžete zobrazit seznam jazyků podporovaných na jednotlivých trzích.
 
 Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **trhy** . Určování trhu současně určuje zemi nebo oblast a preferovaný jazyk. Jazyk můžete explicitně nastavit pomocí `setLang` parametru dotazu.
 
@@ -35,21 +35,21 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Země|Kód|
 |-------|----|
 |Argentina|AR|
-|Austrálie|AU|
+|Australia|AU|
 |Rakousko|AT|
 |Belgie|BE|
 |Brazílie|BR|
-|Kanada|CA|
+|Canada|CA|
 |Chile|CL|
 |Dánsko|DK|
 |Finsko|FI|
 |Francie|FR|
 |Německo|DE|
 |Hongkong – zvláštní administrativní oblast|HK|
-|Indie|IN|
+|India|IN|
 |Indonésie|ID|
 |Itálie|IT|
-|Japonsko|JP|
+|Japan|JP|
 |Jižní Korea|KR|
 |Malajsie|MY|
 |Mexiko|MX|
@@ -69,30 +69,30 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Tchaj-wan|TW|
 |Turecko|TR|
 |Spojené království|GB|
-|USA|USA|
+|Česká republika|USA|
 
 ## <a name="markets"></a>Trhy
 
 |Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
 |Argentina|Španělština|ES-AR|
-|Austrálie|Angličtina|EN-AU|
+|Australia|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
 |Belgie|Nizozemština|NL|
 |Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
-|Kanada|Angličtina|en-CA|
-|Kanada|Francouzština|fr – CA|
+|Canada|Angličtina|en-CA|
+|Canada|Francouzština|fr – CA|
 |Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
 |Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|
-|Indie|Angličtina|en-IN|
+|India|Angličtina|en-IN|
 |Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
-|Japonsko|Japonština|ja-JP|
+|Japan|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
 |Malajsie|Angličtina|EN – MY|
 |Mexiko|Španělština|ES – MX|
@@ -113,8 +113,8 @@ Alternativně můžete zadat trh s `mkt` parametrem dotazu a kód z tabulky **tr
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
 |Spojené království|Angličtina|en-GB|
-|USA|Angličtina|en-US|
-|USA|Španělština|ES – US|
+|Česká republika|Angličtina|en-US|
+|Česká republika|Španělština|ES – US|
 
 ## <a name="next-steps"></a>Další kroky
 

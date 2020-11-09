@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078539"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380704"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Zvýraznění textu pomocí značek dekorace
 
@@ -39,7 +39,7 @@ Před zobrazením výsledku v uživatelském rozhraní nahraďte znaky Unicode t
 
 ## <a name="marker-formatting"></a>Formátování značky
 
-Bing nabízí možnost použití znaků Unicode nebo značek HTML jako značek. Chcete-li určit, které značky se mají použít, zahrňte parametr dotazu [TextFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) : 
+Bing nabízí možnost použití znaků Unicode nebo značek HTML jako značek. Chcete-li určit, které značky se mají použít, zahrňte parametr dotazu [TextFormat](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) : 
 
 | Hodnota             | Značky                       |
 |-------------------|------------------------------|
@@ -56,7 +56,7 @@ Pokud žádost neurčila dekorace, `expression` pole by obsahovalo `log10(2)` .
 
 Pokud `textDecorations` je `true` , Bing může do zobrazovaných řetězců odpovědí zahrnout následující značky. Pokud neexistuje odpovídající značka HTML, buňka tabulky je prázdná.
 
-|Kódování Unicode|HTML|Description
+|Kódování Unicode|HTML|Popis
 |-|-|-
 |U + E000|\<b>|Označuje začátek termínu dotazu (zvýrazňování přístupů).
 |U + E001|\</b>|Označuje konec termínu dotazu.

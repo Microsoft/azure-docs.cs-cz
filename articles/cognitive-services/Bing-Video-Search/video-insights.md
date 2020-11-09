@@ -10,21 +10,21 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2ec57937b2bac430fccd7b6e1fbc05b44d9cf996
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cbbde354c1bc68a2b1017c3ccba61b846fa62916
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078792"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380755"
 ---
 # <a name="get-insights-about-a-video"></a>Získejte přehled o videu
 
 > [!WARNING]
-> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](https://aka.ms/cogsvcs/bingmove)
+> Rozhraní API pro vyhledávání Bingu přesouváte z Cognitive Services na Vyhledávání Bingu služby. Od **30. října 2020** musí být všechny nové instance vyhledávání Bingu zřízené [podle popsaného procesu.](/bing/search-apis/bing-web-search/create-bing-search-service-resource)
 > Rozhraní API pro vyhledávání Bingu zřízené pomocí Cognitive Services budou podporované v následujících třech letech nebo na konci smlouva Enterprise, podle toho, co nastane dřív.
-> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](https://aka.ms/cogsvcs/bingmigration).
+> Pokyny k migraci najdete v tématu [vyhledávání Bingu Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Každé video vrácené rozhraní API Bingu pro vyhledávání videí obsahuje ID videa, pomocí kterého můžete získat další informace, například související videa. Pokud chcete získat přehled o videu, Získejte token [videoid](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) v odpovědi rozhraní API. 
+Každé video vrácené rozhraní API Bingu pro vyhledávání videí obsahuje ID videa, pomocí kterého můžete získat další informace, například související videa. Pokud chcete získat přehled o videu, Získejte token [videoid](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) v odpovědi rozhraní API. 
 
 ```json
     "value" : [
@@ -39,7 +39,7 @@ Každé video vrácené rozhraní API Bingu pro vyhledávání videí obsahuje I
     ],
 ```
 
-Následně odešlete požadavek GET na koncový bod podrobností videa s ID. Nastavte parametr dotazu [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) na `videoId` token. Chcete-li určit přehledy, které chcete získat, nastavte parametr dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) . Pokud chcete získat všechny přehledy, nastavte `modules` na vše. Odpověď zahrnuje všechny informace, které jste požadovali, pokud jsou k dispozici.
+Následně odešlete požadavek GET na koncový bod podrobností videa s ID. Nastavte parametr dotazu [ID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) na `videoId` token. Chcete-li určit přehledy, které chcete získat, nastavte parametr dotazu [moduly](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) . Pokud chcete získat všechny přehledy, nastavte `modules` na vše. Odpověď zahrnuje všechny informace, které jste požadovali, pokud jsou k dispozici.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -53,7 +53,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Získávání souvisejících videí pro přehledy  
 
-Chcete-li získat videa související se zadaným videem, nastavte parametr dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) na `RelatedVideos` .
+Chcete-li získat videa související se zadaným videem, nastavte parametr dotazu [moduly](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) na `RelatedVideos` .
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -65,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpověď na tento požadavek bude mít objekt [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nejvyšší úrovně namísto objektu [video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) .  
+Odpověď na tento požadavek bude mít objekt [VideoDetails](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nejvyšší úrovně namísto objektu [video](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) .  
   
 ```json
 {
@@ -103,4 +103,3 @@ Odpověď na tento požadavek bude mít objekt [VideoDetails](https://docs.micro
 
 > [!div class="nextstepaction"]
 > [Hledání videí o trendech](trending-videos.md)
-

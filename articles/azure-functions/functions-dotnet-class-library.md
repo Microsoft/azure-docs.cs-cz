@@ -4,12 +4,12 @@ description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 19edfaf7998632ed1ebb48ff4ad36468669732ae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167742"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380959"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -58,7 +58,7 @@ Při sestavování projektu se ve výstupním adresáři sestavení vygeneruje s
 Tento adresář se nasadí do vaší aplikace Function App v Azure. Rozšíření vazby požadovaná ve [verzi 2. x](functions-versions.md) modulu runtime Functions jsou [přidána do projektu jako balíčky NuGet](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Proces sestavení vytvořífunction.jspro každou funkci * v* souboru. Tato *function.jsv* souboru není určena k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
+> Proces sestavení vytvořífunction.jspro každou funkci *v* souboru. Tato *function.jsv* souboru není určena k přímému upravování. Konfiguraci vazby nemůžete změnit ani tuto funkci můžete zakázat úpravou tohoto souboru. Informace o tom, jak funkci zakázat, najdete v tématu [Jak zakázat funkce](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>Metody rozpoznané jako funkce
@@ -160,7 +160,7 @@ Vygenerovaná *function.jsv* souboru obsahuje `configurationSource` vlastnost, k
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft. NET. SDK. Functions
 
-*function.jspři* generování souboru provádí balíček NuGet [ \. funkce Microsoft .NET \. SDK \. ](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*function.jspři* generování souboru provádí balíček NuGet [ \. funkce Microsoft .NET \. SDK \.](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
 Stejný balíček se používá pro obě verze 1. x a 2. x modulu runtime Functions. Cílová architektura je tím, že rozlišuje projekt 1. x z projektu 2. x. Tady jsou relevantní části souborů *. csproj* , které zobrazují různá cílová rozhraní a stejný `Sdk` balíček:
 
@@ -615,7 +615,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Například:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage` ). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()` . Použijte `Binder` parametr, ne `IBinder` .  Zde je příklad:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

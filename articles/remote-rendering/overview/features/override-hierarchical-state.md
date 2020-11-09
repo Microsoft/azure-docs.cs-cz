@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb120a533e4d11b34bb9712bf0164cec5a7728ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207729"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380996"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
@@ -28,26 +28,26 @@ Můžete například zvážit model automobilu a chcete přepnout celý automobi
 
 Pevná sada stavů, které lze přepsat, jsou následující:
 
-* **`Hidden`**: Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
-* **`Tint color`**: Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
+* **`Hidden`** : Odpovídající sítě v grafu scény jsou skryté nebo zobrazené.
+* **`Tint color`** : Vykreslený objekt může mít barevný nádech s jeho individuálním barevným nádechem a váhou odstínu. Následující obrázek ukazuje barevný nádech okraje kolečka.
   
   ![Barevný nádech použitý k zapnutí objektu zeleně](./media/color-tint.png)
 
-* **`See-through`**: Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
+* **`See-through`** : Geometrie se vykresluje s poloviční transparentní, například k zobrazení vnitřních částí objektu. Následující obrázek ukazuje, že se celý automobil vykresluje v režimu zobrazení, s výjimkou červené brzdy Caliper:
 
   ![Režim zobrazení, který slouží k výběru vybraných objektů jako transparentní](./media/see-through.png)
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
-* **`Selected`**: Geometrie je vykreslena s [obrysem výběru](outlines.md).
+* **`Selected`** : Geometrie je vykreslena s [obrysem výběru](outlines.md).
 
   ![Možnost obrysu, která slouží k zvýraznění vybrané části](./media/selection-outline.png)
 
-* **`DisableCollision`**: Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
+* **`DisableCollision`** : Geometrie je vyjmuta z [prostorových dotazů](spatial-queries.md). **`Hidden`** Příznak nemá vliv na příznak stavu kolizí, takže tyto dva příznaky jsou často nastaveny dohromady.
 
-* **`UseCutPlaneFilterMask`**: Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes).
-![Selektivní vyjmuté plochy](./media/selective-cut-planes.png)
+* **`UseCutPlaneFilterMask`** : Použijte bitovou masku pro jednotlivé filtry k řízení vyjmuté roviny výběru. Tento příznak určuje, zda má být použita nebo zděděna jednotlivá maska filtru ze své nadřazené položky. Bitová maska bitového filtru je nastavena prostřednictvím `CutPlaneFilterMask` Vlastnosti. Podrobné informace o tom, jak filtrování funguje, najdete v [odstavci selektivních vyjmutých ploch](cut-planes.md#selective-cut-planes). Podívejte se na následující příklad, kde pouze Tire a ráfk jsou vyjmuty, zatímco zbytek scény zůstává neovlivněný.
+![Selektivní vyjmuté plochy](./media/selective-cut-planes-hierarchical-override.png)
 
 
 > [!TIP]
@@ -101,7 +101,7 @@ component->SetState(
 
 Instance `HierarchicalStateOverrideComponent` sama sebe nepřidává spoustu zatížení za běhu. Je ale vždy dobrým zvykem udržet počet aktivních komponent na nízké úrovni. Například při implementaci systému výběru, který zvýrazní vydaný objekt, se doporučuje odstranit komponentu při odebrání zvýraznění. Udržování komponent kolem neutrálních funkcí se může rychle přidat.
 
-Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo*více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance).
+Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo* více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance).
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 

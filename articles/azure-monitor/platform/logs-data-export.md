@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 972c32b5403a7e6f614161271b7cb7e88693e032
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335090"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380122"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -325,7 +325,6 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
-| ContainerLog | |
 | ContainerNodeInventory | |
 | ContainerServiceLog | |
 | CoreAzureBackup | |
@@ -343,7 +342,6 @@ Podporované tabulky jsou aktuálně omezené na ty, které jsou uvedené níže
 | DnsInventory | |
 | Dynamics365Activity | |
 | Událost | Částečná podpora. Některá data této tabulky se ingestují prostřednictvím účtu úložiště. Tato data se momentálně neexportují. |
-| ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |

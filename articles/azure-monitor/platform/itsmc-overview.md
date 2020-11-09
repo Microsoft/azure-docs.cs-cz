@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c34cd8e399a005f5eadb3751fb0575f6ecfc27ed
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102016"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380874"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí služby IT Service Management Connector
 
@@ -57,7 +57,7 @@ Než budete moct vytvořit připojení, musíte přidat ITSMC.
 
 3. V části **pracovní prostor OMS** vyberte pracovní prostor Azure Log Analytics, do kterého chcete nainstalovat ITSMC.
    >[!NOTE]
-   > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory* .
+   > * V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory*.
    > * ITSMC se dá nainstalovat jenom do Log Analytics pracovních prostorů v následujících oblastech: Východní USA, Západní USA 2, Střed USA – jih, Středozápadní USA, US Gov – Arizona, US Gov – Virginie, Kanada – střed, Západní Evropa, Jižní Velká Británie, jihovýchodní Asie, Japonsko – východ, Střed Indie a Austrálie – jihovýchod.
 
 
@@ -65,9 +65,9 @@ Než budete moct vytvořit připojení, musíte přidat ITSMC.
 
    ![Snímek obrazovky zobrazující část Log Analytics pracovní prostor](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory* .
+   >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako *Log Analytics pracovní prostory*.
 
-5. Vyberte **OK** .
+5. Vyberte **OK**.
 
 Po nasazení prostředku ITSMC se v pravém horním rohu okna zobrazí oznámení.
 
@@ -95,7 +95,7 @@ Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
    ![Snímek obrazovky zobrazující položku nabídky připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
    Tato stránka zobrazuje seznam připojení.
-1. Vyberte **Přidat připojení** .
+1. Vyberte **Přidat připojení**.
 
 4. Zadejte nastavení připojení, jak je popsáno v tématu [Konfigurace připojení ITSMC k vašim ITSMm produktům a službám](./itsmc-connections.md).
 
@@ -111,7 +111,7 @@ Po připravenou nástrojů ITSM dokončete tyto kroky a vytvořte připojení:
 
 ## <a name="template-definitions"></a>Definice šablon
    Existují typy pracovních položek, které mohou používat šablony, které jsou definovány nástrojem ITSM.
-Pomocí šablon můžete definovat pole, která budou automaticky vyplněna podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Šablony definujete v nástroji ITSM.
+Pomocí šablon můžete definovat pole, která budou automaticky vyplněna podle pevných hodnot, které jsou definovány jako součást skupiny akcí. Šablony definujete v nástroji ITSM. V rámci definice skupiny akcí můžete definovat, ve které šabloně se chcete použít.
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Vytváření pracovních položek ITSM z výstrah Azure
 
@@ -125,32 +125,34 @@ Skupiny akcí poskytují modulární a opakovaně použitelný způsob, jak akti
 
 Chcete-li vytvořit pracovní položky, použijte následující postup:
 
-1. V Azure Portal vyberte  **výstrahy** .
+1. V Azure Portal vyberte  **výstrahy**.
 2. V nabídce v horní části obrazovky vyberte **Spravovat akce** :
 
     ![Snímek obrazovky zobrazující položku nabídky spravovat akce](media/itsmc-overview/action-groups-selection-big.png)
 
    Zobrazí se okno **vytvořit skupinu akcí** .
 
-3. Vyberte **předplatné** a **skupinu prostředků** , ve kterých chcete vytvořit skupinu akcí. Zadejte **název skupiny akcí** a **zobrazované jméno** pro vaši skupinu akcí. Vyberte **Další: oznámení** .
+3. Vyberte **předplatné** a **skupinu prostředků** , ve kterých chcete vytvořit skupinu akcí. Zadejte **název skupiny akcí** a **zobrazované jméno** pro vaši skupinu akcí. Vyberte **Další: oznámení**.
 
     ![Snímek obrazovky, který ukazuje okno vytvořit skupinu akcí.](media/itsmc-overview/action-groups-details.png)
 
-4. V seznamu oznámení vyberte **Další: akce** .
-5. V seznamu akce vyberte v seznamu **typ akce** možnost **ITSM** . Zadejte **název** akce. Vyberte tlačítko pera, které představuje **Úpravy podrobností** .
+4. V seznamu oznámení vyberte **Další: akce**.
+5. V seznamu akce vyberte v seznamu **typ akce** možnost **ITSM** . Zadejte **název** akce. Vyberte tlačítko pera, které představuje **Úpravy podrobností**.
 6. V seznamu **předplatné** vyberte předplatné, ve kterém se nachází váš pracovní prostor Log Analytics. V seznamu **připojení** vyberte název konektoru ITSM. Za ním bude následovat název vašeho pracovního prostoru. Například MyITSMConnector (MyWorkspace).
 
 7. Vyberte typ **pracovní položky** .
 
-8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu** . V opačném případě v seznamu **šablon** vyberte existující [šablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a v polích šablony zadejte pevné hodnoty.
+8. Pokud chcete vyplnit předem vydaná pole s pevnými hodnotami, vyberte **použít vlastní šablonu**. V opačném případě v seznamu **šablon** vyberte existující [šablonu](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a v polích šablony zadejte pevné hodnoty.
 
 9. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá položka konfigurace mít svou vlastní pracovní položku. Pro každou položku konfigurace bude k dispozici jedna pracovní položka. Bude aktualizován podle výstrah, které budou vytvořeny.
 
-   Zrušíte-li zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
+   * V případě, že vyberete v rozevíracím seznamu pracovní položky "incident" nebo "Alert": Pokud zrušíte zaškrtnutí políčka **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** , bude každá výstraha vytvářet novou pracovní položku. Může existovat více než jedna výstraha na jednu položku konfigurace.
 
    ![Snímek obrazovky, který zobrazuje okno lístku ITSM.](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * V případě, že vyberete položku "událost" v rozevíracím seznamu pracovní položky: Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku protokolu** na výběr přepínačů, bude každá výstraha vytvářet novou pracovní položku. Pokud vyberete možnost **vytvořit jednotlivé pracovní položky pro každou položku konfigurace** v výběru přepínačů, bude mít každá položka konfigurace svou vlastní pracovní položku. 
 
-10. Vyberte **OK** .
+10. Vyberte **OK**.
 
 Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se výstraha aktivuje, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
@@ -247,7 +249,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 - Plánované koncové datum
 - Datum zahájení práce
 - Datum ukončení práce
-- Description
+- Popis
 - Počítač
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
@@ -294,7 +296,7 @@ ServiceDeskWorkItemType_s = "žádost o změnu"
 | PlannedEndDate_t  |   Plánované koncové datum |
 | WorkStartDate_t  | Skutečné datum zahájení |
 | WorkEndDate_t | Skutečné datum ukončení|
-| Description_s | Description |
+| Description_s | Popis |
 | Počítač  | Položka konfigurace |
 
 

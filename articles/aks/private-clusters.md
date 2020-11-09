@@ -4,27 +4,27 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 4ebc5e44f491b5ff5950a13771fe3d7179b6fc9f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5c45c01e34c4663657dbeee803fe0bb5cdae6a3c
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143082"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380568"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
-V privátním clusteru má Řídicí rovina nebo Server rozhraní API interní IP adresy, které jsou definované v dokumentu [RFC1918-Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918) . Pomocí privátního clusteru můžete zajistit, aby síťový provoz mezi serverem API a fondy uzlů zůstaly jenom v privátní síti.
+V privátním clusteru má řídicí plocha nebo Server rozhraní API interní IP adresy, které jsou definované v [RFC1918 přidělování adres privátního internetového](https://tools.ietf.org/html/rfc1918) dokumentu. Pomocí privátního clusteru můžete zajistit, aby síťový provoz mezi serverem API a fondy uzlů zůstaly jenom v privátní síti.
 
 Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spravovaném službou Azure Kubernetes (AKS). Cluster nebo fond uzlů zákazníka je v předplatném zákazníka. Server a cluster nebo fond uzlů můžou vzájemně komunikovat prostřednictvím [služby privátního propojení Azure][private-link-service] ve virtuální síti serveru API a privátního koncového bodu, který je vystavený v PODSÍTI clusteru AKS zákazníka.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Privátní cluster je dostupný ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+Privátní cluster je dostupný ve veřejných oblastech, Azure Government a v oblastech Azure Čína 21Vianet, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
 > [!NOTE]
 > Azure Government weby jsou podporovány, ale US Gov – Texas aktuálně nejsou podporovány z důvodu chybějící podpory privátních odkazů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Azure CLI verze 2.2.0 nebo novější
 
@@ -43,7 +43,7 @@ az group create -l westus -n MyResourceGroup
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-Kde *--Enable-Private-cluster* je povinný příznak pro privátní cluster. 
+Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster. 
 
 ### <a name="advanced-networking"></a>Pokročilé sítě  
 
@@ -59,7 +59,7 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-Kde *--Enable-Private-cluster* je povinný příznak pro privátní cluster. 
+Kde `--enable-private-cluster` je povinný příznak pro soukromý cluster. 
 
 > [!NOTE]
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
@@ -83,10 +83,10 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 3. V levém podokně vyberte odkaz **virtuální síť** .  
 4. Vytvořte nový odkaz pro přidání virtuální sítě virtuálního počítače do privátní zóny DNS. Může to trvat několik minut, než se odkaz na zónu DNS stane dostupným.  
 5. V Azure Portal přejděte do skupiny prostředků, která obsahuje virtuální síť vašeho clusteru.  
-6. V pravém podokně vyberte virtuální síť. Název virtuální sítě je ve tvaru *AKS-VNet- \* *.  
+6. V pravém podokně vyberte virtuální síť. Název virtuální sítě je ve tvaru *AKS-VNet- \**.  
 7. V levém podokně vyberte **partnerské vztahy**.  
-8. Vyberte **Přidat**, přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
-9. Do virtuální sítě, ve které máte virtuální počítač, vyberte **partnerské vztahy**, vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a v konfliktu virtuální sítě virtuálního počítače, partnerský vztah se nezdařil. Další informace najdete v tématu  [partnerský vztah virtuálních sítí][virtual-network-peering].
+8. Vyberte **Přidat** , přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
+9. Do virtuální sítě, ve které máte virtuální počítač, vyberte **partnerské vztahy** , vyberte virtuální síť AKS a vytvořte partnerský vztah. Pokud se rozsahy adres ve virtuální síti AKS a v konfliktu virtuální sítě virtuálního počítače, partnerský vztah se nezdařil. Další informace najdete v tématu  [partnerský vztah virtuálních sítí][virtual-network-peering].
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Střed a Paprskový s vlastním DNS
 

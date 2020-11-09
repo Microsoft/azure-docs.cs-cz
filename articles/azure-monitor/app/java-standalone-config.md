@@ -2,14 +2,14 @@
 title: Možnosti konfigurace-Azure Monitor Application Insights Java
 description: Možnosti konfigurace pro Azure Monitor Application Insights Java
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 7165afd77e3f60af5e00b92c1063247325897f9f
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331902"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381027"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Možnosti konfigurace pro Azure Monitor Application Insights Java
 
@@ -48,7 +48,7 @@ Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `appl
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
-To je povinné. Připojovací řetězec najdete v prostředku Application Insights:
+Připojovací řetězec je povinný. Připojovací řetězec najdete v prostředku Application Insights:
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Application Insights":::
 
@@ -105,7 +105,7 @@ Vzorkování se provádí jako funkce na ID operace (označované také jako ID 
 
 Pokud například nastavíte vzorkování na 10%, zobrazí se vám pouze 10% vašich transakcí, ale každá z těchto 10% bude mít kompletní podrobnosti transakce na konci.
 
-Tady je příklad, jak nastavit vzorkování pro zachycení přibližně **1/3 všech transakcí** – Ujistěte se prosím, že jste nastavili vzorkovací frekvenci, která je pro váš případ použití správná:
+Tady je příklad, jak nastavit vzorkování pro zachycení přibližně **1/3 všech transakcí** – Ujistěte se, že jste nastavili vzorkovací frekvenci, která je pro váš případ použití správná:
 
 ```json
 {
@@ -171,16 +171,16 @@ Pokud chcete přidat vlastní dimenze do všech telemetrie:
 
 Tato funkce je ve verzi Preview.
 
-Umožňuje konfigurovat pravidla, která budou použita pro telemetrii požadavků, závislostí a trasování, např.
+Umožňuje konfigurovat pravidla, která budou použita pro telemetrii požadavků, závislostí a trasování, například:
  * Maskovat citlivá data
  * Podmíněné přidání vlastních dimenzí
  * Aktualizace názvu telemetrie používaného pro agregaci a zobrazení
 
 Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalone-telemetry-processors.md) .
 
-## <a name="auto-collected-logging"></a>Automaticky shromážděné protokolování
+## <a name="autocollected-logging"></a>Protokolování s autoshromážděním
 
-Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí.
+Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování prováděné prostřednictvím těchto protokolovacích rozhraní se automaticky shromáždí.
 
 Ve výchozím nastavení se protokolování shromáždí jenom v případě, že se protokolování provádí na `INFO` úrovni nebo výše.
 
@@ -213,13 +213,16 @@ Jedná se o platné `level` hodnoty, které můžete zadat v `applicationinsight
 | TRACE (nebo nejlepší) | TRACE  | TRACE   | Nejlepší  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automaticky shromážděná metrika mikroměřiče (včetně metriky pohánějícího spouštěcího zařízení)
+## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatické shromáždění metrik mikroměřičů (včetně metriky pohánějícího spouštěcího zařízení)
 
-Pokud vaše aplikace používá [mikroměřiče](https://micrometer.io), pak se automaticky shromažďují metriky, které jsou odesílány do globálního registru mikroměřiče.
+Pokud vaše aplikace používá [mikroměřiče](https://micrometer.io), jsou metriky odesílané do globálního registru mikroměřiče shromažďovány.
 
-Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), budou se také automaticky shromažďovat metriky nakonfigurované pomocí pružinového spouštěcího válce.
+Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), budou se také shromažďovat metriky nakonfigurované pomocí pružinového spouštěcího válce.
 
-Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohánějícího spouštěcích procesorů):
+Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pružinového spouštěcího pohánějícího):
+
+> [!NOTE]
+> Vlastní metriky se účtují samostatně a můžou vygenerovat další náklady. Ujistěte se, že jste zkontrolovali podrobné [informace o cenách](https://azure.microsoft.com/pricing/details/monitor/). Pokud chcete zakázat metriky mikroměřičů a pružinového poháněcí, přidejte do konfiguračního souboru níže uvedenou konfiguraci.
 
 ```json
 {
@@ -244,7 +247,7 @@ Ve výchozím nastavení Application Insights Java 3,0 pošle metriku prezenčn�
 ```
 
 > [!NOTE]
-> Frekvence tohoto prezenčního signálu se nedá snížit, protože data prezenčního signálu se také používají ke sledování využití Application Insights.
+> Frekvence prezenčního signálu se nedá snížit, protože data prezenčního signálu se také používají ke sledování využití Application Insights.
 
 ## <a name="http-proxy"></a>Proxy server HTTP
 
@@ -279,7 +282,7 @@ Pokud je vaše aplikace za bránou firewall a nemůže se připojit přímo k Ap
 
 "Samoobslužná Diagnostika" odkazuje na interní protokolování z Application Insights Java 3,0.
 
-To může být užitečné pro hledání a diagnostikování problémů Application Insights sebe sama.
+Tato funkce může být užitečná pro hledání a diagnostikování problémů Application Insights sebe sama.
 
 Ve výchozím nastavení Application Insights Java 3,0 protokoluje na úrovni `INFO` souboru `applicationinsights.log` i konzole, které odpovídají této konfiguraci:
 

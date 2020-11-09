@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: cb532098cda290654d6bdebe9cec2edab8ccbf99
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 6393b0b8d794345fded95718a2581ae9b929ad49
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355783"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381146"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Přesunutí instance digitálních vláken Azure do jiné oblasti Azure
 
@@ -120,7 +120,7 @@ Dále dokončíte přesunutí instance vytvořením nové instance v cílové ob
 
 ### <a name="create-a-new-instance"></a>Vytvořit novou instanci
 
-Nejdřív vytvořte novou instanci digitálních vláken Azure v cílové oblasti. Postupujte podle kroků v části [Nastavení instance a ověřování](how-to-set-up-instance-portal.md). Pamatujte na tyto ukazatele:
+Nejdřív vytvořte novou instanci digitálních vláken Azure v cílové oblasti. Postupujte podle kroků v tématu [Postupy: nastavení instance a ověřování](how-to-set-up-instance-portal.md). Pamatujte na tyto ukazatele:
 
 * Stejný název můžete zachovat pro novou instanci, *Pokud* se nachází v jiné skupině prostředků. Pokud potřebujete použít stejnou skupinu prostředků, která obsahuje původní instanci, bude vaše nová instance potřebovat vlastní jedinečný název.
 * Až se zobrazí výzva k zadání umístění, zadejte novou cílovou oblast.

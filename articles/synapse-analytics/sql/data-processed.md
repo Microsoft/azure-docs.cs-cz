@@ -1,6 +1,6 @@
 ---
-title: Data zpracovaná s fondem SQL bez serveru
-description: Tento dokument popisuje, jak se zpracovávají data při dotazování na data v Azure Storage pomocí fondu SQL bez serveru.
+title: Data zpracovaná pomocí fondu SQL bez serveru
+description: Tento dokument popisuje, jak se počítá množství zpracovaná data při dotazování dat ve službě Data Lake.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,76 +9,82 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 06eb02aa3dd4d5fc8bd3605dac480d5afa52d5fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: a108e5fdd30c21cdb7771e3f683dad22773653a4
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424031"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381197"
 ---
-# <a name="data-processed-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Data zpracovaná s neserverovým fondem SQL ve službě Azure synapse Analytics
+# <a name="data-processed-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Data zpracovaná pomocí fondu SQL bez serveru ve službě Azure synapse Analytics
 
-Zpracovaná data jsou množství dat, která jsou dočasně uložena v systému při provádění dotazu a jsou tvořena:
+*Zpracovaná data* jsou množství dat, která systém dočasně ukládá během spuštění dotazu. Zpracovaná data se skládají z následujících množství:
 
-- Objem dat načtených z úložiště – to zahrnuje:
-  - Množství čtených dat při čtení dat
-  - Množství čtených dat při čtení metadat (pro formáty souborů obsahující metadata, jako je Parquet)
-- Množství dat v mezilehlých výsledcích – data přenesená mezi uzly během provádění dotazu, včetně přenosu dat do koncového bodu v nekomprimovaném formátu. 
-- Množství dat zapsaných do úložiště – Pokud použijete CETAS k exportu sady výsledků do úložiště, bude se vám účtovat za zapsané bajty a množství zpracovaných dat pro vybranou součást CETAS.
+- Objem dat načtených z úložiště Tato částka zahrnuje:
+  - Čtení dat při čtení dat.
+  - Čtení dat při čtení metadat (pro formáty souborů obsahující metadata, jako je Parquet).
+- Množství dat v mezilehlých výsledcích. Tato data se přenesou mezi uzly během spuštění dotazu. Zahrnuje přenos dat do vašeho koncového bodu v nekomprimovaném formátu. 
+- Množství dat zapsaných do úložiště Pokud používáte CETAS k exportu sady výsledků do úložiště, pak se množství zapsaných dat přidá do množství zpracovaných dat pro vybranou součást CETAS.
 
-Čtení souborů z úložiště je vysoce optimalizované a používá:
+Čtení souborů z úložiště je vysoce optimalizované. Proces používá:
 
-- Předběžné načítání – což může snížit režii množství čtených dat. Pokud dotaz přečte celý soubor, nebude nijak režie. Pokud je soubor částečně načtený, jako v prvních N dotazech, bude se při předběžném načítání číst trochu více dat.
-- Optimalizovaný analyzátor CSV – Pokud při čtení souborů CSV použijete PARSER_VERSION = "2.0", výsledkem bude mírné zvýšení množství dat načtených z úložiště.  Optimalizovaný analyzátor CSV čte soubory paralelně v blocích se stejnou velikostí. Nezaručujeme, že bloky budou obsahovat celé řádky. Aby bylo zajištěno, že jsou všechny řádky analyzovány, budou čteny i malé fragmenty sousedících bloků dat, což zvyšuje množství režie.
+- Přednačtení, které může znamenat určitou režii množství čtených dat. Pokud dotaz přečte celý soubor, vyplatí se žádná režie. Pokud je soubor částečně čtený, například v prvních N dotazech, pak se načtou další data pomocí předběžného načítání.
+- Optimalizovaný analyzátor hodnot oddělených čárkami (CSV). Pokud ke čtení souborů CSV používáte PARSER_VERSION = "2.0", pak se objem dat načtených z úložiště mírně zvyšuje. Optimalizovaný analyzátor CSV čte soubory paralelně v blocích se stejnou velikostí. Bloky dat nemusí nutně obsahovat celé řádky. Aby bylo zajištěno, že jsou všechny řádky analyzovány, optimalizovaný analyzátor CSV také přečte malé fragmenty sousedících bloků dat. Tento proces přidá malé množství režijních nákladů.
 
 ## <a name="statistics"></a>Statistika
 
-Optimalizátor dotazů fondu SQL bez serveru spoléhá na statistiku pro generování optimálních plánů spouštění dotazů. Statistiku můžete vytvořit ručně nebo je automaticky vytvořit bez serveru SQL fondu bez serveru. V obou případech se Statistika vytvoří spuštěním samostatného dotazu, který vrátí konkrétní sloupec v zadané vzorkovací frekvenci. Tento dotaz má přidružené množství zpracovaných dat.
+Optimalizátor dotazů fondu SQL bez serveru spoléhá na statistiku pro generování optimálních plánů spouštění dotazů. Statistiky můžete vytvořit ručně. V opačném případě je fond SQL bez serveru automaticky vytvoří. V obou případech je statistika vytvořena spuštěním samostatného dotazu, který vrátí konkrétní sloupec s poskytnutou vzorkovací frekvencí. Tento dotaz má přidružené množství zpracovaných dat.
 
-Pokud spouštíte stejný nebo jakýkoli jiný dotaz, který by měl těžit z vytvořených statistik, budou se v případě potřeby znovu používat statistiky a pro vytváření statistik nebudou zpracována žádná další data.
+Pokud spustíte stejný nebo jakýkoli jiný dotaz, který by měl těžit z vytvořených statistik, pak se statistiky znovu použijí, pokud je to možné. Pro vytváření statistik nejsou zpracovaná žádná další data.
 
-Vytváření statistik pro sloupec Parquet bude mít za následek, že se ze souborů přečtou pouze relevantní sloupce. Vytváření statistik pro sloupec CSV bude mít za následek čtení a analýzu celých souborů.
+Při vytváření statistik pro sloupec Parquet je ze souborů čten pouze příslušný sloupec. Při vytváření statistik pro sloupec CSV jsou načteny a analyzovány celé soubory.
 
 ## <a name="rounding"></a>Zaokrouhlení
 
-Množství zpracovaných dat se zaokrouhlí na jeden dotaz na nejbližších MB, přičemž pro každý dotaz se zpracuje minimálně 10 MB dat.
+Množství zpracovaných dat se zaokrouhluje na jeden dotaz na nejbližší MB. Každý dotaz má nejméně 10 MB zpracovaných dat.
 
-## <a name="what-is-not-included-in-data-processed"></a>Co není součástí zpracovaných dat
+## <a name="what-data-processed-doesnt-include"></a>Která data zpracovaná nebudou zahrnovat
 
-- Metadata na úrovni serveru (jako přihlašování, role, přihlašovací údaje na úrovni serveru)
-- Databáze, které ve svém koncovém bodu vytvoříte jako tyto databáze obsahují jenom metadata (například uživatele, role, schémata, zobrazení, vložené TVF, uložené procedury, přihlašovací údaje v oboru databáze, externí zdroje dat, formáty externích souborů, externí tabulky).
-  - Použijete-li odvození schématu, budou fragmenty souborů načteny, aby byly odvozeny názvy sloupců a datové typy.
-- Příkazy DDL s výjimkou vytvoření statistik budou zpracovávat data ze služby Storage na základě zadaného ukázkového procenta.
-- Dotazy jenom na metadata
+- Metadata na úrovni serveru (jako přihlašování, role a přihlašovací údaje na úrovni serveru).
+- Databáze, které vytvoříte ve svém koncovém bodu. Tyto databáze obsahují jenom metadata (například uživatele, role, schémata, zobrazení, vložené funkce vracející tabulku [TVF], uložené procedury, přihlašovací údaje v oboru databáze, externí zdroje dat, formáty externích souborů a externí tabulky).
+  - Použijete-li odvození schématu, jsou fragmenty souborů čteny k odvození názvů sloupců a datových typů a množství čtených dat je přidáno k množství zpracovaných dat.
+- Příkazy jazyka DDL (Data Definition Language), s výjimkou příkazu CREATE STATISTICs, protože zpracovávají data z úložiště na základě zadaného ukázkového procenta.
+- Dotazy, které jsou jenom metadata.
 
-## <a name="reduce-amount-of-data-processed"></a>Snížení objemu zpracovaných dat
+## <a name="reducing-the-amount-of-data-processed"></a>Omezení množství zpracovaných dat
 
-Můžete optimalizovat množství zpracovaných dat na dotazování a získat lepší výkon díky dělení a převodu dat do komprimovaného sloupcového formátu, jako je Parquet.
+Můžete optimalizovat množství zpracovaných dat na dotazování a zvýšit výkon pomocí dělení a převodu dat na komprimovaný formát založený na sloupcích, jako je Parquet.
 
 ## <a name="examples"></a>Příklady
 
-Řekněme, že existují dvě tabulky, z nichž každá má stejná data v pěti sloupcích stejné velikosti:
+Představte si tři tabulky.
 
-- population_csv tabulky s použitím 5 TB souborů CSV
-- population_parquet tabulka, která se zálohuje o 1 TB souborů Parquet – Tato tabulka je menší než předchozí, protože Parquet obsahuje komprimovaná data.
-- very_small_csv tabulce s 100 KB souborů CSV
+- Tabulka population_csv se zálohuje o 5 TB souborů CSV. Soubory jsou uspořádány v pěti sloupcích stejné velikosti.
+- Tabulka population_parquet má stejná data jako population_csv tabulka. Je zajištěno 1 TB souborů Parquet. Tato tabulka je menší než předchozí, protože data jsou komprimována ve formátu Parquet.
+- Tabulka very_small_csv se zálohuje o 100 KB souborů CSV.
 
-**Dotaz #1** : Vyberte Sum (naplnění) z population_csv
+**Dotaz 1** : Vyberte Sum (populace) z population_csv
 
-Tento dotaz načte a analyzuje celé soubory a získá hodnoty pro sloupec populace. Uzly budou zpracovávat fragmenty této tabulky, součet populace pro jednotlivé fragmenty se přenese mezi uzly a Konečný součet se přenese do vašeho koncového bodu. Tento dotaz zpracuje 5 TB dat Plus malým režijním nákladům při přenosu částek fragmentů.
+Tento dotaz čte a analyzuje celé soubory, aby získal hodnoty pro sloupec populace. Uzly zpracovávají fragmenty této tabulky a součet obyvatel pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 
-**Dotaz #2** : Vyberte Sum (naplnění) z population_parquet
+Tento dotaz zpracovává 5 TB dat a snižuje režijní náklady na převod součtů fragmentů.
 
-Dotazování komprimovaných formátů a sloupcově orientovaných formátů, jako je Parquet, má za následek čtení méně dat než v předchozím dotazu, protože fond SQL bez serveru načte jeden komprimovaný sloupec místo celého souboru. V tomto případě bude načteno 0,2 TB (pět sloupců se stejnou velikostí, 0,2 TB každého). Uzly budou zpracovávat fragmenty této tabulky, součet populace pro jednotlivé fragmenty se přenese mezi uzly a Konečný součet se přenese do vašeho koncového bodu. Tento dotaz zpracuje 0,2 TB Plus malým režijním nákladům na převod součtů fragmentů.
+**Dotaz 2** : Vyberte Sum (populace) z population_parquet
 
-**Dotaz #3** : SELECT * FROM population_parquet
+Při dotazování na komprimované a sloupcové formáty, jako je Parquet, je méně dat čteno než v dotazu 1. Vidíte tento výsledek, protože fond SQL bez serveru čte jeden komprimovaný sloupec místo celého souboru. V tomto případě je čtena 0,2 TB. (Pět sloupců stejné velikosti je 0,2 TB.) Uzly zpracovávají fragmenty této tabulky a součet obyvatel pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
 
-Tento dotaz načte všechny sloupce a převede všechna data v nekomprimovaném formátu. Pokud je kompresní formát 5:1, proces bude mít 6 TB, protože bude přečten 1 TB + přenos 5 TB nekomprimovaných dat.
+Tento dotaz zpracovává 0,2 TB a zvyšuje velkou režii pro přenos součtů fragmentů.
 
-**Dotaz #4** : Vyberte počet (*) z very_small_csv
+**Dotaz 3** : vyberte * z population_parquet
 
-Tento dotaz načte celé soubory. Celková velikost souborů v úložišti pro tuto tabulku je 100 KB. Uzly budou zpracovávat fragmenty této tabulky. součet pro každý fragment se přenese mezi uzly a Konečný součet se přenese do vašeho koncového bodu. Tento dotaz zpracuje o něco více než 100 KB dat. Množství zpracovaných dat pro tento dotaz se zaokrouhlí na 10 MB, jak je uvedeno v [Zaokrouhlení](#rounding).
+Tento dotaz přečte všechny sloupce a převede všechna data v nekomprimovaném formátu. Pokud je kompresní formát 5:1, zpracuje dotaz 6 TB, protože čte 1 TB a převede 5 TB nekomprimovaných dat.
+
+**Dotaz 4** : Vyberte počet (*) z very_small_csv
+
+Tento dotaz čte celé soubory. Celková velikost souborů v úložišti pro tuto tabulku je 100 KB. Uzly zpracovávají fragmenty této tabulky a součet pro jednotlivé fragmenty se přenáší mezi uzly. Konečný součet se převede do vašeho koncového bodu. 
+
+Tento dotaz zpracovává mírně více než 100 KB dat. Objem dat zpracovaných pro tento dotaz se zaokrouhluje na 10 MB, jak je uvedeno v části [Zaokrouhlení](#rounding) tohoto článku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět, jak optimalizovat dotazy na výkon, podívejte se na [osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md).
+Informace o tom, jak optimalizovat dotazy pro výkon, najdete v tématu [osvědčené postupy pro fond SQL bez serveru](best-practices-sql-on-demand.md).

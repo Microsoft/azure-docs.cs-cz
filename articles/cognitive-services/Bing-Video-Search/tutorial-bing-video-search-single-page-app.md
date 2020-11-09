@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b750554ec231cddd0403c89a33f2af4349ff188
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098991"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379867"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním videí
 
@@ -47,7 +47,7 @@ Tato ukázková aplikace předvádí, jak:
 
 Stránka kurzu je zcela nezávislá. Nepoužívá žádná externí rozhraní, šablony stylů ani soubory obrázků. Používá jenom běžně podporované funkce jazyka JavaScript a funguje s aktuálními verzemi všech hlavních webových prohlížečů.
 
-V tomto kurzu probereme vybrané části zdrojového kódu. K dispozici je kompletní [zdrojový kód](tutorial-bing-video-search-single-page-app-source.md). Pokud chcete spustit příklad, zkopírujte a vložte zdrojový kód do textového editoru a uložte ho jako `bing.html`.
+V tomto kurzu probereme vybrané části zdrojového kódu. K dispozici je kompletní [zdrojový kód](). Pokud chcete spustit příklad, zkopírujte a vložte zdrojový kód do textového editoru a uložte ho jako `bing.html`.
 
 ## <a name="app-components"></a>Komponenty aplikace
 Stejně jako každá jednostránková webová aplikace i tato aplikace zahrnuje tři části:
@@ -314,7 +314,7 @@ Výsledky hledání se v odpovědi JSON vrátí jako objekt `value` nejvyšší 
 
 Rozhraní API Bingu pro vyhledávání zpráv vrátí až čtyři různé druhy souvisejících výsledků, každý ve vlastním objektu nejvyšší úrovně. Jsou to tyto:
 
-|Relace|Description|
+|Relace|Popis|
 |-|-|
 |`pivotSuggestions`|Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“.|
 |`queryExpansions`|Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.|

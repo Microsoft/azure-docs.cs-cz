@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/30/2020
-ms.openlocfilehash: 75cacf0dc899f47d55c44e5262b23bae73bfa7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df6da5ce1dcd5213b3e54abe54c087bfdd8480c5
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88924363"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379969"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání Knowledge Store v Azure Portal
 
@@ -21,9 +21,9 @@ Znalostní báze je funkce služby Azure Kognitivní hledání, která uchováv�
 
 Kanál přijímá nestrukturované textové a obrázkové obsahy, aplikuje AI s využitím Cognitive Services (například při zpracování OCR a přirozeného jazyka) a zapisuje nové struktury a informace, které dříve neexistovaly. Jedním z fyzických artefaktů vytvořených kanálem je [znalostní báze](knowledge-store-concept-intro.md), ke kterému můžete přistupovat prostřednictvím nástrojů pro účely analýzy a průzkumu obsahu.
 
-V tomto rychlém startu spojíte služby a data v cloudu Azure a vytvoříte úložiště znalostí. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je původní textový obsah a obsah generovaný AI, který můžete zobrazit na portálu (Průzkumník služby[Storage](knowledge-store-view-storage-explorer.md)).
+V tomto rychlém startu spojíte služby a data v cloudu Azure a vytvoříte úložiště znalostí. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je původní textový obsah a obsah generovaný AI, který můžete zobrazit na portálu ([Průzkumník služby Storage](knowledge-store-view-storage-explorer.md)).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
@@ -70,15 +70,15 @@ Nyní jste připraveni na přesun průvodce **importem dat** .
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-1. V části **připojit k vašim datům**vyberte **úložiště objektů BLOB v Azure**, vyberte účet a kontejner, který jste vytvořili. 
+1. V části **připojit k vašim datům** vyberte **úložiště objektů BLOB v Azure** , vyberte účet a kontejner, který jste vytvořili. 
 
-1. Jako **název**zadejte `hotel-reviews-ds` .
+1. Jako **název** zadejte `hotel-reviews-ds` .
 
-1. V části **režim analýzy**vyberte **text s oddělovači**a potom zaškrtněte políčko **první řádek obsahuje záhlaví** . Ujistěte se, že **znak oddělovače** je čárka (,).
+1. V části **režim analýzy** vyberte **text s oddělovači** a potom zaškrtněte políčko **první řádek obsahuje záhlaví** . Ujistěte se, že **znak oddělovače** je čárka (,).
 
-1. Do pole **připojovací řetězec**vložte připojovací řetězec, který jste zkopírovali ze stránky **přístupové klíče** v Azure Storage.
+1. Do pole **připojovací řetězec** vložte připojovací řetězec, který jste zkopírovali ze stránky **přístupové klíče** v Azure Storage.
 
-1. Do pole **kontejnery**zadejte název kontejneru objektů blob, který uchovává data.
+1. Do pole **kontejnery** zadejte název kontejneru objektů blob, který uchovává data.
 
     Stránka by měla vypadat podobně jako na následujícím snímku obrazovky.
 
@@ -94,11 +94,11 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 1. Rozbalte položku **Přidat rozšíření**.
 
-1. Do **dovednosti název**zadejte `hotel-reviews-ss` .
+1. Do **dovednosti název** zadejte `hotel-reviews-ss` .
 
-1. V **poli zdrojová data**zadejte **reviews_text**.
+1. V **poli zdrojová data** zadejte **reviews_text**.
 
-1. Pro **úroveň podrobností obohacení**vyberte **stránky (5000 znaků bloků dat)** .
+1. Pro **úroveň podrobností obohacení** vyberte **stránky (5000 znaků bloků dat)** .
 
 1. Vyberte tyto dovednosti v rozpoznávání:
     + **Extrakce klíčových frází**
@@ -109,7 +109,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 1. Rozbalte položku **Uložit obohacení do úložiště znalostí**.
 
-1. Vyberte tyto **projekce tabulky Azure**:
+1. Vyberte tyto **projekce tabulky Azure** :
     + **Dokumenty**
     + **Stránky**
     + **Klíčové fráze**
@@ -126,7 +126,7 @@ V tomto kroku průvodce vytvoříte dovednosti s obohacením vnímání dovednos
 
 V tomto kroku průvodce nakonfigurujete index pro volitelné dotazy fulltextového vyhledávání. Průvodce zobrazí ukázkový zdroj dat pro odvození polí a datových typů. Stačí vybrat atributy pro požadované chování. Například **atribut, který lze** načíst, umožní službě Search vracet hodnotu pole, zatímco **vyhledávání** umožní fulltextové vyhledávání v poli.
 
-1. Jako **název indexu**zadejte `hotel-reviews-idx` .
+1. Jako **název indexu** zadejte `hotel-reviews-idx` .
 
 1. U atributů přijměte výchozí výběry: **Retrievable** načístelné a **prohledávatelné** pro nová pole, která vytváří kanál.
 
@@ -140,9 +140,9 @@ V tomto kroku průvodce nakonfigurujete index pro volitelné dotazy fulltextové
 
 V tomto kroku průvodce nakonfigurujete indexer, který se bude načítat zdrojem dat, dovednosti a indexem, který jste definovali v předchozím kroku průvodce.
 
-1. Jako **název**zadejte `hotel-reviews-idxr` .
+1. Jako **název** zadejte `hotel-reviews-idxr` .
 
-1. Pro **plán**ponechte **výchozí nastavení**.
+1. Pro **plán** ponechte **výchozí nastavení**.
 
 1. Kliknutím na **Odeslat** spusťte indexer. V tomto kroku dojde k extrakci dat, indexování a uplatnění odbornosti rozpoznávání.
 

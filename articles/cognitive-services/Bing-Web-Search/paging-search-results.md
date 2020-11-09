@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074093"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381061"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Postup stránky pomocí výsledků z rozhraní API pro vyhledávání Bingu
 
@@ -27,7 +27,7 @@ ms.locfileid: "93074093"
 
 Když odešlete volání webu Bing web, Custom, image, News nebo Vyhledávání videí rozhraní API, Bing vrátí podmnožinu celkového počtu výsledků, které mohou být pro dotaz relevantní. K získání odhadovaného celkového počtu dostupných výsledků získáte přístup k poli objektu odpovědi `totalEstimatedMatches` . 
 
-Například: 
+Zde je příklad: 
 
 ```json
 {
@@ -73,15 +73,15 @@ Host: api.cognitive.microsoft.com
 Pokud používáte rozhraní API pro Image Bingu a videa, můžete `nextOffset` hodnotu použít k zamezení duplicit výsledků hledání. Získat hodnotu z `Images` `Videos` objektů nebo odpovědí a použít ji ve svých žádostech s `offset` parametrem.  
 
 > [!NOTE]
-> Rozhraní API Bingu pro vyhledávání na webu vrátí výsledky hledání, které mohou zahrnovat webové stránky, obrázky, videa a novinky. Při procházení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu se jedná o [webové stránky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)jenom stránkování, a ne další typy odpovědí, jako jsou obrázky nebo novinky. Výsledky hledání v `WebPage` objektech mohou zahrnovat výsledky, které se zobrazují i v jiných typech odpovědí.
+> Rozhraní API Bingu pro vyhledávání na webu vrátí výsledky hledání, které mohou zahrnovat webové stránky, obrázky, videa a novinky. Při procházení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu se jedná o [webové stránky](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage)jenom stránkování, a ne další typy odpovědí, jako jsou obrázky nebo novinky. Výsledky hledání v `WebPage` objektech mohou zahrnovat výsledky, které se zobrazují i v jiných typech odpovědí.
 >
 > Použijete-li `responseFilter` parametr dotazu bez zadání hodnot filtru, nepoužívejte `count` `offset` parametry a. 
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Jaká jsou rozhraní API pro Vyhledávání na webu Bingu?](bing-api-comparison.md)
-* [Referenční informace k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Odkaz na rozhraní API pro vlastní vyhledávání Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání zpráv v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání videí v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Odkaz na rozhraní API Bingu pro vyhledávání obrázků v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Referenční informace k rozhraní API Bingu pro vyhledávání na webu verze 7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Odkaz na rozhraní API pro vlastní vyhledávání Bingu v7](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání zpráv v7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání videí v7](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání obrázků v7](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

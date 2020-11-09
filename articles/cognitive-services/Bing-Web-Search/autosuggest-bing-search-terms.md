@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/03/2019
 ms.author: aahi
-ms.openlocfilehash: 15a2d3b433236d74f3fa3d09e38071bacae02508
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5bd5ff0e49b125277255ec8e5c216583d75043a0
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078828"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381129"
 ---
 # <a name="autosuggest-bing-search-terms-in-your-application"></a>Automatické navrhování vyhledávacích podmínek Bingu v aplikaci
 
@@ -26,9 +26,9 @@ ms.locfileid: "93078828"
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Po zadání hledaného výrazu musí být adresa URL zakódovaná, než se nastaví parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Po zadání hledaného výrazu musí být adresa URL zakódovaná, než se nastaví parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
-Pokud termín dotazu obsahuje pravopisnou chybu, odpověď vyhledávání zahrnuje objekt [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) . Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
+Pokud termín dotazu obsahuje pravopisnou chybu, odpověď vyhledávání zahrnuje objekt [QueryContext](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) . Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
 
 ```json
 "queryContext": {
@@ -48,4 +48,4 @@ Tyto informace můžete použít, chcete-li uživateli upozornit, že jste při 
 
 ## <a name="see-also"></a>Viz také  
 
-* [Odkaz na rozhraní API Bingu pro vyhledávání na webu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání na webu](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

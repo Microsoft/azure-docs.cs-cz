@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375614"
+ms.locfileid: "94380893"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -96,14 +96,14 @@ Celková omezení obsahu ve znalostní bázi Knowledge Base:
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvořit limity volání ve znalostní bázi Knowledge Base:
 Tyto hodnoty udávají omezení pro každou akci vytvoření znalostní báze. To znamená, že kliknete na *vytvořit KB* nebo zavolat rozhraní CreateKnowledgeBase API.
-* Maximální počet alternativních otázek na odpověď: 300
+* Doporučený maximální počet alternativních otázek na odpověď: 300
 * Maximální počet adres URL: 10
 * Maximální počet souborů: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Aktualizovat omezení volání znalostní báze
 Tyto hodnoty udávají omezení pro každou akci aktualizace. To znamená, že kliknete na *Uložit a naučíte* se volat rozhraní UpdateKnowledgeBase API.
 * Délka každého názvu zdroje: 300
-* Maximální počet přidaných nebo odstraněných alternativních otázek: 300
+* Doporučený maximální počet přidaných nebo odstraněných alternativních otázek: 300
 * Maximální počet přidaných nebo odstraněných polí metadat: 10
 * Maximální počet adres URL, které lze aktualizovat: 5
 

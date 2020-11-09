@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 68cde1be5f1a1cb0e8757f3143cac9363c6d9ddd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5759cd80278d20ee383fbe5922e43d250babe09f
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376021"
+ms.locfileid: "94380670"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rychlý Start: vytvoření, výuka a publikování znalostní báze QnA Maker Knowledge Base
 
@@ -117,7 +117,7 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 
 ## <a name="test-the-knowledge-base"></a>Testování znalostní báze
 
-# <a name="qnamaker-v1"></a>[Qnamakerem v1](#tab/v1)
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
 1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily.
 2. Do textového pole zadejte ukázkový dotaz uživatele.
@@ -130,7 +130,7 @@ V pravém horním rohu vyberte **Uložit a výuka** a uložte úpravy a výukov�
 
 4. Vyberte znovu **test** pro zavření **testovacího** panelu.
 
-# <a name="qnamaker-v2-preview"></a>[Qnamakerem v2 (Preview)](#tab/v2)
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
 
 1. Na portálu QnA Maker v pravém horním rohu vyberte **test** , abyste otestovali, že provedené změny se projevily.
 2. Do textového pole zadejte ukázkový dotaz uživatele.

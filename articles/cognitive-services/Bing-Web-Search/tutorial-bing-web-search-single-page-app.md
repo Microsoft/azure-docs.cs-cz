@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095437"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381282"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání na webu
 
@@ -36,14 +36,14 @@ Tato ukázková aplikace může provádět následující akce:
 > * Správa klíčů předplatného
 > * Ošetření chyb
 
-Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API Bingu pro vyhledávání.
+Abyste mohli použít tuto aplikaci, potřebujete [účet služby Azure Cognitive Services](../cognitive-services-apis-create-account.md) s rozhraními API Bingu pro vyhledávání.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tady je pár věcí, které budete potřebovat ke spuštění aplikace:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 
 * Node.js 8 nebo novější
 
@@ -86,7 +86,7 @@ Tento kurz se zaměřuje na `scripts.js` a logiku potřebnou k volání rozhran�
 
 ## <a name="query-options"></a>Možnosti proxy
 
-Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). Tato tabulka obsahuje podrobný přehled, jak můžou uživatelé filtrovat výsledky hledání pomocí ukázkové aplikace:
+Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [rozhraní API Bingu pro vyhledávání na webu verze 7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters). Tato tabulka obsahuje podrobný přehled, jak můžou uživatelé filtrovat výsledky hledání pomocí ukázkové aplikace:
 
 | Parametr | Popis |
 |-----------|-------------|
@@ -99,7 +99,7 @@ Formulář HTML obsahuje možnosti, které se mapují k parametrům dotazu v [ro
 | `offset` | Skryté pole. Odsazení prvního výsledku hledání v žádosti, které slouží ke stránkování. S každou novou žádostí se hodnota resetuje na `0`. |
 
 > [!NOTE]
-> Rozhraní API Bingu pro vyhledávání na webu nabízí další parametry dotazu umožňující zpřesnit výsledky hledání. Tato ukázka jich používá jenom pár. Úplný seznam dostupných parametrů najdete v tématu s [referenční dokumentací k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
+> Rozhraní API Bingu pro vyhledávání na webu nabízí další parametry dotazu umožňující zpřesnit výsledky hledání. Tato ukázka jich používá jenom pár. Úplný seznam dostupných parametrů najdete v tématu s [referenční dokumentací k rozhraní API Bingu pro vyhledávání na webu verze 7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 Funkce `bingSearchOptions()` převede tyto možnosti tak, aby odpovídaly formátu, který vyžaduje rozhraní API Bingu pro vyhledávání.
 
@@ -303,7 +303,7 @@ Chyby se zpracují voláním `renderErrorMessage()`. Pokud odpověď úspěšně
 
 ## <a name="display-search-results"></a>Zobrazení výsledků hledání
 
-Pro výsledky vrácené rozhraním API Bingu pro vyhledávání na webu existují [požadavky týkající se použití a zobrazení](useanddisplayrequirements.md). Protože odpověď může obsahovat různé typy výsledků, nestačí to k iteraci v rámci kolekce `WebPages` na nejvyšší úrovni. Místo toho použije ukázková aplikace k řazení výsledků podle specifikace `RankingResponse`.
+Pro výsledky vrácené rozhraním API Bingu pro vyhledávání na webu existují [požadavky týkající se použití a zobrazení](./use-display-requirements.md). Protože odpověď může obsahovat různé typy výsledků, nestačí to k iteraci v rámci kolekce `WebPages` na nejvyšší úrovni. Místo toho použije ukázková aplikace k řazení výsledků podle specifikace `RankingResponse`.
 
 > [!NOTE]
 > Pokud chcete pouze jeden typ výsledku, použijte parametr dotazu `responseFilter` nebo zvažte možnost použít jeden z koncových bodů Vyhledávání Bingu, jako je například Vyhledávání obrázků Bingu.

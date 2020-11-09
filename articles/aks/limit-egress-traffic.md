@@ -4,15 +4,14 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900477"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380207"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -39,7 +38,7 @@ _ Závislosti IP adres pro přenos bez HTTP/S (provoz TCP i UDP)
 * Do zařízení brány firewall lze umístit koncové body s plně kvalifikovaným názvem domény (FQDN) HTTP/HTTPS.
 * Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou u vašeho clusteru AKS lišit, a to na základě řady kvalifikátorů.
 * AKS pomocí kontroleru pro přístup vloží plně kvalifikovaný název domény jako proměnnou prostředí do všech nasazení v rámci Kube systému a serveru gatekeeper. tím zajistíte, aby veškerá systémová komunikace mezi uzly a serverem API používala plně kvalifikovaný název domény serveru API a ne IP Server API. 
-* Pokud máte aplikaci nebo řešení, které potřebuje komunikovat se serverem rozhraní API, je nutné přidat **Další** síťové pravidlo, které umožní *komunikaci TCP s portem 443 IP serveru rozhraní API* .
+* Pokud máte aplikaci nebo řešení, které potřebuje komunikovat se serverem rozhraní API, je nutné přidat **Další** síťové pravidlo, které umožní *komunikaci TCP s portem 443 IP serveru rozhraní API*.
 * Ve výjimečných případech, pokud existuje operace údržby, vaše IP adresa serveru API se může změnit. Plánované operace údržby, které můžou měnit IP adresy serveru API, se vždycky sdělují předem.
 
 
@@ -63,7 +62,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu.  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje služba Azure Content Delivery Network (CDN). |
 | **`management.azure.com`**       | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |
@@ -92,7 +90,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu. |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |
@@ -119,7 +116,6 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Vyžaduje se pro komunikaci mezi uzly < > serveru API. Nahraďte *\<location\>* oblastí, ve které je nasazený cluster AKS.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Vyžaduje se pro přístup k obrázkům v Microsoft Container Registry (MCR). Tento registr obsahuje obrázky nebo grafy první strany (například coreDNS atd.). Tyto image jsou potřebné ke správnému vytvoření a fungování clusteru, včetně operací škálování a upgradu. |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje Azure Content Delivery Network (CDN). |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Vyžaduje se pro MCR úložiště, které zajišťuje služba Azure Content Delivery Network (CDN). |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Vyžaduje se pro operace Kubernetes s rozhraním API Azure. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Vyžaduje se pro Azure Active Directory ověřování. |

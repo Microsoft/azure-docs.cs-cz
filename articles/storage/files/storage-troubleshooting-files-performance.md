@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9dfdbbd982503acc063ff88c74dfccde8677eaac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426481"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380228"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -26,15 +26,11 @@ Požadavky jsou omezeny, když jsou dosaženy limity IOPS, příchozí nebo odch
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. V Azure Portal přejít na účet úložiště.
 
-1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
+1. V nabídce vlevo v části **monitorování** vyberte **metriky**.
 
-1. Vyberte **Metriky**.
-
-1. Jako prostředek vyberte svůj účet úložiště.
-
-1. Jako obor názvů metriky vyberte **soubor** .
+1. Jako obor názvů metriky pro rozsah svého účtu úložiště vyberte **soubor** .
 
 1. Jako metriku vyberte **transakce** .
 
@@ -54,7 +50,7 @@ Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využ
 
 Pokud jsou většina vašich požadavků na střed (například CreateFile/OpenFile/CloseFile/QueryInfo/querydirectory), bude latence ve srovnání s operacemi čtení/zápisu horší.
 
-Pokud chcete potvrdit, jestli je většina vašich požadavků na střed, můžete použít stejné kroky jako v předchozím kroku. S výjimkou přidání filtru pro **ResponseType**přidejte filtr pro **název rozhraní API**.
+Pokud chcete potvrdit, jestli je většina vašich požadavků na střed, můžete použít stejné kroky jako v předchozím kroku. S výjimkou přidání filtru pro **ResponseType** přidejte filtr pro **název rozhraní API**.
 
 ![Filtrování názvu rozhraní API v metrikách](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
@@ -103,7 +99,7 @@ Jedná se o známý problém s implementací klienta SMB v systému Linux.
 
 - Rozprostře zatížení mezi více virtuálních počítačů.
 - Ve stejném virtuálním počítači použijte více přípojných bodů s možností **nosharesock** a rozprostřete zatížení mezi tyto přípojné body.
-- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání **Fsync** . U souborů Azure Tato možnost neovlivňuje konzistenci dat, ale může mít za následek zastaralá metadata souborů pro výpis adresáře (příkaz**ls-l** ). Přímo se dotazování na metadata souboru (**stat** Command) vrátí nejaktuálnější metadata souborů.
+- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání **Fsync** . U souborů Azure Tato možnost neovlivňuje konzistenci dat, ale může mít za následek zastaralá metadata souborů pro výpis adresáře (příkaz **ls-l** ). Přímo se dotazování na metadata souboru ( **stat** Command) vrátí nejaktuálnější metadata souborů.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro silná zatížení metadat, která zahrnují rozsáhlé operace otevření/zavření.
 
@@ -114,7 +110,7 @@ Nedostatečná podpora pro zapůjčení adresáře.
 ### <a name="workaround"></a>Alternativní řešení
 
 - Pokud je to možné, vyhněte se nadměrnému otevírání a zavírání popisovačům ve stejném adresáři v krátké době.
-- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec> ** as a Mount. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
+- U virtuálních počítačů se systémem Linux zvyšte časový limit mezipaměti položky adresáře zadáním **actimeo = \<sec>** as a Mount. Ve výchozím nastavení je to jedna sekunda, takže může pomáhat větší hodnota, například tři nebo pět.
 - Pro virtuální počítače se systémem Linux upgradujte jádro na 4,20 nebo vyšší.
 
 ## <a name="low-iops-on-centosrhel"></a>Nízká IOPS v CentOS/RHEL
@@ -175,61 +171,61 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Postup vytvoření výstrahy, pokud je sdílená složka omezená
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** .
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
 2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, vyberte metriku **transakcí** .
 6. V okně **Konfigurovat logiku signálu** klikněte na rozevírací seznam **název dimenze** a vyberte **typ odpovědi**.
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte **SUCCESSWITHTHROTTLING** (pro SMB) nebo **ClientThrottlingError** (pro REST).
 
-  > [!NOTE]
-  > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError**, klikněte na tlačítko **OK** a poté opakujte krok #7.
+   > [!NOTE]
+   > Pokud není uvedená hodnota dimenze SuccessWithThrottling nebo ClientThrottlingError, znamená to, že prostředek nebyl omezen. Chcete-li přidat hodnotu dimenze, klikněte na tlačítko **Přidat vlastní hodnotu** vedle rozevíracího seznamu **hodnoty dimenzí** , zadejte **SuccessWithThrottling** nebo **ClientThrottlingError** , klikněte na tlačítko **OK** a poté opakujte krok #7.
 
 8. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
 9. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 
-  > [!NOTE]
-  > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
+   > [!NOTE]
+   > Pokud je sdílená složka standardní sdílená složka, vyberte **všechny aktuální a budoucí hodnoty**. Rozevírací seznam hodnoty dimenze nebude zobrazovat seznam sdílených složek, protože pro standardní sdílené složky nejsou k dispozici metriky pro jednotlivé sdílené složky. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku.
 
 10. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
 
-  > [!TIP]
-  > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
+    > [!TIP]
+    > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
 11. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+12. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
 13. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-towards-being-throttled"></a>Jak vytvořit výstrahy, pokud se v rámci omezení podílu souborů úrovně Premium dospěje k omezení
 
-1. V **Azure Portal**přejít na svůj **účet úložiště** .
+1. V **Azure Portal** přejít na svůj **účet úložiště** .
 2. V části monitorování klikněte na možnost **výstrahy** a potom klikněte na tlačítko **+ nové pravidlo výstrahy**.
-3. Klikněte na **Upravit prostředek**, vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
+3. Klikněte na **Upravit prostředek** , vyberte **typ prostředku** pro účet úložiště a pak klikněte na **Hotovo**. Pokud je třeba název účtu úložiště contoso, vyberte prostředek contoso/File.
 4. Kliknutím na **vybrat podmínku** přidáte podmínku.
 5. Zobrazí se seznam signálů, které jsou pro účet úložiště podporované, a vyberte **výstupní** metriku.
 
-  > [!NOTE]
-  > Je nutné vytvořit 3 samostatné výstrahy, které budou upozorňovány, pokud příchozí, odchozí nebo transakční transakce překročí nastavenou prahovou hodnotu. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Takže pokud zadáte všechny podmínky do jedné výstrahy, budete upozorněni jenom v případě, že příchozí nebo odchozí přenos dat a transakce překročily prahové hodnoty.
+   > [!NOTE]
+   > Je nutné vytvořit 3 samostatné výstrahy, které budou upozorňovány, pokud příchozí, odchozí nebo transakční transakce překročí nastavenou prahovou hodnotu. Důvodem je to, že výstraha se aktivuje jenom v případě, že jsou splněné všechny podmínky. Takže pokud zadáte všechny podmínky do jedné výstrahy, budete upozorněni jenom v případě, že příchozí nebo odchozí přenos dat a transakce překročily prahové hodnoty.
 
 6. Posuňte se dolů. Klikněte na rozevírací seznam **název dimenze** a vyberte **sdílení souborů**.
 7. Klikněte na rozevírací seznam **hodnoty dimenze** a vyberte sdílené složky, na kterých chcete upozornit.
 8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost agregace a frekvence vyhodnocení) a klikněte na **Hotovo**.
 
-  > [!NOTE]
-  > Metriky odchozího, příchozího a transakčního vysílání jsou za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. (pohovořit o členitosti agregace – > za minutu = větší úroveň šumu, takže vyberte rozdílové) Pokud máte například zřízený výstup 90 MiB/s a chcete, aby byla prahová hodnota 80% zřízeného odchozího přenosu, měli byste vybrat následující parametry výstrahy: 75497472 pro **mezní hodnotu**, větší nebo rovnou **operátoru**for a průměr pro **typ agregace**. V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete zvolit, které hodnoty se mají vybrat pro členitost agregace a četnost vyhodnocení. Například pokud chci, aby moje výstraha vypadala na základě průměrného počtu příchozích dat za hodinu a chtěla se spustit pravidlo upozornění každou hodinu, vybrali jste 1 hodinu pro **členitost agregace** a 1 hodinu pro **frekvenci vyhodnocení**.
+   > [!NOTE]
+   > Metriky odchozího, příchozího a transakčního vysílání jsou za minutu, i když jste zřídili odchozí, příchozí a vstupně-výstupní operace za sekundu. (pohovořit o členitosti agregace – > za minutu = větší úroveň šumu, takže vyberte rozdílové) Pokud máte například zřízený výstup 90 MiB/s a chcete, aby byla prahová hodnota 80% zřízeného odchozího přenosu, měli byste vybrat následující parametry výstrahy: 75497472 pro **mezní hodnotu** , větší nebo rovnou **operátoru** for a průměr pro **typ agregace**. V závislosti na tom, jak chcete, aby vaše výstraha byla, můžete zvolit, které hodnoty se mají vybrat pro členitost agregace a četnost vyhodnocení. Například pokud chci, aby moje výstraha vypadala na základě průměrného počtu příchozích dat za hodinu a chtěla se spustit pravidlo upozornění každou hodinu, vybrali jste 1 hodinu pro **členitost agregace** a 1 hodinu pro **frekvenci vyhodnocení**.
 
 9. Kliknutím na **Vybrat skupinu akcí** přidejte **skupinu akcí** (e-mail, SMS atd.) k výstraze buď výběrem existující skupiny akcí, nebo vytvořením nové skupiny akcí.
-10. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy**, **Popis** a **závažnost**.
+10. Vyplňte **Podrobnosti výstrahy** , jako je **název pravidla výstrahy** , **Popis** a **závažnost**.
 11. Kliknutím na **vytvořit pravidlo výstrahy** vytvořte výstrahu.
 
-  > [!NOTE]
-  > Chcete-li být upozorněni na blížící se omezení vaší sdílené složky v důsledku zřízení příchozího přenosu dat, postupujte prosím podle stejných kroků, s výjimkou kroku 5 vyberte **metriku** příchozího přenosu dat.
+    > [!NOTE]
+    > Chcete-li být upozorněni na blížící se omezení vaší sdílené složky v důsledku zřízení příchozího přenosu dat, postupujte prosím podle stejných kroků, s výjimkou kroku 5 vyberte **metriku** příchozího přenosu dat.
 
-  > [!NOTE]
-  > Abyste byli informováni o tom, jestli se nadlimitní sdílení souborů blíží omezení z důvodu zřízeného IOPS, budete muset provést několik změn. V kroku 5 vyberte místo toho metriku **transakcí** . V kroku 10 je také jediná možnost pro **typ agregace** . Proto by prahová hodnota byla závislá na zvolené členitosti agregace. Pokud jste například chtěli, aby byla prahová hodnota 80% zřízeného směrného plánu IOPS a vybrali jste 1 hodinu pro **členitost agregace**, bude **prahová hodnota** vaše základní IOPS (v bajtech) × 0,8 × 3600. Kromě těchto změn použijte stejný postup, který je uvedený výše. 
+    > [!NOTE]
+    > Abyste byli informováni o tom, jestli se nadlimitní sdílení souborů blíží omezení z důvodu zřízeného IOPS, budete muset provést několik změn. V kroku 5 vyberte místo toho metriku **transakcí** . V kroku 10 je také jediná možnost pro **typ agregace** . Proto by prahová hodnota byla závislá na zvolené členitosti agregace. Pokud jste například chtěli, aby byla prahová hodnota 80% zřízeného směrného plánu IOPS a vybrali jste 1 hodinu pro **členitost agregace** , bude **prahová hodnota** vaše základní IOPS (v bajtech) × 0,8 × 3600. Kromě těchto změn použijte stejný postup, který je uvedený výše. 
 
 Další informace o konfiguraci výstrah v Azure Monitor najdete v tématu [Přehled výstrah v Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 

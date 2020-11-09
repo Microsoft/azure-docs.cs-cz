@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d7a143f99eca73e0620e24ac5d93141ddb7d99e6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215956"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379782"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Přehled tokenů v Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Deklarace identity v tokenech ID se nevrací v žádném konkrétním pořadí. 
 
 V následující tabulce jsou uvedeny deklarace identity, které můžete očekávat v tokenech ID a přístupových tokenech vydaných Azure AD B2C.
 
-| Název | Deklarovat | Příklad hodnoty | Popis |
+| Name | Deklarovat | Příklad hodnoty | Popis |
 | ---- | ----- | ------------- | ----------- |
 | Cílová skupina | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifikuje zamýšleného příjemce tokenu. Pro Azure AD B2C je cílovou skupinou ID aplikace. Vaše aplikace by měla tuto hodnotu ověřit a zamítnout token, pokud se neshoduje. Cílová skupina je synonymum s prostředkem. |
 | Vystavitel | `iss` |`https://<tenant-name>.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifikuje službu tokenů zabezpečení (STS), která vytvoří a vrátí token. Identifikuje taky adresář, ve kterém se uživatel ověřil. Vaše aplikace by měla ověřit deklaraci vystavitele, aby se zajistilo, že token pochází z příslušného koncového bodu. |
@@ -65,7 +65,7 @@ V následující tabulce jsou uvedeny deklarace identity, které můžete oček�
 | Referenční dokumentace třídy kontextu ověřování | `acr` | Nelze použít | Používá se jenom se staršími zásadami. |
 | Zásada pro pravidlo důvěryhodnosti | `tfp` | `b2c_1_signupsignin1` | Název zásady, která byla použita k získání tokenu ID. |
 | Čas ověřování | `auth_time` | `1438535543` | Čas, kdy uživatel naposledy zadal pověření, reprezentovaný v epocha čase. Neexistuje žádná diskriminace mezi tímto ověřováním, jedná se o nové přihlášení, relaci jednotného přihlašování (SSO) nebo jiný typ přihlášení. `auth_time`Je poslední čas, kdy aplikace (nebo uživatel) iniciovala pokus o ověření u Azure AD B2C. Metoda použitá k ověření není odlišná. |
-| Obor | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
+| Rozsah | `scp` | `Read`| Oprávnění udělená prostředku pro přístupový token. Vícenásobná udělená oprávnění jsou oddělená mezerou. |
 | Autorizovaná strana | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | **ID aplikace** klientské aplikace, která iniciovala požadavek. |
 
 ## <a name="configuration"></a>Konfigurace
@@ -76,7 +76,7 @@ Následující vlastnosti se používají ke [správě životností tokenů zabe
 
 - **Doba platnosti tokenu aktualizace (dny)** – maximální doba, po jejímž uplynutí může být obnovovací token použit k získání nového přístupu nebo tokenu ID. Toto časové období také pokrývá získání nového obnovovacího tokenu, pokud je vaší aplikaci udělen `offline_access` obor. Výchozí hodnota je 14 dní. Minimální (včetně) je jeden den. Maximální (včetně) je 90 dní.
 
-- **Doba platnosti posuvných oken (dnů) aktualizačního tokenu (dny)** – po uplynutí tohoto časového období se uživatel nuceně znovu neověřuje bez ohledu na dobu platnosti nejnovějšího obnovovacího tokenu, který aplikace získala. Dá se zadat jenom v případě, že je přepínač nastavený na **Bounded**. Musí být větší než nebo rovno hodnotě **životnosti obnovovacího tokenu (dny)** . Pokud je přepínač nastavený na **neohraničený**, nemůžete zadat konkrétní hodnotu. Výchozí hodnota je 90 dní. Minimální (včetně) je jeden den. Maximální (včetně) je 365 dní.
+- **Doba platnosti posuvných oken (dnů) aktualizačního tokenu (dny)** – po uplynutí tohoto časového období se uživatel nuceně znovu neověřuje bez ohledu na dobu platnosti nejnovějšího obnovovacího tokenu, který aplikace získala. Dá se zadat jenom v případě, že je přepínač nastavený na **Bounded**. Musí být větší než nebo rovno hodnotě **životnosti obnovovacího tokenu (dny)** . Pokud je přepínač nastavený na **neohraničený** , nemůžete zadat konkrétní hodnotu. Výchozí hodnota je 90 dní. Minimální (včetně) je jeden den. Maximální (včetně) je 365 dní.
 
 Následující případy použití jsou povolené pomocí těchto vlastností:
 
@@ -91,7 +91,7 @@ Ke [správě kompatibility tokenů](configure-tokens.md)se používají následu
 
 - **Vystavitelský nárok** – Tato vlastnost identifikuje tenanta Azure AD B2C, který token vystavil. Výchozí hodnota je `https://<domain>/{B2C tenant GUID}/v2.0/`. Hodnota `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` zahrnuje ID pro klienta Azure AD B2C i tok uživatele, který byl použit v žádosti o token. Pokud vaše aplikace nebo knihovna potřebuje, aby Azure AD B2C kompatibilní se [specifikací OpenID Connect Discovery 1,0](https://openid.net/specs/openid-connect-discovery-1_0.html), použijte tuto hodnotu.
 
-- **Deklarace subjektu (sub)** – Tato vlastnost identifikuje entitu, pro kterou token uplatňuje informace. Výchozí hodnota je **objectID**, která vyplní `sub` deklaraci identity v tokenu s ID objektu uživatele. Hodnota **není podporována** je poskytnuta pouze pro zpětnou kompatibilitu. Doporučuje se přepnout na **objectID** , jakmile budete moct.
+- **Deklarace subjektu (sub)** – Tato vlastnost identifikuje entitu, pro kterou token uplatňuje informace. Výchozí hodnota je **objectID** , která vyplní `sub` deklaraci identity v tokenu s ID objektu uživatele. Hodnota **není podporována** je poskytnuta pouze pro zpětnou kompatibilitu. Doporučuje se přepnout na **objectID** , jakmile budete moct.
 
 - **Deklarace identity představující ID zásady** – Tato vlastnost identifikuje typ deklarace identity, do kterého se vyplní název zásady použitý v žádosti o tokenu. Výchozí hodnota je `tfp`. Hodnota `acr` je poskytnuta pouze pro zpětnou kompatibilitu.
 
@@ -107,7 +107,7 @@ Chcete-li ověřit token, aplikace by měla ověřit podpis i deklarace identity
 
 ### <a name="validate-signature"></a>Ověřit podpis
 
-Token JWT obsahuje tři segmenty, *hlavičku*, *tělo*a *podpis*. Segment podpisu lze použít k ověření pravosti tokenu, aby mohl být vaší aplikací důvěryhodný. Tokeny Azure AD B2C jsou podepsané pomocí standardních asymetrických šifrovacích algoritmů, jako je například RSA 256.
+Token JWT obsahuje tři segmenty, *hlavičku* , *tělo* a *podpis*. Segment podpisu lze použít k ověření pravosti tokenu, aby mohl být vaší aplikací důvěryhodný. Tokeny Azure AD B2C jsou podepsané pomocí standardních asymetrických šifrovacích algoritmů, jako je například RSA 256.
 
 Záhlaví tokenu obsahuje informace o klíči a metodě šifrování použité k podepsání tokenu:
 
@@ -121,7 +121,7 @@ Záhlaví tokenu obsahuje informace o klíči a metodě šifrování použité k
 
 Hodnota deklarace identity **ALG** je algoritmus, který se použil k podepsání tokenu. Hodnota deklarace **Kid** je veřejný klíč, který se použil k podepsání tokenu. V jednom okamžiku Azure AD B2C může podepsat token pomocí kterékoli ze sad dvojic klíčů veřejných a privátních klíčů. Azure AD B2C může pravidelně otáčet možné sady klíčů. Vaše aplikace by měla být zapsána, aby se tyto klíčové změny automaticky zpracovaly. Přiměřenou frekvencí pro kontrolu aktualizací veřejných klíčů, které používá Azure AD B2C, je každých 24 hodin. Aby bylo možné zpracovat neočekávané změny klíčů, měla by být aplikace vytvořena pro opětovné načtení veřejných klíčů, pokud obdrží neočekávanou hodnotu **Kid** .
 
-Azure AD B2C má koncový bod metadat OpenID Connect. Pomocí tohoto koncového bodu můžou aplikace požadovat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Váš tenant Azure AD B2C obsahuje dokument metadat JSON pro každou zásadu. Dokument metadat je objekt JSON, který obsahuje několik užitečných informací. Metadata obsahují **jwks_uri**, která poskytuje umístění sady veřejných klíčů, které se používají k podepisování tokenů. Toto umístění je zde k dispozici, ale je nejvhodnější načíst umístění dynamicky pomocí dokumentu metadat a analýzy **jwks_uri**:
+Azure AD B2C má koncový bod metadat OpenID Connect. Pomocí tohoto koncového bodu můžou aplikace požadovat informace o Azure AD B2C za běhu. Mezi tyto informace patří koncové body, obsah tokenu a podpisové klíče tokenu. Váš tenant Azure AD B2C obsahuje dokument metadat JSON pro každou zásadu. Dokument metadat je objekt JSON, který obsahuje několik užitečných informací. Metadata obsahují **jwks_uri** , která poskytuje umístění sady veřejných klíčů, které se používají k podepisování tokenů. Toto umístění je zde k dispozici, ale je nejvhodnější načíst umístění dynamicky pomocí dokumentu metadat a analýzy **jwks_uri** :
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys
@@ -134,7 +134,7 @@ Dokument metadat pro `B2C_1_signupsignin1` zásadu v `contoso.onmicrosoft.com` t
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/v2.0/.well-known/openid-configuration
 ```
 
-Chcete-li zjistit, které zásady byly použity k podepsání tokenu (a kde přejít na požadavky na metadata), máte dvě možnosti. Nejdřív je název zásady zahrnutý v `acr` deklaraci identity v tokenu. Můžete analyzovat deklarace identity mimo tělo tokenu JWT základní-64 dekódováním těla a deserializací řetězce JSON, který je výsledkem. `acr`Deklarace identity je název zásady, která se použila k vystavení tokenu. Druhou možností je zakódovat zásadu v hodnotě `state` parametru při vystavení žádosti a potom dekódovat, abyste zjistili, které zásady byly použity. Kterákoli z metod je platná.
+Chcete-li zjistit, které zásady byly použity k podepsání tokenu (a kde přejít na požadavky na metadata), máte dvě možnosti. Nejdřív je název zásady zahrnutý v `tfp` (výchozí) nebo v `acr` tokenu (jak je nakonfigurované) v tokenu. Můžete analyzovat deklarace identity mimo tělo tokenu JWT základní-64 dekódováním těla a deserializací řetězce JSON, který je výsledkem. `tfp` `acr` Deklarace identity nebo je název zásady, která se použila k vystavení tokenu. Druhou možností je zakódovat zásadu v hodnotě `state` parametru při vystavení žádosti a potom dekódovat, abyste zjistili, které zásady byly použity. Kterákoli z metod je platná.
 
 Popis, jak provést ověření podpisu, je mimo rozsah tohoto dokumentu. K dispozici je řada Open Source knihoven, které vám pomůžou ověřit token.
 

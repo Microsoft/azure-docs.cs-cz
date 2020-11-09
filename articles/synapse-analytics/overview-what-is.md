@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3043cd5f8cb27197048bd84c7181c2b42c4ad5c9
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376897"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380925"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -74,6 +74,11 @@ Azure synapse nabízí pro podniky jediný způsob, jak spravovat analytické pr
 * Vytvářejte komplexní analytické řešení na jednom místě: ingestování, prozkoumávání, příprava, orchestrace, vizualizace
 * Špičková produktivita pro datové techniky napisující kód SQL nebo Spark: vytváření, ladění a optimalizace výkonu
 * Integrace s procesy podnikového CI/CD
+
+## <a name="engage-with-the-synapse-engineering-team"></a>Zapojení týmu synapse Engineering
+
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse): Položte otázky pro vývoj.
+- [Microsoft Q&Stránka s otázkou](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html): Položte technické dotazy.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: d34505b1f36d6de77e2bb1df9aa98b7a14b5f44d
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: fdbef15bb7831fedd7c375d565e0cde10f9b9a9e
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171939"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380428"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Integrace Azure Active Directory spravovaná v AKS
 
@@ -21,13 +21,6 @@ Integrace služby Azure AD spravovaná pomocí AKS je navržená tak, aby zjedno
 Správci clusteru můžou nakonfigurovat řízení přístupu na základě role (RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
 
 Přečtěte si další informace o službě Azure AD Integration flow v [dokumentaci k koncepcím Azure Active Directory Integration](concepts-identity.md#azure-active-directory-integration).
-
-## <a name="region-availability"></a>Dostupnost v oblastech
-
-Integrace Azure Active Directory spravovaná v AKS je dostupná ve veřejných oblastech, kde [se podporuje AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-
-* Azure Government se momentálně nepodporuje.
-* Azure Čína 21Vianet se momentálně nepodporuje.
 
 ## <a name="limitations"></a>Omezení 
 

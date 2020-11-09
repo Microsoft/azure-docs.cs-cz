@@ -3,12 +3,12 @@ title: Oprávnění k úložištím v Azure Container Registry
 description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úložiště v registru Premium pro vyžádání nebo vložení obrázků nebo provádění dalších akcí
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84509402"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381231"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm
 
@@ -150,16 +150,16 @@ Pomocí Azure Portal můžete vytvořit tokeny a mapy oborů. Stejně jako u `az
 Následující příklad vytvoří token a vytvoří mapu oboru s následujícími oprávněními pro `samples/hello-world` úložiště: `content/write` a `content/read` .
 
 1. Na portálu přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **tokeny (Preview) > + přidat**.
+1. V části **oprávnění úložiště** vyberte **tokeny (Preview) > + přidat**.
 
       :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-add.png" alt-text="Vytvoření tokenu na portálu":::
 1. Zadejte název tokenu.
-1. V části **Mapa oboru**vyberte **vytvořit novou**.
+1. V části **Mapa oboru** vyberte **vytvořit novou**.
 1. Nakonfigurujte mapu oboru:
     1. Zadejte název a popis mapy oboru. 
-    1. V části **úložiště**zadejte a `samples/hello-world` v části **oprávnění**vyberte  `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
+    1. V části **úložiště** zadejte a `samples/hello-world` v části **oprávnění** vyberte  `content/read` a `content/write` . Pak vyberte **+ Přidat**.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Vytvoření tokenu na portálu":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Vytvořit mapu oboru na portálu":::
 
     1. Po přidání úložišť a oprávnění vyberte **Přidat** a přidejte mapu oboru.
 1. Přijměte výchozí **stav** tokenu **Enabled** a pak vyberte **vytvořit**.
@@ -171,12 +171,12 @@ Po ověření a vytvoření tokenu se na obrazovce **tokeny** zobrazí podrobnos
 Pokud chcete použít token vytvořený na portálu, musíte vygenerovat heslo. Můžete vygenerovat jedno nebo dvě hesla a nastavit datum vypršení platnosti pro každé z nich. 
 
 1. Na portálu přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **tokeny (Preview)** a vyberte token.
-1. V podrobnostech tokenu vyberte **Heslo1** nebo **password2**a vyberte ikonu generovat.
+1. V části **oprávnění úložiště** vyberte **tokeny (Preview)** a vyberte token.
+1. V podrobnostech tokenu vyberte **Heslo1** nebo **password2** a vyberte ikonu generovat.
 1. Na obrazovce heslo volitelně nastavte datum vypršení platnosti hesla a vyberte **Generovat**. Doporučuje se nastavit datum vypršení platnosti.
 1. Po vygenerování hesla ho zkopírujte a uložte na bezpečné místo. Po zavření obrazovky nelze načíst vygenerované heslo, ale můžete vygenerovat nové.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Vytvoření tokenu na portálu":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Vytvořit heslo tokenu na portálu":::
 
 ## <a name="authenticate-with-token"></a>Ověřování pomocí tokenu
 
@@ -204,7 +204,7 @@ V následujících příkladech si načetli `hello-world` `alpine` image a z dok
 docker pull hello-world
 docker pull alpine
 docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag hello-world myregistry.azurecr.io/samples/alpine:v1
+docker tag alpine myregistry.azurecr.io/samples/alpine:v1
 ```
 
 ### <a name="authenticate-using-token"></a>Ověřování pomocí tokenu
@@ -259,9 +259,9 @@ az acr scope-map update \
 Na webu Azure Portal:
 
 1. Přejděte do registru kontejneru.
-1. V části **oprávnění úložiště**vyberte **mapy oboru (Preview)** a vyberte mapu oboru, která se má aktualizovat.
-1. V části **úložiště**zadejte a `samples/alpine` v části **oprávnění**vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.
-1. V části **úložiště**vyberte `samples/hello-world` a v části **oprávnění**zrušte výběr `content/write` . Pak vyberte **Uložit**.
+1. V části **oprávnění úložiště** vyberte **mapy oboru (Preview)** a vyberte mapu oboru, která se má aktualizovat.
+1. V části **úložiště** zadejte a `samples/alpine` v části **oprávnění** vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.
+1. V části **úložiště** vyberte `samples/hello-world` a v části **oprávnění** zrušte výběr `content/write` . Pak vyberte **Uložit**.
 
 Po aktualizaci mapy oboru proběhne následující nabízení oznámení:
 
@@ -341,7 +341,7 @@ Ukázkový výstup:
 
 ### <a name="list-scope-maps"></a>Seznam map oboru
 
-K vypsání všech map oboru nakonfigurovaných v registru použijte příkaz [AZ ACR Scope-map list][az-acr-scope-map-list] nebo obrazovku **Scope Maps (Preview)** na portálu. Například:
+K vypsání všech map oboru nakonfigurovaných v registru použijte příkaz [AZ ACR Scope-map list][az-acr-scope-map-list] nebo obrazovku **Scope Maps (Preview)** na portálu. Zde je příklad:
 
 ```azurecli
 az acr scope-map list \
@@ -361,14 +361,14 @@ MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
 
 ### <a name="show-token-details"></a>Zobrazit podrobnosti tokenu
 
-Pokud chcete zobrazit podrobnosti o tokenu, jako je jeho stav a datum vypršení platnosti hesla, spusťte příkaz [AZ ACR token show][az-acr-token-show] nebo vyberte token na obrazovce **tokeny (Preview)** na portálu. Například:
+Pokud chcete zobrazit podrobnosti o tokenu, jako je jeho stav a datum vypršení platnosti hesla, spusťte příkaz [AZ ACR token show][az-acr-token-show] nebo vyberte token na obrazovce **tokeny (Preview)** na portálu. Zde je příklad:
 
 ```azurecli
 az acr scope-map show \
   --name MyScopeMap --registry myregistry
 ```
 
-K vypsání všech tokenů nakonfigurovaných v registru použijte příkaz [AZ ACR token list][az-acr-token-list] nebo obrazovku **tokens (Preview)** na portálu. Například:
+K vypsání všech tokenů nakonfigurovaných v registru použijte příkaz [AZ ACR token list][az-acr-token-list] nebo obrazovku **tokens (Preview)** na portálu. Zde je příklad:
 
 ```azurecli
 az acr token list --registry myregistry --output table
@@ -390,14 +390,14 @@ Pokud chcete použít Azure Portal k vygenerování hesla tokenu, přečtěte si
 
 ### <a name="update-token-with-new-scope-map"></a>Aktualizovat token s mapou nového oboru
 
-Pokud chcete aktualizovat token s jinou mapou oboru, spusťte příkaz [AZ ACR token Update][az-acr-token-update] a zadejte novou mapu oboru. Například:
+Pokud chcete aktualizovat token s jinou mapou oboru, spusťte příkaz [AZ ACR token Update][az-acr-token-update] a zadejte novou mapu oboru. Zde je příklad:
 
 ```azurecli
 az acr token update --name MyToken --registry myregistry \
   --scope-map MyNewScopeMap
 ```
 
-Na portálu na obrazovce **tokeny (Preview)** vyberte token a v části **Mapa oboru**vyberte jinou mapu oboru.
+Na portálu na obrazovce **tokeny (Preview)** vyberte token a v části **Mapa oboru** vyberte jinou mapu oboru.
 
 > [!TIP]
 > Po aktualizaci tokenu pomocí nové mapy oboru můžete vygenerovat nová hesla tokenů. Pomocí příkazu [AZ ACR token Credential Generate][az-acr-token-credential-generate] nebo znovu vygenerujte heslo tokenu v Azure Portal.
@@ -413,7 +413,7 @@ az acr token update --name MyToken --registry myregistry \
   --status disabled
 ```
 
-Na portálu vyberte na obrazovce **tokeny (Preview)** token a v části **stav**vyberte **zakázáno** .
+Na portálu vyberte na obrazovce **tokeny (Preview)** token a v části **stav** vyberte **zakázáno** .
 
 Pokud chcete odstranit token pro trvalé zrušení platnosti přístupu kýmkoli, kdo používá jeho přihlašovací údaje, spusťte příkaz [AZ ACR token Delete][az-acr-token-delete] . 
 

@@ -1,6 +1,6 @@
 ---
-title: Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview)
-description: V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro FHIR (Preview) metriky.
+title: Zobrazení a konfigurace služby Azure IoT Connector pro FHIR (Preview) metrik
+description: Tento článek vysvětluje, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro FHIR (Preview) metriky.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
@@ -8,73 +8,71 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: jasteppe
-ms.openlocfilehash: 1cdae789b8286be408735fff92e2de46e28ce514
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394284"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381214"
 ---
-# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace konektoru Azure IoT pro metriky FHIR (Preview) 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zobrazení a konfigurace služby Azure IoT Connector pro FHIR (Preview) metrik 
 
-V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro metriky FHIR *. 
+V tomto článku se dozvíte, jak zobrazit a nakonfigurovat službu Azure IoT Connector pro prostředky interoperability s rychlým zdravotním prostředím (FHIR&#174;) * metriky.
 
 > [!TIP]
-> Postupujte podle pokynů v tématu [Export služby Azure IoT Connector pro FHIR (Preview) metriky prostřednictvím nastavení diagnostiky](./iot-metrics-diagnostics-export.md) a Naučte se, jak nastavit export dat metrik.
+> Pokud se chcete dozvědět, jak nastavit export dat metrik, postupujte podle pokynů v tématu [Export Azure IoT Connectoru pro FHIR (Preview) metriky prostřednictvím nastavení diagnostiky](./iot-metrics-diagnostics-export.md).
 
-## <a name="view-metrics-for-azure-iot-connector-for-fhir-preview"></a>Zobrazit metriky pro Azure IoT Connector pro FHIR (Preview)
-1. Pokud chcete zobrazit metriky pro konektory IoT, vyberte v Azure Portal službu Azure API pro službu FHIR. 
+## <a name="display-metrics-for-azure-iot-connector-for-fhir-preview"></a>Zobrazit metriky pro Azure IoT Connector pro FHIR (Preview)
 
-2. Přejít na **metriky** 
+1. Přihlaste se k Azure Portal a potom vyberte rozhraní API Azure pro službu FHIR. 
+
+2. V levém podokně vyberte **metriky**. 
 
 3. Vyberte kartu **IoT Connector** .
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="IoT connector1" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="Snímek obrazovky s podoknem IoT Connector a spojnicové grafy zobrazující počet příchozích a normalizovaných zpráv" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
 
-4. Vyberte konektor IoT, pro který chcete zobrazit metriky (například: k tomuto rozhraní Azure API pro službu FHIR jsou přidružené konektory IoT).
+4. Vyberte konektor IoT, abyste zobrazili jeho metriky. K tomuto rozhraní API Azure pro službu FHIR jsou třeba přidružené čtyři konektory IoT ( *konektor 1* , *konektor 2* atd.).
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="Snímek obrazovky s podoknem IoT Connector zobrazující karty IoT Connectoru 1, 2, 3 a 4." lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
 
-> [!NOTE]
-> **Vlastní** karta umožňuje vytvořit konkrétní kombinace data a času pro zobrazení metrik konektoru IoT.
+5. Vyberte časové období (například **1 hodinu** , **24 hodin** , **7 dní** nebo **vlastní** ) metrik konektoru IoT, které chcete zobrazit. Výběrem **vlastní** karty můžete pro zobrazení metrik konektoru IoT vytvořit určitou kombinaci data a času.
 
-5. Vyberte časové období metrik konektoru IoT, které se má zobrazit (například 1 hodina, 24 hodin, 7 dní nebo vlastní).
-
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT Connector3" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Snímek obrazovky s podoknem IoT Connector, který zobrazuje graf řádku časového období 1 hodiny pro ' Connector 1 '." lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
-## <a name="metrics-types-for-azure-iot-connector-for-fhir-preview"></a>Typy metrik pro Azure IoT Connector pro FHIR (Preview) 
-Zobrazené metriky IoT Connectoru jsou následující:
+## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Typy metrik pro Azure IoT Connector pro FHIR (Preview) 
 
-|Typ metrik|Účel metriky| 
+Metriky IoT Connectoru, které můžete zobrazit, jsou uvedené v následující tabulce:
+
+|Typ metriky|Účel metriky| 
 |-----------|--------------|
-|Počet příchozích zpráv|Počet přijatých nezpracovaných příchozích zpráv (například: události zařízení).|
-|Počet normalizovaných zpráv|Počet normalizovaných zpráv.|
-|Počet skupin zpráv|Počet skupin, které mají v určeném časovém intervalu agregované zprávy|
-|Průměrná latence normalizované fáze|Průměrná latence fáze normalizování Fáze normalizování slouží k provedení normalizace nezpracovaných příchozích zpráv.|
-|Průměrná latence fáze skupiny|Průměrná latence fáze skupiny Fáze skupiny je provádět ukládání do vyrovnávací paměti, agregace a seskupení v normalizovaných zprávách.| 
-|Celkový počet chyb|Celkový počet chyb| 
+|Počet příchozích zpráv|Zobrazuje počet přijatých nezpracovaných příchozích zpráv (například události zařízení).|
+|Počet normalizovaných zpráv|Zobrazí počet normalizovaných zpráv.|
+|Počet skupin zpráv|Zobrazí počet skupin, které mají v určeném časovém intervalu agregované zprávy.|
+|Průměrná latence normalizované fáze|Zobrazí průměrnou latenci normalizované fáze. Normalizovaná fáze provádí normalizaci nezpracovaných příchozích zpráv.|
+|Průměrná latence fáze skupiny|Zobrazí průměrnou latenci fáze skupiny. Fáze skupiny provádí ukládání do vyrovnávací paměti, agregaci a seskupení podle normalizovaných zpráv.| 
+|Celkový počet chyb|Zobrazí celkový počet chyb.| 
 
-## <a name="focusing-and-configuring-azure-iot-connector-for-fhir-preview-metrics"></a>Zaměření a konfigurace služby Azure IoT Connector pro FHIR (Preview) metrik
-V tomto příkladu se zaměříme na **Počet příchozích zpráv** o metrikách.
+## <a name="focus-on-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Zaměřit se na a nakonfigurovat službu Azure IoT Connector pro FHIR (Preview) metriky
+
+V tomto příkladu se podíváme na **Počet příchozích zpráv** metriky.
 
 1. Vyberte bod v čase, na který se chcete zaměřit.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT Connector4" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="Snímek obrazovky s podoknem metrika počet příchozích zpráv, který zvýrazní v grafu spojnici jeden bod v čase" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
 
-2. Z této obrazovky můžete **Přidat metriku** , **Přidat filtr** a **použít rozdělení** pro další úpravy. 
+2. V podokně **Počet příchozích zpráv** můžete metriku dále přizpůsobit výběrem možnosti **Přidat metrika** , **Přidat filtr** nebo **rozdělit**. 
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT Connector5" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="Snímek obrazovky s podoknem metrika počet příchozích zpráv, který zvýrazní tlačítka Přidat metriku, přidat filtr a použít rozdělení." lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
 
 ## <a name="conclusion"></a>Závěr 
-Přístup k metrikám roviny dat je zásadní pro monitorování a řešení potíží.  Azure IoT Connector pro FHIR vám pomůže provádět tyto akce prostřednictvím metrik. 
+Přístup k metrikám roviny dat je zásadní pro monitorování a řešení potíží. Azure IoT Connector pro FHIR pomáhá s těmito akcemi prostřednictvím metrik. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si nejčastější dotazy k Azure IoT Connectoru pro FHIR.
+Získejte odpovědi na nejčastější dotazy týkající se služby Azure IoT Connector pro FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT Connector pro nejčastější dotazy k FHIR](fhir-faq.md)
+>[Azure IoT Connector pro FHIR – Nejčastější dotazy](fhir-faq.md)
 
-* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview).
-
-FHIR je registrovaná ochranná známka HL7 a používá se s povolením HL7.
+* V Azure Portal se konektor Azure IoT pro FHIR označuje jako IoT Connector (Preview). FHIR je registrovaná ochranná známka změněného HL7 a používá se s oprávněním změněného HL7. 

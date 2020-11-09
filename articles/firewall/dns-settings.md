@@ -1,24 +1,20 @@
 ---
-title: Azure Firewall nastavení DNS (Preview)
+title: Azure Firewall nastavení DNS
 description: Azure Firewall můžete nakonfigurovat pomocí serveru DNS a nastavení serveru proxy DNS.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 11/06/2020
 ms.author: victorh
-ms.openlocfilehash: efe608437f350a29147cf10989cdb6c17a23196d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ad0ac040b510783656617ddbf2063cd94c80aae7
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397990"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380942"
 ---
-# <a name="azure-firewall-dns-settings-preview"></a>Azure Firewall nastavení DNS (Preview)
-
-> [!IMPORTANT]
-> Nastavení DNS Azure Firewall je v současnosti ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="azure-firewall-dns-settings"></a>Azure Firewall nastavení DNS
 
 Můžete nakonfigurovat vlastní server DNS a Povolit proxy server DNS pro Azure Firewall. Tato nastavení můžete nakonfigurovat při nasazení brány firewall nebo později ze stránky **nastavení DNS** .
 
@@ -29,7 +25,7 @@ Server DNS udržuje a překládá názvy domén na IP adresy. Ve výchozím nast
 > [!NOTE]
 > U bran Azure firewall spravovaných pomocí Azure Firewall Manageru jsou nastavení DNS nakonfigurovaná v přidružených zásadách Azure Firewall.
 
-### <a name="configure-custom-dns-servers-preview---azure-portal"></a>Konfigurace vlastních serverů DNS (Preview) – Azure Portal
+### <a name="configure-custom-dns-servers---azure-portal"></a>Konfigurace vlastních serverů DNS – Azure Portal
 
 1. V části **nastavení** Azure firewall vyberte **nastavení DNS**.
 2. V části **servery DNS** můžete zadat nebo přidat existující servery DNS, které jste dříve zadali v Virtual Network.
@@ -38,7 +34,7 @@ Server DNS udržuje a překládá názvy domén na IP adresy. Ve výchozím nast
 
 :::image type="content" source="media/dns-settings/dns-servers.png" alt-text="Servery DNS":::
 
-### <a name="configure-custom-dns-servers-preview---azure-cli"></a>Konfigurace vlastních serverů DNS (Preview) – Azure CLI
+### <a name="configure-custom-dns-servers---azure-cli"></a>Konfigurace vlastních serverů DNS – Azure CLI
 
 Následující příklad aktualizuje Azure Firewall vlastními servery DNS pomocí rozhraní příkazového řádku Azure CLI.
 
@@ -52,7 +48,7 @@ az network firewall update \
 > [!IMPORTANT]
 > Příkaz `az network firewall` vyžaduje, `azure-firewall` aby bylo nainstalované rozšíření Azure CLI. Dá se nainstalovat pomocí příkazu `az extension add --name azure-firewall` . 
 
-### <a name="configure-custom-dns-servers-preview---azure-powershell"></a>Konfigurace vlastních serverů DNS (Preview) – Azure PowerShell
+### <a name="configure-custom-dns-servers---azure-powershell"></a>Konfigurace vlastních serverů DNS – Azure PowerShell
 
 Následující příklad aktualizuje Azure Firewall vlastními servery DNS pomocí Azure PowerShell.
 
@@ -64,22 +60,32 @@ $azFw.DNSServer = $dnsServers
 $azFw | Set-AzFirewall
 ```
 
-## <a name="dns-proxy-preview"></a>Proxy server DNS (Preview)
+## <a name="dns-proxy"></a>Proxy server DNS
 
 Azure Firewall můžete nakonfigurovat tak, aby fungoval jako proxy server DNS. DNS proxy funguje jako prostředník pro žádosti DNS z klientských virtuálních počítačů na server DNS. Pokud nakonfigurujete vlastní server DNS, měli byste povolit proxy server DNS, aby nedocházelo k neshodě překladu názvů DNS, a povolit filtrování plně kvalifikovaného názvu domény v síťových pravidlech.
 
 Pokud nepovolíte proxy server DNS, žádosti DNS z klienta se můžou cestovat na server DNS v jinou dobu nebo vracet jinou odpověď v porovnání s bránou firewall. Proxy DNS umísťuje Azure Firewall v cestě klientských požadavků, aby nedocházelo k nekonzistenci.
+
+Existují dva typy funkcí ukládání do mezipaměti, ke kterým dochází, když Azure Firewall je proxy DNS:
+
+- Kladná mezipaměť – překlad DNS je úspěšný. Brána firewall používá hodnotu TTL (Time-to-Live) paketu nebo objektu. 
+
+- Negativní mezipaměť – překlad DNS má za následek neodpověď nebo žádné vyřešení. Brána firewall tyto informace ukládá do mezipaměti po dobu jedné hodiny.
+
+Proxy server DNS ukládá všechny vyřešené IP adresy z plně kvalifikovaných názvů domén v síťových pravidlech. Jako osvědčený postup použijte plně kvalifikované názvy domény, které se překládají na jednu IP adresu.  
+
+### <a name="dns-proxy-configuration"></a>Konfigurace proxy serveru DNS
 
 Konfigurace proxy serveru DNS vyžaduje tři kroky:
 1. Povolte DNS proxy v Azure Firewall nastavení DNS.
 2. Volitelně můžete nakonfigurovat vlastní server DNS nebo použít poskytnutý výchozí.
 3. Nakonec musíte nakonfigurovat privátní IP adresu Azure Firewall jako vlastní adresu DNS v nastavení serveru DNS virtuální sítě. Tím se zajistí přesměrování provozu DNS na Azure Firewall.
 
-### <a name="configure-dns-proxy-preview---azure-portal"></a>Konfigurace proxy serveru DNS (Preview) – Azure Portal
+#### <a name="configure-dns-proxy---azure-portal"></a>Konfigurace proxy serveru DNS – Azure Portal
 
 Pokud chcete nakonfigurovat proxy server DNS, musíte nakonfigurovat nastavení serveru DNS virtuální sítě tak, aby používalo privátní IP adresu brány firewall. Potom povolte DNS proxy v Azure Firewall **nastavení DNS**.
 
-#### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě 
+##### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě 
 
 1. Vyberte virtuální síť, ve které se budou směrovat přenosy DNS prostřednictvím Azure Firewall.
 2. V části **Nastavení** vyberte **servery DNS**.
@@ -88,7 +94,7 @@ Pokud chcete nakonfigurovat proxy server DNS, musíte nakonfigurovat nastavení 
 5. Vyberte **Uložit**.
 6. Restartujte virtuální počítače, které jsou připojené k virtuální síti, takže se jim přiřadí nové nastavení serveru DNS. Virtuální počítače budou nadále používat aktuální nastavení DNS, dokud nebudou restartováni.
 
-#### <a name="enable-dns-proxy-preview"></a>Povolit proxy server DNS (Preview)
+##### <a name="enable-dns-proxy"></a>Povolit proxy server DNS
 
 1. Vyberte Azure Firewall.
 2. V části **Nastavení** vyberte **nastavení DNS**.
@@ -98,11 +104,11 @@ Pokud chcete nakonfigurovat proxy server DNS, musíte nakonfigurovat nastavení 
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="Proxy server DNS":::
 
-### <a name="configure-dns-proxy-preview---azure-cli"></a>Konfigurace proxy serveru DNS (Preview) – Azure CLI
+#### <a name="configure-dns-proxy---azure-cli"></a>Konfigurace proxy serveru DNS – Azure CLI
 
-Konfigurace nastavení DNS proxy serveru v Azure Firewall a aktualizace virtuální sítě pro použití Azure Firewall jako serveru DNS pomocí rozhraní příkazového řádku Azure
+Pomocí Azure CLI můžete nakonfigurovat nastavení proxy serveru DNS v Azure Firewall a aktualizovat virtuální sítě tak, aby používaly Azure Firewall jako server DNS.
 
-#### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě
+##### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě
 
 Tento příklad nakonfiguruje virtuální síť tak, aby používala Azure Firewall jako server DNS.
  
@@ -113,7 +119,7 @@ az network vnet update \
     --dns-servers <firewall-private-IP>
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>Povolit proxy server DNS (Preview)
+##### <a name="enable-dns-proxy"></a>Povolit proxy server DNS
 
 Tento příklad povoluje funkci proxy serveru DNS v Azure Firewall.
 
@@ -124,11 +130,11 @@ az network firewall update \
     --enable-dns-proxy true
 ```
 
-### <a name="configure-dns-proxy-preview---azure-powershell"></a>Konfigurace proxy serveru DNS (Preview) – Azure PowerShell
+#### <a name="configure-dns-proxy---azure-powershell"></a>Konfigurace proxy serveru DNS – Azure PowerShell
 
-Konfigurace nastavení proxy serveru DNS a aktualizace virtuální sítě pro použití Azure Firewall jako serveru DNS můžete provádět pomocí Azure PowerShell.
+Pomocí Azure PowerShell můžete nakonfigurovat nastavení proxy serveru DNS v Azure Firewall a aktualizovat virtuální sítě tak, aby používaly Azure Firewall jako server DNS.
 
-#### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě
+##### <a name="configure-virtual-network-dns-servers"></a>Konfigurace serverů DNS virtuální sítě
 
  Tento příklad nakonfiguruje virtuální síť tak, aby používala Azure Firewall jako server DNS.
 
@@ -140,7 +146,7 @@ $VNet.DhcpOptions.DnsServers = $dnsServers
 $VNet | Set-AzVirtualNetwork
 ```
 
-#### <a name="enable-dns-proxy-preview"></a>Povolit proxy server DNS (Preview)
+##### <a name="enable-dns-proxy"></a>Povolit proxy server DNS
 
 Tento příklad povoluje funkci proxy serveru DNS v Azure Firewall.
 

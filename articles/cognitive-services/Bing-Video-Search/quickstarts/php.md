@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 6bcfb9057739277c1f57b5ebd98b99877f759e9b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8362f5b4d3436e83cbd033fcc3cd088d52122b58
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094094"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379850"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Rychlý Start: hledání videí pomocí Vvyhledávání videí Bingu REST API a PHP
 
@@ -28,7 +28,7 @@ V tomto rychlém startu můžete provést první volání rozhraní API Bingu pr
 
 I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTful kompatibilní s většinou programovacích jazyků.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * PHP 5,6 nebo novější
 
@@ -36,7 +36,7 @@ I když je tato aplikace napsaná v PHP, rozhraní API je webová služba RESTfu
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
-[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
+[Rozhraní API Bingu pro vyhledávání videí](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
 1. Povolte zabezpečenou podporu protokolu HTTP v `php.ini` souboru tak, že Odkomentujete `;extension=php_openssl.dll` řádek, jak je popsáno v následujícím kódu.
 2. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt PHP.

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9131dbff9b732ecfc7f6edb62b42959abcc17da8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078675"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380326"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Sestavení klienta hledání konzolové aplikace v C #
 
@@ -33,30 +33,30 @@ V tomto kurzu se dozvíte, jak:
 - Vytvoření jednoduchého dotazu na rozhraní API Bingu pro vyhledávání na webu
 - Zobrazit výsledky dotazu v pořadí podle pořadí
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Abyste mohli postupovat podle tohoto kurzu, budete potřebovat:
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
-* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku** .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title=" vytvořte prostředek vyhledávání Bingu vytvoření prostředku "  target="_blank"> Vyhledávání Bingu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
 * [Integrované vývojové prostředí sady Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-new-console-app-project"></a>Vytvořit nový projekt konzolové aplikace
 
 V sadě Visual Studio vytvořte projekt pomocí `Ctrl`+`Shift`+`N`.
 
-V dialogovém okně **Nový projekt** klikněte na **Visual C# > Windows Classic Desktop > Konzolová aplikace (.NET Framework)** .
+V dialogovém okně **Nový projekt** klikněte na **Visual C# > Windows Classic Desktop > Konzolová aplikace (.NET Framework)**.
 
-Pojmenujte aplikaci **MyConsoleSearchApp** a pak klikněte na **OK** .
+Pojmenujte aplikaci **MyConsoleSearchApp** a pak klikněte na **OK**.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>Přidat do projektu balíček NuGet JSON.net
 
 JSON.net umožňuje pracovat se odpověďmi JSON vrácenými rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
-- V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...** .
-- Na kartě  **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat** .
+- V **Průzkumník řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet...**.
+- Na kartě  **Procházet** vyhledejte `Newtonsoft.Json` . Vyberte nejnovější verzi a pak klikněte na **nainstalovat**.
 - V okně **Zkontrolovat změny** klikněte na tlačítko **OK** .
-- Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp** .
+- Zavřete kartu sady Visual Studio s názvem **NuGet: MyConsoleSearchApp**.
 
 ## <a name="add-a-reference-to-systemweb"></a>Přidat odkaz na System. Web
 
@@ -64,7 +64,7 @@ Tento kurz spoléhá na `System.Web` sestavení. Přidejte do projektu odkaz na 
 
 - V **Průzkumník řešení** klikněte pravým tlačítkem na **odkazy** a vyberte **Přidat odkaz...**
 - Vyberte **sestavení > Framework** a pak se posuňte dolů a zkontrolujte **System. Web.**
-- Vybrat **OK**
+- Vyberte **OK**.
 
 ## <a name="add-some-necessary-using-statements"></a>Přidat některé nezbytné příkazy using
 
@@ -77,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Požádat uživatele o dotaz
 
-V **Průzkumník řešení** otevřete **program.cs** . Aktualizujte `Main()` metodu:
+V **Průzkumník řešení** otevřete **program.cs**. Aktualizujte `Main()` metodu:
 
 ```csharp
 static void Main()
@@ -228,7 +228,7 @@ Než se pustíte do zobrazení výsledků v pořadí podle pořadí, podívejte 
 }
 ```
 
-`rankingResponse`Objekt JSON ([dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje odpovídající pořadí zobrazení výsledků hledání. Zahrnuje jednu nebo více následujících možností s určením prioritních skupin:
+`rankingResponse`Objekt JSON ([dokumentace](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) popisuje odpovídající pořadí zobrazení výsledků hledání. Zahrnuje jednu nebo více následujících možností s určením prioritních skupin:
 
 - `pole`: Výsledky hledání pro získání nejužitečnějších úprav (například zobrazené nad hlavní a postranní panel).
 - `mainline`: Výsledky hledání, které se mají zobrazit v hlavní

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
-ms.openlocfilehash: e2907cb568076ef4de199c5227e03db652414464
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e6fc68a1e48c9c47cc6a76911f947f2d9916a25
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077213"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94379506"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Odesílání požadavků hledání do rozhraní API Bingu pro vyhledávání videí
 
@@ -32,7 +32,7 @@ Tento článek popisuje parametry a atributy požadavků odeslaných do rozhran�
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Jakmile uživatel vstoupí do hledaného termínu, adresa URL ho zakóduje před nastavením parametru dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Jakmile uživatel vstoupí do hledaného termínu, adresa URL ho zakóduje před nastavením parametru dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies* , nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
 ## <a name="sending-a-request"></a>Odesílá se žádost.
 
@@ -47,18 +47,18 @@ Tento požadavek musí používat protokol HTTPS.
 Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace nabízí více příležitostí pro přístup kyberzločinců. Volání ze serveru také poskytuje jediný bod upgradu pro budoucí verze rozhraní API.
 
   
-Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu, jako `pricing`, naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
+Požadavek musí obsahovat parametr dotazu [q](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu, jako `pricing`, naleznete v tématu [Parametry dotazu](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
   
-Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#location)  
 
 Adresa IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.  
 
-Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#headers).
 
 ## <a name="example-search-request"></a>Příklad požadavku hledání
 
@@ -154,8 +154,8 @@ BingAPIs-Market: en-US
 
 Vyzkoušejte si rozhraní API. Přejděte na téma [Testovací konzola rozhraní API pro vyhledávání videí](https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8). 
 
-Podrobnosti o využití objektů odpovědi naleznete v tématu [Hledání videí na webu](../search-the-web.md).
+Podrobnosti o využití objektů odpovědi naleznete v tématu [Hledání videí na webu](../overview.md).
 
 Podrobnosti o získání přehledů o videu, například související hledání, najdete v tématu [Přehledy videí](../video-insights.md).  
   
-Podrobnosti o videích, která jsou populární na sociálních médiích, najdete v tématu [Populární videa](../trending-videos.md).  
+Podrobnosti o videích, která jsou populární na sociálních médiích, najdete v tématu [Populární videa](../trending-videos.md).
