@@ -618,8 +618,6 @@
                 - name: Webové aplikace
                   displayname: java
                   href: app/java-get-started.md
-                - name: Aplikace v Dockeru
-                  href: app/docker.md
                 - name: Trasování protokolů
                   href: app/java-trace-logs.md
                 - name: Unixové metriky
@@ -692,12 +690,14 @@
               href: app/kubernetes-codeless.md
             - name: Samostatné – libovolné prostředí
               items:
-                - name: Java (Preview)
+                - name: Java
                   items:
                     - name: Přehled
                       href: app/java-in-process-agent.md
                     - name: Možnosti konfigurace
                       href: app/java-standalone-config.md
+                    - name: Procesory telemetrie
+                      href: app/java-standalone-telemetry-processors.md
                     - name: Nastavení argumentů JVM
                       href: app/java-standalone-arguments.md
             - name: Místní servery
@@ -1344,10 +1344,6 @@
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights Connector
           href: platform/app-insights-connector.md
-        - name: Application Insights pro AKS bez kódu
-          href: app/kubernetes.md
-        - name: Monitorování aplikací Dockeru
-          href: app/docker.md
         - name: Vyřazení portálu OMS
           href: platform/oms-portal-transition.md
         - name: Vyřazení diskových metrik
