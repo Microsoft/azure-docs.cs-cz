@@ -7,14 +7,14 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 87c16207f312479dcfe083ad9494d75b3538e18c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532546"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372740"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Vyloučení prostředku z doporučení a zabezpečeného skóre
+# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Vyloučení prostředku z doporučení a skóre zabezpečení
 
 Základní priorita každého bezpečnostního týmu se snaží zajistit, aby se analytiké mohli soustředit na úkoly a incidenty, které jsou v souvislosti s organizací. Security Center má mnoho funkcí pro přizpůsobení informací, které nastavíte jako prioritní, a zajištění, že vaše zabezpečené skóre představuje platný odraz rozhodnutí zabezpečení vaší organizace. Vyloučení prostředků je taková funkce.
 
@@ -30,7 +30,7 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Toto je funkce zásad Azure Premium, která je nabízená pro zákazníky v Azure Defenderu bez dalších nákladů. Pro ostatní uživatele se poplatky můžou v budoucnu uplatňovat.|
 |Požadované role a oprávnění:|**Vlastník předplatného** nebo **Přispěvatel zásad** pro vytvoření výjimky<br>Chcete-li vytvořit pravidlo, potřebujete oprávnění k úpravám zásad v Azure Policy.<br>Další informace najdete v [Azure Policy oprávnění služby Azure RBAC](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).|
 |Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
@@ -45,7 +45,7 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
 
     Otevře se podokno vytvořit výjimku.
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
+    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Podokno vytvořit výjimku":::
 
 1. Zadejte kritéria a vyberte kritéria pro vyloučení tohoto prostředku:
     - **Zmírňované** – tento problém není relevantní pro prostředek, protože ho zpracovává jiný nástroj nebo proces než ten, který je navržený.
@@ -56,11 +56,11 @@ Prostředek bude uvedený jako nepoužitý a důvod se zobrazí jako vyloučený
     - Prostředek je uvedený na kartě **netýká** se stránky s podrobnostmi o doporučení.
     - Informační pruh v horní části stránky s podrobnostmi o doporučení uvádí počet vyloučených prostředků:
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Počet vyloučených prostředků":::
 
 1. Chcete-li zkontrolovat vyloučené prostředky, otevřete kartu **Nepoužito** .
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Úprava výjimky":::
 
     Důvody pro každou výjimku jsou obsaženy v tabulce (1).
 
@@ -73,7 +73,7 @@ Pravidla výjimky pomocí zásad Azure vytvoří výjimku pro prostředek na př
 
 Pomocí Azure Policy můžete sledovat veškerou výjimku na stránce **výjimka** :
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Vytvořit možnost výjimky z kontextové nabídky":::
+:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Stránka s výjimkou Azure Policy":::
 
 
 
@@ -81,4 +81,4 @@ Pomocí Azure Policy můžete sledovat veškerou výjimku na stránce **výjimka
 
 V tomto článku jste zjistili, jak vyloučit prostředek z doporučení, aby neovlivnilo vaše zabezpečené skóre. Další informace o zabezpečeném skóre najdete v těchto tématech:
 
-- [Bezpečné skóre v Azure Security Center](secure-score-security-controls.md)
+- [Skóre zabezpečení ve službě Azure Security Center](secure-score-security-controls.md)

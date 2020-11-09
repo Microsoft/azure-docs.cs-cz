@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2020
 ms.author: memildin
-ms.openlocfilehash: 4ec75931a335170a8262cc480f43a0f22db0b79b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342191"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372757"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
@@ -41,7 +41,7 @@ Microsoft také sleduje zákonné standardy a automaticky zlepšuje jejich pokry
 
 Můžete přidat standardy, jako je NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK oficiální a Velká Británie NHS, Kanada – federální PBMM a Azure CIS 1.1.0 (nový) – ucelená reprezentace 1.1.0 pro Azure CIS. 
 
-Kromě toho můžete přidat **srovnávací testy zabezpečení Azure**, které jsou specifické pro Azure, a to v souladu s osvědčenými postupy zabezpečení a dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. (Další[informace o srovnávacích testech zabezpečení Azure](../security/benchmarks/introduction.md).)
+Kromě toho můžete přidat **srovnávací testy zabezpečení Azure** , které jsou specifické pro Azure, a to v souladu s osvědčenými postupy zabezpečení a dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. (Další[informace o srovnávacích testech zabezpečení Azure](../security/benchmarks/introduction.md).)
 
 Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici. 
 
@@ -68,6 +68,7 @@ Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorov
 
     - **Srovnávací test zabezpečení Azure**
     - **NIST SP 800-53 R4**
+    - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF-v2020**
     - **UKO a Velká Británie NHS**
     - **PBMMa Kanady**
@@ -78,7 +79,7 @@ Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorov
 
 1. Z bočního panelu Security Center vyberte znovu **dodržování předpisů** , abyste se mohli vrátit na řídicí panel dodržování předpisů.
     * Vaše nové standardní zobrazení se zobrazí v seznamu oborových & regulativních standardů. 
-    * Pokud jste přidali **Azure CIS 1.1.0 (nové)**, zůstane současně i nadále původní *statické* zobrazení dodržování předpisů Azure CIS 1.1.0. V budoucnu může být automaticky odebrána.
+    * Pokud jste přidali **Azure CIS 1.1.0 (nové)** , zůstane současně i nadále původní *statické* zobrazení dodržování předpisů Azure CIS 1.1.0. V budoucnu může být automaticky odebrána.
 
     > [!NOTE]
     > Může trvat několik hodin, než se nově přidaný Standard zobrazí na řídicím panelu dodržování předpisů.
@@ -105,7 +106,7 @@ Postup odebrání standardu:
 
 1. U Standard, který chcete odebrat, vyberte **Zakázat**. Zobrazí se okno pro potvrzení.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Odstranění regulativního standardu z řídicího panelu dodržování předpisů v Azure Security Center":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="Potvrďte, že opravdu chcete odstranit vybraný regulativní Standard":::
 
 1. Vyberte **Ano**. Standard bude odebrán. 
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 9339ac86595a1edbbd996e410d416074680695ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340029"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372723"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Auditování pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ Auditování SQL Database můžete použít k těmto akcím:
 - **Analýza** sestav. Můžete vyhledávat podezřelé události, neobvyklou aktivitu a trendy.
 
 > [!IMPORTANT]
-> Auditování Azure SQL Database je optimalizováno pro zajištění dostupnosti a výkonu. Během velmi vysoké aktivity Azure SQL Database nebo Azure synapse umožňuje operacím pokračovat a nemusí nahrávat některé auditované události.
+> Auditování pro Azure SQL Database a Azure synapse je optimalizované pro zajištění dostupnosti a výkonu. Během velmi vysoké aktivity nebo vysoké zátěže sítě, Azure SQL Database a Azure synapse umožňují pokračovat v operacích a nemusí nahrávat některé auditované události.
 
 ### <a name="auditing-limitations"></a>Omezení auditování
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d41146b01b6b81804cdba31fbbf2541ba7ae0f03
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403632"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372368"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indexování objektů BLOB JSON pomocí indexeru objektů BLOB v Azure Kognitivní hledání
 
@@ -49,11 +49,11 @@ Na stránce Přehled služby Search můžete [Spustit Průvodce](search-import-d
 
 ### <a name="3---set-the-data-source"></a>3 – nastavení zdroje dat
 
-Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure**, a to s následujícími specifikacemi:
+Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure** , a to s následujícími specifikacemi:
 
 + **Data, která se mají extrahovat** , by měla být *obsah a metadata*. Výběrem této možnosti umožníte průvodci odvodit schéma indexu a namapovat pole pro import.
    
-+ **Režim analýzy** by měl být nastaven na *JSON*, *pole JSON* nebo *řádky JSON*. 
++ **Režim analýzy** by měl být nastaven na *JSON* , *pole JSON* nebo *řádky JSON*. 
 
   *JSON* kloubuje každý objekt BLOB jako jeden vyhledávací dokument, který ve výsledcích vyhledávání zobrazuje jako nezávislou položku. 
 
@@ -63,7 +63,7 @@ Na stránce **zdroj dat** musí být ve zdroji **BLOB Storage Azure**, a to s n�
    
 + **Kontejner úložiště** musí určovat váš účet úložiště a kontejner nebo připojovací řetězec, který se překládá na kontejner. Připojovací řetězce můžete získat na stránce Blob serviceového portálu.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Příkaz Importovat data na portálu" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Definice zdroje dat objektu BLOB" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – přeskočí stránku "obohacení obsahu" v Průvodci
 
@@ -81,7 +81,7 @@ Další informace najdete v popisu [atributů indexu](/rest/api/searchservice/cr
 
 Věnujte prosím chvíli kontrole vašich výběrů. Po spuštění Průvodce se vytvoří fyzické datové struktury a nebudete moct tato pole upravovat, aniž byste museli odstraňovat a znovu vytvářet všechny objekty.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Příkaz Importovat data na portálu" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Definice indexu objektu BLOB" border="false":::
 
 ### <a name="6---create-indexer"></a>6. vytvoření indexeru
 
@@ -89,7 +89,7 @@ V rámci vaší vyhledávací služby vytvoří průvodce tři odlišné objekty
 
 Pokud nejste obeznámeni s indexery, *indexer* je prostředkem v Azure kognitivní hledání, který prochází externím zdrojem dat pro prohledávatelný obsah. Výstupem průvodce **importem dat** je indexer, který prochází váš zdroj dat JSON, extrahuje prohledávatelný obsah a importuje ho do indexu v Azure kognitivní hledání.
 
-   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Příkaz Importovat data na portálu" border="false":::
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Definice indexeru objektů BLOB" border="false":::
 
 Kliknutím na tlačítko **OK** spusťte průvodce a vytvořte všechny objekty. Indexování se okamžitě zahájí.
 
@@ -118,11 +118,11 @@ Pořadí operací vyžaduje, abyste v tomto pořadí vytvořili objekty a volali
 
 Objekty blob JSON ve službě Azure Blob Storage jsou obvykle buď jedním dokumentem JSON, nebo polem JSON "Array". Indexer objektů BLOB v Azure Kognitivní hledání může analyzovat buď konstrukci v závislosti na nastavení parametru **parsingMode** v žádosti.
 
-| Dokument JSON | parsingMode | Description | Dostupnost |
+| Dokument JSON | parsingMode | Popis | Dostupnost |
 |--------------|-------------|--------------|--------------|
-| Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
-| Víc na objekt BLOB | `jsonLines` | Analyzuje objekt blob, který obsahuje více entit JSON (pole) oddělený novým řádkem, kde se Každá entita stal samostatným dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/microsoft.azure.search.models.indexer) SDK. |
+| Jedna na objekt BLOB | `json` | Analyzuje objekty blob JSON jako jeden blok textu. Každý objekt BLOB JSON se stal jedním dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
+| Víc na objekt BLOB | `jsonArray` | Analyzuje pole JSON v objektu blob, kde se každý prvek pole stal samostatným dokumentem Azure Kognitivní hledání.  | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
+| Víc na objekt BLOB | `jsonLines` | Analyzuje objekt blob, který obsahuje více entit JSON (pole) oddělený novým řádkem, kde se Každá entita stal samostatným dokumentem Azure Kognitivní hledání. | Obecně dostupné jak v rozhraní [REST](/rest/api/searchservice/indexer-operations) API, tak v sadě [.NET](/dotnet/api/azure.search.documents.indexes.models.searchindexer) SDK. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1. sestavování vstupů pro požadavek
 
@@ -141,7 +141,7 @@ Tyto hodnoty můžete najít na portálu:
 
 2. V levém navigačním podokně klikněte na **klíče** a zkopírujte buď primární nebo sekundární klíč (jsou ekvivalentní).
 
-3. Přepněte na stránky portálu pro váš účet úložiště. V levém navigačním podokně v části **Nastavení**klikněte na **přístupové klíče**. Tato stránka poskytuje název a klíč účtu. Zkopírujte název účtu úložiště a jeden z klíčů do poznámkového bloku.
+3. Přepněte na stránky portálu pro váš účet úložiště. V levém navigačním podokně v části **Nastavení** klikněte na **přístupové klíče**. Tato stránka poskytuje název a klíč účtu. Zkopírujte název účtu úložiště a jeden z klíčů do poznámkového bloku.
 
 ### <a name="2---create-a-data-source"></a>2. vytvoření zdroje dat
 
@@ -280,10 +280,10 @@ Vytvoření indexeru na Azure Kognitivní hledání aktivuje import dat. Spustí
 
 Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [Microsoft. Azure. Search. Models. DataSource](/dotnet/api/microsoft.azure.search.models.datasource)
-+ [Microsoft. Azure. Search. Models. DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
-+ [Microsoft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index) 
-+ [Microsoft. Azure. Search. Models. indexer](/dotnet/api/microsoft.azure.search.models.indexer)
++ [azure.search.documents. indexs. Models. searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents. indexs. Models. searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) 
++ [azure.search.documents. indexs. Models. searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex) 
++ [azure.search.documents. indexs. Models. SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="parsing-modes"></a>
 
@@ -291,7 +291,7 @@ Sada .NET SDK má úplnou paritu s REST API. Doporučujeme, abyste si přečtět
 
 Objekty blob JSON můžou předpokládat víc forem. Parametr **parsingMode** indexeru JSON určuje, jak se obsah objektu BLOB JSON analyzuje a strukturuje v indexu Azure kognitivní hledání:
 
-| parsingMode | Description |
+| parsingMode | Popis |
 |-------------|-------------|
 | `json`  | Indexujte každý objekt BLOB jako jeden dokument. Tato možnost je výchozí. |
 | `jsonArray` | Tento režim vyberte, pokud se objekty blob skládají z polí JSON a potřebujete, aby se každý element pole stal samostatným dokumentem v Azure Kognitivní hledání. |
@@ -329,7 +329,7 @@ Jak je uvedeno, mapování polí se nevyžaduje. V případě indexu s poli "tex
 
 ## <a name="parse-json-arrays"></a>Analyzovat pole JSON
 
-Alternativně můžete použít možnost pole JSON. Tato možnost je užitečná v případě, že objekty blob obsahují *pole dobře formátovaného objektu JSON*a vy chcete, aby se každý prvek stal samostatným dokumentem Azure kognitivní hledání. Například s ohledem na následující objekt BLOB JSON můžete index služby Azure Kognitivní hledání naplnit třemi samostatnými dokumenty, každý s poli "ID" a "text".  
+Alternativně můžete použít možnost pole JSON. Tato možnost je užitečná v případě, že objekty blob obsahují *pole dobře formátovaného objektu JSON* a vy chcete, aby se každý prvek stal samostatným dokumentem Azure kognitivní hledání. Například s ohledem na následující objekt BLOB JSON můžete index služby Azure Kognitivní hledání naplnit třemi samostatnými dokumenty, každý s poli "ID" a "text".  
 
 ```text
     [

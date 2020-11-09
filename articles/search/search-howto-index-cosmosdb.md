@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9b3353d3ba1af572b118001691e38af497f6f1fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf2282c5fda29cd266778a322efa4a0a33139c35
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290037"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372371"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indexování dat Cosmos DB pomocí indexeru ve službě Azure Cognitive Search 
 
@@ -32,7 +32,7 @@ Vzhledem k tomu, že terminologie může být matoucí, je třeba poznamenat, ž
 
 Indexer Cosmos DB ve službě Azure Kognitivní hledání může procházet [Azure Cosmos DB položky](../cosmos-db/databases-containers-items.md#azure-cosmos-items) , ke kterým přistupovaly prostřednictvím různých protokolů. 
 
-+ Pro [rozhraní SQL API](../cosmos-db/sql-query-getting-started.md), které je všeobecně dostupné, můžete k vytvoření zdroje dat a indexeru použít [portál](#cosmos-indexer-portal), [REST API](/rest/api/searchservice/indexer-operations)nebo [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer) .
++ Pro [rozhraní SQL API](../cosmos-db/sql-query-getting-started.md), které je všeobecně dostupné, můžete k vytvoření zdroje dat a indexeru použít [portál](#cosmos-indexer-portal), [REST API](/rest/api/searchservice/indexer-operations)nebo [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) .
 
 + Pro [MONGODB API (Preview)](../cosmos-db/mongodb-introduction.md)můžete k vytvoření zdroje dat a indexeru použít buď [portál](#cosmos-indexer-portal) , nebo [REST API verze 2020-06-30-Preview](search-api-preview.md) .
 
@@ -68,14 +68,14 @@ Průvodce můžete [Spustit](search-import-data-portal.md) z příkazového řá
 
 ### <a name="3---set-the-data-source"></a>3 – nastavení zdroje dat
 
-Na stránce **zdroj dat** musí být zdroj **Cosmos DB**, a to s následujícími specifikacemi:
+Na stránce **zdroj dat** musí být zdroj **Cosmos DB** , a to s následujícími specifikacemi:
 
 + **Name** je název objektu zdroje dat. Po vytvoření si ho můžete vybrat pro jiné úlohy.
 
 + **Účet Cosmos DB** by měl být v jednom z následujících formátů:
     1. Primární nebo sekundární připojovací řetězec z Cosmos DB v následujícím formátu: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` .
         + Pro **MongoDB kolekce** verze 3,2 a verze 3,6 použijte pro účet Cosmos DB v Azure Portal následující formát: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb`
-        + V případě **grafů Gremlin a tabulek Cassandra**si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.
+        + V případě **grafů Gremlin a tabulek Cassandra** si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.
     1.  Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).
 
 + **Databáze** je existující databáze z účtu. 
@@ -151,7 +151,7 @@ Tyto hodnoty můžete najít na portálu:
 
 2. V levém navigačním podokně klikněte na **klíče** a zkopírujte buď primární nebo sekundární klíč (jsou ekvivalentní).
 
-3. Přepněte na stránky portálu účtu úložiště Cosmos. V levém navigačním podokně v části **Nastavení**klikněte na **klíče**. Tato stránka poskytuje identifikátor URI, dvě sady připojovacích řetězců a dvě sady klíčů. Zkopírujte jeden z připojovacích řetězců do poznámkového bloku.
+3. Přepněte na stránky portálu účtu úložiště Cosmos. V levém navigačním podokně v části **Nastavení** klikněte na **klíče**. Tato stránka poskytuje identifikátor URI, dvě sady připojovacích řetězců a dvě sady klíčů. Zkopírujte jeden z připojovacích řetězců do poznámkového bloku.
 
 ### <a name="2---create-a-data-source"></a>2. vytvoření zdroje dat
 
@@ -181,12 +181,12 @@ Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Description |
+| Pole   | Popis |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
-|**přihlašovací údaje** | Povinná hodnota. Musí buď následovat formát připojovacího řetězce Cosmos DB nebo formát připojovacího řetězce spravované identity.<br/><br/>V případě **kolekcí SQL**mohou připojovací řetězce následovat po jednom z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>Pro **MongoDB kolekce** verze 3,2 a verze 3,6 použijte pro připojovací řetězec některý z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>V případě **grafů Gremlin a tabulek Cassandra**si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/><br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Kognitivní hledání nebude moct indexovat databázi Azure Cosmos DB.|
-| **container (kontejner)**  | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
+|**přihlašovací údaje** | Povinná hodnota. Musí buď následovat formát připojovacího řetězce Cosmos DB nebo formát připojovacího řetězce spravované identity.<br/><br/>V případě **kolekcí SQL** mohou připojovací řetězce následovat po jednom z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>Pro **MongoDB kolekce** verze 3,2 a verze 3,6 použijte pro připojovací řetězec některý z následujících formátů: <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>Spravovaný připojovací řetězec identity s následujícím formátem, který nezahrnuje klíč účtu: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` . Chcete-li použít tento formát připojovacího řetězce, postupujte podle pokynů pro [nastavení připojení indexeru k databázi Cosmos DB pomocí spravované identity](search-howto-managed-identities-cosmos-db.md).<br/><br/>V případě **grafů Gremlin a tabulek Cassandra** si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/><br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Kognitivní hledání nebude moct indexovat databázi Azure Cosmos DB.|
+| **vnitřního** | Obsahuje následující prvky: <br/>**název** : povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz** : volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučil. Viz část [indexování změněných dokumentů](#DataChangeDetectionPolicy) .|
 |**dataDeletionDetectionPolicy** | Nepovinný parametr. Viz část [indexování odstraněných dokumentů](#DataDeletionDetectionPolicy) .|
 
@@ -194,7 +194,7 @@ Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat násled
 Můžete zadat dotaz SQL pro sloučení vnořených vlastností nebo polí, vlastností JSON projektu a filtrovat data, která mají být indexována. 
 
 > [!WARNING]
-> Vlastní dotazy nejsou podporovány pro **rozhraní API MongoDB**, **rozhraní Gremlin API**a **rozhraní API Cassandra**: `container.query` parametr musí být nastaven na hodnotu null nebo vynechán. Pokud potřebujete použít vlastní dotaz, dejte nám prosím na [uživatelském hlasu](https://feedback.azure.com/forums/263029-azure-search)informace.
+> Vlastní dotazy nejsou podporovány pro **rozhraní API MongoDB** , **rozhraní Gremlin API** a **rozhraní API Cassandra** : `container.query` parametr musí být nastaven na hodnotu null nebo vynechán. Pokud potřebujete použít vlastní dotaz, dejte nám prosím na [uživatelském hlasu](https://feedback.azure.com/forums/263029-azure-search)informace.
 
 Ukázkový dokument:
 
@@ -278,7 +278,7 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 | Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
 | Řetězce, které vypadají jako kalendářní data |EDM. DateTimeOffset, Edm. String |
 | Objekty injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |Není k dispozici |
+| Jiné objekty JSON |– |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4. konfigurace a spuštění indexeru
 
@@ -307,16 +307,16 @@ Další informace o definování plánů indexerů najdete v tématu [postup pl�
 
 Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [Microsoft. Azure. Search. Models. DataSource](/dotnet/api/microsoft.azure.search.models.datasource)
-+ [Microsoft. Azure. Search. Models. DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype)
-+ [Microsoft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index)
-+ [Microsoft. Azure. Search. Models. indexer](/dotnet/api/microsoft.azure.search.models.indexer)
++ [azure.search.documents. indexs. Models. searchindexerdatasourceconnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)
++ [azure.search.documents. indexs. Models. searchindexerdatasourcetype](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype)
++ [azure.search.documents. indexs. Models. searchindex](/dotnet/api/azure.search.documents.indexes.models.searchindex)
++ [azure.search.documents. indexs. Models. SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>Indexování změněných dokumentů
 
-Účelem zásad detekce změn dat je efektivně identifikovat změněné datové položky. V současné době je jedinou podporovanou zásadou [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) použití `_ts` vlastnosti (časové razítko), kterou poskytuje Azure Cosmos DB, která je určena následujícím způsobem:
+Účelem zásad detekce změn dat je efektivně identifikovat změněné datové položky. V současné době je jedinou podporovanou zásadou [`HighWaterMarkChangeDetectionPolicy`](/dotnet/api/azure.search.documents.indexes.models.highwatermarkchangedetectionpolicy) použití `_ts` vlastnosti (časové razítko), kterou poskytuje Azure Cosmos DB, která je určena následujícím způsobem:
 
 ```http
     {
@@ -391,7 +391,7 @@ Následující příklad vytvoří zdroj dat se zásadami podmíněného odstran
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Další kroky
 
-Gratulujeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
+Blahopřejeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
 
 * Další informace o Azure Cosmos DB najdete na [stránce služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 * Další informace o službě Azure Kognitivní hledání najdete na [stránce vyhledávací služby](https://azure.microsoft.com/services/search/).

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342089"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372655"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Potlačit výstrahy z Azure Defenderu
 
@@ -23,10 +23,10 @@ Tato stránka vysvětluje, jak můžete pomocí pravidel potlačení výstrah po
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Free<br>(Většina výstrah zabezpečení je dostupná jenom v Azure Defenderu.)|
 |Požadované role a oprávnění:|**Správce zabezpečení** a **vlastník** můžou pravidla vytvářet a odstraňovat.<br>**Čtenáři zabezpečení** a **čtenáři** můžou zobrazit pravidla.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -60,11 +60,11 @@ Postup vytvoření pravidla přímo v Azure Portal:
 
 1. V horní části stránky Upozornění zabezpečení služby Security Center
 
-    - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení**:
+    - Vyhledejte konkrétní výstrahu, kterou už nechcete vidět, a z nabídky se třemi tečkami (...) pro výstrahu vyberte **vytvořit pravidlo potlačení** :
 
         [![* * Vytvořit pravidlo potlačení * * možnost](media/alerts-suppression-rules/auto-dismiss-future-option.png)](media/alerts-suppression-rules/auto-dismiss-future-option.png#lightbox)
 
-    - Případně vyberte odkaz **pravidla potlačení** v horní části stránky a na stránce Pravidla potlačení vyberte **vytvořit nové pravidlo potlačení**:
+    - Případně vyberte odkaz **pravidla potlačení** v horní části stránky a na stránce Pravidla potlačení vyberte **vytvořit nové pravidlo potlačení** :
 
         ![Tlačítko vytvořit nové pravidlo potlačení * *](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
@@ -109,7 +109,7 @@ Pokud chcete odstranit jedno nebo více pravidel, která jste vytvořili, použi
 
 ## <a name="view-suppressed-alerts"></a>Zobrazit potlačené výstrahy
 
-Budou se vygenerovat i výstrahy, které odpovídají povoleným pravidlům potlačení, ale jejich **stav se nastaví**na zastaveno. Můžete zobrazit stav v Azure Portal, nebo máte přístup k výstrahám zabezpečení Security Center. 
+Budou se vygenerovat i výstrahy, které odpovídají povoleným pravidlům potlačení, ale jejich **stav se nastaví** na zastaveno. Můžete zobrazit stav v Azure Portal, nebo máte přístup k výstrahám zabezpečení Security Center. 
 
 > [!TIP]
 > Pro potlačené výstrahy [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) nevytvoří incidenty. U jiných systémů Siem můžete filtrovat potlačitelné výstrahy pomocí stavu výstrahy (zastaveno).
@@ -127,9 +127,9 @@ Pravidla pro potlačení výstrah můžete vytvořit, zobrazit nebo odstranit po
 
 Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
-- **Put**: pro vytvoření nebo aktualizaci pravidla potlačení v zadaném předplatném.
+- **Put** : pro vytvoření nebo aktualizaci pravidla potlačení v zadaném předplatném.
 
-- **Získat**:
+- **Získat** :
 
     - K vypsání všech pravidel nakonfigurovaných pro zadané předplatné. Tato metoda vrací pole příslušných pravidel.
 
@@ -137,7 +137,7 @@ Příslušné metody HTTP pro pravidla potlačení v REST API jsou:
 
     - Chcete-li simulovat dopad pravidla potlačení, stále ve fázi návrhu. Toto volání identifikuje, který z vašich stávajících výstrah by byl vypnutý, pokud bylo pravidlo aktivní.
 
-- **Odstranit**: odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
+- **Odstranit** : odstraní stávající pravidlo (ale nemění stav výstrah, které mu už zavřelo).
 
 Úplné podrobnosti a příklady použití najdete v [dokumentaci k rozhraní API](/rest/api/securitycenter/). 
 

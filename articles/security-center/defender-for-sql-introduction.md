@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342021"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372523"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Seznámení se službou Azure Defender pro SQL
 
@@ -23,10 +23,10 @@ Azure Defender pro SQL zahrnuje dva plány Azure Defenderu, které rozšiřuje [
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview|
+|Stav vydaných verzí:|**Azure Defender pro servery Azure SQL Database** – všeobecně dostupné (GA)<br>**Azure Defender pro SQL servery na počítačích** – Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Dva plány, které tvoří **Azure Defender pro SQL** , se účtují, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Chráněné verze SQL:|Azure SQL Database <br>Spravovaná instance Azure SQL<br>Azure Synapse Analytics (dříve SQL DW)<br>SQL Server (všechny podporované verze)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Co je Azure Defender pro SQL Protect?

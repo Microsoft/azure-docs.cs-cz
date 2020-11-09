@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4d98323ebe973f13e654324f463ae01a8f1268c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629217"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372672"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu imagí RHEL pro různé případy použití.
@@ -26,12 +26,12 @@ Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všec
 > [!NOTE]
 > Nezpracované obrázky se už nevytvářejí ve prospěch LVM imagí. LVM nabízí několik výhod oproti staršímu schématu oddílu RAW (bez LVM), včetně významně flexibilnějších možností změny velikosti oddílů.
 
-Nabídka| Skladová položka | Dělení | Zřizování | Poznámky
+Nabídka| SKU | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent | 
-|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent | 
-|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent | 
-|             | 6,10     | ZÍSKÁNÍ    | Linuxový agent | 
+RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent | Rozšířená podpora životního cyklu je dostupná od 1. prosince. [Další podrobnosti najdete tady.](redhat-extended-lifecycle-support.md)
+|             | 6.8      | ZÍSKÁNÍ    | Linuxový agent | Rozšířená podpora životního cyklu je dostupná od 1. prosince. [Další podrobnosti najdete tady.](redhat-extended-lifecycle-support.md)
+|             | 6.9      | ZÍSKÁNÍ    | Linuxový agent | Rozšířená podpora životního cyklu je dostupná od 1. prosince. [Další podrobnosti najdete tady.](redhat-extended-lifecycle-support.md)
+|             | 6,10     | ZÍSKÁNÍ    | Linuxový agent | Rozšířená podpora životního cyklu je dostupná od 1. prosince. [Další podrobnosti najdete tady.](redhat-extended-lifecycle-support.md)
 |             | 7 – RAW    | ZÍSKÁNÍ    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS).
 |             | 7 – LVM    | LVM    | Linuxový agent | RHEL 7. x rodina imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 2. generace.
 |             | 7lvm – Gen2| LVM    | Linuxový agent | Generace 2, RHEL 7. x řady imagí. <br> Ve výchozím nastavení připojené k pravidelným úložištím (ne EUS). Pokud hledáte standardní image RHEL, která se má nasadit, použijte tuto sadu imagí a/nebo její protějšek 1. generace.
@@ -67,9 +67,9 @@ RHEL – SAP      | 7,4      | LVM    | Linuxový agent | RHEL 7,4 pro SAP HANA 
 |             | 7.6       | LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 76sap – Gen2| LVM    | Linuxový agent | RHEL 7,6 pro SAP HANA a obchodní aplikace. Obrázek generace 2 Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
 |             | 7.7       | LVM    | Linuxový agent | RHEL 7,7 pro SAP HANA a obchodní aplikace. Připojené k úložištím E4S budou účtovat prémii za SAP a RHEL a také základní výpočetní poplatek.
-RHEL-SAP-HANA (pro odebrání z Marketplace v říjnu 2020) | 6.7       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
-|             | 7.2       | LVM    | Linuxový agent | RHEL 7,2 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
-|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato image se odebere z Azure Martketplace v říjnu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
+RHEL-SAP-HANA (bude odebráno v listopadu 2020) | 6.7       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,7 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato bitová kopie bude odebrána v listopadu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
+|             | 7.2       | LVM    | Linuxový agent | RHEL 7,2 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato bitová kopie bude odebrána v listopadu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
+|             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP HANA. Zastaralé ve prospěch imagí RHEL-SAP. Tato bitová kopie bude odebrána v listopadu 2020. Další podrobnosti o nabídkách cloudu pro Red Hat jsou k dispozici [zde](https://access.redhat.com/articles/3751271).
 RHEL-SAP-APLIKACE | 6.8       | ZÍSKÁNÍ    | Linuxový agent | RHEL 6,8 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
 |             | 7.3       | LVM    | Linuxový agent | RHEL 7,3 pro SAP Business Applications. Zastaralé ve prospěch imagí RHEL-SAP.
 |             | 7,4       | LVM    | Linuxový agent | RHEL 7,4 pro SAP Business Applications.

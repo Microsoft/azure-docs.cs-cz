@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: fa7d252246ed37160ba2a5cfcd90557df1375bc3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461528"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372553"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender pro servery SQL na počítačích 
 
@@ -30,10 +30,10 @@ Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, pote
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|**Azure Defender pro servery SQL na počítačích** se fakturuje, jak je znázorněno na [stránce s cenami](security-center-pricing.md) .|
 |Chráněné verze SQL:|Azure SQL Server (všechny verze, na které se vztahuje podpora Microsoftu)|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ano](./media/icons/yes-icon.png) US Gov<br>![Ne](./media/icons/no-icon.png) Čína gov, jiné gov|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Čína gov, jiné gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Nastavení Azure Defenderu pro servery SQL na počítačích
@@ -53,7 +53,7 @@ Obě tyto parametry jsou popsány níže.
 
 - **SQL Server Prem** – Pokud je váš SQL Server hostovaný na místním počítači s Windows bez ARC Azure, máte dvě možnosti, jak ho připojit k Azure:
     
-    - **Nasazení ARC Azure** – k Security Center můžete připojit libovolný počítač s Windows. Azure ARC ale poskytuje hlubší integraci ve *všech* prostředích Azure. Pokud nastavíte Azure ARC, na portálu se zobrazí stránka **SQL Server – ARC Azure** a výstrahy zabezpečení se zobrazí na vyhrazené kartě **zabezpečení** na této stránce. První a doporučenou možností je [nastavit na hostiteli Azure ARC](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) a postupovat podle pokynů **SQL Server v Arc Azure ARC**výše.
+    - **Nasazení ARC Azure** – k Security Center můžete připojit libovolný počítač s Windows. Azure ARC ale poskytuje hlubší integraci ve *všech* prostředích Azure. Pokud nastavíte Azure ARC, na portálu se zobrazí stránka **SQL Server – ARC Azure** a výstrahy zabezpečení se zobrazí na vyhrazené kartě **zabezpečení** na této stránce. První a doporučenou možností je [nastavit na hostiteli Azure ARC](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) a postupovat podle pokynů **SQL Server v Arc Azure ARC** výše.
         
     - **Připojit počítač s Windows bez ARC Azure** – Pokud se rozhodnete připojit SQL Server běžící na počítači s Windows bez použití ARC Azure, postupujte podle pokynů v tématu [připojení počítačů s Windows k Azure monitor](../azure-monitor/platform/agent-windows.md).
 
@@ -64,7 +64,7 @@ Obě tyto parametry jsou popsány níže.
 
     - Pokud používáte **výchozí pracovní prostor Azure Security Center** (s názvem "defaultworkspace-[vaše předplatné ID]-[oblast]"), vyberte příslušné **předplatné**.
 
-    - Pokud používáte **jiný pracovní prostor než výchozí**, vyberte příslušný **pracovní prostor** (v případě potřeby zadejte název pracovního prostoru ve filtru):
+    - Pokud používáte **jiný pracovní prostor než výchozí** , vyberte příslušný **pracovní prostor** (v případě potřeby zadejte název pracovního prostoru ve filtru):
 
         ![Hledání nevýchozího pracovního prostoru podle názvu](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
@@ -97,7 +97,7 @@ Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Securi
 
     Zobrazí se podrobné zobrazení tohoto doporučení.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Na počítačích s SQL serverem by se měly opravit výsledky posouzení ohrožení zabezpečení (Preview)":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Podrobné zobrazení doporučení":::
 
 1. Další podrobnosti najdete v podrobnostech:
 
@@ -105,7 +105,7 @@ Výsledky posouzení ohrožení zabezpečení můžete zobrazit přímo z Securi
 
     * Přehled chyb, které jsou seskupeny podle konkrétní databáze SQL, získáte tak, že vyberete databázi, která je zajímavá.
 
-    V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem**, postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
+    V každém zobrazení jsou kontroly zabezpečení seřazené podle **závažnosti**. Kliknutím na konkrétní kontrolu zabezpečení zobrazíte podokno podrobností s **popisem** , postupem jeho **opravte** a dalšími souvisejícími informacemi, jako je třeba **dopad** nebo **Srovnávací test**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Výstrahy Azure Defenderu pro SQL
 Výstrahy jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k počítačům SQL nebo jejich zneužití. Tyto události mohou aktivovat výstrahy zobrazené v [části výstrahy pro SQL Database a Azure synapse Analytics (dříve SQL Data Warehouse) na stránce referenčních informací o výstrahách](alerts-reference.md#alerts-sql-db-and-warehouse).

@@ -10,22 +10,22 @@ ms.date: 10/07/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 7adfafbb0b0b11057a21dfbbe6dffcf6d2564606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66881fc03719e83f5354d19d0fde9eb474c17359
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977792"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371793"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenční dokumentace](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referenční dokumentace](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics)  |  [Balíček](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
@@ -33,7 +33,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) s verzí 8 nebo vyšší
@@ -151,7 +151,7 @@ Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azu
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis) 
 * [Dolování názoru](#opinion-mining)
-* [rozpoznávání jazyka,](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
 * [extrakce klíčových frází,](#key-phrase-extraction)
@@ -315,7 +315,7 @@ Tento článek popisuje pouze verzi 3. x rozhraní API.
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci s názvem `detectLanguageExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `detectLanguage()` funkci. Vrácený `DetectLanguageResult` objekt bude obsahovat nalezen primární jazyk, seznam dalších jazyků, který byl nalezen v případě úspěchu, nebo v `errorMessage` případě potřeby. Tento příklad je stejný pro verze 3,0 a 3,1 rozhraní API.
 

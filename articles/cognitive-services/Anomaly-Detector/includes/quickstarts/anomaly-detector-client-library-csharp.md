@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: 14b361ae2163636864b37d2a063ad10886a9e3c8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7969e2011a242152e27d7c1aa67b36d99d92adfe
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029433"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371768"
 ---
 Začínáme s klientskou knihovnou anomálie detektor pro .NET Pomocí těchto kroků nainstalujete balíček Start s použitím algoritmů poskytovaných službou. Služba detektoru anomálií umožňuje v datech časových řad najít neobvyklé typy, a to díky tomu, že automaticky používá nejvhodnější modely, bez ohledu na obor, scénář nebo objem dat.
 
@@ -25,7 +25,7 @@ Použijte klientskou knihovnu detektoru anomálií pro .NET:
 
 [Referenční dokumentace ke knihovně](https://aka.ms/anomaly-detector-dotnet-ref)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2)  |  [Vyhledání kódu na GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
@@ -39,7 +39,7 @@ Použijte klientskou knihovnu detektoru anomálií pro .NET:
 
 ### <a name="create-a-new-net-core-application"></a>Vytvoření nové aplikace .NET Core
 
-V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `anomaly-detector-quickstart` . Tento příkaz vytvoří jednoduchý projekt "Hello World" s jedním zdrojovým souborem C#: *program.cs* .
+V okně konzoly (například cmd, PowerShell nebo bash) použijte `dotnet new` příkaz k vytvoření nové aplikace konzoly s názvem `anomaly-detector-quickstart` . Tento příkaz vytvoří jednoduchý projekt "Hello World" s jedním zdrojovým souborem C#: *program.cs*.
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
@@ -79,11 +79,11 @@ V `main()` metodě aplikace vytvořte proměnné pro umístění Azure prostřed
 
 ## <a name="object-model"></a>Objektový model
 
-Klientem detektoru anomálií je objekt [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) , který se ověřuje v Azure pomocí [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), který obsahuje váš klíč. Klient může provádět detekci anomálií pro celou datovou sadu pomocí [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)nebo k nejnovějšímu datovému bodu pomocí [LastDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync). Metoda [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) detekuje body, které označují změny trendu.
+Klientem detektoru anomálií je objekt [AnomalyDetectorClient](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient) , který se ověřuje v Azure pomocí [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials), který obsahuje váš klíč. Klient může provádět detekci anomálií pro celou datovou sadu pomocí [EntireDetectAsync ()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync)nebo k nejnovějšímu datovému bodu pomocí [LastDetectAsync ()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync). Metoda [ChangePointDetectAsync](https://aka.ms/anomaly-detector-dotnet-ref) detekuje body, které označují změny trendu.
 
-Data časové řady se odesílají jako řada [bodů](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) v objektu [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) . `Request`Objekt obsahuje vlastnosti pro popis dat (například[členitosti](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) ) a parametrů pro detekci anomálií.
+Data časové řady se odesílají jako řada [bodů](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.series?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_Series) v objektu [Request](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request) . `Request`Objekt obsahuje vlastnosti pro popis dat (například[členitosti](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request.granularity) ) a parametrů pro detekci anomálií.
 
-Odezva detektoru anomálií je objekt [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse), [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)nebo [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) v závislosti na použité metodě.
+Odezva detektoru anomálií je objekt [EntireDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse), [LastDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse)nebo [changePointDetectResponse](https://aka.ms/anomaly-detector-dotnet-ref) v závislosti na použité metodě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -97,34 +97,34 @@ Tyto fragmenty kódu ukazují, jak provést následující akce pomocí klientsk
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) .
+V nové metodě vytvořte instanci klienta s vaším koncovým bodem a klíčem. Vytvořte objekt [ApiKeyServiceClientCredentials](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) s klíčem a použijte ho u svého koncového bodu k vytvoření objektu [AnomalyDetectorClient](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) .
 
 [!code-csharp[Client authentication function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=createClient)]
 
 ## <a name="load-time-series-data-from-a-file"></a>Načtení dat časových řad ze souboru
 
 Stáhněte si ukázková data pro tento rychlý Start z [GitHubu](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
-1. V prohlížeči klikněte pravým tlačítkem na **raw** .
-2. Klikněte na **Uložit odkaz jako** .
+1. V prohlížeči klikněte pravým tlačítkem na **raw**.
+2. Klikněte na **Uložit odkaz jako**.
 3. Uložte soubor do adresáře aplikace jako soubor. csv.
 
 Tato data časové řady jsou formátována jako soubor. csv a budou odeslána do rozhraní API detektoru anomálií.
 
-Vytvořte novou metodu pro čtení v datech časové řady a přidejte ji do objektu [Request](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) . Zavolejte `File.ReadAllLines()` pomocí cesty k souboru a vytvořte seznam objektů [Point](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) a všechny znaky nového řádku. Extrahujte hodnoty a oddělte dateStamp od své číselné hodnoty a přidejte je do nového `Point` objektu.
+Vytvořte novou metodu pro čtení v datech časové řady a přidejte ji do objektu [Request](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.request?view=azure-dotnet-preview) . Zavolejte `File.ReadAllLines()` pomocí cesty k souboru a vytvořte seznam objektů [Point](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.point?view=azure-dotnet-preview) a všechny znaky nového řádku. Extrahujte hodnoty a oddělte dateStamp od své číselné hodnoty a přidejte je do nového `Point` objektu.
 
-Vytvořte `Request` objekt s řadou bodů a `Granularity.Daily` pro [členitost](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (nebo periodicitu) datových bodů.
+Vytvořte `Request` objekt s řadou bodů a `Granularity.Daily` pro [členitost](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) (nebo periodicitu) datových bodů.
 
 [!code-csharp[load the time series data file](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=GetSeriesFromFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>Detekovat anomálie v celé sadě dat
 
-Vytvořte metodu, která zavolá metodu [EntireDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) klienta s `Request` objektem a očekává odpověď jako objekt [EntireDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) . Pokud časová řada obsahuje nějaké anomálie, Iterujte prostřednictvím hodnot [anomálií](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) odpovědi a vytiskněte všechny, které jsou `true` . Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+Vytvořte metodu, která zavolá metodu [EntireDetectAsync ()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.entiredetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_EntireDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) klienta s `Request` objektem a očekává odpověď jako objekt [EntireDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-dotnet-preview) . Pokud časová řada obsahuje nějaké anomálie, Iterujte prostřednictvím hodnot [anomálií](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.entiredetectresponse.isanomaly?view=azure-dotnet-preview) odpovědi a vytiskněte všechny, které jsou `true` . Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
 [!code-csharp[EntireDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=entireDatasetExample)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
 
-Vytvořte metodu, která zavolá metodu [LastDetectAsync ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) klienta s `Request` objektem a očekává odpověď jako objekt [LastDetectResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) . Zkontrolujte atribut [anomálie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) odpovědi a určete, zda byl nejnovější odeslaný datový bod anomálií nebo nikoli.
+Vytvořte metodu, která zavolá metodu [LastDetectAsync ()](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclientextensions.lastdetectasync?view=azure-dotnet-preview#Microsoft_Azure_CognitiveServices_AnomalyDetector_AnomalyDetectorClientExtensions_LastDetectAsync_Microsoft_Azure_CognitiveServices_AnomalyDetector_IAnomalyDetectorClient_Microsoft_Azure_CognitiveServices_AnomalyDetector_Models_Request_System_Threading_CancellationToken_) klienta s `Request` objektem a očekává odpověď jako objekt [LastDetectResponse](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-dotnet-preview) . Zkontrolujte atribut [anomálie](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.lastdetectresponse.isanomaly?view=azure-dotnet-preview) odpovědi a určete, zda byl nejnovější odeslaný datový bod anomálií nebo nikoli.
 
 [!code-csharp[LastDetectSampleAsync() function](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=latestPointExample)]
 

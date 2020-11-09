@@ -11,18 +11,18 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116786"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371615"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je často navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení pro nové čtenáře, jazyky jazyků a lidi s rozdíly v učení, jako je dyslexia. Pomocí moderního čtecího zařízení ve svých aplikacích můžete izolovat text a vylepšit tak fokus, zobrazit obrázky pro běžně používaná slova, zvýraznit části řeči, číst vybraný text hlasitě, překládat slova a fráze v reálném čase a další.
 
 V tomto rychlém startu vytvoříte webovou aplikaci od začátku a integrujete moderní čtečku pomocí klientské knihovny pro moderní čtenáře. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
@@ -42,7 +42,7 @@ Vytvořte nový projekt v aplikaci Visual Studio pomocí šablony ASP.NET Core w
 
 ### <a name="configure-authentication-values"></a>Konfigurovat hodnoty ověřování
 
-V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _secrets.js_. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true). Nahraďte obsah _secrets.jsv_ následujícím textu zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
+V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _secrets.js_. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1). Nahraďte obsah _secrets.jsv_ následujícím textu zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
 ```json
 {
@@ -65,7 +65,7 @@ Otevřete konzolu Správce balíčků NuGet z **nástrojů – > správce balí�
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Aktualizace kontroleru pro získání tokenu 
 
-Otevřete _souboru controllers\homecontroller.cs_a za příkazy _using_ v horní části souboru přidejte následující kód.
+Otevřete _souboru controllers\homecontroller.cs_ a za příkazy _using_ v horní části souboru přidejte následující kód.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -218,9 +218,9 @@ Všimněte si, že veškerý text má atribut **lang** , který popisuje jazyky 
 
 ## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Přidat JavaScript pro zpracování spuštění moderního čtecího zařízení
 
-Knihovna moderního čtecího zařízení poskytuje funkce, jako je například spuštění moderního čtecího zařízení a vykreslování tlačítek pro moderní čtečku. Další informace najdete [tady](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference).
+Knihovna moderního čtecího zařízení poskytuje funkce, jako je například spuštění moderního čtecího zařízení a vykreslování tlačítek pro moderní čtečku. Další informace najdete [tady](../../reference.md).
 
-V dolní části _Views\Home\Index.cshtml_přidejte následující kód:
+V dolní části _Views\Home\Index.cshtml_ přidejte následující kód:
 
 ```html
 @section Scripts
@@ -292,7 +292,7 @@ V dolní části _Views\Home\Index.cshtml_přidejte následující kód:
 
 ## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
-V řádku nabídek vyberte možnost **ladění > spustit ladění**, nebo stiskněte klávesu **F5** a spusťte aplikaci.
+V řádku nabídek vyberte možnost **ladění > spustit ladění** , nebo stiskněte klávesu **F5** a spusťte aplikaci.
 
 V prohlížeči byste měli vidět:
 

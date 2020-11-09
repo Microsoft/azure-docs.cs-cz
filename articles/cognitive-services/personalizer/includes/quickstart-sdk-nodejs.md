@@ -8,16 +8,16 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 08/27/2020
-ms.openlocfilehash: 03680a2a6b4792a2bf522eff1462e29439e0f61b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d2b0d4435f681ce6dedea7cace929a03e6782bce
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055370"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371547"
 ---
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)  | [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org) a npm.
@@ -77,11 +77,11 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="object-model"></a>Objektový model
 
-Klient pro přizpůsobování je objekt [PersonalizerClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
+Klient pro přizpůsobování je objekt [PersonalizerClient](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest) , který se ověřuje v Azure pomocí Microsoft. REST. ServiceClientCredentials, který obsahuje váš klíč.
 
-Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/rankrequest?view=azure-node-latest)a pak ji předejte [klientovi. Rank](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest#rank-rankrequest--msrest-requestoptionsbase-) – metoda Metoda Rank vrátí RankResponse.
+Pokud chcete požádat o jednu nejlepší položku obsahu, vytvořte [RankRequest](/javascript/api/@azure/cognitiveservices-personalizer/rankrequest?view=azure-node-latest)a pak ji předejte [klientovi. Rank](/javascript/api/@azure/cognitiveservices-personalizer/personalizerclient?view=azure-node-latest#rank-rankrequest--msrest-requestoptionsbase-) – metoda Metoda Rank vrátí RankResponse.
 
-Chcete-li odeslat odměnu do přizpůsobeného modulu, vytvořte [RewardRequest](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest?view=azure-node-latest)a předejte ji do metody [odměňování](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/events?view=azure-node-latest#reward-string--rewardrequest--servicecallback-void--) pro třídu Events.
+Chcete-li odeslat odměnu do přizpůsobeného modulu, vytvořte [RewardRequest](/javascript/api/@azure/cognitiveservices-personalizer/rewardrequest?view=azure-node-latest)a předejte ji do metody [odměňování](/javascript/api/@azure/cognitiveservices-personalizer/events?view=azure-node-latest#reward-string--rewardrequest--servicecallback-void--) pro třídu Events.
 
 Stanovení odměňování je v tomto rychlém startu triviální. V produkčním systému se určení toho, co ovlivňuje [skóre záměna](../concept-rewards.md) a kolik může být složitý proces, se může stát, že se v průběhu času rozhodnete změnit. To by mělo být jedno z primárních rozhodnutí o návrhu v architektuře pro přizpůsobování.
 

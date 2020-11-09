@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: 54f80310f274b757d118f34542c1aa2e838ca7b9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 14b9d9fe0eb9dfe2f25373c2d87d9b4af15dd0d9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92082146"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371794"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -23,8 +23,8 @@ Použití místní integrace virtuální sítě umožňuje aplikacím přístup 
 
 Když použijete integraci virtuální sítě s virtuální sítě ve stejné oblasti, můžete použít tyto funkce sítě Azure:
 
-* **Skupiny zabezpečení sítě (skupin zabezpečení sítě)**: můžete blokovat odchozí přenos pomocí NSG, který je umístěný v podsíti integrace. Příchozí pravidla se nevztahují, protože integraci virtuální sítě nemůžete použít k zajištění příchozího přístupu do vaší aplikace.
-* **Směrovací tabulky (udr)**: můžete umístit směrovací tabulku do podsítě Integration pro odeslání odchozího provozu tam, kde chcete.
+* **Skupiny zabezpečení sítě (skupin zabezpečení sítě)** : můžete blokovat odchozí přenos pomocí NSG, který je umístěný v podsíti integrace. Příchozí pravidla se nevztahují, protože integraci virtuální sítě nemůžete použít k zajištění příchozího přístupu do vaší aplikace.
+* **Směrovací tabulky (udr)** : můžete umístit směrovací tabulku do podsítě Integration pro odeslání odchozího provozu tam, kde chcete.
 
 Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší virtuální sítě. Pokud chcete směrovat veškerý odchozí provoz do vaší virtuální sítě, použijte nastavení aplikace WEBSITE_VNET_ROUTE_ALL pro vaši aplikaci. Konfigurace nastavení aplikace:
 
@@ -42,7 +42,7 @@ Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší 
 Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
 * Nemůžete se připojit k prostředkům napříč globálními připojeními partnerských vztahů.
-* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2. Všimněte si, že *to neznamená, že vaše aplikace musí běžet na cenové úrovni PremiumV2*, jenom to, že musí běžet v plánu App Service, kde je dostupná možnost PremiumV2 (což znamená, že se jedná o novější jednotku škálování, kde je tato funkce integrace virtuální sítě dostupná taky).
+* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2. Všimněte si, že *to neznamená, že vaše aplikace musí běžet na cenové úrovni PremiumV2* , jenom to, že musí běžet v plánu App Service, kde je dostupná možnost PremiumV2 (což znamená, že se jedná o novější jednotku škálování, kde je tato funkce integrace virtuální sítě dostupná taky).
 * Podsíť Integration můžete použít jenom v jednom plánu App Service.
 * Tuto funkci nemůžou používat aplikace pro izolované plánování, které jsou ve App Service Environment.
 * Tato funkce vyžaduje nepoužitou podsíť, která je a/27 s 32 adresou nebo větší ve Azure Resource Manager virtuální síti.
@@ -82,12 +82,17 @@ Trasy Border Gateway Protocol (BGP) ovlivňují také přenosy aplikací. Pokud 
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Pokud chcete pracovat s Azure DNS Private Zones musíte přidat následující nastavení aplikace:
+Jakmile se vaše aplikace integruje s vaší virtuální sítí, používá stejný server DNS, se kterým je nakonfigurovaná vaše virtuální síť. Ve výchozím nastavení vaše aplikace nebude fungovat s Azure DNS Private Zones. Chcete-li pracovat s Azure DNS Private Zones, je nutné přidat následující nastavení aplikace:
 
-1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16 
+1. WEBSITE_DNS_SERVER s hodnotou 168.63.129.16
 1. WEBSITE_VNET_ROUTE_ALL s hodnotou 1
 
-Tato nastavení budou posílat všechna vaše odchozí volání z vaší aplikace do vaší virtuální sítě a zároveň umožníte, aby aplikace používala Azure DNS privátní zóny.
+Tato nastavení budou posílat všechna odchozí volání z vaší aplikace do vaší virtuální sítě. Kromě toho umožní aplikaci použít Azure DNS dotazem Privátní DNS zóny na úrovni pracovního procesu. Tato funkce se použije, když běžící aplikace přistupuje k zóně Privátní DNS.
+
+> [!NOTE]
+>Pokus o přidání vlastní domény do webové aplikace pomocí Privátní DNS zóny není možné použít s Integrace virtuální sítě. Vlastní ověření domény se provádí na úrovni kontroleru, nikoli na úrovni pracovního procesu, což brání tomu, aby se záznamy DNS zobrazily. Pokud chcete použít vlastní doménu ze zóny Privátní DNS, musí být ověření obejít pomocí Application Gateway nebo interního nástroje App Service Environment.
+
+
 
 ### <a name="private-endpoints"></a>Soukromé koncové body
 

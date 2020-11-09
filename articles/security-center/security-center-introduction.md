@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901552"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372264"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -54,7 +54,7 @@ Kromě toho Security Center pro servery s Windows i Linux chránit i servery a v
 
 Události shromážděné z agentů a z Azure jsou spojené s modulem Security Analytics, aby vám poskytovala přizpůsobená doporučení (posílení úloh), která vám pomůžou zajistit zabezpečení vašich úloh a výstrahy zabezpečení. Tyto výstrahy byste měli prozkoumat co nejdřív, abyste se ujistili, že se na vašich úlohách neprovádějí škodlivé útoky.
 
-Pokud povolíte Security Center, v části Security Center kategorie se tato zásada zabezpečení Security Center zařadí do Azure Policy jako integrovaná iniciativa. Integrovaná iniciativa se automaticky přiřadí všem Security Center registrovaným předplatným (cenové úrovně Free nebo Standard). Integrovaná iniciativa obsahuje pouze zásady auditu. Další informace o zásadách Security Center v Azure Policy najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
+Pokud povolíte Security Center, jsou zásady zabezpečení, které se mají Security Center, odrážet v Azure Policy jako integrovaná iniciativa v kategorii Security Center. Integrovaná iniciativa se automaticky přiřadí všem Security Center registrovaným předplatným (bez ohledu na to, jestli mají povolený Azure Defender). Integrovaná iniciativa obsahuje pouze zásady auditu. Další informace o zásadách Security Center v Azure Policy najdete v tématu [práce se zásadami zabezpečení](tutorial-security-policy.md).
 
 ## <a name="strengthen-security-posture"></a>Posílení stavu zabezpečení
 
@@ -62,27 +62,27 @@ Azure Security Center vám umožní posílit stav zabezpečení. To znamená, ž
 
 ### <a name="manage-organization-security-policy-and-compliance"></a>Správa zásad zabezpečení a dodržování předpisů v organizaci
 
-Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postaveny nad Azure Policy ovládací prvky, získáte celou škálu a flexibilitu **špičkového řešení zásad** . V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
+Je to základní zabezpečení, které se dozvíte a zajistěte, aby byly vaše úlohy zabezpečené a že se spustí s přizpůsobenými zásadami zabezpečení. Vzhledem k tomu, že všechny zásady v Security Center jsou postaveny nad Azure Policy ovládací prvky, získáte celou škálu a flexibilitu **špičkového řešení zásad**. V Security Center můžete nastavit, aby se zásady spouštěly ve skupinách pro správu, mezi předplatnými a dokonce i pro celého tenanta.
 
 :::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="Stránka správy zásad":::
 
-Security Center vám pomůže **identifikovat Stínová předplatná** . Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
+Security Center vám pomůže **identifikovat Stínová předplatná**. Zobrazením předplatných, která **nejsou pokrytá** na řídicím panelu, můžete okamžitě zjistit, jestli existují nově vytvořená předplatná, a že jsou pokryté vašimi zásadami a chráněny pomocí Azure Security Center.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Stránka správy zásad":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Řídicí panel zásad Security Center":::
 
 ### <a name="continuous-assessments"></a>Nepřetržité hodnocení
 
 Security Center nepřetržitě zjišťuje nové prostředky, které jsou nasazené napříč vašimi úlohami, a posuzuje, jestli jsou nakonfigurované v souladu s osvědčenými postupy zabezpečení, pokud ne, jsou označené jako prioritní a vy získáte seznam doporučení, která je potřeba opravit, aby bylo možné počítače chránit.
 
-Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení** .
+Abychom vám pomohli pochopit, jak důležité je, aby každé doporučení bylo stav zabezpečení, Security Center seskupení doporučení do řízení zabezpečení a přidá do každého ovládacího prvku **zabezpečenou hodnotu skóre** . To je zásadní postup, který vám umožní **určit prioritu fungování zabezpečení**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Stránka správy zásad":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center zabezpečeného skóre":::
 
 ### <a name="network-map"></a>Mapa sítě
 
-Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě** . Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
+Jedním z nejúčinnějších nástrojů, které Security Center nabízí nepřetržité monitorování stavu zabezpečení vaší sítě, je **Mapa sítě**. Mapa vám umožní zobrazit topologii vašich úloh, abyste viděli, jestli je každý uzel správně nakonfigurovaný. Vidíte, jak jsou uzly připojené, což vám pomůže zablokovat nechtěné připojení, která by mohla útočníkovi usnadnit nárůst vaší sítě.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Stránka správy zásad":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Mapa Security Center sítě":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>Optimalizace a vylepšení zabezpečení konfigurací doporučených ovládacích prvků
@@ -93,7 +93,7 @@ Tímto způsobem Security Center umožňuje nejen nastavovat zásady zabezpečen
 
 Doporučení vám pomůžou snížit plochu pro útok na jednotlivé prostředky. To zahrnuje virtuální počítače Azure, servery mimo Azure a služby Azure PaaS, jako jsou SQL a účty úložiště, a další informace o tom, kde se každý typ prostředku vyhodnocuje odlišně a má vlastní standardy.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Stránka správy zásad":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Příklad doporučení Security Center":::
 
 ## <a name="protect-against-threats"></a>Ochrana před hrozbami
 
@@ -101,7 +101,7 @@ Ochrana před hrozbami Security Center vám umožní detekovat a bránit hrozbá
 
 Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetězu fúze, která automaticky koreluje výstrahy ve vašem prostředí založené na počítačové analýze dezaktivačního řetězu, které vám pomůžou lépe pochopit úplný příběh k útokům na útoky, kde začaly a jaký má dopad na vaše prostředky.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Stránka správy zásad":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Výstrahy zabezpečení":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrace s Microsoft Defenderem pro koncový bod
 
@@ -137,6 +137,6 @@ Rozsáhlá kolekce protokolů – protokoly z Windows a Linux se využívají v 
 
 - Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 
-- Cenová úroveň Free Security Center je povolená ve všech vašich současných předplatných Azure, když navštívíte Azure Security Center řídicí panel v Azure Portal poprvé nebo pokud je povolený prostřednictvím rozhraní API. Aby bylo možné využít pokročilé možnosti správy zabezpečení a detekce hrozeb, je nutné upgradovat na cenovou úroveň Standard. Úroveň Standard se dá zdarma zkoušet po dobu 30 dnů. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Cenová úroveň Free Security Center je povolená ve všech vašich současných předplatných Azure, když navštívíte Azure Security Center řídicí panel v Azure Portal poprvé nebo pokud je povolený prostřednictvím rozhraní API. Aby bylo možné využít pokročilé možnosti správy zabezpečení a detekce hrozeb, je nutné povolit Azure Defender. V Azure Defenderu se dá zdarma vyzkoušení po dobu 30 dnů. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Pokud jste připraveni povolit Security Center Standard nyní, [rychlý Start: připojení předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede jednotlivými kroky.
+- Pokud jste připraveni povolit Azure Defender nyní, [rychlý Start: nastavení Azure Security Center](security-center-get-started.md) vás provede kroky.

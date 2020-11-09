@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: e871edf1f16c1c73a3c3b16649e5aeb622397c8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9c5fe2653cff0d83a145964a3ad9eed166d0688
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87374821"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371566"
 ---
 Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro Java. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch) .
 
@@ -22,9 +22,9 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk Java:
 
 * Vyhledá výsledky hledání na webu z vaší instance Vlastní vyhledávání Bingu.
 
-[Referenční dokumentace](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Referenční dokumentace](/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/).
 * Aktuální verze sady [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
@@ -33,7 +33,7 @@ Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk Java:
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](~/includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-Po získání klíče z prostředku [Vytvořte proměnnou prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč s názvem `AZURE_BING_CUSTOM_SEARCH_API_KEY` .
+Po získání klíče z prostředku [Vytvořte proměnnou prostředí](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) pro klíč s názvem `AZURE_BING_CUSTOM_SEARCH_API_KEY` .
 
 ### <a name="create-a-new-gradle-project"></a>Vytvořit nový projekt Gradle
 
@@ -52,7 +52,7 @@ Spusťte `gradle init` příkaz z pracovního adresáře. Tento příkaz vytvoř
 gradle init --type basic
 ```
 
-Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+Po zobrazení výzvy k výběru **DSL** vyberte **Kotlin**.
 
 ## <a name="install-the-client-library"></a>Instalace klientské knihovny
 
@@ -99,9 +99,9 @@ Ve třídě vytvořte `main` metodu a proměnnou pro klíč prostředku. Pokud j
 
 ## <a name="object-model"></a>Objektový model
 
-Vlastní vyhledávání Bingu klient je objekt [BingCustomSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který je vytvořen z metody [ověřování ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) objektu [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) . Požadavek hledání můžete odeslat pomocí metody [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta.
+Vlastní vyhledávání Bingu klient je objekt [BingCustomSearchAPI](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který je vytvořen z metody [ověřování ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) objektu [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) . Požadavek hledání můžete odeslat pomocí metody [BingCustomInstances. Search ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta.
 
-Odpověď rozhraní API je objekt [SearchResponse](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) , který obsahuje informace o vyhledávacím dotazu a výsledky hledání.
+Odpověď rozhraní API je objekt [SearchResponse](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) , který obsahuje informace o vyhledávacím dotazu a výsledky hledání.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -112,7 +112,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Vlas
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-Vaše metoda Main by měla obsahovat objekt [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který přebírá svůj klíč, a volá svůj `authenticate()` .
+Vaše metoda Main by měla obsahovat objekt [BingCustomSearchManager](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) , který přebírá svůj klíč, a volá svůj `authenticate()` .
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
@@ -120,7 +120,7 @@ BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKe
 
 ## <a name="get-search-results-from-your-custom-search-instance"></a>Získat výsledky hledání z vlastní instance hledání
 
-Pomocí funkce [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta odešlete vyhledávací dotaz do vlastní instance. Nastavte na `withCustomConfig` vlastní ID konfigurace nebo výchozí na `1` . Po získání odpovědi z rozhraní API ověřte, zda byly nalezeny žádné výsledky hledání. Pokud ano, získejte první výsledek hledání voláním `webPages().value().get()` funkce odpovědi a vytiskněte název výsledku a adresu URL.
+Pomocí funkce [BingCustomInstances. Search ()](/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) klienta odešlete vyhledávací dotaz do vlastní instance. Nastavte na `withCustomConfig` vlastní ID konfigurace nebo výchozí na `1` . Po získání odpovědi z rozhraní API ověřte, zda byly nalezeny žádné výsledky hledání. Pokud ano, získejte první výsledek hledání voláním `webPages().value().get()` funkce odpovědi a vytiskněte název výsledku a adresu URL.
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 

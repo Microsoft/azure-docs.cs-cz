@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b10cf314bc9394f3297839d45d3497f9f5d3b0e0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0107dfb24ddad2a5b0f9f0ab12d2fe701466e385
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358826"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372825"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
 
@@ -132,16 +132,15 @@ Další podrobnosti o stavových kódech a datech monitorování indexeru najdet
 
 ## <a name="monitor-using-the-net-sdk"></a>Monitorování pomocí sady .NET SDK
 
-Můžete definovat plán pro indexer pomocí sady Azure Kognitivní hledání .NET SDK. Chcete-li to provést, zahrňte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** .
-
-Následující příklad jazyka C# zapisuje informace o stavu indexeru a výsledku jeho posledního (nebo probíhajícího) běhu do konzoly.
+Pomocí sady Azure Kognitivní hledání .NET SDK následující příklad C# zapisuje informace o stavu indexeru a výsledku jeho posledního (nebo probíhajícího) běhu do konzoly.
 
 ```csharp
-static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
+static void CheckIndexerStatus(SearchIndexerClient indexerClient, SearchIndexer indexer)
 {
     try
     {
-        IndexerExecutionInfo execInfo = searchService.Indexers.GetStatus(indexer.Name);
+        string indexerName = "hotels-sql-idxr";
+        SearchIndexerStatus execInfo = indexerClient.GetIndexerStatus(indexerName);
 
         Console.WriteLine("Indexer has run {0} times.", execInfo.ExecutionHistory.Count);
         Console.WriteLine("Indexer Status: " + execInfo.Status.ToString());
@@ -149,15 +148,15 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
         IndexerExecutionResult result = execInfo.LastResult;
 
         Console.WriteLine("Latest run");
-        Console.WriteLine("  Run Status: {0}", result.Status.ToString());
-        Console.WriteLine("  Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
+        Console.WriteLine("Run Status: {0}", result.Status.ToString());
+        Console.WriteLine("Total Documents: {0}, Failed: {1}", result.ItemCount, result.FailedItemCount);
 
         TimeSpan elapsed = result.EndTime.Value - result.StartTime.Value;
-        Console.WriteLine("  StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
+        Console.WriteLine("StartTime: {0:T}, EndTime: {1:T}, Elapsed: {2:t}", result.StartTime.Value, result.EndTime.Value, elapsed);
 
         string errorMsg = (result.ErrorMessage == null) ? "none" : result.ErrorMessage;
-        Console.WriteLine("  ErrorMessage: {0}", errorMsg);
-        Console.WriteLine("  Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
+        Console.WriteLine("ErrorMessage: {0}", errorMsg);
+        Console.WriteLine(" Document Errors: {0}, Warnings: {1}\n", result.Errors.Count, result.Warnings.Count);
     }
     catch (Exception e)
     {
@@ -174,7 +173,7 @@ Indexer Status: Running
 Latest run
   Run Status: Success
   Total Documents: 7, Failed: 0
-  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  StartTime: 11:29:31 PM, EndTime: 11:29:31 PM, Elapsed: 00:00:00.2560000
   ErrorMessage: none
   Document Errors: 0, Warnings: 0
 ```
@@ -185,8 +184,11 @@ Každé spuštění indexeru má také svůj vlastní stav pro to, zda konkrétn
 
 Když je indexer obnovený tak, aby aktualizoval stav sledování změn, přidá se samostatná položka historie se stavem **resetování** .
 
-Další podrobnosti o stavových kódech a informacích o monitorování indexerů najdete v tématu [GetIndexerStatus](/rest/api/searchservice/get-indexer-status) v REST API.
+## <a name="next-steps"></a>Další kroky
 
-Podrobnosti o chybách a upozorněních specifických pro dokument lze získat vytvořením výčtu seznamů `IndexerExecutionResult.Errors` a `IndexerExecutionResult.Warnings` .
+Další podrobnosti o stavových kódech a informacích o monitorování indexeru najdete v následujících referenčních informacích k rozhraní API:
 
-Další informace o třídách .NET SDK používaných pro monitorování indexerů naleznete v tématu [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo) a [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult).
+* [GetIndexerStatus (REST API)](/rest/api/searchservice/get-indexer-status)
+* [IndexerStatus](/dotnet/api/azure.search.documents.indexes.models.indexerstatus)
+* [IndexerExecutionStatus](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionstatus)
+* [IndexerExecutionResult](/dotnet/api/azure.search.documents.indexes.models.indexerexecutionresult)

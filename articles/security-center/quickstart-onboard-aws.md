@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428116"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372774"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Připojení účtů AWS k Azure Security Center
 
@@ -39,10 +39,10 @@ Na snímku obrazovky níže vidíte účty AWS zobrazené na řídicím panelu p
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Vyžaduje [Azure Defender pro servery](defender-for-servers-introduction.md) .|
 |Požadované role a oprávnění:|**Vlastník** nebo **Přispěvatel** v příslušném předplatném Azure|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -70,14 +70,14 @@ Existují dva způsoby, jak Security Center ověřit pro AWS:
 - **AWS uživatel pro Security Center** -a méně bezpečnou možnost, pokud nemáte POVOLENý IAM
 
 #### <a name="create-an-iam-role-for-security-center"></a>Vytvoření role IAM pro Security Center
-1. V konzole Amazon Web Services v části **zabezpečení, identita & kompatibilita**vyberte **IAM**.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
+1. V konzole Amazon Web Services v části **zabezpečení, identita & kompatibilita** vyberte **IAM**.
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="Služby AWS":::
 
 1. Vyberte **role** a **vytvořit roli**.
 1. Vyberte **jiný účet AWS**.
 1. Zadejte následující podrobnosti:
 
-    - **ID účtu** – zadejte ID účtu Microsoft (**158177204117**), jak je znázorněno na stránce konektoru AWS v Security Center.
+    - **ID účtu** – zadejte ID účtu Microsoft ( **158177204117** ), jak je znázorněno na stránce konektoru AWS v Security Center.
     - **Vyžadovat externí ID** – by se mělo vybrat
     - **Externí ID** – zadejte ID předplatného, jak je znázorněno na stránce konektoru AWS v Security Center 
 
@@ -130,13 +130,13 @@ AWS Systems Manager se vyžaduje pro automatizaci úloh napříč prostředky AW
 
 1. V nabídce Security Center vyberte **multi cloudové konektory**.
 1. Vyberte **Přidat účet AWS**.
-    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
+    :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Tlačítko Přidat účet AWS na stránce s více síťovými konektory v Security Center":::
 1. Nakonfigurujte možnosti na kartě **ověřování AWS** :
     1. Zadejte **Zobrazovaný název** pro konektor.
     1. Potvrďte, že je předplatné správné. Je to předplatné, které bude zahrnovat doporučení centra zabezpečení konektoru a AWS.
     1. V závislosti na možnosti ověřování, kterou jste zvolili v [kroku 2. Nastavení ověřování pro Security Center v AWS](#step-2-set-up-authentication-for-security-center-in-aws):
         - Vyberte  **předpokládat roli** a vložte ARN z části [Vytvoření Role IAM pro Security Center](#create-an-iam-role-for-security-center).
-            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Vložení souboru ARN do příslušného pole Průvodce připojením AWS na webu Azure Portal":::
 
             NEBO
 
@@ -168,7 +168,7 @@ Po úspěšném vytvoření konektoru a správné konfiguraci centra zabezpečen
 - Služba ASC vyhledává nové instance EC2 AWS každých 6 hodin a zaregistruje je podle konfigurace.
 - Standard AWS CIS se zobrazí v řídicím panelu dodržování předpisů pro Security Center.
 - Pokud je zapnutá zásada centra zabezpečení, na portálu Security Center a řídicím panelu dodržování předpisů se zobrazí doporučení 5-10 minut po dokončení zprovoznění.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center":::
+    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS prostředky a doporučení na stránce s doporučeními pro Security Center":::
 
 
 
@@ -178,7 +178,7 @@ Jak vidíte výše, stránka doporučení pro zabezpečení Azure Security Cente
 
 Pokud chcete zobrazit všechna aktivní doporučení pro vaše prostředky podle typu prostředku, použijte stránku inventáře assetů Security Center a filtrujte na typ prostředku AWS, ve kterém máte zájem:
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="3 projekty GCP uvedené na řídicím panelu přehled Security Center"::: 
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resource-types-in-inventory.png" alt-text="Filtr typu prostředku stránky inventáře prostředků zobrazující možnosti AWS"::: 
 
 
 ## <a name="aws-in-security-center-faq"></a>AWS v nejčastějších dotazech k Security Center

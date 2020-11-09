@@ -10,32 +10,32 @@ ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: c24a50926fe028dcbf42d3642ae3ec5c9ae84f5b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 60b7a87b4673fd1f5b1d95e5e2835878c263e784
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977794"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371646"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace V3](https://aka.ms/azsdk-js-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  knihovny v3 [balíček V3 (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[Referenční dokumentace V3](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  knihovny v3 [balíček V3 (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Referenční dokumentace V3](https://aka.ms/azsdk-js-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  knihovny v3 [balíček V3 (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[Referenční dokumentace V3](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  knihovny v3 [balíček V3 (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-[Referenční dokumentace v2](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics)  |  knihovny v2 [balíček v2 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referenční dokumentace v2](/javascript/api/@azure/cognitiveservices-textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics)  |  knihovny v2 [balíček v2 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * Aktuální verze [Node.js](https://nodejs.org/).
@@ -148,7 +148,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 * [Ověřování klienta](#client-authentication)
 * [Analýza mínění](#sentiment-analysis) 
 * [Dolování názoru](#opinion-mining)
-* [rozpoznávání jazyka,](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner)
 * [Propojení entit](#entity-linking)
 * Identifikovatelné osobní údaje
@@ -174,7 +174,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s `credentials` `endpoint` parametrem a jako parametr.
+Vytvořte nový objekt [TextAnalyticsClient](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s `credentials` `endpoint` parametrem a jako parametr.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -353,7 +353,7 @@ ID: 0
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Vytvořte seznam objektů slovníku obsahující dokumenty, které chcete analyzovat. Zavolejte metodu [mínění ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta a získejte vrácenou [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Procházejte seznamem výsledků a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
+Vytvořte seznam objektů slovníku obsahující dokumenty, které chcete analyzovat. Zavolejte metodu [mínění ()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-) klienta a získejte vrácenou [SentimentBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult). Procházejte seznamem výsledků a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 [!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
 
@@ -370,7 +370,7 @@ Spusťte kód `node index.js` v okně konzoly.
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -432,7 +432,7 @@ ID: 0
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Vytvořte seznam objektů slovníku obsahující vaše dokumenty. Zavolejte metodu [operaci DetectLanguage ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) klienta a získejte vrácenou [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Potom Iterujte výsledky a vytiskněte ID a jazyk každého dokumentu.
+Vytvořte seznam objektů slovníku obsahující vaše dokumenty. Zavolejte metodu [operaci DetectLanguage ()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-) klienta a získejte vrácenou [LanguageBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult). Potom Iterujte výsledky a vytiskněte ID a jazyk každého dokumentu.
 
 [!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
 
@@ -702,7 +702,7 @@ Document ID: 0
 > [!NOTE]
 > Ve verzi 2,1 je odkaz na entitu součástí odpovědi NER.
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu entity klienta [()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) a získejte objekt [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) . Iterujte seznamem výsledků a vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte název Wikipedii, typ a dílčí typy (pokud existuje) a také umístění v původním textu.
+Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu entity klienta [()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-) a získejte objekt [EntitiesBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult) . Iterujte seznamem výsledků a vytiskněte ID každého dokumentu. Pro každou zjištěnou entitu vytiskněte název Wikipedii, typ a dílčí typy (pokud existuje) a také umístění v původním textu.
 
 [!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
 
@@ -802,7 +802,7 @@ ID: 0
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu klíčová [fráze klienta ()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) a získejte vrácený objekt     [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) . Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
+Vytvořte seznam objektů, které obsahují vaše dokumenty. Zavolejte metodu klíčová [fráze klienta ()](/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-) a získejte vrácený objekt     [KeyPhraseBatchResult](/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult) . Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 
 [!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
 

@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: be06154c95b14443024c6f163c955769f5b05d07
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a87a5f7208e4966b6afba0b939be42726ca20365
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376437"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371993"
 ---
 Pomocí tohoto rychlého startu můžete začít získávat přehledy imagí z Vizuální vyhledávání Bingu služby pomocí klientské knihovny JavaScriptu. I když Vizuální vyhledávání Bingu má REST API kompatibilní s většinou programovacích jazyků, Klientská knihovna poskytuje snadný způsob, jak integrovat službu do vašich aplikací. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js). 
 
-[Referenční dokumentace](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest&preserve-view=true)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referenční dokumentace](/javascript/api/@azure/cognitiveservices-visualsearch/?preserve-view=true&view=azure-node-latest)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-visualsearch)  |  [Balíček (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)  |  [Ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nejnovější verze [Node.js](https://nodejs.org/en/download/)
 * [Sada vizuální vyhledávání Bingu SDK pro JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-visualsearch)

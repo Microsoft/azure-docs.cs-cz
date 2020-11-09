@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 6de06e4ab9a302517a09b34de56c1b5535b245a9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 375dff1dacc949dd4373bbf26908feb504750224
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357806"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372335"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Co je nového v Azure Security Center?
 
@@ -31,7 +31,13 @@ Další informace o *plánovaných* změnách, které už brzy Security Center, 
 > Pokud hledáte položky starší než šest měsíců, najdete je v archivu, kde najdete novinky [v Azure Security Center](release-notes-archive.md).
 
 
-## <a name="november-2020"></a>Listopadu 2020
+## <a name="november-2020"></a>Listopad 2020
+
+Aktualizace v listopadu zahrnují:
+
+- [29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [NIST SP 800 171 R2 přidáno do řídicího panelu dodržování předpisů pro Security Center](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
+
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 doporučení verze Preview pro zvýšení pokrytí srovnávacích testů zabezpečení Azure
 
@@ -61,10 +67,21 @@ Související odkazy:
 - [Další informace o Azure Database for PostgreSQL](../postgresql/overview.md)
 
 
+### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NIST SP 800 171 R2 přidáno do řídicího panelu dodržování předpisů pro Security Center
+
+Standard NIST SP 800-171 R2 je teď k dispozici jako integrovaná iniciativa pro použití s řídicím panelem dodržování předpisů Azure Security Center. Mapování pro ovládací prvky jsou popsána v [podrobnostech o integrované iniciativě NIST SP 800-171 R2 dodržování předpisů](../governance/policy/samples/nist-sp-800-171-r2.md). 
+
+Pokud chcete použít standard pro vaše předplatná a průběžně monitorovat svůj stav dodržování předpisů, postupujte podle pokynů v tématu [přizpůsobení sady standardů na řídicím panelu dodržování předpisů](update-regulatory-compliance-packages.md).
+
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="NIST SP 800 171 R2 Standard ve Security Center řídicím panelu dodržování předpisů v legislativě":::
+
+Další informace o tomto standardu dodržování předpisů najdete v tématu [NIST SP 800-171 R2](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final).
+
 
 
 ## <a name="october-2020"></a>Říjen 2020
 
+Aktualizace v říjnu zahrnují:
 - [Posouzení ohrožení zabezpečení pro místní a více cloudových počítačů (Preview)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [Přidala se Azure Firewall doporučení (Preview).](#azure-firewall-recommendation-added-preview)
 - [Pro doporučení služby Kubernetes Services, které se aktualizovaly pomocí rychlé opravy, by se měly definovat povolené rozsahy IP](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
@@ -122,7 +139,7 @@ Další informace najdete v [Odebrání standardu z řídicího panelu](update-r
 
 Azure Resource Graph je služba v Azure, která je navržená tak, aby poskytovala efektivní průzkum prostředků s možností škálování v rámci dané sady předplatných, abyste mohli efektivně řídit vaše prostředí. 
 
-Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Například:
+Pro Azure Security Center můžete použít ARG a [KQL (Kusto Query Language)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) k dotazování široké škály dat stav zabezpečení. Příklad:
 
 - Využití inventáře prostředků (ARG)
 - Popsali jsme vzorový ARGický dotaz pro [identifikaci účtů bez povoleného vícefaktorového ověřování (MFA)](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) .
@@ -253,7 +270,7 @@ Pokud povolíte Azure Defender z oblasti **ceny a nastavení** Azure Security Ce
 - [Azure Defender pro servery](defender-for-servers-introduction.md)
 - [Azure Defender pro App Service](defender-for-app-service-introduction.md)
 - [Azure Defender pro úložiště](defender-for-storage-introduction.md)
-- [Azure Defender for SQL](defender-for-sql-introduction.md)
+- [Azure Defender pro SQL](defender-for-sql-introduction.md)
 - [Azure Defender pro trezor klíčů](defender-for-key-vault-introduction.md)
 - [Azure Defender pro Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender pro registry kontejnerů](defender-for-container-registries-introduction.md)

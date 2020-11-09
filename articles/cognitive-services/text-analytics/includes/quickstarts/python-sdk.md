@@ -5,30 +5,30 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
-ms.openlocfilehash: f0e4c8b832b17ee97b6e97aaf94640aaad7aa8db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2913daf3dbe066eed8207ef4438e48e58992179c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977793"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94371902"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview&preserve-view=true)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  knihovny v 3.1 [balíček verze 3.1 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[Referenční dokumentace](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview)  |  verze 3.1 [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  knihovny v 3.1 [balíček verze 3.1 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky v 3.1](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Referenční dokumentace V3](https://aka.ms/azsdk-python-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  knihovny v3 [balíček V3 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[Referenční dokumentace V3](/python/api/azure-ai-textanalytics/azure.ai.textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  knihovny v3 [balíček V3 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-[Referenční dokumentace v2](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics)  |  knihovny v2 [balíček v2 (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Referenční dokumentace v2](/python/api/overview/azure/cognitiveservices/textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics)  |  knihovny v2 [balíček v2 (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services) .
 * [Python 3.x](https://www.python.org/)
@@ -103,7 +103,7 @@ Objekt odpovědi je seznam obsahující analyzované informace pro každý dokum
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Klient Analýza textu je objekt [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku. 
+Klient Analýza textu je objekt [TextAnalyticsClient](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku. 
 
 Text se pošle do rozhraní API jako seznam `documents` objektů, což jsou `dictionary` objekty obsahující kombinaci `id` `text` atributů, a `language` v závislosti na použité metodě. `text`Atribut ukládá text, který má být analyzován v původním umístění `language` , a `id` může být libovolná hodnota. 
 
@@ -118,7 +118,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
 * [Dolování názoru](#opinion-mining)
-* [rozpoznávání jazyka,](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Rozpoznávání identifikovatelných osobních údajů](#personally-identifiable-information-recognition) 
 * [Propojení entit](#entity-linking)
@@ -129,7 +129,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [rozpoznávání jazyka,](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Propojení entit](#entity-linking)
 * [extrakce klíčových frází,](#key-phrase-extraction)
@@ -138,7 +138,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 
 * [Ověření klienta](#authenticate-the-client)
 * [Analýza mínění](#sentiment-analysis)
-* [rozpoznávání jazyka,](#language-detection)
+* [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Propojení entit](#entity-linking)
 * [extrakce klíčových frází,](#key-phrase-extraction)
@@ -392,7 +392,7 @@ Negative=0.02
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Ověřte objekt klienta a zavolejte funkci [mínění ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) . Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
+Ověřte objekt klienta a zavolejte funkci [mínění ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#sentiment-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) . Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
@@ -407,7 +407,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ---
 
-## <a name="language-detection"></a>rozpoznávání jazyka,
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 # <a name="version-31-preview"></a>[Verze 3,1 Preview](#tab/version-3-1)
 
@@ -463,7 +463,7 @@ Language:  French
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Pomocí dříve vytvořeného klienta volejte [detect_language ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak projdete výsledky a vytiskněte ID každého dokumentu a první vrácený jazyk.
+Pomocí dříve vytvořeného klienta volejte [detect_language ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#detect-language-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak projdete výsledky a vytiskněte ID každého dokumentu a první vrácený jazyk.
 
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
@@ -763,7 +763,7 @@ Linked Entities:
 > [!NOTE]
 > Ve verzi 2,1 je odkaz na entitu součástí odpovědi NER.
 
-Pomocí dříve vytvořeného klienta volejte funkci [Entities ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a entity, které jsou v něm obsažené.
+Pomocí dříve vytvořeného klienta volejte funkci [Entities ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#entities-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a entity, které jsou v něm obsažené.
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
@@ -880,7 +880,7 @@ key_phrase_extraction_example(client)
 
 # <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Pomocí dříve vytvořeného klienta volejte funkci [key_phrases ()](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a klíčové fráze, které jsou v něm obsažené.
+Pomocí dříve vytvořeného klienta volejte funkci [key_phrases ()](/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient#key-phrases-show-stats-none--documents-none--custom-headers-none--raw-false----operation-config-) a získejte výsledek. Pak Projděte výsledky a vytiskněte ID každého dokumentu a klíčové fráze, které jsou v něm obsažené.
 
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 
@@ -906,4 +906,4 @@ Document ID: 4
                 fútbol
 ```
 
---- 
+---

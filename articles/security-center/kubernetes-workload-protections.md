@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091147"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372621"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Ochrana úloh Kubernetes
 
@@ -35,11 +35,11 @@ Pokud povolíte Azure Defender, Security Center nabízí více funkcí zabezpeč
 
 |Aspekt|Podrobnosti|
 |----|:----|
-|Stav vydaných verzí:|Preview|
+|Stav vydaných verzí:|Preview<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Stanov|Free|
 |Požadované role a oprávnění:|**Vlastník** nebo **Správce zabezpečení** pro úpravu přiřazení<br>**Čtenář** pro zobrazení doporučení|
 |Podporované clustery:|Kubernetes v 1.14 (nebo vyšší) je povinný údaj.<br>Žádný prostředek PodSecurityPolicy (starý model PSP) v clusterech<br>Uzly Windows nejsou podporované.|
-|Cloud|![Ano](./media/icons/yes-icon.png) Komerční cloudy<br>![Ne](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
+|Cloud|![Yes](./media/icons/yes-icon.png) Komerční cloudy<br>![No](./media/icons/no-icon.png) National/svrchovaná (US Gov, Čína gov, ostatní gov)|
 |||
 
 
@@ -58,23 +58,23 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
 
     1. V jakémkoli z ovládacích prvků zabezpečení vyberte doporučení, abyste viděli prostředky, na které můžete nainstalovat doplněk, a pak vyberte **opravit**. 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Doporučení * * Azure Policy doplněk pro Kubernetes byste měli nainstalovat a povolit ve svých clusterech * *":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Stránka s podrobnostmi doporučení pro * * Azure Policy doplňku pro Kubernetes by měla být na vašich clusterech nainstalována a povolena * *":::
 
 1. Přibližně 30 minut po dokončení instalace doplňku Security Center zobrazí stav clusterů v následujících doporučeních, v příslušném ovládacím prvku zabezpečení, jak je znázorněno níže:
 
     > [!TIP]
-    > Některá doporučení mají parametry, které je potřeba přizpůsobit pomocí Azure Policy, aby je bylo možné efektivně použít. Chcete-li například využít výhod imagí kontejnerů s doporučeními, které **by měly být nasazeny pouze z důvěryhodných registrů**, budete muset definovat důvěryhodné Registry.
+    > Některá doporučení mají parametry, které je potřeba přizpůsobit pomocí Azure Policy, aby je bylo možné efektivně použít. Chcete-li například využít výhod imagí kontejnerů s doporučeními, které **by měly být nasazeny pouze z důvěryhodných registrů** , budete muset definovat důvěryhodné Registry.
     > 
     > Pokud nezadáte potřebné parametry pro doporučení, které vyžadují konfiguraci, budou se vaše úlohy zobrazovat v pořádku.
 
     | Název doporučení                                                         | Řízení zabezpečení                         | Vyžaduje se konfigurace |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | Měla by se vyhovět omezení procesoru a paměti kontejneru.                          | Ochrana aplikací před útoky DDoS | Ne                     |
-    | Měly by se vyhnout privilegovanému kontejneru                                     | Správa přístupu a oprávnění            | Ne                     |
-    | Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.     | Správa přístupu a oprávnění            | Ne                     |
-    | Je třeba zabránit kontejneru s eskalací oprávnění.                       | Správa přístupu a oprávnění            | Ne                     |
-    | Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.                           | Správa přístupu a oprávnění            | Ne                     |
-    | Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout              | Správa přístupu a oprávnění            | Ne                     |
+    | Měla by se vyhovět omezení procesoru a paměti kontejneru.                          | Ochrana aplikací před útoky DDoS | No                     |
+    | Měly by se vyhnout privilegovanému kontejneru                                     | Správa přístupu a oprávnění            | No                     |
+    | Neměnné (jen pro čtení) kořenový systém souborů by měl být vynutil pro kontejnery.     | Správa přístupu a oprávnění            | No                     |
+    | Je třeba zabránit kontejneru s eskalací oprávnění.                       | Správa přístupu a oprávnění            | No                     |
+    | Spuštění kontejnerů jako kořenový uživatel by se mělo vyhnout.                           | Správa přístupu a oprávnění            | No                     |
+    | Kontejnery sdílející závislé obory názvů hostitele by se měly vyhnout              | Správa přístupu a oprávnění            | No                     |
     | Pro kontejnery by se měly vyhovět aspoň privilegované možnosti pro Linux.       | Správa přístupu a oprávnění            | **Ano**                |
     | Použití ovládacího připojení svazku pod HostPath by mělo být omezené na známý seznam.    | Správa přístupu a oprávnění            | **Ano**                |
     | Kontejnery by měly naslouchat jenom povoleným portům.                              | Omezit neautorizovaný přístup k síti     | **Ano**                |
@@ -97,9 +97,9 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
 
 1. K vykonání všech doporučení 
 
-    1. Otevřete stránku s podrobnostmi o doporučení a vyberte **Odepřít**:
+    1. Otevřete stránku s podrobnostmi o doporučení a vyberte **Odepřít** :
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Doporučení * * Azure Policy doplněk pro Kubernetes byste měli nainstalovat a povolit ve svých clusterech * *":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Možnost Deny pro parametr Azure Policy":::
 
         Otevře se podokno, ve kterém jste obor nastavili. 
 
@@ -113,7 +113,7 @@ Azure Security Center zahrnuje sadu doporučení, která jsou k dispozici po ins
 
 1. Při zobrazení doporučení ze sady ochrany zatížení se zobrazí počet ovlivněných lusků ("součásti Kubernetes"), které jsou uvedeny vedle clusteru. Pokud chcete zobrazit seznam jednotlivých lusků, vyberte cluster a pak vyberte **provést akci**.
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Doporučení * * Azure Policy doplněk pro Kubernetes byste měli nainstalovat a povolit ve svých clusterech * *"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Zobrazení postiženého lusku pro doporučení K8s"::: 
 
 1. K otestování vynucování použijte níže uvedená dvě nasazení Kubernetes:
 

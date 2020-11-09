@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 8896ed3eed291e6ec18c45df60e6079ada769b28
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993343"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372791"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -21,14 +21,14 @@ V Azure jsou k dispozici image Red Hat Enterprise Linux (RHEL) prostřednictvím
 >[!NOTE]
 > Image RHEL BYOS Gold jsou k dispozici ve veřejných cloudech Azure (komerčních) a Azure Government. Nejsou k dispozici v Azure Čína ani v cloudech Azure blackforest.
 
-## <a name="important-points-to-consider"></a>Důležité body, které je třeba zvážit
+## <a name="important-points-to-consider"></a>Důležité body ke zvážení
 
 - Image Red Hat Gold dodávané v tomto programu jsou RHEL obrázky připravené pro produkční prostředí, podobně jako image RHEL s průběžnými platbami v Azure Marketplace.
 - Image se řídí aktuálními zásadami popsanými v [Red Hat Enterprise Linux imagí v Azure](./redhat-images.md).
 - Standardní zásady podpory se vztahují na virtuální počítače vytvořené z těchto imagí.
 - Virtuální počítače zřízené z imagí Red Hat Gold nenesou RHEL poplatky spojené s imagemi RHEL s průběžnými platbami.
 - Obrázky jsou neoprávněné. K registraci a přihlášení k odběru virtuálních počítačů za účelem přímého získání aktualizací ze Red Hat je nutné použít Red Hat Subscription-Manager.
-- V současné době není možné dynamicky přepínat mezi BYOS a modelem fakturace s průběžnými platbami pro Image Linux. Chcete-li přepnout model fakturace, je nutné znovu nasadit virtuální počítač z příslušné bitové kopie.
+- Je možné přepínat z obrázků s průběžnými platbami na BYOS pomocí [zvýhodněné hybridní využití Azure](../../linux/azure-hybrid-benefit-linux.md). Nemůžete ale přepínat z původně nasazených BYOS na modely fakturace s průběžnými platbami pro Image Linux. Pokud chcete změnit model fakturace z BYOS na průběžné platby, musíte virtuální počítač znovu nasadit z příslušné image.
 
 >[!NOTE]
 > RHEL 2. generace BYOS image nejsou aktuálně dostupné prostřednictvím nabídky Marketplace. Pokud potřebujete image BYOS generace 2 RHEL, přejděte na řídicí panel Cloud Access ve správě předplatných Red Hat. Další informace najdete v dokumentaci k [Red Hat](https://access.redhat.com/articles/4847681).
