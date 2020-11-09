@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545153"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376770"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -31,7 +31,7 @@ Další informace o omezeních několika běžně aktualizovaných parametrů se
 
 ### <a name="thread-pools"></a>Fondy vláken
 
-MySQL tradičně přiřadí vlákno pro každé připojení klienta. Jak roste počet souběžných uživatelů, existuje odpovídající pokles výkonu. Mnoho aktivních vláken může ovlivnit výkon významně kvůli zvýšenému přepínání kontextu, kolize vláken a špatnému prostředí mezipamětí procesoru.
+MySQL tradičně přiřadí vlákno pro každé připojení klienta. Jak roste počet souběžných uživatelů, existuje odpovídající odkládací formulář. Mnoho aktivních vláken může ovlivnit výkon významně kvůli zvýšenému přepínání kontextu, kolize vláken a špatnému prostředí mezipamětí procesoru.
 
 Fondy vláken, což je funkce na straně serveru a odlišná od sdružování připojení, maximalizují výkon tím, že zavedou dynamický fond pracovních vláken, který se dá použít k omezení počtu aktivních vláken spuštěných na serveru a minimalizaci změn vláken. To pomáhá zajistit, že shluky připojení nezpůsobí, že dojde k vystavení prostředků nebo selhání serveru s chybou při nedostatku paměti. Fondy vláken jsou nejúčinnější pro krátké dotazy a úlohy náročné na procesor, například OLTP úlohy.
 
@@ -57,9 +57,9 @@ Aby bylo možné vylepšit výkon krátkých dotazů ve fondu vláken, Azure Dat
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-V Azure Database for MySQL jsou binární protokoly vždycky povolené (tj. `log_bin` je nastavené na zapnuto). V případě, že budete chtít použít triggery, zobrazí se chybová zpráva podobná se tomu, že nemáte *oprávnění super a binární protokolování je povolené (je možné použít méně bezpečné `log_bin_trust_function_creators` proměnné)* . 
+V Azure Database for MySQL jsou binární protokoly vždycky povolené (tj. `log_bin` je nastavené na zapnuto). V případě, že budete chtít použít triggery, zobrazí se chybová zpráva podobná se tomu, že nemáte *oprávnění super a binární protokolování je povolené (je možné použít méně bezpečné `log_bin_trust_function_creators` proměnné)*. 
 
-Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně nastavit [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) na **hodnotu true** .
+Formát binárního protokolování je vždy **řádek** a všechna připojení k serveru **vždy** používají binární protokolování založené na řádcích. V případě binárního protokolování založeného na řádcích neexistují problémy se zabezpečením a binární protokolování nemůže přerušit, takže můžete bezpečně nastavit [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) na **hodnotu true**.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -69,8 +69,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
-|Basic|2|2684354560|134217728|2684354560|
+|Základní|1|872415232|134217728|872415232|
+|Základní|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|3758096384|134217728|3758096384|
 |Pro obecné účely|4|8053063680|134217728|8053063680|
 |Pro obecné účely|8|16106127360|134217728|16106127360|
@@ -87,8 +87,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|872415232|134217728|872415232|
-|Basic|2|2684354560|134217728|2684354560|
+|Základní|1|872415232|134217728|872415232|
+|Základní|2|2684354560|134217728|2684354560|
 |Pro obecné účely|2|7516192768|134217728|7516192768|
 |Pro obecné účely|4|16106127360|134217728|16106127360|
 |Pro obecné účely|8|32212254720|134217728|32212254720|
@@ -108,7 +108,7 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 MySQL ukládá tabulku InnoDB v různých tabulkových prostorech na základě konfigurace, kterou jste zadali během vytváření tabulky. [Systémový tabulkový prostor](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) je oblast úložiště pro slovník InnoDB data Dictionary. [Tabulkový prostor pro tabulku](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) obsahuje data a indexy pro jednu tabulku InnoDB a je uložený v systému souborů ve vlastním datovém souboru. Toto chování je řízeno `innodb_file_per_table` parametrem serveru. Nastavení `innodb_file_per_table` na `OFF` způsobí, že InnoDB vytvoří tabulky v systémovém tabulkovém prostoru. V opačném případě InnoDB vytvoří tabulky v tabulkových prostorech v souborové tabulce.
 
-V jednom datovém souboru podporuje Azure Database for MySQL v největších **1 TB** . Pokud je velikost databáze větší než 1 TB, měli byste vytvořit tabulku v [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabulkovém prostoru. Pokud máte velikost jedné tabulky větší než 1 TB, měli byste použít tabulku oddílů.
+Azure Database for MySQL v jednom datovém souboru podporuje v největším, **4 TB**. Pokud je velikost databáze větší než 4 TB, měli byste vytvořit tabulku v [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) tabulkovém prostoru. Pokud máte velikost jedné tabulky větší než 4 TB, měli byste použít tabulku oddílů.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
@@ -116,8 +116,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -134,8 +134,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota**|**Min. hodnota**|**Max. hodnota**|
 |---|---|---|---|---|
-|Basic|1|50|10|50|
-|Basic|2|100|10|100|
+|Základní|1|50|10|50|
+|Základní|2|100|10|100|
 |Pro obecné účely|2|300|10|600|
 |Pro obecné účely|4|625|10|1250|
 |Pro obecné účely|8|1250|10|2500|
@@ -165,8 +165,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -190,8 +190,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -228,8 +228,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -248,8 +248,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Basic|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
-|Basic|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|N/A|N/A|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|

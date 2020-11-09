@@ -5,15 +5,15 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777399"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375450"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Kurz: vytvoření robota s nejčastějšími dotazy pomocí Azure Bot Service
-Pomocí QnA Maker a Azure [bot Service](https://azure.microsoft.com/en-us/services/bot-service/) si na stránce s přehledem dotazů vytvořte roboty, které nemají žádný kód.
+Pomocí QnA Maker a Azure [bot Service](https://azure.microsoft.com/services/bot-service/) si na stránce s přehledem dotazů vytvořte roboty, které nemají žádný kód.
 
 V tomto kurzu se naučíte:
 
@@ -28,7 +28,15 @@ V tomto kurzu se naučíte:
 
 Postupujte podle pokynů v [rychlém](../Quickstarts/create-publish-knowledge-base.md) startu a vytvořte znalostní bázi. Po úspěšném publikování znalostní báze se dostanete na stránku níže.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 ![Snímek obrazovky s úspěšným publikováním](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+![Snímek obrazovky úspěšného publikování spravovaná](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint-managed.png)
+
+---
 
 ## <a name="create-a-bot"></a>Vytvoření robota
 
@@ -41,7 +49,16 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 1. Na QnA Makerovém portálu na stránce **publikovat** vyberte **vytvořit robot**. Toto tlačítko se zobrazí až po publikování znalostní báze.
 
+     # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
     ![Snímek obrazovky s vytvořením robota](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
+
+    # <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+    ![Snímek obrazovky s vytvářením aplikace robot Managed Preview](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page-managed.png)
+
+    ---
+    
 
 1. Otevře se nová karta prohlížeče pro Azure Portal se stránkou pro vytvoření Azure Bot Service. Nakonfigurujte službu Azure bot Service. Robot a QnA Maker můžou sdílet plán služby Web App Service, ale nemůžou webovou aplikaci sdílet. To znamená, že **název aplikace** pro robot se musí lišit od názvu aplikace pro službu QnA maker.
 
@@ -55,8 +72,8 @@ Když provedete změny ve znalostní bázi a znovu publikujete, nemusíte s robo
 
 
 1. Po vytvoření robota otevřete prostředek **služby bot** .
-1. V části **Správa robota**vyberte **test na webu chat**.
-1. Na příkazovém řádku chatu **Zadejte zprávu**:
+1. V části **Správa robota** vyberte **test na webu chat**.
+1. Na příkazovém řádku chatu **Zadejte zprávu** :
 
     `Azure services?`
 

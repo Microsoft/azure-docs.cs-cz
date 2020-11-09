@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330634"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376638"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidání funkce CHITEST – chat do znalostní báze
 
@@ -60,7 +60,15 @@ Při vytváření znalostní báze je po přidání vašich zdrojových adres UR
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Přidat CHITEST – chat do existující znalostní báze
 Vyberte své znalostní báze a přejděte na stránku **Nastavení** . V příslušném formátu **. TSV** je odkaz na všechny datové sady CHITEST-chat. Stáhněte si osobnost, kterou chcete, a pak ji nahrajte jako zdroj souborů. Ujistěte se, že při stažení a nahrání souboru neupravujte formát ani metadata.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 ![Přidat CHITEST – chat do existující znalostní báze](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+![Přidat CHITEST – chat do existující verze Preview verze Preview](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
+
+---
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>Úprava funkce CHITEST – dotazy a odpovědi chatu
 Při úpravách znalostní báze se zobrazí nový zdroj pro funkce CHITEST-chat na základě vámi vybrané preference. Nyní můžete přidat změněné otázky nebo upravit odpovědi stejně jako u jakéhokoli jiného zdroje.

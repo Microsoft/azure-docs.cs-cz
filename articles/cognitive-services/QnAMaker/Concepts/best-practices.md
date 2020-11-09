@@ -4,13 +4,13 @@ description: Využijte tyto osvědčené postupy k vylepšení znalostní báze 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777016"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376753"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Osvědčené postupy QnA Maker znalostní bázi Knowledge Base
 
@@ -116,11 +116,17 @@ Ve výchozím nastavení QnA Maker vyhledává dotazy a odpovědi. Pokud chcete 
 Díky [metadatům](../How-To/edit-knowledge-base.md) může klientská aplikace zjistit, že by neměl přijímat všechny odpovědi, ale místo toho může zúžit výsledky dotazu uživatele na základě značek metadat. Odpověď znalostní báze se může lišit v závislosti na značce metadat, a to i v případě, že je dotaz stejný. Například *"kde je zaparkovaná síť"* může mít jinou odpověď v případě, že se umístění větve restaurace liší – to znamená, že metadata jsou *umístění Praha* a *umístění: Redmond*.
 
 ### <a name="use-synonyms"></a>Použít synonyma
-I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají odlišnou formu. Synonyma se přidávají na úrovni služby QnA Maker a sdílí se všemi bázemi znalostí ve službě.
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. Synonyma se přidávají na úrovni služby QnA Maker a **sdílí se všemi bázemi znalostí ve službě**.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+I když je k dispozici podpora synonym v anglickém jazyce, použijte změnu velikosti písmen bez rozlišení velkých a malých písmen prostřednictvím [rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) pro přidání synonym k klíčovým slovům, která přijímají různé formuláře. **Pro každou znalostní bázi se přidala** synonyma ve spravovaném QnA maker (Preview).
 
 |Původní slovo|Synonyma|
 |--|--|
 |zakoupit|nákup<br>síť – bankovnictví<br>čistý bankovní|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Odlišení otázek pomocí různých slov
 QnA Maker algoritmus hodnocení, který odpovídá dotazu uživatele s otázkou ve znalostní bázi Knowledge Base, funguje nejlépe, pokud každá otázka řeší jinou potřebu. Opakování stejné sady wordové sady mezi otázkami snižuje pravděpodobnost, že je zvolena správná odpověď pro daný dotaz uživatele s těmito slovy.
@@ -132,7 +138,7 @@ Například můžete mít dvě samostatné QnAs s následujícími otázkami:
 |kde je *umístění* parkování|
 |kde je *umístění* ATM|
 
-Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"*, a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
+Vzhledem k tomu, že tyto dvě QnAs jsou fráze s velmi podobnými slovy, může tato podobnost způsobit velmi podobné skóre pro mnoho uživatelských dotazů, které jsou fráze, jako  *je například `<x>` umístění*. Místo toho se pokuste jasně odlišit pomocí dotazů, jako  *je "kde je zaparkovaná dávka"* a *"kde je ATM"* , a to tak, že se vyhnete slovám, jako je "umístění", které by mohlo být ve vaší znalostní bázi hodně otázek.
 
 ## <a name="collaborate"></a>Spolupráce
 QnA Maker umožňuje uživatelům [spolupracovat](../How-to/collaborate-knowledge-base.md) na znalostní bázi. Uživatelé potřebují přístup ke skupině prostředků Azure QnA Maker, aby mohli získat přístup ke znalostní bázi. Některé organizace můžou chtít využívat úpravy a údržbu znalostní báze a pořád budou moct chránit přístup ke svým prostředkům Azure. Tento model schvalovatele editoru se provádí nastavením dvou stejných [služeb QnA maker](../How-to/set-up-qnamaker-service-azure.md) v různých předplatných a výběrem jednoho pro cyklus úprav a testování. Po dokončení testování se obsah znalostní báze přenese pomocí procesu importu a [exportu](../Tutorials/migrate-knowledge-base.md) do QnA maker služby schvalovatele, která nakonec publikuje znalostní bázi a aktualizuje koncový bod.

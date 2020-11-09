@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 1c37742b7ed31d8253f7908c3adac35ca0b4d5d8
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170319"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376549"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
@@ -21,7 +21,7 @@ ms.locfileid: "92170319"
 
 Šablona zařízení definuje možnosti zařízení, které se připojuje k vaší IoT Central aplikaci. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti zařízení a příkazy, na které zařízení reaguje. V rámci šablony zařízení může tvůrce nebo operátor přidat do aplikace skutečná i simulovaná zařízení. Simulovaná zařízení jsou užitečná pro testování chování aplikace IoT Central před propojením reálných zařízení.
 
-V tomto rychlém startu přidáte šablonu zařízení pro desku *MXChip IoT DevKit* (DevKit) a vytvoříte simulované zařízení. K dokončení tohoto rychlého startu nepotřebujete skutečné zařízení, budete pracovat s simulací zařízení. Zařízení DevKit:
+V tomto rychlém startu přidáte šablonu zařízení pro desku [ *MXChip IoT DevKit* (DevKit)](https://aka.ms/iot-devkit-purchase) a vytvoříte simulované zařízení. K dokončení tohoto rychlého startu nepotřebujete skutečné zařízení, budete pracovat s simulací zařízení. Zařízení DevKit:
 
 * Odesílá telemetrii jako teplotu.
 * Oznamuje vlastnosti specifické pro zařízení, jako je úroveň jasu.
@@ -60,7 +60,7 @@ Následující kroky ukazují, jak pomocí katalogu zařízení importovat model
 
     ![Šablona zařízení IoT DevKit pro MXChip](./media/quick-create-simulated-device/devkit-template.png)
 
-    Model schopností MXChip IoT DevKit zahrnuje rozhraní, jako jsou **mxchip_sensor**, **Mxchip_settings**a **informace o zařízení**. Rozhraní definují možnosti zařízení MXChip IoT DevKit. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti, které zařízení hlásí, a příkazy, na které zařízení reaguje.
+    Model schopností MXChip IoT DevKit zahrnuje rozhraní, jako jsou **mxchip_sensor** , **Mxchip_settings** a **informace o zařízení**. Rozhraní definují možnosti zařízení MXChip IoT DevKit. Mezi možnosti patří telemetrie, kterou zařízení odesílá, vlastnosti, které zařízení hlásí, a příkazy, na které zařízení reaguje.
 
 ### <a name="add-cloud-properties"></a>Přidání vlastností cloudu
 
@@ -100,7 +100,7 @@ Přidání nového formuláře pro **správu zařízení** , který může oper�
 
 1. Změňte název formuláře, aby bylo možné **spravovat zařízení**.
 
-1. Vyberte **název zákazníka** a poslední vlastnosti cloudového **data služby** a vlastnost **rychlost ventilátoru** . Pak vyberte **přidat oddíl**:
+1. Vyberte **název zákazníka** a poslední vlastnosti cloudového **data služby** a vlastnost **rychlost ventilátoru** . Pak vyberte **přidat oddíl** :
 
     ![Vytvořit nový formulář](media/quick-create-simulated-device/new-form.png)
 
@@ -114,7 +114,7 @@ Publikování šablony zařízení:
 
 1. Na stránce **šablony zařízení** můžete přejít na šablonu zařízení.
 
-1. Vyberte **publikovat**:
+1. Vyberte **publikovat** :
 
     ![Publikovaný model](media/quick-create-simulated-device/published-model.png)
 
@@ -154,7 +154,7 @@ Po vytvoření nového simulovaného zařízení může tvůrce pomocí tohoto z
 
 1. V levém podokně zvolte **šablony zařízení** a vyberte šablonu **MXChip IoT DevKit** .
 
-1. Vyberte libovolné zobrazení, které chcete upravit, nebo vytvořte nové zobrazení. Vyberte **Konfigurovat zařízení verze Preview**a pak **Vyberte ze spuštěného zařízení**. Tady můžete zvolit, aby nedošlo k zobrazení náhledu, reálnému zařízení nakonfigurovanému pro testování nebo existujícímu zařízení, které jste přidali do IoT Central.
+1. Vyberte libovolné zobrazení, které chcete upravit, nebo vytvořte nové zobrazení. Vyberte **Konfigurovat zařízení verze Preview** a pak **Vyberte ze spuštěného zařízení**. Tady můžete zvolit, aby nedošlo k zobrazení náhledu, reálnému zařízení nakonfigurovanému pro testování nebo existujícímu zařízení, které jste přidali do IoT Central.
 
 1. V seznamu vyberte simulované zařízení. Pak vyberte **Použít**. Teď můžete vidět stejné simulované zařízení v zobrazeních šablon zařízení. Toto zobrazení je užitečné pro grafy a další vizualizace.
 

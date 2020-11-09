@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
-ms.openlocfilehash: 9870b5366ac629fe1b10cfde15a58b85c7c6fbc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4c303a7640454ba0cb6622b21fd161354266068
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907711"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375919"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul Two-Class rozhodovací doménové struktury
 
@@ -51,33 +51,33 @@ Další informace najdete v tématu o [rozhodovacích doménových strukturách]
   
 1.  Přidejte modul pro **rozhodovací doménovou strukturu dvou tříd** do kanálu v Azure Machine Learning a otevřete podokno **vlastnosti** daného modulu. 
 
-    Modul najdete v části **Machine Learning**. Rozbalte položku **Initialize**a pak **klasifikaci**.  
+    Modul najdete v části **Machine Learning**. Rozbalte položku **Initialize** a pak **klasifikaci**.  
   
-2.  V případě **metody převzorkování**vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.  
+2.  V případě **metody převzorkování** vyberte metodu použitou k vytvoření jednotlivých stromů.  Můžete si vybrat z **zavazadla** nebo **replikace**.  
   
-    -   Zaznamenání **do zavazadla**se také označuje jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní.  
+    -   Zaznamenání **do zavazadla** se také označuje jako *agregace Bootstrap*. V této metodě se každý strom vypěstuje na novém vzorku, který vytvořil náhodným vzorkováním původní datové sady s náhradou, dokud nebudete mít datovou velikost původní.  
   
-         Výstupy modelů jsou kombinovány *hlasováním*, což je forma agregace. Každý strom v doménové struktuře rozhodnutí o klasifikaci má za následek nenormalizovaný frekvenční histogram popisků. Agregaci je sečíst Tyto histogramy a normalizovat a získat tak "pravděpodobnost" pro každý popisek. Tímto způsobem budou mít stromy s důvěrou vysoké předpovědi větší váhu v konečném rozhodnutí kompletu.  
+         Výstupy modelů jsou kombinovány *hlasováním* , což je forma agregace. Každý strom v doménové struktuře rozhodnutí o klasifikaci má za následek nenormalizovaný frekvenční histogram popisků. Agregaci je sečíst Tyto histogramy a normalizovat a získat tak "pravděpodobnost" pro každý popisek. Tímto způsobem budou mít stromy s důvěrou vysoké předpovědi větší váhu v konečném rozhodnutí kompletu.  
   
          Další informace najdete v tématu Wikipedii pro agregaci Bootstrap.  
   
-    -   **Replikace: v**rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.   
+    -   **Replikace: v** rámci replikace je každý strom vyškolen na přesně stejných vstupních datech. Určení, které dělicí predikát se používá pro každý uzel stromu, zůstane náhodné a stromy budou odlišné.   
   
 3.  Určete, jak chcete model vyškolet nastavením možnosti **vytvořit Trainer režim** .  
   
-    -   **Jediný parametr**: Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
+    -   **Jediný parametr** : Pokud víte, jak chcete model konfigurovat, můžete zadat konkrétní sadu hodnot jako argumenty.
 
-    -   **Rozsah parametrů**: Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
+    -   **Rozsah parametrů** : Pokud si nejste jisti nejlepšími parametry, můžete najít optimální parametry pomocí modulu [ladit model parametrů](tune-model-hyperparameters.md) . Poskytnete určitou škálu hodnot a Trainer iterovat více kombinací nastavení a určí kombinaci hodnot, které vytvářejí nejlepší výsledek.
   
-4.  V poli **počet rozhodovacích stromů**zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.  
+4.  V poli **počet rozhodovacích stromů** zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete potenciálně získat lepší pokrytí, ale zvýší se čas školení.  
   
     > [!NOTE]
-    >  Tato hodnota také určuje počet stromů zobrazených při vizualizaci výukového modelu. Pokud chcete zobrazit nebo vytisknout jeden strom, můžete nastavit hodnotu 1. Může však být vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace.
+    >  Pokud nastavíte hodnotu 1. Může však být vytvořen pouze jeden strom (strom s počáteční sadou parametrů) a žádné další iterace.
   
-5.  Pro **maximální hloubku rozhodovacích stromů**zadejte číslo, abyste omezili maximální hloubku rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
+5.  Pro **maximální hloubku rozhodovacích stromů** zadejte číslo, abyste omezili maximální hloubku rozhodovacího stromu. Zvýšení hloubky stromové struktury může zvýšit přesnost, a to na riziko nějakého přeložení a zvýšené doby školení.
   
   
-7.  Pro **minimální počet vzorků na uzel listu**Určete minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.
+7.  Pro **minimální počet vzorků na uzel listu** Určete minimální počet případů, které jsou nutné k vytvoření libovolného uzlu terminálu (list) ve stromu.
   
      Zvýšením této hodnoty zvýšíte prahovou hodnotu pro vytváření nových pravidel. Například výchozí hodnota 1, dokonce i jeden případ, může způsobit vytvoření nového pravidla. Pokud zvýšíte hodnotu na 5, musí školicí data obsahovat alespoň pět případů splňujících stejné podmínky.  
   
@@ -87,9 +87,9 @@ Další informace najdete v tématu o [rozhodovacích doménových strukturách]
   
 9. Připojit s popiskem datovou sadu a vyškolit model:
 
-    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
+    + Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr** , připojíte tagované datové sady a modul [vlakového modelu](train-model.md) .  
   
-    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů**, připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
+    + Pokud nastavíte **režim vytvořit Trainer** na **rozsah parametrů** , připojíte s příznakovou datovou sadu a provedete model pomocí [předparametrů ladit model](tune-model-hyperparameters.md).  
   
     > [!NOTE]
     > 

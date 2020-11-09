@@ -4,31 +4,41 @@ description: Pokud se k otázce neshoduje, vrátí se výchozí odpověď. Je mo
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
-ms.date: 07/13/2020
-ms.openlocfilehash: 14954f89fcdcbbc1ef4b8654582a3274f4bb0923
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: ceff3127eba724ba9aa9bc8f9398d0f27ba687eb
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776812"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376603"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Změna výchozí odpovědi pro prostředek QnA Maker
 
-Výchozí odpověď pro znalostní bázi je určena k vrácení, když odpověď nenalezne. Pokud používáte klientskou aplikaci, například [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs#calling-qna-maker-from-your-bot), může mít také samostatnou výchozí odpověď, která indikuje, že žádná odpověď nesplňovala prahovou hodnotu skóre.
+Výchozí odpověď pro znalostní bázi je určena k vrácení, když odpověď nenalezne. Pokud používáte klientskou aplikaci, například [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna), může mít také samostatnou výchozí odpověď, která indikuje, že žádná odpověď nesplňovala prahovou hodnotu skóre.
 
 ## <a name="types-of-default-answer"></a>Typy výchozí odpovědi
 
 Ve znalostní bázi existují dva typy výchozí odpovědi. Je důležité porozumět tomu, jak a kdy se jednotlivé výsledky vrátí z prediktivního dotazu:
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
-|Typ otázky|Popis odpovědi|
+|Typy výchozích odpovědí|Popis odpovědi|
 |--|--|
 |Odpověď KB, když se neurčí žádná odpověď|`No good match found in KB.` – Když [rozhraní API GenerateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) nenajde žádnou odpovídající odpověď na otázku, vrátí se `DefaultAnswer` nastavení služby App Service. Všechna znalostní báze ve stejné QnA Maker prostředku sdílejí stejný výchozí text odpovědi.<br>Nastavení můžete spravovat v Azure Portal, prostřednictvím služby App Service nebo pomocí rozhraní REST API pro [získání](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) nebo [aktualizaci](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) nastavení.|
 |Text instrukcí pro následné výzvy|Když v toku konverzace použijete následné výzvy, možná nebudete potřebovat odpověď v páru QnA, protože chcete, aby uživatel mohl vybírat z následných výzev. V takovém případě nastavte konkrétní text nastavením výchozí text odpovědi, který se vrátí s každou předpověď pro následné výzvy. Text má být zobrazen jako instruktážní text pro výběr následných výzev. Příkladem tohoto výchozího textu odpovědi je `Please select from the following choices` . Tato konfigurace je vysvětlena v dalších částech tohoto dokumentu. Dá se nastavit také jako součást definice znalostní báze `defaultAnswerUsedForExtraction` pomocí [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+|Typy výchozích odpovědí|Popis odpovědi|
+|--|--|
+|Odpověď KB, když se neurčí žádná odpověď|`No good match found in KB.` – Když [rozhraní API GenerateAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) nenajde žádnou odpovídající odpověď na otázku, zobrazí se výchozí textová odpověď. V QnA Maker spravovaném (ve verzi Preview) můžete tento text nastavit v **Nastavení** znalostní báze. <br><br> ![QnA Maker Managed (Preview) nastavit výchozí odpověď](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
+|Text instrukcí pro následné výzvy|Když v toku konverzace použijete následné výzvy, možná nebudete potřebovat odpověď v páru QnA, protože chcete, aby uživatel mohl vybírat z následných výzev. V takovém případě nastavte konkrétní text nastavením výchozí text odpovědi, který se vrátí s každou předpověď pro následné výzvy. Text má být zobrazen jako instruktážní text pro výběr následných výzev. Příkladem tohoto výchozího textu odpovědi je `Please select from the following choices` . Tato konfigurace je vysvětlena v dalších částech tohoto dokumentu. Můžete ji také nastavit jako součást definice znalostní báze s `defaultAnswerUsedForExtraction` použitím [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
+
+---
+
 ### <a name="client-application-integration"></a>Integrace klientské aplikace
 
-Pro klientskou aplikaci, jako je robot se **službou Azure bot Service**, si můžete vybrat ze běžných následujících scénářů:
+Pro klientskou aplikaci, jako je robot se **službou Azure bot Service** , si můžete vybrat ze běžných následujících scénářů:
 
 * Použít nastavení znalostní báze
 * V klientské aplikaci použijte jiný text, který bude rozlišovat při vrácení odpovědi, ale nesplňuje prahovou hodnotu skóre. Tento text může být buď statický text uložený v kódu, nebo může být uložený v seznamu nastavení klientské aplikace.

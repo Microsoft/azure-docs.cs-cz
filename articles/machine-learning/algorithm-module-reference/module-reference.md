@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/19/2020
-ms.openlocfilehash: 998f9ef7bddfd988dc0af8183fb9c000bf8c79e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/09/2020
+ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421290"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376838"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning
 
@@ -45,7 +45,7 @@ Nápovědu k výběru algoritmů najdete v tématu.
 | --- |--- | --- |
 | Regrese | Předpověď hodnoty. | [Posílená regrese rozhodovacího stromu](boosted-decision-tree-regression.md) <br/> [Regrese rozhodovacího lesa](decision-forest-regression.md) <br/> [Rychlá kvantilová regrese rozhodovacích stromů](fast-forest-quantile-regression.md)  <br/> [Lineární regrese](linear-regression.md)  <br/> [Regrese neurální sítě](neural-network-regression.md)  <br/> [Poissonova regrese](poisson-regression.md)  <br/>|
 | Clustering | Seskupte data dohromady.| [Clustering K-Means](k-means-clustering.md)
-| Classification | Předpověď třídy.  Vyberte si binární (dvě třídy) nebo algoritmy s více třídami.| [Posílený rozhodovací strom s několika třídami](multiclass-boosted-decision-tree.md) <br/> [Rozhodovací les s více třídami](multiclass-decision-forest.md) <br/> [Logistická regrese s více třídami](multiclass-logistic-regression.md)  <br/> [Neurální síť s více třídami](multiclass-neural-network.md) <br/> [One vs. All Multiclass](one-vs-all-multiclass.md) <br/> [Zprůměrovaný perceptron se dvěma třídami](two-class-averaged-perceptron.md) <br/>  [Posílený rozhodovací strom se dvěma třídami](two-class-boosted-decision-tree.md)  <br/> [Rozhodovací les se dvěma třídami](two-class-decision-forest.md) <br/>  [Logistická regrese se dvěma třídami](two-class-logistic-regression.md) <br/> [Neurální síť se dvěma třídami](two-class-neural-network.md) <br/> [Support Vector Machine (SVM) se dvěma třídami](two-class-support-vector-machine.md) | 
+| Classification | Předpověď třídy.  Vyberte si binární (dvě třídy) nebo algoritmy s více třídami.| [Posílený rozhodovací strom s několika třídami](multiclass-boosted-decision-tree.md) <br/> [Rozhodovací les s více třídami](multiclass-decision-forest.md) <br/> [Logistická regrese s více třídami](multiclass-logistic-regression.md)  <br/> [Neurální síť s více třídami](multiclass-neural-network.md) <br/> [One vs. All Multiclass](one-vs-all-multiclass.md) <br/> [Jedna a jedna více tříd](one-vs-one-multiclass.md) <br/>[Zprůměrovaný perceptron se dvěma třídami](two-class-averaged-perceptron.md) <br/>  [Posílený rozhodovací strom se dvěma třídami](two-class-boosted-decision-tree.md)  <br/> [Rozhodovací les se dvěma třídami](two-class-decision-forest.md) <br/>  [Logistická regrese se dvěma třídami](two-class-logistic-regression.md) <br/> [Neurální síť se dvěma třídami](two-class-neural-network.md) <br/> [Support Vector Machine (SVM) se dvěma třídami](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Moduly pro vytváření a vyhodnocování modelů
 

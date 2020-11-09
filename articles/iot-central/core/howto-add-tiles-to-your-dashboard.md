@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5276f9b8c6dd3bdc305142e5b9452cd9c5d60bce
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985322"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376978"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurace řídicího panelu aplikace
 
@@ -23,17 +23,17 @@ ms.locfileid: "90985322"
 
 ## <a name="add-tiles"></a>Přidat dlaždice
 
-Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené z vlastní šablony **aplikace** . Chcete-li upravit aktuální řídicí panel, vyberte možnost **Upravit**, chcete-li přidat vlastní osobní nebo sdílený řídicí panel, vyberte možnost **nové**:
+Následující snímek obrazovky ukazuje řídicí panel v aplikaci vytvořené z vlastní šablony **aplikace** . Chcete-li upravit aktuální řídicí panel, vyberte možnost **Upravit** , chcete-li přidat vlastní osobní nebo sdílený řídicí panel, vyberte možnost **nové** :
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
 
-Po výběru **Upravit** nebo **Nový**je řídicí panel v režimu *úprav* . Pomocí nástrojů na panelu **Upravit řídicí** panel můžete přidat dlaždice na řídicí panel a přizpůsobit a odebrat dlaždice na samotném řídicím panelu. Například chcete-li přidat dlaždici **telemetrie** pro zobrazení aktuální teploty hlášené jedním nebo více zařízeními:
+Po výběru **Upravit** nebo **Nový** je řídicí panel v režimu *úprav* . Pomocí nástrojů na panelu **Upravit řídicí** panel můžete přidat dlaždice na řídicí panel a přizpůsobit a odebrat dlaždice na samotném řídicím panelu. Například chcete-li přidat dlaždici **telemetrie** pro zobrazení aktuální teploty hlášené jedním nebo více zařízeními:
 
 1. Na panelu **Upravit řídicí panel** vyberte **skupinu zařízení**.
 1. Vyberte jedno nebo více zařízení v rozevíracím seznamu **zařízení** , která chcete zobrazit na dlaždici. Nyní se zobrazí dostupná telemetrie, vlastnosti a příkazy ze zařízení.
 1. V části telemetrie vyberte **teplotu** a pak vyberte **Přidat dlaždici**. Dlaždice se teď zobrazuje na řídicím panelu, kde můžete změnit vizualizaci, změnit velikost dlaždice a nakonfigurovat ji:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Přidání dlaždice telemetrie na teplotu na řídicí panel":::
 
 Po dokončení přidávání a přizpůsobení dlaždic na řídicím panelu vyberte **Uložit**.
 
@@ -51,7 +51,7 @@ K přizpůsobení dlaždice na řídicím panelu musí být řídicí panel v re
 
 Následující tabulka popisuje různé typy dlaždic, které můžete přidat na řídicí panel:
 
-| dlaždici             | Description |
+| dlaždici             | Popis |
 | ---------------- | ----------- |
 | Markdown         | Dlaždice Markdownu jsou kliknutí na dlaždice, které zobrazují nadpis a text popisu formátovaného pomocí Markdownu. Adresa URL může být relativní odkaz na jinou stránku v aplikaci nebo absolutní odkaz na externí Web.|
 | Image            | Dlaždice obrázku zobrazují vlastní obrázek a lze na něj kliknout. Adresa URL může být relativní odkaz na jinou stránku v aplikaci nebo absolutní odkaz na externí Web.|
@@ -71,27 +71,31 @@ V současné době můžete přidat až 10 zařízení do dlaždic, které podpo
 
 ### <a name="customizing-visualizations"></a>Přizpůsobení vizualizací
 
+Ve výchozím nastavení zobrazují spojnicové grafy data v časovém intervalu. Vybraný časový rozsah je rozdělen na 50, které mají stejnou velikost, a data zařízení se pak agreguje na jeden kontejner a poskytnou 50 datových bodů přes vybraný časový rozsah. Pokud chcete zobrazit nezpracovaná data, můžete změnit výběr tak, aby se zobrazily posledních 100 hodnot. Chcete-li změnit časový rozsah nebo vybrat vizualizaci nezpracovaných dat, použijte rozevírací seznam rozsah zobrazení na panelu **Konfigurovat graf** .
+
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/display-range.png" alt-text="Změna rozsahu zobrazení spojnicového grafu":::
+
 Pro dlaždice, které zobrazují agregované hodnoty, vyberte pro výběr agregace ikonu ozubeného kolečka vedle typu telemetrie na panelu **Konfigurovat graf** . Můžete zvolit z hodnot průměr, součet, maximum, minimum a počet.
 
 U spojnicových grafů, pruhových grafů a výsečových grafů můžete přizpůsobit barvu různých hodnot telemetrie. Vyberte ikonu palety vedle telemetrie, kterou chcete upravit:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Změna barvy hodnoty telemetrie":::
 
 Pro dlaždice, které zobrazují vlastnosti řetězce nebo hodnoty telemetrie, můžete zvolit, jak se má text zobrazit. Pokud například zařízení ukládá adresu URL do řetězcové vlastnosti, můžete ji zobrazit jako odkaz s možnostmi kliknutí. Pokud adresa URL odkazuje na obrázek, můžete obrázek vykreslit v poslední známé hodnotě nebo dlaždici Vlastnosti. Chcete-li změnit způsob zobrazení řetězce, v konfiguraci dlaždic vyberte ikonu ozubeného kolečka vedle typu nebo vlastnosti telemetrie:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Změna způsobu zobrazení řetězce na dlaždici":::
 
-Pro číselný **klíčový ukazatel výkonu**, **poslední známou hodnotu**a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
+Pro číselný **klíčový ukazatel výkonu** , **poslední známou hodnotu** a dlaždice **vlastností** můžete použít podmíněné formátování k přizpůsobení barvy dlaždice na základě její aktuální hodnoty. Pokud chcete přidat podmíněné formátování, na dlaždici vyberte **Konfigurovat** a potom vyberte ikonu **podmíněného formátování** vedle hodnoty k přizpůsobení:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Snímek obrazovky ukazující, jak najít možnost konfigurace pro dlaždici a potom ikonu podmíněného formátování":::
 
 Přidejte pravidla podmíněného formátování:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Snímek obrazovky zobrazující pravidla podmíněného formátování pro průměrný tok Existují tři pravidla – méně než 20 je zelených, méně než 50 je žluté a vše nad 50 je červené.":::
 
 Následující snímek obrazovky ukazuje efekt pravidla podmíněného formátování:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Řídicí panel pro aplikace založené na šabloně vlastní aplikace":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Snímek obrazovky znázorňující žlutou barvu pozadí na dlaždici Průměrná voda Flow Číslo dlaždice je 40,84.":::
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -4,19 +4,21 @@ description: Testování QnA Maker znalostní báze je důležitou součástí i
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 05ae359182ac3d9c3f4cc17d7675a3f2fefa0bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 21984a03947e4f9f60e705955cb1be3b2df8933c
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776829"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376121"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Otestujte znalostní bázi v QnA Maker
 
 Testování QnA Maker znalostní báze je důležitou součástí iterativního procesu, který vylepšuje přesnost vrácených odpovědí. Znalostní bázi můžete testovat prostřednictvím vylepšeného rozhraní chatu, které také umožňuje provádět úpravy.
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>Interaktivní testování na portálu QnA Maker
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
 1. K znalostní bázi se dostanete tak, že na stránce **Moje základy znalostí** vyberete její název.
 1. Pro přístup k panelu testovacího snímku vyberte v horním panelu aplikace **test** .
@@ -37,7 +39,7 @@ Podrobnosti o výsledku testu si můžete prohlédnout na panelu Kontrola.
 
 1.  Na panelu Test snímků na více instancí otevřete možnost **zkontrolovat** , kde najdete další podrobnosti o této odpovědi.
 
-    ![Kontrola odpovědí](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Kontrola odpovědí](../media/qnamaker-how-to-test-knowledge-bases/inspect.png)
 
 2.  Zobrazí se panel kontrola. Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.
 
@@ -45,13 +47,13 @@ Podrobnosti o výsledku testu si můžete prohlédnout na panelu Kontrola.
 
 Pokud je odpověď na nejvyšší vyhodnocování nesprávná, vyberte správnou odpověď ze seznamu a vyberte **Uložit a výuka**.
 
-![Opravte odpověď na nejvyšší hodnocení.](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Opravte odpověď na nejvyšší hodnocení.](../media/qnamaker-how-to-test-knowledge-bases/choose-answer.png)
 
 ### <a name="add-alternate-questions"></a>Přidat alternativní otázky
 
-K dané odpovědi můžete přidat alternativní formy otázky. Do textového pole zadejte alternativní odpovědi a kliknutím na tlačítko ENTER je přidejte. Vyberte **Uložit a výuka** pro uložení aktualizací.
+K dané odpovědi můžete přidat alternativní formy otázky. Do textového pole zadejte alternativní odpovědi a pokud je chcete přidat, vyberte Enter. Vyberte **Uložit a výuka** pro uložení aktualizací.
 
-![Přidat alternativní otázky](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Přidat alternativní otázky](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question.png)
 
 ### <a name="add-a-new-answer"></a>Přidat novou odpověď
 
@@ -64,11 +66,62 @@ Vyberte **Save (Uložit) a výuka a** zachovejte tuto odpověď. Do znalostní b
 > [!NOTE]
 > Všechny úpravy ve znalostní bázi se budou ukládat jenom při stisknutí tlačítka **Uložit a výuka** .
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+1. K znalostní bázi se dostanete tak, že na stránce **Moje základy znalostí** vyberete její název.
+1. Pro přístup k panelu testovacího snímku vyberte v horním panelu aplikace **test** . 
+1. V horní části **zobrazené krátké odpovědi** se zobrazí zaškrtávací políčko, které je ve výchozím nastavení vybrané. Tato možnost slouží k povolení detekce rozsahu odpovědí na základě MRC na vašem testovacím panelu. 
+1. Do textového pole zadejte dotaz a vyberte Enter. 
+1. Pro každý dotaz, pokud existuje přesná odpověď nebo krátká odpověď přítomná v průchodu odpovědí, a to společně s doporučeným průchodem odpovědí, který je k dispozici ve znalostní bázi, budete mít také krátkou odpověď na dotaz.
+    ![Spravované podokno povoleného testu](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
+1. Pokud zrušíte výběr **Zobrazit krátkou odpověď** , jako odpověď se vrátí jenom ta nejlepší odpověď ze znalostní báze.
+
+### <a name="clear-test-panel"></a>Vymazat testovací panel
+
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z konzoly test, vyberte možnost **začít znovu** v levém horním rohu panelu Test.
+
+### <a name="close-test-panel"></a>Zavřít testovací panel
+
+Chcete-li panel testu zavřít, vyberte tlačítko **test** znovu. I když je panel test otevřený, nelze upravit obsah znalostní báze.
+
+### <a name="inspect-score"></a>Zkontrolovat skóre
+
+Podrobnosti o výsledku testu si můžete prohlédnout na panelu Kontrola.
+
+1.  Na panelu Test snímků na více instancí otevřete možnost **zkontrolovat** , kde najdete další podrobnosti o této odpovědi.
+
+    ![Zkontrolovat odpovědi ve verzi Preview](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
+
+2.  Zobrazí se panel kontrola. Panel zahrnuje nejvyšší záměr hodnocení i všechny identifikované entity. Na panelu se zobrazí výsledek vybrané utterance.
+3. Na panelu se zobrazuje skóre spolehlivosti v cestě a zjištěné skóre rozsahu odpovědi.
+
+### <a name="correct-the-top-scoring-answer"></a>Opravte odpověď na nejvyšší hodnocení.
+
+Pokud je odpověď na nejvyšší vyhodnocování nesprávná, vyberte správnou odpověď ze seznamu a vyberte **Uložit a výuka**.
+
+![Opravte odpověď na nejvyšší vyhodnocování v náhledu.](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
+
+### <a name="add-alternate-questions"></a>Přidat alternativní otázky
+
+K dané odpovědi můžete přidat alternativní formy otázky. Do textového pole zadejte alternativní odpovědi a pokud je chcete přidat, vyberte Enter. Vyberte **Uložit a výuka** pro uložení aktualizací.
+
+![Přidat alternativní otázky – náhled](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
+
+### <a name="add-a-new-answer"></a>Přidat novou odpověď
+
+Můžete přidat novou odpověď, pokud některé ze stávajících odpovědí, které se shodují, nejsou správné nebo odpověď ve znalostní bázi neexistuje (v KB) nebyla nalezena žádná dobrá shoda.
+
+V dolní části seznamu odpovědí zadejte novou odpověď pomocí textového pole a stisknutím klávesy ENTER ji přidejte.
+
+Vyberte **Save (Uložit) a výuka a** zachovejte tuto odpověď. Do znalostní báze se teď přidala nová dvojice otázek a odpovědí.
+
+---
+
 ### <a name="test-the-published-knowledge-base"></a>Testování publikované znalostní báze
 
 Publikovanou verzi znalostní báze můžete otestovat v podokně test. Po publikování znalostní báze vyberte pole **zveřejněné znalostní báze** a odešlete dotaz, který získá výsledky z PUBLIKOVANÉHO znalostní báze.
 
-![Test proti publikované znalostní bázi](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
+![Test proti publikované znalostní bázi](../media/qnamaker-how-to-test-knowledge-bases/test-against-published-knowledge-base.png)
 
 ## <a name="batch-test-with-tool"></a>Batch test s nástrojem
 
@@ -98,7 +151,7 @@ Nástroj Batch test použijte, když chcete:
     * Jazyk – anglický jazyk
 1. `Multi-turn batch test quickstart`Jako název vaší znalostní báze zadejte název.
 
-1. V **kroku 4**nakonfigurujte nastavení pomocí následující tabulky:
+1. V **kroku 4** nakonfigurujte nastavení pomocí následující tabulky:
 
     |Nastavení|Hodnota|
     |--|--|
@@ -107,7 +160,7 @@ Nástroj Batch test použijte, když chcete:
     |**+ Přidat soubor**|Vyberte stažený `.docx` soubor výpisu v části požadavky.|
     |**Povídání**|Vybrat **Professional**|
 
-1. V **kroku 5**vyberte **vytvořit znalostní báze**.
+1. V **kroku 5** vyberte **vytvořit znalostní báze**.
 
     Po dokončení procesu vytváření se na portálu zobrazí upravitelná znalostní báze.
 
@@ -130,11 +183,11 @@ Chcete-li použít nástroj Batch test, vytvořte soubor s názvem `batch-test-d
 |--|--|--|
 |ID znalostní báze|ID vašeho znalostní báze bylo nalezeno na stránce publikování. Pomocí různých ID znalostní báze v jednom souboru otestujete několik znalostí ve stejné službě najednou v jednom souboru.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 řetězec znaků zobrazený jako součást `POST` ) |
 |Otázka|Text otázky, kterou uživatel zadal. maximální počet znaků: 1 000|`How do I sign out?`|
-|Značky metadat|optional|`topic:power`používá formát _klíč: hodnota_|
+|Značky metadat|optional|`topic:power` používá `key:value` Formát|
 |První parametr|optional|`25`|
 |Očekávané ID odpovědi|optional|`13`|
 
-Pro tuto databázi Knowledge Base přidejte do souboru tři řádky, které mají jen dva požadované sloupce. První sloupec je vaše ID znalostní báze a druhý sloupec by měl být následující seznam otázek:
+Pro tuto znalostní bázi přidejte do souboru tři řádky s pouze dvěma požadovanými sloupci. První sloupec je vaše ID znalostní báze a druhý sloupec by měl být následující seznam otázek:
 
 |Sloupec 2 – otázky|
 |--|
@@ -144,7 +197,7 @@ Pro tuto databázi Knowledge Base přidejte do souboru tři řádky, které maj�
 
 Tyto otázky jsou přesným formulací ze znalostní báze a měly by jako hodnocení spolehlivosti vracet 100.
 
-V dalším kroku přidejte pár otázek, podobně jako tyto otázky, ale ne přesně stejné na 3 více řádků, a to pomocí stejného ID znalostní báze:
+Dále přidejte několik otázek, podobně jako na tyto otázky, ale ne přesně stejné na třech dalších řádcích, a to pomocí stejného ID znalostní báze:
 
 |Sloupec 2 – otázky|
 |--|
@@ -176,7 +229,7 @@ Test se dokončí a vygeneruje `out.tsv` soubor:
 
 ID znalostní báze bylo nahrazeno z `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` důvodu zabezpečení. Pro vlastní test Batch se ve sloupci zobrazí vaše ID znalostní báze.
 
-Výstup testu skóre spolehlivosti ve sloupci 4 zobrazuje prvních 3 otázek vrátilo skóre 100, jak je očekáváno, protože každá otázka je přesně stejná jako ve znalostní bázi. Poslední 3 otázky s novou formulací otázky nevrátí 100 jako hodnocení spolehlivosti. Aby bylo možné zvýšit skóre pro test a uživatele, musíte do znalostní báze přidat další alternativní otázky.
+Výstup testu z hlediska spolehlivosti ve čtvrtém sloupci zobrazuje horní tři otázky vrátilo skóre 100, jak je očekáváno, protože každá otázka je přesně stejná, jak se vyskytuje ve znalostní bázi. Poslední tři otázky a nové formulace otázky nevrátí 100 jako hodnocení spolehlivosti. Aby bylo možné zvýšit skóre pro test a uživatele, musíte do znalostní báze přidat další alternativní otázky.
 
 ### <a name="testing-with-the-optional-fields"></a>Testování s volitelnými poli
 
@@ -192,7 +245,7 @@ Pomocí následujícího grafu pochopíte, jak najít hodnoty polí pro voliteln
 
 |Číslo sloupce|Volitelný sloupec|Umístění dat|
 |--|--|--|
-|3|zprostředkovatele identity|Exportujte stávající znalostní bázi pro existující _klíč: páry hodnot_ .|
+|3|zprostředkovatele identity|Exportujte existující znalostní bázi pro existující `key:value` páry.|
 |4|top|`25`Doporučuje se výchozí hodnota.|
 |5|ID sady otázek a odpovědí|Exportujte existující znalostní bázi pro hodnoty ID. Všimněte si také, že se ve výstupním souboru vrátila ID.|
 
@@ -210,7 +263,7 @@ Pomocí následujícího grafu pochopíte, jak najít hodnoty polí pro voliteln
     > [!TIP]
     > Pokud chcete zobrazit metadata a ID QnA jednotlivých sad, exportujte znalostní bázi. Vyberte stránku **Nastavení** a pak vyberte **exportovat** jako `.xls` soubor. Najít tento stažený soubor a otevřít v aplikaci Excel revize metadat a ID.
 
-1. Vyberte **Uložit a výuka**, pak vyberte stránku **publikování** a pak vyberte tlačítko **publikovat** . Tyto akce provedou změnu v dávkovém testu. Stáhněte si znalostní bázi ze stránky **Nastavení** .
+1. Vyberte **Uložit a výuka** , pak vyberte stránku **publikování** a pak vyberte tlačítko **publikovat** . Tyto akce provedou změnu v dávkovém testu. Stáhněte si znalostní bázi ze stránky **Nastavení** .
 
     Stažený soubor má správný formát pro metadata a správné ID sady otázek a odpovědí. Tato pole použijte v následující části.
 
@@ -225,7 +278,7 @@ Pro dávkové testování existují dva hlavní scénáře:
 
 Následující postup předpokládá, že se jedná o zpracování protokolů chatu pomocí
 
-1. Vytvořte nový soubor dávkového testu, který bude zahrnovat volitelná data `batch-test-data-2.tsv` . Přidejte 6 řádků z původního vstupního souboru dávkového testu a pak přidejte ID páru metadata, Top a QnA pro každý řádek.
+1. Vytvořte nový soubor dávkového testu, který bude zahrnovat volitelná data `batch-test-data-2.tsv` . Přidejte šest řádků z původního vstupního souboru dávkového testu a pak přidejte ID páru metadata, Top a QnA pro každý řádek.
 
     Chcete-li simulovat automatizovaný proces kontroly nového textu v protokolech konverzace proti znalostní bázi, nastavte metadata pro každý sloupec na stejnou hodnotu: `topic:power` .
 

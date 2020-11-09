@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8a42711bba8f77070e2b30a9b07d29d5b5095945
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973882"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376957"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -49,7 +49,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | --- | --- |
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
 | Azure PowerShell |Použijte příkaz [Get-AzLocation](/powershell/module/az.resources/get-azlocation) . |
-| Rozhraní REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
+| REST API |Použijte operaci [Vypsat umístění](/rest/api/resources/subscriptions). |
 | Azure CLI |Použijte operaci [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="singapore-data-residency"></a>Zasídlí dat Singapuru
@@ -101,9 +101,15 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 | [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
 | [Účet úložiště](../../storage/common/storage-account-create.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
 | [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |Ne |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
 | [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Ne |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+
+
+## <a name="data-residency"></a>Rezidence dat
+
+Funkce pro ukládání zákaznických dat v rámci Azure je v tuto chvíli dostupná jenom v oblasti jihovýchodní Asie (Singapur) oblasti Asie a Tichomoří geografická a Brazílie – jih (stát Svatý Paulo) Brazílie geograficky. Pro všechny ostatní oblasti jsou zákaznická data uložená v geograficky. Další informace najdete v tématu [Centrum zabezpečení](https://azuredatacentermap.azurewebsites.net/).
+
 
 ## <a name="next-steps"></a>Další kroky
 

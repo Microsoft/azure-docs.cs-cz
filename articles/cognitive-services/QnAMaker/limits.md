@@ -4,13 +4,13 @@ description: QnA Maker má meta omezení pro části znalostní báze a služby.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 02/14/2020
-ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: c61c550e9a09d0f0708e8f1dbc63e76b329a8166
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776251"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375614"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -50,6 +50,9 @@ Názvy souborů nesmí obsahovat tyto znaky:
 ### <a name="maximum-number-of-files"></a>Maximální počet souborů
 
 Maximální počet souborů, které se dají extrahovat a maximální velikost souboru, je založený na vašich **[QnA maker omezeních cenové úrovně](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)**.
+
+> [!NOTE]
+> QnA Maker Managed (Preview) je bezplatná služba bez omezení počtu zdrojů, které se dají přidat. Propustnost se momentálně omezené za 10 transakcí za sekundu pro rozhraní API pro správu i pro předpovědi rozhraní API.
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>Maximální počet přímých odkazů z adresy URL
 

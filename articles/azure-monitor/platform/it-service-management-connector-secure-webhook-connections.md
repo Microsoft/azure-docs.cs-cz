@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 5976b70825ac2854e67ddad968752fc87d9e8cea
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377135"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376532"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Připojení Azure k nástrojům ITSM pomocí zabezpečeného exportu
 
@@ -108,7 +108,7 @@ Konfigurace obsahuje 2 kroky:
 
 Následující části obsahují podrobné informace o tom, jak připojit produkt ServiceNow a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste splnili následující požadavky:
 
@@ -117,7 +117,7 @@ Ujistěte se, že jste splnili následující požadavky:
 
 ### <a name="configure-the-servicenow-connection"></a>Konfigurace připojení ServiceNow
 
-1. <instance name> pro definici zabezpečeného exportu použijte odkaz <https://. service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor> identifikátor URI.
+1. použijte linku https://(název instance). Service-Now. com/API/sn_em_connector/em/inbound_event? source = azuremonitor identifikátor URI pro definici zabezpečeného exportu.
 
 2. Postupujte podle pokynů podle verze:
    * [Paříž](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
@@ -127,7 +127,7 @@ Ujistěte se, že jste splnili následující požadavky:
 
 V následujících částech najdete podrobné informace o tom, jak připojit Helix produkt pro řadiče pro správu základní desky a zabezpečený export v Azure.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Ujistěte se, že jste splnili následující požadavky:
 

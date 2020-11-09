@@ -1,16 +1,16 @@
 ---
 title: Aktivní návrhy učení – QnA Maker
-description: Přehledy aktivních kurzů vám umožní vylepšit kvalitu znalostní báze tím, že navrhují alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí.
+description: Přehledy aktivních kurzů vám umožní vylepšit kvalitu znalostní báze tím, že navrhují alternativní otázky na základě počtu uživatelů, na otázky a odpovědi na pár otázek a odpovědí.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/19/2020
-ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 707f4c098eacb0b72a7e12ebf79f9389b91095cc
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777033"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376515"
 ---
 # <a name="active-learning-suggestions"></a>Aktivní návrhy výukových kurzů
 
@@ -37,10 +37,18 @@ Po navržení otázek na portálu QnA Maker musíte tyto návrhy projít a přij
 
 ## <a name="turn-on-active-learning"></a>Aktivace aktivního učení
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Ve výchozím nastavení je aktivní učení **vypnuté**.
 Použití aktivního učení:
 * Musíte [zapnout aktivní výuku](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions) , aby QnA maker shromažďovat alternativní otázky pro znalostní bázi.
 * Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Upravit.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+Ve výchozím **nastavení je aktivní učení v QnA maker** spravovaném (ve verzi Preview). Chcete-li zobrazit navrhované alternativní otázky, [použijte možnosti zobrazení](../How-To/improve-knowledge-base.md#view-suggested-questions) na stránce Upravit.
+
+---
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Způsob fungování implicitní zpětné vazby QnA Maker
 

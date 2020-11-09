@@ -4,13 +4,13 @@ description: Přečtěte si, jak naplánovat aplikaci QnA Maker. Seznamte se s t
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776931"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376671"
 ---
 # <a name="plan-your-qna-maker-app"></a>Plánování aplikace QnA Maker
 
@@ -20,6 +20,8 @@ K naplánování QnA Maker aplikace je potřeba pochopit, jak QnA Maker funguje 
 
 Každý [prostředek Azure](azure-resources.md#resource-purposes) vytvořený pomocí QnA Maker má určitý účel. Každý prostředek má svůj účel, omezení a [cenovou úroveň](azure-resources.md#pricing-tier-considerations). Je důležité pochopit funkci těchto prostředků, abyste mohli tyto znalosti použít k procesu plánování.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 | Prostředek | Účel |
 |--|--|
 | Prostředek [QnA maker](azure-resources.md#qna-maker-resource) | Předpověď vytváření a dotazování |
@@ -27,6 +29,14 @@ Každý [prostředek Azure](azure-resources.md#resource-purposes) vytvořený po
 | Prostředek [služby App Service prostředku a plánu aplikací](azure-resources.md#app-service-and-app-service-plan) | Koncový bod předpovědi dotazů |
 | Prostředek [Application Insights](azure-resources.md#application-insights) | Telemetrie prediktivních dotazů |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+| Prostředek | Účel |
+|--|--|
+| Prostředek [QnA maker](azure-resources.md#qna-maker-resource) | Vytváření, koncový bod a telemetrie prediktivních dotazů|
+| Prostředek [kognitivní hledání](azure-resources.md#cognitive-search-resource) | Úložiště dat a hledání |
+
+---
 ### <a name="resource-planning"></a>Plánování prostředků
 
 Úroveň Free, v `F0` každém prostředku funguje a může poskytovat prostředí prediktivního vytváření a vyvíjení dotazů. Tato úroveň se dá využít k tomu, abyste se dozvěděli o vytváření a předpovědi dotazů. Když přejdete do provozu v produkčním nebo živém scénáři, znovu vyhodnoťte výběr prostředků.
@@ -65,9 +75,22 @@ Znalostní báze je přímo spojená s QnA Maker prostředkem. Obsahuje páry ot
 
 ### <a name="language-considerations"></a>Jazykové požadavky
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 První znalostní báze vytvořená v prostředku QnA Maker nastaví jazyk pro daný prostředek. Pro prostředek QnA Maker můžete mít jenom jeden jazyk.
 
 Prostředky QnA Maker můžete strukturovat podle jazyka nebo můžete pomocí [překladače](../../translator/translator-info-overview.md) změnit dotaz z jiného jazyka na jazyk znalostní báze před odesláním dotazu do koncového bodu předpovědi dotazu.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+V rámci stejného QnA Maker prostředku teď můžete mít základy znalostní báze v různých jazycích. Když vytvoříte první znalostní bázi Knowledge Base, můžete zvolit, jestli chcete použít prostředek pro znalostní báze v jednom nebo několika jazycích.
+
+![QnA Maker spravované (Preview) výběr vícejazykové znalostní báze](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Pokud povolíte jazykové nastavení pro znalostní bázi Knowledge Base, nemůžete ve svém prostředku QnA Maker vytvořit tolik základních základů znalostní báze. [Další podrobnosti o omezeních nastavení jazyka](./azure-resources.md).
+
+---
 
 ### <a name="ingest-data-sources"></a>Přijímání zdrojů dat
 
@@ -152,7 +175,15 @@ K dispozici jsou [dvě fáze hodnocení odpovědí](query-knowledge-base.md#how-
 
 ### <a name="service-updates"></a>Aktualizace služeb
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Použijte [nejnovější aktualizace modulu runtime](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) pro automatické spravování aktualizací služby.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+V QnA Maker spravovaném (ve verzi Preview) je modul runtime spravovaný pomocí samotné služby QnA Maker. Aktualizace služby proto nelze použít.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Škálování, propustnost a odolnost
 
@@ -160,7 +191,16 @@ Použijte [nejnovější aktualizace modulu runtime](../how-to/set-up-qnamaker-s
 
 ### <a name="analytics-with-application-insights"></a>Analýza pomocí Application Insights
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Všechny dotazy do znalostní báze jsou uloženy v Application Insights. Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+Ve spravovaném nasazení se telemetrie nabízí prostřednictvím [služby Azure monitor](https://docs.microsoft.com/azure/azure-monitor/). Využijte naše [Nejčastější dotazy](../how-to/get-analytics-knowledge-base.md) a pochopte metriky.
+
+
+---
 
 ## <a name="development-lifecycle"></a>Životní cyklus vývoje
 
@@ -177,7 +217,7 @@ Každý pár může obsahovat:
 
 ### <a name="devops-development"></a>Vývoj DevOps
 
-Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze při [dávkovém testování](../quickstarts/batch-testing.md)byly izolované.
+Vývoj znalostní báze pro vložení do kanálu DevOps vyžaduje, aby znalostní báze byla během [dávkového testování](../quickstarts/batch-testing.md)izolovaná.
 
 Znalostní báze sdílí index Kognitivní hledání se všemi ostatními základy znalostní báze na prostředku QnA Maker. I když je znalostní báze izolována oddílem, sdílení indexu může v porovnání s publikovanou znalostní báze způsobit rozdíl ve skóre.
 

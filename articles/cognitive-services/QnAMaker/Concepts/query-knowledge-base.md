@@ -1,16 +1,14 @@
 ---
 title: Dotaz na znalostní bázi Knowledge Base – QnA Maker
 description: Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dotazuje na koncový bod předpovědi prostředí runtime pomocí rozhraní generateAnswer API.
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776914"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376708"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Dotazování znalostní báze o odpovědích
 
@@ -18,9 +16,11 @@ Je nutné publikovat znalostní bázi. Po publikování se znalostní báze dota
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Jak QnA Maker zpracovává dotaz uživatele, aby mohl vybrat nejlepší odpověď
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 Vyškolená a [publikovaná](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
 
-![Proces modelu hodnocení pro dotaz na uživatele](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Proces modelu hodnocení pro dotaz na uživatele](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
 ### <a name="ranker-process"></a>Proces hodnocení
 
@@ -38,6 +38,30 @@ Tento proces je vysvětlen v následující tabulce.
 |||
 
 Použité funkce zahrnují, ale nejsou omezené na sémantiku na úrovni aplikace, důležitost na úrovni termínu v Corpus a hloubkované sémantické modely, které určují podobnost a relevanci mezi dvěma textovými řetězci.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+Vyškolená a [publikovaná](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA maker znalostní báze obdrží dotaz na uživatele z robota nebo jiné klientské aplikace v [rozhraní API pro GenerateAnswer](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Následující diagram znázorňuje proces, když je přijat dotaz uživatele.
+
+![Proces modelu hodnocení pro dotaz uživatele ve verzi Preview](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
+
+### <a name="ranker-process"></a>Proces hodnocení
+
+Tento proces je vysvětlen v následující tabulce.
+
+|Krok|Účel|
+|--|--|
+|1|Klientská aplikace pošle dotaz uživatele do [rozhraní GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|2|QnA Maker předzpracovává dotazy uživatelů pomocí rozpoznávání jazyka, pravopisu a dělení slov.|
+|3|Tento předzpracování se provádí pro změnu dotazu uživatele na nejlepší výsledky hledání.|
+|4|Tento změněný dotaz se odešle do indexu služby Azure Kognitivní hledání, který přijímá `top` počet výsledků. Pokud v těchto výsledcích není správná odpověď, zvyšte hodnotu `top` mírně. Obecně platí, že hodnota 10 pro `top` funguje v 90% dotazů.|
+|5|QnA Maker využívá model založený na špičkovém transformátoru k určení podobnosti mezi dotazem uživatele a výsledky kandidátů QnA získané z Azure Kognitivní hledání. Model založený na transformátoru je obsáhlý model pro vícejazyčnou výuku, který pracuje vodorovně pro všechny jazyky, aby bylo možné určit hodnocení spolehlivosti a nové pořadí řazení.|
+|6|Nové výsledky se vrátí do klientské aplikace v pořadí podle pořadí.|
+|||
+
+Klasifikátor funguje na všech alternativních otázkách a odpovědích a hledá nejlépe odpovídající páry QnA pro dotaz na uživatele. Uživatelé mají flexibilitu v tom, že je možné nastavit, že se má seřadit pouze hodnocení. 
+
+---
 
 ## <a name="http-request-and-response-with-endpoint"></a>Požadavek HTTP a odpověď s koncovým bodem
 Když publikujete znalostní bázi, služba vytvoří koncový bod HTTP založený na REST, který bude možné integrovat do vaší aplikace, obvykle robota chatu.

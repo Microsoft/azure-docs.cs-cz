@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: f09a77043a552d8d7f09c2a6abcb78f89cbf8ee2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420678"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376328"
 ---
 # <a name="one-vs-all-multiclass"></a>1-versus-all Multiclass
 
@@ -26,7 +26,7 @@ Tento modul je vhodný pro vytváření modelů, které předpovídá tři nebo 
 
 Některé algoritmy klasifikace umožňují použití více než dvou tříd podle návrhu. Jiné omezují možné výsledky na jednu ze dvou hodnot (binární neboli model se dvěma třídami). Ale dokonce i algoritmy binární klasifikace lze přizpůsobit pro úlohy klasifikace více tříd prostřednictvím celé řady strategií. 
 
-Tento modul implementuje metodu 1:1, ve které je vytvořen binární model pro každou z více tříd Output. Modul posuzuje každý z těchto binárních modelů pro jednotlivé třídy proti svému doplňku (všechny ostatní třídy v modelu), jako by se jednalo o binární problém klasifikace. Modul pak provede předpověď spuštěním těchto binárních klasifikátorů a výběrem předpovědi s nejvyšším skóre spolehlivosti.  
+Tento modul implementuje metodu 1:1, ve které je vytvořen binární model pro každou z více tříd Output. Modul posuzuje každý z těchto binárních modelů pro jednotlivé třídy proti svému doplňku (všechny ostatní třídy v modelu), jako by se jednalo o binární problém klasifikace. Kromě výpočetní efektivity (je potřeba použít jenom `n_classes` klasifikátory) je jednou z výhod tohoto přístupu jeho výklad. Vzhledem k tomu, že každá třída je zastoupena pouze jedním a jedním klasifikátorem, je možné získat znalosti o třídě kontrolou jejího odpovídajícího třídění. Toto je nejčastěji používaná strategie pro klasifikaci více tříd a je to reálná výchozí volba. Modul pak provede předpověď spuštěním těchto binárních klasifikátorů a výběrem předpovědi s nejvyšším skóre spolehlivosti. 
 
 V podstatě modul vytvoří komplet jednotlivých modelů a potom sloučí výsledky pro vytvoření jednoho modelu, který předpovídá všechny třídy. Každý binární klasifikátor lze použít jako základ pro model s jedním i všemi.  
 
