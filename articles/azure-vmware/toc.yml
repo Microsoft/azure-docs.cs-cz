@@ -72,6 +72,8 @@
           href: concepts-api-management.md
         - name: Hvězdicová architektura
           href: concepts-hub-and-spoke.md
+        - name: Azure Security Center
+          href: azure-security-integration.md
         - name: Server Azure Backup
           items:
             - name: Nastavení Backup Serveru
