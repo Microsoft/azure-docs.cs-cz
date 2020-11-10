@@ -4,12 +4,12 @@ description: Možnosti konfigurace pro Azure Monitor Application Insights Java
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6edb77ec21b4f82f8398312fdff24aa5ea207771
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b703a708af564b9dafc8c1409333a2cfed6d2653
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381027"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427696"
 ---
 # <a name="configuration-options-for-azure-monitor-application-insights-java"></a>Možnosti konfigurace pro Azure Monitor Application Insights Java
 
@@ -178,9 +178,9 @@ Umožňuje konfigurovat pravidla, která budou použita pro telemetrii požadavk
 
 Další informace najdete v dokumentaci k [procesoru telemetrie](./java-standalone-telemetry-processors.md) .
 
-## <a name="autocollected-logging"></a>Protokolování s autoshromážděním
+## <a name="auto-collected-logging"></a>Automaticky shromážděné protokolování
 
-Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování prováděné prostřednictvím těchto protokolovacích rozhraní se automaticky shromáždí.
+Log4j, Logback a Java. util. protokolování se automaticky instrumentuje a protokolování se provádí pomocí těchto protokolovacích rozhraní, které se automaticky shromáždí.
 
 Ve výchozím nastavení se protokolování shromáždí jenom v případě, že se protokolování provádí na `INFO` úrovni nebo výše.
 
@@ -213,13 +213,13 @@ Jedná se o platné `level` hodnoty, které můžete zadat v `applicationinsight
 | TRACE (nebo nejlepší) | TRACE  | TRACE   | Nejlepší  |
 | ALL               | ALL    | ALL     | ALL     |
 
-## <a name="autocollected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automatické shromáždění metrik mikroměřičů (včetně metriky pohánějícího spouštěcího zařízení)
+## <a name="auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics"></a>Automaticky shromážděná metrika mikroměřiče (včetně metriky pohánějícího spouštěcího zařízení)
 
-Pokud vaše aplikace používá [mikroměřiče](https://micrometer.io), jsou metriky odesílané do globálního registru mikroměřiče shromažďovány.
+Pokud vaše aplikace používá [mikroměřiče](https://micrometer.io), pak se automaticky shromažďují metriky, které jsou odesílány do globálního registru mikroměřiče.
 
-Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), budou se také shromažďovat metriky nakonfigurované pomocí pružinového spouštěcího válce.
+Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), budou se také automaticky shromažďovat metriky nakonfigurované pomocí pružinového spouštěcího válce.
 
-Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pružinového spouštěcího pohánějícího):
+Zakázání automatické kolekce metrik mikroměřičů (včetně metriky pohánějícího spouštěcích procesorů):
 
 > [!NOTE]
 > Vlastní metriky se účtují samostatně a můžou vygenerovat další náklady. Ujistěte se, že jste zkontrolovali podrobné [informace o cenách](https://azure.microsoft.com/pricing/details/monitor/). Pokud chcete zakázat metriky mikroměřičů a pružinového poháněcí, přidejte do konfiguračního souboru níže uvedenou konfiguraci.

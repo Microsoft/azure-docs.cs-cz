@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748652"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427985"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Kurz: vytvoření instance IoT Edge pro video Analytics (Intel NUC)
 
@@ -117,9 +117,9 @@ Nakonfigurujte IoT Edge k registraci a připojení k aplikaci IoT Central:
 
 1. Nahraďte `{scope_id}` **rozsahem ID** , který jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
-1. Nahraďte `{registration_id}` *lva-Gateway-001* a zařízením, které jste vytvořili v předchozím kurzu.
+1. Nahraďte `{registration_id}` *bránou-001* a zařízením, které jste vytvořili v předchozím kurzu.
 
-1. Nahraďte `{symmetric_key}` **primárním klíčem** pro zařízení **lva-Gateway-001** , na které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
+1. Nahraďte `{symmetric_key}` **primárním klíčem** pro zařízení **Gateway – 001** , na které jste si poznamenali v souboru *scratchpad.txt* v předchozím kurzu.
 
 1. Spusťte následující příkaz, který restartuje IoT Edge démon:
 

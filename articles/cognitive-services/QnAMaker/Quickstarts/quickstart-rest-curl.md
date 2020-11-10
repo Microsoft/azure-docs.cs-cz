@@ -7,12 +7,12 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: b619b258084b457621ad1a5650aaf621df9677a7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376498"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427679"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rychlý Start: použití kudrlinkou a REST ke správě znalostní báze
 
@@ -20,7 +20,7 @@ Tento rychlý Start vás provede vytvořením, publikováním a dotazem znalostn
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
 
@@ -414,8 +414,8 @@ Stav odpovědi je 204 bez výsledků. Použijte `-v` parametr příkazového ř�
 
 ## <a name="additional-resources"></a>Další zdroje informací
 
-* [Vytváření obsahu](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) Referenční dokumentace
-* [Modul runtime](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/) Referenční dokumentace
+* [Vytváření obsahu](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Referenční dokumentace
+* [Modul runtime](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime) Referenční dokumentace
 * [Ukázkové skripty BASH využívající kudrlinkou](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Další kroky

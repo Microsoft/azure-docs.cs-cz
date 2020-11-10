@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f5d4c881244ddae41ba4c706812bd7b8274a374e
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173279"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427730"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -22,11 +22,11 @@ Azure Backup zálohují data, stav počítače a úlohy spuštěné na místníc
 
 Počítače a data můžete zálohovat pomocí několika metod:
 
-- **Zálohování místních počítačů**:
+- **Zálohování místních počítačů** :
   - Místní počítače s Windows můžete zálohovat přímo do Azure pomocí agenta Azure Backup Microsoft Azure Recovery Services (MARS). Počítače se systémem Linux nejsou podporovány.
   - Místní počítače můžete zálohovat na záložní server – buď System Center Data Protection Manager (DPM) nebo server Microsoft Azure Backup (MABS). Záložní server pak můžete zálohovat do trezoru Recovery Services v Azure.
 
-- **Zálohování virtuálních počítačů Azure**:
+- **Zálohování virtuálních počítačů Azure** :
   - Virtuální počítače Azure můžete zálohovat přímo. Azure Backup nainstaluje záložní rozšíření agenta virtuálního počítače Azure, který běží na virtuálním počítači. Toto rozšíření zálohuje celý virtuální počítač.
   - Konkrétní soubory a složky můžete na virtuálním počítači Azure zálohovat spuštěním agenta MARS.
   - Virtuální počítače Azure můžete zálohovat na MABS, která běží v Azure, a pak můžete MABS zálohovat do trezoru Recovery Services.
@@ -43,9 +43,9 @@ Trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role Azure (RBAC)](../role-based-access-control/role-assignments-portal.md).
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
-  - **Zóna – redundantní úložiště (ZRS)**: replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
+  - **Místně redundantní úložiště (LRS)** : Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geograficky redundantní úložiště (GRS)** : Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Zóna – redundantní úložiště (ZRS)** : replikuje vaše data do [zón dostupnosti](../availability-zones/az-overview.md#availability-zones)a zaručuje jejich započet a odolnost dat ve stejné oblasti. [Další informace](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 Recovery Services trezory mají následující další funkce:
@@ -87,8 +87,8 @@ Spotřeba úložiště, plánovaná doba obnovení (RTO) a spotřeba sítě se u
 
 - Zdroj dat A se skládá z 10 bloků úložiště a1 – A10, které se zálohují měsíčně.
 - Bloky A2, A3, A4 a A9 se mění první měsíc a blok A5 se mění následující měsíc.
-- Pro rozdílové zálohování se v druhém měsíci zálohují změněné bloky a2, a3, A4 a buňce 3. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
-- Pro přírůstkové zálohování se za druhý měsíc budou bloky a2, a3, A4 a 3 označovat jako změněné a přenesené. Třetí měsíc se označí a přenese pouze změněný blok A5.
+- U rozdílových záloh se v druhém měsíci zálohují bloky a2, a3, A4 a buňce 3. Třetí měsíc se znovu zálohují tyto stejné bloky, společně se změněným blokem A5. Změněné bloky se budou zálohovat až do doby, kdy dojde k dalšímu úplnému zálohování.
+- V případě přírůstkových záloh jsou v druhý měsíc bloky a2, a3, A4 a buňce označeny jako změněné a přenesené. Třetí měsíc se označí a přenese pouze změněný blok A5.
 
 ![Obrázek znázorňující porovnání metod zálohování](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,10 +98,10 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
-Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
-Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
-Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
+Zálohování do trezoru | ![Yes][green] | ![Yes][green] | ![Yes][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
+Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
+Spustit přírůstkové zálohování |![Yes][green] |![Yes][green] |![Yes][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
 ![Klíč tabulky](./media/backup-architecture/table-key.png)
@@ -123,6 +123,12 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 - Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako dlouhodobá doba uchování (LTR).
 - Při vytvoření trezoru se vytvoří také "DefaultPolicy" a můžete ho použít k zálohování prostředků.
 - Všechny změny provedené v době uchování zásady zálohování se použijí zpět na všechny starší body obnovení z nových.
+
+### <a name="impact-of-policy-change-on-recovery-points"></a>Dopad změny zásad na body obnovení
+
+- **Doba uchování se zvýšila nebo snížila:** Při změně doby uchování se nová doba uchování použije i na existující body obnovení. V důsledku toho se vyčistí některé body obnovení. Pokud se prodlouží doba uchovávání, budou mít existující body obnovení také zvýšené uchovávání.
+- **Změněno z denní na týdně:** Když se naplánované zálohy změní z každodenního na týdně, vyčistí se stávající denní body obnovení.
+- **Změněno z týdně na denní:** Stávající týdenní zálohy se uchovávají na základě počtu dní zbývajících v závislosti na aktuálních zásadách uchovávání informací.
 
 ### <a name="additional-reference"></a>Další referenční informace
 

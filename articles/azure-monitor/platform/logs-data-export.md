@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 54d5fdf1f6bc905482186475302901c46de0d285
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380122"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427798"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Export dat pracovního prostoru Log Analytics v Azure Monitor (Preview)
 Export dat v pracovním prostoru Log Analytics v Azure Monitor umožňuje průběžně exportovat data z vybraných tabulek v pracovním prostoru Log Analytics do účtu služby Azure Storage nebo Event Hubs Azure jako shromážděná. Tento článek poskytuje podrobné informace o této funkci a postupu konfigurace exportu dat ve vašich pracovních prostorech.
@@ -77,10 +77,11 @@ Export dat Log Analytics může zapisovat doplňovací objekty blob do neměnný
 ### <a name="event-hub"></a>Centrum událostí
 Data se odesílají do centra událostí téměř v reálném čase, protože dosáhne Azure Monitor. Centrum událostí se vytvoří pro každý datový typ, který exportujete s názvem, *za nímž následuje název tabulky* . Například tabulka *SecurityEvent* se odeslala do centra událostí s názvem *am-SecurityEvent*. Pokud chcete, aby se exportovaná data dostala na konkrétní centrum událostí, nebo pokud máte tabulku s názvem, který překračuje limit počtu znaků 47, můžete zadat vlastní název centra událostí a exportovat do něj všechna data pro definované tabulky.
 
-Objem exportovaných dat se v průběhu času často zvětšuje a škálování centra událostí je potřeba zvýšit, aby se zpracovávala větší přenosové rychlosti, a vyhnout se tak scénářům omezování a latenci dat. K automatickému horizontálnímu navýšení kapacity a navýšení počtu jednotek propustnosti a splnění potřeb použití byste měli použít funkci automatického rozšíření Event Hubs. Podrobnosti najdete v tématu [Automatické horizontální navýšení kapacity Event Hubs jednotky propustnosti Azure](../../event-hubs/event-hubs-auto-inflate.md) .
+Požadavky:
+1. SKU centra událostí úrovně Basic podporuje [omezení](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) velikosti menší události a některé protokoly v pracovním prostoru můžou přesáhnout a vyřadit. Jako cíl exportu doporučujeme použít centrum událostí Standard nebo vyhrazené.
+2. Objem exportovaných dat se v průběhu času často zvětšuje a škálování centra událostí je potřeba zvýšit, aby se zpracovávala větší přenosové rychlosti, a vyhnout se tak scénářům omezování a latenci dat. K automatickému horizontálnímu navýšení kapacity a navýšení počtu jednotek propustnosti a splnění potřeb použití byste měli použít funkci automatického rozšíření Event Hubs. Podrobnosti najdete v tématu [Automatické horizontální navýšení kapacity Event Hubs jednotky propustnosti Azure](../../event-hubs/event-hubs-auto-inflate.md) .
 
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené požadavky, které je nutné před konfigurací Log Analytics exportu dat dokončit.
 
 - Účet úložiště a centrum událostí se už musí vytvořit a musí být ve stejné oblasti jako pracovní prostor Log Analytics. Pokud potřebujete replikovat data do jiných účtů úložiště, můžete použít kteroukoli z [možností redundance Azure Storage](../../storage/common/storage-redundancy.md).  

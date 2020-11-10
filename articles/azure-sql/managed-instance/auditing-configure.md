@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 8d067d30220c76de5617aab2c42365351888d744
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 393fceaa91600ab143912bb3af38c349f29f770a
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780015"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427934"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Začínáme s auditováním spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ V následující části je popsána konfigurace auditování na spravované ins
       > - Pokud je váš účet úložiště za Virtual Network nebo bránou firewall, přečtěte si téma [udělení přístupu z virtuální sítě](../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network).
       > - Pokud změníte dobu uchování z 0 (neomezené uchovávání) na jakoukoli jinou hodnotu, pamatujte na to, že doba uchovávání se bude vztahovat jenom na protokoly zapsané po změně hodnoty uchování (protokoly zapsané během období, kdy byla doba uchování nastavená na neomezený, se zachovají i po povolení uchování).
 
-   1. V účtu úložiště přejděte na **Přehled** a klikněte na **objekty blob** .
+   1. V účtu úložiště přejděte na **Přehled** a klikněte na **objekty blob**.
 
       ![Widget objektů blob Azure](./media/auditing-configure/1_blobs_widget.png)
 
@@ -50,7 +50,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
       ![Ikona vytvoření kontejneru objektů BLOB](./media/auditing-configure/2_create_container_button.png)
 
-   1. Zadejte **název** kontejneru, nastavte **úroveň veřejného přístupu** na **Private** a pak klikněte na **OK** .
+   1. Zadejte **název** kontejneru, nastavte **úroveň veřejného přístupu** na **Private** a pak klikněte na **OK**.
 
       ![Vytvořit konfiguraci kontejneru objektů BLOB](./media/auditing-configure/3_create_container_config.png)
 
@@ -61,7 +61,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
    - <a id="blobtsql"></a>Konfigurace úložiště objektů BLOB pro protokoly auditu pomocí T-SQL:
 
-     1. V seznamu kontejnery klikněte na nově vytvořený kontejner a pak klikněte na **vlastnosti kontejneru** .
+     1. V seznamu kontejnery klikněte na nově vytvořený kontejner a pak klikněte na **vlastnosti kontejneru**.
 
         ![Tlačítko Vlastnosti kontejneru objektů BLOB](./media/auditing-configure/4_container_properties_button.png)
 
@@ -88,7 +88,7 @@ V následující části je popsána konfigurace auditování na spravované ins
             > [!NOTE]
             > Obnovte token po vypršení platnosti, abyste se vyhnuli selháním auditu.
 
-          - Klikněte na **Vygenerovat SAS** .
+          - Klikněte na **Vygenerovat SAS**.
 
             ![Konfigurace SAS](./media/auditing-configure/7_sas_configure.png)
 
@@ -118,7 +118,7 @@ V následující části je popsána konfigurace auditování na spravované ins
         GO
         ```
 
-        Pokračujte [vytvořením specifikace auditu serveru nebo specifikace auditu databáze](#createspec).
+     1. Pokračujte [vytvořením specifikace auditu serveru nebo specifikace auditu databáze](#createspec).
 
    - <a id="blobssms"></a>Konfigurace úložiště objektů BLOB pro protokoly auditu pomocí SQL Server Management Studio 18 (Preview):
 
@@ -138,7 +138,7 @@ V následující části je popsána konfigurace auditování na spravované ins
 
         ![Přihlášení k Azure](./media/auditing-configure/12_mi_SSMS_sign_in_to_azure.png)
 
-     1. V rozevíracích seznamech vyberte předplatné, účet úložiště a kontejner objektů blob, nebo vytvořte vlastní kontejner kliknutím na **vytvořit** . Po dokončení klikněte na **OK** :
+     1. V rozevíracích seznamech vyberte předplatné, účet úložiště a kontejner objektů blob, nebo vytvořte vlastní kontejner kliknutím na **vytvořit**. Po dokončení klikněte na **OK** :
 
         ![Výběr předplatného Azure, účtu úložiště a kontejneru objektů BLOB](./media/auditing-configure/13_mi_SSMS_select_subscription_account_container.png)
 
@@ -169,15 +169,15 @@ Protokoly auditu ze spravované instance se dají odesílat do protokolů Azure 
 
 1. Přejděte v [Azure Portal](https://portal.azure.com/) do spravované instance.
 
-2. Klikněte na **nastavení diagnostiky** .
+2. Klikněte na **nastavení diagnostiky**.
 
-3. Klikněte na **zapnout diagnostiku** . Pokud je diagnostika už povolená, zobrazí se místo toho **+ Přidat nastavení diagnostiky** .
+3. Klikněte na **zapnout diagnostiku**. Pokud je diagnostika už povolená, zobrazí se místo toho **+ Přidat nastavení diagnostiky** .
 
 4. V seznamu protokolů vyberte **SQLSecurityAuditEvents** .
 
 5. Vyberte cíl pro události auditu: Event Hubs, protokoly Azure Monitor nebo obojí. Pro každý cíl nakonfigurujte požadované parametry (třeba pracovní prostor Log Analytics).
 
-6. Klikněte na **Uložit** .
+6. Klikněte na **Uložit**.
 
     ![Konfigurace nastavení diagnostiky](./media/auditing-configure/9_mi_configure_diagnostics.png)
 
@@ -234,15 +234,15 @@ Hlavní rozdíly mezi auditováním v databázích ve službě Azure SQL Managed
 - Pomocí spravované instance Azure SQL funguje auditování na úrovni serveru a ukládá `.xel` soubory protokolů ve službě Azure Blob Storage.
 - V SQL Server Audit funguje na úrovni serveru, ale ukládá události do souborů protokolů událostí systému nebo Windows.
 
-Auditování XEvent ve spravovaných instancích podporuje cíle služby Azure Blob Storage. Soubory a protokoly systému Windows nejsou **podporovány** .
+Auditování XEvent ve spravovaných instancích podporuje cíle služby Azure Blob Storage. Soubory a protokoly systému Windows nejsou **podporovány**.
 
 Hlavní rozdíly v `CREATE AUDIT` syntaxi pro auditování do úložiště objektů BLOB v Azure jsou:
 
 - K `TO URL` dispozici je nová syntaxe, která umožňuje zadat adresu URL kontejneru úložiště objektů BLOB v Azure, ve kterém `.xel` jsou soubory umístěné.
 - `TO EXTERNAL MONITOR`K dispozici je nová syntaxe umožňující Event Hubs a Azure monitor cíle protokolu.
 - Syntaxe `TO FILE` není **podporovaná** , protože spravovaná instance Azure SQL nemůže přistupovat ke sdíleným složkám souborů systému Windows.
-- Možnost vypnutí není **podporována** .
-- `queue_delay` hodnota 0 není **podporována** .
+- Možnost vypnutí není **podporována**.
+- `queue_delay` hodnota 0 není **podporována**.
 
 ## <a name="next-steps"></a>Další kroky
 
