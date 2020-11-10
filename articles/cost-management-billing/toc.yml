@@ -120,6 +120,8 @@
           href: understand/subscription-transfer.md
         - name: Přenos předplatných mezi partnery (Preview)
           href: manage/azure-plan-subscription-transfer-partners.md
+        - name: Začínáme na portálu Azure EA
+          href: manage/ea-portal-get-started.md
 - name: Návody
   items:
     - name: Konfigurace správy nákladů a fakturace
@@ -200,8 +202,6 @@
               href: manage/cancel-azure-subscription.md
         - name: Správa předplatných smlouvy Enterprise
           items:
-            - name: Začínáme na portálu Azure EA
-              href: manage/ea-portal-get-started.md
             - name: Role EA v Azure
               href: manage/understand-ea-roles.md
             - name: Správa portálu Azure EA

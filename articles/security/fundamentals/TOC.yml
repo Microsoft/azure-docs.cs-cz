@@ -49,7 +49,7 @@
     - name: Kontrolní seznam zabezpečení
       href: steps-secure-identity.md
     - name: Volba bez hesla
-      href: ad-passwordless.md
+      href: ../../active-directory/authentication/concept-authentication-passwordless.md
 - name: Zabezpečení sítě
   items:
     - name: Přehled zabezpečení
@@ -63,7 +63,7 @@
     - name: Visící záznam DNS a převzetí subdomény
       href: subdomain-takeover.md
     - name: Zabezpečení hybridní síťové architektury
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
 - name: Zabezpečení IaaS
   items:
     - name: Antimalware od Microsoftu
@@ -97,13 +97,13 @@
     - name: Zabezpečení databází
       items:
         - name: Přehled
-          href: ../../sql-database/sql-database-security-overview.md
+          href: ../../azure-sql/database/security-overview.md
         - name: Osvědčené postupy
-          href: ../../sql-database/sql-database-security-best-practice.md
+          href: ../../azure-sql/database/security-best-practice.md
         - name: Kontrolní seznam zabezpečení
           href: database-security-checklist.md
     - name: Příručka zabezpečení úložiště
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+      href: ../../storage/blobs/security-recommendations.md?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
     - name: Customer Lockbox
       href: customer-lockbox-overview.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox

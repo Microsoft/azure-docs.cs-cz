@@ -40,6 +40,8 @@
       href: front-door-backend-pool.md
     - name: Ukládání do mezipaměti s využitím služby Front Door
       href: front-door-caching.md
+    - name: DDoS Protection
+      href: front-door-ddos.md
     - name: Nejčastější dotazy ke službě Front Door
       href: front-door-faq.md
     - name: Geografické filtrování

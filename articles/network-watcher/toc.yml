@@ -64,6 +64,8 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: Pomocí ARMClienta
           href: connection-monitor-preview-create-using-arm-client.md
+        - name: Použití PowerShellu
+          href: connection-monitor-create-using-powershell.md
     - name: Migrace na Monitorování připojení (Preview)
       items:
         - name: Z Network Performance Monitoru

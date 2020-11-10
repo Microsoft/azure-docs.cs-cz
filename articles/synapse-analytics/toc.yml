@@ -173,7 +173,7 @@
           href: sql/resource-consumption-models.md
         - name: Zpracovaná data
           href: sql/data-processed.md
-        - name: Osvědčené postupy pro SQL na vyžádání
+        - name: Osvědčené postupy pro bezserverové fondy SQL
           href: sql/best-practices-sql-on-demand.md
         - name: Osvědčené postupy pro vyhrazené fondy SQL
           href: sql/best-practices-sql-pool.md
