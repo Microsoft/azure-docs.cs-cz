@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325499"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444555"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Audit a Správa Azure Machine Learning pomocí Azure Policy
 
@@ -42,11 +42,11 @@ Zásady můžete přiřadit také pomocí [Azure PowerShell](../governance/polic
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Šifrování pracovních prostorů pomocí klíče spravovaného zákazníkem
 
-Určuje, jestli mají být pracovní prostory šifrované pomocí klíče spravovaného zákazníkem (CMK), nebo pomocí klíče spravovaného společností Microsoft k šifrování metrik a metadat. Další informace o použití CMK najdete v části [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) článku podnikového zabezpečení.
+Určuje, jestli mají být pracovní prostory zašifrované pomocí klíče spravovaného zákazníkem nebo pomocí klíče spravovaného Microsoftem k šifrování metrik a metadat. Další informace o použití klíče spravovaného zákazníkem najdete v části [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) článku šifrování dat.
 
-Pokud chcete nakonfigurovat tuto zásadu, nastavte parametr efektu na __audit__ nebo __Odepřít__. Pokud je tato možnost nastavená na __audit__ , můžete vytvářet pracovní prostory bez CMK a v protokolu aktivit se vytvoří událost upozornění.
+Pokud chcete nakonfigurovat tuto zásadu, nastavte parametr efektu na __audit__ nebo __Odepřít__. Pokud je tato možnost nastavená na __audit__ , můžete vytvářet pracovní prostory bez klíče spravovaného zákazníkem a událost upozornění se vytvoří v protokolu aktivit.
 
-Pokud je zásada nastavená na __Odepřít__ , nemůžete vytvořit pracovní prostor, pokud neurčíte CMK. Při pokusu o vytvoření pracovního prostoru bez CMK dojde k chybě, která je podobná `Resource 'clustername' was disallowed by policy` a v protokolu aktivit vytvoří chybu. Identifikátor zásady se také vrátí jako součást této chyby.
+Pokud je zásada nastavená na __Odepřít__ , nemůžete vytvořit pracovní prostor, pokud neurčíte klíč spravovaný zákazníkem. Když se pokusíte vytvořit pracovní prostor bez klíče spravovaného zákazníkem, dojde k chybě, která je podobná `Resource 'clustername' was disallowed by policy` a v protokolu aktivit vytvoří chybu. Identifikátor zásady se také vrátí jako součást této chyby.
 
 ## <a name="workspaces-should-use-private-link"></a>Pracovní prostory by měly používat privátní odkaz
 

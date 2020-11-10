@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 856c5f106f164a98b60fdb3eeda31d6099d5b7bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5025c4ad81433b6eb18f5beded860625791ffce5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932001"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445094"
 ---
 # <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
@@ -39,7 +39,7 @@ Vaše aplikace můžou zabezpečeně přistupovat k informacím, které potřebu
 
 Pro přístup k trezoru klíčů se vyžaduje řádné ověření a autorizace volajícího (uživatel nebo aplikace). Ověření určí identitu volajícího a autorizace následně určí, které operace má volající povoleno provádět.
 
-Ověření se provádí prostřednictvím Azure Active Directory. Autorizace se může provádět prostřednictvím řízení přístupu na základě role (RBAC) nebo zásad přístupu trezoru klíčů. RBAC se používá při správě trezorů a zásady přístupu trezoru klíčů se používají při pokusu o přístup k datům uloženým v trezoru.
+Ověření se provádí prostřednictvím Azure Active Directory. Autorizaci je možné provádět prostřednictvím řízení přístupu na základě role Azure (RBAC) nebo zásad Key Vault přístupu. Pokud se při pokusu o přístup k datům uloženým v trezoru používá Správa trezorů a zásad přístupu trezoru klíčů, používá se Azure RBAC.
 
 Trezory klíčů Azure můžou být chráněné softwarem nebo, s Azure Key Vault Premium, hardwaremi chráněnými moduly hardwarového zabezpečení (HSM). Klíče chráněné softwarem, tajné klíče a certifikáty jsou chráněny Azure pomocí standardních algoritmů a délek klíčů.  V situacích, kdy potřebujete přidané záruky, můžete importovat nebo generovat klíče v HSM, které nikdy nezanechají hranici HSM. Azure Key Vault používá podpůrný software nCipher HSM, které jsou ověřené ve standardu FIPS (Federal Information Processing Standards) 140-2 úrovně 2. Pomocí nástrojů podpůrný software nCipher můžete přesunout klíč ze svého modulu HARDWAROVÉho zabezpečení do Azure Key Vault.
 

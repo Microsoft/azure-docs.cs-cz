@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286231"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445553"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Základy ověřování služby Key Vault
 
@@ -45,9 +45,9 @@ Postup při registraci uživatele nebo aplikace v Azure Active Directory najdete
 * Registrace uživatele v Azure Active Directory [odkazu](../../active-directory/fundamentals/add-users-azure-active-directory.md)
 * Registrace aplikace v Azure Active Directory [odkazu](../../active-directory/develop/quickstart-register-app.md)
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Přiřazení objektu zabezpečení k roli v Azure Active Directory
+## <a name="assign-your-security-principal-a-role"></a>Přiřazení objektu zabezpečení k roli
 
-Azure Active Directory používá řízení přístupu na základě role (RBAC) k přiřazení oprávnění objektům zabezpečení. Tato oprávnění se nazývají přiřazení rolí.
+K přiřazení oprávnění k objektům zabezpečení můžete použít řízení přístupu na základě role Azure (Azure RBAC). Tato oprávnění se nazývají přiřazení rolí.
 
 V kontextu trezoru klíčů určují Tato přiřazení rolí úroveň přístupu objektu zabezpečení k rovině správy (označované také jako rovina ovládacího prvku) trezoru klíčů. Tato přiřazení rolí neposkytují přímý přístup k tajným datům roviny dat, ale poskytují přístup ke správě vlastností trezoru klíčů. Například uživatel nebo aplikace přiřazená k **roli Čtenář** nebude moci provádět změny nastavení brány firewall trezoru klíčů, zatímco uživatel nebo aplikace, které mají přiřazenou **roli Přispěvatel** , mohou provádět změny. Žádná role nebude mít přímý přístup k provádění operací na tajných klíčích, klíčích a certifikátech, jako je vytvoření nebo načtení jejich hodnoty, dokud jim nebude přiřazen přístup k rovině dat trezoru klíčů. Tento postup je popsaný v dalším kroku.
 
@@ -57,7 +57,7 @@ V kontextu trezoru klíčů určují Tato přiřazení rolí úroveň přístupu
 >[!NOTE]
 > Když přiřadíte přiřazení role k uživateli na úrovni Azure Active Directory tenanta, tato sada oprávnění se trickle dolů ke všem předplatným, skupinám prostředků a prostředkům v rámci rozsahu přiřazení. Chcete-li se řídit objekty s nejmenším oprávněním, můžete toto přiřazení role udělat v podrobnějším oboru. Můžete například přiřadit uživateli roli čtenáře na úrovni předplatného a roli vlastníka pro jeden Trezor klíčů. Přejděte do nastavení IAM (identity Access Management) předplatného, skupiny prostředků nebo trezoru klíčů, aby bylo přiřazení role v podrobnějším rozsahu.
 
-* Další informace o [odkazu](../../role-based-access-control/built-in-roles.md) na role Azure Active Directory
+* Další informace o [propojení](../../role-based-access-control/built-in-roles.md) rolí Azure
 * Další informace o přiřazení nebo odebrání [odkazu](../../role-based-access-control/role-assignments-portal.md) na přiřazení rolí
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Konfigurace zásad přístupu trezoru klíčů pro objekt zabezpečení
@@ -91,7 +91,7 @@ Přístup k rovině dat nebo přístup k provádění operací na klíčích, ta
 Zásady přístupu trezoru klíčů udělují uživatelům a aplikacím přístup k provádění operací roviny dat v trezoru klíčů.
 
 > [!NOTE]
-> Tento model přístupu není kompatibilní s RBAC (možnost 2) trezoru klíčů, který je popsaný níže. Musíte zvolit jednu z nich. Pokud kliknete na kartu zásady přístupu vašeho trezoru klíčů, budete mít možnost Tento výběr provést.
+> Tento model přístupu není kompatibilní s Azure RBAC pro Trezor klíčů (možnost 2) popsaný níže. Musíte zvolit jednu z nich. Pokud kliknete na kartu zásady přístupu vašeho trezoru klíčů, budete mít možnost Tento výběr provést.
 
 Klasické zásady přístupu jsou podrobné, což znamená, že můžete povolit nebo zakázat schopnost jednotlivých uživatelů nebo aplikací provádět jednotlivé operace v rámci trezoru klíčů. Tady je pár příkladů:
 
@@ -104,25 +104,25 @@ Zásady klasického přístupu ale neumožňují oprávnění na úrovni jednotl
 > [!IMPORTANT]
 > Zásady přístupu k trezoru klíčů v klasických klíčích a Azure Active Directory přiřazení rolí jsou vzájemně nezávislá. Přiřazení objektu zabezpečení role přispěvatel na úrovni předplatného neumožní objektu zabezpečení automaticky provádět operace s datovou rovinou u každého trezoru klíčů v rámci rozsahu předplatného. Aby bylo možné provádět operace roviny dat, musí být zaregistrovaný objekt zabezpečení i nadále udělen nebo udělena oprávnění zásad přístupu.
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>Možnost přístupu k rovině dat 2: Key Vault RBAC (Preview)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Možnost přístupu k rovině dat 2: Azure RBAC pro Key Vault (Preview)
 
-Nový způsob, jak udělit přístup k rovině dat trezoru klíčů, je prostřednictvím řízení přístupu na základě role (RBAC) v trezoru klíčů.
+Nový způsob, jak udělit přístup k rovině dat trezoru klíčů, je prostřednictvím řízení přístupu na základě role Azure (Azure RBAC) pro Trezor klíčů.
 
 > [!NOTE]
 > Tento model přístupu není kompatibilní se zásadami klasického přístupu trezoru klíčů, které jsou uvedené výše. Musíte zvolit jednu z nich. Pokud kliknete na kartu zásady přístupu vašeho trezoru klíčů, budete mít možnost Tento výběr provést.
 
 Přiřazení role Key Vault jsou sada předdefinovaných přiřazení rolí Azure, která zahrnují společné sady oprávnění používaných pro přístup k klíčům, tajným klíčům a certifikátům. Tento model oprávnění také umožňuje další možnosti, které nejsou k dispozici v modelu klasických zásad přístupu trezoru klíčů.
 
-* Oprávnění RBAC se dají spravovat ve velkém měřítku tím, že uživatelům umožníte, aby tyto role přiřadili na předplatném, skupině prostředků nebo na úrovni trezoru jednotlivých klíčů. Uživatel bude mít oprávnění roviny dat pro všechny trezory klíčů v rámci rozsahu přiřazení RBAC. Tím se eliminuje nutnost přiřazení individuálních oprávnění zásad přístupu na uživatele a aplikace na Trezor klíčů.
+* Oprávnění Azure RBAC je možné spravovat ve škálování tím, že uživatelům umožníte přiřadit tyto role na předplatné, skupinu prostředků nebo jednotlivé úrovně trezoru klíčů. Uživatel bude mít oprávnění roviny dat pro všechny trezory klíčů v rámci rozsahu přiřazení Azure RBAC. Tím se eliminuje nutnost přiřazení individuálních oprávnění zásad přístupu na uživatele a aplikace na Trezor klíčů.
 
-* Oprávnění RBAC jsou kompatibilní s Privileged Identity Management nebo PIM. Díky tomu můžete nakonfigurovat řízení přístupu za běhu pro privilegované role, jako je Key Vault správce. Jedná se o osvědčené postupy zabezpečení a následuje zabezpečení s nejnižšími oprávněními eliminující stálý přístup k vašim trezorům klíčů.
+* Oprávnění Azure RBAC jsou kompatibilní s Privileged Identity Management nebo PIM. Díky tomu můžete nakonfigurovat řízení přístupu za běhu pro privilegované role, jako je Key Vault správce. Jedná se o osvědčené postupy zabezpečení a následuje zabezpečení s nejnižšími oprávněními eliminující stálý přístup k vašim trezorům klíčů.
 
-* Oprávnění RBAC jsou kompatibilní s podrobnými oprávněními pro jednotlivé objekty, takže můžete omezit uživatele jenom na provádění operací s některými objekty trezoru klíčů. To umožňuje více aplikacím sdílet jeden Trezor klíčů a zároveň stále izolovat přístup mezi aplikacemi.
+* Oprávnění Azure RBAC jsou kompatibilní s podrobnými oprávněními pro jednotlivé objekty, takže můžete uživatele omezit jenom na provádění operací na některých objektech trezoru klíčů. To umožňuje více aplikacím sdílet jeden Trezor klíčů a zároveň stále izolovat přístup mezi aplikacemi.
 
-Další informace o Key Vault RBAC najdete v následujících dokumentech:
+Další informace o službě Azure RBAC pro Key Vault najdete v následujících dokumentech:
 
-* Azure Key Vault [propojení](./secure-your-key-vault.md#management-plane-and-azure-rbac) RBAC
-* Azure Key Vault [propojení](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) rolí RBAC (Preview)
+* [Odkaz](./secure-your-key-vault.md#management-plane-and-azure-rbac) na službu Azure RBAC pro Key Vault
+* [Odkaz](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) Azure RBAC pro role Key Vault (Preview)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurace brány Key Vault firewall
 

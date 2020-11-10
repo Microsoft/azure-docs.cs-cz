@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924707"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445451"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML dovednosti v kanálu pro rozšíření Azure Kognitivní hledání
 
@@ -29,7 +29,7 @@ Podobně jako v případě integrovaných dovedností mají **AML** dovednosti v
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pracovní prostor AML](../machine-learning/concept-workspace.md)
 * [Azure Kubernetes Service AML Target COMPUTE](../machine-learning/concept-compute-target.md) v tomto pracovním prostoru s [nasazeným modelem](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
@@ -58,9 +58,9 @@ U parametrů se rozlišují malá a velká písmena. Parametry, které se rozhod
 
 Které parametry dovedností AML jsou povinné, závisí na tom, jaké ověřování služba AML používá, pokud existuje. Služby AML Services poskytují tři možnosti ověřování:
 
-* [Ověřování založené na klíčích](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). Pro ověření žádostí o vyhodnocování z dovedností AML je k dispozici statický klíč.
+* [Ověřování založené na klíčích](../machine-learning/how-to-authenticate-web-service.md#key-based-authentication). Pro ověření žádostí o vyhodnocování z dovedností AML je k dispozici statický klíč.
   * Použití parametrů _URI_ a _Key_
-* [Ověřování založené na tokenech](../machine-learning/concept-enterprise-security.md#authentication). Služba AML je [nasazena pomocí ověřování založeného na tokenech](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens). [Spravované identitě](../active-directory/managed-identities-azure-resources/overview.md) služby Azure kognitivní hledání je udělená [role čtecího](../machine-learning/how-to-assign-roles.md) modulu v pracovním prostoru služby AML. AML dovednost potom používá spravovanou identitu služby Azure Kognitivní hledání k ověření ve službě AML, bez nutnosti vyžadování statických klíčů.
+* [Ověřování založené na tokenech](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). Služba AML je [nasazena pomocí ověřování založeného na tokenech](../machine-learning/how-to-authenticate-web-service.md#token-based-authentication). [Spravované identitě](../active-directory/managed-identities-azure-resources/overview.md) služby Azure kognitivní hledání je udělená [role čtecího](../machine-learning/how-to-assign-roles.md) modulu v pracovním prostoru služby AML. AML dovednost potom používá spravovanou identitu služby Azure Kognitivní hledání k ověření ve službě AML, bez nutnosti vyžadování statických klíčů.
   * Použijte parametr _ResourceID_ .
   * Pokud je služba Azure Kognitivní hledání v jiném regionu než pracovní prostor AML, použijte parametr _region_ a nastavte oblast, ve které byla služba AML nasazená.
 * Bez ověřování. K používání služby AML není nutné žádné ověřování.

@@ -2,13 +2,13 @@
 title: Co je nového u agenta serverů s podporou ARC Azure
 description: Tento článek obsahuje poznámky k verzi pro agenta serverů s podporou ARC Azure. Pro mnohé z souhrnných problémů existují odkazy na další podrobnosti.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: 1918d03b5bbfaaa64b7d74c18fad4eb9a86800a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/10/2020
+ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90908153"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445281"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Co je nového u agenta serverů s podporou ARC Azure
 
@@ -17,6 +17,21 @@ Server s podporou ARC Azure, který je připojený agentem počítače, obdrží
 - Nejnovější verze
 - Známé problémy
 - Opravy chyb
+
+## <a name="november-2020"></a>Listopad 2020
+
+### <a name="fixed"></a>Pevný
+
+Vyřešil se problém, kdy může dojít ke ztrátě konfigurace proxy serveru po upgradu na distribucí na bázi ot./min..
+
+## <a name="october-2020"></a>Říjen 2020
+
+### <a name="fixed"></a>Pevný
+
+- Pevný skript proxy, který zpracovává alternativní umístění souboru jednotek démona GC.
+- Změny spolehlivosti agenta GuestConfig.
+- Podpora agenta GuestConfig pro oblast US Gov – Virginie.
+- Rozšíření agenta GuestConfig hlásí zprávy, aby byly pro případ selhání podrobnější.
 
 ## <a name="september-2020"></a>Září 2020
 

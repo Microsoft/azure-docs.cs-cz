@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 56d2e01d35f25ac469e808a805382463d2b23ceb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27c9f2ab8b02c96d016fea66acd2b3840d79d09d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121098"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444117"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
@@ -26,7 +26,7 @@ Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomoc
 
 Následující knihovny Microsoft Authentication Library (MSALs) podporují desktopové aplikace.
 
-  Identity a ověřování Microsoftu | Description
+  Identity a ověřování Microsoftu | Popis
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách, jako jsou Linux, Windows a macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách.
@@ -261,5 +261,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Získání tokenu pro desktopovou aplikaci](scenario-desktop-acquire-token.md)
+Přejděte k dalšímu článku v tomto scénáři a [Získejte token pro desktopovou aplikaci](scenario-desktop-acquire-token.md).

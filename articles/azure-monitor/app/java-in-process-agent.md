@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights Java
 description: Monitorování výkonu aplikací pro aplikace v jazyce Java spuštěné v jakémkoli prostředí bez nutnosti změny kódu. Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: f7cda0f9389f0b628aca82dd6c65acba140e739b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426829"
+ms.locfileid: "94444737"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor monitorování aplikací s kódováním kódu Java Application Insights
 
@@ -55,9 +55,7 @@ Nebo vytvořením konfiguračního souboru s názvem `applicationinsights.json` 
 
 ```json
 {
-  "instrumentationSettings": {
-    "connectionString": "InstrumentationKey=..."
-  }
+  "connectionString": "InstrumentationKey=..."
 }
 ```
 

@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539567"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445434"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade na Azure Kognitivní hledání .NET SDK verze 11
 
@@ -49,7 +49,7 @@ V případě potřeby následující tabulka mapuje klientské knihovny mezi tě
 |---------------------|------------------------------|------------------------------|
 | Klient se používá pro dotazy a k naplnění indexu. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Klient používaný pro indexy, analyzátory, mapy synonym | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**nové**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Klient používaný pro indexery, zdroje dat, dovednosti | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **nové** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` existuje v obou verzích, ale podporuje různé věci. Ve verzi 10 `SearchIndexClient` Vytvořte indexy a další objekty. Ve verzi 11 `SearchIndexClient` funguje se stávajícími indexy. Aby nedocházelo k nejasnostem při aktualizaci kódu, nezapomeňte na pořadí, ve kterém jsou odkazy na klienta aktualizovány. Po sekvencování [kroků k upgradu](#UpgradeSteps) by měl být možné zmírnit případné problémy s nahrazením řetězce.
@@ -169,6 +169,24 @@ Následující kroky vám pomohou začít s migrací kódu proprocházením prvn
    ```
 
 1. Přidejte nové odkazy na klienty pro objekty související s indexerem. Pokud používáte indexery, zdroje dat nebo dovednosti, změňte odkazy klienta na [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Tento klient je ve verzi 11 novinkou a nemá žádného předchůdce.
+
+1. Znovu navštěvujte kolekce. V nové sadě SDK jsou všechny seznamy jen pro čtení, aby nedocházelo k problémům, pokud se seznam bude obsahovat hodnoty null. Změnou kódu je přidání položek do seznamu. Například místo přiřazování řetězců k vlastnosti Select byste měli přidat následující:
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. Aktualizujte klientské odkazy na dotazy a import dat. Instance [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) by měly být změněny na [SearchClient](/dotnet/api/azure.search.documents.searchclient). Aby nedošlo k nejasnostem názvů, před pokračováním na další krok nezapomeňte zachytit všechny instance.
 

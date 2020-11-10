@@ -9,23 +9,23 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 803dc4d1a7b78df891780eb741cba4e57ab2d5dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784418"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445230"
 ---
 # <a name="managed-hsm-access-control"></a>Řízení přístupu pro Managed HSM
 
 > [!NOTE]
-> Poskytovatel prostředků Key Vault podporuje dva typy prostředků: **trezory** a **spravované HSM** . Řízení přístupu popsané v tomto článku platí jenom pro **spravované HSM** . Další informace o řízení přístupu pro spravovaný modul HSM najdete v tématu [poskytnutí přístupu k Key Vault klíčům, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure](../general/rbac-guide.md).
+> Poskytovatel prostředků Key Vault podporuje dva typy prostředků: **trezory** a **spravované HSM**. Řízení přístupu popsané v tomto článku platí jenom pro **spravované HSM**. Další informace o řízení přístupu pro spravovaný modul HSM najdete v tématu [poskytnutí přístupu k Key Vault klíčům, certifikátům a tajným klíčům pomocí řízení přístupu na základě role Azure](../general/rbac-guide.md).
 
 Azure Key Vault spravovaný modul HSM je cloudová služba, která chrání šifrovací klíče. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, je potřeba zabezpečit přístup ke spravovaným HSM tím, že povolíte přístup jenom autorizovaným aplikacím a uživatelům. Tento článek poskytuje přehled spravovaného modelu řízení přístupu HSM. Vysvětluje ověřování a autorizaci a popisuje, jak zabezpečit přístup ke spravovaným HSM.
 
 ## <a name="access-control-model"></a>Model řízení přístupu
 
-Přístup ke spravovanému modulu HARDWAROVÉho zabezpečení se ovládá prostřednictvím dvou rozhraní: **rovina správy** a **rovina dat** . Rovina správy je místo, kde spravujete samotný modul HSM. Mezi operace v této rovině patří vytváření a odstraňování spravovaných HSM a načítání spravovaných vlastností HSM. Rovina dat je místo, kde pracujete s daty uloženými ve spravovaném modulu HSM, který je šifrovacími klíči zálohovanými pomocí HSM. Můžete přidávat, odstraňovat, upravovat a používat klíče k provádění kryptografických operací, spravovat přiřazování rolí pro řízení přístupu k klíčům, vytvářet úplné zálohy HSM, obnovovat úplné zálohování a spravovat doménu zabezpečení z rozhraní roviny dat.
+Přístup ke spravovanému modulu HARDWAROVÉho zabezpečení se ovládá prostřednictvím dvou rozhraní: **rovina správy** a **rovina dat**. Rovina správy je místo, kde spravujete samotný modul HSM. Mezi operace v této rovině patří vytváření a odstraňování spravovaných HSM a načítání spravovaných vlastností HSM. Rovina dat je místo, kde pracujete s daty uloženými ve spravovaném modulu HSM, který je šifrovacími klíči zálohovanými pomocí HSM. Můžete přidávat, odstraňovat, upravovat a používat klíče k provádění kryptografických operací, spravovat přiřazování rolí pro řízení přístupu k klíčům, vytvářet úplné zálohy HSM, obnovovat úplné zálohování a spravovat doménu zabezpečení z rozhraní roviny dat.
 
 Pro přístup ke spravovanému modulu HSM v kterékoliv rovině musí mít všichni volající správné ověřování a autorizaci. Ověřování vytváří identitu volajícího. Autorizace určuje, které operace může volající spustit. Volající může být libovolný [objekt zabezpečení](../../role-based-access-control/overview.md#security-principal) definovaný v Azure Active Directory-User, Group, instanční objekt nebo spravovaná identita.
 
@@ -35,7 +35,7 @@ Obě roviny používají Azure Active Directory pro ověřování. Pro autorizac
 
 Když se vytvoří spravovaný modul HSM, žadatel taky nabídne seznam správců datové roviny (podporují se všechny [objekty zabezpečení](../../role-based-access-control/overview.md#security-principal) ). Pouze tito správci mají přístup ke spravované rovině dat HSM, aby mohli provádět klíčové operace a spravovat přiřazení rolí roviny dat (spravovaná místní RBAC. HSM).
 
-Model oprávnění pro obě roviny používá stejnou syntaxi (RBAC), ale jsou využívány na různých úrovních a přiřazení rolí používá různé obory. Rovina správy RBAC je vynutila Azure Resource Manager, zatímco je neuplatněna rovina dat pomocí spravovaného HSM samotného.
+Model oprávnění pro obě roviny používá stejnou syntaxi, ale jsou využívány na různých úrovních a přiřazení rolí používá různé obory. Rovina správy Azure RBAC se vynutila Azure Resource Managerem, zatímco místní služba HSM vynutila správu roviny dat.
 
 > [!IMPORTANT]
 > Udělení přístupu roviny správy objektu zabezpečení spravovanému modulu HSM jim neuděluje žádný přístup k rovině dat pro přístup k klíčům nebo k přiřazení role roviny dat spravovaná místní RBAC. Tato izolace je navržená tak, aby zabránila nechtěnému rozšiřování oprávnění, která mají vliv na přístup k klíčům uloženým ve spravovaném HSM
@@ -67,16 +67,16 @@ V následující tabulce jsou uvedeny koncové body pro řídicí a datové rovi
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Rovina správy a Azure RBAC
 
-V rovině správy pomocí Azure RBAC autorizujete operace, které volající může spustit. V modelu RBAC má každé předplatné Azure instanci Azure Active Directory. Přístup k uživatelům, skupinám a aplikacím udělíte z tohoto adresáře. Přístup se uděluje pro správu prostředků v předplatném Azure, které používají model nasazení Azure Resource Manager. K udělení přístupu použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs)nebo [Azure Resource Manager rozhraní REST API](/rest/api/authorization/roleassignments).
+V rovině správy pomocí Azure RBAC autorizujete operace, které volající může spustit. V modelu Azure RBAC má každé předplatné Azure instanci Azure Active Directory. Přístup k uživatelům, skupinám a aplikacím udělíte z tohoto adresáře. Přístup se uděluje pro správu prostředků v předplatném Azure, které používají model nasazení Azure Resource Manager. K udělení přístupu použijte [Azure Portal](https://portal.azure.com/), rozhraní příkazového [řádku Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs)nebo [Azure Resource Manager rozhraní REST API](/rest/api/authorization/roleassignments).
 
-V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat přístup pomocí Azure Active Directory. Uživatelům nebo skupinám udělíte možnost spravovat trezory klíčů ve skupině prostředků. Přístup na konkrétní úroveň oboru udělíte tak, že jim přiřadíte příslušné role RBAC. Chcete-li uživateli udělit přístup ke správě trezorů klíčů, přiřaďte uživatele předdefinované `key vault Contributor` role v konkrétním oboru. Role RBAC může přiřadit tyto úrovně oborů:
+V rámci skupiny prostředků můžete vytvořit Trezor klíčů a spravovat přístup pomocí Azure Active Directory. Uživatelům nebo skupinám udělíte možnost spravovat trezory klíčů ve skupině prostředků. Přístup na konkrétní úroveň oboru udělíte tak, že jim přiřadíte příslušné role Azure. Chcete-li uživateli udělit přístup ke správě trezorů klíčů, přiřaďte uživatele předdefinované `key vault Contributor` role v konkrétním oboru. K roli Azure se dají přiřadit tyto úrovně oborů:
 
-- **Skupina pro správu** : role RBAC přiřazená na úrovni předplatného se vztahuje na všechna předplatná v této skupině pro správu.
-- **Předplatné** : role RBAC přiřazená na úrovni předplatného se vztahuje na všechny skupiny prostředků a prostředky v rámci daného předplatného.
-- **Skupina prostředků** : role RBAC přiřazená na úrovni skupiny prostředků se vztahuje na všechny prostředky v této skupině prostředků.
-- **Konkrétní prostředek** : na tento prostředek se vztahuje role RBAC přiřazená pro konkrétní prostředek. V tomto případě je prostředkem konkrétní Trezor klíčů.
+- **Skupina pro správu** : role Azure přiřazená na úrovni předplatného se vztahuje na všechna předplatná v této skupině pro správu.
+- **Předplatné** : role Azure přiřazená na úrovni předplatného se vztahuje na všechny skupiny prostředků a prostředky v rámci daného předplatného.
+- **Skupina prostředků** : role Azure přiřazená na úrovni skupiny prostředků se vztahuje na všechny prostředky v této skupině prostředků.
+- **Konkrétní prostředek** : na tento prostředek se vztahuje role Azure přiřazená pro konkrétní prostředek. V tomto případě je prostředkem konkrétní Trezor klíčů.
 
-Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace naleznete v části [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
+Existuje několik předdefinovaných rolí. Pokud předdefinovaná role nevyhovuje vašim potřebám, můžete definovat vlastní roli. Další informace najdete v tématu [Azure RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="data-plane-and-managed-hsm-local-rbac"></a>Rovina dat a spravovaná místní RBAC pro HSM
 

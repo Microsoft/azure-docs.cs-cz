@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 78d4d9a8b5023731530c5e348f5c9ba72815d410
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149105"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445638"
 ---
 # <a name="managed-hsm-role-management"></a>Správa rolí pro Managed HSM
 
 > [!NOTE]
 > Key Vault podporuje dva typy prostředků: trezory a spravované HSM. Tento článek se týká **spravovaného modulu HSM**. Pokud se chcete dozvědět, jak spravovat trezor, přečtěte si téma [správa Key Vault pomocí rozhraní příkazového řádku Azure CLI](../general/manage-with-cli2.md).
 
-Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Přehled spravovaného modulu HSM najdete v tématu [co je spravovaný modul HSM?](overview.md). Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Tento článek ukazuje, jak spravovat role pro spravovanou rovinu dat HSM. Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md).
 
@@ -113,7 +113,7 @@ az keyvault role definition list --hsm-name ContosoMHSM
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na přehled [řízení přístupu na základě role v Azure (RBAC)](../../role-based-access-control/overview.md).
+- Podívejte se na přehled [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 - Projděte si kurz [spravované správy rolí HSM](role-management.md) .
 - Další informace o [spravovaném modelu řízení přístupu HSM](access-control.md)
 - Zobrazit všechny [předdefinované role pro správu místních RBAC nástroje HSM](built-in-roles.md)

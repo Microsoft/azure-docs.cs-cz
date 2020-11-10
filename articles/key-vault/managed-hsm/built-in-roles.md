@@ -8,16 +8,16 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6b39c1d6fe2e84055e7c94dde076514d04a24f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000692"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445213"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Spravované místní role RBAC místního zabezpečení HSM
 
-Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, které můžete přiřadit uživatelům, instančním objektům, skupinám a spravovaným identitám. Pokud chcete, aby objekt zabezpečení mohl provést operaci, musíte jim přiřadit roli, která jim uděluje oprávnění k provádění těchto operací. Všechny tyto role a operace umožňují spravovat pouze oprávnění k operacím roviny dat. Pokud chcete spravovat oprávnění řídicí plochy pro spravovaný prostředek HSM (například vytvořit nový spravovaný HSM nebo aktualizovat, přesunout nebo odstranit existující), musíte použít [řízení přístupu na základě role (RBAC) na úrovni Azure](../../role-based-access-control/overview.md).
+Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, které můžete přiřadit uživatelům, instančním objektům, skupinám a spravovaným identitám. Pokud chcete, aby objekt zabezpečení mohl provést operaci, musíte jim přiřadit roli, která jim uděluje oprávnění k provádění těchto operací. Všechny tyto role a operace umožňují spravovat pouze oprávnění k operacím roviny dat. Pokud chcete spravovat oprávnění řídicí plochy pro spravovaný prostředek HSM (například vytvořit nový spravovaný HSM nebo aktualizovat, přesunout, odstranit existující), musíte použít [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="built-in-roles"></a>Vestavěné role
 
@@ -77,5 +77,5 @@ Spravovaná místní RBAC nástroje HSM má několik předdefinovaných rolí, k
 
 ## <a name="next-steps"></a>Další kroky
 
-- Podívejte se na přehled [řízení přístupu na základě role v Azure (RBAC)](../../role-based-access-control/overview.md).
+- Podívejte se na přehled [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 - Projděte si kurz [spravované správy rolí HSM](role-management.md) .

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4a522e58677e2c71cb52ad7e04b288622ad62d91
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3d959cccd4fbce24e36b1ed62bc6bf417af23c82
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287336"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445502"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Osvědčené postupy pro použití Key Vault
 
@@ -24,7 +24,7 @@ ms.locfileid: "93287336"
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, je nutné zabezpečený přístup k vašim trezorům klíčů povolit pouze autorizovaným aplikacím a uživatelům. Tento [článek](secure-your-key-vault.md) poskytuje přehled modelu přístupu Key Vault. Vysvětluje ověřování a autorizaci a popisuje, jak zabezpečit přístup k vašim trezorům klíčů.
 
 Návrhy při řízení přístupu k trezoru jsou následující:
-1. Uzamčení přístupu ke svému předplatnému, skupině prostředků a trezorům klíčů (RBAC)
+1. Uzamčení přístupu ke svému předplatnému, skupině prostředků a trezorům klíčů (Azure RBAC)
 2. Vytvoření zásad přístupu pro každý trezor
 3. Použijte k udělení přístupu aspoň přístupový objekt zabezpečení s oprávněními.
 4. Zapnout bránu firewall a [koncové body služby virtuální](overview-vnet-service-endpoints.md) sítě

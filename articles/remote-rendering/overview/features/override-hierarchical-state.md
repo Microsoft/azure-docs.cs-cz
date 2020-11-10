@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29c89d8d3d2ae194ff48b762bc686feefdd3a528
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380996"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445148"
 ---
 # <a name="hierarchical-state-override"></a>Přepsání hierarchického stavu
 
@@ -39,6 +39,13 @@ Pevná sada stavů, které lze přepsat, jsou následující:
 
   > [!IMPORTANT]
   > Efekt převádění funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
+
+* **`Shell`** : Geometrie se vykresluje jako transparentní a denasycené prostředí. Tento režim umožňuje podobu nedůležitých částí scény a přitom zachovat smysl tvaru a relativního umístění. Chcete-li změnit vzhled pro vykreslování prostředí, použijte stav [ShellRenderingSettings](shell-effect.md) . Podívejte se na následující obrázek pro model auta, který je zcela vykreslený, kromě modrých pružin:
+
+  ![Režim prostředí používaný pro zeslabení specifických objektů](./media/shell.png)
+
+  > [!IMPORTANT]
+  > Efekt prostředí funguje pouze v případě, že je použit [režim vykreslování](../../concepts/rendering-modes.md) *TileBasedComposition* .
 
 * **`Selected`** : Geometrie je vykreslena s [obrysem výběru](outlines.md).
 
@@ -101,7 +108,7 @@ component->SetState(
 
 Instance `HierarchicalStateOverrideComponent` sama sebe nepřidává spoustu zatížení za běhu. Je ale vždy dobrým zvykem udržet počet aktivních komponent na nízké úrovni. Například při implementaci systému výběru, který zvýrazní vydaný objekt, se doporučuje odstranit komponentu při odebrání zvýraznění. Udržování komponent kolem neutrálních funkcí se může rychle přidat.
 
-Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo* více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance).
+Transparentní vykreslování přináší více úloh na GPU serveru než standardní vykreslování. Pokud jsou velké části grafu scény přepnuty, aby se *zobrazilo* více vrstev geometrie, může se stát, že se zobrazí problém s výkonem. Totéž platí pro objekty s [obrysy výběru](../../overview/features/outlines.md#performance) a pro [vykreslování prostředí](../../overview/features/shell-effect.md#performance) . 
 
 ## <a name="api-documentation"></a>Dokumentace k rozhraní API
 

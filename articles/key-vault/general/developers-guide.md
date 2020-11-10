@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287606"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445128"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Průvodce vývojáře pro službu Azure Key Vault
 
@@ -79,21 +79,21 @@ Výukové programy, jak ověřit Key Vault v aplikacích, najdete v tématech:
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Správa klíčů, certifikátů a tajných klíčů
 
-Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat. Řízení přístupu roviny dat se dá provést pomocí zásad přístupu k místnímu trezoru nebo RBAC (Preview).
+Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat. Řízení přístupu roviny dat se dá provést pomocí zásad přístupu k místnímu trezoru nebo Azure RBAC (Preview).
 
 **Klíče rozhraní API a sady SDK**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
+|[Odkaz](/cli/azure/keyvault/key)<br>[Rychlý start](../keys/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault/)<br>[Rychlý start](../keys/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#key-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.keys)|[Odkaz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Rychlý start](../keys/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-keys/)|
 
 **Rozhraní API a sady SDK pro certifikáty**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|–|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
+|[Odkaz](/cli/azure/keyvault/certificate)<br>[Rychlý start](../certificates/quick-create-cli.md)|[Odkaz](/powershell/module/az.keyvault)<br>[Rychlý start](../certificates/quick-create-powershell.md)|[Odkaz](/rest/api/keyvault/#certificate-operations)|Není k dispozici|[Odkaz](/dotnet/api/azure.security.keyvault.certificates)|[Odkaz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Rychlý start](../certificates/quick-create-python.md)|[Odkaz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Odkaz](/javascript/api/@azure/keyvault-certificates/)|
 
 **Rozhraní API a sady SDK tajných klíčů**
 
@@ -104,7 +104,7 @@ Přístup k klíčům, tajným klíčům a certifikátům je řízen rovinou dat
 
 Instalační balíčky a zdrojový kód najdete v tématu [klientské knihovny](client-libraries.md) .
 
-Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a RBAC (Preview)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) .
+Další informace o Key Vault Zabezpečení roviny dat najdete v tématech [Key Vault rovina dat a zásady přístupu](./secure-your-key-vault.md#data-plane-and-access-policies) a [Key Vault rovině dat a Azure RBAC (Preview)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) .
 
 ### <a name="code-examples"></a>Příklady kódu
 

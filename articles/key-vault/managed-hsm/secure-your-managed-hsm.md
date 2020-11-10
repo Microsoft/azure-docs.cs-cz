@@ -1,6 +1,6 @@
 ---
 title: Zabezpečený přístup ke spravovanému modulu HSM spravovanému modulem HSM Azure Key Vault
-description: Naučte se zabezpečit přístup ke spravovanému hardwarovému HSM pomocí Azure RBAC a místního spravovaného HSM RBAC.
+description: Naučte se zabezpečit přístup ke spravovanému hardwarovému HSM pomocí Azure RBAC a spravované místní RBAC na HSM.
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,18 +9,18 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 18ffa0f878effda8888200c13ab312851aaebdcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91000718"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445315"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>Zabezpečený přístup ke spravovaným HSM
 
 Azure Key Vault spravovaný modul HSM je cloudová služba, která chrání šifrovací klíče. Vzhledem k tomu, že tato data jsou citlivá a důležitá pro podnikání, je potřeba zabezpečit přístup ke spravovaným HSM tím, že povolíte přístup jenom autorizovaným aplikacím a uživatelům. Tento článek poskytuje přehled spravovaného modelu řízení přístupu HSM. Vysvětluje ověřování a autorizaci a popisuje, jak zabezpečit přístup ke spravovaným HSM.
 
-V tomto kurzu se seznámíte s jednoduchým příkladem, který vám ukáže, jak dosáhnout oddělení povinností a řízení přístupu pomocí Azure RBAC a místního spravovaného HSM RBAC. Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md) .
+V tomto kurzu se seznámíte s jednoduchým příkladem, který vám ukáže, jak dosáhnout oddělení povinností a řízení přístupu pomocí Azure RBAC a spravované místní RBAC (HSM). Další informace o spravovaném modelu řízení přístupu HSM najdete v tématu [spravované řízení přístupu HSM](access-control.md) .
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -48,9 +48,9 @@ V tomto příkladu vyvíjíme aplikaci, která pro operace podepisování použ�
 
 Identifikovali jsme následující role, které spravují, nasazují a auditují naši aplikaci:
 
-- **Bezpečnostní tým**: zaměstnanci oddělení IT od kanceláře CSO (hlavní bezpečnostní důstojník) nebo podobné přispěvatelé. Bezpečnostní tým je zodpovědný za správné úschovy klíčů. Klíče RSA nebo ES pro podepisování a klíče RSA nebo AES pro šifrování dat.
-- **Vývojáři a operátoři**: zaměstnanci, kteří aplikaci vyvíjejí a nasazují v Azure. Členové tohoto týmu nejsou součástí bezpečnostních pracovníků. Nemají přístup k citlivým datům, jako jsou klíče RSA. K těmto citlivým datům by měli mít přístup jenom aplikace, kterou nasazuje.
-- **Auditori**: Tato role je určena pro přispěvatele, kteří nejsou členy vývoje nebo obecných zaměstnanců IT. Kontrolují použití a údržbu certifikátů, klíčů a tajných klíčů, aby bylo zajištěno dodržování standardů zabezpečení.
+- **Bezpečnostní tým** : zaměstnanci oddělení IT od kanceláře CSO (hlavní bezpečnostní důstojník) nebo podobné přispěvatelé. Bezpečnostní tým je zodpovědný za správné úschovy klíčů. Klíče RSA nebo ES pro podepisování a klíče RSA nebo AES pro šifrování dat.
+- **Vývojáři a operátoři** : zaměstnanci, kteří aplikaci vyvíjejí a nasazují v Azure. Členové tohoto týmu nejsou součástí bezpečnostních pracovníků. Nemají přístup k citlivým datům, jako jsou klíče RSA. K těmto citlivým datům by měli mít přístup jenom aplikace, kterou nasazuje.
+- **Auditori** : Tato role je určena pro přispěvatele, kteří nejsou členy vývoje nebo obecných zaměstnanců IT. Kontrolují použití a údržbu certifikátů, klíčů a tajných klíčů, aby bylo zajištěno dodržování standardů zabezpečení.
 
 Existuje jiná role, která je mimo rozsah naší aplikace: Správce předplatného (nebo skupiny prostředků). Správce předplatného nastavuje počáteční přístupová oprávnění pro bezpečnostní tým. Poskytují přístup k bezpečnostnímu týmu pomocí skupiny prostředků, která má prostředky požadované aplikací.
 

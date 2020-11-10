@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dbc426144678f5bd7382b0961bf9bc3f5339b97a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409803"
+ms.locfileid: "94444873"
 ---
 # <a name="azure-tls-certificate-changes"></a>Změny certifikátu Azure TLS  
 
@@ -22,12 +22,15 @@ Microsoft aktualizuje služby Azure tak, aby používaly certifikáty TLS z jin�
 
 ## <a name="when-will-this-change-happen"></a>Kdy bude tato změna provedena?
 
+Stávající koncové body Azure byly od 13. srpna 2020 převedené způsobem. Všechny nově vytvořené koncové body služby Azure TLS/SSL obsahují aktualizované certifikáty, které jsou zřetězené až s novými kořenovými certifikačními autoritami.
+
+Podrobnosti specifické pro službu:
+
 - Služba [Azure Active Directory](../../active-directory/index.yml) (Azure AD) zahájila tento přechod 7. července 2020.
-- Všechny nově vytvořené koncové body služby Azure TLS/SSL obsahují aktualizované certifikáty, které jsou zřetězené až s novými kořenovými certifikačními autoritami.
-- Stávající koncové body Azure se budou postupně přecházet ve fázi od 13. srpna 2020.
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) a [DPS](../../iot-dps/index.yml) zůstanou v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)zobrazíte podrobnosti.
 - [Azure Storage](../../storage/index.yml) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autority se změní. [Kliknutím sem](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)zobrazíte podrobnosti.
 - [Mezipaměť Azure pro Redis](../../azure-cache-for-redis/index.yml) zůstane v kořenové certifikační autoritě Baltimore CyberTrust, ale jejich zprostředkující certifikační autorita se změní. [Kliknutím sem](../../azure-cache-for-redis/cache-whats-new.md)zobrazíte podrobnosti.
+
 > [!IMPORTANT]
 > Zákazníci možná budou muset po této změně aktualizovat své aplikace, aby se předešlo chybám připojení při pokusu o připojení ke službám Azure.
 

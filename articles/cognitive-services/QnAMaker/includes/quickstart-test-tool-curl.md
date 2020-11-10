@@ -17,7 +17,7 @@ ms.locfileid: "94386608"
 ---
 Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Poslední [**kudrlinkou**](https://curl.haxx.se/)
 * Musíte mít

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 00b6fab2aeebeeb0f39e07a0751e02cefd195b28
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f9330f99a0473aa38da2fcbb8ae0624a37746613
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337340"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444754"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -63,7 +63,7 @@ Zařízení Data Box je chráněno následujícími funkcemi.
 Data, která se na zařízení Data Box ukládají a která se z něho kopírují, jsou chráněna následujícími funkcemi:
 
 - 256bitové šifrování AES pro neaktivní uložená data.
-- Pro přenášená data je možné použít šifrované protokoly. Pro ochranu dat při kopírování z datových serverů doporučujeme použít protokol SMB 3,0 se šifrováním.
+- Pro přenášená data je možné použít šifrované protokoly. K ochraně dat při kopírování z vašich datových serverů doporučujeme použít protokol SMB 3,0 se šifrováním.
 - Bezpečné vymazání dat ze zařízení po dokončení jejich nahrání do Azure. Výmaz dat je v souladu s pokyny v [dodatku A pro jednotky pevného disku ATA v NIST standardech 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). Událost mazání dat je zaznamenána v [historii objednávky](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Ochrana služby Data Box
@@ -90,7 +90,7 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Ulice a číslo
   - City (Město)
   - PSČ
-  - State
+  - Stav
   - Provincie/kraj/oblast
   - Číslo účtu dopravce
   - Sledovací číslo zásilky

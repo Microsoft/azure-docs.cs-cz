@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 585f5998eb953c8ed90a47922d76f32897c0f915
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 91a3a0c2ae066fde55892af90a3d666a3c1221a3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285828"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445485"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Zabezpečený přístup k trezoru klíčů
 
@@ -26,7 +26,7 @@ Další informace o Key Vault najdete v tématu [o Azure Key Vault](overview.md)
 
 Přístup k trezoru klíčů se ovládá prostřednictvím dvou rozhraní: **rovina správy** a **rovina dat**. Rovina správy je místo, kde spravujete Key Vault sebe sama. Mezi operace v této rovině patří vytváření a odstraňování trezorů klíčů, načítání vlastností Key Vault a aktualizace zásad přístupu. Rovina dat je místo, kde pracujete s daty uloženými v trezoru klíčů. Můžete přidávat, odstraňovat a upravovat klíče, tajné klíče a certifikáty.
 
-Obě roviny používají pro ověřování [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) . Pro autorizaci rovina správy používá [řízení přístupu na základě role (RBAC) Azure](../../role-based-access-control/overview.md) a rovina dat používá [zásady přístupu Key Vault](./assign-access-policy-portal.md) a [Azure RBAC pro Key Vault operace roviny dat (Preview)](./rbac-guide.md).
+Obě roviny používají pro ověřování [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) . Pro autorizaci rovina správy používá [řízení přístupu na základě role Azure (Azure RBAC)](../../role-based-access-control/overview.md) a rovina dat používá [zásady přístupu Key Vault](./assign-access-policy-portal.md) a [Azure RBAC pro Key Vault operace roviny dat (Preview)](./rbac-guide.md).
 
 Pro přístup k trezoru klíčů v kterékoli rovině musí mít všichni volající (uživatelé nebo aplikace) správné ověřování a autorizaci. Ověřování vytváří identitu volajícího. Autorizace určuje, které operace může volající spustit. Ověřování pomocí Key Vault funguje ve spojení s [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md), která zodpovídá za ověřování identity libovolného **objektu zabezpečení**.
 
@@ -58,7 +58,7 @@ Model jednoho mechanismu ověřování do obou rovin má několik výhod:
 
 ## <a name="resource-endpoints"></a>Koncové body prostředků
 
-Aplikace přistupují k rovinám prostřednictvím koncových bodů. Ovládací prvky přístupu pro tyto dvě roviny pracují nezávisle. Abyste aplikaci udělili přístup k používání klíčů v trezoru klíčů, udělíte přístup k rovině dat pomocí zásad přístupu Key Vault nebo Azure RBAC (Preview). Pokud chcete uživateli udělit oprávnění ke čtení Key Vault vlastností a značek, ale ne přístup k datům (klíčům, tajným klíčům nebo certifikátům), udělíte přístup k rovině správy pomocí RBAC.
+Aplikace přistupují k rovinám prostřednictvím koncových bodů. Ovládací prvky přístupu pro tyto dvě roviny pracují nezávisle. Abyste aplikaci udělili přístup k používání klíčů v trezoru klíčů, udělíte přístup k rovině dat pomocí zásad přístupu Key Vault nebo Azure RBAC (Preview). Pokud chcete uživateli udělit oprávnění ke čtení Key Vault vlastností a značek, ale ne přístup k datům (klíčům, tajným klíčům nebo certifikátům), udělíte přístup k rovině správy pomocí Azure RBAC.
 
 V následující tabulce jsou uvedeny koncové body pro řídicí a datové roviny.
 
@@ -111,7 +111,7 @@ Když je role Azure přiřazená k objektu zabezpečení Azure AD, poskytuje Azu
 
 Klíčové výhody použití oprávnění Azure RBAC pro zásady přístupu do trezoru jsou Centralizovaná správa řízení přístupu a její integrace s [Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md). Privileged Identity Management poskytuje aktivaci rolí na základě času a schválení, která vám umožní zmírnit rizika nadměrných, zbytečných nebo nepoužívaných přístupových oprávnění k prostředkům, o kterých se zajímáte.
 
-Další informace o Key Vault rovině dat pomocí RBAC najdete v tématu [Key Vault klíče, certifikáty a tajné klíče s řízením přístupu na základě role Azure (Preview)](rbac-guide.md) .
+Další informace o Key Vault rovině dat pomocí Azure RBAC najdete v tématu [Key Vault klíče, certifikáty a tajné klíče pomocí řízení přístupu na základě role Azure (Preview)](rbac-guide.md) .
 
 ## <a name="firewalls-and-virtual-networks"></a>Brány firewall a virtuální sítě
 
@@ -197,7 +197,7 @@ Náš příklad popisuje jednoduchý scénář. Scénáře reálného života m�
 > [!NOTE]
 > Tento příklad ukazuje, jak je přístup Key Vault uzamčen v produkčním prostředí. Vývojáři by měli mít vlastní předplatné nebo skupinu prostředků s úplnými oprávněními ke správě trezorů, virtuálních počítačů a účtu úložiště, kde aplikace vyvíjí.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - [Informace o službě Azure Key Vault](overview.md)
 - [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 1767f149d9935c86281c7b7be3e684aa82a603f9
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999047"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444601"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu pro Azure Machine Learning výpočetních instancí
 
@@ -30,7 +30,7 @@ Naučte se používat Azure Machine Learning k nasazení modelu jako webové slu
 > [!TIP]
 > Nasazení modelu z Jupyter Notebook na výpočetní instanci, do webové služby na stejném virtuálním počítači, je _místní nasazení_. V tomto případě je místní počítač výpočetní instancí. Další informace o nasazeních najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure Machine Learning pracovní prostor se spuštěnou výpočetní instancí. Další informace najdete v tématu [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -52,7 +52,7 @@ Příklad poznámkového bloku, který ukazuje místní nasazení, je součást�
     * Virtuální počítač poznámkového bloku: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
     * Instance Compute: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
-    Příklad: 
+    Třeba 
     * Virtuální počítač poznámkového bloku: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * Instance Compute: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
@@ -63,7 +63,7 @@ Chcete-li odeslat ukázková data do běžící služby, použijte následujíc�
 > [!NOTE]
 > Při ověřování k nasazení na výpočetní instanci se ověřování provádí pomocí Azure Active Directory. Volání `interactive_auth.get_authentication_header()` v příkladu kódu ověřujete pomocí AAD a vrátí hlavičku, která se pak může použít k ověření služby na výpočetní instanci. Další informace najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md#interactive-authentication).
 >
-> Při ověřování pro nasazení ve službě Azure Kubernetes nebo Azure Container Instances se používá jiná metoda ověřování. Další informace o najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md#web-service-authentication).
+> Při ověřování pro nasazení ve službě Azure Kubernetes nebo Azure Container Instances se používá jiná metoda ověřování. Další informace o najdete v tématu [Konfigurace ověřování pro modely počítačů Azure nasazené jako webové služby](how-to-authenticate-web-service.md).
 
 ```python
 import requests

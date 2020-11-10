@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314754"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445395"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží ve službě Azure Machine Learning
 
@@ -61,7 +61,7 @@ V některých případech může být užitečné, pokud při dotazování na n�
      
 * **Při instalaci nástroje AzureML-vlak-automl-Client není zaručena instalace balíčku s vysvětlením:** 
    
-   Při spuštění vzdáleného spuštění AutoML s povoleným vysvětlením modelu se zobrazí chybová zpráva "instalace balíčku AzureML-vysvětlit-model pro vysvětlení modelu". Jde o známý problém. Alternativním řešením je postupovat podle jednoho z následujících kroků:
+   Při spuštění vzdáleného spuštění AutoML s povoleným vysvětlením modelu se zobrazí chybová zpráva "instalace balíčku AzureML-vysvětlit-model pro vysvětlení modelu". Jedná se o známý problém. Alternativním řešením je postupovat podle jednoho z následujících kroků:
   
   1. Nainstalujte si příkaz AzureML-vysvětlit-model místně.
    ```
@@ -258,7 +258,20 @@ Omezení a známé problémy pro sledování posunu dat:
 
 ## <a name="azure-machine-learning-designer"></a>Návrhář služby Azure Machine Learning
 
-* **Doba přípravy na dlouhou výpočetní výkon:**
+### <a name="dataset-visualization-in-the-designer"></a>Vizualizace datové sady v Návrháři
+
+Po registraci datové sady na stránce assetu **datových sad** nebo pomocí sady SDK ji můžete najít v kategorii **datové sady** v seznamu vlevo na plátno návrháře.
+
+Pokud však přetáhnete datovou sadu na plátno a vizualizuji, nemusí být schopna vizualizovat z následujících důvodů:
+
+- V současné době je možné vizualizovat pouze tabelární datovou sadu v návrháři. Pokud zaregistrujete souborovou sadu mimo návrháře, nemůžete ji vizualizovat na plátně návrháře.
+- Vaše datová sada je uložená ve virtuální síti (VNet). Chcete-li vizualizovat, je nutné povolit správu pracovního prostoru s identitou úložiště dat.
+    1. Přejděte na související úložiště dat a klikněte na **aktualizovat** přihlašovací údaje 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="aktualizovat"::: přihlašovací údaje.
+    1. Vyberte **Ano** , pokud chcete povolit spravovanou identitu pracovního prostoru.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Povolit spravovanou identitu pracovního prostoru":::
+
+### <a name="long-compute-preparation-time"></a>Čas přípravy na dlouhou výpočetní výkon
 
 Může to trvat několik minut nebo i déle, než se poprvé připojíte k cíli výpočetního prostředí nebo ho vytvořit. 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **Protokol pro koncové body v reálném čase:**
+### <a name="log-for-real-time-endpoints"></a>Protokol pro koncové body v reálném čase
 
 Protokoly koncových bodů v reálném čase jsou zákaznická data. Při řešení potíží s koncovým bodem v reálném čase můžete pomocí následujícího kódu povolit protokoly. 
 

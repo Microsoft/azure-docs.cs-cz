@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 341d24e73c9e07bb3155535d98a88145643c1692
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 889a70005f1cbabaad525147b4661ea04886138a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201779"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445604"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Použití rozhraní REST API pro převod modelů
 
@@ -26,7 +26,7 @@ Přečtěte si [seznam dostupných oblastí](../../reference/regions.md) pro zá
 
 Tato záhlaví musí být zadána pro všechny požadavky:
 
-- **Autorizační** hlavička musí mít hodnotu "nosiče [*token*]", kde [*token*] je [přístupový token služby](../tokens.md).
+- **Autorizační** hlavička musí mít hodnotu "nosiče [ *token* ]", kde [ *token* ] je [přístupový token služby](../tokens.md).
 
 ### <a name="common-response-headers"></a>Běžné hlavičky odpovědí
 
@@ -47,7 +47,7 @@ Váš účet vzdáleného vykreslování Azure musí mít přístup k zadanému 
 
 | Koncový bod | Metoda |
 |-----------|:-----------|
-| /V1/Accounts/**accountid**/Conversions/Create | POST |
+| /V1/Accounts/ **accountid** /Conversions/Create | POST |
 
 Vrátí ID průběžného převodu zabaleného v dokumentu JSON. Název pole je "conversionId".
 
@@ -79,7 +79,7 @@ Pokud váš účet ARR není propojený s vaším účtem úložiště, umožňu
 
 | Koncový bod | Metoda |
 |-----------|:-----------|
-| /V1/Accounts/**accountid**/Conversions/createWithSharedAccessSignature | POST |
+| /V1/Accounts/ **accountid** /Conversions/createWithSharedAccessSignature | POST |
 
 Vrátí ID průběžného převodu zabaleného v dokumentu JSON. Název pole je `conversionId` .
 
@@ -120,7 +120,7 @@ Stav průběžného převodu zahájeného pomocí jednoho z výše uvedených vo
 
 | Koncový bod | Metoda |
 |-----------|:-----------|
-| /V1/Accounts/**accountid**/Conversions/**conversionId** | GET |
+| /V1/Accounts/ **accountid** /Conversions/ **conversionId** | GET |
 
 Vrátí dokument JSON s polem "status", které může obsahovat následující hodnoty:
 
@@ -130,6 +130,21 @@ Vrátí dokument JSON s polem "status", které může obsahovat následující h
 - Poruše
 
 Pokud je stav "Chyba", bude k dispozici další pole "Chyba" s podpolem "zpráva" obsahující informace o chybě. Další protokoly se nahrají do vašeho výstupního kontejneru.
+
+## <a name="list-conversions"></a>Převody seznamu
+
+Pokud chcete získat seznam všech převodů pro účet, použijte rozhraní:
+
+| Koncový bod | Metoda |
+|-----------|:-----------|
+| /V1/Accounts/ **accountid** /Conversions? skiptoken = **skiptoken** | GET |
+
+| Parametr | Povinné |
+|-----------|:-----------|
+| ID | Yes |
+| skiptoken | No |
+
+Vrátí dokument JSON, který obsahuje pole převodů a jejich podrobnosti. Tento dotaz vrací maximálně 50 převodů v čase. V případě, že existuje více převodů, které se mají načíst, bude odpověď obsahovat vlastnost **nextLink** obsahující skipToken, na kterou se dá dotázat, aby se načetla další sada výsledků.
 
 ## <a name="next-steps"></a>Další kroky
 

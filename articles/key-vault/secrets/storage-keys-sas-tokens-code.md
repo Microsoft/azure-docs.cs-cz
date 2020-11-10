@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0d2d28a525f38aad3f48e439992a23abde0b7718
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786067"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444924"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>Vytvoření definice SAS a načtení tokenů sdíleného přístupového podpisu v kódu
 
 Svůj účet úložiště můžete spravovat pomocí tokenů sdíleného přístupového podpisu (SAS) uložených v trezoru klíčů. Další informace najdete v tématu [udělení omezeného přístupu k prostředkům Azure Storage pomocí SAS](../../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
-> Pro zabezpečení účtu úložiště doporučujeme použít [Access Control na základě rolí (RBAC)](../../storage/common/storage-auth-aad.md) a zajistit tak lepší zabezpečení a snadné použití při autorizaci pomocí sdíleného klíče.
+> Doporučujeme použít [řízení přístupu na základě role Azure (Azure RBAC)](../../storage/common/storage-auth-aad.md) k zabezpečení vašeho účtu úložiště za účelem zajištění vysokého zabezpečení a snadného použití při autorizaci pomocí sdíleného klíče.
 
 Tento článek poskytuje ukázky kódu .NET, který vytváří definici SAS a načítá tokeny SAS. Úplné podrobnosti najdete v našem příkladu [ShareLink](/samples/azure/azure-sdk-for-net/share-link/) , včetně vygenerovaného klienta pro účty úložiště spravované Key Vault. Informace o tom, jak vytvářet a ukládat tokeny SAS, najdete v tématech [Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI](overview-storage-keys.md) nebo [Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell](overview-storage-keys-powershell.md).
 

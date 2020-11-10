@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a1aff57c2823b111251c99cb3dbcdea0fd90ad2c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425945"
+ms.locfileid: "94444499"
 ---
 # <a name="blob-versioning"></a>Správa verzí objektů BLOB
 
@@ -38,7 +38,7 @@ Verze zachytí stav objektu BLOB v daném časovém okamžiku. Když je pro úč
 
 Při vytváření objektu BLOB s povoleným správou verzí je nový objekt blob aktuální verzí objektu BLOB (nebo základního objektu BLOB). Pokud následně tento objekt BLOB upravíte, Azure Storage vytvoří verzi, která před úpravou zachytí stav objektu BLOB. Upravený objekt BLOB se změní na novou aktuální verzi. Při každé změně objektu BLOB se vytvoří nová verze.
 
-Objekt BLOB může mít neomezený počet verzí. U velkého počtu verzí na jeden objekt BLOB se ale může zvýšit latence operací výpisu objektů BLOB. Společnost Microsoft doporučuje udržovat méně než 1000 verzí na jeden objekt BLOB. Pokud chcete automaticky odstranit staré verze, můžete použít správu životního cyklu. Další informace o správě životního cyklu najdete v tématu [optimalizace nákladů díky automatizaci úrovní přístupu v Azure Blob Storage](storage-lifecycle-management-concepts.md).
+Velký počet verzí na jeden objekt BLOB může zvýšit latenci pro operace výpisu objektů BLOB. Společnost Microsoft doporučuje udržovat méně než 1000 verzí na jeden objekt BLOB. Pokud chcete automaticky odstranit staré verze, můžete použít správu životního cyklu. Další informace o správě životního cyklu najdete v tématu [optimalizace nákladů díky automatizaci úrovní přístupu v Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
 Když odstraníte objekt BLOB s povoleným správou verzí, Azure Storage vytvoří verzi, která před odstraněním zachytí stav objektu BLOB. Aktuální verze objektu BLOB se pak odstraní, ale verze objektu BLOB jsou trvalé, takže je v případě potřeby možné znovu vytvořit. 
 

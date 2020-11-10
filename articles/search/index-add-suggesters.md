@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ed7b61e9e0379462e0dfbcdcc93acfccf470d95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427033"
+ms.locfileid: "94445332"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Vytvoření modulu pro návrhy umožňující automatické dokončování a navrhované výsledky v dotazu
 
@@ -26,9 +26,9 @@ Následující snímek obrazovky z části [Vytvoření první aplikace v jazyce
 
 Tyto funkce můžete použít samostatně nebo dohromady. K implementaci těchto chování ve službě Azure Kognitivní hledání je k dispozici komponenta index a dotaz. 
 
-+ V indexu přidejte k indexu modul pro návrhy. Můžete použít portál, [Create index (REST) (/REST/API/SearchService/Create-index) nebo [vlastnost pro návrhy](/dotnet/api/azure.search.documents.indexes.models.searchindex.suggesters). Zbývající část tohoto článku se zaměřuje na vytvoření modulu pro návrhy.
++ Přidejte do definice indexu hledání modul pro návrh. Zbývající část tohoto článku se zaměřuje na vytvoření modulu pro návrhy.
 
-+ V požadavku na dotaz volejte jedno z [rozhraní API uvedených níže](#how-to-use-a-suggester).
++ Pomocí některého z [rozhraní API uvedených níže](#how-to-use-a-suggester)zavolejte na dotaz s povoleným návrhem, ve formě žádosti o návrh nebo žádosti o automatické dokončování.
 
 Podpora vyhledávání podle typu je povolena pro každé pole pro pole řetězců. Typeahead chování můžete implementovat v rámci stejného řešení hledání, pokud chcete podobné prostředí, jaké je uvedené na snímku obrazovky. Oba požadavky cílí na to, že kolekce *dokumentů* určitého indexu a odpovědí se vrátí poté, co uživatel zadá alespoň tři vstupní řetězce znaků.
 
@@ -36,9 +36,9 @@ Podpora vyhledávání podle typu je povolena pro každé pole pro pole řetězc
 
 Modul pro návrhy je interní datová struktura, která podporuje chování vyhledávání podle typu, protože ukládá předpony pro porovnání u částečných dotazů. Stejně jako u výrazů s tokeny jsou předpony uloženy v obrácených indexech, jedno pro každé pole zadané v kolekci polí pro návrhy.
 
-## <a name="define-a-suggester"></a>Definování modulu pro návrhy
+## <a name="how-to-create-a-suggester"></a>Jak vytvořit modul pro návrhy
 
-Chcete-li vytvořit modul pro návrh, přidejte ho do [schématu indexu](/rest/api/searchservice/create-index) a [nastavte jednotlivé vlastnosti](#property-reference). Nejlepším časem, jak vytvořit modul pro navrhování, je, že definujete pole, které ho bude používat.
+Pokud chcete vytvořit návrh, přidejte ho do [definice indexu](/rest/api/searchservice/create-index). Modul pro návrhy Získá název a kolekci polí, přes které je povoleno prostředí typeahead. a [nastavte každou vlastnost](#property-reference). Nejlepším časem, jak vytvořit modul pro navrhování, je, že definujete pole, které ho bude používat.
 
 + Použít pouze pole řetězců
 
@@ -60,12 +60,22 @@ Aby bylo možné vyhovět vyhledávání výsledků hledání, přidejte všechn
 
 Volba analyzátoru určuje, jak jsou pole s tokeny a následně předem opravena. Například u rozděleného řetězce, jako je "kontextově závislé", bude použití analyzátoru jazyka mít za následek tyto kombinace tokenů: "Context", "citlivé", "kontextově závislé". Používali jste standardní nástroj Lucene Analyzer, řetězec s pomlčkou neexistoval. 
 
-Při vyhodnocování analyzátorů zvažte použití [rozhraní analyzovat text API](/rest/api/searchservice/test-analyzer) pro přehled o tom, jak jsou výrazy vyhodnoceny a následně předem opraveny. Po sestavení indexu můžete vyzkoušet různé analyzátory na řetězci a zobrazit tak výstup tokenu.
+Při vyhodnocování analyzátorů zvažte použití [rozhraní analyzovat text API](/rest/api/searchservice/test-analyzer) , kde najdete informace o tom, jak jsou výrazy zpracovávány. Po sestavení indexu můžete vyzkoušet různé analyzátory na řetězci a zobrazit tak výstup tokenu.
 
 Pole, která používají [vlastní analyzátory](index-add-custom-analyzers.md) nebo [předdefinované analyzátory](index-add-custom-analyzers.md#predefined-analyzers-reference) (s výjimkou standardního Lucene), jsou výslovně zakázána, aby nedocházelo k špatným výsledkům.
 
 > [!NOTE]
 > Pokud potřebujete obejít omezení analyzátoru, například pokud potřebujete klíčové slovo nebo ngram Analyzer pro určité scénáře dotazování, měli byste pro stejný obsah použít dvě samostatná pole. Tím umožníte, aby jedno z polí mělo možnost navrhovat, zatímco druhá je možné nastavit pomocí vlastní konfigurace analyzátoru.
+
+## <a name="create-using-the-portal"></a>Vytvoření pomocí portálu
+
+Při použití možnosti **Přidat index** nebo průvodce **importem dat** k vytvoření indexu máte možnost povolit modul pro návrhy:
+
+1. Do definice indexu zadejte název modulu pro návrhy.
+
+1. V každé definici pole pro nová pole zaškrtněte políčko ve sloupci navrhnout. Zaškrtávací políčko je k dispozici pouze v polích řetězců. 
+
+Jak bylo uvedeno dříve, volba analyzátoru ovlivňuje tokenizace a předpony. Při povolování návrhů Vezměte v úvahu celou definici polí. 
 
 ## <a name="create-using-rest"></a>Vytvoření pomocí REST
 
@@ -131,9 +141,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
 
 |Vlastnost      |Popis      |
 |--------------|-----------------|
-|`name`        |Název modulu pro návrhy.|
-|`searchMode`  |Strategie použitá pro hledání kandidátských frází. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
-|`sourceFields`|Seznam jednoho nebo více polí, která jsou zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný analyzátor z [tohoto seznamu](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (nikoli vlastní analyzátor).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+|`name`        | Zadáno v definici modulu pro návrhy, ale také voláno na žádost o automatické dokončování nebo návrhy. |
+|`sourceFields`| Zadáno v definici modulu pro návrhy. Je to seznam jednoho nebo více polí v indexu, který je zdrojem obsahu pro návrhy. Pole musí být typu `Edm.String` a `Collection(Edm.String)` . Je-li v poli analyzátor určen, musí se jednat o pojmenovaný lexikální analyzátor z [tohoto seznamu](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) (nikoli vlastního analyzátoru).<p/> Osvědčeným postupem je zadat pouze ta pole, která samy zapůjčuje očekávanou a odpovídající odpověď, ať už se jedná o dokončený řetězec na panelu hledání nebo v rozevíracím seznamu.<p/>Název hotelu je dobrý kandidát, protože má přesnost. Podrobná pole, jako jsou popisy a komentáře, jsou moc zhuštěná. Podobně opakující se pole, jako jsou kategorie a značky, jsou méně efektivní. V příkladech obsahuje "Category", abyste ukázali, že můžete zahrnout více polí. |
+|`searchMode`  | Parametr pouze pro REST, ale také viditelný na portálu. Tento parametr není v sadě .NET SDK k dispozici. Označuje strategii, pomocí které se hledají fráze kandidáta. Jediným aktuálně podporovaným režimem je `analyzingInfixMatching` , který aktuálně odpovídá začátku období.|
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -160,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-+ [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka konstrukce, navrhovaných dotazů, automatického dokončování a vymezené navigace pro návrhy. Tato ukázka kódu běží na službě izolovaného prostoru Azure Kognitivní hledání a používá předem načtený index hotelů, takže ke spuštění aplikace stačí stisknout klávesu F5. Není nutné žádné předplatné ani přihlášení.
++ [Vytvoření první aplikace v jazyce C# (lekce 3 – přidání výsledků hledání podle vašeho typu)](tutorial-csharp-type-ahead-and-suggestions.md) ukázka navrhovaných dotazů, automatického dokončování a vymezené navigace. Tato ukázka kódu běží na službě izolovaného prostoru (sandbox) Azure Kognitivní hledání a používá předem načtený index hotelů s již vytvořeným nástrojem pro navrhování, takže stačí stisknout klávesu F5 ke spuštění aplikace. Není nutné žádné předplatné ani přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 
