@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: nasazení serverových Next.jsových webů ve službě Azure static Web Apps'
+title: 'Kurz: nasazení statických Next.js websites ve službě Azure static Web Apps'
 description: Vygenerujte a nasaďte Next.js dynamické lokality se statickou Web Apps Azure.
 services: static-web-apps
 author: christiannwamba
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 835ee926de776b7a25295485d18ce25f883a2c5f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951158"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441609"
 ---
-# <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení Next.js webů vygenerovaných serverem ve službě Azure static Web Apps Preview
+# <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Nasazení statických Next.js websites ve službě Azure static Web Apps Preview
 
 V tomto kurzu se naučíte nasadit [Next.js](https://nextjs.org) generovaný statický web do služby [Azure static Web Apps](overview.md). Pokud chcete začít, naučíte se, jak nastavit, nakonfigurovat a nasadit aplikaci Next.js. Během tohoto procesu se naučíte také řešit běžné výzvy, které se často vyskytují při generování statických stránek pomocí Next.js
 
@@ -63,7 +63,7 @@ Přejděte na adresu `http://localhost:3000` a otevřete aplikaci, kde by se mě
 
 Když kliknete na architekturu nebo knihovnu, měla by se zobrazit Stránka s podrobnostmi o vybrané položce:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Spustit aplikaci Next.js":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Stránka podrobností":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>Vygenerování statického webu z Next.js sestavení
 
@@ -84,7 +84,7 @@ Když vytváříte lokalitu Next.js pomocí nástroje `npm run build` , je aplik
     
       Tato konfigurace mapuje `/` na Next.js stránku, která se obsluhuje pro `/` trasu a která je soubor _stránek/index.js_ stránky.
 
-1. Aktualizujte _package.js_skript sestavení tak, aby po sestavení vygeneroval i statický web pomocí `next export` příkazu. `export`Příkaz vygeneruje statickou lokalitu.
+1. Aktualizujte _package.js_ skript sestavení tak, aby po sestavení vygeneroval i statický web pomocí `next export` příkazu. `export`Příkaz vygeneruje statickou lokalitu.
 
     ```json
     "scripts": {
@@ -141,12 +141,12 @@ Následující kroky ukazují, jak propojit aplikaci, kterou jste právě odesla
 1. Klikněte na **Vytvořit**.
 
 1. V rozevíracím seznamu *předplatné* vyberte předplatné nebo použijte výchozí hodnotu.
-1. V rozevíracím seznamu *Skupina prostředků* klikněte na **Nový** odkaz. Do *nového názvu skupiny prostředků*zadejte **mystaticsite** a klikněte na **OK** .
+1. V rozevíracím seznamu *Skupina prostředků* klikněte na **Nový** odkaz. Do *nového názvu skupiny prostředků* zadejte **mystaticsite** a klikněte na **OK** .
 1. Do textového pole **název** zadejte globálně jedinečný název vaší aplikace. Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `-` . Tato hodnota se používá jako předpona adresy URL vaší statické aplikace ve formátu `https://<APP_NAME>.azurestaticapps.net` .
 1. V rozevíracím seznamu *oblast* vyberte oblast, která je pro vás nejblíže.
 1. V rozevíracím seznamu SKU vyberte **volné** .
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Spustit aplikaci Next.js":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Vytvoření statické webové aplikace":::
 
 ### <a name="add-a-github-repository"></a>Přidat úložiště GitHub
 
@@ -157,7 +157,7 @@ Nový účet statického Web Apps potřebuje přístup k úložišti pomocí apl
 1. Vyhledejte a vyberte název úložiště, které jste vytvořili dříve.
 1. Z rozevíracího seznamu *větev* vyberte možnost **Hlavní** jako větev.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Spustit aplikaci Next.js":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Připojení ke GitHubu":::
 
 ### <a name="configure-the-build-process"></a>Konfigurace procesu sestavení
 
@@ -165,7 +165,7 @@ Statická Web Apps Azure je sestavená tak, aby automaticky provedla běžné ú
 
 1. Chcete-li nakonfigurovat statickou výstupní složku, klikněte na kartu **sestavení** .
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Spustit aplikaci Next.js":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Karta sestavení":::
 
 2. Zadejte **text** do textového pole *umístění artefaktu aplikace* .
 
@@ -195,7 +195,7 @@ Vraťte se do terminálu a spusťte následující příkaz `git pull origin mas
 
 Přejděte k nově nasazenému webu a klikněte na jedno z log rozhraní nebo loga knihovny. Místo toho, abyste získali stránku s podrobnostmi, dostanete chybovou stránku 404.
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Spustit aplikaci Next.js":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="404 na dynamických trasách":::
 
 Důvodem této chyby je, že Next.js jenom domovskou stránku vygenerovala na základě konfigurace aplikace.
 
@@ -231,7 +231,7 @@ Důvodem této chyby je, že Next.js jenom domovskou stránku vygenerovala na z�
 
 2. Nahrajte nové změny do úložiště GitHubu a počkejte pár minut, než akce GitHubu znovu vytvoří váš web. Po dokončení sestavení se zobrazí chyba 404.
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Spustit aplikaci Next.js":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="404 na pevných dynamických trasách":::
 
 > [!div class="nextstepaction"]
 > [Nastavení vlastní domény](custom-domain.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518270"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443938"
 ---
 # <a name="protected-web-api-app-registration"></a>Chráněné webové rozhraní API: registrace aplikace
 
@@ -31,7 +31,7 @@ Koncový bod platformy Microsoft Identity může vydávat tokeny v 1.0 a tokeny 
 
 Verze tokenu, kterou vaše rozhraní API může přijmout, závisí na **podporovaných typech účtů** při vytváření registrace aplikace webového rozhraní api v Azure Portal.
 
-- Pokud je hodnota **podporovaných typů účtů** **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)**, musí být přijatý token verze v 2.0.
+- Pokud je hodnota **podporovaných typů účtů** **účty v jakémkoli adresáři organizace a na osobních účtech Microsoft (např. Skype, Xbox, Outlook.com)** , musí být přijatý token verze v 2.0.
 - V opačném případě může verze přijatého tokenu v 1.0.
 
 Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu pomocí následujících kroků:
@@ -40,7 +40,7 @@ Po vytvoření aplikace můžete zjistit nebo změnit verzi přijatého tokenu p
 1. V manifestu Najděte vlastnost **accessTokenAcceptedVersion** .
 1. Hodnota určuje Azure Active Directory (Azure AD), která verze tokenu přijímá webové rozhraní API.
     - Pokud je hodnota 2, webové rozhraní API akceptuje tokeny verze 2.0.
-    - Pokud je hodnota **null**, webové rozhraní API akceptuje tokeny v 1.0.
+    - Pokud je hodnota **null** , webové rozhraní API akceptuje tokeny v 1.0.
 1. Pokud jste změnili verzi tokenu, vyberte **Uložit**.
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Během registrace aplikace je potřeba definovat tyto parametry:
 - Jeden nebo více oborů
 - Jedna nebo více aplikačních rolí
 
-Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná. Portál pro registraci aplikací bude mít jistotu, že používáte [nakonfigurovanou doménu vydavatele](howto-configure-publisher-domain.md) .
+Portál pro registraci aplikací standardně doporučuje použít identifikátor URI prostředku `api://{clientId}` . Tento identifikátor URI je jedinečný, ale není čitelný pro lidské čtení. Pokud identifikátor URI změníte, ujistěte se, že je nová hodnota jedinečná. Portál pro registraci aplikací bude mít jistotu, že používáte [nakonfigurovanou doménu vydavatele](howto-configure-publisher-domain.md).
 
 Pro klientské aplikace se obory zobrazují jako *delegovaná oprávnění* a role aplikace se jako oprávnění aplikace pro vaše webové rozhraní API zobrazují jako *oprávnění aplikace* .
 
@@ -132,7 +132,7 @@ Webové rozhraní API kontroluje aplikační roli. Tato role představuje způso
 Přidání tohoto zvýšeného zabezpečení:
 
 1. Přejít na stránku **Přehled** aplikace pro registraci vaší aplikace
-1. **V části spravovaná aplikace v místním adresáři**vyberte odkaz s názvem vaší aplikace. Popisek tohoto výběru může být oříznutý. Například se může zobrazit **spravovaná aplikace v...**
+1. **V části spravovaná aplikace v místním adresáři** vyberte odkaz s názvem vaší aplikace. Popisek tohoto výběru může být oříznutý. Například se může zobrazit **spravovaná aplikace v...**
 
    > [!NOTE]
    >
@@ -143,9 +143,9 @@ Přidání tohoto zvýšeného zabezpečení:
 
    > [!IMPORTANT]
    >
-   > Pokud jste nastavili **přiřazení uživatele jako povinné?** Pokud **Ano**, Azure AD zkontroluje přiřazení role aplikace klienta, když požádá o přístupový token webového rozhraní API. Pokud klient není přiřazený k rolím aplikace, Azure AD vrátí chybovou zprávu "invalid_client: AADSTS501051: aplikace není \<application name\> přiřazená k roli pro \<web API\> ".
+   > Pokud jste nastavili **přiřazení uživatele jako povinné?** Pokud **Ano** , Azure AD zkontroluje přiřazení role aplikace klienta, když požádá o přístupový token webového rozhraní API. Pokud klient není přiřazený k rolím aplikace, Azure AD vrátí chybovou zprávu "invalid_client: AADSTS501051: aplikace není \<application name\> přiřazená k roli pro \<web API\> ".
    >
-   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne**, Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API. Každý klient démona, což znamená, že každý klient používající tok přihlašovacích údajů klienta, může získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace má přístup k rozhraní API bez nutnosti požádat o oprávnění.
+   > Pokud si zachováte **přiřazení uživatelů?** nastavit na **ne** , Azure AD nebude kontrolovat přiřazení role aplikace, když si klient vyžádá přístupový token pro vaše webové rozhraní API. Každý klient démona, což znamená, že každý klient používající tok přihlašovacích údajů klienta, může získat přístupový token pro rozhraní API jenom tak, že určí cílovou skupinu. Každá aplikace má přístup k rozhraní API bez nutnosti požádat o oprávnění.
    >
    > Jak je vysvětleno v předchozí části, vaše webové rozhraní API může vždy ověřit, zda má aplikace správnou roli, která je autorizována správcem tenanta. Rozhraní API provede toto ověření tím, že ověří, že přístupový token má deklaraci identity rolí a že hodnota této deklarace je správná. V předchozím příkladu JSON je hodnota `access_as_application` .
 
@@ -153,5 +153,4 @@ Přidání tohoto zvýšeného zabezpečení:
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Konfigurace kódu aplikace](scenario-protected-web-api-app-configuration.md)
+Přejděte k dalšímu článku v tomto scénáři, [Konfigurace kódu aplikace](scenario-protected-web-api-app-configuration.md).

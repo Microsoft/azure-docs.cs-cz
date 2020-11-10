@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 174db339079de91a87cef9551bc79e6f03701605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4123b0424e52c6a2919de4b60bcc6158062b0f1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257125"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442629"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scénář: webová aplikace, která volá webová rozhraní API.
 
 Naučte se, jak vytvořit webovou aplikaci, která uživatele podepisuje na platformě Microsoft identity, a pak zavolá webová rozhraní API jménem přihlášeného uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto scénáři se předpokládá, že jste už dokončili [scénář: webová aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md).
 
@@ -53,5 +53,4 @@ Vývoj pro tento scénář zahrnuje tyto konkrétní úkoly:
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Webová aplikace, která volá webová rozhraní API: registrace aplikace](scenario-web-app-call-api-app-registration.md)
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](scenario-web-app-call-api-app-registration.md).

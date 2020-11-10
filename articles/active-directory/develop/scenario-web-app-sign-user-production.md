@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438567851204a1a284955bede1525505712f4b7
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82181626"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442374"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Webová aplikace, která přihlašuje uživatele: Přesun do produkčního prostředí
 
@@ -24,9 +24,7 @@ Když teď víte, jak získat token pro volání webových rozhraní API, přeč
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>Další kroky
-
-### <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 > [!NOTE]
 > Když se uživatelé poprvé přihlásí k webové aplikaci, budou muset souhlasit. V některých organizacích se ale uživatelům může zobrazit zpráva podobná následující:
@@ -35,28 +33,17 @@ Když teď víte, jak získat token pro volání webových rozhraní API, přeč
 >
 > Důvodem je to, že správce klienta **zakázal** možnost souhlasu uživatelů. V takovém případě je potřeba kontaktovat správce klientů, aby učinili souhlas správce pro rozsahy vyžadované aplikací.
 
-### <a name="same-site"></a>Stejná lokalita
+## <a name="same-site"></a>Stejná lokalita
 
-Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome.
-
-> [!div class="nextstepaction"]
-> [Postup zpracování změn souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md)
+Ujistěte se, že rozumíte možným problémům s novými verzemi prohlížeče Chrome: [jak zpracovávat změny souborů cookie SameSite v prohlížeči Chrome](howto-handle-samesite-cookie-changes-chrome-browser.md).
 
 Balíček NuGet Microsoft. identity. Web zpracovává nejběžnější SameSite problémy.
-
-### <a name="scenario-for-calling-web-apis"></a>Scénář pro volání webových rozhraní API
-
-Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře:
-
-> [!div class="nextstepaction"]
-> [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 
 ## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Hluboká podrobně: kurz ASP.NET Core webové aplikace
 
 Přečtěte si o dalších způsobech, jak se přihlašovat uživatelům pomocí tohoto ASP.NET Core kurzu: 
 
-> [!div class="nextstepaction"]
-> [Umožněte vašim webovým aplikacím přihlašovat uživatele a volat rozhraní API s platformou Microsoft identity pro vývojáře.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 
+[Umožněte vašim webovým aplikacím přihlašovat uživatele a volat rozhraní API s platformou Microsoft identity pro vývojáře.](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)
 
 Tento postupný kurz obsahuje kód připravený pro produkční prostředí pro webovou aplikaci, včetně postupu přidání přihlášení pomocí účtů v nástroji:
 
@@ -70,5 +57,8 @@ Tento postupný kurz obsahuje kód připravený pro produkční prostředí pro 
 
 Přečtěte si další informace o webové aplikaci Java z této ukázky na GitHubu: 
 
-> [!div class="nextstepaction"]
-> [Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+[Webová aplikace Java, která přihlašuje uživatele pomocí platformy a volání Microsoft identity Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp)
+
+## <a name="next-steps"></a>Další kroky
+
+Jakmile se webová aplikace přihlásí uživatelům, může volat webová rozhraní API jménem přihlášených uživatelů. Volání webových rozhraní API z webové aplikace je objektem následujícího scénáře: [Webová aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md).

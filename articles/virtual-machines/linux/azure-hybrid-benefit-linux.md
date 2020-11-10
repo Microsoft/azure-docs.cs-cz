@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
-ms.author: alsin
-ms.openlocfilehash: c1200121d1c768a3fdddd7749184d7f8b5c98a96
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.author: mathapli
+ms.openlocfilehash: feaa2471f2867257deb06ab32ed5fc0a26a0d37e
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413101"
+ms.locfileid: "94443428"
 ---
-# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Verze Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje Linux Virtual Machines
+# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Public Preview: Zvýhodněné hybridní využití Azure – jak se vztahuje na Linux Virtual Machines
 
 ## <a name="overview"></a>Přehled
 
@@ -45,30 +45,26 @@ Rezervované instance, vyhrazené hostitele a zvýhodněné hybridní využití 
 
 ## <a name="how-to-get-started"></a>Jak začít
 
-Zvýhodněné hybridní využití Azure je aktuálně ve fázi Preview pro virtuální počítače se systémem Linux. Jakmile získáte přístup k verzi Preview, můžete povolit zvýhodnění pomocí Azure Portal nebo Azure CLI.
+Zvýhodněné hybridní využití Azure je aktuálně ve fázi Preview pro virtuální počítače se systémem Linux. Jakmile získáte přístup k verzi Preview, můžete povolit výhody pomocí Azure CLI.
 
-### <a name="preview"></a>Preview
+### <a name="public-preview"></a>Public Preview
 
-V této fázi můžete získat přístup k výhodám vyplněním formuláře [zde](https://aka.ms/ahb-linux-form). Po vyplnění formuláře budou vaše předplatná Azure pro tuto výhodu povolené a obdržíte potvrzení od Microsoftu do tří pracovních dnů.
+Zvýhodněné hybridní využití Azure (pro Linux) je teď ve fázi Public Preview. K povolení výhod pro distribuce Red Hat a SUSE můžete použít následující kroky. 
 
 ### <a name="red-hat-customers"></a>Zákazníci se Red Hat
 
-1.    Vyplňte výše uvedený formulář žádosti o náhled.
 1.    Registrace v [programu Red Hat Cloud Access](https://aka.ms/rhel-cloud-access)
 1.    Umožněte vašim předplatným Azure pro cloudový přístup a povolte předplatná obsahující virtuální počítače, které chcete využívat.
-1.    Využijte výhod pro stávající virtuální počítače buď prostřednictvím Azure Portal, nebo pomocí Azure CLI.
-1.    Volitelné, zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací (přepínaný virtuální počítače můžou zůstat připojené k [RHUI](../workloads/redhat/redhat-rhui.md) nebo registrovat prostřednictvím RHSM).
+1.    Využijte výhod pro existující virtuální počítače prostřednictvím rozhraní příkazového řádku Azure
+1.    Zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
+
 
 ### <a name="suse-customers"></a>Zákazníci SUSE
 
-1.    Vyplňte výše uvedený formulář žádosti o náhled.
 1.    Registrace pomocí programu veřejné cloudy SUSE
-1.    Využijte výhod pro stávající virtuální počítače buď prostřednictvím Azure Portal, nebo pomocí Azure CLI.
+1.    Využijte výhod pro existující virtuální počítače prostřednictvím rozhraní příkazového řádku Azure
 1.    Zaregistrujte si virtuální počítače, které obdrží výhodu, pomocí samostatného zdroje aktualizací.
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Povolení nebo zakázání výhod v Azure Portal
-
-Výhodou pro existující virtuální počítače můžete povolit tak, že navštívíte okno **Konfigurace** a provedete tyto kroky. V rámci prostředí pro vytváření virtuálních počítačů můžete povolit výhody pro nové virtuální počítače.
 
 ### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Povolení nebo zakázání výhod v Azure CLI
 
@@ -109,12 +105,8 @@ az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
 ## <a name="check-ahb-status-of-a-vm"></a>Zkontroluje stav AHB virtuálního počítače.
-Stav AHB virtuálního počítače můžete zobrazit třemi způsoby: vracení na portálu, použití rozhraní příkazového řádku Azure nebo použití Azure Instance Metadata Service (Azure IMDS).
+Stav AHB virtuálního počítače můžete zobrazit dvěma způsoby: pomocí rozhraní příkazového řádku Azure nebo pomocí Azure Instance Metadata Service (Azure IMDS).
 
-
-### <a name="portal"></a>Portál
-
-Podívejte se na okno Konfigurace a zkontrolujte stav licencování a zjistěte, jestli je pro váš virtuální počítač povolený AHB.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -152,9 +144,7 @@ Tato část obsahuje seznam běžných problémů, které by mohly být zjiště
 
 | Chyba | Omezení rizik |
 | ----- | ---------- |
-| "Předplatné není zaregistrované pro Linux Preview Zvýhodněné hybridní využití Azure. Podrobné pokyny najdete v https://aka.ms/ahb-linux části. | Vyplňte formulář v https://aka.ms/ahb-linux-form a zaregistrujte se pro Linux preview zvýhodněné hybridní využití Azure.
 | Akce nemohla být dokončena, protože naše záznamy ukazují, že jste v předplatném Azure nepovolili přístup do cloudu Red Hat.... | Aby bylo možné využívat výhod s virtuálními počítači s RHEL, musíte nejdřív zaregistrovat vaše předplatná Azure s přístupem Red Hat Cloud Access. Navštivte tento odkaz, kde najdete další informace o registraci předplatných Azure pro cloudový přístup Red Hat.
-|Možnost Zvýhodněné hybridní využití Azure se na portálu nezobrazí. | Jedná se o známý problém pro virtuální počítače RHEL a SLES vytvořené z Galerie sdílených imagí, snímky nebo zachycené image PAYG. V takovém případě použijte kroky CLI popsané v části[povolení a zakázání výhod v rozhraní příkazového řádku Azure CLI](#enable-and-disable-the-benefit-in-the-azure-cli). Chcete-li zobrazit stav AHB, použijte příkaz ` az vm get-instance-view -g MyResourceGroup -n MyVm` .|
 
 ## <a name="next-steps"></a>Další kroky
-* Začněte s verzí Preview vyplněním formuláře [zde](https://aka.ms/ahb-linux-form).
+* Přečtěte si, jak vytvořit a aktualizovat virtuální počítače a přidat typy licencí (RHEL_BYOS, SLES_BYOS) pro Zvýhodněné hybridní využití Azure pomocí [Azure CLI tady.](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true)

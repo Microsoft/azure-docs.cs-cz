@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403190"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443751"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová rozhraní API: Konfigurace kódu
 
@@ -32,7 +32,7 @@ Jak je znázorněno ve [webové aplikaci, která se podepisuje ve scénáři už
 
 Následující knihovny v knihovně Microsoft Authentication Library (MSAL) podporují tok autorizačního kódu pro webové aplikace:
 
-| Knihovna MSAL | Description |
+| Knihovna MSAL | Popis |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podpora .NET Framework a platforem .NET Core. Nepodporováno jsou Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android, protože tyto platformy slouží k vytváření veřejných klientských aplikací. <br/><br/>Pro ASP.NET Core Web Apps a webová rozhraní API je MSAL.NET zapouzdřený v knihovně vyšší úrovně s názvem [Microsoft. identity. Web](https://aka.ms/ms-identity-web). |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL pro Python | Podpora webových aplikací v Pythonu |
@@ -99,7 +99,7 @@ Místo tajného kódu klienta můžete zadat klientský certifikát. Následují
 
 ## <a name="startupcs"></a>Startup.cs
 
-Vaše webová aplikace bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zpřístupňuje `ITokenAcquisition` službu, kterou můžete použít v rámci kontroleru a akcí stránky. Jak se ale zobrazí v následujících dvou možnostech, dá se to udělat víckrát. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+Vaše webová aplikace bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zpřístupňuje `ITokenAcquisition` službu, kterou můžete použít v rámci kontroleru a akcí stránky. Jak se ale zobrazí v následujících dvou možnostech, dá se to udělat víckrát. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs* :
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -519,5 +519,4 @@ def _build_msal_app(cache=None):
 
 V tomto okamžiku, když se uživatel přihlásí, je token uložen v mezipaměti tokenů. Pojďme se podívat, jak se pak používá v jiných částech webové aplikace.
 
-> [!div class="nextstepaction"]
-> [Webová aplikace, která volá webová rozhraní API: Odebrání účtů z mezipaměti při globálním odhlašování](scenario-web-app-call-api-sign-in.md)
+[Odebrání účtů z mezipaměti při globálním odhlašování](scenario-web-app-call-api-sign-in.md)

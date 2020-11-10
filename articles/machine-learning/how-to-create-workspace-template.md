@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305482"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442051"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -34,7 +34,7 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 * Některé scénáře vyžadují, abyste otevřeli lístek podpory. Mezi tyto scénáře patří:
 
-    * __Pracovní prostor s povoleným privátním propojením s klíčem spravovaným zákazníkem (CMK)__
+    * __Pracovní prostor s podporou služby Private Link a klíčem spravovaným zákazníkem__
     * __Azure Container Registry pro pracovní prostor za vaší virtuální sítí__
 
     Další informace najdete v tématu [Správa a zvýšení kvót](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
@@ -170,7 +170,7 @@ Následující příklad šablony ukazuje, jak vytvořit pracovní prostor se t�
 > [!IMPORTANT]
 > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-data-encryption.md#encryption-at-rest).
 
 > [!IMPORTANT]
 > Než použijete tuto šablonu, musí vaše předplatné splňovat tyto požadavky:
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-enterprise-security.md#encryption-at-rest).
+Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-data-encryption.md#encryption-at-rest).
 
 Další konfigurací, kterou můžete pro data poskytnout, je nastavení parametru **confidential_data** na **hodnotu true**. Uděláte to takto:
 
@@ -264,7 +264,7 @@ Další konfigurací, kterou můžete pro data poskytnout, je nastavení paramet
     > [!IMPORTANT]
     > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
-  Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+  Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-data-encryption.md#encryption-at-rest).
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Nasazení pracovního prostoru za virtuální sítí
 
@@ -554,7 +554,7 @@ New-AzResourceGroupDeployment `
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

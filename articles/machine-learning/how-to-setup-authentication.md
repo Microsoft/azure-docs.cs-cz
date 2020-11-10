@@ -8,69 +8,46 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/17/2020
+ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fd6f933e1b3c1e7c003f62e03215273e3d28ea5c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
+ms.openlocfilehash: adc0547e36e9cf996a87c2683b4830541b8cd360
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318533"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442102"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 
 
-Naučte se ověřovat v pracovním prostoru Azure Machine Learning a modelech nasazených jako webové služby.
+Přečtěte si, jak nastavit ověřování pro váš pracovní prostor Azure Machine Learning. Ověřování do vašeho pracovního prostoru Azure Machine Learning je založené na __Azure Active Directory__ (Azure AD) pro většinu věcí. Obecně platí tři pracovní postupy pro ověřování, které můžete použít při připojování k pracovnímu prostoru:
 
-Obecně existují dva typy ověřování, které můžete používat s Azure Machine Learning:
+* __Interaktivní__ : účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během _experimentů a iterativního vývoje_. Interaktivní ověřování umožňuje řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
 
-* __Interaktivní__ : účet můžete použít v Azure Active Directory k přímému ověření nebo k získání tokenu, který se používá k ověřování. Interaktivní ověřování se používá během experimentů a iterativního vývoje. Nebo kde chcete řídit přístup k prostředkům (například webové službě) na základě jednotlivých uživatelů.
-* __Instanční objekt__ : v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete automatizovaný proces ověřování ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní. Můžete také použít instanční objekt k získání tokenu pro ověření webové služby, pokud nechcete, aby koncový uživatel služby ověřil. Nebo tam, kde se ověřování koncového uživatele neprovede přímo pomocí Azure Active Directory.
+* __Instanční objekt__ : v Azure Active Directory vytvoříte hlavní účet služby a použijete ho k ověření nebo získání tokenu. Instanční objekt se používá v případě, že potřebujete _automatizovaný proces ověřování_ ke službě bez nutnosti zásahu uživatele. Například skript průběžné integrace a nasazení, který na vlaky a testuje model pokaždé, když se kód školení změní.
 
-Bez ohledu na použitý typ ověřování se používá řízení přístupu na základě role Azure (Azure RBAC) k určení rozsahu úrovně přístupu k prostředkům. Například účet, který se používá k získání přístupového tokenu pro nasazený model, potřebuje jenom přístup pro čtení k pracovnímu prostoru. Další informace o službě Azure RBAC najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
+* __Spravovaná identita__ : při použití sady Azure Machine Learning SDK _na virtuálním počítači Azure_ můžete spravovat spravovanou identitu pro Azure. Tento pracovní postup umožňuje virtuálnímu počítači připojit se k pracovnímu prostoru pomocí spravované identity, aniž byste museli ukládat přihlašovací údaje v kódu Pythonu nebo vyzvat uživatele k ověření. Azure Machine Learning výpočetní clustery je taky možné nakonfigurovat tak, aby pro přístup k pracovnímu prostoru používaly spravovanou identitu při _výuce modelů_.
+
+> [!IMPORTANT]
+> Bez ohledu na použitou pracovní postup ověřování se řízení přístupu na základě role Azure (Azure RBAC) používá k vymezení úrovně přístupu (autorizace) povoleného pro prostředky. Například správce nebo proces automatizace může mít přístup k vytvoření výpočetní instance, ale ne k jeho použití, zatímco ho pracovník IT může použít, ale nemůže ho odstranit ani vytvořit. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
 ## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
-* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
+* [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [výpočetní instanci Azure Machine Learning](concept-azure-machine-learning-architecture.md#compute-instance) s již nainstalovanou sadou SDK.
 
-## <a name="interactive-authentication"></a>Interaktivní ověřování
+## <a name="azure-active-directory"></a>Azure Active Directory
 
-> [!IMPORTANT]
-> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md).
+Všechny ověřovací pracovní postupy pro váš pracovní prostor spoléhají na Azure Active Directory. Pokud chcete, aby se uživatelé mohli ověřovat pomocí jednotlivých účtů, musí mít ve službě Azure AD účty. Pokud chcete použít instanční objekty, musí existovat ve službě Azure AD. Spravované identity jsou také funkcí služby Azure AD. 
 
-Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřování. Například při použití sady SDK jsou k dispozici dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní:
+Další informace o službě Azure AD najdete v tématu [co je Azure Active Directory ověřování](..//active-directory/authentication/overview-authentication.md).
 
-* Voláním `from_config()` funkce se vydá výzva.
+Až vytvoříte účty Azure AD, přečtěte si téma [Správa přístupu k Azure Machine Learningmu pracovnímu prostoru](how-to-assign-roles.md) , kde najdete informace o tom, jak jim udělit přístup k pracovnímu prostoru a dalším operacím v Azure Machine Learning.
 
-    ```python
-    from azureml.core import Workspace
-    ws = Workspace.from_config()
-    ```
+## <a name="configure-a-service-principal"></a>Konfigurace instančního objektu
 
-    Funkce `from_config()` hledá soubor JSON obsahující informace o připojení k vašemu pracovnímu prostoru.
-
-* Použití `Workspace` konstruktoru k poskytnutí informací o předplatném, skupině prostředků a pracovním prostoru se také zobrazí výzva k zadání interaktivního ověřování.
-
-    ```python
-    ws = Workspace(subscription_id="your-sub-id",
-                  resource_group="your-resource-group-id",
-                  workspace_name="your-workspace-name"
-                  )
-    ```
-
-> [!TIP]
-> Pokud máte přístup k více klientům, možná budete muset třídu naimportovat a explicitně definovat, který tenant cílíte. Volání konstruktoru pro `InteractiveLoginAuthentication` vás také vyzve k přihlášení podobným voláním uvedeným výše.
->
-> ```python
-> from azureml.core.authentication import InteractiveLoginAuthentication
-> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
-> ```
-
-## <a name="service-principal-authentication"></a>Ověřování instančních objektů
-
-Chcete-li použít ověřování instančního objektu (SP), musíte nejprve vytvořit aktualizaci SP a udělit jí přístup k vašemu pracovnímu prostoru. Jak bylo zmíněno dříve, pro řízení přístupu se používá řízení přístupu na základě role Azure (Azure RBAC), takže musíte také rozhodnout, jaký přístup k této aktualizaci chcete udělit.
+Pokud chcete použít instanční objekt (SP), musíte nejdřív vytvořit SP a udělit mu přístup k vašemu pracovnímu prostoru. Jak bylo zmíněno dříve, pro řízení přístupu se používá řízení přístupu na základě role Azure (Azure RBAC), takže musíte také rozhodnout, jaký přístup k této aktualizaci chcete udělit.
 
 > [!IMPORTANT]
 > Při použití instančního objektu udělte mu __minimální přístup vyžadovaný pro úkol__ , ke kterému se používá. Například neudělíte vlastníkovi instančního objektu nebo přístup k přispěvateli, pokud se k němu používá přístup, který čte přístupový token pro nasazení webu.
@@ -90,7 +67,7 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
     Pokud rozhraní příkazového řádku může spustit výchozí prohlížeč, udělá to a načte přihlašovací stránku. V opačném případě je nutné otevřít prohlížeč a postupovat podle pokynů v příkazovém řádku. Pokyny zahrnují procházení [https://aka.ms/devicelogin](https://aka.ms/devicelogin) a zadávání autorizačního kódu.
 
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
+    Pokud máte více předplatných Azure, můžete `az account set -s <subscription name or ID>` k nastavení předplatného použít příkaz. Další informace najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Další metody ověřování najdete v tématu [přihlášení pomocí Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -147,7 +124,7 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 1. Umožněte službě SP přístup k vašemu pracovnímu prostoru Azure Machine Learning. Budete potřebovat název vašeho pracovního prostoru a jeho název skupiny prostředků pro `-w` parametry a v `-g` uvedeném pořadí. Pro `--user` parametr použijte `objectId` hodnotu z předchozího kroku. `--role`Parametr umožňuje nastavit roli přístupu pro instanční objekt. V následujícím příkladu je tato aktualizace přiřazena k roli **vlastníka** . 
 
     > [!IMPORTANT]
-    > Přístup vlastníka umožňuje instančnímu objektu v pracovním prostoru prakticky jakoukoli operaci. V tomto dokumentu se používá k demonstrování, jak udělit přístup; v produkčním prostředí doporučuje Microsoft udělit instančnímu objektu minimální přístup, který je potřeba k provedení role, pro kterou máte oprávnění. Další informace najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
+    > Přístup vlastníka umožňuje instančnímu objektu v pracovním prostoru prakticky jakoukoli operaci. V tomto dokumentu se používá k demonstrování, jak udělit přístup; v produkčním prostředí doporučuje Microsoft udělit instančnímu objektu minimální přístup, který je potřeba k provedení role, pro kterou máte oprávnění. Informace o vytvoření vlastní role s přístupem potřebným pro váš scénář najdete v tématu [Správa přístupu k Azure Machine Learningmu pracovnímu prostoru](how-to-assign-roles.md).
 
     ```azurecli-interactive
     az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -155,7 +132,76 @@ Nejjednodušší způsob, jak vytvořit SP a udělit přístup k vašemu pracovn
 
     Toto volání nevyprodukuje žádný výstup při úspěchu.
 
-### <a name="use-a-service-principal-from-the-sdk"></a>Použití instančního objektu ze sady SDK
+## <a name="configure-a-managed-identity"></a>Konfigurace spravované identity
+
+> [!IMPORTANT]
+> Spravovaná identita se podporuje jenom v případě, že používáte sadu Azure Machine Learning SDK z virtuálního počítače Azure nebo pomocí Azure Machine Learning výpočetního clusteru. Použití spravované identity s výpočetním clusterem je aktuálně ve verzi Preview.
+
+### <a name="managed-identity-with-a-vm"></a>Spravovaná identita s virtuálním počítačem
+
+1. Povolte [na virtuálním počítači spravovanou identitu přiřazenou systémem pro prostředky Azure](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor a pak vyberte __Access Control (IAM)__ , __Přidat přiřazení role__ a vyberte __virtuální počítač__ v rozevíracím seznamu __přiřadit přístup k__ . Nakonec vyberte identitu svého virtuálního počítače.
+
+1. Vyberte roli, kterou chcete přiřadit k této identitě. Například přispěvatel nebo vlastní role. Další informace najdete v tématu [řízení přístupu k prostředkům](how-to-assign-roles.md).
+
+### <a name="managed-identity-with-compute-cluster"></a>Spravovaná identita s výpočetním clusterem
+
+Další informace najdete v tématu [nastavení spravované identity pro výpočetní cluster](how-to-create-attach-compute-cluster.md#managed-identity).
+
+<a id="interactive-authentication"></a>
+
+## <a name="use-interactive-authentication"></a>Použít interaktivní ověřování
+
+> [!IMPORTANT]
+> Interaktivní ověřování používá prohlížeč a vyžaduje soubory cookie (včetně souborů cookie třetích stran). Pokud jste soubory cookie vypnuli, může se zobrazit chyba, například "Nemůžeme vás přihlásit". K této chybě může dojít také v případě, že jste povolili [Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md).
+
+Většina příkladů v dokumentaci a vzorcích používá interaktivní ověřování. Například při použití sady SDK jsou k dispozici dvě volání funkcí, která vás automaticky vyzve k vytvoření toku ověřování založeného na uživatelském rozhraní:
+
+* Voláním `from_config()` funkce se vydá výzva.
+
+    ```python
+    from azureml.core import Workspace
+    ws = Workspace.from_config()
+    ```
+
+    Funkce `from_config()` hledá soubor JSON obsahující informace o připojení k vašemu pracovnímu prostoru.
+
+* Použití `Workspace` konstruktoru k poskytnutí informací o předplatném, skupině prostředků a pracovním prostoru se také zobrazí výzva k zadání interaktivního ověřování.
+
+    ```python
+    ws = Workspace(subscription_id="your-sub-id",
+                  resource_group="your-resource-group-id",
+                  workspace_name="your-workspace-name"
+                  )
+    ```
+
+> [!TIP]
+> Pokud máte přístup k více klientům, možná budete muset třídu naimportovat a explicitně definovat, který tenant cílíte. Volání konstruktoru pro `InteractiveLoginAuthentication` vás také vyzve k přihlášení podobným voláním uvedeným výše.
+>
+> ```python
+> from azureml.core.authentication import InteractiveLoginAuthentication
+> interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
+> ```
+
+Při použití rozhraní příkazového řádku Azure CLI se `az login` k ověření relace CLI používá příkaz. Další informace najdete v tématu [Začínáme s Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+
+> [!TIP]
+> Pokud sadu SDK používáte z prostředí, ve kterém jste předtím provedli interaktivní ověřování pomocí Azure CLI, můžete použít `AzureCliAuthentication` třídu k ověření v pracovním prostoru pomocí pověření uložených v mezipaměti rozhraní příkazového řádku:
+>
+> ```python
+> from azureml.core.authentication import AzureCliAuthentication
+> cli_auth = AzureCliAuthentication()
+> ws = Workspace(subscription_id="your-sub-id",
+>                resource_group="your-resource-group-id",
+>                workspace_name="your-workspace-name",
+>                auth=cli_auth
+>                )
+> ```
+
+<a id="service-principal-authentication"></a>
+
+## <a name="use-service-principal-authentication"></a>Použít ověřování instančního objektu
 
 K ověření v pracovním prostoru ze sady SDK pomocí instančního objektu použijte `ServicePrincipalAuthentication` konstruktor třídy. Použijte hodnoty, které jste získali při vytváření poskytovatele služeb jako parametry. `tenant_id`Parametr se mapuje `tenantId` z výše, `service_principal_id` mapuje na `clientId` a `service_principal_password` mapuje na `clientSecret` .
 
@@ -337,108 +383,24 @@ Předchozí kód by musel zpracovat výjimky a stavové kódy jiné než `200 OK
 - Pomocí ID tenanta určete, kde `login.microsoftonline.com` se má hledat.
 - Použití Azure Resource Manager jako zdroje autorizačního tokenu
 
-## <a name="web-service-authentication"></a>Ověřování webové služby
+## <a name="use-managed-identity-authentication"></a>Použít spravované ověřování identity
 
-Nasazení modelu vytvořená nástrojem Azure Machine Learning poskytují dvě metody ověřování:
-
-* **založené na klíčích** : ke ověřování webové služby se používá statický klíč.
-* **založené na tokenech** : z pracovního prostoru se musí získat dočasný token, který se používá k ověření webové služby. Platnost tohoto tokenu vyprší po uplynutí určité doby a je nutné ji aktualizovat, aby bylo možné pokračovat v práci s webovou službou.
-
-    > [!NOTE]
-    > Ověřování založené na tokenech je dostupné jenom při nasazení do služby Azure Kubernetes.
-
-### <a name="key-based-web-service-authentication"></a>Ověřování webové služby na základě klíčů
-
-Webové služby nasazené ve službě Azure Kubernetes Service (AKS) mají ve výchozím nastavení *povolené* ověřování na základě klíčů. Ve výchozím nastavení mají nasazené služby Azure Container Instances (ACI) ověřování na základě klíčů *zakázané* , ale můžete je povolit nastavením `auth_enabled=True` při vytváření webové služby ACI. Následující kód je příkladem vytvoření konfigurace nasazení ACI s povoleným ověřováním pomocí klíče.
+K ověření v pracovním prostoru z virtuálního počítače nebo výpočetního clusteru, který je nakonfigurovaný se spravovanou identitou, použijte `MsiAuthentication` třídu. Následující příklad ukazuje, jak použít tuto třídu k ověření v pracovním prostoru:
 
 ```python
-from azureml.core.webservice import AciWebservice
+from azureml.core.authentication import MsiAuthentication
 
-aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
-                                                memory_gb = 1,
-                                                auth_enabled=True)
+msi_auth = MsiAuthentication()
+
+ws = Workspace(subscription_id="your-sub-id",
+                resource_group="your-resource-group-id",
+                workspace_name="your-workspace-name",
+                auth=msi_auth
+                )
 ```
-
-Pak můžete použít vlastní konfiguraci ACI v nasazení pomocí `Model` třídy.
-
-```python
-from azureml.core.model import Model, InferenceConfig
-
-
-inference_config = InferenceConfig(entry_script="score.py",
-                                   environment=myenv)
-aci_service = Model.deploy(workspace=ws,
-                       name="aci_service_sample",
-                       models=[model],
-                       inference_config=inference_config,
-                       deployment_config=aci_config)
-aci_service.wait_for_deployment(True)
-```
-
-Chcete-li načíst klíče ověřování, použijte `aci_service.get_keys()` . Chcete-li znovu vygenerovat klíč, použijte `regen_key()` funkci a předejte ji buď **primární** , nebo **sekundární**.
-
-```python
-aci_service.regen_key("Primary")
-# or
-aci_service.regen_key("Secondary")
-```
-
-Další informace o ověřování pro nasazený model najdete v tématu [Vytvoření klienta pro model nasazený jako webovou službu](how-to-consume-web-service.md).
-
-### <a name="token-based-web-service-authentication"></a>Ověřování webové služby založené na tokenech
-
-Pokud povolíte ověřování pomocí tokenu pro webovou službu, uživatelé musí pro přístup k této webové službě předložit Azure Machine Learning JSON Web Token. Platnost tokenu po zadané době vyprší a je potřeba ji obnovit, pokud chcete provádět další volání.
-
-* Ověřování tokenu je **ve výchozím nastavení** při nasazení do služby Azure Kubernetes zakázané.
-* Ověřování tokenu se při nasazení do Azure Container Instances **nepodporuje** .
-* Ověřování tokenu **nelze použít současně s ověřováním na základě klíčů**.
-
-K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vytváření nebo aktualizaci nasazení:
-
-```python
-from azureml.core.webservice import AksWebservice
-from azureml.core.model import Model, InferenceConfig
-
-# Create the config
-aks_config = AksWebservice.deploy_configuration()
-
-#  Enable token auth and disable (key) auth on the webservice
-aks_config = AksWebservice.deploy_configuration(token_auth_enabled=True, auth_enabled=False)
-
-aks_service_name ='aks-service-1'
-
-# deploy the model
-aks_service = Model.deploy(workspace=ws,
-                           name=aks_service_name,
-                           models=[model],
-                           inference_config=inference_config,
-                           deployment_config=aks_config,
-                           deployment_target=aks_target)
-
-aks_service.wait_for_deployment(show_output = True)
-```
-
-Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení JSON web token (Jwt) a času vypršení platnosti tokenu:
-
-> [!TIP]
-> Pokud k získání tokenu použijete instanční objekt a chcete, aby měl minimální požadovaný přístup k načtení tokenu, přiřaďte ho k roli **čtenáře** pro daný pracovní prostor.
-
-```python
-token, refresh_by = aks_service.get_token()
-print(token)
-```
-
-> [!IMPORTANT]
-> Po uplynutí doby `refresh_by` tokenu je potřeba vyžádat si nový token. Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu pro pravidelné `service.get_token()` volání, jak je popsáno výše.
->
-> Důrazně doporučujeme vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes.
->
-> K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, i když je váš cluster v jiné oblasti než pracovní prostor. Výsledkem je, že ověřování Azure AD není k dispozici, dokud nebude oblast pracovního prostoru znovu dostupná.
->
-> Čím větší vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Způsob používání tajných kódů při školení](how-to-use-secrets-in-runs.md).
-* Proveďte [výuku a nasaďte model klasifikace imagí](tutorial-train-models-with-aml.md).
+* [Jak nakonfigurovat ověřování pro modely nasazené jako webovou službu](how-to-authenticate-web-service.md).
 * [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md).

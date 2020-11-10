@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: dabcf30488e45fbe6c7c5b9e5aa0c8bd57f28fd8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146258"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443496"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 
@@ -49,7 +49,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     > [!div class="mx-imgBorder"]
     > ![Prázdná šablona](media/how-to-trigger-published-pipeline/blank-template.png)
 
-1. V Návrháři vyhledejte **objekt BLOB** . Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
+1. V Návrháři vyhledejte **objekt BLOB**. Vyberte aktivační událost **při přidání nebo úpravě objektu BLOB (pouze vlastnosti)** a přidejte tuto aktivační událost do aplikace logiky.
     > [!div class="mx-imgBorder"]
     > ![Přidání triggeru](media/how-to-trigger-published-pipeline/add-trigger.png)
 
@@ -96,11 +96,11 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
 1. Vyberte **Uložit** a váš plán je teď připravený.
 
 > [!IMPORTANT]
-> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro svůj scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service) .
+> Pokud ke správě přístupu k vašemu kanálu používáte řízení přístupu na základě role (RBAC), [nastavte oprávnění pro váš scénář kanálu (školení nebo bodování)](how-to-assign-roles.md#common-scenarios).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 > [!div class="nextstepaction"]
 > [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)

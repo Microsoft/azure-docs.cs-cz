@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 781406a1bfd253f0ab3eb333f23917be4aeb3ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7cad0592c5c4c0487f582ce5405c275b94b7bd0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83771736"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444023"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Volání webového rozhraní API z mobilní aplikace
 
@@ -119,9 +119,9 @@ task.resume()
 
 Pokud potřebujete volat stejné rozhraní API několikrát nebo pokud potřebujete volat více rozhraní API, při sestavování aplikace Vezměte v úvahu následující témata:
 
-- **Přírůstkový souhlas**: platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas s uživatelem, pokud jsou požadovaná oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze ty rozsahy, které potřebuje.
+- **Přírůstkový souhlas** : platforma Microsoft Identity Platform umožňuje aplikacím získat souhlas s uživatelem, pokud jsou požadovaná oprávnění, a ne vše na začátku. Pokaždé, když je vaše aplikace připravená volat rozhraní API, měla by vyžadovat pouze ty rozsahy, které potřebuje.
 
-- **Podmíněný přístup**: když provedete několik požadavků rozhraní API, může v některých scénářích být nutné splnit další požadavky podmíněného přístupu. Požadavky se můžou zvýšit tak, že první požadavek nemá žádné zásady podmíněného přístupu, a vaše aplikace se pokusí o tichý přístup k novému rozhraní API, které vyžaduje podmíněný přístup. Chcete-li tento problém vyřešit, Zachyťte chyby z tichých požadavků a připravte se na vytvoření interaktivního požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](../azuread-dev/conditional-access-dev-guide.md).
+- **Podmíněný přístup** : když provedete několik požadavků rozhraní API, může v některých scénářích být nutné splnit další požadavky podmíněného přístupu. Požadavky se můžou zvýšit tak, že první požadavek nemá žádné zásady podmíněného přístupu, a vaše aplikace se pokusí o tichý přístup k novému rozhraní API, které vyžaduje podmíněný přístup. Chcete-li tento problém vyřešit, Zachyťte chyby z tichých požadavků a připravte se na vytvoření interaktivního požadavku.  Další informace najdete v tématu [pokyny pro podmíněný přístup](../azuread-dev/conditional-access-dev-guide.md).
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API pomocí přírůstkového souhlasu a podmíněného přístupu
 
@@ -159,5 +159,4 @@ catch(MsalUiRequiredException ex)
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-mobile-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-mobile-production.md)prostředí.

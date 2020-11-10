@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ea0312cd8129fce342f94cfab5701d1773aca309
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728331"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443649"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Webová aplikace, která podepisuje uživatele: Konfigurace kódu
 
@@ -27,7 +27,7 @@ Přečtěte si, jak nakonfigurovat kód pro webovou aplikaci, která se přihlá
 <!-- This section can be in an include for web app and web APIs -->
 Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API):
 
-| Platforma | Knihovna | Description |
+| Platforma | Knihovna | Popis |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_NET.png) | [Rozšíření modelu identity pro .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Rozšíření Microsoft Identity Model pro .NET, které používá přímo ASP.NET a ASP.NET Core, navrhuje sadu knihoven DLL spouštěných v .NET Framework i .NET Core. Z webové aplikace ASP.NET nebo ASP.NET Core můžete ověřování tokenu řídit pomocí třídy **TokenValidationParameters** (konkrétně v některých partnerských scénářích). V praxi je složitá složitost zapouzdřená do knihovny [Microsoft. identity. Web](https://aka.ms/ms-identity-web) . |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL v Javě](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Podpora webových aplikací v jazyce Java |
@@ -245,7 +245,7 @@ Pokud chcete přidat ověřování s platformou Microsoft identity (dřív Azure
      }).AddMicrosoftIdentityUI();
     ```
 
-3. V `Configure` metodě v *Startup.cs*povolte ověřování pomocí volání `app.UseAuthentication();`
+3. V `Configure` metodě v *Startup.cs* povolte ověřování pomocí volání `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -344,22 +344,18 @@ V dalším článku se dozvíte, jak aktivovat přihlášení a odhlášení.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-> [!div class="nextstepaction"]
-> [Přihlášení a odhlášení](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
+Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)se.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-> [!div class="nextstepaction"]
-> [Přihlášení a odhlášení](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
+Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)se.
 
 # <a name="java"></a>[Java](#tab/java)
 
-> [!div class="nextstepaction"]
-> [Přihlášení a odhlášení](./scenario-web-app-sign-user-sign-in.md?tabs=java)
+Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](./scenario-web-app-sign-user-sign-in.md?tabs=java)se.
 
 # <a name="python"></a>[Python](#tab/python)
 
-> [!div class="nextstepaction"]
-> [Přihlášení a odhlášení](./scenario-web-app-sign-user-sign-in.md?tabs=python)
+Přejděte k dalšímu článku v tomto scénáři, [Přihlaste se a odhlaste](./scenario-web-app-sign-user-sign-in.md?tabs=python)se.
 
 ---

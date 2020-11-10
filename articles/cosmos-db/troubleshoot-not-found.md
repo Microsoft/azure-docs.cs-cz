@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e2e2797bd01635c4c066a60f379a884e545e5af2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409684"
+ms.locfileid: "94442323"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnostika a řešení potíží s Azure Cosmos DB nenalezenými výjimkami
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Opravte aplikační logiku, která způsobila nesprávnou kombinaci.
 Položka je vložena do Azure Cosmos DB s [neplatným znakem](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) v ID položky.
 
 #### <a name="solution"></a>Řešení:
-Změňte ID na jinou hodnotu, která neobsahuje speciální znaky. Pokud se změna ID nepoužívá, můžete kódování Base64 kódovat, aby se speciální znaky vyhnuly.
+Změňte ID na jinou hodnotu, která neobsahuje speciální znaky. Pokud se změna ID nepoužívá, můžete kódování Base64 kódovat, aby se speciální znaky vyhnuly. Base64 může stále vytvořit název s neplatným znakem '/', který je nutné nahradit.
 
 Položky, které jsou již vloženy do kontejneru pro ID, lze nahradit použitím hodnot identifikátorů RID místo odkazů založených na názvu.
 ```c#
@@ -65,7 +65,7 @@ while (invalidItemsIterator.HasMoreResults)
         // Choose a new ID that doesn't contain special characters.
         // If that isn't possible, then Base64 encode the ID to escape the special characters.
         byte[] plainTextBytes = Encoding.UTF8.GetBytes(itemWithInvalidId["id"].ToString());
-        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes);
+        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes).Replace('/', '!');
 
         // Update the item with the new ID value by using the RID-based container reference.
         JObject item = await containerByRid.ReplaceItemAsync<JObject>(

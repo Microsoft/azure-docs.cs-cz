@@ -12,18 +12,18 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07637a8be49fb2449c5c92c1a1ea4b2c7ace9a8d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486918"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442255"
 ---
 # <a name="manage-app-consent-policies"></a>Správa zásad souhlasu pro aplikace
 
 Pomocí Azure AD PowerShellu můžete zobrazovat a spravovat zásady pro vyjádření souhlasu s aplikacemi.
 
-Zásada pro vyjádření souhlasu aplikace se skládá z jedné nebo více sad podmínek include a nula nebo více sad podmínek "vyloučení". V případě, že událost, která se má považovat za zásadu pro vyjádření souhlasu aplikace, se musí shodovat s *nejméně* jednou sadou podmínek include a nesmí obsahovat celou řadu podmínek " *vyloučení".*
+Zásada pro vyjádření souhlasu aplikace se skládá z jedné nebo více sad podmínek include a nula nebo více sad podmínek "vyloučení". Pro událost, která se má považovat za zásadu souhlasu aplikace, se musí shodovat *aspoň* jedna sada podmínek include a nesmí odpovídat *žádné* sadě podmínek "vyloučení".
 
 Každá sada podmínek se skládá z několika podmínek. Aby se událost shodovala s nastavenou podmínkou, musí být splněné *všechny* podmínky v sadě podmínek.
 
@@ -133,7 +133,7 @@ Následující tabulka uvádí seznam podporovaných podmínek pro zásady pro v
 | Stav | Popis|
 |:---------------|:----------|
 | PermissionClassification | [Klasifikace oprávnění](configure-permission-classifications.md) pro udělená oprávnění nebo "vše", aby odpovídala libovolné klasifikaci oprávnění (včetně oprávnění, která nejsou klasifikována). Výchozí hodnota je All (vše). |
-| PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka**: hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
+| PermissionType | Typ oprávnění uděleného oprávnění Pro delegovaná oprávnění použijte "Application" pro oprávnění aplikací (např. role aplikace) nebo delegovaný. <br><br>**Poznámka** : hodnota "delegatedUserConsentable" označuje delegovaná oprávnění, která nenakonfiguroval Vydavatel rozhraní API, aby vyžadovala souhlas správce. Tato hodnota se dá použít v předdefinovaných zásadách udělení oprávnění, ale nedá se použít v zásadách udělení vlastních oprávnění. Povinná hodnota. |
 | ResourceApplication | **AppID** aplikace prostředků (např. rozhraní API), pro kterou se uděluje oprávnění, nebo "any", aby odpovídala libovolné aplikaci prostředků nebo rozhraní API. Výchozí hodnota je Any. |
 | Oprávnění | Seznam identifikátorů oprávnění pro konkrétní oprávnění, se kterými se shodují, nebo seznam s jednou hodnotou All, která se má shodovat s libovolnými oprávněními Výchozí je jediná hodnota all. <ul><li>Delegovaná ID oprávnění se dají najít ve vlastnosti **OAuth2Permissions** objektu ServicePrincipal rozhraní API.</li><li>ID oprávnění aplikace najdete ve vlastnosti **AppRoles** objektu ServicePrincipal rozhraní API.</li></ol> |
 | ClientApplicationIds | Seznam hodnot **AppID** pro klientské aplikace, které se shodují s, nebo seznam s jednou hodnotou All, aby odpovídala všem klientským aplikacím. Výchozí je jediná hodnota all. |

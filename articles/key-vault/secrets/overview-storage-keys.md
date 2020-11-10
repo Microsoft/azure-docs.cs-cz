@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e8ae0463633940ba3192815af6a07a6356901044
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426982"
+ms.locfileid: "94441830"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure CLI
 
@@ -34,11 +34,11 @@ Doporučujeme používat Azure Storage integraci s Azure Active Directory (Azure
 
 Azure AD umožňuje ověřování klientské aplikace pomocí identity aplikace nebo uživatele místo přihlašovacích údajů k účtu úložiště. Při spuštění v Azure můžete použít [spravovanou identitu Azure AD](../../active-directory/managed-identities-azure-resources/index.yml) . Spravované identity odstraňují nutnost ověřování klientů a ukládání přihlašovacích údajů do aplikace nebo s vaší aplikací.
 
-Azure AD používá řízení přístupu na základě role (RBAC) ke správě autorizací, která je taky podporovaná Key Vault.
+Azure AD pomocí řízení přístupu na základě role Azure (Azure RBAC) spravuje autorizaci, která je taky podporovaná Key Vault.
 
 ## <a name="service-principal-application-id"></a>ID aplikace instančního objektu
 
-Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním objektem](../../active-directory/develop/developer-glossary.md#service-principal-object). Instanční objekt slouží jako ID aplikace, které se během autorizačního nastavení používá pro přístup k jiným prostředkům Azure prostřednictvím RBAC.
+Tenant služby Azure AD poskytuje každou registrovanou aplikaci s [instančním objektem](../../active-directory/develop/developer-glossary.md#service-principal-object). Instanční objekt slouží jako ID aplikace, které se během autorizačního nastavení používá pro přístup k jiným prostředkům Azure prostřednictvím Azure RBAC.
 
 Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klientech Azure AD. Key Vault je zaregistrované pod stejným ID aplikace v každém cloudu Azure.
 

@@ -4,19 +4,19 @@ description: Pomocí tohoto článku můžete vyřešit běžné problémy zjiš
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82783744"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442357"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -75,7 +75,7 @@ Ve výchozím nastavení IoT Edge spouští moduly ve vlastní izolované síti 
 
 **Možnost 1: nastavení serveru DNS v nastavení modulu pro vytvoření kontejneru**
 
-Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Například:
+Zadejte server DNS pro vaše prostředí v nastavení modulu container Engine, který bude platit pro všechny moduly kontejneru spouštěné modulem. Vytvořte soubor s názvem `daemon.json` Určení serveru DNS, který chcete použít. Příklad:
 
 ```json
 {
@@ -103,7 +103,7 @@ Restartujte modul kontejnerů, aby se aktualizace projevily.
 
 **Možnost 2: nastavení serveru DNS v nasazení IoT Edge na modul**
 
-Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Například:
+Můžete nastavit server DNS pro *createOptions* modulu v nasazení IoT Edge. Příklad:
 
 ```json
 "createOptions": {
@@ -222,7 +222,7 @@ Když se zobrazí tato chyba, můžete ji vyřešit tak, že nakonfigurujete ná
    ![Konfigurace názvu DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
 
 3. Zadejte hodnotu **jmenovky názvu DNS** a vyberte **Uložit**.
-4. Zkopírujte nový název DNS, který by měl být ve formátu ** \<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
+4. Zkopírujte nový název DNS, který by měl být ve formátu **\<DNSnamelabel\> . \<vmlocation\> . cloudapp.azure.com**.
 5. Ve virtuálním počítači pomocí následujícího příkazu nastavte modul runtime IoT Edge s vaším názvem DNS:
 
    * V systému Linux:
@@ -331,6 +331,25 @@ Pokud se automatické nasazení zaměřuje na zařízení, má přednost před r
 Pro každé zařízení můžete použít jenom jeden typ mechanismu nasazení, buď pro automatické nasazení, nebo pro jednotlivá nasazení zařízení. Pokud máte více automatických nasazení cílících na zařízení, můžete změnit prioritu nebo popisy cíle, abyste se ujistili, že se u daného zařízení vztahuje správná možnost. Můžete také aktualizovat dvojitou cílovou možnost zařízení, aby se už neshodovala s popisem automatického nasazení.
 
 Další informace najdete v tématu [vysvětlení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md).
+
+<!-- <1.2> -->
+::: moniker range=">=iotedge-2020-11"
+
+## <a name="iot-edge-behind-a-gateway-cannot-perform-http-requests-and-start-edgeagent-module"></a>IoT Edge za bránou nemůže provádět požadavky HTTP a spustit modul edgeAgent.
+
+**Pozorované chování:**
+
+Démon IoT Edge je aktivní s platným konfiguračním souborem, ale nemůže spustit modul edgeAgent. Příkaz `iotedge list` vrátí prázdný seznam. Sestava protokolů démona IoT Edge `Could not perform HTTP request` .
+
+**Hlavní příčina:**
+
+Zařízení IoT Edge za bránou získají své image modulu z nadřazeného IoT Edge zařízení zadaného v `parent_hostname` poli config. yaml. Tato `Could not perform HTTP request` chyba znamená, že podřízené zařízení není schopné získat přístup k nadřazenému zařízení přes HTTP.
+
+**Rozhodnutí**
+
+Ujistěte se, že nadřazený IoT Edge zařízení může přijímat příchozí žádosti z podřízeného IoT Edge zařízení. Pro požadavky přicházející z podřízeného zařízení otevřete síťový provoz na portech 443 a 6617.
+
+:::moniker-end
 
 ## <a name="next-steps"></a>Další kroky
 

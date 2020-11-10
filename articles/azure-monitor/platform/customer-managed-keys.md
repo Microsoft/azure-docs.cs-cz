@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/09/2020
-ms.openlocfilehash: 7f62aade114613261a22a818ab47e096eb16084b
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427968"
+ms.locfileid: "94443377"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Klíč spravovaný zákazníkem v Azure Monitoru 
 
@@ -27,9 +27,10 @@ Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém s
 
 Klíčové funkce spravované zákazníkem se doručují na vyhrazené Log Analytics clustery. Umožňuje chránit data pomocí ovládacího prvku [bezpečnostní modul](#customer-lockbox-preview) a poskytuje ovládacímu prvku možnost kdykoli odvolat přístup k vašim datům. Data ingestovaná za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají zašifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci klíče spravované zákazníkem, ale vaše kontrola nad daty SSD dodržuje [odvolání klíčů](#key-revocation). Pracujeme na tom, aby data SSD zašifrovaná pomocí Customer-Managed klíč v první polovině 2021.
 
-Abychom ověřili, že máme potřebnou kapacitu ke zřízení vyhrazeného clusteru ve vaší oblasti, vyžadujeme, aby vaše předplatné bylo předem povolené. Než začnete s konfigurací Customer-Managed Key, použijte žádost o podporu od Microsoftu nebo otevřete žádost o podporu, abyste mohli předplatné povolit.
-
 [Cenový model Log Analytics clusterů](./manage-cost-storage.md#log-analytics-dedicated-clusters) používá rezervace kapacity počínaje úrovní 1000 GB/den.
+
+> [!IMPORTANT]
+> Kvůli dočasnám omezením kapacity vyžadujeme před vytvořením clusteru předem jejich registraci. Použijte své kontakty do Microsoftu nebo otevřete žádost o podporu pro registraci ID předplatných.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Jak Customer-Managed klíč funguje v Azure Monitor
 
@@ -63,11 +64,11 @@ Platí následující pravidla:
 
 ## <a name="customer-managed-key-provisioning-procedure"></a>Customer-Managed postup zřizování klíčů
 
-1. Povolení předplatného – funkce se doručí na vyhrazené Log Analytics clustery. Abychom ověřili, že ve vaší oblasti máme požadovanou kapacitu, vyžadujeme, aby vaše předplatné bylo předem povolené. Použijte kontakt od Microsoftu k získání povoleného předplatného.
-2. Vytváření Azure Key Vault a ukládání klíče
-3. Vytváření clusteru
-4. Udělování oprávnění vašemu Key Vault
-5. Propojení Log Analyticsch pracovních prostorů
+1. Zaregistrovat předplatné, aby bylo možné vytvořit cluster
+1. Vytváření Azure Key Vault a ukládání klíče
+1. Vytváření clusteru
+1. Udělování oprávnění vašemu Key Vault
+1. Propojení Log Analyticsch pracovních prostorů
 
 Konfigurace Customer-Managed klíčů není podporovaná v Azure Portal a zřizování se provádí prostřednictvím [PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/), [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) nebo požadavků [REST](https://docs.microsoft.com/rest/api/loganalytics/) .
 
@@ -149,7 +150,6 @@ Operace se nezdařila
 
 > [!IMPORTANT]
 > Customer-Managed klíčovou funkcí je oblast. Pracovní prostory Azure Key Vault, cluster a propojené Log Analytics musí být ve stejné oblasti, ale mohou být v různých předplatných.
-> Abychom ověřili, že máme potřebnou kapacitu ke zřízení vyhrazeného clusteru ve vaší oblasti, vyžadujeme, aby vaše předplatné bylo předem povolené. Než začnete s konfigurací Customer-Managed Key, použijte žádost o pomoc od Microsoftu nebo otevřete žádost o podporu, abyste mohli předplatné povolit. 
 
 ### <a name="storing-encryption-key-kek"></a>Ukládání šifrovacího klíče (KEK)
 
@@ -200,6 +200,25 @@ az monitor log-analytics cluster update --name "cluster-name" --resource-group "
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
+
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
+}
 ```
 
 **Response** (Odpověď)
@@ -288,6 +307,11 @@ Když přenesete vlastní úložiště (BYOS) a propojíte ho s vaším pracovn�
 
 Propojení účtu úložiště pro *dotaz* k vašemu pracovnímu prostoru – dotazy *uložené při hledání* se ukládají do svého účtu úložiště. 
 
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
@@ -314,6 +338,11 @@ Po dokončení konfigurace budou všechny nové *uložené vyhledávací* dotazy
 **Konfigurace BYOS pro dotazy log-Alerts**
 
 Propojení účtu úložiště s *upozorněními* k vašemu pracovnímu prostoru – dotazy *protokolu výstrahy* se ukládají do svého účtu úložiště. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
@@ -539,7 +568,7 @@ Další informace o [Customer Lockbox pro Microsoft Azure](../../security/fundam
 
 - Odkaz na pracovní prostor na cluster se nezdaří, pokud je propojený s jiným clusterem.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 - Chování při Key Vault dostupnosti
   - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.

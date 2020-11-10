@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e0f1cc446b6b957b17153dd538922d2b9acd891f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442730"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443088"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrovat mobilní aplikace, které volají webová rozhraní API
 
@@ -44,7 +44,7 @@ Další informace najdete v tématu [scénáře a podporované toky](authenticat
 
 ### <a name="interactive-authentication"></a>Interaktivní ověřování
 
-Když vytváříte mobilní aplikaci, která používá interaktivní ověřování, je nejnejdůležitějším krokem registrace identifikátor URI přesměrování. Interaktivní ověřování můžete nastavit prostřednictvím [konfigurace platformy v okně **ověřování** ](https://aka.ms/MobileAppReg).
+Když vytváříte mobilní aplikaci, která používá interaktivní ověřování, je nejnejdůležitějším krokem registrace identifikátor URI přesměrování. Interaktivní ověřování můžete nastavit prostřednictvím [konfigurace platformy v okně **ověřování**](https://aka.ms/MobileAppReg).
 
 Tato činnost umožní vaší aplikaci získat jednotné přihlašování (SSO) prostřednictvím Microsoft Authenticator (a Portál společnosti Intune na Androidu). Bude taky podporovat zásady správy zařízení.
 
@@ -72,16 +72,16 @@ Po dokončení tohoto postupu se identifikátor URI pro přesměrování vypoč�
 
 Pokud upřednostňujete ruční konfiguraci identifikátoru URI přesměrování, můžete to provést prostřednictvím manifestu aplikace. Tady je doporučený formát pro manifest:
 
-- **iOS**: `msauth.<BUNDLE_ID>://auth`
+- **iOS** : `msauth.<BUNDLE_ID>://auth`
   - Zadejte například `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android** : `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - Hodnotu hash podpisu pro Android můžete vygenerovat pomocí klíče verze nebo klíče pro ladění pomocí příkazu nástroje.
 
 ### <a name="username-password-authentication"></a>Uživatelské jméno – ověřování hesla
 
 Pokud vaše aplikace používá pouze ověřování pomocí uživatelského jména a hesla, nemusíte registrovat identifikátor URI přesměrování pro aplikaci. Tento tok provede zpáteční cestu ke koncovému bodu Microsoft Identity Platform verze 2,0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 
-Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Provedete to tak, že začnete v části **ověřování** vaší aplikace. V podčásti **Upřesnit nastavení** v části **výchozí typ klienta zadejte** pro otázku **považovat aplikaci jako veřejný klient**možnost **Ano**.
+Je však nutné identifikovat aplikaci jako veřejnou klientskou aplikaci. Provedete to tak, že začnete v části **ověřování** vaší aplikace. V podčásti **Upřesnit nastavení** v části **výchozí typ klienta zadejte** pro otázku **považovat aplikaci jako veřejný klient** možnost **Ano**.
 
 ## <a name="api-permissions"></a>Oprávnění rozhraní API
 
@@ -91,5 +91,4 @@ Staticky registrací oprávnění umožňuje správcům snadno schválit vaši a
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Konfigurace kódu](scenario-mobile-app-configuration.md)
+Přejděte k dalšímu článku v tomto scénáři, [Konfigurace kódu aplikace](scenario-mobile-app-configuration.md).

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6cbb574245c7b11d2437693d60fd952becedba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdde131f93ccf430029edc4d87e0627010c8b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257550"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443187"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Scénář: desktopová aplikace, která volá webová rozhraní API
 
@@ -61,5 +61,4 @@ Aplikace klasické pracovní plochy mají určitou řadu. Závisí hlavně na to
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Desktopová aplikace: registrace aplikace](scenario-desktop-app-registration.md)
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](scenario-desktop-app-registration.md).

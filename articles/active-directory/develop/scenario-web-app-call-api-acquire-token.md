@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8af9ddd3649e2a5757e47ab2a3d8edca1c83929
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396174"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442612"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webová aplikace, která volá webová rozhraní API: Získá token pro aplikaci.
 
@@ -203,5 +203,4 @@ def graphcall():
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Volání webového rozhraní API](scenario-web-app-call-api-call-api.md)
+Přejděte k dalšímu článku v tomto scénáři, [zavolejte webové rozhraní API](scenario-web-app-call-api-call-api.md).

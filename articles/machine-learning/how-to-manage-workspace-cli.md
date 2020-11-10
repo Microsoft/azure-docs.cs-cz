@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 181cae525845e7cae5e8f6f178b01ee33999b8b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312480"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442136"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 
@@ -72,7 +72,7 @@ Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity A
 | ---- | ---- |
 | **Skupina prostředků Azure** | `-g <resource-group-name>`
 | **Účet Azure Storage** | `--storage-account <service-id>` |
-| **Application Insights Azure** | `--application-insights <service-id>` |
+| **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
@@ -177,7 +177,7 @@ Chcete-li omezit data, která společnost Microsoft shromažďuje v pracovním p
 > [!IMPORTANT]
 > Výběr vysokého dopadu na firmu se dá udělat jenom při vytváření pracovního prostoru. Po vytvoření pracovního prostoru toto nastavení nemůžete změnit.
 
-Další informace o klíčích spravovaných zákazníkem a vysokém pracovním prostoru s obchodním dopadem najdete v článku [Podnikové zabezpečení pro Azure Machine Learning](concept-enterprise-security.md#encryption-at-rest).
+Další informace o klíčích spravovaných zákazníkem a vysokém pracovním prostoru s obchodním dopadem najdete v článku [Podnikové zabezpečení pro Azure Machine Learning](concept-data-encryption.md#encryption-at-rest).
 
 ### <a name="use-existing-resources"></a>Použití existujících prostředků
 
@@ -393,7 +393,7 @@ az group delete -g <resource-group-name>
 
 Další informace najdete v tématu [AZ ml Workspace Delete](/cli/azure/ext/azure-cli-ml/ml/workspace?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) Document.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
 

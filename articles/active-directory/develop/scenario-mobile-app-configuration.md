@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 43cb891ad63a23353437082f7cb1b1e45f146e5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204214"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444057"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurace mobilní aplikace, která volá webová rozhraní API
 
@@ -148,9 +148,9 @@ Další informace najdete v tématu věnovaném [důležitým hledisku pro UWP p
 
 V zařízeních s Androidem a iOS poskytují zprostředkovatelé tyto akce:
 
-- **Jednotné přihlašování (SSO)**: jednotné přihlašování můžete použít pro zařízení zaregistrovaná ve službě Azure Active Directory (Azure AD). Když použijete jednotné přihlašování, uživatelé se nemusí přihlašovat ke každé aplikaci.
-- **Identifikace zařízení**: Toto nastavení umožňuje zásady podmíněného přístupu, které se vztahují k zařízením Azure AD. Proces ověřování používá certifikát zařízení, který byl vytvořen v době, kdy bylo zařízení připojeno k pracovní ploše.
-- **Ověření identifikace aplikace**: když aplikace volá zprostředkovatele, PŘEDÁ adresu URL pro přesměrování. Zprostředkovatel je pak ověří.
+- **Jednotné přihlašování (SSO)** : jednotné přihlašování můžete použít pro zařízení zaregistrovaná ve službě Azure Active Directory (Azure AD). Když použijete jednotné přihlašování, uživatelé se nemusí přihlašovat ke každé aplikaci.
+- **Identifikace zařízení** : Toto nastavení umožňuje zásady podmíněného přístupu, které se vztahují k zařízením Azure AD. Proces ověřování používá certifikát zařízení, který byl vytvořen v době, kdy bylo zařízení připojeno k pracovní ploše.
+- **Ověření identifikace aplikace** : když aplikace volá zprostředkovatele, PŘEDÁ adresu URL pro přesměrování. Zprostředkovatel je pak ověří.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Povolení zprostředkovatele v Xamarin
 
@@ -367,5 +367,4 @@ Informace o povolení zprostředkovatele v Androidu najdete v tématu zprostřed
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Získání tokenu](scenario-mobile-acquire-token.md)
+Přejděte k dalšímu článku v tomto scénáři, který získá [token](scenario-mobile-acquire-token.md).

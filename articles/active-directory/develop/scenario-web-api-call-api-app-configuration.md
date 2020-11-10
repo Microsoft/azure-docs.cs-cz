@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 993e1a513fae726e00a29c4b9927a0a039572f74
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a888c3ad771e4a7edbd7110ba584050fe68e810
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365931"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443785"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
 
@@ -88,7 +88,7 @@ Microsoft. identity. Web nabízí několik způsobů, jak popsat certifikáty, j
 
 ## <a name="startupcs"></a>Startup.cs
 
-Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs*:
+Vaše webové rozhraní API bude potřebovat získat token pro rozhraní API pro příjem dat. Zadejte ho přidáním `.EnableTokenAcquisitionToCallDownstreamApi()` řádku po `.AddMicrosoftIdentityWebApi(Configuration)` . Tento řádek zveřejňuje `ITokenAcquisition` službu, kterou můžete použít v akcích kontroleru nebo stránek. Jak vidíte v následujících dvou odrážekch, můžete dokonce dělat jednodušší. Budete také muset zvolit implementaci mezipaměti tokenů, například `.AddInMemoryTokenCaches()` v *Startup.cs* :
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -256,5 +256,4 @@ Další informace o protokolu OBO naleznete [v tématu Microsoft Identity Platfo
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.](scenario-web-api-call-api-acquire-token.md)
+Přejděte k dalšímu článku v tomto scénáři, [Získejte token pro aplikaci](scenario-web-api-call-api-acquire-token.md).

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396191"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443697"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webové rozhraní API, které volá webová rozhraní API: volá rozhraní API.
 
@@ -26,7 +26,7 @@ Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API. Rozhra
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Pokud používáte *Microsoft. identity. Web*, máte tři scénáře použití:
+Pokud používáte *Microsoft. identity. Web* , máte tři scénáře použití:
 
 - [Možnost 1: volání Microsoft Graph s využitím sady Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
 - [Možnost 2: volání webového rozhraní API pro příjem dat s podpůrnou třídou](#option-2-call-a-downstream-web-api-with-the-helper-class)
@@ -164,5 +164,4 @@ Ukázka demonstrující tento tok pomocí MSAL Pythonu ještě není k dispozici
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Webové rozhraní API, které volá webová rozhraní API: Přesun do produkčního prostředí](scenario-web-api-call-api-production.md)
+Přejděte k dalšímu článku v tomto scénáři, [přejděte do produkčního](scenario-web-api-call-api-production.md)prostředí.

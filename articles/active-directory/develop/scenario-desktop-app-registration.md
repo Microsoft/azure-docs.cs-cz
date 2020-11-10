@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b71c78f484eef0fc4d9c34a2f218a177dbffa0a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257502"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443139"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: registrace aplikace
 
@@ -48,8 +48,8 @@ Identifikátor URI pro přesměrování, který se má použít v desktopové ap
 - Pokud vaše aplikace používá integrované ověřování systému Windows nebo uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky dovedou k přenosu koncového bodu Microsoft Identity Platform v 2.0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.
 - Chcete-li odlišit [tok kódu zařízení](scenario-desktop-acquire-token.md#device-code-flow), [integrované ověřování systému Windows](scenario-desktop-acquire-token.md#integrated-windows-authentication)a [uživatelské jméno a heslo](scenario-desktop-acquire-token.md#username-and-password) z aplikace důvěrného klienta pomocí toku přihlašovacích údajů klienta, který se používá v [aplikacích DÉMONA](scenario-daemon-overview.md), žádný z nich vyžaduje identifikátor URI přesměrování, je nutné jej nakonfigurovat jako veřejnou klientskou aplikací. Chcete-li dosáhnout této konfigurace:
 
-    1. V [Azure Portal](https://portal.azure.com)vyberte svou aplikaci v **Registrace aplikací**a pak vyberte **ověřování**.
-    1. V **Možnosti Upřesnit nastavení**  >  **výchozí typ klienta**  >  **považuje aplikace za veřejného klienta**, vyberte **Ano**.
+    1. V [Azure Portal](https://portal.azure.com)vyberte svou aplikaci v **Registrace aplikací** a pak vyberte **ověřování**.
+    1. V **Možnosti Upřesnit nastavení**  >  **výchozí typ klienta**  >  **považuje aplikace za veřejného klienta** , vyberte **Ano**.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Povolit nastavení veřejného klienta v podokně ověřování v Azure Portal":::
 
@@ -59,5 +59,4 @@ Aplikace klasické pracovní plochy volají rozhraní API pro přihlášeného u
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Desktopová aplikace: Konfigurace aplikace](scenario-desktop-app-configuration.md)
+Přejděte k dalšímu článku v tomto scénáři, [Konfigurace kódu aplikace](scenario-desktop-app-configuration.md).

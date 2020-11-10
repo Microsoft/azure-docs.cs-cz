@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70ddc2191cc06a1bede87adc5940e0f7dea63384
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257533"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443105"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
 
@@ -40,10 +40,10 @@ Pro mobilní aplikace je nezbytné přizpůsobené a bezproblémové uživatelsk
 
 Požadavky na mobilní aplikace:
 
-- **Činnost koncového uživatele je klíč**: umožňuje uživatelům zobrazit hodnotu vaší aplikace před tím, než se požádá o přihlášení. Vyžádá pouze požadovaná oprávnění.
-- **Podpora všech uživatelských konfigurací**: mnoho uživatelů v mobilních firmách musí splňovat zásady podmíněného přístupu a zásady dodržování předpisů zařízením. Ujistěte se, že tyto klíčové scénáře podporujete.
-- **Implementace jednotného přihlašování (SSO)**: pomocí MSAL a platformy Microsoft Identity Platform můžete povolit jednotné přihlašování prostřednictvím prohlížeče nebo Microsoft Authenticator zařízení (a portál společnosti Intune na Androidu).
-- **Implementovat režim sdíleného zařízení**: umožňuje, aby se vaše aplikace používala ve scénářích se sdíleným zařízením, například nemocnicích, výrobou, maloobchodním a finančním. [Přečtěte si další informace o podpoře režimu sdíleného zařízení](msal-shared-devices.md).
+- **Činnost koncového uživatele je klíč** : umožňuje uživatelům zobrazit hodnotu vaší aplikace před tím, než se požádá o přihlášení. Vyžádá pouze požadovaná oprávnění.
+- **Podpora všech uživatelských konfigurací** : mnoho uživatelů v mobilních firmách musí splňovat zásady podmíněného přístupu a zásady dodržování předpisů zařízením. Ujistěte se, že tyto klíčové scénáře podporujete.
+- **Implementace jednotného přihlašování (SSO)** : pomocí MSAL a platformy Microsoft Identity Platform můžete povolit jednotné přihlašování prostřednictvím prohlížeče nebo Microsoft Authenticator zařízení (a portál společnosti Intune na Androidu).
+- **Implementovat režim sdíleného zařízení** : umožňuje, aby se vaše aplikace používala ve scénářích se sdíleným zařízením, například nemocnicích, výrobou, maloobchodním a finančním. [Přečtěte si další informace o podpoře režimu sdíleného zařízení](msal-shared-devices.md).
 
 ## <a name="specifics"></a>Specifika
 
@@ -59,5 +59,4 @@ Při vytváření mobilní aplikace na platformě Microsoft identity je potřeba
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Registrace aplikací](scenario-mobile-app-registration.md)
+Přejděte k dalšímu článku v tomto scénáři [Registrace aplikace](scenario-mobile-app-registration.md).
