@@ -4,16 +4,16 @@ description: zahrnout soubor
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
-ms.date: 04/27/2020
-ms.openlocfilehash: fabd79829425147667c46f686a1ec1ceb6a29b00
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: fa497b69b067d5556f11effdb52505895ecc3bdd
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132877"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386535"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -29,13 +29,15 @@ Tento rychlý Start založený na držiteli vás provede tím, že získáte odp
 
 ## <a name="set-up-postman-for-requests"></a>Nastavení metody post pro žádosti
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (stabilní verze)](#tab/v1)
+
 V tomto rychlém startu se používá stejné nastavení pro **odeslání požadavku POST** a potom se nakonfiguruje tak, aby se kód JSON odeslal na službu na základě toho, na co se pokoušíte zadat dotaz.
 
 Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jednotlivé další části, kde můžete nakonfigurovat JSON pro tělo příspěvku.
 
 1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
 
-    |Name|Nastavení|Účel a hodnota|
+    |Name (Název)|Nastavení|Účel a hodnota|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
@@ -44,6 +46,25 @@ Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jedn
     ||`{"question":"<Your question>"}`|Tělo žádosti POST jako objekt JSON Tato hodnota se v každé následující části změní v závislosti na tom, co má dotaz udělat.|
 
 1. Otevřete post a vytvořte novou základní žádost **post** s publikovaným nastavením znalostní báze. V následujících částech změňte formát JSON těla zprávy tak, aby se změnil dotaz na znalostní bázi.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker spravované (verze Preview)](#tab/v2)
+
+V tomto rychlém startu se používá stejné nastavení pro **odeslání požadavku POST** a potom se nakonfiguruje tak, aby se kód JSON odeslal na službu na základě toho, na co se pokoušíte zadat dotaz.
+
+Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jednotlivé další části, kde můžete nakonfigurovat JSON pro tělo příspěvku.
+
+1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
+
+    |Name (Název)|Nastavení|Účel a hodnota|
+    |--|--|--|
+    |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.cognitiveservices.azure.com/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
+    |`Ocp-Apim-Subscription-Key`|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|Hodnota hlavičky pro autorizaci vaší žádosti. |
+    |`Content-type`|`application/json`|Hodnota hlavičky vašeho obsahu|
+    ||`{"question":"<Your question>"}`|Tělo žádosti POST jako objekt JSON Tato hodnota se v každé následující části změní v závislosti na tom, co má dotaz udělat.|
+
+1. Otevřete post a vytvořte novou základní žádost **post** s publikovaným nastavením znalostní báze. V následujících částech změňte formát JSON těla zprávy tak, aby se změnil dotaz na znalostní bázi.
+---
 
 ## <a name="use-metadata-to-filter-answer"></a>Filtrovat odpověď pomocí metadat
 
